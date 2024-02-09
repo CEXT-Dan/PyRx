@@ -1952,7 +1952,7 @@ AcDbPoint* PyDbPoint::impObj(const std::source_location& src /*= std::source_loc
 
 //-----------------------------------------------------------------------------------
 //PyDb2dPolyline
-AcGePoint3dArray& listToAcGePoint3dArrayRef(const boost::python::list& list)
+AcGePoint3dArray& listToAcGePoint3dArrayRef(const boost::python::object& list)
 {
     PyAutoLockGIL lock;
     //TODO: maybe this can be done better
@@ -1971,7 +1971,7 @@ void makePyDb2dPolylineWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<AcDb::Poly2dType, const boost::python::list&, Adesk::Boolean>())
+        .def(init<AcDb::Poly2dType, const boost::python::object&, Adesk::Boolean>())
         .def("polyType", &PyDb2dPolyline::polyType)
         .def("setPolyType", &PyDb2dPolyline::setPolyType)
         .def("convertToPolyType", &PyDb2dPolyline::convertToPolyType)
@@ -2028,7 +2028,7 @@ PyDb2dPolyline::PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
 }
 
-PyDb2dPolyline::PyDb2dPolyline(AcDb::Poly2dType type, const boost::python::list& vertices, Adesk::Boolean closed)
+PyDb2dPolyline::PyDb2dPolyline(AcDb::Poly2dType type, const boost::python::object& vertices, Adesk::Boolean closed)
     : PyDbCurve(new AcDb2dPolyline(type, listToAcGePoint3dArrayRef(vertices), 0.0, closed), true)
 {
 }
@@ -2264,7 +2264,7 @@ void makePyDb3dPolylineWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<AcDb::Poly3dType, const boost::python::list&, Adesk::Boolean>())
+        .def(init<AcDb::Poly3dType, const boost::python::object&, Adesk::Boolean>())
         .def("length", &PyDb3dPolyline::length)
         .def("setClosed", &PyDb3dPolyline::setClosed)
         .def("makeClosed", &PyDb3dPolyline::makeClosed)
@@ -2304,7 +2304,7 @@ PyDb3dPolyline::PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
 }
 
-PyDb3dPolyline::PyDb3dPolyline(AcDb::Poly3dType pt, const boost::python::list& vertices, Adesk::Boolean closed)
+PyDb3dPolyline::PyDb3dPolyline(AcDb::Poly3dType pt, const boost::python::object& vertices, Adesk::Boolean closed)
     : PyDbCurve(new AcDb3dPolyline(pt, listToAcGePoint3dArrayRef(vertices), closed), true)
 {
 }
@@ -2948,7 +2948,7 @@ void makePyDbPolylineWrapper()
     class_<PyDbPolyline, bases<PyDbCurve>>("Polyline")
         .def(init<>())
         .def(init<unsigned int>())
-        .def(init<const boost::python::list&>())
+        .def(init<const boost::python::object&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getPoint3dAt", &PyDbPolyline::getPoint3dAt, DS.ARGS({ "idx:int" }))
@@ -3034,7 +3034,7 @@ PyDbPolyline::PyDbPolyline(const PyDbObjectId& id)
 {
 }
 
-PyDbPolyline::PyDbPolyline(const boost::python::list& pnts)
+PyDbPolyline::PyDbPolyline(const boost::python::object& pnts)
     : PyDbCurve(new AcDbPolyline(boost::python::len(pnts)), true)
 {
     if (boost::python::len(pnts) == 0)

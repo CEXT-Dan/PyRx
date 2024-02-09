@@ -704,7 +704,7 @@ void makePyDbWipeoutWrapper()
     PyDocString DS("Wipeout");
     class_<PyDbWipeout, bases<PyDbRasterImage>>("Wipeout")
         .def(init<>())
-        .def(init<const boost::python::list&, const AcGeVector3d&>())
+        .def(init<const boost::python::object&, const AcGeVector3d&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
@@ -729,7 +729,7 @@ PyDbWipeout::PyDbWipeout()
 {
 }
 
-PyDbWipeout::PyDbWipeout(const boost::python::list& pylist, const AcGeVector3d& vec)
+PyDbWipeout::PyDbWipeout(const boost::python::object& pylist, const AcGeVector3d& vec)
     : PyDbWipeout(PyDbWipeoutFactory(), true)
 {
     setFrom(pylist, vec);
@@ -760,7 +760,7 @@ Adesk::Boolean PyDbWipeout::frame() const
     return impObj()->frame();
 }
 
-void PyDbWipeout::setFrom(const boost::python::list& pylist, const AcGeVector3d& normal)
+void PyDbWipeout::setFrom(const boost::python::object& pylist, const AcGeVector3d& normal)
 {
     double scale= normal.z;
     AcGePoint2d minPoint(normal.x, normal.y);

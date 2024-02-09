@@ -39,7 +39,7 @@ public:
     void                handOverTo(PyDbObject& newObject, Adesk::Boolean keepXData, Adesk::Boolean keepExtDict);
     void                swapIdWith(PyDbObjectId& otherId, Adesk::Boolean swapXdata, Adesk::Boolean swapExtDict);
     bool                hasXData(const std::string& regappName);
-    void                setXData(const boost::python::list& xdata);
+    void                setXData(const boost::python::object& xdata);
     virtual boost::python::list xData1() const;
     virtual boost::python::list xData2(const std::string& regappName) const;
     void                xDataTransformBy(const AcGeMatrix3d& xform);

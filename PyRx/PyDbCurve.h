@@ -43,11 +43,11 @@ public:
 
     boost::python::list getOffsetCurves(double offsetDist) const;
     boost::python::list getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const;
-    boost::python::list getSplitCurves(const boost::python::list& params) const;
+    boost::python::list getSplitCurves(const boost::python::object& params) const;
     boost::python::list getSplitCurvesAtParam(double param) const;
-    boost::python::list getSplitCurvesAtParams(const boost::python::list& params) const;
+    boost::python::list getSplitCurvesAtParams(const boost::python::object& params) const;
     boost::python::list getSplitCurvesAtPoint(const AcGePoint3d& givenPnt) const;
-    boost::python::list getSplitCurvesAtPoints(const boost::python::list& params) const;
+    boost::python::list getSplitCurvesAtPoints(const boost::python::object& params) const;
 
     PyDbCurve           getOrthoProjectedCurve(const PyGePlane& plane);
     PyDbCurve           getProjectedCurve(const PyGePlane& plane, const AcGeVector3d& projDir);

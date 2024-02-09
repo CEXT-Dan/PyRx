@@ -151,7 +151,7 @@ void PyDbGroup::append1(const PyDbObjectId& id)
     PyThrowBadEs(impObj()->append(id.m_id));
 }
 
-void PyDbGroup::append2(const boost::python::list& ids)
+void PyDbGroup::append2(const boost::python::object& ids)
 {
     PyThrowBadEs(impObj()->append(PyListToObjectIdArray(ids)));
 }
@@ -161,7 +161,7 @@ void PyDbGroup::prepend1(const PyDbObjectId& id)
     PyThrowBadEs(impObj()->prepend(id.m_id));
 }
 
-void PyDbGroup::prepend2(const boost::python::list& ids)
+void PyDbGroup::prepend2(const boost::python::object& ids)
 {
     PyThrowBadEs(impObj()->prepend(PyListToObjectIdArray(ids)));
 }
@@ -171,7 +171,7 @@ void PyDbGroup::insertAt1(Adesk::UInt32 idx, const PyDbObjectId& id)
     PyThrowBadEs(impObj()->insertAt(idx, id.m_id));
 }
 
-void PyDbGroup::insertAt2(Adesk::UInt32 idx, const boost::python::list& ids)
+void PyDbGroup::insertAt2(Adesk::UInt32 idx, const boost::python::object& ids)
 {
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();
@@ -185,7 +185,7 @@ void PyDbGroup::remove1(const PyDbObjectId& id)
     PyThrowBadEs(impObj()->remove(id.m_id));
 }
 
-void PyDbGroup::remove2(const boost::python::list& ids)
+void PyDbGroup::remove2(const boost::python::object& ids)
 {
     PyThrowBadEs(impObj()->remove(PyListToObjectIdArray(ids)));
 }
@@ -199,7 +199,7 @@ void PyDbGroup::removeAt1(Adesk::UInt32 idx)
 #endif
 }
 
-void PyDbGroup::removeAt2(Adesk::UInt32 idx, const boost::python::list& ids)
+void PyDbGroup::removeAt2(Adesk::UInt32 idx, const boost::python::object& ids)
 {
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();

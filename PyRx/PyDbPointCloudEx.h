@@ -41,7 +41,7 @@ public:
 
     int                         length() const;
 
-    void                        set(const boost::python::list& points);
+    void                        set(const boost::python::object& points);
     boost::python::list         get();
 
 public:

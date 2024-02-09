@@ -61,7 +61,7 @@ PyDbSpatialFilter::PyDbSpatialFilter(AcDbSpatialFilter* ptr, bool autoDelete)
 }
 
 #ifdef NEVER
-PyDbSpatialFilter::PyDbSpatialFilter(const boost::python::list& pts, const AcGeVector3d& normal, double elevation, double frontClip, double backClip, Adesk::Boolean enabled)
+PyDbSpatialFilter::PyDbSpatialFilter(const boost::python::object& pts, const AcGeVector3d& normal, double elevation, double frontClip, double backClip, Adesk::Boolean enabled)
     : PyDbSpatialFilter(new AcDbSpatialFilter(PyListToPoint2dArray(pts), normal, elevation, frontClip, backClip, enabled), true)
 {
 }
@@ -101,7 +101,7 @@ boost::python::tuple PyDbSpatialFilter::getVolume() const
 #endif
 }
 
-void PyDbSpatialFilter::setDefinition(const boost::python::list& pts, const AcGeVector3d& normal, double elevation, double frontClip, double backClip, Adesk::Boolean enabled)
+void PyDbSpatialFilter::setDefinition(const boost::python::object& pts, const AcGeVector3d& normal, double elevation, double frontClip, double backClip, Adesk::Boolean enabled)
 {
     PyThrowBadEs(impObj()->setDefinition(PyListToPoint2dArray(pts), normal, elevation, frontClip, backClip, enabled));
 }

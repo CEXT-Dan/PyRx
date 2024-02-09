@@ -21,9 +21,9 @@ public:
     virtual ~PyDbDatabase() override = default;
 
     PyDbObjectId        addToBlock1(const PyDbObjectId&id, PyDbEntity& ent);
-    boost::python::list addToBlock2(const PyDbObjectId& id, const boost::python::list& ent);
+    boost::python::list addToBlock2(const PyDbObjectId& id, const boost::python::object& ent);
     PyDbObjectId        addToModelspace1(PyDbEntity& ent);
-    boost::python::list addToModelspace2(const boost::python::list& ent);
+    boost::python::list addToModelspace2(const boost::python::object& ent);
     PyDbObjectId        addAcDbObject(PyDbObject& obj);
     void                addReactor(PyDbDatabaseReactor& pReactor) const;
     double              angbase() const;
@@ -216,7 +216,7 @@ public:
     AcGeVector3d		pucsydir() const;
     boost::python::list purge();
     bool				qtextmode() const;
-    void	            reclaimMemoryFromErasedObjects(const boost::python::list& erasedObjects);
+    void	            reclaimMemoryFromErasedObjects(const boost::python::object& erasedObjects);
     PyDbObjectId		regAppTableId() const;
     bool				regenmode() const;
     void                removeReactor(PyDbDatabaseReactor& pReactor) const;
@@ -493,23 +493,23 @@ public:
     PyDbObjectId		viewTableId() const;
     bool				visretain() const;
     PyDbObjectId		visualStyleDictionaryId() const;
-    void	            wblock1(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint, AcDb::DuplicateRecordCloning drc);
-    PyDbDatabase	    wblock2(const boost::python::list& outObjIds, const AcGePoint3d& basePoint);
+    void	            wblock1(PyDbDatabase& pOutputDb, const boost::python::object& outObjIds, const AcGePoint3d& basePoint, AcDb::DuplicateRecordCloning drc);
+    PyDbDatabase	    wblock2(const boost::python::object& outObjIds, const AcGePoint3d& basePoint);
     PyDbDatabase	    wblock3(const PyDbObjectId& blockId);
     PyDbDatabase	    wblock4();
 
     void                abortDeepClone(PyDbIdMapping& idMap);
 
-    void                deepCloneObjects1(const boost::python::list& objectIds,
+    void                deepCloneObjects1(const boost::python::object& objectIds,
         const PyDbObjectId& owner, PyDbIdMapping& idMap);
 
-    void                deepCloneObjects2(const boost::python::list& objectIds,
+    void                deepCloneObjects2(const boost::python::object& objectIds,
         const PyDbObjectId& owner, PyDbIdMapping& idMap, bool deferXlation);
 
-    void                wblockCloneObjects1(const boost::python::list& objectIds, const
+    void                wblockCloneObjects1(const boost::python::object& objectIds, const
         PyDbObjectId& owner, PyDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc);
 
-    void                wblockCloneObjects2(const boost::python::list& objectIds, const
+    void                wblockCloneObjects2(const boost::python::object& objectIds, const
         PyDbObjectId& owner, PyDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc, bool deferXlation);
 
     AcGePoint3d			worldPucsBaseOrigin(AcDb::OrthographicView orthoView) const;

@@ -89,7 +89,7 @@ public:
     void                setHeight(double width);
     double              height() const;
     boost::python::list clipBoundary() const;
-    void                setClipBoundary(const boost::python::list& clip);
+    void                setClipBoundary(const boost::python::object& clip);
     bool                isClipped() const;
     void                setIsClipped(bool value);
     Adesk::UInt8        contrast() const;

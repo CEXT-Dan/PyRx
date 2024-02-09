@@ -160,7 +160,7 @@ class PyDbWipeout : public PyDbRasterImage
 {
 public:
     PyDbWipeout();
-    PyDbWipeout(const boost::python::list& pylist, const AcGeVector3d& vec);
+    PyDbWipeout(const boost::python::object& pylist, const AcGeVector3d& vec);
     PyDbWipeout(AcDbWipeout* ptr, bool autoDelete);
     PyDbWipeout(const PyDbObjectId& id);
     PyDbWipeout(const PyDbObjectId& id, AcDb::OpenMode mode);
@@ -169,7 +169,7 @@ public:
 
 
     Adesk::Boolean  frame() const;
-    void            setFrom(const boost::python::list& pylist, const AcGeVector3d& vec);
+    void            setFrom(const boost::python::object& pylist, const AcGeVector3d& vec);
 
 public:
     static std::string  className();

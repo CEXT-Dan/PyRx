@@ -150,12 +150,12 @@ class PyGeCompositeCurve3d : public PyGeCurve3d
 {
 public:
     PyGeCompositeCurve3d();
-    PyGeCompositeCurve3d(const boost::python::list& curveList);
-    PyGeCompositeCurve3d(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves);
+    PyGeCompositeCurve3d(const boost::python::object& curveList);
+    PyGeCompositeCurve3d(const boost::python::object& curveList, const boost::python::object& isOwnerOfCurves);
     PyGeCompositeCurve3d(AcGeEntity3d* pEnt);
     boost::python::list getCurveList() const;
-    void                setCurveList1(const boost::python::list& curveList);
-    void                setCurveList2(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves);
+    void                setCurveList1(const boost::python::object& curveList);
+    void                setCurveList2(const boost::python::object& curveList, const boost::python::object& isOwnerOfCurves);
     boost::python::tuple globalToLocalParam(double param) const;
     double				 localToGlobalParam(double param, int segNum) const;
     static PyGeCompositeCurve3d cast(const PyGeEntity3d& src);

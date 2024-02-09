@@ -536,7 +536,7 @@ PyDbObjectId PyDbDatabase::addToBlock1(const PyDbObjectId& id, PyDbEntity& ent)
     return outid;
 }
 
-boost::python::list PyDbDatabase::addToBlock2(const PyDbObjectId& id, const boost::python::list& ents)
+boost::python::list PyDbDatabase::addToBlock2(const PyDbObjectId& id, const boost::python::object& ents)
 {
     PyAutoLockGIL lock;
     boost::python::list ids;
@@ -560,7 +560,7 @@ PyDbObjectId PyDbDatabase::addToModelspace1(PyDbEntity& ent)
     return addToBlock1(PyDbObjectId(acdbSymUtil()->blockModelSpaceId(impObj())), ent);
 }
 
-boost::python::list PyDbDatabase::addToModelspace2(const boost::python::list& ents)
+boost::python::list PyDbDatabase::addToModelspace2(const boost::python::object& ents)
 {
     return addToBlock2(PyDbObjectId(acdbSymUtil()->blockModelSpaceId(impObj())), ents);
 }
@@ -1715,7 +1715,7 @@ bool PyDbDatabase::qtextmode() const
     return impObj()->qtextmode();
 }
 
-void PyDbDatabase::reclaimMemoryFromErasedObjects(const boost::python::list& erasedObjects)
+void PyDbDatabase::reclaimMemoryFromErasedObjects(const boost::python::object& erasedObjects)
 {
     const AcDbObjectIdArray ids = PyListToObjectIdArray(erasedObjects);
     return PyThrowBadEs(impObj()->reclaimMemoryFromErasedObjects(ids));
@@ -3268,36 +3268,36 @@ PyDbObjectId PyDbDatabase::visualStyleDictionaryId() const
     return PyDbObjectId(impObj()->visualStyleDictionaryId());
 }
 
-void PyDbDatabase::deepCloneObjects1(const boost::python::list& objectIds, const PyDbObjectId& owner, PyDbIdMapping& idMap)
+void PyDbDatabase::deepCloneObjects1(const boost::python::object& objectIds, const PyDbObjectId& owner, PyDbIdMapping& idMap)
 {
     PyThrowBadEs(impObj()->deepCloneObjects(PyListToObjectIdArray(objectIds), owner.m_id, *idMap.impObj()));
 }
 
 
-void PyDbDatabase::deepCloneObjects2(const boost::python::list& objectIds, const PyDbObjectId& owner, PyDbIdMapping& idMap, bool deferXlation)
+void PyDbDatabase::deepCloneObjects2(const boost::python::object& objectIds, const PyDbObjectId& owner, PyDbIdMapping& idMap, bool deferXlation)
 {
     PyThrowBadEs(impObj()->deepCloneObjects(PyListToObjectIdArray(objectIds), owner.m_id, *idMap.impObj(), deferXlation));
 }
 
-void PyDbDatabase::wblockCloneObjects1(const boost::python::list& objectIds,
+void PyDbDatabase::wblockCloneObjects1(const boost::python::object& objectIds,
     const PyDbObjectId& owner, PyDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc)
 {
     PyThrowBadEs(impObj()->wblockCloneObjects(PyListToObjectIdArray(objectIds), owner.m_id, *idMap.impObj(), drc));
 }
 
-void PyDbDatabase::wblockCloneObjects2(const boost::python::list& objectIds,
+void PyDbDatabase::wblockCloneObjects2(const boost::python::object& objectIds,
     const PyDbObjectId& owner, PyDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc, bool deferXlation)
 {
     PyThrowBadEs(impObj()->wblockCloneObjects(PyListToObjectIdArray(objectIds), owner.m_id, *idMap.impObj(), drc, deferXlation));
 }
 
-void PyDbDatabase::wblock1(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint, AcDb::DuplicateRecordCloning drc)
+void PyDbDatabase::wblock1(PyDbDatabase& pOutputDb, const boost::python::object& outObjIds, const AcGePoint3d& basePoint, AcDb::DuplicateRecordCloning drc)
 {
     AcDbObjectIdArray ids = PyListToObjectIdArray(outObjIds);
     PyThrowBadEs(impObj()->wblock(pOutputDb.impObj(), ids, basePoint, drc));
 }
 
-PyDbDatabase PyDbDatabase::wblock2(const boost::python::list& outObjIds, const AcGePoint3d& basePoint)
+PyDbDatabase PyDbDatabase::wblock2(const boost::python::object& outObjIds, const AcGePoint3d& basePoint)
 {
     AcDbObjectIdArray ids = PyListToObjectIdArray(outObjIds);
     AcDbDatabase* _pOutputDb = nullptr;

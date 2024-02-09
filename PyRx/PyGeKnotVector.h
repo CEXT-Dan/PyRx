@@ -11,7 +11,7 @@ public:
     PyGeKnotVector();
     PyGeKnotVector(int size, int growSize);
     PyGeKnotVector(const AcGeKnotVector& src);
-    PyGeKnotVector(const boost::python::list& dbls);
+    PyGeKnotVector(const boost::python::object& dbls);
     PyGeKnotVector(int plusMult, const PyGeKnotVector& src);
     ~PyGeKnotVector() = default;
     Adesk::Boolean          isEqualTo(const PyGeKnotVector& other) const;

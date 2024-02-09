@@ -14,25 +14,25 @@ void makePyDbSplineWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>())
-        .def(init<const boost::python::list&>())
-        .def(init<const boost::python::list&, int, double>())
-        .def(init<const boost::python::list&, const AcGeVector3d&, const AcGeVector3d&>())
-        .def(init<const boost::python::list&, const AcGeVector3d&, const AcGeVector3d&, int, double>())
-        .def(init<const boost::python::list&, bool>())
-        .def(init<const boost::python::list&, bool, AcGe::KnotParameterization, int, double>())
-        .def(init<const boost::python::list&, AcGe::KnotParameterization>())
-        .def(init<const boost::python::list&, AcGe::KnotParameterization, int, double>())
-        .def(init<const boost::python::list&, const AcGeVector3d&, const AcGeVector3d&, AcGe::KnotParameterization>())
-        .def(init<const boost::python::list&, const AcGeVector3d&, const AcGeVector3d&, AcGe::KnotParameterization, int, double>())
-        .def(init<int, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, const boost::python::list&, const boost::python::list&, const boost::python::list&>())
-        .def(init<int, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, const boost::python::list&, const boost::python::list&, const boost::python::list&, double, double>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def(init<const boost::python::object&>())
+        .def(init<const boost::python::object&, int, double>())
+        .def(init<const boost::python::object&, const AcGeVector3d&, const AcGeVector3d&>())
+        .def(init<const boost::python::object&, const AcGeVector3d&, const AcGeVector3d&, int, double>())
+        .def(init<const boost::python::object&, bool>())
+        .def(init<const boost::python::object&, bool, AcGe::KnotParameterization, int, double>())
+        .def(init<const boost::python::object&, AcGe::KnotParameterization>())
+        .def(init<const boost::python::object&, AcGe::KnotParameterization, int, double>())
+        .def(init<const boost::python::object&, const AcGeVector3d&, const AcGeVector3d&, AcGe::KnotParameterization>())
+        .def(init<const boost::python::object&, const AcGeVector3d&, const AcGeVector3d&, AcGe::KnotParameterization, int, double>())
+        .def(init<int, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, const boost::python::object&, const boost::python::object&, const boost::python::object&>())
+        .def(init<int, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, const boost::python::object&, const boost::python::object&, const boost::python::object&, double, double>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double, double>())
         .def("isNull", &PyDbSpline::isNull, DS.ARGS())
         .def("isRational", &PyDbSpline::isRational, DS.ARGS())
         .def("degree", &PyDbSpline::degree, DS.ARGS())
-        .def("elevateDegree", &PyDbSpline::elevateDegree, DS.ARGS({"val : int"}))
+        .def("elevateDegree", &PyDbSpline::elevateDegree, DS.ARGS({ "val : int" }))
         .def("numControlPoints", &PyDbSpline::numControlPoints, DS.ARGS())
         .def("getControlPointAt", &PyDbSpline::getControlPointAt, DS.ARGS({ "idx:int" }))
         .def("setControlPointAt", &PyDbSpline::setControlPointAt, DS.ARGS({ "idx:int","pnt:PyGe.Point3d" }))
@@ -40,7 +40,7 @@ void makePyDbSplineWrapper()
         .def("getFitPointAt", &PyDbSpline::getFitPointAt, DS.ARGS({ "idx:int" }))
         .def("setFitPointAt", &PyDbSpline::setFitPointAt, DS.ARGS({ "idx:int","pnt:PyGe.Point3d" }))
         .def("insertFitPointAt", &PyDbSpline::insertFitPointAt, DS.ARGS({ "idx:int","pnt:PyGe.Point3d" }))
-        .def("removeFitPointAt", &PyDbSpline::removeFitPointAt, DS.ARGS({ "idx:int"}))
+        .def("removeFitPointAt", &PyDbSpline::removeFitPointAt, DS.ARGS({ "idx:int" }))
         .def("fitTolerance", &PyDbSpline::fitTolerance, DS.ARGS())
         .def("setFitTol", &PyDbSpline::setFitTol, DS.ARGS({ "val : float" }))
         .def("getFitTangents", &PyDbSpline::getFitTangents, DS.ARGS())
@@ -100,37 +100,37 @@ PyDbSpline::PyDbSpline(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
 {
 }
 
-PyDbSpline::PyDbSpline(const boost::python::list& fitPoints)
+PyDbSpline::PyDbSpline(const boost::python::object& fitPoints)
     : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints)), true)
 {
 }
 
-PyDbSpline::PyDbSpline(const boost::python::list& fitPoints,
+PyDbSpline::PyDbSpline(const boost::python::object& fitPoints,
     int order, double fitTolerance)
     : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints),
         order, fitTolerance), true)
 {
 }
 
-PyDbSpline::PyDbSpline(const boost::python::list& fitPoints,
+PyDbSpline::PyDbSpline(const boost::python::object& fitPoints,
     const AcGeVector3d& startTangent, const AcGeVector3d& endTangent)
     : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints),
         startTangent, endTangent), true)
 {
 }
 
-PyDbSpline::PyDbSpline(const boost::python::list& fitPoints,
+PyDbSpline::PyDbSpline(const boost::python::object& fitPoints,
     const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, int order, double fitTolerance)
     : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints),
         startTangent, endTangent, order, fitTolerance), true)
 {
 }
-PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, bool periodic)
+PyDbSpline::PyDbSpline(const boost::python::object& fitPoints, bool periodic)
     : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints), periodic), true)
 {
 }
 
-PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, bool periodic, AcGe::KnotParameterization knotParam, int degree, double fitTolerance)
+PyDbSpline::PyDbSpline(const boost::python::object& fitPoints, bool periodic, AcGe::KnotParameterization knotParam, int degree, double fitTolerance)
 #if !defined(_BRXTARGET240)
     : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints), periodic, knotParam, degree, fitTolerance), true)
 #else
@@ -142,26 +142,26 @@ PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, bool periodic, AcGe
 #endif
 }
 
-PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, AcGe::KnotParameterization knotParam)
+PyDbSpline::PyDbSpline(const boost::python::object& fitPoints, AcGe::KnotParameterization knotParam)
     : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints), knotParam), true)
 {
 }
 
-PyDbSpline::PyDbSpline(const boost::python::list& fitPoints,
+PyDbSpline::PyDbSpline(const boost::python::object& fitPoints,
     AcGe::KnotParameterization knotParam, int degree, double fitTolerance)
     : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints), knotParam,
         degree, fitTolerance), true)
 {
 }
 
-PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent,
+PyDbSpline::PyDbSpline(const boost::python::object& fitPoints, const AcGeVector3d& startTangent,
     const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam)
     : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints), startTangent,
         endTangent, knotParam), true)
 {
 }
 
-PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent,
+PyDbSpline::PyDbSpline(const boost::python::object& fitPoints, const AcGeVector3d& startTangent,
     const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam, int degree, double fitTolerance)
     : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints), startTangent,
         endTangent, knotParam, degree, fitTolerance), true)
@@ -169,14 +169,14 @@ PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d&
 }
 
 PyDbSpline::PyDbSpline(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic,
-    const boost::python::list& controlPoints, const boost::python::list& knots, const boost::python::list& weights)
+    const boost::python::object& controlPoints, const boost::python::object& knots, const boost::python::object& weights)
     : PyDbSpline(new AcDbSpline(degree, rational, closed, periodic,
         PyListToPoint3dArray(controlPoints), PyListToDoubleArray(knots), PyListToDoubleArray(weights)), true)
 {
 }
 
 PyDbSpline::PyDbSpline(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic,
-    const boost::python::list& controlPoints, const boost::python::list& knots, const boost::python::list& weights, double controlPtTol, double knotTol)
+    const boost::python::object& controlPoints, const boost::python::object& knots, const boost::python::object& weights, double controlPtTol, double knotTol)
     : PyDbSpline(new AcDbSpline(degree, rational, closed, periodic,
         PyListToPoint3dArray(controlPoints), PyListToDoubleArray(knots), PyListToDoubleArray(weights), controlPtTol, knotTol), true)
 {
@@ -302,7 +302,7 @@ boost::python::tuple PyDbSpline::getFitData() const
     return boost::python::make_tuple(Point3dArrayToPyList(fitPoints), degree, fitTolerance, tangentsExist, startTangent, endTangent);
 }
 
-void PyDbSpline::setFitData(const boost::python::list& fitPoints, int degree, double fitTolerance, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent)
+void PyDbSpline::setFitData(const boost::python::object& fitPoints, int degree, double fitTolerance, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent)
 {
     PyThrowBadEs(impObj()->setFitData(PyListToPoint3dArray(fitPoints), degree, fitTolerance, startTangent, endTangent));
 }
@@ -320,22 +320,22 @@ boost::python::tuple PyDbSpline::getFitDataKnot() const
     return boost::python::make_tuple(Point3dArrayToPyList(fitPoints), tangentsExist, startTangent, endTangent, knotParam, degree, fitTolerance);
 }
 
-void PyDbSpline::setFitDataKnot1(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam)
+void PyDbSpline::setFitDataKnot1(const boost::python::object& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam)
 {
     PyThrowBadEs(impObj()->setFitData(PyListToPoint3dArray(fitPoints), startTangent, endTangent, knotParam));
 }
 
-void PyDbSpline::setFitDataKnot2(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam, int degree, double fitTolerance)
+void PyDbSpline::setFitDataKnot2(const boost::python::object& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam, int degree, double fitTolerance)
 {
     PyThrowBadEs(impObj()->setFitData(PyListToPoint3dArray(fitPoints), startTangent, endTangent, knotParam, degree, fitTolerance));
 }
 
-void PyDbSpline::setFitDataKnot3(const boost::python::list& fitPoints, bool isPeriodic, AcGe::KnotParameterization knotParam)
+void PyDbSpline::setFitDataKnot3(const boost::python::object& fitPoints, bool isPeriodic, AcGe::KnotParameterization knotParam)
 {
     PyThrowBadEs(impObj()->setFitData(PyListToPoint3dArray(fitPoints), isPeriodic, knotParam));
 }
 
-void PyDbSpline::setFitDataKnot4(const boost::python::list& fitPoints, bool isPeriodic, AcGe::KnotParameterization knotParam, int degree, double fitTolerance)
+void PyDbSpline::setFitDataKnot4(const boost::python::object& fitPoints, bool isPeriodic, AcGe::KnotParameterization knotParam, int degree, double fitTolerance)
 {
     PyThrowBadEs(impObj()->setFitData(PyListToPoint3dArray(fitPoints), isPeriodic, knotParam, degree, fitTolerance));
 }
@@ -375,7 +375,7 @@ boost::python::tuple PyDbSpline::getNurbsData()
 }
 
 void PyDbSpline::setNurbsData1(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic,
-    const boost::python::list& controlPoints, const boost::python::list& knots, const boost::python::list& weights)
+    const boost::python::object& controlPoints, const boost::python::object& knots, const boost::python::object& weights)
 {
     auto _controlPoints = PyListToPoint3dArray(controlPoints);
     auto _knots = PyListToDoubleArray(knots);
@@ -384,7 +384,7 @@ void PyDbSpline::setNurbsData1(int degree, Adesk::Boolean rational, Adesk::Boole
 }
 
 void PyDbSpline::setNurbsData2(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic,
-    const boost::python::list& controlPoints, const boost::python::list& knots, const boost::python::list& weights, double controlPtTol, double knotTol)
+    const boost::python::object& controlPoints, const boost::python::object& knots, const boost::python::object& weights, double controlPtTol, double knotTol)
 {
     auto _controlPoints = PyListToPoint3dArray(controlPoints);
     auto _knots = PyListToDoubleArray(knots);
@@ -518,7 +518,7 @@ AcDbSpline* PyDbSpline::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbSpline*>(m_pyImp.get());
 }
 
@@ -744,6 +744,6 @@ AcDbHelix* PyDbHelix::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbHelix*>(m_pyImp.get());
 }

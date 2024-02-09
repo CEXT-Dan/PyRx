@@ -1017,13 +1017,13 @@ void PyDbViewport::removeHiddenLines2(bool val)
 #endif
 }
 
-void PyDbViewport::freezeLayersInViewport(const boost::python::list& pyids)
+void PyDbViewport::freezeLayersInViewport(const boost::python::object& pyids)
 {
     AcDbObjectIdArray ids = PyListToObjectIdArray(pyids);
     return PyThrowBadEs(impObj()->freezeLayersInViewport(ids));
 }
 
-void PyDbViewport::thawLayersInViewport(const boost::python::list& pyids)
+void PyDbViewport::thawLayersInViewport(const boost::python::object& pyids)
 {
     AcDbObjectIdArray ids = PyListToObjectIdArray(pyids);
     return PyThrowBadEs(impObj()->thawLayersInViewport(ids));

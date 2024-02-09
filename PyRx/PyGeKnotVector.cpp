@@ -10,7 +10,7 @@ void makePyGeKnotVectorWrapper()
     class_<PyGeKnotVector>("KnotVector")
         .def(init<>())
         .def(init<int, int>())
-        .def(init<const boost::python::list&>())
+        .def(init<const boost::python::object&>())
         .def(init<int, const PyGeKnotVector&>())
         .def("isEqualTo", &PyGeKnotVector::isEqualTo)
         .def("startParam", &PyGeKnotVector::startParam)
@@ -64,7 +64,7 @@ PyGeKnotVector::PyGeKnotVector(const AcGeKnotVector& src)
 {
 }
 
-PyGeKnotVector::PyGeKnotVector(const boost::python::list& dbls)
+PyGeKnotVector::PyGeKnotVector(const boost::python::object& dbls)
     : m_imp(PyListToDoubleArray(dbls))
 {
 }

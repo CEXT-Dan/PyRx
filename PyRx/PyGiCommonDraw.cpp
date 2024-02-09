@@ -275,25 +275,25 @@ Adesk::Boolean PyGiGeometry::circularArc4(const AcGePoint3d& start, const AcGePo
     return impObj()->circularArc(start, point, end, arcType);
 }
 
-Adesk::Boolean PyGiGeometry::polyline1(const boost::python::list& vertexList)
+Adesk::Boolean PyGiGeometry::polyline1(const boost::python::object& vertexList)
 {
     std::vector<AcGePoint3d> pnts = py_list_to_std_vector<AcGePoint3d>(vertexList);
     return impObj()->polyline(pnts.size(), pnts.data());
 }
 
-Adesk::Boolean PyGiGeometry::polyline2(const boost::python::list& vertexList, const AcGeVector3d& normal)
+Adesk::Boolean PyGiGeometry::polyline2(const boost::python::object& vertexList, const AcGeVector3d& normal)
 {
     std::vector<AcGePoint3d> pnts = py_list_to_std_vector<AcGePoint3d>(vertexList);
     return impObj()->polyline(pnts.size(), pnts.data(), &normal);
 }
 
-Adesk::Boolean PyGiGeometry::polyline3(const boost::python::list& vertexList, const AcGeVector3d& normal, Adesk::LongPtr marker)
+Adesk::Boolean PyGiGeometry::polyline3(const boost::python::object& vertexList, const AcGeVector3d& normal, Adesk::LongPtr marker)
 {
     std::vector<AcGePoint3d> pnts = py_list_to_std_vector<AcGePoint3d>(vertexList);
     return impObj()->polyline(pnts.size(), pnts.data(), &normal, marker);
 }
 
-Adesk::Boolean PyGiGeometry::polygon(const boost::python::list& vertexList) const
+Adesk::Boolean PyGiGeometry::polygon(const boost::python::object& vertexList) const
 {
     std::vector<AcGePoint3d> pnts = py_list_to_std_vector<AcGePoint3d>(vertexList);
     return impObj()->polygon(pnts.size(), pnts.data());
@@ -348,7 +348,7 @@ Adesk::Boolean PyGiGeometry::worldLine(const AcGePoint3d pnt1, const AcGePoint3d
     return impObj()->worldLine(pnts);
 }
 
-Adesk::Boolean PyGiGeometry::edge(const boost::python::list& edges) const
+Adesk::Boolean PyGiGeometry::edge(const boost::python::object& edges) const
 {
     AcArray<AcGeCurve2d*> _edges;
     std::vector<PyGeCurve2d> _pyedges = py_list_to_std_vector<PyGeCurve2d>(edges);

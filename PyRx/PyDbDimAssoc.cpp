@@ -294,7 +294,7 @@ void PyDbDimAssoc::swapReferences(const PyDbIdMapping& idMap)
     PyThrowBadEs(impObj()->swapReferences(*idMap.impObj()));
 }
 
-void PyDbDimAssoc::updateFillet(const boost::python::list& ids)
+void PyDbDimAssoc::updateFillet(const boost::python::object& ids)
 {
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();
@@ -303,7 +303,7 @@ void PyDbDimAssoc::updateFillet(const boost::python::list& ids)
 #endif
 }
 
-void PyDbDimAssoc::updateAssociativity(const boost::python::list& ids)
+void PyDbDimAssoc::updateAssociativity(const boost::python::object& ids)
 {
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();
