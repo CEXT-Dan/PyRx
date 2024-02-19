@@ -1,9 +1,14 @@
 #pragma once
 #include "PyDbEntity.h"
-#include "dbwipe.h"
+#include "AcDbGeoTypes.h"
 
 class PyDbObjectId;
 class PyDbDictionary;
+
+
+#include "dbwipe.h"
+#include "AcDbGeoMap.h"
+
 
 //-----------------------------------------------------------------------------------
 //PyDbImage
@@ -15,14 +20,14 @@ public:
     PyDbImage(const PyDbObjectId& id);
     PyDbImage(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbImage() override = default;
-    
+
 public:
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbImage	cloneFrom(const PyRxObject & src);
-    static PyDbImage    cast(const PyRxObject & src);
+    static PyDbImage	cloneFrom(const PyRxObject& src);
+    static PyDbImage    cast(const PyRxObject& src);
 public:
-    AcDbImage* impObj(const std::source_location & src = std::source_location::current()) const;
+    AcDbImage* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -62,10 +67,10 @@ public:
 public:
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbRasterImageDef   cloneFrom(const PyRxObject & src);
-    static PyDbRasterImageDef   cast(const PyRxObject & src);
+    static PyDbRasterImageDef   cloneFrom(const PyRxObject& src);
+    static PyDbRasterImageDef   cast(const PyRxObject& src);
 public:
-    AcDbRasterImageDef* impObj(const std::source_location & src = std::source_location::current()) const;
+    AcDbRasterImageDef* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -107,7 +112,7 @@ public:
     PyDbObjectId        imageDefId() const;
     void                setReactorId(const PyDbObjectId& reactorId);
     PyDbObjectId        reactorId() const;
-    Adesk::Boolean      setOrientation(const AcGePoint3d& origin,const AcGeVector3d& uCorner, const AcGeVector3d& vOnPlane);
+    Adesk::Boolean      setOrientation(const AcGePoint3d& origin, const AcGeVector3d& uCorner, const AcGeVector3d& vOnPlane);
     void                getOrientation(AcGePoint3d& origin, AcGeVector3d& u, AcGeVector3d& v) const;
     AcGeVector2d        scale() const;
     AcGeVector2d        imageSize1() const;
@@ -146,14 +151,14 @@ public:
 public:
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbRasterImage	  cloneFrom(const PyRxObject & src);
-    static PyDbRasterImage    cast(const PyRxObject & src);
+    static PyDbRasterImage	  cloneFrom(const PyRxObject& src);
+    static PyDbRasterImage    cast(const PyRxObject& src);
 public:
-    AcDbRasterImage* impObj(const std::source_location & src = std::source_location::current()) const;
+    AcDbRasterImage* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
-//AcDbRasterImage
+//PyDbWipeout
 void makePyDbWipeoutWrapper();
 
 class PyDbWipeout : public PyDbRasterImage
@@ -178,4 +183,33 @@ public:
     static PyDbWipeout  cast(const PyRxObject& src);
 public:
     AcDbWipeout* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------
+//PyDbGeoMap
+void makePyDbGeoMapWrapper();
+
+class PyDbGeoMap : public PyDbRasterImage
+{
+public:
+    PyDbGeoMap(AcGeoMapType mapType, AcGeoMapResolution resolution, unsigned int levelOfDetail);
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    //Not in BRX
+#else
+    PyDbGeoMap(const PyDbObjectId& viewportId, bool isViewportSpecific);
+#endif
+    PyDbGeoMap(AcDbGeoMap* ptr, bool autoDelete);
+    PyDbGeoMap(const PyDbObjectId& id);
+    PyDbGeoMap(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbGeoMap(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    virtual ~PyDbGeoMap() override = default;
+
+public:
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbGeoMap  cloneFrom(const PyRxObject& src);
+    static PyDbGeoMap  cast(const PyRxObject& src);
+public:
+    AcDbGeoMap* impObj(const std::source_location& src = std::source_location::current()) const;
 };

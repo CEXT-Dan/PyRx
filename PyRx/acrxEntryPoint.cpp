@@ -191,12 +191,12 @@ public:
                 if (method.OnPyInitApp != nullptr)
                 {
                     if (PyCallable_Check(method.OnPyInitApp))
-                        method.rslt.reset(PyObject_CallFunction(method.OnPyInitApp, NULL));
+                        method.rslt.reset(PyObject_CallNoArgs(method.OnPyInitApp));
                 }
                 if (method.OnPyLoadDwg != nullptr)
                 {
                     if (PyCallable_Check(method.OnPyLoadDwg))
-                        method.rslt.reset(PyObject_CallFunction(method.OnPyLoadDwg, NULL));
+                        method.rslt.reset(PyObject_CallNoArgs(method.OnPyLoadDwg));
                 }
             }
         }
