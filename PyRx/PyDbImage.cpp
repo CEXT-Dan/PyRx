@@ -3,6 +3,7 @@
 #include "PyDbObjectId.h"
 #include "PyDbDictionary.h"
 
+
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------
@@ -63,7 +64,7 @@ AcDbImage* PyDbImage::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbImage*>(m_pyImp.get());
 }
 
@@ -293,7 +294,7 @@ AcDbRasterImageDef* PyDbRasterImageDef::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbRasterImageDef*>(m_pyImp.get());
 }
 
@@ -367,7 +368,7 @@ AcDbRasterImageDefReactor* PyDbRasterImageDefReactor::impObj(const std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbRasterImageDefReactor*>(m_pyImp.get());
 }
 
@@ -692,13 +693,13 @@ AcDbRasterImage* PyDbRasterImage::impObj(const std::source_location& src /*= std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbRasterImage*>(m_pyImp.get());
 }
 
 
 //-----------------------------------------------------------------------------------
-//AcDbRasterImage
+//PyDbWipeout
 void makePyDbWipeoutWrapper()
 {
     PyDocString DS("Wipeout");
@@ -708,7 +709,7 @@ void makePyDbWipeoutWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
-        .def("frame", &PyDbWipeout::frame,DS.ARGS())
+        .def("frame", &PyDbWipeout::frame, DS.ARGS())
         .def("setFrom", &PyDbWipeout::setFrom, DS.ARGS({ "points : list[PyGe.Point2d]", "normal : PyGe.Vector3d" }))
         .def("className", &PyDbWipeout::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbWipeout::desc, DS.SARGS()).staticmethod("desc")
@@ -762,7 +763,7 @@ Adesk::Boolean PyDbWipeout::frame() const
 
 void PyDbWipeout::setFrom(const boost::python::list& pylist, const AcGeVector3d& normal)
 {
-    double scale= normal.z;
+    double scale = normal.z;
     AcGePoint2d minPoint(normal.x, normal.y);
     auto pnts = PyListToPoint2dArray(pylist);
 
@@ -815,6 +816,96 @@ AcDbWipeout* PyDbWipeout::impObj(const std::source_location& src /*= std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbWipeout*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyDbGeoMap
+
+void makePyDbGeoMapWrapper()
+{
+    PyDocString DS("GeoMap");
+    class_<PyDbGeoMap, bases<PyDbRasterImage>>("GeoMap", boost::python::no_init)
+        .def(init<AcGeoMapType, AcGeoMapResolution, unsigned int>())
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+        //Not in BRX
+#else
+        .def(init<const PyDbObjectId&, bool>())
+#endif
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def("className", &PyDbGeoMap::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbGeoMap::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbGeoMap::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbGeoMap::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbGeoMap::PyDbGeoMap(AcGeoMapType mapType, AcGeoMapResolution resolution, unsigned int levelOfDetail)
+    : PyDbGeoMap(new AcDbGeoMap( mapType,  resolution,  levelOfDetail), true)
+{
+}
+
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+//Not in BRX
+#else
+PyDbGeoMap::PyDbGeoMap(const PyDbObjectId& viewportId, bool isViewportSpecific)
+    : PyDbGeoMap(new AcDbGeoMap(viewportId.m_id, isViewportSpecific), true)
+{
+}
+#endif
+
+PyDbGeoMap::PyDbGeoMap(AcDbGeoMap* ptr, bool autoDelete)
+    : PyDbRasterImage(ptr, autoDelete)
+{
+}
+
+PyDbGeoMap::PyDbGeoMap(const PyDbObjectId& id)
+    : PyDbGeoMap(openAcDbObject<AcDbGeoMap>(id, AcDb::kForRead), false)
+{
+}
+
+PyDbGeoMap::PyDbGeoMap(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbGeoMap(openAcDbObject<AcDbGeoMap>(id, mode), false)
+{
+}
+
+PyDbGeoMap::PyDbGeoMap(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbGeoMap(openAcDbObject<AcDbGeoMap>(id, mode, erased), false)
+{
+}
+
+std::string PyDbGeoMap::className()
+{
+    return "AcDbGeoMap";
+}
+
+PyRxClass PyDbGeoMap::desc()
+{
+    return PyRxClass(AcDbGeoMap::desc(), false);
+}
+
+PyDbGeoMap PyDbGeoMap::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbGeoMap::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbGeoMap(static_cast<AcDbGeoMap*>(src.impObj()->clone()), true);
+}
+
+PyDbGeoMap PyDbGeoMap::cast(const PyRxObject& src)
+{
+    PyDbGeoMap dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+AcDbGeoMap* PyDbGeoMap::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<AcDbGeoMap*>(m_pyImp.get());
 }

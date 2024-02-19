@@ -318,6 +318,7 @@ BOOST_PYTHON_MODULE(PyDb)
 #endif
     makePyDbGeoDataWrapper();
     makePyDbGeoPositionMarkerWrapper();
+    makePyDbGeoMapWrapper();
 
     makeDbCoreWrapper();//LAST?
 
