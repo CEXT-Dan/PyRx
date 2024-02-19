@@ -1,4 +1,4 @@
-Python (cPython)
+Python (Native Python)
 
 bindings for C++: 
 AutoCAD®    ObjectARX®  2021-2024
