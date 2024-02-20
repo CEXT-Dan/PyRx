@@ -282,7 +282,8 @@ public:
     void	            setFacetres(double _facetres);
     void	            setFilletrad(double radius);
     void	            setFillmode(bool mode);
-    void	            saveAs(const std::string& fileName);  //TODO: enum
+    void	            saveAs1(const std::string& fileName);
+    void	            saveAs2(const std::string& fileName, const bool bBakAndRename, const AcDb::AcDbDwgVersion dwgVer);
     void	            setFingerprintGuid(const std::string& newGuid);
     void				setFullSaveRequired();
     void	            readDwgFile1(const char* fileName);
