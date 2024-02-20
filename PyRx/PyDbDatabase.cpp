@@ -274,7 +274,8 @@ void makePyDbDatabaseWrapper()
         .def("setFacetres", &PyDbDatabase::setFacetres, DS.ARGS({ "val : float" }))
         .def("setFilletrad", &PyDbDatabase::setFilletrad, DS.ARGS({ "val : float" }))
         .def("setFillmode", &PyDbDatabase::setFillmode, DS.ARGS({ "val : bool" }))
-        .def("saveAs", &PyDbDatabase::saveAs, DS.ARGS({ "filename : str" }))
+        .def("saveAs", &PyDbDatabase::saveAs1)
+        .def("saveAs", &PyDbDatabase::saveAs2, DS.ARGS({ "filename: str", "bBakAndRename: bool = False","dwgVer: PyDb.DwgVersion = kDHL_CURRENT" }))
         .def("setFingerprintGuid", &PyDbDatabase::setFingerprintGuid, DS.ARGS({ "guid : str" }))
         .def("setFullSaveRequired", &PyDbDatabase::setFullSaveRequired, DS.ARGS())
         .def("setGeoMarkerVisibility", &PyDbDatabase::setGeoMarkerVisibility, DS.ARGS({ "val : bool" }))
@@ -2077,9 +2078,14 @@ void PyDbDatabase::setFillmode(bool mode)
     return PyThrowBadEs(impObj()->setFillmode(mode));
 }
 
-void PyDbDatabase::saveAs(const std::string& fileName)
+void PyDbDatabase::saveAs1(const std::string& fileName)
 {
     return PyThrowBadEs(impObj()->saveAs(utf8_to_wstr(fileName).c_str()));
+}
+
+void PyDbDatabase::saveAs2(const std::string& fileName, const bool bBakAndRename, const AcDb::AcDbDwgVersion dwgVer)
+{
+    return PyThrowBadEs(impObj()->saveAs(utf8_to_wstr(fileName).c_str(), bBakAndRename, dwgVer));
 }
 
 void PyDbDatabase::setFingerprintGuid(const std::string& newGuid)
