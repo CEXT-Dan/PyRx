@@ -836,6 +836,20 @@ void makePyDbGeoMapWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def("bottomLeftPt", &PyDbGeoMap::bottomLeftPt, DS.ARGS())
+        .def("height", &PyDbGeoMap::height, DS.ARGS())
+        .def("width", &PyDbGeoMap::width, DS.ARGS())
+        .def("imageBottomLeftPt", &PyDbGeoMap::imageBottomLeftPt, DS.ARGS())
+        .def("imageHeight", &PyDbGeoMap::imageHeight, DS.ARGS())
+        .def("imageWidth", &PyDbGeoMap::imageWidth, DS.ARGS())
+        .def("resolution", &PyDbGeoMap::resolution, DS.ARGS())
+        .def("setResolution", &PyDbGeoMap::setResolution, DS.ARGS({"val : PyDb.AcGeoMapResolution"}))
+        .def("LOD", &PyDbGeoMap::LOD, DS.ARGS())
+        .def("mapType", &PyDbGeoMap::mapType, DS.ARGS())
+        .def("setMapType", &PyDbGeoMap::setMapType, DS.ARGS({ "val : PyDb.AcGeoMapType" }))
+        .def("isOutOfDate", &PyDbGeoMap::isOutOfDate, DS.ARGS())
+        .def("updateMapImage", &PyDbGeoMap::updateMapImage1)
+        .def("updateMapImage", &PyDbGeoMap::updateMapImage2 , DS.ARGS({ "reset : bool = False" }))
         .def("className", &PyDbGeoMap::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbGeoMap::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbGeoMap::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -844,7 +858,7 @@ void makePyDbGeoMapWrapper()
 }
 
 PyDbGeoMap::PyDbGeoMap(AcGeoMapType mapType, AcGeoMapResolution resolution, unsigned int levelOfDetail)
-    : PyDbGeoMap(new AcDbGeoMap( mapType,  resolution,  levelOfDetail), true)
+    : PyDbGeoMap(new AcDbGeoMap(mapType, resolution, levelOfDetail), true)
 {
 }
 
@@ -875,6 +889,76 @@ PyDbGeoMap::PyDbGeoMap(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDbGeoMap::PyDbGeoMap(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
     : PyDbGeoMap(openAcDbObject<AcDbGeoMap>(id, mode, erased), false)
 {
+}
+
+AcGePoint3d PyDbGeoMap::bottomLeftPt() const
+{
+    return impObj()->bottomLeftPt();
+}
+
+double PyDbGeoMap::height() const
+{
+    return impObj()->height();
+}
+
+double PyDbGeoMap::width() const
+{
+    return impObj()->width();
+}
+
+AcGePoint3d PyDbGeoMap::imageBottomLeftPt() const
+{
+    return impObj()->imageBottomLeftPt();
+}
+
+double PyDbGeoMap::imageHeight() const
+{
+    return impObj()->imageHeight();
+}
+
+double PyDbGeoMap::imageWidth() const
+{
+    return impObj()->imageWidth();
+}
+
+AcGeoMapResolution PyDbGeoMap::resolution() const
+{
+    return impObj()->resolution();
+}
+
+void PyDbGeoMap::setResolution(AcGeoMapResolution resolution)
+{
+    PyThrowBadEs(impObj()->setResolution(resolution));
+}
+
+unsigned int PyDbGeoMap::LOD() const
+{
+    return impObj()->LOD();
+}
+
+AcGeoMapType PyDbGeoMap::mapType() const
+{
+    return impObj()->mapType();
+}
+
+void PyDbGeoMap::setMapType(AcGeoMapType mapType)
+{
+    PyThrowBadEs(impObj()->setMapType(mapType));
+}
+
+Adesk::Boolean PyDbGeoMap::isOutOfDate() const
+{
+    return impObj()->isOutOfDate();
+}
+
+Adesk::Boolean PyDbGeoMap::updateMapImage1()
+{
+    return impObj()->updateMapImage();
+}
+
+Adesk::Boolean PyDbGeoMap::updateMapImage2(Adesk::Boolean bReset)
+{
+    return impObj()->updateMapImage(bReset);
 }
 
 std::string PyDbGeoMap::className()
