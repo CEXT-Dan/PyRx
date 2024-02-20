@@ -608,6 +608,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def lensLength (self: AbstractViewTableRecord)-> float :
       '''                             '''
     ...
+    def name (self: SymbolTableRecord)-> str :
+      '''                             '''
+    ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -827,6 +830,82 @@ class AcCmDialogTabs:
       '''None'''
     ...
     def kTrueColorTab (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class AcGeoMapResolution:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def kCoarse (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kFine (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kFiner (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOptimal (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class AcGeoMapType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def kAerial (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kHybrid (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kNoMap (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kRoad (self, *args, **kwargs)-> None :
       '''None'''
     ...
     def name (self, *args, **kwargs)-> None :
@@ -6790,6 +6869,9 @@ class BlockTableRecord:
       '''                             '''
     ...
     def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: SymbolTableRecord)-> str :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -14712,6 +14794,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: SymbolTableRecord)-> str :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -23448,8 +23533,11 @@ class GeoData:
     ...
 
 class GeoMap:
+    def LOD (self: GeoMap)-> int :
+      '''                             '''
+    ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (object)arg2, (object)arg3, (SubentType)arg4) -> None :
+      '''__init__( (object)arg1, (AcGeoMapType)arg2, (AcGeoMapResolution)arg3, (SubentType)arg4) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,enum AcGeoMapType,enum AcGeoMapResolution,unsigned int)
@@ -23491,6 +23579,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
       '''                             '''
     ...
     def blockId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def bottomLeftPt (self: GeoMap)-> PyGe.Point3d :
       '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool :
@@ -23689,16 +23780,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
-    def height (self, *args, **kwargs)-> float :
-      '''height( (RasterImage)arg1) -> float :
-
-    C++ signature :
-        double height(class PyDbRasterImage {lvalue})'''
+    def height (self: GeoMap)-> float :
+      '''                             '''
     ...
     def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def imageBottomLeftPt (self: GeoMap)-> PyGe.Point3d :
       '''                             '''
     ...
     def imageDefId (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -23707,11 +23798,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     C++ signature :
         class PyDbObjectId imageDefId(class PyDbRasterImage {lvalue})'''
     ...
-    def imageHeight (self, *args, **kwargs)-> float :
-      '''imageHeight( (RasterImage)arg1) -> float :
-
-    C++ signature :
-        double imageHeight(class PyDbRasterImage {lvalue})'''
+    def imageHeight (self: GeoMap)-> float :
+      '''                             '''
     ...
     def imageSize (self, *args, **kwargs)-> PyGe.Vector2d :
       '''imageSize( (RasterImage)arg1) -> Vector2d :
@@ -23724,11 +23812,8 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
     C++ signature :
         class AcGeVector2d imageSize(class PyDbRasterImage {lvalue},bool)'''
     ...
-    def imageWidth (self, *args, **kwargs)-> float :
-      '''imageWidth( (RasterImage)arg1) -> float :
-
-    C++ signature :
-        double imageWidth(class PyDbRasterImage {lvalue})'''
+    def imageWidth (self: GeoMap)-> float :
+      '''                             '''
     ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
@@ -23820,6 +23905,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
+    def isOutOfDate (self: GeoMap)-> bool :
+      '''                             '''
+    ...
     def isPersistent (self: Drawable)-> bool :
       '''                             '''
     ...
@@ -23880,6 +23968,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def list (self: Entity)-> None :
       '''                             '''
     ...
+    def mapType (self: GeoMap)-> PyDb.AcGeoMapType :
+      '''                             '''
+    ...
     def material (self: Entity)-> str :
       '''                             '''
     ...
@@ -23926,6 +24017,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
+      '''                             '''
+    ...
+    def resolution (self: GeoMap)-> PyDb.AcGeoMapResolution :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -24030,6 +24124,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
+    def setMapType (self: GeoMap,val : PyDb.AcGeoMapType)-> None :
+      '''                             '''
+    ...
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
@@ -24068,6 +24165,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
         void setReactorId(class PyDbRasterImage {lvalue},class PyDbObjectId)'''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
+      '''                             '''
+    ...
+    def setResolution (self: GeoMap,val : PyDb.AcGeoMapResolution)-> None :
       '''                             '''
     ...
     def setRotation (self, *args, **kwargs)-> None :
@@ -24109,6 +24209,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
+    def updateMapImage (self: GeoMap,reset : bool = False)-> bool :
+      '''                             '''
+    ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
     ...
@@ -24127,11 +24230,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def width (self, *args, **kwargs)-> float :
-      '''width( (RasterImage)arg1) -> float :
-
-    C++ signature :
-        double width(class PyDbRasterImage {lvalue})'''
+    def width (self: GeoMap)-> float :
+      '''                             '''
     ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
@@ -29112,6 +29212,9 @@ lineWeight( (LayerTableRecord)arg1, (ObjectId)arg2) -> LineWeight :
     def materialId (self: LayerTableRecord)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def name (self: SymbolTableRecord)-> str :
+      '''                             '''
+    ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -33256,6 +33359,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: SymbolTableRecord)-> str :
       '''                             '''
     ...
     def numDashes (self: LinetypeTableRecord)-> int :
@@ -54951,6 +55057,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
+    def name (self: SymbolTableRecord)-> str :
+      '''                             '''
+    ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -62508,6 +62617,9 @@ class SymbolTableRecord:
     def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
+    def name (self: SymbolTableRecord)-> str :
+      '''                             '''
+    ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -66315,6 +66427,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
+    def name (self: SymbolTableRecord)-> str :
+      '''                             '''
+    ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -67426,6 +67541,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: SymbolTableRecord)-> str :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -69919,6 +70037,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def liveSection (self: ViewTableRecord)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def name (self: SymbolTableRecord)-> str :
+      '''                             '''
+    ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -71600,6 +71721,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def lowerLeftCorner (self: ViewportTableRecord)-> PyGe.Point2d :
+      '''                             '''
+    ...
+    def name (self: SymbolTableRecord)-> str :
       '''                             '''
     ...
     def number (self: ViewportTableRecord)-> int :

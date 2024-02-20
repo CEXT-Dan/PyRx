@@ -205,6 +205,21 @@ public:
     PyDbGeoMap(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbGeoMap() override = default;
 
+    AcGePoint3d					bottomLeftPt() const;
+    double						height() const;
+    double						width() const;
+    AcGePoint3d					imageBottomLeftPt() const;
+    double						imageHeight() const;
+    double						imageWidth() const;
+    AcGeoMapResolution			resolution() const;
+    void			            setResolution(AcGeoMapResolution resolution);
+    unsigned int				LOD() const;
+    AcGeoMapType				mapType() const;
+    void			            setMapType(AcGeoMapType mapType);
+    Adesk::Boolean				isOutOfDate() const;
+    Adesk::Boolean				updateMapImage1();
+    Adesk::Boolean				updateMapImage2(Adesk::Boolean bReset);
+
 public:
     static std::string  className();
     static PyRxClass    desc();
