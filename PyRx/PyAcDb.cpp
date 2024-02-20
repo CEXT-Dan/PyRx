@@ -325,6 +325,20 @@ BOOST_PYTHON_MODULE(PyDb)
     def("curDb", curPyDb);
 
     //enums
+    enum_<AcGeoMapType>("AcGeoMapType")
+        .value("kNoMap", AcGeoMapType::kNoMap)
+        .value("kAerial", AcGeoMapType::kAerial)
+        .value("kRoad", AcGeoMapType::kRoad)
+        .value("kHybrid", AcGeoMapType::kHybrid)
+        .export_values()
+        ;
+    enum_<AcGeoMapResolution>("AcGeoMapResolution")
+        .value("kCoarse", AcGeoMapResolution::kCoarse)
+        .value("kOptimal", AcGeoMapResolution::kOptimal)
+        .value("kFine", AcGeoMapResolution::kFine)
+        .value("kFiner", AcGeoMapResolution::kFiner)
+        .export_values()
+        ;
     enum_<AcDb::AcDbDwgVersion>("DwgVersion")
         .value("kDHL_MC0_0", AcDb::AcDbDwgVersion::kDHL_MC0_0)
         .value("kDHL_AC1_2", AcDb::AcDbDwgVersion::kDHL_AC1_2)
@@ -366,7 +380,6 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("kDHL_Max", AcDb::AcDbDwgVersion::kDHL_Max)
         .export_values()
         ;
-
     enum_<AcDbGeoData::TypeOfCoordinates>("GeoTypeOfCoordinates")
         .value("kCoordTypUnknown", AcDbGeoData::TypeOfCoordinates::kCoordTypUnknown)
         .value("kCoordTypLocal", AcDbGeoData::TypeOfCoordinates::kCoordTypLocal)
