@@ -24,6 +24,7 @@ public:
     bool                isDependent() const;
     bool                isResolved() const;
     bool                isRenamable() const;
+    std::string         name();
 public:
     static std::string  className();
     static PyRxClass    desc();

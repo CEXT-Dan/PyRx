@@ -18,6 +18,7 @@ void makePyDbSymbolTableRecordWrapper()
         .def("isDependent", &PyDbSymbolTableRecord::isDependent, DS.ARGS())
         .def("isResolved", &PyDbSymbolTableRecord::isResolved, DS.ARGS())
         .def("isRenamable", &PyDbSymbolTableRecord::isRenamable, DS.ARGS())
+        .def("name", &PyDbSymbolTableRecord::name, DS.ARGS())
         .def("className", &PyDbSymbolTableRecord::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbSymbolTableRecord::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbSymbolTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -70,6 +71,18 @@ bool PyDbSymbolTableRecord::isRenamable() const
     throw PyNotimplementedByHost();
 #else
     return impObj()->isRenamable();
+#endif
+}
+
+std::string PyDbSymbolTableRecord::name()
+{
+#if defined(_ARXTARGET) && _ARXTARGET >= 250
+    Acad::ErrorStatus pE = eOk;
+    const auto val = wstr_to_utf8(impObj()->name(&pE));
+    PyThrowBadEs(pE);
+    return val;
+#else
+    return this->getName();
 #endif
 }
 
