@@ -337,6 +337,9 @@
     <ClCompile Include="PyDbGeo.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbDate.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -676,6 +679,9 @@
       <Filter>Header Files\PyRx</Filter>
     </ClInclude>
     <ClInclude Include="PyDbGeo.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbDate.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>

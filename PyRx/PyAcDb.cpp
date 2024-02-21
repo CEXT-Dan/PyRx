@@ -43,6 +43,7 @@
 #include "PyDbPointCloudEx.h"
 #include "PyDbSpatialFilter.h"
 #include "PyDbGeo.h"
+#include "PyDbDate.h"
 
 using namespace boost::python;
 
@@ -165,6 +166,7 @@ BOOST_PYTHON_MODULE(PyDb)
     docstring_options local_docstring_options(true, true, true);
 
     //create in class order!
+    makePyDbDateWrapper();
     makePyDbSubentIdWrapper();
     makePyDbFullSubentPathWrapper();
     makePyDbExtents2dWrapper();

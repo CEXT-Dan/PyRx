@@ -137,6 +137,7 @@
     <ClCompile Include="PlCore.cpp" />
     <ClCompile Include="PyDb3dProfile.cpp" />
     <ClCompile Include="PyDbDatabaseReactor.cpp" />
+    <ClCompile Include="PyDbDate.cpp" />
     <ClCompile Include="PyDbDimAssoc.cpp" />
     <ClCompile Include="PyDbEllipse.cpp" />
     <ClCompile Include="PyDbGeo.cpp" />
@@ -252,6 +253,7 @@
     <ClInclude Include="PlCore.h" />
     <ClInclude Include="PyDb3dProfile.h" />
     <ClInclude Include="PyDbDatabaseReactor.h" />
+    <ClInclude Include="PyDbDate.h" />
     <ClInclude Include="PyDbDimAssoc.h" />
     <ClInclude Include="PyDbEllipse.h" />
     <ClInclude Include="PyDbGeo.h" />

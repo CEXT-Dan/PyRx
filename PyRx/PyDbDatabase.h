@@ -9,6 +9,7 @@ class PyDbAnnotationScale;
 class PyDbDimStyleTableRecord;
 class PyDbIdMapping;
 class PyDbDatabaseReactor;
+class PyDbDate;
 
 void makePyDbDatabaseWrapper();
 class PyDbDatabase : public PyRxObject
@@ -447,12 +448,12 @@ public:
     Adesk::Int16		surfv() const;
     PyDbObjectId		tablestyle() const;
     PyDbObjectId		tableStyleDictionaryId() const;
-    //const AcDbDate tdcreate() const;
-    //const AcDbDate tdindwg() const;/TODO:
-    //const AcDbDate tducreate() const;/TODO:
-    //const AcDbDate tdupdate() const/TODO:
-    //const AcDbDate tdusrtimer() const;/TODO:
-    //const AcDbDate tduupdate() const;//TODO:
+    PyDbDate            tdcreate() const;
+    PyDbDate            tdindwg() const;
+    PyDbDate            tducreate() const;
+    PyDbDate            tdupdate() const;
+    PyDbDate            tdusrtimer() const;
+    PyDbDate            tduupdate() const;
     double				textsize() const;
     PyDbObjectId		textstyle() const;
     PyDbObjectId		textStyleTableId() const;
