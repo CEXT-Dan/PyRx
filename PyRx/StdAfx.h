@@ -62,15 +62,15 @@
 #define GETBIT(flags, bit) (((flags) & (bit)) ? true : false)
 
 #if defined(_ZRXTARGET) && (_ZRXTARGET <= 240)
-    #define _ZRXTARGET240 240
+#define _ZRXTARGET240 240
 #endif
 
 #if defined(_GRXTARGET) && (_GRXTARGET <= 240)
-    #define _GRXTARGET240 240
+#define _GRXTARGET240 240
 #endif
 
 #if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    #define _BRXTARGET240 240
+#define _BRXTARGET240 240
 #endif
 
 //- ObjectARX and OMF headers needs this
@@ -205,11 +205,11 @@ const TCHAR* getappname();
 
 template<typename IteratorType>
 constexpr auto makeIterator = [](const auto& record)
-{
-    IteratorType* pIter = nullptr;
-    Acad::ErrorStatus es = record.newIterator(pIter);
-    return std::make_tuple(es, std::unique_ptr<IteratorType>(pIter));
-};
+    {
+        IteratorType* pIter = nullptr;
+        Acad::ErrorStatus es = record.newIterator(pIter);
+        return std::make_tuple(es, std::unique_ptr<IteratorType>(pIter));
+    };
 constexpr auto makeBlockTableIterator = makeIterator<AcDbBlockTableIterator>;
 constexpr auto makeBlockTableRecordIterator = makeIterator<AcDbBlockTableRecordIterator>;
 
@@ -247,24 +247,24 @@ inline void PerfTimer::end()
 //-------------------------------------------------------------------------------------
 //AcResBufPtr
 using AcResBufPtr = std::unique_ptr < resbuf, decltype([](resbuf* ptr) noexcept
-{
-    if (ptr != nullptr)
-        acutRelRb(ptr);
-}) > ;
+    {
+        if (ptr != nullptr)
+            acutRelRb(ptr);
+    }) > ;
 
 //-------------------------------------------------------------------------------------
 //AcDbObjectUPtr
 template<typename T>
 using AcDbObjectUPtr = std::unique_ptr < T, decltype([](T* ptr) noexcept
-{
-    if (ptr != nullptr)
     {
-        if (!ptr->objectId().isNull())
-            ptr->close();
-        else
-            delete ptr;
-    }
-}) > ;
+        if (ptr != nullptr)
+        {
+            if (!ptr->objectId().isNull())
+                ptr->close();
+            else
+                delete ptr;
+        }
+    }) > ;
 
 // Import Python and wxPython headers
 #include <wxPython/sip.h>
@@ -297,7 +297,7 @@ struct PyAutoLockGIL
 {
     PyAutoLockGIL()
     {
-        if (canLock)[[likely]]
+        if (canLock) [[likely]]
             gstate = PyGILState_Ensure();
     }
 
@@ -314,7 +314,7 @@ struct PyAutoLockGIL
     inline static bool canLock = false;
 };
 
-struct PyObjectDeleter 
+struct PyObjectDeleter
 {
     void operator()(PyObject* ptr)
     {
@@ -332,7 +332,7 @@ inline AcGePoint3d py_list_to_point3d(const boost::python::object& iterable)
         boost::python::stl_input_iterator<double>());
     if (vec.size() >= 3)
         return AcGePoint3d(vec[0], vec[1], vec[2]);
-    else if(vec.size() == 2)
+    else if (vec.size() == 2)
         return AcGePoint3d(vec[0], vec[1], 0.0);
     else
         throw PyAcadErrorStatus(eInvalidInput);
@@ -380,11 +380,10 @@ template <class T>
 inline boost::python::list std_vector_to_py_list(std::vector<T> vector)
 {
     PyAutoLockGIL lock;
-    typename std::vector<T>::iterator iter;
     boost::python::list list;
-    for (iter = vector.begin(); iter != vector.end(); ++iter) {
+    typename std::vector<T>::iterator iter;
+    for (iter = vector.begin(); iter != vector.end(); ++iter)
         list.append(*iter);
-    }
     return list;
 }
 
@@ -410,7 +409,7 @@ inline boost::python::list Point3dArrayToPyList(const AcGePoint3dArray& arr)
 {
     PyAutoLockGIL lock;
     boost::python::list pyPyList;
-    for (const auto &item : arr)
+    for (const auto& item : arr)
         pyPyList.append(item);
     return pyPyList;
 }

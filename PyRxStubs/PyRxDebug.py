@@ -43,3 +43,13 @@ def startListener():
 #     "host": "127.0.0.1",
 #     "justMyCode": false
 # }
+
+# or
+
+# {
+#    "name": "Remote Attach",
+#    "type": "debugpy",
+#     "request": "attach",
+#     "connect": { "host": "127.0.0.1", "port": 5678 },
+#     "justMyCode": false
+# }
