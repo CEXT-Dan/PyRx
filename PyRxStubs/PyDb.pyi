@@ -11118,6 +11118,24 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def tablestyle (self: Database)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def tdcreate (self: Database)-> PyDb.Date :
+      '''                             '''
+    ...
+    def tdindwg (self: Database)-> PyDb.Date :
+      '''                             '''
+    ...
+    def tducreate (self: Database)-> PyDb.Date :
+      '''                             '''
+    ...
+    def tdupdate (self: Database)-> PyDb.Date :
+      '''                             '''
+    ...
+    def tdusrtimer (self: Database)-> PyDb.Date :
+      '''                             '''
+    ...
+    def tduupdate (self: Database)-> PyDb.Date :
+      '''                             '''
+    ...
     def textStyleTableId (self: Database)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -11547,6 +11565,117 @@ setCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2, (str)arg3, (str)arg4
 
     C++ signature :
         void setTitle(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+
+class Date:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+
+    @staticmethod
+    def className ()-> object :
+      '''                             '''
+    ...
+    def day (self: Date)-> int :
+      '''                             '''
+    ...
+    def getDate (self: Date)-> tuple :
+      '''                             '''
+    ...
+    def getLocalDisplayString (self: Date)-> str :
+      '''                             '''
+    ...
+    def getLocalTime (self: Date)-> None :
+      '''                             '''
+    ...
+    def getTime (self: Date)-> tuple :
+      '''                             '''
+    ...
+    def getUniversalTime (self: Date)-> None :
+      '''                             '''
+    ...
+    def hour (self: Date)-> int :
+      '''                             '''
+    ...
+    def julianDay (self: Date)-> int :
+      '''                             '''
+    ...
+    def julianFraction (self: Date)-> float :
+      '''                             '''
+    ...
+    def localToUniversal (self: Date)-> None :
+      '''                             '''
+    ...
+    def millisecond (self: Date)-> int :
+      '''                             '''
+    ...
+    def minute (self: Date)-> int :
+      '''                             '''
+    ...
+    def month (self: Date)-> int :
+      '''                             '''
+    ...
+    def msecsPastMidnight (self: Date)-> int :
+      '''                             '''
+    ...
+    def second (self: Date)-> int :
+      '''                             '''
+    ...
+    def setDate (self: Date,month : int,day : int,year : int)-> None :
+      '''                             '''
+    ...
+    def setDay (self: Date,day : int)-> None :
+      '''                             '''
+    ...
+    def setHour (self: Date,hour : int)-> None :
+      '''                             '''
+    ...
+    def setJulianDate (self: Date,julianDay : int,msec : int)-> None :
+      '''                             '''
+    ...
+    def setJulianDay (self: Date,day : int)-> None :
+      '''                             '''
+    ...
+    def setJulianFraction (self: Date,val : float)-> None :
+      '''                             '''
+    ...
+    def setMillisecond (self: Date,msec : int)-> None :
+      '''                             '''
+    ...
+    def setMinute (self: Date,min : int)-> None :
+      '''                             '''
+    ...
+    def setMonth (self: Date,month : int)-> None :
+      '''                             '''
+    ...
+    def setMsecsPastMidnight (self: Date,msec : int)-> None :
+      '''                             '''
+    ...
+    def setSecond (self: Date,sec : int)-> None :
+      '''                             '''
+    ...
+    def setTime (self: Date,hour : int,min : int,sec : int,msec : int)-> None :
+      '''                             '''
+    ...
+    def setToZero (self: Date)-> None :
+      '''                             '''
+    ...
+    def setYear (self: Date,year : int)-> None :
+      '''                             '''
+    ...
+    def universalToLocal (self: Date)-> None :
+      '''                             '''
+    ...
+    def year (self: Date)-> int :
+      '''                             '''
     ...
 
 class DbObject:

@@ -40,7 +40,7 @@ struct PyRxObjectDeleter
             AcDbObject* pDbo = static_cast<AcDbObject*>(p);
             if (!pDbo->objectId().isNull())
             {
-                if (auto es = pDbo->close(); es != eOk) [[unlikely]] {
+                if (const auto es = pDbo->close(); es != eOk) [[unlikely]] {
                     acutPrintf(fmt, acadErrorStatusText(es), __FUNCTIONW__);
                 }
                 return true;
@@ -49,6 +49,8 @@ struct PyRxObjectDeleter
         return false;
     }
 
+    // TODO: this could be a little cleaner, 
+    // consider making a PyDisposableObject
     inline void operator()(AcRxObject* p) const
     {
         if (p == nullptr)

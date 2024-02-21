@@ -8,6 +8,7 @@
 #include "PyDbSymbolTableRecord.h"
 #include "PyDbIdMapping.h"
 #include "PyDbDatabaseReactor.h"
+#include "PyDbDate.h"
 
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------
@@ -429,6 +430,12 @@ void makePyDbDatabaseWrapper()
         .def("surfv", &PyDbDatabase::surfv, DS.ARGS())
         .def("tablestyle", &PyDbDatabase::tablestyle, DS.ARGS())
         .def("tableStyleDictionaryId", &PyDbDatabase::tableStyleDictionaryId, DS.ARGS())
+        .def("tdcreate", &PyDbDatabase::tdcreate, DS.ARGS())
+        .def("tdindwg", &PyDbDatabase::tdindwg, DS.ARGS())
+        .def("tducreate", &PyDbDatabase::tducreate, DS.ARGS())
+        .def("tdupdate", &PyDbDatabase::tdupdate, DS.ARGS())
+        .def("tdusrtimer", &PyDbDatabase::tdusrtimer, DS.ARGS())
+        .def("tduupdate", &PyDbDatabase::tduupdate, DS.ARGS())
         .def("textsize", &PyDbDatabase::textsize, DS.ARGS())
         .def("textstyle", &PyDbDatabase::textstyle, DS.ARGS())
         .def("textStyleTableId", &PyDbDatabase::textStyleTableId, DS.ARGS())
@@ -3069,6 +3076,36 @@ PyDbObjectId PyDbDatabase::tablestyle() const
 PyDbObjectId PyDbDatabase::tableStyleDictionaryId() const
 {
     return PyDbObjectId(impObj()->tableStyleDictionaryId());
+}
+
+PyDbDate PyDbDatabase::tdcreate() const
+{
+    return PyDbDate(impObj()->tdcreate());
+}
+
+PyDbDate PyDbDatabase::tdindwg() const
+{
+    return PyDbDate(impObj()->tdindwg());
+}
+
+PyDbDate PyDbDatabase::tducreate() const
+{
+    return PyDbDate(impObj()->tducreate());
+}
+
+PyDbDate PyDbDatabase::tdupdate() const
+{
+    return PyDbDate(impObj()->tdupdate());
+}
+
+PyDbDate PyDbDatabase::tdusrtimer() const
+{
+    return PyDbDate(impObj()->tdusrtimer());
+}
+
+PyDbDate PyDbDatabase::tduupdate() const
+{
+    return PyDbDate(impObj()->tduupdate());
 }
 
 double PyDbDatabase::textsize() const
