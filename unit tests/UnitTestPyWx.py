@@ -20,7 +20,7 @@ class TestWxPython(unittest.TestCase):
         topWin : wx.Window = pyapp.TopWindow
         self.assertIsNotNone(topWin)
 
-def PyRxCmd_pyeditor():
+def PyRxCmd_pywx():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestWxPython)
         print('TestWxPython')

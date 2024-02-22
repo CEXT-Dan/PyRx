@@ -22,6 +22,6 @@ def PyRxCmd_pytestall():
       UnitTestPyDbEval.PyRxCmd_pydbeval()
       UnitTestPyDbEntity.PyRxCmd_pyentity()
       UnitTestPyEditor.PyRxCmd_pyeditor()
-      UnitTestPyWx.PyRxCmd_pyeditor()
+      UnitTestPyWx.PyRxCmd_pywx()
     except Exception as err:
       print(err)
