@@ -8,6 +8,7 @@ import PyGi as Gi
 import PyDb as Db
 import PyAp as Ap
 import PyEd as Ed
+import time
 
 print("testname = pydbtest")
 
@@ -246,13 +247,23 @@ class TestDatabase(unittest.TestCase):
         for marker in markers:
             self.assertIsNotNone(marker.geoPosition())
             
-    def test_GeoData(self):
+    def test_GeoData(self) -> None:
         db = self.geodb
         geoDataId = Db.Core.getGeoDataObjId(db)
         self.assertTrue(geoDataId.isValid())
         geoData = Db.GeoData(geoDataId)
         self.assertIsNotNone(geoData.coordinateSystem())
         
+    def test_tdusrtimer(self) -> None:
+        db = self.db06457
+        date1 = db.tdusrtimer()
+        time.sleep(1)
+        date2 = db.tdusrtimer()
+        self.assertEqual(date2.second() - date1.second() ,1)
+        date3 = date2 - date1
+        date1 += date3
+        self.assertEqual(date1 ,date2)
+ 
 def PyRxCmd_pydbtest():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDatabase)
