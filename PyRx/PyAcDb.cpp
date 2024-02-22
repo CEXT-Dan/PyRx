@@ -194,6 +194,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbBlockEndWrapper();
     makePyDbSequenceEndWrapper();
     makePyDbXrecordWrapper();
+    makePyDbObjectContextCollectionWrapper();
+    makePyDbObjectContextManagerWrapper();
     makePyDbObjectContextWrapper();
     makePyDbAnnotationScaleWrapper();
     makePyDbTableStyleWrapper();

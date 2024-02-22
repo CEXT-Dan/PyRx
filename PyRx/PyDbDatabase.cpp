@@ -1507,6 +1507,11 @@ Adesk::Int32 PyDbDatabase::numberOfSaves() const
     return impObj()->numberOfSaves();
 }
 
+PyDbObjectContextManager PyDbDatabase::objectContextManager() const
+{
+    return PyDbObjectContextManager(impObj()->objectContextManager());
+}
+
 Adesk::UInt16 PyDbDatabase::obscuredColor() const
 {
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
