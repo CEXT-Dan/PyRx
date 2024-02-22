@@ -13,6 +13,7 @@ class PyDbObjectContextCollection : public PyRxObject
 public:
     PyDbObjectContextCollection(AcDbObjectContextCollection* pt);
     virtual ~PyDbObjectContextCollection() override = default;
+
     static PyRxClass      desc();
     static std::string    className();
 public:
@@ -29,12 +30,15 @@ class PyDbObjectContextManager : public PyRxObject
 public:
     PyDbObjectContextManager(AcDbObjectContextManager* pt);
     virtual ~PyDbObjectContextManager() override = default;
-    static PyRxClass      desc();
-    static std::string    className();
+
+    void                        registerContextCollection(const std::string& collectionName,const PyDbObjectContextCollection& pCollection);
+    void                        unregisterContextCollection(const std::string& collectionName);
+    PyDbObjectContextCollection contextCollection(const std::string& collectionName) const;
+    static PyRxClass            desc();
+    static std::string          className();
 public:
     AcDbObjectContextManager* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //-----------------------------------------------------------------------------------------
 //PyDbObjectContext
@@ -46,6 +50,7 @@ public:
     PyDbObjectContext(AcDbObjectContext* pt);
     PyDbObjectContext(AcDbObjectContext* pt, bool autoDelete, bool isDbOject);
     virtual ~PyDbObjectContext() override = default;
+
     std::string           getName() const;
     void                  setName(const std::string& name);
     Adesk::LongPtr        uniqueIdentifier() const;
@@ -67,7 +72,8 @@ public:
     PyDbAnnotationScale(AcDbAnnotationScale* pt);
     PyDbAnnotationScale(AcDbAnnotationScale* pt, bool autoDelete, bool isDbOject);
     virtual ~PyDbAnnotationScale() override = default;
-    void   copyFrom(const PyRxObject& val);
+
+    void                copyFrom(const PyRxObject& val);
     double              getPaperUnits() const;
     double              getDrawingUnits() const;
     double              getScale() const;

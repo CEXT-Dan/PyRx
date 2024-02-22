@@ -41,6 +41,9 @@ AcDbObjectContextCollection* PyDbObjectContextCollection::impObj(const std::sour
 void makePyDbObjectContextManagerWrapper()
 {
     class_<PyDbObjectContextManager, bases<PyRxObject>>("ObjectContextManager", boost::python::no_init)
+        .def("registerContextCollection", &PyDbObjectContextManager::registerContextCollection)
+        .def("unregisterContextCollection", &PyDbObjectContextManager::unregisterContextCollection)
+        .def("contextCollection", &PyDbObjectContextManager::contextCollection)
         .def("desc", &PyDbObjectContextManager::desc).staticmethod("desc")
         .def("className", &PyDbObjectContextManager::className).staticmethod("className")
         ;
@@ -49,6 +52,21 @@ void makePyDbObjectContextManagerWrapper()
 PyDbObjectContextManager::PyDbObjectContextManager(AcDbObjectContextManager* pt)
     : PyRxObject(pt)
 {
+}
+
+void PyDbObjectContextManager::registerContextCollection(const std::string& collectionName, const PyDbObjectContextCollection& pCollection)
+{
+   PyThrowBadEs(impObj()->registerContextCollection(utf8_to_wstr(collectionName).c_str(), pCollection.impObj()));
+}
+
+void PyDbObjectContextManager::unregisterContextCollection(const std::string& collectionName)
+{
+    PyThrowBadEs(impObj()->unregisterContextCollection(utf8_to_wstr(collectionName).c_str()));
+}
+
+PyDbObjectContextCollection PyDbObjectContextManager::contextCollection(const std::string& collectionName) const
+{
+    return PyDbObjectContextCollection(impObj()->contextCollection(utf8_to_wstr(collectionName).c_str()));
 }
 
 PyRxClass PyDbObjectContextManager::desc()
