@@ -1,7 +1,73 @@
 #include "stdafx.h"
 #include "PyDbObjectContext.h"
-
+#include "dbObjectContextManager.h"
 using namespace boost::python;
+
+//-----------------------------------------------------------------------------------------
+//PyDbObjectContextCollection
+void makePyDbObjectContextCollectionWrapper()
+{
+    class_<PyDbObjectContextCollection, bases<PyRxObject>>("ObjectContextCollection", boost::python::no_init)
+        .def("desc", &PyDbObjectContextCollection::desc).staticmethod("desc")
+        .def("className", &PyDbObjectContextCollection::className).staticmethod("className")
+        ;
+}
+
+PyDbObjectContextCollection::PyDbObjectContextCollection(AcDbObjectContextCollection* pt)
+    : PyRxObject(pt)
+{
+}
+
+PyRxClass PyDbObjectContextCollection::desc()
+{
+    return PyRxClass(AcDbObjectContextCollection::desc(), false);
+}
+
+std::string PyDbObjectContextCollection::className()
+{
+    return "AcDbObjectContextCollection";
+}
+
+AcDbObjectContextCollection* PyDbObjectContextCollection::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<AcDbObjectContextCollection*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PyDbObjectContextManager
+void makePyDbObjectContextManagerWrapper()
+{
+    class_<PyDbObjectContextManager, bases<PyRxObject>>("ObjectContextManager", boost::python::no_init)
+        .def("desc", &PyDbObjectContextManager::desc).staticmethod("desc")
+        .def("className", &PyDbObjectContextManager::className).staticmethod("className")
+        ;
+}
+
+PyDbObjectContextManager::PyDbObjectContextManager(AcDbObjectContextManager* pt)
+    : PyRxObject(pt)
+{
+}
+
+PyRxClass PyDbObjectContextManager::desc()
+{
+    return PyRxClass(AcDbObjectContextManager::desc(), false);
+}
+
+std::string PyDbObjectContextManager::className()
+{
+    return "AcDbObjectContextManager";
+}
+
+AcDbObjectContextManager* PyDbObjectContextManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<AcDbObjectContextManager*>(m_pyImp.get());
+}
 
 //-----------------------------------------------------------------------------------------
 //PyDbObjectContext

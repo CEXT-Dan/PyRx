@@ -10,6 +10,7 @@ class PyDbDimStyleTableRecord;
 class PyDbIdMapping;
 class PyDbDatabaseReactor;
 class PyDbDate;
+class PyDbObjectContextManager;
 
 void makePyDbDatabaseWrapper();
 class PyDbDatabase : public PyRxObject
@@ -177,7 +178,7 @@ public:
     bool				needsRecovery() const;
     double				northDirection() const;
     Adesk::Int32		numberOfSaves() const;
-    //AcDbObjectContextManager* objectContextManager() const; TODO
+    PyDbObjectContextManager objectContextManager() const;
     Adesk::UInt16		obscuredColor() const;
     Adesk::UInt8		obscuredLineType() const;
     bool				oleStartUp() const;
@@ -187,7 +188,6 @@ public:
     int					originalFileSavedByVersion() const;
     int					originalFileVersion() const;
     bool				orthomode() const;
-    //AcDwgFileHandle* outputFiler() const; TODO:
     PyDbObjectId		paperSpaceVportId() const;
     Adesk::Int8			pdfframe() const;
     Adesk::Int16		pdmode() const;
@@ -372,6 +372,8 @@ public:
     void	            setSaveproxygraphics(Adesk::Int16 saveimg);
     void	            setSectionViewStyle(const PyDbObjectId& objId);
     //bool setSecurityParams(const SecurityParams* pSecParams,bool bSetDbMod = true);//TODO:
+    //const SecurityParams* cloneSecurityParams();
+    //static void disposeSecurityParams(const SecurityParams* pSecParams);
     void	            setShadedge(Adesk::Int16 mode);
     void	            setShadedif(Adesk::Int16 dif);
     void	            setShadowPlaneLocation(double val);
@@ -395,8 +397,6 @@ public:
     void	            setTextsize(double size);
     void	            setTextstyle(const PyDbObjectId& objId);
     void	            setThickness(double thickness);
-    //void setThumbnailBitmap(void* pBmp);//TODO:
-    //void setThumbnailImage(const Atil::Image* pPreviewImage);//TODO:
     void	            setTilemode(bool mode);
     void	            setTimeZone(AcDb::TimeZone tz);//TODO: enum
     void	            setTimeZoneAsUtcOffset(double offset);
@@ -458,8 +458,6 @@ public:
     PyDbObjectId		textstyle() const;
     PyDbObjectId		textStyleTableId() const;
     double				thickness() const;
-    //boost::python::object thumbnailBitmap() const;
-    //void thumbnailImage(Atil::Image*& pPreviewImage) const; probably never
     bool				tilemode() const;
     Adesk::UInt8		tileModeLightSynch() const;
     AcDb::TimeZone		timeZone() const;

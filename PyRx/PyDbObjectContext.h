@@ -2,6 +2,38 @@
 #include "PyRxObject.h"
 #include "dbAnnotationScale.h"
 #include "dbObjContext.h"
+#include "dbObjectContextCollection.h"
+
+//-----------------------------------------------------------------------------------------
+//PyDbObjectContextCollection
+void makePyDbObjectContextCollectionWrapper();
+
+class PyDbObjectContextCollection : public PyRxObject
+{
+public:
+    PyDbObjectContextCollection(AcDbObjectContextCollection* pt);
+    virtual ~PyDbObjectContextCollection() override = default;
+    static PyRxClass      desc();
+    static std::string    className();
+public:
+    AcDbObjectContextCollection* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------------
+//PyDbObjectContextManager
+void makePyDbObjectContextManagerWrapper();
+
+class PyDbObjectContextManager : public PyRxObject
+{
+public:
+    PyDbObjectContextManager(AcDbObjectContextManager* pt);
+    virtual ~PyDbObjectContextManager() override = default;
+    static PyRxClass      desc();
+    static std::string    className();
+public:
+    AcDbObjectContextManager* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 
 //-----------------------------------------------------------------------------------------
@@ -13,7 +45,7 @@ class PyDbObjectContext : public PyRxObject
 public:
     PyDbObjectContext(AcDbObjectContext* pt);
     PyDbObjectContext(AcDbObjectContext* pt, bool autoDelete, bool isDbOject);
-    virtual ~PyDbObjectContext() = default;
+    virtual ~PyDbObjectContext() override = default;
     std::string           getName() const;
     void                  setName(const std::string& name);
     Adesk::LongPtr        uniqueIdentifier() const;
@@ -34,7 +66,7 @@ public:
     PyDbAnnotationScale();
     PyDbAnnotationScale(AcDbAnnotationScale* pt);
     PyDbAnnotationScale(AcDbAnnotationScale* pt, bool autoDelete, bool isDbOject);
-    virtual ~PyDbAnnotationScale() = default;
+    virtual ~PyDbAnnotationScale() override = default;
     void   copyFrom(const PyRxObject& val);
     double              getPaperUnits() const;
     double              getDrawingUnits() const;
