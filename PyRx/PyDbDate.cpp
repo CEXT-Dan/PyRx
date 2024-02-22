@@ -243,8 +243,8 @@ void PyDbDate::setJulianFraction(double val)
 
 double PyDbDate::timestamp() const
 {
-    constexpr time_t UNIX_TIME_START = 0x019DB1DED53E8000;
-    constexpr time_t TICKS_PER_SECOND = 10000000;
+    constexpr int64_t UNIX_TIME_START = 0x019DB1DED53E8000;
+    constexpr int64_t TICKS_PER_SECOND = 10000000;
 
     SYSTEMTIME systime = { 0 };
     impObj()->getTime(systime);
