@@ -30,6 +30,7 @@ def PyRxCmd_pyinsert() -> None:
         db = Db.HostApplicationServices().workingDatabase()
         block = Db.Database(False, True)
         block.readDwgFile("./dwg/18X36RP.dwg")
+        block.closeInput(True)
         blockId = Db.ObjectId()
         db.insert(blockId, "WOOHOO", block, True)
 
