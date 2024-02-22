@@ -11614,6 +11614,9 @@ __init__( (object)arg1) -> None :
     def localToUniversal (self: Date)-> None :
       '''                             '''
     ...
+    def microsecond (self: Date)-> int :
+      '''                             '''
+    ...
     def millisecond (self: Date)-> int :
       '''                             '''
     ...
@@ -11669,6 +11672,9 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
     def setYear (self: Date,year : int)-> None :
+      '''                             '''
+    ...
+    def timestamp (self: Date)-> float :
       '''                             '''
     ...
     def universalToLocal (self: Date)-> None :

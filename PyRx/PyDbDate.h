@@ -23,6 +23,7 @@ public:
     short                   minute() const;
     short                   second() const;
     short                   millisecond() const;
+    int64_t                 microsecond() const;
     void                    setHour(int val);
     void                    setMinute(int val);
     void                    setSecond(int val);
@@ -39,6 +40,7 @@ public:
     void                    setJulianDate(Adesk::Int32 julianDay, Adesk::Int32 msec);
     double                  julianFraction() const;
     void                    setJulianFraction(double);
+    double                  timestamp() const;
 
     bool operator == (const PyDbDate& other) const;
     bool operator > (const PyDbDate& other) const;
@@ -46,10 +48,10 @@ public:
     bool operator < (const PyDbDate& other) const;
     bool operator <= (const PyDbDate& other) const;
 
-    void operator + (const PyDbDate& date) const;
-    void operator - (const PyDbDate& date) const;
-    void operator += (const PyDbDate& date);
-    void operator -= (const PyDbDate& date);
+    PyDbDate operator + (const PyDbDate& date) const;
+    PyDbDate operator - (const PyDbDate& date) const;
+    PyDbDate operator += (const PyDbDate& date);
+    PyDbDate operator -= (const PyDbDate& date);
 
     static std::string_view className();
 public:
