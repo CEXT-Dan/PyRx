@@ -14,7 +14,7 @@ void makePyDbDateWrapper()
         .def("month", &PyDbDate::month, DS.ARGS())
         .def("day", &PyDbDate::day, DS.ARGS())
         .def("year", &PyDbDate::year, DS.ARGS())
-        .def("setMonth", &PyDbDate::setMonth,DS.ARGS({ "month : int" }))
+        .def("setMonth", &PyDbDate::setMonth, DS.ARGS({ "month : int" }))
         .def("setDay", &PyDbDate::setDay, DS.ARGS({ "day : int" }))
         .def("setYear", &PyDbDate::setYear, DS.ARGS({ "year : int" }))
         .def("getTime", &PyDbDate::getTime, DS.ARGS())
@@ -23,7 +23,8 @@ void makePyDbDateWrapper()
         .def("minute", &PyDbDate::minute, DS.ARGS())
         .def("second", &PyDbDate::second, DS.ARGS())
         .def("millisecond", &PyDbDate::millisecond, DS.ARGS())
-        .def("setHour", &PyDbDate::setHour, DS.ARGS({ "hour : int"}))
+        .def("microsecond", &PyDbDate::microsecond, DS.ARGS())
+        .def("setHour", &PyDbDate::setHour, DS.ARGS({ "hour : int" }))
         .def("setMinute", &PyDbDate::setMinute, DS.ARGS({ "min : int" }))
         .def("setSecond", &PyDbDate::setSecond, DS.ARGS({ "sec : int" }))
         .def("setMillisecond", &PyDbDate::setMillisecond, DS.ARGS({ "msec : int" }))
@@ -39,6 +40,7 @@ void makePyDbDateWrapper()
         .def("setJulianDate", &PyDbDate::setJulianDate, DS.ARGS({ "julianDay : int", "msec : int" }))
         .def("julianFraction", &PyDbDate::julianFraction, DS.ARGS())
         .def("setJulianFraction", &PyDbDate::setJulianFraction, DS.ARGS({ "val : float" }))
+        .def("timestamp", &PyDbDate::timestamp, DS.ARGS())
 
         //operators
         .def("__eq__", &PyDbDate::operator==)
@@ -154,6 +156,11 @@ short PyDbDate::millisecond() const
     return impObj()->millisecond();
 }
 
+int64_t PyDbDate::microsecond() const
+{
+    return impObj()->millisecond() * 1000;
+}
+
 void PyDbDate::setHour(int val)
 {
     impObj()->setHour(val);
@@ -234,6 +241,24 @@ void PyDbDate::setJulianFraction(double val)
     impObj()->setJulianFraction(val);
 }
 
+double PyDbDate::timestamp() const
+{
+    constexpr time_t UNIX_TIME_START = 0x019DB1DED53E8000;
+    constexpr time_t TICKS_PER_SECOND = 10000000;
+
+    SYSTEMTIME systime = { 0 };
+    impObj()->getTime(systime);
+
+    FILETIME filetime = { 0 };
+    SystemTimeToFileTime(&systime, &filetime);
+
+    LARGE_INTEGER li;
+    li.LowPart = filetime.dwLowDateTime;
+    li.HighPart = filetime.dwHighDateTime;
+
+    return (li.QuadPart - UNIX_TIME_START) / TICKS_PER_SECOND;
+}
+
 bool PyDbDate::operator<=(const PyDbDate& other) const
 {
     return  *impObj() <= *other.impObj();
@@ -259,24 +284,24 @@ bool PyDbDate::operator==(const PyDbDate& other) const
     return *impObj() == *other.impObj();
 }
 
-void PyDbDate::operator+(const PyDbDate& date) const
+PyDbDate PyDbDate::operator+(const PyDbDate& date) const
 {
-    *impObj() + *date.impObj();
+    return PyDbDate(*impObj() + *date.impObj());
 }
 
-void PyDbDate::operator-(const PyDbDate& date) const
+PyDbDate PyDbDate::operator-(const PyDbDate& date) const
 {
-    *impObj() - *date.impObj();
+    return PyDbDate(*impObj() - *date.impObj());
 }
 
-void PyDbDate::operator+=(const PyDbDate& date)
+PyDbDate PyDbDate::operator+=(const PyDbDate& date)
 {
-    *impObj() += *date.impObj();
+    return PyDbDate(*impObj() += *date.impObj());
 }
 
-void PyDbDate::operator-=(const PyDbDate& date)
+PyDbDate PyDbDate::operator-=(const PyDbDate& date)
 {
-    *impObj() -= *date.impObj();
+    return PyDbDate(*impObj() -= *date.impObj());
 }
 
 std::string_view PyDbDate::className()
