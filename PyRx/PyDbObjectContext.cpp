@@ -21,8 +21,8 @@ void makePyDbObjectContextCollectionWrapper()
         .def("locked", &PyDbObjectContextCollection::locked)
         .def("getContext", &PyDbObjectContextCollection::getContext, DS.ARGS({ "name : str" }))
         .def("hasContext", &PyDbObjectContextCollection::hasContext, DS.ARGS({ "name : str" }))
-        .def("toList1", &PyDbObjectContextCollection::toList1)
-        .def("toList2", &PyDbObjectContextCollection::toList2, DS.ARGS({ "desc:PyRx.RxClass=PyDb.ObjectContext" }))
+        .def("toList", &PyDbObjectContextCollection::toList1)
+        .def("toList", &PyDbObjectContextCollection::toList2, DS.ARGS({ "desc:PyRx.RxClass=PyDb.ObjectContext" }))
         .def("desc", &PyDbObjectContextCollection::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyDbObjectContextCollection::className, DS.SARGS()).staticmethod("className")
         ;
@@ -274,6 +274,7 @@ void makePyDbAnnotationScaleWrapper()
         .def("matchScaleId", &PyDbAnnotationScale::matchScaleId, DS.ARGS({ "val : int" }))
         .def("desc", &PyDbAnnotationScale::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyDbAnnotationScale::className, DS.SARGS()).staticmethod("className")
+        .def("cast", &PyDbAnnotationScale::cast, DS.SARGS({ "otherObject: PyDb.ObjectContext" })).staticmethod("cast")
         ;
 }
 
@@ -290,11 +291,6 @@ PyDbAnnotationScale::PyDbAnnotationScale(AcDbAnnotationScale* pt)
 PyDbAnnotationScale::PyDbAnnotationScale(AcDbAnnotationScale* pt, bool autoDelete)
     : PyDbObjectContext(pt, autoDelete)
 {
-}
-
-void PyDbAnnotationScale::copyFrom(const PyRxObject& val)
-{
-    PyThrowBadEs(impObj()->copyFrom(val.impObj()));
 }
 
 double PyDbAnnotationScale::getPaperUnits() const
@@ -338,6 +334,14 @@ void PyDbAnnotationScale::setDrawingUnits(double val)
 bool PyDbAnnotationScale::matchScaleId(Adesk::LongPtr val) const
 {
     return impObj()->matchScaleId(val);
+}
+
+PyDbAnnotationScale PyDbAnnotationScale::cast(const PyDbObjectContext& other)
+{
+    PyDbAnnotationScale dest(nullptr, false);
+    PyRxObject rxo = other;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 PyRxClass PyDbAnnotationScale::desc()

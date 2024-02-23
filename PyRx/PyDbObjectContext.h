@@ -89,7 +89,6 @@ public:
     PyDbAnnotationScale(AcDbAnnotationScale* pt, bool autoDelete);
     virtual ~PyDbAnnotationScale() override = default;
 
-    void                copyFrom(const PyRxObject& val);
     double              getPaperUnits() const;
     double              getDrawingUnits() const;
     double              getScale() const;
@@ -97,6 +96,7 @@ public:
     void                setPaperUnits(double val);
     void                setDrawingUnits(double val);
     bool                matchScaleId(Adesk::LongPtr val) const;
+    static PyDbAnnotationScale cast(const PyDbObjectContext& other);
     static PyRxClass    desc();
     static std::string  className();
 public:

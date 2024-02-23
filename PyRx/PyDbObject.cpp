@@ -7,6 +7,8 @@
 #include "PyDbField.h"
 #include "PyDbFiler.h"
 #include "PyDbIdMapping.h"
+#include "PyDbObjectContext.h"
+#include "dbObjectContextInterface.h"
 
 using namespace boost::python;
 
@@ -17,6 +19,8 @@ void makePyDbObjectWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
+        .def("addContext", &PyDbObject::addContext, DS.ARGS({ "obj : PyDb.ObjectContext" }))
+        .def("removeContext", &PyDbObject::removeContext, DS.ARGS({ "obj : PyDb.ObjectContext" }))
         .def("objectId", &PyDbObject::objectId, DS.ARGS())
         .def("ownerId", &PyDbObject::ownerId, DS.ARGS())
         .def("setOwnerId", &PyDbObject::setOwnerId, DS.ARGS({ "owner: PyDb.ObjectId" }))
@@ -113,6 +117,22 @@ PyDbObject::PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDbObject::PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
     : PyGiDrawable(openAcDbObject<AcDbObject>(id, mode, erased), false, true)
 {
+}
+
+void PyDbObject::addContext(const PyDbObjectContext& ctx)
+{
+    AcDbObjectContextInterface* interfacePtr = AcDbObjectContextInterface::cast(impObj()->queryX(AcDbObjectContextInterface::desc()));
+    if (interfacePtr == nullptr)
+        PyThrowBadEs(eNullObjectPointer);
+    PyThrowBadEs(interfacePtr->addContext(impObj(), *ctx.impObj()));
+}
+
+void PyDbObject::removeContext(const PyDbObjectContext& ctx)
+{
+    AcDbObjectContextInterface* interfacePtr = AcDbObjectContextInterface::cast(impObj()->queryX(AcDbObjectContextInterface::desc()));
+    if (interfacePtr == nullptr)
+        PyThrowBadEs(eNullObjectPointer);
+    PyThrowBadEs(interfacePtr->removeContext(impObj(), *ctx.impObj()));
 }
 
 PyDbObjectId PyDbObject::objectId() const
