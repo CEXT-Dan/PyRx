@@ -142,7 +142,8 @@ AnnotativeStates PyDbObject::isAnnotative() const
     AcDbAnnotativeObjectPE* tpePtr = AcDbAnnotativeObjectPE::cast(impObj()->queryX(AcDbAnnotativeObjectPE::desc()));
     if (tpePtr == nullptr)
         return  AnnotativeStates::kNotApplicable;
-    return tpePtr->annotative(impObj()) ? AnnotativeStates::kTrue : AnnotativeStates::kFalse;
+    const auto flag = tpePtr->annotative(impObj()) ? AnnotativeStates::kTrue : AnnotativeStates::kFalse;
+    return flag;
 }
 
 void PyDbObject::setAnnotative(AnnotativeStates status)
@@ -152,7 +153,8 @@ void PyDbObject::setAnnotative(AnnotativeStates status)
     AcDbAnnotativeObjectPE* tpePtr = AcDbAnnotativeObjectPE::cast(impObj()->queryX(AcDbAnnotativeObjectPE::desc()));
     if (tpePtr == nullptr)
         PyThrowBadEs(eNullObjectPointer);
-    PyThrowBadEs(tpePtr->setAnnotative(impObj(), status == AnnotativeStates::kTrue ? true : false));
+    const bool flag = status == AnnotativeStates::kTrue ? true : false;
+    PyThrowBadEs(tpePtr->setAnnotative(impObj(), flag));
 }
 
 PyDbObjectId PyDbObject::objectId() const
