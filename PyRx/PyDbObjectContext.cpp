@@ -9,21 +9,22 @@ using namespace boost::python;
 //PyDbObjectContextCollection
 void makePyDbObjectContextCollectionWrapper()
 {
+    PyDocString DS("ObjectContextCollection");
     class_<PyDbObjectContextCollection, bases<PyRxObject>>("ObjectContextCollection", boost::python::no_init)
-        .def("name", &PyDbObjectContextCollection::name)
-        .def("currentContext", &PyDbObjectContextCollection::currentContext)
-        .def("setCurrentContext", &PyDbObjectContextCollection::setCurrentContext)
-        .def("addContext", &PyDbObjectContextCollection::addContext)
-        .def("removeContext", &PyDbObjectContextCollection::removeContext)
-        .def("lockContext", &PyDbObjectContextCollection::lockContext)
+        .def("name", &PyDbObjectContextCollection::name, DS.ARGS())
+        .def("currentContext", &PyDbObjectContextCollection::currentContext, DS.ARGS({ "obj : PyDb.Object" }))
+        .def("setCurrentContext", &PyDbObjectContextCollection::setCurrentContext, DS.ARGS({ "obj : PyDb.ObjectContext" }))
+        .def("addContext", &PyDbObjectContextCollection::addContext, DS.ARGS({ "obj : PyDb.ObjectContext" }))
+        .def("removeContext", &PyDbObjectContextCollection::removeContext, DS.ARGS({ "name : str" }))
+        .def("lockContext", &PyDbObjectContextCollection::lockContext, DS.ARGS({ "obj : PyDb.ObjectContext" }))
         .def("unlockContext", &PyDbObjectContextCollection::unlockContext)
         .def("locked", &PyDbObjectContextCollection::locked)
-        .def("getContext", &PyDbObjectContextCollection::getContext)
-        .def("hasContext", &PyDbObjectContextCollection::hasContext)
+        .def("getContext", &PyDbObjectContextCollection::getContext, DS.ARGS({ "name : str" }))
+        .def("hasContext", &PyDbObjectContextCollection::hasContext, DS.ARGS({ "name : str" }))
         .def("toList1", &PyDbObjectContextCollection::toList1)
-        .def("toList2", &PyDbObjectContextCollection::toList2)
-        .def("desc", &PyDbObjectContextCollection::desc).staticmethod("desc")
-        .def("className", &PyDbObjectContextCollection::className).staticmethod("className")
+        .def("toList2", &PyDbObjectContextCollection::toList2, DS.ARGS({ "desc:PyRx.RxClass=PyDb.ObjectContext" }))
+        .def("desc", &PyDbObjectContextCollection::desc, DS.SARGS()).staticmethod("desc")
+        .def("className", &PyDbObjectContextCollection::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -143,12 +144,13 @@ AcDbObjectContextCollection* PyDbObjectContextCollection::impObj(const std::sour
 //PyDbObjectContextManager
 void makePyDbObjectContextManagerWrapper()
 {
+    PyDocString DS("ObjectContextManager");
     class_<PyDbObjectContextManager, bases<PyRxObject>>("ObjectContextManager", boost::python::no_init)
-        .def("registerContextCollection", &PyDbObjectContextManager::registerContextCollection)
-        .def("unregisterContextCollection", &PyDbObjectContextManager::unregisterContextCollection)
-        .def("contextCollection", &PyDbObjectContextManager::contextCollection)
-        .def("desc", &PyDbObjectContextManager::desc).staticmethod("desc")
-        .def("className", &PyDbObjectContextManager::className).staticmethod("className")
+        .def("registerContextCollection", &PyDbObjectContextManager::registerContextCollection, DS.ARGS({ "name : str","name : PyDb.ObjectContextCollection" }))
+        .def("unregisterContextCollection", &PyDbObjectContextManager::unregisterContextCollection, DS.ARGS({ "name : str" }))
+        .def("contextCollection", &PyDbObjectContextManager::contextCollection, DS.ARGS({ "name : str" }))
+        .def("desc", &PyDbObjectContextManager::desc, DS.SARGS()).staticmethod("desc")
+        .def("className", &PyDbObjectContextManager::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -194,13 +196,14 @@ AcDbObjectContextManager* PyDbObjectContextManager::impObj(const std::source_loc
 //PyDbObjectContext
 void makePyDbObjectContextWrapper()
 {
+    PyDocString DS("ObjectContext");
     class_<PyDbObjectContext, bases<PyRxObject>>("ObjectContext", boost::python::no_init)
-        .def("getName", &PyDbObjectContext::getName)
-        .def("setName", &PyDbObjectContext::setName)
-        .def("uniqueIdentifier", &PyDbObjectContext::uniqueIdentifier)
-        .def("collectionName", &PyDbObjectContext::collectionName)
-        .def("desc", &PyDbObjectContext::desc).staticmethod("desc")
-        .def("className", &PyDbObjectContext::className).staticmethod("className")
+        .def("getName", &PyDbObjectContext::getName, DS.ARGS())
+        .def("setName", &PyDbObjectContext::setName, DS.ARGS({ "name : str" }))
+        .def("uniqueIdentifier", &PyDbObjectContext::uniqueIdentifier, DS.ARGS())
+        .def("collectionName", &PyDbObjectContext::collectionName, DS.ARGS())
+        .def("desc", &PyDbObjectContext::desc, DS.SARGS()).staticmethod("desc")
+        .def("className", &PyDbObjectContext::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -258,18 +261,19 @@ AcDbObjectContext* PyDbObjectContext::impObj(const std::source_location& src /*=
 // PyDbAnnotationScale
 void makePyDbAnnotationScaleWrapper()
 {
+    PyDocString DS("AnnotationScale");
     class_<PyDbAnnotationScale, bases<PyDbObjectContext>>("AnnotationScale")
         .def(init<>())
-        .def("copyFrom", &PyDbAnnotationScale::copyFrom)
-        .def("getPaperUnits", &PyDbAnnotationScale::getPaperUnits)
-        .def("getDrawingUnits", &PyDbAnnotationScale::getDrawingUnits)
-        .def("getScale", &PyDbAnnotationScale::getScale)
-        .def("getIsTemporaryScale", &PyDbAnnotationScale::getIsTemporaryScale)
-        .def("setPaperUnits", &PyDbAnnotationScale::setPaperUnits)
-        .def("setDrawingUnits", &PyDbAnnotationScale::setDrawingUnits)
-        .def("matchScaleId", &PyDbAnnotationScale::matchScaleId)
-        .def("desc", &PyDbAnnotationScale::desc).staticmethod("desc")
-        .def("className", &PyDbAnnotationScale::className).staticmethod("className")
+        .def("copyFrom", &PyDbAnnotationScale::copyFrom, DS.ARGS({ "otherObject: PyRx.RxObject" }))
+        .def("getPaperUnits", &PyDbAnnotationScale::getPaperUnits, DS.ARGS())
+        .def("getDrawingUnits", &PyDbAnnotationScale::getDrawingUnits, DS.ARGS())
+        .def("getScale", &PyDbAnnotationScale::getScale, DS.ARGS())
+        .def("getIsTemporaryScale", &PyDbAnnotationScale::getIsTemporaryScale, DS.ARGS())
+        .def("setPaperUnits", &PyDbAnnotationScale::setPaperUnits, DS.ARGS({ "val : float" }))
+        .def("setDrawingUnits", &PyDbAnnotationScale::setDrawingUnits, DS.ARGS({ "val : float" }))
+        .def("matchScaleId", &PyDbAnnotationScale::matchScaleId, DS.ARGS({ "val : int" }))
+        .def("desc", &PyDbAnnotationScale::desc, DS.SARGS()).staticmethod("desc")
+        .def("className", &PyDbAnnotationScale::className, DS.SARGS()).staticmethod("className")
         ;
 }
 

@@ -1885,65 +1885,42 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def collectionName (self, *args, **kwargs)-> str :
-      '''collectionName( (ObjectContext)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > collectionName(class PyDbObjectContext {lvalue})'''
+    def collectionName (self: ObjectContext)-> str :
+      '''                             '''
     ...
     def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self, *args, **kwargs)-> None :
-      '''copyFrom( (AnnotationScale)arg1, (RxObject)arg2) -> None :
-
-    C++ signature :
-        void copyFrom(class PyDbAnnotationScale {lvalue},class PyRxObject)'''
+    def copyFrom (self: AnnotationScale,otherObject: PyRx.RxObject)-> None :
+      '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def dispose (self: RxObject)-> None :
       '''                             '''
     ...
-    def getDrawingUnits (self, *args, **kwargs)-> float :
-      '''getDrawingUnits( (AnnotationScale)arg1) -> float :
-
-    C++ signature :
-        double getDrawingUnits(class PyDbAnnotationScale {lvalue})'''
+    def getDrawingUnits (self: AnnotationScale)-> float :
+      '''                             '''
     ...
-    def getIsTemporaryScale (self, *args, **kwargs)-> bool :
-      '''getIsTemporaryScale( (AnnotationScale)arg1) -> bool :
-
-    C++ signature :
-        bool getIsTemporaryScale(class PyDbAnnotationScale {lvalue})'''
+    def getIsTemporaryScale (self: AnnotationScale)-> bool :
+      '''                             '''
     ...
-    def getName (self, *args, **kwargs)-> str :
-      '''getName( (ObjectContext)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbObjectContext {lvalue})'''
+    def getName (self: ObjectContext)-> str :
+      '''                             '''
     ...
-    def getPaperUnits (self, *args, **kwargs)-> float :
-      '''getPaperUnits( (AnnotationScale)arg1) -> float :
-
-    C++ signature :
-        double getPaperUnits(class PyDbAnnotationScale {lvalue})'''
+    def getPaperUnits (self: AnnotationScale)-> float :
+      '''                             '''
     ...
-    def getScale (self, *args, **kwargs)-> float :
-      '''getScale( (AnnotationScale)arg1) -> float :
-
-    C++ signature :
-        double getScale(class PyDbAnnotationScale {lvalue})'''
+    def getScale (self: AnnotationScale)-> float :
+      '''                             '''
     ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
@@ -1960,38 +1937,23 @@ __init__( (object)arg1) -> None :
     def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
-    def matchScaleId (self, *args, **kwargs)-> bool :
-      '''matchScaleId( (AnnotationScale)arg1, (int)arg2) -> bool :
-
-    C++ signature :
-        bool matchScaleId(class PyDbAnnotationScale {lvalue},__int64)'''
+    def matchScaleId (self: AnnotationScale,val : int)-> bool :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDrawingUnits (self, *args, **kwargs)-> None :
-      '''setDrawingUnits( (AnnotationScale)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setDrawingUnits(class PyDbAnnotationScale {lvalue},double)'''
+    def setDrawingUnits (self: AnnotationScale,val : float)-> None :
+      '''                             '''
     ...
-    def setName (self, *args, **kwargs)-> None :
-      '''setName( (ObjectContext)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PyDbObjectContext {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self: ObjectContext,name : str)-> None :
+      '''                             '''
     ...
-    def setPaperUnits (self, *args, **kwargs)-> None :
-      '''setPaperUnits( (AnnotationScale)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setPaperUnits(class PyDbAnnotationScale {lvalue},double)'''
+    def setPaperUnits (self: AnnotationScale,val : float)-> None :
+      '''                             '''
     ...
-    def uniqueIdentifier (self, *args, **kwargs)-> int :
-      '''uniqueIdentifier( (ObjectContext)arg1) -> int :
-
-    C++ signature :
-        __int64 uniqueIdentifier(class PyDbObjectContext {lvalue})'''
+    def uniqueIdentifier (self: ObjectContext)-> int :
+      '''                             '''
     ...
 
 class Arc:
@@ -6877,7 +6839,7 @@ class BlockTableRecord:
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def objectIds (self: BlockTableRecord,desc:PyRx.RxClass=AcDbEntity)-> list :
+    def objectIds (self: BlockTableRecord,desc:PyRx.RxClass=PyDb.Entity)-> list :
       '''                             '''
     ...
     def openBlockBegin (self: BlockTableRecord,val: PyDb.BlockBegin,mode: PyDb.OpenMode)-> None :
@@ -40665,17 +40627,13 @@ class ObjectContext:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def collectionName (self, *args, **kwargs)-> str :
-      '''collectionName( (ObjectContext)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > collectionName(class PyDbObjectContext {lvalue})'''
+    def collectionName (self: ObjectContext)-> str :
+      '''                             '''
     ...
     def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -40683,20 +40641,16 @@ This class cannot be instantiated from Python'''
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def dispose (self: RxObject)-> None :
       '''                             '''
     ...
-    def getName (self, *args, **kwargs)-> str :
-      '''getName( (ObjectContext)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbObjectContext {lvalue})'''
+    def getName (self: ObjectContext)-> str :
+      '''                             '''
     ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
@@ -40716,17 +40670,151 @@ This class cannot be instantiated from Python'''
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setName (self, *args, **kwargs)-> None :
-      '''setName( (ObjectContext)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PyDbObjectContext {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self: ObjectContext,name : str)-> None :
+      '''                             '''
     ...
-    def uniqueIdentifier (self, *args, **kwargs)-> int :
-      '''uniqueIdentifier( (ObjectContext)arg1) -> int :
+    def uniqueIdentifier (self: ObjectContext)-> int :
+      '''                             '''
+    ...
+
+class ObjectContextCollection:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''Raises an exception
+This class cannot be instantiated from Python'''
+    ...
+    def addContext (self: ObjectContextCollection,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def currentContext (self: ObjectContextCollection,obj : PyDb.Object)-> PyDb.ObjectContext :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def getContext (self: ObjectContextCollection,name : str)-> PyDb.ObjectContext :
+      '''                             '''
+    ...
+    def hasContext (self: ObjectContextCollection,name : str)-> bool :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def lockContext (self: ObjectContextCollection,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
+    def locked (self, *args, **kwargs)-> bool :
+      '''locked( (ObjectContextCollection)arg1) -> bool :
 
     C++ signature :
-        __int64 uniqueIdentifier(class PyDbObjectContext {lvalue})'''
+        bool locked(class PyDbObjectContextCollection {lvalue})'''
+    ...
+    def name (self: ObjectContextCollection)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def removeContext (self: ObjectContextCollection,name : str)-> None :
+      '''                             '''
+    ...
+    def setCurrentContext (self: ObjectContextCollection,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
+    def toList1 (self, *args, **kwargs)-> list :
+      '''toList1( (ObjectContextCollection)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list toList1(class PyDbObjectContextCollection {lvalue})'''
+    ...
+    def toList2 (self: ObjectContextCollection,desc:PyRx.RxClass=PyDb.ObjectContext)-> list :
+      '''                             '''
+    ...
+    def unlockContext (self, *args, **kwargs)-> None :
+      '''unlockContext( (ObjectContextCollection)arg1) -> None :
+
+    C++ signature :
+        void unlockContext(class PyDbObjectContextCollection {lvalue})'''
+    ...
+
+class ObjectContextManager:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''Raises an exception
+This class cannot be instantiated from Python'''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def contextCollection (self: ObjectContextManager,name : str)-> PyDb.ObjectContextCollection :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def registerContextCollection (self: ObjectContextManager,name : str,name : PyDb.ObjectContextCollection)-> None :
+      '''                             '''
+    ...
+    def unregisterContextCollection (self: ObjectContextManager,name : str)-> None :
+      '''                             '''
     ...
 
 class ObjectId:
