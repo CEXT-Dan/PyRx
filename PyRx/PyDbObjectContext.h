@@ -4,6 +4,9 @@
 #include "dbObjContext.h"
 #include "dbObjectContextCollection.h"
 
+class PyDbObject;
+class PyDbObjectContext;
+
 //-----------------------------------------------------------------------------------------
 //PyDbObjectContextCollection
 void makePyDbObjectContextCollectionWrapper();
@@ -14,8 +17,21 @@ public:
     PyDbObjectContextCollection(AcDbObjectContextCollection* pt);
     virtual ~PyDbObjectContextCollection() override = default;
 
-    static PyRxClass      desc();
-    static std::string    className();
+    std::string         name() const;
+    PyDbObjectContext   currentContext(const PyDbObject& obj);
+    void                setCurrentContext(const PyDbObjectContext& pContext);
+    void                addContext(const PyDbObjectContext& pContext);
+    void                removeContext(const std::string& contextName);
+    void                lockContext(const PyDbObjectContext& pContext);
+    void                unlockContext();
+    bool                locked() const;
+    PyDbObjectContext   getContext(const std::string& contextName);
+    bool                hasContext(const std::string& contextName);
+    boost::python::list toList1();
+    boost::python::list toList2(const PyRxClass& _class);
+
+    static PyRxClass    desc();
+    static std::string  className();
 public:
     AcDbObjectContextCollection* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -48,7 +64,7 @@ class PyDbObjectContext : public PyRxObject
 {
 public:
     PyDbObjectContext(AcDbObjectContext* pt);
-    PyDbObjectContext(AcDbObjectContext* pt, bool autoDelete, bool isDbOject);
+    PyDbObjectContext(AcDbObjectContext* pt, bool autoDelete);
     virtual ~PyDbObjectContext() override = default;
 
     std::string           getName() const;
@@ -70,7 +86,7 @@ class PyDbAnnotationScale : public PyDbObjectContext
 public:
     PyDbAnnotationScale();
     PyDbAnnotationScale(AcDbAnnotationScale* pt);
-    PyDbAnnotationScale(AcDbAnnotationScale* pt, bool autoDelete, bool isDbOject);
+    PyDbAnnotationScale(AcDbAnnotationScale* pt, bool autoDelete);
     virtual ~PyDbAnnotationScale() override = default;
 
     void                copyFrom(const PyRxObject& val);
