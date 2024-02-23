@@ -329,6 +329,12 @@ BOOST_PYTHON_MODULE(PyDb)
     def("curDb", curPyDb);
 
     //enums
+    enum_<AnnotativeStates>("AnnotativeStates")
+        .value("kTrue", AnnotativeStates::kTrue)
+        .value("kFalse", AnnotativeStates::kFalse)
+        .value("kNotApplicable", AnnotativeStates::kNotApplicable)
+        .export_values()
+        ;
     enum_<AcGeoMapType>("AcGeoMapType")
         .value("kNoMap", AcGeoMapType::kNoMap)
         .value("kAerial", AcGeoMapType::kAerial)

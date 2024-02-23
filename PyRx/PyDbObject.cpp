@@ -9,7 +9,7 @@
 #include "PyDbIdMapping.h"
 #include "PyDbObjectContext.h"
 #include "dbObjectContextInterface.h"
-
+#include "dbAnnotativeObjectPE.h"
 using namespace boost::python;
 
 void makePyDbObjectWrapper()
@@ -21,6 +21,8 @@ void makePyDbObjectWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
         .def("addContext", &PyDbObject::addContext, DS.ARGS({ "obj : PyDb.ObjectContext" }))
         .def("removeContext", &PyDbObject::removeContext, DS.ARGS({ "obj : PyDb.ObjectContext" }))
+        .def("isAnnotative", &PyDbObject::isAnnotative, DS.ARGS())
+        .def("setAnnotative", &PyDbObject::setAnnotative, DS.ARGS({ "state : PyDb.AnnotativeStates" }))
         .def("objectId", &PyDbObject::objectId, DS.ARGS())
         .def("ownerId", &PyDbObject::ownerId, DS.ARGS())
         .def("setOwnerId", &PyDbObject::setOwnerId, DS.ARGS({ "owner: PyDb.ObjectId" }))
@@ -133,6 +135,24 @@ void PyDbObject::removeContext(const PyDbObjectContext& ctx)
     if (interfacePtr == nullptr)
         PyThrowBadEs(eNullObjectPointer);
     PyThrowBadEs(interfacePtr->removeContext(impObj(), *ctx.impObj()));
+}
+
+AnnotativeStates PyDbObject::isAnnotative() const
+{
+    AcDbAnnotativeObjectPE* tpePtr = AcDbAnnotativeObjectPE::cast(impObj()->queryX(AcDbAnnotativeObjectPE::desc()));
+    if (tpePtr == nullptr)
+        return  AnnotativeStates::kNotApplicable;
+    return tpePtr->annotative(impObj()) ? AnnotativeStates::kTrue : AnnotativeStates::kFalse;
+}
+
+void PyDbObject::setAnnotative(AnnotativeStates status)
+{
+    if (status == AnnotativeStates::kNotApplicable)
+        return;
+    AcDbAnnotativeObjectPE* tpePtr = AcDbAnnotativeObjectPE::cast(impObj()->queryX(AcDbAnnotativeObjectPE::desc()));
+    if (tpePtr == nullptr)
+        PyThrowBadEs(eNullObjectPointer);
+    PyThrowBadEs(tpePtr->setAnnotative(impObj(), status == AnnotativeStates::kTrue ? true : false));
 }
 
 PyDbObjectId PyDbObject::objectId() const

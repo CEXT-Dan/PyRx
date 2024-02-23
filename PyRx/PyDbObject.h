@@ -11,6 +11,13 @@ class PyDbSnoopDwgFiler;
 class PyDbIdMapping;
 class PyDbObjectContext;
 
+enum class AnnotativeStates
+{
+    kTrue,
+    kFalse,
+    kNotApplicable
+};
+
 //----------------------------------------------------------------------------------------
 //PyDbObject
 void makePyDbObjectWrapper();
@@ -24,6 +31,8 @@ public:
     inline virtual ~PyDbObject() override = default;
     void                addContext(const PyDbObjectContext& ctx);
     void                removeContext(const PyDbObjectContext& ctx);
+    AnnotativeStates    isAnnotative() const;
+    void                setAnnotative(AnnotativeStates status);
     PyDbObjectId        objectId() const;
     PyDbObjectId        ownerId() const;
     void                setOwnerId(const PyDbObjectId& objId);

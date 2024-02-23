@@ -218,6 +218,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -309,6 +312,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -539,6 +545,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -654,6 +663,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def setAmbientLightColor (self: AbstractViewTableRecord,val : PyDb.Color)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -1312,6 +1324,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -1517,6 +1532,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAlternateSuffix (self: Dimension,val : str)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
@@ -1979,6 +1997,41 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
+class AnnotativeStates:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def kFalse (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kNotApplicable (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kTrue (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
 class Arc:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -2322,6 +2375,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -2464,6 +2520,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -2992,6 +3051,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -3197,6 +3259,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAlternateSuffix (self: Dimension,val : str)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setArcEndParam (self, *args, **kwargs)-> None :
@@ -3875,6 +3940,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -4053,6 +4121,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAlignmentPoint (self: Text,val : PyGe.Point3d)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -4517,6 +4588,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -4695,6 +4769,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAlignmentPoint (self: Text,val : PyGe.Point3d)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributeFromBlock (self, *args, **kwargs)-> None :
@@ -5114,6 +5191,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -5238,6 +5318,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -5574,6 +5657,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -5698,6 +5784,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -6066,6 +6155,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -6208,6 +6300,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -6510,6 +6605,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -6601,6 +6699,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -6826,6 +6927,9 @@ class BlockTableRecord:
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isAnonymous (self: BlockTableRecord)-> bool :
       '''                             '''
     ...
@@ -6956,6 +7060,9 @@ class BlockTableRecord:
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -7280,6 +7387,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -7404,6 +7514,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -8346,6 +8459,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -8485,6 +8601,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -9635,6 +9754,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -9768,6 +9890,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -11867,6 +11992,9 @@ class DbObject:
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -11952,6 +12080,9 @@ class DbObject:
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -12647,6 +12778,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -12840,6 +12974,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAlternateSuffix (self: Dimension,val : str)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
@@ -13489,6 +13626,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -13596,6 +13736,9 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAt (self: Dictionary)-> PyDb.ObjectId :
@@ -13848,6 +13991,9 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     C++ signature :
         bool isAllGeomErased(class PyDbDimAssoc {lvalue})'''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -13997,6 +14143,9 @@ removeAssociativity( (DimAssoc)arg1, (bool)arg2) -> None :
         enum AcDbDimAssoc::RotatedDimType rotatedDimType(class PyDbDimAssoc {lvalue})'''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAssocFlag (self, *args, **kwargs)-> None :
@@ -14423,6 +14572,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -14514,6 +14666,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -14952,6 +15107,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -15055,6 +15213,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -15670,6 +15831,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -15857,6 +16021,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAlternateSuffix (self: Dimension,val : str)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
@@ -17510,6 +17677,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -17678,6 +17848,9 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
         void set(class PyDbEllipse {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double)'''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -18070,6 +18243,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -18194,6 +18370,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -20711,6 +20890,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -20853,6 +21035,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -21248,6 +21433,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -21381,6 +21569,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -21734,6 +21925,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -21867,6 +22061,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -22250,6 +22447,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -22380,6 +22580,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -22755,6 +22958,9 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -22852,6 +23058,9 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -23567,6 +23776,9 @@ class GeoData:
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -23691,6 +23903,9 @@ class GeoData:
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -24136,6 +24351,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -24329,6 +24547,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         class AcGeVector2d scale(class PyDbRasterImage {lvalue})'''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -24761,6 +24982,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -24909,6 +25133,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -25521,6 +25748,9 @@ insertAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isAnonymous (self, *args, **kwargs)-> bool :
       '''isAnonymous( (Group)arg1) -> bool :
 
@@ -25681,6 +25911,9 @@ removeAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAnonymous (self, *args, **kwargs)-> None :
@@ -26386,6 +26619,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -26564,6 +26800,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAssociative (self: Hatch,val : bool)-> None :
@@ -27383,6 +27622,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -27543,6 +27785,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -28194,6 +28439,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -28318,6 +28566,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -28810,6 +29061,9 @@ class LayerFilter:
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -28904,6 +29158,9 @@ class LayerFilter:
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -29110,6 +29367,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -29201,6 +29461,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -29431,6 +29694,9 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -29643,6 +29909,9 @@ plotStyleNameId( (LayerTableRecord)arg1, (ObjectId)arg2) -> ObjectId :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -30101,6 +30370,9 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -30271,6 +30543,9 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         void setAnnoAllVisible(class PyDbLayout {lvalue},bool)'''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
@@ -31151,6 +31426,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -31333,6 +31611,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         void setAnnotationOffset(class PyDbLeader {lvalue},class AcGeVector3d)'''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
@@ -31903,6 +32184,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -32039,6 +32323,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -32534,6 +32821,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -32721,6 +33011,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAlternateSuffix (self: Dimension,val : str)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setArcPoint (self, *args, **kwargs)-> None :
@@ -33366,6 +33659,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -33457,6 +33753,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -33664,6 +33963,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -33770,6 +34072,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -34229,6 +34534,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -34371,6 +34679,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -34775,6 +35086,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -34923,6 +35237,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -35563,6 +35880,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -35830,6 +36150,9 @@ moveMLeader( (MLeader)arg1, (Vector3d)arg2, (MLeaderMoveType)arg3, (bool)arg4) -
         double scale(class PyDbMLeader {lvalue})'''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setArrowSize (self, *args, **kwargs)-> None :
@@ -36969,6 +37292,9 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -37962,6 +38288,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isBalanced (self: MPolygon)-> bool :
       '''                             '''
     ...
@@ -38145,6 +38474,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         bool selfCrosses(class PyDbMPolygon {lvalue},class boost::python::list,class boost::python::list,double)'''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -38639,6 +38971,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -38778,6 +39113,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttachment (self: MText,val : PyDb.MTextAttachmentPoint)-> None :
@@ -39585,6 +39923,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -39730,6 +40071,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -40118,6 +40462,9 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -40232,6 +40579,9 @@ set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
         void set(class PyDbMlineStyle {lvalue},class PyDbMlineStyle,bool)'''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -40676,6 +41026,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -40818,6 +41171,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -41610,6 +41966,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -41821,6 +42180,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAlternateSuffix (self: Dimension,val : str)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
@@ -42646,6 +43008,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -42737,6 +43102,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -43083,6 +43451,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAdjustedForBackground (self: UnderlayReference)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -43237,6 +43608,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -43720,6 +44094,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -43862,6 +44239,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -44299,6 +44679,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -44462,6 +44845,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         bool scaleLineweights(class PyDbPlotSettings {lvalue})'''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -45109,6 +45495,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -45239,6 +45628,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -45734,6 +46126,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -45921,6 +46316,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAlternateSuffix (self: Dimension,val : str)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setArcPoint (self, *args, **kwargs)-> None :
@@ -46523,6 +46921,9 @@ class PointCloudColorMap:
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -46608,6 +47009,9 @@ class PointCloudColorMap:
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -47058,6 +47462,9 @@ class PointCloudDefEx:
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -47157,6 +47564,9 @@ class PointCloudDefEx:
       '''                             '''
     ...
     def setActiveFileName (self: PointCloudDefEx,path : str)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -47601,6 +48011,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -47814,6 +48227,9 @@ setAllRegionsVisibility( (PointCloudEx)arg1, (bool)arg2, (bool)arg3) -> None :
 
     C++ signature :
         void setAllScansVisibilityByRegion(class PyDbPointCloudEx {lvalue},int,bool)'''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
@@ -48584,6 +49000,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -48711,6 +49130,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -49061,6 +49483,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -49188,6 +49613,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -49685,6 +50113,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -49848,6 +50279,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -50380,6 +50814,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -50567,6 +51004,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -51131,6 +51571,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -51300,6 +51743,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -51685,6 +52131,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -51812,6 +52261,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -52382,6 +52834,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -52575,6 +53030,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAlternateSuffix (self: Dimension,val : str)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
@@ -53273,6 +53731,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -53478,6 +53939,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAlternateSuffix (self: Dimension,val : str)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
@@ -54149,6 +54613,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -54333,6 +54800,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         class AcGeVector2d scale(class PyDbRasterImage {lvalue})'''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -54716,6 +55186,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -54844,6 +55317,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void setActiveFileName(class PyDbRasterImageDef {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
@@ -55089,6 +55565,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -55174,6 +55653,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -55386,6 +55868,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -55477,6 +55962,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -55675,6 +56163,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -55772,6 +56263,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -56069,6 +56563,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -56199,6 +56696,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -56789,6 +57289,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -56931,6 +57434,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -57464,6 +57970,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -57675,6 +58184,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAlternateSuffix (self: Dimension,val : str)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
@@ -58370,6 +58882,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -58494,6 +59009,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -59282,6 +59800,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -59454,6 +59975,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         class boost::python::list separateBody(class PyDb3dSolid {lvalue})'''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -59769,6 +60293,9 @@ class SpatialFilter:
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -59860,6 +60387,9 @@ class SpatialFilter:
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -60369,6 +60899,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -60529,6 +61062,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -61385,6 +61921,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -61527,6 +62066,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -62323,6 +62865,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -62465,6 +63010,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -63030,6 +63578,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -63121,6 +63672,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -63301,6 +63855,9 @@ class SymbolTableRecord:
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -63398,6 +63955,9 @@ class SymbolTableRecord:
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -64089,6 +64649,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isAutoScale (self, *args, **kwargs)-> bool :
       '''isAutoScale( (Table)arg1, (int)arg2, (int)arg3) -> bool :
 
@@ -64362,6 +64925,9 @@ setAlignment( (Table)arg1, (int)arg2, (int)arg3, (CellAlignment)arg4) -> None :
 
     C++ signature :
         void setAlignment(class PyDbTable {lvalue},int,int,enum AcDb::CellAlignment)'''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
@@ -65528,6 +66094,9 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isBackgroundColorNone (self, *args, **kwargs)-> bool :
       '''isBackgroundColorNone( (TableStyle)arg1, (RowType)arg2) -> bool :
 
@@ -65691,6 +66260,9 @@ setAlignment( (TableStyle)arg1, (CellAlignment)arg2, (str)arg3) -> None :
 
     C++ signature :
         void setAlignment(class PyDbTableStyle {lvalue},enum AcDb::CellAlignment,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
@@ -66247,6 +66819,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -66404,6 +66979,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAlignmentPoint (self: Text,val : PyGe.Point3d)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -66834,6 +67412,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -66925,6 +67506,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -67135,6 +67719,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -67244,6 +67831,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -67980,6 +68570,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -68071,6 +68664,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -68269,6 +68865,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -68369,6 +68968,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -68586,6 +69188,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -68677,6 +69282,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -69021,6 +69629,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAdjustedForBackground (self: UnderlayReference)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -69175,6 +69786,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -69767,6 +70381,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -69891,6 +70508,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -70252,6 +70872,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -70382,6 +71005,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -70766,6 +71392,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCameraPlottable (self: ViewTableRecord)-> bool :
       '''                             '''
     ...
@@ -70903,6 +71532,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void setAnnotationScale(class PyDbViewTableRecord {lvalue},class PyDbAnnotationScale)'''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
@@ -71396,6 +72028,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isBackClipOn (self: Viewport)-> bool :
       '''                             '''
     ...
@@ -71663,6 +72298,9 @@ removeHiddenLines( (Viewport)arg1, (bool)arg2) -> None :
 
     C++ signature :
         void setAnnotationScale(class PyDbViewport {lvalue},class PyDbAnnotationScale)'''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
@@ -72458,6 +73096,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -72611,6 +73252,9 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
       '''                             '''
     ...
     def setAmbientLightColor (self: AbstractViewTableRecord,val : PyDb.Color)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -73314,6 +73958,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -73498,6 +74145,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         class AcGeVector2d scale(class PyDbRasterImage {lvalue})'''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -73826,6 +74476,9 @@ class Xrecord:
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -73920,6 +74573,9 @@ class Xrecord:
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
