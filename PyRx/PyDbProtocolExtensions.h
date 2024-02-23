@@ -26,3 +26,5 @@ public:
     AcDbJoinEntityPE* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
+
+//AcDbAnnotativeObjectPE TODO:
