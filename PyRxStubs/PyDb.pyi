@@ -78,6 +78,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId add(class PyDbAbstractViewTable {lvalue},class PyDbAbstractViewTableRecord)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -290,6 +293,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -368,6 +374,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -624,6 +633,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -974,6 +986,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -1450,6 +1465,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -1887,6 +1905,11 @@ __init__( (object)arg1) -> None :
     ...
 
     @staticmethod
+    def cast (otherObject: PyDb.ObjectContext)-> PyDb.AnnotationScale :
+      '''                             '''
+    ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -1987,6 +2010,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,double,double,double)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -2419,6 +2445,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -2607,6 +2636,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -3113,6 +3145,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -3593,6 +3628,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -3993,6 +4031,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -4228,6 +4269,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -4629,6 +4673,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -4848,6 +4895,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -5172,6 +5222,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -5302,6 +5355,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -5626,6 +5682,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -5771,6 +5830,9 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class PyDbObjectId)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -6124,6 +6186,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -6307,6 +6372,9 @@ class BlockTable:
       '''                             '''
     ...
     def add (self: BlockTable,block : BlockTableRecord)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
@@ -6517,6 +6585,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -6589,6 +6660,9 @@ class BlockTableRecord:
       '''                             '''
     ...
     def addAnnoScalestoBlkRefs (self: BlockTableRecord,scale : bool)-> None :
+      '''                             '''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
@@ -6866,6 +6940,9 @@ class BlockTableRecord:
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -6984,6 +7061,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -7306,6 +7386,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -7949,6 +8032,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,double)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -8378,6 +8464,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -9241,6 +9330,9 @@ class Curve:
     def __init__ (self: Curve,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -9655,6 +9747,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -10298,6 +10393,9 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
       '''                             '''
     ...
     def numberOfSaves (self: Database)-> int :
+      '''                             '''
+    ...
+    def objectContextManager (self: Database)-> PyDb.ObjectContextManager :
       '''                             '''
     ...
     def objectIds (self: Database,desc:PyRx.RxClass=PyDb.DbObject)-> list :
@@ -11650,6 +11748,9 @@ class DbObject:
     def __init__ (self: DbObject,id: PyDb.ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -11833,6 +11934,9 @@ class DbObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -12199,6 +12303,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -12679,6 +12786,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -13251,6 +13361,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -13467,6 +13580,9 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void remove(class PyDbDictionary {lvalue},class PyDbObjectId {lvalue})'''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -13560,6 +13676,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode,bool)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -13837,6 +13956,9 @@ removeAssociativity( (DimAssoc)arg1, (bool)arg2) -> None :
 
     C++ signature :
         void removeAssociativity(class PyDbDimAssoc {lvalue},bool)'''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
@@ -14161,6 +14283,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId add(class PyDbDimStyleTable {lvalue},class PyDbDimStyleTableRecord)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -14373,6 +14498,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -14461,6 +14589,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -14908,6 +15039,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -15220,6 +15354,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -15666,6 +15803,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -17053,6 +17193,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode,bool)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -17505,6 +17648,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -17708,6 +17854,9 @@ class EndCaps:
 
 class Entity:
     def __init__ (self: Entity,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
+      '''                             '''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
@@ -18027,6 +18176,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -20299,6 +20451,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -20682,6 +20837,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -20872,6 +21030,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,bool,bool,bool,bool)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -21204,6 +21365,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -21352,6 +21516,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -21684,6 +21851,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -21832,6 +22002,9 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
 
     C++ signature :
         void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -22191,6 +22364,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -22386,6 +22562,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -22655,6 +22834,9 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -23221,6 +23403,9 @@ class GeoData:
     def __init__ (self: GeoData,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addMeshFace (self: GeoData,idx : int,p0 : int,p1 : int,p2 : int)-> None :
       '''                             '''
     ...
@@ -23478,6 +23663,9 @@ class GeoData:
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -23653,6 +23841,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode,bool)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -24107,6 +24298,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -24345,6 +24539,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
 
 class GeoPositionMarker:
     def __init__ (self: GeoPositionMarker,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
+      '''                             '''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
@@ -24694,6 +24891,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -25144,6 +25344,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -25449,6 +25652,9 @@ removeAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
 
     C++ signature :
         void removeAt(class PyDbGroup {lvalue},unsigned int,class boost::python::list)'''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
@@ -25869,6 +26075,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -26331,6 +26540,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def removeAssocObjIds (self: Hatch)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -26797,6 +27009,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -27303,6 +27518,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeControlPointAt (self: Spline,val : int)-> None :
       '''                             '''
     ...
@@ -27758,6 +27976,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -28079,6 +28300,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -28461,6 +28685,9 @@ class LayerFilter:
     def add (self: LayerFilter,val : str)-> None :
       '''                             '''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -28661,6 +28888,9 @@ class LayerFilter:
     def remove (self: LayerFilter,val : str)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -28739,6 +28969,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId add(class PyDbLayerTable {lvalue},class PyDbLayerTableRecord)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -28952,6 +29185,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -29043,6 +29279,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -29358,6 +29597,9 @@ plotStyleNameId( (LayerTableRecord)arg1, (ObjectId)arg2) -> ObjectId :
     C++ signature :
         void removeColorOverride(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -29592,6 +29834,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -29995,6 +30240,9 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -30432,6 +30680,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -31044,6 +31295,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -31340,6 +31594,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -31763,6 +32020,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -31942,6 +32202,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -32404,6 +32667,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -32960,6 +33226,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId add(class PyDbLinetypeTable {lvalue},class PyDbLinetypeTableRecord)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -33172,6 +33441,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -33260,6 +33532,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -33479,6 +33754,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -33690,6 +33968,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -34074,6 +34355,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -34249,6 +34533,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -34608,6 +34895,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -34794,6 +35084,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addFirstVertex (self, *args, **kwargs)-> None :
       '''addFirstVertex( (MLeader)arg1, (int)arg2, (Point3d)arg3) -> None :
@@ -35483,6 +35776,9 @@ moveMLeader( (MLeader)arg1, (Vector3d)arg2, (MLeaderMoveType)arg3, (bool)arg4) -
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -36397,6 +36693,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -36791,6 +37090,9 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -37358,6 +37660,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -37815,6 +38120,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -38040,6 +38348,9 @@ class MText:
       '''                             '''
     ...
     def actualWidth (self: MText)-> float :
+      '''                             '''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
@@ -38446,6 +38757,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -39024,6 +39338,9 @@ class Mline:
     def __init__ (self: Mline,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -39391,6 +39708,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -39609,6 +39929,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addElement (self, *args, **kwargs)-> int :
       '''addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4) -> int :
@@ -39876,6 +40199,9 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeElementAt (self, *args, **kwargs)-> None :
       '''removeElementAt( (MlineStyle)arg1, (int)arg2) -> None :
 
@@ -40089,6 +40415,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -40473,6 +40802,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -40749,13 +41081,7 @@ This class cannot be instantiated from Python'''
     def setCurrentContext (self: ObjectContextCollection,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def toList1 (self, *args, **kwargs)-> list :
-      '''toList1( (ObjectContextCollection)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list toList1(class PyDbObjectContextCollection {lvalue})'''
-    ...
-    def toList2 (self: ObjectContextCollection,desc:PyRx.RxClass=PyDb.ObjectContext)-> list :
+    def toList (self: ObjectContextCollection,desc:PyRx.RxClass=PyDb.ObjectContext)-> list :
       '''                             '''
     ...
     def unlockContext (self, *args, **kwargs)-> None :
@@ -40958,6 +41284,9 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
 
     C++ signature :
         void __init__(struct _object * __ptr64,bool,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -41438,6 +41767,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -42177,6 +42509,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -42386,6 +42721,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -42477,6 +42815,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -42874,6 +43215,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -43115,6 +43459,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -43499,6 +43846,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -43747,6 +44097,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -44085,6 +44438,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -44536,6 +44892,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -44864,6 +45223,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -45034,6 +45396,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -45504,6 +45869,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -45953,6 +46321,9 @@ class PointCloudColorMap:
     def __init__ (self: PointCloudColorMap,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -46219,6 +46590,9 @@ class PointCloudColorMap:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -46525,6 +46899,9 @@ class PointCloudDefEx:
     def activeFileName (self: PointCloudDefEx)-> str :
       '''                             '''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -46761,6 +47138,9 @@ class PointCloudDefEx:
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -46880,6 +47260,9 @@ class PointCloudDispOptionOutOfRange:
 
 class PointCloudEx:
     def __init__ (self: PointCloudEx,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
+      '''                             '''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def addCroppingBoundary (self, *args, **kwargs)-> None :
@@ -47351,6 +47734,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -47984,6 +48370,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -48306,6 +48695,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -48454,6 +48846,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -48777,6 +49172,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -48933,6 +49331,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -49419,6 +49820,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -49618,6 +50022,9 @@ __init__( (object)arg1, (Poly2dType)arg2, (list)arg3, (bool)arg4) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,enum AcDb::Poly2dType,class boost::python::list,bool)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -50141,6 +50548,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -50387,6 +50797,9 @@ __init__( (object)arg1, (Poly3dType)arg2, (list)arg3, (bool)arg4) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,enum AcDb::Poly3dType,class boost::python::list,bool)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -50868,6 +51281,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -51054,6 +51470,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -51377,6 +51796,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -51616,6 +52038,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -52098,6 +52523,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -52501,6 +52929,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -52995,6 +53426,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -53413,6 +53847,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -53868,6 +54305,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -54123,6 +54563,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > activeFileName(class PyDbRasterImageDef {lvalue})'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -54360,6 +54803,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -54519,6 +54965,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -54709,6 +55158,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -54793,6 +55245,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId add(class PyDbRegAppTable {lvalue},class PyDbRegAppTableRecord)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -55006,6 +55461,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -55094,6 +55552,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -55295,6 +55756,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -55380,6 +55844,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -55714,6 +56181,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -56058,6 +56528,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -56442,6 +56915,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -56662,6 +57138,9 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
 
     C++ signature :
         void __init__(struct _object * __ptr64,double,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -57136,6 +57615,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -57670,6 +58152,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -57991,6 +58476,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -58361,6 +58849,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -58935,6 +59426,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeFaces (self, *args, **kwargs)-> None :
       '''removeFaces( (Solid3d)arg1, (list)arg2) -> None :
 
@@ -59133,6 +59627,9 @@ stlOut( (Solid3d)arg1, (str)arg2, (bool)arg3, (float)arg4) -> None :
 
 class SpatialFilter:
     def __init__ (self: SpatialFilter,id: PyDb.ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
+      '''                             '''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
@@ -59347,6 +59844,9 @@ class SpatialFilter:
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -59513,6 +60013,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)ar
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -59999,6 +60502,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeControlPointAt (self: Spline,val : int)-> None :
@@ -60619,6 +61125,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -61000,6 +61509,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -61551,6 +62063,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -61932,6 +62447,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -62372,6 +62890,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId add(class PyDbSymbolTable {lvalue},class PyDbSymbolTableRecord)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -62584,6 +63105,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -62653,6 +63177,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
 
 class SymbolTableRecord:
     def __init__ (self: SymbolTableRecord,id: ObjectId,mode: OpenMode=kForRead)-> None :
+      '''                             '''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
@@ -62855,6 +63382,9 @@ class SymbolTableRecord:
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -62940,6 +63470,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -63762,6 +64295,9 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
       '''                             '''
     ...
     def removeAllOverrides (self: Table,row: int,col: int)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeDataLink (self, *args, **kwargs)-> None :
@@ -64670,6 +65206,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode,bool)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -65106,6 +65645,9 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -65466,6 +66008,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -65837,6 +66382,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -66146,6 +66694,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId add(class PyDbTextStyleTable {lvalue},class PyDbTextStyleTableRecord)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -66358,6 +66909,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -66446,6 +67000,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -66669,6 +67226,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -67280,6 +67840,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId add(class PyDbUCSTable {lvalue},class PyDbUCSTableRecord)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -67492,6 +68055,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -67580,6 +68146,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -67784,6 +68353,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -67880,6 +68452,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -68086,6 +68661,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -68178,6 +68756,9 @@ class UnderlayLayer:
 
 class UnderlayReference:
     def __init__ (self: UnderlayReference,id: PyDb.ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
+      '''                             '''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
@@ -68570,6 +69151,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -68969,6 +69553,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -69288,6 +69875,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -69438,6 +70028,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -69773,6 +70366,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -69987,6 +70583,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -70278,6 +70877,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -70497,6 +71099,9 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
 
 class Viewport:
     def __init__ (self: Viewport,id: PyDb.ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
+      '''                             '''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
@@ -71007,6 +71612,9 @@ previousBackground( (Viewport)arg1, (GiDrawableType)arg2) -> ObjectId :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -71665,6 +72273,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -71979,6 +72590,9 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -72399,6 +73013,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode,bool)'''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -72853,6 +73470,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
@@ -73087,6 +73707,9 @@ class Xrecord:
     def __init__ (self: Xrecord,id: PyDb.ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -73279,6 +73902,9 @@ class Xrecord:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :

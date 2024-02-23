@@ -9,6 +9,7 @@ class PyDbObjectReactor;
 class PyDbEntityReactor;
 class PyDbSnoopDwgFiler;
 class PyDbIdMapping;
+class PyDbObjectContext;
 
 //----------------------------------------------------------------------------------------
 //PyDbObject
@@ -21,6 +22,8 @@ public:
     PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     inline virtual ~PyDbObject() override = default;
+    void                addContext(const PyDbObjectContext& ctx);
+    void                removeContext(const PyDbObjectContext& ctx);
     PyDbObjectId        objectId() const;
     PyDbObjectId        ownerId() const;
     void                setOwnerId(const PyDbObjectId& objId);
