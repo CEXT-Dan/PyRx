@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "PyDbObjectContext.h"
 #include "dbObjectContextManager.h"
+#include "PyDbObject.h"
+
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------------
@@ -8,6 +10,18 @@ using namespace boost::python;
 void makePyDbObjectContextCollectionWrapper()
 {
     class_<PyDbObjectContextCollection, bases<PyRxObject>>("ObjectContextCollection", boost::python::no_init)
+        .def("name", &PyDbObjectContextCollection::name)
+        .def("currentContext", &PyDbObjectContextCollection::currentContext)
+        .def("setCurrentContext", &PyDbObjectContextCollection::setCurrentContext)
+        .def("addContext", &PyDbObjectContextCollection::addContext)
+        .def("removeContext", &PyDbObjectContextCollection::removeContext)
+        .def("lockContext", &PyDbObjectContextCollection::lockContext)
+        .def("unlockContext", &PyDbObjectContextCollection::unlockContext)
+        .def("locked", &PyDbObjectContextCollection::locked)
+        .def("getContext", &PyDbObjectContextCollection::getContext)
+        .def("hasContext", &PyDbObjectContextCollection::hasContext)
+        .def("toList1", &PyDbObjectContextCollection::toList1)
+        .def("toList2", &PyDbObjectContextCollection::toList2)
         .def("desc", &PyDbObjectContextCollection::desc).staticmethod("desc")
         .def("className", &PyDbObjectContextCollection::className).staticmethod("className")
         ;
@@ -16,6 +30,95 @@ void makePyDbObjectContextCollectionWrapper()
 PyDbObjectContextCollection::PyDbObjectContextCollection(AcDbObjectContextCollection* pt)
     : PyRxObject(pt)
 {
+}
+
+std::string PyDbObjectContextCollection::name() const
+{
+    return wstr_to_utf8(impObj()->name());
+}
+
+PyDbObjectContext PyDbObjectContextCollection::currentContext(const PyDbObject& obj)
+{
+   return PyDbObjectContext(impObj()->currentContext(obj.impObj()),true);
+}
+
+void PyDbObjectContextCollection::setCurrentContext(const PyDbObjectContext& pContext)
+{
+    PyThrowBadEs(impObj()->setCurrentContext(pContext.impObj()));
+}
+
+void PyDbObjectContextCollection::addContext(const PyDbObjectContext& pContext)
+{
+    PyThrowBadEs(impObj()->addContext(pContext.impObj()));
+}
+
+void PyDbObjectContextCollection::removeContext(const std::string& contextName)
+{
+    PyThrowBadEs(impObj()->removeContext(utf8_to_wstr(contextName).c_str()));
+}
+
+void PyDbObjectContextCollection::lockContext(const PyDbObjectContext& pContext)
+{
+    PyThrowBadEs(impObj()->lockContext(pContext.impObj()));
+}
+
+void PyDbObjectContextCollection::unlockContext()
+{
+    PyThrowBadEs(impObj()->unlockContext());
+}
+
+bool PyDbObjectContextCollection::locked() const
+{
+    return impObj()->locked();
+}
+
+PyDbObjectContext PyDbObjectContextCollection::getContext(const std::string& contextName)
+{
+    return PyDbObjectContext(impObj()->getContext(utf8_to_wstr(contextName).c_str()), true);
+}
+
+bool PyDbObjectContextCollection::hasContext(const std::string& contextName)
+{
+    return impObj()->hasContext(utf8_to_wstr(contextName).c_str());
+}
+
+boost::python::list PyDbObjectContextCollection::toList1()
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    using Iter = std::unique_ptr<AcDbObjectContextCollectionIterator>;
+
+    for (Iter iter(impObj()->newIterator()); !iter->done(); iter->next())
+    {
+        AcDbObjectContext* pObjectContext = nullptr;
+        PyThrowBadEs(iter->getContext(pObjectContext));
+        pylist.append(PyDbObjectContext(pObjectContext, true));
+    }
+    return pylist;
+}
+
+boost::python::list PyDbObjectContextCollection::toList2(const PyRxClass& _class)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    using Iter = std::unique_ptr<AcDbObjectContextCollectionIterator>;
+
+    for (Iter iter(impObj()->newIterator()); !iter->done(); iter->next())
+    {
+        AcDbObjectContext* pObjectContext = nullptr;
+        PyThrowBadEs(iter->getContext(pObjectContext));
+
+        AcRxClass* pclass = _class.impObj();
+
+        if (pObjectContext->isA() == pclass)
+        {
+            if(pclass == AcDbAnnotationScale::desc())
+                pylist.append(PyDbAnnotationScale(static_cast<AcDbAnnotationScale*>(pObjectContext), true));
+            else
+                pylist.append(PyDbObjectContext(pObjectContext, true));
+        }
+    }
+    return pylist;
 }
 
 PyRxClass PyDbObjectContextCollection::desc()
@@ -106,8 +209,8 @@ PyDbObjectContext::PyDbObjectContext(AcDbObjectContext* pt)
 {
 }
 
-PyDbObjectContext::PyDbObjectContext(AcDbObjectContext* pt, bool autoDelete, bool isDbOject)
-    : PyRxObject(pt, autoDelete, isDbOject)
+PyDbObjectContext::PyDbObjectContext(AcDbObjectContext* pt, bool autoDelete)
+    : PyRxObject(pt, autoDelete, false)
 {
 }
 
@@ -171,7 +274,7 @@ void makePyDbAnnotationScaleWrapper()
 }
 
 PyDbAnnotationScale::PyDbAnnotationScale()
-    : PyDbObjectContext(new AcDbAnnotationScale(), true, false)
+    : PyDbObjectContext(new AcDbAnnotationScale(), true)
 {
 }
 
@@ -180,8 +283,8 @@ PyDbAnnotationScale::PyDbAnnotationScale(AcDbAnnotationScale* pt)
 {
 }
 
-PyDbAnnotationScale::PyDbAnnotationScale(AcDbAnnotationScale* pt, bool autoDelete, bool isDbOject)
-    : PyDbObjectContext(pt, autoDelete, isDbOject)
+PyDbAnnotationScale::PyDbAnnotationScale(AcDbAnnotationScale* pt, bool autoDelete)
+    : PyDbObjectContext(pt, autoDelete)
 {
 }
 
