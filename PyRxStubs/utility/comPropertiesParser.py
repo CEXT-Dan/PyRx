@@ -1,6 +1,5 @@
-
-with open("M:\\Dev\\Projects\\PyRxGit\\PyRxStubs\\dump.txt", "w") as outFile:
-    with open("M:\\Dev\\Projects\\PyRxGit\\PyRxStubs\\ZxApp24.py", "r") as inFile:
+with open("M:\\Dev\\Projects\\PyRxGit\\PyRxStubs\\\utility\\dump.txt", "w") as outFile:
+    with open("M:\\Dev\\Projects\\PyRxGit\\PyRxStubs\\AxApp24.py", "r") as inFile:
         inclass = False
         inPropGet = False
         inPropPut = False
@@ -45,6 +44,8 @@ with open("M:\\Dev\\Projects\\PyRxGit\\PyRxStubs\\dump.txt", "w") as outFile:
                 outFile.write('    def {}(self, value) -> None: ...\n'.format(func))
                 continue
             line = ' '
+
+print("DONE!")
 
 
 
