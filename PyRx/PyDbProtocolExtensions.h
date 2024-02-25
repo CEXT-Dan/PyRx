@@ -28,3 +28,5 @@ public:
 #endif
 
 //AcDbAnnotativeObjectPE TODO:
+
+//OPMPerInstancePropertyExtension
