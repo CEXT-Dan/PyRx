@@ -13,6 +13,16 @@ using namespace boost::python;
 
 #ifdef BRXAPP
 void ads_regen(void);
+
+extern int acedNEntSelPEx(
+    const ACHAR* str,
+    ads_name entres,
+    ads_point ptres,
+    int pickflag,
+    ads_matrix xformres,
+    struct resbuf** refstkres,
+    unsigned int uTransSpaceFlag,
+    Adesk::GsMarker* gsmarker);
 #endif
 
 
@@ -305,7 +315,7 @@ boost::python::tuple PyAcEditor::nEntSelP2(const std::string& prompt, const AcGe
 
 static boost::python::tuple nEntSelPEx(const std::string& prompt, const AcGePoint3d& ptres, int opt, unsigned int uTransSpaceFlag)
 {
-#if _ZRXTARGET == 240 || _GRXTARGET == 240 || _BRXTARGET == 240
+#if _ZRXTARGET == 240 || _GRXTARGET == 240 /*|| _BRXTARGET == 240*/
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
