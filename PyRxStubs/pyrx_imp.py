@@ -7,4 +7,4 @@ import PyEd as Ed
 import PyPl as Pl
 import PyGs as Gs
 # this module is to hide Pylance 'module not found' warnings
-# Pylance cant reat C++
+# Pylance cant read Python embedded in C++

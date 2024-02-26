@@ -1,4 +1,4 @@
-ifrom pyrx_imp import Rx
+from pyrx_imp import Rx
 from pyrx_imp import Ge
 from pyrx_imp import Gi
 from pyrx_imp import Db
