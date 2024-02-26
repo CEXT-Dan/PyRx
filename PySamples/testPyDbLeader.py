@@ -1,19 +1,19 @@
-import PyRx  # = Runtime runtime
-import PyGe  # = Geometry
-import PyGi  # = Graphics interface
-import PyDb  # = database
-import PyAp  # = application, document classes services
-import PyEd  # = editor
+from pyrx_imp import Rx
+from pyrx_imp import Ge
+from pyrx_imp import Gi
+from pyrx_imp import Db
+from pyrx_imp import Ap
+from pyrx_imp import Ed
+from pyrx_imp import Gs
 
 
 def PyRxCmd_pytestLeader():
     try:
-        
-        db = PyDb.HostApplicationServices().workingDatabase();
-        model = PyDb.BlockTableRecord(db.modelSpaceId(),PyDb.OpenMode.ForWrite)
+        db = Db.HostApplicationServices().workingDatabase();
+        model = Db.BlockTableRecord(db.modelSpaceId(),Db.OpenMode.ForWrite)
         
         #create anno
-        mtext = PyDb.MText()
+        mtext = Db.MText()
         mtext.setDatabaseDefaults()
         mtext.setLocation(PyGe.Point3d(105, 100,0))
         mtext.setContents("what we have, is failure to communicate")
@@ -23,13 +23,13 @@ def PyRxCmd_pytestLeader():
         mtext.close()
        
         #create leader
-        leader = PyDb.Leader()
+        leader = Db.Leader()
         leader.setDatabaseDefaults()
         leader.appendVertex(PyGe.Point3d(0,0,0))
         leader.appendVertex(PyGe.Point3d(100,100,0))
         
         #set leader to red
-        c = PyDb.Color()
+        c = Db.Color()
         c.setRGB(255,0,0)
         leader.setColor(c)
         

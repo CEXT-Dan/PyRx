@@ -5,12 +5,13 @@ import win32api
 import win32gui
 import win32con
 
-import PyRx# = Runtime runtime
-import PyGe# = Geometry
-import PyGi# = Graphics interface
-import PyDb# = database
-import PyAp# = application, document classes services
-import PyEd# = editor
+from pyrx_imp import Rx
+from pyrx_imp import Ge
+from pyrx_imp import Gi
+from pyrx_imp import Db
+from pyrx_imp import Ap
+from pyrx_imp import Ed
+from pyrx_imp import Gs
 
 WM_ACAD_KEEPFOCUS = 28929
 
@@ -79,8 +80,8 @@ class TestDialog(wx.Dialog):
     def onGetPoint(self, event):
         try: 
             self.keepFocus = 0
-            val = PyAp.Application().docManager().curDocument().editor().getPoint("\nGetPoint\n")
-            if val[0] == PyEd.PromptStatus.eNormal :
+            val = Ap.Application().docManager().curDocument().editor().getPoint("\nGetPoint\n")
+            if val[0] == Ed.PromptStatus.eNormal :
                 self.textPointResult.SetValue(val[1].__str__())
         finally:
             self.keepFocus = 1
@@ -88,8 +89,8 @@ class TestDialog(wx.Dialog):
     def onGetDist(self, event):
         try: 
             self.keepFocus = 0
-            val = PyAp.Application().docManager().curDocument().editor().getDist("\nGetDist\n")
-            if val[0] == PyEd.PromptStatus.eNormal :
+            val = Ap.Application().docManager().curDocument().editor().getDist("\nGetDist\n")
+            if val[0] == Ed.PromptStatus.eNormal :
                 self.textDistResult.SetValue(val[1].__str__())
         finally:
             self.keepFocus = 1

@@ -1,37 +1,38 @@
 import os
 
-import PyRx  # = Runtime runtime
-import PyGe  # = Geometry
-import PyGi  # = Graphics interface
-import PyDb  # = database
-import PyAp  # = application, document classes services
-import PyEd  # = editor
+from pyrx_imp import Rx
+from pyrx_imp import Ge
+from pyrx_imp import Gi
+from pyrx_imp import Db
+from pyrx_imp import Ap
+from pyrx_imp import Ed
+from pyrx_imp import Gs
 
 
 print("command = pydrawjig")
 
 # just like in ARX, ent must not be null
-class MyDrawJig(PyEd.DrawJig):
+class MyDrawJig(Ed.DrawJig):
     def __init__(self, basepoint):
-            PyEd.DrawJig.__init__(self)
+            Ed.DrawJig.__init__(self)
             self.curpoint = basepoint
             self.basepoint = basepoint
             self.lastpoint = basepoint
         
-            self.line = PyDb.Line(PyGe.Point3d(0, 0, 0), PyGe.Point3d(100, 100, 0))
+            self.line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
             self.line.setDatabaseDefaults()
 
-            self.circle = PyDb.Circle(PyGe.Point3d(50, 50, 0), PyGe.Vector3d.kZAxis, 10)
+            self.circle = Db.Circle(Ge.Point3d(50, 50, 0), Ge.Vector3d.kZAxis, 10)
             self.circle.setDatabaseDefaults()
 
 
     def sampler(self):
-            self.setUserInputControls(PyEd.UserInputControls.kAccept3dCoordinates)
+            self.setUserInputControls(Ed.UserInputControls.kAccept3dCoordinates)
             point_result_tuple = self.acquirePoint()
             self.curpoint = point_result_tuple[1]
             
-            if point_result_tuple[0] == PyEd.DragStatus.kNormal:
-                return PyEd.DragStatus.kNoChange
+            if point_result_tuple[0] == Ed.DragStatus.kNormal:
+                return Ed.DragStatus.kNoChange
             return point_result_tuple[0]
 
     # C++ update returns False is not overridden
@@ -43,9 +44,9 @@ class MyDrawJig(PyEd.DrawJig):
             print(err)
 
     #worldDraw
-    def worldDraw(self, wd : PyGi.WorldDraw):
+    def worldDraw(self, wd : Gi.WorldDraw):
         try:
-            mat = PyGe.Matrix3d.translation(self.curpoint-self.basepoint)
+            mat = Ge.Matrix3d.translation(self.curpoint-self.basepoint)
             geo = wd.geometry()
             geo.pushModelTransform(mat)
             geo.draw(self.line)
@@ -57,7 +58,7 @@ class MyDrawJig(PyEd.DrawJig):
 
 def PyRxCmd_pydrawjig():
     try:
-        jig = MyDrawJig(PyGe.Point3d(0, 0, 0))
+        jig = MyDrawJig(Ge.Point3d(0, 0, 0))
         jig.setDispPrompt("\nPick endPoint:\n")
         res = jig.drag()
         print("done", res)

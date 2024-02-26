@@ -1,12 +1,13 @@
 import wx
 from wx import xrc
 
-import PyRx# = Runtime runtime
-import PyGe# = Geometry
-import PyGi# = Graphics interface
-import PyDb# = database
-import PyAp# = application, document classes services
-import PyEd# = editor
+from pyrx_imp import Rx
+from pyrx_imp import Ge
+from pyrx_imp import Gi
+from pyrx_imp import Db
+from pyrx_imp import Ap
+from pyrx_imp import Ed
+from pyrx_imp import Gs
 
 def OnPyInitApp():
     print("\nOnPyInitApp")
@@ -25,7 +26,7 @@ def OnPyUnloadDwg():
 def PyRxCmd_wxpyxrc():
     try: 
         #CAcModuleResourceOverride
-        resource = PyAp.ResourceOverride()
+        resource = Ap.ResourceOverride()
         dlg = TestDialog(None, -1, "")
         if dlg.ShowModal() == wx.ID_OK:
             print('woohoo')
@@ -53,16 +54,16 @@ class TestDialog(wx.Dialog):
         self.textPointResult = xrc.XRCCTRL(self,'ID_TEXTCTRL_POINT_RESULT')
         self.textDistResult = xrc.XRCCTRL(self,'ID_TEXTCTRL_DIST_RESULT')
         
-        PyAp.Application.applyHostIcon(self.GetHandle())
+        Ap.Application.applyHostIcon(self.GetHandle())
       
     def onGetPoint(self, event):
-        val = PyEd.Editor().getPoint("\nGetPoint\n")
-        if val[0] == PyEd.PromptStatus.eNormal :
+        val = Ed.Editor().getPoint("\nGetPoint\n")
+        if val[0] == Ed.PromptStatus.eNormal :
             self.textPointResult.SetValue(val[1].__str__())
             
     def onGetDist(self, event):
-        val = PyAp.Application().docManager().curDocument().editor().getDist("\nGetDist\n")
-        if val[0] == PyEd.PromptStatus.eNormal :
+        val = Ap.Application().docManager().curDocument().editor().getDist("\nGetDist\n")
+        if val[0] == Ed.PromptStatus.eNormal :
             self.textDistResult.SetValue(val[1].__str__())
 
 

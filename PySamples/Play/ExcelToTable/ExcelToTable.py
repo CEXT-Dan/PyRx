@@ -1,16 +1,17 @@
 import PyRxApp  # = all the global methods like acutPrintf,
-import PyRx  # = Runtime runtime
-import PyGe  # = Geometry
-import PyGi  # = Graphics interface
-import PyDb  # = database
-import PyAp  # = application, document classes services
-import PyEd  # = editor
+from pyrx_imp import Rx
+from pyrx_imp import Ge
+from pyrx_imp import Gi
+from pyrx_imp import Db
+from pyrx_imp import Ap
+from pyrx_imp import Ed
+from pyrx_imp import Gs
 
 from openpyxl import load_workbook
 
 def PyRxCmd_pydoit():
     try:
-        table = PyDb.Table()
+        table = Db.Table()
         table.setSize(22,8)
         table.generateLayout()
         table.setDatabaseDefaults()
@@ -22,8 +23,8 @@ def PyRxCmd_pydoit():
                 val = sheet.cell(row=irow+1, column=icol+1)
                 table.setTextString(irow,icol,"{}".format(val.value))
             
-        db = PyAp.Application().docManager().curDocument().database()
-        model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
+        db = Ap.Application().docManager().curDocument().database()
+        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
         model.appendAcDbEntity(table)   
         
     except Exception as err:

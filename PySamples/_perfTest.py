@@ -1,10 +1,10 @@
-import PyRx as Rx
-import PyGe as Ge
-import PyGi as Gi
-import PyDb as Db
-import PyAp as Ap
-import PyEd as Ed
-import PyGs as Gs
+from pyrx_imp import Rx
+from pyrx_imp import Ge
+from pyrx_imp import Gi
+from pyrx_imp import Db
+from pyrx_imp import Ap
+from pyrx_imp import Ed
+from pyrx_imp import Gs
 import timeit
 
 #run this before release!!!
@@ -86,5 +86,4 @@ def PyRxCmd_pyperftest():
         #print("test move_points_com....\t time = {}".format(timeit.timeit(move_points_com, number=20)))
     except Exception as err:
         print(err)
-
 

@@ -1,34 +1,35 @@
 import PyRxApp  # = all the global methods like acutPrintf,
-import PyRx  # = Runtime runtime
-import PyGe  # = Geometry
-import PyGi  # = Graphics interface
-import PyDb  # = database
-import PyAp  # = application, document classes services
-import PyEd  # = editor
+from pyrx_imp import Rx
+from pyrx_imp import Ge
+from pyrx_imp import Gi
+from pyrx_imp import Db
+from pyrx_imp import Ap
+from pyrx_imp import Ed
+from pyrx_imp import Gs
 
 RSG_NONULL = 1
 
 def PyRxCmd_pydoit():
     try:
-        doc = PyAp.Application().docManager().curDocument()
+        doc = Ap.Application().docManager().curDocument()
         ed = doc.editor()
         entSelRes = ed.entSel("\nPick a curve: ")
-        if entSelRes[0] != PyEd.PromptStatus.eNormal:
+        if entSelRes[0] != Ed.PromptStatus.eNormal:
             return
 
         id = entSelRes[1]
-        if not id.objectClass().isDerivedFrom(PyDb.Curve.desc()):
+        if not id.objectClass().isDerivedFrom(Db.Curve.desc()):
             return
 
         db = doc.database()
-        model = PyDb.BlockTableRecord(
-            db.modelSpaceId(), PyDb.OpenMode.kForWrite)
+        model = Db.BlockTableRecord(
+            db.modelSpaceId(), Db.OpenMode.kForWrite)
 
-        curve = PyDb.Curve(id, PyDb.OpenMode.kForRead)
+        curve = Db.Curve(id, Db.OpenMode.kForRead)
 
         offset = 10  # default value
         getRealRes = ed.getReal("\nEnter an offest: ")
-        if getRealRes[0] == PyEd.PromptStatus.eNormal:
+        if getRealRes[0] == Ed.PromptStatus.eNormal:
            offset = getRealRes[1]
 
         for i in range(0, 10):
@@ -42,7 +43,7 @@ def PyRxCmd_pydoit():
         kwRes = ed.getKword("\nDelete original? [Yes/No]: ")
 
         do_delete = False
-        if kwRes[0] == PyEd.PromptStatus.eNormal and kwRes[1] == "Y":
+        if kwRes[0] == Ed.PromptStatus.eNormal and kwRes[1] == "Y":
             do_delete = True
 
         if do_delete:

@@ -1,9 +1,10 @@
-import PyRx  # = Runtime runtime
-import PyGe  # = Geometry
-import PyGi  # = Graphics interface
-import PyDb  # = database
-import PyAp  # = application, document classes services
-import PyEd  # = editor
+from pyrx_imp import Rx
+from pyrx_imp import Ge
+from pyrx_imp import Gi
+from pyrx_imp import Db
+from pyrx_imp import Ap
+from pyrx_imp import Ed
+from pyrx_imp import Gs
 
 
 def OnPyInitApp():
@@ -16,9 +17,9 @@ def OnPyUnloadApp():
     PyRxCmd_pystopoverrule()
 
 
-class MyDrawableOverrule(PyGi.DrawableOverrule):
+class MyDrawableOverrule(Gi.DrawableOverrule):
     def __init__(self):
-        PyGi.DrawableOverrule.__init__(self)
+        Gi.DrawableOverrule.__init__(self)
 
     # override
     def isApplicable(self, subject):
@@ -31,27 +32,27 @@ class MyDrawableOverrule(PyGi.DrawableOverrule):
             flag = self.baseWorldDraw(subject, wd)
 
             # cast subject to a line
-            line = PyDb.Line.cast(subject)
+            line = Db.Line.cast(subject)
 
             # Transparency
             traits = wd.subEntityTraits()
-            trans = PyDb.Transparency(0.3)
+            trans = Db.Transparency(0.3)
             traits.setTransparency(trans)
 
             # circle info
-            seg = PyGe.LineSeg3d(line.endPoint(), line.startPoint())
+            seg = Ge.LineSeg3d(line.endPoint(), line.startPoint())
             cen = seg.midPoint()
             rad = seg.length() * 0.3
 
             # draw circle
             traits.setColor(1)
             geo = wd.geometry()
-            geo.circle(cen, rad, PyGe.Vector3d.kZAxis)
+            geo.circle(cen, rad, Ge.Vector3d.kZAxis)
 
             # draw text
             traits.setColor(2)
             testpos = cen + (seg.direction().perpVector().normalize() * 3)
-            geo.text(testpos, PyGe.Vector3d.kZAxis,
+            geo.text(testpos, Ge.Vector3d.kZAxis,
                      seg.direction(), 10, 1.0, 0, "SUP Bruh")
 
             # returing false here will go to viewport
@@ -67,7 +68,7 @@ def PyRxCmd_pydrawoverrule():
         if overrule != None:
             return 
         overrule = MyDrawableOverrule()
-        overrule.addOverrule(PyDb.Line.desc(), overrule)
+        overrule.addOverrule(Db.Line.desc(), overrule)
         overrule.setIsOverruling(True)
     except Exception as err:
         print(err)
@@ -78,7 +79,7 @@ def PyRxCmd_pystopoverrule():
         global overrule
         if overrule == None:
             return
-        if overrule.removeOverrule(PyDb.Line.desc(), overrule) == PyDb.ErrorStatus.eOk:
+        if overrule.removeOverrule(Db.Line.desc(), overrule) == Db.ErrorStatus.eOk:
             overrule.setIsOverruling(False)
         del (overrule)
     except Exception as err:

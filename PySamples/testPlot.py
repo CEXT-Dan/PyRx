@@ -1,10 +1,11 @@
-import PyRx as Rx
-import PyGe as Ge
-import PyGi as Gi
-import PyDb as Db
-import PyAp as Ap
-import PyEd as Ed
-import PyPl as Pl
+from pyrx_imp import Rx
+from pyrx_imp import Ge
+from pyrx_imp import Gi
+from pyrx_imp import Db
+from pyrx_imp import Ap
+from pyrx_imp import Ed
+from pyrx_imp import Gs
+from pyrx_imp import Pl
 
 # port of
 # https://through-the-interface.typepad.com/through_the_interface/2007/10/plotting-a-wind.html
