@@ -6,17 +6,19 @@ matplotlib.use('WXAgg')
 from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-import PyRx
-import PyGe
-import PyGi
-import PyDb
-import PyAp
-import PyEd
+from pyrx_imp import Rx
+from pyrx_imp import Ge
+from pyrx_imp import Gi
+from pyrx_imp import Db
+from pyrx_imp import Ap
+from pyrx_imp import Ed
+from pyrx_imp import Gs
+
 import wx
 
 def PyRxCmd_wxpy():
     try: 
-        res = PyAp.ResourceOverride()
+        res = Ap.ResourceOverride()
         dlg = TestDialog(None, -1, "Plot",wx.Size(500,300))
         if dlg.ShowModal() == wx.ID_OK:
             print("Yay!")
@@ -48,8 +50,8 @@ class TestDialog(wx.Dialog):
 
         wx.Dialog.__init__(self)
         self.Create(parent, id, title, pos, size, style)
-        PyAp.Application.setTitleThemeDark(self.GetHandle())
-        PyAp.Application.applyHostIcon(self.GetHandle())
+        Ap.Application.setTitleThemeDark(self.GetHandle())
+        Ap.Application.applyHostIcon(self.GetHandle())
         
         self.pltpanel = CanvasPanel(self)
         self.pltpanel.draw()

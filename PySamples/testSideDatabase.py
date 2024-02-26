@@ -1,10 +1,10 @@
-import PyRx as Rx
-import PyGe as Ge
-import PyGi as Gi
-import PyDb as Db
-import PyAp as Ap
-import PyEd as Ed
-import PyGs as Gs
+from pyrx_imp import Rx
+from pyrx_imp import Ge
+from pyrx_imp import Gi
+from pyrx_imp import Db
+from pyrx_imp import Ap
+from pyrx_imp import Ed
+from pyrx_imp import Gs
 
 # option A, create a new function scope
 def doSomething(sideDb: Db.Database):

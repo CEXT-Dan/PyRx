@@ -1,9 +1,10 @@
-import PyRx  # = Runtime runtime
-import PyGe  # = Geometry
-import PyGi  # = Graphics interface
-import PyDb  # = database
-import PyAp  # = application, document classes services
-import PyEd  # = editor
+from pyrx_imp import Rx
+from pyrx_imp import Ge
+from pyrx_imp import Gi
+from pyrx_imp import Db
+from pyrx_imp import Ap
+from pyrx_imp import Ed
+from pyrx_imp import Gs
 
 
 def OnPyInitApp():
@@ -16,52 +17,52 @@ def OnPyUnloadApp():
     PyRxCmd_pystopdbooverrule()
 
 
-class MyDboOverrule(PyDb.DbObjectOverrule):
+class MyDboOverrule(Db.DbObjectOverrule):
     def __init__(self):
-        PyDb.DbObjectOverrule.__init__(self)
+        Db.DbObjectOverrule.__init__(self)
 
     # must override
     def isApplicable(self, subject):
         return True
 
     # optional override
-    def open(self, subject: PyDb.DbObject, mode: PyDb.OpenMode) -> PyDb.ErrorStatus:
+    def open(self, subject: Db.DbObject, mode: Db.OpenMode) -> Db.ErrorStatus:
         try:
             return self.baseOpen(subject, mode)
         except Exception as err:
             print(err)
 
-    def close(self, subject: PyDb.DbObject) -> PyDb.ErrorStatus:
+    def close(self, subject: Db.DbObject) -> Db.ErrorStatus:
         try:
             return self.baseClose(subject)
         except Exception as err:
             print(err)
 
-    def cancel(self, subject: PyDb.DbObject) -> PyDb.ErrorStatus:
+    def cancel(self, subject: Db.DbObject) -> Db.ErrorStatus:
         try:
             return self.baseCancel(subject)
         except Exception as err:
             print(err)
 
-    def erase(self, subject: PyDb.DbObject, erasing: bool) -> PyDb.ErrorStatus:
+    def erase(self, subject: Db.DbObject, erasing: bool) -> Db.ErrorStatus:
         try:
             return self.baseErase(subject, erasing)
         except Exception as err:
             print(err)
 
-    def deepClone(self, subject, pOwnerObject, idMap, isPrimary) -> PyDb.DbObject:
+    def deepClone(self, subject, pOwnerObject, idMap, isPrimary) -> Db.DbObject:
         try:
             clonedObject = self.baseDeepClone(subject, pOwnerObject, idMap, isPrimary)
-            # line = PyDb.Line.cast(clonedObject)
+            # line = Db.Line.cast(clonedObject)
             # line.setColorIndex(2)
             return clonedObject
         except Exception as err:
             print(err)
 
-    def wblockClone(self, subject, pOwnerObject, idMap, isPrimary) -> PyDb.DbObject:
+    def wblockClone(self, subject, pOwnerObject, idMap, isPrimary) -> Db.DbObject:
         try:
             clonedObject = self.baseWblockClone(subject, pOwnerObject, idMap, isPrimary)
-            line = PyDb.Line.cast(clonedObject)
+            line = Db.Line.cast(clonedObject)
             line.setColorIndex(1)
             return clonedObject
         except Exception as err:
@@ -77,7 +78,7 @@ def PyRxCmd_pydbooverrule():
         if overrule != None:
             return
         overrule = MyDboOverrule()
-        overrule.addOverrule(PyDb.Line.desc(), overrule)
+        overrule.addOverrule(Db.Line.desc(), overrule)
         overrule.setIsOverruling(True)
     except Exception as err:
         print(err)
@@ -88,7 +89,7 @@ def PyRxCmd_pystopdbooverrule():
         global overrule
         if overrule == None:
             return
-        if overrule.removeOverrule(PyDb.Line.desc(), overrule) == PyDb.ErrorStatus.eOk:
+        if overrule.removeOverrule(Db.Line.desc(), overrule) == Db.ErrorStatus.eOk:
             overrule.setIsOverruling(False)
         del overrule
     except Exception as err:

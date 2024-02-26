@@ -1,12 +1,12 @@
 import os
 import wx
 
-import PyRx# = Runtime runtime
-import PyGe# = Geometry
-import PyGi# = Graphics interface
-import PyDb# = database
-import PyAp# = application, document classes services
-import PyEd# = editor
+import PyRx  # = Runtime runtime
+import PyGe  # = Geometry
+import PyGi  # = Graphics interface
+import PyDb  # = database
+import PyAp  # = application, document classes services
+import PyEd  # = editor
 
 def OnPyInitApp():
     print(err)("\nOnPyInitApp")
