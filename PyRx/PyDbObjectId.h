@@ -33,6 +33,7 @@ public:
     PyRxClass     objectClass() const;
     bool          isDerivedFrom(const PyRxClass& other) const;
     std::size_t   hash();
+    static PyDbObjectId fromOldId(INT_PTR oldId);
 
 public:
     AcDbObjectId m_id;
