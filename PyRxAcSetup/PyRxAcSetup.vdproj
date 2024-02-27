@@ -21,6 +21,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0DB00B9A22174195B2E38080C42E48F0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1112F61BA73245A2833321AA1127F51A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_17B55E98DF6B4908A0B6F0E55A5D0AD4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -29,6 +41,12 @@
         {
         "MsmKey" = "8:_1C2320BB62CB5B6F4125FEFF4C780D39"
         "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1C2320BB62CB5B6F4125FEFF4C780D39"
+        "OwnerKey" = "8:_0DB00B9A22174195B2E38080C42E48F0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,6 +118,12 @@
         "Entry"
         {
         "MsmKey" = "8:_28BFE9D66ED2FBB7D4C05C1E13042273"
+        "OwnerKey" = "8:_0DB00B9A22174195B2E38080C42E48F0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_28BFE9D66ED2FBB7D4C05C1E13042273"
         "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -143,6 +167,12 @@
         {
         "MsmKey" = "8:_2EB02F1D8AF8A73D32795DFA684B9D31"
         "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2EB02F1D8AF8A73D32795DFA684B9D31"
+        "OwnerKey" = "8:_0DB00B9A22174195B2E38080C42E48F0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -208,6 +238,12 @@
         "Entry"
         {
         "MsmKey" = "8:_4476ECCB8EEA5C888F8411F0560BC5B9"
+        "OwnerKey" = "8:_0DB00B9A22174195B2E38080C42E48F0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4476ECCB8EEA5C888F8411F0560BC5B9"
         "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -245,6 +281,12 @@
         {
         "MsmKey" = "8:_49DE38D7FAAFEC8B6C80119587CE687F"
         "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_49DE38D7FAAFEC8B6C80119587CE687F"
+        "OwnerKey" = "8:_0DB00B9A22174195B2E38080C42E48F0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -291,6 +333,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4C00476F40434637B004AFEFE042A2E4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4C302FC2FEDC4484B50C7BD7C6D08C36"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -305,6 +353,12 @@
         {
         "MsmKey" = "8:_5746B9621D59851FB42AAEC3509C709E"
         "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5746B9621D59851FB42AAEC3509C709E"
+        "OwnerKey" = "8:_0DB00B9A22174195B2E38080C42E48F0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -369,8 +423,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5E928235A2A14369AF658FB3DECDBEDA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5F741AFD447CDFF8880B0635554508C3"
         "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5F741AFD447CDFF8880B0635554508C3"
+        "OwnerKey" = "8:_0DB00B9A22174195B2E38080C42E48F0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -454,6 +520,12 @@
         "Entry"
         {
         "MsmKey" = "8:_6E70CFE945ECC850451CFE2745805689"
+        "OwnerKey" = "8:_0DB00B9A22174195B2E38080C42E48F0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6E70CFE945ECC850451CFE2745805689"
         "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -508,6 +580,12 @@
         "Entry"
         {
         "MsmKey" = "8:_8780DCDE49FAA2FA19FBD5C7C16D5E72"
+        "OwnerKey" = "8:_0DB00B9A22174195B2E38080C42E48F0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8780DCDE49FAA2FA19FBD5C7C16D5E72"
         "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -556,6 +634,12 @@
         "Entry"
         {
         "MsmKey" = "8:_970062AA6BABB311890B26C5F3CEC939"
+        "OwnerKey" = "8:_0DB00B9A22174195B2E38080C42E48F0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_970062AA6BABB311890B26C5F3CEC939"
         "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -599,6 +683,12 @@
         {
         "MsmKey" = "8:_9F98F28001F9FFEB3BECB3842E519348"
         "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9F98F28001F9FFEB3BECB3842E519348"
+        "OwnerKey" = "8:_0DB00B9A22174195B2E38080C42E48F0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -682,6 +772,12 @@
         "Entry"
         {
         "MsmKey" = "8:_DA910765F44BB081D675C5032231DDDB"
+        "OwnerKey" = "8:_0DB00B9A22174195B2E38080C42E48F0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DA910765F44BB081D675C5032231DDDB"
         "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -730,6 +826,12 @@
         "Entry"
         {
         "MsmKey" = "8:_E998AB86FAACC22CABE0CA3CC33258C6"
+        "OwnerKey" = "8:_0DB00B9A22174195B2E38080C42E48F0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E998AB86FAACC22CABE0CA3CC33258C6"
         "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -773,6 +875,12 @@
         {
         "MsmKey" = "8:_F06D947A13E3B29986704753DBEFFE49"
         "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F06D947A13E3B29986704753DBEFFE49"
+        "OwnerKey" = "8:_0DB00B9A22174195B2E38080C42E48F0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -944,6 +1052,26 @@
             {
             "SourcePath" = "8:..\\PyRxStubs\\PyDb.pyi"
             "TargetName" = "8:PyDb.pyi"
+            "Tag" = "8:"
+            "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1112F61BA73245A2833321AA1127F51A"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\AxApp25.pyi"
+            "TargetName" = "8:AxApp25.pyi"
             "Tag" = "8:"
             "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
             "Condition" = "8:"
@@ -1220,6 +1348,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4C00476F40434637B004AFEFE042A2E4"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\AxApp25.py"
+            "TargetName" = "8:AxApp25.py"
+            "Tag" = "8:"
+            "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4C302FC2FEDC4484B50C7BD7C6D08C36"
             {
             "SourcePath" = "8:..\\PyRxStubs\\PyGs.html"
@@ -1344,6 +1492,26 @@
             {
             "SourcePath" = "8:..\\PyRxStubs\\BxApp24.py"
             "TargetName" = "8:BxApp24.py"
+            "Tag" = "8:"
+            "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5E928235A2A14369AF658FB3DECDBEDA"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\pyrx_impx.py"
+            "TargetName" = "8:pyrx_impx.py"
             "Tag" = "8:"
             "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
             "Condition" = "8:"
@@ -1900,7 +2068,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PyRx"
         "ProductCode" = "8:{51386679-D611-4231-A17E-B959075AD6CA}"
-        "PackageCode" = "8:{59FB2F46-3D35-419C-B844-CFE0EEA6DF2F}"
+        "PackageCode" = "8:{298C3940-F7DE-43B1-9989-B4AECB994DBB}"
         "UpgradeCode" = "8:{7DE3E792-70E4-4E32-BBC9-3AB04F5B000E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1910,7 +2078,7 @@
         "ProductVersion" = "8:1.1.161"
         "Manufacturer" = "8:Daniel Marcotte"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:"
+        "ARPHELPLINK" = "8:https://github.com/CEXT-Dan/PyRx"
         "Title" = "8:PyRx"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Daniel Marcotte"
@@ -2362,6 +2530,34 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0DB00B9A22174195B2E38080C42E48F0"
+            {
+            "SourcePath" = "8:..\\Bin\\PyRx25.0\\x64\\Release\\PyRx25.0.arx"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_22609B8BBEE94276AB14821CED2955B3"
             {
             "SourcePath" = "8:..\\Bin\\PyRx24.1\\x64\\Release\\PyRx24.1.arx"
