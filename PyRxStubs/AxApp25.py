@@ -947,6 +947,7 @@ class constants:
 
 from win32com.client import DispatchBaseClass
 class IAcad3DFace(DispatchBaseClass):
+    'AutoCAD 3dFace Interface'
     CLSID = IID('{13D301B6-7060-47D0-8537-71E4AFFEAB2E}')
     coclass_clsid = IID('{CB4650B7-6967-408A-B46C-A6FA6692CD8C}')
 
@@ -1152,6 +1153,7 @@ class IAcad3DFace(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcad3DPolyline(DispatchBaseClass):
+    'AutoCAD 3dPolyline Interface'
     CLSID = IID('{90B3BA9A-1EAC-4D66-88BB-4B27FE7E0A1A}')
     coclass_clsid = IID('{659D254C-BF3D-4244-BF87-E710C16C8722}')
 
@@ -3131,6 +3133,7 @@ class IAcadBlock(DispatchBaseClass):
         return True
 
 class IAxDbDocument(DispatchBaseClass):
+    'IAxDbDocument Interface'
     CLSID = IID('{D476C6C8-6691-449B-9322-CD388AB53D86}')
     coclass_clsid = IID('{9ADB19DB-BA70-4837-B8F6-64C504D90062}')
 
@@ -14325,31 +14328,52 @@ class IAcadOle(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -26034,6 +26058,7 @@ class AcadDgnUnderlay(CoClassBaseClass): # A CoClass
     default_interface = IAcadUnderlay
 
 class AcadDictionaries(CoClassBaseClass): # A CoClass
+    # The collection of all dictionaries in the drawing
     CLSID = IID('{6AD57E04-DD25-445D-8B0B-9D30731C18F1}')
     coclass_sources = [
     ]
@@ -26043,6 +26068,7 @@ class AcadDictionaries(CoClassBaseClass): # A CoClass
     default_interface = IAcadDictionaries
 
 class AcadDictionary(CoClassBaseClass): # A CoClass
+    # A container object for storing and retrieving objects
     CLSID = IID('{B3B11958-6CF4-42BE-BE18-22B6784198BC}')
     coclass_sources = [
     ]
@@ -26052,6 +26078,7 @@ class AcadDictionary(CoClassBaseClass): # A CoClass
     default_interface = IAcadDictionary
 
 class AcadDim3PointAngular(CoClassBaseClass): # A CoClass
+    # AutoCAD 3PointAngular Dimension Object
     CLSID = IID('{E5A9387A-E596-4C2B-97DB-D3B114A16CF4}')
     coclass_sources = [
     ]
@@ -26061,6 +26088,7 @@ class AcadDim3PointAngular(CoClassBaseClass): # A CoClass
     default_interface = IAcadDim3PointAngular
 
 class AcadDimAligned(CoClassBaseClass): # A CoClass
+    # AutoCAD Aligned Dimension Object
     CLSID = IID('{57708D68-55CE-4DAD-BFCA-973B6B136783}')
     coclass_sources = [
     ]
@@ -26070,6 +26098,7 @@ class AcadDimAligned(CoClassBaseClass): # A CoClass
     default_interface = IAcadDimAligned
 
 class AcadDimAngular(CoClassBaseClass): # A CoClass
+    # AutoCAD Angular Dimension Object
     CLSID = IID('{307BD44A-0FFD-4CEF-822B-4BDEA34B4A1D}')
     coclass_sources = [
     ]
@@ -26079,6 +26108,7 @@ class AcadDimAngular(CoClassBaseClass): # A CoClass
     default_interface = IAcadDimAngular
 
 class AcadDimArcLength(CoClassBaseClass): # A CoClass
+    # AutoCAD Arc Length Dimension Object
     CLSID = IID('{10F749EA-B550-403D-9388-10BCAB6F24B8}')
     coclass_sources = [
     ]
@@ -26088,6 +26118,7 @@ class AcadDimArcLength(CoClassBaseClass): # A CoClass
     default_interface = IAcadDimArcLength
 
 class AcadDimDiametric(CoClassBaseClass): # A CoClass
+    # AcadDimDiametric Class
     CLSID = IID('{AC0E393D-267A-4D41-846A-8108C8F54FA5}')
     coclass_sources = [
     ]
@@ -26097,6 +26128,7 @@ class AcadDimDiametric(CoClassBaseClass): # A CoClass
     default_interface = IAcadDimDiametric
 
 class AcadDimOrdinate(CoClassBaseClass): # A CoClass
+    # AutoCAD Ordinate Dimension Object
     CLSID = IID('{3480BE6E-DA6F-4915-AFC6-F99BDC5C51A7}')
     coclass_sources = [
     ]
@@ -26106,6 +26138,7 @@ class AcadDimOrdinate(CoClassBaseClass): # A CoClass
     default_interface = IAcadDimOrdinate
 
 class AcadDimRadial(CoClassBaseClass): # A CoClass
+    # AutoCAD Radial Dimension Object
     CLSID = IID('{D975A7B1-549A-4B61-AC39-191DC38BC29B}')
     coclass_sources = [
     ]
@@ -26115,6 +26148,7 @@ class AcadDimRadial(CoClassBaseClass): # A CoClass
     default_interface = IAcadDimRadial
 
 class AcadDimRadialLarge(CoClassBaseClass): # A CoClass
+    # AutoCAD Jogged Dimension Object
     CLSID = IID('{EC2F54DB-AFC5-4C70-A541-D098127CF2E2}')
     coclass_sources = [
     ]
@@ -26124,6 +26158,7 @@ class AcadDimRadialLarge(CoClassBaseClass): # A CoClass
     default_interface = IAcadDimRadialLarge
 
 class AcadDimRotated(CoClassBaseClass): # A CoClass
+    # AutoCAD Rotated Dimension Object
     CLSID = IID('{603F2BE2-7F1B-4E30-9952-7BB89BB37FBC}')
     coclass_sources = [
     ]
@@ -26133,6 +26168,7 @@ class AcadDimRotated(CoClassBaseClass): # A CoClass
     default_interface = IAcadDimRotated
 
 class AcadDimStyle(CoClassBaseClass): # A CoClass
+    # A group of dimension settings that determines the appearance of a dimension
     CLSID = IID('{3D0B072E-402F-4B4B-A9EF-2AD2095B7EE0}')
     coclass_sources = [
     ]
@@ -26142,6 +26178,7 @@ class AcadDimStyle(CoClassBaseClass): # A CoClass
     default_interface = IAcadDimStyle
 
 class AcadDimStyles(CoClassBaseClass): # A CoClass
+    # The collection of all dimension styles in the drawing
     CLSID = IID('{2BAAA55A-A189-4072-A6DE-CBB4E281289F}')
     coclass_sources = [
     ]
@@ -26151,6 +26188,7 @@ class AcadDimStyles(CoClassBaseClass): # A CoClass
     default_interface = IAcadDimStyles
 
 class AcadDimension(CoClassBaseClass): # A CoClass
+    # AcadDimension Class
     CLSID = IID('{B0950565-9D59-432B-BE65-8B32D88DA694}')
     coclass_sources = [
     ]
@@ -26161,6 +26199,7 @@ class AcadDimension(CoClassBaseClass): # A CoClass
 
 # This CoClass is known by the name 'AutoCAD.Drawing.25'
 class AcadDocument(CoClassBaseClass): # A CoClass
+    # An AutoCAD drawing
     CLSID = IID('{0063BC47-A0C5-44BC-ACC3-50962CA5E9C2}')
     coclass_sources = [
         _DAcadDocumentEvents,
@@ -26172,6 +26211,7 @@ class AcadDocument(CoClassBaseClass): # A CoClass
     default_interface = IAcadDocument
 
 class AcadDocuments(CoClassBaseClass): # A CoClass
+    # The collection of all AutoCAD drawings open in the current session
     CLSID = IID('{355CCC4C-6B4B-4C7B-BDB9-41F4905000D3}')
     coclass_sources = [
     ]
@@ -26191,6 +26231,7 @@ class AcadDwfUnderlay(CoClassBaseClass): # A CoClass
     default_interface = IAcadUnderlay
 
 class AcadDynamicBlockReferenceProperty(CoClassBaseClass): # A CoClass
+    # AutoCAD Dynamic Block Property Object
     CLSID = IID('{759FB461-6B66-447D-989B-40C4BA0C0188}')
     coclass_sources = [
     ]
@@ -26200,6 +26241,7 @@ class AcadDynamicBlockReferenceProperty(CoClassBaseClass): # A CoClass
     default_interface = IAcadDynamicBlockReferenceProperty
 
 class AcadEllipse(CoClassBaseClass): # A CoClass
+    # AutoCAD Ellipse Object
     CLSID = IID('{85C22FC1-28E6-44FA-9511-F7786B1E2310}')
     coclass_sources = [
     ]
@@ -26209,6 +26251,7 @@ class AcadEllipse(CoClassBaseClass): # A CoClass
     default_interface = IAcadEllipse
 
 class AcadEntity(CoClassBaseClass): # A CoClass
+    # AcadEntity Class
     CLSID = IID('{A772C2C9-723B-48E9-8FD4-DF969AED42AF}')
     coclass_sources = [
     ]
@@ -26218,6 +26261,7 @@ class AcadEntity(CoClassBaseClass): # A CoClass
     default_interface = IAcadEntity
 
 class AcadExternalReference(CoClassBaseClass): # A CoClass
+    # AutoCAD External Reference Object
     CLSID = IID('{565E523E-1EAA-4CDE-B7C0-FE1189D2E7D0}')
     coclass_sources = [
     ]
@@ -26227,6 +26271,7 @@ class AcadExternalReference(CoClassBaseClass): # A CoClass
     default_interface = IAcadExternalReference
 
 class AcadExtrudedSurface(CoClassBaseClass): # A CoClass
+    # AutoCAD Extruded Surface Object
     CLSID = IID('{42353532-9E4C-4CB1-8A30-7ACBE9E69624}')
     coclass_sources = [
     ]
@@ -26236,6 +26281,7 @@ class AcadExtrudedSurface(CoClassBaseClass): # A CoClass
     default_interface = IAcadExtrudedSurface
 
 class AcadGeoPositionMarker(CoClassBaseClass): # A CoClass
+    # AutoCAD Point Object
     CLSID = IID('{3EB36311-9DE6-4B68-8515-66C3D9509EC3}')
     coclass_sources = [
     ]
@@ -26245,6 +26291,7 @@ class AcadGeoPositionMarker(CoClassBaseClass): # A CoClass
     default_interface = IAcadGeoPositionMarker
 
 class AcadGeomapImage(CoClassBaseClass): # A CoClass
+    # AutoCAD Geomap Image Object
     CLSID = IID('{A586ADDE-BFB1-4721-938D-E43B16EA8D3F}')
     coclass_sources = [
     ]
@@ -26254,6 +26301,7 @@ class AcadGeomapImage(CoClassBaseClass): # A CoClass
     default_interface = IAcadGeomapImage
 
 class AcadGroup(CoClassBaseClass): # A CoClass
+    # A named SelectionSet object
     CLSID = IID('{9BE9F213-EB3D-480F-8607-50E06ED2D2F2}')
     coclass_sources = [
     ]
@@ -26263,6 +26311,7 @@ class AcadGroup(CoClassBaseClass): # A CoClass
     default_interface = IAcadGroup
 
 class AcadGroups(CoClassBaseClass): # A CoClass
+    # The collection of all groups in the drawing
     CLSID = IID('{88D8A5A7-3636-4131-8C7F-220DC9CBCA0D}')
     coclass_sources = [
     ]
@@ -26272,6 +26321,7 @@ class AcadGroups(CoClassBaseClass): # A CoClass
     default_interface = IAcadGroups
 
 class AcadHatch(CoClassBaseClass): # A CoClass
+    # AutoCAD Hatch Object
     CLSID = IID('{DEA79E20-55FA-4440-BA44-74E6C5ABD579}')
     coclass_sources = [
     ]
@@ -26281,6 +26331,7 @@ class AcadHatch(CoClassBaseClass): # A CoClass
     default_interface = IAcadHatch
 
 class AcadHelix(CoClassBaseClass): # A CoClass
+    # AutoCAD Helix Object
     CLSID = IID('{B4D2536B-E398-4971-B722-8D2C37D28AE5}')
     coclass_sources = [
     ]
@@ -26290,6 +26341,7 @@ class AcadHelix(CoClassBaseClass): # A CoClass
     default_interface = IAcadHelix
 
 class AcadHyperlink(CoClassBaseClass): # A CoClass
+    # A URL and URL description
     CLSID = IID('{142D4A82-C577-46CD-BEB8-C48E90DD4AEB}')
     coclass_sources = [
     ]
@@ -26299,6 +26351,7 @@ class AcadHyperlink(CoClassBaseClass): # A CoClass
     default_interface = IAcadHyperlink
 
 class AcadHyperlinks(CoClassBaseClass): # A CoClass
+    # The collection of all hyperlinks for a given entity
     CLSID = IID('{AE743DBB-452D-445E-B248-448C7154132E}')
     coclass_sources = [
     ]
@@ -26308,6 +26361,7 @@ class AcadHyperlinks(CoClassBaseClass): # A CoClass
     default_interface = IAcadHyperlinks
 
 class AcadIdPair(CoClassBaseClass): # A CoClass
+    # A special object for use with the CopyObjects method that contains the object IDs of both the source and destination objects
     CLSID = IID('{EC8F15F2-55F3-4094-98FA-C8B12C36580E}')
     coclass_sources = [
     ]
@@ -26317,6 +26371,7 @@ class AcadIdPair(CoClassBaseClass): # A CoClass
     default_interface = IAcadIdPair
 
 class AcadLWPolyline(CoClassBaseClass): # A CoClass
+    # AutoCAD Lightweight Polyline Object
     CLSID = IID('{FD028A62-16C3-42B9-8218-E298F8D4C470}')
     coclass_sources = [
     ]
@@ -26326,6 +26381,7 @@ class AcadLWPolyline(CoClassBaseClass): # A CoClass
     default_interface = IAcadLWPolyline
 
 class AcadLayer(CoClassBaseClass): # A CoClass
+    # A logical grouping of data, similar to transparent acetate overlays on a drawing
     CLSID = IID('{43AF860C-4BDE-4BF0-92A2-8BEDAE089D3D}')
     coclass_sources = [
     ]
@@ -26336,6 +26392,7 @@ class AcadLayer(CoClassBaseClass): # A CoClass
 
 # This CoClass is known by the name 'AutoCAD.AcadLayerStateManager.25'
 class AcadLayerStateManager(CoClassBaseClass): # A CoClass
+    # AcadLayerStateManager Class
     CLSID = IID('{D751968E-EB2B-4867-A895-2C202F7EAFE4}')
     coclass_sources = [
     ]
@@ -26345,6 +26402,7 @@ class AcadLayerStateManager(CoClassBaseClass): # A CoClass
     default_interface = IAcadLayerStateManager
 
 class AcadLayers(CoClassBaseClass): # A CoClass
+    # The collection of all layers in the drawing
     CLSID = IID('{BD801B3C-9A15-4D0B-88C4-3EE83793AF9E}')
     coclass_sources = [
     ]
@@ -26354,6 +26412,7 @@ class AcadLayers(CoClassBaseClass): # A CoClass
     default_interface = IAcadLayers
 
 class AcadLayout(CoClassBaseClass): # A CoClass
+    # The plot settings and visual properties of a model space or paper space block
     CLSID = IID('{0709E286-0B01-4DD4-B3C2-78FC2B81DA46}')
     coclass_sources = [
     ]
@@ -26363,6 +26422,7 @@ class AcadLayout(CoClassBaseClass): # A CoClass
     default_interface = IAcadLayout
 
 class AcadLayouts(CoClassBaseClass): # A CoClass
+    # The collection of all layouts in the drawing
     CLSID = IID('{2860ADE5-0A64-4A89-841A-5CFF31B7B513}')
     coclass_sources = [
     ]
@@ -26372,6 +26432,7 @@ class AcadLayouts(CoClassBaseClass): # A CoClass
     default_interface = IAcadLayouts
 
 class AcadLeader(CoClassBaseClass): # A CoClass
+    # AutoCAD Leader Object
     CLSID = IID('{6410C59E-2E2B-48FD-A348-2A874EA06F1C}')
     coclass_sources = [
     ]
@@ -26381,6 +26442,7 @@ class AcadLeader(CoClassBaseClass): # A CoClass
     default_interface = IAcadLeader
 
 class AcadLine(CoClassBaseClass): # A CoClass
+    # AutoCAD Line Object
     CLSID = IID('{0B9DFBAA-64DB-4574-A703-3C019658D654}')
     coclass_sources = [
     ]
@@ -26390,6 +26452,7 @@ class AcadLine(CoClassBaseClass): # A CoClass
     default_interface = IAcadLine
 
 class AcadLineType(CoClassBaseClass): # A CoClass
+    # The line characteristics consisting of combinations of dashes, dots, and spaces
     CLSID = IID('{028015A0-4F49-4410-B21E-0B3B6EBC643D}')
     coclass_sources = [
     ]
@@ -26399,6 +26462,7 @@ class AcadLineType(CoClassBaseClass): # A CoClass
     default_interface = IAcadLineType
 
 class AcadLineTypes(CoClassBaseClass): # A CoClass
+    # The collection of all linetypes in the drawing
     CLSID = IID('{261222D4-0361-4A30-B2DE-33CA817B9B41}')
     coclass_sources = [
     ]
@@ -26408,6 +26472,7 @@ class AcadLineTypes(CoClassBaseClass): # A CoClass
     default_interface = IAcadLineTypes
 
 class AcadLoftedSurface(CoClassBaseClass): # A CoClass
+    # AutoCAD Lofted Surface Object
     CLSID = IID('{BF6E215F-4104-4D1A-ABE5-5916F88B01B8}')
     coclass_sources = [
     ]
@@ -26417,6 +26482,7 @@ class AcadLoftedSurface(CoClassBaseClass): # A CoClass
     default_interface = IAcadLoftedSurface
 
 class AcadMInsertBlock(CoClassBaseClass): # A CoClass
+    # AutoCAD MInsertBlock Object
     CLSID = IID('{3BEBD0BC-74CC-44B2-9258-1B40C5600387}')
     coclass_sources = [
     ]
@@ -26426,6 +26492,7 @@ class AcadMInsertBlock(CoClassBaseClass): # A CoClass
     default_interface = IAcadMInsertBlock
 
 class AcadMLeader(CoClassBaseClass): # A CoClass
+    # AutoCAD Multi-Leader Object
     CLSID = IID('{FDB02BA2-8442-47F1-98C8-F3CABB36CAF9}')
     coclass_sources = [
     ]
@@ -26435,6 +26502,7 @@ class AcadMLeader(CoClassBaseClass): # A CoClass
     default_interface = IAcadMLeader
 
 class AcadMLeaderLeader(CoClassBaseClass): # A CoClass
+    # AutoCAD Object for Multi-Leader's Leader Line
     CLSID = IID('{B509B16E-8A89-4F9D-AE3F-912F36C72AEF}')
     coclass_sources = [
     ]
@@ -26444,6 +26512,7 @@ class AcadMLeaderLeader(CoClassBaseClass): # A CoClass
     default_interface = IAcadMLeaderLeader
 
 class AcadMLeaderStyle(CoClassBaseClass): # A CoClass
+    # AutoCAD MLeaderStyle Object
     CLSID = IID('{E5E6A16B-0725-453B-A1AD-A78EED9AC8D0}')
     coclass_sources = [
     ]
@@ -26453,6 +26522,7 @@ class AcadMLeaderStyle(CoClassBaseClass): # A CoClass
     default_interface = IAcadMLeaderStyle
 
 class AcadMLine(CoClassBaseClass): # A CoClass
+    # AutoCAD MLine Object
     CLSID = IID('{A094D037-2D1B-4047-8146-9FDB645AF7A0}')
     coclass_sources = [
     ]
@@ -26462,6 +26532,7 @@ class AcadMLine(CoClassBaseClass): # A CoClass
     default_interface = IAcadMLine
 
 class AcadMText(CoClassBaseClass): # A CoClass
+    # AutoCAD MText Object
     CLSID = IID('{2F976E5F-F8E2-445D-8841-4F2A7167110D}')
     coclass_sources = [
     ]
@@ -26471,6 +26542,7 @@ class AcadMText(CoClassBaseClass): # A CoClass
     default_interface = IAcadMText
 
 class AcadMaterial(CoClassBaseClass): # A CoClass
+    # The render material characteristics
     CLSID = IID('{DF6B0563-5640-4C25-A3AF-CBF384E6E55E}')
     coclass_sources = [
     ]
@@ -26489,6 +26561,7 @@ class AcadMaterials(CoClassBaseClass): # A CoClass
     default_interface = IAcadMaterials
 
 class AcadMenuBar(CoClassBaseClass): # A CoClass
+    # A collection of PopupMenu objects representing the current AutoCAD menu bar
     CLSID = IID('{5C9AC022-4248-4AAB-B49A-8ADAE1E9C53B}')
     coclass_sources = [
     ]
@@ -26498,6 +26571,7 @@ class AcadMenuBar(CoClassBaseClass): # A CoClass
     default_interface = IAcadMenuBar
 
 class AcadMenuGroup(CoClassBaseClass): # A CoClass
+    # An AutoCAD menu group
     CLSID = IID('{ACB59E98-9D60-4894-B1F2-29A88A559DBF}')
     coclass_sources = [
     ]
@@ -26507,6 +26581,7 @@ class AcadMenuGroup(CoClassBaseClass): # A CoClass
     default_interface = IAcadMenuGroup
 
 class AcadMenuGroups(CoClassBaseClass): # A CoClass
+    # A collection of MenuGroup objects representing all the menu groups loaded in the current AutoCAD session
     CLSID = IID('{A61EB326-9132-4FBB-8D5E-377A50E74B4A}')
     coclass_sources = [
     ]
@@ -26516,6 +26591,7 @@ class AcadMenuGroups(CoClassBaseClass): # A CoClass
     default_interface = IAcadMenuGroups
 
 class AcadModelSpace(CoClassBaseClass): # A CoClass
+    # A special Block object containing all model space entities
     CLSID = IID('{F4EDC475-30BA-4754-9D70-35A1BD07F1A6}')
     coclass_sources = [
     ]
@@ -26525,6 +26601,7 @@ class AcadModelSpace(CoClassBaseClass): # A CoClass
     default_interface = IAcadModelSpace
 
 class AcadNurbSurface(CoClassBaseClass): # A CoClass
+    # AutoCAD NURBS Surface Object
     CLSID = IID('{E447E066-98FF-4571-9ACF-716C5DB80C5F}')
     coclass_sources = [
     ]
@@ -26534,6 +26611,7 @@ class AcadNurbSurface(CoClassBaseClass): # A CoClass
     default_interface = IAcadNurbSurface
 
 class AcadObject(CoClassBaseClass): # A CoClass
+    # The standard interface for a basic AutoCAD object
     CLSID = IID('{5DCBC221-5D60-4C84-95DE-E7F91F8AC08A}')
     coclass_sources = [
     ]
@@ -26543,6 +26621,7 @@ class AcadObject(CoClassBaseClass): # A CoClass
     default_interface = IAcadObject
 
 class AcadOle(CoClassBaseClass): # A CoClass
+    # AutoCAD OLE Object
     CLSID = IID('{08BAC354-500F-4060-A7B2-E4F458EA8C3F}')
     coclass_sources = [
     ]
@@ -26552,6 +26631,7 @@ class AcadOle(CoClassBaseClass): # A CoClass
     default_interface = IAcadOle
 
 class AcadPViewport(CoClassBaseClass): # A CoClass
+    # AutoCAD Paperspace Viewport Object
     CLSID = IID('{B643DF4D-B90B-4DEC-8F8E-11C961220CA5}')
     coclass_sources = [
     ]
@@ -26561,6 +26641,7 @@ class AcadPViewport(CoClassBaseClass): # A CoClass
     default_interface = IAcadPViewport
 
 class AcadPaperSpace(CoClassBaseClass): # A CoClass
+    # A special Block object containing all the entities in the active paper space layout
     CLSID = IID('{98BF2929-A20D-48C5-B079-5019882F9080}')
     coclass_sources = [
     ]
@@ -26579,6 +26660,7 @@ class AcadPdfUnderlay(CoClassBaseClass): # A CoClass
     default_interface = IAcadUnderlay
 
 class AcadPlaneSurface(CoClassBaseClass): # A CoClass
+    # AutoCAD Plane Surface Object
     CLSID = IID('{595E70E6-6FC6-41FE-B4FC-DEE5C680C6AD}')
     coclass_sources = [
     ]
@@ -26588,6 +26670,7 @@ class AcadPlaneSurface(CoClassBaseClass): # A CoClass
     default_interface = IAcadPlaneSurface
 
 class AcadPlot(CoClassBaseClass): # A CoClass
+    # The set of methods and properties used for plotting layouts
     CLSID = IID('{6E0FD7F5-3566-4F1B-9B0A-12480BD967E2}')
     coclass_sources = [
     ]
@@ -26597,6 +26680,7 @@ class AcadPlot(CoClassBaseClass): # A CoClass
     default_interface = IAcadPlot
 
 class AcadPlotConfiguration(CoClassBaseClass): # A CoClass
+    # A named collection of plot settings
     CLSID = IID('{56904EF6-6CBB-4FAC-8125-CF3DB480B013}')
     coclass_sources = [
     ]
@@ -26606,6 +26690,7 @@ class AcadPlotConfiguration(CoClassBaseClass): # A CoClass
     default_interface = IAcadPlotConfiguration
 
 class AcadPlotConfigurations(CoClassBaseClass): # A CoClass
+    # A collection of named plot settings
     CLSID = IID('{D2D87C01-613A-401E-A175-EE3859069EDB}')
     coclass_sources = [
     ]
@@ -26615,6 +26700,7 @@ class AcadPlotConfigurations(CoClassBaseClass): # A CoClass
     default_interface = IAcadPlotConfigurations
 
 class AcadPoint(CoClassBaseClass): # A CoClass
+    # AutoCAD Point Object
     CLSID = IID('{BD5A3DB7-0C23-4C12-B3B2-4ACB5BEC7357}')
     coclass_sources = [
     ]
@@ -26624,6 +26710,7 @@ class AcadPoint(CoClassBaseClass): # A CoClass
     default_interface = IAcadPoint
 
 class AcadPointCloud(CoClassBaseClass): # A CoClass
+    # AutoCAD Point Cloud Object
     CLSID = IID('{1D6FDF5B-A0CA-4689-AB8A-5CC2A5D11A23}')
     coclass_sources = [
     ]
@@ -26633,6 +26720,7 @@ class AcadPointCloud(CoClassBaseClass): # A CoClass
     default_interface = IAcadPointCloud
 
 class AcadPointCloudEx(CoClassBaseClass): # A CoClass
+    # AutoCAD Point Cloud Object
     CLSID = IID('{43F5347B-0596-497F-9F68-D482B4B2B6FF}')
     coclass_sources = [
     ]
@@ -26642,6 +26730,7 @@ class AcadPointCloudEx(CoClassBaseClass): # A CoClass
     default_interface = IAcadPointCloudEx2
 
 class AcadPolyfaceMesh(CoClassBaseClass): # A CoClass
+    # AutoCAD PolyfaceMesh Object
     CLSID = IID('{FDB00B7E-18DC-4593-8A67-3B024A8AD7C3}')
     coclass_sources = [
     ]
@@ -26651,6 +26740,7 @@ class AcadPolyfaceMesh(CoClassBaseClass): # A CoClass
     default_interface = IAcadPolyfaceMesh
 
 class AcadPolygonMesh(CoClassBaseClass): # A CoClass
+    # AutoCAD PolygonMesh Object
     CLSID = IID('{ECA13A8A-63EA-416E-A360-813A31B0875E}')
     coclass_sources = [
     ]
@@ -26660,6 +26750,7 @@ class AcadPolygonMesh(CoClassBaseClass): # A CoClass
     default_interface = IAcadPolygonMesh
 
 class AcadPolyline(CoClassBaseClass): # A CoClass
+    # AutoCAD Polyline Object
     CLSID = IID('{64B63491-8F39-4C24-B6C2-BAF50FAB801C}')
     coclass_sources = [
     ]
@@ -26669,6 +26760,7 @@ class AcadPolyline(CoClassBaseClass): # A CoClass
     default_interface = IAcadPolyline
 
 class AcadPopupMenu(CoClassBaseClass): # A CoClass
+    # An AutoCAD cascading menu
     CLSID = IID('{8BEB167C-8682-4EAC-9BE8-D41596F9EE38}')
     coclass_sources = [
     ]
@@ -26678,6 +26770,7 @@ class AcadPopupMenu(CoClassBaseClass): # A CoClass
     default_interface = IAcadPopupMenu
 
 class AcadPopupMenuItem(CoClassBaseClass): # A CoClass
+    # A single menu item on an AutoCAD pull-down menu
     CLSID = IID('{5DE0FD38-8092-4374-94B2-1A490C319E7C}')
     coclass_sources = [
     ]
@@ -26687,6 +26780,7 @@ class AcadPopupMenuItem(CoClassBaseClass): # A CoClass
     default_interface = IAcadPopupMenuItem
 
 class AcadPopupMenus(CoClassBaseClass): # A CoClass
+    # A collection of PopupMenu objects representing all the popup menus loaded in the MenuGroup
     CLSID = IID('{D8C41B66-00FF-4DA0-854E-3B4B019F5B46}')
     coclass_sources = [
     ]
@@ -26696,6 +26790,7 @@ class AcadPopupMenus(CoClassBaseClass): # A CoClass
     default_interface = IAcadPopupMenus
 
 class AcadPreferences(CoClassBaseClass): # A CoClass
+    # This object specifies the current AutoCAD settings
     CLSID = IID('{ADBA37CB-0653-4643-903E-0BB22B92473F}')
     coclass_sources = [
     ]
@@ -26705,6 +26800,7 @@ class AcadPreferences(CoClassBaseClass): # A CoClass
     default_interface = IAcadPreferences
 
 class AcadPreferencesDisplay(CoClassBaseClass): # A CoClass
+    # This object contains the options from the Display tab on the Options dialog
     CLSID = IID('{39121E37-2406-42B0-A36B-C0B86491820E}')
     coclass_sources = [
     ]
@@ -26714,6 +26810,7 @@ class AcadPreferencesDisplay(CoClassBaseClass): # A CoClass
     default_interface = IAcadPreferencesDisplay
 
 class AcadPreferencesDrafting(CoClassBaseClass): # A CoClass
+    # This object contains the options from the Drafting tab on the Options dialog
     CLSID = IID('{1C0781A1-145D-415F-9CBB-7FC6C42F86C4}')
     coclass_sources = [
     ]
@@ -26723,6 +26820,7 @@ class AcadPreferencesDrafting(CoClassBaseClass): # A CoClass
     default_interface = IAcadPreferencesDrafting
 
 class AcadPreferencesFiles(CoClassBaseClass): # A CoClass
+    # This object contains the options from the Files tab on the Options dialog
     CLSID = IID('{C6C560BE-EBF7-4995-96A5-0DDFDDB29ACB}')
     coclass_sources = [
     ]
@@ -26732,6 +26830,7 @@ class AcadPreferencesFiles(CoClassBaseClass): # A CoClass
     default_interface = IAcadPreferencesFiles
 
 class AcadPreferencesOpenSave(CoClassBaseClass): # A CoClass
+    # This object contains the options from the Open and Save tab on the Options dialog
     CLSID = IID('{24119DE2-E5B8-463F-8D1A-4A6119A245F4}')
     coclass_sources = [
     ]
@@ -26741,6 +26840,7 @@ class AcadPreferencesOpenSave(CoClassBaseClass): # A CoClass
     default_interface = IAcadPreferencesOpenSave
 
 class AcadPreferencesOutput(CoClassBaseClass): # A CoClass
+    # This object contains the options from the Output tab on the Options dialog
     CLSID = IID('{292C9B23-3244-498A-B862-C5BA6D2F0BA5}')
     coclass_sources = [
     ]
@@ -26750,6 +26850,7 @@ class AcadPreferencesOutput(CoClassBaseClass): # A CoClass
     default_interface = IAcadPreferencesOutput
 
 class AcadPreferencesProfiles(CoClassBaseClass): # A CoClass
+    # This object contains the options from the Profiles tab on the Options dialog
     CLSID = IID('{69AA5724-3122-4FFD-9DE6-DAA6593111F3}')
     coclass_sources = [
     ]
@@ -26759,6 +26860,7 @@ class AcadPreferencesProfiles(CoClassBaseClass): # A CoClass
     default_interface = IAcadPreferencesProfiles
 
 class AcadPreferencesSelection(CoClassBaseClass): # A CoClass
+    # This object contains the options from the Selection tab on the Options dialog
     CLSID = IID('{B4580F7E-2328-4C97-B820-6AA5C54CEB45}')
     coclass_sources = [
     ]
@@ -26768,6 +26870,7 @@ class AcadPreferencesSelection(CoClassBaseClass): # A CoClass
     default_interface = IAcadPreferencesSelection
 
 class AcadPreferencesSystem(CoClassBaseClass): # A CoClass
+    # This object contains the options from the System tab on the Options dialog
     CLSID = IID('{AB20EC5B-A71D-45A7-9081-39ACDD9464B0}')
     coclass_sources = [
     ]
@@ -26777,6 +26880,7 @@ class AcadPreferencesSystem(CoClassBaseClass): # A CoClass
     default_interface = IAcadPreferencesSystem
 
 class AcadPreferencesUser(CoClassBaseClass): # A CoClass
+    # This object contains the options from the User tab on the Options dialog
     CLSID = IID('{95D931B7-A9D0-4078-9A4F-484D5AB08AC9}')
     coclass_sources = [
     ]
@@ -26786,6 +26890,7 @@ class AcadPreferencesUser(CoClassBaseClass): # A CoClass
     default_interface = IAcadPreferencesUser
 
 class AcadRasterImage(CoClassBaseClass): # A CoClass
+    # AutoCAD Raster Object
     CLSID = IID('{69DDA82F-B603-48D4-A305-AAE4F44FE12B}')
     coclass_sources = [
     ]
@@ -26795,6 +26900,7 @@ class AcadRasterImage(CoClassBaseClass): # A CoClass
     default_interface = IAcadRasterImage
 
 class AcadRay(CoClassBaseClass): # A CoClass
+    # AutoCAD Ray Object
     CLSID = IID('{85B5B818-DB01-4B34-B95B-F4632D912B48}')
     coclass_sources = [
     ]
@@ -26804,6 +26910,7 @@ class AcadRay(CoClassBaseClass): # A CoClass
     default_interface = IAcadRay
 
 class AcadRegion(CoClassBaseClass): # A CoClass
+    # AutoCAD Region Object
     CLSID = IID('{3F25C247-8394-4F65-8714-27E06217A6F9}')
     coclass_sources = [
     ]
@@ -26813,6 +26920,7 @@ class AcadRegion(CoClassBaseClass): # A CoClass
     default_interface = IAcadRegion
 
 class AcadRegisteredApplication(CoClassBaseClass): # A CoClass
+    # An external application that has been added to the drawing
     CLSID = IID('{BBA07C0C-1401-48FE-A08E-2471E3735961}')
     coclass_sources = [
     ]
@@ -26822,6 +26930,7 @@ class AcadRegisteredApplication(CoClassBaseClass): # A CoClass
     default_interface = IAcadRegisteredApplication
 
 class AcadRegisteredApplications(CoClassBaseClass): # A CoClass
+    # The collection of all registered applications in the drawing
     CLSID = IID('{CD0FFC9A-C624-43C7-99B4-D84911C3C7E5}')
     coclass_sources = [
     ]
@@ -26831,6 +26940,7 @@ class AcadRegisteredApplications(CoClassBaseClass): # A CoClass
     default_interface = IAcadRegisteredApplications
 
 class AcadRevolvedSurface(CoClassBaseClass): # A CoClass
+    # AutoCAD Revolved Surface Object
     CLSID = IID('{71770D46-9176-47CA-B4C2-BCDE1CB43E50}')
     coclass_sources = [
     ]
@@ -26840,6 +26950,7 @@ class AcadRevolvedSurface(CoClassBaseClass): # A CoClass
     default_interface = IAcadRevolvedSurface
 
 class AcadSection(CoClassBaseClass): # A CoClass
+    # AutoCAD Section Object
     CLSID = IID('{BB185E31-F8FC-4E83-BD45-51395D522AF5}')
     coclass_sources = [
     ]
@@ -26849,6 +26960,7 @@ class AcadSection(CoClassBaseClass): # A CoClass
     default_interface = IAcadSection2
 
 class AcadSectionManager(CoClassBaseClass): # A CoClass
+    # AutoCAD Section Manager Object
     CLSID = IID('{80659E23-A233-471E-9EAE-756A7E86658B}')
     coclass_sources = [
     ]
@@ -26858,6 +26970,7 @@ class AcadSectionManager(CoClassBaseClass): # A CoClass
     default_interface = IAcadSectionManager
 
 class AcadSectionSettings(CoClassBaseClass): # A CoClass
+    # AutoCAD Section Settings Object
     CLSID = IID('{30733FB7-DF93-4DBB-B139-6A119362002C}')
     coclass_sources = [
     ]
@@ -26867,6 +26980,7 @@ class AcadSectionSettings(CoClassBaseClass): # A CoClass
     default_interface = IAcadSectionSettings
 
 class AcadSectionTypeSettings(CoClassBaseClass): # A CoClass
+    # AutoCAD Section Type Settings Object
     CLSID = IID('{2AA57761-F8DC-4CC4-9438-5D4AF92F2747}')
     coclass_sources = [
     ]
@@ -26878,6 +26992,7 @@ class AcadSectionTypeSettings(CoClassBaseClass): # A CoClass
 
 # This CoClass is known by the name 'AutoCAD.SecurityParams.25'
 class AcadSecurityParams(CoClassBaseClass): # A CoClass
+    # Security Parameters Object
     CLSID = IID('{0ABB4C53-7364-4CC3-B8A8-7F341E80909E}')
     coclass_sources = [
     ]
@@ -26887,6 +27002,7 @@ class AcadSecurityParams(CoClassBaseClass): # A CoClass
     default_interface = IAcadSecurityParams
 
 class AcadSelectionSet(CoClassBaseClass): # A CoClass
+    # A group of one or more AutoCAD objects specified for processing as a single unit
     CLSID = IID('{FD3BD033-D1D8-48EE-84F6-F0AC7F4F48B7}')
     coclass_sources = [
     ]
@@ -26896,6 +27012,7 @@ class AcadSelectionSet(CoClassBaseClass): # A CoClass
     default_interface = IAcadSelectionSet
 
 class AcadSelectionSets(CoClassBaseClass): # A CoClass
+    # The collection of all selection sets in the drawing
     CLSID = IID('{A900427D-E81B-43A3-957A-AD1F5B0D0F1F}')
     coclass_sources = [
     ]
@@ -26905,6 +27022,7 @@ class AcadSelectionSets(CoClassBaseClass): # A CoClass
     default_interface = IAcadSelectionSets
 
 class AcadShape(CoClassBaseClass): # A CoClass
+    # AutoCAD Shape Object
     CLSID = IID('{FF57FA40-DC9D-4C1E-BBBD-5290B1C5F26C}')
     coclass_sources = [
     ]
@@ -26914,6 +27032,7 @@ class AcadShape(CoClassBaseClass): # A CoClass
     default_interface = IAcadShape
 
 class AcadSolid(CoClassBaseClass): # A CoClass
+    # AutoCAD Solid Object
     CLSID = IID('{56597E12-3BE1-4A36-BB0F-05C6659D0FF9}')
     coclass_sources = [
     ]
@@ -26923,6 +27042,7 @@ class AcadSolid(CoClassBaseClass): # A CoClass
     default_interface = IAcadSolid
 
 class AcadSortentsTable(CoClassBaseClass): # A CoClass
+    # AutoCAD AcadSortentsTable Object
     CLSID = IID('{86E86FE7-07B3-445B-9897-84FDFA1523B9}')
     coclass_sources = [
     ]
@@ -26932,6 +27052,7 @@ class AcadSortentsTable(CoClassBaseClass): # A CoClass
     default_interface = IAcadSortentsTable
 
 class AcadSpline(CoClassBaseClass): # A CoClass
+    # AutoCAD Spline Object
     CLSID = IID('{84A78EE8-8F24-4A9D-BD08-16CDB0F841B8}')
     coclass_sources = [
     ]
@@ -26941,6 +27062,7 @@ class AcadSpline(CoClassBaseClass): # A CoClass
     default_interface = IAcadSpline
 
 class AcadState(CoClassBaseClass): # A CoClass
+    # AutoCAD State Object
     CLSID = IID('{6C384781-8AB6-432A-8B33-BF2BE7C51E29}')
     coclass_sources = [
     ]
@@ -26950,6 +27072,7 @@ class AcadState(CoClassBaseClass): # A CoClass
     default_interface = IAcadState
 
 class AcadSubDMesh(CoClassBaseClass): # A CoClass
+    # AutoCAD SubDMesh Object
     CLSID = IID('{2CFFF5CE-FE81-47E1-8FF3-6614B1BF7B2A}')
     coclass_sources = [
     ]
@@ -26959,6 +27082,7 @@ class AcadSubDMesh(CoClassBaseClass): # A CoClass
     default_interface = IAcadSubDMesh
 
 class AcadSubDMeshEdge(CoClassBaseClass): # A CoClass
+    # AutoCAD SubDMesh Edge Object
     CLSID = IID('{9C29DB4A-614A-4DB9-B578-2349E4AAE6F7}')
     coclass_sources = [
     ]
@@ -26968,6 +27092,7 @@ class AcadSubDMeshEdge(CoClassBaseClass): # A CoClass
     default_interface = IAcadSubDMeshEdge
 
 class AcadSubDMeshFace(CoClassBaseClass): # A CoClass
+    # AutoCAD SubDMesh Face Object
     CLSID = IID('{45F7B189-F6A2-4F0A-BBFC-CE93F8707C5D}')
     coclass_sources = [
     ]
@@ -26977,6 +27102,7 @@ class AcadSubDMeshFace(CoClassBaseClass): # A CoClass
     default_interface = IAcadSubDMeshFace
 
 class AcadSubDMeshVertex(CoClassBaseClass): # A CoClass
+    # AutoCAD SubDMesh Vertex Object
     CLSID = IID('{101F9DFB-8C12-4F0F-A71E-5CFF6B9C5DFE}')
     coclass_sources = [
     ]
@@ -26986,6 +27112,7 @@ class AcadSubDMeshVertex(CoClassBaseClass): # A CoClass
     default_interface = IAcadSubDMeshVertex
 
 class AcadSubEntSolidEdge(CoClassBaseClass): # A CoClass
+    # AcadSubEntSolidEdge Class
     CLSID = IID('{67D0CE74-35C7-4CDB-A6AF-0E5D6F539FCE}')
     coclass_sources = [
     ]
@@ -26995,6 +27122,7 @@ class AcadSubEntSolidEdge(CoClassBaseClass): # A CoClass
     default_interface = IAcadSubEntSolidEdge
 
 class AcadSubEntSolidFace(CoClassBaseClass): # A CoClass
+    # AcadSubEntSolidFace Class
     CLSID = IID('{B2EFC4D0-E9F2-485D-8F4E-9C9D821D57B4}')
     coclass_sources = [
     ]
@@ -27004,6 +27132,7 @@ class AcadSubEntSolidFace(CoClassBaseClass): # A CoClass
     default_interface = IAcadSubEntSolidFace
 
 class AcadSubEntSolidNode(CoClassBaseClass): # A CoClass
+    # AcadSubEntSolidNode Class
     CLSID = IID('{CA66B1A0-33EE-472A-8639-7B3497B4ACC5}')
     coclass_sources = [
     ]
@@ -27013,6 +27142,7 @@ class AcadSubEntSolidNode(CoClassBaseClass): # A CoClass
     default_interface = IAcadSubEntSolidNode
 
 class AcadSubEntSolidVertex(CoClassBaseClass): # A CoClass
+    # AcadSubEntSolidVertex Class
     CLSID = IID('{57BA1F1A-D777-4FAF-8BB9-A579C11807BD}')
     coclass_sources = [
     ]
@@ -27022,6 +27152,7 @@ class AcadSubEntSolidVertex(CoClassBaseClass): # A CoClass
     default_interface = IAcadSubEntSolidVertex
 
 class AcadSubEntity(CoClassBaseClass): # A CoClass
+    # AcadSubEntity Class
     CLSID = IID('{F1AD7AB7-BE4D-4B04-95D0-8BDF9E774DA7}')
     coclass_sources = [
     ]
@@ -27031,6 +27162,7 @@ class AcadSubEntity(CoClassBaseClass): # A CoClass
     default_interface = IAcadSubEntity
 
 class AcadSummaryInfo(CoClassBaseClass): # A CoClass
+    # AcadSummaryInfo Class
     CLSID = IID('{9DACC9EE-D369-4611-8ABC-A92BBB15E9D1}')
     coclass_sources = [
     ]
@@ -27040,6 +27172,7 @@ class AcadSummaryInfo(CoClassBaseClass): # A CoClass
     default_interface = IAcadSummaryInfo
 
 class AcadSurface(CoClassBaseClass): # A CoClass
+    # AutoCAD Surface Object
     CLSID = IID('{B368459E-48E8-4A81-88CE-6264998BC5DA}')
     coclass_sources = [
     ]
@@ -27049,6 +27182,7 @@ class AcadSurface(CoClassBaseClass): # A CoClass
     default_interface = IAcadSurface
 
 class AcadSweptSurface(CoClassBaseClass): # A CoClass
+    # AutoCAD Swept Surface Object
     CLSID = IID('{705A1BD7-318F-4773-BFBD-075C83624990}')
     coclass_sources = [
     ]
@@ -27058,6 +27192,7 @@ class AcadSweptSurface(CoClassBaseClass): # A CoClass
     default_interface = IAcadSweptSurface
 
 class AcadTable(CoClassBaseClass): # A CoClass
+    # AutoCAD Table Object
     CLSID = IID('{3EA31CD5-EF81-41C6-88FE-BA26D45AF1FB}')
     coclass_sources = [
     ]
@@ -27067,6 +27202,7 @@ class AcadTable(CoClassBaseClass): # A CoClass
     default_interface = IAcadTable
 
 class AcadTableStyle(CoClassBaseClass): # A CoClass
+    # AutoCAD AcadTableStyle Object
     CLSID = IID('{D16AA6A1-9000-4891-A3A6-7CBAAADCA8D6}')
     coclass_sources = [
     ]
@@ -27076,6 +27212,7 @@ class AcadTableStyle(CoClassBaseClass): # A CoClass
     default_interface = IAcadTableStyle
 
 class AcadText(CoClassBaseClass): # A CoClass
+    # AutoCAD Text Object
     CLSID = IID('{45CD8F3C-2D86-4F0A-9533-765A6BAD532B}')
     coclass_sources = [
     ]
@@ -27085,6 +27222,7 @@ class AcadText(CoClassBaseClass): # A CoClass
     default_interface = IAcadText
 
 class AcadTextStyle(CoClassBaseClass): # A CoClass
+    # A named, saved collection of settings that determines the appearance of text characters
     CLSID = IID('{6B9DB813-9A39-4D67-9FA7-882B01E45B85}')
     coclass_sources = [
     ]
@@ -27094,6 +27232,7 @@ class AcadTextStyle(CoClassBaseClass): # A CoClass
     default_interface = IAcadTextStyle
 
 class AcadTextStyles(CoClassBaseClass): # A CoClass
+    # The collection of all text styles in the drawing
     CLSID = IID('{778BDCD9-F2A0-4025-8FDF-BC5B8D03713F}')
     coclass_sources = [
     ]
@@ -27103,6 +27242,7 @@ class AcadTextStyles(CoClassBaseClass): # A CoClass
     default_interface = IAcadTextStyles
 
 class AcadTolerance(CoClassBaseClass): # A CoClass
+    # AutoCAD Tolerance Object
     CLSID = IID('{82745F2B-AE23-4502-A7C3-9CF394D4E01A}')
     coclass_sources = [
     ]
@@ -27112,6 +27252,7 @@ class AcadTolerance(CoClassBaseClass): # A CoClass
     default_interface = IAcadTolerance
 
 class AcadToolbar(CoClassBaseClass): # A CoClass
+    # An AutoCAD toolbar
     CLSID = IID('{21B92DEF-43CF-4549-A641-965FB620FFD2}')
     coclass_sources = [
     ]
@@ -27121,6 +27262,7 @@ class AcadToolbar(CoClassBaseClass): # A CoClass
     default_interface = IAcadToolbar
 
 class AcadToolbarItem(CoClassBaseClass): # A CoClass
+    # A single button item on an AutoCAD toolbar
     CLSID = IID('{D04104B6-A160-418F-9783-B138C1FE7D2D}')
     coclass_sources = [
     ]
@@ -27130,6 +27272,7 @@ class AcadToolbarItem(CoClassBaseClass): # A CoClass
     default_interface = IAcadToolbarItem
 
 class AcadToolbars(CoClassBaseClass): # A CoClass
+    # A collection of Toolbar objects representing all the toolbars loaded in the current AutoCAD session
     CLSID = IID('{15FAC8B1-0A50-47DE-AB8E-532902B3CA00}')
     coclass_sources = [
     ]
@@ -27139,6 +27282,7 @@ class AcadToolbars(CoClassBaseClass): # A CoClass
     default_interface = IAcadToolbars
 
 class AcadTrace(CoClassBaseClass): # A CoClass
+    # AutoCAD Trace Object
     CLSID = IID('{8B6A8714-3FDE-4237-A7F8-AA953105ADEB}')
     coclass_sources = [
     ]
@@ -27148,6 +27292,7 @@ class AcadTrace(CoClassBaseClass): # A CoClass
     default_interface = IAcadTrace
 
 class AcadUCS(CoClassBaseClass): # A CoClass
+    # A user-defined coordinate system that determines the orientation of the X, Y, and Z axes in 3D space
     CLSID = IID('{E4A27E8E-396D-4820-8350-ED4AD58FB2F0}')
     coclass_sources = [
     ]
@@ -27157,6 +27302,7 @@ class AcadUCS(CoClassBaseClass): # A CoClass
     default_interface = IAcadUCS
 
 class AcadUCSs(CoClassBaseClass): # A CoClass
+    # The collection of all user coordinate systems (UCSs) in the drawing
     CLSID = IID('{3921DDB4-5D4B-448E-B5EE-C642725EFF41}')
     coclass_sources = [
     ]
@@ -27166,6 +27312,7 @@ class AcadUCSs(CoClassBaseClass): # A CoClass
     default_interface = IAcadUCSs
 
 class AcadUtility(CoClassBaseClass): # A CoClass
+    # A series of methods provided for utility purposes
     CLSID = IID('{DBC22E71-76E8-4383-BA8E-02D74DADCBE4}')
     coclass_sources = [
     ]
@@ -27175,6 +27322,7 @@ class AcadUtility(CoClassBaseClass): # A CoClass
     default_interface = IAcadUtility
 
 class AcadView(CoClassBaseClass): # A CoClass
+    # A graphical representation of a 2D drawing or 3D model from a specific location (viewpoint) in space
     CLSID = IID('{C365A0E4-457A-4D87-AE84-6F5EBA15A86A}')
     coclass_sources = [
     ]
@@ -27184,6 +27332,7 @@ class AcadView(CoClassBaseClass): # A CoClass
     default_interface = IAcadView
 
 class AcadViewport(CoClassBaseClass): # A CoClass
+    # A bounded area that displays some portion of a drawing's model space
     CLSID = IID('{0AB0473A-F643-4403-96F5-837BA8F4BC89}')
     coclass_sources = [
     ]
@@ -27193,6 +27342,7 @@ class AcadViewport(CoClassBaseClass): # A CoClass
     default_interface = IAcadViewport
 
 class AcadViewports(CoClassBaseClass): # A CoClass
+    # The collection of all viewports in the drawing
     CLSID = IID('{430D1544-F5DD-47A3-A660-B53E04DF781C}')
     coclass_sources = [
     ]
@@ -27202,6 +27352,7 @@ class AcadViewports(CoClassBaseClass): # A CoClass
     default_interface = IAcadViewports
 
 class AcadViews(CoClassBaseClass): # A CoClass
+    # The collection of all views in the drawing
     CLSID = IID('{8056580C-1145-4FB6-9F77-4E4BFDA4EFD7}')
     coclass_sources = [
     ]
@@ -27211,6 +27362,7 @@ class AcadViews(CoClassBaseClass): # A CoClass
     default_interface = IAcadViews
 
 class AcadWipeout(CoClassBaseClass): # A CoClass
+    # AcadWipeout Class
     CLSID = IID('{7B04A8D0-8043-4675-AF42-B6ADC28D847F}')
     coclass_sources = [
     ]
@@ -27220,6 +27372,7 @@ class AcadWipeout(CoClassBaseClass): # A CoClass
     default_interface = IAcadWipeout
 
 class AcadXRecord(CoClassBaseClass): # A CoClass
+    # XRecord objects are used to store and manage arbitrary data
     CLSID = IID('{C7306010-A8DC-45C2-9A72-5780B5A071B2}')
     coclass_sources = [
     ]
@@ -27229,6 +27382,7 @@ class AcadXRecord(CoClassBaseClass): # A CoClass
     default_interface = IAcadXRecord
 
 class AcadXline(CoClassBaseClass): # A CoClass
+    # AutoCAD Xline Object
     CLSID = IID('{2813BF45-AA44-4F79-8CFC-490B2DD876B4}')
     coclass_sources = [
     ]
@@ -27236,9 +27390,11 @@ class AcadXline(CoClassBaseClass): # A CoClass
         IAcadXline,
     ]
     default_interface = IAcadXline
-    
+ 
+ 
 # This CoClass is known by the name 'ObjectDBX.AxDbDocument.25'
 class AxDbDocument(CoClassBaseClass): # A CoClass
+    # ObjectDBX Document Object
     CLSID = IID('{9ADB19DB-BA70-4837-B8F6-64C504D90062}')
     coclass_sources = [
     ]
@@ -32158,6 +32314,7 @@ IAxDbDocument_vtables_ = [
 IAxDbDocumentEvents_vtables_dispatch_ = 0
 IAxDbDocumentEvents_vtables_ = [
 ]
+
 RecordMap = {
 }
 
@@ -32802,6 +32959,3 @@ def getDbx() -> IAcadApplication:
 
 def createEventObject(obj, eventclass):
     win32com.client.WithEvents(obj,eventclass)
-
-
-
