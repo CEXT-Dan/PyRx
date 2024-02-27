@@ -10401,62 +10401,78 @@ class IAcadLWPolyline(DispatchBaseClass):
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     # The method Coordinate is actually a property, but must be used as a method to correctly pass the arguments
     def Coordinate(self, Index=defaultNamedNotOptArg):
+        'Specifies the coordinate of a single vertex in the object'
         return self._ApplyTypes_(14, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def Explode(self):
+        'Explodes the lightweight polyline, and returns the sub-entities as an array of Object'
         return self._ApplyTypes_(5, 1, (12, 0), (), 'Explode', None,)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     def GetBulge(self, Index=defaultNamedNotOptArg):
+        'Returns the vertex bulge of the lightweight polyline'
         return self._oleobj_.InvokeTypes(6, LCID, 1, (5, 0), ((3, 1),),Index
             )
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetWidth(self, Index=defaultNamedNotOptArg, StartWidth=pythoncom.Missing, EndWidth=pythoncom.Missing):
+        'Returns segment width of the lightweight polyline'
         return self._ApplyTypes_(8, 1, (24, 0), ((3, 1), (16389, 2), (16389, 2)), 'GetWidth', None,Index
             , StartWidth, EndWidth)
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -10464,6 +10480,10 @@ class IAcadLWPolyline(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -10471,48 +10491,76 @@ class IAcadLWPolyline(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Offset(self, Distance=defaultNamedNotOptArg):
+        'Creates a new entity object by offsetting the lightweight polyline by a given distance'
         return self._ApplyTypes_(11, 1, (12, 0), ((5, 1),), 'Offset', None,Distance
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetBulge(self, Index=defaultNamedNotOptArg, bulge=defaultNamedNotOptArg):
+        'Sets the vertex bulge of the lightweight polyline'
         return self._oleobj_.InvokeTypes(7, LCID, 1, (24, 0), ((3, 1), (5, 1)),Index
             , bulge)
 
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
+        arg1 = VTR8ArrayOrVal(arg1)
+        'Specifies the coordinate of a single vertex in the object'
         return self._oleobj_.InvokeTypes(14, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
     def SetWidth(self, Index=defaultNamedNotOptArg, StartWidth=defaultNamedNotOptArg, EndWidth=defaultNamedNotOptArg):
+        'Sets the segment width of the lightweight polyline'
         return self._oleobj_.InvokeTypes(9, LCID, 1, (24, 0), ((3, 1), (5, 1), (5, 1)),Index
             , StartWidth, EndWidth)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -10577,27 +10625,33 @@ class IAcadLWPolyline(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadLayer(DispatchBaseClass):
+    'A logical grouping of data, similar to transparent acetate overlays on a drawing'
     CLSID = IID('{B5C35766-BF84-4C7A-81D7-9094A48C9595}')
     coclass_clsid = IID('{43AF860C-4BDE-4BF0-92A2-8BEDAE089D3D}')
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -10651,44 +10705,54 @@ class IAcadLayer(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadLayerStateManager(DispatchBaseClass):
+    'IAcadLayerStateManager Interface'
     CLSID = IID('{096E285B-2EDE-4E26-A497-2100024E1AC9}')
     coclass_clsid = IID('{D751968E-EB2B-4867-A895-2C202F7EAFE4}')
 
     def Delete(self, bsName=defaultNamedNotOptArg):
+        'Deletes the specified layers state.'
         return self._oleobj_.InvokeTypes(1610743813, LCID, 1, (24, 0), ((8, 1),),bsName
             )
 
     def Export(self, bsName=defaultNamedNotOptArg, bsFilename=defaultNamedNotOptArg):
+        'Exports the specified layer state to the specified file.'
         return self._oleobj_.InvokeTypes(1610743816, LCID, 1, (24, 0), ((8, 1), (8, 1)),bsName
             , bsFilename)
 
     def Import(self, bsFilename=defaultNamedNotOptArg):
+        'Imports all layer states from the specified file.'
         return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (24, 0), ((8, 1),),bsFilename
             )
 
     # The method Mask is actually a property, but must be used as a method to correctly pass the arguments
     def Mask(self, bsName=defaultNamedNotOptArg):
+        'Sets the mask used for restoring the specified layer state.'
         return self._oleobj_.InvokeTypes(1610743809, LCID, 2, (3, 0), ((8, 1),),bsName
             )
 
     def Rename(self, bsName=defaultNamedNotOptArg, bsNewName=defaultNamedNotOptArg):
+        'Renames the specified layers state.'
         return self._oleobj_.InvokeTypes(1610743814, LCID, 1, (24, 0), ((8, 1), (8, 1)),bsName
             , bsNewName)
 
     def Restore(self, bsName=defaultNamedNotOptArg):
+        'Restores the layers to the specified state as per the layer state mask.'
         return self._oleobj_.InvokeTypes(1610743812, LCID, 1, (24, 0), ((8, 1),),bsName
             )
 
     def Save(self, bsName=defaultNamedNotOptArg, eMask=defaultNamedNotOptArg):
+        'Saves the attribute mask and the state of all layers into the specified layer state.'
         return self._oleobj_.InvokeTypes(1610743811, LCID, 1, (24, 0), ((8, 1), (3, 1)),bsName
             , eMask)
 
     def SetDatabase(self, iHostDb=defaultNamedNotOptArg):
+        'Sets the working database for the layer state manager.'
         return self._oleobj_.InvokeTypes(1610743808, LCID, 1, (24, 0), ((9, 1),),iHostDb
             )
 
     # The method SetMask is actually a property, but must be used as a method to correctly pass the arguments
     def SetMask(self, bsName=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
+        'Sets the mask used for restoring the specified layer state.'
         return self._oleobj_.InvokeTypes(1610743809, LCID, 4, (24, 0), ((8, 1), (3, 1)),bsName
             , arg1)
 
@@ -10705,11 +10769,13 @@ class IAcadLayerStateManager(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadLayers(DispatchBaseClass):
+    'The collection of all layers in the drawing'
     CLSID = IID('{E1F8E208-BA80-46AB-9C38-7B6E436BEA22}')
     coclass_clsid = IID('{BD801B3C-9A15-4D0B-88C4-3EE83793AF9E}')
 
     # Result is of type IAcadLayer
     def Add(self, Name=defaultNamedNotOptArg):
+        'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
             )
         if ret is not None:
@@ -10717,27 +10783,33 @@ class IAcadLayers(DispatchBaseClass):
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GenerateUsageData(self):
+        'Generates layer usage data. See also Used property of Layer.'
         return self._oleobj_.InvokeTypes(3, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     # Result is of type IAcadLayer
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -10745,6 +10817,7 @@ class IAcadLayers(DispatchBaseClass):
         return ret
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -10764,6 +10837,7 @@ class IAcadLayers(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -10789,74 +10863,104 @@ class IAcadLayers(DispatchBaseClass):
         return True
 
 class IAcadLayout(DispatchBaseClass):
+    'The plot settings and visual properties of a model space or paper space block'
     CLSID = IID('{43D32A8F-1D5F-4EAC-AA0E-2D51AF3B5166}')
     coclass_clsid = IID('{0709E286-0B01-4DD4-B3C2-78FC2B81DA46}')
 
     def CopyFrom(self, pPlotConfig=defaultNamedNotOptArg):
+        'Copies the settings from the given plotconfiguration'
         return self._oleobj_.InvokeTypes(35, LCID, 1, (24, 0), ((9, 1),),pPlotConfig
             )
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetCanonicalMediaNames(self):
+        'Gets all available canonical media names for the specified plot device.'
         return self._ApplyTypes_(36, 1, (12, 0), (), 'GetCanonicalMediaNames', None,)
 
     def GetCustomScale(self, Numerator=pythoncom.Missing, Denominator=pythoncom.Missing):
+        'Gets the custom scale for a layout or plot configuration'
         return self._ApplyTypes_(17, 1, (24, 0), ((16389, 2), (16389, 2)), 'GetCustomScale', None,Numerator
             , Denominator)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetLocaleMediaName(self, Name=defaultNamedNotOptArg):
+        'Gets the localized version of the canonical media name.'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(40, LCID, 1, (8, 0), ((8, 1),),Name
             )
 
     def GetPaperMargins(self, LowerLeft=pythoncom.Missing, UpperRight=pythoncom.Missing):
+        'Gets the margins for the layout or plot configuration'
         return self._ApplyTypes_(26, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetPaperMargins', None,LowerLeft
             , UpperRight)
 
     def GetPaperSize(self, Width=pythoncom.Missing, Height=pythoncom.Missing):
+        'Gets the width and height of the configured paper'
         return self._ApplyTypes_(28, 1, (24, 0), ((16389, 2), (16389, 2)), 'GetPaperSize', None,Width
             , Height)
 
     def GetPlotDeviceNames(self):
+        'Gets all available plot device names.'
         return self._ApplyTypes_(37, 1, (12, 0), (), 'GetPlotDeviceNames', None,)
 
     def GetPlotStyleTableNames(self):
+        'Gets all available plot style table names.'
         return self._ApplyTypes_(38, 1, (12, 0), (), 'GetPlotStyleTableNames', None,)
 
     def GetWindowToPlot(self, LowerLeft=pythoncom.Missing, UpperRight=pythoncom.Missing):
+        'Gets the coordinates that define the portion of the layout to plot'
         return self._ApplyTypes_(31, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetWindowToPlot', None,LowerLeft
             , UpperRight)
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def RefreshPlotDeviceInfo(self):
+        'Updates the plot, canonical media, and plot style table information to reflect the current system state.'
         return self._oleobj_.InvokeTypes(39, LCID, 1, (24, 0), (),)
 
     def SetCustomScale(self, Numerator=defaultNamedNotOptArg, Denominator=defaultNamedNotOptArg):
+        'Sets the custom scale for a layout or plot configuration'
         return self._oleobj_.InvokeTypes(18, LCID, 1, (24, 0), ((5, 1), (5, 1)),Numerator
             , Denominator)
 
     def SetWindowToPlot(self, LowerLeft=defaultNamedNotOptArg, UpperRight=defaultNamedNotOptArg):
+        'Sets the coordinates that define the portion of the layout to plot'
+        LowerLeft = VTR8ArrayOrVal(LowerLeft)
+        UpperRight = VTR8ArrayOrVal(UpperRight)
         return self._oleobj_.InvokeTypes(32, LCID, 1, (24, 0), ((12, 1), (12, 1)),LowerLeft
             , UpperRight)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
+        
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'CenterPlot':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'PlotOrigin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -10923,11 +11027,13 @@ class IAcadLayout(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadLayouts(DispatchBaseClass):
+    'The collection of all layouts in the drawing'
     CLSID = IID('{E95D8080-A822-4CA3-9198-D69586E950B0}')
     coclass_clsid = IID('{2860ADE5-0A64-4A89-841A-5CFF31B7B513}')
 
     # Result is of type IAcadLayout
     def Add(self, Name=defaultNamedNotOptArg):
+        'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
             )
         if ret is not None:
@@ -10935,24 +11041,29 @@ class IAcadLayouts(DispatchBaseClass):
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     # Result is of type IAcadLayout
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -10960,6 +11071,7 @@ class IAcadLayouts(DispatchBaseClass):
         return ret
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -10979,6 +11091,7 @@ class IAcadLayouts(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -11004,63 +11117,80 @@ class IAcadLayouts(DispatchBaseClass):
         return True
 
 class IAcadLeader(DispatchBaseClass):
+    'AutoCAD Leader Interface'
     CLSID = IID('{DE365AE8-E7B5-4A94-B7C9-FDF9A0749CBF}')
     coclass_clsid = IID('{6410C59E-2E2B-48FD-A348-2A874EA06F1C}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     # The method Coordinate is actually a property, but must be used as a method to correctly pass the arguments
     def Coordinate(self, Index=defaultNamedNotOptArg):
+        'Specifies the coordinate of a single vertex in the object'
         return self._ApplyTypes_(67, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def Evaluate(self):
+        'Evaluate the leader'
         return self._oleobj_.InvokeTypes(66, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -11068,6 +11198,10 @@ class IAcadLeader(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -11075,36 +11209,63 @@ class IAcadLeader(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
+        'Specifies the coordinate of a single vertex in the object'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(67, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'VerticalTextPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         # Method 'Annotation' returns object of type 'IAcadEntity'
@@ -11179,55 +11340,70 @@ class IAcadLeader(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadLine(DispatchBaseClass):
+    'AutoCAD Line Interface'
     CLSID = IID('{0C3FF8D9-DF63-4B64-8291-B04431B64553}')
     coclass_clsid = IID('{0B9DFBAA-64DB-4574-A703-3C019658D654}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -11235,6 +11411,10 @@ class IAcadLine(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -11242,35 +11422,61 @@ class IAcadLine(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Offset(self, Distance=defaultNamedNotOptArg):
+        'Creates a new line by offsetting the current line by a specified distance'
         return self._ApplyTypes_(5, 1, (12, 0), ((5, 1),), 'Offset', None,Distance
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #IAcadLine override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'EndPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'StartPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Angle": (8, 2, (5, 0), (), "Angle", None),
@@ -11330,27 +11536,33 @@ class IAcadLine(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadLineType(DispatchBaseClass):
+    'The line characteristics consisting of combinations of dashes, dots, and spaces'
     CLSID = IID('{CB6632B6-D6C7-488E-99A1-C2C4CB0E6EDA}')
     coclass_clsid = IID('{028015A0-4F49-4410-B21E-0B3B6EBC643D}')
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -11380,11 +11592,13 @@ class IAcadLineType(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadLineTypes(DispatchBaseClass):
+    'The collection of all linetypes in the drawing'
     CLSID = IID('{A9B8EA6A-59E1-4866-99C6-A0ADF5C1DB9D}')
     coclass_clsid = IID('{261222D4-0361-4A30-B2DE-33CA817B9B41}')
 
     # Result is of type IAcadLineType
     def Add(self, Name=defaultNamedNotOptArg):
+        'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
             )
         if ret is not None:
@@ -11392,24 +11606,29 @@ class IAcadLineTypes(DispatchBaseClass):
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     # Result is of type IAcadLineType
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -11417,10 +11636,12 @@ class IAcadLineTypes(DispatchBaseClass):
         return ret
 
     def Load(self, Name=defaultNamedNotOptArg, FileName=defaultNamedNotOptArg):
+        'Loads a menu group from a menu file or the definition of a linetype from a library (LIN) file'
         return self._oleobj_.InvokeTypes(3, LCID, 1, (24, 0), ((8, 1), (8, 1)),Name
             , FileName)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -11440,6 +11661,7 @@ class IAcadLineTypes(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -11465,55 +11687,70 @@ class IAcadLineTypes(DispatchBaseClass):
         return True
 
 class IAcadLoftedSurface(DispatchBaseClass):
+    'IAcadLoftedSurface Interface'
     CLSID = IID('{AF1A4BE3-A001-4A86-AC6E-934F8F066236}')
     coclass_clsid = IID('{BF6E215F-4104-4D1A-ABE5-5916F88B01B8}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -11521,6 +11758,10 @@ class IAcadLoftedSurface(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -11528,30 +11769,43 @@ class IAcadLoftedSurface(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
@@ -11640,74 +11894,95 @@ class IAcadLoftedSurface(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadMInsertBlock(DispatchBaseClass):
+    'IAcadMInsertBlock Interface'
     CLSID = IID('{74A82370-EFAA-4E44-8ECC-B3E4B9BAE220}')
     coclass_clsid = IID('{3BEBD0BC-74CC-44B2-9258-1B40C5600387}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def ConvertToAnonymousBlock(self):
+        'Converts a dynamic block to a regular anonymous block'
         return self._oleobj_.InvokeTypes(516, LCID, 1, (24, 0), (),)
 
     def ConvertToStaticBlock(self, newBlockName=defaultNamedNotOptArg):
+        'Converts a dynamic block to a regular named block'
         return self._oleobj_.InvokeTypes(517, LCID, 1, (24, 0), ((8, 1),),newBlockName
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def Explode(self):
+        'Explodes the block and returns the sub-entities as an array of Object'
         return self._ApplyTypes_(8, 1, (12, 0), (), 'Explode', None,)
 
     def GetAttributes(self):
+        'Gets Attributes in the block'
         return self._ApplyTypes_(9, 1, (12, 0), (), 'GetAttributes', None,)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     def GetConstantAttributes(self):
+        'Gets constant attributes in the block'
         return self._ApplyTypes_(10, 1, (12, 0), (), 'GetConstantAttributes', None,)
 
     def GetDynamicBlockProperties(self):
+        'Gets the dynamic block properties'
         return self._ApplyTypes_(514, 1, (12, 0), (), 'GetDynamicBlockProperties', None,)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -11715,6 +11990,10 @@ class IAcadMInsertBlock(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -11722,34 +12001,58 @@ class IAcadMInsertBlock(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def ResetBlock(self):
+        'Resets the dynamic block to the default state'
         return self._oleobj_.InvokeTypes(515, LCID, 1, (24, 0), (),)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -11831,91 +12134,117 @@ class IAcadMInsertBlock(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadMLeader(DispatchBaseClass):
+    'AutoCAD Multi-Leader Interface'
     CLSID = IID('{D3CDA679-7206-4895-9B57-B57046501748}')
     coclass_clsid = IID('{FDB02BA2-8442-47F1-98C8-F3CABB36CAF9}')
 
     def AddLeader(self):
+        'Adds a new leader cluster to this multileader object'
         return self._oleobj_.InvokeTypes(27, LCID, 1, (3, 0), (),)
 
     def AddLeaderLine(self, leaderIndex=defaultNamedNotOptArg, pointArray=defaultNamedNotOptArg):
+        'Adds a leader line to the leader cluster with specified index'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._oleobj_.InvokeTypes(29, LCID, 1, (3, 0), ((3, 1), (12, 1)),leaderIndex
             , pointArray)
 
     def AddLeaderLineEx(self, pointArray=defaultNamedNotOptArg):
+        'Adds a new leader line to this multileader object determined by input point which will be the first point of new leader line'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._oleobj_.InvokeTypes(30, LCID, 1, (3, 0), ((12, 1),),pointArray
             )
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBlockAttributeValue(self, attdefId=defaultNamedNotOptArg):
+        'Gets attribute value in block content determined by attribute definition id'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(44, LCID, 1, (8, 0), ((20, 1),),attdefId
             )
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     def GetDoglegDirection(self, leaderIndex=defaultNamedNotOptArg):
+        'Gets the dog leg direction of the specific leader'
         return self._ApplyTypes_(41, 1, (12, 0), ((3, 1),), 'GetDoglegDirection', None,leaderIndex
             )
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetLeaderIndex(self, leaderLineIndex=defaultNamedNotOptArg):
+        'Gets the index of leader cluster which the specified leader line is in'
         return self._oleobj_.InvokeTypes(35, LCID, 1, (3, 0), ((3, 1),),leaderLineIndex
             )
 
     def GetLeaderLineIndexes(self, leaderIndex=defaultNamedNotOptArg):
+        'Gets the indexes of leader lines of the specific leader'
         return self._ApplyTypes_(36, 1, (12, 0), ((3, 1),), 'GetLeaderLineIndexes', None,leaderIndex
             )
 
     def GetLeaderLineVertices(self, leaderLineIndex=defaultNamedNotOptArg):
+        'Specifies the vertices of leader line with specified index'
         return self._ApplyTypes_(33, 1, (12, 0), ((3, 1),), 'GetLeaderLineVertices', None,leaderLineIndex
             )
 
     def GetVertexCount(self, leaderLineIndex=defaultNamedNotOptArg):
+        'Gets the number of vertices in the specified leader line'
         return self._oleobj_.InvokeTypes(37, LCID, 1, (3, 0), ((3, 1),),leaderLineIndex
             )
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -11923,6 +12252,10 @@ class IAcadMLeader(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -11930,50 +12263,69 @@ class IAcadMLeader(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def RemoveLeader(self, leaderIndex=defaultNamedNotOptArg):
+        'Removes the leader cluster with specified index'
         return self._oleobj_.InvokeTypes(28, LCID, 1, (24, 0), ((3, 1),),leaderIndex
             )
 
     def RemoveLeaderLine(self, leaderLineIndex=defaultNamedNotOptArg):
+        'Removes the leader line with specified index'
         return self._oleobj_.InvokeTypes(31, LCID, 1, (24, 0), ((3, 1),),leaderLineIndex
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetBlockAttributeValue(self, attdefId=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
+        'Sets attribute value in block content with attribute definition id'
         return self._oleobj_.InvokeTypes(45, LCID, 1, (24, 0), ((20, 1), (8, 1)),attdefId
             , Value)
 
     def SetDoglegDirection(self, leaderIndex=defaultNamedNotOptArg, dirVec=defaultNamedNotOptArg):
+        'Sets the dog leg direction of the specific leader'
         return self._oleobj_.InvokeTypes(42, LCID, 1, (24, 0), ((3, 1), (12, 1)),leaderIndex
             , dirVec)
 
     def SetLeaderLineVertices(self, leaderLineIndex=defaultNamedNotOptArg, pointArray=defaultNamedNotOptArg):
+        'Specifies the vertices of leader line with specified index'
+        pointArray = VTR8ArrayOrVal(pointArray)
         return self._oleobj_.InvokeTypes(32, LCID, 1, (24, 0), ((3, 1), (12, 1)),leaderLineIndex
             , pointArray)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
@@ -12093,6 +12445,7 @@ class IAcadMLeader(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadMLeaderLeader(DispatchBaseClass):
+    "AutoCAD Interface for Multi-Leader's Leader Line"
     CLSID = IID('{76FF4D98-BD59-402C-A2BD-8D44FCC653A7}')
     coclass_clsid = IID('{B509B16E-8A89-4F9D-AE3F-912F36C72AEF}')
 
@@ -12138,27 +12491,33 @@ class IAcadMLeaderLeader(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadMLeaderStyle(DispatchBaseClass):
+    'AutoCAD MLeaderStyle Interface'
     CLSID = IID('{0EEC861A-8D62-48EA-9E3A-6E9F01049413}')
     coclass_clsid = IID('{E5E6A16B-0725-453B-A1AD-A78EED9AC8D0}')
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -12272,55 +12631,70 @@ class IAcadMLeaderStyle(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadMLine(DispatchBaseClass):
+    'IAcadMLine Interface'
     CLSID = IID('{BB798354-9B4D-496A-98F6-C5D80CB74C25}')
     coclass_clsid = IID('{A094D037-2D1B-4047-8146-9FDB645AF7A0}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -12328,6 +12702,10 @@ class IAcadMLine(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -12335,31 +12713,52 @@ class IAcadMLine(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -12415,59 +12814,75 @@ class IAcadMLine(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadMText(DispatchBaseClass):
+    'AutoCAD MText Interface'
     CLSID = IID('{40294D17-F10C-4A4C-B73A-53DF64E91750}')
     coclass_clsid = IID('{2F976E5F-F8E2-445D-8841-4F2A7167110D}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def FieldCode(self):
+        'Returns the text string with field codes of the Mtext'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(14, LCID, 1, (8, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -12475,6 +12890,10 @@ class IAcadMText(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -12482,31 +12901,54 @@ class IAcadMText(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -12581,27 +13023,33 @@ class IAcadMText(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadMaterial(DispatchBaseClass):
+    'The render material characteristics'
     CLSID = IID('{6938CF0F-988C-4414-B02E-1590AF2D5B70}')
     coclass_clsid = IID('{DF6B0563-5640-4C25-A3AF-CBF384E6E55E}')
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -12636,6 +13084,7 @@ class IAcadMaterials(DispatchBaseClass):
 
     # Result is of type IAcadMaterial
     def Add(self, Name=defaultNamedNotOptArg):
+        'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
             )
         if ret is not None:
@@ -12643,24 +13092,29 @@ class IAcadMaterials(DispatchBaseClass):
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     # Result is of type IAcadMaterial
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -12668,6 +13122,7 @@ class IAcadMaterials(DispatchBaseClass):
         return ret
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -12687,6 +13142,7 @@ class IAcadMaterials(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -12712,11 +13168,13 @@ class IAcadMaterials(DispatchBaseClass):
         return True
 
 class IAcadMenuBar(DispatchBaseClass):
+    'A collection of PopupMenu objects representing the current AutoCAD menu bar'
     CLSID = IID('{7A8761CD-22B8-4893-B4E9-3A8EBACD8F8F}')
     coclass_clsid = IID('{5C9AC022-4248-4AAB-B49A-8ADAE1E9C53B}')
 
     # Result is of type IAcadPopupMenu
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -12734,6 +13192,7 @@ class IAcadMenuBar(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -12759,18 +13218,22 @@ class IAcadMenuBar(DispatchBaseClass):
         return True
 
 class IAcadMenuGroup(DispatchBaseClass):
+    'An AutoCAD menu group'
     CLSID = IID('{26068652-EBBC-413D-9913-6EDA9447ABAC}')
     coclass_clsid = IID('{ACB59E98-9D60-4894-B1F2-29A88A559DBF}')
 
     def Save(self, MenuFileType=defaultNamedNotOptArg):
+        'Saves the document or menu group'
         return self._oleobj_.InvokeTypes(1610743816, LCID, 1, (24, 0), ((3, 1),),MenuFileType
             )
 
     def SaveAs(self, MenuFileName=defaultNamedNotOptArg, MenuFileType=defaultNamedNotOptArg):
+        'Saves the document or menu group to a specified file'
         return self._oleobj_.InvokeTypes(1610743817, LCID, 1, (24, 0), ((8, 1), (3, 1)),MenuFileName
             , MenuFileType)
 
     def Unload(self):
+        'Unloads the menu group or external reference'
         return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
@@ -12797,11 +13260,13 @@ class IAcadMenuGroup(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadMenuGroups(DispatchBaseClass):
+    'A collection of MenuGroup objects representing all the menu groups loaded in the current AutoCAD session'
     CLSID = IID('{A8831D23-6E0E-4EAE-B25B-DB141DCED07A}')
     coclass_clsid = IID('{A61EB326-9132-4FBB-8D5E-377A50E74B4A}')
 
     # Result is of type IAcadMenuGroup
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -12810,6 +13275,7 @@ class IAcadMenuGroups(DispatchBaseClass):
 
     # Result is of type IAcadMenuGroup
     def Load(self, MenuFileName=defaultNamedNotOptArg, BaseMenu=defaultNamedOptArg):
+        'Loads a menu group from a menu file or the definition of a linetype from a library (LIN) file'
         ret = self._oleobj_.InvokeTypes(1610743813, LCID, 1, (9, 0), ((8, 1), (12, 17)),MenuFileName
             , BaseMenu)
         if ret is not None:
@@ -12827,6 +13293,7 @@ class IAcadMenuGroups(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -12852,11 +13319,17 @@ class IAcadMenuGroups(DispatchBaseClass):
         return True
 
 class IAcadModelSpace(DispatchBaseClass):
+    'A special Block object containing all model space entities'
     CLSID = IID('{8D539A4B-DF03-4DA7-B9DC-659C2E764AE4}')
     coclass_clsid = IID('{F4EDC475-30BA-4754-9D70-35A1BD07F1A6}')
 
     # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
+        'Creates a 3DFace object given four vertices'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1540, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -12865,6 +13338,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
+        'Creates a free-form 3D mesh, given the number of points in the M and N directions and the coordinates of the points in the M and N directions'
+        PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
         ret = self._oleobj_.InvokeTypes(1541, LCID, 1, (9, 0), ((3, 1), (3, 1), (12, 1)),M
             , N, PointsMatrix)
         if ret is not None:
@@ -12873,6 +13348,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
+        'Creates a 3D polyline from the given array of coordinates'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1542, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -12881,6 +13358,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
+        'Creates an arc given the center, radius, start angle, and end angle of the arc'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1543, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Radius, StartAngle, EndAngle)
         if ret is not None:
@@ -12890,6 +13369,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadAttribute
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
+        'Creates an attribute definition at the given location with the specified properties'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1544, LCID, 1, (9, 0), ((5, 1), (3, 1), (8, 1), (12, 1), (8, 1), (8, 1)),Height
             , Mode, Prompt, InsertionPoint, Tag, Value
             )
@@ -12899,6 +13380,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a 3D solid box with edges parallel to the axes of the WCS'
+        Origin = VTR8ArrayOrVal(Origin)
         ret = self._oleobj_.InvokeTypes(1545, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Origin
             , Length, Width, Height)
         if ret is not None:
@@ -12907,6 +13390,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
+        'Creates a circle given a center point and radius'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1546, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -12915,6 +13400,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a 3D solid cone with the base on the XY plane of the WCS'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1547, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , BaseRadius, Height)
         if ret is not None:
@@ -12922,6 +13409,7 @@ class IAcadModelSpace(DispatchBaseClass):
         return ret
 
     def AddCustomObject(self, ClassName=defaultNamedNotOptArg):
+        'Creates a Custom object'
         ret = self._oleobj_.InvokeTypes(1539, LCID, 1, (9, 0), ((8, 1),),ClassName
             )
         if ret is not None:
@@ -12930,6 +13418,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a 3D solid cylinder whose base is on the XY plane of the WCS'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1548, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Radius, Height)
         if ret is not None:
@@ -12938,6 +13428,10 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
+        'Creates an angular dimension for an arc, two lines, or a circle'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1588, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -12946,6 +13440,10 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
+        'Creates an aligned dimension object'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        TextPosition = VTR8ArrayOrVal(TextPosition)
         ret = self._oleobj_.InvokeTypes(1549, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),ExtLine1Point
             , ExtLine2Point, TextPosition)
         if ret is not None:
@@ -12954,6 +13452,10 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
+        'Creates an angular dimension for an arc, two lines, or a circle'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1550, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -12962,6 +13464,11 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
+        'Creates an arc length dimension for an arc'
+        ArcCenter = VTR8ArrayOrVal(ArcCenter)
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        ArcPoint = VTR8ArrayOrVal(ArcPoint)
         ret = self._oleobj_.InvokeTypes(1602, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),ArcCenter
             , FirstEndPoint, SecondEndPoint, ArcPoint)
         if ret is not None:
@@ -12970,6 +13477,9 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
+        'Creates a diametric dimension for a circle or arc given the two points on the diameter and the length of the leader line'
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        FarChordPoint = VTR8ArrayOrVal(FarChordPoint)
         ret = self._oleobj_.InvokeTypes(1551, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),ChordPoint
             , FarChordPoint, LeaderLength)
         if ret is not None:
@@ -12978,6 +13488,9 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
+        'Creates an ordinate dimension given the definition point, and leader endpoint'
+        DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
+        LeaderEndPoint = VTR8ArrayOrVal(LeaderEndPoint)
         ret = self._oleobj_.InvokeTypes(1553, LCID, 1, (9, 0), ((12, 1), (12, 1), (3, 1)),DefinitionPoint
             , LeaderEndPoint, UseXAxis)
         if ret is not None:
@@ -12986,6 +13499,9 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
+        'Creates a radial dimension for the selected object at the given location'
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
         ret = self._oleobj_.InvokeTypes(1554, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, LeaderLength)
         if ret is not None:
@@ -12995,6 +13511,11 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadDimRadialLarge
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
+        'Creates a jogged radial dimension for an arc, circle, or polyline arc segment'
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        OverrideCenter = VTR8ArrayOrVal(OverrideCenter)
+        JogPoint = VTR8ArrayOrVal(JogPoint)
         ret = self._oleobj_.InvokeTypes(1603, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, OverrideCenter, JogPoint, JogAngle)
         if ret is not None:
@@ -13003,6 +13524,10 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Creates a rotated linear dimension'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        DimLineLocation = VTR8ArrayOrVal(DimLineLocation)
         ret = self._oleobj_.InvokeTypes(1552, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (5, 1)),ExtLine1Point
             , ExtLine2Point, DimLineLocation, RotationAngle)
         if ret is not None:
@@ -13011,6 +13536,9 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
+        'Creates an ellipse in the XY plane of the WCS given the center point, a point on the major axis, and the radius ratio'
+        Center = VTR8ArrayOrVal(Center)
+        MajorAxis = VTR8ArrayOrVal(MajorAxis)
         ret = self._oleobj_.InvokeTypes(1555, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , MajorAxis, RadiusRatio)
         if ret is not None:
@@ -13019,6 +13547,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a 3D solid elliptical cone on the XY plane of the WCS given the Center, MajorRadius, MinorRadius, and Height'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1556, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -13027,6 +13557,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddEllipticalCylinder(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a 3D solid elliptical cylinder whose base is on the XY plane of the WCS, given the Center, MajorRadius, MinorRadius, and Height'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1557, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -13035,6 +13567,7 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddExtrudedSolid(self, Profile=defaultNamedNotOptArg, Height=defaultNamedNotOptArg, TaperAngle=defaultNamedNotOptArg):
+        'Creates an extruded solid given the Profile, Height, and TaperAngle'
         ret = self._oleobj_.InvokeTypes(1558, LCID, 1, (9, 0), ((9, 1), (5, 1), (5, 1)),Profile
             , Height, TaperAngle)
         if ret is not None:
@@ -13043,6 +13576,7 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddExtrudedSolidAlongPath(self, Profile=defaultNamedNotOptArg, Path=defaultNamedNotOptArg):
+        'Creates an extruded solid given the profile and an extrusion path'
         ret = self._oleobj_.InvokeTypes(1559, LCID, 1, (9, 0), ((9, 1), (9, 1)),Profile
             , Path)
         if ret is not None:
@@ -13051,6 +13585,7 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadHatch
     def AddHatch(self, PatternType=defaultNamedNotOptArg, PatternName=defaultNamedNotOptArg, Associativity=defaultNamedNotOptArg, HatchObjectType=defaultNamedOptArg):
+        'Creates a Hatch object'
         ret = self._oleobj_.InvokeTypes(1579, LCID, 1, (9, 0), ((3, 1), (8, 1), (11, 1), (12, 17)),PatternType
             , PatternName, Associativity, HatchObjectType)
         if ret is not None:
@@ -13059,6 +13594,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadLeader
     def AddLeader(self, PointsArray=defaultNamedNotOptArg, Annotation=defaultNamedNotOptArg, Type=defaultNamedNotOptArg):
+        'Creates a leader line, given the coordinates of the points'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1560, LCID, 1, (9, 0), ((12, 1), (9, 1), (3, 1)),PointsArray
             , Annotation, Type)
         if ret is not None:
@@ -13067,6 +13604,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
+        'Creates a lightweight polyline from a list of vertices'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1563, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -13075,6 +13614,9 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
+        'Creates a line passing through two points'
+        StartPoint = VTR8ArrayOrVal(StartPoint)
+        EndPoint = VTR8ArrayOrVal(EndPoint)
         ret = self._oleobj_.InvokeTypes(1581, LCID, 1, (9, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
         if ret is not None:
@@ -13085,6 +13627,8 @@ class IAcadModelSpace(DispatchBaseClass):
     def AddMInsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
+        'Inserts an array of blocks'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1585, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (3, 1), (3, 1), (3, 1), (3, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , NumRows, NumColumns, RowSpacing, ColumnSpacing, Password
@@ -13095,11 +13639,15 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
+        'Creates a multileader'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{D3CDA679-7206-4895-9B57-B57046501748}',PointsArray
             , leaderLineIndex)
 
     # Result is of type IAcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
+        'Creates a polyface mesh from a list of vertices'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1587, LCID, 1, (9, 0), ((12, 1),),VertexList
             )
         if ret is not None:
@@ -13108,6 +13656,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
+        'Creates an MText entity in a rectangle defined by the insertion point and width of the bounding box'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1561, LCID, 1, (9, 0), ((12, 1), (5, 1), (8, 1)),InsertionPoint
             , Width, Text)
         if ret is not None:
@@ -13116,14 +13666,17 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
-        ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point
-            )
+        'Creates a Point object at a given location'
+        Point = VTR8ArrayOrVal(Point)
+        ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point)
         if ret is not None:
             ret = Dispatch(ret, 'AddPoint', '{4B6BF600-69F2-4174-9681-3FB992DE68AA}')
         return ret
 
     # Result is of type IAcadPolyfaceMesh
     def AddPolyfaceMesh(self, VertexList=defaultNamedNotOptArg, FaceList=defaultNamedNotOptArg):
+        'Creates a polyface mesh from a list of vertices'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1586, LCID, 1, (9, 0), ((12, 1), (12, 1)),VertexList
             , FaceList)
         if ret is not None:
@@ -13132,6 +13685,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
+        'Creates a polyline from a list of vertices'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1564, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -13140,6 +13695,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Creates a new raster image based on an existing image file'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1580, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),imageFileName
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -13148,6 +13705,9 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Creates a ray passing through two unique points'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1565, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -13155,11 +13715,16 @@ class IAcadModelSpace(DispatchBaseClass):
         return ret
 
     def AddRegion(self, ObjectList=defaultNamedNotOptArg):
+        'Creates a region from a set of entities. The given entities must form a closed coplanar region'
+        ObjectList = VTDISPArrayOrVal(ObjectList)
         return self._ApplyTypes_(1566, 1, (12, 0), ((12, 1),), 'AddRegion', None,ObjectList
             )
 
     # Result is of type IAcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
+        'Creates a revolved solid, given the region around an axis'
+        AxisPoint = VTR8ArrayOrVal(AxisPoint)
+        AxisDir = VTR8ArrayOrVal(AxisDir)
         ret = self._oleobj_.InvokeTypes(1567, LCID, 1, (9, 0), ((9, 1), (12, 1), (12, 1), (5, 1)),Profile
             , AxisPoint, AxisDir, Angle)
         if ret is not None:
@@ -13168,6 +13733,10 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
+        'Creates a section plane'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
+        planeVector = VTR8ArrayOrVal(planeVector)
         ret = self._oleobj_.InvokeTypes(1604, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),FromPoint
             , ToPoint, planeVector)
         if ret is not None:
@@ -13176,6 +13745,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Creates a Shape object based on a template identified by name, at the given insertion point, scale factor, and rotation'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1568, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),Name
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -13184,6 +13755,11 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
+        'Creates a 2D solid polygon'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1569, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -13192,6 +13768,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
+        'Creates a sphere given the center and radius'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1570, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -13200,6 +13778,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
+        'Creates a quadratic or cubic NURBS (nonuniform rational B-spline) curve'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1571, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),PointsArray
             , StartTangent, EndTangent)
         if ret is not None:
@@ -13209,6 +13789,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadTable
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
+        'Creates a table at the given insertion point, given the number of rows, number of columns, row height and column width'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1595, LCID, 1, (9, 0), ((12, 1), (3, 1), (3, 1), (5, 1), (5, 1)),InsertionPoint
             , NumRows, NumColumns, RowHeight, ColWidth)
         if ret is not None:
@@ -13217,6 +13799,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a single line of text'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1572, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1)),TextString
             , InsertionPoint, Height)
         if ret is not None:
@@ -13225,6 +13809,9 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
+        'Creates a tolerance entity'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
+        Direction = VTR8ArrayOrVal(Direction)
         ret = self._oleobj_.InvokeTypes(1573, LCID, 1, (9, 0), ((8, 1), (12, 1), (12, 1)),Text
             , InsertionPoint, Direction)
         if ret is not None:
@@ -13233,6 +13820,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
+        'Creates a torus at the given location'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1574, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , TorusRadius, TubeRadius)
         if ret is not None:
@@ -13241,6 +13830,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
+        'Creates a Trace object from an array of points'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1575, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -13249,6 +13840,8 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a wedge with edges parallel to the axes given the length, width, and height'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1576, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Length, Width, Height)
         if ret is not None:
@@ -13257,6 +13850,9 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadXline
     def AddXline(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Creates an xline (an infinite line) passing through two specified points'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1577, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -13266,6 +13862,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadExternalReference
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
+        'Attaches an external reference (xref) to the drawing'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1590, LCID, 1, (9, 0), ((8, 1), (8, 1), (12, 1), (5, 1), (5, 1), (5, 1), (5, 1), (11, 1), (12, 17)),PathName
             , Name, InsertionPoint, Xscale, Yscale, Zscale
             , Rotation, bOverlay, Password)
@@ -13274,32 +13872,40 @@ class IAcadModelSpace(DispatchBaseClass):
         return ret
 
     def Bind(self, bPrefixName=defaultNamedNotOptArg):
+        'Binds an external reference (xref) to a drawing'
         return self._oleobj_.InvokeTypes(1593, LCID, 1, (24, 0), ((11, 1),),bPrefixName
             )
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Detach(self):
+        'Detachs an external reference (xref) from a drawing'
         return self._oleobj_.InvokeTypes(1594, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     # Result is of type IAcadBlockReference
     def InsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, Password=defaultNamedOptArg):
+        'Inserts a drawing file or a named block that has been defined in the current drawing'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1578, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , Password)
@@ -13309,6 +13915,7 @@ class IAcadModelSpace(DispatchBaseClass):
 
     # Result is of type IAcadEntity
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -13316,14 +13923,25 @@ class IAcadModelSpace(DispatchBaseClass):
         return ret
 
     def Reload(self):
+        'Reloads the external reference (xref)'
         return self._oleobj_.InvokeTypes(1592, LCID, 1, (24, 0), (),)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def Unload(self):
+        'Unloads the menu group or external reference'
         return self._oleobj_.InvokeTypes(1591, LCID, 1, (24, 0), (),)
+    
+     #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -13362,6 +13980,7 @@ class IAcadModelSpace(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -13387,55 +14006,70 @@ class IAcadModelSpace(DispatchBaseClass):
         return True
 
 class IAcadNurbSurface(DispatchBaseClass):
+    'AutoCAD NURBS Surface Interface'
     CLSID = IID('{8D680860-D711-4D3C-A457-F2C27B2485EA}')
     coclass_clsid = IID('{E447E066-98FF-4571-9ACF-716C5DB80C5F}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -13443,6 +14077,10 @@ class IAcadNurbSurface(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -13450,30 +14088,43 @@ class IAcadNurbSurface(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
@@ -13540,27 +14191,33 @@ class IAcadNurbSurface(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadObject(DispatchBaseClass):
+    'The standard interface for a basic AutoCAD object'
     CLSID = IID('{2D145760-58B6-4C21-80F2-F90683AA34D6}')
     coclass_clsid = IID('{5DCBC221-5D60-4C84-95DE-E7F91F8AC08A}')
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -13586,55 +14243,70 @@ class IAcadObject(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadOle(DispatchBaseClass):
+    'IAcadOle Interface'
     CLSID = IID('{7354883A-8F64-4BF2-8ED0-5B8C9831FBD6}')
     coclass_clsid = IID('{08BAC354-500F-4060-A7B2-E4F458EA8C3F}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -13642,6 +14314,10 @@ class IAcadOle(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -13742,67 +14418,85 @@ class IAcadOle(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPViewport(DispatchBaseClass):
+    'IAcadPViewport Interface'
     CLSID = IID('{57CA25FF-D62F-4428-B6CB-40DF872B6C00}')
     coclass_clsid = IID('{B643DF4D-B90B-4DEC-8F8E-11C961220CA5}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Display(self, bStatus=defaultNamedNotOptArg):
+        'Determines whether viewport is On or Off'
         return self._oleobj_.InvokeTypes(22, LCID, 1, (24, 0), ((11, 1),),bStatus
             )
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetGridSpacing(self, XSpacing=pythoncom.Missing, YSpacing=pythoncom.Missing):
+        'Specifies the grid spacing for the viewport'
         return self._ApplyTypes_(18, 1, (24, 0), ((16389, 2), (16389, 2)), 'GetGridSpacing', None,XSpacing
             , YSpacing)
 
     def GetSnapSpacing(self, XSpacing=pythoncom.Missing, YSpacing=pythoncom.Missing):
+        'Specifies the snap spacing for the viewport'
         return self._ApplyTypes_(20, 1, (24, 0), ((16389, 2), (16389, 2)), 'GetSnapSpacing', None,XSpacing
             , YSpacing)
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -13810,6 +14504,10 @@ class IAcadPViewport(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -13817,42 +14515,68 @@ class IAcadPViewport(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetGridSpacing(self, XSpacing=defaultNamedNotOptArg, YSpacing=defaultNamedNotOptArg):
+        'Sets the grid spacing for the viewport'
         return self._oleobj_.InvokeTypes(19, LCID, 1, (24, 0), ((5, 1), (5, 1)),XSpacing
             , YSpacing)
 
     def SetSnapSpacing(self, XSpacing=defaultNamedNotOptArg, YSpacing=defaultNamedNotOptArg):
+        'Sets the snap spacing for the viewport'
         return self._oleobj_.InvokeTypes(21, LCID, 1, (24, 0), ((5, 1), (5, 1)),XSpacing
             , YSpacing)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def SyncModelView(self):
+        'Updates the viewport parameters with the parameters in the associated model view.'
         return self._oleobj_.InvokeTypes(36, LCID, 1, (24, 0), (),)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Center':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'SnapBasePoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -13960,11 +14684,17 @@ class IAcadPViewport(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPaperSpace(DispatchBaseClass):
+    'A special Block object containing all the entities in the active paper space layout'
     CLSID = IID('{4243348F-38C7-4192-95DD-75B86C0CF747}')
     coclass_clsid = IID('{98BF2929-A20D-48C5-B079-5019882F9080}')
 
     # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
+        'Creates a 3DFace object given four vertices'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1540, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -13973,6 +14703,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
+        'Creates a free-form 3D mesh, given the number of points in the M and N directions and the coordinates of the points in the M and N directions'
+        PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
         ret = self._oleobj_.InvokeTypes(1541, LCID, 1, (9, 0), ((3, 1), (3, 1), (12, 1)),M
             , N, PointsMatrix)
         if ret is not None:
@@ -13981,6 +14713,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
+        'Creates a 3D polyline from the given array of coordinates'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1542, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -13989,6 +14723,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
+        'Creates an arc given the center, radius, start angle, and end angle of the arc'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1543, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Radius, StartAngle, EndAngle)
         if ret is not None:
@@ -13998,6 +14734,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadAttribute
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
+        'Creates an attribute definition at the given location with the specified properties'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1544, LCID, 1, (9, 0), ((5, 1), (3, 1), (8, 1), (12, 1), (8, 1), (8, 1)),Height
             , Mode, Prompt, InsertionPoint, Tag, Value
             )
@@ -14007,6 +14745,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a 3D solid box with edges parallel to the axes of the WCS'
+        Origin = VTR8ArrayOrVal(Origin)
         ret = self._oleobj_.InvokeTypes(1545, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Origin
             , Length, Width, Height)
         if ret is not None:
@@ -14015,6 +14755,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
+        'Creates a circle given a center point and radius'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1546, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -14023,6 +14765,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a 3D solid cone with the base on the XY plane of the WCS'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1547, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , BaseRadius, Height)
         if ret is not None:
@@ -14030,6 +14774,7 @@ class IAcadPaperSpace(DispatchBaseClass):
         return ret
 
     def AddCustomObject(self, ClassName=defaultNamedNotOptArg):
+        'Creates a Custom object'
         ret = self._oleobj_.InvokeTypes(1539, LCID, 1, (9, 0), ((8, 1),),ClassName
             )
         if ret is not None:
@@ -14038,6 +14783,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a 3D solid cylinder whose base is on the XY plane of the WCS'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1548, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Radius, Height)
         if ret is not None:
@@ -14046,6 +14793,10 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
+        'Creates an angular dimension for an arc, two lines, or a circle'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1588, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -14054,6 +14805,10 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
+        'Creates an aligned dimension object'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        TextPosition = VTR8ArrayOrVal(TextPosition)
         ret = self._oleobj_.InvokeTypes(1549, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),ExtLine1Point
             , ExtLine2Point, TextPosition)
         if ret is not None:
@@ -14062,6 +14817,10 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
+        'Creates an angular dimension for an arc, two lines, or a circle'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1550, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -14070,6 +14829,11 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
+        'Creates an arc length dimension for an arc'
+        ArcCenter = VTR8ArrayOrVal(ArcCenter)
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        ArcPoint = VTR8ArrayOrVal(ArcPoint)
         ret = self._oleobj_.InvokeTypes(1602, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),ArcCenter
             , FirstEndPoint, SecondEndPoint, ArcPoint)
         if ret is not None:
@@ -14078,6 +14842,9 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
+        'Creates a diametric dimension for a circle or arc given the two points on the diameter and the length of the leader line'
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        FarChordPoint = VTR8ArrayOrVal(FarChordPoint)
         ret = self._oleobj_.InvokeTypes(1551, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),ChordPoint
             , FarChordPoint, LeaderLength)
         if ret is not None:
@@ -14086,6 +14853,9 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
+        'Creates an ordinate dimension given the definition point, and leader endpoint'
+        DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
+        LeaderEndPoint = VTR8ArrayOrVal(LeaderEndPoint)
         ret = self._oleobj_.InvokeTypes(1553, LCID, 1, (9, 0), ((12, 1), (12, 1), (3, 1)),DefinitionPoint
             , LeaderEndPoint, UseXAxis)
         if ret is not None:
@@ -14094,6 +14864,9 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
+        'Creates a radial dimension for the selected object at the given location'
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
         ret = self._oleobj_.InvokeTypes(1554, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, LeaderLength)
         if ret is not None:
@@ -14103,6 +14876,11 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadDimRadialLarge
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
+        'Creates a jogged radial dimension for an arc, circle, or polyline arc segment'
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        OverrideCenter = VTR8ArrayOrVal(OverrideCenter)
+        JogPoint = VTR8ArrayOrVal(JogPoint)
         ret = self._oleobj_.InvokeTypes(1603, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, OverrideCenter, JogPoint, JogAngle)
         if ret is not None:
@@ -14111,6 +14889,10 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Creates a rotated linear dimension'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        DimLineLocation = VTR8ArrayOrVal(DimLineLocation)
         ret = self._oleobj_.InvokeTypes(1552, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (5, 1)),ExtLine1Point
             , ExtLine2Point, DimLineLocation, RotationAngle)
         if ret is not None:
@@ -14119,6 +14901,9 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
+        'Creates an ellipse in the XY plane of the WCS given the center point, a point on the major axis, and the radius ratio'
+        Center = VTR8ArrayOrVal(Center)
+        MajorAxis = VTR8ArrayOrVal(MajorAxis)
         ret = self._oleobj_.InvokeTypes(1555, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , MajorAxis, RadiusRatio)
         if ret is not None:
@@ -14127,6 +14912,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a 3D solid elliptical cone on the XY plane of the WCS given the Center, MajorRadius, MinorRadius, and Height'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1556, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -14135,6 +14922,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddEllipticalCylinder(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a 3D solid elliptical cylinder whose base is on the XY plane of the WCS, given the Center, MajorRadius, MinorRadius, and Height'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1557, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -14143,6 +14932,7 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddExtrudedSolid(self, Profile=defaultNamedNotOptArg, Height=defaultNamedNotOptArg, TaperAngle=defaultNamedNotOptArg):
+        'Creates an extruded solid given the Profile, Height, and TaperAngle'
         ret = self._oleobj_.InvokeTypes(1558, LCID, 1, (9, 0), ((9, 1), (5, 1), (5, 1)),Profile
             , Height, TaperAngle)
         if ret is not None:
@@ -14151,6 +14941,7 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddExtrudedSolidAlongPath(self, Profile=defaultNamedNotOptArg, Path=defaultNamedNotOptArg):
+        'Creates an extruded solid given the profile and an extrusion path'
         ret = self._oleobj_.InvokeTypes(1559, LCID, 1, (9, 0), ((9, 1), (9, 1)),Profile
             , Path)
         if ret is not None:
@@ -14159,6 +14950,7 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadHatch
     def AddHatch(self, PatternType=defaultNamedNotOptArg, PatternName=defaultNamedNotOptArg, Associativity=defaultNamedNotOptArg, HatchObjectType=defaultNamedOptArg):
+        'Creates a Hatch object'
         ret = self._oleobj_.InvokeTypes(1579, LCID, 1, (9, 0), ((3, 1), (8, 1), (11, 1), (12, 17)),PatternType
             , PatternName, Associativity, HatchObjectType)
         if ret is not None:
@@ -14167,6 +14959,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadLeader
     def AddLeader(self, PointsArray=defaultNamedNotOptArg, Annotation=defaultNamedNotOptArg, Type=defaultNamedNotOptArg):
+        'Creates a leader line, given the coordinates of the points'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1560, LCID, 1, (9, 0), ((12, 1), (9, 1), (3, 1)),PointsArray
             , Annotation, Type)
         if ret is not None:
@@ -14175,6 +14969,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
+        'Creates a lightweight polyline from a list of vertices'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1563, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -14183,6 +14979,9 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
+        'Creates a line passing through two points'
+        StartPoint = VTR8ArrayOrVal(StartPoint)
+        EndPoint = VTR8ArrayOrVal(EndPoint)
         ret = self._oleobj_.InvokeTypes(1581, LCID, 1, (9, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
         if ret is not None:
@@ -14193,6 +14992,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     def AddMInsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
+        'Inserts an array of blocks'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1585, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (3, 1), (3, 1), (3, 1), (3, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , NumRows, NumColumns, RowSpacing, ColumnSpacing, Password
@@ -14203,19 +15004,24 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
+        'Creates a multileader'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{D3CDA679-7206-4895-9B57-B57046501748}',PointsArray
             , leaderLineIndex)
 
     # Result is of type IAcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
-        ret = self._oleobj_.InvokeTypes(1587, LCID, 1, (9, 0), ((12, 1),),VertexList
-            )
+        'Creates a polyface mesh from a list of vertices'
+        VertexList = VTR8ArrayOrVal(VertexList)
+        ret = self._oleobj_.InvokeTypes(1587, LCID, 1, (9, 0), ((12, 1),),VertexList)
         if ret is not None:
             ret = Dispatch(ret, 'AddMLine', '{BB798354-9B4D-496A-98F6-C5D80CB74C25}')
         return ret
 
     # Result is of type IAcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
+        'Creates an MText entity in a rectangle defined by the insertion point and width of the bounding box'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1561, LCID, 1, (9, 0), ((12, 1), (5, 1), (8, 1)),InsertionPoint
             , Width, Text)
         if ret is not None:
@@ -14224,6 +15030,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadPViewport
     def AddPViewport(self, Center=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Adds a paper space viewport, given the center, height, and width'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Width, Height)
         if ret is not None:
@@ -14232,14 +15040,17 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
-        ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point
-            )
+        'Creates a Point object at a given location'
+        Point = VTR8ArrayOrVal(Point)
+        ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point)
         if ret is not None:
             ret = Dispatch(ret, 'AddPoint', '{4B6BF600-69F2-4174-9681-3FB992DE68AA}')
         return ret
 
     # Result is of type IAcadPolyfaceMesh
     def AddPolyfaceMesh(self, VertexList=defaultNamedNotOptArg, FaceList=defaultNamedNotOptArg):
+        'Creates a polyface mesh from a list of vertices'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1586, LCID, 1, (9, 0), ((12, 1), (12, 1)),VertexList
             , FaceList)
         if ret is not None:
@@ -14248,6 +15059,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
+        'Creates a polyline from a list of vertices'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1564, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -14256,6 +15069,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Creates a new raster image based on an existing image file'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1580, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),imageFileName
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -14264,6 +15079,9 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Creates a ray passing through two unique points'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1565, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -14271,11 +15089,16 @@ class IAcadPaperSpace(DispatchBaseClass):
         return ret
 
     def AddRegion(self, ObjectList=defaultNamedNotOptArg):
+        'Creates a region from a set of entities. The given entities must form a closed coplanar region'
+        ObjectList = VTDISPArrayOrVal(ObjectList)
         return self._ApplyTypes_(1566, 1, (12, 0), ((12, 1),), 'AddRegion', None,ObjectList
             )
 
     # Result is of type IAcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
+        'Creates a revolved solid, given the region around an axis'
+        AxisPoint = VTR8ArrayOrVal(AxisPoint)
+        AxisDir = VTR8ArrayOrVal(AxisDir)
         ret = self._oleobj_.InvokeTypes(1567, LCID, 1, (9, 0), ((9, 1), (12, 1), (12, 1), (5, 1)),Profile
             , AxisPoint, AxisDir, Angle)
         if ret is not None:
@@ -14284,6 +15107,10 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
+        'Creates a section plane'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
+        planeVector = VTR8ArrayOrVal(planeVector)
         ret = self._oleobj_.InvokeTypes(1604, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),FromPoint
             , ToPoint, planeVector)
         if ret is not None:
@@ -14292,6 +15119,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Creates a Shape object based on a template identified by name, at the given insertion point, scale factor, and rotation'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1568, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),Name
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -14300,6 +15129,11 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
+        'Creates a 2D solid polygon'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1569, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -14308,6 +15142,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
+        'Creates a sphere given the center and radius'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1570, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -14316,6 +15152,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
+        'Creates a quadratic or cubic NURBS (nonuniform rational B-spline) curve'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1571, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),PointsArray
             , StartTangent, EndTangent)
         if ret is not None:
@@ -14325,6 +15163,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadTable
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
+        'Creates a table at the given insertion point, given the number of rows, number of columns, row height and column width'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1595, LCID, 1, (9, 0), ((12, 1), (3, 1), (3, 1), (5, 1), (5, 1)),InsertionPoint
             , NumRows, NumColumns, RowHeight, ColWidth)
         if ret is not None:
@@ -14333,6 +15173,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a single line of text'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1572, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1)),TextString
             , InsertionPoint, Height)
         if ret is not None:
@@ -14341,6 +15183,9 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
+        'Creates a tolerance entity'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
+        Direction = VTR8ArrayOrVal(Direction)
         ret = self._oleobj_.InvokeTypes(1573, LCID, 1, (9, 0), ((8, 1), (12, 1), (12, 1)),Text
             , InsertionPoint, Direction)
         if ret is not None:
@@ -14349,6 +15194,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
+        'Creates a torus at the given location'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1574, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , TorusRadius, TubeRadius)
         if ret is not None:
@@ -14357,6 +15204,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
+        'Creates a Trace object from an array of points'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1575, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -14365,6 +15214,8 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a wedge with edges parallel to the axes given the length, width, and height'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1576, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Length, Width, Height)
         if ret is not None:
@@ -14373,6 +15224,9 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadXline
     def AddXline(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Creates an xline (an infinite line) passing through two specified points'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1577, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -14382,6 +15236,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadExternalReference
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
+        'Attaches an external reference (xref) to the drawing'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1590, LCID, 1, (9, 0), ((8, 1), (8, 1), (12, 1), (5, 1), (5, 1), (5, 1), (5, 1), (11, 1), (12, 17)),PathName
             , Name, InsertionPoint, Xscale, Yscale, Zscale
             , Rotation, bOverlay, Password)
@@ -14390,32 +15246,40 @@ class IAcadPaperSpace(DispatchBaseClass):
         return ret
 
     def Bind(self, bPrefixName=defaultNamedNotOptArg):
+        'Binds an external reference (xref) to a drawing'
         return self._oleobj_.InvokeTypes(1593, LCID, 1, (24, 0), ((11, 1),),bPrefixName
             )
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Detach(self):
+        'Detachs an external reference (xref) from a drawing'
         return self._oleobj_.InvokeTypes(1594, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     # Result is of type IAcadBlockReference
     def InsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, Password=defaultNamedOptArg):
+        'Inserts a drawing file or a named block that has been defined in the current drawing'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1578, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , Password)
@@ -14425,21 +15289,33 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IAcadEntity
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
-            ret = Dispatch(ret, 'Item', '{A994ADDF-69D4-401B-8ED5-03D0E797AB3B}')
+            ret = Dispatch(ret, 'Item', '{AB9F53A4-BA00-499B-BE4C-D178EC67FFCC}')
         return ret
 
     def Reload(self):
+        'Reloads the external reference (xref)'
         return self._oleobj_.InvokeTypes(1592, LCID, 1, (24, 0), (),)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def Unload(self):
+        'Unloads the menu group or external reference'
         return self._oleobj_.InvokeTypes(1591, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -14478,6 +15354,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -14503,55 +15380,70 @@ class IAcadPaperSpace(DispatchBaseClass):
         return True
 
 class IAcadPlaneSurface(DispatchBaseClass):
+    'IAcadPlaneSurface Interface'
     CLSID = IID('{BB025CEB-5C3B-4BD2-AAC0-AA4A31593012}')
     coclass_clsid = IID('{595E70E6-6FC6-41FE-B4FC-DEE5C680C6AD}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -14559,6 +15451,10 @@ class IAcadPlaneSurface(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -14566,30 +15462,43 @@ class IAcadPlaneSurface(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
@@ -14654,26 +15563,32 @@ class IAcadPlaneSurface(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPlot(DispatchBaseClass):
+    'The set of methods and properties used for plotting layouts'
     CLSID = IID('{C83F156E-B1CB-4C5F-BD1C-1BA6DAC0DF58}')
     coclass_clsid = IID('{6E0FD7F5-3566-4F1B-9B0A-12480BD967E2}')
 
     def DisplayPlotPreview(self, Preview=defaultNamedNotOptArg):
+        'Displays the Plot Preview dialog box with the specified partial or full view preview'
         return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (24, 0), ((3, 1),),Preview
             )
 
     def PlotToDevice(self, plotConfig=defaultNamedOptArg):
+        'Plots a layout to a device'
         return self._oleobj_.InvokeTypes(1610743817, LCID, 1, (11, 0), ((12, 17),),plotConfig
             )
 
     def PlotToFile(self, plotFile=defaultNamedNotOptArg, plotConfig=defaultNamedOptArg):
+        'Plots a layout to the specified file'
         return self._oleobj_.InvokeTypes(1610743816, LCID, 1, (11, 0), ((8, 1), (12, 17)),plotFile
             , plotConfig)
 
     def SetLayoutsToPlot(self, layoutList=defaultNamedNotOptArg):
+        'Specifies the layout or layouts to plot'
         return self._oleobj_.InvokeTypes(1610743818, LCID, 1, (24, 0), ((12, 1),),layoutList
             )
 
     def StartBatchMode(self, entryCount=defaultNamedNotOptArg):
+        'Invokes batchmode printing'
         return self._oleobj_.InvokeTypes(1610743819, LCID, 1, (24, 0), ((3, 1),),entryCount
             )
 
@@ -14698,74 +15613,102 @@ class IAcadPlot(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPlotConfiguration(DispatchBaseClass):
+    'A named collection of plot settings'
     CLSID = IID('{D48AD610-6EE0-4583-B1CB-6E57D159FBEF}')
     coclass_clsid = IID('{56904EF6-6CBB-4FAC-8125-CF3DB480B013}')
 
     def CopyFrom(self, pPlotConfig=defaultNamedNotOptArg):
+        'Copies the settings from the given plotconfiguration'
         return self._oleobj_.InvokeTypes(35, LCID, 1, (24, 0), ((9, 1),),pPlotConfig
             )
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetCanonicalMediaNames(self):
+        'Gets all available canonical media names for the specified plot device.'
         return self._ApplyTypes_(36, 1, (12, 0), (), 'GetCanonicalMediaNames', None,)
 
     def GetCustomScale(self, Numerator=pythoncom.Missing, Denominator=pythoncom.Missing):
+        'Gets the custom scale for a layout or plot configuration'
         return self._ApplyTypes_(17, 1, (24, 0), ((16389, 2), (16389, 2)), 'GetCustomScale', None,Numerator
             , Denominator)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetLocaleMediaName(self, Name=defaultNamedNotOptArg):
+        'Gets the localized version of the canonical media name.'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(40, LCID, 1, (8, 0), ((8, 1),),Name
             )
 
     def GetPaperMargins(self, LowerLeft=pythoncom.Missing, UpperRight=pythoncom.Missing):
+        'Gets the margins for the layout or plot configuration'
         return self._ApplyTypes_(26, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetPaperMargins', None,LowerLeft
             , UpperRight)
 
     def GetPaperSize(self, Width=pythoncom.Missing, Height=pythoncom.Missing):
+        'Gets the width and height of the configured paper'
         return self._ApplyTypes_(28, 1, (24, 0), ((16389, 2), (16389, 2)), 'GetPaperSize', None,Width
             , Height)
 
     def GetPlotDeviceNames(self):
+        'Gets all available plot device names.'
         return self._ApplyTypes_(37, 1, (12, 0), (), 'GetPlotDeviceNames', None,)
 
     def GetPlotStyleTableNames(self):
+        'Gets all available plot style table names.'
         return self._ApplyTypes_(38, 1, (12, 0), (), 'GetPlotStyleTableNames', None,)
 
     def GetWindowToPlot(self, LowerLeft=pythoncom.Missing, UpperRight=pythoncom.Missing):
+        'Gets the coordinates that define the portion of the layout to plot'
         return self._ApplyTypes_(31, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetWindowToPlot', None,LowerLeft
             , UpperRight)
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def RefreshPlotDeviceInfo(self):
+        'Updates the plot, canonical media, and plot style table information to reflect the current system state.'
         return self._oleobj_.InvokeTypes(39, LCID, 1, (24, 0), (),)
 
     def SetCustomScale(self, Numerator=defaultNamedNotOptArg, Denominator=defaultNamedNotOptArg):
+        'Sets the custom scale for a layout or plot configuration'
         return self._oleobj_.InvokeTypes(18, LCID, 1, (24, 0), ((5, 1), (5, 1)),Numerator
             , Denominator)
 
     def SetWindowToPlot(self, LowerLeft=defaultNamedNotOptArg, UpperRight=defaultNamedNotOptArg):
+        'Sets the coordinates that define the portion of the layout to plot'
+        LowerLeft = VTR8ArrayOrVal(LowerLeft)
+        UpperRight = VTR8ArrayOrVal(UpperRight)
         return self._oleobj_.InvokeTypes(32, LCID, 1, (24, 0), ((12, 1), (12, 1)),LowerLeft
             , UpperRight)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
+        
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'PlotOrigin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -14828,11 +15771,13 @@ class IAcadPlotConfiguration(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPlotConfigurations(DispatchBaseClass):
+    'A collection of named plot settings'
     CLSID = IID('{7FE1CC3C-FB11-4850-95BA-CC760C25CA61}')
     coclass_clsid = IID('{D2D87C01-613A-401E-A175-EE3859069EDB}')
 
     # Result is of type IAcadPlotConfiguration
     def Add(self, Name=defaultNamedNotOptArg, ModelType=defaultNamedOptArg):
+        'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1), (12, 17)),Name
             , ModelType)
         if ret is not None:
@@ -14840,24 +15785,29 @@ class IAcadPlotConfigurations(DispatchBaseClass):
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     # Result is of type IAcadPlotConfiguration
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -14865,6 +15815,7 @@ class IAcadPlotConfigurations(DispatchBaseClass):
         return ret
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -14884,6 +15835,7 @@ class IAcadPlotConfigurations(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -14909,55 +15861,70 @@ class IAcadPlotConfigurations(DispatchBaseClass):
         return True
 
 class IAcadPoint(DispatchBaseClass):
+    'AutoCAD Point Interface'
     CLSID = IID('{4B6BF600-69F2-4174-9681-3FB992DE68AA}')
     coclass_clsid = IID('{BD5A3DB7-0C23-4C12-B3B2-4ACB5BEC7357}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -14965,6 +15932,10 @@ class IAcadPoint(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -14972,31 +15943,54 @@ class IAcadPoint(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #IAcadPoint override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -15051,55 +16045,70 @@ class IAcadPoint(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPointCloud(DispatchBaseClass):
+    'AutoCAD Point Cloud Interface'
     CLSID = IID('{9795DB9A-9E35-4375-8319-C921158C1031}')
     coclass_clsid = IID('{1D6FDF5B-A0CA-4689-AB8A-5CC2A5D11A23}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -15107,6 +16116,10 @@ class IAcadPointCloud(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -15114,31 +16127,52 @@ class IAcadPointCloud(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -15215,55 +16249,70 @@ class IAcadPointCloud(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPointCloudEx(DispatchBaseClass):
+    'AutoCAD Point Cloud Interface'
     CLSID = IID('{BF5FB993-04F6-4402-B218-D674CE019C2D}')
     coclass_clsid = None
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -15271,6 +16320,10 @@ class IAcadPointCloudEx(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -15278,31 +16331,52 @@ class IAcadPointCloudEx(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -15372,55 +16446,69 @@ class IAcadPointCloudEx(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPointCloudEx2(DispatchBaseClass):
+    'AutoCAD Point Cloud Interface'
     CLSID = IID('{5FAE2AF4-9E27-487E-87BD-4D431D9830DD}')
     coclass_clsid = IID('{43F5347B-0596-497F-9F68-D482B4B2B6FF}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        'Highlights the entity object.'
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -15428,6 +16516,10 @@ class IAcadPointCloudEx2(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -15435,31 +16527,52 @@ class IAcadPointCloudEx2(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -15530,60 +16643,76 @@ class IAcadPointCloudEx2(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPolyfaceMesh(DispatchBaseClass):
-    CLSID = IID('{91F38DDE-2027-4194-B934-522879589ECE}')
-    coclass_clsid = IID('{FDB00B7E-18DC-4593-8A67-3B024A8AD7C3}')
+    'IAcadPolyfaceMesh Interface'
+    CLSID = IID('{3F119DE6-07FF-4202-BE58-9C89357846AC}')
+    coclass_clsid = IID('{FD1D0023-6D6C-4140-A37A-AB10BFF1C01D}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     # The method Coordinate is actually a property, but must be used as a method to correctly pass the arguments
     def Coordinate(self, Index=defaultNamedNotOptArg):
+        'Specifies the coordinate of a single vertex in the object'
         return self._ApplyTypes_(2, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -15591,6 +16720,10 @@ class IAcadPolyfaceMesh(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -15598,36 +16731,59 @@ class IAcadPolyfaceMesh(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
+        'Specifies the coordinate of a single vertex in the object'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(2, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -15681,67 +16837,85 @@ class IAcadPolyfaceMesh(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPolygonMesh(DispatchBaseClass):
+    'AutoCAD PolygonMesh Interface'
     CLSID = IID('{152E9E5F-D4ED-41FD-A64D-D7CE3502838C}')
     coclass_clsid = IID('{ECA13A8A-63EA-416E-A360-813A31B0875E}')
 
     def AppendVertex(self, vertex=defaultNamedNotOptArg):
+        'Appends a vertex to the polygonmesh'
         return self._oleobj_.InvokeTypes(9, LCID, 1, (24, 0), ((12, 1),),vertex
             )
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     # The method Coordinate is actually a property, but must be used as a method to correctly pass the arguments
     def Coordinate(self, Index=defaultNamedNotOptArg):
+        'Specifies the coordinate of a single vertex in the object'
         return self._ApplyTypes_(11, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def Explode(self):
+        'Explodes the polygonmesh and returns the sub-entities as an array of object'
         return self._ApplyTypes_(10, 1, (12, 0), (), 'Explode', None,)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -15749,6 +16923,10 @@ class IAcadPolygonMesh(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -15756,36 +16934,59 @@ class IAcadPolygonMesh(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
+        'Specifies the coordinate of a single vertex in the object'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(11, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -15848,75 +17049,95 @@ class IAcadPolygonMesh(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPolyline(DispatchBaseClass):
+    'AutoCAD Polyline Interface'
     CLSID = IID('{9C06F3CB-EC8E-4867-8206-E82E416FBBB2}')
     coclass_clsid = IID('{64B63491-8F39-4C24-B6C2-BAF50FAB801C}')
 
     def AppendVertex(self, vertex=defaultNamedNotOptArg):
+        'Appends a vertex to the polyline'
         return self._oleobj_.InvokeTypes(4, LCID, 1, (24, 0), ((12, 1),),vertex
             )
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     # The method Coordinate is actually a property, but must be used as a method to correctly pass the arguments
     def Coordinate(self, Index=defaultNamedNotOptArg):
+        'Specifies the coordinate of a single vertex in the object'
         return self._ApplyTypes_(17, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def Explode(self):
+        'Explodes the polyline and returns the sub-entities as an array of Object'
         return self._ApplyTypes_(5, 1, (12, 0), (), 'Explode', None,)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     def GetBulge(self, Index=defaultNamedNotOptArg):
+        'Returns the vertex bulge of the polyline'
         return self._oleobj_.InvokeTypes(6, LCID, 1, (5, 0), ((3, 1),),Index
             )
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetWidth(self, Index=defaultNamedNotOptArg, StartWidth=pythoncom.Missing, EndWidth=defaultNamedNotOptArg):
+        'Returns segment width of the polyline'
         return self._ApplyTypes_(8, 1, (24, 0), ((3, 1), (16389, 2), (16389, 0)), 'GetWidth', None,Index
             , StartWidth, EndWidth)
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -15924,6 +17145,10 @@ class IAcadPolyline(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -15931,48 +17156,76 @@ class IAcadPolyline(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Offset(self, Distance=defaultNamedNotOptArg):
+        'Creates a new entity object by offsetting the polyline by a specified distance'
         return self._ApplyTypes_(11, 1, (12, 0), ((5, 1),), 'Offset', None,Distance
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetBulge(self, Index=defaultNamedNotOptArg, bulge=defaultNamedNotOptArg):
+        'Sets the vertex bulge of the polyline'
         return self._oleobj_.InvokeTypes(7, LCID, 1, (24, 0), ((3, 1), (5, 1)),Index
             , bulge)
 
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
+        'Specifies the coordinate of a single vertex in the object'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(17, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
     def SetWidth(self, Index=defaultNamedNotOptArg, StartWidth=defaultNamedNotOptArg, EndWidth=defaultNamedNotOptArg):
+        'Sets the segment width of the polyline'
         return self._oleobj_.InvokeTypes(9, LCID, 1, (24, 0), ((3, 1), (5, 1), (5, 0)),Index
             , StartWidth, EndWidth)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -16039,11 +17292,13 @@ class IAcadPolyline(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPopupMenu(DispatchBaseClass):
+    'An AutoCAD cascading menu'
     CLSID = IID('{8CA4D495-B5A9-4AE0-8E27-950FC98F0074}')
     coclass_clsid = IID('{8BEB167C-8682-4EAC-9BE8-D41596F9EE38}')
 
     # Result is of type IAcadPopupMenuItem
     def AddMenuItem(self, Index=defaultNamedNotOptArg, Label=defaultNamedNotOptArg, Macro=defaultNamedNotOptArg):
+        'Adds a popup menu item to a popup menu'
         ret = self._oleobj_.InvokeTypes(1610743818, LCID, 1, (9, 0), ((12, 1), (8, 1), (8, 1)),Index
             , Label, Macro)
         if ret is not None:
@@ -16052,6 +17307,7 @@ class IAcadPopupMenu(DispatchBaseClass):
 
     # Result is of type IAcadPopupMenuItem
     def AddSeparator(self, Index=defaultNamedNotOptArg):
+        'Adds a separator to an existing menu or toolbar'
         ret = self._oleobj_.InvokeTypes(1610743820, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -16060,6 +17316,7 @@ class IAcadPopupMenu(DispatchBaseClass):
 
     # Result is of type IAcadPopupMenu
     def AddSubMenu(self, Index=defaultNamedNotOptArg, Label=defaultNamedNotOptArg):
+        'Adds a submenu to an existing menu'
         ret = self._oleobj_.InvokeTypes(1610743819, LCID, 1, (9, 0), ((12, 1), (8, 1)),Index
             , Label)
         if ret is not None:
@@ -16067,11 +17324,13 @@ class IAcadPopupMenu(DispatchBaseClass):
         return ret
 
     def InsertInMenuBar(self, Index=defaultNamedNotOptArg):
+        'Inserts the popup menu into the AutoCAD menu bar at a specified location'
         return self._oleobj_.InvokeTypes(1610743821, LCID, 1, (24, 0), ((12, 1),),Index
             )
 
     # Result is of type IAcadPopupMenuItem
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -16079,6 +17338,7 @@ class IAcadPopupMenu(DispatchBaseClass):
         return ret
 
     def RemoveFromMenuBar(self):
+        'Removes the popup menu from the AutoCAD menu bar'
         return self._oleobj_.InvokeTypes(1610743822, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
@@ -16097,6 +17357,7 @@ class IAcadPopupMenu(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -16122,10 +17383,12 @@ class IAcadPopupMenu(DispatchBaseClass):
         return True
 
 class IAcadPopupMenuItem(DispatchBaseClass):
+    'A single menu item on an AutoCAD pull-down menu'
     CLSID = IID('{A5056C37-BBC1-45C2-BB47-CE7EAC5FEC71}')
     coclass_clsid = IID('{5DE0FD38-8092-4374-94B2-1A490C319E7C}')
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1610743826, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
@@ -16164,11 +17427,13 @@ class IAcadPopupMenuItem(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPopupMenus(DispatchBaseClass):
+    'A collection of PopupMenu objects representing all the popup menus loaded in the MenuGroup'
     CLSID = IID('{067DFE3B-FB40-4AB8-852E-0948D38FFB04}')
     coclass_clsid = IID('{D8C41B66-00FF-4DA0-854E-3B4B019F5B46}')
 
     # Result is of type IAcadPopupMenu
     def Add(self, MenuName=defaultNamedNotOptArg):
+        'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(1610743813, LCID, 1, (9, 0), ((8, 1),),MenuName
             )
         if ret is not None:
@@ -16176,11 +17441,13 @@ class IAcadPopupMenus(DispatchBaseClass):
         return ret
 
     def InsertMenuInMenuBar(self, MenuName=defaultNamedNotOptArg, Index=defaultNamedNotOptArg):
+        'Inserts a menu into the AutoCAD menu bar'
         return self._oleobj_.InvokeTypes(1610743814, LCID, 1, (24, 0), ((8, 1), (12, 1)),MenuName
             , Index)
 
     # Result is of type IAcadPopupMenu
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -16188,6 +17455,7 @@ class IAcadPopupMenus(DispatchBaseClass):
         return ret
 
     def RemoveMenuFromMenuBar(self, Index=defaultNamedNotOptArg):
+        'Removes the popup menu, as specified from the collection, from the AutoCAD menu bar'
         return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (24, 0), ((12, 1),),Index
             )
 
@@ -16202,6 +17470,7 @@ class IAcadPopupMenus(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -16227,6 +17496,7 @@ class IAcadPopupMenus(DispatchBaseClass):
         return True
 
 class IAcadPreferences(DispatchBaseClass):
+    'This object specifies the current AutoCAD settings'
     CLSID = IID('{13D665E2-124F-419E-A01D-F16AF31E5DBD}')
     coclass_clsid = IID('{ADBA37CB-0653-4643-903E-0BB22B92473F}')
 
@@ -16263,6 +17533,7 @@ class IAcadPreferences(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPreferencesDisplay(DispatchBaseClass):
+    'This object contains the options from the Display tab on the Options dialog'
     CLSID = IID('{B51B5AA4-EE75-47D3-A298-22D7D80B1384}')
     coclass_clsid = IID('{39121E37-2406-42B0-A36B-C0B86491820E}')
 
@@ -16333,6 +17604,7 @@ class IAcadPreferencesDisplay(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPreferencesDrafting(DispatchBaseClass):
+    'This object contains the options from the Drafting tab on the Options dialog'
     CLSID = IID('{259D0200-8753-4E10-8046-D7B84A65671F}')
     coclass_clsid = IID('{1C0781A1-145D-415F-9CBB-7FC6C42F86C4}')
 
@@ -16373,15 +17645,18 @@ class IAcadPreferencesDrafting(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPreferencesFiles(DispatchBaseClass):
+    'This object contains the options from the Files tab on the Options dialog'
     CLSID = IID('{B3DD284E-E57E-4155-B743-646A1D95EADB}')
     coclass_clsid = IID('{C6C560BE-EBF7-4995-96A5-0DDFDDB29ACB}')
 
     def GetProjectFilePath(self, ProjectName=defaultNamedNotOptArg):
+        'Gets the directory in which AutoCAD looks for external reference files'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(1610743858, LCID, 1, (8, 0), ((8, 1),),ProjectName
             )
 
     def SetProjectFilePath(self, ProjectName=defaultNamedNotOptArg, ProjectFilePath=defaultNamedNotOptArg):
+        'Sets the directory in which AutoCAD looks for external reference files'
         return self._oleobj_.InvokeTypes(1610743857, LCID, 1, (24, 0), ((8, 1), (8, 1)),ProjectName
             , ProjectFilePath)
 
@@ -16477,6 +17752,7 @@ class IAcadPreferencesFiles(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPreferencesOpenSave(DispatchBaseClass):
+    'This object contains the options from the Open and Save tab on the Options dialog'
     CLSID = IID('{5C046358-7A58-4FBC-916E-7663FC6EDD55}')
     coclass_clsid = IID('{24119DE2-E5B8-463F-8D1A-4A6119A245F4}')
 
@@ -16522,6 +17798,7 @@ class IAcadPreferencesOpenSave(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPreferencesOutput(DispatchBaseClass):
+    'This object contains the options from the Output tab on the Options dialog'
     CLSID = IID('{7CBC97A1-0F94-4CAB-B3DF-E75291CAF734}')
     coclass_clsid = IID('{292C9B23-3244-498A-B862-C5BA6D2F0BA5}')
 
@@ -16566,34 +17843,40 @@ class IAcadPreferencesOutput(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPreferencesProfiles(DispatchBaseClass):
+    'This object contains the options from the Profiles tab on the Options dialog'
     CLSID = IID('{0A1C8034-0564-442D-B3CC-EB584503FB2B}')
     coclass_clsid = IID('{69AA5724-3122-4FFD-9DE6-DAA6593111F3}')
 
     def CopyProfile(self, oldProfileName=defaultNamedNotOptArg, newProfileName=defaultNamedNotOptArg):
+        'Copies the specified profile'
         return self._oleobj_.InvokeTypes(1610743816, LCID, 1, (24, 0), ((8, 1), (8, 1)),oldProfileName
             , newProfileName)
 
     def DeleteProfile(self, ProfileName=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1610743813, LCID, 1, (24, 0), ((8, 1),),ProfileName
-            )
+        'Deletes the specified profile'
+        return self._oleobj_.InvokeTypes(1610743813, LCID, 1, (24, 0), ((8, 1),),ProfileName)
 
     def ExportProfile(self, ProfileName=defaultNamedNotOptArg, RegFile=defaultNamedNotOptArg):
+        'Exports the active profile so it can be shared with other users'
         return self._oleobj_.InvokeTypes(1610743812, LCID, 1, (24, 0), ((8, 1), (8, 1)),ProfileName
             , RegFile)
 
     def GetAllProfileNames(self, pNames=pythoncom.Missing):
-        return self._ApplyTypes_(1610743817, 1, (24, 0), ((16396, 2),), 'GetAllProfileNames', None,pNames
-            )
+        'Gets all available profiles for the system'
+        return self._ApplyTypes_(1610743817, 1, (24, 0), ((16396, 2),), 'GetAllProfileNames', None,pNames)
 
     def ImportProfile(self, ProfileName=defaultNamedNotOptArg, RegFile=defaultNamedNotOptArg, IncludePathInfo=defaultNamedNotOptArg):
+        'Imports a profile created by another user'
         return self._oleobj_.InvokeTypes(1610743811, LCID, 1, (24, 0), ((8, 1), (8, 1), (11, 1)),ProfileName
             , RegFile, IncludePathInfo)
 
     def RenameProfile(self, origProfileName=defaultNamedNotOptArg, newProfileName=defaultNamedNotOptArg):
+        'Renames the specified profile'
         return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (24, 0), ((8, 1), (8, 1)),origProfileName
             , newProfileName)
 
     def ResetProfile(self, Profile=defaultNamedNotOptArg):
+        'Resets the value in the specified profile to its default values'
         return self._oleobj_.InvokeTypes(1610743814, LCID, 1, (24, 0), ((8, 1),),Profile
             )
 
@@ -16614,6 +17897,7 @@ class IAcadPreferencesProfiles(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPreferencesSelection(DispatchBaseClass):
+    'This object contains the options from the Selection tab on the Options dialog'
     CLSID = IID('{31299D74-0A9D-427B-879D-4AFE119E1D6A}')
     coclass_clsid = IID('{B4580F7E-2328-4C97-B820-6AA5C54CEB45}')
 
@@ -16654,6 +17938,7 @@ class IAcadPreferencesSelection(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPreferencesSystem(DispatchBaseClass):
+    'This object contains the options from the System tab on the Options dialog'
     CLSID = IID('{A6F3E13A-4B40-485A-8D04-0891ABED5C4E}')
     coclass_clsid = IID('{AB20EC5B-A71D-45A7-9081-39ACDD9464B0}')
 
@@ -16688,6 +17973,7 @@ class IAcadPreferencesSystem(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPreferencesUser(DispatchBaseClass):
+    'This object contains the options from the User tab on the Options dialog'
     CLSID = IID('{62DA3724-7EC5-4B46-A126-C7B58AE24667}')
     coclass_clsid = IID('{95D931B7-A9D0-4078-9A4F-484D5AB08AC9}')
 
@@ -16728,59 +18014,75 @@ class IAcadPreferencesUser(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadRasterImage(DispatchBaseClass):
+    'AutoCAD Raster Interface'
     CLSID = IID('{29141A40-B1DF-40B9-AF5F-1A81C30FFF15}')
     coclass_clsid = IID('{69DDA82F-B603-48D4-A305-AAE4F44FE12B}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def ClipBoundary(self, boundry=defaultNamedNotOptArg):
+        'Set clipping boundary'
         return self._oleobj_.InvokeTypes(13, LCID, 1, (24, 0), ((12, 1),),boundry
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -16788,6 +18090,10 @@ class IAcadRasterImage(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -16795,31 +18101,52 @@ class IAcadRasterImage(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -16898,55 +18225,69 @@ class IAcadRasterImage(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadRay(DispatchBaseClass):
+    'AutoCAD Ray Interface'
     CLSID = IID('{B3F1B426-55A0-4DFB-A8C1-6E604B3E253E}')
     coclass_clsid = IID('{85B5B818-DB01-4B34-B95B-F4632D912B48}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        'Highlights the entity object.'
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -16954,6 +18295,10 @@ class IAcadRay(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -16961,31 +18306,54 @@ class IAcadRay(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'BasePoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'SecondPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -17040,62 +18408,79 @@ class IAcadRay(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadRegion(DispatchBaseClass):
+    'AutoCAD Region Interface'
     CLSID = IID('{82049DA4-1AF2-4195-9971-BD0AE2158171}')
     coclass_clsid = IID('{3F25C247-8394-4F65-8714-27E06217A6F9}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Boolean(self, Operation=defaultNamedNotOptArg, Object=defaultNamedNotOptArg):
+        'Perform a Boolean operation against another region.'
         return self._oleobj_.InvokeTypes(10, LCID, 1, (24, 0), ((3, 1), (9, 1)),Operation
             , Object)
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def Explode(self):
+        'Explodes the region and returns the sub-entities as an array of object.'
         return self._ApplyTypes_(11, 1, (12, 0), (), 'Explode', None,)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -17103,6 +18488,10 @@ class IAcadRegion(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -17110,31 +18499,52 @@ class IAcadRegion(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -17192,27 +18602,33 @@ class IAcadRegion(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadRegisteredApplication(DispatchBaseClass):
+    'An external application that has been added to the drawing'
     CLSID = IID('{6B33301A-DA0F-494A-B0B7-409FE008926A}')
     coclass_clsid = IID('{BBA07C0C-1401-48FE-A08E-2471E3735961}')
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -17240,11 +18656,13 @@ class IAcadRegisteredApplication(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadRegisteredApplications(DispatchBaseClass):
+    'The collection of all registered applications in the drawing'
     CLSID = IID('{5B204236-EC68-434A-8C90-B2F85745A106}')
     coclass_clsid = IID('{CD0FFC9A-C624-43C7-99B4-D84911C3C7E5}')
 
     # Result is of type IAcadRegisteredApplication
     def Add(self, Name=defaultNamedNotOptArg):
+        'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
             )
         if ret is not None:
@@ -17252,24 +18670,29 @@ class IAcadRegisteredApplications(DispatchBaseClass):
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     # Result is of type IAcadRegisteredApplication
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -17277,6 +18700,7 @@ class IAcadRegisteredApplications(DispatchBaseClass):
         return ret
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -17296,6 +18720,7 @@ class IAcadRegisteredApplications(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -17321,55 +18746,70 @@ class IAcadRegisteredApplications(DispatchBaseClass):
         return True
 
 class IAcadRevolvedSurface(DispatchBaseClass):
+    'IAcadRevolvedSurface Interface'
     CLSID = IID('{73939411-AA70-4D8D-BB1B-6698CB79A03B}')
     coclass_clsid = IID('{71770D46-9176-47CA-B4C2-BCDE1CB43E50}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -17377,6 +18817,10 @@ class IAcadRevolvedSurface(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -17384,31 +18828,52 @@ class IAcadRevolvedSurface(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'AxisPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -17477,79 +18942,99 @@ class IAcadRevolvedSurface(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSection(DispatchBaseClass):
+    'IAcadSection Interface'
     CLSID = IID('{41BCF9E2-095F-4F15-B82A-30621FFDFF4F}')
     coclass_clsid = None
 
     def AddVertex(self, nIndex=defaultNamedNotOptArg, val=defaultNamedNotOptArg):
+        'Adds a new vertex to the section line'
         return self._oleobj_.InvokeTypes(15, LCID, 1, (24, 0), ((3, 1), (12, 1)),nIndex
             , val)
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     # The method Coordinate is actually a property, but must be used as a method to correctly pass the arguments
     def Coordinate(self, Index=defaultNamedNotOptArg):
+        'Specifies the co-ordinate of the specified vertex'
         return self._ApplyTypes_(14, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def CreateJog(self, varPt=defaultNamedNotOptArg):
+        'Creates a jog on the section plane'
         return self._oleobj_.InvokeTypes(18, LCID, 1, (24, 0), ((12, 1),),varPt
             )
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GenerateSectionGeometry(self, pEntity=defaultNamedNotOptArg, pIntersectionBoundaryObjs=pythoncom.Missing, pIntersectionFillObjs=pythoncom.Missing, pBackgroudnObjs=pythoncom.Missing
             , pForegroudObjs=pythoncom.Missing, pCurveTangencyObjs=pythoncom.Missing):
+        'Generates 2D or 3D section geometry'
         return self._ApplyTypes_(20, 1, (24, 0), ((9, 1), (16396, 2), (16396, 2), (16396, 2), (16396, 2), (16396, 2)), 'GenerateSectionGeometry', None,pEntity
             , pIntersectionBoundaryObjs, pIntersectionFillObjs, pBackgroudnObjs, pForegroudObjs, pCurveTangencyObjs
             )
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        'Highlights the entity object.'
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def HitTest(self, varPtHit=defaultNamedNotOptArg, pHit=pythoncom.Missing, pSegmentIndex=pythoncom.Missing, pPtOnSegment=pythoncom.Missing
             , pSubItem=pythoncom.Missing):
+        'Does hit test on section plane'
+        varPtHit = VTVARArrayOrVal(varPtHit)
         return self._ApplyTypes_(17, 1, (24, 0), ((12, 1), (16395, 2), (16387, 2), (16396, 2), (16387, 2)), 'HitTest', None,varPtHit
             , pHit, pSegmentIndex, pPtOnSegment, pSubItem)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -17557,6 +19042,10 @@ class IAcadSection(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -17564,40 +19053,63 @@ class IAcadSection(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def RemoveVertex(self, nIndex=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(16, LCID, 1, (24, 0), ((3, 1),),nIndex
-            )
+        'Removes a vertex in the section line'
+        return self._oleobj_.InvokeTypes(16, LCID, 1, (24, 0), ((3, 1),),nIndex)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
+        'Specifies the co-ordinate of the specified vertex'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(14, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -17673,79 +19185,99 @@ class IAcadSection(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSection2(DispatchBaseClass):
+    'IAcadSection Interface'
     CLSID = IID('{4387ACAD-56E5-43CC-A527-CBA0CAE2D666}')
     coclass_clsid = IID('{BB185E31-F8FC-4E83-BD45-51395D522AF5}')
 
     def AddVertex(self, nIndex=defaultNamedNotOptArg, val=defaultNamedNotOptArg):
+        'Adds a new vertex to the section line'
         return self._oleobj_.InvokeTypes(15, LCID, 1, (24, 0), ((3, 1), (12, 1)),nIndex
             , val)
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     # The method Coordinate is actually a property, but must be used as a method to correctly pass the arguments
     def Coordinate(self, Index=defaultNamedNotOptArg):
-        return self._ApplyTypes_(14, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index
-            )
+        'Specifies the co-ordinate of the specified vertex'
+        return self._ApplyTypes_(14, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index)
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def CreateJog(self, varPt=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(18, LCID, 1, (24, 0), ((12, 1),),varPt
-            )
+        'Creates a jog on the section plane'
+        varPt = VTR8ArrayOrVal(varPt)
+        return self._oleobj_.InvokeTypes(18, LCID, 1, (24, 0), ((12, 1),),varPt)
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GenerateSectionGeometry(self, pEntity=defaultNamedNotOptArg, pIntersectionBoundaryObjs=pythoncom.Missing, pIntersectionFillObjs=pythoncom.Missing, pBackgroudnObjs=pythoncom.Missing
             , pForegroudObjs=pythoncom.Missing, pCurveTangencyObjs=pythoncom.Missing):
+        'Generates 2D or 3D section geometry'
         return self._ApplyTypes_(20, 1, (24, 0), ((9, 1), (16396, 2), (16396, 2), (16396, 2), (16396, 2), (16396, 2)), 'GenerateSectionGeometry', None,pEntity
             , pIntersectionBoundaryObjs, pIntersectionFillObjs, pBackgroudnObjs, pForegroudObjs, pCurveTangencyObjs
             )
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def HitTest(self, varPtHit=defaultNamedNotOptArg, pHit=pythoncom.Missing, pSegmentIndex=pythoncom.Missing, pPtOnSegment=pythoncom.Missing
             , pSubItem=pythoncom.Missing):
+        'Does hit test on section plane'
+        varPtHit = VTVARArrayOrVal(varPtHit)
         return self._ApplyTypes_(17, 1, (24, 0), ((12, 1), (16395, 2), (16387, 2), (16396, 2), (16387, 2)), 'HitTest', None,varPtHit
             , pHit, pSegmentIndex, pPtOnSegment, pSubItem)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -17753,6 +19285,10 @@ class IAcadSection2(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -17760,40 +19296,64 @@ class IAcadSection2(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def RemoveVertex(self, nIndex=defaultNamedNotOptArg):
+        'Removes a vertex in the section line'
         return self._oleobj_.InvokeTypes(16, LCID, 1, (24, 0), ((3, 1),),nIndex
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
+        'Specifies the co-ordinate of the specified vertex'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(14, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -17875,17 +19435,21 @@ class IAcadSection2(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSectionManager(DispatchBaseClass):
+    'Controls which property is constrained when editing other property values'
     CLSID = IID('{9EFC13E4-0EAC-4F33-801C-92C58D395A80}')
     coclass_clsid = IID('{80659E23-A233-471E-9EAE-756A7E86658B}')
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
@@ -17893,22 +19457,26 @@ class IAcadSectionManager(DispatchBaseClass):
 
     # Result is of type IAcadSection
     def GetLiveSection(self):
+        'Gets the section whose live section is currently active'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetLiveSection', '{41BCF9E2-095F-4F15-B82A-30621FFDFF4F}')
         return ret
 
     def GetUniqueSectionName(self, pBaseName=defaultNamedNotOptArg):
+        'Finds an unique name for secion'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(3, LCID, 1, (8, 0), ((8, 1),),pBaseName
             )
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     # Result is of type IAcadSection
     def Item(self, Index=defaultNamedNotOptArg):
+        'Returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -17916,6 +19484,7 @@ class IAcadSectionManager(DispatchBaseClass):
         return ret
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -17935,6 +19504,7 @@ class IAcadSectionManager(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -17960,17 +19530,21 @@ class IAcadSectionManager(DispatchBaseClass):
         return True
 
 class IAcadSectionSettings(DispatchBaseClass):
+    'IAcadSectionSettings Interface'
     CLSID = IID('{477AB6A8-9FC0-4F2F-82A4-3D2DD713263D}')
     coclass_clsid = IID('{30733FB7-DF93-4DBB-B139-6A119362002C}')
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
@@ -17978,6 +19552,7 @@ class IAcadSectionSettings(DispatchBaseClass):
 
     # Result is of type IAcadSectionTypeSettings
     def GetSectionTypeSettings(self, secType=defaultNamedNotOptArg):
+        'Gets the section type settings object'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((3, 1),),secType
             )
         if ret is not None:
@@ -17985,10 +19560,12 @@ class IAcadSectionSettings(DispatchBaseClass):
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -18016,6 +19593,7 @@ class IAcadSectionSettings(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSectionTypeSettings(DispatchBaseClass):
+    'IAcadSectionTypeSettings Interface'
     CLSID = IID('{4C9EBAD1-D6D1-4794-B1AF-6536E2D50731}')
     coclass_clsid = IID('{2AA57761-F8DC-4CC4-9438-5D4AF92F2747}')
 
@@ -18135,6 +19713,7 @@ class IAcadSectionTypeSettings(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSectionTypeSettings2(DispatchBaseClass):
+    'IAcadSectionTypeSettings Interface'
     CLSID = IID('{923778AC-3B43-495A-9E31-AB88BD8A2F19}')
     coclass_clsid = IID('{2AA57761-F8DC-4CC4-9438-5D4AF92F2747}')
 
@@ -18256,6 +19835,7 @@ class IAcadSectionTypeSettings2(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSecurityParams(DispatchBaseClass):
+    'Security Parameters Interface'
     CLSID = IID('{9284DD1F-2C38-4ECD-8F2A-946DF797CB6C}')
     coclass_clsid = IID('{0ABB4C53-7364-4CC3-B8A8-7F341E80909E}')
 
@@ -18294,56 +19874,76 @@ class IAcadSecurityParams(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSelectionSet(DispatchBaseClass):
+    'A group of one or more AutoCAD objects specified for processing as a single unit'
     CLSID = IID('{1BD99919-914E-4A0F-A5FD-758F838D91C9}')
     coclass_clsid = IID('{FD3BD033-D1D8-48EE-84F6-F0AC7F4F48B7}')
 
     def AddItems(self, pSelSet=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(7, LCID, 1, (24, 0), ((12, 1),),pSelSet
-            )
+        'Adds one or more objects to the specified selection set'
+        pSelSet = VTDISPArrayOrVal(pSelSet)
+        return self._oleobj_.InvokeTypes(7, LCID, 1, (24, 0), ((12, 1),),pSelSet)
 
     def Clear(self):
+        'Clears the specified selection set of all items'
         return self._oleobj_.InvokeTypes(9, LCID, 1, (24, 0), (),)
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(14, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(4, LCID, 1, (24, 0), (),)
 
     def Highlight(self, bFlag=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(3, LCID, 1, (24, 0), ((11, 1),),bFlag
-            )
+        'Sets the highlight status for the given object, or for all objects in a given selection set'
+        return self._oleobj_.InvokeTypes(3, LCID, 1, (24, 0), ((11, 1),),bFlag)
 
     # Result is of type IAcadEntity
     def Item(self, Index=defaultNamedNotOptArg):
-        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-            )
-        if ret is not None:
-            ret = Dispatch(ret, 'Item', '{A994ADDF-69D4-401B-8ED5-03D0E797AB3B}')
-        return ret
+        return self.__call__(Index)
 
     def RemoveItems(self, Objects=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(8, LCID, 1, (24, 0), ((12, 1),),Objects
-            )
+        'Removes specified items from the group or selection set'
+        Objects = VTDISPArrayOrVal(Objects)
+        return self._oleobj_.InvokeTypes(8, LCID, 1, (24, 0), ((12, 1),),Objects)
 
-    def Select(self, Mode=defaultNamedNotOptArg, Point1=defaultNamedOptArg, Point2=defaultNamedOptArg, FilterType=defaultNamedOptArg
-            , FilterData=defaultNamedOptArg):
+    def Select(self, Mode=defaultNamedNotOptArg, Point1=defaultNamedOptArg, Point2=defaultNamedOptArg,
+               FilterType=defaultNamedOptArg, FilterData=defaultNamedOptArg):
+        'Selects objects and places them into a selection set'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        FilterType = VTI2ArrayOrVal(FilterType)
+        FilterData = VTVARArrayOrVal(FilterData)
         return self._oleobj_.InvokeTypes(10, LCID, 1, (24, 0), ((3, 1), (12, 17), (12, 17), (12, 17), (12, 17)),Mode
             , Point1, Point2, FilterType, FilterData)
 
     def SelectAtPoint(self, Point=defaultNamedNotOptArg, FilterType=defaultNamedOptArg, FilterData=defaultNamedOptArg):
+        'Selects an object passing through a given point and places it into a selection set'
+        Point = VTR8ArrayOrVal(Point)
+        FilterType = VTI2ArrayOrVal(FilterType)
+        FilterData = VTVARArrayOrVal(FilterData)
         return self._oleobj_.InvokeTypes(11, LCID, 1, (24, 0), ((12, 1), (12, 17), (12, 17)),Point
             , FilterType, FilterData)
 
-    def SelectByPolygon(self, Mode=defaultNamedNotOptArg, PointsList=defaultNamedNotOptArg, FilterType=defaultNamedOptArg, FilterData=defaultNamedOptArg):
+    def SelectByPolygon(self, Mode=defaultNamedNotOptArg, PointsList=defaultNamedNotOptArg,
+                        FilterType=defaultNamedOptArg, FilterData=defaultNamedOptArg):
+        'Selects entities within a fence and adds them to the selection set'
+        PointsList = VTR8ArrayOrVal(PointsList)
+        FilterType = VTI2ArrayOrVal(FilterType)
+        FilterData = VTVARArrayOrVal(FilterData)
         return self._oleobj_.InvokeTypes(12, LCID, 1, (24, 0), ((3, 1), (12, 1), (12, 17), (12, 17)),Mode
             , PointsList, FilterType, FilterData)
 
     def SelectOnScreen(self, FilterType=defaultNamedOptArg, FilterData=defaultNamedOptArg):
+        'Prompts the user to pick an object from the screen'
+        FilterType = VTI2ArrayOrVal(FilterType)
+        FilterData = VTVARArrayOrVal(FilterData)
         return self._oleobj_.InvokeTypes(13, LCID, 1, (24, 0), ((12, 17), (12, 17)),FilterType
             , FilterData)
 
     def Update(self):
+        'Updates the object to the drawing screen'
         return self._oleobj_.InvokeTypes(5, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
@@ -18356,23 +19956,24 @@ class IAcadSelectionSet(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
-        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-            )
+        'Gets the member object at a given index in a collection, group, or selection set'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index)
         if ret is not None:
             ret = Dispatch(ret, '__call__', '{A994ADDF-69D4-401B-8ED5-03D0E797AB3B}')
         return ret
 
+    def __getitem__(self, *args): 
+        try:
+            return self.__call__(*args)
+        except:
+            raise IndexError
+
     def __str__(self, *args):
         return str(self.__call__(*args))
+
     def __int__(self, *args):
         return int(self.__call__(*args))
-    def __iter__(self):
-        "Return a Python iterator for this object"
-        try:
-            ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
-        except pythoncom.error:
-            raise TypeError("This object does not support enumeration")
-        return win32com.client.util.Iterator(ob, '{A994ADDF-69D4-401B-8ED5-03D0E797AB3B}')
+
     #This class has Count() property - allow len(ob) to provide this
     def __len__(self):
         return self._ApplyTypes_(*(1, 2, (3, 0), (), "Count", None))
@@ -18381,11 +19982,13 @@ class IAcadSelectionSet(DispatchBaseClass):
         return True
 
 class IAcadSelectionSets(DispatchBaseClass):
+    'The collection of all selection sets in the drawing'
     CLSID = IID('{F169FD24-2A7D-4EAC-9733-9F3E2AC3B705}')
     coclass_clsid = IID('{A900427D-E81B-43A3-957A-AD1F5B0D0F1F}')
 
     # Result is of type IAcadSelectionSet
     def Add(self, Name=defaultNamedNotOptArg):
+        'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
             )
         if ret is not None:
@@ -18394,6 +19997,7 @@ class IAcadSelectionSets(DispatchBaseClass):
 
     # Result is of type IAcadSelectionSet
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -18409,6 +20013,7 @@ class IAcadSelectionSets(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -18434,6 +20039,7 @@ class IAcadSelectionSets(DispatchBaseClass):
         return True
 
 class IAcadShadowDisplay(DispatchBaseClass):
+    'AutoCAD Entity with Shadows interface'
     CLSID = IID('{AD1EC292-2871-4402-98A0-BF264DD91CA5}')
     coclass_clsid = None
 
@@ -18453,55 +20059,70 @@ class IAcadShadowDisplay(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadShape(DispatchBaseClass):
+    'AutoCAD Shape Interface'
     CLSID = IID('{BEB07BF0-2EE8-4DD0-9838-36E9FE9CFA62}')
     coclass_clsid = IID('{FF57FA40-DC9D-4C1E-BBBD-5290B1C5F26C}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -18509,6 +20130,10 @@ class IAcadShape(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -18516,31 +20141,54 @@ class IAcadShape(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -18605,60 +20253,76 @@ class IAcadShape(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSolid(DispatchBaseClass):
+    'AutoCAD Solid Interface'
     CLSID = IID('{9738A791-BEAB-4CD7-A8A9-073DD70E6EA8}')
     coclass_clsid = IID('{56597E12-3BE1-4A36-BB0F-05C6659D0FF9}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     # The method Coordinate is actually a property, but must be used as a method to correctly pass the arguments
     def Coordinate(self, Index=defaultNamedNotOptArg):
+        'Specifies the coordinate of a single vertex in the object'
         return self._ApplyTypes_(4, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -18666,6 +20330,10 @@ class IAcadSolid(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -18673,36 +20341,62 @@ class IAcadSolid(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
+        'Specifies the coordinate of a single vertex in the object'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(4, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+      
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -18757,66 +20451,81 @@ class IAcadSolid(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSortentsTable(DispatchBaseClass):
+    'AutoCAD AcadSortentsTable Interface'
     CLSID = IID('{99C34003-A664-4B66-A0BE-796AF232363C}')
     coclass_clsid = IID('{86E86FE7-07B3-445B-9897-84FDFA1523B9}')
 
     # Result is of type IAcadBlock
     def Block(self):
+        'Returns the Block this Sortents Table belongs to.'
         ret = self._oleobj_.InvokeTypes(6, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Block', '{470774D9-BD44-4668-A8FF-70F0AB1813CB}')
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetFullDrawOrder(self, Objects=pythoncom.Missing, honorSortentsSysvar=defaultNamedNotOptArg):
+        'Returns all objects in the block, sorted by draw order, bottommost first.'
         return self._ApplyTypes_(7, 1, (24, 0), ((16396, 2), (11, 1)), 'GetFullDrawOrder', None,Objects
             , honorSortentsSysvar)
 
     def GetRelativeDrawOrder(self, Objects=pythoncom.Missing, honorSortentsSysvar=defaultNamedNotOptArg):
+        'Returns specified objects, sorted by draw order, bottommost first.'
         return self._ApplyTypes_(8, 1, (24, 0), ((16396, 2), (11, 1)), 'GetRelativeDrawOrder', None,Objects
             , honorSortentsSysvar)
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def MoveAbove(self, Objects=defaultNamedNotOptArg, Target=defaultNamedNotOptArg):
+        'Moves objects above target in draw order.'
         return self._oleobj_.InvokeTypes(4, LCID, 1, (24, 0), ((12, 1), (9, 1)),Objects
             , Target)
 
     def MoveBelow(self, Objects=defaultNamedNotOptArg, Target=defaultNamedNotOptArg):
+        'Moves objects below target in draw order.'
         return self._oleobj_.InvokeTypes(3, LCID, 1, (24, 0), ((12, 1), (9, 1)),Objects
             , Target)
 
     def MoveToBottom(self, Objects=defaultNamedNotOptArg):
+        'Moves objects to bottom of draw order.'
         return self._oleobj_.InvokeTypes(1, LCID, 1, (24, 0), ((12, 1),),Objects
             )
 
     def MoveToTop(self, Objects=defaultNamedNotOptArg):
+        'Moves objects to top of draw order.'
         return self._oleobj_.InvokeTypes(2, LCID, 1, (24, 0), ((12, 1),),Objects
             )
 
     def SetRelativeDrawOrder(self, Objects=defaultNamedNotOptArg):
+        'Sets the relative draw order of the objects to the order specifed, bottommost first.'
         return self._oleobj_.InvokeTypes(9, LCID, 1, (24, 0), ((12, 1),),Objects
             )
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def SwapOrder(self, Object1=defaultNamedNotOptArg, Object2=defaultNamedNotOptArg):
+        'Swaps draw order position for two objects.'
         return self._oleobj_.InvokeTypes(5, LCID, 1, (24, 0), ((9, 1), (9, 1)),Object1
             , Object2)
 
@@ -18842,79 +20551,101 @@ class IAcadSortentsTable(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSpline(DispatchBaseClass):
+    'AutoCAD Spline Interface'
     CLSID = IID('{E99FECF0-EE68-4314-8D48-D0639B562A5B}')
     coclass_clsid = IID('{84A78EE8-8F24-4A9D-BD08-16CDB0F841B8}')
 
     def AddFitPoint(self, Index=defaultNamedNotOptArg, fitPoint=defaultNamedNotOptArg):
+        'Adds the fit point to the spline at a given index'
+        fitPoint = VTR8ArrayOrVal(fitPoint)
         return self._oleobj_.InvokeTypes(20, LCID, 1, (24, 0), ((3, 1), (12, 1)),Index
             , fitPoint)
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def DeleteFitPoint(self, Index=defaultNamedNotOptArg):
+        'Deletes the fit point of the spline at a given index'
         return self._oleobj_.InvokeTypes(21, LCID, 1, (24, 0), ((3, 1),),Index
             )
 
     def ElevateOrder(self, Order=defaultNamedNotOptArg):
+        'Elevates the order of the spline'
         return self._oleobj_.InvokeTypes(22, LCID, 1, (24, 0), ((3, 1),),Order
             )
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     def GetControlPoint(self, Index=defaultNamedNotOptArg):
+        'Returns the control point of the spline at a given index'
         return self._ApplyTypes_(15, 1, (12, 0), ((3, 1),), 'GetControlPoint', None,Index
             )
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetFitPoint(self, Index=defaultNamedNotOptArg):
+        'Returns the fit point of the spline at a given index'
         return self._ApplyTypes_(17, 1, (12, 0), ((3, 1),), 'GetFitPoint', None,Index
             )
 
     def GetWeight(self, Index=defaultNamedNotOptArg):
+        'Returns the weight of the spline at a given control point index'
         return self._oleobj_.InvokeTypes(19, LCID, 1, (5, 0), ((3, 1),),Index
             )
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -18922,6 +20653,10 @@ class IAcadSpline(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -18929,53 +20664,84 @@ class IAcadSpline(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Offset(self, Distance=defaultNamedNotOptArg):
+        'Creates a new entity object by offsetting the spline by a given value'
         return self._ApplyTypes_(23, 1, (12, 0), ((5, 1),), 'Offset', None,Distance
             )
 
     def PurgeFitData(self):
+        'Purges the fit data of the spline'
         return self._oleobj_.InvokeTypes(24, LCID, 1, (24, 0), (),)
 
     def Reverse(self):
+        'Reverses the direction of the spline'
         return self._oleobj_.InvokeTypes(25, LCID, 1, (24, 0), (),)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetControlPoint(self, Index=defaultNamedNotOptArg, controlPoint=defaultNamedNotOptArg):
+        'Sets the indexed control point of the spline at a specified point'
+        controlPoint = VTR8ArrayOrVal(controlPoint)
         return self._oleobj_.InvokeTypes(14, LCID, 1, (24, 0), ((3, 1), (12, 1)),Index
             , controlPoint)
 
     def SetFitPoint(self, Index=defaultNamedNotOptArg, fitPoint=defaultNamedNotOptArg):
+        'Sets the indexed fit point of the spline at a specified point'
+        fitPoint = VTR8ArrayOrVal(fitPoint)
         return self._oleobj_.InvokeTypes(16, LCID, 1, (24, 0), ((3, 1), (12, 1)),Index
             , fitPoint)
 
     def SetWeight(self, Index=defaultNamedNotOptArg, weight=defaultNamedNotOptArg):
+        'Sets the weight of the spline at a given control point index'
         return self._oleobj_.InvokeTypes(18, LCID, 1, (24, 0), ((3, 1), (5, 1)),Index
             , weight)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'ControlPoints':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'FitPoints':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -19056,6 +20822,7 @@ class IAcadSpline(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadState(DispatchBaseClass):
+    'AutoCAD State Interface'
     CLSID = IID('{51995227-8BBD-4D35-B0EB-614FC9D1A8A8}')
     coclass_clsid = IID('{6C384781-8AB6-432A-8B33-BF2BE7C51E29}')
 
@@ -19075,60 +20842,76 @@ class IAcadState(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSubDMesh(DispatchBaseClass):
+    'AutoCAD SubDMesh Interface'
     CLSID = IID('{AEC51C60-17CD-4380-B43B-29949333EB31}')
     coclass_clsid = IID('{2CFFF5CE-FE81-47E1-8FF3-6614B1BF7B2A}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     # The method Coordinate is actually a property, but must be used as a method to correctly pass the arguments
     def Coordinate(self, Index=defaultNamedNotOptArg):
+        'Returns the coordinate of the vertex at a given index'
         return self._ApplyTypes_(4, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -19136,6 +20919,10 @@ class IAcadSubDMesh(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -19143,36 +20930,59 @@ class IAcadSubDMesh(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
+        'Returns the coordinate of the vertex at a given index'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(4, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -19227,6 +21037,7 @@ class IAcadSubDMesh(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSubDMeshEdge(DispatchBaseClass):
+    'AutoCAD SubDMesh Edge Interface'
     CLSID = IID('{E7F9CCFF-F9E8-4DC5-A7C4-54CD5A31BB8C}')
     coclass_clsid = IID('{9C29DB4A-614A-4DB9-B578-2349E4AAE6F7}')
 
@@ -19261,6 +21072,7 @@ class IAcadSubDMeshEdge(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSubDMeshFace(DispatchBaseClass):
+    'AutoCAD SubDMesh Face Interface'
     CLSID = IID('{64DF1C36-9FB3-4D1A-B002-DACDC7150E7A}')
     coclass_clsid = IID('{45F7B189-F6A2-4F0A-BBFC-CE93F8707C5D}')
 
@@ -19297,11 +21109,20 @@ class IAcadSubDMeshFace(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSubDMeshVertex(DispatchBaseClass):
+    'AutoCAD SubDMesh Vertex Interface'
     CLSID = IID('{CF76D2FB-D581-48A4-B9B6-A27A9A6ED94A}')
     coclass_clsid = IID('{101F9DFB-8C12-4F0F-A71E-5CFF6B9C5DFE}')
 
     def OnModified(self):
         return self._oleobj_.InvokeTypes(1024, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Coordinates": (3, 2, (12, 0), (), "Coordinates", None),
@@ -19333,6 +21154,7 @@ class IAcadSubDMeshVertex(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSubEntSolidEdge(DispatchBaseClass):
+    'AutoCAD Interface for a edge on an AcDb3dSolid'
     CLSID = IID('{7297824E-3FC3-4071-9F39-250CD3B0B91C}')
     coclass_clsid = IID('{67D0CE74-35C7-4CDB-A6AF-0E5D6F539FCE}')
 
@@ -19363,6 +21185,7 @@ class IAcadSubEntSolidEdge(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSubEntSolidFace(DispatchBaseClass):
+    'AutoCAD Interface for a face on an AcDb3dSolid'
     CLSID = IID('{9950A0BC-5EE1-46AB-BAA4-944C9D08B5EE}')
     coclass_clsid = IID('{B2EFC4D0-E9F2-485D-8F4E-9C9D821D57B4}')
 
@@ -19395,6 +21218,7 @@ class IAcadSubEntSolidFace(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSubEntSolidNode(DispatchBaseClass):
+    'AutoCAD Interface for an historical node on an AcDb3dSolid'
     CLSID = IID('{FACABB83-2275-41D0-88AE-1D871E1511C1}')
     coclass_clsid = IID('{CA66B1A0-33EE-472A-8639-7B3497B4ACC5}')
 
@@ -19425,6 +21249,7 @@ class IAcadSubEntSolidNode(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSubEntSolidVertex(DispatchBaseClass):
+    'AutoCAD Interface for a vertex on an AcDb3dSolid'
     CLSID = IID('{032B9C59-A9C9-424D-A0CA-B4D280133758}')
     coclass_clsid = IID('{57BA1F1A-D777-4FAF-8BB9-A579C11807BD}')
 
@@ -19455,6 +21280,7 @@ class IAcadSubEntSolidVertex(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSubEntity(DispatchBaseClass):
+    'AutoCAD SubEntity Interface'
     CLSID = IID('{42645896-9B09-43F8-8B9B-B19F5F90D39D}')
     coclass_clsid = IID('{F1AD7AB7-BE4D-4B04-95D0-8BDF9E774DA7}')
 
@@ -19485,37 +21311,46 @@ class IAcadSubEntity(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSummaryInfo(DispatchBaseClass):
+    'IAcadSummaryInfo Interface'
     CLSID = IID('{50413BFA-4A78-4566-9863-3CFCDECC264C}')
     coclass_clsid = IID('{9DACC9EE-D369-4611-8ABC-A92BBB15E9D1}')
 
     def AddCustomInfo(self, key=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
+        'Adds a new custom field at the end of the existing list of custom fields.'
         return self._oleobj_.InvokeTypes(14, LCID, 1, (24, 0), ((8, 1), (8, 1)),key
             , Value)
 
     def GetCustomByIndex(self, Index=defaultNamedNotOptArg, pKey=pythoncom.Missing, pValue=pythoncom.Missing):
+        'Gets the key and value of the custom field specified its index.'
         return self._ApplyTypes_(10, 1, (24, 0), ((3, 1), (16392, 2), (16392, 2)), 'GetCustomByIndex', None,Index
             , pKey, pValue)
 
     def GetCustomByKey(self, key=defaultNamedNotOptArg, pValue=pythoncom.Missing):
+        'Returns the number of custom information fields that have been set.'
         return self._ApplyTypes_(11, 1, (24, 0), ((8, 1), (16392, 2)), 'GetCustomByKey', None,key
             , pValue)
 
     def NumCustomInfo(self):
+        'Returns the number of custom information fields that have been set.'
         return self._oleobj_.InvokeTypes(9, LCID, 1, (3, 0), (),)
 
     def RemoveCustomByIndex(self, Index=defaultNamedNotOptArg):
+        'Removes a custom field (key and value) indicated by the index. Note, index range is from one to the number of custom fields.'
         return self._oleobj_.InvokeTypes(15, LCID, 1, (24, 0), ((3, 1),),Index
             )
 
     def RemoveCustomByKey(self, key=defaultNamedNotOptArg):
+        'Removes a custom field (key and value) indicated by the key.'
         return self._oleobj_.InvokeTypes(16, LCID, 1, (24, 0), ((8, 1),),key
             )
 
     def SetCustomByIndex(self, Index=defaultNamedNotOptArg, key=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
+        'Sets set the key and value of the custom field specified by the index. Note, index range is from one to the number of custom fields.'
         return self._oleobj_.InvokeTypes(12, LCID, 1, (24, 0), ((3, 1), (8, 1), (8, 1)),Index
             , key, Value)
 
     def SetCustomByKey(self, key=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
+        'Sets set the value of the custom field specified by the key.'
         return self._oleobj_.InvokeTypes(13, LCID, 1, (24, 0), ((8, 1), (8, 1)),key
             , Value)
 
@@ -19548,55 +21383,70 @@ class IAcadSummaryInfo(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSurface(DispatchBaseClass):
+    'IAcadSurface Interface'
     CLSID = IID('{49B06252-7B16-4EBF-94D7-E3352CE8FFE2}')
     coclass_clsid = IID('{B368459E-48E8-4A81-88CE-6264998BC5DA}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -19604,6 +21454,10 @@ class IAcadSurface(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -19611,30 +21465,43 @@ class IAcadSurface(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
@@ -19699,55 +21566,70 @@ class IAcadSurface(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSweptSurface(DispatchBaseClass):
+    'IAcadSweptSurface Interface'
     CLSID = IID('{F95B3EB4-9AE0-4807-BF9C-9059ADF9DD54}')
     coclass_clsid = IID('{705A1BD7-318F-4773-BFBD-075C83624990}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -19755,6 +21637,10 @@ class IAcadSweptSurface(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -19762,30 +21648,43 @@ class IAcadSweptSurface(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
@@ -19859,87 +21758,108 @@ class IAcadSweptSurface(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadTable(DispatchBaseClass):
+    'IAcadTable Interface'
     CLSID = IID('{7BB9C1F7-814D-4891-9141-F0814333DBA2}')
     coclass_clsid = IID('{3EA31CD5-EF81-41C6-88FE-BA26D45AF1FB}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def ClearSubSelection(self):
+        'ClearSubSelection.'
         return self._oleobj_.InvokeTypes(110, LCID, 1, (24, 0), (),)
 
     def ClearTableStyleOverrides(self, flag=defaultNamedNotOptArg):
+        'Clears the tableStyleOverrides.'
         return self._oleobj_.InvokeTypes(52, LCID, 1, (24, 0), ((3, 1),),flag
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def CreateContent(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nIndex=defaultNamedNotOptArg):
+        'Creates new content in a cell'
         return self._oleobj_.InvokeTypes(2213, LCID, 1, (3, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nIndex)
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def DeleteCellContent(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Deletes the cell content for the specified row and coluumn.'
         return self._oleobj_.InvokeTypes(67, LCID, 1, (24, 0), ((3, 1), (3, 1)),row
             , col)
 
     def DeleteColumns(self, col=defaultNamedNotOptArg, cols=defaultNamedNotOptArg):
+        'deletes the column(s) from the specified column index.'
         return self._oleobj_.InvokeTypes(96, LCID, 1, (24, 0), ((3, 1), (3, 1)),col
             , cols)
 
     def DeleteContent(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg):
+        'Deletes a content from a cell'
         return self._oleobj_.InvokeTypes(2215, LCID, 1, (24, 0), ((3, 1), (3, 1)),nRow
             , nCol)
 
     def DeleteRows(self, row=defaultNamedNotOptArg, Rows=defaultNamedNotOptArg):
+        'deletes the row(s) from the specified row index.'
         return self._oleobj_.InvokeTypes(98, LCID, 1, (24, 0), ((3, 1), (3, 1)),row
             , Rows)
 
     def EnableMergeAll(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, bEnable=defaultNamedNotOptArg):
+        'Enables or disables the merge all flag in row or column.'
         return self._oleobj_.InvokeTypes(2368, LCID, 1, (24, 0), ((3, 1), (3, 1), (11, 1)),nRow
             , nCol, bEnable)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def FormatValue(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, nOption=defaultNamedNotOptArg, pVal=defaultNamedNotOptArg):
+        'Gets the formatted text string for the specified row and column.'
         return self._oleobj_.InvokeTypes(121, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 0), (16392, 0)),row
             , col, nOption, pVal)
 
     def GenerateLayout(self):
+        'Generate layout.'
         return self._oleobj_.InvokeTypes(102, LCID, 1, (24, 0), (),)
 
     def GetAlignment(self, rowType=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(33, LCID, 1, (3, 0), ((3, 1),),rowType
-            )
+        'Returns the cell alignment for the specified row type.'
+        return self._oleobj_.InvokeTypes(33, LCID, 1, (3, 0), ((3, 1),),rowType)
 
     def GetAttachmentPoint(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Gets the attachment point for the specified row and column.'
         return self._ApplyTypes_(56, 1, (12, 0), ((3, 1), (3, 1)), 'GetAttachmentPoint', None,row
             , col)
 
     def GetAutoScale(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Returns the auto scale flag value for the specified row and column.'
         return self._oleobj_.InvokeTypes(77, LCID, 1, (11, 0), ((3, 1), (3, 1)),row
             , col)
 
     def GetAutoScale2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
+        'Returns the auto scale flag value for the specified row and column  and nContent.'
         return self._oleobj_.InvokeTypes(2276, LCID, 1, (11, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
 
     # Result is of type IAcadAcCmColor
     def GetBackgroundColor(self, rowType=defaultNamedNotOptArg):
+        'Returns the background true color value for the specified row type.'
         ret = self._oleobj_.InvokeTypes(37, LCID, 1, (9, 0), ((3, 1),),rowType
             )
         if ret is not None:
@@ -19947,49 +21867,59 @@ class IAcadTable(DispatchBaseClass):
         return ret
 
     def GetBackgroundColorNone(self, rowType=defaultNamedNotOptArg):
+        'Returns the backgroundColorNone flag value for the specified row type.'
         return self._oleobj_.InvokeTypes(35, LCID, 1, (11, 0), ((3, 1),),rowType
             )
 
     def GetBlockAttributeValue(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, attdefId=defaultNamedNotOptArg):
+        'Returns the attribute value from the Specified block cell for the attribute definition object contained in the block.'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(112, LCID, 1, (8, 0), ((3, 1), (3, 1), (20, 1)),row
             , col, attdefId)
 
     def GetBlockAttributeValue2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, blkId=defaultNamedNotOptArg):
+        'Returns the attribute value from the Specified block cell for the attribute definition object contained in the block  and nContent.'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(2243, LCID, 1, (8, 0), ((3, 1), (3, 1), (3, 1), (20, 1)),nRow
             , nCol, nContent, blkId)
 
     def GetBlockRotation(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Returns the block rotation for the specified row and column.'
         return self._oleobj_.InvokeTypes(83, LCID, 1, (5, 0), ((3, 1), (3, 1)),row
             , col)
 
     def GetBlockScale(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Returns the block scale value for the specified row and column.'
         return self._oleobj_.InvokeTypes(81, LCID, 1, (5, 0), ((3, 1), (3, 1)),row
             , col)
 
     def GetBlockTableRecordId(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Returns the block table record id associated to the block-type cell.'
         return self._oleobj_.InvokeTypes(79, LCID, 1, (20, 0), ((3, 1), (3, 1)),row
             , col)
 
     def GetBlockTableRecordId2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
+        'Gets the block table record id associated to the block-type cell  and nContent.'
         return self._oleobj_.InvokeTypes(2241, LCID, 1, (20, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     def GetBreakHeight(self, nIndex=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(2309, LCID, 1, (5, 0), ((3, 1),),nIndex
-            )
+        'Returns the break height of the specified table when table breaking is enabled.'
+        return self._oleobj_.InvokeTypes(2309, LCID, 1, (5, 0), ((3, 1),),nIndex)
 
     def GetCellAlignment(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Returns the alignment for the specified row and column.'
         return self._oleobj_.InvokeTypes(58, LCID, 1, (3, 0), ((3, 1), (3, 1)),row
             , col)
 
     # Result is of type IAcadAcCmColor
     def GetCellBackgroundColor(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Returns the background true color value for the specified row and column.'
         ret = self._oleobj_.InvokeTypes(62, LCID, 1, (9, 0), ((3, 1), (3, 1)),row
             , col)
         if ret is not None:
@@ -19997,11 +21927,13 @@ class IAcadTable(DispatchBaseClass):
         return ret
 
     def GetCellBackgroundColorNone(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Returns the backgroundColorNone flag value for the specified row and column.'
         return self._oleobj_.InvokeTypes(60, LCID, 1, (11, 0), ((3, 1), (3, 1)),row
             , col)
 
     # Result is of type IAcadAcCmColor
     def GetCellContentColor(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Returns the true color value for the specified row and column.'
         ret = self._oleobj_.InvokeTypes(64, LCID, 1, (9, 0), ((3, 1), (3, 1)),row
             , col)
         if ret is not None:
@@ -20009,20 +21941,24 @@ class IAcadTable(DispatchBaseClass):
         return ret
 
     def GetCellDataType(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, pDataType=pythoncom.Missing, pUnitType=pythoncom.Missing):
-        return self._ApplyTypes_(1946, 1, (24, 0), ((3, 1), (3, 1), (16387, 2), (16387, 2)), 'GetCellDataType', None,row
-            , col, pDataType, pUnitType)
+        'Gets the cell data type and unit type for the specified row and column.'
+        return self._ApplyTypes_(1946, 1, (24, 0), ((3, 1), (3, 1), (16387, 2), (16387, 2)),
+                    'GetCellDataType', None, row, col, pDataType, pUnitType)
 
     def GetCellExtents(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, bOuterCell=defaultNamedNotOptArg):
+        'Gets the cell extents for the specified row and column.'
         return self._ApplyTypes_(55, 1, (12, 0), ((3, 1), (3, 1), (11, 1)), 'GetCellExtents', None,row
             , col, bOuterCell)
 
     def GetCellFormat(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Gets the cell format for the specified row and column.'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(1948, LCID, 1, (8, 0), ((3, 1), (3, 1)),row
             , col)
 
     # Result is of type IAcadAcCmColor
     def GetCellGridColor(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, edge=defaultNamedNotOptArg):
+        'Returns the gridColor value for the given edge of specified row and column.'
         ret = self._oleobj_.InvokeTypes(87, LCID, 1, (9, 0), ((3, 1), (3, 1), (3, 1)),row
             , col, edge)
         if ret is not None:
@@ -20030,62 +21966,72 @@ class IAcadTable(DispatchBaseClass):
         return ret
 
     def GetCellGridLineWeight(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, edge=defaultNamedNotOptArg):
+        'Returns the gridLineWeight value for the given edge of specified row and column.'
         return self._oleobj_.InvokeTypes(85, LCID, 1, (3, 0), ((3, 1), (3, 1), (3, 1)),row
             , col, edge)
 
     def GetCellGridVisibility(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, edge=defaultNamedNotOptArg):
+        'Returns the gridVisibility value for the given edge of specified row and column.'
         return self._oleobj_.InvokeTypes(89, LCID, 1, (11, 0), ((3, 1), (3, 1), (3, 1)),row
             , col, edge)
 
     def GetCellState(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg):
+        'Gets the cell state.'
         return self._oleobj_.InvokeTypes(2360, LCID, 1, (3, 0), ((3, 1), (3, 1)),nRow
             , nCol)
 
     def GetCellStyle(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg):
+        'Gets the cell style of cell, row, or column.'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(2249, LCID, 1, (8, 0), ((3, 1), (3, 1)),nRow
             , nCol)
 
     def GetCellStyleOverrides(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Returns the cellStyleOverrides.'
         return self._ApplyTypes_(66, 1, (12, 0), ((3, 1), (3, 1)), 'GetCellStyleOverrides', None,row
             , col)
 
     def GetCellTextHeight(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Returns the text height for the specified row and column.'
         return self._oleobj_.InvokeTypes(73, LCID, 1, (5, 0), ((3, 1), (3, 1)),row
             , col)
 
     def GetCellTextStyle(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Returns the text style name for the specified row and column.'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(71, LCID, 1, (8, 0), ((3, 1), (3, 1)),row
             , col)
 
     def GetCellType(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Gets the cell type for the specified row and column.'
         return self._oleobj_.InvokeTypes(53, LCID, 1, (3, 0), ((3, 1), (3, 1)),row
             , col)
 
     def GetCellValue(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Gets the cell value for the specified row and column.'
         return self._ApplyTypes_(1950, 1, (12, 0), ((3, 1), (3, 1)), 'GetCellValue', None,row
             , col)
 
     def GetColumnName(self, nIndex=defaultNamedNotOptArg):
+        'Gets the columns name.'
         # Result is a Unicode object
-        return self._oleobj_.InvokeTypes(65528, LCID, 1, (8, 0), ((3, 1),),nIndex
-            )
+        return self._oleobj_.InvokeTypes(65528, LCID, 1, (8, 0), ((3, 1),),nIndex)
 
     def GetColumnWidth(self, col=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(10, LCID, 1, (5, 0), ((3, 1),),col
-            )
+        'Returns the column width for the specified column.'
+        return self._oleobj_.InvokeTypes(10, LCID, 1, (5, 0), ((3, 1),),col)
 
     # Result is of type IAcadAcCmColor
     def GetContentColor(self, rowType=defaultNamedNotOptArg):
-        ret = self._oleobj_.InvokeTypes(39, LCID, 1, (9, 0), ((3, 1),),rowType
-            )
+        'Returns the true color value for the specified row type.'
+        ret = self._oleobj_.InvokeTypes(39, LCID, 1, (9, 0), ((3, 1),),rowType)
         if ret is not None:
             ret = Dispatch(ret, 'GetContentColor', '{2F61A748-305D-4030-9740-7D571E8BD65B}')
         return ret
 
     # Result is of type IAcadAcCmColor
     def GetContentColor2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
+        'Returns the true color value for the specified row type  and nContent.'
         ret = self._oleobj_.InvokeTypes(2260, LCID, 1, (9, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
         if ret is not None:
@@ -20093,58 +22039,70 @@ class IAcadTable(DispatchBaseClass):
         return ret
 
     def GetContentLayout(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Gets the content layout of the cell.'
         return self._oleobj_.InvokeTypes(2327, LCID, 1, (3, 0), ((3, 1), (3, 1)),row
             , col)
 
     def GetContentType(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg):
+        'Gets the content type of the content at the specified content index.'
         return self._oleobj_.InvokeTypes(2311, LCID, 1, (3, 0), ((3, 1), (3, 1)),nRow
             , nCol)
 
     def GetCustomData(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, szKey=defaultNamedNotOptArg, pData=pythoncom.Missing):
+        'Gets the custom data value set in cell, row, or column.'
         return self._ApplyTypes_(2247, 1, (24, 0), ((3, 1), (3, 1), (8, 1), (16396, 2)), 'GetCustomData', None,nRow
             , nCol, szKey, pData)
 
     def GetDataFormat(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
+        'Gets the cell format for the specified row and column and nContent.'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(2227, LCID, 1, (8, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
 
     def GetDataType(self, rowType=defaultNamedNotOptArg, pDataType=pythoncom.Missing, pUnitType=pythoncom.Missing):
+        'Gets the row data type and unit type for the specified row type.'
         return self._ApplyTypes_(117, 1, (24, 0), ((3, 1), (16387, 2), (16387, 2)), 'GetDataType', None,rowType
             , pDataType, pUnitType)
 
     def GetDataType2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, pDataType=pythoncom.Missing
             , pUnitType=pythoncom.Missing):
+        'Gets the row data type and unit type for the specified row type  and nContent.'
         return self._ApplyTypes_(2262, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (16387, 2), (16387, 2)), 'GetDataType2', None,nRow
             , nCol, nContent, pDataType, pUnitType)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetFieldId(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Returns the field object id associated to the specifed cell.'
         return self._oleobj_.InvokeTypes(114, LCID, 1, (20, 0), ((3, 1), (3, 1)),row
             , col)
 
     def GetFieldId2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
+        'Returns the field object id associated to the specifed cell  and nContent.'
         return self._oleobj_.InvokeTypes(2232, LCID, 1, (20, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
 
     def GetFormat(self, rowType=defaultNamedNotOptArg):
+        'Gets the format for the specified row type.'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(119, LCID, 1, (8, 0), ((3, 1),),rowType
             )
 
     def GetFormula(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
+        'Gets the formula if the content at the specified content index has a formula.'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(2355, LCID, 1, (8, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
 
     # Result is of type IAcadAcCmColor
     def GetGridColor(self, gridLineType=defaultNamedNotOptArg, rowType=defaultNamedNotOptArg):
+        'Returns the gridColor value for the specified gridLineType and row type.'
         ret = self._oleobj_.InvokeTypes(47, LCID, 1, (9, 0), ((3, 1), (3, 1)),gridLineType
             , rowType)
         if ret is not None:
@@ -20153,6 +22111,7 @@ class IAcadTable(DispatchBaseClass):
 
     # Result is of type IAcadAcCmColor
     def GetGridColor2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nGridLineType=defaultNamedNotOptArg):
+        'Returns the gridColor value for the specified gridLineType and row type  and nContent.'
         ret = self._oleobj_.InvokeTypes(2291, LCID, 1, (9, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nGridLineType)
         if ret is not None:
@@ -20160,168 +22119,204 @@ class IAcadTable(DispatchBaseClass):
         return ret
 
     def GetGridDoubleLineSpacing(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nGridLineType=defaultNamedNotOptArg):
+        'Gets the grid double line spacing from cell, row, or column'
         return self._oleobj_.InvokeTypes(2295, LCID, 1, (5, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nGridLineType)
 
     def GetGridLineStyle(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nGridLineType=defaultNamedNotOptArg):
+        'Gets the grid line style of cell, row, or column.'
         return self._oleobj_.InvokeTypes(2340, LCID, 1, (3, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nGridLineType)
 
     def GetGridLineWeight(self, gridLineType=defaultNamedNotOptArg, rowType=defaultNamedNotOptArg):
+        'Returns the gridLineWeight value for the specified gridLineType and row type.'
         return self._oleobj_.InvokeTypes(45, LCID, 1, (3, 0), ((3, 1), (3, 1)),gridLineType
             , rowType)
 
     def GetGridLineWeight2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nGridLineType=defaultNamedNotOptArg):
+        'Gets the gridLineWeight value for the specified gridLineType(s) and row type(s)   and nContent.'
         return self._oleobj_.InvokeTypes(2281, LCID, 1, (3, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nGridLineType)
 
     def GetGridLinetype(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nGridLineType=defaultNamedNotOptArg):
+        'Gets the grid line type of cell, row, or column.'
         return self._oleobj_.InvokeTypes(2289, LCID, 1, (20, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nGridLineType)
 
     def GetGridVisibility(self, gridLineType=defaultNamedNotOptArg, rowType=defaultNamedNotOptArg):
+        'Returns the gridVisibility value for the specified gridLineType and row type.'
         return self._oleobj_.InvokeTypes(49, LCID, 1, (11, 0), ((3, 1), (3, 1)),gridLineType
             , rowType)
 
     def GetGridVisibility2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nGridLineType=defaultNamedNotOptArg):
+        'Returns the gridVisibility value for the specified gridLineType and row type.'
         return self._oleobj_.InvokeTypes(2293, LCID, 1, (11, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nGridLineType)
 
     def GetHasFormula(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
+        'Returns true if the content at the specified index is a formula.'
         return self._oleobj_.InvokeTypes(2354, LCID, 1, (11, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
 
     def GetMargin(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nMargin=defaultNamedNotOptArg):
+        'Gets the margin of cell, row, or column.'
         return self._oleobj_.InvokeTypes(2324, LCID, 1, (5, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nMargin)
 
     def GetMinimumColumnWidth(self, col=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(26, LCID, 1, (5, 0), ((3, 1),),col
-            )
+        'Gets the minimum column width for the specified column.'
+        return self._oleobj_.InvokeTypes(26, LCID, 1, (5, 0), ((3, 1),),col)
 
     def GetMinimumRowHeight(self, row=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(27, LCID, 1, (5, 0), ((3, 1),),row
-            )
+        'Gets the minimum row height for the specified row.'
+        return self._oleobj_.InvokeTypes(27, LCID, 1, (5, 0), ((3, 1),),row)
 
     def GetOverride(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
+        'Gets the override in cell, row, column, or content.'
         return self._oleobj_.InvokeTypes(2338, LCID, 1, (3, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
 
     def GetRotation(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
+        'Gets the rotation angle of the content at the specified content index.'
         return self._oleobj_.InvokeTypes(36322, LCID, 1, (5, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
 
     def GetRowHeight(self, row=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(13, LCID, 1, (5, 0), ((3, 1),),row
-            )
+        'Returns the row height for the specified row.'
+        return self._oleobj_.InvokeTypes(13, LCID, 1, (5, 0), ((3, 1),),row)
 
     def GetRowType(self, row=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(68, LCID, 1, (3, 0), ((3, 1),),row
-            )
+        'Gets the row type for the specified row.'
+        return self._oleobj_.InvokeTypes(68, LCID, 1, (3, 0), ((3, 1),),row)
 
     def GetScale(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
+        'Gets the scale of the content at the specified content index.'
         return self._oleobj_.InvokeTypes(2278, LCID, 1, (5, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
 
     def GetSubSelection(self, rowMin=pythoncom.Missing, rowMax=pythoncom.Missing, colMin=pythoncom.Missing, colMax=pythoncom.Missing):
+        'GetSubSelection.'
         return self._ApplyTypes_(108, 1, (24, 0), ((16387, 2), (16387, 2), (16387, 2), (16387, 2)), 'GetSubSelection', None,rowMin
             , rowMax, colMin, colMax)
 
     def GetText(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Returns the text value value for the specified row and column.'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(69, LCID, 1, (8, 0), ((3, 1), (3, 1)),row
             , col)
 
     def GetTextHeight(self, rowType=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(43, LCID, 1, (5, 0), ((3, 1),),rowType
-            )
+        'Returns the text height for the specified row type.'
+        return self._oleobj_.InvokeTypes(43, LCID, 1, (5, 0), ((3, 1),),rowType)
 
     def GetTextHeight2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
+        'Returns the text height for the specified row and column  and nContent.'
         return self._oleobj_.InvokeTypes(2272, LCID, 1, (5, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
 
     def GetTextRotation(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Returns the text rotation for the specified row and column.'
         return self._oleobj_.InvokeTypes(75, LCID, 1, (3, 0), ((3, 1), (3, 1)),row
             , col)
 
     def GetTextString(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
+        'Gets the text value value for the specified row and column  and nContent.'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(2229, LCID, 1, (8, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
 
     def GetTextStyle(self, rowType=defaultNamedNotOptArg):
+        'Returns the text style name for the specified row type.'
         # Result is a Unicode object
-        return self._oleobj_.InvokeTypes(41, LCID, 1, (8, 0), ((3, 1),),rowType
-            )
+        return self._oleobj_.InvokeTypes(41, LCID, 1, (8, 0), ((3, 1),),rowType)
 
     def GetTextStyle2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
+        'Gets the text style name for the specified row and column  and nContent.'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(2264, LCID, 1, (8, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
 
     def GetValue(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
+        'Gets the cell value for the specified row and column and nContent.'
         return self._ApplyTypes_(2217, 1, (12, 0), ((3, 1), (3, 1), (3, 1)), 'GetValue', None,nRow
             , nCol, nContent)
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        'Highlights the entity object.'
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def HitTest(self, wpt=defaultNamedNotOptArg, wviewVec=defaultNamedNotOptArg, resultRowIndex=pythoncom.Missing, resultColumnIndex=pythoncom.Missing):
+        'Hit test.'
+        wpt = VTR8ArrayOrVal(wpt)
+        wviewVec = VTR8ArrayOrVal(wviewVec)
         return self._ApplyTypes_(104, 1, (11, 0), ((12, 1), (12, 1), (16387, 2), (16387, 2)), 'HitTest', None,wpt
             , wviewVec, resultRowIndex, resultColumnIndex)
 
     def InsertColumns(self, col=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, cols=defaultNamedNotOptArg):
+        'Inserts the column(s) of specified width.'
         return self._oleobj_.InvokeTypes(95, LCID, 1, (24, 0), ((3, 1), (5, 1), (3, 1)),col
             , Width, cols)
 
     def InsertColumnsAndInherit(self, col=defaultNamedNotOptArg, nInheritFrom=defaultNamedNotOptArg, nNumCols=defaultNamedNotOptArg):
+        'Inserts one or more columns at the specified index and inherits the column properties from specified column.'
         return self._oleobj_.InvokeTypes(2353, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1)),col
             , nInheritFrom, nNumCols)
 
     def InsertRows(self, row=defaultNamedNotOptArg, Height=defaultNamedNotOptArg, Rows=defaultNamedNotOptArg):
+        'Inserts the row(s) of specified height.'
         return self._oleobj_.InvokeTypes(97, LCID, 1, (24, 0), ((3, 1), (5, 1), (3, 1)),row
             , Height, Rows)
 
     def InsertRowsAndInherit(self, nIndex=defaultNamedNotOptArg, nInheritFrom=defaultNamedNotOptArg, nNumRows=defaultNamedNotOptArg):
+        'Inserts one or more rows at the specified index and inherits the row properties from specified row.'
         return self._oleobj_.InvokeTypes(2345, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1)),nIndex
             , nInheritFrom, nNumRows)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def IsContentEditable(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg):
+        'Checks if the content of the specified cell can be modified.'
         return self._oleobj_.InvokeTypes(2358, LCID, 1, (11, 0), ((3, 1), (3, 1)),nRow
             , nCol)
 
     def IsEmpty(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg):
+        'Checks if the content of the specified cell is empty.'
         return self._oleobj_.InvokeTypes(2210, LCID, 1, (11, 0), ((3, 1), (3, 1)),nRow
             , nCol)
 
     def IsFormatEditable(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg):
+        'Checks if the format of the specified cell can be modified.'
         return self._oleobj_.InvokeTypes(2359, LCID, 1, (11, 0), ((3, 1), (3, 1)),nRow
             , nCol)
 
     def IsMergeAllEnabled(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg):
+        'Returns whether merge all flag is enabled or not in row or column.'
         return self._oleobj_.InvokeTypes(2369, LCID, 1, (11, 0), ((3, 1), (3, 1)),nRow
             , nCol)
 
     def IsMergedCell(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, minRow=pythoncom.Missing, maxRow=pythoncom.Missing
             , minCol=pythoncom.Missing, maxCol=pythoncom.Missing):
+        'is Merged Cell.'
         return self._ApplyTypes_(101, 1, (11, 0), ((3, 1), (3, 1), (16387, 2), (16387, 2), (16387, 2), (16387, 2)), 'IsMergedCell', None,row
-            , col, minRow, maxRow, minCol, maxCol
-            )
+            , col, minRow, maxRow, minCol, maxCol)
 
     def MergeCells(self, minRow=defaultNamedNotOptArg, maxRow=defaultNamedNotOptArg, minCol=defaultNamedNotOptArg, maxCol=defaultNamedNotOptArg):
+        'merge cells.'
         return self._oleobj_.InvokeTypes(99, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (3, 1)),minRow
             , maxRow, minCol, maxCol)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -20329,6 +22324,10 @@ class IAcadTable(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -20336,42 +22335,61 @@ class IAcadTable(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def MoveContent(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nFromIndex=defaultNamedNotOptArg, nToIndex=defaultNamedNotOptArg):
+        'Moves a content in a cell from one position to another position within the cell'
         return self._oleobj_.InvokeTypes(2214, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (3, 1)),nRow
             , nCol, nFromIndex, nToIndex)
 
     def RecomputeTableBlock(self, bForceUpdate=defaultNamedNotOptArg):
+        'Recompute TableBlock.'
         return self._oleobj_.InvokeTypes(103, LCID, 1, (24, 0), ((11, 1),),bForceUpdate
             )
 
     def RemoveAllOverrides(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg):
+        'Removes all the overrides in cell, row, or column.'
         return self._oleobj_.InvokeTypes(2280, LCID, 1, (24, 0), ((3, 1), (3, 1)),nRow
             , nCol)
 
     def ReselectSubRegion(self):
+        'Re select SubRegion.'
         return self._oleobj_.InvokeTypes(107, LCID, 1, (24, 0), (),)
 
     def ResetCellValue(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
+        'Resets the cell value for the specified row and column.'
         return self._oleobj_.InvokeTypes(2209, LCID, 1, (24, 0), ((3, 1), (3, 1)),row
             , col)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def Select(self, wpt=defaultNamedNotOptArg, wvwVec=defaultNamedNotOptArg, wvwxVec=defaultNamedNotOptArg, wxaper=defaultNamedNotOptArg
             , wyaper=defaultNamedNotOptArg, allowOutside=defaultNamedNotOptArg, resultRowIndex=pythoncom.Missing, resultColumnIndex=pythoncom.Missing):
+        'Select.'
+        wpt = VTR8ArrayOrVal(wpt)
+        wvwVec = VTR8ArrayOrVal(wvwVec)
+        wvwxVec = VTR8ArrayOrVal(wvwxVec)
         return self._ApplyTypes_(105, 1, (24, 0), ((12, 1), (12, 1), (12, 1), (5, 1), (5, 1), (11, 1), (16387, 2), (16387, 2)), 'Select', None,wpt
             , wvwVec, wvwxVec, wxaper, wyaper, allowOutside
             , resultRowIndex, resultColumnIndex)
@@ -20379,293 +22397,380 @@ class IAcadTable(DispatchBaseClass):
     def SelectSubRegion(self, wpt1=defaultNamedNotOptArg, wpt2=defaultNamedNotOptArg, wvwVec=defaultNamedNotOptArg, wvwxVec=defaultNamedNotOptArg
             , seltype=defaultNamedNotOptArg, bIncludeCurrentSelection=defaultNamedNotOptArg, rowMin=pythoncom.Missing, rowMax=pythoncom.Missing, colMin=pythoncom.Missing
             , colMax=pythoncom.Missing):
+        'Select SubRegion.'
+        wpt1 = VTR8ArrayOrVal(wpt1)
+        wpt2 = VTR8ArrayOrVal(wpt2)
+        wvwVec = VTR8ArrayOrVal(wvwVec)
+        wvwxVec = VTR8ArrayOrVal(wvwxVec)
         return self._ApplyTypes_(106, 1, (24, 0), ((12, 1), (12, 1), (12, 1), (12, 1), (3, 1), (11, 1), (16387, 2), (16387, 2), (16387, 2), (16387, 2)), 'SelectSubRegion', None,wpt1
             , wpt2, wvwVec, wvwxVec, seltype, bIncludeCurrentSelection
             , rowMin, rowMax, colMin, colMax)
 
     def SetAlignment(self, rowTypes=defaultNamedNotOptArg, cellAlignment=defaultNamedNotOptArg):
+        'Sets the cell alignment for the specified row types.'
         return self._oleobj_.InvokeTypes(34, LCID, 1, (24, 0), ((3, 1), (3, 1)),rowTypes
             , cellAlignment)
 
     def SetAutoScale(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, bValue=defaultNamedNotOptArg):
+        'Sets the auto scale flag value for the specified row and column.'
         return self._oleobj_.InvokeTypes(78, LCID, 1, (24, 0), ((3, 1), (3, 1), (16395, 1)),row
             , col, bValue)
 
     def SetAutoScale2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, bAutoFit=defaultNamedNotOptArg):
+        'Sets the auto scale flag value for the specified row and column  and nContent.'
         return self._oleobj_.InvokeTypes(36325, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (11, 1)),nRow
             , nCol, nContent, bAutoFit)
 
     def SetBackgroundColor(self, rowTypes=defaultNamedNotOptArg, pColor=defaultNamedNotOptArg):
+        'Sets the background true color value for the specified row types.'
         return self._oleobj_.InvokeTypes(38, LCID, 1, (24, 0), ((3, 1), (9, 1)),rowTypes
             , pColor)
 
     def SetBackgroundColorNone(self, rowTypes=defaultNamedNotOptArg, bValue=defaultNamedNotOptArg):
+        'Sets the backgroundColorNone flag value for the specified row types.'
         return self._oleobj_.InvokeTypes(36, LCID, 1, (24, 0), ((3, 1), (16395, 1)),rowTypes
             , bValue)
 
     def SetBlockAttributeValue(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, attdefId=defaultNamedNotOptArg, bstrValue=defaultNamedNotOptArg):
+        'Sets the attribute value to the Specified block cell for the attribute definition object contained in the block.'
         return self._oleobj_.InvokeTypes(113, LCID, 1, (24, 0), ((3, 1), (3, 1), (20, 1), (8, 1)),row
             , col, attdefId, bstrValue)
 
     def SetBlockAttributeValue2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, blkId=defaultNamedNotOptArg
             , Value=defaultNamedNotOptArg):
+        'Sets the attribute value from the Specified block cell for the attribute definition object contained in the block  and nContent.'
         return self._oleobj_.InvokeTypes(2244, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (20, 1), (8, 1)),nRow
             , nCol, nContent, blkId, Value)
 
     def SetBlockRotation(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, blkRotation=defaultNamedNotOptArg):
+        'Sets the block rotation for the specified row and column.'
         return self._oleobj_.InvokeTypes(84, LCID, 1, (24, 0), ((3, 1), (3, 1), (5, 1)),row
             , col, blkRotation)
 
     def SetBlockScale(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, blkScale=defaultNamedNotOptArg):
+        'Sets the block scale value for the specified row and column.'
         return self._oleobj_.InvokeTypes(82, LCID, 1, (24, 0), ((3, 1), (3, 1), (5, 1)),row
             , col, blkScale)
 
     def SetBlockTableRecordId(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, blkId=defaultNamedNotOptArg, bAutoFit=defaultNamedNotOptArg):
+        'Sets the block table record id associated to the block-type cell.'
         return self._oleobj_.InvokeTypes(80, LCID, 1, (24, 0), ((3, 1), (3, 1), (20, 1), (11, 1)),row
             , col, blkId, bAutoFit)
 
     def SetBlockTableRecordId2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, blkId=defaultNamedNotOptArg
             , autoFit=defaultNamedNotOptArg):
+        'Sets the block table record id associated to the block-type cell  and nContent.'
         return self._oleobj_.InvokeTypes(2242, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (20, 1), (11, 1)),nRow
             , nCol, nContent, blkId, autoFit)
 
     def SetBreakHeight(self, nIndex=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Sets the break height of the specified table when table breaking is enabled.'
         return self._oleobj_.InvokeTypes(2310, LCID, 1, (24, 0), ((3, 1), (5, 1)),nIndex
             , Height)
 
     def SetCellAlignment(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, cellAlignment=defaultNamedNotOptArg):
+        'Sets the cell alignment for the specified row and column.'
         return self._oleobj_.InvokeTypes(59, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1)),row
             , col, cellAlignment)
 
     def SetCellBackgroundColor(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, pColor=defaultNamedNotOptArg):
+        'Sets the background true color value for the specified row and column.'
         return self._oleobj_.InvokeTypes(63, LCID, 1, (24, 0), ((3, 1), (3, 1), (9, 1)),row
             , col, pColor)
 
     def SetCellBackgroundColorNone(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, bValue=defaultNamedNotOptArg):
+        'Sets the backgroundColorNone flag value for the specified row and column.'
         return self._oleobj_.InvokeTypes(61, LCID, 1, (24, 0), ((3, 1), (3, 1), (16395, 1)),row
             , col, bValue)
 
     def SetCellContentColor(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, pColor=defaultNamedNotOptArg):
+        'Sets the true color value for the specified row and column.'
         return self._oleobj_.InvokeTypes(65, LCID, 1, (24, 0), ((3, 1), (3, 1), (9, 1)),row
             , col, pColor)
 
     def SetCellDataType(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, dataType=defaultNamedNotOptArg, unitType=defaultNamedNotOptArg):
+        'Sets the cell data type and unit type for the specified row and column.'
         return self._oleobj_.InvokeTypes(1947, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 0), (3, 0)),row
             , col, dataType, unitType)
 
     def SetCellFormat(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, pFormat=defaultNamedNotOptArg):
+        'Sets the cell format for the specified row and column.'
         return self._oleobj_.InvokeTypes(1949, LCID, 1, (24, 0), ((3, 1), (3, 1), (8, 0)),row
             , col, pFormat)
 
     def SetCellGridColor(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, edges=defaultNamedNotOptArg, pColor=defaultNamedNotOptArg):
+        'Sets the gridColor value for the given edges of specified row and column.'
         return self._oleobj_.InvokeTypes(88, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (9, 1)),row
             , col, edges, pColor)
 
     def SetCellGridLineWeight(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, edges=defaultNamedNotOptArg, Lineweight=defaultNamedNotOptArg):
+        'Sets the gridLineWeight value for the given edges of specified row and column.'
         return self._oleobj_.InvokeTypes(86, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (3, 1)),row
             , col, edges, Lineweight)
 
     def SetCellGridVisibility(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, edges=defaultNamedNotOptArg, bValue=defaultNamedNotOptArg):
+        'Sets the gridVisibility value for the given edges of specified row and column.'
         return self._oleobj_.InvokeTypes(90, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (11, 1)),row
             , col, edges, bValue)
 
     def SetCellState(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nLock=defaultNamedNotOptArg):
+        'Sets the cell state.'
         return self._oleobj_.InvokeTypes(2361, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nLock)
 
     def SetCellStyle(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, szCellStyle=defaultNamedNotOptArg):
+        'Sets the the cell style of cell, row, or column.'
         return self._oleobj_.InvokeTypes(2256, LCID, 1, (24, 0), ((3, 1), (3, 1), (8, 1)),nRow
             , nCol, szCellStyle)
 
     def SetCellTextHeight(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, TextHeight=defaultNamedNotOptArg):
+        'Sets the text height for the specified row and column.'
         return self._oleobj_.InvokeTypes(74, LCID, 1, (24, 0), ((3, 1), (3, 1), (5, 1)),row
             , col, TextHeight)
 
     def SetCellTextStyle(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, bstrName=defaultNamedNotOptArg):
+        'Sets the text style name for the specified row and column.'
         return self._oleobj_.InvokeTypes(72, LCID, 1, (24, 0), ((3, 1), (3, 1), (8, 1)),row
             , col, bstrName)
 
     def SetCellType(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, CellType=defaultNamedNotOptArg):
+        'Sets the cell type for the specified row and column.'
         return self._oleobj_.InvokeTypes(54, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1)),row
             , col, CellType)
 
     def SetCellValue(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, val=defaultNamedNotOptArg):
+        'Sets the cell value for the specified row and column.'
         return self._oleobj_.InvokeTypes(1951, LCID, 1, (24, 0), ((3, 1), (3, 1), (12, 0)),row
             , col, val)
 
     def SetCellValueFromText(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, val=defaultNamedNotOptArg, nOption=defaultNamedNotOptArg):
+        'Sets the cell value by parsing the text for the specified row and column.'
         return self._oleobj_.InvokeTypes(2208, LCID, 1, (24, 0), ((3, 1), (3, 1), (8, 1), (3, 1)),row
             , col, val, nOption)
 
     def SetColumnName(self, nIndex=defaultNamedNotOptArg, Name=defaultNamedNotOptArg):
+        'Sets the columns name.'
         return self._oleobj_.InvokeTypes(65529, LCID, 1, (24, 0), ((3, 1), (8, 1)),nIndex
             , Name)
 
     def SetColumnWidth(self, col=defaultNamedNotOptArg, Width=defaultNamedNotOptArg):
+        'Sets the column width for the specified column.'
         return self._oleobj_.InvokeTypes(11, LCID, 1, (24, 0), ((3, 1), (5, 1)),col
             , Width)
 
     def SetContentColor(self, rowTypes=defaultNamedNotOptArg, pColor=defaultNamedNotOptArg):
+        'Sets the true color value for the specified row types.'
         return self._oleobj_.InvokeTypes(40, LCID, 1, (24, 0), ((3, 1), (9, 1)),rowTypes
             , pColor)
 
     def SetContentColor2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, pColor=defaultNamedNotOptArg):
+        'Sets the true color value for the specified row type  and nContent.'
         return self._oleobj_.InvokeTypes(2261, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (9, 1)),nRow
             , nCol, nContent, pColor)
 
     def SetContentLayout(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, nLayout=defaultNamedNotOptArg):
+        'Sets the content layout of the cell.'
         return self._oleobj_.InvokeTypes(2328, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1)),row
             , col, nLayout)
 
     def SetCustomData(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, szKey=defaultNamedNotOptArg, data=defaultNamedNotOptArg):
+        'Sets the custom data value set in cell, row, or column.'
         return self._oleobj_.InvokeTypes(2248, LCID, 1, (24, 0), ((3, 1), (3, 1), (8, 1), (12, 1)),nRow
             , nCol, szKey, data)
 
     def SetDataFormat(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, szFormat=defaultNamedNotOptArg):
+        'Sets the cell format for the specified row and column and nContent.'
         return self._oleobj_.InvokeTypes(2228, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (8, 1)),nRow
             , nCol, nContent, szFormat)
 
     def SetDataType(self, rowTypes=defaultNamedNotOptArg, dataType=defaultNamedNotOptArg, unitType=defaultNamedNotOptArg):
+        'Sets the row data type and unit type for the specified row type.'
         return self._oleobj_.InvokeTypes(118, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1)),rowTypes
             , dataType, unitType)
 
     def SetDataType2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, dataType=defaultNamedNotOptArg
             , unitType=defaultNamedNotOptArg):
+        'Sets the row data type and unit type for the specified row type  and nContent.'
         return self._oleobj_.InvokeTypes(2263, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent, dataType, unitType)
 
     def SetFieldId(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, fieldId=defaultNamedNotOptArg):
+        'Sets the field object id in the specifed cell.'
         return self._oleobj_.InvokeTypes(115, LCID, 1, (24, 0), ((3, 1), (3, 1), (20, 1)),row
             , col, fieldId)
 
     def SetFieldId2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, acDbObjectId=defaultNamedNotOptArg
             , nflag=defaultNamedNotOptArg):
+        'Sets  the field object id associated to the specifed cell  and nContent.'
         return self._oleobj_.InvokeTypes(2233, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (20, 1), (3, 1)),nRow
             , nCol, nContent, acDbObjectId, nflag)
 
     def SetFormat(self, rowTypes=defaultNamedNotOptArg, pFormat=defaultNamedNotOptArg):
+        'Sets the format for the specified row type.'
         return self._oleobj_.InvokeTypes(120, LCID, 1, (24, 0), ((3, 1), (8, 0)),rowTypes
             , pFormat)
 
     def SetFormula(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, pszFormula=defaultNamedNotOptArg):
+        'Sets the formula at the specified content index.'
         return self._oleobj_.InvokeTypes(2356, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (8, 1)),nRow
             , nCol, nContent, pszFormula)
 
     def SetGridColor(self, gridLineTypes=defaultNamedNotOptArg, rowTypes=defaultNamedNotOptArg, pColor=defaultNamedNotOptArg):
+        'Sets the gridColor value for the specified gridLineType(s) and row type(s).'
         return self._oleobj_.InvokeTypes(48, LCID, 1, (24, 0), ((3, 1), (3, 1), (9, 1)),gridLineTypes
             , rowTypes, pColor)
 
     def SetGridColor2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nGridLineType=defaultNamedNotOptArg, pColor=defaultNamedNotOptArg):
+        'Sets the gridColor value for the specified gridLineType and row type  and nContent.'
         return self._oleobj_.InvokeTypes(2292, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (9, 1)),nRow
             , nCol, nGridLineType, pColor)
 
     def SetGridDoubleLineSpacing(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nGridLineType=defaultNamedNotOptArg, fSpacing=defaultNamedNotOptArg):
+        'Sets the grid double line spacing in cell, row, or column.'
         return self._oleobj_.InvokeTypes(2296, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (5, 1)),nRow
             , nCol, nGridLineType, fSpacing)
 
     def SetGridLineStyle(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nGridLineTypes=defaultNamedNotOptArg, nLineStyle=defaultNamedNotOptArg):
+        'Sets the grid line style of cell, row, or column.'
         return self._oleobj_.InvokeTypes(2341, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (3, 1)),nRow
             , nCol, nGridLineTypes, nLineStyle)
 
     def SetGridLineWeight(self, gridLineTypes=defaultNamedNotOptArg, rowTypes=defaultNamedNotOptArg, Lineweight=defaultNamedNotOptArg):
+        'Sets the gridLineWeight value for the specified gridLineType(s) and row type(s).'
         return self._oleobj_.InvokeTypes(46, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1)),gridLineTypes
             , rowTypes, Lineweight)
 
     def SetGridLineWeight2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nGridLineType=defaultNamedNotOptArg, Lineweight=defaultNamedNotOptArg):
+        'Sets the gridLineWeight value for the specified gridLineType(s) and row type(s)   and nContent.'
         return self._oleobj_.InvokeTypes(2288, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (3, 1)),nRow
             , nCol, nGridLineType, Lineweight)
 
     def SetGridLinetype(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nGridLineType=defaultNamedNotOptArg, idLinetype=defaultNamedNotOptArg):
+        'Sets the grid line type of cell, row, or column.'
         return self._oleobj_.InvokeTypes(2290, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (20, 1)),nRow
             , nCol, nGridLineType, idLinetype)
 
     def SetGridVisibility(self, gridLineTypes=defaultNamedNotOptArg, rowTypes=defaultNamedNotOptArg, bValue=defaultNamedNotOptArg):
+        'Sets the gridVisibility value for the specified gridLineType(s) and row type(s).'
         return self._oleobj_.InvokeTypes(50, LCID, 1, (24, 0), ((3, 1), (3, 1), (11, 1)),gridLineTypes
             , rowTypes, bValue)
 
     def SetGridVisibility2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nGridLineType=defaultNamedNotOptArg, bVisible=defaultNamedNotOptArg):
+        'Sets the gridVisibility value for the specified gridLineType and row type.'
         return self._oleobj_.InvokeTypes(2294, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (11, 1)),nRow
             , nCol, nGridLineType, bVisible)
 
     def SetMargin(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nMargins=defaultNamedNotOptArg, fMargin=defaultNamedNotOptArg):
+        'Sets the margin of cell, row, or column.'
         return self._oleobj_.InvokeTypes(2326, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (5, 1)),nRow
             , nCol, nMargins, fMargin)
 
     def SetOverride(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, nProp=defaultNamedNotOptArg):
+        'Sets the override in cell, row, column, or content.'
         return self._oleobj_.InvokeTypes(2339, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent, nProp)
 
     def SetRotation(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
+        'Sets the rotation angle of the content at the specified content index.'
         return self._oleobj_.InvokeTypes(2275, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (5, 1)),nRow
             , nCol, nContent, Value)
 
     def SetRowHeight(self, row=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Sets the row height for the specified row.'
         return self._oleobj_.InvokeTypes(14, LCID, 1, (24, 0), ((3, 1), (5, 1)),row
             , Height)
 
     def SetScale(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, scale=defaultNamedNotOptArg):
+        'Sets the scale of the content at the specified content index.'
         return self._oleobj_.InvokeTypes(2279, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (5, 1)),nRow
             , nCol, nContent, scale)
 
     def SetSubSelection(self, rowMin=defaultNamedNotOptArg, rowMax=defaultNamedNotOptArg, colMin=defaultNamedNotOptArg, colMax=defaultNamedNotOptArg):
+        'SetSubSelection.'
         return self._oleobj_.InvokeTypes(109, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (3, 1)),rowMin
             , rowMax, colMin, colMax)
 
     def SetText(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, pStr=defaultNamedNotOptArg):
+        'Sets the text value value for the specified row and column.'
         return self._oleobj_.InvokeTypes(70, LCID, 1, (24, 0), ((3, 1), (3, 1), (8, 1)),row
             , col, pStr)
 
     def SetTextHeight(self, rowTypes=defaultNamedNotOptArg, TextHeight=defaultNamedNotOptArg):
+        'Sets the text height for the specified row types.'
         return self._oleobj_.InvokeTypes(44, LCID, 1, (24, 0), ((3, 1), (5, 1)),rowTypes
             , TextHeight)
 
     def SetTextHeight2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Gets the text height for the specified row and column  and nContent.'
         return self._oleobj_.InvokeTypes(2273, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (5, 1)),nRow
             , nCol, nContent, Height)
 
     def SetTextRotation(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, TextRotation=defaultNamedNotOptArg):
+        'Sets the text rotation for the specified row and column.'
         return self._oleobj_.InvokeTypes(76, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1)),row
             , col, TextRotation)
 
     def SetTextString(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
+        'Sets the text value value for the specified row and column.'
         return self._oleobj_.InvokeTypes(2231, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (8, 1)),nRow
             , nCol, nContent, Text)
 
     def SetTextStyle(self, rowTypes=defaultNamedNotOptArg, bstrName=defaultNamedNotOptArg):
+        'Sets the text style name for the specified row types.'
         return self._oleobj_.InvokeTypes(42, LCID, 1, (24, 0), ((3, 1), (8, 1)),rowTypes
             , bstrName)
 
     def SetTextStyle2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, bstrStyleName=defaultNamedNotOptArg):
+        'Sets the text style name for the specified row and column  and nContent.'
         return self._oleobj_.InvokeTypes(2265, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (8, 1)),nRow
             , nCol, nContent, bstrStyleName)
 
     def SetToolTip(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, tip=defaultNamedNotOptArg):
+        'Sets the tooltip string for cell, row, or column.'
         return self._oleobj_.InvokeTypes(65530, LCID, 1, (24, 0), ((3, 1), (3, 1), (8, 1)),nRow
             , nCol, tip)
 
     def SetValue(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, acValue=defaultNamedNotOptArg):
+        'Sets the cell value by parsing the text for the specified row and column and nContent.'
         return self._oleobj_.InvokeTypes(2224, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (12, 1)),nRow
             , nCol, nContent, acValue)
 
     def SetValueFromText(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg, szText=defaultNamedNotOptArg
             , nOption=defaultNamedNotOptArg):
+        'Sets the value of the content at the specified content index.'
         return self._oleobj_.InvokeTypes(2225, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (8, 1), (3, 1)),nRow
             , nCol, nContent, szText, nOption)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def UnmergeCells(self, minRow=defaultNamedNotOptArg, maxRow=defaultNamedNotOptArg, minCol=defaultNamedNotOptArg, maxCol=defaultNamedNotOptArg):
+        'Unmerge cells.'
         return self._oleobj_.InvokeTypes(100, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (3, 1)),minRow
             , maxRow, minCol, maxCol)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Direction':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "AllowManualHeights": (65525, 2, (11, 0), (), "AllowManualHeights", None),
@@ -20763,6 +22868,7 @@ class IAcadTable(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadTableStyle(DispatchBaseClass):
+    'AutoCAD IAcadTableStyle Interface'
     CLSID = IID('{EBE41C9B-1BD0-4B96-8F5A-216B41AC5E7C}')
     coclass_clsid = IID('{D16AA6A1-9000-4891-A3A6-7CBAAADCA8D6}')
 
@@ -20775,6 +22881,7 @@ class IAcadTableStyle(DispatchBaseClass):
             , bstrSourceCellStyle)
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def DeleteCellStyle(self, bstrCellStyle=defaultNamedNotOptArg):
@@ -20786,18 +22893,22 @@ class IAcadTableStyle(DispatchBaseClass):
             , bEnable)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetAlignment(self, rowType=defaultNamedNotOptArg):
+        'Returns the cell alignment for the specified row type.'
         return self._oleobj_.InvokeTypes(13, LCID, 1, (3, 0), ((3, 1),),rowType
             )
 
     def GetAlignment2(self, bstrCellStyle=defaultNamedNotOptArg):
+        'Returns the cell alignment for the specified cellStyle.'
         return self._oleobj_.InvokeTypes(43, LCID, 1, (3, 0), ((8, 1),),bstrCellStyle
             )
 
     # Result is of type IAcadAcCmColor
     def GetBackgroundColor(self, rowType=defaultNamedNotOptArg):
+        'Returns the background true color value for the specified row type.'
         ret = self._oleobj_.InvokeTypes(17, LCID, 1, (9, 0), ((3, 1),),rowType
             )
         if ret is not None:
@@ -20806,6 +22917,7 @@ class IAcadTableStyle(DispatchBaseClass):
 
     # Result is of type IAcadAcCmColor
     def GetBackgroundColor2(self, bstrCellStyle=defaultNamedNotOptArg):
+        'Returns the background true color value for the specified cellStyle.'
         ret = self._oleobj_.InvokeTypes(47, LCID, 1, (9, 0), ((8, 1),),bstrCellStyle
             )
         if ret is not None:
@@ -20813,6 +22925,7 @@ class IAcadTableStyle(DispatchBaseClass):
         return ret
 
     def GetBackgroundColorNone(self, rowType=defaultNamedNotOptArg):
+        'Returns the backgroundColorNone flag value for the specified row type.'
         return self._oleobj_.InvokeTypes(19, LCID, 1, (11, 0), ((3, 1),),rowType
             )
 
@@ -20826,6 +22939,7 @@ class IAcadTableStyle(DispatchBaseClass):
 
     # Result is of type IAcadAcCmColor
     def GetColor(self, rowType=defaultNamedNotOptArg):
+        'Returns the true color value for the specified row type.'
         ret = self._oleobj_.InvokeTypes(15, LCID, 1, (9, 0), ((3, 1),),rowType
             )
         if ret is not None:
@@ -20834,6 +22948,7 @@ class IAcadTableStyle(DispatchBaseClass):
 
     # Result is of type IAcadAcCmColor
     def GetColor2(self, bstrCellStyle=defaultNamedNotOptArg):
+        'Returns the true color value for the specified cellStyle.'
         ret = self._oleobj_.InvokeTypes(45, LCID, 1, (9, 0), ((8, 1),),bstrCellStyle
             )
         if ret is not None:
@@ -20841,31 +22956,37 @@ class IAcadTableStyle(DispatchBaseClass):
         return ret
 
     def GetDataType(self, rowType=defaultNamedNotOptArg, pDataType=pythoncom.Missing, pUnitType=pythoncom.Missing):
+        'Returns the data type and unit type for the specifed row type.'
         return self._ApplyTypes_(27, 1, (24, 0), ((3, 1), (16387, 2), (16387, 2)), 'GetDataType', None,rowType
             , pDataType, pUnitType)
 
     def GetDataType2(self, bstrCellStyle=defaultNamedNotOptArg, pDataType=pythoncom.Missing, pUnitType=pythoncom.Missing):
+        'Returns the data type and unit type for the specifed cellStyle.'
         return self._ApplyTypes_(51, 1, (24, 0), ((8, 1), (16387, 2), (16387, 2)), 'GetDataType2', None,bstrCellStyle
             , pDataType, pUnitType)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetFormat(self, rowType=defaultNamedNotOptArg):
+        'Returns the format for the specifed row type.'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(29, LCID, 1, (8, 0), ((3, 1),),rowType
             )
 
     def GetFormat2(self, bstrCellStyle=defaultNamedNotOptArg, pbstrFormat=pythoncom.Missing):
+        'Returns the format for the specifed cellStyle.'
         return self._ApplyTypes_(53, 1, (24, 0), ((8, 1), (16392, 2)), 'GetFormat2', None,bstrCellStyle
             , pbstrFormat)
 
     # Result is of type IAcadAcCmColor
     def GetGridColor(self, gridLineType=defaultNamedNotOptArg, rowType=defaultNamedNotOptArg):
+        'Returns the gridColor value for the specifed gridLineType and row type.'
         ret = self._oleobj_.InvokeTypes(23, LCID, 1, (9, 0), ((3, 1), (3, 1)),gridLineType
             , rowType)
         if ret is not None:
@@ -20874,6 +22995,7 @@ class IAcadTableStyle(DispatchBaseClass):
 
     # Result is of type IAcadAcCmColor
     def GetGridColor2(self, bstrCellStyle=defaultNamedNotOptArg, gridLineType=defaultNamedNotOptArg):
+        'Returns the gridColor value for the specified gridLineType and cellStyle.'
         ret = self._oleobj_.InvokeTypes(57, LCID, 1, (9, 0), ((8, 1), (3, 1)),bstrCellStyle
             , gridLineType)
         if ret is not None:
@@ -20881,56 +23003,57 @@ class IAcadTableStyle(DispatchBaseClass):
         return ret
 
     def GetGridLineWeight(self, gridLineType=defaultNamedNotOptArg, rowType=defaultNamedNotOptArg):
+        'Returns the gridLineWeight value for the specifed gridLineType and row type.'
         return self._oleobj_.InvokeTypes(21, LCID, 1, (3, 0), ((3, 1), (3, 1)),gridLineType
             , rowType)
 
     def GetGridLineWeight2(self, bstrCellStyle=defaultNamedNotOptArg, gridLineType=defaultNamedNotOptArg):
+        'Gets the gridLineWeight value for the specified gridLineType(s) and cellStyle.'
         return self._oleobj_.InvokeTypes(55, LCID, 1, (3, 0), ((8, 1), (3, 1)),bstrCellStyle
             , gridLineType)
 
     def GetGridVisibility(self, gridLineType=defaultNamedNotOptArg, rowType=defaultNamedNotOptArg):
+        'Returns the gridVisibility value for the specifed gridLineType and row type.'
         return self._oleobj_.InvokeTypes(25, LCID, 1, (11, 0), ((3, 1), (3, 1)),gridLineType
             , rowType)
 
     def GetGridVisibility2(self, bstrCellStyle=defaultNamedNotOptArg, gridLineType=defaultNamedNotOptArg):
+        'Returns the gridVisibility value for the specified gridLineType and cellStyle.'
         return self._oleobj_.InvokeTypes(59, LCID, 1, (11, 0), ((8, 1), (3, 1)),bstrCellStyle
             , gridLineType)
 
     def GetIsCellStyleInUse(self, pszCellStyle=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(36, LCID, 1, (11, 0), ((8, 1),),pszCellStyle
-            )
+        return self._oleobj_.InvokeTypes(36, LCID, 1, (11, 0), ((8, 1),),pszCellStyle)
 
     def GetIsMergeAllEnabled(self, bstrCellStyle=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1610809408, LCID, 1, (11, 0), ((8, 1),),bstrCellStyle
-            )
+        return self._oleobj_.InvokeTypes(1610809408, LCID, 1, (11, 0), ((8, 1),),bstrCellStyle)
 
     def GetRotation(self, bstrCellStyle=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1610809406, LCID, 1, (5, 0), ((8, 1),),bstrCellStyle
-            )
+        return self._oleobj_.InvokeTypes(1610809406, LCID, 1, (5, 0), ((8, 1),),bstrCellStyle)
 
     def GetTextHeight(self, rowType=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(11, LCID, 1, (5, 0), ((3, 1),),rowType
-            )
+        'Returns the text height for the specified row type.'
+        return self._oleobj_.InvokeTypes(11, LCID, 1, (5, 0), ((3, 1),),rowType)
 
     def GetTextHeight2(self, bstrCellStyle=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(41, LCID, 1, (5, 0), ((8, 1),),bstrCellStyle
-            )
+        'Returns the text height for the specified cellStyle.'
+        return self._oleobj_.InvokeTypes(41, LCID, 1, (5, 0), ((8, 1),),bstrCellStyle)
 
     def GetTextStyle(self, rowType=defaultNamedNotOptArg):
+        'Returns the text style name for the specified row type.'
         # Result is a Unicode object
-        return self._oleobj_.InvokeTypes(9, LCID, 1, (8, 0), ((3, 1),),rowType
-            )
+        return self._oleobj_.InvokeTypes(9, LCID, 1, (8, 0), ((3, 1),),rowType)
 
     def GetTextStyleId(self, bstrCellStyle=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(39, LCID, 1, (20, 0), ((8, 1),),bstrCellStyle
-            )
+        'Returns the text style name for the specified cellStyle.'
+        return self._oleobj_.InvokeTypes(39, LCID, 1, (20, 0), ((8, 1),),bstrCellStyle)
 
     def GetUniqueCellStyleName(self, pszBaseName=defaultNamedNotOptArg):
         # Result is a Unicode object
-        return self._oleobj_.InvokeTypes(35, LCID, 1, (8, 0), ((8, 1),),pszBaseName
-            )
+        return self._oleobj_.InvokeTypes(35, LCID, 1, (8, 0), ((8, 1),),pszBaseName)
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
@@ -20939,22 +23062,27 @@ class IAcadTableStyle(DispatchBaseClass):
             , bstrNewName)
 
     def SetAlignment(self, rowTypes=defaultNamedNotOptArg, cellAlignment=defaultNamedNotOptArg):
+        'Sets the cell alignment for the specified row types.'
         return self._oleobj_.InvokeTypes(14, LCID, 1, (24, 0), ((3, 1), (3, 1)),rowTypes
             , cellAlignment)
 
     def SetAlignment2(self, bstrCellStyle=defaultNamedNotOptArg, cellAlignment=defaultNamedNotOptArg):
+        'Sets the cell alignment for the specified cellStyle.'
         return self._oleobj_.InvokeTypes(44, LCID, 1, (24, 0), ((8, 1), (3, 1)),bstrCellStyle
             , cellAlignment)
 
     def SetBackgroundColor(self, rowTypes=defaultNamedNotOptArg, pColor=defaultNamedNotOptArg):
+        'Sets the background true color value for the specifed row types.'
         return self._oleobj_.InvokeTypes(18, LCID, 1, (24, 0), ((3, 1), (9, 1)),rowTypes
             , pColor)
 
     def SetBackgroundColor2(self, bstrCellStyle=defaultNamedNotOptArg, color=defaultNamedNotOptArg):
+        'Sets the background true color value for the specified cellStyle.'
         return self._oleobj_.InvokeTypes(48, LCID, 1, (24, 0), ((8, 1), (9, 1)),bstrCellStyle
             , color)
 
     def SetBackgroundColorNone(self, rowTypes=defaultNamedNotOptArg, bValue=defaultNamedNotOptArg):
+        'Sets the backgroundColorNone flag value for the specified row types.'
         return self._oleobj_.InvokeTypes(20, LCID, 1, (24, 0), ((3, 1), (16395, 1)),rowTypes
             , bValue)
 
@@ -20963,50 +23091,62 @@ class IAcadTableStyle(DispatchBaseClass):
             , cellClass)
 
     def SetColor(self, rowTypes=defaultNamedNotOptArg, pColor=defaultNamedNotOptArg):
+        'Sets the true color value for the specifed row types.'
         return self._oleobj_.InvokeTypes(16, LCID, 1, (24, 0), ((3, 1), (9, 1)),rowTypes
             , pColor)
 
     def SetColor2(self, bstrCellStyle=defaultNamedNotOptArg, color=defaultNamedNotOptArg):
+        'Sets the true color value for the specified cellStyle.'
         return self._oleobj_.InvokeTypes(46, LCID, 1, (24, 0), ((8, 1), (9, 1)),bstrCellStyle
             , color)
 
     def SetDataType(self, rowTypes=defaultNamedNotOptArg, nDataType=defaultNamedNotOptArg, nUnitType=defaultNamedNotOptArg):
+        'Sets the data type and unit type for the specifed row type.'
         return self._oleobj_.InvokeTypes(28, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1)),rowTypes
             , nDataType, nUnitType)
 
     def SetDataType2(self, bstrCellStyle=defaultNamedNotOptArg, nDataType=defaultNamedNotOptArg, nUnitType=defaultNamedNotOptArg):
+        'Sets the data type and unit type for the specifed cellStyle.'
         return self._oleobj_.InvokeTypes(52, LCID, 1, (24, 0), ((8, 1), (3, 1), (3, 1)),bstrCellStyle
             , nDataType, nUnitType)
 
     def SetFormat(self, rowTypes=defaultNamedNotOptArg, val=defaultNamedNotOptArg):
+        'Sets the format for the specifed row type.'
         return self._oleobj_.InvokeTypes(30, LCID, 1, (24, 0), ((3, 1), (8, 1)),rowTypes
             , val)
 
     def SetFormat2(self, bstrCellStyle=defaultNamedNotOptArg, bstrFormat=defaultNamedNotOptArg):
+        'Sets the format for the specifed cellStyle.'
         return self._oleobj_.InvokeTypes(54, LCID, 1, (24, 0), ((8, 1), (8, 1)),bstrCellStyle
             , bstrFormat)
 
     def SetGridColor(self, gridLineTypes=defaultNamedNotOptArg, rowTypes=defaultNamedNotOptArg, pColor=defaultNamedNotOptArg):
+        'Sets the gridColor value for the specifed gridLineTypes and row types.'
         return self._oleobj_.InvokeTypes(24, LCID, 1, (24, 0), ((3, 1), (3, 1), (9, 1)),gridLineTypes
             , rowTypes, pColor)
 
     def SetGridColor2(self, bstrCellStyle=defaultNamedNotOptArg, gridLineTypes=defaultNamedNotOptArg, pColor=defaultNamedNotOptArg):
+        'Sets the gridColor value for the specified gridLineType and cellStyle.'
         return self._oleobj_.InvokeTypes(58, LCID, 1, (24, 0), ((8, 1), (3, 1), (9, 1)),bstrCellStyle
             , gridLineTypes, pColor)
 
     def SetGridLineWeight(self, gridLineTypes=defaultNamedNotOptArg, rowTypes=defaultNamedNotOptArg, Lineweight=defaultNamedNotOptArg):
+        'Sets the gridLineWeight value for the specifed gridLineTypes and row types.'
         return self._oleobj_.InvokeTypes(22, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1)),gridLineTypes
             , rowTypes, Lineweight)
 
     def SetGridLineWeight2(self, bstrCellStyle=defaultNamedNotOptArg, gridLineTypes=defaultNamedNotOptArg, Lineweight=defaultNamedNotOptArg):
+        'Sets the gridLineWeight value for the specified gridLineType(s) and cellStyle.'
         return self._oleobj_.InvokeTypes(56, LCID, 1, (24, 0), ((8, 1), (3, 1), (3, 1)),bstrCellStyle
             , gridLineTypes, Lineweight)
 
     def SetGridVisibility(self, gridLineTypes=defaultNamedNotOptArg, rowTypes=defaultNamedNotOptArg, bValue=defaultNamedNotOptArg):
+        'Sets the gridVisibility value for the specifed gridLineTypes and row types.'
         return self._oleobj_.InvokeTypes(26, LCID, 1, (24, 0), ((3, 1), (3, 1), (11, 1)),gridLineTypes
             , rowTypes, bValue)
 
     def SetGridVisibility2(self, bstrCellStyle=defaultNamedNotOptArg, gridLineTypes=defaultNamedNotOptArg, bValue=defaultNamedNotOptArg):
+        'Sets the gridVisibility value for the specified gridLineType and cellStyle.'
         return self._oleobj_.InvokeTypes(60, LCID, 1, (24, 0), ((8, 1), (3, 1), (11, 1)),bstrCellStyle
             , gridLineTypes, bValue)
 
@@ -21019,22 +23159,27 @@ class IAcadTableStyle(DispatchBaseClass):
             , option)
 
     def SetTextHeight(self, rowTypes=defaultNamedNotOptArg, TextHeight=defaultNamedNotOptArg):
+        'Sets the text height for the specified row types.'
         return self._oleobj_.InvokeTypes(12, LCID, 1, (24, 0), ((3, 1), (5, 1)),rowTypes
             , TextHeight)
 
     def SetTextHeight2(self, bstrCellStyle=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Sets the text height for the specified cellStyle.'
         return self._oleobj_.InvokeTypes(42, LCID, 1, (24, 0), ((8, 1), (5, 1)),bstrCellStyle
             , Height)
 
     def SetTextStyle(self, rowTypes=defaultNamedNotOptArg, bstrName=defaultNamedNotOptArg):
+        'Sets the text style name for the specified row types.'
         return self._oleobj_.InvokeTypes(10, LCID, 1, (24, 0), ((3, 1), (8, 1)),rowTypes
             , bstrName)
 
     def SetTextStyleId(self, bstrCellStyle=defaultNamedNotOptArg, val=defaultNamedNotOptArg):
+        'Sets the text style name for the specified cellStyle.'
         return self._oleobj_.InvokeTypes(40, LCID, 1, (24, 0), ((8, 1), (20, 1)),bstrCellStyle
             , val)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -21079,59 +23224,74 @@ class IAcadTableStyle(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadText(DispatchBaseClass):
+    'AutoCAD Text Interface'
     CLSID = IID('{3FADAC5A-EEF7-4F9D-A3C9-43C788704232}')
     coclass_clsid = IID('{45CD8F3C-2D86-4F0A-9533-765A6BAD532B}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def FieldCode(self):
+        'Returns the text string with field codes of the text'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(17, LCID, 1, (8, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        'Highlights the entity object.'
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -21139,6 +23299,10 @@ class IAcadText(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -21146,31 +23310,56 @@ class IAcadText(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'TextAlignmentPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Alignment": (3, 2, (3, 0), (), "Alignment", None),
@@ -21251,17 +23440,21 @@ class IAcadText(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadTextStyle(DispatchBaseClass):
+    'A named, saved collection of settings that determines the appearance of text characters'
     CLSID = IID('{CED2C7FF-7B16-4BC5-A101-9DBFC6078894}')
     coclass_clsid = IID('{6B9DB813-9A39-4D67-9FA7-882B01E45B85}')
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
@@ -21269,19 +23462,23 @@ class IAcadTextStyle(DispatchBaseClass):
 
     def GetFont(self, TypeFace=pythoncom.Missing, Bold=pythoncom.Missing, Italic=pythoncom.Missing, Charset=pythoncom.Missing
             , PitchAndFamily=pythoncom.Missing):
+        'Gets the definition data of the font for the TextStyle'
         return self._ApplyTypes_(9, 1, (24, 0), ((16392, 2), (16395, 2), (16395, 2), (16387, 2), (16387, 2)), 'GetFont', None,TypeFace
             , Bold, Italic, Charset, PitchAndFamily)
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def SetFont(self, TypeFace=defaultNamedNotOptArg, Bold=defaultNamedNotOptArg, Italic=defaultNamedNotOptArg, Charset=defaultNamedNotOptArg
             , PitchAndFamily=defaultNamedNotOptArg):
+        'Sets the definition data of the font for the TextStyle'
         return self._oleobj_.InvokeTypes(16, LCID, 1, (24, 0), ((8, 1), (11, 1), (11, 1), (3, 1), (3, 1)),TypeFace
             , Bold, Italic, Charset, PitchAndFamily)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -21322,11 +23519,13 @@ class IAcadTextStyle(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadTextStyles(DispatchBaseClass):
+    'The collection of all text styles in the drawing'
     CLSID = IID('{EDA86C2F-CD35-479F-917C-97057FCFCD62}')
     coclass_clsid = IID('{778BDCD9-F2A0-4025-8FDF-BC5B8D03713F}')
 
     # Result is of type IAcadTextStyle
     def Add(self, Name=defaultNamedNotOptArg):
+        'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
             )
         if ret is not None:
@@ -21334,24 +23533,29 @@ class IAcadTextStyles(DispatchBaseClass):
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     # Result is of type IAcadTextStyle
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -21359,6 +23563,7 @@ class IAcadTextStyles(DispatchBaseClass):
         return ret
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -21378,6 +23583,7 @@ class IAcadTextStyles(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -21403,55 +23609,70 @@ class IAcadTextStyles(DispatchBaseClass):
         return True
 
 class IAcadTolerance(DispatchBaseClass):
+    'AutoCAD Tolerance Interface'
     CLSID = IID('{80A68D8C-EC85-48AA-A7B5-905EEE05033D}')
     coclass_clsid = IID('{82745F2B-AE23-4502-A7C3-9CF394D4E01A}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -21459,6 +23680,10 @@ class IAcadTolerance(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -21466,31 +23691,56 @@ class IAcadTolerance(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'DirectionVector':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -21559,11 +23809,13 @@ class IAcadTolerance(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadToolbar(DispatchBaseClass):
+    'An AutoCAD toolbar'
     CLSID = IID('{6651A2C4-D16D-48E5-B39E-2B6FC1F49EB1}')
     coclass_clsid = IID('{21B92DEF-43CF-4549-A641-965FB620FFD2}')
 
     # Result is of type IAcadToolbarItem
     def AddSeparator(self, Index=defaultNamedNotOptArg):
+        'Adds a separator to an existing menu or toolbar'
         ret = self._oleobj_.InvokeTypes(1610743830, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -21573,6 +23825,7 @@ class IAcadToolbar(DispatchBaseClass):
     # Result is of type IAcadToolbarItem
     def AddToolbarButton(self, Index=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, HelpString=defaultNamedNotOptArg, Macro=defaultNamedNotOptArg
             , FlyoutButton=defaultNamedOptArg):
+        'Adds a toolbar item to a toolbar at a specified position'
         ret = self._oleobj_.InvokeTypes(1610743829, LCID, 1, (9, 0), ((12, 1), (8, 1), (8, 1), (8, 1), (12, 17)),Index
             , Name, HelpString, Macro, FlyoutButton)
         if ret is not None:
@@ -21580,18 +23833,22 @@ class IAcadToolbar(DispatchBaseClass):
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1610743833, LCID, 1, (24, 0), (),)
 
     def Dock(self, Side=defaultNamedNotOptArg):
+        'Docks the toolbar to the owning frame window'
         return self._oleobj_.InvokeTypes(1610743831, LCID, 1, (24, 0), ((3, 1),),Side
             )
 
     def Float(self, top=defaultNamedNotOptArg, left=defaultNamedNotOptArg, NumberFloatRows=defaultNamedNotOptArg):
+        'Floats the toolbar'
         return self._oleobj_.InvokeTypes(1610743832, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1)),top
             , left, NumberFloatRows)
 
     # Result is of type IAcadToolbarItem
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -21625,6 +23882,7 @@ class IAcadToolbar(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -21650,21 +23908,26 @@ class IAcadToolbar(DispatchBaseClass):
         return True
 
 class IAcadToolbarItem(DispatchBaseClass):
+    'A single button item on an AutoCAD toolbar'
     CLSID = IID('{CBED104B-D35B-4C65-B2A3-95E72B2F2E0F}')
     coclass_clsid = IID('{D04104B6-A160-418F-9783-B138C1FE7D2D}')
 
     def AttachToolbarToFlyout(self, MenuGroupName=defaultNamedNotOptArg, ToolbarName=defaultNamedNotOptArg):
+        'Attaches a toolbar to a toolbar button defined as a flyout'
         return self._oleobj_.InvokeTypes(1610743823, LCID, 1, (24, 0), ((8, 1), (8, 1)),MenuGroupName
             , ToolbarName)
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1610743824, LCID, 1, (24, 0), (),)
 
     def GetBitmaps(self, SmallIconName=pythoncom.Missing, LargeIconName=pythoncom.Missing):
+        'Gets the large and small bitmaps used as icons for the toolbar item'
         return self._ApplyTypes_(1610743821, 1, (24, 0), ((16392, 2), (16392, 2)), 'GetBitmaps', None,SmallIconName
             , LargeIconName)
 
     def SetBitmaps(self, SmallIconName=defaultNamedNotOptArg, LargeIconName=defaultNamedNotOptArg):
+        'Sets the large and small bitmaps used as icons for the toolbar item'
         return self._oleobj_.InvokeTypes(1610743822, LCID, 1, (24, 0), ((8, 1), (8, 1)),SmallIconName
             , LargeIconName)
 
@@ -21699,11 +23962,13 @@ class IAcadToolbarItem(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadToolbars(DispatchBaseClass):
+    'A collection of Toolbar objects representing all the toolbars loaded in the current AutoCAD session'
     CLSID = IID('{5F92E262-E8AC-459E-B000-423D27D6ABFD}')
     coclass_clsid = IID('{15FAC8B1-0A50-47DE-AB8E-532902B3CA00}')
 
     # Result is of type IAcadToolbar
     def Add(self, ToolbarName=defaultNamedNotOptArg):
+        'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(1610743815, LCID, 1, (9, 0), ((8, 1),),ToolbarName
             )
         if ret is not None:
@@ -21712,6 +23977,7 @@ class IAcadToolbars(DispatchBaseClass):
 
     # Result is of type IAcadToolbar
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -21731,6 +23997,7 @@ class IAcadToolbars(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -21756,60 +24023,75 @@ class IAcadToolbars(DispatchBaseClass):
         return True
 
 class IAcadTrace(DispatchBaseClass):
+    'AutoCAD Trace Interface'
     CLSID = IID('{6C872F03-21B7-43C4-B9A0-370A1ECF8682}')
     coclass_clsid = IID('{8B6A8714-3FDE-4237-A7F8-AA953105ADEB}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     # The method Coordinate is actually a property, but must be used as a method to correctly pass the arguments
     def Coordinate(self, Index=defaultNamedNotOptArg):
+        'Specifies the coordinate of a single vertex in the object'
         return self._ApplyTypes_(4, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        'Highlights the entity object.'
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -21817,6 +24099,10 @@ class IAcadTrace(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -21824,36 +24110,61 @@ class IAcadTrace(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
+        'Specifies the coordinate of a single vertex in the object'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(4, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -21908,32 +24219,51 @@ class IAcadTrace(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadUCS(DispatchBaseClass):
+    'A user-defined coordinate system that determines the orientation of the X, Y, and Z axes in 3D space'
     CLSID = IID('{28E02F28-2DA5-4266-A7DF-E3E601308108}')
     coclass_clsid = IID('{E4A27E8E-396D-4820-8350-ED4AD58FB2F0}')
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetUCSMatrix(self):
+        'Gets the transformation matrix consisting of UCS coordinate system data'
         return self._ApplyTypes_(5, 1, (12, 0), (), 'GetUCSMatrix', None,)
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
+        
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'XVector':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'YVector':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -21965,11 +24295,13 @@ class IAcadUCS(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadUCSs(DispatchBaseClass):
+    'The collection of all user coordinate systems (UCSs) in the drawing'
     CLSID = IID('{8435BF60-99BE-4A87-BE03-15EBA7388635}')
     coclass_clsid = IID('{3921DDB4-5D4B-448E-B5EE-C642725EFF41}')
 
     # Result is of type IAcadUCS
     def Add(self, Origin=defaultNamedNotOptArg, XAxisPoint=defaultNamedNotOptArg, YAxisPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg):
+        'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (8, 1)),Origin
             , XAxisPoint, YAxisPoint, Name)
         if ret is not None:
@@ -21977,24 +24309,29 @@ class IAcadUCSs(DispatchBaseClass):
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     # Result is of type IAcadUCS
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -22002,6 +24339,7 @@ class IAcadUCSs(DispatchBaseClass):
         return ret
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -22021,6 +24359,7 @@ class IAcadUCSs(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -22050,55 +24389,70 @@ class IAcadUnderlay(DispatchBaseClass):
     coclass_clsid = IID('{AB654B1E-E2AD-4F3C-AD12-B7DC215C7CCA}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def ClipBoundary(self, boundry=defaultNamedNotOptArg):
+        'Get/Set clipping boundary'
         return self._oleobj_.InvokeTypes(11, LCID, 1, (24, 0), ((12, 1),),boundry
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -22106,6 +24460,10 @@ class IAcadUnderlay(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -22113,31 +24471,52 @@ class IAcadUnderlay(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Position':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "AdjustForBackground": (15, 2, (11, 0), (), "AdjustForBackground", None),
@@ -22216,54 +24595,74 @@ class IAcadUnderlay(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadUtility(DispatchBaseClass):
+    'A series of methods provided for utility purposes'
     CLSID = IID('{5E7DEE74-BB82-4FB9-933A-4B73D122CF63}')
     coclass_clsid = IID('{DBC22E71-76E8-4383-BA8E-02D74DADCBE4}')
 
     def AngleFromXAxis(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
+        'Gets the angle of a line from the X axis'
+        StartPoint = VTR8ArrayOrVal(StartPoint)
+        EndPoint = VTR8ArrayOrVal(EndPoint)
         return self._oleobj_.InvokeTypes(1610743820, LCID, 1, (5, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
 
     def AngleToReal(self, Angle=defaultNamedNotOptArg, Unit=defaultNamedNotOptArg):
+        'Converts an angle as a string to a real (double) value'
         return self._oleobj_.InvokeTypes(1610743808, LCID, 1, (5, 0), ((8, 1), (3, 1)),Angle
             , Unit)
 
     def AngleToString(self, Angle=defaultNamedNotOptArg, Unit=defaultNamedNotOptArg, precision=defaultNamedNotOptArg):
+        'Converts an angle from a real (double) value to a string'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(1610743809, LCID, 1, (8, 0), ((5, 1), (3, 1), (3, 1)),Angle
             , Unit, precision)
 
     def CreateTypedArray(self, *args):
+        'Creates a variant that contains an array of typed arguments'
         return self._get_good_object_(self._oleobj_.Invoke(*((1610743826,0,1,1)+args)),'CreateTypedArray')
 
     def DistanceToReal(self, Distance=defaultNamedNotOptArg, Unit=defaultNamedNotOptArg):
+        'Converts a distance from a string to a real (double) value'
         return self._oleobj_.InvokeTypes(1610743810, LCID, 1, (5, 0), ((8, 1), (3, 1)),Distance
             , Unit)
 
     def GetAngle(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
+        'Gets the angle specified. Considers the setting of the ANGBASE system variable'
+        Point = VTR8ArrayOrVal(Point)
         return self._oleobj_.InvokeTypes(1610743819, LCID, 1, (5, 0), ((12, 17), (12, 17)),Point
             , Prompt)
 
     def GetCorner(self, Point=defaultNamedNotOptArg, Prompt=defaultNamedOptArg):
+        'Gets a corner of a rectangle'
+        Point = VTR8ArrayOrVal(Point)
         return self._ApplyTypes_(1610743821, 1, (12, 0), ((12, 1), (12, 17)), 'GetCorner', None,Point
             , Prompt)
 
     def GetDistance(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
+        'Gets the distance from the prompt line or a selected set of points on the screen'
+        Point = VTR8ArrayOrVal(Point)
         return self._oleobj_.InvokeTypes(1610743822, LCID, 1, (5, 0), ((12, 17), (12, 17)),Point
             , Prompt)
 
-    def GetEntity(self, Object=pythoncom.Missing, PickedPoint=pythoncom.Missing, Prompt=defaultNamedOptArg):
+    def GetEntity(self, Prompt=defaultNamedOptArg):
+        'Gets an object interactively'
+        Object=None
+        PickedPoint=None
         return self._ApplyTypes_(1610743827, 1, (24, 0), ((16393, 2), (16396, 2), (12, 17)), 'GetEntity', None,Object
             , PickedPoint, Prompt)
 
     def GetInput(self):
+        'Converts an input string from the user into a keyword index'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(1610743816, LCID, 1, (8, 0), (),)
 
     def GetInteger(self, Prompt=defaultNamedOptArg):
+        'Gets an integer value from the user'
         return self._oleobj_.InvokeTypes(1610743814, LCID, 1, (3, 0), ((12, 17),),Prompt
             )
 
     def GetKeyword(self, Prompt=defaultNamedOptArg):
+        'Gets a keyword string from the user'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(1610743817, LCID, 1, (8, 0), ((12, 17),),Prompt
             )
@@ -22274,76 +24673,103 @@ class IAcadUtility(DispatchBaseClass):
             , bHex)
 
     def GetOrientation(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
+        'Gets the angle specified. Ignores the setting of the ANGBASE system variable'
+        Point = VTR8ArrayOrVal(Point)
         return self._oleobj_.InvokeTypes(1610743823, LCID, 1, (5, 0), ((12, 17), (12, 17)),Point
             , Prompt)
+        
+    def GetPoint(self,Prompt=defaultNamedOptArg):
+        'Gets the point selected in AutoCAD'
+        Point = pythoncom.Empty
+        return self._ApplyTypes_(1610743824, 1, (12, 0), ((12, 17), (12, 17)), 
+                                'GetPoint', None, Point, Prompt)
 
-    def GetPoint(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
+    def GetPointWithBase(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
+        'Gets the point selected in AutoCAD'
+        Point = VTR8ArrayOrVal(Point)
         return self._ApplyTypes_(1610743824, 1, (12, 0), ((12, 17), (12, 17)), 'GetPoint', None,Point
             , Prompt)
 
     def GetReal(self, Prompt=defaultNamedOptArg):
-        return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (5, 0), ((12, 17),),Prompt
-            )
+        'Gets a real (double) value from the user'
+        return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (5, 0), ((12, 17),),Prompt)
 
     def GetRemoteFile(self, URL=defaultNamedNotOptArg, LocalFile=pythoncom.Missing, IgnoreCache=defaultNamedNotOptArg):
+        'Downloads the file specified by a URL'
         return self._ApplyTypes_(1610743831, 1, (24, 0), ((8, 1), (16392, 2), (11, 1)), 'GetRemoteFile', None,URL
             , LocalFile, IgnoreCache)
 
     def GetString(self, HasSpaces=defaultNamedNotOptArg, Prompt=defaultNamedOptArg):
+        'Gets a string from the user'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(1610743818, LCID, 1, (8, 0), ((3, 1), (12, 17)),HasSpaces
             , Prompt)
 
-    def GetSubEntity(self, Object=pythoncom.Missing, PickedPoint=pythoncom.Missing, transMatrix=pythoncom.Missing, ContextData=pythoncom.Missing
-            , Prompt=defaultNamedOptArg):
+    def GetSubEntity(self, Prompt=defaultNamedOptArg):
+        'Gets an object or subentity interactively'
+        Object=pythoncom.Missing
+        PickedPoint=pythoncom.Missing
+        transMatrix=pythoncom.Missing
+        ContextData=pythoncom.Missing
         return self._ApplyTypes_(1610743829, 1, (24, 0), ((16393, 2), (16396, 2), (16396, 2), (16396, 2), (12, 17)), 'GetSubEntity', None,Object
             , PickedPoint, transMatrix, ContextData, Prompt)
 
     def InitializeUserInput(self, Bits=defaultNamedNotOptArg, KeyWordList=defaultNamedOptArg):
+        'Initializes the GetKeyword method'
         return self._oleobj_.InvokeTypes(1610743813, LCID, 1, (24, 0), ((3, 1), (12, 17)),Bits
             , KeyWordList)
 
     def IsRemoteFile(self, LocalFile=defaultNamedNotOptArg, URL=pythoncom.Missing):
+        'Returns the URL that a remote file was downloaded from'
         return self._ApplyTypes_(1610743833, 1, (11, 0), ((8, 1), (16392, 2)), 'IsRemoteFile', None,LocalFile
             , URL)
 
     def IsURL(self, URL=defaultNamedNotOptArg):
+        'Validates a given URL'
         return self._oleobj_.InvokeTypes(1610743830, LCID, 1, (11, 0), ((8, 1),),URL
             )
 
     def LaunchBrowserDialog(self, SelectedURL=pythoncom.Missing, DialogTitle=defaultNamedNotOptArg, OpenButtonCaption=defaultNamedNotOptArg, StartPageURL=defaultNamedNotOptArg
             , RegistryRootKey=defaultNamedNotOptArg, OpenButtonAlwaysEnabled=defaultNamedNotOptArg):
+        'Launches the Web Browser dialog that allows the user to navigate to any URL and select a URL'
         return self._ApplyTypes_(1610743834, 1, (11, 0), ((16392, 2), (8, 1), (8, 1), (8, 1), (8, 1), (11, 1)), 'LaunchBrowserDialog', None,SelectedURL
             , DialogTitle, OpenButtonCaption, StartPageURL, RegistryRootKey, OpenButtonAlwaysEnabled
             )
 
     def PolarPoint(self, Point=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg, Distance=defaultNamedNotOptArg):
+        'Gets the point at a specified angle and distance from a given point'
+        Point = VTR8ArrayOrVal(Point)
         return self._ApplyTypes_(1610743825, 1, (12, 0), ((12, 1), (5, 1), (5, 1)), 'PolarPoint', None,Point
             , Angle, Distance)
 
     def Prompt(self, Message=defaultNamedNotOptArg):
+        'Posts a prompt to the command line'
         return self._oleobj_.InvokeTypes(1610743828, LCID, 1, (24, 0), ((8, 1),),Message
             )
 
     def PutRemoteFile(self, URL=defaultNamedNotOptArg, LocalFile=defaultNamedNotOptArg):
+        'Uploads a file to a remote location specified by a URL'
         return self._oleobj_.InvokeTypes(1610743832, LCID, 1, (24, 0), ((8, 1), (8, 1)),URL
             , LocalFile)
 
     def RealToString(self, Value=defaultNamedNotOptArg, Unit=defaultNamedNotOptArg, precision=defaultNamedNotOptArg):
+        'Converts a real (double) value to a string'
         # Result is a Unicode object
         return self._oleobj_.InvokeTypes(1610743811, LCID, 1, (8, 0), ((5, 1), (3, 1), (3, 1)),Value
             , Unit, precision)
 
     def SendModelessOperationEnded(self, Context=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1610743836, LCID, 1, (24, 0), ((8, 0),),Context
-            )
+        'Indicates a modeless operation has ended.'
+        return self._oleobj_.InvokeTypes(1610743836, LCID, 1, (24, 0), ((8, 0),),Context)
 
     def SendModelessOperationStart(self, Context=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1610743835, LCID, 1, (24, 0), ((8, 0),),Context
-            )
+        'Indicates a modeless operation will start.'
+        return self._oleobj_.InvokeTypes(1610743835, LCID, 1, (24, 0), ((8, 0),),Context)
 
     def TranslateCoordinates(self, Point=defaultNamedNotOptArg, FromCoordSystem=defaultNamedNotOptArg, ToCoordSystem=defaultNamedNotOptArg, Displacement=defaultNamedNotOptArg
             , OCSNormal=defaultNamedOptArg):
+        'Translates a point from one coordinate system to another coordinate system'
+        Point = VTI2ArrayOrVal(Point)
         return self._ApplyTypes_(1610743812, 1, (12, 0), ((12, 1), (3, 1), (3, 1), (3, 1), (12, 17)), 'TranslateCoordinates', None,Point
             , FromCoordSystem, ToCoordSystem, Displacement, OCSNormal)
 
@@ -22360,30 +24786,48 @@ class IAcadUtility(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadView(DispatchBaseClass):
+    'A graphical representation of a 2D drawing or 3D model from a specific location (viewpoint) in space'
     CLSID = IID('{EACCD7BE-5CE7-42C0-BAF6-8BCEF8EE75B5}')
     coclass_clsid = IID('{C365A0E4-457A-4D87-AE84-6F5EBA15A86A}')
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
-
+        
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Center':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Target':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Direction':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "CategoryName": (7, 2, (8, 0), (), "CategoryName", None),
@@ -22426,53 +24870,79 @@ class IAcadView(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadViewport(DispatchBaseClass):
+    "A bounded area that displays some portion of a drawing's model space"
     CLSID = IID('{B7863A95-DBBD-45A5-9F7B-D0C31A52A99B}')
     coclass_clsid = IID('{0AB0473A-F643-4403-96F5-837BA8F4BC89}')
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetGridSpacing(self, XSpacing=pythoncom.Missing, YSpacing=pythoncom.Missing):
+        'Gets the grid spacing for the viewport'
         return self._ApplyTypes_(18, 1, (24, 0), ((16389, 2), (16389, 2)), 'GetGridSpacing', None,XSpacing
             , YSpacing)
 
     def GetSnapSpacing(self, XSpacing=pythoncom.Missing, YSpacing=pythoncom.Missing):
+        'Gets the snap spacing for the viewport'
         return self._ApplyTypes_(20, 1, (24, 0), ((16389, 2), (16389, 2)), 'GetSnapSpacing', None,XSpacing
             , YSpacing)
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def SetGridSpacing(self, XSpacing=defaultNamedNotOptArg, YSpacing=defaultNamedNotOptArg):
+        'Sets the grid spacing for the viewport'
         return self._oleobj_.InvokeTypes(19, LCID, 1, (24, 0), ((5, 1), (5, 1)),XSpacing
             , YSpacing)
 
     def SetSnapSpacing(self, XSpacing=defaultNamedNotOptArg, YSpacing=defaultNamedNotOptArg):
+        'Sets the snap spacing for the viewport'
         return self._oleobj_.InvokeTypes(21, LCID, 1, (24, 0), ((5, 1), (5, 1)),XSpacing
             , YSpacing)
 
     def SetView(self, View=defaultNamedNotOptArg):
+        'Sets the view in a viewport to a saved view in the Views Collection object'
         return self._oleobj_.InvokeTypes(22, LCID, 1, (24, 0), ((9, 1),),View
             )
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def Split(self, NumWins=defaultNamedNotOptArg):
+        'Splits a viewport into the given number of views'
         return self._oleobj_.InvokeTypes(17, LCID, 1, (24, 0), ((3, 1),),NumWins
             )
+        
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Center':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Direction':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Target':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'SnapBasePoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -22526,11 +24996,13 @@ class IAcadViewport(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadViewports(DispatchBaseClass):
+    'The collection of all viewports in the drawing'
     CLSID = IID('{27305D3B-EF3A-470F-B920-806198B54E1C}')
     coclass_clsid = IID('{430D1544-F5DD-47A3-A660-B53E04DF781C}')
 
     # Result is of type IAcadViewport
     def Add(self, Name=defaultNamedNotOptArg):
+        'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
             )
         if ret is not None:
@@ -22538,28 +25010,34 @@ class IAcadViewports(DispatchBaseClass):
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def DeleteConfiguration(self, Name=defaultNamedNotOptArg):
+        'Deletes a viewport configuration'
         return self._oleobj_.InvokeTypes(3, LCID, 1, (24, 0), ((8, 1),),Name
             )
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     # Result is of type IAcadViewport
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -22567,6 +25045,7 @@ class IAcadViewports(DispatchBaseClass):
         return ret
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -22586,6 +25065,7 @@ class IAcadViewports(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -22611,11 +25091,13 @@ class IAcadViewports(DispatchBaseClass):
         return True
 
 class IAcadViews(DispatchBaseClass):
+    'The collection of all views in the drawing'
     CLSID = IID('{7D3D3E3B-5C66-4FBB-A571-6FBE2E29B352}')
     coclass_clsid = IID('{8056580C-1145-4FB6-9F77-4E4BFDA4EFD7}')
 
     # Result is of type IAcadView
     def Add(self, Name=defaultNamedNotOptArg):
+        'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
             )
         if ret is not None:
@@ -22623,24 +25105,29 @@ class IAcadViews(DispatchBaseClass):
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     # Result is of type IAcadView
     def Item(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -22648,6 +25135,7 @@ class IAcadViews(DispatchBaseClass):
         return ret
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
@@ -22667,6 +25155,7 @@ class IAcadViews(DispatchBaseClass):
     }
     # Default method for this class is 'Item'
     def __call__(self, Index=defaultNamedNotOptArg):
+        'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
         if ret is not None:
@@ -22692,59 +25181,75 @@ class IAcadViews(DispatchBaseClass):
         return True
 
 class IAcadWipeout(DispatchBaseClass):
+    'AutoCAD Interface for an Wipeout Raster Image'
     CLSID = IID('{B8A5C16D-015F-48E8-A20D-5CAA572827B0}')
     coclass_clsid = IID('{7B04A8D0-8043-4675-AF42-B6ADC28D847F}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def ClipBoundary(self, boundry=defaultNamedNotOptArg):
+        'Set clipping boundary'
         return self._oleobj_.InvokeTypes(13, LCID, 1, (24, 0), ((12, 1),),boundry
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -22752,6 +25257,10 @@ class IAcadWipeout(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -22759,31 +25268,52 @@ class IAcadWipeout(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -22862,35 +25392,43 @@ class IAcadWipeout(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadXRecord(DispatchBaseClass):
+    'XRecord objects are used to store and manage arbitrary data'
     CLSID = IID('{7E161A14-71DA-420B-8C74-1785EB29EA84}')
     coclass_clsid = IID('{C7306010-A8DC-45C2-9A72-5780B5A071B2}')
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def GetXRecordData(self, XRecordDataType=pythoncom.Missing, XRecordDataValue=pythoncom.Missing):
+        'Gets the extended record data (XRecordData) associated with a dictionary'
         return self._ApplyTypes_(2, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetXRecordData', None,XRecordDataType
             , XRecordDataValue)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def SetXRecordData(self, XRecordDataType=defaultNamedNotOptArg, XRecordDataValue=defaultNamedNotOptArg):
+        'Sets the extended record data (XRecordData) associated with a dictionary'
         return self._oleobj_.InvokeTypes(3, LCID, 1, (24, 0), ((12, 1), (12, 1)),XRecordDataType
             , XRecordDataValue)
 
@@ -22920,55 +25458,70 @@ class IAcadXRecord(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadXline(DispatchBaseClass):
+    'AutoCAD Xline Interface'
     CLSID = IID('{E0D2B3ED-6F94-47FD-9526-598B3C82B13E}')
     coclass_clsid = IID('{2813BF45-AA44-4F79-8CFC-490B2DD876B4}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
     def ArrayRectangular(self, NumberOfRows=defaultNamedNotOptArg, NumberOfColumns=defaultNamedNotOptArg, NumberOfLevels=defaultNamedNotOptArg, DistBetweenRows=defaultNamedNotOptArg
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
+        'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
             , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
             )
 
     def Copy(self):
+        'Copies the entity object.'
         ret = self._oleobj_.InvokeTypes(1288, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'Copy', None)
         return ret
 
     def Delete(self):
+        'Deletes a specified object'
         return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
     def Erase(self):
+        'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
     def GetBoundingBox(self, MinPoint=pythoncom.Missing, MaxPoint=pythoncom.Missing):
+        'Returns the min and max point of the bounding box of the entity object.'
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
     # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
+        'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetExtensionDictionary', '{02F41C12-203E-43A0-9D81-25EB2DD196AF}')
         return ret
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
+        'Gets the extended data (XData) associated with an object'
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
+        'Highlights the entity object.'
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
+        'Intersects with the input entity object.'
         return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -22976,6 +25529,10 @@ class IAcadXline(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -22983,35 +25540,59 @@ class IAcadXline(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Offset(self, Distance=defaultNamedNotOptArg):
+        'Creates a new entity object by offsetting the Xline by a specified distance'
         return self._ApplyTypes_(4, 1, (12, 0), ((5, 1),), 'Offset', None,Distance
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     def SetXData(self, XDataType=defaultNamedNotOptArg, XDataValue=defaultNamedNotOptArg):
+        'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
+        'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'BasePoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'SecondPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -23066,6 +25647,7 @@ class IAcadXline(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class _DAcadApplicationEvents:
+    'Event interface for AcadApplication'
     CLSID = CLSID_Sink = IID('{D5AE6E12-0DB9-4CA0-87FF-4BC95117FDB2}')
     coclass_clsid = IID('{363E5B47-885D-44C3-89EB-A2AB2129B57E}')
     _public_methods_ = [] # For COM Server support
@@ -23121,31 +25703,55 @@ class _DAcadApplicationEvents:
     # Event Handlers
     # If you create handlers, they should have the following prototypes:
 #	def OnSysVarChanged(self, SysvarName=defaultNamedNotOptArg, newVal=defaultNamedNotOptArg):
+#		'Triggered when the value of a system variable is changed'
 #	def OnNewDrawing(self):
+#		'Triggered just before a new drawing is created'
 #	def OnAppActivate(self):
+#		'Triggered just before the main application window is activated'
 #	def OnAppDeactivate(self):
+#		'Triggered just before the main application window is deactivated'
 #	def OnWindowMovedOrResized(self, HWNDFrame=defaultNamedNotOptArg, bMoved=defaultNamedNotOptArg):
+#		'Happens when the main frame window is moved or resized'
 #	def OnBeginModal(self):
+#		'Triggered just before a modal dialog is displayed'
 #	def OnEndModal(self):
+#		'Triggered just after a modal dialog is dismissed'
 #	def OnBeginQuit(self, Cancel=defaultNamedNotOptArg):
+#		'Triggered just before an AutoCAD session ends or a document closes'
 #	def OnBeginFileDrop(self, FileName=defaultNamedNotOptArg, Cancel=defaultNamedNotOptArg):
+#		'Triggered when a file is dropped on the main application window'
 #	def OnARXLoaded(self, AppName=defaultNamedNotOptArg):
+#		'Triggered when an ObjectARX application has been loaded'
 #	def OnARXUnloaded(self, AppName=defaultNamedNotOptArg):
+#		'Triggered when an ObjectARX application has been unloaded'
 #	def OnBeginPlot(self, DrawingName=defaultNamedNotOptArg):
+#		'Triggered immediately after AutoCAD receives a request to print a drawing'
 #	def OnEndPlot(self, DrawingName=defaultNamedNotOptArg):
+#		'Triggered after a document has been sent to the printer'
 #	def OnBeginSave(self, FileName=defaultNamedNotOptArg):
+#		'Triggered immediately after AutoCAD receives a request to save the drawing'
 #	def OnEndSave(self, FileName=defaultNamedNotOptArg):
+#		'Triggered when AutoCAD has finished saving the drawing'
 #	def OnBeginOpen(self, FileName=defaultNamedNotOptArg):
+#		'Triggered immediately after AutoCAD receives a request to open an existing drawing'
 #	def OnEndOpen(self, FileName=defaultNamedNotOptArg):
+#		'Triggered immediately after AutoCAD finishes opening an existing drawing'
 #	def OnBeginCommand(self, CommandName=defaultNamedNotOptArg):
+#		'Triggered immediately after a command is issued, but before it completes'
 #	def OnEndCommand(self, CommandName=defaultNamedNotOptArg):
+#		'Triggered immediately after a command completes'
 #	def OnBeginLisp(self, FirstLine=defaultNamedNotOptArg):
+#		'Triggered immediately after AutoCAD receives a request to evaluate a LISP expression'
 #	def OnEndLisp(self):
+#		'Triggered upon completion of evaluating a LISP expression'
 #	def OnLispCancelled(self):
+#		'Triggered when the evaluation of a LISP expression is cancelled'
 #	def OnWindowChanged(self, WindowState=defaultNamedNotOptArg):
+#		'Triggered when there is a change to the application or document windows'
 
 
 class _DAcadDocumentEvents:
+    'Event interface for ThisDrawing'
     CLSID = CLSID_Sink = IID('{4116B1E0-E449-46B9-A903-E2A4B85B02F3}')
     coclass_clsid = IID('{0063BC47-A0C5-44BC-ACC3-50962CA5E9C2}')
     _public_methods_ = [] # For COM Server support
@@ -23206,37 +25812,66 @@ class _DAcadDocumentEvents:
     # Event Handlers
     # If you create handlers, they should have the following prototypes:
 #	def OnBeginSave(self, FileName=defaultNamedNotOptArg):
+#		'Triggered immediately after AutoCAD receives a request to save the drawing'
 #	def OnEndSave(self, FileName=defaultNamedNotOptArg):
+#		'Triggered when AutoCAD has finished saving the drawing'
 #	def OnBeginCommand(self, CommandName=defaultNamedNotOptArg):
+#		'Triggered immediately after a command is issued, but before it completes'
 #	def OnEndCommand(self, CommandName=defaultNamedNotOptArg):
+#		'Triggered immediately after a command completes'
 #	def OnBeginLisp(self, FirstLine=defaultNamedNotOptArg):
+#		'Triggered immediately after AutoCAD receives a request to evaluate a LISP expression'
 #	def OnEndLisp(self):
+#		'Triggered upon completion of evaluating a LISP expression'
 #	def OnLispCancelled(self):
+#		'Triggered when the evaluation of a LISP expression is cancelled'
 #	def OnSelectionChanged(self):
+#		'Triggered when the current pickfirst selection set changes'
 #	def OnActivate(self):
+#		'Triggered when a document window is activated'
 #	def OnDeactivate(self):
+#		'Triggered when the drawing window is deactivated'
 #	def OnBeginRightClick(self, PickPoint=defaultNamedNotOptArg):
+#		'Triggered after the user right-clicks on the drawing window'
 #	def OnBeginShortcutMenuDefault(self, ShortcutMenu=pythoncom.Missing):
+#		'Triggered after the user right-clicks on the drawing window, and before the shortcut menu appears in default mode'
 #	def OnBeginShortcutMenuEdit(self, ShortcutMenu=pythoncom.Missing, SelectionSet=pythoncom.Missing):
+#		'Triggered after the user right-clicks on the drawing window, and before the shortcut menu appears in edit mode'
 #	def OnBeginShortcutMenuCommand(self, ShortcutMenu=pythoncom.Missing, Command=defaultNamedNotOptArg):
+#		'Triggered after the user right-clicks on the drawing window, and before the shortcut menu appears in command mode'
 #	def OnBeginShortcutMenuGrip(self, ShortcutMenu=pythoncom.Missing):
+#		'Triggered after the user right-clicks on the drawing window, and before the shortcut menu appears in grip mode'
 #	def OnBeginShortcutMenuOsnap(self, ShortcutMenu=pythoncom.Missing):
+#		'Triggered after the user right-clicks on the drawing window, and before the shortcut menu appears in osnap mode'
 #	def OnEndShortcutMenu(self, ShortcutMenu=pythoncom.Missing):
+#		'Triggered after the shortcut menu appears'
 #	def OnBeginDoubleClick(self, PickPoint=defaultNamedNotOptArg):
+#		'Triggered after the user double-clicks on an object in the drawing'
 #	def OnObjectAdded(self, Object=defaultNamedNotOptArg):
+#		'Triggered when an object has been added to the drawing'
 #	def OnObjectErased(self, ObjectID=defaultNamedNotOptArg):
+#		'Triggered when an object has been erased from the drawing'
 #	def OnObjectModified(self, Object=defaultNamedNotOptArg):
+#		'Triggered when an object in the drawing has been modified'
 #	def OnBeginPlot(self, DrawingName=defaultNamedNotOptArg):
+#		'Triggered immediately after AutoCAD receives a request to print a drawing'
 #	def OnEndPlot(self, DrawingName=defaultNamedNotOptArg):
+#		'Triggered after a document has been sent to the printer'
 #	def OnWindowMovedOrResized(self, HWNDFrame=defaultNamedNotOptArg, bMoved=defaultNamedNotOptArg):
+#		'Happens when the drawing window is moved or resized.'
 #	def OnLayoutSwitched(self, LayoutName=defaultNamedNotOptArg):
+#		'Triggered after the user switches to a different layout'
 #	def OnWindowChanged(self, WindowState=defaultNamedNotOptArg):
+#		'Triggered when there is a change to the application or document windows'
 #	def OnBeginClose(self):
+#		'Triggered immediately after AutoCAD receives a request to close a drawing'
 #	def OnBeginDocClose(self, Cancel=defaultNamedNotOptArg):
+#		'Triggered before the BeginClose event. This is an opportunity to cancel the closing process'
 
 
 from win32com.client import CoClassBaseClass
 class Acad3DFace(CoClassBaseClass): # A CoClass
+    # AutoCAD 3dFace Object
     CLSID = IID('{CB4650B7-6967-408A-B46C-A6FA6692CD8C}')
     coclass_sources = [
     ]
@@ -23246,6 +25881,7 @@ class Acad3DFace(CoClassBaseClass): # A CoClass
     default_interface = IAcad3DFace
 
 class Acad3DPolyline(CoClassBaseClass): # A CoClass
+    # AutoCAD 3dPolyline Object
     CLSID = IID('{659D254C-BF3D-4244-BF87-E710C16C8722}')
     coclass_sources = [
     ]
@@ -23255,7 +25891,8 @@ class Acad3DPolyline(CoClassBaseClass): # A CoClass
     default_interface = IAcad3DPolyline
 
 class Acad3DSolid(CoClassBaseClass): # A CoClass
-    CLSID = IID('{4CA6AA08-5011-4525-8C44-7FB7C2190CB8}')
+    # AutoCAD 3dSolid Object
+    CLSID = IID('{1DC8FD76-8ECA-4F4C-B7D5-C66F43A68E17}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -23265,6 +25902,7 @@ class Acad3DSolid(CoClassBaseClass): # A CoClass
 
 # This CoClass is known by the name 'AutoCAD.AcCmColor.25'
 class AcadAcCmColor(CoClassBaseClass): # A CoClass
+    # AutoCAD True Color Object
     CLSID = IID('{04E0AA2D-D454-45D9-9C22-274416745885}')
     coclass_sources = [
     ]
@@ -23275,6 +25913,7 @@ class AcadAcCmColor(CoClassBaseClass): # A CoClass
 
 # This CoClass is known by the name 'AutoCAD.Application.25'
 class AcadApplication(CoClassBaseClass): # A CoClass
+    # An instance of the AutoCAD application
     CLSID = IID('{363E5B47-885D-44C3-89EB-A2AB2129B57E}')
     coclass_sources = [
         _DAcadApplicationEvents,
@@ -23286,6 +25925,7 @@ class AcadApplication(CoClassBaseClass): # A CoClass
     default_interface = IAcadApplication
 
 class AcadArc(CoClassBaseClass): # A CoClass
+    # AutoCAD Arc Object
     CLSID = IID('{AE332C3B-CB38-4587-A2F2-303736253182}')
     coclass_sources = [
     ]
@@ -23305,6 +25945,7 @@ class AcadAttribute(CoClassBaseClass): # A CoClass
     default_interface = IAcadAttribute
 
 class AcadAttributeReference(CoClassBaseClass): # A CoClass
+    # AutoCAD Attribute Reference Object
     CLSID = IID('{B66B883C-D2FC-4B03-9675-F7C517741630}')
     coclass_sources = [
     ]
@@ -23314,6 +25955,7 @@ class AcadAttributeReference(CoClassBaseClass): # A CoClass
     default_interface = IAcadAttributeReference
 
 class AcadBlock(CoClassBaseClass): # A CoClass
+    # A block definition containing a name and a set of objects
     CLSID = IID('{950BE053-4BB9-48B1-AFAD-F0C0E2B4545B}')
     coclass_sources = [
     ]
@@ -23323,6 +25965,7 @@ class AcadBlock(CoClassBaseClass): # A CoClass
     default_interface = IAcadBlock
 
 class AcadBlockReference(CoClassBaseClass): # A CoClass
+    # AutoCAD Block Reference Object
     CLSID = IID('{A06DD599-DBB9-4F47-97FA-DE3799CE06AD}')
     coclass_sources = [
     ]
@@ -23332,6 +25975,7 @@ class AcadBlockReference(CoClassBaseClass): # A CoClass
     default_interface = IAcadBlockReference
 
 class AcadBlocks(CoClassBaseClass): # A CoClass
+    # The collection of all blocks in the drawing
     CLSID = IID('{0144DAAD-3628-448E-AF89-82BCC7B8DCD8}')
     coclass_sources = [
     ]
@@ -23341,6 +25985,7 @@ class AcadBlocks(CoClassBaseClass): # A CoClass
     default_interface = IAcadBlocks
 
 class AcadCircle(CoClassBaseClass): # A CoClass
+    # AutoCAD Circle Object
     CLSID = IID('{C10E0337-8AAD-4715-AFEF-1EB65D622062}')
     coclass_sources = [
     ]
@@ -23350,6 +25995,7 @@ class AcadCircle(CoClassBaseClass): # A CoClass
     default_interface = IAcadCircle
 
 class AcadComparedReference(CoClassBaseClass): # A CoClass
+    # AutoCAD External Reference Object
     CLSID = IID('{0CA5C41D-F279-4BCB-A53C-5E2F32A11671}')
     coclass_sources = [
     ]
@@ -23359,6 +26005,7 @@ class AcadComparedReference(CoClassBaseClass): # A CoClass
     default_interface = IAcadComparedReference
 
 class AcadDatabase(CoClassBaseClass): # A CoClass
+    # The contents of an XRef block
     CLSID = IID('{17D9C339-F66F-41F8-B2AA-12ECC480CD65}')
     coclass_sources = [
     ]
@@ -23368,6 +26015,7 @@ class AcadDatabase(CoClassBaseClass): # A CoClass
     default_interface = IAcadDatabase
 
 class AcadDatabasePreferences(CoClassBaseClass): # A CoClass
+    # This object specifies the current AutoCAD drawing specific settings
     CLSID = IID('{D1CCAA24-C403-4479-AACF-4265D276E7E9}')
     coclass_sources = [
     ]
