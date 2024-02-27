@@ -15,7 +15,7 @@ void makePyDbObjectIdWrapper()
         .def("isResident", &PyDbObjectId::isResident, DS.ARGS())
         .def("isValid", &PyDbObjectId::isValid, DS.ARGS())
         .def("isWellBehaved", &PyDbObjectId::isWellBehaved, DS.ARGS())
-        .def("setFromOldId", &PyDbObjectId::setFromOldId, DS.ARGS({ "val : int" }))
+        .def("setFromOldId", &PyDbObjectId::setFromOldId, DS.ARGS({ "oldid : int" }))
         .def("database", &PyDbObjectId::database, DS.ARGS())
         .def("originalDatabase", &PyDbObjectId::originalDatabase, DS.ARGS())
         .def("convertToRedirectedId", &PyDbObjectId::convertToRedirectedId, DS.ARGS())
@@ -26,6 +26,7 @@ void makePyDbObjectIdWrapper()
         .def("nonForwardedHandle", &PyDbObjectId::nonForwardedHandle, DS.ARGS())
         .def("objectClass", &PyDbObjectId::objectClass, DS.ARGS())
         .def("isDerivedFrom", &PyDbObjectId::isDerivedFrom, DS.ARGS({ "desc : PyRx.RxClass" }))
+        .def("fromOldId", &PyDbObjectId::fromOldId, DS.ARGS({ "oldid : int" })).staticmethod("fromOldId")
         .def("__str__", &PyDbObjectId::str)
         .def("__repr__", &PyDbObjectId::repr)
         .def("__hash__", &PyDbObjectId::hash)
@@ -171,6 +172,13 @@ bool PyDbObjectId::isDerivedFrom(const PyRxClass& other) const
 std::size_t PyDbObjectId::hash()
 {
     return (std::size_t)(AcDbStub*)m_id;
+}
+
+PyDbObjectId PyDbObjectId::fromOldId(INT_PTR oldId)
+{
+    PyDbObjectId id;
+    id.setFromOldId(oldId);
+    return id;
 }
 
 //---------------------------------------------------------------------------------
