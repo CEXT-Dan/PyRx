@@ -9,7 +9,9 @@ from pyrx_impx import Gs
 from pyrx_impx import Ax
 import traceback
 
-def PyRxCmd_docast():
+print("added command = docast")
+
+def PyRxCmd_docast() -> None:
     try:
         acad = Ax.getApp()
         for layout in acad.ActiveDocument.Layouts:

@@ -12,6 +12,8 @@ import traceback
 axApp = Ax.getApp()
 axDoc = axApp.ActiveDocument
 
+print("added command = axevents")
+
 # create doc event class
 class DocumentEvents():
     def OnLayoutSwitched(self, LayoutName):
@@ -48,7 +50,7 @@ class ApplicationEvents:
 eventApp = Ax.createEventObject(axApp, ApplicationEvents)
 
 
-def PyRxCmd_doit():
+def PyRxCmd_axevents() -> None:
     try:
         print("hi")
     except Exception as err:
