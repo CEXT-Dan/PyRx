@@ -35,7 +35,6 @@ const char* PyDocString::ARGS(std::initializer_list<std::string> pyargs, const s
     outstr += comment;
     outstr += m_commenEnd;
     return outstr.c_str();
-
 }
 
 const char* PyDocString::SARGS()
