@@ -1,24 +1,14 @@
 # import
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
+from pyrx_impx import Rx
+from pyrx_impx import Ge
+from pyrx_impx import Gi
+from pyrx_impx import Db
+from pyrx_impx import Ap
+from pyrx_impx import Ed
+from pyrx_impx import Gs
+from pyrx_impx import Ax
 
-# these are in the stub file
 # requires win32com
-
-host = Ap.Application.hostAPI()
-if host == 'BRX':  
-    import BxApp24 as Ax
-elif host == 'GRX': 
-    import GxApp24 as Ax
-elif host == 'ZRX': 
-    import ZxApp24 as Ax
-else:
-    import AxApp24 as Ax
 
 import traceback
 from timeit import default_timer as timer

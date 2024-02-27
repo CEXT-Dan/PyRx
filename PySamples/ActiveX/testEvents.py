@@ -1,14 +1,13 @@
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
+# import
+from pyrx_impx import Rx
+from pyrx_impx import Ge
+from pyrx_impx import Gi
+from pyrx_impx import Db
+from pyrx_impx import Ap
+from pyrx_impx import Ed
+from pyrx_impx import Gs
+from pyrx_impx import Ax
 import traceback
-
-import AxApp24 as Ax
-import AxAppUtils24 as AxUt
 
 axApp = Ax.getApp()
 axDoc = axApp.ActiveDocument
