@@ -10,7 +10,7 @@ from pyrx_imp import Ax
 
 import math
 
-def almostEq(L , R)->bool:
+def almostEq(L , R) -> bool:
     for l,r in zip(L,R):
         if not math.isclose(l, r, rel_tol=1e-2):
             return False
@@ -18,6 +18,7 @@ def almostEq(L , R)->bool:
 
 host = Ap.Application.hostAPI()
     
+print("hostname = {}".format(host))
 print("testname = pyactivex")
 
 class TestActiveX(unittest.TestCase):
@@ -33,7 +34,7 @@ class TestActiveX(unittest.TestCase):
         else:
             self.assertTrue("AutoCAD" in name)
 
-    def test_get_dbx(self):
+    def test_get_dbx(self) -> None:
         if not "ARX" in host:
             return
         dbx = Ax.getDbx()
@@ -65,7 +66,7 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(attr.TextString, "Value2")
         attr.Delete()
 
-    def test_add_point(self):
+    def test_add_point(self) -> None:
         app = Ax.getApp()
         point = app.ActiveDocument.ModelSpace.AddPoint((100, 200, 300))
         self.assertEqual(point.Coordinates, (100, 200, 300))
@@ -73,7 +74,7 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(point.Coordinates, (1, 2, 3))
         point.Delete()
 
-    def test_add_line(self):
+    def test_add_line(self) -> None:
         app = Ax.getApp()
         line = app.ActiveDocument.ModelSpace.AddLine((100, 200, 300), (400, 500, 600))
         self.assertEqual(line.StartPoint, (100, 200, 300))
@@ -84,7 +85,7 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(line.EndPoint, (4, 5, 6))
         line.Delete()
     
-    def test_add_circle(self):
+    def test_add_circle(self) -> None:
         app = Ax.getApp()
         circle = app.ActiveDocument.ModelSpace.AddCircle((100,200,300),50)
         self.assertEqual(circle.Radius,50)
@@ -95,7 +96,7 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(circle.Center,(400,500,600))
         circle.Delete()
 
-    def test_add_ellipse(self):
+    def test_add_ellipse(self) -> None:
         app = Ax.getApp()
         ellipse = app.ActiveDocument.ModelSpace.AddEllipse((100,200,0),(200,300,0),0.5)
         self.assertTrue(almostEq(ellipse.Center,(100,200,0)))
@@ -108,7 +109,7 @@ class TestActiveX(unittest.TestCase):
         ellipse.Delete()
 
     # Todo: run test on AutoCAD with Position
-    def test_add_box(self):
+    def test_add_box(self) -> None:
         app = Ax.getApp()
         box = app.ActiveDocument.ModelSpace.AddBox((0, 0, 0), 10, 20, 30)
         self.assertEqual(box.Layer, "0")
@@ -117,7 +118,7 @@ class TestActiveX(unittest.TestCase):
         # self.assertEqual(box.Position, (1, 2, 3))
         box.Delete()
 
-    def test_add_cylinder(self):
+    def test_add_cylinder(self) -> None:
         app = Ax.getApp()
         cylinder = app.ActiveDocument.ModelSpace.AddCylinder((0, 0, 0), 10, 50)
         # self.assertEqual(cylinder.Position, (0, 0, 0))
@@ -125,16 +126,16 @@ class TestActiveX(unittest.TestCase):
         # find solid properties to test
         # assertequal one property
 
-    def test_add_cone(self):
+    def test_add_cone(self) -> None:
         pass
 
-    def test_add_elliptical_cylinder(self):
+    def test_add_elliptical_cylinder(self) -> None:
         pass
 
-    def test_add_elliptical_cone(self):
+    def test_add_elliptical_cone(self) -> None:
         pass
 
-    def test_add_polyline(self):
+    def test_add_polyline(self) -> None:
         app = Ax.getApp()
         line = app.ActiveDocument.ModelSpace.AddLightWeightPolyline(
             [0, 0, 10, 10, 20, 10]
@@ -145,7 +146,7 @@ class TestActiveX(unittest.TestCase):
         line.Delete()
 
     #TODO: GRX is wonkey 
-    def test_add_table(self):
+    def test_add_table(self) -> None:
         app = Ax.getApp()
         table = app.ActiveDocument.ModelSpace.AddTable((0, 0, 0), 4, 5, 10, 30)
         self.assertEqual(table.InsertionPoint, (0, 0, 0))
@@ -155,12 +156,12 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(table.GetColumnWidth(2), 30)
         table.InsertionPoint = (1, 2, 3)
         self.assertEqual(table.InsertionPoint, (1, 2, 3))
-        if host != "GRX":
+        if not "GRX" in host:
             table.SetTextString(0, 0, 0, "MyDadIsDisappointedThatIPutHi")
             self.assertEqual(table.GetTextString(0, 0, 0), "MyDadIsDisappointedThatIPutHi")
         table.Delete()
 
-    def test_add_mline(self):
+    def test_add_mline(self) -> None:
         app = Ax.getApp()
         mline = app.ActiveDocument.ModelSpace.AddMLine([0, 0, 0, 10, 20, 0])
         self.assertEqual(mline.Coordinates, (0, 0, 0, 10, 20, 0))
@@ -168,7 +169,7 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(mline.Coordinates, (10, 10, 0, 20, 30, 0))
         mline.Delete()
 
-    def test_add_text(self):
+    def test_add_text(self) -> None:
         app = Ax.getApp()
         text = app.ActiveDocument.ModelSpace.AddText("Oratrice Mechanique D'Analyse Cardinale 3000", (0, 0, 0), 1)
         self.assertEqual(text.TextString, "Oratrice Mechanique D'Analyse Cardinale 3000")
@@ -180,7 +181,7 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(text.InsertionPoint, (1, 2, 3))
         text.Delete()
 
-    def test_add_mtext(self):
+    def test_add_mtext(self) -> None:
         app = Ax.getApp()
         mt = app.ActiveDocument.ModelSpace.AddMText((100, 200, 300), 40, "Hello world")
         self.assertEqual(mt.InsertionPoint, (100, 200, 300))
@@ -188,7 +189,7 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(mt.InsertionPoint, (400, 100, 0))
         mt.Delete()
 
-    def test_Add3DFaceProps(self):
+    def test_Add3DFaceProps(self) -> None:
         app = Ax.getApp()
         model = app.ActiveDocument.ModelSpace
         face = model.Add3DFace((0, 0, 0), (0, 100, 0), (100, 100, 0), (100, 0, 0))
@@ -196,7 +197,7 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(face.Coordinate(3), (100, 0, 0))
         face.Delete()
 
-    def test_ent_copy(self):
+    def test_ent_copy(self) -> None:
         app = Ax.getApp()
         model = app.ActiveDocument.ModelSpace
         line = model.AddLine((0, 0, 0), (100, 100, 0))
@@ -206,7 +207,7 @@ class TestActiveX(unittest.TestCase):
         line.Delete()
         lineCopy.Delete()
 
-    def test_iter_block(self):
+    def test_iter_block(self) -> None:
         app = Ax.getApp()
         model = app.ActiveDocument.ModelSpace
         points = []
@@ -220,7 +221,7 @@ class TestActiveX(unittest.TestCase):
         for p in points:
             p.Delete()
 
-    def test_iter_selection1(self):
+    def test_iter_selection1(self) -> None:
         app = Ax.getApp()
         doc = app.ActiveDocument
         model = doc.ModelSpace
@@ -247,7 +248,7 @@ class TestActiveX(unittest.TestCase):
                 p.Delete()
             ss.Delete()
 
-    def test_iter_selection2(self):
+    def test_iter_selection2(self) -> None:
         app = Ax.getApp()
         doc = app.ActiveDocument
         model = doc.ModelSpace
@@ -274,7 +275,7 @@ class TestActiveX(unittest.TestCase):
                 p.Delete()
             ss.Delete()
 
-    def test_iter_selection3(self):
+    def test_iter_selection3(self) -> None:
         app = Ax.getApp()
         doc = app.ActiveDocument
         model = doc.ModelSpace
@@ -301,14 +302,14 @@ class TestActiveX(unittest.TestCase):
                 p.Delete()
             ss.Delete()
             
-    def test_iter_documents(self):
+    def test_iter_documents(self) -> None:
         axApp = Ax.getApp()
         cnt = 0
         for doc in axApp.Documents:
             cnt +=1
         self.assertNotEqual(cnt, 0)
 
-def PyRxCmd_pyactivex():
+def PyRxCmd_pyactivex() -> None:
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestActiveX)
         print("TestActiveX")
