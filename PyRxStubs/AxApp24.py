@@ -10393,6 +10393,7 @@ class IAcadLWPolyline(DispatchBaseClass):
 
     def AddVertex(self, Index=defaultNamedNotOptArg, vertex=defaultNamedNotOptArg):
         'Adds a vertex to the lightweight polyline'
+        vertex = VTR8ArrayOrVal(vertex)
         return self._oleobj_.InvokeTypes(4, LCID, 1, (24, 0), ((3, 1), (12, 1)),Index
             , vertex)
 
