@@ -6,6 +6,30 @@
 #pragma comment( lib, "dwmapi.lib")
 
 using namespace boost::python;
+
+const TCHAR* getComAPIVer()
+{
+#if defined(_ARXTARGET) && _ARXTARGET == 240
+    return L"ARX24";
+#elif defined(_ARXTARGET) && _ARXTARGET == 241
+    return L"ARX24";
+#elif defined(_ARXTARGET) && _ARXTARGET == 242
+    return L"ARX24";
+#elif defined(_ARXTARGET) && _ARXTARGET == 243
+    return L"ARX24";
+#elif defined(_ARXTARGET) && _ARXTARGET == 250
+    return L"ARX25";
+#elif defined(_BRXTARGET) && _BRXTARGET == 240
+    return L"BRX24";
+#elif defined(_GRXTARGET) && _GRXTARGET == 240
+    return L"GRX24";
+#elif defined(_ZRXTARGET) && _ZRXTARGET == 240
+    return L"ZRX24";
+#endif
+    return L"!ERROR!";
+}
+
+
 //-----------------------------------------------------------------------------------------
 //PyApApplication  Wrapper
 void makePyApApplictionWrapper()
@@ -98,7 +122,7 @@ PyObject* PyApApplication::getwxApp()
 
 std::string PyApApplication::hostAPI()
 {
-    return wstr_to_utf8(getappname());
+    return wstr_to_utf8(getComAPIVer());
 }
 
 std::string PyApApplication::hostAPIVER()

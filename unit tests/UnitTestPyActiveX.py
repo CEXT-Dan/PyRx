@@ -1,25 +1,15 @@
 import os
 import unittest
-import PyRx as Rx
-import PyGe as Ge
-import PyGi as Gi
-import PyDb as Db
-import PyAp as Ap
-import PyEd as Ed
+from pyrx_imp import Rx
+from pyrx_imp import Ge
+from pyrx_imp import Gi
+from pyrx_imp import Db
+from pyrx_imp import Ap
+from pyrx_imp import Ed
+from pyrx_imp import Ax
+
 import math
 
-# requires win32com.client
-host = Ap.Application.hostAPI()
-if host == "BRX":
-    import BxApp24 as Ax
-elif host == "GRX":
-    import GxApp24 as Ax
-elif host == "ZRX":
-    import ZxApp24 as Ax
-else:
-    import AxApp24 as Ax
-    
-    
 def almostEq(L , R)->bool:
     for l,r in zip(L,R):
         if not math.isclose(l, r, rel_tol=1e-2):
