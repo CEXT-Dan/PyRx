@@ -15,6 +15,8 @@ def almostEq(L , R)->bool:
         if not math.isclose(l, r, rel_tol=1e-2):
             return False
     return True
+
+host = Ap.Application.hostAPI()
     
 print("testname = pyactivex")
 
@@ -22,17 +24,17 @@ class TestActiveX(unittest.TestCase):
     def test_get_app(self):
         app = Ax.getApp()
         name: str = app.Name
-        if host == "BRX":
+        if "BRX" in host:
             self.assertTrue("BricsCAD" in name)
-        elif host == "GRX":
+        elif "GRX" in host:
             self.assertTrue("GstarCAD" in name)
-        elif host == "ZRX":
+        elif "ZRX" in host:
             self.assertTrue("ZWCAD" in name)
         else:
             self.assertTrue("AutoCAD" in name)
 
     def test_get_dbx(self):
-        if host != "ARX":
+        if not "ARX" in host:
             return
         dbx = Ax.getDbx()
         path = ".\\testmedia\\06457.dwg"
