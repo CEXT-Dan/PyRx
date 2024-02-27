@@ -13,6 +13,22 @@ from pyrx_impx import Ax
 import traceback
 from timeit import default_timer as timer
 
+print("added command = sstestx")
+print("added command = AddPolylineX")
+print("added command = AddLineX")
+print("added command = MenuGroupsX")
+print("added command = GetEntX")
+print("added command = getangx")
+print("added command = getpointwithbasex")
+print("added command = getpointx")
+print("added command = layerStateX")
+print("added command = interx")
+print("added command = mleaderx")
+print("added command = comPerf")
+print("added command = moveToOriginX")
+print("added command = insertX")
+
+
 # optional, global instance of IAcadApplication
 # there's only one app, might as well cache it
 theApp = Ax.getApp()
@@ -135,11 +151,11 @@ def PyRxCmd_getangx():
 def PyRxCmd_getpointwithbasex():
     try:
         ut = theApp.ActiveDocument.Utility
-        pt1 = Ge.Point3d(100, 100, 0)
+        pt1 = ut.GetPoint("\nGet point:")
         retAngle = None
         try:
             retAngle = ut.GetPointWithBase(
-                pt1.toList(), "\nGet Point with base:")
+                pt1, "\nGet Point with base:")
         except:
             pass
         if retAngle is not None:
@@ -151,8 +167,8 @@ def PyRxCmd_getpointwithbasex():
 def PyRxCmd_getpointx():
     try:
         ut = theApp.ActiveDocument.Utility
-        retAngle = ut.GetPoint("\nGet point:")
-        print(retAngle)
+        pnt = ut.GetPoint("\nGet point:")
+        print(pnt)
     except Exception as err:
         traceback.print_exception(err)
 
