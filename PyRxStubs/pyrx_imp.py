@@ -12,7 +12,7 @@ import PyGs as Gs
 
 import importlib
 
-flag = importlib.find_loader('win32com')
+flag = importlib.import_module('win32com')
 if flag is not None:
     try:
         host = Ap.Application.hostAPI()
