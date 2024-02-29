@@ -119,10 +119,9 @@ bool initWxApp()
 // the PyRxApp, holds the command objects
 std::filesystem::path PyRxApp::modulePath()
 {
-    std::wstring buffer;
-    buffer.resize(MAX_PATH, 0);
+    std::wstring buffer(MAX_PATH, 0);
     GetModuleFileName(_hdllInstance, buffer.data(), buffer.size());
-    std::filesystem::path path = buffer;
+    std::filesystem::path path{ buffer };
     path.remove_filename();
     return path;
 }
