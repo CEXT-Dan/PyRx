@@ -250,9 +250,6 @@ public:
 
     static int ADSPREFIX(pyload(void))
     {
-#ifdef PYRXDEBUG
-        acutPrintf(_T("%ld"), acedGetFunCode());
-#endif
         WxPyAutoLock lock;
         AcResBufPtr pArgs(acedGetArgs());
 
@@ -267,9 +264,6 @@ public:
 
     static int ADSPREFIX(pyloaded(void))
     {
-#ifdef PYRXDEBUG
-        acutPrintf(_T("%ld"), acedGetFunCode());
-#endif
         AcResBufPtr pArgs(acutNewRb(RTSTR));
         resbuf* pTail = pArgs.get();
         for (auto& item : PyRxApp::instance().funcNameMap)
