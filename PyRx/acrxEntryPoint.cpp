@@ -489,6 +489,19 @@ public:
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
+        std::unordered_set<std::filesystem::path> paths;
+
+        std::filesystem::path one = L"C:\\Users\\Dan\\AppData\\Local\\Programs\\Python\\Python312\\myenv";
+        std::filesystem::path two = L"C:\\Users\\Dan\\AppData\\Local\\Programs\\Python\\Python312\\myenv";
+        std::filesystem::path three = L"C:\\Users\\DAN\\AppData\\Local\\Programs\\Python\\Python312\\myenv";
+
+        paths.insert(tolower(one));
+        paths.insert(tolower(two));
+        paths.insert(tolower(three));
+
+
+        acutPrintf(_T("\nWell? %ld"), paths.size());
+
     }
 #endif
 };

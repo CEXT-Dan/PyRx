@@ -121,7 +121,7 @@ std::filesystem::path PyRxApp::modulePath()
 {
     std::wstring buffer(MAX_PATH, 0);
     GetModuleFileName(_hdllInstance, buffer.data(), buffer.size());
-    std::filesystem::path path{ buffer };
+    std::filesystem::path path{ tolower(buffer) };
     path.remove_filename();
     return path;
 }
@@ -194,43 +194,37 @@ bool PyRxApp::setPyConfig()
 {
     //append our module path to python
     WxPyAutoLock lock;
-
-    AcString _modulePath = modulePath().c_str();
-    _modulePath.makeLower();
-
+    const auto _modulePath = modulePath();
     PyObjectPtr sys(PyImport_ImportModule("sys"));
     if (sys == nullptr)
         return false;
     PyObjectPtr path(PyObject_GetAttrString(sys.get(), "path"));
     if (path == nullptr)
         return false;
-    PyObjectPtr pyString(wstr_to_py((const TCHAR*)_modulePath));
+    PyObjectPtr pyString(wstr_to_py(_modulePath));
     if (pyString == nullptr)
         return false;
     if (PyList_Append(path.get(), pyString.get()) < 0)
         return false;
-    PyRxApp::instance().loadedModulePaths.insert((const TCHAR*)_modulePath);
+    PyRxApp::instance().loadedModulePaths.insert(_modulePath);
 
     return true;
 }
 
-bool PyRxApp::appendSearchPath(const TCHAR* pModulePath)
+bool PyRxApp::appendSearchPath(const std::filesystem::path& modulePath)
 {
     WxPyAutoLock lock;
-
-    AcString _modulePath = pModulePath;
-    _modulePath.makeLower();
-
-    if (PyRxApp::instance().loadedModulePaths.contains((const TCHAR*)_modulePath))
+    const auto _modulePath = tolower(modulePath);
+    if (PyRxApp::instance().loadedModulePaths.contains(_modulePath))
         return true;
-    PyRxApp::instance().loadedModulePaths.insert((const TCHAR*)_modulePath);
+    PyRxApp::instance().loadedModulePaths.insert(_modulePath);
     PyObjectPtr sys(PyImport_ImportModule("sys"));
     if (sys == nullptr)
         return false;
     PyObjectPtr path(PyObject_GetAttrString(sys.get(), "path"));
     if (path == nullptr)
         return false;
-    PyObjectPtr pyString(wstr_to_py((const TCHAR*)_modulePath));
+    PyObjectPtr pyString(wstr_to_py(_modulePath));
     if (pyString == nullptr)
         return false;
     if (PyList_Append(path.get(), pyString.get()) < 0)
