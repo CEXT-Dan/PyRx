@@ -65,9 +65,11 @@ bool showNavFileDialog(PyModulePath& path)
         return false;
     }
     std::filesystem::path _path = pResBuf->resval.rstring;
+
+    path.fullPath = pResBuf->resval.rstring;
     path.moduleName = moduleNameFromPath(_path);
     path.modulePath = _path.remove_filename();
-    path.fullPath = pResBuf->resval.rstring;
+
     acutRelRb(pResBuf);
     return true;
 }
@@ -137,9 +139,12 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
         acutPrintf(_T("\nModule %ls Already loaded, use pyreload"), (const TCHAR*)path.moduleName);
         return true;
     }
+    // must be added to the pythons search path
     PyRxApp::appendSearchPath(path.modulePath);
 
     PyRxMethod method;
+
+    // wants the file name, no extension, in the same case as existing
     method.modname.reset(wstr_to_py(path.fullPath.filename().replace_extension()));
     method.mod.reset(PyImport_Import(method.modname.get()));
     if (method.mod != nullptr)
@@ -211,8 +216,8 @@ bool ads_loadPythonModule(const std::filesystem::path& pypath)
 {
     PyModulePath modulePath;
     std::filesystem::path _path = pypath;
+    modulePath.fullPath = pypath;
     modulePath.moduleName = moduleNameFromPath(_path);
     modulePath.modulePath = _path.remove_filename();
-    modulePath.fullPath = pypath;
     return loadPythonModule(modulePath, true);
 }
