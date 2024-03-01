@@ -85,7 +85,7 @@ public:
             acedRegCmds->removeGroup(_T("PYCOMMANDS"));
 #endif
         }
-        catch (...) {}
+        catch (...) { /*@exit*/ }
         return (retCode);
     }
 

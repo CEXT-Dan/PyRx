@@ -26181,6 +26181,11 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def database (self: ObjectId)-> PyDb.Database :
       '''                             '''
     ...
+
+    @staticmethod
+    def fromOldId (oldid : int)-> PyDb.ObjectId :
+      '''                             '''
+    ...
     def handle (self: ObjectId)-> PyDb.Handle :
       '''                             '''
     ...
@@ -26217,7 +26222,7 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def originalDatabase (self: ObjectId)-> PyDb.Database :
       '''                             '''
     ...
-    def setFromOldId (self: ObjectId,val : int)-> None :
+    def setFromOldId (self: ObjectId,oldid : int)-> None :
       '''                             '''
     ...
 
@@ -26247,6 +26252,11 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def database (self: ObjectId)-> PyDb.Database :
       '''                             '''
     ...
+
+    @staticmethod
+    def fromOldId (oldid : int)-> PyDb.ObjectId :
+      '''                             '''
+    ...
     def handle (self: ObjectId)-> PyDb.Handle :
       '''                             '''
     ...
@@ -26283,7 +26293,7 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def originalDatabase (self: ObjectId)-> PyDb.Database :
       '''                             '''
     ...
-    def setFromOldId (self: ObjectId,val : int)-> None :
+    def setFromOldId (self: ObjectId,oldid : int)-> None :
       '''                             '''
     ...
 
@@ -41520,6 +41530,11 @@ __init__( (object)arg1) -> None :
     def database (self: ObjectId)-> PyDb.Database :
       '''                             '''
     ...
+
+    @staticmethod
+    def fromOldId (oldid : int)-> PyDb.ObjectId :
+      '''                             '''
+    ...
     def handle (self: ObjectId)-> PyDb.Handle :
       '''                             '''
     ...
@@ -41556,7 +41571,7 @@ __init__( (object)arg1) -> None :
     def originalDatabase (self: ObjectId)-> PyDb.Database :
       '''                             '''
     ...
-    def setFromOldId (self: ObjectId,val : int)-> None :
+    def setFromOldId (self: ObjectId,oldid : int)-> None :
       '''                             '''
     ...
 
@@ -59240,6 +59255,11 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def database (self: ObjectId)-> PyDb.Database :
       '''                             '''
     ...
+
+    @staticmethod
+    def fromOldId (oldid : int)-> PyDb.ObjectId :
+      '''                             '''
+    ...
     def handle (self: ObjectId)-> PyDb.Handle :
       '''                             '''
     ...
@@ -59276,7 +59296,7 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def originalDatabase (self: ObjectId)-> PyDb.Database :
       '''                             '''
     ...
-    def setFromOldId (self: ObjectId,val : int)-> None :
+    def setFromOldId (self: ObjectId,oldid : int)-> None :
       '''                             '''
     ...
 
@@ -59306,6 +59326,11 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def database (self: ObjectId)-> PyDb.Database :
       '''                             '''
     ...
+
+    @staticmethod
+    def fromOldId (oldid : int)-> PyDb.ObjectId :
+      '''                             '''
+    ...
     def handle (self: ObjectId)-> PyDb.Handle :
       '''                             '''
     ...
@@ -59342,7 +59367,7 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def originalDatabase (self: ObjectId)-> PyDb.Database :
       '''                             '''
     ...
-    def setFromOldId (self: ObjectId,val : int)-> None :
+    def setFromOldId (self: ObjectId,oldid : int)-> None :
       '''                             '''
     ...
 
