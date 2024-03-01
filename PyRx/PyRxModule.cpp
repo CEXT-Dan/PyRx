@@ -4,15 +4,14 @@
 
 AcString PyRxModule::commandForCurDocument()
 {
+    AcString pGlobalCmdName;
 #ifdef _ZRXTARGET240
     RxAutoOutStr cmd;
-    AcString pGlobalCmdName;
     if (auto es = acedGetCommandForDocument(curDoc(), cmd.buf); es != eOk)
         return pGlobalCmdName;
     pGlobalCmdName = cmd.buf;
     return pGlobalCmdName.makeUpper();
 #else
-    AcString pGlobalCmdName;
     if (auto es = acedGetCommandForDocument(curDoc(), pGlobalCmdName); es != eOk)
         return pGlobalCmdName;
     return pGlobalCmdName.makeUpper();
@@ -24,7 +23,7 @@ void PyRxModule::callPyFunction()
     if (curDoc() != nullptr)
     {
         auto& rxApp = PyRxApp::instance();
-        const AcString cmdName = commandForCurDocument();
+        const AcString cmdName{ commandForCurDocument() };
         if (rxApp.commands.contains(cmdName))
         {
             try
@@ -56,7 +55,7 @@ void PyRxModule::callPyFunction()
 
 void PyRxModule::regCommand(const AcString& moduleName, const AcString& name, int context)
 {
-    if(auto es = acedRegCmds->addCommand(moduleName, name, name, context, callPyFunction); es != eOk)
+    if (auto es = acedRegCmds->addCommand(moduleName, name, name, context, callPyFunction); es != eOk)
         acutPrintf(_T("\naddCommand failed %ls: "), (const TCHAR*)name);
 }
 
