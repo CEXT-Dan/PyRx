@@ -26,10 +26,9 @@
 #include "resource.h"
 #include "PyLispService.h"
 #include "PyRxApp.h"
-#include "PyCmd.h"
 #include "rxvar.h"
 #include "PyRxModule.h"
-
+#include "PyRxModuleLoader.h"
 #include "PyApApplication.h"
 
 //-----------------------------------------------------------------------------
@@ -180,198 +179,6 @@ public:
         acutPrintf(_T("\nPyRx version <%ls> loaded:\n"), GETVER().constPtr());
     }
 
-    static void onLoadPyModule(AcString& moduleName)
-    {
-        try
-        {
-            WxPyAutoLock lock;
-            if (PyRxApp::instance().funcNameMap.contains(moduleName))
-            {
-                auto& method = PyRxApp::instance().funcNameMap.at(moduleName);
-                if (method.OnPyInitApp != nullptr)
-                {
-                    if (PyCallable_Check(method.OnPyInitApp))
-                        method.rslt.reset(PyObject_CallNoArgs(method.OnPyInitApp));
-                }
-                if (method.OnPyLoadDwg != nullptr)
-                {
-                    if (PyCallable_Check(method.OnPyLoadDwg))
-                        method.rslt.reset(PyObject_CallNoArgs(method.OnPyLoadDwg));
-                }
-            }
-        }
-        catch (...)
-        {
-            acutPrintf(_T("\npyload failed: "));
-        }
-    }
-
-    static bool pyNavFileNavDialog(std::filesystem::path& pysyspath, AcString& pathName, AcString& moduleName)
-    {
-        std::filesystem::path pypath;
-        struct resbuf* pResBuf = nullptr;
-        int ret = acedGetFileNavDialog(_T("Select Python File"), _T(""), _T("py"), _T("Browse Python File"), 0, &pResBuf);
-        if (ret != RTNORM)
-        {
-            acutPrintf(_T("\nFailed to read file: "));
-            return false;
-        }
-        pypath = pResBuf->resval.rstring;
-        pysyspath = pResBuf->resval.rstring;
-        pysyspath.remove_filename();
-        PyRxApp::appendSearchPath(pysyspath.c_str());
-        pypath.replace_extension(_T(""));
-        acutRelRb(pResBuf);
-
-        pathName = pypath.filename().c_str();
-        moduleName = pathName;
-        moduleName.makeUpper();
-        return true;
-    }
-
-    static void loadPyAppReactors(PyRxMethod& method)
-    {
-        method.OnPyInitApp = PyDict_GetItemString(method.mdict, "OnPyInitApp");
-        method.OnPyUnloadApp = PyDict_GetItemString(method.mdict, "OnPyUnloadApp");
-        method.OnPyLoadDwg = PyDict_GetItemString(method.mdict, "OnPyLoadDwg");
-        method.OnPyUnloadDwg = PyDict_GetItemString(method.mdict, "OnPyUnloadDwg");
-    }
-
-    static CString formatFileNameforCommandGroup(const TCHAR* modulename)
-    {
-        CString _modulename = _T("PY_");
-        _modulename.Append(modulename);
-        _modulename.Replace(' ', '_');
-        return _modulename;
-    }
-
-    static void loadCommands(PyRxMethod& method, const std::filesystem::path& pyPath, const AcString& moduleName)
-    {
-        auto& rxApp = PyRxApp::instance();
-        PyObject* pKey = nullptr, * pValue = nullptr;
-        for (Py_ssize_t i = 0; PyDict_Next(method.mdict, &i, &pKey, &pValue);)
-        {
-            const AcString key = utf8_to_wstr(PyUnicode_AsUTF8(pKey)).c_str();
-            if (key.find(PyCommandPrefix) != -1)
-            {
-                const AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1).makeUpper();
-                if (PyFunction_Check(pValue))
-                {
-                    const int commandFlags = PyCmd::getCommandFlags(pValue);
-                    rxApp.commands.emplace(commandName, pValue);
-                    rxApp.pathForCommand.emplace(commandName, pyPath);
-                    PyRxModule::regCommand(formatFileNameforCommandGroup(moduleName), commandName, commandFlags);
-                }
-            }
-            if (key.find(PyLispFuncPrefix) != -1)
-            {
-                rxApp.lispService.tryAddFunc(key, pValue);
-            }
-        }
-    }
-
-    static void reloadCommands(PyRxMethod& method, const std::filesystem::path& pypath, const AcString& moduleName)
-    {
-        auto& rxApp = PyRxApp::instance();
-        PyObject* pKey = nullptr, * pValue = nullptr;
-        for (Py_ssize_t i = 0; PyDict_Next(method.mdict, &i, &pKey, &pValue);)
-        {
-            AcString key = utf8_to_wstr(PyUnicode_AsUTF8(pKey)).c_str();
-            if (key.find(PyCommandPrefix) != -1)
-            {
-                const AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1).makeUpper();
-                if (PyFunction_Check(pValue))
-                {
-                    if (rxApp.commands.contains(commandName))
-                    {
-                        rxApp.commands[commandName] = pValue;
-                    }
-                    else
-                    {
-                        const int commandFlags = PyCmd::getCommandFlags(pValue);
-                        rxApp.commands.emplace(commandName, pValue);
-                        rxApp.pathForCommand.emplace(commandName, pypath);
-                        PyRxModule::regCommand(formatFileNameforCommandGroup(moduleName), commandName, commandFlags);
-                    }
-                }
-            }
-            if (key.find(PyLispFuncPrefix) != -1)
-            {
-                rxApp.lispService.tryAddFunc(key, pValue);
-            }
-        }
-    }
-
-    static bool doPyLoad(AcString& pathName, AcString& moduleName, std::filesystem::path& pypath, bool silent = false)
-    {
-        auto& rxApp = PyRxApp::instance();
-        if (rxApp.funcNameMap.contains(moduleName))
-        {
-            acutPrintf(_T("\nModule %ls Already loaded, use pyreload"), (const TCHAR*)moduleName);
-            return true;
-        }
-        PyRxMethod method;
-        method.modname.reset(wstr_to_py((const TCHAR*)pathName));
-        method.mod.reset(PyImport_Import(method.modname.get()));
-        if (method.mod != nullptr)
-        {
-            method.mdict = PyModule_GetDict(method.mod.get());
-            loadPyAppReactors(method);
-            loadCommands(method, pypath, moduleName);
-            rxApp.funcNameMap.emplace(moduleName, std::move(method));
-            if (!silent)
-            {
-                acutPrintf(_T("\nSuccess module %ls is loaded: "), (const TCHAR*)moduleName);
-            }
-            onLoadPyModule(moduleName);
-            return true;
-        }
-        else
-        {
-            if (PyErr_Occurred() != NULL)
-            {
-                acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
-                return false;
-            }
-            acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)moduleName);
-            rxApp.funcNameMap.erase(moduleName);
-        }
-        return false;
-    }
-
-    static void doPyReload(AcString& pathName, AcString& moduleName, std::filesystem::path& pysyspath)
-    {
-        auto& rxApp = PyRxApp::instance();
-        if (rxApp.funcNameMap.contains(moduleName))
-        {
-            PyRxMethod& method = rxApp.funcNameMap.at(moduleName);
-            method.mod.reset(PyImport_ReloadModule(method.mod.get()));
-            if (method.mod != nullptr)
-            {
-                method.mdict = PyModule_GetDict(method.mod.get());
-                loadPyAppReactors(method);
-                reloadCommands(method, pysyspath, moduleName);
-                rxApp.funcNameMap.emplace(moduleName, std::move(method));
-                acutPrintf(_T("\nSuccess module %ls is reloaded: "), (const TCHAR*)moduleName);
-                onLoadPyModule(moduleName);
-            }
-            else
-            {
-                rxApp.funcNameMap.erase(moduleName);
-                if (PyErr_Occurred() != NULL)
-                {
-                    acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
-                    return;
-                }
-                acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)moduleName);
-            }
-        }
-        else
-        {
-            acutPrintf(_T("\nModule %ls was never loaded, use pyload"), (const TCHAR*)moduleName);
-        }
-    }
-
     static void AcRxPyApp_pyload(void)
     {
         try
@@ -379,21 +186,20 @@ public:
             WxPyAutoLock lock;
             if (PyRxApp::instance().isLoaded)
             {
-                AcString pathName;
-                AcString moduleName;
-                std::filesystem::path pypath;
-                if (!pyNavFileNavDialog(pypath, pathName, moduleName))
-                    return;
-                doPyLoad(pathName, moduleName, pypath);
+                PyModulePath pypath;
+                if (showNavFileDialog(pypath))
+                {
+                    if (loadPythonModule(pypath, false))
+                        return;
+                }
             }
         }
         catch (...)
         {
-            acutPrintf(_T("\npyload failed: "));
         }
+        acutPrintf(_T("\npyload failed: "));
     }
 
-    //TODO: needs improvement 
     static void AcRxPyApp_pyreload(void)
     {
         try
@@ -401,18 +207,18 @@ public:
             WxPyAutoLock lock;
             if (PyRxApp::instance().isLoaded)
             {
-                AcString pathName;
-                AcString moduleName;
-                std::filesystem::path pysyspath;
-                if (!pyNavFileNavDialog(pysyspath, pathName, moduleName))
-                    return;
-                doPyReload(pathName, moduleName, pysyspath);
+                PyModulePath pypath;
+                if (showNavFileDialog(pypath))
+                {
+                    if (reloadPythonModule(pypath, false))
+                        return;
+                }
             }
         }
         catch (...)
         {
-            acutPrintf(_T("\npyreload failed: "));
         }
+        acutPrintf(_T("\npyreload failed: "));
     }
 
     static void AcRxPyApp_pyrxver(void)
@@ -445,25 +251,13 @@ public:
 #ifdef PYRXDEBUG
         acutPrintf(_T("%ld"), acedGetFunCode());
 #endif
-        std::filesystem::path pysyspath;
-        std::filesystem::path pypath;
-        AcString pathName;
-        AcString moduleName;
-
         WxPyAutoLock lock;
         AcResBufPtr pArgs(acedGetArgs());
 
         if (pArgs != nullptr && pArgs->restype == RTSTR)
         {
-            pypath = pArgs->resval.rstring;
-            pysyspath = pArgs->resval.rstring;
-            pysyspath.remove_filename();
-            PyRxApp::appendSearchPath(pysyspath.c_str());
-            pypath.replace_extension(_T(""));
-            pathName = pypath.filename().c_str();
-            moduleName = pathName;
-            moduleName.makeUpper();
-            bool flag = doPyLoad(pathName, moduleName, pysyspath, true);
+            std::filesystem::path pypath = pArgs->resval.rstring;
+            bool flag = ads_loadPythonModule(pypath);
             flag ? acedRetT() : acedRetNil();
         }
         return RSRSLT;
@@ -489,18 +283,6 @@ public:
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
-        std::unordered_set<std::filesystem::path> paths;
-
-        std::filesystem::path one = L"C:\\Users\\Dan\\AppData\\Local\\Programs\\Python\\Python312\\myenv";
-        std::filesystem::path two = L"C:\\Users\\Dan\\AppData\\Local\\Programs\\Python\\Python312\\myenv";
-        std::filesystem::path three = L"C:\\Users\\DAN\\AppData\\Local\\Programs\\Python\\Python312\\myenv";
-
-        paths.insert(tolower(one));
-        paths.insert(tolower(two));
-        paths.insert(tolower(three));
-
-
-        acutPrintf(_T("\nWell? %ld"), paths.size());
 
     }
 #endif
