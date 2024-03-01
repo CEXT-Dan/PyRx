@@ -196,6 +196,7 @@ public:
         }
         catch (...)
         {
+            acutPrintf(_T("\npyload exception: "));
         }
         acutPrintf(_T("\npyload failed: "));
     }
@@ -217,6 +218,7 @@ public:
         }
         catch (...)
         {
+            acutPrintf(_T("\n_pyreload exception: "));
         }
         acutPrintf(_T("\npyreload failed: "));
     }
