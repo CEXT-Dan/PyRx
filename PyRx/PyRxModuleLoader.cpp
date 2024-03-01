@@ -38,7 +38,7 @@ bool showNavFileDialog(PyModulePath& path)
         acutPrintf(_T("\nFailed to read file: "));
         return false;
     }
-    std::filesystem::path _path = pResBuf->resval.rstring;
+    std::filesystem::path _path{ pResBuf->resval.rstring };
 
     path.fullPath = pResBuf->resval.rstring;
     path.moduleName = moduleNameFromPath(_path);
