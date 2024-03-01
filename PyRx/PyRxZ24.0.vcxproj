@@ -233,6 +233,7 @@
     <ClCompile Include="PyPlPlotConfigManager.cpp" />
     <ClCompile Include="PyPlPlotProgressDialog.cpp" />
     <ClCompile Include="PyRxApp.cpp" />
+    <ClCompile Include="PyRxContainers.cpp" />
     <ClCompile Include="PyRxModule.cpp" />
     <ClCompile Include="PyRxModuleLoader.cpp" />
     <ClCompile Include="PyRxObject.cpp" />
@@ -350,6 +351,7 @@
     <ClInclude Include="PyPlPlotConfigManager.h" />
     <ClInclude Include="PyPlPlotProgressDialog.h" />
     <ClInclude Include="PyRxApp.h" />
+    <ClInclude Include="PyRxContainers.h" />
     <ClInclude Include="PyRxModule.h" />
     <ClInclude Include="PyRxModuleLoader.h" />
     <ClInclude Include="PyRxObject.h" />

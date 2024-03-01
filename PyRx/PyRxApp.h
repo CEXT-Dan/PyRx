@@ -51,25 +51,27 @@ public:
     bool init();
     bool uninit();
     static bool setPyConfig();
-    static bool appendSearchPath(const TCHAR* pModulePath);
+    static bool appendSearchPath(const std::filesystem::path & pModulePath);
     static std::wstring the_error();
     static std::filesystem::path modulePath();
     static PyRxApp& instance();
 public:
 
-    using FuncNameMap = std::unordered_map<AcString, PyRxMethod>;
     using LoadedPaths = std::unordered_set<std::filesystem::path>;
+    using FuncNameMap = std::unordered_map<AcString, PyRxMethod>;
     using CmdNameMap = std::unordered_map<AcString, PyObject*>;
     using CmdLispMap = std::unordered_map<int, AcString>;
     using PathForCommand = std::unordered_map<AcString, std::filesystem::path>;
 
-    FuncNameMap funcNameMap;
     LoadedPaths loadedModulePaths;
+    FuncNameMap funcNameMap;
     CmdNameMap commands;
     PyLispService lispService;
     PathForCommand pathForCommand;
 
     void* appPkt = nullptr;
     bool isLoaded = false;
+
+private:
 };
 

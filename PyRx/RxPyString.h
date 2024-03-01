@@ -1,5 +1,17 @@
 #pragma once
 
+
+constexpr inline std::wstring& tolower(std::wstring& s) noexcept {
+    std::transform(s.begin(), s.end(), s.begin(),
+        [](wchar_t c) { return std::tolower(c); });
+    return s;
+}
+
+inline std::filesystem::path tolower(const std::filesystem::path& s) noexcept {
+    std::wstring buffer{ s };
+    return std::filesystem::path{ tolower(buffer) };
+}
+
 constexpr inline void ltrim(std::string& s, char chr) noexcept {
     s.erase(s.begin(), std::find_if(s.begin(), s.end(), [&](char ch) {
         return chr != ch;
