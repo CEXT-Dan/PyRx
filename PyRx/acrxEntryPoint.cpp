@@ -105,7 +105,7 @@ public:
             }
             PyRxApp::instance().lispService.On_kLoadDwgMsg();
         }
-        catch (...) {}
+        catch (...) { acutPrintf(_T("\nException %ls: "), __FUNCTIONW__); }
         return retCode;
     }
 
@@ -124,7 +124,7 @@ public:
                 }
             }
         }
-        catch (...) {}
+        catch (...) { acutPrintf(_T("\nException %ls: "), __FUNCTIONW__); }
         return retCode;
     }
 
@@ -196,7 +196,7 @@ public:
         }
         catch (...)
         {
-            acutPrintf(_T("\npyload exception: "));
+            acutPrintf(_T("\nException %ls: "), __FUNCTIONW__);
         }
         acutPrintf(_T("\npyload failed: "));
     }
@@ -218,7 +218,7 @@ public:
         }
         catch (...)
         {
-            acutPrintf(_T("\n_pyreload exception: "));
+            acutPrintf(_T("\nException %ls: "), __FUNCTIONW__);
         }
         acutPrintf(_T("\npyreload failed: "));
     }
