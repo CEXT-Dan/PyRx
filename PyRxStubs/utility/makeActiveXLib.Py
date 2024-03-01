@@ -69,7 +69,7 @@ def PyRxCmd_makeComWrappers():
     #makeComAcadApplication24()
     #makeComAcadApplication25()
     #makeComAcadDBX24()
-    makeComAcadDBX25()
+    #makeComAcadDBX25()
     #makeComETransmit20()
     #makeComSmcomponents24()
     #makeComBcadApplication24()
