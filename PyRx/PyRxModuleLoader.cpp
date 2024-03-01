@@ -4,32 +4,6 @@
 #include "PyRxApp.h"
 #include "PyCmd.h"
 
-static void onLoadPyModule(const AcString& moduleName)
-{
-    try
-    {
-        WxPyAutoLock lock;
-        if (PyRxApp::instance().funcNameMap.contains(moduleName))
-        {
-            auto& method = PyRxApp::instance().funcNameMap.at(moduleName);
-            if (method.OnPyInitApp != nullptr)
-            {
-                if (PyCallable_Check(method.OnPyInitApp))
-                    method.rslt.reset(PyObject_CallNoArgs(method.OnPyInitApp));
-            }
-            if (method.OnPyLoadDwg != nullptr)
-            {
-                if (PyCallable_Check(method.OnPyLoadDwg))
-                    method.rslt.reset(PyObject_CallNoArgs(method.OnPyLoadDwg));
-            }
-        }
-    }
-    catch (...)
-    {
-        acutPrintf(_T("\npyload failed: "));
-    }
-}
-
 static void loadPyAppReactors(PyRxMethod& method)
 {
     method.OnPyInitApp = PyDict_GetItemString(method.mdict, "OnPyInitApp");
@@ -74,7 +48,33 @@ bool showNavFileDialog(PyModulePath& path)
     return true;
 }
 
-static void loadCommands(PyRxMethod& method, const std::filesystem::path& pyPath, const AcString& moduleName)
+static void onLoadPyModule(const AcString& moduleName)
+{
+    try
+    {
+        WxPyAutoLock lock;
+        if (PyRxApp::instance().funcNameMap.contains(moduleName))
+        {
+            auto& method = PyRxApp::instance().funcNameMap.at(moduleName);
+            if (method.OnPyInitApp != nullptr)
+            {
+                if (PyCallable_Check(method.OnPyInitApp))
+                    method.rslt.reset(PyObject_CallNoArgs(method.OnPyInitApp));
+            }
+            if (method.OnPyLoadDwg != nullptr)
+            {
+                if (PyCallable_Check(method.OnPyLoadDwg))
+                    method.rslt.reset(PyObject_CallNoArgs(method.OnPyLoadDwg));
+            }
+        }
+    }
+    catch (...)
+    {
+        acutPrintf(_T("\npyload failed: "));
+    }
+}
+
+static void loadCommands(PyRxMethod& method, const PyModulePath& path)
 {
     auto& rxApp = PyRxApp::instance();
     PyObject* pKey = nullptr, * pValue = nullptr;
@@ -88,8 +88,8 @@ static void loadCommands(PyRxMethod& method, const std::filesystem::path& pyPath
             {
                 const int commandFlags = PyCmd::getCommandFlags(pValue);
                 rxApp.commands.emplace(commandName, pValue);
-                rxApp.pathForCommand.emplace(commandName, pyPath);
-                PyRxModule::regCommand(formatFileNameforCommandGroup(moduleName), commandName, commandFlags);
+                rxApp.pathForCommand.emplace(commandName, path.modulePath);
+                PyRxModule::regCommand(formatFileNameforCommandGroup(path.moduleName), commandName, commandFlags);
             }
         }
         if (key.find(PyLispFuncPrefix) != -1)
@@ -99,7 +99,7 @@ static void loadCommands(PyRxMethod& method, const std::filesystem::path& pyPath
     }
 }
 
-static void reloadCommands(PyRxMethod& method, const std::filesystem::path& pypath, const AcString& moduleName)
+static void reloadCommands(PyRxMethod& method, const PyModulePath& path)
 {
     auto& rxApp = PyRxApp::instance();
     PyObject* pKey = nullptr, * pValue = nullptr;
@@ -119,8 +119,8 @@ static void reloadCommands(PyRxMethod& method, const std::filesystem::path& pypa
                 {
                     const int commandFlags = PyCmd::getCommandFlags(pValue);
                     rxApp.commands.emplace(commandName, pValue);
-                    rxApp.pathForCommand.emplace(commandName, pypath);
-                    PyRxModule::regCommand(formatFileNameforCommandGroup(moduleName), commandName, commandFlags);
+                    rxApp.pathForCommand.emplace(commandName, path.modulePath);
+                    PyRxModule::regCommand(formatFileNameforCommandGroup(path.moduleName), commandName, commandFlags);
                 }
             }
         }
@@ -151,7 +151,7 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
     {
         method.mdict = PyModule_GetDict(method.mod.get());
         loadPyAppReactors(method);
-        loadCommands(method, path.modulePath, path.moduleName);
+        loadCommands(method, path);
         rxApp.funcNameMap.emplace(path.moduleName, std::move(method));
         if (!silent)
         {
@@ -184,7 +184,7 @@ bool reloadPythonModule(const PyModulePath& path, bool silent)
         {
             method.mdict = PyModule_GetDict(method.mod.get());
             loadPyAppReactors(method);
-            reloadCommands(method, path.modulePath, path.moduleName);
+            reloadCommands(method, path);
             rxApp.funcNameMap.emplace(path.moduleName, std::move(method));
             if (!silent)
             {
