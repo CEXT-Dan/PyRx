@@ -3,6 +3,8 @@
 #include "PyDbObjectId.h"
 #include "PyDbEntity.h"
 #include "PyDbObjectContext.h"
+#include "PyGsView.h"
+
 #include <wx/mstream.h>
 using namespace boost::python;
 //---------------------------------------------------------------------------------------- -
@@ -1616,6 +1618,8 @@ void makePyDbViewportTableRecordWrapper()
         .def("setSnapBase", &PyDbViewportTableRecord::setSnapBase, DS.ARGS({ "val : PyGe.Point2d" }))
         .def("snapIncrements", &PyDbViewportTableRecord::snapIncrements, DS.ARGS())
         .def("setSnapIncrements", &PyDbViewportTableRecord::setSnapIncrements, DS.ARGS({ "val : PyGe.Point2d" }))
+        .def("gsView", &PyDbViewportTableRecord::gsView, DS.ARGS())
+        .def("setGsView", &PyDbViewportTableRecord::setGsView, DS.ARGS({ "val : PyGs.GsView" }))
         .def("isUcsSavedWithViewport", &PyDbViewportTableRecord::isUcsSavedWithViewport, DS.ARGS())
         .def("setUcsPerViewport", &PyDbViewportTableRecord::setUcsPerViewport, DS.ARGS({ "val : bool" }))
         .def("isGridBoundToLimits", &PyDbViewportTableRecord::isGridBoundToLimits, DS.ARGS())
@@ -1814,6 +1818,16 @@ AcGePoint2d PyDbViewportTableRecord::snapIncrements() const
 void PyDbViewportTableRecord::setSnapIncrements(const AcGePoint2d& base)
 {
     return impObj()->setSnapIncrements(base);
+}
+
+void PyDbViewportTableRecord::setGsView(PyGsView& pView)
+{
+    impObj()->setGsView(pView.impObj());
+}
+
+PyGsView PyDbViewportTableRecord::gsView() const
+{
+   return PyGsView(impObj()->gsView(), false);
 }
 
 bool PyDbViewportTableRecord::isUcsSavedWithViewport() const
