@@ -250,6 +250,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbLayerTableWrapper();
     makePyDbLayerTableRecordWrapper();
     makePyDbAbstractViewTableWrapper();
+    makePyDbViewportTableWrapper();
+    makePyDbViewTableWrapper();
     makePyDbAbstractViewTableRecordWrapper();
     makePyDbViewportTableRecordWrapper();
     makePyDbViewTableRecordWrapper();

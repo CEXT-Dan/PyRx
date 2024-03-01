@@ -6,6 +6,7 @@ class PyDbBlockBegin;
 class PyDbBlockEnd;
 class PyDbObjectId;
 class PyDbAnnotationScale;
+class PyGsView;
 
 
 void makePyDbSymbolTableRecordWrapper();
@@ -342,8 +343,8 @@ public:
     void                setSnapBase(const AcGePoint2d& base);
     AcGePoint2d         snapIncrements() const;
     void                setSnapIncrements(const AcGePoint2d& base);
-    //void                setGsView(AcGsView* pView);
-    //AcGsView*           gsView() const;
+    void                setGsView(PyGsView& pView);
+    PyGsView            gsView() const;
     bool                isUcsSavedWithViewport() const;
     void                setUcsPerViewport(bool ucsvp);
     bool                isGridBoundToLimits() const;

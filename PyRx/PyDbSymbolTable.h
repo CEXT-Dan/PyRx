@@ -12,6 +12,9 @@ class PyDbRegAppTableRecord;
 class PyDbUCSTableRecord;
 class PyDbLayerTableRecord;
 class PyDbAbstractViewTableRecord;
+class PyDbViewportTableRecord;
+class PyDbViewTableRecord;
+
 
 
 //---------------------------------------------------------------------------------------- -
@@ -206,4 +209,48 @@ public:
 
 public:
     AcDbAbstractViewTable* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyDbViewportTable 
+void makePyDbViewportTableWrapper();
+
+class PyDbViewportTable : public PyDbAbstractViewTable
+{
+public:
+    PyDbViewportTable();
+    PyDbViewportTable(AcDbViewportTable* ptr, bool autoDelete);
+    PyDbViewportTable(const PyDbObjectId& id);
+    PyDbViewportTable(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbViewportTable() override = default;
+    PyDbObjectId        add(const PyDbViewportTableRecord& entry);
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbViewportTable cloneFrom(const PyRxObject& src);
+    static PyDbViewportTable cast(const PyRxObject& src);
+
+public:
+    AcDbViewportTable* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyDbViewTable 
+void makePyDbViewTableWrapper();
+
+class PyDbViewTable : public PyDbAbstractViewTable
+{
+public:
+    PyDbViewTable();
+    PyDbViewTable(const PyDbObjectId& id);
+    PyDbViewTable(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbViewTable(AcDbViewTable* ptr, bool autoDelete);
+    virtual ~PyDbViewTable() override = default;
+    PyDbObjectId        add(const PyDbViewTableRecord& entry);
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbViewTable cloneFrom(const PyRxObject& src);
+    static PyDbViewTable cast(const PyRxObject& src);
+
+public:
+    AcDbViewTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };

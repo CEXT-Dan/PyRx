@@ -705,3 +705,151 @@ AcDbAbstractViewTable* PyDbAbstractViewTable::impObj(const std::source_location&
         }
     return static_cast<AcDbAbstractViewTable*>(m_pyImp.get());
 }
+
+//---------------------------------------------------------------------------------------- -
+//PyDbViewportTable 
+void makePyDbViewportTableWrapper()
+{
+    class_<PyDbViewportTable, bases<PyDbAbstractViewTable>>("ViewportTable")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("add", &PyDbAbstractViewTable::add)
+        .def("desc", &PyDbAbstractViewTable::desc).staticmethod("desc")
+        .def("cast", &PyDbAbstractViewTable::cast).staticmethod("cast")
+        .def("cloneFrom", &PyDbAbstractViewTable::cloneFrom).staticmethod("cloneFrom")
+        .def("className", &PyDbAbstractViewTable::className).staticmethod("className")
+        ;
+}
+
+PyDbViewportTable::PyDbViewportTable()
+    : PyDbViewportTable(new AcDbViewportTable(), true)
+{
+}
+
+PyDbViewportTable::PyDbViewportTable(const PyDbObjectId& id)
+    : PyDbViewportTable(openAcDbObject<AcDbViewportTable>(id, AcDb::OpenMode::kForRead), false)
+{
+}
+
+PyDbViewportTable::PyDbViewportTable(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbViewportTable(openAcDbObject<AcDbViewportTable>(id, mode), false)
+{
+}
+
+PyDbViewportTable::PyDbViewportTable(AcDbViewportTable* ptr, bool autoDelete)
+    : PyDbAbstractViewTable(ptr, autoDelete)
+{
+}
+
+PyDbObjectId PyDbViewportTable::add(const PyDbViewportTableRecord& entry)
+{
+    return PyDbAbstractViewTable::add(entry);
+}
+
+std::string PyDbViewportTable::className()
+{
+    return "AcDbViewportTable";
+}
+
+PyRxClass PyDbViewportTable::desc()
+{
+    return PyRxClass(AcDbViewportTable::desc(), false);
+}
+
+PyDbViewportTable PyDbViewportTable::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbViewportTable::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbViewportTable(static_cast<AcDbViewportTable*>(src.impObj()->clone()), true);
+}
+
+PyDbViewportTable PyDbViewportTable::cast(const PyRxObject& src)
+{
+    PyDbViewportTable dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+AcDbViewportTable* PyDbViewportTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<AcDbViewportTable*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyDbViewTable 
+void makePyDbViewTableWrapper()
+{
+    class_<PyDbViewTable, bases<PyDbAbstractViewTable>>("ViewTable")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("add", &PyDbAbstractViewTable::add)
+        .def("desc", &PyDbAbstractViewTable::desc).staticmethod("desc")
+        .def("cast", &PyDbAbstractViewTable::cast).staticmethod("cast")
+        .def("cloneFrom", &PyDbAbstractViewTable::cloneFrom).staticmethod("cloneFrom")
+        .def("className", &PyDbAbstractViewTable::className).staticmethod("className")
+        ;
+}
+
+PyDbViewTable::PyDbViewTable()
+    : PyDbViewTable(new AcDbViewTable(), true)
+{
+}
+
+PyDbViewTable::PyDbViewTable(const PyDbObjectId& id)
+    : PyDbViewTable(openAcDbObject<AcDbViewTable>(id, AcDb::OpenMode::kForRead), false)
+{
+}
+
+PyDbViewTable::PyDbViewTable(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbViewTable(openAcDbObject<AcDbViewTable>(id, mode), false)
+{
+}
+
+PyDbViewTable::PyDbViewTable(AcDbViewTable* ptr, bool autoDelete)
+    : PyDbAbstractViewTable(ptr, autoDelete)
+{
+}
+
+PyDbObjectId PyDbViewTable::add(const PyDbViewTableRecord& entry)
+{
+    return PyDbAbstractViewTable::add(entry);
+}
+
+std::string PyDbViewTable::className()
+{
+    return "AcDbViewTable";
+}
+
+PyRxClass PyDbViewTable::desc()
+{
+    return PyRxClass(AcDbViewTable::desc(), false);
+}
+
+PyDbViewTable PyDbViewTable::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbViewTable::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbViewTable(static_cast<AcDbViewTable*>(src.impObj()->clone()), true);
+}
+
+PyDbViewTable PyDbViewTable::cast(const PyRxObject& src)
+{
+    PyDbViewTable dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+AcDbViewTable* PyDbViewTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<AcDbViewTable*>(m_pyImp.get());
+}
