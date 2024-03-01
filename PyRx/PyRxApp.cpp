@@ -8,6 +8,8 @@
 #include "PyAcAp.h"
 #include "PyAcEd.h"
 #include "PyAcPl.h"
+#include "PyRxModule.h"
+
 
 #include "wx/setup.h"
 #include "wx/wx.h"
@@ -121,7 +123,7 @@ std::filesystem::path PyRxApp::modulePath()
 {
     std::wstring buffer(MAX_PATH, 0);
     GetModuleFileName(_hdllInstance, buffer.data(), buffer.size());
-    std::filesystem::path path{ tolower(buffer) };
+    std::filesystem::path path{ std::move(buffer) };
     path.remove_filename();
     return path;
 }
@@ -214,17 +216,16 @@ bool PyRxApp::setPyConfig()
 bool PyRxApp::appendSearchPath(const std::filesystem::path& modulePath)
 {
     WxPyAutoLock lock;
-    const auto _modulePath = tolower(modulePath);
-    if (PyRxApp::instance().loadedModulePaths.contains(_modulePath))
+    if (PyRxApp::instance().loadedModulePaths.contains(modulePath))
         return true;
-    PyRxApp::instance().loadedModulePaths.insert(_modulePath);
+    PyRxApp::instance().loadedModulePaths.insert(modulePath);
     PyObjectPtr sys(PyImport_ImportModule("sys"));
     if (sys == nullptr)
         return false;
     PyObjectPtr path(PyObject_GetAttrString(sys.get(), "path"));
     if (path == nullptr)
         return false;
-    PyObjectPtr pyString(wstr_to_py(_modulePath));
+    PyObjectPtr pyString(wstr_to_py(modulePath));
     if (pyString == nullptr)
         return false;
     if (PyList_Append(path.get(), pyString.get()) < 0)

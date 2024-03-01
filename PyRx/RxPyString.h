@@ -7,6 +7,13 @@ constexpr inline std::wstring& tolower(std::wstring& s) noexcept {
     return s;
 }
 
+inline std::wstring tolower(const std::wstring& s) noexcept {
+    std::wstring buffer{ s };
+    std::transform(buffer.begin(), buffer.end(), buffer.begin(),
+        [](wchar_t c) { return std::tolower(c); });
+    return buffer;
+}
+
 inline std::filesystem::path tolower(const std::filesystem::path& s) noexcept {
     std::wstring buffer{ s };
     return std::filesystem::path{ tolower(buffer) };

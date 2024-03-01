@@ -1,22 +1,9 @@
 #pragma once
 #include "stdafx.h"
 #include "PyLispService.h"
+#include "PyRxContainers.h"
 
-//------------------------------------------------------------------------------------------------
-//  PyRxMethod holds command objects
-struct PyRxMethod
-{
-    PyObjectPtr modname;
-    PyObjectPtr mod;
-    PyObjectPtr rslt;
-
-    //TODO: had problems using PyObjectPtr on these
-    PyObject* mdict = nullptr;
-    PyObject* OnPyInitApp = nullptr;
-    PyObject* OnPyUnloadApp = nullptr;
-    PyObject* OnPyLoadDwg = nullptr;
-    PyObject* OnPyUnloadDwg = nullptr;
-};
+struct PyRxMethod;
 
 //------------------------------------------------------------------------------------------------
 //  this is AutoCAD's main frame
@@ -57,13 +44,13 @@ public:
     static PyRxApp& instance();
 public:
 
-    using LoadedPaths = std::unordered_set<std::filesystem::path>;
     using FuncNameMap = std::unordered_map<AcString, PyRxMethod>;
     using CmdNameMap = std::unordered_map<AcString, PyObject*>;
     using CmdLispMap = std::unordered_map<int, AcString>;
     using PathForCommand = std::unordered_map<AcString, std::filesystem::path>;
 
     LoadedPaths loadedModulePaths;
+
     FuncNameMap funcNameMap;
     CmdNameMap commands;
     PyLispService lispService;
@@ -73,5 +60,6 @@ public:
     bool isLoaded = false;
 
 private:
+
 };
 
