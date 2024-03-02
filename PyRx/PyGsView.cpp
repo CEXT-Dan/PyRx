@@ -7,6 +7,7 @@ void makePyGsViewWrapper()
 {
     PyDocString DS("PyGsView");
     class_<PyGsView>("GsView", boost::python::no_init)
+        .def("isNullObj", &PyGsView::isNullObj, DS.ARGS())
         .def("position", &PyGsView::position, DS.ARGS())
         .def("className", &PyGsView::className, DS.SARGS()).staticmethod("className")
         ;
@@ -34,6 +35,11 @@ struct PyGsViewDeleter
 PyGsView::PyGsView(AcGsView* impl, bool autodelete)
     : m_pyImp(impl, PyGsViewDeleter(autodelete))
 {
+}
+
+bool PyGsView::isNullObj()
+{
+    return m_pyImp == nullptr;
 }
 
 void PyGsView::setViewport(const AcGePoint2d& lowerLeft, const AcGePoint2d& upperRight)

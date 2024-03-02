@@ -343,6 +343,9 @@
     <ClCompile Include="PyRxContainers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GsCore.cpp">
+      <Filter>Source Files\PyGs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -689,6 +692,9 @@
     </ClInclude>
     <ClInclude Include="PyRxContainers.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GsCore.h">
+      <Filter>Header Files\PyGs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
