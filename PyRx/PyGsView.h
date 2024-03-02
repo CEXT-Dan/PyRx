@@ -10,6 +10,8 @@ public:
     PyGsView(AcGsView* impl, bool autodelete);
     ~PyGsView() = default;
 
+    bool                isNullObj();
+
     void                setViewport(const AcGePoint2d& lowerLeft, const AcGePoint2d& upperRight);
     boost::python::tuple getViewport();
 
