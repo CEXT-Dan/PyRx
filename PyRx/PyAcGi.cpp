@@ -4,6 +4,7 @@
 #include "PyGiCommonDraw.h"
 #include "PyGiSubEntityTraits.h"
 #include "PyGiTransientManager.h"
+#include "PyGiGraphicsKernel.h"
 
 using namespace boost::python;
 
@@ -22,6 +23,8 @@ BOOST_PYTHON_MODULE(PyGi)
     makePyGiWorldGeometryWrapper();
     makePyGiViewportGeometryWrapper();
     makePyGiTransientManagerWrapper();
+    makePyGiKernelDescriptorWrapper();
+    makePyGiGraphicsKernelWrapper();
 
     enum_<AcGiTransientDrawingMode>("AcGiTransientDrawingMode")
         .value("kAcGiMain", AcGiTransientDrawingMode::kAcGiMain)
