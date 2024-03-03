@@ -11,19 +11,27 @@ void makePyGiKernelDescriptorWrapper()
 }
 
 PyGiKernelDescriptor::PyGiKernelDescriptor(const AcGiKernelDescriptor& kernel)
-    : impl(kernel)
+    : m_pyImp(new AcGiKernelDescriptor(kernel))
 {
 }
 
 bool PyGiKernelDescriptor::supports(const PyGiKernelDescriptor& desc) const
 {
-    return impl.supports(desc.impl);
+    return impObj()->supports(*desc.impObj());
 }
 
 
 std::string PyGiKernelDescriptor::className()
 {
     return "AcGiKernelDescriptor";
+}
+
+AcGiKernelDescriptor* PyGiKernelDescriptor::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return m_pyImp.get();
 }
 
 //-----------------------------------------------------------------------------------------
@@ -37,17 +45,25 @@ void makePyGiGraphicsKernelWrapper()
 }
 
 PyGiGraphicsKernel::PyGiGraphicsKernel(const AcGiGraphicsKernel& Kernel)
-    : impl(Kernel)
+    : m_pyImp(new AcGiGraphicsKernel(Kernel))
 {
 }
 
 const PyGiKernelDescriptor PyGiGraphicsKernel::getDescriptor(void)
 {
-    return PyGiKernelDescriptor(impl.getDescriptor());
+    return PyGiKernelDescriptor(impObj()->getDescriptor());
 }
 
 std::string PyGiGraphicsKernel::className()
 {
     return "AcGiGraphicsKernel";
+}
+
+AcGiGraphicsKernel* PyGiGraphicsKernel::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return m_pyImp.get();
 }
 

@@ -3,6 +3,55 @@
 
 using namespace boost::python;
 
+//-----------------------------------------------------------------------------------------
+//PyGsGraphicsKernel
+void makePyGsKernelDescriptorWrapper()
+{
+
+}
+
+PyGsKernelDescriptor::PyGsKernelDescriptor(const AcGsKernelDescriptor& kernel)
+    : PyGiKernelDescriptor(kernel)
+{
+
+}
+
+void PyGsKernelDescriptor::addSupport(const std::string& capability)
+{
+    impObj()->addSupport(AcUniqueString::Intern(utf8_to_wstr(capability).c_str()));
+}
+
+AcGsKernelDescriptor* PyGsKernelDescriptor::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<AcGsKernelDescriptor*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PyGsGraphicsKernel
+void makePyGsGraphicsKernelWrapper()
+{
+
+}
+
+PyGsGraphicsKernel::PyGsGraphicsKernel(const AcGsGraphicsKernel& Kernel)
+    : PyGiGraphicsKernel(Kernel)
+{
+}
+
+AcGsGraphicsKernel* PyGsGraphicsKernel::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<AcGsGraphicsKernel*>(m_pyImp.get());
+}
+
+
+//-----------------------------------------------------------------------------------------
+//PyGsView
 void makePyGsViewWrapper()
 {
     PyDocString DS("PyGsView");
@@ -40,6 +89,11 @@ PyGsView::PyGsView(AcGsView* impl, bool autodelete)
 bool PyGsView::isNullObj()
 {
     return m_pyImp == nullptr;
+}
+
+PyGsGraphicsKernel PyGsView::graphicsKernel()
+{
+   return PyGsGraphicsKernel(impObj()->graphicsKernel());
 }
 
 void PyGsView::setViewport(const AcGePoint2d& lowerLeft, const AcGePoint2d& upperRight)
