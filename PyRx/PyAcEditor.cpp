@@ -93,8 +93,7 @@ private:
 boost::python::tuple makeSelectionResult(const ads_name& name, Acad::PromptStatus result)
 {
     PyAutoLockGIL lock;
-    PyEdSelectionSet set(name);
-    return boost::python::make_tuple<Acad::PromptStatus, PyEdSelectionSet>(result, set);
+    return boost::python::make_tuple<Acad::PromptStatus, PyEdSelectionSet>(result, PyEdSelectionSet{ name });
 }
 
 //-----------------------------------------------------------------------------------------
