@@ -14,7 +14,7 @@ BOOST_PYTHON_MODULE(PyGs)
     makePyGsManagerWrapper();
     makePyGsViewWrapper();
 
-#ifdef PYRXDEBUG
+#ifdef PYRX_IN_PROGRESS_GS_GI
     makePyGsKernelDescriptorWrapper();
     makePyGsGraphicsKernelWrapper();
 #endif

@@ -2,7 +2,7 @@
 #include "PyDbTextEditor.h"
 using namespace boost::python;
 
-#ifdef PYRX_IN_PROGRESS
+#ifdef PYRX_IN_PROGRESS_INPLACE_TEXT_EDITOR
 
 //-----------------------------------------------------------------------------------------
 //PyDbTextEditorLocation
@@ -246,4 +246,4 @@ AcDbTextEditorColumn* PyDbTextEditorColumn::impObj(const std::source_location& s
     return static_cast<AcDbTextEditorColumn*>(m_pyImp.get());
 }
 
-#endif//PYRX_IN_PROGRESS
+#endif//PYRX_IN_PROGRESS_INPLACE_TEXT_EDITOR
