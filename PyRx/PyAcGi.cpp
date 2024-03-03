@@ -24,7 +24,7 @@ BOOST_PYTHON_MODULE(PyGi)
     makePyGiViewportGeometryWrapper();
     makePyGiTransientManagerWrapper();
 
-#ifdef PYRXDEBUG
+#ifdef PYRX_IN_PROGRESS_GS_GI
     makePyGiKernelDescriptorWrapper();
     makePyGiGraphicsKernelWrapper();
 #endif

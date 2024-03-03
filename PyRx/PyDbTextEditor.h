@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef PYRX_IN_PROGRESS
+#ifdef PYRX_IN_PROGRESS_INPLACE_TEXT_EDITOR
 #include "dbtexteditor.h"
 
 //-----------------------------------------------------------------------------------------
@@ -114,4 +114,4 @@ public:
     inline AcDbTextEditorColumn* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-#endif//PYRX_IN_PROGRESS
+#endif//PYRX_IN_PROGRESS_INPLACE_TEXT_EDITOR
