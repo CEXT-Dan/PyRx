@@ -10,7 +10,9 @@ class PyGsKernelDescriptor : PyGiKernelDescriptor
 public:
     PyGsKernelDescriptor(const AcGsKernelDescriptor& kernel);
     void addSupport(const std::string& capability);
+    static std::string  className();
 
+public:
     AcGsKernelDescriptor* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -22,7 +24,14 @@ class PyGsGraphicsKernel : PyGiGraphicsKernel
 {
 public:
     PyGsGraphicsKernel(const AcGsGraphicsKernel& Kernel);
+    void        addRef(void);
+    bool        delRef(void);
+    bool        isCompatibleWith(const PyGsKernelDescriptor& descriptor) const;
 
+
+    static std::string  className();
+
+public:
     AcGsGraphicsKernel* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

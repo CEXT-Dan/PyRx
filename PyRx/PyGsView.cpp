@@ -7,18 +7,24 @@ using namespace boost::python;
 //PyGsGraphicsKernel
 void makePyGsKernelDescriptorWrapper()
 {
-
+    class_<PyGsKernelDescriptor>("KernelDescriptor", boost::python::no_init)
+        .def("className", &PyGsKernelDescriptor::className).staticmethod("className")
+        ;
 }
 
 PyGsKernelDescriptor::PyGsKernelDescriptor(const AcGsKernelDescriptor& kernel)
     : PyGiKernelDescriptor(kernel)
 {
-
 }
 
 void PyGsKernelDescriptor::addSupport(const std::string& capability)
 {
     impObj()->addSupport(AcUniqueString::Intern(utf8_to_wstr(capability).c_str()));
+}
+
+std::string PyGsKernelDescriptor::className()
+{
+    return "AcGsKernelDescriptor";
 }
 
 AcGsKernelDescriptor* PyGsKernelDescriptor::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -33,12 +39,34 @@ AcGsKernelDescriptor* PyGsKernelDescriptor::impObj(const std::source_location& s
 //PyGsGraphicsKernel
 void makePyGsGraphicsKernelWrapper()
 {
-
+    class_<PyGsGraphicsKernel>("GraphicsKernel", boost::python::no_init)
+        .def("className", &PyGsGraphicsKernel::className).staticmethod("className")
+        ;
 }
 
 PyGsGraphicsKernel::PyGsGraphicsKernel(const AcGsGraphicsKernel& Kernel)
     : PyGiGraphicsKernel(Kernel)
 {
+}
+
+void PyGsGraphicsKernel::addRef(void)
+{
+    impObj()->addRef();
+}
+
+bool PyGsGraphicsKernel::delRef(void)
+{
+    return impObj()->delRef();
+}
+
+bool PyGsGraphicsKernel::isCompatibleWith(const PyGsKernelDescriptor& descriptor) const
+{
+    return impObj()->isCompatibleWith(*descriptor.impObj());
+}
+
+std::string PyGsGraphicsKernel::className()
+{
+    return "AcGsGraphicsKernel";
 }
 
 AcGsGraphicsKernel* PyGsGraphicsKernel::impObj(const std::source_location& src /*= std::source_location::current()*/) const

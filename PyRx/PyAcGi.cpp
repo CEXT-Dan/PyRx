@@ -23,8 +23,11 @@ BOOST_PYTHON_MODULE(PyGi)
     makePyGiWorldGeometryWrapper();
     makePyGiViewportGeometryWrapper();
     makePyGiTransientManagerWrapper();
+
+#ifdef PYRXDEBUG
     makePyGiKernelDescriptorWrapper();
     makePyGiGraphicsKernelWrapper();
+#endif
 
     enum_<AcGiTransientDrawingMode>("AcGiTransientDrawingMode")
         .value("kAcGiMain", AcGiTransientDrawingMode::kAcGiMain)
