@@ -12,8 +12,10 @@ public:
     bool                supports(const PyGiKernelDescriptor& desc) const;
     static std::string  className();
 
+    AcGiKernelDescriptor* impObj(const std::source_location& src = std::source_location::current()) const;
+
 public:
-    AcGiKernelDescriptor impl;
+    std::shared_ptr<AcGiKernelDescriptor> m_pyImp = nullptr;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -27,8 +29,10 @@ public:
     const PyGiKernelDescriptor  getDescriptor(void);
     static std::string          className();
 
+    AcGiGraphicsKernel* impObj(const std::source_location& src = std::source_location::current()) const;
+
 public:
-    AcGiGraphicsKernel impl;
+    std::shared_ptr<AcGiGraphicsKernel> m_pyImp = nullptr;
 };
 
 class PyGiContext

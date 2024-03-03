@@ -1,4 +1,30 @@
 #pragma once
+#include "PyGiGraphicsKernel.h"
+
+//-----------------------------------------------------------------------------------------
+//PyGsGraphicsKernel
+void makePyGsKernelDescriptorWrapper();
+
+class PyGsKernelDescriptor : PyGiKernelDescriptor
+{
+public:
+    PyGsKernelDescriptor(const AcGsKernelDescriptor& kernel);
+    void addSupport(const std::string& capability);
+
+    AcGsKernelDescriptor* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PyGsGraphicsKernel
+void makePyGsGraphicsKernelWrapper();
+
+class PyGsGraphicsKernel : PyGiGraphicsKernel
+{
+public:
+    PyGsGraphicsKernel(const AcGsGraphicsKernel& Kernel);
+
+    AcGsGraphicsKernel* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 //-----------------------------------------------------------------------------------------
 //PyGsView
@@ -11,6 +37,8 @@ public:
     ~PyGsView() = default;
 
     bool                isNullObj();
+    PyGsGraphicsKernel  graphicsKernel();
+
 
     void                setViewport(const AcGePoint2d& lowerLeft, const AcGePoint2d& upperRight);
     boost::python::tuple getViewport();
@@ -26,18 +54,18 @@ public:
     bool                isPerspective(void) const;
     double              fieldWidth(void) const;
     double              fieldHeight(void) const;
-    
-    
+
+
     void                setEnableFrontClip(bool enable);
     bool                isFrontClipped(void) const;
     void                setFrontClip(double distance);
     double              frontClip(void) const;
-    
+
     void                setEnableBackClip(bool enable);
     bool                isBackClipped(void) const;
     void                setBackClip(double distance);
     double              backClip(void) const;
-    
+
     AcGeMatrix3d        viewingMatrix(void) const;
     AcGeMatrix3d        projectionMatrix(void) const;
     AcGeMatrix3d        screenMatrix(void) const;
