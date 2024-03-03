@@ -13,6 +13,11 @@ BOOST_PYTHON_MODULE(PyGs)
     makeGsCoreWrapper();
     makePyGsManagerWrapper();
     makePyGsViewWrapper();
+
+#ifdef PYRXDEBUG
+    makePyGsKernelDescriptorWrapper();
+    makePyGsGraphicsKernelWrapper();
+#endif
 }
 
 void initPyGsModule()
