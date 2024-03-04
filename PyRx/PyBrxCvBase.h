@@ -219,6 +219,33 @@ public:
     inline BrxCvDbVAlignmentView* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvStationEquation
+void makePyBrxCvStationEquationWrapper();
+
+class PyBrxCvStationEquation
+{
+public:
+    PyBrxCvStationEquation();
+    PyBrxCvStationEquation(double rawStation, double stationForward, BrxCvStationEquation::EStationEquationType type);
+    ~PyBrxCvStationEquation() = default;
+
+    bool        isNull() const;
+    double      getRawStation() const;
+    double      getStationForward() const;
+    BrxCvStationEquation::EStationEquationType getType() const;
+
+    bool        setRawStation(double rawStation);
+    bool        setStationForward(double stationForward);
+    bool        setType(BrxCvStationEquation::EStationEquationType type);
+
+    static std::string          className();
+public:
+    inline BrxCvStationEquation* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<BrxCvStationEquation> m_pyImp;
+};
+
 
 
 
