@@ -694,5 +694,93 @@ BrxCvDbView* PyBrxCvDbView::impObj(const std::source_location& src /*= std::sour
     return static_cast<BrxCvDbView*>(m_pyImp.get());
 }
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbVAlignmentView
+void makePyBrxCvDbVAlignmentViewWrapper()
+{
+    PyDocString DS("CvDbVAlignmentView");
+    class_<PyBrxCvDbVAlignmentView, bases<PyBrxCvDbView>>("CvDbVAlignmentView")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
+
+        .def("update", &PyBrxCvDbVAlignmentView::update1)
+        .def("update", &PyBrxCvDbVAlignmentView::update2, DS.ARGS({ "bUpdateDependencies : bool=True","updateOrigin : bool=True" }))
+
+        .def("className", &PyBrxCvDbVAlignmentView::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbVAlignmentView::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyBrxCvDbVAlignmentView::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyBrxCvDbVAlignmentView::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbVAlignmentView::PyBrxCvDbVAlignmentView()
+    : PyBrxCvDbVAlignmentView(new BrxCvDbVAlignmentView(), true)
+{
+}
+
+PyBrxCvDbVAlignmentView::PyBrxCvDbVAlignmentView(const PyDbObjectId& id)
+    : PyBrxCvDbVAlignmentView(openAcDbObject<BrxCvDbVAlignmentView>(id,AcDb::kForRead), false)
+{
+}
+
+PyBrxCvDbVAlignmentView::PyBrxCvDbVAlignmentView(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyBrxCvDbVAlignmentView(openAcDbObject<BrxCvDbVAlignmentView>(id, mode), false)
+{
+}
+
+PyBrxCvDbVAlignmentView::PyBrxCvDbVAlignmentView(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyBrxCvDbVAlignmentView(openAcDbObject<BrxCvDbVAlignmentView>(id, mode, erased), false)
+{
+}
+
+PyBrxCvDbVAlignmentView::PyBrxCvDbVAlignmentView(BrxCvDbVAlignmentView* ptr, bool autoDelete)
+    : PyBrxCvDbView(ptr, autoDelete)
+{
+}
+
+bool PyBrxCvDbVAlignmentView::update1()
+{
+    return impObj()->update();
+}
+
+bool PyBrxCvDbVAlignmentView::update2(bool bUpdateDependencies, bool updateOrigin)
+{
+    return impObj()->update(bUpdateDependencies, updateOrigin);
+}
+
+std::string PyBrxCvDbVAlignmentView::className()
+{
+    return "BrxCvDbVAlignmentView";
+}
+
+PyRxClass PyBrxCvDbVAlignmentView::desc()
+{
+    return PyRxClass(BrxCvDbVAlignmentView::desc(), false);
+}
+
+PyBrxCvDbVAlignmentView PyBrxCvDbVAlignmentView::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(BrxCvDbVAlignmentView::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyBrxCvDbVAlignmentView(static_cast<BrxCvDbVAlignmentView*>(src.impObj()->clone()), true);
+}
+
+PyBrxCvDbVAlignmentView PyBrxCvDbVAlignmentView::cast(const PyRxObject& src)
+{
+    PyBrxCvDbVAlignmentView dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbVAlignmentView* PyBrxCvDbVAlignmentView::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbVAlignmentView*>(m_pyImp.get());
+}
 
 #endif//BRXAPP
