@@ -6,6 +6,64 @@
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------
+//PyBrxCvDbSubObject
+void makePyBrxCvDbSubObjectWrapper()
+{
+    PyDocString DS("CvDbSubObject");
+    class_<PyBrxCvDbSubObject, bases<PyRxObject>>("CvDbSubObject", boost::python::no_init)
+        .def("name", &PyBrxCvDbSubObject::name, DS.ARGS())
+        .def("setName", &PyBrxCvDbSubObject::setName, DS.ARGS({ "val : str" }))
+        .def("description", &PyBrxCvDbSubObject::description, DS.ARGS())
+        .def("setDescription", &PyBrxCvDbSubObject::setDescription, DS.ARGS({ "val : str" }))
+        .def("className", &PyBrxCvDbSubObject::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbSubObject::desc, DS.SARGS()).staticmethod("desc")
+        ;
+}
+
+PyBrxCvDbSubObject::PyBrxCvDbSubObject(BrxCvDbSubObject* ptr, bool autoDelete)
+  : PyRxObject(ptr, autoDelete,false)
+{
+}
+
+std::string PyBrxCvDbSubObject::name() const
+{
+    return wstr_to_utf8(impObj()->name());
+}
+
+bool PyBrxCvDbSubObject::setName(const std::string& szName)
+{
+    return impObj()->setName(utf8_to_wstr(szName).c_str());
+}
+
+std::string PyBrxCvDbSubObject::description() const
+{
+    return wstr_to_utf8(impObj()->description());
+}
+
+bool PyBrxCvDbSubObject::setDescription(const std::string& szDescription)
+{
+    return impObj()->setDescription(utf8_to_wstr(szDescription).c_str());
+}
+
+std::string PyBrxCvDbSubObject::className()
+{
+    return "BrxCvDbSubObject";
+}
+
+PyRxClass PyBrxCvDbSubObject::desc()
+{
+    return PyRxClass(BrxCvDbSubObject::desc(), false);
+}
+
+BrxCvDbSubObject* PyBrxCvDbSubObject::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbSubObject*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
 //PyBrxCvDbObject
 void makePyBrxCvDbObjectWrapper()
 {
