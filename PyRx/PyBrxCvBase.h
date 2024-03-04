@@ -194,6 +194,31 @@ public:
     inline BrxCvDbView* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbVAlignmentView
+void makePyBrxCvDbVAlignmentViewWrapper();
+
+class PyBrxCvDbVAlignmentView : public PyBrxCvDbView
+{
+public:
+    PyBrxCvDbVAlignmentView();
+    PyBrxCvDbVAlignmentView(const PyDbObjectId& id);
+    PyBrxCvDbVAlignmentView(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbVAlignmentView(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbVAlignmentView(BrxCvDbVAlignmentView* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbVAlignmentView() override = default;
+
+    bool            update1();
+    bool            update2(bool bUpdateDependencies, bool updateOrigin);
+
+    static std::string          className();
+    static PyRxClass            desc();
+    static PyBrxCvDbVAlignmentView        cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbVAlignmentView        cast(const PyRxObject& src);
+public:
+    inline BrxCvDbVAlignmentView* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 
 
 
