@@ -783,4 +783,82 @@ BrxCvDbVAlignmentView* PyBrxCvDbVAlignmentView::impObj(const std::source_locatio
     return static_cast<BrxCvDbVAlignmentView*>(m_pyImp.get());
 }
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvStationEquation
+void makePyBrxCvStationEquationWrapper()
+{
+    PyDocString DS("CvStationEquation");
+    class_<PyBrxCvStationEquation>("CvStationEquation")
+        .def(init<>())
+        .def(init<double, double, BrxCvStationEquation::EStationEquationType>())
+        .def("isNull", &PyBrxCvStationEquation::isNull, DS.ARGS())
+        .def("getRawStation", &PyBrxCvStationEquation::getRawStation, DS.ARGS())
+        .def("getStationForward", &PyBrxCvStationEquation::getStationForward, DS.ARGS())
+        .def("getType", &PyBrxCvStationEquation::getType, DS.ARGS())
+        .def("setRawStation", &PyBrxCvStationEquation::setRawStation, DS.ARGS({ "val : float" }))
+        .def("setStationForward", &PyBrxCvStationEquation::setStationForward, DS.ARGS({ "val : float" }))
+        .def("setType", &PyBrxCvStationEquation::setType, DS.ARGS({ "val : PyBrxCv.EStationEquationType" }))
+        .def("className", &PyBrxCvStationEquation::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxCvStationEquation::PyBrxCvStationEquation()
+    : m_pyImp(new BrxCvStationEquation())
+{
+}
+
+PyBrxCvStationEquation::PyBrxCvStationEquation(double rawStation, double stationForward, BrxCvStationEquation::EStationEquationType type)
+    : m_pyImp(new BrxCvStationEquation(rawStation, stationForward, type))
+{
+}
+
+bool PyBrxCvStationEquation::isNull() const
+{
+    return impObj()->isNull();
+}
+
+double PyBrxCvStationEquation::getRawStation() const
+{
+    return impObj()->getRawStation();
+}
+
+double PyBrxCvStationEquation::getStationForward() const
+{
+    return impObj()->getStationForward();
+}
+
+BrxCvStationEquation::EStationEquationType PyBrxCvStationEquation::getType() const
+{
+    return impObj()->getType();
+}
+
+bool PyBrxCvStationEquation::setRawStation(double rawStation)
+{
+    return impObj()->setRawStation(rawStation);
+}
+
+bool PyBrxCvStationEquation::setStationForward(double stationForward)
+{
+    return impObj()->setStationForward(stationForward);
+}
+
+bool PyBrxCvStationEquation::setType(BrxCvStationEquation::EStationEquationType type)
+{
+    return impObj()->setType(type);
+}
+
+std::string PyBrxCvStationEquation::className()
+{
+    return "BrxCvStationEquation";
+}
+
+BrxCvStationEquation* PyBrxCvStationEquation::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvStationEquation*>(m_pyImp.get());
+}
+
+
 #endif//BRXAPP

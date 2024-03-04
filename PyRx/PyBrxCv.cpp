@@ -54,6 +54,11 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eQuick", BrxCvCivil3dEntityInfo::Civil3dProfileType::eQuick)
         .export_values()
         ;
+    enum_<BrxCvStationEquation::EStationEquationType>("EStationEquationType")
+        .value("Increasing", BrxCvStationEquation::EStationEquationType::Increasing)
+        .value("Decreasing", BrxCvStationEquation::EStationEquationType::Decreasing)
+        .export_values()
+        ;
 };
 
 void initPyBrxCvModule()
