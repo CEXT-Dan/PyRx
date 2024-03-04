@@ -3,6 +3,7 @@ import inspect
 import io
 import pydoc
 import enum
+import traceback
 from collections import OrderedDict
 
 import PyRx  # = Runtime runtime
@@ -13,7 +14,6 @@ import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
 import PyPl  # = plot
-
 
 class_types = {}
 
@@ -172,12 +172,21 @@ def generate_txt_help(moduleName, module):
     with open(moduleName, mode='w') as f:
 	    print(str, file=f)
 
-
 def PyRxCmd_pygenpyi():
-    for module in all_modules:
-        buildClassDict(module[0], module[1])
-    for module in all_modules:
-        generate_pyi(module[0] + ".pyi", module[1])
+    try:
+        #add brx modules only 
+        if  "BRX" in  PyAp.Application.hostAPI():
+            import PyBrxCv
+            
+            all_modules.append(("PyBrxCv", PyBrxCv))
+            #all_modules_names.append("PyBrxCv")
+            
+        for module in all_modules:
+            buildClassDict(module[0], module[1])
+        for module in all_modules:
+            generate_pyi(module[0] + ".pyi", module[1])
+    except Exception as err:
+        traceback.print_exception(err)
 
 def PyRxCmd_pygenhtmlhelp():
       for module in all_modules:
