@@ -6,8 +6,306 @@ import PyDb
 import PyAp
 import PyEd
 import PyPl
-import PyBrxCv
-import PyBrxCv
+
+class Civil3dAlignmentType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eCenterline (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eCurbReturn (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eMiscellaneous (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eNotAlignment (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eOffset (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eRail (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class Civil3dEntityType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eAlignment (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eNoEntity (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eProfile (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eProfileView (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinSurface (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class Civil3dLabels:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eAlignmentsLabels (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eAllLabels (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eDefaultLabels (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eNoLabels (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eSurfaceLabels (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eUnattachedLabels (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class Civil3dProfileType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eDynamicSurface (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eLayout (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eNotProfile (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eQuick (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eStaticSurface (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class CvCivil3dConverter:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Database)arg2, (Database)arg3, (Civil3dLabels)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbDatabase,class PyDbDatabase {lvalue},enum BrxCvCivil3dConverter::Civil3dLabels)'''
+    ...
+    def attachedLabels (self: CvCivil3dConverter,civilEntity: PyBrxCv.CvCivil3dEntityInfo)-> list :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def convert (self: CvCivil3dConverter,entitiesToConvert : list)-> list :
+      '''                             '''
+    ...
+    def getCivilEntities (self, *args, **kwargs)-> list :
+      '''getCivilEntities( (CvCivil3dConverter)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getCivilEntities(class PyBrxCvCivil3dConverter {lvalue})'''
+    ...
+    def getInsertedEntities (self, *args, **kwargs)-> list :
+      '''getInsertedEntities( (CvCivil3dConverter)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getInsertedEntities(class PyBrxCvCivil3dConverter {lvalue})
+
+getInsertedEntities( (CvCivil3dConverter)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getInsertedEntities(class PyBrxCvCivil3dConverter {lvalue})'''
+    ...
+    def unattachedLabels (self, *args, **kwargs)-> list :
+      '''unattachedLabels( (CvCivil3dConverter)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list unattachedLabels(class PyBrxCvCivil3dConverter {lvalue})'''
+    ...
+
+class CvCivil3dEntityInfo:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def alignmentType (self, *args, **kwargs)-> PyBrxCv.Civil3dAlignmentType :
+      '''alignmentType( (CvCivil3dEntityInfo)arg1) -> Civil3dAlignmentType :
+
+    C++ signature :
+        enum BrxCvCivil3dEntityInfo::Civil3dAlignmentType alignmentType(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    ...
+    def baseAlignment (self, *args, **kwargs)-> PyBrxCv.CvCivil3dEntityInfo :
+      '''baseAlignment( (CvCivil3dEntityInfo)arg1) -> CvCivil3dEntityInfo :
+
+    C++ signature :
+        class PyBrxCvCivil3dEntityInfo baseAlignment(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    ...
+    def baseSurface (self, *args, **kwargs)-> PyBrxCv.CvCivil3dEntityInfo :
+      '''baseSurface( (CvCivil3dEntityInfo)arg1) -> CvCivil3dEntityInfo :
+
+    C++ signature :
+        class PyBrxCvCivil3dEntityInfo baseSurface(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def description (self, *args, **kwargs)-> str :
+      '''description( (CvCivil3dEntityInfo)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > description(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (CvCivil3dEntityInfo)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    ...
+    def name (self, *args, **kwargs)-> str :
+      '''name( (CvCivil3dEntityInfo)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    ...
+    def objectId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''objectId( (CvCivil3dEntityInfo)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId objectId(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    ...
+    def profileType (self, *args, **kwargs)-> PyBrxCv.Civil3dProfileType :
+      '''profileType( (CvCivil3dEntityInfo)arg1) -> Civil3dProfileType :
+
+    C++ signature :
+        enum BrxCvCivil3dEntityInfo::Civil3dProfileType profileType(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    ...
+    def profiles (self, *args, **kwargs)-> list :
+      '''profiles( (CvCivil3dEntityInfo)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list profiles(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    ...
+    def type (self, *args, **kwargs)-> PyBrxCv.Civil3dEntityType :
+      '''type( (CvCivil3dEntityInfo)arg1) -> Civil3dEntityType :
+
+    C++ signature :
+        enum BrxCvCivil3dEntityInfo::Civil3dEntityType type(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    ...
 
 class CvDbCurve:
     def __init__ (self: CvDbCurve,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
