@@ -271,7 +271,6 @@ PyBrxCvDbCurve PyBrxCvDbCurve::cloneFrom(const PyRxObject& src)
 
 PyBrxCvDbCurve PyBrxCvDbCurve::cast(const PyRxObject& src)
 {
-
     PyBrxCvDbCurve dest(nullptr, false);
     PyRxObject rxo = src;
     std::swap(rxo.m_pyImp, dest.m_pyImp);
@@ -392,7 +391,7 @@ void makePyBrxCvCivil3dConverterWrapper()
     PyDocString DS("CvCivil3dConverter");
     class_<PyBrxCvCivil3dConverter>("CvCivil3dConverter")
         .def(init<>())
-        .def(init<const PyDbDatabase&, PyDbDatabase&, BrxCvCivil3dConverter::Civil3dLabels>())
+        .def(init<const PyDbDatabase&, PyDbDatabase&, BrxCvCivil3dConverter::Civil3dLabels>(DS.ARGS({ "sourceDb: PyDb.Database=None", "targetDb: PyDb.Database=None", "doLabels: PyBrxCv.Civil3dLabels=eDefaultLabels" })))
         .def("getCivilEntities", &PyBrxCvCivil3dConverter::getCivilEntities)
         .def("convert", &PyBrxCvCivil3dConverter::convert, DS.ARGS({ "entitiesToConvert : list" }))
         .def("attachedLabels", &PyBrxCvCivil3dConverter::attachedLabels, DS.ARGS({ "civilEntity: PyBrxCv.CvCivil3dEntityInfo" }))
@@ -473,5 +472,227 @@ BrxCvCivil3dConverter* PyBrxCvCivil3dConverter::impObj(const std::source_locatio
         }
     return impl.get();
 }
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbView
+void makePyBrxCvDbViewWrapper()
+{
+    PyDocString DS("CvDbView");
+    class_<PyBrxCvDbView, bases<PyBrxCvDbEntity>>("CvDbView")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
+
+        .def("graphCount", &PyBrxCvDbView::graphCount, DS.ARGS())
+        .def("graphAt", &PyBrxCvDbView::graphAt, DS.ARGS({ "val : int" }))
+        .def("removeGraph", &PyBrxCvDbView::removeGraph)
+        .def("baseHAlignment", &PyBrxCvDbView::baseHAlignment, DS.ARGS())
+        .def("setBaseHAlignment", &PyBrxCvDbView::setBaseHAlignment, DS.ARGS({ "id : PyDb.ObjectId" }))
+        .def("origin", &PyBrxCvDbView::origin, DS.ARGS())
+        .def("setOrigin", &PyBrxCvDbView::setOrigin, DS.ARGS({ "pt : PyGe.Point2d" }))
+        .def("baseElevation", &PyBrxCvDbView::baseElevation, DS.ARGS())
+        .def("setBaseElevation", &PyBrxCvDbView::setBaseElevation, DS.ARGS({ "val : float" }))
+        .def("verticalScale", &PyBrxCvDbView::verticalScale, DS.ARGS())
+        .def("setVerticalScale", &PyBrxCvDbView::setVerticalScale, DS.ARGS({ "val : float" }))
+        .def("horizontalScale", &PyBrxCvDbView::horizontalScale, DS.ARGS())
+        .def("setHorizontalScale", &PyBrxCvDbView::setHorizontalScale, DS.ARGS({ "val : float" }))
+        .def("length", &PyBrxCvDbView::length, DS.ARGS())
+        .def("setLength", &PyBrxCvDbView::setLength, DS.ARGS({ "val : float" }))
+        .def("height", &PyBrxCvDbView::height, DS.ARGS())
+        .def("setHeight", &PyBrxCvDbView::setHeight, DS.ARGS({ "val : float" }))
+        .def("addGraph", &PyBrxCvDbView::addGraph, DS.ARGS({ "id : PyDb.ObjectId" }))
+        .def("toWCSX", &PyBrxCvDbView::toWCSX, DS.ARGS({ "val : float" }))
+        .def("toWCSY", &PyBrxCvDbView::toWCSY, DS.ARGS({ "val : float" }))
+        .def("toWCSPoint2d", &PyBrxCvDbView::toWCSPoint2d, DS.ARGS({ "pt : PyGe.Point2d" }))
+        .def("fromWCSX", &PyBrxCvDbView::fromWCSX, DS.ARGS({ "val : float" }))
+        .def("fromWCSY", &PyBrxCvDbView::fromWCSY, DS.ARGS({ "val : float" }))
+        .def("fromWCSPoint2d", &PyBrxCvDbView::fromWCSPoint2d, DS.ARGS({ "pt : PyGe.Point2d" }))
+
+        .def("className", &PyBrxCvDbView::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbView::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyBrxCvDbView::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyBrxCvDbView::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbView::PyBrxCvDbView()
+    : PyBrxCvDbView(new BrxCvDbView(),true)
+{
+}
+
+PyBrxCvDbView::PyBrxCvDbView(const PyDbObjectId& id)
+    : PyBrxCvDbView(openAcDbObject<BrxCvDbView>(id, AcDb::kForRead), false)
+{
+}
+
+PyBrxCvDbView::PyBrxCvDbView(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyBrxCvDbView(openAcDbObject<BrxCvDbView>(id, mode), false)
+{
+}
+
+PyBrxCvDbView::PyBrxCvDbView(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyBrxCvDbView(openAcDbObject<BrxCvDbView>(id, mode, erased), false)
+{
+}
+
+PyBrxCvDbView::PyBrxCvDbView(BrxCvDbView* ptr, bool autoDelete)
+    : PyBrxCvDbEntity(ptr, autoDelete)
+{
+}
+
+Adesk::UInt32 PyBrxCvDbView::graphCount() const
+{
+    return impObj()->graphCount();
+}
+
+PyDbObjectId PyBrxCvDbView::graphAt(Adesk::UInt32 idx) const
+{
+    return PyDbObjectId(impObj()->graphAt(idx));
+}
+
+bool PyBrxCvDbView::removeGraph(const PyDbObjectId& idGraph)
+{
+    return impObj()->removeGraph(idGraph.m_id);
+}
+
+PyDbObjectId PyBrxCvDbView::baseHAlignment() const
+{
+    return PyDbObjectId(impObj()->baseHAlignment());
+}
+
+bool PyBrxCvDbView::setBaseHAlignment(const PyDbObjectId& id)
+{
+    return impObj()->setBaseHAlignment(id.m_id);
+}
+
+AcGePoint2d PyBrxCvDbView::origin() const
+{
+    return impObj()->origin();
+}
+
+bool PyBrxCvDbView::setOrigin(const AcGePoint2d& pnt)
+{
+    return impObj()->setOrigin(pnt);
+}
+
+double PyBrxCvDbView::baseElevation() const
+{
+    return impObj()->baseElevation();
+}
+
+bool PyBrxCvDbView::setBaseElevation(double elevation)
+{
+    return impObj()->setBaseElevation(elevation);
+}
+
+double PyBrxCvDbView::verticalScale() const
+{
+    return impObj()->baseElevation();
+}
+
+bool PyBrxCvDbView::setVerticalScale(double vScale)
+{
+    return impObj()->setVerticalScale(vScale);
+}
+
+double PyBrxCvDbView::horizontalScale() const
+{
+    return impObj()->horizontalScale();
+}
+
+bool PyBrxCvDbView::setHorizontalScale(double hScale)
+{
+    return impObj()->setHorizontalScale(hScale);
+}
+
+double PyBrxCvDbView::length() const
+{
+    return impObj()->length();
+}
+
+bool PyBrxCvDbView::setLength(double viewLength)
+{
+    return impObj()->setLength(viewLength);
+}
+
+double PyBrxCvDbView::height() const
+{
+    return impObj()->height();
+}
+
+bool PyBrxCvDbView::setHeight(double viewHeight)
+{
+    return impObj()->setHeight(viewHeight);
+}
+
+bool PyBrxCvDbView::addGraph(const PyDbObjectId& idGraph)
+{
+    return impObj()->addGraph(idGraph.m_id);
+}
+
+double PyBrxCvDbView::toWCSX(double x) const
+{
+    return impObj()->toWCSX(x);
+}
+
+double PyBrxCvDbView::toWCSY(double y) const
+{
+    return impObj()->toWCSY(y);
+}
+
+AcGePoint2d PyBrxCvDbView::toWCSPoint2d(const AcGePoint2d& point) const
+{
+    return impObj()->toWCSPoint2d(point);
+}
+
+double PyBrxCvDbView::fromWCSX(double x) const
+{
+    return impObj()->fromWCSX(x);
+}
+
+double PyBrxCvDbView::fromWCSY(double y) const
+{
+    return impObj()->fromWCSY(y);
+}
+
+AcGePoint2d PyBrxCvDbView::fromWCSPoint2d(const AcGePoint2d& point) const
+{
+    return impObj()->fromWCSPoint2d(point);
+}
+
+std::string PyBrxCvDbView::className()
+{
+    return "BrxCvDbView";
+}
+
+PyRxClass PyBrxCvDbView::desc()
+{
+    return PyRxClass(BrxCvDbCurve::desc(), false);
+}
+
+PyBrxCvDbView PyBrxCvDbView::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(BrxCvDbView::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyBrxCvDbView(static_cast<BrxCvDbView*>(src.impObj()->clone()), true);
+}
+
+PyBrxCvDbView PyBrxCvDbView::cast(const PyRxObject& src)
+{
+    PyBrxCvDbView dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbView* PyBrxCvDbView::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbView*>(m_pyImp.get());
+}
+
 
 #endif//BRXAPP

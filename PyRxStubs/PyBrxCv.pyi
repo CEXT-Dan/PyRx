@@ -178,21 +178,8 @@ class Civil3dProfileType:
     ...
 
 class CvCivil3dConverter:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Database)arg2, (Database)arg3, (Civil3dLabels)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbDatabase,class PyDbDatabase {lvalue},enum BrxCvCivil3dConverter::Civil3dLabels)'''
+    def __init__ (self: CvCivil3dConverter,sourceDb: PyDb.Database=None,targetDb: PyDb.Database=None,doLabels: PyBrxCv.Civil3dLabels=eDefaultLabels)-> None :
+      '''                             '''
     ...
     def attachedLabels (self: CvCivil3dConverter,civilEntity: PyBrxCv.CvCivil3dEntityInfo)-> list :
       '''                             '''
