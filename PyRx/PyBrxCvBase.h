@@ -10,6 +10,7 @@
 
 class PyDbObjectId;
 class PyDbDatabase;
+class PyBrxCvDbHAlignment;
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbObject
@@ -123,7 +124,6 @@ public:
     std::shared_ptr <BrxCvCivil3dEntityInfo> pimpl;
 };
 
-
 //-----------------------------------------------------------------------------------
 //PyBrxCvCivil3dConverter
 void makePyBrxCvCivil3dConverterWrapper();
@@ -145,7 +145,6 @@ public:
 public:
     std::shared_ptr<BrxCvCivil3dConverter> impl;
 };
-
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbView
@@ -228,6 +227,7 @@ class PyBrxCvStationEquation
 public:
     PyBrxCvStationEquation();
     PyBrxCvStationEquation(double rawStation, double stationForward, BrxCvStationEquation::EStationEquationType type);
+    PyBrxCvStationEquation(const BrxCvStationEquation& equation);
     ~PyBrxCvStationEquation() = default;
 
     bool        isNull() const;
@@ -246,7 +246,226 @@ public:
     std::shared_ptr<BrxCvStationEquation> m_pyImp;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvStationEquation
+void makePyBrxCvStationEquationsWrapper();
 
+class PyBrxCvStationEquations
+{
+public:
+    PyBrxCvStationEquations();
+    PyBrxCvStationEquations(const BrxCvStationEquations& other);
+    PyBrxCvStationEquations(PyBrxCvDbHAlignment& alignmentPtr);
+    ~PyBrxCvStationEquations() = default;
+
+    Adesk::UInt64       stationEquationsCount() const;
+    double              getRefStartingLength() const;
+    double              getRefRawStartingStation() const;
+    double              getStartingStation() const;
+    double              getStation(double rawStation) const;
+    double              getRawStationFromLength(double length) const;
+    double              getLengthFromRawStation(double rawStation) const;
+    double              getStationBack(Adesk::UInt64 idx);
+    boost::python::list getRawStation(double station) const;
+    PyBrxCvStationEquation getStationEquation(Adesk::UInt64 idx) const;
+    bool                setRefStartingLength(double startingStation);
+    bool                setRefRawStartingStation(double rawStartingStation);
+    bool                addStationEquation(const PyBrxCvStationEquation& equation);
+    bool                removeStationEquation(Adesk::UInt64 idx);
+    bool                removeAllStationEquations();
+    bool                update();
+
+    static std::string            className();
+public:
+    inline BrxCvStationEquations* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<BrxCvStationEquations> m_pyImp;
+};
+
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbHAlignment
+void makePyBrxCvDbHAlignmentWrapper();
+
+class PyBrxCvDbHAlignment : public PyBrxCvDbCurve
+{
+    using EArcType = BrxCvDbHAlignment::EArcType;
+    using EArcParameterType = BrxCvDbHAlignment::EArcParameterType;
+    using ESpiralParameterType = BrxCvDbHAlignment::ESpiralParameterType;
+    using ESpiralDefinitionType = BrxCvDbHAlignment::ESpiralDefinitionType;
+
+public:
+    PyBrxCvDbHAlignment();
+    PyBrxCvDbHAlignment(const PyDbObjectId& id);
+    PyBrxCvDbHAlignment(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbHAlignment(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbHAlignment(BrxCvDbHAlignment* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbHAlignment() override = default;
+
+    Adesk::UInt32           verticalAlignmentCount() const;
+    PyDbObjectId            verticalAlignmentAt(Adesk::UInt32 index) const;
+    Adesk::UInt32           alignment3dCount() const;
+    PyDbObjectId            alignment3dAt(Adesk::UInt32 index) const;
+    Adesk::UInt32           verticalAlignmentViewCount() const;
+    PyDbObjectId            verticalAlignmentViewAt(Adesk::UInt32 index) const;
+    double                  length() const;
+    size_t                  elementCount() const;
+
+    boost::python::tuple    getStationAtPoint1(const AcGePoint2d& point) const;
+    boost::python::tuple    getStationAtPoint2(const AcGePoint2d& point, double fromStation, double toStation) const;
+    boost::python::tuple    getPointAtStation(const double station) const;
+
+    Adesk::UInt64           firstElementId() const;
+    Adesk::UInt64           lastElementId() const;
+    Adesk::UInt64           firstLineElementId() const;
+
+
+    Adesk::UInt64           nextLineElementId(Adesk::UInt64 id) const;
+    Adesk::UInt64           previousLineElementId(Adesk::UInt64 id) const;
+
+    //BrxCvDbHAlignmentElementPtr elementAtId(Adesk::UInt64 id) const;
+    //BrxCvDbHAlignmentElementPtr elementAtStation(double station) const;
+    //Adesk::UInt64 curveAtPI(const BrxCvDbHAlignmentPI* pi) const;
+    //BrxCvDbHAlignmentPIPtrArray getPIsArray() const;
+
+    boost::python::list     getUnorderedElementIds() const;
+    Adesk::UInt64           getElementId(Adesk::GsMarker gsMarker) const;
+    bool                    update();
+    double                  getRadius(double param) const;
+
+    Adesk::UInt64 addLineFixed1(Adesk::UInt64 prevId, double length);
+    Adesk::UInt64 addLineFixed2(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint);
+    Adesk::UInt64 addLineTo1(Adesk::UInt64 nextId, const AcGePoint2d& point);
+    Adesk::UInt64 addLineFrom1(Adesk::UInt64 prevId, const AcGePoint2d& point);
+    Adesk::UInt64 addLineTo2(Adesk::UInt64 nextId, double length);
+    Adesk::UInt64 addLineFrom2(Adesk::UInt64 prevId, double length);
+    Adesk::UInt64 addLineBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId);
+    Adesk::UInt64 insertLineFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, Adesk::UInt64 prevId);
+    Adesk::UInt64 addArcAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId);
+    Adesk::UInt64 addArcFixed1(const AcGePoint2d& center, double radius, bool isClockwise);
+    Adesk::UInt64 addArcFixed2(const AcGePoint2d& startPoint, const AcGePoint2d& midPoint, const AcGePoint2d& endPoint);
+    Adesk::UInt64 addArcTo1(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint);
+    Adesk::UInt64 addArcFrom1(Adesk::UInt64 prevId, const AcGePoint2d& passThroughPoint);
+    Adesk::UInt64 addArcTo2(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint, const AcGeVector2d& direction);
+    Adesk::UInt64 addArcFrom2(Adesk::UInt64 prevId, const AcGePoint2d& passThroughPoint, const AcGeVector2d& direction);
+
+    Adesk::UInt64 addArcTo3(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint, 
+        double radius, bool isGreaterThan180, BrxCvDbHAlignment::EArcType arcType);
+
+    Adesk::UInt64 addArcFrom3(Adesk::UInt64 previous, const AcGePoint2d& passThroughPoint, 
+        double radius, bool isGreaterThan180, BrxCvDbHAlignment::EArcType arcType);
+
+    Adesk::UInt64 addArcTo4(Adesk::UInt64 nextId, double radius, double paramValue, 
+        BrxCvDbHAlignment::EArcParameterType paramType, bool isClockwise);
+
+    Adesk::UInt64 addArcFrom4(Adesk::UInt64 prevId, double radius,
+        double paramValue, BrxCvDbHAlignment::EArcParameterType paramType, bool isClockwise);
+
+    Adesk::UInt64 addArcBetween1(Adesk::UInt64 prevId, Adesk::UInt64 nextId, const AcGePoint2d& passThrough);
+
+    Adesk::UInt64 addArcBetween2(Adesk::UInt64 prevId, Adesk::UInt64 nextId,
+        double parameter, BrxCvDbHAlignment::EArcParameterType paramType,
+        bool isGreaterThan180, BrxCvDbHAlignment::EArcType arcType);
+
+    Adesk::UInt64 addSCSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId,
+        double spiral1, double spiral2, BrxCvDbHAlignment::ESpiralParameterType spiralType
+        , double radius, BrxCvDbHAlignment::ESpiralDefinitionType spiralDef);
+
+    Adesk::UInt64 addSTSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId,double spiral1Param, 
+        double spiral2Param,  BrxCvDbHAlignment::ESpiralParameterType spiralParamType, 
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+
+    Adesk::UInt64 addSSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, 
+        double spiralRatio, BrxCvDbHAlignment::ESpiralParameterType spiralParamType, 
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+
+    Adesk::UInt64 addSpiralFrom(Adesk::UInt64 prevId, double radius, 
+        double length, bool isClockwise, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+
+    Adesk::UInt64 addSpiralTo(Adesk::UInt64 nextId, double radius, double length,
+        bool isClockwise, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+
+    Adesk::UInt64 addSpiralBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId,
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+
+    Adesk::UInt64 addSTFrom1(Adesk::UInt64 prevId, double spiralParam, 
+        BrxCvDbHAlignment::ESpiralParameterType spiralParamType, 
+        const AcGePoint2d& passThroughPoint, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+
+    Adesk::UInt64 addTSTo1(Adesk::UInt64 nextId, double spiralParam, 
+        BrxCvDbHAlignment::ESpiralParameterType spiralParamType, 
+        const AcGePoint2d& passThroughPoint, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+
+    Adesk::UInt64 addSTFrom2(Adesk::UInt64 prevId, double spiralParam, 
+        BrxCvDbHAlignment::ESpiralParameterType spiralParamType, 
+        double tangentLength, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+
+    Adesk::UInt64 addTSTo2(Adesk::UInt64 nextId, double spiralParam, 
+        BrxCvDbHAlignment::ESpiralParameterType spiralParamType, 
+        double tangentLength, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+
+    Adesk::UInt64 addSCFrom1(Adesk::UInt64 prevId, double spiralParam,
+        BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
+        double radius, const AcGePoint2d& passThroughPoint,
+        bool isGreaterThan180,
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+
+    Adesk::UInt64 addCSTo1(Adesk::UInt64 nextId, double spiralParam,
+        BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
+        double radius, const AcGePoint2d& passThroughPoint,
+        bool isGreaterThan180,
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+
+    Adesk::UInt64 addSCFrom2(Adesk::UInt64 prevId, double spiralParam,
+        BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
+        double radius, double arcLength, bool isClockwise,
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+
+    Adesk::UInt64 addCSTo2(Adesk::UInt64 nextId, double spiralParam,
+        BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
+        double radius, double arcLength, bool isClockwise,
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+
+    Adesk::UInt64 addSSCFrom(Adesk::UInt64 prevId, double spiral1Param, double spiral2Param,
+        BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
+        double radius, const AcGePoint2d& passThroughPoint,
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+
+    Adesk::UInt64 addCSSTo(Adesk::UInt64 nextId, double spiral1Param, double spiral2Param,
+        BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
+        double radius, const AcGePoint2d& passThroughPoint,
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+
+
+    Adesk::UInt64 addSCSAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId);
+
+
+    bool            deleteElement(Adesk::UInt64 id);
+    Adesk::UInt32   style() const;
+    bool            setStyle(const Adesk::UInt32 style);
+
+    Adesk::UInt32   elementExtensionColor() const;
+    Adesk::UInt32   tangentExtensionColor() const;
+    Adesk::UInt32   lineElementColor() const;
+    Adesk::UInt32   curveElementColor() const;
+    Adesk::UInt32   spiralElementColor() const;
+    //
+    bool            setElementExtensionColor(const Adesk::UInt32 color);
+    bool            setTangentExtensionColor(const Adesk::UInt32 color);
+    bool            setLineElementColor(const Adesk::UInt32 color);
+    bool            setCurveElementColor(const Adesk::UInt32 color);
+    bool            setSpiralElementColor(const Adesk::UInt32 color);
+
+    PyBrxCvStationEquations stationEquations() const;
+    bool                    setStationEquations(const PyBrxCvStationEquations& stationEquations);
+
+    static std::string                className();
+    static PyRxClass                  desc();
+    static PyBrxCvDbHAlignment        cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbHAlignment        cast(const PyRxObject& src);
+public:
+    inline BrxCvDbHAlignment* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 
 #endif//BRXAPP
