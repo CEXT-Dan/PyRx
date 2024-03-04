@@ -6,6 +6,7 @@
 #include "BrxCvDbEntity.h"
 #include "BrxCvDbCurve.h"
 #include "BrxCvCivil3dConverter.h"
+#include "BrxCvDbAlignments.h"
 
 class PyDbObjectId;
 class PyDbDatabase;
@@ -144,6 +145,57 @@ public:
 public:
     std::shared_ptr<BrxCvCivil3dConverter> impl;
 };
+
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbView
+void makePyBrxCvDbViewWrapper();
+
+class PyBrxCvDbView : public PyBrxCvDbEntity
+{
+public:
+    PyBrxCvDbView();
+    PyBrxCvDbView(const PyDbObjectId& id);
+    PyBrxCvDbView(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbView(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbView(BrxCvDbView* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbView() override = default;
+
+    Adesk::UInt32   graphCount() const;
+    PyDbObjectId    graphAt(Adesk::UInt32 idx) const;
+    bool            removeGraph(const PyDbObjectId& idGraph);
+    PyDbObjectId    baseHAlignment() const;
+    bool            setBaseHAlignment(const PyDbObjectId& id);
+    AcGePoint2d     origin() const;
+    bool            setOrigin(const AcGePoint2d& pnt);
+    double          baseElevation() const;
+    bool            setBaseElevation(double elevation);
+    double          verticalScale() const;
+    bool            setVerticalScale(double vScale);
+    double          horizontalScale() const;
+    bool            setHorizontalScale(double hScale);
+    double          length() const;
+    bool            setLength(double viewLength);
+    double          height() const;
+    bool            setHeight(double viewHeight);
+    bool            addGraph(const PyDbObjectId& idGraph);
+    double          toWCSX(double x) const;
+    double          toWCSY(double y) const;
+    AcGePoint2d     toWCSPoint2d(const AcGePoint2d& point) const;
+    double          fromWCSX(double x) const;
+    double          fromWCSY(double y) const;
+    AcGePoint2d     fromWCSPoint2d(const AcGePoint2d& point) const;
+
+    static std::string          className();
+    static PyRxClass            desc();
+    static PyBrxCvDbView        cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbView        cast(const PyRxObject& src);
+public:
+    inline BrxCvDbView* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+
 
 #endif//BRXAPP
 
