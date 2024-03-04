@@ -8,6 +8,7 @@ using namespace boost::python;
 void makePyGsKernelDescriptorWrapper()
 {
     class_<PyGsKernelDescriptor>("KernelDescriptor", boost::python::no_init)
+        .def("addSupport", &PyGsKernelDescriptor::addSupport)
         .def("className", &PyGsKernelDescriptor::className).staticmethod("className")
         ;
 }
@@ -40,6 +41,8 @@ AcGsKernelDescriptor* PyGsKernelDescriptor::impObj(const std::source_location& s
 void makePyGsGraphicsKernelWrapper()
 {
     class_<PyGsGraphicsKernel>("GraphicsKernel", boost::python::no_init)
+        .def("addRef", &PyGsGraphicsKernel::addRef)
+        .def("delRef", &PyGsGraphicsKernel::delRef)
         .def("className", &PyGsGraphicsKernel::className).staticmethod("className")
         ;
 }

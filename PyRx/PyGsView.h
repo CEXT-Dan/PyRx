@@ -82,7 +82,7 @@ public:
     AcGeMatrix3d        objectToDeviceMatrix(void) const;
 
 
-    static std::string className();
+    static std::string  className();
 public:
     AcGsView* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
