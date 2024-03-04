@@ -346,6 +346,12 @@
     <ClCompile Include="GsCore.cpp">
       <Filter>Source Files\PyGs</Filter>
     </ClCompile>
+    <ClCompile Include="PyBrxCv.cpp">
+      <Filter>Source Files\PyBrxCv</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxCvBase.cpp">
+      <Filter>Source Files\PyBrxCv</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -696,6 +702,12 @@
     <ClInclude Include="GsCore.h">
       <Filter>Header Files\PyGs</Filter>
     </ClInclude>
+    <ClInclude Include="PyBrxCv.h">
+      <Filter>Header Files\PyBrxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxCvBase.h">
+      <Filter>Header Files\PyBrxCv</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -754,6 +766,12 @@
     </Filter>
     <Filter Include="Source Files\PyPl">
       <UniqueIdentifier>{8348c96c-d809-4f06-a0e2-61810170d6ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PyBrxCv">
+      <UniqueIdentifier>{2f533454-20ab-410f-ab9d-75ce3122c2b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PyBrxCv">
+      <UniqueIdentifier>{e1b77746-5f81-48fc-8c48-49478086578a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

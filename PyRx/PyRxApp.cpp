@@ -8,6 +8,7 @@
 #include "PyAcAp.h"
 #include "PyAcEd.h"
 #include "PyAcPl.h"
+#include "PyBrxCv.h"
 #include "PyRxModule.h"
 
 
@@ -146,6 +147,9 @@ bool PyRxApp::init()
         initPyApModule();
         initPyEdModule();
         initPyPlModule();
+#ifdef BRXAPP
+        initPyBrxCvModule(); 
+#endif
         initWxApp();
 
         if (Py_IsInitialized() && setPyConfig())

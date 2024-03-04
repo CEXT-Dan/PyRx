@@ -57,7 +57,6 @@
 #define _WIN32_IE 0x0601		//- Change this to the appropriate value to target IE 5.0 or later.
 #endif
 
-
 #define SETBIT(flags, bit, value) ((value) ? (flags |= (bit)) : (flags &= ~(bit)))
 #define GETBIT(flags, bit) (((flags) & (bit)) ? true : false)
 
@@ -180,8 +179,6 @@
 #pragma comment( lib , "ZwGs.lib" )
 #endif
 
-
-
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
 static inline const AcString PyLispFuncPrefix = _T("PyRxLisp_");
 static inline const AcString PyCommandFlagPrefix = _T("cmdflags=");
@@ -194,6 +191,8 @@ static inline constexpr const char* PyDbNamespace = "PyDb";
 static inline constexpr const char* PyGiNamespace = "PyGi";
 static inline constexpr const char* PyEdNamespace = "PyEd";
 static inline constexpr const char* PyPlNamespace = "PyPl";
+static inline constexpr const char* PyBrxCvNamespace = "PyBrxCv";
+
 
 static inline constexpr const wchar_t* PyAppNamespaceW = L"PyRxApp";
 static inline constexpr const wchar_t* PyApNamespaceW = L"PyAp";
@@ -204,6 +203,7 @@ static inline constexpr const wchar_t* PyDbNamespaceW = L"PyDb";
 static inline constexpr const wchar_t* PyGiNamespaceW = L"PyGi";
 static inline constexpr const wchar_t* PyEdNamespaceW = L"PyEd";
 static inline constexpr const wchar_t* PyPlNamespaceW = L"PyPl";
+static inline constexpr const wchar_t* PyBrxCvNamespaceW = L"PyBrxCv";
 
 //-----------------------------------------------------------------------------
 #include "DocData.h" //- Your document specific data class holder
@@ -512,6 +512,5 @@ inline AcStringArray PyListAcStringArray(const boost::python::object& iterable)
         arr.append(utf8_to_wstr(item).c_str());
     return arr;
 }
-
 #pragma pack (pop)
 
