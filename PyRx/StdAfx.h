@@ -406,6 +406,15 @@ inline boost::python::list IntArrayToPyList(const AcDbIntArray& arr)
     return pyPyList;
 }
 
+inline boost::python::list Int64ArrayToPyList(const AcArray<Adesk::UInt64>& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto item : arr)
+        pyPyList.append(item);
+    return pyPyList;
+}
+
 inline boost::python::list DoubleArrayToPyList(const AcGeDoubleArray& arr)
 {
     PyAutoLockGIL lock;
@@ -497,6 +506,16 @@ inline AcArray<int> PyListToIntArray(const boost::python::object& iterable)
 {
     const auto& vec = py_list_to_std_vector<int>(iterable);
     AcArray<int> arr;
+    arr.setPhysicalLength(vec.size());
+    for (const auto& item : vec)
+        arr.append(item);
+    return arr;
+}
+
+inline AcArray<Adesk::UInt64> PyListToInt64Array(const boost::python::object& iterable)
+{
+    const auto& vec = py_list_to_std_vector<Adesk::UInt64>(iterable);
+    AcArray<Adesk::UInt64> arr;
     arr.setPhysicalLength(vec.size());
     for (const auto& item : vec)
         arr.append(item);

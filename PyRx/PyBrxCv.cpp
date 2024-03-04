@@ -16,6 +16,8 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvCivil3dConverterWrapper();
     makePyBrxCvDbViewWrapper();
     makePyBrxCvDbVAlignmentViewWrapper();
+    makePyBrxCvStationEquationWrapper();
+    makePyBrxCvStationEquationsWrapper();
 
     enum_<BrxCvCivil3dConverter::Civil3dLabels>("Civil3dLabels")
         .value("eNoLabels", BrxCvCivil3dConverter::Civil3dLabels::eNoLabels)
@@ -57,6 +59,41 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     enum_<BrxCvStationEquation::EStationEquationType>("EStationEquationType")
         .value("Increasing", BrxCvStationEquation::EStationEquationType::Increasing)
         .value("Decreasing", BrxCvStationEquation::EStationEquationType::Decreasing)
+        .export_values()
+        ;
+
+    enum_<BrxCvDbHAlignment::EHAlignmentVisualStyle>("EHAlignmentVisualStyle")
+        .value("eUndefined", BrxCvDbHAlignment::EHAlignmentVisualStyle::eUndefined)
+        .value("eElements", BrxCvDbHAlignment::EHAlignmentVisualStyle::eElements)
+        .value("eTangentExtensions", BrxCvDbHAlignment::EHAlignmentVisualStyle::eTangentExtensions)
+        .value("eElementExtensions", BrxCvDbHAlignment::EHAlignmentVisualStyle::eElementExtensions)
+        .export_values()
+        ;
+    enum_<BrxCvDbHAlignment::EArcType>("EArcType")
+        .value("eCompound", BrxCvDbHAlignment::EArcType::eCompound)
+        .value("eReverse", BrxCvDbHAlignment::EArcType::eReverse)
+        .export_values()
+        ;
+    enum_<BrxCvDbHAlignment::EArcParameterType>("EArcParameterType")
+        .value("eRadius", BrxCvDbHAlignment::EArcParameterType::eRadius)
+        .value("eDegreeOfCurve", BrxCvDbHAlignment::EArcParameterType::eDegreeOfCurve)
+        .value("eTangentLength", BrxCvDbHAlignment::EArcParameterType::eTangentLength)
+        .value("eChordLength", BrxCvDbHAlignment::EArcParameterType::eChordLength)
+        .value("eCurveLength", BrxCvDbHAlignment::EArcParameterType::eCurveLength)
+        .value("eExternalDist", BrxCvDbHAlignment::EArcParameterType::eExternalDist)
+        .value("eMiddleOrdinate", BrxCvDbHAlignment::EArcParameterType::eMiddleOrdinate)
+        .value("eCurveAngle", BrxCvDbHAlignment::EArcParameterType::eCurveAngle)
+        .value("eCurveThroughPoint", BrxCvDbHAlignment::EArcParameterType::eCurveThroughPoint)
+        .export_values()
+        ;
+    enum_<BrxCvDbHAlignment::ESpiralDefinitionType>("ESpiralDefinitionType")
+        .value("eClothoid", BrxCvDbHAlignment::ESpiralDefinitionType::eClothoid)
+        .value("eCubicParabola", BrxCvDbHAlignment::ESpiralDefinitionType::eCubicParabola)
+        .export_values()
+        ;
+    enum_<BrxCvDbHAlignment::ESpiralParameterType>("ESpiralParameterType")
+        .value("eParamA", BrxCvDbHAlignment::ESpiralParameterType::eParamA)
+        .value("eParamLength", BrxCvDbHAlignment::ESpiralParameterType::eParamLength)
         .export_values()
         ;
 };
