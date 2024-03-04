@@ -447,9 +447,6 @@ class DrawFlags:
     def kDrawNoForceByLayer (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def kDrawNoImageFrame (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
     def kDrawNoLineWeight (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -1203,6 +1200,36 @@ class GiDrawableType:
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
+    ...
+
+class GiGraphicsKernel:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''Raises an exception
+This class cannot be instantiated from Python'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def getDescriptor (self, *args, **kwargs)-> PyGi.GiKernelDescriptor :
+      '''getDescriptor( (GiGraphicsKernel)arg1) -> GiKernelDescriptor :
+
+    C++ signature :
+        class PyGiKernelDescriptor getDescriptor(class PyGiGraphicsKernel {lvalue})'''
+    ...
+
+class GiKernelDescriptor:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''Raises an exception
+This class cannot be instantiated from Python'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
 
 class SelectionFlags:
