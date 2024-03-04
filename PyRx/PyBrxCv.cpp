@@ -9,6 +9,8 @@ using namespace boost::python;
 BOOST_PYTHON_MODULE(PyBrxCv)
 {
     docstring_options local_docstring_options(true, true, true);
+
+    makePyBrxCvDbSubObjectWrapper();
     makePyBrxCvDbObjectWrapper();
     makePyBrxCvDbEntityWrapper();
     makePyBrxCvDbCurveWrapper();
@@ -18,6 +20,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvDbVAlignmentViewWrapper();
     makePyBrxCvStationEquationWrapper();
     makePyBrxCvStationEquationsWrapper();
+    makePyBrxCvDbHAlignmentWrapper();
 
     enum_<BrxCvCivil3dConverter::Civil3dLabels>("Civil3dLabels")
         .value("eNoLabels", BrxCvCivil3dConverter::Civil3dLabels::eNoLabels)

@@ -13,6 +13,29 @@ class PyDbDatabase;
 class PyBrxCvDbHAlignment;
 
 //-----------------------------------------------------------------------------------
+//PyBrxCvDbSubObject
+void makePyBrxCvDbSubObjectWrapper();
+
+class PyBrxCvDbSubObject : public PyRxObject
+{
+public:
+
+    PyBrxCvDbSubObject(BrxCvDbSubObject* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbSubObject() override = default;
+
+    std::string     name() const;
+    bool            setName(const std::string& szName);
+    std::string     description() const;
+    bool            setDescription(const std::string& szDescription);
+
+    static std::string          className();
+    static PyRxClass            desc();
+
+public:
+    inline BrxCvDbSubObject* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
 //PyBrxCvDbObject
 void makePyBrxCvDbObjectWrapper();
 
