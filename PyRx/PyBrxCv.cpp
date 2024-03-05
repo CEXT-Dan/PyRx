@@ -23,6 +23,8 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvDbHAlignmentWrapper();
     makePyBrxCvDbHAlignmentElementWrapper();
     makePyBrxCvDbHAlignmentPIWrapper();
+    makePyBrxCvDbHAlignmentCurveWrapper();
+    makePyBrxCvDbHAlignmentLineWrapper();
 
     enum_<BrxCvCivil3dConverter::Civil3dLabels>("Civil3dLabels")
         .value("eNoLabels", BrxCvCivil3dConverter::Civil3dLabels::eNoLabels)

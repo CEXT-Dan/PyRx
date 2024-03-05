@@ -1733,4 +1733,143 @@ BrxCvDbHAlignmentPI* PyBrxCvDbHAlignmentPI::impObj(const std::source_location& s
     return static_cast<BrxCvDbHAlignmentPI*>(m_pyImp.get());
 }
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbHAlignmentCurve
+void makePyBrxCvDbHAlignmentCurveWrapper()
+{
+    PyDocString DS("CvDbHAlignmentCurve");
+    class_<PyBrxCvDbHAlignmentCurve, bases<PyBrxCvDbHAlignmentElement>>("CvDbHAlignmentCurve", boost::python::no_init)
+        .def("startPoint", &PyBrxCvDbHAlignmentCurve::startPoint, DS.ARGS())
+        .def("endPoint", &PyBrxCvDbHAlignmentCurve::endPoint, DS.ARGS())
+        .def("startStation", &PyBrxCvDbHAlignmentCurve::startStation, DS.ARGS())
+        .def("endStation", &PyBrxCvDbHAlignmentCurve::endStation, DS.ARGS())
+        .def("length", &PyBrxCvDbHAlignmentCurve::length, DS.ARGS())
+        .def("className", &PyBrxCvDbHAlignmentCurve::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbHAlignmentCurve::desc, DS.SARGS()).staticmethod("desc")
+        ;
+}
+
+PyBrxCvDbHAlignmentCurve::PyBrxCvDbHAlignmentCurve(BrxCvDbHAlignmentCurve* ptr, bool autoDelete)
+    :PyBrxCvDbHAlignmentElement(ptr,autoDelete)
+{
+}
+
+AcGePoint2d PyBrxCvDbHAlignmentCurve::startPoint() const
+{
+    return impObj()->startPoint();
+}
+
+AcGePoint2d PyBrxCvDbHAlignmentCurve::endPoint() const
+{
+    return impObj()->endPoint();
+}
+
+double PyBrxCvDbHAlignmentCurve::startStation() const
+{
+    return impObj()->startStation();
+}
+
+double PyBrxCvDbHAlignmentCurve::endStation() const
+{
+    return impObj()->endStation();
+}
+
+double PyBrxCvDbHAlignmentCurve::length() const
+{
+    return impObj()->length();
+}
+
+std::string PyBrxCvDbHAlignmentCurve::className()
+{
+    return "BrxCvDbHAlignmentCurve";
+}
+
+PyRxClass PyBrxCvDbHAlignmentCurve::desc()
+{
+    return PyRxClass(BrxCvDbHAlignmentCurve::desc(), false);
+}
+
+BrxCvDbHAlignmentCurve* PyBrxCvDbHAlignmentCurve::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbHAlignmentCurve*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbHAlignmentLine
+void makePyBrxCvDbHAlignmentLineWrapper()
+{
+    PyDocString DS("CvDbHAlignmentLine");
+    class_<PyBrxCvDbHAlignmentLine, bases<PyBrxCvDbHAlignmentCurve>>("CvDbHAlignmentLine")
+        .def("passThroughPoint1", &PyBrxCvDbHAlignmentLine::passThroughPoint1, DS.ARGS())
+        .def("passThroughPoint2", &PyBrxCvDbHAlignmentLine::passThroughPoint2, DS.ARGS())
+        .def("paramLength", &PyBrxCvDbHAlignmentLine::paramLength, DS.ARGS())
+        .def("setParamLength", &PyBrxCvDbHAlignmentLine::setParamLength, DS.ARGS({ "val : float" }))
+        .def("setPassThroughPoint1", &PyBrxCvDbHAlignmentLine::setPassThroughPoint1, DS.ARGS({ "pt : PyGe.Point2d" }))
+        .def("setPassThroughPoint2", &PyBrxCvDbHAlignmentLine::setPassThroughPoint2, DS.ARGS({ "pt : PyGe.Point2d" }))
+        .def("className", &PyBrxCvDbHAlignmentLine::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbHAlignmentLine::desc, DS.SARGS()).staticmethod("desc")
+        ;
+}
+
+PyBrxCvDbHAlignmentLine::PyBrxCvDbHAlignmentLine()
+    :PyBrxCvDbHAlignmentLine(new BrxCvDbHAlignmentLine(),true)
+{
+}
+
+PyBrxCvDbHAlignmentLine::PyBrxCvDbHAlignmentLine(BrxCvDbHAlignmentLine* ptr, bool autoDelete)
+    : PyBrxCvDbHAlignmentCurve(ptr, autoDelete)
+{
+}
+
+AcGePoint2d PyBrxCvDbHAlignmentLine::passThroughPoint1()
+{
+    return impObj()->passThroughPoint1();
+}
+
+AcGePoint2d PyBrxCvDbHAlignmentLine::passThroughPoint2()
+{
+    return impObj()->passThroughPoint2();
+}
+
+double PyBrxCvDbHAlignmentLine::paramLength() const
+{
+    return impObj()->paramLength();
+}
+
+bool PyBrxCvDbHAlignmentLine::setParamLength(double length)
+{
+    return impObj()->setParamLength(length);
+}
+
+bool PyBrxCvDbHAlignmentLine::setPassThroughPoint1(const AcGePoint2d& point)
+{
+    return impObj()->setPassThroughPoint1(point);
+}
+
+bool PyBrxCvDbHAlignmentLine::setPassThroughPoint2(const AcGePoint2d& point)
+{
+    return impObj()->setPassThroughPoint2(point);
+}
+
+std::string PyBrxCvDbHAlignmentLine::className()
+{
+    return "BrxCvDbHAlignmentLine";
+}
+
+PyRxClass PyBrxCvDbHAlignmentLine::desc()
+{
+    return PyRxClass(BrxCvDbHAlignmentLine::desc(), false);
+}
+
+BrxCvDbHAlignmentLine* PyBrxCvDbHAlignmentLine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbHAlignmentLine*>(m_pyImp.get());
+}
+
 #endif//BRXAPP
