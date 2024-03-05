@@ -40,7 +40,6 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eAllLabels", BrxCvCivil3dConverter::Civil3dLabels::eAllLabels)
         .export_values()
         ;
-
     enum_<BrxCvCivil3dEntityInfo::Civil3dEntityType>("Civil3dEntityType")
         .value("eNoEntity", BrxCvCivil3dEntityInfo::Civil3dEntityType::eNoEntity)
         .value("eAlignment", BrxCvCivil3dEntityInfo::Civil3dEntityType::eAlignment)
@@ -49,7 +48,6 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eProfileView", BrxCvCivil3dEntityInfo::Civil3dEntityType::eProfileView)
         .export_values()
         ;
-
     enum_<BrxCvCivil3dEntityInfo::Civil3dAlignmentType>("Civil3dAlignmentType")
         .value("eNotAlignment", BrxCvCivil3dEntityInfo::Civil3dAlignmentType::eNotAlignment)
         .value("eCenterline", BrxCvCivil3dEntityInfo::Civil3dAlignmentType::eCenterline)
@@ -59,7 +57,6 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eMiscellaneous", BrxCvCivil3dEntityInfo::Civil3dAlignmentType::eMiscellaneous)
         .export_values()
         ;
-
     enum_<BrxCvCivil3dEntityInfo::Civil3dProfileType>("Civil3dProfileType")
         .value("eNotProfile", BrxCvCivil3dEntityInfo::Civil3dProfileType::eNotProfile)
         .value("eLayout", BrxCvCivil3dEntityInfo::Civil3dProfileType::eLayout)
@@ -68,25 +65,24 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eQuick", BrxCvCivil3dEntityInfo::Civil3dProfileType::eQuick)
         .export_values()
         ;
-    enum_<BrxCvStationEquation::EStationEquationType>("EStationEquationType")
+    enum_<BrxCvStationEquation::EStationEquationType>("StationEquationType")
         .value("Increasing", BrxCvStationEquation::EStationEquationType::Increasing)
         .value("Decreasing", BrxCvStationEquation::EStationEquationType::Decreasing)
         .export_values()
         ;
-
-    enum_<BrxCvDbHAlignment::EHAlignmentVisualStyle>("EHAlignmentVisualStyle")
+    enum_<BrxCvDbHAlignment::EHAlignmentVisualStyle>("HAlignmentVisualStyle")
         .value("eUndefined", BrxCvDbHAlignment::EHAlignmentVisualStyle::eUndefined)
         .value("eElements", BrxCvDbHAlignment::EHAlignmentVisualStyle::eElements)
         .value("eTangentExtensions", BrxCvDbHAlignment::EHAlignmentVisualStyle::eTangentExtensions)
         .value("eElementExtensions", BrxCvDbHAlignment::EHAlignmentVisualStyle::eElementExtensions)
         .export_values()
         ;
-    enum_<BrxCvDbHAlignment::EArcType>("EArcType")
+    enum_<BrxCvDbHAlignment::EArcType>("ArcType")
         .value("eCompound", BrxCvDbHAlignment::EArcType::eCompound)
         .value("eReverse", BrxCvDbHAlignment::EArcType::eReverse)
         .export_values()
         ;
-    enum_<BrxCvDbHAlignment::EArcParameterType>("EArcParameterType")
+    enum_<BrxCvDbHAlignment::EArcParameterType>("ArcParameterType")
         .value("eRadius", BrxCvDbHAlignment::EArcParameterType::eRadius)
         .value("eDegreeOfCurve", BrxCvDbHAlignment::EArcParameterType::eDegreeOfCurve)
         .value("eTangentLength", BrxCvDbHAlignment::EArcParameterType::eTangentLength)
@@ -100,41 +96,40 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         ;
 
     //these conflict
-    enum_<BrxCvDbHAlignment::ESpiralDefinitionType>("ESpiralDefinitionType2")
+    enum_<BrxCvDbHAlignment::ESpiralDefinitionType>("SpiralDefinitionType2")
         .value("eClothoid", BrxCvDbHAlignment::ESpiralDefinitionType::eClothoid)
         .value("eCubicParabola", BrxCvDbHAlignment::ESpiralDefinitionType::eCubicParabola)
         .export_values()
         ;
-    enum_<BrxCvDbHAlignment::ESpiralParameterType>("ESpiralParameterType2")
+    enum_<BrxCvDbHAlignment::ESpiralParameterType>("SpiralParameterType2")
         .value("eParamA", BrxCvDbHAlignment::ESpiralParameterType::eParamA)
         .value("eParamLength", BrxCvDbHAlignment::ESpiralParameterType::eParamLength)
         .export_values()
         ;
 
     //with these test!
-    enum_<BrxCvDbHAlignmentSpiral::ESpiralCurveType>("ESpiralCurveType")
+    enum_<BrxCvDbHAlignmentSpiral::ESpiralCurveType>("SpiralCurveType")
         .value("eInCurve", BrxCvDbHAlignmentSpiral::ESpiralCurveType::eInCurve)
         .value("eOutCurve", BrxCvDbHAlignmentSpiral::ESpiralCurveType::eOutCurve)
         .export_values()
         ;
-    enum_<BrxCvDbHAlignmentSpiral::ESpiralParameterType>("ESpiralParameterType")
+    enum_<BrxCvDbHAlignmentSpiral::ESpiralParameterType>("SpiralParameterType")
         .value("eClothoid", BrxCvDbHAlignmentSpiral::ESpiralParameterType::eParamA)
         .value("eCubicParabola", BrxCvDbHAlignmentSpiral::ESpiralParameterType::eParamA)
         .export_values()
         ;
-    enum_<BrxCvDbHAlignmentSpiral::ESpiralDefinitionType>("ESpiralDefinitionType")
+    enum_<BrxCvDbHAlignmentSpiral::ESpiralDefinitionType>("SpiralDefinitionType")
         .value("eClothoid", BrxCvDbHAlignmentSpiral::ESpiralDefinitionType::eClothoid)
         .value("eCubicParabola", BrxCvDbHAlignmentSpiral::ESpiralDefinitionType::eCubicParabola)
         .export_values()
         ;
-    enum_<BrxCvDbHAlignmentSpiral::ESpiralDirectionType>("ESpiralDirectionType")
+    enum_<BrxCvDbHAlignmentSpiral::ESpiralDirectionType>("SpiralDirectionType")
         .value("eDirectionRight", BrxCvDbHAlignmentSpiral::ESpiralDirectionType::eDirectionRight)
         .value("eDirectionLeft", BrxCvDbHAlignmentSpiral::ESpiralDirectionType::eDirectionLeft)
         .export_values()
         ;
     //
-
-    enum_<BrxCvDbHAlignmentElement::EElementType>("EElementType")
+    enum_<BrxCvDbHAlignmentElement::EElementType>("HAlignmentElementType")
         .value("eUndefined", BrxCvDbHAlignmentElement::EElementType::eUndefined)
         .value("eLine", BrxCvDbHAlignmentElement::EElementType::eLine)
         .value("eArc", BrxCvDbHAlignmentElement::EElementType::eArc)
@@ -158,7 +153,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("ePI", BrxCvDbHAlignmentElement::EElementType::ePI)
         .export_values()
         ;
-    enum_<BrxCvDbHAlignmentElement::ETangencyConstraint>("ETangencyConstraint")
+    enum_<BrxCvDbHAlignmentElement::ETangencyConstraint>("HAlignmentTangencyConstraint")
         .value("eUndefined", BrxCvDbHAlignmentElement::ETangencyConstraint::eUndefined)
         .value("eFixed", BrxCvDbHAlignmentElement::ETangencyConstraint::eFixed)
         .value("ePrevious", BrxCvDbHAlignmentElement::ETangencyConstraint::ePrevious)
@@ -166,7 +161,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eBoth", BrxCvDbHAlignmentElement::ETangencyConstraint::eBoth)
         .export_values()
         ;
-    enum_<BrxCvDbHAlignmentElement::EParameterConstraint>("EParameterConstraint")
+    enum_<BrxCvDbHAlignmentElement::EParameterConstraint>("HAlignmentParameterConstraint")
         .value("eUndefined", BrxCvDbHAlignmentElement::EParameterConstraint::eUndefined)
         .value("eAutomatic", BrxCvDbHAlignmentElement::EParameterConstraint::eAutomatic)
         .value("eLine_TwoPoints", BrxCvDbHAlignmentElement::EParameterConstraint::eLine_TwoPoints)
@@ -210,6 +205,32 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eSSCSS_Sp1LenSp2LenPt1Pt2", BrxCvDbHAlignmentElement::EParameterConstraint::eSSCSS_Sp1LenSp2LenPt1Pt2)
         .value("eSSCSS_Sp1AValSp2AValRadiusPt", BrxCvDbHAlignmentElement::EParameterConstraint::eSSCSS_Sp1AValSp2AValRadiusPt)
         .value("eSSCSS_Sp1AValSp2AValPt1Pt2", BrxCvDbHAlignmentElement::EParameterConstraint::eSSCSS_Sp1AValSp2AValPt1Pt2)
+        .export_values()
+        ;
+    enum_<BrxCvDbVAlignmentElement::EElementType>("VAlignmentElementType")
+        .value("eUndefined", BrxCvDbVAlignmentElement::EElementType::eUndefined)
+        .value("eTangent", BrxCvDbVAlignmentElement::EElementType::eTangent)
+        .value("eArc", BrxCvDbVAlignmentElement::EElementType::eArc)
+        .value("eParabola", BrxCvDbVAlignmentElement::EElementType::eParabola)
+        .value("ePVI", BrxCvDbVAlignmentElement::EElementType::ePVI)
+        .export_values()
+        ;
+    enum_<BrxCvDbVAlignmentElement::ETangencyConstraint>("VAlignmentTangencyConstraint")
+        .value("eUndefined", BrxCvDbVAlignmentElement::ETangencyConstraint::eUndefined)
+        .value("eFixed", BrxCvDbVAlignmentElement::ETangencyConstraint::eFixed)
+        .value("ePrevious", BrxCvDbVAlignmentElement::ETangencyConstraint::ePrevious)
+        .value("eNext", BrxCvDbVAlignmentElement::ETangencyConstraint::eNext)
+        .value("eBoth", BrxCvDbVAlignmentElement::ETangencyConstraint::eBoth)
+        .export_values()
+        ;
+    enum_<BrxCvDbVAlignmentElement::EParameterConstraint>("VAlignmentParameterConstraint")
+        .value("eUndefined", BrxCvDbVAlignmentElement::EParameterConstraint::eUndefined)
+        .value("ePassThroughPoints", BrxCvDbVAlignmentElement::EParameterConstraint::ePassThroughPoints)
+        .value("eRadius", BrxCvDbVAlignmentElement::EParameterConstraint::eRadius)
+        .value("eLength", BrxCvDbVAlignmentElement::EParameterConstraint::eLength)
+        .value("eAngle", BrxCvDbVAlignmentElement::EParameterConstraint::eAngle)
+        .value("eAutomatic", BrxCvDbVAlignmentElement::EParameterConstraint::eAutomatic)
+        .value("ePointOnTangent", BrxCvDbVAlignmentElement::EParameterConstraint::ePointOnTangent)
         .export_values()
         ;
 };

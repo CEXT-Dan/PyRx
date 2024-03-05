@@ -11,6 +11,8 @@
 class PyDbObjectId;
 class PyDbDatabase;
 class PyBrxCvDbHAlignment;
+class PyBrxCvDbHAlignmentElement;
+class PyBrxCvDbHAlignmentPI;
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbSubObject
@@ -345,10 +347,10 @@ public:
     Adesk::UInt64           nextLineElementId(Adesk::UInt64 id) const;
     Adesk::UInt64           previousLineElementId(Adesk::UInt64 id) const;
 
-    //BrxCvDbHAlignmentElementPtr elementAtId(Adesk::UInt64 id) const;
-    //BrxCvDbHAlignmentElementPtr elementAtStation(double station) const;
-    //Adesk::UInt64 curveAtPI(const BrxCvDbHAlignmentPI* pi) const;
-    //BrxCvDbHAlignmentPIPtrArray getPIsArray() const;
+    PyBrxCvDbHAlignmentElement elementAtId(Adesk::UInt64 id) const;
+    PyBrxCvDbHAlignmentElement elementAtStation(double station) const;
+    Adesk::UInt64              curveAtPI(const PyBrxCvDbHAlignmentPI& pi) const;
+    boost::python::list        getPIsArray() const;
 
     boost::python::list     getUnorderedElementIds() const;
     Adesk::UInt64           getElementId(Adesk::GsMarker gsMarker) const;
@@ -500,6 +502,7 @@ class PyBrxCvDbHAlignmentElement : public PyBrxCvDbSubObject
     using EParameterConstraint = BrxCvDbHAlignmentElement::EParameterConstraint;
 
 public:
+    PyBrxCvDbHAlignmentElement(const BrxCvDbHAlignmentElement& ref);
     PyBrxCvDbHAlignmentElement(BrxCvDbHAlignmentElement* ptr, bool autoDelete);
     virtual ~PyBrxCvDbHAlignmentElement() override = default;
     Adesk::UInt64           id() const;
