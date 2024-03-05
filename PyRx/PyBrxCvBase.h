@@ -636,7 +636,7 @@ class PyBrxCvDbHAlignmentSpiral : public PyBrxCvDbHAlignmentCurve
 
 public:
     PyBrxCvDbHAlignmentSpiral();
-    PyBrxCvDbHAlignmentSpiral(const BrxCvDbHAlignmentSpiral &spiral);
+    PyBrxCvDbHAlignmentSpiral(const BrxCvDbHAlignmentSpiral& spiral);
     PyBrxCvDbHAlignmentSpiral(BrxCvDbHAlignmentSpiral* ptr, bool autoDelete);
     virtual ~PyBrxCvDbHAlignmentSpiral() override = default;
 
@@ -701,7 +701,7 @@ public:
     PyBrxCvDbHAlignmentSpiral   spiralIn() const;
     PyBrxCvDbHAlignmentSpiral   spiralOut() const;
     double                      spiralRatio() const;
-;
+    ;
     static std::string          className();
     static PyRxClass            desc();
 public:
@@ -728,6 +728,37 @@ public:
     static PyRxClass            desc();
 public:
     inline BrxCvDbHAlignmentSSCSS* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbVAlignmentElement
+void makePyBrxCvDbVAlignmentElementWrapper();
+
+class PyBrxCvDbVAlignmentElement : public PyBrxCvDbSubObject
+{
+protected:
+    using EElementType = BrxCvDbVAlignmentElement::EElementType;
+    using ETangencyConstraint = BrxCvDbVAlignmentElement::ETangencyConstraint;
+    using EParameterConstraint = BrxCvDbVAlignmentElement::EParameterConstraint;
+public:
+    PyBrxCvDbVAlignmentElement(BrxCvDbVAlignmentElement* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbVAlignmentElement() override = default;
+
+    Adesk::UInt64       id() const;
+    Adesk::UInt64       previousId() const;
+    Adesk::UInt64       nextId() const;
+    EElementType        type() const;
+    ETangencyConstraint tangencyConstraint() const;
+    EParameterConstraint parameterConstraint() const;
+    bool                setPreviousId(Adesk::UInt64 id);
+    bool                setNextId(Adesk::UInt64 id);
+    bool                setTangencyConstraint(ETangencyConstraint constraint);
+    bool                setParameterConstraint(EParameterConstraint constraint);
+
+    static std::string          className();
+    static PyRxClass            desc();
+public:
+    inline BrxCvDbVAlignmentElement* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
