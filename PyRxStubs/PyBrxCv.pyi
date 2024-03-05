@@ -7,6 +7,91 @@ import PyAp
 import PyEd
 import PyPl
 
+class ArcParameterType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eChordLength (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eCurveAngle (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eCurveLength (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eCurveThroughPoint (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eDegreeOfCurve (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eExternalDist (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eMiddleOrdinate (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eRadius (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTangentLength (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class ArcType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eCompound (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eReverse (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
 class Civil3dAlignmentType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
@@ -1345,7 +1430,7 @@ class CvDbHAlignment:
     C++ signature :
         unsigned __int64 addArcBetween(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,unsigned __int64,class AcGePoint2d)
 
-addArcBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3, (float)arg4, (EArcParameterType)arg5, (bool)arg6, (EArcType)arg7) -> int :
+addArcBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3, (float)arg4, (ArcParameterType)arg5, (bool)arg6, (ArcType)arg7) -> int :
 
     C++ signature :
         unsigned __int64 addArcBetween(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,unsigned __int64,double,enum BrxCvDbHAlignment::EArcParameterType,bool,enum BrxCvDbHAlignment::EArcType)'''
@@ -1372,12 +1457,12 @@ addArcFrom( (CvDbHAlignment)arg1, (int)arg2, (Point2d)arg3, (Vector2d)arg4) -> i
     C++ signature :
         unsigned __int64 addArcFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,class AcGePoint2d,class AcGeVector2d)
 
-addArcFrom( (CvDbHAlignment)arg1, (int)arg2, (Point2d)arg3, (float)arg4, (bool)arg5, (EArcType)arg6) -> int :
+addArcFrom( (CvDbHAlignment)arg1, (int)arg2, (Point2d)arg3, (float)arg4, (bool)arg5, (ArcType)arg6) -> int :
 
     C++ signature :
         unsigned __int64 addArcFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,class AcGePoint2d,double,bool,enum BrxCvDbHAlignment::EArcType)
 
-addArcFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (EArcParameterType)arg5, (bool)arg6) -> int :
+addArcFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (ArcParameterType)arg5, (bool)arg6) -> int :
 
     C++ signature :
         unsigned __int64 addArcFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,double,enum BrxCvDbHAlignment::EArcParameterType,bool)'''
@@ -1393,29 +1478,29 @@ addArcTo( (CvDbHAlignment)arg1, (int)arg2, (Point2d)arg3, (Vector2d)arg4) -> int
     C++ signature :
         unsigned __int64 addArcTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,class AcGePoint2d,class AcGeVector2d)
 
-addArcTo( (CvDbHAlignment)arg1, (int)arg2, (Point2d)arg3, (float)arg4, (bool)arg5, (EArcType)arg6) -> int :
+addArcTo( (CvDbHAlignment)arg1, (int)arg2, (Point2d)arg3, (float)arg4, (bool)arg5, (ArcType)arg6) -> int :
 
     C++ signature :
         unsigned __int64 addArcTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,class AcGePoint2d,double,bool,enum BrxCvDbHAlignment::EArcType)
 
-addArcTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (EArcParameterType)arg5, (bool)arg6) -> int :
+addArcTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (ArcParameterType)arg5, (bool)arg6) -> int :
 
     C++ signature :
         unsigned __int64 addArcTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,double,enum BrxCvDbHAlignment::EArcParameterType,bool)'''
     ...
     def addCSSTo (self, *args, **kwargs)-> int :
-      '''addCSSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (ESpiralParameterType2)arg5, (float)arg6, (Point2d)arg7, (ESpiralDefinitionType2)arg8) -> int :
+      '''addCSSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (SpiralParameterType2)arg5, (float)arg6, (Point2d)arg7, (SpiralDefinitionType2)arg8) -> int :
 
     C++ signature :
         unsigned __int64 addCSSTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,class AcGePoint2d,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
     ...
     def addCSTo (self, *args, **kwargs)-> int :
-      '''addCSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (ESpiralParameterType2)arg4, (float)arg5, (Point2d)arg6, (bool)arg7, (ESpiralDefinitionType2)arg8) -> int :
+      '''addCSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg4, (float)arg5, (Point2d)arg6, (bool)arg7, (SpiralDefinitionType2)arg8) -> int :
 
     C++ signature :
         unsigned __int64 addCSTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,class AcGePoint2d,bool,enum BrxCvDbHAlignment::ESpiralDefinitionType)
 
-addCSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (ESpiralParameterType2)arg4, (float)arg5, (float)arg6, (bool)arg7, (ESpiralDefinitionType2)arg8) -> int :
+addCSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg4, (float)arg5, (float)arg6, (bool)arg7, (SpiralDefinitionType2)arg8) -> int :
 
     C++ signature :
         unsigned __int64 addCSTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,double,bool,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
@@ -1469,12 +1554,12 @@ addLineTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3) -> int :
       '''                             '''
     ...
     def addSCFrom (self, *args, **kwargs)-> int :
-      '''addSCFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (ESpiralParameterType2)arg4, (float)arg5, (Point2d)arg6, (bool)arg7, (ESpiralDefinitionType2)arg8) -> int :
+      '''addSCFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg4, (float)arg5, (Point2d)arg6, (bool)arg7, (SpiralDefinitionType2)arg8) -> int :
 
     C++ signature :
         unsigned __int64 addSCFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,class AcGePoint2d,bool,enum BrxCvDbHAlignment::ESpiralDefinitionType)
 
-addSCFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (ESpiralParameterType2)arg4, (float)arg5, (float)arg6, (bool)arg7, (ESpiralDefinitionType2)arg8) -> int :
+addSCFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg4, (float)arg5, (float)arg6, (bool)arg7, (SpiralDefinitionType2)arg8) -> int :
 
     C++ signature :
         unsigned __int64 addSCFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,double,bool,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
@@ -1486,54 +1571,54 @@ addSCFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (ESpiralParameterType2)
         unsigned __int64 addSCSAuto(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,unsigned __int64)'''
     ...
     def addSCSBetween (self, *args, **kwargs)-> int :
-      '''addSCSBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3, (float)arg4, (float)arg5, (ESpiralParameterType2)arg6, (float)arg7, (ESpiralDefinitionType2)arg8) -> int :
+      '''addSCSBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3, (float)arg4, (float)arg5, (SpiralParameterType2)arg6, (float)arg7, (SpiralDefinitionType2)arg8) -> int :
 
     C++ signature :
         unsigned __int64 addSCSBetween(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,unsigned __int64,double,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
     ...
     def addSSBetween (self, *args, **kwargs)-> int :
-      '''addSSBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3, (float)arg4, (ESpiralParameterType2)arg5, (ESpiralDefinitionType2)arg6) -> int :
+      '''addSSBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3, (float)arg4, (SpiralParameterType2)arg5, (SpiralDefinitionType2)arg6) -> int :
 
     C++ signature :
         unsigned __int64 addSSBetween(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
     ...
     def addSSCFrom (self, *args, **kwargs)-> int :
-      '''addSSCFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (ESpiralParameterType2)arg5, (float)arg6, (Point2d)arg7, (ESpiralDefinitionType2)arg8) -> int :
+      '''addSSCFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (SpiralParameterType2)arg5, (float)arg6, (Point2d)arg7, (SpiralDefinitionType2)arg8) -> int :
 
     C++ signature :
         unsigned __int64 addSSCFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,class AcGePoint2d,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
     ...
     def addSTFrom (self, *args, **kwargs)-> int :
-      '''addSTFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (ESpiralParameterType2)arg4, (Point2d)arg5, (ESpiralDefinitionType2)arg6) -> int :
+      '''addSTFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg4, (Point2d)arg5, (SpiralDefinitionType2)arg6) -> int :
 
     C++ signature :
         unsigned __int64 addSTFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,class AcGePoint2d,enum BrxCvDbHAlignment::ESpiralDefinitionType)
 
-addSTFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (ESpiralParameterType2)arg4, (float)arg5, (ESpiralDefinitionType2)arg6) -> int :
+addSTFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg4, (float)arg5, (SpiralDefinitionType2)arg6) -> int :
 
     C++ signature :
         unsigned __int64 addSTFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
     ...
     def addSTSBetween (self, *args, **kwargs)-> int :
-      '''addSTSBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3, (float)arg4, (float)arg5, (ESpiralParameterType2)arg6, (ESpiralDefinitionType2)arg7) -> int :
+      '''addSTSBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3, (float)arg4, (float)arg5, (SpiralParameterType2)arg6, (SpiralDefinitionType2)arg7) -> int :
 
     C++ signature :
         unsigned __int64 addSTSBetween(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,unsigned __int64,double,double,enum BrxCvDbHAlignment::ESpiralParameterType,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
     ...
     def addSpiralBetween (self, *args, **kwargs)-> int :
-      '''addSpiralBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3, (ESpiralDefinitionType2)arg4) -> int :
+      '''addSpiralBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3, (SpiralDefinitionType2)arg4) -> int :
 
     C++ signature :
         unsigned __int64 addSpiralBetween(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,unsigned __int64,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
     ...
     def addSpiralFrom (self, *args, **kwargs)-> int :
-      '''addSpiralFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (bool)arg5, (ESpiralDefinitionType2)arg6) -> int :
+      '''addSpiralFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (bool)arg5, (SpiralDefinitionType2)arg6) -> int :
 
     C++ signature :
         unsigned __int64 addSpiralFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,double,bool,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
     ...
     def addSpiralTo (self, *args, **kwargs)-> int :
-      '''addSpiralTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (bool)arg5, (ESpiralDefinitionType2)arg6) -> int :
+      '''addSpiralTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (bool)arg5, (SpiralDefinitionType2)arg6) -> int :
 
     C++ signature :
         unsigned __int64 addSpiralTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,double,bool,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
@@ -1545,12 +1630,12 @@ addSTFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (ESpiralParameterType2)
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
     def addTSTo (self, *args, **kwargs)-> int :
-      '''addTSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (ESpiralParameterType2)arg4, (Point2d)arg5, (ESpiralDefinitionType2)arg6) -> int :
+      '''addTSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg4, (Point2d)arg5, (SpiralDefinitionType2)arg6) -> int :
 
     C++ signature :
         unsigned __int64 addTSTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,class AcGePoint2d,enum BrxCvDbHAlignment::ESpiralDefinitionType)
 
-addTSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (ESpiralParameterType2)arg4, (float)arg5, (ESpiralDefinitionType2)arg6) -> int :
+addTSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg4, (float)arg5, (SpiralDefinitionType2)arg6) -> int :
 
     C++ signature :
         unsigned __int64 addTSTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
@@ -1629,6 +1714,12 @@ addTSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (ESpiralParameterType2)ar
     def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
       '''                             '''
     ...
+    def curveAtPI (self, *args, **kwargs)-> int :
+      '''curveAtPI( (CvDbHAlignment)arg1, (CvDbHAlignmentPI)arg2) -> int :
+
+    C++ signature :
+        unsigned __int64 curveAtPI(class PyBrxCvDbHAlignment {lvalue},class PyBrxCvDbHAlignmentPI)'''
+    ...
     def curveElementColor (self, *args, **kwargs)-> int :
       '''curveElementColor( (CvDbHAlignment)arg1) -> int :
 
@@ -1672,6 +1763,18 @@ addTSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (ESpiralParameterType2)ar
     ...
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
+    ...
+    def elementAtId (self, *args, **kwargs)-> PyBrxCv.CvDbHAlignmentElement :
+      '''elementAtId( (CvDbHAlignment)arg1, (int)arg2) -> CvDbHAlignmentElement :
+
+    C++ signature :
+        class PyBrxCvDbHAlignmentElement elementAtId(class PyBrxCvDbHAlignment {lvalue},unsigned __int64)'''
+    ...
+    def elementAtStation (self, *args, **kwargs)-> PyBrxCv.CvDbHAlignmentElement :
+      '''elementAtStation( (CvDbHAlignment)arg1, (float)arg2) -> CvDbHAlignmentElement :
+
+    C++ signature :
+        class PyBrxCvDbHAlignmentElement elementAtStation(class PyBrxCvDbHAlignment {lvalue},double)'''
     ...
     def elementCount (self, *args, **kwargs)-> int :
       '''elementCount( (CvDbHAlignment)arg1) -> int :
@@ -1785,6 +1888,12 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     ...
     def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
       '''                             '''
+    ...
+    def getPIsArray (self, *args, **kwargs)-> list :
+      '''getPIsArray( (CvDbHAlignment)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getPIsArray(class PyBrxCvDbHAlignment {lvalue})'''
     ...
     def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
@@ -2405,7 +2514,7 @@ __init__( (object)arg1) -> None :
     def paramLength (self: CvDbHAlignmentArc)-> float :
       '''                             '''
     ...
-    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.EParameterConstraint :
+    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentParameterConstraint :
       '''                             '''
     ...
     def passThroughPoint1 (self: CvDbHAlignmentArc)-> PyGe.Point2d :
@@ -2477,10 +2586,10 @@ __init__( (object)arg1) -> None :
     def startStation (self: CvDbHAlignmentCurve)-> float :
       '''                             '''
     ...
-    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.ETangencyConstraint :
+    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentTangencyConstraint :
       '''                             '''
     ...
-    def type (self: CvDbHAlignmentElement)-> PyBrxCv.EElementType :
+    def type (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentElementType :
       '''                             '''
     ...
 
@@ -2547,7 +2656,7 @@ This class cannot be instantiated from Python'''
     def nextId (self: CvDbHAlignmentElement)-> int :
       '''                             '''
     ...
-    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.EParameterConstraint :
+    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentParameterConstraint :
       '''                             '''
     ...
     def previousId (self: CvDbHAlignmentElement)-> int :
@@ -2580,10 +2689,10 @@ This class cannot be instantiated from Python'''
     def startStation (self: CvDbHAlignmentCurve)-> float :
       '''                             '''
     ...
-    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.ETangencyConstraint :
+    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentTangencyConstraint :
       '''                             '''
     ...
-    def type (self: CvDbHAlignmentElement)-> PyBrxCv.EElementType :
+    def type (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentElementType :
       '''                             '''
     ...
 
@@ -2641,7 +2750,7 @@ This class cannot be instantiated from Python'''
     def nextId (self: CvDbHAlignmentElement)-> int :
       '''                             '''
     ...
-    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.EParameterConstraint :
+    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentParameterConstraint :
       '''                             '''
     ...
     def previousId (self: CvDbHAlignmentElement)-> int :
@@ -2668,10 +2777,10 @@ This class cannot be instantiated from Python'''
     def setTangencyConstraint (self: CvDbHAlignmentElement,val : PyBrxCv.ETangencyConstraint)-> bool :
       '''                             '''
     ...
-    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.ETangencyConstraint :
+    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentTangencyConstraint :
       '''                             '''
     ...
-    def type (self: CvDbHAlignmentElement)-> PyBrxCv.EElementType :
+    def type (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentElementType :
       '''                             '''
     ...
 
@@ -2748,7 +2857,7 @@ __init__( (object)arg1) -> None :
     def paramLength (self: CvDbHAlignmentLine)-> float :
       '''                             '''
     ...
-    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.EParameterConstraint :
+    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentParameterConstraint :
       '''                             '''
     ...
     def passThroughPoint1 (self: CvDbHAlignmentLine)-> PyGe.Point2d :
@@ -2796,10 +2905,10 @@ __init__( (object)arg1) -> None :
     def startStation (self: CvDbHAlignmentCurve)-> float :
       '''                             '''
     ...
-    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.ETangencyConstraint :
+    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentTangencyConstraint :
       '''                             '''
     ...
-    def type (self: CvDbHAlignmentElement)-> PyBrxCv.EElementType :
+    def type (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentElementType :
       '''                             '''
     ...
 
@@ -2862,7 +2971,7 @@ class CvDbHAlignmentPI:
     def nextId (self: CvDbHAlignmentElement)-> int :
       '''                             '''
     ...
-    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.EParameterConstraint :
+    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentParameterConstraint :
       '''                             '''
     ...
     def previousId (self: CvDbHAlignmentElement)-> int :
@@ -2889,10 +2998,10 @@ class CvDbHAlignmentPI:
     def setTangencyConstraint (self: CvDbHAlignmentElement,val : PyBrxCv.ETangencyConstraint)-> bool :
       '''                             '''
     ...
-    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.ETangencyConstraint :
+    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentTangencyConstraint :
       '''                             '''
     ...
-    def type (self: CvDbHAlignmentElement)-> PyBrxCv.EElementType :
+    def type (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentElementType :
       '''                             '''
     ...
 
@@ -2969,7 +3078,7 @@ __init__( (object)arg1) -> None :
     def nextId (self: CvDbHAlignmentElement)-> int :
       '''                             '''
     ...
-    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.EParameterConstraint :
+    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentParameterConstraint :
       '''                             '''
     ...
     def previousId (self: CvDbHAlignmentElement)-> int :
@@ -3008,10 +3117,10 @@ __init__( (object)arg1) -> None :
     def startStation (self: CvDbHAlignmentCurve)-> float :
       '''                             '''
     ...
-    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.ETangencyConstraint :
+    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentTangencyConstraint :
       '''                             '''
     ...
-    def type (self: CvDbHAlignmentElement)-> PyBrxCv.EElementType :
+    def type (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentElementType :
       '''                             '''
     ...
 
@@ -3026,6 +3135,9 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
+    ...
+    def arc (self: CvDbHAlignmentSSCSS)-> PyBrxCv.CvDbHAlignmentArc :
+      '''                             '''
     ...
 
     @staticmethod
@@ -3085,7 +3197,7 @@ __init__( (object)arg1) -> None :
     def nextId (self: CvDbHAlignmentElement)-> int :
       '''                             '''
     ...
-    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.EParameterConstraint :
+    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentParameterConstraint :
       '''                             '''
     ...
     def previousId (self: CvDbHAlignmentElement)-> int :
@@ -3130,10 +3242,10 @@ __init__( (object)arg1) -> None :
     def startStation (self: CvDbHAlignmentCurve)-> float :
       '''                             '''
     ...
-    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.ETangencyConstraint :
+    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentTangencyConstraint :
       '''                             '''
     ...
-    def type (self: CvDbHAlignmentElement)-> PyBrxCv.EElementType :
+    def type (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentElementType :
       '''                             '''
     ...
 
@@ -3210,7 +3322,7 @@ __init__( (object)arg1) -> None :
     def nextId (self: CvDbHAlignmentElement)-> int :
       '''                             '''
     ...
-    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.EParameterConstraint :
+    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentParameterConstraint :
       '''                             '''
     ...
     def previousId (self: CvDbHAlignmentElement)-> int :
@@ -3252,10 +3364,10 @@ __init__( (object)arg1) -> None :
     def startStation (self: CvDbHAlignmentCurve)-> float :
       '''                             '''
     ...
-    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.ETangencyConstraint :
+    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentTangencyConstraint :
       '''                             '''
     ...
-    def type (self: CvDbHAlignmentElement)-> PyBrxCv.EElementType :
+    def type (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentElementType :
       '''                             '''
     ...
 
@@ -3341,7 +3453,7 @@ __init__( (object)arg1) -> None :
     def paramLength (self: CvDbHAlignmentSpiral)-> float :
       '''                             '''
     ...
-    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.EParameterConstraint :
+    def parameterConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentParameterConstraint :
       '''                             '''
     ...
     def previousId (self: CvDbHAlignmentElement)-> int :
@@ -3401,10 +3513,10 @@ __init__( (object)arg1) -> None :
     def setTangencyConstraint (self: CvDbHAlignmentElement,val : PyBrxCv.ETangencyConstraint)-> bool :
       '''                             '''
     ...
-    def spiralCurveType (self: CvDbHAlignmentSpiral)-> PyBrxCv.ESpiralCurveType :
+    def spiralCurveType (self: CvDbHAlignmentSpiral)-> PyBrxCv.SpiralCurveType :
       '''                             '''
     ...
-    def spiralDefinition (self: CvDbHAlignmentSpiral)-> PyBrxCv.ESpiralDefinitionType :
+    def spiralDefinition (self: CvDbHAlignmentSpiral)-> PyBrxCv.SpiralDefinitionType :
       '''                             '''
     ...
     def startDirection (self: CvDbHAlignmentSpiral)-> float :
@@ -3416,10 +3528,10 @@ __init__( (object)arg1) -> None :
     def startStation (self: CvDbHAlignmentCurve)-> float :
       '''                             '''
     ...
-    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.ETangencyConstraint :
+    def tangencyConstraint (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentTangencyConstraint :
       '''                             '''
     ...
-    def type (self: CvDbHAlignmentElement)-> PyBrxCv.EElementType :
+    def type (self: CvDbHAlignmentElement)-> PyBrxCv.HAlignmentElementType :
       '''                             '''
     ...
 
@@ -3749,6 +3861,91 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+
+class CvDbVAlignmentElement:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''Raises an exception
+This class cannot be instantiated from Python'''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbVAlignmentElement)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def nextId (self: CvDbVAlignmentElement)-> int :
+      '''                             '''
+    ...
+    def parameterConstraint (self: CvDbVAlignmentElement)-> PyBrxCv.VAlignmentParameterConstraint :
+      '''                             '''
+    ...
+    def previousId (self: CvDbVAlignmentElement)-> int :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setNextId (self: CvDbVAlignmentElement,val : int)-> bool :
+      '''                             '''
+    ...
+    def setParameterConstraint (self: CvDbVAlignmentElement,val : PyBrxCv.VAlignmentParameterConstraint)-> bool :
+      '''                             '''
+    ...
+    def setPreviousId (self: CvDbVAlignmentElement,val : int)-> bool :
+      '''                             '''
+    ...
+    def setTangencyConstraint (self: CvDbVAlignmentElement,val : PyBrxCv.VAlignmentTangencyConstraint)-> bool :
+      '''                             '''
+    ...
+    def tangencyConstraint (self: CvDbVAlignmentElement)-> PyBrxCv.VAlignmentTangencyConstraint :
+      '''                             '''
+    ...
+    def type (self: CvDbVAlignmentElement)-> PyBrxCv.VAlignmentElementType :
       '''                             '''
     ...
 
@@ -4849,7 +5046,7 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
-__init__( (object)arg1, (float)arg2, (float)arg3, (EStationEquationType)arg4) -> None :
+__init__( (object)arg1, (float)arg2, (float)arg3, (StationEquationType)arg4) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,double,double,enum BrxCvStationEquation::EStationEquationType)'''
@@ -4865,7 +5062,7 @@ __init__( (object)arg1, (float)arg2, (float)arg3, (EStationEquationType)arg4) ->
     def getStationForward (self: CvStationEquation)-> float :
       '''                             '''
     ...
-    def getType (self: CvStationEquation)-> PyBrxCv.EStationEquationType :
+    def getType (self: CvStationEquation)-> PyBrxCv.StationEquationType :
       '''                             '''
     ...
     def isNull (self: CvStationEquation)-> bool :
@@ -4955,92 +5152,7 @@ __init__( (object)arg1, (CvDbHAlignment)arg2) -> None :
         bool update(class PyBrxCvStationEquations {lvalue})'''
     ...
 
-class EArcParameterType:
-    def __init__ (self, /, *args, **kwargs) :
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def eChordLength (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eCurveAngle (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eCurveLength (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eCurveThroughPoint (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eDegreeOfCurve (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eExternalDist (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eMiddleOrdinate (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eRadius (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eTangentLength (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
-    def name (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
-
-class EArcType:
-    def __init__ (self, /, *args, **kwargs) :
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def eCompound (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eReverse (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
-    def name (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
-
-class EElementType:
+class HAlignmentElementType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -5129,45 +5241,7 @@ class EElementType:
       '''the real part of a complex number'''
     ...
 
-class EHAlignmentVisualStyle:
-    def __init__ (self, /, *args, **kwargs) :
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def eElementExtensions (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eElements (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eTangentExtensions (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eUndefined (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
-    def name (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
-
-class EParameterConstraint:
+class HAlignmentParameterConstraint:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -5322,7 +5396,86 @@ class EParameterConstraint:
       '''the real part of a complex number'''
     ...
 
-class ESpiralCurveType:
+class HAlignmentTangencyConstraint:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eBoth (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eFixed (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eNext (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def ePrevious (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eUndefined (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class HAlignmentVisualStyle:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eElementExtensions (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eElements (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTangentExtensions (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eUndefined (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class SpiralCurveType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -5354,7 +5507,7 @@ class ESpiralCurveType:
       '''the real part of a complex number'''
     ...
 
-class ESpiralDefinitionType:
+class SpiralDefinitionType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -5386,7 +5539,7 @@ class ESpiralDefinitionType:
       '''the real part of a complex number'''
     ...
 
-class ESpiralDefinitionType2:
+class SpiralDefinitionType2:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -5418,7 +5571,7 @@ class ESpiralDefinitionType2:
       '''the real part of a complex number'''
     ...
 
-class ESpiralDirectionType:
+class SpiralDirectionType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -5450,7 +5603,7 @@ class ESpiralDirectionType:
       '''the real part of a complex number'''
     ...
 
-class ESpiralParameterType:
+class SpiralParameterType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -5482,7 +5635,7 @@ class ESpiralParameterType:
       '''the real part of a complex number'''
     ...
 
-class ESpiralParameterType2:
+class SpiralParameterType2:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -5514,7 +5667,7 @@ class ESpiralParameterType2:
       '''the real part of a complex number'''
     ...
 
-class EStationEquationType:
+class StationEquationType:
     def Decreasing (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -5546,7 +5699,95 @@ class EStationEquationType:
       '''the real part of a complex number'''
     ...
 
-class ETangencyConstraint:
+class VAlignmentElementType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eArc (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def ePVI (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eParabola (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTangent (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eUndefined (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class VAlignmentParameterConstraint:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eAngle (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eAutomatic (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eLength (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def ePassThroughPoints (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def ePointOnTangent (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eRadius (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eUndefined (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class VAlignmentTangencyConstraint:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...

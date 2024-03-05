@@ -719,6 +719,7 @@ public:
     PyBrxCvDbHAlignmentSSCSS(BrxCvDbHAlignmentSSCSS* ptr, bool autoDelete);
     virtual ~PyBrxCvDbHAlignmentSSCSS() override = default;
 
+    PyBrxCvDbHAlignmentArc      arc() const;
     PyBrxCvDbHAlignmentSpiral   spiral1() const;
     PyBrxCvDbHAlignmentSpiral   spiral2() const;
     PyBrxCvDbHAlignmentSpiral   spiral3() const;
