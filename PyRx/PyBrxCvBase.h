@@ -371,13 +371,13 @@ public:
     Adesk::UInt64 addArcTo2(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint, const AcGeVector2d& direction);
     Adesk::UInt64 addArcFrom2(Adesk::UInt64 prevId, const AcGePoint2d& passThroughPoint, const AcGeVector2d& direction);
 
-    Adesk::UInt64 addArcTo3(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint, 
+    Adesk::UInt64 addArcTo3(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint,
         double radius, bool isGreaterThan180, BrxCvDbHAlignment::EArcType arcType);
 
-    Adesk::UInt64 addArcFrom3(Adesk::UInt64 previous, const AcGePoint2d& passThroughPoint, 
+    Adesk::UInt64 addArcFrom3(Adesk::UInt64 previous, const AcGePoint2d& passThroughPoint,
         double radius, bool isGreaterThan180, BrxCvDbHAlignment::EArcType arcType);
 
-    Adesk::UInt64 addArcTo4(Adesk::UInt64 nextId, double radius, double paramValue, 
+    Adesk::UInt64 addArcTo4(Adesk::UInt64 nextId, double radius, double paramValue,
         BrxCvDbHAlignment::EArcParameterType paramType, bool isClockwise);
 
     Adesk::UInt64 addArcFrom4(Adesk::UInt64 prevId, double radius,
@@ -393,15 +393,15 @@ public:
         double spiral1, double spiral2, BrxCvDbHAlignment::ESpiralParameterType spiralType
         , double radius, BrxCvDbHAlignment::ESpiralDefinitionType spiralDef);
 
-    Adesk::UInt64 addSTSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId,double spiral1Param, 
-        double spiral2Param,  BrxCvDbHAlignment::ESpiralParameterType spiralParamType, 
+    Adesk::UInt64 addSTSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double spiral1Param,
+        double spiral2Param, BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
         BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
 
-    Adesk::UInt64 addSSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, 
-        double spiralRatio, BrxCvDbHAlignment::ESpiralParameterType spiralParamType, 
+    Adesk::UInt64 addSSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId,
+        double spiralRatio, BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
         BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
 
-    Adesk::UInt64 addSpiralFrom(Adesk::UInt64 prevId, double radius, 
+    Adesk::UInt64 addSpiralFrom(Adesk::UInt64 prevId, double radius,
         double length, bool isClockwise, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
 
     Adesk::UInt64 addSpiralTo(Adesk::UInt64 nextId, double radius, double length,
@@ -410,20 +410,20 @@ public:
     Adesk::UInt64 addSpiralBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId,
         BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
 
-    Adesk::UInt64 addSTFrom1(Adesk::UInt64 prevId, double spiralParam, 
-        BrxCvDbHAlignment::ESpiralParameterType spiralParamType, 
+    Adesk::UInt64 addSTFrom1(Adesk::UInt64 prevId, double spiralParam,
+        BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
         const AcGePoint2d& passThroughPoint, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
 
-    Adesk::UInt64 addTSTo1(Adesk::UInt64 nextId, double spiralParam, 
-        BrxCvDbHAlignment::ESpiralParameterType spiralParamType, 
+    Adesk::UInt64 addTSTo1(Adesk::UInt64 nextId, double spiralParam,
+        BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
         const AcGePoint2d& passThroughPoint, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
 
-    Adesk::UInt64 addSTFrom2(Adesk::UInt64 prevId, double spiralParam, 
-        BrxCvDbHAlignment::ESpiralParameterType spiralParamType, 
+    Adesk::UInt64 addSTFrom2(Adesk::UInt64 prevId, double spiralParam,
+        BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
         double tangentLength, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
 
-    Adesk::UInt64 addTSTo2(Adesk::UInt64 nextId, double spiralParam, 
-        BrxCvDbHAlignment::ESpiralParameterType spiralParamType, 
+    Adesk::UInt64 addTSTo2(Adesk::UInt64 nextId, double spiralParam,
+        BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
         double tangentLength, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
 
     Adesk::UInt64 addSCFrom1(Adesk::UInt64 prevId, double spiralParam,
@@ -500,6 +500,7 @@ class PyBrxCvDbHAlignmentElement : public PyBrxCvDbSubObject
     using EParameterConstraint = BrxCvDbHAlignmentElement::EParameterConstraint;
 
 public:
+    PyBrxCvDbHAlignmentElement(BrxCvDbHAlignmentElement* ptr, bool autoDelete);
     virtual ~PyBrxCvDbHAlignmentElement() override = default;
     Adesk::UInt64           id() const;
     Adesk::UInt64           previousId() const;
@@ -516,6 +517,23 @@ public:
     static PyRxClass        desc();
 public:
     inline BrxCvDbHAlignmentElement* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbHAlignmentPI
+void makePyBrxCvDbHAlignmentPIWrapper();
+
+class PyBrxCvDbHAlignmentPI : public PyBrxCvDbHAlignmentElement
+{
+public:
+    PyBrxCvDbHAlignmentPI();
+    PyBrxCvDbHAlignmentPI(BrxCvDbHAlignmentPI* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbHAlignmentPI() override = default;
+    AcGePoint2d                 location() const;
+    static std::string          className();
+    static PyRxClass            desc();
+public:
+    inline BrxCvDbHAlignmentPI* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
