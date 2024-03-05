@@ -305,7 +305,6 @@ public:
     std::shared_ptr<BrxCvStationEquations> m_pyImp;
 };
 
-
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbHAlignment
 void makePyBrxCvDbHAlignmentWrapper();
@@ -488,6 +487,35 @@ public:
     static PyBrxCvDbHAlignment        cast(const PyRxObject& src);
 public:
     inline BrxCvDbHAlignment* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbHAlignmentElement
+void makePyBrxCvDbHAlignmentElementWrapper();
+
+class PyBrxCvDbHAlignmentElement : public PyBrxCvDbSubObject
+{
+    using EElementType = BrxCvDbHAlignmentElement::EElementType;
+    using ETangencyConstraint = BrxCvDbHAlignmentElement::ETangencyConstraint;
+    using EParameterConstraint = BrxCvDbHAlignmentElement::EParameterConstraint;
+
+public:
+    virtual ~PyBrxCvDbHAlignmentElement() override = default;
+    Adesk::UInt64           id() const;
+    Adesk::UInt64           previousId() const;
+    Adesk::UInt64           nextId() const;
+    EElementType            type() const;
+    ETangencyConstraint     tangencyConstraint() const;
+    EParameterConstraint    parameterConstraint() const;
+    bool                    isSubentity() const;
+    bool                    setPreviousId(Adesk::UInt64 id);
+    bool                    setNextId(Adesk::UInt64 id);
+    bool                    setTangencyConstraint(ETangencyConstraint constraint);
+    bool                    setParameterConstraint(EParameterConstraint constraint);
+    static std::string      className();
+    static PyRxClass        desc();
+public:
+    inline BrxCvDbHAlignmentElement* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
