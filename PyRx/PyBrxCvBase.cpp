@@ -1864,11 +1864,6 @@ PyBrxCvDbHAlignmentLine::PyBrxCvDbHAlignmentLine()
 {
 }
 
-PyBrxCvDbHAlignmentLine::PyBrxCvDbHAlignmentLine(const BrxCvDbHAlignmentLine& line)
-    :PyBrxCvDbHAlignmentLine(new BrxCvDbHAlignmentLine(line), true)
-{
-}
-
 PyBrxCvDbHAlignmentLine::PyBrxCvDbHAlignmentLine(BrxCvDbHAlignmentLine* ptr, bool autoDelete)
     : PyBrxCvDbHAlignmentCurve(ptr, autoDelete)
 {
@@ -1954,10 +1949,6 @@ void makePyBrxCvDbHAlignmentArcWrapper()
 
 PyBrxCvDbHAlignmentArc::PyBrxCvDbHAlignmentArc()
     :PyBrxCvDbHAlignmentArc(new BrxCvDbHAlignmentArc(), true)
-{
-}
-PyBrxCvDbHAlignmentArc::PyBrxCvDbHAlignmentArc(const BrxCvDbHAlignmentArc& arc)
-    :PyBrxCvDbHAlignmentArc(new BrxCvDbHAlignmentArc(arc), true)
 {
 }
 
@@ -2106,11 +2097,6 @@ void makePyBrxCvDbHAlignmentSpiralWrapper()
 
 PyBrxCvDbHAlignmentSpiral::PyBrxCvDbHAlignmentSpiral()
     :PyBrxCvDbHAlignmentSpiral(new BrxCvDbHAlignmentSpiral(), true)
-{
-}
-
-PyBrxCvDbHAlignmentSpiral::PyBrxCvDbHAlignmentSpiral(const BrxCvDbHAlignmentSpiral& spiral)
-    :PyBrxCvDbHAlignmentSpiral(new BrxCvDbHAlignmentSpiral(spiral), true)
 {
 }
 
@@ -2264,21 +2250,26 @@ PyBrxCvDbHAlignmentSCS::PyBrxCvDbHAlignmentSCS(BrxCvDbHAlignmentSCS* ptr, bool a
 
 PyBrxCvDbHAlignmentArc PyBrxCvDbHAlignmentSCS::arc() const
 {
-    //TODO: test this
     auto ptr = impObj()->arc();
     if (ptr.refCount() == 1)
         return PyBrxCvDbHAlignmentArc(ptr.detach(), true);
-    return PyBrxCvDbHAlignmentArc(*ptr);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
 }
 
 PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSCS::spiralIn() const
 {
-    return PyBrxCvDbHAlignmentSpiral(*impObj()->spiralIn());
+    auto ptr = impObj()->spiralIn();
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbHAlignmentSpiral(ptr.detach(), true);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
 }
 
 PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSCS::spiralOut() const
 {
-    return PyBrxCvDbHAlignmentSpiral(*impObj()->spiralOut());
+    auto ptr = impObj()->spiralOut();
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbHAlignmentSpiral(ptr.detach(), true);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
 }
 
 std::string PyBrxCvDbHAlignmentSCS::className()
@@ -2327,21 +2318,26 @@ PyBrxCvDbHAlignmentSTS::PyBrxCvDbHAlignmentSTS(BrxCvDbHAlignmentSTS* ptr, bool a
 
 PyBrxCvDbHAlignmentLine PyBrxCvDbHAlignmentSTS::line() const
 {
-    //TODO: test this
     auto ptr = impObj()->line();
     if (ptr.refCount() == 1)
         return PyBrxCvDbHAlignmentLine(ptr.detach(), true);
-    return PyBrxCvDbHAlignmentLine(*ptr);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
 }
 
 PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSTS::spiralIn() const
 {
-    return PyBrxCvDbHAlignmentSpiral(*impObj()->spiralIn());
+    auto ptr = impObj()->spiralIn();
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbHAlignmentSpiral(ptr.detach(), true);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
 }
 
 PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSTS::spiralOut() const
 {
-    return PyBrxCvDbHAlignmentSpiral(*impObj()->spiralOut());
+    auto ptr = impObj()->spiralOut();
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbHAlignmentSpiral(ptr.detach(), true);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
 }
 
 double PyBrxCvDbHAlignmentSTS::spiralRatio() const
@@ -2396,31 +2392,42 @@ PyBrxCvDbHAlignmentSSCSS::PyBrxCvDbHAlignmentSSCSS(BrxCvDbHAlignmentSSCSS* ptr, 
 
 PyBrxCvDbHAlignmentArc PyBrxCvDbHAlignmentSSCSS::arc() const
 {
-    //TODO: test this
     auto ptr = impObj()->arc();
-    if(ptr.refCount() == 1)
-        return PyBrxCvDbHAlignmentArc(ptr.detach(),true);
-    return PyBrxCvDbHAlignmentArc(*ptr);
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbHAlignmentArc(ptr.detach(), true);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
 }
 
 PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSSCSS::spiral1() const
 {
-    return PyBrxCvDbHAlignmentSpiral(*impObj()->spiral1());
+    auto ptr = impObj()->spiral1();
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbHAlignmentSpiral(ptr.detach(), true);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
 }
 
 PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSSCSS::spiral2() const
 {
-    return PyBrxCvDbHAlignmentSpiral(*impObj()->spiral2());
+    auto ptr = impObj()->spiral2();
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbHAlignmentSpiral(ptr.detach(), true);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
 }
 
 PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSSCSS::spiral3() const
 {
-    return PyBrxCvDbHAlignmentSpiral(*impObj()->spiral3());
+    auto ptr = impObj()->spiral3();
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbHAlignmentSpiral(ptr.detach(), true);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
 }
 
 PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSSCSS::spiral4() const
 {
-    return PyBrxCvDbHAlignmentSpiral(*impObj()->spiral4());
+    auto ptr = impObj()->spiral4();
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbHAlignmentSpiral(ptr.detach(), true);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
 }
 
 std::string PyBrxCvDbHAlignmentSSCSS::className()

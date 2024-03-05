@@ -567,7 +567,6 @@ class PyBrxCvDbHAlignmentLine : public PyBrxCvDbHAlignmentCurve
 {
 public:
     PyBrxCvDbHAlignmentLine();
-    PyBrxCvDbHAlignmentLine(const BrxCvDbHAlignmentLine& line);
     PyBrxCvDbHAlignmentLine(BrxCvDbHAlignmentLine* ptr, bool autoDelete);
     virtual ~PyBrxCvDbHAlignmentLine() override = default;
 
@@ -592,7 +591,6 @@ class PyBrxCvDbHAlignmentArc : public PyBrxCvDbHAlignmentCurve
 {
 public:
     PyBrxCvDbHAlignmentArc();
-    PyBrxCvDbHAlignmentArc(const BrxCvDbHAlignmentArc& arc);
     PyBrxCvDbHAlignmentArc(BrxCvDbHAlignmentArc* ptr, bool autoDelete);
     virtual ~PyBrxCvDbHAlignmentArc() override = default;
 
@@ -634,7 +632,6 @@ class PyBrxCvDbHAlignmentSpiral : public PyBrxCvDbHAlignmentCurve
 
 public:
     PyBrxCvDbHAlignmentSpiral();
-    PyBrxCvDbHAlignmentSpiral(const BrxCvDbHAlignmentSpiral& spiral);
     PyBrxCvDbHAlignmentSpiral(BrxCvDbHAlignmentSpiral* ptr, bool autoDelete);
     virtual ~PyBrxCvDbHAlignmentSpiral() override = default;
 
