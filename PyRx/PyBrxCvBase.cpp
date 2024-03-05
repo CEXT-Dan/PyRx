@@ -1588,4 +1588,99 @@ BrxCvDbHAlignment* PyBrxCvDbHAlignment::impObj(const std::source_location& src /
 }
 
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbHAlignmentElement
+void makePyBrxCvDbHAlignmentElementWrapper()
+{
+    PyDocString DS("CvDbHAlignmentElement");
+    class_<PyBrxCvDbHAlignmentElement, bases<PyBrxCvDbSubObject>>("CvDbHAlignmentElement", boost::python::no_init)
+        .def("id", &PyBrxCvDbHAlignmentElement::id, DS.ARGS())
+        .def("previousId", &PyBrxCvDbHAlignmentElement::previousId, DS.ARGS())
+        .def("nextId", &PyBrxCvDbHAlignmentElement::nextId, DS.ARGS())
+        .def("type", &PyBrxCvDbHAlignmentElement::type, DS.ARGS())
+        .def("tangencyConstraint", &PyBrxCvDbHAlignmentElement::tangencyConstraint, DS.ARGS())
+        .def("parameterConstraint", &PyBrxCvDbHAlignmentElement::parameterConstraint, DS.ARGS())
+        .def("isSubentity", &PyBrxCvDbHAlignmentElement::isSubentity, DS.ARGS())
+        .def("setPreviousId", &PyBrxCvDbHAlignmentElement::setPreviousId, DS.ARGS({ "val : int" }))
+        .def("setNextId", &PyBrxCvDbHAlignmentElement::setNextId, DS.ARGS({ "val : int" }))
+        .def("setTangencyConstraint", &PyBrxCvDbHAlignmentElement::setTangencyConstraint, DS.ARGS({ "val : PyBrxCv.ETangencyConstraint" }))
+        .def("setParameterConstraint", &PyBrxCvDbHAlignmentElement::setParameterConstraint, DS.ARGS({ "val : PyBrxCv.EParameterConstraint" }))
+        .def("className", &PyBrxCvDbHAlignmentElement::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbHAlignmentElement::desc, DS.SARGS()).staticmethod("desc")
+        ;
+}
+
+Adesk::UInt64 PyBrxCvDbHAlignmentElement::id() const
+{
+    return impObj()->id();
+}
+
+Adesk::UInt64 PyBrxCvDbHAlignmentElement::previousId() const
+{
+    return impObj()->previousId();
+}
+
+Adesk::UInt64 PyBrxCvDbHAlignmentElement::nextId() const
+{
+    return impObj()->nextId();
+}
+
+PyBrxCvDbHAlignmentElement::EElementType PyBrxCvDbHAlignmentElement::type() const
+{
+    return impObj()->type();
+}
+
+PyBrxCvDbHAlignmentElement::ETangencyConstraint PyBrxCvDbHAlignmentElement::tangencyConstraint() const
+{
+    return impObj()->tangencyConstraint();
+}
+
+PyBrxCvDbHAlignmentElement::EParameterConstraint PyBrxCvDbHAlignmentElement::parameterConstraint() const
+{
+    return impObj()->parameterConstraint();
+}
+
+bool PyBrxCvDbHAlignmentElement::isSubentity() const
+{
+    return impObj()->isSubentity();
+}
+
+bool PyBrxCvDbHAlignmentElement::setPreviousId(Adesk::UInt64 id)
+{
+    return impObj()->setPreviousId(id);
+}
+
+bool PyBrxCvDbHAlignmentElement::setNextId(Adesk::UInt64 id)
+{
+    return impObj()->setNextId(id);
+}
+
+bool PyBrxCvDbHAlignmentElement::setTangencyConstraint(ETangencyConstraint constraint)
+{
+    return impObj()->setTangencyConstraint(constraint);
+}
+
+bool PyBrxCvDbHAlignmentElement::setParameterConstraint(EParameterConstraint constraint)
+{
+    return impObj()->setParameterConstraint(constraint);
+}
+
+std::string PyBrxCvDbHAlignmentElement::className()
+{
+    return "BrxCvDbHAlignmentElement";
+}
+
+PyRxClass PyBrxCvDbHAlignmentElement::desc()
+{
+    return PyRxClass(BrxCvDbHAlignmentElement::desc(), false);
+}
+
+BrxCvDbHAlignmentElement* PyBrxCvDbHAlignmentElement::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbHAlignmentElement*>(m_pyImp.get());
+}
+
 #endif//BRXAPP
