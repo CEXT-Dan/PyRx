@@ -1086,6 +1086,10 @@ void makePyBrxCvDbHAlignmentWrapper()
         .def("firstLineElementId", &PyBrxCvDbHAlignment::firstLineElementId)
         .def("nextLineElementId", &PyBrxCvDbHAlignment::nextLineElementId)
         .def("previousLineElementId", &PyBrxCvDbHAlignment::previousLineElementId)
+        .def("elementAtId", &PyBrxCvDbHAlignment::elementAtId)
+        .def("elementAtStation", &PyBrxCvDbHAlignment::elementAtStation)
+        .def("curveAtPI", &PyBrxCvDbHAlignment::curveAtPI)
+        .def("getPIsArray", &PyBrxCvDbHAlignment::getPIsArray)
         .def("getUnorderedElementIds", &PyBrxCvDbHAlignment::getUnorderedElementIds)
         .def("getElementId", &PyBrxCvDbHAlignment::getElementId)
         .def("update", &PyBrxCvDbHAlignment::update)
@@ -1262,6 +1266,30 @@ Adesk::UInt64 PyBrxCvDbHAlignment::nextLineElementId(Adesk::UInt64 id) const
 Adesk::UInt64 PyBrxCvDbHAlignment::previousLineElementId(Adesk::UInt64 id) const
 {
     return impObj()->previousLineElementId(id);
+}
+
+PyBrxCvDbHAlignmentElement PyBrxCvDbHAlignment::elementAtId(Adesk::UInt64 id) const
+{
+    return PyBrxCvDbHAlignmentElement(*impObj()->elementAtId(id));
+}
+
+PyBrxCvDbHAlignmentElement PyBrxCvDbHAlignment::elementAtStation(double station) const
+{
+    return PyBrxCvDbHAlignmentElement(*impObj()->elementAtStation(station));
+}
+
+Adesk::UInt64 PyBrxCvDbHAlignment::curveAtPI(const PyBrxCvDbHAlignmentPI& pi) const
+{
+    return impObj()->curveAtPI(pi.impObj());
+}
+
+boost::python::list PyBrxCvDbHAlignment::getPIsArray() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->getPIsArray())
+        pylist.append(PyBrxCvDbHAlignmentElement(*item));
+    return pylist;
 }
 
 boost::python::list PyBrxCvDbHAlignment::getUnorderedElementIds() const
@@ -1608,6 +1636,11 @@ void makePyBrxCvDbHAlignmentElementWrapper()
         .def("className", &PyBrxCvDbHAlignmentElement::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbHAlignmentElement::desc, DS.SARGS()).staticmethod("desc")
         ;
+}
+
+PyBrxCvDbHAlignmentElement::PyBrxCvDbHAlignmentElement(const BrxCvDbHAlignmentElement& ref)
+    : PyBrxCvDbSubObject(new BrxCvDbHAlignmentElement(ref), true)
+{
 }
 
 PyBrxCvDbHAlignmentElement::PyBrxCvDbHAlignmentElement(BrxCvDbHAlignmentElement* ptr, bool autoDelete)
