@@ -342,8 +342,6 @@ public:
     Adesk::UInt64           firstElementId() const;
     Adesk::UInt64           lastElementId() const;
     Adesk::UInt64           firstLineElementId() const;
-
-
     Adesk::UInt64           nextLineElementId(Adesk::UInt64 id) const;
     Adesk::UInt64           previousLineElementId(Adesk::UInt64 id) const;
 
