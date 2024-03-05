@@ -1820,6 +1820,11 @@ PyBrxCvDbHAlignmentLine::PyBrxCvDbHAlignmentLine()
 {
 }
 
+PyBrxCvDbHAlignmentLine::PyBrxCvDbHAlignmentLine(const BrxCvDbHAlignmentLine& line)
+    :PyBrxCvDbHAlignmentLine(new BrxCvDbHAlignmentLine(line), true)
+{
+}
+
 PyBrxCvDbHAlignmentLine::PyBrxCvDbHAlignmentLine(BrxCvDbHAlignmentLine* ptr, bool autoDelete)
     : PyBrxCvDbHAlignmentCurve(ptr, autoDelete)
 {
@@ -1905,6 +1910,10 @@ void makePyBrxCvDbHAlignmentArcWrapper()
 
 PyBrxCvDbHAlignmentArc::PyBrxCvDbHAlignmentArc()
     :PyBrxCvDbHAlignmentArc(new BrxCvDbHAlignmentArc(), true)
+{
+}
+PyBrxCvDbHAlignmentArc::PyBrxCvDbHAlignmentArc(const BrxCvDbHAlignmentArc& arc)
+    :PyBrxCvDbHAlignmentArc(new BrxCvDbHAlignmentArc(arc), true)
 {
 }
 
@@ -2019,5 +2028,354 @@ BrxCvDbHAlignmentArc* PyBrxCvDbHAlignmentArc::impObj(const std::source_location&
         throw PyNullObject(src);
         }
     return static_cast<BrxCvDbHAlignmentArc*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbHAlignmentSpiral
+void makePyBrxCvDbHAlignmentSpiralWrapper()
+{
+    PyDocString DS("CvDbHAlignmentSpiral");
+    class_<PyBrxCvDbHAlignmentSpiral, bases<PyBrxCvDbHAlignmentCurve>>("CvDbHAlignmentSpiral")
+        .def(init<>())
+        .def("radiusIn", &PyBrxCvDbHAlignmentSpiral::radiusIn, DS.ARGS())
+        .def("radiusOut", &PyBrxCvDbHAlignmentSpiral::radiusOut, DS.ARGS())
+        .def("isCompound", &PyBrxCvDbHAlignmentSpiral::isCompound, DS.ARGS())
+        .def("spiralCurveType", &PyBrxCvDbHAlignmentSpiral::spiralCurveType, DS.ARGS())
+        .def("spiralDefinition", &PyBrxCvDbHAlignmentSpiral::spiralDefinition, DS.ARGS())
+        .def("startDirection", &PyBrxCvDbHAlignmentSpiral::startDirection, DS.ARGS())
+        .def("endDirection", &PyBrxCvDbHAlignmentSpiral::endDirection, DS.ARGS())
+        .def("paramA", &PyBrxCvDbHAlignmentSpiral::paramA, DS.ARGS())
+        .def("paramLength", &PyBrxCvDbHAlignmentSpiral::paramLength, DS.ARGS())
+        .def("setRadiusIn", &PyBrxCvDbHAlignmentSpiral::setRadiusIn, DS.ARGS({ "val : float" }))
+        .def("setRadiusOut", &PyBrxCvDbHAlignmentSpiral::setRadiusOut, DS.ARGS({ "val : float" }))
+        .def("setCompound", &PyBrxCvDbHAlignmentSpiral::setCompound, DS.ARGS({ "val : float" }))
+        .def("setClockwise", &PyBrxCvDbHAlignmentSpiral::setClockwise, DS.ARGS({ "val : bool" }))
+        .def("setSpiralCurveType", &PyBrxCvDbHAlignmentSpiral::setSpiralCurveType, DS.ARGS({ "val : PyBrxCv.ESpiralCurveType" }))
+        .def("setSpiralDefinition", &PyBrxCvDbHAlignmentSpiral::setSpiralDefinition, DS.ARGS({ "val : PyBrxCv.ESpiralDefinitionType" }))
+        .def("setEndDirection", &PyBrxCvDbHAlignmentSpiral::setEndDirection, DS.ARGS({ "val : float" }))
+        .def("setParamA", &PyBrxCvDbHAlignmentSpiral::setParamA, DS.ARGS({ "val : float" }))
+        .def("setParamLength", &PyBrxCvDbHAlignmentSpiral::setParamLength, DS.ARGS({ "val : float" }))
+        .def("className", &PyBrxCvDbHAlignmentSpiral::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbHAlignmentSpiral::desc, DS.SARGS()).staticmethod("desc")
+        ;
+}
+
+PyBrxCvDbHAlignmentSpiral::PyBrxCvDbHAlignmentSpiral()
+    :PyBrxCvDbHAlignmentSpiral(new BrxCvDbHAlignmentSpiral(), true)
+{
+}
+
+PyBrxCvDbHAlignmentSpiral::PyBrxCvDbHAlignmentSpiral(const BrxCvDbHAlignmentSpiral& spiral)
+    :PyBrxCvDbHAlignmentSpiral(new BrxCvDbHAlignmentSpiral(spiral), true)
+{
+}
+
+PyBrxCvDbHAlignmentSpiral::PyBrxCvDbHAlignmentSpiral(BrxCvDbHAlignmentSpiral* ptr, bool autoDelete)
+    :PyBrxCvDbHAlignmentCurve(ptr, autoDelete)
+{
+}
+
+double PyBrxCvDbHAlignmentSpiral::radiusIn() const
+{
+    return impObj()->radiusIn();
+}
+
+double PyBrxCvDbHAlignmentSpiral::radiusOut() const
+{
+    return impObj()->radiusOut();
+}
+
+bool PyBrxCvDbHAlignmentSpiral::isCompound() const
+{
+    return impObj()->isCompound();
+}
+
+PyBrxCvDbHAlignmentSpiral::ESpiralCurveType PyBrxCvDbHAlignmentSpiral::spiralCurveType() const
+{
+    return impObj()->spiralCurveType();
+}
+
+bool PyBrxCvDbHAlignmentSpiral::isClockwise() const
+{
+    return impObj()->isClockwise();
+}
+
+PyBrxCvDbHAlignmentSpiral::ESpiralDefinitionType PyBrxCvDbHAlignmentSpiral::spiralDefinition() const
+{
+    return impObj()->spiralDefinition();
+}
+
+double PyBrxCvDbHAlignmentSpiral::startDirection() const
+{
+    return impObj()->startDirection();
+}
+
+double PyBrxCvDbHAlignmentSpiral::endDirection() const
+{
+    return impObj()->endDirection();
+}
+
+double PyBrxCvDbHAlignmentSpiral::paramA() const
+{
+    return impObj()->paramA();
+}
+
+double PyBrxCvDbHAlignmentSpiral::paramLength() const
+{
+    return impObj()->paramLength();
+}
+
+bool PyBrxCvDbHAlignmentSpiral::setRadiusIn(double rad)
+{
+    return impObj()->setRadiusIn(rad);
+}
+
+bool PyBrxCvDbHAlignmentSpiral::setRadiusOut(double rad)
+{
+    return impObj()->setRadiusOut(rad);
+}
+
+bool PyBrxCvDbHAlignmentSpiral::setCompound(bool isCompound)
+{
+    return impObj()->setCompound(isCompound);
+}
+
+bool PyBrxCvDbHAlignmentSpiral::setClockwise(bool isClockwise)
+{
+    return impObj()->setClockwise(isClockwise);
+}
+
+bool PyBrxCvDbHAlignmentSpiral::setSpiralCurveType(ESpiralCurveType spiralCurveType)
+{
+    return impObj()->setSpiralCurveType(spiralCurveType);
+}
+
+bool PyBrxCvDbHAlignmentSpiral::setSpiralDefinition(ESpiralDefinitionType spiralCurveDefinition)
+{
+    return impObj()->setSpiralDefinition(spiralCurveDefinition);
+}
+
+bool PyBrxCvDbHAlignmentSpiral::setStartDirection(double direction)
+{
+    return impObj()->setStartDirection(direction);
+}
+
+bool PyBrxCvDbHAlignmentSpiral::setEndDirection(double direction)
+{
+    return impObj()->setEndDirection(direction);
+}
+
+bool PyBrxCvDbHAlignmentSpiral::setParamA(double paramA)
+{
+    return impObj()->setParamA(paramA);
+}
+
+bool PyBrxCvDbHAlignmentSpiral::setParamLength(double paramLength)
+{
+    return impObj()->setParamLength(paramLength);
+}
+
+std::string PyBrxCvDbHAlignmentSpiral::className()
+{
+    return "BrxCvDbHAlignmentSpiral";
+}
+
+PyRxClass PyBrxCvDbHAlignmentSpiral::desc()
+{
+    return PyRxClass(BrxCvDbHAlignmentSpiral::desc(), false);
+}
+
+BrxCvDbHAlignmentSpiral* PyBrxCvDbHAlignmentSpiral::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbHAlignmentSpiral*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbHAlignmentSCS
+void makePyBrxCvDbHAlignmentSCSWrapper()
+{
+    PyDocString DS("CvDbHAlignmentSCS");
+    class_<PyBrxCvDbHAlignmentSCS, bases<PyBrxCvDbHAlignmentCurve>>("CvDbHAlignmentSCS")
+        .def(init<>())
+        .def("arc", &PyBrxCvDbHAlignmentSCS::arc, DS.ARGS())
+        .def("spiralIn", &PyBrxCvDbHAlignmentSCS::spiralIn, DS.ARGS())
+        .def("spiralOut", &PyBrxCvDbHAlignmentSCS::spiralOut, DS.ARGS())
+        .def("className", &PyBrxCvDbHAlignmentSCS::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbHAlignmentSCS::desc, DS.SARGS()).staticmethod("desc")
+        ;
+}
+
+PyBrxCvDbHAlignmentSCS::PyBrxCvDbHAlignmentSCS()
+    : PyBrxCvDbHAlignmentSCS(new BrxCvDbHAlignmentSCS(), true)
+{
+}
+
+PyBrxCvDbHAlignmentSCS::PyBrxCvDbHAlignmentSCS(BrxCvDbHAlignmentSCS* ptr, bool autoDelete)
+    :PyBrxCvDbHAlignmentCurve(ptr, autoDelete)
+{
+}
+
+PyBrxCvDbHAlignmentArc PyBrxCvDbHAlignmentSCS::arc() const
+{
+    return PyBrxCvDbHAlignmentArc(*impObj()->arc());
+}
+
+PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSCS::spiralIn() const
+{
+    return PyBrxCvDbHAlignmentSpiral(*impObj()->spiralIn());
+}
+
+PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSCS::spiralOut() const
+{
+    return PyBrxCvDbHAlignmentSpiral(*impObj()->spiralOut());
+}
+
+std::string PyBrxCvDbHAlignmentSCS::className()
+{
+    return "BrxCvDbHAlignmentSCS";
+}
+
+PyRxClass PyBrxCvDbHAlignmentSCS::desc()
+{
+    return PyRxClass(BrxCvDbHAlignmentSCS::desc(), false);
+}
+
+BrxCvDbHAlignmentSCS* PyBrxCvDbHAlignmentSCS::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbHAlignmentSCS*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbHAlignmentSTS
+void makePyBrxCvDbHAlignmentSTSWrapper()
+{
+    PyDocString DS("CvDbHAlignmentSTS");
+    class_<PyBrxCvDbHAlignmentSTS, bases<PyBrxCvDbHAlignmentCurve>>("CvDbHAlignmentSTS")
+        .def(init<>())
+        .def("line", &PyBrxCvDbHAlignmentSTS::line, DS.ARGS())
+        .def("spiralIn", &PyBrxCvDbHAlignmentSTS::spiralIn, DS.ARGS())
+        .def("spiralOut", &PyBrxCvDbHAlignmentSTS::spiralOut, DS.ARGS())
+        .def("spiralRatio", &PyBrxCvDbHAlignmentSTS::spiralRatio, DS.ARGS())
+        .def("className", &PyBrxCvDbHAlignmentSTS::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbHAlignmentSTS::desc, DS.SARGS()).staticmethod("desc")
+        ;
+}
+
+PyBrxCvDbHAlignmentSTS::PyBrxCvDbHAlignmentSTS()
+    :PyBrxCvDbHAlignmentSTS(new BrxCvDbHAlignmentSTS(), true)
+{
+}
+
+PyBrxCvDbHAlignmentSTS::PyBrxCvDbHAlignmentSTS(BrxCvDbHAlignmentSTS* ptr, bool autoDelete)
+    :PyBrxCvDbHAlignmentCurve(ptr, autoDelete)
+{
+}
+
+PyBrxCvDbHAlignmentLine PyBrxCvDbHAlignmentSTS::line() const
+{
+    return PyBrxCvDbHAlignmentLine(*impObj()->line());
+}
+
+PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSTS::spiralIn() const
+{
+    return PyBrxCvDbHAlignmentSpiral(*impObj()->spiralIn());
+}
+
+PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSTS::spiralOut() const
+{
+    return PyBrxCvDbHAlignmentSpiral(*impObj()->spiralOut());
+}
+
+double PyBrxCvDbHAlignmentSTS::spiralRatio() const
+{
+    return impObj()->spiralRatio();
+}
+
+std::string PyBrxCvDbHAlignmentSTS::className()
+{
+    return "BrxCvDbHAlignmentSTS";
+}
+
+PyRxClass PyBrxCvDbHAlignmentSTS::desc()
+{
+    return PyRxClass(BrxCvDbHAlignmentSTS::desc(), false);
+}
+
+BrxCvDbHAlignmentSTS* PyBrxCvDbHAlignmentSTS::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbHAlignmentSTS*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbHAlignmentSSCSS
+void makePyBrxCvDbHAlignmentSSCSSWrapper()
+{
+    PyDocString DS("CvDbHAlignmentSSCSS");
+    class_<PyBrxCvDbHAlignmentSSCSS, bases<PyBrxCvDbHAlignmentCurve>>("CvDbHAlignmentSSCSS")
+        .def(init<>())
+        .def("spiral1", &PyBrxCvDbHAlignmentSSCSS::spiral1, DS.ARGS())
+        .def("spiral2", &PyBrxCvDbHAlignmentSSCSS::spiral2, DS.ARGS())
+        .def("spiral3", &PyBrxCvDbHAlignmentSSCSS::spiral3, DS.ARGS())
+        .def("spiral4", &PyBrxCvDbHAlignmentSSCSS::spiral4, DS.ARGS())
+        .def("className", &PyBrxCvDbHAlignmentSSCSS::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbHAlignmentSSCSS::desc, DS.SARGS()).staticmethod("desc")
+        ;
+}
+
+PyBrxCvDbHAlignmentSSCSS::PyBrxCvDbHAlignmentSSCSS()
+  :PyBrxCvDbHAlignmentSSCSS(new BrxCvDbHAlignmentSSCSS(), true)
+{
+}
+
+PyBrxCvDbHAlignmentSSCSS::PyBrxCvDbHAlignmentSSCSS(BrxCvDbHAlignmentSSCSS* ptr, bool autoDelete)
+    :PyBrxCvDbHAlignmentCurve(ptr, autoDelete)
+{
+}
+
+PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSSCSS::spiral1() const
+{
+    return PyBrxCvDbHAlignmentSpiral(*impObj()->spiral1());
+}
+
+PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSSCSS::spiral2() const
+{
+    return PyBrxCvDbHAlignmentSpiral(*impObj()->spiral2());
+}
+
+PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSSCSS::spiral3() const
+{
+    return PyBrxCvDbHAlignmentSpiral(*impObj()->spiral3());
+}
+
+PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSSCSS::spiral4() const
+{
+    return PyBrxCvDbHAlignmentSpiral(*impObj()->spiral4());
+}
+
+std::string PyBrxCvDbHAlignmentSSCSS::className()
+{
+    return "BrxCvDbHAlignmentSSCSS";
+}
+
+PyRxClass PyBrxCvDbHAlignmentSSCSS::desc()
+{
+    return PyRxClass(BrxCvDbHAlignmentSSCSS::desc(), false);
+}
+
+BrxCvDbHAlignmentSSCSS* PyBrxCvDbHAlignmentSSCSS::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbHAlignmentSSCSS*>(m_pyImp.get());
 }
 #endif//BRXAPP

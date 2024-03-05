@@ -26,6 +26,10 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvDbHAlignmentCurveWrapper();
     makePyBrxCvDbHAlignmentLineWrapper();
     makePyBrxCvDbHAlignmentArcWrapper();
+    makePyBrxCvDbHAlignmentSpiralWrapper();
+    makePyBrxCvDbHAlignmentSCSWrapper();
+    makePyBrxCvDbHAlignmentSTSWrapper();
+    makePyBrxCvDbHAlignmentSSCSSWrapper();
 
     enum_<BrxCvCivil3dConverter::Civil3dLabels>("Civil3dLabels")
         .value("eNoLabels", BrxCvCivil3dConverter::Civil3dLabels::eNoLabels)
@@ -94,16 +98,42 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eCurveThroughPoint", BrxCvDbHAlignment::EArcParameterType::eCurveThroughPoint)
         .export_values()
         ;
-    enum_<BrxCvDbHAlignment::ESpiralDefinitionType>("ESpiralDefinitionType")
+
+    //these conflict
+    enum_<BrxCvDbHAlignment::ESpiralDefinitionType>("ESpiralDefinitionType2")
         .value("eClothoid", BrxCvDbHAlignment::ESpiralDefinitionType::eClothoid)
         .value("eCubicParabola", BrxCvDbHAlignment::ESpiralDefinitionType::eCubicParabola)
         .export_values()
         ;
-    enum_<BrxCvDbHAlignment::ESpiralParameterType>("ESpiralParameterType")
+    enum_<BrxCvDbHAlignment::ESpiralParameterType>("ESpiralParameterType2")
         .value("eParamA", BrxCvDbHAlignment::ESpiralParameterType::eParamA)
         .value("eParamLength", BrxCvDbHAlignment::ESpiralParameterType::eParamLength)
         .export_values()
         ;
+
+    //with these test!
+    enum_<BrxCvDbHAlignmentSpiral::ESpiralCurveType>("ESpiralCurveType")
+        .value("eInCurve", BrxCvDbHAlignmentSpiral::ESpiralCurveType::eInCurve)
+        .value("eOutCurve", BrxCvDbHAlignmentSpiral::ESpiralCurveType::eOutCurve)
+        .export_values()
+        ;
+    enum_<BrxCvDbHAlignmentSpiral::ESpiralParameterType>("ESpiralParameterType")
+        .value("eClothoid", BrxCvDbHAlignmentSpiral::ESpiralParameterType::eParamA)
+        .value("eCubicParabola", BrxCvDbHAlignmentSpiral::ESpiralParameterType::eParamA)
+        .export_values()
+        ;
+    enum_<BrxCvDbHAlignmentSpiral::ESpiralDefinitionType>("ESpiralDefinitionType")
+        .value("eClothoid", BrxCvDbHAlignmentSpiral::ESpiralDefinitionType::eClothoid)
+        .value("eCubicParabola", BrxCvDbHAlignmentSpiral::ESpiralDefinitionType::eCubicParabola)
+        .export_values()
+        ;
+    enum_<BrxCvDbHAlignmentSpiral::ESpiralDirectionType>("ESpiralDirectionType")
+        .value("eDirectionRight", BrxCvDbHAlignmentSpiral::ESpiralDirectionType::eDirectionRight)
+        .value("eDirectionLeft", BrxCvDbHAlignmentSpiral::ESpiralDirectionType::eDirectionLeft)
+        .export_values()
+        ;
+    //
+
     enum_<BrxCvDbHAlignmentElement::EElementType>("EElementType")
         .value("eUndefined", BrxCvDbHAlignmentElement::EElementType::eUndefined)
         .value("eLine", BrxCvDbHAlignmentElement::EElementType::eLine)
