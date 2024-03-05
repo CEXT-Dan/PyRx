@@ -25,13 +25,12 @@ public:
     PyBrxCvDbSubObject(BrxCvDbSubObject* ptr, bool autoDelete);
     virtual ~PyBrxCvDbSubObject() override = default;
 
-    std::string     name() const;
-    bool            setName(const std::string& szName);
-    std::string     description() const;
-    bool            setDescription(const std::string& szDescription);
-
-    static std::string          className();
-    static PyRxClass            desc();
+    std::string             name() const;
+    bool                    setName(const std::string& szName);
+    std::string             description() const;
+    bool                    setDescription(const std::string& szDescription);
+    static std::string      className();
+    static PyRxClass        desc();
 
 public:
     inline BrxCvDbSubObject* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -50,10 +49,10 @@ public:
     PyBrxCvDbObject(BrxCvDbObject* ptr, bool autoDelete);
     virtual ~PyBrxCvDbObject() override = default;
 
-    std::string     name() const;
-    bool            setName(const std::string& szName);
-    std::string     description() const;
-    bool            setDescription(const std::string& szDescription);
+    std::string                 name() const;
+    bool                        setName(const std::string& szName);
+    std::string                 description() const;
+    bool                        setDescription(const std::string& szDescription);
 
     static std::string          className();
     static PyRxClass            desc();
@@ -77,15 +76,15 @@ public:
     PyBrxCvDbEntity(BrxCvDbEntity* ptr, bool autoDelete);
     virtual ~PyBrxCvDbEntity() override = default;
 
-    std::string     name() const;
-    bool            setName(const std::string& szName);
-    std::string     description() const;
-    bool            setDescription(const std::string& szDescription);
+    std::string             name() const;
+    bool                    setName(const std::string& szName);
+    std::string             description() const;
+    bool                    setDescription(const std::string& szDescription);
 
-    static std::string       className();
-    static PyRxClass         desc();
-    static PyBrxCvDbEntity   cloneFrom(const PyRxObject& src);
-    static PyBrxCvDbEntity   cast(const PyRxObject& src);
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbEntity  cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbEntity  cast(const PyRxObject& src);
 public:
     inline BrxCvDbEntity* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -103,10 +102,10 @@ public:
     PyBrxCvDbCurve(BrxCvDbCurve* ptr, bool autoDelete);
     virtual ~PyBrxCvDbCurve() override = default;
 
-    std::string     name() const;
-    bool            setName(const std::string& szName);
-    std::string     description() const;
-    bool            setDescription(const std::string& szDescription);
+    std::string                 name() const;
+    bool                        setName(const std::string& szName);
+    std::string                 description() const;
+    bool                        setDescription(const std::string& szDescription);
 
     static std::string          className();
     static PyRxClass            desc();
@@ -124,19 +123,22 @@ void makePyBrxCvCivil3dEntityInfoWrapper();
 
 class PyBrxCvCivil3dEntityInfo
 {
+    using Civil3dEntityType = BrxCvCivil3dEntityInfo::Civil3dEntityType;
+    using Civil3dAlignmentType = BrxCvCivil3dEntityInfo::Civil3dAlignmentType;
+    using Civil3dProfileType = BrxCvCivil3dEntityInfo::Civil3dProfileType;
 public:
     PyBrxCvCivil3dEntityInfo();
     PyBrxCvCivil3dEntityInfo(const BrxCvCivil3dEntityInfo& info);
     ~PyBrxCvCivil3dEntityInfo() = default;
 
-    bool                    isNull() const;
-    std::string             name() const;
-    std::string             description() const;
-    PyDbObjectId            objectId() const;
+    bool                      isNull() const;
+    std::string               name() const;
+    std::string               description() const;
+    PyDbObjectId              objectId() const;
 
-    BrxCvCivil3dEntityInfo::Civil3dEntityType       type() const;
-    BrxCvCivil3dEntityInfo::Civil3dAlignmentType    alignmentType() const;
-    BrxCvCivil3dEntityInfo::Civil3dProfileType      profileType() const;
+    Civil3dEntityType         type() const;
+    Civil3dAlignmentType      alignmentType() const;
+    Civil3dProfileType        profileType() const;
 
     PyBrxCvCivil3dEntityInfo  baseAlignment() const;
     PyBrxCvCivil3dEntityInfo  baseSurface() const;
@@ -185,35 +187,35 @@ public:
     PyBrxCvDbView(BrxCvDbView* ptr, bool autoDelete);
     virtual ~PyBrxCvDbView() override = default;
 
-    Adesk::UInt32   graphCount() const;
-    PyDbObjectId    graphAt(Adesk::UInt32 idx) const;
-    bool            removeGraph(const PyDbObjectId& idGraph);
-    PyDbObjectId    baseHAlignment() const;
-    bool            setBaseHAlignment(const PyDbObjectId& id);
-    AcGePoint2d     origin() const;
-    bool            setOrigin(const AcGePoint2d& pnt);
-    double          baseElevation() const;
-    bool            setBaseElevation(double elevation);
-    double          verticalScale() const;
-    bool            setVerticalScale(double vScale);
-    double          horizontalScale() const;
-    bool            setHorizontalScale(double hScale);
-    double          length() const;
-    bool            setLength(double viewLength);
-    double          height() const;
-    bool            setHeight(double viewHeight);
-    bool            addGraph(const PyDbObjectId& idGraph);
-    double          toWCSX(double x) const;
-    double          toWCSY(double y) const;
-    AcGePoint2d     toWCSPoint2d(const AcGePoint2d& point) const;
-    double          fromWCSX(double x) const;
-    double          fromWCSY(double y) const;
-    AcGePoint2d     fromWCSPoint2d(const AcGePoint2d& point) const;
+    Adesk::UInt32           graphCount() const;
+    PyDbObjectId            graphAt(Adesk::UInt32 idx) const;
+    bool                    removeGraph(const PyDbObjectId& idGraph);
+    PyDbObjectId            baseHAlignment() const;
+    bool                    setBaseHAlignment(const PyDbObjectId& id);
+    AcGePoint2d             origin() const;
+    bool                    setOrigin(const AcGePoint2d& pnt);
+    double                  baseElevation() const;
+    bool                    setBaseElevation(double elevation);
+    double                  verticalScale() const;
+    bool                    setVerticalScale(double vScale);
+    double                  horizontalScale() const;
+    bool                    setHorizontalScale(double hScale);
+    double                  length() const;
+    bool                    setLength(double viewLength);
+    double                  height() const;
+    bool                    setHeight(double viewHeight);
+    bool                    addGraph(const PyDbObjectId& idGraph);
+    double                  toWCSX(double x) const;
+    double                  toWCSY(double y) const;
+    AcGePoint2d             toWCSPoint2d(const AcGePoint2d& point) const;
+    double                  fromWCSX(double x) const;
+    double                  fromWCSY(double y) const;
+    AcGePoint2d             fromWCSPoint2d(const AcGePoint2d& point) const;
 
-    static std::string          className();
-    static PyRxClass            desc();
-    static PyBrxCvDbView        cloneFrom(const PyRxObject& src);
-    static PyBrxCvDbView        cast(const PyRxObject& src);
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbView    cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbView    cast(const PyRxObject& src);
 public:
     inline BrxCvDbView* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -232,13 +234,13 @@ public:
     PyBrxCvDbVAlignmentView(BrxCvDbVAlignmentView* ptr, bool autoDelete);
     virtual ~PyBrxCvDbVAlignmentView() override = default;
 
-    bool            update1();
-    bool            update2(bool bUpdateDependencies, bool updateOrigin);
+    bool                    update1();
+    bool                    update2(bool bUpdateDependencies, bool updateOrigin);
+    static std::string      className();
+    static PyRxClass        desc();
 
-    static std::string          className();
-    static PyRxClass            desc();
-    static PyBrxCvDbVAlignmentView        cloneFrom(const PyRxObject& src);
-    static PyBrxCvDbVAlignmentView        cast(const PyRxObject& src);
+    static PyBrxCvDbVAlignmentView  cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbVAlignmentView  cast(const PyRxObject& src);
 public:
     inline BrxCvDbVAlignmentView* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -249,22 +251,22 @@ void makePyBrxCvStationEquationWrapper();
 
 class PyBrxCvStationEquation
 {
+    using EStationEquationType = BrxCvStationEquation::EStationEquationType;
 public:
     PyBrxCvStationEquation();
-    PyBrxCvStationEquation(double rawStation, double stationForward, BrxCvStationEquation::EStationEquationType type);
+    PyBrxCvStationEquation(double rawStation, double stationForward, EStationEquationType type);
     PyBrxCvStationEquation(const BrxCvStationEquation& equation);
     ~PyBrxCvStationEquation() = default;
 
-    bool        isNull() const;
-    double      getRawStation() const;
-    double      getStationForward() const;
-    BrxCvStationEquation::EStationEquationType getType() const;
+    bool                    isNull() const;
+    double                  getRawStation() const;
+    double                  getStationForward() const;
+    EStationEquationType    getType() const;
+    bool                    setRawStation(double rawStation);
+    bool                    setStationForward(double stationForward);
+    bool                    setType(EStationEquationType type);
 
-    bool        setRawStation(double rawStation);
-    bool        setStationForward(double stationForward);
-    bool        setType(BrxCvStationEquation::EStationEquationType type);
-
-    static std::string          className();
+    static std::string      className();
 public:
     inline BrxCvStationEquation* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
@@ -355,21 +357,40 @@ public:
     bool                    update();
     double                  getRadius(double param) const;
 
-    Adesk::UInt64 addLineFixed1(Adesk::UInt64 prevId, double length);
-    Adesk::UInt64 addLineFixed2(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint);
-    Adesk::UInt64 addLineTo1(Adesk::UInt64 nextId, const AcGePoint2d& point);
-    Adesk::UInt64 addLineFrom1(Adesk::UInt64 prevId, const AcGePoint2d& point);
-    Adesk::UInt64 addLineTo2(Adesk::UInt64 nextId, double length);
-    Adesk::UInt64 addLineFrom2(Adesk::UInt64 prevId, double length);
-    Adesk::UInt64 addLineBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId);
-    Adesk::UInt64 insertLineFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, Adesk::UInt64 prevId);
-    Adesk::UInt64 addArcAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId);
-    Adesk::UInt64 addArcFixed1(const AcGePoint2d& center, double radius, bool isClockwise);
-    Adesk::UInt64 addArcFixed2(const AcGePoint2d& startPoint, const AcGePoint2d& midPoint, const AcGePoint2d& endPoint);
-    Adesk::UInt64 addArcTo1(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint);
-    Adesk::UInt64 addArcFrom1(Adesk::UInt64 prevId, const AcGePoint2d& passThroughPoint);
-    Adesk::UInt64 addArcTo2(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint, const AcGeVector2d& direction);
-    Adesk::UInt64 addArcFrom2(Adesk::UInt64 prevId, const AcGePoint2d& passThroughPoint, const AcGeVector2d& direction);
+    Adesk::UInt64           addLineFixed1(Adesk::UInt64 prevId, double length);
+    Adesk::UInt64           addLineFixed2(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint);
+    Adesk::UInt64           addLineTo1(Adesk::UInt64 nextId, const AcGePoint2d& point);
+    Adesk::UInt64           addLineFrom1(Adesk::UInt64 prevId, const AcGePoint2d& point);
+    Adesk::UInt64           addLineTo2(Adesk::UInt64 nextId, double length);
+    Adesk::UInt64           addLineFrom2(Adesk::UInt64 prevId, double length);
+    Adesk::UInt64           addLineBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId);
+    Adesk::UInt64           insertLineFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, Adesk::UInt64 prevId);
+    Adesk::UInt64           addArcAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId);
+    Adesk::UInt64           addArcFixed1(const AcGePoint2d& center, double radius, bool isClockwise);
+    Adesk::UInt64           addArcFixed2(const AcGePoint2d& startPoint, const AcGePoint2d& midPoint, const AcGePoint2d& endPoint);
+    Adesk::UInt64           addArcTo1(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint);
+    Adesk::UInt64           addArcFrom1(Adesk::UInt64 prevId, const AcGePoint2d& passThroughPoint);
+    Adesk::UInt64           addArcTo2(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint, const AcGeVector2d& direction);
+    Adesk::UInt64           addArcFrom2(Adesk::UInt64 prevId, const AcGePoint2d& passThroughPoint, const AcGeVector2d& direction);
+
+    bool                    deleteElement(Adesk::UInt64 id);
+    Adesk::UInt32           style() const;
+    bool                    setStyle(const Adesk::UInt32 style);
+
+    Adesk::UInt32           elementExtensionColor() const;
+    Adesk::UInt32           tangentExtensionColor() const;
+    Adesk::UInt32           lineElementColor() const;
+    Adesk::UInt32           curveElementColor() const;
+    Adesk::UInt32           spiralElementColor() const;
+    //
+    bool                    setElementExtensionColor(const Adesk::UInt32 color);
+    bool                    setTangentExtensionColor(const Adesk::UInt32 color);
+    bool                    setLineElementColor(const Adesk::UInt32 color);
+    bool                    setCurveElementColor(const Adesk::UInt32 color);
+    bool                    setSpiralElementColor(const Adesk::UInt32 color);
+
+    PyBrxCvStationEquations stationEquations() const;
+    bool                    setStationEquations(const PyBrxCvStationEquations& stationEquations);
 
     Adesk::UInt64 addArcTo3(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint,
         double radius, bool isGreaterThan180, BrxCvDbHAlignment::EArcType arcType);
@@ -461,26 +482,6 @@ public:
 
     Adesk::UInt64 addSCSAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId);
 
-
-    bool            deleteElement(Adesk::UInt64 id);
-    Adesk::UInt32   style() const;
-    bool            setStyle(const Adesk::UInt32 style);
-
-    Adesk::UInt32   elementExtensionColor() const;
-    Adesk::UInt32   tangentExtensionColor() const;
-    Adesk::UInt32   lineElementColor() const;
-    Adesk::UInt32   curveElementColor() const;
-    Adesk::UInt32   spiralElementColor() const;
-    //
-    bool            setElementExtensionColor(const Adesk::UInt32 color);
-    bool            setTangentExtensionColor(const Adesk::UInt32 color);
-    bool            setLineElementColor(const Adesk::UInt32 color);
-    bool            setCurveElementColor(const Adesk::UInt32 color);
-    bool            setSpiralElementColor(const Adesk::UInt32 color);
-
-    PyBrxCvStationEquations stationEquations() const;
-    bool                    setStationEquations(const PyBrxCvStationEquations& stationEquations);
-
     static std::string                className();
     static PyRxClass                  desc();
     static PyBrxCvDbHAlignment        cloneFrom(const PyRxObject& src);
@@ -547,14 +548,14 @@ public:
     PyBrxCvDbHAlignmentCurve(BrxCvDbHAlignmentCurve* ptr, bool autoDelete);
     virtual ~PyBrxCvDbHAlignmentCurve() override = default;
 
-    AcGePoint2d startPoint() const;
-    AcGePoint2d endPoint() const;
-    double      startStation() const;
-    double      endStation() const;
-    double      length() const;
+    AcGePoint2d             startPoint() const;
+    AcGePoint2d             endPoint() const;
+    double                  startStation() const;
+    double                  endStation() const;
+    double                  length() const;
 
-    static std::string          className();
-    static PyRxClass            desc();
+    static std::string      className();
+    static PyRxClass        desc();
 public:
     inline BrxCvDbHAlignmentCurve* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -570,15 +571,15 @@ public:
     PyBrxCvDbHAlignmentLine(BrxCvDbHAlignmentLine* ptr, bool autoDelete);
     virtual ~PyBrxCvDbHAlignmentLine() override = default;
 
-    AcGePoint2d passThroughPoint1();
-    AcGePoint2d passThroughPoint2();
-    double      paramLength() const;
-    bool        setParamLength(double length);
-    bool        setPassThroughPoint1(const AcGePoint2d& point);
-    bool        setPassThroughPoint2(const AcGePoint2d& point);
+    AcGePoint2d             passThroughPoint1();
+    AcGePoint2d             passThroughPoint2();
+    double                  paramLength() const;
+    bool                    setParamLength(double length);
+    bool                    setPassThroughPoint1(const AcGePoint2d& point);
+    bool                    setPassThroughPoint2(const AcGePoint2d& point);
 
-    static std::string          className();
-    static PyRxClass            desc();
+    static std::string      className();
+    static PyRxClass        desc();
 public:
     inline BrxCvDbHAlignmentLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -594,29 +595,29 @@ public:
     PyBrxCvDbHAlignmentArc(BrxCvDbHAlignmentArc* ptr, bool autoDelete);
     virtual ~PyBrxCvDbHAlignmentArc() override = default;
 
-    double      radius() const;
-    AcGePoint2d center() const;
-    bool        isClockwise() const;
-    bool        setRadius(double rad);
-    bool        setCenter(const AcGePoint2d& center);
-    bool        setClockwise(bool isClockwise);
-    bool        isLessThan180() const;
-    bool        setLessThan180(bool isLessThan180);
-    bool        isCompound() const;
-    bool        setCompound(bool isCompound);
+    double                  radius() const;
+    AcGePoint2d             center() const;
+    bool                    isClockwise() const;
+    bool                    setRadius(double rad);
+    bool                    setCenter(const AcGePoint2d& center);
+    bool                    setClockwise(bool isClockwise);
+    bool                    isLessThan180() const;
+    bool                    setLessThan180(bool isLessThan180);
+    bool                    isCompound() const;
+    bool                    setCompound(bool isCompound);
 
-    AcGePoint2d passThroughPoint1() const;
-    AcGePoint2d passThroughPoint2() const;
-    AcGePoint2d passThroughPoint3() const;
-    bool        setPassThroughPoint1(const AcGePoint2d& point);
-    bool        setPassThroughPoint2(const AcGePoint2d& point);
-    bool        setPassThroughPoint3(const AcGePoint2d& point);
+    AcGePoint2d             passThroughPoint1() const;
+    AcGePoint2d             passThroughPoint2() const;
+    AcGePoint2d             passThroughPoint3() const;
+    bool                    setPassThroughPoint1(const AcGePoint2d& point);
+    bool                    setPassThroughPoint2(const AcGePoint2d& point);
+    bool                    setPassThroughPoint3(const AcGePoint2d& point);
 
-    double      paramLength() const;
-    bool        setParamLength(double length);
+    double                  paramLength() const;
+    bool                    setParamLength(double length);
 
-    static std::string          className();
-    static PyRxClass            desc();
+    static std::string      className();
+    static PyRxClass        desc();
 public:
     inline BrxCvDbHAlignmentArc* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -635,29 +636,29 @@ public:
     PyBrxCvDbHAlignmentSpiral(BrxCvDbHAlignmentSpiral* ptr, bool autoDelete);
     virtual ~PyBrxCvDbHAlignmentSpiral() override = default;
 
-    double              radiusIn() const;
-    double              radiusOut() const;
-    bool                isCompound() const;
-    ESpiralCurveType    spiralCurveType() const;
-    bool                isClockwise() const;
-    ESpiralDefinitionType spiralDefinition() const;
-    double              startDirection() const;
-    double              endDirection() const;
-    double              paramA() const;
-    double              paramLength() const;
-    bool                setRadiusIn(double rad);
-    bool                setRadiusOut(double rad);
-    bool                setCompound(bool isCompound);
-    bool                setClockwise(bool isClockwise);
-    bool                setSpiralCurveType(ESpiralCurveType spiralCurveType);
-    bool                setSpiralDefinition(ESpiralDefinitionType spiralCurveDefinition);
-    bool                setStartDirection(double direction);
-    bool                setEndDirection(double direction);
-    bool                setParamA(double paramA);
-    bool                setParamLength(double paramLength);
+    double                  radiusIn() const;
+    double                  radiusOut() const;
+    bool                    isCompound() const;
+    ESpiralCurveType        spiralCurveType() const;
+    bool                    isClockwise() const;
+    ESpiralDefinitionType   spiralDefinition() const;
+    double                  startDirection() const;
+    double                  endDirection() const;
+    double                  paramA() const;
+    double                  paramLength() const;
+    bool                    setRadiusIn(double rad);
+    bool                    setRadiusOut(double rad);
+    bool                    setCompound(bool isCompound);
+    bool                    setClockwise(bool isClockwise);
+    bool                    setSpiralCurveType(ESpiralCurveType spiralCurveType);
+    bool                    setSpiralDefinition(ESpiralDefinitionType spiralCurveDefinition);
+    bool                    setStartDirection(double direction);
+    bool                    setEndDirection(double direction);
+    bool                    setParamA(double paramA);
+    bool                    setParamLength(double paramLength);
 
-    static std::string          className();
-    static PyRxClass            desc();
+    static std::string      className();
+    static PyRxClass        desc();
 public:
     inline BrxCvDbHAlignmentSpiral* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -756,11 +757,6 @@ public:
 public:
     inline BrxCvDbVAlignmentElement* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
-
-
-
-
 
 #endif//BRXAPP
 
