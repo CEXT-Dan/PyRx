@@ -1270,12 +1270,18 @@ Adesk::UInt64 PyBrxCvDbHAlignment::previousLineElementId(Adesk::UInt64 id) const
 
 PyBrxCvDbHAlignmentElement PyBrxCvDbHAlignment::elementAtId(Adesk::UInt64 id) const
 {
-    return PyBrxCvDbHAlignmentElement(*impObj()->elementAtId(id));
+    auto ptr = impObj()->elementAtId(id);
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbHAlignmentElement(ptr.detach(), true);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
 }
 
 PyBrxCvDbHAlignmentElement PyBrxCvDbHAlignment::elementAtStation(double station) const
 {
-    return PyBrxCvDbHAlignmentElement(*impObj()->elementAtStation(station));
+    auto ptr = impObj()->elementAtStation(station);
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbHAlignmentElement(ptr.detach(), true);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
 }
 
 Adesk::UInt64 PyBrxCvDbHAlignment::curveAtPI(const PyBrxCvDbHAlignmentPI& pi) const
@@ -1287,8 +1293,13 @@ boost::python::list PyBrxCvDbHAlignment::getPIsArray() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for (const auto& item : impObj()->getPIsArray())
-        pylist.append(PyBrxCvDbHAlignmentElement(*item));
+    for (auto ptr : impObj()->getPIsArray())
+    {
+        if (ptr.refCount() == 1)
+            pylist.append(PyBrxCvDbHAlignmentPI(ptr.detach(), true));
+        else
+            throw PyAcadErrorStatus(Acad::eInvalidOpenState);
+    }
     return pylist;
 }
 
