@@ -2253,7 +2253,11 @@ PyBrxCvDbHAlignmentSCS::PyBrxCvDbHAlignmentSCS(BrxCvDbHAlignmentSCS* ptr, bool a
 
 PyBrxCvDbHAlignmentArc PyBrxCvDbHAlignmentSCS::arc() const
 {
-    return PyBrxCvDbHAlignmentArc(*impObj()->arc());
+    //TODO: test this
+    auto ptr = impObj()->arc();
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbHAlignmentArc(ptr.detach(), true);
+    return PyBrxCvDbHAlignmentArc(*ptr);
 }
 
 PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSCS::spiralIn() const
@@ -2312,7 +2316,11 @@ PyBrxCvDbHAlignmentSTS::PyBrxCvDbHAlignmentSTS(BrxCvDbHAlignmentSTS* ptr, bool a
 
 PyBrxCvDbHAlignmentLine PyBrxCvDbHAlignmentSTS::line() const
 {
-    return PyBrxCvDbHAlignmentLine(*impObj()->line());
+    //TODO: test this
+    auto ptr = impObj()->line();
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbHAlignmentLine(ptr.detach(), true);
+    return PyBrxCvDbHAlignmentLine(*ptr);
 }
 
 PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSTS::spiralIn() const
@@ -2355,6 +2363,7 @@ void makePyBrxCvDbHAlignmentSSCSSWrapper()
     PyDocString DS("CvDbHAlignmentSSCSS");
     class_<PyBrxCvDbHAlignmentSSCSS, bases<PyBrxCvDbHAlignmentCurve>>("CvDbHAlignmentSSCSS")
         .def(init<>())
+        .def("arc", &PyBrxCvDbHAlignmentSSCSS::arc, DS.ARGS())
         .def("spiral1", &PyBrxCvDbHAlignmentSSCSS::spiral1, DS.ARGS())
         .def("spiral2", &PyBrxCvDbHAlignmentSSCSS::spiral2, DS.ARGS())
         .def("spiral3", &PyBrxCvDbHAlignmentSSCSS::spiral3, DS.ARGS())
@@ -2372,6 +2381,15 @@ PyBrxCvDbHAlignmentSSCSS::PyBrxCvDbHAlignmentSSCSS()
 PyBrxCvDbHAlignmentSSCSS::PyBrxCvDbHAlignmentSSCSS(BrxCvDbHAlignmentSSCSS* ptr, bool autoDelete)
     :PyBrxCvDbHAlignmentCurve(ptr, autoDelete)
 {
+}
+
+PyBrxCvDbHAlignmentArc PyBrxCvDbHAlignmentSSCSS::arc() const
+{
+    //TODO: test this
+    auto ptr = impObj()->arc();
+    if(ptr.refCount() == 1)
+        return PyBrxCvDbHAlignmentArc(ptr.detach(),true);
+    return PyBrxCvDbHAlignmentArc(*ptr);
 }
 
 PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSSCSS::spiral1() const
