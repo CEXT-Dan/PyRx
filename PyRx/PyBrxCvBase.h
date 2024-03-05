@@ -582,6 +582,45 @@ public:
     inline BrxCvDbHAlignmentLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+// PyBrxCvDbHAlignmentArc
+void makePyBrxCvDbHAlignmentArcWrapper();
+
+class PyBrxCvDbHAlignmentArc : public PyBrxCvDbHAlignmentCurve
+{
+public:
+    PyBrxCvDbHAlignmentArc();
+    PyBrxCvDbHAlignmentArc(BrxCvDbHAlignmentArc* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbHAlignmentArc() override = default;
+
+    double      radius() const;
+    AcGePoint2d center() const;
+    bool        isClockwise() const;
+    bool        setRadius(double rad);
+    bool        setCenter(const AcGePoint2d& center);
+    bool        setClockwise(bool isClockwise);
+    bool        isLessThan180() const;
+    bool        setLessThan180(bool isLessThan180);
+    bool        isCompound() const;
+    bool        setCompound(bool isCompound);
+
+    AcGePoint2d passThroughPoint1() const;
+    AcGePoint2d passThroughPoint2() const;
+    AcGePoint2d passThroughPoint3() const;
+    bool        setPassThroughPoint1(const AcGePoint2d& point);
+    bool        setPassThroughPoint2(const AcGePoint2d& point);
+    bool        setPassThroughPoint3(const AcGePoint2d& point);
+
+    double      paramLength() const;
+    bool        setParamLength(double length);
+
+    static std::string          className();
+    static PyRxClass            desc();
+public:
+    inline BrxCvDbHAlignmentArc* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
 
 #endif//BRXAPP
 

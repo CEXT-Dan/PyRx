@@ -1750,7 +1750,7 @@ void makePyBrxCvDbHAlignmentCurveWrapper()
 }
 
 PyBrxCvDbHAlignmentCurve::PyBrxCvDbHAlignmentCurve(BrxCvDbHAlignmentCurve* ptr, bool autoDelete)
-    :PyBrxCvDbHAlignmentElement(ptr,autoDelete)
+    :PyBrxCvDbHAlignmentElement(ptr, autoDelete)
 {
 }
 
@@ -1803,6 +1803,7 @@ void makePyBrxCvDbHAlignmentLineWrapper()
 {
     PyDocString DS("CvDbHAlignmentLine");
     class_<PyBrxCvDbHAlignmentLine, bases<PyBrxCvDbHAlignmentCurve>>("CvDbHAlignmentLine")
+        .def(init<>())
         .def("passThroughPoint1", &PyBrxCvDbHAlignmentLine::passThroughPoint1, DS.ARGS())
         .def("passThroughPoint2", &PyBrxCvDbHAlignmentLine::passThroughPoint2, DS.ARGS())
         .def("paramLength", &PyBrxCvDbHAlignmentLine::paramLength, DS.ARGS())
@@ -1815,7 +1816,7 @@ void makePyBrxCvDbHAlignmentLineWrapper()
 }
 
 PyBrxCvDbHAlignmentLine::PyBrxCvDbHAlignmentLine()
-    :PyBrxCvDbHAlignmentLine(new BrxCvDbHAlignmentLine(),true)
+    :PyBrxCvDbHAlignmentLine(new BrxCvDbHAlignmentLine(), true)
 {
 }
 
@@ -1872,4 +1873,151 @@ BrxCvDbHAlignmentLine* PyBrxCvDbHAlignmentLine::impObj(const std::source_locatio
     return static_cast<BrxCvDbHAlignmentLine*>(m_pyImp.get());
 }
 
+//-----------------------------------------------------------------------------------
+// PyBrxCvDbHAlignmentArc
+void makePyBrxCvDbHAlignmentArcWrapper()
+{
+    PyDocString DS("CvDbHAlignmentArc");
+    class_<PyBrxCvDbHAlignmentArc, bases<PyBrxCvDbHAlignmentCurve>>("CvDbHAlignmentArc")
+        .def(init<>())
+        .def("radius", &PyBrxCvDbHAlignmentArc::radius, DS.ARGS())
+        .def("center", &PyBrxCvDbHAlignmentArc::center, DS.ARGS())
+        .def("isClockwise", &PyBrxCvDbHAlignmentArc::isClockwise, DS.ARGS())
+        .def("setRadius", &PyBrxCvDbHAlignmentArc::setRadius, DS.ARGS({ "val : float" }))
+        .def("setCenter", &PyBrxCvDbHAlignmentArc::setCenter, DS.ARGS({ "pt : PyGe.Point2d" }))
+        .def("setClockwise", &PyBrxCvDbHAlignmentArc::setClockwise, DS.ARGS({ "val : bool" }))
+        .def("isLessThan180", &PyBrxCvDbHAlignmentArc::isLessThan180, DS.ARGS())
+        .def("setLessThan180", &PyBrxCvDbHAlignmentArc::setLessThan180, DS.ARGS({ "val : bool" }))
+        .def("isCompound", &PyBrxCvDbHAlignmentArc::isCompound, DS.ARGS())
+        .def("setCompound", &PyBrxCvDbHAlignmentArc::setCompound, DS.ARGS({ "val : bool" }))
+        .def("passThroughPoint1", &PyBrxCvDbHAlignmentArc::passThroughPoint1, DS.ARGS())
+        .def("passThroughPoint2", &PyBrxCvDbHAlignmentArc::passThroughPoint2, DS.ARGS())
+        .def("passThroughPoint3", &PyBrxCvDbHAlignmentArc::passThroughPoint3, DS.ARGS())
+        .def("setPassThroughPoint1", &PyBrxCvDbHAlignmentArc::setPassThroughPoint1, DS.ARGS({ "pt : PyGe.Point2d" }))
+        .def("setPassThroughPoint2", &PyBrxCvDbHAlignmentArc::setPassThroughPoint2, DS.ARGS({ "pt : PyGe.Point2d" }))
+        .def("setPassThroughPoint3", &PyBrxCvDbHAlignmentArc::setPassThroughPoint3, DS.ARGS({ "pt : PyGe.Point2d" }))
+        .def("paramLength", &PyBrxCvDbHAlignmentArc::paramLength, DS.ARGS())
+        .def("setParamLength", &PyBrxCvDbHAlignmentArc::setParamLength, DS.ARGS({ "val : float" }))
+        .def("className", &PyBrxCvDbHAlignmentArc::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbHAlignmentArc::desc, DS.SARGS()).staticmethod("desc")
+        ;
+}
+
+PyBrxCvDbHAlignmentArc::PyBrxCvDbHAlignmentArc()
+    :PyBrxCvDbHAlignmentArc(new BrxCvDbHAlignmentArc(), true)
+{
+}
+
+PyBrxCvDbHAlignmentArc::PyBrxCvDbHAlignmentArc(BrxCvDbHAlignmentArc* ptr, bool autoDelete)
+    :PyBrxCvDbHAlignmentCurve(ptr, autoDelete)
+{
+}
+
+double PyBrxCvDbHAlignmentArc::radius() const
+{
+    return impObj()->radius();
+}
+
+AcGePoint2d PyBrxCvDbHAlignmentArc::center() const
+{
+    return impObj()->center();
+}
+
+bool PyBrxCvDbHAlignmentArc::isClockwise() const
+{
+    return impObj()->isClockwise();
+}
+
+bool PyBrxCvDbHAlignmentArc::setRadius(double rad)
+{
+    return impObj()->setRadius(rad);
+}
+
+bool PyBrxCvDbHAlignmentArc::setCenter(const AcGePoint2d& center)
+{
+    return impObj()->setCenter(center);
+}
+
+bool PyBrxCvDbHAlignmentArc::setClockwise(bool isClockwise)
+{
+    return impObj()->setClockwise(isClockwise);
+}
+
+bool PyBrxCvDbHAlignmentArc::isLessThan180() const
+{
+    return impObj()->isLessThan180();
+}
+
+bool PyBrxCvDbHAlignmentArc::setLessThan180(bool isLessThan180)
+{
+    return impObj()->setLessThan180(isLessThan180);
+}
+
+bool PyBrxCvDbHAlignmentArc::isCompound() const
+{
+    return impObj()->isCompound();
+}
+
+bool PyBrxCvDbHAlignmentArc::setCompound(bool isCompound)
+{
+    return impObj()->setCompound(isCompound);
+}
+
+AcGePoint2d PyBrxCvDbHAlignmentArc::passThroughPoint1() const
+{
+    return impObj()->passThroughPoint1();
+}
+
+AcGePoint2d PyBrxCvDbHAlignmentArc::passThroughPoint2() const
+{
+    return impObj()->passThroughPoint2();
+}
+
+AcGePoint2d PyBrxCvDbHAlignmentArc::passThroughPoint3() const
+{
+    return impObj()->passThroughPoint3();
+}
+
+bool PyBrxCvDbHAlignmentArc::setPassThroughPoint1(const AcGePoint2d& point)
+{
+    return impObj()->setPassThroughPoint1(point);
+}
+
+bool PyBrxCvDbHAlignmentArc::setPassThroughPoint2(const AcGePoint2d& point)
+{
+    return impObj()->setPassThroughPoint2(point);
+}
+
+bool PyBrxCvDbHAlignmentArc::setPassThroughPoint3(const AcGePoint2d& point)
+{
+    return impObj()->setPassThroughPoint3(point);
+}
+
+double PyBrxCvDbHAlignmentArc::paramLength() const
+{
+    return impObj()->paramLength();
+}
+
+bool PyBrxCvDbHAlignmentArc::setParamLength(double length)
+{
+    return impObj()->setParamLength(length);
+}
+
+std::string PyBrxCvDbHAlignmentArc::className()
+{
+    return "BrxCvDbHAlignmentArc";
+}
+
+PyRxClass PyBrxCvDbHAlignmentArc::desc()
+{
+    return PyRxClass(BrxCvDbHAlignmentArc::desc(), false);
+}
+
+BrxCvDbHAlignmentArc* PyBrxCvDbHAlignmentArc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbHAlignmentArc*>(m_pyImp.get());
+}
 #endif//BRXAPP
