@@ -566,6 +566,7 @@ class PyBrxCvDbHAlignmentLine : public PyBrxCvDbHAlignmentCurve
 {
 public:
     PyBrxCvDbHAlignmentLine();
+    PyBrxCvDbHAlignmentLine(const BrxCvDbHAlignmentLine& line);
     PyBrxCvDbHAlignmentLine(BrxCvDbHAlignmentLine* ptr, bool autoDelete);
     virtual ~PyBrxCvDbHAlignmentLine() override = default;
 
@@ -590,6 +591,7 @@ class PyBrxCvDbHAlignmentArc : public PyBrxCvDbHAlignmentCurve
 {
 public:
     PyBrxCvDbHAlignmentArc();
+    PyBrxCvDbHAlignmentArc(const BrxCvDbHAlignmentArc& arc);
     PyBrxCvDbHAlignmentArc(BrxCvDbHAlignmentArc* ptr, bool autoDelete);
     virtual ~PyBrxCvDbHAlignmentArc() override = default;
 
@@ -619,6 +621,114 @@ public:
 public:
     inline BrxCvDbHAlignmentArc* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbHAlignmentSpiral
+void makePyBrxCvDbHAlignmentSpiralWrapper();
+
+class PyBrxCvDbHAlignmentSpiral : public PyBrxCvDbHAlignmentCurve
+{
+    using ESpiralCurveType = BrxCvDbHAlignmentSpiral::ESpiralCurveType;
+    using ESpiralDefinitionType = BrxCvDbHAlignmentSpiral::ESpiralDefinitionType;
+
+public:
+    PyBrxCvDbHAlignmentSpiral();
+    PyBrxCvDbHAlignmentSpiral(const BrxCvDbHAlignmentSpiral &spiral);
+    PyBrxCvDbHAlignmentSpiral(BrxCvDbHAlignmentSpiral* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbHAlignmentSpiral() override = default;
+
+    double              radiusIn() const;
+    double              radiusOut() const;
+    bool                isCompound() const;
+    ESpiralCurveType    spiralCurveType() const;
+    bool                isClockwise() const;
+    ESpiralDefinitionType spiralDefinition() const;
+    double              startDirection() const;
+    double              endDirection() const;
+    double              paramA() const;
+    double              paramLength() const;
+    bool                setRadiusIn(double rad);
+    bool                setRadiusOut(double rad);
+    bool                setCompound(bool isCompound);
+    bool                setClockwise(bool isClockwise);
+    bool                setSpiralCurveType(ESpiralCurveType spiralCurveType);
+    bool                setSpiralDefinition(ESpiralDefinitionType spiralCurveDefinition);
+    bool                setStartDirection(double direction);
+    bool                setEndDirection(double direction);
+    bool                setParamA(double paramA);
+    bool                setParamLength(double paramLength);
+
+    static std::string          className();
+    static PyRxClass            desc();
+public:
+    inline BrxCvDbHAlignmentSpiral* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbHAlignmentSCS
+void makePyBrxCvDbHAlignmentSCSWrapper();
+
+class PyBrxCvDbHAlignmentSCS : public PyBrxCvDbHAlignmentCurve
+{
+public:
+    PyBrxCvDbHAlignmentSCS();
+    PyBrxCvDbHAlignmentSCS(BrxCvDbHAlignmentSCS* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbHAlignmentSCS() override = default;
+    PyBrxCvDbHAlignmentArc      arc() const;
+    PyBrxCvDbHAlignmentSpiral   spiralIn() const;
+    PyBrxCvDbHAlignmentSpiral   spiralOut() const;
+    static std::string          className();
+    static PyRxClass            desc();
+public:
+    inline BrxCvDbHAlignmentSCS* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbHAlignmentSTS
+void makePyBrxCvDbHAlignmentSTSWrapper();
+
+class PyBrxCvDbHAlignmentSTS : public PyBrxCvDbHAlignmentCurve
+{
+public:
+    PyBrxCvDbHAlignmentSTS();
+    PyBrxCvDbHAlignmentSTS(BrxCvDbHAlignmentSTS* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbHAlignmentSTS() override = default;
+
+    PyBrxCvDbHAlignmentLine     line() const;
+    PyBrxCvDbHAlignmentSpiral   spiralIn() const;
+    PyBrxCvDbHAlignmentSpiral   spiralOut() const;
+    double                      spiralRatio() const;
+;
+    static std::string          className();
+    static PyRxClass            desc();
+public:
+    inline BrxCvDbHAlignmentSTS* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbHAlignmentSSCSS
+void makePyBrxCvDbHAlignmentSSCSSWrapper();
+
+class PyBrxCvDbHAlignmentSSCSS : public PyBrxCvDbHAlignmentCurve
+{
+public:
+    PyBrxCvDbHAlignmentSSCSS();
+    PyBrxCvDbHAlignmentSSCSS(BrxCvDbHAlignmentSSCSS* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbHAlignmentSSCSS() override = default;
+
+    PyBrxCvDbHAlignmentSpiral   spiral1() const;
+    PyBrxCvDbHAlignmentSpiral   spiral2() const;
+    PyBrxCvDbHAlignmentSpiral   spiral3() const;
+    PyBrxCvDbHAlignmentSpiral   spiral4() const;
+
+    static std::string          className();
+    static PyRxClass            desc();
+public:
+    inline BrxCvDbHAlignmentSSCSS* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+
 
 
 
