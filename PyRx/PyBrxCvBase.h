@@ -536,6 +536,52 @@ public:
     inline BrxCvDbHAlignmentPI* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbHAlignmentCurve
+void makePyBrxCvDbHAlignmentCurveWrapper();
+
+class PyBrxCvDbHAlignmentCurve : public PyBrxCvDbHAlignmentElement
+{
+public:
+    PyBrxCvDbHAlignmentCurve(BrxCvDbHAlignmentCurve* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbHAlignmentCurve() override = default;
+
+    AcGePoint2d startPoint() const;
+    AcGePoint2d endPoint() const;
+    double      startStation() const;
+    double      endStation() const;
+    double      length() const;
+
+    static std::string          className();
+    static PyRxClass            desc();
+public:
+    inline BrxCvDbHAlignmentCurve* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbHAlignmentLine
+void makePyBrxCvDbHAlignmentLineWrapper();
+
+class PyBrxCvDbHAlignmentLine : public PyBrxCvDbHAlignmentCurve
+{
+public:
+    PyBrxCvDbHAlignmentLine();
+    PyBrxCvDbHAlignmentLine(BrxCvDbHAlignmentLine* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbHAlignmentLine() override = default;
+
+    AcGePoint2d passThroughPoint1();
+    AcGePoint2d passThroughPoint2();
+    double      paramLength() const;
+    bool        setParamLength(double length);
+    bool        setPassThroughPoint1(const AcGePoint2d& point);
+    bool        setPassThroughPoint2(const AcGePoint2d& point);
+
+    static std::string          className();
+    static PyRxClass            desc();
+public:
+    inline BrxCvDbHAlignmentLine* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 
 #endif//BRXAPP
 
