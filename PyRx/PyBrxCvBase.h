@@ -31,6 +31,7 @@ public:
     bool                    setDescription(const std::string& szDescription);
     static std::string      className();
     static PyRxClass        desc();
+    static PyBrxCvDbSubObject  cast(const PyRxObject& src);
 
 public:
     inline BrxCvDbSubObject* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -517,6 +518,7 @@ public:
     bool                    setParameterConstraint(EParameterConstraint constraint);
     static std::string      className();
     static PyRxClass        desc();
+    static PyBrxCvDbHAlignmentElement  cast(const PyRxObject& src);
 public:
     inline BrxCvDbHAlignmentElement* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -534,6 +536,7 @@ public:
     AcGePoint2d                 location() const;
     static std::string          className();
     static PyRxClass            desc();
+    static PyBrxCvDbHAlignmentPI  cast(const PyRxObject& src);
 public:
     inline BrxCvDbHAlignmentPI* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -556,6 +559,7 @@ public:
 
     static std::string      className();
     static PyRxClass        desc();
+    static PyBrxCvDbHAlignmentCurve  cast(const PyRxObject& src);
 public:
     inline BrxCvDbHAlignmentCurve* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -580,6 +584,7 @@ public:
 
     static std::string      className();
     static PyRxClass        desc();
+    static PyBrxCvDbHAlignmentLine  cast(const PyRxObject& src);
 public:
     inline BrxCvDbHAlignmentLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -618,6 +623,7 @@ public:
 
     static std::string      className();
     static PyRxClass        desc();
+    static PyBrxCvDbHAlignmentArc  cast(const PyRxObject& src);
 public:
     inline BrxCvDbHAlignmentArc* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -659,6 +665,7 @@ public:
 
     static std::string      className();
     static PyRxClass        desc();
+    static PyBrxCvDbHAlignmentSpiral  cast(const PyRxObject& src);
 public:
     inline BrxCvDbHAlignmentSpiral* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -678,6 +685,7 @@ public:
     PyBrxCvDbHAlignmentSpiral   spiralOut() const;
     static std::string          className();
     static PyRxClass            desc();
+    static PyBrxCvDbHAlignmentSCS  cast(const PyRxObject& src);
 public:
     inline BrxCvDbHAlignmentSCS* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -700,6 +708,7 @@ public:
     ;
     static std::string          className();
     static PyRxClass            desc();
+    static PyBrxCvDbHAlignmentSTS  cast(const PyRxObject& src);
 public:
     inline BrxCvDbHAlignmentSTS* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -723,6 +732,7 @@ public:
 
     static std::string          className();
     static PyRxClass            desc();
+    static PyBrxCvDbHAlignmentSSCSS  cast(const PyRxObject& src);
 public:
     inline BrxCvDbHAlignmentSSCSS* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -754,6 +764,7 @@ public:
 
     static std::string          className();
     static PyRxClass            desc();
+    static PyBrxCvDbVAlignmentElement  cast(const PyRxObject& src);
 public:
     inline BrxCvDbVAlignmentElement* impObj(const std::source_location& src = std::source_location::current()) const;
 };

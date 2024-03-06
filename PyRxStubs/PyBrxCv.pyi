@@ -2441,6 +2441,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbHAlignmentArc :
+      '''                             '''
+    ...
     def center (self: CvDbHAlignmentArc)-> PyGe.Point2d :
       '''                             '''
     ...
@@ -2600,6 +2605,11 @@ This class cannot be instantiated from Python'''
     ...
 
     @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbHAlignmentCurve :
+      '''                             '''
+    ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -2703,6 +2713,11 @@ This class cannot be instantiated from Python'''
     ...
 
     @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbHAlignmentElement :
+      '''                             '''
+    ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -2795,6 +2810,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbHAlignmentLine :
+      '''                             '''
     ...
 
     @staticmethod
@@ -2921,6 +2941,11 @@ class CvDbHAlignmentPI:
     ...
 
     @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbHAlignmentPI :
+      '''                             '''
+    ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -3018,6 +3043,11 @@ __init__( (object)arg1) -> None :
         void __init__(struct _object * __ptr64)'''
     ...
     def arc (self: CvDbHAlignmentSCS)-> PyBrxCv.CvDbHAlignmentArc :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbHAlignmentSCS :
       '''                             '''
     ...
 
@@ -3137,6 +3167,11 @@ __init__( (object)arg1) -> None :
         void __init__(struct _object * __ptr64)'''
     ...
     def arc (self: CvDbHAlignmentSSCSS)-> PyBrxCv.CvDbHAlignmentArc :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbHAlignmentSSCSS :
       '''                             '''
     ...
 
@@ -3263,6 +3298,11 @@ __init__( (object)arg1) -> None :
     ...
 
     @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbHAlignmentSTS :
+      '''                             '''
+    ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -3382,6 +3422,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbHAlignmentSpiral :
+      '''                             '''
     ...
 
     @staticmethod
@@ -3816,6 +3861,11 @@ This class cannot be instantiated from Python'''
     ...
 
     @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbObject :
+      '''                             '''
+    ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -3868,6 +3918,11 @@ class CvDbVAlignmentElement:
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbVAlignmentElement :
+      '''                             '''
     ...
 
     @staticmethod

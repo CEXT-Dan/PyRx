@@ -17,6 +17,7 @@ void makePyBrxCvDbSubObjectWrapper()
         .def("setDescription", &PyBrxCvDbSubObject::setDescription, DS.ARGS({ "val : str" }))
         .def("className", &PyBrxCvDbSubObject::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbSubObject::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbObject::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -53,6 +54,14 @@ std::string PyBrxCvDbSubObject::className()
 PyRxClass PyBrxCvDbSubObject::desc()
 {
     return PyRxClass(BrxCvDbSubObject::desc(), false);
+}
+
+PyBrxCvDbSubObject PyBrxCvDbSubObject::cast(const PyRxObject& src)
+{
+    PyBrxCvDbSubObject dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 BrxCvDbSubObject* PyBrxCvDbSubObject::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1646,6 +1655,7 @@ void makePyBrxCvDbHAlignmentElementWrapper()
         .def("setParameterConstraint", &PyBrxCvDbHAlignmentElement::setParameterConstraint, DS.ARGS({ "val : PyBrxCv.EParameterConstraint" }))
         .def("className", &PyBrxCvDbHAlignmentElement::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbHAlignmentElement::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbHAlignmentElement::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1724,6 +1734,14 @@ PyRxClass PyBrxCvDbHAlignmentElement::desc()
     return PyRxClass(BrxCvDbHAlignmentElement::desc(), false);
 }
 
+PyBrxCvDbHAlignmentElement PyBrxCvDbHAlignmentElement::cast(const PyRxObject& src)
+{
+    PyBrxCvDbHAlignmentElement dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 BrxCvDbHAlignmentElement* PyBrxCvDbHAlignmentElement::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
@@ -1741,6 +1759,7 @@ void makePyBrxCvDbHAlignmentPIWrapper()
         .def("location", &PyBrxCvDbHAlignmentPI::location, DS.ARGS())
         .def("className", &PyBrxCvDbHAlignmentPI::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbHAlignmentPI::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbHAlignmentPI::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1769,6 +1788,14 @@ PyRxClass PyBrxCvDbHAlignmentPI::desc()
     return PyRxClass(BrxCvDbHAlignmentPI::desc(), false);
 }
 
+PyBrxCvDbHAlignmentPI PyBrxCvDbHAlignmentPI::cast(const PyRxObject& src)
+{
+    PyBrxCvDbHAlignmentPI dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 BrxCvDbHAlignmentPI* PyBrxCvDbHAlignmentPI::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
@@ -1790,6 +1817,7 @@ void makePyBrxCvDbHAlignmentCurveWrapper()
         .def("length", &PyBrxCvDbHAlignmentCurve::length, DS.ARGS())
         .def("className", &PyBrxCvDbHAlignmentCurve::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbHAlignmentCurve::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbHAlignmentCurve::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1833,6 +1861,14 @@ PyRxClass PyBrxCvDbHAlignmentCurve::desc()
     return PyRxClass(BrxCvDbHAlignmentCurve::desc(), false);
 }
 
+PyBrxCvDbHAlignmentCurve PyBrxCvDbHAlignmentCurve::cast(const PyRxObject& src)
+{
+    PyBrxCvDbHAlignmentCurve dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 BrxCvDbHAlignmentCurve* PyBrxCvDbHAlignmentCurve::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
@@ -1856,6 +1892,7 @@ void makePyBrxCvDbHAlignmentLineWrapper()
         .def("setPassThroughPoint2", &PyBrxCvDbHAlignmentLine::setPassThroughPoint2, DS.ARGS({ "pt : PyGe.Point2d" }))
         .def("className", &PyBrxCvDbHAlignmentLine::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbHAlignmentLine::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbHAlignmentLine::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1909,6 +1946,14 @@ PyRxClass PyBrxCvDbHAlignmentLine::desc()
     return PyRxClass(BrxCvDbHAlignmentLine::desc(), false);
 }
 
+PyBrxCvDbHAlignmentLine PyBrxCvDbHAlignmentLine::cast(const PyRxObject& src)
+{
+    PyBrxCvDbHAlignmentLine dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 BrxCvDbHAlignmentLine* PyBrxCvDbHAlignmentLine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
@@ -1944,6 +1989,7 @@ void makePyBrxCvDbHAlignmentArcWrapper()
         .def("setParamLength", &PyBrxCvDbHAlignmentArc::setParamLength, DS.ARGS({ "val : float" }))
         .def("className", &PyBrxCvDbHAlignmentArc::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbHAlignmentArc::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbHAlignmentArc::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2057,6 +2103,14 @@ PyRxClass PyBrxCvDbHAlignmentArc::desc()
     return PyRxClass(BrxCvDbHAlignmentArc::desc(), false);
 }
 
+PyBrxCvDbHAlignmentArc PyBrxCvDbHAlignmentArc::cast(const PyRxObject& src)
+{
+    PyBrxCvDbHAlignmentArc dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 BrxCvDbHAlignmentArc* PyBrxCvDbHAlignmentArc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
@@ -2092,6 +2146,7 @@ void makePyBrxCvDbHAlignmentSpiralWrapper()
         .def("setParamLength", &PyBrxCvDbHAlignmentSpiral::setParamLength, DS.ARGS({ "val : float" }))
         .def("className", &PyBrxCvDbHAlignmentSpiral::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbHAlignmentSpiral::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbHAlignmentSpiral::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2215,6 +2270,14 @@ PyRxClass PyBrxCvDbHAlignmentSpiral::desc()
     return PyRxClass(BrxCvDbHAlignmentSpiral::desc(), false);
 }
 
+PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSpiral::cast(const PyRxObject& src)
+{
+    PyBrxCvDbHAlignmentSpiral dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 BrxCvDbHAlignmentSpiral* PyBrxCvDbHAlignmentSpiral::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
@@ -2235,6 +2298,7 @@ void makePyBrxCvDbHAlignmentSCSWrapper()
         .def("spiralOut", &PyBrxCvDbHAlignmentSCS::spiralOut, DS.ARGS())
         .def("className", &PyBrxCvDbHAlignmentSCS::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbHAlignmentSCS::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbHAlignmentSCS::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2282,6 +2346,14 @@ PyRxClass PyBrxCvDbHAlignmentSCS::desc()
     return PyRxClass(BrxCvDbHAlignmentSCS::desc(), false);
 }
 
+PyBrxCvDbHAlignmentSCS PyBrxCvDbHAlignmentSCS::cast(const PyRxObject& src)
+{
+    PyBrxCvDbHAlignmentSCS dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 BrxCvDbHAlignmentSCS* PyBrxCvDbHAlignmentSCS::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
@@ -2303,6 +2375,7 @@ void makePyBrxCvDbHAlignmentSTSWrapper()
         .def("spiralRatio", &PyBrxCvDbHAlignmentSTS::spiralRatio, DS.ARGS())
         .def("className", &PyBrxCvDbHAlignmentSTS::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbHAlignmentSTS::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbHAlignmentSTS::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2355,6 +2428,14 @@ PyRxClass PyBrxCvDbHAlignmentSTS::desc()
     return PyRxClass(BrxCvDbHAlignmentSTS::desc(), false);
 }
 
+PyBrxCvDbHAlignmentSTS PyBrxCvDbHAlignmentSTS::cast(const PyRxObject& src)
+{
+    PyBrxCvDbHAlignmentSTS dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 BrxCvDbHAlignmentSTS* PyBrxCvDbHAlignmentSTS::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
@@ -2377,6 +2458,7 @@ void makePyBrxCvDbHAlignmentSSCSSWrapper()
         .def("spiral4", &PyBrxCvDbHAlignmentSSCSS::spiral4, DS.ARGS())
         .def("className", &PyBrxCvDbHAlignmentSSCSS::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbHAlignmentSSCSS::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbHAlignmentSSCSS::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2440,6 +2522,14 @@ PyRxClass PyBrxCvDbHAlignmentSSCSS::desc()
     return PyRxClass(BrxCvDbHAlignmentSSCSS::desc(), false);
 }
 
+PyBrxCvDbHAlignmentSSCSS PyBrxCvDbHAlignmentSSCSS::cast(const PyRxObject& src)
+{
+    PyBrxCvDbHAlignmentSSCSS dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 BrxCvDbHAlignmentSSCSS* PyBrxCvDbHAlignmentSSCSS::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
@@ -2466,6 +2556,7 @@ void makePyBrxCvDbVAlignmentElementWrapper()
         .def("setParameterConstraint", &PyBrxCvDbVAlignmentElement::setParameterConstraint, DS.ARGS({ "val : PyBrxCv.VAlignmentParameterConstraint" }))
         .def("className", &PyBrxCvDbVAlignmentElement::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbVAlignmentElement::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbVAlignmentElement::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2532,6 +2623,14 @@ std::string PyBrxCvDbVAlignmentElement::className()
 PyRxClass PyBrxCvDbVAlignmentElement::desc()
 {
     return PyRxClass(BrxCvDbVAlignmentElement::desc(), false);
+}
+
+PyBrxCvDbVAlignmentElement PyBrxCvDbVAlignmentElement::cast(const PyRxObject& src)
+{
+    PyBrxCvDbVAlignmentElement dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 BrxCvDbVAlignmentElement* PyBrxCvDbVAlignmentElement::impObj(const std::source_location& src /*= std::source_location::current()*/) const
