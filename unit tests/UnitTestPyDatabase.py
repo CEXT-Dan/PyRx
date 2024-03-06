@@ -50,6 +50,8 @@ class TestDatabase(unittest.TestCase):
                 self.assertEqual(x[1], Ge.Point3d(0, 100, 0))
 
     def test_dbcore_strconversions(self):
+        flag = Ed.Core.setVar("ANGBASE", 0)
+        self.assertEqual(flag, True)
         flag = Ed.Core.setVar("DIMZIN", 0)
         self.assertEqual(flag, True)
         val = Db.Core.angToF("180", 0)

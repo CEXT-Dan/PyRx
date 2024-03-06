@@ -47,6 +47,7 @@ class TestBCadCivil(unittest.TestCase):
         objId = self.BCADCIVIL1.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         hAlignment = Cv.CvDbHAlignment(objId)
+        
         for id in hAlignment.getUnorderedElementIds():
             element : Cv.CvDbHAlignmentElement = hAlignment.elementAtId(id)
             self.assertFalse(element.isNullObj())
