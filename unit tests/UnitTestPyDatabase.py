@@ -144,10 +144,10 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(info.getHyperlinkBase(), "myHyperlinkBase")
 
         cs = info.asDict()
-        keys = customDict.keys()
-        values = customDict.values()
+        keys = cs.keys()
+        values = cs.values()
 
-        for key, value in cs.items():
+        for key, value in customDict.items():
             self.assertEqual(key in keys, True)
             self.assertEqual(value in values, True)
 
