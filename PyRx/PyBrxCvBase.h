@@ -771,11 +771,10 @@ public:
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbVAlignmentPVI
-void makePyBrxCvDbVAlignmentPVItWrapper();
+void makePyBrxCvDbVAlignmentPVIWrapper();
 
 class PyBrxCvDbVAlignmentPVI : public PyBrxCvDbVAlignmentElement
 {
-
 public:
     PyBrxCvDbVAlignmentPVI();
     PyBrxCvDbVAlignmentPVI(BrxCvDbVAlignmentPVI* ptr, bool autoDelete);
@@ -786,6 +785,27 @@ public:
     static PyBrxCvDbVAlignmentPVI  cast(const PyRxObject& src);
 public:
     inline BrxCvDbVAlignmentPVI* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//BrxCvDbVAlignmentCurve
+void makePyBrxCvDbVAlignmentCurveWrapper();
+
+class PyBrxCvDbVAlignmentCurve : public PyBrxCvDbVAlignmentElement
+{
+public:
+    PyBrxCvDbVAlignmentCurve(BrxCvDbVAlignmentCurve* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbVAlignmentCurve() override = default;
+
+    AcGePoint2d     startPoint() const;
+    AcGePoint2d     endPoint() const;
+    double          length() const;
+
+    static std::string          className();
+    static PyRxClass            desc();
+    static PyBrxCvDbVAlignmentCurve  cast(const PyRxObject& src);
+public:
+    inline BrxCvDbVAlignmentCurve* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 #endif//BRXAPP

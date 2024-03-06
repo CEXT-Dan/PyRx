@@ -2643,11 +2643,12 @@ BrxCvDbVAlignmentElement* PyBrxCvDbVAlignmentElement::impObj(const std::source_l
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbVAlignmentPVI
-void makePyBrxCvDbVAlignmentPVItWrapper()
+void makePyBrxCvDbVAlignmentPVIWrapper()
 {
     PyDocString DS("CvDbVAlignmentPVI");
     class_<PyBrxCvDbVAlignmentPVI, bases<PyBrxCvDbVAlignmentElement>>("CvDbVAlignmentPVI")
         .def(init<>())
+        .def("location", &PyBrxCvDbVAlignmentPVI::location, DS.ARGS())
         .def("className", &PyBrxCvDbVAlignmentPVI::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbVAlignmentPVI::desc, DS.SARGS()).staticmethod("desc")
         .def("cast", &PyBrxCvDbVAlignmentPVI::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
@@ -2693,5 +2694,66 @@ BrxCvDbVAlignmentPVI* PyBrxCvDbVAlignmentPVI::impObj(const std::source_location&
         throw PyNullObject(src);
         }
     return static_cast<BrxCvDbVAlignmentPVI*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//BrxCvDbVAlignmentCurve
+void makePyBrxCvDbVAlignmentCurveWrapper()
+{
+    PyDocString DS("CvDbVAlignmentCurve");
+    class_<PyBrxCvDbVAlignmentCurve, bases<PyBrxCvDbVAlignmentElement>>("CvDbVAlignmentCurve", boost::python::no_init)
+        .def("startPoint", &PyBrxCvDbVAlignmentCurve::startPoint, DS.ARGS())
+        .def("endPoint", &PyBrxCvDbVAlignmentCurve::endPoint, DS.ARGS())
+        .def("length", &PyBrxCvDbVAlignmentCurve::length, DS.ARGS())
+        .def("className", &PyBrxCvDbVAlignmentCurve::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbVAlignmentCurve::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbVAlignmentCurve::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbVAlignmentCurve::PyBrxCvDbVAlignmentCurve(BrxCvDbVAlignmentCurve* ptr, bool autoDelete)
+    : PyBrxCvDbVAlignmentElement(ptr, autoDelete)
+{
+}
+
+AcGePoint2d PyBrxCvDbVAlignmentCurve::startPoint() const
+{
+    return impObj()->startPoint();
+}
+
+AcGePoint2d PyBrxCvDbVAlignmentCurve::endPoint() const
+{
+    return impObj()->endPoint();
+}
+
+double PyBrxCvDbVAlignmentCurve::length() const
+{
+    return impObj()->length();
+}
+
+std::string PyBrxCvDbVAlignmentCurve::className()
+{
+    return "BrxCvDbVAlignmentCurve";
+}
+
+PyRxClass PyBrxCvDbVAlignmentCurve::desc()
+{
+    return PyRxClass(BrxCvDbVAlignmentCurve::desc(), false);
+}
+
+PyBrxCvDbVAlignmentCurve PyBrxCvDbVAlignmentCurve::cast(const PyRxObject& src)
+{
+    PyBrxCvDbVAlignmentCurve dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbVAlignmentCurve* PyBrxCvDbVAlignmentCurve::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbVAlignmentCurve*>(m_pyImp.get());
 }
 #endif//BRXAPP
