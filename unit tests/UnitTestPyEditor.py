@@ -14,6 +14,9 @@ print("testname = pyeditor")
 def autoSysVarOSMODE():
     var = Ed.Core.autoSetVar("OSMODE", 0)
     
+def autoSysVarANGBASE():
+    var = Ed.Core.autoSetVar("ANGBASE", 90)
+    
 def autoSysVarHPORIGIN():
     var = Ed.Core.autoSetVar("HPORIGIN", Ge.Point2d(100, 100))
 
@@ -32,6 +35,9 @@ class TestEditor(unittest.TestCase):
         self.assertEqual(Ed.Core.getVar("OSMODE"), 191)
         autoSysVarHPORIGIN()
         self.assertEqual(Ed.Core.getVar("HPORIGIN"), Ge.Point2d(0, 0))
+        Ed.Core.setVar("ANGBASE", 0)
+        autoSysVarANGBASE()
+        self.assertEqual(Ed.Core.getVar("ANGBASE"),0)
         
     def test_evaluateDiesel(self):
         val = Ed.Core.evaluateDiesel('$(eval,"Current layer: "$(getvar,clayer))')
