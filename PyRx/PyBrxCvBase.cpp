@@ -1519,7 +1519,7 @@ Adesk::UInt64 PyBrxCvDbHAlignment::addCSSTo(Adesk::UInt64 nextId, double spiral1
 
 Adesk::UInt64 PyBrxCvDbHAlignment::addSCSAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId)
 {
-    return impObj()->addSCSAuto(nextId, nextId);
+    return impObj()->addSCSAuto(prevId, nextId);
 }
 
 bool PyBrxCvDbHAlignment::deleteElement(Adesk::UInt64 id)
