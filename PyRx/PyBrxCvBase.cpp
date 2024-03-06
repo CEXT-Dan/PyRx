@@ -2640,4 +2640,58 @@ BrxCvDbVAlignmentElement* PyBrxCvDbVAlignmentElement::impObj(const std::source_l
         }
     return static_cast<BrxCvDbVAlignmentElement*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbVAlignmentPVI
+void makePyBrxCvDbVAlignmentPVItWrapper()
+{
+    PyDocString DS("CvDbVAlignmentPVI");
+    class_<PyBrxCvDbVAlignmentPVI, bases<PyBrxCvDbVAlignmentElement>>("CvDbVAlignmentPVI")
+        .def(init<>())
+        .def("className", &PyBrxCvDbVAlignmentPVI::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbVAlignmentPVI::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbVAlignmentPVI::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbVAlignmentPVI::PyBrxCvDbVAlignmentPVI()
+  : PyBrxCvDbVAlignmentPVI(new BrxCvDbVAlignmentPVI(),true)
+{
+}
+
+PyBrxCvDbVAlignmentPVI::PyBrxCvDbVAlignmentPVI(BrxCvDbVAlignmentPVI* ptr, bool autoDelete)
+    : PyBrxCvDbVAlignmentElement(ptr, autoDelete)
+{
+}
+
+AcGePoint2d PyBrxCvDbVAlignmentPVI::location() const
+{
+    return impObj()->location();
+}
+
+std::string PyBrxCvDbVAlignmentPVI::className()
+{
+    return "BrxCvDbVAlignmentPVI";
+}
+
+PyRxClass PyBrxCvDbVAlignmentPVI::desc()
+{
+    return PyRxClass(BrxCvDbVAlignmentPVI::desc(), false);
+}
+
+PyBrxCvDbVAlignmentPVI PyBrxCvDbVAlignmentPVI::cast(const PyRxObject& src)
+{
+    PyBrxCvDbVAlignmentPVI dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbVAlignmentPVI* PyBrxCvDbVAlignmentPVI::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbVAlignmentPVI*>(m_pyImp.get());
+}
 #endif//BRXAPP

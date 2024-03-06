@@ -769,5 +769,24 @@ public:
     inline BrxCvDbVAlignmentElement* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbVAlignmentPVI
+void makePyBrxCvDbVAlignmentPVItWrapper();
+
+class PyBrxCvDbVAlignmentPVI : public PyBrxCvDbVAlignmentElement
+{
+
+public:
+    PyBrxCvDbVAlignmentPVI();
+    PyBrxCvDbVAlignmentPVI(BrxCvDbVAlignmentPVI* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbVAlignmentPVI() override = default;
+    AcGePoint2d                 location() const;
+    static std::string          className();
+    static PyRxClass            desc();
+    static PyBrxCvDbVAlignmentPVI  cast(const PyRxObject& src);
+public:
+    inline BrxCvDbVAlignmentPVI* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 #endif//BRXAPP
 
