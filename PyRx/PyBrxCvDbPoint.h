@@ -105,8 +105,7 @@ public:
     PyBrxCvDbPointGroup(BrxCvDbPointGroup* ptr, bool autoDelete);
     virtual ~PyBrxCvDbPointGroup() override = default;
 
-    bool                hasPoint(const Adesk::UInt32 number) const;
-    bool                hasPoint(const Adesk::UInt32 number, PyDbObjectId& pointId) const;
+    PyDbObjectId        hasPoint(Adesk::UInt32 number) const;
     Adesk::UInt32       pointCount() const;
     boost::python::list pointIds() const;
     bool                isEditable() const;
@@ -141,7 +140,6 @@ public:
     bool                setExcludeUserAttributesValues(const std::string& szFilter);
     bool                updateNeeded() const;
     bool                update();
-
 
     static std::string          className();
     static PyRxClass            desc();
