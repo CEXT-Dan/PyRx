@@ -69,6 +69,4 @@ public:
     inline BrxCvDbFileFormatManager* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
-
 #endif//BRXAPP

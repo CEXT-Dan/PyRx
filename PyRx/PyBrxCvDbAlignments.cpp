@@ -2309,7 +2309,7 @@ void makePyBrxCvDbVAlignmentPVIWrapper()
 }
 
 PyBrxCvDbVAlignmentPVI::PyBrxCvDbVAlignmentPVI()
-  : PyBrxCvDbVAlignmentPVI(new BrxCvDbVAlignmentPVI(),true)
+    : PyBrxCvDbVAlignmentPVI(new BrxCvDbVAlignmentPVI(), true)
 {
 }
 
@@ -2505,7 +2505,7 @@ void makePyBrxCvDbVAlignmentArcWrapper()
 }
 
 PyBrxCvDbVAlignmentArc::PyBrxCvDbVAlignmentArc()
-: PyBrxCvDbVAlignmentArc(new BrxCvDbVAlignmentArc(), true)
+    : PyBrxCvDbVAlignmentArc(new BrxCvDbVAlignmentArc(), true)
 {
 }
 

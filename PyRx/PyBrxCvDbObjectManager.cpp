@@ -195,7 +195,7 @@ boost::python::list PyBrxCvDbFileFormatManager::allFileFormats()
 PyDbObjectId PyBrxCvDbFileFormatManager::getManager(PyDbDatabase& db)
 {
     PyDbObjectId id;
-    PyThrowBadEs(BrxCvDbFileFormatManager::getManager(id.m_id,db.impObj()));
+    PyThrowBadEs(BrxCvDbFileFormatManager::getManager(id.m_id, db.impObj()));
     return id;
 }
 
