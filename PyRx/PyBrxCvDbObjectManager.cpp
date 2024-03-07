@@ -387,6 +387,13 @@ void makePyBrxCvDbPointGroupManagerWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=kForRead", "erased: bool=False" })))
+
+        .def("createPointGroup", &PyBrxCvDbPointGroupManager::createPointGroup, DS.ARGS({ "val : str" }))
+        .def("groupsWithPoint", &PyBrxCvDbPointGroupManager::groupsWithPoint, DS.ARGS({ "val : int" }))
+        .def("updatePointGroups", &PyBrxCvDbPointGroupManager::updatePointGroups, DS.ARGS())
+        .def("nextPointNumber", &PyBrxCvDbPointGroupManager::nextPointNumber, DS.ARGS())
+        .def("setNextPointNumber", &PyBrxCvDbPointGroupManager::setNextPointNumber, DS.ARGS({ "val : int" }))
+
         .def("getManager", &PyBrxCvDbPointGroupManager::getManager, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getManager")
         .def("openManager", &PyBrxCvDbPointGroupManager::openManager, DS.SARGS({ "db: PyDb.Database","mode: PyDb.OpenMode" })).staticmethod("openManager")
         .def("className", &PyBrxCvDbPointGroupManager::className, DS.SARGS()).staticmethod("className")
@@ -414,6 +421,31 @@ PyBrxCvDbPointGroupManager::PyBrxCvDbPointGroupManager(const PyDbObjectId& id, A
 PyBrxCvDbPointGroupManager::PyBrxCvDbPointGroupManager(BrxCvDbPointGroupManager* ptr, bool autoDelete)
     :PyBrxCvDbObjectManager(ptr, autoDelete)
 {
+}
+
+PyDbObjectId PyBrxCvDbPointGroupManager::createPointGroup(const std::string& szName)
+{
+   return PyDbObjectId(impObj()->createPointGroup(utf8_to_wstr(szName).c_str()));
+}
+
+boost::python::list PyBrxCvDbPointGroupManager::groupsWithPoint(Adesk::UInt32 number) const
+{
+    return ObjectIdArrayToPyList(impObj()->groupsWithPoint(number));
+}
+
+Adesk::UInt32 PyBrxCvDbPointGroupManager::updatePointGroups()
+{
+    return impObj()->updatePointGroups();
+}
+
+Adesk::UInt32 PyBrxCvDbPointGroupManager::nextPointNumber() const
+{
+    return impObj()->nextPointNumber();
+}
+
+bool PyBrxCvDbPointGroupManager::setNextPointNumber(Adesk::UInt32 number)
+{
+    return impObj()->setNextPointNumber(number);
 }
 
 PyDbObjectId PyBrxCvDbPointGroupManager::getManager(PyDbDatabase& db)

@@ -118,6 +118,13 @@ public:
     PyBrxCvDbPointGroupManager(BrxCvDbPointGroupManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbPointGroupManager() override = default;
 
+    PyDbObjectId                        createPointGroup(const std::string& szName);
+    boost::python::list                 groupsWithPoint(Adesk::UInt32 number) const;
+    Adesk::UInt32                       updatePointGroups();
+
+    Adesk::UInt32                       nextPointNumber() const;
+    bool                                setNextPointNumber(Adesk::UInt32 number);
+
     static PyDbObjectId                 getManager(PyDbDatabase& db);
     static PyBrxCvDbPointGroupManager   openManager(PyDbDatabase& db, AcDb::OpenMode mode);
 
