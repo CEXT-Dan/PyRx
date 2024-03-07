@@ -2,6 +2,7 @@
 #include "PyBrxCv.h"
 #include "PyBrxCvDbAlignments.h"
 #include "PyBrxCvDbObjectManager.h"
+#include "PyBrxCvDbPoint.h"
 
 #ifdef BRXAPP
 
@@ -42,6 +43,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvDbFileFormatManagerWrapper();
     makePyBrxCvDbStyleManagerWrapper();
     makePyBrxCvDbPointGroupManagerWrapper();
+    makePyBrxCvDbPointWrapper();
 
     enum_<PyBrxCvDbStyleManager::EStyleManagerType>("StyleManagerType")
         .value("ePointLabel", PyBrxCvDbStyleManager::EStyleManagerType::ePointLabel)
