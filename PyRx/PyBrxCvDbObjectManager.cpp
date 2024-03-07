@@ -161,7 +161,6 @@ void makePyBrxCvDbFileFormatManagerWrapper()
         ;
 }
 
-
 PyBrxCvDbFileFormatManager::PyBrxCvDbFileFormatManager(const PyDbObjectId& id)
     : PyBrxCvDbFileFormatManager(openAcDbObject<BrxCvDbFileFormatManager>(id), false)
 {
@@ -238,4 +237,144 @@ BrxCvDbFileFormatManager* PyBrxCvDbFileFormatManager::impObj(const std::source_l
         }
     return static_cast<BrxCvDbFileFormatManager*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+// PyBrxCvDbStyleManager
+
+void makePyBrxCvDbStyleManagerWrapper()
+{
+    PyDocString DS("CvDbStyleManager");
+    class_<PyBrxCvDbStyleManager, bases<PyBrxCvDbObjectManager>>("CvDbStyleManager", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=kForRead", "erased: bool=False" })))
+
+        .def("className", &PyBrxCvDbStyleManager::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbStyleManager::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyBrxCvDbStyleManager::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyBrxCvDbStyleManager::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbStyleManager::PyBrxCvDbStyleManager(const PyDbObjectId& id)
+    : PyBrxCvDbStyleManager(openAcDbObject<BrxCvDbStyleManager>(id), false)
+{
+}
+
+PyBrxCvDbStyleManager::PyBrxCvDbStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyBrxCvDbStyleManager(openAcDbObject<BrxCvDbStyleManager>(id, mode), false)
+{
+}
+
+PyBrxCvDbStyleManager::PyBrxCvDbStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyBrxCvDbStyleManager(openAcDbObject<BrxCvDbStyleManager>(id, mode, erased), false)
+{
+}
+
+PyBrxCvDbStyleManager::PyBrxCvDbStyleManager(BrxCvDbStyleManager* ptr, bool autoDelete)
+    : PyBrxCvDbObjectManager(ptr, autoDelete)
+{
+}
+
+PyDbObjectId PyBrxCvDbStyleManager::getManager(PyDbDatabase& db, EStyleManagerType styleType)
+{
+    PyDbObjectId id;
+    switch (styleType)
+    {
+    case PyBrxCvDbStyleManager::ePointLabel:
+        PyThrowBadEs(BrxCvDbPointLabelStyleManager::getManager(id.m_id, db.impObj()));
+        break;
+    case PyBrxCvDbStyleManager::eContourLabel:
+        PyThrowBadEs(BrxCvDbSurfaceContourLabelStyleManager::getManager(id.m_id, db.impObj()));
+        break;
+    case PyBrxCvDbStyleManager::eSurfaceElevationLabel:
+        PyThrowBadEs(BrxCvDbSurfaceElevationLabelStyleManager::getManager(id.m_id, db.impObj()));
+        break;
+    case PyBrxCvDbStyleManager::eSurfaceSlopeLabel:
+        PyThrowBadEs(BrxCvDbSurfaceSlopeLabelStyleManager::getManager(id.m_id, db.impObj()));
+        break;
+    case PyBrxCvDbStyleManager::eSymbolStyle:
+        PyThrowBadEs(BrxCvDbSymbolStyleManager::getManager(id.m_id, db.impObj()));
+        break;
+    default:
+        PyThrowBadEs(eInvalidInput);
+        break;
+    }
+    return id;
+}
+
+PyBrxCvDbObjectManager PyBrxCvDbStyleManager::openManager(PyDbDatabase& db, AcDb::OpenMode mode, EStyleManagerType styleType)
+{
+    switch (styleType)
+    {
+    case PyBrxCvDbStyleManager::ePointLabel:
+    {
+        BrxCvDbPointLabelStyleManager* ptr = nullptr;
+        PyThrowBadEs(BrxCvDbPointLabelStyleManager::openManager(ptr, db.impObj(), mode));
+        return PyBrxCvDbObjectManager(ptr, true);
+    }
+    case PyBrxCvDbStyleManager::eContourLabel:
+    {
+        BrxCvDbSurfaceContourLabelStyleManager* ptr = nullptr;
+        PyThrowBadEs(BrxCvDbSurfaceContourLabelStyleManager::openManager(ptr, db.impObj(), mode));
+        return PyBrxCvDbObjectManager(ptr, true);
+    }
+    case PyBrxCvDbStyleManager::eSurfaceElevationLabel:
+    {
+        BrxCvDbSurfaceElevationLabelStyleManager* ptr = nullptr;
+        PyThrowBadEs(BrxCvDbSurfaceElevationLabelStyleManager::openManager(ptr, db.impObj(), mode));
+        return PyBrxCvDbObjectManager(ptr, true);
+    }
+    case PyBrxCvDbStyleManager::eSurfaceSlopeLabel:
+    {
+        BrxCvDbSurfaceSlopeLabelStyleManager* ptr = nullptr;
+        PyThrowBadEs(BrxCvDbSurfaceSlopeLabelStyleManager::openManager(ptr, db.impObj(), mode));
+        return PyBrxCvDbObjectManager(ptr, true);
+    }
+    case PyBrxCvDbStyleManager::eSymbolStyle:
+    {
+        BrxCvDbSurfaceSlopeLabelStyleManager* ptr = nullptr;
+        PyThrowBadEs(BrxCvDbSurfaceSlopeLabelStyleManager::openManager(ptr, db.impObj(), mode));
+        return PyBrxCvDbObjectManager(ptr, true);
+    }
+    default:
+        PyThrowBadEs(eInvalidInput);
+        break;
+    }
+    return PyBrxCvDbObjectManager(nullptr, false);;
+}
+
+std::string PyBrxCvDbStyleManager::className()
+{
+    return "BrxCvDbStyleManager";
+}
+
+PyRxClass PyBrxCvDbStyleManager::desc()
+{
+    return PyRxClass(BrxCvDbStyleManager::desc(), false);
+}
+
+PyBrxCvDbStyleManager PyBrxCvDbStyleManager::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(BrxCvDbStyleManager::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyBrxCvDbStyleManager(static_cast<BrxCvDbStyleManager*>(src.impObj()->clone()), true);
+}
+
+PyBrxCvDbStyleManager PyBrxCvDbStyleManager::cast(const PyRxObject& src)
+{
+    PyBrxCvDbStyleManager dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbStyleManager* PyBrxCvDbStyleManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbStyleManager*>(m_pyImp.get());
+}
+
 #endif//BRXAPP

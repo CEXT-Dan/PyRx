@@ -40,7 +40,16 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvDb3dAlignmentWrapper();
     makePyBrxCvDbObjectManagerWrapper();
     makePyBrxCvDbFileFormatManagerWrapper();
+    makePyBrxCvDbStyleManagerWrapper();
 
+    enum_<PyBrxCvDbStyleManager::EStyleManagerType>("StyleManagerType")
+        .value("ePointLabel", PyBrxCvDbStyleManager::EStyleManagerType::ePointLabel)
+        .value("eContourLabel", PyBrxCvDbStyleManager::EStyleManagerType::eContourLabel)
+        .value("eSurfaceElevationLabel", PyBrxCvDbStyleManager::EStyleManagerType::eSurfaceElevationLabel)
+        .value("eSurfaceSlopeLabel", PyBrxCvDbStyleManager::EStyleManagerType::eSurfaceSlopeLabel)
+        .value("eSymbolStyle", PyBrxCvDbStyleManager::EStyleManagerType::eSymbolStyle)
+        .export_values()
+        ;
     enum_<BrxCvCivil3dConverter::Civil3dLabels>("Civil3dLabels")
         .value("eNoLabels", BrxCvCivil3dConverter::Civil3dLabels::eNoLabels)
         .value("eSurfaceLabels", BrxCvCivil3dConverter::Civil3dLabels::eSurfaceLabels)

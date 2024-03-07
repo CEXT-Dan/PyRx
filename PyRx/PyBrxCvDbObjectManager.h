@@ -5,6 +5,8 @@
 #ifdef BRXAPP
 #include "BrxCvDbObjectManager.h"
 #include "BrxCvDbFileFormatManager.h"
+#include "BrxCvDbStyleManager.h"
+#include "BrxCvDbPointGroupManager.h"
 class PyDbObjectId;
 
 //-----------------------------------------------------------------------------------
@@ -40,7 +42,6 @@ public:
     inline BrxCvDbObjectManager* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //-----------------------------------------------------------------------------------
 // PyBrxCvDbFileFormatManager
 void makePyBrxCvDbFileFormatManagerWrapper();
@@ -67,6 +68,40 @@ public:
 
 public:
     inline BrxCvDbFileFormatManager* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+// PyBrxCvDbStyleManager
+void makePyBrxCvDbStyleManagerWrapper();
+
+class PyBrxCvDbStyleManager : public PyBrxCvDbObjectManager
+{
+public:
+    enum EStyleManagerType
+    {
+        ePointLabel,
+        eContourLabel,
+        eSurfaceElevationLabel,
+        eSurfaceSlopeLabel,
+        eSymbolStyle
+    };
+public:
+    PyBrxCvDbStyleManager(const PyDbObjectId& id);
+    PyBrxCvDbStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbStyleManager(BrxCvDbStyleManager* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbStyleManager() override = default;
+
+    static PyDbObjectId                 getManager(PyDbDatabase& db, EStyleManagerType styleType);
+    static PyBrxCvDbObjectManager       openManager(PyDbDatabase& db, AcDb::OpenMode mode, EStyleManagerType styleType);
+
+    static std::string                  className();
+    static PyRxClass                    desc();
+    static PyBrxCvDbStyleManager        cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbStyleManager        cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbStyleManager* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 #endif//BRXAPP
