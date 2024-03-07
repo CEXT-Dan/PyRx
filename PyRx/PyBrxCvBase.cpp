@@ -2999,5 +2999,122 @@ BrxCvDbVAlignmentParabola* PyBrxCvDbVAlignmentParabola::impObj(const std::source
         }
     return static_cast<BrxCvDbVAlignmentParabola*>(m_pyImp.get());
 }
-#endif//BRXAPP
 
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDb3dAlignment
+void makePyBrxCvDb3dAlignmentWrapper()
+{
+    PyDocString DS("CvDb3dAlignment");
+    class_<PyBrxCvDb3dAlignment, bases<PyBrxCvDbCurve>>("CvDb3dAlignment")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
+
+        .def("baseHAlignment", &PyBrxCvDb3dAlignment::baseHAlignment, DS.ARGS())
+        .def("vAlignment", &PyBrxCvDb3dAlignment::vAlignment, DS.ARGS())
+        .def("length", &PyBrxCvDb3dAlignment::length, DS.ARGS())
+        .def("getPointsArray", &PyBrxCvDb3dAlignment::getPointsArray, DS.ARGS())
+        .def("setBaseHAlignment", &PyBrxCvDb3dAlignment::setBaseHAlignment, DS.ARGS())
+        .def("setVAlignment", &PyBrxCvDb3dAlignment::setVAlignment, DS.ARGS())
+
+        .def("className", &PyBrxCvDb3dAlignment::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDb3dAlignment::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyBrxCvDb3dAlignment::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyBrxCvDb3dAlignment::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDb3dAlignment::PyBrxCvDb3dAlignment()
+    : PyBrxCvDb3dAlignment(new BrxCvDb3dAlignment(), true)
+{
+}
+
+PyBrxCvDb3dAlignment::PyBrxCvDb3dAlignment(const PyDbObjectId& id)
+    : PyBrxCvDb3dAlignment(openAcDbObject<BrxCvDb3dAlignment>(id), false)
+{
+}
+
+PyBrxCvDb3dAlignment::PyBrxCvDb3dAlignment(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyBrxCvDb3dAlignment(openAcDbObject<BrxCvDb3dAlignment>(id, mode), false)
+{
+}
+
+PyBrxCvDb3dAlignment::PyBrxCvDb3dAlignment(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyBrxCvDb3dAlignment(openAcDbObject<BrxCvDb3dAlignment>(id, mode, erased), false)
+{
+}
+
+PyBrxCvDb3dAlignment::PyBrxCvDb3dAlignment(BrxCvDb3dAlignment* ptr, bool autoDelete)
+    : PyBrxCvDbCurve(ptr, autoDelete)
+{
+}
+
+PyDbObjectId PyBrxCvDb3dAlignment::baseHAlignment() const
+{
+    return PyDbObjectId(impObj()->baseHAlignment());
+}
+
+PyDbObjectId PyBrxCvDb3dAlignment::vAlignment() const
+{
+    return PyDbObjectId(impObj()->vAlignment());
+}
+
+double PyBrxCvDb3dAlignment::length() const
+{
+    return impObj()->length();
+}
+
+boost::python::list PyBrxCvDb3dAlignment::getPointsArray() const
+{
+    PyAutoLockGIL lock;
+    AcGePoint3dArray alignmentPoints;
+    impObj()->getPointsArray(alignmentPoints);
+    return Point3dArrayToPyList(alignmentPoints);
+}
+
+bool PyBrxCvDb3dAlignment::setBaseHAlignment(const PyDbObjectId& id)
+{
+    return impObj()->setBaseHAlignment(id.m_id);
+}
+
+bool PyBrxCvDb3dAlignment::setVAlignment(const PyDbObjectId& id)
+{
+    return impObj()->setVAlignment(id.m_id);
+}
+
+std::string PyBrxCvDb3dAlignment::className()
+{
+    return "BrxCvDb3dAlignment";
+}
+
+PyRxClass PyBrxCvDb3dAlignment::desc()
+{
+    return PyRxClass(BrxCvDb3dAlignment::desc(), false);
+}
+
+PyBrxCvDb3dAlignment PyBrxCvDb3dAlignment::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(BrxCvDb3dAlignment::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyBrxCvDb3dAlignment(static_cast<BrxCvDb3dAlignment*>(src.impObj()->clone()), true);
+}
+
+PyBrxCvDb3dAlignment PyBrxCvDb3dAlignment::cast(const PyRxObject& src)
+{
+    PyBrxCvDb3dAlignment dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDb3dAlignment* PyBrxCvDb3dAlignment::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDb3dAlignment*>(m_pyImp.get());
+}
+
+#endif//BRXAPP
