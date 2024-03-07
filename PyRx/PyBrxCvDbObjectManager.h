@@ -104,4 +104,29 @@ public:
     inline BrxCvDbStyleManager* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+
+//-----------------------------------------------------------------------------------
+// PyBrxCvDbPointGroupManager
+void makePyBrxCvDbPointGroupManagerWrapper();
+
+class PyBrxCvDbPointGroupManager : public PyBrxCvDbObjectManager
+{
+public:
+    PyBrxCvDbPointGroupManager(const PyDbObjectId& id);
+    PyBrxCvDbPointGroupManager(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbPointGroupManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbPointGroupManager(BrxCvDbPointGroupManager* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbPointGroupManager() override = default;
+
+    static PyDbObjectId                 getManager(PyDbDatabase& db);
+    static PyBrxCvDbPointGroupManager   openManager(PyDbDatabase& db, AcDb::OpenMode mode);
+
+    static std::string                  className();
+    static PyRxClass                    desc();
+    static PyBrxCvDbPointGroupManager   cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbPointGroupManager   cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbPointGroupManager* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 #endif//BRXAPP
