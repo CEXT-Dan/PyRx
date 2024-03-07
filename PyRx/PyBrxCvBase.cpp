@@ -2756,4 +2756,248 @@ BrxCvDbVAlignmentCurve* PyBrxCvDbVAlignmentCurve::impObj(const std::source_locat
         }
     return static_cast<BrxCvDbVAlignmentCurve*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbVAlignmentTangent
+void makePyBrxCvDbVAlignmentTangentWrapper()
+{
+    PyDocString DS("CvDbVAlignmentTangent");
+    class_<PyBrxCvDbVAlignmentTangent, bases<PyBrxCvDbVAlignmentCurve>>("CvDbVAlignmentTangent")
+        .def(init<>())
+        .def("passThroughPoint1", &PyBrxCvDbVAlignmentTangent::passThroughPoint1, DS.ARGS())
+        .def("passThroughPoint2", &PyBrxCvDbVAlignmentTangent::passThroughPoint2, DS.ARGS())
+        .def("setPassThroughPoint1", &PyBrxCvDbVAlignmentTangent::setPassThroughPoint1, DS.ARGS())
+        .def("setPassThroughPoint2", &PyBrxCvDbVAlignmentTangent::setPassThroughPoint2, DS.ARGS())
+        .def("className", &PyBrxCvDbVAlignmentTangent::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbVAlignmentTangent::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbVAlignmentTangent::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbVAlignmentTangent::PyBrxCvDbVAlignmentTangent()
+    : PyBrxCvDbVAlignmentTangent(new BrxCvDbVAlignmentTangent(), true)
+{
+}
+
+PyBrxCvDbVAlignmentTangent::PyBrxCvDbVAlignmentTangent(BrxCvDbVAlignmentTangent* ptr, bool autoDelete)
+    : PyBrxCvDbVAlignmentCurve(ptr, autoDelete)
+{
+}
+
+AcGePoint2d PyBrxCvDbVAlignmentTangent::passThroughPoint1() const
+{
+    return impObj()->passThroughPoint1();
+}
+
+AcGePoint2d PyBrxCvDbVAlignmentTangent::passThroughPoint2() const
+{
+    return impObj()->passThroughPoint2();
+}
+
+bool PyBrxCvDbVAlignmentTangent::setPassThroughPoint1(const AcGePoint2d& point)
+{
+    return impObj()->setPassThroughPoint1(point);
+}
+
+bool PyBrxCvDbVAlignmentTangent::setPassThroughPoint2(const AcGePoint2d& point)
+{
+    return impObj()->setPassThroughPoint2(point);
+}
+
+std::string PyBrxCvDbVAlignmentTangent::className()
+{
+    return "BrxCvDbVAlignmentTangent";
+}
+
+PyRxClass PyBrxCvDbVAlignmentTangent::desc()
+{
+    return PyRxClass(BrxCvDbVAlignmentTangent::desc(), false);
+}
+
+PyBrxCvDbVAlignmentTangent PyBrxCvDbVAlignmentTangent::cast(const PyRxObject& src)
+{
+    PyBrxCvDbVAlignmentTangent dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbVAlignmentTangent* PyBrxCvDbVAlignmentTangent::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbVAlignmentTangent*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbVAlignmentArc
+void makePyBrxCvDbVAlignmentArcWrapper()
+{
+    PyDocString DS("CvDbVAlignmentArc");
+    class_<PyBrxCvDbVAlignmentArc, bases<PyBrxCvDbVAlignmentCurve>>("CvDbVAlignmentArc")
+        .def(init<>())
+        .def("radius", &PyBrxCvDbVAlignmentArc::radius, DS.ARGS())
+        .def("gradeIn", &PyBrxCvDbVAlignmentArc::gradeIn, DS.ARGS())
+        .def("gradeOut", &PyBrxCvDbVAlignmentArc::gradeOut, DS.ARGS())
+        .def("center", &PyBrxCvDbVAlignmentArc::center, DS.ARGS())
+        .def("isClockwise", &PyBrxCvDbVAlignmentArc::isClockwise, DS.ARGS())
+        .def("setRadius", &PyBrxCvDbVAlignmentArc::setRadius, DS.ARGS())
+        .def("setCenter", &PyBrxCvDbVAlignmentArc::setCenter, DS.ARGS())
+        .def("setClockwise", &PyBrxCvDbVAlignmentArc::setClockwise, DS.ARGS())
+        .def("className", &PyBrxCvDbVAlignmentArc::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbVAlignmentArc::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbVAlignmentArc::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbVAlignmentArc::PyBrxCvDbVAlignmentArc()
+: PyBrxCvDbVAlignmentArc(new BrxCvDbVAlignmentArc(), true)
+{
+}
+
+PyBrxCvDbVAlignmentArc::PyBrxCvDbVAlignmentArc(BrxCvDbVAlignmentArc* ptr, bool autoDelete)
+    :PyBrxCvDbVAlignmentCurve(ptr, autoDelete)
+{
+}
+
+double PyBrxCvDbVAlignmentArc::radius() const
+{
+    return impObj()->radius();
+}
+
+double PyBrxCvDbVAlignmentArc::gradeIn() const
+{
+    return impObj()->gradeIn();
+}
+
+double PyBrxCvDbVAlignmentArc::gradeOut() const
+{
+    return impObj()->gradeOut();
+}
+
+AcGePoint2d PyBrxCvDbVAlignmentArc::center() const
+{
+    return impObj()->center();
+}
+
+bool PyBrxCvDbVAlignmentArc::isClockwise() const
+{
+    return impObj()->isClockwise();
+}
+
+bool PyBrxCvDbVAlignmentArc::setRadius(double rad)
+{
+    return impObj()->setRadius(rad);
+}
+
+bool PyBrxCvDbVAlignmentArc::setCenter(const AcGePoint2d& center)
+{
+    return impObj()->setCenter(center);
+}
+
+bool PyBrxCvDbVAlignmentArc::setClockwise(bool isClockwise)
+{
+    return impObj()->setClockwise(isClockwise);
+}
+
+std::string PyBrxCvDbVAlignmentArc::className()
+{
+    return "BrxCvDbVAlignmentArc";
+}
+
+PyRxClass PyBrxCvDbVAlignmentArc::desc()
+{
+    return PyRxClass(BrxCvDbVAlignmentArc::desc(), false);
+}
+
+PyBrxCvDbVAlignmentArc PyBrxCvDbVAlignmentArc::cast(const PyRxObject& src)
+{
+    PyBrxCvDbVAlignmentArc dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbVAlignmentArc* PyBrxCvDbVAlignmentArc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbVAlignmentArc*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbVAlignmentParabola
+void makePyBrxCvDbVAlignmentParabolaWrapper()
+{
+    PyDocString DS("CvDbVAlignmentParabola");
+    class_<PyBrxCvDbVAlignmentParabola, bases<PyBrxCvDbVAlignmentCurve>>("CvDbVAlignmentParabola")
+        .def(init<>())
+        .def("radius", &PyBrxCvDbVAlignmentParabola::radius, DS.ARGS())
+        .def("gradeIn", &PyBrxCvDbVAlignmentParabola::gradeIn, DS.ARGS())
+        .def("gradeOut", &PyBrxCvDbVAlignmentParabola::gradeOut, DS.ARGS())
+        .def("setRadius", &PyBrxCvDbVAlignmentParabola::setRadius, DS.ARGS())
+        .def("className", &PyBrxCvDbVAlignmentParabola::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbVAlignmentParabola::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbVAlignmentParabola::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbVAlignmentParabola::PyBrxCvDbVAlignmentParabola()
+    :PyBrxCvDbVAlignmentParabola(new BrxCvDbVAlignmentParabola(), true)
+{
+}
+
+PyBrxCvDbVAlignmentParabola::PyBrxCvDbVAlignmentParabola(BrxCvDbVAlignmentParabola* ptr, bool autoDelete)
+    :PyBrxCvDbVAlignmentCurve(ptr, autoDelete)
+{
+}
+
+double PyBrxCvDbVAlignmentParabola::radius() const
+{
+    return impObj()->radius();
+}
+
+double PyBrxCvDbVAlignmentParabola::gradeIn() const
+{
+    return impObj()->gradeIn();
+}
+
+double PyBrxCvDbVAlignmentParabola::gradeOut() const
+{
+    return impObj()->gradeOut();
+}
+
+bool PyBrxCvDbVAlignmentParabola::setRadius(double rad)
+{
+    return impObj()->setRadius(rad);
+}
+
+std::string PyBrxCvDbVAlignmentParabola::className()
+{
+    return "BrxCvDbVAlignmentParabola";
+}
+
+PyRxClass PyBrxCvDbVAlignmentParabola::desc()
+{
+    return PyRxClass(BrxCvDbVAlignmentParabola::desc(), false);
+}
+
+PyBrxCvDbVAlignmentParabola PyBrxCvDbVAlignmentParabola::cast(const PyRxObject& src)
+{
+    PyBrxCvDbVAlignmentParabola dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbVAlignmentParabola* PyBrxCvDbVAlignmentParabola::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbVAlignmentParabola*>(m_pyImp.get());
+}
 #endif//BRXAPP
+

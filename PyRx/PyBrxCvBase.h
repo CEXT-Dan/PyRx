@@ -808,5 +808,78 @@ public:
     inline BrxCvDbVAlignmentCurve* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbVAlignmentTangent
+void makePyBrxCvDbVAlignmentTangentWrapper();
+
+class PyBrxCvDbVAlignmentTangent : public PyBrxCvDbVAlignmentCurve
+{
+public:
+    PyBrxCvDbVAlignmentTangent();
+    PyBrxCvDbVAlignmentTangent(BrxCvDbVAlignmentTangent* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbVAlignmentTangent() override = default;
+
+    AcGePoint2d     passThroughPoint1() const;
+    AcGePoint2d     passThroughPoint2() const;
+    bool            setPassThroughPoint1(const AcGePoint2d& point);
+    bool            setPassThroughPoint2(const AcGePoint2d& point);
+
+    static std::string          className();
+    static PyRxClass            desc();
+    static PyBrxCvDbVAlignmentTangent  cast(const PyRxObject& src);
+public:
+    inline BrxCvDbVAlignmentTangent* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbVAlignmentArc
+void makePyBrxCvDbVAlignmentArcWrapper();
+
+class PyBrxCvDbVAlignmentArc : public PyBrxCvDbVAlignmentCurve
+{
+public:
+    PyBrxCvDbVAlignmentArc();
+    PyBrxCvDbVAlignmentArc(BrxCvDbVAlignmentArc* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbVAlignmentArc() override = default;
+
+    double          radius() const;
+    double          gradeIn() const;
+    double          gradeOut() const;
+    AcGePoint2d     center() const;
+    bool            isClockwise() const;
+    bool            setRadius(double rad);
+    bool            setCenter(const AcGePoint2d& center);
+    bool            setClockwise(bool isClockwise);
+
+    static std::string          className();
+    static PyRxClass            desc();
+    static PyBrxCvDbVAlignmentArc  cast(const PyRxObject& src);
+public:
+    inline BrxCvDbVAlignmentArc* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbVAlignmentParabola
+void makePyBrxCvDbVAlignmentParabolaWrapper();
+
+class PyBrxCvDbVAlignmentParabola : public PyBrxCvDbVAlignmentCurve
+{
+public:
+    PyBrxCvDbVAlignmentParabola();
+    PyBrxCvDbVAlignmentParabola(BrxCvDbVAlignmentParabola* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbVAlignmentParabola() override = default;
+
+    double  radius() const;
+    double  gradeIn() const;
+    double  gradeOut() const;
+    bool    setRadius(double rad);
+
+    static std::string          className();
+    static PyRxClass            desc();
+    static PyBrxCvDbVAlignmentParabola  cast(const PyRxObject& src);
+public:
+    inline BrxCvDbVAlignmentParabola* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 #endif//BRXAPP
 
