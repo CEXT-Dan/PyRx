@@ -137,7 +137,7 @@
     <ClCompile Include="GsCore.cpp" />
     <ClCompile Include="PlCore.cpp" />
     <ClCompile Include="PyBrxCv.cpp" />
-    <ClCompile Include="PyBrxCvBase.cpp" />
+    <ClCompile Include="PyBrxCvDbAlignments.cpp" />
     <ClCompile Include="PyBrxCvDbObjectManager.cpp" />
     <ClCompile Include="PyBrxCvObject.cpp" />
     <ClCompile Include="PyDb3dProfile.cpp" />
@@ -259,7 +259,7 @@
     <ClInclude Include="GsCore.h" />
     <ClInclude Include="PlCore.h" />
     <ClInclude Include="PyBrxCv.h" />
-    <ClInclude Include="PyBrxCvBase.h" />
+    <ClInclude Include="PyBrxCvDbAlignments.h" />
     <ClInclude Include="PyBrxCvDbObjectManager.h" />
     <ClInclude Include="PyBrxCvObject.h" />
     <ClInclude Include="PyDb3dProfile.h" />

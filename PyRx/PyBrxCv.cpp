@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PyBrxCv.h"
-#include "PyBrxCvBase.h"
+#include "PyBrxCvDbAlignments.h"
 
 #ifdef BRXAPP
 
