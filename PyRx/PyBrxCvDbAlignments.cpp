@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "PyBrxCvBase.h"
+#include "PyBrxCvDbAlignments.h"
 #include "PyDbObjectId.h"
 
 #ifdef BRXAPP

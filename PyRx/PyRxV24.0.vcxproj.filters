@@ -349,7 +349,7 @@
     <ClCompile Include="PyBrxCv.cpp">
       <Filter>Source Files\PyBrxCv</Filter>
     </ClCompile>
-    <ClCompile Include="PyBrxCvBase.cpp">
+    <ClCompile Include="PyBrxCvDbAlignments.cpp">
       <Filter>Source Files\PyBrxCv</Filter>
     </ClCompile>
     <ClCompile Include="PyBrxCvDbObjectManager.cpp">
@@ -711,7 +711,7 @@
     <ClInclude Include="PyBrxCv.h">
       <Filter>Header Files\PyBrxCv</Filter>
     </ClInclude>
-    <ClInclude Include="PyBrxCvBase.h">
+    <ClInclude Include="PyBrxCvDbAlignments.h">
       <Filter>Header Files\PyBrxCv</Filter>
     </ClInclude>
     <ClInclude Include="PyBrxCvDbObjectManager.h">
