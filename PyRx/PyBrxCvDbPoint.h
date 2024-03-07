@@ -4,6 +4,8 @@
 #ifdef BRXAPP
 
 class BrxCvDbPoint;
+class BrxCvDbPointReferencedEntity;
+class PyBrxCvDbPointReferencedEntity;
 class PyDbObjectId;
 
 //-----------------------------------------------------------------------------------
@@ -52,10 +54,7 @@ public:
     bool                    setLabelLeaderVertices(const boost::python::list& vertices);
     bool                    resetLabel();
     Adesk::UInt32           referencedEntityCount() const;
-
-    // returns a single referenced entity at given index; defined by label style text components
-    //BrxCvDbPointReferencedEntityPtr referencedEntityAt(Adesk::UInt32 index) const;
-
+    PyBrxCvDbPointReferencedEntity referencedEntityAt(Adesk::UInt32 index) const;
     bool                    update();
 
     static std::string      className();
@@ -65,4 +64,31 @@ public:
 public:
     inline BrxCvDbPoint* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbPointReferencedEntity
+void makePyBrxCvDbPointReferencedEntityWrapper();
+
+class PyBrxCvDbPointReferencedEntity : public PyBrxCvDbSubObject
+{
+public:
+
+    PyBrxCvDbPointReferencedEntity();
+    PyBrxCvDbPointReferencedEntity(BrxCvDbPointReferencedEntity* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbPointReferencedEntity() override = default;
+
+    PyDbObjectId            id() const;
+    bool                    setId(const PyDbObjectId& value);
+    PyRxClass               type() const;
+
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbPointReferencedEntity  cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbPointReferencedEntity* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
 #endif //BRXAPP

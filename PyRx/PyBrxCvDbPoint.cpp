@@ -48,7 +48,7 @@ void makePyBrxCvDbPointWrapper()
         .def("setLabelLeaderVertices", &PyBrxCvDbPoint::setLabelLeaderVertices, DS.ARGS({ "vertices : list[PyGe.Point3d]" }))
         .def("resetLabel", &PyBrxCvDbPoint::resetLabel, DS.ARGS())
         .def("referencedEntityCount", &PyBrxCvDbPoint::referencedEntityCount, DS.ARGS())
-        //.def("referencedEntityAt", &PyBrxCvDbPoint::referencedEntityAt)
+        .def("referencedEntityAt", &PyBrxCvDbPoint::referencedEntityAt, DS.ARGS({ "val : int" }))
         .def("update", &PyBrxCvDbPoint::update, DS.ARGS())
        
         .def("className", &PyBrxCvDbPoint::className, DS.SARGS()).staticmethod("className")
@@ -243,6 +243,14 @@ Adesk::UInt32 PyBrxCvDbPoint::referencedEntityCount() const
     return impObj()->referencedEntityCount();
 }
 
+PyBrxCvDbPointReferencedEntity PyBrxCvDbPoint::referencedEntityAt(Adesk::UInt32 index) const
+{
+    auto ptr = impObj()->referencedEntityAt(index);
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbPointReferencedEntity(ptr.detach(), true);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
+}
+
 bool PyBrxCvDbPoint::update()
 {
     return impObj()->update();
@@ -279,5 +287,72 @@ BrxCvDbPoint* PyBrxCvDbPoint::impObj(const std::source_location& src /*= std::so
         throw PyNullObject(src);
         }
     return static_cast<BrxCvDbPoint*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbPointReferencedEntity
+void makePyBrxCvDbPointReferencedEntityWrapper()
+{
+    PyDocString DS("CvDbPointReferencedEntity");
+    class_<PyBrxCvDbPointReferencedEntity, bases<PyBrxCvDbSubObject>>("CvDbPointReferencedEntity")
+        .def(init<>())
+        .def("id", &PyBrxCvDbPointReferencedEntity::id, DS.ARGS())
+        .def("setId", &PyBrxCvDbPointReferencedEntity::setId, DS.ARGS({ "id : PyDb.ObjectId" }))
+        .def("type", &PyBrxCvDbPointReferencedEntity::type, DS.ARGS())
+        .def("className", &PyBrxCvDbPointReferencedEntity::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbPointReferencedEntity::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbPointReferencedEntity::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbPointReferencedEntity::PyBrxCvDbPointReferencedEntity()
+   : PyBrxCvDbPointReferencedEntity(new BrxCvDbPointReferencedEntity(), true)
+{
+}
+
+PyBrxCvDbPointReferencedEntity::PyBrxCvDbPointReferencedEntity(BrxCvDbPointReferencedEntity* ptr, bool autoDelete)
+    :PyBrxCvDbSubObject(ptr, autoDelete)
+{
+}
+
+PyDbObjectId PyBrxCvDbPointReferencedEntity::id() const
+{
+    return PyDbObjectId(impObj()->id());
+}
+
+bool PyBrxCvDbPointReferencedEntity::setId(const PyDbObjectId& value)
+{
+    return impObj()->setId(value.m_id);
+}
+
+PyRxClass PyBrxCvDbPointReferencedEntity::type() const
+{
+    return PyRxClass(impObj()->type(), false);
+}
+
+std::string PyBrxCvDbPointReferencedEntity::className()
+{
+    return "BrxCvDbPointReferencedEntity";
+}
+
+PyRxClass PyBrxCvDbPointReferencedEntity::desc()
+{
+    return PyRxClass(BrxCvDbPointReferencedEntity::desc(), false);
+}
+
+PyBrxCvDbPointReferencedEntity PyBrxCvDbPointReferencedEntity::cast(const PyRxObject& src)
+{
+    PyBrxCvDbPointReferencedEntity dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbPointReferencedEntity* PyBrxCvDbPointReferencedEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbPointReferencedEntity*>(m_pyImp.get());
 }
 #endif //BRXAPP
