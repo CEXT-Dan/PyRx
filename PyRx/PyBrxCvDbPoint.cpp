@@ -355,4 +355,81 @@ BrxCvDbPointReferencedEntity* PyBrxCvDbPointReferencedEntity::impObj(const std::
         }
     return static_cast<BrxCvDbPointReferencedEntity*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbPointGroup
+void makePyBrxCvDbPointGroupWrapper()
+{
+    PyDocString DS("CvDbPointGroup");
+    class_<PyBrxCvDbPointGroup, bases<PyBrxCvDbObject>>("CvDbPointGroup")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=kForRead", "erased: bool=False" })))
+
+        .def("className", &PyBrxCvDbPointGroup::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbPointGroup::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyBrxCvDbPointGroup::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyBrxCvDbPointGroup::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbPointGroup::PyBrxCvDbPointGroup()
+    : PyBrxCvDbPointGroup(new BrxCvDbPointGroup(),true)
+{
+}
+
+PyBrxCvDbPointGroup::PyBrxCvDbPointGroup(const PyDbObjectId& id)
+    : PyBrxCvDbPointGroup(openAcDbObject<BrxCvDbPointGroup>(id), false)
+{
+}
+
+PyBrxCvDbPointGroup::PyBrxCvDbPointGroup(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyBrxCvDbPointGroup(openAcDbObject<BrxCvDbPointGroup>(id, mode), false)
+{
+}
+
+PyBrxCvDbPointGroup::PyBrxCvDbPointGroup(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyBrxCvDbPointGroup(openAcDbObject<BrxCvDbPointGroup>(id, mode, erased), false)
+{
+}
+
+PyBrxCvDbPointGroup::PyBrxCvDbPointGroup(BrxCvDbPointGroup* ptr, bool autoDelete)
+  : PyBrxCvDbObject(ptr, autoDelete)
+{
+}
+
+std::string PyBrxCvDbPointGroup::className()
+{
+    return "BrxCvDbPointGroup";
+}
+
+PyRxClass PyBrxCvDbPointGroup::desc()
+{
+    return PyRxClass(BrxCvDbPointGroup::desc(), false);
+}
+
+PyBrxCvDbPointGroup PyBrxCvDbPointGroup::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(BrxCvDbPointGroup::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyBrxCvDbPointGroup(static_cast<BrxCvDbPointGroup*>(src.impObj()->clone()), true);
+}
+
+PyBrxCvDbPointGroup PyBrxCvDbPointGroup::cast(const PyRxObject& src)
+{
+    PyBrxCvDbPointGroup dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbPointGroup* PyBrxCvDbPointGroup::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbPointGroup*>(m_pyImp.get());
+}
 #endif //BRXAPP
+

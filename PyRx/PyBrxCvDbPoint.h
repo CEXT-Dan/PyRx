@@ -5,6 +5,8 @@
 
 class BrxCvDbPoint;
 class BrxCvDbPointReferencedEntity;
+class BrxCvDbPointGroup;
+
 class PyBrxCvDbPointReferencedEntity;
 class PyDbObjectId;
 
@@ -89,6 +91,68 @@ public:
 public:
     inline BrxCvDbPointReferencedEntity* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbPointGroup
+void makePyBrxCvDbPointGroupWrapper();
+class PyBrxCvDbPointGroup : public PyBrxCvDbObject
+{
+public:
+    PyBrxCvDbPointGroup();
+    PyBrxCvDbPointGroup(const PyDbObjectId& id);
+    PyBrxCvDbPointGroup(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbPointGroup(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbPointGroup(BrxCvDbPointGroup* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbPointGroup() override = default;
+
+    bool                hasPoint(const Adesk::UInt32 number) const;
+    bool                hasPoint(const Adesk::UInt32 number, PyDbObjectId& pointId) const;
+    Adesk::UInt32       pointCount() const;
+    boost::python::list pointIds() const;
+    bool                isEditable() const;
+    bool                isApplicable(const PyBrxCvDbPoint& point) const;
+    std::string         includeNumbers() const;
+    std::string         excludeNumbers() const;
+    std::string         includeElevations() const;
+    std::string         excludeElevations() const;
+    std::string         includeRawDescriptions() const;
+    std::string         excludeRawDescriptions() const;
+    std::string         includeFullDescriptions() const;
+    std::string         excludeFullDescriptions() const;
+    std::string         includeNames() const;
+    std::string         excludeNames() const;
+    std::string         includeUserAttributesKeys() const;
+    std::string         excludeUserAttributesKeys() const;
+    std::string         includeUserAttributesValues() const;
+    std::string         excludeUserAttributesValues() const;
+    bool                setIncludeNumbers(const std::string& szFilter);
+    bool                setExcludeNumbers(const std::string& szFilter);
+    bool                setIncludeElevations(const std::string& szFilter);
+    bool                setExcludeElevations(const std::string& szFilter);
+    bool                setIncludeRawDescriptions(const std::string& szFilter);
+    bool                setExcludeRawDescriptions(const std::string& szFilter);
+    bool                setIncludeFullDescriptions(const std::string& szFilter);
+    bool                setExcludeFullDescriptions(const std::string& szFilter);
+    bool                setIncludeNames(const std::string& szFilter);
+    bool                setExcludeNames(const std::string& szFilter);
+    bool                setIncludeUserAttributesKeys(const std::string& szFilter);
+    bool                setExcludeUserAttributesKeys(const std::string& szFilter);
+    bool                setIncludeUserAttributesValues(const std::string& szFilter);
+    bool                setExcludeUserAttributesValues(const std::string& szFilter);
+    bool                updateNeeded() const;
+    bool                update();
+
+
+    static std::string          className();
+    static PyRxClass            desc();
+    static PyBrxCvDbPointGroup  cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbPointGroup  cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbPointGroup* impObj(const std::source_location& src = std::source_location::current()) const;
+
+};
+
 
 
 #endif //BRXAPP
