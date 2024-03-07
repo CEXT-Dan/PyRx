@@ -895,12 +895,12 @@ public:
     PyBrxCvDb3dAlignment(BrxCvDb3dAlignment* ptr, bool autoDelete);
     virtual ~PyBrxCvDb3dAlignment() override = default;
 
-    PyDbObjectId        baseHAlignment() const;
-    PyDbObjectId        vAlignment() const;
-    double              length() const;
-    boost::python::list getPointsArray() const;
-    bool                setBaseHAlignment(const PyDbObjectId& id);
-    bool                setVAlignment(const PyDbObjectId& id);
+    PyDbObjectId                baseHAlignment() const;
+    PyDbObjectId                vAlignment() const;
+    double                      length() const;
+    boost::python::list         getPointsArray() const;
+    bool                        setBaseHAlignment(const PyDbObjectId& id);
+    bool                        setVAlignment(const PyDbObjectId& id);
 
     static std::string          className();
     static PyRxClass            desc();
