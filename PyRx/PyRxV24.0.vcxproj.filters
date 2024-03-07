@@ -352,6 +352,12 @@
     <ClCompile Include="PyBrxCvBase.cpp">
       <Filter>Source Files\PyBrxCv</Filter>
     </ClCompile>
+    <ClCompile Include="PyBrxCvDbObjectManager.cpp">
+      <Filter>Source Files\PyBrxCv</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxCvObject.cpp">
+      <Filter>Source Files\PyBrxCv</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -706,6 +712,12 @@
       <Filter>Header Files\PyBrxCv</Filter>
     </ClInclude>
     <ClInclude Include="PyBrxCvBase.h">
+      <Filter>Header Files\PyBrxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxCvDbObjectManager.h">
+      <Filter>Header Files\PyBrxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxCvObject.h">
       <Filter>Header Files\PyBrxCv</Filter>
     </ClInclude>
   </ItemGroup>
