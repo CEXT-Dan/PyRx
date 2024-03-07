@@ -248,7 +248,8 @@ void makePyBrxCvDbStyleManagerWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=kForRead", "erased: bool=False" })))
-
+        .def("getManager", &PyBrxCvDbStyleManager::getManager, DS.SARGS({ "db: PyDb.Database" , "PyBrxCv.EStyleManagerType" })).staticmethod("getManager")
+        .def("openManager", &PyBrxCvDbStyleManager::openManager, DS.SARGS({ "db: PyDb.Database","mode: PyDb.OpenMode","PyBrxCv.EStyleManagerType" })).staticmethod("openManager")
         .def("className", &PyBrxCvDbStyleManager::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbStyleManager::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyBrxCvDbStyleManager::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -377,4 +378,88 @@ BrxCvDbStyleManager* PyBrxCvDbStyleManager::impObj(const std::source_location& s
     return static_cast<BrxCvDbStyleManager*>(m_pyImp.get());
 }
 
+//-----------------------------------------------------------------------------------
+// PyBrxCvDbPointGroupManager
+void makePyBrxCvDbPointGroupManagerWrapper()
+{
+    PyDocString DS("CvDbPointGroupManager");
+    class_<PyBrxCvDbPointGroupManager, bases<PyBrxCvDbObjectManager>>("CvDbPointGroupManager", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=kForRead", "erased: bool=False" })))
+        .def("getManager", &PyBrxCvDbPointGroupManager::getManager, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getManager")
+        .def("openManager", &PyBrxCvDbPointGroupManager::openManager, DS.SARGS({ "db: PyDb.Database","mode: PyDb.OpenMode" })).staticmethod("openManager")
+        .def("className", &PyBrxCvDbPointGroupManager::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbPointGroupManager::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyBrxCvDbPointGroupManager::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyBrxCvDbPointGroupManager::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbPointGroupManager::PyBrxCvDbPointGroupManager(const PyDbObjectId& id)
+    : PyBrxCvDbPointGroupManager(openAcDbObject<BrxCvDbPointGroupManager>(id), false)
+{
+}
+
+PyBrxCvDbPointGroupManager::PyBrxCvDbPointGroupManager(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyBrxCvDbPointGroupManager(openAcDbObject<BrxCvDbPointGroupManager>(id, mode), false)
+{
+}
+
+PyBrxCvDbPointGroupManager::PyBrxCvDbPointGroupManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyBrxCvDbPointGroupManager(openAcDbObject<BrxCvDbPointGroupManager>(id, mode, erased), false)
+{
+}
+
+PyBrxCvDbPointGroupManager::PyBrxCvDbPointGroupManager(BrxCvDbPointGroupManager* ptr, bool autoDelete)
+    :PyBrxCvDbObjectManager(ptr, autoDelete)
+{
+}
+
+PyDbObjectId PyBrxCvDbPointGroupManager::getManager(PyDbDatabase& db)
+{
+    PyDbObjectId id;
+    PyThrowBadEs(BrxCvDbPointGroupManager::getManager(id.m_id, db.impObj()));
+    return id;
+}
+
+PyBrxCvDbPointGroupManager PyBrxCvDbPointGroupManager::openManager(PyDbDatabase& db, AcDb::OpenMode mode)
+{
+    BrxCvDbPointGroupManager* ptr = nullptr;
+    PyThrowBadEs(BrxCvDbPointGroupManager::openManager(ptr, db.impObj(), mode));
+    return PyBrxCvDbPointGroupManager(ptr, true);
+}
+
+std::string PyBrxCvDbPointGroupManager::className()
+{
+    return "BrxCvDbPointGroupManager";
+}
+
+PyRxClass PyBrxCvDbPointGroupManager::desc()
+{
+    return PyRxClass(BrxCvDbPointGroupManager::desc(), false);
+}
+
+PyBrxCvDbPointGroupManager PyBrxCvDbPointGroupManager::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(BrxCvDbPointGroupManager::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyBrxCvDbPointGroupManager(static_cast<BrxCvDbPointGroupManager*>(src.impObj()->clone()), true);
+}
+
+PyBrxCvDbPointGroupManager PyBrxCvDbPointGroupManager::cast(const PyRxObject& src)
+{
+    PyBrxCvDbPointGroupManager dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbPointGroupManager* PyBrxCvDbPointGroupManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbPointGroupManager*>(m_pyImp.get());
+}
 #endif//BRXAPP
