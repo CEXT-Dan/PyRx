@@ -36,6 +36,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvDbVAlignmentTangentWrapper();
     makePyBrxCvDbVAlignmentArcWrapper();
     makePyBrxCvDbVAlignmentParabolaWrapper();
+    makePyBrxCvDb3dAlignmentWrapper();
 
     enum_<BrxCvCivil3dConverter::Civil3dLabels>("Civil3dLabels")
         .value("eNoLabels", BrxCvCivil3dConverter::Civil3dLabels::eNoLabels)

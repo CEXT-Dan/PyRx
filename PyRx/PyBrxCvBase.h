@@ -881,5 +881,36 @@ public:
     inline BrxCvDbVAlignmentParabola* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDb3dAlignment
+void makePyBrxCvDb3dAlignmentWrapper();
+
+class PyBrxCvDb3dAlignment : public PyBrxCvDbCurve
+{
+public:
+    PyBrxCvDb3dAlignment();
+    PyBrxCvDb3dAlignment(const PyDbObjectId& id);
+    PyBrxCvDb3dAlignment(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDb3dAlignment(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDb3dAlignment(BrxCvDb3dAlignment* ptr, bool autoDelete);
+    virtual ~PyBrxCvDb3dAlignment() override = default;
+
+    PyDbObjectId        baseHAlignment() const;
+    PyDbObjectId        vAlignment() const;
+    double              length() const;
+    boost::python::list getPointsArray() const;
+    bool                setBaseHAlignment(const PyDbObjectId& id);
+    bool                setVAlignment(const PyDbObjectId& id);
+
+    static std::string          className();
+    static PyRxClass            desc();
+    static PyBrxCvDb3dAlignment cloneFrom(const PyRxObject& src);
+    static PyBrxCvDb3dAlignment cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDb3dAlignment* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
 #endif//BRXAPP
 
