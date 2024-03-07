@@ -11,7 +11,7 @@ void makePyBrxCvDbObjectManagerWrapper()
     class_<PyBrxCvDbObjectManager, bases<PyBrxCvDbObject>>("CvDbObjectManager", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=kForRead", "erased: bool=False" })))
 
         .def("elementCount", &PyBrxCvDbObjectManager::elementCount, DS.ARGS())
         .def("ids", &PyBrxCvDbObjectManager::ids, DS.ARGS())
@@ -139,4 +139,103 @@ BrxCvDbObjectManager* PyBrxCvDbObjectManager::impObj(const std::source_location&
     return static_cast<BrxCvDbObjectManager*>(m_pyImp.get());
 }
 
+//-----------------------------------------------------------------------------------
+// PyBrxCvDbFileFormatManager
+void makePyBrxCvDbFileFormatManagerWrapper()
+{
+    PyDocString DS("CvDbFileFormatManager");
+    class_<PyBrxCvDbFileFormatManager, bases<PyBrxCvDbObjectManager>>("CvDbFileFormatManager", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=kForRead", "erased: bool=False" })))
+
+        .def("applicableFileFormats", &PyBrxCvDbFileFormatManager::applicableFileFormats, DS.ARGS({ "val : str" }))
+        .def("allFileFormats", &PyBrxCvDbFileFormatManager::allFileFormats, DS.ARGS())
+        .def("getManager", &PyBrxCvDbFileFormatManager::getManager, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getManager")
+        .def("openManager", &PyBrxCvDbFileFormatManager::openManager, DS.SARGS({ "db: PyDb.Database","mode: PyDb.OpenMode" })).staticmethod("openManager")
+
+        .def("className", &PyBrxCvDbFileFormatManager::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbFileFormatManager::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyBrxCvDbFileFormatManager::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyBrxCvDbFileFormatManager::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+
+PyBrxCvDbFileFormatManager::PyBrxCvDbFileFormatManager(const PyDbObjectId& id)
+    : PyBrxCvDbFileFormatManager(openAcDbObject<BrxCvDbFileFormatManager>(id), false)
+{
+}
+
+PyBrxCvDbFileFormatManager::PyBrxCvDbFileFormatManager(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyBrxCvDbFileFormatManager(openAcDbObject<BrxCvDbFileFormatManager>(id, mode), false)
+{
+}
+
+PyBrxCvDbFileFormatManager::PyBrxCvDbFileFormatManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyBrxCvDbFileFormatManager(openAcDbObject<BrxCvDbFileFormatManager>(id, mode, erased), false)
+{
+}
+
+PyBrxCvDbFileFormatManager::PyBrxCvDbFileFormatManager(BrxCvDbFileFormatManager* ptr, bool autoDelete)
+    : PyBrxCvDbObjectManager(ptr, autoDelete)
+{
+}
+
+boost::python::list PyBrxCvDbFileFormatManager::applicableFileFormats(const std::string& fileName)
+{
+    return ObjectIdArrayToPyList(impObj()->applicableFileFormats(utf8_to_wstr(fileName).c_str()));
+}
+
+boost::python::list PyBrxCvDbFileFormatManager::allFileFormats()
+{
+    return ObjectIdArrayToPyList(impObj()->allFileFormats());
+}
+
+PyDbObjectId PyBrxCvDbFileFormatManager::getManager(PyDbDatabase& db)
+{
+    PyDbObjectId id;
+    PyThrowBadEs(BrxCvDbFileFormatManager::getManager(id.m_id,db.impObj()));
+    return id;
+}
+
+PyBrxCvDbFileFormatManager PyBrxCvDbFileFormatManager::openManager(PyDbDatabase& db, AcDb::OpenMode mode)
+{
+    BrxCvDbFileFormatManager* ptr = nullptr;
+    PyThrowBadEs(BrxCvDbFileFormatManager::openManager(ptr, db.impObj(), mode));
+    return PyBrxCvDbFileFormatManager(ptr, true);
+}
+
+std::string PyBrxCvDbFileFormatManager::className()
+{
+    return "BrxCvDbFileFormatManager";
+}
+
+PyRxClass PyBrxCvDbFileFormatManager::desc()
+{
+    return PyRxClass(BrxCvDbFileFormatManager::desc(), false);
+}
+
+PyBrxCvDbFileFormatManager PyBrxCvDbFileFormatManager::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(BrxCvDbFileFormatManager::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyBrxCvDbFileFormatManager(static_cast<BrxCvDbFileFormatManager*>(src.impObj()->clone()), true);
+}
+
+PyBrxCvDbFileFormatManager PyBrxCvDbFileFormatManager::cast(const PyRxObject& src)
+{
+    PyBrxCvDbFileFormatManager dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbFileFormatManager* PyBrxCvDbFileFormatManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbFileFormatManager*>(m_pyImp.get());
+}
 #endif//BRXAPP

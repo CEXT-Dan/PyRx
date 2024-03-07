@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyBrxCv.h"
 #include "PyBrxCvDbAlignments.h"
+#include "PyBrxCvDbObjectManager.h"
 
 #ifdef BRXAPP
 
@@ -37,6 +38,8 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvDbVAlignmentArcWrapper();
     makePyBrxCvDbVAlignmentParabolaWrapper();
     makePyBrxCvDb3dAlignmentWrapper();
+    makePyBrxCvDbObjectManagerWrapper();
+    makePyBrxCvDbFileFormatManagerWrapper();
 
     enum_<BrxCvCivil3dConverter::Civil3dLabels>("Civil3dLabels")
         .value("eNoLabels", BrxCvCivil3dConverter::Civil3dLabels::eNoLabels)

@@ -4,7 +4,7 @@
 
 #ifdef BRXAPP
 #include "BrxCvDbObjectManager.h"
-
+#include "BrxCvDbFileFormatManager.h"
 class PyDbObjectId;
 
 //-----------------------------------------------------------------------------------
@@ -39,5 +39,36 @@ public:
 public:
     inline BrxCvDbObjectManager* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+
+//-----------------------------------------------------------------------------------
+// PyBrxCvDbFileFormatManager
+void makePyBrxCvDbFileFormatManagerWrapper();
+
+class PyBrxCvDbFileFormatManager : public PyBrxCvDbObjectManager
+{
+public:
+    PyBrxCvDbFileFormatManager(const PyDbObjectId& id);
+    PyBrxCvDbFileFormatManager(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbFileFormatManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbFileFormatManager(BrxCvDbFileFormatManager* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbFileFormatManager() override = default;
+
+    boost::python::list                 applicableFileFormats(const std::string& fileName);
+    boost::python::list                 allFileFormats();
+
+    static PyDbObjectId                 getManager(PyDbDatabase& db);
+    static PyBrxCvDbFileFormatManager   openManager(PyDbDatabase& db, AcDb::OpenMode mode);
+
+    static std::string                  className();
+    static PyRxClass                    desc();
+    static PyBrxCvDbFileFormatManager   cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbFileFormatManager   cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbFileFormatManager* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
 
 #endif//BRXAPP
