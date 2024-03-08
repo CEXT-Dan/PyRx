@@ -123,4 +123,45 @@ public:
     inline BrxCvDbTinSurfaceDefinitionAddPoints* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionDeletePoint
+void makePyBrxCvDbTinSurfaceDefinitionDeletePointWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionDeletePoint : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionDeletePoint();
+    PyBrxCvDbTinSurfaceDefinitionDeletePoint(const AcGePoint2d& mtx);
+    PyBrxCvDbTinSurfaceDefinitionDeletePoint(BrxCvDbTinSurfaceDefinitionDeletePoint* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionDeletePoint() override = default;
+    AcGePoint2d             position() const;
+    bool                    setPosition(const AcGePoint2d& position);
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbTinSurfaceDefinitionDeletePoint cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionDeletePoint* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionDeletePoint
+void makePyBrxCvDbTinSurfaceDefinitionDeletePointsWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionDeletePoints : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionDeletePoints();
+    PyBrxCvDbTinSurfaceDefinitionDeletePoints(const boost::python::list& positions);
+    PyBrxCvDbTinSurfaceDefinitionDeletePoints(BrxCvDbTinSurfaceDefinitionDeletePoints* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionDeletePoints() override = default;
+    boost::python::list     positions() const;
+    bool                    setPositions(const boost::python::list& positions);
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbTinSurfaceDefinitionDeletePoints cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionDeletePoints* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 #endif //BRXAPP
