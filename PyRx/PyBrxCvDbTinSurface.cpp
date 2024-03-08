@@ -305,7 +305,6 @@ PyBrxCvDbTinSurfaceDefinitionAddPoint::PyBrxCvDbTinSurfaceDefinitionAddPoint(con
 PyBrxCvDbTinSurfaceDefinitionAddPoint::PyBrxCvDbTinSurfaceDefinitionAddPoint(BrxCvDbTinSurfaceDefinitionAddPoint* ptr, bool autoDelete)
     :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
 {
-
 }
 
 AcGePoint3d PyBrxCvDbTinSurfaceDefinitionAddPoint::position() const
@@ -373,7 +372,6 @@ PyBrxCvDbTinSurfaceDefinitionAddPoints::PyBrxCvDbTinSurfaceDefinitionAddPoints(c
 PyBrxCvDbTinSurfaceDefinitionAddPoints::PyBrxCvDbTinSurfaceDefinitionAddPoints(BrxCvDbTinSurfaceDefinitionAddPoints* ptr, bool autoDelete)
     :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
 {
-
 }
 
 boost::python::list PyBrxCvDbTinSurfaceDefinitionAddPoints::positions() const
@@ -410,5 +408,139 @@ BrxCvDbTinSurfaceDefinitionAddPoints* PyBrxCvDbTinSurfaceDefinitionAddPoints::im
         throw PyNullObject(src);
         }
     return static_cast<BrxCvDbTinSurfaceDefinitionAddPoints*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionDeletePoint
+void makePyBrxCvDbTinSurfaceDefinitionDeletePointWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionDeletePoint");
+    class_<PyBrxCvDbTinSurfaceDefinitionDeletePoint, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionDeletePoint")
+        .def(init<>())
+        .def(init<const AcGePoint2d&>())
+        .def("transformationMatrix", &PyBrxCvDbTinSurfaceDefinitionDeletePoint::position, DS.ARGS())
+        .def("setTransformationMatrix", &PyBrxCvDbTinSurfaceDefinitionDeletePoint::setPosition, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionDeletePoint::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionDeletePoint::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionDeletePoint::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionDeletePoint::PyBrxCvDbTinSurfaceDefinitionDeletePoint()
+    :PyBrxCvDbTinSurfaceDefinitionDeletePoint(new BrxCvDbTinSurfaceDefinitionDeletePoint(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionDeletePoint::PyBrxCvDbTinSurfaceDefinitionDeletePoint(const AcGePoint2d& mtx)
+    :PyBrxCvDbTinSurfaceDefinitionDeletePoint(new BrxCvDbTinSurfaceDefinitionDeletePoint(mtx), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionDeletePoint::PyBrxCvDbTinSurfaceDefinitionDeletePoint(BrxCvDbTinSurfaceDefinitionDeletePoint* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+AcGePoint2d PyBrxCvDbTinSurfaceDefinitionDeletePoint::position() const
+{
+    return impObj()->position();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionDeletePoint::setPosition(const AcGePoint2d& position)
+{
+    return impObj()->setPosition(position);
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionDeletePoint::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionDeletePoint";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionDeletePoint::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionDeletePoint::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionDeletePoint PyBrxCvDbTinSurfaceDefinitionDeletePoint::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionDeletePoint dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionDeletePoint* PyBrxCvDbTinSurfaceDefinitionDeletePoint::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionDeletePoint*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionDeletePoints
+void makePyBrxCvDbTinSurfaceDefinitionDeletePointsWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionDeletePoints");
+    class_<PyBrxCvDbTinSurfaceDefinitionDeletePoints, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionDeletePoints")
+        .def(init<>())
+        .def(init<const boost::python::list&>())
+        .def("transformationMatrix", &PyBrxCvDbTinSurfaceDefinitionDeletePoints::positions, DS.ARGS())
+        .def("setTransformationMatrix", &PyBrxCvDbTinSurfaceDefinitionDeletePoints::setPositions, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionDeletePoints::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionDeletePoints::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionDeletePoints::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionDeletePoints::PyBrxCvDbTinSurfaceDefinitionDeletePoints()
+    :PyBrxCvDbTinSurfaceDefinitionDeletePoints(new BrxCvDbTinSurfaceDefinitionDeletePoints(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionDeletePoints::PyBrxCvDbTinSurfaceDefinitionDeletePoints(const boost::python::list& positions)
+    :PyBrxCvDbTinSurfaceDefinitionDeletePoints(new BrxCvDbTinSurfaceDefinitionDeletePoints(PyListToPoint2dArray(positions)), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionDeletePoints::PyBrxCvDbTinSurfaceDefinitionDeletePoints(BrxCvDbTinSurfaceDefinitionDeletePoints* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+boost::python::list PyBrxCvDbTinSurfaceDefinitionDeletePoints::positions() const
+{
+    return Point2dArrayToPyList(impObj()->positions());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionDeletePoints::setPositions(const boost::python::list& positions)
+{
+    return impObj()->setPositions(PyListToPoint2dArray(positions));
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionDeletePoints::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionDeletePoint";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionDeletePoints::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionDeletePoint::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionDeletePoints PyBrxCvDbTinSurfaceDefinitionDeletePoints::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionDeletePoints dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionDeletePoints* PyBrxCvDbTinSurfaceDefinitionDeletePoints::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionDeletePoints*>(m_pyImp.get());
 }
 #endif //BRXAPP
