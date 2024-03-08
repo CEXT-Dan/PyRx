@@ -344,4 +344,71 @@ BrxCvDbTinSurfaceDefinitionAddPoint* PyBrxCvDbTinSurfaceDefinitionAddPoint::impO
     return static_cast<BrxCvDbTinSurfaceDefinitionAddPoint*>(m_pyImp.get());
 }
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionAddPoints
+void makePyBrxCvDbTinSurfaceDefinitionAddPointsWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionAddPoints");
+    class_<PyBrxCvDbTinSurfaceDefinitionAddPoints, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionAddPoints")
+        .def(init<>())
+        .def(init<const boost::python::list&>())
+        .def("transformationMatrix", &PyBrxCvDbTinSurfaceDefinitionAddPoints::positions, DS.ARGS())
+        .def("setTransformationMatrix", &PyBrxCvDbTinSurfaceDefinitionAddPoints::setPositions, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionAddPoints::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddPoints::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddPoints::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddPoints::PyBrxCvDbTinSurfaceDefinitionAddPoints()
+    :PyBrxCvDbTinSurfaceDefinitionAddPoints(new BrxCvDbTinSurfaceDefinitionAddPoints(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddPoints::PyBrxCvDbTinSurfaceDefinitionAddPoints(const boost::python::list& positions)
+    :PyBrxCvDbTinSurfaceDefinitionAddPoints(new BrxCvDbTinSurfaceDefinitionAddPoints(PyListToPoint3dArray(positions)), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddPoints::PyBrxCvDbTinSurfaceDefinitionAddPoints(BrxCvDbTinSurfaceDefinitionAddPoints* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+
+}
+
+boost::python::list PyBrxCvDbTinSurfaceDefinitionAddPoints::positions() const
+{
+    return Point3dArrayToPyList(impObj()->positions());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionAddPoints::setPositions(const boost::python::list& positions)
+{
+    return impObj()->setPositions(PyListToPoint3dArray(positions));
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionAddPoints::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionAddPoint";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionAddPoints::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionAddPoint::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddPoints PyBrxCvDbTinSurfaceDefinitionAddPoints::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionAddPoints dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionAddPoints* PyBrxCvDbTinSurfaceDefinitionAddPoints::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionAddPoints*>(m_pyImp.get());
+}
 #endif //BRXAPP
