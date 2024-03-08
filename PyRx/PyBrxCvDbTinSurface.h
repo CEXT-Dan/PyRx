@@ -38,4 +38,53 @@ public:
     inline BrxCvDbTinSurfaceDefinition* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionGroupDefs
+void makePyBrxCvDbTinSurfaceDefinitionGroupDefsWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionGroupDefs : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionGroupDefs();
+    PyBrxCvDbTinSurfaceDefinitionGroupDefs(BrxCvDbTinSurfaceDefinitionGroupDefs* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionGroupDefs() override = default;
+
+    Adesk::UInt32           numSubDefinitions() const;
+    Adesk::UInt32           findSubDefinition(const Adesk::UInt64 definitionId) const;
+    Adesk::UInt32           addSubDefinition(const PyBrxCvDbTinSurfaceDefinition& subDefinition);
+    PyBrxCvDbTinSurfaceDefinition getSubDefinitionAt(const Adesk::UInt32 index) const;
+    bool                    removeSubDefinitionAt(const Adesk::UInt32 index);
+
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbTinSurfaceDefinitionGroupDefs cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionGroupDefs* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionTransform
+void makePyBrxCvDbTinSurfaceDefinitionTransformWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionTransform : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionTransform();
+    PyBrxCvDbTinSurfaceDefinitionTransform(const AcGeMatrix3d& mtx);
+    PyBrxCvDbTinSurfaceDefinitionTransform(BrxCvDbTinSurfaceDefinitionTransform* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionTransform() override = default;
+
+    AcGeMatrix3d            transformationMatrix() const;
+    bool                    setTransformationMatrix(const AcGeMatrix3d& mtx);
+
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbTinSurfaceDefinitionTransform cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionTransform* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 #endif //BRXAPP
