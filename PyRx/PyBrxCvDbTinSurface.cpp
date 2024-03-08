@@ -9,7 +9,6 @@ void makePyBrxCvDbTinSurfaceDefinitionWrapper()
 {
     PyDocString DS("CvDbSubObject");
     class_<PyBrxCvDbTinSurfaceDefinition, bases<PyBrxCvDbSubObject>>("CvDbTinSurfaceDefinition", boost::python::no_init)
-
         .def("name", &PyBrxCvDbTinSurfaceDefinition::name, DS.ARGS())
         .def("setName", &PyBrxCvDbTinSurfaceDefinition::setName, DS.ARGS({ "val : str" }))
         .def("description", &PyBrxCvDbTinSurfaceDefinition::description, DS.ARGS())
@@ -23,7 +22,6 @@ void makePyBrxCvDbTinSurfaceDefinitionWrapper()
         .def("isReadOnly", &PyBrxCvDbTinSurfaceDefinition::isReadOnly, DS.ARGS())
         .def("setReadOnly", &PyBrxCvDbTinSurfaceDefinition::setReadOnly, DS.ARGS({ "val : bool" }))
         .def("id", &PyBrxCvDbTinSurfaceDefinition::id, DS.ARGS())
-
         .def("className", &PyBrxCvDbTinSurfaceDefinition::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbTinSurfaceDefinition::desc, DS.SARGS()).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinition::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
@@ -134,13 +132,11 @@ void makePyBrxCvDbTinSurfaceDefinitionGroupDefsWrapper()
     PyDocString DS("CvDbTinSurfaceDefinitionGroupDefs");
     class_<PyBrxCvDbTinSurfaceDefinitionGroupDefs, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionGroupDefs")
         .def(init<>())
-
         .def("numSubDefinitions", &PyBrxCvDbTinSurfaceDefinitionGroupDefs::numSubDefinitions, DS.ARGS())
         .def("findSubDefinition", &PyBrxCvDbTinSurfaceDefinitionGroupDefs::findSubDefinition, DS.ARGS({ "val : int" }))
         .def("addSubDefinition", &PyBrxCvDbTinSurfaceDefinitionGroupDefs::addSubDefinition, DS.ARGS({ "val : PyBrxCv.CvDbTinSurfaceDefinition" }))
         .def("getSubDefinitionAt", &PyBrxCvDbTinSurfaceDefinitionGroupDefs::getSubDefinitionAt, DS.ARGS({ "val : int" }))
         .def("removeSubDefinitionAt", &PyBrxCvDbTinSurfaceDefinitionGroupDefs::removeSubDefinitionAt, DS.ARGS({ "val : int" }))
-
         .def("className", &PyBrxCvDbTinSurfaceDefinitionGroupDefs::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbTinSurfaceDefinitionGroupDefs::desc, DS.SARGS()).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionGroupDefs::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
@@ -221,10 +217,8 @@ void makePyBrxCvDbTinSurfaceDefinitionTransformWrapper()
     class_<PyBrxCvDbTinSurfaceDefinitionTransform, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionTransform")
         .def(init<>())
         .def(init<const AcGeMatrix3d&>())
-
         .def("transformationMatrix", &PyBrxCvDbTinSurfaceDefinitionTransform::transformationMatrix, DS.ARGS())
         .def("setTransformationMatrix", &PyBrxCvDbTinSurfaceDefinitionTransform::setTransformationMatrix, DS.ARGS({ "xform : PyGe.Matrix3d" }))
-        
         .def("className", &PyBrxCvDbTinSurfaceDefinitionTransform::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbTinSurfaceDefinitionTransform::desc, DS.SARGS()).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionTransform::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
@@ -282,5 +276,72 @@ BrxCvDbTinSurfaceDefinitionTransform* PyBrxCvDbTinSurfaceDefinitionTransform::im
     return static_cast<BrxCvDbTinSurfaceDefinitionTransform*>(m_pyImp.get());
 }
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionAddPoint
+void makePyBrxCvDbTinSurfaceDefinitionAddPointWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionAddPoint");
+    class_<PyBrxCvDbTinSurfaceDefinitionAddPoint, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionAddPoint")
+        .def(init<>())
+        .def(init<const AcGePoint3d&>())
+        .def("transformationMatrix", &PyBrxCvDbTinSurfaceDefinitionAddPoint::position, DS.ARGS())
+        .def("setTransformationMatrix", &PyBrxCvDbTinSurfaceDefinitionAddPoint::setPosition, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionAddPoint::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddPoint::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddPoint::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddPoint::PyBrxCvDbTinSurfaceDefinitionAddPoint()
+    :PyBrxCvDbTinSurfaceDefinitionAddPoint(new BrxCvDbTinSurfaceDefinitionAddPoint(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddPoint::PyBrxCvDbTinSurfaceDefinitionAddPoint(const AcGePoint3d& mtx)
+    :PyBrxCvDbTinSurfaceDefinitionAddPoint(new BrxCvDbTinSurfaceDefinitionAddPoint(mtx), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddPoint::PyBrxCvDbTinSurfaceDefinitionAddPoint(BrxCvDbTinSurfaceDefinitionAddPoint* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+
+}
+
+AcGePoint3d PyBrxCvDbTinSurfaceDefinitionAddPoint::position() const
+{
+    return impObj()->position();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionAddPoint::setPosition(const AcGePoint3d& position)
+{
+    return impObj()->setPosition(position);
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionAddPoint::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionAddPoint";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionAddPoint::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionAddPoint::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddPoint PyBrxCvDbTinSurfaceDefinitionAddPoint::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionAddPoint dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionAddPoint* PyBrxCvDbTinSurfaceDefinitionAddPoint::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionAddPoint*>(m_pyImp.get());
+}
 
 #endif //BRXAPP
