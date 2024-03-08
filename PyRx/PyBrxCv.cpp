@@ -3,6 +3,8 @@
 #include "PyBrxCvDbAlignments.h"
 #include "PyBrxCvDbObjectManager.h"
 #include "PyBrxCvDbPoint.h"
+#include "PyBrxCvDbTinSurface.h"
+
 
 #ifdef BRXAPP
 
@@ -257,6 +259,52 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("ePointOnTangent", BrxCvDbVAlignmentElement::EParameterConstraint::ePointOnTangent)
         .export_values()
         ;
+    enum_<BrxCvDbTinSurfaceDefinition::EType>("TinSurfaceDefinitionType")
+        .value("eNone", BrxCvDbTinSurfaceDefinition::EType::eNone)
+        .value("eTransform", BrxCvDbTinSurfaceDefinition::EType::eTransform)
+        .value("eAddPoint", BrxCvDbTinSurfaceDefinition::EType::eAddPoint)
+        .value("eAddPoints", BrxCvDbTinSurfaceDefinition::EType::eAddPoints)
+        .value("eDeletePoint", BrxCvDbTinSurfaceDefinition::EType::eDeletePoint)
+        .value("eDeletePoints", BrxCvDbTinSurfaceDefinition::EType::eDeletePoints)
+        .value("eSwapEdge", BrxCvDbTinSurfaceDefinition::EType::eSwapEdge)
+        .value("eMovePoint", BrxCvDbTinSurfaceDefinition::EType::eMovePoint)
+        .value("eMovePoints", BrxCvDbTinSurfaceDefinition::EType::eMovePoints)
+        .value("eAddBreaklines", BrxCvDbTinSurfaceDefinition::EType::eAddBreaklines)
+        .value("eAddBoundaries", BrxCvDbTinSurfaceDefinition::EType::eAddBoundaries)
+        .value("eAddWalls", BrxCvDbTinSurfaceDefinition::EType::eAddWalls)
+        .value("eVolume", BrxCvDbTinSurfaceDefinition::EType::eVolume)
+        .value("eMerge", BrxCvDbTinSurfaceDefinition::EType::eMerge)
+        .value("eDeleteEdge", BrxCvDbTinSurfaceDefinition::EType::eDeleteEdge)
+        .value("eDeleteEdges", BrxCvDbTinSurfaceDefinition::EType::eDeleteEdges)
+        .value("eAddLine", BrxCvDbTinSurfaceDefinition::EType::eAddLine)
+        .value("eAddLines", BrxCvDbTinSurfaceDefinition::EType::eAddLines)
+        .value("eModifyPointElevation", BrxCvDbTinSurfaceDefinition::EType::eModifyPointElevation)
+        .value("eModifyPointsElevation", BrxCvDbTinSurfaceDefinition::EType::eModifyPointsElevation)
+        .value("eModifyPointsElevations", BrxCvDbTinSurfaceDefinition::EType::eModifyPointsElevations)
+        .value("eCreateFromFaces", BrxCvDbTinSurfaceDefinition::EType::eCreateFromFaces)
+        .value("eAddDrawingObjects", BrxCvDbTinSurfaceDefinition::EType::eAddDrawingObjects)
+        .value("eCreateSnapshot", BrxCvDbTinSurfaceDefinition::EType::eCreateSnapshot)
+        .value("eRiseLower", BrxCvDbTinSurfaceDefinition::EType::eRiseLower)
+        .value("eLandXML", BrxCvDbTinSurfaceDefinition::EType::eLandXML)
+        .value("eAddPointFiles", BrxCvDbTinSurfaceDefinition::EType::eAddPointFiles)
+        .value("eAddPointGroups", BrxCvDbTinSurfaceDefinition::EType::eAddPointGroups)
+        .value("eAddPointClouds", BrxCvDbTinSurfaceDefinition::EType::eAddPointClouds)
+        .value("eGroupDefinitions", BrxCvDbTinSurfaceDefinition::EType::eGroupDefinitions)
+        .value("eDeform", BrxCvDbTinSurfaceDefinition::EType::eDeform)
+        .value("eSmoothen", BrxCvDbTinSurfaceDefinition::EType::eSmoothen)
+        .value("eCreateMerged", BrxCvDbTinSurfaceDefinition::EType::eCreateMerged)
+        .value("eIFC", BrxCvDbTinSurfaceDefinition::EType::eIFC)
+        .value("eCreateTypedSnapshot", BrxCvDbTinSurfaceDefinition::EType::eCreateTypedSnapshot)
+        .value("eCreateFromCorridor", BrxCvDbTinSurfaceDefinition::EType::eCreateFromCorridor)
+        .value("eCreateFromC3D", BrxCvDbTinSurfaceDefinition::EType::eCreateFromC3D)
+        .value("eRemoveOuterEdges", BrxCvDbTinSurfaceDefinition::EType::eRemoveOuterEdges)
+        .value("eCreateFromContours", BrxCvDbTinSurfaceDefinition::EType::eCreateFromContours)
+        .value("eMinimizeFlatAreas", BrxCvDbTinSurfaceDefinition::EType::eMinimizeFlatAreas)
+        .value("eTrianglesVisibility", BrxCvDbTinSurfaceDefinition::EType::eTrianglesVisibility)
+        .value("eRemoveBelowAboveElevation", BrxCvDbTinSurfaceDefinition::EType::eRemoveBelowAboveElevation)
+        .export_values()
+        ;
+
 };
 
 void initPyBrxCvModule()

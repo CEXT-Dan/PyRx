@@ -19,7 +19,7 @@ print("testname = pybcciviltest")
 class TestBCadCivil(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestBCadCivil, self).__init__(*args, **kwargs)
-        # open and keep open for all 06457 tests
+
         self.BCADCIVIL1 = Db.Database(False, True)
         self.BCADCIVIL1.readDwgFile("./testmedia/BCADCIVIL1.dwg")
         self.BCADCIVIL1.closeInput(True)

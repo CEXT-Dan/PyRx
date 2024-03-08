@@ -928,7 +928,7 @@ std::string PyDbBlockReference::getBlockName() const
     AcString name;
     AcDbBlockTableRecordPointer bBlock(impObj()->blockTableRecord());
     if (bBlock.openStatus() == eOk)
-        bBlock->getName(name);
+        PyThrowBadEs(bBlock->getName(name));
     return wstr_to_utf8(name);
 }
 
