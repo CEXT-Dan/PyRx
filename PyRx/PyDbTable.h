@@ -10,6 +10,7 @@ public:
     PyDbTable(AcDbTable* ptr, bool autoDelete);
     PyDbTable(const PyDbObjectId& id);
     PyDbTable(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbTable() override = default;
     PyDbObjectId        tableStyle() const;
     void                setTableStyle(const PyDbObjectId& id);
     AcGeVector3d        direction() const;

@@ -40,6 +40,9 @@ struct PyRxObjectDeleter
             AcDbObject* pDbo = static_cast<AcDbObject*>(p);
             if (!pDbo->objectId().isNull())
             {
+#ifdef PYRXDEBUG
+                //acutPrintf(_T("\n%ls is closing %ls"), pDbo->isA()->name());
+#endif
                 if (const auto es = pDbo->close(); es != eOk) [[unlikely]] {
                     acutPrintf(fmt, acadErrorStatusText(es), __FUNCTIONW__);
                 }

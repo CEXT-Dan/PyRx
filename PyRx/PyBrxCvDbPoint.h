@@ -151,6 +151,4 @@ public:
 
 };
 
-
-
 #endif //BRXAPP
