@@ -102,4 +102,25 @@ public:
     inline BrxCvDbTinSurfaceDefinitionAddPoint* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionAddPoint
+void makePyBrxCvDbTinSurfaceDefinitionAddPointsWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionAddPoints : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionAddPoints();
+    PyBrxCvDbTinSurfaceDefinitionAddPoints(const boost::python::list& positions);
+    PyBrxCvDbTinSurfaceDefinitionAddPoints(BrxCvDbTinSurfaceDefinitionAddPoints* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionAddPoints() override = default;
+    boost::python::list     positions() const;
+    bool                    setPositions(const boost::python::list& positions);
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbTinSurfaceDefinitionAddPoints cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionAddPoints* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 #endif //BRXAPP
