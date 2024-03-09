@@ -380,6 +380,12 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eTinWallRight", BrxCvDbTinSurfaceWall::ETinWallSide::eTinWallRight)
         .export_values()
         ;
+    enum_<BrxCvDbTinSurfaceBoundary::ETinBoundaryType>("TinBoundaryType")
+        .value("eTinShow", BrxCvDbTinSurfaceBoundary::ETinBoundaryType::eTinShow)
+        .value("eTinHide", BrxCvDbTinSurfaceBoundary::ETinBoundaryType::eTinHide)
+        .value("eTinOuter", BrxCvDbTinSurfaceBoundary::ETinBoundaryType::eTinOuter)
+        .export_values()
+        ;
 };
 
 void initPyBrxCvModule()

@@ -13,6 +13,7 @@ public:
     PyBrxCvDbTinSurfaceConstraint();
     PyBrxCvDbTinSurfaceConstraint(BrxCvDbTinSurfaceConstraint::ETinConstraintType type);
     PyBrxCvDbTinSurfaceConstraint(BrxCvDbTinSurfaceConstraint* ptr);
+    virtual ~PyBrxCvDbTinSurfaceConstraint() = default;
 
     BrxCvDbTinSurfaceConstraint::ETinConstraintType constraintType() const;
     void                setData1(Adesk::UInt64 id, const boost::python::list& points);
@@ -38,14 +39,13 @@ void makePyBrxCvDbTinSurfaceBreaklineWrapper();
 class PyBrxCvDbTinSurfaceBreakline : public PyBrxCvDbTinSurfaceConstraint
 {
 public:
-    PyBrxCvDbTinSurfaceBreakline(const BrxCvDbTinSurfaceBreakline::ETinBreaklineType type);
+    PyBrxCvDbTinSurfaceBreakline(BrxCvDbTinSurfaceBreakline::ETinBreaklineType type);
     BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation intersectionElevation() const;
     void setIntersectionElevation(const BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation elevationType);
     static std::string  className();
 public:
     inline BrxCvDbTinSurfaceBreakline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbTinSurfaceWall
@@ -54,17 +54,29 @@ void makePyBrxCvDbTinSurfaceWallWrapper();
 class PyBrxCvDbTinSurfaceWall : public PyBrxCvDbTinSurfaceConstraint
 {
 public:
-    PyBrxCvDbTinSurfaceWall(const BrxCvDbTinSurfaceWall::ETinWallType wallType);
-
+    PyBrxCvDbTinSurfaceWall(BrxCvDbTinSurfaceWall::ETinWallType wallType);
+    virtual ~PyBrxCvDbTinSurfaceWall() override = default;
     BrxCvDbTinSurfaceWall::ETinWallType wallType() const;
-
-    double          height() const;
-    void            setHeight(double height);
-
-    void            setWallSide(BrxCvDbTinSurfaceWall::ETinWallSide side);
     BrxCvDbTinSurfaceWall::ETinWallSide wallSide() const;
-
+    double              height() const;
+    void                setHeight(double height);
+    void                setWallSide(BrxCvDbTinSurfaceWall::ETinWallSide side);
     static std::string  className();
 public:
     inline BrxCvDbTinSurfaceWall* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceBoundary
+void makePyBrxCvDbTinSurfaceBoundaryWrapper();
+
+class PyBrxCvDbTinSurfaceBoundary : public PyBrxCvDbTinSurfaceConstraint
+{
+public:
+    PyBrxCvDbTinSurfaceBoundary(BrxCvDbTinSurfaceBoundary::ETinBoundaryType boundaryType);
+    virtual ~PyBrxCvDbTinSurfaceBoundary() override = default;
+    BrxCvDbTinSurfaceBoundary::ETinBoundaryType boundaryType() const;
+    static std::string  className();
+public:
+    inline BrxCvDbTinSurfaceBoundary* impObj(const std::source_location& src = std::source_location::current()) const;
 };
