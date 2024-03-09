@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyBrxCvDbTinSurface.h"
+#include "PyGeLinearEnt2d.h"
 
 #ifdef BRXAPP
 using namespace boost::python;
@@ -918,6 +919,73 @@ BrxCvDbTinSurfaceDefinitionDeleteEdges* PyBrxCvDbTinSurfaceDefinitionDeleteEdges
         throw PyNullObject(src);
         }
     return static_cast<BrxCvDbTinSurfaceDefinitionDeleteEdges*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionAddLine
+void makePyBrxCvDbTinSurfaceDefinitionAddLineWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionAddLine");
+    class_<PyBrxCvDbTinSurfaceDefinitionAddLine, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionAddLine")
+        .def(init<>())
+        .def(init<const AcGeLineSeg2d&>())
+        .def("line", &PyBrxCvDbTinSurfaceDefinitionAddLine::line, DS.ARGS())
+        .def("setLine", &PyBrxCvDbTinSurfaceDefinitionAddLine::setLine, DS.ARGS({ "pt : PyGe.LineSeg2d" }))
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionAddLine::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddLine::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddLine::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddLine::PyBrxCvDbTinSurfaceDefinitionAddLine()
+    :PyBrxCvDbTinSurfaceDefinitionAddLine(new BrxCvDbTinSurfaceDefinitionAddLine(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddLine::PyBrxCvDbTinSurfaceDefinitionAddLine(const AcGeLineSeg2d& mtx)
+    :PyBrxCvDbTinSurfaceDefinitionAddLine(new BrxCvDbTinSurfaceDefinitionAddLine(mtx), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddLine::PyBrxCvDbTinSurfaceDefinitionAddLine(BrxCvDbTinSurfaceDefinitionAddLine* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+PyGeLineSeg2d PyBrxCvDbTinSurfaceDefinitionAddLine::line() const
+{
+    return PyGeLineSeg2d(impObj()->line());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionAddLine::setLine(const PyGeLineSeg2d& line)
+{
+    return impObj()->setLine(*line.impObj());
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionAddLine::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionAddLine";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionAddLine::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionAddLine::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddLine PyBrxCvDbTinSurfaceDefinitionAddLine::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionAddLine dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionAddLine* PyBrxCvDbTinSurfaceDefinitionAddLine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionAddLine*>(m_pyImp.get());
 }
 
 #endif //BRXAPP
