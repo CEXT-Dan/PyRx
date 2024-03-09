@@ -102,16 +102,16 @@ BrxCvDbTinSurfaceConstraint* PyBrxCvDbTinSurfaceConstraint::impObj(const std::so
 //PyBrxCvDbTinSurfaceBreakline
 void makePyBrxCvDbTinSurfaceBreaklineWrapper()
 {
-    PyDocString DS("CvDbTinSurfaceConstraint");
-    class_<PyBrxCvDbTinSurfaceConstraint>("CvDbTinSurfaceConstraint", no_init)
-        .def(init<BrxCvDbTinSurfaceConstraint::ETinConstraintType>())
+    PyDocString DS("CvDbTinSurfaceBreakline");
+    class_<PyBrxCvDbTinSurfaceBreakline, bases<PyBrxCvDbTinSurfaceConstraint>>("CvDbTinSurfaceBreakline", no_init)
+        .def(init<BrxCvDbTinSurfaceBreakline::ETinBreaklineType>())
         .def("intersectionElevation", &PyBrxCvDbTinSurfaceBreakline::intersectionElevation, DS.ARGS())
         .def("setIntersectionElevation", &PyBrxCvDbTinSurfaceBreakline::setIntersectionElevation, DS.ARGS({ "val : PyBrxCv.TinBreaklineType" }))
         .def("className", &PyBrxCvDbTinSurfaceBreakline::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyBrxCvDbTinSurfaceBreakline::PyBrxCvDbTinSurfaceBreakline(const BrxCvDbTinSurfaceBreakline::ETinBreaklineType type)
+PyBrxCvDbTinSurfaceBreakline::PyBrxCvDbTinSurfaceBreakline(BrxCvDbTinSurfaceBreakline::ETinBreaklineType type)
     :PyBrxCvDbTinSurfaceConstraint(new BrxCvDbTinSurfaceBreakline(type))
 {
 }
@@ -144,8 +144,8 @@ BrxCvDbTinSurfaceBreakline* PyBrxCvDbTinSurfaceBreakline::impObj(const std::sour
 void makePyBrxCvDbTinSurfaceWallWrapper()
 {
     PyDocString DS("CvDbTinSurfaceWall");
-    class_<PyBrxCvDbTinSurfaceWall>("CvDbTinSurfaceWall", no_init)
-        .def(init<const BrxCvDbTinSurfaceWall::ETinWallType>())
+    class_<PyBrxCvDbTinSurfaceWall, bases<PyBrxCvDbTinSurfaceConstraint>>("CvDbTinSurfaceWall", no_init)
+        .def(init<BrxCvDbTinSurfaceWall::ETinWallType>())
         .def("wallType", &PyBrxCvDbTinSurfaceWall::wallType, DS.ARGS())
         .def("setHeight", &PyBrxCvDbTinSurfaceWall::setHeight, DS.ARGS({ "val : float" }))
         .def("setWallSide", &PyBrxCvDbTinSurfaceWall::setWallSide, DS.ARGS({ "val : PyBrxCv.TinWallSide" }))
@@ -154,7 +154,7 @@ void makePyBrxCvDbTinSurfaceWallWrapper()
         ;
 }
 
-PyBrxCvDbTinSurfaceWall::PyBrxCvDbTinSurfaceWall(const BrxCvDbTinSurfaceWall::ETinWallType wallType)
+PyBrxCvDbTinSurfaceWall::PyBrxCvDbTinSurfaceWall(BrxCvDbTinSurfaceWall::ETinWallType wallType)
     :PyBrxCvDbTinSurfaceConstraint(new BrxCvDbTinSurfaceWall(wallType))
 {
 }
@@ -195,4 +195,39 @@ BrxCvDbTinSurfaceWall* PyBrxCvDbTinSurfaceWall::impObj(const std::source_locatio
         throw PyNullObject(src);
         }
     return static_cast<BrxCvDbTinSurfaceWall*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceBoundary
+void makePyBrxCvDbTinSurfaceBoundaryWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceBoundary");
+    class_<PyBrxCvDbTinSurfaceBoundary, bases<PyBrxCvDbTinSurfaceConstraint>>("CvDbTinSurfaceBoundary", no_init)
+        .def(init<BrxCvDbTinSurfaceBoundary::ETinBoundaryType>())
+        .def("wallType", &PyBrxCvDbTinSurfaceBoundary::boundaryType, DS.ARGS())
+        .def("className", &PyBrxCvDbTinSurfaceBoundary::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxCvDbTinSurfaceBoundary::PyBrxCvDbTinSurfaceBoundary(BrxCvDbTinSurfaceBoundary::ETinBoundaryType boundaryType)
+    :PyBrxCvDbTinSurfaceConstraint(new BrxCvDbTinSurfaceBoundary(boundaryType))
+{
+}
+
+BrxCvDbTinSurfaceBoundary::ETinBoundaryType PyBrxCvDbTinSurfaceBoundary::boundaryType() const
+{
+    return impObj()->boundaryType();
+}
+
+std::string PyBrxCvDbTinSurfaceBoundary::className()
+{
+    return "BrxCvDbTinSurfaceBoundary";
+}
+
+BrxCvDbTinSurfaceBoundary* PyBrxCvDbTinSurfaceBoundary::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceBoundary*>(m_pyImp.get());
 }
