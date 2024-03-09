@@ -364,6 +364,7 @@
     <ClCompile Include="PyBrxCvDbTinSurfaceDef.cpp">
       <Filter>Source Files\PyBrxCv</Filter>
     </ClCompile>
+    <ClCompile Include="PyBrxCvDbTinSurface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -732,6 +733,7 @@
     <ClInclude Include="PyBrxCvDbTinSurfaceDef.h">
       <Filter>Header Files\PyBrxCv</Filter>
     </ClInclude>
+    <ClInclude Include="PyBrxCvDbTinSurface.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
