@@ -402,4 +402,30 @@ public:
     inline BrxCvDbTinSurfaceDefinitionModifyPointsElevations* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionCreateFromFaces
+void makePyBrxCvDbTinSurfaceDefinitionCreateFromFacesWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionCreateFromFaces : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionCreateFromFaces();
+    PyBrxCvDbTinSurfaceDefinitionCreateFromFaces(const boost::python::list& pnt, bool applyEdgesVisibility);
+    PyBrxCvDbTinSurfaceDefinitionCreateFromFaces(BrxCvDbTinSurfaceDefinitionCreateFromFaces* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionCreateFromFaces() override = default;
+
+    Adesk::UInt32           facesCount() const;
+    boost::python::tuple    faceAt(const Adesk::UInt32 index) const;
+    boost::python::list     points() const;
+    bool                    isApplyEdgesVisibility() const;
+    bool                    setIsApplyEdgesVisibility(bool isApplyEdges);
+
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbTinSurfaceDefinitionCreateFromFaces cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionCreateFromFaces* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 #endif //BRXAPP
