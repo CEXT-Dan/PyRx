@@ -1235,4 +1235,87 @@ BrxCvDbTinSurfaceDefinitionModifyPointsElevation* PyBrxCvDbTinSurfaceDefinitionM
         }
     return static_cast<BrxCvDbTinSurfaceDefinitionModifyPointsElevation*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations
+void makePyBrxCvDbTinSurfaceDefinitionModifyPointsElevationsWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionModifyPointsElevations");
+    class_<PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionModifyPointsElevations")
+        .def(init<>())
+        .def("pointElevationsCount", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::pointElevationsCount)
+        .def("pointElevationAt", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::pointElevationAt)
+        .def("addPointElevation", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::addPointElevation)
+        .def("removePointElevationAt", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::removePointElevationAt)
+        .def("removeAllPointElevations", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::removeAllPointElevations)
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations()
+    :PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations(new BrxCvDbTinSurfaceDefinitionModifyPointsElevations(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations(BrxCvDbTinSurfaceDefinitionModifyPointsElevations* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+Adesk::UInt32 PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::pointElevationsCount() const
+{
+    return impObj()->pointElevationsCount();
+}
+
+boost::python::tuple PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::pointElevationAt(const Adesk::UInt32 index) const
+{
+    PyAutoLockGIL lock;
+    AcGePoint2d position;
+    double elevation;
+    auto flag = impObj()->pointElevationAt(index, position, elevation);
+    return boost::python::make_tuple(flag, position, elevation);
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::addPointElevation(const AcGePoint2d& position, double elevation)
+{
+    return impObj()->addPointElevation(position, elevation);
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::removePointElevationAt(const Adesk::UInt32 index)
+{
+    return impObj()->removePointElevationAt(index);
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::removeAllPointElevations()
+{
+    return impObj()->removeAllPointElevations();
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionModifyPointsElevations";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionModifyPointsElevations::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionModifyPointsElevations* PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionModifyPointsElevations*>(m_pyImp.get());
+}
 #endif //BRXAPP
