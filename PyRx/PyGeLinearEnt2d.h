@@ -103,4 +103,21 @@ public:
 };
 
 
+inline AcArray<AcGeLineSeg2d> PyListAcGeLineSeg2dArray(const boost::python::object& iterable)
+{
+    const auto& vec = py_list_to_std_vector<PyGeLineSeg2d>(iterable);
+    AcArray<AcGeLineSeg2d> arr;
+    arr.setPhysicalLength(vec.size());
+    for (const auto& item : vec)
+        arr.append(AcGeLineSeg2d(*item.impObj()));
+    return arr;
+}
 
+inline boost::python::list AcGeLineSeg2dArrayToPyList(const AcArray<AcGeLineSeg2d>& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto item : arr)
+        pyPyList.append(PyGeLineSeg2d(item));
+    return pyPyList;
+}

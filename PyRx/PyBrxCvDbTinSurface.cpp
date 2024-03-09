@@ -930,7 +930,7 @@ void makePyBrxCvDbTinSurfaceDefinitionAddLineWrapper()
         .def(init<>())
         .def(init<const AcGeLineSeg2d&>())
         .def("line", &PyBrxCvDbTinSurfaceDefinitionAddLine::line, DS.ARGS())
-        .def("setLine", &PyBrxCvDbTinSurfaceDefinitionAddLine::setLine, DS.ARGS({ "pt : PyGe.LineSeg2d" }))
+        .def("setLine", &PyBrxCvDbTinSurfaceDefinitionAddLine::setLine, DS.ARGS({ "line : PyGe.LineSeg2d" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionAddLine::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddLine::desc, DS.SARGS()).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddLine::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
@@ -988,4 +988,70 @@ BrxCvDbTinSurfaceDefinitionAddLine* PyBrxCvDbTinSurfaceDefinitionAddLine::impObj
     return static_cast<BrxCvDbTinSurfaceDefinitionAddLine*>(m_pyImp.get());
 }
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionAddLines
+void makePyBrxCvDbTinSurfaceDefinitionAddLinesWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionAddLines");
+    class_<PyBrxCvDbTinSurfaceDefinitionAddLines, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionAddLines")
+        .def(init<>())
+        .def(init<const boost::python::list&>())
+        .def("lines", &PyBrxCvDbTinSurfaceDefinitionAddLines::lines, DS.ARGS())
+        .def("setLines", &PyBrxCvDbTinSurfaceDefinitionAddLines::setLines, DS.ARGS({ "lines : list[PyGe.LineSeg2d]" }))
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionAddLines::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddLines::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddLines::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddLines::PyBrxCvDbTinSurfaceDefinitionAddLines()
+    :PyBrxCvDbTinSurfaceDefinitionAddLines(new BrxCvDbTinSurfaceDefinitionAddLines(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddLines::PyBrxCvDbTinSurfaceDefinitionAddLines(const boost::python::list& mtx)
+    :PyBrxCvDbTinSurfaceDefinitionAddLines(new BrxCvDbTinSurfaceDefinitionAddLines(PyListAcGeLineSeg2dArray(mtx)), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddLines::PyBrxCvDbTinSurfaceDefinitionAddLines(BrxCvDbTinSurfaceDefinitionAddLines* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+boost::python::list PyBrxCvDbTinSurfaceDefinitionAddLines::lines() const
+{
+    return AcGeLineSeg2dArrayToPyList(impObj()->lines());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionAddLines::setLines(const boost::python::list& line)
+{
+    return impObj()->setLines(PyListAcGeLineSeg2dArray(line));
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionAddLines::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionAddLines";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionAddLines::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionAddLines::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddLines PyBrxCvDbTinSurfaceDefinitionAddLines::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionAddLines dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionAddLines* PyBrxCvDbTinSurfaceDefinitionAddLines::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionAddLines*>(m_pyImp.get());
+}
 #endif //BRXAPP

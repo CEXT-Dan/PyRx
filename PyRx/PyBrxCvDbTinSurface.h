@@ -286,7 +286,7 @@ public:
 };
 
 //-----------------------------------------------------------------------------------
-//PyBrxCvDbTinSurfaceDefinitionDeleteEdge
+//PyBrxCvDbTinSurfaceDefinitionAddLine
 void makePyBrxCvDbTinSurfaceDefinitionAddLineWrapper();
 
 class PyBrxCvDbTinSurfaceDefinitionAddLine : public PyBrxCvDbTinSurfaceDefinition
@@ -304,6 +304,27 @@ public:
 
 public:
     inline BrxCvDbTinSurfaceDefinitionAddLine* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionAddLines
+void makePyBrxCvDbTinSurfaceDefinitionAddLinesWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionAddLines : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionAddLines();
+    PyBrxCvDbTinSurfaceDefinitionAddLines(const boost::python::list& mtx);
+    PyBrxCvDbTinSurfaceDefinitionAddLines(BrxCvDbTinSurfaceDefinitionAddLines* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionAddLines() override = default;
+    boost::python::list lines() const;
+    bool                setLines(const boost::python::list& line);
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbTinSurfaceDefinitionAddLines cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionAddLines* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 #endif //BRXAPP
