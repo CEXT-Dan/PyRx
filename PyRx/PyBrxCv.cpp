@@ -10,10 +10,36 @@
 
 using namespace boost::python;
 
+void makePyBrxCvTinPointWrapper()
+{
+    PyDocString DS("CvTinPoint");
+    class_<BrxCvTinPoint>("CvTinPoint")
+        .def(init<>())
+        .def("triangleWithPoint", &BrxCvTinPoint::triangleWithPoint)
+        .def("location", &BrxCvTinPoint::location)
+        .def("isValid", &BrxCvTinPoint::isValid)
+        ;
+}
+
+void makePyBrxCvTinTriangleWrapper()
+{
+    PyDocString DS("CvTinTriangle");
+    class_<BrxCvTinTriangle>("CvTinTriangle")
+        .def(init<>())
+        .def("pointAt", &BrxCvTinTriangle::pointAt)
+        .def("locationAt", &BrxCvTinTriangle::locationAt)
+        .def("isVisible", &BrxCvTinTriangle::isVisible)
+        .def("isValid", &BrxCvTinTriangle::isValid)
+        .def("neighborAt", &BrxCvTinTriangle::neighborAt)
+        ;
+}
+
 BOOST_PYTHON_MODULE(PyBrxCv)
 {
     docstring_options local_docstring_options(true, true, true);
 
+    makePyBrxCvTinPointWrapper();
+    makePyBrxCvTinTriangleWrapper();
     makePyBrxCvDbSubObjectWrapper();
     makePyBrxCvDbObjectWrapper();
     makePyBrxCvDbEntityWrapper();
@@ -78,6 +104,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvDbTinSurfaceConstraintWrapper();
     makePyBrxCvDbTinSurfaceBreaklineWrapper();
     makePyBrxCvDbTinSurfaceWallWrapper();
+    makePyBrxCvDbTinSurfaceBoundaryWrapper();
 
     enum_<PyBrxCvDbStyleManager::EStyleManagerType>("StyleManagerType")
         .value("ePointLabel", PyBrxCvDbStyleManager::EStyleManagerType::ePointLabel)

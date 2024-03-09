@@ -3,6 +3,8 @@
 #include "BrxCvDbTinSurface.h"
 
 class PyDbObjectId;
+class PyBrxCvTinTriangle;
+
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbTinSurfaceConstraint
 void makePyBrxCvDbTinSurfaceConstraintWrapper();
@@ -80,3 +82,4 @@ public:
 public:
     inline BrxCvDbTinSurfaceBoundary* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+

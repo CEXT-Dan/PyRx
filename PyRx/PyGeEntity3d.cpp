@@ -41,9 +41,7 @@ struct PyGePyGeEntity3dDeleter
 
     inline void operator()(AcGeEntity3d* p) const
     {
-        if (p == nullptr)
-            return;
-        else if (!m_autoDelete)
+        if (!m_autoDelete)
             return;
         else
             delete p;
