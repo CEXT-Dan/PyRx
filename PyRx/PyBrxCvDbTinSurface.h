@@ -1,9 +1,49 @@
 #pragma once
 
 #include "BrxCvDbTinSurface.h"
+#include "PyBrxCvObject.h"
 
 class PyDbObjectId;
 class PyBrxCvTinTriangle;
+
+inline boost::python::list TinPointArrayToPyList(const BrxCvTinPointArray& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (const auto& item : arr)
+        pyPyList.append(item);
+    return pyPyList;
+}
+
+inline BrxCvTinPointArray PyListToTinPointArray(const boost::python::object& iterable)
+{
+    const auto& vec = py_list_to_std_vector<BrxCvTinPoint>(iterable);
+    BrxCvTinPointArray arr;
+    arr.setPhysicalLength(vec.size());
+    for (const auto& item : vec)
+        arr.append(item);
+    return arr;
+}
+
+inline boost::python::list TriangleArrayToPyList(const BrxCvTinTriangleArray& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (const auto& item : arr)
+        pyPyList.append(item);
+    return pyPyList;
+}
+
+inline BrxCvTinTriangleArray PyListToTriangleArray(const boost::python::object& iterable)
+{
+    const auto& vec = py_list_to_std_vector<BrxCvTinTriangle>(iterable);
+    BrxCvTinTriangleArray arr;
+    arr.setPhysicalLength(vec.size());
+    for (const auto& item : vec)
+        arr.append(item);
+    return arr;
+}
+
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbTinSurfaceConstraint
@@ -83,3 +123,57 @@ public:
     inline BrxCvDbTinSurfaceBoundary* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurface
+void makePyBrxCvDbTinSurfaceWrapper();
+
+class PyBrxCvDbTinSurface :  public PyBrxCvDbEntity
+{
+public:
+    PyBrxCvDbTinSurface();
+    PyBrxCvDbTinSurface(const PyDbObjectId& id);
+    PyBrxCvDbTinSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbTinSurface(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbTinSurface(BrxCvDbTinSurface* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurface() override = default;
+
+    void                initialize(const AcGePoint3d& minPt, const AcGePoint3d& maxPt, const size_t numOfPoints);
+    void                updateObjectData();
+    bool                addPoint(const AcGePoint3d& point);
+    bool                addPoints(const boost::python::list& points);
+    bool                removePoint(const AcGePoint3d& point);
+    bool                removePoints(const boost::python::list& points);
+    bool                movePoint(const AcGePoint3d& from, const AcGePoint3d& to);
+    bool                movePoints(const boost::python::list& from, const boost::python::list& to);
+    bool                swapEdge(const AcGePoint3d& atPoint);
+    bool                setStyle(const BrxCvDbTinSurface::ETinSurfaceStyle style);
+    bool                setAssociative(bool isAssociative);
+    bool                raiseSurface(double offset);
+    bool                setSurfaceElevation(double elevation);
+    bool                changePointsElevations(const boost::python::list& points, const boost::python::list& newZValues);
+    bool                setMinorContoursInterval(double interval);
+    bool                setMajorContoursInterval(double interval);
+    bool                setMinorContoursColor(Adesk::UInt16 colorIndex);
+    bool                setMajorContoursColor(Adesk::UInt16 colorIndex);
+    bool                merge(const PyBrxCvDbTinSurface& theOther);
+    boost::python::list getPoints(bool visibleOnly) const;
+    boost::python::list getTinPoints() const;
+    bool                findTinPointAt(BrxCvTinPoint& tinPoint, const AcGePoint3d& pnt) const;
+    boost::python::list triangles(bool visibleOnly) const;
+    boost::python::list tinTriangles() const;
+    boost::python::list findTinTrianglesAt(const AcGePoint3d& pnt) const;
+    size_t              pointsCount(bool visibleOnly) const;
+    size_t              trianglesCount(bool visibleOnly) const;
+    double              area2d(bool visibleOnly) const;
+    double              area3d(bool visibleOnly) const;
+    double              minElevation(bool visibleOnly) const;
+    double              maxElevation(bool visibleOnly) const;
+
+    static PyBrxCvDbTinSurface  mergeSurfaces(const PyBrxCvDbTinSurface& theOne, const PyBrxCvDbTinSurface& theOther);
+    static std::string          className();
+    static PyRxClass            desc();
+    static PyBrxCvDbTinSurface  cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbTinSurface  cast(const PyRxObject& src);
+public:
+    inline BrxCvDbTinSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+};
