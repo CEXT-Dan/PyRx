@@ -564,6 +564,27 @@ public:
     inline BrxCvDbTinSurfaceDefinitionAddFromPointClouds* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionAddPointGroups
+void makePyBrxCvDbTinSurfaceDefinitionAddPointGroupsWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionAddPointGroups : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionAddPointGroups();
+    PyBrxCvDbTinSurfaceDefinitionAddPointGroups(const boost::python::list& ids);
+    PyBrxCvDbTinSurfaceDefinitionAddPointGroups(BrxCvDbTinSurfaceDefinitionAddPointGroups* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionAddPointGroups() override = default;
+    boost::python::list     pointGroupsIds() const;
+    bool                    setPointGroupsIds(const boost::python::list& pointGroupsIds);
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbTinSurfaceDefinitionAddPointGroups cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionAddPointGroups* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 
 
 #endif //BRXAPP
