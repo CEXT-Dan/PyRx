@@ -3,7 +3,7 @@
 #include "PyBrxCvDbAlignments.h"
 #include "PyBrxCvDbObjectManager.h"
 #include "PyBrxCvDbPoint.h"
-#include "PyBrxCvDbTinSurface.h"
+#include "PyBrxCvDbTinSurfaceDef.h"
 
 
 #ifdef BRXAPP
