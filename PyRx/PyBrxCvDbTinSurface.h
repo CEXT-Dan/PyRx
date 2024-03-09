@@ -45,3 +45,26 @@ public:
 public:
     inline BrxCvDbTinSurfaceBreakline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceWall
+void makePyBrxCvDbTinSurfaceWallWrapper();
+
+class PyBrxCvDbTinSurfaceWall : public PyBrxCvDbTinSurfaceConstraint
+{
+public:
+    PyBrxCvDbTinSurfaceWall(const BrxCvDbTinSurfaceWall::ETinWallType wallType);
+
+    BrxCvDbTinSurfaceWall::ETinWallType wallType() const;
+
+    double          height() const;
+    void            setHeight(double height);
+
+    void            setWallSide(BrxCvDbTinSurfaceWall::ETinWallSide side);
+    BrxCvDbTinSurfaceWall::ETinWallSide wallSide() const;
+
+    static std::string  className();
+public:
+    inline BrxCvDbTinSurfaceWall* impObj(const std::source_location& src = std::source_location::current()) const;
+};

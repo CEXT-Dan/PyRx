@@ -75,6 +75,9 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvDbTinSurfaceDefinitionRemoveOuterEdgesWrapper();
     makePyBrxCvDbTinSurfaceDefinitionTrianglesVisibilityWrapper();
     makePyBrxCvDbTinSurfaceDefinitionRemoveElevationsWrapper();
+    makePyBrxCvDbTinSurfaceConstraintWrapper();
+    makePyBrxCvDbTinSurfaceBreaklineWrapper();
+    makePyBrxCvDbTinSurfaceWallWrapper();
 
     enum_<PyBrxCvDbStyleManager::EStyleManagerType>("StyleManagerType")
         .value("ePointLabel", PyBrxCvDbStyleManager::EStyleManagerType::ePointLabel)
@@ -367,7 +370,16 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eTinElevationMid", BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation::eTinElevationMid)
         .export_values()
         ;
-
+    enum_<BrxCvDbTinSurfaceWall::ETinWallType>("TinWallType")
+        .value("eTinWallNormal", BrxCvDbTinSurfaceWall::ETinWallType::eTinWallNormal)
+        .value("eTinWallProjected", BrxCvDbTinSurfaceWall::ETinWallType::eTinWallProjected)
+        .export_values()
+        ;
+    enum_<BrxCvDbTinSurfaceWall::ETinWallSide>("TinWallType")
+        .value("eTinWallLeft", BrxCvDbTinSurfaceWall::ETinWallSide::eTinWallLeft)
+        .value("eTinWallRight", BrxCvDbTinSurfaceWall::ETinWallSide::eTinWallRight)
+        .export_values()
+        ;
 };
 
 void initPyBrxCvModule()
