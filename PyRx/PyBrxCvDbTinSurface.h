@@ -236,4 +236,25 @@ public:
 public:
     inline BrxCvDbTinSurfaceDefinitionMovePoints* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionDeleteEdge
+void makePyBrxCvDbTinSurfaceDefinitionDeleteEdgeWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionDeleteEdge : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionDeleteEdge();
+    PyBrxCvDbTinSurfaceDefinitionDeleteEdge(const AcGePoint2d& mtx);
+    PyBrxCvDbTinSurfaceDefinitionDeleteEdge(BrxCvDbTinSurfaceDefinitionDeleteEdge* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionDeleteEdge() override = default;
+    AcGePoint2d             position() const;
+    bool                    setPosition(const AcGePoint2d& position);
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbTinSurfaceDefinitionDeleteEdge cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionDeleteEdge* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 #endif //BRXAPP
