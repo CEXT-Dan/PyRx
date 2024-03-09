@@ -838,4 +838,86 @@ BrxCvDbTinSurfaceDefinitionDeleteEdge* PyBrxCvDbTinSurfaceDefinitionDeleteEdge::
     return static_cast<BrxCvDbTinSurfaceDefinitionDeleteEdge*>(m_pyImp.get());
 }
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionDeleteEdges
+void makePyBrxCvDbTinSurfaceDefinitionDeleteEdgesWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionDeleteEdges");
+    class_<PyBrxCvDbTinSurfaceDefinitionDeleteEdges, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionDeleteEdges")
+        .def(init<>())
+        .def("polygonsCount", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::polygonsCount, DS.ARGS())
+        .def("polygonAt", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::polygonAt, DS.ARGS({ "index : int" }))
+        .def("addPolygon", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::addPolygon, DS.ARGS({ "edgePolygon : list[PyGe.Point2d]", "includeIntersected : bool"}))
+        .def("removePolygonAt", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::removePolygonAt, DS.ARGS({ "index : int" }))
+        .def("removeAllPolygons", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::removeAllPolygons, DS.ARGS())
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionDeleteEdges::PyBrxCvDbTinSurfaceDefinitionDeleteEdges()
+    :PyBrxCvDbTinSurfaceDefinitionDeleteEdges(new BrxCvDbTinSurfaceDefinitionDeleteEdges(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionDeleteEdges::PyBrxCvDbTinSurfaceDefinitionDeleteEdges(BrxCvDbTinSurfaceDefinitionDeleteEdges* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+Adesk::UInt32 PyBrxCvDbTinSurfaceDefinitionDeleteEdges::polygonsCount() const
+{
+    return impObj()->polygonsCount();
+}
+
+boost::python::tuple PyBrxCvDbTinSurfaceDefinitionDeleteEdges::polygonAt(const Adesk::UInt32 index) const
+{
+    PyAutoLockGIL lock;
+    bool includeIntersected = false;
+    const auto& tmp = Point2dArrayToPyList(impObj()->polygonAt(index, includeIntersected));
+    return boost::python::make_tuple(includeIntersected, tmp);
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionDeleteEdges::addPolygon(const boost::python::list& edgePolygon, bool includeIntersected)
+{
+    return impObj()->addPolygon(PyListToPoint2dArray(edgePolygon), includeIntersected);
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionDeleteEdges::removePolygonAt(const Adesk::UInt32 index)
+{
+    return impObj()->removePolygonAt(index);
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionDeleteEdges::removeAllPolygons()
+{
+    return impObj()->removeAllPolygons();
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionDeleteEdges::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionDeleteEdges";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionDeleteEdges::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionDeleteEdges::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionDeleteEdges PyBrxCvDbTinSurfaceDefinitionDeleteEdges::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionDeleteEdges dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionDeleteEdges* PyBrxCvDbTinSurfaceDefinitionDeleteEdges::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionDeleteEdges*>(m_pyImp.get());
+}
+
 #endif //BRXAPP

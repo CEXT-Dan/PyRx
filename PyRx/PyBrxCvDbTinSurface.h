@@ -257,4 +257,30 @@ public:
 public:
     inline BrxCvDbTinSurfaceDefinitionDeleteEdge* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionDeleteEdges
+void makePyBrxCvDbTinSurfaceDefinitionDeleteEdgesWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionDeleteEdges : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionDeleteEdges();
+    PyBrxCvDbTinSurfaceDefinitionDeleteEdges(BrxCvDbTinSurfaceDefinitionDeleteEdges* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionDeleteEdges() override = default;
+
+    Adesk::UInt32        polygonsCount() const;
+    boost::python::tuple polygonAt(const Adesk::UInt32 index) const;
+    bool                 addPolygon(const boost::python::list& edgePolygon, bool includeIntersected);
+    bool                 removePolygonAt(const Adesk::UInt32 index);
+    bool                 removeAllPolygons();
+
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyBrxCvDbTinSurfaceDefinitionDeleteEdges cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionDeleteEdges* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 #endif //BRXAPP
