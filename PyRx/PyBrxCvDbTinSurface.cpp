@@ -138,3 +138,61 @@ BrxCvDbTinSurfaceBreakline* PyBrxCvDbTinSurfaceBreakline::impObj(const std::sour
         }
     return static_cast<BrxCvDbTinSurfaceBreakline*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceWall
+void makePyBrxCvDbTinSurfaceWallWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceWall");
+    class_<PyBrxCvDbTinSurfaceWall>("CvDbTinSurfaceWall", no_init)
+        .def(init<const BrxCvDbTinSurfaceWall::ETinWallType>())
+        .def("wallType", &PyBrxCvDbTinSurfaceWall::wallType, DS.ARGS())
+        .def("setHeight", &PyBrxCvDbTinSurfaceWall::setHeight, DS.ARGS({ "val : float" }))
+        .def("setWallSide", &PyBrxCvDbTinSurfaceWall::setWallSide, DS.ARGS({ "val : PyBrxCv.TinWallSide" }))
+        .def("wallSide", &PyBrxCvDbTinSurfaceWall::wallSide, DS.ARGS())
+        .def("className", &PyBrxCvDbTinSurfaceWall::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxCvDbTinSurfaceWall::PyBrxCvDbTinSurfaceWall(const BrxCvDbTinSurfaceWall::ETinWallType wallType)
+    :PyBrxCvDbTinSurfaceConstraint(new BrxCvDbTinSurfaceWall(wallType))
+{
+}
+
+BrxCvDbTinSurfaceWall::ETinWallType PyBrxCvDbTinSurfaceWall::wallType() const
+{
+    return impObj()->wallType();
+}
+
+double PyBrxCvDbTinSurfaceWall::height() const
+{
+    return impObj()->height();
+}
+
+void PyBrxCvDbTinSurfaceWall::setHeight(double height)
+{
+    return impObj()->setHeight(height);
+}
+
+void PyBrxCvDbTinSurfaceWall::setWallSide(BrxCvDbTinSurfaceWall::ETinWallSide side)
+{
+    return impObj()->setWallSide(side);
+}
+
+BrxCvDbTinSurfaceWall::ETinWallSide PyBrxCvDbTinSurfaceWall::wallSide() const
+{
+    return impObj()->wallSide();
+}
+
+std::string PyBrxCvDbTinSurfaceWall::className()
+{
+    return "BrxCvDbTinSurfaceWall";
+}
+
+BrxCvDbTinSurfaceWall* PyBrxCvDbTinSurfaceWall::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceWall*>(m_pyImp.get());
+}
