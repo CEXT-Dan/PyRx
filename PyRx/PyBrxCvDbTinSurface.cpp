@@ -1911,4 +1911,289 @@ BrxCvDbTinSurfaceDefinitionAddPointGroups* PyBrxCvDbTinSurfaceDefinitionAddPoint
         }
     return static_cast<BrxCvDbTinSurfaceDefinitionAddPointGroups*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionCreateFromC3D
+void makePyBrxCvDbTinSurfaceDefinitionCreateFromC3DWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionCreateFromC3D");
+    class_<PyBrxCvDbTinSurfaceDefinitionCreateFromC3D, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionCreateFromC3D")
+        .def(init<>())
+        .def(init<const std::string&, const std::string&>())
+        .def("filePath", &PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::filePath, DS.ARGS())
+        .def("setFilePath", &PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::setFilePath, DS.ARGS({ "val : str" }))
+        .def("surfaceName", &PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::surfaceName, DS.ARGS())
+        .def("setSurfaceName", &PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::setSurfaceName, DS.ARGS({ "val : str" }))
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::PyBrxCvDbTinSurfaceDefinitionCreateFromC3D()
+    :PyBrxCvDbTinSurfaceDefinitionCreateFromC3D(new BrxCvDbTinSurfaceDefinitionCreateFromC3D(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::PyBrxCvDbTinSurfaceDefinitionCreateFromC3D(const std::string& path, const std::string& name)
+    :PyBrxCvDbTinSurfaceDefinitionCreateFromC3D(new BrxCvDbTinSurfaceDefinitionCreateFromC3D(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str()), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::PyBrxCvDbTinSurfaceDefinitionCreateFromC3D(BrxCvDbTinSurfaceDefinitionCreateFromC3D* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::filePath() const
+{
+    return wstr_to_utf8(impObj()->filePath());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::setFilePath(const std::string& filePath)
+{
+    return impObj()->setFilePath(utf8_to_wstr(filePath).c_str());
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::surfaceName() const
+{
+    return wstr_to_utf8(impObj()->surfaceName());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::setSurfaceName(const std::string& surfaceName)
+{
+    return impObj()->setSurfaceName(utf8_to_wstr(surfaceName).c_str());
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionCreateFromC3D";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionCreateFromC3D::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionCreateFromC3D PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionCreateFromC3D dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionCreateFromC3D* PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionCreateFromC3D*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges
+void makePyBrxCvDbTinSurfaceDefinitionRemoveOuterEdgesWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionRemoveOuterEdges");
+    class_<PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionRemoveOuterEdges")
+        .def(init<>())
+        .def(init<bool, double, bool, double, bool, double>())
+        .def("useMaxEdgeLength", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::useMaxEdgeLength, DS.ARGS())
+        .def("setUseMaxEdgeLength", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setUseMaxEdgeLength, DS.ARGS({ "val : bool" }))
+        .def("maxEdgeLength", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::maxEdgeLength, DS.ARGS())
+        .def("setMaxEdgeLength", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setMaxEdgeLength, DS.ARGS({ "val : float" }))
+        .def("useMinEdgeLength", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::useMinEdgeLength, DS.ARGS())
+        .def("setUseMinEdgeLength", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setUseMinEdgeLength, DS.ARGS({ "val : bool" }))
+        .def("minEdgeLength", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::minEdgeLength, DS.ARGS())
+        .def("setMinEdgeLength", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setMinEdgeLength, DS.ARGS({ "val : float" }))
+        .def("useMaxAdjAngle", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::useMaxAdjAngle, DS.ARGS())
+        .def("setUseMaxAdjAngle", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setUseMaxAdjAngle, DS.ARGS({ "val : bool" }))
+        .def("maxAdjAngle", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::maxAdjAngle, DS.ARGS())
+        .def("setMaxAdjAngle", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setMaxAdjAngle, DS.ARGS({ "val : float" }))
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges()
+    :PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges(new BrxCvDbTinSurfaceDefinitionRemoveOuterEdges(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges(bool useMinLength, double minLength, bool useMaxLength, double maxLength, bool useMaxAdjAngle, double maxAdjAngle)
+    :PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges(new BrxCvDbTinSurfaceDefinitionRemoveOuterEdges(useMinLength, minLength, useMaxLength, maxLength, useMaxAdjAngle, maxAdjAngle), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges(BrxCvDbTinSurfaceDefinitionRemoveOuterEdges* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::useMaxEdgeLength() const
+{
+    return impObj()->useMaxEdgeLength();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setUseMaxEdgeLength(bool useMaxEdgeLength)
+{
+    return impObj()->setUseMaxEdgeLength(useMaxEdgeLength);
+}
+
+double PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::maxEdgeLength() const
+{
+    return impObj()->maxEdgeLength();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setMaxEdgeLength(double maxEdgeLength)
+{
+    return impObj()->setMaxEdgeLength(maxEdgeLength);
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::useMinEdgeLength() const
+{
+    return impObj()->useMinEdgeLength();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setUseMinEdgeLength(bool useMinEdgeLength)
+{
+    return impObj()->setUseMinEdgeLength(useMinEdgeLength);
+}
+
+double PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::minEdgeLength() const
+{
+    return impObj()->minEdgeLength();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setMinEdgeLength(double minEdgeLength)
+{
+    return impObj()->setMinEdgeLength(minEdgeLength);
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::useMaxAdjAngle() const
+{
+    return impObj()->useMaxAdjAngle();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setUseMaxAdjAngle(bool useMaxAdjAngle)
+{
+    return impObj()->setUseMaxAdjAngle(useMaxAdjAngle);
+}
+
+double PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::maxAdjAngle() const
+{
+    return impObj()->maxAdjAngle();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setMaxAdjAngle(double maxAdjAngle)
+{
+    return impObj()->setMaxAdjAngle(maxAdjAngle);
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionRemoveOuterEdges";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionRemoveOuterEdges::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionRemoveOuterEdges* PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionRemoveOuterEdges*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility
+void makePyBrxCvDbTinSurfaceDefinitionTrianglesVisibilityWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionTrianglesVisibility");
+    class_<PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionTrianglesVisibility")
+        .def(init<>())
+        .def(init<const boost::python::list&, bool>())
+        .def("positions", &PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::positions, DS.ARGS())
+        .def("setPositions", &PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::setPositions, DS.ARGS({ "val : list[PyGe.Point2d]" }))
+        .def("visible", &PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::visible, DS.ARGS())
+        .def("setVisible", &PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::setVisible, DS.ARGS({ "val : bool" }))
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility()
+    :PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility(new BrxCvDbTinSurfaceDefinitionTrianglesVisibility(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility(const boost::python::list& positions, bool visible)
+    :PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility(new BrxCvDbTinSurfaceDefinitionTrianglesVisibility(PyListToPoint2dArray(positions), visible), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility(BrxCvDbTinSurfaceDefinitionTrianglesVisibility* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+boost::python::list PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::positions() const
+{
+    return Point2dArrayToPyList(impObj()->positions());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::setPositions(const boost::python::list& positions)
+{
+    return impObj()->setPositions(PyListToPoint2dArray(positions));
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::visible() const
+{
+    return impObj()->visible();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::setVisible(bool visible)
+{
+    return impObj()->setVisible(visible);
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionTrianglesVisibility";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionTrianglesVisibility::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionTrianglesVisibility* PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionTrianglesVisibility*>(m_pyImp.get());
+}
 #endif //BRXAPP

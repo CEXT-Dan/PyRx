@@ -337,7 +337,7 @@ class PyBrxCvDbTinSurfaceDefinitionModifyPointElevation : public PyBrxCvDbTinSur
 {
 public:
     PyBrxCvDbTinSurfaceDefinitionModifyPointElevation();
-    PyBrxCvDbTinSurfaceDefinitionModifyPointElevation(const AcGePoint2d& pt,double elevation, bool isDeltaElevation);
+    PyBrxCvDbTinSurfaceDefinitionModifyPointElevation(const AcGePoint2d& pt, double elevation, bool isDeltaElevation);
     PyBrxCvDbTinSurfaceDefinitionModifyPointElevation(BrxCvDbTinSurfaceDefinitionModifyPointElevation* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionModifyPointElevation() override = default;
     AcGePoint2d             position() const;
@@ -395,7 +395,7 @@ public:
     bool                    addPointElevation(const AcGePoint2d& position, double elevation);
     bool                    removePointElevationAt(const Adesk::UInt32 index);
     bool                    removeAllPointElevations();
-   
+
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations cast(const PyRxObject& src);
@@ -585,6 +585,85 @@ public:
     inline BrxCvDbTinSurfaceDefinitionAddPointGroups* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionCreateFromC3D
+void makePyBrxCvDbTinSurfaceDefinitionCreateFromC3DWrapper();
 
+class PyBrxCvDbTinSurfaceDefinitionCreateFromC3D : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionCreateFromC3D();
+    PyBrxCvDbTinSurfaceDefinitionCreateFromC3D(const std::string& path, const std::string& name);
+    PyBrxCvDbTinSurfaceDefinitionCreateFromC3D(BrxCvDbTinSurfaceDefinitionCreateFromC3D* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionCreateFromC3D() override = default;
+    std::string        filePath() const;
+    bool               setFilePath(const std::string& filePath);
+    std::string        surfaceName() const;
+    bool               setSurfaceName(const std::string& surfaceName);
+    static std::string className();
+    static PyRxClass   desc();
+    static PyBrxCvDbTinSurfaceDefinitionCreateFromC3D cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionCreateFromC3D* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges
+void makePyBrxCvDbTinSurfaceDefinitionRemoveOuterEdgesWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges();
+    PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges(bool useMinLength, double minLength, bool useMaxLength, double maxLength, bool useMaxAdjAngle, double maxAdjAngle);
+    PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges(BrxCvDbTinSurfaceDefinitionRemoveOuterEdges* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges() override = default;
+
+    bool                useMaxEdgeLength() const;
+    bool                setUseMaxEdgeLength(bool useMaxEdgeLength);
+    double              maxEdgeLength() const;
+    bool                setMaxEdgeLength(double maxEdgeLength);
+    bool                useMinEdgeLength() const;
+    bool                setUseMinEdgeLength(bool useMinEdgeLength);
+    double              minEdgeLength() const;
+    bool                setMinEdgeLength(double minEdgeLength);
+    bool                useMaxAdjAngle() const;
+    bool                setUseMaxAdjAngle(bool useMaxAdjAngle);
+    double              maxAdjAngle() const;
+    bool                setMaxAdjAngle(double maxAdjAngle);
+
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionRemoveOuterEdges* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility
+void makePyBrxCvDbTinSurfaceDefinitionTrianglesVisibilityWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility();
+    PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility(const boost::python::list& positions, bool visible);
+    PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility(BrxCvDbTinSurfaceDefinitionTrianglesVisibility* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility() override = default;
+
+    boost::python::list positions() const;
+    bool                setPositions(const boost::python::list& positions);
+    bool                visible() const;
+    bool                setVisible(bool visible);
+
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionTrianglesVisibility* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 #endif //BRXAPP
