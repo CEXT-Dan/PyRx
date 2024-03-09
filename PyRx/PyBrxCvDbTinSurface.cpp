@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyBrxCvDbTinSurface.h"
 #include "PyGeLinearEnt2d.h"
+#include "PyDbEnts.h"
 
 #ifdef BRXAPP
 using namespace boost::python;
@@ -232,7 +233,7 @@ PyBrxCvDbTinSurfaceDefinitionTransform::PyBrxCvDbTinSurfaceDefinitionTransform()
 }
 
 PyBrxCvDbTinSurfaceDefinitionTransform::PyBrxCvDbTinSurfaceDefinitionTransform(const AcGeMatrix3d& mtx)
-    :PyBrxCvDbTinSurfaceDefinitionTransform(new BrxCvDbTinSurfaceDefinitionTransform(mtx),true)
+    :PyBrxCvDbTinSurfaceDefinitionTransform(new BrxCvDbTinSurfaceDefinitionTransform(mtx), true)
 {
 }
 
@@ -848,7 +849,7 @@ void makePyBrxCvDbTinSurfaceDefinitionDeleteEdgesWrapper()
         .def(init<>())
         .def("polygonsCount", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::polygonsCount, DS.ARGS())
         .def("polygonAt", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::polygonAt, DS.ARGS({ "index : int" }))
-        .def("addPolygon", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::addPolygon, DS.ARGS({ "edgePolygon : list[PyGe.Point2d]", "includeIntersected : bool"}))
+        .def("addPolygon", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::addPolygon, DS.ARGS({ "edgePolygon : list[PyGe.Point2d]", "includeIntersected : bool" }))
         .def("removePolygonAt", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::removePolygonAt, DS.ARGS({ "index : int" }))
         .def("removeAllPolygons", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::removeAllPolygons, DS.ARGS())
         .def("className", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::className, DS.SARGS()).staticmethod("className")
@@ -1317,5 +1318,93 @@ BrxCvDbTinSurfaceDefinitionModifyPointsElevations* PyBrxCvDbTinSurfaceDefinition
         throw PyNullObject(src);
         }
     return static_cast<BrxCvDbTinSurfaceDefinitionModifyPointsElevations*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionCreateFromFaces
+void makePyBrxCvDbTinSurfaceDefinitionCreateFromFacesWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionCreateFromFaces");
+    class_<PyBrxCvDbTinSurfaceDefinitionCreateFromFaces, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionCreateFromFaces")
+        .def(init<>())
+        .def(init<const boost::python::list&, bool>())
+        .def("facesCount", &PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::facesCount)
+        .def("faceAt", &PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::faceAt)
+        .def("points", &PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::points)
+        .def("isApplyEdgesVisibility", &PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::isApplyEdgesVisibility)
+        .def("setIsApplyEdgesVisibility", &PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::setIsApplyEdgesVisibility)
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::PyBrxCvDbTinSurfaceDefinitionCreateFromFaces()
+    :PyBrxCvDbTinSurfaceDefinitionCreateFromFaces(new BrxCvDbTinSurfaceDefinitionCreateFromFaces(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::PyBrxCvDbTinSurfaceDefinitionCreateFromFaces(const boost::python::list& pnt, bool applyEdgesVisibility)
+    :PyBrxCvDbTinSurfaceDefinitionCreateFromFaces(new BrxCvDbTinSurfaceDefinitionCreateFromFaces(PyListToPoint3dArray(pnt), applyEdgesVisibility), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::PyBrxCvDbTinSurfaceDefinitionCreateFromFaces(BrxCvDbTinSurfaceDefinitionCreateFromFaces* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+Adesk::UInt32 PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::facesCount() const
+{
+    return impObj()->facesCount();
+}
+
+boost::python::tuple PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::faceAt(const Adesk::UInt32 index) const
+{
+    PyAutoLockGIL lock;
+    AcDbFace* ptr = nullptr;
+    bool flag = impObj()->faceAt(index, ptr);
+    return boost::python::make_tuple(flag, PyDbFace(ptr, true));
+}
+
+boost::python::list PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::points() const
+{
+    return Point3dArrayToPyList(impObj()->facesCount());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::isApplyEdgesVisibility() const
+{
+    return impObj()->isApplyEdgesVisibility();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::setIsApplyEdgesVisibility(bool isApplyEdges)
+{
+    return impObj()->setIsApplyEdgesVisibility(isApplyEdges);
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionCreateFromFaces";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionCreateFromFaces::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionCreateFromFaces PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionCreateFromFaces dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionCreateFromFaces* PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionCreateFromFaces*>(m_pyImp.get());
 }
 #endif //BRXAPP

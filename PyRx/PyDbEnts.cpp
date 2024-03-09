@@ -344,7 +344,7 @@ AcDbText* PyDbText::impObj(const std::source_location& src /*= std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbText*>(m_pyImp.get());
 }
 
@@ -554,7 +554,7 @@ AcDbAttributeDefinition* PyDbAttributeDefinition::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbAttributeDefinition*>(m_pyImp.get());
 }
 
@@ -747,7 +747,7 @@ AcDbAttribute* PyDbAttribute::impObj(const std::source_location& src /*= std::so
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbAttribute*>(m_pyImp.get());
 }
 
@@ -961,7 +961,7 @@ AcDbBlockReference* PyDbBlockReference::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbBlockReference*>(m_pyImp.get());
 }
 
@@ -1050,7 +1050,7 @@ AcDbDynBlockReference* PyDbDynBlockReference::impObj(const std::source_location&
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbDynBlockReference*>(m_imp.get());
 }
 
@@ -1173,7 +1173,7 @@ AcDbMInsertBlock* PyDbMInsertBlock::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbMInsertBlock*>(m_pyImp.get());
 }
 
@@ -1242,7 +1242,7 @@ AcDbVertex* PyDbVertex::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbVertex*>(m_pyImp.get());
 }
 
@@ -1441,7 +1441,7 @@ AcDb2dVertex* PyDb2dVertex::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDb2dVertex*>(m_pyImp.get());
 }
 
@@ -1534,7 +1534,7 @@ AcDb3dPolylineVertex* PyDb3dPolylineVertex::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDb3dPolylineVertex*>(m_pyImp.get());
 }
 
@@ -1627,7 +1627,7 @@ AcDbPolygonMeshVertex* PyDbPolygonMeshVertex::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbPolygonMeshVertex*>(m_pyImp.get());
 }
 
@@ -1714,7 +1714,7 @@ AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj(const std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbPolyFaceMeshVertex*>(m_pyImp.get());
 }
 
@@ -1823,7 +1823,7 @@ AcDbFaceRecord* PyDbFaceRecord::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbFaceRecord*>(m_pyImp.get());
 }
 
@@ -1946,7 +1946,7 @@ AcDbPoint* PyDbPoint::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbPoint*>(m_pyImp.get());
 }
 
@@ -2251,7 +2251,7 @@ AcDb2dPolyline* PyDb2dPolyline::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDb2dPolyline*>(m_pyImp.get());
 }
 
@@ -2436,7 +2436,7 @@ AcDb3dPolyline* PyDb3dPolyline::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDb3dPolyline*>(m_pyImp.get());
 }
 
@@ -2617,7 +2617,7 @@ AcDbArc* PyDbArc::impObj(const std::source_location& src /*= std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbArc*>(m_pyImp.get());
 }
 
@@ -2796,7 +2796,7 @@ AcDbCircle* PyDbCircle::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbCircle*>(m_pyImp.get());
 }
 
@@ -2936,7 +2936,7 @@ AcDbLine* PyDbLine::impObj(const std::source_location& src /*= std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbLine*>(m_pyImp.get());
 }
 
@@ -3388,7 +3388,7 @@ AcDbPolyline* PyDbPolyline::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbPolyline*>(m_pyImp.get());
 }
 
@@ -3515,7 +3515,7 @@ AcDbFace* PyDbFace::impObj(const std::source_location& src /*= std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbFace*>(m_pyImp.get());
 }
 
@@ -3772,6 +3772,6 @@ AcDbFcf* PyDbFcf::impObj(const std::source_location& src /*= std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbFcf*>(m_pyImp.get());
 }
