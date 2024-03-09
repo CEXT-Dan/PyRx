@@ -64873,7 +64873,7 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def recomputeTableBlock (self: Table)-> None :
+    def recomputeTableBlock (self: Table,val : bool)-> None :
       '''                             '''
     ...
     def recordGraphicsModified (self: Entity)-> None :

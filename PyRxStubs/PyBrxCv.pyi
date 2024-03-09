@@ -6779,6 +6779,3206 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
+class CvDbTinSurfaceBoundary:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1, (TinBoundaryType)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,enum BrxCvDbTinSurfaceBoundary::ETinBoundaryType)'''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def constraintType (self: CvDbTinSurfaceConstraint)-> PyBrxCv.TinConstraintType :
+      '''                             '''
+    ...
+    def data (self: CvDbTinSurfaceConstraint)-> list :
+      '''                             '''
+    ...
+    def id (self: CvDbTinSurfaceConstraint)-> int :
+      '''                             '''
+    ...
+    def isDbResident (self: CvDbTinSurfaceConstraint)-> bool :
+      '''                             '''
+    ...
+    def midOrdinateDistance (self: CvDbTinSurfaceConstraint)-> float :
+      '''                             '''
+    ...
+    def setData (self: CvDbTinSurfaceConstraint,val : int,pts : list[PyGe.Point3d])-> None :
+      '''                             '''
+    ...
+    def setDataId (self: CvDbTinSurfaceConstraint,id : PyDb.ObjectId,midOrdinateDist : float)-> None :
+      '''                             '''
+    ...
+    def setIsDbResident (self: CvDbTinSurfaceConstraint,val : bool)-> None :
+      '''                             '''
+    ...
+    def setMidOrdinateDistance (self: CvDbTinSurfaceConstraint,val : float)-> None :
+      '''                             '''
+    ...
+    def wallType (self: CvDbTinSurfaceBoundary)-> PyBrxCv.TinBoundaryType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceBreakline:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1, (TinBreaklineType)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,enum BrxCvDbTinSurfaceBreakline::ETinBreaklineType)'''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def constraintType (self: CvDbTinSurfaceConstraint)-> PyBrxCv.TinConstraintType :
+      '''                             '''
+    ...
+    def data (self: CvDbTinSurfaceConstraint)-> list :
+      '''                             '''
+    ...
+    def id (self: CvDbTinSurfaceConstraint)-> int :
+      '''                             '''
+    ...
+    def intersectionElevation (self: CvDbTinSurfaceBreakline)-> PyBrxCv.TinIntersectionElevation :
+      '''                             '''
+    ...
+    def isDbResident (self: CvDbTinSurfaceConstraint)-> bool :
+      '''                             '''
+    ...
+    def midOrdinateDistance (self: CvDbTinSurfaceConstraint)-> float :
+      '''                             '''
+    ...
+    def setData (self: CvDbTinSurfaceConstraint,val : int,pts : list[PyGe.Point3d])-> None :
+      '''                             '''
+    ...
+    def setDataId (self: CvDbTinSurfaceConstraint,id : PyDb.ObjectId,midOrdinateDist : float)-> None :
+      '''                             '''
+    ...
+    def setIntersectionElevation (self: CvDbTinSurfaceBreakline,val : PyBrxCv.TinBreaklineType)-> None :
+      '''                             '''
+    ...
+    def setIsDbResident (self: CvDbTinSurfaceConstraint,val : bool)-> None :
+      '''                             '''
+    ...
+    def setMidOrdinateDistance (self: CvDbTinSurfaceConstraint,val : float)-> None :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceConstraint:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (TinConstraintType)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,enum BrxCvDbTinSurfaceConstraint::ETinConstraintType)'''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def constraintType (self: CvDbTinSurfaceConstraint)-> PyBrxCv.TinConstraintType :
+      '''                             '''
+    ...
+    def data (self: CvDbTinSurfaceConstraint)-> list :
+      '''                             '''
+    ...
+    def id (self: CvDbTinSurfaceConstraint)-> int :
+      '''                             '''
+    ...
+    def isDbResident (self: CvDbTinSurfaceConstraint)-> bool :
+      '''                             '''
+    ...
+    def midOrdinateDistance (self: CvDbTinSurfaceConstraint)-> float :
+      '''                             '''
+    ...
+    def setData (self: CvDbTinSurfaceConstraint,val : int,pts : list[PyGe.Point3d])-> None :
+      '''                             '''
+    ...
+    def setDataId (self: CvDbTinSurfaceConstraint,id : PyDb.ObjectId,midOrdinateDist : float)-> None :
+      '''                             '''
+    ...
+    def setIsDbResident (self: CvDbTinSurfaceConstraint,val : bool)-> None :
+      '''                             '''
+    ...
+    def setMidOrdinateDistance (self: CvDbTinSurfaceConstraint,val : float)-> None :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinition:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''Raises an exception
+This class cannot be instantiated from Python'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinition :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionAddDrawingObjects:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (RewriteSymbolics)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,double,bool,enum BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation)'''
+    ...
+    def addEntity (self: CvDbTinSurfaceDefinitionAddDrawingObjects,entity: PyDb.Entity)-> bool :
+      '''                             '''
+    ...
+    def addEntityId (self: CvDbTinSurfaceDefinitionAddDrawingObjects,id : PyDb.ObjectId)-> bool :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionAddDrawingObjects :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def crossingsElevation (self: CvDbTinSurfaceDefinitionAddDrawingObjects)-> RewriteSymbolics :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def drawingObjectAt (self: CvDbTinSurfaceDefinitionAddDrawingObjects,idx : int)-> tuple :
+      '''                             '''
+    ...
+    def drawingObjectsCount (self: CvDbTinSurfaceDefinitionAddDrawingObjects)-> int :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isApplyEdges (self: CvDbTinSurfaceDefinitionAddDrawingObjects)-> bool :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def removeAllDrawingObjects (self: CvDbTinSurfaceDefinitionAddDrawingObjects)-> bool :
+      '''                             '''
+    ...
+    def removeDrawingObjectAt (self: CvDbTinSurfaceDefinitionAddDrawingObjects,idx : int)-> bool :
+      '''                             '''
+    ...
+    def setCrossingsElevation (self: CvDbTinSurfaceDefinitionAddDrawingObjects,val : PyBrxCv.TinIntersectionElevation)-> bool :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setIsApplyEdges (self: CvDbTinSurfaceDefinitionAddDrawingObjects,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionAddFromFiles:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (list)arg2, (ObjectId)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,class PyDbObjectId)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionAddFromFiles :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def fileFormatId (self: CvDbTinSurfaceDefinitionAddFromFiles)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def filesPaths (self: CvDbTinSurfaceDefinitionAddFromFiles)-> list :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setFileFormatId (self: CvDbTinSurfaceDefinitionAddFromFiles,id : PyDb.ObjectId)-> bool :
+      '''                             '''
+    ...
+    def setFilesPaths (self: CvDbTinSurfaceDefinitionAddFromFiles,val : list[str])-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionAddFromPointClouds:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionAddFromPointClouds :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def pcObjectIds (self: CvDbTinSurfaceDefinitionAddFromPointClouds)-> list :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setPcObjectIds (self: CvDbTinSurfaceDefinitionAddFromPointClouds,val : list[PyDb.ObjectId])-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionAddLine:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (object)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGeLineSeg2d)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionAddLine :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def line (self: CvDbTinSurfaceDefinitionAddLine)-> PyGe.LineSeg2d :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setLine (self: CvDbTinSurfaceDefinitionAddLine,line : PyGe.LineSeg2d)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionAddLines:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionAddLines :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def lines (self: CvDbTinSurfaceDefinitionAddLines)-> list :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setLines (self: CvDbTinSurfaceDefinitionAddLines,lines : list[PyGe.LineSeg2d])-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionAddPoint:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionAddPoint :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def position (self: CvDbTinSurfaceDefinitionAddPoint)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setPosition (self: CvDbTinSurfaceDefinitionAddPoint,pt : PyGe.Point3d)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionAddPointGroups:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionAddPointGroups :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def pointGroupsIds (self: CvDbTinSurfaceDefinitionAddPointGroups)-> list :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setPointGroupsIds (self: CvDbTinSurfaceDefinitionAddPointGroups,val : list[PyDb.ObjectId])-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionAddPoints:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionAddPoints :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def positions (self: CvDbTinSurfaceDefinitionAddPoints)-> list :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setPositions (self: CvDbTinSurfaceDefinitionAddPoints,pt : list[PyGe.Point3d])-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionCreateFromC3D:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (str)arg2, (str)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionCreateFromC3D :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def filePath (self: CvDbTinSurfaceDefinitionCreateFromC3D)-> str :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setFilePath (self: CvDbTinSurfaceDefinitionCreateFromC3D,val : str)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setSurfaceName (self: CvDbTinSurfaceDefinitionCreateFromC3D,val : str)-> bool :
+      '''                             '''
+    ...
+    def surfaceName (self: CvDbTinSurfaceDefinitionCreateFromC3D)-> str :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionCreateFromFaces:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (list)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,bool)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionCreateFromFaces :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def faceAt (self, *args, **kwargs)-> tuple :
+      '''faceAt( (CvDbTinSurfaceDefinitionCreateFromFaces)arg1, (SubentType)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple faceAt(class PyBrxCvDbTinSurfaceDefinitionCreateFromFaces {lvalue},unsigned long)'''
+    ...
+    def facesCount (self, *args, **kwargs)-> int :
+      '''facesCount( (CvDbTinSurfaceDefinitionCreateFromFaces)arg1) -> int :
+
+    C++ signature :
+        unsigned long facesCount(class PyBrxCvDbTinSurfaceDefinitionCreateFromFaces {lvalue})'''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isApplyEdgesVisibility (self, *args, **kwargs)-> bool :
+      '''isApplyEdgesVisibility( (CvDbTinSurfaceDefinitionCreateFromFaces)arg1) -> bool :
+
+    C++ signature :
+        bool isApplyEdgesVisibility(class PyBrxCvDbTinSurfaceDefinitionCreateFromFaces {lvalue})'''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def points (self, *args, **kwargs)-> list :
+      '''points( (CvDbTinSurfaceDefinitionCreateFromFaces)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list points(class PyBrxCvDbTinSurfaceDefinitionCreateFromFaces {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setIsApplyEdgesVisibility (self, *args, **kwargs)-> bool :
+      '''setIsApplyEdgesVisibility( (CvDbTinSurfaceDefinitionCreateFromFaces)arg1, (bool)arg2) -> bool :
+
+    C++ signature :
+        bool setIsApplyEdgesVisibility(class PyBrxCvDbTinSurfaceDefinitionCreateFromFaces {lvalue},bool)'''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionCreateFromLandXML:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (str)arg2, (str)arg3, (UnitsValue)arg4, (bool)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,enum AcDb::UnitsValue,bool)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionCreateFromLandXML :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def dwgUnits (self: CvDbTinSurfaceDefinitionCreateFromLandXML)-> PyDb.UnitsValue :
+      '''                             '''
+    ...
+    def filePath (self: CvDbTinSurfaceDefinitionCreateFromLandXML)-> str :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def scaleToDwgUnits (self: CvDbTinSurfaceDefinitionCreateFromLandXML)-> bool :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setFilePath (self: CvDbTinSurfaceDefinitionCreateFromLandXML,val : str)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setScaleToDwgUnits (self: CvDbTinSurfaceDefinitionCreateFromLandXML,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setSurfaceName (self: CvDbTinSurfaceDefinitionCreateFromLandXML,val : str)-> bool :
+      '''                             '''
+    ...
+    def surfaceName (self: CvDbTinSurfaceDefinitionCreateFromLandXML)-> str :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionDeleteEdge:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point2d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionDeleteEdge :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def position (self: CvDbTinSurfaceDefinitionDeleteEdge)-> PyGe.Point2d :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setPosition (self: CvDbTinSurfaceDefinitionDeleteEdge,pt : PyGe.Point2d)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionDeleteEdges:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def addPolygon (self: CvDbTinSurfaceDefinitionDeleteEdges,edgePolygon : list[PyGe.Point2d],includeIntersected : bool)-> bool :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionDeleteEdges :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def polygonAt (self: CvDbTinSurfaceDefinitionDeleteEdges,index : int)-> tuple :
+      '''                             '''
+    ...
+    def polygonsCount (self: CvDbTinSurfaceDefinitionDeleteEdges)-> int :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def removeAllPolygons (self: CvDbTinSurfaceDefinitionDeleteEdges)-> bool :
+      '''                             '''
+    ...
+    def removePolygonAt (self: CvDbTinSurfaceDefinitionDeleteEdges,index : int)-> bool :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionDeletePoint:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point2d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionDeletePoint :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def position (self: CvDbTinSurfaceDefinitionDeletePoint)-> PyGe.Point2d :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setPosition (self: CvDbTinSurfaceDefinitionDeletePoint,pt : PyGe.Point2d)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionGroupDefs:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def addSubDefinition (self: CvDbTinSurfaceDefinitionGroupDefs,val : PyBrxCv.CvDbTinSurfaceDefinition)-> int :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionGroupDefs :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def findSubDefinition (self: CvDbTinSurfaceDefinitionGroupDefs,val : int)-> int :
+      '''                             '''
+    ...
+    def getSubDefinitionAt (self: CvDbTinSurfaceDefinitionGroupDefs,val : int)-> PyBrxCv.CvDbTinSurfaceDefinition :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def numSubDefinitions (self: CvDbTinSurfaceDefinitionGroupDefs)-> int :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def removeSubDefinitionAt (self: CvDbTinSurfaceDefinitionGroupDefs,val : int)-> bool :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionModifyPointElevation:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point2d)arg2, (float)arg3, (bool)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,double,bool)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionModifyPointElevation :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def elevation (self: CvDbTinSurfaceDefinitionModifyPointElevation)-> float :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isDeltaElevation (self: CvDbTinSurfaceDefinitionModifyPointElevation)-> bool :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def position (self: CvDbTinSurfaceDefinitionModifyPointElevation)-> PyGe.Point2d :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setElevation (self: CvDbTinSurfaceDefinitionModifyPointElevation,val : float)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setIsDeltaElevation (self: CvDbTinSurfaceDefinitionModifyPointElevation,val : float)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setPosition (self: CvDbTinSurfaceDefinitionModifyPointElevation,pt : PyGe.Point2d)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionModifyPointsElevation:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,double,bool)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionModifyPointsElevation :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def elevation (self: CvDbTinSurfaceDefinitionModifyPointsElevation)-> float :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isDeltaElevation (self: CvDbTinSurfaceDefinitionModifyPointsElevation)-> bool :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def positions (self: CvDbTinSurfaceDefinitionModifyPointsElevation)-> list :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setElevation (self: CvDbTinSurfaceDefinitionModifyPointsElevation,val : float)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setPositions (self: CvDbTinSurfaceDefinitionModifyPointsElevation,pt : list[PyGe.Point2d])-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionModifyPointsElevations:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def addPointElevation (self, *args, **kwargs)-> bool :
+      '''addPointElevation( (CvDbTinSurfaceDefinitionModifyPointsElevations)arg1, (Point2d)arg2, (float)arg3) -> bool :
+
+    C++ signature :
+        bool addPointElevation(class PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations {lvalue},class AcGePoint2d,double)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionModifyPointsElevations :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def pointElevationAt (self, *args, **kwargs)-> tuple :
+      '''pointElevationAt( (CvDbTinSurfaceDefinitionModifyPointsElevations)arg1, (SubentType)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple pointElevationAt(class PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations {lvalue},unsigned long)'''
+    ...
+    def pointElevationsCount (self, *args, **kwargs)-> int :
+      '''pointElevationsCount( (CvDbTinSurfaceDefinitionModifyPointsElevations)arg1) -> int :
+
+    C++ signature :
+        unsigned long pointElevationsCount(class PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def removeAllPointElevations (self, *args, **kwargs)-> bool :
+      '''removeAllPointElevations( (CvDbTinSurfaceDefinitionModifyPointsElevations)arg1) -> bool :
+
+    C++ signature :
+        bool removeAllPointElevations(class PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations {lvalue})'''
+    ...
+    def removePointElevationAt (self, *args, **kwargs)-> bool :
+      '''removePointElevationAt( (CvDbTinSurfaceDefinitionModifyPointsElevations)arg1, (SubentType)arg2) -> bool :
+
+    C++ signature :
+        bool removePointElevationAt(class PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations {lvalue},unsigned long)'''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionMovePoint:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionMovePoint :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def fromPosition (self: CvDbTinSurfaceDefinitionMovePoint)-> PyGe.Point2d :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setFromPosition (self: CvDbTinSurfaceDefinitionMovePoint,pt : PyGe.Point2d)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setToPosition (self: CvDbTinSurfaceDefinitionMovePoint,pt : PyGe.Point2d)-> bool :
+      '''                             '''
+    ...
+    def toPosition (self: CvDbTinSurfaceDefinitionMovePoint)-> PyGe.Point2d :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionMovePoints:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (list)arg2, (Vector2d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector2d)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionMovePoints :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def displacement (self: CvDbTinSurfaceDefinitionMovePoints)-> PyGe.Vector2d :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def fromPoints (self: CvDbTinSurfaceDefinitionMovePoints)-> list :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setDisplacement (self: CvDbTinSurfaceDefinitionMovePoints,vec : PyGe.Vector3d)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setFromPoints (self: CvDbTinSurfaceDefinitionMovePoints,pt : list[PyGe.Point2d])-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionRemoveElevations:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (bool)arg2, (float)arg3, (bool)arg4, (float)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,bool,double,bool,double)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionRemoveElevations :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def removeAbove (self: CvDbTinSurfaceDefinitionRemoveElevations)-> bool :
+      '''                             '''
+    ...
+    def removeAboveElevation (self: CvDbTinSurfaceDefinitionRemoveElevations)-> float :
+      '''                             '''
+    ...
+    def removeBelow (self: CvDbTinSurfaceDefinitionRemoveElevations)-> bool :
+      '''                             '''
+    ...
+    def removeBelowElevation (self: CvDbTinSurfaceDefinitionRemoveElevations)-> float :
+      '''                             '''
+    ...
+    def removedPointsCount (self: CvDbTinSurfaceDefinitionRemoveElevations)-> int :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setRemoveAbove (self: CvDbTinSurfaceDefinitionRemoveElevations,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setRemoveAboveElevation (self: CvDbTinSurfaceDefinitionRemoveElevations,val : float)-> bool :
+      '''                             '''
+    ...
+    def setRemoveBelow (self: CvDbTinSurfaceDefinitionRemoveElevations,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setRemoveBelowElevation (self: CvDbTinSurfaceDefinitionRemoveElevations,val : float)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionRemoveOuterEdges:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (bool)arg2, (float)arg3, (bool)arg4, (float)arg5, (bool)arg6, (float)arg7) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,bool,double,bool,double,bool,double)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionRemoveOuterEdges :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def maxAdjAngle (self: CvDbTinSurfaceDefinitionRemoveOuterEdges)-> float :
+      '''                             '''
+    ...
+    def maxEdgeLength (self: CvDbTinSurfaceDefinitionRemoveOuterEdges)-> float :
+      '''                             '''
+    ...
+    def minEdgeLength (self: CvDbTinSurfaceDefinitionRemoveOuterEdges)-> float :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setMaxAdjAngle (self: CvDbTinSurfaceDefinitionRemoveOuterEdges,val : float)-> bool :
+      '''                             '''
+    ...
+    def setMaxEdgeLength (self: CvDbTinSurfaceDefinitionRemoveOuterEdges,val : float)-> bool :
+      '''                             '''
+    ...
+    def setMinEdgeLength (self: CvDbTinSurfaceDefinitionRemoveOuterEdges,val : float)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setUseMaxAdjAngle (self: CvDbTinSurfaceDefinitionRemoveOuterEdges,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setUseMaxEdgeLength (self: CvDbTinSurfaceDefinitionRemoveOuterEdges,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setUseMinEdgeLength (self: CvDbTinSurfaceDefinitionRemoveOuterEdges,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+    def useMaxAdjAngle (self: CvDbTinSurfaceDefinitionRemoveOuterEdges)-> bool :
+      '''                             '''
+    ...
+    def useMaxEdgeLength (self: CvDbTinSurfaceDefinitionRemoveOuterEdges)-> bool :
+      '''                             '''
+    ...
+    def useMinEdgeLength (self: CvDbTinSurfaceDefinitionRemoveOuterEdges)-> bool :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionRiseLower:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,double)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionRiseLower :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def offset (self: CvDbTinSurfaceDefinitionRiseLower)-> float :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setOffset (self: CvDbTinSurfaceDefinitionRiseLower,val : float)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionSwapEdge:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point2d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionSwapEdge :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def position (self: CvDbTinSurfaceDefinitionSwapEdge)-> PyGe.Point2d :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setPosition (self: CvDbTinSurfaceDefinitionSwapEdge,pt : PyGe.Point2d)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionTransform:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Matrix3d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGeMatrix3d)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionTransform :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setTransformationMatrix (self: CvDbTinSurfaceDefinitionTransform,xform : PyGe.Matrix3d)-> bool :
+      '''                             '''
+    ...
+    def transformationMatrix (self: CvDbTinSurfaceDefinitionTransform)-> PyGe.Matrix3d :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceDefinitionTrianglesVisibility:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (list)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,bool)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbTinSurfaceDefinitionTrianglesVisibility :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def id (self: CvDbSubObject)-> int :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isEnabled (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isReadOnly (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isSubDefinition (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: CvDbSubObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def name (self: CvDbSubObject)-> str :
+      '''                             '''
+    ...
+    def positions (self: CvDbTinSurfaceDefinitionTrianglesVisibility)-> list :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setEnabled (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setName (self: CvDbSubObject,val : str)-> bool :
+      '''                             '''
+    ...
+    def setPositions (self: CvDbTinSurfaceDefinitionTrianglesVisibility,val : list[PyGe.Point2d])-> bool :
+      '''                             '''
+    ...
+    def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setVisible (self: CvDbTinSurfaceDefinitionTrianglesVisibility,val : bool)-> bool :
+      '''                             '''
+    ...
+    def type (self: CvDbSubObject)-> PyBrxCv.TinSurfaceDefinitionType :
+      '''                             '''
+    ...
+    def visible (self: CvDbTinSurfaceDefinitionTrianglesVisibility)-> bool :
+      '''                             '''
+    ...
+
+class CvDbTinSurfaceWall:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1, (TinWallType)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,enum BrxCvDbTinSurfaceWall::ETinWallType)'''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+    def constraintType (self: CvDbTinSurfaceConstraint)-> PyBrxCv.TinConstraintType :
+      '''                             '''
+    ...
+    def data (self: CvDbTinSurfaceConstraint)-> list :
+      '''                             '''
+    ...
+    def id (self: CvDbTinSurfaceConstraint)-> int :
+      '''                             '''
+    ...
+    def isDbResident (self: CvDbTinSurfaceConstraint)-> bool :
+      '''                             '''
+    ...
+    def midOrdinateDistance (self: CvDbTinSurfaceConstraint)-> float :
+      '''                             '''
+    ...
+    def setData (self: CvDbTinSurfaceConstraint,val : int,pts : list[PyGe.Point3d])-> None :
+      '''                             '''
+    ...
+    def setDataId (self: CvDbTinSurfaceConstraint,id : PyDb.ObjectId,midOrdinateDist : float)-> None :
+      '''                             '''
+    ...
+    def setHeight (self: CvDbTinSurfaceWall,val : float)-> None :
+      '''                             '''
+    ...
+    def setIsDbResident (self: CvDbTinSurfaceConstraint,val : bool)-> None :
+      '''                             '''
+    ...
+    def setMidOrdinateDistance (self: CvDbTinSurfaceConstraint,val : float)-> None :
+      '''                             '''
+    ...
+    def setWallSide (self: CvDbTinSurfaceWall,val : PyBrxCv.TinWallSide)-> None :
+      '''                             '''
+    ...
+    def wallSide (self: CvDbTinSurfaceWall)-> PyBrxCv.TinWallSide :
+      '''                             '''
+    ...
+    def wallType (self: CvDbTinSurfaceWall)-> PyBrxCv.TinWallType :
+      '''                             '''
+    ...
+
 class CvDbVAlignmentArc:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -8637,6 +11837,385 @@ __init__( (object)arg1, (CvDbHAlignment)arg2) -> None :
         bool update(class PyBrxCvStationEquations {lvalue})'''
     ...
 
+class CvTinPoint:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def isValid (self, *args, **kwargs)-> bool :
+      '''isValid( (CvTinPoint)arg1) -> bool :
+
+    C++ signature :
+        bool isValid(class BrxCvTinPoint {lvalue})'''
+    ...
+    def location (self, *args, **kwargs)-> PyGe.Point3d :
+      '''location( (CvTinPoint)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d location(class BrxCvTinPoint {lvalue})'''
+    ...
+    def triangleWithPoint (self, *args, **kwargs)-> PyBrxCv.CvTinTriangle :
+      '''triangleWithPoint( (CvTinPoint)arg1) -> CvTinTriangle :
+
+    C++ signature :
+        class BrxCvTinTriangle triangleWithPoint(class BrxCvTinPoint {lvalue})'''
+    ...
+
+class CvTinTriangle:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def isValid (self, *args, **kwargs)-> bool :
+      '''isValid( (CvTinTriangle)arg1) -> bool :
+
+    C++ signature :
+        bool isValid(class BrxCvTinTriangle {lvalue})'''
+    ...
+    def isVisible (self, *args, **kwargs)-> bool :
+      '''isVisible( (CvTinTriangle)arg1) -> bool :
+
+    C++ signature :
+        bool isVisible(class BrxCvTinTriangle {lvalue})'''
+    ...
+    def locationAt (self, *args, **kwargs)-> PyGe.Point3d :
+      '''locationAt( (CvTinTriangle)arg1, (int)arg2) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d locationAt(class BrxCvTinTriangle {lvalue},unsigned short)'''
+    ...
+    def neighborAt (self, *args, **kwargs)-> PyBrxCv.CvTinTriangle :
+      '''neighborAt( (CvTinTriangle)arg1, (int)arg2) -> CvTinTriangle :
+
+    C++ signature :
+        class BrxCvTinTriangle neighborAt(class BrxCvTinTriangle {lvalue},unsigned short)'''
+    ...
+    def pointAt (self, *args, **kwargs)-> PyBrxCv.CvTinPoint :
+      '''pointAt( (CvTinTriangle)arg1, (int)arg2) -> CvTinPoint :
+
+    C++ signature :
+        class BrxCvTinPoint pointAt(class BrxCvTinTriangle {lvalue},unsigned short)'''
+    ...
+
+class DrawingObjectType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eBlock (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eCivilPoint (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eFace (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eLine (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def ePoint (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def ePolyline (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eText (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eUnknown (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class GradingCalculationMethod:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eGradingAccurate (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingFast (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class GradingSide:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eGradingSideLeft (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingSideNone (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingSideRight (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class GradingSlopeFormat:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eSlopeDegrees (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eSlopeNoFormat (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eSlopePercent (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eSlopeRadians (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eSlopeRiseRun (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class GradingStatus:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eGradingGradingOutsideSurface (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingIncorrectInputData (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingInputDataMissing (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingInputDataOutsideSurface (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingInvalidInput (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingInvalidRule (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingMultipleOffsetResult (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingNoStatus (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingOffsetFailed (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingOk (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingRuleMissing (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingSurfaceMissing (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingTimeout (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingUnknownError (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingUpdateNeeded (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingZeroGrading (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class GradingType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eGradingTypeNone (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingTypeSlopeOffset (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingTypeSlopeSurface (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class GradingVisualStyle:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eGradingDrawDaylight (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingDrawNothing (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingDrawRays (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGradingDrawSurface (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
 class HAlignmentElementType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
@@ -9225,6 +12804,508 @@ class StyleManagerType:
       '''the real part of a complex number'''
     ...
 
+class TinBoundaryType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eTinHide (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinOuter (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinShow (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class TinBreaklineType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eTinBreaklineNormal (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinNonDestructive (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class TinConstraintType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eTinBoundary (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinBreakline (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinWall (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class TinIntersectionElevation:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eTinElevationMax (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinElevationMid (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinElevationMin (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinNotAllowed (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class TinSurfaceDefinitionType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eAddBoundaries (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eAddBreaklines (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eAddDrawingObjects (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eAddLine (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eAddLines (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eAddPoint (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eAddPointClouds (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eAddPointFiles (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eAddPointGroups (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eAddPoints (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eAddWalls (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eCreateFromC3D (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eCreateFromContours (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eCreateFromCorridor (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eCreateFromFaces (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eCreateMerged (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eCreateSnapshot (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eCreateTypedSnapshot (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eDeform (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eDeleteEdge (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eDeleteEdges (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eDeletePoint (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eDeletePoints (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGroupDefinitions (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eIFC (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eLandXML (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eMerge (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eMinimizeFlatAreas (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eModifyPointElevation (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eModifyPointsElevation (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eModifyPointsElevations (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eMovePoint (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eMovePoints (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eNone (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eRemoveBelowAboveElevation (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eRemoveOuterEdges (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eRiseLower (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eSmoothen (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eSwapEdge (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTransform (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTrianglesVisibility (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eVolume (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class TinSurfaceIntersectType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eTinSurfaceAll (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinSurfaceFirstOnly (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class TinSurfaceMeshType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eTinSurfaceMeshDepth (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinSurfaceMeshElevation (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinSurfaceMeshSurface (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class TinSurfaceSolidType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eSolidTypeSurfaceDepth (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eSolidTypeSurfaceElevation (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eSolidTypeSurfaceSurface (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class TinSurfaceStyle:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eTinStyleBoundaryLine (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinStyleContours (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinStyleElevationTooltip (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinStyleNone (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinStylePoints (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinStyleTriangles (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class TinWallSide:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eTinWallLeft (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinWallRight (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class TinWallType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eTinWallNormal (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinWallProjected (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
 class VAlignmentElementType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
@@ -9336,6 +13417,41 @@ class VAlignmentTangencyConstraint:
       '''None'''
     ...
     def eUndefined (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+
+class VolumeSurfaceType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eTinVolumeBaseComparison (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinVolumeToDepth (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinVolumeToElevation (self, *args, **kwargs)-> None :
       '''None'''
     ...
     def imag (self, *args, **kwargs)-> None :
