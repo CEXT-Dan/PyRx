@@ -2196,4 +2196,113 @@ BrxCvDbTinSurfaceDefinitionTrianglesVisibility* PyBrxCvDbTinSurfaceDefinitionTri
         }
     return static_cast<BrxCvDbTinSurfaceDefinitionTrianglesVisibility*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionRemoveElevations
+void makePyBrxCvDbTinSurfaceDefinitionRemoveElevationsWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionRemoveElevations");
+    class_<PyBrxCvDbTinSurfaceDefinitionRemoveElevations, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionRemoveElevations")
+        .def(init<>())
+        .def(init<bool, double, bool, double>())
+        .def("removeBelow", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::removeBelow, DS.ARGS())
+        .def("setRemoveBelow", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveBelow, DS.ARGS({ "val : bool" }))
+        .def("removeBelowElevation", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::removeBelowElevation, DS.ARGS())
+        .def("setRemoveBelowElevation", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveBelowElevation, DS.ARGS({ "val : float" }))
+        .def("removeAbove", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::removeAbove, DS.ARGS())
+        .def("setRemoveAbove", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveAbove, DS.ARGS({ "val : bool" }))
+        .def("removeAboveElevation", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::removeAboveElevation, DS.ARGS())
+        .def("setRemoveAboveElevation", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveAboveElevation, DS.ARGS({ "val : float" }))
+        .def("removedPointsCount", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::removedPointsCount, DS.ARGS())
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionRemoveElevations::PyBrxCvDbTinSurfaceDefinitionRemoveElevations()
+    :PyBrxCvDbTinSurfaceDefinitionRemoveElevations(new BrxCvDbTinSurfaceDefinitionRemoveElevations(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionRemoveElevations::PyBrxCvDbTinSurfaceDefinitionRemoveElevations(bool removeBelow, double removeBelowElevation, bool removeAbove, double removeAboveElevation)
+    :PyBrxCvDbTinSurfaceDefinitionRemoveElevations(new BrxCvDbTinSurfaceDefinitionRemoveElevations(removeBelow, removeBelowElevation, removeAbove, removeAboveElevation), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionRemoveElevations::PyBrxCvDbTinSurfaceDefinitionRemoveElevations(BrxCvDbTinSurfaceDefinitionRemoveElevations* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionRemoveElevations::removeBelow() const
+{
+    return impObj()->removeBelow();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveBelow(bool removeBelow)
+{
+    return impObj()->setRemoveBelow(removeBelow);
+}
+
+double PyBrxCvDbTinSurfaceDefinitionRemoveElevations::removeBelowElevation() const
+{
+    return impObj()->removeBelowElevation();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveBelowElevation(double removeBelowElevation)
+{
+    return impObj()->setRemoveBelowElevation(removeBelowElevation);
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionRemoveElevations::removeAbove() const
+{
+    return impObj()->removeAbove();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveAbove(bool removeAbove)
+{
+    return impObj()->setRemoveAbove(removeAbove);
+}
+
+double PyBrxCvDbTinSurfaceDefinitionRemoveElevations::removeAboveElevation() const
+{
+    return impObj()->removeAboveElevation();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveAboveElevation(double removeAboveElevation)
+{
+    return impObj()->setRemoveAboveElevation(removeAboveElevation);
+}
+
+Adesk::UInt32 PyBrxCvDbTinSurfaceDefinitionRemoveElevations::removedPointsCount() const
+{
+    return impObj()->removedPointsCount();
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionRemoveElevations::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionRemoveElevations";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionRemoveElevations::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionRemoveElevations::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionRemoveElevations PyBrxCvDbTinSurfaceDefinitionRemoveElevations::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionRemoveElevations dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionRemoveElevations* PyBrxCvDbTinSurfaceDefinitionRemoveElevations::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionRemoveElevations*>(m_pyImp.get());
+}
 #endif //BRXAPP
