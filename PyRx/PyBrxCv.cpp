@@ -65,6 +65,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvDbTinSurfaceDefinitionModifyPointsElevationWrapper();
     makePyBrxCvDbTinSurfaceDefinitionModifyPointsElevationsWrapper();
     makePyBrxCvDbTinSurfaceDefinitionCreateFromFacesWrapper();
+    makePyBrxCvDbTinSurfaceDefinitionAddDrawingObjectsWrapper();
 
     enum_<PyBrxCvDbStyleManager::EStyleManagerType>("StyleManagerType")
         .value("ePointLabel", PyBrxCvDbStyleManager::EStyleManagerType::ePointLabel)
@@ -319,6 +320,24 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eMinimizeFlatAreas", BrxCvDbTinSurfaceDefinition::EType::eMinimizeFlatAreas)
         .value("eTrianglesVisibility", BrxCvDbTinSurfaceDefinition::EType::eTrianglesVisibility)
         .value("eRemoveBelowAboveElevation", BrxCvDbTinSurfaceDefinition::EType::eRemoveBelowAboveElevation)
+        .export_values()
+        ;
+    enum_<BrxCvDbTinSurfaceDefinitionAddDrawingObjects::EDrawingObjectType>("DrawingObjectType")
+        .value("eUnknown", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::EDrawingObjectType::eUnknown)
+        .value("ePoint", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::EDrawingObjectType::ePoint)
+        .value("eBlock", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::EDrawingObjectType::eBlock)
+        .value("eText", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::EDrawingObjectType::eText)
+        .value("eLine", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::EDrawingObjectType::eLine)
+        .value("eFace", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::EDrawingObjectType::eFace)
+        .value("ePolyline", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::EDrawingObjectType::ePolyline)
+        .value("eCivilPoint", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::EDrawingObjectType::eCivilPoint)
+        .export_values()
+        ;
+    enum_<BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation>("TinIntersectionElevation")
+        .value("eTinNotAllowed", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation::eTinNotAllowed)
+        .value("eTinElevationMin", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation::eTinElevationMin)
+        .value("eTinElevationMax", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation::eTinElevationMax)
+        .value("eTinElevationMid", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation::eTinElevationMid)
         .export_values()
         ;
 

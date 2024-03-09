@@ -4,6 +4,8 @@
 #include "BrxCvDbTinSurfaceDefinition.h"
 
 class PyGeLineSeg2d;
+class PyDbEntity;
+class PyDbObjectId;
 #ifdef BRXAPP
 
 
@@ -426,6 +428,38 @@ public:
 
 public:
     inline BrxCvDbTinSurfaceDefinitionCreateFromFaces* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects
+void makePyBrxCvDbTinSurfaceDefinitionAddDrawingObjectsWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects : public PyBrxCvDbTinSurfaceDefinition
+{
+    using EDrawingObjectType = BrxCvDbTinSurfaceDefinitionAddDrawingObjects::EDrawingObjectType;
+    using ETinIntersectionElevation = BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation;
+public:
+    PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects();
+    PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects(const boost::python::list& ents, double midOrdinateDistance, bool applyEdges, ETinIntersectionElevation crossingsElevation);
+    PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects(BrxCvDbTinSurfaceDefinitionAddDrawingObjects* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects() override = default;
+
+    bool                 addEntity(const PyDbEntity& pEntity);
+    bool                 addEntityId(const PyDbObjectId& entityId);
+    Adesk::UInt32        drawingObjectsCount() const;
+    boost::python::tuple drawingObjectAt(const Adesk::UInt32 index) const;
+    ETinIntersectionElevation crossingsElevation() const;
+    bool                 setCrossingsElevation(const ETinIntersectionElevation crossingsElevation);
+    bool                 isApplyEdges() const;
+    bool                 setIsApplyEdges(bool isApplyEdges);
+    bool                 removeDrawingObjectAt(const Adesk::UInt32 index);
+    bool                 removeAllDrawingObjects();
+
+    static std::string   className();
+    static PyRxClass     desc();
+    static PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionAddDrawingObjects* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 #endif //BRXAPP
