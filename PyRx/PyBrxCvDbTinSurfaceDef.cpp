@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "PyBrxCvDbTinSurface.h"
+#include "PyBrxCvDbTinSurfaceDef.h"
 #include "PyGeLinearEnt2d.h"
 #include "PyDbEnts.h"
 #include "PyDbObjectId.h"

@@ -140,7 +140,7 @@
     <ClCompile Include="PyBrxCvDbAlignments.cpp" />
     <ClCompile Include="PyBrxCvDbObjectManager.cpp" />
     <ClCompile Include="PyBrxCvDbPoint.cpp" />
-    <ClCompile Include="PyBrxCvDbTinSurface.cpp" />
+    <ClCompile Include="PyBrxCvDbTinSurfaceDef.cpp" />
     <ClCompile Include="PyBrxCvObject.cpp" />
     <ClCompile Include="PyDb3dProfile.cpp" />
     <ClCompile Include="PyDbDatabaseReactor.cpp" />
@@ -264,7 +264,7 @@
     <ClInclude Include="PyBrxCvDbAlignments.h" />
     <ClInclude Include="PyBrxCvDbObjectManager.h" />
     <ClInclude Include="PyBrxCvDbPoint.h" />
-    <ClInclude Include="PyBrxCvDbTinSurface.h" />
+    <ClInclude Include="PyBrxCvDbTinSurfaceDef.h" />
     <ClInclude Include="PyBrxCvObject.h" />
     <ClInclude Include="PyDb3dProfile.h" />
     <ClInclude Include="PyDbDatabaseReactor.h" />

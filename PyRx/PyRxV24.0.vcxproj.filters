@@ -361,7 +361,7 @@
     <ClCompile Include="PyBrxCvDbPoint.cpp">
       <Filter>Source Files\PyBrxCv</Filter>
     </ClCompile>
-    <ClCompile Include="PyBrxCvDbTinSurface.cpp">
+    <ClCompile Include="PyBrxCvDbTinSurfaceDef.cpp">
       <Filter>Source Files\PyBrxCv</Filter>
     </ClCompile>
   </ItemGroup>
@@ -729,7 +729,7 @@
     <ClInclude Include="PyBrxCvDbPoint.h">
       <Filter>Header Files\PyBrxCv</Filter>
     </ClInclude>
-    <ClInclude Include="PyBrxCvDbTinSurface.h">
+    <ClInclude Include="PyBrxCvDbTinSurfaceDef.h">
       <Filter>Header Files\PyBrxCv</Filter>
     </ClInclude>
   </ItemGroup>
