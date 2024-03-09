@@ -1145,4 +1145,94 @@ BrxCvDbTinSurfaceDefinitionModifyPointElevation* PyBrxCvDbTinSurfaceDefinitionMo
         }
     return static_cast<BrxCvDbTinSurfaceDefinitionModifyPointElevation*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation
+void makePyBrxCvDbTinSurfaceDefinitionModifyPointsElevationWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionModifyPointsElevation");
+    class_<PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionModifyPointsElevation")
+        .def(init<>())
+        .def(init<const boost::python::list&, double, bool >())
+        .def("positions", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::positions, DS.ARGS())
+        .def("setPositions", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::setPositions, DS.ARGS({ "pt : list[PyGe.Point2d]" }))
+        .def("elevation", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::elevation, DS.ARGS())
+        .def("setElevation", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::setElevation, DS.ARGS({ "val : float" }))
+        .def("isDeltaElevation", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::isDeltaElevation, DS.ARGS())
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation()
+    :PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation(new BrxCvDbTinSurfaceDefinitionModifyPointsElevation(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation(const boost::python::list& pos, double elevation, bool isDeltaElevation)
+    :PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation(new BrxCvDbTinSurfaceDefinitionModifyPointsElevation(PyListToPoint2dArray(pos), elevation, isDeltaElevation), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation(BrxCvDbTinSurfaceDefinitionModifyPointsElevation* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+boost::python::list PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::positions() const
+{
+    return Point2dArrayToPyList(impObj()->positions());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::setPositions(const boost::python::list& position)
+{
+    return impObj()->setPositions(PyListToPoint2dArray(position));
+}
+
+double PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::elevation() const
+{
+    return impObj()->elevation();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::setElevation(double elevation)
+{
+    return impObj()->setElevation(elevation);
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::isDeltaElevation() const
+{
+    return impObj()->isDeltaElevation();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::setIsDeltaElevation(bool isDeltaElevation)
+{
+    return impObj()->setIsDeltaElevation(isDeltaElevation);
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionModifyPointsElevation";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionModifyPointsElevation::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionModifyPointsElevation* PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionModifyPointsElevation*>(m_pyImp.get());
+}
 #endif //BRXAPP

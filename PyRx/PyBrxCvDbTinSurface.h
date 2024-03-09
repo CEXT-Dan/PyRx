@@ -327,7 +327,6 @@ public:
     inline BrxCvDbTinSurfaceDefinitionAddLines* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbTinSurfaceDefinitionModifyPointElevation
 void makePyBrxCvDbTinSurfaceDefinitionModifyPointElevationWrapper();
@@ -351,6 +350,31 @@ public:
 
 public:
     inline BrxCvDbTinSurfaceDefinitionModifyPointElevation* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation
+void makePyBrxCvDbTinSurfaceDefinitionModifyPointsElevationWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation();
+    PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation(const boost::python::list& pos, double elevation, bool isDeltaElevation);
+    PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation(BrxCvDbTinSurfaceDefinitionModifyPointsElevation* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation() override = default;
+    boost::python::list     positions() const;
+    bool                    setPositions(const boost::python::list& position);
+    double                  elevation() const;
+    bool                    setElevation(double elevation);
+    bool                    isDeltaElevation() const;
+    bool                    setIsDeltaElevation(bool isDeltaElevation);
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionModifyPointsElevation* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 #endif //BRXAPP
