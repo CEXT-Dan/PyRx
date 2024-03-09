@@ -54,6 +54,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvDbTinSurfaceDefinitionAddPointWrapper();
     makePyBrxCvDbTinSurfaceDefinitionAddPointsWrapper();
     makePyBrxCvDbTinSurfaceDefinitionDeletePointWrapper();
+    makePyBrxCvDbTinSurfaceDefinitionSwapEdgeWrapper();
 
     enum_<PyBrxCvDbStyleManager::EStyleManagerType>("StyleManagerType")
         .value("ePointLabel", PyBrxCvDbStyleManager::EStyleManagerType::ePointLabel)

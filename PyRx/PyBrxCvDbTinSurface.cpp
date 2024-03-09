@@ -543,4 +543,71 @@ BrxCvDbTinSurfaceDefinitionDeletePoints* PyBrxCvDbTinSurfaceDefinitionDeletePoin
         }
     return static_cast<BrxCvDbTinSurfaceDefinitionDeletePoints*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionSwapEdge
+void makePyBrxCvDbTinSurfaceDefinitionSwapEdgeWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionSwapEdge");
+    class_<PyBrxCvDbTinSurfaceDefinitionSwapEdge, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionSwapEdge")
+        .def(init<>())
+        .def(init<const AcGePoint2d&>())
+        .def("transformationMatrix", &PyBrxCvDbTinSurfaceDefinitionSwapEdge::position, DS.ARGS())
+        .def("setTransformationMatrix", &PyBrxCvDbTinSurfaceDefinitionSwapEdge::setPosition, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionSwapEdge::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionSwapEdge::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionSwapEdge::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionSwapEdge::PyBrxCvDbTinSurfaceDefinitionSwapEdge()
+    :PyBrxCvDbTinSurfaceDefinitionSwapEdge(new BrxCvDbTinSurfaceDefinitionSwapEdge(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionSwapEdge::PyBrxCvDbTinSurfaceDefinitionSwapEdge(const AcGePoint2d& mtx)
+    :PyBrxCvDbTinSurfaceDefinitionSwapEdge(new BrxCvDbTinSurfaceDefinitionSwapEdge(mtx), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionSwapEdge::PyBrxCvDbTinSurfaceDefinitionSwapEdge(BrxCvDbTinSurfaceDefinitionSwapEdge* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+AcGePoint2d PyBrxCvDbTinSurfaceDefinitionSwapEdge::position() const
+{
+    return impObj()->position();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionSwapEdge::setPosition(const AcGePoint2d& position)
+{
+    return impObj()->setPosition(position);
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionSwapEdge::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionSwapEdge";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionSwapEdge::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionSwapEdge::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionSwapEdge PyBrxCvDbTinSurfaceDefinitionSwapEdge::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionSwapEdge dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionSwapEdge* PyBrxCvDbTinSurfaceDefinitionSwapEdge::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionSwapEdge*>(m_pyImp.get());
+}
 #endif //BRXAPP
