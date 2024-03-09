@@ -3,7 +3,9 @@
 #include "PyBrxCvObject.h"
 #include "BrxCvDbTinSurfaceDefinition.h"
 
+class PyGeLineSeg2d;
 #ifdef BRXAPP
+
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbTinSurfaceDefinition
@@ -281,6 +283,27 @@ public:
 
 public:
     inline BrxCvDbTinSurfaceDefinitionDeleteEdges* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionDeleteEdge
+void makePyBrxCvDbTinSurfaceDefinitionAddLineWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionAddLine : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionAddLine();
+    PyBrxCvDbTinSurfaceDefinitionAddLine(const AcGeLineSeg2d& mtx);
+    PyBrxCvDbTinSurfaceDefinitionAddLine(BrxCvDbTinSurfaceDefinitionAddLine* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionAddLine() override = default;
+    PyGeLineSeg2d           line() const;
+    bool                    setLine(const PyGeLineSeg2d& line);
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbTinSurfaceDefinitionAddLine cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionAddLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 #endif //BRXAPP
