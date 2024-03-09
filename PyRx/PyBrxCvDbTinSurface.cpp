@@ -2,6 +2,7 @@
 #include "PyBrxCvDbTinSurface.h"
 #include "PyGeLinearEnt2d.h"
 #include "PyDbEnts.h"
+#include "PyDbObjectId.h"
 
 #ifdef BRXAPP
 using namespace boost::python;
@@ -1406,5 +1407,124 @@ BrxCvDbTinSurfaceDefinitionCreateFromFaces* PyBrxCvDbTinSurfaceDefinitionCreateF
         throw PyNullObject(src);
         }
     return static_cast<BrxCvDbTinSurfaceDefinitionCreateFromFaces*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects
+void makePyBrxCvDbTinSurfaceDefinitionAddDrawingObjectsWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionAddDrawingObjects");
+    class_<PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionAddDrawingObjects")
+        .def(init<>())
+        .def(init<const boost::python::list&, double, bool, BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation>())
+        .def("addEntity", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::addEntity, DS.ARGS({ "entity: PyDb.Entity" }))
+        .def("addEntityId", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::addEntityId, DS.ARGS({ "id : PyDb.ObjectId" }))
+        .def("drawingObjectsCount", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::drawingObjectsCount, DS.ARGS())
+        .def("drawingObjectAt", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::drawingObjectAt, DS.ARGS({ "idx : int" }))
+        .def("crossingsElevation", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::crossingsElevation, DS.ARGS())
+        .def("setCrossingsElevation", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::setCrossingsElevation, DS.ARGS({ "val : PyBrxCv.TinIntersectionElevation" }))
+        .def("isApplyEdges", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::isApplyEdges, DS.ARGS())
+        .def("setIsApplyEdges", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::setIsApplyEdges, DS.ARGS({ "val : bool" }))
+        .def("removeDrawingObjectAt", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::removeDrawingObjectAt, DS.ARGS({ "idx : int" }))
+        .def("removeAllDrawingObjects", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::removeAllDrawingObjects, DS.ARGS())
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects()
+    :PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects(new BrxCvDbTinSurfaceDefinitionAddDrawingObjects(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects(const boost::python::list& ents, double midOrdinateDistance, bool applyEdges, ETinIntersectionElevation crossingsElevation)
+    :PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects(new BrxCvDbTinSurfaceDefinitionAddDrawingObjects(PyListToPyDbEntityPtrArray(ents), midOrdinateDistance, applyEdges, crossingsElevation), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects(BrxCvDbTinSurfaceDefinitionAddDrawingObjects* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::addEntity(const PyDbEntity& pEntity)
+{
+    return impObj()->addEntity(pEntity.impObj());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::addEntityId(const PyDbObjectId& entityId)
+{
+    return impObj()->addEntity(entityId.m_id);
+}
+
+Adesk::UInt32 PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::drawingObjectsCount() const
+{
+    return impObj()->drawingObjectsCount();
+}
+
+boost::python::tuple PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::drawingObjectAt(const Adesk::UInt32 index) const
+{
+    PyAutoLockGIL lock;
+    EDrawingObjectType type; 
+    AcGePoint3dArray points;
+    bool flag = impObj()->drawingObjectAt(index, type, points);
+    return boost::python::make_tuple(flag, type, Point3dArrayToPyList(points));
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::crossingsElevation() const
+{
+    return impObj()->crossingsElevation();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::setCrossingsElevation(const ETinIntersectionElevation crossingsElevation)
+{
+    return impObj()->setCrossingsElevation(crossingsElevation);
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::isApplyEdges() const
+{
+    return impObj()->isApplyEdges();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::setIsApplyEdges(bool isApplyEdges)
+{
+    return impObj()->setIsApplyEdges(isApplyEdges);
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::removeDrawingObjectAt(const Adesk::UInt32 index)
+{
+    return impObj()->removeDrawingObjectAt(index);
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::removeAllDrawingObjects()
+{
+    return impObj()->removeAllDrawingObjects();
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionAddDrawingObjects";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionAddDrawingObjects::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionAddDrawingObjects* PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionAddDrawingObjects*>(m_pyImp.get());
 }
 #endif //BRXAPP
