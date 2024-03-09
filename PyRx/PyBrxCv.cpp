@@ -4,7 +4,7 @@
 #include "PyBrxCvDbObjectManager.h"
 #include "PyBrxCvDbPoint.h"
 #include "PyBrxCvDbTinSurfaceDef.h"
-
+#include "PyBrxCvDbTinSurface.h"
 
 #ifdef BRXAPP
 
@@ -347,6 +347,12 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eTinElevationMin", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation::eTinElevationMin)
         .value("eTinElevationMax", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation::eTinElevationMax)
         .value("eTinElevationMid", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation::eTinElevationMid)
+        .export_values()
+        ;
+    enum_<BrxCvDbTinSurfaceConstraint::ETinConstraintType>("TinConstraintType")
+        .value("eTinBreakline", BrxCvDbTinSurfaceConstraint::ETinConstraintType::eTinBreakline)
+        .value("eTinBoundary", BrxCvDbTinSurfaceConstraint::ETinConstraintType::eTinBoundary)
+        .value("eTinWall", BrxCvDbTinSurfaceConstraint::ETinConstraintType::eTinWall)
         .export_values()
         ;
 
