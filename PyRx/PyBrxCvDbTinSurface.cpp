@@ -1466,7 +1466,7 @@ Adesk::UInt32 PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::drawingObjectsCoun
 boost::python::tuple PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::drawingObjectAt(const Adesk::UInt32 index) const
 {
     PyAutoLockGIL lock;
-    EDrawingObjectType type; 
+    EDrawingObjectType type;
     AcGePoint3dArray points;
     bool flag = impObj()->drawingObjectAt(index, type, points);
     return boost::python::make_tuple(flag, type, Point3dArrayToPyList(points));
@@ -1593,5 +1593,108 @@ BrxCvDbTinSurfaceDefinitionRiseLower* PyBrxCvDbTinSurfaceDefinitionRiseLower::im
         throw PyNullObject(src);
         }
     return static_cast<BrxCvDbTinSurfaceDefinitionRiseLower*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML
+void makePyBrxCvDbTinSurfaceDefinitionCreateFromLandXMLWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionCreateFromLandXML");
+    class_<PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionCreateFromLandXML")
+        .def(init<>())
+        .def(init<const std::string&, const std::string&, AcDb::UnitsValue, bool>())
+        .def("filePath", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::filePath, DS.ARGS())
+        .def("setFilePath", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setFilePath, DS.ARGS({ "val : str" }))
+        .def("surfaceName", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::surfaceName, DS.ARGS())
+        .def("setSurfaceName", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setSurfaceName, DS.ARGS({ "val : str" }))
+        .def("scaleToDwgUnits", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::scaleToDwgUnits, DS.ARGS())
+        .def("setScaleToDwgUnits", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setScaleToDwgUnits, DS.ARGS({ "val : bool" }))
+        .def("dwgUnits", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::dwgUnits, DS.ARGS())
+        .def("dwgUnits", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::dwgUnits, DS.ARGS({ "units : PyDb.UnitsValue" }))
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML()
+    :PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML(new BrxCvDbTinSurfaceDefinitionCreateFromLandXML(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML(const std::string& path, const std::string& name, AcDb::UnitsValue dwgUnits, bool scaleToDwgUnits)
+    :PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML(new BrxCvDbTinSurfaceDefinitionCreateFromLandXML(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str(), dwgUnits, scaleToDwgUnits), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML(BrxCvDbTinSurfaceDefinitionCreateFromLandXML* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::filePath() const
+{
+    return wstr_to_utf8(impObj()->filePath());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setFilePath(const std::string& filePath)
+{
+    return impObj()->setFilePath(utf8_to_wstr(filePath).c_str());
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::surfaceName() const
+{
+    return wstr_to_utf8(impObj()->surfaceName());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setSurfaceName(const std::string& surfaceName)
+{
+    return impObj()->setSurfaceName(utf8_to_wstr(surfaceName).c_str());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::scaleToDwgUnits() const
+{
+    return impObj()->scaleToDwgUnits();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setScaleToDwgUnits(bool scaleToDwgUnits)
+{
+    return impObj()->setScaleToDwgUnits(scaleToDwgUnits);
+}
+
+AcDb::UnitsValue PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::dwgUnits() const
+{
+    return impObj()->dwgUnits();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setDwgUnits(const AcDb::UnitsValue dwgUnits)
+{
+    return impObj()->setDwgUnits(dwgUnits);
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionCreateFromLandXML";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionCreateFromLandXML::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionCreateFromLandXML* PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionCreateFromLandXML*>(m_pyImp.get());
 }
 #endif //BRXAPP
