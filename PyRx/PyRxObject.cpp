@@ -58,7 +58,7 @@ struct PyRxObjectDeleter
     {
         if (p == nullptr)
             return;
-        else if (m_forceKeepAlive)
+        if (m_forceKeepAlive)
             return;
         else if (isDbroThenClose(p))
             return;
