@@ -689,4 +689,85 @@ BrxCvDbTinSurfaceDefinitionMovePoint* PyBrxCvDbTinSurfaceDefinitionMovePoint::im
         }
     return static_cast<BrxCvDbTinSurfaceDefinitionMovePoint*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionMovePoints
+void makePyBrxCvDbTinSurfaceDefinitionMovePointsWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionMovePoints");
+    class_<PyBrxCvDbTinSurfaceDefinitionMovePoints, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionMovePoints")
+        .def(init<>())
+        .def(init<const boost::python::list&, const AcGeVector2d&>())
+
+        .def("fromPoints", &PyBrxCvDbTinSurfaceDefinitionMovePoints::fromPoints, DS.ARGS())
+        .def("setFromPoints", &PyBrxCvDbTinSurfaceDefinitionMovePoints::setFromPoints, DS.ARGS({ "pt : list[PyGe.Point2d]" }))
+        .def("displacement", &PyBrxCvDbTinSurfaceDefinitionMovePoints::displacement, DS.ARGS())
+        .def("setDisplacement", &PyBrxCvDbTinSurfaceDefinitionMovePoints::setDisplacement, DS.ARGS({ "vec : PyGe.Vector3d" }))
+
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionMovePoints::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionMovePoints::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionMovePoints::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionMovePoints::PyBrxCvDbTinSurfaceDefinitionMovePoints()
+    :PyBrxCvDbTinSurfaceDefinitionMovePoints(new BrxCvDbTinSurfaceDefinitionMovePoints(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionMovePoints::PyBrxCvDbTinSurfaceDefinitionMovePoints(const boost::python::list& from, const AcGeVector2d& displacement)
+    :PyBrxCvDbTinSurfaceDefinitionMovePoints(new BrxCvDbTinSurfaceDefinitionMovePoints(PyListToPoint2dArray(from), displacement), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionMovePoints::PyBrxCvDbTinSurfaceDefinitionMovePoints(BrxCvDbTinSurfaceDefinitionMovePoints* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+boost::python::list PyBrxCvDbTinSurfaceDefinitionMovePoints::fromPoints() const
+{
+    return Point2dArrayToPyList(impObj()->fromPoints());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionMovePoints::setFromPoints(const boost::python::list& fromPoints)
+{
+    return impObj()->setFromPoints(PyListToPoint2dArray(fromPoints));
+}
+
+AcGeVector2d PyBrxCvDbTinSurfaceDefinitionMovePoints::displacement() const
+{
+    return impObj()->displacement();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionMovePoints::setDisplacement(const AcGeVector2d& displacement)
+{
+    return impObj()->setDisplacement(displacement);
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionMovePoints::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionMovePoints";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionMovePoints::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionMovePoints::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionMovePoints PyBrxCvDbTinSurfaceDefinitionMovePoints::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionMovePoints dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionMovePoints* PyBrxCvDbTinSurfaceDefinitionMovePoints::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionMovePoints*>(m_pyImp.get());
+}
 #endif //BRXAPP
