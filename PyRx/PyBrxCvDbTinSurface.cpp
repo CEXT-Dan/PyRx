@@ -1697,4 +1697,150 @@ BrxCvDbTinSurfaceDefinitionCreateFromLandXML* PyBrxCvDbTinSurfaceDefinitionCreat
         }
     return static_cast<BrxCvDbTinSurfaceDefinitionCreateFromLandXML*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionAddFromFiles
+void makePyBrxCvDbTinSurfaceDefinitionAddFromFilesWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionAddFromFiles");
+    class_<PyBrxCvDbTinSurfaceDefinitionAddFromFiles, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionAddFromFiles")
+        .def(init<>())
+        .def(init<const boost::python::list&, const PyDbObjectId&>())
+        .def("filesPaths", &PyBrxCvDbTinSurfaceDefinitionAddFromFiles::filesPaths, DS.ARGS())
+        .def("setFilesPaths", &PyBrxCvDbTinSurfaceDefinitionAddFromFiles::setFilesPaths, DS.ARGS({ "val : list[str]" }))
+        .def("fileFormatId", &PyBrxCvDbTinSurfaceDefinitionAddFromFiles::fileFormatId, DS.ARGS())
+        .def("setFileFormatId", &PyBrxCvDbTinSurfaceDefinitionAddFromFiles::setFileFormatId, DS.ARGS({ "id : PyDb.ObjectId" }))
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionAddFromFiles::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddFromFiles::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddFromFiles::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddFromFiles::PyBrxCvDbTinSurfaceDefinitionAddFromFiles()
+    :PyBrxCvDbTinSurfaceDefinitionAddFromFiles(new BrxCvDbTinSurfaceDefinitionAddFromFiles(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddFromFiles::PyBrxCvDbTinSurfaceDefinitionAddFromFiles(const boost::python::list& paths, const PyDbObjectId& fileFormatId)
+    :PyBrxCvDbTinSurfaceDefinitionAddFromFiles(new BrxCvDbTinSurfaceDefinitionAddFromFiles(PyListAcStringArray(paths), fileFormatId.m_id), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddFromFiles::PyBrxCvDbTinSurfaceDefinitionAddFromFiles(BrxCvDbTinSurfaceDefinitionAddFromFiles* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+boost::python::list PyBrxCvDbTinSurfaceDefinitionAddFromFiles::filesPaths() const
+{
+    return AcStringArrayToPyList(impObj()->filesPaths());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionAddFromFiles::setFilesPaths(const boost::python::list& filesPaths)
+{
+    return impObj()->setFilesPaths(PyListAcStringArray(filesPaths));
+}
+
+PyDbObjectId PyBrxCvDbTinSurfaceDefinitionAddFromFiles::fileFormatId() const
+{
+    return PyDbObjectId(impObj()->fileFormatId());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionAddFromFiles::setFileFormatId(const PyDbObjectId& fileFormatId)
+{
+    return impObj()->setFileFormatId(fileFormatId.m_id);
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionAddFromFiles::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionAddFromFiles";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionAddFromFiles::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionAddFromFiles::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddFromFiles PyBrxCvDbTinSurfaceDefinitionAddFromFiles::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionAddFromFiles dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionAddFromFiles* PyBrxCvDbTinSurfaceDefinitionAddFromFiles::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionAddFromFiles*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds
+void makePyBrxCvDbTinSurfaceDefinitionAddFromPointCloudsWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionAddFromPointClouds");
+    class_<PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionAddFromPointClouds")
+        .def(init<>())
+        .def(init<const boost::python::list&>())
+        .def("pcObjectIds", &PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::pcObjectIds, DS.ARGS())
+        .def("setPcObjectIds", &PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::setPcObjectIds, DS.ARGS({ "val : list[PyDb.ObjectId]" }))
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds()
+    :PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds(new BrxCvDbTinSurfaceDefinitionAddFromPointClouds(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds(const boost::python::list& ids)
+    :PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds(new BrxCvDbTinSurfaceDefinitionAddFromPointClouds(PyListToObjectIdArray(ids)), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds(BrxCvDbTinSurfaceDefinitionAddFromPointClouds* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+boost::python::list PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::pcObjectIds() const
+{
+    return ObjectIdArrayToPyList(impObj()->pcObjectIds());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::setPcObjectIds(const boost::python::list& pcObjectIds)
+{
+    return impObj()->setPcObjectIds(PyListToObjectIdArray(pcObjectIds));
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionAddFromPointClouds";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionAddFromPointClouds::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionAddFromPointClouds* PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionAddFromPointClouds*>(m_pyImp.get());
+}
 #endif //BRXAPP

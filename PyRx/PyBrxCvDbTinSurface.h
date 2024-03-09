@@ -512,5 +512,58 @@ public:
     inline BrxCvDbTinSurfaceDefinitionCreateFromLandXML* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionAddFromFiles
+void makePyBrxCvDbTinSurfaceDefinitionAddFromFilesWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionAddFromFiles : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionAddFromFiles();
+    PyBrxCvDbTinSurfaceDefinitionAddFromFiles(const boost::python::list& paths, const PyDbObjectId& fileFormatId);
+    PyBrxCvDbTinSurfaceDefinitionAddFromFiles(BrxCvDbTinSurfaceDefinitionAddFromFiles* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionAddFromFiles() override = default;
+
+    boost::python::list filesPaths() const;
+    bool                setFilesPaths(const boost::python::list& filesPaths);
+
+    PyDbObjectId        fileFormatId() const;
+    bool                setFileFormatId(const PyDbObjectId& fileFormatId);
+
+    //BrxCvSurfaceDensifyPtr densify();
+    //BrxCvSurfaceSimplifyPtr simplify();
+
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyBrxCvDbTinSurfaceDefinitionAddFromFiles cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionAddFromFiles* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds
+void makePyBrxCvDbTinSurfaceDefinitionAddFromPointCloudsWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds();
+    PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds(const boost::python::list& ids);
+    PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds(BrxCvDbTinSurfaceDefinitionAddFromPointClouds* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds() override = default;
+
+    boost::python::list pcObjectIds() const;
+    bool                setPcObjectIds(const boost::python::list& pcObjectIds);
+
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionAddFromPointClouds* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
 
 #endif //BRXAPP
