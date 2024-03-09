@@ -211,4 +211,29 @@ public:
 public:
     inline BrxCvDbTinSurfaceDefinitionMovePoint* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionMovePoints
+void makePyBrxCvDbTinSurfaceDefinitionMovePointsWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionMovePoints : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionMovePoints();
+    PyBrxCvDbTinSurfaceDefinitionMovePoints(const boost::python::list& from, const AcGeVector2d& displacement);
+    PyBrxCvDbTinSurfaceDefinitionMovePoints(BrxCvDbTinSurfaceDefinitionMovePoints* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionMovePoints() override = default;
+
+    boost::python::list fromPoints() const;
+    bool                setFromPoints(const boost::python::list& fromPoints);
+    AcGeVector2d        displacement() const;
+    bool                setDisplacement(const AcGeVector2d& displacement);
+
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbTinSurfaceDefinitionMovePoints cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionMovePoints* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 #endif //BRXAPP
