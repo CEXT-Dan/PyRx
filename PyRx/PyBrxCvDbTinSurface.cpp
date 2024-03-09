@@ -25,7 +25,6 @@ void makePyBrxCvDbTinSurfaceConstraintWrapper()
         ;
 }
 
-
 PyBrxCvDbTinSurfaceConstraint::PyBrxCvDbTinSurfaceConstraint()
     :m_pyImp(new BrxCvDbTinSurfaceConstraint())
 {
@@ -34,7 +33,11 @@ PyBrxCvDbTinSurfaceConstraint::PyBrxCvDbTinSurfaceConstraint()
 PyBrxCvDbTinSurfaceConstraint::PyBrxCvDbTinSurfaceConstraint(BrxCvDbTinSurfaceConstraint::ETinConstraintType type)
     :m_pyImp(new BrxCvDbTinSurfaceConstraint(type))
 {
+}
 
+PyBrxCvDbTinSurfaceConstraint::PyBrxCvDbTinSurfaceConstraint(BrxCvDbTinSurfaceConstraint* ptr)
+    :m_pyImp(ptr)
+{
 }
 
 BrxCvDbTinSurfaceConstraint::ETinConstraintType PyBrxCvDbTinSurfaceConstraint::constraintType() const
@@ -93,4 +96,45 @@ BrxCvDbTinSurfaceConstraint* PyBrxCvDbTinSurfaceConstraint::impObj(const std::so
         throw PyNullObject(src);
         }
     return m_pyImp.get();
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceBreakline
+void makePyBrxCvDbTinSurfaceBreaklineWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceConstraint");
+    class_<PyBrxCvDbTinSurfaceConstraint>("CvDbTinSurfaceConstraint", no_init)
+        .def(init<BrxCvDbTinSurfaceConstraint::ETinConstraintType>())
+        .def("intersectionElevation", &PyBrxCvDbTinSurfaceBreakline::intersectionElevation, DS.ARGS())
+        .def("setIntersectionElevation", &PyBrxCvDbTinSurfaceBreakline::setIntersectionElevation, DS.ARGS({ "val : PyBrxCv.TinBreaklineType" }))
+        .def("className", &PyBrxCvDbTinSurfaceBreakline::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxCvDbTinSurfaceBreakline::PyBrxCvDbTinSurfaceBreakline(const BrxCvDbTinSurfaceBreakline::ETinBreaklineType type)
+    :PyBrxCvDbTinSurfaceConstraint(new BrxCvDbTinSurfaceBreakline(type))
+{
+}
+
+BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation PyBrxCvDbTinSurfaceBreakline::intersectionElevation() const
+{
+    return impObj()->intersectionElevation();
+}
+
+void PyBrxCvDbTinSurfaceBreakline::setIntersectionElevation(const BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation elevationType)
+{
+    return impObj()->setIntersectionElevation(elevationType);
+}
+
+std::string PyBrxCvDbTinSurfaceBreakline::className()
+{
+    return "BrxCvDbTinSurfaceBreakline";
+}
+
+BrxCvDbTinSurfaceBreakline* PyBrxCvDbTinSurfaceBreakline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceBreakline*>(m_pyImp.get());
 }

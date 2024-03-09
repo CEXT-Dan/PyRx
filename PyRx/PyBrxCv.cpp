@@ -355,6 +355,18 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eTinWall", BrxCvDbTinSurfaceConstraint::ETinConstraintType::eTinWall)
         .export_values()
         ;
+    enum_<BrxCvDbTinSurfaceBreakline::ETinBreaklineType>("TinBreaklineType")
+        .value("eTinBreaklineNormal", BrxCvDbTinSurfaceBreakline::ETinBreaklineType::eTinBreaklineNormal)
+        .value("eTinNonDestructive", BrxCvDbTinSurfaceBreakline::ETinBreaklineType::eTinNonDestructive)
+        .export_values()
+        ;
+    enum_<BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation>("TinIntersectionElevation")
+        .value("eTinNotAllowed", BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation::eTinNotAllowed)
+        .value("eTinElevationMin", BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation::eTinElevationMin)
+        .value("eTinElevationMax", BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation::eTinElevationMax)
+        .value("eTinElevationMid", BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation::eTinElevationMid)
+        .export_values()
+        ;
 
 };
 

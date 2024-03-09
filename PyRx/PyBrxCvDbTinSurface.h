@@ -12,6 +12,7 @@ class PyBrxCvDbTinSurfaceConstraint
 public:
     PyBrxCvDbTinSurfaceConstraint();
     PyBrxCvDbTinSurfaceConstraint(BrxCvDbTinSurfaceConstraint::ETinConstraintType type);
+    PyBrxCvDbTinSurfaceConstraint(BrxCvDbTinSurfaceConstraint* ptr);
 
     BrxCvDbTinSurfaceConstraint::ETinConstraintType constraintType() const;
     void                setData1(Adesk::UInt64 id, const boost::python::list& points);
@@ -30,3 +31,17 @@ public:
     std::shared_ptr<BrxCvDbTinSurfaceConstraint> m_pyImp;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceBreakline
+void makePyBrxCvDbTinSurfaceBreaklineWrapper();
+
+class PyBrxCvDbTinSurfaceBreakline : public PyBrxCvDbTinSurfaceConstraint
+{
+public:
+    PyBrxCvDbTinSurfaceBreakline(const BrxCvDbTinSurfaceBreakline::ETinBreaklineType type);
+    BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation intersectionElevation() const;
+    void setIntersectionElevation(const BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation elevationType);
+    static std::string  className();
+public:
+    inline BrxCvDbTinSurfaceBreakline* impObj(const std::source_location& src = std::source_location::current()) const;
+};
