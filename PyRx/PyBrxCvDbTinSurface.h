@@ -483,5 +483,34 @@ public:
     inline BrxCvDbTinSurfaceDefinitionRiseLower* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML
+void makePyBrxCvDbTinSurfaceDefinitionCreateFromLandXMLWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML();
+    PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML(const std::string& path, const std::string& name, AcDb::UnitsValue dwgUnits, bool scaleToDwgUnits);
+    PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML(BrxCvDbTinSurfaceDefinitionCreateFromLandXML* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML() override = default;
+
+    std::string         filePath() const;
+    bool                setFilePath(const std::string& filePath);
+    std::string         surfaceName() const;
+    bool                setSurfaceName(const std::string& surfaceName);
+    bool                scaleToDwgUnits() const;
+    bool                setScaleToDwgUnits(bool scaleToDwgUnits);
+    AcDb::UnitsValue    dwgUnits() const;
+    bool                setDwgUnits(const AcDb::UnitsValue dwgUnits);
+
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionCreateFromLandXML* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 
 #endif //BRXAPP
