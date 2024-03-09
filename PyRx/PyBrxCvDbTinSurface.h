@@ -666,4 +666,32 @@ public:
     inline BrxCvDbTinSurfaceDefinitionTrianglesVisibility* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionRemoveElevations
+void makePyBrxCvDbTinSurfaceDefinitionRemoveElevationsWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionRemoveElevations : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionRemoveElevations();
+    PyBrxCvDbTinSurfaceDefinitionRemoveElevations(bool removeBelow, double removeBelowElevation, bool removeAbove, double removeAboveElevation);
+    PyBrxCvDbTinSurfaceDefinitionRemoveElevations(BrxCvDbTinSurfaceDefinitionRemoveElevations* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionRemoveElevations() override = default;
+    bool                removeBelow() const;
+    bool                setRemoveBelow(bool removeBelow);
+    double              removeBelowElevation() const;
+    bool                setRemoveBelowElevation(double removeBelowElevation);
+    bool                removeAbove() const;
+    bool                setRemoveAbove(bool removeAbove);
+    double              removeAboveElevation() const;
+    bool                setRemoveAboveElevation(double removeAboveElevation);
+    Adesk::UInt32       removedPointsCount() const;
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyBrxCvDbTinSurfaceDefinitionRemoveElevations cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionRemoveElevations* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 #endif //BRXAPP
