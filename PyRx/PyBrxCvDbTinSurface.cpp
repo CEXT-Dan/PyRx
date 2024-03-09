@@ -1527,4 +1527,71 @@ BrxCvDbTinSurfaceDefinitionAddDrawingObjects* PyBrxCvDbTinSurfaceDefinitionAddDr
         }
     return static_cast<BrxCvDbTinSurfaceDefinitionAddDrawingObjects*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionRiseLower
+void makePyBrxCvDbTinSurfaceDefinitionRiseLowerWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionRiseLower");
+    class_<PyBrxCvDbTinSurfaceDefinitionRiseLower, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionRiseLower")
+        .def(init<>())
+        .def(init<double>())
+        .def("offset", &PyBrxCvDbTinSurfaceDefinitionRiseLower::offset, DS.ARGS())
+        .def("setOffset", &PyBrxCvDbTinSurfaceDefinitionRiseLower::setOffset, DS.ARGS({ "val : float" }))
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionRiseLower::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionRiseLower::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionRiseLower::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionRiseLower::PyBrxCvDbTinSurfaceDefinitionRiseLower()
+    :PyBrxCvDbTinSurfaceDefinitionRiseLower(new BrxCvDbTinSurfaceDefinitionRiseLower(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionRiseLower::PyBrxCvDbTinSurfaceDefinitionRiseLower(double mtx)
+    :PyBrxCvDbTinSurfaceDefinitionRiseLower(new BrxCvDbTinSurfaceDefinitionRiseLower(mtx), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionRiseLower::PyBrxCvDbTinSurfaceDefinitionRiseLower(BrxCvDbTinSurfaceDefinitionRiseLower* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+double PyBrxCvDbTinSurfaceDefinitionRiseLower::offset() const
+{
+    return impObj()->offset();
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionRiseLower::setOffset(double offset)
+{
+    return impObj()->setOffset(offset);
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionRiseLower::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionRiseLower";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionRiseLower::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionRiseLower::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionRiseLower PyBrxCvDbTinSurfaceDefinitionRiseLower::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionRiseLower dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionRiseLower* PyBrxCvDbTinSurfaceDefinitionRiseLower::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionRiseLower*>(m_pyImp.get());
+}
 #endif //BRXAPP

@@ -462,4 +462,26 @@ public:
     inline BrxCvDbTinSurfaceDefinitionAddDrawingObjects* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionRiseLower
+void makePyBrxCvDbTinSurfaceDefinitionRiseLowerWrapper();
+
+class PyBrxCvDbTinSurfaceDefinitionRiseLower : public PyBrxCvDbTinSurfaceDefinition
+{
+public:
+    PyBrxCvDbTinSurfaceDefinitionRiseLower();
+    PyBrxCvDbTinSurfaceDefinitionRiseLower(double mtx);
+    PyBrxCvDbTinSurfaceDefinitionRiseLower(BrxCvDbTinSurfaceDefinitionRiseLower* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbTinSurfaceDefinitionRiseLower() override = default;
+    double                  offset() const;
+    bool                    setOffset(double offset);
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyBrxCvDbTinSurfaceDefinitionRiseLower cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbTinSurfaceDefinitionRiseLower* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
 #endif //BRXAPP
