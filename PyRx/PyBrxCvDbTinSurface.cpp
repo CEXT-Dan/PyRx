@@ -1843,4 +1843,72 @@ BrxCvDbTinSurfaceDefinitionAddFromPointClouds* PyBrxCvDbTinSurfaceDefinitionAddF
         }
     return static_cast<BrxCvDbTinSurfaceDefinitionAddFromPointClouds*>(m_pyImp.get());
 }
+
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbTinSurfaceDefinitionAddPointGroups
+void makePyBrxCvDbTinSurfaceDefinitionAddPointGroupsWrapper()
+{
+    PyDocString DS("CvDbTinSurfaceDefinitionAddPointGroups");
+    class_<PyBrxCvDbTinSurfaceDefinitionAddPointGroups, bases<PyBrxCvDbTinSurfaceDefinition>>("CvDbTinSurfaceDefinitionAddPointGroups")
+        .def(init<>())
+        .def(init<const boost::python::list&>())
+        .def("pointGroupsIds", &PyBrxCvDbTinSurfaceDefinitionAddPointGroups::pointGroupsIds, DS.ARGS())
+        .def("setPointGroupsIds", &PyBrxCvDbTinSurfaceDefinitionAddPointGroups::setPointGroupsIds, DS.ARGS({ "val : list[PyDb.ObjectId]" }))
+        .def("className", &PyBrxCvDbTinSurfaceDefinitionAddPointGroups::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddPointGroups::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddPointGroups::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddPointGroups::PyBrxCvDbTinSurfaceDefinitionAddPointGroups()
+    :PyBrxCvDbTinSurfaceDefinitionAddPointGroups(new BrxCvDbTinSurfaceDefinitionAddPointGroups(), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddPointGroups::PyBrxCvDbTinSurfaceDefinitionAddPointGroups(const boost::python::list& ids)
+    :PyBrxCvDbTinSurfaceDefinitionAddPointGroups(new BrxCvDbTinSurfaceDefinitionAddPointGroups(PyListToObjectIdArray(ids)), true)
+{
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddPointGroups::PyBrxCvDbTinSurfaceDefinitionAddPointGroups(BrxCvDbTinSurfaceDefinitionAddPointGroups* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurfaceDefinition(ptr, autoDelete)
+{
+}
+
+boost::python::list PyBrxCvDbTinSurfaceDefinitionAddPointGroups::pointGroupsIds() const
+{
+    return ObjectIdArrayToPyList(impObj()->pointGroupsIds());
+}
+
+bool PyBrxCvDbTinSurfaceDefinitionAddPointGroups::setPointGroupsIds(const boost::python::list& pointGroupsIds)
+{
+    return impObj()->setPointGroupsIds(PyListToObjectIdArray(pointGroupsIds));
+}
+
+std::string PyBrxCvDbTinSurfaceDefinitionAddPointGroups::className()
+{
+    return "BrxCvDbTinSurfaceDefinitionAddPointGroups";
+}
+
+PyRxClass PyBrxCvDbTinSurfaceDefinitionAddPointGroups::desc()
+{
+    return PyRxClass(BrxCvDbTinSurfaceDefinitionAddPointGroups::desc(), false);
+}
+
+PyBrxCvDbTinSurfaceDefinitionAddPointGroups PyBrxCvDbTinSurfaceDefinitionAddPointGroups::cast(const PyRxObject& src)
+{
+    PyBrxCvDbTinSurfaceDefinitionAddPointGroups dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbTinSurfaceDefinitionAddPointGroups* PyBrxCvDbTinSurfaceDefinitionAddPointGroups::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbTinSurfaceDefinitionAddPointGroups*>(m_pyImp.get());
+}
 #endif //BRXAPP
