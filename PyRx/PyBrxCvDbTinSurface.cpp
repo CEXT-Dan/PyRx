@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyBrxCvDbTinSurface.h"
+#include "PyBrxCvDbTinSurfaceDef.h"
 #include "PyDbObjectId.h"
 
 using namespace boost::python;
@@ -248,6 +249,83 @@ void makePyBrxCvDbTinSurfaceWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=kForRead", "erased: bool=False" })))
 
+        .def("initialize", &PyBrxCvDbTinSurface::initialize)
+        .def("updateObjectData", &PyBrxCvDbTinSurface::updateObjectData)
+        .def("addPoint", &PyBrxCvDbTinSurface::addPoint)
+        .def("addPoints", &PyBrxCvDbTinSurface::addPoints)
+        .def("removePoint", &PyBrxCvDbTinSurface::removePoint)
+        .def("removePoints", &PyBrxCvDbTinSurface::removePoints)
+        .def("movePoint", &PyBrxCvDbTinSurface::movePoint)
+        .def("movePoints", &PyBrxCvDbTinSurface::movePoints)
+        .def("swapEdge", &PyBrxCvDbTinSurface::swapEdge)
+        .def("setStyle", &PyBrxCvDbTinSurface::setStyle)
+        .def("setAssociative", &PyBrxCvDbTinSurface::setAssociative)
+        .def("raiseSurface", &PyBrxCvDbTinSurface::raiseSurface)
+        .def("setSurfaceElevation", &PyBrxCvDbTinSurface::setSurfaceElevation)
+        .def("changePointsElevations", &PyBrxCvDbTinSurface::changePointsElevations)
+        .def("setMinorContoursInterval", &PyBrxCvDbTinSurface::setMinorContoursInterval)
+        .def("setMajorContoursInterval", &PyBrxCvDbTinSurface::setMajorContoursInterval)
+        .def("setMinorContoursColor", &PyBrxCvDbTinSurface::setMinorContoursColor)
+        .def("setMajorContoursColor", &PyBrxCvDbTinSurface::setMajorContoursColor)
+        .def("merge", &PyBrxCvDbTinSurface::merge)
+        .def("getPoints", &PyBrxCvDbTinSurface::getPoints)
+        .def("getTinPoints", &PyBrxCvDbTinSurface::getTinPoints)
+        .def("findTinPointAt", &PyBrxCvDbTinSurface::findTinPointAt)
+        .def("triangles", &PyBrxCvDbTinSurface::triangles)
+        .def("tinTriangles", &PyBrxCvDbTinSurface::tinTriangles)
+        .def("findTinTrianglesAt", &PyBrxCvDbTinSurface::findTinTrianglesAt)
+        .def("pointsCount", &PyBrxCvDbTinSurface::pointsCount)
+        .def("trianglesCount", &PyBrxCvDbTinSurface::trianglesCount)
+        .def("area2d", &PyBrxCvDbTinSurface::area2d)
+        .def("area3d", &PyBrxCvDbTinSurface::area3d)
+        .def("minElevation", &PyBrxCvDbTinSurface::minElevation)
+        .def("maxElevation", &PyBrxCvDbTinSurface::maxElevation)
+        .def("contains", &PyBrxCvDbTinSurface::contains)
+        .def("elevationAtPoint", &PyBrxCvDbTinSurface::elevationAtPoint)
+        .def("closestPointTo", &PyBrxCvDbTinSurface::closestPointTo)
+        .def("boundingBox", &PyBrxCvDbTinSurface::boundingBox)
+        .def("getPointsInsidePolygon", &PyBrxCvDbTinSurface::getPointsInsidePolygon)
+        .def("style", &PyBrxCvDbTinSurface::style)
+        .def("isAssociative", &PyBrxCvDbTinSurface::isAssociative)
+        .def("getBorders", &PyBrxCvDbTinSurface::getBorders)
+        .def("minorContoursInterval", &PyBrxCvDbTinSurface::minorContoursInterval)
+        .def("majorContoursInterval", &PyBrxCvDbTinSurface::majorContoursInterval)
+        .def("minorContoursColor", &PyBrxCvDbTinSurface::minorContoursColor)
+        .def("majorContoursColor", &PyBrxCvDbTinSurface::majorContoursColor)
+        .def("minorContours", &PyBrxCvDbTinSurface::minorContours)
+        .def("majorContours", &PyBrxCvDbTinSurface::majorContours)
+        .def("contoursAtElevation", &PyBrxCvDbTinSurface::contoursAtElevation)
+        .def("drapePoint", &PyBrxCvDbTinSurface::drapePoint)
+        .def("drapeId", &PyBrxCvDbTinSurface::drapeId)
+        .def("intersectionsWithLine", &PyBrxCvDbTinSurface::intersectionsWithLine)
+        .def("getConstraints", &PyBrxCvDbTinSurface::getConstraints)
+        .def("getConstraint", &PyBrxCvDbTinSurface::getConstraint1)
+        .def("getConstraint", &PyBrxCvDbTinSurface::getConstraint2)
+        .def("addConstraint", &PyBrxCvDbTinSurface::addConstraint)
+        .def("updateConstraint", &PyBrxCvDbTinSurface::updateConstraint)
+        .def("eraseConstraint", &PyBrxCvDbTinSurface::eraseConstraint1)
+        .def("eraseConstraint", &PyBrxCvDbTinSurface::eraseConstraint2)
+        .def("eraseConstraints", &PyBrxCvDbTinSurface::eraseConstraints)
+        .def("eraseConstraintsIds", &PyBrxCvDbTinSurface::eraseConstraintsIds)
+        .def("hasSnapshot", &PyBrxCvDbTinSurface::hasSnapshot)
+        .def("isSnapshotUpdateNeeded", &PyBrxCvDbTinSurface::isSnapshotUpdateNeeded)
+        .def("createSnapshot", &PyBrxCvDbTinSurface::createSnapshot)
+        .def("rebuildSnapshot", &PyBrxCvDbTinSurface::rebuildSnapshot)
+        .def("removeSnapshot", &PyBrxCvDbTinSurface::removeSnapshot)
+        .def("isUpdateNeeded", &PyBrxCvDbTinSurface::isUpdateNeeded)
+        .def("isRebuildPossible", &PyBrxCvDbTinSurface::isRebuildPossible)
+        .def("rebuild", &PyBrxCvDbTinSurface::rebuild)
+        .def("isAutoUpdate", &PyBrxCvDbTinSurface::isAutoUpdate)
+        .def("setIsAutoUpdate", &PyBrxCvDbTinSurface::setIsAutoUpdate)
+        .def("definitionCount", &PyBrxCvDbTinSurface::definitionCount)
+        .def("addDefinition", &PyBrxCvDbTinSurface::addDefinition)
+        .def("insertDefinitionAt", &PyBrxCvDbTinSurface::insertDefinitionAt)
+        .def("definitionIndex", &PyBrxCvDbTinSurface::definitionIndex)
+        .def("definitionAt", &PyBrxCvDbTinSurface::definitionAt)
+        .def("findDefinition", &PyBrxCvDbTinSurface::findDefinition)
+        .def("moveDefinition", &PyBrxCvDbTinSurface::moveDefinition)
+        .def("removeDefinitionAt", &PyBrxCvDbTinSurface::removeDefinitionAt)
+        .def("removeAllDefinitions", &PyBrxCvDbTinSurface::removeAllDefinitions)
 
         .def("className", &PyBrxCvDbTinSurface::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbTinSurface::desc, DS.SARGS()).staticmethod("desc")
@@ -610,12 +688,12 @@ boost::python::list PyBrxCvDbTinSurface::getConstraints() const
     return pylist;
 }
 
-PyBrxCvDbTinSurfaceConstraint PyBrxCvDbTinSurface::getConstraint(const Adesk::UInt64 id) const
+PyBrxCvDbTinSurfaceConstraint PyBrxCvDbTinSurface::getConstraint1(const Adesk::UInt64 id) const
 {
     return PyBrxCvDbTinSurfaceConstraint(impObj()->getConstraint(id));
 }
 
-PyBrxCvDbTinSurfaceConstraint PyBrxCvDbTinSurface::getConstraint(const PyDbObjectId& id) const
+PyBrxCvDbTinSurfaceConstraint PyBrxCvDbTinSurface::getConstraint2(const PyDbObjectId& id) const
 {
     return PyBrxCvDbTinSurfaceConstraint(impObj()->getConstraint(id.m_id));
 }
@@ -648,6 +726,111 @@ bool PyBrxCvDbTinSurface::eraseConstraints(const boost::python::list& ids, bool 
 bool PyBrxCvDbTinSurface::eraseConstraintsIds(const boost::python::list& ids, bool removeReactor)
 {
     return impObj()->eraseConstraints(PyListToObjectIdArray(ids), removeReactor);
+}
+
+bool PyBrxCvDbTinSurface::hasSnapshot() const
+{
+    return impObj()->hasSnapshot();
+}
+
+bool PyBrxCvDbTinSurface::isSnapshotUpdateNeeded() const
+{
+    return impObj()->isSnapshotUpdateNeeded();
+}
+
+Adesk::UInt32 PyBrxCvDbTinSurface::createSnapshot()
+{
+    return impObj()->createSnapshot();
+}
+
+bool PyBrxCvDbTinSurface::rebuildSnapshot()
+{
+    return impObj()->rebuildSnapshot();
+}
+
+bool PyBrxCvDbTinSurface::removeSnapshot()
+{
+    return impObj()->removeSnapshot();
+}
+
+bool PyBrxCvDbTinSurface::isUpdateNeeded() const
+{
+    return impObj()->isUpdateNeeded();
+}
+
+bool PyBrxCvDbTinSurface::isRebuildPossible() const
+{
+    return impObj()->isRebuildPossible();
+}
+
+bool PyBrxCvDbTinSurface::rebuild(bool rebuildSnapshotIfNeeded)
+{
+    return impObj()->rebuild(rebuildSnapshotIfNeeded);
+}
+
+bool PyBrxCvDbTinSurface::isAutoUpdate() const
+{
+    return impObj()->isAutoUpdate();
+}
+
+bool PyBrxCvDbTinSurface::setIsAutoUpdate(bool autoUpdateOn)
+{
+    return impObj()->setIsAutoUpdate(autoUpdateOn);
+}
+
+Adesk::UInt32 PyBrxCvDbTinSurface::definitionCount() const
+{
+    return impObj()->definitionCount();
+}
+
+Adesk::UInt32 PyBrxCvDbTinSurface::addDefinition(const PyBrxCvDbTinSurfaceDefinition& surfaceDefinition)
+{
+    return impObj()->addDefinition(*surfaceDefinition.impObj());
+}
+
+Adesk::UInt32 PyBrxCvDbTinSurface::insertDefinitionAt(Adesk::UInt32 index, const PyBrxCvDbTinSurfaceDefinition& surfaceDefinition)
+{
+
+    return impObj()->insertDefinitionAt(index ,*surfaceDefinition.impObj());
+}
+
+boost::python::tuple PyBrxCvDbTinSurface::definitionIndex(const PyBrxCvDbTinSurfaceDefinition& surfaceDefinition) const
+{
+    PyAutoLockGIL lock;
+    Adesk::UInt32 val = 0;
+    auto flag = impObj()->definitionIndex(*surfaceDefinition.impObj(), val);
+    return boost::python::make_tuple(flag, val);
+}
+
+PyBrxCvDbTinSurfaceDefinition PyBrxCvDbTinSurface::definitionAt(const Adesk::UInt32 index) const
+{
+    auto ptr = impObj()->definitionAt(index);
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbTinSurfaceDefinition(ptr.detach(), true);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
+}
+
+PyBrxCvDbTinSurfaceDefinition PyBrxCvDbTinSurface::findDefinition(Adesk::UInt64 definitionId) const
+{
+    auto ptr = impObj()->findDefinition(definitionId);
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbTinSurfaceDefinition(ptr.detach(), true);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
+}
+
+Adesk::UInt32 PyBrxCvDbTinSurface::moveDefinition(const Adesk::UInt32 fromIndex, const Adesk::UInt32 toIndex)
+{
+    return impObj()->moveDefinition(fromIndex, toIndex);
+}
+
+bool PyBrxCvDbTinSurface::removeDefinitionAt(const Adesk::UInt32 index)
+{
+    return impObj()->removeDefinitionAt(index);
+}
+
+Adesk::UInt32 PyBrxCvDbTinSurface::removeAllDefinitions()
+{
+    return impObj()->removeAllDefinitions();
 }
 
 PyBrxCvDbTinSurface PyBrxCvDbTinSurface::mergeSurfaces(const PyBrxCvDbTinSurface& theOne, const PyBrxCvDbTinSurface& theOther)
