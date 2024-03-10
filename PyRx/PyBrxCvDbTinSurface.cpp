@@ -1475,7 +1475,7 @@ BrxCvGradingSlopeSurfaceRule* PyBrxCvGradingSlopeSurfaceRule::impObj(const std::
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvGradingSlopeOffsetRule
-void makBrxCvGradingSlopeOffsetRule()
+void makeBrxCvGradingSlopeOffsetRule()
 {
     PyDocString DS("CvGradingSlopeOffsetRule");
     class_<PyBrxCvGradingSlopeOffsetRule, bases<PyBrxCvGradingRule>>("CvGradingSlopeOffsetRule")
