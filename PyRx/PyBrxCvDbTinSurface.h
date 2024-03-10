@@ -382,7 +382,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvGradingSlopeSurfaceRule
-void makeBrxCvGradingSlopeSurfaceRuleWrapper();
+void makePyBrxCvGradingSlopeSurfaceRuleWrapper();
 
 class PyBrxCvGradingSlopeSurfaceRule : public PyBrxCvGradingRule
 {
@@ -405,7 +405,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvGradingSlopeOffsetRule
-void makeBrxCvGradingSlopeOffsetRule();
+void makePyBrxCvGradingSlopeOffsetRule();
 
 class PyBrxCvGradingSlopeOffsetRule : public PyBrxCvGradingRule
 {

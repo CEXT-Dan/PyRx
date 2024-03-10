@@ -108,8 +108,8 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvDbTinSurfaceWrapper();
     makePyBrxCvDbVolumeSurfaceWrapper();
     makePyBrxCvGradingRuleWrapper();
-    makeBrxCvGradingSlopeSurfaceRuleWrapper();
-    makeBrxCvGradingSlopeOffsetRule();
+    makePyBrxCvGradingSlopeSurfaceRuleWrapper();
+    makePyBrxCvGradingSlopeOffsetRule();
     makePyBrxCvDbGradingWrapper();
 
 

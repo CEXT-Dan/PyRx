@@ -715,7 +715,7 @@ bool PyBrxCvDbTinSurface::addConstraints(const boost::python::list& constraints,
     BrxCvDbTinSurfaceConstraintArray items;
     for (const auto& item : vec)
         items.append(BrxCvDbTinSurfaceConstraint(*item.impObj()));
-   return impObj()->addConstraints(items, addReactor);
+    return impObj()->addConstraints(items, addReactor);
 }
 
 bool PyBrxCvDbTinSurface::updateConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint)
@@ -1391,7 +1391,7 @@ BrxCvGradingRule* PyBrxCvGradingRule::impObj(const std::source_location& src /*=
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvGradingSlopeSurfaceRule
-void makeBrxCvGradingSlopeSurfaceRuleWrapper()
+void makePyBrxCvGradingSlopeSurfaceRuleWrapper()
 {
     PyDocString DS("CvGradingSlopeSurfaceRule");
     class_<PyBrxCvGradingSlopeSurfaceRule, bases<PyBrxCvGradingRule>>("CvGradingSlopeSurfaceRule")
@@ -1475,7 +1475,7 @@ BrxCvGradingSlopeSurfaceRule* PyBrxCvGradingSlopeSurfaceRule::impObj(const std::
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvGradingSlopeOffsetRule
-void makeBrxCvGradingSlopeOffsetRule()
+void makePyBrxCvGradingSlopeOffsetRule()
 {
     PyDocString DS("CvGradingSlopeOffsetRule");
     class_<PyBrxCvGradingSlopeOffsetRule, bases<PyBrxCvGradingRule>>("CvGradingSlopeOffsetRule")
