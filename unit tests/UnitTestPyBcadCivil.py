@@ -54,14 +54,12 @@ class TestBCadCivil(unittest.TestCase):
             self.assertFalse(element.isNullObj())
             if Cv.HAlignmentElementType.eLine == element.type():
                 line: Cv.CvDbHAlignmentLine = Cv.CvDbHAlignmentLine.cast(element)
-                self.assertNotEqual(line.length(), 0)
-                
-                #test AcRx
+                self.assertGreater(line.length(), 0)
                 flag = line.isA().isDerivedFrom(Cv.CvDbHAlignmentLine.desc())
                 self.assertTrue(flag)
-            elif Cv.HAlignmentElementType.eLine == element.type():
+            elif Cv.HAlignmentElementType.eSpiralCurveSpiral == element.type():
                 spiral : Cv.CvDbHAlignmentSCS = Cv.CvDbHAlignmentSCS.cast(element)
-                self.assertNotEqual(spiral.length(), 0)
+                self.assertGreater(spiral.length(), 0)
                 flag = spiral.isA().isDerivedFrom(Cv.CvDbHAlignmentSCS.desc())
                 self.assertTrue(flag)
             
