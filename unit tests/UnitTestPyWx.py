@@ -11,6 +11,7 @@ import PyEd as Ed
 import wx
 
 print("testname = pywx")
+host = Ap.Application.hostAPI()
 
 
 class TestWxPython(unittest.TestCase):

@@ -10,6 +10,8 @@ import PyAp as Ap
 import PyEd as Ed
 
 print("testname = pyeditor")    
+host = Ap.Application.hostAPI()
+
 
 def autoSysVarOSMODE():
     var = Ed.Core.autoSetVar("OSMODE", 0)
@@ -39,6 +41,7 @@ class TestEditor(unittest.TestCase):
         autoSysVarANGBASE()
         self.assertEqual(Ed.Core.getVar("ANGBASE"),0)
         
+    @unittest.skipIf(host == "BRX24", "BricsCAD known failure")
     def test_evaluateDiesel(self):
         val = Ed.Core.evaluateDiesel('$(eval,"Current layer: "$(getvar,clayer))')
         self.assertEqual(val, "Current layer: 0")

@@ -8,6 +8,7 @@ import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
 print("testname = pydbobject")
+host = PyAp.Application.hostAPI()
 
 
 class TestDbObject(unittest.TestCase):

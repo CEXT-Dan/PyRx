@@ -9,6 +9,8 @@ import PyAp  # = application, document classes services
 import PyEd  # = editor
 print("testname = pyrxobject")
 
+host = PyAp.Application.hostAPI()
+
 class TestRxObject(unittest.TestCase):
     def test_isA(self):
         line1 = PyDb.Line()
