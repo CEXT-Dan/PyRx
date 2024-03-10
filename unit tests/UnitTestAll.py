@@ -10,6 +10,9 @@ import UnitTestPyEditor
 import UnitTestPyWx
 import UnitTestPyBcadCivil
 
+from pyrx_imp import Ap
+host = Ap.Application.hostAPI()
+
 print("testname = pytestall")
 
 def PyRxCmd_pytestall():
@@ -24,6 +27,7 @@ def PyRxCmd_pytestall():
       UnitTestPyDbEntity.PyRxCmd_pyentity()
       UnitTestPyEditor.PyRxCmd_pyeditor()
       UnitTestPyWx.PyRxCmd_pywx()
-      UnitTestPyBcadCivil.PyRxCmd_pybcciviltest()
+      if host == "BRX24":
+          UnitTestPyBcadCivil.PyRxCmd_pybcciviltest()
     except Exception as err:
       print(err)
