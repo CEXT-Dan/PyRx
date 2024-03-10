@@ -512,7 +512,7 @@ inline AcArray<int> PyListToIntArray(const boost::python::object& iterable)
     return arr;
 }
 
-inline AcArray<Adesk::UInt64> PyListToInt64Array(const boost::python::object& iterable)
+inline AcArray<Adesk::UInt64> PyListToUInt64Array(const boost::python::object& iterable)
 {
     const auto& vec = py_list_to_std_vector<Adesk::UInt64>(iterable);
     AcArray<Adesk::UInt64> arr;
