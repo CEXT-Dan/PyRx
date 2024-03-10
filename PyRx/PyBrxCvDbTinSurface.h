@@ -237,3 +237,47 @@ public:
 public:
     inline BrxCvDbTinSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbVolumeSurface
+void makePyBrxCvDbVolumeSurfaceWrapper();
+
+class PyBrxCvDbVolumeSurface : public PyBrxCvDbTinSurface
+{
+public:
+    PyBrxCvDbVolumeSurface();
+    PyBrxCvDbVolumeSurface(const PyDbObjectId& id);
+    PyBrxCvDbVolumeSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbVolumeSurface(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbVolumeSurface(BrxCvDbVolumeSurface* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbVolumeSurface() override = default;
+
+    static std::string          className();
+    static PyRxClass            desc();
+    static PyBrxCvDbVolumeSurface  cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbVolumeSurface  cast(const PyRxObject& src);
+public:
+    inline BrxCvDbVolumeSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbGrading
+void makePyBrxCvDbGradingWrapper();
+
+class PyBrxCvDbGrading : public PyBrxCvDbTinSurface
+{
+public:
+    PyBrxCvDbGrading();
+    PyBrxCvDbGrading(const PyDbObjectId& id);
+    PyBrxCvDbGrading(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbGrading(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbGrading(BrxCvDbGrading* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbGrading() override = default;
+
+    static std::string          className();
+    static PyRxClass            desc();
+    static PyBrxCvDbGrading  cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbGrading  cast(const PyRxObject& src);
+public:
+    inline BrxCvDbGrading* impObj(const std::source_location& src = std::source_location::current()) const;
+};

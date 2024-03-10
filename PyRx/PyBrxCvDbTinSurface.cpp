@@ -870,3 +870,153 @@ BrxCvDbTinSurface* PyBrxCvDbTinSurface::impObj(const std::source_location& src /
         }
     return static_cast<BrxCvDbTinSurface*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbVolumeSurface
+void makePyBrxCvDbVolumeSurfaceWrapper()
+{
+    PyDocString DS("CvDbVolumeSurface");
+    class_<PyBrxCvDbVolumeSurface, bases<PyBrxCvDbTinSurface>>("CvDbVolumeSurface")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=kForRead", "erased: bool=False" })))
+        .def("className", &PyBrxCvDbVolumeSurface::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbVolumeSurface::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyBrxCvDbVolumeSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyBrxCvDbVolumeSurface::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbVolumeSurface::PyBrxCvDbVolumeSurface()
+    : PyBrxCvDbVolumeSurface(new BrxCvDbVolumeSurface(), true)
+{
+}
+
+PyBrxCvDbVolumeSurface::PyBrxCvDbVolumeSurface(const PyDbObjectId& id)
+    : PyBrxCvDbVolumeSurface(openAcDbObject<BrxCvDbVolumeSurface>(id), false)
+{
+}
+
+PyBrxCvDbVolumeSurface::PyBrxCvDbVolumeSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyBrxCvDbVolumeSurface(openAcDbObject<BrxCvDbVolumeSurface>(id, mode), false)
+{
+}
+
+PyBrxCvDbVolumeSurface::PyBrxCvDbVolumeSurface(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyBrxCvDbVolumeSurface(openAcDbObject<BrxCvDbVolumeSurface>(id, mode, erased), false)
+{
+}
+
+PyBrxCvDbVolumeSurface::PyBrxCvDbVolumeSurface(BrxCvDbVolumeSurface* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurface(ptr, autoDelete)
+{
+}
+
+std::string PyBrxCvDbVolumeSurface::className()
+{
+    return "BrxCvDbVolumeSurface";
+}
+
+PyRxClass PyBrxCvDbVolumeSurface::desc()
+{
+    return PyRxClass(BrxCvDbVolumeSurface::desc(), false);
+}
+
+PyBrxCvDbVolumeSurface PyBrxCvDbVolumeSurface::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(BrxCvDbVolumeSurface::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyBrxCvDbVolumeSurface(static_cast<BrxCvDbVolumeSurface*>(src.impObj()->clone()), true);
+}
+
+PyBrxCvDbVolumeSurface PyBrxCvDbVolumeSurface::cast(const PyRxObject& src)
+{
+    PyBrxCvDbVolumeSurface dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbVolumeSurface* PyBrxCvDbVolumeSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbVolumeSurface*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbGrading
+void makePyBrxCvDbGradingWrapper()
+{
+    PyDocString DS("CvDbTinSurface");
+    class_<PyBrxCvDbGrading, bases<PyBrxCvDbEntity>>("CvDbTinSurface")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=kForRead", "erased: bool=False" })))
+        .def("className", &PyBrxCvDbGrading::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbGrading::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyBrxCvDbGrading::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyBrxCvDbGrading::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbGrading::PyBrxCvDbGrading()
+    : PyBrxCvDbGrading(new BrxCvDbGrading(), true)
+{
+}
+
+PyBrxCvDbGrading::PyBrxCvDbGrading(const PyDbObjectId& id)
+    : PyBrxCvDbGrading(openAcDbObject<BrxCvDbGrading>(id), false)
+{
+}
+
+PyBrxCvDbGrading::PyBrxCvDbGrading(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyBrxCvDbGrading(openAcDbObject<BrxCvDbGrading>(id, mode), false)
+{
+}
+
+PyBrxCvDbGrading::PyBrxCvDbGrading(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyBrxCvDbGrading(openAcDbObject<BrxCvDbGrading>(id, mode, erased), false)
+{
+}
+
+PyBrxCvDbGrading::PyBrxCvDbGrading(BrxCvDbGrading* ptr, bool autoDelete)
+    :PyBrxCvDbTinSurface(ptr, autoDelete)
+{
+}
+
+std::string PyBrxCvDbGrading::className()
+{
+    return "BrxCvDbGrading";
+}
+
+PyRxClass PyBrxCvDbGrading::desc()
+{
+    return PyRxClass(BrxCvDbGrading::desc(), false);
+}
+
+PyBrxCvDbGrading PyBrxCvDbGrading::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(BrxCvDbGrading::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyBrxCvDbGrading(static_cast<BrxCvDbGrading*>(src.impObj()->clone()), true);
+}
+
+PyBrxCvDbGrading PyBrxCvDbGrading::cast(const PyRxObject& src)
+{
+    PyBrxCvDbGrading dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbGrading* PyBrxCvDbGrading::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbGrading*>(m_pyImp.get());
+}
