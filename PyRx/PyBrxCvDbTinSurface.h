@@ -162,7 +162,7 @@ public:
     bool                merge(const PyBrxCvDbTinSurface& theOther);
     boost::python::list getPoints(bool visibleOnly) const;
     boost::python::list getTinPoints() const;
-    bool                findTinPointAt(BrxCvTinPoint& tinPoint, const AcGePoint3d& pnt) const;
+    boost::python::tuple findTinPointAt(const AcGePoint3d& pnt) const;
     boost::python::list triangles(bool visibleOnly) const;
     boost::python::list tinTriangles() const;
     boost::python::list findTinTrianglesAt(const AcGePoint3d& pnt) const;
@@ -207,7 +207,7 @@ public:
     bool                addConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint, bool addReactor);
     bool                updateConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint);
     bool                eraseConstraint1(const Adesk::UInt64 id, bool removeReactor);
-    bool                eraseConstraint2(const PyDbObjectId& entityId, bool removeReactor = true);
+    bool                eraseConstraint2(const PyDbObjectId& entityId, bool removeReactor);
     bool                eraseConstraints(const boost::python::list& ids, bool removeReactor);
     bool                eraseConstraintsIds(const boost::python::list& ids, bool removeReactor);
     bool                hasSnapshot() const;
