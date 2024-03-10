@@ -54,6 +54,7 @@ class PyBrxCvDbTinSurfaceConstraint
 public:
     PyBrxCvDbTinSurfaceConstraint();
     PyBrxCvDbTinSurfaceConstraint(BrxCvDbTinSurfaceConstraint::ETinConstraintType type);
+    PyBrxCvDbTinSurfaceConstraint(const BrxCvDbTinSurfaceConstraint& other);
     PyBrxCvDbTinSurfaceConstraint(BrxCvDbTinSurfaceConstraint* ptr);
     virtual ~PyBrxCvDbTinSurfaceConstraint() = default;
 
@@ -168,6 +169,46 @@ public:
     double              area3d(bool visibleOnly) const;
     double              minElevation(bool visibleOnly) const;
     double              maxElevation(bool visibleOnly) const;
+    bool                contains(const AcGePoint3d& point) const;
+    boost::python::tuple elevationAtPoint(const AcGePoint3d& point) const;
+    AcGePoint3d         closestPointTo(const AcGePoint3d& point) const;
+    boost::python::tuple boundingBox() const;
+    boost::python::list getPointsInsidePolygon(const boost::python::list& polygon, bool includeOnEdge) const;
+    BrxCvDbTinSurface::ETinSurfaceStyle style() const;
+    bool                isAssociative() const;
+    boost::python::list getBorders() const;
+    boost::python::tuple minorContoursInterval();
+    boost::python::tuple majorContoursInterval();
+    boost::python::tuple minorContoursColor() const;
+    boost::python::tuple majorContoursColor() const;
+    boost::python::list  minorContours() const;
+    boost::python::list  majorContours() const;
+    boost::python::list  contoursAtElevation(double elevation) const;
+
+    //AcDbSubDMesh* subDMesh(const ETinSurfaceMeshType surfaceType, const double depthOrElevation) const;
+    //AcDbSubDMesh* subDMesh(const BrxCvDbTinSurface* other) const;
+    //AcDbSubDMesh* subDMesh() const;
+    //AcDb3dSolid* solid3d(const ETinSurfaceSolidType solidType, const double thickness) const;
+    //AcDb3dSolid* solid3d(const BrxCvDbTinSurface* other) const;
+
+    boost::python::list drapePoint(const AcGePoint3dArray& points) const;
+    boost::python::list drapeId(const PyDbObjectId& entId) const;
+    boost::python::tuple intersectionsWithLine(const AcGePoint3d& ptLineStart,const AcGePoint3d& ptLineEnd, BrxCvDbTinSurface::ETinSurfaceIntersectType type,bool visibleOnly) const;
+
+    //TODO: test ownership
+    boost::python::list getConstraints() const;
+    PyBrxCvDbTinSurfaceConstraint getConstraint(const Adesk::UInt64 id) const;
+    PyBrxCvDbTinSurfaceConstraint getConstraint(const PyDbObjectId& id) const;
+
+    //bool addConstraints(const BrxCvDbTinSurfaceConstraintArray& constraints, const bool addReactor = true);
+    bool                addConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint,bool addReactor);
+    bool                updateConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint);
+    bool                eraseConstraint1(const Adesk::UInt64 id, bool removeReactor);
+    bool                eraseConstraint2(const PyDbObjectId& entityId, bool removeReactor = true);
+
+    bool                eraseConstraints(const boost::python::list& ids,  bool removeReactor);
+    bool                eraseConstraintsIds(const boost::python::list& ids,  bool removeReactor);
+   
 
     static PyBrxCvDbTinSurface  mergeSurfaces(const PyBrxCvDbTinSurface& theOne, const PyBrxCvDbTinSurface& theOther);
     static std::string          className();

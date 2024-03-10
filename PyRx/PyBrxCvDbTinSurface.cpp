@@ -35,6 +35,11 @@ PyBrxCvDbTinSurfaceConstraint::PyBrxCvDbTinSurfaceConstraint(BrxCvDbTinSurfaceCo
 {
 }
 
+PyBrxCvDbTinSurfaceConstraint::PyBrxCvDbTinSurfaceConstraint(const BrxCvDbTinSurfaceConstraint& other)
+    :m_pyImp(new BrxCvDbTinSurfaceConstraint(other))
+{
+}
+
 PyBrxCvDbTinSurfaceConstraint::PyBrxCvDbTinSurfaceConstraint(BrxCvDbTinSurfaceConstraint* ptr)
     :m_pyImp(ptr)
 {
@@ -444,6 +449,205 @@ double PyBrxCvDbTinSurface::minElevation(bool visibleOnly) const
 double PyBrxCvDbTinSurface::maxElevation(bool visibleOnly) const
 {
     return impObj()->maxElevation(visibleOnly);
+}
+
+bool PyBrxCvDbTinSurface::contains(const AcGePoint3d& point) const
+{
+    return impObj()->contains(point);
+}
+
+boost::python::tuple PyBrxCvDbTinSurface::elevationAtPoint(const AcGePoint3d& point) const
+{
+    PyAutoLockGIL lock;
+    double elevation = 0;
+    bool flag = impObj()->elevationAtPoint(point, elevation);
+    return boost::python::make_tuple(flag, elevation);
+}
+
+AcGePoint3d PyBrxCvDbTinSurface::closestPointTo(const AcGePoint3d& point) const
+{
+    return impObj()->closestPointTo(point);
+}
+
+boost::python::tuple PyBrxCvDbTinSurface::boundingBox() const
+{
+    PyAutoLockGIL lock;
+    AcGePoint2d ptMin; 
+    AcGePoint2d ptMax;
+    impObj()->boundingBox(ptMin, ptMax);
+    return boost::python::make_tuple(ptMin, ptMax);
+}
+
+boost::python::list PyBrxCvDbTinSurface::getPointsInsidePolygon(const boost::python::list& polygon, bool includeOnEdge) const
+{
+   return Point3dArrayToPyList(impObj()->getPointsInsidePolygon(PyListToPoint3dArray(polygon), includeOnEdge));
+}
+
+BrxCvDbTinSurface::ETinSurfaceStyle PyBrxCvDbTinSurface::style() const
+{
+    return impObj()->style();
+}
+
+bool PyBrxCvDbTinSurface::isAssociative() const
+{
+    return impObj()->isAssociative();
+}
+
+boost::python::list PyBrxCvDbTinSurface::getBorders() const
+{
+    PyAutoLockGIL lock;
+    AcArray<AcGePoint3dArray> borders;
+    impObj()->getBorders(borders);
+    boost::python::list pylist;
+    for (const auto& item : borders)
+        pylist.append(Point3dArrayToPyList(item));
+    return pylist;
+}
+
+boost::python::tuple PyBrxCvDbTinSurface::minorContoursInterval()
+{
+    PyAutoLockGIL lock;
+    double interval = 0;
+    auto flag = impObj()->minorContoursInterval(interval);
+    return boost::python::make_tuple(flag, interval);
+}
+
+boost::python::tuple PyBrxCvDbTinSurface::majorContoursInterval()
+{
+    PyAutoLockGIL lock;
+    double interval = 0;
+    auto flag = impObj()->majorContoursInterval(interval);
+    return boost::python::make_tuple(flag, interval);
+}
+
+boost::python::tuple PyBrxCvDbTinSurface::minorContoursColor() const
+{
+    PyAutoLockGIL lock;
+    Adesk::UInt16 colorIndex = 0;
+    auto flag = impObj()->minorContoursColor(colorIndex);
+    return boost::python::make_tuple(flag, colorIndex);
+}
+
+boost::python::tuple PyBrxCvDbTinSurface::majorContoursColor() const
+{
+    PyAutoLockGIL lock;
+    Adesk::UInt16 colorIndex = 0;
+    auto flag = impObj()->majorContoursColor(colorIndex);
+    return boost::python::make_tuple(flag, colorIndex);
+}
+
+boost::python::list PyBrxCvDbTinSurface::minorContours() const
+{
+    PyAutoLockGIL lock;
+    AcArray<AcGePoint3dArray> borders;
+    impObj()->minorContours(borders);
+    boost::python::list pylist;
+    for (const auto& item : borders)
+        pylist.append(Point3dArrayToPyList(item));
+    return pylist;
+}
+
+boost::python::list PyBrxCvDbTinSurface::majorContours() const
+{
+    PyAutoLockGIL lock;
+    AcArray<AcGePoint3dArray> borders;
+    impObj()->majorContours(borders);
+    boost::python::list pylist;
+    for (const auto& item : borders)
+        pylist.append(Point3dArrayToPyList(item));
+    return pylist;
+}
+
+boost::python::list PyBrxCvDbTinSurface::contoursAtElevation(double elevation) const
+{
+    PyAutoLockGIL lock;
+    AcArray<AcGePoint3dArray> borders;
+    impObj()->contoursAtElevation(borders, elevation);
+    boost::python::list pylist;
+    for (const auto& item : borders)
+        pylist.append(Point3dArrayToPyList(item));
+    return pylist;
+}
+
+boost::python::list PyBrxCvDbTinSurface::drapePoint(const AcGePoint3dArray& points) const
+{
+    PyAutoLockGIL lock;
+    AcArray<AcGePoint3dArray> borders;
+    impObj()->drape(borders, points);
+    boost::python::list pylist;
+    for (const auto& item : borders)
+        pylist.append(Point3dArrayToPyList(item));
+    return pylist;
+}
+
+boost::python::list PyBrxCvDbTinSurface::drapeId(const PyDbObjectId& entId) const
+{
+    PyAutoLockGIL lock;
+    AcArray<AcGePoint3dArray> borders;
+    impObj()->drape(borders, entId.m_id);
+    boost::python::list pylist;
+    for (const auto& item : borders)
+        pylist.append(Point3dArrayToPyList(item));
+    return pylist;
+}
+
+boost::python::tuple PyBrxCvDbTinSurface::intersectionsWithLine(const AcGePoint3d& ptLineStart, const AcGePoint3d& ptLineEnd, BrxCvDbTinSurface::ETinSurfaceIntersectType type, bool visibleOnly) const
+{
+    PyAutoLockGIL lock;
+    AcGePoint3dArray val;
+    auto flag = impObj()->intersectionsWithLine(val, ptLineStart, ptLineEnd, type, visibleOnly);
+    return boost::python::make_tuple(flag,Point3dArrayToPyList(val));
+}
+
+boost::python::list PyBrxCvDbTinSurface::getConstraints() const
+{
+    PyAutoLockGIL lock;
+    BrxCvDbTinSurfaceConstraintArray constraints;
+    impObj()->getConstraints(constraints);
+    boost::python::list pylist;
+    for (const auto& item : constraints)
+        pylist.append(PyBrxCvDbTinSurfaceConstraint(item));
+    return pylist;
+}
+
+PyBrxCvDbTinSurfaceConstraint PyBrxCvDbTinSurface::getConstraint(const Adesk::UInt64 id) const
+{
+    return PyBrxCvDbTinSurfaceConstraint(impObj()->getConstraint(id));
+}
+
+PyBrxCvDbTinSurfaceConstraint PyBrxCvDbTinSurface::getConstraint(const PyDbObjectId& id) const
+{
+    return PyBrxCvDbTinSurfaceConstraint(impObj()->getConstraint(id.m_id));
+}
+
+bool PyBrxCvDbTinSurface::addConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint, bool addReactor)
+{
+    return impObj()->addConstraint(*constraint.impObj(), addReactor);
+}
+
+bool PyBrxCvDbTinSurface::updateConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint)
+{
+    return impObj()->updateConstraint(*constraint.impObj());
+}
+
+bool PyBrxCvDbTinSurface::eraseConstraint1(const Adesk::UInt64 id, bool removeReactor)
+{
+    return impObj()->eraseConstraint(id, removeReactor);
+}
+
+bool PyBrxCvDbTinSurface::eraseConstraint2(const PyDbObjectId& entityId, bool removeReactor /*= true*/)
+{
+    return impObj()->eraseConstraint(entityId.m_id, removeReactor);
+}
+
+bool PyBrxCvDbTinSurface::eraseConstraints(const boost::python::list& ids, bool removeReactor)
+{
+    return impObj()->eraseConstraints(PyListToUInt64Array(ids), removeReactor);
+}
+
+bool PyBrxCvDbTinSurface::eraseConstraintsIds(const boost::python::list& ids, bool removeReactor)
+{
+    return impObj()->eraseConstraints(PyListToObjectIdArray(ids), removeReactor);
 }
 
 PyBrxCvDbTinSurface PyBrxCvDbTinSurface::mergeSurfaces(const PyBrxCvDbTinSurface& theOne, const PyBrxCvDbTinSurface& theOther)
