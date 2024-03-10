@@ -3,9 +3,13 @@
 #include "BrxCvDbTinSurface.h"
 #include "PyBrxCvObject.h"
 
+class PyDbCurve;
 class PyDbObjectId;
+class PyBrxCvGradingRule;
 class PyBrxCvDbTinSurfaceDefinition;
 
+//-----------------------------------------------------------------------------------
+//helpers
 inline boost::python::list TinPointArrayToPyList(const BrxCvTinPointArray& arr)
 {
     PyAutoLockGIL lock;
@@ -43,7 +47,6 @@ inline BrxCvTinTriangleArray PyListToTriangleArray(const boost::python::object& 
         arr.append(item);
     return arr;
 }
-
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbTinSurfaceConstraint
@@ -128,7 +131,7 @@ public:
 //PyBrxCvDbTinSurface
 void makePyBrxCvDbTinSurfaceWrapper();
 
-class PyBrxCvDbTinSurface :  public PyBrxCvDbEntity
+class PyBrxCvDbTinSurface : public PyBrxCvDbEntity
 {
 public:
     PyBrxCvDbTinSurface();
@@ -193,7 +196,7 @@ public:
 
     boost::python::list drapePoint(const AcGePoint3dArray& points) const;
     boost::python::list drapeId(const PyDbObjectId& entId) const;
-    boost::python::tuple intersectionsWithLine(const AcGePoint3d& ptLineStart,const AcGePoint3d& ptLineEnd, BrxCvDbTinSurface::ETinSurfaceIntersectType type,bool visibleOnly) const;
+    boost::python::tuple intersectionsWithLine(const AcGePoint3d& ptLineStart, const AcGePoint3d& ptLineEnd, BrxCvDbTinSurface::ETinSurfaceIntersectType type, bool visibleOnly) const;
 
     //TODO: test ownership
     boost::python::list getConstraints() const;
@@ -201,12 +204,12 @@ public:
     PyBrxCvDbTinSurfaceConstraint getConstraint2(const PyDbObjectId& id) const;
 
     //bool addConstraints(const BrxCvDbTinSurfaceConstraintArray& constraints, const bool addReactor = true);
-    bool                addConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint,bool addReactor);
+    bool                addConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint, bool addReactor);
     bool                updateConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint);
     bool                eraseConstraint1(const Adesk::UInt64 id, bool removeReactor);
     bool                eraseConstraint2(const PyDbObjectId& entityId, bool removeReactor = true);
-    bool                eraseConstraints(const boost::python::list& ids,  bool removeReactor);
-    bool                eraseConstraintsIds(const boost::python::list& ids,  bool removeReactor);
+    bool                eraseConstraints(const boost::python::list& ids, bool removeReactor);
+    bool                eraseConstraintsIds(const boost::python::list& ids, bool removeReactor);
     bool                hasSnapshot() const;
     bool                isSnapshotUpdateNeeded() const;
     Adesk::UInt32       createSnapshot();
@@ -227,7 +230,7 @@ public:
     Adesk::UInt32       moveDefinition(const Adesk::UInt32 fromIndex, const Adesk::UInt32 toIndex);
     bool                removeDefinitionAt(const Adesk::UInt32 index);
     Adesk::UInt32       removeAllDefinitions();
-    
+
 
     static PyBrxCvDbTinSurface  mergeSurfaces(const PyBrxCvDbTinSurface& theOne, const PyBrxCvDbTinSurface& theOther);
     static std::string          className();
@@ -252,6 +255,35 @@ public:
     PyBrxCvDbVolumeSurface(BrxCvDbVolumeSurface* ptr, bool autoDelete);
     virtual ~PyBrxCvDbVolumeSurface() override = default;
 
+    bool initialize1(const PyBrxCvDbTinSurface& baseSurface,
+        const PyBrxCvDbTinSurface& compSurface,
+        const boost::python::list& boundingPolygon);
+
+    bool initialize2(const PyBrxCvDbTinSurface& baseSurface,
+        const PyBrxCvDbTinSurface& compSurface,
+        const PyDbObjectId& boundingPolygonId,
+        double midOrdinateDist);
+
+    bool initialize3(const PyBrxCvDbTinSurface& baseSurface,
+        double referenceElevation, BrxCvDbVolumeSurface::EVolumeSurfaceType type,
+        const  boost::python::list& boundingPolygon);
+
+    bool initialize4(const PyBrxCvDbTinSurface& baseSurface,
+        double referenceElevation, BrxCvDbVolumeSurface::EVolumeSurfaceType type,
+        const PyDbObjectId& boundingPolygonId,
+        double midOrdinateDist);
+
+    BrxCvDbVolumeSurface::EVolumeSurfaceType type() const;
+
+    PyDbObjectId        baseSurfaceObjectId() const;
+    PyDbObjectId        comparisonSurfaceObjectId() const;
+    PyDbObjectId        boundingPolygonObjectId() const;
+    boost::python::list boundingPolygon() const;
+
+    double              fillVolume() const;
+    double              cutVolume() const;
+    double              depthElevation() const;
+
     static std::string          className();
     static PyRxClass            desc();
     static PyBrxCvDbVolumeSurface  cloneFrom(const PyRxObject& src);
@@ -274,10 +306,120 @@ public:
     PyBrxCvDbGrading(BrxCvDbGrading* ptr, bool autoDelete);
     virtual ~PyBrxCvDbGrading() override = default;
 
+    BrxCvDbGrading::EGradingStatus update(bool forceUpdate);
+    BrxCvDbGrading::EGradingStatus setInputDataId(const PyDbObjectId& id);
+    BrxCvDbGrading::EGradingStatus setInputData(const PyDbCurve& pCurve);
+    PyDbObjectId                getInputEntityId() const;
+    PyBrxCvGradingRule          rule() const;
+    BrxCvDbGrading::EGradingStatus  setRule(const PyBrxCvGradingRule& rule) const;
+    bool                        isClosed() const;
+    PyDbObjectId                targetSurface() const;
+    boost::python::list         resultDayLight() const;
+    PyGeCurve3d                 getCalculationCurve() const;
+
+    BrxCvDbGrading::EGradingCalculationMethod getCalculationMethod() const;
+    bool              setCalculationMethod(BrxCvDbGrading::EGradingCalculationMethod method);
+
+    double            getRegionStart() const;
+    BrxCvDbGrading::EGradingStatus    setRegionStart(double startParam);
+
+    double            getRegionEnd() const;
+    BrxCvDbGrading::EGradingStatus    setRegionEnd(double endParam);
+
+    bool              getIsDrawInfill() const;
+    BrxCvDbGrading::EGradingStatus    setDrawInfill(bool drawInfill);
+
+    double            getSegmentMaxLength() const;
+    BrxCvDbGrading::EGradingStatus    setSegmentMaxLength(double maxLength);
+
+    double            getSegmentMaxAngle() const;
+    BrxCvDbGrading::EGradingStatus    setSegmentMaxAngle(double maxAngle);
+
+    double            getMidOrdinateDist() const;
+    BrxCvDbGrading::EGradingStatus    setMidOrdinateDist(double midOrdinateDist);
+
+    bool              getIsAssociative() const;
+    bool              setIsAssociative(bool associative);
+
+    BrxCvDbGrading::EGradingVisualStyle getGradingVisualStyle() const;
+    bool              setGradingVisualStyle(BrxCvDbGrading::EGradingVisualStyle style);
+
     static std::string          className();
     static PyRxClass            desc();
-    static PyBrxCvDbGrading  cloneFrom(const PyRxObject& src);
-    static PyBrxCvDbGrading  cast(const PyRxObject& src);
+    static PyBrxCvDbGrading     cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbGrading     cast(const PyRxObject& src);
 public:
     inline BrxCvDbGrading* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvGradingRule
+void makePyBrxCvGradingRuleWrapper();
+
+class PyBrxCvGradingRule
+{
+public:
+    PyBrxCvGradingRule();
+    PyBrxCvGradingRule(const BrxCvGradingRule& other);
+    PyBrxCvGradingRule(BrxCvGradingRule* ptr);
+    virtual ~PyBrxCvGradingRule() = default;
+    bool                      release();
+    bool                      isNull() const;
+    BrxCvGradingRule::EGradingType type() const;
+    BrxCvGradingRule::EGradingSlopeFormat slopeFormat() const;
+    bool                      setSlopeFormat(BrxCvGradingRule::EGradingSlopeFormat format);
+    BrxCvGradingRule::EGradingSide side() const;
+    bool                      setSide(const BrxCvGradingRule::EGradingSide side);
+    static double             convertSlopeToRad(BrxCvGradingRule::EGradingSlopeFormat format, double slope);
+    static double             convertRadToSlope(BrxCvGradingRule::EGradingSlopeFormat format, double angle);
+    static PyBrxCvGradingRule cast(const PyBrxCvGradingRule& src);
+    static std::string        className();
+public:
+    inline BrxCvGradingRule* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<BrxCvGradingRule> m_pyImp;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvGradingSlopeSurfaceRule
+void makeBrxCvGradingSlopeSurfaceRuleWrapper();
+
+class PyBrxCvGradingSlopeSurfaceRule : public PyBrxCvGradingRule
+{
+public:
+    PyBrxCvGradingSlopeSurfaceRule();
+    PyBrxCvGradingSlopeSurfaceRule(const PyDbObjectId& surfId, double cutSlope, double fillSlope);
+    PyBrxCvGradingSlopeSurfaceRule(BrxCvGradingSlopeSurfaceRule* ptr);
+    virtual ~PyBrxCvGradingSlopeSurfaceRule() = default;
+    PyDbObjectId        surfaceId() const;
+    bool                setSurfaceId(const PyDbObjectId& surfId);
+    double              cutSlope() const;
+    bool                setCutSlope(double cutSlope);
+    double              fillSlope() const;
+    bool                setFillSlope(double fillSlope);
+    static PyBrxCvGradingSlopeSurfaceRule cast(const PyBrxCvGradingRule& src);
+    static std::string  className();
+public:
+    inline BrxCvGradingSlopeSurfaceRule* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvGradingSlopeOffsetRule
+void makBrxCvGradingSlopeOffsetRule();
+
+class PyBrxCvGradingSlopeOffsetRule : public PyBrxCvGradingRule
+{
+public:
+    PyBrxCvGradingSlopeOffsetRule();
+    PyBrxCvGradingSlopeOffsetRule(double slope, double offset);
+    PyBrxCvGradingSlopeOffsetRule(BrxCvGradingSlopeOffsetRule* ptr);
+    virtual ~PyBrxCvGradingSlopeOffsetRule() = default;
+    double              slope() const;
+    bool                setSlope(double slope);
+    double              offset() const;
+    bool                setOffset(double offset);
+    static PyBrxCvGradingSlopeOffsetRule cast(const PyBrxCvGradingRule& src);
+    static std::string  className();
+public:
+    inline BrxCvGradingSlopeOffsetRule* impObj(const std::source_location& src = std::source_location::current()) const;
 };
