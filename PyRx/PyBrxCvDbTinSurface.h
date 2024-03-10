@@ -4,7 +4,7 @@
 #include "PyBrxCvObject.h"
 
 class PyDbObjectId;
-class PyBrxCvTinTriangle;
+class PyBrxCvDbTinSurfaceDefinition;
 
 inline boost::python::list TinPointArrayToPyList(const BrxCvTinPointArray& arr)
 {
@@ -197,18 +197,37 @@ public:
 
     //TODO: test ownership
     boost::python::list getConstraints() const;
-    PyBrxCvDbTinSurfaceConstraint getConstraint(const Adesk::UInt64 id) const;
-    PyBrxCvDbTinSurfaceConstraint getConstraint(const PyDbObjectId& id) const;
+    PyBrxCvDbTinSurfaceConstraint getConstraint1(const Adesk::UInt64 id) const;
+    PyBrxCvDbTinSurfaceConstraint getConstraint2(const PyDbObjectId& id) const;
 
     //bool addConstraints(const BrxCvDbTinSurfaceConstraintArray& constraints, const bool addReactor = true);
     bool                addConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint,bool addReactor);
     bool                updateConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint);
     bool                eraseConstraint1(const Adesk::UInt64 id, bool removeReactor);
     bool                eraseConstraint2(const PyDbObjectId& entityId, bool removeReactor = true);
-
     bool                eraseConstraints(const boost::python::list& ids,  bool removeReactor);
     bool                eraseConstraintsIds(const boost::python::list& ids,  bool removeReactor);
-   
+    bool                hasSnapshot() const;
+    bool                isSnapshotUpdateNeeded() const;
+    Adesk::UInt32       createSnapshot();
+    bool                rebuildSnapshot();
+    bool                removeSnapshot();
+    bool                isUpdateNeeded() const;
+    bool                isRebuildPossible() const;
+    bool                rebuild(bool rebuildSnapshotIfNeeded);
+    bool                isAutoUpdate() const;
+    bool                setIsAutoUpdate(bool autoUpdateOn);
+
+    Adesk::UInt32       definitionCount() const;
+    Adesk::UInt32       addDefinition(const PyBrxCvDbTinSurfaceDefinition& surfaceDefinition);
+    Adesk::UInt32       insertDefinitionAt(Adesk::UInt32 index, const PyBrxCvDbTinSurfaceDefinition& surfaceDefinition);
+    boost::python::tuple definitionIndex(const PyBrxCvDbTinSurfaceDefinition& surfaceDefinition) const;
+    PyBrxCvDbTinSurfaceDefinition definitionAt(Adesk::UInt32 index) const;
+    PyBrxCvDbTinSurfaceDefinition findDefinition(Adesk::UInt64 definitionId) const;
+    Adesk::UInt32       moveDefinition(const Adesk::UInt32 fromIndex, const Adesk::UInt32 toIndex);
+    bool                removeDefinitionAt(const Adesk::UInt32 index);
+    Adesk::UInt32       removeAllDefinitions();
+    
 
     static PyBrxCvDbTinSurface  mergeSurfaces(const PyBrxCvDbTinSurface& theOne, const PyBrxCvDbTinSurface& theOther);
     static std::string          className();
