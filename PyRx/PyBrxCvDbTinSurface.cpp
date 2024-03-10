@@ -303,7 +303,8 @@ void makePyBrxCvDbTinSurfaceWrapper()
         .def("getConstraints", &PyBrxCvDbTinSurface::getConstraints, DS.ARGS())
         .def("getConstraint", &PyBrxCvDbTinSurface::getConstraint1)
         .def("getConstraint", &PyBrxCvDbTinSurface::getConstraint2, DS.ARGS({ "id : PyDb.ObjectId|int" }))
-        .def("addConstraint", &PyBrxCvDbTinSurface::addConstraint, DS.ARGS({ "val : PyBrxCv.CvDbTinSurfaceConstraint","addReactor : bool" }))
+        .def("addConstraint", &PyBrxCvDbTinSurface::addConstraint, DS.ARGS({ "constraint : PyBrxCv.CvDbTinSurfaceConstraint","addReactor : bool" }))
+        .def("addConstraints", &PyBrxCvDbTinSurface::addConstraints, DS.ARGS({ "constraints : list[PyBrxCv.CvDbTinSurfaceConstraint]","addReactor : bool" }))
         .def("updateConstraint", &PyBrxCvDbTinSurface::updateConstraint, DS.ARGS({ "val : PyBrxCv.CvDbTinSurfaceConstraint" }))
         .def("eraseConstraint", &PyBrxCvDbTinSurface::eraseConstraint1)
         .def("eraseConstraint", &PyBrxCvDbTinSurface::eraseConstraint2, DS.ARGS({ "id : PyDb.ObjectId | int" ,"removeReactor : bool" }))
@@ -705,7 +706,16 @@ PyBrxCvDbTinSurfaceConstraint PyBrxCvDbTinSurface::getConstraint2(const PyDbObje
 
 bool PyBrxCvDbTinSurface::addConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint, bool addReactor)
 {
-    return impObj()->addConstraint(*constraint.impObj(), addReactor);
+    return impObj()->addConstraint(*constraint.impObj(), addReactor); (*constraint.impObj(), addReactor);
+}
+
+bool PyBrxCvDbTinSurface::addConstraints(const boost::python::list& constraints, bool addReactor)
+{
+    const auto& vec = py_list_to_std_vector<PyBrxCvDbTinSurfaceConstraint>(constraints);
+    BrxCvDbTinSurfaceConstraintArray items;
+    for (const auto& item : vec)
+        items.append(BrxCvDbTinSurfaceConstraint(*item.impObj()));
+   return impObj()->addConstraints(items, addReactor);
 }
 
 bool PyBrxCvDbTinSurface::updateConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint)
@@ -1030,8 +1040,8 @@ BrxCvDbVolumeSurface* PyBrxCvDbVolumeSurface::impObj(const std::source_location&
 //PyBrxCvDbGrading
 void makePyBrxCvDbGradingWrapper()
 {
-    PyDocString DS("CvDbTinSurface");
-    class_<PyBrxCvDbGrading, bases<PyBrxCvDbEntity>>("CvDbTinSurface")
+    PyDocString DS("CvDbGrading");
+    class_<PyBrxCvDbGrading, bases<PyBrxCvDbEntity>>("CvDbGrading")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
