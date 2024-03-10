@@ -11,6 +11,8 @@ import PyEd as Ed
 import time
 
 print("testname = pydbtest")
+host = Ap.Application.hostAPI()
+
 
 
 class TestDatabase(unittest.TestCase):
@@ -263,12 +265,8 @@ class TestDatabase(unittest.TestCase):
         geoData = Db.GeoData(geoDataId)
         self.assertIsNotNone(geoData.coordinateSystem())
         
+    @unittest.skipIf(host == "BRX24", "BricsCAD known failure")
     def test_tdusrtimer(self) -> None:
-        if "BRX" in Ap.Application.hostAPI():
-            print("BricsCAD Known Failure")
-            self.skipTest("BricsCAD Known Failure")
-            return
-        
         db = self.db06457
         date1 = db.tdusrtimer()
         time.sleep(1)

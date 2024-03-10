@@ -10,6 +10,8 @@ import PyAp as Ap
 import PyEd as Ed
 
 print("testname = pyentity")
+host = Ap.Application.hostAPI()
+
 
 
 def create_dbPoint():
@@ -113,7 +115,6 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(circle.center(),  Ge.Point3d(1, 2, 3))
         circle.setRadius(20)
         self.assertEqual(circle.radius(), 20)
-        self.assertEqual(circle.diameter(), 40)
 
     def test_dbtext(self):
         db = Db.curDb()

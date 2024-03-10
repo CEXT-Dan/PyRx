@@ -14,6 +14,7 @@ import PyBrxCv as Cv
 import time
 
 print("testname = pybcciviltest")
+host = Ap.Application.hostAPI()
 
 
 class TestBCadCivil(unittest.TestCase):

@@ -27,7 +27,7 @@ def PyRxCmd_pytestall():
       UnitTestPyDbEntity.PyRxCmd_pyentity()
       UnitTestPyEditor.PyRxCmd_pyeditor()
       UnitTestPyWx.PyRxCmd_pywx()
-      if host == "BRX24":
+      if 'BRX' in host:
           UnitTestPyBcadCivil.PyRxCmd_pybcciviltest()
     except Exception as err:
       print(err)

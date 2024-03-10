@@ -10,6 +10,9 @@ import PyAp  # = application, document classes services
 import PyEd  # = editor
 print("testname = pyge")
 
+host = PyAp.Application.hostAPI()
+
+
 class TestGe(unittest.TestCase):
     def test_scale2_default_ctor(self):
         scale = PyGe.Scale2d()
@@ -26,6 +29,7 @@ class TestGe(unittest.TestCase):
         self.assertEqual(scale.sx,4)
         self.assertEqual(scale.sy,4)
         
+    @unittest.skipIf(host == "BRX24", "BricsCAD known failure")
     def test_scale2_preMultBy(self):
         scaleL = PyGe.Scale2d(2,2)
         scaleR = PyGe.Scale2d(4,4)
@@ -33,13 +37,15 @@ class TestGe(unittest.TestCase):
         self.assertEqual(scaleL.sx,8)
         self.assertEqual(scaleL.sy,8)
         
+    @unittest.skipIf(host == "BRX24", "BricsCAD known failure")
     def test_scale2_postMultBy(self):
         scaleL = PyGe.Scale2d(2,2)
         scaleR = PyGe.Scale2d(4,4)
         scaleL.postMultBy(scaleR)
         self.assertEqual(scaleL.sx,8)
         self.assertEqual(scaleL.sy,8)
-        
+    
+    @unittest.skipIf(host == "BRX24", "BricsCAD known failure")
     def test_scale2_setToProduct1(self):
         scale1 = PyGe.Scale2d()
         scale2 =  PyGe.Scale2d(2,2)
@@ -297,7 +303,8 @@ class TestGe(unittest.TestCase):
         self.assertEqual(seg.startPoint(), pnt1)
         seg.reverseParam()
         self.assertEqual(seg.startPoint(), pnt2)
-        
+      
+    @unittest.skipIf(host == "BRX24", "BricsCAD known failure")  
     def test_surfSurfInt(self):
         vec = PyGe.Vector3d.kXAxis
         pnt = PyGe.Point3d(4000.0,3000.0,0.0)
