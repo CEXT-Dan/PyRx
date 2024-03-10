@@ -405,7 +405,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvGradingSlopeOffsetRule
-void makBrxCvGradingSlopeOffsetRule();
+void makeBrxCvGradingSlopeOffsetRule();
 
 class PyBrxCvGradingSlopeOffsetRule : public PyBrxCvGradingRule
 {
