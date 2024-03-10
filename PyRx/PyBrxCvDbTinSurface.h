@@ -203,8 +203,8 @@ public:
     PyBrxCvDbTinSurfaceConstraint getConstraint1(const Adesk::UInt64 id) const;
     PyBrxCvDbTinSurfaceConstraint getConstraint2(const PyDbObjectId& id) const;
 
-    //bool addConstraints(const BrxCvDbTinSurfaceConstraintArray& constraints, const bool addReactor = true);
     bool                addConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint, bool addReactor);
+    bool                addConstraints(const boost::python::list& constraints, bool addReactor);
     bool                updateConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint);
     bool                eraseConstraint1(const Adesk::UInt64 id, bool removeReactor);
     bool                eraseConstraint2(const PyDbObjectId& entityId, bool removeReactor);

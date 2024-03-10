@@ -2318,6 +2318,556 @@ class CvDbFileFormatManager:
       '''                             '''
     ...
 
+class CvDbGrading:
+    def __init__ (self: CvDbGrading,id: ObjectId,mode: PyDb.OpenMode=kForRead,erased: bool=False)-> None :
+      '''                             '''
+    ...
+    def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
+      '''                             '''
+    ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
+    def assertNotifyEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertReadEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertWriteEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def blockId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def bounds (self: Drawable,ext: PyDb.Extents)-> bool :
+      '''                             '''
+    ...
+    def cancel (self: DbObject)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbGrading :
+      '''                             '''
+    ...
+    def castShadows (self: Entity)-> bool :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbGrading :
+      '''                             '''
+    ...
+    def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def collisionType (self: Entity)-> PyDb.CollisionType :
+      '''                             '''
+    ...
+    def color (self: Entity)-> PyDb.Color :
+      '''                             '''
+    ...
+    def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def createExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self: CvDbEntity)-> str :
+      '''                             '''
+    ...
+    def disableUndoRecording (self: DbObject,disable: bool)-> None :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def downgradeOpen (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def downgradeToNotify (self: DbObject,wasWritable: bool)-> None :
+      '''                             '''
+    ...
+    def draw (self: Entity)-> None :
+      '''                             '''
+    ...
+    def drawableType (self: Drawable)-> PyGi.GiDrawableType :
+      '''                             '''
+    ...
+    def entityColor (self: Entity)-> PyDb.EntityColor :
+      '''                             '''
+    ...
+    def erase (self: DbObject,erasing : bool=True)-> None :
+      '''                             '''
+    ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
+    def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getCalculationCurve (self: CvDbGrading)-> PyGe.Curve3d :
+      '''                             '''
+    ...
+    def getCalculationMethod (self: CvDbGrading)-> PyBrxCv.GradingCalculationMethod :
+      '''                             '''
+    ...
+    def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
+      '''                             '''
+    ...
+    def getEcs (self: Entity)-> PyGe.Matrix3d :
+      '''                             '''
+    ...
+    def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getFieldDictionary (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
+    def getGradingVisualStyle (self: CvDbGrading)-> PyBrxCv.GradingVisualStyle :
+      '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None :
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
+    def getHandle (self: DbObject)-> PyDb.Handle :
+      '''                             '''
+    ...
+    def getInputEntityId (self: CvDbGrading)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getIsAssociative (self: CvDbGrading)-> bool :
+      '''                             '''
+    ...
+    def getIsDrawInfill (self: CvDbGrading)-> bool :
+      '''                             '''
+    ...
+    def getMidOrdinateDist (self: CvDbGrading)-> float :
+      '''                             '''
+    ...
+    def getPlane (self: Entity)-> PyGe.Plane :
+      '''                             '''
+    ...
+    def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getRegionEnd (self: CvDbGrading)-> float :
+      '''                             '''
+    ...
+    def getRegionStart (self: CvDbGrading)-> float :
+      '''                             '''
+    ...
+    def getSegmentMaxAngle (self: CvDbGrading)-> float :
+      '''                             '''
+    ...
+    def getSegmentMaxLength (self: CvDbGrading)-> float :
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list :
+      '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned long,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned long,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
+      '''                             '''
+    ...
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
+      '''                             '''
+    ...
+    def hasFields (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
+    def id (self: Drawable)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def intersectWith (self, *args, **kwargs)-> list :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (int)arg4, (int)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4) -> list :
+
+    C++ signature :
+        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)arg5, (int)arg6) -> list :
+
+    C++ signature :
+        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isAProxy (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
+    def isCancelling (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def isClosed (self: CvDbGrading)-> bool :
+      '''                             '''
+    ...
+    def isEraseStatusToggled (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def isErased (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isModified (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def isModifiedGraphics (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def isModifiedXData (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def isNewObject (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def isNotifyEnabled (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def isNotifying (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isPersistent (self: Drawable)-> int :
+      '''                             '''
+    ...
+    def isPlanar (self: Entity)-> int :
+      '''                             '''
+    ...
+    def isReadEnabled (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def isReallyClosing (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def isTransactionResident (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def isUndoRecordingDisabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoing (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def isWriteEnabled (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def layer (self: Entity)-> str :
+      '''                             '''
+    ...
+    def layerId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def lineWeight (self: Entity)-> PyDb.LineWeight :
+      '''                             '''
+    ...
+    def linetype (self: Entity)-> str :
+      '''                             '''
+    ...
+    def linetypeId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def linetypeScale (self: Entity)-> float :
+      '''                             '''
+    ...
+    def list (self: Entity)-> None :
+      '''                             '''
+    ...
+    def material (self: Entity)-> str :
+      '''                             '''
+    ...
+    def materialId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def name (self: CvDbEntity)-> str :
+      '''                             '''
+    ...
+    def objectId (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def ownerId (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def receiveShadows (self: Entity)-> bool :
+      '''                             '''
+    ...
+    def recordGraphicsModified (self: Entity)-> None :
+      '''                             '''
+    ...
+    def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
+      '''                             '''
+    ...
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
+      '''                             '''
+    ...
+    def resultDayLight (self: CvDbGrading)-> list :
+      '''                             '''
+    ...
+    def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> int :
+      '''                             '''
+    ...
+    def rule (self: CvDbGrading)-> PyBrxCv.CvGradingRule :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
+      '''                             '''
+    ...
+    def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
+      '''                             '''
+    ...
+    def setCalculationMethod (self: CvDbGrading,val : PyBrxCv.GradingCalculationMethod)-> bool :
+      '''                             '''
+    ...
+    def setCastShadows (self: Entity,val: bool)-> None :
+      '''                             '''
+    ...
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
+      '''                             '''
+    ...
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
+      '''                             '''
+    ...
+    def setDescription (self: CvDbEntity,val : str)-> bool :
+      '''                             '''
+    ...
+    def setDrawInfill (self: CvDbGrading,val : bool)-> PyBrxCv.GradingStatus :
+      '''                             '''
+    ...
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def setGradingVisualStyle (self: CvDbGrading,val : PyBrxCv.GradingVisualStyle)-> bool :
+      '''                             '''
+    ...
+    def setInputData (self: CvDbGrading,curve: PyGe.Curve3d)-> PyBrxCv.GradingStatus :
+      '''                             '''
+    ...
+    def setInputDataId (self: CvDbGrading,id : PyDb.ObjectId)-> PyBrxCv.GradingStatus :
+      '''                             '''
+    ...
+    def setIsAssociative (self: CvDbGrading,val : bool)-> bool :
+      '''                             '''
+    ...
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
+      '''                             '''
+    ...
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setMidOrdinateDist (self: CvDbGrading,val : float)-> PyBrxCv.GradingStatus :
+      '''                             '''
+    ...
+    def setName (self: CvDbEntity,val : str)-> bool :
+      '''                             '''
+    ...
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def setPlotStyleName (self, *args, **kwargs)-> None :
+      '''setPlotStyleName( (Entity)arg1, (str)arg2, (int)arg3) -> None :
+
+    C++ signature :
+        void setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (int)arg3) -> None :
+
+    C++ signature :
+        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,int)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)arg4) -> None :
+
+    C++ signature :
+        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
+    ...
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setReceiveShadows (self: Entity,val: bool)-> None :
+      '''                             '''
+    ...
+    def setRegionEnd (self: CvDbGrading,val : float)-> PyBrxCv.GradingStatus :
+      '''                             '''
+    ...
+    def setRegionStart (self: CvDbGrading,val : float)-> PyBrxCv.GradingStatus :
+      '''                             '''
+    ...
+    def setRule (self: CvDbGrading,val : PyBrxCv.CvGradingRule)-> PyBrxCv.GradingStatus :
+      '''                             '''
+    ...
+    def setSegmentMaxAngle (self: CvDbGrading,val : float)-> PyBrxCv.GradingStatus :
+      '''                             '''
+    ...
+    def setSegmentMaxLength (self: CvDbGrading,val : float)-> PyBrxCv.GradingStatus :
+      '''                             '''
+    ...
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setXData (self: DbObject,xdata: list)-> None :
+      '''                             '''
+    ...
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
+      '''                             '''
+    ...
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+      '''                             '''
+    ...
+    def targetSurface (self: CvDbGrading)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def update (self: CvDbGrading,val : bool)-> PyBrxCv.GradingStatus :
+      '''                             '''
+    ...
+    def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
+      '''                             '''
+    ...
+    def upgradeOpen (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
+      '''                             '''
+    ...
+    def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
+      '''                             '''
+    ...
+    def visibility (self: Entity)-> PyDb.Visibility :
+      '''                             '''
+    ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
+    def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> int :
+      '''                             '''
+    ...
+    def xData (self: DbObject,appname: str)-> list :
+      '''                             '''
+    ...
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
+      '''                             '''
+    ...
+
 class CvDbHAlignment:
     def __init__ (self: CvDbHAlignment,id: ObjectId,mode: PyDb.OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
@@ -6783,10 +7333,25 @@ class CvDbTinSurface:
     def __init__ (self: CvDbTinSurface,id: ObjectId,mode: PyDb.OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
+    def addConstraint (self: CvDbTinSurface,constraint : PyBrxCv.CvDbTinSurfaceConstraint,addReactor : bool)-> bool :
+      '''                             '''
+    ...
+    def addConstraints (self: CvDbTinSurface,constraints : list[PyBrxCv.CvDbTinSurfaceConstraint],addReactor : bool)-> bool :
+      '''                             '''
+    ...
     def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
+    def addDefinition (self: CvDbTinSurface,ref : PyBrxCv.CvDbTinSurfaceDefinition)-> int :
+      '''                             '''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def addPoint (self: CvDbTinSurface,pt : PyGe.Point3d)-> bool :
+      '''                             '''
+    ...
+    def addPoints (self: CvDbTinSurface,pts : list[PyGe.Point3d])-> bool :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -6798,6 +7363,12 @@ class CvDbTinSurface:
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
+    def area2d (self: CvDbTinSurface,val : bool)-> float :
+      '''                             '''
+    ...
+    def area3d (self: CvDbTinSurface,val : bool)-> float :
+      '''                             '''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -6808,6 +7379,9 @@ class CvDbTinSurface:
       '''                             '''
     ...
     def blockId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def boundingBox (self: CvDbTinSurface)-> tuple :
       '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool :
@@ -6824,6 +7398,9 @@ class CvDbTinSurface:
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+    def changePointsElevations (self: CvDbTinSurface,pts : list[PyGe.Point3d],val : float)-> bool :
+      '''                             '''
+    ...
 
     @staticmethod
     def className ()-> str :
@@ -6835,6 +7412,9 @@ class CvDbTinSurface:
       '''                             '''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def closestPointTo (self: CvDbTinSurface,pt : PyGe.Point3d)-> PyGe.Point3d :
       '''                             '''
     ...
     def collisionType (self: Entity)-> PyDb.CollisionType :
@@ -6849,16 +7429,34 @@ class CvDbTinSurface:
     def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
+    def contains (self: CvDbTinSurface,pt : PyGe.Point3d)-> bool :
+      '''                             '''
+    ...
+    def contoursAtElevation (self: CvDbTinSurface,val : float)-> list :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createSnapshot (self: CvDbTinSurface)-> int :
+      '''                             '''
+    ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
+    def definitionAt (self: CvDbTinSurface,index : int)-> PyBrxCv.CvDbTinSurfaceDefinition :
+      '''                             '''
+    ...
+    def definitionCount (self: CvDbTinSurface)-> int :
+      '''                             '''
+    ...
+    def definitionIndex (self: CvDbTinSurface,ref : PyBrxCv.CvDbTinSurfaceDefinition)-> tuple :
       '''                             '''
     ...
 
@@ -6881,10 +7479,19 @@ class CvDbTinSurface:
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
     ...
+    def drapeId (self: CvDbTinSurface,id : PyDb.ObjectId)-> list :
+      '''                             '''
+    ...
+    def drapePoint (self: CvDbTinSurface,pts : list[PyGe.Point3d])-> list :
+      '''                             '''
+    ...
     def draw (self: Entity)-> None :
       '''                             '''
     ...
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
+      '''                             '''
+    ...
+    def elevationAtPoint (self: CvDbTinSurface,pt : PyGe.Point3d)-> tuple :
       '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor :
@@ -6893,19 +7500,40 @@ class CvDbTinSurface:
     def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
+    def eraseConstraint (self: CvDbTinSurface,id : PyDb.ObjectId | int,removeReactor : bool)-> bool :
+      '''                             '''
+    ...
+    def eraseConstraints (self: CvDbTinSurface,int64ids : list[int],removeReactor : bool)-> bool :
+      '''                             '''
+    ...
+    def eraseConstraintsIds (self: CvDbTinSurface,ids : list[PyDb.ObjectId],removeReactor : bool)-> bool :
+      '''                             '''
+    ...
     def explode (self: Entity)-> list :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getCalculationCurve (self: CvDbTinSurface)-> PyGe.Curve3d :
+    def findDefinition (self: CvDbTinSurface,id : int)-> PyBrxCv.CvDbTinSurfaceDefinition :
       '''                             '''
     ...
-    def getCalculationMethod (self: CvDbTinSurface)-> PyBrxCv.GradingCalculationMethod :
+    def findTinPointAt (self: CvDbTinSurface,pt : PyGe.Point3d)-> tuple :
+      '''                             '''
+    ...
+    def findTinTrianglesAt (self: CvDbTinSurface,pt : PyGe.Point3d)-> list :
+      '''                             '''
+    ...
+    def getBorders (self: CvDbTinSurface)-> list :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
+      '''                             '''
+    ...
+    def getConstraint (self: CvDbTinSurface,id : PyDb.ObjectId|int)-> PyBrxCv.CvDbTinSurfaceConstraint :
+      '''                             '''
+    ...
+    def getConstraints (self: CvDbTinSurface)-> list :
       '''                             '''
     ...
     def getEcs (self: Entity)-> PyGe.Matrix3d :
@@ -6923,9 +7551,6 @@ class CvDbTinSurface:
     def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGradingVisualStyle (self: CvDbTinSurface)-> PyBrxCv.GradingVisualStyle :
-      '''                             '''
-    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -6935,34 +7560,16 @@ class CvDbTinSurface:
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getInputEntityId (self: CvDbTinSurface)-> PyDb.ObjectId :
-      '''                             '''
-    ...
-    def getIsAssociative (self: CvDbTinSurface)-> bool :
-      '''                             '''
-    ...
-    def getIsDrawInfill (self: CvDbTinSurface)-> bool :
-      '''                             '''
-    ...
-    def getMidOrdinateDist (self: CvDbTinSurface)-> float :
-      '''                             '''
-    ...
     def getPlane (self: Entity)-> PyGe.Plane :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getRegionEnd (self: CvDbTinSurface)-> float :
+    def getPoints (self: CvDbTinSurface,val : bool)-> list :
       '''                             '''
     ...
-    def getRegionStart (self: CvDbTinSurface)-> float :
-      '''                             '''
-    ...
-    def getSegmentMaxAngle (self: CvDbTinSurface)-> float :
-      '''                             '''
-    ...
-    def getSegmentMaxLength (self: CvDbTinSurface)-> float :
+    def getPointsInsidePolygon (self: CvDbTinSurface,pts : list[PyGe.Point3d],includeOnEdge : bool)-> list :
       '''                             '''
     ...
     def getStretchPoints (self: Entity)-> list :
@@ -6979,6 +7586,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     C++ signature :
         class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned long,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
+    def getTinPoints (self: CvDbTinSurface)-> list :
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
@@ -6991,6 +7601,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
+    def hasSnapshot (self: CvDbTinSurface)-> bool :
+      '''                             '''
+    ...
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
@@ -7001,6 +7614,12 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def initialize (self: CvDbTinSurface,min : PyGe.Point3d,max : PyGe.Point3d,numOfPoints : int)-> None :
+      '''                             '''
+    ...
+    def insertDefinitionAt (self: CvDbTinSurface,index : int,ref : PyBrxCv.CvDbTinSurfaceDefinition)-> int :
       '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> list :
@@ -7024,6 +7643,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
+    def intersectionsWithLine (self: CvDbTinSurface,start : PyGe.Point3d,end : PyGe.Point3d,type : PyBrxCv.TinSurfaceIntersectType,visibleOnly : bool)-> tuple :
+      '''                             '''
+    ...
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
@@ -7036,10 +7658,13 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAnnotative (self: DbObject)-> PyDb.AnnotativeStates :
       '''                             '''
     ...
-    def isCancelling (self: DbObject)-> int :
+    def isAssociative (self: CvDbTinSurface)-> bool :
       '''                             '''
     ...
-    def isClosed (self: CvDbTinSurface)-> bool :
+    def isAutoUpdate (self: CvDbTinSurface)-> bool :
+      '''                             '''
+    ...
+    def isCancelling (self: DbObject)-> int :
       '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> int :
@@ -7084,6 +7709,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isReallyClosing (self: DbObject)-> int :
       '''                             '''
     ...
+    def isRebuildPossible (self: CvDbTinSurface)-> bool :
+      '''                             '''
+    ...
+    def isSnapshotUpdateNeeded (self: CvDbTinSurface)-> bool :
+      '''                             '''
+    ...
     def isTransactionResident (self: DbObject)-> int :
       '''                             '''
     ...
@@ -7091,6 +7722,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isUndoing (self: DbObject)-> int :
+      '''                             '''
+    ...
+    def isUpdateNeeded (self: CvDbTinSurface)-> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> int :
@@ -7120,10 +7754,46 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def list (self: Entity)-> None :
       '''                             '''
     ...
+    def majorContours (self: CvDbTinSurface)-> list :
+      '''                             '''
+    ...
+    def majorContoursColor (self: CvDbTinSurface)-> tuple :
+      '''                             '''
+    ...
+    def majorContoursInterval (self: CvDbTinSurface)-> tuple :
+      '''                             '''
+    ...
     def material (self: Entity)-> str :
       '''                             '''
     ...
     def materialId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def maxElevation (self: CvDbTinSurface,val : bool)-> float :
+      '''                             '''
+    ...
+    def merge (self: CvDbTinSurface,val : PyBrxCv.CvDbTinSurface)-> bool :
+      '''                             '''
+    ...
+    def minElevation (self: CvDbTinSurface,val : bool)-> float :
+      '''                             '''
+    ...
+    def minorContours (self: CvDbTinSurface)-> list :
+      '''                             '''
+    ...
+    def minorContoursColor (self: CvDbTinSurface)-> tuple :
+      '''                             '''
+    ...
+    def minorContoursInterval (self: CvDbTinSurface)-> tuple :
+      '''                             '''
+    ...
+    def moveDefinition (self: CvDbTinSurface,from : int,to : int)-> int :
+      '''                             '''
+    ...
+    def movePoint (self: CvDbTinSurface,from : PyGe.Point3d,to : PyGe.Point3d)-> bool :
+      '''                             '''
+    ...
+    def movePoints (self: CvDbTinSurface,from : list[PyGe.Point3d],to : list[PyGe.Point3d])-> bool :
       '''                             '''
     ...
     def name (self: CvDbEntity)-> str :
@@ -7138,7 +7808,19 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
+    def pointsCount (self: CvDbTinSurface,val : bool)-> int :
+      '''                             '''
+    ...
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def raiseSurface (self: CvDbTinSurface,val : float)-> bool :
+      '''                             '''
+    ...
+    def rebuild (self: CvDbTinSurface,val : bool)-> bool :
+      '''                             '''
+    ...
+    def rebuildSnapshot (self: CvDbTinSurface)-> bool :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -7150,7 +7832,13 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def removeAllDefinitions (self: CvDbTinSurface)-> int :
+      '''                             '''
+    ...
     def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
+    def removeDefinitionAt (self: CvDbTinSurface,val : int)-> bool :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -7159,16 +7847,19 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
+    def removePoint (self: CvDbTinSurface,pt : PyGe.Point3d)-> bool :
+      '''                             '''
+    ...
+    def removePoints (self: CvDbTinSurface,pts : list[PyGe.Point3d])-> bool :
+      '''                             '''
+    ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def resultDayLight (self: CvDbTinSurface)-> list :
+    def removeSnapshot (self: CvDbTinSurface)-> bool :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> int :
-      '''                             '''
-    ...
-    def rule (self: CvDbTinSurface)-> PyBrxCv.CvGradingRule :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
@@ -7177,10 +7868,10 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
-    def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
+    def setAssociative (self: CvDbTinSurface,val : bool)-> bool :
       '''                             '''
     ...
-    def setCalculationMethod (self: CvDbTinSurface,val : PyBrxCv.GradingCalculationMethod)-> bool :
+    def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
     def setCastShadows (self: Entity,val: bool)-> None :
@@ -7198,22 +7889,10 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDescription (self: CvDbEntity,val : str)-> bool :
       '''                             '''
     ...
-    def setDrawInfill (self: CvDbTinSurface,val : bool)-> PyBrxCv.GradingStatus :
-      '''                             '''
-    ...
     def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setGradingVisualStyle (self: CvDbTinSurface,val : PyBrxCv.GradingVisualStyle)-> bool :
-      '''                             '''
-    ...
-    def setInputData (self: CvDbTinSurface,curve: PyGe.Curve3d)-> PyBrxCv.GradingStatus :
-      '''                             '''
-    ...
-    def setInputDataId (self: CvDbTinSurface,id : PyDb.ObjectId)-> PyBrxCv.GradingStatus :
-      '''                             '''
-    ...
-    def setIsAssociative (self: CvDbTinSurface,val : bool)-> bool :
+    def setIsAutoUpdate (self: CvDbTinSurface,val : bool)-> bool :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -7228,10 +7907,19 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
+    def setMajorContoursColor (self: CvDbTinSurface,val : int)-> bool :
+      '''                             '''
+    ...
+    def setMajorContoursInterval (self: CvDbTinSurface,val : float)-> bool :
+      '''                             '''
+    ...
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMidOrdinateDist (self: CvDbTinSurface,val : float)-> PyBrxCv.GradingStatus :
+    def setMinorContoursColor (self: CvDbTinSurface,val : int)-> bool :
+      '''                             '''
+    ...
+    def setMinorContoursInterval (self: CvDbTinSurface,val : float)-> bool :
       '''                             '''
     ...
     def setName (self: CvDbEntity,val : str)-> bool :
@@ -7262,19 +7950,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRegionEnd (self: CvDbTinSurface,val : float)-> PyBrxCv.GradingStatus :
+    def setStyle (self: CvDbTinSurface,style : PyBrxCv.TinSurfaceStyle)-> bool :
       '''                             '''
     ...
-    def setRegionStart (self: CvDbTinSurface,val : float)-> PyBrxCv.GradingStatus :
-      '''                             '''
-    ...
-    def setRule (self: CvDbTinSurface,val : PyBrxCv.CvGradingRule)-> PyBrxCv.GradingStatus :
-      '''                             '''
-    ...
-    def setSegmentMaxAngle (self: CvDbTinSurface,val : float)-> PyBrxCv.GradingStatus :
-      '''                             '''
-    ...
-    def setSegmentMaxLength (self: CvDbTinSurface,val : float)-> PyBrxCv.GradingStatus :
+    def setSurfaceElevation (self: CvDbTinSurface,val : float)-> bool :
       '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -7286,17 +7965,35 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
+    def style (self: CvDbTinSurface)-> PyBrxCv.TinSurfaceStyle :
+      '''                             '''
+    ...
+    def swapEdge (self: CvDbTinSurface,pt : PyGe.Point3d)-> bool :
+      '''                             '''
+    ...
     def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def targetSurface (self: CvDbTinSurface)-> PyDb.ObjectId :
+    def tinTriangles (self: CvDbTinSurface)-> list :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def update (self: CvDbTinSurface,val : bool)-> PyBrxCv.GradingStatus :
+    def triangles (self: CvDbTinSurface,val : bool)-> list :
       '''                             '''
+    ...
+    def trianglesCount (self: CvDbTinSurface,val : bool)-> int :
+      '''                             '''
+    ...
+    def updateConstraint (self: CvDbTinSurface,val : PyBrxCv.CvDbTinSurfaceConstraint)-> bool :
+      '''                             '''
+    ...
+    def updateObjectData (self, *args, **kwargs)-> None :
+      '''updateObjectData( (CvDbTinSurface)arg1) -> None :
+
+    C++ signature :
+        void updateObjectData(class PyBrxCvDbTinSurface {lvalue})'''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
@@ -7567,7 +8264,7 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
-__init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (RewriteSymbolics)arg5) -> None :
+__init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (ArgumentError)arg5) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class boost::python::list,double,bool,enum BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation)'''
@@ -7594,7 +8291,7 @@ __init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (RewriteSymbolics)a
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def crossingsElevation (self: CvDbTinSurfaceDefinitionAddDrawingObjects)-> RewriteSymbolics :
+    def crossingsElevation (self: CvDbTinSurfaceDefinitionAddDrawingObjects)-> ArgumentError :
       '''                             '''
     ...
 
@@ -12273,7 +12970,10 @@ class CvDbVolumeSurface:
     def __init__ (self: CvDbVolumeSurface,id: ObjectId,mode: PyDb.OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
-    def addConstraint (self: CvDbTinSurface,val : PyBrxCv.CvDbTinSurfaceConstraint,addReactor : bool)-> bool :
+    def addConstraint (self: CvDbTinSurface,constraint : PyBrxCv.CvDbTinSurfaceConstraint,addReactor : bool)-> bool :
+      '''                             '''
+    ...
+    def addConstraints (self: CvDbTinSurface,constraints : list[PyBrxCv.CvDbTinSurfaceConstraint],addReactor : bool)-> bool :
       '''                             '''
     ...
     def addContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
