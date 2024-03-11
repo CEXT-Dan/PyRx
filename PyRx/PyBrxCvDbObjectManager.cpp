@@ -394,7 +394,7 @@ void makePyBrxCvDbPointGroupManagerWrapper()
         .def("nextPointNumber", &PyBrxCvDbPointGroupManager::nextPointNumber, DS.ARGS())
         .def("setNextPointNumber", &PyBrxCvDbPointGroupManager::setNextPointNumber, DS.ARGS({ "val : int" }))
 
-        .def("getManagerId", &PyBrxCvDbPointGroupManager::getManagerId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getManager")
+        .def("getManagerId", &PyBrxCvDbPointGroupManager::getManagerId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getManagerId")
         .def("openManager", &PyBrxCvDbPointGroupManager::openManager, DS.SARGS({ "db: PyDb.Database","mode: PyDb.OpenMode" })).staticmethod("openManager")
         .def("className", &PyBrxCvDbPointGroupManager::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbPointGroupManager::desc, DS.SARGS()).staticmethod("desc")

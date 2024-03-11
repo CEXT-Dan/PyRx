@@ -6663,7 +6663,7 @@ class CvDbPointGroupManager:
     ...
 
     @staticmethod
-    def getManager (db: PyDb.Database)-> PyDb.ObjectId :
+    def getManagerId (db: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
     def groupsWithPoint (self: CvDbPointGroupManager,val : int)-> list :
@@ -8264,7 +8264,7 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
-__init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (ArgumentError)arg5) -> None :
+__init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (RewriteSymbolics)arg5) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class boost::python::list,double,bool,enum BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation)'''
@@ -8291,7 +8291,7 @@ __init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (ArgumentError)arg5
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def crossingsElevation (self: CvDbTinSurfaceDefinitionAddDrawingObjects)-> ArgumentError :
+    def crossingsElevation (self: CvDbTinSurfaceDefinitionAddDrawingObjects)-> RewriteSymbolics :
       '''                             '''
     ...
 
