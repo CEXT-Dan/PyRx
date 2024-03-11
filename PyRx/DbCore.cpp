@@ -83,6 +83,7 @@ void makeDbCoreWrapper()
         .def("getReservedString", &DbCore::getReservedString).staticmethod("getReservedString")
         .def("getUnitsConversion", &DbCore::getUnitsConversion).staticmethod("getUnitsConversion")
         .def("getViewportVisualStyle", &DbCore::getViewportVisualStyle).staticmethod("getViewportVisualStyle")
+        .def("hasGeoData", &DbCore::hasGeoData).staticmethod("hasGeoData")
         .def("handEnt", &DbCore::handEnt).staticmethod("handEnt")
         .def("isReservedString", &DbCore::isReservedString).staticmethod("isReservedString")
         .def("inters", &DbCore::inters).staticmethod("inters")
@@ -540,6 +541,12 @@ PyDbObjectId DbCore::getGeoDataObjId(PyDbDatabase& db)
     PyDbObjectId id;
     PyThrowBadEs(acdbGetGeoDataObjId(db.impObj(), id.m_id));
     return id;
+}
+
+bool DbCore::hasGeoData(PyDbDatabase& db)
+{
+    PyDbObjectId id;
+    return acdbGetGeoDataObjId(db.impObj(), id.m_id) == eOk;
 }
 
 boost::python::tuple DbCore::getProxyInfo(const PyDbObject& obj)

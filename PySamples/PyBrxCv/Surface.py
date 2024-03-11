@@ -107,26 +107,17 @@ def PyRxCmd_SurfaceList() -> None:
         
         constraints = pSurface.getConstraints()
         for constraint in constraints:
-            t = constraint.constraintType()
-            print(constraint)
-            print(t)
-        
-
-        # constraints = pSurface.getConstraints()
-        # print(constraints)
-        # for constraint in constraints:
-        #     constraintType = constraint.constraintType()
-        #     match constraintType:
-        #         case Cv.TinConstraintType.eTinBreakline:
-        #             print('eTinBreakline')
-        #         case Cv.TinConstraintType.eTinBoundary:
-        #             print('eTinBoundary')
-        #         case Cv.TinConstraintType.eTinWall:
-        #             print('eTinWall')
-        #         case _:
-        #             print('oops')
-                
-        
-        
+            match constraint.constraintType():
+                case Cv.TinConstraintType.eTinBreakline:
+                    print('eTinBreakline')
+                case Cv.TinConstraintType.eTinBoundary:
+                    print('eTinBoundary')
+                case Cv.TinConstraintType.eTinWall:
+                    print('eTinWall')
+                case _:
+                    print('oops')
+            
+            print('is a database object: ',constraint.isDbResident())
+                    
     except Exception as err:
         traceback.print_exception(err)
