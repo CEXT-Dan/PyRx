@@ -99,25 +99,32 @@ def PyRxCmd_SurfaceList() -> None:
             return
         
         pSurface = Cv.CvDbTinSurface(esel[1])
-        handleStr = pSurface.objectId().handle().toString()
-        
-        print(handleStr,pSurface.pointsCount(True) )
-        print(handleStr,pSurface.trianglesCount(True) )
-        print(handleStr,pSurface.area2d(True) )
-        print(handleStr,pSurface.area3d(True) )
-        
 
+        print('pointsCount',pSurface.pointsCount(True) )
+        print('trianglesCount',pSurface.trianglesCount(True) )
+        print('area2d',pSurface.area2d(True) )
+        print('area3d',pSurface.area3d(True) )
+        
         constraints = pSurface.getConstraints()
         for constraint in constraints:
-            match constraint.constraintType():
-                case Cv.TinConstraintType.eTinBreakline:
-                    print('eTinBreakline')
-                case Cv.TinConstraintType.eTinBoundary:
-                    print('eTinBoundary')
-                case Cv.TinConstraintType.eTinWall:
-                    print('eTinWall')
-                case _:
-                    print('oops')
+            t = constraint.constraintType()
+            print(constraint)
+            print(t)
+        
+
+        # constraints = pSurface.getConstraints()
+        # print(constraints)
+        # for constraint in constraints:
+        #     constraintType = constraint.constraintType()
+        #     match constraintType:
+        #         case Cv.TinConstraintType.eTinBreakline:
+        #             print('eTinBreakline')
+        #         case Cv.TinConstraintType.eTinBoundary:
+        #             print('eTinBoundary')
+        #         case Cv.TinConstraintType.eTinWall:
+        #             print('eTinWall')
+        #         case _:
+        #             print('oops')
                 
         
         
