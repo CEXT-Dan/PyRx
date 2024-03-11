@@ -258,8 +258,7 @@ inline void PerfTimer::end()
 //AcResBufPtr
 using AcResBufPtr = std::unique_ptr < resbuf, decltype([](resbuf* ptr) noexcept
     {
-        if (ptr != nullptr)
-            acutRelRb(ptr);
+        acutRelRb(ptr);
     }) > ;
 
 //-------------------------------------------------------------------------------------
