@@ -125,7 +125,7 @@ public:
     Adesk::UInt32                       nextPointNumber() const;
     bool                                setNextPointNumber(Adesk::UInt32 number);
 
-    static PyDbObjectId                 getManager(PyDbDatabase& db);
+    static PyDbObjectId                 getManagerId(PyDbDatabase& db);
     static PyBrxCvDbPointGroupManager   openManager(PyDbDatabase& db, AcDb::OpenMode mode);
 
     static std::string                  className();

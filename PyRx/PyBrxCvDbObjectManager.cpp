@@ -394,7 +394,7 @@ void makePyBrxCvDbPointGroupManagerWrapper()
         .def("nextPointNumber", &PyBrxCvDbPointGroupManager::nextPointNumber, DS.ARGS())
         .def("setNextPointNumber", &PyBrxCvDbPointGroupManager::setNextPointNumber, DS.ARGS({ "val : int" }))
 
-        .def("getManager", &PyBrxCvDbPointGroupManager::getManager, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getManager")
+        .def("getManagerId", &PyBrxCvDbPointGroupManager::getManagerId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getManager")
         .def("openManager", &PyBrxCvDbPointGroupManager::openManager, DS.SARGS({ "db: PyDb.Database","mode: PyDb.OpenMode" })).staticmethod("openManager")
         .def("className", &PyBrxCvDbPointGroupManager::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbPointGroupManager::desc, DS.SARGS()).staticmethod("desc")
@@ -448,7 +448,7 @@ bool PyBrxCvDbPointGroupManager::setNextPointNumber(Adesk::UInt32 number)
     return impObj()->setNextPointNumber(number);
 }
 
-PyDbObjectId PyBrxCvDbPointGroupManager::getManager(PyDbDatabase& db)
+PyDbObjectId PyBrxCvDbPointGroupManager::getManagerId(PyDbDatabase& db)
 {
     PyDbObjectId id;
     PyThrowBadEs(BrxCvDbPointGroupManager::getManager(id.m_id, db.impObj()));
