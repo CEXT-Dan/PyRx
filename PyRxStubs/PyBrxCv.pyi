@@ -7363,10 +7363,10 @@ class CvDbTinSurface:
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def area2d (self: CvDbTinSurface,val : bool)-> float :
+    def area2d (self: CvDbTinSurface,visibleOnly : bool=False)-> float :
       '''                             '''
     ...
-    def area3d (self: CvDbTinSurface,val : bool)-> float :
+    def area3d (self: CvDbTinSurface,visibleOnly : bool=False)-> float :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -7566,7 +7566,7 @@ class CvDbTinSurface:
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getPoints (self: CvDbTinSurface,val : bool)-> list :
+    def getPoints (self: CvDbTinSurface,visibleOnly : bool=False)-> list :
       '''                             '''
     ...
     def getPointsInsidePolygon (self: CvDbTinSurface,pts : list[PyGe.Point3d],includeOnEdge : bool)-> list :
@@ -7769,13 +7769,13 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def maxElevation (self: CvDbTinSurface,val : bool)-> float :
+    def maxElevation (self: CvDbTinSurface,visibleOnly : bool=False)-> float :
       '''                             '''
     ...
     def merge (self: CvDbTinSurface,val : PyBrxCv.CvDbTinSurface)-> bool :
       '''                             '''
     ...
-    def minElevation (self: CvDbTinSurface,val : bool)-> float :
+    def minElevation (self: CvDbTinSurface,visibleOnly : bool=False)-> float :
       '''                             '''
     ...
     def minorContours (self: CvDbTinSurface)-> list :
@@ -7808,7 +7808,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def pointsCount (self: CvDbTinSurface,val : bool)-> int :
+    def pointsCount (self: CvDbTinSurface,visibleOnly : bool=False)-> int :
       '''                             '''
     ...
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -7980,10 +7980,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def triangles (self: CvDbTinSurface,val : bool)-> list :
+    def triangles (self: CvDbTinSurface,visibleOnly : bool=False)-> list :
       '''                             '''
     ...
-    def trianglesCount (self: CvDbTinSurface,val : bool)-> int :
+    def trianglesCount (self: CvDbTinSurface,visibleOnly : bool=False)-> int :
       '''                             '''
     ...
     def updateConstraint (self: CvDbTinSurface,val : PyBrxCv.CvDbTinSurfaceConstraint)-> bool :
@@ -8053,7 +8053,7 @@ class CvDbTinSurfaceBoundary:
     def midOrdinateDistance (self: CvDbTinSurfaceConstraint)-> float :
       '''                             '''
     ...
-    def setData (self: CvDbTinSurfaceConstraint,val : int,pts : list[PyGe.Point3d])-> None :
+    def setData (self: CvDbTinSurfaceConstraint,intId : int,pts : list[PyGe.Point3d])-> None :
       '''                             '''
     ...
     def setDataId (self: CvDbTinSurfaceConstraint,id : PyDb.ObjectId,midOrdinateDist : float)-> None :
@@ -8099,7 +8099,7 @@ class CvDbTinSurfaceBreakline:
     def midOrdinateDistance (self: CvDbTinSurfaceConstraint)-> float :
       '''                             '''
     ...
-    def setData (self: CvDbTinSurfaceConstraint,val : int,pts : list[PyGe.Point3d])-> None :
+    def setData (self: CvDbTinSurfaceConstraint,intId : int,pts : list[PyGe.Point3d])-> None :
       '''                             '''
     ...
     def setDataId (self: CvDbTinSurfaceConstraint,id : PyDb.ObjectId,midOrdinateDist : float)-> None :
@@ -8152,7 +8152,7 @@ __init__( (object)arg1, (TinConstraintType)arg2) -> None :
     def midOrdinateDistance (self: CvDbTinSurfaceConstraint)-> float :
       '''                             '''
     ...
-    def setData (self: CvDbTinSurfaceConstraint,val : int,pts : list[PyGe.Point3d])-> None :
+    def setData (self: CvDbTinSurfaceConstraint,intId : int,pts : list[PyGe.Point3d])-> None :
       '''                             '''
     ...
     def setDataId (self: CvDbTinSurfaceConstraint,id : PyDb.ObjectId,midOrdinateDist : float)-> None :
@@ -11201,7 +11201,7 @@ class CvDbTinSurfaceWall:
     def midOrdinateDistance (self: CvDbTinSurfaceConstraint)-> float :
       '''                             '''
     ...
-    def setData (self: CvDbTinSurfaceConstraint,val : int,pts : list[PyGe.Point3d])-> None :
+    def setData (self: CvDbTinSurfaceConstraint,intId : int,pts : list[PyGe.Point3d])-> None :
       '''                             '''
     ...
     def setDataId (self: CvDbTinSurfaceConstraint,id : PyDb.ObjectId,midOrdinateDist : float)-> None :
@@ -13000,10 +13000,10 @@ class CvDbVolumeSurface:
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def area2d (self: CvDbTinSurface,val : bool)-> float :
+    def area2d (self: CvDbTinSurface,visibleOnly : bool=False)-> float :
       '''                             '''
     ...
-    def area3d (self: CvDbTinSurface,val : bool)-> float :
+    def area3d (self: CvDbTinSurface,visibleOnly : bool=False)-> float :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -13224,7 +13224,7 @@ class CvDbVolumeSurface:
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getPoints (self: CvDbTinSurface,val : bool)-> list :
+    def getPoints (self: CvDbTinSurface,visibleOnly : bool=False)-> list :
       '''                             '''
     ...
     def getPointsInsidePolygon (self: CvDbTinSurface,pts : list[PyGe.Point3d],includeOnEdge : bool)-> list :
@@ -13451,13 +13451,13 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def maxElevation (self: CvDbTinSurface,val : bool)-> float :
+    def maxElevation (self: CvDbTinSurface,visibleOnly : bool=False)-> float :
       '''                             '''
     ...
     def merge (self: CvDbTinSurface,val : PyBrxCv.CvDbTinSurface)-> bool :
       '''                             '''
     ...
-    def minElevation (self: CvDbTinSurface,val : bool)-> float :
+    def minElevation (self: CvDbTinSurface,visibleOnly : bool=False)-> float :
       '''                             '''
     ...
     def minorContours (self: CvDbTinSurface)-> list :
@@ -13490,7 +13490,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def pointsCount (self: CvDbTinSurface,val : bool)-> int :
+    def pointsCount (self: CvDbTinSurface,visibleOnly : bool=False)-> int :
       '''                             '''
     ...
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -13662,10 +13662,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def triangles (self: CvDbTinSurface,val : bool)-> list :
+    def triangles (self: CvDbTinSurface,visibleOnly : bool=False)-> list :
       '''                             '''
     ...
-    def trianglesCount (self: CvDbTinSurface,val : bool)-> int :
+    def trianglesCount (self: CvDbTinSurface,visibleOnly : bool=False)-> int :
       '''                             '''
     ...
     def type (self: CvDbVolumeSurface)-> PyBrxCv.VolumeSurfaceType :
@@ -13811,13 +13811,13 @@ __init__( (object)arg1, (float)arg2, (float)arg3) -> None :
     def release (self: CvGradingRule)-> bool :
       '''                             '''
     ...
-    def setOffset (self: CvGradingSlopeOffsetRule,val : float)-> bool :
+    def setOffset (self: CvGradingSlopeOffsetRule,offset : float)-> bool :
       '''                             '''
     ...
     def setSide (self: CvGradingRule,format : int)-> bool :
       '''                             '''
     ...
-    def setSlope (self: CvGradingSlopeOffsetRule,val : float)-> bool :
+    def setSlope (self: CvGradingSlopeOffsetRule,slope : float)-> bool :
       '''                             '''
     ...
     def setSlopeFormat (self: CvGradingRule,format : int)-> bool :

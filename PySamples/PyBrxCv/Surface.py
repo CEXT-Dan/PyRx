@@ -152,11 +152,10 @@ def PyRxCmd_CvSurfaceList() -> None:
             return
         
         pSurface = Cv.CvDbTinSurface(esel[1])
-
-        print('pointsCount',pSurface.pointsCount(True) )
-        print('trianglesCount',pSurface.trianglesCount(True) )
-        print('area2d',pSurface.area2d(True) )
-        print('area3d',pSurface.area3d(True) )
+        print('pointsCount',pSurface.pointsCount())
+        print('trianglesCount',pSurface.trianglesCount())
+        print('area2d',pSurface.area2d())
+        print('area3d',pSurface.area3d())
         
         constraints = pSurface.getConstraints()
         for constraint in constraints:

@@ -9225,6 +9225,12 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     C++ signature :
         class PyDbObjectId handEnt(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def hasGeoData (self, *args, **kwargs)-> bool :
+      '''hasGeoData( (Database)arg1) -> bool :
+
+    C++ signature :
+        bool hasGeoData(class PyDbDatabase {lvalue})'''
+    ...
     def inters (self, *args, **kwargs)-> PyGe.Point3d :
       '''inters( (Point3d)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (int)arg5) -> Point3d :
 
@@ -20488,6 +20494,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     C++ signature :
         void addPoint(class AcDbExtents {lvalue},class AcGePoint3d)'''
     ...
+    def addPoints (self, *args, **kwargs)-> None :
+      '''addPoints( (Extents)arg1, (object)arg2) -> None :
+
+    C++ signature :
+        void addPoints(class AcDbExtents {lvalue},class boost::python::api::object)'''
+    ...
     def coords (self, *args, **kwargs)-> tuple :
       '''coords( (Extents)arg1) -> tuple :
 
@@ -23987,6 +23999,9 @@ class GeoData:
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+      '''                             '''
+    ...
+    def transformFromLonLatAlt (self: GeoData,pt : PyGe.Point3d | float)-> PyGe.Point3d :
       '''                             '''
     ...
     def transformToLonLatAlt (self: GeoData,pt : PyGe.Point3d | float)-> PyGe.Point3d :
