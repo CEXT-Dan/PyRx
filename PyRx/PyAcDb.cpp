@@ -140,6 +140,12 @@ static boost::python::tuple AcDbExtents3dCoords(const AcDbExtents& extents)
     return boost::python::make_tuple(min.x, min.y, min.z, max.x, max.y, max.z);
 }
 
+static void AcDbExtents3dAddPoints(AcDbExtents& extents, const boost::python::object& iterable)
+{
+    for (const auto& point : PyListToPoint3dArray(iterable))
+        extents.addPoint(point);
+}
+
 void makePyDbExtentsWrapper()
 {
     class_<AcDbExtents>("Extents")
@@ -150,6 +156,7 @@ void makePyDbExtentsWrapper()
         .def("maxPoint", &AcDbExtents::maxPoint)
         .def("set", &AcDbExtents::set)
         .def("addPoint", &AcDbExtents::addPoint)
+        .def("addPoints", &AcDbExtents3dAddPoints)
         .def("addExt", &AcDbExtents::addExt)
         .def("expandBy", &AcDbExtents::expandBy)
         .def("transformBy", &AcDbExtents::transformBy)
