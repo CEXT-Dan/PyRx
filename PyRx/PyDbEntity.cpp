@@ -6,13 +6,19 @@
 using namespace boost::python;
 //----------------------------------------------------------------------------------------------------
 //wrapper
+
+constexpr const std::string_view intersectWithComments = "Other argument options:\n"
+"- PyDb.Entity, PyDb.Intersect, GsMarker, GsMarker\n"
+"- PyDb.Entity, PyDb.Intersect, PyGe.Plane\n"
+"- PyDb.Entity, PyDb.Intersect, PyGe.Plane, GsMarker, GsMarker";
+
 void makePyDbEntityWrapper()
 {
     PyDocString DS("Entity");
     class_<PyDbEntity, bases<PyDbObject>>("Entity", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode:  PyDb.OpenMode=kForRead", "erased: bool=False" })))
         .def("blockId", &PyDbEntity::blockId, DS.ARGS())
         .def("color", &PyDbEntity::color, DS.ARGS())
         .def("setColor", &PyDbEntity::setColor1)
@@ -62,7 +68,7 @@ void makePyDbEntityWrapper()
         .def("receiveShadows", &PyDbEntity::receiveShadows, DS.ARGS())
         .def("setReceiveShadows", &PyDbEntity::setReceiveShadows, DS.ARGS({ "val: bool" }))
         .def("setPropertiesFrom", &PyDbEntity::setPropertiesFrom1)
-        .def("setPropertiesFrom", &PyDbEntity::setPropertiesFrom2, DS.ARGS({ "ent: Entity",  "dosubents : bool=True" }))
+        .def("setPropertiesFrom", &PyDbEntity::setPropertiesFrom2, DS.ARGS({ "entity: PyDb.Entity",  "dosubents : bool=True" }))
         .def("isPlanar", &PyDbEntity::isPlanar, DS.ARGS())
         .def("getPlane", &PyDbEntity::getPlane, DS.ARGS())
         .def("getEcs", &PyDbEntity::getEcs, DS.ARGS())
@@ -70,7 +76,7 @@ void makePyDbEntityWrapper()
         .def("intersectWith", &PyDbEntity::intersectWith1)
         .def("intersectWith", &PyDbEntity::intersectWith2)
         .def("intersectWith", &PyDbEntity::intersectWith3)
-        .def("intersectWith", &PyDbEntity::intersectWith4)
+        .def("intersectWith", &PyDbEntity::intersectWith4, DS.ARGS({ "entity: PyDb.Entity",  "intType : PyDb.Intersect " }, intersectWithComments))
         .def("transformBy", &PyDbEntity::transformBy, DS.ARGS({ "matrix3d: PyGe.Matrix3d" }))
         .def("recordGraphicsModified", &PyDbEntity::recordGraphicsModified, DS.ARGS())
         .def("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults1)
@@ -604,7 +610,7 @@ AcDbEntity* PyDbEntity::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbEntity*>(m_pyImp.get());
 }
 
@@ -666,7 +672,7 @@ AcDbBlockBegin* PyDbBlockBegin::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbBlockBegin*>(m_pyImp.get());
 }
 
@@ -728,7 +734,7 @@ AcDbBlockEnd* PyDbBlockEnd::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbBlockEnd*>(m_pyImp.get());
 }
 
@@ -790,7 +796,7 @@ AcDbSequenceEnd* PyDbSequenceEnd::impObj(const std::source_location& src /*= std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbSequenceEnd*>(m_pyImp.get());
 }
 
@@ -885,7 +891,7 @@ AcDbSubentId* PyDbSubentId::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbSubentId*>(m_pyImp.get());
 }
 
@@ -926,7 +932,7 @@ PyDbFullSubentPath::PyDbFullSubentPath(AcDb::SubentType type, Adesk::GsMarker in
 }
 
 PyDbFullSubentPath::PyDbFullSubentPath(const PyDbObjectId& entId, AcDb::SubentType type, Adesk::GsMarker index)
-    : m_pyImp(entId.m_id,type, index)
+    : m_pyImp(entId.m_id, type, index)
 {
 }
 

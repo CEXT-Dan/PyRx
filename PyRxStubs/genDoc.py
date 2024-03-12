@@ -75,6 +75,16 @@ def findArgs(sig):
         return ""
     except:
         return ""
+    
+def findComment(sig):
+    try:
+        argb = sig.find('<[(')
+        arge = sig.find(')]>')
+        if argb != -1:
+            return "      '''{}'''".format(sig[argb+3:arge])
+        return "      '''                             '''"
+    except:
+            return "      '''                             '''"
 
 def findReturnTypeModlue(sig):
     if sig in class_types:
@@ -125,6 +135,7 @@ def generate_pyi(moduleName, module):
                         args = findArgs(sig)
                         returnType = findReturnType(sig)
                         newDocString = removeArgStr(sig)
+                        comment = findComment(sig)
                         
                         try:
                             f.write(
@@ -136,8 +147,7 @@ def generate_pyi(moduleName, module):
                                     f.write('\n    @staticmethod\n')
                                 f.write(
                                     f'    def {func_name} {args}{returnType} :\n')
-                                f.write(
-                                    f"      '''                             '''")
+                                f.write(comment)
                             else:
                                 f.write(
                                     f'    def {func_name} (self, *args, **kwargs){returnType} :\n')

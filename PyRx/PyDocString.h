@@ -8,9 +8,11 @@ public:
     const char* ARGS();
     const char* ARGS(std::initializer_list<std::string> pyargs);
     const char* ARGS(std::initializer_list<std::string> pyargs, const std::string& comment);
+    const char* ARGS(std::initializer_list<std::string> pyargs, const std::string_view comment);
     const char* SARGS();
     const char* SARGS(std::initializer_list<std::string> pyargs);
     const char* SARGS(std::initializer_list<std::string> pyargs, const std::string& comment);
+    const char* SARGS(std::initializer_list<std::string> pyargs, const std::string_view comment);
 
 public:
     std::string outstr;
