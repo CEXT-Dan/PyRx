@@ -86,7 +86,7 @@ public:
 
 #ifdef NEVER //TODO
     static  Acad::ErrorStatus setTransformCallbacks(const ACHAR* zoneDescription, ACDBGEODATA_GEOGRAPHICTODWG pFuncGeoToDwg, ACDBGEODATA_DWGTOGEOGRAPHIC pFuncDwgToGeo);
-    static  const ACHAR*      getTransformCallbacks(ACDBGEODATA_GEOGRAPHICTODWG& pFuncGeoToDwg, ACDBGEODATA_DWGTOGEOGRAPHIC& pFuncDwgToGeo);
+    static  const ACHAR* getTransformCallbacks(ACDBGEODATA_GEOGRAPHICTODWG& pFuncGeoToDwg, ACDBGEODATA_DWGTOGEOGRAPHIC& pFuncDwgToGeo);
 #endif
 
 public:
@@ -151,7 +151,6 @@ public:
 public:
     inline AcDbGeoPositionMarker* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //----------------------------------------------------------------------------------------
 //PyDbGeoCoordinateSystem

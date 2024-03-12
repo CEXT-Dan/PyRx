@@ -683,7 +683,8 @@ AcDbGeoPositionMarker* PyDbGeoPositionMarker::impObj(const std::source_location&
     return static_cast<AcDbGeoPositionMarker*>(m_pyImp.get());
 }
 
-
+//----------------------------------------------------------------------------------------
+//PyDbGeoCoordinateSystem
 void makePyDbGeoCoordinateSystemWrapper()
 {
     PyDocString DS("GeoCoordinateSystem");
@@ -707,7 +708,6 @@ void makePyDbGeoCoordinateSystemWrapper()
         .def("className", &PyDbGeoCoordinateSystem::className, DS.SARGS()).staticmethod("className")
         ;
 }
-
 
 PyDbGeoCoordinateSystem::PyDbGeoCoordinateSystem(AcDbGeoCoordinateSystem* ptr)
     :m_pyImp(ptr)
