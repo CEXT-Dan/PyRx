@@ -23632,7 +23632,7 @@ This class cannot be instantiated from Python'''
     ...
 
     @staticmethod
-    def create ()-> PyDb.GeoCoordinateSystem :
+    def create (val : str)-> PyDb.GeoCoordinateSystem :
       '''                             '''
     ...
     def getCartesianExtents (self: GeoCoordinateSystem)-> PyDb.Extents2d :
