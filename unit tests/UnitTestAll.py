@@ -8,10 +8,12 @@ import UnitTestPyDbEval
 import UnitTestPyDbEntity
 import UnitTestPyEditor
 import UnitTestPyWx
-import UnitTestPyBcadCivil
 
 from pyrx_imp import Ap
 host = Ap.Application.hostAPI()
+
+if 'BRX' in host:
+  import UnitTestPyBcadCivil
 
 print("testname = pytestall")
 
