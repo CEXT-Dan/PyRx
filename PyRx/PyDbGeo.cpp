@@ -682,3 +682,161 @@ AcDbGeoPositionMarker* PyDbGeoPositionMarker::impObj(const std::source_location&
         }
     return static_cast<AcDbGeoPositionMarker*>(m_pyImp.get());
 }
+
+
+void makePyDbGeoCoordinateSystemWrapper()
+{
+    PyDocString DS("GeoCoordinateSystem");
+    class_<PyDbGeoCoordinateSystem>("GeoCoordinateSystem", no_init)
+        .def("getId", &PyDbGeoCoordinateSystem::getId, DS.ARGS())
+        .def("getEpsgCode", &PyDbGeoCoordinateSystem::getEpsgCode, DS.ARGS())
+        .def("getType", &PyDbGeoCoordinateSystem::getType, DS.ARGS())
+        .def("getDescription", &PyDbGeoCoordinateSystem::getDescription, DS.ARGS())
+        .def("getUnit", &PyDbGeoCoordinateSystem::getUnit, DS.ARGS())
+        .def("getGeoUnit", &PyDbGeoCoordinateSystem::getGeoUnit, DS.ARGS())
+        .def("getUnitScale", &PyDbGeoCoordinateSystem::getUnitScale, DS.ARGS())
+        .def("getProjectionCode", &PyDbGeoCoordinateSystem::getProjectionCode, DS.ARGS())
+        .def("getDatum", &PyDbGeoCoordinateSystem::getDatum, DS.ARGS())
+        .def("getEllipsoid", &PyDbGeoCoordinateSystem::getEllipsoid, DS.ARGS())
+        .def("getOffset", &PyDbGeoCoordinateSystem::getOffset, DS.ARGS())
+        .def("getCartesianExtents", &PyDbGeoCoordinateSystem::getCartesianExtents, DS.ARGS())
+        .def("getGeodeticExtents", &PyDbGeoCoordinateSystem::getGeodeticExtents, DS.ARGS())
+        .def("getXmlRepresentation", &PyDbGeoCoordinateSystem::getXmlRepresentation, DS.ARGS())
+        .def("getWktRepresentation", &PyDbGeoCoordinateSystem::getWktRepresentation, DS.ARGS())
+        .def("create", &PyDbGeoCoordinateSystem::create, DS.SARGS()).staticmethod("create")
+        .def("className", &PyDbGeoCoordinateSystem::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+
+PyDbGeoCoordinateSystem::PyDbGeoCoordinateSystem(AcDbGeoCoordinateSystem* ptr)
+    :m_pyImp(ptr)
+{
+}
+
+std::string PyDbGeoCoordinateSystem::getId() const
+{
+    AcString coordSysId;
+    PyThrowBadEs(impObj()->getId(coordSysId));
+    return wstr_to_utf8(coordSysId);
+}
+
+int PyDbGeoCoordinateSystem::getEpsgCode() const
+{
+    int epsgCode = 0;
+    PyThrowBadEs(impObj()->getEpsgCode(epsgCode));
+    return epsgCode;
+}
+
+AcDbGeoCoordinateSystem::Type PyDbGeoCoordinateSystem::getType() const
+{
+    AcDbGeoCoordinateSystem::Type _type;
+    PyThrowBadEs(impObj()->getType(_type));
+    return _type;
+}
+
+std::string PyDbGeoCoordinateSystem::getDescription() const
+{
+    AcString coordSysDesc;
+    PyThrowBadEs(impObj()->getDescription(coordSysDesc));
+    return wstr_to_utf8(coordSysDesc);
+}
+
+AcDb::UnitsValue PyDbGeoCoordinateSystem::getUnit() const
+{
+    AcDb::UnitsValue unit;
+    PyThrowBadEs(impObj()->getUnit(unit));
+    return unit;
+}
+
+AcDbGeoCoordinateSystem::Unit PyDbGeoCoordinateSystem::getGeoUnit() const
+{
+    AcDbGeoCoordinateSystem::Unit unit;
+    PyThrowBadEs(impObj()->getUnit(unit));
+    return unit;
+}
+
+double PyDbGeoCoordinateSystem::getUnitScale() const
+{
+    double unitScale = 1;
+    PyThrowBadEs(impObj()->getUnitScale(unitScale));
+    return unitScale;
+}
+
+AcDbGeoCoordinateSystem::ProjectionCode PyDbGeoCoordinateSystem::getProjectionCode() const
+{
+    AcDbGeoCoordinateSystem::ProjectionCode code;
+    PyThrowBadEs(impObj()->getProjectionCode(code));
+    return code;
+}
+
+boost::python::tuple PyDbGeoCoordinateSystem::getDatum() const
+{
+    PyAutoLockGIL lock;
+    AcDbGeoDatum datum;
+    PyThrowBadEs(impObj()->getDatum(datum));
+    return boost::python::make_tuple(wstr_to_utf8(datum.id), wstr_to_utf8(datum.desc));
+}
+
+boost::python::tuple PyDbGeoCoordinateSystem::getEllipsoid() const
+{
+    PyAutoLockGIL lock;
+    AcDbGeoEllipsoid val;
+    PyThrowBadEs(impObj()->getEllipsoid(val));
+    return boost::python::make_tuple(wstr_to_utf8(val.id), wstr_to_utf8(val.desc), val.polarRadius, val.eccentricity);
+}
+
+AcGeVector2d PyDbGeoCoordinateSystem::getOffset() const
+{
+    AcGeVector2d val;
+    PyThrowBadEs(impObj()->getOffset(val));
+    return val;
+}
+
+AcDbExtents2d PyDbGeoCoordinateSystem::getCartesianExtents() const
+{
+    AcDbExtents2d val;
+    PyThrowBadEs(impObj()->getCartesianExtents(val));
+    return val;
+}
+
+AcDbExtents2d PyDbGeoCoordinateSystem::getGeodeticExtents() const
+{
+    AcDbExtents2d val;
+    PyThrowBadEs(impObj()->getGeodeticExtents(val));
+    return val;
+}
+
+std::string PyDbGeoCoordinateSystem::getXmlRepresentation() const
+{
+    AcString val;
+    PyThrowBadEs(impObj()->getXmlRepresentation(val));
+    return wstr_to_utf8(val);
+}
+
+std::string PyDbGeoCoordinateSystem::getWktRepresentation() const
+{
+    AcString val;
+    PyThrowBadEs(impObj()->getWktRepresentation(val));
+    return wstr_to_utf8(val);
+}
+
+PyDbGeoCoordinateSystem PyDbGeoCoordinateSystem::create(const std::string& coordSysIdOrFullDef)
+{
+    AcDbGeoCoordinateSystem* ptr = nullptr;
+    PyThrowBadEs(AcDbGeoCoordinateSystem::create(utf8_to_wstr(coordSysIdOrFullDef).c_str(), ptr));
+    return  PyDbGeoCoordinateSystem(ptr);
+}
+
+std::string PyDbGeoCoordinateSystem::className()
+{
+    return "AcDbGeoCoordinateSystem";
+}
+
+AcDbGeoCoordinateSystem* PyDbGeoCoordinateSystem::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<AcDbGeoCoordinateSystem*>(m_pyImp.get());
+}

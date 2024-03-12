@@ -17,7 +17,7 @@ static std::string appHostName()
 
 inline void printExceptionMsg(const std::source_location& src = std::source_location::current())
 {
-    static constexpr const char* fmtstr = "\nException,line {} in function {} {}: ";
+    constexpr std::string_view fmtstr("\nException,line {} in function {} {}: ");
     acutPrintf(utf8_to_wstr(std::format(fmtstr, src.line(), src.function_name(), src.file_name())).c_str());
 }
 
@@ -32,7 +32,7 @@ struct PyNotThatKindOfClass
 
     inline std::string format() const
     {
-        static constexpr const char* fmtstr = "\nNot that kind of class! in function {} {}: ";
+        constexpr std::string_view fmtstr("\nNot that kind of class! in function {} {}: ");
         const std::filesystem::path file = m_src.file_name();
         return std::format(fmtstr, m_src.function_name(), file.filename().string());
     }
@@ -54,7 +54,7 @@ struct PyNullObject
 
     inline std::string format() const
     {
-        static constexpr const char* fmtstr = "\nException! Object is NULL, in function {} ,Line {}, File {}: ";
+        constexpr std::string_view fmtstr("\nException! Object is NULL, in function {} ,Line {}, File {}: ");
         const std::filesystem::path file = m_src.file_name();
         return std::format(fmtstr, m_src.function_name(), m_src.line(), file.filename().string());
     }
@@ -76,7 +76,7 @@ struct PyEditorError
 
     inline std::string format() const
     {
-        static constexpr const char* fmtstr = "\nEditor error! function {} {}: ";
+        constexpr std::string_view fmtstr("\nEditor error! function {} {}: ");
         const std::filesystem::path file = m_src.file_name();
         return std::format(fmtstr, m_src.function_name(), file.filename().string());
     }
@@ -97,7 +97,7 @@ struct PyAcadErrorStatus
 
     inline std::string format() const
     {
-        static constexpr const char* fmtstr = "\nException! ({}) in function {} ,Line {}, File {}: ";
+        constexpr std::string_view fmtstr("\nException!({}) in function {}, Line{}, File{}: ");
         const std::filesystem::path file = m_src.file_name();
         return std::format(fmtstr, wstr_to_utf8(acadErrorStatusText(m_es)), m_src.function_name(), m_src.line(), file.filename().string());
     }
@@ -110,7 +110,7 @@ struct PyAcadErrorStatus
 
 struct PyNotimplementedByHost
 {
-    std::source_location m_src;
+    const std::source_location m_src;
 
     PyNotimplementedByHost(const std::source_location& src = std::source_location::current())
         :m_src(src)
@@ -119,7 +119,7 @@ struct PyNotimplementedByHost
 
     inline std::string format() const
     {
-        static constexpr const char* fmtstr = "\nException, Not implemented in {}!, function {} ,Line {}, File {}: ";
+        constexpr std::string_view fmtstr("\nException, Not implemented in {}!, function {} ,Line {}, File {}: ");
         const std::filesystem::path file = m_src.file_name();
         return std::format(fmtstr, appHostName(), m_src.function_name(), m_src.line(), file.filename().string());
     }

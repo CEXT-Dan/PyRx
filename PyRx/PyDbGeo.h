@@ -2,6 +2,8 @@
 #include "PyDbEntity.h"
 #include "dbGeoData.h"
 #include "AcDbGeoPositionMarker.h"
+#include "AcDbGeoCoordinateSystem.h"
+
 
 class PyDbMText;
 class PyDbObjectId;
@@ -149,4 +151,41 @@ public:
 public:
     inline AcDbGeoPositionMarker* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+
+//----------------------------------------------------------------------------------------
+//PyDbGeoCoordinateSystem
+void makePyDbGeoCoordinateSystemWrapper();
+class PyDbGeoCoordinateSystem
+{
+public:
+    PyDbGeoCoordinateSystem(AcDbGeoCoordinateSystem* ptr);
+
+    std::string                     getId() const;
+    int                             getEpsgCode() const;
+    AcDbGeoCoordinateSystem::Type   getType() const;
+    std::string                     getDescription() const;
+    AcDb::UnitsValue                getUnit() const;
+    AcDbGeoCoordinateSystem::Unit   getGeoUnit() const;
+    double                          getUnitScale() const;
+    AcDbGeoCoordinateSystem::ProjectionCode getProjectionCode() const;
+    boost::python::tuple            getDatum() const;
+    boost::python::tuple            getEllipsoid() const;
+    AcGeVector2d                    getOffset() const;
+    AcDbExtents2d                   getCartesianExtents() const;
+    AcDbExtents2d                   getGeodeticExtents() const;
+    std::string                     getXmlRepresentation() const;
+    std::string                     getWktRepresentation() const;
+
+    //virtual Acad::ErrorStatus getProjectionParameters(AcArray<AcDbGeoProjectionParameter>& prjParams,
+    //    bool includeSpecialParams) const = 0;
+
+    static PyDbGeoCoordinateSystem create(const std::string& coordSysIdOrFullDef);
+    static std::string             className();
+public:
+    inline AcDbGeoCoordinateSystem* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<AcDbGeoCoordinateSystem>m_pyImp;
+};
+
 
