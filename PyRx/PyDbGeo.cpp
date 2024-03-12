@@ -703,7 +703,7 @@ void makePyDbGeoCoordinateSystemWrapper()
         .def("getGeodeticExtents", &PyDbGeoCoordinateSystem::getGeodeticExtents, DS.ARGS())
         .def("getXmlRepresentation", &PyDbGeoCoordinateSystem::getXmlRepresentation, DS.ARGS())
         .def("getWktRepresentation", &PyDbGeoCoordinateSystem::getWktRepresentation, DS.ARGS())
-        .def("create", &PyDbGeoCoordinateSystem::create, DS.SARGS()).staticmethod("create")
+        .def("create", &PyDbGeoCoordinateSystem::create, DS.SARGS({ "val : str" })).staticmethod("create")
         .def("className", &PyDbGeoCoordinateSystem::className, DS.SARGS()).staticmethod("className")
         ;
 }
