@@ -7398,7 +7398,7 @@ class CvDbTinSurface:
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def changePointsElevations (self: CvDbTinSurface,pts : list[PyGe.Point3d],val : float)-> bool :
+    def changePointsElevations (self: CvDbTinSurface,pts : list[PyGe.Point3d],newZValues : list[float])-> bool :
       '''                             '''
     ...
 
@@ -7432,7 +7432,7 @@ class CvDbTinSurface:
     def contains (self: CvDbTinSurface,pt : PyGe.Point3d)-> bool :
       '''                             '''
     ...
-    def contoursAtElevation (self: CvDbTinSurface,val : float)-> list :
+    def contoursAtElevation (self: CvDbTinSurface,elevation : float)-> list :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
@@ -7772,7 +7772,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def maxElevation (self: CvDbTinSurface,visibleOnly : bool=False)-> float :
       '''                             '''
     ...
-    def merge (self: CvDbTinSurface,val : PyBrxCv.CvDbTinSurface)-> bool :
+    def merge (self: CvDbTinSurface,other : PyBrxCv.CvDbTinSurface)-> bool :
       '''                             '''
     ...
     def minElevation (self: CvDbTinSurface,visibleOnly : bool=False)-> float :
@@ -7814,7 +7814,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def raiseSurface (self: CvDbTinSurface,val : float)-> bool :
+    def raiseSurface (self: CvDbTinSurface,offset : float)-> bool :
       '''                             '''
     ...
     def rebuild (self: CvDbTinSurface,val : bool)-> bool :
@@ -7838,7 +7838,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeDefinitionAt (self: CvDbTinSurface,val : int)-> bool :
+    def removeDefinitionAt (self: CvDbTinSurface, index: int)-> bool :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -7868,7 +7868,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
-    def setAssociative (self: CvDbTinSurface,val : bool)-> bool :
+    def setAssociative (self: CvDbTinSurface,isAssociative : bool)-> bool :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -7892,7 +7892,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setIsAutoUpdate (self: CvDbTinSurface,val : bool)-> bool :
+    def setIsAutoUpdate (self: CvDbTinSurface,autoUpdateOn : bool)-> bool :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -7907,19 +7907,19 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMajorContoursColor (self: CvDbTinSurface,val : int)-> bool :
+    def setMajorContoursColor (self: CvDbTinSurface,colorIndex : int)-> bool :
       '''                             '''
     ...
-    def setMajorContoursInterval (self: CvDbTinSurface,val : float)-> bool :
+    def setMajorContoursInterval (self: CvDbTinSurface,interval : float)-> bool :
       '''                             '''
     ...
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMinorContoursColor (self: CvDbTinSurface,val : int)-> bool :
+    def setMinorContoursColor (self: CvDbTinSurface,colorIndex : int)-> bool :
       '''                             '''
     ...
-    def setMinorContoursInterval (self: CvDbTinSurface,val : float)-> bool :
+    def setMinorContoursInterval (self: CvDbTinSurface,interval : float)-> bool :
       '''                             '''
     ...
     def setName (self: CvDbEntity,val : str)-> bool :
@@ -7953,7 +7953,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def setStyle (self: CvDbTinSurface,style : PyBrxCv.TinSurfaceStyle)-> bool :
       '''                             '''
     ...
-    def setSurfaceElevation (self: CvDbTinSurface,val : float)-> bool :
+    def setSurfaceElevation (self: CvDbTinSurface,elevation : float)-> bool :
       '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -7989,11 +7989,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def updateConstraint (self: CvDbTinSurface,val : PyBrxCv.CvDbTinSurfaceConstraint)-> bool :
       '''                             '''
     ...
-    def updateObjectData (self, *args, **kwargs)-> None :
-      '''updateObjectData( (CvDbTinSurface)arg1) -> None :
-
-    C++ signature :
-        void updateObjectData(class PyBrxCvDbTinSurface {lvalue})'''
+    def updateObjectData (self: CvDbTinSurface)-> None :
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
@@ -8236,13 +8233,13 @@ This class cannot be instantiated from Python'''
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
@@ -8362,7 +8359,7 @@ __init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (RewriteSymbolics)a
     def setCrossingsElevation (self: CvDbTinSurfaceDefinitionAddDrawingObjects,val : PyBrxCv.TinIntersectionElevation)-> bool :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
@@ -8371,7 +8368,7 @@ __init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (RewriteSymbolics)a
     def setIsApplyEdges (self: CvDbTinSurfaceDefinitionAddDrawingObjects,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
@@ -8470,7 +8467,7 @@ __init__( (object)arg1, (list)arg2, (ObjectId)arg3) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
@@ -8482,7 +8479,7 @@ __init__( (object)arg1, (list)arg2, (ObjectId)arg3) -> None :
     def setFilesPaths (self: CvDbTinSurfaceDefinitionAddFromFiles,val : list[str])-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
@@ -8578,13 +8575,13 @@ __init__( (object)arg1, (list)arg2) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setPcObjectIds (self: CvDbTinSurfaceDefinitionAddFromPointClouds,val : list[PyDb.ObjectId])-> bool :
@@ -8683,7 +8680,7 @@ __init__( (object)arg1, (object)arg2) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
@@ -8692,7 +8689,7 @@ __init__( (object)arg1, (object)arg2) -> None :
     def setLine (self: CvDbTinSurfaceDefinitionAddLine,line : PyGe.LineSeg2d)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
@@ -8788,7 +8785,7 @@ __init__( (object)arg1, (list)arg2) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
@@ -8797,7 +8794,7 @@ __init__( (object)arg1, (list)arg2) -> None :
     def setLines (self: CvDbTinSurfaceDefinitionAddLines,lines : list[PyGe.LineSeg2d])-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
@@ -8893,13 +8890,13 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setPosition (self: CvDbTinSurfaceDefinitionAddPoint,pt : PyGe.Point3d)-> bool :
@@ -8998,13 +8995,13 @@ __init__( (object)arg1, (list)arg2) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setPointGroupsIds (self: CvDbTinSurfaceDefinitionAddPointGroups,val : list[PyDb.ObjectId])-> bool :
@@ -9103,13 +9100,13 @@ __init__( (object)arg1, (list)arg2) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setPositions (self: CvDbTinSurfaceDefinitionAddPoints,pt : list[PyGe.Point3d])-> bool :
@@ -9208,7 +9205,7 @@ __init__( (object)arg1, (str)arg2, (str)arg3) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
@@ -9217,7 +9214,7 @@ __init__( (object)arg1, (str)arg2, (str)arg3) -> None :
     def setFilePath (self: CvDbTinSurfaceDefinitionCreateFromC3D,val : str)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
@@ -9340,7 +9337,7 @@ __init__( (object)arg1, (list)arg2, (bool)arg3) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
@@ -9352,7 +9349,7 @@ __init__( (object)arg1, (list)arg2, (bool)arg3) -> None :
     C++ signature :
         bool setIsApplyEdgesVisibility(class PyBrxCvDbTinSurfaceDefinitionCreateFromFaces {lvalue},bool)'''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
@@ -9454,7 +9451,7 @@ __init__( (object)arg1, (str)arg2, (str)arg3, (UnitsValue)arg4, (bool)arg5) -> N
     def scaleToDwgUnits (self: CvDbTinSurfaceDefinitionCreateFromLandXML)-> bool :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
@@ -9463,7 +9460,7 @@ __init__( (object)arg1, (str)arg2, (str)arg3, (UnitsValue)arg4, (bool)arg5) -> N
     def setFilePath (self: CvDbTinSurfaceDefinitionCreateFromLandXML,val : str)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
@@ -9568,13 +9565,13 @@ __init__( (object)arg1, (Point2d)arg2) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setPosition (self: CvDbTinSurfaceDefinitionDeleteEdge,pt : PyGe.Point2d)-> bool :
@@ -9680,13 +9677,13 @@ __init__( (object)arg1) -> None :
     def removePolygonAt (self: CvDbTinSurfaceDefinitionDeleteEdges,index : int)-> bool :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
@@ -9782,13 +9779,13 @@ __init__( (object)arg1, (Point2d)arg2) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setPosition (self: CvDbTinSurfaceDefinitionDeletePoint,pt : PyGe.Point2d)-> bool :
@@ -9843,10 +9840,10 @@ __init__( (object)arg1) -> None :
     def dispose (self: RxObject)-> None :
       '''                             '''
     ...
-    def findSubDefinition (self: CvDbTinSurfaceDefinitionGroupDefs,val : int)-> int :
+    def findSubDefinition (self: CvDbTinSurfaceDefinitionGroupDefs,defid : int)-> int :
       '''                             '''
     ...
-    def getSubDefinitionAt (self: CvDbTinSurfaceDefinitionGroupDefs,val : int)-> PyBrxCv.CvDbTinSurfaceDefinition :
+    def getSubDefinitionAt (self: CvDbTinSurfaceDefinitionGroupDefs,index : int)-> PyBrxCv.CvDbTinSurfaceDefinition :
       '''                             '''
     ...
     def id (self: CvDbSubObject)-> int :
@@ -9891,16 +9888,16 @@ __init__( (object)arg1) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def removeSubDefinitionAt (self: CvDbTinSurfaceDefinitionGroupDefs,val : int)-> bool :
+    def removeSubDefinitionAt (self: CvDbTinSurfaceDefinitionGroupDefs,index : int)-> bool :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
@@ -10002,7 +9999,7 @@ __init__( (object)arg1, (Point2d)arg2, (float)arg3, (bool)arg4) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setElevation (self: CvDbTinSurfaceDefinitionModifyPointElevation,val : float)-> bool :
@@ -10014,7 +10011,7 @@ __init__( (object)arg1, (Point2d)arg2, (float)arg3, (bool)arg4) -> None :
     def setIsDeltaElevation (self: CvDbTinSurfaceDefinitionModifyPointElevation,val : float)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setPosition (self: CvDbTinSurfaceDefinitionModifyPointElevation,pt : PyGe.Point2d)-> bool :
@@ -10119,7 +10116,7 @@ __init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setElevation (self: CvDbTinSurfaceDefinitionModifyPointsElevation,val : float)-> bool :
@@ -10128,7 +10125,7 @@ __init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4) -> None :
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setPositions (self: CvDbTinSurfaceDefinitionModifyPointsElevation,pt : list[PyGe.Point2d])-> bool :
@@ -10249,13 +10246,13 @@ __init__( (object)arg1) -> None :
     C++ signature :
         bool removePointElevationAt(class PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations {lvalue},unsigned long)'''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
@@ -10351,7 +10348,7 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
@@ -10360,7 +10357,7 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     def setFromPosition (self: CvDbTinSurfaceDefinitionMovePoint,pt : PyGe.Point2d)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
@@ -10465,7 +10462,7 @@ __init__( (object)arg1, (list)arg2, (Vector2d)arg3) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setDisplacement (self: CvDbTinSurfaceDefinitionMovePoints,vec : PyGe.Vector3d)-> bool :
@@ -10477,7 +10474,7 @@ __init__( (object)arg1, (list)arg2, (Vector2d)arg3) -> None :
     def setFromPoints (self: CvDbTinSurfaceDefinitionMovePoints,pt : list[PyGe.Point2d])-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
@@ -10585,13 +10582,13 @@ __init__( (object)arg1, (bool)arg2, (float)arg3, (bool)arg4, (float)arg5) -> Non
     def removedPointsCount (self: CvDbTinSurfaceDefinitionRemoveElevations)-> int :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
@@ -10705,7 +10702,7 @@ __init__( (object)arg1, (bool)arg2, (float)arg3, (bool)arg4, (float)arg5, (bool)
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
@@ -10720,7 +10717,7 @@ __init__( (object)arg1, (bool)arg2, (float)arg3, (bool)arg4, (float)arg5, (bool)
     def setMinEdgeLength (self: CvDbTinSurfaceDefinitionRemoveOuterEdges,val : float)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
@@ -10834,13 +10831,13 @@ __init__( (object)arg1, (float)arg2) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setOffset (self: CvDbTinSurfaceDefinitionRiseLower,val : float)-> bool :
@@ -10939,13 +10936,13 @@ __init__( (object)arg1, (Point2d)arg2) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setPosition (self: CvDbTinSurfaceDefinitionSwapEdge,pt : PyGe.Point2d)-> bool :
@@ -11041,13 +11038,13 @@ __init__( (object)arg1, (Matrix3d)arg2) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setReadOnly (self: CvDbSubObject,val : bool)-> bool :
@@ -11149,13 +11146,13 @@ __init__( (object)arg1, (list)arg2, (bool)arg3) -> None :
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDescription (self: CvDbSubObject,val : str)-> bool :
+    def setDescription (self: CvDbSubObject,desc : str)-> bool :
       '''                             '''
     ...
     def setEnabled (self: CvDbSubObject,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: CvDbSubObject,val : str)-> bool :
+    def setName (self: CvDbSubObject,name : str)-> bool :
       '''                             '''
     ...
     def setPositions (self: CvDbTinSurfaceDefinitionTrianglesVisibility,val : list[PyGe.Point2d])-> bool :
@@ -13044,7 +13041,7 @@ class CvDbVolumeSurface:
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def changePointsElevations (self: CvDbTinSurface,pts : list[PyGe.Point3d],val : float)-> bool :
+    def changePointsElevations (self: CvDbTinSurface,pts : list[PyGe.Point3d],newZValues : list[float])-> bool :
       '''                             '''
     ...
 
@@ -13081,7 +13078,7 @@ class CvDbVolumeSurface:
     def contains (self: CvDbTinSurface,pt : PyGe.Point3d)-> bool :
       '''                             '''
     ...
-    def contoursAtElevation (self: CvDbTinSurface,val : float)-> list :
+    def contoursAtElevation (self: CvDbTinSurface,elevation : float)-> list :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
@@ -13454,7 +13451,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def maxElevation (self: CvDbTinSurface,visibleOnly : bool=False)-> float :
       '''                             '''
     ...
-    def merge (self: CvDbTinSurface,val : PyBrxCv.CvDbTinSurface)-> bool :
+    def merge (self: CvDbTinSurface,other : PyBrxCv.CvDbTinSurface)-> bool :
       '''                             '''
     ...
     def minElevation (self: CvDbTinSurface,visibleOnly : bool=False)-> float :
@@ -13496,7 +13493,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def raiseSurface (self: CvDbTinSurface,val : float)-> bool :
+    def raiseSurface (self: CvDbTinSurface,offset : float)-> bool :
       '''                             '''
     ...
     def rebuild (self: CvDbTinSurface,val : bool)-> bool :
@@ -13520,7 +13517,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeContext (self: DbObject,obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeDefinitionAt (self: CvDbTinSurface,val : int)-> bool :
+    def removeDefinitionAt (self: CvDbTinSurface, index: int)-> bool :
       '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
@@ -13550,7 +13547,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setAnnotative (self: DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
-    def setAssociative (self: CvDbTinSurface,val : bool)-> bool :
+    def setAssociative (self: CvDbTinSurface,isAssociative : bool)-> bool :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -13574,7 +13571,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setIsAutoUpdate (self: CvDbTinSurface,val : bool)-> bool :
+    def setIsAutoUpdate (self: CvDbTinSurface,autoUpdateOn : bool)-> bool :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -13589,19 +13586,19 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMajorContoursColor (self: CvDbTinSurface,val : int)-> bool :
+    def setMajorContoursColor (self: CvDbTinSurface,colorIndex : int)-> bool :
       '''                             '''
     ...
-    def setMajorContoursInterval (self: CvDbTinSurface,val : float)-> bool :
+    def setMajorContoursInterval (self: CvDbTinSurface,interval : float)-> bool :
       '''                             '''
     ...
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMinorContoursColor (self: CvDbTinSurface,val : int)-> bool :
+    def setMinorContoursColor (self: CvDbTinSurface,colorIndex : int)-> bool :
       '''                             '''
     ...
-    def setMinorContoursInterval (self: CvDbTinSurface,val : float)-> bool :
+    def setMinorContoursInterval (self: CvDbTinSurface,interval : float)-> bool :
       '''                             '''
     ...
     def setName (self: CvDbEntity,val : str)-> bool :
@@ -13635,7 +13632,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def setStyle (self: CvDbTinSurface,style : PyBrxCv.TinSurfaceStyle)-> bool :
       '''                             '''
     ...
-    def setSurfaceElevation (self: CvDbTinSurface,val : float)-> bool :
+    def setSurfaceElevation (self: CvDbTinSurface,elevation : float)-> bool :
       '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -13674,11 +13671,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def updateConstraint (self: CvDbTinSurface,val : PyBrxCv.CvDbTinSurfaceConstraint)-> bool :
       '''                             '''
     ...
-    def updateObjectData (self, *args, **kwargs)-> None :
-      '''updateObjectData( (CvDbTinSurface)arg1) -> None :
-
-    C++ signature :
-        void updateObjectData(class PyBrxCvDbTinSurface {lvalue})'''
+    def updateObjectData (self: CvDbTinSurface)-> None :
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''

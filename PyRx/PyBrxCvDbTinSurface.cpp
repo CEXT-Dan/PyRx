@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "PyBrxCvDbTinSurface.h"
+
+#ifdef BRXAPP
 #include "PyBrxCvDbTinSurfaceDef.h"
 #include "PyDbObjectId.h"
 #include "PyDbCurve.h"
@@ -252,7 +254,7 @@ void makePyBrxCvDbTinSurfaceWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=kForRead", "erased: bool=False" })))
 
         .def("initialize", &PyBrxCvDbTinSurface::initialize, DS.ARGS({ "min : PyGe.Point3d" , "max : PyGe.Point3d","numOfPoints : int" }))
-        .def("updateObjectData", &PyBrxCvDbTinSurface::updateObjectData)
+        .def("updateObjectData", &PyBrxCvDbTinSurface::updateObjectData, DS.ARGS())
         .def("addPoint", &PyBrxCvDbTinSurface::addPoint, DS.ARGS({ "pt : PyGe.Point3d" }))
         .def("addPoints", &PyBrxCvDbTinSurface::addPoints, DS.ARGS({ "pts : list[PyGe.Point3d]" }))
         .def("removePoint", &PyBrxCvDbTinSurface::removePoint, DS.ARGS({ "pt : PyGe.Point3d" }))
@@ -261,15 +263,15 @@ void makePyBrxCvDbTinSurfaceWrapper()
         .def("movePoints", &PyBrxCvDbTinSurface::movePoints, DS.ARGS({ "from : list[PyGe.Point3d]", "to : list[PyGe.Point3d]" }))
         .def("swapEdge", &PyBrxCvDbTinSurface::swapEdge, DS.ARGS({ "pt : PyGe.Point3d" }))
         .def("setStyle", &PyBrxCvDbTinSurface::setStyle, DS.ARGS({ "style : PyBrxCv.TinSurfaceStyle" }))
-        .def("setAssociative", &PyBrxCvDbTinSurface::setAssociative, DS.ARGS({ "val : bool" }))
-        .def("raiseSurface", &PyBrxCvDbTinSurface::raiseSurface, DS.ARGS({ "val : float" }))
-        .def("setSurfaceElevation", &PyBrxCvDbTinSurface::setSurfaceElevation, DS.ARGS({ "val : float" }))
-        .def("changePointsElevations", &PyBrxCvDbTinSurface::changePointsElevations, DS.ARGS({ "pts : list[PyGe.Point3d]","val : float" }))
-        .def("setMinorContoursInterval", &PyBrxCvDbTinSurface::setMinorContoursInterval, DS.ARGS({ "val : float" }))
-        .def("setMajorContoursInterval", &PyBrxCvDbTinSurface::setMajorContoursInterval, DS.ARGS({ "val : float" }))
-        .def("setMinorContoursColor", &PyBrxCvDbTinSurface::setMinorContoursColor, DS.ARGS({ "val : int" }))
-        .def("setMajorContoursColor", &PyBrxCvDbTinSurface::setMajorContoursColor, DS.ARGS({ "val : int" }))
-        .def("merge", &PyBrxCvDbTinSurface::merge, DS.ARGS({ "val : PyBrxCv.CvDbTinSurface" }))
+        .def("setAssociative", &PyBrxCvDbTinSurface::setAssociative, DS.ARGS({ "isAssociative : bool" }))
+        .def("raiseSurface", &PyBrxCvDbTinSurface::raiseSurface, DS.ARGS({ "offset : float" }))
+        .def("setSurfaceElevation", &PyBrxCvDbTinSurface::setSurfaceElevation, DS.ARGS({ "elevation : float" }))
+        .def("changePointsElevations", &PyBrxCvDbTinSurface::changePointsElevations, DS.ARGS({ "pts : list[PyGe.Point3d]","newZValues : list[float]" }))
+        .def("setMinorContoursInterval", &PyBrxCvDbTinSurface::setMinorContoursInterval, DS.ARGS({ "interval : float" }))
+        .def("setMajorContoursInterval", &PyBrxCvDbTinSurface::setMajorContoursInterval, DS.ARGS({ "interval : float" }))
+        .def("setMinorContoursColor", &PyBrxCvDbTinSurface::setMinorContoursColor, DS.ARGS({ "colorIndex : int" }))
+        .def("setMajorContoursColor", &PyBrxCvDbTinSurface::setMajorContoursColor, DS.ARGS({ "colorIndex : int" }))
+        .def("merge", &PyBrxCvDbTinSurface::merge, DS.ARGS({ "other : PyBrxCv.CvDbTinSurface" }))
         .def("getPoints", &PyBrxCvDbTinSurface::getPoints, DS.ARGS({ "visibleOnly : bool=False" }), arg("visibleOnly") = false)
         .def("getTinPoints", &PyBrxCvDbTinSurface::getTinPoints, DS.ARGS())
         .def("findTinPointAt", &PyBrxCvDbTinSurface::findTinPointAt, DS.ARGS({ "pt : PyGe.Point3d" }))
@@ -296,7 +298,7 @@ void makePyBrxCvDbTinSurfaceWrapper()
         .def("majorContoursColor", &PyBrxCvDbTinSurface::majorContoursColor, DS.ARGS())
         .def("minorContours", &PyBrxCvDbTinSurface::minorContours, DS.ARGS())
         .def("majorContours", &PyBrxCvDbTinSurface::majorContours, DS.ARGS())
-        .def("contoursAtElevation", &PyBrxCvDbTinSurface::contoursAtElevation, DS.ARGS({ "val : float" }))
+        .def("contoursAtElevation", &PyBrxCvDbTinSurface::contoursAtElevation, DS.ARGS({ "elevation : float" }))
         .def("drapePoint", &PyBrxCvDbTinSurface::drapePoint, DS.ARGS({ "pts : list[PyGe.Point3d]" }))
         .def("drapeId", &PyBrxCvDbTinSurface::drapeId, DS.ARGS({ "id : PyDb.ObjectId" }))
         .def("intersectionsWithLine", &PyBrxCvDbTinSurface::intersectionsWithLine, DS.ARGS({ "start : PyGe.Point3d","end : PyGe.Point3d", "type : PyBrxCv.TinSurfaceIntersectType","visibleOnly : bool" }))
@@ -319,7 +321,7 @@ void makePyBrxCvDbTinSurfaceWrapper()
         .def("isRebuildPossible", &PyBrxCvDbTinSurface::isRebuildPossible, DS.ARGS())
         .def("rebuild", &PyBrxCvDbTinSurface::rebuild, DS.ARGS({ "val : bool" }))
         .def("isAutoUpdate", &PyBrxCvDbTinSurface::isAutoUpdate, DS.ARGS())
-        .def("setIsAutoUpdate", &PyBrxCvDbTinSurface::setIsAutoUpdate, DS.ARGS({ "val : bool" }))
+        .def("setIsAutoUpdate", &PyBrxCvDbTinSurface::setIsAutoUpdate, DS.ARGS({ "autoUpdateOn : bool" }))
         .def("definitionCount", &PyBrxCvDbTinSurface::definitionCount, DS.ARGS())
         .def("addDefinition", &PyBrxCvDbTinSurface::addDefinition, DS.ARGS({ "ref : PyBrxCv.CvDbTinSurfaceDefinition" }))
         .def("insertDefinitionAt", &PyBrxCvDbTinSurface::insertDefinitionAt, DS.ARGS({ "index : int","ref : PyBrxCv.CvDbTinSurfaceDefinition" }))
@@ -327,7 +329,7 @@ void makePyBrxCvDbTinSurfaceWrapper()
         .def("definitionAt", &PyBrxCvDbTinSurface::definitionAt, DS.ARGS({ "index : int" }))
         .def("findDefinition", &PyBrxCvDbTinSurface::findDefinition, DS.ARGS({ "id : int" }))
         .def("moveDefinition", &PyBrxCvDbTinSurface::moveDefinition, DS.ARGS({ "from : int","to : int" }))
-        .def("removeDefinitionAt", &PyBrxCvDbTinSurface::removeDefinitionAt, DS.ARGS({ "val : int" }))
+        .def("removeDefinitionAt", &PyBrxCvDbTinSurface::removeDefinitionAt, DS.ARGS({ " index: int" }))
         .def("removeAllDefinitions", &PyBrxCvDbTinSurface::removeAllDefinitions, DS.ARGS())
 
         .def("className", &PyBrxCvDbTinSurface::className, DS.SARGS()).staticmethod("className")
@@ -1545,3 +1547,4 @@ BrxCvGradingSlopeOffsetRule* PyBrxCvGradingSlopeOffsetRule::impObj(const std::so
         }
     return static_cast<BrxCvGradingSlopeOffsetRule*>(m_pyImp.get());
 }
+#endif//BRXAPP

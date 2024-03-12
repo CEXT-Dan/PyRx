@@ -3,6 +3,7 @@
 #include "BrxCvDbTinSurface.h"
 #include "PyBrxCvObject.h"
 
+#ifdef BRXAPP
 class PyDbCurve;
 class PyDbObjectId;
 class PyBrxCvGradingRule;
@@ -423,3 +424,5 @@ public:
 public:
     inline BrxCvGradingSlopeOffsetRule* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+#endif//BRXAPP

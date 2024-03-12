@@ -2,7 +2,7 @@
 
 #ifdef BRXAPP
 void initPyBrxCvModule();
-#endif
+#endif//BRXAPP
 
 
 
