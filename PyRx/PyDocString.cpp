@@ -37,6 +37,15 @@ const char* PyDocString::ARGS(std::initializer_list<std::string> pyargs, const s
     return outstr.c_str();
 }
 
+const char* PyDocString::ARGS(std::initializer_list<std::string> pyargs, const std::string_view comment)
+{
+    outstr = ARGS(pyargs);
+    outstr += m_commentBegin;
+    outstr += comment;
+    outstr += m_commenEnd;
+    return outstr.c_str();
+}
+
 const char* PyDocString::SARGS()
 {
     outstr = m_argBegin;
@@ -57,6 +66,15 @@ const char* PyDocString::SARGS(std::initializer_list<std::string> pyargs)
 }
 
 const char* PyDocString::SARGS(std::initializer_list<std::string> pyargs, const std::string& comment)
+{
+    outstr = SARGS(pyargs);
+    outstr += m_commentBegin;
+    outstr += comment;
+    outstr += m_commenEnd;
+    return outstr.c_str();
+}
+
+const char* PyDocString::SARGS(std::initializer_list<std::string> pyargs, const std::string_view comment)
 {
     outstr = SARGS(pyargs);
     outstr += m_commentBegin;

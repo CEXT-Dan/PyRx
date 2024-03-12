@@ -667,26 +667,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> list :
-      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (int)arg4, (int)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,__int64,__int64)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)arg5, (int)arg6) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
+    def intersectWith (self: Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
+      '''Other argument options:
+    - PyDb.Entity, PyDb.Intersect, GsMarker, GsMarker
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane, GsMarker, GsMarker'''
     ...
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
@@ -908,7 +893,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
     ...
-    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+    def setPropertiesFrom (self: Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
@@ -1248,26 +1233,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> list :
-      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (int)arg4, (int)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,__int64,__int64)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)arg5, (int)arg6) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
+    def intersectWith (self: Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
+      '''Other argument options:
+    - PyDb.Entity, PyDb.Intersect, GsMarker, GsMarker
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane, GsMarker, GsMarker'''
     ...
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
@@ -1483,7 +1453,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
     ...
-    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+    def setPropertiesFrom (self: Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
@@ -1726,26 +1696,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> list :
-      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (int)arg4, (int)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,__int64,__int64)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)arg5, (int)arg6) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
+    def intersectWith (self: Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
+      '''Other argument options:
+    - PyDb.Entity, PyDb.Intersect, GsMarker, GsMarker
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane, GsMarker, GsMarker'''
     ...
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
@@ -1949,7 +1904,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
     ...
-    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+    def setPropertiesFrom (self: Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
@@ -2542,26 +2497,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> list :
-      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (int)arg4, (int)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,__int64,__int64)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)arg5, (int)arg6) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
+    def intersectWith (self: Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
+      '''Other argument options:
+    - PyDb.Entity, PyDb.Intersect, GsMarker, GsMarker
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane, GsMarker, GsMarker'''
     ...
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
@@ -2795,7 +2735,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
     ...
-    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+    def setPropertiesFrom (self: Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
@@ -3470,26 +3410,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     C++ signature :
         unsigned __int64 insertLineFixed(class PyBrxCvDbHAlignment {lvalue},class AcGePoint2d,class AcGePoint2d,unsigned __int64)'''
     ...
-    def intersectWith (self, *args, **kwargs)-> list :
-      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (int)arg4, (int)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,__int64,__int64)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)arg5, (int)arg6) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
+    def intersectWith (self: Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
+      '''Other argument options:
+    - PyDb.Entity, PyDb.Intersect, GsMarker, GsMarker
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane, GsMarker, GsMarker'''
     ...
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
@@ -3753,7 +3678,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
     ...
-    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+    def setPropertiesFrom (self: Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
@@ -5809,26 +5734,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> list :
-      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (int)arg4, (int)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,__int64,__int64)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)arg5, (int)arg6) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
+    def intersectWith (self: Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
+      '''Other argument options:
+    - PyDb.Entity, PyDb.Intersect, GsMarker, GsMarker
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane, GsMarker, GsMarker'''
     ...
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
@@ -6107,7 +6017,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def setPosition (self: CvDbPoint,pt : PyGe.Point3d)-> bool :
       '''                             '''
     ...
-    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+    def setPropertiesFrom (self: Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setRawDescription (self: CvDbPoint,val : str)-> bool :
@@ -7622,26 +7532,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def insertDefinitionAt (self: CvDbTinSurface,index : int,ref : PyBrxCv.CvDbTinSurfaceDefinition)-> int :
       '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> list :
-      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (int)arg4, (int)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,__int64,__int64)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)arg5, (int)arg6) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
+    def intersectWith (self: Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
+      '''Other argument options:
+    - PyDb.Entity, PyDb.Intersect, GsMarker, GsMarker
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane, GsMarker, GsMarker'''
     ...
     def intersectionsWithLine (self: CvDbTinSurface,start : PyGe.Point3d,end : PyGe.Point3d,type : PyBrxCv.TinSurfaceIntersectType,visibleOnly : bool)-> tuple :
       '''                             '''
@@ -7944,7 +7839,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
     ...
-    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+    def setPropertiesFrom (self: Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
@@ -12099,26 +11994,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> list :
-      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (int)arg4, (int)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,__int64,__int64)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)arg5, (int)arg6) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
+    def intersectWith (self: Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
+      '''Other argument options:
+    - PyDb.Entity, PyDb.Intersect, GsMarker, GsMarker
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane, GsMarker, GsMarker'''
     ...
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
@@ -12352,7 +12232,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
     ...
-    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+    def setPropertiesFrom (self: Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
@@ -12643,26 +12523,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> list :
-      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (int)arg4, (int)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,__int64,__int64)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)arg5, (int)arg6) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
+    def intersectWith (self: Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
+      '''Other argument options:
+    - PyDb.Entity, PyDb.Intersect, GsMarker, GsMarker
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane, GsMarker, GsMarker'''
     ...
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
@@ -12896,7 +12761,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
     ...
-    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+    def setPropertiesFrom (self: Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
@@ -13301,26 +13166,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def insertDefinitionAt (self: CvDbTinSurface,index : int,ref : PyBrxCv.CvDbTinSurfaceDefinition)-> int :
       '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> list :
-      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (int)arg4, (int)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,__int64,__int64)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane)
-
-intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)arg5, (int)arg6) -> list :
-
-    C++ signature :
-        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
+    def intersectWith (self: Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
+      '''Other argument options:
+    - PyDb.Entity, PyDb.Intersect, GsMarker, GsMarker
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane
+    - PyDb.Entity, PyDb.Intersect, PyGe.Plane, GsMarker, GsMarker'''
     ...
     def intersectionsWithLine (self: CvDbTinSurface,start : PyGe.Point3d,end : PyGe.Point3d,type : PyBrxCv.TinSurfaceIntersectType,visibleOnly : bool)-> tuple :
       '''                             '''
@@ -13623,7 +13473,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
     ...
-    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+    def setPropertiesFrom (self: Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
