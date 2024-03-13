@@ -80,6 +80,13 @@ def findArgs(sig):
         return ""
     
 def findOverload(sig):
+    argb = sig.find('<[(')
+    arge = sig.find(')]>')
+    if argb != -1:
+        return "{}".format(sig[argb+3:arge])
+    return None
+
+def findOverloadAsComment(sig):
     try:
         argb = sig.find('<[(')
         arge = sig.find(')]>')
@@ -87,7 +94,7 @@ def findOverload(sig):
             return "      '''{}'''".format(sig[argb+3:arge])
         return "      '''                             '''"
     except:
-            return "      '''                             '''"
+        return "      '''                             '''"
 
 def findReturnTypeModlue(sig):
     if sig in class_types:
@@ -115,6 +122,18 @@ def isStatic(ags : str) -> bool:
         return 'self' not in str(ags)
     except:
         return False
+    
+def parseOverLoads(overstr : str, args : str):
+    res = []
+    if overstr is None:
+        return res
+    if not '-' in overstr:
+        return res
+    hackola = args.split(',')
+    overloads = [s.strip() for s in overstr.split('-')]
+    for overload in overloads[1:]:
+        res.append(hackola[0] +', '+overload +')')
+    return res
 
 # todo: boost generates a doc string that has the function signature
 # it should be able to parse this, or add something in the doc user string
@@ -140,22 +159,27 @@ def generate_pyi(moduleName, module):
                         args = findArgs(sig)
                         returnType = findReturnType(sig)
                         newDocString = removeArgStr(sig)
-                        comment = findOverload(sig)
-                        
+                        overloadAsComment = findOverloadAsComment(sig)
+                        overloads = parseOverLoads(findOverload(sig), args)
+     
                         try:
-                            f.write(
-                                f'    def {func_name} {inspect.signature(func)} :\n')
+                            f.write(f'    def {func_name} {inspect.signature(func)} :\n')
                             f.write(f"      '''{newDocString}'''")
                         except:
                             if len(args) != 0:
                                 if isStatic(args):
                                     f.write('\n    @staticmethod\n')
-                                f.write(
-                                    f'    def {func_name} {args}{returnType} :\n')
-                                f.write(comment)
+                                else:  
+                                    if len(overloads):
+                                        for overload in overloads:
+                                            f.write('\n    @overload\n')
+                                            f.write(f'    def {func_name} {overload}{returnType} :\n')
+                                            f.write('    ...\n')
+                                            
+                                f.write(f'    def {func_name} {args}{returnType} :\n')
+                                f.write(overloadAsComment)
                             else:
-                                f.write(
-                                    f'    def {func_name} (self, *args, **kwargs){returnType} :\n')
+                                f.write(f'    def {func_name} (self, *args, **kwargs){returnType} :\n')
                                 f.write(f"      '''{newDocString}'''")
 
                         f.write('\n    ...\n')

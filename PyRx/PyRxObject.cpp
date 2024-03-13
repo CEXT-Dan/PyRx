@@ -19,7 +19,7 @@ void makePyRxObjectWrapper()
         .def("copyFrom", &PyRxObject::copyFrom, DS.ARGS({ "other: PyRx.RxObject" }))
         .def("comparedTo", &PyRxObject::comparedTo, DS.ARGS({ "other: PyRx.RxObject" }))
         .def("__eq__", &PyRxObject::operator==, DS.ARGS({ "rhs: PyRx.RxObject" }))
-        .def("__ne__", &PyRxObject::operator!=, DS.ARGS({ "rhs:P yRx.RxObject" }))
+        .def("__ne__", &PyRxObject::operator!=, DS.ARGS({ "rhs: PyRx.RxObject" }))
         .def("desc", &PyRxObject::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyRxObject::className, DS.SARGS()).staticmethod("className")
         ;
