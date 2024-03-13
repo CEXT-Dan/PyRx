@@ -15,6 +15,11 @@ import PyAp  # = application, document classes services
 import PyEd  # = editor
 import PyPl  # = plot
 
+# debug
+def PyRxCmd_pydebug() -> None:
+    import PyRxDebug
+    PyRxDebug.startListener()
+
 class_types = {}
 
 all_modules = [("PyRx", PyRx), ("PyGe", PyGe), ("PyGi", PyGi),("PyGs", PyGs), 
@@ -26,8 +31,6 @@ all_modules_names = ["PyRx", "PyGe", "PyGi", "PyGs", "PyDb", "PyAp", "PyEd", "Py
 # to each
 
 # just some ideas on getting help, work in progress
-
-
 
 def include_attr(name) -> bool:
     try:
@@ -76,7 +79,7 @@ def findArgs(sig):
     except:
         return ""
     
-def findComment(sig):
+def findOverload(sig):
     try:
         argb = sig.find('<[(')
         arge = sig.find(')]>')
@@ -117,9 +120,11 @@ def isStatic(ags : str) -> bool:
 # it should be able to parse this, or add something in the doc user string
 def generate_pyi(moduleName, module):
     with open(moduleName, 'w') as f:
-
+        
+        #write the base module names to the stub file
         for mname in all_modules_names:
             f.write(f'import {mname}\n')
+        f.write('from typing import overload\n')
 
         for name, obj in inspect.getmembers(module):
             if inspect.isclass(obj):
@@ -135,7 +140,7 @@ def generate_pyi(moduleName, module):
                         args = findArgs(sig)
                         returnType = findReturnType(sig)
                         newDocString = removeArgStr(sig)
-                        comment = findComment(sig)
+                        comment = findOverload(sig)
                         
                         try:
                             f.write(

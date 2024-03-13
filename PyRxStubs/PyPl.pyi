@@ -6,6 +6,7 @@ import PyDb
 import PyAp
 import PyEd
 import PyPl
+from typing import overload
 
 class Core:
     def __init__ (self, *args, **kwargs)-> None :
