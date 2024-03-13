@@ -23,6 +23,7 @@ public:
     PyDbText(AcDbText* ptr, bool autoDelete);
     PyDbText(const PyDbObjectId& id);
     PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbText() override = default;
     AcGePoint3d         position() const;
     void                setPosition(const AcGePoint3d& val);
@@ -77,6 +78,7 @@ public:
     PyDbAttributeDefinition();
     PyDbAttributeDefinition(const AcGePoint3d& position, const std::string& text, const std::string& tag, const std::string& prompt, const PyDbObjectId& style);
     PyDbAttributeDefinition(AcDbAttributeDefinition* ptr, bool autoDelete);
+    PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbAttributeDefinition(const PyDbObjectId& id);
     virtual ~PyDbAttributeDefinition() override = default;

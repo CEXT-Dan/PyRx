@@ -3677,31 +3677,34 @@ class AssocFlags:
     ...
 
 class AttributeDefinition:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
 
-    C++ signature :
-        void __init__(struct _object * __ptr64)
+    @overload
+    def __init__ (self, None: Any)-> None :
+        ...
 
-__init__( (object)arg1) -> None :
+    @overload
+    def __init__ (self, position: PyGe.Point3d, text: str, tag: str, prompt: str, styleid: PyDb.ObjectId)-> None :
+        ...
 
-    C++ signature :
-        void __init__(struct _object * __ptr64)
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None :
+        ...
 
-__init__( (object)arg1, (Point3d)arg2, (str)arg3, (str)arg4, (str)arg5, (ObjectId)arg6) -> None :
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None :
+        ...
 
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None :
+        ...
+    def __init__ (self, )-> None :
+      '''Overloads:
+    - None: Any
+    - position: PyGe.Point3d, text: str, tag: str, prompt: str, styleid: PyDb.ObjectId
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -67321,36 +67324,39 @@ textStyle( (TableStyle)arg1, (str)arg2) -> ObjectId :
     ...
 
 class Text:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
 
-    C++ signature :
-        void __init__(struct _object * __ptr64)
+    @overload
+    def __init__ (self, None: Any)-> None :
+        ...
 
-__init__( (object)arg1) -> None :
+    @overload
+    def __init__ (self, position: PyGe.Point3d, text: str)-> None :
+        ...
 
-    C++ signature :
-        void __init__(struct _object * __ptr64)
+    @overload
+    def __init__ (self, position: PyGe.Point3d, text: str, height: float, rotation: float)-> None :
+        ...
 
-__init__( (object)arg1, (Point3d)arg2, (str)arg3) -> None :
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None :
+        ...
 
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None :
+        ...
 
-__init__( (object)arg1, (Point3d)arg2, (str)arg3, (ObjectId)arg4, (float)arg5, (float)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},double,double)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None :
+        ...
+    def __init__ (self, )-> None :
+      '''Overloads:
+    - None: Any
+    - position: PyGe.Point3d, text: str
+    - position: PyGe.Point3d, text: str, height: float, rotation: float
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''

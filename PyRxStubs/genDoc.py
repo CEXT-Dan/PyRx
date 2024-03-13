@@ -123,16 +123,15 @@ def isStatic(ags : str) -> bool:
     except:
         return False
     
-def parseOverLoads(overstr : str, args : str):
+def parseOverLoads(overstr : str):
     res = []
     if overstr is None:
         return res
     if not '-' in overstr:
         return res
-    hackola = args.split(',')
     overloads = [s.strip() for s in overstr.split('-')]
     for overload in overloads[1:]:
-        res.append(hackola[0] +', '+overload +')')
+        res.append('(self, '+overload +')')
     return res
 
 # todo: boost generates a doc string that has the function signature
@@ -160,7 +159,7 @@ def generate_pyi(moduleName, module):
                         returnType = findReturnType(sig)
                         newDocString = removeArgStr(sig)
                         overloadAsComment = findOverloadAsComment(sig)
-                        overloads = parseOverLoads(findOverload(sig), args)
+                        overloads = parseOverLoads(findOverload(sig))
      
                         try:
                             f.write(f'    def {func_name} {inspect.signature(func)} :\n')
