@@ -770,10 +770,10 @@ class DocManager:
     def closeDocument (self: DocManager,doc: PyAp.Document)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def curDocument (self: DocManager)-> PyAp.Document :
@@ -790,7 +790,7 @@ class DocManager:
     def disableDocumentActivation (self: DocManager)-> None :
       '''                             '''
     ...
-    def dispose (self: RxObject)-> None :
+    def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def document (self: DocManager,db: PyDb.Database)-> PyAp.Document :
@@ -808,13 +808,13 @@ class DocManager:
     def executeInApplicationContext (self: DocManager,func: Any,data: Any)-> None :
       '''                             '''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
     def inputPending (self: DocManager,doc: PyAp.Document)-> int :
       '''                             '''
     ...
-    def isA (self: RxObject)-> PyRx.RxClass :
+    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
     def isApplicationContext (self: DocManager)-> bool :
@@ -823,13 +823,13 @@ class DocManager:
     def isDocumentActivationEnabled (self: DocManager)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag: bool)-> None :
+    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def lockDocument (self: DocManager,doc: PyAp.Document,mode: PyAp.DocLockMode = kWrite,gcmd: str = None,lcmd: str = None,prmt: bool = True)-> None :
@@ -850,7 +850,7 @@ class DocManager:
     def pushAcadResourceHandle (self: DocManager)-> None :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def sendModelessInterrupt (self: DocManager,doc: PyAp.Document)-> None :
@@ -932,10 +932,10 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def database (self: Document)-> PyDb.Database :
@@ -946,7 +946,7 @@ This class cannot be instantiated from Python'''
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: RxObject)-> None :
+    def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def docTitle (self: Document)-> str :
@@ -978,28 +978,28 @@ This class cannot be instantiated from Python'''
     def getUserData (self: Document)-> object :
       '''                             '''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
     def inputPointManager (self: Document)-> PyEd.InputPointManager :
       '''                             '''
     ...
-    def isA (self: RxObject)-> PyRx.RxClass :
+    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
     def isCommandInputInactive (self: Document)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
     def isQuiescent (self: Document)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag: bool)-> None :
+    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def lockMode (self: Document,bIncludeMyLocks : bool=False)-> PyAp.DocLockMode :
@@ -1014,7 +1014,7 @@ This class cannot be instantiated from Python'''
     def pushDbmod (self: Document)-> None :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def setDocTitle (self: Document,title : str)-> None :
@@ -1062,10 +1062,10 @@ __init__( (object)arg1) -> None :
     def compareTo (self: LayerFilter,other : PyLy.LayerFilter)-> bool :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -1073,7 +1073,7 @@ __init__( (object)arg1) -> None :
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: RxObject)-> None :
+    def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def dynamicallyGenerated (self: LayerFilter)-> bool :
@@ -1091,25 +1091,25 @@ __init__( (object)arg1) -> None :
     def getNestedFilters (self: LayerFilter)-> list :
       '''                             '''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: RxObject)-> PyRx.RxClass :
+    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
     def isIdFilter (self: LayerFilter)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
     def isProxy (self: LayerFilter)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag: bool)-> None :
+    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def name (self: LayerFilter)-> str :
@@ -1118,7 +1118,7 @@ __init__( (object)arg1) -> None :
     def parent (self: LayerFilter)-> PyAp.LayerFilter :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def removeNested (self: LayerFilter,val : PyLy.LayerFilter)-> None :
@@ -1207,10 +1207,10 @@ __init__( (object)arg1) -> None :
     def compareTo (self: LayerFilter,other : PyLy.LayerFilter)-> bool :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -1218,7 +1218,7 @@ __init__( (object)arg1) -> None :
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: RxObject)-> None :
+    def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def dynamicallyGenerated (self: LayerFilter)-> bool :
@@ -1236,25 +1236,25 @@ __init__( (object)arg1) -> None :
     def getNestedFilters (self: LayerFilter)-> list :
       '''                             '''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: RxObject)-> PyRx.RxClass :
+    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
     def isIdFilter (self: LayerFilter)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
     def isProxy (self: LayerFilter)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag: bool)-> None :
+    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layerIds (self, *args, **kwargs)-> list :
@@ -1269,7 +1269,7 @@ __init__( (object)arg1) -> None :
     def parent (self: LayerFilter)-> PyAp.LayerFilter :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def removeLayerId (self, *args, **kwargs)-> None :
@@ -1320,10 +1320,10 @@ cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3, (int)arg4, (Database)
     C++ signature :
         void cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class PyDbDatabase {lvalue})'''
     ...
-    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def copyLayout (self, *args, **kwargs)-> None :
@@ -1381,7 +1381,7 @@ deleteLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: RxObject)-> None :
+    def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def findLayoutNamed (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -1432,16 +1432,16 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
     C++ signature :
         class PyDbObjectId getNonRectVPIdFromClipId(class PyDbLayoutManager {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: RxObject)-> PyRx.RxClass :
+    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
     def isVpnumClipped (self, *args, **kwargs)-> bool :
@@ -1455,7 +1455,7 @@ isVpnumClipped( (LayoutManager)arg1, (int)arg2, (Database)arg3) -> bool :
     C++ signature :
         bool isVpnumClipped(class PyDbLayoutManager {lvalue},int,class PyDbDatabase)'''
     ...
-    def keepAlive (self: RxObject,flag: bool)-> None :
+    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layoutExists (self, *args, **kwargs)-> bool :
@@ -1475,7 +1475,7 @@ layoutExists( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> bool :
     def pointInViewports (self: LayoutManager,val : PyGe.Point3d)-> list :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def renameLayout (self, *args, **kwargs)-> None :
@@ -1826,10 +1826,10 @@ class TransactionManager:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -1838,7 +1838,7 @@ class TransactionManager:
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dispose (self: RxObject)-> None :
+    def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def enableGraphicsFlush (self, *args, **kwargs)-> None :
@@ -1862,19 +1862,19 @@ class TransactionManager:
     def getObject (self: TransactionManager,id: ObjectId,mode: OpenMode=OpenMode.kForRead,openErasedObject: bool=False)-> PyDb.DbObject :
       '''                             '''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: RxObject)-> PyRx.RxClass :
+    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag: bool)-> None :
+    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def numActiveTransactions (self: TransactionManager)-> int :
@@ -1883,7 +1883,7 @@ class TransactionManager:
     def numOpenedObjects (self: TransactionManager)-> int :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def queueForGraphicsFlush (self: TransactionManager)-> None :

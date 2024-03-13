@@ -121,10 +121,10 @@ class DSDData:
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def currentPrecision (self, *args, **kwargs)-> str :
@@ -144,7 +144,7 @@ class DSDData:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > destinationName(class PyPlDSDData {lvalue})'''
     ...
-    def dispose (self: RxObject)-> None :
+    def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def get3dDwfOptions (self, *args, **kwargs)-> tuple :
@@ -171,7 +171,7 @@ class DSDData:
     C++ signature :
         void getUnrecognizedData(class PyPlDSDData {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
     def includeLayerInfo (self, *args, **kwargs)-> bool :
@@ -186,7 +186,7 @@ class DSDData:
     C++ signature :
         bool initializeLayouts(class PyPlDSDData {lvalue})'''
     ...
-    def isA (self: RxObject)-> PyRx.RxClass :
+    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
     def isHomogeneous (self, *args, **kwargs)-> bool :
@@ -195,10 +195,10 @@ class DSDData:
     C++ signature :
         bool isHomogeneous(class PyPlDSDData {lvalue})'''
     ...
-    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
     def isSheetSet (self, *args, **kwargs)-> bool :
@@ -207,7 +207,7 @@ class DSDData:
     C++ signature :
         bool isSheetSet(class PyPlDSDData {lvalue})'''
     ...
-    def keepAlive (self: RxObject,flag: bool)-> None :
+    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def lineMerge (self, *args, **kwargs)-> bool :
@@ -282,7 +282,7 @@ class DSDData:
     C++ signature :
         bool pwdProtectPublishedDWF(class PyPlDSDData {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def selectionSetName (self, *args, **kwargs)-> str :
@@ -495,10 +495,10 @@ class DSDEntry:
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -506,7 +506,7 @@ class DSDEntry:
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: RxObject)-> None :
+    def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def dwgName (self, *args, **kwargs)-> str :
@@ -521,19 +521,19 @@ class DSDEntry:
     C++ signature :
         bool has3dDwfSetup(class PyPlDSDEntry {lvalue})'''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: RxObject)-> PyRx.RxClass :
+    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag: bool)-> None :
+    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layout (self, *args, **kwargs)-> str :
@@ -548,7 +548,7 @@ class DSDEntry:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > orgSheetPath(class PyPlDSDEntry {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def setDwgName (self, *args, **kwargs)-> None :
@@ -704,10 +704,10 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -715,25 +715,25 @@ This class cannot be instantiated from Python'''
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: RxObject)-> None :
+    def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: RxObject)-> PyRx.RxClass :
+    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag: bool)-> None :
+    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
 
@@ -785,10 +785,10 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -808,7 +808,7 @@ This class cannot be instantiated from Python'''
     C++ signature :
         unsigned long deviceType(class PyPlPlotConfig {lvalue})'''
     ...
-    def dispose (self: RxObject)-> None :
+    def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def fullPath (self, *args, **kwargs)-> str :
@@ -847,16 +847,16 @@ This class cannot be instantiated from Python'''
     C++ signature :
         void getMediaBounds(class PyPlPlotConfig {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AcGePoint2d {lvalue},class PyGeBoundBlock2d {lvalue})'''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: RxObject)-> PyRx.RxClass :
+    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
     def isPlotToFile (self, *args, **kwargs)-> bool :
@@ -865,7 +865,7 @@ This class cannot be instantiated from Python'''
     C++ signature :
         bool isPlotToFile(class PyPlPlotConfig {lvalue})'''
     ...
-    def keepAlive (self: RxObject,flag: bool)-> None :
+    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def maxDeviceDPI (self, *args, **kwargs)-> int :
@@ -880,7 +880,7 @@ This class cannot be instantiated from Python'''
     C++ signature :
         enum AcPlPlotConfig::PlotToFileCapability plotToFileCapability(class PyPlPlotConfig {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def refreshMediaNameList (self, *args, **kwargs)-> None :
@@ -924,10 +924,10 @@ __init__( (object)arg1, (str)arg2, (str)arg3, (DeviceType)arg4) -> None :
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -953,7 +953,7 @@ __init__( (object)arg1, (str)arg2, (str)arg3, (DeviceType)arg4) -> None :
     C++ signature :
         enum DeviceType deviceType(class PyPlPlotConfigInfo {lvalue})'''
     ...
-    def dispose (self: RxObject)-> None :
+    def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def fullPath (self, *args, **kwargs)-> str :
@@ -962,22 +962,22 @@ __init__( (object)arg1, (str)arg2, (str)arg3, (DeviceType)arg4) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > fullPath(class PyPlPlotConfigInfo {lvalue})'''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: RxObject)-> PyRx.RxClass :
+    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag: bool)-> None :
+    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def setDeviceId (self, *args, **kwargs)-> None :
@@ -1174,7 +1174,7 @@ class PlotInfo:
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self, *args, **kwargs)-> None :
@@ -1194,13 +1194,13 @@ class PlotInfo:
     C++ signature :
         class PyPlPlotConfig deviceOverride(class PyPlPlotInfo {lvalue})'''
     ...
-    def dispose (self: RxObject)-> None :
+    def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: RxObject)-> PyRx.RxClass :
+    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
     def isCompatibleDocument (self, *args, **kwargs)-> bool :
@@ -1209,10 +1209,10 @@ class PlotInfo:
     C++ signature :
         bool isCompatibleDocument(class PyPlPlotInfo {lvalue},class PyPlPlotInfo)'''
     ...
-    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
     def isValidated (self, *args, **kwargs)-> bool :
@@ -1221,7 +1221,7 @@ class PlotInfo:
     C++ signature :
         bool isValidated(class PyPlPlotInfo {lvalue})'''
     ...
-    def keepAlive (self: RxObject,flag: bool)-> None :
+    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layout (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -1242,7 +1242,7 @@ class PlotInfo:
     C++ signature :
         class PyDbPlotSettings overrideSettings(class PyPlPlotInfo {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def setDeviceOverride (self, *args, **kwargs)-> None :
@@ -1300,10 +1300,10 @@ class PlotInfoValidator:
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -1317,13 +1317,13 @@ class PlotInfoValidator:
     C++ signature :
         unsigned int dimensionalWeight(class PyPlPlotInfoValidator {lvalue})'''
     ...
-    def dispose (self: RxObject)-> None :
+    def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: RxObject)-> PyRx.RxClass :
+    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
     def isCustomPossible (self, *args, **kwargs)-> PyPl.CustomSizeResult :
@@ -1332,13 +1332,13 @@ class PlotInfoValidator:
     C++ signature :
         enum AcPlPlotInfoValidator::eCustomSizeResult isCustomPossible(class PyPlPlotInfoValidator {lvalue},class PyPlPlotInfo {lvalue})'''
     ...
-    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag: bool)-> None :
+    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def matchingPolicy (self, *args, **kwargs)-> PyPl.MatchingPolicy :
@@ -1371,7 +1371,7 @@ class PlotInfoValidator:
     C++ signature :
         unsigned int printableBoundsWeight(class PyPlPlotInfoValidator {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def setDefDimensionalWeight (self, *args, **kwargs)-> None :
@@ -1554,10 +1554,10 @@ class PlotPageInfo:
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -1565,7 +1565,7 @@ class PlotPageInfo:
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: RxObject)-> None :
+    def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -1578,19 +1578,19 @@ class PlotPageInfo:
     def gradientCount ()-> int :
       '''                             '''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: RxObject)-> PyRx.RxClass :
+    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag: bool)-> None :
+    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
 
@@ -1598,7 +1598,7 @@ class PlotPageInfo:
     def oleObjectCount ()-> int :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
 
@@ -1860,10 +1860,10 @@ __init__( (object)arg1) -> None :
     C++ signature :
         int colorResolution(class PyPlPrecisionEntry {lvalue})'''
     ...
-    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -1883,7 +1883,7 @@ __init__( (object)arg1) -> None :
     C++ signature :
         double desiredPrecision(class PyPlPrecisionEntry {lvalue})'''
     ...
-    def dispose (self: RxObject)-> None :
+    def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def gradientResolution (self, *args, **kwargs)-> int :
@@ -1892,19 +1892,19 @@ __init__( (object)arg1) -> None :
     C++ signature :
         int gradientResolution(class PyPlPrecisionEntry {lvalue})'''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: RxObject)-> PyRx.RxClass :
+    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag: bool)-> None :
+    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def monoResolution (self, *args, **kwargs)-> int :
@@ -1913,7 +1913,7 @@ __init__( (object)arg1) -> None :
     C++ signature :
         int monoResolution(class PyPlPrecisionEntry {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def setColorResolution (self, *args, **kwargs)-> None :

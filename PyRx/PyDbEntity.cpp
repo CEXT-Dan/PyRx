@@ -15,7 +15,7 @@ constexpr const std::string_view intersectOverloads = "Overloads:\n"
 
 void makePyDbEntityWrapper()
 {
-    PyDocString DS("Entity");
+    PyDocString DS("PyDb.Entity");
     class_<PyDbEntity, bases<PyDbObject>>("Entity", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())

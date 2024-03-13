@@ -7,7 +7,7 @@ using namespace boost::python;
 //PyRxObject wrapper
 void makePyRxObjectWrapper()
 {
-    PyDocString DS("RxObject");
+    PyDocString DS("PyRx.RxObject");
     class_<PyRxObject>("RxObject", boost::python::no_init)
         .def("isA", &PyRxObject::isA, DS.ARGS())
         .def("isKindOf", &PyRxObject::isKindOf, DS.ARGS({ "rhs: PyRx.RxClass" }))
@@ -166,7 +166,7 @@ AcRxObject* PyRxObject::impObj(const std::source_location& src /*= std::source_l
 //PyRxClass Wrapper
 void makePyRxClassWrapper()
 {
-    PyDocString DS("RxClass");
+    PyDocString DS("PyRx.RxClass");
     class_<PyRxClass, bases<PyRxObject>>("RxClass", boost::python::no_init)
         .def("isDerivedFrom", &PyRxClass::isDerivedFrom, DS.ARGS({ "other : PyRx.RxClass" }))
         .def("appName", &PyRxClass::appName, DS.ARGS())
