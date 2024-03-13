@@ -10,17 +10,16 @@
 #include "PyDbDatabaseReactor.h"
 #include "PyDbDate.h"
 
-constexpr const std::string_view wblockOverloads = "Overloads:\n"
-"- blockId : PyDb.ObjectId\n"
-"- blockIds : list[PyDb.ObjectId], basePoint : PyGe.Point3d\n"
-"- outputDb : PyDb.Database, ids : list[PyDb.ObjectId], basePoint : PyGe.Point3d , drc : PyDb.DuplicateRecordCloning\n";
-
-
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------
 // makeAcDbDatabaseWrapper
 void makePyDbDatabaseWrapper()
 {
+    constexpr const std::string_view wblockOverloads = "Overloads:\n"
+        "- blockId : PyDb.ObjectId\n"
+        "- blockIds : list[PyDb.ObjectId], basePoint : PyGe.Point3d\n"
+        "- outputDb : PyDb.Database, ids : list[PyDb.ObjectId], basePoint : PyGe.Point3d , drc : PyDb.DuplicateRecordCloning\n";
+
     PyDocString DS("PyDb.Database");
     class_<PyDbDatabase, bases<PyRxObject>>("Database")
         .def(init<>())

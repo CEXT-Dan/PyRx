@@ -13,6 +13,14 @@ using namespace boost::python;
 //PyDbText
 void makePyDbTextWrapper()
 {
+    constexpr const std::string_view textCtor = "Overloads:\n"
+        "- None: Any\n"
+        "- position: PyGe.Point3d, text: str\n"
+        "- position: PyGe.Point3d, text: str, height: float, rotation: float\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("PyDb.Text");
     class_<PyDbText, bases<PyDbEntity>>("Text")
         .def(init<>())
@@ -20,6 +28,7 @@ void makePyDbTextWrapper()
         .def(init<AcGePoint3d&, const std::string&, PyDbObjectId&, double, double>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS("", textCtor)))
         .def("position", &PyDbText::position, DS.ARGS())
         .def("setPosition", &PyDbText::setPosition, DS.ARGS({ "pos : PyGe.Point3d" }))
         .def("alignmentPoint", &PyDbText::alignmentPoint, DS.ARGS())
@@ -97,8 +106,9 @@ PyDbText::PyDbText(const AcGePoint3d& position, const std::string& text, PyDbObj
 {
 }
 
-PyDbText::PyDbText(AcDbText* ptr, bool autoDelete)
-    : PyDbEntity(ptr, autoDelete)
+
+PyDbText::PyDbText(const PyDbObjectId& id)
+    : PyDbText(id, AcDb::OpenMode::kForRead)
 {
 }
 
@@ -107,10 +117,16 @@ PyDbText::PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
 }
 
-PyDbText::PyDbText(const PyDbObjectId& id)
-    : PyDbText(id, AcDb::OpenMode::kForRead)
+PyDbText::PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbText(openAcDbObject<AcDbText>(id, mode, erased), false)
 {
 }
+
+PyDbText::PyDbText(AcDbText* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
+{
+}
+
 
 AcGePoint3d PyDbText::position() const
 {
@@ -352,12 +368,20 @@ AcDbText* PyDbText::impObj(const std::source_location& src /*= std::source_locat
 //PyDbAttributeDefinition
 void makePyDbAttributeDefinitionWrapper()
 {
+    constexpr const std::string_view attributeDefinitionCtor = "Overloads:\n"
+        "- None: Any\n"
+        "- position: PyGe.Point3d, text: str, tag: str, prompt: str, styleid: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("PyDb.AttributeDefinition");
     class_<PyDbAttributeDefinition, bases<PyDbText>>("AttributeDefinition")
         .def(init<>())
         .def(init<const AcGePoint3d&, const std::string&, const std::string&, const std::string&, const PyDbObjectId&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS("", attributeDefinitionCtor)))
         .def("prompt", &PyDbAttributeDefinition::prompt, DS.ARGS())
         .def("setPrompt", &PyDbAttributeDefinition::setPrompt, DS.ARGS({ "val : str" }))
         .def("tag", &PyDbAttributeDefinition::tag, DS.ARGS())
@@ -410,6 +434,12 @@ PyDbAttributeDefinition::PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::O
 PyDbAttributeDefinition::PyDbAttributeDefinition(const PyDbObjectId& id)
     : PyDbAttributeDefinition(id, AcDb::OpenMode::kForRead)
 {
+}
+
+PyDbAttributeDefinition::PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbText(openAcDbObject<AcDbAttributeDefinition>(id, mode, erased), false)
+{
+
 }
 
 std::string PyDbAttributeDefinition::prompt() const
