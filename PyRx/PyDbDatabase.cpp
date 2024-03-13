@@ -10,6 +10,12 @@
 #include "PyDbDatabaseReactor.h"
 #include "PyDbDate.h"
 
+constexpr const std::string_view wblockOverloads = "Overloads:\n"
+"- blockId : PyDb.ObjectId\n"
+"- blockIds : list[PyDb.ObjectId], basePoint : PyGe.Point3d\n"
+"- outputDb : PyDb.Database, ids : list[PyDb.ObjectId], basePoint : PyGe.Point3d , drc : PyDb.DuplicateRecordCloning\n";
+
+
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------
 // makeAcDbDatabaseWrapper
@@ -486,16 +492,16 @@ void makePyDbDatabaseWrapper()
         .def("wblock", &PyDbDatabase::wblock1)
         .def("wblock", &PyDbDatabase::wblock2)
         .def("wblock", &PyDbDatabase::wblock3)
-        .def("wblock", &PyDbDatabase::wblock4)
-        .def("abortDeepClone", &PyDbDatabase::abortDeepClone, DS.ARGS({ "idmap:PyDb.IdMapping" }))
+        .def("wblock", &PyDbDatabase::wblock4, DS.ARGS("", wblockOverloads))
+        .def("abortDeepClone", &PyDbDatabase::abortDeepClone, DS.ARGS({ "idmap: PyDb.IdMapping" }))
 
         .def("deepCloneObjects", &PyDbDatabase::deepCloneObjects1)
         .def("deepCloneObjects", &PyDbDatabase::deepCloneObjects2,
-            DS.ARGS({ "ids:list[PyDb.ObjectId]","owner:PyDb.ObjectId","idmap:PyDb.IdMapping","deferXlation:bool=False" }))
+            DS.ARGS({ "ids:list[PyDb.ObjectId]","owner:PyDb.ObjectId","idmap: PyDb.IdMapping","deferXlation:bool=False" }))
 
         .def("wblockCloneObjects", &PyDbDatabase::wblockCloneObjects1)
         .def("wblockCloneObjects", &PyDbDatabase::wblockCloneObjects2,
-            DS.ARGS({ "ids:list[PyDb.ObjectId]","owner:PyDb.ObjectId","idmap:PyDb.IdMapping","drc:DuplicateRecordCloning","deferXlation:bool=False" }))
+            DS.ARGS({ "ids:list[PyDb.ObjectId]","owner:PyDb.ObjectId","idmap: PyDb.IdMapping","drc:DuplicateRecordCloning","deferXlation:bool=False" }))
 
         .def("getFilename", &PyDbDatabase::getFilename, DS.ARGS())
         .def("readDwgFile", &PyDbDatabase::readDwgFile1)

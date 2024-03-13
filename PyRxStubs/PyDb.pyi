@@ -1312,7 +1312,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -2366,7 +2366,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -3045,7 +3045,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -3937,7 +3937,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -4588,7 +4588,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -5194,7 +5194,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -5663,7 +5663,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -6164,7 +6164,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -7399,7 +7399,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -8474,7 +8474,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -9778,7 +9778,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -10049,7 +10049,7 @@ class Database:
     def __init__ (self, buildDefaultDrawing : bool=True, noDocument: bool=False)-> None :
       '''                             '''
     ...
-    def abortDeepClone (self, idmap:PyDb.IdMapping)-> None :
+    def abortDeepClone (self, idmap: PyDb.IdMapping)-> None :
       '''                             '''
     ...
     def addObject (self, object : PyDb.DbObject)-> PyDb.ObjectId :
@@ -10183,7 +10183,7 @@ class Database:
     def currentSpaceId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def deepCloneObjects (self, ids:list[PyDb.ObjectId], owner:PyDb.ObjectId, idmap:PyDb.IdMapping, deferXlation:bool=False)-> None :
+    def deepCloneObjects (self, ids:list[PyDb.ObjectId], owner:PyDb.ObjectId, idmap: PyDb.IdMapping, deferXlation:bool=False)-> None :
       '''                             '''
     ...
 
@@ -11478,23 +11478,26 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def visualStyleDictionaryId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def wblock (self, *args, **kwargs)-> None :
-      '''wblock( (Database)arg1, (Database)arg2, (list)arg3, (Point3d)arg4, (DuplicateRecordCloning)arg5) -> None :
 
-    C++ signature :
-        void wblock(class PyDbDatabase {lvalue},class PyDbDatabase {lvalue},class boost::python::list,class AcGePoint3d,enum AcDb::DuplicateRecordCloning)
+    @overload
+    def wblock (self, blockId : PyDb.ObjectId)-> None :
+        ...
 
-wblock( (Database)arg1, (list)arg2, (Point3d)arg3) -> Database :
+    @overload
+    def wblock (self, blockIds : list[PyDb.ObjectId], basePoint : PyGe.Point3d)-> None :
+        ...
 
-    C++ signature :
-        class PyDbDatabase wblock(class PyDbDatabase {lvalue},class boost::python::list,class AcGePoint3d)
-
-wblock( (Database)arg1 [, (ObjectId)arg2]) -> Database :
-
-    C++ signature :
-        class PyDbDatabase wblock(class PyDbDatabase {lvalue} [,class PyDbObjectId])'''
+    @overload
+    def wblock (self, outputDb : PyDb.Database, ids : list[PyDb.ObjectId], basePoint : PyGe.Point3d , drc : PyDb.DuplicateRecordCloning)-> None :
+        ...
+    def wblock (self, )-> None :
+      '''Overloads:
+    - blockId : PyDb.ObjectId
+    - blockIds : list[PyDb.ObjectId], basePoint : PyGe.Point3d
+    - outputDb : PyDb.Database, ids : list[PyDb.ObjectId], basePoint : PyGe.Point3d , drc : PyDb.DuplicateRecordCloning
+    '''
     ...
-    def wblockCloneObjects (self, ids:list[PyDb.ObjectId], owner:PyDb.ObjectId, idmap:PyDb.IdMapping, drc:DuplicateRecordCloning, deferXlation:bool=False)-> None :
+    def wblockCloneObjects (self, ids:list[PyDb.ObjectId], owner:PyDb.ObjectId, idmap: PyDb.IdMapping, drc:DuplicateRecordCloning, deferXlation:bool=False)-> None :
       '''                             '''
     ...
     def worldPucsBaseOrigin (self, view : OrthographicView)-> PyGe.Point3d :
@@ -12805,7 +12808,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -15861,7 +15864,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -17710,7 +17713,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -18279,7 +18282,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -20935,7 +20938,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -21481,7 +21484,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -21976,7 +21979,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -22501,7 +22504,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -24964,7 +24967,7 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -25598,7 +25601,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -27248,7 +27251,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -28254,7 +28257,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -29074,7 +29077,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -32064,7 +32067,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -32825,7 +32828,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -33465,7 +33468,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -35181,7 +35184,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -35736,7 +35739,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -36533,7 +36536,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -38944,7 +38947,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -39630,7 +39633,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -40585,7 +40588,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -41691,7 +41694,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -42639,7 +42642,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -44124,7 +44127,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -44773,7 +44776,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -46177,7 +46180,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -46811,7 +46814,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -48699,7 +48702,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -49691,7 +49694,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -50177,7 +50180,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -50810,7 +50813,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -51514,7 +51517,7 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -52274,7 +52277,7 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -52837,7 +52840,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -53543,7 +53546,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -54443,7 +54446,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -55328,7 +55331,7 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -57281,7 +57284,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -58010,7 +58013,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -58694,7 +58697,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -59609,7 +59612,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -60540,7 +60543,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -61642,7 +61645,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -62667,7 +62670,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -63614,7 +63617,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -65401,7 +65404,7 @@ gridVisibility( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Visibi
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -67574,7 +67577,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -70384,7 +70387,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -71142,7 +71145,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -71636,7 +71639,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -73114,7 +73117,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
@@ -75372,7 +75375,7 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
     def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
         ...
     def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
-      '''OPtions:
+      '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
     - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane

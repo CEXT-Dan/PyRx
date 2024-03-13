@@ -6,7 +6,7 @@
 using namespace boost::python;
 //----------------------------------------------------------------------------------------------------
 //wrapper
-constexpr const std::string_view intersectOverloads = "OPtions:\n"
+constexpr const std::string_view intersectOverloads = "Overloads:\n"
 "- entity: PyDb.Entity, intType : PyDb.Intersect\n"
 "- entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int\n"
 "- entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane\n"
