@@ -6,7 +6,7 @@
 using namespace boost::python;
 //----------------------------------------------------------------------------------------------------
 //wrapper
-constexpr const std::string_view intersectOverloads = "Overloads:\n"
+constexpr const std::string_view intersectOverloads = "OPtions:\n"
 "- entity: PyDb.Entity, intType : PyDb.Intersect\n"
 "- entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int\n"
 "- entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane\n"
@@ -23,7 +23,7 @@ void makePyDbEntityWrapper()
         .def("color", &PyDbEntity::color, DS.ARGS())
         .def("setColor", &PyDbEntity::setColor1)
         .def("setColor", &PyDbEntity::setColor2)
-        .def("setColor", &PyDbEntity::setColor3, DS.ARGS({ "clr: AcCmColor", "dosubents : bool=True","db : Database=current" }))
+        .def("setColor", &PyDbEntity::setColor3, DS.ARGS({ "clr: PyDb.AcCmColor", "dosubents : bool=True","db : Database='current'" }))
         .def("colorIndex", &PyDbEntity::colorIndex, DS.ARGS())
         .def("setColorIndex", &PyDbEntity::setColorIndex1)
         .def("setColorIndex", &PyDbEntity::setColorIndex2, DS.ARGS({ "clr: int",  "dosubents : bool=True" }))
@@ -80,7 +80,7 @@ void makePyDbEntityWrapper()
         .def("transformBy", &PyDbEntity::transformBy, DS.ARGS({ "matrix3d: PyGe.Matrix3d" }))
         .def("recordGraphicsModified", &PyDbEntity::recordGraphicsModified, DS.ARGS())
         .def("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults1)
-        .def("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults2, DS.ARGS({ "db: Database = current" }))
+        .def("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults2, DS.ARGS({ "db: Database = 'current'" }))
         .def("getCompoundObjectTransform", &PyDbEntity::getCompoundObjectTransform, DS.ARGS())
         .def("getGeomExtents", &PyDbEntity::getGeomExtents, DS.ARGS())
         .def("getGeomExtents2d", &PyDbEntity::getGeomExtents2d, DS.ARGS())
