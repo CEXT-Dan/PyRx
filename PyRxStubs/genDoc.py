@@ -187,7 +187,6 @@ def PyRxCmd_pygenpyi():
         #add brx modules only 
         if  "BRX" in  PyAp.Application.hostAPI():
             import PyBrxCv
-            
             all_modules.append(("PyBrxCv", PyBrxCv))
             #all_modules_names.append("PyBrxCv")
             
