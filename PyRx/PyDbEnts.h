@@ -121,8 +121,9 @@ public:
     PyDbAttribute();
     PyDbAttribute(const AcGePoint3d& position, const std::string& text, const std::string& tag, const PyDbObjectId& style);
     PyDbAttribute(AcDbAttribute* ptr, bool autoDelete);
-    PyDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbAttribute(const PyDbObjectId& id);
+    PyDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     virtual ~PyDbAttribute() override = default;
     std::string tag() const;
     void                setTag(const std::string& val);
@@ -160,6 +161,7 @@ public:
     PyDbBlockReference();
     PyDbBlockReference(const PyDbObjectId& id);
     PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     PyDbBlockReference(const AcGePoint3d& position, const PyDbObjectId& blockTableRec);
     PyDbBlockReference(AcDbBlockReference* ptr, bool autoDelete);
     virtual ~PyDbBlockReference() override = default;
@@ -225,8 +227,9 @@ public:
     PyDbMInsertBlock();
     PyDbMInsertBlock(const AcGePoint3d& position, const PyDbObjectId& blockTableRec, Adesk::UInt16 columns, Adesk::UInt16 rows, double colSpacing, double rowSpacing);
     PyDbMInsertBlock(AcDbMInsertBlock* ptr, bool autoDelete);
-    PyDbMInsertBlock(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbMInsertBlock(const PyDbObjectId& id);
+    PyDbMInsertBlock(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbMInsertBlock(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbMInsertBlock() override = default;
     Adesk::UInt16       columns() const;
     void                setColumns(Adesk::UInt16 val);
@@ -254,6 +257,7 @@ public:
     PyDbVertex(AcDbVertex* ptr, bool autoDelete);
     PyDbVertex(const PyDbObjectId& id);
     PyDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbVertex() = default;
     static std::string  className();
     static PyRxClass    desc();
@@ -277,6 +281,7 @@ public:
     PyDb2dVertex(AcDb2dVertex* ptr, bool autoDelete);
     PyDb2dVertex(const PyDbObjectId& id);
     PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     virtual ~PyDb2dVertex() = default;
     AcDb::Vertex2dType vertexType() const;
     AcGePoint3d         position() const;

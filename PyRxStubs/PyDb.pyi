@@ -4331,31 +4331,34 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class AttributeReference:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
 
-    C++ signature :
-        void __init__(struct _object * __ptr64)
+    @overload
+    def __init__ (self, None: Any)-> None :
+        ...
 
-__init__( (object)arg1) -> None :
+    @overload
+    def __init__ (self, position: PyGe.Point3d, text: str, tag: str, styleid: PyDb.ObjectId)-> None :
+        ...
 
-    C++ signature :
-        void __init__(struct _object * __ptr64)
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None :
+        ...
 
-__init__( (object)arg1, (Point3d)arg2, (str)arg3, (str)arg4, (ObjectId)arg5) -> None :
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None :
+        ...
 
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None :
+        ...
+    def __init__ (self, )-> None :
+      '''Overloads:
+    - None: Any
+    - position: PyGe.Point3d, text: str, tag: str, styleid: PyDb.ObjectId
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -4398,7 +4401,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.AttributeReference :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.AttributeReference :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -4411,7 +4414,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.AttributeReference :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.AttributeReference :
       '''                             '''
     ...
     def close (self)-> None :
@@ -5919,31 +5922,34 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class BlockReference:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
 
-    C++ signature :
-        void __init__(struct _object * __ptr64)
+    @overload
+    def __init__ (self, None: Any)-> None :
+        ...
 
-__init__( (object)arg1) -> None :
+    @overload
+    def __init__ (self, position: PyGe.Point3d, blockTableRec: PyDb.ObjectId)-> None :
+        ...
 
-    C++ signature :
-        void __init__(struct _object * __ptr64)
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None :
+        ...
 
-__init__( (object)arg1, (ObjectId)arg2) -> None :
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None :
+        ...
 
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class PyDbObjectId)'''
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None :
+        ...
+    def __init__ (self, )-> None :
+      '''Overloads:
+    - None: Any
+    - position: PyGe.Point3d, blockTableRec: PyDb.ObjectId
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -35488,31 +35494,34 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class MInsertBlock:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
 
-    C++ signature :
-        void __init__(struct _object * __ptr64)
+    @overload
+    def __init__ (self, None: Any)-> None :
+        ...
 
-__init__( (object)arg1) -> None :
+    @overload
+    def __init__ (self, position: PyGe.Point3d, blockTableRec: PyDb.ObjectId, columns: int, rows: int, colSpacing: float, rowSpacing: float)-> None :
+        ...
 
-    C++ signature :
-        void __init__(struct _object * __ptr64)
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None :
+        ...
 
-__init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3, (int)arg4, (int)arg5, (float)arg6, (float)arg7) -> None :
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None :
+        ...
 
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d {lvalue},class PyDbObjectId,unsigned short,unsigned short,double,double)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None :
+        ...
+    def __init__ (self, )-> None :
+      '''Overloads:
+    - None: Any
+    - position: PyGe.Point3d, blockTableRec: PyDb.ObjectId, columns: int, rows: int, colSpacing: float, rowSpacing: float
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -70934,21 +70943,29 @@ class UpdateOption:
     ...
 
 class Vertex:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
 
-    C++ signature :
-        void __init__(struct _object * __ptr64)
+    @overload
+    def __init__ (self, None: Any)-> None :
+        ...
 
-__init__( (object)arg1, (ObjectId)arg2) -> None :
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None :
+        ...
 
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None :
+        ...
 
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None :
+        ...
+    def __init__ (self, )-> None :
+      '''Overloads:
+    - None: Any
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -71404,36 +71421,34 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class Vertex2d:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
 
-    C++ signature :
-        void __init__(struct _object * __ptr64)
+    @overload
+    def __init__ (self, None: Any)-> None :
+        ...
 
-__init__( (object)arg1) -> None :
+    @overload
+    def __init__ (self, pos : PyGe.Point3d, bulge: float, startWidth: float, endWidth: float, tangent:float, vertexIdentifier: int)-> None :
+        ...
 
-    C++ signature :
-        void __init__(struct _object * __ptr64)
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None :
+        ...
 
-__init__( (object)arg1, (Point3d)arg2) -> None :
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None :
+        ...
 
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d)
-
-__init__( (object)arg1, (Point3d)arg2, (float)arg3, (float)arg4, (float)arg5, (float)arg6, (int)arg7) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,double,double,double,double,int)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None :
+        ...
+    def __init__ (self, )-> None :
+      '''Overloads:
+    - None: Any
+    - pos : PyGe.Point3d, bulge: float, startWidth: float, endWidth: float, tangent:float, vertexIdentifier: int
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
