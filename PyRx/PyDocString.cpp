@@ -31,7 +31,7 @@ const char* PyDocString::ARGS(std::initializer_list<std::string> pyargs)
 const char* PyDocString::CTOR(const std::string_view overloads)
 {
     outstr = m_argBegin;
-    outstr += "self, ";
+    outstr += "self";
     outstr += m_argEnd;
     outstr += m_commentBegin;
     outstr += overloads;

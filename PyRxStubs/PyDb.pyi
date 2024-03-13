@@ -3697,7 +3697,7 @@ class AttributeDefinition:
     @overload
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None :
         ...
-    def __init__ (self, )-> None :
+    def __init__ (self)-> None :
       '''Overloads:
     - None: Any
     - position: PyGe.Point3d, text: str, tag: str, prompt: str, styleid: PyDb.ObjectId
@@ -4351,7 +4351,7 @@ class AttributeReference:
     @overload
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None :
         ...
-    def __init__ (self, )-> None :
+    def __init__ (self)-> None :
       '''Overloads:
     - None: Any
     - position: PyGe.Point3d, text: str, tag: str, styleid: PyDb.ObjectId
@@ -5942,7 +5942,7 @@ class BlockReference:
     @overload
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None :
         ...
-    def __init__ (self, )-> None :
+    def __init__ (self)-> None :
       '''Overloads:
     - None: Any
     - position: PyGe.Point3d, blockTableRec: PyDb.ObjectId
@@ -35514,7 +35514,7 @@ class MInsertBlock:
     @overload
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None :
         ...
-    def __init__ (self, )-> None :
+    def __init__ (self)-> None :
       '''Overloads:
     - None: Any
     - position: PyGe.Point3d, blockTableRec: PyDb.ObjectId, columns: int, rows: int, colSpacing: float, rowSpacing: float
@@ -67357,7 +67357,7 @@ class Text:
     @overload
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None :
         ...
-    def __init__ (self, )-> None :
+    def __init__ (self)-> None :
       '''Overloads:
     - None: Any
     - position: PyGe.Point3d, text: str
@@ -70959,7 +70959,7 @@ class Vertex:
     @overload
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None :
         ...
-    def __init__ (self, )-> None :
+    def __init__ (self)-> None :
       '''Overloads:
     - None: Any
     - id: PyDb.ObjectId
@@ -71427,7 +71427,7 @@ class Vertex2d:
         ...
 
     @overload
-    def __init__ (self, pos : PyGe.Point3d, bulge: float, startWidth: float, endWidth: float, tangent:float, vertexIdentifier: int)-> None :
+    def __init__ (self, pos : PyGe.Point3d, bulge: float, startWidth: float, endWidth: float, tangent:float, vertexId: int)-> None :
         ...
 
     @overload
@@ -71441,10 +71441,10 @@ class Vertex2d:
     @overload
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None :
         ...
-    def __init__ (self, )-> None :
+    def __init__ (self)-> None :
       '''Overloads:
     - None: Any
-    - pos : PyGe.Point3d, bulge: float, startWidth: float, endWidth: float, tangent:float, vertexIdentifier: int
+    - pos : PyGe.Point3d, bulge: float, startWidth: float, endWidth: float, tangent:float, vertexId: int
     - id: PyDb.ObjectId
     - id: PyDb.ObjectId, mode: PyDb.OpenMode
     - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
