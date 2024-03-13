@@ -28,7 +28,7 @@ void makePyDbTextWrapper()
         .def(init<AcGePoint3d&, const std::string&, PyDbObjectId&, double, double>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS("", textCtor)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.CTOR(textCtor)))
         .def("position", &PyDbText::position, DS.ARGS())
         .def("setPosition", &PyDbText::setPosition, DS.ARGS({ "pos : PyGe.Point3d" }))
         .def("alignmentPoint", &PyDbText::alignmentPoint, DS.ARGS())
@@ -381,7 +381,7 @@ void makePyDbAttributeDefinitionWrapper()
         .def(init<const AcGePoint3d&, const std::string&, const std::string&, const std::string&, const PyDbObjectId&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS("", attributeDefinitionCtor)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.CTOR(attributeDefinitionCtor)))
         .def("prompt", &PyDbAttributeDefinition::prompt, DS.ARGS())
         .def("setPrompt", &PyDbAttributeDefinition::setPrompt, DS.ARGS({ "val : str" }))
         .def("tag", &PyDbAttributeDefinition::tag, DS.ARGS())
@@ -592,12 +592,20 @@ AcDbAttributeDefinition* PyDbAttributeDefinition::impObj(const std::source_locat
 //PyDbAttribute
 void makePyDbAttributeWrapper()
 {
+    constexpr const std::string_view attributeReferenceCtor = "Overloads:\n"
+        "- None: Any\n"
+        "- position: PyGe.Point3d, text: str, tag: str, styleid: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("PyDb.AttributeReference");
     class_<PyDbAttribute, bases<PyDbText>>("AttributeReference")
         .def(init<>())
         .def(init<const AcGePoint3d&, const std::string&, const std::string&, const PyDbObjectId&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.CTOR(attributeReferenceCtor)))
         .def("tag", &PyDbAttribute::tag, DS.ARGS())
         .def("setTag", &PyDbAttribute::setTag, DS.ARGS({ "val : str" }))
         .def("isInvisible", &PyDbAttribute::isInvisible, DS.ARGS())
@@ -619,8 +627,8 @@ void makePyDbAttributeWrapper()
         .def("isReallyLocked", &PyDbAttribute::isReallyLocked, DS.ARGS())
         .def("className", &PyDbAttribute::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbAttribute::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbAttribute::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbAttribute::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbAttribute::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbAttribute::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -646,6 +654,11 @@ PyDbAttribute::PyDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 PyDbAttribute::PyDbAttribute(const PyDbObjectId& id)
     : PyDbAttribute(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbAttribute::PyDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbText(openAcDbObject<AcDbAttribute>(id, mode, erased), false)
 {
 }
 
@@ -785,12 +798,20 @@ AcDbAttribute* PyDbAttribute::impObj(const std::source_location& src /*= std::so
 //PyDbBlockReference
 void makePyDbBlockReferenceWrapper()
 {
+    constexpr const std::string_view blockReferenceCtor = "Overloads:\n"
+        "- None: Any\n"
+        "- position: PyGe.Point3d, blockTableRec: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("PyDb.BlockReference");
     class_<PyDbBlockReference, bases<PyDbEntity>>("BlockReference")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const AcGePoint3d&, const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>())
+        .def(init<const AcGePoint3d&, const PyDbObjectId&>(DS.CTOR(blockReferenceCtor)))
         .def("blockTableRecord", &PyDbBlockReference::blockTableRecord, DS.ARGS())
         .def("setBlockTableRecord", &PyDbBlockReference::setBlockTableRecord, DS.ARGS({ "val : ObjectId" }))
         .def("position", &PyDbBlockReference::position, DS.ARGS())
@@ -841,6 +862,11 @@ PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id)
 
 PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbEntity(openAcDbObject<AcDbBlockReference>(id, mode), false)
+{
+}
+
+PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbEntity(openAcDbObject<AcDbBlockReference>(id, mode, erased), false)
 {
 }
 
@@ -1088,12 +1114,20 @@ AcDbDynBlockReference* PyDbDynBlockReference::impObj(const std::source_location&
 //DbMInsertBlock
 void makePyDbMInsertBlockeWrapper()
 {
+    constexpr const std::string_view minsertBlockCtor = "Overloads:\n"
+        "- None: Any\n"
+        "- position: PyGe.Point3d, blockTableRec: PyDb.ObjectId, columns: int, rows: int, colSpacing: float, rowSpacing: float\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("PyDb.MInsertBlock");
     class_<PyDbMInsertBlock, bases<PyDbBlockReference>>("MInsertBlock")
         .def(init<>())
         .def(init<AcGePoint3d&, const PyDbObjectId&, Adesk::UInt16, Adesk::UInt16, double, double>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.CTOR(minsertBlockCtor)))
         .def("columns", &PyDbMInsertBlock::columns, DS.ARGS())
         .def("setColumns", &PyDbMInsertBlock::setColumns, DS.ARGS({ "val : int" }))
         .def("rows", &PyDbMInsertBlock::rows, DS.ARGS())
@@ -1119,8 +1153,8 @@ PyDbMInsertBlock::PyDbMInsertBlock(const AcGePoint3d& position, const PyDbObject
 {
 }
 
-PyDbMInsertBlock::PyDbMInsertBlock(AcDbMInsertBlock* ptr, bool autoDelete)
-    : PyDbBlockReference(ptr, autoDelete)
+PyDbMInsertBlock::PyDbMInsertBlock(const PyDbObjectId& id)
+    : PyDbMInsertBlock(id, AcDb::OpenMode::kForRead)
 {
 }
 
@@ -1129,8 +1163,13 @@ PyDbMInsertBlock::PyDbMInsertBlock(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
 }
 
-PyDbMInsertBlock::PyDbMInsertBlock(const PyDbObjectId& id)
-    : PyDbMInsertBlock(id, AcDb::OpenMode::kForRead)
+PyDbMInsertBlock::PyDbMInsertBlock(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbBlockReference(openAcDbObject<AcDbMInsertBlock>(id, mode, erased), false)
+{
+}
+
+PyDbMInsertBlock::PyDbMInsertBlock(AcDbMInsertBlock* ptr, bool autoDelete)
+    : PyDbBlockReference(ptr, autoDelete)
 {
 }
 
@@ -1211,11 +1250,18 @@ AcDbMInsertBlock* PyDbMInsertBlock::impObj(const std::source_location& src /*= s
 //PyDbVertex
 void makePyDbVertexWrapper()
 {
+    constexpr const std::string_view dbvertexCtor = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("PyDb.Vertex");
-    class_<PyDbVertex, bases<PyDbEntity>>("Vertex", boost::python::no_init)
+    class_<PyDbVertex, bases<PyDbEntity>>("Vertex")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.CTOR(dbvertexCtor)))
         .def("className", &PyDbVertex::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbVertex::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbVertex::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
@@ -1240,6 +1286,11 @@ PyDbVertex::PyDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 PyDbVertex::PyDbVertex(const PyDbObjectId& id)
     : PyDbVertex(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbVertex::PyDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbEntity(openAcDbObject<AcDbVertex>(id, mode, erased), false)
 {
 }
 
@@ -1280,6 +1331,13 @@ AcDbVertex* PyDbVertex::impObj(const std::source_location& src /*= std::source_l
 //PyDb2dVertex
 void makePyDb2dVertexWrapper()
 {
+    constexpr const std::string_view Vertex2dCtor = "Overloads:\n"
+        "- None: Any\n"
+        "- pos : PyGe.Point3d, bulge: float, startWidth: float, endWidth: float, tangent:float, vertexIdentifier: int\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("PyDb.Vertex2d");
     class_<PyDb2dVertex, bases<PyDbVertex>>("Vertex2d")
         .def(init<>())
@@ -1289,6 +1347,7 @@ void makePyDb2dVertexWrapper()
 #endif
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.CTOR(Vertex2dCtor)))
         .def("vertexType", &PyDb2dVertex::vertexType, DS.ARGS())
         .def("position", &PyDb2dVertex::position, DS.ARGS())
         .def("setPosition", &PyDb2dVertex::setPosition, DS.ARGS({ "val : PyGe.Point3d" }))
@@ -1343,6 +1402,12 @@ PyDb2dVertex::PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDb2dVertex::PyDb2dVertex(const PyDbObjectId& id)
     : PyDb2dVertex(id, AcDb::OpenMode::kForRead)
 {
+}
+
+PyDb2dVertex::PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbVertex(openAcDbObject<AcDb2dVertex>(id, mode, erased), false)
+{
+
 }
 
 AcDb::Vertex2dType PyDb2dVertex::vertexType() const
