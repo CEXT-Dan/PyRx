@@ -9,7 +9,7 @@ using namespace boost::python;
 //PyDbCurve
 void makePyDbEllipseWrapper()
 {
-    PyDocString DS("Ellipse");
+    PyDocString DS("PyDb.Ellipse");
     class_<PyDbEllipse, bases<PyDbCurve>>("Ellipse")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double>())

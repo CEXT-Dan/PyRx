@@ -1014,34 +1014,34 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def altSuppressLeadingZeros (self: Dimension)-> bool :
+    def altSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressTrailingZeros (self: Dimension)-> bool :
+    def altSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroFeet (self: Dimension)-> bool :
+    def altSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroInches (self: Dimension)-> bool :
+    def altSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def altToleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self: Dimension)-> bool :
+    def altToleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def alternatePrefix (self: Dimension)-> str :
+    def alternatePrefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def alternateSuffix (self: Dimension)-> str :
+    def alternateSuffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def assertNotifyEnabled (self: PyDb.DbObject)-> None :
@@ -1056,7 +1056,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def blockId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def blockTransform (self: Dimension)-> PyGe.Matrix3d :
+    def blockTransform (self: PyDb.Dimension)-> PyGe.Matrix3d :
       '''                             '''
     ...
     def bounds (self: PyGi.Drawable,ext: PyDb.Extents)-> bool :
@@ -1074,7 +1074,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def castShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def centerMarkSize (self: Dimension)-> float :
+    def centerMarkSize (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def className (self, *args, **kwargs)-> str :
@@ -1122,19 +1122,19 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self: Dimension)-> PyDb.ObjectId :
+    def dimBlockId (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimBlockPosition (self: Dimension)-> PyGe.Point3d :
+    def dimBlockPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt1Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt2Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId :
+    def dimLineLinetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
     def dimLinePoint (self, *args, **kwargs)-> PyGe.Point3d :
@@ -1143,10 +1143,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     C++ signature :
         class AcGePoint3d dimLinePoint(class PyDbAlignedDimension {lvalue})'''
     ...
-    def dimensionStyle (self: Dimension)-> PyDb.ObjectId :
+    def dimensionStyle (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionText (self: Dimension)-> str :
+    def dimensionText (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def disableUndoRecording (self: PyDb.DbObject,disable: bool)-> None :
@@ -1167,7 +1167,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def drawableType (self: PyGi.Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def elevation (self: Dimension)-> float :
+    def elevation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def entityColor (self: PyDb.Entity)-> PyDb.EntityColor :
@@ -1182,10 +1182,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def fieldFromMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldFromMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
-    def fieldToMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldToMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
     def formatMeasurement (self, *args, **kwargs)-> str :
@@ -1199,19 +1199,19 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self: Dimension)-> None :
+    def generateLayout (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def getArrowFirstIsFlipped (self: Dimension)-> bool :
+    def getArrowFirstIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def getArrowSecondIsFlipped (self: Dimension)-> bool :
+    def getArrowSecondIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord :
+    def getDimstyleData (self: PyDb.Dimension)-> PyDb.DimStyleTableRecord :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -1276,7 +1276,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def highlight (self: PyDb.Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
-    def horizontalRotation (self: Dimension)-> float :
+    def horizontalRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def id (self: PyGi.Drawable)-> PyDb.ObjectId :
@@ -1285,13 +1285,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def inspection (self: Dimension)-> bool :
+    def inspection (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def inspectionFrame (self: Dimension)-> int :
+    def inspectionFrame (self: PyDb.Dimension)-> int :
       '''                             '''
     ...
-    def inspectionLabel (self: Dimension)-> str :
+    def inspectionLabel (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def intersectWith (self: PyDb.Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
@@ -1317,13 +1317,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isConstraintDynamic (self: Dimension)-> bool :
+    def isConstraintDynamic (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def isConstraintObject (self: Dimension)-> tuple :
+    def isConstraintObject (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def isDynamicDimension (self: Dimension)-> bool :
+    def isDynamicDimension (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -1332,7 +1332,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isErased (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self: Dimension)-> bool :
+    def isHorizontalRefTextRotation (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
@@ -1380,7 +1380,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isUndoing (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self: Dimension)-> bool :
+    def isUsingDefaultTextPosition (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: PyDb.DbObject)-> bool :
@@ -1428,10 +1428,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def measurement (self: Dimension)-> float :
+    def measurement (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def normal (self: Dimension)-> PyGe.Vector3d :
+    def normal (self: PyDb.Dimension)-> PyGe.Vector3d :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -1449,7 +1449,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def prefix (self: Dimension)-> str :
+    def prefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -1458,7 +1458,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def receiveShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def recomputeDimBlock (self: Dimension,force : bool=False)-> None :
+    def recomputeDimBlock (self: PyDb.Dimension,force : bool=False)-> None :
       '''                             '''
     ...
     def recordGraphicsModified (self: PyDb.Entity)-> None :
@@ -1479,10 +1479,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def removeTextField (self: Dimension)-> None :
+    def removeTextField (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def resetTextDefinedSize (self: Dimension)-> None :
+    def resetTextDefinedSize (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -1491,43 +1491,43 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAcDbObjectIdsInFlux (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def setAltSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAlternatePrefix (self: Dimension,val : str)-> None :
+    def setAlternatePrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setAlternateSuffix (self: Dimension,val : str)-> None :
+    def setAlternateSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setAnnotative (self: PyDb.DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
-    def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowFirstIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setArrowSecondIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowSecondIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setAttributes (self: PyGi.Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -1542,25 +1542,25 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setColorIndex (self: PyDb.Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setConstraintDynamic (self: Dimension,val : bool)-> None :
+    def setConstraintDynamic (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: PyDb.Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setDimBlockId (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimBlockId (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimBlockPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setDimBlockPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setDimExt1Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt1Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimExt2Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt2Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimLineLinetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimLineLinetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setDimLinePoint (self, *args, **kwargs)-> None :
@@ -1569,10 +1569,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     C++ signature :
         void setDimLinePoint(class PyDbAlignedDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setDimensionStyle (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimensionStyle (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionText (self: Dimension,val : str)-> None :
+    def setDimensionText (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setDimstyleData (self, *args, **kwargs)-> None :
@@ -1586,28 +1586,28 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
     ...
-    def setDynamicDimension (self: Dimension,val : bool)-> None :
+    def setDynamicDimension (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : float)-> None :
+    def setElevation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
+    def setHorizontalRefTextRotation (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : float)-> None :
+    def setHorizontalRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setInspection (self: Dimension,val : bool)-> None :
+    def setInspection (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setInspectionFrame (self: Dimension,val : int)-> None :
+    def setInspectionFrame (self: PyDb.Dimension,val : int)-> None :
       '''                             '''
     ...
-    def setInspectionLabel (self: Dimension,val : str)-> None :
+    def setInspectionLabel (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setJogSymbolOn (self, *args, **kwargs)-> None :
@@ -1637,7 +1637,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setMaterial (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self: Dimension,val : PyGe.Vector3d)-> None :
+    def setNormal (self: PyDb.Dimension,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
     def setOblique (self, *args, **kwargs)-> None :
@@ -1665,7 +1665,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPrefix (self: Dimension,val : str)-> None :
+    def setPrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -1674,58 +1674,58 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setShouldParticipateInOPM (self: Dimension,val : bool)-> None :
+    def setShouldParticipateInOPM (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuffix (self: Dimension,val : str)-> None :
+    def setSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setSuppressAngularTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressAngularTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
+    def setTextAttachment (self: PyDb.Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
+    def setTextDefinedSize (self: PyDb.Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
+    def setTextLineSpacingFactor (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
+    def setTextLineSpacingStyle (self: PyDb.Dimension,val : PyDb.LineSpacingStyle)-> None :
       '''                             '''
     ...
-    def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setTextPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : float)-> None :
+    def setTextRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setUsingDefaultTextPosition (self: Dimension,val : bool)-> None :
+    def setUsingDefaultTextPosition (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setVisibility (self: PyDb.Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -1746,64 +1746,64 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setXLine2Point(class PyDbAlignedDimension {lvalue},class AcGePoint3d)'''
     ...
-    def shouldParticipateInOPM (self: Dimension)-> bool :
+    def shouldParticipateInOPM (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def snoop (self: PyDb.DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def suffix (self: Dimension)-> str :
+    def suffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def suppressAngularLeadingZeros (self: Dimension)-> bool :
+    def suppressAngularLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressAngularTrailingZeros (self: Dimension)-> bool :
+    def suppressAngularTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressLeadingZeros (self: Dimension)-> bool :
+    def suppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressTrailingZeros (self: Dimension)-> bool :
+    def suppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroFeet (self: Dimension)-> bool :
+    def suppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroInches (self: Dimension)-> bool :
+    def suppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def swapIdWith (self: PyDb.DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
+    def textAttachment (self: PyDb.Dimension)-> PyDb.MTextAttachmentPoint :
       '''                             '''
     ...
-    def textDefinedSize (self: Dimension)-> tuple :
+    def textDefinedSize (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def textLineSpacingFactor (self: Dimension)-> float :
+    def textLineSpacingFactor (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle :
+    def textLineSpacingStyle (self: PyDb.Dimension)-> PyDb.LineSpacingStyle :
       '''                             '''
     ...
-    def textPosition (self: Dimension)-> PyGe.Point3d :
+    def textPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def textRotation (self: Dimension)-> float :
+    def textRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def toleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def toleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def toleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroInches (self: Dimension)-> bool :
+    def toleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -1815,10 +1815,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def useDefaultTextPosition (self: Dimension)-> None :
+    def useDefaultTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def useSetTextPosition (self: Dimension)-> None :
+    def useSetTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def viewportDraw (self: PyGi.Drawable,vpdraw: PyGi.ViewportDraw)-> None :
@@ -2189,28 +2189,28 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getAcGeCurve (self: Arc,tol: Tol = default)-> PyGe.CircArc3d :
       '''                             '''
     ...
-    def getArea (self: Curve)-> float :
+    def getArea (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
+    def getClosestPointTo (self: PyDb.Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: float)-> float :
+    def getDistAtParam (self: PyDb.Curve,param: float)-> float :
       '''                             '''
     ...
-    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getDistAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getEndParam (self: Curve)-> float :
+    def getEndParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getEndPoint (self: Curve)-> PyGe.Point3d :
+    def getEndPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getField (self: PyDb.DbObject,prop: str=TEXT)-> PyDb.ObjectId :
@@ -2219,7 +2219,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getFirstDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: PyDb.Entity)-> PyDb.Extents :
@@ -2237,19 +2237,19 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getHandle (self: PyDb.DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: float)-> list :
+    def getOffsetCurves (self: PyDb.Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: PyDb.Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+    def getOrthoProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane)-> PyDb.Curve :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: float)-> float :
+    def getParamAtDist (self: PyDb.Curve,dist: float)-> float :
       '''                             '''
     ...
-    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getParamAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getPlane (self: PyDb.Entity)-> PyGe.Plane :
@@ -2258,40 +2258,40 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: float)-> PyGe.Point3d :
+    def getPointAtDist (self: PyDb.Curve,dist: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+    def getPointAtParam (self: PyDb.Curve,param: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
+    def getProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getSecondDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def getSpline (self: Curve)-> PyDb.Spline :
+    def getSpline (self: PyDb.Curve)-> PyDb.Spline :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+    def getSplitCurves (self: PyDb.Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
+    def getSplitCurvesAtParam (self: PyDb.Curve,param: float)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+    def getSplitCurvesAtParams (self: PyDb.Curve,params: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
+    def getSplitCurvesAtPoint (self: PyDb.Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+    def getSplitCurvesAtPoints (self: PyDb.Curve,points: list)-> list :
       '''                             '''
     ...
-    def getStartParam (self: Curve)-> float :
+    def getStartParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getStartPoint (self: Curve)-> PyGe.Point3d :
+    def getStartPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getStretchPoints (self: PyDb.Entity)-> list :
@@ -2355,7 +2355,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self: Curve)-> bool :
+    def isClosed (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -2388,7 +2388,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def isPeriodic (self: Curve)-> bool :
+    def isPeriodic (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isPersistent (self: PyGi.Drawable)-> bool :
@@ -2487,7 +2487,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def reverseCurve (self: Curve)-> None :
+    def reverseCurve (self: PyDb.Curve)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -2523,7 +2523,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+    def setFromAcGeCurve (self: PyDb.Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -2685,34 +2685,34 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def altSuppressLeadingZeros (self: Dimension)-> bool :
+    def altSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressTrailingZeros (self: Dimension)-> bool :
+    def altSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroFeet (self: Dimension)-> bool :
+    def altSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroInches (self: Dimension)-> bool :
+    def altSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def altToleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self: Dimension)-> bool :
+    def altToleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def alternatePrefix (self: Dimension)-> str :
+    def alternatePrefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def alternateSuffix (self: Dimension)-> str :
+    def alternateSuffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def arcEndParam (self, *args, **kwargs)-> float :
@@ -2751,7 +2751,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def blockId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def blockTransform (self: Dimension)-> PyGe.Matrix3d :
+    def blockTransform (self: PyDb.Dimension)-> PyGe.Matrix3d :
       '''                             '''
     ...
     def bounds (self: PyGi.Drawable,ext: PyDb.Extents)-> bool :
@@ -2769,7 +2769,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def castShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def centerMarkSize (self: Dimension)-> float :
+    def centerMarkSize (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def centerPoint (self, *args, **kwargs)-> PyGe.Point3d :
@@ -2823,25 +2823,25 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self: Dimension)-> PyDb.ObjectId :
+    def dimBlockId (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimBlockPosition (self: Dimension)-> PyGe.Point3d :
+    def dimBlockPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt1Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt2Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId :
+    def dimLineLinetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionStyle (self: Dimension)-> PyDb.ObjectId :
+    def dimensionStyle (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionText (self: Dimension)-> str :
+    def dimensionText (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def disableUndoRecording (self: PyDb.DbObject,disable: bool)-> None :
@@ -2862,7 +2862,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def drawableType (self: PyGi.Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def elevation (self: Dimension)-> float :
+    def elevation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def entityColor (self: PyDb.Entity)-> PyDb.EntityColor :
@@ -2877,10 +2877,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def fieldFromMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldFromMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
-    def fieldToMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldToMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
     def formatMeasurement (self, *args, **kwargs)-> str :
@@ -2894,19 +2894,19 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self: Dimension)-> None :
+    def generateLayout (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def getArrowFirstIsFlipped (self: Dimension)-> bool :
+    def getArrowFirstIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def getArrowSecondIsFlipped (self: Dimension)-> bool :
+    def getArrowSecondIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord :
+    def getDimstyleData (self: PyDb.Dimension)-> PyDb.DimStyleTableRecord :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -2977,7 +2977,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def highlight (self: PyDb.Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
-    def horizontalRotation (self: Dimension)-> float :
+    def horizontalRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def id (self: PyGi.Drawable)-> PyDb.ObjectId :
@@ -2986,13 +2986,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def inspection (self: Dimension)-> bool :
+    def inspection (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def inspectionFrame (self: Dimension)-> int :
+    def inspectionFrame (self: PyDb.Dimension)-> int :
       '''                             '''
     ...
-    def inspectionLabel (self: Dimension)-> str :
+    def inspectionLabel (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def intersectWith (self: PyDb.Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
@@ -3018,13 +3018,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isConstraintDynamic (self: Dimension)-> bool :
+    def isConstraintDynamic (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def isConstraintObject (self: Dimension)-> tuple :
+    def isConstraintObject (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def isDynamicDimension (self: Dimension)-> bool :
+    def isDynamicDimension (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -3033,7 +3033,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isErased (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self: Dimension)-> bool :
+    def isHorizontalRefTextRotation (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
@@ -3087,7 +3087,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isUndoing (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self: Dimension)-> bool :
+    def isUsingDefaultTextPosition (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: PyDb.DbObject)-> bool :
@@ -3135,10 +3135,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def measurement (self: Dimension)-> float :
+    def measurement (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def normal (self: Dimension)-> PyGe.Vector3d :
+    def normal (self: PyDb.Dimension)-> PyGe.Vector3d :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -3150,7 +3150,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def prefix (self: Dimension)-> str :
+    def prefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -3159,7 +3159,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def receiveShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def recomputeDimBlock (self: Dimension,force : bool=False)-> None :
+    def recomputeDimBlock (self: PyDb.Dimension,force : bool=False)-> None :
       '''                             '''
     ...
     def recordGraphicsModified (self: PyDb.Entity)-> None :
@@ -3180,10 +3180,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def removeTextField (self: Dimension)-> None :
+    def removeTextField (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def resetTextDefinedSize (self: Dimension)-> None :
+    def resetTextDefinedSize (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -3192,34 +3192,34 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAcDbObjectIdsInFlux (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def setAltSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAlternatePrefix (self: Dimension,val : str)-> None :
+    def setAlternatePrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setAlternateSuffix (self: Dimension,val : str)-> None :
+    def setAlternateSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setAnnotative (self: PyDb.DbObject,state : PyDb.AnnotativeStates)-> None :
@@ -3249,10 +3249,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     C++ signature :
         void setArcSymbolType(class PyDbArcDimension {lvalue},int)'''
     ...
-    def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowFirstIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setArrowSecondIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowSecondIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setAttributes (self: PyGi.Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -3273,31 +3273,31 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setColorIndex (self: PyDb.Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setConstraintDynamic (self: Dimension,val : bool)-> None :
+    def setConstraintDynamic (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: PyDb.Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setDimBlockId (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimBlockId (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimBlockPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setDimBlockPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setDimExt1Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt1Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimExt2Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt2Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimLineLinetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimLineLinetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionStyle (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimensionStyle (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionText (self: Dimension,val : str)-> None :
+    def setDimensionText (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setDimstyleData (self, *args, **kwargs)-> None :
@@ -3311,10 +3311,10 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
     ...
-    def setDynamicDimension (self: Dimension,val : bool)-> None :
+    def setDynamicDimension (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : float)-> None :
+    def setElevation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
@@ -3326,19 +3326,19 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setHasLeader(class PyDbArcDimension {lvalue},bool)'''
     ...
-    def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
+    def setHorizontalRefTextRotation (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : float)-> None :
+    def setHorizontalRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setInspection (self: Dimension,val : bool)-> None :
+    def setInspection (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setInspectionFrame (self: Dimension,val : int)-> None :
+    def setInspectionFrame (self: PyDb.Dimension,val : int)-> None :
       '''                             '''
     ...
-    def setInspectionLabel (self: Dimension,val : str)-> None :
+    def setInspectionLabel (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setIsPartial (self, *args, **kwargs)-> None :
@@ -3374,7 +3374,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setMaterial (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self: Dimension,val : PyGe.Vector3d)-> None :
+    def setNormal (self: PyDb.Dimension,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
     def setOwnerId (self: PyDb.DbObject,owner: PyDb.ObjectId)-> None :
@@ -3396,7 +3396,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPrefix (self: Dimension,val : str)-> None :
+    def setPrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -3405,58 +3405,58 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setShouldParticipateInOPM (self: Dimension,val : bool)-> None :
+    def setShouldParticipateInOPM (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuffix (self: Dimension,val : str)-> None :
+    def setSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setSuppressAngularTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressAngularTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
+    def setTextAttachment (self: PyDb.Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
+    def setTextDefinedSize (self: PyDb.Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
+    def setTextLineSpacingFactor (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
+    def setTextLineSpacingStyle (self: PyDb.Dimension,val : PyDb.LineSpacingStyle)-> None :
       '''                             '''
     ...
-    def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setTextPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : float)-> None :
+    def setTextRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setUsingDefaultTextPosition (self: Dimension,val : bool)-> None :
+    def setUsingDefaultTextPosition (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setVisibility (self: PyDb.Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -3477,64 +3477,64 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setXLine2Point(class PyDbArcDimension {lvalue},class AcGePoint3d)'''
     ...
-    def shouldParticipateInOPM (self: Dimension)-> bool :
+    def shouldParticipateInOPM (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def snoop (self: PyDb.DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def suffix (self: Dimension)-> str :
+    def suffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def suppressAngularLeadingZeros (self: Dimension)-> bool :
+    def suppressAngularLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressAngularTrailingZeros (self: Dimension)-> bool :
+    def suppressAngularTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressLeadingZeros (self: Dimension)-> bool :
+    def suppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressTrailingZeros (self: Dimension)-> bool :
+    def suppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroFeet (self: Dimension)-> bool :
+    def suppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroInches (self: Dimension)-> bool :
+    def suppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def swapIdWith (self: PyDb.DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
+    def textAttachment (self: PyDb.Dimension)-> PyDb.MTextAttachmentPoint :
       '''                             '''
     ...
-    def textDefinedSize (self: Dimension)-> tuple :
+    def textDefinedSize (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def textLineSpacingFactor (self: Dimension)-> float :
+    def textLineSpacingFactor (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle :
+    def textLineSpacingStyle (self: PyDb.Dimension)-> PyDb.LineSpacingStyle :
       '''                             '''
     ...
-    def textPosition (self: Dimension)-> PyGe.Point3d :
+    def textPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def textRotation (self: Dimension)-> float :
+    def textRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def toleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def toleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def toleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroInches (self: Dimension)-> bool :
+    def toleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -3546,10 +3546,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def useDefaultTextPosition (self: Dimension)-> None :
+    def useDefaultTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def useSetTextPosition (self: Dimension)-> None :
+    def useSetTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def viewportDraw (self: PyGi.Drawable,vpdraw: PyGi.ViewportDraw)-> None :
@@ -3669,10 +3669,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def adjustAlignment (self: AttributeDefinition,val : Database)-> None :
+    def adjustAlignment (self: PyDb.AttributeDefinition,val : Database)-> None :
       '''                             '''
     ...
-    def alignmentPoint (self: Text)-> PyGe.Point3d :
+    def alignmentPoint (self: PyDb.Text)-> PyGe.Point3d :
       '''                             '''
     ...
     def assertNotifyEnabled (self: PyDb.DbObject)-> None :
@@ -3726,16 +3726,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def convertFieldToText (self: Text)-> None :
+    def convertFieldToText (self: PyDb.Text)-> None :
       '''                             '''
     ...
-    def convertIntoMTextAttributeDefinition (self: AttributeDefinition,val : bool)-> None :
+    def convertIntoMTextAttributeDefinition (self: PyDb.AttributeDefinition,val : bool)-> None :
       '''                             '''
     ...
     def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def correctSpelling (self: Text)-> int :
+    def correctSpelling (self: PyDb.Text)-> int :
       '''                             '''
     ...
     def createExtensionDictionary (self: PyDb.DbObject)-> None :
@@ -3782,10 +3782,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def fieldLength (self: AttributeDefinition)-> int :
+    def fieldLength (self: PyDb.AttributeDefinition)-> int :
       '''                             '''
     ...
-    def getBoundingPoints (self: Text)-> list :
+    def getBoundingPoints (self: PyDb.Text)-> list :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -3815,7 +3815,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: PyDb.DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getMTextAttributeDefinition (self: AttributeDefinition)-> PyDb.MText :
+    def getMTextAttributeDefinition (self: PyDb.AttributeDefinition)-> PyDb.MText :
       '''                             '''
     ...
     def getPlane (self: PyDb.Entity)-> PyGe.Plane :
@@ -3853,16 +3853,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: PyDb.DbObject,appname: str)-> bool :
       '''                             '''
     ...
-    def height (self: Text)-> float :
+    def height (self: PyDb.Text)-> float :
       '''                             '''
     ...
     def highlight (self: PyDb.Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
-    def hitTest (self: Text,val : PyGe.Point3d)-> bool :
+    def hitTest (self: PyDb.Text,val : PyGe.Point3d)-> bool :
       '''                             '''
     ...
-    def horizontalMode (self: Text)-> PyDb.TextHorzMode :
+    def horizontalMode (self: PyDb.Text)-> PyDb.TextHorzMode :
       '''                             '''
     ...
     def id (self: PyGi.Drawable)-> PyDb.ObjectId :
@@ -3894,10 +3894,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isConstant (self: AttributeDefinition)-> bool :
+    def isConstant (self: PyDb.AttributeDefinition)-> bool :
       '''                             '''
     ...
-    def isDefaultAlignment (self: Text)-> bool :
+    def isDefaultAlignment (self: PyDb.Text)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -3906,19 +3906,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isErased (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isInvisible (self: AttributeDefinition)-> bool :
+    def isInvisible (self: PyDb.AttributeDefinition)-> bool :
       '''                             '''
     ...
     def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isMTextAttributeDefinition (self: AttributeDefinition)-> bool :
+    def isMTextAttributeDefinition (self: PyDb.AttributeDefinition)-> bool :
       '''                             '''
     ...
-    def isMirroredInX (self: Text)-> bool :
+    def isMirroredInX (self: PyDb.Text)-> bool :
       '''                             '''
     ...
-    def isMirroredInY (self: Text)-> bool :
+    def isMirroredInY (self: PyDb.Text)-> bool :
       '''                             '''
     ...
     def isModified (self: PyDb.DbObject)-> bool :
@@ -3948,7 +3948,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isPlanar (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def isPreset (self: AttributeDefinition)-> bool :
+    def isPreset (self: PyDb.AttributeDefinition)-> bool :
       '''                             '''
     ...
     def isReadEnabled (self: PyDb.DbObject)-> bool :
@@ -3966,13 +3966,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isUndoing (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isVerifiable (self: AttributeDefinition)-> bool :
+    def isVerifiable (self: PyDb.AttributeDefinition)-> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def justification (self: Text)-> PyDb.TextAlignment :
+    def justification (self: PyDb.Text)-> PyDb.TextAlignment :
       '''                             '''
     ...
     def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
@@ -3999,7 +3999,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def list (self: PyDb.Entity)-> None :
       '''                             '''
     ...
-    def lockPositionInBlock (self: AttributeDefinition)-> bool :
+    def lockPositionInBlock (self: PyDb.AttributeDefinition)-> bool :
       '''                             '''
     ...
     def material (self: PyDb.Entity)-> str :
@@ -4008,19 +4008,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def mirrorInX (self: Text,val : bool)-> None :
+    def mirrorInX (self: PyDb.Text,val : bool)-> None :
       '''                             '''
     ...
-    def mirrorInY (self: Text,val : bool)-> None :
+    def mirrorInY (self: PyDb.Text,val : bool)-> None :
       '''                             '''
     ...
-    def normal (self: Text)-> PyGe.Vector3d :
+    def normal (self: PyDb.Text)-> PyGe.Vector3d :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def oblique (self: Text)-> float :
+    def oblique (self: PyDb.Text)-> float :
       '''                             '''
     ...
     def ownerId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -4029,10 +4029,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def position (self: Text)-> PyGe.Point3d :
+    def position (self: PyDb.Text)-> PyGe.Point3d :
       '''                             '''
     ...
-    def prompt (self: AttributeDefinition)-> str :
+    def prompt (self: PyDb.AttributeDefinition)-> str :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -4062,13 +4062,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotation (self: Text)-> float :
+    def rotation (self: PyDb.Text)-> float :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def setAlignmentPoint (self: Text,val : PyGe.Point3d)-> None :
+    def setAlignmentPoint (self: PyDb.Text,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
     def setAnnotative (self: PyDb.DbObject,state : PyDb.AnnotativeStates)-> None :
@@ -4086,7 +4086,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setColorIndex (self: PyDb.Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setConstant (self: AttributeDefinition,val : bool)-> None :
+    def setConstant (self: PyDb.AttributeDefinition,val : bool)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: PyDb.Entity,db: Database = current)-> None :
@@ -4095,19 +4095,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFieldLength (self: AttributeDefinition,val : int)-> None :
+    def setFieldLength (self: PyDb.AttributeDefinition,val : int)-> None :
       '''                             '''
     ...
-    def setHeight (self: Text,val : float)-> None :
+    def setHeight (self: PyDb.Text,val : float)-> None :
       '''                             '''
     ...
-    def setHorizontalMode (self: Text,val : TextHorzMode)-> None :
+    def setHorizontalMode (self: PyDb.Text,val : TextHorzMode)-> None :
       '''                             '''
     ...
-    def setInvisible (self: AttributeDefinition,val : bool)-> None :
+    def setInvisible (self: PyDb.AttributeDefinition,val : bool)-> None :
       '''                             '''
     ...
-    def setJustification (self: Text,val : TextAlignment)-> None :
+    def setJustification (self: PyDb.Text,val : TextAlignment)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -4122,19 +4122,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setLinetypeScale (self: PyDb.Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLockPositionInBlock (self: AttributeDefinition,val : bool)-> None :
+    def setLockPositionInBlock (self: PyDb.AttributeDefinition,val : bool)-> None :
       '''                             '''
     ...
-    def setMTextAttributeDefinition (self: AttributeDefinition,val : MText)-> None :
+    def setMTextAttributeDefinition (self: PyDb.AttributeDefinition,val : MText)-> None :
       '''                             '''
     ...
     def setMaterial (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self: Text,val : PyGe.Vector3d)-> None :
+    def setNormal (self: PyDb.Text,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setOblique (self: Text,val : float)-> None :
+    def setOblique (self: PyDb.Text,val : float)-> None :
       '''                             '''
     ...
     def setOwnerId (self: PyDb.DbObject,owner: PyDb.ObjectId)-> None :
@@ -4156,13 +4156,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self: Text,pos : PyGe.Point3d)-> None :
+    def setPosition (self: PyDb.Text,pos : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setPreset (self: AttributeDefinition,val : bool)-> None :
+    def setPreset (self: PyDb.AttributeDefinition,val : bool)-> None :
       '''                             '''
     ...
-    def setPrompt (self: AttributeDefinition,val : str)-> None :
+    def setPrompt (self: PyDb.AttributeDefinition,val : str)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -4171,31 +4171,31 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self: Text,val : float)-> None :
+    def setRotation (self: PyDb.Text,val : float)-> None :
       '''                             '''
     ...
-    def setTag (self: AttributeDefinition,val : str)-> None :
+    def setTag (self: PyDb.AttributeDefinition,val : str)-> None :
       '''                             '''
     ...
-    def setTextString (self: Text,val : str)-> None :
+    def setTextString (self: PyDb.Text,val : str)-> None :
       '''                             '''
     ...
-    def setTextStyle (self: Text,val : ObjectId)-> None :
+    def setTextStyle (self: PyDb.Text,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setThickness (self: Text,val : float)-> None :
+    def setThickness (self: PyDb.Text,val : float)-> None :
       '''                             '''
     ...
-    def setVerifiable (self: AttributeDefinition,val : bool)-> None :
+    def setVerifiable (self: PyDb.AttributeDefinition,val : bool)-> None :
       '''                             '''
     ...
-    def setVerticalMode (self: Text,val : TextVertMode)-> None :
+    def setVerticalMode (self: PyDb.Text,val : TextVertMode)-> None :
       '''                             '''
     ...
     def setVisibility (self: PyDb.Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setWidthFactor (self: Text,val : float)-> None :
+    def setWidthFactor (self: PyDb.Text,val : float)-> None :
       '''                             '''
     ...
     def setXData (self: PyDb.DbObject,xdata: list)-> None :
@@ -4207,22 +4207,22 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def swapIdWith (self: PyDb.DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def tag (self: AttributeDefinition)-> str :
+    def tag (self: PyDb.AttributeDefinition)-> str :
       '''                             '''
     ...
-    def textString (self: Text)-> str :
+    def textString (self: PyDb.Text)-> str :
       '''                             '''
     ...
-    def textStyle (self: Text)-> PyDb.ObjectId :
+    def textStyle (self: PyDb.Text)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def thickness (self: Text)-> float :
+    def thickness (self: PyDb.Text)-> float :
       '''                             '''
     ...
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def updateMTextAttributeDefinition (self: AttributeDefinition)-> None :
+    def updateMTextAttributeDefinition (self: PyDb.AttributeDefinition)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: PyDb.DbObject,wasWritable: bool)-> None :
@@ -4231,7 +4231,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def verticalMode (self: Text)-> PyDb.TextHorzMode :
+    def verticalMode (self: PyDb.Text)-> PyDb.TextHorzMode :
       '''                             '''
     ...
     def viewportDraw (self: PyGi.Drawable,vpdraw: PyGi.ViewportDraw)-> None :
@@ -4246,7 +4246,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def wblockClone (self: PyDb.DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def widthFactor (self: Text)-> float :
+    def widthFactor (self: PyDb.Text)-> float :
       '''                             '''
     ...
     def worldDraw (self: PyGi.Drawable,wdraw: PyGi.WorldDraw)-> bool :
@@ -4304,10 +4304,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def adjustAlignment (self: Text,val : Database)-> None :
+    def adjustAlignment (self: PyDb.Text,val : Database)-> None :
       '''                             '''
     ...
-    def alignmentPoint (self: Text)-> PyGe.Point3d :
+    def alignmentPoint (self: PyDb.Text)-> PyGe.Point3d :
       '''                             '''
     ...
     def assertNotifyEnabled (self: PyDb.DbObject)-> None :
@@ -4361,16 +4361,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def convertFieldToText (self: Text)-> None :
+    def convertFieldToText (self: PyDb.Text)-> None :
       '''                             '''
     ...
-    def convertIntoMTextAttribute (self: AttributeReference,val : bool)-> None :
+    def convertIntoMTextAttribute (self: PyDb.AttributeReference,val : bool)-> None :
       '''                             '''
     ...
     def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def correctSpelling (self: Text)-> int :
+    def correctSpelling (self: PyDb.Text)-> int :
       '''                             '''
     ...
     def createExtensionDictionary (self: PyDb.DbObject)-> None :
@@ -4417,10 +4417,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def fieldLength (self: AttributeReference)-> int :
+    def fieldLength (self: PyDb.AttributeReference)-> int :
       '''                             '''
     ...
-    def getBoundingPoints (self: Text)-> list :
+    def getBoundingPoints (self: PyDb.Text)-> list :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -4450,7 +4450,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: PyDb.DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getMTextAttribute (self: AttributeReference)-> PyDb.MText :
+    def getMTextAttribute (self: PyDb.AttributeReference)-> PyDb.MText :
       '''                             '''
     ...
     def getPlane (self: PyDb.Entity)-> PyGe.Plane :
@@ -4488,16 +4488,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: PyDb.DbObject,appname: str)-> bool :
       '''                             '''
     ...
-    def height (self: Text)-> float :
+    def height (self: PyDb.Text)-> float :
       '''                             '''
     ...
     def highlight (self: PyDb.Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
-    def hitTest (self: Text,val : PyGe.Point3d)-> bool :
+    def hitTest (self: PyDb.Text,val : PyGe.Point3d)-> bool :
       '''                             '''
     ...
-    def horizontalMode (self: Text)-> PyDb.TextHorzMode :
+    def horizontalMode (self: PyDb.Text)-> PyDb.TextHorzMode :
       '''                             '''
     ...
     def id (self: PyGi.Drawable)-> PyDb.ObjectId :
@@ -4529,10 +4529,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isConstant (self: AttributeReference)-> bool :
+    def isConstant (self: PyDb.AttributeReference)-> bool :
       '''                             '''
     ...
-    def isDefaultAlignment (self: Text)-> bool :
+    def isDefaultAlignment (self: PyDb.Text)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -4541,19 +4541,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isErased (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isInvisible (self: AttributeReference)-> bool :
+    def isInvisible (self: PyDb.AttributeReference)-> bool :
       '''                             '''
     ...
     def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isMTextAttribute (self: AttributeReference)-> bool :
+    def isMTextAttribute (self: PyDb.AttributeReference)-> bool :
       '''                             '''
     ...
-    def isMirroredInX (self: Text)-> bool :
+    def isMirroredInX (self: PyDb.Text)-> bool :
       '''                             '''
     ...
-    def isMirroredInY (self: Text)-> bool :
+    def isMirroredInY (self: PyDb.Text)-> bool :
       '''                             '''
     ...
     def isModified (self: PyDb.DbObject)-> bool :
@@ -4583,7 +4583,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isPlanar (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def isPreset (self: AttributeReference)-> bool :
+    def isPreset (self: PyDb.AttributeReference)-> bool :
       '''                             '''
     ...
     def isReadEnabled (self: PyDb.DbObject)-> bool :
@@ -4592,7 +4592,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isReallyClosing (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isReallyLocked (self: AttributeReference)-> bool :
+    def isReallyLocked (self: PyDb.AttributeReference)-> bool :
       '''                             '''
     ...
     def isTransactionResident (self: PyDb.DbObject)-> bool :
@@ -4604,13 +4604,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isUndoing (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isVerifiable (self: AttributeReference)-> bool :
+    def isVerifiable (self: PyDb.AttributeReference)-> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def justification (self: Text)-> PyDb.TextAlignment :
+    def justification (self: PyDb.Text)-> PyDb.TextAlignment :
       '''                             '''
     ...
     def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
@@ -4637,7 +4637,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def list (self: PyDb.Entity)-> None :
       '''                             '''
     ...
-    def lockPositionInBlock (self: AttributeReference)-> bool :
+    def lockPositionInBlock (self: PyDb.AttributeReference)-> bool :
       '''                             '''
     ...
     def material (self: PyDb.Entity)-> str :
@@ -4646,19 +4646,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def mirrorInX (self: Text,val : bool)-> None :
+    def mirrorInX (self: PyDb.Text,val : bool)-> None :
       '''                             '''
     ...
-    def mirrorInY (self: Text,val : bool)-> None :
+    def mirrorInY (self: PyDb.Text,val : bool)-> None :
       '''                             '''
     ...
-    def normal (self: Text)-> PyGe.Vector3d :
+    def normal (self: PyDb.Text)-> PyGe.Vector3d :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def oblique (self: Text)-> float :
+    def oblique (self: PyDb.Text)-> float :
       '''                             '''
     ...
     def ownerId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -4667,7 +4667,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def position (self: Text)-> PyGe.Point3d :
+    def position (self: PyDb.Text)-> PyGe.Point3d :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -4697,13 +4697,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotation (self: Text)-> float :
+    def rotation (self: PyDb.Text)-> float :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def setAlignmentPoint (self: Text,val : PyGe.Point3d)-> None :
+    def setAlignmentPoint (self: PyDb.Text,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
     def setAnnotative (self: PyDb.DbObject,state : PyDb.AnnotativeStates)-> None :
@@ -4738,19 +4738,19 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFieldLength (self: AttributeReference,val : int)-> None :
+    def setFieldLength (self: PyDb.AttributeReference,val : int)-> None :
       '''                             '''
     ...
-    def setHeight (self: Text,val : float)-> None :
+    def setHeight (self: PyDb.Text,val : float)-> None :
       '''                             '''
     ...
-    def setHorizontalMode (self: Text,val : TextHorzMode)-> None :
+    def setHorizontalMode (self: PyDb.Text,val : TextHorzMode)-> None :
       '''                             '''
     ...
-    def setInvisible (self: AttributeReference,val : bool)-> None :
+    def setInvisible (self: PyDb.AttributeReference,val : bool)-> None :
       '''                             '''
     ...
-    def setJustification (self: Text,val : TextAlignment)-> None :
+    def setJustification (self: PyDb.Text,val : TextAlignment)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -4765,19 +4765,19 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     def setLinetypeScale (self: PyDb.Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLockPositionInBlock (self: AttributeReference,val : bool)-> None :
+    def setLockPositionInBlock (self: PyDb.AttributeReference,val : bool)-> None :
       '''                             '''
     ...
-    def setMTextAttribute (self: AttributeReference,val : MText)-> None :
+    def setMTextAttribute (self: PyDb.AttributeReference,val : MText)-> None :
       '''                             '''
     ...
     def setMaterial (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self: Text,val : PyGe.Vector3d)-> None :
+    def setNormal (self: PyDb.Text,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setOblique (self: Text,val : float)-> None :
+    def setOblique (self: PyDb.Text,val : float)-> None :
       '''                             '''
     ...
     def setOwnerId (self: PyDb.DbObject,owner: PyDb.ObjectId)-> None :
@@ -4799,7 +4799,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self: Text,pos : PyGe.Point3d)-> None :
+    def setPosition (self: PyDb.Text,pos : PyGe.Point3d)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -4808,28 +4808,28 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self: Text,val : float)-> None :
+    def setRotation (self: PyDb.Text,val : float)-> None :
       '''                             '''
     ...
-    def setTag (self: AttributeReference,val : str)-> None :
+    def setTag (self: PyDb.AttributeReference,val : str)-> None :
       '''                             '''
     ...
-    def setTextString (self: Text,val : str)-> None :
+    def setTextString (self: PyDb.Text,val : str)-> None :
       '''                             '''
     ...
-    def setTextStyle (self: Text,val : ObjectId)-> None :
+    def setTextStyle (self: PyDb.Text,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setThickness (self: Text,val : float)-> None :
+    def setThickness (self: PyDb.Text,val : float)-> None :
       '''                             '''
     ...
-    def setVerticalMode (self: Text,val : TextVertMode)-> None :
+    def setVerticalMode (self: PyDb.Text,val : TextVertMode)-> None :
       '''                             '''
     ...
     def setVisibility (self: PyDb.Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setWidthFactor (self: Text,val : float)-> None :
+    def setWidthFactor (self: PyDb.Text,val : float)-> None :
       '''                             '''
     ...
     def setXData (self: PyDb.DbObject,xdata: list)-> None :
@@ -4841,22 +4841,22 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def swapIdWith (self: PyDb.DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def tag (self: AttributeReference)-> str :
+    def tag (self: PyDb.AttributeReference)-> str :
       '''                             '''
     ...
-    def textString (self: Text)-> str :
+    def textString (self: PyDb.Text)-> str :
       '''                             '''
     ...
-    def textStyle (self: Text)-> PyDb.ObjectId :
+    def textStyle (self: PyDb.Text)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def thickness (self: Text)-> float :
+    def thickness (self: PyDb.Text)-> float :
       '''                             '''
     ...
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def updateMTextAttribute (self: AttributeReference)-> None :
+    def updateMTextAttribute (self: PyDb.AttributeReference)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: PyDb.DbObject,wasWritable: bool)-> None :
@@ -4865,7 +4865,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def verticalMode (self: Text)-> PyDb.TextHorzMode :
+    def verticalMode (self: PyDb.Text)-> PyDb.TextHorzMode :
       '''                             '''
     ...
     def viewportDraw (self: PyGi.Drawable,vpdraw: PyGi.ViewportDraw)-> None :
@@ -4880,7 +4880,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def wblockClone (self: PyDb.DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def widthFactor (self: Text)-> float :
+    def widthFactor (self: PyDb.Text)-> float :
       '''                             '''
     ...
     def worldDraw (self: PyGi.Drawable,wdraw: PyGi.WorldDraw)-> bool :
@@ -5844,7 +5844,7 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def appendAttribute (self: BlockReference,val : Attribute)-> PyDb.ObjectId :
+    def appendAttribute (self: PyDb.BlockReference,val : Attribute)-> PyDb.ObjectId :
       '''                             '''
     ...
     def assertNotifyEnabled (self: PyDb.DbObject)-> None :
@@ -5856,16 +5856,16 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def assertWriteEnabled (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def attributeIds (self: BlockReference)-> list :
+    def attributeIds (self: PyDb.BlockReference)-> list :
       '''                             '''
     ...
     def blockId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def blockTableRecord (self: BlockReference)-> PyDb.ObjectId :
+    def blockTableRecord (self: PyDb.BlockReference)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def blockTransform (self: BlockReference)-> PyGe.Matrix3d :
+    def blockTransform (self: PyDb.BlockReference)-> PyGe.Matrix3d :
       '''                             '''
     ...
     def bounds (self: PyGi.Drawable,ext: PyDb.Extents)-> bool :
@@ -5951,16 +5951,16 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def explode (self: PyDb.Entity)-> list :
       '''                             '''
     ...
-    def explodeToOwnerSpace (self: BlockReference)-> None :
+    def explodeToOwnerSpace (self: PyDb.BlockReference)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def geomExtentsBestFit (self: BlockReference,val : PyGe.Matrix3d=kIdentity)-> PyDb.Extents :
+    def geomExtentsBestFit (self: PyDb.BlockReference,val : PyGe.Matrix3d=kIdentity)-> PyDb.Extents :
       '''                             '''
     ...
-    def getBlockName (self: BlockReference)-> str :
+    def getBlockName (self: PyDb.BlockReference)-> str :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -6141,13 +6141,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def nonAnnotationBlockTransform (self: BlockReference)-> PyGe.Matrix3d :
+    def nonAnnotationBlockTransform (self: PyDb.BlockReference)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def nonAnnotationScaleFactors (self: BlockReference)-> PyGe.Scale3d :
+    def nonAnnotationScaleFactors (self: PyDb.BlockReference)-> PyGe.Scale3d :
       '''                             '''
     ...
-    def normal (self: BlockReference)-> PyGe.Vector3d :
+    def normal (self: PyDb.BlockReference)-> PyGe.Vector3d :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -6159,7 +6159,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def position (self: BlockReference)-> PyGe.Point3d :
+    def position (self: PyDb.BlockReference)-> PyGe.Point3d :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -6189,10 +6189,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotation (self: BlockReference)-> float :
+    def rotation (self: PyDb.BlockReference)-> float :
       '''                             '''
     ...
-    def scaleFactors (self: BlockReference)-> PyGe.Scale3d :
+    def scaleFactors (self: PyDb.BlockReference)-> PyGe.Scale3d :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: PyDb.DbObject)-> None :
@@ -6204,10 +6204,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAttributes (self: PyGi.Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setBlockTableRecord (self: BlockReference,val : ObjectId)-> None :
+    def setBlockTableRecord (self: PyDb.BlockReference,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setBlockTransform (self: BlockReference,val : PyGe.Matrix3d)-> None :
+    def setBlockTransform (self: PyDb.BlockReference,val : PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def setCastShadows (self: PyDb.Entity,val: bool)-> None :
@@ -6240,7 +6240,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setMaterial (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self: BlockReference,val : PyGe.Vector3d)-> None :
+    def setNormal (self: PyDb.BlockReference,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
     def setOwnerId (self: PyDb.DbObject,owner: PyDb.ObjectId)-> None :
@@ -6262,7 +6262,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self: BlockReference,val : PyGe.Point3d)-> None :
+    def setPosition (self: PyDb.BlockReference,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -6271,10 +6271,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self: BlockReference,val : float)-> None :
+    def setRotation (self: PyDb.BlockReference,val : float)-> None :
       '''                             '''
     ...
-    def setScaleFactors (self: BlockReference,val : PyGe.Scale3d)-> None :
+    def setScaleFactors (self: PyDb.BlockReference,val : PyGe.Scale3d)-> None :
       '''                             '''
     ...
     def setVisibility (self: PyDb.Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -6292,7 +6292,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def treatAsAcDbBlockRefForExplode (self: BlockReference)-> bool :
+    def treatAsAcDbBlockRefForExplode (self: PyDb.BlockReference)-> bool :
       '''                             '''
     ...
     def upgradeFromNotify (self: PyDb.DbObject,wasWritable: bool)-> None :
@@ -8169,28 +8169,28 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getAcGeCurve (self: Circle,tol: Tol = default)-> PyGe.CircArc3d :
       '''                             '''
     ...
-    def getArea (self: Curve)-> float :
+    def getArea (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
+    def getClosestPointTo (self: PyDb.Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: float)-> float :
+    def getDistAtParam (self: PyDb.Curve,param: float)-> float :
       '''                             '''
     ...
-    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getDistAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getEndParam (self: Curve)-> float :
+    def getEndParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getEndPoint (self: Curve)-> PyGe.Point3d :
+    def getEndPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getField (self: PyDb.DbObject,prop: str=TEXT)-> PyDb.ObjectId :
@@ -8199,7 +8199,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getFirstDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: PyDb.Entity)-> PyDb.Extents :
@@ -8217,19 +8217,19 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getHandle (self: PyDb.DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: float)-> list :
+    def getOffsetCurves (self: PyDb.Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: PyDb.Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+    def getOrthoProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane)-> PyDb.Curve :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: float)-> float :
+    def getParamAtDist (self: PyDb.Curve,dist: float)-> float :
       '''                             '''
     ...
-    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getParamAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getPlane (self: PyDb.Entity)-> PyGe.Plane :
@@ -8238,40 +8238,40 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: float)-> PyGe.Point3d :
+    def getPointAtDist (self: PyDb.Curve,dist: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+    def getPointAtParam (self: PyDb.Curve,param: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
+    def getProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getSecondDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def getSpline (self: Curve)-> PyDb.Spline :
+    def getSpline (self: PyDb.Curve)-> PyDb.Spline :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+    def getSplitCurves (self: PyDb.Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
+    def getSplitCurvesAtParam (self: PyDb.Curve,param: float)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+    def getSplitCurvesAtParams (self: PyDb.Curve,params: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
+    def getSplitCurvesAtPoint (self: PyDb.Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+    def getSplitCurvesAtPoints (self: PyDb.Curve,points: list)-> list :
       '''                             '''
     ...
-    def getStartParam (self: Curve)-> float :
+    def getStartParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getStartPoint (self: Curve)-> PyGe.Point3d :
+    def getStartPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getStretchPoints (self: PyDb.Entity)-> list :
@@ -8335,7 +8335,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self: Curve)-> bool :
+    def isClosed (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -8368,7 +8368,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def isPeriodic (self: Curve)-> bool :
+    def isPeriodic (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isPersistent (self: PyGi.Drawable)-> bool :
@@ -8464,7 +8464,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def reverseCurve (self: Curve)-> None :
+    def reverseCurve (self: PyDb.Curve)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -8503,7 +8503,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+    def setFromAcGeCurve (self: PyDb.Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -8678,52 +8678,52 @@ class Color:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def blue (self: Color)-> int :
+    def blue (self: PyDb.Color)-> int :
       '''                             '''
     ...
-    def colorIndex (self: Color)-> int :
+    def colorIndex (self: PyDb.Color)-> int :
       '''                             '''
     ...
-    def entityColor (self: Color)-> PyDb.EntityColor :
+    def entityColor (self: PyDb.Color)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def green (self: Color)-> int :
+    def green (self: PyDb.Color)-> int :
       '''                             '''
     ...
-    def isByACI (self: Color)-> bool :
+    def isByACI (self: PyDb.Color)-> bool :
       '''                             '''
     ...
-    def isByBlock (self: Color)-> bool :
+    def isByBlock (self: PyDb.Color)-> bool :
       '''                             '''
     ...
-    def isByColor (self: Color)-> bool :
+    def isByColor (self: PyDb.Color)-> bool :
       '''                             '''
     ...
-    def isByLayer (self: Color)-> bool :
+    def isByLayer (self: PyDb.Color)-> bool :
       '''                             '''
     ...
-    def isByPen (self: Color)-> bool :
+    def isByPen (self: PyDb.Color)-> bool :
       '''                             '''
     ...
-    def isForeground (self: Color)-> bool :
+    def isForeground (self: PyDb.Color)-> bool :
       '''                             '''
     ...
-    def isNone (self: Color)-> bool :
+    def isNone (self: PyDb.Color)-> bool :
       '''                             '''
     ...
-    def penIndex (self: Color)-> int :
+    def penIndex (self: PyDb.Color)-> int :
       '''                             '''
     ...
-    def red (self: Color)-> int :
+    def red (self: PyDb.Color)-> int :
       '''                             '''
     ...
-    def setColorIndex (self: Color,val : int)-> PyDb.ErrorStatus :
+    def setColorIndex (self: PyDb.Color,val : int)-> PyDb.ErrorStatus :
       '''                             '''
     ...
-    def setPenIndex (self: Color,val : int)-> PyDb.ErrorStatus :
+    def setPenIndex (self: PyDb.Color,val : int)-> PyDb.ErrorStatus :
       '''                             '''
     ...
-    def setRGB (self: Color,red : int,green : int,blue : int)-> PyDb.ErrorStatus :
+    def setRGB (self: PyDb.Color,red : int,green : int,blue : int)-> PyDb.ErrorStatus :
       '''                             '''
     ...
 
@@ -9322,7 +9322,7 @@ wcs2Ucs( (Vector3d)arg1, (Vector3d)arg2) -> bool :
     ...
 
 class Curve:
-    def __init__ (self: Curve,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
+    def __init__ (self: PyDb.Curve,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self: PyDb.DbObject,obj : PyDb.ObjectContext)-> None :
@@ -9454,31 +9454,31 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self: PyDb.Curve,tol: Tol = default)-> PyGe.Curve3d :
       '''                             '''
     ...
-    def getArea (self: Curve)-> float :
+    def getArea (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
+    def getClosestPointTo (self: PyDb.Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: float)-> float :
+    def getDistAtParam (self: PyDb.Curve,param: float)-> float :
       '''                             '''
     ...
-    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getDistAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getEndParam (self: Curve)-> float :
+    def getEndParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getEndPoint (self: Curve)-> PyGe.Point3d :
+    def getEndPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getField (self: PyDb.DbObject,prop: str=TEXT)-> PyDb.ObjectId :
@@ -9487,7 +9487,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getFirstDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: PyDb.Entity)-> PyDb.Extents :
@@ -9505,19 +9505,19 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getHandle (self: PyDb.DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: float)-> list :
+    def getOffsetCurves (self: PyDb.Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: PyDb.Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+    def getOrthoProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane)-> PyDb.Curve :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: float)-> float :
+    def getParamAtDist (self: PyDb.Curve,dist: float)-> float :
       '''                             '''
     ...
-    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getParamAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getPlane (self: PyDb.Entity)-> PyGe.Plane :
@@ -9526,40 +9526,40 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: float)-> PyGe.Point3d :
+    def getPointAtDist (self: PyDb.Curve,dist: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+    def getPointAtParam (self: PyDb.Curve,param: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
+    def getProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getSecondDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def getSpline (self: Curve)-> PyDb.Spline :
+    def getSpline (self: PyDb.Curve)-> PyDb.Spline :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+    def getSplitCurves (self: PyDb.Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
+    def getSplitCurvesAtParam (self: PyDb.Curve,param: float)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+    def getSplitCurvesAtParams (self: PyDb.Curve,params: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
+    def getSplitCurvesAtPoint (self: PyDb.Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+    def getSplitCurvesAtPoints (self: PyDb.Curve,points: list)-> list :
       '''                             '''
     ...
-    def getStartParam (self: Curve)-> float :
+    def getStartParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getStartPoint (self: Curve)-> PyGe.Point3d :
+    def getStartPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getStretchPoints (self: PyDb.Entity)-> list :
@@ -9623,7 +9623,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self: Curve)-> bool :
+    def isClosed (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -9656,7 +9656,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def isPeriodic (self: Curve)-> bool :
+    def isPeriodic (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isPersistent (self: PyGi.Drawable)-> bool :
@@ -9746,7 +9746,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def reverseCurve (self: Curve)-> None :
+    def reverseCurve (self: PyDb.Curve)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -9776,7 +9776,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+    def setFromAcGeCurve (self: PyDb.Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -9866,100 +9866,100 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class Database:
-    def UCSTableId (self: Database)-> PyDb.ObjectId :
+    def UCSTableId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def __init__ (self: Database,buildDefaultDrawing : bool=True,noDocument: bool=False)-> None :
+    def __init__ (self: PyDb.Database,buildDefaultDrawing : bool=True,noDocument: bool=False)-> None :
       '''                             '''
     ...
-    def abortDeepClone (self: Database,idmap:PyDb.IdMapping)-> None :
+    def abortDeepClone (self: PyDb.Database,idmap:PyDb.IdMapping)-> None :
       '''                             '''
     ...
-    def addObject (self: Database,object : PyDb.DbObject)-> PyDb.ObjectId :
+    def addObject (self: PyDb.Database,object : PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def addReactor (self: Database,reactor : PyDb.DatabaseReactor)-> None :
+    def addReactor (self: PyDb.Database,reactor : PyDb.DatabaseReactor)-> None :
       '''                             '''
     ...
-    def addToBlock (self: Database,btrid : PyDb.ObjectId,entity : PyDb.Entity | list[PyDb.Entity])-> PyDb.ObjectId :
+    def addToBlock (self: PyDb.Database,btrid : PyDb.ObjectId,entity : PyDb.Entity | list[PyDb.Entity])-> PyDb.ObjectId :
       '''                             '''
     ...
-    def addToModelspace (self: Database,entity : PyDb.Entity | list[PyDb.Entity])-> PyDb.ObjectId :
+    def addToModelspace (self: PyDb.Database,entity : PyDb.Entity | list[PyDb.Entity])-> PyDb.ObjectId :
       '''                             '''
     ...
-    def angbase (self: Database)-> float :
+    def angbase (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def angdir (self: Database)-> bool :
+    def angdir (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def annoAllVisible (self: Database)-> bool :
+    def annoAllVisible (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def annotativeDwg (self: Database)-> bool :
+    def annotativeDwg (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def approxNumObjects (self: Database)-> int :
+    def approxNumObjects (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def attmode (self: Database)-> int :
+    def attmode (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def aunits (self: Database)-> int :
+    def aunits (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def auprec (self: Database)-> int :
+    def auprec (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def blipmode (self: Database)-> bool :
+    def blipmode (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def blockTableId (self: Database)-> PyDb.ObjectId :
+    def blockTableId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def byBlockLinetype (self: Database)-> PyDb.ObjectId :
+    def byBlockLinetype (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def byBlockMaterial (self: Database)-> PyDb.ObjectId :
+    def byBlockMaterial (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def byLayerLinetype (self: Database)-> PyDb.ObjectId :
+    def byLayerLinetype (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def byLayerMaterial (self: Database)-> PyDb.ObjectId :
+    def byLayerMaterial (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def cDynDisplayMode (self: Database)-> int :
+    def cDynDisplayMode (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def cameraDisplay (self: Database)-> bool :
+    def cameraDisplay (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def cameraHeight (self: Database)-> float :
+    def cameraHeight (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def celtscale (self: Database)-> float :
+    def celtscale (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def celtype (self: Database)-> PyDb.ObjectId :
+    def celtype (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def celweight (self: Database)-> PyDb.LineWeight :
+    def celweight (self: PyDb.Database)-> PyDb.LineWeight :
       '''                             '''
     ...
-    def chamfera (self: Database)-> float :
+    def chamfera (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def chamferb (self: Database)-> float :
+    def chamferb (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def chamferc (self: Database)-> float :
+    def chamferc (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def chamferd (self: Database)-> float :
+    def chamferd (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def classDxfName (self: Database,pClass : PyRx.RxClass)-> str :
+    def classDxfName (self: PyDb.Database,pClass : PyRx.RxClass)-> str :
       '''                             '''
     ...
 
@@ -9967,46 +9967,46 @@ class Database:
     def className ()-> str :
       '''                             '''
     ...
-    def clayer (self: Database)-> PyDb.ObjectId :
+    def clayer (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def closeInput (self: Database,close : bool)-> None :
+    def closeInput (self: PyDb.Database,close : bool)-> None :
       '''                             '''
     ...
-    def cmaterial (self: Database)-> PyDb.ObjectId :
+    def cmaterial (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def cmljust (self: Database)-> int :
+    def cmljust (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def cmlscale (self: Database)-> float :
+    def cmlscale (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def cmlstyleID (self: Database)-> PyDb.ObjectId :
+    def cmlstyleID (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def colorDictionaryId (self: Database)-> PyDb.ObjectId :
+    def colorDictionaryId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
     def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def continuousLinetype (self: Database)-> PyDb.ObjectId :
+    def continuousLinetype (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def coords (self: Database)-> int :
+    def coords (self: PyDb.Database)-> int :
       '''                             '''
     ...
     def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def countEmptyObjects (self: Database,flag : int)-> int :
+    def countEmptyObjects (self: PyDb.Database,flag : int)-> int :
       '''                             '''
     ...
-    def currentSpaceId (self: Database)-> PyDb.ObjectId :
+    def currentSpaceId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def deepCloneObjects (self: Database,ids:list[PyDb.ObjectId],owner:PyDb.ObjectId,idmap:PyDb.IdMapping,deferXlation:bool=False)-> None :
+    def deepCloneObjects (self: PyDb.Database,ids:list[PyDb.ObjectId],owner:PyDb.ObjectId,idmap:PyDb.IdMapping,deferXlation:bool=False)-> None :
       '''                             '''
     ...
 
@@ -10014,121 +10014,121 @@ class Database:
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def detailViewStyle (self: Database)-> PyDb.ObjectId :
+    def detailViewStyle (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def detailViewStyleDictionaryId (self: Database)-> PyDb.ObjectId :
+    def detailViewStyleDictionaryId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimAssoc (self: Database)-> int :
+    def dimAssoc (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def dimStyleTableId (self: Database)-> PyDb.ObjectId :
+    def dimStyleTableId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimapost (self: Database)-> str :
+    def dimapost (self: PyDb.Database)-> str :
       '''                             '''
     ...
-    def dimaso (self: Database)-> bool :
+    def dimaso (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def dimblk (self: Database)-> PyDb.ObjectId :
+    def dimblk (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimblk1 (self: Database)-> PyDb.ObjectId :
+    def dimblk1 (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimblk2 (self: Database)-> PyDb.ObjectId :
+    def dimblk2 (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimfit (self: Database)-> int :
+    def dimfit (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def dimpost (self: Database)-> PyDb.ObjectId :
+    def dimpost (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimsho (self: Database)-> bool :
+    def dimsho (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def dimstyle (self: Database)-> PyDb.ObjectId :
+    def dimstyle (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimunit (self: Database)-> int :
+    def dimunit (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def disablePartialOpen (self: Database)-> None :
+    def disablePartialOpen (self: PyDb.Database)-> None :
       '''                             '''
     ...
-    def disableUndoRecording (self: Database,disable : bool)-> None :
+    def disableUndoRecording (self: PyDb.Database,disable : bool)-> None :
       '''                             '''
     ...
-    def dispSilh (self: Database)-> bool :
+    def dispSilh (self: PyDb.Database)-> bool :
       '''                             '''
     ...
     def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def dragVisStyle (self: Database)-> PyDb.ObjectId :
+    def dragVisStyle (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dragmode (self: Database)-> int :
+    def dragmode (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def drawOrderCtl (self: Database)-> int :
+    def drawOrderCtl (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def dwfframe (self: Database)-> int :
+    def dwfframe (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def dwgFileWasSavedByAutodeskSoftware (self: Database)-> bool :
+    def dwgFileWasSavedByAutodeskSoftware (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def dxfIn (self: Database,filename : str)-> None :
+    def dxfIn (self: PyDb.Database,filename : str)-> None :
       '''                             '''
     ...
-    def dxfOut (self: Database,filename : str)-> None :
+    def dxfOut (self: PyDb.Database,filename : str)-> None :
       '''                             '''
     ...
-    def elevation (self: Database)-> float :
+    def elevation (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def eraseEmptyObjects (self: Database,flag : int)-> int :
+    def eraseEmptyObjects (self: PyDb.Database,flag : int)-> int :
       '''                             '''
     ...
-    def extmax (self: Database)-> PyGe.Point3d :
+    def extmax (self: PyDb.Database)-> PyGe.Point3d :
       '''                             '''
     ...
-    def extmin (self: Database)-> PyGe.Point3d :
+    def extmin (self: PyDb.Database)-> PyGe.Point3d :
       '''                             '''
     ...
-    def facetres (self: Database)-> float :
+    def facetres (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def filletrad (self: Database)-> float :
+    def filletrad (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def fillmode (self: Database)-> bool :
+    def fillmode (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def forceWblockDatabaseCopy (self: Database)-> None :
+    def forceWblockDatabaseCopy (self: PyDb.Database)-> None :
       '''                             '''
     ...
-    def geoCoordinateSystemId (self: Database)-> str :
+    def geoCoordinateSystemId (self: PyDb.Database)-> str :
       '''                             '''
     ...
-    def geoMarkerVisibility (self: Database)-> bool :
+    def geoMarkerVisibility (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def get3dDwfPrec (self: Database)-> float :
+    def get3dDwfPrec (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def getCePlotStyleNameId (self: Database)-> PyDb.PlotStyleNameType :
+    def getCePlotStyleNameId (self: PyDb.Database)-> PyDb.PlotStyleNameType :
       '''                             '''
     ...
-    def getDimstyleParentId (self: Database)-> PyDb.ObjectId :
+    def getDimstyleParentId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFilename (self: Database)-> str :
+    def getFilename (self: PyDb.Database)-> str :
       '''                             '''
     ...
 
@@ -10136,37 +10136,37 @@ class Database:
     def getNearestLineWeight (weight : int)-> PyDb.LineWeight :
       '''                             '''
     ...
-    def getObjectId (self: Database,createIfNotFound : bool,objHandle : Handle,xRefId : int=0)-> PyDb.ObjectId :
+    def getObjectId (self: PyDb.Database,createIfNotFound : bool,objHandle : Handle,xRefId : int=0)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getViewportArray (self: Database)-> list :
+    def getViewportArray (self: PyDb.Database)-> list :
       '''                             '''
     ...
-    def getVisualStyleList (self: Database)-> list :
+    def getVisualStyleList (self: PyDb.Database)-> list :
       '''                             '''
     ...
-    def globalMaterial (self: Database)-> PyDb.ObjectId :
+    def globalMaterial (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def groupDictionaryId (self: Database)-> PyDb.ObjectId :
+    def groupDictionaryId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def haloGap (self: Database)-> int :
+    def haloGap (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def handseed (self: Database)-> PyDb.Handle :
+    def handseed (self: PyDb.Database)-> PyDb.Handle :
       '''                             '''
     ...
-    def hasClass (self: Database,pClass : PyRx.RxClass)-> bool :
+    def hasClass (self: PyDb.Database,pClass : PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def hideText (self: Database)-> int :
+    def hideText (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def hpInherit (self: Database)-> bool :
+    def hpInherit (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def hpOrigin (self: Database)-> PyGe.Point2d :
+    def hpOrigin (self: PyDb.Database)-> PyGe.Point2d :
       '''                             '''
     ...
     def implRefCount (self: PyRx.RxObject)-> int :
@@ -10188,28 +10188,28 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     C++ signature :
         void insert(class PyDbDatabase {lvalue},class AcGeMatrix3d,class PyDbDatabase {lvalue},bool)'''
     ...
-    def insunits (self: Database)-> PyDb.UnitsValue :
+    def insunits (self: PyDb.Database)-> PyDb.UnitsValue :
       '''                             '''
     ...
-    def interfereVpVisStyle (self: Database)-> PyDb.ObjectId :
+    def interfereVpVisStyle (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def intersectColor (self: Database)-> int :
+    def intersectColor (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def intersectDisplay (self: Database)-> int :
+    def intersectDisplay (self: PyDb.Database)-> int :
       '''                             '''
     ...
     def isA (self: PyRx.RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isAppRegistered (self: Database,pszAppName : str)-> bool :
+    def isAppRegistered (self: PyDb.Database,pszAppName : str)-> bool :
       '''                             '''
     ...
-    def isBeingDestroyed (self: Database)-> bool :
+    def isBeingDestroyed (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def isEMR (self: Database)-> bool :
+    def isEMR (self: PyDb.Database)-> bool :
       '''                             '''
     ...
     def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
@@ -10223,13 +10223,13 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def isObjectNonPersistent (id : ObjectId)-> bool :
       '''                             '''
     ...
-    def isPartiallyOpened (self: Database)-> bool :
+    def isPartiallyOpened (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def isPucsOrthographic (self: Database,orthoView : OrthographicView)-> bool :
+    def isPucsOrthographic (self: PyDb.Database,orthoView : OrthographicView)-> bool :
       '''                             '''
     ...
-    def isUcsOrthographic (self: Database,orthoView : OrthographicView)-> bool :
+    def isUcsOrthographic (self: PyDb.Database,orthoView : OrthographicView)-> bool :
       '''                             '''
     ...
 
@@ -10237,103 +10237,103 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def isValidLineWeight (weight : int)-> bool :
       '''                             '''
     ...
-    def isolines (self: Database)-> int :
+    def isolines (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def joinStyle (self: Database)-> PyDb.JoinStyle :
+    def joinStyle (self: PyDb.Database)-> PyDb.JoinStyle :
       '''                             '''
     ...
     def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
-    def lastSavedAsMaintenanceVersion (self: Database)-> int :
+    def lastSavedAsMaintenanceVersion (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def lastSavedAsVersion (self: Database)-> int :
+    def lastSavedAsVersion (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def latitude (self: Database)-> float :
+    def latitude (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def layerEval (self: Database)-> int :
+    def layerEval (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def layerNotify (self: Database)-> int :
+    def layerNotify (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def layerTableId (self: Database)-> PyDb.ObjectId :
+    def layerTableId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def layerZero (self: Database)-> PyDb.ObjectId :
+    def layerZero (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def layoutDictionaryId (self: Database)-> PyDb.ObjectId :
+    def layoutDictionaryId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def lensLength (self: Database)-> float :
+    def lensLength (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def lightGlyphDisplay (self: Database)-> int :
+    def lightGlyphDisplay (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def lightingUnits (self: Database)-> int :
+    def lightingUnits (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def lightsInBlocks (self: Database)-> bool :
+    def lightsInBlocks (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def limcheck (self: Database)-> bool :
+    def limcheck (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def limmax (self: Database)-> PyGe.Point2d :
+    def limmax (self: PyDb.Database)-> PyGe.Point2d :
       '''                             '''
     ...
-    def limmin (self: Database)-> PyGe.Point2d :
+    def limmin (self: PyDb.Database)-> PyGe.Point2d :
       '''                             '''
     ...
-    def lineWeightDisplay (self: Database)-> bool :
+    def lineWeightDisplay (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def linetypeTableId (self: Database)-> PyDb.ObjectId :
+    def linetypeTableId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def loadLineTypeFile (self: Database,ltn : str,filename : str)-> None :
+    def loadLineTypeFile (self: PyDb.Database,ltn : str,filename : str)-> None :
       '''                             '''
     ...
-    def loftAng1 (self: Database)-> float :
+    def loftAng1 (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def loftAng2 (self: Database)-> float :
+    def loftAng2 (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def loftMag1 (self: Database)-> float :
+    def loftMag1 (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def loftMag2 (self: Database)-> float :
+    def loftMag2 (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def loftNormals (self: Database)-> int :
+    def loftNormals (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def loftParam (self: Database)-> int :
+    def loftParam (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def longitude (self: Database)-> float :
+    def longitude (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def ltscale (self: Database)-> float :
+    def ltscale (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def lunits (self: Database)-> int :
+    def lunits (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def luprec (self: Database)-> int :
+    def luprec (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def mLStyleDictionaryId (self: Database)-> PyDb.ObjectId :
+    def mLStyleDictionaryId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def maintenanceReleaseVersion (self: Database)-> int :
+    def maintenanceReleaseVersion (self: PyDb.Database)-> int :
       '''                             '''
     ...
 
@@ -10341,964 +10341,964 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def markObjectNonPersistent (id : ObjectId,value : bool)-> None :
       '''                             '''
     ...
-    def materialDictionaryId (self: Database)-> PyDb.ObjectId :
+    def materialDictionaryId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def maxactvp (self: Database)-> int :
+    def maxactvp (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def measurement (self: Database)-> PyDb.MeasurementValue :
+    def measurement (self: PyDb.Database)-> PyDb.MeasurementValue :
       '''                             '''
     ...
-    def mirrtext (self: Database)-> bool :
+    def mirrtext (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def mleaderStyleDictionaryId (self: Database)-> PyDb.ObjectId :
+    def mleaderStyleDictionaryId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def mleaderscale (self: Database)-> float :
+    def mleaderscale (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def mleaderstyle (self: Database)-> PyDb.ObjectId :
+    def mleaderstyle (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def modelSpaceId (self: Database)-> PyDb.ObjectId :
+    def modelSpaceId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def msOleScale (self: Database)-> float :
+    def msOleScale (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def msltscale (self: Database)-> bool :
+    def msltscale (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def namedObjectsDictionaryId (self: Database)-> PyDb.ObjectId :
+    def namedObjectsDictionaryId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def needsRecovery (self: Database)-> bool :
+    def needsRecovery (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def northDirection (self: Database)-> float :
+    def northDirection (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def numberOfSaves (self: Database)-> int :
+    def numberOfSaves (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def objectContextManager (self: Database)-> PyDb.ObjectContextManager :
+    def objectContextManager (self: PyDb.Database)-> PyDb.ObjectContextManager :
       '''                             '''
     ...
-    def objectIds (self: Database,desc:PyRx.RxClass=PyDb.DbObject)-> list :
+    def objectIds (self: PyDb.Database,desc:PyRx.RxClass=PyDb.DbObject)-> list :
       '''                             '''
     ...
-    def obscuredColor (self: Database)-> int :
+    def obscuredColor (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def obscuredLineType (self: Database)-> int :
+    def obscuredLineType (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def oleStartUp (self: Database)-> bool :
+    def oleStartUp (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def originalFileMaintenanceVersion (self: Database)-> int :
+    def originalFileMaintenanceVersion (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def originalFileName (self: Database)-> str :
+    def originalFileName (self: PyDb.Database)-> str :
       '''                             '''
     ...
-    def originalFileSavedByMaintenanceVersion (self: Database)-> int :
+    def originalFileSavedByMaintenanceVersion (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def originalFileSavedByVersion (self: Database)-> int :
+    def originalFileSavedByVersion (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def originalFileVersion (self: Database)-> int :
+    def originalFileVersion (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def orthomode (self: Database)-> bool :
+    def orthomode (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def paperSpaceVportId (self: Database)-> PyDb.ObjectId :
+    def paperSpaceVportId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def pdfframe (self: Database)-> int :
+    def pdfframe (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def pdmode (self: Database)-> int :
+    def pdmode (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def pdsize (self: Database)-> float :
+    def pdsize (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def pextmax (self: Database)-> PyGe.Point3d :
+    def pextmax (self: PyDb.Database)-> PyGe.Point3d :
       '''                             '''
     ...
-    def pextmin (self: Database)-> PyGe.Point3d :
+    def pextmin (self: PyDb.Database)-> PyGe.Point3d :
       '''                             '''
     ...
-    def pickstyle (self: Database)-> int :
+    def pickstyle (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def pinsbase (self: Database)-> PyGe.Point3d :
+    def pinsbase (self: PyDb.Database)-> PyGe.Point3d :
       '''                             '''
     ...
-    def plimcheck (self: Database)-> bool :
+    def plimcheck (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def plimmax (self: Database)-> PyGe.Point2d :
+    def plimmax (self: PyDb.Database)-> PyGe.Point2d :
       '''                             '''
     ...
-    def plimmin (self: Database)-> PyGe.Point2d :
+    def plimmin (self: PyDb.Database)-> PyGe.Point2d :
       '''                             '''
     ...
-    def plineEllipse (self: Database)-> bool :
+    def plineEllipse (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def plinegen (self: Database)-> bool :
+    def plinegen (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def plinewid (self: Database)-> float :
+    def plinewid (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def plotSettingsDictionaryId (self: Database)-> PyDb.ObjectId :
+    def plotSettingsDictionaryId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def plotStyleMode (self: Database)-> bool :
+    def plotStyleMode (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def plotStyleNameDictionaryId (self: Database)-> PyDb.ObjectId :
+    def plotStyleNameDictionaryId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def previewType (self: Database)-> int :
+    def previewType (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def psltscale (self: Database)-> bool :
+    def psltscale (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def psolHeight (self: Database)-> float :
+    def psolHeight (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def psolWidth (self: Database)-> float :
+    def psolWidth (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def pucsBase (self: Database)-> PyDb.ObjectId :
+    def pucsBase (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def pucsname (self: Database)-> PyDb.ObjectId :
+    def pucsname (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def pucsorg (self: Database)-> PyGe.Point3d :
+    def pucsorg (self: PyDb.Database)-> PyGe.Point3d :
       '''                             '''
     ...
-    def pucsxdir (self: Database)-> PyGe.Vector3d :
+    def pucsxdir (self: PyDb.Database)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def pucsydir (self: Database)-> PyGe.Vector3d :
+    def pucsydir (self: PyDb.Database)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def purge (self: Database)-> list :
+    def purge (self: PyDb.Database)-> list :
       '''                             '''
     ...
-    def qtextmode (self: Database)-> bool :
+    def qtextmode (self: PyDb.Database)-> bool :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def readDwgFile (self: Database,fileName:str,mode:int=kForReadAndReadShare,bAllowCPConversion:bool=False,password:str=empty)-> None :
+    def readDwgFile (self: PyDb.Database,fileName:str,mode:int=kForReadAndReadShare,bAllowCPConversion:bool=False,password:str=empty)-> None :
       '''                             '''
     ...
-    def reclaimMemoryFromErasedObjects (self: Database,ids : list[PyDb.ObjectId])-> None :
+    def reclaimMemoryFromErasedObjects (self: PyDb.Database,ids : list[PyDb.ObjectId])-> None :
       '''                             '''
     ...
-    def regAppTableId (self: Database)-> PyDb.ObjectId :
+    def regAppTableId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def regenmode (self: Database)-> bool :
+    def regenmode (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def registerApp (self: Database,appName : str)-> None :
+    def registerApp (self: PyDb.Database,appName : str)-> None :
       '''                             '''
     ...
-    def removeReactor (self: Database,reactor : PyDb.DatabaseReactor)-> None :
+    def removeReactor (self: PyDb.Database,reactor : PyDb.DatabaseReactor)-> None :
       '''                             '''
     ...
-    def resetTimes (self: Database)-> None :
+    def resetTimes (self: PyDb.Database)-> None :
       '''                             '''
     ...
-    def restoreForwardingXrefSymbols (self: Database)-> None :
+    def restoreForwardingXrefSymbols (self: PyDb.Database)-> None :
       '''                             '''
     ...
-    def restoreOriginalXrefSymbols (self: Database)-> None :
+    def restoreOriginalXrefSymbols (self: PyDb.Database)-> None :
       '''                             '''
     ...
-    def retainOriginalThumbnailBitmap (self: Database)-> bool :
+    def retainOriginalThumbnailBitmap (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def saveAs (self: Database,filename: str,bBakAndRename: bool = False,dwgVer: PyDb.DwgVersion = kDHL_CURRENT)-> None :
+    def saveAs (self: PyDb.Database,filename: str,bBakAndRename: bool = False,dwgVer: PyDb.DwgVersion = kDHL_CURRENT)-> None :
       '''                             '''
     ...
-    def saveproxygraphics (self: Database)-> int :
+    def saveproxygraphics (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def scaleListDictionaryId (self: Database)-> PyDb.ObjectId :
+    def scaleListDictionaryId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def sectionViewStyle (self: Database)-> PyDb.ObjectId :
+    def sectionViewStyle (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def sectionViewStyleDictionaryId (self: Database)-> PyDb.ObjectId :
+    def sectionViewStyleDictionaryId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def set3dDwfPrec (self: Database,dwfPrec : float)-> None :
+    def set3dDwfPrec (self: PyDb.Database,dwfPrec : float)-> None :
       '''                             '''
     ...
-    def setAngbase (self: Database,angle : float)-> None :
+    def setAngbase (self: PyDb.Database,angle : float)-> None :
       '''                             '''
     ...
-    def setAngdir (self: Database,dir : bool)-> None :
+    def setAngdir (self: PyDb.Database,dir : bool)-> None :
       '''                             '''
     ...
-    def setAnnoAllVisible (self: Database,allvis : bool)-> None :
+    def setAnnoAllVisible (self: PyDb.Database,allvis : bool)-> None :
       '''                             '''
     ...
-    def setAttdia (self: Database,val : bool)-> None :
+    def setAttdia (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setAttmode (self: Database,val : int)-> None :
+    def setAttmode (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setAttreq (self: Database,val : bool)-> None :
+    def setAttreq (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setAunits (self: Database,val : int)-> None :
+    def setAunits (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setAuprec (self: Database,val : int)-> None :
+    def setAuprec (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setBlipmode (self: Database,val : bool)-> None :
+    def setBlipmode (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setCDynDisplayMode (self: Database,val : int)-> None :
+    def setCDynDisplayMode (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setCameraDisplay (self: Database,val : bool)-> None :
+    def setCameraDisplay (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setCameraHeight (self: Database,val : float)-> None :
+    def setCameraHeight (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setCannoscale (self: Database,val : AnnotationScale)-> None :
+    def setCannoscale (self: PyDb.Database,val : AnnotationScale)-> None :
       '''                             '''
     ...
-    def setCePlotStyleName (self: Database,val : PlotStyleNameType,id : ObjectId)-> None :
+    def setCePlotStyleName (self: PyDb.Database,val : PlotStyleNameType,id : ObjectId)-> None :
       '''                             '''
     ...
-    def setCecolor (self: Database,val : Color)-> None :
+    def setCecolor (self: PyDb.Database,val : Color)-> None :
       '''                             '''
     ...
-    def setCeltscale (self: Database,val : float)-> None :
+    def setCeltscale (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setCeltype (self: Database,val : ObjectId)-> None :
+    def setCeltype (self: PyDb.Database,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setCelweight (self: Database,val : LineWeight)-> None :
+    def setCelweight (self: PyDb.Database,val : LineWeight)-> None :
       '''                             '''
     ...
-    def setCetransparency (self: Database,val : Transparency)-> None :
+    def setCetransparency (self: PyDb.Database,val : Transparency)-> None :
       '''                             '''
     ...
-    def setChamfera (self: Database,val : float)-> None :
+    def setChamfera (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setChamferb (self: Database,val : float)-> None :
+    def setChamferb (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setChamferc (self: Database,val : float)-> None :
+    def setChamferc (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setChamferd (self: Database,val : float)-> None :
+    def setChamferd (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setClayer (self: Database,val : ObjectId)-> None :
+    def setClayer (self: PyDb.Database,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setCmaterial (self: Database,val : ObjectId)-> None :
+    def setCmaterial (self: PyDb.Database,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setCmljust (self: Database,val : int)-> None :
+    def setCmljust (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setCmlscale (self: Database,val : float)-> None :
+    def setCmlscale (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setCmlstyleID (self: Database,val : ObjectId)-> None :
+    def setCmlstyleID (self: PyDb.Database,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setCoords (self: Database,val : int)-> None :
+    def setCoords (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setCshadow (self: Database,val : int)-> None :
+    def setCshadow (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setDelUsedObj (self: Database,val : int)-> None :
+    def setDelUsedObj (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setDgnframe (self: Database,val : int)-> None :
+    def setDgnframe (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setDimAssoc (self: Database,val : int)-> None :
+    def setDimAssoc (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setDimaso (self: Database,val : bool)-> None :
+    def setDimaso (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setDimfit (self: Database,val : int)-> None :
+    def setDimfit (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setDimsho (self: Database,val : bool)-> None :
+    def setDimsho (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setDimstyle (self: Database,val : ObjectId)-> None :
+    def setDimstyle (self: PyDb.Database,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setDimstyleData (self: Database,val : DimStyleTableRecord | ObjectId)-> None :
+    def setDimstyleData (self: PyDb.Database,val : DimStyleTableRecord | ObjectId)-> None :
       '''                             '''
     ...
-    def setDimunit (self: Database,val : int)-> None :
+    def setDimunit (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setDispSilh (self: Database,val : bool)-> None :
+    def setDispSilh (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setDragVisStyle (self: Database,val : ObjectId)-> None :
+    def setDragVisStyle (self: PyDb.Database,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setDragmode (self: Database,val : int)-> None :
+    def setDragmode (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setDrawOrderCtl (self: Database,val : int)-> None :
+    def setDrawOrderCtl (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setDwfframe (self: Database,val : int)-> None :
+    def setDwfframe (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setElevation (self: Database,val : float)-> None :
+    def setElevation (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setEndCaps (self: Database,val : EndCaps)-> None :
+    def setEndCaps (self: PyDb.Database,val : EndCaps)-> None :
       '''                             '''
     ...
-    def setExtmax (self: Database,val : PyGe.Point3d)-> None :
+    def setExtmax (self: PyDb.Database,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setExtmin (self: Database,val : PyGe.Point3d)-> None :
+    def setExtmin (self: PyDb.Database,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setFacetres (self: Database,val : float)-> None :
+    def setFacetres (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setFilletrad (self: Database,val : float)-> None :
+    def setFilletrad (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setFillmode (self: Database,val : bool)-> None :
+    def setFillmode (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setFingerprintGuid (self: Database,guid : str)-> None :
+    def setFingerprintGuid (self: PyDb.Database,guid : str)-> None :
       '''                             '''
     ...
-    def setFullSaveRequired (self: Database)-> None :
+    def setFullSaveRequired (self: PyDb.Database)-> None :
       '''                             '''
     ...
-    def setGeoMarkerVisibility (self: Database,val : bool)-> None :
+    def setGeoMarkerVisibility (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setHaloGap (self: Database,val : int)-> None :
+    def setHaloGap (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setHandseed (self: Database,val : Handle)-> None :
+    def setHandseed (self: PyDb.Database,val : Handle)-> None :
       '''                             '''
     ...
-    def setHideText (self: Database,val : int)-> None :
+    def setHideText (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setHpInherit (self: Database,val : bool)-> None :
+    def setHpInherit (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setHpOrigin (self: Database,val : PyGe.Point2d)-> None :
+    def setHpOrigin (self: PyDb.Database,val : PyGe.Point2d)-> None :
       '''                             '''
     ...
-    def setHyperlinkBase (self: Database,val : str)-> None :
+    def setHyperlinkBase (self: PyDb.Database,val : str)-> None :
       '''                             '''
     ...
-    def setIndexctl (self: Database,val : int)-> None :
+    def setIndexctl (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setInsbase (self: Database,val : PyGe.Point3d)-> None :
+    def setInsbase (self: PyDb.Database,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setInsunits (self: Database,val : UnitsValue)-> None :
+    def setInsunits (self: PyDb.Database,val : UnitsValue)-> None :
       '''                             '''
     ...
-    def setInterfereColor (self: Database,val : Color)-> None :
+    def setInterfereColor (self: PyDb.Database,val : Color)-> None :
       '''                             '''
     ...
-    def setInterfereObjVisStyle (self: Database,val : ObjectId)-> None :
+    def setInterfereObjVisStyle (self: PyDb.Database,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setInterfereVpVisStyle (self: Database,val : ObjectId)-> None :
+    def setInterfereVpVisStyle (self: PyDb.Database,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setIntersectColor (self: Database,val : int)-> None :
+    def setIntersectColor (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setIntersectDisplay (self: Database,val : int)-> None :
+    def setIntersectDisplay (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setIsolines (self: Database,val : int)-> None :
+    def setIsolines (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setJoinStyle (self: Database,val : JoinStyle)-> None :
+    def setJoinStyle (self: PyDb.Database,val : JoinStyle)-> None :
       '''                             '''
     ...
-    def setLatitude (self: Database,val : float)-> None :
+    def setLatitude (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setLayerEval (self: Database,val : int)-> None :
+    def setLayerEval (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setLayerNotify (self: Database,val : int)-> None :
+    def setLayerNotify (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setLensLength (self: Database,val : float)-> None :
+    def setLensLength (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setLightGlyphDisplay (self: Database,val : int)-> None :
+    def setLightGlyphDisplay (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setLightingUnits (self: Database,val : int)-> None :
+    def setLightingUnits (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setLightsInBlocks (self: Database,val : bool)-> None :
+    def setLightsInBlocks (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setLimcheck (self: Database,val : bool)-> None :
+    def setLimcheck (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setLimmax (self: Database,val : PyGe.Point2d)-> None :
+    def setLimmax (self: PyDb.Database,val : PyGe.Point2d)-> None :
       '''                             '''
     ...
-    def setLimmin (self: Database,val : PyGe.Point2d)-> None :
+    def setLimmin (self: PyDb.Database,val : PyGe.Point2d)-> None :
       '''                             '''
     ...
-    def setLineWeightDisplay (self: Database,val : bool)-> None :
+    def setLineWeightDisplay (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setLoftAng1 (self: Database,val : float)-> None :
+    def setLoftAng1 (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setLoftAng2 (self: Database,val : float)-> None :
+    def setLoftAng2 (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setLoftMag1 (self: Database,val : float)-> None :
+    def setLoftMag1 (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setLoftMag2 (self: Database,val : float)-> None :
+    def setLoftMag2 (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setLoftNormals (self: Database,val : int)-> None :
+    def setLoftNormals (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setLoftParam (self: Database,flags : int)-> None :
+    def setLoftParam (self: PyDb.Database,flags : int)-> None :
       '''                             '''
     ...
-    def setLongitude (self: Database,val : float)-> None :
+    def setLongitude (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setLtscale (self: Database,val : float)-> None :
+    def setLtscale (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setLunits (self: Database,val : int)-> None :
+    def setLunits (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setLuprec (self: Database,val : int)-> None :
+    def setLuprec (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setMLeaderscale (self: Database,val : float)-> None :
+    def setMLeaderscale (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setMLeaderstyle (self: Database,val : ObjectId)-> None :
+    def setMLeaderstyle (self: PyDb.Database,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setMaxactvp (self: Database,val : int)-> None :
+    def setMaxactvp (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setMeasurement (self: Database,val : MeasurementValue)-> None :
+    def setMeasurement (self: PyDb.Database,val : MeasurementValue)-> None :
       '''                             '''
     ...
-    def setMirrtext (self: Database,val : bool)-> None :
+    def setMirrtext (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setMsOleScale (self: Database,val : float)-> None :
+    def setMsOleScale (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setMsltscale (self: Database,val : bool)-> None :
+    def setMsltscale (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setNorthDirection (self: Database,val : float)-> None :
+    def setNorthDirection (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setObscuredColor (self: Database,val : int)-> None :
+    def setObscuredColor (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setObscuredLineType (self: Database,val : int)-> None :
+    def setObscuredLineType (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setOleStartUp (self: Database,val : bool)-> None :
+    def setOleStartUp (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setOrthomode (self: Database,val : bool)-> None :
+    def setOrthomode (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setPdfframe (self: Database,val : int)-> None :
+    def setPdfframe (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setPdmode (self: Database,val : int)-> None :
+    def setPdmode (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setPdsize (self: Database,val : float)-> None :
+    def setPdsize (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setPelevation (self: Database,val : float)-> None :
+    def setPelevation (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setPextmax (self: Database,val : PyGe.Point3d)-> None :
+    def setPextmax (self: PyDb.Database,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setPextmin (self: Database,val : PyGe.Point3d)-> None :
+    def setPextmin (self: PyDb.Database,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setPickstyle (self: Database,val : int)-> None :
+    def setPickstyle (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setPinsbase (self: Database,val : PyGe.Point3d)-> None :
+    def setPinsbase (self: PyDb.Database,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setPlimcheck (self: Database,val : bool)-> None :
+    def setPlimcheck (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setPlimmax (self: Database,val : PyGe.Point2d)-> None :
+    def setPlimmax (self: PyDb.Database,val : PyGe.Point2d)-> None :
       '''                             '''
     ...
-    def setPlimmin (self: Database,val : PyGe.Point2d)-> None :
+    def setPlimmin (self: PyDb.Database,val : PyGe.Point2d)-> None :
       '''                             '''
     ...
-    def setPlineEllipse (self: Database,val : bool)-> None :
+    def setPlineEllipse (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setPlinegen (self: Database,val : bool)-> None :
+    def setPlinegen (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setPlinewid (self: Database,val : float)-> None :
+    def setPlinewid (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setPreviewType (self: Database,val : int)-> None :
+    def setPreviewType (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setProjectName (self: Database,val : str)-> None :
+    def setProjectName (self: PyDb.Database,val : str)-> None :
       '''                             '''
     ...
-    def setPsltscale (self: Database,val : bool)-> None :
+    def setPsltscale (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setPsolHeight (self: Database,val : float)-> None :
+    def setPsolHeight (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setPsolWidth (self: Database,val : float)-> None :
+    def setPsolWidth (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setPucs (self: Database,ucsOrigin : PyGe.Point3d,ucsXDir : PyGe.Vector3d,ucsYDir : PyGe.Vector3d)-> None :
+    def setPucs (self: PyDb.Database,ucsOrigin : PyGe.Point3d,ucsXDir : PyGe.Vector3d,ucsYDir : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setPucsBase (self: Database,ucsid : ObjectId)-> None :
+    def setPucsBase (self: PyDb.Database,ucsid : ObjectId)-> None :
       '''                             '''
     ...
-    def setPucsname (self: Database,ucsrec : ObjectId)-> None :
+    def setPucsname (self: PyDb.Database,ucsrec : ObjectId)-> None :
       '''                             '''
     ...
-    def setQtextmode (self: Database,val : bool)-> None :
+    def setQtextmode (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setRealWorldScale (self: Database,val : float)-> None :
+    def setRealWorldScale (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setRegenmode (self: Database,val : bool)-> None :
+    def setRegenmode (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setRetainOriginalThumbnailBitmap (self: Database,val : bool)-> None :
+    def setRetainOriginalThumbnailBitmap (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setSaveproxygraphics (self: Database,val : int)-> None :
+    def setSaveproxygraphics (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setSectionViewStyle (self: Database,val : ObjectId)-> None :
+    def setSectionViewStyle (self: PyDb.Database,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setShadedge (self: Database,val : int)-> None :
+    def setShadedge (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setShadedif (self: Database,val : int)-> None :
+    def setShadedif (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setShadowPlaneLocation (self: Database,val : float)-> None :
+    def setShadowPlaneLocation (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setShowHist (self: Database,val : int)-> None :
+    def setShowHist (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setSketchinc (self: Database,val : float)-> None :
+    def setSketchinc (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setSkpoly (self: Database,val : bool)-> None :
+    def setSkpoly (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setSolidHist (self: Database,val : int)-> None :
+    def setSolidHist (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setSortEnts (self: Database,val : int)-> None :
+    def setSortEnts (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setSplframe (self: Database,val : bool)-> None :
+    def setSplframe (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setSplinesegs (self: Database,val : int)-> None :
+    def setSplinesegs (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setSplinetype (self: Database,val : int)-> None :
+    def setSplinetype (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setStepSize (self: Database,val : float)-> None :
+    def setStepSize (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setStepsPerSec (self: Database,val : float)-> None :
+    def setStepsPerSec (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setStyleSheet (self: Database,val : str)-> None :
+    def setStyleSheet (self: PyDb.Database,val : str)-> None :
       '''                             '''
     ...
-    def setSurftab1 (self: Database,val : int)-> None :
+    def setSurftab1 (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setSurftab2 (self: Database,val : int)-> None :
+    def setSurftab2 (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setSurftype (self: Database,val : int)-> None :
+    def setSurftype (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setSurfu (self: Database,val : int)-> None :
+    def setSurfu (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setSurfv (self: Database,val : int)-> None :
+    def setSurfv (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setTStackAlign (self: Database,val : int)-> None :
+    def setTStackAlign (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setTStackSize (self: Database,val : int)-> None :
+    def setTStackSize (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setTablestyle (self: Database,val : ObjectId)-> None :
+    def setTablestyle (self: PyDb.Database,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setTextsize (self: Database,val : float)-> None :
+    def setTextsize (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setTextstyle (self: Database,val : ObjectId)-> None :
+    def setTextstyle (self: PyDb.Database,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setThickness (self: Database,val : float)-> None :
+    def setThickness (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setTilemode (self: Database,val : bool)-> None :
+    def setTilemode (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setTimeZone (self: Database,val : TimeZone)-> None :
+    def setTimeZone (self: PyDb.Database,val : TimeZone)-> None :
       '''                             '''
     ...
-    def setTimeZoneAsUtcOffset (self: Database,val : float)-> None :
+    def setTimeZoneAsUtcOffset (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setTracewid (self: Database,val : float)-> None :
+    def setTracewid (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setTreedepth (self: Database,val : int)-> None :
+    def setTreedepth (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setUcs (self: Database,ucsOrigin : PyGe.Point3d,ucsXDir : PyGe.Vector3d,ucsYDir : PyGe.Vector3d)-> None :
+    def setUcs (self: PyDb.Database,ucsOrigin : PyGe.Point3d,ucsXDir : PyGe.Vector3d,ucsYDir : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setUcsBase (self: Database,ucsid : ObjectId)-> None :
+    def setUcsBase (self: PyDb.Database,ucsid : ObjectId)-> None :
       '''                             '''
     ...
-    def setUcsname (self: Database,ucsrecId : ObjectId)-> None :
+    def setUcsname (self: PyDb.Database,ucsrecId : ObjectId)-> None :
       '''                             '''
     ...
-    def setUnitmode (self: Database,val : int)-> None :
+    def setUnitmode (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setUpdateThumbnail (self: Database,val : int)-> None :
+    def setUpdateThumbnail (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setUseri1 (self: Database,val : int)-> None :
+    def setUseri1 (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setUseri2 (self: Database,val : int)-> None :
+    def setUseri2 (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setUseri3 (self: Database,val : int)-> None :
+    def setUseri3 (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setUseri4 (self: Database,val : int)-> None :
+    def setUseri4 (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setUseri5 (self: Database,val : int)-> None :
+    def setUseri5 (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setUserr1 (self: Database,val : float)-> None :
+    def setUserr1 (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setUserr2 (self: Database,val : float)-> None :
+    def setUserr2 (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setUserr3 (self: Database,val : float)-> None :
+    def setUserr3 (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setUserr4 (self: Database,val : float)-> None :
+    def setUserr4 (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setUserr5 (self: Database,val : float)-> None :
+    def setUserr5 (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setUsrtimer (self: Database,val : bool)-> None :
+    def setUsrtimer (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setVersionGuid (self: Database,val : str)-> None :
+    def setVersionGuid (self: PyDb.Database,val : str)-> None :
       '''                             '''
     ...
-    def setViewportScaleDefault (self: Database,val : float)-> None :
+    def setViewportScaleDefault (self: PyDb.Database,val : float)-> None :
       '''                             '''
     ...
-    def setVisretain (self: Database,val : bool)-> None :
+    def setVisretain (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setWorldPucsBaseOrigin (self: Database,ucsOrigin : PyGe.Point3d,orthoView : OrthographicView)-> None :
+    def setWorldPucsBaseOrigin (self: PyDb.Database,ucsOrigin : PyGe.Point3d,orthoView : OrthographicView)-> None :
       '''                             '''
     ...
-    def setWorldUcsBaseOrigin (self: Database,ucsOrigin : PyGe.Point3d,orthoView : OrthographicView)-> None :
+    def setWorldUcsBaseOrigin (self: PyDb.Database,ucsOrigin : PyGe.Point3d,orthoView : OrthographicView)-> None :
       '''                             '''
     ...
-    def setWorldview (self: Database,val : bool)-> None :
+    def setWorldview (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def setXclipFrame (self: Database,val : int)-> None :
+    def setXclipFrame (self: PyDb.Database,val : int)-> None :
       '''                             '''
     ...
-    def setXrefEditEnabled (self: Database,val : bool)-> None :
+    def setXrefEditEnabled (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def shadedge (self: Database)-> int :
+    def shadedge (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def shadedif (self: Database)-> int :
+    def shadedif (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def shadowPlaneLocation (self: Database)-> float :
+    def shadowPlaneLocation (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def showHist (self: Database)-> int :
+    def showHist (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def sketchinc (self: Database)-> float :
+    def sketchinc (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def skpoly (self: Database)-> bool :
+    def skpoly (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def solidHist (self: Database)-> int :
+    def solidHist (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def sortEnts (self: Database)-> int :
+    def sortEnts (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def splframe (self: Database)-> bool :
+    def splframe (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def splinesegs (self: Database)-> int :
+    def splinesegs (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def splinetype (self: Database)-> int :
+    def splinetype (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def stepSize (self: Database)-> float :
+    def stepSize (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def stepsPerSec (self: Database)-> float :
+    def stepsPerSec (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def surftab1 (self: Database)-> int :
+    def surftab1 (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def surftab2 (self: Database)-> int :
+    def surftab2 (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def surftype (self: Database)-> int :
+    def surftype (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def surfu (self: Database)-> int :
+    def surfu (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def surfv (self: Database)-> int :
+    def surfv (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def tableStyleDictionaryId (self: Database)-> PyDb.ObjectId :
+    def tableStyleDictionaryId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def tablestyle (self: Database)-> PyDb.ObjectId :
+    def tablestyle (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def tdcreate (self: Database)-> PyDb.Date :
+    def tdcreate (self: PyDb.Database)-> PyDb.Date :
       '''                             '''
     ...
-    def tdindwg (self: Database)-> PyDb.Date :
+    def tdindwg (self: PyDb.Database)-> PyDb.Date :
       '''                             '''
     ...
-    def tducreate (self: Database)-> PyDb.Date :
+    def tducreate (self: PyDb.Database)-> PyDb.Date :
       '''                             '''
     ...
-    def tdupdate (self: Database)-> PyDb.Date :
+    def tdupdate (self: PyDb.Database)-> PyDb.Date :
       '''                             '''
     ...
-    def tdusrtimer (self: Database)-> PyDb.Date :
+    def tdusrtimer (self: PyDb.Database)-> PyDb.Date :
       '''                             '''
     ...
-    def tduupdate (self: Database)-> PyDb.Date :
+    def tduupdate (self: PyDb.Database)-> PyDb.Date :
       '''                             '''
     ...
-    def textStyleTableId (self: Database)-> PyDb.ObjectId :
+    def textStyleTableId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def textsize (self: Database)-> float :
+    def textsize (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def textstyle (self: Database)-> PyDb.ObjectId :
+    def textstyle (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def thickness (self: Database)-> float :
+    def thickness (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def tileModeLightSynch (self: Database)-> int :
+    def tileModeLightSynch (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def tilemode (self: Database)-> bool :
+    def tilemode (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def timeZone (self: Database)-> PyDb.TimeZone :
+    def timeZone (self: PyDb.Database)-> PyDb.TimeZone :
       '''                             '''
     ...
-    def tracewid (self: Database)-> float :
+    def tracewid (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def transactionManager (self: Database)-> PyAp.TransactionManager :
+    def transactionManager (self: PyDb.Database)-> PyAp.TransactionManager :
       '''                             '''
     ...
-    def treedepth (self: Database)-> int :
+    def treedepth (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def tryGetObjectId (self: Database,createIfNotFound : bool,objHandle : Handle,xRefId : int=0)-> PyDb.ObjectId :
+    def tryGetObjectId (self: PyDb.Database,createIfNotFound : bool,objHandle : Handle,xRefId : int=0)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def tstackalign (self: Database)-> int :
+    def tstackalign (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def tstacksize (self: Database)-> int :
+    def tstacksize (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def ucsBase (self: Database)-> PyDb.ObjectId :
+    def ucsBase (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def ucsname (self: Database)-> PyDb.ObjectId :
+    def ucsname (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def ucsorg (self: Database)-> PyGe.Point3d :
+    def ucsorg (self: PyDb.Database)-> PyGe.Point3d :
       '''                             '''
     ...
-    def ucsxdir (self: Database)-> PyGe.Vector3d :
+    def ucsxdir (self: PyDb.Database)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def ucsydir (self: Database)-> PyGe.Vector3d :
+    def ucsydir (self: PyDb.Database)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def undoRecording (self: Database)-> bool :
+    def undoRecording (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def unitmode (self: Database)-> int :
+    def unitmode (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def updateDataLink (self: Database,nDir : UpdateDirection,opt : UpdateOption)-> None :
+    def updateDataLink (self: PyDb.Database,nDir : UpdateDirection,opt : UpdateOption)-> None :
       '''                             '''
     ...
-    def updateExt (self: Database,val : bool)-> None :
+    def updateExt (self: PyDb.Database,val : bool)-> None :
       '''                             '''
     ...
-    def updateThumbnail (self: Database)-> int :
+    def updateThumbnail (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def useri1 (self: Database)-> int :
+    def useri1 (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def useri2 (self: Database)-> int :
+    def useri2 (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def useri3 (self: Database)-> int :
+    def useri3 (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def useri4 (self: Database)-> int :
+    def useri4 (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def useri5 (self: Database)-> int :
+    def useri5 (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def userr1 (self: Database)-> float :
+    def userr1 (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def userr2 (self: Database)-> float :
+    def userr2 (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def userr3 (self: Database)-> float :
+    def userr3 (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def userr4 (self: Database)-> float :
+    def userr4 (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def userr5 (self: Database)-> float :
+    def userr5 (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def usrtimer (self: Database)-> bool :
+    def usrtimer (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def viewTableId (self: Database)-> PyDb.ObjectId :
+    def viewTableId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def viewportScaleDefault (self: Database)-> float :
+    def viewportScaleDefault (self: PyDb.Database)-> float :
       '''                             '''
     ...
-    def viewportTableId (self: Database)-> PyDb.ObjectId :
+    def viewportTableId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def visretain (self: Database)-> bool :
+    def visretain (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def visualStyleDictionaryId (self: Database)-> PyDb.ObjectId :
+    def visualStyleDictionaryId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
     def wblock (self, *args, **kwargs)-> None :
@@ -11317,25 +11317,25 @@ wblock( (Database)arg1 [, (ObjectId)arg2]) -> Database :
     C++ signature :
         class PyDbDatabase wblock(class PyDbDatabase {lvalue} [,class PyDbObjectId])'''
     ...
-    def wblockCloneObjects (self: Database,ids:list[PyDb.ObjectId],owner:PyDb.ObjectId,idmap:PyDb.IdMapping,drc:DuplicateRecordCloning,deferXlation:bool=False)-> None :
+    def wblockCloneObjects (self: PyDb.Database,ids:list[PyDb.ObjectId],owner:PyDb.ObjectId,idmap:PyDb.IdMapping,drc:DuplicateRecordCloning,deferXlation:bool=False)-> None :
       '''                             '''
     ...
-    def worldPucsBaseOrigin (self: Database,view : OrthographicView)-> PyGe.Point3d :
+    def worldPucsBaseOrigin (self: PyDb.Database,view : OrthographicView)-> PyGe.Point3d :
       '''                             '''
     ...
-    def worldUcsBaseOrigin (self: Database,view : OrthographicView)-> PyGe.Point3d :
+    def worldUcsBaseOrigin (self: PyDb.Database,view : OrthographicView)-> PyGe.Point3d :
       '''                             '''
     ...
-    def worldview (self: Database)-> bool :
+    def worldview (self: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def xclipFrame (self: Database)-> int :
+    def xclipFrame (self: PyDb.Database)-> int :
       '''                             '''
     ...
-    def xrefBlockId (self: Database)-> PyDb.ObjectId :
+    def xrefBlockId (self: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def xrefEditEnabled (self: Database)-> bool :
+    def xrefEditEnabled (self: PyDb.Database)-> bool :
       '''                             '''
     ...
 
@@ -11370,13 +11370,13 @@ __init__( (object)arg1) -> None :
     def dispose (self: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def goodbye (self: DatabaseReactor,db: PyDb.Database)-> None :
+    def goodbye (self: PyDb.DatabaseReactor,db: PyDb.Database)-> None :
       '''                             '''
     ...
-    def headerSysVarChanged (self: DatabaseReactor,db: PyDb.Database,name: str,success: bool)-> None :
+    def headerSysVarChanged (self: PyDb.DatabaseReactor,db: PyDb.Database,name: str,success: bool)-> None :
       '''                             '''
     ...
-    def headerSysVarWillChange (self: DatabaseReactor,db: PyDb.Database,name: str)-> None :
+    def headerSysVarWillChange (self: PyDb.DatabaseReactor,db: PyDb.Database,name: str)-> None :
       '''                             '''
     ...
     def implRefCount (self: PyRx.RxObject)-> int :
@@ -11394,25 +11394,25 @@ __init__( (object)arg1) -> None :
     def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
-    def objectAppended (self: DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject)-> None :
+    def objectAppended (self: PyDb.DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def objectErased (self: DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject,erased: bool)-> None :
+    def objectErased (self: PyDb.DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject,erased: bool)-> None :
       '''                             '''
     ...
-    def objectModified (self: DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject)-> None :
+    def objectModified (self: PyDb.DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def objectOpenedForModify (self: DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject)-> None :
+    def objectOpenedForModify (self: PyDb.DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def objectReAppended (self: DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject)-> None :
+    def objectReAppended (self: PyDb.DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def objectUnAppended (self: DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject)-> None :
+    def objectUnAppended (self: PyDb.DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def proxyResurrectionCompleted (self: DatabaseReactor,db: PyDb.Database,name: str,ids: list[PyDb.ObjectId])-> None :
+    def proxyResurrectionCompleted (self: PyDb.DatabaseReactor,db: PyDb.Database,name: str,ids: list[PyDb.ObjectId])-> None :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -11632,103 +11632,103 @@ __init__( (object)arg1) -> None :
     def className ()-> object :
       '''                             '''
     ...
-    def day (self: Date)-> int :
+    def day (self: PyDb.Date)-> int :
       '''                             '''
     ...
-    def getDate (self: Date)-> tuple :
+    def getDate (self: PyDb.Date)-> tuple :
       '''                             '''
     ...
-    def getLocalDisplayString (self: Date)-> str :
+    def getLocalDisplayString (self: PyDb.Date)-> str :
       '''                             '''
     ...
-    def getLocalTime (self: Date)-> None :
+    def getLocalTime (self: PyDb.Date)-> None :
       '''                             '''
     ...
-    def getTime (self: Date)-> tuple :
+    def getTime (self: PyDb.Date)-> tuple :
       '''                             '''
     ...
-    def getUniversalTime (self: Date)-> None :
+    def getUniversalTime (self: PyDb.Date)-> None :
       '''                             '''
     ...
-    def hour (self: Date)-> int :
+    def hour (self: PyDb.Date)-> int :
       '''                             '''
     ...
-    def julianDay (self: Date)-> int :
+    def julianDay (self: PyDb.Date)-> int :
       '''                             '''
     ...
-    def julianFraction (self: Date)-> float :
+    def julianFraction (self: PyDb.Date)-> float :
       '''                             '''
     ...
-    def localToUniversal (self: Date)-> None :
+    def localToUniversal (self: PyDb.Date)-> None :
       '''                             '''
     ...
-    def microsecond (self: Date)-> int :
+    def microsecond (self: PyDb.Date)-> int :
       '''                             '''
     ...
-    def millisecond (self: Date)-> int :
+    def millisecond (self: PyDb.Date)-> int :
       '''                             '''
     ...
-    def minute (self: Date)-> int :
+    def minute (self: PyDb.Date)-> int :
       '''                             '''
     ...
-    def month (self: Date)-> int :
+    def month (self: PyDb.Date)-> int :
       '''                             '''
     ...
-    def msecsPastMidnight (self: Date)-> int :
+    def msecsPastMidnight (self: PyDb.Date)-> int :
       '''                             '''
     ...
-    def second (self: Date)-> int :
+    def second (self: PyDb.Date)-> int :
       '''                             '''
     ...
-    def setDate (self: Date,month : int,day : int,year : int)-> None :
+    def setDate (self: PyDb.Date,month : int,day : int,year : int)-> None :
       '''                             '''
     ...
-    def setDay (self: Date,day : int)-> None :
+    def setDay (self: PyDb.Date,day : int)-> None :
       '''                             '''
     ...
-    def setHour (self: Date,hour : int)-> None :
+    def setHour (self: PyDb.Date,hour : int)-> None :
       '''                             '''
     ...
-    def setJulianDate (self: Date,julianDay : int,msec : int)-> None :
+    def setJulianDate (self: PyDb.Date,julianDay : int,msec : int)-> None :
       '''                             '''
     ...
-    def setJulianDay (self: Date,day : int)-> None :
+    def setJulianDay (self: PyDb.Date,day : int)-> None :
       '''                             '''
     ...
-    def setJulianFraction (self: Date,val : float)-> None :
+    def setJulianFraction (self: PyDb.Date,val : float)-> None :
       '''                             '''
     ...
-    def setMillisecond (self: Date,msec : int)-> None :
+    def setMillisecond (self: PyDb.Date,msec : int)-> None :
       '''                             '''
     ...
-    def setMinute (self: Date,min : int)-> None :
+    def setMinute (self: PyDb.Date,min : int)-> None :
       '''                             '''
     ...
-    def setMonth (self: Date,month : int)-> None :
+    def setMonth (self: PyDb.Date,month : int)-> None :
       '''                             '''
     ...
-    def setMsecsPastMidnight (self: Date,msec : int)-> None :
+    def setMsecsPastMidnight (self: PyDb.Date,msec : int)-> None :
       '''                             '''
     ...
-    def setSecond (self: Date,sec : int)-> None :
+    def setSecond (self: PyDb.Date,sec : int)-> None :
       '''                             '''
     ...
-    def setTime (self: Date,hour : int,min : int,sec : int,msec : int)-> None :
+    def setTime (self: PyDb.Date,hour : int,min : int,sec : int,msec : int)-> None :
       '''                             '''
     ...
-    def setToZero (self: Date)-> None :
+    def setToZero (self: PyDb.Date)-> None :
       '''                             '''
     ...
-    def setYear (self: Date,year : int)-> None :
+    def setYear (self: PyDb.Date,year : int)-> None :
       '''                             '''
     ...
-    def timestamp (self: Date)-> float :
+    def timestamp (self: PyDb.Date)-> float :
       '''                             '''
     ...
-    def universalToLocal (self: Date)-> None :
+    def universalToLocal (self: PyDb.Date)-> None :
       '''                             '''
     ...
-    def year (self: Date)-> int :
+    def year (self: PyDb.Date)-> int :
       '''                             '''
     ...
 
@@ -12313,34 +12313,34 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def altSuppressLeadingZeros (self: Dimension)-> bool :
+    def altSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressTrailingZeros (self: Dimension)-> bool :
+    def altSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroFeet (self: Dimension)-> bool :
+    def altSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroInches (self: Dimension)-> bool :
+    def altSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def altToleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self: Dimension)-> bool :
+    def altToleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def alternatePrefix (self: Dimension)-> str :
+    def alternatePrefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def alternateSuffix (self: Dimension)-> str :
+    def alternateSuffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def assertNotifyEnabled (self: PyDb.DbObject)-> None :
@@ -12355,7 +12355,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def blockId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def blockTransform (self: Dimension)-> PyGe.Matrix3d :
+    def blockTransform (self: PyDb.Dimension)-> PyGe.Matrix3d :
       '''                             '''
     ...
     def bounds (self: PyGi.Drawable,ext: PyDb.Extents)-> bool :
@@ -12373,7 +12373,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def castShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def centerMarkSize (self: Dimension)-> float :
+    def centerMarkSize (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def chordPoint (self, *args, **kwargs)-> PyGe.Point3d :
@@ -12427,25 +12427,25 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self: Dimension)-> PyDb.ObjectId :
+    def dimBlockId (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimBlockPosition (self: Dimension)-> PyGe.Point3d :
+    def dimBlockPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt1Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt2Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId :
+    def dimLineLinetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionStyle (self: Dimension)-> PyDb.ObjectId :
+    def dimensionStyle (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionText (self: Dimension)-> str :
+    def dimensionText (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def disableUndoRecording (self: PyDb.DbObject,disable: bool)-> None :
@@ -12466,7 +12466,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def drawableType (self: PyGi.Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def elevation (self: Dimension)-> float :
+    def elevation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def entityColor (self: PyDb.Entity)-> PyDb.EntityColor :
@@ -12499,10 +12499,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     C++ signature :
         class AcGePoint3d farChordPoint(class PyDbDiametricDimension {lvalue})'''
     ...
-    def fieldFromMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldFromMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
-    def fieldToMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldToMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
     def formatMeasurement (self, *args, **kwargs)-> str :
@@ -12516,19 +12516,19 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self: Dimension)-> None :
+    def generateLayout (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def getArrowFirstIsFlipped (self: Dimension)-> bool :
+    def getArrowFirstIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def getArrowSecondIsFlipped (self: Dimension)-> bool :
+    def getArrowSecondIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord :
+    def getDimstyleData (self: PyDb.Dimension)-> PyDb.DimStyleTableRecord :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -12593,7 +12593,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def highlight (self: PyDb.Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
-    def horizontalRotation (self: Dimension)-> float :
+    def horizontalRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def id (self: PyGi.Drawable)-> PyDb.ObjectId :
@@ -12602,13 +12602,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def inspection (self: Dimension)-> bool :
+    def inspection (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def inspectionFrame (self: Dimension)-> int :
+    def inspectionFrame (self: PyDb.Dimension)-> int :
       '''                             '''
     ...
-    def inspectionLabel (self: Dimension)-> str :
+    def inspectionLabel (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def intersectWith (self: PyDb.Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
@@ -12634,13 +12634,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isConstraintDynamic (self: Dimension)-> bool :
+    def isConstraintDynamic (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def isConstraintObject (self: Dimension)-> tuple :
+    def isConstraintObject (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def isDynamicDimension (self: Dimension)-> bool :
+    def isDynamicDimension (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -12649,7 +12649,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isErased (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self: Dimension)-> bool :
+    def isHorizontalRefTextRotation (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
@@ -12697,7 +12697,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isUndoing (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self: Dimension)-> bool :
+    def isUsingDefaultTextPosition (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: PyDb.DbObject)-> bool :
@@ -12739,10 +12739,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def measurement (self: Dimension)-> float :
+    def measurement (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def normal (self: Dimension)-> PyGe.Vector3d :
+    def normal (self: PyDb.Dimension)-> PyGe.Vector3d :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -12754,7 +12754,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def prefix (self: Dimension)-> str :
+    def prefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -12763,7 +12763,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def receiveShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def recomputeDimBlock (self: Dimension,force : bool=False)-> None :
+    def recomputeDimBlock (self: PyDb.Dimension,force : bool=False)-> None :
       '''                             '''
     ...
     def recordGraphicsModified (self: PyDb.Entity)-> None :
@@ -12784,10 +12784,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def removeTextField (self: Dimension)-> None :
+    def removeTextField (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def resetTextDefinedSize (self: Dimension)-> None :
+    def resetTextDefinedSize (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -12796,43 +12796,43 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAcDbObjectIdsInFlux (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def setAltSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAlternatePrefix (self: Dimension,val : str)-> None :
+    def setAlternatePrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setAlternateSuffix (self: Dimension,val : str)-> None :
+    def setAlternateSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setAnnotative (self: PyDb.DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
-    def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowFirstIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setArrowSecondIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowSecondIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setAttributes (self: PyGi.Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -12853,31 +12853,31 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setColorIndex (self: PyDb.Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setConstraintDynamic (self: Dimension,val : bool)-> None :
+    def setConstraintDynamic (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: PyDb.Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setDimBlockId (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimBlockId (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimBlockPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setDimBlockPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setDimExt1Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt1Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimExt2Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt2Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimLineLinetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimLineLinetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionStyle (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimensionStyle (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionText (self: Dimension,val : str)-> None :
+    def setDimensionText (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setDimstyleData (self, *args, **kwargs)-> None :
@@ -12891,10 +12891,10 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
     ...
-    def setDynamicDimension (self: Dimension,val : bool)-> None :
+    def setDynamicDimension (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : float)-> None :
+    def setElevation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
     def setExtArcEndAngle (self, *args, **kwargs)-> None :
@@ -12918,19 +12918,19 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
+    def setHorizontalRefTextRotation (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : float)-> None :
+    def setHorizontalRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setInspection (self: Dimension,val : bool)-> None :
+    def setInspection (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setInspectionFrame (self: Dimension,val : int)-> None :
+    def setInspectionFrame (self: PyDb.Dimension,val : int)-> None :
       '''                             '''
     ...
-    def setInspectionLabel (self: Dimension,val : str)-> None :
+    def setInspectionLabel (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -12954,7 +12954,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setMaterial (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self: Dimension,val : PyGe.Vector3d)-> None :
+    def setNormal (self: PyDb.Dimension,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
     def setOwnerId (self: PyDb.DbObject,owner: PyDb.ObjectId)-> None :
@@ -12976,7 +12976,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPrefix (self: Dimension,val : str)-> None :
+    def setPrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -12985,58 +12985,58 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setShouldParticipateInOPM (self: Dimension,val : bool)-> None :
+    def setShouldParticipateInOPM (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuffix (self: Dimension,val : str)-> None :
+    def setSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setSuppressAngularTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressAngularTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
+    def setTextAttachment (self: PyDb.Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
+    def setTextDefinedSize (self: PyDb.Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
+    def setTextLineSpacingFactor (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
+    def setTextLineSpacingStyle (self: PyDb.Dimension,val : PyDb.LineSpacingStyle)-> None :
       '''                             '''
     ...
-    def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setTextPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : float)-> None :
+    def setTextRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setUsingDefaultTextPosition (self: Dimension,val : bool)-> None :
+    def setUsingDefaultTextPosition (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setVisibility (self: PyDb.Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -13045,64 +13045,64 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: PyDb.DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def shouldParticipateInOPM (self: Dimension)-> bool :
+    def shouldParticipateInOPM (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def snoop (self: PyDb.DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def suffix (self: Dimension)-> str :
+    def suffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def suppressAngularLeadingZeros (self: Dimension)-> bool :
+    def suppressAngularLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressAngularTrailingZeros (self: Dimension)-> bool :
+    def suppressAngularTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressLeadingZeros (self: Dimension)-> bool :
+    def suppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressTrailingZeros (self: Dimension)-> bool :
+    def suppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroFeet (self: Dimension)-> bool :
+    def suppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroInches (self: Dimension)-> bool :
+    def suppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def swapIdWith (self: PyDb.DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
+    def textAttachment (self: PyDb.Dimension)-> PyDb.MTextAttachmentPoint :
       '''                             '''
     ...
-    def textDefinedSize (self: Dimension)-> tuple :
+    def textDefinedSize (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def textLineSpacingFactor (self: Dimension)-> float :
+    def textLineSpacingFactor (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle :
+    def textLineSpacingStyle (self: PyDb.Dimension)-> PyDb.LineSpacingStyle :
       '''                             '''
     ...
-    def textPosition (self: Dimension)-> PyGe.Point3d :
+    def textPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def textRotation (self: Dimension)-> float :
+    def textRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def toleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def toleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def toleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroInches (self: Dimension)-> bool :
+    def toleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -13114,10 +13114,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def useDefaultTextPosition (self: Dimension)-> None :
+    def useDefaultTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def useSetTextPosition (self: Dimension)-> None :
+    def useSetTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def viewportDraw (self: PyGi.Drawable,vpdraw: PyGi.ViewportDraw)-> None :
@@ -13357,7 +13357,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: PyDb.DbObject,reactor: DbObjectReactor)-> None :
       '''                             '''
     ...
-    def asDict (self: Dictionary)-> dict :
+    def asDict (self: PyDb.Dictionary)-> dict :
       '''                             '''
     ...
     def assertNotifyEnabled (self: PyDb.DbObject)-> None :
@@ -13434,7 +13434,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAt (self: Dictionary,val : str)-> PyDb.ObjectId :
+    def getAt (self: PyDb.Dictionary,val : str)-> PyDb.ObjectId :
       '''                             '''
     ...
     def getField (self: PyDb.DbObject,prop: str=TEXT)-> PyDb.ObjectId :
@@ -13449,7 +13449,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def handOverTo (self: PyDb.DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
-    def has (self: Dictionary,val : str|PyDb.ObjectId)-> bool :
+    def has (self: PyDb.Dictionary,val : str|PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasFields (self: PyDb.DbObject)-> bool :
@@ -13536,10 +13536,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
       '''                             '''
     ...
-    def nameAt (self: Dictionary,val : PyDb.ObjectId)-> str :
+    def nameAt (self: PyDb.Dictionary,val : PyDb.ObjectId)-> str :
       '''                             '''
     ...
-    def numEntries (self: Dictionary)-> int :
+    def numEntries (self: PyDb.Dictionary)-> int :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -13591,7 +13591,7 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     def setAnnotative (self: PyDb.DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
-    def setAt (self: Dictionary)-> PyDb.ObjectId :
+    def setAt (self: PyDb.Dictionary)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setAttributes (self: PyGi.Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -13600,7 +13600,7 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setName (self: Dictionary,old : str,new : str)-> bool :
+    def setName (self: PyDb.Dictionary,old : str,new : str)-> bool :
       '''                             '''
     ...
     def setOwnerId (self: PyDb.DbObject,owner: PyDb.ObjectId)-> None :
@@ -15381,34 +15381,34 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def altSuppressLeadingZeros (self: Dimension)-> bool :
+    def altSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressTrailingZeros (self: Dimension)-> bool :
+    def altSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroFeet (self: Dimension)-> bool :
+    def altSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroInches (self: Dimension)-> bool :
+    def altSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def altToleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self: Dimension)-> bool :
+    def altToleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def alternatePrefix (self: Dimension)-> str :
+    def alternatePrefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def alternateSuffix (self: Dimension)-> str :
+    def alternateSuffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def assertNotifyEnabled (self: PyDb.DbObject)-> None :
@@ -15423,7 +15423,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def blockId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def blockTransform (self: Dimension)-> PyGe.Matrix3d :
+    def blockTransform (self: PyDb.Dimension)-> PyGe.Matrix3d :
       '''                             '''
     ...
     def bounds (self: PyGi.Drawable,ext: PyDb.Extents)-> bool :
@@ -15440,7 +15440,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def castShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def centerMarkSize (self: Dimension)-> float :
+    def centerMarkSize (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
 
@@ -15485,25 +15485,25 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dimBlockId (self: Dimension)-> PyDb.ObjectId :
+    def dimBlockId (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimBlockPosition (self: Dimension)-> PyGe.Point3d :
+    def dimBlockPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt1Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt2Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId :
+    def dimLineLinetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionStyle (self: Dimension)-> PyDb.ObjectId :
+    def dimensionStyle (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionText (self: Dimension)-> str :
+    def dimensionText (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def disableUndoRecording (self: PyDb.DbObject,disable: bool)-> None :
@@ -15524,7 +15524,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: PyGi.Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def elevation (self: Dimension)-> float :
+    def elevation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def entityColor (self: PyDb.Entity)-> PyDb.EntityColor :
@@ -15539,10 +15539,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def fieldFromMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldFromMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
-    def fieldToMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldToMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
     def formatMeasurement (self, *args, **kwargs)-> str :
@@ -15556,19 +15556,19 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self: Dimension)-> None :
+    def generateLayout (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def getArrowFirstIsFlipped (self: Dimension)-> bool :
+    def getArrowFirstIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def getArrowSecondIsFlipped (self: Dimension)-> bool :
+    def getArrowSecondIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord :
+    def getDimstyleData (self: PyDb.Dimension)-> PyDb.DimStyleTableRecord :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -15633,7 +15633,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def highlight (self: PyDb.Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
-    def horizontalRotation (self: Dimension)-> float :
+    def horizontalRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def id (self: PyGi.Drawable)-> PyDb.ObjectId :
@@ -15642,13 +15642,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def inspection (self: Dimension)-> bool :
+    def inspection (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def inspectionFrame (self: Dimension)-> int :
+    def inspectionFrame (self: PyDb.Dimension)-> int :
       '''                             '''
     ...
-    def inspectionLabel (self: Dimension)-> str :
+    def inspectionLabel (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def intersectWith (self: PyDb.Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
@@ -15674,13 +15674,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isConstraintDynamic (self: Dimension)-> bool :
+    def isConstraintDynamic (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def isConstraintObject (self: Dimension)-> tuple :
+    def isConstraintObject (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def isDynamicDimension (self: Dimension)-> bool :
+    def isDynamicDimension (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -15689,7 +15689,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isErased (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self: Dimension)-> bool :
+    def isHorizontalRefTextRotation (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
@@ -15737,7 +15737,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isUndoing (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self: Dimension)-> bool :
+    def isUsingDefaultTextPosition (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: PyDb.DbObject)-> bool :
@@ -15773,10 +15773,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def measurement (self: Dimension)-> float :
+    def measurement (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def normal (self: Dimension)-> PyGe.Vector3d :
+    def normal (self: PyDb.Dimension)-> PyGe.Vector3d :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -15788,7 +15788,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def prefix (self: Dimension)-> str :
+    def prefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -15797,7 +15797,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def receiveShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def recomputeDimBlock (self: Dimension,force : bool=False)-> None :
+    def recomputeDimBlock (self: PyDb.Dimension,force : bool=False)-> None :
       '''                             '''
     ...
     def recordGraphicsModified (self: PyDb.Entity)-> None :
@@ -15818,10 +15818,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def removeTextField (self: Dimension)-> None :
+    def removeTextField (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def resetTextDefinedSize (self: Dimension)-> None :
+    def resetTextDefinedSize (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -15830,43 +15830,43 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAcDbObjectIdsInFlux (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def setAltSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAlternatePrefix (self: Dimension,val : str)-> None :
+    def setAlternatePrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setAlternateSuffix (self: Dimension,val : str)-> None :
+    def setAlternateSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setAnnotative (self: PyDb.DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
-    def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowFirstIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setArrowSecondIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowSecondIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setAttributes (self: PyGi.Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -15881,31 +15881,31 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setColorIndex (self: PyDb.Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setConstraintDynamic (self: Dimension,val : bool)-> None :
+    def setConstraintDynamic (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: PyDb.Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setDimBlockId (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimBlockId (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimBlockPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setDimBlockPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setDimExt1Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt1Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimExt2Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt2Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimLineLinetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimLineLinetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionStyle (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimensionStyle (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionText (self: Dimension,val : str)-> None :
+    def setDimensionText (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setDimstyleData (self, *args, **kwargs)-> None :
@@ -15919,28 +15919,28 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
     ...
-    def setDynamicDimension (self: Dimension,val : bool)-> None :
+    def setDynamicDimension (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : float)-> None :
+    def setElevation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
+    def setHorizontalRefTextRotation (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : float)-> None :
+    def setHorizontalRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setInspection (self: Dimension,val : bool)-> None :
+    def setInspection (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setInspectionFrame (self: Dimension,val : int)-> None :
+    def setInspectionFrame (self: PyDb.Dimension,val : int)-> None :
       '''                             '''
     ...
-    def setInspectionLabel (self: Dimension,val : str)-> None :
+    def setInspectionLabel (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -15958,7 +15958,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setMaterial (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self: Dimension,val : PyGe.Vector3d)-> None :
+    def setNormal (self: PyDb.Dimension,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
     def setOwnerId (self: PyDb.DbObject,owner: PyDb.ObjectId)-> None :
@@ -15980,7 +15980,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPrefix (self: Dimension,val : str)-> None :
+    def setPrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -15989,58 +15989,58 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setShouldParticipateInOPM (self: Dimension,val : bool)-> None :
+    def setShouldParticipateInOPM (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuffix (self: Dimension,val : str)-> None :
+    def setSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setSuppressAngularTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressAngularTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
+    def setTextAttachment (self: PyDb.Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
+    def setTextDefinedSize (self: PyDb.Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
+    def setTextLineSpacingFactor (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
+    def setTextLineSpacingStyle (self: PyDb.Dimension,val : PyDb.LineSpacingStyle)-> None :
       '''                             '''
     ...
-    def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setTextPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : float)-> None :
+    def setTextRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setUsingDefaultTextPosition (self: Dimension,val : bool)-> None :
+    def setUsingDefaultTextPosition (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setVisibility (self: PyDb.Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -16049,64 +16049,64 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: PyDb.DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def shouldParticipateInOPM (self: Dimension)-> bool :
+    def shouldParticipateInOPM (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def snoop (self: PyDb.DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def suffix (self: Dimension)-> str :
+    def suffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def suppressAngularLeadingZeros (self: Dimension)-> bool :
+    def suppressAngularLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressAngularTrailingZeros (self: Dimension)-> bool :
+    def suppressAngularTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressLeadingZeros (self: Dimension)-> bool :
+    def suppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressTrailingZeros (self: Dimension)-> bool :
+    def suppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroFeet (self: Dimension)-> bool :
+    def suppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroInches (self: Dimension)-> bool :
+    def suppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def swapIdWith (self: PyDb.DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
+    def textAttachment (self: PyDb.Dimension)-> PyDb.MTextAttachmentPoint :
       '''                             '''
     ...
-    def textDefinedSize (self: Dimension)-> tuple :
+    def textDefinedSize (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def textLineSpacingFactor (self: Dimension)-> float :
+    def textLineSpacingFactor (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle :
+    def textLineSpacingStyle (self: PyDb.Dimension)-> PyDb.LineSpacingStyle :
       '''                             '''
     ...
-    def textPosition (self: Dimension)-> PyGe.Point3d :
+    def textPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def textRotation (self: Dimension)-> float :
+    def textRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def toleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def toleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def toleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroInches (self: Dimension)-> bool :
+    def toleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -16118,10 +16118,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def useDefaultTextPosition (self: Dimension)-> None :
+    def useDefaultTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def useSetTextPosition (self: Dimension)-> None :
+    def useSetTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def viewportDraw (self: PyGi.Drawable,vpdraw: PyGi.ViewportDraw)-> None :
@@ -17002,13 +17002,13 @@ class DxfCode:
     ...
 
 class DynBlockReference:
-    def __init__ (self: DynBlockReference,val : ObjectId)-> None :
+    def __init__ (self: PyDb.DynBlockReference,val : ObjectId)-> None :
       '''                             '''
     ...
-    def anonymousBlockTableRecord (self: DynBlockReference)-> PyDb.ObjectId :
+    def anonymousBlockTableRecord (self: PyDb.DynBlockReference)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def blockId (self: DynBlockReference)-> PyDb.ObjectId :
+    def blockId (self: PyDb.DynBlockReference)-> PyDb.ObjectId :
       '''                             '''
     ...
 
@@ -17016,13 +17016,13 @@ class DynBlockReference:
     def className ()-> str :
       '''                             '''
     ...
-    def convertToStaticBlock (self: DynBlockReference,val : str=None)-> None :
+    def convertToStaticBlock (self: PyDb.DynBlockReference,val : str=None)-> None :
       '''                             '''
     ...
-    def dynamicBlockTableRecord (self: DynBlockReference)-> PyDb.ObjectId :
+    def dynamicBlockTableRecord (self: PyDb.DynBlockReference)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getBlockProperties (self: DynBlockReference)-> list :
+    def getBlockProperties (self: PyDb.DynBlockReference)-> list :
       '''                             '''
     ...
 
@@ -17030,10 +17030,10 @@ class DynBlockReference:
     def getIsDynamicBlock (otherObject: ObjectId)-> bool :
       '''                             '''
     ...
-    def isDynamicBlock (self: DynBlockReference)-> bool :
+    def isDynamicBlock (self: PyDb.DynBlockReference)-> bool :
       '''                             '''
     ...
-    def resetBlock (self: DynBlockReference)-> None :
+    def resetBlock (self: PyDb.DynBlockReference)-> None :
       '''                             '''
     ...
 
@@ -17212,7 +17212,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def angleAtParam (self: Ellipse,val : float)-> float :
+    def angleAtParam (self: PyDb.Ellipse,val : float)-> float :
       '''                             '''
     ...
     def assertNotifyEnabled (self: PyDb.DbObject)-> None :
@@ -17241,7 +17241,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def castShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def center (self: Ellipse)-> PyGe.Point3d :
+    def center (self: PyDb.Ellipse)-> PyGe.Point3d :
       '''                             '''
     ...
 
@@ -17309,7 +17309,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def drawableType (self: PyGi.Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def endAngle (self: Ellipse)-> float :
+    def endAngle (self: PyDb.Ellipse)-> float :
       '''                             '''
     ...
     def entityColor (self: PyDb.Entity)-> PyDb.EntityColor :
@@ -17335,34 +17335,34 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def get (self: Ellipse)-> tuple :
+    def get (self: PyDb.Ellipse)-> tuple :
       '''                             '''
     ...
-    def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self: PyDb.Curve,tol: Tol = default)-> PyGe.Curve3d :
       '''                             '''
     ...
-    def getArea (self: Curve)-> float :
+    def getArea (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
+    def getClosestPointTo (self: PyDb.Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: float)-> float :
+    def getDistAtParam (self: PyDb.Curve,param: float)-> float :
       '''                             '''
     ...
-    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getDistAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getEndParam (self: Curve)-> float :
+    def getEndParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getEndPoint (self: Curve)-> PyGe.Point3d :
+    def getEndPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getField (self: PyDb.DbObject,prop: str=TEXT)-> PyDb.ObjectId :
@@ -17371,7 +17371,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getFirstDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: PyDb.Entity)-> PyDb.Extents :
@@ -17389,19 +17389,19 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getHandle (self: PyDb.DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: float)-> list :
+    def getOffsetCurves (self: PyDb.Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: PyDb.Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+    def getOrthoProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane)-> PyDb.Curve :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: float)-> float :
+    def getParamAtDist (self: PyDb.Curve,dist: float)-> float :
       '''                             '''
     ...
-    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getParamAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getPlane (self: PyDb.Entity)-> PyGe.Plane :
@@ -17410,40 +17410,40 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: float)-> PyGe.Point3d :
+    def getPointAtDist (self: PyDb.Curve,dist: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+    def getPointAtParam (self: PyDb.Curve,param: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
+    def getProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getSecondDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def getSpline (self: Curve)-> PyDb.Spline :
+    def getSpline (self: PyDb.Curve)-> PyDb.Spline :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+    def getSplitCurves (self: PyDb.Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
+    def getSplitCurvesAtParam (self: PyDb.Curve,param: float)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+    def getSplitCurvesAtParams (self: PyDb.Curve,params: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
+    def getSplitCurvesAtPoint (self: PyDb.Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+    def getSplitCurvesAtPoints (self: PyDb.Curve,points: list)-> list :
       '''                             '''
     ...
-    def getStartParam (self: Curve)-> float :
+    def getStartParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getStartPoint (self: Curve)-> PyGe.Point3d :
+    def getStartPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getStretchPoints (self: PyDb.Entity)-> list :
@@ -17507,7 +17507,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self: Curve)-> bool :
+    def isClosed (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -17537,13 +17537,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isNotifying (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self: Ellipse)-> bool :
+    def isNull (self: PyDb.Ellipse)-> bool :
       '''                             '''
     ...
     def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def isPeriodic (self: Curve)-> bool :
+    def isPeriodic (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isPersistent (self: PyGi.Drawable)-> bool :
@@ -17594,10 +17594,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def list (self: PyDb.Entity)-> None :
       '''                             '''
     ...
-    def majorAxis (self: Ellipse)-> PyGe.Vector3d :
+    def majorAxis (self: PyDb.Ellipse)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def majorRadius (self: Ellipse)-> float :
+    def majorRadius (self: PyDb.Ellipse)-> float :
       '''                             '''
     ...
     def material (self: PyDb.Entity)-> str :
@@ -17606,13 +17606,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def minorAxis (self: Ellipse)-> PyGe.Vector3d :
+    def minorAxis (self: PyDb.Ellipse)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def minorRadius (self: Ellipse)-> float :
+    def minorRadius (self: PyDb.Ellipse)-> float :
       '''                             '''
     ...
-    def normal (self: Ellipse)-> PyGe.Vector3d :
+    def normal (self: PyDb.Ellipse)-> PyGe.Vector3d :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -17621,7 +17621,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def ownerId (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def paramAtAngle (self: Ellipse,val : float)-> float :
+    def paramAtAngle (self: PyDb.Ellipse,val : float)-> float :
       '''                             '''
     ...
     def plotStyleName (self: PyDb.Entity)-> str :
@@ -17630,7 +17630,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def radiusRatio (self: Ellipse)-> float :
+    def radiusRatio (self: PyDb.Ellipse)-> float :
       '''                             '''
     ...
     def receiveShadows (self: PyDb.Entity)-> bool :
@@ -17654,7 +17654,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def reverseCurve (self: Curve)-> None :
+    def reverseCurve (self: PyDb.Curve)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -17683,7 +17683,7 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
     def setCastShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setCenter (self: Ellipse,val : PyGe.Point3d)-> None :
+    def setCenter (self: PyDb.Ellipse,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
     def setColor (self: PyDb.Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
@@ -17695,16 +17695,16 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
     def setDatabaseDefaults (self: PyDb.Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setEndAngle (self: Ellipse,val : float)-> None :
+    def setEndAngle (self: PyDb.Ellipse,val : float)-> None :
       '''                             '''
     ...
-    def setEndParam (self: Ellipse,val : float)-> None :
+    def setEndParam (self: PyDb.Ellipse,val : float)-> None :
       '''                             '''
     ...
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+    def setFromAcGeCurve (self: PyDb.Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -17719,13 +17719,13 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
     def setLinetypeScale (self: PyDb.Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMajorRadius (self: Ellipse,val : float)-> None :
+    def setMajorRadius (self: PyDb.Ellipse,val : float)-> None :
       '''                             '''
     ...
     def setMaterial (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMinorRadius (self: Ellipse,val : float)-> None :
+    def setMinorRadius (self: PyDb.Ellipse,val : float)-> None :
       '''                             '''
     ...
     def setOwnerId (self: PyDb.DbObject,owner: PyDb.ObjectId)-> None :
@@ -17750,16 +17750,16 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setRadiusRatio (self: Ellipse,val : float)-> None :
+    def setRadiusRatio (self: PyDb.Ellipse,val : float)-> None :
       '''                             '''
     ...
     def setReceiveShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setStartAngle (self: Ellipse,val : float)-> None :
+    def setStartAngle (self: PyDb.Ellipse,val : float)-> None :
       '''                             '''
     ...
-    def setStartParam (self: Ellipse,val : float)-> None :
+    def setStartParam (self: PyDb.Ellipse,val : float)-> None :
       '''                             '''
     ...
     def setVisibility (self: PyDb.Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -17771,7 +17771,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: PyDb.DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def startAngle (self: Ellipse)-> float :
+    def startAngle (self: PyDb.Ellipse)-> float :
       '''                             '''
     ...
     def swapIdWith (self: PyDb.DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -18291,16 +18291,16 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class EntityColor:
-    def ByBlock (self: EntityColor)-> PyDb.EntityColor :
+    def ByBlock (self: PyDb.EntityColor)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def ByLayer (self: EntityColor)-> PyDb.EntityColor :
+    def ByLayer (self: PyDb.EntityColor)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def ByNone (self: EntityColor)-> PyDb.EntityColor :
+    def ByNone (self: PyDb.EntityColor)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def Foreground (self: EntityColor)-> PyDb.EntityColor :
+    def Foreground (self: PyDb.EntityColor)-> PyDb.EntityColor :
       '''                             '''
     ...
 
@@ -18319,100 +18319,100 @@ __init__( (object)arg1, (int)arg2, (int)arg3, (int)arg4) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,unsigned char,unsigned char,unsigned char)'''
     ...
-    def black (self: EntityColor)-> PyDb.EntityColor :
+    def black (self: PyDb.EntityColor)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def blue (self: EntityColor)-> int :
+    def blue (self: PyDb.EntityColor)-> int :
       '''                             '''
     ...
-    def canResolveRGB (self: EntityColor)-> bool :
+    def canResolveRGB (self: PyDb.EntityColor)-> bool :
       '''                             '''
     ...
-    def colorIndex (self: EntityColor)-> int :
+    def colorIndex (self: PyDb.EntityColor)-> int :
       '''                             '''
     ...
-    def colorMethod (self: EntityColor)-> PyDb.ColorMethod :
+    def colorMethod (self: PyDb.EntityColor)-> PyDb.ColorMethod :
       '''                             '''
     ...
-    def getCOLORREF (self: EntityColor)-> int :
+    def getCOLORREF (self: PyDb.EntityColor)-> int :
       '''                             '''
     ...
-    def getRGB (self: EntityColor)-> int :
+    def getRGB (self: PyDb.EntityColor)-> int :
       '''                             '''
     ...
-    def getRGBM (self: EntityColor)-> int :
+    def getRGBM (self: PyDb.EntityColor)-> int :
       '''                             '''
     ...
-    def green (self: EntityColor)-> int :
+    def green (self: PyDb.EntityColor)-> int :
       '''                             '''
     ...
-    def isByACI (self: EntityColor)-> bool :
+    def isByACI (self: PyDb.EntityColor)-> bool :
       '''                             '''
     ...
-    def isByBlock (self: EntityColor)-> bool :
+    def isByBlock (self: PyDb.EntityColor)-> bool :
       '''                             '''
     ...
-    def isByColor (self: EntityColor)-> bool :
+    def isByColor (self: PyDb.EntityColor)-> bool :
       '''                             '''
     ...
-    def isByLayer (self: EntityColor)-> bool :
+    def isByLayer (self: PyDb.EntityColor)-> bool :
       '''                             '''
     ...
-    def isByPen (self: EntityColor)-> bool :
+    def isByPen (self: PyDb.EntityColor)-> bool :
       '''                             '''
     ...
-    def isForeground (self: EntityColor)-> bool :
+    def isForeground (self: PyDb.EntityColor)-> bool :
       '''                             '''
     ...
-    def isLayerFrozen (self: EntityColor)-> bool :
+    def isLayerFrozen (self: PyDb.EntityColor)-> bool :
       '''                             '''
     ...
-    def isLayerFrozenOrOff (self: EntityColor)-> bool :
+    def isLayerFrozenOrOff (self: PyDb.EntityColor)-> bool :
       '''                             '''
     ...
-    def isLayerOff (self: EntityColor)-> bool :
+    def isLayerOff (self: PyDb.EntityColor)-> bool :
       '''                             '''
     ...
-    def isNone (self: EntityColor)-> bool :
+    def isNone (self: PyDb.EntityColor)-> bool :
       '''                             '''
     ...
-    def layerIndex (self: EntityColor)-> int :
+    def layerIndex (self: PyDb.EntityColor)-> int :
       '''                             '''
     ...
-    def makeTrueColor (self: EntityColor)-> PyDb.EntityColor :
+    def makeTrueColor (self: PyDb.EntityColor)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def penIndex (self: EntityColor)-> int :
+    def penIndex (self: PyDb.EntityColor)-> int :
       '''                             '''
     ...
-    def red (self: EntityColor)-> int :
+    def red (self: PyDb.EntityColor)-> int :
       '''                             '''
     ...
-    def setByBlock (self: EntityColor)-> None :
+    def setByBlock (self: PyDb.EntityColor)-> None :
       '''                             '''
     ...
-    def setByLayer (self: EntityColor)-> None :
+    def setByLayer (self: PyDb.EntityColor)-> None :
       '''                             '''
     ...
-    def setCOLORREF (self: EntityColor,val : int)-> PyDb.ErrorStatus :
+    def setCOLORREF (self: PyDb.EntityColor,val : int)-> PyDb.ErrorStatus :
       '''                             '''
     ...
-    def setColorIndex (self: EntityColor,val : int)-> PyDb.ErrorStatus :
+    def setColorIndex (self: PyDb.EntityColor,val : int)-> PyDb.ErrorStatus :
       '''                             '''
     ...
-    def setForeground (self: EntityColor)-> None :
+    def setForeground (self: PyDb.EntityColor)-> None :
       '''                             '''
     ...
-    def setLayerIndex (self: EntityColor,val : int)-> PyDb.ErrorStatus :
+    def setLayerIndex (self: PyDb.EntityColor,val : int)-> PyDb.ErrorStatus :
       '''                             '''
     ...
-    def setLayerOff (self: EntityColor)-> None :
+    def setLayerOff (self: PyDb.EntityColor)-> None :
       '''                             '''
     ...
-    def setNone (self: EntityColor)-> None :
+    def setNone (self: PyDb.EntityColor)-> None :
       '''                             '''
     ...
-    def setPenIndex (self: EntityColor,val : int)-> PyDb.ErrorStatus :
+    def setPenIndex (self: PyDb.EntityColor,val : int)-> PyDb.ErrorStatus :
       '''                             '''
     ...
     def setRGB (self, *args, **kwargs)-> PyDb.ErrorStatus :
@@ -18426,10 +18426,10 @@ setRGB( (EntityColor)arg1, (int)arg2, (int)arg3, (int)arg4) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setRGB(class AcCmEntityColor {lvalue},unsigned char,unsigned char,unsigned char)'''
     ...
-    def setRGBM (self: EntityColor,val : int)-> PyDb.ErrorStatus :
+    def setRGBM (self: PyDb.EntityColor,val : int)-> PyDb.ErrorStatus :
       '''                             '''
     ...
-    def white (self: EntityColor)-> PyDb.EntityColor :
+    def white (self: PyDb.EntityColor)-> PyDb.EntityColor :
       '''                             '''
     ...
 
@@ -23360,7 +23360,7 @@ __init__( (object)arg1, (list)arg2, (SubentId)arg3) -> None :
     def kNull (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def objectIds (self: FullSubentPath)-> list :
+    def objectIds (self: PyDb.FullSubentPath)-> list :
       '''                             '''
     ...
     def setObjectIds (self, *args, **kwargs)-> None :
@@ -23369,7 +23369,7 @@ __init__( (object)arg1, (list)arg2, (SubentId)arg3) -> None :
     C++ signature :
         void setObjectIds(class PyDbFullSubentPath {lvalue},class boost::python::list)'''
     ...
-    def setSubentId (self: FullSubentPath)-> None :
+    def setSubentId (self: PyDb.FullSubentPath)-> None :
       '''                             '''
     ...
 
@@ -26467,13 +26467,13 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId)'''
     ...
-    def asOldId (self: ObjectId)-> int :
+    def asOldId (self: PyDb.ObjectId)-> int :
       '''                             '''
     ...
-    def convertToRedirectedId (self: ObjectId)-> bool :
+    def convertToRedirectedId (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def database (self: ObjectId)-> PyDb.Database :
+    def database (self: PyDb.ObjectId)-> PyDb.Database :
       '''                             '''
     ...
 
@@ -26481,43 +26481,43 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def fromOldId (oldid : int)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def handle (self: ObjectId)-> PyDb.Handle :
+    def handle (self: PyDb.ObjectId)-> PyDb.Handle :
       '''                             '''
     ...
-    def isDerivedFrom (self: ObjectId,desc : PyRx.RxClass)-> bool :
+    def isDerivedFrom (self: PyDb.ObjectId,desc : PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isEffectivelyErased (self: ObjectId)-> bool :
+    def isEffectivelyErased (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isErased (self: ObjectId)-> bool :
+    def isErased (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isNull (self: ObjectId)-> bool :
+    def isNull (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isResident (self: ObjectId)-> bool :
+    def isResident (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isValid (self: ObjectId)-> bool :
+    def isValid (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isWellBehaved (self: ObjectId)-> bool :
+    def isWellBehaved (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def nonForwardedHandle (self: ObjectId)-> PyDb.Handle :
+    def nonForwardedHandle (self: PyDb.ObjectId)-> PyDb.Handle :
       '''                             '''
     ...
-    def objectClass (self: ObjectId)-> PyRx.RxClass :
+    def objectClass (self: PyDb.ObjectId)-> PyRx.RxClass :
       '''                             '''
     ...
-    def objectLeftOnDisk (self: ObjectId)-> bool :
+    def objectLeftOnDisk (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def originalDatabase (self: ObjectId)-> PyDb.Database :
+    def originalDatabase (self: PyDb.ObjectId)-> PyDb.Database :
       '''                             '''
     ...
-    def setFromOldId (self: ObjectId,oldid : int)-> None :
+    def setFromOldId (self: PyDb.ObjectId,oldid : int)-> None :
       '''                             '''
     ...
 
@@ -26538,13 +26538,13 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId)'''
     ...
-    def asOldId (self: ObjectId)-> int :
+    def asOldId (self: PyDb.ObjectId)-> int :
       '''                             '''
     ...
-    def convertToRedirectedId (self: ObjectId)-> bool :
+    def convertToRedirectedId (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def database (self: ObjectId)-> PyDb.Database :
+    def database (self: PyDb.ObjectId)-> PyDb.Database :
       '''                             '''
     ...
 
@@ -26552,43 +26552,43 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def fromOldId (oldid : int)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def handle (self: ObjectId)-> PyDb.Handle :
+    def handle (self: PyDb.ObjectId)-> PyDb.Handle :
       '''                             '''
     ...
-    def isDerivedFrom (self: ObjectId,desc : PyRx.RxClass)-> bool :
+    def isDerivedFrom (self: PyDb.ObjectId,desc : PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isEffectivelyErased (self: ObjectId)-> bool :
+    def isEffectivelyErased (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isErased (self: ObjectId)-> bool :
+    def isErased (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isNull (self: ObjectId)-> bool :
+    def isNull (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isResident (self: ObjectId)-> bool :
+    def isResident (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isValid (self: ObjectId)-> bool :
+    def isValid (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isWellBehaved (self: ObjectId)-> bool :
+    def isWellBehaved (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def nonForwardedHandle (self: ObjectId)-> PyDb.Handle :
+    def nonForwardedHandle (self: PyDb.ObjectId)-> PyDb.Handle :
       '''                             '''
     ...
-    def objectClass (self: ObjectId)-> PyRx.RxClass :
+    def objectClass (self: PyDb.ObjectId)-> PyRx.RxClass :
       '''                             '''
     ...
-    def objectLeftOnDisk (self: ObjectId)-> bool :
+    def objectLeftOnDisk (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def originalDatabase (self: ObjectId)-> PyDb.Database :
+    def originalDatabase (self: PyDb.ObjectId)-> PyDb.Database :
       '''                             '''
     ...
-    def setFromOldId (self: ObjectId,oldid : int)-> None :
+    def setFromOldId (self: PyDb.ObjectId,oldid : int)-> None :
       '''                             '''
     ...
 
@@ -27694,13 +27694,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def fitTolerance (self: Spline)-> float :
       '''                             '''
     ...
-    def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self: PyDb.Curve,tol: Tol = default)-> PyGe.Curve3d :
       '''                             '''
     ...
-    def getArea (self: Curve)-> float :
+    def getArea (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
+    def getClosestPointTo (self: PyDb.Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -27709,19 +27709,19 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getControlPointAt (self: Spline,idx:int)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: float)-> float :
+    def getDistAtParam (self: PyDb.Curve,param: float)-> float :
       '''                             '''
     ...
-    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getDistAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getEndParam (self: Curve)-> float :
+    def getEndParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getEndPoint (self: Curve)-> PyGe.Point3d :
+    def getEndPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getField (self: PyDb.DbObject,prop: str=TEXT)-> PyDb.ObjectId :
@@ -27730,7 +27730,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getFirstDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
     def getFitData (self: Spline)-> tuple :
@@ -27763,7 +27763,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getNurbsData (self: Spline)-> tuple :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: float)-> list :
+    def getOffsetCurves (self: PyDb.Curve,dist: float)-> list :
       '''                             '''
     ...
     def getOffsetCurvesGivenPlaneNormal (self, *args, **kwargs)-> list :
@@ -27772,13 +27772,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     C++ signature :
         class boost::python::list getOffsetCurvesGivenPlaneNormal(class PyDbSpline {lvalue},class AcGeVector3d,double)'''
     ...
-    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+    def getOrthoProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane)-> PyDb.Curve :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: float)-> float :
+    def getParamAtDist (self: PyDb.Curve,dist: float)-> float :
       '''                             '''
     ...
-    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getParamAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getPlane (self: PyDb.Entity)-> PyGe.Plane :
@@ -27787,40 +27787,40 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: float)-> PyGe.Point3d :
+    def getPointAtDist (self: PyDb.Curve,dist: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+    def getPointAtParam (self: PyDb.Curve,param: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
+    def getProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getSecondDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def getSpline (self: Curve)-> PyDb.Spline :
+    def getSpline (self: PyDb.Curve)-> PyDb.Spline :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+    def getSplitCurves (self: PyDb.Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
+    def getSplitCurvesAtParam (self: PyDb.Curve,param: float)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+    def getSplitCurvesAtParams (self: PyDb.Curve,params: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
+    def getSplitCurvesAtPoint (self: PyDb.Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+    def getSplitCurvesAtPoints (self: PyDb.Curve,points: list)-> list :
       '''                             '''
     ...
-    def getStartParam (self: Curve)-> float :
+    def getStartParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getStartPoint (self: Curve)-> PyGe.Point3d :
+    def getStartPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getStretchPoints (self: PyDb.Entity)-> list :
@@ -27907,7 +27907,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self: Curve)-> bool :
+    def isClosed (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -27943,7 +27943,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def isPeriodic (self: Curve)-> bool :
+    def isPeriodic (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isPersistent (self: PyGi.Drawable)-> bool :
@@ -28138,7 +28138,7 @@ setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)
     def setFitTol (self: Spline,val : float)-> None :
       '''                             '''
     ...
-    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+    def setFromAcGeCurve (self: PyDb.Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
       '''                             '''
     ...
     def setHeight (self: Helix,val : float)-> None :
@@ -31498,31 +31498,31 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     C++ signature :
         class AcGePoint3d firstVertex(class PyDbLeader {lvalue})'''
     ...
-    def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self: PyDb.Curve,tol: Tol = default)-> PyGe.Curve3d :
       '''                             '''
     ...
-    def getArea (self: Curve)-> float :
+    def getArea (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
+    def getClosestPointTo (self: PyDb.Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: float)-> float :
+    def getDistAtParam (self: PyDb.Curve,param: float)-> float :
       '''                             '''
     ...
-    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getDistAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getEndParam (self: Curve)-> float :
+    def getEndParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getEndPoint (self: Curve)-> PyGe.Point3d :
+    def getEndPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getField (self: PyDb.DbObject,prop: str=TEXT)-> PyDb.ObjectId :
@@ -31531,7 +31531,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getFirstDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: PyDb.Entity)-> PyDb.Extents :
@@ -31549,19 +31549,19 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getHandle (self: PyDb.DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: float)-> list :
+    def getOffsetCurves (self: PyDb.Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: PyDb.Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+    def getOrthoProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane)-> PyDb.Curve :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: float)-> float :
+    def getParamAtDist (self: PyDb.Curve,dist: float)-> float :
       '''                             '''
     ...
-    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getParamAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getPlane (self: PyDb.Entity)-> PyGe.Plane :
@@ -31570,40 +31570,40 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: float)-> PyGe.Point3d :
+    def getPointAtDist (self: PyDb.Curve,dist: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+    def getPointAtParam (self: PyDb.Curve,param: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
+    def getProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getSecondDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def getSpline (self: Curve)-> PyDb.Spline :
+    def getSpline (self: PyDb.Curve)-> PyDb.Spline :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+    def getSplitCurves (self: PyDb.Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
+    def getSplitCurvesAtParam (self: PyDb.Curve,param: float)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+    def getSplitCurvesAtParams (self: PyDb.Curve,params: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
+    def getSplitCurvesAtPoint (self: PyDb.Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+    def getSplitCurvesAtPoints (self: PyDb.Curve,points: list)-> list :
       '''                             '''
     ...
-    def getStartParam (self: Curve)-> float :
+    def getStartParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getStartPoint (self: Curve)-> PyGe.Point3d :
+    def getStartPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getStretchPoints (self: PyDb.Entity)-> list :
@@ -31685,7 +31685,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self: Curve)-> bool :
+    def isClosed (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -31718,7 +31718,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def isPeriodic (self: Curve)-> bool :
+    def isPeriodic (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isPersistent (self: PyGi.Drawable)-> bool :
@@ -31844,7 +31844,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def reverseCurve (self: Curve)-> None :
+    def reverseCurve (self: PyDb.Curve)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -31971,7 +31971,7 @@ setDimldrblk( (Leader)arg1, (str)arg2) -> None :
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+    def setFromAcGeCurve (self: PyDb.Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
       '''                             '''
     ...
     def setHasArrowHead (self, *args, **kwargs)-> None :
@@ -32264,28 +32264,28 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getAcGeCurve (self: Line,tol: Tol = default)-> PyGe.LineSeg3d :
       '''                             '''
     ...
-    def getArea (self: Curve)-> float :
+    def getArea (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
+    def getClosestPointTo (self: PyDb.Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: float)-> float :
+    def getDistAtParam (self: PyDb.Curve,param: float)-> float :
       '''                             '''
     ...
-    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getDistAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getEndParam (self: Curve)-> float :
+    def getEndParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getEndPoint (self: Curve)-> PyGe.Point3d :
+    def getEndPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getField (self: PyDb.DbObject,prop: str=TEXT)-> PyDb.ObjectId :
@@ -32294,7 +32294,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getFirstDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: PyDb.Entity)-> PyDb.Extents :
@@ -32312,19 +32312,19 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getHandle (self: PyDb.DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: float)-> list :
+    def getOffsetCurves (self: PyDb.Curve,dist: float)-> list :
       '''                             '''
     ...
     def getOffsetCurvesGivenPlaneNormal (self: Line,val:PyGe.Vector3d,offset:float)-> list :
       '''                             '''
     ...
-    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+    def getOrthoProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane)-> PyDb.Curve :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: float)-> float :
+    def getParamAtDist (self: PyDb.Curve,dist: float)-> float :
       '''                             '''
     ...
-    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getParamAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getPlane (self: PyDb.Entity)-> PyGe.Plane :
@@ -32333,40 +32333,40 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: float)-> PyGe.Point3d :
+    def getPointAtDist (self: PyDb.Curve,dist: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+    def getPointAtParam (self: PyDb.Curve,param: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
+    def getProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getSecondDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def getSpline (self: Curve)-> PyDb.Spline :
+    def getSpline (self: PyDb.Curve)-> PyDb.Spline :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+    def getSplitCurves (self: PyDb.Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
+    def getSplitCurvesAtParam (self: PyDb.Curve,param: float)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+    def getSplitCurvesAtParams (self: PyDb.Curve,params: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
+    def getSplitCurvesAtPoint (self: PyDb.Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+    def getSplitCurvesAtPoints (self: PyDb.Curve,points: list)-> list :
       '''                             '''
     ...
-    def getStartParam (self: Curve)-> float :
+    def getStartParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getStartPoint (self: Curve)-> PyGe.Point3d :
+    def getStartPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getStretchPoints (self: PyDb.Entity)-> list :
@@ -32430,7 +32430,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self: Curve)-> bool :
+    def isClosed (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -32463,7 +32463,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def isPeriodic (self: Curve)-> bool :
+    def isPeriodic (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isPersistent (self: PyGi.Drawable)-> bool :
@@ -32556,7 +32556,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def reverseCurve (self: Curve)-> None :
+    def reverseCurve (self: PyDb.Curve)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -32589,7 +32589,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+    def setFromAcGeCurve (self: PyDb.Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -32745,34 +32745,34 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def altSuppressLeadingZeros (self: Dimension)-> bool :
+    def altSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressTrailingZeros (self: Dimension)-> bool :
+    def altSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroFeet (self: Dimension)-> bool :
+    def altSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroInches (self: Dimension)-> bool :
+    def altSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def altToleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self: Dimension)-> bool :
+    def altToleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def alternatePrefix (self: Dimension)-> str :
+    def alternatePrefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def alternateSuffix (self: Dimension)-> str :
+    def alternateSuffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def arcPoint (self, *args, **kwargs)-> PyGe.Point3d :
@@ -32793,7 +32793,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def blockId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def blockTransform (self: Dimension)-> PyGe.Matrix3d :
+    def blockTransform (self: PyDb.Dimension)-> PyGe.Matrix3d :
       '''                             '''
     ...
     def bounds (self: PyGi.Drawable,ext: PyDb.Extents)-> bool :
@@ -32811,7 +32811,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def castShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def centerMarkSize (self: Dimension)-> float :
+    def centerMarkSize (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def className (self, *args, **kwargs)-> str :
@@ -32859,25 +32859,25 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self: Dimension)-> PyDb.ObjectId :
+    def dimBlockId (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimBlockPosition (self: Dimension)-> PyGe.Point3d :
+    def dimBlockPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt1Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt2Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId :
+    def dimLineLinetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionStyle (self: Dimension)-> PyDb.ObjectId :
+    def dimensionStyle (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionText (self: Dimension)-> str :
+    def dimensionText (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def disableUndoRecording (self: PyDb.DbObject,disable: bool)-> None :
@@ -32898,7 +32898,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def drawableType (self: PyGi.Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def elevation (self: Dimension)-> float :
+    def elevation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def entityColor (self: PyDb.Entity)-> PyDb.EntityColor :
@@ -32919,10 +32919,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def fieldFromMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldFromMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
-    def fieldToMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldToMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
     def formatMeasurement (self, *args, **kwargs)-> str :
@@ -32936,19 +32936,19 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self: Dimension)-> None :
+    def generateLayout (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def getArrowFirstIsFlipped (self: Dimension)-> bool :
+    def getArrowFirstIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def getArrowSecondIsFlipped (self: Dimension)-> bool :
+    def getArrowSecondIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord :
+    def getDimstyleData (self: PyDb.Dimension)-> PyDb.DimStyleTableRecord :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -33013,7 +33013,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def highlight (self: PyDb.Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
-    def horizontalRotation (self: Dimension)-> float :
+    def horizontalRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def id (self: PyGi.Drawable)-> PyDb.ObjectId :
@@ -33022,13 +33022,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def inspection (self: Dimension)-> bool :
+    def inspection (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def inspectionFrame (self: Dimension)-> int :
+    def inspectionFrame (self: PyDb.Dimension)-> int :
       '''                             '''
     ...
-    def inspectionLabel (self: Dimension)-> str :
+    def inspectionLabel (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def intersectWith (self: PyDb.Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
@@ -33054,13 +33054,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isConstraintDynamic (self: Dimension)-> bool :
+    def isConstraintDynamic (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def isConstraintObject (self: Dimension)-> tuple :
+    def isConstraintObject (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def isDynamicDimension (self: Dimension)-> bool :
+    def isDynamicDimension (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -33069,7 +33069,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isErased (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self: Dimension)-> bool :
+    def isHorizontalRefTextRotation (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
@@ -33117,7 +33117,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isUndoing (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self: Dimension)-> bool :
+    def isUsingDefaultTextPosition (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: PyDb.DbObject)-> bool :
@@ -33153,10 +33153,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def measurement (self: Dimension)-> float :
+    def measurement (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def normal (self: Dimension)-> PyGe.Vector3d :
+    def normal (self: PyDb.Dimension)-> PyGe.Vector3d :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -33168,7 +33168,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def prefix (self: Dimension)-> str :
+    def prefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -33177,7 +33177,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def receiveShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def recomputeDimBlock (self: Dimension,force : bool=False)-> None :
+    def recomputeDimBlock (self: PyDb.Dimension,force : bool=False)-> None :
       '''                             '''
     ...
     def recordGraphicsModified (self: PyDb.Entity)-> None :
@@ -33198,10 +33198,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def removeTextField (self: Dimension)-> None :
+    def removeTextField (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def resetTextDefinedSize (self: Dimension)-> None :
+    def resetTextDefinedSize (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -33210,34 +33210,34 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAcDbObjectIdsInFlux (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def setAltSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAlternatePrefix (self: Dimension,val : str)-> None :
+    def setAlternatePrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setAlternateSuffix (self: Dimension,val : str)-> None :
+    def setAlternateSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setAnnotative (self: PyDb.DbObject,state : PyDb.AnnotativeStates)-> None :
@@ -33249,10 +33249,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     C++ signature :
         void setArcPoint(class PyDb2LineAngularDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowFirstIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setArrowSecondIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowSecondIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setAttributes (self: PyGi.Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -33267,31 +33267,31 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setColorIndex (self: PyDb.Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setConstraintDynamic (self: Dimension,val : bool)-> None :
+    def setConstraintDynamic (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: PyDb.Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setDimBlockId (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimBlockId (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimBlockPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setDimBlockPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setDimExt1Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt1Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimExt2Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt2Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimLineLinetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimLineLinetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionStyle (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimensionStyle (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionText (self: Dimension,val : str)-> None :
+    def setDimensionText (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setDimstyleData (self, *args, **kwargs)-> None :
@@ -33305,10 +33305,10 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
     ...
-    def setDynamicDimension (self: Dimension,val : bool)-> None :
+    def setDynamicDimension (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : float)-> None :
+    def setElevation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
     def setExtArcOn (self, *args, **kwargs)-> None :
@@ -33320,19 +33320,19 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
+    def setHorizontalRefTextRotation (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : float)-> None :
+    def setHorizontalRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setInspection (self: Dimension,val : bool)-> None :
+    def setInspection (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setInspectionFrame (self: Dimension,val : int)-> None :
+    def setInspectionFrame (self: PyDb.Dimension,val : int)-> None :
       '''                             '''
     ...
-    def setInspectionLabel (self: Dimension,val : str)-> None :
+    def setInspectionLabel (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -33350,7 +33350,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setMaterial (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self: Dimension,val : PyGe.Vector3d)-> None :
+    def setNormal (self: PyDb.Dimension,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
     def setOwnerId (self: PyDb.DbObject,owner: PyDb.ObjectId)-> None :
@@ -33372,7 +33372,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPrefix (self: Dimension,val : str)-> None :
+    def setPrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -33381,58 +33381,58 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setShouldParticipateInOPM (self: Dimension,val : bool)-> None :
+    def setShouldParticipateInOPM (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuffix (self: Dimension,val : str)-> None :
+    def setSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setSuppressAngularTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressAngularTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
+    def setTextAttachment (self: PyDb.Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
+    def setTextDefinedSize (self: PyDb.Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
+    def setTextLineSpacingFactor (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
+    def setTextLineSpacingStyle (self: PyDb.Dimension,val : PyDb.LineSpacingStyle)-> None :
       '''                             '''
     ...
-    def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setTextPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : float)-> None :
+    def setTextRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setUsingDefaultTextPosition (self: Dimension,val : bool)-> None :
+    def setUsingDefaultTextPosition (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setVisibility (self: PyDb.Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -33465,64 +33465,64 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setXLine2Start(class PyDb2LineAngularDimension {lvalue},class AcGePoint3d)'''
     ...
-    def shouldParticipateInOPM (self: Dimension)-> bool :
+    def shouldParticipateInOPM (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def snoop (self: PyDb.DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def suffix (self: Dimension)-> str :
+    def suffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def suppressAngularLeadingZeros (self: Dimension)-> bool :
+    def suppressAngularLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressAngularTrailingZeros (self: Dimension)-> bool :
+    def suppressAngularTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressLeadingZeros (self: Dimension)-> bool :
+    def suppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressTrailingZeros (self: Dimension)-> bool :
+    def suppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroFeet (self: Dimension)-> bool :
+    def suppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroInches (self: Dimension)-> bool :
+    def suppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def swapIdWith (self: PyDb.DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
+    def textAttachment (self: PyDb.Dimension)-> PyDb.MTextAttachmentPoint :
       '''                             '''
     ...
-    def textDefinedSize (self: Dimension)-> tuple :
+    def textDefinedSize (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def textLineSpacingFactor (self: Dimension)-> float :
+    def textLineSpacingFactor (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle :
+    def textLineSpacingStyle (self: PyDb.Dimension)-> PyDb.LineSpacingStyle :
       '''                             '''
     ...
-    def textPosition (self: Dimension)-> PyGe.Point3d :
+    def textPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def textRotation (self: Dimension)-> float :
+    def textRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def toleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def toleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def toleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroInches (self: Dimension)-> bool :
+    def toleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -33534,10 +33534,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def useDefaultTextPosition (self: Dimension)-> None :
+    def useDefaultTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def useSetTextPosition (self: Dimension)-> None :
+    def useSetTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def viewportDraw (self: PyGi.Drawable,vpdraw: PyGi.ViewportDraw)-> None :
@@ -35074,7 +35074,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def appendAttribute (self: BlockReference,val : Attribute)-> PyDb.ObjectId :
+    def appendAttribute (self: PyDb.BlockReference,val : Attribute)-> PyDb.ObjectId :
       '''                             '''
     ...
     def assertNotifyEnabled (self: PyDb.DbObject)-> None :
@@ -35086,16 +35086,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def attributeIds (self: BlockReference)-> list :
+    def attributeIds (self: PyDb.BlockReference)-> list :
       '''                             '''
     ...
     def blockId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def blockTableRecord (self: BlockReference)-> PyDb.ObjectId :
+    def blockTableRecord (self: PyDb.BlockReference)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def blockTransform (self: BlockReference)-> PyGe.Matrix3d :
+    def blockTransform (self: PyDb.BlockReference)-> PyGe.Matrix3d :
       '''                             '''
     ...
     def bounds (self: PyGi.Drawable,ext: PyDb.Extents)-> bool :
@@ -35134,10 +35134,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: PyDb.Entity)-> int :
       '''                             '''
     ...
-    def columnSpacing (self: MInsertBlock)-> float :
+    def columnSpacing (self: PyDb.MInsertBlock)-> float :
       '''                             '''
     ...
-    def columns (self: MInsertBlock)-> int :
+    def columns (self: PyDb.MInsertBlock)-> int :
       '''                             '''
     ...
     def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
@@ -35187,16 +35187,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def explode (self: PyDb.Entity)-> list :
       '''                             '''
     ...
-    def explodeToOwnerSpace (self: BlockReference)-> None :
+    def explodeToOwnerSpace (self: PyDb.BlockReference)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def geomExtentsBestFit (self: BlockReference,val : PyGe.Matrix3d=kIdentity)-> PyDb.Extents :
+    def geomExtentsBestFit (self: PyDb.BlockReference,val : PyGe.Matrix3d=kIdentity)-> PyDb.Extents :
       '''                             '''
     ...
-    def getBlockName (self: BlockReference)-> str :
+    def getBlockName (self: PyDb.BlockReference)-> str :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -35377,13 +35377,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def nonAnnotationBlockTransform (self: BlockReference)-> PyGe.Matrix3d :
+    def nonAnnotationBlockTransform (self: PyDb.BlockReference)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def nonAnnotationScaleFactors (self: BlockReference)-> PyGe.Scale3d :
+    def nonAnnotationScaleFactors (self: PyDb.BlockReference)-> PyGe.Scale3d :
       '''                             '''
     ...
-    def normal (self: BlockReference)-> PyGe.Vector3d :
+    def normal (self: PyDb.BlockReference)-> PyGe.Vector3d :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -35395,7 +35395,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def position (self: BlockReference)-> PyGe.Point3d :
+    def position (self: PyDb.BlockReference)-> PyGe.Point3d :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -35425,16 +35425,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotation (self: BlockReference)-> float :
+    def rotation (self: PyDb.BlockReference)-> float :
       '''                             '''
     ...
-    def rowSpacing (self: MInsertBlock)-> float :
+    def rowSpacing (self: PyDb.MInsertBlock)-> float :
       '''                             '''
     ...
-    def rows (self: MInsertBlock)-> int :
+    def rows (self: PyDb.MInsertBlock)-> int :
       '''                             '''
     ...
-    def scaleFactors (self: BlockReference)-> PyGe.Scale3d :
+    def scaleFactors (self: PyDb.BlockReference)-> PyGe.Scale3d :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: PyDb.DbObject)-> None :
@@ -35446,10 +35446,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAttributes (self: PyGi.Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setBlockTableRecord (self: BlockReference,val : ObjectId)-> None :
+    def setBlockTableRecord (self: PyDb.BlockReference,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setBlockTransform (self: BlockReference,val : PyGe.Matrix3d)-> None :
+    def setBlockTransform (self: PyDb.BlockReference,val : PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def setCastShadows (self: PyDb.Entity,val: bool)-> None :
@@ -35461,10 +35461,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setColorIndex (self: PyDb.Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setColumnSpacing (self: MInsertBlock,val : float)-> None :
+    def setColumnSpacing (self: PyDb.MInsertBlock,val : float)-> None :
       '''                             '''
     ...
-    def setColumns (self: MInsertBlock,val : int)-> None :
+    def setColumns (self: PyDb.MInsertBlock,val : int)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: PyDb.Entity,db: Database = current)-> None :
@@ -35488,7 +35488,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setMaterial (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self: BlockReference,val : PyGe.Vector3d)-> None :
+    def setNormal (self: PyDb.BlockReference,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
     def setOwnerId (self: PyDb.DbObject,owner: PyDb.ObjectId)-> None :
@@ -35510,7 +35510,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self: BlockReference,val : PyGe.Point3d)-> None :
+    def setPosition (self: PyDb.BlockReference,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -35519,16 +35519,16 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self: BlockReference,val : float)-> None :
+    def setRotation (self: PyDb.BlockReference,val : float)-> None :
       '''                             '''
     ...
-    def setRowSpacing (self: MInsertBlock,val : float)-> None :
+    def setRowSpacing (self: PyDb.MInsertBlock,val : float)-> None :
       '''                             '''
     ...
-    def setRows (self: MInsertBlock,val : int)-> None :
+    def setRows (self: PyDb.MInsertBlock,val : int)-> None :
       '''                             '''
     ...
-    def setScaleFactors (self: BlockReference,val : PyGe.Scale3d)-> None :
+    def setScaleFactors (self: PyDb.BlockReference,val : PyGe.Scale3d)-> None :
       '''                             '''
     ...
     def setVisibility (self: PyDb.Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -35546,7 +35546,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def treatAsAcDbBlockRefForExplode (self: BlockReference)-> bool :
+    def treatAsAcDbBlockRefForExplode (self: PyDb.BlockReference)-> bool :
       '''                             '''
     ...
     def upgradeFromNotify (self: PyDb.DbObject,wasWritable: bool)-> None :
@@ -41647,13 +41647,13 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def asOldId (self: ObjectId)-> int :
+    def asOldId (self: PyDb.ObjectId)-> int :
       '''                             '''
     ...
-    def convertToRedirectedId (self: ObjectId)-> bool :
+    def convertToRedirectedId (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def database (self: ObjectId)-> PyDb.Database :
+    def database (self: PyDb.ObjectId)-> PyDb.Database :
       '''                             '''
     ...
 
@@ -41661,43 +41661,43 @@ __init__( (object)arg1) -> None :
     def fromOldId (oldid : int)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def handle (self: ObjectId)-> PyDb.Handle :
+    def handle (self: PyDb.ObjectId)-> PyDb.Handle :
       '''                             '''
     ...
-    def isDerivedFrom (self: ObjectId,desc : PyRx.RxClass)-> bool :
+    def isDerivedFrom (self: PyDb.ObjectId,desc : PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isEffectivelyErased (self: ObjectId)-> bool :
+    def isEffectivelyErased (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isErased (self: ObjectId)-> bool :
+    def isErased (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isNull (self: ObjectId)-> bool :
+    def isNull (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isResident (self: ObjectId)-> bool :
+    def isResident (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isValid (self: ObjectId)-> bool :
+    def isValid (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isWellBehaved (self: ObjectId)-> bool :
+    def isWellBehaved (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def nonForwardedHandle (self: ObjectId)-> PyDb.Handle :
+    def nonForwardedHandle (self: PyDb.ObjectId)-> PyDb.Handle :
       '''                             '''
     ...
-    def objectClass (self: ObjectId)-> PyRx.RxClass :
+    def objectClass (self: PyDb.ObjectId)-> PyRx.RxClass :
       '''                             '''
     ...
-    def objectLeftOnDisk (self: ObjectId)-> bool :
+    def objectLeftOnDisk (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def originalDatabase (self: ObjectId)-> PyDb.Database :
+    def originalDatabase (self: PyDb.ObjectId)-> PyDb.Database :
       '''                             '''
     ...
-    def setFromOldId (self: ObjectId,oldid : int)-> None :
+    def setFromOldId (self: PyDb.ObjectId,oldid : int)-> None :
       '''                             '''
     ...
 
@@ -41797,34 +41797,34 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def altSuppressLeadingZeros (self: Dimension)-> bool :
+    def altSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressTrailingZeros (self: Dimension)-> bool :
+    def altSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroFeet (self: Dimension)-> bool :
+    def altSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroInches (self: Dimension)-> bool :
+    def altSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def altToleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self: Dimension)-> bool :
+    def altToleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def alternatePrefix (self: Dimension)-> str :
+    def alternatePrefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def alternateSuffix (self: Dimension)-> str :
+    def alternateSuffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def assertNotifyEnabled (self: PyDb.DbObject)-> None :
@@ -41839,7 +41839,7 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def blockId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def blockTransform (self: Dimension)-> PyGe.Matrix3d :
+    def blockTransform (self: PyDb.Dimension)-> PyGe.Matrix3d :
       '''                             '''
     ...
     def bounds (self: PyGi.Drawable,ext: PyDb.Extents)-> bool :
@@ -41857,7 +41857,7 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def castShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def centerMarkSize (self: Dimension)-> float :
+    def centerMarkSize (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def className (self, *args, **kwargs)-> str :
@@ -41911,25 +41911,25 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self: Dimension)-> PyDb.ObjectId :
+    def dimBlockId (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimBlockPosition (self: Dimension)-> PyGe.Point3d :
+    def dimBlockPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt1Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt2Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId :
+    def dimLineLinetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionStyle (self: Dimension)-> PyDb.ObjectId :
+    def dimensionStyle (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionText (self: Dimension)-> str :
+    def dimensionText (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def disableUndoRecording (self: PyDb.DbObject,disable: bool)-> None :
@@ -41950,7 +41950,7 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def drawableType (self: PyGi.Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def elevation (self: Dimension)-> float :
+    def elevation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def entityColor (self: PyDb.Entity)-> PyDb.EntityColor :
@@ -41965,10 +41965,10 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def fieldFromMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldFromMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
-    def fieldToMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldToMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
     def formatMeasurement (self, *args, **kwargs)-> str :
@@ -41982,19 +41982,19 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self: Dimension)-> None :
+    def generateLayout (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def getArrowFirstIsFlipped (self: Dimension)-> bool :
+    def getArrowFirstIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def getArrowSecondIsFlipped (self: Dimension)-> bool :
+    def getArrowSecondIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord :
+    def getDimstyleData (self: PyDb.Dimension)-> PyDb.DimStyleTableRecord :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -42059,7 +42059,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def highlight (self: PyDb.Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
-    def horizontalRotation (self: Dimension)-> float :
+    def horizontalRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def id (self: PyGi.Drawable)-> PyDb.ObjectId :
@@ -42068,13 +42068,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def inspection (self: Dimension)-> bool :
+    def inspection (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def inspectionFrame (self: Dimension)-> int :
+    def inspectionFrame (self: PyDb.Dimension)-> int :
       '''                             '''
     ...
-    def inspectionLabel (self: Dimension)-> str :
+    def inspectionLabel (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def intersectWith (self: PyDb.Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
@@ -42100,13 +42100,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isConstraintDynamic (self: Dimension)-> bool :
+    def isConstraintDynamic (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def isConstraintObject (self: Dimension)-> tuple :
+    def isConstraintObject (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def isDynamicDimension (self: Dimension)-> bool :
+    def isDynamicDimension (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -42115,7 +42115,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isErased (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self: Dimension)-> bool :
+    def isHorizontalRefTextRotation (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
@@ -42163,7 +42163,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isUndoing (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self: Dimension)-> bool :
+    def isUsingDefaultTextPosition (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isUsingXAxis (self, *args, **kwargs)-> bool :
@@ -42217,10 +42217,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def measurement (self: Dimension)-> float :
+    def measurement (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def normal (self: Dimension)-> PyGe.Vector3d :
+    def normal (self: PyDb.Dimension)-> PyGe.Vector3d :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -42238,7 +42238,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def prefix (self: Dimension)-> str :
+    def prefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -42247,7 +42247,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def receiveShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def recomputeDimBlock (self: Dimension,force : bool=False)-> None :
+    def recomputeDimBlock (self: PyDb.Dimension,force : bool=False)-> None :
       '''                             '''
     ...
     def recordGraphicsModified (self: PyDb.Entity)-> None :
@@ -42268,10 +42268,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def removeTextField (self: Dimension)-> None :
+    def removeTextField (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def resetTextDefinedSize (self: Dimension)-> None :
+    def resetTextDefinedSize (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -42280,43 +42280,43 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAcDbObjectIdsInFlux (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def setAltSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAlternatePrefix (self: Dimension,val : str)-> None :
+    def setAlternatePrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setAlternateSuffix (self: Dimension,val : str)-> None :
+    def setAlternateSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setAnnotative (self: PyDb.DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
-    def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowFirstIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setArrowSecondIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowSecondIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setAttributes (self: PyGi.Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -42331,7 +42331,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setColorIndex (self: PyDb.Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setConstraintDynamic (self: Dimension,val : bool)-> None :
+    def setConstraintDynamic (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: PyDb.Entity,db: Database = current)-> None :
@@ -42343,25 +42343,25 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     C++ signature :
         void setDefiningPoint(class PyDbOrdinateDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setDimBlockId (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimBlockId (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimBlockPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setDimBlockPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setDimExt1Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt1Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimExt2Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt2Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimLineLinetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimLineLinetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionStyle (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimensionStyle (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionText (self: Dimension,val : str)-> None :
+    def setDimensionText (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setDimstyleData (self, *args, **kwargs)-> None :
@@ -42375,28 +42375,28 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
     ...
-    def setDynamicDimension (self: Dimension,val : bool)-> None :
+    def setDynamicDimension (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : float)-> None :
+    def setElevation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
+    def setHorizontalRefTextRotation (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : float)-> None :
+    def setHorizontalRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setInspection (self: Dimension,val : bool)-> None :
+    def setInspection (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setInspectionFrame (self: Dimension,val : int)-> None :
+    def setInspectionFrame (self: PyDb.Dimension,val : int)-> None :
       '''                             '''
     ...
-    def setInspectionLabel (self: Dimension,val : str)-> None :
+    def setInspectionLabel (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -42420,7 +42420,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setMaterial (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self: Dimension,val : PyGe.Vector3d)-> None :
+    def setNormal (self: PyDb.Dimension,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
     def setOrigin (self, *args, **kwargs)-> None :
@@ -42448,7 +42448,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPrefix (self: Dimension,val : str)-> None :
+    def setPrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -42457,58 +42457,58 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setShouldParticipateInOPM (self: Dimension,val : bool)-> None :
+    def setShouldParticipateInOPM (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuffix (self: Dimension,val : str)-> None :
+    def setSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setSuppressAngularTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressAngularTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
+    def setTextAttachment (self: PyDb.Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
+    def setTextDefinedSize (self: PyDb.Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
+    def setTextLineSpacingFactor (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
+    def setTextLineSpacingStyle (self: PyDb.Dimension,val : PyDb.LineSpacingStyle)-> None :
       '''                             '''
     ...
-    def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setTextPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : float)-> None :
+    def setTextRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setUsingDefaultTextPosition (self: Dimension,val : bool)-> None :
+    def setUsingDefaultTextPosition (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setUsingXAxis (self, *args, **kwargs)-> None :
@@ -42529,64 +42529,64 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: PyDb.DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def shouldParticipateInOPM (self: Dimension)-> bool :
+    def shouldParticipateInOPM (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def snoop (self: PyDb.DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def suffix (self: Dimension)-> str :
+    def suffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def suppressAngularLeadingZeros (self: Dimension)-> bool :
+    def suppressAngularLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressAngularTrailingZeros (self: Dimension)-> bool :
+    def suppressAngularTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressLeadingZeros (self: Dimension)-> bool :
+    def suppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressTrailingZeros (self: Dimension)-> bool :
+    def suppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroFeet (self: Dimension)-> bool :
+    def suppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroInches (self: Dimension)-> bool :
+    def suppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def swapIdWith (self: PyDb.DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
+    def textAttachment (self: PyDb.Dimension)-> PyDb.MTextAttachmentPoint :
       '''                             '''
     ...
-    def textDefinedSize (self: Dimension)-> tuple :
+    def textDefinedSize (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def textLineSpacingFactor (self: Dimension)-> float :
+    def textLineSpacingFactor (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle :
+    def textLineSpacingStyle (self: PyDb.Dimension)-> PyDb.LineSpacingStyle :
       '''                             '''
     ...
-    def textPosition (self: Dimension)-> PyGe.Point3d :
+    def textPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def textRotation (self: Dimension)-> float :
+    def textRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def toleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def toleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def toleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroInches (self: Dimension)-> bool :
+    def toleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -42598,10 +42598,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def useDefaultTextPosition (self: Dimension)-> None :
+    def useDefaultTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def useSetTextPosition (self: Dimension)-> None :
+    def useSetTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def useXAxis (self, *args, **kwargs)-> None :
@@ -45893,34 +45893,34 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def altSuppressLeadingZeros (self: Dimension)-> bool :
+    def altSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressTrailingZeros (self: Dimension)-> bool :
+    def altSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroFeet (self: Dimension)-> bool :
+    def altSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroInches (self: Dimension)-> bool :
+    def altSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def altToleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self: Dimension)-> bool :
+    def altToleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def alternatePrefix (self: Dimension)-> str :
+    def alternatePrefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def alternateSuffix (self: Dimension)-> str :
+    def alternateSuffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def arcPoint (self, *args, **kwargs)-> PyGe.Point3d :
@@ -45941,7 +45941,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def blockId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def blockTransform (self: Dimension)-> PyGe.Matrix3d :
+    def blockTransform (self: PyDb.Dimension)-> PyGe.Matrix3d :
       '''                             '''
     ...
     def bounds (self: PyGi.Drawable,ext: PyDb.Extents)-> bool :
@@ -45959,7 +45959,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def castShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def centerMarkSize (self: Dimension)-> float :
+    def centerMarkSize (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def centerPoint (self, *args, **kwargs)-> PyGe.Point3d :
@@ -46013,25 +46013,25 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self: Dimension)-> PyDb.ObjectId :
+    def dimBlockId (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimBlockPosition (self: Dimension)-> PyGe.Point3d :
+    def dimBlockPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt1Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt2Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId :
+    def dimLineLinetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionStyle (self: Dimension)-> PyDb.ObjectId :
+    def dimensionStyle (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionText (self: Dimension)-> str :
+    def dimensionText (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def disableUndoRecording (self: PyDb.DbObject,disable: bool)-> None :
@@ -46052,7 +46052,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def drawableType (self: PyGi.Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def elevation (self: Dimension)-> float :
+    def elevation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def entityColor (self: PyDb.Entity)-> PyDb.EntityColor :
@@ -46073,10 +46073,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def fieldFromMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldFromMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
-    def fieldToMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldToMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
     def formatMeasurement (self, *args, **kwargs)-> str :
@@ -46090,19 +46090,19 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self: Dimension)-> None :
+    def generateLayout (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def getArrowFirstIsFlipped (self: Dimension)-> bool :
+    def getArrowFirstIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def getArrowSecondIsFlipped (self: Dimension)-> bool :
+    def getArrowSecondIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord :
+    def getDimstyleData (self: PyDb.Dimension)-> PyDb.DimStyleTableRecord :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -46167,7 +46167,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def highlight (self: PyDb.Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
-    def horizontalRotation (self: Dimension)-> float :
+    def horizontalRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def id (self: PyGi.Drawable)-> PyDb.ObjectId :
@@ -46176,13 +46176,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def inspection (self: Dimension)-> bool :
+    def inspection (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def inspectionFrame (self: Dimension)-> int :
+    def inspectionFrame (self: PyDb.Dimension)-> int :
       '''                             '''
     ...
-    def inspectionLabel (self: Dimension)-> str :
+    def inspectionLabel (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def intersectWith (self: PyDb.Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
@@ -46208,13 +46208,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isConstraintDynamic (self: Dimension)-> bool :
+    def isConstraintDynamic (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def isConstraintObject (self: Dimension)-> tuple :
+    def isConstraintObject (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def isDynamicDimension (self: Dimension)-> bool :
+    def isDynamicDimension (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -46223,7 +46223,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isErased (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self: Dimension)-> bool :
+    def isHorizontalRefTextRotation (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
@@ -46271,7 +46271,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isUndoing (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self: Dimension)-> bool :
+    def isUsingDefaultTextPosition (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: PyDb.DbObject)-> bool :
@@ -46307,10 +46307,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def measurement (self: Dimension)-> float :
+    def measurement (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def normal (self: Dimension)-> PyGe.Vector3d :
+    def normal (self: PyDb.Dimension)-> PyGe.Vector3d :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -46322,7 +46322,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def prefix (self: Dimension)-> str :
+    def prefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -46331,7 +46331,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def receiveShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def recomputeDimBlock (self: Dimension,force : bool=False)-> None :
+    def recomputeDimBlock (self: PyDb.Dimension,force : bool=False)-> None :
       '''                             '''
     ...
     def recordGraphicsModified (self: PyDb.Entity)-> None :
@@ -46352,10 +46352,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def removeTextField (self: Dimension)-> None :
+    def removeTextField (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def resetTextDefinedSize (self: Dimension)-> None :
+    def resetTextDefinedSize (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -46364,34 +46364,34 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAcDbObjectIdsInFlux (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def setAltSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAlternatePrefix (self: Dimension,val : str)-> None :
+    def setAlternatePrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setAlternateSuffix (self: Dimension,val : str)-> None :
+    def setAlternateSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setAnnotative (self: PyDb.DbObject,state : PyDb.AnnotativeStates)-> None :
@@ -46403,10 +46403,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     C++ signature :
         void setArcPoint(class PyDb3PointAngularDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowFirstIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setArrowSecondIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowSecondIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setAttributes (self: PyGi.Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -46427,31 +46427,31 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setColorIndex (self: PyDb.Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setConstraintDynamic (self: Dimension,val : bool)-> None :
+    def setConstraintDynamic (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: PyDb.Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setDimBlockId (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimBlockId (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimBlockPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setDimBlockPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setDimExt1Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt1Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimExt2Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt2Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimLineLinetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimLineLinetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionStyle (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimensionStyle (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionText (self: Dimension,val : str)-> None :
+    def setDimensionText (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setDimstyleData (self, *args, **kwargs)-> None :
@@ -46465,10 +46465,10 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
     ...
-    def setDynamicDimension (self: Dimension,val : bool)-> None :
+    def setDynamicDimension (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : float)-> None :
+    def setElevation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
     def setExtArcOn (self, *args, **kwargs)-> None :
@@ -46480,19 +46480,19 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
+    def setHorizontalRefTextRotation (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : float)-> None :
+    def setHorizontalRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setInspection (self: Dimension,val : bool)-> None :
+    def setInspection (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setInspectionFrame (self: Dimension,val : int)-> None :
+    def setInspectionFrame (self: PyDb.Dimension,val : int)-> None :
       '''                             '''
     ...
-    def setInspectionLabel (self: Dimension,val : str)-> None :
+    def setInspectionLabel (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -46510,7 +46510,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setMaterial (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self: Dimension,val : PyGe.Vector3d)-> None :
+    def setNormal (self: PyDb.Dimension,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
     def setOwnerId (self: PyDb.DbObject,owner: PyDb.ObjectId)-> None :
@@ -46532,7 +46532,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPrefix (self: Dimension,val : str)-> None :
+    def setPrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -46541,58 +46541,58 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setShouldParticipateInOPM (self: Dimension,val : bool)-> None :
+    def setShouldParticipateInOPM (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuffix (self: Dimension,val : str)-> None :
+    def setSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setSuppressAngularTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressAngularTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
+    def setTextAttachment (self: PyDb.Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
+    def setTextDefinedSize (self: PyDb.Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
+    def setTextLineSpacingFactor (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
+    def setTextLineSpacingStyle (self: PyDb.Dimension,val : PyDb.LineSpacingStyle)-> None :
       '''                             '''
     ...
-    def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setTextPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : float)-> None :
+    def setTextRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setUsingDefaultTextPosition (self: Dimension,val : bool)-> None :
+    def setUsingDefaultTextPosition (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setVisibility (self: PyDb.Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -46613,64 +46613,64 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setXLine2Point(class PyDb3PointAngularDimension {lvalue},class AcGePoint3d)'''
     ...
-    def shouldParticipateInOPM (self: Dimension)-> bool :
+    def shouldParticipateInOPM (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def snoop (self: PyDb.DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def suffix (self: Dimension)-> str :
+    def suffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def suppressAngularLeadingZeros (self: Dimension)-> bool :
+    def suppressAngularLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressAngularTrailingZeros (self: Dimension)-> bool :
+    def suppressAngularTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressLeadingZeros (self: Dimension)-> bool :
+    def suppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressTrailingZeros (self: Dimension)-> bool :
+    def suppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroFeet (self: Dimension)-> bool :
+    def suppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroInches (self: Dimension)-> bool :
+    def suppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def swapIdWith (self: PyDb.DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
+    def textAttachment (self: PyDb.Dimension)-> PyDb.MTextAttachmentPoint :
       '''                             '''
     ...
-    def textDefinedSize (self: Dimension)-> tuple :
+    def textDefinedSize (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def textLineSpacingFactor (self: Dimension)-> float :
+    def textLineSpacingFactor (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle :
+    def textLineSpacingStyle (self: PyDb.Dimension)-> PyDb.LineSpacingStyle :
       '''                             '''
     ...
-    def textPosition (self: Dimension)-> PyGe.Point3d :
+    def textPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def textRotation (self: Dimension)-> float :
+    def textRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def toleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def toleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def toleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroInches (self: Dimension)-> bool :
+    def toleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -46682,10 +46682,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def useDefaultTextPosition (self: Dimension)-> None :
+    def useDefaultTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def useSetTextPosition (self: Dimension)-> None :
+    def useSetTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def viewportDraw (self: PyGi.Drawable,vpdraw: PyGi.ViewportDraw)-> None :
@@ -49941,13 +49941,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getArcSeg3dAt (self: Polyline,idx:int)-> PyGe.CircArc3d :
       '''                             '''
     ...
-    def getArea (self: Curve)-> float :
+    def getArea (self: PyDb.Curve)-> float :
       '''                             '''
     ...
     def getBulgeAt (self: Polyline,idx:int)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
+    def getClosestPointTo (self: PyDb.Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -49956,19 +49956,19 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getConstantWidth (self: Polyline)-> float :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: float)-> float :
+    def getDistAtParam (self: PyDb.Curve,param: float)-> float :
       '''                             '''
     ...
-    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getDistAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getEcs (self: Polyline)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getEndParam (self: Curve)-> float :
+    def getEndParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getEndPoint (self: Curve)-> PyGe.Point3d :
+    def getEndPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getEndWidthAt (self: Polyline,idx:int)-> float :
@@ -49980,7 +49980,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getFirstDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: PyDb.Entity)-> PyDb.Extents :
@@ -50004,19 +50004,19 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getLineSeg3dAt (self: Polyline,idx:int)-> PyGe.LineSeg3d :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: float)-> list :
+    def getOffsetCurves (self: PyDb.Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: PyDb.Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+    def getOrthoProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane)-> PyDb.Curve :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: float)-> float :
+    def getParamAtDist (self: PyDb.Curve,dist: float)-> float :
       '''                             '''
     ...
-    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getParamAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getPlane (self: PyDb.Entity)-> PyGe.Plane :
@@ -50031,40 +50031,40 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPoint3dAt (self: Polyline,idx:int)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: float)-> PyGe.Point3d :
+    def getPointAtDist (self: PyDb.Curve,dist: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+    def getPointAtParam (self: PyDb.Curve,param: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
+    def getProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getSecondDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def getSpline (self: Curve)-> PyDb.Spline :
+    def getSpline (self: PyDb.Curve)-> PyDb.Spline :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+    def getSplitCurves (self: PyDb.Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
+    def getSplitCurvesAtParam (self: PyDb.Curve,param: float)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+    def getSplitCurvesAtParams (self: PyDb.Curve,params: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
+    def getSplitCurvesAtPoint (self: PyDb.Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+    def getSplitCurvesAtPoints (self: PyDb.Curve,points: list)-> list :
       '''                             '''
     ...
-    def getStartParam (self: Curve)-> float :
+    def getStartParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getStartPoint (self: Curve)-> PyGe.Point3d :
+    def getStartPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getStartWidthAt (self: Polyline,idx:int)-> float :
@@ -50143,7 +50143,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self: Curve)-> bool :
+    def isClosed (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -50179,7 +50179,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isOnlyLines (self: Polyline)-> bool :
       '''                             '''
     ...
-    def isPeriodic (self: Curve)-> bool :
+    def isPeriodic (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isPersistent (self: PyGi.Drawable)-> bool :
@@ -50293,7 +50293,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def reset (self: Polyline,reuse:bool,numVerts:int)-> None :
       '''                             '''
     ...
-    def reverseCurve (self: Curve)-> None :
+    def reverseCurve (self: PyDb.Curve)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -50338,7 +50338,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+    def setFromAcGeCurve (self: PyDb.Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -50651,31 +50651,31 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self: PyDb.Curve,tol: Tol = default)-> PyGe.Curve3d :
       '''                             '''
     ...
-    def getArea (self: Curve)-> float :
+    def getArea (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
+    def getClosestPointTo (self: PyDb.Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: float)-> float :
+    def getDistAtParam (self: PyDb.Curve,param: float)-> float :
       '''                             '''
     ...
-    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getDistAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getEndParam (self: Curve)-> float :
+    def getEndParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getEndPoint (self: Curve)-> PyGe.Point3d :
+    def getEndPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getField (self: PyDb.DbObject,prop: str=TEXT)-> PyDb.ObjectId :
@@ -50684,7 +50684,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getFirstDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: PyDb.Entity)-> PyDb.Extents :
@@ -50702,19 +50702,19 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getHandle (self: PyDb.DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: float)-> list :
+    def getOffsetCurves (self: PyDb.Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: PyDb.Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+    def getOrthoProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane)-> PyDb.Curve :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: float)-> float :
+    def getParamAtDist (self: PyDb.Curve,dist: float)-> float :
       '''                             '''
     ...
-    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getParamAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getPlane (self: PyDb.Entity)-> PyGe.Plane :
@@ -50723,40 +50723,40 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: float)-> PyGe.Point3d :
+    def getPointAtDist (self: PyDb.Curve,dist: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+    def getPointAtParam (self: PyDb.Curve,param: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
+    def getProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getSecondDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def getSpline (self: Curve)-> PyDb.Spline :
+    def getSpline (self: PyDb.Curve)-> PyDb.Spline :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+    def getSplitCurves (self: PyDb.Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
+    def getSplitCurvesAtParam (self: PyDb.Curve,param: float)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+    def getSplitCurvesAtParams (self: PyDb.Curve,params: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
+    def getSplitCurvesAtPoint (self: PyDb.Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+    def getSplitCurvesAtPoints (self: PyDb.Curve,points: list)-> list :
       '''                             '''
     ...
-    def getStartParam (self: Curve)-> float :
+    def getStartParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getStartPoint (self: Curve)-> PyGe.Point3d :
+    def getStartPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getStretchPoints (self: PyDb.Entity)-> list :
@@ -50831,7 +50831,7 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self: Curve)-> bool :
+    def isClosed (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -50870,7 +50870,7 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def isPeriodic (self: Curve)-> bool :
+    def isPeriodic (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isPersistent (self: PyGi.Drawable)-> bool :
@@ -51008,7 +51008,7 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def reverseCurve (self: Curve)-> None :
+    def reverseCurve (self: PyDb.Curve)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -51068,7 +51068,7 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+    def setFromAcGeCurve (self: PyDb.Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -51395,31 +51395,31 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self: PyDb.Curve,tol: Tol = default)-> PyGe.Curve3d :
       '''                             '''
     ...
-    def getArea (self: Curve)-> float :
+    def getArea (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
+    def getClosestPointTo (self: PyDb.Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: float)-> float :
+    def getDistAtParam (self: PyDb.Curve,param: float)-> float :
       '''                             '''
     ...
-    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getDistAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getEndParam (self: Curve)-> float :
+    def getEndParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getEndPoint (self: Curve)-> PyGe.Point3d :
+    def getEndPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getField (self: PyDb.DbObject,prop: str=TEXT)-> PyDb.ObjectId :
@@ -51428,7 +51428,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getFirstDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: PyDb.Entity)-> PyDb.Extents :
@@ -51446,19 +51446,19 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getHandle (self: PyDb.DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: float)-> list :
+    def getOffsetCurves (self: PyDb.Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: PyDb.Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+    def getOrthoProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane)-> PyDb.Curve :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: float)-> float :
+    def getParamAtDist (self: PyDb.Curve,dist: float)-> float :
       '''                             '''
     ...
-    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getParamAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getPlane (self: PyDb.Entity)-> PyGe.Plane :
@@ -51467,40 +51467,40 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: float)-> PyGe.Point3d :
+    def getPointAtDist (self: PyDb.Curve,dist: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+    def getPointAtParam (self: PyDb.Curve,param: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
+    def getProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getSecondDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def getSpline (self: Curve)-> PyDb.Spline :
+    def getSpline (self: PyDb.Curve)-> PyDb.Spline :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+    def getSplitCurves (self: PyDb.Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
+    def getSplitCurvesAtParam (self: PyDb.Curve,param: float)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+    def getSplitCurvesAtParams (self: PyDb.Curve,params: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
+    def getSplitCurvesAtPoint (self: PyDb.Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+    def getSplitCurvesAtPoints (self: PyDb.Curve,points: list)-> list :
       '''                             '''
     ...
-    def getStartParam (self: Curve)-> float :
+    def getStartParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getStartPoint (self: Curve)-> PyGe.Point3d :
+    def getStartPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getStretchPoints (self: PyDb.Entity)-> list :
@@ -51575,7 +51575,7 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self: Curve)-> bool :
+    def isClosed (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -51608,7 +51608,7 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def isPeriodic (self: Curve)-> bool :
+    def isPeriodic (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isPersistent (self: PyGi.Drawable)-> bool :
@@ -51734,7 +51734,7 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def reverseCurve (self: Curve)-> None :
+    def reverseCurve (self: PyDb.Curve)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -51770,7 +51770,7 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+    def setFromAcGeCurve (self: PyDb.Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -52215,7 +52215,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def position (self: Polyline3dVertex)-> PyGe.Point3d :
+    def position (self: PyDb.Polyline3dVertex)-> PyGe.Point3d :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -52303,7 +52303,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self: Polyline3dVertex,val : PyGe.Point3d)-> None :
+    def setPosition (self: PyDb.Polyline3dVertex,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -52333,7 +52333,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def vertexType (self: Polyline3dVertex)-> object :
+    def vertexType (self: PyDb.Polyline3dVertex)-> object :
       '''                             '''
     ...
     def viewportDraw (self: PyGi.Drawable,vpdraw: PyGi.ViewportDraw)-> None :
@@ -52491,34 +52491,34 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def altSuppressLeadingZeros (self: Dimension)-> bool :
+    def altSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressTrailingZeros (self: Dimension)-> bool :
+    def altSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroFeet (self: Dimension)-> bool :
+    def altSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroInches (self: Dimension)-> bool :
+    def altSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def altToleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self: Dimension)-> bool :
+    def altToleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def alternatePrefix (self: Dimension)-> str :
+    def alternatePrefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def alternateSuffix (self: Dimension)-> str :
+    def alternateSuffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def assertNotifyEnabled (self: PyDb.DbObject)-> None :
@@ -52533,7 +52533,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def blockId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def blockTransform (self: Dimension)-> PyGe.Matrix3d :
+    def blockTransform (self: PyDb.Dimension)-> PyGe.Matrix3d :
       '''                             '''
     ...
     def bounds (self: PyGi.Drawable,ext: PyDb.Extents)-> bool :
@@ -52557,7 +52557,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     C++ signature :
         class AcGePoint3d center(class PyDbRadialDimension {lvalue})'''
     ...
-    def centerMarkSize (self: Dimension)-> float :
+    def centerMarkSize (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def chordPoint (self, *args, **kwargs)-> PyGe.Point3d :
@@ -52611,25 +52611,25 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self: Dimension)-> PyDb.ObjectId :
+    def dimBlockId (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimBlockPosition (self: Dimension)-> PyGe.Point3d :
+    def dimBlockPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt1Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt2Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId :
+    def dimLineLinetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionStyle (self: Dimension)-> PyDb.ObjectId :
+    def dimensionStyle (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionText (self: Dimension)-> str :
+    def dimensionText (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def disableUndoRecording (self: PyDb.DbObject,disable: bool)-> None :
@@ -52650,7 +52650,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def drawableType (self: PyGi.Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def elevation (self: Dimension)-> float :
+    def elevation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def entityColor (self: PyDb.Entity)-> PyDb.EntityColor :
@@ -52677,10 +52677,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def fieldFromMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldFromMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
-    def fieldToMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldToMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
     def formatMeasurement (self, *args, **kwargs)-> str :
@@ -52694,19 +52694,19 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self: Dimension)-> None :
+    def generateLayout (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def getArrowFirstIsFlipped (self: Dimension)-> bool :
+    def getArrowFirstIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def getArrowSecondIsFlipped (self: Dimension)-> bool :
+    def getArrowSecondIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord :
+    def getDimstyleData (self: PyDb.Dimension)-> PyDb.DimStyleTableRecord :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -52771,7 +52771,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def highlight (self: PyDb.Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
-    def horizontalRotation (self: Dimension)-> float :
+    def horizontalRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def id (self: PyGi.Drawable)-> PyDb.ObjectId :
@@ -52780,13 +52780,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def inspection (self: Dimension)-> bool :
+    def inspection (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def inspectionFrame (self: Dimension)-> int :
+    def inspectionFrame (self: PyDb.Dimension)-> int :
       '''                             '''
     ...
-    def inspectionLabel (self: Dimension)-> str :
+    def inspectionLabel (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def intersectWith (self: PyDb.Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
@@ -52812,13 +52812,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isConstraintDynamic (self: Dimension)-> bool :
+    def isConstraintDynamic (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def isConstraintObject (self: Dimension)-> tuple :
+    def isConstraintObject (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def isDynamicDimension (self: Dimension)-> bool :
+    def isDynamicDimension (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -52827,7 +52827,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isErased (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self: Dimension)-> bool :
+    def isHorizontalRefTextRotation (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
@@ -52875,7 +52875,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isUndoing (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self: Dimension)-> bool :
+    def isUsingDefaultTextPosition (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: PyDb.DbObject)-> bool :
@@ -52917,10 +52917,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def measurement (self: Dimension)-> float :
+    def measurement (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def normal (self: Dimension)-> PyGe.Vector3d :
+    def normal (self: PyDb.Dimension)-> PyGe.Vector3d :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -52932,7 +52932,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def prefix (self: Dimension)-> str :
+    def prefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -52941,7 +52941,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def receiveShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def recomputeDimBlock (self: Dimension,force : bool=False)-> None :
+    def recomputeDimBlock (self: PyDb.Dimension,force : bool=False)-> None :
       '''                             '''
     ...
     def recordGraphicsModified (self: PyDb.Entity)-> None :
@@ -52962,10 +52962,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def removeTextField (self: Dimension)-> None :
+    def removeTextField (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def resetTextDefinedSize (self: Dimension)-> None :
+    def resetTextDefinedSize (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -52974,43 +52974,43 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAcDbObjectIdsInFlux (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def setAltSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAlternatePrefix (self: Dimension,val : str)-> None :
+    def setAlternatePrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setAlternateSuffix (self: Dimension,val : str)-> None :
+    def setAlternateSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setAnnotative (self: PyDb.DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
-    def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowFirstIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setArrowSecondIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowSecondIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setAttributes (self: PyGi.Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -53037,31 +53037,31 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setColorIndex (self: PyDb.Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setConstraintDynamic (self: Dimension,val : bool)-> None :
+    def setConstraintDynamic (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: PyDb.Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setDimBlockId (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimBlockId (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimBlockPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setDimBlockPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setDimExt1Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt1Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimExt2Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt2Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimLineLinetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimLineLinetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionStyle (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimensionStyle (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionText (self: Dimension,val : str)-> None :
+    def setDimensionText (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setDimstyleData (self, *args, **kwargs)-> None :
@@ -53075,10 +53075,10 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
     ...
-    def setDynamicDimension (self: Dimension,val : bool)-> None :
+    def setDynamicDimension (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : float)-> None :
+    def setElevation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
     def setExtArcEndAngle (self, *args, **kwargs)-> None :
@@ -53096,19 +53096,19 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
+    def setHorizontalRefTextRotation (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : float)-> None :
+    def setHorizontalRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setInspection (self: Dimension,val : bool)-> None :
+    def setInspection (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setInspectionFrame (self: Dimension,val : int)-> None :
+    def setInspectionFrame (self: PyDb.Dimension,val : int)-> None :
       '''                             '''
     ...
-    def setInspectionLabel (self: Dimension,val : str)-> None :
+    def setInspectionLabel (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -53132,7 +53132,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setMaterial (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self: Dimension,val : PyGe.Vector3d)-> None :
+    def setNormal (self: PyDb.Dimension,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
     def setOwnerId (self: PyDb.DbObject,owner: PyDb.ObjectId)-> None :
@@ -53154,7 +53154,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPrefix (self: Dimension,val : str)-> None :
+    def setPrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -53163,58 +53163,58 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setShouldParticipateInOPM (self: Dimension,val : bool)-> None :
+    def setShouldParticipateInOPM (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuffix (self: Dimension,val : str)-> None :
+    def setSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setSuppressAngularTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressAngularTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
+    def setTextAttachment (self: PyDb.Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
+    def setTextDefinedSize (self: PyDb.Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
+    def setTextLineSpacingFactor (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
+    def setTextLineSpacingStyle (self: PyDb.Dimension,val : PyDb.LineSpacingStyle)-> None :
       '''                             '''
     ...
-    def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setTextPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : float)-> None :
+    def setTextRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setUsingDefaultTextPosition (self: Dimension,val : bool)-> None :
+    def setUsingDefaultTextPosition (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setVisibility (self: PyDb.Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -53223,64 +53223,64 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: PyDb.DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def shouldParticipateInOPM (self: Dimension)-> bool :
+    def shouldParticipateInOPM (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def snoop (self: PyDb.DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def suffix (self: Dimension)-> str :
+    def suffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def suppressAngularLeadingZeros (self: Dimension)-> bool :
+    def suppressAngularLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressAngularTrailingZeros (self: Dimension)-> bool :
+    def suppressAngularTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressLeadingZeros (self: Dimension)-> bool :
+    def suppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressTrailingZeros (self: Dimension)-> bool :
+    def suppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroFeet (self: Dimension)-> bool :
+    def suppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroInches (self: Dimension)-> bool :
+    def suppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def swapIdWith (self: PyDb.DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
+    def textAttachment (self: PyDb.Dimension)-> PyDb.MTextAttachmentPoint :
       '''                             '''
     ...
-    def textDefinedSize (self: Dimension)-> tuple :
+    def textDefinedSize (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def textLineSpacingFactor (self: Dimension)-> float :
+    def textLineSpacingFactor (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle :
+    def textLineSpacingStyle (self: PyDb.Dimension)-> PyDb.LineSpacingStyle :
       '''                             '''
     ...
-    def textPosition (self: Dimension)-> PyGe.Point3d :
+    def textPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def textRotation (self: Dimension)-> float :
+    def textRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def toleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def toleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def toleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroInches (self: Dimension)-> bool :
+    def toleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -53292,10 +53292,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def useDefaultTextPosition (self: Dimension)-> None :
+    def useDefaultTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def useSetTextPosition (self: Dimension)-> None :
+    def useSetTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def viewportDraw (self: PyGi.Drawable,vpdraw: PyGi.ViewportDraw)-> None :
@@ -53375,34 +53375,34 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def altSuppressLeadingZeros (self: Dimension)-> bool :
+    def altSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressTrailingZeros (self: Dimension)-> bool :
+    def altSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroFeet (self: Dimension)-> bool :
+    def altSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroInches (self: Dimension)-> bool :
+    def altSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def altToleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self: Dimension)-> bool :
+    def altToleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def alternatePrefix (self: Dimension)-> str :
+    def alternatePrefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def alternateSuffix (self: Dimension)-> str :
+    def alternateSuffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def assertNotifyEnabled (self: PyDb.DbObject)-> None :
@@ -53417,7 +53417,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def blockId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def blockTransform (self: Dimension)-> PyGe.Matrix3d :
+    def blockTransform (self: PyDb.Dimension)-> PyGe.Matrix3d :
       '''                             '''
     ...
     def bounds (self: PyGi.Drawable,ext: PyDb.Extents)-> bool :
@@ -53441,7 +53441,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         class AcGePoint3d center(class PyDbRadialDimensionLarge {lvalue})'''
     ...
-    def centerMarkSize (self: Dimension)-> float :
+    def centerMarkSize (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def chordPoint (self, *args, **kwargs)-> PyGe.Point3d :
@@ -53495,25 +53495,25 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self: Dimension)-> PyDb.ObjectId :
+    def dimBlockId (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimBlockPosition (self: Dimension)-> PyGe.Point3d :
+    def dimBlockPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt1Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt2Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId :
+    def dimLineLinetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionStyle (self: Dimension)-> PyDb.ObjectId :
+    def dimensionStyle (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionText (self: Dimension)-> str :
+    def dimensionText (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def disableUndoRecording (self: PyDb.DbObject,disable: bool)-> None :
@@ -53534,7 +53534,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def drawableType (self: PyGi.Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def elevation (self: Dimension)-> float :
+    def elevation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def entityColor (self: PyDb.Entity)-> PyDb.EntityColor :
@@ -53561,10 +53561,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def fieldFromMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldFromMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
-    def fieldToMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldToMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
     def formatMeasurement (self, *args, **kwargs)-> str :
@@ -53578,19 +53578,19 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self: Dimension)-> None :
+    def generateLayout (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def getArrowFirstIsFlipped (self: Dimension)-> bool :
+    def getArrowFirstIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def getArrowSecondIsFlipped (self: Dimension)-> bool :
+    def getArrowSecondIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord :
+    def getDimstyleData (self: PyDb.Dimension)-> PyDb.DimStyleTableRecord :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -53655,7 +53655,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def highlight (self: PyDb.Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
-    def horizontalRotation (self: Dimension)-> float :
+    def horizontalRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def id (self: PyGi.Drawable)-> PyDb.ObjectId :
@@ -53664,13 +53664,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def inspection (self: Dimension)-> bool :
+    def inspection (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def inspectionFrame (self: Dimension)-> int :
+    def inspectionFrame (self: PyDb.Dimension)-> int :
       '''                             '''
     ...
-    def inspectionLabel (self: Dimension)-> str :
+    def inspectionLabel (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def intersectWith (self: PyDb.Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
@@ -53696,13 +53696,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isConstraintDynamic (self: Dimension)-> bool :
+    def isConstraintDynamic (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def isConstraintObject (self: Dimension)-> tuple :
+    def isConstraintObject (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def isDynamicDimension (self: Dimension)-> bool :
+    def isDynamicDimension (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -53711,7 +53711,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isErased (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self: Dimension)-> bool :
+    def isHorizontalRefTextRotation (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
@@ -53759,7 +53759,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isUndoing (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self: Dimension)-> bool :
+    def isUsingDefaultTextPosition (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: PyDb.DbObject)-> bool :
@@ -53807,10 +53807,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def measurement (self: Dimension)-> float :
+    def measurement (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def normal (self: Dimension)-> PyGe.Vector3d :
+    def normal (self: PyDb.Dimension)-> PyGe.Vector3d :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -53828,7 +53828,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def prefix (self: Dimension)-> str :
+    def prefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -53837,7 +53837,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def receiveShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def recomputeDimBlock (self: Dimension,force : bool=False)-> None :
+    def recomputeDimBlock (self: PyDb.Dimension,force : bool=False)-> None :
       '''                             '''
     ...
     def recordGraphicsModified (self: PyDb.Entity)-> None :
@@ -53858,10 +53858,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def removeTextField (self: Dimension)-> None :
+    def removeTextField (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def resetTextDefinedSize (self: Dimension)-> None :
+    def resetTextDefinedSize (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -53870,43 +53870,43 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAcDbObjectIdsInFlux (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def setAltSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAlternatePrefix (self: Dimension,val : str)-> None :
+    def setAlternatePrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setAlternateSuffix (self: Dimension,val : str)-> None :
+    def setAlternateSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setAnnotative (self: PyDb.DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
-    def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowFirstIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setArrowSecondIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowSecondIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setAttributes (self: PyGi.Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -53933,31 +53933,31 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setColorIndex (self: PyDb.Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setConstraintDynamic (self: Dimension,val : bool)-> None :
+    def setConstraintDynamic (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: PyDb.Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setDimBlockId (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimBlockId (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimBlockPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setDimBlockPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setDimExt1Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt1Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimExt2Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt2Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimLineLinetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimLineLinetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionStyle (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimensionStyle (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionText (self: Dimension,val : str)-> None :
+    def setDimensionText (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setDimstyleData (self, *args, **kwargs)-> None :
@@ -53971,10 +53971,10 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
     ...
-    def setDynamicDimension (self: Dimension,val : bool)-> None :
+    def setDynamicDimension (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : float)-> None :
+    def setElevation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
     def setExtArcEndAngle (self, *args, **kwargs)-> None :
@@ -53992,19 +53992,19 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
+    def setHorizontalRefTextRotation (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : float)-> None :
+    def setHorizontalRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setInspection (self: Dimension,val : bool)-> None :
+    def setInspection (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setInspectionFrame (self: Dimension,val : int)-> None :
+    def setInspectionFrame (self: PyDb.Dimension,val : int)-> None :
       '''                             '''
     ...
-    def setInspectionLabel (self: Dimension,val : str)-> None :
+    def setInspectionLabel (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setJogAngle (self, *args, **kwargs)-> None :
@@ -54040,7 +54040,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setMaterial (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self: Dimension,val : PyGe.Vector3d)-> None :
+    def setNormal (self: PyDb.Dimension,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
     def setOverrideCenter (self, *args, **kwargs)-> None :
@@ -54074,7 +54074,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPrefix (self: Dimension,val : str)-> None :
+    def setPrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -54083,40 +54083,40 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setShouldParticipateInOPM (self: Dimension,val : bool)-> None :
+    def setShouldParticipateInOPM (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuffix (self: Dimension,val : str)-> None :
+    def setSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setSuppressAngularTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressAngularTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
+    def setTextAttachment (self: PyDb.Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
+    def setTextDefinedSize (self: PyDb.Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
+    def setTextLineSpacingFactor (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
+    def setTextLineSpacingStyle (self: PyDb.Dimension,val : PyDb.LineSpacingStyle)-> None :
       '''                             '''
     ...
-    def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setTextPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
     def setTextPositionPP (self, *args, **kwargs)-> None :
@@ -54125,22 +54125,22 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setTextPositionPP(class PyDbRadialDimensionLarge {lvalue},class AcGePoint3d)'''
     ...
-    def setTextRotation (self: Dimension,val : float)-> None :
+    def setTextRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setUsingDefaultTextPosition (self: Dimension,val : bool)-> None :
+    def setUsingDefaultTextPosition (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setVisibility (self: PyDb.Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -54149,64 +54149,64 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: PyDb.DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def shouldParticipateInOPM (self: Dimension)-> bool :
+    def shouldParticipateInOPM (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def snoop (self: PyDb.DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def suffix (self: Dimension)-> str :
+    def suffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def suppressAngularLeadingZeros (self: Dimension)-> bool :
+    def suppressAngularLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressAngularTrailingZeros (self: Dimension)-> bool :
+    def suppressAngularTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressLeadingZeros (self: Dimension)-> bool :
+    def suppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressTrailingZeros (self: Dimension)-> bool :
+    def suppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroFeet (self: Dimension)-> bool :
+    def suppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroInches (self: Dimension)-> bool :
+    def suppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def swapIdWith (self: PyDb.DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
+    def textAttachment (self: PyDb.Dimension)-> PyDb.MTextAttachmentPoint :
       '''                             '''
     ...
-    def textDefinedSize (self: Dimension)-> tuple :
+    def textDefinedSize (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def textLineSpacingFactor (self: Dimension)-> float :
+    def textLineSpacingFactor (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle :
+    def textLineSpacingStyle (self: PyDb.Dimension)-> PyDb.LineSpacingStyle :
       '''                             '''
     ...
-    def textPosition (self: Dimension)-> PyGe.Point3d :
+    def textPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def textRotation (self: Dimension)-> float :
+    def textRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def toleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def toleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def toleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroInches (self: Dimension)-> bool :
+    def toleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -54218,10 +54218,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def useDefaultTextPosition (self: Dimension)-> None :
+    def useDefaultTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def useSetTextPosition (self: Dimension)-> None :
+    def useSetTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def viewportDraw (self: PyGi.Drawable,vpdraw: PyGi.ViewportDraw)-> None :
@@ -57580,34 +57580,34 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def altSuppressLeadingZeros (self: Dimension)-> bool :
+    def altSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressTrailingZeros (self: Dimension)-> bool :
+    def altSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroFeet (self: Dimension)-> bool :
+    def altSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altSuppressZeroInches (self: Dimension)-> bool :
+    def altSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def altToleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def altToleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self: Dimension)-> bool :
+    def altToleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def alternatePrefix (self: Dimension)-> str :
+    def alternatePrefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def alternateSuffix (self: Dimension)-> str :
+    def alternateSuffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def assertNotifyEnabled (self: PyDb.DbObject)-> None :
@@ -57622,7 +57622,7 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def blockId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def blockTransform (self: Dimension)-> PyGe.Matrix3d :
+    def blockTransform (self: PyDb.Dimension)-> PyGe.Matrix3d :
       '''                             '''
     ...
     def bounds (self: PyGi.Drawable,ext: PyDb.Extents)-> bool :
@@ -57640,7 +57640,7 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def castShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def centerMarkSize (self: Dimension)-> float :
+    def centerMarkSize (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def className (self, *args, **kwargs)-> str :
@@ -57688,19 +57688,19 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self: Dimension)-> PyDb.ObjectId :
+    def dimBlockId (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimBlockPosition (self: Dimension)-> PyGe.Point3d :
+    def dimBlockPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt1Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId :
+    def dimExt2Linetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId :
+    def dimLineLinetype (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
     def dimLinePoint (self, *args, **kwargs)-> PyGe.Point3d :
@@ -57709,10 +57709,10 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     C++ signature :
         class AcGePoint3d dimLinePoint(class PyDbRotatedDimension {lvalue})'''
     ...
-    def dimensionStyle (self: Dimension)-> PyDb.ObjectId :
+    def dimensionStyle (self: PyDb.Dimension)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimensionText (self: Dimension)-> str :
+    def dimensionText (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def disableUndoRecording (self: PyDb.DbObject,disable: bool)-> None :
@@ -57733,7 +57733,7 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def drawableType (self: PyGi.Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def elevation (self: Dimension)-> float :
+    def elevation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def entityColor (self: PyDb.Entity)-> PyDb.EntityColor :
@@ -57748,10 +57748,10 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def fieldFromMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldFromMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
-    def fieldToMText (self: Dimension,ref : PyDb.MText)-> None :
+    def fieldToMText (self: PyDb.Dimension,ref : PyDb.MText)-> None :
       '''                             '''
     ...
     def formatMeasurement (self, *args, **kwargs)-> str :
@@ -57765,19 +57765,19 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self: Dimension)-> None :
+    def generateLayout (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def getArrowFirstIsFlipped (self: Dimension)-> bool :
+    def getArrowFirstIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def getArrowSecondIsFlipped (self: Dimension)-> bool :
+    def getArrowSecondIsFlipped (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord :
+    def getDimstyleData (self: PyDb.Dimension)-> PyDb.DimStyleTableRecord :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -57842,7 +57842,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def highlight (self: PyDb.Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
-    def horizontalRotation (self: Dimension)-> float :
+    def horizontalRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
     def id (self: PyGi.Drawable)-> PyDb.ObjectId :
@@ -57851,13 +57851,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: PyRx.RxObject)-> int :
       '''                             '''
     ...
-    def inspection (self: Dimension)-> bool :
+    def inspection (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def inspectionFrame (self: Dimension)-> int :
+    def inspectionFrame (self: PyDb.Dimension)-> int :
       '''                             '''
     ...
-    def inspectionLabel (self: Dimension)-> str :
+    def inspectionLabel (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def intersectWith (self: PyDb.Entity,entity: PyDb.Entity,intType : PyDb.Intersect )-> list :
@@ -57883,13 +57883,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isConstraintDynamic (self: Dimension)-> bool :
+    def isConstraintDynamic (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def isConstraintObject (self: Dimension)-> tuple :
+    def isConstraintObject (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def isDynamicDimension (self: Dimension)-> bool :
+    def isDynamicDimension (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -57898,7 +57898,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isErased (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self: Dimension)-> bool :
+    def isHorizontalRefTextRotation (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
@@ -57946,7 +57946,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isUndoing (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self: Dimension)-> bool :
+    def isUsingDefaultTextPosition (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: PyDb.DbObject)-> bool :
@@ -57994,10 +57994,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def measurement (self: Dimension)-> float :
+    def measurement (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def normal (self: Dimension)-> PyGe.Vector3d :
+    def normal (self: PyDb.Dimension)-> PyGe.Vector3d :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -58015,7 +58015,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def prefix (self: Dimension)-> str :
+    def prefix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -58024,7 +58024,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def receiveShadows (self: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def recomputeDimBlock (self: Dimension,force : bool=False)-> None :
+    def recomputeDimBlock (self: PyDb.Dimension,force : bool=False)-> None :
       '''                             '''
     ...
     def recordGraphicsModified (self: PyDb.Entity)-> None :
@@ -58045,10 +58045,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def removeTextField (self: Dimension)-> None :
+    def removeTextField (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def resetTextDefinedSize (self: Dimension)-> None :
+    def resetTextDefinedSize (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -58063,43 +58063,43 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAcDbObjectIdsInFlux (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def setAltSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAltToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setAltToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setAlternatePrefix (self: Dimension,val : str)-> None :
+    def setAlternatePrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setAlternateSuffix (self: Dimension,val : str)-> None :
+    def setAlternateSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setAnnotative (self: PyDb.DbObject,state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
-    def setArrowFirstIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowFirstIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setArrowSecondIsFlipped (self: Dimension,val : bool)-> None :
+    def setArrowSecondIsFlipped (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setAttributes (self: PyGi.Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -58114,25 +58114,25 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setColorIndex (self: PyDb.Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setConstraintDynamic (self: Dimension,val : bool)-> None :
+    def setConstraintDynamic (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: PyDb.Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setDimBlockId (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimBlockId (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimBlockPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setDimBlockPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setDimExt1Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt1Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimExt2Linetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimExt2Linetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimLineLinetype (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimLineLinetype (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setDimLinePoint (self, *args, **kwargs)-> None :
@@ -58141,10 +58141,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     C++ signature :
         void setDimLinePoint(class PyDbRotatedDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setDimensionStyle (self: Dimension,val : PyDb.ObjectId)-> None :
+    def setDimensionStyle (self: PyDb.Dimension,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimensionText (self: Dimension,val : str)-> None :
+    def setDimensionText (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setDimstyleData (self, *args, **kwargs)-> None :
@@ -58158,28 +58158,28 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
     ...
-    def setDynamicDimension (self: Dimension,val : bool)-> None :
+    def setDynamicDimension (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : float)-> None :
+    def setElevation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
+    def setHorizontalRefTextRotation (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : float)-> None :
+    def setHorizontalRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setInspection (self: Dimension,val : bool)-> None :
+    def setInspection (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setInspectionFrame (self: Dimension,val : int)-> None :
+    def setInspectionFrame (self: PyDb.Dimension,val : int)-> None :
       '''                             '''
     ...
-    def setInspectionLabel (self: Dimension,val : str)-> None :
+    def setInspectionLabel (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setJogSymbolOn (self, *args, **kwargs)-> None :
@@ -58209,7 +58209,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setMaterial (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self: Dimension,val : PyGe.Vector3d)-> None :
+    def setNormal (self: PyDb.Dimension,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
     def setOblique (self, *args, **kwargs)-> None :
@@ -58237,7 +58237,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPrefix (self: Dimension,val : str)-> None :
+    def setPrefix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -58252,58 +58252,58 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setRotation(class PyDbRotatedDimension {lvalue},double)'''
     ...
-    def setShouldParticipateInOPM (self: Dimension,val : bool)-> None :
+    def setShouldParticipateInOPM (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuffix (self: Dimension,val : str)-> None :
+    def setSuffix (self: PyDb.Dimension,val : str)-> None :
       '''                             '''
     ...
-    def setSuppressAngularTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressAngularTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
+    def setTextAttachment (self: PyDb.Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
+    def setTextDefinedSize (self: PyDb.Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
+    def setTextLineSpacingFactor (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
+    def setTextLineSpacingStyle (self: PyDb.Dimension,val : PyDb.LineSpacingStyle)-> None :
       '''                             '''
     ...
-    def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
+    def setTextPosition (self: PyDb.Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : float)-> None :
+    def setTextRotation (self: PyDb.Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressLeadingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressTrailingZeros (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressTrailingZeros (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroFeet (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroFeet (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setToleranceSuppressZeroInches (self: Dimension,val : bool)-> None :
+    def setToleranceSuppressZeroInches (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setUsingDefaultTextPosition (self: Dimension,val : bool)-> None :
+    def setUsingDefaultTextPosition (self: PyDb.Dimension,val : bool)-> None :
       '''                             '''
     ...
     def setVisibility (self: PyDb.Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -58324,64 +58324,64 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setXLine2Point(class PyDbRotatedDimension {lvalue},class AcGePoint3d)'''
     ...
-    def shouldParticipateInOPM (self: Dimension)-> bool :
+    def shouldParticipateInOPM (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def snoop (self: PyDb.DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def suffix (self: Dimension)-> str :
+    def suffix (self: PyDb.Dimension)-> str :
       '''                             '''
     ...
-    def suppressAngularLeadingZeros (self: Dimension)-> bool :
+    def suppressAngularLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressAngularTrailingZeros (self: Dimension)-> bool :
+    def suppressAngularTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressLeadingZeros (self: Dimension)-> bool :
+    def suppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressTrailingZeros (self: Dimension)-> bool :
+    def suppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroFeet (self: Dimension)-> bool :
+    def suppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def suppressZeroInches (self: Dimension)-> bool :
+    def suppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def swapIdWith (self: PyDb.DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
+    def textAttachment (self: PyDb.Dimension)-> PyDb.MTextAttachmentPoint :
       '''                             '''
     ...
-    def textDefinedSize (self: Dimension)-> tuple :
+    def textDefinedSize (self: PyDb.Dimension)-> tuple :
       '''                             '''
     ...
-    def textLineSpacingFactor (self: Dimension)-> float :
+    def textLineSpacingFactor (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle :
+    def textLineSpacingStyle (self: PyDb.Dimension)-> PyDb.LineSpacingStyle :
       '''                             '''
     ...
-    def textPosition (self: Dimension)-> PyGe.Point3d :
+    def textPosition (self: PyDb.Dimension)-> PyGe.Point3d :
       '''                             '''
     ...
-    def textRotation (self: Dimension)-> float :
+    def textRotation (self: PyDb.Dimension)-> float :
       '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self: Dimension)-> bool :
+    def toleranceSuppressLeadingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self: Dimension)-> bool :
+    def toleranceSuppressTrailingZeros (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self: Dimension)-> bool :
+    def toleranceSuppressZeroFeet (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
-    def toleranceSuppressZeroInches (self: Dimension)-> bool :
+    def toleranceSuppressZeroInches (self: PyDb.Dimension)-> bool :
       '''                             '''
     ...
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -58393,10 +58393,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def useDefaultTextPosition (self: Dimension)-> None :
+    def useDefaultTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
-    def useSetTextPosition (self: Dimension)-> None :
+    def useSetTextPosition (self: PyDb.Dimension)-> None :
       '''                             '''
     ...
     def viewportDraw (self: PyGi.Drawable,vpdraw: PyGi.ViewportDraw)-> None :
@@ -59125,13 +59125,13 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId)'''
     ...
-    def asOldId (self: ObjectId)-> int :
+    def asOldId (self: PyDb.ObjectId)-> int :
       '''                             '''
     ...
-    def convertToRedirectedId (self: ObjectId)-> bool :
+    def convertToRedirectedId (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def database (self: ObjectId)-> PyDb.Database :
+    def database (self: PyDb.ObjectId)-> PyDb.Database :
       '''                             '''
     ...
 
@@ -59139,43 +59139,43 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def fromOldId (oldid : int)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def handle (self: ObjectId)-> PyDb.Handle :
+    def handle (self: PyDb.ObjectId)-> PyDb.Handle :
       '''                             '''
     ...
-    def isDerivedFrom (self: ObjectId,desc : PyRx.RxClass)-> bool :
+    def isDerivedFrom (self: PyDb.ObjectId,desc : PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isEffectivelyErased (self: ObjectId)-> bool :
+    def isEffectivelyErased (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isErased (self: ObjectId)-> bool :
+    def isErased (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isNull (self: ObjectId)-> bool :
+    def isNull (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isResident (self: ObjectId)-> bool :
+    def isResident (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isValid (self: ObjectId)-> bool :
+    def isValid (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isWellBehaved (self: ObjectId)-> bool :
+    def isWellBehaved (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def nonForwardedHandle (self: ObjectId)-> PyDb.Handle :
+    def nonForwardedHandle (self: PyDb.ObjectId)-> PyDb.Handle :
       '''                             '''
     ...
-    def objectClass (self: ObjectId)-> PyRx.RxClass :
+    def objectClass (self: PyDb.ObjectId)-> PyRx.RxClass :
       '''                             '''
     ...
-    def objectLeftOnDisk (self: ObjectId)-> bool :
+    def objectLeftOnDisk (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def originalDatabase (self: ObjectId)-> PyDb.Database :
+    def originalDatabase (self: PyDb.ObjectId)-> PyDb.Database :
       '''                             '''
     ...
-    def setFromOldId (self: ObjectId,oldid : int)-> None :
+    def setFromOldId (self: PyDb.ObjectId,oldid : int)-> None :
       '''                             '''
     ...
 
@@ -59196,13 +59196,13 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId)'''
     ...
-    def asOldId (self: ObjectId)-> int :
+    def asOldId (self: PyDb.ObjectId)-> int :
       '''                             '''
     ...
-    def convertToRedirectedId (self: ObjectId)-> bool :
+    def convertToRedirectedId (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def database (self: ObjectId)-> PyDb.Database :
+    def database (self: PyDb.ObjectId)-> PyDb.Database :
       '''                             '''
     ...
 
@@ -59210,43 +59210,43 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def fromOldId (oldid : int)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def handle (self: ObjectId)-> PyDb.Handle :
+    def handle (self: PyDb.ObjectId)-> PyDb.Handle :
       '''                             '''
     ...
-    def isDerivedFrom (self: ObjectId,desc : PyRx.RxClass)-> bool :
+    def isDerivedFrom (self: PyDb.ObjectId,desc : PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isEffectivelyErased (self: ObjectId)-> bool :
+    def isEffectivelyErased (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isErased (self: ObjectId)-> bool :
+    def isErased (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isNull (self: ObjectId)-> bool :
+    def isNull (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isResident (self: ObjectId)-> bool :
+    def isResident (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isValid (self: ObjectId)-> bool :
+    def isValid (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isWellBehaved (self: ObjectId)-> bool :
+    def isWellBehaved (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def nonForwardedHandle (self: ObjectId)-> PyDb.Handle :
+    def nonForwardedHandle (self: PyDb.ObjectId)-> PyDb.Handle :
       '''                             '''
     ...
-    def objectClass (self: ObjectId)-> PyRx.RxClass :
+    def objectClass (self: PyDb.ObjectId)-> PyRx.RxClass :
       '''                             '''
     ...
-    def objectLeftOnDisk (self: ObjectId)-> bool :
+    def objectLeftOnDisk (self: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def originalDatabase (self: ObjectId)-> PyDb.Database :
+    def originalDatabase (self: PyDb.ObjectId)-> PyDb.Database :
       '''                             '''
     ...
-    def setFromOldId (self: ObjectId,oldid : int)-> None :
+    def setFromOldId (self: PyDb.ObjectId,oldid : int)-> None :
       '''                             '''
     ...
 
@@ -60573,13 +60573,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def fitTolerance (self: Spline)-> float :
       '''                             '''
     ...
-    def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self: PyDb.Curve,tol: Tol = default)-> PyGe.Curve3d :
       '''                             '''
     ...
-    def getArea (self: Curve)-> float :
+    def getArea (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
+    def getClosestPointTo (self: PyDb.Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -60588,19 +60588,19 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getControlPointAt (self: Spline,idx:int)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: float)-> float :
+    def getDistAtParam (self: PyDb.Curve,param: float)-> float :
       '''                             '''
     ...
-    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getDistAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getEndParam (self: Curve)-> float :
+    def getEndParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getEndPoint (self: Curve)-> PyGe.Point3d :
+    def getEndPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getField (self: PyDb.DbObject,prop: str=TEXT)-> PyDb.ObjectId :
@@ -60609,7 +60609,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getFirstDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
     def getFitData (self: Spline)-> tuple :
@@ -60642,7 +60642,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getNurbsData (self: Spline)-> tuple :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: float)-> list :
+    def getOffsetCurves (self: PyDb.Curve,dist: float)-> list :
       '''                             '''
     ...
     def getOffsetCurvesGivenPlaneNormal (self, *args, **kwargs)-> list :
@@ -60651,13 +60651,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     C++ signature :
         class boost::python::list getOffsetCurvesGivenPlaneNormal(class PyDbSpline {lvalue},class AcGeVector3d,double)'''
     ...
-    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+    def getOrthoProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane)-> PyDb.Curve :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: float)-> float :
+    def getParamAtDist (self: PyDb.Curve,dist: float)-> float :
       '''                             '''
     ...
-    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getParamAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getPlane (self: PyDb.Entity)-> PyGe.Plane :
@@ -60666,40 +60666,40 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: float)-> PyGe.Point3d :
+    def getPointAtDist (self: PyDb.Curve,dist: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+    def getPointAtParam (self: PyDb.Curve,param: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
+    def getProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getSecondDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def getSpline (self: Curve)-> PyDb.Spline :
+    def getSpline (self: PyDb.Curve)-> PyDb.Spline :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+    def getSplitCurves (self: PyDb.Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
+    def getSplitCurvesAtParam (self: PyDb.Curve,param: float)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+    def getSplitCurvesAtParams (self: PyDb.Curve,params: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
+    def getSplitCurvesAtPoint (self: PyDb.Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+    def getSplitCurvesAtPoints (self: PyDb.Curve,points: list)-> list :
       '''                             '''
     ...
-    def getStartParam (self: Curve)-> float :
+    def getStartParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getStartPoint (self: Curve)-> PyGe.Point3d :
+    def getStartPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getStretchPoints (self: PyDb.Entity)-> list :
@@ -60783,7 +60783,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self: Curve)-> bool :
+    def isClosed (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -60819,7 +60819,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def isPeriodic (self: Curve)-> bool :
+    def isPeriodic (self: PyDb.Curve)-> bool :
       '''                             '''
     ...
     def isPersistent (self: PyGi.Drawable)-> bool :
@@ -60933,7 +60933,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def reverseCurve (self: Curve)-> None :
+    def reverseCurve (self: PyDb.Curve)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -61002,7 +61002,7 @@ setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)
     def setFitTol (self: Spline,val : float)-> None :
       '''                             '''
     ...
-    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+    def setFromAcGeCurve (self: PyDb.Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -61436,7 +61436,7 @@ __init__( (object)arg1, (RxClass)arg2, (int)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyRxClass {lvalue},__int64)'''
     ...
-    def index (self: SubentId)-> int :
+    def index (self: PyDb.SubentId)-> int :
       '''                             '''
     ...
     def kNull (self, *args, **kwargs)-> None :
@@ -61460,10 +61460,10 @@ __init__( (object)arg1, (RxClass)arg2, (int)arg3) -> None :
     C++ signature :
         void setTypeClass(class PyDbSubentId {lvalue},class PyRxClass {lvalue})'''
     ...
-    def type (self: SubentId)-> int :
+    def type (self: PyDb.SubentId)-> int :
       '''                             '''
     ...
-    def typeClass (self: SubentId)-> PyRx.RxClass :
+    def typeClass (self: PyDb.SubentId)-> PyRx.RxClass :
       '''                             '''
     ...
 
@@ -63909,7 +63909,7 @@ alignment( (Table)arg1, (int)arg2, (int)arg3) -> CellAlignment :
     C++ signature :
         enum AcDb::CellAlignment alignment(class PyDbTable {lvalue},int,int)'''
     ...
-    def appendAttribute (self: BlockReference,val : Attribute)-> PyDb.ObjectId :
+    def appendAttribute (self: PyDb.BlockReference,val : Attribute)-> PyDb.ObjectId :
       '''                             '''
     ...
     def assertNotifyEnabled (self: PyDb.DbObject)-> None :
@@ -63932,7 +63932,7 @@ attachmentPoint( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> Point3d :
     C++ signature :
         class AcGePoint3d attachmentPoint(class PyDbTable {lvalue},int,int,int)'''
     ...
-    def attributeIds (self: BlockReference)-> list :
+    def attributeIds (self: PyDb.BlockReference)-> list :
       '''                             '''
     ...
     def backgroundColor (self, *args, **kwargs)-> PyDb.Color :
@@ -63955,7 +63955,7 @@ backgroundColor( (Table)arg1, (int)arg2, (int)arg3) -> Color :
     def blockScale (self: Table,row: int,col: int)-> float :
       '''                             '''
     ...
-    def blockTableRecord (self: BlockReference)-> PyDb.ObjectId :
+    def blockTableRecord (self: PyDb.BlockReference)-> PyDb.ObjectId :
       '''                             '''
     ...
     def blockTableRecordId (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -63969,7 +63969,7 @@ blockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     C++ signature :
         class PyDbObjectId blockTableRecordId(class PyDbTable {lvalue},int,int,int)'''
     ...
-    def blockTransform (self: BlockReference)-> PyGe.Matrix3d :
+    def blockTransform (self: PyDb.BlockReference)-> PyGe.Matrix3d :
       '''                             '''
     ...
     def bounds (self: PyGi.Drawable,ext: PyDb.Extents)-> bool :
@@ -64202,7 +64202,7 @@ deleteContent( (Table)arg1, (CellRange)arg2) -> None :
     def explode (self: PyDb.Entity)-> list :
       '''                             '''
     ...
-    def explodeToOwnerSpace (self: BlockReference)-> None :
+    def explodeToOwnerSpace (self: PyDb.BlockReference)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -64225,7 +64225,7 @@ fieldId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     def generateLayout (self: Table)-> None :
       '''                             '''
     ...
-    def geomExtentsBestFit (self: BlockReference,val : PyGe.Matrix3d=kIdentity)-> PyDb.Extents :
+    def geomExtentsBestFit (self: PyDb.BlockReference,val : PyGe.Matrix3d=kIdentity)-> PyDb.Extents :
       '''                             '''
     ...
     def getBlockAttributeValue (self, *args, **kwargs)-> str :
@@ -64239,7 +64239,7 @@ getBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getBlockAttributeValue(class PyDbTable {lvalue},int,int,int,class PyDbObjectId)'''
     ...
-    def getBlockName (self: BlockReference)-> str :
+    def getBlockName (self: PyDb.BlockReference)-> str :
       '''                             '''
     ...
     def getCellExtents (self, *args, **kwargs)-> list :
@@ -64651,13 +64651,13 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def moveContent (self: Table,row: int,col: int,frm: int,to: int)-> None :
       '''                             '''
     ...
-    def nonAnnotationBlockTransform (self: BlockReference)-> PyGe.Matrix3d :
+    def nonAnnotationBlockTransform (self: PyDb.BlockReference)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def nonAnnotationScaleFactors (self: BlockReference)-> PyGe.Scale3d :
+    def nonAnnotationScaleFactors (self: PyDb.BlockReference)-> PyGe.Scale3d :
       '''                             '''
     ...
-    def normal (self: BlockReference)-> PyGe.Vector3d :
+    def normal (self: PyDb.BlockReference)-> PyGe.Vector3d :
       '''                             '''
     ...
     def numColumns (self: Table)-> int :
@@ -64678,7 +64678,7 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def position (self: BlockReference)-> PyGe.Point3d :
+    def position (self: PyDb.BlockReference)-> PyGe.Point3d :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -64748,7 +64748,7 @@ rotation( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> float :
     def scale (self: Table,row: int,col: int,content: int)-> float :
       '''                             '''
     ...
-    def scaleFactors (self: BlockReference)-> PyGe.Scale3d :
+    def scaleFactors (self: PyDb.BlockReference)-> PyGe.Scale3d :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: PyDb.DbObject)-> None :
@@ -64821,7 +64821,7 @@ setBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)
     def setBlockScale (self: Table,row: int,col: int,scale : float)-> None :
       '''                             '''
     ...
-    def setBlockTableRecord (self: BlockReference,val : ObjectId)-> None :
+    def setBlockTableRecord (self: PyDb.BlockReference,val : ObjectId)-> None :
       '''                             '''
     ...
     def setBlockTableRecordId (self, *args, **kwargs)-> None :
@@ -64835,7 +64835,7 @@ setBlockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)a
     C++ signature :
         void setBlockTableRecordId(class PyDbTable {lvalue},int,int,int,class PyDbObjectId,bool)'''
     ...
-    def setBlockTransform (self: BlockReference,val : PyGe.Matrix3d)-> None :
+    def setBlockTransform (self: PyDb.BlockReference,val : PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def setBreakFlowDirection (self, *args, **kwargs)-> None :
@@ -65147,7 +65147,7 @@ setRowHeight( (Table)arg1, (float)arg2) -> None :
     def setScale (self: Table,row: int,col: int,content: int,val : float)-> None :
       '''                             '''
     ...
-    def setScaleFactors (self: BlockReference,val : PyGe.Scale3d)-> None :
+    def setScaleFactors (self: PyDb.BlockReference,val : PyGe.Scale3d)-> None :
       '''                             '''
     ...
     def setSize (self: Table,rows: int,cols: int)-> None :
@@ -65325,7 +65325,7 @@ textStyle( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def treatAsAcDbBlockRefForExplode (self: BlockReference)-> bool :
+    def treatAsAcDbBlockRefForExplode (self: PyDb.BlockReference)-> bool :
       '''                             '''
     ...
     def unmergeCells (self: Table,minRow: int,maxRow: int,minCol: int,maxCol: int)-> None :
@@ -66435,10 +66435,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def adjustAlignment (self: Text,val : Database)-> None :
+    def adjustAlignment (self: PyDb.Text,val : Database)-> None :
       '''                             '''
     ...
-    def alignmentPoint (self: Text)-> PyGe.Point3d :
+    def alignmentPoint (self: PyDb.Text)-> PyGe.Point3d :
       '''                             '''
     ...
     def assertNotifyEnabled (self: PyDb.DbObject)-> None :
@@ -66492,13 +66492,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def convertFieldToText (self: Text)-> None :
+    def convertFieldToText (self: PyDb.Text)-> None :
       '''                             '''
     ...
     def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def correctSpelling (self: Text)-> int :
+    def correctSpelling (self: PyDb.Text)-> int :
       '''                             '''
     ...
     def createExtensionDictionary (self: PyDb.DbObject)-> None :
@@ -66545,7 +66545,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getBoundingPoints (self: Text)-> list :
+    def getBoundingPoints (self: PyDb.Text)-> list :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -66610,16 +66610,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: PyDb.DbObject,appname: str)-> bool :
       '''                             '''
     ...
-    def height (self: Text)-> float :
+    def height (self: PyDb.Text)-> float :
       '''                             '''
     ...
     def highlight (self: PyDb.Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
-    def hitTest (self: Text,val : PyGe.Point3d)-> bool :
+    def hitTest (self: PyDb.Text,val : PyGe.Point3d)-> bool :
       '''                             '''
     ...
-    def horizontalMode (self: Text)-> PyDb.TextHorzMode :
+    def horizontalMode (self: PyDb.Text)-> PyDb.TextHorzMode :
       '''                             '''
     ...
     def id (self: PyGi.Drawable)-> PyDb.ObjectId :
@@ -66651,7 +66651,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isDefaultAlignment (self: Text)-> bool :
+    def isDefaultAlignment (self: PyDb.Text)-> bool :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> bool :
@@ -66663,10 +66663,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isMirroredInX (self: Text)-> bool :
+    def isMirroredInX (self: PyDb.Text)-> bool :
       '''                             '''
     ...
-    def isMirroredInY (self: Text)-> bool :
+    def isMirroredInY (self: PyDb.Text)-> bool :
       '''                             '''
     ...
     def isModified (self: PyDb.DbObject)-> bool :
@@ -66714,7 +66714,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isWriteEnabled (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def justification (self: Text)-> PyDb.TextAlignment :
+    def justification (self: PyDb.Text)-> PyDb.TextAlignment :
       '''                             '''
     ...
     def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
@@ -66747,19 +66747,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def mirrorInX (self: Text,val : bool)-> None :
+    def mirrorInX (self: PyDb.Text,val : bool)-> None :
       '''                             '''
     ...
-    def mirrorInY (self: Text,val : bool)-> None :
+    def mirrorInY (self: PyDb.Text,val : bool)-> None :
       '''                             '''
     ...
-    def normal (self: Text)-> PyGe.Vector3d :
+    def normal (self: PyDb.Text)-> PyGe.Vector3d :
       '''                             '''
     ...
     def objectId (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def oblique (self: Text)-> float :
+    def oblique (self: PyDb.Text)-> float :
       '''                             '''
     ...
     def ownerId (self: PyDb.DbObject)-> PyDb.ObjectId :
@@ -66768,7 +66768,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def position (self: Text)-> PyGe.Point3d :
+    def position (self: PyDb.Text)-> PyGe.Point3d :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -66798,13 +66798,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotation (self: Text)-> float :
+    def rotation (self: PyDb.Text)-> float :
       '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def setAlignmentPoint (self: Text,val : PyGe.Point3d)-> None :
+    def setAlignmentPoint (self: PyDb.Text,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
     def setAnnotative (self: PyDb.DbObject,state : PyDb.AnnotativeStates)-> None :
@@ -66828,13 +66828,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setHeight (self: Text,val : float)-> None :
+    def setHeight (self: PyDb.Text,val : float)-> None :
       '''                             '''
     ...
-    def setHorizontalMode (self: Text,val : TextHorzMode)-> None :
+    def setHorizontalMode (self: PyDb.Text,val : TextHorzMode)-> None :
       '''                             '''
     ...
-    def setJustification (self: Text,val : TextAlignment)-> None :
+    def setJustification (self: PyDb.Text,val : TextAlignment)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -66852,10 +66852,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setMaterial (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self: Text,val : PyGe.Vector3d)-> None :
+    def setNormal (self: PyDb.Text,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setOblique (self: Text,val : float)-> None :
+    def setOblique (self: PyDb.Text,val : float)-> None :
       '''                             '''
     ...
     def setOwnerId (self: PyDb.DbObject,owner: PyDb.ObjectId)-> None :
@@ -66877,7 +66877,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self: Text,pos : PyGe.Point3d)-> None :
+    def setPosition (self: PyDb.Text,pos : PyGe.Point3d)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -66886,25 +66886,25 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self: Text,val : float)-> None :
+    def setRotation (self: PyDb.Text,val : float)-> None :
       '''                             '''
     ...
-    def setTextString (self: Text,val : str)-> None :
+    def setTextString (self: PyDb.Text,val : str)-> None :
       '''                             '''
     ...
-    def setTextStyle (self: Text,val : ObjectId)-> None :
+    def setTextStyle (self: PyDb.Text,val : ObjectId)-> None :
       '''                             '''
     ...
-    def setThickness (self: Text,val : float)-> None :
+    def setThickness (self: PyDb.Text,val : float)-> None :
       '''                             '''
     ...
-    def setVerticalMode (self: Text,val : TextVertMode)-> None :
+    def setVerticalMode (self: PyDb.Text,val : TextVertMode)-> None :
       '''                             '''
     ...
     def setVisibility (self: PyDb.Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setWidthFactor (self: Text,val : float)-> None :
+    def setWidthFactor (self: PyDb.Text,val : float)-> None :
       '''                             '''
     ...
     def setXData (self: PyDb.DbObject,xdata: list)-> None :
@@ -66916,13 +66916,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def swapIdWith (self: PyDb.DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def textString (self: Text)-> str :
+    def textString (self: PyDb.Text)-> str :
       '''                             '''
     ...
-    def textStyle (self: Text)-> PyDb.ObjectId :
+    def textStyle (self: PyDb.Text)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def thickness (self: Text)-> float :
+    def thickness (self: PyDb.Text)-> float :
       '''                             '''
     ...
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -66934,7 +66934,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def verticalMode (self: Text)-> PyDb.TextHorzMode :
+    def verticalMode (self: PyDb.Text)-> PyDb.TextHorzMode :
       '''                             '''
     ...
     def viewportDraw (self: PyGi.Drawable,vpdraw: PyGi.ViewportDraw)-> None :
@@ -66949,7 +66949,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def wblockClone (self: PyDb.DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def widthFactor (self: Text)-> float :
+    def widthFactor (self: PyDb.Text)-> float :
       '''                             '''
     ...
     def worldDraw (self: PyGi.Drawable,wdraw: PyGi.WorldDraw)-> bool :
@@ -68169,34 +68169,34 @@ __init__( (object)arg1, (float)arg2) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,double)'''
     ...
-    def alpha (self: Transparency)-> int :
+    def alpha (self: PyDb.Transparency)-> int :
       '''                             '''
     ...
-    def alphaPercent (self: Transparency)-> float :
+    def alphaPercent (self: PyDb.Transparency)-> float :
       '''                             '''
     ...
-    def isByAlpha (self: Transparency)-> bool :
+    def isByAlpha (self: PyDb.Transparency)-> bool :
       '''                             '''
     ...
-    def isByBlock (self: Transparency)-> bool :
+    def isByBlock (self: PyDb.Transparency)-> bool :
       '''                             '''
     ...
-    def isByLayer (self: Transparency)-> bool :
+    def isByLayer (self: PyDb.Transparency)-> bool :
       '''                             '''
     ...
-    def isClear (self: Transparency)-> bool :
+    def isClear (self: PyDb.Transparency)-> bool :
       '''                             '''
     ...
-    def isInvalid (self: Transparency)-> bool :
+    def isInvalid (self: PyDb.Transparency)-> bool :
       '''                             '''
     ...
-    def isSolid (self: Transparency)-> bool :
+    def isSolid (self: PyDb.Transparency)-> bool :
       '''                             '''
     ...
-    def setAlpha (self: Transparency,alpha : int)-> None :
+    def setAlpha (self: PyDb.Transparency,alpha : int)-> None :
       '''                             '''
     ...
-    def setAlphaPercent (self: Transparency,alphaPercent : float)-> None :
+    def setAlphaPercent (self: PyDb.Transparency,alphaPercent : float)-> None :
       '''                             '''
     ...
 
@@ -70479,7 +70479,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def bounds (self: PyGi.Drawable,ext: PyDb.Extents)-> bool :
       '''                             '''
     ...
-    def bulge (self: Vertex2d)-> float :
+    def bulge (self: PyDb.Vertex2d)-> float :
       '''                             '''
     ...
     def cancel (self: PyDb.DbObject)-> None :
@@ -70553,7 +70553,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: PyGi.Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def endWidth (self: Vertex2d)-> float :
+    def endWidth (self: PyDb.Vertex2d)-> float :
       '''                             '''
     ...
     def entityColor (self: PyDb.Entity)-> PyDb.EntityColor :
@@ -70636,7 +70636,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def id (self: PyGi.Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def ignoreTangent (self: Vertex2d)-> None :
+    def ignoreTangent (self: PyDb.Vertex2d)-> None :
       '''                             '''
     ...
     def implRefCount (self: PyRx.RxObject)-> int :
@@ -70707,7 +70707,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isReallyClosing (self: PyDb.DbObject)-> bool :
       '''                             '''
     ...
-    def isTangentUsed (self: Vertex2d)-> bool :
+    def isTangentUsed (self: PyDb.Vertex2d)-> bool :
       '''                             '''
     ...
     def isTransactionResident (self: PyDb.DbObject)-> bool :
@@ -70761,7 +70761,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self: PyDb.Entity)-> str :
       '''                             '''
     ...
-    def position (self: Vertex2d)-> PyGe.Point3d :
+    def position (self: PyDb.Vertex2d)-> PyGe.Point3d :
       '''                             '''
     ...
     def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -70800,7 +70800,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAttributes (self: PyGi.Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setBulge (self: Vertex2d,val : float)-> None :
+    def setBulge (self: PyDb.Vertex2d,val : float)-> None :
       '''                             '''
     ...
     def setCastShadows (self: PyDb.Entity,val: bool)-> None :
@@ -70815,7 +70815,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self: PyDb.Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setEndWidth (self: Vertex2d,val : float)-> None :
+    def setEndWidth (self: PyDb.Vertex2d,val : float)-> None :
       '''                             '''
     ...
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
@@ -70855,7 +70855,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self: Vertex2d,val : PyGe.Point3d)-> None :
+    def setPosition (self: PyDb.Vertex2d,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
     def setPropertiesFrom (self: PyDb.Entity,entity: PyDb.Entity,dosubents : bool=True)-> None :
@@ -70864,16 +70864,16 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: PyDb.Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setStartWidth (self: Vertex2d,val : float)-> None :
+    def setStartWidth (self: PyDb.Vertex2d,val : float)-> None :
       '''                             '''
     ...
-    def setTangent (self: Vertex2d,val : float)-> None :
+    def setTangent (self: PyDb.Vertex2d,val : float)-> None :
       '''                             '''
     ...
-    def setTangentUsed (self: Vertex2d,val : bool)-> None :
+    def setTangentUsed (self: PyDb.Vertex2d,val : bool)-> None :
       '''                             '''
     ...
-    def setVertexIdentifier (self: Vertex2d,val : int)-> None :
+    def setVertexIdentifier (self: PyDb.Vertex2d,val : int)-> None :
       '''                             '''
     ...
     def setVisibility (self: PyDb.Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -70885,13 +70885,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: PyDb.DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def startWidth (self: Vertex2d)-> float :
+    def startWidth (self: PyDb.Vertex2d)-> float :
       '''                             '''
     ...
     def swapIdWith (self: PyDb.DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def tangent (self: Vertex2d)-> float :
+    def tangent (self: PyDb.Vertex2d)-> float :
       '''                             '''
     ...
     def transformBy (self: PyDb.Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -70903,13 +70903,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def useTangent (self: Vertex2d)-> None :
+    def useTangent (self: PyDb.Vertex2d)-> None :
       '''                             '''
     ...
-    def vertexIdentifier (self: Vertex2d)-> int :
+    def vertexIdentifier (self: PyDb.Vertex2d)-> int :
       '''                             '''
     ...
-    def vertexType (self: Vertex2d)-> PyDb.Vertex2dType :
+    def vertexType (self: PyDb.Vertex2d)-> PyDb.Vertex2dType :
       '''                             '''
     ...
     def viewportDraw (self: PyGi.Drawable,vpdraw: PyGi.ViewportDraw)-> None :

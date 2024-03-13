@@ -760,7 +760,7 @@ static boost::shared_ptr<AcGePoint3d> PyGePoint3dInitTuple(const boost::python::
 
 void makePyGePoint3dWrapper()
 {
-    PyDocString DS("Point3d");
+    PyDocString DS("PyGe.Point3d");
     class_<AcGePoint3d>("Point3d")
         .def(init<>())
         .def(init<double, double, double>(DS.ARGS({ "x: float","y: float","z: float" })))
@@ -918,7 +918,7 @@ static boost::shared_ptr<AcGeVector3d> PyGeVector3dInitTuple(const boost::python
 
 static void makePyGeVector3dWrapper()
 {
-    PyDocString DS("Vector3d");
+    PyDocString DS("PyGe.Vector3d");
     class_<AcGeVector3d>("Vector3d")
         .def(init<>())
         .def(init<double, double, double>())
@@ -1152,7 +1152,7 @@ static std::string AcGeMatrix3dToStringRepr(const AcGeMatrix3d& x)
 
 void makePyGeMatrix3dWrapper()
 {
-    PyDocString DS("Matrix3d");
+    PyDocString DS("PyGe.Matrix3d");
     class_<AcGeMatrix3d>("Matrix3d")
         .def(init<>())
         .add_static_property("kIdentity", &AcGeMatrix3dkIdentity)

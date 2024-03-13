@@ -15,7 +15,7 @@ using namespace boost::python;
 // makeAcDbDatabaseWrapper
 void makePyDbDatabaseWrapper()
 {
-    PyDocString DS("Database");
+    PyDocString DS("PyDb.Database");
     class_<PyDbDatabase, bases<PyRxObject>>("Database")
         .def(init<>())
         .def(init<bool, bool>(DS.ARGS({ "buildDefaultDrawing : bool=True", "noDocument: bool=False" })))

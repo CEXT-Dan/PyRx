@@ -9,7 +9,7 @@ using namespace boost::python;
 
 void makePyDbCurveWrapper()
 {
-    PyDocString DS("Curve");
+    PyDocString DS("PyDb.Curve");
     class_<PyDbCurve, bases<PyDbEntity>>("Curve", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())

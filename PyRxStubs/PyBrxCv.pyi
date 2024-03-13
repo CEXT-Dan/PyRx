@@ -518,31 +518,31 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self: PyDb.Curve,tol: Tol = default)-> PyGe.Curve3d :
       '''                             '''
     ...
-    def getArea (self: Curve)-> float :
+    def getArea (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
+    def getClosestPointTo (self: PyDb.Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: float)-> float :
+    def getDistAtParam (self: PyDb.Curve,param: float)-> float :
       '''                             '''
     ...
-    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getDistAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getEndParam (self: Curve)-> float :
+    def getEndParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getEndPoint (self: Curve)-> PyGe.Point3d :
+    def getEndPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getField (self: PyDb.DbObject,prop: str=TEXT)-> PyDb.ObjectId :
@@ -551,7 +551,7 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getFirstDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: PyDb.Entity)-> PyDb.Extents :
@@ -569,19 +569,19 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getHandle (self: PyDb.DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: float)-> list :
+    def getOffsetCurves (self: PyDb.Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: PyDb.Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+    def getOrthoProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane)-> PyDb.Curve :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: float)-> float :
+    def getParamAtDist (self: PyDb.Curve,dist: float)-> float :
       '''                             '''
     ...
-    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getParamAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getPlane (self: PyDb.Entity)-> PyGe.Plane :
@@ -590,43 +590,43 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: float)-> PyGe.Point3d :
+    def getPointAtDist (self: PyDb.Curve,dist: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+    def getPointAtParam (self: PyDb.Curve,param: float)-> PyGe.Point3d :
       '''                             '''
     ...
     def getPointsArray (self: CvDb3dAlignment)-> list :
       '''                             '''
     ...
-    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
+    def getProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getSecondDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def getSpline (self: Curve)-> PyDb.Spline :
+    def getSpline (self: PyDb.Curve)-> PyDb.Spline :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+    def getSplitCurves (self: PyDb.Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
+    def getSplitCurvesAtParam (self: PyDb.Curve,param: float)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+    def getSplitCurvesAtParams (self: PyDb.Curve,params: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
+    def getSplitCurvesAtPoint (self: PyDb.Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+    def getSplitCurvesAtPoints (self: PyDb.Curve,points: list)-> list :
       '''                             '''
     ...
-    def getStartParam (self: Curve)-> float :
+    def getStartParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getStartPoint (self: Curve)-> PyGe.Point3d :
+    def getStartPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getStretchPoints (self: PyDb.Entity)-> list :
@@ -690,7 +690,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> int :
       '''                             '''
     ...
-    def isClosed (self: Curve)-> int :
+    def isClosed (self: PyDb.Curve)-> int :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> int :
@@ -723,7 +723,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def isPeriodic (self: Curve)-> int :
+    def isPeriodic (self: PyDb.Curve)-> int :
       '''                             '''
     ...
     def isPersistent (self: PyGi.Drawable)-> int :
@@ -819,7 +819,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def reverseCurve (self: Curve)-> None :
+    def reverseCurve (self: PyDb.Curve)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> int :
@@ -855,7 +855,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+    def setFromAcGeCurve (self: PyDb.Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -1089,31 +1089,31 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self: PyDb.Curve,tol: Tol = default)-> PyGe.Curve3d :
       '''                             '''
     ...
-    def getArea (self: Curve)-> float :
+    def getArea (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
+    def getClosestPointTo (self: PyDb.Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: float)-> float :
+    def getDistAtParam (self: PyDb.Curve,param: float)-> float :
       '''                             '''
     ...
-    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getDistAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getEndParam (self: Curve)-> float :
+    def getEndParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getEndPoint (self: Curve)-> PyGe.Point3d :
+    def getEndPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getField (self: PyDb.DbObject,prop: str=TEXT)-> PyDb.ObjectId :
@@ -1122,7 +1122,7 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getFirstDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: PyDb.Entity)-> PyDb.Extents :
@@ -1140,19 +1140,19 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getHandle (self: PyDb.DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: float)-> list :
+    def getOffsetCurves (self: PyDb.Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: PyDb.Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+    def getOrthoProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane)-> PyDb.Curve :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: float)-> float :
+    def getParamAtDist (self: PyDb.Curve,dist: float)-> float :
       '''                             '''
     ...
-    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getParamAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getPlane (self: PyDb.Entity)-> PyGe.Plane :
@@ -1161,40 +1161,40 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: float)-> PyGe.Point3d :
+    def getPointAtDist (self: PyDb.Curve,dist: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+    def getPointAtParam (self: PyDb.Curve,param: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
+    def getProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getSecondDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def getSpline (self: Curve)-> PyDb.Spline :
+    def getSpline (self: PyDb.Curve)-> PyDb.Spline :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+    def getSplitCurves (self: PyDb.Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
+    def getSplitCurvesAtParam (self: PyDb.Curve,param: float)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+    def getSplitCurvesAtParams (self: PyDb.Curve,params: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
+    def getSplitCurvesAtPoint (self: PyDb.Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+    def getSplitCurvesAtPoints (self: PyDb.Curve,points: list)-> list :
       '''                             '''
     ...
-    def getStartParam (self: Curve)-> float :
+    def getStartParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getStartPoint (self: Curve)-> PyGe.Point3d :
+    def getStartPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getStretchPoints (self: PyDb.Entity)-> list :
@@ -1258,7 +1258,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> int :
       '''                             '''
     ...
-    def isClosed (self: Curve)-> int :
+    def isClosed (self: PyDb.Curve)-> int :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> int :
@@ -1291,7 +1291,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def isPeriodic (self: Curve)-> int :
+    def isPeriodic (self: PyDb.Curve)-> int :
       '''                             '''
     ...
     def isPersistent (self: PyGi.Drawable)-> int :
@@ -1384,7 +1384,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def reverseCurve (self: Curve)-> None :
+    def reverseCurve (self: PyDb.Curve)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> int :
@@ -1417,7 +1417,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+    def setFromAcGeCurve (self: PyDb.Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -3225,22 +3225,22 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     C++ signature :
         unsigned __int64 firstLineElementId(class PyBrxCvDbHAlignment {lvalue})'''
     ...
-    def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self: PyDb.Curve,tol: Tol = default)-> PyGe.Curve3d :
       '''                             '''
     ...
-    def getArea (self: Curve)-> float :
+    def getArea (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
+    def getClosestPointTo (self: PyDb.Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: PyDb.Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: float)-> float :
+    def getDistAtParam (self: PyDb.Curve,param: float)-> float :
       '''                             '''
     ...
-    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getDistAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getEcs (self: PyDb.Entity)-> PyGe.Matrix3d :
@@ -3252,10 +3252,10 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     C++ signature :
         unsigned __int64 getElementId(class PyBrxCvDbHAlignment {lvalue},__int64)'''
     ...
-    def getEndParam (self: Curve)-> float :
+    def getEndParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getEndPoint (self: Curve)-> PyGe.Point3d :
+    def getEndPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getField (self: PyDb.DbObject,prop: str=TEXT)-> PyDb.ObjectId :
@@ -3264,7 +3264,7 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: PyDb.DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getFirstDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: PyDb.Entity)-> PyDb.Extents :
@@ -3282,13 +3282,13 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getHandle (self: PyDb.DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: float)-> list :
+    def getOffsetCurves (self: PyDb.Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: PyDb.Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+    def getOrthoProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane)-> PyDb.Curve :
       '''                             '''
     ...
     def getPIsArray (self, *args, **kwargs)-> list :
@@ -3297,10 +3297,10 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     C++ signature :
         class boost::python::list getPIsArray(class PyBrxCvDbHAlignment {lvalue})'''
     ...
-    def getParamAtDist (self: Curve,dist: float)-> float :
+    def getParamAtDist (self: PyDb.Curve,dist: float)-> float :
       '''                             '''
     ...
-    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+    def getParamAtPoint (self: PyDb.Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
     def getPlane (self: PyDb.Entity)-> PyGe.Plane :
@@ -3309,10 +3309,10 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: float)-> PyGe.Point3d :
+    def getPointAtDist (self: PyDb.Curve,dist: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+    def getPointAtParam (self: PyDb.Curve,param: float)-> PyGe.Point3d :
       '''                             '''
     ...
     def getPointAtStation (self, *args, **kwargs)-> tuple :
@@ -3321,7 +3321,7 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     C++ signature :
         class boost::python::tuple getPointAtStation(class PyBrxCvDbHAlignment {lvalue},double)'''
     ...
-    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
+    def getProjectedCurve (self: PyDb.Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
     def getRadius (self, *args, **kwargs)-> float :
@@ -3330,31 +3330,31 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     C++ signature :
         double getRadius(class PyBrxCvDbHAlignment {lvalue},double)'''
     ...
-    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+    def getSecondDeriv (self: PyDb.Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def getSpline (self: Curve)-> PyDb.Spline :
+    def getSpline (self: PyDb.Curve)-> PyDb.Spline :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+    def getSplitCurves (self: PyDb.Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
+    def getSplitCurvesAtParam (self: PyDb.Curve,param: float)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+    def getSplitCurvesAtParams (self: PyDb.Curve,params: list)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
+    def getSplitCurvesAtPoint (self: PyDb.Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
-    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+    def getSplitCurvesAtPoints (self: PyDb.Curve,points: list)-> list :
       '''                             '''
     ...
-    def getStartParam (self: Curve)-> float :
+    def getStartParam (self: PyDb.Curve)-> float :
       '''                             '''
     ...
-    def getStartPoint (self: Curve)-> PyGe.Point3d :
+    def getStartPoint (self: PyDb.Curve)-> PyGe.Point3d :
       '''                             '''
     ...
     def getStationAtPoint (self, *args, **kwargs)-> tuple :
@@ -3441,7 +3441,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isCancelling (self: PyDb.DbObject)-> int :
       '''                             '''
     ...
-    def isClosed (self: Curve)-> int :
+    def isClosed (self: PyDb.Curve)-> int :
       '''                             '''
     ...
     def isEraseStatusToggled (self: PyDb.DbObject)-> int :
@@ -3474,7 +3474,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isNullObj (self: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def isPeriodic (self: Curve)-> int :
+    def isPeriodic (self: PyDb.Curve)-> int :
       '''                             '''
     ...
     def isPersistent (self: PyGi.Drawable)-> int :
@@ -3597,7 +3597,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeReactor (self: PyDb.Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def reverseCurve (self: Curve)-> None :
+    def reverseCurve (self: PyDb.Curve)-> None :
       '''                             '''
     ...
     def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> int :
@@ -3642,7 +3642,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setField (self: PyDb.DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+    def setFromAcGeCurve (self: PyDb.Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
       '''                             '''
     ...
     def setLayer (self: PyDb.Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
