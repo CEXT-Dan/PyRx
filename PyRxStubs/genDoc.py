@@ -15,6 +15,10 @@ import PyAp  # = application, document classes services
 import PyEd  # = editor
 import PyPl  # = plot
 
+if  "BRX" in  PyAp.Application.hostAPI():
+    import PyBrxCv
+    
+
 # debug
 def PyRxCmd_pydebug() -> None:
     import PyRxDebug
@@ -27,10 +31,15 @@ all_modules = [("PyRx", PyRx), ("PyGe", PyGe), ("PyGi", PyGi),("PyGs", PyGs),
 
 all_modules_names = ["PyRx", "PyGe", "PyGi", "PyGs", "PyDb", "PyAp", "PyEd", "PyPl"]
 
+#add brx modules only 
+if  "BRX" in  PyAp.Application.hostAPI():
+    all_modules.append(("PyBrxCv", PyBrxCv))
+    all_modules_names.append("PyBrxCv")
+
 # TODO iterate all the above modules, and add imports ant type aliasing
 # to each
 
-# just some ideas on getting help, work in progress
+# just some ideas on getting stubs and help, work in progress
 
 def include_attr(name) -> bool:
     try:
@@ -51,6 +60,18 @@ def include_attr(name) -> bool:
         elif name == 'to_bytes':
             return False
         elif name == 'from_bytes':
+            return False
+        elif name == 'conjugate':
+            return False
+        elif name == 'denominator':
+            return False
+        elif name == 'numerator':
+            return False
+        elif name == 'real':
+            return False
+        elif name == 'imag':
+            return False
+        elif name == 'is_integer':
             return False
         return True
     except:
@@ -218,12 +239,6 @@ def generate_txt_help(moduleName, module):
 
 def PyRxCmd_pygenpyi():
     try:
-        #add brx modules only 
-        if  "BRX" in  PyAp.Application.hostAPI():
-            import PyBrxCv
-            all_modules.append(("PyBrxCv", PyBrxCv))
-            #all_modules_names.append("PyBrxCv")
-            
         for module in all_modules:
             buildClassDict(module[0], module[1])
         for module in all_modules:
@@ -232,6 +247,6 @@ def PyRxCmd_pygenpyi():
         traceback.print_exception(err)
 
 def PyRxCmd_pygenhtmlhelp():
-      for module in all_modules:
+    for module in all_modules:
         generate_html_help(module[0] + ".html", module[1])
 

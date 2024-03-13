@@ -12,18 +12,6 @@ class AcEdDrawOrderCmdType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def kDrawOrderAbove (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -42,22 +30,10 @@ class AcEdDrawOrderCmdType:
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
 
 class AcEdPointHistory:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eAligned (self, *args, **kwargs)-> None :
       '''None'''
@@ -134,20 +110,8 @@ class AcEdPointHistory:
     def eZPending (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class AutoSysVar:
@@ -951,18 +915,6 @@ class CursorType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def kCrosshair (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -1008,34 +960,16 @@ class CursorType:
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
 
 class DragStatus:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eNormal (self, *args, **kwargs)-> None :
       '''None'''
     ...
     def eOk (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kCancel (self, *args, **kwargs)-> None :
       '''None'''
@@ -1085,12 +1019,6 @@ class DragStatus:
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
 
 class DragStyle:
     def __init__ (self, *args, **kwargs)-> None :
@@ -1138,18 +1066,6 @@ class DragStyleType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def kDeletedEffect (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -1173,12 +1089,6 @@ class DragStyleType:
     ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class DrawJig:
@@ -2372,12 +2282,6 @@ class PromptStatus:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
     def eCancel (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -2408,23 +2312,11 @@ class PromptStatus:
     def eRejected (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def kNormal (self, *args, **kwargs)-> None :
       '''None'''
     ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class SelectionSet:
@@ -2541,18 +2433,6 @@ class UserInputControls:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def kAccept3dCoordinates (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -2606,12 +2486,6 @@ class UserInputControls:
     ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class UserInteraction:

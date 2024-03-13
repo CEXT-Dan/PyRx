@@ -12,18 +12,6 @@ class LispType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def kAngle (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -81,28 +69,10 @@ class LispType:
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
 
 class Ordering:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kEqual (self, *args, **kwargs)-> None :
       '''None'''
@@ -118,12 +88,6 @@ class Ordering:
     ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class Overrule:

@@ -12,18 +12,6 @@ class AcGiArcType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def kAcGiArcChord (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -36,28 +24,10 @@ class AcGiArcType:
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
 
 class AcGiFillType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAcGiFillAlways (self, *args, **kwargs)-> None :
       '''None'''
@@ -68,28 +38,10 @@ class AcGiFillType:
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
 
 class AcGiOrientationTransformBehavior:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAcGiScreenOrientation (self, *args, **kwargs)-> None :
       '''None'''
@@ -103,28 +55,10 @@ class AcGiOrientationTransformBehavior:
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
 
 class AcGiOrientationType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAcGiClockwise (self, *args, **kwargs)-> None :
       '''None'''
@@ -138,28 +72,10 @@ class AcGiOrientationType:
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
 
 class AcGiPositionTransformBehavior:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAcGiScreenLocalOriginPosition (self, *args, **kwargs)-> None :
       '''None'''
@@ -179,31 +95,13 @@ class AcGiPositionTransformBehavior:
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
 
 class AcGiRegenType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
     def eAcGiRegenTypeInvalid (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAcGiForExplode (self, *args, **kwargs)-> None :
       '''None'''
@@ -223,28 +121,10 @@ class AcGiRegenType:
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
 
 class AcGiScaleTransformBehavior:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAcGiScreenLocalOriginScale (self, *args, **kwargs)-> None :
       '''None'''
@@ -264,28 +144,10 @@ class AcGiScaleTransformBehavior:
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
 
 class AcGiTransientDrawingMode:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAcGiContrast (self, *args, **kwargs)-> None :
       '''None'''
@@ -311,28 +173,10 @@ class AcGiTransientDrawingMode:
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
 
 class AcGiVisibility:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAcGiInvisible (self, *args, **kwargs)-> None :
       '''None'''
@@ -345,12 +189,6 @@ class AcGiVisibility:
     ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class CommonDraw:
@@ -412,18 +250,6 @@ class DrawFlags:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def kDrawFillSelectionWindow (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -468,12 +294,6 @@ class DrawFlags:
     ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class Drawable:
@@ -1065,18 +885,6 @@ class GiAttributesFlags:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def kDrawableBlockDependentViewportDraw (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -1134,28 +942,10 @@ class GiAttributesFlags:
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
 
 class GiDrawableType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAmbientLight (self, *args, **kwargs)-> None :
       '''None'''
@@ -1199,12 +989,6 @@ class GiDrawableType:
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
 
 class GiGraphicsKernel:
     def __init__ (self, *args, **kwargs)-> None :
@@ -1240,18 +1024,6 @@ class SelectionFlags:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def kNoSelectionFlags (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -1261,28 +1033,10 @@ class SelectionFlags:
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
-    ...
 
 class ShadowFlags:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kNoDrawFlags (self, *args, **kwargs)-> None :
       '''None'''
@@ -1298,12 +1052,6 @@ class ShadowFlags:
     ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class SubEntityTraits:
@@ -1625,18 +1373,6 @@ class TransparencyMode:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def kTransparency1Bit (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -1648,12 +1384,6 @@ class TransparencyMode:
     ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class ViewportDraw:
