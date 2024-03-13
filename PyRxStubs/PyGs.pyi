@@ -15,10 +15,10 @@ class Core:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def getCurrent3DAcGsView (self: Core,vpNum : int)-> PyGs.GsView :
+    def getCurrent3DAcGsView (self, vpNum : int)-> PyGs.GsView :
       '''                             '''
     ...
-    def getCurrentAcGsView (self: Core,vpNum : int)-> PyGs.GsView :
+    def getCurrentAcGsView (self, vpNum : int)-> PyGs.GsView :
       '''                             '''
     ...
 
@@ -47,7 +47,7 @@ This class cannot be instantiated from Python'''
     ...
 
 class GsManager:
-    def __init__ (self: GsManager)-> None :
+    def __init__ (self)-> None :
       '''                             '''
     ...
 
@@ -66,10 +66,10 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
-    def isNullObj (self: PyGsView)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def position (self: PyGsView)-> PyGe.Point3d :
+    def position (self)-> PyGe.Point3d :
       '''                             '''
     ...
 

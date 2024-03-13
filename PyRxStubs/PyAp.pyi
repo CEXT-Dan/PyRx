@@ -82,10 +82,10 @@ class Application:
     def mainWnd ()-> int :
       '''                             '''
     ...
-    def registerOnIdleWinMsg (self: Application,func: Any)-> None :
+    def registerOnIdleWinMsg (self, func: Any)-> None :
       '''                             '''
     ...
-    def removeOnIdleWinMsg (self: Application,func: Any)-> None :
+    def removeOnIdleWinMsg (self, func: Any)-> None :
       '''                             '''
     ...
 
@@ -734,22 +734,22 @@ class DocManager:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def activateDocument (self: DocManager,doc: PyAp.Document,bPassScript: bool = False)-> None :
+    def activateDocument (self, doc: PyAp.Document, bPassScript: bool = False)-> None :
       '''                             '''
     ...
-    def appContextCloseDocument (self: DocManager,doc: PyAp.Document)-> None :
+    def appContextCloseDocument (self, doc: PyAp.Document)-> None :
       '''                             '''
     ...
-    def appContextNewDocument (self: DocManager,templateName : str)-> None :
+    def appContextNewDocument (self, templateName : str)-> None :
       '''                             '''
     ...
-    def appContextOpenDocument (self: DocManager,dwgName : str)-> None :
+    def appContextOpenDocument (self, dwgName : str)-> None :
       '''                             '''
     ...
-    def appContextPromptOpenDocument (self: DocManager)-> None :
+    def appContextPromptOpenDocument (self)-> None :
       '''                             '''
     ...
-    def appContextRecoverDocument (self: DocManager,dwgName : str)-> None :
+    def appContextRecoverDocument (self, dwgName : str)-> None :
       '''                             '''
     ...
 
@@ -757,10 +757,10 @@ class DocManager:
     def autoLock ()-> PyAp.AutoDocLock :
       '''                             '''
     ...
-    def beginExecuteInApplicationContext (self: DocManager,func: Any,data: Any)-> PyDb.ErrorStatus :
+    def beginExecuteInApplicationContext (self, func: Any, data: Any)-> PyDb.ErrorStatus :
       '''                             '''
     ...
-    def beginExecuteInCommandContext (self: DocManager,func: Any,data: Any)-> PyDb.ErrorStatus :
+    def beginExecuteInCommandContext (self, func: Any, data: Any)-> PyDb.ErrorStatus :
       '''                             '''
     ...
 
@@ -768,19 +768,19 @@ class DocManager:
     def className ()-> str :
       '''                             '''
     ...
-    def closeDocument (self: DocManager,doc: PyAp.Document)-> None :
+    def closeDocument (self, doc: PyAp.Document)-> None :
       '''                             '''
     ...
-    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def curDocument (self: DocManager)-> PyAp.Document :
+    def curDocument (self)-> PyAp.Document :
       '''                             '''
     ...
-    def defaultFormatForSave (self: DocManager)-> PyAp.SaveFormat :
+    def defaultFormatForSave (self)-> PyAp.SaveFormat :
       '''                             '''
     ...
 
@@ -788,85 +788,85 @@ class DocManager:
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def disableDocumentActivation (self: DocManager)-> None :
+    def disableDocumentActivation (self)-> None :
       '''                             '''
     ...
-    def dispose (self: PyRx.RxObject)-> None :
+    def dispose (self)-> None :
       '''                             '''
     ...
-    def document (self: DocManager,db: PyDb.Database)-> PyAp.Document :
+    def document (self, db: PyDb.Database)-> PyAp.Document :
       '''                             '''
     ...
-    def documentCount (self: DocManager)-> int :
+    def documentCount (self)-> int :
       '''                             '''
     ...
-    def documents (self: DocManager)-> list :
+    def documents (self)-> list :
       '''                             '''
     ...
-    def enableDocumentActivation (self: DocManager)-> None :
+    def enableDocumentActivation (self)-> None :
       '''                             '''
     ...
-    def executeInApplicationContext (self: DocManager,func: Any,data: Any)-> None :
+    def executeInApplicationContext (self, func: Any, data: Any)-> None :
       '''                             '''
     ...
-    def implRefCount (self: PyRx.RxObject)-> int :
+    def implRefCount (self)-> int :
       '''                             '''
     ...
-    def inputPending (self: DocManager,doc: PyAp.Document)-> int :
+    def inputPending (self, doc: PyAp.Document)-> int :
       '''                             '''
     ...
-    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
+    def isA (self)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isApplicationContext (self: DocManager)-> bool :
+    def isApplicationContext (self)-> bool :
       '''                             '''
     ...
-    def isDocumentActivationEnabled (self: DocManager)-> bool :
+    def isDocumentActivationEnabled (self)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: PyRx.RxObject)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
+    def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def lockDocument (self: DocManager,doc: PyAp.Document,mode: PyAp.DocLockMode = kWrite,gcmd: str = None,lcmd: str = None,prmt: bool = True)-> None :
+    def lockDocument (self, doc: PyAp.Document, mode: PyAp.DocLockMode = kWrite, gcmd: str = None, lcmd: str = None, prmt: bool = True)-> None :
       '''                             '''
     ...
-    def mdiActiveDocument (self: DocManager)-> PyAp.Document :
+    def mdiActiveDocument (self)-> PyAp.Document :
       '''                             '''
     ...
-    def newDocument (self: DocManager)-> None :
+    def newDocument (self)-> None :
       '''                             '''
     ...
-    def openDocument (self: DocManager)-> None :
+    def openDocument (self)-> None :
       '''                             '''
     ...
-    def popResourceHandle (self: DocManager)-> None :
+    def popResourceHandle (self)-> None :
       '''                             '''
     ...
-    def pushAcadResourceHandle (self: DocManager)-> None :
+    def pushAcadResourceHandle (self)-> None :
       '''                             '''
     ...
-    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def sendModelessInterrupt (self: DocManager,doc: PyAp.Document)-> None :
+    def sendModelessInterrupt (self, doc: PyAp.Document)-> None :
       '''                             '''
     ...
-    def sendStringToExecute (self: DocManager,doc: PyAp.Document,script: str,bActivate: bool = True,bWrapUpInactiveDoc: bool = False,bEchoString: bool = True)-> None :
+    def sendStringToExecute (self, doc: PyAp.Document, script: str, bActivate: bool = True, bWrapUpInactiveDoc: bool = False, bEchoString: bool = True)-> None :
       '''                             '''
     ...
-    def setCurDocument (self: DocManager,doc: PyAp.Document,mode: PyAp.DocLockMode = kNone,activate: bool = False)-> None :
+    def setCurDocument (self, doc: PyAp.Document, mode: PyAp.DocLockMode = kNone, activate: bool = False)-> None :
       '''                             '''
     ...
-    def setDefaultFormatForSave (self: DocManager,fmt : PyAp.SaveFormat)-> None :
+    def setDefaultFormatForSave (self, fmt : PyAp.SaveFormat)-> None :
       '''                             '''
     ...
-    def unlockDocument (self: DocManager,doc: PyAp.Document)-> None :
+    def unlockDocument (self, doc: PyAp.Document)-> None :
       '''                             '''
     ...
 
@@ -877,49 +877,49 @@ class DocManagerReactor:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def addReactor (self: DocManagerReactor)-> None :
+    def addReactor (self)-> None :
       '''                             '''
     ...
-    def documentActivated (self: DocManagerReactor,val : Document)-> None :
+    def documentActivated (self, val : Document)-> None :
       '''                             '''
     ...
-    def documentActivationModified (self: DocManagerReactor,val : bool)-> None :
+    def documentActivationModified (self, val : bool)-> None :
       '''                             '''
     ...
-    def documentBecameCurrent (self: DocManagerReactor,val : Document)-> None :
+    def documentBecameCurrent (self, val : Document)-> None :
       '''                             '''
     ...
-    def documentCreateCanceled (self: DocManagerReactor,val : Document)-> None :
+    def documentCreateCanceled (self, val : Document)-> None :
       '''                             '''
     ...
-    def documentCreateStarted (self: DocManagerReactor,val : Document)-> None :
+    def documentCreateStarted (self, val : Document)-> None :
       '''                             '''
     ...
-    def documentCreated (self: DocManagerReactor,val : Document)-> None :
+    def documentCreated (self, val : Document)-> None :
       '''                             '''
     ...
-    def documentDestroyed (self: DocManagerReactor,val : str)-> None :
+    def documentDestroyed (self, val : str)-> None :
       '''                             '''
     ...
-    def documentLockModeChangeVetoed (self: DocManagerReactor,doc : Document,globalCmdName : str)-> None :
+    def documentLockModeChangeVetoed (self, doc : Document, globalCmdName : str)-> None :
       '''                             '''
     ...
-    def documentLockModeChanged (self: DocManagerReactor,doc : Document,myPrevMode : DocLockMode,myCurMode : DocLockMode,currentMode : DocLockMode,globalCmdName : str)-> None :
+    def documentLockModeChanged (self, doc : Document, myPrevMode : DocLockMode, myCurMode : DocLockMode, currentMode : DocLockMode, globalCmdName : str)-> None :
       '''                             '''
     ...
-    def documentLockModeWillChange (self: DocManagerReactor,myCurMode : DocLockMode,myNewMode : DocLockMode,curMode : DocLockMode,globalCmdName : str)-> None :
+    def documentLockModeWillChange (self, myCurMode : DocLockMode, myNewMode : DocLockMode, curMode : DocLockMode, globalCmdName : str)-> None :
       '''                             '''
     ...
-    def documentToBeActivated (self: DocManagerReactor,val : Document)-> None :
+    def documentToBeActivated (self, val : Document)-> None :
       '''                             '''
     ...
-    def documentToBeDeactivated (self: DocManagerReactor,val : Document)-> None :
+    def documentToBeDeactivated (self, val : Document)-> None :
       '''                             '''
     ...
-    def documentToBeDestroyed (self: DocManagerReactor,val : Document)-> None :
+    def documentToBeDestroyed (self, val : Document)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DocManagerReactor)-> None :
+    def removeReactor (self)-> None :
       '''                             '''
     ...
 
@@ -933,13 +933,13 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def database (self: Document)-> PyDb.Database :
+    def database (self)-> PyDb.Database :
       '''                             '''
     ...
 
@@ -947,10 +947,10 @@ This class cannot be instantiated from Python'''
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: PyRx.RxObject)-> None :
+    def dispose (self)-> None :
       '''                             '''
     ...
-    def docTitle (self: Document)-> str :
+    def docTitle (self)-> str :
       '''                             '''
     ...
 
@@ -958,76 +958,76 @@ This class cannot be instantiated from Python'''
     def docWnd ()-> int :
       '''                             '''
     ...
-    def downgradeDocOpen (self: Document,promptForSave : bool)-> None :
+    def downgradeDocOpen (self, promptForSave : bool)-> None :
       '''                             '''
     ...
-    def editor (self: Document)-> PyEd.Editor :
+    def editor (self)-> PyEd.Editor :
       '''                             '''
     ...
-    def fileName (self: Document)-> str :
+    def fileName (self)-> str :
       '''                             '''
     ...
-    def formatForSave (self: Document)-> PyAp.SaveFormat :
+    def formatForSave (self)-> PyAp.SaveFormat :
       '''                             '''
     ...
-    def getCountOfLispList (self: Document)-> int :
+    def getCountOfLispList (self)-> int :
       '''                             '''
     ...
-    def getItemOfLispList (self: Document,index : int)-> tuple :
+    def getItemOfLispList (self, index : int)-> tuple :
       '''                             '''
     ...
-    def getUserData (self: Document)-> object :
+    def getUserData (self)-> object :
       '''                             '''
     ...
-    def implRefCount (self: PyRx.RxObject)-> int :
+    def implRefCount (self)-> int :
       '''                             '''
     ...
-    def inputPointManager (self: Document)-> PyEd.InputPointManager :
+    def inputPointManager (self)-> PyEd.InputPointManager :
       '''                             '''
     ...
-    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
+    def isA (self)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isCommandInputInactive (self: Document)-> bool :
+    def isCommandInputInactive (self)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: PyRx.RxObject)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def isQuiescent (self: Document)-> bool :
+    def isQuiescent (self)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
+    def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def lockMode (self: Document,bIncludeMyLocks : bool=False)-> PyAp.DocLockMode :
+    def lockMode (self, bIncludeMyLocks : bool=False)-> PyAp.DocLockMode :
       '''                             '''
     ...
-    def myLockMode (self: Document)-> PyAp.DocLockMode :
+    def myLockMode (self)-> PyAp.DocLockMode :
       '''                             '''
     ...
-    def popDbmod (self: Document)-> None :
+    def popDbmod (self)-> None :
       '''                             '''
     ...
-    def pushDbmod (self: Document)-> None :
+    def pushDbmod (self)-> None :
       '''                             '''
     ...
-    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDocTitle (self: Document,title : str)-> None :
+    def setDocTitle (self, title : str)-> None :
       '''                             '''
     ...
-    def setUserData (self: Document,data : any)-> None :
+    def setUserData (self, data : any)-> None :
       '''                             '''
     ...
-    def transactionManager (self: Document)-> PyAp.TransactionManager :
+    def transactionManager (self)-> PyAp.TransactionManager :
       '''                             '''
     ...
-    def upgradeDocOpen (self: Document)-> None :
+    def upgradeDocOpen (self)-> None :
       '''                             '''
     ...
 
@@ -1043,16 +1043,16 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def addNested (self: LayerFilter,val : PyLy.LayerFilter)-> None :
+    def addNested (self, val : PyLy.LayerFilter)-> None :
       '''                             '''
     ...
-    def allowDelete (self: LayerFilter)-> bool :
+    def allowDelete (self)-> bool :
       '''                             '''
     ...
-    def allowNested (self: LayerFilter)-> bool :
+    def allowNested (self)-> bool :
       '''                             '''
     ...
-    def allowRename (self: LayerFilter)-> bool :
+    def allowRename (self)-> bool :
       '''                             '''
     ...
 
@@ -1060,13 +1060,13 @@ __init__( (object)arg1) -> None :
     def className ()-> str :
       '''                             '''
     ...
-    def compareTo (self: LayerFilter,other : PyLy.LayerFilter)-> bool :
+    def compareTo (self, other : PyLy.LayerFilter)-> bool :
       '''                             '''
     ...
-    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -1074,64 +1074,64 @@ __init__( (object)arg1) -> None :
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: PyRx.RxObject)-> None :
+    def dispose (self)-> None :
       '''                             '''
     ...
-    def dynamicallyGenerated (self: LayerFilter)-> bool :
+    def dynamicallyGenerated (self)-> bool :
       '''                             '''
     ...
-    def filter (self: LayerFilter,val : PyDb.LayerTableRecord)-> bool :
+    def filter (self, val : PyDb.LayerTableRecord)-> bool :
       '''                             '''
     ...
-    def filterExpression (self: LayerFilter)-> str :
+    def filterExpression (self)-> str :
       '''                             '''
     ...
-    def generateNested (self: LayerFilter)-> None :
+    def generateNested (self)-> None :
       '''                             '''
     ...
-    def getNestedFilters (self: LayerFilter)-> list :
+    def getNestedFilters (self)-> list :
       '''                             '''
     ...
-    def implRefCount (self: PyRx.RxObject)-> int :
+    def implRefCount (self)-> int :
       '''                             '''
     ...
-    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
+    def isA (self)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isIdFilter (self: LayerFilter)-> bool :
+    def isIdFilter (self)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: PyRx.RxObject)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def isProxy (self: LayerFilter)-> bool :
+    def isProxy (self)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
+    def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def name (self: LayerFilter)-> str :
+    def name (self)-> str :
       '''                             '''
     ...
-    def parent (self: LayerFilter)-> PyAp.LayerFilter :
+    def parent (self)-> PyAp.LayerFilter :
       '''                             '''
     ...
-    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def removeNested (self: LayerFilter,val : PyLy.LayerFilter)-> None :
+    def removeNested (self, val : PyLy.LayerFilter)-> None :
       '''                             '''
     ...
-    def setFilterExpression (self: LayerFilter,val : str)-> None :
+    def setFilterExpression (self, val : str)-> None :
       '''                             '''
     ...
-    def setName (self: LayerFilter,val : str)-> None :
+    def setName (self, val : str)-> None :
       '''                             '''
     ...
-    def showEditor (self: LayerFilter)-> int :
+    def showEditor (self)-> int :
       '''                             '''
     ...
 
@@ -1188,16 +1188,16 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void addLayerId(class PyLyLayerGroup {lvalue},class PyDbObjectId)'''
     ...
-    def addNested (self: LayerFilter,val : PyLy.LayerFilter)-> None :
+    def addNested (self, val : PyLy.LayerFilter)-> None :
       '''                             '''
     ...
-    def allowDelete (self: LayerFilter)-> bool :
+    def allowDelete (self)-> bool :
       '''                             '''
     ...
-    def allowNested (self: LayerFilter)-> bool :
+    def allowNested (self)-> bool :
       '''                             '''
     ...
-    def allowRename (self: LayerFilter)-> bool :
+    def allowRename (self)-> bool :
       '''                             '''
     ...
 
@@ -1205,13 +1205,13 @@ __init__( (object)arg1) -> None :
     def className ()-> str :
       '''                             '''
     ...
-    def compareTo (self: LayerFilter,other : PyLy.LayerFilter)-> bool :
+    def compareTo (self, other : PyLy.LayerFilter)-> bool :
       '''                             '''
     ...
-    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -1219,43 +1219,43 @@ __init__( (object)arg1) -> None :
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: PyRx.RxObject)-> None :
+    def dispose (self)-> None :
       '''                             '''
     ...
-    def dynamicallyGenerated (self: LayerFilter)-> bool :
+    def dynamicallyGenerated (self)-> bool :
       '''                             '''
     ...
-    def filter (self: LayerFilter,val : PyDb.LayerTableRecord)-> bool :
+    def filter (self, val : PyDb.LayerTableRecord)-> bool :
       '''                             '''
     ...
-    def filterExpression (self: LayerFilter)-> str :
+    def filterExpression (self)-> str :
       '''                             '''
     ...
-    def generateNested (self: LayerFilter)-> None :
+    def generateNested (self)-> None :
       '''                             '''
     ...
-    def getNestedFilters (self: LayerFilter)-> list :
+    def getNestedFilters (self)-> list :
       '''                             '''
     ...
-    def implRefCount (self: PyRx.RxObject)-> int :
+    def implRefCount (self)-> int :
       '''                             '''
     ...
-    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
+    def isA (self)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isIdFilter (self: LayerFilter)-> bool :
+    def isIdFilter (self)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: PyRx.RxObject)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def isProxy (self: LayerFilter)-> bool :
+    def isProxy (self)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
+    def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
     def layerIds (self, *args, **kwargs)-> list :
@@ -1264,13 +1264,13 @@ __init__( (object)arg1) -> None :
     C++ signature :
         class boost::python::list layerIds(class PyLyLayerGroup {lvalue})'''
     ...
-    def name (self: LayerFilter)-> str :
+    def name (self)-> str :
       '''                             '''
     ...
-    def parent (self: LayerFilter)-> PyAp.LayerFilter :
+    def parent (self)-> PyAp.LayerFilter :
       '''                             '''
     ...
-    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def removeLayerId (self, *args, **kwargs)-> None :
@@ -1279,16 +1279,16 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void removeLayerId(class PyLyLayerGroup {lvalue},class PyDbObjectId)'''
     ...
-    def removeNested (self: LayerFilter,val : PyLy.LayerFilter)-> None :
+    def removeNested (self, val : PyLy.LayerFilter)-> None :
       '''                             '''
     ...
-    def setFilterExpression (self: LayerFilter,val : str)-> None :
+    def setFilterExpression (self, val : str)-> None :
       '''                             '''
     ...
-    def setName (self: LayerFilter,val : str)-> None :
+    def setName (self, val : str)-> None :
       '''                             '''
     ...
-    def showEditor (self: LayerFilter)-> int :
+    def showEditor (self)-> int :
       '''                             '''
     ...
 
@@ -1321,10 +1321,10 @@ cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3, (int)arg4, (Database)
     C++ signature :
         void cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class PyDbDatabase {lvalue})'''
     ...
-    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def copyLayout (self, *args, **kwargs)-> None :
@@ -1360,10 +1360,10 @@ createLayout( (LayoutManager)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (D
     C++ signature :
         void createLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def createLayoutFromTemplate (self: LayoutManager,newLayoutName : str,templatePath : str,layoutName : str,db : PyDb.Database=current)-> PyDb.ObjectId :
+    def createLayoutFromTemplate (self, newLayoutName : str, templatePath : str, layoutName : str, db : PyDb.Database=current)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def createViewports (self: LayoutManager)-> bool :
+    def createViewports (self)-> bool :
       '''                             '''
     ...
     def deleteLayout (self, *args, **kwargs)-> None :
@@ -1382,7 +1382,7 @@ deleteLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: PyRx.RxObject)-> None :
+    def dispose (self)-> None :
       '''                             '''
     ...
     def findLayoutNamed (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -1396,7 +1396,7 @@ findLayoutNamed( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> ObjectId :
     C++ signature :
         class PyDbObjectId findLayoutNamed(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
     ...
-    def generateNextNewLayoutName (self: LayoutManager,val : PyDb.Database=current)-> str :
+    def generateNextNewLayoutName (self, val : PyDb.Database=current)-> str :
       '''                             '''
     ...
     def getActiveLayoutBTRId (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -1421,10 +1421,10 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveLayoutName(class PyDbLayoutManager {lvalue},bool,class PyDbDatabase {lvalue})'''
     ...
-    def getActiveTab (self: LayoutManager)-> str :
+    def getActiveTab (self)-> str :
       '''                             '''
     ...
-    def getClipBoundaryElabration (self: LayoutManager,val : PyDb.ObjectId)-> list :
+    def getClipBoundaryElabration (self, val : PyDb.ObjectId)-> list :
       '''                             '''
     ...
     def getNonRectVPIdFromClipId (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -1433,16 +1433,16 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
     C++ signature :
         class PyDbObjectId getNonRectVPIdFromClipId(class PyDbLayoutManager {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def implRefCount (self: PyRx.RxObject)-> int :
+    def implRefCount (self)-> int :
       '''                             '''
     ...
-    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
+    def isA (self)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: PyRx.RxObject)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
     def isVpnumClipped (self, *args, **kwargs)-> bool :
@@ -1456,7 +1456,7 @@ isVpnumClipped( (LayoutManager)arg1, (int)arg2, (Database)arg3) -> bool :
     C++ signature :
         bool isVpnumClipped(class PyDbLayoutManager {lvalue},int,class PyDbDatabase)'''
     ...
-    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
+    def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
     def layoutExists (self, *args, **kwargs)-> bool :
@@ -1470,13 +1470,13 @@ layoutExists( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> bool :
     C++ signature :
         bool layoutExists(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
     ...
-    def pageSetup (self: LayoutManager,layoutBTRId : PyDb.ObjectId=kNull,parent : int=kNull,isPageSetupDlg : bool=True)-> int :
+    def pageSetup (self, layoutBTRId : PyDb.ObjectId=kNull, parent : int=kNull, isPageSetupDlg : bool=True)-> int :
       '''                             '''
     ...
-    def pointInViewports (self: LayoutManager,val : PyGe.Point3d)-> list :
+    def pointInViewports (self, val : PyGe.Point3d)-> list :
       '''                             '''
     ...
-    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def renameLayout (self, *args, **kwargs)-> None :
@@ -1490,10 +1490,10 @@ renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3, (Database)arg4) -> None
     C++ signature :
         void renameLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
     ...
-    def setCaptureOnLayoutSwitch (self: LayoutManager,val : bool)-> None :
+    def setCaptureOnLayoutSwitch (self, val : bool)-> None :
       '''                             '''
     ...
-    def setCreateViewports (self: LayoutManager,val : bool)-> None :
+    def setCreateViewports (self, val : bool)-> None :
       '''                             '''
     ...
     def setCurrentLayout (self, *args, **kwargs)-> None :
@@ -1513,22 +1513,22 @@ setCurrentLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     C++ signature :
         void setCurrentLayoutId(class PyDbLayoutManager {lvalue},class PyDbObjectId)'''
     ...
-    def setDefaultPlotConfig (self: LayoutManager,val : PyDb.ObjectId)-> None :
+    def setDefaultPlotConfig (self, val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setShowPageSetup (self: LayoutManager,val : bool)-> None :
+    def setShowPageSetup (self, val : bool)-> None :
       '''                             '''
     ...
-    def setShowPaperBackground (self: LayoutManager,val : bool)-> None :
+    def setShowPaperBackground (self, val : bool)-> None :
       '''                             '''
     ...
-    def setShowPaperMargins (self: LayoutManager,val : bool)-> None :
+    def setShowPaperMargins (self, val : bool)-> None :
       '''                             '''
     ...
-    def setShowPrintBorder (self: LayoutManager,val : bool)-> None :
+    def setShowPrintBorder (self, val : bool)-> None :
       '''                             '''
     ...
-    def setShowTabs (self: LayoutManager,val : bool)-> None :
+    def setShowTabs (self, val : bool)-> None :
       '''                             '''
     ...
     def setupForLayouts (self, *args, **kwargs)-> int :
@@ -1537,135 +1537,135 @@ setCurrentLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     C++ signature :
         unsigned __int64 setupForLayouts(class PyDbDatabase {lvalue})'''
     ...
-    def showPageSetup (self: LayoutManager)-> bool :
+    def showPageSetup (self)-> bool :
       '''                             '''
     ...
-    def showPaperBackground (self: LayoutManager)-> bool :
+    def showPaperBackground (self)-> bool :
       '''                             '''
     ...
-    def showPaperMargins (self: LayoutManager)-> bool :
+    def showPaperMargins (self)-> bool :
       '''                             '''
     ...
-    def showPrintBorder (self: LayoutManager)-> bool :
+    def showPrintBorder (self)-> bool :
       '''                             '''
     ...
-    def showTabs (self: LayoutManager)-> bool :
+    def showTabs (self)-> bool :
       '''                             '''
     ...
-    def updateCurrentPaper (self: LayoutManager,zoomToPaper : bool=False)-> None :
+    def updateCurrentPaper (self, zoomToPaper : bool=False)-> None :
       '''                             '''
     ...
-    def updateLayoutTabs (self: LayoutManager)-> None :
+    def updateLayoutTabs (self)-> None :
       '''                             '''
     ...
 
 class PaletteSet:
-    def __init__ (self: PaletteSet,name : str,guid : str=None)-> None :
+    def __init__ (self, name : str, guid : str=None)-> None :
       '''                             '''
     ...
-    def add (self: PaletteSet,name : str)-> int :
+    def add (self, name : str)-> int :
       '''                             '''
     ...
-    def autoRollupStyle (self: PaletteSet)-> bool :
+    def autoRollupStyle (self)-> bool :
       '''                             '''
     ...
-    def closeButtonStyle (self: PaletteSet)-> bool :
+    def closeButtonStyle (self)-> bool :
       '''                             '''
     ...
-    def editNameStyle (self: PaletteSet)-> bool :
+    def editNameStyle (self)-> bool :
       '''                             '''
     ...
-    def getActivePaletteTabIndex (self: PaletteSet)-> int :
+    def getActivePaletteTabIndex (self)-> int :
       '''                             '''
     ...
-    def getAutoRollup (self: PaletteSet)-> bool :
+    def getAutoRollup (self)-> bool :
       '''                             '''
     ...
-    def getFullRect (self: PaletteSet)-> object :
+    def getFullRect (self)-> object :
       '''                             '''
     ...
-    def getName (self: PaletteSet)-> str :
+    def getName (self)-> str :
       '''                             '''
     ...
-    def getOpacity (self: PaletteSet)-> int :
+    def getOpacity (self)-> int :
       '''                             '''
     ...
-    def getPaletteCount (self: PaletteSet)-> int :
+    def getPaletteCount (self)-> int :
       '''                             '''
     ...
-    def getPaletteSetStyle (self: PaletteSet)-> int :
+    def getPaletteSetStyle (self)-> int :
       '''                             '''
     ...
-    def getRolloverOpacity (self: PaletteSet)-> int :
+    def getRolloverOpacity (self)-> int :
       '''                             '''
     ...
-    def paletteBackgroundColor (self: PaletteSet)-> int :
+    def paletteBackgroundColor (self)-> int :
       '''                             '''
     ...
-    def paletteTabTextColor (self: PaletteSet)-> int :
+    def paletteTabTextColor (self)-> int :
       '''                             '''
     ...
-    def propertiesMenuStyle (self: PaletteSet)-> bool :
+    def propertiesMenuStyle (self)-> bool :
       '''                             '''
     ...
-    def removePalette (self: PaletteSet,val : int)-> bool :
+    def removePalette (self, val : int)-> bool :
       '''                             '''
     ...
-    def rollOut (self: PaletteSet,delay : bool=False)-> None :
+    def rollOut (self, delay : bool=False)-> None :
       '''                             '''
     ...
-    def rollUp (self: PaletteSet)-> None :
+    def rollUp (self)-> None :
       '''                             '''
     ...
-    def rolledUp (self: PaletteSet)-> bool :
+    def rolledUp (self)-> bool :
       '''                             '''
     ...
-    def setActivePalette (self: PaletteSet,val : int)-> bool :
+    def setActivePalette (self, val : int)-> bool :
       '''                             '''
     ...
-    def setAutoRollup (self: PaletteSet,val : bool)-> bool :
+    def setAutoRollup (self, val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: PaletteSet,name : str)-> bool :
+    def setName (self, name : str)-> bool :
       '''                             '''
     ...
-    def setOpacity (self: PaletteSet,val : int)-> bool :
+    def setOpacity (self, val : int)-> bool :
       '''                             '''
     ...
-    def setPaletteSetStyle (self: PaletteSet,val : int)-> None :
+    def setPaletteSetStyle (self, val : int)-> None :
       '''                             '''
     ...
-    def setRolloverOpacity (self: PaletteSet,val : int)-> bool :
+    def setRolloverOpacity (self, val : int)-> bool :
       '''                             '''
     ...
-    def setTitleBarLocation (self: PaletteSet,val : AdUiTitleBarLocation)-> None :
+    def setTitleBarLocation (self, val : AdUiTitleBarLocation)-> None :
       '''                             '''
     ...
-    def setToolId (self: PaletteSet,guid : str)-> bool :
+    def setToolId (self, guid : str)-> bool :
       '''                             '''
     ...
-    def setVisible (self: PaletteSet,val : bool)-> None :
+    def setVisible (self, val : bool)-> None :
       '''                             '''
     ...
-    def showIconStyle (self: PaletteSet)-> bool :
+    def showIconStyle (self)-> bool :
       '''                             '''
     ...
-    def showRollupButtonStyle (self: PaletteSet)-> bool :
+    def showRollupButtonStyle (self)-> bool :
       '''                             '''
     ...
-    def singlePaletteTabStyle (self: PaletteSet)-> bool :
+    def singlePaletteTabStyle (self)-> bool :
       '''                             '''
     ...
-    def snapStyle (self: PaletteSet)-> bool :
+    def snapStyle (self)-> bool :
       '''                             '''
     ...
-    def titleBarLocation (self: PaletteSet)-> PyAp.AdUiTitleBarLocation :
+    def titleBarLocation (self)-> PyAp.AdUiTitleBarLocation :
       '''                             '''
     ...
-    def updateTabs (self: PaletteSet)-> None :
+    def updateTabs (self)-> None :
       '''                             '''
     ...
-    def useSinglePaletteTabNameStyle (self: PaletteSet)-> bool :
+    def useSinglePaletteTabNameStyle (self)-> bool :
       '''                             '''
     ...
 
@@ -1815,10 +1815,10 @@ class TransactionManager:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def abortTransaction (self: TransactionManager)-> None :
+    def abortTransaction (self)-> None :
       '''                             '''
     ...
-    def addNewlyCreatedDBRObject (self: TransactionManager,obj: DbObject,add: bool=True)-> None :
+    def addNewlyCreatedDBRObject (self, obj: DbObject, add: bool=True)-> None :
       '''                             '''
     ...
     def className (self, *args, **kwargs)-> str :
@@ -1827,10 +1827,10 @@ class TransactionManager:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -1839,7 +1839,7 @@ class TransactionManager:
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dispose (self: PyRx.RxObject)-> None :
+    def dispose (self)-> None :
       '''                             '''
     ...
     def enableGraphicsFlush (self, *args, **kwargs)-> None :
@@ -1848,7 +1848,7 @@ class TransactionManager:
     C++ signature :
         void enableGraphicsFlush(class PyTransactionManager {lvalue},bool)'''
     ...
-    def endTransaction (self: TransactionManager)-> None :
+    def endTransaction (self)-> None :
       '''                             '''
     ...
     def flushGraphics (self, *args, **kwargs)-> None :
@@ -1857,43 +1857,43 @@ class TransactionManager:
     C++ signature :
         void flushGraphics(class PyTransactionManager {lvalue})'''
     ...
-    def getAllObjects (self: TransactionManager)-> list :
+    def getAllObjects (self)-> list :
       '''                             '''
     ...
-    def getObject (self: TransactionManager,id: ObjectId,mode: OpenMode=OpenMode.kForRead,openErasedObject: bool=False)-> PyDb.DbObject :
+    def getObject (self, id: ObjectId, mode: OpenMode=OpenMode.kForRead, openErasedObject: bool=False)-> PyDb.DbObject :
       '''                             '''
     ...
-    def implRefCount (self: PyRx.RxObject)-> int :
+    def implRefCount (self)-> int :
       '''                             '''
     ...
-    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
+    def isA (self)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: PyRx.RxObject)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
+    def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def numActiveTransactions (self: TransactionManager)-> int :
+    def numActiveTransactions (self)-> int :
       '''                             '''
     ...
-    def numOpenedObjects (self: TransactionManager)-> int :
+    def numOpenedObjects (self)-> int :
       '''                             '''
     ...
-    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def queueForGraphicsFlush (self: TransactionManager)-> None :
+    def queueForGraphicsFlush (self)-> None :
       '''                             '''
     ...
-    def startTransaction (self: TransactionManager)-> PyDb.Transaction :
+    def startTransaction (self)-> PyDb.Transaction :
       '''                             '''
     ...
-    def topTransaction (self: TransactionManager)-> PyDb.Transaction :
+    def topTransaction (self)-> PyDb.Transaction :
       '''                             '''
     ...
 

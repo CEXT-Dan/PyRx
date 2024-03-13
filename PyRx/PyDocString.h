@@ -7,10 +7,6 @@ public:
 
     const char* ARGS();
     const char* ARGS(std::initializer_list<std::string> pyargs);
-    //const char* ARGS(std::initializer_list<std::string> pyargs, const std::string& overloads);
-    //const char* ARGS(std::initializer_list<std::string> pyargs, const std::string_view overloads);
-
-
     const char* ARGS(const std::string_view argsuments, const std::string_view overloads);
 
 

@@ -363,10 +363,10 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -374,37 +374,37 @@ This class cannot be instantiated from Python'''
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: PyRx.RxObject)-> None :
+    def dispose (self)-> None :
       '''                             '''
     ...
-    def implRefCount (self: PyRx.RxObject)-> int :
+    def implRefCount (self)-> int :
       '''                             '''
     ...
-    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
+    def isA (self)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isDragging (self: CommonDraw)-> bool :
+    def isDragging (self)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: PyRx.RxObject)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
+    def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def regenAbort (self: CommonDraw)-> bool :
+    def regenAbort (self)-> bool :
       '''                             '''
     ...
-    def regenType (self: CommonDraw)-> PyGi.AcGiRegenType :
+    def regenType (self)-> PyGi.AcGiRegenType :
       '''                             '''
     ...
-    def subEntityTraits (self: CommonDraw)-> PyGi.SubEntityTraits :
+    def subEntityTraits (self)-> PyGi.SubEntityTraits :
       '''                             '''
     ...
 
@@ -481,7 +481,7 @@ class Drawable:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def bounds (self: PyGi.Drawable,ext: PyDb.Extents)-> bool :
+    def bounds (self, ext: PyDb.Extents)-> bool :
       '''                             '''
     ...
 
@@ -489,10 +489,10 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -500,49 +500,49 @@ This class cannot be instantiated from Python'''
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: PyRx.RxObject)-> None :
+    def dispose (self)-> None :
       '''                             '''
     ...
-    def drawableType (self: PyGi.Drawable)-> PyGi.GiDrawableType :
+    def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def id (self: PyGi.Drawable)-> PyDb.ObjectId :
+    def id (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def implRefCount (self: PyRx.RxObject)-> int :
+    def implRefCount (self)-> int :
       '''                             '''
     ...
-    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
+    def isA (self)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: PyRx.RxObject)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def isPersistent (self: PyGi.Drawable)-> bool :
+    def isPersistent (self)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
+    def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def rolloverHit (self: PyGi.Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+    def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
       '''                             '''
     ...
-    def setAttributes (self: PyGi.Drawable,traits: PyGi.DrawableTraits)-> int :
+    def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def viewportDraw (self: PyGi.Drawable,vpdraw: PyGi.ViewportDraw)-> None :
+    def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
     ...
-    def viewportDrawLogicalFlags (self: PyGi.Drawable,vpdraw: PyGi.ViewportDraw)-> int :
+    def viewportDrawLogicalFlags (self, vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
-    def worldDraw (self: PyGi.Drawable,wdraw: PyGi.WorldDraw)-> bool :
+    def worldDraw (self, wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
 
@@ -589,10 +589,10 @@ class DrawableOverrule:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -601,7 +601,7 @@ class DrawableOverrule:
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dispose (self: PyRx.RxObject)-> None :
+    def dispose (self)-> None :
       '''                             '''
     ...
     def hasOverrule (self, *args, **kwargs)-> bool :
@@ -610,10 +610,10 @@ class DrawableOverrule:
     C++ signature :
         bool hasOverrule(class PyRxObject {lvalue},class PyRxClass {lvalue})'''
     ...
-    def implRefCount (self: PyRx.RxObject)-> int :
+    def implRefCount (self)-> int :
       '''                             '''
     ...
-    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
+    def isA (self)-> PyRx.RxClass :
       '''                             '''
     ...
     def isApplicable (self, *args, **kwargs)-> bool :
@@ -622,10 +622,10 @@ class DrawableOverrule:
     C++ signature :
         bool isApplicable(class PyGiDrawableOverrule {lvalue},class PyRxObject {lvalue})'''
     ...
-    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: PyRx.RxObject)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
     def isOverruling (self, *args, **kwargs)-> bool :
@@ -634,10 +634,10 @@ class DrawableOverrule:
     C++ signature :
         bool isOverruling()'''
     ...
-    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
+    def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def removeOverrule (self, *args, **kwargs)-> None :
@@ -694,10 +694,10 @@ This class cannot be instantiated from Python'''
     C++ signature :
         unsigned short color(class PyGiSubEntityTraits {lvalue})'''
     ...
-    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -706,7 +706,7 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dispose (self: PyRx.RxObject)-> None :
+    def dispose (self)-> None :
       '''                             '''
     ...
     def drawFlags (self, *args, **kwargs)-> int :
@@ -727,19 +727,19 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyDbObjectId getPlotStyleNameId(class PyGiSubEntityTraits {lvalue})'''
     ...
-    def implRefCount (self: PyRx.RxObject)-> int :
+    def implRefCount (self)-> int :
       '''                             '''
     ...
-    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
+    def isA (self)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: PyRx.RxObject)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
+    def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
     def layerId (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -772,7 +772,7 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyDbObjectId materialId(class PyGiSubEntityTraits {lvalue})'''
     ...
-    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def sectionable (self, *args, **kwargs)-> bool :
@@ -973,10 +973,10 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -985,79 +985,79 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dispose (self: PyRx.RxObject)-> None :
+    def dispose (self)-> None :
       '''                             '''
     ...
-    def draw (self: Geometry,drawable : PyGi.Drawable)-> bool :
+    def draw (self, drawable : PyGi.Drawable)-> bool :
       '''                             '''
     ...
-    def edge (self: Geometry,edgeList : list[PyGe.Curve2d])-> bool :
+    def edge (self, edgeList : list[PyGe.Curve2d])-> bool :
       '''                             '''
     ...
-    def ellipticalArc (self: Geometry,center:PyGe.Point3d,norm:PyGe.Vector3d,majAxisLen:float,minAxisLen:float,startDeg:float,endDeg:float,tilt:float,arcType:ArcType=kAcGiArcSimple)-> bool :
+    def ellipticalArc (self, center:PyGe.Point3d, norm:PyGe.Vector3d, majAxisLen:float, minAxisLen:float, startDeg:float, endDeg:float, tilt:float, arcType:ArcType=kAcGiArcSimple)-> bool :
       '''                             '''
     ...
-    def getModelToWorldTransform (self: Geometry)-> PyGe.Matrix3d :
+    def getModelToWorldTransform (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getWorldToModelTransform (self: Geometry)-> PyGe.Matrix3d :
+    def getWorldToModelTransform (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def implRefCount (self: PyRx.RxObject)-> int :
+    def implRefCount (self)-> int :
       '''                             '''
     ...
-    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
+    def isA (self)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: PyRx.RxObject)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
+    def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def pline (self: Geometry,p1 : PyDb.Polyline,fromIndex : int,numSegs : int)-> bool :
+    def pline (self, p1 : PyDb.Polyline, fromIndex : int, numSegs : int)-> bool :
       '''                             '''
     ...
-    def polygon (self: Geometry,vertexList : list[PyGe.Point3d])-> bool :
+    def polygon (self, vertexList : list[PyGe.Point3d])-> bool :
       '''                             '''
     ...
-    def polyline (self: Geometry,vertexList : list[PyGe.Point3d],normal : PyGe.Vector3d=default,marker : int=default)-> bool :
+    def polyline (self, vertexList : list[PyGe.Point3d], normal : PyGe.Vector3d=default, marker : int=default)-> bool :
       '''                             '''
     ...
-    def popModelTransform (self: Geometry)-> bool :
+    def popModelTransform (self)-> bool :
       '''                             '''
     ...
-    def pushModelTransform (self: Geometry,val : PyGe.Vector3d|PyGe.Matrix3d)-> bool :
+    def pushModelTransform (self, val : PyGe.Vector3d|PyGe.Matrix3d)-> bool :
       '''                             '''
     ...
-    def pushOrientationTransform (self: Geometry, behavior : PyGi.AcGiOrientationTransformBehavior)-> PyGe.Matrix3d :
+    def pushOrientationTransform (self,  behavior : PyGi.AcGiOrientationTransformBehavior)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def pushPositionTransform (self: Geometry,behavior : PyGi.AcGiPositionTransformBehavior, offset : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
+    def pushPositionTransform (self, behavior : PyGi.AcGiPositionTransformBehavior,  offset : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def pushScaleTransform (self: Geometry,behavior : PyGi.AcGiScaleTransformBehavior, extents : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
+    def pushScaleTransform (self, behavior : PyGi.AcGiScaleTransformBehavior,  extents : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def ray (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+    def ray (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
       '''                             '''
     ...
-    def rowOfDots (self: Geometry,count : int,start: PyGe.Point3d,step : PyGe.Vector3d)-> bool :
+    def rowOfDots (self, count : int, start: PyGe.Point3d, step : PyGe.Vector3d)-> bool :
       '''                             '''
     ...
-    def text (self: Geometry,pos : PyGe.Point3d,normal : PyGe.Vector3d,direction : PyGe.Vector3d,height : float,width : float,oblique : float,msg : str)-> bool :
+    def text (self, pos : PyGe.Point3d, normal : PyGe.Vector3d, direction : PyGe.Vector3d, height : float, width : float, oblique : float, msg : str)-> bool :
       '''                             '''
     ...
-    def worldLine (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+    def worldLine (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
       '''                             '''
     ...
-    def xline (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+    def xline (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
       '''                             '''
     ...
 
@@ -1323,10 +1323,10 @@ This class cannot be instantiated from Python'''
     C++ signature :
         unsigned short color(class PyGiSubEntityTraits {lvalue})'''
     ...
-    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -1335,7 +1335,7 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dispose (self: PyRx.RxObject)-> None :
+    def dispose (self)-> None :
       '''                             '''
     ...
     def drawFlags (self, *args, **kwargs)-> int :
@@ -1356,19 +1356,19 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyDbObjectId getPlotStyleNameId(class PyGiSubEntityTraits {lvalue})'''
     ...
-    def implRefCount (self: PyRx.RxObject)-> int :
+    def implRefCount (self)-> int :
       '''                             '''
     ...
-    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
+    def isA (self)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: PyRx.RxObject)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
+    def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
     def layerId (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -1401,7 +1401,7 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyDbObjectId materialId(class PyGiSubEntityTraits {lvalue})'''
     ...
-    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def sectionable (self, *args, **kwargs)-> bool :
@@ -1666,10 +1666,10 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -1677,40 +1677,40 @@ This class cannot be instantiated from Python'''
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: PyRx.RxObject)-> None :
+    def dispose (self)-> None :
       '''                             '''
     ...
-    def geometry (self: ViewportDraw)-> PyGi.ViewportGeometry :
+    def geometry (self)-> PyGi.ViewportGeometry :
       '''                             '''
     ...
-    def implRefCount (self: PyRx.RxObject)-> int :
+    def implRefCount (self)-> int :
       '''                             '''
     ...
-    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
+    def isA (self)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isDragging (self: CommonDraw)-> bool :
+    def isDragging (self)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: PyRx.RxObject)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
+    def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def regenAbort (self: CommonDraw)-> bool :
+    def regenAbort (self)-> bool :
       '''                             '''
     ...
-    def regenType (self: CommonDraw)-> PyGi.AcGiRegenType :
+    def regenType (self)-> PyGi.AcGiRegenType :
       '''                             '''
     ...
-    def subEntityTraits (self: CommonDraw)-> PyGi.SubEntityTraits :
+    def subEntityTraits (self)-> PyGi.SubEntityTraits :
       '''                             '''
     ...
 
@@ -1756,10 +1756,10 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -1767,79 +1767,79 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: PyRx.RxObject)-> None :
+    def dispose (self)-> None :
       '''                             '''
     ...
-    def draw (self: Geometry,drawable : PyGi.Drawable)-> bool :
+    def draw (self, drawable : PyGi.Drawable)-> bool :
       '''                             '''
     ...
-    def edge (self: Geometry,edgeList : list[PyGe.Curve2d])-> bool :
+    def edge (self, edgeList : list[PyGe.Curve2d])-> bool :
       '''                             '''
     ...
-    def ellipticalArc (self: Geometry,center:PyGe.Point3d,norm:PyGe.Vector3d,majAxisLen:float,minAxisLen:float,startDeg:float,endDeg:float,tilt:float,arcType:ArcType=kAcGiArcSimple)-> bool :
+    def ellipticalArc (self, center:PyGe.Point3d, norm:PyGe.Vector3d, majAxisLen:float, minAxisLen:float, startDeg:float, endDeg:float, tilt:float, arcType:ArcType=kAcGiArcSimple)-> bool :
       '''                             '''
     ...
-    def getModelToWorldTransform (self: Geometry)-> PyGe.Matrix3d :
+    def getModelToWorldTransform (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getWorldToModelTransform (self: Geometry)-> PyGe.Matrix3d :
+    def getWorldToModelTransform (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def implRefCount (self: PyRx.RxObject)-> int :
+    def implRefCount (self)-> int :
       '''                             '''
     ...
-    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
+    def isA (self)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: PyRx.RxObject)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
+    def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def pline (self: Geometry,p1 : PyDb.Polyline,fromIndex : int,numSegs : int)-> bool :
+    def pline (self, p1 : PyDb.Polyline, fromIndex : int, numSegs : int)-> bool :
       '''                             '''
     ...
-    def polygon (self: Geometry,vertexList : list[PyGe.Point3d])-> bool :
+    def polygon (self, vertexList : list[PyGe.Point3d])-> bool :
       '''                             '''
     ...
-    def polyline (self: Geometry,vertexList : list[PyGe.Point3d],normal : PyGe.Vector3d=default,marker : int=default)-> bool :
+    def polyline (self, vertexList : list[PyGe.Point3d], normal : PyGe.Vector3d=default, marker : int=default)-> bool :
       '''                             '''
     ...
-    def popModelTransform (self: Geometry)-> bool :
+    def popModelTransform (self)-> bool :
       '''                             '''
     ...
-    def pushModelTransform (self: Geometry,val : PyGe.Vector3d|PyGe.Matrix3d)-> bool :
+    def pushModelTransform (self, val : PyGe.Vector3d|PyGe.Matrix3d)-> bool :
       '''                             '''
     ...
-    def pushOrientationTransform (self: Geometry, behavior : PyGi.AcGiOrientationTransformBehavior)-> PyGe.Matrix3d :
+    def pushOrientationTransform (self,  behavior : PyGi.AcGiOrientationTransformBehavior)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def pushPositionTransform (self: Geometry,behavior : PyGi.AcGiPositionTransformBehavior, offset : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
+    def pushPositionTransform (self, behavior : PyGi.AcGiPositionTransformBehavior,  offset : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def pushScaleTransform (self: Geometry,behavior : PyGi.AcGiScaleTransformBehavior, extents : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
+    def pushScaleTransform (self, behavior : PyGi.AcGiScaleTransformBehavior,  extents : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def ray (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+    def ray (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
       '''                             '''
     ...
-    def rowOfDots (self: Geometry,count : int,start: PyGe.Point3d,step : PyGe.Vector3d)-> bool :
+    def rowOfDots (self, count : int, start: PyGe.Point3d, step : PyGe.Vector3d)-> bool :
       '''                             '''
     ...
-    def text (self: Geometry,pos : PyGe.Point3d,normal : PyGe.Vector3d,direction : PyGe.Vector3d,height : float,width : float,oblique : float,msg : str)-> bool :
+    def text (self, pos : PyGe.Point3d, normal : PyGe.Vector3d, direction : PyGe.Vector3d, height : float, width : float, oblique : float, msg : str)-> bool :
       '''                             '''
     ...
-    def worldLine (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+    def worldLine (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
       '''                             '''
     ...
-    def xline (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+    def xline (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
       '''                             '''
     ...
 
@@ -1853,10 +1853,10 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -1864,40 +1864,40 @@ This class cannot be instantiated from Python'''
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: PyRx.RxObject)-> None :
+    def dispose (self)-> None :
       '''                             '''
     ...
-    def geometry (self: WorldDraw)-> PyGi.WorldGeometry :
+    def geometry (self)-> PyGi.WorldGeometry :
       '''                             '''
     ...
-    def implRefCount (self: PyRx.RxObject)-> int :
+    def implRefCount (self)-> int :
       '''                             '''
     ...
-    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
+    def isA (self)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isDragging (self: CommonDraw)-> bool :
+    def isDragging (self)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: PyRx.RxObject)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
+    def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def regenAbort (self: CommonDraw)-> bool :
+    def regenAbort (self)-> bool :
       '''                             '''
     ...
-    def regenType (self: CommonDraw)-> PyGi.AcGiRegenType :
+    def regenType (self)-> PyGi.AcGiRegenType :
       '''                             '''
     ...
-    def subEntityTraits (self: CommonDraw)-> PyGi.SubEntityTraits :
+    def subEntityTraits (self)-> PyGi.SubEntityTraits :
       '''                             '''
     ...
 
@@ -1943,10 +1943,10 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: PyRx.RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: PyRx.RxObject,other: PyRx.RxObject)-> None :
+    def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
 
@@ -1954,78 +1954,78 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dispose (self: PyRx.RxObject)-> None :
+    def dispose (self)-> None :
       '''                             '''
     ...
-    def draw (self: Geometry,drawable : PyGi.Drawable)-> bool :
+    def draw (self, drawable : PyGi.Drawable)-> bool :
       '''                             '''
     ...
-    def edge (self: Geometry,edgeList : list[PyGe.Curve2d])-> bool :
+    def edge (self, edgeList : list[PyGe.Curve2d])-> bool :
       '''                             '''
     ...
-    def ellipticalArc (self: Geometry,center:PyGe.Point3d,norm:PyGe.Vector3d,majAxisLen:float,minAxisLen:float,startDeg:float,endDeg:float,tilt:float,arcType:ArcType=kAcGiArcSimple)-> bool :
+    def ellipticalArc (self, center:PyGe.Point3d, norm:PyGe.Vector3d, majAxisLen:float, minAxisLen:float, startDeg:float, endDeg:float, tilt:float, arcType:ArcType=kAcGiArcSimple)-> bool :
       '''                             '''
     ...
-    def getModelToWorldTransform (self: Geometry)-> PyGe.Matrix3d :
+    def getModelToWorldTransform (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getWorldToModelTransform (self: Geometry)-> PyGe.Matrix3d :
+    def getWorldToModelTransform (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def implRefCount (self: PyRx.RxObject)-> int :
+    def implRefCount (self)-> int :
       '''                             '''
     ...
-    def isA (self: PyRx.RxObject)-> PyRx.RxClass :
+    def isA (self)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: PyRx.RxObject,rhs: PyRx.RxClass)-> bool :
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isNullObj (self: PyRx.RxObject)-> bool :
+    def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: PyRx.RxObject,flag: bool)-> None :
+    def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def pline (self: Geometry,p1 : PyDb.Polyline,fromIndex : int,numSegs : int)-> bool :
+    def pline (self, p1 : PyDb.Polyline, fromIndex : int, numSegs : int)-> bool :
       '''                             '''
     ...
-    def polygon (self: Geometry,vertexList : list[PyGe.Point3d])-> bool :
+    def polygon (self, vertexList : list[PyGe.Point3d])-> bool :
       '''                             '''
     ...
-    def polyline (self: Geometry,vertexList : list[PyGe.Point3d],normal : PyGe.Vector3d=default,marker : int=default)-> bool :
+    def polyline (self, vertexList : list[PyGe.Point3d], normal : PyGe.Vector3d=default, marker : int=default)-> bool :
       '''                             '''
     ...
-    def popModelTransform (self: Geometry)-> bool :
+    def popModelTransform (self)-> bool :
       '''                             '''
     ...
-    def pushModelTransform (self: Geometry,val : PyGe.Vector3d|PyGe.Matrix3d)-> bool :
+    def pushModelTransform (self, val : PyGe.Vector3d|PyGe.Matrix3d)-> bool :
       '''                             '''
     ...
-    def pushOrientationTransform (self: Geometry, behavior : PyGi.AcGiOrientationTransformBehavior)-> PyGe.Matrix3d :
+    def pushOrientationTransform (self,  behavior : PyGi.AcGiOrientationTransformBehavior)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def pushPositionTransform (self: Geometry,behavior : PyGi.AcGiPositionTransformBehavior, offset : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
+    def pushPositionTransform (self, behavior : PyGi.AcGiPositionTransformBehavior,  offset : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def pushScaleTransform (self: Geometry,behavior : PyGi.AcGiScaleTransformBehavior, extents : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
+    def pushScaleTransform (self, behavior : PyGi.AcGiScaleTransformBehavior,  extents : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def queryX (self: PyRx.RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def ray (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+    def ray (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
       '''                             '''
     ...
-    def rowOfDots (self: Geometry,count : int,start: PyGe.Point3d,step : PyGe.Vector3d)-> bool :
+    def rowOfDots (self, count : int, start: PyGe.Point3d, step : PyGe.Vector3d)-> bool :
       '''                             '''
     ...
-    def text (self: Geometry,pos : PyGe.Point3d,normal : PyGe.Vector3d,direction : PyGe.Vector3d,height : float,width : float,oblique : float,msg : str)-> bool :
+    def text (self, pos : PyGe.Point3d, normal : PyGe.Vector3d, direction : PyGe.Vector3d, height : float, width : float, oblique : float, msg : str)-> bool :
       '''                             '''
     ...
-    def worldLine (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+    def worldLine (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
       '''                             '''
     ...
-    def xline (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+    def xline (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
       '''                             '''
     ...

@@ -151,7 +151,7 @@ class AcEdPointHistory:
     ...
 
 class AutoSysVar:
-    def __init__ (self: AutoSysVar,varname:str,value)-> None :
+    def __init__ (self, varname:str, value)-> None :
       '''                             '''
     ...
     def detach (self, *args, **kwargs)-> None :
@@ -434,7 +434,7 @@ class Core:
     def getPredefinedHatchPatterns ()-> list :
       '''                             '''
     ...
-    def getRGB (self: Core,colorIndex : int)-> tuple :
+    def getRGB (self, colorIndex : int)-> tuple :
       '''                             '''
     ...
     def getSym (self, *args, **kwargs)-> list :
@@ -2059,64 +2059,64 @@ class InputPoint:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def alignmentPaths (self: InputPoint)-> list :
+    def alignmentPaths (self)-> list :
       '''                             '''
     ...
-    def cartesianSnappedPoint (self: InputPoint)-> PyGe.Point3d :
+    def cartesianSnappedPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def computedPoint (self: InputPoint)-> PyGe.Point3d :
+    def computedPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def document (self: InputPoint)-> PyAp.Document :
+    def document (self)-> PyAp.Document :
       '''                             '''
     ...
-    def drawContext (self: InputPoint)-> PyGi.ViewportDraw :
+    def drawContext (self)-> PyGi.ViewportDraw :
       '''                             '''
     ...
-    def grippedPoint (self: InputPoint)-> PyGe.Point3d :
+    def grippedPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def gsSelectionMark (self: InputPoint)-> list :
+    def gsSelectionMark (self)-> list :
       '''                             '''
     ...
-    def history (self: InputPoint)-> PyEd.AcEdPointHistory :
+    def history (self)-> PyEd.AcEdPointHistory :
       '''                             '''
     ...
-    def keyPointEntities (self: InputPoint)-> list :
+    def keyPointEntities (self)-> list :
       '''                             '''
     ...
-    def keyPointGsSelectionMark (self: InputPoint)-> list :
+    def keyPointGsSelectionMark (self)-> list :
       '''                             '''
     ...
-    def lastPoint (self: InputPoint)-> PyGe.Point3d :
+    def lastPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def nestedKeyPointEntities (self: InputPoint)-> list :
+    def nestedKeyPointEntities (self)-> list :
       '''                             '''
     ...
-    def nestedPickedEntities (self: InputPoint)-> list :
+    def nestedPickedEntities (self)-> list :
       '''                             '''
     ...
-    def osnapMask (self: InputPoint)-> PyDb.OsnapMask :
+    def osnapMask (self)-> PyDb.OsnapMask :
       '''                             '''
     ...
-    def osnapOverrides (self: InputPoint)-> PyDb.OsnapMask :
+    def osnapOverrides (self)-> PyDb.OsnapMask :
       '''                             '''
     ...
-    def osnappedPoint (self: InputPoint)-> PyGe.Point3d :
+    def osnappedPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def pickedEntities (self: InputPoint)-> list :
+    def pickedEntities (self)-> list :
       '''                             '''
     ...
-    def pointComputed (self: InputPoint)-> bool :
+    def pointComputed (self)-> bool :
       '''                             '''
     ...
-    def rawPoint (self: InputPoint)-> PyGe.Point3d :
+    def rawPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def tooltipString (self: InputPoint)-> str :
+    def tooltipString (self)-> str :
       '''                             '''
     ...
 
@@ -2139,28 +2139,28 @@ class InputPointFilterResult:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def displayOsnapGlyph (self: InputPointFilterResult)-> bool :
+    def displayOsnapGlyph (self)-> bool :
       '''                             '''
     ...
-    def newPoint (self: InputPointFilterResult)-> PyGe.Point3d :
+    def newPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def newTooltipString (self: InputPointFilterResult)-> str :
+    def newTooltipString (self)-> str :
       '''                             '''
     ...
-    def retry (self: InputPointFilterResult)-> bool :
+    def retry (self)-> bool :
       '''                             '''
     ...
-    def setDisplayOsnapGlyph (self: InputPointFilterResult,val : bool)-> None :
+    def setDisplayOsnapGlyph (self, val : bool)-> None :
       '''                             '''
     ...
-    def setNewPoint (self: InputPointFilterResult,val : PyGe.Point3d)-> None :
+    def setNewPoint (self, val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setNewTooltipString (self: InputPointFilterResult,val : str)-> None :
+    def setNewTooltipString (self, val : str)-> None :
       '''                             '''
     ...
-    def setRetry (self: InputPointFilterResult,val : bool)-> None :
+    def setRetry (self, val : bool)-> None :
       '''                             '''
     ...
 
@@ -2169,46 +2169,46 @@ class InputPointManager:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def addPointMonitor (self: InputPointManager,monitor : PyEd.InputPointMonitor)-> None :
+    def addPointMonitor (self, monitor : PyEd.InputPointMonitor)-> None :
       '''                             '''
     ...
-    def disableSystemCursorGraphics (self: InputPointManager)-> bool :
+    def disableSystemCursorGraphics (self)-> bool :
       '''                             '''
     ...
-    def enableMultiSubentPathSelection (self: InputPointManager)-> None :
+    def enableMultiSubentPathSelection (self)-> None :
       '''                             '''
     ...
-    def enableSystemCursorGraphics (self: InputPointManager)-> bool :
+    def enableSystemCursorGraphics (self)-> bool :
       '''                             '''
     ...
-    def forcedPickCount (self: InputPointManager)-> int :
+    def forcedPickCount (self)-> int :
       '''                             '''
     ...
-    def hasFilter (self: InputPointManager)-> bool :
+    def hasFilter (self)-> bool :
       '''                             '''
     ...
-    def mouseHasMoved (self: InputPointManager)-> int :
+    def mouseHasMoved (self)-> int :
       '''                             '''
     ...
-    def registerPointFilter (self: InputPointManager,filter : PyEd.InputPointFilter)-> None :
+    def registerPointFilter (self, filter : PyEd.InputPointFilter)-> None :
       '''                             '''
     ...
-    def removePointMonitor (self: InputPointManager,monitor : PyEd.InputPointMonitor)-> None :
+    def removePointMonitor (self, monitor : PyEd.InputPointMonitor)-> None :
       '''                             '''
     ...
-    def revokePointFilter (self: InputPointManager)-> None :
+    def revokePointFilter (self)-> None :
       '''                             '''
     ...
-    def systemCursorDisableCount (self: InputPointManager)-> int :
+    def systemCursorDisableCount (self)-> int :
       '''                             '''
     ...
-    def turnOffForcedPick (self: InputPointManager)-> bool :
+    def turnOffForcedPick (self)-> bool :
       '''                             '''
     ...
-    def turnOffSubentityWindowSelection (self: InputPointManager)-> bool :
+    def turnOffSubentityWindowSelection (self)-> bool :
       '''                             '''
     ...
-    def turnOnSubentityWindowSelection (self: InputPointManager)-> bool :
+    def turnOnSubentityWindowSelection (self)-> bool :
       '''                             '''
     ...
 
@@ -2219,7 +2219,7 @@ class InputPointMonitor:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def monitorInputPoint (self: InputPointMonitor,input : PyEd.InputPoint,output : PyEd.InputPointMonitorResult)-> PyDb.ErrorStatus :
+    def monitorInputPoint (self, input : PyEd.InputPoint, output : PyEd.InputPointMonitorResult)-> PyDb.ErrorStatus :
       '''                             '''
     ...
 
@@ -2228,13 +2228,13 @@ class InputPointMonitorResult:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def additionalTooltipString (self: InputPointMonitorResult)-> str :
+    def additionalTooltipString (self)-> str :
       '''                             '''
     ...
-    def appendToTooltipStr (self: InputPointMonitorResult)-> bool :
+    def appendToTooltipStr (self)-> bool :
       '''                             '''
     ...
-    def setAdditionalTooltipString (self: InputPointMonitorResult,val : str)-> None :
+    def setAdditionalTooltipString (self, val : str)-> None :
       '''                             '''
     ...
 
@@ -2439,40 +2439,40 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def add (self: SelectionSet,id: PyDb.ObjectId)-> None :
+    def add (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def adsname (self: SelectionSet)-> PyDb.AdsName :
+    def adsname (self)-> PyDb.AdsName :
       '''                             '''
     ...
-    def clear (self: SelectionSet)-> None :
+    def clear (self)-> None :
       '''                             '''
     ...
-    def hasMember (self: SelectionSet,id: PyDb.ObjectId)-> bool :
+    def hasMember (self, id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def isInitialized (self: SelectionSet)-> bool :
+    def isInitialized (self)-> bool :
       '''                             '''
     ...
-    def objectIds (self: SelectionSet,desc: PyRx.RxClass=PyDb.Entity)-> list :
+    def objectIds (self, desc: PyRx.RxClass=PyDb.Entity)-> list :
       '''                             '''
     ...
-    def remove (self: SelectionSet,id: PyDb.ObjectId)-> None :
+    def remove (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def size (self: SelectionSet)-> int :
+    def size (self)-> int :
       '''                             '''
     ...
-    def ssNameX (self: SelectionSet,val: int = 0)-> list :
+    def ssNameX (self, val: int = 0)-> list :
       '''                             '''
     ...
-    def ssSetFirst (self: SelectionSet)-> bool :
+    def ssSetFirst (self)-> bool :
       '''                             '''
     ...
-    def ssXform (self: SelectionSet,xform: PyGe.Matrix3d)-> PyEd.PromptStatus :
+    def ssXform (self, xform: PyGe.Matrix3d)-> PyEd.PromptStatus :
       '''                             '''
     ...
-    def toList (self: SelectionSet)-> list :
+    def toList (self)-> list :
       '''                             '''
     ...
 
@@ -2615,7 +2615,7 @@ class UserInputControls:
     ...
 
 class UserInteraction:
-    def __init__ (self: UserInteraction,doc:PyAp.Document='current',isPrompting:bool=True)-> None :
+    def __init__ (self, doc:PyAp.Document='current', isPrompting:bool=True)-> None :
       '''                             '''
     ...
 

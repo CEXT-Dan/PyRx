@@ -9,7 +9,7 @@ PyDocString::PyDocString(const std::string& val)
 const char* PyDocString::ARGS()
 {
     outstr = m_argBegin;
-    outstr += std::format("self: {}", m_className);
+    outstr += "self";
     outstr += m_argEnd;
     return outstr.c_str();
 }
@@ -17,10 +17,10 @@ const char* PyDocString::ARGS()
 const char* PyDocString::ARGS(std::initializer_list<std::string> pyargs)
 {
     outstr = m_argBegin;
-    outstr += std::format("self: {}", m_className);
+    outstr += "self";
     for (auto& arg : pyargs)
     {
-        outstr += ",";
+        outstr += ", ";
         outstr += std::format("{}", arg);
     }
     trim(outstr, ',');
@@ -28,28 +28,10 @@ const char* PyDocString::ARGS(std::initializer_list<std::string> pyargs)
     return outstr.c_str();
 }
 
-//const char* PyDocString::ARGS(std::initializer_list<std::string> pyargs, const std::string& comment)
-//{
-//    outstr = ARGS(pyargs);
-//    outstr += m_commentBegin;
-//    outstr += comment;
-//    outstr += m_commenEnd;
-//    return outstr.c_str();
-//}
-//
-//const char* PyDocString::ARGS(std::initializer_list<std::string> pyargs, const std::string_view comment)
-//{
-//    outstr = ARGS(pyargs);
-//    outstr += m_commentBegin;
-//    outstr += comment;
-//    outstr += m_commenEnd;
-//    return outstr.c_str();
-//}
-
 const char* PyDocString::ARGS(const std::string_view arguments, const std::string_view overloads)
 {
     outstr = m_argBegin;
-    outstr += std::format("self: {}, ", m_className);
+    outstr +=  "self, ";
     outstr += arguments;
     outstr += m_argEnd;
     outstr += m_commentBegin;
