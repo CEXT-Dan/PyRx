@@ -805,7 +805,7 @@ AcDbSequenceEnd* PyDbSequenceEnd::impObj(const std::source_location& src /*= std
 //PyDbSubentId
 void makePyDbSubentIdWrapper()
 {
-    PyDocString DS("SubentId");
+    PyDocString DS("PyDb.SubentId");
     class_<PyDbSubentId>("SubentId")
         .def(init<>())
         .def(init<AcDb::SubentType, Adesk::GsMarker>())
@@ -900,7 +900,7 @@ AcDbSubentId* PyDbSubentId::impObj(const std::source_location& src /*= std::sour
 //PyDbFullSubentPath
 void makePyDbFullSubentPathWrapper()
 {
-    PyDocString DS("FullSubentPath");
+    PyDocString DS("PyDb.FullSubentPath");
     class_<PyDbFullSubentPath>("FullSubentPath")
         .def(init<>())
         .def(init<AcDb::SubentType, Adesk::GsMarker>())

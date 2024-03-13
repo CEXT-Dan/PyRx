@@ -7,7 +7,7 @@
 using namespace boost::python;
 void makePyDbDatabaseReactorWrapper()
 {
-    PyDocString DS("DatabaseReactor");
+    PyDocString DS("PyDb.DatabaseReactor");
     class_<PyDbDatabaseReactor, bases<PyRxObject>>("DatabaseReactor")
         .def(init<>())
         .def("objectAppended", &PyDbDatabaseReactor::objectAppended, DS.ARGS({ "db: PyDb.Database", "obj: PyDb.DbObject" }))

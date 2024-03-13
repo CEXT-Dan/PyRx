@@ -8,7 +8,7 @@ using namespace boost::python;
 //PyDbDictionary wrapper
 void makePyDbDictionaryWrapper()
 {
-    PyDocString DS("Dictionary");
+    PyDocString DS("PyDb.Dictionary");
     class_<PyDbDictionary, bases<PyDbObject>>("Dictionary")
         .def(init<>())
         .def(init<const PyDbObjectId&>())

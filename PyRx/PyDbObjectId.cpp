@@ -7,7 +7,7 @@ using namespace boost::python;
 // PyDbObjectId
 void makePyDbObjectIdWrapper()
 {
-    PyDocString DS("ObjectId");
+    PyDocString DS("PyDb.ObjectId");
     class_<PyDbObjectId>("ObjectId")
         .def(init<>())
         .def("asOldId", &PyDbObjectId::asOldId, DS.ARGS())

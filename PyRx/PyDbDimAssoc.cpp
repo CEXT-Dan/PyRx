@@ -8,7 +8,7 @@ using namespace boost::python;
 
 void makePyDbDimAssocWrapper()
 {
-    PyDocString DS("DimAssoc");
+    PyDocString DS("PyDb.DimAssoc");
     class_<PyDbDimAssoc, bases<PyDbObject>>("DimAssoc")
         .def(init<>())
         .def(init<const PyDbObjectId&>())

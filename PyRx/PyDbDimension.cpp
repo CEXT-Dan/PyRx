@@ -11,7 +11,7 @@ using namespace boost::python;
 //PyDbDimension
 void makePyDbDimensionWrapper()
 {
-    PyDocString DS("Dimension");
+    PyDocString DS("PyDb.Dimension");
     class_<PyDbDimension, bases<PyDbEntity>>("Dimension", no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())

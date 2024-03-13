@@ -13,7 +13,7 @@ using namespace boost::python;
 //PyDbText
 void makePyDbTextWrapper()
 {
-    PyDocString DS("Text");
+    PyDocString DS("PyDb.Text");
     class_<PyDbText, bases<PyDbEntity>>("Text")
         .def(init<>())
         .def(init<AcGePoint3d&, const std::string&>())
@@ -352,7 +352,7 @@ AcDbText* PyDbText::impObj(const std::source_location& src /*= std::source_locat
 //PyDbAttributeDefinition
 void makePyDbAttributeDefinitionWrapper()
 {
-    PyDocString DS("AttributeDefinition");
+    PyDocString DS("PyDb.AttributeDefinition");
     class_<PyDbAttributeDefinition, bases<PyDbText>>("AttributeDefinition")
         .def(init<>())
         .def(init<const AcGePoint3d&, const std::string&, const std::string&, const std::string&, const PyDbObjectId&>())
@@ -562,7 +562,7 @@ AcDbAttributeDefinition* PyDbAttributeDefinition::impObj(const std::source_locat
 //PyDbAttribute
 void makePyDbAttributeWrapper()
 {
-    PyDocString DS("AttributeReference");
+    PyDocString DS("PyDb.AttributeReference");
     class_<PyDbAttribute, bases<PyDbText>>("AttributeReference")
         .def(init<>())
         .def(init<const AcGePoint3d&, const std::string&, const std::string&, const PyDbObjectId&>())
@@ -755,7 +755,7 @@ AcDbAttribute* PyDbAttribute::impObj(const std::source_location& src /*= std::so
 //PyDbBlockReference
 void makePyDbBlockReferenceWrapper()
 {
-    PyDocString DS("BlockReference");
+    PyDocString DS("PyDb.BlockReference");
     class_<PyDbBlockReference, bases<PyDbEntity>>("BlockReference")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -969,7 +969,7 @@ AcDbBlockReference* PyDbBlockReference::impObj(const std::source_location& src /
 //PyDbDynBlockReference
 void makePyDbDynBlockReferenceWrapper() //TODO: Make test
 {
-    PyDocString DS("DynBlockReference");
+    PyDocString DS("PyDb.DynBlockReference");
     class_<PyDbDynBlockReference>("DynBlockReference", no_init)
         .def(init<const PyDbObjectId&>(DS.ARGS({ "val : ObjectId" })))
         .def("isDynamicBlock", &PyDbDynBlockReference::isDynamicBlock1, DS.ARGS())
@@ -1058,7 +1058,7 @@ AcDbDynBlockReference* PyDbDynBlockReference::impObj(const std::source_location&
 //DbMInsertBlock
 void makePyDbMInsertBlockeWrapper()
 {
-    PyDocString DS("MInsertBlock");
+    PyDocString DS("PyDb.MInsertBlock");
     class_<PyDbMInsertBlock, bases<PyDbBlockReference>>("MInsertBlock")
         .def(init<>())
         .def(init<AcGePoint3d&, const PyDbObjectId&, Adesk::UInt16, Adesk::UInt16, double, double>())
@@ -1181,7 +1181,7 @@ AcDbMInsertBlock* PyDbMInsertBlock::impObj(const std::source_location& src /*= s
 //PyDbVertex
 void makePyDbVertexWrapper()
 {
-    PyDocString DS("Vertex");
+    PyDocString DS("PyDb.Vertex");
     class_<PyDbVertex, bases<PyDbEntity>>("Vertex", boost::python::no_init)
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -1250,7 +1250,7 @@ AcDbVertex* PyDbVertex::impObj(const std::source_location& src /*= std::source_l
 //PyDb2dVertex
 void makePyDb2dVertexWrapper()
 {
-    PyDocString DS("Vertex2d");
+    PyDocString DS("PyDb.Vertex2d");
     class_<PyDb2dVertex, bases<PyDbVertex>>("Vertex2d")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
@@ -1449,7 +1449,7 @@ AcDb2dVertex* PyDb2dVertex::impObj(const std::source_location& src /*= std::sour
 //AcDb3dPolylineVertex
 void makePyDb3dPolylineVertexWrapper()
 {
-    PyDocString DS("Polyline3dVertex");
+    PyDocString DS("PyDb.Polyline3dVertex");
     class_<PyDb3dPolylineVertex, bases<PyDbVertex>>("Polyline3dVertex")
         .def(init<>())
         .def(init<const AcGePoint3d&>())

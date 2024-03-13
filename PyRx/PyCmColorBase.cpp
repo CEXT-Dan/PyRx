@@ -30,7 +30,7 @@ static bool AcCmColorNotEqualsOperator(const AcCmColor& left, const AcCmColor& r
 
 void makePyCmColorWrapper()
 {
-    PyDocString DS("Color");
+    PyDocString DS("PyDb.Color");
     class_<AcCmColor>("Color")
 #if defined(_ZRXTARGET) && (_ZRXTARGET > 240)
         .def("setNone", &AcCmColor::setNone, DS.ARGS())
@@ -77,7 +77,7 @@ void makePyCmColorWrapper()
 //AcCmTransparency no conversion, so we don't need a py wrapper
 void makePyCmTransparencyWrapper()
 {
-    PyDocString DS("Transparency");
+    PyDocString DS("PyDb.Transparency");
     class_<AcCmTransparency>("Transparency")
         .def(init<Adesk::UInt8>())
         .def(init<double>())
@@ -110,7 +110,7 @@ void makePyCmTransparencyWrapper()
 //AcCmEntityColor no conversion, so we don't need a py wrapper
 void makePyCmEntityColorWrapper()
 {
-    PyDocString DS("EntityColor");
+    PyDocString DS("PyDb.EntityColor");
     class_<AcCmEntityColor>("EntityColor")
         .def(init<Adesk::UInt8, Adesk::UInt8, Adesk::UInt8>())
 #if _ZRXTARGET == 240 || _GRXTARGET == 240 || _BRXTARGET == 240
