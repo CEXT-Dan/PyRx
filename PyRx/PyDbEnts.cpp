@@ -1333,7 +1333,7 @@ void makePyDb2dVertexWrapper()
 {
     constexpr const std::string_view Vertex2dCtor = "Overloads:\n"
         "- None: Any\n"
-        "- pos : PyGe.Point3d, bulge: float, startWidth: float, endWidth: float, tangent:float, vertexIdentifier: int\n"
+        "- pos : PyGe.Point3d, bulge: float, startWidth: float, endWidth: float, tangent:float, vertexId: int\n"
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";

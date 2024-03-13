@@ -93,8 +93,11 @@ def parseOverLoads(overstr : str):
     if not '-' in overstr:
         return res
     overloads = [s.strip() for s in overstr.split('-')]
-    for overload in overloads[1:]:
-        res.append('(self, {})'.format(overload))
+    for overload in overloads[1:]:#skip the description
+        if len(overload):
+            res.append('(self, {})'.format(overload))
+        else:
+            res.append('(self)')
     return res
 
 def findOverloadAsComment(sig):
@@ -172,10 +175,12 @@ def generate_pyi(moduleName, module):
                                     pass
                                     if len(overloads):
                                         for overload in overloads:
+                                            overload = overload.strip(',')
                                             f.write('\n    @overload\n')
                                             f.write(f'    def {func_name} {overload}{returnType} :\n')
                                             f.write('        ...\n')
                                             
+                                args = args.strip(',')
                                 f.write(f'    def {func_name} {args}{returnType} :\n')
                                 f.write(overloadAsComment)
                             else:
