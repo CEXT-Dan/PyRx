@@ -7,10 +7,11 @@ using namespace boost::python;
 //----------------------------------------------------------------------------------------------------
 //wrapper
 
-constexpr const std::string_view intersectWithComments = "Other argument options:\n"
-"- PyDb.Entity, PyDb.Intersect, GsMarker, GsMarker\n"
-"- PyDb.Entity, PyDb.Intersect, PyGe.Plane\n"
-"- PyDb.Entity, PyDb.Intersect, PyGe.Plane, GsMarker, GsMarker";
+constexpr const std::string_view intersectOverloads = "Overloads:\n"
+"- entity: PyDb.Entity, intType : PyDb.Intersect\n"
+"- entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int\n"
+"- entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane\n"
+"- entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int\n";
 
 void makePyDbEntityWrapper()
 {
@@ -76,7 +77,7 @@ void makePyDbEntityWrapper()
         .def("intersectWith", &PyDbEntity::intersectWith1)
         .def("intersectWith", &PyDbEntity::intersectWith2)
         .def("intersectWith", &PyDbEntity::intersectWith3)
-        .def("intersectWith", &PyDbEntity::intersectWith4, DS.ARGS({ "entity: PyDb.Entity",  "intType : PyDb.Intersect " }, intersectWithComments))
+        .def("intersectWith", &PyDbEntity::intersectWith4, DS.ARGS({ "entity: PyDb.Entity",  "intType : PyDb.Intersect " }, intersectOverloads))
         .def("transformBy", &PyDbEntity::transformBy, DS.ARGS({ "matrix3d: PyGe.Matrix3d" }))
         .def("recordGraphicsModified", &PyDbEntity::recordGraphicsModified, DS.ARGS())
         .def("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults1)
