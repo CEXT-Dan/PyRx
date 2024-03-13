@@ -46,6 +46,17 @@ const char* PyDocString::ARGS(std::initializer_list<std::string> pyargs, const s
     return outstr.c_str();
 }
 
+const char* PyDocString::ARGS(const std::string_view argsuments, const std::string_view overloads)
+{
+    outstr = m_argBegin;
+    outstr += std::format("self: {},", m_className);
+    outstr += m_argEnd;
+    outstr += m_commentBegin;
+    outstr += overloads;
+    outstr += m_commenEnd;
+    return outstr.c_str();
+}
+
 const char* PyDocString::SARGS()
 {
     outstr = m_argBegin;

@@ -9,7 +9,7 @@ using namespace boost::python;
 //PyGiDrawable
 void makePyGiObjectWrapper()
 {
-    PyDocString DS("Drawable");
+    PyDocString DS("PyGi.Drawable");
     class_<PyGiDrawable, bases<PyRxObject>>("Drawable", boost::python::no_init)
         .def("setAttributes", &PyGiDrawable::setAttributes, DS.ARGS({ "traits: PyGi.DrawableTraits" }))
         .def("worldDraw", &PyGiDrawable::worldDraw, DS.ARGS({ "wdraw: PyGi.WorldDraw" }))
