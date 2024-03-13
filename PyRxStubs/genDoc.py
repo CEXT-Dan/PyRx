@@ -86,6 +86,17 @@ def findOverload(sig):
         return "{}".format(sig[argb+3:arge])
     return None
 
+def parseOverLoads(overstr : str):
+    res = []
+    if overstr is None:
+        return res
+    if not '-' in overstr:
+        return res
+    overloads = [s.strip() for s in overstr.split('-')]
+    for overload in overloads[1:]:
+        res.append('(self, {})'.format(overload))
+    return res
+
 def findOverloadAsComment(sig):
     try:
         argb = sig.find('<[(')
@@ -123,17 +134,6 @@ def isStatic(ags : str) -> bool:
     except:
         return False
     
-def parseOverLoads(overstr : str):
-    res = []
-    if overstr is None:
-        return res
-    if not '-' in overstr:
-        return res
-    overloads = [s.strip() for s in overstr.split('-')]
-    for overload in overloads[1:]:
-        res.append('(self, '+overload +')')
-    return res
-
 # todo: boost generates a doc string that has the function signature
 # it should be able to parse this, or add something in the doc user string
 def generate_pyi(moduleName, module):
