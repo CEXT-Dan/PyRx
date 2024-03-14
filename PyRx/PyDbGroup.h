@@ -15,6 +15,7 @@ public:
     PyDbGroup(AcDbGroup* ptr, bool autoDelete);
     PyDbGroup(const PyDbObjectId&);
     PyDbGroup(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbGroup(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     inline virtual ~PyDbGroup() override = default;
 
     boost::python::list objectIds() const;
