@@ -24852,36 +24852,28 @@ class GridProperty:
     ...
 
 class Group:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, grpDesc: str)-> None : ...
+    @overload
+    def __init__ (self, grpDesc: str, selectable: bool)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-__init__( (object)arg1, (str)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+      '''Overloads:
+    - None: Any
+    - grpDesc: str
+    - grpDesc: str, selectable: bool
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -24892,22 +24884,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self, reactor: DbObjectReactor)-> None :
       '''                             '''
     ...
-    def allEntityIds (self, *args, **kwargs)-> list :
-      '''allEntityIds( (Group)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list allEntityIds(class PyDbGroup {lvalue})'''
+    def allEntityIds (self)-> list :
+      '''                             '''
     ...
-    def append (self, *args, **kwargs)-> None :
-      '''append( (Group)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void append(class PyDbGroup {lvalue},class PyDbObjectId)
-
-append( (Group)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void append(class PyDbGroup {lvalue},class boost::python::list)'''
+    def append (self, id : PyDb.ObjectId|list[PyDb.ObjectId])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -24934,11 +24915,8 @@ append( (Group)arg1, (list)arg2) -> None :
     def className ()-> str :
       '''                             '''
     ...
-    def clear (self, *args, **kwargs)-> None :
-      '''clear( (Group)arg1) -> None :
-
-    C++ signature :
-        void clear(class PyDbGroup {lvalue})'''
+    def clear (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -24968,11 +24946,8 @@ append( (Group)arg1, (list)arg2) -> None :
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def description (self, *args, **kwargs)-> str :
-      '''description( (Group)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > description(class PyDbGroup {lvalue})'''
+    def description (self)-> str :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -25004,26 +24979,17 @@ append( (Group)arg1, (list)arg2) -> None :
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
     ...
-    def getIndex (self, *args, **kwargs)-> int :
-      '''getIndex( (Group)arg1, (ObjectId)arg2) -> int :
-
-    C++ signature :
-        unsigned int getIndex(class PyDbGroup {lvalue},class PyDbObjectId)'''
+    def getIndex (self, id: PyDb.ObjectId)-> int :
+      '''                             '''
     ...
-    def getName (self, *args, **kwargs)-> str :
-      '''getName( (Group)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbGroup {lvalue})'''
+    def getName (self)-> str :
+      '''                             '''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
     ...
-    def has (self, *args, **kwargs)-> bool :
-      '''has( (Group)arg1, (Entity)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbGroup {lvalue},class PyDbEntity)'''
+    def has (self, entity: PyDb.Entity)-> bool :
+      '''                             '''
     ...
     def hasFields (self)-> bool :
       '''                             '''
@@ -25040,16 +25006,8 @@ append( (Group)arg1, (list)arg2) -> None :
     def implRefCount (self)-> int :
       '''                             '''
     ...
-    def insertAt (self, *args, **kwargs)-> None :
-      '''insertAt( (Group)arg1, (SubentType)arg2, (ObjectId)arg3) -> None :
-
-    C++ signature :
-        void insertAt(class PyDbGroup {lvalue},unsigned int,class PyDbObjectId)
-
-insertAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
-
-    C++ signature :
-        void insertAt(class PyDbGroup {lvalue},unsigned int,class boost::python::list)'''
+    def insertAt (self, index : int, id: PyDb.ObjectId|list[PyDb.ObjectId])-> None :
+      '''                             '''
     ...
     def isA (self)-> PyRx.RxClass :
       '''                             '''
@@ -25063,11 +25021,8 @@ insertAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
     def isAnnotative (self)-> PyDb.AnnotativeStates :
       '''                             '''
     ...
-    def isAnonymous (self, *args, **kwargs)-> bool :
-      '''isAnonymous( (Group)arg1) -> bool :
-
-    C++ signature :
-        bool isAnonymous(class PyDbGroup {lvalue})'''
+    def isAnonymous (self)-> bool :
+      '''                             '''
     ...
     def isCancelling (self)-> bool :
       '''                             '''
@@ -25093,11 +25048,8 @@ insertAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
     def isNewObject (self)-> bool :
       '''                             '''
     ...
-    def isNotAccessible (self, *args, **kwargs)-> bool :
-      '''isNotAccessible( (Group)arg1) -> bool :
-
-    C++ signature :
-        bool isNotAccessible(class PyDbGroup {lvalue})'''
+    def isNotAccessible (self)-> bool :
+      '''                             '''
     ...
     def isNotifyEnabled (self)-> bool :
       '''                             '''
@@ -25117,11 +25069,8 @@ insertAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
     def isReallyClosing (self)-> bool :
       '''                             '''
     ...
-    def isSelectable (self, *args, **kwargs)-> bool :
-      '''isSelectable( (Group)arg1) -> bool :
-
-    C++ signature :
-        bool isSelectable(class PyDbGroup {lvalue})'''
+    def isSelectable (self)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self)-> bool :
       '''                             '''
@@ -25138,34 +25087,20 @@ insertAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def numEntities (self, *args, **kwargs)-> int :
-      '''numEntities( (Group)arg1) -> int :
-
-    C++ signature :
-        unsigned int numEntities(class PyDbGroup {lvalue})'''
+    def numEntities (self)-> int :
+      '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def objectIds (self, *args, **kwargs)-> list :
-      '''objectIds( (Group)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list objectIds(class PyDbGroup {lvalue})'''
+    def objectIds (self)-> list :
+      '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def prepend (self, *args, **kwargs)-> None :
-      '''prepend( (Group)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void prepend(class PyDbGroup {lvalue},class PyDbObjectId)
-
-prepend( (Group)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void prepend(class PyDbGroup {lvalue},class boost::python::list)'''
+    def prepend (self, id : PyDb.ObjectId|list[PyDb.ObjectId])-> None :
+      '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -25173,27 +25108,11 @@ prepend( (Group)arg1, (list)arg2) -> None :
     def releaseExtensionDictionary (self)-> None :
       '''                             '''
     ...
-    def remove (self, *args, **kwargs)-> None :
-      '''remove( (Group)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void remove(class PyDbGroup {lvalue},class PyDbObjectId)
-
-remove( (Group)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void remove(class PyDbGroup {lvalue},class boost::python::list)'''
+    def remove (self, id : PyDb.ObjectId|list[PyDb.ObjectId])-> None :
+      '''                             '''
     ...
-    def removeAt (self, *args, **kwargs)-> None :
-      '''removeAt( (Group)arg1, (SubentType)arg2) -> None :
-
-    C++ signature :
-        void removeAt(class PyDbGroup {lvalue},unsigned int)
-
-removeAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
-
-    C++ signature :
-        void removeAt(class PyDbGroup {lvalue},unsigned int,class boost::python::list)'''
+    def removeAt (self, index : int, id: PyDb.ObjectId|list[PyDb.ObjectId])-> None :
+      '''                             '''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -25207,17 +25126,11 @@ removeAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
     def removeReactor (self, reactor: DbObjectReactor)-> None :
       '''                             '''
     ...
-    def replace (self, *args, **kwargs)-> None :
-      '''replace( (Group)arg1, (object)arg2, (object)arg3) -> None :
-
-    C++ signature :
-        void replace(class PyDbGroup {lvalue},class AcDbObjectId,class AcDbObjectId)'''
+    def replace (self, oldid: PyDb.ObjectId, newid: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def reverse (self, *args, **kwargs)-> None :
-      '''reverse( (Group)arg1) -> None :
-
-    C++ signature :
-        void reverse(class PyDbGroup {lvalue})'''
+    def reverse (self)-> None :
+      '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
       '''                             '''
@@ -25228,32 +25141,20 @@ removeAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
     def setAnnotative (self, state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
-    def setAnonymous (self, *args, **kwargs)-> None :
-      '''setAnonymous( (Group)arg1) -> None :
-
-    C++ signature :
-        void setAnonymous(class PyDbGroup {lvalue})'''
+    def setAnonymous (self)-> None :
+      '''                             '''
     ...
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setColor (self, *args, **kwargs)-> None :
-      '''setColor( (Group)arg1, (Color)arg2) -> None :
-
-    C++ signature :
-        void setColor(class PyDbGroup {lvalue},class AcCmColor)'''
+    def setColor (self, clr: PyDb.AcCmColor)-> None :
+      '''                             '''
     ...
-    def setColorIndex (self, *args, **kwargs)-> None :
-      '''setColorIndex( (Group)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setColorIndex(class PyDbGroup {lvalue},unsigned short)'''
+    def setColorIndex (self, clr: int)-> None :
+      '''                             '''
     ...
-    def setDescription (self, *args, **kwargs)-> None :
-      '''setDescription( (Group)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setDescription(class PyDbGroup {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setDescription (self, grpDesc : str)-> None :
+      '''                             '''
     ...
 
     @overload
@@ -25266,71 +25167,32 @@ removeAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setHighlight (self, *args, **kwargs)-> None :
-      '''setHighlight( (Group)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setHighlight(class PyDbGroup {lvalue},bool)'''
+    def setHighlight (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setLayer (self, *args, **kwargs)-> None :
-      '''setLayer( (Group)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setLayer(class PyDbGroup {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-setLayer( (Group)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setLayer(class PyDbGroup {lvalue},class PyDbObjectId)'''
+    def setLayer (self, id: str|PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setLinetype (self, *args, **kwargs)-> None :
-      '''setLinetype( (Group)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setLinetype(class PyDbGroup {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-setLinetype( (Group)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setLinetype(class PyDbGroup {lvalue},class PyDbObjectId)'''
+    def setLinetype (self, id: str|PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setLinetypeScale (self, *args, **kwargs)-> None :
-      '''setLinetypeScale( (Group)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLinetypeScale(class PyDbGroup {lvalue},double)'''
+    def setLinetypeScale (self, val: float)-> None :
+      '''                             '''
     ...
-    def setMaterial (self, *args, **kwargs)-> None :
-      '''setMaterial( (Group)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setMaterial(class PyDbGroup {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-setMaterial( (Group)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setMaterial(class PyDbGroup {lvalue},class PyDbObjectId)'''
+    def setMaterial (self, id: str|PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setName (self, *args, **kwargs)-> None :
-      '''setName( (Group)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PyDbGroup {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self, val : str)-> None :
+      '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setSelectable (self, *args, **kwargs)-> None :
-      '''setSelectable( (Group)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setSelectable(class PyDbGroup {lvalue},bool)'''
+    def setSelectable (self, val : bool)-> None :
+      '''                             '''
     ...
-    def setVisibility (self, *args, **kwargs)-> None :
-      '''setVisibility( (Group)arg1, (Visibility)arg2) -> None :
-
-    C++ signature :
-        void setVisibility(class PyDbGroup {lvalue},enum AcDb::Visibility)'''
+    def setVisibility (self, val: PyDb.Visibility)-> None :
+      '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
       '''                             '''
@@ -25341,11 +25203,8 @@ setMaterial( (Group)arg1, (ObjectId)arg2) -> None :
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transfer (self, *args, **kwargs)-> None :
-      '''transfer( (Group)arg1, (SubentType)arg2, (SubentType)arg3, (SubentType)arg4) -> None :
-
-    C++ signature :
-        void transfer(class PyDbGroup {lvalue},unsigned int,unsigned int,unsigned int)'''
+    def transfer (self, fromIndex: int, valtoIndex int, numItems: int)-> None :
+      '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
       '''                             '''
@@ -25618,26 +25477,8 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     ...
 
 class Hatch:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -25773,13 +25614,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def evaluateHatch (self, val : bool=False)-> None :
       '''                             '''
     ...
-    def evaluateHatchAllScales1 (self, *args, **kwargs)-> None :
-      '''evaluateHatchAllScales1( (Hatch)arg1) -> None :
-
-    C++ signature :
-        void evaluateHatchAllScales1(class PyDbHatch {lvalue})'''
-    ...
-    def evaluateHatchAllScales2 (self, val : bool=False)-> None :
+    def evaluateHatchAllScales (self, val : bool=False)-> None :
       '''                             '''
     ...
     def explode (self)-> list :
@@ -25794,11 +25629,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getAssocObjIds (self)-> list :
       '''                             '''
     ...
-    def getAssocObjIdsAt (self, *args, **kwargs)-> list :
-      '''getAssocObjIdsAt( (Hatch)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getAssocObjIdsAt(class PyDbHatch {lvalue},int)'''
+    def getAssocObjIdsAt (self, val: int)-> list :
+      '''                             '''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -26166,11 +25998,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setGradient (self, *args, **kwargs)-> None :
-      '''setGradient( (Hatch)arg1, (HatchGradientPatternType)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void setGradient(class PyDbHatch {lvalue},enum AcDbHatch::GradientPatternType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setGradient (self, val: PyDb.HatchGradientPatternType, name: str)-> None :
+      '''                             '''
     ...
     def setGradientAngle (self, val : float)-> None :
       '''                             '''
@@ -26184,17 +26013,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setGradientShift (self, val : float)-> None :
       '''                             '''
     ...
-    def setHatchObjectType (self, *args, **kwargs)-> None :
-      '''setHatchObjectType( (Hatch)arg1, (HatchObjectType)arg2) -> None :
-
-    C++ signature :
-        void setHatchObjectType(class PyDbHatch {lvalue},enum AcDbHatch::HatchObjectType)'''
+    def setHatchObjectType (self, val: PyDb.HatchObjectType)-> None :
+      '''                             '''
     ...
-    def setHatchStyle (self, *args, **kwargs)-> None :
-      '''setHatchStyle( (Hatch)arg1, (HatchStyle)arg2) -> None :
-
-    C++ signature :
-        void setHatchStyle(class PyDbHatch {lvalue},enum AcDbHatch::HatchStyle)'''
+    def setHatchStyle (self, val: PyDb.HatchStyle)-> None :
+      '''                             '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -26223,11 +26046,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setPattern (self, *args, **kwargs)-> None :
-      '''setPattern( (Hatch)arg1, (HatchPatternType)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void setPattern(class PyDbHatch {lvalue},enum AcDbHatch::HatchPatternType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setPattern (self, val: PyDb.HatchPatternType, name: str)-> None :
+      '''                             '''
     ...
     def setPatternAngle (self, val : float)-> None :
       '''                             '''
@@ -26266,11 +26086,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setShadeTintValue (self, val : float)-> None :
       '''                             '''
     ...
-    def setShadeTintValueAndColor2 (self, *args, **kwargs)-> None :
-      '''setShadeTintValueAndColor2( (Hatch)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setShadeTintValueAndColor2(class PyDbHatch {lvalue},float)'''
+    def setShadeTintValueAndColor2 (self, val: float)-> None :
+      '''                             '''
     ...
     def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
       '''                             '''

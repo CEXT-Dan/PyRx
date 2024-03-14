@@ -19,6 +19,7 @@ public:
     PyDbHatch(AcDbHatch* ptr, bool autoDelete);
     PyDbHatch(const PyDbObjectId& id);
     PyDbHatch(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbHatch(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbHatch() override = default;
     double				elevation() const;
     void	            setElevation(double elevation);
