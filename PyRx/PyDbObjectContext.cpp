@@ -146,7 +146,7 @@ void makePyDbObjectContextManagerWrapper()
 {
     PyDocString DS("ObjectContextManager");
     class_<PyDbObjectContextManager, bases<PyRxObject>>("ObjectContextManager", boost::python::no_init)
-        .def("registerContextCollection", &PyDbObjectContextManager::registerContextCollection, DS.ARGS({ "name : str","name : PyDb.ObjectContextCollection" }))
+        .def("registerContextCollection", &PyDbObjectContextManager::registerContextCollection, DS.ARGS({ "name : str","collection : PyDb.ObjectContextCollection" }))
         .def("unregisterContextCollection", &PyDbObjectContextManager::unregisterContextCollection, DS.ARGS({ "name : str" }))
         .def("contextCollection", &PyDbObjectContextManager::contextCollection, DS.ARGS({ "name : str" }))
         .def("desc", &PyDbObjectContextManager::desc, DS.SARGS()).staticmethod("desc")

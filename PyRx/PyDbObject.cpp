@@ -14,6 +14,10 @@ using namespace boost::python;
 
 void makePyDbObjectWrapper()
 {
+    constexpr const std::string_view setFieldOverloads = "Overloads:\n"
+        "- field: PyDb.Field\n"
+        "- propName: str, field: PyDb.Field\n";
+
     PyDocString DS("PyDb.DbObject");
     class_<PyDbObject, bases<PyGiDrawable>>("DbObject", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
@@ -75,9 +79,9 @@ void makePyDbObjectWrapper()
         .def("hasPersistentReactor", &PyDbObject::hasPersistentReactor, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("hasFields", &PyDbObject::hasFields, DS.ARGS())
         .def("getField", &PyDbObject::getField1)
-        .def("getField", &PyDbObject::getField2, DS.ARGS({ "prop: str=TEXT" }))
+        .def("getField", &PyDbObject::getField2, DS.ARGS({ "prop: str='TEXT'" }))
         .def("setField", &PyDbObject::setField1)
-        .def("setField", &PyDbObject::setField2, DS.ARGS({ "prop: str=TEXT", "fld: PyDb.Field" }))
+        .def("setField", &PyDbObject::setField2, DS.ARGS("",setFieldOverloads))
         .def("getHandle", &PyDbObject::getHandle, DS.ARGS())
         .def("removeField", &PyDbObject::removeField1)
         .def("removeField", &PyDbObject::removeField2, DS.ARGS({ "id: str|ObjectId" }))

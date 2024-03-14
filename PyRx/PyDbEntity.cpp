@@ -6,14 +6,14 @@
 using namespace boost::python;
 //----------------------------------------------------------------------------------------------------
 //wrapper
-constexpr const std::string_view intersectOverloads = "Overloads:\n"
-"- entity: PyDb.Entity, intType : PyDb.Intersect\n"
-"- entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int\n"
-"- entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane\n"
-"- entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int\n";
-
 void makePyDbEntityWrapper()
 {
+    constexpr const std::string_view intersectOverloads = "Overloads:\n"
+        "- entity: PyDb.Entity, intType : PyDb.Intersect\n"
+        "- entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int\n"
+        "- entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane\n"
+        "- entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int\n";
+
     PyDocString DS("PyDb.Entity");
     class_<PyDbEntity, bases<PyDbObject>>("Entity", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
