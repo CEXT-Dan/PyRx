@@ -116,7 +116,10 @@ def parseOverLoads(overstr : str):
     overloads = [s.strip() for s in overstr.split('-')]
     for overload in overloads[1:]:#skip the description
         if len(overload):
-            res.append('(self, {})'.format(overload))
+            if 'None:' in overload:
+                res.append('(self, /)'.format(overload))
+            else:
+                res.append('(self, {})'.format(overload))
         else:
             res.append('(self)')
     return res
@@ -198,8 +201,11 @@ def generate_pyi(moduleName, module):
                                         for overload in overloads:
                                             overload = overload.strip(',')
                                             f.write('\n    @overload\n')
-                                            f.write(f'    def {func_name} {overload}{returnType} :\n')
-                                            f.write('        ...\n')
+                                            f.write(f'    def {func_name} {overload}{returnType} : ...')
+                                        f.write(f'\n    def {func_name} (self, *args, **kwargs){returnType} :\n')
+                                        f.write(overloadAsComment)
+                                        f.write('\n    ...\n')
+                                        continue
                                             
                                 args = args.strip(',')
                                 f.write(f'    def {func_name} {args}{returnType} :\n')
