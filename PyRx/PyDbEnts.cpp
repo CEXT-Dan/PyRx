@@ -13,7 +13,7 @@ using namespace boost::python;
 //PyDbText
 void makePyDbTextWrapper()
 {
-    constexpr const std::string_view textCtor = "Overloads:\n"
+    constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- position: PyGe.Point3d, text: str\n"
         "- position: PyGe.Point3d, text: str, height: float, rotation: float\n"
@@ -28,7 +28,7 @@ void makePyDbTextWrapper()
         .def(init<AcGePoint3d&, const std::string&, PyDbObjectId&, double, double>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.CTOR(textCtor)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("position", &PyDbText::position, DS.ARGS())
         .def("setPosition", &PyDbText::setPosition, DS.ARGS({ "pos : PyGe.Point3d" }))
         .def("alignmentPoint", &PyDbText::alignmentPoint, DS.ARGS())
@@ -368,7 +368,7 @@ AcDbText* PyDbText::impObj(const std::source_location& src /*= std::source_locat
 //PyDbAttributeDefinition
 void makePyDbAttributeDefinitionWrapper()
 {
-    constexpr const std::string_view attributeDefinitionCtor = "Overloads:\n"
+    constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- position: PyGe.Point3d, text: str, tag: str, prompt: str, styleid: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId\n"
@@ -381,7 +381,7 @@ void makePyDbAttributeDefinitionWrapper()
         .def(init<const AcGePoint3d&, const std::string&, const std::string&, const std::string&, const PyDbObjectId&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.CTOR(attributeDefinitionCtor)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("prompt", &PyDbAttributeDefinition::prompt, DS.ARGS())
         .def("setPrompt", &PyDbAttributeDefinition::setPrompt, DS.ARGS({ "val : str" }))
         .def("tag", &PyDbAttributeDefinition::tag, DS.ARGS())
@@ -592,7 +592,7 @@ AcDbAttributeDefinition* PyDbAttributeDefinition::impObj(const std::source_locat
 //PyDbAttribute
 void makePyDbAttributeWrapper()
 {
-    constexpr const std::string_view attributeReferenceCtor = "Overloads:\n"
+    constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- position: PyGe.Point3d, text: str, tag: str, styleid: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId\n"
@@ -605,7 +605,7 @@ void makePyDbAttributeWrapper()
         .def(init<const AcGePoint3d&, const std::string&, const std::string&, const PyDbObjectId&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.CTOR(attributeReferenceCtor)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("tag", &PyDbAttribute::tag, DS.ARGS())
         .def("setTag", &PyDbAttribute::setTag, DS.ARGS({ "val : str" }))
         .def("isInvisible", &PyDbAttribute::isInvisible, DS.ARGS())
@@ -798,7 +798,7 @@ AcDbAttribute* PyDbAttribute::impObj(const std::source_location& src /*= std::so
 //PyDbBlockReference
 void makePyDbBlockReferenceWrapper()
 {
-    constexpr const std::string_view blockReferenceCtor = "Overloads:\n"
+    constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- position: PyGe.Point3d, blockTableRec: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId\n"
@@ -810,8 +810,8 @@ void makePyDbBlockReferenceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>())
-        .def(init<const AcGePoint3d&, const PyDbObjectId&>(DS.CTOR(blockReferenceCtor)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def(init<const AcGePoint3d&, const PyDbObjectId&>(DS.CTOR(ctords)))
         .def("blockTableRecord", &PyDbBlockReference::blockTableRecord, DS.ARGS())
         .def("setBlockTableRecord", &PyDbBlockReference::setBlockTableRecord, DS.ARGS({ "val : ObjectId" }))
         .def("position", &PyDbBlockReference::position, DS.ARGS())
@@ -1114,7 +1114,7 @@ AcDbDynBlockReference* PyDbDynBlockReference::impObj(const std::source_location&
 //DbMInsertBlock
 void makePyDbMInsertBlockeWrapper()
 {
-    constexpr const std::string_view minsertBlockCtor = "Overloads:\n"
+    constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- position: PyGe.Point3d, blockTableRec: PyDb.ObjectId, columns: int, rows: int, colSpacing: float, rowSpacing: float\n"
         "- id: PyDb.ObjectId\n"
@@ -1127,7 +1127,7 @@ void makePyDbMInsertBlockeWrapper()
         .def(init<AcGePoint3d&, const PyDbObjectId&, Adesk::UInt16, Adesk::UInt16, double, double>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.CTOR(minsertBlockCtor)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("columns", &PyDbMInsertBlock::columns, DS.ARGS())
         .def("setColumns", &PyDbMInsertBlock::setColumns, DS.ARGS({ "val : int" }))
         .def("rows", &PyDbMInsertBlock::rows, DS.ARGS())
@@ -1250,7 +1250,7 @@ AcDbMInsertBlock* PyDbMInsertBlock::impObj(const std::source_location& src /*= s
 //PyDbVertex
 void makePyDbVertexWrapper()
 {
-    constexpr const std::string_view dbvertexCtor = "Overloads:\n"
+    constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
@@ -1261,7 +1261,7 @@ void makePyDbVertexWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.CTOR(dbvertexCtor)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("className", &PyDbVertex::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbVertex::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbVertex::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
@@ -1331,7 +1331,7 @@ AcDbVertex* PyDbVertex::impObj(const std::source_location& src /*= std::source_l
 //PyDb2dVertex
 void makePyDb2dVertexWrapper()
 {
-    constexpr const std::string_view Vertex2dCtor = "Overloads:\n"
+    constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- pos : PyGe.Point3d, bulge: float, startWidth: float, endWidth: float, tangent:float, vertexId: int\n"
         "- id: PyDb.ObjectId\n"
@@ -1347,7 +1347,7 @@ void makePyDb2dVertexWrapper()
 #endif
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.CTOR(Vertex2dCtor)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("vertexType", &PyDb2dVertex::vertexType, DS.ARGS())
         .def("position", &PyDb2dVertex::position, DS.ARGS())
         .def("setPosition", &PyDb2dVertex::setPosition, DS.ARGS({ "val : PyGe.Point3d" }))
@@ -1544,12 +1544,20 @@ AcDb2dVertex* PyDb2dVertex::impObj(const std::source_location& src /*= std::sour
 //AcDb3dPolylineVertex
 void makePyDb3dPolylineVertexWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- pos: PyGe.Point3d\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("PyDb.Polyline3dVertex");
     class_<PyDb3dPolylineVertex, bases<PyDbVertex>>("Polyline3dVertex")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("vertexType", &PyDb3dPolylineVertex::vertexType, DS.ARGS())
         .def("position", &PyDb3dPolylineVertex::position, DS.ARGS())
         .def("setPosition", &PyDb3dPolylineVertex::setPosition, DS.ARGS({ "val : PyGe.Point3d" }))
@@ -1583,6 +1591,12 @@ PyDb3dPolylineVertex::PyDb3dPolylineVertex(const PyDbObjectId& id, AcDb::OpenMod
 PyDb3dPolylineVertex::PyDb3dPolylineVertex(const PyDbObjectId& id)
     : PyDb3dPolylineVertex(id, AcDb::OpenMode::kForRead)
 {
+}
+
+PyDb3dPolylineVertex::PyDb3dPolylineVertex(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbVertex(openAcDbObject<AcDb3dPolylineVertex>(id, mode, erased), false)
+{
+
 }
 
 AcDb::Vertex3dType PyDb3dPolylineVertex::vertexType() const
@@ -1637,12 +1651,20 @@ AcDb3dPolylineVertex* PyDb3dPolylineVertex::impObj(const std::source_location& s
 //AcDbPolygonMeshVertex
 void makePyDbPolygonMeshVertexWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- pos: PyGe.Point3d\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("PolygonMeshVertex");
     class_<PyDbPolygonMeshVertex, bases<PyDbVertex>>("PolygonMeshVertex")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("vertexType", &PyDbPolygonMeshVertex::vertexType, DS.ARGS())
         .def("position", &PyDbPolygonMeshVertex::position, DS.ARGS())
         .def("setPosition", &PyDbPolygonMeshVertex::setPosition, DS.ARGS({ "val : PyGe.Point3d" }))
@@ -1675,6 +1697,11 @@ PyDbPolygonMeshVertex::PyDbPolygonMeshVertex(const PyDbObjectId& id, AcDb::OpenM
 
 PyDbPolygonMeshVertex::PyDbPolygonMeshVertex(const PyDbObjectId& id)
     : PyDbPolygonMeshVertex(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbPolygonMeshVertex::PyDbPolygonMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbVertex(openAcDbObject<AcDbPolygonMeshVertex>(id, mode, erased), false)
 {
 }
 
@@ -1730,12 +1757,20 @@ AcDbPolygonMeshVertex* PyDbPolygonMeshVertex::impObj(const std::source_location&
 //AcDbPolygonMeshVertex
 void makePyDbPolyFaceMeshVertexWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- pos: PyGe.Point3d\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("PolyFaceMeshVertex");
     class_<PyDbPolyFaceMeshVertex, bases<PyDbVertex>>("PolyFaceMeshVertex")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("position", &PyDbPolyFaceMeshVertex::position, DS.ARGS())
         .def("setPosition", &PyDbPolyFaceMeshVertex::setPosition, DS.ARGS({ "val : PyGe.Point3d" }))
         .def("className", &PyDbPolyFaceMeshVertex::className, DS.SARGS()).staticmethod("className")
@@ -1767,6 +1802,11 @@ PyDbPolyFaceMeshVertex::PyDbPolyFaceMeshVertex(const PyDbObjectId& id, AcDb::Ope
 
 PyDbPolyFaceMeshVertex::PyDbPolyFaceMeshVertex(const PyDbObjectId& id)
     : PyDbPolyFaceMeshVertex(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbPolyFaceMeshVertex::PyDbPolyFaceMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbVertex(openAcDbObject<AcDbPolyFaceMeshVertex>(id, mode, erased), false)
 {
 }
 
@@ -1817,12 +1857,20 @@ AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj(const std::source_locatio
 //AcDbFaceRecord
 void makePyDbFaceRecordWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- vtx0: int, vtx1: int, vtx2: int, vtx3: int\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("FaceRecord");
     class_<PyDbFaceRecord, bases<PyDbVertex>>("FaceRecord")
         .def(init<>())
         .def(init<Adesk::Int16, Adesk::Int16, Adesk::Int16, Adesk::Int16>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("getVertexAt", &PyDbFaceRecord::getVertexAt, DS.ARGS({ "val : int" }))
         .def("setVertexAt", &PyDbFaceRecord::setVertexAt, DS.ARGS({ "val : int",  "idx : int" }))
         .def("isEdgeVisibleAt", &PyDbFaceRecord::isEdgeVisibleAt, DS.ARGS({ "val : int" }))
@@ -1857,6 +1905,11 @@ PyDbFaceRecord::PyDbFaceRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 PyDbFaceRecord::PyDbFaceRecord(const PyDbObjectId& id)
     : PyDbFaceRecord(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbFaceRecord::PyDbFaceRecord(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbVertex(openAcDbObject<AcDbFaceRecord>(id, mode, erased), false)
 {
 }
 
@@ -1926,12 +1979,20 @@ AcDbFaceRecord* PyDbFaceRecord::impObj(const std::source_location& src /*= std::
 //PyDbPoint
 void makePyDbPointWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- pos : PyGe.Point3d\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("Point");
     class_<PyDbPoint, bases<PyDbEntity>>("Point")
         .def(init<>())
         .def(init<AcGePoint3d&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("position", &PyDbPoint::position, DS.ARGS())
         .def("setPosition", &PyDbPoint::setPosition, DS.ARGS({ "val : PyGe.Point3d" }))
         .def("thickness", &PyDbPoint::thickness, DS.ARGS())
@@ -1969,6 +2030,11 @@ PyDbPoint::PyDbPoint(const PyDbObjectId& id)
 
 PyDbPoint::PyDbPoint(AcDbPoint* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
+{
+}
+
+PyDbPoint::PyDbPoint(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbPoint::PyDbPoint(openAcDbObject<AcDbPoint>(id, mode, erased), false)
 {
 }
 
@@ -2061,50 +2127,72 @@ AcGePoint3dArray& listToAcGePoint3dArrayRef(const boost::python::list& list)
 
 void makePyDb2dPolylineWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- ptype: PyDb.Poly2dType, points: list[PyGe.Point3d], closed: bool\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    constexpr const std::string_view splineFitverOverload = "Overloads:\n"
+        "- None: Any\n"
+        "- splineType: PyDb.Poly2dType, splineSegs: int\n";
+
+    constexpr const std::string_view appendVertexOverload = "Overloads:\n"
+        "- None: Any\n"
+        "- vertex: PyDb.Vertex2d\n"
+        "- outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex2d\n";
+
+    constexpr const std::string_view insertVertexAtOverload = "Overloads:\n"
+        "- None: Any\n"
+        "- indexVt: PyDb.Vertex2d, newVertex: PyDb.Vertex2d\n"
+        "- outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex2d\n";
+
     PyDocString DS("Polyline2d");
     class_<PyDb2dPolyline, bases<PyDbCurve>>("Polyline2d")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<AcDb::Poly2dType, const boost::python::list&, Adesk::Boolean>())
-        .def("polyType", &PyDb2dPolyline::polyType)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def(init<AcDb::Poly2dType, const boost::python::list&, Adesk::Boolean>(DS.CTOR(ctords)))
+        .def("polyType", &PyDb2dPolyline::polyType, DS.ARGS())
         .def("setPolyType", &PyDb2dPolyline::setPolyType)
         .def("convertToPolyType", &PyDb2dPolyline::convertToPolyType)
-        .def("makeClosed", &PyDb2dPolyline::makeClosed)
-        .def("makeOpen", &PyDb2dPolyline::makeOpen)
-        .def("setClosed", &PyDb2dPolyline::setClosed)
-        .def("constantWidth", &PyDb2dPolyline::constantWidth)
-        .def("setConstantWidth", &PyDb2dPolyline::setConstantWidth)
-        .def("length", &PyDb2dPolyline::length)
-        .def("defaultStartWidth", &PyDb2dPolyline::defaultStartWidth)
-        .def("setDefaultStartWidth", &PyDb2dPolyline::setDefaultStartWidth)
-        .def("defaultEndWidth", &PyDb2dPolyline::defaultEndWidth)
-        .def("setDefaultEndWidth", &PyDb2dPolyline::setDefaultEndWidth)
-        .def("thickness", &PyDb2dPolyline::thickness)
-        .def("setThickness", &PyDb2dPolyline::setThickness)
-        .def("normal", &PyDb2dPolyline::normal)
-        .def("setNormal", &PyDb2dPolyline::setNormal)
-        .def("elevation", &PyDb2dPolyline::elevation)
-        .def("setElevation", &PyDb2dPolyline::setElevation)
-        .def("isLinetypeGenerationOn", &PyDb2dPolyline::isLinetypeGenerationOn)
-        .def("setLinetypeGenerationOn", &PyDb2dPolyline::setLinetypeGenerationOn)
-        .def("setLinetypeGenerationOff", &PyDb2dPolyline::setLinetypeGenerationOff)
-        .def("straighten", &PyDb2dPolyline::straighten)
-        .def<void(PyDb2dPolyline::*)(void)>("splineFit", &PyDb2dPolyline::splineFit)
-        .def<void(PyDb2dPolyline::*)(AcDb::Poly2dType, Adesk::Int16)>("splineFit", &PyDb2dPolyline::splineFit)
-        .def<void(PyDb2dPolyline::*)(const PyDb2dVertex&)>("appendVertex", &PyDb2dPolyline::appendVertex)
-        .def<void(PyDb2dPolyline::*)(PyDbObjectId&, const PyDb2dVertex&)>("appendVertex", &PyDb2dPolyline::appendVertex)
-        .def<void(PyDb2dPolyline::*)(const PyDb2dVertex&, PyDb2dVertex&)>("insertVertexAt", &PyDb2dPolyline::insertVertexAt)
-        .def<void(PyDb2dPolyline::*)(PyDbObjectId&, const PyDbObjectId&, PyDb2dVertex&)>("insertVertexAt", &PyDb2dPolyline::insertVertexAt)
-        .def("openVertex", &PyDb2dPolyline::openVertex)
-        .def("openSequenceEnd", &PyDb2dPolyline::openSequenceEnd)
-        .def("vertexIds", &PyDb2dPolyline::vertexIds)
-        .def("vertexPosition", &PyDb2dPolyline::vertexPosition)
-        .def("makeClosedIfStartAndEndVertexCoincide", &PyDb2dPolyline::makeClosedIfStartAndEndVertexCoincide)
+        .def("makeClosed", &PyDb2dPolyline::makeClosed, DS.ARGS())
+        .def("makeOpen", &PyDb2dPolyline::makeOpen, DS.ARGS())
+        .def("setClosed", &PyDb2dPolyline::setClosed, DS.ARGS({ "val : bool" }))
+        .def("constantWidth", &PyDb2dPolyline::constantWidth, DS.ARGS())
+        .def("setConstantWidth", &PyDb2dPolyline::setConstantWidth, DS.ARGS({ "val : float" }))
+        .def("length", &PyDb2dPolyline::length, DS.ARGS())
+        .def("defaultStartWidth", &PyDb2dPolyline::defaultStartWidth, DS.ARGS())
+        .def("setDefaultStartWidth", &PyDb2dPolyline::setDefaultStartWidth, DS.ARGS({ "val : float" }))
+        .def("defaultEndWidth", &PyDb2dPolyline::defaultEndWidth, DS.ARGS())
+        .def("setDefaultEndWidth", &PyDb2dPolyline::setDefaultEndWidth, DS.ARGS({ "val : float" }))
+        .def("thickness", &PyDb2dPolyline::thickness, DS.ARGS())
+        .def("setThickness", &PyDb2dPolyline::setThickness, DS.ARGS({ "val : float" }))
+        .def("normal", &PyDb2dPolyline::normal, DS.ARGS())
+        .def("setNormal", &PyDb2dPolyline::setNormal, DS.ARGS({ "normal : PyGe.Vector3d" }))
+        .def("elevation", &PyDb2dPolyline::elevation, DS.ARGS())
+        .def("setElevation", &PyDb2dPolyline::setElevation, DS.ARGS({ "val : float" }))
+        .def("isLinetypeGenerationOn", &PyDb2dPolyline::isLinetypeGenerationOn, DS.ARGS())
+        .def("setLinetypeGenerationOn", &PyDb2dPolyline::setLinetypeGenerationOn, DS.ARGS())
+        .def("setLinetypeGenerationOff", &PyDb2dPolyline::setLinetypeGenerationOff, DS.ARGS())
+        .def("straighten", &PyDb2dPolyline::straighten, DS.ARGS())
+        .def("splineFit", &PyDb2dPolyline::splineFit1)
+        .def("splineFit", &PyDb2dPolyline::splineFit2, DS.OVRL(splineFitverOverload))
+        .def("appendVertex", &PyDb2dPolyline::appendVertex1)
+        .def("appendVertex", &PyDb2dPolyline::appendVertex2, DS.OVRL(appendVertexOverload))
+        .def("insertVertexAt", &PyDb2dPolyline::insertVertexAt1)
+        .def("insertVertexAt", &PyDb2dPolyline::insertVertexAt2, DS.OVRL(insertVertexAtOverload))
+        .def("openVertex", &PyDb2dPolyline::openVertex, DS.ARGS({ "id : PyDb.ObjectId","mode: PyDb.OpenMode" }))
+        .def("openSequenceEnd", &PyDb2dPolyline::openSequenceEnd, DS.ARGS({ "mode: PyDb.OpenMode" }))
+        .def("vertexIds", &PyDb2dPolyline::vertexIds, DS.ARGS())
+        .def("vertexPosition", &PyDb2dPolyline::vertexPosition, DS.ARGS({ "vt : PyDb.Vertex2d" }))
+        .def("makeClosedIfStartAndEndVertexCoincide", &PyDb2dPolyline::makeClosedIfStartAndEndVertexCoincide, DS.ARGS({ "val : float" }))
         .def("className", &PyDb2dPolyline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDb2dPolyline::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDb2dPolyline::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDb2dPolyline::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDb2dPolyline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDb2dPolyline::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2130,6 +2218,11 @@ PyDb2dPolyline::PyDb2dPolyline(AcDb::Poly2dType type, const boost::python::list&
 
 PyDb2dPolyline::PyDb2dPolyline(const PyDbObjectId& id)
     : PyDb2dPolyline(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDb2dPolyline::PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbCurve(openAcDbObject<AcDb2dPolyline>(id, mode, erased), false)
 {
 }
 
@@ -2252,46 +2345,46 @@ void PyDb2dPolyline::straighten()
     return PyThrowBadEs(impObj()->straighten());
 }
 
-void PyDb2dPolyline::splineFit()
+void PyDb2dPolyline::splineFit1()
 {
     return PyThrowBadEs(impObj()->splineFit());
 }
 
-void PyDb2dPolyline::splineFit(AcDb::Poly2dType splineType, Adesk::Int16 splineSegs)
+void PyDb2dPolyline::splineFit2(AcDb::Poly2dType splineType, Adesk::Int16 splineSegs)
 {
     return PyThrowBadEs(impObj()->splineFit(splineType, splineSegs));
 }
 
-void PyDb2dPolyline::appendVertex(const PyDb2dVertex& vt)
+void PyDb2dPolyline::appendVertex1(const PyDb2dVertex& vt)
 {
     return PyThrowBadEs(impObj()->appendVertex(vt.impObj()));
 }
 
-void PyDb2dPolyline::appendVertex(PyDbObjectId& id, const PyDb2dVertex& vt)
+void PyDb2dPolyline::appendVertex2(PyDbObjectId& id, const PyDb2dVertex& vt)
 {
     return PyThrowBadEs(impObj()->appendVertex(id.m_id, vt.impObj()));
 }
 
-void PyDb2dPolyline::insertVertexAt(const PyDb2dVertex& pIndexVert, PyDb2dVertex& pNewVertex)
+void PyDb2dPolyline::insertVertexAt1(const PyDb2dVertex& pIndexVert, PyDb2dVertex& pNewVertex)
 {
     return PyThrowBadEs(impObj()->insertVertexAt(pIndexVert.impObj(), pNewVertex.impObj()));
 }
 
-void PyDb2dPolyline::insertVertexAt(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb2dVertex& pNewVertex)
+void PyDb2dPolyline::insertVertexAt2(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb2dVertex& pNewVertex)
 {
     return PyThrowBadEs(impObj()->insertVertexAt(newVertId.m_id, indexVertId.m_id, pNewVertex.impObj()));
 }
 
-void PyDb2dPolyline::openVertex(PyDb2dVertex& vt, const PyDbObjectId& vertId, AcDb::OpenMode mode) const
+PyDb2dVertex PyDb2dPolyline::openVertex(const PyDbObjectId& vertId, AcDb::OpenMode mode) const
 {
-    vt = PyDb2dVertex(vertId, mode);
+    return PyDb2dVertex(vertId, mode);
 }
 
-void PyDb2dPolyline::openSequenceEnd(PyDbSequenceEnd& end, AcDb::OpenMode mode)
+PyDbSequenceEnd PyDb2dPolyline::openSequenceEnd(AcDb::OpenMode mode)
 {
     AcDbSequenceEnd* pEnd = nullptr;
     PyThrowBadEs(impObj()->openSequenceEnd(pEnd, mode));
-    end = PyDbSequenceEnd(pEnd, true);
+    return PyDbSequenceEnd(pEnd, true);
 }
 
 boost::python::list PyDb2dPolyline::vertexIds() const
@@ -2354,29 +2447,51 @@ AcDb2dPolyline* PyDb2dPolyline::impObj(const std::source_location& src /*= std::
 //PyDb3dPolyline
 void makePyDb3dPolylineWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- ptype: PyDb.Poly3dType, points: list[PyGe.Point3d], closed: bool\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    constexpr const std::string_view splineFitverOverload = "Overloads:\n"
+        "- None: Any\n"
+        "- splineType: PyDb.Poly3dType, splineSegs: int\n";
+
+    constexpr const std::string_view appendVertexOverload = "Overloads:\n"
+        "- None: Any\n"
+        "- vertex: PyDb.Vertex3d\n"
+        "- outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex3d\n";
+
+    constexpr const std::string_view insertVertexAtOverload = "Overloads:\n"
+        "- None: Any\n"
+        "- indexVt: PyDb.Vertex3d, newVertex: PyDb.Vertex3d\n"
+        "- outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex3d\n";
+
     PyDocString DS("Polyline3d");
     class_<PyDb3dPolyline, bases<PyDbCurve>>("Polyline3d")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<AcDb::Poly3dType, const boost::python::list&, Adesk::Boolean>())
-        .def("length", &PyDb3dPolyline::length)
-        .def("setClosed", &PyDb3dPolyline::setClosed)
-        .def("makeClosed", &PyDb3dPolyline::makeClosed)
-        .def("makeOpen", &PyDb3dPolyline::makeOpen)
-        .def("polyType", &PyDb3dPolyline::polyType)
-        .def("setPolyType", &PyDb3dPolyline::setPolyType)
-        .def("convertToPolyType", &PyDb3dPolyline::convertToPolyType)
-        .def("straighten", &PyDb3dPolyline::straighten)
-        .def<void(PyDb3dPolyline::*)(void)>("splineFit", &PyDb3dPolyline::splineFit)
-        .def<void(PyDb3dPolyline::*)(AcDb::Poly3dType, Adesk::Int16)>("splineFit", &PyDb3dPolyline::splineFit)
-        .def<void(PyDb3dPolyline::*)(const PyDb3dPolylineVertex&)>("appendVertex", &PyDb3dPolyline::appendVertex)
-        .def<void(PyDb3dPolyline::*)(PyDbObjectId&, const PyDb3dPolylineVertex&)>("appendVertex", &PyDb3dPolyline::appendVertex)
-        .def<void(PyDb3dPolyline::*)(const PyDb3dPolylineVertex&, PyDb3dPolylineVertex&)>("insertVertexAt", &PyDb3dPolyline::insertVertexAt)
-        .def<void(PyDb3dPolyline::*)(PyDbObjectId&, const PyDbObjectId&, PyDb3dPolylineVertex&)>("insertVertexAt", &PyDb3dPolyline::insertVertexAt)
-        .def("openVertex", &PyDb3dPolyline::openVertex)
-        .def("openSequenceEnd", &PyDb3dPolyline::openSequenceEnd)
-        .def("vertexIds", &PyDb3dPolyline::vertexIds)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def(init<AcDb::Poly3dType, const boost::python::list&, Adesk::Boolean>(DS.CTOR(ctords)))
+        .def("length", &PyDb3dPolyline::length, DS.ARGS())
+        .def("setClosed", &PyDb3dPolyline::setClosed, DS.ARGS({ "val : bool" }))
+        .def("makeClosed", &PyDb3dPolyline::makeClosed, DS.ARGS())
+        .def("makeOpen", &PyDb3dPolyline::makeOpen, DS.ARGS())
+        .def("polyType", &PyDb3dPolyline::polyType, DS.ARGS())
+        .def("setPolyType", &PyDb3dPolyline::setPolyType, DS.ARGS({ "val : PyDb.Poly3dType" }))
+        .def("convertToPolyType", &PyDb3dPolyline::convertToPolyType, DS.ARGS({ "val : PyDb.Poly3dType" }))
+        .def("straighten", &PyDb3dPolyline::straighten, DS.ARGS())
+        .def("splineFit", &PyDb3dPolyline::splineFit1)
+        .def("splineFit", &PyDb3dPolyline::splineFit2, DS.OVRL(splineFitverOverload))
+        .def("appendVertex", &PyDb3dPolyline::appendVertex1)
+        .def("appendVertex", &PyDb3dPolyline::appendVertex2, DS.OVRL(appendVertexOverload))
+        .def("insertVertexAt", &PyDb3dPolyline::insertVertexAt1)
+        .def("insertVertexAt", &PyDb3dPolyline::insertVertexAt2, DS.OVRL(insertVertexAtOverload))
+        .def("openVertex", &PyDb3dPolyline::openVertex, DS.ARGS({ "id : PyDb.ObjectId", "mode: PyDb.OpenMode" }))
+        .def("openSequenceEnd", &PyDb3dPolyline::openSequenceEnd, DS.ARGS({ "mode: PyDb.OpenMode" }))
+        .def("vertexIds", &PyDb3dPolyline::vertexIds, DS.ARGS())
         .def("className", &PyDb3dPolyline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDb3dPolyline::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDb3dPolyline::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
@@ -2406,6 +2521,11 @@ PyDb3dPolyline::PyDb3dPolyline(AcDb::Poly3dType pt, const boost::python::list& v
 
 PyDb3dPolyline::PyDb3dPolyline(const PyDbObjectId& id)
     : PyDb3dPolyline(id, AcDb::OpenMode::kForNotify)
+{
+}
+
+PyDb3dPolyline::PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode, bool openErased)
+    : PyDbCurve(openAcDbObject<AcDb3dPolyline>(id, mode, openErased), false)
 {
 }
 
@@ -2451,46 +2571,46 @@ void PyDb3dPolyline::straighten()
     return PyThrowBadEs(impObj()->straighten());
 }
 
-void PyDb3dPolyline::splineFit()
+void PyDb3dPolyline::splineFit1()
 {
     return PyThrowBadEs(impObj()->splineFit());
 }
 
-void PyDb3dPolyline::splineFit(AcDb::Poly3dType splineType, Adesk::Int16 splineSegs)
+void PyDb3dPolyline::splineFit2(AcDb::Poly3dType splineType, Adesk::Int16 splineSegs)
 {
     return PyThrowBadEs(impObj()->splineFit(splineType, splineSegs));
 }
 
-void PyDb3dPolyline::appendVertex(const PyDb3dPolylineVertex& vt)
+void PyDb3dPolyline::appendVertex1(const PyDb3dPolylineVertex& vt)
 {
     return PyThrowBadEs(impObj()->appendVertex(vt.impObj()));
 }
 
-void PyDb3dPolyline::appendVertex(PyDbObjectId& id, const PyDb3dPolylineVertex& vt)
+void PyDb3dPolyline::appendVertex2(PyDbObjectId& id, const PyDb3dPolylineVertex& vt)
 {
     return PyThrowBadEs(impObj()->appendVertex(id.m_id, vt.impObj()));
 }
 
-void PyDb3dPolyline::insertVertexAt(const PyDb3dPolylineVertex& pIndexVert, PyDb3dPolylineVertex& pNewVertex)
+void PyDb3dPolyline::insertVertexAt1(const PyDb3dPolylineVertex& pIndexVert, PyDb3dPolylineVertex& pNewVertex)
 {
     return PyThrowBadEs(impObj()->insertVertexAt(pIndexVert.impObj(), pNewVertex.impObj()));
 }
 
-void PyDb3dPolyline::insertVertexAt(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb3dPolylineVertex& pNewVertex)
+void PyDb3dPolyline::insertVertexAt2(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb3dPolylineVertex& pNewVertex)
 {
     return PyThrowBadEs(impObj()->insertVertexAt(newVertId.m_id, indexVertId.m_id, pNewVertex.impObj()));
 }
 
-void PyDb3dPolyline::openVertex(PyDb3dPolylineVertex& vt, const PyDbObjectId& vertId, AcDb::OpenMode mode) const
+PyDb3dPolylineVertex PyDb3dPolyline::openVertex(const PyDbObjectId& vertId, AcDb::OpenMode mode) const
 {
-    vt = PyDb3dPolylineVertex(vertId, mode);
+    return PyDb3dPolylineVertex(vertId, mode);
 }
 
-void PyDb3dPolyline::openSequenceEnd(PyDbSequenceEnd& end, AcDb::OpenMode mode)
+PyDbSequenceEnd PyDb3dPolyline::openSequenceEnd(AcDb::OpenMode mode)
 {
     AcDbSequenceEnd* pEnd = nullptr;
     PyThrowBadEs(impObj()->openSequenceEnd(pEnd, mode));
-    end = PyDbSequenceEnd(pEnd, true);
+    return PyDbSequenceEnd(pEnd, true);
 }
 
 boost::python::list PyDb3dPolyline::vertexIds() const
@@ -2539,13 +2659,22 @@ AcDb3dPolyline* PyDb3dPolyline::impObj(const std::source_location& src /*= std::
 //PyDbArc
 void makePyDbArcWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- center: PyGe.Point3d, radius: float, startAngle: float, endAngle: float\n"
+        "- center: PyGe.Point3d,normal: PyGe.Vector2d, radius: float, startAngle: float, endAngle: float\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("Arc");
     class_<PyDbArc, bases<PyDbCurve>>("Arc")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
         .def(init<const AcGePoint3d&, double, double, double>())
-        .def(init<const AcGePoint3d&, const AcGeVector3d&, double, double, double>())
+        .def(init<const AcGePoint3d&, const AcGeVector3d&, double, double, double>(DS.CTOR(ctords)))
         .def("center", &PyDbArc::center, DS.ARGS())
         .def("setCenter", &PyDbArc::setCenter, DS.ARGS({ "val:PyGe.Point3d" }))
         .def("radius", &PyDbArc::radius, DS.ARGS())
@@ -2596,6 +2725,11 @@ PyDbArc::PyDbArc(const AcGePoint3d& center, const AcGeVector3d& normal, double r
 
 PyDbArc::PyDbArc(const PyDbObjectId& id)
     : PyDbArc(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbArc::PyDbArc(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbCurve(openAcDbObject<AcDbArc>(id, mode, erased), false)
 {
 }
 
@@ -2720,12 +2854,20 @@ AcDbArc* PyDbArc::impObj(const std::source_location& src /*= std::source_locatio
 //PyDbCircle
 void makePyDbCircleWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- center: PyGe.Point3d,normal: PyGe.Vector2d,radius : float\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("Circle");
     class_<PyDbCircle, bases<PyDbCurve>>("Circle")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const AcGePoint3d&, const AcGeVector3d&, double>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def(init<const AcGePoint3d&, const AcGeVector3d&, double>(DS.CTOR(ctords)))
         .def("center", &PyDbCircle::center, DS.ARGS())
         .def("setCenter", &PyDbCircle::setCenter, DS.ARGS({ "val:PyGe.Point3d" }))
         .def("radius", &PyDbCircle::radius, DS.ARGS())
@@ -2769,6 +2911,11 @@ PyDbCircle::PyDbCircle(const AcGePoint3d& cntr, const AcGeVector3d& nrm, double 
 
 PyDbCircle::PyDbCircle(const PyDbObjectId& id)
     : PyDbCircle(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbCircle::PyDbCircle(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbCurve(openAcDbObject<AcDbCircle>(id, mode, erased), false)
 {
 }
 
@@ -2899,12 +3046,20 @@ AcDbCircle* PyDbCircle::impObj(const std::source_location& src /*= std::source_l
 //PyDbLine
 void makePyDbLineWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- start: PyGe.Point3d,end: PyGe.Point3d\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("Line");
     class_<PyDbLine, bases<PyDbCurve>>("Line")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const AcGePoint3d&, const AcGePoint3d&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&>(DS.CTOR(ctords)))
         .def("startPoint", &PyDbLine::startPoint, DS.ARGS())
         .def("setStartPoint", &PyDbLine::setStartPoint, DS.ARGS({ "val:PyGe.Point3d" }))
         .def("endPoint", &PyDbLine::endPoint, DS.ARGS())
@@ -2945,6 +3100,11 @@ PyDbLine::PyDbLine(const AcGePoint3d& start, const AcGePoint3d& end)
 
 PyDbLine::PyDbLine(const PyDbObjectId& id)
     : PyDbLine(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbLine::PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbCurve(openAcDbObject<AcDbLine>(id, mode, erased), false)
 {
 }
 
@@ -3039,6 +3199,14 @@ AcDbLine* PyDbLine::impObj(const std::source_location& src /*= std::source_locat
 //PyDbPolyline
 void makePyDbPolylineWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- num_verts: int\n"
+        "- pnts: list[PyGe.Point3d]\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("Polyline");
     class_<PyDbPolyline, bases<PyDbCurve>>("Polyline")
         .def(init<>())
@@ -3046,6 +3214,7 @@ void makePyDbPolylineWrapper()
         .def(init<const boost::python::list&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("getPoint3dAt", &PyDbPolyline::getPoint3dAt, DS.ARGS({ "idx:int" }))
         .def("getPoint2dAt", &PyDbPolyline::getPoint2dAt, DS.ARGS({ "idx:int" }))
         .def("segType", &PyDbPolyline::segType, DS.ARGS({ "idx:int" }))
@@ -3126,6 +3295,11 @@ PyDbPolyline::PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 PyDbPolyline::PyDbPolyline(const PyDbObjectId& id)
     : PyDbPolyline(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbPolyline::PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbCurve(openAcDbObject<AcDbPolyline>(id, mode, erased), false)
 {
 }
 
@@ -3491,15 +3665,26 @@ AcDbPolyline* PyDbPolyline::impObj(const std::source_location& src /*= std::sour
 //PyDbDace
 void makePyDbFaceWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- pt0 : PyGe.Point3d, pt1 : PyGe.Point3d, pt2 : PyGe.Point3d\n"
+        "- pt0 : PyGe.Point3d, pt1 : PyGe.Point3d, pt2 : PyGe.Point3d,pt3 : PyGe.Point3d\n"
+        "- pt0 : PyGe.Point3d, pt1 : PyGe.Point3d, pt2 : PyGe.Point3d, e0vis: bool, e1vis: bool, e2vis: bool, e3vis: bool, e4vis: bool\n"
+        "- pt0 : PyGe.Point3d, pt1 : PyGe.Point3d, pt2 : PyGe.Point3d,pt3 : PyGe.Point3d, e0vis: bool, e1vis: bool, e2vis: bool, e3vis: bool, e4vis: bool\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("Face");
     class_<PyDbFace, bases<PyDbEntity>>("Face")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean>())
-        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean>(DS.CTOR(ctords)))
         .def("getVertexAt", &PyDbFace::getVertexAt, DS.ARGS({ "vIndex:int" }))
         .def("setVertexAt", &PyDbFace::setVertexAt, DS.ARGS({ "vIndex:int","pnt:PyGe.Point3d" }))
         .def("isEdgeVisibleAt", &PyDbFace::isEdgeVisibleAt, DS.ARGS({ "vIndex:int" }))
@@ -3549,6 +3734,11 @@ PyDbFace::PyDbFace(const AcGePoint3d& pt0, const AcGePoint3d& pt1, const AcGePoi
 
 PyDbFace::PyDbFace(const AcGePoint3d& pt0, const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& pt3, Adesk::Boolean e0vis, Adesk::Boolean e1vis, Adesk::Boolean e2vis, Adesk::Boolean e3vis)
     : PyDbEntity(new AcDbFace(pt0, pt1, pt2, pt3, e0vis, e1vis, e2vis, e3vis), true)
+{
+}
+
+PyDbFace::PyDbFace(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbEntity(openAcDbObject<AcDbFace>(id, mode, erased), false)
 {
 }
 
@@ -3618,12 +3808,20 @@ AcDbFace* PyDbFace::impObj(const std::source_location& src /*= std::source_locat
 //AcDbFcf
 void makePyDbFcfWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- val: str, pnt: PyGe.Point3d, normal: PyGe.Vector3d, direction: PyGe.Vector3d\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("Fcf");
     class_<PyDbFcf, bases<PyDbEntity>>("Fcf")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const std::string&, const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>())
+        .def(init<const std::string&, const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&>(DS.CTOR(ctords)))
         .def("setText", &PyDbFcf::setText, DS.ARGS({ "val:str" }))
         .def("text", &PyDbFcf::text, DS.ARGS())
         .def("textAll", &PyDbFcf::textAll, DS.ARGS())
@@ -3681,6 +3879,11 @@ PyDbFcf::PyDbFcf(const std::string& str, const AcGePoint3d& pnt, const AcGeVecto
 
 PyDbFcf::PyDbFcf(const PyDbObjectId& id)
     : PyDbFcf(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbFcf::PyDbFcf(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbEntity(openAcDbObject<AcDbFcf>(id, mode, erased), false)
 {
 }
 

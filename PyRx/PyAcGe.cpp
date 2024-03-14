@@ -774,7 +774,7 @@ void makePyGePoint3dWrapper()
         .def("rotateBy", &AcGePoint3d::rotateBy, arg("AcGePoint3d") = AcGePoint3dkOrigin(), return_self<>(),
             DS.ARGS({ "angle: float","vec:  PyGe.Vector3d","wrtPoint:  PyGe.Point3d=Point3d.kOrigin" }))
         .def("mirror", &AcGePoint3d::mirror, return_self<>(), DS.ARGS({ "pln: PyGe.Plane" }))
-        .def("scaleBy", &AcGePoint3d::scaleBy, arg("AcGePoint3d") = AcGePoint3dkOrigin(), return_self<>(), DS.ARGS({ "factor: float","pnt:  PyGe.Point3d=orgin" }))
+        .def("scaleBy", &AcGePoint3d::scaleBy, arg("AcGePoint3d") = AcGePoint3dkOrigin(), return_self<>(), DS.ARGS({ "factor: float","pnt:  PyGe.Point3d='orgin'" }))
         .def("convert2d", &AcGePoint3d::convert2d)//DS
         .def("setToSum", &AcGePoint3d::setToSum, return_self<>(), DS.ARGS({ "pnt:  PyGe.Point3d","vec:  PyGe.Vector3d" }))
         .def("asVector", &AcGePoint3d::asVector, DS.ARGS())

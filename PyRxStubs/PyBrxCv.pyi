@@ -6,17 +6,12 @@ import PyDb
 import PyAp
 import PyEd
 import PyPl
+import PyBrxCv
 from typing import overload
 
 class ArcParameterType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eChordLength (self, *args, **kwargs)-> None :
       '''None'''
@@ -45,31 +40,13 @@ class ArcParameterType:
     def eTangentLength (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class ArcType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eCompound (self, *args, **kwargs)-> None :
       '''None'''
@@ -77,31 +54,13 @@ class ArcType:
     def eReverse (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class Civil3dAlignmentType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eCenterline (self, *args, **kwargs)-> None :
       '''None'''
@@ -121,31 +80,13 @@ class Civil3dAlignmentType:
     def eRail (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class Civil3dEntityType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eAlignment (self, *args, **kwargs)-> None :
       '''None'''
@@ -162,31 +103,13 @@ class Civil3dEntityType:
     def eTinSurface (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class Civil3dLabels:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eAlignmentsLabels (self, *args, **kwargs)-> None :
       '''None'''
@@ -206,31 +129,13 @@ class Civil3dLabels:
     def eUnattachedLabels (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class Civil3dProfileType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eDynamicSurface (self, *args, **kwargs)-> None :
       '''None'''
@@ -247,20 +152,8 @@ class Civil3dProfileType:
     def eStaticSurface (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class CvCivil3dConverter:
@@ -546,7 +439,7 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -670,21 +563,14 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
 
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-    def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list : ...
+    def intersectWith (self, *args, **kwargs)-> list :
       '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
@@ -869,8 +755,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDescription (self, val : str)-> bool :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
       '''                             '''
@@ -1133,7 +1027,7 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -1254,21 +1148,14 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
 
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-    def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list : ...
+    def intersectWith (self, *args, **kwargs)-> list :
       '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
@@ -1447,8 +1334,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDescription (self, val : str)-> bool :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
       '''                             '''
@@ -1668,7 +1563,7 @@ class CvDbEntity:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -1735,21 +1630,14 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
 
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-    def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list : ...
+    def intersectWith (self, *args, **kwargs)-> list :
       '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
@@ -1919,8 +1807,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDescription (self, val : str)-> bool :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -2110,7 +2006,7 @@ class CvDbFileFormatManager:
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -2282,8 +2178,16 @@ class CvDbFileFormatManager:
     def setDescription (self, val : str)-> bool :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setName (self, val : str)-> bool :
       '''                             '''
@@ -2460,7 +2364,7 @@ class CvDbGrading:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -2554,21 +2458,14 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
 
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-    def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list : ...
+    def intersectWith (self, *args, **kwargs)-> list :
       '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
@@ -2753,8 +2650,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDrawInfill (self, val : bool)-> PyBrxCv.GradingStatus :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setGradingVisualStyle (self, val : PyBrxCv.GradingVisualStyle)-> bool :
       '''                             '''
@@ -3323,7 +3228,7 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -3485,21 +3390,14 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
 
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-    def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list : ...
+    def intersectWith (self, *args, **kwargs)-> list :
       '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
@@ -3720,8 +3618,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     C++ signature :
         bool setElementExtensionColor(class PyBrxCvDbHAlignment {lvalue},unsigned long)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
       '''                             '''
@@ -5140,7 +5046,7 @@ class CvDbObject:
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -5278,8 +5184,16 @@ class CvDbObject:
     def setDescription (self, val : str)-> bool :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setName (self, val : str)-> bool :
       '''                             '''
@@ -5417,7 +5331,7 @@ class CvDbObjectManager:
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -5579,8 +5493,16 @@ class CvDbObjectManager:
     def setDescription (self, val : str)-> bool :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setName (self, val : str)-> bool :
       '''                             '''
@@ -5760,7 +5682,7 @@ class CvDbPoint:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -5827,21 +5749,14 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
 
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-    def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list : ...
+    def intersectWith (self, *args, **kwargs)-> list :
       '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
@@ -6062,8 +5977,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setElevation (self, val : float)-> bool :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLabelId (self, id : PyDb.ObjectId)-> bool :
       '''                             '''
@@ -6310,7 +6233,7 @@ class CvDbPointGroup:
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -6502,8 +6425,16 @@ class CvDbPointGroup:
     def setExcludeUserAttributesKeys (self, filter : str)-> bool :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setIncludeElevations (self, filter : str)-> bool :
       '''                             '''
@@ -6671,7 +6602,7 @@ class CvDbPointGroupManager:
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -6849,8 +6780,16 @@ class CvDbPointGroupManager:
     def setDescription (self, val : str)-> bool :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setName (self, val : str)-> bool :
       '''                             '''
@@ -7070,7 +7009,7 @@ class CvDbStyleManager:
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -7242,8 +7181,16 @@ class CvDbStyleManager:
     def setDescription (self, val : str)-> bool :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setName (self, val : str)-> bool :
       '''                             '''
@@ -7558,7 +7505,7 @@ class CvDbTinSurface:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -7643,21 +7590,14 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
 
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-    def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list : ...
+    def intersectWith (self, *args, **kwargs)-> list :
       '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
@@ -7911,8 +7851,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDescription (self, val : str)-> bool :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setIsAutoUpdate (self, autoUpdateOn : bool)-> bool :
       '''                             '''
@@ -12044,7 +11992,7 @@ class CvDbVAlignmentView:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -12123,21 +12071,14 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
 
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-    def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list : ...
+    def intersectWith (self, *args, **kwargs)-> list :
       '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
@@ -12325,8 +12266,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDescription (self, val : str)-> bool :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHeight (self, val : float)-> bool :
       '''                             '''
@@ -12591,7 +12540,7 @@ class CvDbView:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -12670,21 +12619,14 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
 
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-    def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list : ...
+    def intersectWith (self, *args, **kwargs)-> list :
       '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
@@ -12872,8 +12814,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDescription (self, val : str)-> bool :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHeight (self, val : float)-> bool :
       '''                             '''
@@ -13222,7 +13172,7 @@ class CvDbVolumeSurface:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -13331,21 +13281,14 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
 
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list :
-        ...
-
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list : ...
     @overload
-    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list :
-        ...
-    def intersectWith (self, entity: PyDb.Entity, intType: PyDb.Intersect)-> list :
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list : ...
+    def intersectWith (self, *args, **kwargs)-> list :
       '''Overloads:
     - entity: PyDb.Entity, intType : PyDb.Intersect
     - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
@@ -13599,8 +13542,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDescription (self, val : str)-> bool :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setIsAutoUpdate (self, autoUpdateOn : bool)-> bool :
       '''                             '''
@@ -14134,12 +14085,6 @@ class DrawingObjectType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
     def eBlock (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -14164,31 +14109,13 @@ class DrawingObjectType:
     def eUnknown (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class GradingCalculationMethod:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eGradingAccurate (self, *args, **kwargs)-> None :
       '''None'''
@@ -14196,31 +14123,13 @@ class GradingCalculationMethod:
     def eGradingFast (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class GradingSide:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eGradingSideLeft (self, *args, **kwargs)-> None :
       '''None'''
@@ -14231,31 +14140,13 @@ class GradingSide:
     def eGradingSideRight (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class GradingSlopeFormat:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eSlopeDegrees (self, *args, **kwargs)-> None :
       '''None'''
@@ -14272,31 +14163,13 @@ class GradingSlopeFormat:
     def eSlopeRiseRun (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class GradingStatus:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eGradingGradingOutsideSurface (self, *args, **kwargs)-> None :
       '''None'''
@@ -14346,31 +14219,13 @@ class GradingStatus:
     def eGradingZeroGrading (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class GradingType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eGradingTypeNone (self, *args, **kwargs)-> None :
       '''None'''
@@ -14381,31 +14236,13 @@ class GradingType:
     def eGradingTypeSlopeSurface (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class GradingVisualStyle:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eGradingDrawDaylight (self, *args, **kwargs)-> None :
       '''None'''
@@ -14419,31 +14256,13 @@ class GradingVisualStyle:
     def eGradingDrawSurface (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class HAlignmentElementType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eArc (self, *args, **kwargs)-> None :
       '''None'''
@@ -14508,31 +14327,13 @@ class HAlignmentElementType:
     def eUndefined (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class HAlignmentParameterConstraint:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eArc_BestFit (self, *args, **kwargs)-> None :
       '''None'''
@@ -14663,31 +14464,13 @@ class HAlignmentParameterConstraint:
     def eUndefined (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class HAlignmentTangencyConstraint:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eBoth (self, *args, **kwargs)-> None :
       '''None'''
@@ -14704,31 +14487,13 @@ class HAlignmentTangencyConstraint:
     def eUndefined (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class HAlignmentVisualStyle:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eElementExtensions (self, *args, **kwargs)-> None :
       '''None'''
@@ -14742,31 +14507,13 @@ class HAlignmentVisualStyle:
     def eUndefined (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class SpiralCurveType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eInCurve (self, *args, **kwargs)-> None :
       '''None'''
@@ -14774,95 +14521,41 @@ class SpiralCurveType:
     def eOutCurve (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class SpiralDefinitionType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
     def eClothoid (self, *args, **kwargs)-> None :
       '''None'''
     ...
     def eCubicParabola (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class SpiralDefinitionType2:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
     def eClothoid (self, *args, **kwargs)-> None :
       '''None'''
     ...
     def eCubicParabola (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class SpiralDirectionType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eDirectionLeft (self, *args, **kwargs)-> None :
       '''None'''
@@ -14870,31 +14563,13 @@ class SpiralDirectionType:
     def eDirectionRight (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class SpiralParameterType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eClothoid (self, *args, **kwargs)-> None :
       '''None'''
@@ -14902,31 +14577,13 @@ class SpiralParameterType:
     def eCubicParabola (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class SpiralParameterType2:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eParamA (self, *args, **kwargs)-> None :
       '''None'''
@@ -14934,20 +14591,8 @@ class SpiralParameterType2:
     def eParamLength (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class StationEquationType:
@@ -14960,37 +14605,13 @@ class StationEquationType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class StyleManagerType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eContourLabel (self, *args, **kwargs)-> None :
       '''None'''
@@ -15007,31 +14628,13 @@ class StyleManagerType:
     def eSymbolStyle (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class TinBoundaryType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eTinHide (self, *args, **kwargs)-> None :
       '''None'''
@@ -15042,31 +14645,13 @@ class TinBoundaryType:
     def eTinShow (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class TinBreaklineType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eTinBreaklineNormal (self, *args, **kwargs)-> None :
       '''None'''
@@ -15074,31 +14659,13 @@ class TinBreaklineType:
     def eTinNonDestructive (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class TinConstraintType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eTinBoundary (self, *args, **kwargs)-> None :
       '''None'''
@@ -15109,31 +14676,13 @@ class TinConstraintType:
     def eTinWall (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class TinIntersectionElevation:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eTinElevationMax (self, *args, **kwargs)-> None :
       '''None'''
@@ -15147,31 +14696,13 @@ class TinIntersectionElevation:
     def eTinNotAllowed (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class TinSurfaceDefinitionType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eAddBoundaries (self, *args, **kwargs)-> None :
       '''None'''
@@ -15299,31 +14830,13 @@ class TinSurfaceDefinitionType:
     def eVolume (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class TinSurfaceIntersectType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eTinSurfaceAll (self, *args, **kwargs)-> None :
       '''None'''
@@ -15331,31 +14844,13 @@ class TinSurfaceIntersectType:
     def eTinSurfaceFirstOnly (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class TinSurfaceMeshType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eTinSurfaceMeshDepth (self, *args, **kwargs)-> None :
       '''None'''
@@ -15366,31 +14861,13 @@ class TinSurfaceMeshType:
     def eTinSurfaceMeshSurface (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class TinSurfaceSolidType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eSolidTypeSurfaceDepth (self, *args, **kwargs)-> None :
       '''None'''
@@ -15401,31 +14878,13 @@ class TinSurfaceSolidType:
     def eSolidTypeSurfaceSurface (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class TinSurfaceStyle:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eTinStyleBoundaryLine (self, *args, **kwargs)-> None :
       '''None'''
@@ -15445,31 +14904,13 @@ class TinSurfaceStyle:
     def eTinStyleTriangles (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class TinWallSide:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eTinWallLeft (self, *args, **kwargs)-> None :
       '''None'''
@@ -15477,31 +14918,13 @@ class TinWallSide:
     def eTinWallRight (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class TinWallType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eTinWallNormal (self, *args, **kwargs)-> None :
       '''None'''
@@ -15509,31 +14932,13 @@ class TinWallType:
     def eTinWallProjected (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class VAlignmentElementType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eArc (self, *args, **kwargs)-> None :
       '''None'''
@@ -15550,31 +14955,13 @@ class VAlignmentElementType:
     def eUndefined (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class VAlignmentParameterConstraint:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eAngle (self, *args, **kwargs)-> None :
       '''None'''
@@ -15597,31 +14984,13 @@ class VAlignmentParameterConstraint:
     def eUndefined (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class VAlignmentTangencyConstraint:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eBoth (self, *args, **kwargs)-> None :
       '''None'''
@@ -15638,31 +15007,13 @@ class VAlignmentTangencyConstraint:
     def eUndefined (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...
 
 class VolumeSurfaceType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def conjugate (self, *args, **kwargs)-> None :
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs)-> None :
-      '''the denominator of a rational number in lowest terms'''
     ...
     def eTinVolumeBaseComparison (self, *args, **kwargs)-> None :
       '''None'''
@@ -15673,18 +15024,6 @@ class VolumeSurfaceType:
     def eTinVolumeToElevation (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def imag (self, *args, **kwargs)-> None :
-      '''the imaginary part of a complex number'''
-    ...
-    def is_integer (self, /) :
-      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def numerator (self, *args, **kwargs)-> None :
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs)-> None :
-      '''the real part of a complex number'''
     ...

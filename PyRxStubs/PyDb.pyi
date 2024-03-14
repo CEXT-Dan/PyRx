@@ -1946,36 +1946,28 @@ class AnnotativeStates:
     ...
 
 class Arc:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, center: PyGe.Point3d, radius: float, startAngle: float, endAngle: float)-> None : ...
+    @overload
+    def __init__ (self, center: PyGe.Point3d,normal: PyGe.Vector2d, radius: float, startAngle: float, endAngle: float)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (Point3d)arg2, (float)arg3, (float)arg4, (float)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,double,double,double)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5, (float)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,double,double,double)'''
+      '''Overloads:
+    - None: Any
+    - center: PyGe.Point3d, radius: float, startAngle: float, endAngle: float
+    - center: PyGe.Point3d,normal: PyGe.Vector2d, radius: float, startAngle: float, endAngle: float
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -7846,31 +7838,25 @@ class CenterMarkType:
     ...
 
 class Circle:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, center: PyGe.Point3d,normal: PyGe.Vector2d,radius : float)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,double)'''
+      '''Overloads:
+    - None: Any
+    - center: PyGe.Point3d,normal: PyGe.Vector2d,radius : float
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -20710,46 +20696,34 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class Face:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, pt0 : PyGe.Point3d, pt1 : PyGe.Point3d, pt2 : PyGe.Point3d)-> None : ...
+    @overload
+    def __init__ (self, pt0 : PyGe.Point3d, pt1 : PyGe.Point3d, pt2 : PyGe.Point3d,pt3 : PyGe.Point3d)-> None : ...
+    @overload
+    def __init__ (self, pt0 : PyGe.Point3d, pt1 : PyGe.Point3d, pt2 : PyGe.Point3d, e0vis: bool, e1vis: bool, e2vis: bool, e3vis: bool, e4vis: bool)-> None : ...
+    @overload
+    def __init__ (self, pt0 : PyGe.Point3d, pt1 : PyGe.Point3d, pt2 : PyGe.Point3d,pt3 : PyGe.Point3d, e0vis: bool, e1vis: bool, e2vis: bool, e3vis: bool, e4vis: bool)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (bool)arg5, (bool)arg6, (bool)arg7, (bool)arg8) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,bool,bool,bool,bool)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (bool)arg6, (bool)arg7, (bool)arg8, (bool)arg9) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,bool,bool,bool,bool)'''
+      '''Overloads:
+    - None: Any
+    - pt0 : PyGe.Point3d, pt1 : PyGe.Point3d, pt2 : PyGe.Point3d
+    - pt0 : PyGe.Point3d, pt1 : PyGe.Point3d, pt2 : PyGe.Point3d,pt3 : PyGe.Point3d
+    - pt0 : PyGe.Point3d, pt1 : PyGe.Point3d, pt2 : PyGe.Point3d, e0vis: bool, e1vis: bool, e2vis: bool, e3vis: bool, e4vis: bool
+    - pt0 : PyGe.Point3d, pt1 : PyGe.Point3d, pt2 : PyGe.Point3d,pt3 : PyGe.Point3d, e0vis: bool, e1vis: bool, e2vis: bool, e3vis: bool, e4vis: bool
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -21221,31 +21195,25 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class FaceRecord:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, vtx0: int, vtx1: int, vtx2: int, vtx3: int)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (DxfCode)arg2, (DxfCode)arg3, (DxfCode)arg4, (DxfCode)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,short,short,short,short)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+      '''Overloads:
+    - None: Any
+    - vtx0: int, vtx1: int, vtx2: int, vtx3: int
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -21717,31 +21685,25 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class Fcf:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, val: str, pnt: PyGe.Point3d, normal: PyGe.Vector3d, direction: PyGe.Vector3d)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d)'''
+      '''Overloads:
+    - None: Any
+    - val: str, pnt: PyGe.Point3d, normal: PyGe.Vector3d, direction: PyGe.Vector3d
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -31539,31 +31501,25 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class Line:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, start: PyGe.Point3d,end: PyGe.Point3d)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d)'''
+      '''Overloads:
+    - None: Any
+    - start: PyGe.Point3d,end: PyGe.Point3d
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -44460,31 +44416,25 @@ class PlotType:
     ...
 
 class Point:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, pos : PyGe.Point3d)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d {lvalue})
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+      '''Overloads:
+    - None: Any
+    - pos : PyGe.Point3d
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -47852,31 +47802,25 @@ class Poly3dType:
     ...
 
 class PolyFaceMeshVertex:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, pos: PyGe.Point3d)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+      '''Overloads:
+    - None: Any
+    - pos: PyGe.Point3d
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -48339,31 +48283,25 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class PolygonMeshVertex:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, pos: PyGe.Point3d)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+      '''Overloads:
+    - None: Any
+    - pos: PyGe.Point3d
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -48829,36 +48767,28 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class Polyline:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, num_verts: int)-> None : ...
+    @overload
+    def __init__ (self, pnts: list[PyGe.Point3d])-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (SubentType)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,unsigned int)
-
-__init__( (object)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+      '''Overloads:
+    - None: Any
+    - num_verts: int
+    - pnts: list[PyGe.Point3d]
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -49535,31 +49465,25 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class Polyline2d:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, ptype: PyDb.Poly2dType, points: list[PyGe.Point3d], closed: bool)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (Poly2dType)arg2, (list)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,enum AcDb::Poly2dType,class boost::python::list,bool)'''
+      '''Overloads:
+    - None: Any
+    - ptype: PyDb.Poly2dType, points: list[PyGe.Point3d], closed: bool
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -49576,16 +49500,19 @@ __init__( (object)arg1, (Poly2dType)arg2, (list)arg3, (bool)arg4) -> None :
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
+
+    @overload
+    def appendVertex (self, /)-> None : ...
+    @overload
+    def appendVertex (self, vertex: PyDb.Vertex2d)-> None : ...
+    @overload
+    def appendVertex (self, outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex2d)-> None : ...
     def appendVertex (self, *args, **kwargs)-> None :
-      '''appendVertex( (Polyline2d)arg1, (Vertex2d)arg2) -> None :
-
-    C++ signature :
-        void appendVertex(class PyDb2dPolyline {lvalue},class PyDb2dVertex)
-
-appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
-
-    C++ signature :
-        void appendVertex(class PyDb2dPolyline {lvalue},class PyDbObjectId {lvalue},class PyDb2dVertex)'''
+      '''Overloads:
+    - None: Any
+    - vertex: PyDb.Vertex2d
+    - outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex2d
+    '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -49607,7 +49534,7 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.Polyline2d :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Polyline2d :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -49620,7 +49547,7 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.Polyline2d :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Polyline2d :
       '''                             '''
     ...
     def close (self)-> None :
@@ -49638,11 +49565,8 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def constantWidth (self, *args, **kwargs)-> float :
-      '''constantWidth( (Polyline2d)arg1) -> float :
-
-    C++ signature :
-        double constantWidth(class PyDb2dPolyline {lvalue})'''
+    def constantWidth (self)-> float :
+      '''                             '''
     ...
     def convertToPolyType (self, *args, **kwargs)-> None :
       '''convertToPolyType( (Polyline2d)arg1, (Poly2dType)arg2) -> None :
@@ -49667,17 +49591,11 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def defaultEndWidth (self, *args, **kwargs)-> float :
-      '''defaultEndWidth( (Polyline2d)arg1) -> float :
-
-    C++ signature :
-        double defaultEndWidth(class PyDb2dPolyline {lvalue})'''
+    def defaultEndWidth (self)-> float :
+      '''                             '''
     ...
-    def defaultStartWidth (self, *args, **kwargs)-> float :
-      '''defaultStartWidth( (Polyline2d)arg1) -> float :
-
-    C++ signature :
-        double defaultStartWidth(class PyDb2dPolyline {lvalue})'''
+    def defaultStartWidth (self)-> float :
+      '''                             '''
     ...
 
     @staticmethod
@@ -49702,11 +49620,8 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float :
-      '''elevation( (Polyline2d)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDb2dPolyline {lvalue})'''
+    def elevation (self)-> float :
+      '''                             '''
     ...
     def entityColor (self)-> PyDb.EntityColor :
       '''                             '''
@@ -49877,16 +49792,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self)-> int :
       '''                             '''
     ...
+
+    @overload
+    def insertVertexAt (self, /)-> None : ...
+    @overload
+    def insertVertexAt (self, indexVt: PyDb.Vertex2d, newVertex: PyDb.Vertex2d)-> None : ...
+    @overload
+    def insertVertexAt (self, outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex2d)-> None : ...
     def insertVertexAt (self, *args, **kwargs)-> None :
-      '''insertVertexAt( (Polyline2d)arg1, (Vertex2d)arg2, (Vertex2d)arg3) -> None :
-
-    C++ signature :
-        void insertVertexAt(class PyDb2dPolyline {lvalue},class PyDb2dVertex,class PyDb2dVertex {lvalue})
-
-insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4) -> None :
-
-    C++ signature :
-        void insertVertexAt(class PyDb2dPolyline {lvalue},class PyDbObjectId {lvalue},class PyDbObjectId,class PyDb2dVertex {lvalue})'''
+      '''Overloads:
+    - None: Any
+    - indexVt: PyDb.Vertex2d, newVertex: PyDb.Vertex2d
+    - outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex2d
+    '''
     ...
 
     @overload
@@ -49932,11 +49850,8 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isLinetypeGenerationOn (self, *args, **kwargs)-> bool :
-      '''isLinetypeGenerationOn( (Polyline2d)arg1) -> bool :
-
-    C++ signature :
-        bool isLinetypeGenerationOn(class PyDb2dPolyline {lvalue})'''
+    def isLinetypeGenerationOn (self)-> bool :
+      '''                             '''
     ...
     def isModified (self)-> bool :
       '''                             '''
@@ -49995,11 +49910,8 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def layerId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (Polyline2d)arg1) -> float :
-
-    C++ signature :
-        double length(class PyDb2dPolyline {lvalue})'''
+    def length (self)-> float :
+      '''                             '''
     ...
     def lineWeight (self)-> PyDb.LineWeight :
       '''                             '''
@@ -50016,23 +49928,14 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def list (self)-> None :
       '''                             '''
     ...
-    def makeClosed (self, *args, **kwargs)-> None :
-      '''makeClosed( (Polyline2d)arg1) -> None :
-
-    C++ signature :
-        void makeClosed(class PyDb2dPolyline {lvalue})'''
+    def makeClosed (self)-> None :
+      '''                             '''
     ...
-    def makeClosedIfStartAndEndVertexCoincide (self, *args, **kwargs)-> None :
-      '''makeClosedIfStartAndEndVertexCoincide( (Polyline2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void makeClosedIfStartAndEndVertexCoincide(class PyDb2dPolyline {lvalue},double)'''
+    def makeClosedIfStartAndEndVertexCoincide (self, val : float)-> None :
+      '''                             '''
     ...
-    def makeOpen (self, *args, **kwargs)-> None :
-      '''makeOpen( (Polyline2d)arg1) -> None :
-
-    C++ signature :
-        void makeOpen(class PyDb2dPolyline {lvalue})'''
+    def makeOpen (self)-> None :
+      '''                             '''
     ...
     def material (self)-> str :
       '''                             '''
@@ -50040,26 +49943,17 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def materialId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normal( (Polyline2d)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDb2dPolyline {lvalue})'''
+    def normal (self)-> PyGe.Vector3d :
+      '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def openSequenceEnd (self, *args, **kwargs)-> None :
-      '''openSequenceEnd( (Polyline2d)arg1, (SequenceEnd)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void openSequenceEnd(class PyDb2dPolyline {lvalue},class PyDbSequenceEnd {lvalue},enum AcDb::OpenMode)'''
+    def openSequenceEnd (self, mode: PyDb.OpenMode)-> PyDb.SequenceEnd :
+      '''                             '''
     ...
-    def openVertex (self, *args, **kwargs)-> None :
-      '''openVertex( (Polyline2d)arg1, (Vertex2d)arg2, (ObjectId)arg3, (OpenMode)arg4) -> None :
-
-    C++ signature :
-        void openVertex(class PyDb2dPolyline {lvalue},class PyDb2dVertex {lvalue},class PyDbObjectId,enum AcDb::OpenMode)'''
+    def openVertex (self, id : PyDb.ObjectId, mode: PyDb.OpenMode)-> PyDb.Vertex2d :
+      '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -50067,11 +49961,8 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def plotStyleName (self)-> str :
       '''                             '''
     ...
-    def polyType (self, *args, **kwargs)-> PyDb.Poly2dType :
-      '''polyType( (Polyline2d)arg1) -> Poly2dType :
-
-    C++ signature :
-        enum AcDb::Poly2dType polyType(class PyDb2dPolyline {lvalue})'''
+    def polyType (self)-> PyDb.Poly2dType :
+      '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -50115,11 +50006,8 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setClosed (self, *args, **kwargs)-> None :
-      '''setClosed( (Polyline2d)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setClosed(class PyDb2dPolyline {lvalue},bool)'''
+    def setClosed (self, val : bool)-> None :
+      '''                             '''
     ...
     def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
       '''                             '''
@@ -50127,32 +50015,20 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setConstantWidth (self, *args, **kwargs)-> None :
-      '''setConstantWidth( (Polyline2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setConstantWidth(class PyDb2dPolyline {lvalue},double)'''
+    def setConstantWidth (self, val : float)-> None :
+      '''                             '''
     ...
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setDefaultEndWidth (self, *args, **kwargs)-> None :
-      '''setDefaultEndWidth( (Polyline2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setDefaultEndWidth(class PyDb2dPolyline {lvalue},double)'''
+    def setDefaultEndWidth (self, val : float)-> None :
+      '''                             '''
     ...
-    def setDefaultStartWidth (self, *args, **kwargs)-> None :
-      '''setDefaultStartWidth( (Polyline2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setDefaultStartWidth(class PyDb2dPolyline {lvalue},double)'''
+    def setDefaultStartWidth (self, val : float)-> None :
+      '''                             '''
     ...
-    def setElevation (self, *args, **kwargs)-> None :
-      '''setElevation( (Polyline2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setElevation(class PyDb2dPolyline {lvalue},double)'''
+    def setElevation (self, val : float)-> None :
+      '''                             '''
     ...
 
     @overload
@@ -50177,17 +50053,11 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeGenerationOff (self, *args, **kwargs)-> None :
-      '''setLinetypeGenerationOff( (Polyline2d)arg1) -> None :
-
-    C++ signature :
-        void setLinetypeGenerationOff(class PyDb2dPolyline {lvalue})'''
+    def setLinetypeGenerationOff (self)-> None :
+      '''                             '''
     ...
-    def setLinetypeGenerationOn (self, *args, **kwargs)-> None :
-      '''setLinetypeGenerationOn( (Polyline2d)arg1) -> None :
-
-    C++ signature :
-        void setLinetypeGenerationOn(class PyDb2dPolyline {lvalue})'''
+    def setLinetypeGenerationOn (self)-> None :
+      '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
@@ -50195,11 +50065,8 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None :
-      '''setNormal( (Polyline2d)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDb2dPolyline {lvalue},class AcGeVector3d)'''
+    def setNormal (self, normal : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -50232,11 +50099,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setThickness (self, *args, **kwargs)-> None :
-      '''setThickness( (Polyline2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setThickness(class PyDb2dPolyline {lvalue},double)'''
+    def setThickness (self, val : float)-> None :
+      '''                             '''
     ...
     def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
       '''                             '''
@@ -50247,31 +50111,25 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self,  filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
+
+    @overload
+    def splineFit (self, /)-> None : ...
+    @overload
+    def splineFit (self, splineType: PyDb.Poly2dType, splineSegs: int)-> None : ...
     def splineFit (self, *args, **kwargs)-> None :
-      '''splineFit( (Polyline2d)arg1) -> None :
-
-    C++ signature :
-        void splineFit(class PyDb2dPolyline {lvalue})
-
-splineFit( (Polyline2d)arg1, (Poly2dType)arg2, (DxfCode)arg3) -> None :
-
-    C++ signature :
-        void splineFit(class PyDb2dPolyline {lvalue},enum AcDb::Poly2dType,short)'''
+      '''Overloads:
+    - None: Any
+    - splineType: PyDb.Poly2dType, splineSegs: int
+    '''
     ...
-    def straighten (self, *args, **kwargs)-> None :
-      '''straighten( (Polyline2d)arg1) -> None :
-
-    C++ signature :
-        void straighten(class PyDb2dPolyline {lvalue})'''
+    def straighten (self)-> None :
+      '''                             '''
     ...
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def thickness (self, *args, **kwargs)-> float :
-      '''thickness( (Polyline2d)arg1) -> float :
-
-    C++ signature :
-        double thickness(class PyDb2dPolyline {lvalue})'''
+    def thickness (self)-> float :
+      '''                             '''
     ...
     def transformBy (self, matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
@@ -50282,17 +50140,11 @@ splineFit( (Polyline2d)arg1, (Poly2dType)arg2, (DxfCode)arg3) -> None :
     def upgradeOpen (self)-> None :
       '''                             '''
     ...
-    def vertexIds (self, *args, **kwargs)-> list :
-      '''vertexIds( (Polyline2d)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list vertexIds(class PyDb2dPolyline {lvalue})'''
+    def vertexIds (self)-> list :
+      '''                             '''
     ...
-    def vertexPosition (self, *args, **kwargs)-> PyGe.Point3d :
-      '''vertexPosition( (Polyline2d)arg1, (object)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d vertexPosition(class PyDb2dPolyline {lvalue},class AcDb2dVertex)'''
+    def vertexPosition (self, vt : PyDb.Vertex2d)-> PyGe.Point3d :
+      '''                             '''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -50320,31 +50172,25 @@ splineFit( (Polyline2d)arg1, (Poly2dType)arg2, (DxfCode)arg3) -> None :
     ...
 
 class Polyline3d:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, ptype: PyDb.Poly3dType, points: list[PyGe.Point3d], closed: bool)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (Poly3dType)arg2, (list)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,enum AcDb::Poly3dType,class boost::python::list,bool)'''
+      '''Overloads:
+    - None: Any
+    - ptype: PyDb.Poly3dType, points: list[PyGe.Point3d], closed: bool
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -50361,16 +50207,19 @@ __init__( (object)arg1, (Poly3dType)arg2, (list)arg3, (bool)arg4) -> None :
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
+
+    @overload
+    def appendVertex (self, /)-> None : ...
+    @overload
+    def appendVertex (self, vertex: PyDb.Vertex3d)-> None : ...
+    @overload
+    def appendVertex (self, outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex3d)-> None : ...
     def appendVertex (self, *args, **kwargs)-> None :
-      '''appendVertex( (Polyline3d)arg1, (Polyline3dVertex)arg2) -> None :
-
-    C++ signature :
-        void appendVertex(class PyDb3dPolyline {lvalue},class PyDb3dPolylineVertex)
-
-appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> None :
-
-    C++ signature :
-        void appendVertex(class PyDb3dPolyline {lvalue},class PyDbObjectId {lvalue},class PyDb3dPolylineVertex)'''
+      '''Overloads:
+    - None: Any
+    - vertex: PyDb.Vertex3d
+    - outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex3d
+    '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -50423,11 +50272,8 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> None 
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def convertToPolyType (self, *args, **kwargs)-> None :
-      '''convertToPolyType( (Polyline3d)arg1, (Poly3dType)arg2) -> None :
-
-    C++ signature :
-        void convertToPolyType(class PyDb3dPolyline {lvalue},enum AcDb::Poly3dType)'''
+    def convertToPolyType (self, val : PyDb.Poly3dType)-> None :
+      '''                             '''
     ...
     def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
@@ -50638,16 +50484,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self)-> int :
       '''                             '''
     ...
+
+    @overload
+    def insertVertexAt (self, /)-> None : ...
+    @overload
+    def insertVertexAt (self, indexVt: PyDb.Vertex3d, newVertex: PyDb.Vertex3d)-> None : ...
+    @overload
+    def insertVertexAt (self, outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex3d)-> None : ...
     def insertVertexAt (self, *args, **kwargs)-> None :
-      '''insertVertexAt( (Polyline3d)arg1, (Polyline3dVertex)arg2, (Polyline3dVertex)arg3) -> None :
-
-    C++ signature :
-        void insertVertexAt(class PyDb3dPolyline {lvalue},class PyDb3dPolylineVertex,class PyDb3dPolylineVertex {lvalue})
-
-insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVertex)arg4) -> None :
-
-    C++ signature :
-        void insertVertexAt(class PyDb3dPolyline {lvalue},class PyDbObjectId {lvalue},class PyDbObjectId,class PyDb3dPolylineVertex {lvalue})'''
+      '''Overloads:
+    - None: Any
+    - indexVt: PyDb.Vertex3d, newVertex: PyDb.Vertex3d
+    - outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex3d
+    '''
     ...
 
     @overload
@@ -50750,11 +50599,8 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     def layerId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (Polyline3d)arg1) -> float :
-
-    C++ signature :
-        double length(class PyDb3dPolyline {lvalue})'''
+    def length (self)-> float :
+      '''                             '''
     ...
     def lineWeight (self)-> PyDb.LineWeight :
       '''                             '''
@@ -50771,17 +50617,11 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     def list (self)-> None :
       '''                             '''
     ...
-    def makeClosed (self, *args, **kwargs)-> None :
-      '''makeClosed( (Polyline3d)arg1) -> None :
-
-    C++ signature :
-        void makeClosed(class PyDb3dPolyline {lvalue})'''
+    def makeClosed (self)-> None :
+      '''                             '''
     ...
-    def makeOpen (self, *args, **kwargs)-> None :
-      '''makeOpen( (Polyline3d)arg1) -> None :
-
-    C++ signature :
-        void makeOpen(class PyDb3dPolyline {lvalue})'''
+    def makeOpen (self)-> None :
+      '''                             '''
     ...
     def material (self)-> str :
       '''                             '''
@@ -50792,17 +50632,11 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     def objectId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def openSequenceEnd (self, *args, **kwargs)-> None :
-      '''openSequenceEnd( (Polyline3d)arg1, (SequenceEnd)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void openSequenceEnd(class PyDb3dPolyline {lvalue},class PyDbSequenceEnd {lvalue},enum AcDb::OpenMode)'''
+    def openSequenceEnd (self, mode: PyDb.OpenMode)-> PyDb.SequenceEnd :
+      '''                             '''
     ...
-    def openVertex (self, *args, **kwargs)-> None :
-      '''openVertex( (Polyline3d)arg1, (Polyline3dVertex)arg2, (ObjectId)arg3, (OpenMode)arg4) -> None :
-
-    C++ signature :
-        void openVertex(class PyDb3dPolyline {lvalue},class PyDb3dPolylineVertex {lvalue},class PyDbObjectId,enum AcDb::OpenMode)'''
+    def openVertex (self, id : PyDb.ObjectId, mode: PyDb.OpenMode)-> PyDb.Polyline3dVertex :
+      '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -50810,11 +50644,8 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     def plotStyleName (self)-> str :
       '''                             '''
     ...
-    def polyType (self, *args, **kwargs)-> PyDb.Poly3dType :
-      '''polyType( (Polyline3d)arg1) -> Poly3dType :
-
-    C++ signature :
-        enum AcDb::Poly3dType polyType(class PyDb3dPolyline {lvalue})'''
+    def polyType (self)-> PyDb.Poly3dType :
+      '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -50858,11 +50689,8 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setClosed (self, *args, **kwargs)-> None :
-      '''setClosed( (Polyline3d)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setClosed(class PyDb3dPolyline {lvalue},bool)'''
+    def setClosed (self, val : bool)-> None :
+      '''                             '''
     ...
     def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
       '''                             '''
@@ -50921,11 +50749,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPolyType (self, *args, **kwargs)-> None :
-      '''setPolyType( (Polyline3d)arg1, (Poly3dType)arg2) -> None :
-
-    C++ signature :
-        void setPolyType(class PyDb3dPolyline {lvalue},enum AcDb::Poly3dType)'''
+    def setPolyType (self, val : PyDb.Poly3dType)-> None :
+      '''                             '''
     ...
     def setPropertiesFrom (self, entity: PyDb.Entity, dosubents : bool=True)-> None :
       '''                             '''
@@ -50942,22 +50767,19 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self,  filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
+
+    @overload
+    def splineFit (self, /)-> None : ...
+    @overload
+    def splineFit (self, splineType: PyDb.Poly3dType, splineSegs: int)-> None : ...
     def splineFit (self, *args, **kwargs)-> None :
-      '''splineFit( (Polyline3d)arg1) -> None :
-
-    C++ signature :
-        void splineFit(class PyDb3dPolyline {lvalue})
-
-splineFit( (Polyline3d)arg1, (Poly3dType)arg2, (DxfCode)arg3) -> None :
-
-    C++ signature :
-        void splineFit(class PyDb3dPolyline {lvalue},enum AcDb::Poly3dType,short)'''
+      '''Overloads:
+    - None: Any
+    - splineType: PyDb.Poly3dType, splineSegs: int
+    '''
     ...
-    def straighten (self, *args, **kwargs)-> None :
-      '''straighten( (Polyline3d)arg1) -> None :
-
-    C++ signature :
-        void straighten(class PyDb3dPolyline {lvalue})'''
+    def straighten (self)-> None :
+      '''                             '''
     ...
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
@@ -50971,11 +50793,8 @@ splineFit( (Polyline3d)arg1, (Poly3dType)arg2, (DxfCode)arg3) -> None :
     def upgradeOpen (self)-> None :
       '''                             '''
     ...
-    def vertexIds (self, *args, **kwargs)-> list :
-      '''vertexIds( (Polyline3d)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list vertexIds(class PyDb3dPolyline {lvalue})'''
+    def vertexIds (self)-> list :
+      '''                             '''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -51003,31 +50822,25 @@ splineFit( (Polyline3d)arg1, (Poly3dType)arg2, (DxfCode)arg3) -> None :
     ...
 
 class Polyline3dVertex:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, pos: PyGe.Point3d)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+      '''Overloads:
+    - None: Any
+    - pos: PyGe.Point3d
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
