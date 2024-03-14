@@ -12968,26 +12968,8 @@ dictionaryNameAt( (ObjectId)arg1, (ObjectId)arg2) -> str :
     ...
 
 class Dictionary:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -13195,21 +13177,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self)-> None :
       '''                             '''
     ...
+
+    @overload
+    def remove (self, key: str)-> None : ...
+    @overload
+    def remove (self, key: PyDb.ObjectId)-> None : ...
+    @overload
+    def remove (self, key: str, returnId: PyDb.ObjectId)-> None : ...
     def remove (self, *args, **kwargs)-> None :
-      '''remove( (Dictionary)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void remove(class PyDbDictionary {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-remove( (Dictionary)arg1, (str)arg2, (ObjectId)arg3) -> None :
-
-    C++ signature :
-        void remove(class PyDbDictionary {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue})
-
-remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void remove(class PyDbDictionary {lvalue},class PyDbObjectId {lvalue})'''
+      '''Overloads:
+    - key: str
+    - key: PyDb.ObjectId
+    - key: str, returnId: PyDb.ObjectId
+    '''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -13293,31 +13273,8 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     ...
 
 class DimAssoc:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode,bool)'''
+    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -13328,22 +13285,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def addReactor (self, reactor: DbObjectReactor)-> None :
       '''                             '''
     ...
-    def addToDimensionReactor (self, *args, **kwargs)-> None :
-      '''addToDimensionReactor( (DimAssoc)arg1) -> None :
-
-    C++ signature :
-        void addToDimensionReactor(class PyDbDimAssoc {lvalue})
-
-addToDimensionReactor( (DimAssoc)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void addToDimensionReactor(class PyDbDimAssoc {lvalue},bool)'''
+    def addToDimensionReactor (self, add : bool=True)-> None :
+      '''                             '''
     ...
-    def addToPointRefReactor (self, *args, **kwargs)-> None :
-      '''addToPointRefReactor( (DimAssoc)arg1) -> None :
-
-    C++ signature :
-        void addToPointRefReactor(class PyDbDimAssoc {lvalue})'''
+    def addToPointRefReactor (self)-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -13354,16 +13300,16 @@ addToDimensionReactor( (DimAssoc)arg1, (bool)arg2) -> None :
     def assertWriteEnabled (self)-> None :
       '''                             '''
     ...
+
+    @overload
+    def assocFlag (self, /)-> int : ...
+    @overload
+    def assocFlag (self, ptType: int)-> int : ...
     def assocFlag (self, *args, **kwargs)-> int :
-      '''assocFlag( (DimAssoc)arg1) -> int :
-
-    C++ signature :
-        int assocFlag(class PyDbDimAssoc {lvalue})
-
-assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
-
-    C++ signature :
-        bool assocFlag(class PyDbDimAssoc {lvalue},int)'''
+      '''Overloads:
+    - None: Any
+    - ptType: int
+    '''
     ...
     def bounds (self, ext: PyDb.Extents)-> bool :
       '''                             '''
@@ -13409,11 +13355,8 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def dimObjId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''dimObjId( (DimAssoc)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimObjId(class PyDbDimAssoc {lvalue})'''
+    def dimObjId (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -13436,11 +13379,8 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getDimAssocGeomIds (self, *args, **kwargs)-> list :
-      '''getDimAssocGeomIds( (DimAssoc)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getDimAssocGeomIds(class PyDbDimAssoc {lvalue})'''
+    def getDimAssocGeomIds (self)-> list :
+      '''                             '''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -13457,11 +13397,8 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     def hasFields (self)-> bool :
       '''                             '''
     ...
-    def hasOopsWatcher (self, *args, **kwargs)-> bool :
-      '''hasOopsWatcher( (DimAssoc)arg1) -> bool :
-
-    C++ signature :
-        bool hasOopsWatcher(class PyDbDimAssoc {lvalue})'''
+    def hasOopsWatcher (self)-> bool :
+      '''                             '''
     ...
     def hasPersistentReactor (self, id: PyDb.ObjectId)-> bool :
       '''                             '''
@@ -13484,11 +13421,8 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     def isAcDbObjectIdsInFlux (self)-> bool :
       '''                             '''
     ...
-    def isAllGeomErased (self, *args, **kwargs)-> bool :
-      '''isAllGeomErased( (DimAssoc)arg1) -> bool :
-
-    C++ signature :
-        bool isAllGeomErased(class PyDbDimAssoc {lvalue})'''
+    def isAllGeomErased (self)-> bool :
+      '''                             '''
     ...
     def isAnnotative (self)-> PyDb.AnnotativeStates :
       '''                             '''
@@ -13535,11 +13469,8 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     def isReallyClosing (self)-> bool :
       '''                             '''
     ...
-    def isTransSpatial (self, *args, **kwargs)-> bool :
-      '''isTransSpatial( (DimAssoc)arg1) -> bool :
-
-    C++ signature :
-        bool isTransSpatial(class PyDbDimAssoc {lvalue})'''
+    def isTransSpatial (self)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self)-> bool :
       '''                             '''
@@ -13559,31 +13490,17 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     def objectId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def osnapPointRef (self, *args, **kwargs)-> PyDb.OsnapPointRef :
-      '''osnapPointRef( (DimAssoc)arg1, (int)arg2) -> OsnapPointRef :
-
-    C++ signature :
-        class PyDbOsnapPointRef osnapPointRef(class PyDbDimAssoc {lvalue},int)'''
+    def osnapPointRef (self, _type : int)-> PyDb.OsnapPointRef :
+      '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def pointRef (self, *args, **kwargs)-> PyDb.PointRef :
-      '''pointRef( (DimAssoc)arg1, (int)arg2) -> PointRef :
-
-    C++ signature :
-        class PyDbPointRef pointRef(class PyDbDimAssoc {lvalue},int)'''
+    def pointRef (self, _type : int)-> PyDb.PointRef :
+      '''                             '''
     ...
-    def post (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''post( (DimAssoc)arg1, (ObjectId)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId post(class PyDbDimAssoc {lvalue},class PyDbObjectId)
-
-post( (DimAssoc)arg1, (ObjectId)arg2, (bool)arg3) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId post(class PyDbDimAssoc {lvalue},class PyDbObjectId,bool)'''
+    def post (self, id : PyDb.ObjectId, isAcive : bool=True)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -13591,16 +13508,8 @@ post( (DimAssoc)arg1, (ObjectId)arg2, (bool)arg3) -> ObjectId :
     def releaseExtensionDictionary (self)-> None :
       '''                             '''
     ...
-    def removeAssociativity (self, *args, **kwargs)-> None :
-      '''removeAssociativity( (DimAssoc)arg1) -> None :
-
-    C++ signature :
-        void removeAssociativity(class PyDbDimAssoc {lvalue})
-
-removeAssociativity( (DimAssoc)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void removeAssociativity(class PyDbDimAssoc {lvalue},bool)'''
+    def removeAssociativity (self, force : bool=True)-> None :
+      '''                             '''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -13608,38 +13517,26 @@ removeAssociativity( (DimAssoc)arg1, (bool)arg2) -> None :
     def removeField (self, id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removeOopsWatcher (self, *args, **kwargs)-> None :
-      '''removeOopsWatcher( (DimAssoc)arg1) -> None :
-
-    C++ signature :
-        void removeOopsWatcher(class PyDbDimAssoc {lvalue})'''
+    def removeOopsWatcher (self)-> None :
+      '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removePointRef (self, *args, **kwargs)-> None :
-      '''removePointRef( (DimAssoc)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void removePointRef(class PyDbDimAssoc {lvalue},int)'''
+    def removePointRef (self, _type : int)-> None :
+      '''                             '''
     ...
     def removeReactor (self, reactor: DbObjectReactor)-> None :
       '''                             '''
     ...
-    def restoreAssocFromOopsWatcher (self, *args, **kwargs)-> None :
-      '''restoreAssocFromOopsWatcher( (DimAssoc)arg1) -> None :
-
-    C++ signature :
-        void restoreAssocFromOopsWatcher(class PyDbDimAssoc {lvalue})'''
+    def restoreAssocFromOopsWatcher (self)-> None :
+      '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotatedDimType (self, *args, **kwargs)-> PyDb.RotatedDimType :
-      '''rotatedDimType( (DimAssoc)arg1) -> RotatedDimType :
-
-    C++ signature :
-        enum AcDbDimAssoc::RotatedDimType rotatedDimType(class PyDbDimAssoc {lvalue})'''
+    def rotatedDimType (self)-> PyDb.RotatedDimType :
+      '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self)-> None :
       '''                             '''
@@ -13647,20 +13544,22 @@ removeAssociativity( (DimAssoc)arg1, (bool)arg2) -> None :
     def setAnnotative (self, state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
-    def setAssocFlag (self, *args, **kwargs)-> None :
-      '''setAssocFlag( (DimAssoc)arg1, (int)arg2 [, (bool)arg3]) -> None :
 
-    C++ signature :
-        void setAssocFlag(class PyDbDimAssoc {lvalue},int [,bool])'''
+    @overload
+    def setAssocFlag (self, flag: int)-> None : ...
+    @overload
+    def setAssocFlag (self, flag: int, val: bool)-> None : ...
+    def setAssocFlag (self, *args, **kwargs)-> None :
+      '''Overloads:
+    - flag: int
+    - flag: int, val: bool
+    '''
     ...
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setDimObjId (self, *args, **kwargs)-> None :
-      '''setDimObjId( (DimAssoc)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimObjId(class PyDbDimAssoc {lvalue},class PyDbObjectId)'''
+    def setDimObjId (self, id : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
 
     @overload
@@ -13676,23 +13575,14 @@ removeAssociativity( (DimAssoc)arg1, (bool)arg2) -> None :
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setPointRef (self, *args, **kwargs)-> None :
-      '''setPointRef( (DimAssoc)arg1, (int)arg2, (PointRef)arg3) -> None :
-
-    C++ signature :
-        void setPointRef(class PyDbDimAssoc {lvalue},int,class PyDbPointRef {lvalue})'''
+    def setPointRef (self, _type : int, ptRef : PyDb.PointRef)-> None :
+      '''                             '''
     ...
-    def setRotatedDimType (self, *args, **kwargs)-> None :
-      '''setRotatedDimType( (DimAssoc)arg1, (RotatedDimType)arg2) -> None :
-
-    C++ signature :
-        void setRotatedDimType(class PyDbDimAssoc {lvalue},enum AcDbDimAssoc::RotatedDimType)'''
+    def setRotatedDimType (self, dimType : PyDb.RotatedDimType)-> None :
+      '''                             '''
     ...
-    def setTransSpatial (self, *args, **kwargs)-> None :
-      '''setTransSpatial( (DimAssoc)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setTransSpatial(class PyDbDimAssoc {lvalue},bool)'''
+    def setTransSpatial (self, val : bool)-> None :
+      '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
       '''                             '''
@@ -13700,77 +13590,35 @@ removeAssociativity( (DimAssoc)arg1, (bool)arg2) -> None :
     def snoop (self,  filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def startCmdWatcher (self, *args, **kwargs)-> None :
-      '''startCmdWatcher( (DimAssoc)arg1) -> None :
-
-    C++ signature :
-        void startCmdWatcher(class PyDbDimAssoc {lvalue})'''
+    def startCmdWatcher (self)-> None :
+      '''                             '''
     ...
-    def startOopsWatcher (self, *args, **kwargs)-> None :
-      '''startOopsWatcher( (DimAssoc)arg1) -> None :
-
-    C++ signature :
-        void startOopsWatcher(class PyDbDimAssoc {lvalue})
-
-startOopsWatcher( (DimAssoc)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void startOopsWatcher(class PyDbDimAssoc {lvalue},bool)'''
+    def startOopsWatcher (self, val : bool=True)-> None :
+      '''                             '''
     ...
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def swapReferences (self, *args, **kwargs)-> None :
-      '''swapReferences( (DimAssoc)arg1, (IdMapping)arg2) -> None :
-
-    C++ signature :
-        void swapReferences(class PyDbDimAssoc {lvalue},class PyDbIdMapping)'''
+    def swapReferences (self, val : PyDb.IdMapping)-> None :
+      '''                             '''
     ...
-    def updateAssociativity (self, *args, **kwargs)-> None :
-      '''updateAssociativity( (DimAssoc)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void updateAssociativity(class PyDbDimAssoc {lvalue},class boost::python::list)'''
+    def updateAssociativity (self, ids : list[PyDb.ObjectId])-> None :
+      '''                             '''
     ...
-    def updateDimension (self, *args, **kwargs)-> None :
-      '''updateDimension( (DimAssoc)arg1) -> None :
-
-    C++ signature :
-        void updateDimension(class PyDbDimAssoc {lvalue})
-
-updateDimension( (DimAssoc)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void updateDimension(class PyDbDimAssoc {lvalue},bool)
-
-updateDimension( (DimAssoc)arg1, (bool)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void updateDimension(class PyDbDimAssoc {lvalue},bool,bool)'''
+    def updateDimension (self, update : bool=True, skipReactors : bool=False)-> None :
+      '''                             '''
     ...
-    def updateDueToMirror (self, *args, **kwargs)-> None :
-      '''updateDueToMirror( (DimAssoc)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void updateDueToMirror(class PyDbDimAssoc {lvalue},bool)'''
+    def updateDueToMirror (self, val : bool)-> None :
+      '''                             '''
     ...
-    def updateFillet (self, *args, **kwargs)-> None :
-      '''updateFillet( (DimAssoc)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void updateFillet(class PyDbDimAssoc {lvalue},class boost::python::list)'''
+    def updateFillet (self, ids : list[PyDb.ObjectId])-> None :
+      '''                             '''
     ...
-    def updateSubentPath (self, *args, **kwargs)-> None :
-      '''updateSubentPath( (DimAssoc)arg1, (IdMapping)arg2) -> None :
-
-    C++ signature :
-        void updateSubentPath(class PyDbDimAssoc {lvalue},class PyDbIdMapping {lvalue})'''
+    def updateSubentPath (self, val : PyDb.IdMapping)-> None :
+      '''                             '''
     ...
-    def updateXrefSubentPath (self, *args, **kwargs)-> None :
-      '''updateXrefSubentPath( (DimAssoc)arg1) -> None :
-
-    C++ signature :
-        void updateXrefSubentPath(class PyDbDimAssoc {lvalue})'''
+    def updateXrefSubentPath (self)-> None :
+      '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
       '''                             '''
@@ -16681,41 +16529,28 @@ class DynUnitsType:
     ...
 
 class Ellipse:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatio: float)-> None : ...
+    @overload
+    def __init__ (self, center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatio: float, startAngle: float, endAngle: float)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode,bool)'''
+      '''Overloads:
+    - None: Any
+    - center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatio: float
+    - center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatio: float, startAngle: float, endAngle: float
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -19603,124 +19438,77 @@ class ErrorStatus:
     ...
 
 class EvalVariant:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, intval: int)-> None : ...
+    @overload
+    def __init__ (self, floatval: float)-> None : ...
+    @overload
+    def __init__ (self, strval: str)-> None : ...
+    @overload
+    def __init__ (self, idval: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, pnt2dval: PyGe.Point2d)-> None : ...
+    @overload
+    def __init__ (self, pnt3dval: PyGe.Point3d)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double)
-
-__init__( (object)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,int)
-
-__init__( (object)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d)
-
-__init__( (object)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d)'''
+      '''Overloads:
+    - None: Any
+    - intval: int
+    - floatval: float
+    - strval: str
+    - idval: PyDb.ObjectId
+    - pnt2dval: PyGe.Point2d
+    - pnt3dval: PyGe.Point3d
+    '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def clear (self, *args, **kwargs)-> None :
-      '''clear( (EvalVariant)arg1) -> None :
-
-    C++ signature :
-        void clear(class PyDbEvalVariant {lvalue})'''
+    def clear (self)-> None :
+      '''                             '''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self, *args, **kwargs)-> None :
-      '''copyFrom( (EvalVariant)arg1, (RxObject)arg2) -> None :
-
-    C++ signature :
-        void copyFrom(class PyDbEvalVariant {lvalue},class PyRxObject)'''
+    def copyFrom (self, otherObject: PyRx.RxObject)-> None :
+      '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def dispose (self)-> None :
       '''                             '''
     ...
-    def getDouble (self, *args, **kwargs)-> float :
-      '''getDouble( (EvalVariant)arg1) -> float :
-
-    C++ signature :
-        double getDouble(class PyDbEvalVariant {lvalue})'''
+    def getDouble (self)-> float :
+      '''                             '''
     ...
-    def getInt16 (self, *args, **kwargs)-> int :
-      '''getInt16( (EvalVariant)arg1) -> int :
-
-    C++ signature :
-        short getInt16(class PyDbEvalVariant {lvalue})'''
+    def getInt16 (self)-> int :
+      '''                             '''
     ...
-    def getInt32 (self, *args, **kwargs)-> int :
-      '''getInt32( (EvalVariant)arg1) -> int :
-
-    C++ signature :
-        int getInt32(class PyDbEvalVariant {lvalue})'''
+    def getInt32 (self)-> int :
+      '''                             '''
     ...
-    def getObjectId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getObjectId( (EvalVariant)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getObjectId(class PyDbEvalVariant {lvalue})'''
+    def getObjectId (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def getPoint2d (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getPoint2d( (EvalVariant)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getPoint2d(class PyDbEvalVariant {lvalue})'''
+    def getPoint2d (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getPoint3d (self, *args, **kwargs)-> PyGe.Point3d :
-      '''getPoint3d( (EvalVariant)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPoint3d(class PyDbEvalVariant {lvalue})'''
+    def getPoint3d (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def getString (self, *args, **kwargs)-> str :
-      '''getString( (EvalVariant)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getString(class PyDbEvalVariant {lvalue})'''
+    def getString (self)-> str :
+      '''                             '''
     ...
-    def getType (self, *args, **kwargs)-> PyDb.DwgDataType :
-      '''getType( (EvalVariant)arg1) -> DwgDataType :
-
-    C++ signature :
-        enum AcDb::DwgDataType getType(class PyDbEvalVariant {lvalue})'''
+    def getType (self)-> PyDb.DwgDataType :
+      '''                             '''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -19740,47 +19528,26 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDouble (self, *args, **kwargs)-> None :
-      '''setDouble( (EvalVariant)arg1, (DxfCode)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setDouble(class PyDbEvalVariant {lvalue},short,double)'''
+    def setDouble (self, code : PyDb.DxfCode, val, float)-> None :
+      '''                             '''
     ...
-    def setInt16 (self, *args, **kwargs)-> None :
-      '''setInt16( (EvalVariant)arg1, (DxfCode)arg2, (DxfCode)arg3) -> None :
-
-    C++ signature :
-        void setInt16(class PyDbEvalVariant {lvalue},short,short)'''
+    def setInt16 (self, code : PyDb.DxfCode, val, int)-> None :
+      '''                             '''
     ...
-    def setInt32 (self, *args, **kwargs)-> None :
-      '''setInt32( (EvalVariant)arg1, (DxfCode)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setInt32(class PyDbEvalVariant {lvalue},short,int)'''
+    def setInt32 (self, code : PyDb.DxfCode, val, int)-> None :
+      '''                             '''
     ...
-    def setObjectId (self, *args, **kwargs)-> None :
-      '''setObjectId( (EvalVariant)arg1, (DxfCode)arg2, (ObjectId)arg3) -> None :
-
-    C++ signature :
-        void setObjectId(class PyDbEvalVariant {lvalue},short,class PyDbObjectId)'''
+    def setObjectId (self, code : PyDb.DxfCode, id, PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setPoint2d (self, *args, **kwargs)-> None :
-      '''setPoint2d( (EvalVariant)arg1, (DxfCode)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void setPoint2d(class PyDbEvalVariant {lvalue},short,class AcGePoint2d)'''
+    def setPoint2d (self, code : PyDb.DxfCode, pt : PyGe.Point2d)-> None :
+      '''                             '''
     ...
-    def setPoint3d (self, *args, **kwargs)-> None :
-      '''setPoint3d( (EvalVariant)arg1, (DxfCode)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void setPoint3d(class PyDbEvalVariant {lvalue},short,class AcGePoint3d)'''
+    def setPoint3d (self, code : PyDb.DxfCode, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setString (self, *args, **kwargs)-> None :
-      '''setString( (EvalVariant)arg1, (DxfCode)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void setString(class PyDbEvalVariant {lvalue},short,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setString (self, code : PyDb.DxfCode, val, str)-> None :
+      '''                             '''
     ...
 
 class Extents:
@@ -22062,36 +21829,28 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class Field:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, pszFieldCode: str)-> None : ...
+    @overload
+    def __init__ (self, pszFieldCode: str, bTextField: bool)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-__init__( (object)arg1, (str)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+      '''Overloads:
+    - None: Any
+    - pszFieldCode: str
+    - pszFieldCode: str, bTextField: bool
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -22117,29 +21876,23 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.Field :
-      '''cast( (RxObject)arg1) -> Field :
 
-    C++ signature :
-        class PyDbField cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Field :
+      '''                             '''
     ...
-    def childCount (self, *args, **kwargs)-> int :
-      '''childCount( (Field)arg1) -> int :
-
-    C++ signature :
-        int childCount(class PyDbField {lvalue})'''
+    def childCount (self)-> int :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.Field :
-      '''cloneFrom( (RxObject)arg1) -> Field :
 
-    C++ signature :
-        class PyDbField cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Field :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -22147,11 +21900,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def convertToTextField (self, *args, **kwargs)-> None :
-      '''convertToTextField( (Field)arg1) -> None :
-
-    C++ signature :
-        void convertToTextField(class PyDbField {lvalue})'''
+    def convertToTextField (self)-> None :
+      '''                             '''
     ...
     def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
@@ -22165,11 +21915,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -22189,39 +21938,28 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self, erasing : bool=True)-> None :
       '''                             '''
     ...
+
+    @overload
+    def evaluate (self, /)-> None : ...
+    @overload
+    def evaluate (self, nFlag: PyDb.FieldEvalContext)-> None : ...
+    @overload
+    def evaluate (self, nFlag: PyDb.FieldEvalContext, db: PyDb.Database)-> None : ...
     def evaluate (self, *args, **kwargs)-> None :
-      '''evaluate( (Field)arg1) -> None :
-
-    C++ signature :
-        void evaluate(class PyDbField {lvalue})
-
-evaluate( (Field)arg1, (FieldEvalContext)arg2) -> None :
-
-    C++ signature :
-        void evaluate(class PyDbField {lvalue},enum AcDbField::EvalContext)
-
-evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> None :
-
-    C++ signature :
-        void evaluate(class PyDbField {lvalue},enum AcDbField::EvalContext,class PyDbDatabase {lvalue})'''
+      '''Overloads:
+    - None: Any
+    - nFlag: PyDb.FieldEvalContext
+    - nFlag: PyDb.FieldEvalContext, db: PyDb.Database
+    '''
     ...
-    def evaluationOption (self, *args, **kwargs)-> PyDb.FieldEvalOption :
-      '''evaluationOption( (Field)arg1) -> FieldEvalOption :
-
-    C++ signature :
-        enum AcDbField::EvalOption evaluationOption(class PyDbField {lvalue})'''
+    def evaluationOption (self)-> PyDb.FieldEvalOption :
+      '''                             '''
     ...
-    def evaluationStatus (self, *args, **kwargs)-> PyDb.FieldEvalStatus :
-      '''evaluationStatus( (Field)arg1) -> FieldEvalStatus :
-
-    C++ signature :
-        enum AcDbField::EvalStatus evaluationStatus(class PyDbField {lvalue})'''
+    def evaluationStatus (self)-> PyDb.FieldEvalStatus :
+      '''                             '''
     ...
-    def evaluatorId (self, *args, **kwargs)-> str :
-      '''evaluatorId( (Field)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > evaluatorId(class PyDbField {lvalue})'''
+    def evaluatorId (self)-> str :
+      '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
@@ -22229,34 +21967,28 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> None :
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
+
+    @overload
+    def getFieldCode (self, nContext: PyDb.FieldCodeFlag)-> str : ...
+    @overload
+    def getFieldCode (self, nContext: PyDb.FieldCodeFlag, children: PyDb.Field, mode: PyDb.OpenMode)-> str : ...
     def getFieldCode (self, *args, **kwargs)-> str :
-      '''getFieldCode( (Field)arg1, (FieldCodeFlag)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getFieldCode(class PyDbField {lvalue},enum AcDbField::FieldCodeFlag)
-
-getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getFieldCode(class PyDbField {lvalue},enum AcDbField::FieldCodeFlag,class boost::python::list,enum AcDb::OpenMode)'''
+      '''Overloads:
+    - nContext: PyDb.FieldCodeFlag
+    - nContext: PyDb.FieldCodeFlag, children: PyDb.Field, mode: PyDb.OpenMode
+    '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFormat (self, *args, **kwargs)-> str :
-      '''getFormat( (Field)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getFormat(class PyDbField {lvalue})'''
+    def getFormat (self)-> str :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
     ...
-    def getValue (self, *args, **kwargs)-> str :
-      '''getValue( (Field)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getValue(class PyDbField {lvalue})'''
+    def getValue (self)-> str :
+      '''                             '''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -22330,11 +22062,8 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     def isReallyClosing (self)-> bool :
       '''                             '''
     ...
-    def isTextField (self, *args, **kwargs)-> bool :
-      '''isTextField( (Field)arg1) -> bool :
-
-    C++ signature :
-        bool isTextField(class PyDbField {lvalue})'''
+    def isTextField (self)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self)-> bool :
       '''                             '''
@@ -22357,11 +22086,8 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     def ownerId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def postInDatabase (self, *args, **kwargs)-> None :
-      '''postInDatabase( (Field)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void postInDatabase(class PyDbField {lvalue},class PyDbDatabase {lvalue})'''
+    def postInDatabase (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -22393,17 +22119,11 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setEvaluationOption (self, *args, **kwargs)-> None :
-      '''setEvaluationOption( (Field)arg1, (FieldEvalOption)arg2) -> None :
-
-    C++ signature :
-        void setEvaluationOption(class PyDbField {lvalue},enum AcDbField::EvalOption)'''
+    def setEvaluationOption (self, val : PyDb.FieldEvalOption)-> None :
+      '''                             '''
     ...
-    def setEvaluatorId (self, *args, **kwargs)-> None :
-      '''setEvaluatorId( (Field)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setEvaluatorId(class PyDbField {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setEvaluatorId (self, pszEvaluatorId : str)-> None :
+      '''                             '''
     ...
 
     @overload
@@ -22416,17 +22136,11 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFormat (self, *args, **kwargs)-> None :
-      '''setFormat( (Field)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setFormat(class PyDbField {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setFormat (self, pszFormat : str)-> None :
+      '''                             '''
     ...
-    def setInObject (self, *args, **kwargs)-> None :
-      '''setInObject( (Field)arg1, (DbObject)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void setInObject(class PyDbField {lvalue},class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setInObject (self, db: PyDb.DbObject, pszPropName: str)-> None :
+      '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -22437,11 +22151,8 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     def snoop (self,  filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def state (self, *args, **kwargs)-> PyDb.FieldState :
-      '''state( (Field)arg1) -> FieldState :
-
-    C++ signature :
-        enum AcDbField::State state(class PyDbField {lvalue})'''
+    def state (self)-> PyDb.FieldState :
+      '''                             '''
     ...
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''

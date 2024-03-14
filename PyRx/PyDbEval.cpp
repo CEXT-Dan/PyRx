@@ -6,6 +6,16 @@ using namespace boost::python;
 
 void makePyDbEvalVariantWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- intval: int\n"
+        "- floatval: float\n"
+        "- strval: str\n"
+        "- idval: PyDb.ObjectId\n"
+        "- pnt2dval: PyGe.Point2d\n"
+        "- pnt3dval: PyGe.Point3d\n";
+
+    PyDocString DS("PyDb.EvalVariant");
     class_<PyDbEvalVariant, bases<PyRxObject>>("EvalVariant")
         .def(init<>())
         .def(init<double>())
@@ -13,24 +23,24 @@ void makePyDbEvalVariantWrapper()
         .def(init<const std::string&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const AcGePoint2d&>())
-        .def(init<const AcGePoint3d&>())
-        .def("setDouble", &PyDbEvalVariant::setDouble)
-        .def("setInt16", &PyDbEvalVariant::setInt16)
-        .def("setInt32", &PyDbEvalVariant::setInt32)
-        .def("setString", &PyDbEvalVariant::setString)
-        .def("setObjectId", &PyDbEvalVariant::setObjectId)
-        .def("setPoint3d", &PyDbEvalVariant::setPoint3d)
-        .def("setPoint2d", &PyDbEvalVariant::setPoint2d)
-        .def("getDouble", &PyDbEvalVariant::getDouble)
-        .def("getInt16", &PyDbEvalVariant::getInt16)
-        .def("getInt32", &PyDbEvalVariant::getInt32)
-        .def("getString", &PyDbEvalVariant::getString)
-        .def("getObjectId", &PyDbEvalVariant::getObjectId)
-        .def("getPoint2d", &PyDbEvalVariant::getPoint2d)
-        .def("getPoint3d", &PyDbEvalVariant::getPoint3d)
-        .def("clear", &PyDbEvalVariant::clear)
-        .def("copyFrom", &PyDbEvalVariant::copyFrom)
-        .def("getType", &PyDbEvalVariant::getType)
+        .def(init<const AcGePoint3d&>(DS.CTOR(ctords)))
+        .def("setDouble", &PyDbEvalVariant::setDouble, DS.ARGS({ "code : PyDb.DxfCode", "val, float" }))
+        .def("setInt16", &PyDbEvalVariant::setInt16, DS.ARGS({ "code : PyDb.DxfCode", "val, int" }))
+        .def("setInt32", &PyDbEvalVariant::setInt32, DS.ARGS({ "code : PyDb.DxfCode", "val, int" }))
+        .def("setString", &PyDbEvalVariant::setString, DS.ARGS({ "code : PyDb.DxfCode", "val, str" }))
+        .def("setObjectId", &PyDbEvalVariant::setObjectId, DS.ARGS({ "code : PyDb.DxfCode", "id, PyDb.ObjectId" }))
+        .def("setPoint3d", &PyDbEvalVariant::setPoint3d, DS.ARGS({ "code : PyDb.DxfCode", "pt : PyGe.Point3d" }))
+        .def("setPoint2d", &PyDbEvalVariant::setPoint2d, DS.ARGS({ "code : PyDb.DxfCode", "pt : PyGe.Point2d" }))
+        .def("getDouble", &PyDbEvalVariant::getDouble, DS.ARGS())
+        .def("getInt16", &PyDbEvalVariant::getInt16, DS.ARGS())
+        .def("getInt32", &PyDbEvalVariant::getInt32, DS.ARGS())
+        .def("getString", &PyDbEvalVariant::getString, DS.ARGS())
+        .def("getObjectId", &PyDbEvalVariant::getObjectId, DS.ARGS())
+        .def("getPoint2d", &PyDbEvalVariant::getPoint2d, DS.ARGS())
+        .def("getPoint3d", &PyDbEvalVariant::getPoint3d, DS.ARGS())
+        .def("clear", &PyDbEvalVariant::clear, DS.ARGS())
+        .def("copyFrom", &PyDbEvalVariant::copyFrom, DS.ARGS({ "otherObject: PyRx.RxObject" }))
+        .def("getType", &PyDbEvalVariant::getType, DS.ARGS())
         //operators
         .def("__eq__", &PyDbEvalVariant::operator==)
         .def("__ne__", &PyDbEvalVariant::operator!=)
@@ -39,8 +49,8 @@ void makePyDbEvalVariantWrapper()
         .def("__le__", &PyDbEvalVariant::operator<=)
         .def("__ge__", &PyDbEvalVariant::operator>=)
         //static
-        .def("className", &PyDbEvalVariant::className).staticmethod("className")
-        .def("desc", &PyDbEvalVariant::desc).staticmethod("desc")
+        .def("className", &PyDbEvalVariant::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbEvalVariant::desc, DS.SARGS()).staticmethod("desc")
         ;
 }
 

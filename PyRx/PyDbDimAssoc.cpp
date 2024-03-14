@@ -8,50 +8,58 @@ using namespace boost::python;
 
 void makePyDbDimAssocWrapper()
 {
+    constexpr const std::string_view assocFlagOverload = "Overloads:\n"
+        "- None: Any\n"
+        "- ptType: int\n";
+
+    constexpr const std::string_view setAssocFlagOverload = "Overloads:\n"
+        "- flag: int\n"
+        "- flag: int, val: bool\n";
+
     PyDocString DS("PyDb.DimAssoc");
     class_<PyDbDimAssoc, bases<PyDbObject>>("DimAssoc")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
-        .def("dimObjId", &PyDbDimAssoc::dimObjId)
-        .def("setDimObjId", &PyDbDimAssoc::setDimObjId)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
+        .def("dimObjId", &PyDbDimAssoc::dimObjId, DS.ARGS())
+        .def("setDimObjId", &PyDbDimAssoc::setDimObjId, DS.ARGS({ "id : PyDb.ObjectId" }))
         .def("setAssocFlag", &PyDbDimAssoc::setAssocFlag1)
-        .def("setAssocFlag", &PyDbDimAssoc::setAssocFlag2)
+        .def("setAssocFlag", &PyDbDimAssoc::setAssocFlag2, DS.OVRL(setAssocFlagOverload))
         .def("assocFlag", &PyDbDimAssoc::assocFlag1)
-        .def("assocFlag", &PyDbDimAssoc::assocFlag2)
-        .def("setPointRef", &PyDbDimAssoc::setPointRef)
-        .def("pointRef", &PyDbDimAssoc::pointRef)
-        .def("osnapPointRef", &PyDbDimAssoc::osnapPointRef)
-        .def("setRotatedDimType", &PyDbDimAssoc::setRotatedDimType)
-        .def("rotatedDimType", &PyDbDimAssoc::rotatedDimType)
-        .def("addToPointRefReactor", &PyDbDimAssoc::addToPointRefReactor)
+        .def("assocFlag", &PyDbDimAssoc::assocFlag2, DS.OVRL(assocFlagOverload))
+        .def("setPointRef", &PyDbDimAssoc::setPointRef, DS.ARGS({ "_type : int", "ptRef : PyDb.PointRef" }))
+        .def("pointRef", &PyDbDimAssoc::pointRef, DS.ARGS({ "_type : int" }))
+        .def("osnapPointRef", &PyDbDimAssoc::osnapPointRef, DS.ARGS({ "_type : int" }))
+        .def("setRotatedDimType", &PyDbDimAssoc::setRotatedDimType, DS.ARGS({ "dimType : PyDb.RotatedDimType" }))
+        .def("rotatedDimType", &PyDbDimAssoc::rotatedDimType, DS.ARGS())
+        .def("addToPointRefReactor", &PyDbDimAssoc::addToPointRefReactor, DS.ARGS())
         .def("addToDimensionReactor", &PyDbDimAssoc::addToDimensionReactor1)
-        .def("addToDimensionReactor", &PyDbDimAssoc::addToDimensionReactor2)
-        .def("removePointRef", &PyDbDimAssoc::removePointRef)
+        .def("addToDimensionReactor", &PyDbDimAssoc::addToDimensionReactor2, DS.ARGS({ "add : bool=True" }))
+        .def("removePointRef", &PyDbDimAssoc::removePointRef, DS.ARGS({ "_type : int" }))
         .def("updateDimension", &PyDbDimAssoc::updateDimension1)
         .def("updateDimension", &PyDbDimAssoc::updateDimension2)
-        .def("updateDimension", &PyDbDimAssoc::updateDimension3)
+        .def("updateDimension", &PyDbDimAssoc::updateDimension3, DS.ARGS({ "update : bool=True", "skipReactors : bool=False" }))
         .def("removeAssociativity", &PyDbDimAssoc::removeAssociativity1)
-        .def("removeAssociativity", &PyDbDimAssoc::removeAssociativity2)
-        .def("isTransSpatial", &PyDbDimAssoc::isTransSpatial)
-        .def("setTransSpatial", &PyDbDimAssoc::setTransSpatial)
-        .def("startCmdWatcher", &PyDbDimAssoc::startCmdWatcher)
+        .def("removeAssociativity", &PyDbDimAssoc::removeAssociativity2, DS.ARGS({ "force : bool=True" }))
+        .def("isTransSpatial", &PyDbDimAssoc::isTransSpatial, DS.ARGS())
+        .def("setTransSpatial", &PyDbDimAssoc::setTransSpatial, DS.ARGS({ "val : bool" }))
+        .def("startCmdWatcher", &PyDbDimAssoc::startCmdWatcher, DS.ARGS())
         .def("startOopsWatcher", &PyDbDimAssoc::startOopsWatcher1)
-        .def("startOopsWatcher", &PyDbDimAssoc::startOopsWatcher2)
-        .def("removeOopsWatcher", &PyDbDimAssoc::removeOopsWatcher)
-        .def("restoreAssocFromOopsWatcher", &PyDbDimAssoc::restoreAssocFromOopsWatcher)
-        .def("hasOopsWatcher", &PyDbDimAssoc::hasOopsWatcher)
+        .def("startOopsWatcher", &PyDbDimAssoc::startOopsWatcher2, DS.ARGS({ "val : bool=True" }))
+        .def("removeOopsWatcher", &PyDbDimAssoc::removeOopsWatcher, DS.ARGS())
+        .def("restoreAssocFromOopsWatcher", &PyDbDimAssoc::restoreAssocFromOopsWatcher, DS.ARGS())
+        .def("hasOopsWatcher", &PyDbDimAssoc::hasOopsWatcher, DS.ARGS())
         .def("post", &PyDbDimAssoc::post1)
-        .def("post", &PyDbDimAssoc::post2)
-        .def("getDimAssocGeomIds", &PyDbDimAssoc::getDimAssocGeomIds)
-        .def("isAllGeomErased", &PyDbDimAssoc::isAllGeomErased)
-        .def("swapReferences", &PyDbDimAssoc::swapReferences)
-        .def("updateFillet", &PyDbDimAssoc::updateFillet)
-        .def("updateAssociativity", &PyDbDimAssoc::updateAssociativity)
-        .def("updateXrefSubentPath", &PyDbDimAssoc::updateXrefSubentPath)
-        .def("updateSubentPath", &PyDbDimAssoc::updateSubentPath)
-        .def("updateDueToMirror", &PyDbDimAssoc::updateDueToMirror)
+        .def("post", &PyDbDimAssoc::post2, DS.ARGS({ "id : PyDb.ObjectId","isAcive : bool=True" }))
+        .def("getDimAssocGeomIds", &PyDbDimAssoc::getDimAssocGeomIds, DS.ARGS())
+        .def("isAllGeomErased", &PyDbDimAssoc::isAllGeomErased, DS.ARGS())
+        .def("swapReferences", &PyDbDimAssoc::swapReferences, DS.ARGS({ "val : PyDb.IdMapping" }))
+        .def("updateFillet", &PyDbDimAssoc::updateFillet, DS.ARGS({ "ids : list[PyDb.ObjectId]" }))
+        .def("updateAssociativity", &PyDbDimAssoc::updateAssociativity, DS.ARGS({ "ids : list[PyDb.ObjectId]" }))
+        .def("updateXrefSubentPath", &PyDbDimAssoc::updateXrefSubentPath, DS.ARGS())
+        .def("updateSubentPath", &PyDbDimAssoc::updateSubentPath, DS.ARGS({ "val : PyDb.IdMapping" }))
+        .def("updateDueToMirror", &PyDbDimAssoc::updateDueToMirror, DS.ARGS({ "val : bool" }))
         .def("className", &PyDbDimAssoc::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbDimAssoc::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbDimAssoc::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -368,6 +376,6 @@ AcDbDimAssoc* PyDbDimAssoc::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbDimAssoc*>(m_pyImp.get());
 }

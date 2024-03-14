@@ -12,6 +12,7 @@ public:
     PyDbDictionary(AcDbDictionary* ptr, bool autoDelete);
     PyDbDictionary(const PyDbObjectId& id);
     PyDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbDictionary() override = default;
     PyDbObjectId            getAt(const std::string& entryName);
     bool                    has1(const std::string& entryName);
@@ -21,7 +22,7 @@ public:
     PyDbObjectId            setAt(const std::string& srchKey, PyDbObject& newValue);
     void                    remove1(const std::string& key);
     void                    remove2(const std::string& key, PyDbObjectId& returnId);
-    void                    remove3(PyDbObjectId& objId);
+    void                    remove3(const PyDbObjectId& objId);
     bool                    setName(const std::string& oldName, const std::string& newName);
     boost::python::dict     asDict();
     static std::string      className();

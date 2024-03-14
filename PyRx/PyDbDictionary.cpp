@@ -8,11 +8,17 @@ using namespace boost::python;
 //PyDbDictionary wrapper
 void makePyDbDictionaryWrapper()
 {
+    constexpr const std::string_view removeOverload = "Overloads:\n"
+        "- key: str\n"
+        "- key: PyDb.ObjectId\n"
+        "- key: str, returnId: PyDb.ObjectId\n";
+
     PyDocString DS("PyDb.Dictionary");
     class_<PyDbDictionary, bases<PyDbObject>>("Dictionary")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
         .def("getAt", &PyDbDictionary::getAt, DS.ARGS({ "val : str" }))
         .def("has", &PyDbDictionary::has1)
         .def("has", &PyDbDictionary::has2, DS.ARGS({ "val : str|PyDb.ObjectId" }))
@@ -21,16 +27,16 @@ void makePyDbDictionaryWrapper()
         .def("setAt", &PyDbDictionary::setAt, DS.ARGS())
         .def("remove", &PyDbDictionary::remove1)
         .def("remove", &PyDbDictionary::remove2)
-        .def("remove", &PyDbDictionary::remove3)
+        .def("remove", &PyDbDictionary::remove3, DS.OVRL(removeOverload))
         .def("setName", &PyDbDictionary::setName, DS.ARGS({ "old : str","new : str" }))
         .def("asDict", &PyDbDictionary::asDict, DS.ARGS())
         .def("className", &PyDbDictionary::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbDictionary::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbDictionary::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbDictionary::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
-        .def("__getitem__", &PyDbDictionary::getAt)
+        .def("__getitem__", &PyDbDictionary::getAt, DS.ARGS({ "val : str" }))
         .def("__contains__", &PyDbDictionary::has1)
-        .def("__contains__", &PyDbDictionary::has2)
+        .def("__contains__", &PyDbDictionary::has2, DS.ARGS({ "val : str|PyDb.ObjectId" }))
         ;
 }
 
@@ -54,6 +60,11 @@ PyDbDictionary::PyDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 PyDbDictionary::PyDbDictionary(const PyDbObjectId& id)
     : PyDbDictionary(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbDictionary::PyDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbObject(openAcDbObject<AcDbDictionary>(id, mode, erased), true)
 {
 }
 
@@ -103,7 +114,7 @@ void PyDbDictionary::remove2(const std::string& key, PyDbObjectId& returnId)
     return PyThrowBadEs(impObj()->remove(utf8_to_wstr(key).c_str(), returnId.m_id));
 }
 
-void PyDbDictionary::remove3(PyDbObjectId& objId)
+void PyDbDictionary::remove3(const PyDbObjectId& objId)
 {
     return PyThrowBadEs(impObj()->remove(objId.m_id));
 }
