@@ -154,7 +154,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -303,8 +303,16 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -483,7 +491,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def frontClipEnabled (self)-> bool :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -684,8 +692,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setElevation (self, val : float)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFrontClipAtEye (self, val : bool)-> None :
       '''                             '''
@@ -1146,7 +1162,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -1530,8 +1546,16 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setElevation (self, val : float)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHorizontalRefTextRotation (self, val : bool)-> None :
       '''                             '''
@@ -2115,7 +2139,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -2431,8 +2455,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setEndAngle (self, val:float)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
       '''                             '''
@@ -2823,7 +2855,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -3237,8 +3269,16 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setElevation (self, val : float)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHasLeader (self, *args, **kwargs)-> None :
       '''setHasLeader( (ArcDimension)arg1, (bool)arg2) -> None :
@@ -3690,7 +3730,7 @@ class AttributeDefinition:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -3997,8 +4037,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFieldLength (self, val : int)-> None :
       '''                             '''
@@ -4328,7 +4376,7 @@ class AttributeReference:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -4643,8 +4691,16 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFieldLength (self, val : int)-> None :
       '''                             '''
@@ -4939,7 +4995,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -5177,8 +5233,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -5401,7 +5465,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -5639,8 +5703,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -5889,7 +5961,7 @@ class BlockReference:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -6151,8 +6223,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -6365,7 +6445,7 @@ class BlockTable:
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -6514,8 +6594,16 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -6683,7 +6771,7 @@ class BlockTableRecord:
     def getErasedBlockReferenceIds (self)-> list :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -6887,8 +6975,16 @@ class BlockTableRecord:
     def setExplodable (self, val : bool)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setIsFromOverlayReference (self, val : bool)-> None :
       '''                             '''
@@ -7099,7 +7195,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -7337,8 +7433,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -7933,7 +8037,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -8249,8 +8353,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDiameter (self, val:float)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
       '''                             '''
@@ -9176,7 +9288,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -9477,8 +9589,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
       '''                             '''
@@ -11521,7 +11641,7 @@ class DbObject:
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -11653,8 +11773,16 @@ class DbObject:
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -12218,7 +12346,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -12608,8 +12736,16 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setFarChordPoint(class PyDbDiametricDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHorizontalRefTextRotation (self, val : bool)-> None :
       '''                             '''
@@ -13130,7 +13266,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getAt (self, val : str)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -13290,8 +13426,16 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setName (self, old : str, new : str)-> bool :
       '''                             '''
@@ -13486,7 +13630,7 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     C++ signature :
         class boost::python::list getDimAssocGeomIds(class PyDbDimAssoc {lvalue})'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -13706,8 +13850,16 @@ removeAssociativity( (DimAssoc)arg1, (bool)arg2) -> None :
     C++ signature :
         void setDimObjId(class PyDbDimAssoc {lvalue},class PyDbObjectId)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -14032,7 +14184,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -14181,8 +14333,16 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -14575,7 +14735,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -14965,8 +15125,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDimzin (self, val : int)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setName (self, name: str)-> None :
       '''                             '''
@@ -15231,7 +15399,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -15591,8 +15759,16 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setElevation (self, val : float)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHorizontalRefTextRotation (self, val : bool)-> None :
       '''                             '''
@@ -16905,7 +17081,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -17250,8 +17426,16 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
     def setEndParam (self, val : float)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
       '''                             '''
@@ -17503,7 +17687,7 @@ class Entity:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -17741,8 +17925,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -20122,7 +20314,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -20390,8 +20582,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -20670,7 +20870,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -20920,8 +21120,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -21158,7 +21366,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -21408,8 +21616,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -21679,7 +21895,7 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -21953,8 +22169,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDimtxt (self, val:float)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -22222,7 +22446,7 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldCode (self, *args, **kwargs)-> str :
@@ -22401,8 +22625,16 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     C++ signature :
         void setEvaluatorId(class PyDbField {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFormat (self, *args, **kwargs)-> None :
       '''setFormat( (Field)arg1, (str)arg2) -> None :
@@ -23296,7 +23528,7 @@ class GeoData:
     def addMeshFace (self, idx : int, p0 : int, p1 : int, p2 : int)-> None :
       '''                             '''
     ...
-    def addMeshPointMap (self, idx : intsrc : PyGe.Point2d, dest : PyGe.Point2d)-> None :
+    def addMeshPointMap (self, idx : int, src : PyGe.Point2d, dest : PyGe.Point2d)-> None :
       '''                             '''
     ...
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
@@ -23403,7 +23635,7 @@ class GeoData:
     def geoRSSTag (self)-> str :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -23607,8 +23839,16 @@ class GeoData:
     def setDoSeaLevelCorrection (self, val : bool)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setGeoRSSTag (self, val : str)-> None :
       '''                             '''
@@ -23890,7 +24130,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -24280,8 +24520,16 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
     C++ signature :
         void setFade(class PyDbRasterImage {lvalue},signed char)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHeight (self, *args, **kwargs)-> None :
       '''setHeight( (RasterImage)arg1, (float)arg2) -> None :
@@ -24564,7 +24812,7 @@ class GeoPositionMarker:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -24829,8 +25077,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setEnableFrameText (self, val : bool)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setGeoPosition (self, pt : PyGe.Point3d)-> None :
       '''                             '''
@@ -25248,7 +25504,7 @@ append( (Group)arg1, (list)arg2) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -25508,8 +25764,16 @@ removeAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
     C++ signature :
         void setDescription(class PyDbGroup {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHighlight (self, *args, **kwargs)-> None :
       '''setHighlight( (Group)arg1, (bool)arg2) -> None :
@@ -26051,7 +26315,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -26400,8 +26664,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setElevation (self, val : float)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setGradient (self, *args, **kwargs)-> None :
       '''setGradient( (Hatch)arg1, (HatchGradientPatternType)arg2, (str)arg3) -> None :
@@ -26895,7 +27167,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -27279,8 +27551,16 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFitData (self, *args, **kwargs)-> None :
       '''setFitData( (Spline)arg1, (list)arg2, (int)arg3, (float)arg4, (Vector3d)arg5, (Vector3d)arg6) -> None :
@@ -27785,7 +28065,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -28023,8 +28303,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -28387,7 +28675,7 @@ class LayerFilter:
     def getAt (self, val : int)-> str :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -28531,8 +28819,16 @@ class LayerFilter:
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -28685,7 +28981,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -28834,8 +29130,16 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -29008,7 +29312,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -29299,8 +29603,16 @@ setColor( (LayerTableRecord)arg1, (Color)arg2, (ObjectId)arg3) -> None :
     C++ signature :
         void setDescription(class PyDbLayerTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setIsFrozen (self, *args, **kwargs)-> None :
       '''setIsFrozen( (LayerTableRecord)arg1, (bool)arg2) -> None :
@@ -29610,7 +29922,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class boost::python::tuple getExtents(class PyDbLayout {lvalue})'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -29927,8 +30239,16 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void setDrawViewportsFirst(class PyDbPlotSettings {lvalue},bool)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayoutName (self, *args, **kwargs)-> None :
       '''setLayoutName( (Layout)arg1, (str)arg2) -> None :
@@ -30624,7 +30944,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -31076,8 +31396,16 @@ setDimldrblk( (Leader)arg1, (str)arg2) -> None :
     C++ signature :
         void setDimtxt(class PyDbLeader {lvalue},double)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
       '''                             '''
@@ -31396,7 +31724,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -31703,8 +32031,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setEndPoint (self, val:PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
       '''                             '''
@@ -32071,7 +32407,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -32443,8 +32779,16 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setExtArcOn(class PyDb2LineAngularDimension {lvalue},bool)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHorizontalRefTextRotation (self, val : bool)-> None :
       '''                             '''
@@ -32929,7 +33273,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -33078,8 +33422,16 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -33241,7 +33593,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -33409,8 +33761,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setDashLengthAt(class PyDbLinetypeTableRecord {lvalue},int,double)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setIsScaledToFit (self, *args, **kwargs)-> None :
       '''setIsScaledToFit( (LinetypeTableRecord)arg1, (bool)arg2) -> None :
@@ -33744,7 +34104,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -34012,8 +34372,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -34298,7 +34666,7 @@ class MInsertBlock:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -34572,8 +34940,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -34999,7 +35375,7 @@ getBlockAttributeValue( (MLeader)arg1, (ObjectId)arg2) -> str :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -35591,8 +35967,16 @@ setDoglegLength( (MLeader)arg1, (int)arg2, (float)arg3) -> None :
     C++ signature :
         void setExtendLeaderToText(class PyDbMLeader {lvalue},bool)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFirstVertex (self, *args, **kwargs)-> None :
       '''setFirstVertex( (MLeader)arg1, (int)arg2, (Point3d)arg3) -> None :
@@ -36405,7 +36789,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     C++ signature :
         enum AcDbMLeaderStyle::SegmentAngleType firstSegmentAngleConstraint(class PyDbMLeaderStyle {lvalue})'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -36759,8 +37143,16 @@ setDrawLeaderOrderType( (MLeaderStyle)arg1, (DrawLeaderOrderType)arg2) -> None :
     C++ signature :
         void setExtendLeaderToText(class PyDbMLeaderStyle {lvalue},bool)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFirstSegmentAngleConstraint (self, *args, **kwargs)-> None :
       '''setFirstSegmentAngleConstraint( (MLeaderStyle)arg1, (MLeaderSegmentAngleType)arg2) -> None :
@@ -37243,7 +37635,7 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -37576,8 +37968,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setElevation (self, val : float)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setGradient (self, *args, **kwargs)-> None :
       '''setGradient( (MPolygon)arg1, (HatchGradientPatternType)arg2, (str)arg3) -> None :
@@ -37928,7 +38328,7 @@ class MText:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -38244,8 +38644,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDynamicColumns (self, width : float, gutter : float, autoHeight : bool)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFlowDirection (self, val : PyDb.MTextFlowDirection)-> None :
       '''                             '''
@@ -38777,7 +39185,7 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -39039,8 +39447,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setJustification (self, val : MlineJustification)-> None :
       '''                             '''
@@ -39347,7 +39763,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     C++ signature :
         class boost::python::tuple getElementAt(class PyDbMlineStyle {lvalue},int)'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -39550,8 +39966,16 @@ set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
     C++ signature :
         void setEndSquareCap(class PyDbMlineStyle {lvalue},bool)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFillColor (self, *args, **kwargs)-> None :
       '''setFillColor( (MlineStyle)arg1, (Color)arg2) -> None :
@@ -39846,7 +40270,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -40114,8 +40538,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -40415,7 +40847,7 @@ This class cannot be instantiated from Python'''
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def registerContextCollection (self, name : str, name : PyDb.ObjectContextCollection)-> None :
+    def registerContextCollection (self, name : str, collection : PyDb.ObjectContextCollection)-> None :
       '''                             '''
     ...
     def unregisterContextCollection (self, name : str)-> None :
@@ -40769,7 +41201,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -41159,8 +41591,16 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setElevation (self, val : float)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHorizontalRefTextRotation (self, val : bool)-> None :
       '''                             '''
@@ -41800,7 +42240,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getActiveFileName (self)-> str :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -41944,8 +42384,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setItemName (self, item : str)-> None :
       '''                             '''
@@ -42181,7 +42629,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -42473,8 +42921,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setFade (self, val : int)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHeight (self, val : float)-> None :
       '''                             '''
@@ -42799,7 +43255,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -43067,8 +43523,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -43367,7 +43831,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class boost::python::tuple getCustomPrintScale(class PyDbPlotSettings {lvalue})'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -43631,8 +44095,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setDrawViewportsFirst(class PyDbPlotSettings {lvalue},bool)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -44136,7 +44608,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -44383,8 +44855,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setEcsRotation (self, val : float)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -44751,7 +45231,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -45129,8 +45609,16 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setExtArcOn(class PyDb3PointAngularDimension {lvalue},bool)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHorizontalRefTextRotation (self, val : bool)-> None :
       '''                             '''
@@ -45601,7 +46089,7 @@ class PointCloudColorMap:
     C++ signature :
         class boost::python::list getColorSchemeInUse(class PyDbPointCloudColorMap {lvalue})'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -45775,8 +46263,16 @@ class PointCloudColorMap:
     C++ signature :
         bool setDefaultIntensityColorScheme(class PyDbPointCloudColorMap {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -46130,7 +46626,7 @@ class PointCloudDefEx:
     def getAllRcsFilePaths (self)-> list :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -46282,8 +46778,16 @@ class PointCloudDefEx:
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -46566,7 +47070,7 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -46961,8 +47465,16 @@ setAllRegionsVisibility( (PointCloudEx)arg1, (bool)arg2, (bool)arg3) -> None :
     C++ signature :
         void setElevationOutOfRangeBehavior(class PyDbPointCloudEx {lvalue},enum AcDbPointCloudEx::DispOptionOutOfRange)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHighlightLimitboxBoundary (self, *args, **kwargs)-> None :
       '''setHighlightLimitboxBoundary( (PointCloudEx)arg1, (bool)arg2) -> None :
@@ -47485,7 +47997,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -47726,8 +48238,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -47964,7 +48484,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -48205,8 +48725,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -48509,7 +49037,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndWidthAt (self, idx:int)-> float :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -48879,8 +49407,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setElevation (self, elev:float)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
       '''                             '''
@@ -49222,7 +49758,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -49618,8 +50154,16 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     C++ signature :
         void setElevation(class PyDb2dPolyline {lvalue},double)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
       '''                             '''
@@ -49975,7 +50519,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -50329,8 +50873,16 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
       '''                             '''
@@ -50596,7 +51148,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -50837,8 +51389,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -51283,7 +51843,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -51673,8 +52233,16 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setExtArcStartAngle(class PyDbRadialDimension {lvalue},double)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHorizontalRefTextRotation (self, val : bool)-> None :
       '''                             '''
@@ -52176,7 +52744,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -52578,8 +53146,16 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setExtArcStartAngle(class PyDbRadialDimensionLarge {lvalue},double)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHorizontalRefTextRotation (self, val : bool)-> None :
       '''                             '''
@@ -53013,7 +53589,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -53400,8 +53976,16 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
     C++ signature :
         void setFade(class PyDbRasterImage {lvalue},signed char)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHeight (self, *args, **kwargs)-> None :
       '''setHeight( (RasterImage)arg1, (float)arg2) -> None :
@@ -53688,7 +54272,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > fileType(class PyDbRasterImageDef {lvalue})'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -53868,8 +54452,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -54073,7 +54665,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -54211,8 +54803,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setEnable(bool)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -54365,7 +54965,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -54514,8 +55114,16 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -54668,7 +55276,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -54815,8 +55423,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setName (self, name: str)-> None :
       '''                             '''
@@ -55012,7 +55628,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -55256,8 +55872,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -55686,7 +56310,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -55954,8 +56578,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -56345,7 +56977,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -56735,8 +57367,16 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setElevation (self, val : float)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHorizontalRefTextRotation (self, val : bool)-> None :
       '''                             '''
@@ -57211,7 +57851,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -57449,8 +58089,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -58058,7 +58706,7 @@ extrudeAlongPath( (Solid3d)arg1, (Region)arg2, (Curve)arg3, (float)arg4) -> None
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -58385,8 +59033,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -58635,7 +59291,7 @@ class SpatialFilter:
     def getDefinition (self)-> tuple :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -58788,8 +59444,16 @@ class SpatialFilter:
     def setDefinition (self, pnt2d: List[PyGe.Point2d], normal: PyGe.Vector3d, elev: float, frontclip: float, backclip: float, enabled: bool)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setInverted (self, val : bool)-> None :
       '''                             '''
@@ -59102,7 +59766,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -59471,8 +60135,16 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFitData (self, *args, **kwargs)-> None :
       '''setFitData( (Spline)arg1, (list)arg2, (int)arg3, (float)arg4, (Vector3d)arg5, (Vector3d)arg6) -> None :
@@ -60128,7 +60800,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -60396,8 +61068,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -60996,7 +61676,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -61264,8 +61944,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -61765,7 +62453,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -61914,8 +62602,16 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -62050,7 +62746,7 @@ class SymbolTableRecord:
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -62197,8 +62893,16 @@ class SymbolTableRecord:
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setName (self, name: str)-> None :
       '''                             '''
@@ -62661,7 +63365,7 @@ getDataType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> tuple :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -63348,8 +64052,16 @@ setDataType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (object)arg5, (object
     def setDirection (self, val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFieldId (self, *args, **kwargs)-> None :
       '''setFieldId( (Table)arg1, (int)arg2, (int)arg3, (ObjectId)arg4) -> None :
@@ -64120,7 +64832,7 @@ getDataType( (TableStyle)arg1, (str)arg2) -> tuple :
     C++ signature :
         class boost::python::tuple getDataType(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -64466,8 +65178,16 @@ setDataType( (TableStyle)arg1, (object)arg2, (object)arg3, (str)arg4) -> None :
     C++ signature :
         void setDescription(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFlowDirection (self, *args, **kwargs)-> None :
       '''setFlowDirection( (TableStyle)arg1, (TableFlowDirection)arg2) -> None :
@@ -64844,7 +65564,7 @@ class Text:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -65124,8 +65844,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHeight (self, val : float)-> None :
       '''                             '''
@@ -65454,7 +66182,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -65603,8 +66331,16 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -65769,7 +66505,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def font (self)-> tuple :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -65931,8 +66667,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setBigFontFileName (self, val : str)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFileName (self, val : str)-> None :
       '''                             '''
@@ -66576,7 +67320,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -66725,8 +67469,16 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -66879,7 +67631,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -67029,8 +67781,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setName (self, name: str)-> None :
       '''                             '''
@@ -67199,7 +67959,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getActiveFileName (self)-> str :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -67343,8 +68103,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setItemName (self, item : str)-> None :
       '''                             '''
@@ -67578,7 +68346,7 @@ class UnderlayReference:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -67870,8 +68638,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setFade (self, val : int)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setHeight (self, val : float)-> None :
       '''                             '''
@@ -68282,7 +69058,7 @@ class Vertex:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -68520,8 +69296,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -68755,7 +69539,7 @@ class Vertex2d:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -69008,8 +69792,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setEndWidth (self, val : float)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -69268,7 +70060,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -69417,8 +70209,16 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -69619,7 +70419,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getCategoryName (self)-> str :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -69853,8 +70653,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setElevation (self, val : float)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFrontClipAtEye (self, val : bool)-> None :
       '''                             '''
@@ -70184,7 +70992,7 @@ class Viewport:
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -70661,8 +71469,16 @@ setFastZoomOn( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setFastZoomOn(class PyDbViewport {lvalue},bool)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFrontClipAtEyeOff (self)-> None :
       '''                             '''
@@ -71284,7 +72100,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -71433,8 +72249,16 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -71629,7 +72453,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def frontClipEnabled (self)-> bool :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -71892,8 +72716,16 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     def setFastZoomsEnabled (self, val : bool)-> None :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFrontClipAtEye (self, val : bool)-> None :
       '''                             '''
@@ -72355,7 +73187,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -72742,8 +73574,16 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
     C++ signature :
         void setFade(class PyDbRasterImage {lvalue},signed char)'''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFrom (self, points : list[PyGe.Point2d], normal : PyGe.Vector3d)-> None :
       '''                             '''
@@ -72981,7 +73821,7 @@ class Xrecord:
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getField (self, prop: str=TEXT)-> PyDb.ObjectId :
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self)-> PyDb.ObjectId :
@@ -73122,8 +73962,16 @@ class Xrecord:
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self, prop: str=TEXT, fld: PyDb.Field)-> PyDb.ObjectId :
-      '''                             '''
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
     ...
     def setFromRbChain (self, resbuf : list, auxDb : PyDb.Database = None )-> None :
       '''                             '''
