@@ -40026,11 +40026,8 @@ This class cannot be instantiated from Python'''
     def lockContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def locked (self, *args, **kwargs)-> bool :
-      '''locked( (ObjectContextCollection)arg1) -> bool :
-
-    C++ signature :
-        bool locked(class PyDbObjectContextCollection {lvalue})'''
+    def locked (self)-> bool :
+      '''                             '''
     ...
     def name (self)-> str :
       '''                             '''
@@ -40047,11 +40044,8 @@ This class cannot be instantiated from Python'''
     def toList (self, desc:PyRx.RxClass=PyDb.ObjectContext)-> list :
       '''                             '''
     ...
-    def unlockContext (self, *args, **kwargs)-> None :
-      '''unlockContext( (ObjectContextCollection)arg1) -> None :
-
-    C++ signature :
-        void unlockContext(class PyDbObjectContextCollection {lvalue})'''
+    def unlockContext (self)-> None :
+      '''                             '''
     ...
 
 class ObjectContextManager:
