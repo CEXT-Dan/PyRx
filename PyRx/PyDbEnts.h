@@ -319,6 +319,7 @@ public:
     PyDb3dPolylineVertex(AcDb3dPolylineVertex* ptr, bool autoDelete);
     PyDb3dPolylineVertex(const PyDbObjectId& id);
     PyDb3dPolylineVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDb3dPolylineVertex(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDb3dPolylineVertex() = default;
     AcDb::Vertex3dType  vertexType() const;
     AcGePoint3d         position() const;
@@ -342,6 +343,7 @@ public:
     PyDbPolygonMeshVertex(AcDbPolygonMeshVertex* ptr, bool autoDelete);
     PyDbPolygonMeshVertex(const PyDbObjectId& id);
     PyDbPolygonMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbPolygonMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     virtual ~PyDbPolygonMeshVertex() = default;
     AcDb::Vertex3dType  vertexType() const;
     AcGePoint3d         position() const;
@@ -365,6 +367,7 @@ public:
     PyDbPolyFaceMeshVertex(AcDbPolyFaceMeshVertex* ptr, bool autoDelete);
     PyDbPolyFaceMeshVertex(const PyDbObjectId& id);
     PyDbPolyFaceMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbPolyFaceMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbPolyFaceMeshVertex() = default;
     AcGePoint3d         position() const;
     void                setPosition(const AcGePoint3d&);
@@ -387,6 +390,7 @@ public:
     PyDbFaceRecord(AcDbFaceRecord* ptr, bool autoDelete);
     PyDbFaceRecord(const PyDbObjectId& id);
     PyDbFaceRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbFaceRecord(const PyDbObjectId& id, AcDb::OpenMode mode,bool);
     virtual ~PyDbFaceRecord() = default;
     Adesk::Int16        getVertexAt(Adesk::UInt16 faceIdx) const;
     void                setVertexAt(Adesk::UInt16 faceIdx, Adesk::Int16 vtxIdx);
@@ -412,6 +416,7 @@ public:
     PyDbPoint(AcDbPoint* ptr, bool autoDelete);
     PyDbPoint(const PyDbObjectId& id);
     PyDbPoint(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbPoint(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbPoint() override = default;
     AcGePoint3d         position() const;
     void                setPosition(const AcGePoint3d&);
@@ -440,6 +445,7 @@ public:
     PyDb2dPolyline(AcDb2dPolyline* ptr, bool autoDelete);
     PyDb2dPolyline(const PyDbObjectId& id);
     PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDb2dPolyline(AcDb::Poly2dType type, const boost::python::list& vertices, Adesk::Boolean closed);
     AcDb::Poly2dType    polyType() const;
     void                setPolyType(AcDb::Poly2dType val);
@@ -464,14 +470,14 @@ public:
     void                setLinetypeGenerationOn();
     void                setLinetypeGenerationOff();
     void                straighten();
-    void                splineFit();
-    void                splineFit(AcDb::Poly2dType splineType, Adesk::Int16 splineSegs);
-    void                appendVertex(const PyDb2dVertex& vt);
-    void                appendVertex(PyDbObjectId& id, const PyDb2dVertex& vt);
-    void                insertVertexAt(const PyDb2dVertex& pIndexVert, PyDb2dVertex& pNewVertex);
-    void                insertVertexAt(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb2dVertex& pNewVertex);
-    void                openVertex(PyDb2dVertex& vt, const PyDbObjectId& vertId, AcDb::OpenMode mode) const;
-    void                openSequenceEnd(PyDbSequenceEnd& end, AcDb::OpenMode mode);
+    void                splineFit1();
+    void                splineFit2(AcDb::Poly2dType splineType, Adesk::Int16 splineSegs);
+    void                appendVertex1(const PyDb2dVertex& vt);
+    void                appendVertex2(PyDbObjectId& id, const PyDb2dVertex& vt);
+    void                insertVertexAt1(const PyDb2dVertex& pIndexVert, PyDb2dVertex& pNewVertex);
+    void                insertVertexAt2(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb2dVertex& pNewVertex);
+    PyDb2dVertex        openVertex(const PyDbObjectId& vertId, AcDb::OpenMode mode) const;
+    PyDbSequenceEnd     openSequenceEnd(AcDb::OpenMode mode);
     boost::python::list vertexIds() const;
     AcGePoint3d         vertexPosition(const AcDb2dVertex& vert) const;
     void                makeClosedIfStartAndEndVertexCoincide(double distTol);
@@ -493,6 +499,7 @@ public:
     PyDb3dPolyline(AcDb3dPolyline* ptr, bool autoDelete);
     PyDb3dPolyline(const PyDbObjectId& id);
     PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode, bool openErased);
     PyDb3dPolyline(AcDb::Poly3dType, const boost::python::list& vertices, Adesk::Boolean closed);
     virtual ~PyDb3dPolyline() override = default;
     double              length() const;
@@ -503,14 +510,14 @@ public:
     void                setPolyType(AcDb::Poly3dType val);
     void                convertToPolyType(AcDb::Poly3dType val);
     void                straighten();
-    void                splineFit();
-    void                splineFit(AcDb::Poly3dType splineType, Adesk::Int16   splineSegs);
-    void                appendVertex(const PyDb3dPolylineVertex& vt);
-    void                appendVertex(PyDbObjectId& id, const PyDb3dPolylineVertex& vt);
-    void                insertVertexAt(const PyDb3dPolylineVertex& pIndexVert, PyDb3dPolylineVertex& pNewVertex);
-    void                insertVertexAt(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb3dPolylineVertex& pNewVertex);
-    void                openVertex(PyDb3dPolylineVertex& vt, const PyDbObjectId& vertId, AcDb::OpenMode mode) const;
-    void                openSequenceEnd(PyDbSequenceEnd&, AcDb::OpenMode);
+    void                splineFit1();
+    void                splineFit2(AcDb::Poly3dType splineType, Adesk::Int16 splineSegs);
+    void                appendVertex1(const PyDb3dPolylineVertex& vt);
+    void                appendVertex2(PyDbObjectId& id, const PyDb3dPolylineVertex& vt);
+    void                insertVertexAt1(const PyDb3dPolylineVertex& pIndexVert, PyDb3dPolylineVertex& pNewVertex);
+    void                insertVertexAt2(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb3dPolylineVertex& pNewVertex);
+    PyDb3dPolylineVertex openVertex(const PyDbObjectId& vertId, AcDb::OpenMode mode) const;
+    PyDbSequenceEnd      openSequenceEnd(AcDb::OpenMode);
     boost::python::list vertexIds() const;
     static std::string  className();
     static PyRxClass    desc();
@@ -530,6 +537,7 @@ public:
     PyDbArc(AcDbArc* ptr, bool autoDelete);
     PyDbArc(const PyDbObjectId& id);
     PyDbArc(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbArc(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbArc(const AcGePoint3d& center, double radius, double startAngle, double endAngle);
     PyDbArc(const AcGePoint3d& center, const AcGeVector3d& normal, double radius, double startAngle, double endAngle);
     virtual ~PyDbArc() override = default;
@@ -567,6 +575,7 @@ public:
     PyDbCircle(AcDbCircle* ptr, bool autoDelete);
     PyDbCircle(const PyDbObjectId& id);
     PyDbCircle(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbCircle(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbCircle(const AcGePoint3d& cntr, const AcGeVector3d& nrm, double radius);
     virtual ~PyDbCircle() override = default;
     AcGePoint3d         center() const;
@@ -601,6 +610,7 @@ public:
     PyDbLine(AcDbLine* ptr, bool autoDelete);
     PyDbLine(const PyDbObjectId& id);
     PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     PyDbLine(const AcGePoint3d& start, const AcGePoint3d& end);
     virtual ~PyDbLine() override = default;
     AcGePoint3d         startPoint() const;
@@ -633,6 +643,7 @@ public:
     PyDbPolyline(AcDbPolyline* ptr, bool autoDelete);
     PyDbPolyline(const PyDbObjectId& id);
     PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     virtual ~PyDbPolyline() override = default;
     AcGePoint3d         getPoint3dAt(unsigned int) const;
     AcGePoint2d         getPoint2dAt(unsigned int) const;
@@ -716,6 +727,7 @@ public:
     PyDbFace(AcDbFace* ptr, bool autoDelete);
     PyDbFace(const PyDbObjectId& id);
     PyDbFace(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbFace(const PyDbObjectId& id, AcDb::OpenMode mode, bool);
     virtual ~PyDbFace() override = default;
     AcGePoint3d         getVertexAt(Adesk::UInt16) const;
     void                setVertexAt(Adesk::UInt16, const AcGePoint3d&);
@@ -740,6 +752,7 @@ public:
     PyDbFcf(AcDbFcf* ptr, bool autoDelete);
     PyDbFcf(const PyDbObjectId& id);
     PyDbFcf(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbFcf(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbFcf(const std::string&, const AcGePoint3d& pnt, const AcGeVector3d& normal, const AcGeVector3d& direction);
     virtual ~PyDbFcf() override = default;
     void				setText(const std::string& val);
