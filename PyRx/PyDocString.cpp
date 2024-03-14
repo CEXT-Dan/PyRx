@@ -39,11 +39,10 @@ const char* PyDocString::CTOR(const std::string_view overloads)
     return outstr.c_str();
 }
 
-const char* PyDocString::ARGS(const std::string_view arguments, const std::string_view overloads)
+const char* PyDocString::OVRL(const std::string_view overloads)
 {
     outstr = m_argBegin;
     outstr +=  "self, ";
-    outstr += arguments;
     outstr += m_argEnd;
     outstr += m_commentBegin;
     outstr += overloads;

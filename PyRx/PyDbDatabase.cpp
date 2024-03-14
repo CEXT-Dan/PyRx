@@ -491,7 +491,7 @@ void makePyDbDatabaseWrapper()
         .def("wblock", &PyDbDatabase::wblock1)
         .def("wblock", &PyDbDatabase::wblock2)
         .def("wblock", &PyDbDatabase::wblock3)
-        .def("wblock", &PyDbDatabase::wblock4, DS.ARGS("", wblockOverloads))
+        .def("wblock", &PyDbDatabase::wblock4, DS.OVRL(wblockOverloads))
         .def("abortDeepClone", &PyDbDatabase::abortDeepClone, DS.ARGS({ "idmap: PyDb.IdMapping" }))
 
         .def("deepCloneObjects", &PyDbDatabase::deepCloneObjects1)
