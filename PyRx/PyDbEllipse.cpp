@@ -9,6 +9,14 @@ using namespace boost::python;
 //PyDbCurve
 void makePyDbEllipseWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatio: float\n"
+        "- center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatio: float, startAngle: float, endAngle: float\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("PyDb.Ellipse");
     class_<PyDbEllipse, bases<PyDbCurve>>("Ellipse")
         .def(init<>())
@@ -16,7 +24,7 @@ void makePyDbEllipseWrapper()
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double, double>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("center", &PyDbEllipse::center, DS.ARGS())
         .def("setCenter", &PyDbEllipse::setCenter, DS.ARGS({ "val : PyGe.Point3d" }))
         .def("normal", &PyDbEllipse::normal, DS.ARGS())

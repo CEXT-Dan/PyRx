@@ -12,6 +12,7 @@ public:
     PyDbField(AcDbField* ptr, bool autoDelete);
     PyDbField(const PyDbObjectId& id);
     PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     virtual ~PyDbField() override = default;
     void                setInObject(PyDbObject& pObj, const std::string& pszPropName);
     void                postInDatabase(PyDbDatabase& pDb);
@@ -31,7 +32,7 @@ public:
     void                evaluate2(AcDbField::EvalContext nContext);
     void                evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db);
     std::string         getFieldCode1(AcDbField::FieldCodeFlag nFlag);
-    std::string         getFieldCode2(AcDbField::FieldCodeFlag nFlag, boost::python::list, AcDb::OpenMode mode);
+    std::string         getFieldCode2(AcDbField::FieldCodeFlag nFlag, const boost::python::list&, AcDb::OpenMode mode);
     static std::string  className();
     static PyRxClass    desc();
     static PyDbField    cloneFrom(const PyRxObject& src);

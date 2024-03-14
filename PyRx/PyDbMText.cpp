@@ -621,7 +621,7 @@ AcDbMText* PyDbMText::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbMText*>(m_pyImp.get());
 }
 
@@ -654,7 +654,7 @@ int AcDbMTextFragmentCallBack(AcDbMTextFragment* frag, void* param)
         else
             pysublist.append(boost::python::object());
 #else
-        if(!frag->msText.isEmpty())
+        if (!frag->msText.isEmpty())
             pysublist.append(wstr_to_utf8(frag->msText));
         else
             pysublist.append(boost::python::object());

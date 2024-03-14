@@ -4,35 +4,54 @@
 using namespace boost::python;
 void makePyDbFieldtWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- pszFieldCode: str\n"
+        "- pszFieldCode: str, bTextField: bool\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    constexpr const std::string_view evaluateOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- nFlag: PyDb.FieldEvalContext\n"
+        "- nFlag: PyDb.FieldEvalContext, db: PyDb.Database\n";
+
+    constexpr const std::string_view getFieldCodeOverloads = "Overloads:\n"
+        "- nContext: PyDb.FieldCodeFlag\n"
+        "- nContext: PyDb.FieldCodeFlag, children: PyDb.Field, mode: PyDb.OpenMode\n";
+        
+    PyDocString DS("PyDb.Field");
     class_<PyDbField, bases<PyDbObject>>("Field")
         .def(init<>())
         .def(init<const std::string&>())
         .def(init<const std::string&, bool>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("setInObject", &PyDbField::setInObject)
-        .def("postInDatabase", &PyDbField::postInDatabase)
-        .def("state", &PyDbField::state)
-        .def("evaluationStatus", &PyDbField::evaluationStatus)
-        .def("evaluationOption", &PyDbField::evaluationOption)
-        .def("setEvaluationOption", &PyDbField::setEvaluationOption)
-        .def("evaluatorId", &PyDbField::evaluatorId)
-        .def("setEvaluatorId", &PyDbField::setEvaluatorId)
-        .def("isTextField", &PyDbField::isTextField)
-        .def("convertToTextField", &PyDbField::convertToTextField)
-        .def("childCount", &PyDbField::childCount)
-        .def("getFormat", &PyDbField::getFormat)
-        .def("setFormat", &PyDbField::setFormat)
-        .def("getValue", &PyDbField::getValue)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.CTOR(ctords)))
+        .def("setInObject", &PyDbField::setInObject, DS.ARGS({ "db: PyDb.DbObject","pszPropName: str"}))
+        .def("postInDatabase", &PyDbField::postInDatabase, DS.ARGS({ "db: PyDb.Database" }))
+        .def("state", &PyDbField::state, DS.ARGS())
+        .def("evaluationStatus", &PyDbField::evaluationStatus, DS.ARGS())
+        .def("evaluationOption", &PyDbField::evaluationOption, DS.ARGS())
+        .def("setEvaluationOption", &PyDbField::setEvaluationOption, DS.ARGS({ "val : PyDb.FieldEvalOption" }))
+        .def("evaluatorId", &PyDbField::evaluatorId, DS.ARGS())
+        .def("setEvaluatorId", &PyDbField::setEvaluatorId, DS.ARGS({ "pszEvaluatorId : str" }))
+        .def("isTextField", &PyDbField::isTextField, DS.ARGS())
+        .def("convertToTextField", &PyDbField::convertToTextField, DS.ARGS())
+        .def("childCount", &PyDbField::childCount, DS.ARGS())
+        .def("getFormat", &PyDbField::getFormat, DS.ARGS())
+        .def("setFormat", &PyDbField::setFormat, DS.ARGS({ "pszFormat : str" }))
+        .def("getValue", &PyDbField::getValue, DS.ARGS())
         .def("evaluate", &PyDbField::evaluate1)
         .def("evaluate", &PyDbField::evaluate2)
-        .def("evaluate", &PyDbField::evaluate3)
+        .def("evaluate", &PyDbField::evaluate3,DS.OVRL(evaluateOverloads))
         .def("getFieldCode", &PyDbField::getFieldCode1)
-        .def("getFieldCode", &PyDbField::getFieldCode2)
-        .def("className", &PyDbField::className).staticmethod("className")
-        .def("desc", &PyDbField::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbField::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbField::cast).staticmethod("cast")
+        .def("getFieldCode", &PyDbField::getFieldCode2, DS.OVRL(getFieldCodeOverloads))
+        .def("className", &PyDbField::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbField::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbField::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbField::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
     enum_<AcDbField::State>("FieldState")
         .value("kInitialized", AcDbField::State::kInitialized)
@@ -124,6 +143,11 @@ PyDbField::PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 PyDbField::PyDbField(const PyDbObjectId& id)
     : PyDbField(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbField::PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbObject(openAcDbObject<AcDbField>(id, mode, erased), false)
 {
 }
 
@@ -225,7 +249,7 @@ std::string PyDbField::getFieldCode1(AcDbField::FieldCodeFlag nFlag)
     return wstr_to_utf8(impObj()->getFieldCode(nFlag));
 }
 
-std::string PyDbField::getFieldCode2(AcDbField::FieldCodeFlag nFlag, boost::python::list pyfields, AcDb::OpenMode mode)
+std::string PyDbField::getFieldCode2(AcDbField::FieldCodeFlag nFlag,const boost::python::list& pyfields, AcDb::OpenMode mode)
 {
     PyAutoLockGIL lock;
     AcArray<AcDbField*> pChildFields;
