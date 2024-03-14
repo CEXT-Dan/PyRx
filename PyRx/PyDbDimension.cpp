@@ -11,10 +11,19 @@ using namespace boost::python;
 //PyDbDimension
 void makePyDbDimensionWrapper()
 {
+    constexpr const std::string_view setDimstyleDataOverloads = "Overloads:\n"
+        "- id: PyDb.ObjectId\n"
+        "- rec: PyDb.DimStyleTableRecord\n";
+
+    constexpr const std::string_view formatMeasurementOverloads = "Overloads:\n"
+        "- measurement: float\n"
+        "- measurement: float, dimensionText: str\n";
+
     PyDocString DS("PyDb.Dimension");
     class_<PyDbDimension, bases<PyDbEntity>>("Dimension", no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode:  PyDb.OpenMode=kForRead", "erased: bool=False" })))
         .def("textDefinedSize", &PyDbDimension::textDefinedSize, DS.ARGS())
         .def("setTextDefinedSize", &PyDbDimension::setTextDefinedSize, DS.ARGS({ "width : float", "height : float" }))
         .def("resetTextDefinedSize", &PyDbDimension::resetTextDefinedSize, DS.ARGS())
@@ -42,7 +51,7 @@ void makePyDbDimensionWrapper()
         .def("setTextLineSpacingFactor", &PyDbDimension::setTextLineSpacingFactor, DS.ARGS({ "val : float" }))
         .def("getDimstyleData", &PyDbDimension::getDimstyleData, DS.ARGS())
         .def("setDimstyleData", &PyDbDimension::setDimstyleData1)
-        .def("setDimstyleData", &PyDbDimension::setDimstyleData2)
+        .def("setDimstyleData", &PyDbDimension::setDimstyleData2, DS.OVRL(setDimstyleDataOverloads))
         .def("horizontalRotation", &PyDbDimension::horizontalRotation, DS.ARGS())
         .def("setHorizontalRotation", &PyDbDimension::setHorizontalRotation, DS.ARGS({ "val : float" }))
         .def("dimBlockId", &PyDbDimension::dimBlockId, DS.ARGS())
@@ -54,7 +63,7 @@ void makePyDbDimensionWrapper()
         .def("generateLayout", &PyDbDimension::generateLayout, DS.ARGS())
         .def("measurement", &PyDbDimension::measurement, DS.ARGS())
         .def("formatMeasurement", &PyDbDimension::formatMeasurement1)
-        .def("formatMeasurement", &PyDbDimension::formatMeasurement2)
+        .def("formatMeasurement", &PyDbDimension::formatMeasurement2, DS.OVRL(formatMeasurementOverloads))
         .def("isDynamicDimension", &PyDbDimension::isDynamicDimension, DS.ARGS())
         .def("setDynamicDimension", &PyDbDimension::setDynamicDimension, DS.ARGS({ "val : bool" }))
         .def("dimLineLinetype", &PyDbDimension::dimLineLinetype, DS.ARGS())
@@ -168,6 +177,11 @@ PyDbDimension::PyDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 PyDbDimension::PyDbDimension(const PyDbObjectId& id)
     : PyDbDimension(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbDimension::PyDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbEntity(openAcDbObject<AcDbDimension>(id, mode, erased), false)
 {
 }
 
@@ -989,7 +1003,7 @@ AcDbDimension* PyDbDimension::impObj(const std::source_location& src /*= std::so
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbDimension*>(m_pyImp.get());
 }
 
@@ -997,29 +1011,40 @@ AcDbDimension* PyDbDimension::impObj(const std::source_location& src /*= std::so
 //PyDb2LineAngularDimension
 void makePyDb2LineAngularDimensionWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, xL2Start: PyGe.Point3d, xL2End: PyGe.Point3d, arcPnt: PyGe.Point3d\n"
+        "- xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, xL2Start: PyGe.Point3d, xL2End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str\n"
+        "- xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, xL2Start: PyGe.Point3d, xL2End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("PyDb.LineAngularDimension2");
     class_<PyDb2LineAngularDimension, bases<PyDbDimension>>("LineAngularDimension2")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
-        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId&>())
-        .def("arcPoint", &PyDb2LineAngularDimension::arcPoint)
-        .def("setArcPoint", &PyDb2LineAngularDimension::setArcPoint)
-        .def("xLine1Start", &PyDb2LineAngularDimension::xLine1Start)
-        .def("setXLine1Start", &PyDb2LineAngularDimension::setXLine1Start)
-        .def("xLine1End", &PyDb2LineAngularDimension::xLine1End)
-        .def("setXLine1End", &PyDb2LineAngularDimension::setXLine1End)
-        .def("xLine2Start", &PyDb2LineAngularDimension::xLine2Start)
-        .def("setXLine2Start", &PyDb2LineAngularDimension::setXLine2Start)
-        .def("xLine2End", &PyDb2LineAngularDimension::xLine2End)
-        .def("setXLine2End", &PyDb2LineAngularDimension::setXLine2End)
-        .def("extArcOn", &PyDb2LineAngularDimension::extArcOn)
-        .def("setExtArcOn", &PyDb2LineAngularDimension::setExtArcOn)
-        .def("className", &PyDb2LineAngularDimension::className).staticmethod("className")
-        .def("desc", &PyDb2LineAngularDimension::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDb2LineAngularDimension::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDb2LineAngularDimension::cast).staticmethod("cast")
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId&>(DS.CTOR(ctords)))
+        .def("arcPoint", &PyDb2LineAngularDimension::arcPoint, DS.ARGS())
+        .def("setArcPoint", &PyDb2LineAngularDimension::setArcPoint, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("xLine1Start", &PyDb2LineAngularDimension::xLine1Start, DS.ARGS())
+        .def("setXLine1Start", &PyDb2LineAngularDimension::setXLine1Start, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("xLine1End", &PyDb2LineAngularDimension::xLine1End, DS.ARGS())
+        .def("setXLine1End", &PyDb2LineAngularDimension::setXLine1End, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("xLine2Start", &PyDb2LineAngularDimension::xLine2Start, DS.ARGS())
+        .def("setXLine2Start", &PyDb2LineAngularDimension::setXLine2Start, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("xLine2End", &PyDb2LineAngularDimension::xLine2End, DS.ARGS())
+        .def("setXLine2End", &PyDb2LineAngularDimension::setXLine2End, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("extArcOn", &PyDb2LineAngularDimension::extArcOn, DS.ARGS())
+        .def("setExtArcOn", &PyDb2LineAngularDimension::setExtArcOn, DS.ARGS({ "val : bool" }))
+        .def("className", &PyDb2LineAngularDimension::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDb2LineAngularDimension::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDb2LineAngularDimension::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDb2LineAngularDimension::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1040,6 +1065,11 @@ PyDb2LineAngularDimension::PyDb2LineAngularDimension(const PyDbObjectId& id)
 
 PyDb2LineAngularDimension::PyDb2LineAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbDimension(openAcDbObject<AcDb2LineAngularDimension>(id, mode), false)
+{
+}
+
+PyDb2LineAngularDimension::PyDb2LineAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbDimension(openAcDbObject<AcDb2LineAngularDimension>(id, mode, erased), false)
 {
 }
 
@@ -1158,7 +1188,7 @@ AcDb2LineAngularDimension* PyDb2LineAngularDimension::impObj(const std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDb2LineAngularDimension*>(m_pyImp.get());
 }
 
@@ -1167,27 +1197,38 @@ AcDb2LineAngularDimension* PyDb2LineAngularDimension::impObj(const std::source_l
 //AcDb3PointAngularDimension
 void makePyDb3PointAngularDimensionWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d\n"
+        "- centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str\n"
+        "- centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("PyDb.Point3AngularDimension");
     class_<PyDb3PointAngularDimension, bases<PyDbDimension>>("Point3AngularDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
-        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId&>())
-        .def("arcPoint", &PyDb3PointAngularDimension::arcPoint)
-        .def("setArcPoint", &PyDb3PointAngularDimension::setArcPoint)
-        .def("xLine1Point", &PyDb3PointAngularDimension::xLine1Point)
-        .def("setXLine1Point", &PyDb3PointAngularDimension::setXLine1Point)
-        .def("xLine2Point", &PyDb3PointAngularDimension::xLine2Point)
-        .def("setXLine2Point", &PyDb3PointAngularDimension::setXLine2Point)
-        .def("centerPoint", &PyDb3PointAngularDimension::centerPoint)
-        .def("setCenterPoint", &PyDb3PointAngularDimension::setCenterPoint)
-        .def("extArcOn", &PyDb3PointAngularDimension::extArcOn)
-        .def("setExtArcOn", &PyDb3PointAngularDimension::setExtArcOn)
-        .def("className", &PyDb3PointAngularDimension::className).staticmethod("className")
-        .def("desc", &PyDb3PointAngularDimension::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDb3PointAngularDimension::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDb3PointAngularDimension::cast).staticmethod("cast")
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId&>(DS.CTOR(ctords)))
+        .def("arcPoint", &PyDb3PointAngularDimension::arcPoint, DS.ARGS())
+        .def("setArcPoint", &PyDb3PointAngularDimension::setArcPoint, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("xLine1Point", &PyDb3PointAngularDimension::xLine1Point, DS.ARGS())
+        .def("setXLine1Point", &PyDb3PointAngularDimension::setXLine1Point, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("xLine2Point", &PyDb3PointAngularDimension::xLine2Point, DS.ARGS())
+        .def("setXLine2Point", &PyDb3PointAngularDimension::setXLine2Point, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("centerPoint", &PyDb3PointAngularDimension::centerPoint, DS.ARGS())
+        .def("setCenterPoint", &PyDb3PointAngularDimension::setCenterPoint, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("extArcOn", &PyDb3PointAngularDimension::extArcOn, DS.ARGS())
+        .def("setExtArcOn", &PyDb3PointAngularDimension::setExtArcOn, DS.ARGS({ "val : bool" }))
+        .def("className", &PyDb3PointAngularDimension::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDb3PointAngularDimension::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDb3PointAngularDimension::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDb3PointAngularDimension::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1208,6 +1249,11 @@ PyDb3PointAngularDimension::PyDb3PointAngularDimension(const PyDbObjectId& id)
 
 PyDb3PointAngularDimension::PyDb3PointAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbDimension(openAcDbObject<AcDb3PointAngularDimension>(id, mode), false)
+{
+}
+
+PyDb3PointAngularDimension::PyDb3PointAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbDimension(openAcDbObject<AcDb3PointAngularDimension>(id, mode, erased), false)
 {
 }
 
@@ -1313,7 +1359,7 @@ AcDb3PointAngularDimension* PyDb3PointAngularDimension::impObj(const std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDb3PointAngularDimension*>(m_pyImp.get());
 }
 
@@ -1321,29 +1367,40 @@ AcDb3PointAngularDimension* PyDb3PointAngularDimension::impObj(const std::source
 //AcDbAlignedDimension
 void makePyDbAlignedDimensionWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, dimLinePoint: PyGe.Point3d\n"
+        "- xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, dimLinePoint: PyGe.Point3d, dimText: str\n"
+        "- xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, dimLinePoint: PyGe.Point3d, dimText: str, id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("PyDb.AlignedDimension");
     class_<PyDbAlignedDimension, bases<PyDbDimension>>("AlignedDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
-        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId& >())
-        .def("xLine1Point", &PyDbAlignedDimension::xLine1Point)
-        .def("setXLine1Point", &PyDbAlignedDimension::setXLine1Point)
-        .def("xLine2Point", &PyDbAlignedDimension::xLine2Point)
-        .def("setXLine2Point", &PyDbAlignedDimension::setXLine2Point)
-        .def("dimLinePoint", &PyDbAlignedDimension::dimLinePoint)
-        .def("setDimLinePoint", &PyDbAlignedDimension::setDimLinePoint)
-        .def("oblique", &PyDbAlignedDimension::oblique)
-        .def("setOblique", &PyDbAlignedDimension::setOblique)
-        .def("jogSymbolOn", &PyDbAlignedDimension::jogSymbolOn)
-        .def("setJogSymbolOn", &PyDbAlignedDimension::setJogSymbolOn)
-        .def("jogSymbolPosition", &PyDbAlignedDimension::jogSymbolPosition)
-        .def("setJogSymbolPosition", &PyDbAlignedDimension::setJogSymbolPosition)
-        .def("className", &PyDbAlignedDimension::className).staticmethod("className")
-        .def("desc", &PyDbAlignedDimension::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbAlignedDimension::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbAlignedDimension::cast).staticmethod("cast")
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId& >(DS.CTOR(ctords)))
+        .def("xLine1Point", &PyDbAlignedDimension::xLine1Point, DS.ARGS())
+        .def("setXLine1Point", &PyDbAlignedDimension::setXLine1Point, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("xLine2Point", &PyDbAlignedDimension::xLine2Point, DS.ARGS())
+        .def("setXLine2Point", &PyDbAlignedDimension::setXLine2Point, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("dimLinePoint", &PyDbAlignedDimension::dimLinePoint, DS.ARGS())
+        .def("setDimLinePoint", &PyDbAlignedDimension::setDimLinePoint, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("oblique", &PyDbAlignedDimension::oblique, DS.ARGS())
+        .def("setOblique", &PyDbAlignedDimension::setOblique, DS.ARGS({ "val : float" }))
+        .def("jogSymbolOn", &PyDbAlignedDimension::jogSymbolOn, DS.ARGS())
+        .def("setJogSymbolOn", &PyDbAlignedDimension::setJogSymbolOn, DS.ARGS({ "val : bool" }))
+        .def("jogSymbolPosition", &PyDbAlignedDimension::jogSymbolPosition, DS.ARGS())
+        .def("setJogSymbolPosition", &PyDbAlignedDimension::setJogSymbolPosition, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("className", &PyDbAlignedDimension::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbAlignedDimension::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbAlignedDimension::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbAlignedDimension::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1364,6 +1421,11 @@ PyDbAlignedDimension::PyDbAlignedDimension(const PyDbObjectId& id)
 
 PyDbAlignedDimension::PyDbAlignedDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbDimension(openAcDbObject<AcDbAlignedDimension>(id, mode), false)
+{
+}
+
+PyDbAlignedDimension::PyDbAlignedDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbDimension(openAcDbObject<AcDbAlignedDimension>(id, mode, erased), false)
 {
 }
 
@@ -1488,7 +1550,7 @@ AcDbAlignedDimension* PyDbAlignedDimension::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbAlignedDimension*>(m_pyImp.get());
 }
 
@@ -1496,39 +1558,50 @@ AcDbAlignedDimension* PyDbAlignedDimension::impObj(const std::source_location& s
 //AcDbArcDimension
 void makePyDbArcDimensionWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d\n"
+        "- centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str\n"
+        "- centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("PyDb.ArcDimension");
     class_<PyDbArcDimension, bases<PyDbDimension>>("ArcDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>())
         .def(init <const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init <const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
-        .def(init <const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId&>())
-        .def("arcPoint", &PyDbArcDimension::arcPoint)
-        .def("setArcPoint", &PyDbArcDimension::setArcPoint)
-        .def("xLine1Point", &PyDbArcDimension::xLine1Point)
-        .def("setXLine1Point", &PyDbArcDimension::setXLine1Point)
-        .def("xLine2Point", &PyDbArcDimension::xLine2Point)
-        .def("setXLine2Point", &PyDbArcDimension::setXLine2Point)
-        .def("centerPoint", &PyDbArcDimension::centerPoint)
-        .def("setCenterPoint", &PyDbArcDimension::setCenterPoint)
-        .def("isPartial", &PyDbArcDimension::isPartial)
-        .def("setIsPartial", &PyDbArcDimension::setIsPartial)
-        .def("arcStartParam", &PyDbArcDimension::arcStartParam)
-        .def("setArcStartParam", &PyDbArcDimension::setArcStartParam)
-        .def("arcEndParam", &PyDbArcDimension::arcEndParam)
-        .def("setArcEndParam", &PyDbArcDimension::setArcEndParam)
-        .def("hasLeader", &PyDbArcDimension::hasLeader)
-        .def("setHasLeader", &PyDbArcDimension::setHasLeader)
-        .def("leader1Point", &PyDbArcDimension::leader1Point)
-        .def("setLeader1Point", &PyDbArcDimension::setLeader1Point)
-        .def("leader2Point", &PyDbArcDimension::leader2Point)
-        .def("setLeader2Point", &PyDbArcDimension::setLeader2Point)
-        .def("arcSymbolType", &PyDbArcDimension::arcSymbolType)
-        .def("setArcSymbolType", &PyDbArcDimension::setArcSymbolType)
-        .def("className", &PyDbArcDimension::className).staticmethod("className")
-        .def("desc", &PyDbArcDimension::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbArcDimension::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbArcDimension::cast).staticmethod("cast")
+        .def(init <const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId&>(DS.CTOR(ctords)))
+        .def("arcPoint", &PyDbArcDimension::arcPoint, DS.ARGS())
+        .def("setArcPoint", &PyDbArcDimension::setArcPoint, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("xLine1Point", &PyDbArcDimension::xLine1Point, DS.ARGS())
+        .def("setXLine1Point", &PyDbArcDimension::setXLine1Point, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("xLine2Point", &PyDbArcDimension::xLine2Point, DS.ARGS())
+        .def("setXLine2Point", &PyDbArcDimension::setXLine2Point, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("centerPoint", &PyDbArcDimension::centerPoint, DS.ARGS())
+        .def("setCenterPoint", &PyDbArcDimension::setCenterPoint, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("isPartial", &PyDbArcDimension::isPartial, DS.ARGS())
+        .def("setIsPartial", &PyDbArcDimension::setIsPartial, DS.ARGS({ "val : bool" }))
+        .def("arcStartParam", &PyDbArcDimension::arcStartParam, DS.ARGS())
+        .def("setArcStartParam", &PyDbArcDimension::setArcStartParam, DS.ARGS({ "val : float" }))
+        .def("arcEndParam", &PyDbArcDimension::arcEndParam, DS.ARGS())
+        .def("setArcEndParam", &PyDbArcDimension::setArcEndParam, DS.ARGS({ "val : float" }))
+        .def("hasLeader", &PyDbArcDimension::hasLeader, DS.ARGS())
+        .def("setHasLeader", &PyDbArcDimension::setHasLeader, DS.ARGS({ "val : bool" }))
+        .def("leader1Point", &PyDbArcDimension::leader1Point, DS.ARGS())
+        .def("setLeader1Point", &PyDbArcDimension::setLeader1Point, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("leader2Point", &PyDbArcDimension::leader2Point, DS.ARGS())
+        .def("setLeader2Point", &PyDbArcDimension::setLeader2Point, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("arcSymbolType", &PyDbArcDimension::arcSymbolType, DS.ARGS())
+        .def("setArcSymbolType", &PyDbArcDimension::setArcSymbolType, DS.ARGS({ "val : int" }))
+        .def("className", &PyDbArcDimension::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbArcDimension::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbArcDimension::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbArcDimension::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1549,6 +1622,11 @@ PyDbArcDimension::PyDbArcDimension(const PyDbObjectId& id)
 
 PyDbArcDimension::PyDbArcDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbDimension(openAcDbObject<AcDbArcDimension>(id, mode), false)
+{
+}
+
+PyDbArcDimension::PyDbArcDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbDimension(openAcDbObject<AcDbArcDimension>(id, mode, erased), false)
 {
 }
 
@@ -1714,7 +1792,7 @@ AcDbArcDimension* PyDbArcDimension::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbArcDimension*>(m_pyImp.get());
 }
 
@@ -1722,27 +1800,38 @@ AcDbArcDimension* PyDbArcDimension::impObj(const std::source_location& src /*= s
 //AcDbDiametricDimension
 void makePyDbDiametricDimensionWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float\n"
+        "- chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str\n"
+        "- chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str, id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("PyDb.DiametricDimension");
     class_<PyDbDiametricDimension, bases<PyDbDimension>>("DiametricDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, double>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, double, const std::string&>())
-        .def(init<const AcGePoint3d&, const AcGePoint3d&, double, const std::string&, const PyDbObjectId&>())
-        .def("leaderLength", &PyDbDiametricDimension::leaderLength)
-        .def("setLeaderLength", &PyDbDiametricDimension::setLeaderLength)
-        .def("chordPoint", &PyDbDiametricDimension::chordPoint)
-        .def("setChordPoint", &PyDbDiametricDimension::setChordPoint)
-        .def("farChordPoint", &PyDbDiametricDimension::farChordPoint)
-        .def("setFarChordPoint", &PyDbDiametricDimension::setFarChordPoint)
-        .def("extArcStartAngle", &PyDbDiametricDimension::extArcStartAngle)
-        .def("setExtArcStartAngle", &PyDbDiametricDimension::setExtArcStartAngle)
-        .def("extArcEndAngle", &PyDbDiametricDimension::extArcEndAngle)
-        .def("setExtArcEndAngle", &PyDbDiametricDimension::setExtArcEndAngle)
-        .def("className", &PyDbDiametricDimension::className).staticmethod("className")
-        .def("desc", &PyDbDiametricDimension::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbDiametricDimension::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbDiametricDimension::cast).staticmethod("cast")
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, double, const std::string&, const PyDbObjectId&>(DS.CTOR(ctords)))
+        .def("leaderLength", &PyDbDiametricDimension::leaderLength, DS.ARGS())
+        .def("setLeaderLength", &PyDbDiametricDimension::setLeaderLength, DS.ARGS({ "val : float" }))
+        .def("chordPoint", &PyDbDiametricDimension::chordPoint, DS.ARGS())
+        .def("setChordPoint", &PyDbDiametricDimension::setChordPoint, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("farChordPoint", &PyDbDiametricDimension::farChordPoint, DS.ARGS())
+        .def("setFarChordPoint", &PyDbDiametricDimension::setFarChordPoint, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("extArcStartAngle", &PyDbDiametricDimension::extArcStartAngle, DS.ARGS())
+        .def("setExtArcStartAngle", &PyDbDiametricDimension::setExtArcStartAngle, DS.ARGS({ "val : float" }))
+        .def("extArcEndAngle", &PyDbDiametricDimension::extArcEndAngle, DS.ARGS())
+        .def("setExtArcEndAngle", &PyDbDiametricDimension::setExtArcEndAngle, DS.ARGS({ "val : float" }))
+        .def("className", &PyDbDiametricDimension::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbDiametricDimension::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbDiametricDimension::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbDiametricDimension::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1766,6 +1855,11 @@ PyDbDiametricDimension::PyDbDiametricDimension(const PyDbObjectId& id, AcDb::Ope
 {
 }
 
+PyDbDiametricDimension::PyDbDiametricDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbDimension(openAcDbObject<AcDbDiametricDimension>(id, mode, erased), false)
+{
+}
+
 PyDbDiametricDimension::PyDbDiametricDimension(const AcGePoint3d& chordPoint, const AcGePoint3d& farChordPoint, double leaderLength)
     : PyDbDimension(new AcDbDiametricDimension(chordPoint, farChordPoint, leaderLength), true)
 {
@@ -1780,6 +1874,7 @@ PyDbDiametricDimension::PyDbDiametricDimension(const AcGePoint3d& chordPoint, co
     : PyDbDimension(new AcDbDiametricDimension(chordPoint, farChordPoint, leaderLength, utf8_to_wstr(dimText).c_str(), styleId.m_id), true)
 {
 }
+
 
 double PyDbDiametricDimension::leaderLength() const
 {
@@ -1876,7 +1971,7 @@ AcDbDiametricDimension* PyDbDiametricDimension::impObj(const std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbDiametricDimension*>(m_pyImp.get());
 }
 
@@ -1884,29 +1979,39 @@ AcDbDiametricDimension* PyDbDiametricDimension::impObj(const std::source_locatio
 //AcDbOrdinateDimension
 void makePyDbOrdinateDimensionWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- useXAxis: bool, definingPoint: PyGe.Point3d, leaderEndPoint: PyGe.Point3d\n"
+        "- useXAxis: bool, definingPoint: PyGe.Point3d, leaderEndPoint: PyGe.Point3d, dimText: str\n"
+        "- useXAxis: bool, definingPoint: PyGe.Point3d, leaderEndPoint: PyGe.Point3d, dimText: str, id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("PyDb.OrdinateDimension");
     class_<PyDbOrdinateDimension, bases<PyDbDimension>>("OrdinateDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<Adesk::Boolean, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<Adesk::Boolean, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
-        .def(init<Adesk::Boolean, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId&>())
-        .def("isUsingXAxis", &PyDbOrdinateDimension::isUsingXAxis)
-        .def("isUsingYAxis", &PyDbOrdinateDimension::isUsingYAxis)
-        .def("useXAxis", &PyDbOrdinateDimension::useXAxis)
-        .def("useYAxis", &PyDbOrdinateDimension::useYAxis)
-        .def("setUsingXAxis", &PyDbOrdinateDimension::setUsingXAxis)
-        .def("setUsingYAxis", &PyDbOrdinateDimension::setUsingYAxis)
-        .def("origin", &PyDbOrdinateDimension::origin)
-        .def("setOrigin", &PyDbOrdinateDimension::setOrigin)
-        .def("definingPoint", &PyDbOrdinateDimension::definingPoint)
-        .def("setDefiningPoint", &PyDbOrdinateDimension::setDefiningPoint)
-        .def("leaderEndPoint", &PyDbOrdinateDimension::leaderEndPoint)
-        .def("setLeaderEndPoint", &PyDbOrdinateDimension::setLeaderEndPoint)
-        .def("className", &PyDbOrdinateDimension::className).staticmethod("className")
-        .def("desc", &PyDbOrdinateDimension::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbOrdinateDimension::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbOrdinateDimension::cast).staticmethod("cast")
+        .def(init<Adesk::Boolean, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId&>(DS.CTOR(ctords)))
+        .def("isUsingXAxis", &PyDbOrdinateDimension::isUsingXAxis, DS.ARGS())
+        .def("isUsingYAxis", &PyDbOrdinateDimension::isUsingYAxis, DS.ARGS())
+        .def("useXAxis", &PyDbOrdinateDimension::useXAxis, DS.ARGS())
+        .def("useYAxis", &PyDbOrdinateDimension::useYAxis, DS.ARGS())
+        .def("setUsingXAxis", &PyDbOrdinateDimension::setUsingXAxis, DS.ARGS({ "val : bool" }))
+        .def("setUsingYAxis", &PyDbOrdinateDimension::setUsingYAxis, DS.ARGS({ "val : bool" }))
+        .def("origin", &PyDbOrdinateDimension::origin, DS.ARGS())
+        .def("setOrigin", &PyDbOrdinateDimension::setOrigin, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("definingPoint", &PyDbOrdinateDimension::definingPoint, DS.ARGS())
+        .def("setDefiningPoint", &PyDbOrdinateDimension::setDefiningPoint, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("leaderEndPoint", &PyDbOrdinateDimension::leaderEndPoint, DS.ARGS())
+        .def("setLeaderEndPoint", &PyDbOrdinateDimension::setLeaderEndPoint, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("className", &PyDbOrdinateDimension::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbOrdinateDimension::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbOrdinateDimension::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbOrdinateDimension::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1927,6 +2032,11 @@ PyDbOrdinateDimension::PyDbOrdinateDimension(const PyDbObjectId& id)
 
 PyDbOrdinateDimension::PyDbOrdinateDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbDimension(openAcDbObject<AcDbOrdinateDimension>(id, mode), false)
+{
+}
+
+PyDbOrdinateDimension::PyDbOrdinateDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbDimension(openAcDbObject<AcDbOrdinateDimension>(id, mode, erased), false)
 {
 }
 
@@ -2044,7 +2154,7 @@ AcDbOrdinateDimension* PyDbOrdinateDimension::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbOrdinateDimension*>(m_pyImp.get());
 }
 
@@ -2052,27 +2162,38 @@ AcDbOrdinateDimension* PyDbOrdinateDimension::impObj(const std::source_location&
 //AcDbRadialDimension
 void makePyDbRadialDimensionWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- center: PyGe.Point3d, chordPoint: PyGe.Point3d,length:float\n"
+        "- center: PyGe.Point3d, chordPoint: PyGe.Point3d,length:float, dimText: str\n"
+        "- center: PyGe.Point3d, chordPoint: PyGe.Point3d,length:float, dimText: str, id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("PyDb.RadialDimension");
     class_<PyDbRadialDimension, bases<PyDbDimension>>("RadialDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, double>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, double, const std::string&>())
-        .def(init<const AcGePoint3d&, const AcGePoint3d&, double, const std::string&, const PyDbObjectId&>())
-        .def("leaderLength", &PyDbRadialDimension::leaderLength)
-        .def("setLeaderLength", &PyDbRadialDimension::setLeaderLength)
-        .def("center", &PyDbRadialDimension::center)
-        .def("setCenter", &PyDbRadialDimension::setCenter)
-        .def("chordPoint", &PyDbRadialDimension::chordPoint)
-        .def("setChordPoint", &PyDbRadialDimension::setChordPoint)
-        .def("extArcStartAngle", &PyDbRadialDimension::extArcStartAngle)
-        .def("setExtArcStartAngle", &PyDbRadialDimension::setExtArcStartAngle)
-        .def("extArcEndAngle", &PyDbRadialDimension::extArcEndAngle)
-        .def("setExtArcEndAngle", &PyDbRadialDimension::setExtArcEndAngle)
-        .def("className", &PyDbRadialDimension::className).staticmethod("className")
-        .def("desc", &PyDbRadialDimension::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbRadialDimension::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbRadialDimension::cast).staticmethod("cast")
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, double, const std::string&, const PyDbObjectId&>(DS.CTOR(ctords)))
+        .def("leaderLength", &PyDbRadialDimension::leaderLength, DS.ARGS())
+        .def("setLeaderLength", &PyDbRadialDimension::setLeaderLength, DS.ARGS({ "val : float" }))
+        .def("center", &PyDbRadialDimension::center, DS.ARGS())
+        .def("setCenter", &PyDbRadialDimension::setCenter, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("chordPoint", &PyDbRadialDimension::chordPoint, DS.ARGS())
+        .def("setChordPoint", &PyDbRadialDimension::setChordPoint, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("extArcStartAngle", &PyDbRadialDimension::extArcStartAngle, DS.ARGS())
+        .def("setExtArcStartAngle", &PyDbRadialDimension::setExtArcStartAngle, DS.ARGS({ "val : float" }))
+        .def("extArcEndAngle", &PyDbRadialDimension::extArcEndAngle, DS.ARGS())
+        .def("setExtArcEndAngle", &PyDbRadialDimension::setExtArcEndAngle, DS.ARGS({ "val : float" }))
+        .def("className", &PyDbRadialDimension::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbRadialDimension::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbRadialDimension::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbRadialDimension::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2093,6 +2214,11 @@ PyDbRadialDimension::PyDbRadialDimension(const PyDbObjectId& id)
 
 PyDbRadialDimension::PyDbRadialDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbDimension(openAcDbObject<AcDbRadialDimension>(id, mode), false)
+{
+}
+
+PyDbRadialDimension::PyDbRadialDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbDimension(openAcDbObject<AcDbRadialDimension>(id, mode, erased), false)
 {
 }
 
@@ -2190,7 +2316,7 @@ AcDbRadialDimension* PyDbRadialDimension::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbRadialDimension*>(m_pyImp.get());
 }
 
@@ -2198,34 +2324,45 @@ AcDbRadialDimension* PyDbRadialDimension::impObj(const std::source_location& src
 //AcDbRadialDimensionLarge
 void makePyDbRadialDimensionLargeWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- center: PyGe.Point3d, chordPoint: PyGe.Point3d, overrideCenter: PyGe.Point3d, jogPoint: PyGe.Point3d, jogAngle: float\n"
+        "- center: PyGe.Point3d, chordPoint: PyGe.Point3d, overrideCenter: PyGe.Point3d, jogPoint: PyGe.Point3d, jogAngle: float, dimText: str\n"
+        "- center: PyGe.Point3d, chordPoint: PyGe.Point3d, overrideCenter: PyGe.Point3d, jogPoint: PyGe.Point3d, jogAngle: float, dimText: str, id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("PyDb.RadialDimensionLarge");
     class_<PyDbRadialDimensionLarge, bases<PyDbDimension>>("RadialDimensionLarge")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, double>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, double, const std::string&>())
-        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, double, const std::string&, const PyDbObjectId&>())
-        .def("center", &PyDbRadialDimensionLarge::center)
-        .def("setCenter", &PyDbRadialDimensionLarge::setCenter)
-        .def("chordPoint", &PyDbRadialDimensionLarge::chordPoint)
-        .def("setChordPoint", &PyDbRadialDimensionLarge::setChordPoint)
-        .def("overrideCenter", &PyDbRadialDimensionLarge::overrideCenter)
-        .def("setOverrideCenter", &PyDbRadialDimensionLarge::setOverrideCenter)
-        .def("jogPoint", &PyDbRadialDimensionLarge::jogPoint)
-        .def("setJogPoint", &PyDbRadialDimensionLarge::setJogPoint)
-        .def("jogAngle", &PyDbRadialDimensionLarge::jogAngle)
-        .def("setJogAngle", &PyDbRadialDimensionLarge::setJogAngle)
-        .def("setOverrideCenterPP", &PyDbRadialDimensionLarge::setOverrideCenterPP)
-        .def("setJogPointPP", &PyDbRadialDimensionLarge::setJogPointPP)
-        .def("setTextPositionPP", &PyDbRadialDimensionLarge::setTextPositionPP)
-        .def("extArcStartAngle", &PyDbRadialDimensionLarge::extArcStartAngle)
-        .def("setExtArcStartAngle", &PyDbRadialDimensionLarge::setExtArcStartAngle)
-        .def("extArcEndAngle", &PyDbRadialDimensionLarge::extArcEndAngle)
-        .def("setExtArcEndAngle", &PyDbRadialDimensionLarge::setExtArcEndAngle)
-        .def("className", &PyDbRadialDimensionLarge::className).staticmethod("className")
-        .def("desc", &PyDbRadialDimensionLarge::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbRadialDimensionLarge::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbRadialDimensionLarge::cast).staticmethod("cast")
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, double, const std::string&, const PyDbObjectId&>(DS.CTOR(ctords)))
+        .def("center", &PyDbRadialDimensionLarge::center, DS.ARGS())
+        .def("setCenter", &PyDbRadialDimensionLarge::setCenter, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("chordPoint", &PyDbRadialDimensionLarge::chordPoint, DS.ARGS())
+        .def("setChordPoint", &PyDbRadialDimensionLarge::setChordPoint, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("overrideCenter", &PyDbRadialDimensionLarge::overrideCenter, DS.ARGS())
+        .def("setOverrideCenter", &PyDbRadialDimensionLarge::setOverrideCenter, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("jogPoint", &PyDbRadialDimensionLarge::jogPoint, DS.ARGS())
+        .def("setJogPoint", &PyDbRadialDimensionLarge::setJogPoint, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("jogAngle", &PyDbRadialDimensionLarge::jogAngle, DS.ARGS())
+        .def("setJogAngle", &PyDbRadialDimensionLarge::setJogAngle, DS.ARGS({ "val : float" }))
+        .def("setOverrideCenterPP", &PyDbRadialDimensionLarge::setOverrideCenterPP, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("setJogPointPP", &PyDbRadialDimensionLarge::setJogPointPP, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("setTextPositionPP", &PyDbRadialDimensionLarge::setTextPositionPP, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("extArcStartAngle", &PyDbRadialDimensionLarge::extArcStartAngle, DS.ARGS())
+        .def("setExtArcStartAngle", &PyDbRadialDimensionLarge::setExtArcStartAngle, DS.ARGS({ "val : float" }))
+        .def("extArcEndAngle", &PyDbRadialDimensionLarge::extArcEndAngle, DS.ARGS())
+        .def("setExtArcEndAngle", &PyDbRadialDimensionLarge::setExtArcEndAngle, DS.ARGS({ "val : float" }))
+        .def("className", &PyDbRadialDimensionLarge::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbRadialDimensionLarge::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbRadialDimensionLarge::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbRadialDimensionLarge::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2246,6 +2383,11 @@ PyDbRadialDimensionLarge::PyDbRadialDimensionLarge(const PyDbObjectId& id)
 
 PyDbRadialDimensionLarge::PyDbRadialDimensionLarge(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbDimension(openAcDbObject<AcDbRadialDimensionLarge>(id, mode), false)
+{
+}
+
+PyDbRadialDimensionLarge::PyDbRadialDimensionLarge(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbDimension(openAcDbObject<AcDbRadialDimensionLarge>(id, mode, erased), false)
 {
 }
 
@@ -2406,7 +2548,7 @@ AcDbRadialDimensionLarge* PyDbRadialDimensionLarge::impObj(const std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbRadialDimensionLarge*>(m_pyImp.get());
 }
 
@@ -2414,31 +2556,41 @@ AcDbRadialDimensionLarge* PyDbRadialDimensionLarge::impObj(const std::source_loc
 //AcDbRotatedDimension
 void makePyDbRotatedDimensionWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- rotation: float, xl1: PyGe.Point3d, xl2: PyGe.Point3d, dimLinePoint: PyGe.Point3d\n"
+        "- rotation: float, xl1: PyGe.Point3d, xl2: PyGe.Point3d, dimLinePoint: PyGe.Point3d, dimText: str\n"
+        "- rotation: float, xl1: PyGe.Point3d, xl2: PyGe.Point3d, dimLinePoint: PyGe.Point3d, dimText: str, id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("PyDb.RotatedDimension");
     class_<PyDbRotatedDimension, bases<PyDbDimension>>("RotatedDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<double, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<double, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
-        .def(init<double, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId&>())
-        .def("xLine1Point", &PyDbRotatedDimension::xLine1Point)
-        .def("setXLine1Point", &PyDbRotatedDimension::setXLine1Point)
-        .def("xLine2Point", &PyDbRotatedDimension::xLine2Point)
-        .def("setXLine2Point", &PyDbRotatedDimension::setXLine2Point)
-        .def("dimLinePoint", &PyDbRotatedDimension::dimLinePoint)
-        .def("setDimLinePoint", &PyDbRotatedDimension::setDimLinePoint)
-        .def("oblique", &PyDbRotatedDimension::oblique)
-        .def("setOblique", &PyDbRotatedDimension::setOblique)
-        .def("rotation", &PyDbRotatedDimension::rotation)
-        .def("setRotation", &PyDbRotatedDimension::setRotation)
-        .def("jogSymbolOn", &PyDbRotatedDimension::jogSymbolOn)
-        .def("setJogSymbolOn", &PyDbRotatedDimension::setJogSymbolOn)
-        .def("jogSymbolPosition", &PyDbRotatedDimension::jogSymbolPosition)
-        .def("setJogSymbolPosition", &PyDbRotatedDimension::setJogSymbolPosition)
-        .def("className", &PyDbRotatedDimension::className).staticmethod("className")
-        .def("desc", &PyDbRotatedDimension::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbRotatedDimension::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbRotatedDimension::cast).staticmethod("cast")
+        .def(init<double, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId&>(DS.CTOR(ctords)))
+        .def("xLine1Point", &PyDbRotatedDimension::xLine1Point, DS.ARGS())
+        .def("setXLine1Point", &PyDbRotatedDimension::setXLine1Point, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("xLine2Point", &PyDbRotatedDimension::xLine2Point, DS.ARGS())
+        .def("setXLine2Point", &PyDbRotatedDimension::setXLine2Point, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("dimLinePoint", &PyDbRotatedDimension::dimLinePoint, DS.ARGS())
+        .def("setDimLinePoint", &PyDbRotatedDimension::setDimLinePoint, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("oblique", &PyDbRotatedDimension::oblique, DS.ARGS())
+        .def("setOblique", &PyDbRotatedDimension::setOblique, DS.ARGS({ "val : float" }))
+        .def("rotation", &PyDbRotatedDimension::rotation, DS.ARGS())
+        .def("setRotation", &PyDbRotatedDimension::setRotation, DS.ARGS({ "val : float" }))
+        .def("jogSymbolOn", &PyDbRotatedDimension::jogSymbolOn, DS.ARGS())
+        .def("setJogSymbolOn", &PyDbRotatedDimension::setJogSymbolOn, DS.ARGS({ "val : bool" }))
+        .def("jogSymbolPosition", &PyDbRotatedDimension::jogSymbolPosition, DS.ARGS())
+        .def("setJogSymbolPosition", &PyDbRotatedDimension::setJogSymbolPosition, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("className", &PyDbRotatedDimension::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbRotatedDimension::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbRotatedDimension::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbRotatedDimension::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2459,6 +2611,11 @@ PyDbRotatedDimension::PyDbRotatedDimension(const PyDbObjectId& id)
 
 PyDbRotatedDimension::PyDbRotatedDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbDimension(openAcDbObject<AcDbRotatedDimension>(id, mode), false)
+{
+}
+
+PyDbRotatedDimension::PyDbRotatedDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbDimension(openAcDbObject<AcDbRotatedDimension>(id, mode, erased), false)
 {
 }
 
@@ -2592,6 +2749,6 @@ AcDbRotatedDimension* PyDbRotatedDimension::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbRotatedDimension*>(m_pyImp.get());
 }

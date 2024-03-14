@@ -14,6 +14,7 @@ public:
     PyDbDimension(AcDbDimension* ptr, bool autoDelete);
     PyDbDimension(const PyDbObjectId& id);
     PyDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     virtual ~PyDbDimension() override = default;
     boost::python::tuple textDefinedSize() const;
     void                setTextDefinedSize(double width, double height);
@@ -151,6 +152,7 @@ public:
     PyDb2LineAngularDimension(AcDb2LineAngularDimension* ptr, bool autoDelete);
     PyDb2LineAngularDimension(const PyDbObjectId& id);
     PyDb2LineAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDb2LineAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start,
         const AcGePoint3d& xLine1End,
         const AcGePoint3d& xLine2Start,
@@ -212,6 +214,7 @@ public:
         const std::string& dimText,
         const PyDbObjectId& dimStyle);
     PyDb3PointAngularDimension(AcDb3PointAngularDimension* ptr, bool autoDelete);
+    PyDb3PointAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode,bool);
     PyDb3PointAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDb3PointAngularDimension(const PyDbObjectId& id);
     AcGePoint3d         arcPoint() const;
@@ -252,6 +255,7 @@ public:
         const std::string& dimText,
         const PyDbObjectId& dimStyle);
     PyDbAlignedDimension(AcDbAlignedDimension* ptr, bool autoDelete);
+    PyDbAlignedDimension(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     PyDbAlignedDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbAlignedDimension(const PyDbObjectId& id);
     AcGePoint3d         xLine1Point() const;
@@ -297,6 +301,7 @@ public:
         const std::string& dimText,
         const PyDbObjectId& styleId);
     PyDbArcDimension(AcDbArcDimension* ptr, bool autoDelete);
+    PyDbArcDimension(const PyDbObjectId& id, AcDb::OpenMode mode,bool);
     PyDbArcDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbArcDimension(const PyDbObjectId& id);
     AcGePoint3d         arcPoint() const;
@@ -337,6 +342,7 @@ class PyDbDiametricDimension : public PyDbDimension
 public:
     PyDbDiametricDimension();
     PyDbDiametricDimension(AcDbDiametricDimension* ptr, bool autoDelete);
+    PyDbDiametricDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbDiametricDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbDiametricDimension(const PyDbObjectId& id);
     PyDbDiametricDimension(const AcGePoint3d& chordPoint,
@@ -379,6 +385,7 @@ public:
     PyDbOrdinateDimension(AcDbOrdinateDimension* ptr, bool autoDelete);
     PyDbOrdinateDimension(const PyDbObjectId& id);
     PyDbOrdinateDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbOrdinateDimension(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     PyDbOrdinateDimension(
         Adesk::Boolean useXAxis,
         const AcGePoint3d& definingPoint,
@@ -424,6 +431,7 @@ public:
     PyDbRadialDimension(AcDbRadialDimension* ptr, bool autoDelete);
     PyDbRadialDimension(const PyDbObjectId& id);
     PyDbRadialDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbRadialDimension(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     PyDbRadialDimension(
         const AcGePoint3d& center,
         const AcGePoint3d& chordPoint,
@@ -467,6 +475,7 @@ public:
     PyDbRadialDimensionLarge(AcDbRadialDimensionLarge* ptr, bool autoDelete);
     PyDbRadialDimensionLarge(const PyDbObjectId& id);
     PyDbRadialDimensionLarge(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbRadialDimensionLarge(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     PyDbRadialDimensionLarge(const AcGePoint3d& center,
         const AcGePoint3d& chordPoint,
         const AcGePoint3d& overrideCenter,
@@ -520,6 +529,7 @@ public:
     PyDbRotatedDimension(AcDbRotatedDimension* ptr, bool autoDelete);
     PyDbRotatedDimension(const PyDbObjectId& id);
     PyDbRotatedDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbRotatedDimension(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     PyDbRotatedDimension(
         double rotation,
         const AcGePoint3d& xLine1Point,

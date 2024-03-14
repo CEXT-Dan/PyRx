@@ -908,41 +908,31 @@ class AdsName:
     ...
 
 class AlignedDimension:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, dimLinePoint: PyGe.Point3d)-> None : ...
+    @overload
+    def __init__ (self, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, dimLinePoint: PyGe.Point3d, dimText: str)-> None : ...
+    @overload
+    def __init__ (self, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, dimLinePoint: PyGe.Point3d, dimText: str, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (ObjectId)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+      '''Overloads:
+    - None: Any
+    - xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, dimLinePoint: PyGe.Point3d
+    - xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, dimLinePoint: PyGe.Point3d, dimText: str
+    - xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, dimLinePoint: PyGe.Point3d, dimText: str, id: PyDb.ObjectId
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -1010,11 +1000,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.AlignedDimension :
-      '''cast( (RxObject)arg1) -> AlignedDimension :
 
-    C++ signature :
-        class PyDbAlignedDimension cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.AlignedDimension :
+      '''                             '''
     ...
     def castShadows (self)-> bool :
       '''                             '''
@@ -1022,17 +1011,15 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def centerMarkSize (self)-> float :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.AlignedDimension :
-      '''cloneFrom( (RxObject)arg1) -> AlignedDimension :
 
-    C++ signature :
-        class PyDbAlignedDimension cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.AlignedDimension :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -1061,11 +1048,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def dimBlockId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -1082,11 +1068,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def dimLineLinetype (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimLinePoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''dimLinePoint( (AlignedDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d dimLinePoint(class PyDbAlignedDimension {lvalue})'''
+    def dimLinePoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def dimensionStyle (self)-> PyDb.ObjectId :
       '''                             '''
@@ -1133,16 +1116,16 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def fieldToMText (self, ref : PyDb.MText)-> None :
       '''                             '''
     ...
+
+    @overload
+    def formatMeasurement (self, measurement: float)-> str : ...
+    @overload
+    def formatMeasurement (self, measurement: float, dimensionText: str)-> str : ...
     def formatMeasurement (self, *args, **kwargs)-> str :
-      '''formatMeasurement( (Dimension)arg1, (float)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double)
-
-formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - measurement: float
+    - measurement: float, dimensionText: str
+    '''
     ...
     def generateLayout (self)-> None :
       '''                             '''
@@ -1340,17 +1323,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isWriteEnabled (self)-> bool :
       '''                             '''
     ...
-    def jogSymbolOn (self, *args, **kwargs)-> bool :
-      '''jogSymbolOn( (AlignedDimension)arg1) -> bool :
-
-    C++ signature :
-        bool jogSymbolOn(class PyDbAlignedDimension {lvalue})'''
+    def jogSymbolOn (self)-> bool :
+      '''                             '''
     ...
-    def jogSymbolPosition (self, *args, **kwargs)-> PyGe.Point3d :
-      '''jogSymbolPosition( (AlignedDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d jogSymbolPosition(class PyDbAlignedDimension {lvalue})'''
+    def jogSymbolPosition (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
@@ -1391,11 +1368,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def objectId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def oblique (self, *args, **kwargs)-> float :
-      '''oblique( (AlignedDimension)arg1) -> float :
-
-    C++ signature :
-        double oblique(class PyDbAlignedDimension {lvalue})'''
+    def oblique (self)-> float :
+      '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -1517,11 +1491,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDimLineLinetype (self, val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimLinePoint (self, *args, **kwargs)-> None :
-      '''setDimLinePoint( (AlignedDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setDimLinePoint(class PyDbAlignedDimension {lvalue},class AcGePoint3d)'''
+    def setDimLinePoint (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setDimensionStyle (self, val : PyDb.ObjectId)-> None :
       '''                             '''
@@ -1529,16 +1500,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDimensionText (self, val : str)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setDimstyleData (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def setDimstyleData (self, rec: PyDb.DimStyleTableRecord)-> None : ...
     def setDimstyleData (self, *args, **kwargs)-> None :
-      '''setDimstyleData( (Dimension)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbObjectId)
-
-setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
+      '''Overloads:
+    - id: PyDb.ObjectId
+    - rec: PyDb.DimStyleTableRecord
+    '''
     ...
     def setDynamicDimension (self, val : bool)-> None :
       '''                             '''
@@ -1572,17 +1543,11 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setInspectionLabel (self, val : str)-> None :
       '''                             '''
     ...
-    def setJogSymbolOn (self, *args, **kwargs)-> None :
-      '''setJogSymbolOn( (AlignedDimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setJogSymbolOn(class PyDbAlignedDimension {lvalue},bool)'''
+    def setJogSymbolOn (self, val : bool)-> None :
+      '''                             '''
     ...
-    def setJogSymbolPosition (self, *args, **kwargs)-> None :
-      '''setJogSymbolPosition( (AlignedDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setJogSymbolPosition(class PyDbAlignedDimension {lvalue},class AcGePoint3d)'''
+    def setJogSymbolPosition (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -1602,11 +1567,8 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setNormal (self, val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setOblique (self, *args, **kwargs)-> None :
-      '''setOblique( (AlignedDimension)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setOblique(class PyDbAlignedDimension {lvalue},double)'''
+    def setOblique (self, val : float)-> None :
+      '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -1696,17 +1658,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self, xdata: list)-> None :
       '''                             '''
     ...
-    def setXLine1Point (self, *args, **kwargs)-> None :
-      '''setXLine1Point( (AlignedDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setXLine1Point(class PyDbAlignedDimension {lvalue},class AcGePoint3d)'''
+    def setXLine1Point (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setXLine2Point (self, *args, **kwargs)-> None :
-      '''setXLine2Point( (AlignedDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setXLine2Point(class PyDbAlignedDimension {lvalue},class AcGePoint3d)'''
+    def setXLine2Point (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def shouldParticipateInOPM (self)-> bool :
       '''                             '''
@@ -1804,17 +1760,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def xLine1Point (self, *args, **kwargs)-> PyGe.Point3d :
-      '''xLine1Point( (AlignedDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d xLine1Point(class PyDbAlignedDimension {lvalue})'''
+    def xLine1Point (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def xLine2Point (self, *args, **kwargs)-> PyGe.Point3d :
-      '''xLine2Point( (AlignedDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d xLine2Point(class PyDbAlignedDimension {lvalue})'''
+    def xLine2Point (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def xmitPropagateModify (self)-> None :
       '''                             '''
@@ -2569,41 +2519,31 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class ArcDimension:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d)-> None : ...
+    @overload
+    def __init__ (self, centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str)-> None : ...
+    @overload
+    def __init__ (self, centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (str)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (str)arg6, (ObjectId)arg7) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+      '''Overloads:
+    - None: Any
+    - centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d
+    - centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str
+    - centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -2650,29 +2590,17 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def alternateSuffix (self)-> str :
       '''                             '''
     ...
-    def arcEndParam (self, *args, **kwargs)-> float :
-      '''arcEndParam( (ArcDimension)arg1) -> float :
-
-    C++ signature :
-        double arcEndParam(class PyDbArcDimension {lvalue})'''
+    def arcEndParam (self)-> float :
+      '''                             '''
     ...
-    def arcPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''arcPoint( (ArcDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d arcPoint(class PyDbArcDimension {lvalue})'''
+    def arcPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def arcStartParam (self, *args, **kwargs)-> float :
-      '''arcStartParam( (ArcDimension)arg1) -> float :
-
-    C++ signature :
-        double arcStartParam(class PyDbArcDimension {lvalue})'''
+    def arcStartParam (self)-> float :
+      '''                             '''
     ...
-    def arcSymbolType (self, *args, **kwargs)-> int :
-      '''arcSymbolType( (ArcDimension)arg1) -> int :
-
-    C++ signature :
-        int arcSymbolType(class PyDbArcDimension {lvalue})'''
+    def arcSymbolType (self)-> int :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -2695,11 +2623,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.ArcDimension :
-      '''cast( (RxObject)arg1) -> ArcDimension :
 
-    C++ signature :
-        class PyDbArcDimension cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.ArcDimension :
+      '''                             '''
     ...
     def castShadows (self)-> bool :
       '''                             '''
@@ -2707,23 +2634,18 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def centerMarkSize (self)-> float :
       '''                             '''
     ...
-    def centerPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''centerPoint( (ArcDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d centerPoint(class PyDbArcDimension {lvalue})'''
+    def centerPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.ArcDimension :
-      '''cloneFrom( (RxObject)arg1) -> ArcDimension :
 
-    C++ signature :
-        class PyDbArcDimension cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.ArcDimension :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -2752,11 +2674,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def dimBlockId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -2818,16 +2739,16 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def fieldToMText (self, ref : PyDb.MText)-> None :
       '''                             '''
     ...
+
+    @overload
+    def formatMeasurement (self, measurement: float)-> str : ...
+    @overload
+    def formatMeasurement (self, measurement: float, dimensionText: str)-> str : ...
     def formatMeasurement (self, *args, **kwargs)-> str :
-      '''formatMeasurement( (Dimension)arg1, (float)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double)
-
-formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - measurement: float
+    - measurement: float, dimensionText: str
+    '''
     ...
     def generateLayout (self)-> None :
       '''                             '''
@@ -2897,11 +2818,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasFields (self)-> bool :
       '''                             '''
     ...
-    def hasLeader (self, *args, **kwargs)-> bool :
-      '''hasLeader( (ArcDimension)arg1) -> bool :
-
-    C++ signature :
-        bool hasLeader(class PyDbArcDimension {lvalue})'''
+    def hasLeader (self)-> bool :
+      '''                             '''
     ...
     def hasPersistentReactor (self, id: PyDb.ObjectId)-> bool :
       '''                             '''
@@ -3004,11 +2922,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def isPartial (self, *args, **kwargs)-> bool :
-      '''isPartial( (ArcDimension)arg1) -> bool :
-
-    C++ signature :
-        bool isPartial(class PyDbArcDimension {lvalue})'''
+    def isPartial (self)-> bool :
+      '''                             '''
     ...
     def isPersistent (self)-> bool :
       '''                             '''
@@ -3046,17 +2961,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def layerId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def leader1Point (self, *args, **kwargs)-> PyGe.Point3d :
-      '''leader1Point( (ArcDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d leader1Point(class PyDbArcDimension {lvalue})'''
+    def leader1Point (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def leader2Point (self, *args, **kwargs)-> PyGe.Point3d :
-      '''leader2Point( (ArcDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d leader2Point(class PyDbArcDimension {lvalue})'''
+    def leader2Point (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def lineWeight (self)-> PyDb.LineWeight :
       '''                             '''
@@ -3169,29 +3078,17 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAnnotative (self, state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
-    def setArcEndParam (self, *args, **kwargs)-> None :
-      '''setArcEndParam( (ArcDimension)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setArcEndParam(class PyDbArcDimension {lvalue},double)'''
+    def setArcEndParam (self, val : float)-> None :
+      '''                             '''
     ...
-    def setArcPoint (self, *args, **kwargs)-> None :
-      '''setArcPoint( (ArcDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setArcPoint(class PyDbArcDimension {lvalue},class AcGePoint3d)'''
+    def setArcPoint (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setArcStartParam (self, *args, **kwargs)-> None :
-      '''setArcStartParam( (ArcDimension)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setArcStartParam(class PyDbArcDimension {lvalue},double)'''
+    def setArcStartParam (self, val : float)-> None :
+      '''                             '''
     ...
-    def setArcSymbolType (self, *args, **kwargs)-> None :
-      '''setArcSymbolType( (ArcDimension)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setArcSymbolType(class PyDbArcDimension {lvalue},int)'''
+    def setArcSymbolType (self, val : int)-> None :
+      '''                             '''
     ...
     def setArrowFirstIsFlipped (self, val : bool)-> None :
       '''                             '''
@@ -3205,11 +3102,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setCenterPoint (self, *args, **kwargs)-> None :
-      '''setCenterPoint( (ArcDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setCenterPoint(class PyDbArcDimension {lvalue},class AcGePoint3d)'''
+    def setCenterPoint (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
       '''                             '''
@@ -3244,16 +3138,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDimensionText (self, val : str)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setDimstyleData (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def setDimstyleData (self, rec: PyDb.DimStyleTableRecord)-> None : ...
     def setDimstyleData (self, *args, **kwargs)-> None :
-      '''setDimstyleData( (Dimension)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbObjectId)
-
-setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
+      '''Overloads:
+    - id: PyDb.ObjectId
+    - rec: PyDb.DimStyleTableRecord
+    '''
     ...
     def setDynamicDimension (self, val : bool)-> None :
       '''                             '''
@@ -3272,11 +3166,8 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setHasLeader (self, *args, **kwargs)-> None :
-      '''setHasLeader( (ArcDimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setHasLeader(class PyDbArcDimension {lvalue},bool)'''
+    def setHasLeader (self, val : bool)-> None :
+      '''                             '''
     ...
     def setHorizontalRefTextRotation (self, val : bool)-> None :
       '''                             '''
@@ -3293,26 +3184,17 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setInspectionLabel (self, val : str)-> None :
       '''                             '''
     ...
-    def setIsPartial (self, *args, **kwargs)-> None :
-      '''setIsPartial( (ArcDimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsPartial(class PyDbArcDimension {lvalue},bool)'''
+    def setIsPartial (self, val : bool)-> None :
+      '''                             '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLeader1Point (self, *args, **kwargs)-> None :
-      '''setLeader1Point( (ArcDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setLeader1Point(class PyDbArcDimension {lvalue},class AcGePoint3d)'''
+    def setLeader1Point (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setLeader2Point (self, *args, **kwargs)-> None :
-      '''setLeader2Point( (ArcDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setLeader2Point(class PyDbArcDimension {lvalue},class AcGePoint3d)'''
+    def setLeader2Point (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
       '''                             '''
@@ -3417,17 +3299,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self, xdata: list)-> None :
       '''                             '''
     ...
-    def setXLine1Point (self, *args, **kwargs)-> None :
-      '''setXLine1Point( (ArcDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setXLine1Point(class PyDbArcDimension {lvalue},class AcGePoint3d)'''
+    def setXLine1Point (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setXLine2Point (self, *args, **kwargs)-> None :
-      '''setXLine2Point( (ArcDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setXLine2Point(class PyDbArcDimension {lvalue},class AcGePoint3d)'''
+    def setXLine2Point (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def shouldParticipateInOPM (self)-> bool :
       '''                             '''
@@ -3525,17 +3401,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def xLine1Point (self, *args, **kwargs)-> PyGe.Point3d :
-      '''xLine1Point( (ArcDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d xLine1Point(class PyDbArcDimension {lvalue})'''
+    def xLine1Point (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def xLine2Point (self, *args, **kwargs)-> PyGe.Point3d :
-      '''xLine2Point( (ArcDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d xLine2Point(class PyDbArcDimension {lvalue})'''
+    def xLine2Point (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def xmitPropagateModify (self)-> None :
       '''                             '''
@@ -12060,41 +11930,31 @@ class DeepCloneType:
     ...
 
 class DiametricDimension:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float)-> None : ...
+    @overload
+    def __init__ (self, chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str)-> None : ...
+    @overload
+    def __init__ (self, chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,double)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (ObjectId)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+      '''Overloads:
+    - None: Any
+    - chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float
+    - chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str
+    - chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str, id: PyDb.ObjectId
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -12162,11 +12022,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.DiametricDimension :
-      '''cast( (RxObject)arg1) -> DiametricDimension :
 
-    C++ signature :
-        class PyDbDiametricDimension cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.DiametricDimension :
+      '''                             '''
     ...
     def castShadows (self)-> bool :
       '''                             '''
@@ -12174,23 +12033,18 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def centerMarkSize (self)-> float :
       '''                             '''
     ...
-    def chordPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''chordPoint( (DiametricDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d chordPoint(class PyDbDiametricDimension {lvalue})'''
+    def chordPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.DiametricDimension :
-      '''cloneFrom( (RxObject)arg1) -> DiametricDimension :
 
-    C++ signature :
-        class PyDbDiametricDimension cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.DiametricDimension :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -12219,11 +12073,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def dimBlockId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -12276,26 +12129,17 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def explode (self)-> list :
       '''                             '''
     ...
-    def extArcEndAngle (self, *args, **kwargs)-> float :
-      '''extArcEndAngle( (DiametricDimension)arg1) -> float :
-
-    C++ signature :
-        double extArcEndAngle(class PyDbDiametricDimension {lvalue})'''
+    def extArcEndAngle (self)-> float :
+      '''                             '''
     ...
-    def extArcStartAngle (self, *args, **kwargs)-> float :
-      '''extArcStartAngle( (DiametricDimension)arg1) -> float :
-
-    C++ signature :
-        double extArcStartAngle(class PyDbDiametricDimension {lvalue})'''
+    def extArcStartAngle (self)-> float :
+      '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def farChordPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''farChordPoint( (DiametricDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d farChordPoint(class PyDbDiametricDimension {lvalue})'''
+    def farChordPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def fieldFromMText (self, ref : PyDb.MText)-> None :
       '''                             '''
@@ -12303,16 +12147,16 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def fieldToMText (self, ref : PyDb.MText)-> None :
       '''                             '''
     ...
+
+    @overload
+    def formatMeasurement (self, measurement: float)-> str : ...
+    @overload
+    def formatMeasurement (self, measurement: float, dimensionText: str)-> str : ...
     def formatMeasurement (self, *args, **kwargs)-> str :
-      '''formatMeasurement( (Dimension)arg1, (float)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double)
-
-formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - measurement: float
+    - measurement: float, dimensionText: str
+    '''
     ...
     def generateLayout (self)-> None :
       '''                             '''
@@ -12519,11 +12363,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def layerId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def leaderLength (self, *args, **kwargs)-> float :
-      '''leaderLength( (DiametricDimension)arg1) -> float :
-
-    C++ signature :
-        double leaderLength(class PyDbDiametricDimension {lvalue})'''
+    def leaderLength (self)-> float :
+      '''                             '''
     ...
     def lineWeight (self)-> PyDb.LineWeight :
       '''                             '''
@@ -12648,11 +12489,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setChordPoint (self, *args, **kwargs)-> None :
-      '''setChordPoint( (DiametricDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setChordPoint(class PyDbDiametricDimension {lvalue},class AcGePoint3d)'''
+    def setChordPoint (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
       '''                             '''
@@ -12687,16 +12525,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDimensionText (self, val : str)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setDimstyleData (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def setDimstyleData (self, rec: PyDb.DimStyleTableRecord)-> None : ...
     def setDimstyleData (self, *args, **kwargs)-> None :
-      '''setDimstyleData( (Dimension)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbObjectId)
-
-setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
+      '''Overloads:
+    - id: PyDb.ObjectId
+    - rec: PyDb.DimStyleTableRecord
+    '''
     ...
     def setDynamicDimension (self, val : bool)-> None :
       '''                             '''
@@ -12704,23 +12542,14 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setElevation (self, val : float)-> None :
       '''                             '''
     ...
-    def setExtArcEndAngle (self, *args, **kwargs)-> None :
-      '''setExtArcEndAngle( (DiametricDimension)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setExtArcEndAngle(class PyDbDiametricDimension {lvalue},double)'''
+    def setExtArcEndAngle (self, val : float)-> None :
+      '''                             '''
     ...
-    def setExtArcStartAngle (self, *args, **kwargs)-> None :
-      '''setExtArcStartAngle( (DiametricDimension)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setExtArcStartAngle(class PyDbDiametricDimension {lvalue},double)'''
+    def setExtArcStartAngle (self, val : float)-> None :
+      '''                             '''
     ...
-    def setFarChordPoint (self, *args, **kwargs)-> None :
-      '''setFarChordPoint( (DiametricDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setFarChordPoint(class PyDbDiametricDimension {lvalue},class AcGePoint3d)'''
+    def setFarChordPoint (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
 
     @overload
@@ -12751,11 +12580,8 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLeaderLength (self, *args, **kwargs)-> None :
-      '''setLeaderLength( (DiametricDimension)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLeaderLength(class PyDbDiametricDimension {lvalue},double)'''
+    def setLeaderLength (self, val : float)-> None :
+      '''                             '''
     ...
     def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
       '''                             '''
@@ -15166,16 +14992,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
 
 class Dimension:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: PyDb.ObjectId, mode:  PyDb.OpenMode=kForRead, erased: bool=False)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -15356,16 +15174,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def fieldToMText (self, ref : PyDb.MText)-> None :
       '''                             '''
     ...
+
+    @overload
+    def formatMeasurement (self, measurement: float)-> str : ...
+    @overload
+    def formatMeasurement (self, measurement: float, dimensionText: str)-> str : ...
     def formatMeasurement (self, *args, **kwargs)-> str :
-      '''formatMeasurement( (Dimension)arg1, (float)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double)
-
-formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - measurement: float
+    - measurement: float, dimensionText: str
+    '''
     ...
     def generateLayout (self)-> None :
       '''                             '''
@@ -15728,16 +15546,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDimensionText (self, val : str)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setDimstyleData (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def setDimstyleData (self, rec: PyDb.DimStyleTableRecord)-> None : ...
     def setDimstyleData (self, *args, **kwargs)-> None :
-      '''setDimstyleData( (Dimension)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbObjectId)
-
-setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
+      '''Overloads:
+    - id: PyDb.ObjectId
+    - rec: PyDb.DimStyleTableRecord
+    '''
     ...
     def setDynamicDimension (self, val : bool)-> None :
       '''                             '''
@@ -32103,41 +31921,31 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class LineAngularDimension2:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, xL2Start: PyGe.Point3d, xL2End: PyGe.Point3d, arcPnt: PyGe.Point3d)-> None : ...
+    @overload
+    def __init__ (self, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, xL2Start: PyGe.Point3d, xL2End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str)-> None : ...
+    @overload
+    def __init__ (self, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, xL2Start: PyGe.Point3d, xL2End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (Point3d)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (Point3d)arg6, (str)arg7) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (Point3d)arg6, (str)arg7, (ObjectId)arg8) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+      '''Overloads:
+    - None: Any
+    - xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, xL2Start: PyGe.Point3d, xL2End: PyGe.Point3d, arcPnt: PyGe.Point3d
+    - xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, xL2Start: PyGe.Point3d, xL2End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str
+    - xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, xL2Start: PyGe.Point3d, xL2End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -32184,11 +31992,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def alternateSuffix (self)-> str :
       '''                             '''
     ...
-    def arcPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''arcPoint( (LineAngularDimension2)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d arcPoint(class PyDb2LineAngularDimension {lvalue})'''
+    def arcPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -32211,11 +32016,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.LineAngularDimension2 :
-      '''cast( (RxObject)arg1) -> LineAngularDimension2 :
 
-    C++ signature :
-        class PyDb2LineAngularDimension cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.LineAngularDimension2 :
+      '''                             '''
     ...
     def castShadows (self)-> bool :
       '''                             '''
@@ -32223,17 +32027,15 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def centerMarkSize (self)-> float :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.LineAngularDimension2 :
-      '''cloneFrom( (RxObject)arg1) -> LineAngularDimension2 :
 
-    C++ signature :
-        class PyDb2LineAngularDimension cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.LineAngularDimension2 :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -32262,11 +32064,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def dimBlockId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -32319,11 +32120,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def explode (self)-> list :
       '''                             '''
     ...
-    def extArcOn (self, *args, **kwargs)-> bool :
-      '''extArcOn( (LineAngularDimension2)arg1) -> bool :
-
-    C++ signature :
-        bool extArcOn(class PyDb2LineAngularDimension {lvalue})'''
+    def extArcOn (self)-> bool :
+      '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
@@ -32334,16 +32132,16 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def fieldToMText (self, ref : PyDb.MText)-> None :
       '''                             '''
     ...
+
+    @overload
+    def formatMeasurement (self, measurement: float)-> str : ...
+    @overload
+    def formatMeasurement (self, measurement: float, dimensionText: str)-> str : ...
     def formatMeasurement (self, *args, **kwargs)-> str :
-      '''formatMeasurement( (Dimension)arg1, (float)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double)
-
-formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - measurement: float
+    - measurement: float, dimensionText: str
+    '''
     ...
     def generateLayout (self)-> None :
       '''                             '''
@@ -32661,11 +32459,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAnnotative (self, state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
-    def setArcPoint (self, *args, **kwargs)-> None :
-      '''setArcPoint( (LineAngularDimension2)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setArcPoint(class PyDb2LineAngularDimension {lvalue},class AcGePoint3d)'''
+    def setArcPoint (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setArrowFirstIsFlipped (self, val : bool)-> None :
       '''                             '''
@@ -32712,16 +32507,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDimensionText (self, val : str)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setDimstyleData (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def setDimstyleData (self, rec: PyDb.DimStyleTableRecord)-> None : ...
     def setDimstyleData (self, *args, **kwargs)-> None :
-      '''setDimstyleData( (Dimension)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbObjectId)
-
-setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
+      '''Overloads:
+    - id: PyDb.ObjectId
+    - rec: PyDb.DimStyleTableRecord
+    '''
     ...
     def setDynamicDimension (self, val : bool)-> None :
       '''                             '''
@@ -32729,11 +32524,8 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setElevation (self, val : float)-> None :
       '''                             '''
     ...
-    def setExtArcOn (self, *args, **kwargs)-> None :
-      '''setExtArcOn( (LineAngularDimension2)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setExtArcOn(class PyDb2LineAngularDimension {lvalue},bool)'''
+    def setExtArcOn (self, val : bool)-> None :
+      '''                             '''
     ...
 
     @overload
@@ -32867,29 +32659,17 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self, xdata: list)-> None :
       '''                             '''
     ...
-    def setXLine1End (self, *args, **kwargs)-> None :
-      '''setXLine1End( (LineAngularDimension2)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setXLine1End(class PyDb2LineAngularDimension {lvalue},class AcGePoint3d)'''
+    def setXLine1End (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setXLine1Start (self, *args, **kwargs)-> None :
-      '''setXLine1Start( (LineAngularDimension2)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setXLine1Start(class PyDb2LineAngularDimension {lvalue},class AcGePoint3d)'''
+    def setXLine1Start (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setXLine2End (self, *args, **kwargs)-> None :
-      '''setXLine2End( (LineAngularDimension2)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setXLine2End(class PyDb2LineAngularDimension {lvalue},class AcGePoint3d)'''
+    def setXLine2End (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setXLine2Start (self, *args, **kwargs)-> None :
-      '''setXLine2Start( (LineAngularDimension2)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setXLine2Start(class PyDb2LineAngularDimension {lvalue},class AcGePoint3d)'''
+    def setXLine2Start (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def shouldParticipateInOPM (self)-> bool :
       '''                             '''
@@ -32987,29 +32767,17 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def xLine1End (self, *args, **kwargs)-> PyGe.Point3d :
-      '''xLine1End( (LineAngularDimension2)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d xLine1End(class PyDb2LineAngularDimension {lvalue})'''
+    def xLine1End (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def xLine1Start (self, *args, **kwargs)-> PyGe.Point3d :
-      '''xLine1Start( (LineAngularDimension2)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d xLine1Start(class PyDb2LineAngularDimension {lvalue})'''
+    def xLine1Start (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def xLine2End (self, *args, **kwargs)-> PyGe.Point3d :
-      '''xLine2End( (LineAngularDimension2)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d xLine2End(class PyDb2LineAngularDimension {lvalue})'''
+    def xLine2End (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def xLine2Start (self, *args, **kwargs)-> PyGe.Point3d :
-      '''xLine2Start( (LineAngularDimension2)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d xLine2Start(class PyDb2LineAngularDimension {lvalue})'''
+    def xLine2Start (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def xmitPropagateModify (self)-> None :
       '''                             '''
@@ -40903,41 +40671,31 @@ class OpenMode:
     ...
 
 class OrdinateDimension:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, useXAxis: bool, definingPoint: PyGe.Point3d, leaderEndPoint: PyGe.Point3d)-> None : ...
+    @overload
+    def __init__ (self, useXAxis: bool, definingPoint: PyGe.Point3d, leaderEndPoint: PyGe.Point3d, dimText: str)-> None : ...
+    @overload
+    def __init__ (self, useXAxis: bool, definingPoint: PyGe.Point3d, leaderEndPoint: PyGe.Point3d, dimText: str, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,bool,class AcGePoint3d,class AcGePoint3d)
-
-__init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,bool,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-__init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (ObjectId)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,bool,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+      '''Overloads:
+    - None: Any
+    - useXAxis: bool, definingPoint: PyGe.Point3d, leaderEndPoint: PyGe.Point3d
+    - useXAxis: bool, definingPoint: PyGe.Point3d, leaderEndPoint: PyGe.Point3d, dimText: str
+    - useXAxis: bool, definingPoint: PyGe.Point3d, leaderEndPoint: PyGe.Point3d, dimText: str, id: PyDb.ObjectId
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -41005,11 +40763,10 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.OrdinateDimension :
-      '''cast( (RxObject)arg1) -> OrdinateDimension :
 
-    C++ signature :
-        class PyDbOrdinateDimension cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.OrdinateDimension :
+      '''                             '''
     ...
     def castShadows (self)-> bool :
       '''                             '''
@@ -41017,17 +40774,15 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def centerMarkSize (self)-> float :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.OrdinateDimension :
-      '''cloneFrom( (RxObject)arg1) -> OrdinateDimension :
 
-    C++ signature :
-        class PyDbOrdinateDimension cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.OrdinateDimension :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -41056,17 +40811,13 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def definingPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''definingPoint( (OrdinateDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d definingPoint(class PyDbOrdinateDimension {lvalue})'''
+    def definingPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def dimBlockId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -41128,16 +40879,16 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def fieldToMText (self, ref : PyDb.MText)-> None :
       '''                             '''
     ...
+
+    @overload
+    def formatMeasurement (self, measurement: float)-> str : ...
+    @overload
+    def formatMeasurement (self, measurement: float, dimensionText: str)-> str : ...
     def formatMeasurement (self, *args, **kwargs)-> str :
-      '''formatMeasurement( (Dimension)arg1, (float)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double)
-
-formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - measurement: float
+    - measurement: float, dimensionText: str
+    '''
     ...
     def generateLayout (self)-> None :
       '''                             '''
@@ -41332,17 +41083,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isUsingDefaultTextPosition (self)-> bool :
       '''                             '''
     ...
-    def isUsingXAxis (self, *args, **kwargs)-> bool :
-      '''isUsingXAxis( (OrdinateDimension)arg1) -> bool :
-
-    C++ signature :
-        bool isUsingXAxis(class PyDbOrdinateDimension {lvalue})'''
+    def isUsingXAxis (self)-> bool :
+      '''                             '''
     ...
-    def isUsingYAxis (self, *args, **kwargs)-> bool :
-      '''isUsingYAxis( (OrdinateDimension)arg1) -> bool :
-
-    C++ signature :
-        bool isUsingYAxis(class PyDbOrdinateDimension {lvalue})'''
+    def isUsingYAxis (self)-> bool :
+      '''                             '''
     ...
     def isWriteEnabled (self)-> bool :
       '''                             '''
@@ -41356,11 +41101,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def layerId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def leaderEndPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''leaderEndPoint( (OrdinateDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d leaderEndPoint(class PyDbOrdinateDimension {lvalue})'''
+    def leaderEndPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def lineWeight (self)-> PyDb.LineWeight :
       '''                             '''
@@ -41392,11 +41134,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def objectId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def origin (self, *args, **kwargs)-> PyGe.Point3d :
-      '''origin( (OrdinateDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d origin(class PyDbOrdinateDimension {lvalue})'''
+    def origin (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -41503,11 +41242,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setDefiningPoint (self, *args, **kwargs)-> None :
-      '''setDefiningPoint( (OrdinateDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setDefiningPoint(class PyDbOrdinateDimension {lvalue},class AcGePoint3d)'''
+    def setDefiningPoint (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setDimBlockId (self, val : PyDb.ObjectId)-> None :
       '''                             '''
@@ -41530,16 +41266,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDimensionText (self, val : str)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setDimstyleData (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def setDimstyleData (self, rec: PyDb.DimStyleTableRecord)-> None : ...
     def setDimstyleData (self, *args, **kwargs)-> None :
-      '''setDimstyleData( (Dimension)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbObjectId)
-
-setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
+      '''Overloads:
+    - id: PyDb.ObjectId
+    - rec: PyDb.DimStyleTableRecord
+    '''
     ...
     def setDynamicDimension (self, val : bool)-> None :
       '''                             '''
@@ -41576,11 +41312,8 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLeaderEndPoint (self, *args, **kwargs)-> None :
-      '''setLeaderEndPoint( (OrdinateDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setLeaderEndPoint(class PyDbOrdinateDimension {lvalue},class AcGePoint3d)'''
+    def setLeaderEndPoint (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
       '''                             '''
@@ -41597,11 +41330,8 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setNormal (self, val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setOrigin (self, *args, **kwargs)-> None :
-      '''setOrigin( (OrdinateDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setOrigin(class PyDbOrdinateDimension {lvalue},class AcGePoint3d)'''
+    def setOrigin (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -41685,17 +41415,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setUsingDefaultTextPosition (self, val : bool)-> None :
       '''                             '''
     ...
-    def setUsingXAxis (self, *args, **kwargs)-> None :
-      '''setUsingXAxis( (OrdinateDimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setUsingXAxis(class PyDbOrdinateDimension {lvalue},bool)'''
+    def setUsingXAxis (self, val : bool)-> None :
+      '''                             '''
     ...
-    def setUsingYAxis (self, *args, **kwargs)-> None :
-      '''setUsingYAxis( (OrdinateDimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setUsingYAxis(class PyDbOrdinateDimension {lvalue},bool)'''
+    def setUsingYAxis (self, val : bool)-> None :
+      '''                             '''
     ...
     def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
       '''                             '''
@@ -41778,17 +41502,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def useSetTextPosition (self)-> None :
       '''                             '''
     ...
-    def useXAxis (self, *args, **kwargs)-> None :
-      '''useXAxis( (OrdinateDimension)arg1) -> None :
-
-    C++ signature :
-        void useXAxis(class PyDbOrdinateDimension {lvalue})'''
+    def useXAxis (self)-> None :
+      '''                             '''
     ...
-    def useYAxis (self, *args, **kwargs)-> None :
-      '''useYAxis( (OrdinateDimension)arg1) -> None :
-
-    C++ signature :
-        void useYAxis(class PyDbOrdinateDimension {lvalue})'''
+    def useYAxis (self)-> None :
+      '''                             '''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -44915,41 +44633,31 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class Point3AngularDimension:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d)-> None : ...
+    @overload
+    def __init__ (self, centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str)-> None : ...
+    @overload
+    def __init__ (self, centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (str)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (str)arg6, (ObjectId)arg7) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+      '''Overloads:
+    - None: Any
+    - centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d
+    - centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str
+    - centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -44996,11 +44704,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def alternateSuffix (self)-> str :
       '''                             '''
     ...
-    def arcPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''arcPoint( (Point3AngularDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d arcPoint(class PyDb3PointAngularDimension {lvalue})'''
+    def arcPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -45023,11 +44728,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.Point3AngularDimension :
-      '''cast( (RxObject)arg1) -> Point3AngularDimension :
 
-    C++ signature :
-        class PyDb3PointAngularDimension cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Point3AngularDimension :
+      '''                             '''
     ...
     def castShadows (self)-> bool :
       '''                             '''
@@ -45035,23 +44739,18 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def centerMarkSize (self)-> float :
       '''                             '''
     ...
-    def centerPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''centerPoint( (Point3AngularDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d centerPoint(class PyDb3PointAngularDimension {lvalue})'''
+    def centerPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.Point3AngularDimension :
-      '''cloneFrom( (RxObject)arg1) -> Point3AngularDimension :
 
-    C++ signature :
-        class PyDb3PointAngularDimension cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Point3AngularDimension :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -45080,11 +44779,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def dimBlockId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -45137,11 +44835,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def explode (self)-> list :
       '''                             '''
     ...
-    def extArcOn (self, *args, **kwargs)-> bool :
-      '''extArcOn( (Point3AngularDimension)arg1) -> bool :
-
-    C++ signature :
-        bool extArcOn(class PyDb3PointAngularDimension {lvalue})'''
+    def extArcOn (self)-> bool :
+      '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
@@ -45152,16 +44847,16 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def fieldToMText (self, ref : PyDb.MText)-> None :
       '''                             '''
     ...
+
+    @overload
+    def formatMeasurement (self, measurement: float)-> str : ...
+    @overload
+    def formatMeasurement (self, measurement: float, dimensionText: str)-> str : ...
     def formatMeasurement (self, *args, **kwargs)-> str :
-      '''formatMeasurement( (Dimension)arg1, (float)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double)
-
-formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - measurement: float
+    - measurement: float, dimensionText: str
+    '''
     ...
     def generateLayout (self)-> None :
       '''                             '''
@@ -45479,11 +45174,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAnnotative (self, state : PyDb.AnnotativeStates)-> None :
       '''                             '''
     ...
-    def setArcPoint (self, *args, **kwargs)-> None :
-      '''setArcPoint( (Point3AngularDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setArcPoint(class PyDb3PointAngularDimension {lvalue},class AcGePoint3d)'''
+    def setArcPoint (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setArrowFirstIsFlipped (self, val : bool)-> None :
       '''                             '''
@@ -45497,11 +45189,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setCenterPoint (self, *args, **kwargs)-> None :
-      '''setCenterPoint( (Point3AngularDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setCenterPoint(class PyDb3PointAngularDimension {lvalue},class AcGePoint3d)'''
+    def setCenterPoint (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
       '''                             '''
@@ -45536,16 +45225,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDimensionText (self, val : str)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setDimstyleData (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def setDimstyleData (self, rec: PyDb.DimStyleTableRecord)-> None : ...
     def setDimstyleData (self, *args, **kwargs)-> None :
-      '''setDimstyleData( (Dimension)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbObjectId)
-
-setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
+      '''Overloads:
+    - id: PyDb.ObjectId
+    - rec: PyDb.DimStyleTableRecord
+    '''
     ...
     def setDynamicDimension (self, val : bool)-> None :
       '''                             '''
@@ -45553,11 +45242,8 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setElevation (self, val : float)-> None :
       '''                             '''
     ...
-    def setExtArcOn (self, *args, **kwargs)-> None :
-      '''setExtArcOn( (Point3AngularDimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setExtArcOn(class PyDb3PointAngularDimension {lvalue},bool)'''
+    def setExtArcOn (self, val : bool)-> None :
+      '''                             '''
     ...
 
     @overload
@@ -45691,17 +45377,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self, xdata: list)-> None :
       '''                             '''
     ...
-    def setXLine1Point (self, *args, **kwargs)-> None :
-      '''setXLine1Point( (Point3AngularDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setXLine1Point(class PyDb3PointAngularDimension {lvalue},class AcGePoint3d)'''
+    def setXLine1Point (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setXLine2Point (self, *args, **kwargs)-> None :
-      '''setXLine2Point( (Point3AngularDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setXLine2Point(class PyDb3PointAngularDimension {lvalue},class AcGePoint3d)'''
+    def setXLine2Point (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def shouldParticipateInOPM (self)-> bool :
       '''                             '''
@@ -45799,17 +45479,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def xLine1Point (self, *args, **kwargs)-> PyGe.Point3d :
-      '''xLine1Point( (Point3AngularDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d xLine1Point(class PyDb3PointAngularDimension {lvalue})'''
+    def xLine1Point (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def xLine2Point (self, *args, **kwargs)-> PyGe.Point3d :
-      '''xLine2Point( (Point3AngularDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d xLine2Point(class PyDb3PointAngularDimension {lvalue})'''
+    def xLine2Point (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def xmitPropagateModify (self)-> None :
       '''                             '''
@@ -51372,41 +51046,31 @@ __init__( (object)arg1, (object)arg2) -> None :
     ...
 
 class RadialDimension:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, center: PyGe.Point3d, chordPoint: PyGe.Point3d,length:float)-> None : ...
+    @overload
+    def __init__ (self, center: PyGe.Point3d, chordPoint: PyGe.Point3d,length:float, dimText: str)-> None : ...
+    @overload
+    def __init__ (self, center: PyGe.Point3d, chordPoint: PyGe.Point3d,length:float, dimText: str, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,double)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (ObjectId)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+      '''Overloads:
+    - None: Any
+    - center: PyGe.Point3d, chordPoint: PyGe.Point3d,length:float
+    - center: PyGe.Point3d, chordPoint: PyGe.Point3d,length:float, dimText: str
+    - center: PyGe.Point3d, chordPoint: PyGe.Point3d,length:float, dimText: str, id: PyDb.ObjectId
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -51474,41 +51138,32 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.RadialDimension :
-      '''cast( (RxObject)arg1) -> RadialDimension :
 
-    C++ signature :
-        class PyDbRadialDimension cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.RadialDimension :
+      '''                             '''
     ...
     def castShadows (self)-> bool :
       '''                             '''
     ...
-    def center (self, *args, **kwargs)-> PyGe.Point3d :
-      '''center( (RadialDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d center(class PyDbRadialDimension {lvalue})'''
+    def center (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def centerMarkSize (self)-> float :
       '''                             '''
     ...
-    def chordPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''chordPoint( (RadialDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d chordPoint(class PyDbRadialDimension {lvalue})'''
+    def chordPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.RadialDimension :
-      '''cloneFrom( (RxObject)arg1) -> RadialDimension :
 
-    C++ signature :
-        class PyDbRadialDimension cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.RadialDimension :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -51537,11 +51192,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def dimBlockId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -51594,17 +51248,11 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def explode (self)-> list :
       '''                             '''
     ...
-    def extArcEndAngle (self, *args, **kwargs)-> float :
-      '''extArcEndAngle( (RadialDimension)arg1) -> float :
-
-    C++ signature :
-        double extArcEndAngle(class PyDbRadialDimension {lvalue})'''
+    def extArcEndAngle (self)-> float :
+      '''                             '''
     ...
-    def extArcStartAngle (self, *args, **kwargs)-> float :
-      '''extArcStartAngle( (RadialDimension)arg1) -> float :
-
-    C++ signature :
-        double extArcStartAngle(class PyDbRadialDimension {lvalue})'''
+    def extArcStartAngle (self)-> float :
+      '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
@@ -51615,16 +51263,16 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def fieldToMText (self, ref : PyDb.MText)-> None :
       '''                             '''
     ...
+
+    @overload
+    def formatMeasurement (self, measurement: float)-> str : ...
+    @overload
+    def formatMeasurement (self, measurement: float, dimensionText: str)-> str : ...
     def formatMeasurement (self, *args, **kwargs)-> str :
-      '''formatMeasurement( (Dimension)arg1, (float)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double)
-
-formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - measurement: float
+    - measurement: float, dimensionText: str
+    '''
     ...
     def generateLayout (self)-> None :
       '''                             '''
@@ -51831,11 +51479,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def layerId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def leaderLength (self, *args, **kwargs)-> float :
-      '''leaderLength( (RadialDimension)arg1) -> float :
-
-    C++ signature :
-        double leaderLength(class PyDbRadialDimension {lvalue})'''
+    def leaderLength (self)-> float :
+      '''                             '''
     ...
     def lineWeight (self)-> PyDb.LineWeight :
       '''                             '''
@@ -51960,17 +51605,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setCenter (self, *args, **kwargs)-> None :
-      '''setCenter( (RadialDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setCenter(class PyDbRadialDimension {lvalue},class AcGePoint3d)'''
+    def setCenter (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setChordPoint (self, *args, **kwargs)-> None :
-      '''setChordPoint( (RadialDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setChordPoint(class PyDbRadialDimension {lvalue},class AcGePoint3d)'''
+    def setChordPoint (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
       '''                             '''
@@ -52005,16 +51644,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDimensionText (self, val : str)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setDimstyleData (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def setDimstyleData (self, rec: PyDb.DimStyleTableRecord)-> None : ...
     def setDimstyleData (self, *args, **kwargs)-> None :
-      '''setDimstyleData( (Dimension)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbObjectId)
-
-setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
+      '''Overloads:
+    - id: PyDb.ObjectId
+    - rec: PyDb.DimStyleTableRecord
+    '''
     ...
     def setDynamicDimension (self, val : bool)-> None :
       '''                             '''
@@ -52022,17 +51661,11 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setElevation (self, val : float)-> None :
       '''                             '''
     ...
-    def setExtArcEndAngle (self, *args, **kwargs)-> None :
-      '''setExtArcEndAngle( (RadialDimension)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setExtArcEndAngle(class PyDbRadialDimension {lvalue},double)'''
+    def setExtArcEndAngle (self, val : float)-> None :
+      '''                             '''
     ...
-    def setExtArcStartAngle (self, *args, **kwargs)-> None :
-      '''setExtArcStartAngle( (RadialDimension)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setExtArcStartAngle(class PyDbRadialDimension {lvalue},double)'''
+    def setExtArcStartAngle (self, val : float)-> None :
+      '''                             '''
     ...
 
     @overload
@@ -52063,11 +51696,8 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLeaderLength (self, *args, **kwargs)-> None :
-      '''setLeaderLength( (RadialDimension)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLeaderLength(class PyDbRadialDimension {lvalue},double)'''
+    def setLeaderLength (self, val : float)-> None :
+      '''                             '''
     ...
     def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
       '''                             '''
@@ -52273,41 +51903,31 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class RadialDimensionLarge:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, center: PyGe.Point3d, chordPoint: PyGe.Point3d, overrideCenter: PyGe.Point3d, jogPoint: PyGe.Point3d, jogAngle: float)-> None : ...
+    @overload
+    def __init__ (self, center: PyGe.Point3d, chordPoint: PyGe.Point3d, overrideCenter: PyGe.Point3d, jogPoint: PyGe.Point3d, jogAngle: float, dimText: str)-> None : ...
+    @overload
+    def __init__ (self, center: PyGe.Point3d, chordPoint: PyGe.Point3d, overrideCenter: PyGe.Point3d, jogPoint: PyGe.Point3d, jogAngle: float, dimText: str, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (float)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,double)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (float)arg6, (str)arg7) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (float)arg6, (str)arg7, (ObjectId)arg8) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+      '''Overloads:
+    - None: Any
+    - center: PyGe.Point3d, chordPoint: PyGe.Point3d, overrideCenter: PyGe.Point3d, jogPoint: PyGe.Point3d, jogAngle: float
+    - center: PyGe.Point3d, chordPoint: PyGe.Point3d, overrideCenter: PyGe.Point3d, jogPoint: PyGe.Point3d, jogAngle: float, dimText: str
+    - center: PyGe.Point3d, chordPoint: PyGe.Point3d, overrideCenter: PyGe.Point3d, jogPoint: PyGe.Point3d, jogAngle: float, dimText: str, id: PyDb.ObjectId
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -52375,41 +51995,32 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.RadialDimensionLarge :
-      '''cast( (RxObject)arg1) -> RadialDimensionLarge :
 
-    C++ signature :
-        class PyDbRadialDimensionLarge cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.RadialDimensionLarge :
+      '''                             '''
     ...
     def castShadows (self)-> bool :
       '''                             '''
     ...
-    def center (self, *args, **kwargs)-> PyGe.Point3d :
-      '''center( (RadialDimensionLarge)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d center(class PyDbRadialDimensionLarge {lvalue})'''
+    def center (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def centerMarkSize (self)-> float :
       '''                             '''
     ...
-    def chordPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''chordPoint( (RadialDimensionLarge)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d chordPoint(class PyDbRadialDimensionLarge {lvalue})'''
+    def chordPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.RadialDimensionLarge :
-      '''cloneFrom( (RxObject)arg1) -> RadialDimensionLarge :
 
-    C++ signature :
-        class PyDbRadialDimensionLarge cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.RadialDimensionLarge :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -52438,11 +52049,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def dimBlockId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -52495,17 +52105,11 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def explode (self)-> list :
       '''                             '''
     ...
-    def extArcEndAngle (self, *args, **kwargs)-> float :
-      '''extArcEndAngle( (RadialDimensionLarge)arg1) -> float :
-
-    C++ signature :
-        double extArcEndAngle(class PyDbRadialDimensionLarge {lvalue})'''
+    def extArcEndAngle (self)-> float :
+      '''                             '''
     ...
-    def extArcStartAngle (self, *args, **kwargs)-> float :
-      '''extArcStartAngle( (RadialDimensionLarge)arg1) -> float :
-
-    C++ signature :
-        double extArcStartAngle(class PyDbRadialDimensionLarge {lvalue})'''
+    def extArcStartAngle (self)-> float :
+      '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
@@ -52516,16 +52120,16 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def fieldToMText (self, ref : PyDb.MText)-> None :
       '''                             '''
     ...
+
+    @overload
+    def formatMeasurement (self, measurement: float)-> str : ...
+    @overload
+    def formatMeasurement (self, measurement: float, dimensionText: str)-> str : ...
     def formatMeasurement (self, *args, **kwargs)-> str :
-      '''formatMeasurement( (Dimension)arg1, (float)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double)
-
-formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - measurement: float
+    - measurement: float, dimensionText: str
+    '''
     ...
     def generateLayout (self)-> None :
       '''                             '''
@@ -52723,17 +52327,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isWriteEnabled (self)-> bool :
       '''                             '''
     ...
-    def jogAngle (self, *args, **kwargs)-> float :
-      '''jogAngle( (RadialDimensionLarge)arg1) -> float :
-
-    C++ signature :
-        double jogAngle(class PyDbRadialDimensionLarge {lvalue})'''
+    def jogAngle (self)-> float :
+      '''                             '''
     ...
-    def jogPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''jogPoint( (RadialDimensionLarge)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d jogPoint(class PyDbRadialDimensionLarge {lvalue})'''
+    def jogPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
@@ -52774,11 +52372,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def objectId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def overrideCenter (self, *args, **kwargs)-> PyGe.Point3d :
-      '''overrideCenter( (RadialDimensionLarge)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d overrideCenter(class PyDbRadialDimensionLarge {lvalue})'''
+    def overrideCenter (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -52873,17 +52468,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setCenter (self, *args, **kwargs)-> None :
-      '''setCenter( (RadialDimensionLarge)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setCenter(class PyDbRadialDimensionLarge {lvalue},class AcGePoint3d)'''
+    def setCenter (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setChordPoint (self, *args, **kwargs)-> None :
-      '''setChordPoint( (RadialDimensionLarge)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setChordPoint(class PyDbRadialDimensionLarge {lvalue},class AcGePoint3d)'''
+    def setChordPoint (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
       '''                             '''
@@ -52918,16 +52507,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDimensionText (self, val : str)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setDimstyleData (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def setDimstyleData (self, rec: PyDb.DimStyleTableRecord)-> None : ...
     def setDimstyleData (self, *args, **kwargs)-> None :
-      '''setDimstyleData( (Dimension)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbObjectId)
-
-setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
+      '''Overloads:
+    - id: PyDb.ObjectId
+    - rec: PyDb.DimStyleTableRecord
+    '''
     ...
     def setDynamicDimension (self, val : bool)-> None :
       '''                             '''
@@ -52935,17 +52524,11 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setElevation (self, val : float)-> None :
       '''                             '''
     ...
-    def setExtArcEndAngle (self, *args, **kwargs)-> None :
-      '''setExtArcEndAngle( (RadialDimensionLarge)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setExtArcEndAngle(class PyDbRadialDimensionLarge {lvalue},double)'''
+    def setExtArcEndAngle (self, val : float)-> None :
+      '''                             '''
     ...
-    def setExtArcStartAngle (self, *args, **kwargs)-> None :
-      '''setExtArcStartAngle( (RadialDimensionLarge)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setExtArcStartAngle(class PyDbRadialDimensionLarge {lvalue},double)'''
+    def setExtArcStartAngle (self, val : float)-> None :
+      '''                             '''
     ...
 
     @overload
@@ -52973,23 +52556,14 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setInspectionLabel (self, val : str)-> None :
       '''                             '''
     ...
-    def setJogAngle (self, *args, **kwargs)-> None :
-      '''setJogAngle( (RadialDimensionLarge)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setJogAngle(class PyDbRadialDimensionLarge {lvalue},double)'''
+    def setJogAngle (self, val : float)-> None :
+      '''                             '''
     ...
-    def setJogPoint (self, *args, **kwargs)-> None :
-      '''setJogPoint( (RadialDimensionLarge)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setJogPoint(class PyDbRadialDimensionLarge {lvalue},class AcGePoint3d)'''
+    def setJogPoint (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setJogPointPP (self, *args, **kwargs)-> None :
-      '''setJogPointPP( (RadialDimensionLarge)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setJogPointPP(class PyDbRadialDimensionLarge {lvalue},class AcGePoint3d)'''
+    def setJogPointPP (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -53009,17 +52583,11 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setNormal (self, val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setOverrideCenter (self, *args, **kwargs)-> None :
-      '''setOverrideCenter( (RadialDimensionLarge)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setOverrideCenter(class PyDbRadialDimensionLarge {lvalue},class AcGePoint3d)'''
+    def setOverrideCenter (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setOverrideCenterPP (self, *args, **kwargs)-> None :
-      '''setOverrideCenterPP( (RadialDimensionLarge)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setOverrideCenterPP(class PyDbRadialDimensionLarge {lvalue},class AcGePoint3d)'''
+    def setOverrideCenterPP (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -53085,11 +52653,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextPosition (self, val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextPositionPP (self, *args, **kwargs)-> None :
-      '''setTextPositionPP( (RadialDimensionLarge)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setTextPositionPP(class PyDbRadialDimensionLarge {lvalue},class AcGePoint3d)'''
+    def setTextPositionPP (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setTextRotation (self, val : float)-> None :
       '''                             '''
@@ -56524,41 +56089,31 @@ class RotatedDimType:
     ...
 
 class RotatedDimension:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, rotation: float, xl1: PyGe.Point3d, xl2: PyGe.Point3d, dimLinePoint: PyGe.Point3d)-> None : ...
+    @overload
+    def __init__ (self, rotation: float, xl1: PyGe.Point3d, xl2: PyGe.Point3d, dimLinePoint: PyGe.Point3d, dimText: str)-> None : ...
+    @overload
+    def __init__ (self, rotation: float, xl1: PyGe.Point3d, xl2: PyGe.Point3d, dimLinePoint: PyGe.Point3d, dimText: str, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
-
-__init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (str)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-__init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (str)arg6, (ObjectId)arg7) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+      '''Overloads:
+    - None: Any
+    - rotation: float, xl1: PyGe.Point3d, xl2: PyGe.Point3d, dimLinePoint: PyGe.Point3d
+    - rotation: float, xl1: PyGe.Point3d, xl2: PyGe.Point3d, dimLinePoint: PyGe.Point3d, dimText: str
+    - rotation: float, xl1: PyGe.Point3d, xl2: PyGe.Point3d, dimLinePoint: PyGe.Point3d, dimText: str, id: PyDb.ObjectId
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -56626,11 +56181,10 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.RotatedDimension :
-      '''cast( (RxObject)arg1) -> RotatedDimension :
 
-    C++ signature :
-        class PyDbRotatedDimension cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.RotatedDimension :
+      '''                             '''
     ...
     def castShadows (self)-> bool :
       '''                             '''
@@ -56638,17 +56192,15 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def centerMarkSize (self)-> float :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.RotatedDimension :
-      '''cloneFrom( (RxObject)arg1) -> RotatedDimension :
 
-    C++ signature :
-        class PyDbRotatedDimension cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.RotatedDimension :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -56677,11 +56229,10 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def dimBlockId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -56698,11 +56249,8 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def dimLineLinetype (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def dimLinePoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''dimLinePoint( (RotatedDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d dimLinePoint(class PyDbRotatedDimension {lvalue})'''
+    def dimLinePoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def dimensionStyle (self)-> PyDb.ObjectId :
       '''                             '''
@@ -56749,16 +56297,16 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def fieldToMText (self, ref : PyDb.MText)-> None :
       '''                             '''
     ...
+
+    @overload
+    def formatMeasurement (self, measurement: float)-> str : ...
+    @overload
+    def formatMeasurement (self, measurement: float, dimensionText: str)-> str : ...
     def formatMeasurement (self, *args, **kwargs)-> str :
-      '''formatMeasurement( (Dimension)arg1, (float)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double)
-
-formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - measurement: float
+    - measurement: float, dimensionText: str
+    '''
     ...
     def generateLayout (self)-> None :
       '''                             '''
@@ -56956,17 +56504,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isWriteEnabled (self)-> bool :
       '''                             '''
     ...
-    def jogSymbolOn (self, *args, **kwargs)-> bool :
-      '''jogSymbolOn( (RotatedDimension)arg1) -> bool :
-
-    C++ signature :
-        bool jogSymbolOn(class PyDbRotatedDimension {lvalue})'''
+    def jogSymbolOn (self)-> bool :
+      '''                             '''
     ...
-    def jogSymbolPosition (self, *args, **kwargs)-> PyGe.Point3d :
-      '''jogSymbolPosition( (RotatedDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d jogSymbolPosition(class PyDbRotatedDimension {lvalue})'''
+    def jogSymbolPosition (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
@@ -57007,11 +56549,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def objectId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def oblique (self, *args, **kwargs)-> float :
-      '''oblique( (RotatedDimension)arg1) -> float :
-
-    C++ signature :
-        double oblique(class PyDbRotatedDimension {lvalue})'''
+    def oblique (self)-> float :
+      '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -57058,11 +56597,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotation (self, *args, **kwargs)-> float :
-      '''rotation( (RotatedDimension)arg1) -> float :
-
-    C++ signature :
-        double rotation(class PyDbRotatedDimension {lvalue})'''
+    def rotation (self)-> float :
+      '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self)-> None :
       '''                             '''
@@ -57139,11 +56675,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDimLineLinetype (self, val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimLinePoint (self, *args, **kwargs)-> None :
-      '''setDimLinePoint( (RotatedDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setDimLinePoint(class PyDbRotatedDimension {lvalue},class AcGePoint3d)'''
+    def setDimLinePoint (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setDimensionStyle (self, val : PyDb.ObjectId)-> None :
       '''                             '''
@@ -57151,16 +56684,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDimensionText (self, val : str)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setDimstyleData (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def setDimstyleData (self, rec: PyDb.DimStyleTableRecord)-> None : ...
     def setDimstyleData (self, *args, **kwargs)-> None :
-      '''setDimstyleData( (Dimension)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbObjectId)
-
-setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDimension {lvalue},class PyDbDimStyleTableRecord)'''
+      '''Overloads:
+    - id: PyDb.ObjectId
+    - rec: PyDb.DimStyleTableRecord
+    '''
     ...
     def setDynamicDimension (self, val : bool)-> None :
       '''                             '''
@@ -57194,17 +56727,11 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setInspectionLabel (self, val : str)-> None :
       '''                             '''
     ...
-    def setJogSymbolOn (self, *args, **kwargs)-> None :
-      '''setJogSymbolOn( (RotatedDimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setJogSymbolOn(class PyDbRotatedDimension {lvalue},bool)'''
+    def setJogSymbolOn (self, val : bool)-> None :
+      '''                             '''
     ...
-    def setJogSymbolPosition (self, *args, **kwargs)-> None :
-      '''setJogSymbolPosition( (RotatedDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setJogSymbolPosition(class PyDbRotatedDimension {lvalue},class AcGePoint3d)'''
+    def setJogSymbolPosition (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -57224,11 +56751,8 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setNormal (self, val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setOblique (self, *args, **kwargs)-> None :
-      '''setOblique( (RotatedDimension)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setOblique(class PyDbRotatedDimension {lvalue},double)'''
+    def setOblique (self, val : float)-> None :
+      '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -57258,11 +56782,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self, *args, **kwargs)-> None :
-      '''setRotation( (RotatedDimension)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setRotation(class PyDbRotatedDimension {lvalue},double)'''
+    def setRotation (self, val : float)-> None :
+      '''                             '''
     ...
     def setShouldParticipateInOPM (self, val : bool)-> None :
       '''                             '''
@@ -57324,17 +56845,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self, xdata: list)-> None :
       '''                             '''
     ...
-    def setXLine1Point (self, *args, **kwargs)-> None :
-      '''setXLine1Point( (RotatedDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setXLine1Point(class PyDbRotatedDimension {lvalue},class AcGePoint3d)'''
+    def setXLine1Point (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setXLine2Point (self, *args, **kwargs)-> None :
-      '''setXLine2Point( (RotatedDimension)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setXLine2Point(class PyDbRotatedDimension {lvalue},class AcGePoint3d)'''
+    def setXLine2Point (self, pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def shouldParticipateInOPM (self)-> bool :
       '''                             '''
@@ -57432,17 +56947,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def xLine1Point (self, *args, **kwargs)-> PyGe.Point3d :
-      '''xLine1Point( (RotatedDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d xLine1Point(class PyDbRotatedDimension {lvalue})'''
+    def xLine1Point (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def xLine2Point (self, *args, **kwargs)-> PyGe.Point3d :
-      '''xLine2Point( (RotatedDimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d xLine2Point(class PyDbRotatedDimension {lvalue})'''
+    def xLine2Point (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def xmitPropagateModify (self)-> None :
       '''                             '''
