@@ -239,6 +239,13 @@ public:
 
             while (acedGetString(1, _T(">>>: "), cmd) == RTNORM)
             {
+                //issue #13, quit, or exit terminates the process
+                AcString cmdcpy = (const TCHAR*)cmd;
+                cmdcpy.makeLower();
+                if (cmdcpy.find(L"quit") != -1)
+                    break;
+                if (cmdcpy.find(L"exit") != -1)
+                    break;
                 PyRun_SimpleString(wstr_to_utf8((const TCHAR*)cmd).c_str());
             }
         }
