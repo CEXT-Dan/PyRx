@@ -2139,12 +2139,10 @@ void makePyDb2dPolylineWrapper()
         "- splineType: PyDb.Poly2dType, splineSegs: int\n";
 
     constexpr const std::string_view appendVertexOverload = "Overloads:\n"
-        "- None: Any\n"
         "- vertex: PyDb.Vertex2d\n"
         "- outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex2d\n";
 
     constexpr const std::string_view insertVertexAtOverload = "Overloads:\n"
-        "- None: Any\n"
         "- indexVt: PyDb.Vertex2d, newVertex: PyDb.Vertex2d\n"
         "- outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex2d\n";
 
@@ -2459,12 +2457,10 @@ void makePyDb3dPolylineWrapper()
         "- splineType: PyDb.Poly3dType, splineSegs: int\n";
 
     constexpr const std::string_view appendVertexOverload = "Overloads:\n"
-        "- None: Any\n"
         "- vertex: PyDb.Vertex3d\n"
         "- outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex3d\n";
 
     constexpr const std::string_view insertVertexAtOverload = "Overloads:\n"
-        "- None: Any\n"
         "- indexVt: PyDb.Vertex3d, newVertex: PyDb.Vertex3d\n"
         "- outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex3d\n";
 

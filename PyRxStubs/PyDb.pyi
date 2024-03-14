@@ -49502,14 +49502,11 @@ class Polyline2d:
     ...
 
     @overload
-    def appendVertex (self, /)-> None : ...
-    @overload
     def appendVertex (self, vertex: PyDb.Vertex2d)-> None : ...
     @overload
     def appendVertex (self, outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex2d)-> None : ...
     def appendVertex (self, *args, **kwargs)-> None :
       '''Overloads:
-    - None: Any
     - vertex: PyDb.Vertex2d
     - outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex2d
     '''
@@ -49794,14 +49791,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
 
     @overload
-    def insertVertexAt (self, /)-> None : ...
-    @overload
     def insertVertexAt (self, indexVt: PyDb.Vertex2d, newVertex: PyDb.Vertex2d)-> None : ...
     @overload
     def insertVertexAt (self, outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex2d)-> None : ...
     def insertVertexAt (self, *args, **kwargs)-> None :
       '''Overloads:
-    - None: Any
     - indexVt: PyDb.Vertex2d, newVertex: PyDb.Vertex2d
     - outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex2d
     '''
@@ -50209,14 +50203,11 @@ class Polyline3d:
     ...
 
     @overload
-    def appendVertex (self, /)-> None : ...
-    @overload
     def appendVertex (self, vertex: PyDb.Vertex3d)-> None : ...
     @overload
     def appendVertex (self, outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex3d)-> None : ...
     def appendVertex (self, *args, **kwargs)-> None :
       '''Overloads:
-    - None: Any
     - vertex: PyDb.Vertex3d
     - outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex3d
     '''
@@ -50486,14 +50477,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
 
     @overload
-    def insertVertexAt (self, /)-> None : ...
-    @overload
     def insertVertexAt (self, indexVt: PyDb.Vertex3d, newVertex: PyDb.Vertex3d)-> None : ...
     @overload
     def insertVertexAt (self, outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex3d)-> None : ...
     def insertVertexAt (self, *args, **kwargs)-> None :
       '''Overloads:
-    - None: Any
     - indexVt: PyDb.Vertex3d, newVertex: PyDb.Vertex3d
     - outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex3d
     '''
