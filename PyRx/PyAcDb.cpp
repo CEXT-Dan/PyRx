@@ -49,7 +49,19 @@ using namespace boost::python;
 
 static PyDbDatabase curPyDb()
 {
+    if (curDoc() == nullptr)
+        PyThrowBadEs(eNoDocument);
+    return PyDbDatabase(curDoc()->database(), false);
+}
+
+static PyDbDatabase workingPyDb()
+{
     return PyDbDatabase(acdbHostApplicationServices()->workingDatabase(), false);
+}
+
+static void setWorkingPyDb(PyDbDatabase& wpd)
+{
+    acdbHostApplicationServices()->setWorkingDatabase(wpd.impObj());
 }
 
 std::string AcDbExtents2dToString(const AcDbExtents2d& p)
@@ -336,7 +348,10 @@ BOOST_PYTHON_MODULE(PyDb)
 
     makeDbCoreWrapper();//LAST?
 
+    //convenience 
     def("curDb", curPyDb);
+    def("workingDb", workingPyDb);
+    def("setWorkingDb", setWorkingPyDb);
 
     //enums
     enum_<AnnotativeStates>("AnnotativeStates")

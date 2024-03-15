@@ -97,7 +97,7 @@ struct PyAcadErrorStatus
 
     inline std::string format() const
     {
-        constexpr std::string_view fmtstr("\nException!({}) in function {}, Line{}, File{}: ");
+        constexpr std::string_view fmtstr("\nException!({}) in function {}, Line {}, File {}: ");
         const std::filesystem::path file = m_src.file_name();
         return std::format(fmtstr, wstr_to_utf8(acadErrorStatusText(m_es)), m_src.function_name(), m_src.line(), file.filename().string());
     }
