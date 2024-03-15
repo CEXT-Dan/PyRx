@@ -9564,6 +9564,9 @@ class Database:
     def addToBlock (self, btrid : PyDb.ObjectId, entity : PyDb.Entity | list[PyDb.Entity])-> PyDb.ObjectId :
       '''                             '''
     ...
+    def addToCurrentspace (self, entity : PyDb.Entity | list[PyDb.Entity])-> PyDb.ObjectId :
+      '''                             '''
+    ...
     def addToModelspace (self, entity : PyDb.Entity | list[PyDb.Entity])-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -72764,7 +72767,6 @@ def curDb (*args, **kwargs)-> PyDb.Database :
 
 def setWorkingDb (*args, **kwargs)-> None :
     '''setWorkingDb( (Database)arg1) -> None :
-    db: PyDb.Database
 
     C++ signature :
         void setWorkingDb(class PyDbDatabase {lvalue})'''

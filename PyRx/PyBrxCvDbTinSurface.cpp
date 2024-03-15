@@ -16,7 +16,7 @@ void makePyBrxCvDbTinSurfaceConstraintWrapper()
     PyDocString DS("CvDbTinSurfaceConstraint");
     class_<PyBrxCvDbTinSurfaceConstraint>("CvDbTinSurfaceConstraint")
         .def(init<>())
-        .def(init<BrxCvDbTinSurfaceConstraint::ETinConstraintType>())
+        .def(init<BrxCvDbTinSurfaceConstraint::ETinConstraintType>(DS.ARGS({"type: PyBrxCv.TinConstraintType"})))
         .def("constraintType", &PyBrxCvDbTinSurfaceConstraint::constraintType, DS.ARGS())
         .def("setData", &PyBrxCvDbTinSurfaceConstraint::setData1, DS.ARGS({ "intId : int" ,"pts : list[PyGe.Point3d]" }))
         .def("setDataId", &PyBrxCvDbTinSurfaceConstraint::setData2, DS.ARGS({ "id : PyDb.ObjectId","midOrdinateDist : float" }))
@@ -114,7 +114,7 @@ void makePyBrxCvDbTinSurfaceBreaklineWrapper()
 {
     PyDocString DS("CvDbTinSurfaceBreakline");
     class_<PyBrxCvDbTinSurfaceBreakline, bases<PyBrxCvDbTinSurfaceConstraint>>("CvDbTinSurfaceBreakline", no_init)
-        .def(init<BrxCvDbTinSurfaceBreakline::ETinBreaklineType>())
+        .def(init<BrxCvDbTinSurfaceBreakline::ETinBreaklineType>(DS.ARGS({ "type: PyBrxCv.TinBreaklineType" })))
         .def("intersectionElevation", &PyBrxCvDbTinSurfaceBreakline::intersectionElevation, DS.ARGS())
         .def("setIntersectionElevation", &PyBrxCvDbTinSurfaceBreakline::setIntersectionElevation, DS.ARGS({ "val : PyBrxCv.TinBreaklineType" }))
         .def("className", &PyBrxCvDbTinSurfaceBreakline::className, DS.SARGS()).staticmethod("className")
@@ -155,7 +155,7 @@ void makePyBrxCvDbTinSurfaceWallWrapper()
 {
     PyDocString DS("CvDbTinSurfaceWall");
     class_<PyBrxCvDbTinSurfaceWall, bases<PyBrxCvDbTinSurfaceConstraint>>("CvDbTinSurfaceWall", no_init)
-        .def(init<BrxCvDbTinSurfaceWall::ETinWallType>())
+        .def(init<BrxCvDbTinSurfaceWall::ETinWallType>(DS.ARGS({ "type: PyBrxCv.TinWallType" })))
         .def("wallType", &PyBrxCvDbTinSurfaceWall::wallType, DS.ARGS())
         .def("setHeight", &PyBrxCvDbTinSurfaceWall::setHeight, DS.ARGS({ "val : float" }))
         .def("setWallSide", &PyBrxCvDbTinSurfaceWall::setWallSide, DS.ARGS({ "val : PyBrxCv.TinWallSide" }))
@@ -213,7 +213,7 @@ void makePyBrxCvDbTinSurfaceBoundaryWrapper()
 {
     PyDocString DS("CvDbTinSurfaceBoundary");
     class_<PyBrxCvDbTinSurfaceBoundary, bases<PyBrxCvDbTinSurfaceConstraint>>("CvDbTinSurfaceBoundary", no_init)
-        .def(init<BrxCvDbTinSurfaceBoundary::ETinBoundaryType>())
+        .def(init<BrxCvDbTinSurfaceBoundary::ETinBoundaryType>(DS.ARGS({ "type: PyBrxCv.TinBoundaryType" })))
         .def("wallType", &PyBrxCvDbTinSurfaceBoundary::boundaryType, DS.ARGS())
         .def("className", &PyBrxCvDbTinSurfaceBoundary::className, DS.SARGS()).staticmethod("className")
         ;

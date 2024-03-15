@@ -7994,11 +7994,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     ...
 
 class CvDbTinSurfaceBoundary:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (TinBoundaryType)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,enum BrxCvDbTinSurfaceBoundary::ETinBoundaryType)'''
+    def __init__ (self, type: PyBrxCv.TinBoundaryType)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -8037,11 +8034,8 @@ class CvDbTinSurfaceBoundary:
     ...
 
 class CvDbTinSurfaceBreakline:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (TinBreaklineType)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,enum BrxCvDbTinSurfaceBreakline::ETinBreaklineType)'''
+    def __init__ (self, type: PyBrxCv.TinBreaklineType)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -8083,21 +8077,8 @@ class CvDbTinSurfaceBreakline:
     ...
 
 class CvDbTinSurfaceConstraint:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (TinConstraintType)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,enum BrxCvDbTinSurfaceConstraint::ETinConstraintType)'''
+    def __init__ (self, type: PyBrxCv.TinConstraintType)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -11142,11 +11123,8 @@ __init__( (object)arg1, (list)arg2, (bool)arg3) -> None :
     ...
 
 class CvDbTinSurfaceWall:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (TinWallType)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,enum BrxCvDbTinSurfaceWall::ETinWallType)'''
+    def __init__ (self, type: PyBrxCv.TinWallType)-> None :
+      '''                             '''
     ...
 
     @staticmethod
