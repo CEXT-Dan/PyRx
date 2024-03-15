@@ -28,6 +28,8 @@ void makePyDbDatabaseWrapper()
         .def("addToBlock", &PyDbDatabase::addToBlock2, DS.ARGS({ "btrid : PyDb.ObjectId", "entity : PyDb.Entity | list[PyDb.Entity]" }))
         .def("addToModelspace", &PyDbDatabase::addToModelspace1)
         .def("addToModelspace", &PyDbDatabase::addToModelspace2, DS.ARGS({ "entity : PyDb.Entity | list[PyDb.Entity]" }))
+        .def("addToCurrentspace", &PyDbDatabase::addToCurrentspace1)
+        .def("addToCurrentspace", &PyDbDatabase::addToCurrentspace2, DS.ARGS({ "entity : PyDb.Entity | list[PyDb.Entity]" }))
         .def("addObject", &PyDbDatabase::addAcDbObject, DS.ARGS({ "object : PyDb.DbObject" }))
         .def("addReactor", &PyDbDatabase::addReactor, DS.ARGS({ "reactor : PyDb.DatabaseReactor" }))
         .def("angbase", &PyDbDatabase::angbase, DS.ARGS())
@@ -577,6 +579,16 @@ PyDbObjectId PyDbDatabase::addToModelspace1(PyDbEntity& ent)
 boost::python::list PyDbDatabase::addToModelspace2(const boost::python::list& ents)
 {
     return addToBlock2(PyDbObjectId(acdbSymUtil()->blockModelSpaceId(impObj())), ents);
+}
+
+PyDbObjectId PyDbDatabase::addToCurrentspace1(PyDbEntity& ent)
+{
+    return addToBlock1(impObj()->currentSpaceId(), ent);
+}
+
+boost::python::list PyDbDatabase::addToCurrentspace2(const boost::python::list& ent)
+{
+    return addToBlock2(impObj()->currentSpaceId(), ent);
 }
 
 PyDbObjectId PyDbDatabase::addAcDbObject(PyDbObject& obj)
