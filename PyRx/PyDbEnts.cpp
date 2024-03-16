@@ -3232,7 +3232,7 @@ void makePyDbPolylineWrapper()
         .def("getConstantWidth", &PyDbPolyline::getConstantWidth, DS.ARGS())
         .def("normal", &PyDbPolyline::normal, DS.ARGS())
         .def("addVertexAt", &PyDbPolyline::addVertexAt1)
-        .def("addVertexAt", &PyDbPolyline::addVertexAt2, DS.ARGS({ "idx:int","pt2d:PyGe.Point2d","bulge:float=0.0","startWidth:float=0.0","endWidth:float=0.0" }))
+        .def("addVertexAt", &PyDbPolyline::addVertexAt2, DS.ARGS({ "idx:int","pt2d:PyGe.Point2d","bulge:float=0.0","startWidth:float=-1.0","endWidth:float=-1.0" }))
         .def("removeVertexAt", &PyDbPolyline::removeVertexAt, DS.ARGS({ "idx:int" }))
         .def("numVerts", &PyDbPolyline::numVerts, DS.ARGS())
         .def("getBulgeAt", &PyDbPolyline::getBulgeAt, DS.ARGS({ "idx:int" }))
@@ -3475,7 +3475,7 @@ AcGeVector3d PyDbPolyline::normal() const
 
 void PyDbPolyline::addVertexAt1(unsigned int index, const AcGePoint2d& pnt)
 {
-    return PyThrowBadEs(impObj()->addVertexAt(index, pnt, 0.0, 0.0, 0.0));
+    return PyThrowBadEs(impObj()->addVertexAt(index, pnt));
 }
 
 void PyDbPolyline::addVertexAt2(unsigned int index, const AcGePoint2d& pnt, double bulge, double startWidth, double endWidth)
