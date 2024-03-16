@@ -6,6 +6,8 @@
 #include "PyDbObjectId.h"
 #include "PyDbCurve.h"
 #include "PyGeCurve3d.h"
+#include "PyDbSubDMesh.h"
+#include "PyDb3dSolid.h"
 
 using namespace boost::python;
 
@@ -299,6 +301,11 @@ void makePyBrxCvDbTinSurfaceWrapper()
         .def("minorContours", &PyBrxCvDbTinSurface::minorContours, DS.ARGS())
         .def("majorContours", &PyBrxCvDbTinSurface::majorContours, DS.ARGS())
         .def("contoursAtElevation", &PyBrxCvDbTinSurface::contoursAtElevation, DS.ARGS({ "elevation : float" }))
+        .def("subDMesh", &PyBrxCvDbTinSurface::subDMesh1)//TODO DocStrings
+        .def("subDMesh", &PyBrxCvDbTinSurface::subDMesh2)
+        .def("subDMesh", &PyBrxCvDbTinSurface::subDMesh3)
+        .def("solid3d", &PyBrxCvDbTinSurface::solid3d1)
+        .def("solid3d", &PyBrxCvDbTinSurface::solid3d2)
         .def("drapePoint", &PyBrxCvDbTinSurface::drapePoint, DS.ARGS({ "pts : list[PyGe.Point3d]" }))
         .def("drapeId", &PyBrxCvDbTinSurface::drapeId, DS.ARGS({ "id : PyDb.ObjectId" }))
         .def("intersectionsWithLine", &PyBrxCvDbTinSurface::intersectionsWithLine, DS.ARGS({ "start : PyGe.Point3d","end : PyGe.Point3d", "type : PyBrxCv.TinSurfaceIntersectType","visibleOnly : bool" }))
@@ -653,6 +660,31 @@ boost::python::list PyBrxCvDbTinSurface::contoursAtElevation(double elevation) c
     for (const auto& item : borders)
         pylist.append(Point3dArrayToPyList(item));
     return pylist;
+}
+
+PyDbSubDMesh PyBrxCvDbTinSurface::subDMesh1(const BrxCvDbTinSurface::ETinSurfaceMeshType surfaceType, double depthOrElevation) const
+{
+    return PyDbSubDMesh(impObj()->subDMesh(surfaceType, depthOrElevation), true);
+}
+
+PyDbSubDMesh PyBrxCvDbTinSurface::subDMesh2(const PyBrxCvDbTinSurface& other) const
+{
+    return PyDbSubDMesh(impObj()->subDMesh(other.impObj()), true);
+}
+
+PyDbSubDMesh PyBrxCvDbTinSurface::subDMesh3() const
+{
+    return PyDbSubDMesh(impObj()->subDMesh(), true);
+}
+
+PyDb3dSolid PyBrxCvDbTinSurface::solid3d1(const BrxCvDbTinSurface::ETinSurfaceSolidType solidType, double thickness) const
+{
+    return PyDb3dSolid(impObj()->solid3d(solidType, thickness), true);
+}
+
+PyDb3dSolid PyBrxCvDbTinSurface::solid3d2(const PyBrxCvDbTinSurface& other) const
+{
+    return PyDb3dSolid(impObj()->solid3d(other.impObj()), true);
 }
 
 boost::python::list PyBrxCvDbTinSurface::drapePoint(const AcGePoint3dArray& points) const

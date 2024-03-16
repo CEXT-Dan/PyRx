@@ -153,6 +153,7 @@
     <ClCompile Include="PyDbPointCloudEx.cpp" />
     <ClCompile Include="PyDbPointRef.cpp" />
     <ClCompile Include="PyDbSpatialFilter.cpp" />
+    <ClCompile Include="PyDbSubDMesh.cpp" />
     <ClCompile Include="PyDbTextEditor.cpp" />
     <ClCompile Include="PyGeSurface.cpp" />
     <ClCompile Include="PyAcGs.cpp" />
@@ -278,6 +279,7 @@
     <ClInclude Include="PyDbPointCloudEx.h" />
     <ClInclude Include="PyDbPointRef.h" />
     <ClInclude Include="PyDbSpatialFilter.h" />
+    <ClInclude Include="PyDbSubDMesh.h" />
     <ClInclude Include="PyDbTextEditor.h" />
     <ClInclude Include="PyGeSurface.h" />
     <ClInclude Include="PyAcGs.h" />
