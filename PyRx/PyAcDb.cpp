@@ -44,6 +44,7 @@
 #include "PyDbSpatialFilter.h"
 #include "PyDbGeo.h"
 #include "PyDbDate.h"
+#include "PyDbSubDMesh.h"
 
 using namespace boost::python;
 
@@ -346,6 +347,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbGeoMapWrapper();
     makePyDbGeoCoordinateSystemWrapper();
 
+    makePyDbSubDMeshWrapper();
     makeDbCoreWrapper();//LAST?
 
     //convenience 

@@ -8,6 +8,8 @@ class PyDbCurve;
 class PyDbObjectId;
 class PyBrxCvGradingRule;
 class PyBrxCvDbTinSurfaceDefinition;
+class PyDbSubDMesh;
+class PyDb3dSolid;
 
 //-----------------------------------------------------------------------------------
 //helpers
@@ -189,11 +191,11 @@ public:
     boost::python::list  majorContours() const;
     boost::python::list  contoursAtElevation(double elevation) const;
 
-    //AcDbSubDMesh* subDMesh(const ETinSurfaceMeshType surfaceType, const double depthOrElevation) const;
-    //AcDbSubDMesh* subDMesh(const BrxCvDbTinSurface* other) const;
-    //AcDbSubDMesh* subDMesh() const;
-    //AcDb3dSolid* solid3d(const ETinSurfaceSolidType solidType, const double thickness) const;
-    //AcDb3dSolid* solid3d(const BrxCvDbTinSurface* other) const;
+    PyDbSubDMesh subDMesh1(const BrxCvDbTinSurface::ETinSurfaceMeshType surfaceType, double depthOrElevation) const;
+    PyDbSubDMesh subDMesh2(const PyBrxCvDbTinSurface& other) const;
+    PyDbSubDMesh subDMesh3() const;
+    PyDb3dSolid  solid3d1(const BrxCvDbTinSurface::ETinSurfaceSolidType solidType, double thickness) const;
+    PyDb3dSolid  solid3d2(const PyBrxCvDbTinSurface& other) const;
 
     boost::python::list drapePoint(const AcGePoint3dArray& points) const;
     boost::python::list drapeId(const PyDbObjectId& entId) const;
