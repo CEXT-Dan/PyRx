@@ -97,22 +97,44 @@ static boost::python::tuple AcDbExtents2dCoords(const AcDbExtents2d& extents)
     return boost::python::make_tuple(min.x, min.y, max.x, max.y);
 }
 
+static void AcDbExtents2dAddPoints(AcDbExtents2d& extents, const boost::python::object& iterable)
+{
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
+    for (const auto& point : PyListToPoint2dArray(iterable))
+        extents.addPoint(point);
+#endif
+}
+
+static AcGePoint2d AcDbExtents2dMidPoint(const AcDbExtents2d& extents)
+{
+    AcGeLineSeg2d seg(extents.minPoint(), extents.maxPoint());
+    return seg.midPoint();
+}
+
 void makePyDbExtents2dWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- min: PyGe.Point2d, max: PyGe.Point2d\n";
+
+    PyDocString DS("Extents2d");
     class_<AcDbExtents2d>("Extents2d")
         .def(init<>())
-        .def(init<const AcDbExtents2d&>())
-        .def(init<const AcGePoint2d&, const AcGePoint2d&>())
-        .def("minPoint", &AcDbExtents2d::minPoint)
-        .def("maxPoint", &AcDbExtents2d::maxPoint)
-        .def("set", &AcDbExtents2d::set)
+        .def(init<const AcGePoint2d&, const AcGePoint2d&>(DS.CTOR(ctords)))
+        .def("minPoint", &AcDbExtents2d::minPoint, DS.ARGS())
+        .def("maxPoint", &AcDbExtents2d::maxPoint, DS.ARGS())
+        .def("midPoint", &AcDbExtents2dMidPoint, DS.ARGS())
+        .def("set", &AcDbExtents2d::set, DS.ARGS({ "min: PyGe.Point2d","max: PyGe.Point2d" }))
 #if !defined(_BRXTARGET240)
-        .def("addPoint", &AcDbExtents2d::addPoint)
-        .def("addExt", &AcDbExtents2d::addExt)
-        .def("expandBy", &AcDbExtents2d::expandBy)
-        .def("transformBy", &AcDbExtents2d::transformBy)
+        .def("addPoint", &AcDbExtents2d::addPoint, DS.ARGS({ "pt: PyGe.Point2d" }))
+        .def("addPoints", &AcDbExtents2dAddPoints, DS.ARGS({ "pts: list[PyGe.Point2d]" }))
+        .def("addExt", &AcDbExtents2d::addExt, DS.ARGS({ "ex: PyDb.Extents2d" }))
+        .def("expandBy", &AcDbExtents2d::expandBy, DS.ARGS({ "vec: PyGe.Vector2d" }))
+        .def("transformBy", &AcDbExtents2d::transformBy, DS.ARGS({ "xform: PyGe.Matrix2d" }))
 #endif
-        .def("intersectsWith", &AcDbExtents2dIntersects)
+        .def("intersectsWith", &AcDbExtents2dIntersects, DS.ARGS({ "ex: PyDb.Extents2d" }))
         .def("coords", &AcDbExtents2dCoords)
         .def("__str__", &AcDbExtents2dToString)
         .def("__repr__", &AcDbExtents2dToStringRepr)

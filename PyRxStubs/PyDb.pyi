@@ -19603,38 +19603,25 @@ class Extents:
     ...
 
 class Extents2d:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, min: PyGe.Point2d, max: PyGe.Point2d)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Extents2d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcDbExtents2d)
-
-__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)'''
+      '''Overloads:
+    - None: Any
+    - min: PyGe.Point2d, max: PyGe.Point2d
+    '''
     ...
-    def addExt (self, *args, **kwargs)-> None :
-      '''addExt( (Extents2d)arg1, (Extents2d)arg2) -> None :
-
-    C++ signature :
-        void addExt(class AcDbExtents2d {lvalue},class AcDbExtents2d)'''
+    def addExt (self, ex: PyDb.Extents2d)-> None :
+      '''                             '''
     ...
-    def addPoint (self, *args, **kwargs)-> None :
-      '''addPoint( (Extents2d)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void addPoint(class AcDbExtents2d {lvalue},class AcGePoint2d)'''
+    def addPoint (self, pt: PyGe.Point2d)-> None :
+      '''                             '''
+    ...
+    def addPoints (self, pts: list[PyGe.Point2d])-> None :
+      '''                             '''
     ...
     def coords (self, *args, **kwargs)-> tuple :
       '''coords( (Extents2d)arg1) -> tuple :
@@ -19642,41 +19629,26 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     C++ signature :
         class boost::python::tuple coords(class AcDbExtents2d)'''
     ...
-    def expandBy (self, *args, **kwargs)-> None :
-      '''expandBy( (Extents2d)arg1, (Vector2d)arg2) -> None :
-
-    C++ signature :
-        void expandBy(class AcDbExtents2d {lvalue},class AcGeVector2d)'''
+    def expandBy (self, vec: PyGe.Vector2d)-> None :
+      '''                             '''
     ...
-    def intersectsWith (self, *args, **kwargs)-> bool :
-      '''intersectsWith( (Extents2d)arg1, (Extents2d)arg2) -> bool :
-
-    C++ signature :
-        bool intersectsWith(class AcDbExtents2d,class AcDbExtents2d)'''
+    def intersectsWith (self, ex: PyDb.Extents2d)-> bool :
+      '''                             '''
     ...
-    def maxPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''maxPoint( (Extents2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d maxPoint(class AcDbExtents2d {lvalue})'''
+    def maxPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def minPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''minPoint( (Extents2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d minPoint(class AcDbExtents2d {lvalue})'''
+    def midPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def set (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''set( (Extents2d)arg1, (Point2d)arg2, (Point2d)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus set(class AcDbExtents2d {lvalue},class AcGePoint2d,class AcGePoint2d)'''
+    def minPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def transformBy (self, *args, **kwargs)-> None :
-      '''transformBy( (Extents2d)arg1, (Matrix2d)arg2) -> None :
-
-    C++ signature :
-        void transformBy(class AcDbExtents2d {lvalue},class AcGeMatrix2d)'''
+    def set (self, min: PyGe.Point2d, max: PyGe.Point2d)-> PyDb.ErrorStatus :
+      '''                             '''
+    ...
+    def transformBy (self, xform: PyGe.Matrix2d)-> None :
+      '''                             '''
     ...
 
 class ExtrudedSurface:
