@@ -19554,44 +19554,25 @@ class EvalVariant:
     ...
 
 class Extents:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, min: PyGe.Point3d, max: PyGe.Point3d)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Extents)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcDbExtents)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d)'''
+      '''Overloads:
+    - None: Any
+    - min: PyGe.Point3d, max: PyGe.Point3d
+    '''
     ...
-    def addExt (self, *args, **kwargs)-> None :
-      '''addExt( (Extents)arg1, (Extents)arg2) -> None :
-
-    C++ signature :
-        void addExt(class AcDbExtents {lvalue},class AcDbExtents)'''
+    def addExt (self, extents: PyDb.Extents)-> None :
+      '''                             '''
     ...
-    def addPoint (self, *args, **kwargs)-> None :
-      '''addPoint( (Extents)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void addPoint(class AcDbExtents {lvalue},class AcGePoint3d)'''
+    def addPoint (self, pt: PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def addPoints (self, *args, **kwargs)-> None :
-      '''addPoints( (Extents)arg1, (object)arg2) -> None :
-
-    C++ signature :
-        void addPoints(class AcDbExtents {lvalue},class boost::python::api::object)'''
+    def addPoints (self, pts: list[PyGe.Point3d])-> None :
+      '''                             '''
     ...
     def coords (self, *args, **kwargs)-> tuple :
       '''coords( (Extents)arg1) -> tuple :
@@ -19599,41 +19580,26 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     C++ signature :
         class boost::python::tuple coords(class AcDbExtents)'''
     ...
-    def expandBy (self, *args, **kwargs)-> None :
-      '''expandBy( (Extents)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void expandBy(class AcDbExtents {lvalue},class AcGeVector3d)'''
+    def expandBy (self, vec: PyGe.Vector3d)-> None :
+      '''                             '''
     ...
-    def intersectsWith (self, *args, **kwargs)-> bool :
-      '''intersectsWith( (Extents)arg1, (Extents)arg2) -> bool :
-
-    C++ signature :
-        bool intersectsWith(class AcDbExtents,class AcDbExtents)'''
+    def intersectsWith (self, other: PyDb.Extents)-> bool :
+      '''                             '''
     ...
-    def maxPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''maxPoint( (Extents)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d maxPoint(class AcDbExtents {lvalue})'''
+    def maxPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def minPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''minPoint( (Extents)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d minPoint(class AcDbExtents {lvalue})'''
+    def midPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def set (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''set( (Extents)arg1, (Point3d)arg2, (Point3d)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus set(class AcDbExtents {lvalue},class AcGePoint3d,class AcGePoint3d)'''
+    def minPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def transformBy (self, *args, **kwargs)-> None :
-      '''transformBy( (Extents)arg1, (Matrix3d)arg2) -> None :
-
-    C++ signature :
-        void transformBy(class AcDbExtents {lvalue},class AcGeMatrix3d)'''
+    def set (self, min: PyGe.Point3d, max: PyGe.Point3d)-> PyDb.ErrorStatus :
+      '''                             '''
+    ...
+    def transformBy (self, xform: PyGe.Matrix3d)-> None :
+      '''                             '''
     ...
 
 class Extents2d:
@@ -59457,17 +59423,11 @@ class SubDMesh:
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def computeSurfaceArea (self, *args, **kwargs)-> float :
-      '''computeSurfaceArea( (SubDMesh)arg1) -> float :
-
-    C++ signature :
-        double computeSurfaceArea(class PyDbSubDMesh {lvalue})'''
+    def computeSurfaceArea (self)-> float :
+      '''                             '''
     ...
-    def computeVolume (self, *args, **kwargs)-> float :
-      '''computeVolume( (SubDMesh)arg1) -> float :
-
-    C++ signature :
-        double computeVolume(class PyDbSubDMesh {lvalue})'''
+    def computeVolume (self)-> float :
+      '''                             '''
     ...
     def convertToSolid (self, *args, **kwargs)-> PyDb.Solid3d :
       '''convertToSolid( (SubDMesh)arg1, (bool)arg2, (bool)arg3) -> Solid3d :
@@ -59578,17 +59538,11 @@ getCrease( (SubDMesh)arg1, (SubentId)arg2) -> float :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getEdgeArray (self, *args, **kwargs)-> list :
-      '''getEdgeArray( (SubDMesh)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getEdgeArray(class PyDbSubDMesh {lvalue})'''
+    def getEdgeArray (self)-> list :
+      '''                             '''
     ...
-    def getFaceArray (self, *args, **kwargs)-> list :
-      '''getFaceArray( (SubDMesh)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getFaceArray(class PyDbSubDMesh {lvalue})'''
+    def getFaceArray (self)-> list :
+      '''                             '''
     ...
     def getFacePlane (self, *args, **kwargs)-> PyGe.Plane :
       '''getFacePlane( (SubDMesh)arg1, (SubentId)arg2) -> Plane :
@@ -59617,11 +59571,8 @@ getCrease( (SubDMesh)arg1, (SubentId)arg2) -> float :
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
     ...
-    def getNormalArray (self, *args, **kwargs)-> list :
-      '''getNormalArray( (SubDMesh)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getNormalArray(class PyDbSubDMesh {lvalue})'''
+    def getNormalArray (self)-> list :
+      '''                             '''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -59632,17 +59583,11 @@ getCrease( (SubDMesh)arg1, (SubentId)arg2) -> float :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubDividedFaceArray (self, *args, **kwargs)-> list :
-      '''getSubDividedFaceArray( (SubDMesh)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getSubDividedFaceArray(class PyDbSubDMesh {lvalue})'''
+    def getSubDividedFaceArray (self)-> list :
+      '''                             '''
     ...
-    def getSubDividedNormalArray (self, *args, **kwargs)-> list :
-      '''getSubDividedNormalArray( (SubDMesh)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getSubDividedNormalArray(class PyDbSubDMesh {lvalue})'''
+    def getSubDividedNormalArray (self)-> list :
+      '''                             '''
     ...
     def getSubDividedVertexAt (self, *args, **kwargs)-> PyGe.Point3d :
       '''getSubDividedVertexAt( (SubDMesh)arg1, (int)arg2) -> Point3d :
@@ -59655,11 +59600,8 @@ getSubDividedVertexAt( (SubDMesh)arg1, (SubentId)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d getSubDividedVertexAt(class PyDbSubDMesh {lvalue},class PyDbSubentId)'''
     ...
-    def getSubDividedVertices (self, *args, **kwargs)-> list :
-      '''getSubDividedVertices( (SubDMesh)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getSubDividedVertices(class PyDbSubDMesh {lvalue})'''
+    def getSubDividedVertices (self)-> list :
+      '''                             '''
     ...
     def getSubentColor (self, *args, **kwargs)-> PyDb.Color :
       '''getSubentColor( (SubDMesh)arg1, (SubentId)arg2) -> Color :
@@ -59704,11 +59646,8 @@ getVertexAt( (SubDMesh)arg1, (SubentId)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d getVertexAt(class PyDbSubDMesh {lvalue},class PyDbSubentId)'''
     ...
-    def getVertices (self, *args, **kwargs)-> list :
-      '''getVertices( (SubDMesh)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getVertices(class PyDbSubDMesh {lvalue})'''
+    def getVertices (self)-> list :
+      '''                             '''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -59814,11 +59753,8 @@ getVertexAt( (SubDMesh)arg1, (SubentId)arg2) -> Point3d :
     def isUndoing (self)-> bool :
       '''                             '''
     ...
-    def isWatertight (self, *args, **kwargs)-> bool :
-      '''isWatertight( (SubDMesh)arg1) -> bool :
-
-    C++ signature :
-        bool isWatertight(class PyDbSubDMesh {lvalue})'''
+    def isWatertight (self)-> bool :
+      '''                             '''
     ...
     def isWriteEnabled (self)-> bool :
       '''                             '''
@@ -59859,23 +59795,14 @@ getVertexAt( (SubDMesh)arg1, (SubentId)arg2) -> Point3d :
     C++ signature :
         void mergeFaces(class PyDbSubDMesh {lvalue},class boost::python::list)'''
     ...
-    def numOfEdges (self, *args, **kwargs)-> int :
-      '''numOfEdges( (SubDMesh)arg1) -> int :
-
-    C++ signature :
-        int numOfEdges(class PyDbSubDMesh {lvalue})'''
+    def numOfEdges (self)-> int :
+      '''                             '''
     ...
-    def numOfFaces (self, *args, **kwargs)-> int :
-      '''numOfFaces( (SubDMesh)arg1) -> int :
-
-    C++ signature :
-        int numOfFaces(class PyDbSubDMesh {lvalue})'''
+    def numOfFaces (self)-> int :
+      '''                             '''
     ...
-    def numOfSubDividedFaces (self, *args, **kwargs)-> int :
-      '''numOfSubDividedFaces( (SubDMesh)arg1) -> int :
-
-    C++ signature :
-        int numOfSubDividedFaces(class PyDbSubDMesh {lvalue})'''
+    def numOfSubDividedFaces (self)-> int :
+      '''                             '''
     ...
     def numOfSubDividedFacesAt (self, *args, **kwargs)-> int :
       '''numOfSubDividedFacesAt( (SubDMesh)arg1, (list)arg2) -> int :
@@ -59883,17 +59810,11 @@ getVertexAt( (SubDMesh)arg1, (SubentId)arg2) -> Point3d :
     C++ signature :
         int numOfSubDividedFacesAt(class PyDbSubDMesh {lvalue},class boost::python::list)'''
     ...
-    def numOfSubDividedVertices (self, *args, **kwargs)-> int :
-      '''numOfSubDividedVertices( (SubDMesh)arg1) -> int :
-
-    C++ signature :
-        int numOfSubDividedVertices(class PyDbSubDMesh {lvalue})'''
+    def numOfSubDividedVertices (self)-> int :
+      '''                             '''
     ...
-    def numOfVertices (self, *args, **kwargs)-> int :
-      '''numOfVertices( (SubDMesh)arg1) -> int :
-
-    C++ signature :
-        int numOfVertices(class PyDbSubDMesh {lvalue})'''
+    def numOfVertices (self)-> int :
+      '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
       '''                             '''
