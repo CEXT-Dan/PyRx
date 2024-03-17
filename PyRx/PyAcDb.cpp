@@ -159,21 +159,32 @@ static void AcDbExtents3dAddPoints(AcDbExtents& extents, const boost::python::ob
         extents.addPoint(point);
 }
 
+static AcGePoint3d AcDbExtents3dMidPoint(const AcDbExtents& extents)
+{
+    AcGeLineSeg3d seg(extents.minPoint(), extents.maxPoint());
+    return seg.midPoint();
+}
+
 void makePyDbExtentsWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- min: PyGe.Point3d, max: PyGe.Point3d\n";
+
+    PyDocString DS("Extents");
     class_<AcDbExtents>("Extents")
         .def(init<>())
-        .def(init<const AcDbExtents&>())
-        .def(init<const AcGePoint3d&, const AcGePoint3d&>())
-        .def("minPoint", &AcDbExtents::minPoint)
-        .def("maxPoint", &AcDbExtents::maxPoint)
-        .def("set", &AcDbExtents::set)
-        .def("addPoint", &AcDbExtents::addPoint)
-        .def("addPoints", &AcDbExtents3dAddPoints)
-        .def("addExt", &AcDbExtents::addExt)
-        .def("expandBy", &AcDbExtents::expandBy)
-        .def("transformBy", &AcDbExtents::transformBy)
-        .def("intersectsWith", &AcDbExtents3dIntersects)
+        .def(init<const AcGePoint3d&, const AcGePoint3d&>(DS.CTOR(ctords)))
+        .def("minPoint", &AcDbExtents::minPoint, DS.ARGS())
+        .def("maxPoint", &AcDbExtents::maxPoint, DS.ARGS())
+        .def("midPoint", &AcDbExtents3dMidPoint, DS.ARGS())
+        .def("set", &AcDbExtents::set, DS.ARGS({ "min: PyGe.Point3d","max: PyGe.Point3d" }))
+        .def("addPoint", &AcDbExtents::addPoint, DS.ARGS({ "pt: PyGe.Point3d" }))
+        .def("addPoints", &AcDbExtents3dAddPoints, DS.ARGS({ "pts: list[PyGe.Point3d]" }))
+        .def("addExt", &AcDbExtents::addExt, DS.ARGS({ "extents: PyDb.Extents" }))
+        .def("expandBy", &AcDbExtents::expandBy, DS.ARGS({ "vec: PyGe.Vector3d" }))
+        .def("transformBy", &AcDbExtents::transformBy, DS.ARGS({ "xform: PyGe.Matrix3d" }))
+        .def("intersectsWith", &AcDbExtents3dIntersects, DS.ARGS({ "other: PyDb.Extents" }))
         .def("coords", &AcDbExtents3dCoords)
         .def("__str__", &AcDbExtentsToString)
         .def("__repr__", &AcDbExtentsToStringRepr)
