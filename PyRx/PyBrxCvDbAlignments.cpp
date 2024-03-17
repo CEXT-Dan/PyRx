@@ -970,7 +970,7 @@ boost::python::list PyBrxCvDbHAlignment::getUnorderedElementIds() const
     PyAutoLockGIL lock;
     AcArray<Adesk::UInt64> elementIds;
     PyThrowBadEs(impObj()->getUnorderedElementIds(elementIds));
-    return Int64ArrayToPyList(elementIds);
+    return IntU64ArrayToPyList(elementIds);
 }
 
 Adesk::UInt64 PyBrxCvDbHAlignment::getElementId(Adesk::GsMarker gsMarker) const

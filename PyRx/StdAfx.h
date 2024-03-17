@@ -405,7 +405,16 @@ inline boost::python::list IntArrayToPyList(const AcDbIntArray& arr)
     return pyPyList;
 }
 
-inline boost::python::list Int64ArrayToPyList(const AcArray<Adesk::UInt64>& arr)
+inline boost::python::list Int32ArrayToPyList(const AcArray<Adesk::Int32>& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto item : arr)
+        pyPyList.append(item);
+    return pyPyList;
+}
+
+inline boost::python::list IntU64ArrayToPyList(const AcArray<Adesk::UInt64>& arr)
 {
     PyAutoLockGIL lock;
     boost::python::list pyPyList;
@@ -424,6 +433,15 @@ inline boost::python::list DoubleArrayToPyList(const AcGeDoubleArray& arr)
 }
 
 inline boost::python::list Point3dArrayToPyList(const AcGePoint3dArray& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (const auto& item : arr)
+        pyPyList.append(item);
+    return pyPyList;
+}
+
+inline boost::python::list Vector3dArrayToPyList(const AcGeVector3dArray& arr)
 {
     PyAutoLockGIL lock;
     boost::python::list pyPyList;

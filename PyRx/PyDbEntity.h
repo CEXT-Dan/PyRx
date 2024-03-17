@@ -251,3 +251,12 @@ inline AcArray<AcDbFullSubentPath> PyListToPyDbFullSubentPathArray(const boost::
         arr.append(item.m_pyImp);
     return arr;
 }
+
+inline boost::python::list FullSubentPathArrayToPyList(const AcDbFullSubentPathArray& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (const auto& item : arr)
+        pyPyList.append(PyDbFullSubentPath(item));
+    return pyPyList;
+}
