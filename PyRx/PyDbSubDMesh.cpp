@@ -9,7 +9,7 @@ using namespace boost::python;
 
 void makePyDbSubDMeshWrapper()
 {
-    PyDocString DS("PyDb.Entity");
+    PyDocString DS("PyDb.SubDMesh");
     class_<PyDbSubDMesh, bases<PyDbEntity>>("SubDMesh")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
