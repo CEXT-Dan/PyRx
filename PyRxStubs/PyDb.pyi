@@ -48004,7 +48004,7 @@ class Polyline:
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def addVertexAt (self, idx:int, pt2d:PyGe.Point2d, bulge:float=0.0, startWidth:float=0.0, endWidth:float=0.0)-> None :
+    def addVertexAt (self, idx:int, pt2d:PyGe.Point2d, bulge:float=0.0, startWidth:float=-1.0, endWidth:float=-1.0)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -59373,6 +59373,803 @@ class StdScaleType:
     ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
+    ...
+
+class SubDMesh:
+    def __init__ (self, id: PyDb.ObjectId, mode:  PyDb.OpenMode=kForRead, erased: bool=False)-> None :
+      '''                             '''
+    ...
+    def addContext (self, obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
+    def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def addReactor (self, reactor: EntityReactor)-> None :
+      '''                             '''
+    ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
+    def assertNotifyEnabled (self)-> None :
+      '''                             '''
+    ...
+    def assertReadEnabled (self)-> None :
+      '''                             '''
+    ...
+    def assertWriteEnabled (self)-> None :
+      '''                             '''
+    ...
+    def blockId (self)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def bounds (self, ext: PyDb.Extents)-> bool :
+      '''                             '''
+    ...
+    def cancel (self)-> None :
+      '''                             '''
+    ...
+    def cap (self, *args, **kwargs)-> None :
+      '''cap( (SubDMesh)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void cap(class PyDbSubDMesh {lvalue},class boost::python::list)'''
+    ...
+
+    @staticmethod
+    def cast (otherObject: RxObject)-> PyDb.SubDMesh :
+      '''                             '''
+    ...
+    def castShadows (self)-> bool :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def cloneFrom (otherObject: RxObject)-> PyDb.SubDMesh :
+      '''                             '''
+    ...
+    def close (self)-> None :
+      '''                             '''
+    ...
+    def collapse (self, *args, **kwargs)-> None :
+      '''collapse( (SubDMesh)arg1, (SubentId)arg2) -> None :
+
+    C++ signature :
+        void collapse(class PyDbSubDMesh {lvalue},class PyDbSubentId)'''
+    ...
+    def collisionType (self)-> PyDb.CollisionType :
+      '''                             '''
+    ...
+    def color (self)-> PyDb.Color :
+      '''                             '''
+    ...
+    def colorIndex (self)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def computeSurfaceArea (self, *args, **kwargs)-> float :
+      '''computeSurfaceArea( (SubDMesh)arg1) -> float :
+
+    C++ signature :
+        double computeSurfaceArea(class PyDbSubDMesh {lvalue})'''
+    ...
+    def computeVolume (self, *args, **kwargs)-> float :
+      '''computeVolume( (SubDMesh)arg1) -> float :
+
+    C++ signature :
+        double computeVolume(class PyDbSubDMesh {lvalue})'''
+    ...
+    def convertToSolid (self, *args, **kwargs)-> PyDb.Solid3d :
+      '''convertToSolid( (SubDMesh)arg1, (bool)arg2, (bool)arg3) -> Solid3d :
+
+    C++ signature :
+        class PyDb3dSolid convertToSolid(class PyDbSubDMesh {lvalue},bool,bool)'''
+    ...
+    def convertToSurface (self, *args, **kwargs)-> PyDb.Surface :
+      '''convertToSurface( (SubDMesh)arg1, (bool)arg2, (SubentId)arg3) -> Surface :
+
+    C++ signature :
+        class PyDbSurface convertToSurface(class PyDbSubDMesh {lvalue},bool,class PyDbSubentId)
+
+convertToSurface( (SubDMesh)arg1, (bool)arg2, (bool)arg3) -> Surface :
+
+    C++ signature :
+        class PyDbSurface convertToSurface(class PyDbSubDMesh {lvalue},bool,bool)'''
+    ...
+    def copyFrom (self, other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def createExtensionDictionary (self)-> None :
+      '''                             '''
+    ...
+    def database (self)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def disableUndoRecording (self, disable: bool)-> None :
+      '''                             '''
+    ...
+    def dispose (self)-> None :
+      '''                             '''
+    ...
+    def downgradeOpen (self)-> None :
+      '''                             '''
+    ...
+    def downgradeToNotify (self, wasWritable: bool)-> None :
+      '''                             '''
+    ...
+    def draw (self)-> None :
+      '''                             '''
+    ...
+    def drawableType (self)-> PyGi.GiDrawableType :
+      '''                             '''
+    ...
+    def entityColor (self)-> PyDb.EntityColor :
+      '''                             '''
+    ...
+    def erase (self, erasing : bool=True)-> None :
+      '''                             '''
+    ...
+    def explode (self)-> list :
+      '''                             '''
+    ...
+    def extensionDictionary (self)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def extrudeConnectedFaces (self, *args, **kwargs)-> None :
+      '''extrudeConnectedFaces( (SubDMesh)arg1, (list)arg2, (float)arg3, (Vector3d)arg4, (float)arg5) -> None :
+
+    C++ signature :
+        void extrudeConnectedFaces(class PyDbSubDMesh {lvalue},class boost::python::list,double,class AcGeVector3d,double)
+
+extrudeConnectedFaces( (SubDMesh)arg1, (list)arg2, (list)arg3, (float)arg4) -> None :
+
+    C++ signature :
+        void extrudeConnectedFaces(class PyDbSubDMesh {lvalue},class boost::python::list,class boost::python::list,double)'''
+    ...
+    def extrudeFaces (self, *args, **kwargs)-> None :
+      '''extrudeFaces( (SubDMesh)arg1, (list)arg2, (float)arg3, (Vector3d)arg4, (float)arg5) -> None :
+
+    C++ signature :
+        void extrudeFaces(class PyDbSubDMesh {lvalue},class boost::python::list,double,class AcGeVector3d,double)
+
+extrudeFaces( (SubDMesh)arg1, (list)arg2, (list)arg3, (float)arg4) -> None :
+
+    C++ signature :
+        void extrudeFaces(class PyDbSubDMesh {lvalue},class boost::python::list,class boost::python::list,double)'''
+    ...
+    def getAdjacentSubentPath (self, *args, **kwargs)-> list :
+      '''getAdjacentSubentPath( (SubDMesh)arg1, (FullSubentPath)arg2, (SubentType)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list getAdjacentSubentPath(class PyDbSubDMesh {lvalue},class PyDbFullSubentPath,unsigned int)'''
+    ...
+    def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
+      '''                             '''
+    ...
+    def getCrease (self, *args, **kwargs)-> list :
+      '''getCrease( (SubDMesh)arg1, (list)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list getCrease(class PyDbSubDMesh {lvalue},class boost::python::list)
+
+getCrease( (SubDMesh)arg1, (SubentId)arg2) -> float :
+
+    C++ signature :
+        double getCrease(class PyDbSubDMesh {lvalue},class PyDbSubentId)'''
+    ...
+    def getEcs (self)-> PyGe.Matrix3d :
+      '''                             '''
+    ...
+    def getEdgeArray (self, *args, **kwargs)-> list :
+      '''getEdgeArray( (SubDMesh)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getEdgeArray(class PyDbSubDMesh {lvalue})'''
+    ...
+    def getFaceArray (self, *args, **kwargs)-> list :
+      '''getFaceArray( (SubDMesh)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getFaceArray(class PyDbSubDMesh {lvalue})'''
+    ...
+    def getFacePlane (self, *args, **kwargs)-> PyGe.Plane :
+      '''getFacePlane( (SubDMesh)arg1, (SubentId)arg2) -> Plane :
+
+    C++ signature :
+        class PyGePlane getFacePlane(class PyDbSubDMesh {lvalue},class PyDbSubentId)'''
+    ...
+    def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getFieldDictionary (self)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getGeomExtents (self)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self)-> PyDb.Extents2d :
+      '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None :
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
+    def getHandle (self)-> PyDb.Handle :
+      '''                             '''
+    ...
+    def getNormalArray (self, *args, **kwargs)-> list :
+      '''getNormalArray( (SubDMesh)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getNormalArray(class PyDbSubDMesh {lvalue})'''
+    ...
+    def getPlane (self)-> PyGe.Plane :
+      '''                             '''
+    ...
+    def getPlotStyleNameId (self)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getStretchPoints (self)-> list :
+      '''                             '''
+    ...
+    def getSubDividedFaceArray (self, *args, **kwargs)-> list :
+      '''getSubDividedFaceArray( (SubDMesh)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getSubDividedFaceArray(class PyDbSubDMesh {lvalue})'''
+    ...
+    def getSubDividedNormalArray (self, *args, **kwargs)-> list :
+      '''getSubDividedNormalArray( (SubDMesh)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getSubDividedNormalArray(class PyDbSubDMesh {lvalue})'''
+    ...
+    def getSubDividedVertexAt (self, *args, **kwargs)-> PyGe.Point3d :
+      '''getSubDividedVertexAt( (SubDMesh)arg1, (int)arg2) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d getSubDividedVertexAt(class PyDbSubDMesh {lvalue},int)
+
+getSubDividedVertexAt( (SubDMesh)arg1, (SubentId)arg2) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d getSubDividedVertexAt(class PyDbSubDMesh {lvalue},class PyDbSubentId)'''
+    ...
+    def getSubDividedVertices (self, *args, **kwargs)-> list :
+      '''getSubDividedVertices( (SubDMesh)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getSubDividedVertices(class PyDbSubDMesh {lvalue})'''
+    ...
+    def getSubentColor (self, *args, **kwargs)-> PyDb.Color :
+      '''getSubentColor( (SubDMesh)arg1, (SubentId)arg2) -> Color :
+
+    C++ signature :
+        class AcCmColor getSubentColor(class PyDbSubDMesh {lvalue},class PyDbSubentId)'''
+    ...
+    def getSubentMaterial (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''getSubentMaterial( (SubDMesh)arg1, (SubentId)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getSubentMaterial(class PyDbSubDMesh {lvalue},class PyDbSubentId)'''
+    ...
+    def getSubentPath (self, *args, **kwargs)-> list :
+      '''getSubentPath( (SubDMesh)arg1, (int)arg2, (SubentType)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPath(class PyDbSubDMesh {lvalue},int,unsigned int)'''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    ...
+    def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
+      '''                             '''
+    ...
+    def getVertexAt (self, *args, **kwargs)-> PyGe.Point3d :
+      '''getVertexAt( (SubDMesh)arg1, (int)arg2) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d getVertexAt(class PyDbSubDMesh {lvalue},int)
+
+getVertexAt( (SubDMesh)arg1, (SubentId)arg2) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d getVertexAt(class PyDbSubDMesh {lvalue},class PyDbSubentId)'''
+    ...
+    def getVertices (self, *args, **kwargs)-> list :
+      '''getVertices( (SubDMesh)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getVertices(class PyDbSubDMesh {lvalue})'''
+    ...
+    def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
+      '''                             '''
+    ...
+    def hasFields (self)-> bool :
+      '''                             '''
+    ...
+    def hasPersistentReactor (self, id: PyDb.ObjectId)-> bool :
+      '''                             '''
+    ...
+    def hasXData (self, appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self, path: PyDb.FullSubentPath = None, highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
+    def id (self)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def implRefCount (self)-> int :
+      '''                             '''
+    ...
+
+    @overload
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect)-> list : ...
+    @overload
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int)-> list : ...
+    @overload
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane)-> list : ...
+    @overload
+    def intersectWith (self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int)-> list : ...
+    def intersectWith (self, *args, **kwargs)-> list :
+      '''Overloads:
+    - entity: PyDb.Entity, intType : PyDb.Intersect
+    - entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int
+    - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane
+    - entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int
+    '''
+    ...
+    def isA (self)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isAProxy (self)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self)-> bool :
+      '''                             '''
+    ...
+    def isAnnotative (self)-> PyDb.AnnotativeStates :
+      '''                             '''
+    ...
+    def isCancelling (self)-> bool :
+      '''                             '''
+    ...
+    def isEraseStatusToggled (self)-> bool :
+      '''                             '''
+    ...
+    def isErased (self)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isModified (self)-> bool :
+      '''                             '''
+    ...
+    def isModifiedGraphics (self)-> bool :
+      '''                             '''
+    ...
+    def isModifiedXData (self)-> bool :
+      '''                             '''
+    ...
+    def isNewObject (self)-> bool :
+      '''                             '''
+    ...
+    def isNotifyEnabled (self)-> bool :
+      '''                             '''
+    ...
+    def isNotifying (self)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self)-> bool :
+      '''                             '''
+    ...
+    def isPersistent (self)-> bool :
+      '''                             '''
+    ...
+    def isPlanar (self)-> bool :
+      '''                             '''
+    ...
+    def isReadEnabled (self)-> bool :
+      '''                             '''
+    ...
+    def isReallyClosing (self)-> bool :
+      '''                             '''
+    ...
+    def isTransactionResident (self)-> bool :
+      '''                             '''
+    ...
+    def isUndoRecordingDisabled (self)-> bool :
+      '''                             '''
+    ...
+    def isUndoing (self)-> bool :
+      '''                             '''
+    ...
+    def isWatertight (self, *args, **kwargs)-> bool :
+      '''isWatertight( (SubDMesh)arg1) -> bool :
+
+    C++ signature :
+        bool isWatertight(class PyDbSubDMesh {lvalue})'''
+    ...
+    def isWriteEnabled (self)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self, flag: bool)-> None :
+      '''                             '''
+    ...
+    def layer (self)-> str :
+      '''                             '''
+    ...
+    def layerId (self)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def lineWeight (self)-> PyDb.LineWeight :
+      '''                             '''
+    ...
+    def linetype (self)-> str :
+      '''                             '''
+    ...
+    def linetypeId (self)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def linetypeScale (self)-> float :
+      '''                             '''
+    ...
+    def list (self)-> None :
+      '''                             '''
+    ...
+    def material (self)-> str :
+      '''                             '''
+    ...
+    def materialId (self)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def mergeFaces (self, *args, **kwargs)-> None :
+      '''mergeFaces( (SubDMesh)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void mergeFaces(class PyDbSubDMesh {lvalue},class boost::python::list)'''
+    ...
+    def numOfEdges (self, *args, **kwargs)-> int :
+      '''numOfEdges( (SubDMesh)arg1) -> int :
+
+    C++ signature :
+        int numOfEdges(class PyDbSubDMesh {lvalue})'''
+    ...
+    def numOfFaces (self, *args, **kwargs)-> int :
+      '''numOfFaces( (SubDMesh)arg1) -> int :
+
+    C++ signature :
+        int numOfFaces(class PyDbSubDMesh {lvalue})'''
+    ...
+    def numOfSubDividedFaces (self, *args, **kwargs)-> int :
+      '''numOfSubDividedFaces( (SubDMesh)arg1) -> int :
+
+    C++ signature :
+        int numOfSubDividedFaces(class PyDbSubDMesh {lvalue})'''
+    ...
+    def numOfSubDividedFacesAt (self, *args, **kwargs)-> int :
+      '''numOfSubDividedFacesAt( (SubDMesh)arg1, (list)arg2) -> int :
+
+    C++ signature :
+        int numOfSubDividedFacesAt(class PyDbSubDMesh {lvalue},class boost::python::list)'''
+    ...
+    def numOfSubDividedVertices (self, *args, **kwargs)-> int :
+      '''numOfSubDividedVertices( (SubDMesh)arg1) -> int :
+
+    C++ signature :
+        int numOfSubDividedVertices(class PyDbSubDMesh {lvalue})'''
+    ...
+    def numOfVertices (self, *args, **kwargs)-> int :
+      '''numOfVertices( (SubDMesh)arg1) -> int :
+
+    C++ signature :
+        int numOfVertices(class PyDbSubDMesh {lvalue})'''
+    ...
+    def objectId (self)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def ownerId (self)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def plotStyleName (self)-> str :
+      '''                             '''
+    ...
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def receiveShadows (self)-> bool :
+      '''                             '''
+    ...
+    def recordGraphicsModified (self)-> None :
+      '''                             '''
+    ...
+    def releaseExtensionDictionary (self)-> None :
+      '''                             '''
+    ...
+    def removeContext (self, obj : PyDb.ObjectContext)-> None :
+      '''                             '''
+    ...
+    def removeField (self, id: str|ObjectId)-> None :
+      '''                             '''
+    ...
+    def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def removeReactor (self, reactor: EntityReactor)-> None :
+      '''                             '''
+    ...
+    def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self)-> None :
+      '''                             '''
+    ...
+    def setAnnotative (self, state : PyDb.AnnotativeStates)-> None :
+      '''                             '''
+    ...
+    def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
+      '''                             '''
+    ...
+    def setBox (self, *args, **kwargs)-> None :
+      '''setBox( (SubDMesh)arg1, (float)arg2, (float)arg3, (float)arg4, (int)arg5, (int)arg6, (int)arg7, (int)arg8) -> None :
+
+    C++ signature :
+        void setBox(class PyDbSubDMesh {lvalue},double,double,double,int,int,int,int)'''
+    ...
+    def setCastShadows (self, val: bool)-> None :
+      '''                             '''
+    ...
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+      '''                             '''
+    ...
+    def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setCone (self, *args, **kwargs)-> None :
+      '''setCone( (SubDMesh)arg1, (float)arg2, (float)arg3, (float)arg4, (int)arg5, (int)arg6, (int)arg7, (float)arg8, (int)arg9) -> None :
+
+    C++ signature :
+        void setCone(class PyDbSubDMesh {lvalue},double,double,double,int,int,int,double,int)'''
+    ...
+    def setCrease (self, *args, **kwargs)-> None :
+      '''setCrease( (SubDMesh)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setCrease(class PyDbSubDMesh {lvalue},double)
+
+setCrease( (SubDMesh)arg1, (list)arg2, (float)arg3) -> None :
+
+    C++ signature :
+        void setCrease(class PyDbSubDMesh {lvalue},class boost::python::list,double)'''
+    ...
+    def setCylinder (self, *args, **kwargs)-> None :
+      '''setCylinder( (SubDMesh)arg1, (float)arg2, (float)arg3, (float)arg4, (int)arg5, (int)arg6, (int)arg7, (int)arg8) -> None :
+
+    C++ signature :
+        void setCylinder(class PyDbSubDMesh {lvalue},double,double,double,int,int,int,int)'''
+    ...
+    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+      '''                             '''
+    ...
+
+    @overload
+    def setField (self, field: PyDb.Field)-> PyDb.ObjectId : ...
+    @overload
+    def setField (self, propName: str, field: PyDb.Field)-> PyDb.ObjectId : ...
+    def setField (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''Overloads:
+    - field: PyDb.Field
+    - propName: str, field: PyDb.Field
+    '''
+    ...
+    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+      '''                             '''
+    ...
+    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setOwnerId (self, owner: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def setPlotStyleName (self, *args, **kwargs)-> None :
+      '''setPlotStyleName( (Entity)arg1, (str)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)arg4) -> None :
+
+    C++ signature :
+        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
+    ...
+    def setPropertiesFrom (self, entity: PyDb.Entity, dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setPyramid (self, *args, **kwargs)-> None :
+      '''setPyramid( (SubDMesh)arg1, (float)arg2, (float)arg3, (int)arg4, (int)arg5, (int)arg6, (int)arg7, (float)arg8, (int)arg9) -> None :
+
+    C++ signature :
+        void setPyramid(class PyDbSubDMesh {lvalue},double,double,int,int,int,int,double,int)'''
+    ...
+    def setReceiveShadows (self, val: bool)-> None :
+      '''                             '''
+    ...
+    def setSphere (self, *args, **kwargs)-> None :
+      '''setSphere( (SubDMesh)arg1, (float)arg2, (int)arg3, (int)arg4, (int)arg5) -> None :
+
+    C++ signature :
+        void setSphere(class PyDbSubDMesh {lvalue},double,int,int,int)'''
+    ...
+    def setSubDMesh (self, *args, **kwargs)-> None :
+      '''setSubDMesh( (SubDMesh)arg1, (list)arg2, (list)arg3, (int)arg4) -> None :
+
+    C++ signature :
+        void setSubDMesh(class PyDbSubDMesh {lvalue},class boost::python::list,class boost::python::list,int)'''
+    ...
+    def setSubentColor (self, *args, **kwargs)-> None :
+      '''setSubentColor( (SubDMesh)arg1, (SubentId)arg2, (Color)arg3) -> None :
+
+    C++ signature :
+        void setSubentColor(class PyDbSubDMesh {lvalue},class PyDbSubentId,class AcCmColor)'''
+    ...
+    def setSubentMaterial (self, *args, **kwargs)-> None :
+      '''setSubentMaterial( (SubDMesh)arg1, (SubentId)arg2, (ObjectId)arg3) -> None :
+
+    C++ signature :
+        void setSubentMaterial(class PyDbSubDMesh {lvalue},class PyDbSubentId,class PyDbObjectId)'''
+    ...
+    def setTorus (self, *args, **kwargs)-> None :
+      '''setTorus( (SubDMesh)arg1, (float)arg2, (int)arg3, (int)arg4, (float)arg5, (float)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void setTorus(class PyDbSubDMesh {lvalue},double,int,int,double,double,int)'''
+    ...
+    def setVertexAt (self, *args, **kwargs)-> None :
+      '''setVertexAt( (SubDMesh)arg1, (int)arg2, (Point3d)arg3) -> None :
+
+    C++ signature :
+        void setVertexAt(class PyDbSubDMesh {lvalue},int,class AcGePoint3d)
+
+setVertexAt( (SubDMesh)arg1, (SubentId)arg2, (Point3d)arg3) -> None :
+
+    C++ signature :
+        void setVertexAt(class PyDbSubDMesh {lvalue},class PyDbSubentId,class AcGePoint3d)'''
+    ...
+    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setWedge (self, *args, **kwargs)-> None :
+      '''setWedge( (SubDMesh)arg1, (float)arg2, (float)arg3, (float)arg4, (int)arg5, (int)arg6, (int)arg7, (int)arg8, (int)arg9, (int)arg10) -> None :
+
+    C++ signature :
+        void setWedge(class PyDbSubDMesh {lvalue},double,double,double,int,int,int,int,int,int)'''
+    ...
+    def setXData (self, xdata: list)-> None :
+      '''                             '''
+    ...
+    def snoop (self,  filer : PyDb.SnoopDwgFiler)-> None :
+      '''                             '''
+    ...
+    def spin (self, *args, **kwargs)-> None :
+      '''spin( (SubDMesh)arg1, (SubentId)arg2) -> None :
+
+    C++ signature :
+        void spin(class PyDbSubDMesh {lvalue},class PyDbSubentId)'''
+    ...
+    def splitFace (self, *args, **kwargs)-> None :
+      '''splitFace( (SubDMesh)arg1, (SubentId)arg2, (SubentId)arg3, (Point3d)arg4, (SubentId)arg5, (Point3d)arg6) -> None :
+
+    C++ signature :
+        void splitFace(class PyDbSubDMesh {lvalue},class PyDbSubentId,class PyDbSubentId,class AcGePoint3d,class PyDbSubentId,class AcGePoint3d)'''
+    ...
+    def subdDivideDown (self, *args, **kwargs)-> None :
+      '''subdDivideDown( (SubDMesh)arg1) -> None :
+
+    C++ signature :
+        void subdDivideDown(class PyDbSubDMesh {lvalue})'''
+    ...
+    def subdDivideUp (self, *args, **kwargs)-> None :
+      '''subdDivideUp( (SubDMesh)arg1) -> None :
+
+    C++ signature :
+        void subdDivideUp(class PyDbSubDMesh {lvalue})'''
+    ...
+    def subdLevel (self, *args, **kwargs)-> int :
+      '''subdLevel( (SubDMesh)arg1) -> int :
+
+    C++ signature :
+        int subdLevel(class PyDbSubDMesh {lvalue})'''
+    ...
+    def subdRefine (self, *args, **kwargs)-> None :
+      '''subdRefine( (SubDMesh)arg1) -> None :
+
+    C++ signature :
+        void subdRefine(class PyDbSubDMesh {lvalue})
+
+subdRefine( (SubDMesh)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void subdRefine(class PyDbSubDMesh {lvalue},class boost::python::list)'''
+    ...
+    def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
+      '''                             '''
+    ...
+    def transformBy (self, matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def upgradeFromNotify (self, wasWritable: bool)-> None :
+      '''                             '''
+    ...
+    def upgradeOpen (self)-> None :
+      '''                             '''
+    ...
+    def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
+      '''                             '''
+    ...
+    def viewportDrawLogicalFlags (self, vpdraw: PyGi.ViewportDraw)-> int :
+      '''                             '''
+    ...
+    def visibility (self)-> PyDb.Visibility :
+      '''                             '''
+    ...
+    def wblockClone (self, owner: PyRx.RxObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
+    def worldDraw (self, wdraw: PyGi.WorldDraw)-> bool :
+      '''                             '''
+    ...
+    def xData (self, appname: str)-> list :
+      '''                             '''
+    ...
+    def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self)-> None :
+      '''                             '''
     ...
 
 class SubentId:

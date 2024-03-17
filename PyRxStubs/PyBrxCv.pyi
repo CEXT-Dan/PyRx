@@ -7935,8 +7935,30 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def snoop (self,  filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
+    def solid3d (self, *args, **kwargs)-> PyDb.Solid3d :
+      '''solid3d( (CvDbTinSurface)arg1, (TinSurfaceSolidType)arg2, (float)arg3) -> Solid3d :
+
+    C++ signature :
+        class PyDb3dSolid solid3d(class PyBrxCvDbTinSurface {lvalue},enum BrxCvDbTinSurface::ETinSurfaceSolidType,double)
+
+solid3d( (CvDbTinSurface)arg1, (CvDbTinSurface)arg2) -> Solid3d :
+
+    C++ signature :
+        class PyDb3dSolid solid3d(class PyBrxCvDbTinSurface {lvalue},class PyBrxCvDbTinSurface)'''
+    ...
     def style (self)-> PyBrxCv.TinSurfaceStyle :
       '''                             '''
+    ...
+    def subDMesh (self, *args, **kwargs)-> PyDb.SubDMesh :
+      '''subDMesh( (CvDbTinSurface)arg1, (TinSurfaceMeshType)arg2, (float)arg3) -> SubDMesh :
+
+    C++ signature :
+        class PyDbSubDMesh subDMesh(class PyBrxCvDbTinSurface {lvalue},enum BrxCvDbTinSurface::ETinSurfaceMeshType,double)
+
+subDMesh( (CvDbTinSurface)arg1 [, (CvDbTinSurface)arg2]) -> SubDMesh :
+
+    C++ signature :
+        class PyDbSubDMesh subDMesh(class PyBrxCvDbTinSurface {lvalue} [,class PyBrxCvDbTinSurface])'''
     ...
     def swapEdge (self, pt : PyGe.Point3d)-> bool :
       '''                             '''
@@ -13604,8 +13626,30 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def snoop (self,  filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
+    def solid3d (self, *args, **kwargs)-> PyDb.Solid3d :
+      '''solid3d( (CvDbTinSurface)arg1, (TinSurfaceSolidType)arg2, (float)arg3) -> Solid3d :
+
+    C++ signature :
+        class PyDb3dSolid solid3d(class PyBrxCvDbTinSurface {lvalue},enum BrxCvDbTinSurface::ETinSurfaceSolidType,double)
+
+solid3d( (CvDbTinSurface)arg1, (CvDbTinSurface)arg2) -> Solid3d :
+
+    C++ signature :
+        class PyDb3dSolid solid3d(class PyBrxCvDbTinSurface {lvalue},class PyBrxCvDbTinSurface)'''
+    ...
     def style (self)-> PyBrxCv.TinSurfaceStyle :
       '''                             '''
+    ...
+    def subDMesh (self, *args, **kwargs)-> PyDb.SubDMesh :
+      '''subDMesh( (CvDbTinSurface)arg1, (TinSurfaceMeshType)arg2, (float)arg3) -> SubDMesh :
+
+    C++ signature :
+        class PyDbSubDMesh subDMesh(class PyBrxCvDbTinSurface {lvalue},enum BrxCvDbTinSurface::ETinSurfaceMeshType,double)
+
+subDMesh( (CvDbTinSurface)arg1 [, (CvDbTinSurface)arg2]) -> SubDMesh :
+
+    C++ signature :
+        class PyDbSubDMesh subDMesh(class PyBrxCvDbTinSurface {lvalue} [,class PyBrxCvDbTinSurface])'''
     ...
     def swapEdge (self, pt : PyGe.Point3d)-> bool :
       '''                             '''
