@@ -245,16 +245,12 @@ class TestDatabase(unittest.TestCase):
     def test_GeoPositionMarker(self):
         db = self.geodb
         model = Db.BlockTableRecord(db.modelSpaceId())
-        
         geoPosDesc = Db.GeoPositionMarker.desc()
         markers = [Db.GeoPositionMarker(id) for id in model.objectIds(geoPosDesc)]
-
         for marker in markers:
             self.assertIsNotNone(marker.latLonAlt())
-
         for marker in markers:
             self.assertIsNotNone(marker.position())
-
         for marker in markers:
             self.assertIsNotNone(marker.geoPosition())
             
@@ -264,7 +260,23 @@ class TestDatabase(unittest.TestCase):
         self.assertTrue(geoDataId.isValid())
         geoData = Db.GeoData(geoDataId)
         self.assertIsNotNone(geoData.coordinateSystem())
+    
+    @unittest.skipIf(host == "BRX24", "BricsCAD known failure")    
+    def test_GeoData_transformFromLonLatAlt(self) -> None:
+        db = self.geodb
+        geoDataId = Db.Core.getGeoDataObjId(db)
+        geoData = Db.GeoData(geoDataId)
+        result = geoData.transformFromLonLatAlt(Ge.Point3d(0.8894,90.0000,1))
+        self.assertEqual(result.x,-13839395.1337296)
+        self.assertEqual(result.y,8430914.179736577)
+        self.assertEqual(result.z,1.00000000000000)
         
+    def test_dbextents(self) -> None:
+        ex1 = Db.Extents(Ge.Point3d(0,0,0),Ge.Point3d(100,100,100))
+        ex2 = Db.Extents(Ge.Point3d(10,10,0),Ge.Point3d(110,110,110))
+        self.assertEqual(ex1.intersectsWith(ex2),True)
+        self.assertEqual(ex1.midPoint(),Ge.Point3d(50,50,50))
+       
     @unittest.skipIf(host == "BRX24", "BricsCAD known failure")
     def test_tdusrtimer(self) -> None:
         db = self.db06457
