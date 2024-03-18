@@ -725,6 +725,33 @@ BrxCvStationEquations* PyBrxCvStationEquations::impObj(const std::source_locatio
 //PyBrxCvDbHAlignment
 void makePyBrxCvDbHAlignmentWrapper()
 {
+    constexpr const std::string_view getStationAtPointOverloads = "Overloads:\n"
+        "- station: PyGe.Point2d\n"
+        "- station: PyGe.Point2d,fromStation: float, toStation: float\n";
+
+    constexpr const std::string_view addLineFixedOverloads = "Overloads:\n"
+        "- prevId : int, length: float\n"
+        "- start: PyGe.Point2d, end: PyGe.Point2d\n";
+
+    constexpr const std::string_view addLineToOverloads = "Overloads:\n"
+        "- nextId : int, length: float\n"
+        "- nextId : int, to: PyGe.Point2d\n";
+
+    constexpr const std::string_view addLineFromOverloads = "Overloads:\n"
+        "- prevId : int, length: float\n"
+        "- prevId : int, to: PyGe.Point2d\n";
+
+    constexpr const std::string_view addArcFixedOverloads = "Overloads:\n"
+        "- center: PyGe.Point2d, radius: float, clockwise: bool\n"
+        "- startPoint: PyGe.Point2d, midPoint: PyGe.Point2d, endPoint: PyGe.Point2d\n";
+
+    constexpr const std::string_view addArcToOverloads = "Overloads:\n"
+        "- nextId: int, passThroughPoint: PyGe.Point2d\n"
+        "- nextId: int, passThroughPoint: PyGe.Point2d, direction: PyGe.Vector2d\n"
+        "- nextId: int, passThroughPoint: PyGe.Point2d, radius: float, isGreaterThan180: bool, arcType: PyBrxCv.ArcType\n"
+        "- nextId: int, radius: float, paramValue: float, paramType: PyBrxCv.ArcType, isClockwise: bool\n";
+
+
     PyDocString DS("CvDbHAlignment");
     class_<PyBrxCvDbHAlignment, bases<PyBrxCvDbCurve>>("CvDbHAlignment")
         .def(init<>())
@@ -732,83 +759,95 @@ void makePyBrxCvDbHAlignmentWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=kForRead", "erased: bool=False" })))
 
-        .def("verticalAlignmentCount", &PyBrxCvDbHAlignment::verticalAlignmentCount)
-        .def("verticalAlignmentAt", &PyBrxCvDbHAlignment::verticalAlignmentAt)
-        .def("alignment3dCount", &PyBrxCvDbHAlignment::alignment3dCount)
-        .def("alignment3dAt", &PyBrxCvDbHAlignment::alignment3dAt)
-        .def("verticalAlignmentViewCount", &PyBrxCvDbHAlignment::verticalAlignmentViewCount)
-        .def("verticalAlignmentViewAt", &PyBrxCvDbHAlignment::verticalAlignmentViewAt)
-        .def("length", &PyBrxCvDbHAlignment::length)
-        .def("elementCount", &PyBrxCvDbHAlignment::elementCount)
+        .def("verticalAlignmentCount", &PyBrxCvDbHAlignment::verticalAlignmentCount, DS.ARGS())
+        .def("verticalAlignmentAt", &PyBrxCvDbHAlignment::verticalAlignmentAt, DS.ARGS({ "index: int" }))
+        .def("alignment3dCount", &PyBrxCvDbHAlignment::alignment3dCount, DS.ARGS())
+        .def("alignment3dAt", &PyBrxCvDbHAlignment::alignment3dAt, DS.ARGS({ "index: int" }))
+        .def("verticalAlignmentViewCount", &PyBrxCvDbHAlignment::verticalAlignmentViewCount, DS.ARGS())
+        .def("verticalAlignmentViewAt", &PyBrxCvDbHAlignment::verticalAlignmentViewAt, DS.ARGS({ "index: int" }))
+        .def("length", &PyBrxCvDbHAlignment::length, DS.ARGS())
+        .def("elementCount", &PyBrxCvDbHAlignment::elementCount, DS.ARGS())
         .def("getStationAtPoint", &PyBrxCvDbHAlignment::getStationAtPoint1)
-        .def("getStationAtPoint", &PyBrxCvDbHAlignment::getStationAtPoint2)
-        .def("getPointAtStation", &PyBrxCvDbHAlignment::getPointAtStation)
-        .def("firstElementId", &PyBrxCvDbHAlignment::firstElementId)
-        .def("lastElementId", &PyBrxCvDbHAlignment::lastElementId)
-        .def("firstLineElementId", &PyBrxCvDbHAlignment::firstLineElementId)
-        .def("nextLineElementId", &PyBrxCvDbHAlignment::nextLineElementId)
-        .def("previousLineElementId", &PyBrxCvDbHAlignment::previousLineElementId)
-        .def("elementAtId", &PyBrxCvDbHAlignment::elementAtId)
-        .def("elementAtStation", &PyBrxCvDbHAlignment::elementAtStation)
-        .def("curveAtPI", &PyBrxCvDbHAlignment::curveAtPI)
-        .def("getPIsArray", &PyBrxCvDbHAlignment::getPIsArray)
-        .def("getUnorderedElementIds", &PyBrxCvDbHAlignment::getUnorderedElementIds)
-        .def("getElementId", &PyBrxCvDbHAlignment::getElementId)
-        .def("update", &PyBrxCvDbHAlignment::update)
-        .def("getRadius", &PyBrxCvDbHAlignment::getRadius)
+        .def("getStationAtPoint", &PyBrxCvDbHAlignment::getStationAtPoint2, DS.OVRL(getStationAtPointOverloads))
+        .def("getPointAtStation", &PyBrxCvDbHAlignment::getPointAtStation, DS.ARGS({ "station: float" }))
+        .def("firstElementId", &PyBrxCvDbHAlignment::firstElementId, DS.ARGS())
+        .def("lastElementId", &PyBrxCvDbHAlignment::lastElementId, DS.ARGS())
+        .def("firstLineElementId", &PyBrxCvDbHAlignment::firstLineElementId, DS.ARGS())
+        .def("nextLineElementId", &PyBrxCvDbHAlignment::nextLineElementId, DS.ARGS({ "Id: int" }))
+        .def("previousLineElementId", &PyBrxCvDbHAlignment::previousLineElementId, DS.ARGS({ "Id: int" }))
+        .def("elementAtId", &PyBrxCvDbHAlignment::elementAtId, DS.ARGS({ "Id: int" }))
+        .def("elementAtStation", &PyBrxCvDbHAlignment::elementAtStation, DS.ARGS({ "station: float" }))
+        .def("curveAtPI", &PyBrxCvDbHAlignment::curveAtPI, DS.ARGS({ "pi: PyBrxCv.CvDbHAlignmentPI" }))
+        .def("getPIsArray", &PyBrxCvDbHAlignment::getPIsArray, DS.ARGS())
+        .def("getUnorderedElementIds", &PyBrxCvDbHAlignment::getUnorderedElementIds, DS.ARGS())
+        .def("getElementId", &PyBrxCvDbHAlignment::getElementId, DS.ARGS({ "gsMarker: int" }))
+        .def("update", &PyBrxCvDbHAlignment::update, DS.ARGS())
+        .def("getRadius", &PyBrxCvDbHAlignment::getRadius, DS.ARGS({ "param: float" }))
         .def("addLineFixed", &PyBrxCvDbHAlignment::addLineFixed1)
-        .def("addLineFixed", &PyBrxCvDbHAlignment::addLineFixed2)
+        .def("addLineFixed", &PyBrxCvDbHAlignment::addLineFixed2, DS.OVRL(addLineFixedOverloads))
         .def("addLineTo", &PyBrxCvDbHAlignment::addLineTo1)
+        .def("addLineTo", &PyBrxCvDbHAlignment::addLineTo2, DS.OVRL(addLineToOverloads))
         .def("addLineFrom", &PyBrxCvDbHAlignment::addLineFrom1)
-        .def("addLineTo", &PyBrxCvDbHAlignment::addLineTo2)
-        .def("addLineFrom", &PyBrxCvDbHAlignment::addLineFrom2)
-        .def("addLineBetween", &PyBrxCvDbHAlignment::addLineBetween)
-        .def("insertLineFixed", &PyBrxCvDbHAlignment::insertLineFixed)
-        .def("addArcAuto", &PyBrxCvDbHAlignment::addArcAuto)
+        .def("addLineFrom", &PyBrxCvDbHAlignment::addLineFrom2, DS.OVRL(addLineFromOverloads))
+        .def("addLineBetween", &PyBrxCvDbHAlignment::addLineBetween, DS.ARGS({ "prevId: int","nextId: int" }))
+        .def("insertLineFixed", &PyBrxCvDbHAlignment::insertLineFixed, DS.ARGS({ "start: PyGe.Point2d","end: PyGe.Point2d","prevId: int" }))
+        .def("addArcAuto", &PyBrxCvDbHAlignment::addArcAuto, DS.ARGS({ "prevId: int","nextId: int" }))
         .def("addArcFixed", &PyBrxCvDbHAlignment::addArcFixed1)
-        .def("addArcFixed", &PyBrxCvDbHAlignment::addArcFixed2)
+        .def("addArcFixed", &PyBrxCvDbHAlignment::addArcFixed2, DS.OVRL(addArcFixedOverloads))
+
         .def("addArcTo", &PyBrxCvDbHAlignment::addArcTo1)
-        .def("addArcFrom", &PyBrxCvDbHAlignment::addArcFrom1)
         .def("addArcTo", &PyBrxCvDbHAlignment::addArcTo2)
-        .def("addArcFrom", &PyBrxCvDbHAlignment::addArcFrom2)
         .def("addArcTo", &PyBrxCvDbHAlignment::addArcTo3)
+        .def("addArcTo", &PyBrxCvDbHAlignment::addArcTo4, DS.OVRL(addArcToOverloads))
+
+        .def("addArcFrom", &PyBrxCvDbHAlignment::addArcFrom1)
+        .def("addArcFrom", &PyBrxCvDbHAlignment::addArcFrom2)
         .def("addArcFrom", &PyBrxCvDbHAlignment::addArcFrom3)
-        .def("addArcTo", &PyBrxCvDbHAlignment::addArcTo4)
         .def("addArcFrom", &PyBrxCvDbHAlignment::addArcFrom4)
+
+
         .def("addArcBetween", &PyBrxCvDbHAlignment::addArcBetween1)
         .def("addArcBetween", &PyBrxCvDbHAlignment::addArcBetween2)
+
         .def("addSCSBetween", &PyBrxCvDbHAlignment::addSCSBetween)
         .def("addSTSBetween", &PyBrxCvDbHAlignment::addSTSBetween)
         .def("addSSBetween", &PyBrxCvDbHAlignment::addSSBetween)
         .def("addSpiralFrom", &PyBrxCvDbHAlignment::addSpiralFrom)
         .def("addSpiralTo", &PyBrxCvDbHAlignment::addSpiralTo)
         .def("addSpiralBetween", &PyBrxCvDbHAlignment::addSpiralBetween)
-        .def("addSTFrom", &PyBrxCvDbHAlignment::addSTFrom1)
+
         .def("addTSTo", &PyBrxCvDbHAlignment::addTSTo1)
-        .def("addSTFrom", &PyBrxCvDbHAlignment::addSTFrom2)
         .def("addTSTo", &PyBrxCvDbHAlignment::addTSTo2)
-        .def("addSCFrom", &PyBrxCvDbHAlignment::addSCFrom1)
+
+        .def("addSTFrom", &PyBrxCvDbHAlignment::addSTFrom1)
+        .def("addSTFrom", &PyBrxCvDbHAlignment::addSTFrom2)
+
         .def("addCSTo", &PyBrxCvDbHAlignment::addCSTo1)
-        .def("addSCFrom", &PyBrxCvDbHAlignment::addSCFrom2)
         .def("addCSTo", &PyBrxCvDbHAlignment::addCSTo2)
-        .def("addSSCFrom", &PyBrxCvDbHAlignment::addSSCFrom)
+        .def("addSCFrom", &PyBrxCvDbHAlignment::addSCFrom1)
+        .def("addSCFrom", &PyBrxCvDbHAlignment::addSCFrom2)
+
         .def("addCSSTo", &PyBrxCvDbHAlignment::addCSSTo)
+        .def("addSSCFrom", &PyBrxCvDbHAlignment::addSSCFrom)
         .def("addSCSAuto", &PyBrxCvDbHAlignment::addSCSAuto)
-        .def("deleteElement", &PyBrxCvDbHAlignment::deleteElement)
-        .def("style", &PyBrxCvDbHAlignment::style)
-        .def("setStyle", &PyBrxCvDbHAlignment::setStyle)
-        .def("elementExtensionColor", &PyBrxCvDbHAlignment::elementExtensionColor)
-        .def("tangentExtensionColor", &PyBrxCvDbHAlignment::tangentExtensionColor)
-        .def("lineElementColor", &PyBrxCvDbHAlignment::lineElementColor)
-        .def("curveElementColor", &PyBrxCvDbHAlignment::curveElementColor)
-        .def("spiralElementColor", &PyBrxCvDbHAlignment::spiralElementColor)
-        .def("setElementExtensionColor", &PyBrxCvDbHAlignment::setElementExtensionColor)
-        .def("setTangentExtensionColor", &PyBrxCvDbHAlignment::setTangentExtensionColor)
-        .def("setLineElementColor", &PyBrxCvDbHAlignment::setLineElementColor)
-        .def("setCurveElementColor", &PyBrxCvDbHAlignment::setCurveElementColor)
-        .def("setSpiralElementColor", &PyBrxCvDbHAlignment::setSpiralElementColor)
-        .def("stationEquations", &PyBrxCvDbHAlignment::stationEquations)
-        .def("setStationEquations", &PyBrxCvDbHAlignment::setStationEquations)
+
+        .def("deleteElement", &PyBrxCvDbHAlignment::deleteElement, DS.ARGS({ "id: int" }))
+        .def("style", &PyBrxCvDbHAlignment::style, DS.ARGS())
+        .def("setStyle", &PyBrxCvDbHAlignment::setStyle, DS.ARGS({ "style: int" }))
+        .def("elementExtensionColor", &PyBrxCvDbHAlignment::elementExtensionColor, DS.ARGS())
+        .def("tangentExtensionColor", &PyBrxCvDbHAlignment::tangentExtensionColor, DS.ARGS())
+        .def("lineElementColor", &PyBrxCvDbHAlignment::lineElementColor, DS.ARGS())
+        .def("curveElementColor", &PyBrxCvDbHAlignment::curveElementColor, DS.ARGS())
+        .def("spiralElementColor", &PyBrxCvDbHAlignment::spiralElementColor, DS.ARGS())
+
+        .def("setElementExtensionColor", &PyBrxCvDbHAlignment::setElementExtensionColor, DS.ARGS({ "colACI: int" }))
+        .def("setTangentExtensionColor", &PyBrxCvDbHAlignment::setTangentExtensionColor, DS.ARGS({ "colACI: int" }))
+        .def("setLineElementColor", &PyBrxCvDbHAlignment::setLineElementColor, DS.ARGS({ "colACI: int" }))
+        .def("setCurveElementColor", &PyBrxCvDbHAlignment::setCurveElementColor, DS.ARGS({ "colACI: int" }))
+        .def("setSpiralElementColor", &PyBrxCvDbHAlignment::setSpiralElementColor, DS.ARGS({ "colACI: int" }))
+
+        .def("stationEquations", &PyBrxCvDbHAlignment::stationEquations, DS.ARGS())
+        .def("setStationEquations", &PyBrxCvDbHAlignment::setStationEquations, DS.ARGS({ "val: PyBrxCv.CvStationEquations" }))
 
         .def("className", &PyBrxCvDbHAlignment::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbHAlignment::desc, DS.SARGS()).staticmethod("desc")
@@ -898,7 +937,7 @@ boost::python::tuple PyBrxCvDbHAlignment::getStationAtPoint2(const AcGePoint2d& 
     return boost::python::make_tuple(flag, station, offset);
 }
 
-boost::python::tuple PyBrxCvDbHAlignment::getPointAtStation(const double station) const
+boost::python::tuple PyBrxCvDbHAlignment::getPointAtStation(double station) const
 {
     AcGePoint2d pt;
     bool flag = impObj()->getPointAtStation(station, pt);
