@@ -2191,6 +2191,347 @@ BrxCvDbHAlignmentSSCSS* PyBrxCvDbHAlignmentSSCSS::impObj(const std::source_locat
     return static_cast<BrxCvDbHAlignmentSSCSS*>(m_pyImp.get());
 }
 
+void makePyBrxCvDbVAlignmentWrapper()
+{
+    PyDocString DS("CvDbVAlignment");
+    class_<PyBrxCvDbVAlignment, bases<PyBrxCvDbCurve>>("CvDbVAlignment")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=kForRead", "erased: bool=False" })))
+
+        .def("baseHAlignment", &PyBrxCvDbVAlignment::baseHAlignment, DS.ARGS())
+        .def("baseSurface", &PyBrxCvDbVAlignment::baseSurface, DS.ARGS())
+        .def("elevationMin", &PyBrxCvDbVAlignment::elevationMin, DS.ARGS())
+        .def("elevationMax", &PyBrxCvDbVAlignment::elevationMax, DS.ARGS())
+        .def("getElevationAt", &PyBrxCvDbVAlignment::getElevationAt, DS.ARGS({ "val: float" }))
+        .def("length", &PyBrxCvDbVAlignment::length, DS.ARGS())
+        .def("elementCount", &PyBrxCvDbVAlignment::elementCount, DS.ARGS())
+        .def("type", &PyBrxCvDbVAlignment::type, DS.ARGS())
+        .def("firstElementId", &PyBrxCvDbVAlignment::firstElementId, DS.ARGS())
+        .def("lastElementId", &PyBrxCvDbVAlignment::lastElementId, DS.ARGS())
+        .def("firstTangentElementId", &PyBrxCvDbVAlignment::firstTangentElementId, DS.ARGS())
+        .def("nextTangentElementId", &PyBrxCvDbVAlignment::nextTangentElementId, DS.ARGS({ "val: int" }))
+        .def("previousTangentElementId", &PyBrxCvDbVAlignment::previousTangentElementId, DS.ARGS({ "val: int" }))
+        .def("elementAtId", &PyBrxCvDbVAlignment::elementAtId, DS.ARGS({ "val: int" }))
+        .def("curveAtPVI", &PyBrxCvDbVAlignment::curveAtPVI, DS.ARGS({ "val: PyBrxCv.CvDbVAlignmentPVI" }))
+        .def("pviAtCurve", &PyBrxCvDbVAlignment::pviAtCurve, DS.ARGS({ "val: PyBrxCv.CvDbVAlignmentCurve" }))
+        .def("getPVIsArrays", &PyBrxCvDbVAlignment::getPVIsArrays, DS.ARGS())
+        .def("getUnorderedElementIds", &PyBrxCvDbVAlignment::getUnorderedElementIds, DS.ARGS())
+        .def("getElementId", &PyBrxCvDbVAlignment::getElementId, DS.ARGS({ "val: int" }))
+        .def("getRadius", &PyBrxCvDbVAlignment::getRadius, DS.ARGS({ "val: float" }))
+        .def("getElevations", &PyBrxCvDbVAlignment::getElevations, DS.ARGS())
+        .def("style", &PyBrxCvDbVAlignment::style, DS.ARGS())
+        .def("tangentPolygonColor", &PyBrxCvDbVAlignment::tangentPolygonColor, DS.ARGS())
+        .def("lineElementColor", &PyBrxCvDbVAlignment::lineElementColor, DS.ARGS())
+        .def("curveElementColor", &PyBrxCvDbVAlignment::curveElementColor, DS.ARGS())
+        .def("setBaseHAlignment", &PyBrxCvDbVAlignment::setBaseHAlignment, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("setBaseSurface", &PyBrxCvDbVAlignment::setBaseSurface, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("setType", &PyBrxCvDbVAlignment::setType, DS.ARGS({ "val: VAlignmentType" }))
+        .def("setStyle", &PyBrxCvDbVAlignment::setStyle, DS.ARGS({ "val: int" }))
+        .def("setTangentPolygonColor", &PyBrxCvDbVAlignment::setTangentPolygonColor, DS.ARGS({ "val: int" }))
+        .def("setLineElementColor", &PyBrxCvDbVAlignment::setLineElementColor, DS.ARGS({ "val: int" }))
+        .def("setCurveElementColor", &PyBrxCvDbVAlignment::setCurveElementColor, DS.ARGS({ "val: int" }))
+        .def("addTangentFixed", &PyBrxCvDbVAlignment::addTangentFixed, DS.ARGS({ "startPoint: PyGe.Point2d","endPoint: PyGe.Point2d" }))
+        .def("insertTangentFixed", &PyBrxCvDbVAlignment::insertTangentFixed, DS.ARGS({ "startPoint: PyGe.Point2d","endPoint: PyGe.Point2d","val: int" }))
+        .def("addArcBetween", &PyBrxCvDbVAlignment::addArcBetween, DS.ARGS({ "prevId: int","nextId: int","radius: float" }))
+        .def("addArcAuto", &PyBrxCvDbVAlignment::addArcAuto, DS.ARGS({ "prevId: int","nextId: int" }))
+        .def("addParabolaBetween", &PyBrxCvDbVAlignment::addParabolaBetween, DS.ARGS({ "prevId: int","nextId: int","radius: float" }))
+        .def("addParabolaAuto", &PyBrxCvDbVAlignment::addParabolaAuto, DS.ARGS({ "prevId: int","nextId: int" }))
+        .def("deleteElement", &PyBrxCvDbVAlignment::deleteElement, DS.ARGS({ "id: int" }))
+        .def("update", &PyBrxCvDbVAlignment::update, DS.ARGS({ "updateDependencies: bool" }))
+
+        .def("className", &PyBrxCvDbVAlignment::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbVAlignment::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyBrxCvDbVAlignment::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyBrxCvDbVAlignment::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbVAlignment::PyBrxCvDbVAlignment()
+    :PyBrxCvDbVAlignment(new BrxCvDbVAlignment(), true)
+{
+}
+
+PyBrxCvDbVAlignment::PyBrxCvDbVAlignment(const PyDbObjectId& id)
+    : PyBrxCvDbVAlignment(openAcDbObject<BrxCvDbVAlignment>(id), false)
+{
+}
+
+PyBrxCvDbVAlignment::PyBrxCvDbVAlignment(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyBrxCvDbVAlignment(openAcDbObject<BrxCvDbVAlignment>(id, mode), false)
+{
+}
+
+PyBrxCvDbVAlignment::PyBrxCvDbVAlignment(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyBrxCvDbVAlignment(openAcDbObject<BrxCvDbVAlignment>(id, mode, erased), false)
+{
+}
+
+PyBrxCvDbVAlignment::PyBrxCvDbVAlignment(BrxCvDbVAlignment* ptr, bool autoDelete)
+    :PyBrxCvDbCurve(ptr, autoDelete)
+{
+}
+
+PyDbObjectId PyBrxCvDbVAlignment::baseHAlignment() const
+{
+   return PyDbObjectId(impObj()->baseHAlignment());
+}
+
+PyDbObjectId PyBrxCvDbVAlignment::baseSurface() const
+{
+    return PyDbObjectId(impObj()->baseSurface());
+}
+
+double PyBrxCvDbVAlignment::elevationMin() const
+{
+    return impObj()->elevationMin();
+}
+
+double PyBrxCvDbVAlignment::elevationMax() const
+{
+    return impObj()->elevationMax();
+}
+
+boost::python::tuple PyBrxCvDbVAlignment::getElevationAt(double station) const
+{
+    PyAutoLockGIL lock;
+    double elevation;
+    bool flag = impObj()->getElevationAt(station, elevation);
+    return boost::python::make_tuple(flag, elevation);
+}
+
+double PyBrxCvDbVAlignment::length() const
+{
+    return impObj()->length();
+}
+
+size_t PyBrxCvDbVAlignment::elementCount() const
+{
+    return impObj()->elementCount();
+}
+
+BrxCvDbVAlignment::EVAlignmentType PyBrxCvDbVAlignment::type() const
+{
+    return impObj()->type();
+}
+
+Adesk::UInt64 PyBrxCvDbVAlignment::firstElementId() const
+{
+    return impObj()->firstElementId();
+}
+
+Adesk::UInt64 PyBrxCvDbVAlignment::lastElementId() const
+{
+    return impObj()->lastElementId();
+}
+
+Adesk::UInt64 PyBrxCvDbVAlignment::firstTangentElementId() const
+{
+    return impObj()->firstTangentElementId();
+}
+
+Adesk::UInt64 PyBrxCvDbVAlignment::nextTangentElementId(Adesk::UInt64 id) const
+{
+    return impObj()->nextTangentElementId(id);
+}
+
+Adesk::UInt64 PyBrxCvDbVAlignment::previousTangentElementId(Adesk::UInt64 id) const
+{
+    return impObj()->previousTangentElementId(id);
+}
+
+PyBrxCvDbVAlignmentElement PyBrxCvDbVAlignment::elementAtId(Adesk::UInt64 id) const
+{
+    auto ptr = impObj()->elementAtId(id);
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbVAlignmentElement(ptr.detach(), true);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
+}
+
+Adesk::UInt64 PyBrxCvDbVAlignment::curveAtPVI(const PyBrxCvDbVAlignmentPVI& pvi) const
+{
+    return impObj()->curveAtPVI(pvi.impObj());
+}
+
+PyBrxCvDbVAlignmentPVI PyBrxCvDbVAlignment::pviAtCurve(const PyBrxCvDbVAlignmentCurve& curve) const
+{
+    auto ptr = impObj()->pviAtCurve(curve.impObj());
+    if (ptr.refCount() == 1)
+        return PyBrxCvDbVAlignmentPVI(ptr.detach(), true);
+    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
+}
+
+boost::python::list PyBrxCvDbVAlignment::getPVIsArrays() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (auto ptr : impObj()->getPVIsArrays())
+    {
+        if (ptr.refCount() == 1)
+            pylist.append(PyBrxCvDbVAlignmentPVI(ptr.detach(), true));
+        else
+            throw PyAcadErrorStatus(Acad::eInvalidOpenState);
+    }
+    return pylist;
+}
+
+boost::python::list PyBrxCvDbVAlignment::getUnorderedElementIds() const
+{
+    PyAutoLockGIL lock;
+    AcArray<Adesk::UInt64> elementIds;
+    PyThrowBadEs(impObj()->getUnorderedElementIds(elementIds));
+    return IntU64ArrayToPyList(elementIds);
+}
+
+Adesk::UInt64 PyBrxCvDbVAlignment::getElementId(Adesk::GsMarker gsMarker) const
+{
+    return impObj()->getElementId(gsMarker);
+}
+
+double PyBrxCvDbVAlignment::getRadius(double param) const
+{
+    double radius = 0;
+    PyThrowBadEs(impObj()->getRadius(param,radius));
+    return radius;
+}
+
+boost::python::list PyBrxCvDbVAlignment::getElevations()
+{
+    AcGePoint2dArray elevations;
+    impObj()->getElevations(elevations);
+    return Point2dArrayToPyList(elevations);
+}
+
+Adesk::UInt32 PyBrxCvDbVAlignment::style() const
+{
+   return impObj()->style();
+}
+
+Adesk::UInt32 PyBrxCvDbVAlignment::tangentPolygonColor() const
+{
+    return impObj()->tangentPolygonColor();
+}
+
+Adesk::UInt32 PyBrxCvDbVAlignment::lineElementColor() const
+{
+    return impObj()->lineElementColor();
+}
+
+Adesk::UInt32 PyBrxCvDbVAlignment::curveElementColor() const
+{
+    return impObj()->curveElementColor();
+}
+
+bool PyBrxCvDbVAlignment::setBaseHAlignment(const PyDbObjectId& id)
+{
+    return impObj()->setBaseHAlignment(id.m_id);
+}
+
+bool PyBrxCvDbVAlignment::setBaseSurface(const PyDbObjectId& id)
+{
+    return impObj()->setBaseSurface(id.m_id);
+}
+
+bool PyBrxCvDbVAlignment::setType(const BrxCvDbVAlignment::EVAlignmentType type)
+{
+    return impObj()->setType(type);
+}
+
+bool PyBrxCvDbVAlignment::setStyle(Adesk::UInt32 style)
+{
+    return impObj()->setStyle(style);
+}
+
+bool PyBrxCvDbVAlignment::setTangentPolygonColor(Adesk::UInt32 color)
+{
+    return impObj()->setTangentPolygonColor(color);
+}
+
+bool PyBrxCvDbVAlignment::setLineElementColor(Adesk::UInt32 color)
+{
+    return impObj()->setLineElementColor(color);
+}
+
+bool PyBrxCvDbVAlignment::setCurveElementColor(Adesk::UInt32 color)
+{
+    return impObj()->setCurveElementColor(color);
+}
+
+Adesk::UInt64 PyBrxCvDbVAlignment::addTangentFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint)
+{
+    return impObj()->addTangentFixed(startPoint, endPoint);
+}
+
+Adesk::UInt64 PyBrxCvDbVAlignment::insertTangentFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, Adesk::UInt64 prevId)
+{
+    return impObj()->insertTangentFixed(startPoint, endPoint, prevId);
+}
+
+Adesk::UInt64 PyBrxCvDbVAlignment::addArcBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double radius)
+{
+    return impObj()->addArcBetween(prevId, nextId, radius);
+}
+
+Adesk::UInt64 PyBrxCvDbVAlignment::addArcAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId)
+{
+    return impObj()->addArcAuto(prevId, nextId);
+}
+
+Adesk::UInt64 PyBrxCvDbVAlignment::addParabolaBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double radius)
+{
+    return impObj()->addParabolaBetween(prevId, nextId, radius);
+}
+
+Adesk::UInt64 PyBrxCvDbVAlignment::addParabolaAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId)
+{
+    return impObj()->addParabolaAuto(prevId, nextId);
+}
+
+bool PyBrxCvDbVAlignment::deleteElement(Adesk::UInt64 id)
+{
+    return impObj()->deleteElement(id);
+}
+
+bool PyBrxCvDbVAlignment::update(bool updateDependencies)
+{
+    return impObj()->update(updateDependencies);
+}
+
+std::string PyBrxCvDbVAlignment::className()
+{
+    return "BrxCvDbVAlignment";
+}
+
+PyRxClass PyBrxCvDbVAlignment::desc()
+{
+    return PyRxClass(BrxCvDbVAlignment::desc(), false);
+}
+
+PyBrxCvDbVAlignment PyBrxCvDbVAlignment::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(BrxCvDbVAlignment::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyBrxCvDbVAlignment(static_cast<BrxCvDbVAlignment*>(src.impObj()->clone()), true);
+}
+
+PyBrxCvDbVAlignment PyBrxCvDbVAlignment::cast(const PyRxObject& src)
+{
+    PyBrxCvDbVAlignment dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+BrxCvDbVAlignment* PyBrxCvDbVAlignment::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxCvDbVAlignment*>(m_pyImp.get());
+}
+
+
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbVAlignmentElement
 void makePyBrxCvDbVAlignmentElementWrapper()

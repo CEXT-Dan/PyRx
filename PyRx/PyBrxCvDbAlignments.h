@@ -10,6 +10,9 @@ class PyDbDatabase;
 class PyBrxCvDbHAlignment;
 class PyBrxCvDbHAlignmentElement;
 class PyBrxCvDbHAlignmentPI;
+class PyBrxCvDbVAlignmentElement;
+class PyBrxCvDbVAlignmentPVI;
+class PyBrxCvDbVAlignmentCurve;
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvCivil3dEntityInfo
@@ -628,6 +631,69 @@ public:
     static PyBrxCvDbHAlignmentSSCSS  cast(const PyRxObject& src);
 public:
     inline BrxCvDbHAlignmentSSCSS* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbVAlignment
+void makePyBrxCvDbVAlignmentWrapper();
+
+class PyBrxCvDbVAlignment : public PyBrxCvDbCurve
+{
+public:
+    PyBrxCvDbVAlignment();
+    PyBrxCvDbVAlignment(const PyDbObjectId& id);
+    PyBrxCvDbVAlignment(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbVAlignment(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbVAlignment(BrxCvDbVAlignment* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbVAlignment() override = default;
+
+    PyDbObjectId                baseHAlignment() const;
+    PyDbObjectId                baseSurface() const;
+    double                      elevationMin() const;
+    double                      elevationMax() const;
+    boost::python::tuple        getElevationAt(double station) const;
+    double                      length() const;
+    size_t                      elementCount() const;
+    BrxCvDbVAlignment::EVAlignmentType type() const;
+    Adesk::UInt64               firstElementId() const;
+    Adesk::UInt64               lastElementId() const;
+    Adesk::UInt64               firstTangentElementId() const;
+    Adesk::UInt64               nextTangentElementId(Adesk::UInt64 id) const;
+    Adesk::UInt64               previousTangentElementId(Adesk::UInt64 id) const;
+    PyBrxCvDbVAlignmentElement  elementAtId(Adesk::UInt64 id) const;
+    Adesk::UInt64               curveAtPVI(const PyBrxCvDbVAlignmentPVI& pvi) const;
+    PyBrxCvDbVAlignmentPVI      pviAtCurve(const PyBrxCvDbVAlignmentCurve& curve) const;
+    boost::python::list         getPVIsArrays() const;
+    boost::python::list         getUnorderedElementIds() const;
+    Adesk::UInt64               getElementId(Adesk::GsMarker gsMarker) const;
+    double                      getRadius(double param) const;
+    boost::python::list         getElevations();
+    Adesk::UInt32               style() const;              
+    Adesk::UInt32               tangentPolygonColor() const;
+    Adesk::UInt32               lineElementColor() const;  
+    Adesk::UInt32               curveElementColor() const; 
+    bool                        setBaseHAlignment(const PyDbObjectId& id);
+    bool                        setBaseSurface(const PyDbObjectId& id);
+    bool                        setType(const BrxCvDbVAlignment::EVAlignmentType type);
+    bool                        setStyle(Adesk::UInt32 style);               
+    bool                        setTangentPolygonColor(Adesk::UInt32 color);
+    bool                        setLineElementColor(Adesk::UInt32 color);   
+    bool                        setCurveElementColor(Adesk::UInt32 color);
+    Adesk::UInt64               addTangentFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint);
+    Adesk::UInt64               insertTangentFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, Adesk::UInt64 prevId);
+    Adesk::UInt64               addArcBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double radius);
+    Adesk::UInt64               addArcAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId);
+    Adesk::UInt64               addParabolaBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double radius);
+    Adesk::UInt64               addParabolaAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId);
+    bool                        deleteElement(Adesk::UInt64 id);
+    bool                        update(bool updateDependencies);
+
+    static std::string          className();
+    static PyRxClass            desc();
+    static PyBrxCvDbVAlignment  cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbVAlignment  cast(const PyRxObject& src);
+public:
+    inline BrxCvDbVAlignment* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
