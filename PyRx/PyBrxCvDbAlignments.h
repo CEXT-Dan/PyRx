@@ -236,7 +236,7 @@ public:
 
     boost::python::tuple    getStationAtPoint1(const AcGePoint2d& point) const;
     boost::python::tuple    getStationAtPoint2(const AcGePoint2d& point, double fromStation, double toStation) const;
-    boost::python::tuple    getPointAtStation(const double station) const;
+    boost::python::tuple    getPointAtStation(double station) const;
 
     Adesk::UInt64           firstElementId() const;
     Adesk::UInt64           lastElementId() const;
