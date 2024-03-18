@@ -53,7 +53,7 @@ void makePyDbUnderlayDefinitionWrapper()
     PyDocString DS("UnderlayDefinition");
     class_<PyDbUnderlayDefinition, bases<PyDbObject>>("UnderlayDefinition", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: OpenMode=kForRead" })))
         .def("setSourceFileName", &PyDbUnderlayDefinition::setSourceFileName, DS.ARGS({ "file : str" }))
         .def("getSourceFileName", &PyDbUnderlayDefinition::getSourceFileName, DS.ARGS())
         .def("getActiveFileName", &PyDbUnderlayDefinition::getActiveFileName, DS.ARGS())
@@ -526,22 +526,24 @@ AcDbUnderlayReference* PyDbUnderlayReference::impObj(const std::source_location&
 //PyDbPdfDefinition
 void makePyDbPdfDefinitionWrapper()
 {
+    PyDocString DS("PdfDefinition");
     class_<PyDbPdfDefinition, bases<PyDbUnderlayDefinition>>("PdfDefinition")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbUnderlayDefinition::className).staticmethod("className")
-        .def("desc", &PyDbUnderlayDefinition::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbUnderlayDefinition::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbUnderlayDefinition::cast).staticmethod("cast")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: OpenMode=kForRead" })))
+        .def("className", &PyDbUnderlayDefinition::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbUnderlayDefinition::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbUnderlayDefinition::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbUnderlayDefinition::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
 static AcDbPdfDefinition* openAcDbPdfDefinition(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbPdfDefinition* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbPdfDefinition>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
+    if (auto es = acdbOpenObject<AcDbPdfDefinition>(pobj, id.m_id, mode); es != eOk) [[unlikely]]{
+            throw PyAcadErrorStatus(es);
+        }
         return pobj;
 }
 
@@ -602,14 +604,15 @@ AcDbPdfDefinition* PyDbPdfDefinition::impObj(const std::source_location& src /*=
 //PyDbPdfReference
 void makePyDbPdfReferenceWrapper()
 {
+    PyDocString DS("PdfReference");
     class_<PyDbPdfReference, bases<PyDbUnderlayReference>>("PdfReference")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbPdfReference::className).staticmethod("className")
-        .def("desc", &PyDbPdfReference::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbPdfReference::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbPdfReference::cast).staticmethod("cast")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: OpenMode=kForRead" })))
+        .def("className", &PyDbPdfReference::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbPdfReference::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbPdfReference::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbPdfReference::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
