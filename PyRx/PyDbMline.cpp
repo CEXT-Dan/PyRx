@@ -8,6 +8,12 @@ using namespace boost::python;
 
 void makePyDbMlineWrapper()
 {
+    constexpr const std::string_view getClosestPointToOverloads = "Overloads:\n"
+        "- givenPoint: PyGe.Point3d, extend: bool\n"
+        "- givenPoint: PyGe.Point3d, extend: bool, excludeCaps: bool\n"
+        "- givenPoint: PyGe.Point3d, normal: PyGe.Vector3d, extend: bool\n"
+        "- givenPoint: PyGe.Point3d, normal: PyGe.Vector3d, extend: bool, excludeCaps: bool\n";
+
     PyDocString DS("Mline");
     class_<PyDbMline, bases<PyDbEntity>>("Mline")
         .def(init<>())
@@ -39,7 +45,7 @@ void makePyDbMlineWrapper()
         .def("getClosestPointTo", &PyDbMline::getClosestPointTo1)
         .def("getClosestPointTo", &PyDbMline::getClosestPointTo2)
         .def("getClosestPointTo", &PyDbMline::getClosestPointTo3)
-        .def("getClosestPointTo", &PyDbMline::getClosestPointTo4)
+        .def("getClosestPointTo", &PyDbMline::getClosestPointTo4, DS.OVRL(getClosestPointToOverloads))
         .def("getPlane", &PyDbMline::getPlane, DS.ARGS())
         .def("className", &PyDbMline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbMline::desc, DS.SARGS()).staticmethod("desc")

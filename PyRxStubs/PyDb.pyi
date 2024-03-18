@@ -29009,26 +29009,8 @@ transparency( (LayerTableRecord)arg1, (ObjectId)arg2) -> Transparency :
     ...
 
 class Layout:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -29039,23 +29021,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self, reactor: DbObjectReactor)-> None :
       '''                             '''
     ...
-    def addToLayoutDict (self, *args, **kwargs)-> None :
-      '''addToLayoutDict( (Layout)arg1, (Database)arg2, (ObjectId)arg3) -> None :
-
-    C++ signature :
-        void addToLayoutDict(class PyDbLayout {lvalue},class PyDbDatabase {lvalue},class PyDbObjectId)'''
+    def addToLayoutDict (self, db: PyDb.Database, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def addToPlotSettingsDict (self, *args, **kwargs)-> None :
-      '''addToPlotSettingsDict( (PlotSettings)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void addToPlotSettingsDict(class PyDbPlotSettings {lvalue},class PyDbDatabase {lvalue})'''
+    def addToPlotSettingsDict (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def annoAllVisible (self, *args, **kwargs)-> bool :
-      '''annoAllVisible( (Layout)arg1) -> bool :
-
-    C++ signature :
-        bool annoAllVisible(class PyDbLayout {lvalue})'''
+    def annoAllVisible (self)-> bool :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -29072,23 +29045,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.Layout :
-      '''cast( (RxObject)arg1) -> Layout :
 
-    C++ signature :
-        class PyDbLayout cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Layout :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.Layout :
-      '''cloneFrom( (RxObject)arg1) -> Layout :
 
-    C++ signature :
-        class PyDbLayout cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Layout :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -29108,11 +29078,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -29126,11 +29095,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self, wasWritable: bool)-> None :
       '''                             '''
     ...
-    def drawViewportsFirst (self, *args, **kwargs)-> bool :
-      '''drawViewportsFirst( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool drawViewportsFirst(class PyDbPlotSettings {lvalue})'''
+    def drawViewportsFirst (self)-> bool :
+      '''                             '''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -29141,35 +29107,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getBlockTableRecordId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getBlockTableRecordId( (Layout)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getBlockTableRecordId(class PyDbLayout {lvalue})'''
+    def getBlockTableRecordId (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def getCanonicalMediaName (self, *args, **kwargs)-> str :
-      '''getCanonicalMediaName( (PlotSettings)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCanonicalMediaName(class PyDbPlotSettings {lvalue})'''
+    def getCanonicalMediaName (self)-> str :
+      '''                             '''
     ...
-    def getCurrentStyleSheet (self, *args, **kwargs)-> str :
-      '''getCurrentStyleSheet( (PlotSettings)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCurrentStyleSheet(class PyDbPlotSettings {lvalue})'''
+    def getCurrentStyleSheet (self)-> str :
+      '''                             '''
     ...
-    def getCustomPrintScale (self, *args, **kwargs)-> tuple :
-      '''getCustomPrintScale( (PlotSettings)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getCustomPrintScale(class PyDbPlotSettings {lvalue})'''
+    def getCustomPrintScale (self)-> tuple :
+      '''                             '''
     ...
-    def getExtents (self, *args, **kwargs)-> tuple :
-      '''getExtents( (Layout)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getExtents(class PyDbLayout {lvalue})'''
+    def getExtents (self)-> tuple :
+      '''                             '''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -29180,83 +29131,44 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
     ...
-    def getLayoutName (self, *args, **kwargs)-> str :
-      '''getLayoutName( (Layout)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getLayoutName(class PyDbLayout {lvalue})'''
+    def getLayoutName (self)-> str :
+      '''                             '''
     ...
-    def getLimits (self, *args, **kwargs)-> tuple :
-      '''getLimits( (Layout)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getLimits(class PyDbLayout {lvalue})'''
+    def getLimits (self)-> tuple :
+      '''                             '''
     ...
-    def getPlotCfgName (self, *args, **kwargs)-> str :
-      '''getPlotCfgName( (PlotSettings)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotCfgName(class PyDbPlotSettings {lvalue})'''
+    def getPlotCfgName (self)-> str :
+      '''                             '''
     ...
-    def getPlotOrigin (self, *args, **kwargs)-> tuple :
-      '''getPlotOrigin( (PlotSettings)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getPlotOrigin(class PyDbPlotSettings {lvalue})'''
+    def getPlotOrigin (self)-> tuple :
+      '''                             '''
     ...
-    def getPlotPaperMargins (self, *args, **kwargs)-> tuple :
-      '''getPlotPaperMargins( (PlotSettings)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getPlotPaperMargins(class PyDbPlotSettings {lvalue})'''
+    def getPlotPaperMargins (self)-> tuple :
+      '''                             '''
     ...
-    def getPlotPaperSize (self, *args, **kwargs)-> tuple :
-      '''getPlotPaperSize( (PlotSettings)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getPlotPaperSize(class PyDbPlotSettings {lvalue})'''
+    def getPlotPaperSize (self)-> tuple :
+      '''                             '''
     ...
-    def getPlotSettingsName (self, *args, **kwargs)-> str :
-      '''getPlotSettingsName( (PlotSettings)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotSettingsName(class PyDbPlotSettings {lvalue})'''
+    def getPlotSettingsName (self)-> str :
+      '''                             '''
     ...
-    def getPlotViewName (self, *args, **kwargs)-> str :
-      '''getPlotViewName( (PlotSettings)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotViewName(class PyDbPlotSettings {lvalue})'''
+    def getPlotViewName (self)-> str :
+      '''                             '''
     ...
-    def getPlotWindowArea (self, *args, **kwargs)-> tuple :
-      '''getPlotWindowArea( (PlotSettings)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getPlotWindowArea(class PyDbPlotSettings {lvalue})'''
+    def getPlotWindowArea (self)-> tuple :
+      '''                             '''
     ...
-    def getStdScale (self, *args, **kwargs)-> float :
-      '''getStdScale( (PlotSettings)arg1) -> float :
-
-    C++ signature :
-        double getStdScale(class PyDbPlotSettings {lvalue})'''
+    def getStdScale (self)-> float :
+      '''                             '''
     ...
-    def getTabOrder (self, *args, **kwargs)-> int :
-      '''getTabOrder( (Layout)arg1) -> int :
-
-    C++ signature :
-        int getTabOrder(class PyDbLayout {lvalue})'''
+    def getTabOrder (self)-> int :
+      '''                             '''
     ...
-    def getTabSelected (self, *args, **kwargs)-> bool :
-      '''getTabSelected( (Layout)arg1) -> bool :
-
-    C++ signature :
-        bool getTabSelected(class PyDbLayout {lvalue})'''
+    def getTabSelected (self)-> bool :
+      '''                             '''
     ...
-    def getViewportArray (self, *args, **kwargs)-> list :
-      '''getViewportArray( (Layout)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getViewportArray(class PyDbLayout {lvalue})'''
+    def getViewportArray (self)-> list :
+      '''                             '''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -29276,16 +29188,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self)-> int :
       '''                             '''
     ...
-    def initialize (self, *args, **kwargs)-> None :
-      '''initialize( (Layout)arg1) -> None :
-
-    C++ signature :
-        void initialize(class PyDbLayout {lvalue})
-
-initialize( (Layout)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void initialize(class PyDbLayout {lvalue},class PyDbObjectId {lvalue})'''
+    def initialize (self, id: PyDb.ObjectId='default')-> None :
+      '''                             '''
     ...
     def isA (self)-> PyRx.RxClass :
       '''                             '''
@@ -29356,11 +29260,8 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def modelType (self, *args, **kwargs)-> bool :
-      '''modelType( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool modelType(class PyDbPlotSettings {lvalue})'''
+    def modelType (self)-> bool :
+      '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -29368,71 +29269,38 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     def ownerId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def plotAsRaster (self, *args, **kwargs)-> bool :
-      '''plotAsRaster( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool plotAsRaster(class PyDbPlotSettings {lvalue})'''
+    def plotAsRaster (self)-> bool :
+      '''                             '''
     ...
-    def plotCentered (self, *args, **kwargs)-> bool :
-      '''plotCentered( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool plotCentered(class PyDbPlotSettings {lvalue})'''
+    def plotCentered (self)-> bool :
+      '''                             '''
     ...
-    def plotHidden (self, *args, **kwargs)-> bool :
-      '''plotHidden( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool plotHidden(class PyDbPlotSettings {lvalue})'''
+    def plotHidden (self)-> bool :
+      '''                             '''
     ...
-    def plotPaperUnits (self, *args, **kwargs)-> PyDb.PlotPaperUnits :
-      '''plotPaperUnits( (PlotSettings)arg1) -> PlotPaperUnits :
-
-    C++ signature :
-        enum AcDbPlotSettings::PlotPaperUnits plotPaperUnits(class PyDbPlotSettings {lvalue})'''
+    def plotPaperUnits (self)-> PyDb.PlotPaperUnits :
+      '''                             '''
     ...
-    def plotPlotStyles (self, *args, **kwargs)-> bool :
-      '''plotPlotStyles( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool plotPlotStyles(class PyDbPlotSettings {lvalue})'''
+    def plotPlotStyles (self)-> bool :
+      '''                             '''
     ...
-    def plotRotation (self, *args, **kwargs)-> PyDb.PlotRotation :
-      '''plotRotation( (PlotSettings)arg1) -> PlotRotation :
-
-    C++ signature :
-        enum AcDbPlotSettings::PlotRotation plotRotation(class PyDbPlotSettings {lvalue})'''
+    def plotRotation (self)-> PyDb.PlotRotation :
+      '''                             '''
     ...
-    def plotTransparency (self, *args, **kwargs)-> bool :
-      '''plotTransparency( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool plotTransparency(class PyDbPlotSettings {lvalue})'''
+    def plotTransparency (self)-> bool :
+      '''                             '''
     ...
-    def plotType (self, *args, **kwargs)-> PyDb.PlotType :
-      '''plotType( (PlotSettings)arg1) -> PlotType :
-
-    C++ signature :
-        enum AcDbPlotSettings::PlotType plotType(class PyDbPlotSettings {lvalue})'''
+    def plotType (self)-> PyDb.PlotType :
+      '''                             '''
     ...
-    def plotViewportBorders (self, *args, **kwargs)-> bool :
-      '''plotViewportBorders( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool plotViewportBorders(class PyDbPlotSettings {lvalue})'''
+    def plotViewportBorders (self)-> bool :
+      '''                             '''
     ...
-    def plotWireframe (self, *args, **kwargs)-> bool :
-      '''plotWireframe( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool plotWireframe(class PyDbPlotSettings {lvalue})'''
+    def plotWireframe (self)-> bool :
+      '''                             '''
     ...
-    def printLineweights (self, *args, **kwargs)-> bool :
-      '''printLineweights( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool printLineweights(class PyDbPlotSettings {lvalue})'''
+    def printLineweights (self)-> bool :
+      '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -29455,20 +29323,14 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
       '''                             '''
     ...
-    def scaleLineweights (self, *args, **kwargs)-> bool :
-      '''scaleLineweights( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool scaleLineweights(class PyDbPlotSettings {lvalue})'''
+    def scaleLineweights (self)-> bool :
+      '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self)-> None :
       '''                             '''
     ...
-    def setAnnoAllVisible (self, *args, **kwargs)-> None :
-      '''setAnnoAllVisible( (Layout)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setAnnoAllVisible(class PyDbLayout {lvalue},bool)'''
+    def setAnnoAllVisible (self, val: bool)-> None :
+      '''                             '''
     ...
     def setAnnotative (self, state : PyDb.AnnotativeStates)-> None :
       '''                             '''
@@ -29476,17 +29338,11 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setBlockTableRecordId (self, *args, **kwargs)-> None :
-      '''setBlockTableRecordId( (Layout)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setBlockTableRecordId(class PyDbLayout {lvalue},class PyDbObjectId {lvalue})'''
+    def setBlockTableRecordId (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setDrawViewportsFirst (self, *args, **kwargs)-> None :
-      '''setDrawViewportsFirst( (PlotSettings)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setDrawViewportsFirst(class PyDbPlotSettings {lvalue},bool)'''
+    def setDrawViewportsFirst (self, val: bool)-> None :
+      '''                             '''
     ...
 
     @overload
@@ -29499,139 +29355,82 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayoutName (self, *args, **kwargs)-> None :
-      '''setLayoutName( (Layout)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setLayoutName(class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setLayoutName (self, val: str)-> None :
+      '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setPlotHidden (self, *args, **kwargs)-> None :
-      '''setPlotHidden( (PlotSettings)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPlotHidden(class PyDbPlotSettings {lvalue},bool)'''
+    def setPlotHidden (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setPlotPlotStyles (self, *args, **kwargs)-> None :
-      '''setPlotPlotStyles( (PlotSettings)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPlotPlotStyles(class PyDbPlotSettings {lvalue},bool)'''
+    def setPlotPlotStyles (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setPlotSettingsName (self, *args, **kwargs)-> None :
-      '''setPlotSettingsName( (PlotSettings)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setPlotSettingsName(class PyDbPlotSettings {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setPlotSettingsName (self, val: str)-> None :
+      '''                             '''
     ...
-    def setPlotTransparency (self, *args, **kwargs)-> None :
-      '''setPlotTransparency( (PlotSettings)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPlotTransparency(class PyDbPlotSettings {lvalue},bool)'''
+    def setPlotTransparency (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setPlotViewportBorders (self, *args, **kwargs)-> None :
-      '''setPlotViewportBorders( (PlotSettings)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPlotViewportBorders(class PyDbPlotSettings {lvalue},bool)'''
+    def setPlotViewportBorders (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setPrintLineweights (self, *args, **kwargs)-> None :
-      '''setPrintLineweights( (PlotSettings)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPrintLineweights(class PyDbPlotSettings {lvalue},bool)'''
+    def setPrintLineweights (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setScaleLineweights (self, *args, **kwargs)-> None :
-      '''setScaleLineweights( (PlotSettings)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setScaleLineweights(class PyDbPlotSettings {lvalue},bool)'''
+    def setScaleLineweights (self, val: bool)-> None :
+      '''                             '''
     ...
+
+    @overload
+    def setShadePlot (self, givenPoint)-> None : ...
+    @overload
+    def setShadePlot (self, val: PyDb.ShadePlotType, id: PyDb.ObjectId)-> None : ...
     def setShadePlot (self, *args, **kwargs)-> None :
-      '''setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2) -> None :
-
-    C++ signature :
-        void setShadePlot(class PyDbPlotSettings {lvalue},enum AcDbPlotSettings::ShadePlotType)
-
-setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> None :
-
-    C++ signature :
-        void setShadePlot(class PyDbPlotSettings {lvalue},enum AcDbPlotSettings::ShadePlotType,class PyDbObjectId)'''
+      '''Overloads:
+    - givenPoint
+    - val: PyDb.ShadePlotType, id: PyDb.ObjectId
+    '''
     ...
-    def setShadePlotCustomDPI (self, *args, **kwargs)-> None :
-      '''setShadePlotCustomDPI( (PlotSettings)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setShadePlotCustomDPI(class PyDbPlotSettings {lvalue},short)'''
+    def setShadePlotCustomDPI (self, val: int)-> None :
+      '''                             '''
     ...
-    def setShadePlotResLevel (self, *args, **kwargs)-> None :
-      '''setShadePlotResLevel( (PlotSettings)arg1, (ShadePlotResLevel)arg2) -> None :
-
-    C++ signature :
-        void setShadePlotResLevel(class PyDbPlotSettings {lvalue},enum AcDbPlotSettings::ShadePlotResLevel)'''
+    def setShadePlotResLevel (self, val: PyDb.ShadePlotResLevel)-> None :
+      '''                             '''
     ...
-    def setShowPlotStyles (self, *args, **kwargs)-> None :
-      '''setShowPlotStyles( (PlotSettings)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setShowPlotStyles(class PyDbPlotSettings {lvalue},bool)'''
+    def setShowPlotStyles (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setTabOrder (self, *args, **kwargs)-> None :
-      '''setTabOrder( (Layout)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setTabOrder(class PyDbLayout {lvalue},int)'''
+    def setTabOrder (self, val: int)-> None :
+      '''                             '''
     ...
-    def setTabSelected (self, *args, **kwargs)-> None :
-      '''setTabSelected( (Layout)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setTabSelected(class PyDbLayout {lvalue},bool)'''
+    def setTabSelected (self, val: bool)-> None :
+      '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
       '''                             '''
     ...
-    def shadePlot (self, *args, **kwargs)-> PyDb.ShadePlotType :
-      '''shadePlot( (PlotSettings)arg1) -> ShadePlotType :
-
-    C++ signature :
-        enum AcDbPlotSettings::ShadePlotType shadePlot(class PyDbPlotSettings {lvalue})'''
+    def shadePlot (self)-> PyDb.ShadePlotType :
+      '''                             '''
     ...
-    def shadePlotCustomDPI (self, *args, **kwargs)-> int :
-      '''shadePlotCustomDPI( (PlotSettings)arg1) -> int :
-
-    C++ signature :
-        short shadePlotCustomDPI(class PyDbPlotSettings {lvalue})'''
+    def shadePlotCustomDPI (self)-> int :
+      '''                             '''
     ...
-    def shadePlotId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''shadePlotId( (PlotSettings)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId shadePlotId(class PyDbPlotSettings {lvalue})'''
+    def shadePlotId (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def shadePlotResLevel (self, *args, **kwargs)-> PyDb.ShadePlotResLevel :
-      '''shadePlotResLevel( (PlotSettings)arg1) -> ShadePlotResLevel :
-
-    C++ signature :
-        enum AcDbPlotSettings::ShadePlotResLevel shadePlotResLevel(class PyDbPlotSettings {lvalue})'''
+    def shadePlotResLevel (self)-> PyDb.ShadePlotResLevel :
+      '''                             '''
     ...
-    def showPlotStyles (self, *args, **kwargs)-> bool :
-      '''showPlotStyles( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool showPlotStyles(class PyDbPlotSettings {lvalue})'''
+    def showPlotStyles (self)-> bool :
+      '''                             '''
     ...
     def snoop (self,  filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def stdScaleType (self, *args, **kwargs)-> PyDb.StdScaleType :
-      '''stdScaleType( (PlotSettings)arg1) -> StdScaleType :
-
-    C++ signature :
-        enum AcDbPlotSettings::StdScaleType stdScaleType(class PyDbPlotSettings {lvalue})'''
+    def stdScaleType (self)-> PyDb.StdScaleType :
+      '''                             '''
     ...
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
@@ -29642,11 +29441,8 @@ setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> None :
     def upgradeOpen (self)-> None :
       '''                             '''
     ...
-    def useStandardScale (self, *args, **kwargs)-> bool :
-      '''useStandardScale( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool useStandardScale(class PyDbPlotSettings {lvalue})'''
+    def useStandardScale (self)-> bool :
+      '''                             '''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -29874,21 +29670,8 @@ setCurrentLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     ...
 
 class Leader:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -29905,41 +29688,23 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def annoHeight (self, *args, **kwargs)-> float :
-      '''annoHeight( (Leader)arg1) -> float :
-
-    C++ signature :
-        double annoHeight(class PyDbLeader {lvalue})'''
+    def annoHeight (self)-> float :
+      '''                             '''
     ...
-    def annoType (self, *args, **kwargs)-> PyDb.AnnoType :
-      '''annoType( (Leader)arg1) -> AnnoType :
-
-    C++ signature :
-        enum AcDbLeader::AnnoType annoType(class PyDbLeader {lvalue})'''
+    def annoType (self)-> PyDb.AnnoType :
+      '''                             '''
     ...
-    def annoWidth (self, *args, **kwargs)-> float :
-      '''annoWidth( (Leader)arg1) -> float :
-
-    C++ signature :
-        double annoWidth(class PyDbLeader {lvalue})'''
+    def annoWidth (self)-> float :
+      '''                             '''
     ...
-    def annotationObjId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''annotationObjId( (Leader)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId annotationObjId(class PyDbLeader {lvalue})'''
+    def annotationObjId (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def annotationOffset (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''annotationOffset( (Leader)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d annotationOffset(class PyDbLeader {lvalue})'''
+    def annotationOffset (self)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def appendVertex (self, *args, **kwargs)-> bool :
-      '''appendVertex( (Leader)arg1, (Point3d)arg2) -> bool :
-
-    C++ signature :
-        bool appendVertex(class PyDbLeader {lvalue},class AcGePoint3d)'''
+    def appendVertex (self, pt: PyGe.Point3d)-> bool :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -29950,11 +29715,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self)-> None :
       '''                             '''
     ...
-    def attachAnnotation (self, *args, **kwargs)-> None :
-      '''attachAnnotation( (Leader)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void attachAnnotation(class PyDbLeader {lvalue},class PyDbObjectId)'''
+    def attachAnnotation (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
     def blockId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -29965,26 +29727,23 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.Leader :
-      '''cast( (RxObject)arg1) -> Leader :
 
-    C++ signature :
-        class PyDbLeader cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Leader :
+      '''                             '''
     ...
     def castShadows (self)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.Leader :
-      '''cloneFrom( (RxObject)arg1) -> Leader :
 
-    C++ signature :
-        class PyDbLeader cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Leader :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -30001,11 +29760,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copied (self, *args, **kwargs)-> None :
-      '''copied( (Leader)arg1, (DbObject)arg2, (DbObject)arg3) -> None :
-
-    C++ signature :
-        void copied(class PyDbLeader {lvalue},class PyDbObject,class PyDbObject)'''
+    def copied (self, obja: PyDb.DbObject, objb: PyDb.DbObject)-> None :
+      '''                             '''
     ...
     def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
@@ -30024,83 +29780,46 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
-    def detachAnnotation (self, *args, **kwargs)-> None :
-      '''detachAnnotation( (Leader)arg1) -> None :
-
-    C++ signature :
-        void detachAnnotation(class PyDbLeader {lvalue})'''
+    def detachAnnotation (self)-> None :
+      '''                             '''
     ...
-    def dimasz (self, *args, **kwargs)-> float :
-      '''dimasz( (Leader)arg1) -> float :
-
-    C++ signature :
-        double dimasz(class PyDbLeader {lvalue})'''
+    def dimasz (self)-> float :
+      '''                             '''
     ...
-    def dimclrd (self, *args, **kwargs)-> PyDb.Color :
-      '''dimclrd( (Leader)arg1) -> Color :
-
-    C++ signature :
-        class AcCmColor dimclrd(class PyDbLeader {lvalue})'''
+    def dimclrd (self)-> PyDb.Color :
+      '''                             '''
     ...
-    def dimensionStyle (self, *args, **kwargs)-> PyDb.HardPointerId :
-      '''dimensionStyle( (Leader)arg1) -> HardPointerId :
-
-    C++ signature :
-        class PyDbHardPointerId dimensionStyle(class PyDbLeader {lvalue})'''
+    def dimensionStyle (self)-> PyDb.HardPointerId :
+      '''                             '''
     ...
-    def dimgap (self, *args, **kwargs)-> float :
-      '''dimgap( (Leader)arg1) -> float :
-
-    C++ signature :
-        double dimgap(class PyDbLeader {lvalue})'''
+    def dimgap (self)-> float :
+      '''                             '''
     ...
-    def dimlwd (self, *args, **kwargs)-> PyDb.LineWeight :
-      '''dimlwd( (Leader)arg1) -> LineWeight :
-
-    C++ signature :
-        enum AcDb::LineWeight dimlwd(class PyDbLeader {lvalue})'''
+    def dimlwd (self)-> PyDb.LineWeight :
+      '''                             '''
     ...
-    def dimsah (self, *args, **kwargs)-> bool :
-      '''dimsah( (Leader)arg1) -> bool :
-
-    C++ signature :
-        bool dimsah(class PyDbLeader {lvalue})'''
+    def dimsah (self)-> bool :
+      '''                             '''
     ...
-    def dimscale (self, *args, **kwargs)-> float :
-      '''dimscale( (Leader)arg1) -> float :
-
-    C++ signature :
-        double dimscale(class PyDbLeader {lvalue})'''
+    def dimscale (self)-> float :
+      '''                             '''
     ...
-    def dimtad (self, *args, **kwargs)-> int :
-      '''dimtad( (Leader)arg1) -> int :
-
-    C++ signature :
-        int dimtad(class PyDbLeader {lvalue})'''
+    def dimtad (self)-> int :
+      '''                             '''
     ...
-    def dimtxsty (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''dimtxsty( (Leader)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimtxsty(class PyDbLeader {lvalue})'''
+    def dimtxsty (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def dimtxt (self, *args, **kwargs)-> float :
-      '''dimtxt( (Leader)arg1) -> float :
-
-    C++ signature :
-        double dimtxt(class PyDbLeader {lvalue})'''
+    def dimtxt (self)-> float :
+      '''                             '''
     ...
-    def disableArrowHead (self, *args, **kwargs)-> None :
-      '''disableArrowHead( (Leader)arg1) -> None :
-
-    C++ signature :
-        void disableArrowHead(class PyDbLeader {lvalue})'''
+    def disableArrowHead (self)-> None :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -30126,22 +29845,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self, erasing : bool=True)-> None :
       '''                             '''
     ...
-    def erased (self, *args, **kwargs)-> None :
-      '''erased( (Leader)arg1, (DbObject)arg2) -> None :
-
-    C++ signature :
-        void erased(class PyDbLeader {lvalue},class PyDbObject)
-
-erased( (Leader)arg1, (DbObject)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void erased(class PyDbLeader {lvalue},class PyDbObject,bool)'''
+    def erased (self, obj: PyDb.DbObject, val: bool=True)-> None :
+      '''                             '''
     ...
-    def evaluateLeader (self, *args, **kwargs)-> None :
-      '''evaluateLeader( (Leader)arg1) -> None :
-
-    C++ signature :
-        void evaluateLeader(class PyDbLeader {lvalue})'''
+    def evaluateLeader (self)-> None :
+      '''                             '''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -30160,11 +29868,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def firstVertex (self, *args, **kwargs)-> PyGe.Point3d :
-      '''firstVertex( (Leader)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d firstVertex(class PyDbLeader {lvalue})'''
+    def firstVertex (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def getAcGeCurve (self, tol: Tol = default)-> PyGe.Curve3d :
       '''                             '''
@@ -30291,29 +29996,20 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def goodbye (self, *args, **kwargs)-> None :
-      '''goodbye( (Leader)arg1, (DbObject)arg2) -> None :
-
-    C++ signature :
-        void goodbye(class PyDbLeader {lvalue},class PyDbObject)'''
+    def goodbye (self, obj: PyDb.DbObject)-> None :
+      '''                             '''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
     ...
-    def hasArrowHead (self, *args, **kwargs)-> bool :
-      '''hasArrowHead( (Leader)arg1) -> bool :
-
-    C++ signature :
-        bool hasArrowHead(class PyDbLeader {lvalue})'''
+    def hasArrowHead (self)-> bool :
+      '''                             '''
     ...
     def hasFields (self)-> bool :
       '''                             '''
     ...
-    def hasHookLine (self, *args, **kwargs)-> bool :
-      '''hasHookLine( (Leader)arg1) -> bool :
-
-    C++ signature :
-        bool hasHookLine(class PyDbLeader {lvalue})'''
+    def hasHookLine (self)-> bool :
+      '''                             '''
     ...
     def hasPersistentReactor (self, id: PyDb.ObjectId)-> bool :
       '''                             '''
@@ -30410,11 +30106,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def isReallyClosing (self)-> bool :
       '''                             '''
     ...
-    def isSplined (self, *args, **kwargs)-> bool :
-      '''isSplined( (Leader)arg1) -> bool :
-
-    C++ signature :
-        bool isSplined(class PyDbLeader {lvalue})'''
+    def isSplined (self)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self)-> bool :
       '''                             '''
@@ -30431,11 +30124,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def lastVertex (self, *args, **kwargs)-> PyGe.Point3d :
-      '''lastVertex( (Leader)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d lastVertex(class PyDbLeader {lvalue})'''
+    def lastVertex (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def layer (self)-> str :
       '''                             '''
@@ -30464,23 +30154,14 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def materialId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def modified (self, *args, **kwargs)-> None :
-      '''modified( (Leader)arg1, (DbObject)arg2) -> None :
-
-    C++ signature :
-        void modified(class PyDbLeader {lvalue},class PyDbObject)'''
+    def modified (self, obj: PyDb.DbObject)-> None :
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normal( (Leader)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbLeader {lvalue})'''
+    def normal (self)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def numVertices (self, *args, **kwargs)-> int :
-      '''numVertices( (Leader)arg1) -> int :
-
-    C++ signature :
-        int numVertices(class PyDbLeader {lvalue})'''
+    def numVertices (self)-> int :
+      '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -30509,11 +30190,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeField (self, id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removeLastVertex (self, *args, **kwargs)-> None :
-      '''removeLastVertex( (Leader)arg1) -> None :
-
-    C++ signature :
-        void removeLastVertex(class PyDbLeader {lvalue})'''
+    def removeLastVertex (self)-> None :
+      '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -30530,17 +30208,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setAcDbObjectIdsInFlux (self)-> None :
       '''                             '''
     ...
-    def setAnnotationObjId (self, *args, **kwargs)-> None :
-      '''setAnnotationObjId( (Leader)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setAnnotationObjId(class PyDbLeader {lvalue},class PyDbObjectId)'''
+    def setAnnotationObjId (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setAnnotationOffset (self, *args, **kwargs)-> None :
-      '''setAnnotationOffset( (Leader)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setAnnotationOffset(class PyDbLeader {lvalue},class AcGeVector3d)'''
+    def setAnnotationOffset (self, vec: PyGe.Vector3d)-> None :
+      '''                             '''
     ...
     def setAnnotative (self, state : PyDb.AnnotativeStates)-> None :
       '''                             '''
@@ -30554,96 +30226,47 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
       '''                             '''
     ...
-    def setColorIndex (self, *args, **kwargs)-> None :
-      '''setColorIndex( (Leader)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setColorIndex(class PyDbLeader {lvalue},unsigned short)
-
-setColorIndex( (Leader)arg1, (int)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setColorIndex(class PyDbLeader {lvalue},unsigned short,bool)'''
+    def setColorIndex (self, idx: int, dosubents: bool=True)-> None :
+      '''                             '''
     ...
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
     ...
-    def setDimasz (self, *args, **kwargs)-> None :
-      '''setDimasz( (Leader)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setDimasz(class PyDbLeader {lvalue},double)'''
+    def setDimasz (self, val: float)-> None :
+      '''                             '''
     ...
-    def setDimclrd (self, *args, **kwargs)-> None :
-      '''setDimclrd( (Leader)arg1, (Color)arg2) -> None :
-
-    C++ signature :
-        void setDimclrd(class PyDbLeader {lvalue},class AcCmColor {lvalue})'''
+    def setDimclrd (self, clr: PyDb.AcCmColor)-> None :
+      '''                             '''
     ...
-    def setDimensionStyle (self, *args, **kwargs)-> None :
-      '''setDimensionStyle( (Leader)arg1, (HardPointerId)arg2) -> None :
-
-    C++ signature :
-        void setDimensionStyle(class PyDbLeader {lvalue},class PyDbHardPointerId)'''
+    def setDimensionStyle (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setDimgap (self, *args, **kwargs)-> None :
-      '''setDimgap( (Leader)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setDimgap(class PyDbLeader {lvalue},double)'''
+    def setDimgap (self, val: float)-> None :
+      '''                             '''
     ...
-    def setDimldrblk (self, *args, **kwargs)-> None :
-      '''setDimldrblk( (Leader)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimldrblk(class PyDbLeader {lvalue},class PyDbObjectId)
-
-setDimldrblk( (Leader)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setDimldrblk(class PyDbLeader {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setDimldrblk (self, id: str|PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setDimlwd (self, *args, **kwargs)-> None :
-      '''setDimlwd( (Leader)arg1, (LineWeight)arg2) -> None :
-
-    C++ signature :
-        void setDimlwd(class PyDbLeader {lvalue},enum AcDb::LineWeight)'''
+    def setDimlwd (self, val: PyDb.LineWeight)-> None :
+      '''                             '''
     ...
-    def setDimsah (self, *args, **kwargs)-> None :
-      '''setDimsah( (Leader)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setDimsah(class PyDbLeader {lvalue},bool)'''
+    def setDimsah (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setDimscale (self, *args, **kwargs)-> None :
-      '''setDimscale( (Leader)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setDimscale(class PyDbLeader {lvalue},double)'''
+    def setDimscale (self, val: float)-> None :
+      '''                             '''
     ...
-    def setDimstyleData (self, *args, **kwargs)-> None :
-      '''setDimstyleData( (Leader)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbLeader {lvalue},class PyDbObjectId)'''
+    def setDimstyleData (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setDimtad (self, *args, **kwargs)-> None :
-      '''setDimtad( (Leader)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setDimtad(class PyDbLeader {lvalue},int)'''
+    def setDimtad (self, val: int)-> None :
+      '''                             '''
     ...
-    def setDimtxsty (self, *args, **kwargs)-> None :
-      '''setDimtxsty( (Leader)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimtxsty(class PyDbLeader {lvalue},class PyDbObjectId)'''
+    def setDimtxsty (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setDimtxt (self, *args, **kwargs)-> None :
-      '''setDimtxt( (Leader)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setDimtxt(class PyDbLeader {lvalue},double)'''
+    def setDimtxt (self, val: float)-> None :
+      '''                             '''
     ...
 
     @overload
@@ -30659,11 +30282,8 @@ setDimldrblk( (Leader)arg1, (str)arg2) -> None :
     def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
       '''                             '''
     ...
-    def setHasArrowHead (self, *args, **kwargs)-> None :
-      '''setHasArrowHead( (Leader)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setHasArrowHead(class PyDbLeader {lvalue},bool)'''
+    def setHasArrowHead (self, val: bool)-> None :
+      '''                             '''
     ...
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -30683,11 +30303,8 @@ setDimldrblk( (Leader)arg1, (str)arg2) -> None :
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setPlane (self, *args, **kwargs)-> None :
-      '''setPlane( (Leader)arg1, (Plane)arg2) -> None :
-
-    C++ signature :
-        void setPlane(class PyDbLeader {lvalue},class PyGePlane)'''
+    def setPlane (self, val: PyGe.Plane)-> None :
+      '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
       '''setPlotStyleName( (Entity)arg1, (str)arg2, (bool)arg3) -> None :
@@ -30711,29 +30328,17 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setSplined (self, *args, **kwargs)-> None :
-      '''setSplined( (Leader)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setSplined(class PyDbLeader {lvalue},bool)'''
+    def setSplined (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setToSplineLeader (self, *args, **kwargs)-> None :
-      '''setToSplineLeader( (Leader)arg1) -> None :
-
-    C++ signature :
-        void setToSplineLeader(class PyDbLeader {lvalue})'''
+    def setToSplineLeader (self)-> None :
+      '''                             '''
     ...
-    def setToStraightLeader (self, *args, **kwargs)-> None :
-      '''setToStraightLeader( (Leader)arg1) -> None :
-
-    C++ signature :
-        void setToStraightLeader(class PyDbLeader {lvalue})'''
+    def setToStraightLeader (self)-> None :
+      '''                             '''
     ...
-    def setVertexAt (self, *args, **kwargs)-> bool :
-      '''setVertexAt( (Leader)arg1, (int)arg2, (Point3d)arg3) -> bool :
-
-    C++ signature :
-        bool setVertexAt(class PyDbLeader {lvalue},int,class AcGePoint3d)'''
+    def setVertexAt (self, val: int, pt: PyGe.Point3d)-> bool :
+      '''                             '''
     ...
     def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
       '''                             '''
@@ -30756,11 +30361,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self)-> None :
       '''                             '''
     ...
-    def vertexAt (self, *args, **kwargs)-> PyGe.Point3d :
-      '''vertexAt( (Leader)arg1, (int)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d vertexAt(class PyDbLeader {lvalue},int)'''
+    def vertexAt (self, val: int)-> PyGe.Point3d :
+      '''                             '''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -38351,26 +37953,22 @@ class Mline:
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
+
+    @overload
+    def getClosestPointTo (self, givenPoint: PyGe.Point3d, extend: bool)-> PyGe.Point3d : ...
+    @overload
+    def getClosestPointTo (self, givenPoint: PyGe.Point3d, extend: bool, excludeCaps: bool)-> PyGe.Point3d : ...
+    @overload
+    def getClosestPointTo (self, givenPoint: PyGe.Point3d, normal: PyGe.Vector3d, extend: bool)-> PyGe.Point3d : ...
+    @overload
+    def getClosestPointTo (self, givenPoint: PyGe.Point3d, normal: PyGe.Vector3d, extend: bool, excludeCaps: bool)-> PyGe.Point3d : ...
     def getClosestPointTo (self, *args, **kwargs)-> PyGe.Point3d :
-      '''getClosestPointTo( (Mline)arg1, (Point3d)arg2, (bool)arg3) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbMline {lvalue},class AcGePoint3d,bool)
-
-getClosestPointTo( (Mline)arg1, (Point3d)arg2, (bool)arg3, (bool)arg4) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbMline {lvalue},class AcGePoint3d,bool,bool)
-
-getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbMline {lvalue},class AcGePoint3d,class AcGeVector3d,bool)
-
-getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool)arg5) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbMline {lvalue},class AcGePoint3d,class AcGeVector3d,bool,bool)'''
+      '''Overloads:
+    - givenPoint: PyGe.Point3d, extend: bool
+    - givenPoint: PyGe.Point3d, extend: bool, excludeCaps: bool
+    - givenPoint: PyGe.Point3d, normal: PyGe.Vector3d, extend: bool
+    - givenPoint: PyGe.Point3d, normal: PyGe.Vector3d, extend: bool, excludeCaps: bool
+    '''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -42825,31 +42423,25 @@ class PlotRotation:
     ...
 
 class PlotSettings:
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, ModelType: bool)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,bool)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+      '''Overloads:
+    - None: Any
+    - ModelType: bool
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -42860,11 +42452,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self, reactor: DbObjectReactor)-> None :
       '''                             '''
     ...
-    def addToPlotSettingsDict (self, *args, **kwargs)-> None :
-      '''addToPlotSettingsDict( (PlotSettings)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void addToPlotSettingsDict(class PyDbPlotSettings {lvalue},class PyDbDatabase {lvalue})'''
+    def addToPlotSettingsDict (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -42881,23 +42470,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.PlotSettings :
-      '''cast( (RxObject)arg1) -> PlotSettings :
 
-    C++ signature :
-        class PyDbPlotSettings cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.PlotSettings :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.PlotSettings :
-      '''cloneFrom( (RxObject)arg1) -> PlotSettings :
 
-    C++ signature :
-        class PyDbPlotSettings cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.PlotSettings :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -42917,11 +42503,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -42935,11 +42520,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self, wasWritable: bool)-> None :
       '''                             '''
     ...
-    def drawViewportsFirst (self, *args, **kwargs)-> bool :
-      '''drawViewportsFirst( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool drawViewportsFirst(class PyDbPlotSettings {lvalue})'''
+    def drawViewportsFirst (self)-> bool :
+      '''                             '''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -42950,23 +42532,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getCanonicalMediaName (self, *args, **kwargs)-> str :
-      '''getCanonicalMediaName( (PlotSettings)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCanonicalMediaName(class PyDbPlotSettings {lvalue})'''
+    def getCanonicalMediaName (self)-> str :
+      '''                             '''
     ...
-    def getCurrentStyleSheet (self, *args, **kwargs)-> str :
-      '''getCurrentStyleSheet( (PlotSettings)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCurrentStyleSheet(class PyDbPlotSettings {lvalue})'''
+    def getCurrentStyleSheet (self)-> str :
+      '''                             '''
     ...
-    def getCustomPrintScale (self, *args, **kwargs)-> tuple :
-      '''getCustomPrintScale( (PlotSettings)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getCustomPrintScale(class PyDbPlotSettings {lvalue})'''
+    def getCustomPrintScale (self)-> tuple :
+      '''                             '''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -42977,53 +42550,29 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
     ...
-    def getPlotCfgName (self, *args, **kwargs)-> str :
-      '''getPlotCfgName( (PlotSettings)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotCfgName(class PyDbPlotSettings {lvalue})'''
+    def getPlotCfgName (self)-> str :
+      '''                             '''
     ...
-    def getPlotOrigin (self, *args, **kwargs)-> tuple :
-      '''getPlotOrigin( (PlotSettings)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getPlotOrigin(class PyDbPlotSettings {lvalue})'''
+    def getPlotOrigin (self)-> tuple :
+      '''                             '''
     ...
-    def getPlotPaperMargins (self, *args, **kwargs)-> tuple :
-      '''getPlotPaperMargins( (PlotSettings)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getPlotPaperMargins(class PyDbPlotSettings {lvalue})'''
+    def getPlotPaperMargins (self)-> tuple :
+      '''                             '''
     ...
-    def getPlotPaperSize (self, *args, **kwargs)-> tuple :
-      '''getPlotPaperSize( (PlotSettings)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getPlotPaperSize(class PyDbPlotSettings {lvalue})'''
+    def getPlotPaperSize (self)-> tuple :
+      '''                             '''
     ...
-    def getPlotSettingsName (self, *args, **kwargs)-> str :
-      '''getPlotSettingsName( (PlotSettings)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotSettingsName(class PyDbPlotSettings {lvalue})'''
+    def getPlotSettingsName (self)-> str :
+      '''                             '''
     ...
-    def getPlotViewName (self, *args, **kwargs)-> str :
-      '''getPlotViewName( (PlotSettings)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotViewName(class PyDbPlotSettings {lvalue})'''
+    def getPlotViewName (self)-> str :
+      '''                             '''
     ...
-    def getPlotWindowArea (self, *args, **kwargs)-> tuple :
-      '''getPlotWindowArea( (PlotSettings)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getPlotWindowArea(class PyDbPlotSettings {lvalue})'''
+    def getPlotWindowArea (self)-> tuple :
+      '''                             '''
     ...
-    def getStdScale (self, *args, **kwargs)-> float :
-      '''getStdScale( (PlotSettings)arg1) -> float :
-
-    C++ signature :
-        double getStdScale(class PyDbPlotSettings {lvalue})'''
+    def getStdScale (self)-> float :
+      '''                             '''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -43112,11 +42661,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def modelType (self, *args, **kwargs)-> bool :
-      '''modelType( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool modelType(class PyDbPlotSettings {lvalue})'''
+    def modelType (self)-> bool :
+      '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -43124,71 +42670,38 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def plotAsRaster (self, *args, **kwargs)-> bool :
-      '''plotAsRaster( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool plotAsRaster(class PyDbPlotSettings {lvalue})'''
+    def plotAsRaster (self)-> bool :
+      '''                             '''
     ...
-    def plotCentered (self, *args, **kwargs)-> bool :
-      '''plotCentered( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool plotCentered(class PyDbPlotSettings {lvalue})'''
+    def plotCentered (self)-> bool :
+      '''                             '''
     ...
-    def plotHidden (self, *args, **kwargs)-> bool :
-      '''plotHidden( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool plotHidden(class PyDbPlotSettings {lvalue})'''
+    def plotHidden (self)-> bool :
+      '''                             '''
     ...
-    def plotPaperUnits (self, *args, **kwargs)-> PyDb.PlotPaperUnits :
-      '''plotPaperUnits( (PlotSettings)arg1) -> PlotPaperUnits :
-
-    C++ signature :
-        enum AcDbPlotSettings::PlotPaperUnits plotPaperUnits(class PyDbPlotSettings {lvalue})'''
+    def plotPaperUnits (self)-> PyDb.PlotPaperUnits :
+      '''                             '''
     ...
-    def plotPlotStyles (self, *args, **kwargs)-> bool :
-      '''plotPlotStyles( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool plotPlotStyles(class PyDbPlotSettings {lvalue})'''
+    def plotPlotStyles (self)-> bool :
+      '''                             '''
     ...
-    def plotRotation (self, *args, **kwargs)-> PyDb.PlotRotation :
-      '''plotRotation( (PlotSettings)arg1) -> PlotRotation :
-
-    C++ signature :
-        enum AcDbPlotSettings::PlotRotation plotRotation(class PyDbPlotSettings {lvalue})'''
+    def plotRotation (self)-> PyDb.PlotRotation :
+      '''                             '''
     ...
-    def plotTransparency (self, *args, **kwargs)-> bool :
-      '''plotTransparency( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool plotTransparency(class PyDbPlotSettings {lvalue})'''
+    def plotTransparency (self)-> bool :
+      '''                             '''
     ...
-    def plotType (self, *args, **kwargs)-> PyDb.PlotType :
-      '''plotType( (PlotSettings)arg1) -> PlotType :
-
-    C++ signature :
-        enum AcDbPlotSettings::PlotType plotType(class PyDbPlotSettings {lvalue})'''
+    def plotType (self)-> PyDb.PlotType :
+      '''                             '''
     ...
-    def plotViewportBorders (self, *args, **kwargs)-> bool :
-      '''plotViewportBorders( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool plotViewportBorders(class PyDbPlotSettings {lvalue})'''
+    def plotViewportBorders (self)-> bool :
+      '''                             '''
     ...
-    def plotWireframe (self, *args, **kwargs)-> bool :
-      '''plotWireframe( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool plotWireframe(class PyDbPlotSettings {lvalue})'''
+    def plotWireframe (self)-> bool :
+      '''                             '''
     ...
-    def printLineweights (self, *args, **kwargs)-> bool :
-      '''printLineweights( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool printLineweights(class PyDbPlotSettings {lvalue})'''
+    def printLineweights (self)-> bool :
+      '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -43211,11 +42724,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
       '''                             '''
     ...
-    def scaleLineweights (self, *args, **kwargs)-> bool :
-      '''scaleLineweights( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool scaleLineweights(class PyDbPlotSettings {lvalue})'''
+    def scaleLineweights (self)-> bool :
+      '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self)-> None :
       '''                             '''
@@ -43226,11 +42736,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setDrawViewportsFirst (self, *args, **kwargs)-> None :
-      '''setDrawViewportsFirst( (PlotSettings)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setDrawViewportsFirst(class PyDbPlotSettings {lvalue},bool)'''
+    def setDrawViewportsFirst (self, val: bool)-> None :
+      '''                             '''
     ...
 
     @overload
@@ -43246,118 +42753,70 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setPlotHidden (self, *args, **kwargs)-> None :
-      '''setPlotHidden( (PlotSettings)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPlotHidden(class PyDbPlotSettings {lvalue},bool)'''
+    def setPlotHidden (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setPlotPlotStyles (self, *args, **kwargs)-> None :
-      '''setPlotPlotStyles( (PlotSettings)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPlotPlotStyles(class PyDbPlotSettings {lvalue},bool)'''
+    def setPlotPlotStyles (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setPlotSettingsName (self, *args, **kwargs)-> None :
-      '''setPlotSettingsName( (PlotSettings)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setPlotSettingsName(class PyDbPlotSettings {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setPlotSettingsName (self, val: str)-> None :
+      '''                             '''
     ...
-    def setPlotTransparency (self, *args, **kwargs)-> None :
-      '''setPlotTransparency( (PlotSettings)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPlotTransparency(class PyDbPlotSettings {lvalue},bool)'''
+    def setPlotTransparency (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setPlotViewportBorders (self, *args, **kwargs)-> None :
-      '''setPlotViewportBorders( (PlotSettings)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPlotViewportBorders(class PyDbPlotSettings {lvalue},bool)'''
+    def setPlotViewportBorders (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setPrintLineweights (self, *args, **kwargs)-> None :
-      '''setPrintLineweights( (PlotSettings)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPrintLineweights(class PyDbPlotSettings {lvalue},bool)'''
+    def setPrintLineweights (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setScaleLineweights (self, *args, **kwargs)-> None :
-      '''setScaleLineweights( (PlotSettings)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setScaleLineweights(class PyDbPlotSettings {lvalue},bool)'''
+    def setScaleLineweights (self, val: bool)-> None :
+      '''                             '''
     ...
+
+    @overload
+    def setShadePlot (self, givenPoint)-> None : ...
+    @overload
+    def setShadePlot (self, val: PyDb.ShadePlotType, id: PyDb.ObjectId)-> None : ...
     def setShadePlot (self, *args, **kwargs)-> None :
-      '''setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2) -> None :
-
-    C++ signature :
-        void setShadePlot(class PyDbPlotSettings {lvalue},enum AcDbPlotSettings::ShadePlotType)
-
-setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> None :
-
-    C++ signature :
-        void setShadePlot(class PyDbPlotSettings {lvalue},enum AcDbPlotSettings::ShadePlotType,class PyDbObjectId)'''
+      '''Overloads:
+    - givenPoint
+    - val: PyDb.ShadePlotType, id: PyDb.ObjectId
+    '''
     ...
-    def setShadePlotCustomDPI (self, *args, **kwargs)-> None :
-      '''setShadePlotCustomDPI( (PlotSettings)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setShadePlotCustomDPI(class PyDbPlotSettings {lvalue},short)'''
+    def setShadePlotCustomDPI (self, val: int)-> None :
+      '''                             '''
     ...
-    def setShadePlotResLevel (self, *args, **kwargs)-> None :
-      '''setShadePlotResLevel( (PlotSettings)arg1, (ShadePlotResLevel)arg2) -> None :
-
-    C++ signature :
-        void setShadePlotResLevel(class PyDbPlotSettings {lvalue},enum AcDbPlotSettings::ShadePlotResLevel)'''
+    def setShadePlotResLevel (self, val: PyDb.ShadePlotResLevel)-> None :
+      '''                             '''
     ...
-    def setShowPlotStyles (self, *args, **kwargs)-> None :
-      '''setShowPlotStyles( (PlotSettings)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setShowPlotStyles(class PyDbPlotSettings {lvalue},bool)'''
+    def setShowPlotStyles (self, val: bool)-> None :
+      '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
       '''                             '''
     ...
-    def shadePlot (self, *args, **kwargs)-> PyDb.ShadePlotType :
-      '''shadePlot( (PlotSettings)arg1) -> ShadePlotType :
-
-    C++ signature :
-        enum AcDbPlotSettings::ShadePlotType shadePlot(class PyDbPlotSettings {lvalue})'''
+    def shadePlot (self)-> PyDb.ShadePlotType :
+      '''                             '''
     ...
-    def shadePlotCustomDPI (self, *args, **kwargs)-> int :
-      '''shadePlotCustomDPI( (PlotSettings)arg1) -> int :
-
-    C++ signature :
-        short shadePlotCustomDPI(class PyDbPlotSettings {lvalue})'''
+    def shadePlotCustomDPI (self)-> int :
+      '''                             '''
     ...
-    def shadePlotId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''shadePlotId( (PlotSettings)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId shadePlotId(class PyDbPlotSettings {lvalue})'''
+    def shadePlotId (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def shadePlotResLevel (self, *args, **kwargs)-> PyDb.ShadePlotResLevel :
-      '''shadePlotResLevel( (PlotSettings)arg1) -> ShadePlotResLevel :
-
-    C++ signature :
-        enum AcDbPlotSettings::ShadePlotResLevel shadePlotResLevel(class PyDbPlotSettings {lvalue})'''
+    def shadePlotResLevel (self)-> PyDb.ShadePlotResLevel :
+      '''                             '''
     ...
-    def showPlotStyles (self, *args, **kwargs)-> bool :
-      '''showPlotStyles( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool showPlotStyles(class PyDbPlotSettings {lvalue})'''
+    def showPlotStyles (self)-> bool :
+      '''                             '''
     ...
     def snoop (self,  filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def stdScaleType (self, *args, **kwargs)-> PyDb.StdScaleType :
-      '''stdScaleType( (PlotSettings)arg1) -> StdScaleType :
-
-    C++ signature :
-        enum AcDbPlotSettings::StdScaleType stdScaleType(class PyDbPlotSettings {lvalue})'''
+    def stdScaleType (self)-> PyDb.StdScaleType :
+      '''                             '''
     ...
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
@@ -43368,11 +42827,8 @@ setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> None :
     def upgradeOpen (self)-> None :
       '''                             '''
     ...
-    def useStandardScale (self, *args, **kwargs)-> bool :
-      '''useStandardScale( (PlotSettings)arg1) -> bool :
-
-    C++ signature :
-        bool useStandardScale(class PyDbPlotSettings {lvalue})'''
+    def useStandardScale (self)-> bool :
+      '''                             '''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''

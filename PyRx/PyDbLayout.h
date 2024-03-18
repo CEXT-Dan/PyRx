@@ -16,6 +16,7 @@ public:
     PyDbPlotSettings(AcDbPlotSettings* ptr, bool autoDelete);
     PyDbPlotSettings(const PyDbObjectId& id);
     PyDbPlotSettings(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbPlotSettings(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     ~PyDbPlotSettings() override = default;
     void                addToPlotSettingsDict(PyDbDatabase& towhichDb);
     std::string         getPlotSettingsName() const;
@@ -84,6 +85,7 @@ public:
     PyDbLayout(AcDbLayout* ptr, bool autoDelete);
     PyDbLayout(const PyDbObjectId& id);
     PyDbLayout(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbLayout(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     ~PyDbLayout() override = default;
 
     PyDbObjectId        getBlockTableRecordId() const;
