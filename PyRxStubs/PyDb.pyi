@@ -40739,26 +40739,8 @@ class OsnapType:
     ...
 
 class PdfDefinition:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -40784,23 +40766,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.UnderlayDefinition :
-      '''cast( (RxObject)arg1) -> UnderlayDefinition :
 
-    C++ signature :
-        class PyDbUnderlayDefinition cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.UnderlayDefinition :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.UnderlayDefinition :
-      '''cloneFrom( (RxObject)arg1) -> UnderlayDefinition :
 
-    C++ signature :
-        class PyDbUnderlayDefinition cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.UnderlayDefinition :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -40820,11 +40799,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
 
     @staticmethod
@@ -41060,26 +41038,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
 
 class PdfReference:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -41114,29 +41074,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.PdfReference :
-      '''cast( (RxObject)arg1) -> PdfReference :
 
-    C++ signature :
-        class PyDbPdfReference cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.PdfReference :
+      '''                             '''
     ...
     def castShadows (self)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def clipBoundary (self)-> list :
       '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.PdfReference :
-      '''cloneFrom( (RxObject)arg1) -> PdfReference :
 
-    C++ signature :
-        class PyDbPdfReference cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.PdfReference :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -41181,11 +41138,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def definitionId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -66470,16 +66426,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
 
 class UnderlayDefinition:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
