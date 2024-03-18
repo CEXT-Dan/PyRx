@@ -60,6 +60,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvDbHAlignmentSCSWrapper();
     makePyBrxCvDbHAlignmentSTSWrapper();
     makePyBrxCvDbHAlignmentSSCSSWrapper();
+    makePyBrxCvDbVAlignmentWrapper();
     makePyBrxCvDbVAlignmentElementWrapper();
     makePyBrxCvDbVAlignmentPVIWrapper();
     makePyBrxCvDbVAlignmentCurveWrapper();
@@ -295,6 +296,19 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eSSCSS_Sp1LenSp2LenPt1Pt2", BrxCvDbHAlignmentElement::EParameterConstraint::eSSCSS_Sp1LenSp2LenPt1Pt2)
         .value("eSSCSS_Sp1AValSp2AValRadiusPt", BrxCvDbHAlignmentElement::EParameterConstraint::eSSCSS_Sp1AValSp2AValRadiusPt)
         .value("eSSCSS_Sp1AValSp2AValPt1Pt2", BrxCvDbHAlignmentElement::EParameterConstraint::eSSCSS_Sp1AValSp2AValPt1Pt2)
+        .export_values()
+        ;
+    enum_<BrxCvDbVAlignment::EVAlignmentType>("VAlignmentType")
+        .value("eLayout", BrxCvDbVAlignment::EVAlignmentType::eLayout)
+        .value("eStaticSurface", BrxCvDbVAlignment::EVAlignmentType::eStaticSurface)
+        .value("eDynamicSurface", BrxCvDbVAlignment::EVAlignmentType::eDynamicSurface)
+        .value("eAutomatic", BrxCvDbVAlignment::EVAlignmentType::eAutomatic)
+        .export_values()
+        ;
+    enum_<BrxCvDbVAlignment::EVAlignmentVisualStyle>("VAlignmentVisualStyle")
+        .value("eElements", BrxCvDbVAlignment::EVAlignmentVisualStyle::eElements)
+        .value("eTangents", BrxCvDbVAlignment::EVAlignmentVisualStyle::eTangents)
+        .value("eExtensions", BrxCvDbVAlignment::EVAlignmentVisualStyle::eExtensions)
         .export_values()
         ;
     enum_<BrxCvDbVAlignmentElement::EElementType>("VAlignmentElementType")
