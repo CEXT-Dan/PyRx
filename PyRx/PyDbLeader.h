@@ -18,7 +18,9 @@ public:
     PyDbLeader();
     virtual ~PyDbLeader() override = default;
     PyDbLeader(AcDbLeader* ptr, bool autoDelete);
+    PyDbLeader(const PyDbObjectId& id);
     PyDbLeader(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbLeader(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     void                setPlane(const PyGePlane& plane);
     AcGeVector3d        normal() const;
     int numVertices() const;
