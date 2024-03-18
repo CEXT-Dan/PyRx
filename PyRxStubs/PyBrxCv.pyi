@@ -11295,7 +11295,7 @@ class CvDbVAlignment:
     def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
       '''                             '''
     ...
-    def curveAtPVI (self, val: PyBrxCv.CvDbVAlignmentPVI)-> int :
+    def curveAtPVI (self, pvi: PyBrxCv.CvDbVAlignmentPVI)-> int :
       '''                             '''
     ...
     def curveElementColor (self)-> int :
@@ -11336,7 +11336,7 @@ class CvDbVAlignment:
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def elementAtId (self, val: int)-> PyBrxCv.CvDbVAlignmentElement :
+    def elementAtId (self, id: int)-> PyBrxCv.CvDbVAlignmentElement :
       '''                             '''
     ...
     def elementCount (self)-> int :
@@ -11398,10 +11398,10 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getElementId (self, val: int)-> int :
+    def getElementId (self, gsMarker: int)-> int :
       '''                             '''
     ...
-    def getElevationAt (self, val: float)-> tuple :
+    def getElevationAt (self, station: float)-> tuple :
       '''                             '''
     ...
     def getElevations (self)-> list :
@@ -11470,7 +11470,7 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getProjectedCurve (self, plane: PyGe.Plane, projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
-    def getRadius (self, val: float)-> float :
+    def getRadius (self, param: float)-> float :
       '''                             '''
     ...
     def getSecondDeriv (self, param: float|PyGe.Point3d)-> PyGe.Vector3d :
@@ -11678,7 +11678,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def name (self)-> str :
       '''                             '''
     ...
-    def nextTangentElementId (self, val: int)-> int :
+    def nextTangentElementId (self, id: int)-> int :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
@@ -11690,10 +11690,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self)-> str :
       '''                             '''
     ...
-    def previousTangentElementId (self, val: int)-> int :
+    def previousTangentElementId (self, id: int)-> int :
       '''                             '''
     ...
-    def pviAtCurve (self, val: PyBrxCv.CvDbVAlignmentCurve)-> PyBrxCv.CvDbVAlignmentPVI :
+    def pviAtCurve (self, curve: PyBrxCv.CvDbVAlignmentCurve)-> PyBrxCv.CvDbVAlignmentPVI :
       '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :

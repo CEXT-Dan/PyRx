@@ -19,6 +19,7 @@ public:
     PyDbImage(AcDbImage* ptr, bool autoDelete);
     PyDbImage(const PyDbObjectId& id);
     PyDbImage(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbImage(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     virtual ~PyDbImage() override = default;
 
 public:
@@ -41,6 +42,7 @@ public:
     PyDbRasterImageDef(AcDbRasterImageDef* ptr, bool autoDelete);
     PyDbRasterImageDef(const PyDbObjectId& id);
     PyDbRasterImageDef(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbRasterImageDef(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbRasterImageDef() override = default;
     void                setSourceFileName(const std::string& pPathName);
     void                setActiveFileName(const std::string& pPathName);
@@ -113,7 +115,7 @@ public:
     void                setReactorId(const PyDbObjectId& reactorId);
     PyDbObjectId        reactorId() const;
     Adesk::Boolean      setOrientation(const AcGePoint3d& origin, const AcGeVector3d& uCorner, const AcGeVector3d& vOnPlane);
-    void                getOrientation(AcGePoint3d& origin, AcGeVector3d& u, AcGeVector3d& v) const;
+    boost::python::tuple getOrientation() const;
     AcGeVector2d        scale() const;
     AcGeVector2d        imageSize1() const;
     AcGeVector2d        imageSize2(Adesk::Boolean bGetCachedValue) const;

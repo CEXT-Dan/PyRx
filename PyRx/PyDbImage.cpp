@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "stdafx.h"
 #include "PyDbImage.h"
 #include "PyDbObjectId.h"
 #include "PyDbDictionary.h"
@@ -10,13 +11,15 @@ using namespace boost::python;
 //PyDbImage
 void makePyDbImageWrapper()
 {
+    PyDocString DS("Image");
     class_<PyDbImage, bases<PyDbEntity>>("Image", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbImage::className).staticmethod("className")
-        .def("desc", &PyDbImage::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbImage::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbImage::cast).staticmethod("cast")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
+        .def("className", &PyDbImage::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbImage::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbImage::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbImage::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -32,6 +35,11 @@ PyDbImage::PyDbImage(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 PyDbImage::PyDbImage(const PyDbObjectId& id)
     : PyDbImage(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbImage::PyDbImage(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbEntity(openAcDbObject<AcDbImage>(id, mode, erased), false)
 {
 }
 
@@ -73,36 +81,38 @@ AcDbImage* PyDbImage::impObj(const std::source_location& src /*= std::source_loc
 //PyDbRasterImageDef
 void makePyDbRasterImageDefWrapper()
 {
+    PyDocString DS("RasterImageDef");
     class_<PyDbRasterImageDef, bases<PyDbObject>>("RasterImageDef")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("setSourceFileName", &PyDbRasterImageDef::setSourceFileName)
-        .def("setActiveFileName", &PyDbRasterImageDef::setActiveFileName)
-        .def("searchForActivePath", &PyDbRasterImageDef::searchForActivePath)
-        .def("sourceFileName", &PyDbRasterImageDef::sourceFileName)
-        .def("activeFileName", &PyDbRasterImageDef::activeFileName)
-        .def("embed", &PyDbRasterImageDef::embed)
-        .def("isEmbedded", &PyDbRasterImageDef::isEmbedded)
-        .def("load", &PyDbRasterImageDef::load)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
+        .def("setSourceFileName", &PyDbRasterImageDef::setSourceFileName, DS.ARGS({ "val: str" }))
+        .def("setActiveFileName", &PyDbRasterImageDef::setActiveFileName, DS.ARGS({ "val: str" }))
+        .def("searchForActivePath", &PyDbRasterImageDef::searchForActivePath, DS.ARGS())
+        .def("sourceFileName", &PyDbRasterImageDef::sourceFileName, DS.ARGS())
+        .def("activeFileName", &PyDbRasterImageDef::activeFileName, DS.ARGS())
+        .def("embed", &PyDbRasterImageDef::embed, DS.ARGS())
+        .def("isEmbedded", &PyDbRasterImageDef::isEmbedded, DS.ARGS())
+        .def("load", &PyDbRasterImageDef::load, DS.ARGS())
         .def("unload", &PyDbRasterImageDef::unload1)
-        .def("unload", &PyDbRasterImageDef::unload2)
-        .def("isLoaded", &PyDbRasterImageDef::isLoaded)
-        .def("size", &PyDbRasterImageDef::size)
-        .def("fileType", &PyDbRasterImageDef::fileType)
-        .def("entityCount", &PyDbRasterImageDef::entityCount)
-        .def("updateEntities", &PyDbRasterImageDef::updateEntities)
-        .def("setResolutionMMPerPixel", &PyDbRasterImageDef::setResolutionMMPerPixel)
-        .def("resolutionMMPerPixel", &PyDbRasterImageDef::resolutionMMPerPixel)
-        .def("setResolutionUnits", &PyDbRasterImageDef::setResolutionUnits)
-        .def("resolutionUnits", &PyDbRasterImageDef::resolutionUnits)
-        .def("createImageDictionary", &PyDbRasterImageDef::createImageDictionary).staticmethod("createImageDictionary")
-        .def("imageDictionary", &PyDbRasterImageDef::imageDictionary).staticmethod("imageDictionary")
-        .def("suggestName", &PyDbRasterImageDef::suggestName).staticmethod("suggestName")
-        .def("className", &PyDbRasterImageDef::className).staticmethod("className")
-        .def("desc", &PyDbRasterImageDef::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbRasterImageDef::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbRasterImageDef::cast).staticmethod("cast")
+        .def("unload", &PyDbRasterImageDef::unload2, DS.ARGS({ "val: bool=True" }))
+        .def("isLoaded", &PyDbRasterImageDef::isLoaded, DS.ARGS())
+        .def("size", &PyDbRasterImageDef::size, DS.ARGS())
+        .def("fileType", &PyDbRasterImageDef::fileType, DS.ARGS())
+        .def("entityCount", &PyDbRasterImageDef::entityCount, DS.ARGS())
+        .def("updateEntities", &PyDbRasterImageDef::updateEntities, DS.ARGS())
+        .def("setResolutionMMPerPixel", &PyDbRasterImageDef::setResolutionMMPerPixel, DS.ARGS({ "vec: PyGe.Vector2d" }))
+        .def("resolutionMMPerPixel", &PyDbRasterImageDef::resolutionMMPerPixel, DS.ARGS())
+        .def("setResolutionUnits", &PyDbRasterImageDef::setResolutionUnits, DS.ARGS({ "val: PyDb.ImageUnits" }))
+        .def("resolutionUnits", &PyDbRasterImageDef::resolutionUnits, DS.ARGS())
+        .def("createImageDictionary", &PyDbRasterImageDef::createImageDictionary, DS.SARGS({ "db: PyDb.Database" })).staticmethod("createImageDictionary")
+        .def("imageDictionary", &PyDbRasterImageDef::imageDictionary, DS.SARGS({ "db: PyDb.Database" })).staticmethod("imageDictionary")
+        .def("suggestName", &PyDbRasterImageDef::suggestName, DS.SARGS({ "db: PyDb.Dictionary","name: str" })).staticmethod("suggestName")
+        .def("className", &PyDbRasterImageDef::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbRasterImageDef::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbRasterImageDef::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbRasterImageDef::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 
     enum_<AcDbRasterImageDef::Units>("ImageUnits")
@@ -148,6 +158,11 @@ PyDbRasterImageDef::PyDbRasterImageDef(const PyDbObjectId& id, AcDb::OpenMode mo
 
 PyDbRasterImageDef::PyDbRasterImageDef(const PyDbObjectId& id)
     : PyDbRasterImageDef(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbRasterImageDef::PyDbRasterImageDef(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbObject(openAcDbObject<AcDbRasterImageDef>(id, mode, erased), false)
 {
 }
 
@@ -302,15 +317,16 @@ AcDbRasterImageDef* PyDbRasterImageDef::impObj(const std::source_location& src /
 //PyDbRasterImageDefReactor
 void makePyDbRasterImageDefReactorWrapper()
 {
+    PyDocString DS("RasterImageDefReactor");
     class_<PyDbRasterImageDefReactor, bases<PyDbObject>>("RasterImageDefReactor")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("setEnable", &PyDbRasterImageDefReactor::setEnable).staticmethod("setEnable")
-        .def("className", &PyDbRasterImageDefReactor::className).staticmethod("className")
-        .def("desc", &PyDbRasterImageDefReactor::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbRasterImageDefReactor::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbRasterImageDefReactor::cast).staticmethod("cast")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: OpenMode=kForRead" })))
+        .def("setEnable", &PyDbRasterImageDefReactor::setEnable, DS.SARGS({ "val: bool" })).staticmethod("setEnable")
+        .def("className", &PyDbRasterImageDefReactor::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbRasterImageDefReactor::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbRasterImageDefReactor::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbRasterImageDefReactor::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -376,54 +392,55 @@ AcDbRasterImageDefReactor* PyDbRasterImageDefReactor::impObj(const std::source_l
 //AcDbRasterImage
 void makePyDbRasterImageWrapper()
 {
+    PyDocString DS("RasterImage");
     class_<PyDbRasterImage, bases<PyDbImage>>("RasterImage")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("setImageDefId", &PyDbRasterImage::setImageDefId)
-        .def("imageDefId", &PyDbRasterImage::imageDefId)
-        .def("setReactorId", &PyDbRasterImage::setReactorId)
-        .def("reactorId", &PyDbRasterImage::reactorId)
-        .def("setOrientation", &PyDbRasterImage::setOrientation)
-        .def("getOrientation", &PyDbRasterImage::getOrientation)
-        .def("scale", &PyDbRasterImage::scale)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: OpenMode=kForRead" })))
+        .def("setImageDefId", &PyDbRasterImage::setImageDefId, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("imageDefId", &PyDbRasterImage::imageDefId, DS.ARGS())
+        .def("setReactorId", &PyDbRasterImage::setReactorId, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("reactorId", &PyDbRasterImage::reactorId, DS.ARGS())
+        .def("setOrientation", &PyDbRasterImage::setOrientation, DS.ARGS({ "pt: PyGe.Point3d","u: PyGe.Vector3d","v: PyGe.Vector3d" }))
+        .def("getOrientation", &PyDbRasterImage::getOrientation, DS.ARGS())
+        .def("scale", &PyDbRasterImage::scale, DS.ARGS())
         .def("imageSize", &PyDbRasterImage::imageSize1)
-        .def("imageSize", &PyDbRasterImage::imageSize2)
-        .def("setClipBoundaryToWholeImage", &PyDbRasterImage::setClipBoundaryToWholeImage)
-        .def("clipBoundary", &PyDbRasterImage::clipBoundary)
-        .def("clipBoundaryType", &PyDbRasterImage::clipBoundaryType)
-        .def("isClipped", &PyDbRasterImage::isClipped)
-        .def("getVertices", &PyDbRasterImage::getVertices)
-        .def("getPixelToModelTransform", &PyDbRasterImage::getPixelToModelTransform)
-        .def("setDisplayOpt", &PyDbRasterImage::setDisplayOpt)
-        .def("isSetDisplayOpt", &PyDbRasterImage::isSetDisplayOpt)
-        .def("setBrightness", &PyDbRasterImage::setBrightness)
-        .def("brightness", &PyDbRasterImage::brightness)
-        .def("setContrast", &PyDbRasterImage::setContrast)
-        .def("contrast", &PyDbRasterImage::contrast)
-        .def("setFade", &PyDbRasterImage::setFade)
-        .def("fade", &PyDbRasterImage::fade)
-        .def("isClipInverted", &PyDbRasterImage::isClipInverted)
-        .def("setClipInverted", &PyDbRasterImage::setClipInverted)
-        .def("width", &PyDbRasterImage::width)
-        .def("height", &PyDbRasterImage::height)
-        .def("imageHeight", &PyDbRasterImage::imageHeight)
-        .def("imageWidth", &PyDbRasterImage::imageWidth)
-        .def("setHeight", &PyDbRasterImage::setHeight)
-        .def("setWidth", &PyDbRasterImage::setWidth)
-        .def("position", &PyDbRasterImage::position)
-        .def("rotation", &PyDbRasterImage::rotation)
-        .def("setRotation", &PyDbRasterImage::setRotation)
-        .def("isImageShown", &PyDbRasterImage::isImageShown)
-        .def("setShowImage", &PyDbRasterImage::setShowImage)
-        .def("isImageTransparent", &PyDbRasterImage::isImageTransparent)
+        .def("imageSize", &PyDbRasterImage::imageSize2, DS.ARGS({ "val: bool=True" }))
+        .def("setClipBoundaryToWholeImage", &PyDbRasterImage::setClipBoundaryToWholeImage, DS.ARGS({ "vec: PyGe.Vector2d" }))
+        .def("clipBoundary", &PyDbRasterImage::clipBoundary, DS.ARGS())
+        .def("clipBoundaryType", &PyDbRasterImage::clipBoundaryType, DS.ARGS())
+        .def("isClipped", &PyDbRasterImage::isClipped, DS.ARGS())
+        .def("getVertices", &PyDbRasterImage::getVertices, DS.ARGS())
+        .def("getPixelToModelTransform", &PyDbRasterImage::getPixelToModelTransform, DS.ARGS())
+        .def("setDisplayOpt", &PyDbRasterImage::setDisplayOpt, DS.ARGS({ "opt: PyDb.ImageDisplayOpt","val: bool" }))
+        .def("isSetDisplayOpt", &PyDbRasterImage::isSetDisplayOpt, DS.ARGS({ "val: PyDb.ImageDisplayOpt" }))
+        .def("setBrightness", &PyDbRasterImage::setBrightness, DS.ARGS({ "val: int" }))
+        .def("brightness", &PyDbRasterImage::brightness, DS.ARGS())
+        .def("setContrast", &PyDbRasterImage::setContrast, DS.ARGS({ "val: int" }))
+        .def("contrast", &PyDbRasterImage::contrast, DS.ARGS())
+        .def("setFade", &PyDbRasterImage::setFade, DS.ARGS({ "val: int" }))
+        .def("fade", &PyDbRasterImage::fade, DS.ARGS())
+        .def("isClipInverted", &PyDbRasterImage::isClipInverted, DS.ARGS())
+        .def("setClipInverted", &PyDbRasterImage::setClipInverted, DS.ARGS({ "val: bool" }))
+        .def("width", &PyDbRasterImage::width, DS.ARGS())
+        .def("height", &PyDbRasterImage::height, DS.ARGS())
+        .def("imageHeight", &PyDbRasterImage::imageHeight, DS.ARGS())
+        .def("imageWidth", &PyDbRasterImage::imageWidth, DS.ARGS())
+        .def("setHeight", &PyDbRasterImage::setHeight, DS.ARGS({ "val: float" }))
+        .def("setWidth", &PyDbRasterImage::setWidth, DS.ARGS({ "val: float" }))
+        .def("position", &PyDbRasterImage::position, DS.ARGS())
+        .def("rotation", &PyDbRasterImage::rotation, DS.ARGS())
+        .def("setRotation", &PyDbRasterImage::setRotation, DS.ARGS({ "val: float" }))
+        .def("isImageShown", &PyDbRasterImage::isImageShown, DS.ARGS())
+        .def("setShowImage", &PyDbRasterImage::setShowImage, DS.ARGS({ "val: bool" }))
+        .def("isImageTransparent", &PyDbRasterImage::isImageTransparent, DS.ARGS())
         .def("setImageTransparency", &PyDbRasterImage::setImageTransparency)
-        .def("isShownClipped", &PyDbRasterImage::isShownClipped)
-        .def("setShowClipped", &PyDbRasterImage::setShowClipped)
-        .def("className", &PyDbRasterImage::className).staticmethod("className")
-        .def("desc", &PyDbRasterImage::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbRasterImage::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbRasterImage::cast).staticmethod("cast")
+        .def("isShownClipped", &PyDbRasterImage::isShownClipped, DS.ARGS())
+        .def("setShowClipped", &PyDbRasterImage::setShowClipped, DS.ARGS({ "val: bool" }))
+        .def("className", &PyDbRasterImage::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbRasterImage::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbRasterImage::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbRasterImage::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
     enum_<AcDbRasterImage::ClipBoundaryType>("ClipBoundaryType")
         .value("kInvalid", AcDbRasterImage::ClipBoundaryType::kInvalid)
@@ -485,9 +502,14 @@ Adesk::Boolean PyDbRasterImage::setOrientation(const AcGePoint3d& origin, const 
     return impObj()->setOrientation(origin, uCorner, vOnPlane);
 }
 
-void PyDbRasterImage::getOrientation(AcGePoint3d& origin, AcGeVector3d& u, AcGeVector3d& v) const
+boost::python::tuple PyDbRasterImage::getOrientation() const
 {
-    return impObj()->getOrientation(origin, u, v);
+    AcGePoint3d origin;
+    AcGeVector3d u;
+    AcGeVector3d v;
+    impObj()->getOrientation(origin, u, v);
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(origin, u, v);
 }
 
 AcGeVector2d PyDbRasterImage::scale() const
@@ -702,13 +724,20 @@ AcDbRasterImage* PyDbRasterImage::impObj(const std::source_location& src /*= std
 //PyDbWipeout
 void makePyDbWipeoutWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- points: list[PyGe.Point2d], normal: PyGe.Vector3d\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("Wipeout");
     class_<PyDbWipeout, bases<PyDbRasterImage>>("Wipeout")
         .def(init<>())
         .def(init<const boost::python::list&, const AcGeVector3d&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("frame", &PyDbWipeout::frame, DS.ARGS())
         .def("setFrom", &PyDbWipeout::setFrom, DS.ARGS({ "points : list[PyGe.Point2d]", "normal : PyGe.Vector3d" }))
         .def("className", &PyDbWipeout::className, DS.SARGS()).staticmethod("className")
@@ -825,6 +854,13 @@ AcDbWipeout* PyDbWipeout::impObj(const std::source_location& src /*= std::source
 
 void makePyDbGeoMapWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- mapType: PyDb.AcGeoMapType, res: PyDb.AcGeoMapResolution, levelOfDetail: int\n"
+        "- viewportId: PyDb.ObjectId, isViewportSpecific: bool\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("GeoMap");
     class_<PyDbGeoMap, bases<PyDbRasterImage>>("GeoMap", boost::python::no_init)
         .def(init<AcGeoMapType, AcGeoMapResolution, unsigned int>())
@@ -835,7 +871,7 @@ void makePyDbGeoMapWrapper()
 #endif
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("bottomLeftPt", &PyDbGeoMap::bottomLeftPt, DS.ARGS())
         .def("height", &PyDbGeoMap::height, DS.ARGS())
         .def("width", &PyDbGeoMap::width, DS.ARGS())
@@ -843,13 +879,13 @@ void makePyDbGeoMapWrapper()
         .def("imageHeight", &PyDbGeoMap::imageHeight, DS.ARGS())
         .def("imageWidth", &PyDbGeoMap::imageWidth, DS.ARGS())
         .def("resolution", &PyDbGeoMap::resolution, DS.ARGS())
-        .def("setResolution", &PyDbGeoMap::setResolution, DS.ARGS({"val : PyDb.AcGeoMapResolution"}))
+        .def("setResolution", &PyDbGeoMap::setResolution, DS.ARGS({ "val : PyDb.AcGeoMapResolution" }))
         .def("LOD", &PyDbGeoMap::LOD, DS.ARGS())
         .def("mapType", &PyDbGeoMap::mapType, DS.ARGS())
         .def("setMapType", &PyDbGeoMap::setMapType, DS.ARGS({ "val : PyDb.AcGeoMapType" }))
         .def("isOutOfDate", &PyDbGeoMap::isOutOfDate, DS.ARGS())
         .def("updateMapImage", &PyDbGeoMap::updateMapImage1)
-        .def("updateMapImage", &PyDbGeoMap::updateMapImage2 , DS.ARGS({ "reset : bool = False" }))
+        .def("updateMapImage", &PyDbGeoMap::updateMapImage2, DS.ARGS({ "reset : bool = False" }))
         .def("className", &PyDbGeoMap::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbGeoMap::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbGeoMap::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
