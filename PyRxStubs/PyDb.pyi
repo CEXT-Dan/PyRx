@@ -14500,22 +14500,22 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDimlim (self, val : bool)-> None :
       '''                             '''
     ...
-    def setDimltex1 (self, val : PyDb.ObjectId)-> None :
+    def setDimltex1 (self, val: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimltex2 (self, val : PyDb.ObjectId)-> None :
+    def setDimltex2 (self, val: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimltype (self, val : PyDb.ObjectId)-> None :
+    def setDimltype (self, val: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setDimlunit (self, val : int)-> None :
       '''                             '''
     ...
-    def setDimlwd (self, val :PyDb:LineWeight)-> None :
+    def setDimlwd (self, val: PyDb.LineWeight)-> None :
       '''                             '''
     ...
-    def setDimlwe (self, val :PyDb:LineWeight)-> None :
+    def setDimlwe (self, val: PyDb.LineWeight)-> None :
       '''                             '''
     ...
     def setDimmzf (self, val : float)-> None :
@@ -17469,7 +17469,7 @@ class EntityColor:
     ...
 
     @staticmethod
-    def None ()-> PyDb.EntityColor :
+    def NoneClr ()-> PyDb.EntityColor :
       '''                             '''
     ...
     def __init__ (self, *args, **kwargs)-> None :
@@ -19321,25 +19321,25 @@ class EvalVariant:
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setDouble (self, code : PyDb.DxfCode, val, float)-> None :
+    def setDouble (self, code: PyDb.DxfCode, val: float)-> None :
       '''                             '''
     ...
-    def setInt16 (self, code : PyDb.DxfCode, val, int)-> None :
+    def setInt16 (self, code: PyDb.DxfCode, val: int)-> None :
       '''                             '''
     ...
-    def setInt32 (self, code : PyDb.DxfCode, val, int)-> None :
+    def setInt32 (self, code: PyDb.DxfCode, val: int)-> None :
       '''                             '''
     ...
-    def setObjectId (self, code : PyDb.DxfCode, id, PyDb.ObjectId)-> None :
+    def setObjectId (self, code: PyDb.DxfCode, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setPoint2d (self, code : PyDb.DxfCode, pt : PyGe.Point2d)-> None :
+    def setPoint2d (self, code: PyDb.DxfCode, pt: PyGe.Point2d)-> None :
       '''                             '''
     ...
-    def setPoint3d (self, code : PyDb.DxfCode, pt : PyGe.Point3d)-> None :
+    def setPoint3d (self, code: PyDb.DxfCode, pt: PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setString (self, code : PyDb.DxfCode, val, str)-> None :
+    def setString (self, code: PyDb.DxfCode, val: str)-> None :
       '''                             '''
     ...
 
