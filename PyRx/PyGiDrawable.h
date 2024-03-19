@@ -66,6 +66,9 @@ public:
     AcGiDrawableOverrule* impObj(const std::source_location& src = std::source_location::current()) const;
 
 private:
+#ifdef BRXAPP
+    mutable std::mutex PyGiDrawableOverruleMutex;
+#endif // BRXAPP
     mutable bool isApplicableOverride = true;
     mutable bool isWorldDrawOverride = true;
     mutable bool isViewportDrawOverride = true;
