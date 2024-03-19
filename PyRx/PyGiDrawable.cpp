@@ -138,9 +138,6 @@ AcGiDrawable* PyGiDrawable::impObj(const std::source_location& src /*= std::sour
 
 //-----------------------------------------------------------------------------------------
 //PyGiDrawableOverrule
-
-//TODO: [BRX] test
-static std::mutex PyGiDrawableOverruleMutex;
 void makePyGiDrawableOverruleWrapper()
 {
     class_<PyGiDrawableOverrule, bases<PyRxOverrule>>("DrawableOverrule")
