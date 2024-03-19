@@ -14,7 +14,7 @@ void makePyDbSymbolTableRecordWrapper()
     PyDocString DS("SymbolTableRecord");
     class_<PyDbSymbolTableRecord, bases<PyDbObject>>("SymbolTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode.kForRead" })))
         .def("getName", &PyDbSymbolTableRecord::getName, DS.ARGS())
         .def("setName", &PyDbSymbolTableRecord::setName, DS.ARGS({ "name: str" }))
         .def("isDependent", &PyDbSymbolTableRecord::isDependent, DS.ARGS())
