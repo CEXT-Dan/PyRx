@@ -334,8 +334,8 @@ PyBrxCvDbObjectManager PyBrxCvDbStyleManager::openManager(PyDbDatabase& db, AcDb
     }
     case PyBrxCvDbStyleManager::eSymbolStyle:
     {
-        BrxCvDbSurfaceSlopeLabelStyleManager* ptr = nullptr;
-        PyThrowBadEs(BrxCvDbSurfaceSlopeLabelStyleManager::openManager(ptr, db.impObj(), mode));
+        BrxCvDbSymbolStyleManager* ptr = nullptr;
+        PyThrowBadEs(BrxCvDbSymbolStyleManager::openManager(ptr, db.impObj(), mode));
         return PyBrxCvDbObjectManager(ptr, true);
     }
     default:
