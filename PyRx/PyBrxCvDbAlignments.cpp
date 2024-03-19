@@ -751,6 +751,32 @@ void makePyBrxCvDbHAlignmentWrapper()
         "- nextId: int, passThroughPoint: PyGe.Point2d, radius: float, isGreaterThan180: bool, arcType: PyBrxCv.ArcType\n"
         "- nextId: int, radius: float, paramValue: float, paramType: PyBrxCv.ArcType, isClockwise: bool\n";
 
+    constexpr const std::string_view addArcFromOverloads = "Overloads:\n"
+        "- prevId: int, passThroughPoint: PyGe.Point2d\n"
+        "- prevId: int, passThroughPoint: PyGe.Point2d, direction: PyGe.Vector2d\n"
+        "- prevId: int, passThroughPoint: PyGe.Point2d, radius: float, isGreaterThan180: bool, arcType: PyBrxCv.ArcType\n"
+        "- prevId: int, radius: float, paramValue: float, paramType: PyBrxCv.ArcType, isClockwise: bool\n";
+
+    constexpr const std::string_view addArcBetweenOverloads = "Overloads:\n"
+        "- prevId: int, nextId: int, passThroughPoint: PyGe.Point2d\n"
+        "- prevId: int, nextId: int, parameter: float, paramType: PyBrxCv.EArcParameterType, isGreaterThan180: bool, arcType: PyBrxCv.ArcType\n";
+
+    constexpr const std::string_view addTSToOverloads = "Overloads:\n"
+        "- nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, passThroughPoint: PyGe.Point2d,  spiralDefinition: PyBrxCv.SpiralDefinitionType\n"
+        "- nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, tangentLength: float,  spiralDefinition: PyBrxCv.SpiralDefinitionType\n";
+
+    constexpr const std::string_view addSTFromOverloads = "Overloads:\n"
+        "- prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, passThroughPoint: PyGe.Point2d,  spiralDefinition: PyBrxCv.SpiralDefinitionType\n"
+        "- prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, tangentLength: float,  spiralDefinition: PyBrxCv.SpiralDefinitionType\n";
+
+    constexpr const std::string_view addCSToOverloads = "Overloads:\n"
+        "- nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float,  passThroughPoint: PyGe.Point2d, isGreaterThan180: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType\n"
+        "- nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float,  arcLength: float, isClockwise: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType\n";
+
+    constexpr const std::string_view addSCFromOverloads = "Overloads:\n"
+        "- prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float,  passThroughPoint: PyGe.Point2d, isGreaterThan180: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType\n"
+        "- prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float,  arcLength: float, isClockwise: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType\n";
+
 
     PyDocString DS("CvDbHAlignment");
     class_<PyBrxCvDbHAlignment, bases<PyBrxCvDbCurve>>("CvDbHAlignment")
@@ -794,43 +820,41 @@ void makePyBrxCvDbHAlignmentWrapper()
         .def("addArcAuto", &PyBrxCvDbHAlignment::addArcAuto, DS.ARGS({ "prevId: int","nextId: int" }))
         .def("addArcFixed", &PyBrxCvDbHAlignment::addArcFixed1)
         .def("addArcFixed", &PyBrxCvDbHAlignment::addArcFixed2, DS.OVRL(addArcFixedOverloads))
-
         .def("addArcTo", &PyBrxCvDbHAlignment::addArcTo1)
         .def("addArcTo", &PyBrxCvDbHAlignment::addArcTo2)
         .def("addArcTo", &PyBrxCvDbHAlignment::addArcTo3)
         .def("addArcTo", &PyBrxCvDbHAlignment::addArcTo4, DS.OVRL(addArcToOverloads))
-
         .def("addArcFrom", &PyBrxCvDbHAlignment::addArcFrom1)
         .def("addArcFrom", &PyBrxCvDbHAlignment::addArcFrom2)
         .def("addArcFrom", &PyBrxCvDbHAlignment::addArcFrom3)
-        .def("addArcFrom", &PyBrxCvDbHAlignment::addArcFrom4)
-
-
+        .def("addArcFrom", &PyBrxCvDbHAlignment::addArcFrom4, DS.OVRL(addArcFromOverloads))
         .def("addArcBetween", &PyBrxCvDbHAlignment::addArcBetween1)
-        .def("addArcBetween", &PyBrxCvDbHAlignment::addArcBetween2)
-
-        .def("addSCSBetween", &PyBrxCvDbHAlignment::addSCSBetween)
-        .def("addSTSBetween", &PyBrxCvDbHAlignment::addSTSBetween)
-        .def("addSSBetween", &PyBrxCvDbHAlignment::addSSBetween)
-        .def("addSpiralFrom", &PyBrxCvDbHAlignment::addSpiralFrom)
-        .def("addSpiralTo", &PyBrxCvDbHAlignment::addSpiralTo)
-        .def("addSpiralBetween", &PyBrxCvDbHAlignment::addSpiralBetween)
-
+        .def("addArcBetween", &PyBrxCvDbHAlignment::addArcBetween2, DS.OVRL(addArcBetweenOverloads))
+        .def("addSCSBetween", &PyBrxCvDbHAlignment::addSCSBetween,
+            DS.ARGS({ "prevId: int","nextId: int","spiral1: float","spiral2: float","spiralType: PyBrxCv.SpiralParameterType","radius: float","spiralDef: PyBrxCv.SpiralDefinitionType" }))
+        .def("addSTSBetween", &PyBrxCvDbHAlignment::addSTSBetween,
+            DS.ARGS({ "prevId: int","nextId: int","spiral1Param: float","spiral2Param: float","spiralType : PyBrxCv.SpiralParameterType","spiralDef : PyBrxCv.SpiralDefinitionType" }))
+        .def("addSSBetween", &PyBrxCvDbHAlignment::addSSBetween,
+            DS.ARGS({ "prevId: int","nextId: int","spiralRatio: float","spiralParamType : PyBrxCv.SpiralParameterType","spiralDef : PyBrxCv.SpiralDefinitionType" }))
+        .def("addSpiralFrom", &PyBrxCvDbHAlignment::addSpiralFrom,
+            DS.ARGS({ "prevId: int","radius: float","length: float","isClockwise: bool","spiralDef : PyBrxCv.SpiralDefinitionType" }))
+        .def("addSpiralTo", &PyBrxCvDbHAlignment::addSpiralTo,
+            DS.ARGS({ "nextId: int","radius: float","length: float","isClockwise: bool","spiralDef : PyBrxCv.SpiralDefinitionType" }))
+        .def("addSpiralBetween", &PyBrxCvDbHAlignment::addSpiralBetween,
+            DS.ARGS({ "prevId: int","nextId: int","spiralDef: PyBrxCv.SpiralDefinitionType" }))
         .def("addTSTo", &PyBrxCvDbHAlignment::addTSTo1)
-        .def("addTSTo", &PyBrxCvDbHAlignment::addTSTo2)
-
+        .def("addTSTo", &PyBrxCvDbHAlignment::addTSTo2, DS.OVRL(addTSToOverloads))
         .def("addSTFrom", &PyBrxCvDbHAlignment::addSTFrom1)
-        .def("addSTFrom", &PyBrxCvDbHAlignment::addSTFrom2)
-
+        .def("addSTFrom", &PyBrxCvDbHAlignment::addSTFrom2, DS.OVRL(addSTFromOverloads))
         .def("addCSTo", &PyBrxCvDbHAlignment::addCSTo1)
-        .def("addCSTo", &PyBrxCvDbHAlignment::addCSTo2)
+        .def("addCSTo", &PyBrxCvDbHAlignment::addCSTo2, DS.OVRL(addCSToOverloads))
         .def("addSCFrom", &PyBrxCvDbHAlignment::addSCFrom1)
-        .def("addSCFrom", &PyBrxCvDbHAlignment::addSCFrom2)
-
-        .def("addCSSTo", &PyBrxCvDbHAlignment::addCSSTo)
-        .def("addSSCFrom", &PyBrxCvDbHAlignment::addSSCFrom)
-        .def("addSCSAuto", &PyBrxCvDbHAlignment::addSCSAuto)
-
+        .def("addSCFrom", &PyBrxCvDbHAlignment::addSCFrom2, DS.OVRL(addSCFromOverloads))
+        .def("addCSSTo", &PyBrxCvDbHAlignment::addCSSTo,
+            DS.ARGS({ "nextId: int", "spiral1Param: float","spiral2Param: float","spiralParamType","radius: float","passThroughPoint: PyGe.Point2d","spiralDef : PyBrxCv.SpiralDefinitionType" }))
+        .def("addSSCFrom", &PyBrxCvDbHAlignment::addSSCFrom,
+            DS.ARGS({ "prevId: int", "spiral1Param: float","spiral2Param: float","spiralParamType","radius: float","passThroughPoint: PyGe.Point2d","spiralDef : PyBrxCv.SpiralDefinitionType" }))
+        .def("addSCSAuto", &PyBrxCvDbHAlignment::addSCSAuto, DS.ARGS({ "prevId: int","nextId: int" }))
         .def("deleteElement", &PyBrxCvDbHAlignment::deleteElement, DS.ARGS({ "id: int" }))
         .def("style", &PyBrxCvDbHAlignment::style, DS.ARGS())
         .def("setStyle", &PyBrxCvDbHAlignment::setStyle, DS.ARGS({ "style: int" }))
@@ -839,13 +863,11 @@ void makePyBrxCvDbHAlignmentWrapper()
         .def("lineElementColor", &PyBrxCvDbHAlignment::lineElementColor, DS.ARGS())
         .def("curveElementColor", &PyBrxCvDbHAlignment::curveElementColor, DS.ARGS())
         .def("spiralElementColor", &PyBrxCvDbHAlignment::spiralElementColor, DS.ARGS())
-
         .def("setElementExtensionColor", &PyBrxCvDbHAlignment::setElementExtensionColor, DS.ARGS({ "colACI: int" }))
         .def("setTangentExtensionColor", &PyBrxCvDbHAlignment::setTangentExtensionColor, DS.ARGS({ "colACI: int" }))
         .def("setLineElementColor", &PyBrxCvDbHAlignment::setLineElementColor, DS.ARGS({ "colACI: int" }))
         .def("setCurveElementColor", &PyBrxCvDbHAlignment::setCurveElementColor, DS.ARGS({ "colACI: int" }))
         .def("setSpiralElementColor", &PyBrxCvDbHAlignment::setSpiralElementColor, DS.ARGS({ "colACI: int" }))
-
         .def("stationEquations", &PyBrxCvDbHAlignment::stationEquations, DS.ARGS())
         .def("setStationEquations", &PyBrxCvDbHAlignment::setStationEquations, DS.ARGS({ "val: PyBrxCv.CvStationEquations" }))
 
@@ -2314,7 +2336,7 @@ PyBrxCvDbVAlignment::PyBrxCvDbVAlignment(BrxCvDbVAlignment* ptr, bool autoDelete
 
 PyDbObjectId PyBrxCvDbVAlignment::baseHAlignment() const
 {
-   return PyDbObjectId(impObj()->baseHAlignment());
+    return PyDbObjectId(impObj()->baseHAlignment());
 }
 
 PyDbObjectId PyBrxCvDbVAlignment::baseSurface() const
@@ -2431,7 +2453,7 @@ Adesk::UInt64 PyBrxCvDbVAlignment::getElementId(Adesk::GsMarker gsMarker) const
 double PyBrxCvDbVAlignment::getRadius(double param) const
 {
     double radius = 0;
-    PyThrowBadEs(impObj()->getRadius(param,radius));
+    PyThrowBadEs(impObj()->getRadius(param, radius));
     return radius;
 }
 
@@ -2444,7 +2466,7 @@ boost::python::list PyBrxCvDbVAlignment::getElevations()
 
 Adesk::UInt32 PyBrxCvDbVAlignment::style() const
 {
-   return impObj()->style();
+    return impObj()->style();
 }
 
 Adesk::UInt32 PyBrxCvDbVAlignment::tangentPolygonColor() const
