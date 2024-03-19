@@ -2790,134 +2790,117 @@ class CvDbHAlignment:
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
-    def addArcAuto (self, *args, **kwargs)-> int :
-      '''addArcAuto( (CvDbHAlignment)arg1, (int)arg2, (int)arg3) -> int :
-
-    C++ signature :
-        unsigned __int64 addArcAuto(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,unsigned __int64)'''
+    def addArcAuto (self, prevId: int, nextId: int)-> int :
+      '''                             '''
     ...
+
+    @overload
+    def addArcBetween (self, prevId: int, nextId: int, passThroughPoint: PyGe.Point2d)-> int : ...
+    @overload
+    def addArcBetween (self, prevId: int, nextId: int, parameter: float, paramType: PyBrxCv.EArcParameterType, isGreaterThan180: bool, arcType: PyBrxCv.ArcType)-> int : ...
     def addArcBetween (self, *args, **kwargs)-> int :
-      '''addArcBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3, (Point2d)arg4) -> int :
-
-    C++ signature :
-        unsigned __int64 addArcBetween(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,unsigned __int64,class AcGePoint2d)
-
-addArcBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3, (float)arg4, (ArcParameterType)arg5, (bool)arg6, (ArcType)arg7) -> int :
-
-    C++ signature :
-        unsigned __int64 addArcBetween(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,unsigned __int64,double,enum BrxCvDbHAlignment::EArcParameterType,bool,enum BrxCvDbHAlignment::EArcType)'''
+      '''Overloads:
+    - prevId: int, nextId: int, passThroughPoint: PyGe.Point2d
+    - prevId: int, nextId: int, parameter: float, paramType: PyBrxCv.EArcParameterType, isGreaterThan180: bool, arcType: PyBrxCv.ArcType
+    '''
     ...
+
+    @overload
+    def addArcFixed (self, center: PyGe.Point2d, radius: float, clockwise: bool)-> int : ...
+    @overload
+    def addArcFixed (self, startPoint: PyGe.Point2d, midPoint: PyGe.Point2d, endPoint: PyGe.Point2d)-> int : ...
     def addArcFixed (self, *args, **kwargs)-> int :
-      '''addArcFixed( (CvDbHAlignment)arg1, (Point2d)arg2, (float)arg3, (bool)arg4) -> int :
-
-    C++ signature :
-        unsigned __int64 addArcFixed(class PyBrxCvDbHAlignment {lvalue},class AcGePoint2d,double,bool)
-
-addArcFixed( (CvDbHAlignment)arg1, (Point2d)arg2, (Point2d)arg3, (Point2d)arg4) -> int :
-
-    C++ signature :
-        unsigned __int64 addArcFixed(class PyBrxCvDbHAlignment {lvalue},class AcGePoint2d,class AcGePoint2d,class AcGePoint2d)'''
+      '''Overloads:
+    - center: PyGe.Point2d, radius: float, clockwise: bool
+    - startPoint: PyGe.Point2d, midPoint: PyGe.Point2d, endPoint: PyGe.Point2d
+    '''
     ...
+
+    @overload
+    def addArcFrom (self, prevId: int, passThroughPoint: PyGe.Point2d)-> int : ...
+    @overload
+    def addArcFrom (self, prevId: int, passThroughPoint: PyGe.Point2d, direction: PyGe.Vector2d)-> int : ...
+    @overload
+    def addArcFrom (self, prevId: int, passThroughPoint: PyGe.Point2d, radius: float, isGreaterThan180: bool, arcType: PyBrxCv.ArcType)-> int : ...
+    @overload
+    def addArcFrom (self, prevId: int, radius: float, paramValue: float, paramType: PyBrxCv.ArcType, isClockwise: bool)-> int : ...
     def addArcFrom (self, *args, **kwargs)-> int :
-      '''addArcFrom( (CvDbHAlignment)arg1, (int)arg2, (Point2d)arg3) -> int :
-
-    C++ signature :
-        unsigned __int64 addArcFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,class AcGePoint2d)
-
-addArcFrom( (CvDbHAlignment)arg1, (int)arg2, (Point2d)arg3, (Vector2d)arg4) -> int :
-
-    C++ signature :
-        unsigned __int64 addArcFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,class AcGePoint2d,class AcGeVector2d)
-
-addArcFrom( (CvDbHAlignment)arg1, (int)arg2, (Point2d)arg3, (float)arg4, (bool)arg5, (ArcType)arg6) -> int :
-
-    C++ signature :
-        unsigned __int64 addArcFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,class AcGePoint2d,double,bool,enum BrxCvDbHAlignment::EArcType)
-
-addArcFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (ArcParameterType)arg5, (bool)arg6) -> int :
-
-    C++ signature :
-        unsigned __int64 addArcFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,double,enum BrxCvDbHAlignment::EArcParameterType,bool)'''
+      '''Overloads:
+    - prevId: int, passThroughPoint: PyGe.Point2d
+    - prevId: int, passThroughPoint: PyGe.Point2d, direction: PyGe.Vector2d
+    - prevId: int, passThroughPoint: PyGe.Point2d, radius: float, isGreaterThan180: bool, arcType: PyBrxCv.ArcType
+    - prevId: int, radius: float, paramValue: float, paramType: PyBrxCv.ArcType, isClockwise: bool
+    '''
     ...
+
+    @overload
+    def addArcTo (self, nextId: int, passThroughPoint: PyGe.Point2d)-> int : ...
+    @overload
+    def addArcTo (self, nextId: int, passThroughPoint: PyGe.Point2d, direction: PyGe.Vector2d)-> int : ...
+    @overload
+    def addArcTo (self, nextId: int, passThroughPoint: PyGe.Point2d, radius: float, isGreaterThan180: bool, arcType: PyBrxCv.ArcType)-> int : ...
+    @overload
+    def addArcTo (self, nextId: int, radius: float, paramValue: float, paramType: PyBrxCv.ArcType, isClockwise: bool)-> int : ...
     def addArcTo (self, *args, **kwargs)-> int :
-      '''addArcTo( (CvDbHAlignment)arg1, (int)arg2, (Point2d)arg3) -> int :
-
-    C++ signature :
-        unsigned __int64 addArcTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,class AcGePoint2d)
-
-addArcTo( (CvDbHAlignment)arg1, (int)arg2, (Point2d)arg3, (Vector2d)arg4) -> int :
-
-    C++ signature :
-        unsigned __int64 addArcTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,class AcGePoint2d,class AcGeVector2d)
-
-addArcTo( (CvDbHAlignment)arg1, (int)arg2, (Point2d)arg3, (float)arg4, (bool)arg5, (ArcType)arg6) -> int :
-
-    C++ signature :
-        unsigned __int64 addArcTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,class AcGePoint2d,double,bool,enum BrxCvDbHAlignment::EArcType)
-
-addArcTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (ArcParameterType)arg5, (bool)arg6) -> int :
-
-    C++ signature :
-        unsigned __int64 addArcTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,double,enum BrxCvDbHAlignment::EArcParameterType,bool)'''
+      '''Overloads:
+    - nextId: int, passThroughPoint: PyGe.Point2d
+    - nextId: int, passThroughPoint: PyGe.Point2d, direction: PyGe.Vector2d
+    - nextId: int, passThroughPoint: PyGe.Point2d, radius: float, isGreaterThan180: bool, arcType: PyBrxCv.ArcType
+    - nextId: int, radius: float, paramValue: float, paramType: PyBrxCv.ArcType, isClockwise: bool
+    '''
     ...
-    def addCSSTo (self, *args, **kwargs)-> int :
-      '''addCSSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (SpiralParameterType2)arg5, (float)arg6, (Point2d)arg7, (SpiralDefinitionType2)arg8) -> int :
-
-    C++ signature :
-        unsigned __int64 addCSSTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,class AcGePoint2d,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
+    def addCSSTo (self, nextId: int, spiral1Param: float, spiral2Param: float, spiralParamType, radius: float, passThroughPoint: PyGe.Point2d, spiralDef : PyBrxCv.SpiralDefinitionType)-> int :
+      '''                             '''
     ...
+
+    @overload
+    def addCSTo (self, nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float,  passThroughPoint: PyGe.Point2d, isGreaterThan180: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType)-> int : ...
+    @overload
+    def addCSTo (self, nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float,  arcLength: float, isClockwise: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType)-> int : ...
     def addCSTo (self, *args, **kwargs)-> int :
-      '''addCSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg4, (float)arg5, (Point2d)arg6, (bool)arg7, (SpiralDefinitionType2)arg8) -> int :
-
-    C++ signature :
-        unsigned __int64 addCSTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,class AcGePoint2d,bool,enum BrxCvDbHAlignment::ESpiralDefinitionType)
-
-addCSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg4, (float)arg5, (float)arg6, (bool)arg7, (SpiralDefinitionType2)arg8) -> int :
-
-    C++ signature :
-        unsigned __int64 addCSTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,double,bool,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
+      '''Overloads:
+    - nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float,  passThroughPoint: PyGe.Point2d, isGreaterThan180: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType
+    - nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float,  arcLength: float, isClockwise: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def addLineBetween (self, *args, **kwargs)-> int :
-      '''addLineBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3) -> int :
-
-    C++ signature :
-        unsigned __int64 addLineBetween(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,unsigned __int64)'''
+    def addLineBetween (self, prevId: int, nextId: int)-> int :
+      '''                             '''
     ...
+
+    @overload
+    def addLineFixed (self, prevId : int, length: float)-> int : ...
+    @overload
+    def addLineFixed (self, start: PyGe.Point2d, end: PyGe.Point2d)-> int : ...
     def addLineFixed (self, *args, **kwargs)-> int :
-      '''addLineFixed( (CvDbHAlignment)arg1, (int)arg2, (float)arg3) -> int :
-
-    C++ signature :
-        unsigned __int64 addLineFixed(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double)
-
-addLineFixed( (CvDbHAlignment)arg1, (Point2d)arg2, (Point2d)arg3) -> int :
-
-    C++ signature :
-        unsigned __int64 addLineFixed(class PyBrxCvDbHAlignment {lvalue},class AcGePoint2d,class AcGePoint2d)'''
+      '''Overloads:
+    - prevId : int, length: float
+    - start: PyGe.Point2d, end: PyGe.Point2d
+    '''
     ...
+
+    @overload
+    def addLineFrom (self, prevId : int, length: float)-> int : ...
+    @overload
+    def addLineFrom (self, prevId : int, to: PyGe.Point2d)-> int : ...
     def addLineFrom (self, *args, **kwargs)-> int :
-      '''addLineFrom( (CvDbHAlignment)arg1, (int)arg2, (Point2d)arg3) -> int :
-
-    C++ signature :
-        unsigned __int64 addLineFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,class AcGePoint2d)
-
-addLineFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3) -> int :
-
-    C++ signature :
-        unsigned __int64 addLineFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double)'''
+      '''Overloads:
+    - prevId : int, length: float
+    - prevId : int, to: PyGe.Point2d
+    '''
     ...
+
+    @overload
+    def addLineTo (self, nextId : int, length: float)-> int : ...
+    @overload
+    def addLineTo (self, nextId : int, to: PyGe.Point2d)-> int : ...
     def addLineTo (self, *args, **kwargs)-> int :
-      '''addLineTo( (CvDbHAlignment)arg1, (int)arg2, (Point2d)arg3) -> int :
-
-    C++ signature :
-        unsigned __int64 addLineTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,class AcGePoint2d)
-
-addLineTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3) -> int :
-
-    C++ signature :
-        unsigned __int64 addLineTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double)'''
+      '''Overloads:
+    - nextId : int, length: float
+    - nextId : int, to: PyGe.Point2d
+    '''
     ...
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -2925,75 +2908,51 @@ addLineTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3) -> int :
     def addReactor (self, reactor: EntityReactor)-> None :
       '''                             '''
     ...
+
+    @overload
+    def addSCFrom (self, prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float,  passThroughPoint: PyGe.Point2d, isGreaterThan180: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType)-> int : ...
+    @overload
+    def addSCFrom (self, prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float,  arcLength: float, isClockwise: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType)-> int : ...
     def addSCFrom (self, *args, **kwargs)-> int :
-      '''addSCFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg4, (float)arg5, (Point2d)arg6, (bool)arg7, (SpiralDefinitionType2)arg8) -> int :
-
-    C++ signature :
-        unsigned __int64 addSCFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,class AcGePoint2d,bool,enum BrxCvDbHAlignment::ESpiralDefinitionType)
-
-addSCFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg4, (float)arg5, (float)arg6, (bool)arg7, (SpiralDefinitionType2)arg8) -> int :
-
-    C++ signature :
-        unsigned __int64 addSCFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,double,bool,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
+      '''Overloads:
+    - prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float,  passThroughPoint: PyGe.Point2d, isGreaterThan180: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType
+    - prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float,  arcLength: float, isClockwise: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType
+    '''
     ...
-    def addSCSAuto (self, *args, **kwargs)-> int :
-      '''addSCSAuto( (CvDbHAlignment)arg1, (int)arg2, (int)arg3) -> int :
-
-    C++ signature :
-        unsigned __int64 addSCSAuto(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,unsigned __int64)'''
+    def addSCSAuto (self, prevId: int, nextId: int)-> int :
+      '''                             '''
     ...
-    def addSCSBetween (self, *args, **kwargs)-> int :
-      '''addSCSBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3, (float)arg4, (float)arg5, (SpiralParameterType2)arg6, (float)arg7, (SpiralDefinitionType2)arg8) -> int :
-
-    C++ signature :
-        unsigned __int64 addSCSBetween(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,unsigned __int64,double,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
+    def addSCSBetween (self, prevId: int, nextId: int, spiral1: float, spiral2: float, spiralType: PyBrxCv.SpiralParameterType, radius: float, spiralDef: PyBrxCv.SpiralDefinitionType)-> int :
+      '''                             '''
     ...
-    def addSSBetween (self, *args, **kwargs)-> int :
-      '''addSSBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3, (float)arg4, (SpiralParameterType2)arg5, (SpiralDefinitionType2)arg6) -> int :
-
-    C++ signature :
-        unsigned __int64 addSSBetween(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
+    def addSSBetween (self, prevId: int, nextId: int, spiralRatio: float, spiralParamType : PyBrxCv.SpiralParameterType, spiralDef : PyBrxCv.SpiralDefinitionType)-> int :
+      '''                             '''
     ...
-    def addSSCFrom (self, *args, **kwargs)-> int :
-      '''addSSCFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (SpiralParameterType2)arg5, (float)arg6, (Point2d)arg7, (SpiralDefinitionType2)arg8) -> int :
-
-    C++ signature :
-        unsigned __int64 addSSCFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,class AcGePoint2d,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
+    def addSSCFrom (self, prevId: int, spiral1Param: float, spiral2Param: float, spiralParamType, radius: float, passThroughPoint: PyGe.Point2d, spiralDef : PyBrxCv.SpiralDefinitionType)-> int :
+      '''                             '''
     ...
+
+    @overload
+    def addSTFrom (self, prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, passThroughPoint: PyGe.Point2d,  spiralDefinition: PyBrxCv.SpiralDefinitionType)-> int : ...
+    @overload
+    def addSTFrom (self, prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, tangentLength: float,  spiralDefinition: PyBrxCv.SpiralDefinitionType)-> int : ...
     def addSTFrom (self, *args, **kwargs)-> int :
-      '''addSTFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg4, (Point2d)arg5, (SpiralDefinitionType2)arg6) -> int :
-
-    C++ signature :
-        unsigned __int64 addSTFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,class AcGePoint2d,enum BrxCvDbHAlignment::ESpiralDefinitionType)
-
-addSTFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg4, (float)arg5, (SpiralDefinitionType2)arg6) -> int :
-
-    C++ signature :
-        unsigned __int64 addSTFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
+      '''Overloads:
+    - prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, passThroughPoint: PyGe.Point2d,  spiralDefinition: PyBrxCv.SpiralDefinitionType
+    - prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, tangentLength: float,  spiralDefinition: PyBrxCv.SpiralDefinitionType
+    '''
     ...
-    def addSTSBetween (self, *args, **kwargs)-> int :
-      '''addSTSBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3, (float)arg4, (float)arg5, (SpiralParameterType2)arg6, (SpiralDefinitionType2)arg7) -> int :
-
-    C++ signature :
-        unsigned __int64 addSTSBetween(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,unsigned __int64,double,double,enum BrxCvDbHAlignment::ESpiralParameterType,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
+    def addSTSBetween (self, prevId: int, nextId: int, spiral1Param: float, spiral2Param: float, spiralType : PyBrxCv.SpiralParameterType, spiralDef : PyBrxCv.SpiralDefinitionType)-> int :
+      '''                             '''
     ...
-    def addSpiralBetween (self, *args, **kwargs)-> int :
-      '''addSpiralBetween( (CvDbHAlignment)arg1, (int)arg2, (int)arg3, (SpiralDefinitionType2)arg4) -> int :
-
-    C++ signature :
-        unsigned __int64 addSpiralBetween(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,unsigned __int64,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
+    def addSpiralBetween (self, prevId: int, nextId: int, spiralDef: PyBrxCv.SpiralDefinitionType)-> int :
+      '''                             '''
     ...
-    def addSpiralFrom (self, *args, **kwargs)-> int :
-      '''addSpiralFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (bool)arg5, (SpiralDefinitionType2)arg6) -> int :
-
-    C++ signature :
-        unsigned __int64 addSpiralFrom(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,double,bool,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
+    def addSpiralFrom (self, prevId: int, radius: float, length: float, isClockwise: bool, spiralDef : PyBrxCv.SpiralDefinitionType)-> int :
+      '''                             '''
     ...
-    def addSpiralTo (self, *args, **kwargs)-> int :
-      '''addSpiralTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (float)arg4, (bool)arg5, (SpiralDefinitionType2)arg6) -> int :
-
-    C++ signature :
-        unsigned __int64 addSpiralTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,double,bool,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
+    def addSpiralTo (self, nextId: int, radius: float, length: float, isClockwise: bool, spiralDef : PyBrxCv.SpiralDefinitionType)-> int :
+      '''                             '''
     ...
     def addSubentPaths (self, *args, **kwargs)-> None :
       '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
@@ -3001,28 +2960,22 @@ addSTFrom( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)a
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
+
+    @overload
+    def addTSTo (self, nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, passThroughPoint: PyGe.Point2d,  spiralDefinition: PyBrxCv.SpiralDefinitionType)-> int : ...
+    @overload
+    def addTSTo (self, nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, tangentLength: float,  spiralDefinition: PyBrxCv.SpiralDefinitionType)-> int : ...
     def addTSTo (self, *args, **kwargs)-> int :
-      '''addTSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg4, (Point2d)arg5, (SpiralDefinitionType2)arg6) -> int :
-
-    C++ signature :
-        unsigned __int64 addTSTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,class AcGePoint2d,enum BrxCvDbHAlignment::ESpiralDefinitionType)
-
-addTSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg4, (float)arg5, (SpiralDefinitionType2)arg6) -> int :
-
-    C++ signature :
-        unsigned __int64 addTSTo(class PyBrxCvDbHAlignment {lvalue},unsigned __int64,double,enum BrxCvDbHAlignment::ESpiralParameterType,double,enum BrxCvDbHAlignment::ESpiralDefinitionType)'''
+      '''Overloads:
+    - nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, passThroughPoint: PyGe.Point2d,  spiralDefinition: PyBrxCv.SpiralDefinitionType
+    - nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, tangentLength: float,  spiralDefinition: PyBrxCv.SpiralDefinitionType
+    '''
     ...
-    def alignment3dAt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''alignment3dAt( (CvDbHAlignment)arg1, (SubentType)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId alignment3dAt(class PyBrxCvDbHAlignment {lvalue},unsigned long)'''
+    def alignment3dAt (self, index: int)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def alignment3dCount (self, *args, **kwargs)-> int :
-      '''alignment3dCount( (CvDbHAlignment)arg1) -> int :
-
-    C++ signature :
-        unsigned long alignment3dCount(class PyBrxCvDbHAlignment {lvalue})'''
+    def alignment3dCount (self)-> int :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -3086,17 +3039,11 @@ addTSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg
     def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
       '''                             '''
     ...
-    def curveAtPI (self, *args, **kwargs)-> int :
-      '''curveAtPI( (CvDbHAlignment)arg1, (CvDbHAlignmentPI)arg2) -> int :
-
-    C++ signature :
-        unsigned __int64 curveAtPI(class PyBrxCvDbHAlignment {lvalue},class PyBrxCvDbHAlignmentPI)'''
+    def curveAtPI (self, pi: PyBrxCv.CvDbHAlignmentPI)-> int :
+      '''                             '''
     ...
-    def curveElementColor (self, *args, **kwargs)-> int :
-      '''curveElementColor( (CvDbHAlignment)arg1) -> int :
-
-    C++ signature :
-        unsigned long curveElementColor(class PyBrxCvDbHAlignment {lvalue})'''
+    def curveElementColor (self)-> int :
+      '''                             '''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -3104,11 +3051,8 @@ addTSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def deleteElement (self, *args, **kwargs)-> bool :
-      '''deleteElement( (CvDbHAlignment)arg1, (int)arg2) -> bool :
-
-    C++ signature :
-        bool deleteElement(class PyBrxCvDbHAlignment {lvalue},unsigned __int64)'''
+    def deleteElement (self, id: int)-> bool :
+      '''                             '''
     ...
 
     @staticmethod
@@ -3136,29 +3080,17 @@ addTSTo( (CvDbHAlignment)arg1, (int)arg2, (float)arg3, (SpiralParameterType2)arg
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def elementAtId (self, *args, **kwargs)-> PyBrxCv.CvDbHAlignmentElement :
-      '''elementAtId( (CvDbHAlignment)arg1, (int)arg2) -> CvDbHAlignmentElement :
-
-    C++ signature :
-        class PyBrxCvDbHAlignmentElement elementAtId(class PyBrxCvDbHAlignment {lvalue},unsigned __int64)'''
+    def elementAtId (self, Id: int)-> PyBrxCv.CvDbHAlignmentElement :
+      '''                             '''
     ...
-    def elementAtStation (self, *args, **kwargs)-> PyBrxCv.CvDbHAlignmentElement :
-      '''elementAtStation( (CvDbHAlignment)arg1, (float)arg2) -> CvDbHAlignmentElement :
-
-    C++ signature :
-        class PyBrxCvDbHAlignmentElement elementAtStation(class PyBrxCvDbHAlignment {lvalue},double)'''
+    def elementAtStation (self, station: float)-> PyBrxCv.CvDbHAlignmentElement :
+      '''                             '''
     ...
-    def elementCount (self, *args, **kwargs)-> int :
-      '''elementCount( (CvDbHAlignment)arg1) -> int :
-
-    C++ signature :
-        unsigned __int64 elementCount(class PyBrxCvDbHAlignment {lvalue})'''
+    def elementCount (self)-> int :
+      '''                             '''
     ...
-    def elementExtensionColor (self, *args, **kwargs)-> int :
-      '''elementExtensionColor( (CvDbHAlignment)arg1) -> int :
-
-    C++ signature :
-        unsigned long elementExtensionColor(class PyBrxCvDbHAlignment {lvalue})'''
+    def elementExtensionColor (self)-> int :
+      '''                             '''
     ...
     def entityColor (self)-> PyDb.EntityColor :
       '''                             '''
@@ -3183,17 +3115,11 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def firstElementId (self, *args, **kwargs)-> int :
-      '''firstElementId( (CvDbHAlignment)arg1) -> int :
-
-    C++ signature :
-        unsigned __int64 firstElementId(class PyBrxCvDbHAlignment {lvalue})'''
+    def firstElementId (self)-> int :
+      '''                             '''
     ...
-    def firstLineElementId (self, *args, **kwargs)-> int :
-      '''firstLineElementId( (CvDbHAlignment)arg1) -> int :
-
-    C++ signature :
-        unsigned __int64 firstLineElementId(class PyBrxCvDbHAlignment {lvalue})'''
+    def firstLineElementId (self)-> int :
+      '''                             '''
     ...
     def getAcGeCurve (self, tol: Tol = default)-> PyGe.Curve3d :
       '''                             '''
@@ -3216,11 +3142,8 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getEcs (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getElementId (self, *args, **kwargs)-> int :
-      '''getElementId( (CvDbHAlignment)arg1, (int)arg2) -> int :
-
-    C++ signature :
-        unsigned __int64 getElementId(class PyBrxCvDbHAlignment {lvalue},__int64)'''
+    def getElementId (self, gsMarker: int)-> int :
+      '''                             '''
     ...
     def getEndParam (self)-> float :
       '''                             '''
@@ -3261,11 +3184,8 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getOrthoProjectedCurve (self, plane: PyGe.Plane)-> PyDb.Curve :
       '''                             '''
     ...
-    def getPIsArray (self, *args, **kwargs)-> list :
-      '''getPIsArray( (CvDbHAlignment)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getPIsArray(class PyBrxCvDbHAlignment {lvalue})'''
+    def getPIsArray (self)-> list :
+      '''                             '''
     ...
     def getParamAtDist (self, dist: float)-> float :
       '''                             '''
@@ -3285,20 +3205,14 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getPointAtParam (self, param: float)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getPointAtStation (self, *args, **kwargs)-> tuple :
-      '''getPointAtStation( (CvDbHAlignment)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getPointAtStation(class PyBrxCvDbHAlignment {lvalue},double)'''
+    def getPointAtStation (self, station: float)-> tuple :
+      '''                             '''
     ...
     def getProjectedCurve (self, plane: PyGe.Plane, projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
-    def getRadius (self, *args, **kwargs)-> float :
-      '''getRadius( (CvDbHAlignment)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getRadius(class PyBrxCvDbHAlignment {lvalue},double)'''
+    def getRadius (self, param: float)-> float :
+      '''                             '''
     ...
     def getSecondDeriv (self, param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
@@ -3327,16 +3241,16 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getStartPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
+
+    @overload
+    def getStationAtPoint (self, station: PyGe.Point2d)-> tuple : ...
+    @overload
+    def getStationAtPoint (self, station: PyGe.Point2d,fromStation: float, toStation: float)-> tuple : ...
     def getStationAtPoint (self, *args, **kwargs)-> tuple :
-      '''getStationAtPoint( (CvDbHAlignment)arg1, (Point2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getStationAtPoint(class PyBrxCvDbHAlignment {lvalue},class AcGePoint2d)
-
-getStationAtPoint( (CvDbHAlignment)arg1, (Point2d)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getStationAtPoint(class PyBrxCvDbHAlignment {lvalue},class AcGePoint2d,double,double)'''
+      '''Overloads:
+    - station: PyGe.Point2d
+    - station: PyGe.Point2d,fromStation: float, toStation: float
+    '''
     ...
     def getStretchPoints (self)-> list :
       '''                             '''
@@ -3355,11 +3269,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def getUnorderedElementIds (self, *args, **kwargs)-> list :
-      '''getUnorderedElementIds( (CvDbHAlignment)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getUnorderedElementIds(class PyBrxCvDbHAlignment {lvalue})'''
+    def getUnorderedElementIds (self)-> list :
+      '''                             '''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -3382,11 +3293,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self)-> int :
       '''                             '''
     ...
-    def insertLineFixed (self, *args, **kwargs)-> int :
-      '''insertLineFixed( (CvDbHAlignment)arg1, (Point2d)arg2, (Point2d)arg3, (int)arg4) -> int :
-
-    C++ signature :
-        unsigned __int64 insertLineFixed(class PyBrxCvDbHAlignment {lvalue},class AcGePoint2d,class AcGePoint2d,unsigned __int64)'''
+    def insertLineFixed (self, start: PyGe.Point2d, end: PyGe.Point2d, prevId: int)-> int :
+      '''                             '''
     ...
 
     @overload
@@ -3483,11 +3391,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def lastElementId (self, *args, **kwargs)-> int :
-      '''lastElementId( (CvDbHAlignment)arg1) -> int :
-
-    C++ signature :
-        unsigned __int64 lastElementId(class PyBrxCvDbHAlignment {lvalue})'''
+    def lastElementId (self)-> int :
+      '''                             '''
     ...
     def layer (self)-> str :
       '''                             '''
@@ -3495,17 +3400,11 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def layerId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (CvDbHAlignment)arg1) -> float :
-
-    C++ signature :
-        double length(class PyBrxCvDbHAlignment {lvalue})'''
+    def length (self)-> float :
+      '''                             '''
     ...
-    def lineElementColor (self, *args, **kwargs)-> int :
-      '''lineElementColor( (CvDbHAlignment)arg1) -> int :
-
-    C++ signature :
-        unsigned long lineElementColor(class PyBrxCvDbHAlignment {lvalue})'''
+    def lineElementColor (self)-> int :
+      '''                             '''
     ...
     def lineWeight (self)-> PyDb.LineWeight :
       '''                             '''
@@ -3531,11 +3430,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def name (self)-> str :
       '''                             '''
     ...
-    def nextLineElementId (self, *args, **kwargs)-> int :
-      '''nextLineElementId( (CvDbHAlignment)arg1, (int)arg2) -> int :
-
-    C++ signature :
-        unsigned __int64 nextLineElementId(class PyBrxCvDbHAlignment {lvalue},unsigned __int64)'''
+    def nextLineElementId (self, Id: int)-> int :
+      '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -3546,11 +3442,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def plotStyleName (self)-> str :
       '''                             '''
     ...
-    def previousLineElementId (self, *args, **kwargs)-> int :
-      '''previousLineElementId( (CvDbHAlignment)arg1, (int)arg2) -> int :
-
-    C++ signature :
-        unsigned __int64 previousLineElementId(class PyBrxCvDbHAlignment {lvalue},unsigned __int64)'''
+    def previousLineElementId (self, Id: int)-> int :
+      '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -3600,11 +3493,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setCurveElementColor (self, *args, **kwargs)-> bool :
-      '''setCurveElementColor( (CvDbHAlignment)arg1, (SubentType)arg2) -> bool :
-
-    C++ signature :
-        bool setCurveElementColor(class PyBrxCvDbHAlignment {lvalue},unsigned long)'''
+    def setCurveElementColor (self, colACI: int)-> bool :
+      '''                             '''
     ...
     def setDatabaseDefaults (self, db: Database = 'current')-> None :
       '''                             '''
@@ -3612,11 +3502,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setDescription (self, val : str)-> bool :
       '''                             '''
     ...
-    def setElementExtensionColor (self, *args, **kwargs)-> bool :
-      '''setElementExtensionColor( (CvDbHAlignment)arg1, (SubentType)arg2) -> bool :
-
-    C++ signature :
-        bool setElementExtensionColor(class PyBrxCvDbHAlignment {lvalue},unsigned long)'''
+    def setElementExtensionColor (self, colACI: int)-> bool :
+      '''                             '''
     ...
 
     @overload
@@ -3635,11 +3522,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineElementColor (self, *args, **kwargs)-> bool :
-      '''setLineElementColor( (CvDbHAlignment)arg1, (SubentType)arg2) -> bool :
-
-    C++ signature :
-        bool setLineElementColor(class PyBrxCvDbHAlignment {lvalue},unsigned long)'''
+    def setLineElementColor (self, colACI: int)-> bool :
+      '''                             '''
     ...
     def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
       '''                             '''
@@ -3681,29 +3565,17 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setSpiralElementColor (self, *args, **kwargs)-> bool :
-      '''setSpiralElementColor( (CvDbHAlignment)arg1, (SubentType)arg2) -> bool :
-
-    C++ signature :
-        bool setSpiralElementColor(class PyBrxCvDbHAlignment {lvalue},unsigned long)'''
+    def setSpiralElementColor (self, colACI: int)-> bool :
+      '''                             '''
     ...
-    def setStationEquations (self, *args, **kwargs)-> bool :
-      '''setStationEquations( (CvDbHAlignment)arg1, (CvStationEquations)arg2) -> bool :
-
-    C++ signature :
-        bool setStationEquations(class PyBrxCvDbHAlignment {lvalue},class PyBrxCvStationEquations)'''
+    def setStationEquations (self, val: PyBrxCv.CvStationEquations)-> bool :
+      '''                             '''
     ...
-    def setStyle (self, *args, **kwargs)-> bool :
-      '''setStyle( (CvDbHAlignment)arg1, (SubentType)arg2) -> bool :
-
-    C++ signature :
-        bool setStyle(class PyBrxCvDbHAlignment {lvalue},unsigned long)'''
+    def setStyle (self, style: int)-> bool :
+      '''                             '''
     ...
-    def setTangentExtensionColor (self, *args, **kwargs)-> bool :
-      '''setTangentExtensionColor( (CvDbHAlignment)arg1, (SubentType)arg2) -> bool :
-
-    C++ signature :
-        bool setTangentExtensionColor(class PyBrxCvDbHAlignment {lvalue},unsigned long)'''
+    def setTangentExtensionColor (self, colACI: int)-> bool :
+      '''                             '''
     ...
     def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
       '''                             '''
@@ -3714,41 +3586,26 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def snoop (self,  filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def spiralElementColor (self, *args, **kwargs)-> int :
-      '''spiralElementColor( (CvDbHAlignment)arg1) -> int :
-
-    C++ signature :
-        unsigned long spiralElementColor(class PyBrxCvDbHAlignment {lvalue})'''
+    def spiralElementColor (self)-> int :
+      '''                             '''
     ...
-    def stationEquations (self, *args, **kwargs)-> PyBrxCv.CvStationEquations :
-      '''stationEquations( (CvDbHAlignment)arg1) -> CvStationEquations :
-
-    C++ signature :
-        class PyBrxCvStationEquations stationEquations(class PyBrxCvDbHAlignment {lvalue})'''
+    def stationEquations (self)-> PyBrxCv.CvStationEquations :
+      '''                             '''
     ...
-    def style (self, *args, **kwargs)-> int :
-      '''style( (CvDbHAlignment)arg1) -> int :
-
-    C++ signature :
-        unsigned long style(class PyBrxCvDbHAlignment {lvalue})'''
+    def style (self)-> int :
+      '''                             '''
     ...
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def tangentExtensionColor (self, *args, **kwargs)-> int :
-      '''tangentExtensionColor( (CvDbHAlignment)arg1) -> int :
-
-    C++ signature :
-        unsigned long tangentExtensionColor(class PyBrxCvDbHAlignment {lvalue})'''
+    def tangentExtensionColor (self)-> int :
+      '''                             '''
     ...
     def transformBy (self, matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def update (self, *args, **kwargs)-> bool :
-      '''update( (CvDbHAlignment)arg1) -> bool :
-
-    C++ signature :
-        bool update(class PyBrxCvDbHAlignment {lvalue})'''
+    def update (self)-> bool :
+      '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
       '''                             '''
@@ -3756,29 +3613,17 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def upgradeOpen (self)-> None :
       '''                             '''
     ...
-    def verticalAlignmentAt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''verticalAlignmentAt( (CvDbHAlignment)arg1, (SubentType)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId verticalAlignmentAt(class PyBrxCvDbHAlignment {lvalue},unsigned long)'''
+    def verticalAlignmentAt (self, index: int)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def verticalAlignmentCount (self, *args, **kwargs)-> int :
-      '''verticalAlignmentCount( (CvDbHAlignment)arg1) -> int :
-
-    C++ signature :
-        unsigned long verticalAlignmentCount(class PyBrxCvDbHAlignment {lvalue})'''
+    def verticalAlignmentCount (self)-> int :
+      '''                             '''
     ...
-    def verticalAlignmentViewAt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''verticalAlignmentViewAt( (CvDbHAlignment)arg1, (SubentType)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId verticalAlignmentViewAt(class PyBrxCvDbHAlignment {lvalue},unsigned long)'''
+    def verticalAlignmentViewAt (self, index: int)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def verticalAlignmentViewCount (self, *args, **kwargs)-> int :
-      '''verticalAlignmentViewCount( (CvDbHAlignment)arg1) -> int :
-
-    C++ signature :
-        unsigned long verticalAlignmentViewCount(class PyBrxCvDbHAlignment {lvalue})'''
+    def verticalAlignmentViewCount (self)-> int :
+      '''                             '''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''

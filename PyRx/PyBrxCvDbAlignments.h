@@ -311,8 +311,8 @@ public:
         double spiral1, double spiral2, BrxCvDbHAlignment::ESpiralParameterType spiralType
         , double radius, BrxCvDbHAlignment::ESpiralDefinitionType spiralDef);
 
-    Adesk::UInt64 addSTSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double spiral1Param,
-        double spiral2Param, BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
+    Adesk::UInt64 addSTSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, 
+        double spiral1Param, double spiral2Param, BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
         BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
 
     Adesk::UInt64 addSSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId,
