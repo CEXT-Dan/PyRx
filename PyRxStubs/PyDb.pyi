@@ -67,7 +67,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -282,13 +282,13 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -378,7 +378,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def ambientLightColor (self)-> PyDb.Color :
@@ -638,13 +638,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -940,14 +940,11 @@ class AlignedDimension:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def altSuppressLeadingZeros (self)-> bool :
       '''                             '''
@@ -1157,11 +1154,8 @@ class AlignedDimension:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -1175,16 +1169,8 @@ class AlignedDimension:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -1398,13 +1384,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self)-> None :
@@ -1464,7 +1450,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -1473,7 +1459,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setConstraintDynamic (self, val : bool)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDimBlockId (self, val : PyDb.ObjectId)-> None :
@@ -1549,19 +1535,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setJogSymbolPosition (self, pt : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -1652,7 +1638,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setUsingDefaultTextPosition (self, val : bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -1925,14 +1911,11 @@ class Arc:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -1996,7 +1979,7 @@ class Arc:
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -2054,7 +2037,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAcGeCurve (self, tol: Tol = default)-> PyGe.CircArc3d :
+    def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.CircArc3d :
       '''                             '''
     ...
     def getArea (self)-> float :
@@ -2096,11 +2079,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -2165,16 +2145,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -2355,13 +2327,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self)-> None :
@@ -2385,13 +2357,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCenter (self, val:PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setEndAngle (self, val:float)-> None :
@@ -2408,22 +2380,22 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val:PyGe.Vector3d)-> None :
@@ -2463,7 +2435,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setThickness (self, val:float)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -2551,14 +2523,11 @@ class ArcDimension:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def altSuppressLeadingZeros (self)-> bool :
       '''                             '''
@@ -2780,11 +2749,8 @@ class ArcDimension:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -2798,16 +2764,8 @@ class ArcDimension:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -3024,13 +2982,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self)-> None :
@@ -3105,7 +3063,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCenterPoint (self, pt : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -3114,7 +3072,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setConstraintDynamic (self, val : bool)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDimBlockId (self, val : PyDb.ObjectId)-> None :
@@ -3187,7 +3145,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setIsPartial (self, val : bool)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
     def setLeader1Point (self, pt : PyGe.Point3d)-> None :
@@ -3196,16 +3154,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setLeader2Point (self, pt : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -3293,7 +3251,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setUsingDefaultTextPosition (self, val : bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -3458,14 +3416,11 @@ class AttributeDefinition:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def adjustAlignment (self, val : Database)-> None :
       '''                             '''
@@ -3604,11 +3559,8 @@ class AttributeDefinition:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -3625,16 +3577,8 @@ class AttributeDefinition:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -3857,13 +3801,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -3887,7 +3831,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -3896,7 +3840,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setConstant (self, val : bool)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -3925,13 +3869,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setJustification (self, val : TextAlignment)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
@@ -3943,7 +3887,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setMTextAttributeDefinition (self, val : MText)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -4007,7 +3951,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setVerticalMode (self, val : TextVertMode)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidthFactor (self, val : float)-> None :
@@ -4104,14 +4048,11 @@ class AttributeReference:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def adjustAlignment (self, val : Database)-> None :
       '''                             '''
@@ -4250,11 +4191,8 @@ class AttributeReference:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -4271,16 +4209,8 @@ class AttributeReference:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -4503,13 +4433,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -4544,13 +4474,13 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -4579,13 +4509,13 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     def setJustification (self, val : TextAlignment)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
@@ -4597,7 +4527,7 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     def setMTextAttribute (self, val : MText)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -4652,7 +4582,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setVerticalMode (self, val : TextVertMode)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidthFactor (self, val : float)-> None :
@@ -4740,14 +4670,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -4869,11 +4796,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -4887,16 +4811,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -5062,13 +4978,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -5086,13 +5002,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -5106,19 +5022,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -5146,7 +5062,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -5210,14 +5126,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -5339,11 +5252,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -5357,16 +5267,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -5532,13 +5434,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -5556,13 +5458,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -5576,19 +5478,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -5616,7 +5518,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -5689,14 +5591,11 @@ class BlockReference:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def appendAttribute (self, val : Attribute)-> PyDb.ObjectId :
       '''                             '''
@@ -5835,11 +5734,8 @@ class BlockReference:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -5853,16 +5749,8 @@ class BlockReference:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -6040,13 +5928,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -6076,13 +5964,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -6096,19 +5984,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -6148,7 +6036,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setScaleFactors (self, val : PyGe.Scale3d)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -6212,7 +6100,7 @@ class BlockScaling:
     ...
 
 class BlockTable:
-    def __init__ (self, id: ObjectId, mode: OpenMode=kForRead)-> None :
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
       '''                             '''
     ...
     def add (self, block : BlockTableRecord)-> PyDb.ObjectId :
@@ -6224,7 +6112,7 @@ class BlockTable:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -6435,13 +6323,13 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -6526,7 +6414,7 @@ class BlockTableRecord:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def appendAcDbEntities (self, entities : list[PyDb.Entity])-> list :
@@ -6804,13 +6692,13 @@ class BlockTableRecord:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -6940,14 +6828,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -7069,11 +6954,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -7087,16 +6969,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -7262,13 +7136,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -7286,13 +7160,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -7306,19 +7180,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -7346,7 +7220,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -7734,14 +7608,11 @@ class Circle:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -7808,7 +7679,7 @@ class Circle:
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -7866,7 +7737,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAcGeCurve (self, tol: Tol = default)-> PyGe.CircArc3d :
+    def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.CircArc3d :
       '''                             '''
     ...
     def getArea (self)-> float :
@@ -7908,11 +7779,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -7977,16 +7845,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -8164,13 +8024,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self)-> None :
@@ -8197,13 +8057,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCircumference (self, val:float)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDiameter (self, val:float)-> None :
@@ -8220,22 +8080,22 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val:PyGe.Vector3d)-> None :
@@ -8272,7 +8132,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setThickness (self, val:float)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -8796,7 +8656,7 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     ...
 
     @staticmethod
-    def openDbEntities (ids: list[PyDb.ObjectId],mode: OpenMode=kForRead,erased: bool=False)-> list :
+    def openDbEntities (ids: list[PyDb.ObjectId],mode: PyDb.OpenMode.kForRead,erased: bool=False)-> list :
       '''                             '''
     ...
     def openDbEntity (self, *args, **kwargs)-> PyDb.Entity :
@@ -8813,7 +8673,7 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     ...
 
     @staticmethod
-    def openDbObjects (ids: list[PyDb.ObjectId],mode: OpenMode=kForRead,erased: bool=False)-> list :
+    def openDbObjects (ids: list[PyDb.ObjectId],mode: PyDb.OpenMode.kForRead,erased: bool=False)-> list :
       '''                             '''
     ...
     def postDimAssoc (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -8985,7 +8845,7 @@ wcs2Ucs( (Vector3d)arg1, (Vector3d)arg2) -> bool :
     ...
 
 class Curve:
-    def __init__ (self, id: ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -8994,14 +8854,11 @@ class Curve:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -9062,7 +8919,7 @@ class Curve:
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -9117,7 +8974,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAcGeCurve (self, tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.Curve3d :
       '''                             '''
     ...
     def getArea (self)-> float :
@@ -9159,11 +9016,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -9228,16 +9082,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -9409,13 +9255,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self)-> None :
@@ -9436,13 +9282,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -9456,22 +9302,22 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -9499,7 +9345,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -11414,7 +11260,7 @@ __init__( (object)arg1) -> None :
     ...
 
 class DbObject:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -11423,7 +11269,7 @@ class DbObject:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -11611,13 +11457,13 @@ class DbObject:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -11965,14 +11811,11 @@ class DiametricDimension:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def altSuppressLeadingZeros (self)-> bool :
       '''                             '''
@@ -12191,11 +12034,8 @@ class DiametricDimension:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -12209,16 +12049,8 @@ class DiametricDimension:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -12426,13 +12258,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self)-> None :
@@ -12495,7 +12327,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setChordPoint (self, pt : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -12504,7 +12336,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setConstraintDynamic (self, val : bool)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDimBlockId (self, val : PyDb.ObjectId)-> None :
@@ -12580,22 +12412,22 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setInspectionLabel (self, val : str)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
     def setLeaderLength (self, val : float)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -12683,7 +12515,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setUsingDefaultTextPosition (self, val : bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -12971,7 +12803,7 @@ dictionaryNameAt( (ObjectId)arg1, (ObjectId)arg2) -> str :
     ...
 
 class Dictionary:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -12980,7 +12812,7 @@ class Dictionary:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def asDict (self)-> dict :
@@ -13197,13 +13029,13 @@ class Dictionary:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -13276,7 +13108,7 @@ class Dictionary:
     ...
 
 class DimAssoc:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -13285,7 +13117,7 @@ class DimAssoc:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def addToDimensionReactor (self, add : bool=True)-> None :
@@ -13517,7 +13349,7 @@ class DimAssoc:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeOopsWatcher (self)-> None :
@@ -13529,7 +13361,7 @@ class DimAssoc:
     def removePointRef (self, _type : int)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def restoreAssocFromOopsWatcher (self)-> None :
@@ -13760,7 +13592,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -13975,13 +13807,13 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -14081,7 +13913,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def arrowId (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -14530,13 +14362,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -14852,14 +14684,11 @@ class Dimension:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def altSuppressLeadingZeros (self)-> bool :
       '''                             '''
@@ -15066,11 +14895,8 @@ class Dimension:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -15084,16 +14910,8 @@ class Dimension:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -15298,13 +15116,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self)-> None :
@@ -15364,7 +15182,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -15373,7 +15191,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setConstraintDynamic (self, val : bool)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDimBlockId (self, val : PyDb.ObjectId)-> None :
@@ -15440,19 +15258,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setInspectionLabel (self, val : str)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -15540,7 +15358,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setUsingDefaultTextPosition (self, val : bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -16561,14 +16379,11 @@ class Ellipse:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def angleAtParam (self, val : float)-> float :
       '''                             '''
@@ -16635,7 +16450,7 @@ class Ellipse:
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -16696,7 +16511,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def get (self)-> tuple :
       '''                             '''
     ...
-    def getAcGeCurve (self, tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.Curve3d :
       '''                             '''
     ...
     def getArea (self)-> float :
@@ -16738,11 +16553,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -16807,16 +16619,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -17012,13 +16816,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self)-> None :
@@ -17053,13 +16857,13 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
     def setCenter (self, val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setEndAngle (self, val : float)-> None :
@@ -17079,16 +16883,16 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
@@ -17097,7 +16901,7 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
     def setMajorRadius (self, val : float)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setMinorRadius (self, val : float)-> None :
@@ -17137,7 +16941,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setStartParam (self, val : float)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -17216,14 +17020,11 @@ class Entity:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -17245,7 +17046,7 @@ class Entity:
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.Entity :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Entity :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -17258,7 +17059,7 @@ class Entity:
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.Entity :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Entity :
       '''                             '''
     ...
     def close (self)-> None :
@@ -17341,11 +17142,8 @@ class Entity:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -17359,16 +17157,8 @@ class Entity:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -17534,13 +17324,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -17558,13 +17348,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -17578,19 +17368,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -17618,7 +17408,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -19679,14 +19469,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -19838,11 +19625,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -19862,16 +19646,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -20061,13 +19837,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -20085,13 +19861,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -20105,19 +19881,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -20157,7 +19933,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setVIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWireframeType (self, *args, **kwargs)-> None :
@@ -20257,14 +20033,11 @@ class Face:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -20382,11 +20155,8 @@ class Face:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -20400,16 +20170,8 @@ class Face:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -20587,13 +20349,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -20611,13 +20373,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -20631,19 +20393,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -20674,7 +20436,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setVertexAt (self, vIndex:int, pnt:PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -20747,14 +20509,11 @@ class FaceRecord:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -20872,11 +20631,8 @@ class FaceRecord:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -20890,16 +20646,8 @@ class FaceRecord:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -21077,13 +20825,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -21101,13 +20849,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -21121,19 +20869,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -21164,7 +20912,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setVertexAt (self, val : int, idx : int)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -21237,14 +20985,11 @@ class Fcf:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -21395,11 +21140,8 @@ class Fcf:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -21413,16 +21155,8 @@ class Fcf:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -21594,13 +21328,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -21618,13 +21352,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDimVars (self)-> None :
@@ -21668,13 +21402,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
@@ -21683,7 +21417,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setLocation (self, val:PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOrientation (self, normal:PyGe.Vector3d, direction:PyGe.Vector3d)-> None :
@@ -21717,7 +21451,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setText (self, val:str)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -21799,7 +21533,7 @@ class Field:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -22039,13 +21773,13 @@ class Field:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -22951,7 +22685,7 @@ class GeoCoordinateSystemUnit:
     ...
 
 class GeoData:
-    def __init__ (self, id: ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -22966,7 +22700,7 @@ class GeoData:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -23220,13 +22954,13 @@ class GeoData:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def resetMeshPointMaps (self)-> None :
@@ -23415,14 +23149,11 @@ class GeoMap:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -23558,11 +23289,8 @@ class GeoMap:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -23582,16 +23310,8 @@ class GeoMap:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -23808,13 +23528,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def resolution (self)-> PyDb.AcGeoMapResolution :
@@ -23850,7 +23570,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setClipInverted (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -23859,7 +23579,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setContrast (self, val: int)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDisplayOpt (self, opt: PyDb.ImageDisplayOpt, val: bool)-> None :
@@ -23891,13 +23611,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     C++ signature :
         void setImageTransparency(class PyDbRasterImage {lvalue},bool)'''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
@@ -23906,7 +23626,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setMapType (self, val : PyDb.AcGeoMapType)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOrientation (self, pt: PyGe.Point3d, u: PyGe.Vector3d, v: PyGe.Vector3d)-> bool :
@@ -23952,7 +23672,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setShowImage (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidth (self, val: float)-> None :
@@ -24008,7 +23728,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class GeoPositionMarker:
-    def __init__ (self, id: ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -24017,14 +23737,11 @@ class GeoPositionMarker:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -24148,11 +23865,8 @@ class GeoPositionMarker:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -24166,16 +23880,8 @@ class GeoPositionMarker:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -24365,13 +24071,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -24389,13 +24095,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setEnableFrameText (self, val : bool)-> None :
@@ -24421,13 +24127,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setLatLonAlt (self, lat : float, lon : float, alt : float)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
@@ -24439,7 +24145,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setMTextVisible (self, val : bool)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNotes (self, val : str)-> None :
@@ -24482,7 +24188,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextAlignmentType (self, val : PyDb.GeoTextAlignmentType)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -24714,7 +24420,7 @@ class Group:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def allEntityIds (self)-> list :
@@ -24950,13 +24656,13 @@ class Group:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def replace (self, oldid: PyDb.ObjectId, newid: PyDb.ObjectId)-> None :
@@ -25310,7 +25016,7 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     ...
 
 class Hatch:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -25319,14 +25025,11 @@ class Hatch:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def appendLoop (self, loopType : int, ids : list[PyDb.ObjectId])-> None :
       '''                             '''
@@ -25489,11 +25192,8 @@ class Hatch:
     def getGradientOneColorMode (self)-> bool :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -25528,16 +25228,8 @@ class Hatch:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -25772,7 +25464,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeHatchLines (self)-> None :
@@ -25784,7 +25476,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -25808,13 +25500,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setElevation (self, val : float)-> None :
@@ -25852,22 +25544,22 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setHatchStyle (self, val: PyDb.HatchStyle)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
     def setLineGenerationEnabled (self, val : bool)-> bool :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -25922,7 +25614,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setShadeTintValueAndColor2 (self, val: float)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -26131,14 +25823,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -26211,7 +25900,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def createHelix (self)-> None :
@@ -26278,7 +25967,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def fitTolerance (self)-> float :
       '''                             '''
     ...
-    def getAcGeCurve (self, tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.Curve3d :
       '''                             '''
     ...
     def getArea (self)-> float :
@@ -26335,11 +26024,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -26410,16 +26096,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -26638,7 +26316,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def removeControlPointAt (self, val : int)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeFitPointAt (self, idx:int)-> None :
@@ -26647,7 +26325,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self)-> None :
@@ -26677,7 +26355,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -26689,7 +26367,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def setControlPointAt (self, idx:int, pnt:PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -26739,25 +26417,25 @@ setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)
     def setFitTol (self, val : float)-> None :
       '''                             '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
     def setHeight (self, val : float)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNurbsData (self, *args, **kwargs)-> None :
@@ -26817,7 +26495,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setType(class PyDbSpline {lvalue},enum SplineType)'''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -27072,7 +26750,7 @@ __init__( (object)arg1, (ObjectId)arg2, (ObjectId)arg3, (bool)arg4, (bool)arg5, 
     ...
 
 class Image:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -27081,14 +26759,11 @@ class Image:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -27206,11 +26881,8 @@ class Image:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -27224,16 +26896,8 @@ class Image:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -27399,13 +27063,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -27423,13 +27087,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -27443,19 +27107,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -27483,7 +27147,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -27712,7 +27376,7 @@ class JoinStyle:
     ...
 
 class LayerFilter:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def add (self, val : str)-> None :
@@ -27724,7 +27388,7 @@ class LayerFilter:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -27927,13 +27591,13 @@ class LayerFilter:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -28023,7 +27687,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -28238,13 +27902,13 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -28347,7 +28011,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -28664,7 +28328,7 @@ plotStyleNameId( (LayerTableRecord)arg1, (ObjectId)arg2) -> ObjectId :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeLineWeightOverride (self, *args, **kwargs)-> None :
@@ -28688,7 +28352,7 @@ plotStyleNameId( (LayerTableRecord)arg1, (ObjectId)arg2) -> ObjectId :
     C++ signature :
         void removePlotStyleOverride(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def removeTransparencyOverride (self, *args, **kwargs)-> None :
@@ -28889,7 +28553,7 @@ transparency( (LayerTableRecord)arg1, (ObjectId)arg2) -> Transparency :
     ...
 
 class Layout:
-    def __init__ (self, id: ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -28898,7 +28562,7 @@ class Layout:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def addToLayoutDict (self, db: PyDb.Database, id: PyDb.ObjectId)-> None :
@@ -29191,13 +28855,13 @@ class Layout:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -29550,7 +29214,7 @@ setCurrentLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     ...
 
 class Leader:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -29559,14 +29223,11 @@ class Leader:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def annoHeight (self)-> float :
       '''                             '''
@@ -29651,7 +29312,7 @@ class Leader:
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -29751,7 +29412,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def firstVertex (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getAcGeCurve (self, tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.Curve3d :
       '''                             '''
     ...
     def getArea (self)-> float :
@@ -29793,11 +29454,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -29862,16 +29520,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -30067,7 +29717,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeLastVertex (self)-> None :
@@ -30076,7 +29726,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self)-> None :
@@ -30103,13 +29753,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, idx: int, dosubents: bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDimasz (self, val: float)-> None :
@@ -30159,25 +29809,25 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
     def setHasArrowHead (self, val: bool)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -30220,7 +29870,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setVertexAt (self, val: int, pt: PyGe.Point3d)-> bool :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -30296,14 +29946,11 @@ class Line:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -30364,7 +30011,7 @@ class Line:
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -30422,7 +30069,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAcGeCurve (self, tol: Tol = default)-> PyGe.LineSeg3d :
+    def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.LineSeg3d :
       '''                             '''
     ...
     def getArea (self)-> float :
@@ -30464,11 +30111,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -30533,16 +30177,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -30717,13 +30353,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self)-> None :
@@ -30744,13 +30380,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setEndPoint (self, val:PyGe.Point3d)-> None :
@@ -30767,22 +30403,22 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val:PyGe.Vector3d)-> None :
@@ -30819,7 +30455,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setThickness (self, val:float)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -30904,14 +30540,11 @@ class LineAngularDimension2:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def altSuppressLeadingZeros (self)-> bool :
       '''                             '''
@@ -31124,11 +30757,8 @@ class LineAngularDimension2:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -31142,16 +30772,8 @@ class LineAngularDimension2:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -31356,13 +30978,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self)-> None :
@@ -31425,7 +31047,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -31434,7 +31056,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setConstraintDynamic (self, val : bool)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDimBlockId (self, val : PyDb.ObjectId)-> None :
@@ -31504,19 +31126,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setInspectionLabel (self, val : str)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -31604,7 +31226,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setUsingDefaultTextPosition (self, val : bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -31861,7 +31483,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -32076,13 +31698,13 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -32182,7 +31804,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -32403,13 +32025,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -32632,14 +32254,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -32791,11 +32410,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -32815,16 +32431,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -33014,13 +32622,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -33038,13 +32646,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -33058,19 +32666,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -33110,7 +32718,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setVIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWireframeType (self, *args, **kwargs)-> None :
@@ -33201,14 +32809,11 @@ class MInsertBlock:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def appendAttribute (self, val : Attribute)-> PyDb.ObjectId :
       '''                             '''
@@ -33353,11 +32958,8 @@ class MInsertBlock:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -33371,16 +32973,8 @@ class MInsertBlock:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -33558,13 +33152,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -33600,7 +33194,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -33612,7 +33206,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setColumns (self, val : int)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -33626,19 +33220,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -33684,7 +33278,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setScaleFactors (self, val : PyGe.Scale3d)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -33791,14 +33385,11 @@ addLeaderLine( (MLeader)arg1, (Point3d)arg2) -> int :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def arrowSize (self, *args, **kwargs)-> float :
       '''arrowSize( (MLeader)arg1) -> float :
@@ -34068,11 +33659,8 @@ getBlockAttributeValue( (MLeader)arg1, (ObjectId)arg2) -> str :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -34145,16 +33733,8 @@ getLeaderLineIndexes( (MLeader)arg1, (int)arg2) -> list :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTextLocation (self, *args, **kwargs)-> PyGe.Point3d :
       '''getTextLocation( (MLeader)arg1) -> Point3d :
@@ -34451,7 +34031,7 @@ moveMLeader( (MLeader)arg1, (Vector3d)arg2, (MLeaderMoveType)arg3, (bool)arg4) -
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeFirstVertex (self, *args, **kwargs)-> None :
@@ -34487,7 +34067,7 @@ moveMLeader( (MLeader)arg1, (Vector3d)arg2, (MLeaderMoveType)arg3, (bool)arg4) -
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -34580,7 +34160,7 @@ setBlockAttributeValue( (MLeader)arg1, (ObjectId)arg2, (str)arg3) -> None :
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -34592,7 +34172,7 @@ setBlockAttributeValue( (MLeader)arg1, (ObjectId)arg2, (str)arg3) -> None :
     C++ signature :
         void setContentType(class PyDbMLeader {lvalue},enum AcDbMLeaderStyle::ContentType)'''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDoglegDirection (self, *args, **kwargs)-> None :
@@ -34671,7 +34251,7 @@ setDoglegLength( (MLeader)arg1, (int)arg2, (float)arg3) -> None :
     C++ signature :
         void setLastVertex(class PyDbMLeader {lvalue},int,class AcGePoint3d)'''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
     def setLeaderLineColor1 (self, *args, **kwargs)-> None :
@@ -34718,10 +34298,10 @@ setLeaderLineWeight1( (MLeader)arg1, (int)arg2, (LineWeight)arg3) -> None :
     C++ signature :
         void setLeaderLineWeight1(class PyDbMLeader {lvalue},int,enum AcDb::LineWeight)'''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
@@ -34739,7 +34319,7 @@ setLeaderLineWeight1( (MLeader)arg1, (int)arg2, (LineWeight)arg3) -> None :
     C++ signature :
         void setMText(class PyDbMLeader {lvalue},class PyDbMText)'''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOverride (self, *args, **kwargs)-> None :
@@ -34855,7 +34435,7 @@ setTextAttachmentType( (MLeader)arg1, (MLeaderTextAttachmentType)arg2, (MLeaderL
     C++ signature :
         void setVertex(class PyDbMLeader {lvalue},int,int,class AcGePoint3d)'''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -35236,7 +34816,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def alignSpace (self, *args, **kwargs)-> float :
@@ -35635,13 +35215,13 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -36142,14 +35722,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def appendLoopFromBoundary (self, *args, **kwargs)-> None :
       '''appendLoopFromBoundary( (MPolygon)arg1, (Circle)arg2, (bool)arg3, (float)arg4) -> None :
@@ -36322,11 +35899,8 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -36361,16 +35935,8 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -36598,7 +36164,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeMPolygonLoopAt (self, val : int)-> None :
@@ -36607,7 +36173,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -36631,13 +36197,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setElevation (self, val : float)-> None :
@@ -36675,13 +36241,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setGradientShift (self, val : float)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
@@ -36693,7 +36259,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     C++ signature :
         void setLoopDirection(class PyDbMPolygon {lvalue},int,enum AcDbMPolygon::loopDir)'''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -36745,7 +36311,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -36809,7 +36375,7 @@ class MPolygonloopDir:
     ...
 
 class MText:
-    def __init__ (self, id: ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def actualHeight (self)-> float :
@@ -36824,14 +36390,11 @@ class MText:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def ascent (self)-> float :
       '''                             '''
@@ -37018,11 +36581,8 @@ class MText:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -37036,16 +36596,8 @@ class MText:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -37229,13 +36781,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -37277,7 +36829,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -37310,7 +36862,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setContentsRTF (self, val : str)-> int :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDirection (self, val : PyGe.Vector3d)-> None :
@@ -37336,7 +36888,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setHeight (self, val : float)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
     def setLineSpacingFactor (self, val : float)-> None :
@@ -37345,10 +36897,10 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setLineSpacingStyle (self, val : PyDb.LineSpacingStyle)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
@@ -37357,7 +36909,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setLocation (self, val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -37403,7 +36955,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setUseBackgroundColor (self, val : bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidth (self, val : float)-> None :
@@ -37705,7 +37257,7 @@ class MergeCellStyleOption:
     ...
 
 class Mline:
-    def __init__ (self, id: ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -37714,14 +37266,11 @@ class Mline:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def appendSeg (self, val : PyGe.Point3d)-> None :
       '''                             '''
@@ -37868,11 +37417,8 @@ class Mline:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -37886,16 +37432,8 @@ class Mline:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -38076,7 +37614,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeLastSeg (self, val : PyGe.Point3d)-> None :
@@ -38085,7 +37623,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -38109,13 +37647,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setClosedMline (self, val : bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -38132,19 +37670,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setJustification (self, val : MlineJustification)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -38187,7 +37725,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setSupressStartCaps (self, val : bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -38305,7 +37843,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -38569,13 +38107,13 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     C++ signature :
         void removeElementAt(class PyDbMlineStyle {lvalue},int)'''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -38794,14 +38332,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -38953,11 +38488,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -38977,16 +38509,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -39176,13 +38700,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -39200,13 +38724,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -39220,19 +38744,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -39272,7 +38796,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setVIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWireframeType (self, *args, **kwargs)-> None :
@@ -39644,14 +39168,11 @@ class OrdinateDimension:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def altSuppressLeadingZeros (self)-> bool :
       '''                             '''
@@ -39861,11 +39382,8 @@ class OrdinateDimension:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -39879,16 +39397,8 @@ class OrdinateDimension:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -40105,13 +39615,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self)-> None :
@@ -40171,7 +39681,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -40180,7 +39690,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setConstraintDynamic (self, val : bool)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDefiningPoint (self, pt : PyGe.Point3d)-> None :
@@ -40250,22 +39760,22 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setInspectionLabel (self, val : str)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
     def setLeaderEndPoint (self, pt : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -40362,7 +39872,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setUsingYAxis (self, val : bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -40739,7 +40249,7 @@ class OsnapType:
     ...
 
 class PdfDefinition:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -40748,7 +40258,7 @@ class PdfDefinition:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -40956,13 +40466,13 @@ class PdfDefinition:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -41038,7 +40548,7 @@ class PdfDefinition:
     ...
 
 class PdfReference:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -41047,14 +40557,11 @@ class PdfReference:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -41212,11 +40719,8 @@ class PdfReference:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -41230,16 +40734,8 @@ class PdfReference:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -41438,13 +40934,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -41474,7 +40970,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setClipInverted (self, val : bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -41483,7 +40979,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setContrast (self, val : int)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDefinitionId (self, val : PyDb.ObjectId)-> None :
@@ -41518,19 +41014,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setIsOn (self, val : bool)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -41576,7 +41072,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setUnderlayLayer (self, val : int, layer : PyDb.UnderlayLayer)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidth (self, val : float)-> None :
@@ -41679,14 +41175,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -41838,11 +41331,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -41862,16 +41352,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -42061,13 +41543,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -42085,13 +41567,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -42105,19 +41587,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -42157,7 +41639,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setVIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWireframeType (self, *args, **kwargs)-> None :
@@ -42285,7 +41767,7 @@ class PlotSettings:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def addToPlotSettingsDict (self, db: PyDb.Database)-> None :
@@ -42548,13 +42030,13 @@ class PlotSettings:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -42915,14 +42397,11 @@ class Point:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -43043,11 +42522,8 @@ class Point:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -43061,16 +42537,8 @@ class Point:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -43242,13 +42710,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -43266,13 +42734,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setEcsRotation (self, val : float)-> None :
@@ -43289,19 +42757,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -43338,7 +42806,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setThickness (self, val : float)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -43420,14 +42888,11 @@ class Point3AngularDimension:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def altSuppressLeadingZeros (self)-> bool :
       '''                             '''
@@ -43643,11 +43108,8 @@ class Point3AngularDimension:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -43661,16 +43123,8 @@ class Point3AngularDimension:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -43875,13 +43329,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self)-> None :
@@ -43947,7 +43401,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCenterPoint (self, pt : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -43956,7 +43410,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setConstraintDynamic (self, val : bool)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDimBlockId (self, val : PyDb.ObjectId)-> None :
@@ -44026,19 +43480,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setInspectionLabel (self, val : str)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -44126,7 +43580,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setUsingDefaultTextPosition (self, val : bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -44311,7 +43765,7 @@ __init__( (object)arg1) -> None :
     ...
 
 class PointCloudColorMap:
-    def __init__ (self, id: ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -44320,7 +43774,7 @@ class PointCloudColorMap:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -44591,13 +44045,13 @@ class PointCloudColorMap:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -44882,7 +44336,7 @@ class PointCloudCropType:
     ...
 
 class PointCloudDefEx:
-    def __init__ (self, id: ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def activeFileName (self)-> str :
@@ -44894,7 +44348,7 @@ class PointCloudDefEx:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -45133,13 +44587,13 @@ class PointCloudDefEx:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -45244,7 +44698,7 @@ class PointCloudDispOptionOutOfRange:
     ...
 
 class PointCloudEx:
-    def __init__ (self, id: ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -45259,14 +44713,11 @@ class PointCloudEx:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def applyGeoLocation (self, *args, **kwargs)-> None :
       '''applyGeoLocation( (PointCloudEx)arg1) -> None :
@@ -45461,11 +44912,8 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -45515,16 +44963,8 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -45723,7 +45163,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeLastCropping (self)-> None :
@@ -45732,7 +45172,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def resetLimitBox (self)-> None :
@@ -45808,7 +45248,7 @@ setAllRegionsVisibility( (PointCloudEx)arg1, (bool)arg2, (bool)arg3) -> None :
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -45832,7 +45272,7 @@ setAllRegionsVisibility( (PointCloudEx)arg1, (bool)arg2, (bool)arg3) -> None :
     C++ signature :
         void setCurrentColorScheme(class PyDbPointCloudEx {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setElevationApplyToFixedRange (self)-> None :
@@ -45873,13 +45313,13 @@ setAllRegionsVisibility( (PointCloudEx)arg1, (bool)arg2, (bool)arg3) -> None :
     C++ signature :
         void setIntensityOutOfRangeBehavior(class PyDbPointCloudEx {lvalue},enum AcDbPointCloudEx::DispOptionOutOfRange)'''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
@@ -45894,7 +45334,7 @@ setAllRegionsVisibility( (PointCloudEx)arg1, (bool)arg2, (bool)arg3) -> None :
     def setLocked (self, val : bool)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setMinMaxElevation (self, *args, **kwargs)-> None :
@@ -45988,7 +45428,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setStylizationType(class PyDbPointCloudEx {lvalue},enum AcDbPointCloudEx::StylizationType)'''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -46257,14 +45697,11 @@ class PolyFaceMeshVertex:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -46382,11 +45819,8 @@ class PolyFaceMeshVertex:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -46400,16 +45834,8 @@ class PolyFaceMeshVertex:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -46578,13 +46004,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -46602,13 +46028,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -46622,19 +46048,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -46665,7 +46091,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -46738,14 +46164,11 @@ class PolygonMeshVertex:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -46863,11 +46286,8 @@ class PolygonMeshVertex:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -46881,16 +46301,8 @@ class PolygonMeshVertex:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -47059,13 +46471,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -47083,13 +46495,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -47103,19 +46515,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -47146,7 +46558,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -47225,14 +46637,11 @@ class Polyline:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def addVertexAt (self, idx:int, pt2d:PyGe.Point2d, bulge:float=0.0, startWidth:float=-1.0, endWidth:float=-1.0)-> None :
       '''                             '''
@@ -47296,7 +46705,7 @@ class Polyline:
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -47354,7 +46763,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAcGeCurve (self, tol: Tol = default)-> PyGe.CompositeCurve3d :
+    def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.CompositeCurve3d :
       '''                             '''
     ...
     def getArcSeg2dAt (self, idx:int)-> PyGe.CircArc2d :
@@ -47411,11 +46820,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -47495,16 +46901,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -47709,13 +47107,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def removeVertexAt (self, idx:int)-> None :
@@ -47751,7 +47149,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setClosed (self, val:bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -47760,7 +47158,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setConstantWidth (self, width:float)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setElevation (self, elev:float)-> None :
@@ -47777,22 +47175,22 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val:PyGe.Vector3d)-> None :
@@ -47832,7 +47230,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setThickness (self, val:float)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidthsAt (self, idx:int, startWidth:float, endWidth:float)-> None :
@@ -47920,14 +47318,11 @@ class Polyline2d:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
 
     @overload
@@ -48008,7 +47403,7 @@ class Polyline2d:
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -48072,7 +47467,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAcGeCurve (self, tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.Curve3d :
       '''                             '''
     ...
     def getArea (self)-> float :
@@ -48114,11 +47509,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -48183,16 +47575,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -48402,13 +47786,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self)-> None :
@@ -48432,7 +47816,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setClosed (self, val : bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -48441,7 +47825,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setConstantWidth (self, val : float)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDefaultEndWidth (self, val : float)-> None :
@@ -48464,16 +47848,16 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeGenerationOff (self)-> None :
@@ -48485,7 +47869,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, normal : PyGe.Vector3d)-> None :
@@ -48525,7 +47909,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setThickness (self, val : float)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -48621,14 +48005,11 @@ class Polyline3d:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
 
     @overload
@@ -48703,7 +48084,7 @@ class Polyline3d:
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -48758,7 +48139,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAcGeCurve (self, tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.Curve3d :
       '''                             '''
     ...
     def getArea (self)-> float :
@@ -48800,11 +48181,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -48869,16 +48247,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -49079,13 +48449,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self)-> None :
@@ -49109,13 +48479,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setClosed (self, val : bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -49129,22 +48499,22 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -49175,7 +48545,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -49265,14 +48635,11 @@ class Polyline3dVertex:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -49390,11 +48757,8 @@ class Polyline3dVertex:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -49408,16 +48772,8 @@ class Polyline3dVertex:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -49586,13 +48942,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -49610,13 +48966,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -49630,19 +48986,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -49673,7 +49029,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -49833,14 +49189,11 @@ class RadialDimension:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def altSuppressLeadingZeros (self)-> bool :
       '''                             '''
@@ -50059,11 +49412,8 @@ class RadialDimension:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -50077,16 +49427,8 @@ class RadialDimension:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -50294,13 +49636,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self)-> None :
@@ -50366,7 +49708,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setChordPoint (self, pt : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -50375,7 +49717,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setConstraintDynamic (self, val : bool)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDimBlockId (self, val : PyDb.ObjectId)-> None :
@@ -50448,22 +49790,22 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setInspectionLabel (self, val : str)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
     def setLeaderLength (self, val : float)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -50551,7 +49893,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setUsingDefaultTextPosition (self, val : bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -50690,14 +50032,11 @@ class RadialDimensionLarge:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def altSuppressLeadingZeros (self)-> bool :
       '''                             '''
@@ -50916,11 +50255,8 @@ class RadialDimensionLarge:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -50934,16 +50270,8 @@ class RadialDimensionLarge:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -51157,13 +50485,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self)-> None :
@@ -51229,7 +50557,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setChordPoint (self, pt : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -51238,7 +50566,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setConstraintDynamic (self, val : bool)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDimBlockId (self, val : PyDb.ObjectId)-> None :
@@ -51320,19 +50648,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setJogPointPP (self, pt : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -51429,7 +50757,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setUsingDefaultTextPosition (self, val : bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -51536,7 +50864,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class RasterImage:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -51545,14 +50873,11 @@ class RasterImage:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -51685,11 +51010,8 @@ class RasterImage:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -51709,16 +51031,8 @@ class RasterImage:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -51926,13 +51240,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -51965,7 +51279,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setClipInverted (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -51974,7 +51288,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setContrast (self, val: int)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDisplayOpt (self, opt: PyDb.ImageDisplayOpt, val: bool)-> None :
@@ -52006,19 +51320,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     C++ signature :
         void setImageTransparency(class PyDbRasterImage {lvalue},bool)'''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOrientation (self, pt: PyGe.Point3d, u: PyGe.Vector3d, v: PyGe.Vector3d)-> bool :
@@ -52061,7 +51375,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setShowImage (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidth (self, val: float)-> None :
@@ -52114,7 +51428,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class RasterImageDef:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def activeFileName (self)-> str :
@@ -52126,7 +51440,7 @@ class RasterImageDef:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -52342,13 +51656,13 @@ class RasterImageDef:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def resolutionMMPerPixel (self)-> PyGe.Vector2d :
@@ -52453,7 +51767,7 @@ class RasterImageDef:
     ...
 
 class RasterImageDefReactor:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -52462,7 +51776,7 @@ class RasterImageDefReactor:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -52650,13 +51964,13 @@ class RasterImageDefReactor:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -52751,7 +52065,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -52966,13 +52280,13 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -53072,7 +52386,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -53275,13 +52589,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -53378,14 +52692,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -53513,11 +52824,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -53531,16 +52839,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -53712,13 +53012,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -53736,13 +53036,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -53756,19 +53056,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -53796,7 +53096,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -54036,14 +53336,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -54195,11 +53492,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -54219,16 +53513,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -54418,13 +53704,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -54442,13 +53728,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -54462,19 +53748,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -54514,7 +53800,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setVIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWireframeType (self, *args, **kwargs)-> None :
@@ -54628,14 +53914,11 @@ class RotatedDimension:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def altSuppressLeadingZeros (self)-> bool :
       '''                             '''
@@ -54845,11 +54128,8 @@ class RotatedDimension:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -54863,16 +54143,8 @@ class RotatedDimension:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -55086,13 +54358,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self)-> None :
@@ -55155,7 +54427,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -55164,7 +54436,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setConstraintDynamic (self, val : bool)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDimBlockId (self, val : PyDb.ObjectId)-> None :
@@ -55240,19 +54512,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setJogSymbolPosition (self, pt : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -55346,7 +54618,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setUsingDefaultTextPosition (self, val : bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -55551,14 +54823,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -55680,11 +54949,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -55698,16 +54964,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -55873,13 +55131,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -55897,13 +55155,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -55917,19 +55175,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -55957,7 +55215,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -56233,14 +55491,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -56535,11 +55790,8 @@ extrudeAlongPath( (Solid3d)arg1, (Region)arg2, (Curve)arg3, (float)arg4) -> None
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -56588,16 +55840,8 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
     C++ signature :
         class PyDbObjectId getSubentMaterial(class PyDb3dSolid {lvalue},class PyDbSubentId)'''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -56811,13 +56055,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     C++ signature :
         void removeFaces(class PyDb3dSolid {lvalue},class boost::python::list)'''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -56841,13 +56085,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -56861,19 +56105,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -56925,7 +56169,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setSubentMaterial(class PyDb3dSolid {lvalue},class PyDbSubentId,class PyDbObjectId {lvalue})'''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -57013,7 +56257,7 @@ stlOut( (Solid3d)arg1, (str)arg2, (bool)arg3, (float)arg4) -> None :
     ...
 
 class SpatialFilter:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -57022,7 +56266,7 @@ class SpatialFilter:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -57237,13 +56481,13 @@ class SpatialFilter:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -57421,14 +56665,11 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)ar
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -57489,7 +56730,7 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)ar
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -57553,7 +56794,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def fitTolerance (self)-> float :
       '''                             '''
     ...
-    def getAcGeCurve (self, tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.Curve3d :
       '''                             '''
     ...
     def getArea (self)-> float :
@@ -57610,11 +56851,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -57685,16 +56923,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -57910,7 +57140,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def removeControlPointAt (self, val : int)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeFitPointAt (self, idx:int)-> None :
@@ -57919,7 +57149,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self)-> None :
@@ -57940,7 +57170,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -57949,7 +57179,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def setControlPointAt (self, idx:int, pnt:PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -57999,22 +57229,22 @@ setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)
     def setFitTol (self, val : float)-> None :
       '''                             '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: Tol = default)-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNurbsData (self, *args, **kwargs)-> None :
@@ -58059,7 +57289,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setType(class PyDbSpline {lvalue},enum SplineType)'''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -58367,14 +57597,11 @@ class SubDMesh:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -58578,11 +57805,8 @@ getCrease( (SubDMesh)arg1, (SubentId)arg2) -> float :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -58637,16 +57861,8 @@ getSubDividedVertexAt( (SubDMesh)arg1, (SubentId)arg2) -> Point3d :
     C++ signature :
         class boost::python::list getSubentPath(class PyDbSubDMesh {lvalue},int,unsigned int)'''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -58856,13 +58072,13 @@ getVertexAt( (SubDMesh)arg1, (SubentId)arg2) -> Point3d :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -58886,7 +58102,7 @@ getVertexAt( (SubDMesh)arg1, (SubentId)arg2) -> Point3d :
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -58915,7 +58131,7 @@ setCrease( (SubDMesh)arg1, (list)arg2, (float)arg3) -> None :
     C++ signature :
         void setCylinder(class PyDbSubDMesh {lvalue},double,double,double,int,int,int,int)'''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -58929,19 +58145,19 @@ setCrease( (SubDMesh)arg1, (list)arg2, (float)arg3) -> None :
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -59016,7 +58232,7 @@ setVertexAt( (SubDMesh)arg1, (SubentId)arg2, (Point3d)arg3) -> None :
     C++ signature :
         void setVertexAt(class PyDbSubDMesh {lvalue},class PyDbSubentId,class AcGePoint3d)'''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWedge (self, *args, **kwargs)-> None :
@@ -59222,14 +58438,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -59381,11 +58594,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -59405,16 +58615,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -59604,13 +58806,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -59628,13 +58830,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -59648,19 +58850,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -59700,7 +58902,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setVIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWireframeType (self, *args, **kwargs)-> None :
@@ -60098,14 +59300,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -60257,11 +59456,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -60281,16 +59477,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -60480,13 +59668,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -60504,13 +59692,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -60524,19 +59712,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -60576,7 +59764,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setVIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWireframeType (self, *args, **kwargs)-> None :
@@ -60935,7 +60123,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -61150,13 +60338,13 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -61229,7 +60417,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
 
 class SymbolTableRecord:
-    def __init__ (self, id: ObjectId, mode: OpenMode=kForRead)-> None :
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -61238,7 +60426,7 @@ class SymbolTableRecord:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -61441,13 +60629,13 @@ class SymbolTableRecord:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -61544,14 +60732,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def alignment (self, *args, **kwargs)-> PyDb.CellAlignment :
       '''alignment( (Table)arg1, (RowType)arg2) -> CellAlignment :
@@ -61958,11 +61143,8 @@ getDataType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> tuple :
     C++ signature :
         struct AcGridProperty getGridProperty(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType)'''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -61998,16 +61180,8 @@ getIterator( (Table)arg1, (CellRange)arg2 [, (TableIteratorOption)arg3]) -> list
     def getSubSelection (self)-> PyDb.CellRange :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -62377,13 +61551,13 @@ removeDataLink( (Table)arg1, (int)arg2, (int)arg3) -> None :
     C++ signature :
         void removeDataLink(class PyDbTable {lvalue},int,int)'''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -62544,7 +61718,7 @@ setBlockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)a
     C++ signature :
         void setCellType(class PyDbTable {lvalue},int,int,enum AcDb::CellType)'''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -62615,7 +61789,7 @@ setDataType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (object)arg5, (object
     C++ signature :
         void setDataType(class PyDbTable {lvalue},int,int,int,enum AcValue::DataType,enum AcValue::UnitType)'''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDirection (self, val : PyGe.Vector3d)-> None :
@@ -62736,13 +61910,13 @@ setGridProperty( (Table)arg1, (CellRange)arg2, (GridLineType)arg3, (object)arg4)
     def setHorzCellMargin (self, val : float)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
@@ -62751,7 +61925,7 @@ setGridProperty( (Table)arg1, (CellRange)arg2, (GridLineType)arg3, (object)arg4)
     def setMargin (self, row: int, col: int, nMargin: PyDb.CellMargin, val : float)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -62885,7 +62059,7 @@ setTextStyle( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)arg5) -> N
     def setVertCellMargin (self, val : float)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidth (self, val : float)-> None :
@@ -63196,7 +62370,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def alignment (self, *args, **kwargs)-> PyDb.CellAlignment :
@@ -63635,13 +62809,13 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def removeTemplate (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -64005,14 +63179,11 @@ class Text:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def adjustAlignment (self, val : Database)-> None :
       '''                             '''
@@ -64145,11 +63316,8 @@ class Text:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -64163,16 +63331,8 @@ class Text:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -64374,13 +63534,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -64404,13 +63564,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -64433,19 +63593,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setJustification (self, val : TextAlignment)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -64497,7 +63657,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setVerticalMode (self, val : TextVertMode)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidthFactor (self, val : float)-> None :
@@ -64664,7 +63824,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -64879,13 +64039,13 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -64985,7 +64145,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -65212,13 +64372,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -65802,7 +64962,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -66017,13 +65177,13 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -66123,7 +65283,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -66329,13 +65489,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -66426,7 +65586,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
 
 class UnderlayDefinition:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -66435,7 +65595,7 @@ class UnderlayDefinition:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -66643,13 +65803,13 @@ class UnderlayDefinition:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -66745,7 +65905,7 @@ class UnderlayLayer:
     ...
 
 class UnderlayReference:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -66754,14 +65914,11 @@ class UnderlayReference:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -66919,11 +66076,8 @@ class UnderlayReference:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -66937,16 +66091,8 @@ class UnderlayReference:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -67145,13 +66291,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -67181,7 +66327,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setClipInverted (self, val : bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -67190,7 +66336,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setContrast (self, val : int)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDefinitionId (self, val : PyDb.ObjectId)-> None :
@@ -67225,19 +66371,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setIsOn (self, val : bool)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
@@ -67283,7 +66429,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setUnderlayLayer (self, val : int, layer : PyDb.UnderlayLayer)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidth (self, val : float)-> None :
@@ -67506,14 +66652,11 @@ class Vertex:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -67631,11 +66774,8 @@ class Vertex:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -67649,16 +66789,8 @@ class Vertex:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -67824,13 +66956,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -67848,13 +66980,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
 
@@ -67868,19 +67000,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -67908,7 +67040,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -67981,14 +67113,11 @@ class Vertex2d:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -68112,11 +67241,8 @@ class Vertex2d:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -68130,16 +67256,8 @@ class Vertex2d:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -68314,13 +67432,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -68341,13 +67459,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setEndWidth (self, val : float)-> None :
@@ -68364,19 +67482,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
@@ -68419,7 +67537,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setVertexIdentifier (self, val : int)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
@@ -68534,7 +67652,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -68749,13 +67867,13 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -68855,7 +67973,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def ambientLightColor (self)-> PyDb.Color :
@@ -69148,13 +68266,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -69377,7 +68495,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     ...
 
 class Viewport:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -69386,14 +68504,11 @@ class Viewport:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def ambientLightColor (self)-> PyDb.Color :
       '''                             '''
@@ -69562,11 +68677,8 @@ class Viewport:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -69589,16 +68701,8 @@ class Viewport:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -69878,7 +68982,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeHiddenLines (self, val: bool=True)-> None :
@@ -69893,7 +68997,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def removeSheetView (self)-> None :
@@ -69944,7 +69048,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCircleSides (self, val : int)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -69956,7 +69060,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setCustomScale (self, val: float)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDefaultLightingOn (self, val : bool)-> None :
@@ -70047,16 +69151,16 @@ setFrontClipOn( (Viewport)arg1, (bool)arg2) -> None :
     def setLabelBlock (self, val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
     def setLensLength (self, val : float)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
@@ -70065,7 +69169,7 @@ setFrontClipOn( (Viewport)arg1, (bool)arg2) -> None :
     def setLocked (self, val : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setModelView (self, val: PyDb.XrefObjectId)-> None :
@@ -70230,7 +69334,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setViewTarget (self, val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setVisualStyle (self, val : PyDb.ObjectId)-> None :
@@ -70382,7 +69486,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -70597,13 +69701,13 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -70703,7 +69807,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def ambientLightColor (self)-> PyDb.Color :
@@ -71025,13 +70129,13 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -71399,14 +70503,11 @@ class Wipeout:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: EntityReactor)-> None :
+    def addReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
-    def addSubentPaths (self, *args, **kwargs)-> None :
-      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -71542,11 +70643,8 @@ class Wipeout:
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, *args, **kwargs)-> None :
-      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+      '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -71566,16 +70664,8 @@ class Wipeout:
     def getStretchPoints (self)-> list :
       '''                             '''
     ...
-    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
-      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
-
-getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
-
-    C++ signature :
-        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
+    def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list :
+      '''                             '''
     ...
     def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -71783,13 +70873,13 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: EntityReactor)-> None :
+    def removeReactor (self, reactor: PyDb.EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
@@ -71822,7 +70912,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setClipInverted (self, val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : Database='current')-> None :
+    def setColor (self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current')-> None :
       '''                             '''
     ...
     def setColorIndex (self, clr: int, dosubents : bool=True)-> None :
@@ -71831,7 +70921,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def setContrast (self, val: int)-> None :
       '''                             '''
     ...
-    def setDatabaseDefaults (self, db: Database = 'current')-> None :
+    def setDatabaseDefaults (self, db: PyDb.Database = 'current')-> None :
       '''                             '''
     ...
     def setDisplayOpt (self, opt: PyDb.ImageDisplayOpt, val: bool)-> None :
@@ -71866,19 +70956,19 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     C++ signature :
         void setImageTransparency(class PyDbRasterImage {lvalue},bool)'''
     ...
-    def setLayer (self, val: str|ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
+    def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self, val: LineWeight, dosubents : bool=True)-> None :
+    def setLineWeight (self, val: PyDb.LineWeight, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setLinetype (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeScale (self, val: float, dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self, val: str|ObjectId, dosubents : bool=True)-> None :
+    def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOrientation (self, pt: PyGe.Point3d, u: PyGe.Vector3d, v: PyGe.Vector3d)-> bool :
@@ -71921,7 +71011,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setShowImage (self, val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self, val: Visibility, dosubents : bool=True)-> None :
+    def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidth (self, val: float)-> None :
@@ -71974,7 +71064,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class Xrecord:
-    def __init__ (self, id: PyDb.ObjectId, mode: OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -71983,7 +71073,7 @@ class Xrecord:
     def addPersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self, reactor: DbObjectReactor)-> None :
+    def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -72180,13 +71270,13 @@ class Xrecord:
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeField (self, id: str|ObjectId)-> None :
+    def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self, reactor: DbObjectReactor)-> None :
+    def removeReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
