@@ -1,3 +1,4 @@
+from matplotlib.pylab import f
 from pyrx_imp import Rx
 from pyrx_imp import Ge
 from pyrx_imp import Gi
@@ -20,10 +21,12 @@ def OnPyUnloadApp():
 class MyDrawableOverrule(Gi.DrawableOverrule):
     def __init__(self):
         Gi.DrawableOverrule.__init__(self)
+        self.seg = Ge.LineSeg3d()
 
     # override
     def isApplicable(self, subject):
-        return True
+        dbo = Db.Entity.cast(subject)
+        return dbo.ownerId() == Db.workingDb().modelSpaceId()
 
     # override
     def worldDraw(self, subject, wd):
@@ -40,25 +43,20 @@ class MyDrawableOverrule(Gi.DrawableOverrule):
             traits.setTransparency(trans)
 
             # circle info
-            seg = Ge.LineSeg3d(line.endPoint(), line.startPoint())
-            cen = seg.midPoint()
-            rad = seg.length() * 0.3
+            self.seg.set(line.startPoint(),line.endPoint())
+            cen = self.seg.midPoint()
+            rad = self.seg.length() * 0.3
 
             # draw circle
             traits.setColor(1)
             geo = wd.geometry()
             geo.circle(cen, rad, Ge.Vector3d.kZAxis)
 
-            # draw text
-            traits.setColor(2)
-            testpos = cen + (seg.direction().perpVector().normalize() * 3)
-            geo.text(testpos, Ge.Vector3d.kZAxis,
-                     seg.direction(), 10, 1.0, 0, "SUP Bruh")
-
-            # returing false here will go to viewport
-            return flag
         except Exception as err:
             print(err)
+        finally:
+            return flag
+            
 
 overrule = None
 
