@@ -64,6 +64,7 @@ public:
     PyDbObjectId        continuousLinetype() const;
     Adesk::Int16        coords() const;
     Adesk::UInt32       countEmptyObjects(const Adesk::Int32 flags);
+    Adesk::UInt32       countHardReferences(const boost::python::list& pyids);
     PyDbObjectId        detailViewStyle() const;
     PyDbObjectId        detailViewStyleDictionaryId() const;
     bool                dimaso() const;
@@ -217,7 +218,7 @@ public:
     AcGePoint3d			pucsorg() const;
     AcGeVector3d		pucsxdir() const;
     AcGeVector3d		pucsydir() const;
-    boost::python::list purge();
+    boost::python::list purge(const boost::python::list& pyids);
     bool				qtextmode() const;
     void	            reclaimMemoryFromErasedObjects(const boost::python::list& erasedObjects);
     PyDbObjectId		regAppTableId() const;

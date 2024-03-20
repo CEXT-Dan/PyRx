@@ -66,6 +66,7 @@ void makePyDbDatabaseWrapper()
         .def("continuousLinetype", &PyDbDatabase::continuousLinetype, DS.ARGS())
         .def("coords", &PyDbDatabase::coords, DS.ARGS())
         .def("countEmptyObjects", &PyDbDatabase::countEmptyObjects, DS.ARGS({ "flag : int" }))
+        .def("countHardReferences", &PyDbDatabase::countHardReferences, DS.ARGS({ "ids : list[PyDb.ObjectId]" }))
         .def("detailViewStyle", &PyDbDatabase::detailViewStyle, DS.ARGS())
         .def("detailViewStyleDictionaryId", &PyDbDatabase::detailViewStyleDictionaryId, DS.ARGS())
         .def("dimaso", &PyDbDatabase::dimaso, DS.ARGS())
@@ -512,7 +513,7 @@ void makePyDbDatabaseWrapper()
         .def("blockTableId", &PyDbDatabase::blockTableId, DS.ARGS())
         .def("modelSpaceId", &PyDbDatabase::modelSpaceId, DS.ARGS())
         .def("currentSpaceId", &PyDbDatabase::currentSpaceId, DS.ARGS())
-        .def("purge", &PyDbDatabase::purge, DS.ARGS())
+        .def("purge", &PyDbDatabase::purge, DS.ARGS({"ids: list[PyDb.ObjectId]"}))
         .def("setCannoscale", &PyDbDatabase::setCannoscale, DS.ARGS({ "val : AnnotationScale" }))
         .def("setCecolor", &PyDbDatabase::setCecolor, DS.ARGS({ "val : Color" }))
         .def("setCetransparency", &PyDbDatabase::setCetransparency, DS.ARGS({ "val : Transparency" }))
@@ -792,6 +793,13 @@ Adesk::UInt32 PyDbDatabase::countEmptyObjects(const Adesk::Int32 flags)
 #else
     return impObj()->countEmptyObjects(flags);
 #endif
+}
+
+Adesk::UInt32 PyDbDatabase::countHardReferences(const boost::python::list& pyids)
+{
+    Adesk::UInt32 cnt = 0;
+    PyThrowBadEs(impObj()->countHardReferences(PyListToObjectIdArray(pyids),&cnt));
+    return cnt;
 }
 
 PyDbObjectId PyDbDatabase::detailViewStyle() const
@@ -1734,9 +1742,9 @@ AcGeVector3d PyDbDatabase::pucsydir() const
     return impObj()->pucsydir();
 }
 
-boost::python::list PyDbDatabase::purge()
+boost::python::list PyDbDatabase::purge(const boost::python::list& pyids)
 {
-    AcDbObjectIdArray ids;
+    AcDbObjectIdArray ids = PyListToObjectIdArray(pyids);
     PyThrowBadEs(impObj()->purge(ids));
     return ObjectIdArrayToPyList(ids);
 }
