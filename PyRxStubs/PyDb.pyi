@@ -43,7 +43,7 @@ class ACIcolorMethod:
       '''None'''
     ...
 
-class AbstractViewTable:
+class AbstractViewTable(PyDb.SymbolTable):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1, (ObjectId)arg2) -> None :
 
@@ -360,7 +360,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
 
-class AbstractViewTableRecord:
+class AbstractViewTableRecord(PyDb.SymbolTableRecord):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1, (ObjectId)arg2) -> None :
 
@@ -907,7 +907,7 @@ class AdsName:
         class PyDbObjectId toObjectId(class AdsName {lvalue})'''
     ...
 
-class AlignedDimension:
+class AlignedDimension(PyDb.Dimension):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -1776,7 +1776,7 @@ class AnnoType:
       '''None'''
     ...
 
-class AnnotationScale:
+class AnnotationScale(PyDb.ObjectContext):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1881,7 +1881,7 @@ class AnnotativeStates:
       '''None'''
     ...
 
-class Arc:
+class Arc(PyDb.Curve):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -2490,7 +2490,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class ArcDimension:
+class ArcDimension(PyDb.Dimension):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -3389,7 +3389,7 @@ class AssocFlags:
       '''None'''
     ...
 
-class AttributeDefinition:
+class AttributeDefinition(PyDb.Text):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -4021,7 +4021,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class AttributeReference:
+class AttributeReference(PyDb.Text):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -4652,7 +4652,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class BlockBegin:
+class BlockBegin(PyDb.Entity):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1, (ObjectId)arg2) -> None :
 
@@ -5108,7 +5108,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class BlockEnd:
+class BlockEnd(PyDb.Entity):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1, (ObjectId)arg2) -> None :
 
@@ -5564,7 +5564,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class BlockReference:
+class BlockReference(PyDb.Entity):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -6099,7 +6099,7 @@ class BlockScaling:
       '''None'''
     ...
 
-class BlockTable:
+class BlockTable(PyDb.SymbolTable):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
       '''                             '''
     ...
@@ -6401,7 +6401,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
 
-class BlockTableRecord:
+class BlockTableRecord(PyDb.SymbolTableRecord):
     def __init__ (self, id: ObjectId=kNull, mode: PyDb.OpenMode=kForRead)-> None :
       '''                             '''
     ...
@@ -6800,7 +6800,7 @@ class BlockTableRecord:
       '''                             '''
     ...
 
-class Body:
+class Body(PyDb.Entity):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -7581,7 +7581,7 @@ class CenterMarkType:
       '''None'''
     ...
 
-class Circle:
+class Circle(PyDb.Curve):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -8844,7 +8844,7 @@ wcs2Ucs( (Vector3d)arg1, (Vector3d)arg2) -> bool :
         bool wcs2Ucs(class AcGeVector3d,class AcGeVector3d {lvalue})'''
     ...
 
-class Curve:
+class Curve(PyDb.Entity):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -9391,7 +9391,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class Database:
+class Database(PyRx.RxObject):
     def UCSTableId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -10866,7 +10866,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
       '''                             '''
     ...
 
-class DatabaseReactor:
+class DatabaseReactor(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -10946,7 +10946,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class DatabaseSummaryInfo:
+class DatabaseSummaryInfo(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -11259,7 +11259,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class DbObject:
+class DbObject(PyGi.Drawable):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -11529,7 +11529,7 @@ class DbObject:
       '''                             '''
     ...
 
-class DbObjectOverrule:
+class DbObjectOverrule(PyRx.Overrule):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -11651,7 +11651,7 @@ class DbObjectOverrule:
       '''                             '''
     ...
 
-class DbObjectReactor:
+class DbObjectReactor(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -11778,7 +11778,7 @@ class DeepCloneType:
       '''None'''
     ...
 
-class DiametricDimension:
+class DiametricDimension(PyDb.Dimension):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -12802,7 +12802,7 @@ dictionaryNameAt( (ObjectId)arg1, (ObjectId)arg2) -> str :
         bool hasVisualStyle(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
     ...
 
-class Dictionary:
+class Dictionary(PyDb.DbObject):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -13107,7 +13107,7 @@ class Dictionary:
       '''                             '''
     ...
 
-class DimAssoc:
+class DimAssoc(PyDb.DbObject):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -13568,7 +13568,7 @@ class DimInspect:
       '''None'''
     ...
 
-class DimStyleTable:
+class DimStyleTable(PyDb.SymbolTable):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1, (ObjectId)arg2) -> None :
 
@@ -13885,7 +13885,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
 
-class DimStyleTableRecord:
+class DimStyleTableRecord(PyDb.SymbolTableRecord):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -14674,7 +14674,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
 
-class Dimension:
+class Dimension(PyDb.Entity):
     def __init__ (self, id: PyDb.ObjectId, mode:  PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -16349,7 +16349,7 @@ class DynUnitsType:
       '''None'''
     ...
 
-class Ellipse:
+class Ellipse(PyDb.Curve):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -17010,8 +17010,8 @@ class EndCaps:
       '''None'''
     ...
 
-class Entity:
-    def __init__ (self, id: PyDb.ObjectId, mode:  PyDb.OpenMode=kForRead, erased: bool=False)-> None :
+class Entity(PyDb.DbObject):
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -17597,7 +17597,7 @@ setRGB( (EntityColor)arg1, (int)arg2, (int)arg3, (int)arg4) -> ErrorStatus :
       '''                             '''
     ...
 
-class EntityReactor:
+class EntityReactor(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -19230,7 +19230,7 @@ class ErrorStatus:
       '''None'''
     ...
 
-class EvalVariant:
+class EvalVariant(PyRx.RxObject):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -19441,7 +19441,7 @@ class Extents2d:
       '''                             '''
     ...
 
-class ExtrudedSurface:
+class ExtrudedSurface(PyDb.Surface):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -19997,7 +19997,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class Face:
+class Face(PyDb.Entity):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -20482,7 +20482,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class FaceRecord:
+class FaceRecord(PyDb.Vertex):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -20958,7 +20958,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class Fcf:
+class Fcf(PyDb.Entity):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -21503,7 +21503,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class Field:
+class Field(PyDb.DbObject):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -22684,7 +22684,7 @@ class GeoCoordinateSystemUnit:
       '''None'''
     ...
 
-class GeoData:
+class GeoData(PyDb.DbObject):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -23119,7 +23119,7 @@ class GeoData:
       '''                             '''
     ...
 
-class GeoMap:
+class GeoMap(PyDb.RasterImage):
     def LOD (self)-> int :
       '''                             '''
     ...
@@ -23727,7 +23727,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class GeoPositionMarker:
+class GeoPositionMarker(PyDb.Entity):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -24390,7 +24390,7 @@ class GridProperty:
       '''None'''
     ...
 
-class Group:
+class Group(PyDb.DbObject):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -24873,7 +24873,7 @@ __init__( (object)arg1, (int)arg2) -> None :
         unsigned __int64 value(class PyDbHandle {lvalue})'''
     ...
 
-class HardOwnershipId:
+class HardOwnershipId(PyDb.ObjectId):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -24944,7 +24944,7 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
       '''                             '''
     ...
 
-class HardPointerId:
+class HardPointerId(PyDb.ObjectId):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -25015,7 +25015,7 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
       '''                             '''
     ...
 
-class Hatch:
+class Hatch(PyDb.Entity):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -25795,7 +25795,7 @@ class HatchStyle:
       '''None'''
     ...
 
-class Helix:
+class Helix(PyDb.Spline):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -26749,7 +26749,7 @@ __init__( (object)arg1, (ObjectId)arg2, (ObjectId)arg3, (bool)arg4, (bool)arg5, 
       '''                             '''
     ...
 
-class Image:
+class Image(PyDb.Entity):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -27304,7 +27304,7 @@ class Intersect:
       '''None'''
     ...
 
-class JoinEntityPE:
+class JoinEntityPE(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1, (RxObject)arg2) -> None :
 
@@ -27375,7 +27375,7 @@ class JoinStyle:
       '''None'''
     ...
 
-class LayerFilter:
+class LayerFilter(PyDb.DbObject):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -27663,7 +27663,7 @@ class LayerFilter:
       '''                             '''
     ...
 
-class LayerTable:
+class LayerTable(PyDb.SymbolTable):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1, (ObjectId)arg2) -> None :
 
@@ -27980,7 +27980,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
 
-class LayerTableRecord:
+class LayerTableRecord(PyDb.SymbolTableRecord):
     def VPDFLT (self)-> bool :
       '''                             '''
     ...
@@ -28552,7 +28552,7 @@ transparency( (LayerTableRecord)arg1, (ObjectId)arg2) -> Transparency :
       '''                             '''
     ...
 
-class Layout:
+class Layout(PyDb.PlotSettings):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -29010,7 +29010,7 @@ class Layout:
       '''                             '''
     ...
 
-class LayoutManager:
+class LayoutManager(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -29213,7 +29213,7 @@ setCurrentLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
         unsigned __int64 setupForLayouts(class PyDbDatabase {lvalue})'''
     ...
 
-class Leader:
+class Leader(PyDb.Curve):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -29919,7 +29919,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class Line:
+class Line(PyDb.Curve):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -30507,7 +30507,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class LineAngularDimension2:
+class LineAngularDimension2(PyDb.Dimension):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -31459,7 +31459,7 @@ class LineWeight:
       '''None'''
     ...
 
-class LinetypeTable:
+class LinetypeTable(PyDb.SymbolTable):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1, (ObjectId)arg2) -> None :
 
@@ -31776,7 +31776,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
 
-class LinetypeTableRecord:
+class LinetypeTableRecord(PyDb.SymbolTableRecord):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -32226,7 +32226,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
 
-class LoftedSurface:
+class LoftedSurface(PyDb.Surface):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -32782,7 +32782,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class MInsertBlock:
+class MInsertBlock(PyDb.BlockReference):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -33327,7 +33327,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class MLeader:
+class MLeader(PyDb.Entity):
     def MLeaderStyle (self, *args, **kwargs)-> PyDb.ObjectId :
       '''MLeaderStyle( (MLeader)arg1) -> ObjectId :
 
@@ -34793,7 +34793,7 @@ class MLeaderSegmentAngleType:
       '''None'''
     ...
 
-class MLeaderStyle:
+class MLeaderStyle(PyDb.DbObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -35694,7 +35694,7 @@ class MLeaderTextAttachmentType:
       '''None'''
     ...
 
-class MPolygon:
+class MPolygon(PyDb.Entity):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -36374,7 +36374,7 @@ class MPolygonloopDir:
       '''None'''
     ...
 
-class MText:
+class MText(PyDb.Entity):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -37256,7 +37256,7 @@ class MergeCellStyleOption:
       '''None'''
     ...
 
-class Mline:
+class Mline(PyDb.Entity):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -37809,7 +37809,7 @@ class MlineJustification:
       '''None'''
     ...
 
-class MlineStyle:
+class MlineStyle(PyDb.DbObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -38304,7 +38304,7 @@ set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
       '''                             '''
     ...
 
-class NurbSurface:
+class NurbSurface(PyDb.Surface):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -38860,7 +38860,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class ObjectContext:
+class ObjectContext(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -38915,7 +38915,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class ObjectContextCollection:
+class ObjectContextCollection(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -38991,7 +38991,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class ObjectContextManager:
+class ObjectContextManager(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -39135,7 +39135,7 @@ class OpenMode:
       '''None'''
     ...
 
-class OrdinateDimension:
+class OrdinateDimension(PyDb.Dimension):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -40116,7 +40116,7 @@ class OsnapMode:
       '''None'''
     ...
 
-class OsnapPointRef:
+class OsnapPointRef(PyDb.PointRef):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -40248,7 +40248,7 @@ class OsnapType:
       '''None'''
     ...
 
-class PdfDefinition:
+class PdfDefinition(PyDb.UnderlayDefinition):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
       '''                             '''
     ...
@@ -40547,7 +40547,7 @@ class PdfDefinition:
       '''                             '''
     ...
 
-class PdfReference:
+class PdfReference(PyDb.UnderlayReference):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
       '''                             '''
     ...
@@ -41147,7 +41147,7 @@ class Planarity:
       '''None'''
     ...
 
-class PlaneSurface:
+class PlaneSurface(PyDb.Surface):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -41740,7 +41740,7 @@ class PlotRotation:
       '''None'''
     ...
 
-class PlotSettings:
+class PlotSettings(PyDb.DbObject):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -42370,7 +42370,7 @@ class PlotType:
       '''None'''
     ...
 
-class Point:
+class Point(PyDb.Entity):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -42855,7 +42855,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class Point3AngularDimension:
+class Point3AngularDimension(PyDb.Dimension):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -43764,7 +43764,7 @@ __init__( (object)arg1) -> None :
         bool visibility(class PyDbPointCloudClassificationColorRamp {lvalue},int)'''
     ...
 
-class PointCloudColorMap:
+class PointCloudColorMap(PyDb.DbObject):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -44335,7 +44335,7 @@ class PointCloudCropType:
       '''None'''
     ...
 
-class PointCloudDefEx:
+class PointCloudDefEx(PyDb.DbObject):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -44697,7 +44697,7 @@ class PointCloudDispOptionOutOfRange:
       '''None'''
     ...
 
-class PointCloudEx:
+class PointCloudEx(PyDb.Entity):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -45590,7 +45590,7 @@ class PointCloudStylizationType:
       '''None'''
     ...
 
-class PointRef:
+class PointRef(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -45670,7 +45670,7 @@ class Poly3dType:
       '''None'''
     ...
 
-class PolyFaceMeshVertex:
+class PolyFaceMeshVertex(PyDb.Vertex):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -46137,7 +46137,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class PolygonMeshVertex:
+class PolygonMeshVertex(PyDb.Vertex):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -46607,7 +46607,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class Polyline:
+class Polyline(PyDb.Curve):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -47291,7 +47291,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class Polyline2d:
+class Polyline2d(PyDb.Curve):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -47978,7 +47978,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class Polyline3d:
+class Polyline3d(PyDb.Curve):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -48608,7 +48608,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class Polyline3dVertex:
+class Polyline3dVertex(PyDb.Vertex):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -49078,7 +49078,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class Profile3d:
+class Profile3d(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -49156,7 +49156,7 @@ __init__( (object)arg1, (object)arg2) -> None :
       '''                             '''
     ...
 
-class RadialDimension:
+class RadialDimension(PyDb.Dimension):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -49999,7 +49999,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class RadialDimensionLarge:
+class RadialDimensionLarge(PyDb.Dimension):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -50863,7 +50863,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class RasterImage:
+class RasterImage(PyDb.Image):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
       '''                             '''
     ...
@@ -51427,7 +51427,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class RasterImageDef:
+class RasterImageDef(PyDb.DbObject):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -51766,7 +51766,7 @@ class RasterImageDef:
       '''                             '''
     ...
 
-class RasterImageDefReactor:
+class RasterImageDefReactor(PyDb.DbObject):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
       '''                             '''
     ...
@@ -52041,7 +52041,7 @@ class RasterImageDefReactor:
       '''                             '''
     ...
 
-class RegAppTable:
+class RegAppTable(PyDb.SymbolTable):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1, (ObjectId)arg2) -> None :
 
@@ -52358,7 +52358,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
 
-class RegAppTableRecord:
+class RegAppTableRecord(PyDb.SymbolTableRecord):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -52664,7 +52664,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
 
-class Region:
+class Region(PyDb.Entity):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -53308,7 +53308,7 @@ checkRevolveCurve( (RevolveOptions)arg1, (Entity)arg2, (Point3d)arg3, (Vector3d)
         double twistAngle(class PyDbRevolveOptions {lvalue})'''
     ...
 
-class RevolvedSurface:
+class RevolvedSurface(PyDb.Surface):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -53881,7 +53881,7 @@ class RotatedDimType:
       '''None'''
     ...
 
-class RotatedDimension:
+class RotatedDimension(PyDb.Dimension):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -54805,7 +54805,7 @@ class SegType:
       '''None'''
     ...
 
-class SequenceEnd:
+class SequenceEnd(PyDb.Entity):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1, (ObjectId)arg2) -> None :
 
@@ -55321,7 +55321,7 @@ class SnoopDwgFiler:
       '''                             '''
     ...
 
-class SoftOwnershipId:
+class SoftOwnershipId(PyDb.ObjectId):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -55392,7 +55392,7 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
       '''                             '''
     ...
 
-class SoftPointerId:
+class SoftPointerId(PyDb.ObjectId):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -55463,7 +55463,7 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
       '''                             '''
     ...
 
-class Solid3d:
+class Solid3d(PyDb.Entity):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -56256,7 +56256,7 @@ stlOut( (Solid3d)arg1, (str)arg2, (bool)arg3, (float)arg4) -> None :
       '''                             '''
     ...
 
-class SpatialFilter:
+class SpatialFilter(PyDb.DbObject):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -56562,7 +56562,7 @@ class SpatialFilter:
       '''                             '''
     ...
 
-class Spline:
+class Spline(PyDb.Curve):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -57587,7 +57587,7 @@ class StdScaleType:
       '''None'''
     ...
 
-class SubDMesh:
+class SubDMesh(PyDb.Entity):
     def __init__ (self, id: PyDb.ObjectId, mode:  PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -58410,7 +58410,7 @@ class SubentType:
       '''None'''
     ...
 
-class Surface:
+class Surface(PyDb.Entity):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -59272,7 +59272,7 @@ setSweepEntityTransform( (SweepOptions)arg1, (list)arg2, (bool)arg3) -> None :
         class AcGeVector3d twistRefVec(class PyDbSweepOptions {lvalue})'''
     ...
 
-class SweptSurface:
+class SweptSurface(PyDb.Surface):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -60099,7 +60099,7 @@ __init__( (object)arg1) -> None :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > viewportActiveName(class PyDbSymUtilServices {lvalue})'''
     ...
 
-class SymbolTable:
+class SymbolTable(PyDb.DbObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1, (ObjectId)arg2) -> None :
 
@@ -60416,7 +60416,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
 
-class SymbolTableRecord:
+class SymbolTableRecord(PyDb.DbObject):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
       '''                             '''
     ...
@@ -60704,7 +60704,7 @@ class SymbolTableRecord:
       '''                             '''
     ...
 
-class Table:
+class Table(PyDb.BlockReference):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -62337,7 +62337,7 @@ class TableIteratorOption:
       '''None'''
     ...
 
-class TableStyle:
+class TableStyle(PyDb.DbObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -63149,7 +63149,7 @@ textStyle( (TableStyle)arg1, (str)arg2) -> ObjectId :
       '''                             '''
     ...
 
-class Text:
+class Text(PyDb.Entity):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -63800,7 +63800,7 @@ class TextHorzMode:
       '''None'''
     ...
 
-class TextStyleTable:
+class TextStyleTable(PyDb.SymbolTable):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1, (ObjectId)arg2) -> None :
 
@@ -64117,7 +64117,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
 
-class TextStyleTableRecord:
+class TextStyleTableRecord(PyDb.SymbolTableRecord):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -64725,7 +64725,7 @@ class TimeZone:
       '''None'''
     ...
 
-class Transaction:
+class Transaction(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -64798,7 +64798,7 @@ getObject( (Transaction)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> DbO
       '''                             '''
     ...
 
-class TransactionManager:
+class TransactionManager(PyRx.RxObject):
     def __init__ (self)-> None :
       '''                             '''
     ...
@@ -64938,7 +64938,7 @@ class TransparencyMethod:
       '''None'''
     ...
 
-class UCSTable:
+class UCSTable(PyDb.SymbolTable):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1, (ObjectId)arg2) -> None :
 
@@ -65255,7 +65255,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
 
-class UCSTableRecord:
+class UCSTableRecord(PyDb.SymbolTableRecord):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -65585,7 +65585,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
 
-class UnderlayDefinition:
+class UnderlayDefinition(PyDb.DbObject):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
       '''                             '''
     ...
@@ -65904,7 +65904,7 @@ class UnderlayLayer:
       '''                             '''
     ...
 
-class UnderlayReference:
+class UnderlayReference(PyDb.Entity):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -66628,7 +66628,7 @@ class UpdateOption:
       '''None'''
     ...
 
-class Vertex:
+class Vertex(PyDb.Entity):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -67086,7 +67086,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class Vertex2d:
+class Vertex2d(PyDb.Vertex):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -67618,7 +67618,7 @@ class Vertex2dType:
       '''None'''
     ...
 
-class ViewTable:
+class ViewTable(PyDb.AbstractViewTable):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -67945,7 +67945,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
 
-class ViewTableRecord:
+class ViewTableRecord(PyDb.AbstractViewTableRecord):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -68494,7 +68494,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
       '''                             '''
     ...
 
-class Viewport:
+class Viewport(PyDb.Entity):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -69452,7 +69452,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class ViewportTable:
+class ViewportTable(PyDb.AbstractViewTable):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -69779,7 +69779,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
 
-class ViewportTableRecord:
+class ViewportTableRecord(PyDb.AbstractViewTableRecord):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -70476,7 +70476,7 @@ class VpShadePlotType:
       '''None'''
     ...
 
-class Wipeout:
+class Wipeout(PyDb.RasterImage):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -71063,7 +71063,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class Xrecord:
+class Xrecord(PyDb.DbObject):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...

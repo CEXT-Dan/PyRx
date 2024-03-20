@@ -86,7 +86,7 @@ class CustomSizeResult:
       '''None'''
     ...
 
-class DSDData:
+class DSDData(PyPl.PlObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -454,7 +454,7 @@ setUnrecognizedData( (DSDData)arg1, (list)arg2, (list)arg3) -> None :
         bool viewFile(class PyPlDSDData {lvalue})'''
     ...
 
-class DSDEntry:
+class DSDEntry(PyPl.PlObject):
     def NPS (self, *args, **kwargs)-> str :
       '''NPS( (DSDEntry)arg1) -> str :
 
@@ -641,7 +641,7 @@ class MatchingPolicy:
       '''None'''
     ...
 
-class PlObject:
+class PlObject(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -704,7 +704,7 @@ class PlotCancelStatus:
       '''None'''
     ...
 
-class PlotConfig:
+class PlotConfig(PyPl.PlObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -831,7 +831,7 @@ This class cannot be instantiated from Python'''
         void setPlotToFile(class PyPlPlotConfig {lvalue},bool)'''
     ...
 
-class PlotConfigInfo:
+class PlotConfigInfo(PyPl.PlObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1085,7 +1085,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class PlotInfo:
+class PlotInfo(PyPl.PlObject):
     def OrgFilePath (self, *args, **kwargs)-> str :
       '''OrgFilePath( (PlotInfo)arg1) -> str :
 
@@ -1217,7 +1217,7 @@ class PlotInfo:
         class PyDbPlotSettings validatedSettings(class PyPlPlotInfo {lvalue})'''
     ...
 
-class PlotInfoValidator:
+class PlotInfoValidator(PyPl.PlObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1453,7 +1453,7 @@ class PlotMSGIndex:
       '''None'''
     ...
 
-class PlotPageInfo:
+class PlotPageInfo(PyPl.PlObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1730,7 +1730,7 @@ class PlotToFileCapability:
       '''None'''
     ...
 
-class PrecisionEntry:
+class PrecisionEntry(PyPl.PlObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 

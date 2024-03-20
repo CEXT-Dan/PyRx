@@ -191,7 +191,7 @@ class AcGiVisibility:
       '''None'''
     ...
 
-class CommonDraw:
+class CommonDraw(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -296,7 +296,7 @@ class DrawFlags:
       '''None'''
     ...
 
-class Drawable:
+class Drawable(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -366,7 +366,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class DrawableOverrule:
+class DrawableOverrule(PyRx.Overrule):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -497,7 +497,7 @@ class DrawableOverrule:
         bool worldDraw(class PyGiDrawableOverrule {lvalue},class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
 
-class DrawableTraits:
+class DrawableTraits(PyGi.SubEntityTraits):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -750,7 +750,7 @@ setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3
         class PyDbObjectId visualStyle(class PyGiSubEntityTraits {lvalue})'''
     ...
 
-class Geometry:
+class Geometry(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -1054,7 +1054,7 @@ class ShadowFlags:
       '''None'''
     ...
 
-class SubEntityTraits:
+class SubEntityTraits(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -1386,7 +1386,7 @@ class TransparencyMode:
       '''None'''
     ...
 
-class ViewportDraw:
+class ViewportDraw(PyGi.CommonDraw):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -1444,7 +1444,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class ViewportGeometry:
+class ViewportGeometry(PyGi.Geometry):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -1573,7 +1573,7 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
       '''                             '''
     ...
 
-class WorldDraw:
+class WorldDraw(PyGi.CommonDraw):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -1631,7 +1631,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class WorldGeometry:
+class WorldGeometry(PyGi.Geometry):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''

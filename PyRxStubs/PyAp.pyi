@@ -691,7 +691,7 @@ class DocLockMode:
       '''None'''
     ...
 
-class DocManager:
+class DocManager(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -887,7 +887,7 @@ class DocManagerReactor:
       '''                             '''
     ...
 
-class Document:
+class Document(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -995,7 +995,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class LayerFilter:
+class LayerFilter(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1134,7 +1134,7 @@ setFilters( (LayerFilterManager)arg1, (LayerFilter)arg2, (LayerFilter)arg3) -> N
         void setFilters(class PyLayerFilterManager {lvalue},class PyLyLayerFilter {lvalue},class PyLyLayerFilter {lvalue})'''
     ...
 
-class LayerGroup:
+class LayerGroup(PyAp.LayerFilter):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1256,7 +1256,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class LayoutManager:
+class LayoutManager(PyDb.LayoutManager):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1754,7 +1754,7 @@ class SaveFormat:
       '''None'''
     ...
 
-class TransactionManager:
+class TransactionManager(PyDb.TransactionManager):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
