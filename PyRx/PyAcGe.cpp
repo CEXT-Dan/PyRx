@@ -539,6 +539,7 @@ static AcGeMatrix2d AcGeMatrix2alignCoordSys
 
 static void makePyGeMatrix2dWrapper()
 {
+    PyDocString DS("Matrix2d");
     class_<AcGeMatrix2d>("Matrix2d")
         .def(init<>())
         .add_static_property("kIdentity", &AcGeMatrix2dkIdentity)
@@ -571,8 +572,8 @@ static void makePyGeMatrix2dWrapper()
         .def("setToAlignCoordSys", &AcGeMatrix2d::setToAlignCoordSys, return_self<>())
         .def("translation", &AcGeMatrix2dtranslation).staticmethod("translation")
         .def("rotation", &AcGeMatrix2drotation).staticmethod("rotation")
-        .def("scaling", &AcGeMatrix2scaling).staticmethod("scaling")
-        .def("mirroring", &AcGeMatrix2mirroring1).staticmethod("scaling")
+        .def("scaling", &AcGeMatrix2scaling, DS.SARGS({ "scaleAll:float","center: PyGe.Point2d" })).staticmethod("scaling")
+        .def("mirroring", &AcGeMatrix2mirroring1)
         .def("mirroring", &AcGeMatrix2mirroring2).staticmethod("mirroring")
         .def("alignCoordSys", &AcGeMatrix2alignCoordSys).staticmethod("alignCoordSys")
         .def<double(AcGeMatrix2d::*)(unsigned int, unsigned int)const>("elementAt", &AcGeMatrix2d::operator())

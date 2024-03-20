@@ -67,7 +67,7 @@ public:
 
 private:
 #ifdef BRXAPP
-    mutable std::mutex PyGiDrawableOverruleMutex;
+    inline static std::mutex PyGiDrawableOverruleMutex;
 #endif // BRXAPP
     mutable bool isApplicableOverride = true;
     mutable bool isWorldDrawOverride = true;
