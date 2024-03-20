@@ -63,7 +63,7 @@ public:
     void                transformFaces(const boost::python::list& faceSubentIds, const AcGeMatrix3d& matrix);
     void                setSubentColor(const PyDbSubentId& subentId, const AcCmColor& color);
     AcCmColor           getSubentColor(const PyDbSubentId& subentId) const;
-    void                setSubentMaterial(const PyDbSubentId& subentId, PyDbObjectId& matId);
+    void                setSubentMaterial(const PyDbSubentId& subentId,const PyDbObjectId& matId);
     PyDbObjectId        getSubentMaterial(const PyDbSubentId& subentId) const;
     bool                recordHistory() const;
     void                setRecordHistory(bool bRecord);

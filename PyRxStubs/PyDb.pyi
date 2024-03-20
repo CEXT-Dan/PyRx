@@ -52665,26 +52665,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
 
 class Region(PyDb.Entity):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -52716,26 +52698,23 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.Region :
-      '''cast( (RxObject)arg1) -> Region :
 
-    C++ signature :
-        class PyDbRegion cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Region :
+      '''                             '''
     ...
     def castShadows (self)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.Region :
-      '''cloneFrom( (RxObject)arg1) -> Region :
 
-    C++ signature :
-        class PyDbRegion cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Region :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -52758,11 +52737,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def createExtensionDictionary (self)-> None :
       '''                             '''
     ...
-    def createFromCurves (self, *args, **kwargs)-> list :
-      '''createFromCurves( (list)arg1) -> list :
 
-    C++ signature :
-        class boost::python::list createFromCurves(class boost::python::list)'''
+    @staticmethod
+    def createFromCurves (curves: PyDb.Curve)-> list :
+      '''                             '''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -52770,11 +52748,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -52925,11 +52902,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (Region)arg1) -> bool :
-
-    C++ signature :
-        bool isNull(class PyDbRegion {lvalue})'''
+    def isNull (self)-> bool :
+      '''                             '''
     ...
     def isNullObj (self)-> bool :
       '''                             '''
@@ -55464,26 +55438,8 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     ...
 
 class Solid3d(PyDb.Entity):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -56167,7 +56123,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''setSubentMaterial( (Solid3d)arg1, (SubentId)arg2, (ObjectId)arg3) -> None :
 
     C++ signature :
-        void setSubentMaterial(class PyDb3dSolid {lvalue},class PyDbSubentId,class PyDbObjectId {lvalue})'''
+        void setSubentMaterial(class PyDb3dSolid {lvalue},class PyDbSubentId,class PyDbObjectId)'''
     ...
     def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''

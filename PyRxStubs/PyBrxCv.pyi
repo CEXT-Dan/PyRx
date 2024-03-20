@@ -273,7 +273,7 @@ __init__( (object)arg1) -> None :
         enum BrxCvCivil3dEntityInfo::Civil3dEntityType type(class PyBrxCvCivil3dEntityInfo {lvalue})'''
     ...
 
-class CvDb3dAlignment:
+class CvDb3dAlignment(PyBrxCv.CvDbCurve):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -850,7 +850,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
       '''                             '''
     ...
 
-class CvDbCurve:
+class CvDbCurve(PyDb.Curve):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -1409,7 +1409,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
       '''                             '''
     ...
 
-class CvDbEntity:
+class CvDbEntity(PyDb.Entity):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -1865,7 +1865,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
       '''                             '''
     ...
 
-class CvDbFileFormatManager:
+class CvDbFileFormatManager(PyBrxCv.CvDbObjectManager):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -2190,7 +2190,7 @@ class CvDbFileFormatManager:
       '''                             '''
     ...
 
-class CvDbGrading:
+class CvDbGrading(PyBrxCv.CvDbEntity):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -2730,7 +2730,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
       '''                             '''
     ...
 
-class CvDbHAlignment:
+class CvDbHAlignment(PyBrxCv.CvDbCurve):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -3580,7 +3580,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
       '''                             '''
     ...
 
-class CvDbHAlignmentArc:
+class CvDbHAlignmentArc(PyBrxCv.CvDbHAlignmentCurve):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -3749,7 +3749,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class CvDbHAlignmentCurve:
+class CvDbHAlignmentCurve(PyBrxCv.CvDbHAlignmentElement):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -3857,7 +3857,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class CvDbHAlignmentElement:
+class CvDbHAlignmentElement(PyBrxCv.CvDbSubObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -3950,7 +3950,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class CvDbHAlignmentLine:
+class CvDbHAlignmentLine(PyBrxCv.CvDbHAlignmentCurve):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -4083,7 +4083,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class CvDbHAlignmentPI:
+class CvDbHAlignmentPI(PyBrxCv.CvDbHAlignmentElement):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -4181,7 +4181,7 @@ class CvDbHAlignmentPI:
       '''                             '''
     ...
 
-class CvDbHAlignmentSCS:
+class CvDbHAlignmentSCS(PyBrxCv.CvDbHAlignmentCurve):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -4305,7 +4305,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class CvDbHAlignmentSSCSS:
+class CvDbHAlignmentSSCSS(PyBrxCv.CvDbHAlignmentCurve):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -4435,7 +4435,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class CvDbHAlignmentSTS:
+class CvDbHAlignmentSTS(PyBrxCv.CvDbHAlignmentCurve):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -4562,7 +4562,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class CvDbHAlignmentSpiral:
+class CvDbHAlignmentSpiral(PyBrxCv.CvDbHAlignmentCurve):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -4731,7 +4731,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class CvDbObject:
+class CvDbObject(PyDb.DbObject):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -5013,7 +5013,7 @@ class CvDbObject:
       '''                             '''
     ...
 
-class CvDbObjectManager:
+class CvDbObjectManager(PyBrxCv.CvDbObject):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -5322,7 +5322,7 @@ class CvDbObjectManager:
       '''                             '''
     ...
 
-class CvDbPoint:
+class CvDbPoint(PyBrxCv.CvDbEntity):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -5880,7 +5880,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
       '''                             '''
     ...
 
-class CvDbPointGroup:
+class CvDbPointGroup(PyBrxCv.CvDbObject):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -6267,7 +6267,7 @@ class CvDbPointGroup:
       '''                             '''
     ...
 
-class CvDbPointGroupManager:
+class CvDbPointGroupManager(PyBrxCv.CvDbObjectManager):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -6601,7 +6601,7 @@ class CvDbPointGroupManager:
       '''                             '''
     ...
 
-class CvDbPointReferencedEntity:
+class CvDbPointReferencedEntity(PyBrxCv.CvDbSubObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -6677,7 +6677,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class CvDbStyleManager:
+class CvDbStyleManager(PyBrxCv.CvDbObjectManager):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -6996,7 +6996,7 @@ class CvDbStyleManager:
       '''                             '''
     ...
 
-class CvDbSubObject:
+class CvDbSubObject(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -7056,7 +7056,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class CvDbTinSurface:
+class CvDbTinSurface(PyBrxCv.CvDbEntity):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -7762,7 +7762,7 @@ subDMesh( (CvDbTinSurface)arg1 [, (CvDbTinSurface)arg2]) -> SubDMesh :
       '''                             '''
     ...
 
-class CvDbTinSurfaceBoundary:
+class CvDbTinSurfaceBoundary(PyBrxCv.CvDbTinSurfaceConstraint):
     def __init__ (self, type: PyBrxCv.TinBoundaryType)-> None :
       '''                             '''
     ...
@@ -7802,7 +7802,7 @@ class CvDbTinSurfaceBoundary:
       '''                             '''
     ...
 
-class CvDbTinSurfaceBreakline:
+class CvDbTinSurfaceBreakline(PyBrxCv.CvDbTinSurfaceConstraint):
     def __init__ (self, type: PyBrxCv.TinBreaklineType)-> None :
       '''                             '''
     ...
@@ -7882,7 +7882,7 @@ class CvDbTinSurfaceConstraint:
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinition:
+class CvDbTinSurfaceDefinition(PyBrxCv.CvDbSubObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -7969,7 +7969,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionAddDrawingObjects:
+class CvDbTinSurfaceDefinitionAddDrawingObjects(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -8098,7 +8098,7 @@ __init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (RewriteSymbolics)a
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionAddFromFiles:
+class CvDbTinSurfaceDefinitionAddFromFiles(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -8209,7 +8209,7 @@ __init__( (object)arg1, (list)arg2, (ObjectId)arg3) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionAddFromPointClouds:
+class CvDbTinSurfaceDefinitionAddFromPointClouds(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -8314,7 +8314,7 @@ __init__( (object)arg1, (list)arg2) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionAddLine:
+class CvDbTinSurfaceDefinitionAddLine(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -8419,7 +8419,7 @@ __init__( (object)arg1, (object)arg2) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionAddLines:
+class CvDbTinSurfaceDefinitionAddLines(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -8524,7 +8524,7 @@ __init__( (object)arg1, (list)arg2) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionAddPoint:
+class CvDbTinSurfaceDefinitionAddPoint(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -8629,7 +8629,7 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionAddPointGroups:
+class CvDbTinSurfaceDefinitionAddPointGroups(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -8734,7 +8734,7 @@ __init__( (object)arg1, (list)arg2) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionAddPoints:
+class CvDbTinSurfaceDefinitionAddPoints(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -8839,7 +8839,7 @@ __init__( (object)arg1, (list)arg2) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionCreateFromC3D:
+class CvDbTinSurfaceDefinitionCreateFromC3D(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -8950,7 +8950,7 @@ __init__( (object)arg1, (str)arg2, (str)arg3) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionCreateFromFaces:
+class CvDbTinSurfaceDefinitionCreateFromFaces(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -9079,7 +9079,7 @@ __init__( (object)arg1, (list)arg2, (bool)arg3) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionCreateFromLandXML:
+class CvDbTinSurfaceDefinitionCreateFromLandXML(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -9199,7 +9199,7 @@ __init__( (object)arg1, (str)arg2, (str)arg3, (UnitsValue)arg4, (bool)arg5) -> N
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionDeleteEdge:
+class CvDbTinSurfaceDefinitionDeleteEdge(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -9304,7 +9304,7 @@ __init__( (object)arg1, (Point2d)arg2) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionDeleteEdges:
+class CvDbTinSurfaceDefinitionDeleteEdges(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -9413,7 +9413,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionDeletePoint:
+class CvDbTinSurfaceDefinitionDeletePoint(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -9518,7 +9518,7 @@ __init__( (object)arg1, (Point2d)arg2) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionGroupDefs:
+class CvDbTinSurfaceDefinitionGroupDefs(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -9627,7 +9627,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionModifyPointElevation:
+class CvDbTinSurfaceDefinitionModifyPointElevation(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -9744,7 +9744,7 @@ __init__( (object)arg1, (Point2d)arg2, (float)arg3, (bool)arg4) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionModifyPointsElevation:
+class CvDbTinSurfaceDefinitionModifyPointsElevation(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -9858,7 +9858,7 @@ __init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionModifyPointsElevations:
+class CvDbTinSurfaceDefinitionModifyPointsElevations(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -9982,7 +9982,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionMovePoint:
+class CvDbTinSurfaceDefinitionMovePoint(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -10093,7 +10093,7 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionMovePoints:
+class CvDbTinSurfaceDefinitionMovePoints(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -10204,7 +10204,7 @@ __init__( (object)arg1, (list)arg2, (Vector2d)arg3) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionRemoveElevations:
+class CvDbTinSurfaceDefinitionRemoveElevations(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -10330,7 +10330,7 @@ __init__( (object)arg1, (bool)arg2, (float)arg3, (bool)arg4, (float)arg5) -> Non
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionRemoveOuterEdges:
+class CvDbTinSurfaceDefinitionRemoveOuterEdges(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -10465,7 +10465,7 @@ __init__( (object)arg1, (bool)arg2, (float)arg3, (bool)arg4, (float)arg5, (bool)
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionRiseLower:
+class CvDbTinSurfaceDefinitionRiseLower(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -10570,7 +10570,7 @@ __init__( (object)arg1, (float)arg2) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionSwapEdge:
+class CvDbTinSurfaceDefinitionSwapEdge(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -10675,7 +10675,7 @@ __init__( (object)arg1, (Point2d)arg2) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionTransform:
+class CvDbTinSurfaceDefinitionTransform(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -10780,7 +10780,7 @@ __init__( (object)arg1, (Matrix3d)arg2) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceDefinitionTrianglesVisibility:
+class CvDbTinSurfaceDefinitionTrianglesVisibility(PyBrxCv.CvDbTinSurfaceDefinition):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -10891,7 +10891,7 @@ __init__( (object)arg1, (list)arg2, (bool)arg3) -> None :
       '''                             '''
     ...
 
-class CvDbTinSurfaceWall:
+class CvDbTinSurfaceWall(PyBrxCv.CvDbTinSurfaceConstraint):
     def __init__ (self, type: PyBrxCv.TinWallType)-> None :
       '''                             '''
     ...
@@ -10940,7 +10940,7 @@ class CvDbTinSurfaceWall:
       '''                             '''
     ...
 
-class CvDbVAlignment:
+class CvDbVAlignment(PyBrxCv.CvDbCurve):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -11619,7 +11619,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
       '''                             '''
     ...
 
-class CvDbVAlignmentArc:
+class CvDbVAlignmentArc(PyBrxCv.CvDbVAlignmentCurve):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -11749,7 +11749,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class CvDbVAlignmentCurve:
+class CvDbVAlignmentCurve(PyBrxCv.CvDbVAlignmentElement):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -11848,7 +11848,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class CvDbVAlignmentElement:
+class CvDbVAlignmentElement(PyBrxCv.CvDbSubObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -11938,7 +11938,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class CvDbVAlignmentPVI:
+class CvDbVAlignmentPVI(PyBrxCv.CvDbVAlignmentElement):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -12038,7 +12038,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class CvDbVAlignmentParabola:
+class CvDbVAlignmentParabola(PyBrxCv.CvDbVAlignmentCurve):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -12156,7 +12156,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class CvDbVAlignmentTangent:
+class CvDbVAlignmentTangent(PyBrxCv.CvDbVAlignmentCurve):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -12274,7 +12274,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class CvDbVAlignmentView:
+class CvDbVAlignmentView(PyBrxCv.CvDbView):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -12808,7 +12808,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
       '''                             '''
     ...
 
-class CvDbView:
+class CvDbView(PyBrxCv.CvDbEntity):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -13339,7 +13339,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
       '''                             '''
     ...
 
-class CvDbVolumeSurface:
+class CvDbVolumeSurface(PyBrxCv.CvDbTinSurface):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
@@ -14147,7 +14147,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class CvGradingSlopeOffsetRule:
+class CvGradingSlopeOffsetRule(PyBrxCv.CvGradingRule):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -14218,7 +14218,7 @@ __init__( (object)arg1, (float)arg2, (float)arg3) -> None :
       '''                             '''
     ...
 
-class CvGradingSlopeSurfaceRule:
+class CvGradingSlopeSurfaceRule(PyBrxCv.CvGradingRule):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 

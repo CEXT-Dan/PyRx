@@ -9,10 +9,11 @@ using namespace boost::python;
 
 void makePyDb3dSolidWrapper()
 {
+    PyDocString DS("PyDb.Solid3d");
     class_<PyDb3dSolid, bases<PyDbEntity>>("Solid3d")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>((DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }))))
         .def("createBox", &PyDb3dSolid::createBox)
         .def("createFrustum", &PyDb3dSolid::createFrustum)
         .def("createSphere", &PyDb3dSolid::createSphere)
@@ -356,7 +357,7 @@ AcCmColor PyDb3dSolid::getSubentColor(const PyDbSubentId& subentId) const
     return clr;
 }
 
-void PyDb3dSolid::setSubentMaterial(const PyDbSubentId& subentId, PyDbObjectId& matId)
+void PyDb3dSolid::setSubentMaterial(const PyDbSubentId& subentId,const PyDbObjectId& matId)
 {
     return PyThrowBadEs(impObj()->setSubentMaterial(*subentId.impObj(), matId.m_id));
 }
@@ -471,16 +472,17 @@ AcDb3dSolid* PyDb3dSolid::impObj(const std::source_location& src /*= std::source
 //PyDbRegion
 void makePyDbRegionWrapper()
 {
+    PyDocString DS("PyDb.Region");
     class_<PyDbRegion, bases<PyDbEntity>>("Region")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("isNull", &PyDbRegion::isNull)
-        .def("createFromCurves", &PyDbRegion::createFromCurves).staticmethod("createFromCurves")
-        .def("className", &PyDbRegion::className).staticmethod("className")
-        .def("desc", &PyDbRegion::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbRegion::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbRegion::cast).staticmethod("cast")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>((DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead"}))))
+        .def("isNull", &PyDbRegion::isNull, DS.ARGS())
+        .def("createFromCurves", &PyDbRegion::createFromCurves, DS.SARGS({ "curves: PyDb.Curve" })).staticmethod("createFromCurves")
+        .def("className", &PyDbRegion::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbRegion::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbRegion::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbRegion::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
