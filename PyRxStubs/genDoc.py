@@ -175,8 +175,21 @@ def generate_pyi(moduleName, module):
             if inspect.isclass(obj):
                 if name == '__loader__':
                     continue
+                
                 f.write('\n')
-                f.write(f'class {name}:\n')
+                
+                basesname = ''
+                objbases = obj.__bases__
+                if len(objbases):
+                    basesname = "{}.{}".format(objbases[0].__module__,objbases[0].__name__)
+                    if 'Boost' in basesname:
+                        basesname = ''
+                        
+                if len(basesname):
+                    f.write(f'class {name}({basesname}):\n')
+                else:
+                    f.write(f'class {name}:\n')
+                
 
                 for func_name, func in inspect.getmembers(obj):
                     if include_attr(func_name):
