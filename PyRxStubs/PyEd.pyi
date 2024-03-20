@@ -8,7 +8,7 @@ import PyEd
 import PyPl
 from typing import overload
 
-class AcEdDrawOrderCmdType:
+class AcEdDrawOrderCmdType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -31,7 +31,7 @@ class AcEdDrawOrderCmdType:
       '''None'''
     ...
 
-class AcEdPointHistory:
+class AcEdPointHistory(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -114,7 +114,7 @@ class AcEdPointHistory:
       '''None'''
     ...
 
-class AutoSysVar:
+class AutoSysVar(object):
     def __init__ (self, varname:str, value)-> None :
       '''                             '''
     ...
@@ -125,7 +125,7 @@ class AutoSysVar:
         void detach(class PySysVar {lvalue},bool)'''
     ...
 
-class Core:
+class Core(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -911,7 +911,7 @@ xrefXBind( (list)arg1, (bool)arg2, (Database)arg3) -> None :
         void xrefXBind(class boost::python::list,bool,class PyDbDatabase {lvalue})'''
     ...
 
-class CursorType:
+class CursorType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -961,7 +961,7 @@ class CursorType:
       '''None'''
     ...
 
-class DragStatus:
+class DragStatus(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -1020,7 +1020,7 @@ class DragStatus:
       '''None'''
     ...
 
-class DragStyle:
+class DragStyle(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1062,7 +1062,7 @@ __init__( (object)arg1, (DragStyleType)arg2, (DragStyleType)arg3) -> None :
         enum AcEdDragStyle::StyleType styleTypeForOriginal(class AcEdDragStyle {lvalue})'''
     ...
 
-class DragStyleType:
+class DragStyleType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -1091,7 +1091,7 @@ class DragStyleType:
       '''None'''
     ...
 
-class DrawJig:
+class DrawJig(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1227,7 +1227,7 @@ drag( (DrawJig)arg1, (DragStyle)arg2) -> DragStatus :
         bool worldDraw(class PyDrawJig {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
 
-class Editor:
+class Editor(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1417,7 +1417,7 @@ class Editor:
       '''                             '''
     ...
 
-class EditorReactor:
+class EditorReactor(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1964,7 +1964,7 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
         void xrefSubcommandUnloadItem(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},int,class PyDbObjectId {lvalue})'''
     ...
 
-class InputPoint:
+class InputPoint(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -2030,7 +2030,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class InputPointFilter:
+class InputPointFilter(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -2044,7 +2044,7 @@ class InputPointFilter:
         enum Acad::ErrorStatus processInputPoint(class PyEdInputPointFilter {lvalue},class PyEdInputPoint,class PyEdInputPointFilterResult {lvalue})'''
     ...
 
-class InputPointFilterResult:
+class InputPointFilterResult(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -2074,7 +2074,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class InputPointManager:
+class InputPointManager(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -2122,7 +2122,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class InputPointMonitor:
+class InputPointMonitor(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -2133,7 +2133,7 @@ class InputPointMonitor:
       '''                             '''
     ...
 
-class InputPointMonitorResult:
+class InputPointMonitorResult(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -2148,7 +2148,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class Jig:
+class Jig(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1, (Entity)arg2) -> None :
 
@@ -2278,7 +2278,7 @@ drag( (Jig)arg1, (DragStyle)arg2) -> DragStatus :
         enum AcEdJig::UserInputControls userInputControls(class PyJig {lvalue})'''
     ...
 
-class PromptStatus:
+class PromptStatus(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -2319,7 +2319,7 @@ class PromptStatus:
       '''None'''
     ...
 
-class SelectionSet:
+class SelectionSet(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -2368,7 +2368,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class UIContext:
+class UIContext(object):
     def OnUpdateMenu (self, *args, **kwargs)-> None :
       '''OnUpdateMenu( (UIContext)arg1) -> None :
 
@@ -2429,7 +2429,7 @@ addDefaultContextMenu( (UIContext)arg1, (str)arg2) -> bool :
         bool removeObjectContextMenu(class PyRxClass {lvalue},class PyEdUIContext {lvalue})'''
     ...
 
-class UserInputControls:
+class UserInputControls(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -2488,12 +2488,12 @@ class UserInputControls:
       '''None'''
     ...
 
-class UserInteraction:
+class UserInteraction(object):
     def __init__ (self, doc:PyAp.Document='current', isPrompting:bool=True)-> None :
       '''                             '''
     ...
 
-class Util:
+class Util(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 

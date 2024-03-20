@@ -8,7 +8,7 @@ import PyEd
 import PyPl
 from typing import overload
 
-class Core:
+class Core(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -33,7 +33,7 @@ class Core:
         void publishExecute(class PyPlDSDData,class PyPlPlotConfig,bool)'''
     ...
 
-class CustomSizeResult:
+class CustomSizeResult(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -601,7 +601,7 @@ class DSDEntry(PlObject):
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > traceSession(class PyPlDSDEntry {lvalue})'''
     ...
 
-class DeviceType:
+class DeviceType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -621,7 +621,7 @@ class DeviceType:
       '''None'''
     ...
 
-class MatchingPolicy:
+class MatchingPolicy(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -684,7 +684,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class PlotCancelStatus:
+class PlotCancelStatus(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -934,7 +934,7 @@ __init__( (object)arg1, (str)arg2, (str)arg3, (DeviceType)arg4) -> None :
         void setFullPath(class PyPlPlotConfigInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
 
-class PlotConfigManager:
+class PlotConfigManager(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -988,7 +988,7 @@ refreshList( (PlotConfigManager)arg1, (RefreshCode)arg2) -> None :
         class PyPlPlotConfig setCurrentConfig(class PyPlPlotConfigManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
 
-class PlotEngine:
+class PlotEngine(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -1059,7 +1059,7 @@ This class cannot be instantiated from Python'''
         bool isBackgroundPackaging(class PyPlPlotEngine {lvalue})'''
     ...
 
-class PlotFactory:
+class PlotFactory(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -1412,7 +1412,7 @@ class PlotInfoValidator(PlObject):
         void validate(class PyPlPlotInfoValidator {lvalue},class PyPlPlotInfo {lvalue})'''
     ...
 
-class PlotMSGIndex:
+class PlotMSGIndex(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -1523,7 +1523,7 @@ class PlotPageInfo(PlObject):
       '''                             '''
     ...
 
-class PlotProgressDialog:
+class PlotProgressDialog(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1713,7 +1713,7 @@ __init__( (object)arg1, (int)arg2, (bool)arg3, (int)arg4, (bool)arg5) -> None :
         int sheetProgressPos(class PyPlPlotProgressDialog {lvalue})'''
     ...
 
-class PlotToFileCapability:
+class PlotToFileCapability(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -1876,7 +1876,7 @@ __init__( (object)arg1) -> None :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > unitType(class PyPlPrecisionEntry {lvalue})'''
     ...
 
-class ProcessPlotState:
+class ProcessPlotState(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -1893,7 +1893,7 @@ class ProcessPlotState:
       '''None'''
     ...
 
-class RefreshCode:
+class RefreshCode(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -1916,7 +1916,7 @@ class RefreshCode:
       '''None'''
     ...
 
-class SetupType:
+class SetupType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -1939,7 +1939,7 @@ class SetupType:
       '''None'''
     ...
 
-class SheetCancelStatus:
+class SheetCancelStatus(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -1962,7 +1962,7 @@ class SheetCancelStatus:
       '''None'''
     ...
 
-class SheetType:
+class SheetType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -1997,7 +1997,7 @@ class SheetType:
       '''None'''
     ...
 
-class StdConfigs:
+class StdConfigs(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -2053,7 +2053,7 @@ class StdConfigs:
       '''None'''
     ...
 
-class StyTypes:
+class StyTypes(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...

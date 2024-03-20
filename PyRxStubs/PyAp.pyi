@@ -8,7 +8,7 @@ import PyEd
 import PyPl
 from typing import overload
 
-class AdUiTitleBarLocation:
+class AdUiTitleBarLocation(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -22,7 +22,7 @@ class AdUiTitleBarLocation:
       '''None'''
     ...
 
-class Application:
+class Application(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -81,7 +81,7 @@ class Application:
       '''                             '''
     ...
 
-class AutoDocLock:
+class AutoDocLock(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -94,7 +94,7 @@ class AutoDocLock:
       '''                             '''
     ...
 
-class CmdFlags:
+class CmdFlags(object):
     def DEFUN (self, *args, **kwargs)-> integer
 int(x, base=10) -> integer
 
@@ -662,7 +662,7 @@ Base 0 means to interpret the base from the string as an integer literal.
         void __init__(struct _object * __ptr64)'''
     ...
 
-class DocLockMode:
+class DocLockMode(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -834,7 +834,7 @@ class DocManager(PyRx.RxObject):
       '''                             '''
     ...
 
-class DocManagerReactor:
+class DocManagerReactor(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1099,7 +1099,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class LayerFilterManager:
+class LayerFilterManager(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1523,7 +1523,7 @@ setCurrentLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
       '''                             '''
     ...
 
-class PaletteSet:
+class PaletteSet(object):
     def __init__ (self, name : str, guid : str=None)-> None :
       '''                             '''
     ...
@@ -1633,7 +1633,7 @@ class PaletteSet:
       '''                             '''
     ...
 
-class ResourceOverride:
+class ResourceOverride(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1647,7 +1647,7 @@ class ResourceOverride:
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
 
-class SaveFormat:
+class SaveFormat(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...

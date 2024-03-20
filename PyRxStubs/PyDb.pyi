@@ -8,7 +8,7 @@ import PyEd
 import PyPl
 from typing import overload
 
-class ACIcolorMethod:
+class ACIcolorMethod(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -830,7 +830,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
       '''                             '''
     ...
 
-class AcCmDialogTabs:
+class AcCmDialogTabs(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -847,7 +847,7 @@ class AcCmDialogTabs:
       '''None'''
     ...
 
-class AcGeoMapResolution:
+class AcGeoMapResolution(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -867,7 +867,7 @@ class AcGeoMapResolution:
       '''None'''
     ...
 
-class AcGeoMapType:
+class AcGeoMapType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -887,7 +887,7 @@ class AcGeoMapType:
       '''None'''
     ...
 
-class AdsName:
+class AdsName(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1756,7 +1756,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class AnnoType:
+class AnnoType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -1864,7 +1864,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class AnnotativeStates:
+class AnnotativeStates(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -1937,7 +1937,7 @@ class Arc(Curve):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.Arc :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Arc :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -1953,7 +1953,7 @@ class Arc(Curve):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.Arc :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Arc :
       '''                             '''
     ...
     def close (self)-> None :
@@ -1979,7 +1979,7 @@ class Arc(Curve):
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -2380,7 +2380,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
     def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
@@ -3369,7 +3369,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class AssocFlags:
+class AssocFlags(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -3448,7 +3448,7 @@ class AttributeDefinition(Text):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.AttributeDefinition :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.AttributeDefinition :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -3461,7 +3461,7 @@ class AttributeDefinition(Text):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.AttributeDefinition :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.AttributeDefinition :
       '''                             '''
     ...
     def close (self)-> None :
@@ -3860,13 +3860,13 @@ class AttributeDefinition(Text):
     def setHeight (self, val : float)-> None :
       '''                             '''
     ...
-    def setHorizontalMode (self, val : TextHorzMode)-> None :
+    def setHorizontalMode (self, val : PyDb.TextHorzMode)-> None :
       '''                             '''
     ...
     def setInvisible (self, val : bool)-> None :
       '''                             '''
     ...
-    def setJustification (self, val : TextAlignment)-> None :
+    def setJustification (self, val : PyDb.TextAlignment)-> None :
       '''                             '''
     ...
     def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
@@ -3948,7 +3948,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setVerifiable (self, val : bool)-> None :
       '''                             '''
     ...
-    def setVerticalMode (self, val : TextVertMode)-> None :
+    def setVerticalMode (self, val : PyDb.TextVertMode)-> None :
       '''                             '''
     ...
     def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
@@ -4500,13 +4500,13 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     def setHeight (self, val : float)-> None :
       '''                             '''
     ...
-    def setHorizontalMode (self, val : TextHorzMode)-> None :
+    def setHorizontalMode (self, val : PyDb.TextHorzMode)-> None :
       '''                             '''
     ...
     def setInvisible (self, val : bool)-> None :
       '''                             '''
     ...
-    def setJustification (self, val : TextAlignment)-> None :
+    def setJustification (self, val : PyDb.TextAlignment)-> None :
       '''                             '''
     ...
     def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
@@ -4579,7 +4579,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setThickness (self, val : float)-> None :
       '''                             '''
     ...
-    def setVerticalMode (self, val : TextVertMode)-> None :
+    def setVerticalMode (self, val : PyDb.TextVertMode)-> None :
       '''                             '''
     ...
     def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
@@ -5597,7 +5597,7 @@ class BlockReference(Entity):
     def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
       '''                             '''
     ...
-    def appendAttribute (self, val : Attribute)-> PyDb.ObjectId :
+    def appendAttribute (self, val : PyDb.Attribute)-> PyDb.ObjectId :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -5629,7 +5629,7 @@ class BlockReference(Entity):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.BlockReference :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.BlockReference :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -5642,7 +5642,7 @@ class BlockReference(Entity):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.BlockReference :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.BlockReference :
       '''                             '''
     ...
     def close (self)-> None :
@@ -5710,7 +5710,7 @@ class BlockReference(Entity):
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def geomExtentsBestFit (self, val : PyGe.Matrix3d=kIdentity)-> PyDb.Extents :
+    def geomExtentsBestFit (self, val : PyGe.Matrix3d=PyGe.Matrix3d.kIdentity)-> PyDb.Extents :
       '''                             '''
     ...
     def getBlockName (self)-> str :
@@ -6085,7 +6085,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class BlockScaling:
+class BlockScaling(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -6402,7 +6402,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
 
 class BlockTableRecord(SymbolTableRecord):
-    def __init__ (self, id: ObjectId=kNull, mode: PyDb.OpenMode=kForRead)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead)-> None :
       '''                             '''
     ...
     def addAnnoScalestoBlkRefs (self, scale : bool)-> None :
@@ -7266,7 +7266,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class BoolOperType:
+class BoolOperType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -7283,7 +7283,7 @@ class BoolOperType:
       '''None'''
     ...
 
-class Cell:
+class Cell(object):
     def __init__ (self, row : int=-1, column : int=-1)-> None :
       '''                             '''
     ...
@@ -7294,7 +7294,7 @@ class Cell:
       '''None'''
     ...
 
-class CellAlignment:
+class CellAlignment(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -7329,7 +7329,7 @@ class CellAlignment:
       '''None'''
     ...
 
-class CellContentLayout:
+class CellContentLayout(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -7346,7 +7346,7 @@ class CellContentLayout:
       '''None'''
     ...
 
-class CellContentType:
+class CellContentType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -7366,7 +7366,7 @@ class CellContentType:
       '''None'''
     ...
 
-class CellEdgeMask:
+class CellEdgeMask(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -7386,7 +7386,7 @@ class CellEdgeMask:
       '''None'''
     ...
 
-class CellMargin:
+class CellMargin(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -7412,7 +7412,7 @@ class CellMargin:
       '''None'''
     ...
 
-class CellProperty:
+class CellProperty(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -7492,7 +7492,7 @@ class CellProperty:
       '''None'''
     ...
 
-class CellRange:
+class CellRange(object):
     def __init__ (self, topRow : int=-1, leftColumn : int=-1, bottomRow : int=-1, rightColumn : int=-1)-> None :
       '''                             '''
     ...
@@ -7509,7 +7509,7 @@ class CellRange:
       '''None'''
     ...
 
-class CellState:
+class CellState(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -7544,7 +7544,7 @@ class CellState:
       '''None'''
     ...
 
-class CellType:
+class CellType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -7564,7 +7564,7 @@ class CellType:
       '''None'''
     ...
 
-class CenterMarkType:
+class CenterMarkType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -7634,7 +7634,7 @@ class Circle(Curve):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.Circle :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Circle :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -7653,7 +7653,7 @@ class Circle(Curve):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.Circle :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Circle :
       '''                             '''
     ...
     def close (self)-> None :
@@ -7679,7 +7679,7 @@ class Circle(Curve):
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -8080,7 +8080,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
     def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
@@ -8181,7 +8181,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class ClipBoundaryType:
+class ClipBoundaryType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -8198,7 +8198,7 @@ class ClipBoundaryType:
       '''None'''
     ...
 
-class CollisionType:
+class CollisionType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -8212,7 +8212,7 @@ class CollisionType:
       '''None'''
     ...
 
-class Color:
+class Color(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -8268,7 +8268,7 @@ class Color:
       '''                             '''
     ...
 
-class ColorMethod:
+class ColorMethod(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -8303,7 +8303,7 @@ class ColorMethod:
       '''None'''
     ...
 
-class Core:
+class Core(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -8327,7 +8327,7 @@ class Core:
     ...
 
     @staticmethod
-    def assignGelibCurveToAcDbCurve (geCurve:PyGe.Curve3d,dbCurve:PyDb.Curve,norm:PyGe.Vector3d=kZAxis,tol:PyGe.Tol=tol)-> None :
+    def assignGelibCurveToAcDbCurve (geCurve:PyGe.Curve3d,dbCurve:PyDb.Curve,norm: PyGe.Vector3d=PyGe.Vector3d.kZAxis,tol:PyGe.Tol='tol')-> None :
       '''                             '''
     ...
     def attachPointCloudExEntity (self, path: str, pos: PyGe.Point3d, scale: float, rotation: float, db: PyDb.Database)-> PyDb.ObjectId :
@@ -8364,12 +8364,12 @@ bindXrefs( (Database)arg1, (list)arg2, (bool)arg3, (bool)arg4, (bool)arg5) -> No
     ...
 
     @staticmethod
-    def convertAcDbCurveToGelibCurve (geCurve:PyGe.Curve2d,tol:PyGe.Tol=tol)-> PyGe.Curve3d :
+    def convertAcDbCurveToGelibCurve (geCurve:PyGe.Curve2d,tol:PyGe.Tol='tol')-> PyGe.Curve3d :
       '''                             '''
     ...
 
     @staticmethod
-    def convertGelibCurveToAcDbCurve (geCurve:PyGe.Curve3d,norm:PyGe.Vector3d=kZAxis,tol:PyGe.Tol=tol)-> PyDb.Curve :
+    def convertGelibCurveToAcDbCurve (geCurve:PyGe.Curve3d,norm:PyGe.Vector3d=PyGe.Vector3d.kZAxis,tol:PyGe.Tol='tol')-> PyDb.Curve :
       '''                             '''
     ...
     def createViewByViewport (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -8479,7 +8479,7 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     ...
 
     @staticmethod
-    def entGetX (id : PyDb.ObjectId,xdata : list)-> list :
+    def entGetX (id : PyDb.ObjectId,xdata: list)-> list :
       '''                             '''
     ...
 
@@ -8919,7 +8919,7 @@ class Curve(Entity):
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -9302,7 +9302,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
     def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
@@ -10032,7 +10032,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def readDwgFile (self, fileName:str, mode:int=kForReadAndReadShare, bAllowCPConversion:bool=False, password:str=empty)-> None :
+    def readDwgFile (self, fileName: str, mode: DatabaseOpenMode=DatabaseOpenMode.kForReadAndReadShare, bAllowCPConversion:bool=False, password:str='empty')-> None :
       '''                             '''
     ...
     def reclaimMemoryFromErasedObjects (self, ids : list[PyDb.ObjectId])-> None :
@@ -10062,7 +10062,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def retainOriginalThumbnailBitmap (self)-> bool :
       '''                             '''
     ...
-    def saveAs (self, filename: str, bBakAndRename: bool = False, dwgVer: PyDb.DwgVersion = kDHL_CURRENT)-> None :
+    def saveAs (self, filename: str, bBakAndRename: bool = False, dwgVer: PyDb.DwgVersion = 'kDHL_CURRENT')-> None :
       '''                             '''
     ...
     def saveproxygraphics (self)-> int :
@@ -10119,7 +10119,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def setCannoscale (self, val : AnnotationScale)-> None :
       '''                             '''
     ...
-    def setCePlotStyleName (self, val : PlotStyleNameType, id : ObjectId)-> None :
+    def setCePlotStyleName (self, val : PyDb.PlotStyleNameType, id : PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setCecolor (self, val : Color)-> None :
@@ -10191,7 +10191,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def setDimstyle (self, val : ObjectId)-> None :
       '''                             '''
     ...
-    def setDimstyleData (self, val : DimStyleTableRecord | ObjectId)-> None :
+    def setDimstyleData (self, val : PyDb.DimStyleTableRecord | PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setDimunit (self, val : int)-> None :
@@ -10272,10 +10272,10 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def setInterfereColor (self, val : Color)-> None :
       '''                             '''
     ...
-    def setInterfereObjVisStyle (self, val : ObjectId)-> None :
+    def setInterfereObjVisStyle (self, val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setInterfereVpVisStyle (self, val : ObjectId)-> None :
+    def setInterfereVpVisStyle (self, val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setIntersectColor (self, val : int)-> None :
@@ -10844,7 +10844,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     - outputDb : PyDb.Database, ids : list[PyDb.ObjectId], basePoint : PyGe.Point3d , drc : PyDb.DuplicateRecordCloning
     '''
     ...
-    def wblockCloneObjects (self, ids:list[PyDb.ObjectId], owner:PyDb.ObjectId, idmap: PyDb.IdMapping, drc:DuplicateRecordCloning, deferXlation:bool=False)-> None :
+    def wblockCloneObjects (self, ids:list[PyDb.ObjectId], owner:PyDb.ObjectId, idmap: PyDb.IdMapping, drc: PyDb.DuplicateRecordCloning, deferXlation:bool=False)-> None :
       '''                             '''
     ...
     def worldPucsBaseOrigin (self, view : OrthographicView)-> PyGe.Point3d :
@@ -10864,6 +10864,26 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     ...
     def xrefEditEnabled (self)-> bool :
       '''                             '''
+    ...
+
+class DatabaseOpenMode(object):
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def kForReadAndAllShare (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kForReadAndReadShare (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kForReadAndWriteNoShare (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kTryForReadShare (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
     ...
 
 class DatabaseReactor(PyRx.RxObject):
@@ -11142,7 +11162,7 @@ setCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2, (str)arg3, (str)arg4
         void setTitle(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
 
-class Date:
+class Date(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -11737,7 +11757,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class DeepCloneType:
+class DeepCloneType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -12621,7 +12641,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class DictUtil:
+class DictUtil(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -13483,7 +13503,7 @@ class DimAssoc(DbObject):
       '''                             '''
     ...
 
-class DimAssocPointType:
+class DimAssocPointType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -13542,7 +13562,7 @@ class DimAssocPointType:
       '''None'''
     ...
 
-class DimInspect:
+class DimInspect(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -14464,7 +14484,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDimdli (self, val : float)-> None :
       '''                             '''
     ...
-    def setDimdsep (self, val : char)-> None :
+    def setDimdsep (self, val : int)-> None :
       '''                             '''
     ...
     def setDimexe (self, val : float)-> None :
@@ -14675,7 +14695,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
 
 class Dimension(Entity):
-    def __init__ (self, id: PyDb.ObjectId, mode:  PyDb.OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -15464,7 +15484,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class DrawLeaderOrderType:
+class DrawLeaderOrderType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -15478,7 +15498,7 @@ class DrawLeaderOrderType:
       '''None'''
     ...
 
-class DrawMLeaderOrderType:
+class DrawMLeaderOrderType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -15492,7 +15512,7 @@ class DrawMLeaderOrderType:
       '''None'''
     ...
 
-class DuplicateRecordCloning:
+class DuplicateRecordCloning(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -15518,7 +15538,7 @@ class DuplicateRecordCloning:
       '''None'''
     ...
 
-class DwgDataType:
+class DwgDataType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -15571,7 +15591,7 @@ class DwgDataType:
       '''None'''
     ...
 
-class DwgVersion:
+class DwgVersion(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -15693,7 +15713,7 @@ class DwgVersion:
       '''None'''
     ...
 
-class DxfCode:
+class DxfCode(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -16208,7 +16228,7 @@ class DxfCode:
       '''None'''
     ...
 
-class DynBlockReference:
+class DynBlockReference(object):
     def __init__ (self, val : ObjectId)-> None :
       '''                             '''
     ...
@@ -16244,7 +16264,7 @@ class DynBlockReference:
       '''                             '''
     ...
 
-class DynBlockReferenceProperty:
+class DynBlockReferenceProperty(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -16329,7 +16349,7 @@ __init__( (object)arg1) -> None :
         bool visibleInCurrentVisibilityState(class PyDbDynBlockReferenceProperty {lvalue})'''
     ...
 
-class DynUnitsType:
+class DynUnitsType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -16450,7 +16470,7 @@ class Ellipse(Curve):
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -16883,7 +16903,7 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
     def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
@@ -16990,7 +17010,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class EndCaps:
+class EndCaps(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -17454,7 +17474,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class EntityColor:
+class EntityColor(object):
     def ByBlock (self)-> PyDb.EntityColor :
       '''                             '''
     ...
@@ -17689,7 +17709,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class ErrorStatus:
+class ErrorStatus(object):
     def Ok (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -19343,7 +19363,7 @@ class EvalVariant(PyRx.RxObject):
       '''                             '''
     ...
 
-class Extents:
+class Extents(object):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -19392,7 +19412,7 @@ class Extents:
       '''                             '''
     ...
 
-class Extents2d:
+class Extents2d(object):
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -20059,7 +20079,7 @@ class Face(Entity):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.Face :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Face :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -20072,7 +20092,7 @@ class Face(Entity):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.Face :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Face :
       '''                             '''
     ...
     def close (self)-> None :
@@ -20535,7 +20555,7 @@ class FaceRecord(Vertex):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.FaceRecord :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.FaceRecord :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -20548,7 +20568,7 @@ class FaceRecord(Vertex):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.FaceRecord :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.FaceRecord :
       '''                             '''
     ...
     def close (self)-> None :
@@ -21011,7 +21031,7 @@ class Fcf(Entity):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.Fcf :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Fcf :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -21024,7 +21044,7 @@ class Fcf(Entity):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.Fcf :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Fcf :
       '''                             '''
     ...
     def close (self)-> None :
@@ -21860,7 +21880,7 @@ class Field(DbObject):
       '''                             '''
     ...
 
-class FieldCodeFlag:
+class FieldCodeFlag(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -21907,7 +21927,7 @@ class FieldCodeFlag:
       '''None'''
     ...
 
-class FieldEvalContext:
+class FieldEvalContext(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -21939,7 +21959,7 @@ class FieldEvalContext:
       '''None'''
     ...
 
-class FieldEvalOption:
+class FieldEvalOption(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -21971,7 +21991,7 @@ class FieldEvalOption:
       '''None'''
     ...
 
-class FieldEvalStatus:
+class FieldEvalStatus(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -22000,7 +22020,7 @@ class FieldEvalStatus:
       '''None'''
     ...
 
-class FieldState:
+class FieldState(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -22026,7 +22046,7 @@ class FieldState:
       '''None'''
     ...
 
-class FilerType:
+class FilerType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -22064,7 +22084,7 @@ class FilerType:
       '''None'''
     ...
 
-class FindFileHint:
+class FindFileHint(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -22114,7 +22134,7 @@ class FindFileHint:
       '''None'''
     ...
 
-class FormatOption:
+class FormatOption(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -22137,7 +22157,7 @@ class FormatOption:
       '''None'''
     ...
 
-class FullSubentPath:
+class FullSubentPath(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -22185,7 +22205,7 @@ __init__( (object)arg1, (list)arg2, (SubentId)arg3) -> None :
       '''                             '''
     ...
 
-class GeoCoordinateSystem:
+class GeoCoordinateSystem(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -22246,7 +22266,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class GeoCoordinateSystemProjectionCode:
+class GeoCoordinateSystemProjectionCode(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -22470,7 +22490,7 @@ class GeoCoordinateSystemProjectionCode:
       '''None'''
     ...
 
-class GeoCoordinateSystemType:
+class GeoCoordinateSystemType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -22490,7 +22510,7 @@ class GeoCoordinateSystemType:
       '''None'''
     ...
 
-class GeoCoordinateSystemUnit:
+class GeoCoordinateSystemUnit(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -24243,7 +24263,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class GeoScaleEstimationMethod:
+class GeoScaleEstimationMethod(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -24263,7 +24283,7 @@ class GeoScaleEstimationMethod:
       '''None'''
     ...
 
-class GeoTextAlignmentType:
+class GeoTextAlignmentType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -24280,7 +24300,7 @@ class GeoTextAlignmentType:
       '''None'''
     ...
 
-class GeoTypeOfCoordinates:
+class GeoTypeOfCoordinates(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -24300,7 +24320,7 @@ class GeoTypeOfCoordinates:
       '''None'''
     ...
 
-class GridLineStyle:
+class GridLineStyle(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -24314,7 +24334,7 @@ class GridLineStyle:
       '''None'''
     ...
 
-class GridLineType:
+class GridLineType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -24358,7 +24378,7 @@ class GridLineType:
       '''None'''
     ...
 
-class GridProperty:
+class GridProperty(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -24773,7 +24793,7 @@ class Group(DbObject):
       '''                             '''
     ...
 
-class Handle:
+class Handle(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -25660,7 +25680,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class HatchEdgeType:
+class HatchEdgeType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -25680,7 +25700,7 @@ class HatchEdgeType:
       '''None'''
     ...
 
-class HatchGradientPatternType:
+class HatchGradientPatternType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -25694,7 +25714,7 @@ class HatchGradientPatternType:
       '''None'''
     ...
 
-class HatchLoopType:
+class HatchLoopType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -25747,7 +25767,7 @@ class HatchLoopType:
       '''None'''
     ...
 
-class HatchObjectType:
+class HatchObjectType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -25761,7 +25781,7 @@ class HatchObjectType:
       '''None'''
     ...
 
-class HatchPatternType:
+class HatchPatternType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -25778,7 +25798,7 @@ class HatchPatternType:
       '''None'''
     ...
 
-class HatchStyle:
+class HatchStyle(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -25858,7 +25878,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.Helix :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Helix :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -25871,7 +25891,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.Helix :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Helix :
       '''                             '''
     ...
     def close (self)-> None :
@@ -25900,7 +25920,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def createHelix (self)-> None :
@@ -26417,7 +26437,7 @@ setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)
     def setFitTol (self, val : float)-> None :
       '''                             '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
     def setHeight (self, val : float)-> None :
@@ -26574,7 +26594,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class HelixConstrainType:
+class HelixConstrainType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -26591,7 +26611,7 @@ class HelixConstrainType:
       '''None'''
     ...
 
-class HostApplicationServices:
+class HostApplicationServices(object):
     def LayoutManager (self)-> PyAp.LayoutManager :
       '''                             '''
     ...
@@ -26653,7 +26673,7 @@ findFile( (HostApplicationServices)arg1, (str)arg2, (Database)arg3, (FindFileHin
       '''                             '''
     ...
 
-class IdMapping:
+class IdMapping(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -26696,7 +26716,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class IdPair:
+class IdPair(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -27193,7 +27213,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class ImageDisplayOpt:
+class ImageDisplayOpt(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -27213,7 +27233,7 @@ class ImageDisplayOpt:
       '''None'''
     ...
 
-class ImageUnits:
+class ImageUnits(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -27284,7 +27304,7 @@ class ImageUnits:
       '''None'''
     ...
 
-class Intersect:
+class Intersect(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -27355,7 +27375,7 @@ class JoinEntityPE(PyRx.RxObject):
       '''                             '''
     ...
 
-class JoinStyle:
+class JoinStyle(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -29312,7 +29332,7 @@ class Leader(Curve):
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -29809,7 +29829,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
     def setHasArrowHead (self, val: bool)-> None :
@@ -29972,7 +29992,7 @@ class Line(Curve):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.Line :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Line :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -29985,7 +30005,7 @@ class Line(Curve):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.Line :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Line :
       '''                             '''
     ...
     def close (self)-> None :
@@ -30011,7 +30031,7 @@ class Line(Curve):
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -30403,7 +30423,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
     def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
@@ -31356,7 +31376,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class LineSpacingStyle:
+class LineSpacingStyle(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -31370,7 +31390,7 @@ class LineSpacingStyle:
       '''None'''
     ...
 
-class LineWeight:
+class LineWeight(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -32815,7 +32835,7 @@ class MInsertBlock(BlockReference):
     def addSubentPaths (self, paths: list[PyDb.FullSubentPath])-> None :
       '''                             '''
     ...
-    def appendAttribute (self, val : Attribute)-> PyDb.ObjectId :
+    def appendAttribute (self, val : PyDb.Attribute)-> PyDb.ObjectId :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -32847,7 +32867,7 @@ class MInsertBlock(BlockReference):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.MInsertBlock :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.MInsertBlock :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -32860,7 +32880,7 @@ class MInsertBlock(BlockReference):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.MInsertBlock :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.MInsertBlock :
       '''                             '''
     ...
     def close (self)-> None :
@@ -32934,7 +32954,7 @@ class MInsertBlock(BlockReference):
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def geomExtentsBestFit (self, val : PyGe.Matrix3d=kIdentity)-> PyDb.Extents :
+    def geomExtentsBestFit (self, val : PyGe.Matrix3d=PyGe.Matrix3d.kIdentity)-> PyDb.Extents :
       '''                             '''
     ...
     def getBlockName (self)-> str :
@@ -34534,7 +34554,7 @@ textAttachmentType( (MLeader)arg1, (MLeaderLeaderDirectionType)arg2) -> MLeaderT
       '''                             '''
     ...
 
-class MLeaderBlockConnectionType:
+class MLeaderBlockConnectionType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -34548,7 +34568,7 @@ class MLeaderBlockConnectionType:
       '''None'''
     ...
 
-class MLeaderContentType:
+class MLeaderContentType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -34568,7 +34588,7 @@ class MLeaderContentType:
       '''None'''
     ...
 
-class MLeaderGsMarkType:
+class MLeaderGsMarkType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -34603,7 +34623,7 @@ class MLeaderGsMarkType:
       '''None'''
     ...
 
-class MLeaderLeaderDirectionType:
+class MLeaderLeaderDirectionType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -34626,7 +34646,7 @@ class MLeaderLeaderDirectionType:
       '''None'''
     ...
 
-class MLeaderLeaderType:
+class MLeaderLeaderType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -34643,7 +34663,7 @@ class MLeaderLeaderType:
       '''None'''
     ...
 
-class MLeaderMoveType:
+class MLeaderMoveType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -34660,7 +34680,7 @@ class MLeaderMoveType:
       '''None'''
     ...
 
-class MLeaderPropertyOverrideType:
+class MLeaderPropertyOverrideType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -34764,7 +34784,7 @@ class MLeaderPropertyOverrideType:
       '''None'''
     ...
 
-class MLeaderSegmentAngleType:
+class MLeaderSegmentAngleType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -35605,7 +35625,7 @@ setDrawLeaderOrderType( (MLeaderStyle)arg1, (DrawLeaderOrderType)arg2) -> None :
       '''                             '''
     ...
 
-class MLeaderTextAlignmentType:
+class MLeaderTextAlignmentType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -35622,7 +35642,7 @@ class MLeaderTextAlignmentType:
       '''None'''
     ...
 
-class MLeaderTextAngleType:
+class MLeaderTextAngleType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -35639,7 +35659,7 @@ class MLeaderTextAngleType:
       '''None'''
     ...
 
-class MLeaderTextAttachmentDirection:
+class MLeaderTextAttachmentDirection(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -35653,7 +35673,7 @@ class MLeaderTextAttachmentDirection:
       '''None'''
     ...
 
-class MLeaderTextAttachmentType:
+class MLeaderTextAttachmentType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -36357,7 +36377,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class MPolygonloopDir:
+class MPolygonloopDir(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -37019,7 +37039,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class MTextAttachmentPoint:
+class MTextAttachmentPoint(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -37099,7 +37119,7 @@ class MTextAttachmentPoint:
       '''None'''
     ...
 
-class MTextColumnType:
+class MTextColumnType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -37116,7 +37136,7 @@ class MTextColumnType:
       '''None'''
     ...
 
-class MTextFlowDirection:
+class MTextFlowDirection(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -37139,7 +37159,7 @@ class MTextFlowDirection:
       '''None'''
     ...
 
-class MTextFragmentType:
+class MTextFragmentType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -37219,7 +37239,7 @@ class MTextFragmentType:
       '''None'''
     ...
 
-class MeasurementValue:
+class MeasurementValue(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -37233,7 +37253,7 @@ class MeasurementValue:
       '''None'''
     ...
 
-class MergeCellStyleOption:
+class MergeCellStyleOption(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -37783,7 +37803,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class MlineJustification:
+class MlineJustification(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -39043,7 +39063,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class ObjectId:
+class ObjectId(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -39109,7 +39129,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
-class OpenMode:
+class OpenMode(object):
     def ForNotify (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -39984,7 +40004,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class OrthographicView:
+class OrthographicView(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -40013,7 +40033,7 @@ class OrthographicView:
       '''None'''
     ...
 
-class OsnapMask:
+class OsnapMask(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -40078,7 +40098,7 @@ class OsnapMask:
       '''None'''
     ...
 
-class OsnapMode:
+class OsnapMode(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -40201,7 +40221,7 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
         void setPoint(class PyDbOsnapPointRef {lvalue},class AcGePoint3d)'''
     ...
 
-class OsnapType:
+class OsnapType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -40964,7 +40984,7 @@ class PdfReference(UnderlayReference):
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setClipBoundary (self, pnts : List[PyGe.Point2d])-> None :
+    def setClipBoundary (self, pnts : list[PyGe.Point2d])-> None :
       '''                             '''
     ...
     def setClipInverted (self, val : bool)-> None :
@@ -41130,7 +41150,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class Planarity:
+class Planarity(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -41703,7 +41723,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class PlotPaperUnits:
+class PlotPaperUnits(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -41720,7 +41740,7 @@ class PlotPaperUnits:
       '''None'''
     ...
 
-class PlotRotation:
+class PlotRotation(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -42170,7 +42190,7 @@ class PlotSettings(DbObject):
       '''                             '''
     ...
 
-class PlotSettingsValidator:
+class PlotSettingsValidator(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -42324,7 +42344,7 @@ setPlotWindowArea( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (Extents2d)a
         void setZoomToPaperOnUpdate(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},bool)'''
     ...
 
-class PlotStyleNameType:
+class PlotStyleNameType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -42344,7 +42364,7 @@ class PlotStyleNameType:
       '''None'''
     ...
 
-class PlotType:
+class PlotType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -42423,7 +42443,7 @@ class Point(Entity):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.Point :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Point :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -42436,7 +42456,7 @@ class Point(Entity):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.Point :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Point :
       '''                             '''
     ...
     def close (self)-> None :
@@ -43698,7 +43718,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class PointCloudClassificationColorRamp:
+class PointCloudClassificationColorRamp(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -44147,7 +44167,7 @@ class PointCloudColorMap(DbObject):
       '''                             '''
     ...
 
-class PointCloudColorRamp:
+class PointCloudColorRamp(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -44219,7 +44239,7 @@ __init__( (object)arg1) -> None :
         bool visibility(class PyDbPointCloudColorRamp {lvalue},int)'''
     ...
 
-class PointCloudCrop:
+class PointCloudCrop(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -44315,7 +44335,7 @@ __init__( (object)arg1) -> None :
         enum AcDbPointCloudCrop::CropType type(class PyDbPointCloudCrop {lvalue})'''
     ...
 
-class PointCloudCropType:
+class PointCloudCropType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -44680,7 +44700,7 @@ class PointCloudDefEx(DbObject):
       '''                             '''
     ...
 
-class PointCloudDispOptionOutOfRange:
+class PointCloudDispOptionOutOfRange(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -45489,7 +45509,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class PointCloudOSnapMode:
+class PointCloudOSnapMode(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -45521,7 +45541,7 @@ class PointCloudOSnapMode:
       '''None'''
     ...
 
-class PointCloudProperty:
+class PointCloudProperty(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -45547,7 +45567,7 @@ class PointCloudProperty:
       '''None'''
     ...
 
-class PointCloudPropertyState:
+class PointCloudPropertyState(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -45564,7 +45584,7 @@ class PointCloudPropertyState:
       '''None'''
     ...
 
-class PointCloudStylizationType:
+class PointCloudStylizationType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -45633,7 +45653,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class Poly2dType:
+class Poly2dType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -45653,7 +45673,7 @@ class Poly2dType:
       '''None'''
     ...
 
-class Poly3dType:
+class Poly3dType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -45723,7 +45743,7 @@ class PolyFaceMeshVertex(Vertex):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.PolyFaceMeshVertex :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.PolyFaceMeshVertex :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -45736,7 +45756,7 @@ class PolyFaceMeshVertex(Vertex):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.PolyFaceMeshVertex :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.PolyFaceMeshVertex :
       '''                             '''
     ...
     def close (self)-> None :
@@ -46190,7 +46210,7 @@ class PolygonMeshVertex(Vertex):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.PolygonMeshVertex :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.PolygonMeshVertex :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -46203,7 +46223,7 @@ class PolygonMeshVertex(Vertex):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.PolygonMeshVertex :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.PolygonMeshVertex :
       '''                             '''
     ...
     def close (self)-> None :
@@ -46666,7 +46686,7 @@ class Polyline(Curve):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.Polyline :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Polyline :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -46679,7 +46699,7 @@ class Polyline(Curve):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.Polyline :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Polyline :
       '''                             '''
     ...
     def close (self)-> None :
@@ -46705,7 +46725,7 @@ class Polyline(Curve):
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -47175,7 +47195,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
     def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
@@ -47403,7 +47423,7 @@ class Polyline2d(Curve):
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -47848,7 +47868,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
     def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
@@ -48042,7 +48062,7 @@ class Polyline3d(Curve):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.Polyline3d :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Polyline3d :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -48055,7 +48075,7 @@ class Polyline3d(Curve):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.Polyline3d :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Polyline3d :
       '''                             '''
     ...
     def close (self)-> None :
@@ -48084,7 +48104,7 @@ class Polyline3d(Curve):
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -48499,7 +48519,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
     def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
@@ -48661,7 +48681,7 @@ class Polyline3dVertex(Vertex):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.Polyline3dVertex :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Polyline3dVertex :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -48674,7 +48694,7 @@ class Polyline3dVertex(Vertex):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.Polyline3dVertex :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Polyline3dVertex :
       '''                             '''
     ...
     def close (self)-> None :
@@ -53116,7 +53136,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class RemapFileContext:
+class RemapFileContext(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -53136,7 +53156,7 @@ class RemapFileContext:
       '''None'''
     ...
 
-class ReservedStringEnumType:
+class ReservedStringEnumType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -53222,7 +53242,7 @@ class ReservedStringEnumType:
       '''None'''
     ...
 
-class RevolveOptions:
+class RevolveOptions(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -53838,7 +53858,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class RotatedDimType:
+class RotatedDimType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -54710,7 +54730,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class RotationAngle:
+class RotationAngle(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -54733,7 +54753,7 @@ class RotationAngle:
       '''None'''
     ...
 
-class RowType:
+class RowType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -54756,7 +54776,7 @@ class RowType:
       '''None'''
     ...
 
-class SegType:
+class SegType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -55235,7 +55255,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class ShadePlotResLevel:
+class ShadePlotResLevel(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -55261,7 +55281,7 @@ class ShadePlotResLevel:
       '''None'''
     ...
 
-class ShadePlotType:
+class ShadePlotType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -55287,7 +55307,7 @@ class ShadePlotType:
       '''None'''
     ...
 
-class SnoopDwgFiler:
+class SnoopDwgFiler(object):
     def __init__ (self, filerType: PyDb.FilerType)-> None :
       '''                             '''
     ...
@@ -56425,7 +56445,7 @@ class SpatialFilter(DbObject):
     def ownerId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryBounds (self, ref : PyDbBlockReference=None)-> PyDb.Extents :
+    def queryBounds (self, ref : PyDb.BlockReference=None)-> PyDb.Extents :
       '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -56458,7 +56478,7 @@ class SpatialFilter(DbObject):
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setDefinition (self, pnt2d: List[PyGe.Point2d], normal: PyGe.Vector3d, elev: float, frontclip: float, backclip: float, enabled: bool)-> None :
+    def setDefinition (self, pnt2d: list[PyGe.Point2d], normal: PyGe.Vector3d, elev: float, frontclip: float, backclip: float, enabled: bool)-> None :
       '''                             '''
     ...
 
@@ -56647,7 +56667,7 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)ar
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.Spline :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Spline :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -56660,7 +56680,7 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)ar
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.Spline :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Spline :
       '''                             '''
     ...
     def close (self)-> None :
@@ -56686,7 +56706,7 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)ar
     ...
 
     @staticmethod
-    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,tol: PyGe.Tol = 'default')-> PyDb.Curve :
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
@@ -57185,7 +57205,7 @@ setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)
     def setFitTol (self, val : float)-> None :
       '''                             '''
     ...
-    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = kZAxis, tol: PyGe.Tol = 'default')-> None :
+    def setFromAcGeCurve (self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis, tol: PyGe.Tol = 'default')-> None :
       '''                             '''
     ...
     def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
@@ -57303,7 +57323,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class SplineType:
+class SplineType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -57317,7 +57337,7 @@ class SplineType:
       '''None'''
     ...
 
-class StandardScaleType:
+class StandardScaleType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -57430,7 +57450,7 @@ class StandardScaleType:
       '''None'''
     ...
 
-class StdScaleType:
+class StdScaleType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -57544,7 +57564,7 @@ class StdScaleType:
     ...
 
 class SubDMesh(Entity):
-    def __init__ (self, id: PyDb.ObjectId, mode:  PyDb.OpenMode=kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode:  PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
       '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
@@ -57585,7 +57605,7 @@ class SubDMesh(Entity):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.SubDMesh :
+    def cast (otherObject:  PyRx.RxObject)-> PyDb.SubDMesh :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -57598,7 +57618,7 @@ class SubDMesh(Entity):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.SubDMesh :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.SubDMesh :
       '''                             '''
     ...
     def close (self)-> None :
@@ -58281,7 +58301,7 @@ subdRefine( (SubDMesh)arg1, (list)arg2) -> None :
       '''                             '''
     ...
 
-class SubentId:
+class SubentId(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -58334,7 +58354,7 @@ __init__( (object)arg1, (RxClass)arg2, (int)arg3) -> None :
       '''                             '''
     ...
 
-class SubentType:
+class SubentType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -58922,7 +58942,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class SurfaceEdgeExtensionType:
+class SurfaceEdgeExtensionType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -58936,7 +58956,7 @@ class SurfaceEdgeExtensionType:
       '''None'''
     ...
 
-class SurfaceWireframeType:
+class SurfaceWireframeType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -58950,7 +58970,7 @@ class SurfaceWireframeType:
       '''None'''
     ...
 
-class SweepAlignOption:
+class SweepAlignOption(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -58970,7 +58990,7 @@ class SweepAlignOption:
       '''None'''
     ...
 
-class SweepMiterOption:
+class SweepMiterOption(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -58993,7 +59013,7 @@ class SweepMiterOption:
       '''None'''
     ...
 
-class SweepOptions:
+class SweepOptions(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -59784,7 +59804,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class SymUtilServices:
+class SymUtilServices(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -60705,7 +60725,7 @@ alignment( (Table)arg1, (int)arg2, (int)arg3) -> CellAlignment :
     C++ signature :
         enum AcDb::CellAlignment alignment(class PyDbTable {lvalue},int,int)'''
     ...
-    def appendAttribute (self, val : Attribute)-> PyDb.ObjectId :
+    def appendAttribute (self, val : PyDb.Attribute)-> PyDb.ObjectId :
       '''                             '''
     ...
     def assertNotifyEnabled (self)-> None :
@@ -61021,7 +61041,7 @@ fieldId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     def generateLayout (self)-> None :
       '''                             '''
     ...
-    def geomExtentsBestFit (self, val : PyGe.Matrix3d=kIdentity)-> PyDb.Extents :
+    def geomExtentsBestFit (self, val : PyGe.Matrix3d=PyGe.Matrix3d.kIdentity)-> PyDb.Extents :
       '''                             '''
     ...
     def getBlockAttributeValue (self, *args, **kwargs)-> str :
@@ -62178,7 +62198,7 @@ updateDataLink( (Table)arg1, (int)arg2, (int)arg3, (UpdateDirection)arg4, (Updat
       '''                             '''
     ...
 
-class TableBreakFlowDirection:
+class TableBreakFlowDirection(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -62195,7 +62215,7 @@ class TableBreakFlowDirection:
       '''None'''
     ...
 
-class TableBreakOption:
+class TableBreakOption(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -62221,7 +62241,7 @@ class TableBreakOption:
       '''None'''
     ...
 
-class TableFlowDirection:
+class TableFlowDirection(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -62235,7 +62255,7 @@ class TableFlowDirection:
       '''None'''
     ...
 
-class TableHitItem:
+class TableHitItem(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -62258,7 +62278,7 @@ class TableHitItem:
       '''None'''
     ...
 
-class TableIteratorOption:
+class TableIteratorOption(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -63167,7 +63187,7 @@ class Text(Entity):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.Text :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Text :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -63180,7 +63200,7 @@ class Text(Entity):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.Text :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Text :
       '''                             '''
     ...
     def close (self)-> None :
@@ -63543,10 +63563,10 @@ class Text(Entity):
     def setHeight (self, val : float)-> None :
       '''                             '''
     ...
-    def setHorizontalMode (self, val : TextHorzMode)-> None :
+    def setHorizontalMode (self, val : PyDb.TextHorzMode)-> None :
       '''                             '''
     ...
-    def setJustification (self, val : TextAlignment)-> None :
+    def setJustification (self, val : PyDb.TextAlignment)-> None :
       '''                             '''
     ...
     def setLayer (self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)-> None :
@@ -63610,7 +63630,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setThickness (self, val : float)-> None :
       '''                             '''
     ...
-    def setVerticalMode (self, val : TextVertMode)-> None :
+    def setVerticalMode (self, val : PyDb.TextVertMode)-> None :
       '''                             '''
     ...
     def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
@@ -63677,7 +63697,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class TextAlignment:
+class TextAlignment(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -63730,7 +63750,7 @@ class TextAlignment:
       '''None'''
     ...
 
-class TextHorzMode:
+class TextHorzMode(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -64445,7 +64465,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
 
-class TimeZone:
+class TimeZone(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -64826,7 +64846,7 @@ class TransactionManager(PyRx.RxObject):
       '''                             '''
     ...
 
-class Transparency:
+class Transparency(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -64874,7 +64894,7 @@ __init__( (object)arg1, (float)arg2) -> None :
       '''                             '''
     ...
 
-class TransparencyMethod:
+class TransparencyMethod(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -65840,7 +65860,7 @@ class UnderlayDefinition(DbObject):
       '''                             '''
     ...
 
-class UnderlayLayer:
+class UnderlayLayer(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -66277,7 +66297,7 @@ class UnderlayReference(Entity):
     def setCastShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setClipBoundary (self, pnts : List[PyGe.Point2d])-> None :
+    def setClipBoundary (self, pnts : list[PyGe.Point2d])-> None :
       '''                             '''
     ...
     def setClipInverted (self, val : bool)-> None :
@@ -66443,7 +66463,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class UnitsValue:
+class UnitsValue(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -66529,7 +66549,7 @@ class UnitsValue:
       '''None'''
     ...
 
-class UpdateDirection:
+class UpdateDirection(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -66543,7 +66563,7 @@ class UpdateDirection:
       '''None'''
     ...
 
-class UpdateOption:
+class UpdateOption(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -66634,7 +66654,7 @@ class Vertex(Entity):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.Vertex :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Vertex :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -66647,7 +66667,7 @@ class Vertex(Entity):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.Vertex :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Vertex :
       '''                             '''
     ...
     def close (self)-> None :
@@ -67098,7 +67118,7 @@ class Vertex2d(Vertex):
     ...
 
     @staticmethod
-    def cast (otherObject: RxObject)-> PyDb.Vertex2d :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Vertex2d :
       '''                             '''
     ...
     def castShadows (self)-> bool :
@@ -67111,7 +67131,7 @@ class Vertex2d(Vertex):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: RxObject)-> PyDb.Vertex2d :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Vertex2d :
       '''                             '''
     ...
     def close (self)-> None :
@@ -67554,7 +67574,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
-class Vertex2dType:
+class Vertex2dType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -68606,7 +68626,7 @@ class Viewport(Entity):
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def freezeLayersInViewport (self, ids : List[PyDb.ObjectId])-> None :
+    def freezeLayersInViewport (self, ids : list[PyDb.ObjectId])-> None :
       '''                             '''
     ...
     def frontClipDistance (self)-> float :
@@ -69344,7 +69364,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def thawAllLayersInViewport (self)-> None :
       '''                             '''
     ...
-    def thawLayersInViewport (self, ids : List[PyDb.ObjectId])-> None :
+    def thawLayersInViewport (self, ids : list[PyDb.ObjectId])-> None :
       '''                             '''
     ...
     def transformBy (self, matrix3d: PyGe.Matrix3d)-> None :
@@ -70375,7 +70395,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
       '''                             '''
     ...
 
-class Visibility:
+class Visibility(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -70389,7 +70409,7 @@ class Visibility:
       '''None'''
     ...
 
-class VpFreezeOps:
+class VpFreezeOps(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -70406,7 +70426,7 @@ class VpFreezeOps:
       '''None'''
     ...
 
-class VpShadePlotType:
+class VpShadePlotType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -71307,7 +71327,7 @@ class Xrecord(DbObject):
       '''                             '''
     ...
 
-class XrefObjectId:
+class XrefObjectId(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -71374,7 +71394,7 @@ __init__( (object)arg1) -> None :
         void setXrefId(class PyDbXrefObjectId {lvalue},class PyDbObjectId {lvalue},class PyDbHandle)'''
     ...
 
-class XrefStatus:
+class XrefStatus(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...

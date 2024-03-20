@@ -8,7 +8,7 @@ import PyEd
 import PyPl
 from typing import overload
 
-class LispType:
+class LispType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -70,7 +70,7 @@ class LispType:
       '''None'''
     ...
 
-class Ordering:
+class Ordering(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -229,7 +229,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class RxObject:
+class RxObject(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -272,7 +272,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class stderr:
+class stderr(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -297,7 +297,7 @@ __init__( (object)arg1) -> object :
         void write(class py_redirector<2> {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
 
-class stdout:
+class stdout(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 

@@ -8,7 +8,7 @@ import PyEd
 import PyPl
 from typing import overload
 
-class Core:
+class Core(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -22,7 +22,7 @@ class Core:
       '''                             '''
     ...
 
-class GraphicsKernel:
+class GraphicsKernel(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -46,7 +46,7 @@ This class cannot be instantiated from Python'''
         bool delRef(class PyGsGraphicsKernel {lvalue})'''
     ...
 
-class GsManager:
+class GsManager(object):
     def __init__ (self)-> None :
       '''                             '''
     ...
@@ -56,7 +56,7 @@ class GsManager:
       '''                             '''
     ...
 
-class GsView:
+class GsView(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -73,7 +73,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class KernelDescriptor:
+class KernelDescriptor(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''

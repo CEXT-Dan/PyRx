@@ -70,8 +70,8 @@ void makePyDbSplineWrapper()
         .def("rebuild", &PyDbSpline::rebuild)
         .def("className", &PyDbSpline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbSpline::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbSpline::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbSpline::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbSpline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbSpline::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -558,8 +558,8 @@ void makePyDbHelixWrapper()
         .def("reverseCurve", &PyDbHelix::reverseCurve, DS.ARGS())
         .def("className", &PyDbHelix::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbHelix::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbHelix::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbHelix::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbHelix::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbHelix::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 
     enum_<AcDbHelix::ConstrainType>("HelixConstrainType")

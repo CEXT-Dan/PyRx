@@ -8,7 +8,7 @@ import PyEd
 import PyPl
 from typing import overload
 
-class AcGiArcType:
+class AcGiArcType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -25,7 +25,7 @@ class AcGiArcType:
       '''None'''
     ...
 
-class AcGiFillType:
+class AcGiFillType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -39,7 +39,7 @@ class AcGiFillType:
       '''None'''
     ...
 
-class AcGiOrientationTransformBehavior:
+class AcGiOrientationTransformBehavior(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -56,7 +56,7 @@ class AcGiOrientationTransformBehavior:
       '''None'''
     ...
 
-class AcGiOrientationType:
+class AcGiOrientationType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -73,7 +73,7 @@ class AcGiOrientationType:
       '''None'''
     ...
 
-class AcGiPositionTransformBehavior:
+class AcGiPositionTransformBehavior(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -96,7 +96,7 @@ class AcGiPositionTransformBehavior:
       '''None'''
     ...
 
-class AcGiRegenType:
+class AcGiRegenType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -122,7 +122,7 @@ class AcGiRegenType:
       '''None'''
     ...
 
-class AcGiScaleTransformBehavior:
+class AcGiScaleTransformBehavior(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -145,7 +145,7 @@ class AcGiScaleTransformBehavior:
       '''None'''
     ...
 
-class AcGiTransientDrawingMode:
+class AcGiTransientDrawingMode(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -174,7 +174,7 @@ class AcGiTransientDrawingMode:
       '''None'''
     ...
 
-class AcGiVisibility:
+class AcGiVisibility(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -246,7 +246,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
-class DrawFlags:
+class DrawFlags(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -881,7 +881,7 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
       '''                             '''
     ...
 
-class GiAttributesFlags:
+class GiAttributesFlags(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -943,7 +943,7 @@ class GiAttributesFlags:
       '''None'''
     ...
 
-class GiDrawableType:
+class GiDrawableType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -990,7 +990,7 @@ class GiDrawableType:
       '''None'''
     ...
 
-class GiGraphicsKernel:
+class GiGraphicsKernel(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -1008,7 +1008,7 @@ This class cannot be instantiated from Python'''
         class PyGiKernelDescriptor getDescriptor(class PyGiGraphicsKernel {lvalue})'''
     ...
 
-class GiKernelDescriptor:
+class GiKernelDescriptor(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -1020,7 +1020,7 @@ This class cannot be instantiated from Python'''
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
 
-class SelectionFlags:
+class SelectionFlags(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -1034,7 +1034,7 @@ class SelectionFlags:
       '''None'''
     ...
 
-class ShadowFlags:
+class ShadowFlags(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -1307,7 +1307,7 @@ setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3
         class PyDbObjectId visualStyle(class PyGiSubEntityTraits {lvalue})'''
     ...
 
-class TransientManager:
+class TransientManager(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -1369,7 +1369,7 @@ class TransientManager:
         void updateTransient(class PyGiTransientManager {lvalue},class PyGiDrawable {lvalue},class boost::python::list)'''
     ...
 
-class TransparencyMode:
+class TransparencyMode(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...

@@ -51,10 +51,15 @@ void makePyDbCurveWrapper()
         .def("getAcGeCurve", &PyDbCurve::getAcGeCurve2, DS.ARGS({ "tol: PyGe.Tol = 'default'" }))
         .def("setFromAcGeCurve", &PyDbCurve::setFromAcGeCurve1)
         .def("setFromAcGeCurve", &PyDbCurve::setFromAcGeCurve2)
-        .def("setFromAcGeCurve", &PyDbCurve::setFromAcGeCurve3, DS.ARGS({ "curve: PyGe.Curve3d","normal: PyGe.Vector3d = kZAxis","tol: PyGe.Tol = 'default'" }))
+        .def("setFromAcGeCurve", &PyDbCurve::setFromAcGeCurve3, 
+
+            DS.ARGS({ "curve: PyGe.Curve3d","normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis","tol: PyGe.Tol = 'default'" }))
+
         .def("createFromAcGeCurve", &PyDbCurve::createFromAcGeCurve1)
         .def("createFromAcGeCurve", &PyDbCurve::createFromAcGeCurve2)
-        .def("createFromAcGeCurve", &PyDbCurve::createFromAcGeCurve3, DS.SARGS({ "curve: PyGe.Curve3d","normal: PyGe.Vector3d = kZAxis","tol: PyGe.Tol = 'default'" })).staticmethod("createFromAcGeCurve")
+        .def("createFromAcGeCurve", &PyDbCurve::createFromAcGeCurve3, 
+            DS.SARGS({ "curve: PyGe.Curve3d","normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis","tol: PyGe.Tol = 'default'" })).staticmethod("createFromAcGeCurve")
+
         .def("className", &PyDbCurve::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbCurve::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbCurve::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
