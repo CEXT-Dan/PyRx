@@ -24742,7 +24742,7 @@ class Group:
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transfer (self, fromIndex: int, valtoIndex int, numItems: int)-> None :
+    def transfer (self, fromIndex: int, valtoIndex: int, numItems: int)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
