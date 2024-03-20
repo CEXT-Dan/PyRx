@@ -1134,7 +1134,7 @@ setFilters( (LayerFilterManager)arg1, (LayerFilter)arg2, (LayerFilter)arg3) -> N
         void setFilters(class PyLayerFilterManager {lvalue},class PyLyLayerFilter {lvalue},class PyLyLayerFilter {lvalue})'''
     ...
 
-class LayerGroup(PyAp.LayerFilter):
+class LayerGroup(LayerFilter):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 

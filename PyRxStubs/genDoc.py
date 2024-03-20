@@ -181,7 +181,10 @@ def generate_pyi(moduleName, module):
                 basesname = ''
                 objbases = obj.__bases__
                 if len(objbases):
-                    basesname = "{}.{}".format(objbases[0].__module__,objbases[0].__name__)
+                    if objbases[0].__module__ == module.__name__:#no circular reference
+                        basesname = "{}".format(objbases[0].__name__)
+                    else:
+                        basesname = "{}.{}".format(objbases[0].__module__,objbases[0].__name__)
                     if 'Boost' in basesname:
                         basesname = ''
                         

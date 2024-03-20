@@ -90,7 +90,7 @@ class Ordering:
       '''None'''
     ...
 
-class Overrule(PyRx.RxObject):
+class Overrule(RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -171,7 +171,7 @@ This class cannot be instantiated from Python'''
         void setIsOverruling(bool)'''
     ...
 
-class RxClass(PyRx.RxObject):
+class RxClass(RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
 This class cannot be instantiated from Python'''
