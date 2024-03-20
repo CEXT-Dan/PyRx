@@ -26,7 +26,7 @@ void makeDbCoreWrapper()
         .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve1)
         .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve2)
         .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve3,
-            DS.SARGS({ "geCurve:PyGe.Curve3d","dbCurve:PyDb.Curve","norm:PyGe.Vector3d=kZAxis","tol:PyGe.Tol=tol" })).staticmethod("assignGelibCurveToAcDbCurve")
+            DS.SARGS({ "geCurve:PyGe.Curve3d","dbCurve:PyDb.Curve","norm: PyGe.Vector3d=PyGe.Vector3d.kZAxis","tol:PyGe.Tol='tol'" })).staticmethod("assignGelibCurveToAcDbCurve")
 
         .def("attachXref", &DbCore::attachXref).staticmethod("attachXref")
         .def("bindXrefs", &DbCore::bindXrefs1)
@@ -34,12 +34,12 @@ void makeDbCoreWrapper()
         .def("clearSetupForLayouts", &DbCore::clearSetupForLayouts).staticmethod("clearSetupForLayouts")
         .def("convertAcDbCurveToGelibCurve", &DbCore::convertAcDbCurveToGelibCurve1)
         .def("convertAcDbCurveToGelibCurve", &DbCore::convertAcDbCurveToGelibCurve2,
-            DS.SARGS({ "geCurve:PyGe.Curve2d","tol:PyGe.Tol=tol" })).staticmethod("convertAcDbCurveToGelibCurve")
+            DS.SARGS({ "geCurve:PyGe.Curve2d","tol:PyGe.Tol='tol'" })).staticmethod("convertAcDbCurveToGelibCurve")
 
         .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve1)
         .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve2)
         .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve3,
-            DS.SARGS({ "geCurve:PyGe.Curve3d","norm:PyGe.Vector3d=kZAxis","tol:PyGe.Tol=tol" })).staticmethod("convertGelibCurveToAcDbCurve")
+            DS.SARGS({ "geCurve:PyGe.Curve3d","norm:PyGe.Vector3d=PyGe.Vector3d.kZAxis","tol:PyGe.Tol='tol'" })).staticmethod("convertGelibCurveToAcDbCurve")
 
         .def("createViewByViewport", &DbCore::createViewByViewport).staticmethod("createViewByViewport")
         .def("canonicalToSystemRange", &DbCore::canonicalToSystemRange).staticmethod("canonicalToSystemRange")
@@ -59,7 +59,7 @@ void makeDbCoreWrapper()
         .def("dxfOutAsR12", &DbCore::dxfOutAsR12).staticmethod("dxfOutAsR12")
         .def("entGet", &DbCore::entGet, DS.SARGS({ "id : PyDb.ObjectId" })).staticmethod("entGet")
         .def("entGetX", &DbCore::entGetX1)
-        .def("entGetX", &DbCore::entGetX2, DS.SARGS({ "id : PyDb.ObjectId","xdata : list" })).staticmethod("entGetX")
+        .def("entGetX", &DbCore::entGetX2, DS.SARGS({ "id : PyDb.ObjectId","xdata: list" })).staticmethod("entGetX")
         .def("entDel", &DbCore::entDel, DS.SARGS({ "id : PyDb.ObjectId" })).staticmethod("entDel")
         .def("entLast", &DbCore::entLast, DS.SARGS()).staticmethod("entLast")
         .def("entMod", &DbCore::entMod, DS.SARGS({ "resultBuffer : list" })).staticmethod("entMod")

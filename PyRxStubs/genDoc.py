@@ -191,7 +191,7 @@ def generate_pyi(moduleName, module):
                 if len(basesname):
                     f.write(f'class {name}({basesname}):\n')
                 else:
-                    f.write(f'class {name}:\n')
+                    f.write(f'class {name}(object):\n')
                 
 
                 for func_name, func in inspect.getmembers(obj):

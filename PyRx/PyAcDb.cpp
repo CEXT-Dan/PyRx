@@ -1031,6 +1031,13 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("kDrcUnmangleName", AcDb::DuplicateRecordCloning::kDrcUnmangleName)
         .export_values()
         ;
+    enum_<AcDbDatabase::OpenMode>("DatabaseOpenMode")
+        .value("kForReadAndReadShare", AcDbDatabase::OpenMode::kForReadAndReadShare)
+        .value("kForReadAndWriteNoShare", AcDbDatabase::OpenMode::kForReadAndWriteNoShare)
+        .value("kForReadAndAllShare", AcDbDatabase::OpenMode::kForReadAndAllShare)
+        .value("kTryForReadShare", AcDbDatabase::OpenMode::kTryForReadShare)
+        .export_values()
+        ;
     enum_<AcDb::DeepCloneType>("DeepCloneType")
         .value("kDcCopy", AcDb::DeepCloneType::kDcCopy)
         .value("kDcExplode", AcDb::DeepCloneType::kDcExplode)

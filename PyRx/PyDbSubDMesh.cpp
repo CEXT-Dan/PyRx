@@ -14,7 +14,7 @@ void makePyDbSubDMeshWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode:  PyDb.OpenMode=kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode:  PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
 
         .def("setSubDMesh", &PyDbSubDMesh::setSubDMesh)
         .def("setSphere", &PyDbSubDMesh::setSphere)
@@ -77,8 +77,8 @@ void makePyDbSubDMeshWrapper()
 
         .def("className", &PyDbSubDMesh::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbSubDMesh::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbSubDMesh::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbSubDMesh::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbSubDMesh::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbSubDMesh::cast, DS.SARGS({ "otherObject:  PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 

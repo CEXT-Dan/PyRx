@@ -55,20 +55,20 @@ void makePyDbTextWrapper()
         .def("isMirroredInY", &PyDbText::isMirroredInY, DS.ARGS())
         .def("mirrorInY", &PyDbText::mirrorInY, DS.ARGS({ "val : bool" }))
         .def("horizontalMode", &PyDbText::horizontalMode, DS.ARGS())
-        .def("setHorizontalMode", &PyDbText::setHorizontalMode, DS.ARGS({ "val : TextHorzMode" }))
+        .def("setHorizontalMode", &PyDbText::setHorizontalMode, DS.ARGS({ "val : PyDb.TextHorzMode" }))
         .def("verticalMode", &PyDbText::verticalMode, DS.ARGS())
-        .def("setVerticalMode", &PyDbText::setVerticalMode, DS.ARGS({ "val : TextVertMode" }))
+        .def("setVerticalMode", &PyDbText::setVerticalMode, DS.ARGS({ "val : PyDb.TextVertMode" }))
         .def("correctSpelling", &PyDbText::correctSpelling, DS.ARGS())
         .def("adjustAlignment", &PyDbText::adjustAlignment, DS.ARGS({ "val : Database" }))
         .def("convertFieldToText", &PyDbText::convertFieldToText, DS.ARGS())
         .def("hitTest", &PyDbText::hitTest, DS.ARGS({ "val : PyGe.Point3d" }))
         .def("getBoundingPoints", &PyDbText::getBoundingPoints, DS.ARGS())
         .def("justification", &PyDbText::justification, DS.ARGS())
-        .def("setJustification", &PyDbText::setJustification, DS.ARGS({ "val : TextAlignment" }))
+        .def("setJustification", &PyDbText::setJustification, DS.ARGS({ "val : PyDb.TextAlignment" }))
         .def("className", &PyDbText::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbText::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbText::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbText::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbText::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbText::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 
     enum_<AcDbText::AcTextAlignment>("TextAlignment")
@@ -406,8 +406,8 @@ void makePyDbAttributeDefinitionWrapper()
         .def("setMTextAttributeDefinition", &PyDbAttributeDefinition::setMTextAttributeDefinition, DS.ARGS({ "val : MText" }))
         .def("className", &PyDbAttributeDefinition::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbAttributeDefinition::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbAttributeDefinition::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbAttributeDefinition::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbAttributeDefinition::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbAttributeDefinition::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -826,17 +826,17 @@ void makePyDbBlockReferenceWrapper()
         .def("blockTransform", &PyDbBlockReference::blockTransform, DS.ARGS())
         .def("nonAnnotationBlockTransform", &PyDbBlockReference::nonAnnotationBlockTransform, DS.ARGS())
         .def("setBlockTransform", &PyDbBlockReference::setBlockTransform, DS.ARGS({ "val : PyGe.Matrix3d" }))
-        .def("appendAttribute", &PyDbBlockReference::appendAttribute, DS.ARGS({ "val : Attribute" }))
+        .def("appendAttribute", &PyDbBlockReference::appendAttribute, DS.ARGS({ "val : PyDb.Attribute" }))
         .def("attributeIds", &PyDbBlockReference::attributeIds, DS.ARGS())
         .def("treatAsAcDbBlockRefForExplode", &PyDbBlockReference::treatAsAcDbBlockRefForExplode, DS.ARGS())
         .def("geomExtentsBestFit", &PyDbBlockReference::geomExtentsBestFit1)
-        .def("geomExtentsBestFit", &PyDbBlockReference::geomExtentsBestFit2, DS.ARGS({ "val : PyGe.Matrix3d=kIdentity" }))
+        .def("geomExtentsBestFit", &PyDbBlockReference::geomExtentsBestFit2, DS.ARGS({ "val : PyGe.Matrix3d=PyGe.Matrix3d.kIdentity" }))
         .def("explodeToOwnerSpace", &PyDbBlockReference::explodeToOwnerSpace, DS.ARGS())
         .def("getBlockName", &PyDbBlockReference::getBlockName, DS.ARGS())
         .def("className", &PyDbBlockReference::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbBlockReference::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbBlockReference::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbBlockReference::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbBlockReference::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbBlockReference::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1138,8 +1138,8 @@ void makePyDbMInsertBlockeWrapper()
         .def("setRowSpacing", &PyDbMInsertBlock::setRowSpacing, DS.ARGS({ "val : float" }))
         .def("className", &PyDbMInsertBlock::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbMInsertBlock::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbMInsertBlock::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbMInsertBlock::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbMInsertBlock::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbMInsertBlock::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1264,8 +1264,8 @@ void makePyDbVertexWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("className", &PyDbVertex::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbVertex::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbVertex::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbVertex::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbVertex::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbVertex::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1367,8 +1367,8 @@ void makePyDb2dVertexWrapper()
         .def("vertexIdentifier", &PyDb2dVertex::vertexIdentifier, DS.ARGS())
         .def("className", &PyDb2dVertex::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDb2dVertex::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDb2dVertex::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDb2dVertex::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDb2dVertex::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDb2dVertex::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1563,8 +1563,8 @@ void makePyDb3dPolylineVertexWrapper()
         .def("setPosition", &PyDb3dPolylineVertex::setPosition, DS.ARGS({ "val : PyGe.Point3d" }))
         .def("className", &PyDb3dPolylineVertex::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDb3dPolylineVertex::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDb3dPolylineVertex::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDb3dPolylineVertex::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDb3dPolylineVertex::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDb3dPolylineVertex::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1670,8 +1670,8 @@ void makePyDbPolygonMeshVertexWrapper()
         .def("setPosition", &PyDbPolygonMeshVertex::setPosition, DS.ARGS({ "val : PyGe.Point3d" }))
         .def("className", &PyDbPolygonMeshVertex::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbPolygonMeshVertex::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbPolygonMeshVertex::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbPolygonMeshVertex::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbPolygonMeshVertex::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbPolygonMeshVertex::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1775,8 +1775,8 @@ void makePyDbPolyFaceMeshVertexWrapper()
         .def("setPosition", &PyDbPolyFaceMeshVertex::setPosition, DS.ARGS({ "val : PyGe.Point3d" }))
         .def("className", &PyDbPolyFaceMeshVertex::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbPolyFaceMeshVertex::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbPolyFaceMeshVertex::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbPolyFaceMeshVertex::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbPolyFaceMeshVertex::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbPolyFaceMeshVertex::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1878,8 +1878,8 @@ void makePyDbFaceRecordWrapper()
         .def("makeEdgeInvisibleAt", &PyDbFaceRecord::makeEdgeInvisibleAt, DS.ARGS({ "val : int" }))
         .def("className", &PyDbFaceRecord::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbFaceRecord::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbFaceRecord::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbFaceRecord::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbFaceRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbFaceRecord::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2003,8 +2003,8 @@ void makePyDbPointWrapper()
         .def("setEcsRotation", &PyDbPoint::setEcsRotation, DS.ARGS({ "val : float" }))
         .def("className", &PyDbPoint::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbPoint::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbPoint::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbPoint::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbPoint::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbPoint::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2490,8 +2490,8 @@ void makePyDb3dPolylineWrapper()
         .def("vertexIds", &PyDb3dPolyline::vertexIds, DS.ARGS())
         .def("className", &PyDb3dPolyline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDb3dPolyline::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDb3dPolyline::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDb3dPolyline::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDb3dPolyline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDb3dPolyline::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2689,8 +2689,8 @@ void makePyDbArcWrapper()
         .def("getAcGeCurve", &PyDbArc::getAcGeCurve2, DS.ARGS({ "tol: PyGe.Tol = 'default'" }))
         .def("className", &PyDbArc::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbArc::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbArc::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbArc::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbArc::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbArc::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2880,8 +2880,8 @@ void makePyDbCircleWrapper()
         .def("getAcGeCurve", &PyDbCircle::getAcGeCurve2, DS.ARGS({ "tol: PyGe.Tol = 'default'" }))
         .def("className", &PyDbCircle::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbCircle::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbCircle::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbCircle::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbCircle::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbCircle::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -3069,8 +3069,8 @@ void makePyDbLineWrapper()
         .def("getAcGeCurve", &PyDbLine::getAcGeCurve2, DS.ARGS({ "tol: PyGe.Tol = 'default'" }))
         .def("className", &PyDbLine::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbLine::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbLine::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbLine::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbLine::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbLine::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -3256,8 +3256,8 @@ void makePyDbPolylineWrapper()
         .def("toList", &PyDbPolyline::toList, DS.ARGS())
         .def("className", &PyDbPolyline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbPolyline::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbPolyline::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbPolyline::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbPolyline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbPolyline::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 
     enum_<AcDbPolyline::SegType>("SegType")
@@ -3688,8 +3688,8 @@ void makePyDbFaceWrapper()
         .def("makeEdgeInvisibleAt", &PyDbFace::makeEdgeInvisibleAt, DS.ARGS({ "vIndex:int" }))
         .def("className", &PyDbFace::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbFace::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbFace::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbFace::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbFace::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbFace::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -3848,8 +3848,8 @@ void makePyDbFcfWrapper()
         .def("setDimtxt", &PyDbFcf::setDimtxt, DS.ARGS({ "val:float" }))
         .def("className", &PyDbFcf::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbFcf::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbFcf::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbFcf::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbFcf::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbFcf::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
