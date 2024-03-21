@@ -313,11 +313,11 @@ AcDbObjectOverrule* PyDbObjectOverrule::impObj(const std::source_location& src /
 //PyDbOsnapOverrule
 void makePyDbOsnapOverruleWrapper()
 {
-    PyDocString DS("DbOsnapOverrule");
-    class_<PyDbOsnapOverrule, bases<PyRxOverrule>>("DbOsnapOverrule")
+    PyDocString DS("OsnapOverrule");
+    class_<PyDbOsnapOverrule, bases<PyRxOverrule>>("OsnapOverrule")
         .def("isApplicable", &PyDbOsnapOverrule::isApplicableWr, DS.ARGS({ "object: PyRx.RxObject" }))
-        .def("isContentSnappable", &PyDbOsnapOverrule::isContentSnappableWr, DS.ARGS({ "object: PyDb.DbEntity" }))
-        .def("baseIsContentSnappable", &PyDbOsnapOverrule::baseIsContentSnappable, DS.ARGS({ "object: PyDb.DbEntity" }))
+        .def("isContentSnappable", &PyDbOsnapOverrule::isContentSnappableWr, DS.ARGS({ "object: PyDb.Entity" }))
+        .def("baseIsContentSnappable", &PyDbOsnapOverrule::baseIsContentSnappable, DS.ARGS({ "object: PyDb.Entity" }))
         .def("className", &PyDbOsnapOverrule::className).staticmethod("className")
         .def("desc", &PyDbOsnapOverrule::desc).staticmethod("desc")
         ;
