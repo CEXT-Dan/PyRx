@@ -31,6 +31,9 @@ class TestDbEntity(unittest.TestCase):
         self.db06457 = Db.Database(False, True)
         self.db06457.readDwgFile("./testmedia/06457.dwg")
         self.db06457.closeInput(True)
+        
+    def __del__(self):
+        del(self.db06457)
 
     def test_dbpointopenctor1(self):
         id = create_dbPoint()
@@ -308,7 +311,7 @@ class TestDbEntity(unittest.TestCase):
         objId = self.db06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
-        iter = table.getIterator()
+        iter = table.cells()
         self.assertEqual(len(iter),1044)
         
     def test_table_iterator2(self):
@@ -317,7 +320,7 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         cr = Db.CellRange(1,1,3,3)
-        iter = table.getIterator(cr)
+        iter = table.cells(cr)
         self.assertEqual(len(iter),9)
         
     def test_table_iterator3(self):
@@ -325,7 +328,32 @@ class TestDbEntity(unittest.TestCase):
         objId = self.db06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
-        iter = table.getIterator(Db.CellRange(1,1,3,3))
+        iter = table.cells(Db.CellRange(1,1,3,3))
+        self.assertEqual(len(iter),9)
+        
+    def test_table_cellValues1(self):
+        objHnd = Db.Handle("2c8cc9")
+        objId = self.db06457.getObjectId(False, objHnd)
+        self.assertEqual(objId.isValid(), True)
+        table = Db.Table(objId)
+        iter = table.cellValues()
+        self.assertEqual(len(iter),1044)
+        
+    def test_table_cellValues2(self):
+        objHnd = Db.Handle("2c8cc9")
+        objId = self.db06457.getObjectId(False, objHnd)
+        self.assertEqual(objId.isValid(), True)
+        table = Db.Table(objId)
+        cr = Db.CellRange(1,1,3,3)
+        iter = table.cellValues(cr)
+        self.assertEqual(len(iter),9)
+        
+    def test_table_cellValues3(self):
+        objHnd = Db.Handle("2c8cc9")
+        objId = self.db06457.getObjectId(False, objHnd)
+        self.assertEqual(objId.isValid(), True)
+        table = Db.Table(objId)
+        iter = table.cellValues(Db.CellRange(1,1,3,3))
         self.assertEqual(len(iter),9)
 
     def test_table_getstring(self):
@@ -335,7 +363,7 @@ class TestDbEntity(unittest.TestCase):
         table = Db.Table(objId)
         self.assertEqual(table.textString(4,0), '{\\fMS Sans Serif|b0|i0|c0;R380')
         self.assertEqual(table.textString(4,0,0), '{\\fMS Sans Serif|b0|i0|c0;R380')
-        opt = Db.FormatOption.kIgnoreMtextFormat
+        opt = Db.ValueFormatOption.kIgnoreMtextFormat
         self.assertEqual(table.textStringFmt(4,0,opt), "R380")
         self.assertEqual(table.textStringFmt(4,0,0,opt), "R380")
         

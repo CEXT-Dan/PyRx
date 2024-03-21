@@ -315,7 +315,7 @@ void makePyDbTableWrapper()
         "- nOption: PyDb.TableIteratorOption\n"
         "- pRange: PyDb.CellRange\n"
         "- pRange: PyDb.CellRange, nOption: TableIteratorOption\n";
-       
+
     PyDocString DS("Table");
     class_<PyDbTable, bases<PyDbBlockReference>>("Table")
         .def(init<>())
@@ -520,10 +520,10 @@ void makePyDbTableWrapper()
         .def("setGridLineStyle", &PyDbTable::setGridLineStyle, DS.ARGS({ "row: int", "col: int", "nGridLineType: PyDb.GridLineTypes","nLineStyle: PyDb.GridLineStyle" }))
         .def("gridLinetype", &PyDbTable::gridLinetype, DS.ARGS({ "row: int", "col: int", "nGridLineType: PyDb.GridLineType" }))
         .def("setGridLinetype", &PyDbTable::setGridLinetype, DS.ARGS({ "row: int", "col: int", "nGridLineType: PyDb.GridLineTypes","idLinetype: PyDb.ObjectId" }))
-        .def("gridDoubleLineSpacing", &PyDbTable::gridDoubleLineSpacing, DS.ARGS({ "row: int", "col: int","nGridLineType: GridLineType"}))
-        .def("setGridDoubleLineSpacing", &PyDbTable::setGridDoubleLineSpacing, DS.ARGS({ "row: int", "col: int","nGridLineType: GridLineType","spacing: float"}))
+        .def("gridDoubleLineSpacing", &PyDbTable::gridDoubleLineSpacing, DS.ARGS({ "row: int", "col: int","nGridLineType: GridLineType" }))
+        .def("setGridDoubleLineSpacing", &PyDbTable::setGridDoubleLineSpacing, DS.ARGS({ "row: int", "col: int","nGridLineType: GridLineType","spacing: float" }))
         .def("getGridProperty", &PyDbTable::getGridProperty, DS.ARGS({ "row: int", "col: int","nGridLineType: GridLineType" }))
-        //.def("setGridProperty", &PyDbTable::setGridProperty1)
+        //.def("setGridProperty", &PyDbTable::setGridProperty1) TODO:
         //.def("setGridProperty", &PyDbTable::setGridProperty2)
         .def("isLinked", &PyDbTable::isLinked, DS.ARGS({ "row: int", "col: int" }))
         .def("getDataLink", &PyDbTable::getDataLink, DS.ARGS({ "row: int", "col: int" }))
