@@ -305,8 +305,8 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(len(pline.toPoint3dList()),5)
         self.assertEqual(len(pline.toList()),5)
         model.appendAcDbEntity(pline)
-        
-    def test_table_iterator1(self):
+    
+    def test_table_cells1(self):
         objHnd = Db.Handle("2c8cc9")
         objId = self.db06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
@@ -314,7 +314,7 @@ class TestDbEntity(unittest.TestCase):
         iter = table.cells()
         self.assertEqual(len(iter),1044)
         
-    def test_table_iterator2(self):
+    def test_table_cells2(self):
         objHnd = Db.Handle("2c8cc9")
         objId = self.db06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
@@ -323,7 +323,7 @@ class TestDbEntity(unittest.TestCase):
         iter = table.cells(cr)
         self.assertEqual(len(iter),9)
         
-    def test_table_iterator3(self):
+    def test_table_cells3(self):
         objHnd = Db.Handle("2c8cc9")
         objId = self.db06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
@@ -332,13 +332,14 @@ class TestDbEntity(unittest.TestCase):
         iter = table.cells(Db.CellRange(1,1,3,3),opt)
         self.assertEqual(len(iter),9)
         
-    def test_table_iterator4(self):
+    def test_table_cells4(self):
         objHnd = Db.Handle("2c8cc9")
         objId = self.db06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
-        iter = table.cells(Db.CellRange(1,1,3,3))
-        self.assertEqual(len(iter),9)
+        opt = Db.TableIteratorOption.kTableIteratorSkipMerged
+        iter = table.cells(opt)
+        self.assertEqual(len(iter),1036)
         
     def test_table_cellValues1(self):
         objHnd = Db.Handle("2c8cc9")
@@ -362,8 +363,9 @@ class TestDbEntity(unittest.TestCase):
         objId = self.db06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
-        iter = table.cellValues(Db.CellRange(1,1,3,3))
-        self.assertEqual(len(iter),9)
+        opt = Db.TableIteratorOption.kTableIteratorSkipMerged
+        iter = table.cellValues(opt)
+        self.assertEqual(len(iter),1036)
         
     def test_table_cellValues4(self):
         objHnd = Db.Handle("2c8cc9")
