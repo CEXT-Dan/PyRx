@@ -523,7 +523,7 @@ void makePyDbTableWrapper()
         .def("gridDoubleLineSpacing", &PyDbTable::gridDoubleLineSpacing, DS.ARGS({ "row: int", "col: int","nGridLineType: GridLineType" }))
         .def("setGridDoubleLineSpacing", &PyDbTable::setGridDoubleLineSpacing, DS.ARGS({ "row: int", "col: int","nGridLineType: GridLineType","spacing: float" }))
         .def("getGridProperty", &PyDbTable::getGridProperty, DS.ARGS({ "row: int", "col: int","nGridLineType: GridLineType" }))
-        //.def("setGridProperty", &PyDbTable::setGridProperty1) TODO:
+        //.def("setGridProperty", &PyDbTable::setGridProperty1)// TODO:
         //.def("setGridProperty", &PyDbTable::setGridProperty2)
         .def("isLinked", &PyDbTable::isLinked, DS.ARGS({ "row: int", "col: int" }))
         .def("getDataLink", &PyDbTable::getDataLink, DS.ARGS({ "row: int", "col: int" }))

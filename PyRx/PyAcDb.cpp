@@ -366,7 +366,8 @@ BOOST_PYTHON_MODULE(PyDb)
 #if !defined(_BRXTARGET240)
     makePyDb3dProfileWrapper();
 #endif
-    makePyDbObjectOverrulerapper();
+    makePyDbObjectOverruleWrapper();
+    makePyDbOsnapOverruleWrapper();
 #if !defined(_BRXTARGET240)
     makePyDbPointCloudCropWrapper();
     makePyDbPointCloudClassificationColorRampWrapper();

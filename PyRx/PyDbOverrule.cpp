@@ -4,11 +4,12 @@
 #include "PyDbDimension.h"
 #include "PyDbSymbolTableRecord.h"
 #include "PyDbIdMapping.h"
+#include "PyDbEntity.h"
 
 using namespace boost::python;
 
 static std::mutex PyDbObjectOverruleMutex;
-void makePyDbObjectOverrulerapper()
+void makePyDbObjectOverruleWrapper()
 {
     PyDocString DS("DbObjectOverrule");
     class_<PyDbObjectOverrule, bases<PyRxOverrule>>("DbObjectOverrule")
@@ -306,4 +307,99 @@ AcDbObjectOverrule* PyDbObjectOverrule::impObj(const std::source_location& src /
         throw PyNullObject(src);
     }
     return static_cast<AcDbObjectOverrule*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PyDbOsnapOverrule
+void makePyDbOsnapOverruleWrapper()
+{
+    PyDocString DS("DbOsnapOverrule");
+    class_<PyDbOsnapOverrule, bases<PyRxOverrule>>("DbOsnapOverrule")
+        .def("isApplicable", &PyDbOsnapOverrule::isApplicableWr, DS.ARGS({ "object: PyRx.RxObject" }))
+        .def("isContentSnappable", &PyDbOsnapOverrule::isContentSnappableWr, DS.ARGS({ "object: PyDb.DbEntity" }))
+        .def("baseIsContentSnappable", &PyDbOsnapOverrule::baseIsContentSnappable, DS.ARGS({ "object: PyDb.DbEntity" }))
+        .def("className", &PyDbOsnapOverrule::className).staticmethod("className")
+        .def("desc", &PyDbOsnapOverrule::desc).staticmethod("desc")
+        ;
+}
+
+PyDbOsnapOverrule::PyDbOsnapOverrule()
+    : PyRxOverrule(this)
+{
+}
+
+bool PyDbOsnapOverrule::isApplicable(const AcRxObject* pOverruledSubject) const
+{
+    if (!reg_isApplicable)
+        return false;
+    PyRxObject obj(pOverruledSubject);
+    return this->isApplicableWr(obj);
+}
+
+bool PyDbOsnapOverrule::isContentSnappable(const AcDbEntity* pSubject)
+{
+    if (!reg_isContentSnappable)
+        return AcDbOsnapOverrule::isContentSnappable(pSubject);
+    PyDbEntity obj(const_cast<AcDbEntity*>(pSubject), false);
+    obj.forceKeepAlive(true);
+    return this->isContentSnappableWr(obj);
+}
+
+bool PyDbOsnapOverrule::isApplicableWr(const PyRxObject& pOverruledSubject) const
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = get_override("isApplicable"))
+            return f(pOverruledSubject);
+        reg_isApplicable = false;
+        return false;
+    }
+    catch (...)
+    {
+        printExceptionMsg();
+        reg_isApplicable = false;
+    }
+    return false;
+}
+
+bool PyDbOsnapOverrule::isContentSnappableWr(const PyDbEntity& pSubject)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = get_override("isApplicable"))
+            return f(pSubject);
+        reg_isContentSnappable = false;
+        return false;
+    }
+    catch (...)
+    {
+        printExceptionMsg();
+        reg_isContentSnappable = false;
+    }
+    return false;
+}
+
+bool PyDbOsnapOverrule::baseIsContentSnappable(const PyDbEntity& pSubject)
+{
+    return AcDbOsnapOverrule::isContentSnappable(pSubject.impObj());
+}
+
+std::string PyDbOsnapOverrule::className()
+{
+    return "AcDbOsnapOverrule";
+}
+
+PyRxClass PyDbOsnapOverrule::desc()
+{
+    return PyRxClass(AcDbOsnapOverrule::desc(), false);
+}
+
+AcDbOsnapOverrule* PyDbOsnapOverrule::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<AcDbOsnapOverrule*>(m_pyImp.get());
 }

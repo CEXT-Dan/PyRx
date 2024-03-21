@@ -3,6 +3,7 @@
 #include "PyRxObject.h"
 #include "PyRxOverrule.h"
 #include "dbobjectoverrule.h"
+#include "dbentityoverrule.h"
 
 class PyDbObjectId;
 class PyDbObject;
@@ -10,10 +11,11 @@ class PyDbIdMapping;
 class PyDbDimension;
 class PyDbDimStyleTableRecord;
 class PyDbObjectOverrule;
+class PyDbEntity;
 
 //-----------------------------------------------------------------------------------------
 //PyDbObjectOverrule
-void makePyDbObjectOverrulerapper();
+void makePyDbObjectOverruleWrapper();
 
 class PyDbObjectOverrule : public PyRxOverrule, public AcDbObjectOverrule, public boost::python::wrapper<PyDbObjectOverrule>
 {
@@ -58,4 +60,33 @@ public:
     mutable bool reg_erase = true;
     mutable bool reg_deepClone = true;
     mutable bool reg_wblockClone = true;
+};
+
+
+//-----------------------------------------------------------------------------------------
+//PyDbOsnapOverrule
+void makePyDbOsnapOverruleWrapper();
+
+class PyDbOsnapOverrule : public PyRxOverrule, public AcDbOsnapOverrule, public boost::python::wrapper<PyDbOsnapOverrule>
+{
+public:
+    PyDbOsnapOverrule();
+    virtual ~PyDbOsnapOverrule() override = default;
+
+    virtual bool		isApplicable(const AcRxObject* pOverruledSubject) const override;
+    virtual bool        isContentSnappable(const AcDbEntity* pSubject) override;
+
+    bool			    isApplicableWr(const PyRxObject& pOverruledSubject) const;
+    bool                isContentSnappableWr(const PyDbEntity& pSubject);
+
+    bool                baseIsContentSnappable(const PyDbEntity& pSubject);
+
+    static std::string  className();
+    static PyRxClass    desc();
+public:
+    AcDbOsnapOverrule* impObj(const std::source_location& src = std::source_location::current()) const;
+
+public:
+    mutable bool reg_isApplicable = true;
+    mutable bool reg_isContentSnappable = true;
 };
