@@ -23,6 +23,7 @@ void makePyDbSymbolTableWrapper()
         .def("cast", &PyDbSymbolTable::cast).staticmethod("cast")
         .def("className", &PyDbSymbolTable::className).staticmethod("className")
         .def("cloneFrom", &PyDbSymbolTable::cloneFrom).staticmethod("cloneFrom")
+        .def("__iter__", range(&PyDbSymbolTable::begin, &PyDbBlockTable::end))
         .def("__getitem__", &PyDbSymbolTable::getAt)
         .def("__contains__", &PyDbSymbolTable::has1)
         .def("__contains__", &PyDbSymbolTable::has2)
@@ -144,6 +145,37 @@ AcDbSymbolTable* PyDbSymbolTable::impObj(const std::source_location& src /*= std
         }
     return static_cast<AcDbSymbolTable*>(m_pyImp.get());
 }
+
+void PyDbSymbolTable::filliterator()
+{
+    if (impObj()->isModified() || m_iterable.size() == 0)
+    {
+        auto [es, iter] = makeAcDbSymbolTableIterator(*impObj());
+        if (es == eOk)
+        {
+            PyDbObjectId id;
+            m_iterable.clear();
+            for (iter->start(); !iter->done(); iter->step())
+            {
+                if (iter->getRecordId(id.m_id) == eOk)
+                    m_iterable.push_back(id);
+            }
+        }
+        PyThrowBadEs(es);
+    }
+}
+
+std::vector<PyDbObjectId>::iterator PyDbSymbolTable::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyDbObjectId>::iterator PyDbSymbolTable::end()
+{
+    filliterator();
+    return m_iterable.end();
+}
+
 
 //---------------------------------------------------------------------------------------- -
 //AcDbDimStyleTable

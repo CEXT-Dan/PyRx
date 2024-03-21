@@ -1827,7 +1827,7 @@ void PyDbViewportTableRecord::setGsView(PyGsView& pView)
 
 PyGsView PyDbViewportTableRecord::gsView() const
 {
-   return PyGsView(impObj()->gsView(), false);
+    return PyGsView(impObj()->gsView(), false);
 }
 
 bool PyDbViewportTableRecord::isUcsSavedWithViewport() const
@@ -2312,6 +2312,7 @@ void makePyDbBlockTableRecordWrapper()
         .def("blockInsertUnits", &PyDbBlockTableRecord::blockInsertUnits, DS.ARGS())
         .def("postProcessAnnotativeBTR", &PyDbBlockTableRecord::postProcessAnnotativeBTR, DS.ARGS({ "bqueryOnly  : bool = False" ,"bScale : bool = True" }))
         .def("addAnnoScalestoBlkRefs", &PyDbBlockTableRecord::addAnnoScalestoBlkRefs, DS.ARGS({ "scale : bool" }))
+        .def("__iter__", range(&PyDbBlockTableRecord::begin, &PyDbBlockTableRecord::end))
         .def("className", &PyDbBlockTableRecord::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbBlockTableRecord::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbBlockTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -2669,6 +2670,36 @@ AcDbBlockTableRecord* PyDbBlockTableRecord::impObj(const std::source_location& s
         throw PyNullObject(src);
         }
     return static_cast<AcDbBlockTableRecord*>(m_pyImp.get());
+}
+
+void PyDbBlockTableRecord::filliterator()
+{
+    if (impObj()->isModified() || m_iterable.size() == 0)
+    {
+        auto [es, iter] = makeBlockTableRecordIterator(*impObj());
+        if (es == eOk)
+        {
+            PyDbObjectId id;
+            m_iterable.clear();
+            for (iter->start(); !iter->done(); iter->step())
+            {
+                if (iter->getEntityId(id.m_id) == eOk)
+                    m_iterable.push_back(id);
+            }
+        }
+        PyThrowBadEs(es);
+    }
+}
+
+std::vector<PyDbObjectId>::iterator PyDbBlockTableRecord::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyDbObjectId>::iterator PyDbBlockTableRecord::end()
+{
+    filliterator();
+    return m_iterable.end();
 }
 
 //---------------------------------------------------------------------------------------- -

@@ -992,7 +992,7 @@ static boost::python::list PyDbDatabaseObjectIds(AcDbDatabase* pDb, AcRxClass* p
         AcDbHandle hnd{ nhnd };
         if (auto es = pDb->getAcDbObjectId(id.m_id, false, hnd); es != eOk)
             continue;
-        if (!id.isValid() || id.isErased())
+        if (!id.isValid() || id.isErased() || id.isEffectivelyErased()) [[unlikely]]
             continue;
         if (id.m_id.objectClass()->isDerivedFrom(pClass))
             pyList.append(id);
