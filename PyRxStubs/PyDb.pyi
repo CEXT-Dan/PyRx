@@ -60549,11 +60549,8 @@ class Table(BlockReference):
     def breakHeight (self, val : int)-> float :
       '''                             '''
     ...
-    def breakOffset (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''breakOffset( (Table)arg1, (int)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d breakOffset(class PyDbTable {lvalue},int)'''
+    def breakOffset (self, idx: int)-> PyGe.Vector3d :
+      '''                             '''
     ...
     def breakOption (self)-> PyDb.TableBreakOption :
       '''                             '''
@@ -60593,21 +60590,22 @@ class Table(BlockReference):
     def cellType (self, row: int, col: int)-> PyDb.CellType :
       '''                             '''
     ...
+
+    @overload
+    def cells (self, /)-> list : ...
+    @overload
+    def cells (self, nOption: PyDb.TableIteratorOption)-> list : ...
+    @overload
+    def cells (self, pRange: PyDb.CellRange)-> list : ...
+    @overload
+    def cells (self, pRange: PyDb.CellRange, nOption: TableIteratorOption)-> list : ...
     def cells (self, *args, **kwargs)-> list :
-      '''cells( (Table)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list cells(class PyDbTable {lvalue})
-
-cells( (Table)arg1, (TableIteratorOption)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list cells(class PyDbTable {lvalue},enum AcDb::TableIteratorOption)
-
-cells( (Table)arg1, (CellRange)arg2 [, (TableIteratorOption)arg3]) -> list :
-
-    C++ signature :
-        class boost::python::list cells(class PyDbTable {lvalue},struct AcCellRange [,enum AcDb::TableIteratorOption])'''
+      '''Overloads:
+    - None: Any
+    - nOption: PyDb.TableIteratorOption
+    - pRange: PyDb.CellRange
+    - pRange: PyDb.CellRange, nOption: TableIteratorOption
+    '''
     ...
 
     @staticmethod
@@ -60663,16 +60661,16 @@ cells( (Table)arg1, (CellRange)arg2 [, (TableIteratorOption)arg3]) -> list :
     def contentLayout (self, row: int, col: int)-> PyDb.CellContentLayout :
       '''                             '''
     ...
+
+    @overload
+    def contentType (self, row: int, col: int)-> PyDb.CellContentType : ...
+    @overload
+    def contentType (self, row: int, col: int, content: int)-> PyDb.CellContentType : ...
     def contentType (self, *args, **kwargs)-> PyDb.CellContentType :
-      '''contentType( (Table)arg1, (int)arg2, (int)arg3) -> CellContentType :
-
-    C++ signature :
-        enum AcDb::CellContentType contentType(class PyDbTable {lvalue},int,int)
-
-contentType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> CellContentType :
-
-    C++ signature :
-        enum AcDb::CellContentType contentType(class PyDbTable {lvalue},int,int,int)'''
+      '''Overloads:
+    - row: int, col: int
+    - row: int, col: int, content: int
+    '''
     ...
     def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
@@ -60683,16 +60681,16 @@ contentType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> CellContentType :
     def createExtensionDictionary (self)-> None :
       '''                             '''
     ...
+
+    @overload
+    def dataFormat (self, row: int, col: int)-> str : ...
+    @overload
+    def dataFormat (self, row: int, col: int, content: int)-> str : ...
     def dataFormat (self, *args, **kwargs)-> str :
-      '''dataFormat( (Table)arg1, (int)arg2, (int)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dataFormat(class PyDbTable {lvalue},int,int)
-
-dataFormat( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dataFormat(class PyDbTable {lvalue},int,int,int)'''
+      '''Overloads:
+    - row: int, col: int
+    - row: int, col: int, content: int
+    '''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -60706,21 +60704,19 @@ dataFormat( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> str :
     def deleteColumns (self, row: int, nCols: int)-> None :
       '''                             '''
     ...
+
+    @overload
+    def deleteContent (self, row: int, col: int)-> None : ...
+    @overload
+    def deleteContent (self, row: int, col: int, content: int)-> None : ...
+    @overload
+    def deleteContent (self, range: PyDb.CellRange)-> None : ...
     def deleteContent (self, *args, **kwargs)-> None :
-      '''deleteContent( (Table)arg1, (int)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void deleteContent(class PyDbTable {lvalue},int,int)
-
-deleteContent( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void deleteContent(class PyDbTable {lvalue},int,int,int)
-
-deleteContent( (Table)arg1, (CellRange)arg2) -> None :
-
-    C++ signature :
-        void deleteContent(class PyDbTable {lvalue},struct AcCellRange)'''
+      '''Overloads:
+    - row: int, col: int
+    - row: int, col: int, content: int
+    - range: PyDb.CellRange
+    '''
     ...
     def deleteRows (self, row: int, nRows: int)-> None :
       '''                             '''
@@ -60792,16 +60788,16 @@ deleteContent( (Table)arg1, (CellRange)arg2) -> None :
     def geomExtentsBestFit (self, val : PyGe.Matrix3d=PyGe.Matrix3d.kIdentity)-> PyDb.Extents :
       '''                             '''
     ...
+
+    @overload
+    def getBlockAttributeValue (self, row: int, col: int, val: str, id: PyDb.ObjectId)-> str : ...
+    @overload
+    def getBlockAttributeValue (self, row: int, col: int, content: int, val: str, id: PyDb.ObjectId)-> str : ...
     def getBlockAttributeValue (self, *args, **kwargs)-> str :
-      '''getBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (ObjectId)arg4) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getBlockAttributeValue(class PyDbTable {lvalue},int,int,class PyDbObjectId)
-
-getBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)arg5) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getBlockAttributeValue(class PyDbTable {lvalue},int,int,int,class PyDbObjectId)'''
+      '''Overloads:
+    - row: int, col: int, val: str, id: PyDb.ObjectId
+    - row: int, col: int, content: int, val: str, id: PyDb.ObjectId
+    '''
     ...
     def getBlockName (self)-> str :
       '''                             '''
@@ -60856,11 +60852,8 @@ getBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)
     def getGridOverride (self, row: int, col: int, nGridLineType: PyDb.GridLineType)-> PyDb.GridProperty :
       '''                             '''
     ...
-    def getGridProperty (self, *args, **kwargs)-> object :
-      '''getGridProperty( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> object :
-
-    C++ signature :
-        struct AcGridProperty getGridProperty(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType)'''
+    def getGridProperty (self, row: int, col: int, nGridLineType: GridLineType)-> object :
+      '''                             '''
     ...
     def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
       '''                             '''
@@ -60900,11 +60893,8 @@ getBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)
     - row: int, col, gridlineType: GridLineType
     '''
     ...
-    def gridDoubleLineSpacing (self, *args, **kwargs)-> float :
-      '''gridDoubleLineSpacing( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> float :
-
-    C++ signature :
-        double gridDoubleLineSpacing(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType)'''
+    def gridDoubleLineSpacing (self, row: int, col: int, nGridLineType: GridLineType)-> float :
+      '''                             '''
     ...
     def gridEdgeColor (self, row: int, col: int, content: CellEdgeMask)-> PyDb.Color :
       '''                             '''
@@ -61231,16 +61221,8 @@ getBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeDataLink (self, *args, **kwargs)-> None :
-      '''removeDataLink( (Table)arg1) -> None :
-
-    C++ signature :
-        void removeDataLink(class PyDbTable {lvalue})
-
-removeDataLink( (Table)arg1, (int)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void removeDataLink(class PyDbTable {lvalue},int,int)'''
+    def removeDataLink (self, row: int=-1, col: int=-1)-> None :
+      '''                             '''
     ...
     def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
@@ -61254,16 +61236,8 @@ removeDataLink( (Table)arg1, (int)arg2, (int)arg3) -> None :
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotation (self, *args, **kwargs)-> float :
-      '''rotation( (Table)arg1) -> float :
-
-    C++ signature :
-        double rotation(class PyDbTable {lvalue})
-
-rotation( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> float :
-
-    C++ signature :
-        double rotation(class PyDbTable {lvalue},int,int,int)'''
+    def rotation (self, row: int, col: int, content: int)-> float :
+      '''                             '''
     ...
     def rowHeight (self, row : int)-> float :
       '''                             '''
@@ -61310,13 +61284,13 @@ rotation( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> float :
     ...
 
     @overload
-    def setBackgroundColor (self, clr: PyDbColor, rowType: PyDb.RowType)-> None : ...
+    def setBackgroundColor (self, clr: PyDb.Color, rowType: PyDb.RowType)-> None : ...
     @overload
-    def setBackgroundColor (self, row: int, col: int, clr: PyDb.AColor)-> None : ...
+    def setBackgroundColor (self, row: int, col: int, clr: PyDb.Color)-> None : ...
     def setBackgroundColor (self, *args, **kwargs)-> None :
       '''Overloads:
-    - clr: PyDbColor, rowType: PyDb.RowType
-    - row: int, col: int, clr: PyDb.AColor
+    - clr: PyDb.Color, rowType: PyDb.RowType
+    - row: int, col: int, clr: PyDb.Color
     '''
     ...
 
@@ -61330,16 +61304,16 @@ rotation( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> float :
     - nRow: int, nCol: int, value: bool
     '''
     ...
+
+    @overload
+    def setBlockAttributeValue (self, row: int, col: int, id: PyDb.ObjectId, val: str)-> None : ...
+    @overload
+    def setBlockAttributeValue (self, row: int, col: int, content: int, id: PyDb.ObjectId, val: str)-> None : ...
     def setBlockAttributeValue (self, *args, **kwargs)-> None :
-      '''setBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (ObjectId)arg4, (str)arg5) -> None :
-
-    C++ signature :
-        void setBlockAttributeValue(class PyDbTable {lvalue},int,int,class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-setBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)arg5, (str)arg6) -> None :
-
-    C++ signature :
-        void setBlockAttributeValue(class PyDbTable {lvalue},int,int,int,class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - row: int, col: int, id: PyDb.ObjectId, val: str
+    - row: int, col: int, content: int, id: PyDb.ObjectId, val: str
+    '''
     ...
     def setBlockRotation (self, row: int, col: int, rotAng : float)-> None :
       '''                             '''
@@ -61373,17 +61347,11 @@ setBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)
     def setBreakHeight (self, val : int, height : float)-> None :
       '''                             '''
     ...
-    def setBreakOffset (self, *args, **kwargs)-> None :
-      '''setBreakOffset( (Table)arg1, (int)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void setBreakOffset(class PyDbTable {lvalue},int,class AcGeVector3d)'''
+    def setBreakOffset (self, idx: int, vec: PyGe.Vector3d)-> None :
+      '''                             '''
     ...
-    def setBreakOption (self, *args, **kwargs)-> None :
-      '''setBreakOption( (Table)arg1, (TableBreakOption)arg2) -> None :
-
-    C++ signature :
-        void setBreakOption(class PyDbTable {lvalue},enum AcDb::TableBreakOption)'''
+    def setBreakOption (self, val: TableBreakOption)-> None :
+      '''                             '''
     ...
     def setBreakSpacing (self, val : float)-> None :
       '''                             '''
@@ -61437,16 +61405,16 @@ setBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)
     def setContentLayout (self, row: int, col: int, val: PyDb.CellContentLayout)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setDataFormat (self, row: int, col: int, val: str)-> None : ...
+    @overload
+    def setDataFormat (self, row: int, col: int, content: int, val: str)-> None : ...
     def setDataFormat (self, *args, **kwargs)-> None :
-      '''setDataFormat( (Table)arg1, (int)arg2, (int)arg3, (str)arg4) -> None :
-
-    C++ signature :
-        void setDataFormat(class PyDbTable {lvalue},int,int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-setDataFormat( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (str)arg5) -> None :
-
-    C++ signature :
-        void setDataFormat(class PyDbTable {lvalue},int,int,int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - row: int, col: int, val: str
+    - row: int, col: int, content: int, val: str
+    '''
     ...
     def setDataLink (self, row: int, col: int, id : PyDb.ObjectId, update : bool)-> None :
       '''                             '''
@@ -61516,11 +61484,8 @@ setDataFormat( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (str)arg5) -> None 
     - nRow: int, nCol: int, nGridLineTypes: GridLineType, color: PyDb.Color
     '''
     ...
-    def setGridDoubleLineSpacing (self, *args, **kwargs)-> None :
-      '''setGridDoubleLineSpacing( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (float)arg5) -> None :
-
-    C++ signature :
-        void setGridDoubleLineSpacing(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType,double)'''
+    def setGridDoubleLineSpacing (self, row: int, col: int, nGridLineType: GridLineType, spacing: float)-> None :
+      '''                             '''
     ...
     def setGridEdgeColor (self, row: int, col: int, content: CellEdgeMask, clr: PyDb.AcCmColor)-> None :
       '''                             '''
@@ -61550,17 +61515,6 @@ setDataFormat( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (str)arg5) -> None 
     ...
     def setGridOverride (self, row: int, col: int, nGridLineType: PyDb.GridLineType, nOverride: PyDb.GridProperty)-> None :
       '''                             '''
-    ...
-    def setGridProperty (self, *args, **kwargs)-> None :
-      '''setGridProperty( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (object)arg5) -> None :
-
-    C++ signature :
-        void setGridProperty(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType,struct AcGridProperty)
-
-setGridProperty( (Table)arg1, (CellRange)arg2, (GridLineType)arg3, (object)arg4) -> None :
-
-    C++ signature :
-        void setGridProperty(class PyDbTable {lvalue},struct AcCellRange,enum AcDb::GridLineType,struct AcGridProperty)'''
     ...
 
     @overload
@@ -61634,16 +61588,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setRegen (self)-> None :
       '''                             '''
     ...
-    def setRotation (self, *args, **kwargs)-> None :
-      '''setRotation( (Table)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setRotation(class PyDbTable {lvalue},double)
-
-setRotation( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (float)arg5) -> None :
-
-    C++ signature :
-        void setRotation(class PyDbTable {lvalue},int,int,int,double)'''
+    def setRotation (self, row: int, col: int, content: int, fang: float)-> None :
+      '''                             '''
     ...
 
     @overload
@@ -61666,6 +61612,9 @@ setRotation( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (float)arg5) -> None 
       '''                             '''
     ...
     def setSubSelection (self, val : PyDb.CellRange)-> None :
+      '''                             '''
+    ...
+    def setTableRotation (self, val: float)-> None :
       '''                             '''
     ...
     def setTableStyle (self, val : PyDb.ObjectId)-> None :
@@ -61746,6 +61695,9 @@ setRotation( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (float)arg5) -> None 
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
+    def tableRotation (self)-> float :
+      '''                             '''
+    ...
     def tableStyle (self)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -61820,16 +61772,16 @@ setRotation( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (float)arg5) -> None 
     def unmergeCells (self, minRow: int, maxRow: int, minCol: int, maxCol: int)-> None :
       '''                             '''
     ...
+
+    @overload
+    def updateDataLink (self, nDir: UpdateDirection, nOption: UpdateOption)-> None : ...
+    @overload
+    def updateDataLink (self, row: int, col: int, nDir: UpdateDirection, nOption: UpdateOption)-> None : ...
     def updateDataLink (self, *args, **kwargs)-> None :
-      '''updateDataLink( (Table)arg1, (UpdateDirection)arg2, (UpdateOption)arg3) -> None :
-
-    C++ signature :
-        void updateDataLink(class PyDbTable {lvalue},enum AcDb::UpdateDirection,enum AcDb::UpdateOption)
-
-updateDataLink( (Table)arg1, (int)arg2, (int)arg3, (UpdateDirection)arg4, (UpdateOption)arg5) -> None :
-
-    C++ signature :
-        void updateDataLink(class PyDbTable {lvalue},int,int,enum AcDb::UpdateDirection,enum AcDb::UpdateOption)'''
+      '''Overloads:
+    - nDir: UpdateDirection, nOption: UpdateOption
+    - row: int, col: int, nDir: UpdateDirection, nOption: UpdateOption
+    '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
       '''                             '''

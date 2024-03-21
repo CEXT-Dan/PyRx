@@ -177,8 +177,8 @@ void makePyDbTableWrapper()
         "- row: int, col: int\n";
 
     constexpr const std::string_view setBackgroundColorOverloads = "Overloads:\n"
-        "- clr: PyDbColor, rowType: PyDb.RowType\n"
-        "- row: int, col: int, clr: PyDb.AColor\n";
+        "- clr: PyDb.Color, rowType: PyDb.RowType\n"
+        "- row: int, col: int, clr: PyDb.Color\n";
 
     constexpr const std::string_view getXXXOverloads = "Overloads:\n"
         "- rowType: PyDb.RowType\n"
@@ -281,7 +281,41 @@ void makePyDbTableWrapper()
         "- row: int, col: int, id: PyDb.ObjectId, autoFit: bool\n"
         "- row: int, col: int, content: int, id: PyDb.ObjectId, autoFit: bool\n";
 
+    constexpr const std::string_view deleteContentOverloads = "Overloads:\n"
+        "- row: int, col: int\n"
+        "- row: int, col: int, content: int\n"
+        "- range: PyDb.CellRange\n";
 
+    constexpr const std::string_view contentTypeOverloads = "Overloads:\n"
+        "- row: int, col: int\n"
+        "- row: int, col: int, content: int\n";
+
+    constexpr const std::string_view dataFormatOverloads = "Overloads:\n"
+        "- row: int, col: int\n"
+        "- row: int, col: int, content: int\n";
+
+    constexpr const std::string_view setDataFormatOverloads = "Overloads:\n"
+        "- row: int, col: int, val: str\n"
+        "- row: int, col: int, content: int, val: str\n";
+
+    constexpr const std::string_view getBlockAttributeValueOverloads = "Overloads:\n"
+        "- row: int, col: int, val: str, id: PyDb.ObjectId\n"
+        "- row: int, col: int, content: int, val: str, id: PyDb.ObjectId\n";
+
+    constexpr const std::string_view setBlockAttributeValueOverloads = "Overloads:\n"
+        "- row: int, col: int, id: PyDb.ObjectId, val: str\n"
+        "- row: int, col: int, content: int, id: PyDb.ObjectId, val: str\n";
+
+    constexpr const std::string_view updateDataLinkOverloads = "Overloads:\n"
+        "- nDir: UpdateDirection, nOption: UpdateOption\n"
+        "- row: int, col: int, nDir: UpdateDirection, nOption: UpdateOption\n";
+
+    constexpr const std::string_view getIteratorOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- nOption: PyDb.TableIteratorOption\n"
+        "- pRange: PyDb.CellRange\n"
+        "- pRange: PyDb.CellRange, nOption: TableIteratorOption\n";
+       
     PyDocString DS("Table");
     class_<PyDbTable, bases<PyDbBlockReference>>("Table")
         .def(init<>())
@@ -447,41 +481,30 @@ void makePyDbTableWrapper()
         .def("numContents", &PyDbTable::numContents, DS.ARGS({ "row: int", "col: int" }))
         .def("createContent", &PyDbTable::createContent, DS.ARGS({ "row: int", "col: int", "idx: int" }))
         .def("moveContent", &PyDbTable::moveContent, DS.ARGS({ "row: int", "col: int", "frm: int","to: int" }))
-
         .def("deleteContent", &PyDbTable::deleteContent1)
         .def("deleteContent", &PyDbTable::deleteContent2)
-        .def("deleteContent", &PyDbTable::deleteContent3)
-
+        .def("deleteContent", &PyDbTable::deleteContent3, DS.OVRL(deleteContentOverloads))
         .def("contentType", &PyDbTable::contentType1)
-        .def("contentType", &PyDbTable::contentType2)
-
+        .def("contentType", &PyDbTable::contentType2, DS.OVRL(contentTypeOverloads))
         .def("dataFormat", &PyDbTable::dataFormat1)
-        .def("dataFormat", &PyDbTable::dataFormat2)
-
+        .def("dataFormat", &PyDbTable::dataFormat2, DS.OVRL(dataFormatOverloads))
         .def("setDataFormat", &PyDbTable::setDataFormat1)
-        .def("setDataFormat", &PyDbTable::setDataFormat2)
-
-
+        .def("setDataFormat", &PyDbTable::setDataFormat2, DS.OVRL(setDataFormatOverloads))
         .def("hasFormula", &PyDbTable::hasFormula, DS.ARGS({ "row: int", "col: int", "content: int" }))
         .def("getFormula", &PyDbTable::getFormula, DS.ARGS({ "row: int", "col: int", "content: int" }))
         .def("setFormula", &PyDbTable::setFormula, DS.ARGS({ "row: int", "col: int", "content: int", "val: str" }))
-
-
         .def("getBlockAttributeValue", &PyDbTable::getBlockAttributeValue1)
-        .def("getBlockAttributeValue", &PyDbTable::getBlockAttributeValue2)
-
+        .def("getBlockAttributeValue", &PyDbTable::getBlockAttributeValue2, DS.OVRL(getBlockAttributeValueOverloads))
         .def("setBlockAttributeValue", &PyDbTable::setBlockAttributeValue1)
-        .def("setBlockAttributeValue", &PyDbTable::setBlockAttributeValue2)
-
+        .def("setBlockAttributeValue", &PyDbTable::setBlockAttributeValue2, DS.OVRL(setBlockAttributeValueOverloads))
         .def("cellStyle", &PyDbTable::cellStyle, DS.ARGS({ "row: int", "col: int" }))
         .def("setCellStyle", &PyDbTable::setCellStyle, DS.ARGS({ "row: int", "col: int", "style: str" }))
         .def("margin", &PyDbTable::margin, DS.ARGS({ "row: int", "col: int", "nMargin: PyDb.CellMargin" }))
         .def("setMargin", &PyDbTable::setMargin, DS.ARGS({ "row: int", "col: int", "nMargin: PyDb.CellMargin","val : float" }))
-        .def("rotation", &PyDbTable::rotation)
-        .def("rotation", &PyDbTable::rotation2)
-        .def("setRotation", &PyDbTable::setRotation)
-        .def("setRotation", &PyDbTable::setRotation2)
-        
+        .def("tableRotation", &PyDbTable::rotation, DS.ARGS())
+        .def("rotation", &PyDbTable::rotation2, DS.ARGS({ "row: int", "col: int", "content: int" }))
+        .def("setTableRotation", &PyDbTable::setRotation, DS.ARGS({ "val: float" }))
+        .def("setRotation", &PyDbTable::setRotation2, DS.ARGS({ "row: int", "col: int", "content: int","fang: float" }))
         .def("scale", &PyDbTable::scale, DS.ARGS({ "row: int", "col: int", "content: int" }))
         .def("setScale", &PyDbTable::setScale, DS.ARGS({ "row: int", "col: int", "content: int","val : float" }))
         .def("contentLayout", &PyDbTable::contentLayout, DS.ARGS({ "row: int", "col: int" }))
@@ -495,50 +518,42 @@ void makePyDbTableWrapper()
         .def("removeAllOverrides", &PyDbTable::removeAllOverrides, DS.ARGS({ "row: int", "col: int" }))
         .def("gridLineStyle", &PyDbTable::gridLineStyle, DS.ARGS({ "row: int", "col: int", "nGridLineType: PyDb.GridLineType" }))
         .def("setGridLineStyle", &PyDbTable::setGridLineStyle, DS.ARGS({ "row: int", "col: int", "nGridLineType: PyDb.GridLineTypes","nLineStyle: PyDb.GridLineStyle" }))
-
         .def("gridLinetype", &PyDbTable::gridLinetype, DS.ARGS({ "row: int", "col: int", "nGridLineType: PyDb.GridLineType" }))
         .def("setGridLinetype", &PyDbTable::setGridLinetype, DS.ARGS({ "row: int", "col: int", "nGridLineType: PyDb.GridLineTypes","idLinetype: PyDb.ObjectId" }))
-
-
-        .def("gridDoubleLineSpacing", &PyDbTable::gridDoubleLineSpacing)
-        .def("setGridDoubleLineSpacing", &PyDbTable::setGridDoubleLineSpacing)
-        .def("getGridProperty", &PyDbTable::getGridProperty)
-        .def("setGridProperty", &PyDbTable::setGridProperty1)
-        .def("setGridProperty", &PyDbTable::setGridProperty2)
+        .def("gridDoubleLineSpacing", &PyDbTable::gridDoubleLineSpacing, DS.ARGS({ "row: int", "col: int","nGridLineType: GridLineType"}))
+        .def("setGridDoubleLineSpacing", &PyDbTable::setGridDoubleLineSpacing, DS.ARGS({ "row: int", "col: int","nGridLineType: GridLineType","spacing: float"}))
+        .def("getGridProperty", &PyDbTable::getGridProperty, DS.ARGS({ "row: int", "col: int","nGridLineType: GridLineType" }))
+        //.def("setGridProperty", &PyDbTable::setGridProperty1)
+        //.def("setGridProperty", &PyDbTable::setGridProperty2)
         .def("isLinked", &PyDbTable::isLinked, DS.ARGS({ "row: int", "col: int" }))
         .def("getDataLink", &PyDbTable::getDataLink, DS.ARGS({ "row: int", "col: int" }))
         .def("setDataLink", &PyDbTable::setDataLink, DS.ARGS({ "row: int", "col: int","id : PyDb.ObjectId","update : bool" }))
         .def("getDataLinkRange", &PyDbTable::getDataLinkRange, DS.ARGS({ "row: int", "col: int" }))
-
         .def("removeDataLink", &PyDbTable::removeDataLink1)
-        .def("removeDataLink", &PyDbTable::removeDataLink2)
+        .def("removeDataLink", &PyDbTable::removeDataLink2, DS.ARGS({ "row: int=-1", "col: int=-1" }))
         .def("updateDataLink", &PyDbTable::updateDataLink1)
-        .def("updateDataLink", &PyDbTable::updateDataLink2)
-
+        .def("updateDataLink", &PyDbTable::updateDataLink2, DS.OVRL(updateDataLinkOverloads))
         .def("isBreakEnabled", &PyDbTable::isBreakEnabled, DS.ARGS())
         .def("enableBreak", &PyDbTable::enableBreak, DS.ARGS({ "val : bool" }))
         .def("breakFlowDirection", &PyDbTable::breakFlowDirection)
         .def("setBreakFlowDirection", &PyDbTable::setBreakFlowDirection)
         .def("breakHeight", &PyDbTable::breakHeight, DS.ARGS({ "val : int" }))
         .def("setBreakHeight", &PyDbTable::setBreakHeight, DS.ARGS({ "val : int","height : float" }))
-        .def("breakOffset", &PyDbTable::breakOffset)
-        .def("setBreakOffset", &PyDbTable::setBreakOffset)
+        .def("breakOffset", &PyDbTable::breakOffset, DS.ARGS({ "idx: int" }))
+        .def("setBreakOffset", &PyDbTable::setBreakOffset, DS.ARGS({ "idx: int","vec: PyGe.Vector3d" }))
         .def("breakOption", &PyDbTable::breakOption, DS.ARGS())
-        .def("setBreakOption", &PyDbTable::setBreakOption)
+        .def("setBreakOption", &PyDbTable::setBreakOption, DS.ARGS({ "val: TableBreakOption" }))
         .def("breakSpacing", &PyDbTable::breakSpacing, DS.ARGS())
         .def("setBreakSpacing", &PyDbTable::setBreakSpacing, DS.ARGS({ "val : float" }))
         .def("cellRange", &PyDbTable::cellRange, DS.ARGS())
-
         .def("cells", &PyDbTable::getIterator1)
         .def("cells", &PyDbTable::getIterator2)
         .def("cells", &PyDbTable::getIterator3)
-        .def("cells", &PyDbTable::getIterator4)
-
+        .def("cells", &PyDbTable::getIterator4, DS.OVRL(getIteratorOverloads))
         .def("values", &PyDbTable::getValueIterator1)
         .def("values", &PyDbTable::getValueIterator2)
         .def("values", &PyDbTable::getValueIterator3)
-        .def("values", &PyDbTable::getValueIterator4)
-
+        .def("values", &PyDbTable::getValueIterator4, DS.OVRL(getIteratorOverloads))
         .def("className", &PyDbTable::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbTable::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
