@@ -394,10 +394,17 @@ void makePyDbTableWrapper()
         .def("breakSpacing", &PyDbTable::breakSpacing, DS.ARGS())
         .def("setBreakSpacing", &PyDbTable::setBreakSpacing, DS.ARGS({ "val : float" }))
         .def("cellRange", &PyDbTable::cellRange, DS.ARGS())
-        .def("getIterator", &PyDbTable::getIterator1)
-        .def("getIterator", &PyDbTable::getIterator2)
-        .def("getIterator", &PyDbTable::getIterator3)
-        .def("getIterator", &PyDbTable::getIterator4)
+
+        .def("cells", &PyDbTable::getIterator1)
+        .def("cells", &PyDbTable::getIterator2)
+        .def("cells", &PyDbTable::getIterator3)
+        .def("cells", &PyDbTable::getIterator4)
+
+        .def("values", &PyDbTable::getValueIterator1)
+        .def("values", &PyDbTable::getValueIterator2)
+        .def("values", &PyDbTable::getValueIterator3)
+        .def("values", &PyDbTable::getValueIterator4)
+
         .def("className", &PyDbTable::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbTable::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -1507,6 +1514,67 @@ boost::python::list PyDbTable::getIterator4(const AcCellRange& pRange) const
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&pRange, AcDb::kTableIteratorNone));
     for (iter->start(); !iter->done(); iter->step())
         l.append(iter->getCell());
+    return l;
+}
+
+boost::python::list PyDbTable::getValueIterator1()
+{
+    AcDbMText mt;
+    PyAutoLockGIL lock;
+    boost::python::list l;
+    std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator());
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        const auto& c = iter->getCell();
+        mt.setContents(impObj()->textString(c.mnRow, c.mnColumn));
+        l.append(boost::python::make_tuple(c.mnRow, c.mnColumn, wstr_to_utf8(mt.text())));
+    }
+    return l;
+}
+
+boost::python::list PyDbTable::getValueIterator2(AcDb::TableIteratorOption nOption) const
+{
+    AcDbMText mt;
+    PyAutoLockGIL lock;
+    boost::python::list l;
+    const auto range = cellRange();
+    std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&range,nOption));
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        const auto& c = iter->getCell();
+        mt.setContents(impObj()->textString(c.mnRow, c.mnColumn));
+        l.append(boost::python::make_tuple(c.mnRow, c.mnColumn, wstr_to_utf8(mt.text())));
+    }
+    return l;
+}
+
+boost::python::list PyDbTable::getValueIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const
+{
+    AcDbMText mt;
+    PyAutoLockGIL lock;
+    boost::python::list l;
+    std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&pRange, nOption));
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        const auto& c = iter->getCell();
+        mt.setContents(impObj()->textString(c.mnRow, c.mnColumn));
+        l.append(boost::python::make_tuple(c.mnRow, c.mnColumn, wstr_to_utf8(mt.text())));
+    }
+    return l;
+}
+
+boost::python::list PyDbTable::getValueIterator4(const AcCellRange& pRange) const
+{
+    AcDbMText mt;
+    PyAutoLockGIL lock;
+    boost::python::list l;
+    std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&pRange, AcDb::kTableIteratorNone));
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        const auto& c = iter->getCell();
+        mt.setContents(impObj()->textString(c.mnRow, c.mnColumn));
+        l.append(boost::python::make_tuple(c.mnRow, c.mnColumn, wstr_to_utf8(mt.text())));
+    }
     return l;
 }
 
