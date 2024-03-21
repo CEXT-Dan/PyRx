@@ -1,8 +1,8 @@
 #pragma once
 
 #include "PyDbObject.h"
+#include "PyDbObjectId.h"
 
-class PyDbObjectId;
 class PyDbSymbolTableRecord;
 class PyDbDimStyleTableRecord;
 class PyDbBlockTableRecord;

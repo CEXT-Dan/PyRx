@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "PyDbSymbolTable.h"
-#include "PyDbObjectId.h"
 #include "PyDbSymbolTableRecord.h"
 
 
@@ -10,23 +9,24 @@ using namespace boost::python;
 //PyDbSymbolTable wrapper
 void makePyDbSymbolTableWrapper()
 {
+    PyDocString DS("SymbolTable");
     class_<PyDbSymbolTable, bases<PyDbObject>>("SymbolTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("getAt", &PyDbSymbolTable::getAt)
-        .def("add", &PyDbSymbolTable::add)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def("getAt", &PyDbSymbolTable::getAt, DS.ARGS({ "val: str" }))
+        .def("add", &PyDbSymbolTable::add, DS.ARGS({ "val: PyDb.SymbolTableRecord" }))
         .def("has", &PyDbSymbolTable::has1)
-        .def("has", &PyDbSymbolTable::has2)
-        .def("toDict", &PyDbSymbolTable::toDict)
-        .def("recordIds", &PyDbSymbolTable::recordIds)
+        .def("has", &PyDbSymbolTable::has2, DS.ARGS({ "val: str|PyDb.ObjectId" }))
+        .def("toDict", &PyDbSymbolTable::toDict, DS.ARGS())
+        .def("recordIds", &PyDbSymbolTable::recordIds, DS.ARGS())
         .def("desc", &PyDbSymbolTable::desc).staticmethod("desc")
         .def("cast", &PyDbSymbolTable::cast).staticmethod("cast")
         .def("className", &PyDbSymbolTable::className).staticmethod("className")
         .def("cloneFrom", &PyDbSymbolTable::cloneFrom).staticmethod("cloneFrom")
         .def("__iter__", range(&PyDbSymbolTable::begin, &PyDbBlockTable::end))
-        .def("__getitem__", &PyDbSymbolTable::getAt)
+        .def("__getitem__", &PyDbSymbolTable::getAt, DS.ARGS({ "val: str" }))
         .def("__contains__", &PyDbSymbolTable::has1)
-        .def("__contains__", &PyDbSymbolTable::has2)
+        .def("__contains__", &PyDbSymbolTable::has2, DS.ARGS({ "val: str|PyDb.ObjectId" }))
         ;
 }
 
@@ -181,14 +181,15 @@ std::vector<PyDbObjectId>::iterator PyDbSymbolTable::end()
 //AcDbDimStyleTable
 void makePyDbDimStyleTableWrapper()
 {
+    PyDocString DS("DimStyleTable");
     class_<PyDbDimStyleTable, bases<PyDbSymbolTable>>("DimStyleTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("add", &PyDbDimStyleTable::add)
-        .def("className", &PyDbDimStyleTable::className).staticmethod("className")
-        .def("desc", &PyDbDimStyleTable::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbDimStyleTable::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbDimStyleTable::cast).staticmethod("cast")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def("add", &PyDbDimStyleTable::add, DS.ARGS({ "val: PyDb.DimStyleTableRecord" }))
+        .def("className", &PyDbDimStyleTable::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbDimStyleTable::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbDimStyleTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbDimStyleTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -255,7 +256,7 @@ void makePyDbBlockTableWrapper()
     PyDocString DS("BlockTable");
     class_<PyDbBlockTable, bases<PyDbSymbolTable>>("BlockTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
         .def("add", &PyDbBlockTable::add, DS.ARGS({ "block : BlockTableRecord" }))
         .def("className", &PyDbBlockTable::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbBlockTable::desc, DS.SARGS()).staticmethod("desc")
@@ -324,14 +325,15 @@ AcDbBlockTable* PyDbBlockTable::impObj(const std::source_location& src /*= std::
 //PyDbTextStyleTable
 void makePyDbTextStyleTableWrapper()
 {
+    PyDocString DS("TextStyleTable");
     class_<PyDbTextStyleTable, bases<PyDbSymbolTable>>("TextStyleTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("add", &PyDbTextStyleTable::add)
-        .def("className", &PyDbTextStyleTable::className).staticmethod("className")
-        .def("desc", &PyDbTextStyleTable::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbTextStyleTable::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbTextStyleTable::cast).staticmethod("cast")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def("add", &PyDbTextStyleTable::add, DS.ARGS({ "val: PyDb.TextStyleTableRecord" }))
+        .def("className", &PyDbTextStyleTable::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbTextStyleTable::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbTextStyleTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbTextStyleTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -394,14 +396,15 @@ AcDbTextStyleTable* PyDbTextStyleTable::impObj(const std::source_location& src /
 //PyDbLinetypeTable
 void makePyDbLinetypeTableWrapper()
 {
+    PyDocString DS("LinetypeTable");
     class_<PyDbLinetypeTable, bases<PyDbSymbolTable>>("LinetypeTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("add", &PyDbLinetypeTable::add)
-        .def("desc", &PyDbLinetypeTable::desc).staticmethod("desc")
-        .def("cast", &PyDbLinetypeTable::cast).staticmethod("cast")
-        .def("cloneFrom", &PyDbLinetypeTable::cloneFrom).staticmethod("cloneFrom")
-        .def("className", &PyDbLinetypeTable::className).staticmethod("className")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def("add", &PyDbLinetypeTable::add, DS.ARGS({ "val: PyDb.LinetypeTableRecord" }))
+        .def("desc", &PyDbLinetypeTable::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyDbLinetypeTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbLinetypeTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("className", &PyDbLinetypeTable::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -464,14 +467,15 @@ AcDbLinetypeTable* PyDbLinetypeTable::impObj(const std::source_location& src /*=
 //PyDbRegAppTable
 void makePyDbRegAppTableWrapper()
 {
+    PyDocString DS("RegAppTable");
     class_<PyDbRegAppTable, bases<PyDbSymbolTable>>("RegAppTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("add", &PyDbRegAppTable::add)
-        .def("desc", &PyDbRegAppTable::desc).staticmethod("desc")
-        .def("cast", &PyDbRegAppTable::cast).staticmethod("cast")
-        .def("cloneFrom", &PyDbRegAppTable::cloneFrom).staticmethod("cloneFrom")
-        .def("className", &PyDbRegAppTable::className).staticmethod("className")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def("add", &PyDbRegAppTable::add, DS.ARGS({ "val: PyDb.RegAppTableRecord" }))
+        .def("desc", &PyDbRegAppTable::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyDbRegAppTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbRegAppTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("className", &PyDbRegAppTable::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -534,14 +538,15 @@ AcDbRegAppTable* PyDbRegAppTable::impObj(const std::source_location& src /*= std
 //PyDbUCSTable
 void makePyDbUCSTableWrapper()
 {
+    PyDocString DS("UCSTable");
     class_<PyDbUCSTable, bases<PyDbSymbolTable>>("UCSTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("add", &PyDbUCSTable::add)
-        .def("desc", &PyDbUCSTable::desc).staticmethod("desc")
-        .def("cast", &PyDbUCSTable::cast).staticmethod("cast")
-        .def("cloneFrom", &PyDbUCSTable::cloneFrom).staticmethod("cloneFrom")
-        .def("className", &PyDbUCSTable::className).staticmethod("className")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def("add", &PyDbUCSTable::add, DS.ARGS({ "val: PyDb.UCSTableRecord" }))
+        .def("desc", &PyDbUCSTable::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyDbUCSTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbUCSTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("className", &PyDbUCSTable::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -604,14 +609,15 @@ AcDbUCSTable* PyDbUCSTable::impObj(const std::source_location& src /*= std::sour
 //PyDbLayerTable
 void makePyDbLayerTableWrapper()
 {
+    PyDocString DS("LayerTable");
     class_<PyDbLayerTable, bases<PyDbSymbolTable>>("LayerTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("add", &PyDbLayerTable::add)
-        .def("desc", &PyDbLayerTable::desc).staticmethod("desc")
-        .def("cast", &PyDbLayerTable::cast).staticmethod("cast")
-        .def("cloneFrom", &PyDbLayerTable::cloneFrom).staticmethod("cloneFrom")
-        .def("className", &PyDbLayerTable::className).staticmethod("className")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def("add", &PyDbLayerTable::add, DS.ARGS({ "val: PyDb.LayerTableRecord" }))
+        .def("desc", &PyDbLayerTable::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyDbLayerTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbLayerTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("className", &PyDbLayerTable::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -674,14 +680,15 @@ AcDbLayerTable* PyDbLayerTable::impObj(const std::source_location& src /*= std::
 //PyDbAbstractViewTable 
 void makePyDbAbstractViewTableWrapper()
 {
+    PyDocString DS("AbstractViewTable");
     class_<PyDbAbstractViewTable, bases<PyDbSymbolTable>>("AbstractViewTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("add", &PyDbAbstractViewTable::add)
-        .def("desc", &PyDbAbstractViewTable::desc).staticmethod("desc")
-        .def("cast", &PyDbAbstractViewTable::cast).staticmethod("cast")
-        .def("cloneFrom", &PyDbAbstractViewTable::cloneFrom).staticmethod("cloneFrom")
-        .def("className", &PyDbAbstractViewTable::className).staticmethod("className")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def("add", &PyDbAbstractViewTable::add, DS.ARGS({ "val: PyDb.AbstractViewTableRecord" }))
+        .def("desc", &PyDbAbstractViewTable::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyDbAbstractViewTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbAbstractViewTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("className", &PyDbAbstractViewTable::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -742,15 +749,16 @@ AcDbAbstractViewTable* PyDbAbstractViewTable::impObj(const std::source_location&
 //PyDbViewportTable 
 void makePyDbViewportTableWrapper()
 {
+    PyDocString DS("ViewportTable");
     class_<PyDbViewportTable, bases<PyDbAbstractViewTable>>("ViewportTable")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("add", &PyDbAbstractViewTable::add)
-        .def("desc", &PyDbAbstractViewTable::desc).staticmethod("desc")
-        .def("cast", &PyDbAbstractViewTable::cast).staticmethod("cast")
-        .def("cloneFrom", &PyDbAbstractViewTable::cloneFrom).staticmethod("cloneFrom")
-        .def("className", &PyDbAbstractViewTable::className).staticmethod("className")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def("add", &PyDbAbstractViewTable::add, DS.ARGS({ "val: PyDb.AbstractViewTableRecord" }))
+        .def("desc", &PyDbAbstractViewTable::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyDbAbstractViewTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbAbstractViewTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("className", &PyDbAbstractViewTable::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -816,15 +824,16 @@ AcDbViewportTable* PyDbViewportTable::impObj(const std::source_location& src /*=
 //PyDbViewTable 
 void makePyDbViewTableWrapper()
 {
+    PyDocString DS("ViewTable");
     class_<PyDbViewTable, bases<PyDbAbstractViewTable>>("ViewTable")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("add", &PyDbAbstractViewTable::add)
-        .def("desc", &PyDbAbstractViewTable::desc).staticmethod("desc")
-        .def("cast", &PyDbAbstractViewTable::cast).staticmethod("cast")
-        .def("cloneFrom", &PyDbAbstractViewTable::cloneFrom).staticmethod("cloneFrom")
-        .def("className", &PyDbAbstractViewTable::className).staticmethod("className")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def("add", &PyDbAbstractViewTable::add, DS.ARGS({ "val: PyDb.AbstractViewTableRecord" }))
+        .def("desc", &PyDbAbstractViewTable::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyDbAbstractViewTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbAbstractViewTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("className", &PyDbAbstractViewTable::className, DS.SARGS()).staticmethod("className")
         ;
 }
 

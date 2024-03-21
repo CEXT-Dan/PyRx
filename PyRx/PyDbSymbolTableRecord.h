@@ -1,10 +1,10 @@
 #pragma once
 #include "PyDbObject.h"
+#include "PyDbObjectId.h"
 
 class PyDbEntity;
 class PyDbBlockBegin;
 class PyDbBlockEnd;
-class PyDbObjectId;
 class PyDbAnnotationScale;
 class PyGsView;
 

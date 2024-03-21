@@ -44,22 +44,11 @@ class ACIcolorMethod(object):
     ...
 
 class AbstractViewTable(SymbolTable):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
-    def add (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''add( (AbstractViewTable)arg1, (AbstractViewTableRecord)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId add(class PyDbAbstractViewTable {lvalue},class PyDbAbstractViewTableRecord)'''
+    def add (self, val: PyDb.AbstractViewTableRecord)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -85,23 +74,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.AbstractViewTable :
-      '''cast( (RxObject)arg1) -> AbstractViewTable :
 
-    C++ signature :
-        class PyDbAbstractViewTable cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.AbstractViewTable :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.AbstractViewTable :
-      '''cloneFrom( (RxObject)arg1) -> AbstractViewTable :
 
-    C++ signature :
-        class PyDbAbstractViewTable cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.AbstractViewTable :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -121,11 +107,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -148,11 +133,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getAt (self, val: str)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -166,16 +148,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
     ...
-    def has (self, *args, **kwargs)-> bool :
-      '''has( (SymbolTable)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    def has (self, val: str|PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def hasFields (self)-> bool :
       '''                             '''
@@ -270,11 +244,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def recordIds (self, *args, **kwargs)-> list :
-      '''recordIds( (SymbolTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
+    def recordIds (self)-> list :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
       '''                             '''
@@ -326,11 +297,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def toDict (self, *args, **kwargs)-> dict :
-      '''toDict( (SymbolTable)arg1) -> dict :
-
-    C++ signature :
-        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
+    def toDict (self)-> dict :
+      '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
       '''                             '''
@@ -6100,7 +6068,7 @@ class BlockScaling(object):
     ...
 
 class BlockTable(SymbolTable):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead)-> None :
       '''                             '''
     ...
     def add (self, block : BlockTableRecord)-> PyDb.ObjectId :
@@ -6189,11 +6157,8 @@ class BlockTable(SymbolTable):
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getAt (self, val: str)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -6207,16 +6172,8 @@ class BlockTable(SymbolTable):
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
     ...
-    def has (self, *args, **kwargs)-> bool :
-      '''has( (SymbolTable)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    def has (self, val: str|PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def hasFields (self)-> bool :
       '''                             '''
@@ -6311,11 +6268,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def recordIds (self, *args, **kwargs)-> list :
-      '''recordIds( (SymbolTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
+    def recordIds (self)-> list :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
       '''                             '''
@@ -6367,11 +6321,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def toDict (self, *args, **kwargs)-> dict :
-      '''toDict( (SymbolTable)arg1) -> dict :
-
-    C++ signature :
-        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
+    def toDict (self)-> dict :
+      '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
       '''                             '''
@@ -9532,6 +9483,9 @@ class Database(PyRx.RxObject):
     def countEmptyObjects (self, flag : int)-> int :
       '''                             '''
     ...
+    def countHardReferences (self, ids : list[PyDb.ObjectId])-> int :
+      '''                             '''
+    ...
     def currentSpaceId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -10023,7 +9977,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def pucsydir (self)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def purge (self)-> list :
+    def purge (self, ids: list[PyDb.ObjectId])-> list :
       '''                             '''
     ...
     def qtextmode (self)-> bool :
@@ -13589,22 +13543,11 @@ class DimInspect(object):
     ...
 
 class DimStyleTable(SymbolTable):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
-    def add (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''add( (DimStyleTable)arg1, (DimStyleTableRecord)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId add(class PyDbDimStyleTable {lvalue},class PyDbDimStyleTableRecord)'''
+    def add (self, val: PyDb.DimStyleTableRecord)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -13630,23 +13573,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.DimStyleTable :
-      '''cast( (RxObject)arg1) -> DimStyleTable :
 
-    C++ signature :
-        class PyDbDimStyleTable cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.DimStyleTable :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.DimStyleTable :
-      '''cloneFrom( (RxObject)arg1) -> DimStyleTable :
 
-    C++ signature :
-        class PyDbDimStyleTable cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.DimStyleTable :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -13666,11 +13606,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -13693,11 +13632,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getAt (self, val: str)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -13711,16 +13647,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
     ...
-    def has (self, *args, **kwargs)-> bool :
-      '''has( (SymbolTable)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    def has (self, val: str|PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def hasFields (self)-> bool :
       '''                             '''
@@ -13815,11 +13743,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def recordIds (self, *args, **kwargs)-> list :
-      '''recordIds( (SymbolTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
+    def recordIds (self)-> list :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
       '''                             '''
@@ -13871,11 +13796,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def toDict (self, *args, **kwargs)-> dict :
-      '''toDict( (SymbolTable)arg1) -> dict :
-
-    C++ signature :
-        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
+    def toDict (self)-> dict :
+      '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
       '''                             '''
@@ -27684,22 +27606,11 @@ class LayerFilter(DbObject):
     ...
 
 class LayerTable(SymbolTable):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
-    def add (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''add( (LayerTable)arg1, (LayerTableRecord)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId add(class PyDbLayerTable {lvalue},class PyDbLayerTableRecord)'''
+    def add (self, val: PyDb.LayerTableRecord)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -27725,23 +27636,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.LayerTable :
-      '''cast( (RxObject)arg1) -> LayerTable :
 
-    C++ signature :
-        class PyDbLayerTable cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.LayerTable :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.LayerTable :
-      '''cloneFrom( (RxObject)arg1) -> LayerTable :
 
-    C++ signature :
-        class PyDbLayerTable cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.LayerTable :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -27761,11 +27669,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -27788,11 +27695,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getAt (self, val: str)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -27806,16 +27710,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
     ...
-    def has (self, *args, **kwargs)-> bool :
-      '''has( (SymbolTable)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    def has (self, val: str|PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def hasFields (self)-> bool :
       '''                             '''
@@ -27910,11 +27806,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def recordIds (self, *args, **kwargs)-> list :
-      '''recordIds( (SymbolTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
+    def recordIds (self)-> list :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
       '''                             '''
@@ -27966,11 +27859,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def toDict (self, *args, **kwargs)-> dict :
-      '''toDict( (SymbolTable)arg1) -> dict :
-
-    C++ signature :
-        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
+    def toDict (self)-> dict :
+      '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
       '''                             '''
@@ -31480,22 +31370,11 @@ class LineWeight(object):
     ...
 
 class LinetypeTable(SymbolTable):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
-    def add (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''add( (LinetypeTable)arg1, (LinetypeTableRecord)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId add(class PyDbLinetypeTable {lvalue},class PyDbLinetypeTableRecord)'''
+    def add (self, val: PyDb.LinetypeTableRecord)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -31521,23 +31400,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.LinetypeTable :
-      '''cast( (RxObject)arg1) -> LinetypeTable :
 
-    C++ signature :
-        class PyDbLinetypeTable cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.LinetypeTable :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.LinetypeTable :
-      '''cloneFrom( (RxObject)arg1) -> LinetypeTable :
 
-    C++ signature :
-        class PyDbLinetypeTable cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.LinetypeTable :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -31557,11 +31433,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -31584,11 +31459,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getAt (self, val: str)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -31602,16 +31474,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
     ...
-    def has (self, *args, **kwargs)-> bool :
-      '''has( (SymbolTable)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    def has (self, val: str|PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def hasFields (self)-> bool :
       '''                             '''
@@ -31706,11 +31570,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def recordIds (self, *args, **kwargs)-> list :
-      '''recordIds( (SymbolTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
+    def recordIds (self)-> list :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
       '''                             '''
@@ -31762,11 +31623,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def toDict (self, *args, **kwargs)-> dict :
-      '''toDict( (SymbolTable)arg1) -> dict :
-
-    C++ signature :
-        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
+    def toDict (self)-> dict :
+      '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
       '''                             '''
@@ -52062,22 +51920,11 @@ class RasterImageDefReactor(DbObject):
     ...
 
 class RegAppTable(SymbolTable):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
-    def add (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''add( (RegAppTable)arg1, (RegAppTableRecord)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId add(class PyDbRegAppTable {lvalue},class PyDbRegAppTableRecord)'''
+    def add (self, val: PyDb.RegAppTableRecord)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -52103,23 +51950,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.RegAppTable :
-      '''cast( (RxObject)arg1) -> RegAppTable :
 
-    C++ signature :
-        class PyDbRegAppTable cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.RegAppTable :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.RegAppTable :
-      '''cloneFrom( (RxObject)arg1) -> RegAppTable :
 
-    C++ signature :
-        class PyDbRegAppTable cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.RegAppTable :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -52139,11 +51983,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -52166,11 +52009,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getAt (self, val: str)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -52184,16 +52024,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
     ...
-    def has (self, *args, **kwargs)-> bool :
-      '''has( (SymbolTable)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    def has (self, val: str|PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def hasFields (self)-> bool :
       '''                             '''
@@ -52288,11 +52120,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def recordIds (self, *args, **kwargs)-> list :
-      '''recordIds( (SymbolTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
+    def recordIds (self)-> list :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
       '''                             '''
@@ -52344,11 +52173,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def toDict (self, *args, **kwargs)-> dict :
-      '''toDict( (SymbolTable)arg1) -> dict :
-
-    C++ signature :
-        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
+    def toDict (self)-> dict :
+      '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
       '''                             '''
@@ -60076,22 +59902,11 @@ __init__( (object)arg1) -> None :
     ...
 
 class SymbolTable(DbObject):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
-    def add (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''add( (SymbolTable)arg1, (SymbolTableRecord)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId add(class PyDbSymbolTable {lvalue},class PyDbSymbolTableRecord)'''
+    def add (self, val: PyDb.SymbolTableRecord)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -60180,11 +59995,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getAt (self, val: str)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -60198,16 +60010,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
     ...
-    def has (self, *args, **kwargs)-> bool :
-      '''has( (SymbolTable)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    def has (self, val: str|PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def hasFields (self)-> bool :
       '''                             '''
@@ -60302,11 +60106,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def recordIds (self, *args, **kwargs)-> list :
-      '''recordIds( (SymbolTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
+    def recordIds (self)-> list :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
       '''                             '''
@@ -60358,11 +60159,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def toDict (self, *args, **kwargs)-> dict :
-      '''toDict( (SymbolTable)arg1) -> dict :
-
-    C++ signature :
-        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
+    def toDict (self)-> dict :
+      '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
       '''                             '''
@@ -63777,22 +63575,11 @@ class TextHorzMode(object):
     ...
 
 class TextStyleTable(SymbolTable):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
-    def add (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''add( (TextStyleTable)arg1, (TextStyleTableRecord)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId add(class PyDbTextStyleTable {lvalue},class PyDbTextStyleTableRecord)'''
+    def add (self, val: PyDb.TextStyleTableRecord)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -63818,23 +63605,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.TextStyleTable :
-      '''cast( (RxObject)arg1) -> TextStyleTable :
 
-    C++ signature :
-        class PyDbTextStyleTable cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.TextStyleTable :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.TextStyleTable :
-      '''cloneFrom( (RxObject)arg1) -> TextStyleTable :
 
-    C++ signature :
-        class PyDbTextStyleTable cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.TextStyleTable :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -63854,11 +63638,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -63881,11 +63664,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getAt (self, val: str)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -63899,16 +63679,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
     ...
-    def has (self, *args, **kwargs)-> bool :
-      '''has( (SymbolTable)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    def has (self, val: str|PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def hasFields (self)-> bool :
       '''                             '''
@@ -64003,11 +63775,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def recordIds (self, *args, **kwargs)-> list :
-      '''recordIds( (SymbolTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
+    def recordIds (self)-> list :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
       '''                             '''
@@ -64059,11 +63828,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def toDict (self, *args, **kwargs)-> dict :
-      '''toDict( (SymbolTable)arg1) -> dict :
-
-    C++ signature :
-        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
+    def toDict (self)-> dict :
+      '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
       '''                             '''
@@ -64915,22 +64681,11 @@ class TransparencyMethod(object):
     ...
 
 class UCSTable(SymbolTable):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
-    def add (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''add( (UCSTable)arg1, (UCSTableRecord)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId add(class PyDbUCSTable {lvalue},class PyDbUCSTableRecord)'''
+    def add (self, val: PyDb.UCSTableRecord)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -64956,23 +64711,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.UCSTable :
-      '''cast( (RxObject)arg1) -> UCSTable :
 
-    C++ signature :
-        class PyDbUCSTable cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.UCSTable :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.UCSTable :
-      '''cloneFrom( (RxObject)arg1) -> UCSTable :
 
-    C++ signature :
-        class PyDbUCSTable cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.UCSTable :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -64992,11 +64744,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -65019,11 +64770,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getAt (self, val: str)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -65037,16 +64785,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
     ...
-    def has (self, *args, **kwargs)-> bool :
-      '''has( (SymbolTable)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    def has (self, val: str|PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def hasFields (self)-> bool :
       '''                             '''
@@ -65141,11 +64881,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def recordIds (self, *args, **kwargs)-> list :
-      '''recordIds( (SymbolTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
+    def recordIds (self)-> list :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
       '''                             '''
@@ -65197,11 +64934,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def toDict (self, *args, **kwargs)-> dict :
-      '''toDict( (SymbolTable)arg1) -> dict :
-
-    C++ signature :
-        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
+    def toDict (self)-> dict :
+      '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
       '''                             '''
@@ -67595,32 +67329,11 @@ class Vertex2dType(object):
     ...
 
 class ViewTable(AbstractViewTable):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
-    def add (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''add( (ViewTable)arg1, (AbstractViewTableRecord)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId add(class PyDbViewTable {lvalue},class PyDbAbstractViewTableRecord)'''
+    def add (self, val: PyDb.AbstractViewTableRecord)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -67646,23 +67359,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.AbstractViewTable :
-      '''cast( (RxObject)arg1) -> AbstractViewTable :
 
-    C++ signature :
-        class PyDbAbstractViewTable cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.AbstractViewTable :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.AbstractViewTable :
-      '''cloneFrom( (RxObject)arg1) -> AbstractViewTable :
 
-    C++ signature :
-        class PyDbAbstractViewTable cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.AbstractViewTable :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -67682,11 +67392,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -67709,11 +67418,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getAt (self, val: str)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -67727,16 +67433,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
     ...
-    def has (self, *args, **kwargs)-> bool :
-      '''has( (SymbolTable)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    def has (self, val: str|PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def hasFields (self)-> bool :
       '''                             '''
@@ -67831,11 +67529,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def recordIds (self, *args, **kwargs)-> list :
-      '''recordIds( (SymbolTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
+    def recordIds (self)-> list :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
       '''                             '''
@@ -67887,11 +67582,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def toDict (self, *args, **kwargs)-> dict :
-      '''toDict( (SymbolTable)arg1) -> dict :
-
-    C++ signature :
-        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
+    def toDict (self)-> dict :
+      '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
       '''                             '''
@@ -69429,32 +69121,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class ViewportTable(AbstractViewTable):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
-    def add (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''add( (ViewportTable)arg1, (AbstractViewTableRecord)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId add(class PyDbViewportTable {lvalue},class PyDbAbstractViewTableRecord)'''
+    def add (self, val: PyDb.AbstractViewTableRecord)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -69480,23 +69151,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.AbstractViewTable :
-      '''cast( (RxObject)arg1) -> AbstractViewTable :
 
-    C++ signature :
-        class PyDbAbstractViewTable cast(class PyRxObject)'''
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyDb.AbstractViewTable :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.AbstractViewTable :
-      '''cloneFrom( (RxObject)arg1) -> AbstractViewTable :
 
-    C++ signature :
-        class PyDbAbstractViewTable cloneFrom(class PyRxObject)'''
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.AbstractViewTable :
+      '''                             '''
     ...
     def close (self)-> None :
       '''                             '''
@@ -69516,11 +69184,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -69543,11 +69210,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getAt (self, val: str)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -69561,16 +69225,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
     ...
-    def has (self, *args, **kwargs)-> bool :
-      '''has( (SymbolTable)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    def has (self, val: str|PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def hasFields (self)-> bool :
       '''                             '''
@@ -69665,11 +69321,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def recordIds (self, *args, **kwargs)-> list :
-      '''recordIds( (SymbolTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
+    def recordIds (self)-> list :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
       '''                             '''
@@ -69721,11 +69374,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def toDict (self, *args, **kwargs)-> dict :
-      '''toDict( (SymbolTable)arg1) -> dict :
-
-    C++ signature :
-        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
+    def toDict (self)-> dict :
+      '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
       '''                             '''
