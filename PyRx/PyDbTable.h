@@ -204,6 +204,11 @@ public:
     boost::python::list getIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const;
     boost::python::list getIterator4(const AcCellRange& pRange) const;
 
+    boost::python::list getValueIterator1();
+    boost::python::list getValueIterator2(AcDb::TableIteratorOption nOption) const;
+    boost::python::list getValueIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const;
+    boost::python::list getValueIterator4(const AcCellRange& pRange) const;
+
     bool                isContentEditable(int nRow, int nCol) const;
     bool                isFormatEditable(int nRow, int nCol) const;
     AcDb::CellState     cellState(int nRow, int nCol) const;
