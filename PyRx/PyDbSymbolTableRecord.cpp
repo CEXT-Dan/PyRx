@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "PyDbSymbolTableRecord.h"
-#include "PyDbObjectId.h"
 #include "PyDbEntity.h"
 #include "PyDbObjectContext.h"
 #include "PyGsView.h"
