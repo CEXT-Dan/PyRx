@@ -11711,6 +11711,98 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
 
+class DbOsnapOverrule(PyRx.Overrule):
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def addOverrule (self, *args, **kwargs)-> None :
+      '''addOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
+
+    C++ signature :
+        void addOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+    ...
+    def addOverruleLast (self, *args, **kwargs)-> None :
+      '''addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
+    ...
+    def baseIsContentSnappable (self, object: PyDb.DbEntity)-> bool :
+      '''                             '''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self, other: PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def desc (self, *args, **kwargs)-> PyRx.RxClass :
+      '''desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def dispose (self)-> None :
+      '''                             '''
+    ...
+    def hasOverrule (self, *args, **kwargs)-> bool :
+      '''hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
+
+    C++ signature :
+        bool hasOverrule(class PyRxObject {lvalue},class PyRxClass {lvalue})'''
+    ...
+    def implRefCount (self)-> int :
+      '''                             '''
+    ...
+    def isA (self)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isApplicable (self, object: PyRx.RxObject)-> bool :
+      '''                             '''
+    ...
+    def isContentSnappable (self, object: PyDb.DbEntity)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self, rhs: PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self)-> bool :
+      '''                             '''
+    ...
+    def isOverruling (self, *args, **kwargs)-> bool :
+      '''isOverruling() -> bool :
+
+    C++ signature :
+        bool isOverruling()'''
+    ...
+    def keepAlive (self, flag: bool)-> None :
+      '''                             '''
+    ...
+    def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def removeOverrule (self, *args, **kwargs)-> None :
+      '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
+
+    C++ signature :
+        void removeOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+    ...
+    def setIsOverruling (self, *args, **kwargs)-> None :
+      '''setIsOverruling( (bool)arg1) -> None :
+
+    C++ signature :
+        void setIsOverruling(bool)'''
+    ...
+
 class DeepCloneType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''

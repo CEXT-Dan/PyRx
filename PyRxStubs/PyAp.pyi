@@ -1324,7 +1324,7 @@ createLayout( (LayoutManager)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (D
     C++ signature :
         void createLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def createLayoutFromTemplate (self, newLayoutName : str, templatePath : str, layoutName : str, db : PyDb.Database=current)-> PyDb.ObjectId :
+    def createLayoutFromTemplate (self, newLayoutName : str, templatePath : str, layoutName : str, db : PyDb.Database='current')-> PyDb.ObjectId :
       '''                             '''
     ...
     def createViewports (self)-> bool :
@@ -1360,7 +1360,7 @@ findLayoutNamed( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> ObjectId :
     C++ signature :
         class PyDbObjectId findLayoutNamed(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
     ...
-    def generateNextNewLayoutName (self, val : PyDb.Database=current)-> str :
+    def generateNextNewLayoutName (self, val : PyDb.Database='current')-> str :
       '''                             '''
     ...
     def getActiveLayoutBTRId (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -1434,7 +1434,7 @@ layoutExists( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> bool :
     C++ signature :
         bool layoutExists(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
     ...
-    def pageSetup (self, layoutBTRId : PyDb.ObjectId=kNull, parent : int=kNull, isPageSetupDlg : bool=True)-> int :
+    def pageSetup (self, layoutBTRId : PyDb.ObjectId=PyDb.ObjectId.kNull, parent : int=0, isPageSetupDlg : bool=True)-> int :
       '''                             '''
     ...
     def pointInViewports (self, val : PyGe.Point3d)-> list :
