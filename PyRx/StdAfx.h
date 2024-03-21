@@ -220,6 +220,7 @@ constexpr auto makeIterator = [](const auto& record)
         Acad::ErrorStatus es = record.newIterator(pIter);
         return std::make_tuple(es, std::unique_ptr<IteratorType>(pIter));
     };
+constexpr auto makeAcDbSymbolTableIterator = makeIterator<AcDbSymbolTableIterator>;
 constexpr auto makeBlockTableIterator = makeIterator<AcDbBlockTableIterator>;
 constexpr auto makeBlockTableRecordIterator = makeIterator<AcDbBlockTableRecordIterator>;
 
