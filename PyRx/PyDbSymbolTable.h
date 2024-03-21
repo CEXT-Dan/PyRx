@@ -47,7 +47,7 @@ public:
     void filliterator();
     std::vector<PyDbObjectId>::iterator begin();
     std::vector<PyDbObjectId>::iterator end();
-    std::vector<PyDbObjectId> m_iterable;
+    std::vector<PyDbObjectId> m_iterable{ 0 };
 };
 
 //---------------------------------------------------------------------------------------- -
