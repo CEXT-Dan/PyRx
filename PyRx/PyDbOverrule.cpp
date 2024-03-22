@@ -18,7 +18,7 @@ void makePyDbObjectOverruleWrapper()
         .def("close", &PyDbObjectOverrule::closeWr, DS.ARGS({ "object: PyDb.DbObject" }))
         .def("cancel", &PyDbObjectOverrule::cancelWr, DS.ARGS({ "object: PyDb.DbObject" }))
         .def("erase", &PyDbObjectOverrule::eraseWr, DS.ARGS({ "object: PyDb.DbObject","erased : bool" }))
-        .def("deepClone", &PyDbObjectOverrule::baseDeepClone,  DS.ARGS({ "subject: PyDb.DbObject","owner: PyDb.DbObject","mapping: PyDb.IdMapping","isPrimary : bool" }))
+        .def("deepClone", &PyDbObjectOverrule::baseDeepClone, DS.ARGS({ "subject: PyDb.DbObject","owner: PyDb.DbObject","mapping: PyDb.IdMapping","isPrimary : bool" }))
         .def("wblockClone", &PyDbObjectOverrule::baseWblockClone, DS.ARGS({ "subject: PyDb.DbObject","owner: PyRx.RxObject","mapping: PyDb.IdMapping","isPrimary : bool" }))
         .def("baseOpen", &PyDbObjectOverrule::baseOpen, DS.ARGS({ "object: PyDb.DbObject","mode: OpenMode" }))
         .def("baseClose", &PyDbObjectOverrule::baseClose, DS.ARGS({ "object: PyDb.DbObject" }))
@@ -202,7 +202,7 @@ Acad::ErrorStatus PyDbObjectOverrule::deepCloneWr(const AcDbObject* pSubject, Ac
         pySubject.forceKeepAlive(true);
         PyDbObject pyOwnerObject(const_cast<AcDbObject*>(pOwnerObject), false);
         pyOwnerObject.forceKeepAlive(true);
-        PyDbIdMapping pyMapping(idMap,true);
+        PyDbIdMapping pyMapping(idMap, true);
 
         if (const override& f = get_override("deepClone"))
         {
@@ -232,7 +232,7 @@ Acad::ErrorStatus PyDbObjectOverrule::wblockCloneWr(const AcDbObject* pSubject, 
         pySubject.forceKeepAlive(true);
         PyRxObject pyOwnerObject(pOwnerObject, false, false);
         pyOwnerObject.forceKeepAlive(true);
-        PyDbIdMapping pyMapping(idMap,true);
+        PyDbIdMapping pyMapping(idMap, true);
 
         if (const override& f = get_override("wblockClone"))
         {
@@ -305,7 +305,7 @@ AcDbObjectOverrule* PyDbObjectOverrule::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbObjectOverrule*>(m_pyImp.get());
 }
 
@@ -315,13 +315,45 @@ void makePyDbOsnapOverruleWrapper()
 {
     PyDocString DS("OsnapOverrule");
     class_<PyDbOsnapOverrule, bases<PyRxOverrule>>("OsnapOverrule")
+
         .def("isApplicable", &PyDbOsnapOverrule::isApplicableWr, DS.ARGS({ "object: PyRx.RxObject" }))
         .def("isContentSnappable", &PyDbOsnapOverrule::isContentSnappableWr, DS.ARGS({ "object: PyDb.Entity" }))
+
+        .def("getOsnapPoints", &PyDbOsnapOverrule::getOsnapPointsWr, 
+            DS.ARGS({ "pSubject: PyDb.Entity", "osMode: PyDb.OsnapMode", "gsMark: int","pickPnt: PyGe.Point3d","lastPnt: PyGe.Point3d","viewXform: PyGe.Matrix3d" }))
+        .def("getOsnapPointsX", &PyDbOsnapOverrule::getOsnapPointsXWr,
+            DS.ARGS({ "pSubject: PyDb.Entity", "osMode: PyDb.OsnapMode", "gsMark: int","pickPnt: PyGe.Point3d","lastPnt: PyGe.Point3d","viewXform: PyGe.Matrix3d","insertionMat: PyGe.Matrix3d" }))
+
         .def("baseIsContentSnappable", &PyDbOsnapOverrule::baseIsContentSnappable, DS.ARGS({ "object: PyDb.Entity" }))
-        .def("className", &PyDbOsnapOverrule::className).staticmethod("className")
-        .def("desc", &PyDbOsnapOverrule::desc).staticmethod("desc")
+
+        .def("baseGetOsnapPoints", &PyDbOsnapOverrule::baseGetOsnapPoints,
+            DS.ARGS({ "pSubject: PyDb.Entity", "osMode: PyDb.OsnapMode", "gsMark: int","pickPnt: PyGe.Point3d","lastPnt: PyGe.Point3d","viewXform: PyGe.Matrix3d" }))
+
+        .def("baseGetOsnapPointsX", &PyDbOsnapOverrule::baseGetOsnapPointsX,
+            DS.ARGS({ "pSubject: PyDb.Entity", "osMode: PyDb.OsnapMode", "gsMark: int","pickPnt: PyGe.Point3d","lastPnt: PyGe.Point3d","viewXform: PyGe.Matrix3d","insertionMat: PyGe.Matrix3d" }))
+
+        .def("className", &PyDbOsnapOverrule::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbOsnapOverrule::desc, DS.SARGS()).staticmethod("desc")
         ;
 }
+
+static std::mutex PyDbOsnapOverruleMutex;
+
+static auto tupletotuple(const boost::python::tuple& pytuple)
+{
+    Acad::ErrorStatus es = eInvalidInput;
+    AcGePoint3dArray pts;
+    if (PyTuple_Check(pytuple.ptr()) && boost::python::len(pytuple) == 2)
+    {
+        if (extract<int>(pytuple[0]).check())
+            es = extract<Acad::ErrorStatus>(pytuple[0]);
+
+        if (extract<list>(pytuple[1]).check())
+            pts = PyListToPoint3dArray(pytuple[1]);
+    }
+    return std::make_tuple(es, pts);
+}
+
 
 PyDbOsnapOverrule::PyDbOsnapOverrule()
     : PyRxOverrule(this)
@@ -330,6 +362,9 @@ PyDbOsnapOverrule::PyDbOsnapOverrule()
 
 bool PyDbOsnapOverrule::isApplicable(const AcRxObject* pOverruledSubject) const
 {
+#ifdef BRXAPP
+    std::lock_guard<std::mutex> lk(PyDbOsnapOverruleMutex);
+#endif // BRXAPP
     if (!reg_isApplicable)
         return false;
     PyRxObject obj(pOverruledSubject);
@@ -343,6 +378,59 @@ bool PyDbOsnapOverrule::isContentSnappable(const AcDbEntity* pSubject)
     PyDbEntity obj(const_cast<AcDbEntity*>(pSubject), false);
     obj.forceKeepAlive(true);
     return this->isContentSnappableWr(obj);
+}
+
+Acad::ErrorStatus PyDbOsnapOverrule::getOsnapPoints(
+    const AcDbEntity* pSubject,
+    AcDb::OsnapMode osnapMode,
+    Adesk::GsMarker gsSelectionMark,
+    const AcGePoint3d& pickPoint,
+    const AcGePoint3d& lastPoint,
+    const AcGeMatrix3d& viewXform,
+    AcGePoint3dArray& snapPoints,
+    AcDbIntArray& geomIds)
+{
+    if (!reg_getOsnapPoints)
+        return AcDbOsnapOverrule::getOsnapPoints(pSubject, osnapMode, gsSelectionMark, pickPoint, lastPoint, viewXform, snapPoints, geomIds);
+
+    PyDbEntity obj(const_cast<AcDbEntity*>(pSubject), false);
+    obj.forceKeepAlive(true);
+
+    PyAutoLockGIL lock;
+    if (auto [es, pts] = tupletotuple(this->getOsnapPointsWr(obj, osnapMode, gsSelectionMark, pickPoint, lastPoint, viewXform)); es == eOk)
+    {
+        for (const auto& item : pts)
+            snapPoints.append(item);
+        return eOk;
+    }
+    return eInvalidInput;
+
+}
+
+Acad::ErrorStatus PyDbOsnapOverrule::getOsnapPoints(const AcDbEntity* pSubject,
+    AcDb::OsnapMode osnapMode,
+    Adesk::GsMarker gsSelectionMark,
+    const AcGePoint3d& pickPoint,
+    const AcGePoint3d& lastPoint,
+    const AcGeMatrix3d& viewXform,
+    AcGePoint3dArray& snapPoints,
+    AcDbIntArray& geomIds,
+    const AcGeMatrix3d& insertionMat)
+{
+    if (!reg_getOsnapPointsXform)
+        return AcDbOsnapOverrule::getOsnapPoints(pSubject, osnapMode, gsSelectionMark, pickPoint, lastPoint, viewXform, snapPoints, geomIds, insertionMat);
+
+    PyDbEntity obj(const_cast<AcDbEntity*>(pSubject), false);
+    obj.forceKeepAlive(true);
+
+    PyAutoLockGIL lock;
+    if (auto [es, pts] = tupletotuple(this->getOsnapPointsXWr(obj, osnapMode, gsSelectionMark, pickPoint, lastPoint, viewXform, insertionMat)); es == eOk)
+    {
+        for (const auto& item : pts)
+            snapPoints.append(item);
+        return eOk;
+    }
+    return eInvalidInput;
 }
 
 bool PyDbOsnapOverrule::isApplicableWr(const PyRxObject& pOverruledSubject) const
@@ -368,7 +456,7 @@ bool PyDbOsnapOverrule::isContentSnappableWr(const PyDbEntity& pSubject)
     PyAutoLockGIL lock;
     try
     {
-        if (const override& f = get_override("isApplicable"))
+        if (const override& f = get_override("isContentSnappable"))
             return f(pSubject);
         reg_isContentSnappable = false;
         return false;
@@ -384,6 +472,84 @@ bool PyDbOsnapOverrule::isContentSnappableWr(const PyDbEntity& pSubject)
 bool PyDbOsnapOverrule::baseIsContentSnappable(const PyDbEntity& pSubject)
 {
     return AcDbOsnapOverrule::isContentSnappable(pSubject.impObj());
+}
+
+boost::python::tuple PyDbOsnapOverrule::getOsnapPointsWr(
+    PyDbEntity& pSubject,
+    AcDb::OsnapMode osnapMode,
+    Adesk::GsMarker gsSelectionMark,
+    const AcGePoint3d& pickPoint,
+    const AcGePoint3d& lastPoint,
+    const AcGeMatrix3d& viewXform)
+{
+    try
+    {
+        if (const override& f = get_override("getOsnapPoints"))
+            return f(pSubject, osnapMode, gsSelectionMark, pickPoint, lastPoint, viewXform);
+        reg_getOsnapPoints = false;
+    }
+    catch (...)
+    {
+        printExceptionMsg();
+        reg_isApplicable = false;
+    }
+    return boost::python::make_tuple(eInvalidInput, boost::python::list());
+}
+
+boost::python::tuple PyDbOsnapOverrule::getOsnapPointsXWr(
+    PyDbEntity& pSubject,
+    AcDb::OsnapMode osnapMode,
+    Adesk::GsMarker gsSelectionMark,
+    const AcGePoint3d& pickPoint,
+    const AcGePoint3d& lastPoint,
+    const AcGeMatrix3d& viewXform,
+    const AcGeMatrix3d& insertionMat)
+{
+    try
+    {
+        if (const override& f = get_override("getOsnapPointsX"))
+            return f(pSubject, osnapMode, gsSelectionMark, pickPoint, lastPoint, viewXform, insertionMat);
+        reg_getOsnapPointsXform = false;
+    }
+    catch (...)
+    {
+        printExceptionMsg();
+        reg_isApplicable = false;
+    }
+    return boost::python::make_tuple(eInvalidInput, boost::python::list());
+}
+
+
+boost::python::tuple PyDbOsnapOverrule::baseGetOsnapPoints(
+    PyDbEntity& pSubject, 
+    AcDb::OsnapMode osnapMode, 
+    Adesk::GsMarker gsSelectionMark, 
+    const AcGePoint3d& pickPoint, 
+    const AcGePoint3d& lastPoint, 
+    const AcGeMatrix3d& viewXform)
+{
+    PyAutoLockGIL lock;
+    AcGePoint3dArray pts;
+    AcDbIntArray geoids;
+    auto es = AcDbOsnapOverrule::getOsnapPoints(pSubject.impObj(), osnapMode, gsSelectionMark, pickPoint, lastPoint, viewXform, pts, geoids);
+    return boost::python::make_tuple(es, Point3dArrayToPyList(pts));
+}
+
+
+boost::python::tuple PyDbOsnapOverrule::baseGetOsnapPointsX(
+    PyDbEntity& pSubject, 
+    AcDb::OsnapMode osnapMode, 
+    Adesk::GsMarker gsSelectionMark, 
+    const AcGePoint3d& pickPoint, 
+    const AcGePoint3d& lastPoint, 
+    const AcGeMatrix3d& viewXform, 
+    const AcGeMatrix3d& insertionMat)
+{
+    PyAutoLockGIL lock;
+    AcGePoint3dArray pts;
+    AcDbIntArray geoids;
+    auto es = AcDbOsnapOverrule::getOsnapPoints(pSubject.impObj(), osnapMode, gsSelectionMark, pickPoint, lastPoint, viewXform, pts, geoids, insertionMat);
+    return boost::python::make_tuple(es , Point3dArrayToPyList(pts));
 }
 
 std::string PyDbOsnapOverrule::className()
