@@ -45,7 +45,7 @@ struct PyRxObjectDeleter
 #endif
                 if (const auto es = pDbo->close(); es != eOk) [[unlikely]] {
                     acutPrintf(fmt, acadErrorStatusText(es), __FUNCTIONW__);
-                }
+                    }
                 return true;
             }
         }
@@ -158,7 +158,7 @@ AcRxObject* PyRxObject::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return m_pyImp.get();
 }
 
@@ -231,6 +231,6 @@ AcRxClass* PyRxClass::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcRxClass*>(m_pyImp.get());
 }
