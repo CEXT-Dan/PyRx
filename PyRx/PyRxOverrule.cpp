@@ -7,15 +7,16 @@ using namespace boost::python;
 //PyRxOverruleBase
 void makePyRxOverruleWrapper()
 {
+    PyDocString DS("Overrule");
     class_<PyRxOverrule, bases<PyRxObject>>("Overrule", boost::python::no_init)
-        .def("addOverrule", &PyRxOverrule::addOverrule1).staticmethod("addOverrule")
-        .def("addOverruleLast", &PyRxOverrule::addOverrule2).staticmethod("addOverruleLast")
-        .def("removeOverrule", &PyRxOverrule::removeOverrule).staticmethod("removeOverrule")
-        .def("setIsOverruling", &PyRxOverrule::setIsOverruling).staticmethod("setIsOverruling")
-        .def("isOverruling", &PyRxOverrule::isOverruling).staticmethod("isOverruling")
-        .def("hasOverrule", &PyRxOverrule::hasOverrule).staticmethod("hasOverrule")
-        .def("className", &PyRxOverrule::className).staticmethod("className")
-        .def("desc", &PyRxOverrule::desc).staticmethod("desc")
+        .def("addOverrule", &PyRxOverrule::addOverrule1, DS.SARGS({ "rxClass: PyRx.RxClass","overrule: PyRx.Overrule" })).staticmethod("addOverrule")
+        .def("addOverruleLast", &PyRxOverrule::addOverrule2, DS.SARGS({ "rxClass: PyRx.RxClass","overrule: PyRx.Overrule","addLast: bool" })).staticmethod("addOverruleLast")
+        .def("removeOverrule", &PyRxOverrule::removeOverrule, DS.SARGS({ "rxClass: PyRx.RxClass","overrule: PyRx.Overrule" })).staticmethod("removeOverrule")
+        .def("setIsOverruling", &PyRxOverrule::setIsOverruling, DS.ARGS({ "flag: bool" })).staticmethod("setIsOverruling")
+        .def("isOverruling", &PyRxOverrule::isOverruling, DS.ARGS()).staticmethod("isOverruling")
+        .def("hasOverrule", &PyRxOverrule::hasOverrule, DS.SARGS({ "subject: PyRx.RxObject","rxClass: PyRx.RxClass" })).staticmethod("hasOverrule")
+        .def("className", &PyRxOverrule::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyRxOverrule::desc, DS.SARGS()).staticmethod("desc")
         ;
 }
 
@@ -26,17 +27,17 @@ PyRxOverrule::PyRxOverrule(AcRxOverrule* ptr)
 
 void PyRxOverrule::addOverrule1(PyRxClass& pClass, PyRxOverrule& pOverrule)
 {
-    return PyThrowBadEs(AcRxOverrule::addOverrule(pClass.impObj(), pOverrule.impObj()));
+    PyThrowBadEs(AcRxOverrule::addOverrule(pClass.impObj(), pOverrule.impObj()));
 }
 
 void PyRxOverrule::addOverrule2(PyRxClass& pClass, PyRxOverrule& pOverrule, bool bAddAtLast)
 {
-    return PyThrowBadEs(AcRxOverrule::addOverrule(pClass.impObj(), pOverrule.impObj(), bAddAtLast));
+    PyThrowBadEs(AcRxOverrule::addOverrule(pClass.impObj(), pOverrule.impObj(), bAddAtLast));
 }
 
 void PyRxOverrule::removeOverrule(PyRxClass& pClass, PyRxOverrule& pOverrule)
 {
-    return PyThrowBadEs(AcRxOverrule::removeOverrule(pClass.impObj(), pOverrule.impObj()));
+    PyThrowBadEs(AcRxOverrule::removeOverrule(pClass.impObj(), pOverrule.impObj()));
 }
 
 void PyRxOverrule::setIsOverruling(bool bIsOverruling)

@@ -95,23 +95,20 @@ class Overrule(RxObject):
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def addOverrule (self, *args, **kwargs)-> None :
-      '''addOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
 
-    C++ signature :
-        void addOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+    @staticmethod
+    def addOverrule (rxClass: PyRx.RxClass,overrule: PyRx.Overrule)-> None :
+      '''                             '''
     ...
-    def addOverruleLast (self, *args, **kwargs)-> None :
-      '''addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> None :
 
-    C++ signature :
-        void addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
+    @staticmethod
+    def addOverruleLast (rxClass: PyRx.RxClass,overrule: PyRx.Overrule,addLast: bool)-> None :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -119,20 +116,18 @@ This class cannot be instantiated from Python'''
     def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def dispose (self)-> None :
       '''                             '''
     ...
-    def hasOverrule (self, *args, **kwargs)-> bool :
-      '''hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
 
-    C++ signature :
-        bool hasOverrule(class PyRxObject {lvalue},class PyRxClass {lvalue})'''
+    @staticmethod
+    def hasOverrule (subject: PyRx.RxObject,rxClass: PyRx.RxClass)-> bool :
+      '''                             '''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -146,11 +141,8 @@ This class cannot be instantiated from Python'''
     def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def isOverruling (self, *args, **kwargs)-> bool :
-      '''isOverruling() -> bool :
-
-    C++ signature :
-        bool isOverruling()'''
+    def isOverruling (self)-> bool :
+      '''                             '''
     ...
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
@@ -158,17 +150,13 @@ This class cannot be instantiated from Python'''
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def removeOverrule (self, *args, **kwargs)-> None :
-      '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
 
-    C++ signature :
-        void removeOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+    @staticmethod
+    def removeOverrule (rxClass: PyRx.RxClass,overrule: PyRx.Overrule)-> None :
+      '''                             '''
     ...
-    def setIsOverruling (self, *args, **kwargs)-> None :
-      '''setIsOverruling( (bool)arg1) -> None :
-
-    C++ signature :
-        void setIsOverruling(bool)'''
+    def setIsOverruling (self, flag: bool)-> None :
+      '''                             '''
     ...
 
 class RxClass(RxObject):

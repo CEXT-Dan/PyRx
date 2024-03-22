@@ -11510,17 +11510,15 @@ class DbObjectOverrule(PyRx.Overrule):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def addOverrule (self, *args, **kwargs)-> None :
-      '''addOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
 
-    C++ signature :
-        void addOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+    @staticmethod
+    def addOverrule (rxClass: PyRx.RxClass,overrule: PyRx.Overrule)-> None :
+      '''                             '''
     ...
-    def addOverruleLast (self, *args, **kwargs)-> None :
-      '''addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> None :
 
-    C++ signature :
-        void addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
+    @staticmethod
+    def addOverruleLast (rxClass: PyRx.RxClass,overrule: PyRx.Overrule,addLast: bool)-> None :
+      '''                             '''
     ...
     def baseCancel (self, object: PyDb.DbObject)-> PyDb.ErrorStatus :
       '''                             '''
@@ -11573,11 +11571,10 @@ class DbObjectOverrule(PyRx.Overrule):
     def erase (self, object: PyDb.DbObject, erased : bool)-> PyDb.ErrorStatus :
       '''                             '''
     ...
-    def hasOverrule (self, *args, **kwargs)-> bool :
-      '''hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
 
-    C++ signature :
-        bool hasOverrule(class PyRxObject {lvalue},class PyRxClass {lvalue})'''
+    @staticmethod
+    def hasOverrule (subject: PyRx.RxObject,rxClass: PyRx.RxClass)-> bool :
+      '''                             '''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -11594,11 +11591,8 @@ class DbObjectOverrule(PyRx.Overrule):
     def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def isOverruling (self, *args, **kwargs)-> bool :
-      '''isOverruling() -> bool :
-
-    C++ signature :
-        bool isOverruling()'''
+    def isOverruling (self)-> bool :
+      '''                             '''
     ...
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
@@ -11609,17 +11603,13 @@ class DbObjectOverrule(PyRx.Overrule):
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def removeOverrule (self, *args, **kwargs)-> None :
-      '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
 
-    C++ signature :
-        void removeOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+    @staticmethod
+    def removeOverrule (rxClass: PyRx.RxClass,overrule: PyRx.Overrule)-> None :
+      '''                             '''
     ...
-    def setIsOverruling (self, *args, **kwargs)-> None :
-      '''setIsOverruling( (bool)arg1) -> None :
-
-    C++ signature :
-        void setIsOverruling(bool)'''
+    def setIsOverruling (self, flag: bool)-> None :
+      '''                             '''
     ...
     def wblockClone (self, subject: PyDb.DbObject, owner: PyRx.RxObject, mapping: PyDb.IdMapping, isPrimary : bool)-> PyDb.DbObject :
       '''                             '''
@@ -39978,17 +39968,15 @@ class OsnapOverrule(PyRx.Overrule):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def addOverrule (self, *args, **kwargs)-> None :
-      '''addOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
 
-    C++ signature :
-        void addOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+    @staticmethod
+    def addOverrule (rxClass: PyRx.RxClass,overrule: PyRx.Overrule)-> None :
+      '''                             '''
     ...
-    def addOverruleLast (self, *args, **kwargs)-> None :
-      '''addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> None :
 
-    C++ signature :
-        void addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
+    @staticmethod
+    def addOverruleLast (rxClass: PyRx.RxClass,overrule: PyRx.Overrule,addLast: bool)-> None :
+      '''                             '''
     ...
     def baseGetOsnapPoints (self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> tuple :
       '''                             '''
@@ -40024,11 +40012,10 @@ class OsnapOverrule(PyRx.Overrule):
     def getOsnapPointsX (self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, insertionMat: PyGe.Matrix3d)-> tuple :
       '''                             '''
     ...
-    def hasOverrule (self, *args, **kwargs)-> bool :
-      '''hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
 
-    C++ signature :
-        bool hasOverrule(class PyRxObject {lvalue},class PyRxClass {lvalue})'''
+    @staticmethod
+    def hasOverrule (subject: PyRx.RxObject,rxClass: PyRx.RxClass)-> bool :
+      '''                             '''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -40048,11 +40035,8 @@ class OsnapOverrule(PyRx.Overrule):
     def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def isOverruling (self, *args, **kwargs)-> bool :
-      '''isOverruling() -> bool :
-
-    C++ signature :
-        bool isOverruling()'''
+    def isOverruling (self)-> bool :
+      '''                             '''
     ...
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
@@ -40060,17 +40044,13 @@ class OsnapOverrule(PyRx.Overrule):
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def removeOverrule (self, *args, **kwargs)-> None :
-      '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
 
-    C++ signature :
-        void removeOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+    @staticmethod
+    def removeOverrule (rxClass: PyRx.RxClass,overrule: PyRx.Overrule)-> None :
+      '''                             '''
     ...
-    def setIsOverruling (self, *args, **kwargs)-> None :
-      '''setIsOverruling( (bool)arg1) -> None :
-
-    C++ signature :
-        void setIsOverruling(bool)'''
+    def setIsOverruling (self, flag: bool)-> None :
+      '''                             '''
     ...
 
 class OsnapPointRef(PointRef):

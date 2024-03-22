@@ -274,6 +274,9 @@ class DrawFlags(object):
     def kDrawNoForceByLayer (self, *args, **kwargs)-> None :
       '''None'''
     ...
+    def kDrawNoImageFrame (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
     def kDrawNoLineWeight (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -370,17 +373,15 @@ class DrawableOverrule(PyRx.Overrule):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def addOverrule (self, *args, **kwargs)-> None :
-      '''addOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
 
-    C++ signature :
-        void addOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+    @staticmethod
+    def addOverrule (rxClass: PyRx.RxClass,overrule: PyRx.Overrule)-> None :
+      '''                             '''
     ...
-    def addOverruleLast (self, *args, **kwargs)-> None :
-      '''addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> None :
 
-    C++ signature :
-        void addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
+    @staticmethod
+    def addOverruleLast (rxClass: PyRx.RxClass,overrule: PyRx.Overrule,addLast: bool)-> None :
+      '''                             '''
     ...
     def baseViewportDraw (self, *args, **kwargs)-> None :
       '''baseViewportDraw( (DrawableOverrule)arg1, (Drawable)arg2, (ViewportDraw)arg3) -> None :
@@ -421,11 +422,10 @@ class DrawableOverrule(PyRx.Overrule):
     def dispose (self)-> None :
       '''                             '''
     ...
-    def hasOverrule (self, *args, **kwargs)-> bool :
-      '''hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
 
-    C++ signature :
-        bool hasOverrule(class PyRxObject {lvalue},class PyRxClass {lvalue})'''
+    @staticmethod
+    def hasOverrule (subject: PyRx.RxObject,rxClass: PyRx.RxClass)-> bool :
+      '''                             '''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -445,11 +445,8 @@ class DrawableOverrule(PyRx.Overrule):
     def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def isOverruling (self, *args, **kwargs)-> bool :
-      '''isOverruling() -> bool :
-
-    C++ signature :
-        bool isOverruling()'''
+    def isOverruling (self)-> bool :
+      '''                             '''
     ...
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
@@ -457,11 +454,10 @@ class DrawableOverrule(PyRx.Overrule):
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def removeOverrule (self, *args, **kwargs)-> None :
-      '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
 
-    C++ signature :
-        void removeOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+    @staticmethod
+    def removeOverrule (rxClass: PyRx.RxClass,overrule: PyRx.Overrule)-> None :
+      '''                             '''
     ...
     def setAttributes (self, *args, **kwargs)-> int :
       '''setAttributes( (DrawableOverrule)arg1, (Drawable)arg2, (DrawableTraits)arg3) -> int :
@@ -469,11 +465,8 @@ class DrawableOverrule(PyRx.Overrule):
     C++ signature :
         unsigned int setAttributes(class PyGiDrawableOverrule {lvalue},class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setIsOverruling (self, *args, **kwargs)-> None :
-      '''setIsOverruling( (bool)arg1) -> None :
-
-    C++ signature :
-        void setIsOverruling(bool)'''
+    def setIsOverruling (self, flag: bool)-> None :
+      '''                             '''
     ...
     def viewportDraw (self, *args, **kwargs)-> None :
       '''viewportDraw( (DrawableOverrule)arg1, (Drawable)arg2, (ViewportDraw)arg3) -> None :
