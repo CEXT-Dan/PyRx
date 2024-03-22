@@ -13,6 +13,7 @@ void makePyDbObjectOverruleWrapper()
 {
     PyDocString DS("DbObjectOverrule");
     class_<PyDbObjectOverrule, bases<PyRxOverrule>>("DbObjectOverrule")
+        .def(init<>(DS.ARGS()))
         .def("isApplicable", &PyDbObjectOverrule::isApplicableWr, DS.ARGS({ "object: PyRx.RxObject" }))
         .def("open", &PyDbObjectOverrule::openWr, DS.ARGS({ "object: PyDb.DbObject","mode: OpenMode" }))
         .def("close", &PyDbObjectOverrule::closeWr, DS.ARGS({ "object: PyDb.DbObject" }))
@@ -315,6 +316,7 @@ void makePyDbOsnapOverruleWrapper()
 {
     PyDocString DS("OsnapOverrule");
     class_<PyDbOsnapOverrule, bases<PyRxOverrule>>("OsnapOverrule")
+        .def(init<>(DS.ARGS()))
 
         .def("isApplicable", &PyDbOsnapOverrule::isApplicableWr, DS.ARGS({ "object: PyRx.RxObject" }))
         .def("isContentSnappable", &PyDbOsnapOverrule::isContentSnappableWr, DS.ARGS({ "object: PyDb.Entity" }))
