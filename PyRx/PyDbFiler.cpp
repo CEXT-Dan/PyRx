@@ -12,6 +12,7 @@ void makePyDbSnoopDwgFilerWrapper()
         .def(init<>())
         .def(init<AcDb::FilerType>(DS.ARGS({ "filerType: PyDb.FilerType" })))
         .def("buffer", &PyDbSnoopDwgFiler::buffer, DS.ARGS())
+        .def("__getitem__", &PyDbSnoopDwgFiler::getitem, DS.ARGS())
         ;
 }
 
@@ -371,6 +372,11 @@ Adesk::Int64 PyDbSnoopDwgFiler::tell() const
 boost::python::list PyDbSnoopDwgFiler::buffer() const
 {
     return m_list;
+}
+
+boost::python::object PyDbSnoopDwgFiler::getitem(int idx)
+{
+    return m_list[idx];
 }
 
 #ifdef ENABLE_FILER

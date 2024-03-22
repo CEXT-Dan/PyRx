@@ -76,6 +76,7 @@ public:
     virtual Acad::ErrorStatus   seek(Adesk::Int64 nOffset, int nMethod) override;
     virtual Adesk::Int64        tell() const override;
     boost::python::list         buffer() const;
+    boost::python::object       getitem(int idx);
 
 public:
     Acad::ErrorStatus   m_stat = eOk;
