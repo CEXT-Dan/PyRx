@@ -39990,14 +39990,19 @@ class OsnapOverrule(PyRx.Overrule):
     C++ signature :
         void addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
     ...
+    def baseGetOsnapPoints (self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> tuple :
+      '''                             '''
+    ...
+    def baseGetOsnapPointsX (self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, insertionMat: PyGe.Matrix3d)-> tuple :
+      '''                             '''
+    ...
     def baseIsContentSnappable (self, object: PyDb.Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -40005,13 +40010,18 @@ class OsnapOverrule(PyRx.Overrule):
     def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def dispose (self)-> None :
+      '''                             '''
+    ...
+    def getOsnapPoints (self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> tuple :
+      '''                             '''
+    ...
+    def getOsnapPointsX (self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, insertionMat: PyGe.Matrix3d)-> tuple :
       '''                             '''
     ...
     def hasOverrule (self, *args, **kwargs)-> bool :

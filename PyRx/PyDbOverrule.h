@@ -73,13 +73,68 @@ public:
     PyDbOsnapOverrule();
     virtual ~PyDbOsnapOverrule() override = default;
 
-    virtual bool		isApplicable(const AcRxObject* pOverruledSubject) const override;
-    virtual bool        isContentSnappable(const AcDbEntity* pSubject) override;
+    virtual bool		      isApplicable(const AcRxObject* pOverruledSubject) const override;
+    virtual bool              isContentSnappable(const AcDbEntity* pSubject) override;
+
+    virtual Acad::ErrorStatus getOsnapPoints(
+        const AcDbEntity* pSubject,
+        AcDb::OsnapMode     osnapMode,
+        Adesk::GsMarker     gsSelectionMark,
+        const AcGePoint3d& pickPoint,
+        const AcGePoint3d& lastPoint,
+        const AcGeMatrix3d& viewXform,
+        AcGePoint3dArray& snapPoints,
+        AcDbIntArray& geomIds) override;
+
+    virtual Acad::ErrorStatus getOsnapPoints(
+        const AcDbEntity* pSubject,
+        AcDb::OsnapMode     osnapMode,
+        Adesk::GsMarker     gsSelectionMark,
+        const AcGePoint3d& pickPoint,
+        const AcGePoint3d& lastPoint,
+        const AcGeMatrix3d& viewXform,
+        AcGePoint3dArray& snapPoints,
+        AcDbIntArray& geomIds,
+        const AcGeMatrix3d& insertionMat)override;
 
     bool			    isApplicableWr(const PyRxObject& pOverruledSubject) const;
     bool                isContentSnappableWr(const PyDbEntity& pSubject);
-
     bool                baseIsContentSnappable(const PyDbEntity& pSubject);
+
+    boost::python::tuple   getOsnapPointsWr(
+        PyDbEntity& pSubject,
+        AcDb::OsnapMode osnapMode,
+        Adesk::GsMarker gsSelectionMark,
+        const AcGePoint3d& pickPoint,
+        const AcGePoint3d& lastPoint,
+        const AcGeMatrix3d& viewXform);
+
+    boost::python::tuple getOsnapPointsXWr(
+        PyDbEntity& pSubject,
+        AcDb::OsnapMode osnapMode,
+        Adesk::GsMarker gsSelectionMark,
+        const AcGePoint3d& pickPoint,
+        const AcGePoint3d& lastPoint,
+        const AcGeMatrix3d& viewXform,
+        const AcGeMatrix3d& insertionMat);
+
+    boost::python::tuple  baseGetOsnapPoints(
+        PyDbEntity& pSubject,
+        AcDb::OsnapMode     osnapMode,
+        Adesk::GsMarker     gsSelectionMark,
+        const AcGePoint3d& pickPoint,
+        const AcGePoint3d& lastPoint,
+        const AcGeMatrix3d& viewXform);
+
+    boost::python::tuple   baseGetOsnapPointsX(
+        PyDbEntity& pSubject,
+        AcDb::OsnapMode     osnapMode,
+        Adesk::GsMarker     gsSelectionMark,
+        const AcGePoint3d& pickPoint,
+        const AcGePoint3d& lastPoint,
+        const AcGeMatrix3d& viewXform,
+        const AcGeMatrix3d& insertionMat);
+
 
     static std::string  className();
     static PyRxClass    desc();
@@ -89,4 +144,6 @@ public:
 public:
     mutable bool reg_isApplicable = true;
     mutable bool reg_isContentSnappable = true;
+    mutable bool reg_getOsnapPoints = true;
+    mutable bool reg_getOsnapPointsXform = true;
 };
