@@ -11504,11 +11504,8 @@ class DbObject(PyGi.Drawable):
     ...
 
 class DbObjectOverrule(PyRx.Overrule):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -39962,11 +39959,8 @@ class OsnapMode(object):
     ...
 
 class OsnapOverrule(PyRx.Overrule):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
