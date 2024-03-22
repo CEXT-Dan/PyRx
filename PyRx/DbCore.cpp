@@ -160,9 +160,15 @@ double DbCore::angToF(const std::string& str, int unit)
 
 std::string DbCore::angToS(double val, int unit, int prec)
 {
-    std::array<wchar_t, 64> buf = { 0 };
+#if defined(_ARXTARGET) && _ARXTARGET >= 243
+    AcString buf;
+    PyThrowBadRt(acdbAngToS(val, buf,unit, prec));
+    return wstr_to_utf8(buf);
+#else
+    std::wstring buf(64, 0);
     PyThrowBadRt(acdbAngToS(val, unit, prec, buf.data(), buf.size()));
     return wstr_to_utf8(buf.data());
+#endif
 }
 
 void DbCore::assignGelibCurveToAcDbCurve1(const PyGeCurve3d& geCurve, PyDbCurve& pDbCurve)
