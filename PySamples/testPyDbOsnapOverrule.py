@@ -1,4 +1,3 @@
-from typing import Literal
 from pyrx_imp import Rx
 from pyrx_imp import Ge
 from pyrx_imp import Gi

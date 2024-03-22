@@ -354,7 +354,6 @@ static auto tupletotuple(const boost::python::tuple& pytuple)
     return std::make_tuple(es, pts);
 }
 
-
 PyDbOsnapOverrule::PyDbOsnapOverrule()
     : PyRxOverrule(this)
 {
@@ -519,7 +518,6 @@ boost::python::tuple PyDbOsnapOverrule::getOsnapPointsXWr(
     return boost::python::make_tuple(eInvalidInput, boost::python::list());
 }
 
-
 boost::python::tuple PyDbOsnapOverrule::baseGetOsnapPoints(
     PyDbEntity& pSubject, 
     AcDb::OsnapMode osnapMode, 
@@ -534,7 +532,6 @@ boost::python::tuple PyDbOsnapOverrule::baseGetOsnapPoints(
     auto es = AcDbOsnapOverrule::getOsnapPoints(pSubject.impObj(), osnapMode, gsSelectionMark, pickPoint, lastPoint, viewXform, pts, geoids);
     return boost::python::make_tuple(es, Point3dArrayToPyList(pts));
 }
-
 
 boost::python::tuple PyDbOsnapOverrule::baseGetOsnapPointsX(
     PyDbEntity& pSubject, 
