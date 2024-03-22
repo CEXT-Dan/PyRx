@@ -1,21 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="acrxEntryPoint.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="dllmain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DocData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StdAfx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PyRxApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PyAcDb.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
@@ -93,9 +78,6 @@
     </ClCompile>
     <ClCompile Include="PyDbCurve.cpp">
       <Filter>Source Files\PyDb</Filter>
-    </ClCompile>
-    <ClCompile Include="PyLispService.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PyGeBoundBlock3d.cpp">
       <Filter>Source Files\PyGe</Filter>
@@ -187,9 +169,6 @@
     <ClCompile Include="PyDbIdMapping.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
-    <ClCompile Include="PyCmd.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PyDbLeader.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
@@ -234,9 +213,6 @@
     </ClCompile>
     <ClCompile Include="PyDbTransactionManager.cpp">
       <Filter>Source Files\PyDb</Filter>
-    </ClCompile>
-    <ClCompile Include="PyDocString.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PyDbEval.cpp">
       <Filter>Source Files\PyDb</Filter>
@@ -340,32 +316,41 @@
     <ClCompile Include="PyDbDate.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
-    <ClCompile Include="PyRxContainers.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GsCore.cpp">
       <Filter>Source Files\PyGs</Filter>
     </ClCompile>
     <ClCompile Include="PyDbSubDMesh.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="acrxEntryPoint.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="DocData.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyCmd.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDocString.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyLispService.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyRxApp.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyRxContainers.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DocData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StdAfx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RxPyString.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PyRxApp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PyDbDatabase.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
@@ -443,9 +428,6 @@
     </ClInclude>
     <ClInclude Include="PyDbCurve.h">
       <Filter>Header Files\PyDb</Filter>
-    </ClInclude>
-    <ClInclude Include="PyLispService.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PyGeBoundBlock3d.h">
       <Filter>Header Files\PyGe</Filter>
@@ -537,9 +519,6 @@
     <ClInclude Include="PyDbIdMapping.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
-    <ClInclude Include="PyCmd.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PyDbLeader.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
@@ -584,9 +563,6 @@
     </ClInclude>
     <ClInclude Include="PyDbTransactionManager.h">
       <Filter>Header Files\PyDb</Filter>
-    </ClInclude>
-    <ClInclude Include="PyDocString.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PyDbEval.h">
       <Filter>Header Files\PyDb</Filter>
@@ -693,14 +669,38 @@
     <ClInclude Include="PyDbDate.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
-    <ClInclude Include="PyRxContainers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GsCore.h">
       <Filter>Header Files\PyGs</Filter>
     </ClInclude>
     <ClInclude Include="PyDbSubDMesh.h">
       <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="DocData.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyCmd.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDocString.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyLispService.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyRxApp.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyRxContainers.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="RxPyString.h">
+      <Filter>Header Files\PyRxApp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -760,6 +760,12 @@
     </Filter>
     <Filter Include="Source Files\PyPl">
       <UniqueIdentifier>{8348c96c-d809-4f06-a0e2-61810170d6ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PyRxApp">
+      <UniqueIdentifier>{44859f0f-eb78-441b-a96a-a6a84e00930b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PyRxApp">
+      <UniqueIdentifier>{ab7d93f0-10ce-4e7d-9cef-fe2e8767355f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
