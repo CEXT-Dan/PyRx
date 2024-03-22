@@ -1098,133 +1098,61 @@ class DrawJig(object):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def acquireAngle (self, *args, **kwargs)-> tuple :
-      '''acquireAngle( (DrawJig)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple acquireAngle(class PyDrawJig {lvalue})
-
-acquireAngle( (DrawJig)arg1, (Point3d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple acquireAngle(class PyDrawJig {lvalue},class AcGePoint3d)'''
+    def acquireAngle (self, basePnt: PyGe.Point3d=None)-> tuple :
+      '''                             '''
     ...
-    def acquireDist (self, *args, **kwargs)-> tuple :
-      '''acquireDist( (DrawJig)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple acquireDist(class PyDrawJig {lvalue})
-
-acquireDist( (DrawJig)arg1, (Point3d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple acquireDist(class PyDrawJig {lvalue},class AcGePoint3d)'''
+    def acquireDist (self, basePnt: PyGe.Point3d=None)-> tuple :
+      '''                             '''
     ...
-    def acquirePoint (self, *args, **kwargs)-> tuple :
-      '''acquirePoint( (DrawJig)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple acquirePoint(class PyDrawJig {lvalue})
-
-acquirePoint( (DrawJig)arg1, (Point3d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple acquirePoint(class PyDrawJig {lvalue},class AcGePoint3d)'''
+    def acquirePoint (self, basePnt: PyGe.Point3d=None)-> tuple :
+      '''                             '''
     ...
-    def acquireString (self, *args, **kwargs)-> tuple :
-      '''acquireString( (DrawJig)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple acquireString(class PyDrawJig {lvalue})'''
+    def acquireString (self)-> tuple :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def dispPrompt (self, *args, **kwargs)-> str :
-      '''dispPrompt( (DrawJig)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dispPrompt(class PyDrawJig {lvalue})'''
+    def dispPrompt (self)-> str :
+      '''                             '''
     ...
-    def drag (self, *args, **kwargs)-> PyEd.DragStatus :
-      '''drag( (DrawJig)arg1) -> DragStatus :
-
-    C++ signature :
-        enum AcEdJig::DragStatus drag(class PyDrawJig {lvalue})
-
-drag( (DrawJig)arg1, (DragStyle)arg2) -> DragStatus :
-
-    C++ signature :
-        enum AcEdJig::DragStatus drag(class PyDrawJig {lvalue},class AcEdDragStyle)'''
+    def drag (self, style: PyEd.DragStyle=None)-> PyEd.DragStatus :
+      '''                             '''
     ...
-    def keywordList (self, *args, **kwargs)-> str :
-      '''keywordList( (DrawJig)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > keywordList(class PyDrawJig {lvalue})'''
+    def keywordList (self)-> str :
+      '''                             '''
     ...
-    def sampler (self, *args, **kwargs)-> PyEd.DragStatus :
-      '''sampler( (DrawJig)arg1) -> DragStatus :
-
-    C++ signature :
-        enum AcEdJig::DragStatus sampler(class PyDrawJig {lvalue})'''
+    def sampler (self)-> PyEd.DragStatus :
+      '''                             '''
     ...
-    def setDispPrompt (self, *args, **kwargs)-> None :
-      '''setDispPrompt( (DrawJig)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setDispPrompt(class PyDrawJig {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setDispPrompt (self, val: str)-> None :
+      '''                             '''
     ...
-    def setKeywordList (self, *args, **kwargs)-> None :
-      '''setKeywordList( (DrawJig)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setKeywordList(class PyDrawJig {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setKeywordList (self, val: str)-> None :
+      '''                             '''
     ...
-    def setSpecialCursorType (self, *args, **kwargs)-> None :
-      '''setSpecialCursorType( (DrawJig)arg1, (CursorType)arg2) -> None :
-
-    C++ signature :
-        void setSpecialCursorType(class PyDrawJig {lvalue},enum AcEdJig::CursorType)'''
+    def setSpecialCursorType (self, val: PyEd.CursorType)-> None :
+      '''                             '''
     ...
-    def setUserInputControls (self, *args, **kwargs)-> None :
-      '''setUserInputControls( (DrawJig)arg1, (UserInputControls)arg2) -> None :
-
-    C++ signature :
-        void setUserInputControls(class PyDrawJig {lvalue},enum AcEdJig::UserInputControls)'''
+    def setUserInputControls (self, val:  PyEd.UserInputControls)-> None :
+      '''                             '''
     ...
-    def specialCursorType (self, *args, **kwargs)-> PyEd.CursorType :
-      '''specialCursorType( (DrawJig)arg1) -> CursorType :
-
-    C++ signature :
-        enum AcEdJig::CursorType specialCursorType(class PyDrawJig {lvalue})'''
+    def specialCursorType (self)-> PyEd.CursorType :
+      '''                             '''
     ...
-    def update (self, *args, **kwargs)-> bool :
-      '''update( (DrawJig)arg1) -> bool :
-
-    C++ signature :
-        bool update(class PyDrawJig {lvalue})'''
+    def update (self)-> bool :
+      '''                             '''
     ...
-    def userInputControls (self, *args, **kwargs)-> PyEd.UserInputControls :
-      '''userInputControls( (DrawJig)arg1) -> UserInputControls :
-
-    C++ signature :
-        enum AcEdJig::UserInputControls userInputControls(class PyDrawJig {lvalue})'''
+    def userInputControls (self)-> PyEd.UserInputControls :
+      '''                             '''
     ...
-    def viewportDraw (self, *args, **kwargs)-> None :
-      '''viewportDraw( (DrawJig)arg1, (ViewportDraw)arg2) -> None :
-
-    C++ signature :
-        void viewportDraw(class PyDrawJig {lvalue},class PyGiViewportDraw {lvalue})'''
+    def viewportDraw (self, wd: PyGi.ViewportDraw)-> None :
+      '''                             '''
     ...
-    def worldDraw (self, *args, **kwargs)-> bool :
-      '''worldDraw( (DrawJig)arg1, (WorldDraw)arg2) -> bool :
-
-    C++ signature :
-        bool worldDraw(class PyDrawJig {lvalue},class PyGiWorldDraw {lvalue})'''
+    def worldDraw (self, wd: PyGi.WorldDraw)-> bool :
+      '''                             '''
     ...
 
 class Editor(object):
@@ -2155,127 +2083,58 @@ class Jig(object):
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbEntity)'''
     ...
-    def acquireAngle (self, *args, **kwargs)-> tuple :
-      '''acquireAngle( (Jig)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple acquireAngle(class PyJig {lvalue})
-
-acquireAngle( (Jig)arg1, (Point3d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple acquireAngle(class PyJig {lvalue},class AcGePoint3d)'''
+    def acquireAngle (self, basePnt: PyGe.Point3d=None)-> tuple :
+      '''                             '''
     ...
-    def acquireDist (self, *args, **kwargs)-> tuple :
-      '''acquireDist( (Jig)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple acquireDist(class PyJig {lvalue})
-
-acquireDist( (Jig)arg1, (Point3d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple acquireDist(class PyJig {lvalue},class AcGePoint3d)'''
+    def acquireDist (self, basePnt: PyGe.Point3d=None)-> tuple :
+      '''                             '''
     ...
-    def acquirePoint (self, *args, **kwargs)-> tuple :
-      '''acquirePoint( (Jig)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple acquirePoint(class PyJig {lvalue})
-
-acquirePoint( (Jig)arg1, (Point3d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple acquirePoint(class PyJig {lvalue},class AcGePoint3d)'''
+    def acquirePoint (self, basePnt: PyGe.Point3d=None)-> tuple :
+      '''                             '''
     ...
-    def acquireString (self, *args, **kwargs)-> tuple :
-      '''acquireString( (Jig)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple acquireString(class PyJig {lvalue})'''
+    def acquireString (self)-> tuple :
+      '''                             '''
     ...
-    def append (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''append( (Jig)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId append(class PyJig {lvalue})'''
+    def append (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def dispPrompt (self, *args, **kwargs)-> str :
-      '''dispPrompt( (Jig)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dispPrompt(class PyJig {lvalue})'''
+    def dispPrompt (self)-> str :
+      '''                             '''
     ...
-    def drag (self, *args, **kwargs)-> PyEd.DragStatus :
-      '''drag( (Jig)arg1) -> DragStatus :
-
-    C++ signature :
-        enum AcEdJig::DragStatus drag(class PyJig {lvalue})
-
-drag( (Jig)arg1, (DragStyle)arg2) -> DragStatus :
-
-    C++ signature :
-        enum AcEdJig::DragStatus drag(class PyJig {lvalue},class AcEdDragStyle)'''
+    def drag (self, style: PyEd.DragStyle=None)-> PyEd.DragStatus :
+      '''                             '''
     ...
-    def keywordList (self, *args, **kwargs)-> str :
-      '''keywordList( (Jig)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > keywordList(class PyJig {lvalue})'''
+    def keywordList (self)-> str :
+      '''                             '''
     ...
-    def sampler (self, *args, **kwargs)-> PyEd.DragStatus :
-      '''sampler( (Jig)arg1) -> DragStatus :
-
-    C++ signature :
-        enum AcEdJig::DragStatus sampler(class PyJig {lvalue})'''
+    def sampler (self)-> PyEd.DragStatus :
+      '''                             '''
     ...
-    def setDispPrompt (self, *args, **kwargs)-> None :
-      '''setDispPrompt( (Jig)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setDispPrompt(class PyJig {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setDispPrompt (self, val: str)-> None :
+      '''                             '''
     ...
-    def setKeywordList (self, *args, **kwargs)-> None :
-      '''setKeywordList( (Jig)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setKeywordList(class PyJig {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setKeywordList (self, val: str)-> None :
+      '''                             '''
     ...
-    def setSpecialCursorType (self, *args, **kwargs)-> None :
-      '''setSpecialCursorType( (Jig)arg1, (CursorType)arg2) -> None :
-
-    C++ signature :
-        void setSpecialCursorType(class PyJig {lvalue},enum AcEdJig::CursorType)'''
+    def setSpecialCursorType (self, val: PyEd.CursorType)-> None :
+      '''                             '''
     ...
-    def setUserInputControls (self, *args, **kwargs)-> None :
-      '''setUserInputControls( (Jig)arg1, (UserInputControls)arg2) -> None :
-
-    C++ signature :
-        void setUserInputControls(class PyJig {lvalue},enum AcEdJig::UserInputControls)'''
+    def setUserInputControls (self, val:  PyEd.UserInputControls)-> None :
+      '''                             '''
     ...
-    def specialCursorType (self, *args, **kwargs)-> PyEd.CursorType :
-      '''specialCursorType( (Jig)arg1) -> CursorType :
-
-    C++ signature :
-        enum AcEdJig::CursorType specialCursorType(class PyJig {lvalue})'''
+    def specialCursorType (self)-> PyEd.CursorType :
+      '''                             '''
     ...
-    def update (self, *args, **kwargs)-> bool :
-      '''update( (Jig)arg1) -> bool :
-
-    C++ signature :
-        bool update(class PyJig {lvalue})'''
+    def update (self)-> bool :
+      '''                             '''
     ...
-    def userInputControls (self, *args, **kwargs)-> PyEd.UserInputControls :
-      '''userInputControls( (Jig)arg1) -> UserInputControls :
-
-    C++ signature :
-        enum AcEdJig::UserInputControls userInputControls(class PyJig {lvalue})'''
+    def userInputControls (self)-> PyEd.UserInputControls :
+      '''                             '''
     ...
 
 class PromptStatus(object):
