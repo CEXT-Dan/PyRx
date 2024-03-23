@@ -286,7 +286,6 @@ public:
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
-
     }
 #endif
 };
