@@ -1,4 +1,4 @@
-from matplotlib.pylab import f
+import traceback
 from pyrx_imp import Rx
 from pyrx_imp import Ge
 from pyrx_imp import Gi
@@ -7,29 +7,26 @@ from pyrx_imp import Ap
 from pyrx_imp import Ed
 from pyrx_imp import Gs
 
-
-def OnPyInitApp():
+def OnPyInitApp() -> None:
     print("\ncommand = pydrawoverrule")
     print("\ncommand = pystopoverrule")
 
-
-def OnPyUnloadApp():
+def OnPyUnloadApp() -> None:
     # please exit cleanly
     PyRxCmd_pystopoverrule()
 
-
-class MyDrawableOverrule(Gi.DrawableOverrule):
-    def __init__(self):
+class LineDrawOverrule(Gi.DrawableOverrule):
+    def __init__(self) -> None:
         Gi.DrawableOverrule.__init__(self)
         self.seg = Ge.LineSeg3d()
 
     # override
-    def isApplicable(self, subject):
+    def isApplicable(self, subject) -> bool:
         dbo = Db.Entity.cast(subject)
         return dbo.ownerId() == Db.workingDb().modelSpaceId()
 
     # override
-    def worldDraw(self, subject, wd):
+    def worldDraw(self, subject, wd) -> bool:
         try:
             # draw the subject first
             flag = self.baseWorldDraw(subject, wd)
@@ -53,32 +50,34 @@ class MyDrawableOverrule(Gi.DrawableOverrule):
             geo.circle(cen, rad, Ge.Vector3d.kZAxis)
 
         except Exception as err:
-            print(err)
+            traceback.print_exception(err)
         finally:
             return flag
             
 
-overrule = None
+linedraw = None
 
 def PyRxCmd_pydrawoverrule():
     try:
-        global overrule
-        if overrule != None:
+        global linedraw
+        if linedraw != None:
             return 
-        overrule = MyDrawableOverrule()
-        overrule.addOverrule(Db.Line.desc(), overrule)
-        overrule.setIsOverruling(True)
+        linedraw = LineDrawOverrule()
+        linedraw.addOverrule(Db.Line.desc(), linedraw)
+        linedraw.setIsOverruling(True)
+        print("overruling is on: ")
     except Exception as err:
-        print(err)
+        traceback.print_exception(err)
 
 
 def PyRxCmd_pystopoverrule():
     try:
-        global overrule
-        if overrule == None:
+        global linedraw
+        if linedraw == None:
             return
-        if overrule.removeOverrule(Db.Line.desc(), overrule) == Db.ErrorStatus.eOk:
-            overrule.setIsOverruling(False)
-        del (overrule)
+        if linedraw.removeOverrule(Db.Line.desc(), linedraw) == Db.ErrorStatus.eOk:
+            linedraw.setIsOverruling(False)
+        del (linedraw)
+        print("overruling is off: ")
     except Exception as err:
-        print(err)
+        traceback.print_exception(err)
