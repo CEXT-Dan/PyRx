@@ -171,106 +171,54 @@ class CvCivil3dConverter(object):
     def convert (self, entitiesToConvert : list)-> list :
       '''                             '''
     ...
-    def getCivilEntities (self, *args, **kwargs)-> list :
-      '''getCivilEntities( (CvCivil3dConverter)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getCivilEntities(class PyBrxCvCivil3dConverter {lvalue})'''
+    def getCivilEntities (self)-> list :
+      '''                             '''
     ...
-    def getInsertedEntities (self, *args, **kwargs)-> list :
-      '''getInsertedEntities( (CvCivil3dConverter)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getInsertedEntities(class PyBrxCvCivil3dConverter {lvalue})
-
-getInsertedEntities( (CvCivil3dConverter)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getInsertedEntities(class PyBrxCvCivil3dConverter {lvalue})'''
+    def getInsertedEntities (self)-> list :
+      '''                             '''
     ...
-    def unattachedLabels (self, *args, **kwargs)-> list :
-      '''unattachedLabels( (CvCivil3dConverter)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list unattachedLabels(class PyBrxCvCivil3dConverter {lvalue})'''
+    def unattachedLabels (self)-> list :
+      '''                             '''
     ...
 
 class CvCivil3dEntityInfo(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
-    def alignmentType (self, *args, **kwargs)-> PyBrxCv.Civil3dAlignmentType :
-      '''alignmentType( (CvCivil3dEntityInfo)arg1) -> Civil3dAlignmentType :
-
-    C++ signature :
-        enum BrxCvCivil3dEntityInfo::Civil3dAlignmentType alignmentType(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    def alignmentType (self)-> PyBrxCv.Civil3dAlignmentType :
+      '''                             '''
     ...
-    def baseAlignment (self, *args, **kwargs)-> PyBrxCv.CvCivil3dEntityInfo :
-      '''baseAlignment( (CvCivil3dEntityInfo)arg1) -> CvCivil3dEntityInfo :
-
-    C++ signature :
-        class PyBrxCvCivil3dEntityInfo baseAlignment(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    def baseAlignment (self)-> PyBrxCv.CvCivil3dEntityInfo :
+      '''                             '''
     ...
-    def baseSurface (self, *args, **kwargs)-> PyBrxCv.CvCivil3dEntityInfo :
-      '''baseSurface( (CvCivil3dEntityInfo)arg1) -> CvCivil3dEntityInfo :
-
-    C++ signature :
-        class PyBrxCvCivil3dEntityInfo baseSurface(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    def baseSurface (self)-> PyBrxCv.CvCivil3dEntityInfo :
+      '''                             '''
     ...
 
     @staticmethod
     def className ()-> str :
       '''                             '''
     ...
-    def description (self, *args, **kwargs)-> str :
-      '''description( (CvCivil3dEntityInfo)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > description(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    def description (self)-> str :
+      '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (CvCivil3dEntityInfo)arg1) -> bool :
-
-    C++ signature :
-        bool isNull(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    def isNull (self)-> bool :
+      '''                             '''
     ...
-    def name (self, *args, **kwargs)-> str :
-      '''name( (CvCivil3dEntityInfo)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    def name (self)-> str :
+      '''                             '''
     ...
-    def objectId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''objectId( (CvCivil3dEntityInfo)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId objectId(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    def objectId (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def profileType (self, *args, **kwargs)-> PyBrxCv.Civil3dProfileType :
-      '''profileType( (CvCivil3dEntityInfo)arg1) -> Civil3dProfileType :
-
-    C++ signature :
-        enum BrxCvCivil3dEntityInfo::Civil3dProfileType profileType(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    def profileType (self)-> PyBrxCv.Civil3dProfileType :
+      '''                             '''
     ...
-    def profiles (self, *args, **kwargs)-> list :
-      '''profiles( (CvCivil3dEntityInfo)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list profiles(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    def profiles (self)-> list :
+      '''                             '''
     ...
-    def type (self, *args, **kwargs)-> PyBrxCv.Civil3dEntityType :
-      '''type( (CvCivil3dEntityInfo)arg1) -> Civil3dEntityType :
-
-    C++ signature :
-        enum BrxCvCivil3dEntityInfo::Civil3dEntityType type(class PyBrxCvCivil3dEntityInfo {lvalue})'''
+    def type (self)-> PyBrxCv.Civil3dEntityType :
+      '''                             '''
     ...
 
 class CvDb3dAlignment(CvDbCurve):
@@ -3581,16 +3529,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     ...
 
 class CvDbHAlignmentArc(CvDbHAlignmentCurve):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -3951,16 +3891,8 @@ This class cannot be instantiated from Python'''
     ...
 
 class CvDbHAlignmentLine(CvDbHAlignmentCurve):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -4563,16 +4495,8 @@ __init__( (object)arg1) -> None :
     ...
 
 class CvDbHAlignmentSpiral(CvDbHAlignmentCurve):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -12633,11 +12557,8 @@ class CvDbVAlignmentView(CvDbView):
     def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeGraph (self, *args, **kwargs)-> bool :
-      '''removeGraph( (CvDbView)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool removeGraph(class PyBrxCvDbView {lvalue},class PyDbObjectId)'''
+    def removeGraph (self, id: PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -13167,11 +13088,8 @@ class CvDbView(CvDbEntity):
     def removeField (self, id: str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def removeGraph (self, *args, **kwargs)-> bool :
-      '''removeGraph( (CvDbView)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool removeGraph(class PyBrxCvDbView {lvalue},class PyDbObjectId)'''
+    def removeGraph (self, id: PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def removePersistentReactor (self, id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -14296,21 +14214,16 @@ __init__( (object)arg1, (ObjectId)arg2, (float)arg3, (float)arg4) -> None :
     ...
 
 class CvStationEquation(object):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, rawStation: float, stationForward: float, type: StationEquationType)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (float)arg2, (float)arg3, (StationEquationType)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,double,enum BrxCvStationEquation::EStationEquationType)'''
+      '''Overloads:
+    - None: Any
+    - rawStation: float, stationForward: float, type: StationEquationType
+    '''
     ...
 
     @staticmethod
@@ -14340,21 +14253,16 @@ __init__( (object)arg1, (float)arg2, (float)arg3, (StationEquationType)arg4) -> 
     ...
 
 class CvStationEquations(object):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, alignment: PyBrxCv.CvDbHAlignment)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (CvDbHAlignment)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyBrxCvDbHAlignment {lvalue})'''
+      '''Overloads:
+    - None: Any
+    - alignment: PyBrxCv.CvDbHAlignment
+    '''
     ...
     def addStationEquation (self, equation : PyBrxCv.CvStationEquation)-> bool :
       '''                             '''

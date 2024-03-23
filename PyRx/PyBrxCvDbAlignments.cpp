@@ -12,17 +12,17 @@ void makePyBrxCvCivil3dEntityInfoWrapper()
 {
     PyDocString DS("CvCivil3dEntityInfo");
     class_<PyBrxCvCivil3dEntityInfo>("CvCivil3dEntityInfo")
-        .def(init<>())
-        .def("isNull", &PyBrxCvCivil3dEntityInfo::isNull)
-        .def("name", &PyBrxCvCivil3dEntityInfo::name)
-        .def("description", &PyBrxCvCivil3dEntityInfo::description)
-        .def("objectId", &PyBrxCvCivil3dEntityInfo::objectId)
-        .def("type", &PyBrxCvCivil3dEntityInfo::type)
-        .def("alignmentType", &PyBrxCvCivil3dEntityInfo::alignmentType)
-        .def("profileType", &PyBrxCvCivil3dEntityInfo::profileType)
-        .def("baseAlignment", &PyBrxCvCivil3dEntityInfo::baseAlignment)
-        .def("baseSurface", &PyBrxCvCivil3dEntityInfo::baseSurface)
-        .def("profiles", &PyBrxCvCivil3dEntityInfo::profiles)
+        .def(init<>(DS.ARGS()))
+        .def("isNull", &PyBrxCvCivil3dEntityInfo::isNull, DS.ARGS())
+        .def("name", &PyBrxCvCivil3dEntityInfo::name, DS.ARGS())
+        .def("description", &PyBrxCvCivil3dEntityInfo::description, DS.ARGS())
+        .def("objectId", &PyBrxCvCivil3dEntityInfo::objectId, DS.ARGS())
+        .def("type", &PyBrxCvCivil3dEntityInfo::type, DS.ARGS())
+        .def("alignmentType", &PyBrxCvCivil3dEntityInfo::alignmentType, DS.ARGS())
+        .def("profileType", &PyBrxCvCivil3dEntityInfo::profileType, DS.ARGS())
+        .def("baseAlignment", &PyBrxCvCivil3dEntityInfo::baseAlignment, DS.ARGS())
+        .def("baseSurface", &PyBrxCvCivil3dEntityInfo::baseSurface, DS.ARGS())
+        .def("profiles", &PyBrxCvCivil3dEntityInfo::profiles, DS.ARGS())
         .def("className", &PyBrxCvCivil3dEntityInfo::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -112,12 +112,11 @@ void makePyBrxCvCivil3dConverterWrapper()
     class_<PyBrxCvCivil3dConverter>("CvCivil3dConverter")
         .def(init<>())
         .def(init<const PyDbDatabase&, PyDbDatabase&, BrxCvCivil3dConverter::Civil3dLabels>(DS.ARGS({ "sourceDb: PyDb.Database=None", "targetDb: PyDb.Database=None", "doLabels: PyBrxCv.Civil3dLabels=eDefaultLabels" })))
-        .def("getCivilEntities", &PyBrxCvCivil3dConverter::getCivilEntities)
+        .def("getCivilEntities", &PyBrxCvCivil3dConverter::getCivilEntities, DS.ARGS())
         .def("convert", &PyBrxCvCivil3dConverter::convert, DS.ARGS({ "entitiesToConvert : list" }))
         .def("attachedLabels", &PyBrxCvCivil3dConverter::attachedLabels, DS.ARGS({ "civilEntity: PyBrxCv.CvCivil3dEntityInfo" }))
-        .def("unattachedLabels", &PyBrxCvCivil3dConverter::unattachedLabels)
-        .def("getInsertedEntities", &PyBrxCvCivil3dConverter::getInsertedEntities)
-        .def("getInsertedEntities", &PyBrxCvCivil3dConverter::getInsertedEntities)
+        .def("unattachedLabels", &PyBrxCvCivil3dConverter::unattachedLabels, DS.ARGS())
+        .def("getInsertedEntities", &PyBrxCvCivil3dConverter::getInsertedEntities, DS.ARGS())
         .def("className", &PyBrxCvCivil3dConverter::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -206,7 +205,7 @@ void makePyBrxCvDbViewWrapper()
 
         .def("graphCount", &PyBrxCvDbView::graphCount, DS.ARGS())
         .def("graphAt", &PyBrxCvDbView::graphAt, DS.ARGS({ "val : int" }))
-        .def("removeGraph", &PyBrxCvDbView::removeGraph)
+        .def("removeGraph", &PyBrxCvDbView::removeGraph, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("baseHAlignment", &PyBrxCvDbView::baseHAlignment, DS.ARGS())
         .def("setBaseHAlignment", &PyBrxCvDbView::setBaseHAlignment, DS.ARGS({ "id : PyDb.ObjectId" }))
         .def("origin", &PyBrxCvDbView::origin, DS.ARGS())
@@ -507,10 +506,14 @@ BrxCvDbVAlignmentView* PyBrxCvDbVAlignmentView::impObj(const std::source_locatio
 //PyBrxCvStationEquation
 void makePyBrxCvStationEquationWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- rawStation: float, stationForward: float, type: StationEquationType\n";
+       
     PyDocString DS("CvStationEquation");
     class_<PyBrxCvStationEquation>("CvStationEquation")
         .def(init<>())
-        .def(init<double, double, BrxCvStationEquation::EStationEquationType>())
+        .def(init<double, double, BrxCvStationEquation::EStationEquationType>(DS.CTOR(ctords)))
         .def("isNull", &PyBrxCvStationEquation::isNull, DS.ARGS())
         .def("getRawStation", &PyBrxCvStationEquation::getRawStation, DS.ARGS())
         .def("getStationForward", &PyBrxCvStationEquation::getStationForward, DS.ARGS())
@@ -589,10 +592,14 @@ BrxCvStationEquation* PyBrxCvStationEquation::impObj(const std::source_location&
 //PyBrxCvStationEquations
 void makePyBrxCvStationEquationsWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- alignment: PyBrxCv.CvDbHAlignment\n";
+
     PyDocString DS("CvStationEquations");
     class_<PyBrxCvStationEquations>("CvStationEquations")
         .def(init<>())
-        .def(init<PyBrxCvDbHAlignment&>())
+        .def(init<PyBrxCvDbHAlignment&>(DS.CTOR(ctords)))
         .def("stationEquationsCount", &PyBrxCvStationEquations::stationEquationsCount, DS.ARGS())
         .def("getRefStartingLength", &PyBrxCvStationEquations::getRefStartingLength, DS.ARGS())
         .def("getRefRawStartingStation", &PyBrxCvStationEquations::getRefRawStartingStation, DS.ARGS())
@@ -1597,7 +1604,7 @@ void makePyBrxCvDbHAlignmentLineWrapper()
 {
     PyDocString DS("CvDbHAlignmentLine");
     class_<PyBrxCvDbHAlignmentLine, bases<PyBrxCvDbHAlignmentCurve>>("CvDbHAlignmentLine")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("passThroughPoint1", &PyBrxCvDbHAlignmentLine::passThroughPoint1, DS.ARGS())
         .def("passThroughPoint2", &PyBrxCvDbHAlignmentLine::passThroughPoint2, DS.ARGS())
         .def("paramLength", &PyBrxCvDbHAlignmentLine::paramLength, DS.ARGS())
@@ -1682,7 +1689,7 @@ void makePyBrxCvDbHAlignmentArcWrapper()
 {
     PyDocString DS("CvDbHAlignmentArc");
     class_<PyBrxCvDbHAlignmentArc, bases<PyBrxCvDbHAlignmentCurve>>("CvDbHAlignmentArc")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("radius", &PyBrxCvDbHAlignmentArc::radius, DS.ARGS())
         .def("center", &PyBrxCvDbHAlignmentArc::center, DS.ARGS())
         .def("isClockwise", &PyBrxCvDbHAlignmentArc::isClockwise, DS.ARGS())
@@ -1839,7 +1846,7 @@ void makePyBrxCvDbHAlignmentSpiralWrapper()
 {
     PyDocString DS("CvDbHAlignmentSpiral");
     class_<PyBrxCvDbHAlignmentSpiral, bases<PyBrxCvDbHAlignmentCurve>>("CvDbHAlignmentSpiral")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("radiusIn", &PyBrxCvDbHAlignmentSpiral::radiusIn, DS.ARGS())
         .def("radiusOut", &PyBrxCvDbHAlignmentSpiral::radiusOut, DS.ARGS())
         .def("isCompound", &PyBrxCvDbHAlignmentSpiral::isCompound, DS.ARGS())
