@@ -65,7 +65,7 @@ def PyRxCmd_pydrawoverrule():
         linedraw = LineDrawOverrule()
         linedraw.addOverrule(Db.Line.desc(), linedraw)
         linedraw.setIsOverruling(True)
-        print("overruling is on: ")
+        print("overruling is on, please regen: ")
     except Exception as err:
         traceback.print_exception(err)
 
@@ -78,6 +78,6 @@ def PyRxCmd_pystopoverrule():
         if linedraw.removeOverrule(Db.Line.desc(), linedraw) == Db.ErrorStatus.eOk:
             linedraw.setIsOverruling(False)
         linedraw = None
-        print("overruling is off: ")
+        print("overruling is off, please regen: ")
     except Exception as err:
         traceback.print_exception(err)
