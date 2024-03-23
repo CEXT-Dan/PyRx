@@ -38,6 +38,7 @@ Autolisp:
 
 
 PyRx sample:
+```python
 #imports 
 from pyrx_imp import Rx
 from pyrx_imp import Ge
@@ -84,10 +85,11 @@ def PyRxCmd_pydoit():
 
     except Exception as err:
         print(err)
+```
 		
 ...
 ActiveX sample:
-
+```python
 from pyrx_imp import Rx
 from pyrx_imp import Ge
 from pyrx_imp import Gi
@@ -136,7 +138,7 @@ def PyRxCmd_hitTest():
         
     finally:
         axSs.Delete()
-		
+```	
 		
 Blogs: https://pyarx.blogspot.com/
 Discussion forum:  https://www.theswamp.org/index.php?board=76.0
