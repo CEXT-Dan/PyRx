@@ -307,7 +307,7 @@ bool PyBrxCvDbView::setBaseElevation(double elevation)
 
 double PyBrxCvDbView::verticalScale() const
 {
-    return impObj()->baseElevation();
+    return impObj()->verticalScale();
 }
 
 bool PyBrxCvDbView::setVerticalScale(double vScale)
