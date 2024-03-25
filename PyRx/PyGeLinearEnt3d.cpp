@@ -54,7 +54,7 @@ void makePyGeLinearEnt3dWrapper()
         .def("isPerpendicularTo", &PyGeLinearEnt3d::isPerpendicularTo4, DS.OVRL(isPerpendicularToOverloads))
         .def("isColinearTo", &PyGeLinearEnt3d::isColinearTo1)
         .def("isColinearTo", &PyGeLinearEnt3d::isColinearTo2, DS.ARGS({ "pt: PyGe.LinearEnt3d" ,"tol: PyGe.Tol=None" }))
-        .def("getPerpPlane", &PyGeLinearEnt3d::getPerpPlane, DS.ARGS({ "pt: PyGe.Point3d"}))
+        .def("getPerpPlane", &PyGeLinearEnt3d::getPerpPlane, DS.ARGS({ "pt: PyGe.Point3d" }))
         .def("pointOnLine", &PyGeLinearEnt3d::pointOnLine, DS.ARGS())
         .def("direction", &PyGeLinearEnt3d::direction, DS.ARGS())
         .def("getLine", &PyGeLinearEnt3d::getLine, DS.ARGS())
@@ -276,18 +276,28 @@ AcGeLinearEnt3d* PyGeLinearEnt3d::impObj(const std::source_location& src /*= std
 //AcGeLine3d
 void makePyGeLine3dWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- startPoint: PyGe.Point3d, endPoint: PyGe.Point3d\n"
+        "- startPoint: PyGe.Point3d, direction: PyGe.Vector3d\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- startPoint: PyGe.Point3d, endPoint: PyGe.Point3d\n"
+        "- startPoint: PyGe.Point3d, direction: PyGe.Vector3d\n";
+
+    PyDocString DS("Line3d");
     class_<PyGeLine3d, bases<PyGeLinearEnt3d>>("Line3d")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&>())
-        .def(init<const AcGePoint3d&, const AcGePoint3d&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&>(DS.CTOR(ctor)))
         .add_static_property("kXAxis", PyGeLine3d::kXAxis)
         .add_static_property("kYAxis", PyGeLine3d::kYAxis)
         .add_static_property("kZAxis", PyGeLine3d::kZAxis)
         .def("set", &PyGeLine3d::set1)
-        .def("set", &PyGeLine3d::set2)
-        .def("cast", &PyGeLine3d::cast).staticmethod("cast")
-        .def("copycast", &PyGeLine3d::copycast).staticmethod("copycast")
-        .def("className", &PyGeLine3d::className).staticmethod("className")
+        .def("set", &PyGeLine3d::set2, DS.OVRL(setOverloads))
+        .def("cast", &PyGeLine3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeLine3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeLine3d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -372,11 +382,25 @@ AcGeLine3d* PyGeLine3d::impObj(const std::source_location& src /*= std::source_l
 //PyGeLineSeg3d
 void makePyGeLineSeg3dWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- startPoint: PyGe.Point3d, endPoint: PyGe.Point3d\n"
+        "- startPoint: PyGe.Point3d, direction: PyGe.Vector3d\n";
+
+    constexpr const std::string_view lengthOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- fromParam: float, toParam: float\n"
+        "- fromParam: float, toParam: float, tol: float\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- startPoint: PyGe.Point3d, endPoint: PyGe.Point3d\n"
+        "- startPoint: PyGe.Point3d, direction: PyGe.Vector3d\n";
+
     PyDocString DS("LineSeg3d");
     class_<PyGeLineSeg3d, bases<PyGeLinearEnt3d>>("LineSeg3d")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&>())
-        .def(init<const AcGePoint3d&, const AcGePoint3d&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&>(DS.CTOR(ctor)))
         .def("getBisector", &PyGeLineSeg3d::getBisector, DS.ARGS())
         .def("baryComb", &PyGeLineSeg3d::baryComb)
         .def("startPoint", &PyGeLineSeg3d::startPoint, DS.ARGS())
@@ -384,9 +408,9 @@ void makePyGeLineSeg3dWrapper()
         .def("endPoint", &PyGeLineSeg3d::endPoint, DS.ARGS())
         .def("length", &PyGeLineSeg3d::length1)
         .def("length", &PyGeLineSeg3d::length2)
-        .def("length", &PyGeLineSeg3d::length3)
+        .def("length", &PyGeLineSeg3d::length3, DS.OVRL(lengthOverloads))
         .def("set", &PyGeLineSeg3d::set1)
-        .def("set", &PyGeLineSeg3d::set2)
+        .def("set", &PyGeLineSeg3d::set2, DS.OVRL(setOverloads))
         .def("cast", &PyGeLineSeg3d::cast).staticmethod("cast")
         .def("copycast", &PyGeLineSeg3d::copycast).staticmethod("copycast")
         .def("className", &PyGeLineSeg3d::className).staticmethod("className")
@@ -501,15 +525,25 @@ AcGeLineSeg3d* PyGeLineSeg3d::impObj(const std::source_location& src /*= std::so
 //AcGeRay3d
 void makePyGeRay3ddWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- startPoint: PyGe.Point3d, endPoint: PyGe.Point3d\n"
+        "- startPoint: PyGe.Point3d, direction: PyGe.Vector3d\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- startPoint: PyGe.Point3d, endPoint: PyGe.Point3d\n"
+        "- startPoint: PyGe.Point3d, direction: PyGe.Vector3d\n";
+
+    PyDocString DS("Ray3d");
     class_<PyGeRay3d, bases<PyGeLinearEnt3d>>("Ray3d")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&>())
-        .def(init<const AcGePoint3d&, const AcGePoint3d&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&>(DS.CTOR(ctor)))
         .def("set", &PyGeRay3d::set1)
-        .def("set", &PyGeRay3d::set2)
-        .def("cast", &PyGeRay3d::cast).staticmethod("cast")
-        .def("copycast", &PyGeRay3d::copycast).staticmethod("copycast")
-        .def("className", &PyGeRay3d::className).staticmethod("className")
+        .def("set", &PyGeRay3d::set2, DS.OVRL(setOverloads))
+        .def("cast", &PyGeRay3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeRay3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeRay3d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
