@@ -248,6 +248,15 @@ BrxCvDbTinSurfaceBoundary* PyBrxCvDbTinSurfaceBoundary::impObj(const std::source
 //PyBrxCvDbTinSurface
 void makePyBrxCvDbTinSurfaceWrapper()
 {
+    constexpr const std::string_view subDMeshOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- surface: PyBrxCv.CvDbTinSurface\n"
+        "- surfaceType: PyBrxCv.TinSurfaceMeshType, depthOrElevation: float \n";
+
+    constexpr const std::string_view solid3dOverloads = "Overloads:\n"
+        "- surface: PyBrxCv.CvDbTinSurface\n"
+        "- surfaceType: PyBrxCv.TinSurfaceMeshType, thickness: float \n";
+
     PyDocString DS("CvDbTinSurface");
     class_<PyBrxCvDbTinSurface, bases<PyBrxCvDbEntity>>("CvDbTinSurface")
         .def(init<>())
@@ -301,11 +310,11 @@ void makePyBrxCvDbTinSurfaceWrapper()
         .def("minorContours", &PyBrxCvDbTinSurface::minorContours, DS.ARGS())
         .def("majorContours", &PyBrxCvDbTinSurface::majorContours, DS.ARGS())
         .def("contoursAtElevation", &PyBrxCvDbTinSurface::contoursAtElevation, DS.ARGS({ "elevation : float" }))
-        .def("subDMesh", &PyBrxCvDbTinSurface::subDMesh1)//TODO DocStrings
+        .def("subDMesh", &PyBrxCvDbTinSurface::subDMesh1)
         .def("subDMesh", &PyBrxCvDbTinSurface::subDMesh2)
-        .def("subDMesh", &PyBrxCvDbTinSurface::subDMesh3)
+        .def("subDMesh", &PyBrxCvDbTinSurface::subDMesh3,DS.OVRL(subDMeshOverloads))
         .def("solid3d", &PyBrxCvDbTinSurface::solid3d1)
-        .def("solid3d", &PyBrxCvDbTinSurface::solid3d2)
+        .def("solid3d", &PyBrxCvDbTinSurface::solid3d2, DS.OVRL(solid3dOverloads))
         .def("drapePoint", &PyBrxCvDbTinSurface::drapePoint, DS.ARGS({ "pts : list[PyGe.Point3d]" }))
         .def("drapeId", &PyBrxCvDbTinSurface::drapeId, DS.ARGS({ "id : PyDb.ObjectId" }))
         .def("intersectionsWithLine", &PyBrxCvDbTinSurface::intersectionsWithLine, DS.ARGS({ "start : PyGe.Point3d","end : PyGe.Point3d", "type : PyBrxCv.TinSurfaceIntersectType","visibleOnly : bool" }))
@@ -924,6 +933,13 @@ BrxCvDbTinSurface* PyBrxCvDbTinSurface::impObj(const std::source_location& src /
 //PyBrxCvDbVolumeSurface
 void makePyBrxCvDbVolumeSurfaceWrapper()
 {
+
+    constexpr const std::string_view initializeOverloads = "Overloads:\n"
+        "- baseSurface: PyBrxCv.CvDbTinSurface, compSurface: PyBrxCv.CvDbTinSurface, boundingPolygon: list[PyGe.Poin3d]\n"
+        "- baseSurface: PyBrxCv.CvDbTinSurface, compSurface: PyBrxCv.CvDbTinSurface, boundingPolygon: list[PyGe.Poin3d], midOrdinateDist: float\n"
+        "- baseSurface: PyBrxCv.CvDbTinSurface, referenceElevation: float, vType: PyBrxCv.VolumeSurfaceType, boundingPolygon: list[PyGe.Poin3d]\n"
+        "- baseSurface: PyBrxCv.CvDbTinSurface, referenceElevation: float, vType: PyBrxCv.VolumeSurfaceType, boundingPolygonId: PyDb.ObjectId, midOrdinateDist: float\n";
+   
     PyDocString DS("CvDbVolumeSurface");
     class_<PyBrxCvDbVolumeSurface, bases<PyBrxCvDbTinSurface>>("CvDbVolumeSurface")
         .def(init<>())
@@ -931,10 +947,10 @@ void makePyBrxCvDbVolumeSurfaceWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
 
-        .def("initialize1", &PyBrxCvDbVolumeSurface::initialize1)
-        .def("initialize2", &PyBrxCvDbVolumeSurface::initialize2)
-        .def("initialize3", &PyBrxCvDbVolumeSurface::initialize3)
-        .def("initialize4", &PyBrxCvDbVolumeSurface::initialize4)
+        .def("initialize", &PyBrxCvDbVolumeSurface::initialize1)
+        .def("initialize", &PyBrxCvDbVolumeSurface::initialize2)
+        .def("initialize", &PyBrxCvDbVolumeSurface::initialize3)
+        .def("initialize", &PyBrxCvDbVolumeSurface::initialize4, DS.OVRL(initializeOverloads))
 
         .def("type", &PyBrxCvDbVolumeSurface::type, DS.ARGS())
         .def("baseSurfaceObjectId", &PyBrxCvDbVolumeSurface::baseSurfaceObjectId, DS.ARGS())
