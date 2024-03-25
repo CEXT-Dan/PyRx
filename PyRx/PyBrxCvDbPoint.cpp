@@ -295,7 +295,7 @@ void makePyBrxCvDbPointReferencedEntityWrapper()
 {
     PyDocString DS("CvDbPointReferencedEntity");
     class_<PyBrxCvDbPointReferencedEntity, bases<PyBrxCvDbSubObject>>("CvDbPointReferencedEntity")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("id", &PyBrxCvDbPointReferencedEntity::id, DS.ARGS())
         .def("setId", &PyBrxCvDbPointReferencedEntity::setId, DS.ARGS({ "id : PyDb.ObjectId" }))
         .def("type", &PyBrxCvDbPointReferencedEntity::type, DS.ARGS())

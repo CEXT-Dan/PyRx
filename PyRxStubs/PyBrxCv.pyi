@@ -6526,16 +6526,8 @@ class CvDbPointGroupManager(CvDbObjectManager):
     ...
 
 class CvDbPointReferencedEntity(CvDbSubObject):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -7606,30 +7598,33 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def snoop (self,  filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
+
+    @overload
+    def solid3d (self, surface: PyBrxCv.CvDbTinSurface)-> PyDb.Solid3d : ...
+    @overload
+    def solid3d (self, surfaceType: PyBrxCv.TinSurfaceMeshType, thickness: float)-> PyDb.Solid3d : ...
     def solid3d (self, *args, **kwargs)-> PyDb.Solid3d :
-      '''solid3d( (CvDbTinSurface)arg1, (TinSurfaceSolidType)arg2, (float)arg3) -> Solid3d :
-
-    C++ signature :
-        class PyDb3dSolid solid3d(class PyBrxCvDbTinSurface {lvalue},enum BrxCvDbTinSurface::ETinSurfaceSolidType,double)
-
-solid3d( (CvDbTinSurface)arg1, (CvDbTinSurface)arg2) -> Solid3d :
-
-    C++ signature :
-        class PyDb3dSolid solid3d(class PyBrxCvDbTinSurface {lvalue},class PyBrxCvDbTinSurface)'''
+      '''Overloads:
+    - surface: PyBrxCv.CvDbTinSurface
+    - surfaceType: PyBrxCv.TinSurfaceMeshType, thickness: float 
+    '''
     ...
     def style (self)-> PyBrxCv.TinSurfaceStyle :
       '''                             '''
     ...
+
+    @overload
+    def subDMesh (self, /)-> PyDb.SubDMesh : ...
+    @overload
+    def subDMesh (self, surface: PyBrxCv.CvDbTinSurface)-> PyDb.SubDMesh : ...
+    @overload
+    def subDMesh (self, surfaceType: PyBrxCv.TinSurfaceMeshType, depthOrElevation: float)-> PyDb.SubDMesh : ...
     def subDMesh (self, *args, **kwargs)-> PyDb.SubDMesh :
-      '''subDMesh( (CvDbTinSurface)arg1, (TinSurfaceMeshType)arg2, (float)arg3) -> SubDMesh :
-
-    C++ signature :
-        class PyDbSubDMesh subDMesh(class PyBrxCvDbTinSurface {lvalue},enum BrxCvDbTinSurface::ETinSurfaceMeshType,double)
-
-subDMesh( (CvDbTinSurface)arg1 [, (CvDbTinSurface)arg2]) -> SubDMesh :
-
-    C++ signature :
-        class PyDbSubDMesh subDMesh(class PyBrxCvDbTinSurface {lvalue} [,class PyBrxCvDbTinSurface])'''
+      '''Overloads:
+    - None: Any
+    - surface: PyBrxCv.CvDbTinSurface
+    - surfaceType: PyBrxCv.TinSurfaceMeshType, depthOrElevation: float 
+    '''
     ...
     def swapEdge (self, pt : PyGe.Point3d)-> bool :
       '''                             '''
@@ -13551,32 +13546,22 @@ class CvDbVolumeSurface(CvDbTinSurface):
     def implRefCount (self)-> int :
       '''                             '''
     ...
-    def initialize (self, min : PyGe.Point3d, max : PyGe.Point3d, numOfPoints : int)-> None :
-      '''                             '''
-    ...
-    def initialize1 (self, *args, **kwargs)-> bool :
-      '''initialize1( (CvDbVolumeSurface)arg1, (CvDbTinSurface)arg2, (CvDbTinSurface)arg3, (list)arg4) -> bool :
 
-    C++ signature :
-        bool initialize1(class PyBrxCvDbVolumeSurface {lvalue},class PyBrxCvDbTinSurface,class PyBrxCvDbTinSurface,class boost::python::list)'''
-    ...
-    def initialize2 (self, *args, **kwargs)-> bool :
-      '''initialize2( (CvDbVolumeSurface)arg1, (CvDbTinSurface)arg2, (CvDbTinSurface)arg3, (ObjectId)arg4, (float)arg5) -> bool :
-
-    C++ signature :
-        bool initialize2(class PyBrxCvDbVolumeSurface {lvalue},class PyBrxCvDbTinSurface,class PyBrxCvDbTinSurface,class PyDbObjectId,double)'''
-    ...
-    def initialize3 (self, *args, **kwargs)-> bool :
-      '''initialize3( (CvDbVolumeSurface)arg1, (CvDbTinSurface)arg2, (float)arg3, (VolumeSurfaceType)arg4, (list)arg5) -> bool :
-
-    C++ signature :
-        bool initialize3(class PyBrxCvDbVolumeSurface {lvalue},class PyBrxCvDbTinSurface,double,enum BrxCvDbVolumeSurface::EVolumeSurfaceType,class boost::python::list)'''
-    ...
-    def initialize4 (self, *args, **kwargs)-> bool :
-      '''initialize4( (CvDbVolumeSurface)arg1, (CvDbTinSurface)arg2, (float)arg3, (VolumeSurfaceType)arg4, (ObjectId)arg5, (float)arg6) -> bool :
-
-    C++ signature :
-        bool initialize4(class PyBrxCvDbVolumeSurface {lvalue},class PyBrxCvDbTinSurface,double,enum BrxCvDbVolumeSurface::EVolumeSurfaceType,class PyDbObjectId,double)'''
+    @overload
+    def initialize (self, baseSurface: PyBrxCv.CvDbTinSurface, compSurface: PyBrxCv.CvDbTinSurface, boundingPolygon: list[PyGe.Poin3d])-> bool : ...
+    @overload
+    def initialize (self, baseSurface: PyBrxCv.CvDbTinSurface, compSurface: PyBrxCv.CvDbTinSurface, boundingPolygon: list[PyGe.Poin3d], midOrdinateDist: float)-> bool : ...
+    @overload
+    def initialize (self, baseSurface: PyBrxCv.CvDbTinSurface, referenceElevation: float, vType: PyBrxCv.VolumeSurfaceType, boundingPolygon: list[PyGe.Poin3d])-> bool : ...
+    @overload
+    def initialize (self, baseSurface: PyBrxCv.CvDbTinSurface, referenceElevation: float, vType: PyBrxCv.VolumeSurfaceType, boundingPolygonId: PyDb.ObjectId, midOrdinateDist: float)-> bool : ...
+    def initialize (self, *args, **kwargs)-> bool :
+      '''Overloads:
+    - baseSurface: PyBrxCv.CvDbTinSurface, compSurface: PyBrxCv.CvDbTinSurface, boundingPolygon: list[PyGe.Poin3d]
+    - baseSurface: PyBrxCv.CvDbTinSurface, compSurface: PyBrxCv.CvDbTinSurface, boundingPolygon: list[PyGe.Poin3d], midOrdinateDist: float
+    - baseSurface: PyBrxCv.CvDbTinSurface, referenceElevation: float, vType: PyBrxCv.VolumeSurfaceType, boundingPolygon: list[PyGe.Poin3d]
+    - baseSurface: PyBrxCv.CvDbTinSurface, referenceElevation: float, vType: PyBrxCv.VolumeSurfaceType, boundingPolygonId: PyDb.ObjectId, midOrdinateDist: float
+    '''
     ...
     def insertDefinitionAt (self, index : int, ref : PyBrxCv.CvDbTinSurfaceDefinition)-> int :
       '''                             '''
@@ -13928,30 +13913,33 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def snoop (self,  filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
+
+    @overload
+    def solid3d (self, surface: PyBrxCv.CvDbTinSurface)-> PyDb.Solid3d : ...
+    @overload
+    def solid3d (self, surfaceType: PyBrxCv.TinSurfaceMeshType, thickness: float)-> PyDb.Solid3d : ...
     def solid3d (self, *args, **kwargs)-> PyDb.Solid3d :
-      '''solid3d( (CvDbTinSurface)arg1, (TinSurfaceSolidType)arg2, (float)arg3) -> Solid3d :
-
-    C++ signature :
-        class PyDb3dSolid solid3d(class PyBrxCvDbTinSurface {lvalue},enum BrxCvDbTinSurface::ETinSurfaceSolidType,double)
-
-solid3d( (CvDbTinSurface)arg1, (CvDbTinSurface)arg2) -> Solid3d :
-
-    C++ signature :
-        class PyDb3dSolid solid3d(class PyBrxCvDbTinSurface {lvalue},class PyBrxCvDbTinSurface)'''
+      '''Overloads:
+    - surface: PyBrxCv.CvDbTinSurface
+    - surfaceType: PyBrxCv.TinSurfaceMeshType, thickness: float 
+    '''
     ...
     def style (self)-> PyBrxCv.TinSurfaceStyle :
       '''                             '''
     ...
+
+    @overload
+    def subDMesh (self, /)-> PyDb.SubDMesh : ...
+    @overload
+    def subDMesh (self, surface: PyBrxCv.CvDbTinSurface)-> PyDb.SubDMesh : ...
+    @overload
+    def subDMesh (self, surfaceType: PyBrxCv.TinSurfaceMeshType, depthOrElevation: float)-> PyDb.SubDMesh : ...
     def subDMesh (self, *args, **kwargs)-> PyDb.SubDMesh :
-      '''subDMesh( (CvDbTinSurface)arg1, (TinSurfaceMeshType)arg2, (float)arg3) -> SubDMesh :
-
-    C++ signature :
-        class PyDbSubDMesh subDMesh(class PyBrxCvDbTinSurface {lvalue},enum BrxCvDbTinSurface::ETinSurfaceMeshType,double)
-
-subDMesh( (CvDbTinSurface)arg1 [, (CvDbTinSurface)arg2]) -> SubDMesh :
-
-    C++ signature :
-        class PyDbSubDMesh subDMesh(class PyBrxCvDbTinSurface {lvalue} [,class PyBrxCvDbTinSurface])'''
+      '''Overloads:
+    - None: Any
+    - surface: PyBrxCv.CvDbTinSurface
+    - surfaceType: PyBrxCv.TinSurfaceMeshType, depthOrElevation: float 
+    '''
     ...
     def swapEdge (self, pt : PyGe.Point3d)-> bool :
       '''                             '''
@@ -14322,77 +14310,37 @@ class CvStationEquations(object):
     ...
 
 class CvTinPoint(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
-    def isValid (self, *args, **kwargs)-> bool :
-      '''isValid( (CvTinPoint)arg1) -> bool :
-
-    C++ signature :
-        bool isValid(class BrxCvTinPoint {lvalue})'''
+    def isValid (self)-> bool :
+      '''                             '''
     ...
-    def location (self, *args, **kwargs)-> PyGe.Point3d :
-      '''location( (CvTinPoint)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d location(class BrxCvTinPoint {lvalue})'''
+    def location (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def triangleWithPoint (self, *args, **kwargs)-> PyBrxCv.CvTinTriangle :
-      '''triangleWithPoint( (CvTinPoint)arg1) -> CvTinTriangle :
-
-    C++ signature :
-        class BrxCvTinTriangle triangleWithPoint(class BrxCvTinPoint {lvalue})'''
+    def triangleWithPoint (self)-> PyBrxCv.CvTinTriangle :
+      '''                             '''
     ...
 
 class CvTinTriangle(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
-    def isValid (self, *args, **kwargs)-> bool :
-      '''isValid( (CvTinTriangle)arg1) -> bool :
-
-    C++ signature :
-        bool isValid(class BrxCvTinTriangle {lvalue})'''
+    def isValid (self)-> bool :
+      '''                             '''
     ...
-    def isVisible (self, *args, **kwargs)-> bool :
-      '''isVisible( (CvTinTriangle)arg1) -> bool :
-
-    C++ signature :
-        bool isVisible(class BrxCvTinTriangle {lvalue})'''
+    def isVisible (self)-> bool :
+      '''                             '''
     ...
-    def locationAt (self, *args, **kwargs)-> PyGe.Point3d :
-      '''locationAt( (CvTinTriangle)arg1, (int)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d locationAt(class BrxCvTinTriangle {lvalue},unsigned short)'''
+    def locationAt (self, index: int)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def neighborAt (self, *args, **kwargs)-> PyBrxCv.CvTinTriangle :
-      '''neighborAt( (CvTinTriangle)arg1, (int)arg2) -> CvTinTriangle :
-
-    C++ signature :
-        class BrxCvTinTriangle neighborAt(class BrxCvTinTriangle {lvalue},unsigned short)'''
+    def neighborAt (self, index: int)-> PyBrxCv.CvTinTriangle :
+      '''                             '''
     ...
-    def pointAt (self, *args, **kwargs)-> PyBrxCv.CvTinPoint :
-      '''pointAt( (CvTinTriangle)arg1, (int)arg2) -> CvTinPoint :
-
-    C++ signature :
-        class BrxCvTinPoint pointAt(class BrxCvTinTriangle {lvalue},unsigned short)'''
+    def pointAt (self, index: int)-> PyBrxCv.CvTinPoint :
+      '''                             '''
     ...
 
 class DrawingObjectType(object):

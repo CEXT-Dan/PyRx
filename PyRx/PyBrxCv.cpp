@@ -14,10 +14,10 @@ void makePyBrxCvTinPointWrapper()
 {
     PyDocString DS("CvTinPoint");
     class_<BrxCvTinPoint>("CvTinPoint")
-        .def(init<>())
-        .def("triangleWithPoint", &BrxCvTinPoint::triangleWithPoint)
-        .def("location", &BrxCvTinPoint::location)
-        .def("isValid", &BrxCvTinPoint::isValid)
+        .def(init<>(DS.ARGS()))
+        .def("triangleWithPoint", &BrxCvTinPoint::triangleWithPoint, DS.ARGS())
+        .def("location", &BrxCvTinPoint::location, DS.ARGS())
+        .def("isValid", &BrxCvTinPoint::isValid, DS.ARGS())
         ;
 }
 
@@ -25,12 +25,12 @@ void makePyBrxCvTinTriangleWrapper()
 {
     PyDocString DS("CvTinTriangle");
     class_<BrxCvTinTriangle>("CvTinTriangle")
-        .def(init<>())
-        .def("pointAt", &BrxCvTinTriangle::pointAt)
-        .def("locationAt", &BrxCvTinTriangle::locationAt)
-        .def("isVisible", &BrxCvTinTriangle::isVisible)
-        .def("isValid", &BrxCvTinTriangle::isValid)
-        .def("neighborAt", &BrxCvTinTriangle::neighborAt)
+        .def(init<>(DS.ARGS()))
+        .def("pointAt", &BrxCvTinTriangle::pointAt, DS.ARGS({ "index: int" }))
+        .def("locationAt", &BrxCvTinTriangle::locationAt, DS.ARGS({ "index: int" }))
+        .def("isVisible", &BrxCvTinTriangle::isVisible, DS.ARGS())
+        .def("isValid", &BrxCvTinTriangle::isValid, DS.ARGS())
+        .def("neighborAt", &BrxCvTinTriangle::neighborAt, DS.ARGS({ "index: int" }))
         ;
 }
 

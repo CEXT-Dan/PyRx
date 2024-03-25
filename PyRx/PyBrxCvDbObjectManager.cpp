@@ -30,9 +30,9 @@ void makePyBrxCvDbObjectManagerWrapper()
         .def("cast", &PyBrxCvDbObjectManager::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
 
         .def("__getitem__", &PyBrxCvDbObjectManager::idAt1)
-        .def("__getitem__", &PyBrxCvDbObjectManager::idAt2)
+        .def("__getitem__", &PyBrxCvDbObjectManager::idAt2, DS.ARGS({ "val : int|str" }))
         .def("__contains__", &PyBrxCvDbObjectManager::has1)
-        .def("__contains__", &PyBrxCvDbObjectManager::has2)
+        .def("__contains__", &PyBrxCvDbObjectManager::has2, DS.ARGS({ "id : str|PyDb.ObjectId" }))
         ;
 }
 
