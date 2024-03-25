@@ -1122,7 +1122,7 @@ class AlignedDimension(Dimension):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -2047,7 +2047,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -2717,7 +2717,7 @@ class ArcDimension(Dimension):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -3527,7 +3527,7 @@ class AttributeDefinition(Text):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -4159,7 +4159,7 @@ class AttributeReference(Text):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -4764,7 +4764,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -5220,7 +5220,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -5702,7 +5702,7 @@ class BlockReference(Entity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -6905,7 +6905,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -7730,7 +7730,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -8967,7 +8967,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -11995,7 +11995,7 @@ class DiametricDimension(Dimension):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -14824,7 +14824,7 @@ class Dimension(Entity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -16482,7 +16482,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -17071,7 +17071,7 @@ class Entity(DbObject):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -19554,7 +19554,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -20084,7 +20084,7 @@ class Face(Entity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -20560,7 +20560,7 @@ class FaceRecord(Vertex):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -21069,7 +21069,7 @@ class Fcf(Entity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -23195,7 +23195,7 @@ class GeoMap(RasterImage):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -23771,7 +23771,7 @@ class GeoPositionMarker(Entity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -25098,7 +25098,7 @@ class Hatch(Entity):
     def getGradientOneColorMode (self)-> bool :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -25930,7 +25930,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -26787,7 +26787,7 @@ class Image(Entity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -29328,7 +29328,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -29985,7 +29985,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -30631,7 +30631,7 @@ class LineAngularDimension2(Dimension):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -32252,7 +32252,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -32800,7 +32800,7 @@ class MInsertBlock(BlockReference):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -33501,7 +33501,7 @@ getBlockAttributeValue( (MLeader)arg1, (ObjectId)arg2) -> str :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -35741,7 +35741,7 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -36423,7 +36423,7 @@ class MText(Entity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -37259,7 +37259,7 @@ class Mline(Entity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -38330,7 +38330,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -39224,7 +39224,7 @@ class OrdinateDimension(Dimension):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -40650,7 +40650,7 @@ class PdfReference(UnderlayReference):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -41262,7 +41262,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -42453,7 +42453,7 @@ class Point(Entity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -43039,7 +43039,7 @@ class Point3AngularDimension(Dimension):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -44843,7 +44843,7 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -45750,7 +45750,7 @@ class PolyFaceMeshVertex(Vertex):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -46217,7 +46217,7 @@ class PolygonMeshVertex(Vertex):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -46751,7 +46751,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -47440,7 +47440,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -48112,7 +48112,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -48688,7 +48688,7 @@ class Polyline3dVertex(Vertex):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -49343,7 +49343,7 @@ class RadialDimension(Dimension):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -50186,7 +50186,7 @@ class RadialDimensionLarge(Dimension):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -50941,7 +50941,7 @@ class RasterImage(Image):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -52700,7 +52700,7 @@ class Region(Entity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -53365,7 +53365,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -54001,7 +54001,7 @@ class RotatedDimension(Dimension):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -54822,7 +54822,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -55645,7 +55645,7 @@ extrudeAlongPath( (Solid3d)arg1, (Region)arg2, (Curve)arg3, (float)arg4) -> None
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -56706,7 +56706,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -57660,7 +57660,7 @@ getCrease( (SubDMesh)arg1, (SubentId)arg2) -> float :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -58449,7 +58449,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -59311,7 +59311,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -60948,7 +60948,7 @@ class Table(BlockReference):
     def getGridProperty (self, row: int, col: int, nGridLineType: GridLineType)-> object :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -63007,7 +63007,7 @@ class Text(Entity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -65703,7 +65703,7 @@ class UnderlayReference(Entity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -66526,7 +66526,7 @@ class Vertex(Entity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -66993,7 +66993,7 @@ class Vertex2d(Vertex):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -68387,7 +68387,7 @@ class Viewport(Entity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
@@ -70311,7 +70311,7 @@ class Wipeout(RasterImage):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
+    def getGripPoints (self)-> tuple :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :

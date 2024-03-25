@@ -90,7 +90,7 @@ public:
     void                addReactor(PyDbEntityReactor& pReactor) const;
     void                removeReactor(PyDbEntityReactor& pReactor) const;
     boost::python::list getStretchPoints() const;
-    void                getGripPoints1(boost::python::list& gripPoints, boost::python::list& osnapModes, boost::python::list& geomIds)const;
+    boost::python::tuple getGripPoints1()const;
     void                addSubentPaths(const boost::python::list& newPaths);
     boost::python::list getSubentPathsAtGsMarker1(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform);
     boost::python::list getSubentPathsAtGsMarker2(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform, int numInserts, PyDbObjectId& entAndInsertStack);

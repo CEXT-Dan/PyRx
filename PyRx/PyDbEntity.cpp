@@ -90,7 +90,7 @@ void makePyDbEntityWrapper()
         .def("addReactor", &PyDbEntity::addReactor, DS.ARGS({ "reactor: PyDb.EntityReactor" }))
         .def("removeReactor", &PyDbEntity::removeReactor, DS.ARGS({ "reactor: PyDb.EntityReactor" }))
         .def("getStretchPoints", &PyDbEntity::getStretchPoints, DS.ARGS())
-        .def("getGripPoints", &PyDbEntity::getGripPoints1, DS.ARGS({ "outGripPoints: list[PyGe.Point3d]","outOsnapModes: list[int]","geomIds: list[int]" }))
+        .def("getGripPoints", &PyDbEntity::getGripPoints1, DS.ARGS())
         .def("addSubentPaths", &PyDbEntity::addSubentPaths, DS.ARGS({"paths: list[PyDb.FullSubentPath]"}))
         .def("getSubentPathsAtGsMarker", &PyDbEntity::getSubentPathsAtGsMarker1, DS.ARGS({ "type: PyDb.SubentType","gsMark: int","pickPoint: PyGe.Point3d","viewXform: PyGe.Matrix3d"  }))
         .def("highlight", &PyDbEntity::highlight1)
@@ -524,19 +524,25 @@ boost::python::list PyDbEntity::getStretchPoints() const
     return Point3dArrayToPyList(points);
 }
 
-void PyDbEntity::getGripPoints1(boost::python::list& gripPoints, boost::python::list& osnapModes, boost::python::list& geomIds) const
+boost::python::tuple PyDbEntity::getGripPoints1() const
 {
     AcGePoint3dArray _gripPoints;
     AcDbIntArray _osnapModes;
     AcDbIntArray _geomIds;
     PyThrowBadEs(impObj()->getGripPoints(_gripPoints, _osnapModes, _geomIds));
     PyAutoLockGIL lock;
+
+    boost::python::list gripPoints;
+    boost::python::list osnapModes;
+    boost::python::list geomIds;
+
     for (auto& item : _gripPoints)
         gripPoints.append(item);
     for (auto& item : _osnapModes)
         osnapModes.append(item);
     for (auto& item : _geomIds)
         geomIds.append(item);
+    return boost::python::make_tuple(gripPoints, osnapModes, geomIds);
 }
 
 void PyDbEntity::addSubentPaths(const boost::python::list& newPaths)
