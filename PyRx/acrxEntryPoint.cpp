@@ -283,9 +283,25 @@ public:
         return RSRSLT;
     }
 
+#ifdef PYPERFPROFILER
+    static void AcRxPyApp_pyprofiler(void)
+    {
+        ///
+    }
+    static void AcRxPyApp_pyprofilerend(void)
+    {
+        PyRxApp::instance().perfTimerEx.end();
+    }
+    static void AcRxPyApp_pyprofilerreset(void)
+    {
+        PyRxApp::instance().perfTimerEx.reset();
+    }
+#endif
+
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
+
     }
 #endif
 };
@@ -299,6 +315,11 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRA
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyloaded, false)
+#ifdef PYPERFPROFILER
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofiler, pyprofiler, ACRX_CMD_MODAL, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofilerend, pyprofilerend, ACRX_CMD_MODAL, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofilerreset, pyprofilerreset, ACRX_CMD_MODAL, NULL)
+#endif
 #ifdef PYRXDEBUG
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit, idoit, ACRX_CMD_MODAL, NULL)
 #endif

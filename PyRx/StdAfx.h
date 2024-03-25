@@ -146,6 +146,10 @@
 //#define PYRX_IN_PROGRESS_INPLACE_TEXT_EDITOR not in BRX
 #endif
 
+//#define PYPERFPROFILER
+#ifdef PYPERFPROFILER
+#pragma message ("PYPERFPROFILER is on")
+#endif
 
 #if defined(_ARXTARGET)
 #pragma comment( lib , "AcPal.lib" )
@@ -193,7 +197,6 @@ static inline constexpr const char* PyEdNamespace = "PyEd";
 static inline constexpr const char* PyPlNamespace = "PyPl";
 static inline constexpr const char* PyBrxCvNamespace = "PyBrxCv";
 
-
 static inline constexpr const wchar_t* PyAppNamespaceW = L"PyRxApp";
 static inline constexpr const wchar_t* PyApNamespaceW = L"PyAp";
 static inline constexpr const wchar_t* PyRxNamespaceW = L"PyRx";
@@ -223,7 +226,6 @@ constexpr auto makeIterator = [](const auto& record)
 constexpr auto makeAcDbSymbolTableIterator = makeIterator<AcDbSymbolTableIterator>;
 constexpr auto makeBlockTableIterator = makeIterator<AcDbBlockTableIterator>;
 constexpr auto makeBlockTableRecordIterator = makeIterator<AcDbBlockTableRecordIterator>;
-
 
 class PerfTimer
 {
