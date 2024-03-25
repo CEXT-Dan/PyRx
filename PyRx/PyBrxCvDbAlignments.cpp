@@ -2434,7 +2434,7 @@ boost::python::list PyBrxCvDbVAlignment::getPVIsArrays() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for (auto ptr : impObj()->getPVIsArrays())
+    for (auto& ptr : impObj()->getPVIsArrays())
     {
         if (ptr.refCount() == 1)
             pylist.append(PyBrxCvDbVAlignmentPVI(ptr.detach(), true));

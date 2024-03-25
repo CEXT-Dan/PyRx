@@ -2,8 +2,6 @@ import os
 import unittest
 import math
 
-from networkx import spiral_layout
-
 import PyRx as Rx
 import PyGe as Ge
 import PyGi as Gi
@@ -62,6 +60,14 @@ class TestBCadCivil(unittest.TestCase):
                 self.assertGreater(spiral.length(), 0)
                 flag = spiral.isA().isDerivedFrom(Cv.CvDbHAlignmentSCS.desc())
                 self.assertTrue(flag)
+                
+    def test_CvDbVAlignment_getPVIsArrays(self):
+        objHnd = Db.Handle("AF")
+        objId = self.BCADCIVIL1.getObjectId(False, objHnd)
+        self.assertEqual(objId.isValid(), True)
+        valign = Cv.CvDbVAlignment(objId)
+        for item in valign.getPVIsArrays():
+            self.assertIsNotNone(item)
             
 def PyRxCmd_pybcciviltest():
     try:
