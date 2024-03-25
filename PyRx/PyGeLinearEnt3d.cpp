@@ -8,39 +8,59 @@ using namespace boost::python;
 //PyGeLinearEnt3d
 void makePyGeLinearEnt3dWrapper()
 {
+    constexpr const std::string_view isOnOverloads = "Overloads:\n"
+        "- pnt: PyGe.Point3d\n"
+        "- pnt: PyGe.Point3d, tol: PyGe.Tol\n"
+        "- param: float\n"
+        "- param: float, tol: PyGe.Tol\n"
+        "- plane: PyGe.Plane\n"
+        "- plane: PyGe;Plane, tol: PyGe.Tol\n";
+
+    constexpr const std::string_view isParallelToOverloads = "Overloads:\n"
+        "- line: PyGe.LinearEnt3d\n"
+        "- line: PyGe.LinearEnt3d, tol: PyGe.Tol\n"
+        "- line: PyGe.PlanarEnt\n"
+        "- line: PyGe.PlanarEnt, tol: PyGe.Tol\n";
+
+    constexpr const std::string_view isPerpendicularToOverloads = "Overloads:\n"
+        "- line: PyGe.LinearEnt3d\n"
+        "- line: PyGe.LinearEnt3d, tol: PyGe.Tol\n"
+        "- line: PyGe.PlanarEnt\n"
+        "- line: PyGe.PlanarEnt, tol: PyGe.Tol\n";
+
     PyDocString DS("LinearEnt3d");
     class_<PyGeLinearEnt3d, bases<PyGeCurve3d>>("LinearEnt3d", boost::python::no_init)
         .def("intersectWith", &PyGeLinearEnt3d::intersectWith1)
         .def("intersectWith", &PyGeLinearEnt3d::intersectWith2)
         .def("intersectWith", &PyGeLinearEnt3d::intersectWith3)
-        .def("intersectWith", &PyGeLinearEnt3d::intersectWith4,  DS.ARGS({ "other : PyGe.LinearEnt3d | PyGe.PlanarEnt", "tol : PyGe.Tol=None" }))
+        .def("intersectWith", &PyGeLinearEnt3d::intersectWith4, DS.ARGS({ "other: PyGe.LinearEnt3d | PyGe.PlanarEnt", "tol: PyGe.Tol=None" }))
         .def("projIntersectWith", &PyGeLinearEnt3d::projIntersectWith1)
-        .def("projIntersectWith", &PyGeLinearEnt3d::projIntersectWith2, DS.ARGS({ "other : PyGe.LinearEnt3d", "projDir : PyGe.Vector3d" ,"tol : PyGe.Tol=None" }))
+        .def("projIntersectWith", &PyGeLinearEnt3d::projIntersectWith2, DS.ARGS({ "other: PyGe.LinearEnt3d", "projDir: PyGe.Vector3d", "tol: PyGe.Tol=None" }))
         .def("overlap", &PyGeLinearEnt3d::overlap1)
-        .def("overlap", &PyGeLinearEnt3d::overlap2, DS.ARGS({ "other : PyGe.LinearEnt3d", "tol : PyGe.Tol=None" }))
+        .def("overlap", &PyGeLinearEnt3d::overlap2, DS.ARGS({ "other: PyGe.LinearEnt3d", "tol: PyGe.Tol=None" }))
         .def("isOn", &PyGeLinearEnt3d::isOn1)
         .def("isOn", &PyGeLinearEnt3d::isOn2)
         .def("isOn", &PyGeLinearEnt3d::isOn3)
         .def("isOn", &PyGeLinearEnt3d::isOn4)
         .def("isOn", &PyGeLinearEnt3d::isOn5)
-        .def("isOn", &PyGeLinearEnt3d::isOn6)
+        .def("isOn", &PyGeLinearEnt3d::isOn6, DS.OVRL(isOnOverloads))
         .def("isParallelTo", &PyGeLinearEnt3d::isParallelTo1)
         .def("isParallelTo", &PyGeLinearEnt3d::isParallelTo2)
         .def("isParallelTo", &PyGeLinearEnt3d::isParallelTo3)
-        .def("isParallelTo", &PyGeLinearEnt3d::isParallelTo4)
+        .def("isParallelTo", &PyGeLinearEnt3d::isParallelTo4, DS.OVRL(isParallelToOverloads))
         .def("isPerpendicularTo", &PyGeLinearEnt3d::isPerpendicularTo1)
         .def("isPerpendicularTo", &PyGeLinearEnt3d::isPerpendicularTo2)
         .def("isPerpendicularTo", &PyGeLinearEnt3d::isPerpendicularTo3)
-        .def("isPerpendicularTo", &PyGeLinearEnt3d::isPerpendicularTo4)
+        .def("isPerpendicularTo", &PyGeLinearEnt3d::isPerpendicularTo4, DS.OVRL(isPerpendicularToOverloads))
         .def("isColinearTo", &PyGeLinearEnt3d::isColinearTo1)
-        .def("isColinearTo", &PyGeLinearEnt3d::isColinearTo2)
-        .def("getPerpPlane", &PyGeLinearEnt3d::getPerpPlane)
-        .def("pointOnLine", &PyGeLinearEnt3d::pointOnLine)
-        .def("direction", &PyGeLinearEnt3d::direction)
-        .def("getLine", &PyGeLinearEnt3d::getLine)
-        .def("cast", &PyGeLinearEnt3d::cast).staticmethod("cast")
-        .def("copycast", &PyGeLinearEnt3d::copycast).staticmethod("copycast")
-        .def("className", &PyGeLinearEnt3d::className).staticmethod("className")
+        .def("isColinearTo", &PyGeLinearEnt3d::isColinearTo2, DS.ARGS({ "pt: PyGe.LinearEnt3d" ,"tol: PyGe.Tol=None" }))
+        .def("getPerpPlane", &PyGeLinearEnt3d::getPerpPlane, DS.ARGS({ "pt: PyGe.Point3d"}))
+        .def("pointOnLine", &PyGeLinearEnt3d::pointOnLine, DS.ARGS())
+        .def("direction", &PyGeLinearEnt3d::direction, DS.ARGS())
+        .def("getLine", &PyGeLinearEnt3d::getLine, DS.ARGS())
+        .def("cast", &PyGeLinearEnt3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeLinearEnt3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeLinearEnt3d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -248,7 +268,7 @@ AcGeLinearEnt3d* PyGeLinearEnt3d::impObj(const std::source_location& src /*= std
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeLinearEnt3d*>(m_imp.get());
 }
 
@@ -344,7 +364,7 @@ AcGeLine3d* PyGeLine3d::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeLine3d*>(m_imp.get());
 }
 
@@ -473,7 +493,7 @@ AcGeLineSeg3d* PyGeLineSeg3d::impObj(const std::source_location& src /*= std::so
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeLineSeg3d*>(m_imp.get());
 }
 
@@ -551,6 +571,6 @@ AcGeRay3d* PyGeRay3d::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeRay3d*>(m_imp.get());
 }
