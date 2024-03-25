@@ -145,7 +145,7 @@ public:
         PyApApplication::PyOnIdleMsgFn();
     }
 
-    static AcString GETVER()
+    static const AcString GETVER()
     {
         constexpr TCHAR MAJOR1 = '1';
         constexpr TCHAR MINOR1 = '2';
@@ -170,8 +170,7 @@ public:
            compileMonth / 10 + '0', compileMonth % 10 + '0',
            compileDay / 10 + '0', compileDay % 10 + '0', 0
         };
-        AcString ver = IsoDate;
-        return ver;
+        return AcString(IsoDate);
     }
 
     static void PRINTVER()
