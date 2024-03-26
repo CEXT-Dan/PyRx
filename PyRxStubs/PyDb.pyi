@@ -9657,7 +9657,7 @@ class Database(PyRx.RxObject):
     def dxfIn (self, filename : str)-> None :
       '''                             '''
     ...
-    def dxfOut (self, filename : str)-> None :
+    def dxfOut (self, filename : str, precision : int=16, dwgVer:PyDb.DwgVersion=PyDb.DwgVersion.kDHL_CURRENT,saveThumbnailImage: bool=False)-> None :
       '''                             '''
     ...
     def elevation (self)-> float :
@@ -9743,21 +9743,19 @@ class Database(PyRx.RxObject):
     def implRefCount (self)-> int :
       '''                             '''
     ...
+
+    @overload
+    def insert (self, blockId: PyDb.ObjectId, pBlockName: str, db:PyDb.Database, preserveSourceDatabase: bool)-> None : ...
+    @overload
+    def insert (self, blockId: PyDb.ObjectId, pBlockName: str, ,pDestinationBlockName: str, db:PyDb.Database, preserveSourceDatabase: bool)-> None : ...
+    @overload
+    def insert (self, xform: PyGe.Matrix3d, db: PyDb.Database, preserveSourceDatabase: bool)-> None : ...
     def insert (self, *args, **kwargs)-> None :
-      '''insert( (Database)arg1, (ObjectId)arg2, (str)arg3, (Database)arg4, (bool)arg5) -> None :
-
-    C++ signature :
-        void insert(class PyDbDatabase {lvalue},class PyDbObjectId {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue},bool)
-
-insert( (Database)arg1, (ObjectId)arg2, (str)arg3, (str)arg4, (Database)arg5, (bool)arg6) -> None :
-
-    C++ signature :
-        void insert(class PyDbDatabase {lvalue},class PyDbObjectId {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue},bool)
-
-insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void insert(class PyDbDatabase {lvalue},class AcGeMatrix3d,class PyDbDatabase {lvalue},bool)'''
+      '''Overloads:
+    - blockId: PyDb.ObjectId, pBlockName: str, db:PyDb.Database, preserveSourceDatabase: bool
+    - blockId: PyDb.ObjectId, pBlockName: str, ,pDestinationBlockName: str, db:PyDb.Database, preserveSourceDatabase: bool
+    - xform: PyGe.Matrix3d, db: PyDb.Database, preserveSourceDatabase: bool
+    '''
     ...
     def insunits (self)-> PyDb.UnitsValue :
       '''                             '''
@@ -10104,7 +10102,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def retainOriginalThumbnailBitmap (self)-> bool :
       '''                             '''
     ...
-    def saveAs (self, filename: str, bBakAndRename: bool = False, dwgVer: PyDb.DwgVersion = 'kDHL_CURRENT')-> None :
+    def saveAs (self, filename: str, bBakAndRename: bool = False, dwgVer: PyDb.DwgVersion = PyDb.DwgVersion.kDHL_CURRENT)-> None :
       '''                             '''
     ...
     def saveproxygraphics (self)-> int :

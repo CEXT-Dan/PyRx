@@ -15,10 +15,16 @@ using namespace boost::python;
 // makeAcDbDatabaseWrapper
 void makePyDbDatabaseWrapper()
 {
+
     constexpr const std::string_view wblockOverloads = "Overloads:\n"
         "- blockId : PyDb.ObjectId\n"
         "- blockIds : list[PyDb.ObjectId], basePoint : PyGe.Point3d\n"
         "- outputDb : PyDb.Database, ids : list[PyDb.ObjectId], basePoint : PyGe.Point3d , drc : PyDb.DuplicateRecordCloning\n";
+
+    constexpr const std::string_view insertOverloads = "Overloads:\n"
+        "- blockId: PyDb.ObjectId, pBlockName: str, db:PyDb.Database, preserveSourceDatabase: bool\n"
+        "- blockId: PyDb.ObjectId, pBlockName: str, ,pDestinationBlockName: str, db:PyDb.Database, preserveSourceDatabase: bool\n"
+        "- xform: PyGe.Matrix3d, db: PyDb.Database, preserveSourceDatabase: bool\n";
 
     PyDocString DS("PyDb.Database");
     class_<PyDbDatabase, bases<PyRxObject>>("Database")
@@ -90,7 +96,8 @@ void makePyDbDatabaseWrapper()
         .def("dwfframe", &PyDbDatabase::dwfframe, DS.ARGS())
         .def("dwgFileWasSavedByAutodeskSoftware", &PyDbDatabase::dwgFileWasSavedByAutodeskSoftware, DS.ARGS())
         .def("dxfIn", &PyDbDatabase::dxfIn, DS.ARGS({ "filename : str" }))
-        .def("dxfOut", &PyDbDatabase::dxfOut, DS.ARGS({ "filename : str" }))
+        .def("dxfOut", &PyDbDatabase::dxfOut1)
+        .def("dxfOut", &PyDbDatabase::dxfOut2, DS.ARGS({ "filename : str","precision : int=16, dwgVer:PyDb.DwgVersion=PyDb.DwgVersion.kDHL_CURRENT,saveThumbnailImage: bool=False" }))
         .def("elevation", &PyDbDatabase::elevation, DS.ARGS())
         .def("eraseEmptyObjects", &PyDbDatabase::eraseEmptyObjects, DS.ARGS({ "flag : int" }))
         .def("extmax", &PyDbDatabase::extmax, DS.ARGS())
@@ -121,10 +128,9 @@ void makePyDbDatabaseWrapper()
         .def("hideText", &PyDbDatabase::hideText, DS.ARGS())
         .def("hpInherit", &PyDbDatabase::hpInherit, DS.ARGS())
         .def("hpOrigin", &PyDbDatabase::hpOrigin, DS.ARGS())
-        //TODO: TEST and DOCSTRING
         .def("insert", &PyDbDatabase::insert1)
         .def("insert", &PyDbDatabase::insert2)
-        .def("insert", &PyDbDatabase::insert3)
+        .def("insert", &PyDbDatabase::insert3, DS.OVRL(insertOverloads))
         .def("hpOrigin", &PyDbDatabase::indexctl, DS.ARGS())
         .def("isAppRegistered", &PyDbDatabase::isAppRegistered, DS.ARGS({ "pszAppName : str" }))
         .def("insunits", &PyDbDatabase::insunits, DS.ARGS())
@@ -285,7 +291,7 @@ void makePyDbDatabaseWrapper()
         .def("setFilletrad", &PyDbDatabase::setFilletrad, DS.ARGS({ "val : float" }))
         .def("setFillmode", &PyDbDatabase::setFillmode, DS.ARGS({ "val : bool" }))
         .def("saveAs", &PyDbDatabase::saveAs1)
-        .def("saveAs", &PyDbDatabase::saveAs2, DS.ARGS({ "filename: str", "bBakAndRename: bool = False","dwgVer: PyDb.DwgVersion = 'kDHL_CURRENT'" }))
+        .def("saveAs", &PyDbDatabase::saveAs2, DS.ARGS({ "filename: str", "bBakAndRename: bool = False","dwgVer: PyDb.DwgVersion = PyDb.DwgVersion.kDHL_CURRENT" }))
         .def("setFingerprintGuid", &PyDbDatabase::setFingerprintGuid, DS.ARGS({ "guid : str" }))
         .def("setFullSaveRequired", &PyDbDatabase::setFullSaveRequired, DS.ARGS())
         .def("setGeoMarkerVisibility", &PyDbDatabase::setGeoMarkerVisibility, DS.ARGS({ "val : bool" }))
@@ -900,9 +906,14 @@ void PyDbDatabase::dxfIn(const std::string& dxfFilename)
     return PyThrowBadEs(impObj()->dxfIn(utf8_to_wstr(dxfFilename).c_str()));
 }
 
-void PyDbDatabase::dxfOut(const std::string& dxfFilename)
+void PyDbDatabase::dxfOut1(const std::string& dxfFilename)
 {
     return PyThrowBadEs(impObj()->dxfOut(utf8_to_wstr(dxfFilename).c_str()));
+}
+
+void PyDbDatabase::dxfOut2(const std::string& dxfFilename, int precision, AcDb::AcDbDwgVersion dwgVer, bool saveThumbnailImage)
+{
+    return PyThrowBadEs(impObj()->dxfOut(utf8_to_wstr(dxfFilename).c_str(), precision, dwgVer, saveThumbnailImage));
 }
 
 double PyDbDatabase::elevation() const
