@@ -83,7 +83,8 @@ public:
     Adesk::UInt8        dwfframe() const;
     bool                dwgFileWasSavedByAutodeskSoftware() const;
     void                dxfIn(const std::string& dxfFilename);
-    void                dxfOut(const std::string& dxfFilename);
+    void                dxfOut1(const std::string& dxfFilename);
+    void                dxfOut2(const std::string& dxfFilename, int precision, AcDb::AcDbDwgVersion dwgVer, bool saveThumbnailImage);
     double              elevation() const;
     Adesk::UInt32       eraseEmptyObjects(const Adesk::Int32 flags);
     AcGePoint3d         extmax() const;
