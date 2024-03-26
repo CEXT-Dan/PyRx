@@ -1,13 +1,13 @@
 Python (Native Python)
 
 bindings for C++: 
-AutoCAD®    ObjectARX®  2021-2024
+AutoCAD®    ObjectARX®  2021-2025
 ZwCAD®      ZRX®        2024
 GstarCAD®   GRX®        2024
 BricsCAD®   BRX®        2024
 
 bindings for ActiveX 
-AutoCAD®    2021-2024
+AutoCAD®    2021-2025
 BricsCAD    v24
 GstarCAD    2024
 ZwCAD       2024
@@ -38,7 +38,7 @@ Autolisp:
 
 
 PyRx sample:
-```python
+
 #imports 
 from pyrx_imp import Rx
 from pyrx_imp import Ge
@@ -85,11 +85,11 @@ def PyRxCmd_pydoit():
 
     except Exception as err:
         print(err)
-```
+
 		
 ...
 ActiveX sample:
-```python
+
 from pyrx_imp import Rx
 from pyrx_imp import Ge
 from pyrx_imp import Gi
@@ -138,7 +138,6 @@ def PyRxCmd_hitTest():
         
     finally:
         axSs.Delete()
-```	
-		
+
 Blogs: https://pyarx.blogspot.com/
 Discussion forum:  https://www.theswamp.org/index.php?board=76.0
