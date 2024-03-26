@@ -3,6 +3,8 @@
 #include "PyDbObjectId.h"
 #include "PyCmColorBase.h"
 #include "PyGePlane.h"
+#include "PyDbGripData.h"
+
 using namespace boost::python;
 //----------------------------------------------------------------------------------------------------
 //wrapper
@@ -13,6 +15,10 @@ void makePyDbEntityWrapper()
         "- entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int\n"
         "- entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane\n"
         "- entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int\n";
+
+    constexpr const std::string_view getGripPointsOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int\n";
 
     PyDocString DS("PyDb.Entity");
     class_<PyDbEntity, bases<PyDbObject>>("Entity", boost::python::no_init)
@@ -90,7 +96,8 @@ void makePyDbEntityWrapper()
         .def("addReactor", &PyDbEntity::addReactor, DS.ARGS({ "reactor: PyDb.EntityReactor" }))
         .def("removeReactor", &PyDbEntity::removeReactor, DS.ARGS({ "reactor: PyDb.EntityReactor" }))
         .def("getStretchPoints", &PyDbEntity::getStretchPoints, DS.ARGS())
-        .def("getGripPoints", &PyDbEntity::getGripPoints1, DS.ARGS())
+        .def("getGripPoints", &PyDbEntity::getGripPoints1)
+        .def("getGripPoints", &PyDbEntity::getGripPoints2, DS.OVRL(getGripPointsOverloads))
         .def("addSubentPaths", &PyDbEntity::addSubentPaths, DS.ARGS({"paths: list[PyDb.FullSubentPath]"}))
         .def("getSubentPathsAtGsMarker", &PyDbEntity::getSubentPathsAtGsMarker1, DS.ARGS({ "type: PyDb.SubentType","gsMark: int","pickPoint: PyGe.Point3d","viewXform: PyGe.Matrix3d"  }))
         .def("highlight", &PyDbEntity::highlight1)
@@ -543,6 +550,17 @@ boost::python::tuple PyDbEntity::getGripPoints1() const
     for (auto& item : _geomIds)
         geomIds.append(item);
     return boost::python::make_tuple(gripPoints, osnapModes, geomIds);
+}
+
+boost::python::list PyDbEntity::getGripPoints2(double curViewUnitSize, int gripSize, const AcGeVector3d& curViewDir, int bitflags) const
+{
+    PyAutoLockGIL lock;
+    AcDbGripDataPtrArray ptrs;
+    boost::python::list pylist;
+    PyThrowBadEs(impObj()->getGripPoints(ptrs, curViewUnitSize, gripSize, curViewDir, bitflags));
+    for (auto& item : ptrs)
+        pylist.append(PyDbGripData(item));
+    return pylist;
 }
 
 void PyDbEntity::addSubentPaths(const boost::python::list& newPaths)

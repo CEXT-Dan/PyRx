@@ -45,6 +45,8 @@
 #include "PyDbGeo.h"
 #include "PyDbDate.h"
 #include "PyDbSubDMesh.h"
+#include "PyDbGripData.h"
+
 
 using namespace boost::python;
 
@@ -220,6 +222,7 @@ BOOST_PYTHON_MODULE(PyDb)
 
     //create in class order!
     makePyDbDateWrapper();
+    makePyDbGripDataWrapper();
     makePyDbSubentIdWrapper();
     makePyDbFullSubentPathWrapper();
     makePyDbExtents2dWrapper();
