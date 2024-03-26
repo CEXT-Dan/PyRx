@@ -399,8 +399,16 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
-      '''                             '''
+
+    @overload
+    def getGripPoints (self, /)-> tuple : ...
+    @overload
+    def getGripPoints (self, curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int)-> tuple : ...
+    def getGripPoints (self, *args, **kwargs)-> tuple :
+      '''Overloads:
+    - None: Any
+    - curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int
+    '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -973,8 +981,16 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
-      '''                             '''
+
+    @overload
+    def getGripPoints (self, /)-> tuple : ...
+    @overload
+    def getGripPoints (self, curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int)-> tuple : ...
+    def getGripPoints (self, *args, **kwargs)-> tuple :
+      '''Overloads:
+    - None: Any
+    - curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int
+    '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -1492,8 +1508,16 @@ class CvDbEntity(PyDb.Entity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
-      '''                             '''
+
+    @overload
+    def getGripPoints (self, /)-> tuple : ...
+    @overload
+    def getGripPoints (self, curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int)-> tuple : ...
+    def getGripPoints (self, *args, **kwargs)-> tuple :
+      '''Overloads:
+    - None: Any
+    - curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int
+    '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -2282,8 +2306,16 @@ class CvDbGrading(CvDbEntity):
     def getGradingVisualStyle (self)-> PyBrxCv.GradingVisualStyle :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
-      '''                             '''
+
+    @overload
+    def getGripPoints (self, /)-> tuple : ...
+    @overload
+    def getGripPoints (self, curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int)-> tuple : ...
+    def getGripPoints (self, *args, **kwargs)-> tuple :
+      '''Overloads:
+    - None: Any
+    - curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int
+    '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -3055,8 +3087,16 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
-      '''                             '''
+
+    @overload
+    def getGripPoints (self, /)-> tuple : ...
+    @overload
+    def getGripPoints (self, curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int)-> tuple : ...
+    def getGripPoints (self, *args, **kwargs)-> tuple :
+      '''Overloads:
+    - None: Any
+    - curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int
+    '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -5390,8 +5430,16 @@ class CvDbPoint(CvDbEntity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
-      '''                             '''
+
+    @overload
+    def getGripPoints (self, /)-> tuple : ...
+    @overload
+    def getGripPoints (self, curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int)-> tuple : ...
+    def getGripPoints (self, *args, **kwargs)-> tuple :
+      '''Overloads:
+    - None: Any
+    - curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int
+    '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -7191,8 +7239,16 @@ class CvDbTinSurface(CvDbEntity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
-      '''                             '''
+
+    @overload
+    def getGripPoints (self, /)-> tuple : ...
+    @overload
+    def getGripPoints (self, curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int)-> tuple : ...
+    def getGripPoints (self, *args, **kwargs)-> tuple :
+      '''Overloads:
+    - None: Any
+    - curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int
+    '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -11091,8 +11147,16 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
-      '''                             '''
+
+    @overload
+    def getGripPoints (self, /)-> tuple : ...
+    @overload
+    def getGripPoints (self, curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int)-> tuple : ...
+    def getGripPoints (self, *args, **kwargs)-> tuple :
+      '''Overloads:
+    - None: Any
+    - curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int
+    '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -12346,8 +12410,16 @@ class CvDbVAlignmentView(CvDbView):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
-      '''                             '''
+
+    @overload
+    def getGripPoints (self, /)-> tuple : ...
+    @overload
+    def getGripPoints (self, curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int)-> tuple : ...
+    def getGripPoints (self, *args, **kwargs)-> tuple :
+      '''Overloads:
+    - None: Any
+    - curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int
+    '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -12877,8 +12949,16 @@ class CvDbView(CvDbEntity):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
-      '''                             '''
+
+    @overload
+    def getGripPoints (self, /)-> tuple : ...
+    @overload
+    def getGripPoints (self, curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int)-> tuple : ...
+    def getGripPoints (self, *args, **kwargs)-> tuple :
+      '''Overloads:
+    - None: Any
+    - curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int
+    '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
@@ -13492,8 +13572,16 @@ class CvDbVolumeSurface(CvDbTinSurface):
     def getGeomExtents2d (self)-> PyDb.Extents2d :
       '''                             '''
     ...
-    def getGripPoints (self, outGripPoints: list[PyGe.Point3d], outOsnapModes: list[int], geomIds: list[int])-> None :
-      '''                             '''
+
+    @overload
+    def getGripPoints (self, /)-> tuple : ...
+    @overload
+    def getGripPoints (self, curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int)-> tuple : ...
+    def getGripPoints (self, *args, **kwargs)-> tuple :
+      '''Overloads:
+    - None: Any
+    - curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int
+    '''
     ...
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
