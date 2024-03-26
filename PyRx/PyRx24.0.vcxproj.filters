@@ -349,6 +349,9 @@
     <ClCompile Include="PyRxContainers.cpp">
       <Filter>Source Files\PyRxApp</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbGripData.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -701,6 +704,9 @@
     </ClInclude>
     <ClInclude Include="RxPyString.h">
       <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbGripData.h">
+      <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -54,6 +54,14 @@ class TestDbEntity(unittest.TestCase):
         dbp = Db.Point(id, Db.OpenMode.kForWrite)
         self.assertEqual(dbp.isWriteEnabled(), True)
         dbp.erase()
+        
+    def test_getGripPointsGripData(self):
+        objHnd = Db.Handle("2c91ef")
+        objId = self.db06457.getObjectId(False, objHnd)
+        self.assertEqual(objId.isValid(), True)
+        mt = Db.MText(objId)
+        grpdata = mt.getGripPoints(1.0,1,Ge.Vector3d.kZAxis,0)
+        self.assertGreater(len(grpdata), 0)
 
     def test_dbpoint(self):
         db = Db.curDb()

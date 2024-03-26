@@ -91,6 +91,7 @@ public:
     void                removeReactor(PyDbEntityReactor& pReactor) const;
     boost::python::list getStretchPoints() const;
     boost::python::tuple getGripPoints1()const;
+    boost::python::list  getGripPoints2(double curViewUnitSize, int gripSize, const AcGeVector3d& curViewDir, int bitflags) const;
     void                addSubentPaths(const boost::python::list& newPaths);
     boost::python::list getSubentPathsAtGsMarker1(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform);
     boost::python::list getSubentPathsAtGsMarker2(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform, int numInserts, PyDbObjectId& entAndInsertStack);
