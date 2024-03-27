@@ -616,6 +616,7 @@ public:
     AcGePoint3d         startPoint() const;
     void                setStartPoint(const AcGePoint3d& val);
     AcGePoint3d         endPoint() const;
+    AcGePoint3d         midPoint() const;
     void                setEndPoint(const AcGePoint3d& val);
     double              thickness() const;
     void                setThickness(double val);
