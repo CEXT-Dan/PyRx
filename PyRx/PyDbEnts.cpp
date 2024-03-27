@@ -3067,6 +3067,7 @@ void makePyDbLineWrapper()
         .def("getOffsetCurvesGivenPlaneNormal", &PyDbLine::getOffsetCurvesGivenPlaneNormal, DS.ARGS({ "val:PyGe.Vector3d","offset:float" }))
         .def("getAcGeCurve", &PyDbLine::getAcGeCurve1)
         .def("getAcGeCurve", &PyDbLine::getAcGeCurve2, DS.ARGS({ "tol: PyGe.Tol = 'default'" }))
+        .def("midPoint", &PyDbLine::midPoint, DS.ARGS())
         .def("className", &PyDbLine::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbLine::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbLine::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -3117,6 +3118,12 @@ void PyDbLine::setStartPoint(const AcGePoint3d& val)
 AcGePoint3d PyDbLine::endPoint() const
 {
     return impObj()->endPoint();
+}
+
+AcGePoint3d PyDbLine::midPoint() const
+{
+    AcGeLineSeg3d seg(impObj()->startPoint(), impObj()->endPoint());
+    return seg.midPoint();
 }
 
 void PyDbLine::setEndPoint(const AcGePoint3d& val)

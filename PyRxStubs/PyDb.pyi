@@ -30430,6 +30430,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def materialId (self)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def midPoint (self)-> PyGe.Point3d :
+      '''                             '''
+    ...
     def normal (self)-> PyGe.Vector3d :
       '''                             '''
     ...
