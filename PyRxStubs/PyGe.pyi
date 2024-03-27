@@ -486,16 +486,8 @@ closestPointToLinearEnt( (PlanarEnt)arg1, (LinearEnt3d)arg2, (Tol)arg3) -> tuple
     C++ signature :
         class boost::python::tuple closestPointToLinearEnt(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d,class AcGeTol)'''
     ...
-    def closestPointToPlanarEnt (self, *args, **kwargs)-> tuple :
-      '''closestPointToPlanarEnt( (PlanarEnt)arg1, (PlanarEnt)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointToPlanarEnt(class PyGePlanarEnt {lvalue},class PyGePlanarEnt)
-
-closestPointToPlanarEnt( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointToPlanarEnt(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
+    def closestPointToPlanarEnt (self, other: PyGe.LinearEnt3d|PyGe.PlanarEnt, tol: PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity3d :
       '''                             '''
@@ -533,17 +525,11 @@ evalPoint( (Surface)arg1, (Point2d)arg2, (int)arg3, (list)arg4, (Vector3d)arg5) 
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeSurface {lvalue},class AcGePoint2d,int,class boost::python::list {lvalue},class AcGeVector3d {lvalue})'''
     ...
-    def getCoefficients (self, *args, **kwargs)-> tuple :
-      '''getCoefficients( (PlanarEnt)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getCoefficients(class PyGePlanarEnt {lvalue})'''
+    def getCoefficients (self)-> tuple :
+      '''                             '''
     ...
-    def getCoordSystem (self, *args, **kwargs)-> tuple :
-      '''getCoordSystem( (PlanarEnt)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getCoordSystem(class PyGePlanarEnt {lvalue})'''
+    def getCoordSystem (self)-> tuple :
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> tuple :
       '''intersectWith( (BoundedPlane)arg1, (LinearEnt3d)arg2) -> tuple :
@@ -598,16 +584,8 @@ isClosedInV( (Surface)arg1, (Tol)arg2) -> bool :
     C++ signature :
         bool isClosedInV(class PyGeSurface {lvalue},class AcGeTol)'''
     ...
-    def isCoplanarTo (self, *args, **kwargs)-> bool :
-      '''isCoplanarTo( (PlanarEnt)arg1, (PlanarEnt)arg2) -> bool :
-
-    C++ signature :
-        bool isCoplanarTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt)
-
-isCoplanarTo( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isCoplanarTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
+    def isCoplanarTo (self, other: PyGe.PlanarEnt, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isEqualTo (self, val : PyGe.Entity3d, tol : PyGe.Tol=None)-> bool :
       '''                             '''
@@ -645,56 +623,17 @@ isOn( (Surface)arg1, (Point3d)arg2, (Point2d)arg3, (Tol)arg4) -> bool :
     C++ signature :
         bool isOn(class PyGeSurface {lvalue},class AcGePoint3d,class AcGePoint2d {lvalue},class AcGeTol)'''
     ...
-    def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (PlanarEnt)arg1, (LinearEnt3d)arg2) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d)
-
-isParallelTo( (PlanarEnt)arg1, (LinearEnt3d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d,class AcGeTol)
-
-isParallelTo( (PlanarEnt)arg1, (PlanarEnt)arg2) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt)
-
-isParallelTo( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
+    def isParallelTo (self, other: PyGe.LinearEnt3d|PyGe.PlanarEnt, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
-    def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (PlanarEnt)arg1, (LinearEnt3d)arg2) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d)
-
-isPerpendicularTo( (PlanarEnt)arg1, (LinearEnt3d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d,class AcGeTol)
-
-isPerpendicularTo( (PlanarEnt)arg1, (PlanarEnt)arg2) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt)
-
-isPerpendicularTo( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
+    def isPerpendicularTo (self, other: PyGe.LinearEnt3d|PyGe.PlanarEnt, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def mirror (self, val : PyGe.Plane)-> None :
       '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normal( (PlanarEnt)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyGePlanarEnt {lvalue})'''
+    def normal (self)-> PyGe.Vector3d :
+      '''                             '''
     ...
     def paramOf (self, *args, **kwargs)-> PyGe.Point2d :
       '''paramOf( (Surface)arg1, (Point3d)arg2) -> Point2d :
@@ -707,11 +646,8 @@ paramOf( (Surface)arg1, (Point3d)arg2, (Tol)arg3) -> Point2d :
     C++ signature :
         class AcGePoint2d paramOf(class PyGeSurface {lvalue},class AcGePoint3d,class AcGeTol)'''
     ...
-    def pointOnPlane (self, *args, **kwargs)-> PyGe.Point3d :
-      '''pointOnPlane( (PlanarEnt)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d pointOnPlane(class PyGePlanarEnt {lvalue})'''
+    def pointOnPlane (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def reverseNormal (self, *args, **kwargs)-> None :
       '''reverseNormal( (Surface)arg1) -> None :
@@ -10140,16 +10076,16 @@ __init__( (object)arg1) -> None :
         bool isConformal(class AcGeMatrix2d {lvalue},double {lvalue},double {lvalue},bool {lvalue},class AcGeVector2d {lvalue})'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D57AC040>]) -> bool :
+      '''isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000311DA53C040>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x000002A8D57AC040>])'''
+        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x00000311DA53C040>])'''
     ...
     def isScaledOrtho (self, *args, **kwargs)-> bool :
-      '''isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D57AC160>]) -> bool :
+      '''isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000311DA53C160>]) -> bool :
 
     C++ signature :
-        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002A8D57AC160>])'''
+        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000311DA53C160>])'''
     ...
     def isSingular (self, *args, **kwargs)-> bool :
       '''isSingular( (Matrix2d)arg1, (Tol)arg2) -> bool :
@@ -10158,10 +10094,10 @@ __init__( (object)arg1) -> None :
         bool isSingular(class AcGeMatrix2d {lvalue},class AcGeTol)'''
     ...
     def isUniScaledOrtho (self, *args, **kwargs)-> bool :
-      '''isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D57AC0D0>]) -> bool :
+      '''isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000311DA53C0D0>]) -> bool :
 
     C++ signature :
-        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002A8D57AC0D0>])'''
+        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000311DA53C0D0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
@@ -12817,17 +12753,15 @@ class PlanarEnt(Surface):
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.PlanarEnt :
-      '''cast( (Entity3d)arg1) -> PlanarEnt :
 
-    C++ signature :
-        class PyGePlanarEnt cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.PlanarEnt :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, *args, **kwargs)-> PyGe.Point3d :
       '''closestPointTo( (Surface)arg1, (Point3d)arg2) -> Point3d :
@@ -12851,25 +12785,16 @@ closestPointToLinearEnt( (PlanarEnt)arg1, (LinearEnt3d)arg2, (Tol)arg3) -> tuple
     C++ signature :
         class boost::python::tuple closestPointToLinearEnt(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d,class AcGeTol)'''
     ...
-    def closestPointToPlanarEnt (self, *args, **kwargs)-> tuple :
-      '''closestPointToPlanarEnt( (PlanarEnt)arg1, (PlanarEnt)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointToPlanarEnt(class PyGePlanarEnt {lvalue},class PyGePlanarEnt)
-
-closestPointToPlanarEnt( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointToPlanarEnt(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
+    def closestPointToPlanarEnt (self, other: PyGe.LinearEnt3d|PyGe.PlanarEnt, tol: PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity3d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.PlanarEnt :
-      '''copycast( (Entity3d)arg1) -> PlanarEnt :
 
-    C++ signature :
-        class PyGePlanarEnt copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.PlanarEnt :
+      '''                             '''
     ...
     def distanceTo (self, *args, **kwargs)-> float :
       '''distanceTo( (Surface)arg1, (Point3d)arg2) -> float :
@@ -12898,28 +12823,14 @@ evalPoint( (Surface)arg1, (Point2d)arg2, (int)arg3, (list)arg4, (Vector3d)arg5) 
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeSurface {lvalue},class AcGePoint2d,int,class boost::python::list {lvalue},class AcGeVector3d {lvalue})'''
     ...
-    def getCoefficients (self, *args, **kwargs)-> tuple :
-      '''getCoefficients( (PlanarEnt)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getCoefficients(class PyGePlanarEnt {lvalue})'''
+    def getCoefficients (self)-> tuple :
+      '''                             '''
     ...
-    def getCoordSystem (self, *args, **kwargs)-> tuple :
-      '''getCoordSystem( (PlanarEnt)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getCoordSystem(class PyGePlanarEnt {lvalue})'''
+    def getCoordSystem (self)-> tuple :
+      '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> tuple :
-      '''intersectWith( (PlanarEnt)arg1, (LinearEnt3d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d)
-
-intersectWith( (PlanarEnt)arg1, (LinearEnt3d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d,class AcGeTol)'''
+    def intersectWith (self, other: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isClosedInU (self, *args, **kwargs)-> bool :
       '''isClosedInU( (Surface)arg1) -> bool :
@@ -12943,16 +12854,8 @@ isClosedInV( (Surface)arg1, (Tol)arg2) -> bool :
     C++ signature :
         bool isClosedInV(class PyGeSurface {lvalue},class AcGeTol)'''
     ...
-    def isCoplanarTo (self, *args, **kwargs)-> bool :
-      '''isCoplanarTo( (PlanarEnt)arg1, (PlanarEnt)arg2) -> bool :
-
-    C++ signature :
-        bool isCoplanarTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt)
-
-isCoplanarTo( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isCoplanarTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
+    def isCoplanarTo (self, other: PyGe.PlanarEnt, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isEqualTo (self, val : PyGe.Entity3d, tol : PyGe.Tol=None)-> bool :
       '''                             '''
@@ -12990,56 +12893,17 @@ isOn( (Surface)arg1, (Point3d)arg2, (Point2d)arg3, (Tol)arg4) -> bool :
     C++ signature :
         bool isOn(class PyGeSurface {lvalue},class AcGePoint3d,class AcGePoint2d {lvalue},class AcGeTol)'''
     ...
-    def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (PlanarEnt)arg1, (LinearEnt3d)arg2) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d)
-
-isParallelTo( (PlanarEnt)arg1, (LinearEnt3d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d,class AcGeTol)
-
-isParallelTo( (PlanarEnt)arg1, (PlanarEnt)arg2) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt)
-
-isParallelTo( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
+    def isParallelTo (self, other: PyGe.LinearEnt3d|PyGe.PlanarEnt, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
-    def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (PlanarEnt)arg1, (LinearEnt3d)arg2) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d)
-
-isPerpendicularTo( (PlanarEnt)arg1, (LinearEnt3d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d,class AcGeTol)
-
-isPerpendicularTo( (PlanarEnt)arg1, (PlanarEnt)arg2) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt)
-
-isPerpendicularTo( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
+    def isPerpendicularTo (self, other: PyGe.LinearEnt3d|PyGe.PlanarEnt, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def mirror (self, val : PyGe.Plane)-> None :
       '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normal( (PlanarEnt)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyGePlanarEnt {lvalue})'''
+    def normal (self)-> PyGe.Vector3d :
+      '''                             '''
     ...
     def paramOf (self, *args, **kwargs)-> PyGe.Point2d :
       '''paramOf( (Surface)arg1, (Point3d)arg2) -> Point2d :
@@ -13052,11 +12916,8 @@ paramOf( (Surface)arg1, (Point3d)arg2, (Tol)arg3) -> Point2d :
     C++ signature :
         class AcGePoint2d paramOf(class PyGeSurface {lvalue},class AcGePoint3d,class AcGeTol)'''
     ...
-    def pointOnPlane (self, *args, **kwargs)-> PyGe.Point3d :
-      '''pointOnPlane( (PlanarEnt)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d pointOnPlane(class PyGePlanarEnt {lvalue})'''
+    def pointOnPlane (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def reverseNormal (self, *args, **kwargs)-> None :
       '''reverseNormal( (Surface)arg1) -> None :
@@ -13146,16 +13007,8 @@ closestPointToLinearEnt( (PlanarEnt)arg1, (LinearEnt3d)arg2, (Tol)arg3) -> tuple
     C++ signature :
         class boost::python::tuple closestPointToLinearEnt(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d,class AcGeTol)'''
     ...
-    def closestPointToPlanarEnt (self, *args, **kwargs)-> tuple :
-      '''closestPointToPlanarEnt( (PlanarEnt)arg1, (PlanarEnt)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointToPlanarEnt(class PyGePlanarEnt {lvalue},class PyGePlanarEnt)
-
-closestPointToPlanarEnt( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointToPlanarEnt(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
+    def closestPointToPlanarEnt (self, other: PyGe.LinearEnt3d|PyGe.PlanarEnt, tol: PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity3d :
       '''                             '''
@@ -13193,17 +13046,11 @@ evalPoint( (Surface)arg1, (Point2d)arg2, (int)arg3, (list)arg4, (Vector3d)arg5) 
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeSurface {lvalue},class AcGePoint2d,int,class boost::python::list {lvalue},class AcGeVector3d {lvalue})'''
     ...
-    def getCoefficients (self, *args, **kwargs)-> tuple :
-      '''getCoefficients( (PlanarEnt)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getCoefficients(class PyGePlanarEnt {lvalue})'''
+    def getCoefficients (self)-> tuple :
+      '''                             '''
     ...
-    def getCoordSystem (self, *args, **kwargs)-> tuple :
-      '''getCoordSystem( (PlanarEnt)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getCoordSystem(class PyGePlanarEnt {lvalue})'''
+    def getCoordSystem (self)-> tuple :
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> tuple :
       '''intersectWith( (Plane)arg1, (LinearEnt3d)arg2) -> tuple :
@@ -13258,16 +13105,8 @@ isClosedInV( (Surface)arg1, (Tol)arg2) -> bool :
     C++ signature :
         bool isClosedInV(class PyGeSurface {lvalue},class AcGeTol)'''
     ...
-    def isCoplanarTo (self, *args, **kwargs)-> bool :
-      '''isCoplanarTo( (PlanarEnt)arg1, (PlanarEnt)arg2) -> bool :
-
-    C++ signature :
-        bool isCoplanarTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt)
-
-isCoplanarTo( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isCoplanarTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
+    def isCoplanarTo (self, other: PyGe.PlanarEnt, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isEqualTo (self, val : PyGe.Entity3d, tol : PyGe.Tol=None)-> bool :
       '''                             '''
@@ -13305,56 +13144,17 @@ isOn( (Surface)arg1, (Point3d)arg2, (Point2d)arg3, (Tol)arg4) -> bool :
     C++ signature :
         bool isOn(class PyGeSurface {lvalue},class AcGePoint3d,class AcGePoint2d {lvalue},class AcGeTol)'''
     ...
-    def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (PlanarEnt)arg1, (LinearEnt3d)arg2) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d)
-
-isParallelTo( (PlanarEnt)arg1, (LinearEnt3d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d,class AcGeTol)
-
-isParallelTo( (PlanarEnt)arg1, (PlanarEnt)arg2) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt)
-
-isParallelTo( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
+    def isParallelTo (self, other: PyGe.LinearEnt3d|PyGe.PlanarEnt, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
-    def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (PlanarEnt)arg1, (LinearEnt3d)arg2) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d)
-
-isPerpendicularTo( (PlanarEnt)arg1, (LinearEnt3d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGePlanarEnt {lvalue},class PyGeLinearEnt3d,class AcGeTol)
-
-isPerpendicularTo( (PlanarEnt)arg1, (PlanarEnt)arg2) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt)
-
-isPerpendicularTo( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
+    def isPerpendicularTo (self, other: PyGe.LinearEnt3d|PyGe.PlanarEnt, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def mirror (self, val : PyGe.Plane)-> None :
       '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normal( (PlanarEnt)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyGePlanarEnt {lvalue})'''
+    def normal (self)-> PyGe.Vector3d :
+      '''                             '''
     ...
     def paramOf (self, *args, **kwargs)-> PyGe.Point2d :
       '''paramOf( (Surface)arg1, (Point3d)arg2) -> Point2d :
@@ -13367,11 +13167,8 @@ paramOf( (Surface)arg1, (Point3d)arg2, (Tol)arg3) -> Point2d :
     C++ signature :
         class AcGePoint2d paramOf(class PyGeSurface {lvalue},class AcGePoint3d,class AcGeTol)'''
     ...
-    def pointOnPlane (self, *args, **kwargs)-> PyGe.Point3d :
-      '''pointOnPlane( (PlanarEnt)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d pointOnPlane(class PyGePlanarEnt {lvalue})'''
+    def pointOnPlane (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def reverseNormal (self, *args, **kwargs)-> None :
       '''reverseNormal( (Surface)arg1) -> None :
@@ -13457,10 +13254,10 @@ __init__( (object)arg1, (object)arg2) -> object :
         double distanceTo(class AcGePoint2d {lvalue},class AcGePoint2d)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Point2d)arg1, (Point2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D069F880>]) -> bool :
+      '''isEqualTo( (Point2d)arg1, (Point2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000003118524F880>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGePoint2d {lvalue},class AcGePoint2d [,class AcGeTol=<PyGe.Tol object at 0x000002A8D069F880>])'''
+        bool isEqualTo(class AcGePoint2d {lvalue},class AcGePoint2d [,class AcGeTol=<PyGe.Tol object at 0x000003118524F880>])'''
     ...
     def kOrigin (self, *args, **kwargs)-> None :
       '''None'''
@@ -17892,40 +17689,40 @@ __init__( (object)arg1, (object)arg2) -> object :
         double dotProduct(class AcGeVector2d {lvalue},class AcGeVector2d)'''
     ...
     def isCodirectionalTo (self, *args, **kwargs)-> bool :
-      '''isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D069FE20>]) -> bool :
+      '''isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000003118524FE20>]) -> bool :
 
     C++ signature :
-        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002A8D069FE20>])'''
+        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000003118524FE20>])'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D069FF40>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000003118524FF40>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002A8D069FF40>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000003118524FF40>])'''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D069FD90>]) -> bool :
+      '''isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000003118524FD90>]) -> bool :
 
     C++ signature :
-        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002A8D069FD90>])'''
+        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000003118524FD90>])'''
     ...
     def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D069FEB0>]) -> bool :
+      '''isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000003118524FEB0>]) -> bool :
 
     C++ signature :
-        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002A8D069FEB0>])'''
+        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000003118524FEB0>])'''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D069FC70>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000003118524FC70>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002A8D069FC70>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000003118524FC70>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D069FD00>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000003118524FD00>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002A8D069FD00>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000003118524FD00>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
@@ -17961,16 +17758,16 @@ __init__( (object)arg1, (object)arg2) -> object :
         class AcGeVector2d {lvalue} negate(class AcGeVector2d {lvalue})'''
     ...
     def normal (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D069FA30>]) -> Vector2d :
+      '''normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000003118524FA30>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002A8D069FA30>])'''
+        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000003118524FA30>])'''
     ...
     def normalize (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D069FBE0>]) -> Vector2d :
+      '''normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000003118524FBE0>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002A8D069FBE0>])'''
+        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000003118524FBE0>])'''
     ...
     def rotateBy (self, *args, **kwargs)-> PyGe.Vector2d :
       '''rotateBy( (Vector2d)arg1, (float)arg2) -> Vector2d :
@@ -18095,40 +17892,40 @@ angleTo( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> float :
         double dotProduct(class AcGeVector3d {lvalue},class AcGeVector3d)'''
     ...
     def isCodirectionalTo (self, *args, **kwargs)-> bool :
-      '''isCodirectionalTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D57AC550>]) -> bool :
+      '''isCodirectionalTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000311DA53C550>]) -> bool :
 
     C++ signature :
-        bool isCodirectionalTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000002A8D57AC550>])'''
+        bool isCodirectionalTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x00000311DA53C550>])'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D57AC670>]) -> bool :
+      '''isEqualTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000311DA53C670>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000002A8D57AC670>])'''
+        bool isEqualTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x00000311DA53C670>])'''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D57AC4C0>]) -> bool :
+      '''isParallelTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000311DA53C4C0>]) -> bool :
 
     C++ signature :
-        bool isParallelTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000002A8D57AC4C0>])'''
+        bool isParallelTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x00000311DA53C4C0>])'''
     ...
     def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D57AC5E0>]) -> bool :
+      '''isPerpendicularTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000311DA53C5E0>]) -> bool :
 
     C++ signature :
-        bool isPerpendicularTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000002A8D57AC5E0>])'''
+        bool isPerpendicularTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x00000311DA53C5E0>])'''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D57AC3A0>]) -> bool :
+      '''isUnitLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000311DA53C3A0>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002A8D57AC3A0>])'''
+        bool isUnitLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000311DA53C3A0>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D57AC430>]) -> bool :
+      '''isZeroLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000311DA53C430>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002A8D57AC430>])'''
+        bool isZeroLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000311DA53C430>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
@@ -18173,16 +17970,16 @@ angleTo( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> float :
         class AcGeVector3d {lvalue} negate(class AcGeVector3d {lvalue})'''
     ...
     def normal (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normal( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D57AC310>]) -> Vector3d :
+      '''normal( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000311DA53C310>]) -> Vector3d :
 
     C++ signature :
-        class AcGeVector3d normal(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002A8D57AC310>])'''
+        class AcGeVector3d normal(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000311DA53C310>])'''
     ...
     def normalize (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normalize( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A8D57AC280>]) -> Vector3d :
+      '''normalize( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000311DA53C280>]) -> Vector3d :
 
     C++ signature :
-        class AcGeVector3d {lvalue} normalize(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002A8D57AC280>])
+        class AcGeVector3d {lvalue} normalize(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000311DA53C280>])
 
 normalize( (Vector3d)arg1, (Tol)arg2, (AcGeError)arg3) -> Vector3d :
 
