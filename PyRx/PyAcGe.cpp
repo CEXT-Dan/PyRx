@@ -29,6 +29,9 @@
 
 using namespace boost::python;
 
+//TODO: make a AcGeVoidPointerArrayToList, cast to the correct object here so the user does not have to
+//boost::python::list AcGeVoidPointerArrayToList(const AcGeVoidPointerArray& src)
+
 //---------------------------------------------------------------------------------------------------------------
 //hashing
 
