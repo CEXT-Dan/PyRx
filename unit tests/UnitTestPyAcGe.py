@@ -5,7 +5,7 @@ import math
 import PyRx  # = Runtime runtime
 import PyGe  # = Geometry
 import PyGi  # = Graphics interface
-import PyDb  # = database
+import PyDb as Db  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
 print("testname = pyge")
@@ -14,6 +14,16 @@ host = PyAp.Application.hostAPI()
 
 
 class TestGe(unittest.TestCase):
+    def __init__(self, *args, **kwargs):
+        super(TestGe, self).__init__(*args, **kwargs)
+        # open and keep open for all 06457 tests
+        self.db06457 = Db.Database(False, True)
+        self.db06457.readDwgFile("./testmedia/06457.dwg")
+        self.db06457.closeInput(True)
+        
+    def __del__(self):
+        del(self.db06457)
+
     def test_scale2_default_ctor(self):
         scale = PyGe.Scale2d()
         self.assertEqual(scale.sx,1)
@@ -312,7 +322,15 @@ class TestGe(unittest.TestCase):
         p3 = PyGe.Plane(pnt, vec)
         si = PyGe.SurfSurfInt(p1,p3)
         self.assertEqual(si.numResults(),1)
-    
+        
+    def test_CompositeCurve3d_getCurveList(self):
+        objHnd = Db.Handle("2c92e2")
+        objId = self.db06457.getObjectId(False, objHnd)
+        self.assertEqual(objId.isValid(), True)
+        pl = Db.Polyline(objId)
+        composite = pl.getAcGeCurve()
+        gecurves = composite.getCurveList()
+        self.assertEqual(len(gecurves),21)
         
 def PyRxCmd_pyge():
     try:
