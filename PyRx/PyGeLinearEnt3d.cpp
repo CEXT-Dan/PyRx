@@ -14,7 +14,7 @@ void makePyGeLinearEnt3dWrapper()
         "- param: float\n"
         "- param: float, tol: PyGe.Tol\n"
         "- plane: PyGe.Plane\n"
-        "- plane: PyGe;Plane, tol: PyGe.Tol\n";
+        "- plane: PyGe.Plane, tol: PyGe.Tol\n";
 
     constexpr const std::string_view isParallelToOverloads = "Overloads:\n"
         "- line: PyGe.LinearEnt3d\n"
