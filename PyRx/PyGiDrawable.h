@@ -26,6 +26,7 @@ public:
     bool			bounds(AcDbExtents& ext) const;
     static std::string	className();
     static PyRxClass	desc();
+    static PyGiDrawable cast(const PyRxObject& src);
 public:
     AcGiDrawable* impObj(const std::source_location& src = std::source_location::current()) const;
 };

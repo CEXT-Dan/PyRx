@@ -281,10 +281,7 @@ PyDbMline PyDbMline::cloneFrom(const PyRxObject& src)
 
 PyDbMline PyDbMline::cast(const PyRxObject& src)
 {
-    PyDbMline dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbMline>(src);
 }
 
 AcDbMline* PyDbMline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -564,10 +561,7 @@ PyDbMlineStyle PyDbMlineStyle::cloneFrom(const PyRxObject& src)
 
 PyDbMlineStyle PyDbMlineStyle::cast(const PyRxObject& src)
 {
-    PyDbMlineStyle dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbMlineStyle>(src);
 }
 
 AcDbMlineStyle* PyDbMlineStyle::impObj(const std::source_location& src /*= std::source_location::current()*/) const

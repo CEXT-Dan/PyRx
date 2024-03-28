@@ -993,10 +993,7 @@ PyDbDimension PyDbDimension::cloneFrom(const PyRxObject& src)
 
 PyDbDimension PyDbDimension::cast(const PyRxObject& src)
 {
-    PyDbDimension dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbDimension>(src);
 }
 
 AcDbDimension* PyDbDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1178,10 +1175,7 @@ PyDb2LineAngularDimension PyDb2LineAngularDimension::cloneFrom(const PyRxObject&
 
 PyDb2LineAngularDimension PyDb2LineAngularDimension::cast(const PyRxObject& src)
 {
-    PyDb2LineAngularDimension dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDb2LineAngularDimension>(src);
 }
 
 AcDb2LineAngularDimension* PyDb2LineAngularDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1349,10 +1343,7 @@ PyDb3PointAngularDimension PyDb3PointAngularDimension::cloneFrom(const PyRxObjec
 
 PyDb3PointAngularDimension PyDb3PointAngularDimension::cast(const PyRxObject& src)
 {
-    PyDb3PointAngularDimension dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDb3PointAngularDimension>(src);
 }
 
 AcDb3PointAngularDimension* PyDb3PointAngularDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1540,10 +1531,7 @@ PyDbAlignedDimension PyDbAlignedDimension::cloneFrom(const PyRxObject& src)
 
 PyDbAlignedDimension PyDbAlignedDimension::cast(const PyRxObject& src)
 {
-    PyDbAlignedDimension dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbAlignedDimension>(src);
 }
 
 AcDbAlignedDimension* PyDbAlignedDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1782,10 +1770,7 @@ PyDbArcDimension PyDbArcDimension::cloneFrom(const PyRxObject& src)
 
 PyDbArcDimension PyDbArcDimension::cast(const PyRxObject& src)
 {
-    PyDbArcDimension dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbArcDimension>(src);
 }
 
 AcDbArcDimension* PyDbArcDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1961,10 +1946,7 @@ PyDbDiametricDimension PyDbDiametricDimension::cloneFrom(const PyRxObject& src)
 
 PyDbDiametricDimension PyDbDiametricDimension::cast(const PyRxObject& src)
 {
-    PyDbDiametricDimension dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbDiametricDimension>(src);
 }
 
 AcDbDiametricDimension* PyDbDiametricDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2144,10 +2126,7 @@ PyDbOrdinateDimension PyDbOrdinateDimension::cloneFrom(const PyRxObject& src)
 
 PyDbOrdinateDimension PyDbOrdinateDimension::cast(const PyRxObject& src)
 {
-    PyDbOrdinateDimension dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbOrdinateDimension>(src);
 }
 
 AcDbOrdinateDimension* PyDbOrdinateDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2306,10 +2285,7 @@ PyDbRadialDimension PyDbRadialDimension::cloneFrom(const PyRxObject& src)
 
 PyDbRadialDimension PyDbRadialDimension::cast(const PyRxObject& src)
 {
-    PyDbRadialDimension dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbRadialDimension>(src);
 }
 
 AcDbRadialDimension* PyDbRadialDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2538,10 +2514,7 @@ PyDbRadialDimensionLarge PyDbRadialDimensionLarge::cloneFrom(const PyRxObject& s
 
 PyDbRadialDimensionLarge PyDbRadialDimensionLarge::cast(const PyRxObject& src)
 {
-    PyDbRadialDimensionLarge dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbRadialDimensionLarge>(src);
 }
 
 AcDbRadialDimensionLarge* PyDbRadialDimensionLarge::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2739,10 +2712,7 @@ PyDbRotatedDimension PyDbRotatedDimension::cloneFrom(const PyRxObject& src)
 
 PyDbRotatedDimension PyDbRotatedDimension::cast(const PyRxObject& src)
 {
-    PyDbRotatedDimension dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbRotatedDimension>(src);
 }
 
 AcDbRotatedDimension* PyDbRotatedDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const

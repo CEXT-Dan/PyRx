@@ -212,10 +212,7 @@ PyDbSurface PyDbSurface::cloneFrom(const PyRxObject& src)
 
 PyDbSurface PyDbSurface::cast(const PyRxObject& src)
 {
-    PyDbSurface dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbSurface>(src);
 }
 
 AcDbSurface* PyDbSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -280,10 +277,7 @@ PyDbExtrudedSurface PyDbExtrudedSurface::cloneFrom(const PyRxObject& src)
 
 PyDbExtrudedSurface PyDbExtrudedSurface::cast(const PyRxObject& src)
 {
-    PyDbExtrudedSurface dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbExtrudedSurface>(src);
 }
 
 AcDbExtrudedSurface* PyDbExtrudedSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -347,10 +341,7 @@ PyDbLoftedSurface PyDbLoftedSurface::cloneFrom(const PyRxObject& src)
 
 PyDbLoftedSurface PyDbLoftedSurface::cast(const PyRxObject& src)
 {
-    PyDbLoftedSurface dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbLoftedSurface>(src);
 }
 
 AcDbLoftedSurface* PyDbLoftedSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -415,10 +406,7 @@ PyDbNurbSurface PyDbNurbSurface::cloneFrom(const PyRxObject& src)
 
 PyDbNurbSurface PyDbNurbSurface::cast(const PyRxObject& src)
 {
-    PyDbNurbSurface dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbNurbSurface>(src);
 }
 
 AcDbNurbSurface* PyDbNurbSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -482,10 +470,7 @@ PyDbPlaneSurface PyDbPlaneSurface::cloneFrom(const PyRxObject& src)
 
 PyDbPlaneSurface PyDbPlaneSurface::cast(const PyRxObject& src)
 {
-    PyDbPlaneSurface dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbPlaneSurface>(src);
 }
 
 AcDbPlaneSurface* PyDbPlaneSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -550,10 +535,7 @@ PyDbRevolvedSurface PyDbRevolvedSurface::cloneFrom(const PyRxObject& src)
 
 PyDbRevolvedSurface PyDbRevolvedSurface::cast(const PyRxObject& src)
 {
-    PyDbRevolvedSurface dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbRevolvedSurface>(src);
 }
 
 AcDbRevolvedSurface* PyDbRevolvedSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -618,10 +600,7 @@ PyDbSweptSurface PyDbSweptSurface::cloneFrom(const PyRxObject& src)
 
 PyDbSweptSurface PyDbSweptSurface::cast(const PyRxObject& src)
 {
-    PyDbSweptSurface dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbSweptSurface>(src);
 }
 
 AcDbSweptSurface* PyDbSweptSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const

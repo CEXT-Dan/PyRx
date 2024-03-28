@@ -278,10 +278,7 @@ PyDbField PyDbField::cloneFrom(const PyRxObject& src)
 
 PyDbField PyDbField::cast(const PyRxObject& src)
 {
-    PyDbField dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbField>(src);
 }
 
 AcDbField* PyDbField::impObj(const std::source_location& src /*= std::source_location::current()*/) const

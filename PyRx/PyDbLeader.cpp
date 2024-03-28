@@ -443,10 +443,7 @@ PyDbLeader PyDbLeader::cloneFrom(const PyRxObject& src)
 
 PyDbLeader PyDbLeader::cast(const PyRxObject& src)
 {
-    PyDbLeader dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbLeader>(src);
 }
 
 AcDbLeader* PyDbLeader::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1483,10 +1480,7 @@ PyDbMLeader PyDbMLeader::cloneFrom(const PyRxObject& src)
 
 PyDbMLeader PyDbMLeader::cast(const PyRxObject& src)
 {
-    PyDbMLeader dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbMLeader>(src);
 }
 
 AcDbMLeader* PyDbMLeader::impObj(const std::source_location& src /*= std::source_location::current()*/) const

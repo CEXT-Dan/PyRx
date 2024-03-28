@@ -2125,10 +2125,7 @@ PyDbTable PyDbTable::cloneFrom(const PyRxObject& src)
 
 PyDbTable PyDbTable::cast(const PyRxObject& src)
 {
-    PyDbTable dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbTable>(src);
 }
 
 AcDbTable* PyDbTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const

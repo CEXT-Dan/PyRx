@@ -25,6 +25,7 @@ void makePyDbXrecordWrapper()
         .def("setMergeStyle", &PyDbXrecord::setMergeStyle, DS.ARGS({ "style: PyDb.DuplicateRecordCloning" }))
         .def("className", &PyDbXrecord::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbXrecord::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyDbXrecord::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -134,10 +135,7 @@ PyDbXrecord PyDbXrecord::cloneFrom(const PyRxObject& src)
 
 PyDbXrecord PyDbXrecord::cast(const PyRxObject& src)
 {
-    PyDbXrecord dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbXrecord>(src);
 }
 
 AcDbXrecord* PyDbXrecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const

@@ -483,10 +483,7 @@ PyDbPlotSettings PyDbPlotSettings::cloneFrom(const PyRxObject& src)
 
 PyDbPlotSettings PyDbPlotSettings::cast(const PyRxObject& src)
 {
-    PyDbPlotSettings dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbPlotSettings>(src);
 }
 
 AcDbPlotSettings* PyDbPlotSettings::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -674,10 +671,7 @@ PyDbLayout PyDbLayout::cloneFrom(const PyRxObject& src)
 
 PyDbLayout PyDbLayout::cast(const PyRxObject& src)
 {
-    PyDbLayout dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbLayout>(src);
 }
 
 AcDbLayout* PyDbLayout::impObj(const std::source_location& src /*= std::source_location::current()*/) const

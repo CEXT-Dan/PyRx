@@ -518,10 +518,7 @@ PyDbObject PyDbObject::cloneFrom(const PyRxObject& src)
 
 PyDbObject PyDbObject::cast(const PyRxObject& src)
 {
-    PyDbObject dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbObject>(src);
 }
 
 AcDbObject* PyDbObject::impObj(const std::source_location& src /*= std::source_location::current()*/) const

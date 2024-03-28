@@ -350,10 +350,7 @@ PyDbText PyDbText::cloneFrom(const PyRxObject& src)
 
 PyDbText PyDbText::cast(const PyRxObject& src)
 {
-    PyDbText dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbText>(src);
 }
 
 AcDbText* PyDbText::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -574,10 +571,7 @@ PyDbAttributeDefinition PyDbAttributeDefinition::cloneFrom(const PyRxObject& src
 
 PyDbAttributeDefinition PyDbAttributeDefinition::cast(const PyRxObject& src)
 {
-    PyDbAttributeDefinition dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbAttributeDefinition>(src);
 }
 
 AcDbAttributeDefinition* PyDbAttributeDefinition::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -780,10 +774,7 @@ PyDbAttribute PyDbAttribute::cloneFrom(const PyRxObject& src)
 
 PyDbAttribute PyDbAttribute::cast(const PyRxObject& src)
 {
-    PyDbAttribute dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbAttribute>(src);
 }
 
 AcDbAttribute* PyDbAttribute::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1007,10 +998,7 @@ PyDbBlockReference PyDbBlockReference::cloneFrom(const PyRxObject& src)
 
 PyDbBlockReference PyDbBlockReference::cast(const PyRxObject& src)
 {
-    PyDbBlockReference dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbBlockReference>(src);
 }
 
 AcDbBlockReference* PyDbBlockReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1232,10 +1220,7 @@ PyDbMInsertBlock PyDbMInsertBlock::cloneFrom(const PyRxObject& src)
 
 PyDbMInsertBlock PyDbMInsertBlock::cast(const PyRxObject& src)
 {
-    PyDbMInsertBlock dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbMInsertBlock>(src);
 }
 
 AcDbMInsertBlock* PyDbMInsertBlock::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1313,10 +1298,7 @@ PyDbVertex PyDbVertex::cloneFrom(const PyRxObject& src)
 
 PyDbVertex PyDbVertex::cast(const PyRxObject& src)
 {
-    PyDbVertex dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbVertex>(src);
 }
 
 AcDbVertex* PyDbVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1407,7 +1389,6 @@ PyDb2dVertex::PyDb2dVertex(const PyDbObjectId& id)
 PyDb2dVertex::PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
     : PyDbVertex(openAcDbObject<AcDb2dVertex>(id, mode, erased), false)
 {
-
 }
 
 AcDb::Vertex2dType PyDb2dVertex::vertexType() const
@@ -1526,10 +1507,7 @@ PyDb2dVertex PyDb2dVertex::cloneFrom(const PyRxObject& src)
 
 PyDb2dVertex PyDb2dVertex::cast(const PyRxObject& src)
 {
-    PyDb2dVertex dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDb2dVertex>(src);
 }
 
 AcDb2dVertex* PyDb2dVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1633,10 +1611,7 @@ PyDb3dPolylineVertex PyDb3dPolylineVertex::cloneFrom(const PyRxObject& src)
 
 PyDb3dPolylineVertex PyDb3dPolylineVertex::cast(const PyRxObject& src)
 {
-    PyDb3dPolylineVertex dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDb3dPolylineVertex>(src);
 }
 
 AcDb3dPolylineVertex* PyDb3dPolylineVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1739,10 +1714,7 @@ PyDbPolygonMeshVertex PyDbPolygonMeshVertex::cloneFrom(const PyRxObject& src)
 
 PyDbPolygonMeshVertex PyDbPolygonMeshVertex::cast(const PyRxObject& src)
 {
-    PyDbPolygonMeshVertex dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbPolygonMeshVertex>(src);
 }
 
 AcDbPolygonMeshVertex* PyDbPolygonMeshVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1839,10 +1811,7 @@ PyDbPolyFaceMeshVertex PyDbPolyFaceMeshVertex::cloneFrom(const PyRxObject& src)
 
 PyDbPolyFaceMeshVertex PyDbPolyFaceMeshVertex::cast(const PyRxObject& src)
 {
-    PyDbPolyFaceMeshVertex dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbPolyFaceMeshVertex>(src);
 }
 
 AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1961,10 +1930,7 @@ PyDbFaceRecord PyDbFaceRecord::cloneFrom(const PyRxObject& src)
 
 PyDbFaceRecord PyDbFaceRecord::cast(const PyRxObject& src)
 {
-    PyDbFaceRecord dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbFaceRecord>(src);
 }
 
 AcDbFaceRecord* PyDbFaceRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2097,10 +2063,7 @@ PyDbPoint PyDbPoint::cloneFrom(const PyRxObject& src)
 
 PyDbPoint PyDbPoint::cast(const PyRxObject& src)
 {
-    PyDbPoint dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbPoint>(src);
 }
 
 AcDbPoint* PyDbPoint::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2427,10 +2390,7 @@ PyDb2dPolyline PyDb2dPolyline::cloneFrom(const PyRxObject& src)
 
 PyDb2dPolyline PyDb2dPolyline::cast(const PyRxObject& src)
 {
-    PyDb2dPolyline dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDb2dPolyline>(src);
 }
 
 AcDb2dPolyline* PyDb2dPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2637,10 +2597,7 @@ PyDb3dPolyline PyDb3dPolyline::cloneFrom(const PyRxObject& src)
 
 PyDb3dPolyline PyDb3dPolyline::cast(const PyRxObject& src)
 {
-    PyDb3dPolyline dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDb3dPolyline>(src);
 }
 
 AcDb3dPolyline* PyDb3dPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2832,10 +2789,7 @@ PyDbArc PyDbArc::cloneFrom(const PyRxObject& src)
 
 PyDbArc PyDbArc::cast(const PyRxObject& src)
 {
-    PyDbArc dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbArc>(src);
 }
 
 AcDbArc* PyDbArc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -3024,10 +2978,7 @@ PyDbCircle PyDbCircle::cloneFrom(const PyRxObject& src)
 
 PyDbCircle PyDbCircle::cast(const PyRxObject& src)
 {
-    PyDbCircle dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbCircle>(src);
 }
 
 AcDbCircle* PyDbCircle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -3184,10 +3135,7 @@ PyDbLine PyDbLine::cloneFrom(const PyRxObject& src)
 
 PyDbLine PyDbLine::cast(const PyRxObject& src)
 {
-    PyDbLine dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbLine>(src);
 }
 
 AcDbLine* PyDbLine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -3650,10 +3598,7 @@ PyDbPolyline PyDbPolyline::cloneFrom(const PyRxObject& src)
 
 PyDbPolyline PyDbPolyline::cast(const PyRxObject& src)
 {
-    PyDbPolyline dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbPolyline>(src);
 }
 
 AcDbPolyline* PyDbPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -3793,10 +3738,7 @@ PyDbFace PyDbFace::cloneFrom(const PyRxObject& src)
 
 PyDbFace PyDbFace::cast(const PyRxObject& src)
 {
-    PyDbFace dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbFace>(src);
 }
 
 AcDbFace* PyDbFace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -4063,10 +4005,7 @@ PyDbFcf PyDbFcf::cloneFrom(const PyRxObject& src)
 
 PyDbFcf PyDbFcf::cast(const PyRxObject& src)
 {
-    PyDbFcf dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbFcf>(src);
 }
 
 AcDbFcf* PyDbFcf::impObj(const std::source_location& src /*= std::source_location::current()*/) const
