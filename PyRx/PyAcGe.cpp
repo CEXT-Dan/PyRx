@@ -125,15 +125,25 @@ std::string AcGeScale2dToStringRepr(const AcGeScale2d& s)
 
 void makePyGeScale2dWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- factor: float\n"
+        "- xFactor: float, yFactor: float\n";
+
+    constexpr const std::string_view setToProductOverloads = "Overloads:\n"
+        "- sclVec1: PyGe.Scale2d, s: float\n"
+        "- sclVec1: PyGe.Scale2d, ssclVec2: PyGe.Scale2d\n";
+
+    PyDocString DS("Scale2d");
     class_<AcGeScale2d>("Scale2d")
         .def(init<>())
         .def(init<double>())
-        .def(init<double, double>())
+        .def(init<double, double>(DS.CTOR(ctords)))
 #if !defined(_BRXTARGET240)
-        .def("preMultBy", &AcGeScale2d::preMultBy, return_self<>())
-        .def("postMultBy", &AcGeScale2d::postMultBy, return_self<>())
+        .def("preMultBy", &AcGeScale2d::preMultBy, return_self<>(), DS.ARGS({ "left: PyGe.Scale2d" }))
+        .def("postMultBy", &AcGeScale2d::postMultBy, return_self<>(), DS.ARGS({ "right: PyGe.Scale2d" }))
         .def<AcGeScale2d& (AcGeScale2d::*)(const AcGeScale2d&, double)>("setToProduct", &AcGeScale2d::setToProduct, return_self<>())
-        .def<AcGeScale2d& (AcGeScale2d::*)(const AcGeScale2d&, const AcGeScale2d&)>("setToProduct", &AcGeScale2d::setToProduct, return_self<>())
+        .def<AcGeScale2d& (AcGeScale2d::*)(const AcGeScale2d&, const AcGeScale2d&)>("setToProduct", &AcGeScale2d::setToProduct, return_self<>(), DS.OVRL(setToProductOverloads))
 #endif
         .def_readwrite("sx", &AcGeScale2d::sx)
         .def_readwrite("sy", &AcGeScale2d::sy)
@@ -143,7 +153,7 @@ void makePyGeScale2dWrapper()
         .def<AcGeScale2d& (AcGeScale2d::*)(double)>("__imul__", &AcGeScale2d::operator*=, return_self<>())
         .def<AcGeScale2d(AcGeScale2d::*)(const AcGeScale2d&)const>("__mul__", &AcGeScale2d::operator*)
         .def<AcGeScale2d& (AcGeScale2d::*)(const AcGeScale2d&)>("__imul__", &AcGeScale2d::operator*=, return_self<>())
-        .def("toString", &AcGeScale2dToString)
+        .def("toString", &AcGeScale2dToString, DS.ARGS())
         .def("__str__", &AcGeScale2dToString)
         .def("__repr__", &AcGeScale2dToStringRepr)
         .def("__getitem__", &AcGeScale2dGetItem)
@@ -248,9 +258,14 @@ static boost::shared_ptr<AcGePoint2d> PyGePoint2dInitTuple(const boost::python::
 
 void makePyGePoint2dWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- x: float, y: float\n";
+
+    PyDocString DS("Point2d");
     class_<AcGePoint2d>("Point2d")
         .def(init<>())
-        .def(init<double, double>())
+        .def(init<double, double>(DS.CTOR(ctords)))
         .def("setToProduct", &AcGePoint2d::setToProduct, return_self<>())
         .def("transformBy", &AcGePoint2d::transformBy, return_self<>())
         .def("rotateBy", &AcGePoint2d::rotateBy, arg("AcGePoint2d") = AcGePoint2dkOrigin(), return_self<>())
@@ -258,12 +273,12 @@ void makePyGePoint2dWrapper()
         .def("scaleBy", &AcGePoint2d::scaleBy, arg("AcGePoint2d") = AcGePoint2dkOrigin(), return_self<>())
         .def("setToSum", &AcGePoint2d::setToSum, return_self<>())
         .def("set", &AcGePoint2d::set, return_self<>())
-        .def("asVector", &AcGePoint2d::asVector)
-        .def("distanceTo", &AcGePoint2d::distanceTo)
-        .def("isEqualTo", &AcGePoint2d::isEqualTo, arg("AcGeTol") = getTol())
+        .def("asVector", &AcGePoint2d::asVector, DS.ARGS())
+        .def("distanceTo", &AcGePoint2d::distanceTo, DS.ARGS({ "pt: PyGe.Point2d" }))
+        .def("isEqualTo", &AcGePoint2d::isEqualTo, DS.ARGS({ "pt: PyGe.Point2d","tol: PyGe.Tol=None" }), arg("AcGeTol") = getTol())
         .def_readwrite("x", &AcGePoint2d::x)
         .def_readwrite("y", &AcGePoint2d::y)
-        .add_static_property("kOrigin", &AcGePoint2dkOrigin)
+        .add_static_property("kOrigin", &AcGePoint2dkOrigin, DS.ARGS())
         .def("__eq__", &AcGePoint2d::operator==)
         .def("__ne__", &AcGePoint2d::operator!=)
         .def<AcGePoint2d(AcGePoint2d::*)(double)const>("__mul__", &AcGePoint2d::operator*)
@@ -276,9 +291,9 @@ void makePyGePoint2dWrapper()
         .def<AcGePoint2d& (AcGePoint2d::*)(const AcGeVector2d&)>("__isub__", &AcGePoint2d::operator-=, return_self<>())
         .def<AcGeVector2d(AcGePoint2d::*)(const AcGePoint2d&)const>("__sub__", &AcGePoint2d::operator-)
         .def_pickle(AcGePoint2dpickle())
-        .def("toString", &AcGePoint2dToString)
-        .def("toTuple", &AcGePoint2dToTuple)
-        .def("toList", &AcGePoint2dToList)
+        .def("toString", &AcGePoint2dToString, DS.ARGS())
+        .def("toTuple", &AcGePoint2dToTuple, DS.ARGS())
+        .def("toList", &AcGePoint2dToList, DS.ARGS())
         .def("__str__", &AcGePoint2dToString)
         .def("__repr__", &AcGePoint2dToStringRepr)
         .def("__hash__", &AcGePoint2dHash)
@@ -385,9 +400,14 @@ static boost::shared_ptr<AcGeVector2d> PyGeVector2dInitTuple(const boost::python
 
 void makePyGeVector2dWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- x: float, y: float\n";
+
+    PyDocString DS("Vector2d");
     class_<AcGeVector2d>("Vector2d")
         .def(init<>())
-        .def(init<double, double>())
+        .def(init<double, double>(DS.CTOR(ctords)))
         .def_readwrite("x", &AcGeVector2d::x)
         .def_readwrite("y", &AcGeVector2d::y)
         .add_static_property("kIdentity", &AcGeVector2dkIdentity)
@@ -400,18 +420,18 @@ void makePyGeVector2dWrapper()
         .def("mirror", &AcGeVector2d::mirror, return_self<>())
         .def("setToSum", &AcGeVector2d::setToSum, return_self<>())
         .def("negate", &AcGeVector2d::negate, return_self<>())
-        .def("angle", &AcGeVector2d::angle)
+        .def("angle", &AcGeVector2d::angle, DS.ARGS())
         .def("angleTo", &AcGeVector2d::angleTo)
         .def("normal", &AcGeVector2d::normal, arg("AcGeTol") = getTol())
         .def<AcGeVector2d& (AcGeVector2d::*)(const AcGeTol&)>("normalize", &AcGeVector2d::normalize, arg("AcGeTol") = getTol(), return_self<>())
-        .def("length", &AcGeVector2d::length)
-        .def("lengthSqrd", &AcGeVector2d::lengthSqrd)
+        .def("length", &AcGeVector2d::length, DS.ARGS())
+        .def("lengthSqrd", &AcGeVector2d::lengthSqrd, DS.ARGS())
         .def("isUnitLength", &AcGeVector2d::isUnitLength, arg("AcGeTol") = getTol())
         .def("isZeroLength", &AcGeVector2d::isZeroLength, arg("AcGeTol") = getTol())
         .def<Adesk::Boolean(AcGeVector2d::*)(const AcGeVector2d&, const AcGeTol&)const>("isParallelTo", &AcGeVector2d::isParallelTo, arg("AcGeTol") = getTol())
         .def<Adesk::Boolean(AcGeVector2d::*)(const AcGeVector2d&, const AcGeTol&)const>("isCodirectionalTo", &AcGeVector2d::isCodirectionalTo, arg("AcGeTol") = getTol())
         .def<Adesk::Boolean(AcGeVector2d::*)(const AcGeVector2d&, const AcGeTol&)const>("isPerpendicularTo", &AcGeVector2d::isPerpendicularTo, arg("AcGeTol") = getTol())
-        .def("dotProduct", &AcGeVector2d::dotProduct)
+        .def("dotProduct", &AcGeVector2d::dotProduct, DS.ARGS({ "vec: PyGe.Vector2d" }))
         .def("isEqualTo", &AcGeVector2d::isEqualTo, arg("AcGeTol") = getTol())
         .def("set", &AcGeVector2d::set, return_self<>())
         .def("__eq__", &AcGeVector2d::operator==)
@@ -552,16 +572,16 @@ static void makePyGeMatrix2dWrapper()
         .def("postMultBy", &AcGeMatrix2d::postMultBy, return_self<>())
 #endif
         .def("setToProduct", &AcGeMatrix2d::setToProduct, return_self<>())
-        .def("invert", &AcGeMatrix2d::invert, return_self<>())
-        .def("inverse", &AcGeMatrix2d::inverse)
+        .def("invert", &AcGeMatrix2d::invert, return_self<>(), DS.ARGS())
+        .def("inverse", &AcGeMatrix2d::inverse, DS.ARGS())
         .def("isSingular", &AcGeMatrix2d::isSingular)
-        .def("transposeIt", &AcGeMatrix2d::transposeIt, return_self<>())
-        .def("transpose", &AcGeMatrix2d::transpose)
+        .def("transposeIt", &AcGeMatrix2d::transposeIt, return_self<>(), DS.ARGS())
+        .def("transpose", &AcGeMatrix2d::transpose, DS.ARGS())
         .def("isEqualTo", &AcGeMatrix2d::isEqualTo, arg("AcGeTol") = getTol())
         .def("isUniScaledOrtho", &AcGeMatrix2d::isUniScaledOrtho, arg("AcGeTol") = getTol())
         .def("isScaledOrtho", &AcGeMatrix2d::isScaledOrtho, arg("AcGeTol") = getTol())
-        .def("scale", &AcGeMatrix2d::scale)
-        .def("det", &AcGeMatrix2d::det)
+        .def("scale", &AcGeMatrix2d::scale, DS.ARGS())
+        .def("det", &AcGeMatrix2d::det, DS.ARGS())
         .def("setTranslation", &AcGeMatrix2d::setTranslation, return_self<>())
         .def<AcGeVector2d(AcGeMatrix2d::*)(void)const>("translation", &AcGeMatrix2d::translation)
         .def("isConformal", &AcGeMatrix2d::isConformal)
@@ -584,9 +604,9 @@ static void makePyGeMatrix2dWrapper()
         .def("__ne__", &AcGeMatrix2d::operator!=)
         .def<AcGeMatrix2d(AcGeMatrix2d::*)(const AcGeMatrix2d&) const>("__mul__", &AcGeMatrix2d::operator*)
         .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGeMatrix2d&)>("__imul__", &AcGeMatrix2d::operator*=, return_self<>())
-        .def("toString", &AcGeMatrix2dToString)
-        .def("toTuple", &AcGeMatrix2dToTuple)
-        .def("toList", &AcGeMatrix2dToList)
+        .def("toString", &AcGeMatrix2dToString, DS.ARGS())
+        .def("toTuple", &AcGeMatrix2dToTuple, DS.ARGS())
+        .def("toList", &AcGeMatrix2dToList, DS.ARGS())
         .def("__str__", &AcGeMatrix2dToString)
         .def("__repr__", &AcGeMatrix2dToStringRepr)
         ;
@@ -640,9 +660,16 @@ std::string AcGeScale3dToStringRepr(const AcGeScale3d& s)
 
 void makePyGeScale3dWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- factor: float\n"
+        "- sx: float,sy: float,sz: float\n";
+
+    PyDocString DS("Scale3d");
     class_<AcGeScale3d>("Scale3d")
+        .def(init<>())
         .def(init<double>())
-        .def(init<double, double, double>())
+        .def(init<double, double, double>(DS.CTOR(ctords)))
         .def_readwrite("sx", &AcGeScale3d::sx)
         .def_readwrite("sy", &AcGeScale3d::sy)
         .def_readwrite("sz", &AcGeScale3d::sz)
@@ -764,11 +791,16 @@ static boost::shared_ptr<AcGePoint3d> PyGePoint3dInitTuple(const boost::python::
 
 void makePyGePoint3dWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- x: float,y: float,z: float\n"
+        "- pln: PyGe.PlanarEnt, pnt2d: PyGe.Point2d\n";
+
     PyDocString DS("PyGe.Point3d");
     class_<AcGePoint3d>("Point3d")
         .def(init<>())
-        .def(init<double, double, double>(DS.ARGS({ "x: float","y: float","z: float" })))
-        .def(init<const AcGePlanarEnt&, const AcGePoint2d&>())
+        .def(init<double, double, double>())
+        .def(init<const AcGePlanarEnt&, const AcGePoint2d&>(DS.CTOR(ctords)))
         .def_readwrite("x", &AcGePoint3d::x)
         .def_readwrite("y", &AcGePoint3d::y)
         .def_readwrite("z", &AcGePoint3d::z)
@@ -922,11 +954,16 @@ static boost::shared_ptr<AcGeVector3d> PyGeVector3dInitTuple(const boost::python
 
 static void makePyGeVector3dWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- x: float,y: float,z: float\n"
+        "- pln: PyGe.PlanarEnt, pnt2d: PyGe.Point2d\n";
+
     PyDocString DS("PyGe.Vector3d");
     class_<AcGeVector3d>("Vector3d")
         .def(init<>())
         .def(init<double, double, double>())
-        .def(init<const AcGePlanarEnt&, const AcGeVector2d&>())
+        .def(init<const AcGePlanarEnt&, const AcGeVector2d&>(DS.CTOR(ctords)))
         .def_readwrite("x", &AcGeVector3d::x)
         .def_readwrite("y", &AcGeVector3d::y)
         .def_readwrite("z", &AcGeVector3d::z)
@@ -948,11 +985,11 @@ static void makePyGeVector3dWrapper()
         .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeTol& tol)>("normalize", &AcGeVector3d::normalize, arg("AcGeTol") = getTol(), return_self<>())
         .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeTol& tol, AcGeError& flag)>("normalize", &AcGeVector3d::normalize, return_self<>())
         .def("angleOnPlane", &AcGeVector3d::angleOnPlane)
-        .def("normal", &AcGeVector3d::normal, arg("AcGeTol") = getTol())
-        .def("length", &AcGeVector3d::length)
-        .def("lengthSqrd", &AcGeVector3d::lengthSqrd)
-        .def("isUnitLength", &AcGeVector3d::isUnitLength, arg("AcGeTol") = getTol())
-        .def("isZeroLength", &AcGeVector3d::isZeroLength, arg("AcGeTol") = getTol())
+        .def("normal", &AcGeVector3d::normal, arg("AcGeTol") = getTol(), DS.ARGS({ "tol: PyGe.Tol=None" }))
+        .def("length", &AcGeVector3d::length, DS.ARGS())
+        .def("lengthSqrd", &AcGeVector3d::lengthSqrd, DS.ARGS())
+        .def("isUnitLength", &AcGeVector3d::isUnitLength, arg("AcGeTol") = getTol(), DS.ARGS({ "tol: PyGe.Tol=None" }))
+        .def("isZeroLength", &AcGeVector3d::isZeroLength, arg("AcGeTol") = getTol(), DS.ARGS({ "tol: PyGe.Tol=None" }))
         .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isParallelTo", &AcGeVector3d::isParallelTo, arg("AcGeTol") = getTol())
         .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isCodirectionalTo", &AcGeVector3d::isCodirectionalTo, arg("AcGeTol") = getTol())
         .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isPerpendicularTo", &AcGeVector3d::isPerpendicularTo, arg("AcGeTol") = getTol())
@@ -1158,7 +1195,7 @@ void makePyGeMatrix3dWrapper()
 {
     PyDocString DS("PyGe.Matrix3d");
     class_<AcGeMatrix3d>("Matrix3d")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .add_static_property("kIdentity", &AcGeMatrix3dkIdentity)
         .def("setToIdentity", &AcGeMatrix3d::setToIdentity, DS.ARGS(), return_self<>())
         .def("preMultBy", &AcGeMatrix3d::preMultBy, DS.ARGS({ "val: PyGe.Matrix3d" }), return_self<>())

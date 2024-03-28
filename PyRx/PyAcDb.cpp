@@ -404,6 +404,17 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("kAerial", AcGeoMapType::kAerial)
         .value("kRoad", AcGeoMapType::kRoad)
         .value("kHybrid", AcGeoMapType::kHybrid)
+
+#if defined(_ARXTARGET) && (_ARXTARGET >= 250)
+        .value("kBingAerial", AcGeoMapType::kBingAerial)
+        .value("kBingRoad", AcGeoMapType::kBingRoad)
+        .value("kBingHybrid", AcGeoMapType::kBingHybrid)
+        .value("kEsriImagery", AcGeoMapType::kEsriImagery)
+        .value("kEsriOpenStreetMap", AcGeoMapType::kEsriOpenStreetMap)
+        .value("kEsriStreets", AcGeoMapType::kEsriStreets)
+        .value("kEsriLightGray", AcGeoMapType::kEsriLightGray)
+        .value("kEsriDarkGray", AcGeoMapType::kEsriDarkGray)
+#endif
         .export_values()
         ;
     enum_<AcGeoMapResolution>("AcGeoMapResolution")
