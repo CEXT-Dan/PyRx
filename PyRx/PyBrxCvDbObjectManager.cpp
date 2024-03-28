@@ -125,10 +125,7 @@ PyBrxCvDbObjectManager PyBrxCvDbObjectManager::cloneFrom(const PyRxObject& src)
 
 PyBrxCvDbObjectManager PyBrxCvDbObjectManager::cast(const PyRxObject& src)
 {
-    PyBrxCvDbObjectManager dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbObjectManager>(src);
 }
 
 BrxCvDbObjectManager* PyBrxCvDbObjectManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -224,10 +221,7 @@ PyBrxCvDbFileFormatManager PyBrxCvDbFileFormatManager::cloneFrom(const PyRxObjec
 
 PyBrxCvDbFileFormatManager PyBrxCvDbFileFormatManager::cast(const PyRxObject& src)
 {
-    PyBrxCvDbFileFormatManager dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbFileFormatManager>(src);
 }
 
 BrxCvDbFileFormatManager* PyBrxCvDbFileFormatManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -364,10 +358,7 @@ PyBrxCvDbStyleManager PyBrxCvDbStyleManager::cloneFrom(const PyRxObject& src)
 
 PyBrxCvDbStyleManager PyBrxCvDbStyleManager::cast(const PyRxObject& src)
 {
-    PyBrxCvDbStyleManager dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbStyleManager>(src);
 }
 
 BrxCvDbStyleManager* PyBrxCvDbStyleManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -481,10 +472,7 @@ PyBrxCvDbPointGroupManager PyBrxCvDbPointGroupManager::cloneFrom(const PyRxObjec
 
 PyBrxCvDbPointGroupManager PyBrxCvDbPointGroupManager::cast(const PyRxObject& src)
 {
-    PyBrxCvDbPointGroupManager dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbPointGroupManager>(src);
 }
 
 BrxCvDbPointGroupManager* PyBrxCvDbPointGroupManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const

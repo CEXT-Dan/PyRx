@@ -383,6 +383,15 @@ public:
     std::shared_ptr<BrxCvGradingRule> m_pyImp;
 };
 
+template<typename T>
+inline T PyBrxCvGradingRuleCast(const PyBrxCvGradingRule& src)
+{
+    T dest(nullptr);
+    PyBrxCvGradingRule rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 //-----------------------------------------------------------------------------------
 //PyBrxCvGradingSlopeSurfaceRule
 void makePyBrxCvGradingSlopeSurfaceRuleWrapper();

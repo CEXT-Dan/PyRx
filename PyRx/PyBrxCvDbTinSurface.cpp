@@ -915,10 +915,7 @@ PyBrxCvDbTinSurface PyBrxCvDbTinSurface::cloneFrom(const PyRxObject& src)
 
 PyBrxCvDbTinSurface PyBrxCvDbTinSurface::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurface dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurface>(src);
 }
 
 BrxCvDbTinSurface* PyBrxCvDbTinSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1323,10 +1320,7 @@ PyBrxCvDbGrading PyBrxCvDbGrading::cloneFrom(const PyRxObject& src)
 
 PyBrxCvDbGrading PyBrxCvDbGrading::cast(const PyRxObject& src)
 {
-    PyBrxCvDbGrading dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbGrading>(src);
 }
 
 BrxCvDbGrading* PyBrxCvDbGrading::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1420,10 +1414,7 @@ double PyBrxCvGradingRule::convertRadToSlope(BrxCvGradingRule::EGradingSlopeForm
 
 PyBrxCvGradingRule PyBrxCvGradingRule::cast(const PyBrxCvGradingRule& src)
 {
-    PyBrxCvGradingRule dest(nullptr);
-    PyBrxCvGradingRule rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyBrxCvGradingRuleCast<PyBrxCvGradingRule>(src);
 }
 
 std::string PyBrxCvGradingRule::className()
@@ -1504,10 +1495,7 @@ bool PyBrxCvGradingSlopeSurfaceRule::setFillSlope(double fillSlope)
 
 PyBrxCvGradingSlopeSurfaceRule PyBrxCvGradingSlopeSurfaceRule::cast(const PyBrxCvGradingRule& src)
 {
-    PyBrxCvGradingSlopeSurfaceRule dest(nullptr);
-    PyBrxCvGradingRule rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyBrxCvGradingRuleCast<PyBrxCvGradingSlopeSurfaceRule>(src);
 }
 
 std::string PyBrxCvGradingSlopeSurfaceRule::className()
@@ -1577,10 +1565,7 @@ bool PyBrxCvGradingSlopeOffsetRule::setOffset(double offset)
 
 PyBrxCvGradingSlopeOffsetRule PyBrxCvGradingSlopeOffsetRule::cast(const PyBrxCvGradingRule& src)
 {
-    PyBrxCvGradingSlopeOffsetRule dest(nullptr);
-    PyBrxCvGradingRule rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyBrxCvGradingRuleCast<PyBrxCvGradingSlopeOffsetRule>(src);
 }
 
 std::string PyBrxCvGradingSlopeOffsetRule::className()

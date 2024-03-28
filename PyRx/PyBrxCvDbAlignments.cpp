@@ -399,10 +399,7 @@ PyBrxCvDbView PyBrxCvDbView::cloneFrom(const PyRxObject& src)
 
 PyBrxCvDbView PyBrxCvDbView::cast(const PyRxObject& src)
 {
-    PyBrxCvDbView dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbView>(src);
 }
 
 BrxCvDbView* PyBrxCvDbView::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -488,10 +485,7 @@ PyBrxCvDbVAlignmentView PyBrxCvDbVAlignmentView::cloneFrom(const PyRxObject& src
 
 PyBrxCvDbVAlignmentView PyBrxCvDbVAlignmentView::cast(const PyRxObject& src)
 {
-    PyBrxCvDbVAlignmentView dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbVAlignmentView>(src);
 }
 
 BrxCvDbVAlignmentView* PyBrxCvDbVAlignmentView::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1342,10 +1336,7 @@ PyBrxCvDbHAlignment PyBrxCvDbHAlignment::cloneFrom(const PyRxObject& src)
 
 PyBrxCvDbHAlignment PyBrxCvDbHAlignment::cast(const PyRxObject& src)
 {
-    PyBrxCvDbHAlignment dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbHAlignment>(src);
 }
 
 BrxCvDbHAlignment* PyBrxCvDbHAlignment::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1457,10 +1448,7 @@ PyRxClass PyBrxCvDbHAlignmentElement::desc()
 
 PyBrxCvDbHAlignmentElement PyBrxCvDbHAlignmentElement::cast(const PyRxObject& src)
 {
-    PyBrxCvDbHAlignmentElement dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbHAlignmentElement>(src);
 }
 
 BrxCvDbHAlignmentElement* PyBrxCvDbHAlignmentElement::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1511,10 +1499,7 @@ PyRxClass PyBrxCvDbHAlignmentPI::desc()
 
 PyBrxCvDbHAlignmentPI PyBrxCvDbHAlignmentPI::cast(const PyRxObject& src)
 {
-    PyBrxCvDbHAlignmentPI dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbHAlignmentPI>(src);
 }
 
 BrxCvDbHAlignmentPI* PyBrxCvDbHAlignmentPI::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1584,10 +1569,7 @@ PyRxClass PyBrxCvDbHAlignmentCurve::desc()
 
 PyBrxCvDbHAlignmentCurve PyBrxCvDbHAlignmentCurve::cast(const PyRxObject& src)
 {
-    PyBrxCvDbHAlignmentCurve dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbHAlignmentCurve>(src);
 }
 
 BrxCvDbHAlignmentCurve* PyBrxCvDbHAlignmentCurve::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1669,10 +1651,7 @@ PyRxClass PyBrxCvDbHAlignmentLine::desc()
 
 PyBrxCvDbHAlignmentLine PyBrxCvDbHAlignmentLine::cast(const PyRxObject& src)
 {
-    PyBrxCvDbHAlignmentLine dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbHAlignmentLine>(src);
 }
 
 BrxCvDbHAlignmentLine* PyBrxCvDbHAlignmentLine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1826,10 +1805,7 @@ PyRxClass PyBrxCvDbHAlignmentArc::desc()
 
 PyBrxCvDbHAlignmentArc PyBrxCvDbHAlignmentArc::cast(const PyRxObject& src)
 {
-    PyBrxCvDbHAlignmentArc dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbHAlignmentArc>(src);
 }
 
 BrxCvDbHAlignmentArc* PyBrxCvDbHAlignmentArc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1993,10 +1969,7 @@ PyRxClass PyBrxCvDbHAlignmentSpiral::desc()
 
 PyBrxCvDbHAlignmentSpiral PyBrxCvDbHAlignmentSpiral::cast(const PyRxObject& src)
 {
-    PyBrxCvDbHAlignmentSpiral dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbHAlignmentSpiral>(src);
 }
 
 BrxCvDbHAlignmentSpiral* PyBrxCvDbHAlignmentSpiral::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2069,10 +2042,7 @@ PyRxClass PyBrxCvDbHAlignmentSCS::desc()
 
 PyBrxCvDbHAlignmentSCS PyBrxCvDbHAlignmentSCS::cast(const PyRxObject& src)
 {
-    PyBrxCvDbHAlignmentSCS dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbHAlignmentSCS>(src);
 }
 
 BrxCvDbHAlignmentSCS* PyBrxCvDbHAlignmentSCS::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2151,10 +2121,7 @@ PyRxClass PyBrxCvDbHAlignmentSTS::desc()
 
 PyBrxCvDbHAlignmentSTS PyBrxCvDbHAlignmentSTS::cast(const PyRxObject& src)
 {
-    PyBrxCvDbHAlignmentSTS dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbHAlignmentSTS>(src);
 }
 
 BrxCvDbHAlignmentSTS* PyBrxCvDbHAlignmentSTS::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2245,10 +2212,7 @@ PyRxClass PyBrxCvDbHAlignmentSSCSS::desc()
 
 PyBrxCvDbHAlignmentSSCSS PyBrxCvDbHAlignmentSSCSS::cast(const PyRxObject& src)
 {
-    PyBrxCvDbHAlignmentSSCSS dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbHAlignmentSSCSS>(src);
 }
 
 BrxCvDbHAlignmentSSCSS* PyBrxCvDbHAlignmentSSCSS::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2585,10 +2549,7 @@ PyBrxCvDbVAlignment PyBrxCvDbVAlignment::cloneFrom(const PyRxObject& src)
 
 PyBrxCvDbVAlignment PyBrxCvDbVAlignment::cast(const PyRxObject& src)
 {
-    PyBrxCvDbVAlignment dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbVAlignment>(src);
 }
 
 BrxCvDbVAlignment* PyBrxCvDbVAlignment::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2689,10 +2650,7 @@ PyRxClass PyBrxCvDbVAlignmentElement::desc()
 
 PyBrxCvDbVAlignmentElement PyBrxCvDbVAlignmentElement::cast(const PyRxObject& src)
 {
-    PyBrxCvDbVAlignmentElement dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbVAlignmentElement>(src);
 }
 
 BrxCvDbVAlignmentElement* PyBrxCvDbVAlignmentElement::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2744,10 +2702,7 @@ PyRxClass PyBrxCvDbVAlignmentPVI::desc()
 
 PyBrxCvDbVAlignmentPVI PyBrxCvDbVAlignmentPVI::cast(const PyRxObject& src)
 {
-    PyBrxCvDbVAlignmentPVI dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbVAlignmentPVI>(src);
 }
 
 BrxCvDbVAlignmentPVI* PyBrxCvDbVAlignmentPVI::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2805,10 +2760,7 @@ PyRxClass PyBrxCvDbVAlignmentCurve::desc()
 
 PyBrxCvDbVAlignmentCurve PyBrxCvDbVAlignmentCurve::cast(const PyRxObject& src)
 {
-    PyBrxCvDbVAlignmentCurve dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbVAlignmentCurve>(src);
 }
 
 BrxCvDbVAlignmentCurve* PyBrxCvDbVAlignmentCurve::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2878,10 +2830,7 @@ PyRxClass PyBrxCvDbVAlignmentTangent::desc()
 
 PyBrxCvDbVAlignmentTangent PyBrxCvDbVAlignmentTangent::cast(const PyRxObject& src)
 {
-    PyBrxCvDbVAlignmentTangent dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbVAlignmentTangent>(src);
 }
 
 BrxCvDbVAlignmentTangent* PyBrxCvDbVAlignmentTangent::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2975,10 +2924,7 @@ PyRxClass PyBrxCvDbVAlignmentArc::desc()
 
 PyBrxCvDbVAlignmentArc PyBrxCvDbVAlignmentArc::cast(const PyRxObject& src)
 {
-    PyBrxCvDbVAlignmentArc dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbVAlignmentArc>(src);
 }
 
 BrxCvDbVAlignmentArc* PyBrxCvDbVAlignmentArc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -3048,10 +2994,7 @@ PyRxClass PyBrxCvDbVAlignmentParabola::desc()
 
 PyBrxCvDbVAlignmentParabola PyBrxCvDbVAlignmentParabola::cast(const PyRxObject& src)
 {
-    PyBrxCvDbVAlignmentParabola dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbVAlignmentParabola>(src);
 }
 
 BrxCvDbVAlignmentParabola* PyBrxCvDbVAlignmentParabola::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -3165,10 +3108,7 @@ PyBrxCvDb3dAlignment PyBrxCvDb3dAlignment::cloneFrom(const PyRxObject& src)
 
 PyBrxCvDb3dAlignment PyBrxCvDb3dAlignment::cast(const PyRxObject& src)
 {
-    PyBrxCvDb3dAlignment dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDb3dAlignment>(src);
 }
 
 BrxCvDb3dAlignment* PyBrxCvDb3dAlignment::impObj(const std::source_location& src /*= std::source_location::current()*/) const

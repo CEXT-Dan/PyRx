@@ -9,8 +9,6 @@
 #include "BrxCvDbCurve.h"
 #include "BrxCvDbSubObject.h"
 
-
-
 class PyDbObjectId;
 class PyDbDatabase;
 

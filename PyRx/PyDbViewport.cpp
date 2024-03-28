@@ -305,7 +305,6 @@ PyDbXrefObjectId PyDbViewport::getModelView() const
 #endif
 }
 
-
 void PyDbViewport::removeModelView(void)
 {
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
