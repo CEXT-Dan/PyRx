@@ -145,21 +145,18 @@ AcDbSymbolTable* PyDbSymbolTable::impObj(const std::source_location& src /*= std
 
 void PyDbSymbolTable::filliterator()
 {
-    if (impObj()->isModified() || m_iterable.size() == 0)
+    auto [es, iter] = makeAcDbSymbolTableIterator(*impObj());
+    if (es == eOk)
     {
-        auto [es, iter] = makeAcDbSymbolTableIterator(*impObj());
-        if (es == eOk)
+        PyDbObjectId id;
+        m_iterable.clear();
+        for (iter->start(); !iter->done(); iter->step())
         {
-            PyDbObjectId id;
-            m_iterable.clear();
-            for (iter->start(); !iter->done(); iter->step())
-            {
-                if (iter->getRecordId(id.m_id) == eOk)
-                    m_iterable.push_back(id);
-            }
+            if (iter->getRecordId(id.m_id) == eOk)
+                m_iterable.push_back(id);
         }
-        PyThrowBadEs(es);
     }
+    PyThrowBadEs(es);
 }
 
 std::vector<PyDbObjectId>::iterator PyDbSymbolTable::begin()
