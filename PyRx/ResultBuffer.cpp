@@ -251,6 +251,12 @@ boost::python::list resbufToList(resbuf* pRb)
     {
         if (pTail->restype < 5000)
         {
+            switch (pTail->restype)
+            {
+            case AcDb::kDxfXdWorldXDir:
+                list.append(boost::python::make_tuple(pTail->restype, asVec3d(pTail->resval.rpoint)));
+                continue;
+            }
             switch (acdbGroupCodeToType(pTail->restype))
             {
             case AcDb::kDwgText:
