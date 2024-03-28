@@ -253,10 +253,12 @@ boost::python::list resbufToList(resbuf* pRb)
         {
             switch (pTail->restype)
             {
+            case AcDb::kDxfXdWorldXDisp:
             case AcDb::kDxfXdWorldXDir:
                 list.append(boost::python::make_tuple(pTail->restype, asVec3d(pTail->resval.rpoint)));
                 continue;
             }
+
             switch (acdbGroupCodeToType(pTail->restype))
             {
             case AcDb::kDwgText:
