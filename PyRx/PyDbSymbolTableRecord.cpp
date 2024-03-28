@@ -2655,21 +2655,18 @@ AcDbBlockTableRecord* PyDbBlockTableRecord::impObj(const std::source_location& s
 
 void PyDbBlockTableRecord::filliterator()
 {
-    if (impObj()->isModified() || m_iterable.size() == 0)
+    const auto [es, iter] = makeBlockTableRecordIterator(*impObj());
+    if (es == eOk)
     {
-        auto [es, iter] = makeBlockTableRecordIterator(*impObj());
-        if (es == eOk)
+        PyDbObjectId id;
+        m_iterable.clear();
+        for (iter->start(); !iter->done(); iter->step())
         {
-            PyDbObjectId id;
-            m_iterable.clear();
-            for (iter->start(); !iter->done(); iter->step())
-            {
-                if (iter->getEntityId(id.m_id) == eOk)
-                    m_iterable.push_back(id);
-            }
+            if (iter->getEntityId(id.m_id) == eOk)
+                m_iterable.push_back(id);
         }
-        PyThrowBadEs(es);
     }
+    PyThrowBadEs(es);
 }
 
 std::vector<PyDbObjectId>::iterator PyDbBlockTableRecord::begin()
