@@ -164,7 +164,7 @@ AcDbUnderlayDefinition* PyDbUnderlayDefinition::impObj(const std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbUnderlayDefinition*>(m_pyImp.get());
 }
 
@@ -176,7 +176,7 @@ void makePyDbUnderlayReferenceWrapper()
     class_<PyDbUnderlayReference, bases<PyDbEntity>>("UnderlayReference", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("position", &PyDbUnderlayReference::position, DS.ARGS())
         .def("setPosition", &PyDbUnderlayReference::setPosition, DS.ARGS({ "val : PyGe.Point3d" }))
         .def("scaleFactors", &PyDbUnderlayReference::scaleFactors, DS.ARGS())
@@ -510,11 +510,9 @@ AcDbUnderlayReference* PyDbUnderlayReference::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbUnderlayReference*>(m_pyImp.get());
 }
-
-
 
 //-----------------------------------------------------------------------------------
 //PyDbPdfDefinition
@@ -535,10 +533,10 @@ void makePyDbPdfDefinitionWrapper()
 static AcDbPdfDefinition* openAcDbPdfDefinition(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbPdfDefinition* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbPdfDefinition>(pobj, id.m_id, mode); es != eOk) [[unlikely]]{
-            throw PyAcadErrorStatus(es);
+    if (auto es = acdbOpenObject<AcDbPdfDefinition>(pobj, id.m_id, mode); es != eOk) [[unlikely]] {
+        throw PyAcadErrorStatus(es);
         }
-        return pobj;
+    return pobj;
 }
 
 PyDbPdfDefinition::PyDbPdfDefinition()
@@ -587,7 +585,7 @@ AcDbPdfDefinition* PyDbPdfDefinition::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbPdfDefinition*>(m_pyImp.get());
 }
 
@@ -653,6 +651,6 @@ AcDbPdfReference* PyDbPdfReference::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbPdfReference*>(m_pyImp.get());
 }

@@ -14,7 +14,7 @@ void makePyDbSplineWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
         .def(init<const boost::python::list&>())
         .def(init<const boost::python::list&, int, double>())
         .def(init<const boost::python::list&, const AcGeVector3d&, const AcGeVector3d&>())
@@ -32,7 +32,7 @@ void makePyDbSplineWrapper()
         .def("isNull", &PyDbSpline::isNull, DS.ARGS())
         .def("isRational", &PyDbSpline::isRational, DS.ARGS())
         .def("degree", &PyDbSpline::degree, DS.ARGS())
-        .def("elevateDegree", &PyDbSpline::elevateDegree, DS.ARGS({"val : int"}))
+        .def("elevateDegree", &PyDbSpline::elevateDegree, DS.ARGS({ "val : int" }))
         .def("numControlPoints", &PyDbSpline::numControlPoints, DS.ARGS())
         .def("getControlPointAt", &PyDbSpline::getControlPointAt, DS.ARGS({ "idx:int" }))
         .def("setControlPointAt", &PyDbSpline::setControlPointAt, DS.ARGS({ "idx:int","pnt:PyGe.Point3d" }))
@@ -40,7 +40,7 @@ void makePyDbSplineWrapper()
         .def("getFitPointAt", &PyDbSpline::getFitPointAt, DS.ARGS({ "idx:int" }))
         .def("setFitPointAt", &PyDbSpline::setFitPointAt, DS.ARGS({ "idx:int","pnt:PyGe.Point3d" }))
         .def("insertFitPointAt", &PyDbSpline::insertFitPointAt, DS.ARGS({ "idx:int","pnt:PyGe.Point3d" }))
-        .def("removeFitPointAt", &PyDbSpline::removeFitPointAt, DS.ARGS({ "idx:int"}))
+        .def("removeFitPointAt", &PyDbSpline::removeFitPointAt, DS.ARGS({ "idx:int" }))
         .def("fitTolerance", &PyDbSpline::fitTolerance, DS.ARGS())
         .def("setFitTol", &PyDbSpline::setFitTol, DS.ARGS({ "val : float" }))
         .def("getFitTangents", &PyDbSpline::getFitTangents, DS.ARGS())
@@ -515,7 +515,7 @@ AcDbSpline* PyDbSpline::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbSpline*>(m_pyImp.get());
 }
 
@@ -738,6 +738,6 @@ AcDbHelix* PyDbHelix::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbHelix*>(m_pyImp.get());
 }

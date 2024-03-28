@@ -16,7 +16,6 @@ void makePyDbViewportWrapper()
         "- view: PyDb.OrthographicView\n"
         "- dir: PyGe.Vector3d";
 
-
     PyDocString DS("Viewport");
     class_<PyDbViewport, bases<PyDbEntity>>("Viewport")
         .def(init<>())

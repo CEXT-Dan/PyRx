@@ -162,7 +162,7 @@ std::string DbCore::angToS(double val, int unit, int prec)
 {
 #if defined(_ARXTARGET) && _ARXTARGET >= 243
     AcString buf;
-    PyThrowBadRt(acdbAngToS(val, buf,unit, prec));
+    PyThrowBadRt(acdbAngToS(val, buf, unit, prec));
     return wstr_to_utf8(buf);
 #else
     std::wstring buf(64, 0);

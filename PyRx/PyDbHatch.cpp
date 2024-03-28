@@ -29,7 +29,7 @@ void makePyDbHatchWrapper()
         .def("removeLoopAt", &PyDbHatch::removeLoopAt, DS.ARGS({ "idx : int" }))
         .def("associative", &PyDbHatch::associative, DS.ARGS())
         .def("setAssociative", &PyDbHatch::setAssociative, DS.ARGS({ "val : bool" }))
-        .def("insertLoopAt", &PyDbHatch::insertLoopAt, DS.ARGS({"idx : int", "loopType : int", "ids : list[PyDb.ObjectId]" }))
+        .def("insertLoopAt", &PyDbHatch::insertLoopAt, DS.ARGS({ "idx : int", "loopType : int", "ids : list[PyDb.ObjectId]" }))
         .def("getAssocObjIdsAt", &PyDbHatch::getAssocObjIdsAt, DS.ARGS({ "val: int" }))
         .def("getAssocObjIds", &PyDbHatch::getAssocObjIds, DS.ARGS())
         .def("removeAssocObjIds", &PyDbHatch::removeAssocObjIds, DS.ARGS())
@@ -43,7 +43,7 @@ void makePyDbHatchWrapper()
         .def("gradientAngle", &PyDbHatch::gradientAngle, DS.ARGS())
         .def("setGradientAngle", &PyDbHatch::setGradientAngle, DS.ARGS({ "val : float" }))
         .def("getGradientColors", &PyDbHatch::getGradientColors, DS.ARGS())
-        .def("setGradientColors", &PyDbHatch::setGradientColors, DS.ARGS({ "colors : list","values : list"  }))
+        .def("setGradientColors", &PyDbHatch::setGradientColors, DS.ARGS({ "colors : list","values : list" }))
         .def("getGradientOneColorMode", &PyDbHatch::getGradientOneColorMode, DS.ARGS())
         .def("setGradientOneColorMode", &PyDbHatch::setGradientOneColorMode, DS.ARGS({ "val : bool" }))
         .def("getShadeTintValue", &PyDbHatch::getShadeTintValue, DS.ARGS())
@@ -617,7 +617,7 @@ AcDbHatch* PyDbHatch::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbHatch*>(m_pyImp.get());
 }
 
@@ -704,7 +704,7 @@ PyDbMPolygon::PyDbMPolygon()
 }
 
 PyDbMPolygon::PyDbMPolygon(AcDbMPolygon* ptr, bool autoDelete)
-    : m_loaded(PyDbMPolygon::loadModule()),PyDbEntity(ptr, autoDelete)
+    : m_loaded(PyDbMPolygon::loadModule()), PyDbEntity(ptr, autoDelete)
 {
 }
 
@@ -720,9 +720,9 @@ PyDbMPolygon::PyDbMPolygon(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 PyDbHatch PyDbMPolygon::hatch()
 {
-   PyDbHatch hatch(impObj()->hatch(), false);
-   hatch.forceKeepAlive(true);
-   return hatch;
+    PyDbHatch hatch(impObj()->hatch(), false);
+    hatch.forceKeepAlive(true);
+    return hatch;
 }
 
 double PyDbMPolygon::elevation() const
@@ -981,7 +981,7 @@ int PyDbMPolygon::getClosestLoopTo(const AcGePoint3d& worldPt) const
 boost::python::list PyDbMPolygon::isPointInsideMPolygon(const AcGePoint3d& worldPt, double tol) const
 {
     AcGeIntArray loopsArray;
-    impObj()->isPointInsideMPolygon(worldPt, loopsArray,tol);
+    impObj()->isPointInsideMPolygon(worldPt, loopsArray, tol);
     return IntArrayToPyList(loopsArray);
 }
 
@@ -992,7 +992,7 @@ bool PyDbMPolygon::isPointOnLoopBoundary(const AcGePoint3d& worldPt, int loop, d
 
 bool PyDbMPolygon::loopCrossesItself(const boost::python::list& vertexPts, const boost::python::list& vertexBulges, double tol) const
 {
-    return impObj()->loopCrossesItself(PyListToPoint2dArray(vertexPts),PyListToDoubleArray(vertexBulges), tol);
+    return impObj()->loopCrossesItself(PyListToPoint2dArray(vertexPts), PyListToDoubleArray(vertexBulges), tol);
 }
 
 bool PyDbMPolygon::selfCrosses(const boost::python::list& vertexPts, const boost::python::list& vertexBulges, double tol) const
@@ -1051,6 +1051,6 @@ AcDbMPolygon* PyDbMPolygon::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbMPolygon*>(m_pyImp.get());
 }

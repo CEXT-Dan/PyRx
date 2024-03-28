@@ -103,7 +103,7 @@ PyDbSubDMesh::PyDbSubDMesh(const PyDbObjectId& id, AcDb::OpenMode mode, bool era
 }
 
 PyDbSubDMesh::PyDbSubDMesh(AcDbSubDMesh* ptr, bool autoDelete)
-  : PyDbEntity(ptr, autoDelete)
+    : PyDbEntity(ptr, autoDelete)
 {
 }
 
@@ -162,7 +162,7 @@ void PyDbSubDMesh::setWedge(double xLen, double yLen, double zLen, int divLength
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();
 #else
-    PyThrowBadEs(impObj()->setWedge(xLen, yLen, zLen, divLength, divWidth, divHeight, divSlope, divCap,subDLevel));
+    PyThrowBadEs(impObj()->setWedge(xLen, yLen, zLen, divLength, divWidth, divHeight, divSlope, divCap, subDLevel));
 #endif
 }
 
@@ -211,7 +211,7 @@ void PyDbSubDMesh::splitFace(const PyDbSubentId& subentFaceId, const PyDbSubentI
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();
 #else
-    PyThrowBadEs(impObj()->splitFace(*subentFaceId.impObj(),* subent0.impObj(), point0,*subent1.impObj(), point1));
+    PyThrowBadEs(impObj()->splitFace(*subentFaceId.impObj(), *subent0.impObj(), point0, *subent1.impObj(), point1));
 #endif
 }
 
@@ -315,7 +315,7 @@ Adesk::Int32 PyDbSubDMesh::numOfSubDividedFaces() const
 Adesk::Int32 PyDbSubDMesh::numOfSubDividedFacesAt(const boost::python::list& subentPaths) const
 {
     Adesk::Int32 result = 0;
-    PyThrowBadEs(impObj()->numOfSubDividedFacesAt(PyListToPyDbFullSubentPathArray(subentPaths),result));
+    PyThrowBadEs(impObj()->numOfSubDividedFacesAt(PyListToPyDbFullSubentPathArray(subentPaths), result));
     return result;
 }
 
@@ -392,7 +392,7 @@ boost::python::list PyDbSubDMesh::getSubDividedNormalArray() const
 AcGePoint3d PyDbSubDMesh::getVertexAt1(Adesk::Int32 nIndex) const
 {
     AcGePoint3d result;
-    PyThrowBadEs(impObj()->getVertexAt(nIndex,result));
+    PyThrowBadEs(impObj()->getVertexAt(nIndex, result));
     return result;
 }
 

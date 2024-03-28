@@ -357,7 +357,7 @@ AcCmColor PyDb3dSolid::getSubentColor(const PyDbSubentId& subentId) const
     return clr;
 }
 
-void PyDb3dSolid::setSubentMaterial(const PyDbSubentId& subentId,const PyDbObjectId& matId)
+void PyDb3dSolid::setSubentMaterial(const PyDbSubentId& subentId, const PyDbObjectId& matId)
 {
     return PyThrowBadEs(impObj()->setSubentMaterial(*subentId.impObj(), matId.m_id));
 }
@@ -460,7 +460,7 @@ AcDb3dSolid* PyDb3dSolid::impObj(const std::source_location& src /*= std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDb3dSolid*>(m_pyImp.get());
 }
 
@@ -473,7 +473,7 @@ void makePyDbRegionWrapper()
     class_<PyDbRegion, bases<PyDbEntity>>("Region")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>((DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead"}))))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>((DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }))))
         .def("isNull", &PyDbRegion::isNull, DS.ARGS())
         .def("createFromCurves", &PyDbRegion::createFromCurves, DS.SARGS({ "curves: PyDb.Curve" })).staticmethod("createFromCurves")
         .def("className", &PyDbRegion::className, DS.SARGS()).staticmethod("className")
@@ -560,7 +560,7 @@ AcDbRegion* PyDbRegion::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbRegion*>(m_pyImp.get());
 }
 
@@ -708,7 +708,7 @@ AcDbRevolveOptions* PyDbRevolveOptions::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbRevolveOptions*>(m_pyImp.get());
 }
 
@@ -990,6 +990,6 @@ AcDbSweepOptions* PyDbSweepOptions::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbSweepOptions*>(m_pyImp.get());
 }

@@ -20,7 +20,7 @@ void makePyDbFieldtWrapper()
     constexpr const std::string_view getFieldCodeOverloads = "Overloads:\n"
         "- nContext: PyDb.FieldCodeFlag\n"
         "- nContext: PyDb.FieldCodeFlag, children: PyDb.Field, mode: PyDb.OpenMode\n";
-        
+
     PyDocString DS("PyDb.Field");
     class_<PyDbField, bases<PyDbObject>>("Field")
         .def(init<>())
@@ -28,8 +28,8 @@ void makePyDbFieldtWrapper()
         .def(init<const std::string&, bool>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.CTOR(ctords)))
-        .def("setInObject", &PyDbField::setInObject, DS.ARGS({ "db: PyDb.DbObject","pszPropName: str"}))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
+        .def("setInObject", &PyDbField::setInObject, DS.ARGS({ "db: PyDb.DbObject","pszPropName: str" }))
         .def("postInDatabase", &PyDbField::postInDatabase, DS.ARGS({ "db: PyDb.Database" }))
         .def("state", &PyDbField::state, DS.ARGS())
         .def("evaluationStatus", &PyDbField::evaluationStatus, DS.ARGS())
@@ -45,7 +45,7 @@ void makePyDbFieldtWrapper()
         .def("getValue", &PyDbField::getValue, DS.ARGS())
         .def("evaluate", &PyDbField::evaluate1)
         .def("evaluate", &PyDbField::evaluate2)
-        .def("evaluate", &PyDbField::evaluate3,DS.OVRL(evaluateOverloads))
+        .def("evaluate", &PyDbField::evaluate3, DS.OVRL(evaluateOverloads))
         .def("getFieldCode", &PyDbField::getFieldCode1)
         .def("getFieldCode", &PyDbField::getFieldCode2, DS.OVRL(getFieldCodeOverloads))
         .def("className", &PyDbField::className, DS.SARGS()).staticmethod("className")
@@ -249,7 +249,7 @@ std::string PyDbField::getFieldCode1(AcDbField::FieldCodeFlag nFlag)
     return wstr_to_utf8(impObj()->getFieldCode(nFlag));
 }
 
-std::string PyDbField::getFieldCode2(AcDbField::FieldCodeFlag nFlag,const boost::python::list& pyfields, AcDb::OpenMode mode)
+std::string PyDbField::getFieldCode2(AcDbField::FieldCodeFlag nFlag, const boost::python::list& pyfields, AcDb::OpenMode mode)
 {
     PyAutoLockGIL lock;
     AcArray<AcDbField*> pChildFields;
@@ -285,7 +285,7 @@ AcDbField* PyDbField::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbField*>(m_pyImp.get());
 }
 

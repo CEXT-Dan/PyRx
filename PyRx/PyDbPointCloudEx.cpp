@@ -245,7 +245,7 @@ AcCmEntityColor PyDbPointCloudColorRamp::color(int c) const
     return impObj()->color(c);
 }
 
-void PyDbPointCloudColorRamp::setColor(int c,const AcCmEntityColor& color)
+void PyDbPointCloudColorRamp::setColor(int c, const AcCmEntityColor& color)
 {
     return impObj()->setColor(c, color);
 }
@@ -1333,7 +1333,7 @@ PyDbObjectId PyDbPointCloudEx::attachPointCloud(const std::string& pointCloudFil
     static bool sAcDbMPolygonLoaded = false;
     if (!sAcDbMPolygonLoaded)
     {
-        sAcDbMPolygonLoaded =  acrxLoadModule(_T("AcDbPointCloudObj.dbx"), false, false);
+        sAcDbMPolygonLoaded = acrxLoadModule(_T("AcDbPointCloudObj.dbx"), false, false);
     }
     PyDbObjectId newPointCloudExId;
     AcString str = utf8_to_wstr(pointCloudFile).c_str();

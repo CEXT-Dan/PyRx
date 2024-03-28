@@ -37,7 +37,7 @@ AcDbPointRef* PyDbPointRef::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbPointRef*>(m_pyImp.get());
 }
 
@@ -122,7 +122,7 @@ AcDbOsnapPointRef* PyDbOsnapPointRef::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbOsnapPointRef*>(m_pyImp.get());
 }
 #endif

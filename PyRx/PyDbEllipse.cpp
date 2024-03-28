@@ -252,6 +252,6 @@ AcDbEllipse* PyDbEllipse::impObj(const std::source_location& src /*= std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbEllipse*>(m_pyImp.get());
 }

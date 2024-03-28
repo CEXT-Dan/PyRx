@@ -7,7 +7,7 @@ using namespace boost::python;
 //wrapper
 std::string AcCmColorToString(const AcCmColor& s)
 {
-    if(s.isByACI())
+    if (s.isByACI())
         return std::format("({})", s.colorIndex());
     return std::format("({},{},{})", s.red(), s.green(), s.blue());
 }
@@ -150,7 +150,7 @@ void makePyCmEntityColorWrapper()
         .def<Acad::ErrorStatus(AcCmEntityColor::*)()>("setTrueColorMethod", &AcCmEntityColor::setTrueColorMethod)
 #endif
 #else
-        .def("setNone", &AcCmEntityColor::setNone,DS.ARGS())
+        .def("setNone", &AcCmEntityColor::setNone, DS.ARGS())
         .def("setByBlock", &AcCmEntityColor::setByBlock, DS.ARGS())
         .def("setForeground", &AcCmEntityColor::setForeground, DS.ARGS())
         .def("setByLayer", &AcCmEntityColor::setByLayer, DS.ARGS())
