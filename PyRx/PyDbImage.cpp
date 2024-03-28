@@ -62,10 +62,7 @@ PyDbImage PyDbImage::cloneFrom(const PyRxObject& src)
 
 PyDbImage PyDbImage::cast(const PyRxObject& src)
 {
-    PyDbImage dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbImage>(src);
 }
 
 AcDbImage* PyDbImage::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -299,10 +296,7 @@ PyDbRasterImageDef PyDbRasterImageDef::cloneFrom(const PyRxObject& src)
 
 PyDbRasterImageDef PyDbRasterImageDef::cast(const PyRxObject& src)
 {
-    PyDbRasterImageDef dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbRasterImageDef>(src);
 }
 
 AcDbRasterImageDef* PyDbRasterImageDef::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -374,10 +368,7 @@ PyDbRasterImageDefReactor PyDbRasterImageDefReactor::cloneFrom(const PyRxObject&
 
 PyDbRasterImageDefReactor PyDbRasterImageDefReactor::cast(const PyRxObject& src)
 {
-    PyDbRasterImageDefReactor dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbRasterImageDefReactor>(src);
 }
 
 AcDbRasterImageDefReactor* PyDbRasterImageDefReactor::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -705,10 +696,7 @@ PyDbRasterImage PyDbRasterImage::cloneFrom(const PyRxObject& src)
 
 PyDbRasterImage PyDbRasterImage::cast(const PyRxObject& src)
 {
-    PyDbRasterImage dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbRasterImage>(src);
 }
 
 AcDbRasterImage* PyDbRasterImage::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -835,10 +823,7 @@ PyDbWipeout PyDbWipeout::cloneFrom(const PyRxObject& src)
 
 PyDbWipeout PyDbWipeout::cast(const PyRxObject& src)
 {
-    PyDbWipeout dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbWipeout>(src);
 }
 
 AcDbWipeout* PyDbWipeout::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1016,10 +1001,7 @@ PyDbGeoMap PyDbGeoMap::cloneFrom(const PyRxObject& src)
 
 PyDbGeoMap PyDbGeoMap::cast(const PyRxObject& src)
 {
-    PyDbGeoMap dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbGeoMap>(src);
 }
 
 AcDbGeoMap* PyDbGeoMap::impObj(const std::source_location& src /*= std::source_location::current()*/) const

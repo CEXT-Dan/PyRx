@@ -189,10 +189,7 @@ PyDbSpatialFilter PyDbSpatialFilter::cloneFrom(const PyRxObject& src)
 
 PyDbSpatialFilter PyDbSpatialFilter::cast(const PyRxObject& src)
 {
-    PyDbSpatialFilter dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbSpatialFilter>(src);
 }
 
 AcDbSpatialFilter* PyDbSpatialFilter::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -303,10 +300,7 @@ PyDbLayerFilter PyDbLayerFilter::cloneFrom(const PyRxObject& src)
 
 PyDbLayerFilter PyDbLayerFilter::cast(const PyRxObject& src)
 {
-    PyDbLayerFilter dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbLayerFilter>(src);
 }
 
 AcDbLayerFilter* PyDbLayerFilter::impObj(const std::source_location& src /*= std::source_location::current()*/) const

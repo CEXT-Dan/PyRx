@@ -31,6 +31,14 @@ public:
     std::shared_ptr<AcRxObject> m_pyImp;
 };
 
+template<typename T>
+inline T PyRxObjectCast(const PyRxObject& src)
+{
+    T dest(nullptr, false, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
 
 //-----------------------------------------------------------------------------------------
 //PyRxClass

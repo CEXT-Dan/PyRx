@@ -566,10 +566,7 @@ PyDbSubDMesh PyDbSubDMesh::cloneFrom(const PyRxObject& src)
 
 PyDbSubDMesh PyDbSubDMesh::cast(const PyRxObject& src)
 {
-    PyDbSubDMesh dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbSubDMesh>(src);
 }
 
 AcDbSubDMesh* PyDbSubDMesh::impObj(const std::source_location& src /*= std::source_location::current()*/) const

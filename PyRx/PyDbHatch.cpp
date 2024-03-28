@@ -610,10 +610,7 @@ PyDbHatch PyDbHatch::cloneFrom(const PyRxObject& src)
 
 PyDbHatch PyDbHatch::cast(const PyRxObject& src)
 {
-    PyDbHatch dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbHatch>(src);
 }
 
 AcDbHatch* PyDbHatch::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1036,10 +1033,7 @@ PyDbMPolygon PyDbMPolygon::cloneFrom(const PyRxObject& src)
 
 PyDbMPolygon PyDbMPolygon::cast(const PyRxObject& src)
 {
-    PyDbMPolygon dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbMPolygon>(src);
 }
 
 //TODO: autoload this?

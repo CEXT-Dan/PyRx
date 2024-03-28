@@ -157,10 +157,7 @@ PyDbUnderlayDefinition PyDbUnderlayDefinition::cloneFrom(const PyRxObject& src)
 
 PyDbUnderlayDefinition PyDbUnderlayDefinition::cast(const PyRxObject& src)
 {
-    PyDbUnderlayDefinition dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbUnderlayDefinition>(src);
 }
 
 AcDbUnderlayDefinition* PyDbUnderlayDefinition::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -506,10 +503,7 @@ PyDbUnderlayReference PyDbUnderlayReference::cloneFrom(const PyRxObject& src)
 
 PyDbUnderlayReference PyDbUnderlayReference::cast(const PyRxObject& src)
 {
-    PyDbUnderlayReference dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbUnderlayReference>(src);
 }
 
 AcDbUnderlayReference* PyDbUnderlayReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -531,10 +525,10 @@ void makePyDbPdfDefinitionWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead" })))
-        .def("className", &PyDbUnderlayDefinition::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbUnderlayDefinition::desc, DS.SARGS()).staticmethod("desc")
-        .def("cloneFrom", &PyDbUnderlayDefinition::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbUnderlayDefinition::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("className", &PyDbPdfDefinition::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbPdfDefinition::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbPdfDefinition::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbPdfDefinition::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -586,10 +580,7 @@ PyDbPdfDefinition PyDbPdfDefinition::cloneFrom(const PyRxObject& src)
 
 PyDbPdfDefinition PyDbPdfDefinition::cast(const PyRxObject& src)
 {
-    PyDbPdfDefinition dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbPdfDefinition>(src);
 }
 
 AcDbPdfDefinition* PyDbPdfDefinition::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -655,10 +646,7 @@ PyDbPdfReference PyDbPdfReference::cloneFrom(const PyRxObject& src)
 
 PyDbPdfReference PyDbPdfReference::cast(const PyRxObject& src)
 {
-    PyDbPdfReference dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbPdfReference>(src);
 }
 
 AcDbPdfReference* PyDbPdfReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const

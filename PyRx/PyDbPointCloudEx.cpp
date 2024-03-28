@@ -494,10 +494,7 @@ PyDbPointCloudColorMap PyDbPointCloudColorMap::cloneFrom(const PyRxObject& src)
 
 PyDbPointCloudColorMap PyDbPointCloudColorMap::cast(const PyRxObject& src)
 {
-    PyDbPointCloudColorMap dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbPointCloudColorMap>(src);
 }
 
 AcDbPointCloudColorMap* PyDbPointCloudColorMap::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -742,10 +739,7 @@ PyDbPointCloudDefEx PyDbPointCloudDefEx::cloneFrom(const PyRxObject& src)
 
 PyDbPointCloudDefEx PyDbPointCloudDefEx::cast(const PyRxObject& src)
 {
-    PyDbPointCloudDefEx dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbPointCloudDefEx>(src);
 }
 
 AcDbPointCloudDefEx* PyDbPointCloudDefEx::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1366,10 +1360,7 @@ PyDbPointCloudEx PyDbPointCloudEx::cloneFrom(const PyRxObject& src)
 
 PyDbPointCloudEx PyDbPointCloudEx::cast(const PyRxObject& src)
 {
-    PyDbPointCloudEx dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbPointCloudEx>(src);
 }
 
 AcDbPointCloudEx* PyDbPointCloudEx::impObj(const std::source_location& src /*= std::source_location::current()*/) const

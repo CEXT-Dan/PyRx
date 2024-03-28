@@ -106,10 +106,7 @@ PyDbSymbolTableRecord PyDbSymbolTableRecord::cloneFrom(const PyRxObject& src)
 
 PyDbSymbolTableRecord PyDbSymbolTableRecord::cast(const PyRxObject& src)
 {
-    PyDbSymbolTableRecord dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbSymbolTableRecord>(src);
 }
 
 AcDbSymbolTableRecord* PyDbSymbolTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1154,10 +1151,7 @@ PyDbDimStyleTableRecord PyDbDimStyleTableRecord::cloneFrom(const PyRxObject& src
 
 PyDbDimStyleTableRecord PyDbDimStyleTableRecord::cast(const PyRxObject& src)
 {
-    PyDbDimStyleTableRecord dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbDimStyleTableRecord>(src);
 }
 
 AcDbDimStyleTableRecord* PyDbDimStyleTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1563,10 +1557,7 @@ PyDbAbstractViewTableRecord PyDbAbstractViewTableRecord::cloneFrom(const PyRxObj
 
 PyDbAbstractViewTableRecord PyDbAbstractViewTableRecord::cast(const PyRxObject& src)
 {
-    PyDbAbstractViewTableRecord dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbAbstractViewTableRecord>(src);
 }
 
 AcDbAbstractViewTableRecord* PyDbAbstractViewTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1998,10 +1989,7 @@ PyDbViewportTableRecord PyDbViewportTableRecord::cloneFrom(const PyRxObject& src
 
 PyDbViewportTableRecord PyDbViewportTableRecord::cast(const PyRxObject& src)
 {
-    PyDbViewportTableRecord dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbViewportTableRecord>(src);
 }
 
 AcDbViewportTableRecord* PyDbViewportTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2249,10 +2237,7 @@ PyDbViewTableRecord PyDbViewTableRecord::cloneFrom(const PyRxObject& src)
 
 PyDbViewTableRecord PyDbViewTableRecord::cast(const PyRxObject& src)
 {
-    PyDbViewTableRecord dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbViewTableRecord>(src);
 }
 
 AcDbViewTableRecord* PyDbViewTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2657,10 +2642,7 @@ PyDbBlockTableRecord PyDbBlockTableRecord::cloneFrom(const PyRxObject& src)
 
 PyDbBlockTableRecord PyDbBlockTableRecord::cast(const PyRxObject& src)
 {
-    PyDbBlockTableRecord dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbBlockTableRecord>(src);
 }
 
 AcDbBlockTableRecord* PyDbBlockTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -3084,10 +3066,7 @@ PyDbLayerTableRecord PyDbLayerTableRecord::cloneFrom(const PyRxObject& src)
 
 PyDbLayerTableRecord PyDbLayerTableRecord::cast(const PyRxObject& src)
 {
-    PyDbLayerTableRecord dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbLayerTableRecord>(src);
 }
 
 AcDbLayerTableRecord* PyDbLayerTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -3298,10 +3277,7 @@ PyDbTextStyleTableRecord PyDbTextStyleTableRecord::cloneFrom(const PyRxObject& s
 
 PyDbTextStyleTableRecord PyDbTextStyleTableRecord::cast(const PyRxObject& src)
 {
-    PyDbTextStyleTableRecord dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbTextStyleTableRecord>(src);
 }
 
 AcDbTextStyleTableRecord* PyDbTextStyleTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -3423,10 +3399,7 @@ PyDbUCSTableRecord PyDbUCSTableRecord::cloneFrom(const PyRxObject& src)
 
 PyDbUCSTableRecord PyDbUCSTableRecord::cast(const PyRxObject& src)
 {
-    PyDbUCSTableRecord dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbUCSTableRecord>(src);
 }
 
 AcDbUCSTableRecord* PyDbUCSTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -3492,10 +3465,7 @@ PyDbRegAppTableRecord PyDbRegAppTableRecord::cloneFrom(const PyRxObject& src)
 
 PyDbRegAppTableRecord PyDbRegAppTableRecord::cast(const PyRxObject& src)
 {
-    PyDbRegAppTableRecord dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbRegAppTableRecord>(src);
 }
 
 AcDbRegAppTableRecord* PyDbRegAppTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -3721,10 +3691,7 @@ PyDbLinetypeTableRecord PyDbLinetypeTableRecord::cloneFrom(const PyRxObject& src
 
 PyDbLinetypeTableRecord PyDbLinetypeTableRecord::cast(const PyRxObject& src)
 {
-    PyDbLinetypeTableRecord dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbLinetypeTableRecord>(src);
 }
 
 AcDbLinetypeTableRecord* PyDbLinetypeTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const

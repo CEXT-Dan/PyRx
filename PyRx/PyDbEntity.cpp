@@ -623,10 +623,7 @@ PyDbEntity PyDbEntity::cloneFrom(const PyRxObject& src)
 
 PyDbEntity PyDbEntity::cast(const PyRxObject& src)
 {
-    PyDbEntity dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbEntity>(src);
 }
 
 AcDbEntity* PyDbEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -685,10 +682,7 @@ PyDbBlockBegin PyDbBlockBegin::cloneFrom(const PyRxObject& src)
 
 PyDbBlockBegin PyDbBlockBegin::cast(const PyRxObject& src)
 {
-    PyDbBlockBegin dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbBlockBegin>(src);
 }
 
 AcDbBlockBegin* PyDbBlockBegin::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -747,10 +741,7 @@ PyDbBlockEnd PyDbBlockEnd::cloneFrom(const PyRxObject& src)
 
 PyDbBlockEnd PyDbBlockEnd::cast(const PyRxObject& src)
 {
-    PyDbBlockEnd dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbBlockEnd>(src);
 }
 
 AcDbBlockEnd* PyDbBlockEnd::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -809,10 +800,7 @@ PyDbSequenceEnd PyDbSequenceEnd::cloneFrom(const PyRxObject& src)
 
 PyDbSequenceEnd PyDbSequenceEnd::cast(const PyRxObject& src)
 {
-    PyDbSequenceEnd dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbSequenceEnd>(src);
 }
 
 AcDbSequenceEnd* PyDbSequenceEnd::impObj(const std::source_location& src /*= std::source_location::current()*/) const

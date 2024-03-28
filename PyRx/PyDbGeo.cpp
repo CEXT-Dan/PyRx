@@ -438,10 +438,7 @@ PyDbGeoData PyDbGeoData::cloneFrom(const PyRxObject& src)
 
 PyDbGeoData PyDbGeoData::cast(const PyRxObject& src)
 {
-    PyDbGeoData dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbGeoData>(src);
 }
 
 AcDbGeoData* PyDbGeoData::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -669,10 +666,7 @@ PyDbGeoPositionMarker PyDbGeoPositionMarker::cloneFrom(const PyRxObject& src)
 
 PyDbGeoPositionMarker PyDbGeoPositionMarker::cast(const PyRxObject& src)
 {
-    PyDbGeoPositionMarker dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbGeoPositionMarker>(src);
 }
 
 AcDbGeoPositionMarker* PyDbGeoPositionMarker::impObj(const std::source_location& src /*= std::source_location::current()*/) const

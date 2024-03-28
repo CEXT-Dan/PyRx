@@ -508,10 +508,7 @@ PyDbSpline PyDbSpline::cloneFrom(const PyRxObject& src)
 
 PyDbSpline PyDbSpline::cast(const PyRxObject& src)
 {
-    PyDbSpline dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbSpline>(src);
 }
 
 AcDbSpline* PyDbSpline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -734,10 +731,7 @@ PyDbHelix PyDbHelix::cloneFrom(const PyRxObject& src)
 
 PyDbHelix PyDbHelix::cast(const PyRxObject& src)
 {
-    PyDbHelix dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbHelix>(src);
 }
 
 AcDbHelix* PyDbHelix::impObj(const std::source_location& src /*= std::source_location::current()*/) const

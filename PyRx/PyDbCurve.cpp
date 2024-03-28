@@ -433,10 +433,7 @@ PyDbCurve PyDbCurve::cloneFrom(const PyRxObject& src)
 
 PyDbCurve PyDbCurve::cast(const PyRxObject& src)
 {
-    PyDbCurve dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbCurve>(src);
 }
 
 AcDbCurve* PyDbCurve::impObj(const std::source_location& src /*= std::source_location::current()*/) const

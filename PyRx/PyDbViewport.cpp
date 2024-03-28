@@ -1435,10 +1435,7 @@ PyDbViewport PyDbViewport::cloneFrom(const PyRxObject& src)
 
 PyDbViewport PyDbViewport::cast(const PyRxObject& src)
 {
-    PyDbViewport dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbViewport>(src);
 }
 
 AcDbViewport* PyDbViewport::impObj(const std::source_location& src /*= std::source_location::current()*/) const

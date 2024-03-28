@@ -132,10 +132,7 @@ PyDbSymbolTable PyDbSymbolTable::cloneFrom(const PyRxObject& src)
 
 PyDbSymbolTable PyDbSymbolTable::cast(const PyRxObject& src)
 {
-    PyDbSymbolTable dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbSymbolTable>(src);
 }
 
 AcDbSymbolTable* PyDbSymbolTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -234,10 +231,7 @@ PyDbDimStyleTable PyDbDimStyleTable::cloneFrom(const PyRxObject& src)
 
 PyDbDimStyleTable PyDbDimStyleTable::cast(const PyRxObject& src)
 {
-    PyDbDimStyleTable dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbDimStyleTable>(src);
 }
 
 AcDbDimStyleTable* PyDbDimStyleTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -307,10 +301,7 @@ PyDbBlockTable PyDbBlockTable::cloneFrom(const PyRxObject& src)
 
 PyDbBlockTable PyDbBlockTable::cast(const PyRxObject& src)
 {
-    PyDbBlockTable dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbBlockTable>(src);
 }
 
 AcDbBlockTable* PyDbBlockTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -378,10 +369,7 @@ PyDbTextStyleTable PyDbTextStyleTable::cloneFrom(const PyRxObject& src)
 
 PyDbTextStyleTable PyDbTextStyleTable::cast(const PyRxObject& src)
 {
-    PyDbTextStyleTable dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbTextStyleTable>(src);
 }
 
 AcDbTextStyleTable* PyDbTextStyleTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -449,10 +437,7 @@ PyDbLinetypeTable PyDbLinetypeTable::cloneFrom(const PyRxObject& src)
 
 PyDbLinetypeTable PyDbLinetypeTable::cast(const PyRxObject& src)
 {
-    PyDbLinetypeTable dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbLinetypeTable>(src);
 }
 
 AcDbLinetypeTable* PyDbLinetypeTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -520,10 +505,7 @@ PyDbRegAppTable PyDbRegAppTable::cloneFrom(const PyRxObject& src)
 
 PyDbRegAppTable PyDbRegAppTable::cast(const PyRxObject& src)
 {
-    PyDbRegAppTable dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbRegAppTable>(src);
 }
 
 AcDbRegAppTable* PyDbRegAppTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -591,10 +573,7 @@ PyDbUCSTable PyDbUCSTable::cloneFrom(const PyRxObject& src)
 
 PyDbUCSTable PyDbUCSTable::cast(const PyRxObject& src)
 {
-    PyDbUCSTable dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbUCSTable>(src);
 }
 
 AcDbUCSTable* PyDbUCSTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -662,10 +641,7 @@ PyDbLayerTable PyDbLayerTable::cloneFrom(const PyRxObject& src)
 
 PyDbLayerTable PyDbLayerTable::cast(const PyRxObject& src)
 {
-    PyDbLayerTable dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbLayerTable>(src);
 }
 
 AcDbLayerTable* PyDbLayerTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -731,10 +707,7 @@ PyDbAbstractViewTable PyDbAbstractViewTable::cloneFrom(const PyRxObject& src)
 
 PyDbAbstractViewTable PyDbAbstractViewTable::cast(const PyRxObject& src)
 {
-    PyDbAbstractViewTable dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbAbstractViewTable>(src);
 }
 
 AcDbAbstractViewTable* PyDbAbstractViewTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -754,11 +727,11 @@ void makePyDbViewportTableWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
-        .def("add", &PyDbAbstractViewTable::add, DS.ARGS({ "val: PyDb.AbstractViewTableRecord" }))
-        .def("desc", &PyDbAbstractViewTable::desc, DS.SARGS()).staticmethod("desc")
-        .def("cast", &PyDbAbstractViewTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
-        .def("cloneFrom", &PyDbAbstractViewTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
-        .def("className", &PyDbAbstractViewTable::className, DS.SARGS()).staticmethod("className")
+        .def("add", &PyDbViewportTable::add, DS.ARGS({ "val: PyDb.AbstractViewTableRecord" }))
+        .def("desc", &PyDbViewportTable::desc, DS.SARGS()).staticmethod("desc")
+        .def("cast", &PyDbViewportTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbViewportTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("className", &PyDbViewportTable::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -806,10 +779,7 @@ PyDbViewportTable PyDbViewportTable::cloneFrom(const PyRxObject& src)
 
 PyDbViewportTable PyDbViewportTable::cast(const PyRxObject& src)
 {
-    PyDbViewportTable dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbViewportTable>(src);
 }
 
 AcDbViewportTable* PyDbViewportTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const

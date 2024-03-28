@@ -453,10 +453,7 @@ PyDb3dSolid PyDb3dSolid::cloneFrom(const PyRxObject& src)
 
 PyDb3dSolid PyDb3dSolid::cast(const PyRxObject& src)
 {
-    PyDb3dSolid dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDb3dSolid>(src);
 }
 
 AcDb3dSolid* PyDb3dSolid::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -556,10 +553,7 @@ PyDbRegion PyDbRegion::cloneFrom(const PyRxObject& src)
 
 PyDbRegion PyDbRegion::cast(const PyRxObject& src)
 {
-    PyDbRegion dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbRegion>(src);
 }
 
 AcDbRegion* PyDbRegion::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -624,10 +618,7 @@ PyDbBody PyDbBody::cloneFrom(const PyRxObject& src)
 
 PyDbBody PyDbBody::cast(const PyRxObject& src)
 {
-    PyDbBody dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbBody>(src);
 }
 
 AcDbBody* PyDbBody::impObj(const std::source_location& src /*= std::source_location::current()*/) const

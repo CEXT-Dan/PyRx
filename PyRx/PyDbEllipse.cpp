@@ -245,10 +245,7 @@ PyDbEllipse PyDbEllipse::cloneFrom(const PyRxObject& src)
 
 PyDbEllipse PyDbEllipse::cast(const PyRxObject& src)
 {
-    PyDbEllipse dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbEllipse>(src);
 }
 
 AcDbEllipse* PyDbEllipse::impObj(const std::source_location& src /*= std::source_location::current()*/) const

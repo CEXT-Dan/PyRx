@@ -611,10 +611,7 @@ PyDbMText PyDbMText::cloneFrom(const PyRxObject& src)
 
 PyDbMText PyDbMText::cast(const PyRxObject& src)
 {
-    PyDbMText dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbMText>(src);
 }
 
 AcDbMText* PyDbMText::impObj(const std::source_location& src /*= std::source_location::current()*/) const

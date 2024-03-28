@@ -40538,7 +40538,7 @@ class PdfDefinition(UnderlayDefinition):
     ...
 
     @staticmethod
-    def cast (otherObject: PyRx.RxObject)-> PyDb.UnderlayDefinition :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.PdfDefinition :
       '''                             '''
     ...
 
@@ -40548,7 +40548,7 @@ class PdfDefinition(UnderlayDefinition):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.UnderlayDefinition :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.PdfDefinition :
       '''                             '''
     ...
     def close (self)-> None :
@@ -69756,7 +69756,7 @@ class ViewportTable(AbstractViewTable):
     ...
 
     @staticmethod
-    def cast (otherObject: PyRx.RxObject)-> PyDb.AbstractViewTable :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.ViewportTable :
       '''                             '''
     ...
 
@@ -69766,7 +69766,7 @@ class ViewportTable(AbstractViewTable):
     ...
 
     @staticmethod
-    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.AbstractViewTable :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.ViewportTable :
       '''                             '''
     ...
     def close (self)-> None :
@@ -71330,7 +71330,7 @@ class Xrecord(DbObject):
     ...
 
     @staticmethod
-    def cast (otherObject: PyRx.RxObject)-> PyDb.DbObject :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Xrecord :
       '''                             '''
     ...
 

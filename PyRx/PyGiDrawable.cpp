@@ -128,6 +128,11 @@ PyRxClass PyGiDrawable::desc()
     return PyRxClass(AcGiDrawable::desc(), false);
 }
 
+PyGiDrawable PyGiDrawable::cast(const PyRxObject& src)
+{
+    return PyRxObjectCast<PyGiDrawable>(src);
+}
+
 AcGiDrawable* PyGiDrawable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {

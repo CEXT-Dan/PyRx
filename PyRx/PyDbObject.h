@@ -105,6 +105,14 @@ public:
     inline AcDbObject* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+template<typename T>
+inline T PyDbObjectCast(const PyRxObject& src)
+{
+    T dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
 
 // TODO: This could be done better 
 // boost::python::wrapper<> causes issues with subclassing i couldn't solve

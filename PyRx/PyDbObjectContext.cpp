@@ -338,10 +338,7 @@ bool PyDbAnnotationScale::matchScaleId(Adesk::LongPtr val) const
 
 PyDbAnnotationScale PyDbAnnotationScale::cast(const PyDbObjectContext& other)
 {
-    PyDbAnnotationScale dest(nullptr, false);
-    PyRxObject rxo = other;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbAnnotationScale>(other);
 }
 
 PyRxClass PyDbAnnotationScale::desc()
