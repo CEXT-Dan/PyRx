@@ -195,9 +195,9 @@ void makePyTransaction()
         .def("getObject", &PyTransaction::getObject2)
         .def("getObject", &PyTransaction::getObject3)
         .def("getAllObjects", &PyTransaction::getAllObjects)
-        .def("numOpenedObjects", &PyDbTransactionManager::numOpenedObjects)
-        .def("desc", &PyDbTransactionManager::desc).staticmethod("desc")
-        .def("className", &PyDbTransactionManager::className).staticmethod("className")
+        .def("numOpenedObjects", &PyTransaction::numOpenedObjects)
+        .def("desc", &PyTransaction::desc).staticmethod("desc")
+        .def("className", &PyTransaction::className).staticmethod("className")
         ;
 }
 

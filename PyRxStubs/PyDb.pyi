@@ -28096,26 +28096,8 @@ class LayerTableRecord(SymbolTableRecord):
     def VPDFLT (self)-> bool :
       '''                             '''
     ...
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -31884,26 +31866,8 @@ class LinetypeTable(SymbolTable):
     ...
 
 class LinetypeTableRecord(SymbolTableRecord):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -52699,26 +52663,8 @@ class RegAppTable(SymbolTable):
     ...
 
 class RegAppTableRecord(SymbolTableRecord):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -64306,26 +64252,8 @@ class TextStyleTable(SymbolTable):
     ...
 
 class TextStyleTableRecord(SymbolTableRecord):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -64977,10 +64905,10 @@ getObject( (Transaction)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> DbO
       '''                             '''
     ...
     def numOpenedObjects (self, *args, **kwargs)-> int :
-      '''numOpenedObjects( (TransactionManager)arg1) -> int :
+      '''numOpenedObjects( (Transaction)arg1) -> int :
 
     C++ signature :
-        int numOpenedObjects(class PyDbTransactionManager {lvalue})'''
+        int numOpenedObjects(class PyTransaction {lvalue})'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -65412,26 +65340,8 @@ class UCSTable(SymbolTable):
     ...
 
 class UCSTableRecord(SymbolTableRecord):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''

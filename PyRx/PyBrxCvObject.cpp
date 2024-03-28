@@ -17,7 +17,7 @@ void makePyBrxCvDbSubObjectWrapper()
         .def("setDescription", &PyBrxCvDbSubObject::setDescription, DS.ARGS({ "val : str" }))
         .def("className", &PyBrxCvDbSubObject::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbSubObject::desc, DS.SARGS()).staticmethod("desc")
-        .def("cast", &PyBrxCvDbObject::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("cast", &PyBrxCvDbSubObject::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -58,10 +58,7 @@ PyRxClass PyBrxCvDbSubObject::desc()
 
 PyBrxCvDbSubObject PyBrxCvDbSubObject::cast(const PyRxObject& src)
 {
-    PyBrxCvDbSubObject dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbSubObject>(src);
 }
 
 BrxCvDbSubObject* PyBrxCvDbSubObject::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -151,10 +148,7 @@ PyBrxCvDbObject PyBrxCvDbObject::cloneFrom(const PyRxObject& src)
 
 PyBrxCvDbObject PyBrxCvDbObject::cast(const PyRxObject& src)
 {
-    PyBrxCvDbObject dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbObject>(src);
 }
 
 BrxCvDbObject* PyBrxCvDbObject::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -225,7 +219,6 @@ bool PyBrxCvDbEntity::setDescription(const std::string& szDescription)
     return impObj()->setDescription(utf8_to_wstr(szDescription).c_str());
 }
 
-
 std::string PyBrxCvDbEntity::className()
 {
     return "BrxCvDbEntity";
@@ -245,10 +238,7 @@ PyBrxCvDbEntity PyBrxCvDbEntity::cloneFrom(const PyRxObject& src)
 
 PyBrxCvDbEntity PyBrxCvDbEntity::cast(const PyRxObject& src)
 {
-    PyBrxCvDbEntity dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbEntity>(src);
 }
 
 BrxCvDbEntity* PyBrxCvDbEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -338,10 +328,7 @@ PyBrxCvDbCurve PyBrxCvDbCurve::cloneFrom(const PyRxObject& src)
 
 PyBrxCvDbCurve PyBrxCvDbCurve::cast(const PyRxObject& src)
 {
-    PyBrxCvDbCurve dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbCurve>(src);
 }
 
 BrxCvDbCurve* PyBrxCvDbCurve::impObj(const std::source_location& src /*= std::source_location::current()*/) const

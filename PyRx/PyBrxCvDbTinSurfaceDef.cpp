@@ -114,10 +114,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinition::desc()
 
 PyBrxCvDbTinSurfaceDefinition PyBrxCvDbTinSurfaceDefinition::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinition dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinition>(src);
 }
 
 BrxCvDbTinSurfaceDefinition* PyBrxCvDbTinSurfaceDefinition::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -198,10 +195,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionGroupDefs::desc()
 
 PyBrxCvDbTinSurfaceDefinitionGroupDefs PyBrxCvDbTinSurfaceDefinitionGroupDefs::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionGroupDefs dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionGroupDefs>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionGroupDefs* PyBrxCvDbTinSurfaceDefinitionGroupDefs::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -265,10 +259,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionTransform::desc()
 
 PyBrxCvDbTinSurfaceDefinitionTransform PyBrxCvDbTinSurfaceDefinitionTransform::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionTransform dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionTransform>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionTransform* PyBrxCvDbTinSurfaceDefinitionTransform::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -332,10 +323,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionAddPoint::desc()
 
 PyBrxCvDbTinSurfaceDefinitionAddPoint PyBrxCvDbTinSurfaceDefinitionAddPoint::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionAddPoint dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionAddPoint>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionAddPoint* PyBrxCvDbTinSurfaceDefinitionAddPoint::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -399,10 +387,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionAddPoints::desc()
 
 PyBrxCvDbTinSurfaceDefinitionAddPoints PyBrxCvDbTinSurfaceDefinitionAddPoints::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionAddPoints dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionAddPoints>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionAddPoints* PyBrxCvDbTinSurfaceDefinitionAddPoints::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -466,10 +451,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionDeletePoint::desc()
 
 PyBrxCvDbTinSurfaceDefinitionDeletePoint PyBrxCvDbTinSurfaceDefinitionDeletePoint::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionDeletePoint dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionDeletePoint>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionDeletePoint* PyBrxCvDbTinSurfaceDefinitionDeletePoint::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -533,10 +515,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionDeletePoints::desc()
 
 PyBrxCvDbTinSurfaceDefinitionDeletePoints PyBrxCvDbTinSurfaceDefinitionDeletePoints::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionDeletePoints dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionDeletePoints>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionDeletePoints* PyBrxCvDbTinSurfaceDefinitionDeletePoints::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -600,10 +579,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionSwapEdge::desc()
 
 PyBrxCvDbTinSurfaceDefinitionSwapEdge PyBrxCvDbTinSurfaceDefinitionSwapEdge::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionSwapEdge dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionSwapEdge>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionSwapEdge* PyBrxCvDbTinSurfaceDefinitionSwapEdge::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -679,10 +655,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionMovePoint::desc()
 
 PyBrxCvDbTinSurfaceDefinitionMovePoint PyBrxCvDbTinSurfaceDefinitionMovePoint::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionMovePoint dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionMovePoint>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionMovePoint* PyBrxCvDbTinSurfaceDefinitionMovePoint::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -760,10 +733,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionMovePoints::desc()
 
 PyBrxCvDbTinSurfaceDefinitionMovePoints PyBrxCvDbTinSurfaceDefinitionMovePoints::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionMovePoints dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionMovePoints>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionMovePoints* PyBrxCvDbTinSurfaceDefinitionMovePoints::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -827,10 +797,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionDeleteEdge::desc()
 
 PyBrxCvDbTinSurfaceDefinitionDeleteEdge PyBrxCvDbTinSurfaceDefinitionDeleteEdge::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionDeleteEdge dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionDeleteEdge>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionDeleteEdge* PyBrxCvDbTinSurfaceDefinitionDeleteEdge::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -909,10 +876,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionDeleteEdges::desc()
 
 PyBrxCvDbTinSurfaceDefinitionDeleteEdges PyBrxCvDbTinSurfaceDefinitionDeleteEdges::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionDeleteEdges dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionDeleteEdges>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionDeleteEdges* PyBrxCvDbTinSurfaceDefinitionDeleteEdges::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -976,10 +940,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionAddLine::desc()
 
 PyBrxCvDbTinSurfaceDefinitionAddLine PyBrxCvDbTinSurfaceDefinitionAddLine::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionAddLine dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionAddLine>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionAddLine* PyBrxCvDbTinSurfaceDefinitionAddLine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1043,10 +1004,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionAddLines::desc()
 
 PyBrxCvDbTinSurfaceDefinitionAddLines PyBrxCvDbTinSurfaceDefinitionAddLines::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionAddLines dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionAddLines>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionAddLines* PyBrxCvDbTinSurfaceDefinitionAddLines::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1134,10 +1092,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::desc()
 
 PyBrxCvDbTinSurfaceDefinitionModifyPointElevation PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionModifyPointElevation dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionModifyPointElevation>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionModifyPointElevation* PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1224,10 +1179,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::desc()
 
 PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionModifyPointsElevation* PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1307,10 +1259,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::desc()
 
 PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionModifyPointsElevations* PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1395,10 +1344,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::desc()
 
 PyBrxCvDbTinSurfaceDefinitionCreateFromFaces PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionCreateFromFaces dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionCreateFromFaces>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionCreateFromFaces* PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1514,10 +1460,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::desc()
 
 PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionAddDrawingObjects* PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1581,10 +1524,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionRiseLower::desc()
 
 PyBrxCvDbTinSurfaceDefinitionRiseLower PyBrxCvDbTinSurfaceDefinitionRiseLower::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionRiseLower dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionRiseLower>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionRiseLower* PyBrxCvDbTinSurfaceDefinitionRiseLower::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1684,10 +1624,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::desc()
 
 PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionCreateFromLandXML* PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1763,10 +1700,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionAddFromFiles::desc()
 
 PyBrxCvDbTinSurfaceDefinitionAddFromFiles PyBrxCvDbTinSurfaceDefinitionAddFromFiles::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionAddFromFiles dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionAddFromFiles>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionAddFromFiles* PyBrxCvDbTinSurfaceDefinitionAddFromFiles::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1830,10 +1764,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::desc()
 
 PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionAddFromPointClouds* PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1898,10 +1829,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionAddPointGroups::desc()
 
 PyBrxCvDbTinSurfaceDefinitionAddPointGroups PyBrxCvDbTinSurfaceDefinitionAddPointGroups::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionAddPointGroups dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionAddPointGroups>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionAddPointGroups* PyBrxCvDbTinSurfaceDefinitionAddPointGroups::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1977,10 +1905,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::desc()
 
 PyBrxCvDbTinSurfaceDefinitionCreateFromC3D PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionCreateFromC3D dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionCreateFromC3D>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionCreateFromC3D* PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2104,10 +2029,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::desc()
 
 PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionRemoveOuterEdges* PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2183,10 +2105,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::desc()
 
 PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionTrianglesVisibility* PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2292,10 +2211,7 @@ PyRxClass PyBrxCvDbTinSurfaceDefinitionRemoveElevations::desc()
 
 PyBrxCvDbTinSurfaceDefinitionRemoveElevations PyBrxCvDbTinSurfaceDefinitionRemoveElevations::cast(const PyRxObject& src)
 {
-    PyBrxCvDbTinSurfaceDefinitionRemoveElevations dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbTinSurfaceDefinitionRemoveElevations>(src);
 }
 
 BrxCvDbTinSurfaceDefinitionRemoveElevations* PyBrxCvDbTinSurfaceDefinitionRemoveElevations::impObj(const std::source_location& src /*= std::source_location::current()*/) const

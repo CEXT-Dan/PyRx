@@ -275,10 +275,7 @@ PyBrxCvDbPoint PyBrxCvDbPoint::cloneFrom(const PyRxObject& src)
 
 PyBrxCvDbPoint PyBrxCvDbPoint::cast(const PyRxObject& src)
 {
-    PyBrxCvDbPoint dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbPoint>(src);
 }
 
 BrxCvDbPoint* PyBrxCvDbPoint::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -342,10 +339,7 @@ PyRxClass PyBrxCvDbPointReferencedEntity::desc()
 
 PyBrxCvDbPointReferencedEntity PyBrxCvDbPointReferencedEntity::cast(const PyRxObject& src)
 {
-    PyBrxCvDbPointReferencedEntity dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbPointReferencedEntity>(src);
 }
 
 BrxCvDbPointReferencedEntity* PyBrxCvDbPointReferencedEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -630,10 +624,7 @@ PyBrxCvDbPointGroup PyBrxCvDbPointGroup::cloneFrom(const PyRxObject& src)
 
 PyBrxCvDbPointGroup PyBrxCvDbPointGroup::cast(const PyRxObject& src)
 {
-    PyBrxCvDbPointGroup dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyBrxCvDbPointGroup>(src);
 }
 
 BrxCvDbPointGroup* PyBrxCvDbPointGroup::impObj(const std::source_location& src /*= std::source_location::current()*/) const
