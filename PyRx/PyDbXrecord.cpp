@@ -14,11 +14,11 @@ void makePyDbXrecordWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("rbChain", &PyDbXrecord::rbChain1)
         .def("rbChain", &PyDbXrecord::rbChain2, DS.ARGS({ "auxDb : PyDb.Database = None " }))
         .def("setFromRbChain", &PyDbXrecord::setFromRbChain1)
-        .def("setFromRbChain", &PyDbXrecord::setFromRbChain2, DS.ARGS({"resbuf : list", "auxDb : PyDb.Database = None " }))
+        .def("setFromRbChain", &PyDbXrecord::setFromRbChain2, DS.ARGS({ "resbuf : list", "auxDb : PyDb.Database = None " }))
         .def("isXlateReferences", &PyDbXrecord::isXlateReferences, DS.ARGS())
         .def("setXlateReferences", &PyDbXrecord::setXlateReferences, DS.ARGS({ "val : bool" }))
         .def("mergeStyle", &PyDbXrecord::mergeStyle, DS.ARGS())
@@ -142,6 +142,6 @@ AcDbXrecord* PyDbXrecord::impObj(const std::source_location& src /*= std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbXrecord*>(m_pyImp.get());
 }

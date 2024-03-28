@@ -51,13 +51,13 @@ void makePyDbCurveWrapper()
         .def("getAcGeCurve", &PyDbCurve::getAcGeCurve2, DS.ARGS({ "tol: PyGe.Tol = 'default'" }))
         .def("setFromAcGeCurve", &PyDbCurve::setFromAcGeCurve1)
         .def("setFromAcGeCurve", &PyDbCurve::setFromAcGeCurve2)
-        .def("setFromAcGeCurve", &PyDbCurve::setFromAcGeCurve3, 
+        .def("setFromAcGeCurve", &PyDbCurve::setFromAcGeCurve3,
 
             DS.ARGS({ "curve: PyGe.Curve3d","normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis","tol: PyGe.Tol = 'default'" }))
 
         .def("createFromAcGeCurve", &PyDbCurve::createFromAcGeCurve1)
         .def("createFromAcGeCurve", &PyDbCurve::createFromAcGeCurve2)
-        .def("createFromAcGeCurve", &PyDbCurve::createFromAcGeCurve3, 
+        .def("createFromAcGeCurve", &PyDbCurve::createFromAcGeCurve3,
             DS.SARGS({ "curve: PyGe.Curve3d","normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis","tol: PyGe.Tol = 'default'" })).staticmethod("createFromAcGeCurve")
 
         .def("className", &PyDbCurve::className, DS.SARGS()).staticmethod("className")
@@ -319,7 +319,7 @@ PyDbCurve PyDbCurve::getOrthoProjectedCurve(const PyGePlane& plane)
 PyDbCurve PyDbCurve::getProjectedCurve(const PyGePlane& plane, const AcGeVector3d& projDir)
 {
     AcDbCurve* pCurve = nullptr;
-    PyThrowBadEs(impObj()->getProjectedCurve(*plane.impObj(), projDir,pCurve));
+    PyThrowBadEs(impObj()->getProjectedCurve(*plane.impObj(), projDir, pCurve));
     return PyDbCurve(pCurve, true);
 }
 
@@ -440,6 +440,6 @@ AcDbCurve* PyDbCurve::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbCurve*>(m_pyImp.get());
 }

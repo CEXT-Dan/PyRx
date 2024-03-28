@@ -16,7 +16,7 @@ void makePyDbLeaderWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("setPlane", &PyDbLeader::setPlane, DS.ARGS({ "val: PyGe.Plane" }))
         .def("normal", &PyDbLeader::normal, DS.ARGS())
         .def("numVertices", &PyDbLeader::numVertices, DS.ARGS())
@@ -450,7 +450,7 @@ AcDbLeader* PyDbLeader::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbLeader*>(m_pyImp.get());
 }
 
@@ -1330,7 +1330,7 @@ void PyDbMLeader::getOverridedMLeaderStyle(PyDbMLeaderStyle& mleaderStyle)
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();
 #else
-    return  PyThrowBadEs(impObj()->getOverridedMLeaderStyle(*mleaderStyle.impObj())); 
+    return  PyThrowBadEs(impObj()->getOverridedMLeaderStyle(*mleaderStyle.impObj()));
 #endif
 }
 
@@ -1487,7 +1487,7 @@ AcDbMLeader* PyDbMLeader::impObj(const std::source_location& src /*= std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbMLeader*>(m_pyImp.get());
 }
 
@@ -2292,6 +2292,6 @@ AcDbMLeaderStyle* PyDbMLeaderStyle::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbMLeaderStyle*>(m_pyImp.get());
 }

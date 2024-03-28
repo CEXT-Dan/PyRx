@@ -40,7 +40,7 @@ std::string PyDbObjectContextCollection::name() const
 
 PyDbObjectContext PyDbObjectContextCollection::currentContext(const PyDbObject& obj)
 {
-   return PyDbObjectContext(impObj()->currentContext(obj.impObj()),true);
+    return PyDbObjectContext(impObj()->currentContext(obj.impObj()), true);
 }
 
 void PyDbObjectContextCollection::setCurrentContext(const PyDbObjectContext& pContext)
@@ -113,7 +113,7 @@ boost::python::list PyDbObjectContextCollection::toList2(const PyRxClass& _class
 
         if (pObjectContext->isA() == pclass)
         {
-            if(pclass == AcDbAnnotationScale::desc())
+            if (pclass == AcDbAnnotationScale::desc())
                 pylist.append(PyDbAnnotationScale(static_cast<AcDbAnnotationScale*>(pObjectContext), true));
             else
                 pylist.append(PyDbObjectContext(pObjectContext, true));
@@ -161,7 +161,7 @@ PyDbObjectContextManager::PyDbObjectContextManager(AcDbObjectContextManager* pt)
 
 void PyDbObjectContextManager::registerContextCollection(const std::string& collectionName, const PyDbObjectContextCollection& pCollection)
 {
-   PyThrowBadEs(impObj()->registerContextCollection(utf8_to_wstr(collectionName).c_str(), pCollection.impObj()));
+    PyThrowBadEs(impObj()->registerContextCollection(utf8_to_wstr(collectionName).c_str(), pCollection.impObj()));
 }
 
 void PyDbObjectContextManager::unregisterContextCollection(const std::string& collectionName)
@@ -253,7 +253,7 @@ AcDbObjectContext* PyDbObjectContext::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbObjectContext*>(m_pyImp.get());
 }
 
@@ -355,6 +355,6 @@ AcDbAnnotationScale* PyDbAnnotationScale::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbAnnotationScale*>(m_pyImp.get());
 }

@@ -19,7 +19,7 @@ void makePyDbMlineWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("setStyle", &PyDbMline::setStyle, DS.ARGS({ "val : PyDb.ObjectId" }))
         .def("style", &PyDbMline::style, DS.ARGS())
         .def("setJustification", &PyDbMline::setJustification, DS.ARGS({ "val : MlineJustification" }))
@@ -288,7 +288,7 @@ AcDbMline* PyDbMline::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbMline*>(m_pyImp.get());
 }
 
@@ -568,6 +568,6 @@ AcDbMlineStyle* PyDbMlineStyle::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbMlineStyle*>(m_pyImp.get());
 }

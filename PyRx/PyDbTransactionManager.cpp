@@ -131,7 +131,7 @@ AcDbTransactionManager* PyDbTransactionManager::impObj(const std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbTransactionManager*>(m_pyImp.get());
 }
 
@@ -182,7 +182,7 @@ AcTransactionManager* PyTransactionManager::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcTransactionManager*>(m_pyImp.get());
 }
 
@@ -257,6 +257,6 @@ AcTransaction* PyTransaction::impObj(const std::source_location& src /*= std::so
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcTransaction*>(m_pyImp.get());
 }

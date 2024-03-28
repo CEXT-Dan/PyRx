@@ -24,7 +24,7 @@ void makePyDbPlotSettingsWrapper()
         .def(init<bool>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.CTOR(ctords)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("addToPlotSettingsDict", &PyDbPlotSettings::addToPlotSettingsDict, DS.ARGS({ "db: PyDb.Database" }))
         .def("getPlotSettingsName", &PyDbPlotSettings::getPlotSettingsName, DS.ARGS())
         .def("setPlotSettingsName", &PyDbPlotSettings::setPlotSettingsName, DS.ARGS({ "val: str" }))
@@ -490,7 +490,7 @@ AcDbPlotSettings* PyDbPlotSettings::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbPlotSettings*>(m_pyImp.get());
 }
 
@@ -503,7 +503,7 @@ void makePyDbLayoutWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("getBlockTableRecordId", &PyDbLayout::getBlockTableRecordId, DS.ARGS())
         .def("setBlockTableRecordId", &PyDbLayout::setBlockTableRecordId, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("addToLayoutDict", &PyDbLayout::addToLayoutDict, DS.ARGS({ "db: PyDb.Database","id: PyDb.ObjectId" }))
@@ -678,7 +678,7 @@ AcDbLayout* PyDbLayout::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbLayout*>(m_pyImp.get());
 }
 
@@ -898,6 +898,6 @@ AcDbLayoutManager* PyDbLayoutManager::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbLayoutManager*>(m_pyImp.get());
 }

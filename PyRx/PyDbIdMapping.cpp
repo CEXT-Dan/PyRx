@@ -228,6 +228,6 @@ AcDbIdMapping* PyDbIdMapping::impObj(const std::source_location& src /*= std::so
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbIdMapping*>(m_pyImp.get());
 }

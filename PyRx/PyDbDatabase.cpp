@@ -519,7 +519,7 @@ void makePyDbDatabaseWrapper()
         .def("blockTableId", &PyDbDatabase::blockTableId, DS.ARGS())
         .def("modelSpaceId", &PyDbDatabase::modelSpaceId, DS.ARGS())
         .def("currentSpaceId", &PyDbDatabase::currentSpaceId, DS.ARGS())
-        .def("purge", &PyDbDatabase::purge, DS.ARGS({"ids: list[PyDb.ObjectId]"}))
+        .def("purge", &PyDbDatabase::purge, DS.ARGS({ "ids: list[PyDb.ObjectId]" }))
         .def("setCannoscale", &PyDbDatabase::setCannoscale, DS.ARGS({ "val : AnnotationScale" }))
         .def("setCecolor", &PyDbDatabase::setCecolor, DS.ARGS({ "val : Color" }))
         .def("setCetransparency", &PyDbDatabase::setCetransparency, DS.ARGS({ "val : Transparency" }))
@@ -804,7 +804,7 @@ Adesk::UInt32 PyDbDatabase::countEmptyObjects(const Adesk::Int32 flags)
 Adesk::UInt32 PyDbDatabase::countHardReferences(const boost::python::list& pyids)
 {
     Adesk::UInt32 cnt = 0;
-    PyThrowBadEs(impObj()->countHardReferences(PyListToObjectIdArray(pyids),&cnt));
+    PyThrowBadEs(impObj()->countHardReferences(PyListToObjectIdArray(pyids), &cnt));
     return cnt;
 }
 
@@ -1005,8 +1005,8 @@ static boost::python::list PyDbDatabaseObjectIds(AcDbDatabase* pDb, AcRxClass* p
             continue;
         if (!id.isValid() || id.isErased() || id.isEffectivelyErased()) [[unlikely]]
             continue;
-        if (id.m_id.objectClass()->isDerivedFrom(pClass))
-            pyList.append(id);
+            if (id.m_id.objectClass()->isDerivedFrom(pClass))
+                pyList.append(id);
     }
     return pyList;
 }

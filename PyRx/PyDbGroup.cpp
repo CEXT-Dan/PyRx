@@ -22,7 +22,7 @@ void makePyDbGroupWrapper()
         .def(init<const std::string&, bool>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.CTOR(ctords)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("objectIds", &PyDbGroup::objectIds, DS.ARGS())
         .def("description", &PyDbGroup::description, DS.ARGS())
         .def("setDescription", &PyDbGroup::setDescription, DS.ARGS({ "grpDesc : str" }))
@@ -347,6 +347,6 @@ AcDbGroup* PyDbGroup::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbGroup*>(m_pyImp.get());
 }

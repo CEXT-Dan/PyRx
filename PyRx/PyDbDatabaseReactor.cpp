@@ -19,7 +19,7 @@ void makePyDbDatabaseReactorWrapper()
         .def("headerSysVarWillChange", &PyDbDatabaseReactor::headerSysVarWillChange, DS.ARGS({ "db: PyDb.Database", "name: str" }))
         .def("headerSysVarChanged", &PyDbDatabaseReactor::headerSysVarChanged, DS.ARGS({ "db: PyDb.Database", "name: str", "success: bool" }))
         .def("proxyResurrectionCompleted", &PyDbDatabaseReactor::proxyResurrectionCompleted, DS.ARGS({ "db: PyDb.Database", "name: str", "ids: list[PyDb.ObjectId]" }))
-        .def("goodbye", &PyDbDatabaseReactor::goodbye, DS.ARGS({ "db: PyDb.Database"}))
+        .def("goodbye", &PyDbDatabaseReactor::goodbye, DS.ARGS({ "db: PyDb.Database" }))
         .def("desc", &PyDbDatabaseReactor::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyDbDatabaseReactor::className, DS.SARGS()).staticmethod("className")
         ;
@@ -146,7 +146,7 @@ PyDbDatabaseReactor* PyDbDatabaseReactorImpl::impObj(const std::source_location&
 {
     if (m_backPtr == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return m_backPtr;
 }
 //
@@ -340,6 +340,6 @@ AcDbDatabaseReactor* PyDbDatabaseReactor::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbDatabaseReactor*>(m_pyImp.get());
 }
