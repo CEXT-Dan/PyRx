@@ -60,6 +60,11 @@ public:
     {
     }
 
+    //- the .ini file will go in the package folder; yes or we will have many copies
+    //- this module will need to know the install folder; yep
+    //- AppData\Local\Programs\PyRx
+
+  
     static std::filesystem::path thisModulePath()
     {
         std::wstring buffer(MAX_PATH, 0);
