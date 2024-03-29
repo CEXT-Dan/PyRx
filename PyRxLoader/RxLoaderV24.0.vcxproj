@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{f1b30806-b1ca-430c-a9a5-8d0626d18304}</ProjectGuid>
+    <ProjectGuid>{A217C0D2-3564-46DE-9B1E-3E6AEF8605A0}</ProjectGuid>
     <RootNamespace>RxLoader</RootNamespace>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
