@@ -27,9 +27,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRxV24.0", "PyRx\PyRxV24.0.vcxproj", "{254ED7F5-4891-44D2-B6BD-F5B3891DDDBF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Rx25Loader", "PyRxLoader\Rx25Loader.vcxproj", "{F1B30806-B1CA-430C-A9A5-8D0626D18339}"
-	ProjectSection(ProjectDependencies) = postProject
-		{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF} = {254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
