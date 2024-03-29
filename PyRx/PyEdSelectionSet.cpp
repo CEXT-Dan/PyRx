@@ -144,11 +144,11 @@ boost::python::list PyEdSelectionSet::objectIds()
     auto nsize = size();
     for (size_t i = 0; i < nsize; i++)
     {
-        if (acedSSName(impObj()->data(), i, ename) == RTNORM)
-        {
-            if (acdbGetObjectId(objId.m_id, ename) == eOk)
+        if (acedSSName(impObj()->data(), i, ename) == RTNORM) [[likely]] {
+            if (acdbGetObjectId(objId.m_id, ename) == eOk) [[likely]] {
                 idList.append(objId);
-        }
+                }
+            }
     }
     return idList;
 }
@@ -198,14 +198,14 @@ void PyEdSelectionSet::filliterator()
 
     auto nsize = size();
     m_iterable.reserve(nsize);
-    
+
     for (size_t i = 0; i < nsize; i++)
     {
-        if (acedSSName(impObj()->data(), i, ename) == RTNORM)
-        {
-            if (acdbGetObjectId(objId.m_id, ename) == eOk)
+        if (acedSSName(impObj()->data(), i, ename) == RTNORM) [[likely]] {
+            if (acdbGetObjectId(objId.m_id, ename) == eOk) [[likely]] {
                 m_iterable.push_back(objId);
-        }
+                }
+            }
     }
 }
 

@@ -7956,7 +7956,7 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
-__init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (TestBCadCivil)arg5) -> None :
+__init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (RewriteSymbolics)arg5) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class boost::python::list,double,bool,enum BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation)'''
@@ -7983,7 +7983,7 @@ __init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (TestBCadCivil)arg5
     def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def crossingsElevation (self)-> TestBCadCivil :
+    def crossingsElevation (self)-> RewriteSymbolics :
       '''                             '''
     ...
 

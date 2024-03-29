@@ -2179,16 +2179,8 @@ class PromptStatus(object):
     ...
 
 class SelectionSet(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
     def add (self, id: PyDb.ObjectId)-> None :
       '''                             '''
