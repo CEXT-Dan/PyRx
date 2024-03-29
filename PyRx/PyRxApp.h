@@ -85,7 +85,6 @@ public:
     static bool appendSearchPath(const std::filesystem::path& pModulePath);
     static std::wstring the_error();
     static std::filesystem::path modulePath();
-    static void appendINISettings();
     static PyRxApp& instance();
 public:
 
