@@ -775,7 +775,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ArxBrxTest.rc">
+    <ResourceCompile Include="PyRx.rc">
       <Filter>Resouce Files</Filter>
     </ResourceCompile>
   </ItemGroup>
