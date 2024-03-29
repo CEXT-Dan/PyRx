@@ -41,3 +41,5 @@
 /PyRx/PyRxG24.0
 /PySamples/.vscode
 __pycache__
+/PyRxLoader/Rx25Loader
+/PyRxLoader/*.user

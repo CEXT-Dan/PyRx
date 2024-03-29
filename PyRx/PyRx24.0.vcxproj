@@ -371,7 +371,7 @@
     <ClInclude Include="PyEdUserInteraction.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ArxBrxTest.rc" />
+    <ResourceCompile Include="PyRx.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
