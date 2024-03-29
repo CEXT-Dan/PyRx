@@ -32,8 +32,6 @@
 //----- ObjectARX EntryPoint
 class PyRxLoader : public AcRxArxApp
 {
-    bool On_kLoadDwgMsgCallOnce = false;
-
 public:
     PyRxLoader() : AcRxArxApp()
     {
@@ -42,31 +40,24 @@ public:
     virtual AcRx::AppRetCode On_kInitAppMsg(void* pkt)
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
-
-        //init stuff here, read the API help though
-        //its before doc, some code needs a doc, like printf or to reg xdtata;
-
+        PyRxLoader_loader();
         return (retCode);
     }
 
     virtual AcRx::AppRetCode On_kUnloadAppMsg(void* pkt)
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
-
-        //unload here
-
         return (retCode);
     }
 
     virtual AcRx::AppRetCode On_kLoadDwgMsg(void* pkt) override
     {
         AcRx::AppRetCode retCode = AcRxDbxApp::On_kLoadDwgMsg(pkt);
-        if (!On_kLoadDwgMsgCallOnce)
-        {
-            //init with doc
-            On_kLoadDwgMsgCallOnce = true;
-        }
         return retCode;
+    }
+
+    virtual void RegisterServerComponents()
+    {
     }
 
     static std::filesystem::path thisModulePath()
@@ -76,10 +67,6 @@ public:
         std::filesystem::path path{ std::move(buffer) };
         path.remove_filename();
         return path;
-    }
-
-    virtual void RegisterServerComponents()
-    {
     }
 
     static void setenvpath(const std::wstring& pathToAdd)
@@ -99,13 +86,12 @@ public:
         }
     }
 
-    
     static void PyRxLoader_loader(void)
     {
         auto modulePath = thisModulePath();
         auto oldpath = std::filesystem::current_path();
         std::filesystem::current_path(modulePath);
-        auto settingsPath = modulePath /= _T("PyRx.INI");
+        auto settingsPath = modulePath / _T("PyRx.INI");
 
         auto res = 0;
         {
@@ -133,9 +119,11 @@ public:
             }
         }
 
-        acrxDynamicLinker->loadModule(_T(".\\PyRx25.0.arx"),true);
+        auto arxpath = modulePath / _T("PyRx25.0.arx");
+        if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
+            acrxDynamicLinker->loadModule(foundPath, true);
+
         std::filesystem::current_path(oldpath);
-   
     }
 
 };
