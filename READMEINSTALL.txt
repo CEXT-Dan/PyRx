@@ -6,7 +6,7 @@ install wxPython 4.2.1 from https://pypi.org/project/wxPython/
 Run the PyRxSetup installer https://github.com/CEXT-Dan/PyRx/releases
 
 The bulk of the stuff is installed into:
-AppData\Local\Programs \PyRx
+AppData\Local\Programs\PyRx
 And
 Loader files for AutoCAD are in ProgramData\Autodesk\ApplicationPlugins\PyRx.bundle
 
@@ -14,4 +14,5 @@ win32com must be installed if you would like to use the ActiveX libraries
 pip install pywin32
 
 ****BricsCAD, ZwCAD and GstarCAD****
-BRX, ZRX and GRX libraries are installed in AppData\Local\Programs \PyRx. Use the appload command and navigate to load the files. 
+BRX, ZRX and GRX libraries are installed in AppData\Local\Programs\PyRx. Use the appload command and navigate to load the files. 
+add to you startup suite
