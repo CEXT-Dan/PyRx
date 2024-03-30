@@ -82,7 +82,7 @@ public:
         acutPrintf(_T("Error in getNameOfModuleToLoad: "));
         return L"!ERROR!";
     }
-  
+
     static auto thisModulePath()
     {
         std::wstring buffer(MAX_PATH, 0);
@@ -131,7 +131,7 @@ public:
         std::filesystem::path path = modulePath / ininame;
         std::error_code ec;
         if (std::filesystem::exists(path, ec))
-            return std::tuple(true,path);
+            return std::tuple(true, path);
         const auto [installPathFound, installPath] = getInstallPath();
         if (installPathFound)
         {
@@ -171,29 +171,17 @@ public:
 
     static void setEnvWithIni(const std::filesystem::path& inipath)
     {
-        auto res = 0;
-        {
-            std::wstring pythonInstallPath(MAX_PATH, 0);
-            res = GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYTHONINSTALLEDPATH"), _T(""), pythonInstallPath.data(), pythonInstallPath.size(), inipath.c_str());
-            if (res != 0)
-            {
-                setenvpath(pythonInstallPath);
-            }
-            else
-            {
-                acutPrintf(_T("\nFailed to read setting %ls: "), _T("PYTHONINSTALLEDPATH"));
-            }
-            std::wstring wxPythonPath(MAX_PATH, 0);
-            res = GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("WXPYTHONPATH"), _T(""), wxPythonPath.data(), wxPythonPath.size(), inipath.c_str());
-            if (res != 0)
-            {
-                setenvpath(wxPythonPath);
-            }
-            else
-            {
-                acutPrintf(_T("\nFailed to read setting %ls: "), _T("WXPYTHONPATH"));
-            }
-        }
+        std::wstring pythonInstallPath(MAX_PATH, 0);
+        if (GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYTHONINSTALLEDPATH"), _T(""), pythonInstallPath.data(), pythonInstallPath.size(), inipath.c_str()) != 0)
+            setenvpath(pythonInstallPath);
+        else
+            acutPrintf(_T("\nFailed to read setting %ls: "), _T("PYTHONINSTALLEDPATH"));
+
+        std::wstring wxPythonPath(MAX_PATH, 0);
+        if (GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("WXPYTHONPATH"), _T(""), wxPythonPath.data(), wxPythonPath.size(), inipath.c_str()) != 0)
+            setenvpath(wxPythonPath);
+        else
+            acutPrintf(_T("\nFailed to read setting %ls: "), _T("WXPYTHONPATH"));
     }
 
     static void PyRxLoader_loader(void)
@@ -225,16 +213,10 @@ public:
         }
         std::filesystem::current_path(oldpath);
     }
-
-    static void PyRxLoader_ldoit(void)
-    {
-
-    }
 };
 
 //-----------------------------------------------------------------------------
 #pragma warning( disable: 4838 ) //prevents a cast compiler warning, 
 IMPLEMENT_ARX_ENTRYPOINT(PyRxLoader)
 //ACED_ARXCOMMAND_ENTRY_AUTO(PyRxLoader, PyRxLoader, _loader, loader, ACRX_CMD_TRANSPARENT, NULL)
-//ACED_ARXCOMMAND_ENTRY_AUTO(PyRxLoader, PyRxLoader, _ldoit, ldoit, ACRX_CMD_TRANSPARENT, NULL)
 #pragma warning( pop )
