@@ -170,17 +170,48 @@ public:
         }
     }
 
+    static void validateINIPythonInstallPath(const std::wstring& inipath, const std::wstring& path)
+    {
+        std::error_code ec;
+        if (std::filesystem::is_directory(path, ec) == false)
+        {
+            const auto [pythonPathFound, pythonPath] = tryFindPythonPath();
+            if (pythonPathFound)
+            {
+                WritePrivateProfileString(_T("PYRXSETTINGS"), _T("PYTHONINSTALLEDPATH"), pythonPath.c_str(), inipath.c_str());
+                setenvpath(pythonPath);
+            }
+        }
+        setenvpath(path);
+    }
+
+    static void validateINIwxPythonPath(const std::wstring& inipath, const std::wstring& path)
+    {
+        std::error_code ec;
+        if (std::filesystem::is_directory(path, ec) == false)
+        {
+            const auto [pythonPathFound, pythonPath] = tryFindPythonPath();
+            if (pythonPathFound)
+            {
+                std::filesystem::path wxPythonPath = pythonPath / _T("Lib\\site-packages\\wx");
+                WritePrivateProfileString(_T("PYRXSETTINGS"), _T("WXPYTHONPATH"), wxPythonPath.c_str(), inipath.c_str());
+                setenvpath(wxPythonPath);
+            }
+        }
+        setenvpath(path);
+    }
+
     static void setEnvWithIni(const std::filesystem::path& inipath)
     {
         std::wstring pythonInstallPath(MAX_PATH, 0);
         if (GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYTHONINSTALLEDPATH"), _T(""), pythonInstallPath.data(), pythonInstallPath.size(), inipath.c_str()) != 0)
-            setenvpath(pythonInstallPath);
+            validateINIPythonInstallPath(inipath, pythonInstallPath);
         else
             acutPrintf(_T("\nFailed to read setting %ls: "), _T("PYTHONINSTALLEDPATH"));
 
         std::wstring wxPythonPath(MAX_PATH, 0);
         if (GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("WXPYTHONPATH"), _T(""), wxPythonPath.data(), wxPythonPath.size(), inipath.c_str()) != 0)
-            setenvpath(wxPythonPath);
+            validateINIwxPythonPath(inipath, wxPythonPath);
         else
             acutPrintf(_T("\nFailed to read setting %ls: "), _T("WXPYTHONPATH"));
     }
