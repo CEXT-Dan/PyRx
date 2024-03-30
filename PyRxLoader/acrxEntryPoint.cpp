@@ -151,8 +151,9 @@ public:
         buffer = tolower(buffer);
         std::vector<std::wstring> words;
         splitW(buffer, ';', words);
-        for (const auto& word : words)
+        for (auto& word : words)
         {
+            rtrim(word, '\\');
             if (word.ends_with(_T("python312")))
                 return std::tuple(true, std::filesystem::path{ word });
         }

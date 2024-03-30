@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by ArxBrxTest.rc
+// Used by PyRx.rc
 //
 #define IDS_PROJNAME                    100
 #define MENUITEM_ID_1                   10000
