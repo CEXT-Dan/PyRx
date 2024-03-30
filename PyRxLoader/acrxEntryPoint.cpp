@@ -64,6 +64,28 @@ public:
     //- this module will need to know the install folder; yep
     //- AppData\Local\Programs\PyRx
 
+    static const TCHAR* getNameOfModuleToLoad()
+    {
+#if defined(_ARXTARGET) && _ARXTARGET == 240
+        return L"PyRx24.0.arx";
+#elif defined(_ARXTARGET) && _ARXTARGET == 241
+        return L"PyRx24.1.arx";
+#elif defined(_ARXTARGET) && _ARXTARGET == 242
+        return L"PyRx24.2.arx";
+#elif defined(_ARXTARGET) && _ARXTARGET == 243
+        return L"PyRx24.3.arx";
+#elif defined(_ARXTARGET) && _ARXTARGET == 250
+        return L"PyRx25.0.arx";
+#elif defined(_BRXTARGET) && _BRXTARGET == 240
+        return L"PyRxV24.0.brx";
+#elif defined(_GRXTARGET) && _GRXTARGET == 240
+        return L"PyRxG24.0.grx";
+#elif defined(_ZRXTARGET) && _ZRXTARGET == 240
+        return L"PyRxZ24.0.Zrx";
+#endif
+        acutPrintf(_T("Error in getNameOfModuleToLoad: "));
+        return L"!ERROR!";
+    }
   
     static std::filesystem::path thisModulePath()
     {
@@ -76,14 +98,15 @@ public:
 
     static void setenvpath(const std::wstring& pathToAdd)
     {
+        const std::wstring pathToAddLower = tolower(pathToAdd);
         std::wstring buffer(32767, 0);
         GetEnvironmentVariable(_T("PATH"), buffer.data(), buffer.size());
         buffer.erase(std::find(buffer.begin(), buffer.end(), '\0'), buffer.end());
         buffer = tolower(buffer);
-        if (buffer.find(pathToAdd) != std::string::npos)
+        if (buffer.find(pathToAddLower) == std::string::npos)
         {
             buffer.append(_T(";"));
-            buffer.append(pathToAdd.c_str());
+            buffer.append(pathToAddLower.c_str());
             if (SetEnvironmentVariable(_T("PATH"), buffer.data()) == 0)
             {
                 acutPrintf(_T("\nFailed @ SetEnvironmentVariable %ls: "), _T("pathToAdd"));
@@ -120,11 +143,11 @@ public:
             }
             else
             {
-                acutPrintf(_T("Failed to read setting %ls: "), _T("WXPYTHONPATH"));
+                acutPrintf(_T("\nFailed to read setting %ls: "), _T("WXPYTHONPATH"));
             }
         }
 
-        auto arxpath = modulePath / _T("PyRx25.0.arx");
+        auto arxpath = modulePath / getNameOfModuleToLoad();
         if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
             acrxDynamicLinker->loadModule(foundPath, true);
 

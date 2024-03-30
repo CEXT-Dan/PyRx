@@ -40,14 +40,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IntDir>$(ProjectName)\$(PlatformName)\$(Configuration)/</IntDir>
-    <OutDir>$(SolutionDir)\Bin\PyRx25.0\$(PlatformName)\$(Configuration)/</OutDir>
+    <OutDir>$(SolutionDir)\Bin\PyRx24.0\$(PlatformName)\$(Configuration)/</OutDir>
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.arx</TargetExt>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IntDir>$(ProjectName)\$(PlatformName)\$(Configuration)/</IntDir>
-    <OutDir>$(SolutionDir)\Bin\PyRx25.0\$(PlatformName)\$(Configuration)/</OutDir>
+    <OutDir>$(SolutionDir)\Bin\PyRx24.0\$(PlatformName)\$(Configuration)/</OutDir>
     <TargetExt>.arx</TargetExt>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
