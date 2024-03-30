@@ -13,35 +13,35 @@ SupportedLocales="Enu" FriendlyVersion="1.2.7">
 
 	<Components Description="2021 Parts">
 		<RuntimeRequirements OS="Win64" Platform="AutoCAD*|ADSTPR" SeriesMin="R24.0" SeriesMax="R24.0" />
-		<ComponentEntry AppName="Python wrappers" Version="1.2.7" ModuleName="./Contents/PyRx24.0.arx"
+		<ComponentEntry AppName="Python wrappers" Version="1.2.7" ModuleName="./Contents/RxLoader24.0.arx"
 		AppDescription="Python wrappers" LoadOnAutoCADStartup="True">
 		</ComponentEntry>
 	</Components>
 
 	<Components Description="2022 Parts">
 		<RuntimeRequirements OS="Win64" Platform="AutoCAD*|ADSTPR" SeriesMin="R24.1" SeriesMax="R24.1" />
-		<ComponentEntry AppName="Python wrappers" Version="1.2.7" ModuleName="./Contents/PyRx24.1.arx"
+		<ComponentEntry AppName="Python wrappers" Version="1.2.7" ModuleName="./Contents/RxLoader24.1.arx"
 		AppDescription="Python wrappers" LoadOnAutoCADStartup="True">
 		</ComponentEntry>
 	</Components>
 
 	<Components Description="2023 Parts">
 		<RuntimeRequirements OS="Win64" Platform="AutoCAD*|ADSTPR" SeriesMin="R24.2" SeriesMax="R24.2" />
-		<ComponentEntry AppName="Python wrappers" Version="1.2.7" ModuleName="./Contents/PyRx24.2.arx"
+		<ComponentEntry AppName="Python wrappers" Version="1.2.7" ModuleName="./Contents/RxLoader24.2.arx"
 		AppDescription="Python wrappers" LoadOnAutoCADStartup="True">
 		</ComponentEntry>
 	</Components>
 
 	<Components Description="2024 Parts">
 		<RuntimeRequirements OS="Win64" Platform="AutoCAD*|ADSTPR" SeriesMin="R24.3" SeriesMax="R24.3" />
-		<ComponentEntry AppName="Python wrappers" Version="1.2.7" ModuleName="./Contents/PyRx24.3.arx"
+		<ComponentEntry AppName="Python wrappers" Version="1.2.7" ModuleName="./Contents/RxLoader24.3.arx"
 		AppDescription="Python wrappers" LoadOnAutoCADStartup="True">
 		</ComponentEntry>
 	</Components>
 
 	<Components Description="2025 Parts">
 		<RuntimeRequirements OS="Win64" Platform="AutoCAD*|ADSTPR" SeriesMin="R25.0" SeriesMax="R25.0" />
-		<ComponentEntry AppName="Python wrappers" Version="1.2.7" ModuleName="./Contents/PyRx25.0.arx"
+		<ComponentEntry AppName="Python wrappers" Version="1.2.7" ModuleName="./Contents/RxLoader25.0.arx"
 		AppDescription="Python wrappers" LoadOnAutoCADStartup="True">
 		</ComponentEntry>
 	</Components>
