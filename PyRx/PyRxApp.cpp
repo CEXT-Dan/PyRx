@@ -140,7 +140,7 @@ void PyRxApp::appendINISettings()
         }
         else
         {
-            acutPrintf(_T("\nFailed to read setting %ls: "), _T("PYRXSTUBPATH"));
+            acutPrintf(_T("\nFailed to read setting %ls: \n"), _T("PYRXSTUBPATH"));
         }
     }
 }
