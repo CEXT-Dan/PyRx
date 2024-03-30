@@ -128,21 +128,53 @@ std::filesystem::path PyRxApp::modulePath()
     return path;
 }
 
-void PyRxApp::appendINISettings()
+static auto getInstallPath()
 {
-    auto settingsPath = modulePath() / _T("PyRx.INI");
+    std::wstring buffer(MAX_PATH, 0);
+    GetEnvironmentVariable(_T("localappdata"), buffer.data(), buffer.size());
+    std::filesystem::path path = buffer.c_str();
+    path /= _T("Programs\\PyRx");
+    std::error_code ec;
+    return std::tuple(std::filesystem::is_directory(path, ec), path);
+}
+
+static void validateINIStubPath(const std::wstring& inipath, const std::wstring& stubPath)
+{
+    std::error_code ec;
+    if (std::filesystem::is_directory(stubPath, ec) == false)
     {
-        std::wstring stubPath(MAX_PATH, 0);
-        int res = GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), _T(""), stubPath.data(), stubPath.size(), settingsPath.c_str());
-        if (res != 0)
+        const auto [installPathFound, installPath] = getInstallPath();
         {
-            appendSearchPath(stubPath.c_str());
-        }
-        else
-        {
-            acutPrintf(_T("\nFailed to read setting %ls: \n"), _T("PYRXSTUBPATH"));
+            std::filesystem::path stubPath = installPath / _T("Stubs");
+            WritePrivateProfileString(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), stubPath.c_str(), inipath.c_str());
+            PyRxApp::appendSearchPath(stubPath);
         }
     }
+    PyRxApp::appendSearchPath(stubPath);
+}
+
+void PyRxApp::appendINISettings()
+{
+    constexpr const wchar_t* ininame = _T("PyRx.INI");
+    const auto settingsPath = modulePath() / ininame;
+
+    std::error_code ec;
+    if (std::filesystem::exists(settingsPath, ec) == false)
+    {
+        acutPrintf(_T("\nFailed find %ls: "), ininame);
+        return;
+    }
+
+    std::wstring stubPath(MAX_PATH, 0);
+    if (GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), _T(""), stubPath.data(), stubPath.size(), settingsPath.c_str()))
+    {
+        validateINIStubPath(settingsPath, stubPath);
+    }
+    else
+    {
+        acutPrintf(_T("\nFailed to read setting %ls: \n"), _T("PYRXSTUBPATH"));
+    }
+
 }
 
 PyRxApp& PyRxApp::instance()
@@ -164,7 +196,7 @@ bool PyRxApp::init()
         initPyEdModule();
         initPyPlModule();
 #ifdef BRXAPP
-        initPyBrxCvModule(); 
+        initPyBrxCvModule();
 #endif
         initWxApp();
         appendINISettings();

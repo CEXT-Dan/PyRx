@@ -43,7 +43,7 @@ inline void PerfTimerEx::end()
     auto t_end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = t_end - t_begin;
     acutPrintf(_T("\nName= %ls, total = %lf, ticks %ld, per tick = %lf"),
-        (const TCHAR*)m_funcName, diff.count(), m_ticks, diff.count()/m_ticks);
+        (const TCHAR*)m_funcName, diff.count(), m_ticks, diff.count() / m_ticks);
     reset();
 }
 #endif
