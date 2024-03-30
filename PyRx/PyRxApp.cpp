@@ -131,15 +131,17 @@ std::filesystem::path PyRxApp::modulePath()
 void PyRxApp::appendINISettings()
 {
     auto settingsPath = modulePath() / _T("PyRx.INI");
-    std::wstring stubPath(MAX_PATH, 0);
-    int res = GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), _T(""), stubPath.data(), stubPath.size(), settingsPath.c_str());
-    if (res != 0)
     {
-        appendSearchPath(stubPath.c_str());
-    }
-    else
-    {
-        acutPrintf(_T("Failed to read setting %ls: "), _T("PYRXSTUBPATH"));
+        std::wstring stubPath(MAX_PATH, 0);
+        int res = GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), _T(""), stubPath.data(), stubPath.size(), settingsPath.c_str());
+        if (res != 0)
+        {
+            appendSearchPath(stubPath.c_str());
+        }
+        else
+        {
+            acutPrintf(_T("\nFailed to read setting %ls: "), _T("PYRXSTUBPATH"));
+        }
     }
 }
 
