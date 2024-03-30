@@ -79,8 +79,8 @@ public:
         std::wstring buffer(32767, 0);
         GetEnvironmentVariable(_T("PATH"), buffer.data(), buffer.size());
         buffer.erase(std::find(buffer.begin(), buffer.end(), '\0'), buffer.end());
-        AcString env = buffer.c_str();
-        if (env.findNoCase(pathToAdd.c_str()) == -1)
+        buffer = tolower(buffer);
+        if (buffer.find(pathToAdd) != std::string::npos)
         {
             buffer.append(_T(";"));
             buffer.append(pathToAdd.c_str());
