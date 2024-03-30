@@ -33,6 +33,9 @@
 class PyRxLoader : public AcRxArxApp
 {
 public:
+
+    std::wstring env;
+    
     PyRxLoader() : AcRxArxApp()
     {
     }
@@ -41,12 +44,14 @@ public:
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         PyRxLoader_loader();
+        env = getPathEnvironmentVariable();
         return (retCode);
     }
 
     virtual AcRx::AppRetCode On_kUnloadAppMsg(void* pkt)
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
+        SetEnvironmentVariable(_T("PATH"), env.c_str());
         return (retCode);
     }
 
@@ -103,13 +108,18 @@ public:
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
-    static bool setenvpath(const std::wstring& pathToAdd)
+    static std::wstring getPathEnvironmentVariable()
     {
-        const std::wstring pathToAddLower = tolower(pathToAdd);
         std::wstring buffer(32767, 0);
         GetEnvironmentVariable(_T("PATH"), buffer.data(), buffer.size());
         buffer.erase(std::find(buffer.begin(), buffer.end(), '\0'), buffer.end());
-        buffer = tolower(buffer);
+        return buffer;
+    }
+
+    static bool setenvpath(const std::wstring& pathToAdd)
+    {
+        const std::wstring pathToAddLower = tolower(pathToAdd);
+        std::wstring buffer = tolower(getPathEnvironmentVariable());
         if (buffer.find(pathToAddLower) == std::string::npos)
         {
             buffer.append(_T(";"));
