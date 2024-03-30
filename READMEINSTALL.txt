@@ -1,21 +1,17 @@
 Install python (64 bit) python3.12.X with PATH checkbox set to true.
+see env.png and pyinstall.png in this folder
 
 install wxPython 4.2.1 from https://pypi.org/project/wxPython/
 
-Run the PyRxSetup installer https://github.com/CEXT-Dan/PyRx/releases or https://github.com/CEXT-Dan/PyRx/tags
-This setup writes two values to the registry, adds wxPython to PATH, adds autocomplete stubs path to PYTHONPATH.
-The stub files are for intellisense in Visual studio code
+Run the PyRxSetup installer https://github.com/CEXT-Dan/PyRx/releases
 
-see env.png and pyinstall.png in this folder
-
-Installs a .bundle in %ProgramData\Autodesk\ApplicationPlugins\PyRx.bundle
-./PyRxHelp
-./PyRxStubs
-./PyRxSamples
+The bulk of the stuff is installed into:
+AppData\Local\Programs \PyRx
+And
+Loader files for AutoCAD are in ProgramData\Autodesk\ApplicationPlugins\PyRx.bundle
 
 win32com must be installed if you would like to use the ActiveX libraries
 pip install pywin32
 
 ****BricsCAD, ZwCAD and GstarCAD****
-BRX, ZRX and GRX libraries are installed in same ApplicationPlugins folder as above. Use the appload command and navigate to load the files. 
-The BRX / GRX / ZRX modules may be moved to another location
+BRX, ZRX and GRX libraries are installed in AppData\Local\Programs \PyRx. Use the appload command and navigate to load the files. 
