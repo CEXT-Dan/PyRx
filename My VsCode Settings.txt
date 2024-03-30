@@ -1,0 +1,45 @@
+{
+    "[python]": {
+        "editor.formatOnType": true,
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "extensions.confirmedUriHandlerExtensionIds": [
+        "Autodesk.autolispext"
+    ],
+    "git.openRepositoryInParentFolders": "never",
+    "workbench.colorTheme": "Visual Studio Dark",
+    "terminal.integrated.tabStopWidth": 4,
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.wordWrapColumn": 119,
+    "editor.wordWrap": "wordWrapColumn",
+    "autolispext.format.MaxLineChars": 120,
+    "launch": {
+        "configurations": [
+            {
+                "name": "Remote Attach",
+                "type": "debugpy",
+                "request": "attach",
+                "connect": { "host": "127.0.0.1", "port": 5678 },
+                "justMyCode": false
+            }
+        ],
+        "compounds": []
+    },
+    "editor.fontSize": 12,
+    "debug.allowBreakpointsEverywhere": true,
+    "window.zoomLevel": 1,
+    "cmake.showOptionsMovedNotification": false,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.completeFunctionParens": false,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "editor.fontFamily": "Cascadia Code Light",
+    "editor.fontLigatures": true,
+    "editor.fontVariations": false,
+
+    "_comment": "set to your stub file path",
+    "python.analysis.extraPaths": ["M:/Dev/Projects/PyRxGit/PyRxStubs"],
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "M:/Dev/Projects/PyRxGit/PyRxStubs;${env:PYTHONPATH}"
+    }
+    
+}
