@@ -30,6 +30,13 @@
 
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
+
+constexpr const wchar_t* PYRXSETTINGS = _T("PYRXSETTINGS");
+constexpr const wchar_t* WXPYTHONPATH = _T("WXPYTHONPATH");
+constexpr const wchar_t* PYTHONINSTALLEDPATH = _T("PYTHONINSTALLEDPATH");
+constexpr const wchar_t* WXPATH = _T("Lib\\site-packages\\wx");
+constexpr const wchar_t* PATHENVVER = _T("PATH");
+
 class PyRxLoader : public AcRxArxApp
 {
 public:
@@ -101,33 +108,31 @@ public:
     static auto getInstallPath()
     {
         constexpr const wchar_t* envVar = _T("localappdata");
-        constexpr const wchar_t* appendVar = _T("Programs\\PyRx");
+        constexpr const wchar_t* childpath = _T("Programs\\PyRx");
         std::wstring buffer(MAX_PATH, 0);
         GetEnvironmentVariable(envVar, buffer.data(), buffer.size());
         std::filesystem::path path = buffer.c_str();
-        path /= appendVar;
+        path /= childpath;
         std::error_code ec;
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
     static std::wstring getPathEnvironmentVariable()
     {
-        constexpr const wchar_t* envVar = _T("PATH");
-        std::wstring buffer(GetEnvironmentVariable(envVar, nullptr, 0), 0);
-        GetEnvironmentVariable(envVar, buffer.data(), buffer.size());
+        std::wstring buffer(GetEnvironmentVariable(PATHENVVER, nullptr, 0), 0);
+        GetEnvironmentVariable(PATHENVVER, buffer.data(), buffer.size());
         return buffer;
     }
 
     static bool setenvpath(const std::wstring& pathToAdd)
     {
-        constexpr const wchar_t* envVar = _T("PATH");
         const std::wstring pathToAddLower = tolower(pathToAdd);
         std::wstring buffer = tolower(getPathEnvironmentVariable());
         if (buffer.find(pathToAddLower) == std::string::npos)
         {
             buffer.append(_T(";"));
             buffer.append(pathToAddLower.c_str());
-            if (SetEnvironmentVariable(envVar, buffer.data()) == 0)
+            if (SetEnvironmentVariable(PATHENVVER, buffer.data()) == 0)
             {
                 acutPrintf(_T("\nFailed @ SetEnvironmentVariable %ls: "), _T("pathToAdd"));
                 return false;
@@ -158,13 +163,16 @@ public:
 
     static auto tryFindPythonPath()
     {
+        constexpr const wchar_t delim = ';';
+        constexpr const wchar_t pathsep = '\\';
+        constexpr const wchar_t* python = _T("python312");
         std::wstring buffer = tolower(getPathEnvironmentVariable());
         std::vector<std::wstring> words;
-        splitW(buffer, ';', words);
+        splitW(buffer, delim, words);
         for (auto& word : words)
         {
-            rtrim(word, '\\');
-            if (word.ends_with(_T("python312")))
+            rtrim(word, pathsep);
+            if (word.ends_with(python))
                 return std::tuple(true, std::filesystem::path{ word });
         }
         return std::tuple(false, std::filesystem::path{});
@@ -176,7 +184,7 @@ public:
         if (pythonPathFound)
         {
             setenvpath(pythonPath);
-            setenvpath(pythonPath / _T("Lib\\site-packages\\wx"));
+            setenvpath(pythonPath / WXPATH);
         }
     }
 
@@ -188,7 +196,7 @@ public:
             const auto [pythonPathFound, pythonPath] = tryFindPythonPath();
             if (pythonPathFound)
             {
-                WritePrivateProfileString(_T("PYRXSETTINGS"), _T("PYTHONINSTALLEDPATH"), pythonPath.c_str(), inipath.c_str());
+                WritePrivateProfileString(PYRXSETTINGS, PYTHONINSTALLEDPATH, pythonPath.c_str(), inipath.c_str());
                 setenvpath(pythonPath);
             }
         }
@@ -203,8 +211,8 @@ public:
             const auto [pythonPathFound, pythonPath] = tryFindPythonPath();
             if (pythonPathFound)
             {
-                std::filesystem::path wxPythonPath = pythonPath / _T("Lib\\site-packages\\wx");
-                WritePrivateProfileString(_T("PYRXSETTINGS"), _T("WXPYTHONPATH"), wxPythonPath.c_str(), inipath.c_str());
+                std::filesystem::path wxPythonPath = pythonPath / WXPATH;
+                WritePrivateProfileString(PYRXSETTINGS, WXPYTHONPATH, wxPythonPath.c_str(), inipath.c_str());
                 setenvpath(wxPythonPath);
             }
         }
@@ -214,16 +222,16 @@ public:
     static void setEnvWithIni(const std::filesystem::path& inipath)
     {
         std::wstring pythonInstallPath(MAX_PATH, 0);
-        if (GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYTHONINSTALLEDPATH"), _T(""), pythonInstallPath.data(), pythonInstallPath.size(), inipath.c_str()) != 0)
+        if (GetPrivateProfileStringW(PYRXSETTINGS, PYTHONINSTALLEDPATH, _T(""), pythonInstallPath.data(), pythonInstallPath.size(), inipath.c_str()) != 0)
             validateINIPythonInstallPath(inipath, pythonInstallPath);
         else
-            acutPrintf(_T("\nFailed to read setting %ls: "), _T("PYTHONINSTALLEDPATH"));
+            acutPrintf(_T("\nFailed to read setting %ls: "), PYTHONINSTALLEDPATH);
 
         std::wstring wxPythonPath(MAX_PATH, 0);
-        if (GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("WXPYTHONPATH"), _T(""), wxPythonPath.data(), wxPythonPath.size(), inipath.c_str()) != 0)
+        if (GetPrivateProfileStringW(PYRXSETTINGS, WXPYTHONPATH, _T(""), wxPythonPath.data(), wxPythonPath.size(), inipath.c_str()) != 0)
             validateINIwxPythonPath(inipath, wxPythonPath);
         else
-            acutPrintf(_T("\nFailed to read setting %ls: "), _T("WXPYTHONPATH"));
+            acutPrintf(_T("\nFailed to read setting %ls: "), WXPYTHONPATH);
     }
 
     static void PyRxLoader_loader(void)
