@@ -174,7 +174,6 @@ void PyRxApp::appendINISettings()
     {
         acutPrintf(_T("\nFailed to read setting %ls: \n"), _T("PYRXSTUBPATH"));
     }
-
 }
 
 PyRxApp& PyRxApp::instance()
