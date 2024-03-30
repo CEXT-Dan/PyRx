@@ -60,10 +60,6 @@ public:
     {
     }
 
-    //- the .ini file will go in the package folder; yes or we will have many copies
-    //- this module will need to know the install folder; yep
-    //- AppData\Local\Programs\PyRx
-
     static const TCHAR* getNameOfModuleToLoad()
     {
 #if defined(_ARXTARGET) && _ARXTARGET == 240
@@ -87,16 +83,27 @@ public:
         return L"!ERROR!";
     }
   
-    static std::filesystem::path thisModulePath()
+    static auto thisModulePath()
     {
         std::wstring buffer(MAX_PATH, 0);
         GetModuleFileName(_hdllInstance, buffer.data(), buffer.size());
-        std::filesystem::path path{ std::move(buffer) };
+        std::filesystem::path path = buffer.c_str();
         path.remove_filename();
-        return path;
+        std::error_code ec;
+        return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
-    static void setenvpath(const std::wstring& pathToAdd)
+    static auto getInstallPath()
+    {
+        std::wstring buffer(MAX_PATH, 0);
+        GetEnvironmentVariable(_T("localappdata"), buffer.data(), buffer.size());
+        std::filesystem::path path = buffer.c_str();
+        path /= _T("Programs\\PyRx");
+        std::error_code ec;
+        return std::tuple(std::filesystem::is_directory(path, ec), path);
+    }
+
+    static bool setenvpath(const std::wstring& pathToAdd)
     {
         const std::wstring pathToAddLower = tolower(pathToAdd);
         std::wstring buffer(32767, 0);
@@ -110,33 +117,74 @@ public:
             if (SetEnvironmentVariable(_T("PATH"), buffer.data()) == 0)
             {
                 acutPrintf(_T("\nFailed @ SetEnvironmentVariable %ls: "), _T("pathToAdd"));
+                return false;
             }
+        }
+        return true;
+    }
+
+    static auto getIniPath()
+    {
+        constexpr const wchar_t* ininame = _T("PyRx.INI");
+        constexpr const wchar_t* ininamebin = _T("Bin\\PyRx.INI");
+        const auto [modulePathPound, modulePath] = thisModulePath();
+        std::filesystem::path path = modulePath / ininame;
+        std::error_code ec;
+        if (std::filesystem::exists(path, ec))
+            return std::tuple(true,path);
+        const auto [installPathFound, installPath] = getInstallPath();
+        if (installPathFound)
+        {
+            path = installPath / ininamebin;
+            if (std::filesystem::exists(path, ec))
+                return std::tuple(true, path);
+        }
+        acutPrintf(_T("\nCan't find PyRx.INI: "));
+        return std::tuple(false, std::filesystem::path{});
+    }
+
+    static auto tryFindPythonPath()
+    {
+        std::wstring buffer(32767, 0);
+        GetEnvironmentVariable(_T("PATH"), buffer.data(), buffer.size());
+        buffer.erase(std::find(buffer.begin(), buffer.end(), '\0'), buffer.end());
+        buffer = tolower(buffer);
+        std::vector<std::wstring> words;
+        splitW(buffer, ';', words);
+        for (const auto& word : words)
+        {
+            if (word.ends_with(_T("python312")))
+                return std::tuple(true, std::filesystem::path{ word });
+        }
+        return std::tuple(false, std::filesystem::path{});
+    }
+
+    static void setEnvWithNoIni()
+    {
+        const auto [pythonPathFound, pythonPath] = tryFindPythonPath();
+        if (pythonPathFound)
+        {
+            setenvpath(pythonPath);
+            setenvpath(pythonPath / _T("Lib\\site-packages\\wx"));
         }
     }
 
-    static void PyRxLoader_loader(void)
+    static void setEnvWithIni(const std::filesystem::path& inipath)
     {
-        auto modulePath = thisModulePath();
-        auto oldpath = std::filesystem::current_path();
-        std::filesystem::current_path(modulePath);
-        auto settingsPath = modulePath / _T("PyRx.INI");
-
         auto res = 0;
         {
-            std::wstring installpath(MAX_PATH, 0);
-            res = GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYTHONINSTALLEDPATH"), _T(""), installpath.data(), installpath.size(), settingsPath.c_str());
+            std::wstring pythonInstallPath(MAX_PATH, 0);
+            res = GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYTHONINSTALLEDPATH"), _T(""), pythonInstallPath.data(), pythonInstallPath.size(), inipath.c_str());
             if (res != 0)
             {
-                setenvpath(installpath);
+                setenvpath(pythonInstallPath);
             }
             else
             {
                 acutPrintf(_T("\nFailed to read setting %ls: "), _T("PYTHONINSTALLEDPATH"));
             }
-        }
-        {
             std::wstring wxPythonPath(MAX_PATH, 0);
-            res = GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("WXPYTHONPATH"), _T(""), wxPythonPath.data(), wxPythonPath.size(), settingsPath.c_str());
+            res = GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("WXPYTHONPATH"), _T(""), wxPythonPath.data(), wxPythonPath.size(), inipath.c_str());
             if (res != 0)
             {
                 setenvpath(wxPythonPath);
@@ -146,18 +194,47 @@ public:
                 acutPrintf(_T("\nFailed to read setting %ls: "), _T("WXPYTHONPATH"));
             }
         }
+    }
 
-        auto arxpath = modulePath / getNameOfModuleToLoad();
-        if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
-            acrxDynamicLinker->loadModule(foundPath, true);
-
+    static void PyRxLoader_loader(void)
+    {
+        const auto oldpath = std::filesystem::current_path();
+        const auto [modulePathPound, modulePath] = thisModulePath();
+        const auto [installPathFound, installPath] = getInstallPath();
+        const auto [iniPathFound, inipath] = getIniPath();
+        std::filesystem::current_path(modulePath);
+        if (iniPathFound == false)
+        {
+            setEnvWithNoIni();
+        }
+        else
+        {
+            setEnvWithIni(inipath);
+        }
+        if (installPathFound)
+        {
+            auto arxpath = installPath / _T("Bin") / getNameOfModuleToLoad();
+            if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
+                acrxDynamicLinker->loadModule(foundPath, true);
+        }
+        else
+        {
+            auto arxpath = modulePath / getNameOfModuleToLoad();
+            if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
+                acrxDynamicLinker->loadModule(foundPath, true);
+        }
         std::filesystem::current_path(oldpath);
     }
 
+    static void PyRxLoader_ldoit(void)
+    {
+
+    }
 };
 
 //-----------------------------------------------------------------------------
 #pragma warning( disable: 4838 ) //prevents a cast compiler warning, 
 IMPLEMENT_ARX_ENTRYPOINT(PyRxLoader)
-ACED_ARXCOMMAND_ENTRY_AUTO(PyRxLoader, PyRxLoader, _loader, loader, ACRX_CMD_TRANSPARENT, NULL)
+//ACED_ARXCOMMAND_ENTRY_AUTO(PyRxLoader, PyRxLoader, _loader, loader, ACRX_CMD_TRANSPARENT, NULL)
+//ACED_ARXCOMMAND_ENTRY_AUTO(PyRxLoader, PyRxLoader, _ldoit, ldoit, ACRX_CMD_TRANSPARENT, NULL)
 #pragma warning( pop )

@@ -123,7 +123,7 @@ std::filesystem::path PyRxApp::modulePath()
 {
     std::wstring buffer(MAX_PATH, 0);
     GetModuleFileName(_hdllInstance, buffer.data(), buffer.size());
-    std::filesystem::path path{ std::move(buffer) };
+    std::filesystem::path path = buffer.c_str();
     path.remove_filename();
     return path;
 }
