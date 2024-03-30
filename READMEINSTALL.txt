@@ -14,4 +14,5 @@ win32com must be installed if you would like to use the ActiveX libraries
 pip install pywin32
 
 ****BricsCAD, ZwCAD and GstarCAD****
-BRX, ZRX and GRX libraries are installed in AppData\Local\Programs \PyRx. Use the appload command and navigate to load the files. 
+BRX, ZRX and GRX libraries are installed in AppData\Local\Programs\PyRx. Use the appload command and navigate to load the files. 
+add to you startup suite
