@@ -999,12 +999,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_58DCC0B6EA144279BEB263BE525326AE"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_5A6D42152638FDDE2CC05B5FE92A2368"
         "OwnerKey" = "8:_30670A9882814371AE117F11CA97C30E"
         "MsmSig" = "8:_UNDEFINED"
@@ -1621,36 +1615,6 @@
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_594D9ED7B6A548CEBC46C9AA9FCB0AF4"
-            {
-            "Name" = "8:RxInstall.dll"
-            "Condition" = "8:"
-            "Object" = "8:_58DCC0B6EA144279BEB263BE525326AE"
-            "FileType" = "3:1"
-            "InstallAction" = "3:4"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:RxUninstall"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_4141C239_245F_4A4E_B92A_3345EC046A02"
-            "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:[CommonAppDataFolder]Autodesk\\ApplicationPlugins\\[ProductName].bundle\\Contents"
-            "Run64Bit" = "11:TRUE"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_96937141FC23444BB0141E59D311F975"
-            {
-            "Name" = "8:RxInstall.dll"
-            "Condition" = "8:"
-            "Object" = "8:_58DCC0B6EA144279BEB263BE525326AE"
-            "FileType" = "3:1"
-            "InstallAction" = "3:1"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:RxInstall"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_3ECFDC09_03A8_4DD6_BDAF_AFEA00EDBAAC"
-            "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:[CommonAppDataFolder]Autodesk\\ApplicationPlugins\\[ProductName].bundle\\Contents"
-            "Run64Bit" = "11:TRUE"
-            }
         }
         "DefaultFeature"
         {
@@ -1984,26 +1948,6 @@
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_58DCC0B6EA144279BEB263BE525326AE"
-            {
-            "SourcePath" = "8:..\\Bin\\RxInstall\\x64\\Release\\RxInstall.dll"
-            "TargetName" = "8:RxInstall.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5A6D42152638FDDE2CC05B5FE92A2368"
@@ -2698,7 +2642,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PyRx"
         "ProductCode" = "8:{51386679-D611-4231-A17E-B959075AD6CA}"
-        "PackageCode" = "8:{CE95B7BA-9162-4A55-9ACF-E58DB2265424}"
+        "PackageCode" = "8:{CB8D436D-FD40-4B88-A627-FD39C17B98B2}"
         "UpgradeCode" = "8:{7DE3E792-70E4-4E32-BBC9-3AB04F5B000E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
