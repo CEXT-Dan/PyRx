@@ -34,7 +34,7 @@ class PyRxLoader : public AcRxArxApp
 {
 public:
 
-    std::wstring env;
+    std::wstring envToRestoreFrom;
     
     PyRxLoader() : AcRxArxApp()
     {
@@ -44,14 +44,14 @@ public:
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         PyRxLoader_loader();
-        env = getPathEnvironmentVariable();
+        envToRestoreFrom = getPathEnvironmentVariable();
         return (retCode);
     }
 
     virtual AcRx::AppRetCode On_kUnloadAppMsg(void* pkt)
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
-        SetEnvironmentVariable(_T("PATH"), env.c_str());
+        SetEnvironmentVariable(_T("PATH"), envToRestoreFrom.c_str());
         return (retCode);
     }
 
@@ -155,10 +155,7 @@ public:
 
     static auto tryFindPythonPath()
     {
-        std::wstring buffer(32767, 0);
-        GetEnvironmentVariable(_T("PATH"), buffer.data(), buffer.size());
-        buffer.erase(std::find(buffer.begin(), buffer.end(), '\0'), buffer.end());
-        buffer = tolower(buffer);
+        std::wstring buffer = tolower(getPathEnvironmentVariable());
         std::vector<std::wstring> words;
         splitW(buffer, ';', words);
         for (auto& word : words)
