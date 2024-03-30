@@ -231,19 +231,15 @@ public:
         {
             setEnvWithIni(inipath);
         }
-
-        acutPrintf(modulePath.c_str());
-        acutPrintf(installPath.c_str());
-
-        if (installPathFound)
+        std::error_code ec;
+        if (auto arxpath = installPath / _T("Bin") / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
         {
-            auto arxpath = installPath / _T("Bin") / getNameOfModuleToLoad();
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
                 acrxDynamicLinker->loadModule(foundPath, true);
         }
         else
         {
-            auto arxpath = modulePath / getNameOfModuleToLoad();
+            arxpath = modulePath / getNameOfModuleToLoad();
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
                 acrxDynamicLinker->loadModule(foundPath, true);
         }
