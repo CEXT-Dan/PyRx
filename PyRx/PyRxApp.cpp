@@ -145,9 +145,9 @@ static void validateINIStubPath(const std::wstring& inipath, const std::wstring&
     {
         const auto [installPathFound, installPath] = getInstallPath();
         {
-            std::filesystem::path stubPath = installPath / _T("Stubs");
-            WritePrivateProfileString(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), stubPath.c_str(), inipath.c_str());
-            PyRxApp::appendSearchPath(stubPath);
+            std::filesystem::path newstubPath = installPath / _T("Stubs");
+            WritePrivateProfileString(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), newstubPath.c_str(), inipath.c_str());
+            PyRxApp::appendSearchPath(newstubPath);
         }
     }
     PyRxApp::appendSearchPath(stubPath);
@@ -168,7 +168,7 @@ void PyRxApp::appendINISettings()
     std::wstring stubPath(MAX_PATH, 0);
     if (GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), _T(""), stubPath.data(), stubPath.size(), settingsPath.c_str()))
     {
-        validateINIStubPath(settingsPath, stubPath);
+        validateINIStubPath(settingsPath, stubPath.c_str());
     }
     else
     {

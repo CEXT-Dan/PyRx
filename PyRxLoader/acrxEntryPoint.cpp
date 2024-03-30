@@ -231,6 +231,10 @@ public:
         {
             setEnvWithIni(inipath);
         }
+
+        acutPrintf(modulePath.c_str());
+        acutPrintf(installPath.c_str());
+
         if (installPathFound)
         {
             auto arxpath = installPath / _T("Bin") / getNameOfModuleToLoad();
