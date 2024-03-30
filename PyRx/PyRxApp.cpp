@@ -92,7 +92,6 @@ bool WxRxApp::Init_wxPython()
     return true;
 }
 
-
 //------------------------------------------------------------------------------------------------
 // helper function to initWxApp
 
@@ -129,6 +128,21 @@ std::filesystem::path PyRxApp::modulePath()
     return path;
 }
 
+void PyRxApp::appendINISettings()
+{
+    auto settingsPath = modulePath() / _T("PyRx.INI");
+    std::wstring stubPath(MAX_PATH, 0);
+    int res = GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), _T(""), stubPath.data(), stubPath.size(), settingsPath.c_str());
+    if (res != 0)
+    {
+        appendSearchPath(stubPath.c_str());
+    }
+    else
+    {
+        acutPrintf(_T("Failed to read setting %ls: "), _T("PYRXSTUBPATH"));
+    }
+}
+
 PyRxApp& PyRxApp::instance()
 {
     static PyRxApp mthis;
@@ -151,6 +165,8 @@ bool PyRxApp::init()
         initPyBrxCvModule(); 
 #endif
         initWxApp();
+        appendINISettings();
+
 
         if (Py_IsInitialized() && setPyConfig())
         {
