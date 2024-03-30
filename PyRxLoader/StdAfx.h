@@ -108,7 +108,16 @@
 #include "arxHeaders.h"
 #pragma warning (pop)
 
+#if defined(_ARXTARGET)
 #pragma comment( lib , "AcPal.lib" )
+#endif
+
+#if defined(_GRXTARGET)
+#pragma comment( lib , "gcad.lib" )
+#pragma comment( lib , "gcbase.lib" )
+#pragma comment( lib , "gccore.lib" )
+#pragma comment( lib , "gcdb.lib" )
+#endif
 
 //-----------------------------------------------------------------------------
 #include "DocData.h" //- Your document specific data class holder
