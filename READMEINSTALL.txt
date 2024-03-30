@@ -6,7 +6,7 @@ install wxPython 4.2.1 from https://pypi.org/project/wxPython/
 Run the PyRxSetup installer https://github.com/CEXT-Dan/PyRx/releases
 
 The bulk of the stuff is installed into:
-AppData\Local\Programs \PyRx
+AppData\Local\Programs\PyRx
 And
 Loader files for AutoCAD are in ProgramData\Autodesk\ApplicationPlugins\PyRx.bundle
 
