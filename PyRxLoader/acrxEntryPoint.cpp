@@ -28,20 +28,20 @@
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
+constexpr const wchar_t* PATHENV = _T("PATH");
+constexpr const wchar_t* PYTHONNAME = _T("python312");
 constexpr const wchar_t* PYRXSETTINGS = _T("PYRXSETTINGS");
 constexpr const wchar_t* WXPYTHONPATH = _T("WXPYTHONPATH");
 constexpr const wchar_t* PYTHONINSTALLEDPATH = _T("PYTHONINSTALLEDPATH");
 constexpr const wchar_t* WXPYTHONPATHLIB = _T("Lib\\site-packages\\wx");
 
-
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class PyRxLoader : public AcRxArxApp
 {
-public:
-
     std::wstring envToRestoreFrom;
-    
+
+public:
     PyRxLoader() : AcRxArxApp()
     {
     }
@@ -57,7 +57,7 @@ public:
     virtual AcRx::AppRetCode On_kUnloadAppMsg(void* pkt)
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
-        SetEnvironmentVariable(_T("PATH"), envToRestoreFrom.c_str());
+        SetEnvironmentVariable(PATHENV, envToRestoreFrom.c_str());
         return (retCode);
     }
 
@@ -117,7 +117,7 @@ public:
     static std::wstring getPathEnvironmentVariable()
     {
         std::wstring buffer(32767, 0);
-        GetEnvironmentVariable(_T("PATH"), buffer.data(), buffer.size());
+        GetEnvironmentVariable(PATHENV, buffer.data(), buffer.size());
         buffer.erase(std::find(buffer.begin(), buffer.end(), '\0'), buffer.end());
         return buffer;
     }
@@ -167,7 +167,7 @@ public:
         for (auto& word : words)
         {
             rtrim(word, '\\');
-            if (word.ends_with(_T("python312")))
+            if (word.ends_with(PYTHONNAME))
                 return std::tuple(true, std::filesystem::path{ word });
         }
         return std::tuple(false, std::filesystem::path{});
@@ -231,20 +231,18 @@ public:
 
     static void PyRxLoader_loader(void)
     {
-        const auto oldpath = std::filesystem::current_path();
+        std::error_code ec;
+        const auto oldpath = std::filesystem::current_path(ec);
         const auto [modulePathPound, modulePath] = thisModulePath();
         const auto [installPathFound, installPath] = getInstallPath();
         const auto [iniPathFound, inipath] = getIniPath();
-        std::filesystem::current_path(modulePath);
-        if (iniPathFound == false)
+        std::filesystem::current_path(modulePath, ec);
         {
-            setEnvWithNoIni();
+            if (iniPathFound == false)
+                setEnvWithNoIni();
+            else
+                setEnvWithIni(inipath);
         }
-        else
-        {
-            setEnvWithIni(inipath);
-        }
-        std::error_code ec;
         if (auto arxpath = installPath / _T("Bin") / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
         {
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
@@ -256,7 +254,7 @@ public:
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
                 acrxDynamicLinker->loadModule(foundPath, true);
         }
-        std::filesystem::current_path(oldpath);
+        std::filesystem::current_path(oldpath, ec);
     }
 };
 

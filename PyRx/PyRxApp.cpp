@@ -83,7 +83,7 @@ bool WxRxApp::Init_wxPython()
         auto status = Py_PreInitialize(&preConfig);
         if (PyStatus_Exception(status)) 
         {
-           acutPrintf(_T("\nPreInitialize failed: "));
+           acutPrintf(_T("\nPreInitialize failed  %ls: "), __FUNCTIONW__);
            return false;
         }
     }
@@ -97,7 +97,7 @@ bool WxRxApp::Init_wxPython()
 
         if (PyStatus_Exception(status)) 
         {
-            acutPrintf(_T("\nInitializeFromConfig failed: "));
+            acutPrintf(_T("\nInitializeFromConfig failed %ls: "),__FUNCTIONW__);
             Py_InitializeEx(0);
         }
     }
