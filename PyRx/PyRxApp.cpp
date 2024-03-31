@@ -11,9 +11,9 @@
 #include "PyBrxCv.h"
 #include "PyRxModule.h"
 
-
 #include "wx/setup.h"
 #include "wx/wx.h"
+
 WXDLLIMPEXP_BASE void wxSetInstance(HINSTANCE hInst);
 
 //------------------------------------------------------------------------------------------------
@@ -120,7 +120,7 @@ bool WxRxApp::Init_wxPython()
 //------------------------------------------------------------------------------------------------
 // helper function to initWxApp
 
-//TODO: Find out why BricsCAD is wonkey, with AfxGetInstanceHandle
+//TODO: Find out why BricsCAD is wonky, with AfxGetInstanceHandle
 bool initWxApp()
 {
     wxApp::SetInstance(&WxRxApp::instance());
