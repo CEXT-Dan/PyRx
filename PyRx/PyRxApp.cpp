@@ -205,7 +205,7 @@ void PyRxApp::appendINISettings()
 void PyRxApp::load_pyrx_onload()
 {
     const auto pyrx_onloadPath = modulePath() / _T("pyrx_onload.py");
-    if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, pyrx_onloadPath.c_str()) == eOk)
+    if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, pyrx_onloadPath.c_str()) == eOk && foundPath.length() != 0)
     {
         PyAutoLockGIL lock;
         ads_loadPythonModule(pyrx_onloadPath);

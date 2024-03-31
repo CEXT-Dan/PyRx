@@ -61,6 +61,11 @@ class Application(object):
     ...
 
     @staticmethod
+    def loadPythonModule (fullpath: str)-> bool :
+      '''                             '''
+    ...
+
+    @staticmethod
     def mainWnd ()-> int :
       '''                             '''
     ...
