@@ -100,34 +100,31 @@ public:
 
     static auto getInstallPath()
     {
-        constexpr const wchar_t* envVar = _T("localappdata");
-        constexpr const wchar_t* appendVar = _T("Programs\\PyRx");
         std::wstring buffer(MAX_PATH, 0);
-        GetEnvironmentVariable(envVar, buffer.data(), buffer.size());
+        GetEnvironmentVariable(_T("localappdata"), buffer.data(), buffer.size());
         std::filesystem::path path = buffer.c_str();
-        path /= appendVar;
+        path /= _T("Programs\\PyRx");
         std::error_code ec;
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
     static std::wstring getPathEnvironmentVariable()
     {
-        constexpr const wchar_t* envVar = _T("PATH");
-        std::wstring buffer(GetEnvironmentVariable(envVar, nullptr, 0), 0);
-        GetEnvironmentVariable(envVar, buffer.data(), buffer.size());
+        std::wstring buffer(32767, 0);
+        GetEnvironmentVariable(_T("PATH"), buffer.data(), buffer.size());
+        buffer.erase(std::find(buffer.begin(), buffer.end(), '\0'), buffer.end());
         return buffer;
     }
 
     static bool setenvpath(const std::wstring& pathToAdd)
     {
-        constexpr const wchar_t* envVar = _T("PATH");
         const std::wstring pathToAddLower = tolower(pathToAdd);
         std::wstring buffer = tolower(getPathEnvironmentVariable());
         if (buffer.find(pathToAddLower) == std::string::npos)
         {
             buffer.append(_T(";"));
             buffer.append(pathToAddLower.c_str());
-            if (SetEnvironmentVariable(envVar, buffer.data()) == 0)
+            if (SetEnvironmentVariable(_T("PATH"), buffer.data()) == 0)
             {
                 acutPrintf(_T("\nFailed @ SetEnvironmentVariable %ls: "), _T("pathToAdd"));
                 return false;
