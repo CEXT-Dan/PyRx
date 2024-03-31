@@ -1,4 +1,3 @@
-import PyRxApp  # = all the global methods like acutPrintf,
 from pyrx_imp import Rx
 from pyrx_imp import Ge
 from pyrx_imp import Gi
@@ -51,4 +50,4 @@ def PyRxCmd_pydoit():
             curve.erase()
 
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
