@@ -214,10 +214,18 @@ bool reloadPythonModule(const PyModulePath& path, bool silent)
 
 bool ads_loadPythonModule(const std::filesystem::path& pypath)
 {
-    PyModulePath modulePath;
-    std::filesystem::path _path = pypath;
-    modulePath.fullPath = pypath;
-    modulePath.moduleName = moduleNameFromPath(_path);
-    modulePath.modulePath = _path.remove_filename();
-    return loadPythonModule(modulePath, true);
+    try
+    {
+        PyModulePath modulePath;
+        std::filesystem::path _path = pypath;
+        modulePath.fullPath = pypath;
+        modulePath.moduleName = moduleNameFromPath(_path);
+        modulePath.modulePath = _path.remove_filename();
+        return loadPythonModule(modulePath, true);
+    }
+    catch (...)
+    {
+        acutPrintf(_T("\nException in %ls: \n"), __FUNCTIONW__);
+    }
+    return false;
 }

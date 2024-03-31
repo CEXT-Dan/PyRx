@@ -219,6 +219,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_219F85E441AF42D6A86000A9CB61033A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2276A7C28FB64ACC9B6623A6EFE05D2B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -658,30 +664,6 @@
         "Entry"
         {
         "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_FF6AD2FEE6A3481395D38D0B26425D32"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_F80AA2A9BFE042E49AFACBD5ABD19774"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_F0762DA2EB93401ABCF4EAED157BD1FF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_CEB2CCE358814411AECEC4A41C62651C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
         "OwnerKey" = "8:_C477AE423CF94A06AE9703DC61025681"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -706,49 +688,7 @@
         "Entry"
         {
         "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_9032A0DF83F64EFD827C80C4B9CD79C4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_883E7BC3407A46C2838034D3C9B92C0F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_7146CD4324354DA282D793FA5CB1A614"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_7117C90B702B44EDA0FAD356DC95FFEA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_6D0494D9D4E54096A6ACFBD935FCCC63"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_605CFD7AB76C4B66B82ECDA33562C6C2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
         "OwnerKey" = "8:_385B03B2DEDE4D2C9ACFD82978F72385"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_3553517E3AEE4015B2D90C92B7893CB1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -760,19 +700,7 @@
         "Entry"
         {
         "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_30E02C79E203458293B6EA8D1FD1C630"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
         "OwnerKey" = "8:_30670A9882814371AE117F11CA97C30E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_1D07E9B02EF74C359FA45D9119085C68"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1730,6 +1658,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_219F85E441AF42D6A86000A9CB61033A"
+            {
+            "SourcePath" = "8:Include\\pyrx_onload.py"
+            "TargetName" = "8:pyrx_onload.py"
+            "Tag" = "8:"
+            "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2276A7C28FB64ACC9B6623A6EFE05D2B"
             {
             "SourcePath" = "8:Include\\PyRx.INI"
@@ -2642,7 +2590,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PyRx"
         "ProductCode" = "8:{51386679-D611-4231-A17E-B959075AD6CA}"
-        "PackageCode" = "8:{86E7A3E7-26D0-4309-AC8F-0888A57BEBE4}"
+        "PackageCode" = "8:{CBDFE25D-D867-4237-B0E1-3FE7A0ADAE2D}"
         "UpgradeCode" = "8:{7DE3E792-70E4-4E32-BBC9-3AB04F5B000E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
