@@ -74,13 +74,18 @@ void WxRxApp::ExitMainLoop()
 
 bool WxRxApp::Init_wxPython()
 {
-    constexpr const TCHAR* msg = _T("\n*****Error importing the wxPython API!*****");
+    constexpr const TCHAR* msg = _T("\n*****Error importing the wxPython API!*****: ");
     {
         PyPreConfig preConfig;
         PyPreConfig_InitPythonConfig(&preConfig);
 
         //TODO
-        Py_PreInitialize(&preConfig);
+        auto status = Py_PreInitialize(&preConfig);
+        if (PyStatus_Exception(status)) 
+        {
+           acutPrintf(_T("\nPreInitialize failed: "));
+           return false;
+        }
     }
     {
         PyConfig config;
@@ -90,8 +95,10 @@ bool WxRxApp::Init_wxPython()
         auto status = Py_InitializeFromConfig(&config);
         PyConfig_Clear(&config);
 
-        if (PyStatus_Exception(status)) {
-            Py_ExitStatusException(status);
+        if (PyStatus_Exception(status)) 
+        {
+            acutPrintf(_T("\nInitializeFromConfig failed: "));
+            Py_InitializeEx(0);
         }
     }
     if (wxPyGetAPIPtr() == NULL)
