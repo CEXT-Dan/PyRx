@@ -5,22 +5,20 @@ from pyrx_imp import Db
 from pyrx_imp import Ap
 from pyrx_imp import Ed
 from pyrx_imp import Gs
-
-import AxApp24 as AcadApp
+from pyrx_impx import Ax
 
 from Delaunator import Delaunator
 from time import perf_counter
 import traceback
 
-
 print("command = pydelaunatorx")
 
-app = AcadApp.getApp()
+xapp = Ax.getApp()
 
 def get_3dpointds(objs):
     pnts = []
     for ent in objs:
-        p = AcadApp.IAcadPoint(ent)
+        p = Ax.IAcadPoint(ent)
         pnts.append(p.Coordinates)
     return pnts
 
@@ -33,7 +31,7 @@ def get_2dpointd(pnt3ds):
 def PyRxCmd_pydelaunatorx() -> None:
     try:
         
-        doc = app.ActiveDocument
+        doc = xapp.ActiveDocument
         ss = doc.SelectionSets.Add('mysset')
         ss.SelectOnScreen([0], ["POINT"])
         
