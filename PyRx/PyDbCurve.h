@@ -65,10 +65,10 @@ public:
     static PyDbCurve    createFromAcGeCurve1(const PyGeCurve3d& geCurve);
     static PyDbCurve    createFromAcGeCurve2(const PyGeCurve3d& geCurve, AcGeVector3d& normal);
     static PyDbCurve    createFromAcGeCurve3(const PyGeCurve3d& geCurve, AcGeVector3d& normal, const AcGeTol& tol);
-    static std::string          className();
-    static PyRxClass            desc();
-    static PyDbCurve            cloneFrom(const PyRxObject& src);
-    static PyDbCurve            cast(const PyRxObject& src);
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbCurve    cloneFrom(const PyRxObject& src);
+    static PyDbCurve    cast(const PyRxObject& src);
 public:
     inline AcDbCurve* impObj(const std::source_location& src = std::source_location::current()) const;
 };

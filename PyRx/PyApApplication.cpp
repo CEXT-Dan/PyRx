@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "PyApApplication.h"
 #include "PyApDocManager.h"
+#include "PyRxModule.h"
+#include "PyRxModuleLoader.h"
+
 #include "PyRxApp.h"
 #include "dwmapi.h"
 #pragma comment( lib, "dwmapi.lib")
@@ -41,6 +44,7 @@ void makePyApApplictionWrapper()
         .def("setTitleThemeDark", &PyApApplication::setTitleThemeDark, DS.SARGS({ "wnd : int" })).staticmethod("setTitleThemeDark")
         .def("applyHostIcon", &PyApApplication::applyHostIcon, DS.SARGS({ "wnd : int" })).staticmethod("applyHostIcon")
         .def("acadGetIDispatch", &PyApApplication::acadGetIDispatch, DS.SARGS()).staticmethod("acadGetIDispatch")
+        .def("loadPythonModule", &PyApApplication::loadPythonModule, DS.SARGS({ "fullpath: str" })).staticmethod("loadPythonModule")
         .def("wxApp", &PyApApplication::getwxApp, DS.SARGS()).staticmethod("wxApp")
         .def("hostAPI", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPI")
         .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
@@ -176,6 +180,13 @@ void PyApApplication::PyOnIdleMsgFn()
             return;
         }
     }
+}
+
+bool PyApApplication::loadPythonModule(const std::string& fullpath)
+{
+    PyAutoLockGIL lock;
+    std::filesystem::path fp = utf8_to_wstr(fullpath);
+    return ads_loadPythonModule(fp);
 }
 
 //-----------------------------------------------------------------------------------------

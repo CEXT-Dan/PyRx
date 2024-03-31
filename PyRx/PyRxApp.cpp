@@ -10,6 +10,7 @@
 #include "PyAcPl.h"
 #include "PyBrxCv.h"
 #include "PyRxModule.h"
+#include "PyRxModuleLoader.h"
 
 #include "wx/setup.h"
 #include "wx/wx.h"
@@ -81,10 +82,10 @@ bool WxRxApp::Init_wxPython()
 
         //TODO
         auto status = Py_PreInitialize(&preConfig);
-        if (PyStatus_Exception(status)) 
+        if (PyStatus_Exception(status))
         {
-           acutPrintf(_T("\nPreInitialize failed  %ls: "), __FUNCTIONW__);
-           return false;
+            acutPrintf(_T("\nPreInitialize failed  %ls: "), __FUNCTIONW__);
+            return false;
         }
     }
     {
@@ -95,9 +96,9 @@ bool WxRxApp::Init_wxPython()
         auto status = Py_InitializeFromConfig(&config);
         PyConfig_Clear(&config);
 
-        if (PyStatus_Exception(status)) 
+        if (PyStatus_Exception(status))
         {
-            acutPrintf(_T("\nInitializeFromConfig failed %ls: "),__FUNCTIONW__);
+            acutPrintf(_T("\nInitializeFromConfig failed %ls: "), __FUNCTIONW__);
             Py_InitializeEx(0);
         }
     }
@@ -201,6 +202,16 @@ void PyRxApp::appendINISettings()
     }
 }
 
+void PyRxApp::load_pyrx_onload()
+{
+    const auto pyrx_onloadPath = modulePath() / _T("pyrx_onload.py");
+    if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, pyrx_onloadPath.c_str()) == eOk)
+    {
+        PyAutoLockGIL lock;
+        ads_loadPythonModule(pyrx_onloadPath);
+    }
+}
+
 PyRxApp& PyRxApp::instance()
 {
     static PyRxApp mthis;
@@ -230,6 +241,7 @@ bool PyRxApp::init()
         {
             isLoaded = true;
             acutPrintf(_T("Python Interpreter Loaded successfully!\n"));
+            load_pyrx_onload();
         }
         else
         {
@@ -262,13 +274,13 @@ bool PyRxApp::uninit()
             Py_FinalizeEx();
 #endif
         }
-    }
+        }
     catch (...)
     {
         acutPrintf(_T("exception in uninit"));
     }
     return !isLoaded;
-}
+    }
 
 bool PyRxApp::setPyConfig()
 {

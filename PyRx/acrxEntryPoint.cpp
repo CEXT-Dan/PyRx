@@ -79,7 +79,7 @@ public:
 #ifdef NEVER
             //TODO! something is open and there's an exception
             //I commented all code except wxPython, it must be the wrapper
-            //around autocad's frame. something in wxTheApp
+            //around Autocad's frame. something in wxTheApp
             WxPyAutoLock lock;
             PyRxApp::instance().uninit();
             acedRegCmds->removeGroup(_T("PYCOMMANDS"));

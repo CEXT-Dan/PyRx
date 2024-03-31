@@ -23,6 +23,7 @@ public:
     static void registerOnIdleWinMsg(const boost::python::object& obj);
     static void removeOnIdleWinMsg(const boost::python::object& obj);
     static void PyOnIdleMsgFn();
+    static bool loadPythonModule(const std::string& fullpath);
 
 public:
     inline static std::map<PyObject*, boost::python::object> onidleFuncs;
