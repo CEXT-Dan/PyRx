@@ -79,10 +79,10 @@ public:
 class PyRxApp
 {
 public:
-    bool init();
-    bool uninit();
-    static bool setPyConfig();
-    static bool appendSearchPath(const std::filesystem::path& pModulePath);
+    bool            init();
+    bool            uninit();
+    static bool     setPyConfig();
+    static bool     appendSearchPath(const std::filesystem::path& pModulePath);
     static std::wstring the_error();
     static std::filesystem::path modulePath();
     static void     appendINISettings();
@@ -96,7 +96,6 @@ public:
     using PathForCommand = std::unordered_map<AcString, std::filesystem::path>;
 
     LoadedPaths loadedModulePaths;
-
     FuncNameMap funcNameMap;
     CmdNameMap commands;
     PyLispService lispService;

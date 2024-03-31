@@ -171,13 +171,16 @@ static bool executePyOnIdleFunc(const boost::python::object& func)
 
 void PyApApplication::PyOnIdleMsgFn()
 {
-    PyAutoLockGIL lock;
-    for (const auto& func : onidleFuncs)
+    if (onidleFuncs.size() != 0)
     {
-        if (!executePyOnIdleFunc(func.second))
+        PyAutoLockGIL lock;
+        for (const auto& func : onidleFuncs)
         {
-            onidleFuncs.erase(func.first);
-            return;
+            if (!executePyOnIdleFunc(func.second))
+            {
+                onidleFuncs.erase(func.first);
+                return;
+            }
         }
     }
 }

@@ -67,13 +67,16 @@ public:
         acdbModelerEnd();
         try
         {
-            for (auto& method : PyRxApp::instance().funcNameMap)
+            if (PyRxApp::instance().funcNameMap.size() != 0)
             {
-                if (method.second.OnPyUnloadApp != nullptr)
+                PyAutoLockGIL lock;
+                for (auto& method : PyRxApp::instance().funcNameMap)
                 {
-                    WxPyAutoLock lock;
-                    if (PyCallable_Check(method.second.OnPyUnloadApp))
-                        method.second.rslt.reset(PyObject_CallFunction(method.second.OnPyUnloadApp, NULL));
+                    if (method.second.OnPyUnloadApp != nullptr)
+                    {
+                        if (PyCallable_Check(method.second.OnPyUnloadApp))
+                            method.second.rslt.reset(PyObject_CallFunction(method.second.OnPyUnloadApp, NULL));
+                    }
                 }
             }
 #ifdef NEVER
@@ -94,13 +97,16 @@ public:
         AcRx::AppRetCode retCode = AcRxArxApp::On_kLoadDwgMsg(pkt);
         try
         {
-            for (auto& method : PyRxApp::instance().funcNameMap)
+            if (PyRxApp::instance().funcNameMap.size() != 0)
             {
-                if (method.second.OnPyLoadDwg != nullptr)
+                PyAutoLockGIL lock;
+                for (auto& method : PyRxApp::instance().funcNameMap)
                 {
-                    WxPyAutoLock lock;
-                    if (PyCallable_Check(method.second.OnPyLoadDwg))
-                        method.second.rslt.reset(PyObject_CallFunction(method.second.OnPyLoadDwg, NULL));
+                    if (method.second.OnPyLoadDwg != nullptr)
+                    {
+                        if (PyCallable_Check(method.second.OnPyLoadDwg))
+                            method.second.rslt.reset(PyObject_CallFunction(method.second.OnPyLoadDwg, NULL));
+                    }
                 }
             }
             PyRxApp::instance().lispService.On_kLoadDwgMsg();
@@ -114,13 +120,16 @@ public:
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadDwgMsg(pkt);
         try
         {
-            for (auto& method : PyRxApp::instance().funcNameMap)
+            if (PyRxApp::instance().funcNameMap.size() != 0)
             {
-                if (method.second.OnPyUnloadDwg != nullptr)
+                PyAutoLockGIL lock;
+                for (auto& method : PyRxApp::instance().funcNameMap)
                 {
-                    WxPyAutoLock lock;
-                    if (PyCallable_Check(method.second.OnPyUnloadDwg))
-                        method.second.rslt.reset(PyObject_CallFunction(method.second.OnPyUnloadDwg, NULL));
+                    if (method.second.OnPyUnloadDwg != nullptr)
+                    {
+                        if (PyCallable_Check(method.second.OnPyUnloadDwg))
+                            method.second.rslt.reset(PyObject_CallFunction(method.second.OnPyUnloadDwg, NULL));
+                    }
                 }
             }
         }
@@ -149,7 +158,7 @@ public:
     {
         constexpr TCHAR MAJOR1 = '1';
         constexpr TCHAR MINOR1 = '3';
-        constexpr TCHAR REVISION1 = '0', REVISION2 = '0', REVISION3 = '4';
+        constexpr TCHAR REVISION1 = '0', REVISION2 = '0', REVISION3 = '3';
 
         constexpr unsigned int compileYear = (__DATE__[7] - '0') * 1000 + (__DATE__[8] - '0') * 100 + (__DATE__[9] - '0') * 10 + (__DATE__[10] - '0');
         constexpr unsigned int compileMonth = (__DATE__[0] == 'J') ? ((__DATE__[1] == 'a') ? 1 : ((__DATE__[2] == 'n') ? 6 : 7))    // Jan, Jun or Jul
