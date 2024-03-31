@@ -1,4 +1,3 @@
-import os
 from pyrx_imp import Rx
 from pyrx_imp import Ge
 from pyrx_imp import Gi
@@ -9,17 +8,15 @@ from pyrx_imp import Gs
 
 print("added command pyreaddwg")
 
-print(os.getcwd())
-
+# debug
+def PyRxCmd_pydebug() -> None:
+    import PyRxDebug
+    PyRxDebug.startListener()
 
 def PyRxCmd_pyreaddwg():
     try:
         db = Db.Database(False, True)
-        es = db.readDwgFile("..\\dwg\\Floor Plan Sample.dwg")
-        if es != Db.ErrorStatus.eOk:
-            print("readDwgFile failed:", es)
-            return
-
+        db.readDwgFile("..\\dwg\\Floor Plan Sample.dwg")
         db.closeInput(True)
         entities = {}
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForRead)
