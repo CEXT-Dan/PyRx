@@ -193,6 +193,7 @@ public:
             {
                 WritePrivateProfileString(PYRXSETTINGS, PYTHONINSTALLEDPATH, pythonPath.c_str(), inipath.c_str());
                 setenvpath(pythonPath);
+                return;
             }
         }
         setenvpath(path);
@@ -209,6 +210,7 @@ public:
                 std::filesystem::path wxPythonPath = pythonPath / WXPYTHONPATHLIB;
                 WritePrivateProfileString(PYRXSETTINGS, WXPYTHONPATH, wxPythonPath.c_str(), inipath.c_str());
                 setenvpath(wxPythonPath);
+                return;
             }
         }
         setenvpath(path);
