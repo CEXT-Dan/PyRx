@@ -8,6 +8,11 @@ from pyrx_imp import Gs
 
 print("added command do_raster")
 
+# debug
+def PyRxCmd_pydebug() -> None:
+    import PyRxDebug
+    PyRxDebug.startListener()
+
 def PyRxCmd_do_raster():
     try:
         dictName = "MY_IMAGE_NAME"
