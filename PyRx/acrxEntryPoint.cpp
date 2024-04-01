@@ -58,6 +58,7 @@ public:
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
         acrxLockApplication(pkt);
         PyRxApp::instance().appPkt = pkt;
+        loadDBXModules();
         return (retCode);
     }
 
@@ -135,6 +136,19 @@ public:
         }
         catch (...) { acutPrintf(_T("\nException %ls: "), __FUNCTIONW__); }
         return retCode;
+    }
+
+    static void loadDBXModules()
+    {
+#if defined(_ARXTARGET)
+        auto acismobj = std::format(_T("acismobj{}.dbx"), acdbHostApplicationServices()->releaseMajorVersion());
+        if (auto result = acrxLoadModule(acismobj.c_str(), false, false); !result)
+            acutPrintf(_T("Faled to load %ls: "), acismobj);
+
+        auto acMPolygonObj = std::format(_T("AcMPolygonObj{}.dbx"), acdbHostApplicationServices()->releaseMajorVersion());
+        if (auto result = acrxLoadModule(acMPolygonObj.c_str(), false, false); !result)
+            acutPrintf(_T("Faled to load %ls: "), acismobj);
+#endif
     }
 
     virtual void RegisterServerComponents()
