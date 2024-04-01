@@ -80,7 +80,7 @@ bool WxRxApp::Init_wxPython()
         PyPreConfig preConfig;
         PyPreConfig_InitPythonConfig(&preConfig);
 
-        //TODO
+        //TODO: read params from .INI
         auto status = Py_PreInitialize(&preConfig);
         if (PyStatus_Exception(status))
         {
@@ -92,7 +92,7 @@ bool WxRxApp::Init_wxPython()
         PyConfig config;
         PyConfig_InitPythonConfig(&config);
 
-        //TODO
+        //TODO: read params from .INI
         auto status = Py_InitializeFromConfig(&config);
         PyConfig_Clear(&config);
 
@@ -121,7 +121,8 @@ bool WxRxApp::Init_wxPython()
 //------------------------------------------------------------------------------------------------
 // helper function to initWxApp
 
-//TODO: Find out why BricsCAD is wonky, with AfxGetInstanceHandle
+// TODO: Find out why BricsCAD is wonky, with AfxGetInstanceHandle
+// BricsCAD uses wxWidgets, so it's using another instance
 bool initWxApp()
 {
     wxApp::SetInstance(&WxRxApp::instance());
@@ -268,8 +269,9 @@ bool PyRxApp::uninit()
     isLoaded = false;
     WxPyAutoLock::canLock = false;
     PyAutoLockGIL::canLock = false;
-    try
+    // scope for lock
     {
+        PyAutoLockGIL lock;
         loadedModulePaths.m_paths.clear();
         funcNameMap.clear();
         commands.clear();
@@ -277,6 +279,12 @@ bool PyRxApp::uninit()
         pathForCommand.clear();
         void* appPkt = nullptr;
         bool isLoaded = false;
+    }
+    try
+    {
+        // Py_FinalizeEx throws because something is still in python 
+        // I think it's wxPython since the main window was attached
+        // acrxLockApplication so we just let the OS do our dirty work
 #ifdef NEVER //TODO!
         PyGILState_STATE state = PyGILState_Ensure();
         if (Py_IsInitialized())
@@ -295,7 +303,7 @@ bool PyRxApp::uninit()
 
 bool PyRxApp::setPyConfig()
 {
-    //append our module path to python
+    // append our module path to python
     WxPyAutoLock lock;
     const auto _modulePath = modulePath();
     PyObjectPtr sys(PyImport_ImportModule("sys"));
