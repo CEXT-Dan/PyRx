@@ -309,7 +309,7 @@ class TestActiveX(unittest.TestCase):
             cnt +=1
         self.assertNotEqual(cnt, 0)
 
-def PyRxCmd_pyactivex() -> None:
+def pyactivex() -> None:
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestActiveX)
         print("TestActiveX")

@@ -36,13 +36,13 @@ class TestDbObjectId(unittest.TestCase):
                 self.assertTrue(id2.isValid())
                 bt.close()
                 
-def PyRxCmd_pydbobjectid():
+def pydbobjectid():
         try:
                 suite = unittest.TestLoader().loadTestsFromTestCase(TestDbObjectId)
                 print('TestDbObjectId')
                 print(unittest.TextTestRunner(verbosity=0).run(suite))
         except Exception as err:
-                print.Printf(err)
+                print(err)
 
 
     

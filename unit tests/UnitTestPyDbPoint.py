@@ -7,6 +7,7 @@ import PyGi# = Graphics interface
 import PyDb# = database
 import PyAp# = application, document classes services 
 import PyEd# = editor 
+
 print("testname = pydbpoint")
 host = PyAp.Application.hostAPI()
 
@@ -34,13 +35,13 @@ class TestDbPoint(unittest.TestCase):
                 self.assertEqual(point.thickness(),1.2)
 
 
-def PyRxCmd_pydbpoint():
+def pydbpoint():
         try:
                 suite = unittest.TestLoader().loadTestsFromTestCase(TestDbPoint)
                 print('TestDbPoint')
                 print(unittest.TextTestRunner(verbosity=0).run(suite))
         except Exception as err:
-                PyRxApp.Printf(err)
+                print(err)
 
 
     

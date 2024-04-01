@@ -46,7 +46,7 @@ class TestEditor(unittest.TestCase):
         val = Ed.Core.evaluateDiesel('$(eval,"Current layer: "$(getvar,clayer))')
         self.assertEqual(val, "Current layer: 0")
         
-def PyRxCmd_pyeditor():
+def pyeditor():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestEditor)
         print('TestEditor')

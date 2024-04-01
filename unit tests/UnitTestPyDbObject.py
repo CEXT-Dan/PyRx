@@ -68,7 +68,7 @@ class TestDbObject(unittest.TestCase):
         self.assertEqual(p.z, 100)
 
 
-def PyRxCmd_pydbobject():
+def pydbobject():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDbObject)
         print('pydbobject')

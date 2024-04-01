@@ -69,7 +69,7 @@ class TestBCadCivil(unittest.TestCase):
         for item in valign.getPVIsArrays():
             self.assertIsNotNone(item)
             
-def PyRxCmd_pybcciviltest():
+def pybcciviltest():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestBCadCivil)
         print("TestBricsCADCivil")

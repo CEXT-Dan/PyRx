@@ -8,6 +8,10 @@ import UnitTestPyDbEval
 import UnitTestPyDbEntity
 import UnitTestPyEditor
 import UnitTestPyWx
+import dbc
+
+def OnPyUnloadApp():
+    dbc.dbs = None
 
 from pyrx_imp import Ap
 host = Ap.Application.hostAPI()
@@ -17,19 +21,19 @@ if 'BRX' in host:
 
 print("testname = pytestall")
 
-def PyRxCmd_pytestall():
+def pytestall():
     try:
-      UnitTestPyAcGe.PyRxCmd_pyge()
-      UnitTestPyRxObject.PyRxCmd_pyrxobject()
-      UnitTestPyDatabase.PyRxCmd_pydbtest()
-      UnitTestPyDbObject.PyRxCmd_pydbobject()
-      UnitTestPyDbObjectId.PyRxCmd_pydbobjectid()
-      UnitTestPyDbPoint.PyRxCmd_pydbpoint()
-      UnitTestPyDbEval.PyRxCmd_pydbeval()
-      UnitTestPyDbEntity.PyRxCmd_pyentity()
-      UnitTestPyEditor.PyRxCmd_pyeditor()
-      UnitTestPyWx.PyRxCmd_pywx()
+      UnitTestPyAcGe.pyge()
+      UnitTestPyRxObject.pyrxobject()
+      UnitTestPyDatabase.pydbtest()
+      UnitTestPyDbObject.pydbobject()
+      UnitTestPyDbObjectId.pydbobjectid()
+      UnitTestPyDbPoint.pydbpoint()
+      UnitTestPyDbEval.pydbeval()
+      UnitTestPyDbEntity.pyentity()
+      UnitTestPyEditor.pyeditor()
+      UnitTestPyWx.pywx()
       if 'BRX' in host:
-          UnitTestPyBcadCivil.PyRxCmd_pybcciviltest()
+          UnitTestPyBcadCivil.pybcciviltest()
     except Exception as err:
       print(err)
