@@ -133,6 +133,10 @@ static void reloadCommands(PyRxMethod& method, const PyModulePath& path)
 
 bool loadPythonModule(const PyModulePath& path, bool silent)
 {
+    std::error_code ec;
+    const auto oldpath = std::filesystem::current_path(ec);
+    std::filesystem::current_path(path.modulePath, ec);
+
     auto& rxApp = PyRxApp::instance();
     if (rxApp.funcNameMap.contains(path.moduleName))
     {
@@ -170,6 +174,7 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
         acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)path.moduleName);
         rxApp.funcNameMap.erase(path.moduleName);
     }
+    std::filesystem::current_path(oldpath, ec);
     return false;
 }
 
