@@ -414,7 +414,19 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(cr2.leftColumn , 2)
         self.assertEqual(cr2.bottomRow , 3)
         self.assertEqual(cr2.rightColumn , 4)
- 
+        
+    def test_create_wipout(self):
+        db = Db.curDb()
+        pts = [ Ge.Point2d(0,0),
+                Ge.Point2d(100,0),
+                Ge.Point2d(100,100),
+                Ge.Point2d(0,100),
+                Ge.Point2d(0,0)]
+        wipout = Db.Wipeout(pts,Ge.Vector3d.kZAxis)
+        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
+        id = model.appendAcDbEntity(wipout)
+        self.assertTrue(id.isValid())
+        
 def PyRxCmd_pyentity():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDbEntity)
