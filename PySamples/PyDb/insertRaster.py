@@ -36,7 +36,7 @@ def PyRxCmd_do_raster():
         
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         model.appendAcDbEntity(image)
-        
+
         Db.RasterImageDefReactor.setEnable(True)
         reactor = Db.RasterImageDefReactor()
         reactor.setOwnerId(image.objectId())
