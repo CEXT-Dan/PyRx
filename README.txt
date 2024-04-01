@@ -129,7 +129,7 @@ def PyRxCmd_hitTest():
             hit = axTable.HitTest(hitPnt, hitVec)
             if hit[0]:
                 cellstr = "Cell={},{}".format(hit[1], hit[2])
-                axTable.SetTextString(hit[1], hit[2], 1, cellstr)
+                axTable.SetTextString(hit[1], hit[2], 0, cellstr)
                 return
 
     except Exception as err:
