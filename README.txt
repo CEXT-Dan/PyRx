@@ -89,41 +89,41 @@ def PyRxCmd_pydoit():
 ...
 ActiveX sample:
 
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
+from pyrx_impx import Rx
+from pyrx_impx import Ge
+from pyrx_impx import Gi
+from pyrx_impx import Db
+from pyrx_impx import Ap
+from pyrx_impx import Ed
+from pyrx_impx import Ax
 import traceback
- 
-import AxApp24 as Ax
-import AxAppUtils24 as AxUt
- 
+
 def PyRxCmd_makeTable():
     try:
         axApp = Ax.getApp()
         axDoc = axApp.ActiveDocument
- 
+        
         tablePnt = axDoc.Utility.GetPoint("\nTable location: ")
         axDoc.ModelSpace.AddTable(tablePnt, 5, 5, 10, 30)
- 
+        
     except Exception as err:
         traceback.print_exception(err)
- 
+
+
 def PyRxCmd_hitTest():
     try:
         axApp = Ax.getApp()
         axDoc = axApp.ActiveDocument
-        
+
         hitVec = (0, 0, 1)  # kZaxis
         hitPnt = axDoc.Utility.GetPoint("\nSelect cell: ")
         minmax = hitPnt + axDoc.GetVariable("VSMAX")
- 
+
         axSs = axDoc.SelectionSets.Add("AXTBLSS")
-        axSs.SelectByPolygon(Ax.constants.acSelectionSetFence,
-                             minmax, [0], ["ACAD_TABLE"])
-        
+        axSs.SelectByPolygon(
+            Ax.constants.acSelectionSetFence, minmax, [0], ["ACAD_TABLE"]
+        )
+
         for axEnt in axSs:
             axTable = Ax.IAcadTable(axEnt)
             hit = axTable.HitTest(hitPnt, hitVec)
@@ -131,10 +131,9 @@ def PyRxCmd_hitTest():
                 cellstr = "Cell={},{}".format(hit[1], hit[2])
                 axTable.SetTextString(hit[1], hit[2], 1, cellstr)
                 return
-            
+
     except Exception as err:
         traceback.print_exception(err)
-        
     finally:
         axSs.Delete()
 
