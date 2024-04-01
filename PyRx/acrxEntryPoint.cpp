@@ -141,12 +141,12 @@ public:
     static void loadDBXModules()
     {
 #if defined(_ARXTARGET)
-        auto acismobj = std::format(_T("acismobj{}.dbx"), acdbHostApplicationServices()->releaseMajorVersion());
-        if (auto result = acrxLoadModule(acismobj.c_str(), false, false); !result)
+        const int version = acdbHostApplicationServices()->releaseMajorVersion();
+        const auto acismobj = std::format(_T("acismobj{}.dbx"), version);
+        if (const auto result = acrxLoadModule(acismobj.c_str(), false, false); !result)
             acutPrintf(_T("Faled to load %ls: "), acismobj);
-
-        auto acMPolygonObj = std::format(_T("AcMPolygonObj{}.dbx"), acdbHostApplicationServices()->releaseMajorVersion());
-        if (auto result = acrxLoadModule(acMPolygonObj.c_str(), false, false); !result)
+        const auto acMPolygonObj = std::format(_T("AcMPolygonObj{}.dbx"), version);
+        if (const auto result = acrxLoadModule(acMPolygonObj.c_str(), false, false); !result)
             acutPrintf(_T("Faled to load %ls: "), acismobj);
 #endif
     }
