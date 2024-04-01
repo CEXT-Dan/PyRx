@@ -686,7 +686,9 @@ AcDbLayout* PyDbLayout::impObj(const std::source_location& src /*= std::source_l
 //PyDbLayoutManager
 void makePyDbLayoutManagerWrapper()
 {
+    PyDocString DS("LayoutManager");
     class_<PyDbLayoutManager, bases<PyRxObject>>("LayoutManager")
+        .def(init<>(DS.ARGS()))
         .def("setCurrentLayout", &PyDbLayoutManager::setCurrentLayout1)
         .def("setCurrentLayout", &PyDbLayoutManager::setCurrentLayout2)
         .def("setCurrentLayoutId", &PyDbLayoutManager::setCurrentLayoutId)
@@ -715,8 +717,8 @@ void makePyDbLayoutManagerWrapper()
         .def("countLayouts", &PyDbLayoutManager::countLayouts2)
         .def("setupForLayouts", &PyDbLayoutManager::setupForLayouts).staticmethod("setupForLayouts")
         .def("clearSetupForLayouts", &PyDbLayoutManager::clearSetupForLayouts).staticmethod("clearSetupForLayouts")
-        .def("desc", &PyDbLayoutManager::desc).staticmethod("desc")
-        .def("className", &PyDbLayoutManager::className).staticmethod("className")
+        .def("desc", &PyDbLayoutManager::desc, DS.SARGS()).staticmethod("desc")
+        .def("className", &PyDbLayoutManager::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
