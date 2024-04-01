@@ -48,12 +48,12 @@ bool WxRxApp::OnInit()
 
 int WxRxApp::OnExit()
 {
+#ifdef NEVER //TODO!
     wxPyEndAllowThreads(wxPyBeginAllowThreads());
     wxTheApp->GetMainTopWindow()->SetHWND(0);
     wxTheApp->SetTopWindow(nullptr);
     wxTheApp->CleanUp();
     frame.release();
-#ifdef NEVER //TODO!
     wxUninitialize();
 #endif
     return 0;
@@ -270,21 +270,28 @@ bool PyRxApp::uninit()
     PyAutoLockGIL::canLock = false;
     try
     {
+        loadedModulePaths.m_paths.clear();
+        funcNameMap.clear();
+        commands.clear();
+        lispService.cleanup();
+        pathForCommand.clear();
+        void* appPkt = nullptr;
+        bool isLoaded = false;
+#ifdef NEVER //TODO!
         PyGILState_STATE state = PyGILState_Ensure();
         if (Py_IsInitialized())
         {
             wxTheApp->OnExit();
-#ifdef NEVER //TODO!
             Py_FinalizeEx();
+        }
 #endif
-        }
-        }
+    }
     catch (...)
     {
         acutPrintf(_T("exception in uninit"));
     }
     return !isLoaded;
-    }
+}
 
 bool PyRxApp::setPyConfig()
 {
