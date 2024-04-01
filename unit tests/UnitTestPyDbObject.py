@@ -7,9 +7,8 @@ import PyGi  # = Graphics interface
 import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
-print("testname = pydbobject")
-host = PyAp.Application.hostAPI()
 
+host = PyAp.Application.hostAPI()
 
 class TestDbObject(unittest.TestCase):
     def test_property_ids(self):

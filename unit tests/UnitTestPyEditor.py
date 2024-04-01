@@ -9,9 +9,8 @@ import PyDb as Db
 import PyAp as Ap
 import PyEd as Ed
 
-print("testname = pyeditor")    
-host = Ap.Application.hostAPI()
 
+host = Ap.Application.hostAPI()
 
 def autoSysVarOSMODE():
     var = Ed.Core.autoSetVar("OSMODE", 0)

@@ -18,9 +18,6 @@ def almostEq(L , R) -> bool:
 
 host = Ap.Application.hostAPI()
     
-print("hostname = {}".format(host))
-print("testname = pyactivex")
-
 class TestActiveX(unittest.TestCase):
     def test_get_app(self):
         app = Ax.getApp()

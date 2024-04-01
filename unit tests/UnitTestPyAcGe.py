@@ -10,8 +10,6 @@ import PyAp  # = application, document classes services
 import PyEd  # = editor
 import dbc
 
-print("testname = pyge")
-
 host = PyAp.Application.hostAPI()
 
 

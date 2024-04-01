@@ -8,7 +8,6 @@ import PyDb as Db
 import PyAp as Ap
 import PyEd as Ed
 
-print("testname = pydbeval")
 host = Ap.Application.hostAPI()
 
 class TestPyDbEvalVariant(unittest.TestCase):
