@@ -8,11 +8,10 @@ import PyGi as Gi
 import PyDb as Db
 import PyAp as Ap
 import PyEd as Ed
+import dbc
 
 print("testname = pyentity")
 host = Ap.Application.hostAPI()
-
-
 
 def create_dbPoint():
     db = Db.curDb()
@@ -27,13 +26,9 @@ class TestDbEntity(unittest.TestCase):
     
     def __init__(self, *args, **kwargs):
         super(TestDbEntity, self).__init__(*args, **kwargs)
-        # open and keep open for all 06457 tests
-        self.db06457 = Db.Database(False, True)
-        self.db06457.readDwgFile("./testmedia/06457.dwg")
-        self.db06457.closeInput(True)
-        
+
     def __del__(self):
-        del(self.db06457)
+        pass
 
     def test_dbpointopenctor1(self):
         id = create_dbPoint()
@@ -57,7 +52,7 @@ class TestDbEntity(unittest.TestCase):
         
     def test_getGripPointsGripData(self):
         objHnd = Db.Handle("2c91ef")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         mt = Db.MText(objId)
         grpdata = mt.getGripPoints(1.0,1,Ge.Vector3d.kZAxis,0)
@@ -162,7 +157,7 @@ class TestDbEntity(unittest.TestCase):
             
     def test_dbmtext_fragtextvalue(self):
         objHnd = Db.Handle("2c91ef")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         mt = Db.MText(objId)
         for i , frag in enumerate(mt.getFragments()):
@@ -316,7 +311,7 @@ class TestDbEntity(unittest.TestCase):
     
     def test_table_cells1(self):
         objHnd = Db.Handle("2c8cc9")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         iter = table.cells()
@@ -324,7 +319,7 @@ class TestDbEntity(unittest.TestCase):
         
     def test_table_cells2(self):
         objHnd = Db.Handle("2c8cc9")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         cr = Db.CellRange(1,1,3,3)
@@ -333,7 +328,7 @@ class TestDbEntity(unittest.TestCase):
         
     def test_table_cells3(self):
         objHnd = Db.Handle("2c8cc9")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         opt = Db.TableIteratorOption.kTableIteratorSkipMerged
@@ -342,7 +337,7 @@ class TestDbEntity(unittest.TestCase):
         
     def test_table_cells4(self):
         objHnd = Db.Handle("2c8cc9")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         opt = Db.TableIteratorOption.kTableIteratorSkipMerged
@@ -351,7 +346,7 @@ class TestDbEntity(unittest.TestCase):
         
     def test_table_cellValues1(self):
         objHnd = Db.Handle("2c8cc9")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         iter = table.cellValues()
@@ -359,7 +354,7 @@ class TestDbEntity(unittest.TestCase):
         
     def test_table_cellValues2(self):
         objHnd = Db.Handle("2c8cc9")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         cr = Db.CellRange(1,1,3,3)
@@ -368,7 +363,7 @@ class TestDbEntity(unittest.TestCase):
         
     def test_table_cellValues3(self):
         objHnd = Db.Handle("2c8cc9")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         opt = Db.TableIteratorOption.kTableIteratorSkipMerged
@@ -377,7 +372,7 @@ class TestDbEntity(unittest.TestCase):
         
     def test_table_cellValues4(self):
         objHnd = Db.Handle("2c8cc9")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         opt = Db.TableIteratorOption.kTableIteratorSkipMerged
@@ -386,7 +381,7 @@ class TestDbEntity(unittest.TestCase):
 
     def test_table_getstring(self):
         objHnd = Db.Handle("2c8cc9")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         self.assertEqual(table.textString(4,0), '{\\fMS Sans Serif|b0|i0|c0;R380')
@@ -427,7 +422,7 @@ class TestDbEntity(unittest.TestCase):
         id = model.appendAcDbEntity(wipout)
         self.assertTrue(id.isValid())
         
-def PyRxCmd_pyentity():
+def pyentity():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDbEntity)
         print('TestDbPoint')

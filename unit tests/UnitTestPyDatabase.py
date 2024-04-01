@@ -8,27 +8,21 @@ import PyGi as Gi
 import PyDb as Db
 import PyAp as Ap
 import PyEd as Ed
+import dbc
 import time
 
 print("testname = pydbtest")
 host = Ap.Application.hostAPI()
 
-
-
 class TestDatabase(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestDatabase, self).__init__(*args, **kwargs)
-        # open and keep open for all 06457 tests
-        self.db06457 = Db.Database(False, True)
-        self.db06457.readDwgFile("./testmedia/06457.dwg")
-        self.db06457.closeInput(True)
-        
+
         self.geodb = Db.Database(False, True)
         self.geodb.readDwgFile("./testmedia/geomarker.dwg")
         self.geodb.closeInput(True)
         
     def __del__(self):
-        del(self.db06457)
         del(self.geodb)
         
     def test_dbcore_entmake(self):
@@ -155,28 +149,28 @@ class TestDatabase(unittest.TestCase):
 
     def test_dbopbjectforread(self):
         objHnd = Db.Handle("20127")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         dbo = Db.DbObject(objId)
         self.assertEqual(dbo.isA().dxfName(), "LINE")
 
     def test_dbentityforread(self):
         objHnd = Db.Handle("20127")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         dbo = Db.Entity(objId)
         self.assertEqual(dbo.isA().dxfName(), "LINE")
 
     def test_dbcurveforread(self):
         objHnd = Db.Handle("20127")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         dbo = Db.Curve(objId)
         self.assertEqual(dbo.isA(), Db.Line.desc())
 
     def test_dblineforread(self):
         objHnd = Db.Handle("20127")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         line = Db.Line(objId)
         self.assertEqual(line.isKindOf(Db.Line.desc()), True)
@@ -184,7 +178,7 @@ class TestDatabase(unittest.TestCase):
 
     def test_dbpolylineforread(self):
         objHnd = Db.Handle("201ee")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         pline = Db.Polyline(objId)
         self.assertEqual(pline.isKindOf(Db.Curve.desc()), True)
@@ -195,7 +189,7 @@ class TestDatabase(unittest.TestCase):
 
     def test_dbsplineforread(self):
         objHnd = Db.Handle("2c62a1")
-        objId = self.db06457.getObjectId(False, objHnd)
+        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         spline = Db.Spline(objId)
         self.assertEqual(spline.isKindOf(Db.Curve.desc()), True)
@@ -203,14 +197,14 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(spline.numFitPoints(), 3)
 
     def test_addToModelspaced1(self):
-        db = self.db06457
+        db =  dbc.dbs["06457"]
         line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
         id = db.addToModelspace(line)
         self.assertTrue(id.isValid())
         self.assertTrue(id.isDerivedFrom(Db.Line.desc()))
         
     def test_addToModelspaced2(self):
-        db = self.db06457
+        db =  dbc.dbs["06457"]
         lines = [Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0)),
          Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))]
         ids = db.addToBlock(db.modelSpaceId(), lines)
@@ -219,14 +213,14 @@ class TestDatabase(unittest.TestCase):
             self.assertTrue(id.isDerivedFrom(Db.Line.desc()))
         
     def test_addToBlock1(self):
-        db = self.db06457
+        db =  dbc.dbs["06457"]
         line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
         id = db.addToBlock(db.modelSpaceId(), line)
         self.assertTrue(id.isValid())
         self.assertTrue(id.isDerivedFrom(Db.Line.desc()))
         
     def test_addToBlock2(self):
-        db = self.db06457
+        db =  dbc.dbs["06457"]
         lines = [Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0)),
          Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))]
         
@@ -236,7 +230,7 @@ class TestDatabase(unittest.TestCase):
             self.assertTrue(id.isDerivedFrom(Db.Line.desc()))
         
     def test_inrecord(self):
-        db = self.db06457
+        db =  dbc.dbs["06457"]
         lt = Db.LayerTable(db.layerTableId())
         self.assertTrue('0' in lt)
         self.assertTrue(db.layerZero() in lt)
@@ -279,7 +273,7 @@ class TestDatabase(unittest.TestCase):
        
     @unittest.skipIf(host == "BRX24", "BricsCAD known failure")
     def test_tdusrtimer(self) -> None:
-        db = self.db06457
+        db = Db.curDb()
         date1 = db.tdusrtimer()
         time.sleep(1)
         date2 = db.tdusrtimer()
@@ -288,7 +282,7 @@ class TestDatabase(unittest.TestCase):
         date1 += date3
         self.assertEqual(date1 ,date2)
  
-def PyRxCmd_pydbtest():
+def pydbtest():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDatabase)
         print("TestDatabase")

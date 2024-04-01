@@ -63,7 +63,7 @@ class TestRxObject(unittest.TestCase):
         self.assertEqual(dxfName,'LWPOLYLINE')
 
 
-def PyRxCmd_pyrxobject():
+def pyrxobject():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestRxObject)
         print('pyrxobject')

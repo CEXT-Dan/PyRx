@@ -71,13 +71,13 @@ class TestPyDbEvalVariant(unittest.TestCase):
         self.assertEqual(e.getType(),Db.DwgDataType.kDwg3Real)
         self.assertEqual(e.getPoint3d(),p3)
             
-def PyRxCmd_pydbeval(): 
+def pydbeval(): 
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestPyDbEvalVariant)
         print('TestDbEval')
         print(unittest.TextTestRunner(verbosity=0).run(suite))
     except Exception as err:
-        print.Printf(err)
+        print(err)
 
 
     
