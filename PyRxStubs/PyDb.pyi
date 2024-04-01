@@ -11035,17 +11035,11 @@ class DatabaseSummaryInfo(PyRx.RxObject):
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def addCustomSummaryInfo (self, *args, **kwargs)-> None :
-      '''addCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (str)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void addCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def addCustomSummaryInfo (self, key: str, val: str)-> None :
+      '''                             '''
     ...
-    def asDict (self, *args, **kwargs)-> dict :
-      '''asDict( (DatabaseSummaryInfo)arg1) -> dict :
-
-    C++ signature :
-        class boost::python::dict asDict(class PyDbDatabaseSummaryInfo {lvalue})'''
+    def asDict (self)-> dict :
+      '''                             '''
     ...
 
     @staticmethod
@@ -11058,16 +11052,16 @@ This class cannot be instantiated from Python'''
     def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @overload
+    def deleteCustomSummaryInfo (self, index: int)-> None : ...
+    @overload
+    def deleteCustomSummaryInfo (self, key: str)-> None : ...
     def deleteCustomSummaryInfo (self, *args, **kwargs)-> None :
-      '''deleteCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void deleteCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},int)
-
-deleteCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void deleteCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - index: int
+    - key: str
+    '''
     ...
 
     @staticmethod
@@ -11077,64 +11071,40 @@ deleteCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
     def dispose (self)-> None :
       '''                             '''
     ...
-    def getAuthor (self, *args, **kwargs)-> str :
-      '''getAuthor( (DatabaseSummaryInfo)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getAuthor(class PyDbDatabaseSummaryInfo {lvalue})'''
+    def getAuthor (self)-> str :
+      '''                             '''
     ...
-    def getComments (self, *args, **kwargs)-> str :
-      '''getComments( (DatabaseSummaryInfo)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getComments(class PyDbDatabaseSummaryInfo {lvalue})'''
+    def getComments (self)-> str :
+      '''                             '''
     ...
+
+    @overload
+    def getCustomSummaryInfo (self, index: int)-> tuple : ...
+    @overload
+    def getCustomSummaryInfo (self, key: str)-> tuple : ...
     def getCustomSummaryInfo (self, *args, **kwargs)-> tuple :
-      '''getCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (str)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-getCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},int)'''
+      '''Overloads:
+    - index: int
+    - key: str
+    '''
     ...
-    def getHyperlinkBase (self, *args, **kwargs)-> str :
-      '''getHyperlinkBase( (DatabaseSummaryInfo)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getHyperlinkBase(class PyDbDatabaseSummaryInfo {lvalue})'''
+    def getHyperlinkBase (self)-> str :
+      '''                             '''
     ...
-    def getKeywords (self, *args, **kwargs)-> str :
-      '''getKeywords( (DatabaseSummaryInfo)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getKeywords(class PyDbDatabaseSummaryInfo {lvalue})'''
+    def getKeywords (self)-> str :
+      '''                             '''
     ...
-    def getLastSavedBy (self, *args, **kwargs)-> str :
-      '''getLastSavedBy( (DatabaseSummaryInfo)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getLastSavedBy(class PyDbDatabaseSummaryInfo {lvalue})'''
+    def getLastSavedBy (self)-> str :
+      '''                             '''
     ...
-    def getRevisionNumber (self, *args, **kwargs)-> str :
-      '''getRevisionNumber( (DatabaseSummaryInfo)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getRevisionNumber(class PyDbDatabaseSummaryInfo {lvalue})'''
+    def getRevisionNumber (self)-> str :
+      '''                             '''
     ...
-    def getSubject (self, *args, **kwargs)-> str :
-      '''getSubject( (DatabaseSummaryInfo)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getSubject(class PyDbDatabaseSummaryInfo {lvalue})'''
+    def getSubject (self)-> str :
+      '''                             '''
     ...
-    def getTitle (self, *args, **kwargs)-> str :
-      '''getTitle( (DatabaseSummaryInfo)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getTitle(class PyDbDatabaseSummaryInfo {lvalue})'''
+    def getTitle (self)-> str :
+      '''                             '''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -11151,79 +11121,49 @@ getCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2) -> tuple :
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def numCustomInfo (self, *args, **kwargs)-> int :
-      '''numCustomInfo( (DatabaseSummaryInfo)arg1) -> int :
-
-    C++ signature :
-        int numCustomInfo(class PyDbDatabaseSummaryInfo {lvalue})'''
+    def numCustomInfo (self)-> int :
+      '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def setAuthor (self, *args, **kwargs)-> None :
-      '''setAuthor( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setAuthor(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setAuthor (self, val: str)-> None :
+      '''                             '''
     ...
-    def setComments (self, *args, **kwargs)-> None :
-      '''setComments( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setComments(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setComments (self, val: str)-> None :
+      '''                             '''
     ...
-    def setCustomSummaryFromDict (self, *args, **kwargs)-> None :
-      '''setCustomSummaryFromDict( (DatabaseSummaryInfo)arg1, (dict)arg2) -> None :
-
-    C++ signature :
-        void setCustomSummaryFromDict(class PyDbDatabaseSummaryInfo {lvalue},class boost::python::dict {lvalue})'''
+    def setCustomSummaryFromDict (self, keyValues: dict)-> None :
+      '''                             '''
     ...
+
+    @overload
+    def setCustomSummaryInfo (self, customInfoKey: str, value: str)-> None : ...
+    @overload
+    def setCustomSummaryInfo (self, index: int, key: str, value: str)-> None : ...
     def setCustomSummaryInfo (self, *args, **kwargs)-> None :
-      '''setCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (str)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void setCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-setCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2, (str)arg3, (str)arg4) -> None :
-
-    C++ signature :
-        void setCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - customInfoKey: str, value: str
+    - index: int, key: str, value: str
+    '''
     ...
-    def setHyperlinkBase (self, *args, **kwargs)-> None :
-      '''setHyperlinkBase( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setHyperlinkBase(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setHyperlinkBase (self, val: str)-> None :
+      '''                             '''
     ...
-    def setKeywords (self, *args, **kwargs)-> None :
-      '''setKeywords( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setKeywords(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setKeywords (self, keywordlist: str)-> None :
+      '''                             '''
     ...
-    def setLastSavedBy (self, *args, **kwargs)-> None :
-      '''setLastSavedBy( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setLastSavedBy(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setLastSavedBy (self, val: str)-> None :
+      '''                             '''
     ...
-    def setRevisionNumber (self, *args, **kwargs)-> None :
-      '''setRevisionNumber( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setRevisionNumber(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setRevisionNumber (self, val: str)-> None :
+      '''                             '''
     ...
-    def setSubject (self, *args, **kwargs)-> None :
-      '''setSubject( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setSubject(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setSubject (self, val: str)-> None :
+      '''                             '''
     ...
-    def setTitle (self, *args, **kwargs)-> None :
-      '''setTitle( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setTitle(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setTitle (self, val: str)-> None :
+      '''                             '''
     ...
 
 class Date(object):
@@ -26723,35 +26663,25 @@ class HostApplicationServices(object):
     def LayoutManager (self)-> PyAp.LayoutManager :
       '''                             '''
     ...
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
     def companyName (self)-> str :
       '''                             '''
     ...
+
+    @overload
+    def findFile (self, fileName: str)-> str : ...
+    @overload
+    def findFile (self, fileName: str, db: PyDb.Database)-> str : ...
+    @overload
+    def findFile (self, fileName: str, db: PyDb.Database, hint: PyDb.FindFileHint)-> str : ...
     def findFile (self, *args, **kwargs)-> str :
-      '''findFile( (HostApplicationServices)arg1, (str)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findFile(class PyDbHostApplicationServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-findFile( (HostApplicationServices)arg1, (str)arg2, (Database)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findFile(class PyDbHostApplicationServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)
-
-findFile( (HostApplicationServices)arg1, (str)arg2, (Database)arg3, (FindFileHint)arg4) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findFile(class PyDbHostApplicationServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase,enum AcDbHostApplicationServices::FindFileHint)'''
+      '''Overloads:
+    - fileName: str
+    - fileName: str, db: PyDb.Database
+    - fileName: str, db: PyDb.Database, hint: PyDb.FindFileHint
+    '''
     ...
     def getMachineRegistryProductRootKey (self)-> str :
       '''                             '''
@@ -60125,274 +60055,137 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class SymUtilServices(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
-    def blockModelSpaceId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''blockModelSpaceId( (SymUtilServices)arg1, (Database)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId blockModelSpaceId(class PyDbSymUtilServices {lvalue},class PyDbDatabase {lvalue})'''
+    def blockModelSpaceId (self, db: PyDb.Database)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def blockModelSpaceName (self, *args, **kwargs)-> str :
-      '''blockModelSpaceName( (SymUtilServices)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > blockModelSpaceName(class PyDbSymUtilServices {lvalue})'''
+    def blockModelSpaceName (self)-> str :
+      '''                             '''
     ...
-    def blockPaperSpaceId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''blockPaperSpaceId( (SymUtilServices)arg1, (Database)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId blockPaperSpaceId(class PyDbSymUtilServices {lvalue},class PyDbDatabase {lvalue})'''
+    def blockPaperSpaceId (self, db: PyDb.Database)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def blockPaperSpaceName (self, *args, **kwargs)-> str :
-      '''blockPaperSpaceName( (SymUtilServices)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > blockPaperSpaceName(class PyDbSymUtilServices {lvalue})'''
+    def blockPaperSpaceName (self)-> str :
+      '''                             '''
     ...
-    def compareSymbolName (self, *args, **kwargs)-> int :
-      '''compareSymbolName( (SymUtilServices)arg1, (str)arg2, (str)arg3) -> int :
-
-    C++ signature :
-        int compareSymbolName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def compareSymbolName (self, thisName: str, otherName: str)-> int :
+      '''                             '''
     ...
-    def compatibilityMode (self, *args, **kwargs)-> bool :
-      '''compatibilityMode( (SymUtilServices)arg1, (Database)arg2) -> bool :
-
-    C++ signature :
-        bool compatibilityMode(class PyDbSymUtilServices {lvalue},class PyDbDatabase {lvalue})'''
+    def compatibilityMode (self, db: PyDb.Database)-> bool :
+      '''                             '''
     ...
-    def getBlockNameFromInsertPathName (self, *args, **kwargs)-> str :
-      '''getBlockNameFromInsertPathName( (SymUtilServices)arg1, (str)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getBlockNameFromInsertPathName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getBlockNameFromInsertPathName (self, pathname: str)-> str :
+      '''                             '''
     ...
-    def getInsertPathNameFromBlockName (self, *args, **kwargs)-> str :
-      '''getInsertPathNameFromBlockName( (SymUtilServices)arg1, (str)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getInsertPathNameFromBlockName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getInsertPathNameFromBlockName (self, pathname: str)-> str :
+      '''                             '''
     ...
-    def getPathNameFromSymbolName (self, *args, **kwargs)-> str :
-      '''getPathNameFromSymbolName( (SymUtilServices)arg1, (str)arg2, (str)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPathNameFromSymbolName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getPathNameFromSymbolName (self, symname: str, extensions: str)-> str :
+      '''                             '''
     ...
-    def getSymbolNameFromPathName (self, *args, **kwargs)-> str :
-      '''getSymbolNameFromPathName( (SymUtilServices)arg1, (str)arg2, (str)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getSymbolNameFromPathName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getSymbolNameFromPathName (self, symname: str, extensions: str)-> str :
+      '''                             '''
     ...
-    def hasVerticalBar (self, *args, **kwargs)-> bool :
-      '''hasVerticalBar( (SymUtilServices)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool hasVerticalBar(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def hasVerticalBar (self, val: str)-> bool :
+      '''                             '''
     ...
-    def isBlockLayoutName (self, *args, **kwargs)-> bool :
-      '''isBlockLayoutName( (SymUtilServices)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool isBlockLayoutName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def isBlockLayoutName (self, val: str)-> bool :
+      '''                             '''
     ...
-    def isBlockModelSpaceName (self, *args, **kwargs)-> bool :
-      '''isBlockModelSpaceName( (SymUtilServices)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool isBlockModelSpaceName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def isBlockModelSpaceName (self, val: str)-> bool :
+      '''                             '''
     ...
-    def isBlockPaperSpaceName (self, *args, **kwargs)-> bool :
-      '''isBlockPaperSpaceName( (SymUtilServices)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool isBlockPaperSpaceName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def isBlockPaperSpaceName (self, val: str)-> bool :
+      '''                             '''
     ...
-    def isLayerDefpointsName (self, *args, **kwargs)-> bool :
-      '''isLayerDefpointsName( (SymUtilServices)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool isLayerDefpointsName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def isLayerDefpointsName (self, val: str)-> bool :
+      '''                             '''
     ...
-    def isLayerZeroName (self, *args, **kwargs)-> bool :
-      '''isLayerZeroName( (SymUtilServices)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool isLayerZeroName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def isLayerZeroName (self, val: str)-> bool :
+      '''                             '''
     ...
-    def isLinetypeByBlockName (self, *args, **kwargs)-> bool :
-      '''isLinetypeByBlockName( (SymUtilServices)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool isLinetypeByBlockName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def isLinetypeByBlockName (self, val: str)-> bool :
+      '''                             '''
     ...
-    def isLinetypeByLayerName (self, *args, **kwargs)-> bool :
-      '''isLinetypeByLayerName( (SymUtilServices)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool isLinetypeByLayerName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def isLinetypeByLayerName (self, val: str)-> bool :
+      '''                             '''
     ...
-    def isLinetypeContinuousName (self, *args, **kwargs)-> bool :
-      '''isLinetypeContinuousName( (SymUtilServices)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool isLinetypeContinuousName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def isLinetypeContinuousName (self, val: str)-> bool :
+      '''                             '''
     ...
-    def isRegAppAcadName (self, *args, **kwargs)-> bool :
-      '''isRegAppAcadName( (SymUtilServices)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool isRegAppAcadName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def isRegAppAcadName (self, val: str)-> bool :
+      '''                             '''
     ...
-    def isTextStyleStandardName (self, *args, **kwargs)-> bool :
-      '''isTextStyleStandardName( (SymUtilServices)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool isTextStyleStandardName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def isTextStyleStandardName (self, val: str)-> bool :
+      '''                             '''
     ...
-    def isViewportActiveName (self, *args, **kwargs)-> bool :
-      '''isViewportActiveName( (SymUtilServices)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool isViewportActiveName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def isViewportActiveName (self, val: str)-> bool :
+      '''                             '''
     ...
-    def layerDefpointsId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''layerDefpointsId( (SymUtilServices)arg1, (Database)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId layerDefpointsId(class PyDbSymUtilServices {lvalue},class PyDbDatabase {lvalue})'''
+    def layerDefpointsId (self, db: PyDb.Database)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def layerDefpointsName (self, *args, **kwargs)-> str :
-      '''layerDefpointsName( (SymUtilServices)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > layerDefpointsName(class PyDbSymUtilServices {lvalue})'''
+    def layerDefpointsName (self)-> str :
+      '''                             '''
     ...
-    def layerZeroId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''layerZeroId( (SymUtilServices)arg1, (Database)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId layerZeroId(class PyDbSymUtilServices {lvalue},class PyDbDatabase {lvalue})'''
+    def layerZeroId (self, db: PyDb.Database)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def layerZeroName (self, *args, **kwargs)-> str :
-      '''layerZeroName( (SymUtilServices)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > layerZeroName(class PyDbSymUtilServices {lvalue})'''
+    def layerZeroName (self)-> str :
+      '''                             '''
     ...
-    def linetypeByBlockId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''linetypeByBlockId( (SymUtilServices)arg1, (Database)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId linetypeByBlockId(class PyDbSymUtilServices {lvalue},class PyDbDatabase {lvalue})'''
+    def linetypeByBlockId (self, db: PyDb.Database)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def linetypeByBlockName (self, *args, **kwargs)-> str :
-      '''linetypeByBlockName( (SymUtilServices)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > linetypeByBlockName(class PyDbSymUtilServices {lvalue})'''
+    def linetypeByBlockName (self)-> str :
+      '''                             '''
     ...
-    def linetypeByLayerId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''linetypeByLayerId( (SymUtilServices)arg1, (Database)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId linetypeByLayerId(class PyDbSymUtilServices {lvalue},class PyDbDatabase {lvalue})'''
+    def linetypeByLayerId (self, db: PyDb.Database)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def linetypeByLayerName (self, *args, **kwargs)-> str :
-      '''linetypeByLayerName( (SymUtilServices)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > linetypeByLayerName(class PyDbSymUtilServices {lvalue})'''
+    def linetypeByLayerName (self)-> str :
+      '''                             '''
     ...
-    def linetypeContinuousId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''linetypeContinuousId( (SymUtilServices)arg1, (Database)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId linetypeContinuousId(class PyDbSymUtilServices {lvalue},class PyDbDatabase {lvalue})'''
+    def linetypeContinuousId (self, db: PyDb.Database)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def linetypeContinuousName (self, *args, **kwargs)-> str :
-      '''linetypeContinuousName( (SymUtilServices)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > linetypeContinuousName(class PyDbSymUtilServices {lvalue})'''
+    def linetypeContinuousName (self)-> str :
+      '''                             '''
     ...
-    def makeDependentName (self, *args, **kwargs)-> str :
-      '''makeDependentName( (SymUtilServices)arg1, (str)arg2, (str)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > makeDependentName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def makeDependentName (self, dwgname: str, symbolName: str)-> str :
+      '''                             '''
     ...
-    def regAppAcadId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''regAppAcadId( (SymUtilServices)arg1, (Database)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId regAppAcadId(class PyDbSymUtilServices {lvalue},class PyDbDatabase {lvalue})'''
+    def regAppAcadId (self, db: PyDb.Database)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def regAppAcadName (self, *args, **kwargs)-> str :
-      '''regAppAcadName( (SymUtilServices)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > regAppAcadName(class PyDbSymUtilServices {lvalue})'''
+    def regAppAcadName (self)-> str :
+      '''                             '''
     ...
-    def repairPreExtendedSymbolName (self, *args, **kwargs)-> str :
-      '''repairPreExtendedSymbolName( (SymUtilServices)arg1, (str)arg2, (bool)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > repairPreExtendedSymbolName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
+    def repairPreExtendedSymbolName (self, oldname: str, allowVerticalBar: bool)-> str :
+      '''                             '''
     ...
-    def repairSymbolName (self, *args, **kwargs)-> str :
-      '''repairSymbolName( (SymUtilServices)arg1, (str)arg2, (bool)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > repairSymbolName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
+    def repairSymbolName (self, oldname: str, allowVerticalBar: bool)-> str :
+      '''                             '''
     ...
-    def textStyleStandardId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''textStyleStandardId( (SymUtilServices)arg1, (Database)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId textStyleStandardId(class PyDbSymUtilServices {lvalue},class PyDbDatabase {lvalue})'''
+    def textStyleStandardId (self, db: PyDb.Database)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def textStyleStandardName (self, *args, **kwargs)-> str :
-      '''textStyleStandardName( (SymUtilServices)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textStyleStandardName(class PyDbSymUtilServices {lvalue})'''
+    def textStyleStandardName (self)-> str :
+      '''                             '''
     ...
-    def validateCompatibleSymbolName (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''validateCompatibleSymbolName( (SymUtilServices)arg1, (str)arg2, (bool)arg3, (bool)arg4, (bool)arg5) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus validateCompatibleSymbolName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool,bool)'''
+    def validateCompatibleSymbolName (self, name: str, isNewName: bool, allowVerticalBar: bool, compatibilityMode: bool)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
-    def validatePreExtendedSymbolName (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''validatePreExtendedSymbolName( (SymUtilServices)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus validatePreExtendedSymbolName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
+    def validatePreExtendedSymbolName (self, oldname: str, allowVerticalBar: bool)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
-    def validateSymbolName (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''validateSymbolName( (SymUtilServices)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus validateSymbolName(class PyDbSymUtilServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
+    def validateSymbolName (self, name: str, allowVerticalBar: bool)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
-    def viewportActiveName (self, *args, **kwargs)-> str :
-      '''viewportActiveName( (SymUtilServices)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > viewportActiveName(class PyDbSymUtilServices {lvalue})'''
+    def viewportActiveName (self)-> str :
+      '''                             '''
     ...
 
 class SymbolTable(DbObject):
