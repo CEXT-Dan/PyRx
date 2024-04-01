@@ -687,7 +687,6 @@ void makePyDbMPolygonWrapper()
         .def("desc", &PyDbMPolygon::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbMPolygon::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbMPolygon::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
-        .def("loadModule", &PyDbMPolygon::loadModule, DS.SARGS()).staticmethod("loadModule")
         ;
 
     enum_<AcDbMPolygon::loopDir>("MPolygonloopDir")
@@ -699,22 +698,22 @@ void makePyDbMPolygonWrapper()
 }
 
 PyDbMPolygon::PyDbMPolygon()
-    : m_loaded(PyDbMPolygon::loadModule()), PyDbEntity(new AcDbMPolygon(), true)
+    : PyDbEntity(new AcDbMPolygon(), true)
 {
 }
 
 PyDbMPolygon::PyDbMPolygon(AcDbMPolygon* ptr, bool autoDelete)
-    : m_loaded(PyDbMPolygon::loadModule()), PyDbEntity(ptr, autoDelete)
+    :  PyDbEntity(ptr, autoDelete)
 {
 }
 
 PyDbMPolygon::PyDbMPolygon(const PyDbObjectId& id)
-    : m_loaded(PyDbMPolygon::loadModule()), PyDbEntity(openAcDbObject<AcDbMPolygon>(id, AcDb::OpenMode::kForRead), false)
+    : PyDbEntity(openAcDbObject<AcDbMPolygon>(id, AcDb::OpenMode::kForRead), false)
 {
 }
 
 PyDbMPolygon::PyDbMPolygon(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : m_loaded(PyDbMPolygon::loadModule()), PyDbEntity(openAcDbObject<AcDbMPolygon>(id, mode), false)
+    : PyDbEntity(openAcDbObject<AcDbMPolygon>(id, mode), false)
 {
 }
 
@@ -1019,13 +1018,11 @@ std::string PyDbMPolygon::className()
 
 PyRxClass PyDbMPolygon::desc()
 {
-    PyDbMPolygon::loadModule();
     return PyRxClass(AcDbMPolygon::desc(), false);
 }
 
 PyDbMPolygon PyDbMPolygon::cloneFrom(const PyRxObject& src)
 {
-    PyDbMPolygon::loadModule();
     if (!src.impObj()->isKindOf(AcDbMPolygon::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbMPolygon(static_cast<AcDbMPolygon*>(src.impObj()->clone()), true);
@@ -1034,17 +1031,6 @@ PyDbMPolygon PyDbMPolygon::cloneFrom(const PyRxObject& src)
 PyDbMPolygon PyDbMPolygon::cast(const PyRxObject& src)
 {
     return PyDbObjectCast<PyDbMPolygon>(src);
-}
-
-//TODO: autoload this?
-bool PyDbMPolygon::loadModule()
-{
-    if (!m_sAcDbMPolygonLoaded)
-    {
-        auto modname = std::format(_T("AcMPolygonObj{}.dbx"), acdbHostApplicationServices()->releaseMajorVersion());
-        m_sAcDbMPolygonLoaded = acrxLoadModule(modname.c_str(), false, false);
-    }
-    return m_sAcDbMPolygonLoaded;
 }
 
 AcDbMPolygon* PyDbMPolygon::impObj(const std::source_location& src /*= std::source_location::current()*/) const

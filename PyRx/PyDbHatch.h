@@ -168,10 +168,8 @@ public:
     static PyRxClass        desc();
     static PyDbMPolygon     cloneFrom(const PyRxObject& src);
     static PyDbMPolygon     cast(const PyRxObject& src);
-    static bool             loadModule();
+
 public:
     AcDbMPolygon* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
-    bool m_loaded = false;
-    inline static bool m_sAcDbMPolygonLoaded = false;
 };
