@@ -11,9 +11,7 @@ import PyEd as Ed
 import PyBrxCv as Cv
 import time
 
-print("testname = pybcciviltest")
 host = Ap.Application.hostAPI()
-
 
 class TestBCadCivil(unittest.TestCase):
     def __init__(self, *args, **kwargs):

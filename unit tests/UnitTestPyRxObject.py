@@ -7,7 +7,6 @@ import PyGi  # = Graphics interface
 import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
-print("testname = pyrxobject")
 
 host = PyAp.Application.hostAPI()
 

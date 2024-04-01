@@ -10,7 +10,6 @@ import PyAp as Ap
 import PyEd as Ed
 import dbc
 
-print("testname = pyentity")
 host = Ap.Application.hostAPI()
 
 def create_dbPoint():

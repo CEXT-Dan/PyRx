@@ -10,7 +10,6 @@ import PyAp as Ap
 import PyEd as Ed
 import wx
 
-print("testname = pywx")
 host = Ap.Application.hostAPI()
 
 

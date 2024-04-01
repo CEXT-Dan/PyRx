@@ -7,7 +7,7 @@ import PyGi# = Graphics interface
 import PyDb# = database
 import PyAp# = application, document classes services 
 import PyEd# = editor 
-print("testname = pydbobjectid")
+
 host = PyAp.Application.hostAPI()
 
 

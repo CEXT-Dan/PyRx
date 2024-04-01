@@ -11,7 +11,6 @@ import PyEd as Ed
 import dbc
 import time
 
-print("testname = pydbtest")
 host = Ap.Application.hostAPI()
 
 class TestDatabase(unittest.TestCase):
