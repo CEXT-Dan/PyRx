@@ -11227,16 +11227,8 @@ setCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2, (str)arg3, (str)arg4
     ...
 
 class Date(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -29105,17 +29097,13 @@ class Layout(PlotSettings):
     ...
 
 class LayoutManager(PyRx.RxObject):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def clearSetupForLayouts (self, *args, **kwargs)-> None :
       '''clearSetupForLayouts( (int)arg1) -> None :
@@ -29184,11 +29172,10 @@ deleteLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     C++ signature :
         void deleteLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def dispose (self)-> None :
       '''                             '''
@@ -36194,11 +36181,6 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
       '''                             '''
     ...
     def list (self)-> None :
-      '''                             '''
-    ...
-
-    @staticmethod
-    def loadModule ()-> bool :
       '''                             '''
     ...
     def loopCrossesItself (self, *args, **kwargs)-> bool :

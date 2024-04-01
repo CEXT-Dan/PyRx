@@ -211,10 +211,7 @@ public:
     inline ~RxAutoOutStr()
     {
         if (buf != nullptr)
-        {
             acutDelString(buf);
-            buf = nullptr;
-        }
     }
     inline std::string str() const
     {

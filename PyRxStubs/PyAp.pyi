@@ -1262,11 +1262,8 @@ __init__( (object)arg1) -> None :
     ...
 
 class LayoutManager(PyDb.LayoutManager):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
