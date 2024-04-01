@@ -28,8 +28,10 @@ print("testname = runtests")
 
 def PyRxCmd_runtests() -> None:
     try:
+        # uses dbx so load databases later
+        UnitTestPyActiveX.pyactivex()
+        
         dbc.loaddbs()
-    
         UnitTestPyAcGe.pyge()
         UnitTestPyRxObject.pyrxobject()
         UnitTestPyDatabase.pydbtest()
@@ -40,7 +42,6 @@ def PyRxCmd_runtests() -> None:
         UnitTestPyDbEntity.pyentity()
         UnitTestPyEditor.pyeditor()
         UnitTestPyWx.pywx()
-        UnitTestPyActiveX.pyactivex()
 
         if "BRX" in host:
             UnitTestPyBcadCivil.pybcciviltest()
