@@ -11,10 +11,8 @@ import UnitTestPyWx
 import UnitTestPyActiveX
 import dbc
 
-
 def OnPyUnloadApp():
     dbc.dbs = None
-
 
 from pyrx_imp import Ap
 
@@ -25,13 +23,17 @@ if "BRX" in host:
 
 print("testname = runtests")
 
-
 def PyRxCmd_runtests() -> None:
     try:
+        
+        #TODO: make a prompt to select what tests to run
+        
         # uses dbx so load databases later
         UnitTestPyActiveX.pyactivex()
         
+        #load 
         dbc.loaddbs()
+        
         UnitTestPyAcGe.pyge()
         UnitTestPyRxObject.pyrxobject()
         UnitTestPyDatabase.pydbtest()
