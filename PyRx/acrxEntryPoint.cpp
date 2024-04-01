@@ -80,9 +80,7 @@ public:
                     }
                 }
             }
-            WxPyAutoLock lock;
             PyRxApp::instance().uninit();
-            acedRegCmds->removeGroup(_T("PYCOMMANDS"));
         }
         catch (...) { /*@exit*/ }
         return (retCode);
