@@ -210,7 +210,33 @@ class TestDatabase(unittest.TestCase):
         for id in ids:
             self.assertTrue(id.isValid())
             self.assertTrue(id.isDerivedFrom(Db.Line.desc()))
-        
+            
+    def test_blocktable(self):
+        db: Db.Database = dbc.dbs["06457"]
+        bt = Db.BlockTable(db.blockTableId())
+        self.assertTrue(bt.has(Db.SymUtilServices().blockModelSpaceId(db)))
+        self.assertTrue(bt.has(Db.SymUtilServices().blockModelSpaceName()))
+        self.assertTrue(bt.has( Db.SymUtilServices().blockPaperSpaceName()))
+        self.assertTrue(bt.has( Db.SymUtilServices().blockPaperSpaceId(db)))
+        cnt1 =0
+        for id in bt:
+            cnt1 += 1
+        cnt2 =0
+        for id in bt.toDict().values():
+            cnt2 += 1
+        self.assertEqual(cnt1, cnt2)
+            
+    def test_BTR_iter(self):
+        db: Db.Database=  dbc.dbs["TestPoints"]
+        model = Db.BlockTableRecord(db.modelSpaceId())
+        cnt1 =0
+        for id in model:
+            cnt1 += 1
+        cnt2 =0
+        for id in model.objectIds():
+            cnt2 += 1
+        self.assertEqual(cnt1, cnt2)
+            
     def test_addToBlock1(self):
         db =  dbc.dbs["06457"]
         line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
