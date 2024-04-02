@@ -316,7 +316,7 @@ public:
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
-
+        acutPrintf(_T("\nPyAutoLockGIL count = %ld: "),PyAutoLockGIL::ncount);
     }
 #endif
 };
