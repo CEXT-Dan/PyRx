@@ -213,15 +213,33 @@ class TestDatabase(unittest.TestCase):
     def test_blocktable(self):
         db: Db.Database = dbc.dbs["06457"]
         bt = Db.BlockTable(db.blockTableId())
-        self.assertTrue(bt.has(Db.SymUtilServices().blockModelSpaceId(db)))
-        self.assertTrue(bt.has(Db.SymUtilServices().blockModelSpaceName()))
-        self.assertTrue(bt.has(Db.SymUtilServices().blockPaperSpaceName()))
-        self.assertTrue(bt.has(Db.SymUtilServices().blockPaperSpaceId(db)))
+        data = bt.toDict()
+        
+        mid = Db.SymUtilServices().blockModelSpaceId(db)
+        mname = Db.SymUtilServices().blockModelSpaceName()
+        pid = Db.SymUtilServices().blockPaperSpaceId(db)
+        pname = Db.SymUtilServices().blockPaperSpaceName()
+        
+        self.assertTrue(bt.has(mid))
+        self.assertTrue(bt.has(mname))
+        self.assertTrue(bt.has(pid))
+        self.assertTrue(bt.has(pname))
+        
+        self.assertTrue((mid in bt))
+        self.assertTrue((mname in bt))
+        self.assertTrue((pid in bt))
+        self.assertTrue((pname in bt))
+        
+        self.assertTrue((mid in data.values()))
+        self.assertTrue((mname in data.keys()))
+        self.assertTrue((pid in data.values()))
+        self.assertTrue((pname in data.keys()))
+        
         cnt1 = 0
         for id in bt:
             cnt1 += 1
         cnt2 = 0
-        for id in bt.toDict().values():
+        for id in data.values():
             cnt2 += 1
         self.assertEqual(cnt1, cnt2)
 
