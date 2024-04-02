@@ -8385,37 +8385,30 @@ class Core(object):
     def assignGelibCurveToAcDbCurve (geCurve:PyGe.Curve3d,dbCurve:PyDb.Curve,norm: PyGe.Vector3d=PyGe.Vector3d.kZAxis,tol:PyGe.Tol='tol')-> None :
       '''                             '''
     ...
-    def attachPointCloudExEntity (self, path: str, pos: PyGe.Point3d, scale: float, rotation: float, db: PyDb.Database)-> PyDb.ObjectId :
+
+    @staticmethod
+    def attachPointCloudExEntity (path: str,pos: PyGe.Point3d,scale: float,rotation: float,db: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def attachXref (self, *args, **kwargs)-> None :
-      '''attachXref( (Database)arg1, (str)arg2, (str)arg3, (ObjectId)arg4) -> None :
 
-    C++ signature :
-        void attachXref(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue})'''
+    @staticmethod
+    def attachXref (db: PyDb.Database,fname: str,blkname: str)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def bindXrefs (self, *args, **kwargs)-> None :
-      '''bindXrefs( (Database)arg1, (list)arg2, (bool)arg3) -> None :
 
-    C++ signature :
-        void bindXrefs(class PyDbDatabase {lvalue},class boost::python::list,bool)
-
-bindXrefs( (Database)arg1, (list)arg2, (bool)arg3, (bool)arg4, (bool)arg5) -> None :
-
-    C++ signature :
-        void bindXrefs(class PyDbDatabase {lvalue},class boost::python::list,bool,bool,bool)'''
+    @staticmethod
+    def bindXrefs (db: PyDb.Database,ids: list[PyDb.ObjectId],bInsertBind: bool,bInsertBind: bool,bAllowUnresolved: bool=False,bequite: bool=True)-> None :
+      '''                             '''
     ...
-    def canonicalToSystemRange (self, *args, **kwargs)-> str :
-      '''canonicalToSystemRange( (int)arg1, (str)arg2) -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > canonicalToSystemRange(int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def canonicalToSystemRange (units: int,val: str)-> str :
+      '''                             '''
     ...
-    def clearSetupForLayouts (self, *args, **kwargs)-> None :
-      '''clearSetupForLayouts( (int)arg1) -> None :
 
-    C++ signature :
-        void clearSetupForLayouts(unsigned __int64)'''
+    @staticmethod
+    def clearSetupForLayouts (ctxhandle: int)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -8427,100 +8420,80 @@ bindXrefs( (Database)arg1, (list)arg2, (bool)arg3, (bool)arg4, (bool)arg5) -> No
     def convertGelibCurveToAcDbCurve (geCurve:PyGe.Curve3d,norm:PyGe.Vector3d=PyGe.Vector3d.kZAxis,tol:PyGe.Tol='tol')-> PyDb.Curve :
       '''                             '''
     ...
-    def createViewByViewport (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''createViewByViewport( (Database)arg1, (ObjectId)arg2, (str)arg3, (str)arg4, (ObjectId)arg5) -> ObjectId :
 
-    C++ signature :
-        class PyDbObjectId createViewByViewport(class PyDbDatabase {lvalue},class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    @staticmethod
+    def createViewByViewport (db: PyDb.Database,vpid: PyDb.ObjectId,name: str,cat: str,labelblock: PyDb.ObjectId)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def detachXref (self, *args, **kwargs)-> None :
-      '''detachXref( (Database)arg1, (ObjectId)arg2) -> None :
 
-    C++ signature :
-        void detachXref(class PyDbDatabase {lvalue},class PyDbObjectId)'''
+    @staticmethod
+    def detachXref (db: PyDb.Database,xrefid: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def dictAdd (self, *args, **kwargs)-> bool :
-      '''dictAdd( (ObjectId)arg1, (str)arg2, (ObjectId)arg3) -> bool :
 
-    C++ signature :
-        bool dictAdd(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    @staticmethod
+    def dictAdd (dictname: PyDb.ObjectId,symname: str,newid: PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
-    def dictNext (self, *args, **kwargs)-> list :
-      '''dictNext( (ObjectId)arg1, (int)arg2) -> list :
 
-    C++ signature :
-        class boost::python::list dictNext(class PyDbObjectId,int)'''
+    @staticmethod
+    def dictNext (dictname: PyDb.ObjectId,rewind: int)-> list :
+      '''                             '''
     ...
-    def dictRemove (self, *args, **kwargs)-> bool :
-      '''dictRemove( (ObjectId)arg1, (str)arg2) -> bool :
 
-    C++ signature :
-        bool dictRemove(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def dictRemove (id: PyDb.ObjectId,name: str)-> bool :
+      '''                             '''
     ...
-    def dictRename (self, *args, **kwargs)-> bool :
-      '''dictRename( (ObjectId)arg1, (str)arg2, (str)arg3) -> bool :
 
-    C++ signature :
-        bool dictRename(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def dictRename (id: PyDb.ObjectId,name: str,newname: str)-> bool :
+      '''                             '''
     ...
-    def dictSearch (self, *args, **kwargs)-> list :
-      '''dictSearch( (ObjectId)arg1, (str)arg2, (int)arg3) -> list :
 
-    C++ signature :
-        class boost::python::list dictSearch(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    @staticmethod
+    def dictSearch (id: PyDb.ObjectId,name: str,next: int)-> list :
+      '''                             '''
     ...
-    def disToF (self, *args, **kwargs)-> float :
-      '''disToF( (str)arg1, (int)arg2) -> float :
 
-    C++ signature :
-        double disToF(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    @staticmethod
+    def disToF (val: str,unit: int)-> float :
+      '''                             '''
     ...
-    def displayPreviewFromDwg (self, *args, **kwargs)-> bool :
-      '''displayPreviewFromDwg( (str)arg1, (int)arg2) -> bool :
 
-    C++ signature :
-        bool displayPreviewFromDwg(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,unsigned __int64)'''
+    @staticmethod
+    def displayPreviewFromDwg (name: str,handle: int)-> bool :
+      '''                             '''
     ...
-    def doSetupForLayouts (self, *args, **kwargs)-> int :
-      '''doSetupForLayouts( (Database)arg1) -> int :
 
-    C++ signature :
-        unsigned __int64 doSetupForLayouts(class PyDbDatabase {lvalue})'''
+    @staticmethod
+    def doSetupForLayouts (db: PyDb.Database)-> int :
+      '''                             '''
     ...
-    def dwkFileExists (self, *args, **kwargs)-> bool :
-      '''dwkFileExists( (str)arg1) -> bool :
 
-    C++ signature :
-        bool dwkFileExists(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def dwkFileExists (name: str)-> bool :
+      '''                             '''
     ...
-    def dxfOutAs2000 (self, *args, **kwargs)-> None :
-      '''dxfOutAs2000( (Database)arg1, (str)arg2, (int)arg3) -> None :
 
-    C++ signature :
-        void dxfOutAs2000(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    @staticmethod
+    def dxfOutAs2000 (db: PyDb.Database,name: str,precision: int)-> None :
+      '''                             '''
     ...
-    def dxfOutAs2004 (self, *args, **kwargs)-> None :
-      '''dxfOutAs2004( (Database)arg1, (str)arg2, (int)arg3) -> None :
 
-    C++ signature :
-        void dxfOutAs2004(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    @staticmethod
+    def dxfOutAs2004 (db: PyDb.Database,name: str,precision: int)-> None :
+      '''                             '''
     ...
-    def dxfOutAsR12 (self, *args, **kwargs)-> None :
-      '''dxfOutAsR12( (Database)arg1, (str)arg2, (int)arg3) -> None :
 
-    C++ signature :
-        void dxfOutAsR12(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    @staticmethod
+    def dxfOutAsR12 (db: PyDb.Database,name: str,precision: int)-> None :
+      '''                             '''
     ...
-    def ecs2Wcs (self, *args, **kwargs)-> bool :
-      '''ecs2Wcs( (Point3d)arg1, (Vector3d)arg2, (Point3d)arg3) -> bool :
 
-    C++ signature :
-        bool ecs2Wcs(class AcGePoint3d,class AcGeVector3d,class AcGePoint3d {lvalue})
-
-ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
-
-    C++ signature :
-        bool ecs2Wcs(class AcGeVector3d,class AcGeVector3d,class AcGeVector3d {lvalue})'''
+    @staticmethod
+    def ecs2Wcs (p: PyGe.Point3d|PyGe.Vector3d,normal: PyGe.Vector3d,qout: PyGe.Point3d|PyGe.Vector3d)-> bool :
+      '''                             '''
     ...
 
     @staticmethod
@@ -8637,11 +8610,10 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     def getReservedString (reservedType: PyDb.reservedStringEnumType,bGetLocalized: bool)-> str :
       '''                             '''
     ...
-    def getSummaryInfo (self, *args, **kwargs)-> PyDb.DatabaseSummaryInfo :
-      '''getSummaryInfo( (Database)arg1) -> DatabaseSummaryInfo :
 
-    C++ signature :
-        class PyDbDatabaseSummaryInfo getSummaryInfo(class PyDbDatabase {lvalue})'''
+    @staticmethod
+    def getSummaryInfo (db: PyDb.Database)-> PyDb.DatabaseSummaryInfo :
+      '''                             '''
     ...
 
     @staticmethod
@@ -8664,40 +8636,35 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     def hasGeoData (db: PyDb.Database)-> bool :
       '''                             '''
     ...
-    def inters (self, *args, **kwargs)-> PyGe.Point3d :
-      '''inters( (Point3d)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (int)arg5) -> Point3d :
 
-    C++ signature :
-        class AcGePoint3d inters(class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,int)'''
+    @staticmethod
+    def inters (from1: PyGe.Point3d,to1: PyGe.Point3d,from2: PyGe.Point3d,to2: PyGe.Point3d,teston: int)-> PyGe.Point3d :
+      '''                             '''
     ...
 
     @staticmethod
     def isEnabledTightExtents ()-> bool :
       '''                             '''
     ...
-    def isReservedString (self, *args, **kwargs)-> bool :
-      '''isReservedString( (str)arg1, (ReservedStringEnumType)arg2) -> bool :
 
-    C++ signature :
-        bool isReservedString(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,enum AcDb::reservedStringEnumType)'''
+    @staticmethod
+    def isReservedString (val: str,reservedType: PyDb.reservedStringEnumType)-> bool :
+      '''                             '''
     ...
-    def loadLineTypeFile (self, *args, **kwargs)-> None :
-      '''loadLineTypeFile( (str)arg1, (str)arg2, (Database)arg3) -> None :
 
-    C++ signature :
-        void loadLineTypeFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+    @staticmethod
+    def loadLineTypeFile (ltname: str,fname: str,db: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def loadMlineStyleFile (self, *args, **kwargs)-> None :
-      '''loadMlineStyleFile( (str)arg1, (str)arg2) -> None :
 
-    C++ signature :
-        void loadMlineStyleFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def loadMlineStyleFile (ltname: str,fname: str)-> None :
+      '''                             '''
     ...
-    def namedObjDict (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''namedObjDict() -> ObjectId :
 
-    C++ signature :
-        class PyDbObjectId namedObjDict()'''
+    @staticmethod
+    def namedObjDict ()-> PyDb.ObjectId :
+      '''                             '''
     ...
 
     @staticmethod
@@ -8732,11 +8699,10 @@ postDimAssoc( (ObjectId)arg1, (DimAssoc)arg2, (bool)arg3) -> ObjectId :
     C++ signature :
         class PyDbObjectId postDimAssoc(class PyDbObjectId,class PyDbDimAssoc {lvalue},bool)'''
     ...
-    def putSummaryInfo (self, *args, **kwargs)-> None :
-      '''putSummaryInfo( (DatabaseSummaryInfo)arg1, (Database)arg2) -> None :
 
-    C++ signature :
-        void putSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},class PyDbDatabase {lvalue})'''
+    @staticmethod
+    def putSummaryInfo (info: PyDb.DatabaseSummaryInfo,db: PyDb.Database)-> None :
+      '''                             '''
     ...
     def queueAnnotationEntitiesForRegen (self, *args, **kwargs)-> None :
       '''queueAnnotationEntitiesForRegen( (Database)arg1) -> None :
@@ -8744,17 +8710,15 @@ postDimAssoc( (ObjectId)arg1, (DimAssoc)arg2, (bool)arg3) -> ObjectId :
     C++ signature :
         void queueAnnotationEntitiesForRegen(class PyDbDatabase {lvalue})'''
     ...
-    def queueForRegen (self, *args, **kwargs)-> int :
-      '''queueForRegen( (list)arg1) -> int :
 
-    C++ signature :
-        int queueForRegen(class boost::python::list)'''
+    @staticmethod
+    def queueForRegen (ids: list[PyDb.ObjectId])-> int :
+      '''                             '''
     ...
-    def regApp (self, *args, **kwargs)-> bool :
-      '''regApp( (str)arg1) -> bool :
 
-    C++ signature :
-        bool regApp(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def regApp (val: str)-> bool :
+      '''                             '''
     ...
     def reloadXrefs (self, *args, **kwargs)-> None :
       '''reloadXrefs( (Core)arg1, (Database)arg2, (list)arg3) -> None :
@@ -8767,131 +8731,93 @@ reloadXrefs( (Core)arg1, (Database)arg2, (list)arg3, (bool)arg4) -> None :
     C++ signature :
         void reloadXrefs(class DbCore {lvalue},class PyDbDatabase {lvalue},class boost::python::list,bool)'''
     ...
-    def resbufTest (self, *args, **kwargs)-> list :
-      '''resbufTest( (list)arg1) -> list :
 
-    C++ signature :
-        class boost::python::list resbufTest(class boost::python::list)'''
+    @staticmethod
+    def resbufTest (resultBuffer: list)-> list :
+      '''                             '''
     ...
-    def rtos (self, *args, **kwargs)-> str :
-      '''rtos( (float)arg1, (int)arg2, (int)arg3) -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > rtos(double,int,int)'''
+    @staticmethod
+    def rtos (val: float,unit: int,prec: int)-> str :
+      '''                             '''
     ...
 
     @staticmethod
     def setEnableTightExtents (val: bool)-> None :
       '''                             '''
     ...
-    def snValid (self, *args, **kwargs)-> bool :
-      '''snValid( (str)arg1, (int)arg2) -> bool :
 
-    C++ signature :
-        bool snValid(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    @staticmethod
+    def snValid (val: str,pipetest: int)-> bool :
+      '''                             '''
     ...
-    def symUtil (self, *args, **kwargs)-> PyDb.SymUtilServices :
-      '''symUtil() -> SymUtilServices :
 
-    C++ signature :
-        class PyDbSymUtilServices symUtil()'''
+    @staticmethod
+    def symUtil ()-> PyDb.SymUtilServices :
+      '''                             '''
     ...
-    def tblNext (self, *args, **kwargs)-> list :
-      '''tblNext( (str)arg1, (int)arg2) -> list :
 
-    C++ signature :
-        class boost::python::list tblNext(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    @staticmethod
+    def tblNext (name: str,rewind: int)-> list :
+      '''                             '''
     ...
-    def tblObjName (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''tblObjName( (str)arg1, (str)arg2) -> ObjectId :
 
-    C++ signature :
-        class PyDbObjectId tblObjName(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def tblObjName (tblname: str,sym: str)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def tblSearch (self, *args, **kwargs)-> list :
-      '''tblSearch( (str)arg1, (str)arg2, (int)arg3) -> list :
 
-    C++ signature :
-        class boost::python::list tblSearch(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    @staticmethod
+    def tblSearch (tblname: str,sym: str,setnext: int)-> list :
+      '''                             '''
     ...
-    def textFind (self, *args, **kwargs)-> list :
-      '''textFind( (Database)arg1, (str)arg2) -> list :
 
-    C++ signature :
-        class boost::python::list textFind(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-textFind( (Database)arg1, (str)arg2, (str)arg3, (int)arg4, (list)arg5) -> list :
-
-    C++ signature :
-        class boost::python::list textFind(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,unsigned char,class boost::python::list)'''
+    @staticmethod
+    def textFind (tblname: str,sym: str,setnext: int)-> list :
+      '''Overloads:
+    - db: PyDb.Database, findString: str
+    - db: PyDb.Database, findString: str,replaceString: str,searchOptions: int,ids: list[PyDb.ObjectId]
+    '''
     ...
-    def transactionManager (self, *args, **kwargs)-> PyAp.TransactionManager :
-      '''transactionManager() -> TransactionManager :
 
-    C++ signature :
-        class PyDbTransactionManager transactionManager()'''
+    @staticmethod
+    def transactionManager ()-> PyAp.TransactionManager :
+      '''                             '''
     ...
-    def ucs2Wcs (self, *args, **kwargs)-> bool :
-      '''ucs2Wcs( (Point3d)arg1, (Point3d)arg2) -> bool :
 
-    C++ signature :
-        bool ucs2Wcs(class AcGePoint3d,class AcGePoint3d {lvalue})
-
-ucs2Wcs( (Vector3d)arg1, (Vector3d)arg2) -> bool :
-
-    C++ signature :
-        bool ucs2Wcs(class AcGeVector3d,class AcGeVector3d {lvalue})'''
+    @staticmethod
+    def ucs2Wcs (p: PyGe.Point3d|PyGe.Vector3d,qout: PyGe.Point3d|PyGe.Vector3d)-> bool :
+      '''                             '''
     ...
-    def ucsMatrix (self, *args, **kwargs)-> PyGe.Matrix3d :
-      '''ucsMatrix( (Database)arg1) -> Matrix3d :
 
-    C++ signature :
-        class AcGeMatrix3d ucsMatrix(class PyDbDatabase {lvalue})'''
+    @staticmethod
+    def ucsMatrix (db: PyDb.Database)-> PyGe.Matrix3d :
+      '''                             '''
     ...
-    def unloadXrefs (self, *args, **kwargs)-> None :
-      '''unloadXrefs( (Database)arg1, (list)arg2) -> None :
 
-    C++ signature :
-        void unloadXrefs(class PyDbDatabase {lvalue},class boost::python::list)
-
-unloadXrefs( (Database)arg1, (list)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void unloadXrefs(class PyDbDatabase {lvalue},class boost::python::list,bool)'''
+    @staticmethod
+    def unloadXrefs (db: PyDb.Database,ids: list[PyDb.ObjectId],bequiet: bool=True)-> None :
+      '''                             '''
     ...
-    def updateDimension (self, *args, **kwargs)-> None :
-      '''updateDimension( (ObjectId)arg1) -> None :
 
-    C++ signature :
-        void updateDimension(class PyDbObjectId)'''
+    @staticmethod
+    def updateDimension (id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def validateCustomSummaryInfoKey (self, *args, **kwargs)-> bool :
-      '''validateCustomSummaryInfoKey( (str)arg1, (DatabaseSummaryInfo)arg2) -> bool :
 
-    C++ signature :
-        bool validateCustomSummaryInfoKey(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabaseSummaryInfo {lvalue})'''
+    @staticmethod
+    def validateCustomSummaryInfoKey (val: str,info: PyDb.DatabaseSummaryInfo)-> bool :
+      '''                             '''
     ...
-    def wcs2Ecs (self, *args, **kwargs)-> bool :
-      '''wcs2Ecs( (Point3d)arg1, (Vector3d)arg2, (Point3d)arg3) -> bool :
 
-    C++ signature :
-        bool wcs2Ecs(class AcGePoint3d,class AcGeVector3d,class AcGePoint3d {lvalue})
-
-wcs2Ecs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
-
-    C++ signature :
-        bool wcs2Ecs(class AcGeVector3d,class AcGeVector3d,class AcGeVector3d {lvalue})'''
+    @staticmethod
+    def wcs2Ecs (p: PyGe.Point3d|PyGe.Vector3d,normal: PyGe.Vector3d,qout: PyGe.Point3d|PyGe.Vector3d)-> bool :
+      '''                             '''
     ...
-    def wcs2Ucs (self, *args, **kwargs)-> bool :
-      '''wcs2Ucs( (Point3d)arg1, (Point3d)arg2) -> bool :
 
-    C++ signature :
-        bool wcs2Ucs(class AcGePoint3d,class AcGePoint3d {lvalue})
-
-wcs2Ucs( (Vector3d)arg1, (Vector3d)arg2) -> bool :
-
-    C++ signature :
-        bool wcs2Ucs(class AcGeVector3d,class AcGeVector3d {lvalue})'''
+    @staticmethod
+    def wcs2Ucs (p: PyGe.Point3d|PyGe.Vector3d,qout: PyGe.Point3d|PyGe.Vector3d)-> bool :
+      '''                             '''
     ...
 
 class Curve(Entity):

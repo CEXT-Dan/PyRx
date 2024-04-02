@@ -9,6 +9,7 @@ public:
     const char* ARGS(std::initializer_list<std::string> pyargs);
 
     const char* OVRL(const std::string_view overloads);
+    const char* SOVRL(const std::string_view overloads);
     const char* CTOR(const std::string_view overloads);
 
 
