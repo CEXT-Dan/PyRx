@@ -4,6 +4,7 @@ import PyDb as Db
 dbs = {}
 
 def loaddbs():
+    global dbs
     mediapath = os.getcwd() + "\\testmedia\\"
     file_06457 = Db.HostApplicationServices().findFile(mediapath + "06457.dwg")
     dbs["06457"] = Db.Database(False, True)
@@ -16,5 +17,6 @@ def loaddbs():
     dbs["TestPoints"].closeInput(True)
  
 def cleardbs():
+    global dbs
     dbs = None
     
