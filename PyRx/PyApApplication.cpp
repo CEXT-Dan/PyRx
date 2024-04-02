@@ -48,8 +48,8 @@ void makePyApApplictionWrapper()
         .def("wxApp", &PyApApplication::getwxApp, DS.SARGS()).staticmethod("wxApp")
         .def("hostAPI", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPI")
         .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
-        .def("registerOnIdleWinMsg", &PyApApplication::registerOnIdleWinMsg, DS.ARGS({ "func: Any" })).staticmethod("registerOnIdleWinMsg")
-        .def("removeOnIdleWinMsg", &PyApApplication::removeOnIdleWinMsg, DS.ARGS({ "func: Any" })).staticmethod("removeOnIdleWinMsg")
+        .def("registerOnIdleWinMsg", &PyApApplication::registerOnIdleWinMsg, DS.SARGS({ "func: Any" })).staticmethod("registerOnIdleWinMsg")
+        .def("removeOnIdleWinMsg", &PyApApplication::removeOnIdleWinMsg, DS.SARGS({ "func: Any" })).staticmethod("removeOnIdleWinMsg")
         .def("className", &PyApApplication::className, DS.SARGS()).staticmethod("className")
         ;
 }

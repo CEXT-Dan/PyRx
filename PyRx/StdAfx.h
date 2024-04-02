@@ -283,38 +283,22 @@ using AcDbObjectUPtr = std::unique_ptr < T, decltype([](T* ptr) noexcept
 #include <wxPython/wxpy_api.h>
 #include "PyDocString.h"
 
-
-class WxPyAutoLock
-{
-public:
-    WxPyAutoLock()
-    {
-        if (canLock) [[likely]]
-            blocked = wxPyBeginBlockThreads();
-    }
-    ~WxPyAutoLock()
-    {
-        if (canLock) [[likely]]
-            wxPyEndBlockThreads(blocked);
-    }
-
-    WxPyAutoLock(const WxPyAutoLock&) = delete;
-    WxPyAutoLock& operator=(const WxPyAutoLock&) = delete;
-
-    wxPyBlock_t blocked = PyGILState_UNLOCKED;
-    inline static bool canLock = false;
-};
-
 struct PyAutoLockGIL
 {
     PyAutoLockGIL()
     {
+#ifdef PYRXDEBUG
+        PyAutoLockGIL::ncount++;
+#endif
         if (canLock) [[likely]]
             gstate = PyGILState_Ensure();
     }
 
     ~PyAutoLockGIL()
     {
+#ifdef PYRXDEBUG
+        PyAutoLockGIL::ncount--;
+#endif
         if (canLock) [[likely]]
             PyGILState_Release(gstate);
     }
@@ -322,9 +306,14 @@ struct PyAutoLockGIL
     PyAutoLockGIL(const PyAutoLockGIL&) = delete;
     PyAutoLockGIL& operator=(const PyAutoLockGIL&) = delete;
 
-    PyGILState_STATE gstate = PyGILState_UNLOCKED;
+    inline static PyGILState_STATE gstate = PyGILState_UNLOCKED;
     inline static bool canLock = false;
+#ifdef PYRXDEBUG
+    inline static int ncount = 0;
+#endif
 };
+typedef PyAutoLockGIL WxPyAutoLock;
+
 
 struct PyObjectDeleter
 {

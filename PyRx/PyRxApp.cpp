@@ -241,7 +241,6 @@ bool PyRxApp::init()
         initWxApp();
         appendINISettings();
 
-
         if (Py_IsInitialized() && setPyConfig())
         {
             isLoaded = true;

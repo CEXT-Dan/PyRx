@@ -101,7 +101,7 @@ void makePyDbIdMappingWrapper()
 {
     PyDocString DS("IdMapping");
     class_<PyDbIdMapping>("IdMapping")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("assign", &PyDbIdMapping::assign, DS.ARGS({ "pair: PyDb.IdPair" }))
         .def("compute", &PyDbIdMapping::compute, DS.ARGS({ "pair: PyDb.IdPair" }))
         .def("change", &PyDbIdMapping::change, DS.ARGS({ "pair: PyDb.IdPair" }))
