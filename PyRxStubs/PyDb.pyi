@@ -8685,6 +8685,11 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     C++ signature :
         class AcGePoint3d inters(class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,int)'''
     ...
+
+    @staticmethod
+    def isEnabledTightExtents ()-> bool :
+      '''                             '''
+    ...
     def isReservedString (self, *args, **kwargs)-> bool :
       '''isReservedString( (str)arg1, (ReservedStringEnumType)arg2) -> bool :
 
@@ -8788,6 +8793,11 @@ reloadXrefs( (Core)arg1, (Database)arg2, (list)arg3, (bool)arg4) -> None :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > rtos(double,int,int)'''
+    ...
+
+    @staticmethod
+    def setEnableTightExtents (val: bool)-> None :
+      '''                             '''
     ...
     def snValid (self, *args, **kwargs)-> bool :
       '''snValid( (str)arg1, (int)arg2) -> bool :
@@ -26712,16 +26722,8 @@ class HostApplicationServices(object):
     ...
 
 class IdMapping(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
     def assign (self, pair: PyDb.IdPair)-> None :
       '''                             '''

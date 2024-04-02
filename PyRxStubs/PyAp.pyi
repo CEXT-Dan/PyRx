@@ -69,10 +69,14 @@ class Application(object):
     def mainWnd ()-> int :
       '''                             '''
     ...
-    def registerOnIdleWinMsg (self, func: Any)-> None :
+
+    @staticmethod
+    def registerOnIdleWinMsg (func: Any)-> None :
       '''                             '''
     ...
-    def removeOnIdleWinMsg (self, func: Any)-> None :
+
+    @staticmethod
+    def removeOnIdleWinMsg (func: Any)-> None :
       '''                             '''
     ...
 
