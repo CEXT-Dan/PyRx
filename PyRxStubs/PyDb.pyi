@@ -8397,7 +8397,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def bindXrefs (db: PyDb.Database,ids: list[PyDb.ObjectId],bInsertBind: bool,bInsertBind: bool,bAllowUnresolved: bool=False,bequite: bool=True)-> None :
+    def bindXrefs (db: PyDb.Database,ids: list[PyDb.ObjectId],bInsertBind: bool,bAllowUnresolved: bool=False,bequite: bool=True)-> None :
       '''                             '''
     ...
 
@@ -8547,7 +8547,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def findField (val: str,from: int)-> tuple :
+    def findField (val: str,idxfrom: int)-> tuple :
       '''                             '''
     ...
 
@@ -8617,7 +8617,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def getUnitsConversion (from: PyDb.UnitsValue,to: PyDb.UnitsValue)-> float :
+    def getUnitsConversion (ufrom: PyDb.UnitsValue,to: PyDb.UnitsValue)-> float :
       '''                             '''
     ...
     def getViewportVisualStyle (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -8671,17 +8671,15 @@ class Core(object):
     def openDbEntities (ids: list[PyDb.ObjectId],mode: PyDb.OpenMode.kForRead,erased: bool=False)-> list :
       '''                             '''
     ...
-    def openDbEntity (self, *args, **kwargs)-> PyDb.Entity :
-      '''openDbEntity( (ObjectId)arg1, (OpenMode)arg2, (bool)arg3) -> Entity :
 
-    C++ signature :
-        class PyDbEntity openDbEntity(class PyDbObjectId,enum AcDb::OpenMode,bool)'''
+    @staticmethod
+    def openDbEntity (id: PyDb.ObjectId,mode: PyDb.OpenMode.kForRead,erased: bool=False)-> PyDb.Entity :
+      '''                             '''
     ...
-    def openDbObject (self, *args, **kwargs)-> PyDb.DbObject :
-      '''openDbObject( (ObjectId)arg1, (OpenMode)arg2, (bool)arg3) -> DbObject :
 
-    C++ signature :
-        class PyDbObject openDbObject(class PyDbObjectId,enum AcDb::OpenMode,bool)'''
+    @staticmethod
+    def openDbObject (id: PyDb.ObjectId,mode: PyDb.OpenMode.kForRead,erased: bool=False)-> PyDb.DbObject :
+      '''                             '''
     ...
 
     @staticmethod
