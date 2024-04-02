@@ -8567,59 +8567,50 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     def entUpd (id : PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def fail (self, *args, **kwargs)-> None :
-      '''fail( (str)arg1) -> None :
 
-    C++ signature :
-        void fail(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def fail (msg: str)-> None :
+      '''                             '''
     ...
-    def findField (self, *args, **kwargs)-> tuple :
-      '''findField( (str)arg1, (int)arg2) -> tuple :
 
-    C++ signature :
-        class boost::python::tuple findField(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    @staticmethod
+    def findField (val: str,from: int)-> tuple :
+      '''                             '''
     ...
-    def forceTextAdjust (self, *args, **kwargs)-> None :
-      '''forceTextAdjust( (list)arg1) -> None :
 
-    C++ signature :
-        void forceTextAdjust(class boost::python::list)'''
+    @staticmethod
+    def forceTextAdjust (ids: list[PyDb.ObjectId])-> None :
+      '''                             '''
     ...
-    def getCurUserViewportId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getCurUserViewportId( (Database)arg1) -> ObjectId :
 
-    C++ signature :
-        class PyDbObjectId getCurUserViewportId(class PyDbDatabase {lvalue})'''
+    @staticmethod
+    def getCurUserViewportId (db: PyDb.Database)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def getCurVportId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getCurVportId( (Database)arg1) -> ObjectId :
 
-    C++ signature :
-        class PyDbObjectId getCurVportId(class PyDbDatabase {lvalue})'''
+    @staticmethod
+    def getCurVportId (db: PyDb.Database)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def getCurVportTableRecordId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getCurVportTableRecordId( (Database)arg1) -> ObjectId :
 
-    C++ signature :
-        class PyDbObjectId getCurVportTableRecordId(class PyDbDatabase {lvalue})'''
+    @staticmethod
+    def getCurVportTableRecordId (db: PyDb.Database)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def getDimAssocId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getDimAssocId( (ObjectId)arg1) -> ObjectId :
 
-    C++ signature :
-        class PyDbObjectId getDimAssocId(class PyDbObjectId)'''
+    @staticmethod
+    def getDimAssocId (id: PyDb.ObjectId)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def getDimAssocIds (self, *args, **kwargs)-> list :
-      '''getDimAssocIds( (ObjectId)arg1) -> list :
 
-    C++ signature :
-        class boost::python::list getDimAssocIds(class PyDbObjectId)'''
+    @staticmethod
+    def getDimAssocIds (id: PyDb.ObjectId)-> list :
+      '''                             '''
     ...
-    def getDimStyleId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getDimStyleId( (Database)arg1, (str)arg2, (str)arg3) -> ObjectId :
 
-    C++ signature :
-        class PyDbObjectId getDimStyleId(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def getDimStyleId (db: PyDb.Database,name: str,lockname: str)-> PyDb.ObjectId :
+      '''                             '''
     ...
 
     @staticmethod
@@ -8631,23 +8622,20 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     def getGeoDataObjId (db: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getMappedFontName (self, *args, **kwargs)-> str :
-      '''getMappedFontName( (str)arg1) -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getMappedFontName(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def getMappedFontName (name: str)-> str :
+      '''                             '''
     ...
-    def getProxyInfo (self, *args, **kwargs)-> tuple :
-      '''getProxyInfo( (DbObject)arg1) -> tuple :
 
-    C++ signature :
-        class boost::python::tuple getProxyInfo(class PyDbObject)'''
+    @staticmethod
+    def getProxyInfo (id: PyDb.DbObject)-> tuple :
+      '''                             '''
     ...
-    def getReservedString (self, *args, **kwargs)-> str :
-      '''getReservedString( (ReservedStringEnumType)arg1, (bool)arg2) -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getReservedString(enum AcDb::reservedStringEnumType,bool)'''
+    @staticmethod
+    def getReservedString (reservedType: PyDb.reservedStringEnumType,bGetLocalized: bool)-> str :
+      '''                             '''
     ...
     def getSummaryInfo (self, *args, **kwargs)-> PyDb.DatabaseSummaryInfo :
       '''getSummaryInfo( (Database)arg1) -> DatabaseSummaryInfo :
@@ -8655,11 +8643,10 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     C++ signature :
         class PyDbDatabaseSummaryInfo getSummaryInfo(class PyDbDatabase {lvalue})'''
     ...
-    def getUnitsConversion (self, *args, **kwargs)-> float :
-      '''getUnitsConversion( (UnitsValue)arg1, (UnitsValue)arg2) -> float :
 
-    C++ signature :
-        double getUnitsConversion(enum AcDb::UnitsValue,enum AcDb::UnitsValue)'''
+    @staticmethod
+    def getUnitsConversion (from: PyDb.UnitsValue,to: PyDb.UnitsValue)-> float :
+      '''                             '''
     ...
     def getViewportVisualStyle (self, *args, **kwargs)-> PyDb.ObjectId :
       '''getViewportVisualStyle() -> ObjectId :
@@ -8667,17 +8654,15 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     C++ signature :
         class PyDbObjectId getViewportVisualStyle()'''
     ...
-    def handEnt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''handEnt( (str)arg1) -> ObjectId :
 
-    C++ signature :
-        class PyDbObjectId handEnt(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def handEnt (handle: str)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def hasGeoData (self, *args, **kwargs)-> bool :
-      '''hasGeoData( (Database)arg1) -> bool :
 
-    C++ signature :
-        bool hasGeoData(class PyDbDatabase {lvalue})'''
+    @staticmethod
+    def hasGeoData (db: PyDb.Database)-> bool :
+      '''                             '''
     ...
     def inters (self, *args, **kwargs)-> PyGe.Point3d :
       '''inters( (Point3d)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (int)arg5) -> Point3d :
