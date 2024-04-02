@@ -50,6 +50,14 @@ const char* PyDocString::OVRL(const std::string_view overloads)
     return outstr.c_str();
 }
 
+const char* PyDocString::SOVRL(const std::string_view overloads)
+{
+    outstr += m_commentBegin;
+    outstr += overloads;
+    outstr += m_commenEnd;
+    return outstr.c_str();
+}
+
 const char* PyDocString::SARGS()
 {
     outstr = m_argBegin;
