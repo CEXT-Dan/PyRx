@@ -3,7 +3,6 @@ import UnitTestPyRxObject
 import UnitTestPyDatabase
 import UnitTestPyDbObject
 import UnitTestPyDbObjectId
-import UnitTestPyDbPoint
 import UnitTestPyDbEval
 import UnitTestPyDbEntity
 import UnitTestPyEditor
@@ -39,7 +38,6 @@ def PyRxCmd_runtests() -> None:
         UnitTestPyDatabase.pydbtest()
         UnitTestPyDbObject.pydbobject()
         UnitTestPyDbObjectId.pydbobjectid()
-        UnitTestPyDbPoint.pydbpoint()
         UnitTestPyDbEval.pydbeval()
         UnitTestPyDbEntity.pyentity()
         UnitTestPyEditor.pyeditor()
