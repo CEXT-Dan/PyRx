@@ -75,6 +75,7 @@ public:
     static double               getUnitsConversion(AcDb::UnitsValue from, AcDb::UnitsValue to);
     static PyDbObjectId         getViewportVisualStyle();
     static PyDbObjectId         handEnt(const std::string& handle);
+    static bool                 isEnabledTightExtents();
     static bool                 isReservedString(const std::string& strString, AcDb::reservedStringEnumType reservedType);
     static AcGePoint3d          inters(const AcGePoint3d& from1, const AcGePoint3d& to1, const AcGePoint3d& from2, const AcGePoint3d& to2, int teston);
     static void                 loadLineTypeFile(const std::string& ltname, const std::string& fname, PyDbDatabase& db);
@@ -98,6 +99,7 @@ public:
     void                        reloadXrefs1(PyDbDatabase& db, const boost::python::list& ids);
     void                        reloadXrefs2(PyDbDatabase& db, const boost::python::list& ids, bool bQuiet);
     static boost::python::list  resbufTest(const boost::python::list& list);
+    static void                 setEnableTightExtents(bool bEnable);
     static bool                 snValid(const std::string& tbstr, int pipeTest);
     static PyDbSymUtilServices  symUtil();
     static boost::python::list  tblNext(const std::string& tblname, int rewind);

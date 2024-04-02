@@ -85,6 +85,7 @@ void makeDbCoreWrapper()
         .def("getViewportVisualStyle", &DbCore::getViewportVisualStyle).staticmethod("getViewportVisualStyle")
         .def("hasGeoData", &DbCore::hasGeoData).staticmethod("hasGeoData")
         .def("handEnt", &DbCore::handEnt).staticmethod("handEnt")
+        .def("isEnabledTightExtents", &DbCore::isEnabledTightExtents, DS.SARGS()).staticmethod("isEnabledTightExtents")
         .def("isReservedString", &DbCore::isReservedString).staticmethod("isReservedString")
         .def("inters", &DbCore::inters).staticmethod("inters")
         .def("loadLineTypeFile", &DbCore::loadLineTypeFile).staticmethod("loadLineTypeFile")
@@ -107,6 +108,7 @@ void makeDbCoreWrapper()
         .def("reloadXrefs", &DbCore::reloadXrefs2).staticmethod("reloadXrefs")
         .def("rtos", &DbCore::rtos).staticmethod("rtos")
         .def("resbufTest", &DbCore::resbufTest).staticmethod("resbufTest")
+        .def("setEnableTightExtents", &DbCore::setEnableTightExtents, DS.SARGS({ "val: bool" })).staticmethod("setEnableTightExtents")
         .def("snValid", &DbCore::snValid).staticmethod("snValid")
         .def("symUtil", &DbCore::symUtil).staticmethod("symUtil")
         .def("tblNext", &DbCore::tblNext).staticmethod("tblNext")
@@ -615,6 +617,15 @@ PyDbObjectId DbCore::handEnt(const std::string& handle)
     return id;
 }
 
+bool DbCore::isEnabledTightExtents()
+{
+#if defined(_ARXTARGET) && _ARXTARGET >= 243
+   return acdbIsEnabledTightExtents();
+#else
+    throw PyNotimplementedByHost();
+#endif
+}
+
 AcGePoint3d DbCore::inters(const AcGePoint3d& from1, const AcGePoint3d& to1, const AcGePoint3d& from2, const AcGePoint3d& to2, int teston)
 {
     AcGePoint3d result;
@@ -765,6 +776,15 @@ boost::python::list DbCore::resbufTest(const boost::python::list& list)
 {
     AcResBufPtr ptr(listToResbuf(list));
     return resbufToList(ptr.get());
+}
+
+void DbCore::setEnableTightExtents(bool bEnable)
+{
+#if defined(_ARXTARGET) && _ARXTARGET >= 243
+    acdbSetEnableTightExtents(bEnable);
+#else
+    throw PyNotimplementedByHost();
+#endif
 }
 
 bool DbCore::snValid(const std::string& tbstr, int pipeTest)
