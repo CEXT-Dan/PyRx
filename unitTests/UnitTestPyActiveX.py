@@ -311,6 +311,5 @@ def pyactivex() -> None:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestActiveX)
         print("TestActiveX")
         print(unittest.TextTestRunner(verbosity=0).run(suite))
-        print("TestActiveX Done\n")
     except Exception as err:
         print(err)

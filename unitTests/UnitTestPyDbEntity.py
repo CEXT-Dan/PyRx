@@ -20,7 +20,6 @@ def create_dbPoint():
     id = model.appendAcDbEntity(dbp)
     return id
 
-
 class TestDbEntity(unittest.TestCase):
     
     def __init__(self, *args, **kwargs):
@@ -29,25 +28,45 @@ class TestDbEntity(unittest.TestCase):
     def __del__(self):
         pass
 
-    def test_dbpointopenctor1(self):
+    def test_dbpoint_open_ctor1(self):
         id = create_dbPoint()
         dbp = Db.Point(id)
         self.assertEqual(dbp.isReadEnabled(), True)
         dbp.upgradeOpen()
         dbp.erase()
 
-    def test_dbpointopenctor2(self):
+    def test_dbpoint_open_ctor2(self):
         id = create_dbPoint()
         dbp = Db.Point(id, Db.OpenMode.kForRead)
         self.assertEqual(dbp.isReadEnabled(), True)
         dbp.upgradeOpen()
         dbp.erase()
 
-    def test_dbpointopenctor3(self):
+    def test_dbpoint_open_ctor3(self):
         id = create_dbPoint()
         dbp = Db.Point(id, Db.OpenMode.kForWrite)
         self.assertEqual(dbp.isWriteEnabled(), True)
         dbp.erase()
+        
+    def test_dbpoint_properties_ids(self):
+        point = Db.Point(Ge.Point3d(1, 2, 3))
+        db = Ap.Application().docManager().curDocument().database()
+        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
+        model.appendAcDbEntity(point)
+        self.assertEqual(point.position(), Ge.Point3d(1, 2, 3))
+        self.assertNotEqual(point.objectId(), Db.ObjectId())
+        self.assertEqual(Db.Point.className(), "AcDbPoint")
+        point.downgradeOpen()
+        self.assertFalse(point.isWriteEnabled())
+        point.upgradeOpen()
+        self.assertTrue(point.isWriteEnabled())
+        point.setNormal(Ge.Vector3d.kYAxis)
+        self.assertEqual(point.normal(), Ge.Vector3d.kYAxis)
+        point.setNormal(Ge.Vector3d.kZAxis)
+        point.setPosition(Ge.Point3d.kOrigin)
+        self.assertEqual(point.position(), Ge.Point3d.kOrigin)
+        point.setThickness(1.2)
+        self.assertEqual(point.thickness(), 1.2)
         
     def test_getGripPointsGripData(self):
         objHnd = Db.Handle("2c91ef")
