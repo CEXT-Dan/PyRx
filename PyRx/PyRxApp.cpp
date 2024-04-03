@@ -113,7 +113,6 @@ bool WxRxApp::Init_wxPython()
         return false;
     }
     wxPyBeginAllowThreads();
-    WxPyAutoLock::canLock = true;
     PyAutoLockGIL::canLock = true;
     return true;
 }
@@ -265,18 +264,8 @@ bool PyRxApp::init()
 
 bool PyRxApp::uninit()
 {
-    {// scope
-        PyAutoLockGIL lock;
-        loadedModulePaths.m_paths.clear();
-        funcNameMap.clear();
-        commands.clear();
-        lispService.cleanup();
-        pathForCommand.clear();
-        bool isLoaded = false;
-    }
     try
     {
-        PyAutoLockGIL::canLock = false;
         // Py_FinalizeEx throws because something is still in python 
         // I think it's wxPython since the main window was attached
         // acrxLockApplication so we just let the OS do our dirty work
@@ -288,6 +277,7 @@ bool PyRxApp::uninit()
             Py_FinalizeEx();
         }
 #endif
+        bool isLoaded = false;
     }
     catch (...)
     {
@@ -315,7 +305,7 @@ bool PyRxApp::setPyConfig()
     PyRxApp::instance().loadedModulePaths.insert(_modulePath);
 
     return true;
-}
+    }
 
 bool PyRxApp::appendSearchPath(const std::filesystem::path& modulePath)
 {

@@ -10,11 +10,7 @@ import UnitTestPyWx
 import UnitTestPyActiveX
 import dbc
 
-def OnPyUnloadApp():
-    dbc.dbs = None
-
 from pyrx_imp import Ap
-
 host = Ap.Application.hostAPI()
 
 if "BRX" in host:

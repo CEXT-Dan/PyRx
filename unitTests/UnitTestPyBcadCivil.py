@@ -73,13 +73,15 @@ class TestBCadCivil(unittest.TestCase):
         self.assertEqual(objId.isValid(), True)
         hAlignment = Cv.CvDbHAlignment(objId)
         
-        elecount = 0
+        ids = []
         elementId = hAlignment.firstElementId()
         while (elementId != 0):
-            elecount += 1
             element = hAlignment.elementAtId(elementId)
             elementId = element.nextId()
-        self.assertEqual(elecount,3)
+            if elementId != 0:
+                ids.append(elementId)
+                
+        self.assertEqual(len(ids),2)
             
 def pybcciviltest():
     try:
