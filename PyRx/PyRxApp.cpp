@@ -272,14 +272,11 @@ bool PyRxApp::uninit()
         commands.clear();
         lispService.cleanup();
         pathForCommand.clear();
-        void* appPkt = nullptr;
         bool isLoaded = false;
-    }
-    {// scope
-        PyAutoLockGIL::canLock = false;
     }
     try
     {
+        PyAutoLockGIL::canLock = false;
         // Py_FinalizeEx throws because something is still in python 
         // I think it's wxPython since the main window was attached
         // acrxLockApplication so we just let the OS do our dirty work
