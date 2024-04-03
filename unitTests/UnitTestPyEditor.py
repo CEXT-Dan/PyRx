@@ -40,6 +40,19 @@ class TestEditor(unittest.TestCase):
         autoSysVarANGBASE()
         self.assertEqual(Ed.Core.getVar("ANGBASE"),0)
         
+    def test_ed_core_trans(self):
+        rbfrom = [(Rx.LispType.kInt16, 0)] #wcs
+        rbto = [(Rx.LispType.kInt16, 1)] #ucs
+        ucs = Ed.Editor.getCurrentUCS()
+        ucs.setToRotation(3.14159,Ge.Vector3d.kZAxis)
+        Ed.Editor.setCurrentUCS(ucs)
+        pt = Ge.Point3d(1,2,3)
+        out = Ed.Core.trans(pt,rbfrom,rbto,False)
+        self.assertTrue(out[0] < 0)
+        self.assertTrue(out[1] < 0)
+        self.assertTrue(out[2] > 0)
+        Ed.Editor.setCurrentUCS(Ge.Matrix3d())
+
     @unittest.skipIf(host == "BRX24", "BricsCAD known failure")
     def test_evaluateDiesel(self):
         val = Ed.Core.evaluateDiesel('$(eval,"Current layer: "$(getvar,clayer))')
