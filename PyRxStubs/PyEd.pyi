@@ -619,102 +619,68 @@ class Core(object):
     - path: str, name: str, btrid: PyDb.ObjectId, refid: PyDb.ObjectId, pt: PyGe.Point3d, sc: PyGe.Scale3d, rot: float, bQuiet: bool, pHostDb: PyDb.Database, passwd: str
     '''
     ...
-    def xrefBind (self, *args, **kwargs)-> None :
-      '''xrefBind( (str)arg1) -> None :
 
-    C++ signature :
-        void xrefBind(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-xrefBind( (str)arg1, (bool)arg2, (bool)arg3, (Database)arg4) -> None :
-
-    C++ signature :
-        void xrefBind(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool,class PyDbDatabase {lvalue})'''
+    @staticmethod
+    def xrefBind (db: PyDb.Database,bQuiet: bool=True)-> None :
+      '''Overloads:
+    - XrefBlockname: str
+    - XrefBlockname: str, bQuiet: bool, pHostDb: PyDb.Database
+    '''
     ...
 
     @staticmethod
     def xrefCreateBlockname (XrefPathname: str)-> str :
       '''                             '''
     ...
-    def xrefDetach (self, *args, **kwargs)-> None :
-      '''xrefDetach( (str)arg1) -> None :
 
-    C++ signature :
-        void xrefDetach(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-xrefDetach( (str)arg1, (bool)arg2, (Database)arg3) -> None :
-
-    C++ signature :
-        void xrefDetach(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,class PyDbDatabase {lvalue})'''
+    @staticmethod
+    def xrefDetach (XrefPathname: str)-> None :
+      '''Overloads:
+    - XrefBlockname: str
+    - XrefBlockname: str, bQuiet: bool, pHostDb: PyDb.Database
+    '''
     ...
 
     @staticmethod
     def xrefNotifyCheckFileChanged (id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def xrefOverlay (self, *args, **kwargs)-> None :
-      '''xrefOverlay( (str)arg1, (str)arg2) -> None :
 
-    C++ signature :
-        void xrefOverlay(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-xrefOverlay( (str)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (Point3d)arg5, (Scale3d)arg6, (float)arg7, (bool)arg8, (Database)arg9, (str)arg10) -> None :
-
-    C++ signature :
-        void xrefOverlay(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue},class AcGePoint3d {lvalue},class AcGeScale3d {lvalue},double,bool,class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def xrefOverlay (id: PyDb.ObjectId)-> None :
+      '''Overloads:
+    - path: str, name: str
+    - path: str, name: str, btrid: PyDb.ObjectId, refid: PyDb.ObjectId, pt: PyGe.Point3d, sc: PyGe.Scale3d, rot: float, bQuiet: bool, pHostDb: PyDb.Database, passwd: str
+    '''
     ...
-    def xrefReload (self, *args, **kwargs)-> None :
-      '''xrefReload( (list)arg1) -> None :
 
-    C++ signature :
-        void xrefReload(class boost::python::list)
-
-xrefReload( (list)arg1, (bool)arg2, (Database)arg3) -> None :
-
-    C++ signature :
-        void xrefReload(class boost::python::list,bool,class PyDbDatabase {lvalue})
-
-xrefReload( (str)arg1) -> None :
-
-    C++ signature :
-        void xrefReload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-xrefReload( (str)arg1, (bool)arg2, (Database)arg3) -> None :
-
-    C++ signature :
-        void xrefReload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,class PyDbDatabase {lvalue})'''
+    @staticmethod
+    def xrefReload (id: PyDb.ObjectId)-> None :
+      '''Overloads:
+    - path: str, name: str
+    - path: str, name: str, btrid: PyDb.ObjectId, refid: PyDb.ObjectId, pt: PyGe.Point3d, sc: PyGe.Scale3d, rot: float, bQuiet: bool, pHostDb: PyDb.Database, passwd: str
+    '''
     ...
-    def xrefResolve (self, *args, **kwargs)-> None :
-      '''xrefResolve( (Database)arg1) -> None :
 
-    C++ signature :
-        void xrefResolve(class PyDbDatabase {lvalue})
-
-xrefResolve( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void xrefResolve(class PyDbDatabase {lvalue},bool)'''
+    @staticmethod
+    def xrefResolve (db: PyDb.Database,bQuiet: bool=True)-> None :
+      '''                             '''
     ...
-    def xrefUnload (self, *args, **kwargs)-> None :
-      '''xrefUnload( (str)arg1) -> None :
 
-    C++ signature :
-        void xrefUnload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-xrefUnload( (str)arg1, (bool)arg2, (Database)arg3) -> None :
-
-    C++ signature :
-        void xrefUnload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,class PyDbDatabase {lvalue})'''
+    @staticmethod
+    def xrefUnload (db: PyDb.Database,bQuiet: bool=True)-> None :
+      '''Overloads:
+    - XrefBlockname: str
+    - XrefBlockname: str, bQuiet: bool, pHostDb: PyDb.Database
+    '''
     ...
-    def xrefXBind (self, *args, **kwargs)-> None :
-      '''xrefXBind( (list)arg1) -> None :
 
-    C++ signature :
-        void xrefXBind(class boost::python::list)
-
-xrefXBind( (list)arg1, (bool)arg2, (Database)arg3) -> None :
-
-    C++ signature :
-        void xrefXBind(class boost::python::list,bool,class PyDbDatabase {lvalue})'''
+    @staticmethod
+    def xrefXBind (db: PyDb.Database,bQuiet: bool=True)-> None :
+      '''Overloads:
+    - XrefBlockname: str
+    - XrefBlockname: str, bQuiet: bool, pHostDb: PyDb.Database
+    '''
     ...
 
 class CursorType(object):
