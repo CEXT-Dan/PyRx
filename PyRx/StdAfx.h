@@ -287,18 +287,12 @@ struct PyAutoLockGIL
 {
     PyAutoLockGIL()
     {
-#ifdef PYRXDEBUG
-        PyAutoLockGIL::ncount++;
-#endif
         if (canLock) [[likely]]
             gstate = PyGILState_Ensure();
     }
 
     ~PyAutoLockGIL()
     {
-#ifdef PYRXDEBUG
-        PyAutoLockGIL::ncount--;
-#endif
         if (canLock) [[likely]]
             PyGILState_Release(gstate);
     }
@@ -306,11 +300,8 @@ struct PyAutoLockGIL
     PyAutoLockGIL(const PyAutoLockGIL&) = delete;
     PyAutoLockGIL& operator=(const PyAutoLockGIL&) = delete;
 
-    inline static PyGILState_STATE gstate = PyGILState_UNLOCKED;
+    PyGILState_STATE gstate = PyGILState_UNLOCKED;
     inline static bool canLock = false;
-#ifdef PYRXDEBUG
-    inline static int ncount = 0;
-#endif
 };
 typedef PyAutoLockGIL WxPyAutoLock;
 
