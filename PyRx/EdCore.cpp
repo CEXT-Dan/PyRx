@@ -99,6 +99,10 @@ bool Util::wcMatch(const std::string& string, const std::string& pattern, bool i
 //EdCore
 void makePyEdCoreWrapper()
 {
+    constexpr const std::string_view xrefAttachOverloads = "Overloads:\n"
+        "- path: str, name: str\n"
+        "- path: str, name: str, btrid: PyDb.ObjectId, refid: PyDb.ObjectId, pt: PyGe.Point3d, sc: PyGe.Scale3d, rot: float, bQuiet: bool, pHostDb: PyDb.Database, passwd: str\n";
+
     PyDocString DS("Core");
     class_<EdCore>("Core")
         .def("alert", &EdCore::alert, DS.SARGS({ "msg: str" })).staticmethod("alert")
@@ -220,30 +224,36 @@ void makePyEdCoreWrapper()
         .def("updateDisplayPause", &EdCore::updateDisplayPause, DS.SARGS({ "val: bool" })).staticmethod("updateDisplayPause")
         .def("usrBrk", &EdCore::usrBrk, DS.SARGS()).staticmethod("usrBrk")
         .def("viewportIdFromNumber", &EdCore::viewportIdFromNumber, DS.SARGS({ "val: int" })).staticmethod("viewportIdFromNumber")
-
-         //TODO: DS
-        .def("vpLayer", &EdCore::vpLayer).staticmethod("vpLayer")
+        .def("vpLayer", &EdCore::vpLayer, DS.SARGS({ "id: PyDb.ObjectId","layerIds: list[PyDb.ObjectId]", "operation: PyDb.VpFreezeOps" })).staticmethod("vpLayer")
         .def("vports", &EdCore::vports, DS.SARGS()).staticmethod("vports")
-        .def("vports2VportTableRecords", &EdCore::vports2VportTableRecords).staticmethod("vports2VportTableRecords")
-        .def("vportTableRecords2Vports", &EdCore::vportTableRecords2Vports).staticmethod("vportTableRecords2Vports")
+        .def("vports2VportTableRecords", &EdCore::vports2VportTableRecords, DS.SARGS()).staticmethod("vports2VportTableRecords")
+        .def("vportTableRecords2Vports", &EdCore::vportTableRecords2Vports, DS.SARGS()).staticmethod("vportTableRecords2Vports")
         .def("xrefAttach", &EdCore::xrefAttach1)
-        .def("xrefAttach", &EdCore::xrefAttach2).staticmethod("xrefAttach")
-        .def("xrefCreateBlockname", &EdCore::xrefCreateBlockname).staticmethod("xrefCreateBlockname")
+        .def("xrefAttach", &EdCore::xrefAttach2,DS.SOVRL(xrefAttachOverloads)).staticmethod("xrefAttach")
+        .def("xrefCreateBlockname", &EdCore::xrefCreateBlockname, DS.SARGS({ "XrefPathname: str" })).staticmethod("xrefCreateBlockname")
+
         .def("xrefDetach", &EdCore::xrefDetach1)
         .def("xrefDetach", &EdCore::xrefDetach2).staticmethod("xrefDetach")
-        .def("xrefNotifyCheckFileChanged", &EdCore::xrefNotifyCheckFileChanged).staticmethod("xrefNotifyCheckFileChanged")
+
+        .def("xrefNotifyCheckFileChanged", &EdCore::xrefNotifyCheckFileChanged, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("xrefNotifyCheckFileChanged")
+
         .def("xrefOverlay", &EdCore::xrefOverlay1)
         .def("xrefOverlay", &EdCore::xrefOverlay2).staticmethod("xrefOverlay")
+
         .def("xrefReload", &EdCore::xrefReload1)
         .def("xrefReload", &EdCore::xrefReload2)
         .def("xrefReload", &EdCore::xrefReload3)
         .def("xrefReload", &EdCore::xrefReload4).staticmethod("xrefReload")
+
         .def("xrefResolve", &EdCore::xrefResolve1)
         .def("xrefResolve", &EdCore::xrefResolve2).staticmethod("xrefResolve")
+
         .def("xrefUnload", &EdCore::xrefUnload1)
         .def("xrefUnload", &EdCore::xrefUnload2).staticmethod("xrefUnload")
+
         .def("xrefBind", &EdCore::xrefBind1)
         .def("xrefBind", &EdCore::xrefBind2).staticmethod("xrefBind")
+
         .def("xrefXBind", &EdCore::xrefXBind1)
         .def("xrefXBind", &EdCore::xrefXBind2).staticmethod("xrefXBind")
         ;

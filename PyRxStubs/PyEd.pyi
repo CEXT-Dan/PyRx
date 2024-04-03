@@ -591,39 +591,33 @@ class Core(object):
     def viewportIdFromNumber (val: int)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def vpLayer (self, *args, **kwargs)-> None :
-      '''vpLayer( (ObjectId)arg1, (list)arg2, (VpFreezeOps)arg3) -> None :
 
-    C++ signature :
-        void vpLayer(class PyDbObjectId,class boost::python::list,enum AcDb::VpFreezeOps)'''
+    @staticmethod
+    def vpLayer (id: PyDb.ObjectId,layerIds: list[PyDb.ObjectId],operation: PyDb.VpFreezeOps)-> None :
+      '''                             '''
     ...
-    def vportTableRecords2Vports (self, *args, **kwargs)-> None :
-      '''vportTableRecords2Vports() -> None :
 
-    C++ signature :
-        void vportTableRecords2Vports()'''
+    @staticmethod
+    def vportTableRecords2Vports ()-> None :
+      '''                             '''
     ...
 
     @staticmethod
     def vports ()-> list :
       '''                             '''
     ...
-    def vports2VportTableRecords (self, *args, **kwargs)-> None :
-      '''vports2VportTableRecords() -> None :
 
-    C++ signature :
-        void vports2VportTableRecords()'''
+    @staticmethod
+    def vports2VportTableRecords ()-> None :
+      '''                             '''
     ...
-    def xrefAttach (self, *args, **kwargs)-> None :
-      '''xrefAttach( (str)arg1, (str)arg2) -> None :
 
-    C++ signature :
-        void xrefAttach(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-xrefAttach( (str)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (Point3d)arg5, (Scale3d)arg6, (float)arg7, (bool)arg8, (Database)arg9, (str)arg10) -> None :
-
-    C++ signature :
-        void xrefAttach(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue},class AcGePoint3d {lvalue},class AcGeScale3d {lvalue},double,bool,class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def xrefAttach ()-> None :
+      '''Overloads:
+    - path: str, name: str
+    - path: str, name: str, btrid: PyDb.ObjectId, refid: PyDb.ObjectId, pt: PyGe.Point3d, sc: PyGe.Scale3d, rot: float, bQuiet: bool, pHostDb: PyDb.Database, passwd: str
+    '''
     ...
     def xrefBind (self, *args, **kwargs)-> None :
       '''xrefBind( (str)arg1) -> None :
@@ -636,11 +630,10 @@ xrefBind( (str)arg1, (bool)arg2, (bool)arg3, (Database)arg4) -> None :
     C++ signature :
         void xrefBind(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool,class PyDbDatabase {lvalue})'''
     ...
-    def xrefCreateBlockname (self, *args, **kwargs)-> str :
-      '''xrefCreateBlockname( (str)arg1) -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > xrefCreateBlockname(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def xrefCreateBlockname (XrefPathname: str)-> str :
+      '''                             '''
     ...
     def xrefDetach (self, *args, **kwargs)-> None :
       '''xrefDetach( (str)arg1) -> None :
@@ -653,11 +646,10 @@ xrefDetach( (str)arg1, (bool)arg2, (Database)arg3) -> None :
     C++ signature :
         void xrefDetach(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,class PyDbDatabase {lvalue})'''
     ...
-    def xrefNotifyCheckFileChanged (self, *args, **kwargs)-> bool :
-      '''xrefNotifyCheckFileChanged( (ObjectId)arg1) -> bool :
 
-    C++ signature :
-        bool xrefNotifyCheckFileChanged(class PyDbObjectId)'''
+    @staticmethod
+    def xrefNotifyCheckFileChanged (id: PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def xrefOverlay (self, *args, **kwargs)-> None :
       '''xrefOverlay( (str)arg1, (str)arg2) -> None :
