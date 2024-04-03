@@ -67,6 +67,20 @@ class TestBCadCivil(unittest.TestCase):
         for item in valign.getPVIsArrays():
             self.assertIsNotNone(item)
             
+    def test_BsysCvDbHAlignment_iter(self):
+        objHnd = Db.Handle("AE")
+        objId = self.BCADCIVIL1.getObjectId(False, objHnd)
+        self.assertEqual(objId.isValid(), True)
+        hAlignment = Cv.CvDbHAlignment(objId)
+        
+        elecount = 0
+        elementId = hAlignment.firstElementId()
+        while (elementId != 0):
+            elecount += 1
+            element = hAlignment.elementAtId(elementId)
+            elementId = element.nextId()
+        self.assertEqual(elecount,3)
+            
 def pybcciviltest():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestBCadCivil)
