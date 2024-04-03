@@ -265,11 +265,7 @@ bool PyRxApp::init()
 
 bool PyRxApp::uninit()
 {
-    isLoaded = false;
-    WxPyAutoLock::canLock = false;
-    PyAutoLockGIL::canLock = false;
-    // scope for lock
-    {
+    {// scope
         PyAutoLockGIL lock;
         loadedModulePaths.m_paths.clear();
         funcNameMap.clear();
@@ -278,6 +274,9 @@ bool PyRxApp::uninit()
         pathForCommand.clear();
         void* appPkt = nullptr;
         bool isLoaded = false;
+    }
+    {// scope
+        PyAutoLockGIL::canLock = false;
     }
     try
     {
