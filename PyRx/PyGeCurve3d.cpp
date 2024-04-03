@@ -632,13 +632,23 @@ AcGeCurve3d* PyGeCurve3d::impObj(const std::source_location& src /*= std::source
 //AcGeCircArc3d
 void makePyGeCircArc3dWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- cent: PyGe.Point3d, nrm: PyGe.Vector3d, radius: float\n"
+        "- cent: PyGe.Point3d, nrm: PyGe.Vector3d, refVec: PyGe.Vector3d, radius: float, startAngle: float, endAngle: float\n"
+        "- startPoint: PyGe.Point3d, pnt: PyGe.Point3d, endPoint: PyGe.Point3d\n";
+      
+
+    PyDocString DS("CircArc3d");
     class_<PyGeCircArc3d, bases<PyGeCurve3d>>("CircArc3d")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, double>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double, double>())
-        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>(DS.CTOR(ctor)))
         .def("closestPointToPlane", &PyGeCircArc3d::closestPointToPlane1)
-        .def("closestPointToPlane", &PyGeCircArc3d::closestPointToPlane2)
+        .def("closestPointToPlane", &PyGeCircArc3d::closestPointToPlane2, DS.ARGS({ "plane: PyGe.PlanarEnt", "tol: PyGe.Tol=None" }))
+
+        //TODO:
         .def("intersectWith", &PyGeCircArc3d::intersectWith1)
         .def("intersectWith", &PyGeCircArc3d::intersectWith2)
         .def("intersectWith", &PyGeCircArc3d::intersectWith3)
@@ -652,26 +662,26 @@ void makePyGeCircArc3dWrapper()
         .def("getPlane", &PyGeCircArc3d::getPlane)
         .def("isInside", &PyGeCircArc3d::isInside1)
         .def("isInside", &PyGeCircArc3d::isInside2)
-        .def("center", &PyGeCircArc3d::center)
-        .def("normal", &PyGeCircArc3d::normal)
-        .def("refVec", &PyGeCircArc3d::refVec)
-        .def("radius", &PyGeCircArc3d::radius)
-        .def("startAng", &PyGeCircArc3d::startAng)
-        .def("endAng", &PyGeCircArc3d::endAng)
-        .def("startPoint", &PyGeCircArc3d::startPoint)
-        .def("endPoint", &PyGeCircArc3d::endPoint)
-        .def("setCenter", &PyGeCircArc3d::setCenter)
-        .def("setAxes", &PyGeCircArc3d::setAxes)
-        .def("setRadius", &PyGeCircArc3d::setRadius)
-        .def("setAngles", &PyGeCircArc3d::setAngles)
+        .def("center", &PyGeCircArc3d::center, DS.ARGS())
+        .def("normal", &PyGeCircArc3d::normal, DS.ARGS())
+        .def("refVec", &PyGeCircArc3d::refVec, DS.ARGS())
+        .def("radius", &PyGeCircArc3d::radius, DS.ARGS())
+        .def("startAng", &PyGeCircArc3d::startAng, DS.ARGS())
+        .def("endAng", &PyGeCircArc3d::endAng, DS.ARGS())
+        .def("startPoint", &PyGeCircArc3d::startPoint, DS.ARGS())
+        .def("endPoint", &PyGeCircArc3d::endPoint, DS.ARGS())
+        .def("setCenter", &PyGeCircArc3d::setCenter, DS.ARGS({ "pt: PyGe.Point3d" }))
+        .def("setAxes", &PyGeCircArc3d::setAxes, DS.ARGS({ "vec: PyGe.Vector3d","refvec: PyGe.Vector3d" }))
+        .def("setRadius", &PyGeCircArc3d::setRadius, DS.ARGS({ "val: float" }))
+        .def("setAngles", &PyGeCircArc3d::setAngles, DS.ARGS({ "val: float" }))
         .def("set", &PyGeCircArc3d::set1)
         .def("set", &PyGeCircArc3d::set2)
         .def("set", &PyGeCircArc3d::set3)
         .def("set", &PyGeCircArc3d::set4)
         .def("set", &PyGeCircArc3d::set5)
-        .def("cast", &PyGeCircArc3d::cast).staticmethod("cast")
-        .def("copycast", &PyGeCircArc3d::copycast).staticmethod("copycast")
-        .def("className", &PyGeCircArc3d::className).staticmethod("className")
+        .def("cast", &PyGeCircArc3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeCircArc3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeCircArc3d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -904,6 +914,7 @@ void PyGeCircArc3d::set3(const AcGePoint3d& startPoint, const AcGePoint3d& pnt, 
 
 void PyGeCircArc3d::set4(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, double radius)
 {
+    //TODO:
     double param1;
     double param2;
     Adesk::Boolean success;
