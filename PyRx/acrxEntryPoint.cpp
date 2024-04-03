@@ -80,7 +80,6 @@ public:
                     }
                 }
             }
-            PyRxApp::instance().uninit();
         }
         catch (...) { /*@exit*/ }
         return (retCode);
