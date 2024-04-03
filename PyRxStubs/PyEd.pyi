@@ -8,112 +8,6 @@ import PyEd
 import PyPl
 from typing import overload
 
-class AcEdDrawOrderCmdType(object):
-    def __init__ (self, /, *args, **kwargs) :
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def kDrawOrderAbove (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kDrawOrderBelow (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kDrawOrderBottom (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kDrawOrderNone (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kDrawOrderTop (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def name (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-
-class AcEdPointHistory(object):
-    def __init__ (self, /, *args, **kwargs) :
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def eAligned (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eAppFiltered (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eCartSnapped (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eCoordPending (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eCyclingPt (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eDidNotPick (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eDirectDistance (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eForcedPick (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eFromKeyboard (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eGizmoConstrainted (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eGripped (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eLastPt (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eNotDigitizer (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eNotInteractive (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eOrtho (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eOsnapped (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def ePickAborted (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def ePickMask (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def ePolarAngle (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eTablet (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eUsedOsnapBox (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eUsedPickBox (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eXPending (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eYPending (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def eZPending (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def name (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-
 class AutoSysVar(object):
     def __init__ (self, varname:str, value)-> None :
       '''                             '''
@@ -182,17 +76,15 @@ class Core(object):
     def cmdCWasCancelled ()-> bool :
       '''                             '''
     ...
-    def cmdS (self, *args, **kwargs)-> bool :
-      '''cmdS( (list)arg1) -> bool :
 
-    C++ signature :
-        bool cmdS(class boost::python::list)'''
+    @staticmethod
+    def cmdS (resultBuffer: list)-> bool :
+      '''                             '''
     ...
-    def cmdUndefine (self, *args, **kwargs)-> int :
-      '''cmdUndefine( (str)arg1, (int)arg2) -> int :
 
-    C++ signature :
-        int cmdUndefine(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    @staticmethod
+    def cmdUndefine (name: str,undefineit: int)-> int :
+      '''                             '''
     ...
 
     @staticmethod
@@ -204,74 +96,65 @@ class Core(object):
     def coordFromWorldToPixel (windnum: int ,pnt: PyGe.Point3d)-> tuple :
       '''                             '''
     ...
-    def createInternetShortcut (self, *args, **kwargs)-> bool :
-      '''createInternetShortcut( (str)arg1, (str)arg2) -> bool :
 
-    C++ signature :
-        bool createInternetShortcut(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def createInternetShortcut (szURL: str,szShortcutPath: str)-> bool :
+      '''                             '''
     ...
-    def createViewportByView (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''createViewportByView( (Database)arg1, (ObjectId)arg2, (Point2d)arg3, (float)arg4) -> ObjectId :
 
-    C++ signature :
-        class PyDbObjectId createViewportByView(class PyDbDatabase {lvalue},class PyDbObjectId {lvalue},class AcGePoint2d,double)'''
+    @staticmethod
+    def createViewportByView (db: PyDb.Database,view: PyDb.ObjectId,pt: PyGe.Point2d,scale: float)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def defun (self, *args, **kwargs)-> int :
-      '''defun( (str)arg1, (int)arg2) -> int :
 
-    C++ signature :
-        int defun(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    @staticmethod
+    def defun (name: str,funcnumber: int)-> int :
+      '''                             '''
     ...
-    def defunEx (self, *args, **kwargs)-> int :
-      '''defunEx( (str)arg1, (str)arg2, (int)arg3) -> int :
 
-    C++ signature :
-        int defunEx(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    @staticmethod
+    def defunEx (global: str,name: str,funcnumber: int)-> int :
+      '''                             '''
     ...
-    def disableDefaultARXExceptionHandler (self, *args, **kwargs)-> None :
-      '''disableDefaultARXExceptionHandler( (bool)arg1) -> None :
 
-    C++ signature :
-        void disableDefaultARXExceptionHandler(bool)'''
+    @staticmethod
+    def disableDefaultARXExceptionHandler (val: bool)-> None :
+      '''                             '''
     ...
 
     @staticmethod
     def disableUsrbrk ()-> None :
       '''                             '''
     ...
-    def displayBorder (self, *args, **kwargs)-> bool :
-      '''displayBorder( (bool)arg1) -> bool :
 
-    C++ signature :
-        bool displayBorder(bool)'''
+    @staticmethod
+    def displayBorder (val: bool)-> bool :
+      '''                             '''
     ...
-    def drawOrderInherit (self, *args, **kwargs)-> None :
-      '''drawOrderInherit( (ObjectId)arg1, (list)arg2, (AcEdDrawOrderCmdType)arg3) -> None :
 
-    C++ signature :
-        void drawOrderInherit(class PyDbObjectId {lvalue},class boost::python::list,enum AcEdDrawOrderCmdType)'''
+    @staticmethod
+    def drawOrderInherit (parent: PyDb.ObjectId,childids: list[PyDb.ObjectId],cmd: PyEd.DrawOrderCmdType)-> None :
+      '''                             '''
     ...
 
     @staticmethod
     def drawingStatusBarsVisible ()-> bool :
       '''                             '''
     ...
-    def dropOpenFile (self, *args, **kwargs)-> None :
-      '''dropOpenFile( (str)arg1) -> None :
 
-    C++ signature :
-        void dropOpenFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def dropOpenFile (val: str)-> None :
+      '''                             '''
     ...
 
     @staticmethod
     def eatCommandThroat ()-> int :
       '''                             '''
     ...
-    def editMTextInteractive (self, *args, **kwargs)-> int :
-      '''editMTextInteractive( (MText)arg1, (bool)arg2, (bool)arg3) -> int :
 
-    C++ signature :
-        int editMTextInteractive(class PyDbMText {lvalue},bool,bool)'''
+    @staticmethod
+    def editMTextInteractive (mt: PyDb.MText,usenewUI: bool,allowTabs: bool)-> int :
+      '''                             '''
     ...
 
     @staticmethod
@@ -288,17 +171,15 @@ class Core(object):
     def evaluateLisp (statement : str)-> list :
       '''                             '''
     ...
-    def findFile (self, *args, **kwargs)-> str :
-      '''findFile( (str)arg1) -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def findFile (fname: str)-> str :
+      '''                             '''
     ...
-    def findTrustedFile (self, *args, **kwargs)-> str :
-      '''findTrustedFile( (str)arg1) -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findTrustedFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def findTrustedFile (fname: str)-> str :
+      '''                             '''
     ...
 
     @staticmethod
@@ -310,29 +191,25 @@ class Core(object):
     def getAcadTextCmdLine ()-> int :
       '''                             '''
     ...
-    def getBlockEditMode (self, *args, **kwargs)-> int :
-      '''getBlockEditMode() -> int :
 
-    C++ signature :
-        unsigned int getBlockEditMode()'''
+    @staticmethod
+    def getBlockEditMode ()-> int :
+      '''                             '''
     ...
-    def getCfg (self, *args, **kwargs)-> str :
-      '''getCfg( (str)arg1) -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCfg(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def getCfg (val: str)-> str :
+      '''                             '''
     ...
-    def getCommandForDocument (self, *args, **kwargs)-> str :
-      '''getCommandForDocument( (Document)arg1) -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCommandForDocument(class PyApDocument)'''
+    @staticmethod
+    def getCommandForDocument (doc: PyAp.Document)-> str :
+      '''                             '''
     ...
-    def getCommandPromptString (self, *args, **kwargs)-> str :
-      '''getCommandPromptString() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCommandPromptString()'''
+    @staticmethod
+    def getCommandPromptString ()-> str :
+      '''                             '''
     ...
 
     @staticmethod
@@ -359,29 +236,25 @@ class Core(object):
     def getDpiScalingValue ()-> float :
       '''                             '''
     ...
-    def getEnv (self, *args, **kwargs)-> str :
-      '''getEnv( (str)arg1) -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getEnv(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def getEnv (val: str)-> str :
+      '''                             '''
     ...
-    def getFileD (self, *args, **kwargs)-> str :
-      '''getFileD( (str)arg1, (str)arg2, (str)arg3, (int)arg4) -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getFileD(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    @staticmethod
+    def getFileD (title: str,defawlt: str,ext: str,flags: int)-> str :
+      '''                             '''
     ...
-    def getFileNavDialog (self, *args, **kwargs)-> list :
-      '''getFileNavDialog( (str)arg1, (str)arg2, (str)arg3, (str)arg4, (int)arg5) -> list :
 
-    C++ signature :
-        class boost::python::list getFileNavDialog(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    @staticmethod
+    def getFileNavDialog (title: str,defawlt: str,ext: str,dlgname: str,flags: int)-> list :
+      '''                             '''
     ...
-    def getLastCommandLines (self, *args, **kwargs)-> list :
-      '''getLastCommandLines( (int)arg1, (bool)arg2) -> list :
 
-    C++ signature :
-        class boost::python::list getLastCommandLines(int,bool)'''
+    @staticmethod
+    def getLastCommandLines (lineCount: int,ignoreNull: bool)-> list :
+      '''                             '''
     ...
 
     @staticmethod
@@ -398,14 +271,15 @@ class Core(object):
     def getPredefinedHatchPatterns ()-> list :
       '''                             '''
     ...
-    def getRGB (self, colorIndex : int)-> tuple :
+
+    @staticmethod
+    def getRGB (colorIndex : int)-> tuple :
       '''                             '''
     ...
-    def getSym (self, *args, **kwargs)-> list :
-      '''getSym( (str)arg1) -> list :
 
-    C++ signature :
-        class boost::python::list getSym(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def getSym (val: str)-> list :
+      '''                             '''
     ...
 
     @staticmethod
@@ -422,22 +296,15 @@ class Core(object):
     def getVar (name:str)-> object :
       '''                             '''
     ...
-    def getWinNum (self, *args, **kwargs)-> int :
-      '''getWinNum( (int)arg1, (int)arg2) -> int :
 
-    C++ signature :
-        int getWinNum(int,int)'''
+    @staticmethod
+    def getWinNum (ptx: int,pty: int)-> int :
+      '''                             '''
     ...
-    def grDraw (self, *args, **kwargs)-> int :
-      '''grDraw( (Point2d)arg1, (Point2d)arg2, (int)arg3, (int)arg4) -> int :
 
-    C++ signature :
-        int grDraw(class AcGePoint2d,class AcGePoint2d,int,int)
-
-grDraw( (Point3d)arg1, (Point3d)arg2, (int)arg3, (int)arg4) -> int :
-
-    C++ signature :
-        int grDraw(class AcGePoint3d,class AcGePoint3d,int,int)'''
+    @staticmethod
+    def grDraw (pt1: PyGe.Point2d|PyGe.Point3d,pt2: PyGe.Point2d|PyGe.Point3d,color: int,highlight: int)-> int :
+      '''                             '''
     ...
 
     @staticmethod
@@ -449,17 +316,15 @@ grDraw( (Point3d)arg1, (Point3d)arg2, (int)arg3, (int)arg4) -> int :
     def hatchPalletteDialog (pattern:str,custom : bool)-> str :
       '''                             '''
     ...
-    def initDialog (self, *args, **kwargs)-> bool :
-      '''initDialog( (bool)arg1) -> bool :
 
-    C++ signature :
-        bool initDialog(bool)'''
+    @staticmethod
+    def initDialog (useDialog: bool)-> bool :
+      '''                             '''
     ...
-    def invoke (self, *args, **kwargs)-> list :
-      '''invoke( (list)arg1) -> list :
 
-    C++ signature :
-        class boost::python::list invoke(class boost::python::list)'''
+    @staticmethod
+    def invoke (resultBuffer: list)-> list :
+      '''                             '''
     ...
 
     @staticmethod
@@ -476,11 +341,10 @@ grDraw( (Point3d)arg1, (Point3d)arg2, (int)arg3, (int)arg4) -> int :
     def isInputPending ()-> bool :
       '''                             '''
     ...
-    def isMenuGroupLoaded (self, *args, **kwargs)-> bool :
-      '''isMenuGroupLoaded( (str)arg1) -> bool :
 
-    C++ signature :
-        bool isMenuGroupLoaded(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def isMenuGroupLoaded (mnu: str)-> bool :
+      '''                             '''
     ...
 
     @staticmethod
@@ -497,91 +361,80 @@ grDraw( (Point3d)arg1, (Point3d)arg2, (int)arg3, (int)arg4) -> int :
     def isUsrbrkDisabled ()-> bool :
       '''                             '''
     ...
-    def loadJSScript (self, *args, **kwargs)-> None :
-      '''loadJSScript( (str)arg1) -> None :
 
-    C++ signature :
-        void loadJSScript(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def loadJSScript (scr: str)-> None :
+      '''                             '''
     ...
-    def loadMainMenu (self, *args, **kwargs)-> bool :
-      '''loadMainMenu( (str)arg1) -> bool :
 
-    C++ signature :
-        bool loadMainMenu(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def loadMainMenu (mnu: str)-> bool :
+      '''                             '''
     ...
-    def loadPartialMenu (self, *args, **kwargs)-> bool :
-      '''loadPartialMenu( (str)arg1) -> bool :
 
-    C++ signature :
-        bool loadPartialMenu(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def loadPartialMenu (mnu: str)-> bool :
+      '''                             '''
     ...
 
     @staticmethod
     def mSpace ()-> None :
       '''                             '''
     ...
-    def markForDelayXRefRelativePathResolve (self, *args, **kwargs)-> None :
-      '''markForDelayXRefRelativePathResolve( (ObjectId)arg1) -> None :
 
-    C++ signature :
-        void markForDelayXRefRelativePathResolve(class PyDbObjectId)'''
+    @staticmethod
+    def markForDelayXRefRelativePathResolve (id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def osnap (self, *args, **kwargs)-> PyGe.Point3d :
-      '''osnap( (Point3d)arg1, (str)arg2) -> Point3d :
 
-    C++ signature :
-        class AcGePoint3d osnap(class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def osnap (pt: AcGe.Point3d,mode: str)-> PyGe.Point3d :
+      '''                             '''
     ...
 
     @staticmethod
     def pSpace ()-> None :
       '''                             '''
     ...
-    def postCommand (self, *args, **kwargs)-> None :
-      '''postCommand( (str)arg1) -> None :
 
-    C++ signature :
-        void postCommand(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def postCommand (str: str)-> None :
+      '''                             '''
     ...
 
     @staticmethod
     def postCommandPrompt ()-> None :
       '''                             '''
     ...
-    def prompt (self, *args, **kwargs)-> int :
-      '''prompt( (str)arg1) -> int :
 
-    C++ signature :
-        int prompt(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def prompt (val: str)-> int :
+      '''                             '''
     ...
-    def putSym (self, *args, **kwargs)-> bool :
-      '''putSym( (str)arg1, (list)arg2) -> bool :
 
-    C++ signature :
-        bool putSym(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::list {lvalue})'''
+    @staticmethod
+    def putSym (sym: str,resultBuffer: list)-> bool :
+      '''                             '''
     ...
-    def redraw (self, *args, **kwargs)-> int :
-      '''redraw( (ObjectId)arg1, (int)arg2) -> int :
 
-    C++ signature :
-        int redraw(class PyDbObjectId,int)'''
+    @staticmethod
+    def redraw (id: PyDb.ObjectId,mode: int)-> int :
+      '''                             '''
     ...
 
     @staticmethod
     def regen ()-> None :
       '''                             '''
     ...
-    def reloadMenus (self, *args, **kwargs)-> None :
-      '''reloadMenus( (bool)arg1) -> None :
 
-    C++ signature :
-        void reloadMenus(bool)'''
+    @staticmethod
+    def reloadMenus (bIncrementalReloading: bool)-> None :
+      '''                             '''
     ...
-    def restoreCurrentView (self, *args, **kwargs)-> None :
-      '''restoreCurrentView( (ObjectId)arg1) -> None :
 
-    C++ signature :
-        void restoreCurrentView(class PyDbObjectId)'''
+    @staticmethod
+    def restoreCurrentView (vid: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -593,58 +446,45 @@ grDraw( (Point3d)arg1, (Point3d)arg2, (int)arg3, (int)arg4) -> int :
     def restoreStatusBar ()-> None :
       '''                             '''
     ...
-    def sendModelessOperationEnded (self, *args, **kwargs)-> None :
-      '''sendModelessOperationEnded( (str)arg1) -> None :
 
-    C++ signature :
-        void sendModelessOperationEnded(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def sendModelessOperationEnded (ctx: str)-> None :
+      '''                             '''
     ...
-    def sendModelessOperationStart (self, *args, **kwargs)-> None :
-      '''sendModelessOperationStart( (str)arg1) -> None :
 
-    C++ signature :
-        void sendModelessOperationStart(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def sendModelessOperationStart (ctx: str)-> None :
+      '''                             '''
     ...
-    def setCfg (self, *args, **kwargs)-> None :
-      '''setCfg( (str)arg1, (str)arg2) -> None :
 
-    C++ signature :
-        void setCfg(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def setCfg (sym: str,val: str)-> None :
+      '''                             '''
     ...
-    def setColorDialog (self, *args, **kwargs)-> tuple :
-      '''setColorDialog( (int)arg1, (bool)arg2, (int)arg3) -> tuple :
 
-    C++ signature :
-        class boost::python::tuple setColorDialog(int,bool,int)'''
+    @staticmethod
+    def setColorDialog (clr: int,bAllowMetaColor: bool,nCurLayerColor, int)-> tuple :
+      '''                             '''
     ...
-    def setColorDialogTrueColor (self, *args, **kwargs)-> tuple :
-      '''setColorDialogTrueColor( (Color)arg1, (bool)arg2, (Color)arg3) -> tuple :
 
-    C++ signature :
-        class boost::python::tuple setColorDialogTrueColor(class AcCmColor,bool,class AcCmColor)
-
-setColorDialogTrueColor( (Color)arg1, (bool)arg2, (Color)arg3, (AcCmDialogTabs)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple setColorDialogTrueColor(class AcCmColor,bool,class AcCmColor,enum AcCm::DialogTabs)'''
+    @staticmethod
+    def setColorDialogTrueColor (clr: PyDb.AcCmColor,bAllowMetaColor: bool,bAllowMetaColor: bool,nCurLayerColor: PyDb.AcCmColor,tab: int = 7)-> tuple :
+      '''                             '''
     ...
-    def setCurrentVPort (self, *args, **kwargs)-> None :
-      '''setCurrentVPort( (Viewport)arg1) -> None :
 
-    C++ signature :
-        void setCurrentVPort(class PyDbViewport)'''
+    @staticmethod
+    def setCurrentVPort (vp: PyDb.Viewport)-> None :
+      '''                             '''
     ...
-    def setCurrentView (self, *args, **kwargs)-> None :
-      '''setCurrentView( (ViewTableRecord)arg1, (Viewport)arg2) -> None :
 
-    C++ signature :
-        void setCurrentView(class PyDbViewTableRecord,class PyDbViewport)'''
+    @staticmethod
+    def setCurrentView (vrec: PyDb.ViewTableRecord,vp: PyDb.Viewport)-> None :
+      '''                             '''
     ...
-    def setEnv (self, *args, **kwargs)-> None :
-      '''setEnv( (str)arg1, (str)arg2) -> None :
 
-    C++ signature :
-        void setEnv(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def setEnv (sym: str,val: str)-> None :
+      '''                             '''
     ...
     def setFieldUpdateEnabled (self, *args, **kwargs)-> None :
       '''setFieldUpdateEnabled( (Document)arg1, (bool)arg2) -> None :
@@ -1153,6 +993,29 @@ class DrawJig(object):
     ...
     def worldDraw (self, wd: PyGi.WorldDraw)-> bool :
       '''                             '''
+    ...
+
+class DrawOrderCmdType(object):
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def kDrawOrderAbove (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kDrawOrderBelow (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kDrawOrderBottom (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kDrawOrderNone (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kDrawOrderTop (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
     ...
 
 class Editor(object):
@@ -1918,7 +1781,7 @@ This class cannot be instantiated from Python'''
     def gsSelectionMark (self)-> list :
       '''                             '''
     ...
-    def history (self)-> PyEd.AcEdPointHistory :
+    def history (self)-> PyEd.PointHistory :
       '''                             '''
     ...
     def keyPointEntities (self)-> list :
@@ -2135,6 +1998,89 @@ class Jig(object):
     ...
     def userInputControls (self)-> PyEd.UserInputControls :
       '''                             '''
+    ...
+
+class PointHistory(object):
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def eAligned (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eAppFiltered (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eCartSnapped (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eCoordPending (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eCyclingPt (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eDidNotPick (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eDirectDistance (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eForcedPick (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eFromKeyboard (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGizmoConstrainted (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eGripped (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eLastPt (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eNotDigitizer (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eNotInteractive (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eOrtho (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eOsnapped (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def ePickAborted (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def ePickMask (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def ePolarAngle (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTablet (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eUsedOsnapBox (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eUsedPickBox (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eXPending (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eYPending (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eZPending (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
     ...
 
 class PromptStatus(object):

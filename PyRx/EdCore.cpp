@@ -111,52 +111,52 @@ void makePyEdCoreWrapper()
         .def("clearOLELock", &EdCore::clearOLELock, DS.SARGS({ "handle: int" })).staticmethod("clearOLELock")
         .def("clipFormatName", &EdCore::clipFormatName, DS.SARGS()).staticmethod("clipFormatName")
         .def("cmdCWasCancelled", &EdCore::cmdCWasCancelled, DS.SARGS()).staticmethod("cmdCWasCancelled")
-        .def("cmdUndefine", &EdCore::cmdUndefine).staticmethod("cmdUndefine")
+        .def("cmdUndefine", &EdCore::cmdUndefine, DS.SARGS({ "name: str", "undefineit: int" })).staticmethod("cmdUndefine")
         .def("getCommands", &EdCore::getCommands, DS.SARGS()).staticmethod("getCommands")
         .def("coordFromPixelToWorld", &EdCore::coordFromPixelToWorld1)
         .def("coordFromPixelToWorld", &EdCore::coordFromPixelToWorld2, DS.SARGS({ "windnum: int = 'None'","pt: tuple[int,int]" })).staticmethod("coordFromPixelToWorld")
         .def("coordFromWorldToPixel", &EdCore::coordFromWorldToPixel, DS.SARGS({ "windnum: int ","pnt: PyGe.Point3d" })).staticmethod("coordFromWorldToPixel")
-        .def("createInternetShortcut", &EdCore::createInternetShortcut).staticmethod("createInternetShortcut")
-        .def("createViewportByView", &EdCore::createViewportByView).staticmethod("createViewportByView")
-        .def("cmdS", &EdCore::cmdS).staticmethod("cmdS")
-        .def("defun", &EdCore::defun).staticmethod("defun")
-        .def("defunEx", &EdCore::defunEx).staticmethod("defunEx")
-        .def("disableDefaultARXExceptionHandler", &EdCore::disableDefaultARXExceptionHandler).staticmethod("disableDefaultARXExceptionHandler")
+        .def("createInternetShortcut", &EdCore::createInternetShortcut, DS.SARGS({ "szURL: str","szShortcutPath: str" })).staticmethod("createInternetShortcut")
+        .def("createViewportByView", &EdCore::createViewportByView, DS.SARGS({ "db: PyDb.Database","view: PyDb.ObjectId","pt: PyGe.Point2d","scale: float" })).staticmethod("createViewportByView")
+        .def("cmdS", &EdCore::cmdS, DS.SARGS({ "resultBuffer: list" })).staticmethod("cmdS")
+        .def("defun", &EdCore::defun, DS.SARGS({ "name: str", "funcnumber: int" })).staticmethod("defun")
+        .def("defunEx", &EdCore::defunEx, DS.SARGS({ "global: str", "name: str", "funcnumber: int" })).staticmethod("defunEx")
+        .def("disableDefaultARXExceptionHandler", &EdCore::disableDefaultARXExceptionHandler, DS.SARGS({ "val: bool" })).staticmethod("disableDefaultARXExceptionHandler")
         .def("disableUsrbrk", &EdCore::disableUsrbrk, DS.SARGS()).staticmethod("disableUsrbrk")
-        .def("displayBorder", &EdCore::displayBorder).staticmethod("displayBorder")
+        .def("displayBorder", &EdCore::displayBorder, DS.SARGS({ "val: bool" })).staticmethod("displayBorder")
         .def("drawingStatusBarsVisible", &EdCore::drawingStatusBarsVisible, DS.SARGS()).staticmethod("drawingStatusBarsVisible")
-        .def("drawOrderInherit", &EdCore::drawOrderInherit).staticmethod("drawOrderInherit")
-        .def("dropOpenFile", &EdCore::dropOpenFile).staticmethod("dropOpenFile")
+        .def("drawOrderInherit", &EdCore::drawOrderInherit, DS.SARGS({ "parent: PyDb.ObjectId","childids: list[PyDb.ObjectId]", "cmd: PyEd.DrawOrderCmdType"})).staticmethod("drawOrderInherit")
+        .def("dropOpenFile", &EdCore::dropOpenFile, DS.SARGS({ "val: str" })).staticmethod("dropOpenFile")
         .def("eatCommandThroat", &EdCore::eatCommandThroat, DS.SARGS()).staticmethod("eatCommandThroat")
-        .def("editMTextInteractive", &EdCore::editMTextInteractive).staticmethod("editMTextInteractive")
+        .def("editMTextInteractive", &EdCore::editMTextInteractive, DS.SARGS({ "mt: PyDb.MText", "usenewUI: bool","allowTabs: bool" })).staticmethod("editMTextInteractive")
         .def("enableUsrbrk", &EdCore::enableUsrbrk, DS.SARGS()).staticmethod("enableUsrbrk")
         .def("evaluateLisp", &EdCore::evaluateLisp, DS.SARGS({ "statement : str" })).staticmethod("evaluateLisp")
         .def("evaluateDiesel", &EdCore::evaluateDiesel, DS.SARGS({ "statement : str" })).staticmethod("evaluateDiesel")
-        .def("findFile", &EdCore::findFile).staticmethod("findFile")
-        .def("findTrustedFile", &EdCore::findTrustedFile).staticmethod("findTrustedFile")
+        .def("findFile", &EdCore::findFile, DS.SARGS({ "fname: str" })).staticmethod("findFile")
+        .def("findTrustedFile", &EdCore::findTrustedFile, DS.SARGS({ "fname: str" })).staticmethod("findTrustedFile")
         .def("getPredefinedHatchPatterns", &EdCore::getPredefinedPattens, DS.SARGS()).staticmethod("getPredefinedHatchPatterns")
-        .def("getFileD", &EdCore::getFileD).staticmethod("getFileD")
-        .def("getFileNavDialog", &EdCore::getFileNavDialog).staticmethod("getFileNavDialog")
+        .def("getFileD", &EdCore::getFileD, DS.SARGS({ "title: str", "defawlt: str","ext: str", "flags: int" })).staticmethod("getFileD")
+        .def("getFileNavDialog", &EdCore::getFileNavDialog, DS.SARGS({ "title: str", "defawlt: str","ext: str","dlgname: str","flags: int" })).staticmethod("getFileNavDialog")
         .def("getAcadDockCmdLine", &EdCore::getAcadDockCmdLine, DS.SARGS()).staticmethod("getAcadDockCmdLine")
         .def("getAcadTextCmdLine", &EdCore::getAcadTextCmdLine, DS.SARGS()).staticmethod("getAcadTextCmdLine")
-        .def("getCommandForDocument", &EdCore::getCommandForDocument).staticmethod("getCommandForDocument")
+        .def("getCommandForDocument", &EdCore::getCommandForDocument, DS.SARGS({ "doc: PyAp.Document" })).staticmethod("getCommandForDocument")
         .def("getCurrentSelectionSet", &EdCore::getCurrentSelectionSet, DS.SARGS()).staticmethod("getCurrentSelectionSet")
         .def("getCurVportPixelToDisplay", &EdCore::getCurVportPixelToDisplay, DS.SARGS()).staticmethod("getCurVportPixelToDisplay")
         .def("getCurVportScreenToDisplay", &EdCore::getCurVportScreenToDisplay, DS.SARGS()).staticmethod("getCurVportScreenToDisplay")
-        .def("getEnv", &EdCore::getEnv).staticmethod("getEnv")
-        .def("setEnv", &EdCore::setEnv).staticmethod("setEnv")
-        .def("getCfg", &EdCore::getCfg).staticmethod("getCfg")
-        .def("setCfg", &EdCore::setCfg).staticmethod("setCfg")
-        .def("getSym", &EdCore::getSym).staticmethod("getSym")
-        .def("putSym", &EdCore::putSym).staticmethod("putSym")
-        .def("getWinNum", &EdCore::getWinNum).staticmethod("getWinNum")
-        .def("getRGB", &EdCore::getRGB, DS.ARGS({ "colorIndex : int" })).staticmethod("getRGB")
+        .def("getEnv", &EdCore::getEnv, DS.SARGS({ "val: str" })).staticmethod("getEnv")
+        .def("setEnv", &EdCore::setEnv, DS.SARGS({ "sym: str", "val: str" })).staticmethod("setEnv")
+        .def("getCfg", &EdCore::getCfg, DS.SARGS({ "val: str" })).staticmethod("getCfg")
+        .def("setCfg", &EdCore::setCfg, DS.SARGS({ "sym: str", "val: str" })).staticmethod("setCfg")
+        .def("getSym", &EdCore::getSym, DS.SARGS({ "val: str" })).staticmethod("getSym")
+        .def("putSym", &EdCore::putSym, DS.SARGS({ "sym: str", "resultBuffer: list" })).staticmethod("putSym")
+        .def("getWinNum", &EdCore::getWinNum, DS.SARGS({ "ptx: int","pty: int" })).staticmethod("getWinNum")
+        .def("getRGB", &EdCore::getRGB, DS.SARGS({ "colorIndex : int" })).staticmethod("getRGB")
         .def("graphScr", &EdCore::graphScr, DS.SARGS()).staticmethod("graphScr")
         .def("grDraw", &EdCore::grDraw1)
-        .def("grDraw", &EdCore::grDraw2).staticmethod("grDraw")
-        .def("getCommandPromptString", &EdCore::getCommandPromptString).staticmethod("getCommandPromptString")
-        .def("getLastCommandLines", &EdCore::getLastCommandLines).staticmethod("getLastCommandLines")
-        .def("getBlockEditMode", &EdCore::getBlockEditMode).staticmethod("getBlockEditMode")
+        .def("grDraw", &EdCore::grDraw2, DS.SARGS({ "pt1: PyGe.Point2d|PyGe.Point3d","pt2: PyGe.Point2d|PyGe.Point3d","color: int","highlight: int" })).staticmethod("grDraw")
+        .def("getCommandPromptString", &EdCore::getCommandPromptString, DS.SARGS()).staticmethod("getCommandPromptString")
+        .def("getLastCommandLines", &EdCore::getLastCommandLines, DS.SARGS({ "lineCount: int","ignoreNull: bool" })).staticmethod("getLastCommandLines")
+        .def("getBlockEditMode", &EdCore::getBlockEditMode, DS.SARGS()).staticmethod("getBlockEditMode")
         .def("getVar", &EdCore::getVar, DS.SARGS({ "name:str" })).staticmethod("getVar")
         .def("setVar", &EdCore::setVar, DS.SARGS({ "name:str","value" })).staticmethod("setVar")
         .def("autoSetVar", &EdCore::autoSetVar, DS.SARGS({ "name:str","value" })).staticmethod("autoSetVar")
@@ -166,41 +166,48 @@ void makePyEdCoreWrapper()
         .def("getDpiScalingValue", &EdCore::getDpiScalingValue, DS.SARGS()).staticmethod("getDpiScalingValue")
         .def("getUserFavoritesDir", &EdCore::getUserFavoritesDir, DS.SARGS()).staticmethod("getUserFavoritesDir")
         .def("hatchPalletteDialog", &EdCore::hatchPalletteDialog, DS.SARGS({ "pattern:str","custom : bool" })).staticmethod("hatchPalletteDialog")
-        .def("invoke", &EdCore::invoke).staticmethod("invoke")
-        .def("initDialog", &EdCore::initDialog).staticmethod("initDialog")
+        .def("invoke", &EdCore::invoke, DS.SARGS({ "resultBuffer: list" })).staticmethod("invoke")
+        .def("initDialog", &EdCore::initDialog, DS.SARGS({ "useDialog: bool" })).staticmethod("initDialog")
         .def("isDragging", &EdCore::isDragging, DS.SARGS()).staticmethod("isDragging")
         .def("isInBackgroundMode", &EdCore::isInBackgroundMode, DS.SARGS()).staticmethod("isInBackgroundMode")
         .def("isInputPending", &EdCore::isInputPending, DS.SARGS()).staticmethod("isInputPending")
-        .def("isMenuGroupLoaded", &EdCore::isMenuGroupLoaded).staticmethod("isMenuGroupLoaded")
+        .def("isMenuGroupLoaded", &EdCore::isMenuGroupLoaded, DS.SARGS({ "mnu: str" })).staticmethod("isMenuGroupLoaded")
         .def("isOsnapOverride", &EdCore::isOsnapOverride, DS.SARGS()).staticmethod("isOsnapOverride")
         .def("isUpdateDisplayPaused", &EdCore::isUpdateDisplayPaused, DS.SARGS()).staticmethod("isUpdateDisplayPaused")
         .def("isUsrbrkDisabled", &EdCore::isUsrbrkDisabled, DS.SARGS()).staticmethod("isUsrbrkDisabled")
-        .def("loadJSScript", &EdCore::loadJSScript).staticmethod("loadJSScript")
-        .def("loadPartialMenu", &EdCore::loadPartialMenu).staticmethod("loadPartialMenu")
-        .def("loadMainMenu", &EdCore::loadMainMenu).staticmethod("loadMainMenu")
-        .def("markForDelayXRefRelativePathResolve", &EdCore::markForDelayXRefRelativePathResolve).staticmethod("markForDelayXRefRelativePathResolve")
+        .def("loadJSScript", &EdCore::loadJSScript, DS.SARGS({ "scr: str" })).staticmethod("loadJSScript")
+        .def("loadPartialMenu", &EdCore::loadPartialMenu, DS.SARGS({ "mnu: str" })).staticmethod("loadPartialMenu")
+        .def("loadMainMenu", &EdCore::loadMainMenu, DS.SARGS({ "mnu: str" })).staticmethod("loadMainMenu")
+        .def("markForDelayXRefRelativePathResolve", &EdCore::markForDelayXRefRelativePathResolve, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("markForDelayXRefRelativePathResolve")
         .def("mSpace", &EdCore::mSpace, DS.SARGS()).staticmethod("mSpace")
         .def("pSpace", &EdCore::pSpace, DS.SARGS()).staticmethod("pSpace")
-        .def("postCommand", &EdCore::postCommand).staticmethod("postCommand")
+        .def("postCommand", &EdCore::postCommand, DS.SARGS({ "str: str" })).staticmethod("postCommand")
         .def("postCommandPrompt", &EdCore::postCommandPrompt, DS.SARGS()).staticmethod("postCommandPrompt")
-        .def("prompt", &EdCore::prompt).staticmethod("prompt")
-        .def("osnap", &EdCore::osnap).staticmethod("osnap")
-        .def("redraw", &EdCore::redraw).staticmethod("redraw")
-        .def("reloadMenus", &EdCore::reloadMenus).staticmethod("reloadMenus")
-        .def("restoreCurrentView", &EdCore::restoreCurrentView).staticmethod("restoreCurrentView")
+        .def("prompt", &EdCore::prompt, DS.SARGS({ "val: str" })).staticmethod("prompt")
+        .def("osnap", &EdCore::osnap, DS.SARGS({ "pt: AcGe.Point3d","mode: str" })).staticmethod("osnap")
+        .def("redraw", &EdCore::redraw, DS.SARGS({ "id: PyDb.ObjectId","mode: int" })).staticmethod("redraw")
+        .def("reloadMenus", &EdCore::reloadMenus, DS.SARGS({ "bIncrementalReloading: bool" })).staticmethod("reloadMenus")
+        .def("restoreCurrentView", &EdCore::restoreCurrentView, DS.SARGS({ "vid: PyDb.ObjectId" })).staticmethod("restoreCurrentView")
         .def("restorePreviousUCS", &EdCore::restorePreviousUCS, DS.SARGS()).staticmethod("restorePreviousUCS")
         .def("restoreStatusBar", &EdCore::restoreStatusBar, DS.SARGS()).staticmethod("restoreStatusBar")
         .def("regen", &EdCore::regen, DS.SARGS()).staticmethod("regen")
-        .def("sendModelessOperationEnded", &EdCore::sendModelessOperationEnded).staticmethod("sendModelessOperationEnded")
-        .def("sendModelessOperationStart", &EdCore::sendModelessOperationStart).staticmethod("sendModelessOperationStart")
-        .def("setColorDialog", &EdCore::setColorDialog).staticmethod("setColorDialog")
+        .def("sendModelessOperationEnded", &EdCore::sendModelessOperationEnded, DS.SARGS({ "ctx: str" })).staticmethod("sendModelessOperationEnded")
+        .def("sendModelessOperationStart", &EdCore::sendModelessOperationStart, DS.SARGS({ "ctx: str" })).staticmethod("sendModelessOperationStart")
+        .def("setColorDialog", &EdCore::setColorDialog, DS.SARGS({ "clr: int","bAllowMetaColor: bool","nCurLayerColor, int"})).staticmethod("setColorDialog")
         .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor1)
-        .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor2).staticmethod("setColorDialogTrueColor")
-        .def("setCurrentView", &EdCore::setCurrentView).staticmethod("setCurrentView")
-        .def("setCurrentVPort", &EdCore::setCurrentVPort).staticmethod("setCurrentVPort")
+        .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor2,DS.SARGS({ "clr: PyDb.AcCmColor","bAllowMetaColor: bool","bAllowMetaColor: bool","nCurLayerColor: PyDb.AcCmColor","tab: int = 7"})).staticmethod("setColorDialogTrueColor")
+        .def("setCurrentView", &EdCore::setCurrentView, DS.SARGS({ "vrec: PyDb.ViewTableRecord", "vp: PyDb.Viewport" })).staticmethod("setCurrentView")
+        .def("setCurrentVPort", &EdCore::setCurrentVPort, DS.SARGS({ "vp: PyDb.Viewport" })).staticmethod("setCurrentVPort")
+
+
+
+
+
+
         .def("setStatusBarProgressMeter", &EdCore::setStatusBarProgressMeter).staticmethod("setStatusBarProgressMeter")
         .def("setStatusBarProgressMeterPos", &EdCore::setStatusBarProgressMeterPos).staticmethod("setStatusBarProgressMeterPos")
         .def("setXrefResolvedWithUpdateStatus", &EdCore::setXrefResolvedWithUpdateStatus).staticmethod("setXrefResolvedWithUpdateStatus")
+
         .def("setUndoMark", &EdCore::setUndoMark).staticmethod("setUndoMark")
         .def("showHTMLModalWindow", &EdCore::showHTMLModalWindow1)
         .def("showHTMLModalWindow", &EdCore::showHTMLModalWindow2).staticmethod("showHTMLModalWindow")
@@ -376,7 +383,7 @@ AcGePoint3d EdCore::coordFromPixelToWorld2(int windnum, const boost::python::tup
     int y = extract<int>(tin[1]);
     CPoint cpnt(x, y);
     AcGePoint3d pnt;
-    if(acedCoordFromPixelToWorld(windnum, cpnt, asDblArray(pnt)) == false)
+    if (acedCoordFromPixelToWorld(windnum, cpnt, asDblArray(pnt)) == false)
         PyThrowBadEs(eInvalidInput);
     return pnt;
 }
@@ -866,10 +873,10 @@ int EdCore::menuCmd(const std::string& mnu)
     return acedMenuCmd(utf8_to_wstr(mnu).c_str());
 }
 
-boost::python::list EdCore::invoke(const boost::python::list& args)
+boost::python::list EdCore::invoke(const boost::python::list& SARGS)
 {
     PyAutoLockGIL lock;
-    AcResBufPtr pArgs(listToResbuf(args));
+    AcResBufPtr pArgs(listToResbuf(SARGS));
     resbuf* pResult = nullptr;
     acedInvoke(pArgs.get(), &pResult);
     AcResBufPtr pResultPtr(pResult);
@@ -1183,16 +1190,16 @@ std::string EdCore::hatchPalletteDialog(const std::string& pattern, bool showCus
 {
     RxAutoOutStr outstr;
 #ifdef _ZRXTARGET 
-    zcedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom , outstr.buf);
+    zcedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom, outstr.buf);
 #endif
 #ifdef _GRXTARGET 
-    gcedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom , outstr.buf);
+    gcedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom, outstr.buf);
 #endif
 #ifdef _BRXTARGET 
-    acedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom , outstr.buf);
+    acedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom, outstr.buf);
 #endif
 #ifdef _ARXTARGET 
-    acedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom , outstr.buf);
+    acedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom, outstr.buf);
 #endif
     return outstr.str();
 }
