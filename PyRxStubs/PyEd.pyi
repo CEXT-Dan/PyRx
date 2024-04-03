@@ -486,80 +486,60 @@ class Core(object):
     def setEnv (sym: str,val: str)-> None :
       '''                             '''
     ...
-    def setFieldUpdateEnabled (self, *args, **kwargs)-> None :
-      '''setFieldUpdateEnabled( (Document)arg1, (bool)arg2) -> None :
 
-    C++ signature :
-        void setFieldUpdateEnabled(class PyApDocument {lvalue},bool)'''
+    @staticmethod
+    def setFieldUpdateEnabled (doc: PyAp.Document,enabled: bool)-> None :
+      '''                             '''
     ...
-    def setFunHelp (self, *args, **kwargs)-> int :
-      '''setFunHelp( (str)arg1, (str)arg2, (str)arg3, (int)arg4) -> int :
 
-    C++ signature :
-        int setFunHelp(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    @staticmethod
+    def setFunHelp (functionName: str,helpfile: str,topic: str,iCmd: int)-> int :
+      '''                             '''
     ...
-    def setStatusBarProgressMeter (self, *args, **kwargs)-> int :
-      '''setStatusBarProgressMeter( (str)arg1, (int)arg2, (int)arg3) -> int :
 
-    C++ signature :
-        int setStatusBarProgressMeter(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)'''
+    @staticmethod
+    def setStatusBarProgressMeter (lable: str,nMinPos: int,nMaxPos: int)-> int :
+      '''                             '''
     ...
-    def setStatusBarProgressMeterPos (self, *args, **kwargs)-> int :
-      '''setStatusBarProgressMeterPos( (int)arg1) -> int :
 
-    C++ signature :
-        int setStatusBarProgressMeterPos(int)'''
+    @staticmethod
+    def setStatusBarProgressMeterPos (pos: int)-> int :
+      '''                             '''
     ...
-    def setUndoMark (self, *args, **kwargs)-> None :
-      '''setUndoMark( (bool)arg1) -> None :
 
-    C++ signature :
-        void setUndoMark(bool)'''
+    @staticmethod
+    def setUndoMark (flag: bool)-> None :
+      '''                             '''
     ...
 
     @staticmethod
     def setVar (name:str,value)-> bool :
       '''                             '''
     ...
-    def setXrefResolvedWithUpdateStatus (self, *args, **kwargs)-> None :
-      '''setXrefResolvedWithUpdateStatus( (BlockTableRecord)arg1) -> None :
 
-    C++ signature :
-        void setXrefResolvedWithUpdateStatus(class PyDbBlockTableRecord)'''
+    @staticmethod
+    def setXrefResolvedWithUpdateStatus (rec: PyDb.BlockTableRecord)-> None :
+      '''                             '''
     ...
-    def showHTMLModalWindow (self, *args, **kwargs)-> bool :
-      '''showHTMLModalWindow( (int)arg1, (str)arg2) -> bool :
 
-    C++ signature :
-        bool showHTMLModalWindow(unsigned __int64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-showHTMLModalWindow( (int)arg1, (str)arg2, (bool)arg3) -> bool :
-
-    C++ signature :
-        bool showHTMLModalWindow(unsigned __int64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
+    @staticmethod
+    def showHTMLModalWindow (hwnd: int,val: uriOfHtmlPage,persistSizeAndPosition: bool=True)-> bool :
+      '''                             '''
     ...
-    def showHTMLModelessWindow (self, *args, **kwargs)-> int :
-      '''showHTMLModelessWindow( (int)arg1, (str)arg2) -> int :
 
-    C++ signature :
-        unsigned __int64 showHTMLModelessWindow(unsigned __int64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-showHTMLModelessWindow( (int)arg1, (str)arg2, (bool)arg3) -> int :
-
-    C++ signature :
-        unsigned __int64 showHTMLModelessWindow(unsigned __int64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
+    @staticmethod
+    def showHTMLModelessWindow (hwnd: int,val: uriOfHtmlPage,persistSizeAndPosition: bool=True)-> int :
+      '''                             '''
     ...
-    def skipXrefNotification (self, *args, **kwargs)-> None :
-      '''skipXrefNotification( (Database)arg1, (str)arg2) -> None :
 
-    C++ signature :
-        void skipXrefNotification(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def skipXrefNotification (db: PyDb.Database,name: str)-> None :
+      '''                             '''
     ...
-    def textBox (self, *args, **kwargs)-> tuple :
-      '''textBox( (list)arg1) -> tuple :
 
-    C++ signature :
-        class boost::python::tuple textBox(class boost::python::list)'''
+    @staticmethod
+    def textBox (resultBuffer: list)-> tuple :
+      '''                             '''
     ...
 
     @staticmethod
@@ -571,51 +551,45 @@ showHTMLModelessWindow( (int)arg1, (str)arg2, (bool)arg3) -> int :
     def textScr ()-> None :
       '''                             '''
     ...
-    def trans (self, *args, **kwargs)-> PyGe.Point3d :
-      '''trans( (Point3d)arg1, (object)arg2, (object)arg3, (bool)arg4) -> Point3d :
 
-    C++ signature :
-        class AcGePoint3d trans(class AcGePoint3d,class boost::python::api::object,class boost::python::api::object,bool)'''
+    @staticmethod
+    def trans (pt: PyGe.Point3d,rbFrom: tuple,rbTo: tuple,disp: bool)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def unloadPartialMenu (self, *args, **kwargs)-> bool :
-      '''unloadPartialMenu( (str)arg1) -> bool :
 
-    C++ signature :
-        bool unloadPartialMenu(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def unloadPartialMenu (mnu: str)-> bool :
+      '''                             '''
     ...
-    def unmarkForDelayXRefRelativePathResolve (self, *args, **kwargs)-> None :
-      '''unmarkForDelayXRefRelativePathResolve( (ObjectId)arg1) -> None :
 
-    C++ signature :
-        void unmarkForDelayXRefRelativePathResolve(class PyDbObjectId)'''
+    @staticmethod
+    def unmarkForDelayXRefRelativePathResolve (id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def update (self, *args, **kwargs)-> int :
-      '''update( (int)arg1, (Point2d)arg2, (Point2d)arg3) -> int :
 
-    C++ signature :
-        int update(int,class AcGePoint2d,class AcGePoint2d)'''
+    @staticmethod
+    def update (vport: int,pt1: PyGe.Point2d,pt2: PyGe.Point2d)-> int :
+      '''                             '''
     ...
 
     @staticmethod
     def updateDisplay ()-> None :
       '''                             '''
     ...
-    def updateDisplayPause (self, *args, **kwargs)-> None :
-      '''updateDisplayPause( (bool)arg1) -> None :
 
-    C++ signature :
-        void updateDisplayPause(bool)'''
+    @staticmethod
+    def updateDisplayPause (val: bool)-> None :
+      '''                             '''
     ...
 
     @staticmethod
     def usrBrk ()-> bool :
       '''                             '''
     ...
-    def viewportIdFromNumber (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''viewportIdFromNumber( (int)arg1) -> ObjectId :
 
-    C++ signature :
-        class PyDbObjectId viewportIdFromNumber(int)'''
+    @staticmethod
+    def viewportIdFromNumber (val: int)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def vpLayer (self, *args, **kwargs)-> None :
       '''vpLayer( (ObjectId)arg1, (list)arg2, (VpFreezeOps)arg3) -> None :
