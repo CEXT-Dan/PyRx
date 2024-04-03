@@ -171,6 +171,7 @@ public:
     static void                 xrefReload2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb);
     static void                 xrefReload3(const std::string& name);
     static void                 xrefReload4(const std::string& name, bool bQuiet, PyDbDatabase& pHostDb);
+
     static void                 xrefResolve1(PyDbDatabase& pHostDb);
     static void                 xrefResolve2(PyDbDatabase& pHostDb, bool bQuiet);
     static void                 xrefUnload1(const std::string& XrefBlockname);

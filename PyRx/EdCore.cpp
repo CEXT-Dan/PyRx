@@ -103,6 +103,32 @@ void makePyEdCoreWrapper()
         "- path: str, name: str\n"
         "- path: str, name: str, btrid: PyDb.ObjectId, refid: PyDb.ObjectId, pt: PyGe.Point3d, sc: PyGe.Scale3d, rot: float, bQuiet: bool, pHostDb: PyDb.Database, passwd: str\n";
 
+    constexpr const std::string_view xrefDetachOverloads = "Overloads:\n"
+        "- XrefBlockname: str\n"
+        "- XrefBlockname: str, bQuiet: bool, pHostDb: PyDb.Database\n";
+
+    constexpr const std::string_view xrefOverlayhOverloads = "Overloads:\n"
+        "- path: str, name: str\n"
+        "- path: str, name: str, btrid: PyDb.ObjectId, refid: PyDb.ObjectId, pt: PyGe.Point3d, sc: PyGe.Scale3d, rot: float, bQuiet: bool, pHostDb: PyDb.Database, passwd: str\n";
+
+    constexpr const std::string_view xrefReloadOverloads = "Overloads:\n"
+        "- symbolIds: list[PyDb.ObjectId]\n"
+        "- symbolIds: list[PyDb.ObjectId], bQuiet: bool, pHostDb: PyDb.Database\n"
+        "- name: str\n"
+        "- name: str, bQuiet: bool, pHostDb: PyDb.Database\n";
+
+    constexpr const std::string_view xrefUnloadOverloads = "Overloads:\n"
+        "- XrefBlockname: str\n"
+        "- XrefBlockname: str, bQuiet: bool, pHostDb: PyDb.Database\n";
+
+    constexpr const std::string_view xrefBindOverloads = "Overloads:\n"
+        "- XrefBlockname: str\n"
+        "- XrefBlockname: str,bInsertBind: bool, bQuiet: bool, pHostDb: PyDb.Database\n";
+
+    constexpr const std::string_view  xrefXBindOverloads = "Overloads:\n"
+        "- symbolIds: list[PyDb.ObjectId]\n"
+        "- symbolIds: list[PyDb.ObjectId], bQuiet: bool, pHostDb: PyDb.Database\n";
+
     PyDocString DS("Core");
     class_<EdCore>("Core")
         .def("alert", &EdCore::alert, DS.SARGS({ "msg: str" })).staticmethod("alert")
@@ -129,7 +155,7 @@ void makePyEdCoreWrapper()
         .def("disableUsrbrk", &EdCore::disableUsrbrk, DS.SARGS()).staticmethod("disableUsrbrk")
         .def("displayBorder", &EdCore::displayBorder, DS.SARGS({ "val: bool" })).staticmethod("displayBorder")
         .def("drawingStatusBarsVisible", &EdCore::drawingStatusBarsVisible, DS.SARGS()).staticmethod("drawingStatusBarsVisible")
-        .def("drawOrderInherit", &EdCore::drawOrderInherit, DS.SARGS({ "parent: PyDb.ObjectId","childids: list[PyDb.ObjectId]", "cmd: PyEd.DrawOrderCmdType"})).staticmethod("drawOrderInherit")
+        .def("drawOrderInherit", &EdCore::drawOrderInherit, DS.SARGS({ "parent: PyDb.ObjectId","childids: list[PyDb.ObjectId]", "cmd: PyEd.DrawOrderCmdType" })).staticmethod("drawOrderInherit")
         .def("dropOpenFile", &EdCore::dropOpenFile, DS.SARGS({ "val: str" })).staticmethod("dropOpenFile")
         .def("eatCommandThroat", &EdCore::eatCommandThroat, DS.SARGS()).staticmethod("eatCommandThroat")
         .def("editMTextInteractive", &EdCore::editMTextInteractive, DS.SARGS({ "mt: PyDb.MText", "usenewUI: bool","allowTabs: bool" })).staticmethod("editMTextInteractive")
@@ -197,9 +223,9 @@ void makePyEdCoreWrapper()
         .def("regen", &EdCore::regen, DS.SARGS()).staticmethod("regen")
         .def("sendModelessOperationEnded", &EdCore::sendModelessOperationEnded, DS.SARGS({ "ctx: str" })).staticmethod("sendModelessOperationEnded")
         .def("sendModelessOperationStart", &EdCore::sendModelessOperationStart, DS.SARGS({ "ctx: str" })).staticmethod("sendModelessOperationStart")
-        .def("setColorDialog", &EdCore::setColorDialog, DS.SARGS({ "clr: int","bAllowMetaColor: bool","nCurLayerColor, int"})).staticmethod("setColorDialog")
+        .def("setColorDialog", &EdCore::setColorDialog, DS.SARGS({ "clr: int","bAllowMetaColor: bool","nCurLayerColor, int" })).staticmethod("setColorDialog")
         .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor1)
-        .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor2,DS.SARGS({ "clr: PyDb.AcCmColor","bAllowMetaColor: bool","bAllowMetaColor: bool","nCurLayerColor: PyDb.AcCmColor","tab: int = 7"})).staticmethod("setColorDialogTrueColor")
+        .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor2, DS.SARGS({ "clr: PyDb.AcCmColor","bAllowMetaColor: bool","bAllowMetaColor: bool","nCurLayerColor: PyDb.AcCmColor","tab: int = 7" })).staticmethod("setColorDialogTrueColor")
         .def("setCurrentView", &EdCore::setCurrentView, DS.SARGS({ "vrec: PyDb.ViewTableRecord", "vp: PyDb.Viewport" })).staticmethod("setCurrentView")
         .def("setCurrentVPort", &EdCore::setCurrentVPort, DS.SARGS({ "vp: PyDb.Viewport" })).staticmethod("setCurrentVPort")
         .def("setStatusBarProgressMeter", &EdCore::setStatusBarProgressMeter, DS.SARGS({ "lable: str", "nMinPos: int","nMaxPos: int" })).staticmethod("setStatusBarProgressMeter")
@@ -219,7 +245,7 @@ void makePyEdCoreWrapper()
         .def("trans", &EdCore::trans, DS.SARGS({ "pt: PyGe.Point3d", "rbFrom: tuple", "rbTo: tuple", "disp: bool" })).staticmethod("trans")
         .def("unloadPartialMenu", &EdCore::unloadPartialMenu, DS.SARGS({ "mnu: str" })).staticmethod("unloadPartialMenu")
         .def("unmarkForDelayXRefRelativePathResolve", &EdCore::unmarkForDelayXRefRelativePathResolve, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("unmarkForDelayXRefRelativePathResolve")
-        .def("update", &EdCore::update, DS.SARGS({ "vport: int","pt1: PyGe.Point2d","pt2: PyGe.Point2d"})).staticmethod("update")
+        .def("update", &EdCore::update, DS.SARGS({ "vport: int","pt1: PyGe.Point2d","pt2: PyGe.Point2d" })).staticmethod("update")
         .def("updateDisplay", &EdCore::updateDisplay, DS.SARGS()).staticmethod("updateDisplay")
         .def("updateDisplayPause", &EdCore::updateDisplayPause, DS.SARGS({ "val: bool" })).staticmethod("updateDisplayPause")
         .def("usrBrk", &EdCore::usrBrk, DS.SARGS()).staticmethod("usrBrk")
@@ -229,33 +255,25 @@ void makePyEdCoreWrapper()
         .def("vports2VportTableRecords", &EdCore::vports2VportTableRecords, DS.SARGS()).staticmethod("vports2VportTableRecords")
         .def("vportTableRecords2Vports", &EdCore::vportTableRecords2Vports, DS.SARGS()).staticmethod("vportTableRecords2Vports")
         .def("xrefAttach", &EdCore::xrefAttach1)
-        .def("xrefAttach", &EdCore::xrefAttach2,DS.SOVRL(xrefAttachOverloads)).staticmethod("xrefAttach")
+        .def("xrefAttach", &EdCore::xrefAttach2, DS.SOVRL(xrefAttachOverloads)).staticmethod("xrefAttach")
         .def("xrefCreateBlockname", &EdCore::xrefCreateBlockname, DS.SARGS({ "XrefPathname: str" })).staticmethod("xrefCreateBlockname")
-
         .def("xrefDetach", &EdCore::xrefDetach1)
-        .def("xrefDetach", &EdCore::xrefDetach2).staticmethod("xrefDetach")
-
+        .def("xrefDetach", &EdCore::xrefDetach2, DS.SOVRL(xrefDetachOverloads)).staticmethod("xrefDetach")
         .def("xrefNotifyCheckFileChanged", &EdCore::xrefNotifyCheckFileChanged, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("xrefNotifyCheckFileChanged")
-
         .def("xrefOverlay", &EdCore::xrefOverlay1)
-        .def("xrefOverlay", &EdCore::xrefOverlay2).staticmethod("xrefOverlay")
-
+        .def("xrefOverlay", &EdCore::xrefOverlay2, DS.SOVRL(xrefOverlayhOverloads)).staticmethod("xrefOverlay")
         .def("xrefReload", &EdCore::xrefReload1)
         .def("xrefReload", &EdCore::xrefReload2)
         .def("xrefReload", &EdCore::xrefReload3)
-        .def("xrefReload", &EdCore::xrefReload4).staticmethod("xrefReload")
-
+        .def("xrefReload", &EdCore::xrefReload4, DS.SOVRL(xrefReloadOverloads)).staticmethod("xrefReload")
         .def("xrefResolve", &EdCore::xrefResolve1)
-        .def("xrefResolve", &EdCore::xrefResolve2).staticmethod("xrefResolve")
-
+        .def("xrefResolve", &EdCore::xrefResolve2, DS.SARGS({ "db: PyDb.Database", "bQuiet: bool=True"})).staticmethod("xrefResolve")
         .def("xrefUnload", &EdCore::xrefUnload1)
-        .def("xrefUnload", &EdCore::xrefUnload2).staticmethod("xrefUnload")
-
+        .def("xrefUnload", &EdCore::xrefUnload2, DS.SOVRL(xrefUnloadOverloads)).staticmethod("xrefUnload")
         .def("xrefBind", &EdCore::xrefBind1)
-        .def("xrefBind", &EdCore::xrefBind2).staticmethod("xrefBind")
-
+        .def("xrefBind", &EdCore::xrefBind2,DS.SOVRL(xrefBindOverloads)).staticmethod("xrefBind")
         .def("xrefXBind", &EdCore::xrefXBind1)
-        .def("xrefXBind", &EdCore::xrefXBind2).staticmethod("xrefXBind")
+        .def("xrefXBind", &EdCore::xrefXBind2,DS.SOVRL(xrefXBindOverloads)).staticmethod("xrefXBind")
         ;
 }
 
@@ -549,7 +567,7 @@ std::string EdCore::evaluateDiesel(const std::string& str)
 #if _ZRXTARGET == 240 || _GRXTARGET == 240  || _BRXTARGET == 240
     throw PyNotimplementedByHost();
 #else
-    std::array<ACHAR, 256> data;
+    std::array<ACHAR, 256> data = { 0 };
     acedEvaluateDiesel(utf8_to_wstr(str).c_str(), data.data(), data.size());
     return wstr_to_utf8(data.data());
 #endif
