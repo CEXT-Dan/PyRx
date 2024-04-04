@@ -79,13 +79,14 @@ static bool initIsolated()
     PyConfig config;
     PyConfig_InitIsolatedConfig(&config);
 
-    auto [es, venv_path] = PyRxINI::pythonvenv_path();
+    auto [es, venv_executable] = PyRxINI::pythonvenv_path();
     if (es == false)
         return false;
 
-    auto status = PyConfig_SetString(&config, &config.home, venv_path.c_str());
+    auto status = PyConfig_SetString(&config, &config.executable, venv_executable.c_str());
     if (PyStatus_Exception(status))
     {
+        PyConfig_Clear(&config);
         acutPrintf(_T("\nPyConfig_SetString failed %ls: "), __FUNCTIONW__);
         return false;
     }
@@ -145,7 +146,7 @@ bool WxRxApp::Init_wxPython()
     }
     if (wxPyGetAPIPtr() == NULL || !wxPyCheckForApp(false))
     {
-        acutPrintf(_T("\n*****Error importing the wxPython API!*****: "));
+        acutPrintf(_T("\n*****Error importing the wxPython API!*****: \n"));
         return false;
     }
     wxPyBeginAllowThreads();
