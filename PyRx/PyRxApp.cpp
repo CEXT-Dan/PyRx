@@ -120,32 +120,28 @@ static bool initNonIsolated()
 
 bool WxRxApp::Init_wxPython()
 {
-    {
-        PyPreConfig preConfig;
-        PyPreConfig_InitPythonConfig(&preConfig);
 
-        //TODO: read params from .INI
-        auto status = Py_PreInitialize(&preConfig);
-        if (PyStatus_Exception(status))
-        {
-            acutPrintf(_T("\nPreInitialize failed  %ls: "), __FUNCTIONW__);
-            return false;
-        }
+    PyPreConfig preConfig;
+    PyPreConfig_InitPythonConfig(&preConfig);
+
+    //TODO: read params from .INI
+    auto status = Py_PreInitialize(&preConfig);
+    if (PyStatus_Exception(status))
+    {
+        acutPrintf(_T("\nPreInitialize failed  %ls: "), __FUNCTIONW__);
+        return false;
     }
+
     const auto [res, isolated] = PyRxINI::pythonIsolated();
     if (res && isolated)
     {
-        if (!initNonIsolated())
-        {
+        if (!initIsolated())
             Py_InitializeEx(0);
-        }
     }
     else
     {
         if (!initNonIsolated())
-        {
             Py_InitializeEx(0);
-        }
     }
     if (wxPyGetAPIPtr() == NULL || !wxPyCheckForApp(false))
     {
@@ -343,9 +339,8 @@ bool PyRxApp::setPyConfig()
     if (PyList_Append(path.get(), pyString.get()) < 0)
         return false;
     PyRxApp::instance().loadedModulePaths.insert(_modulePath);
-
     return true;
-    }
+}
 
 bool PyRxApp::appendSearchPath(const std::filesystem::path& modulePath)
 {
