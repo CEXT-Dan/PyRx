@@ -11,6 +11,7 @@
 #include "PyBrxCv.h"
 #include "PyRxModule.h"
 #include "PyRxModuleLoader.h"
+#include "PyRxINI.h"
 
 #include "wx/setup.h"
 #include "wx/wx.h"
@@ -73,9 +74,52 @@ void WxRxApp::ExitMainLoop()
     ::PostQuitMessage(0);
 }
 
+static bool initIsolated()
+{
+    PyConfig config;
+    PyConfig_InitIsolatedConfig(&config);
+
+    auto [es, venv_path] = PyRxINI::pythonvenv_path();
+    if (es == false)
+        return false;
+
+    auto status = PyConfig_SetString(&config, &config.home, venv_path.c_str());
+    if (PyStatus_Exception(status))
+    {
+        acutPrintf(_T("\nPyConfig_SetString failed %ls: "), __FUNCTIONW__);
+        return false;
+    }
+
+    status = Py_InitializeFromConfig(&config);
+    PyConfig_Clear(&config);
+    if (PyStatus_Exception(status))
+    {
+        acutPrintf(_T("\nInitializeFromConfig failed %ls: "), __FUNCTIONW__);
+        return false;
+    }
+    return true;
+}
+
+static bool initNonIsolated()
+{
+    PyConfig config;
+    PyConfig_InitPythonConfig(&config);
+
+    //TODO: read params from .INI
+    auto status = Py_InitializeFromConfig(&config);
+    PyConfig_Clear(&config);
+
+    if (PyStatus_Exception(status))
+    {
+        acutPrintf(_T("\nInitializeFromConfig failed %ls: "), __FUNCTIONW__);
+        return false;
+    }
+    return true;
+}
+
+
 bool WxRxApp::Init_wxPython()
 {
-    constexpr const TCHAR* msg = _T("\n*****Error importing the wxPython API!*****: ");
     {
         PyPreConfig preConfig;
         PyPreConfig_InitPythonConfig(&preConfig);
@@ -88,28 +132,24 @@ bool WxRxApp::Init_wxPython()
             return false;
         }
     }
+    const auto [res, isolated] = PyRxINI::pythonIsolated();
+    if (res && isolated)
     {
-        PyConfig config;
-        PyConfig_InitPythonConfig(&config);
-
-        //TODO: read params from .INI
-        auto status = Py_InitializeFromConfig(&config);
-        PyConfig_Clear(&config);
-
-        if (PyStatus_Exception(status))
+        if (!initNonIsolated())
         {
-            acutPrintf(_T("\nInitializeFromConfig failed %ls: "), __FUNCTIONW__);
             Py_InitializeEx(0);
         }
     }
-    if (wxPyGetAPIPtr() == NULL)
+    else
     {
-        acutPrintf(msg);
-        return false;
+        if (!initNonIsolated())
+        {
+            Py_InitializeEx(0);
+        }
     }
-    if (!wxPyCheckForApp(false))
+    if (wxPyGetAPIPtr() == NULL || !wxPyCheckForApp(false))
     {
-        acutPrintf(msg);
+        acutPrintf(_T("\n*****Error importing the wxPython API!*****: "));
         return false;
     }
     wxPyBeginAllowThreads();
