@@ -129,6 +129,10 @@ void makePyEdCoreWrapper()
         "- symbolIds: list[PyDb.ObjectId]\n"
         "- symbolIds: list[PyDb.ObjectId], bQuiet: bool, pHostDb: PyDb.Database\n";
 
+    constexpr const std::string_view  coordFromPixelToWorldOverloads = "Overloads:\n"
+        "- pt: tuple[int,int]\n"
+        "- winnum: int, pt: tuple[int,int]\n";
+
     PyDocString DS("Core");
     class_<EdCore>("Core")
         .def("alert", &EdCore::alert, DS.SARGS({ "msg: str" })).staticmethod("alert")
@@ -144,13 +148,13 @@ void makePyEdCoreWrapper()
         .def("cmdUndefine", &EdCore::cmdUndefine, DS.SARGS({ "name: str", "undefineit: int" })).staticmethod("cmdUndefine")
         .def("getCommands", &EdCore::getCommands, DS.SARGS()).staticmethod("getCommands")
         .def("coordFromPixelToWorld", &EdCore::coordFromPixelToWorld1)
-        .def("coordFromPixelToWorld", &EdCore::coordFromPixelToWorld2, DS.SARGS({ "windnum: int = 'None'","pt: tuple[int,int]" })).staticmethod("coordFromPixelToWorld")
+        .def("coordFromPixelToWorld", &EdCore::coordFromPixelToWorld2, DS.SOVRL(coordFromPixelToWorldOverloads)).staticmethod("coordFromPixelToWorld")
         .def("coordFromWorldToPixel", &EdCore::coordFromWorldToPixel, DS.SARGS({ "windnum: int ","pnt: PyGe.Point3d" })).staticmethod("coordFromWorldToPixel")
         .def("createInternetShortcut", &EdCore::createInternetShortcut, DS.SARGS({ "szURL: str","szShortcutPath: str" })).staticmethod("createInternetShortcut")
         .def("createViewportByView", &EdCore::createViewportByView, DS.SARGS({ "db: PyDb.Database","view: PyDb.ObjectId","pt: PyGe.Point2d","scale: float" })).staticmethod("createViewportByView")
         .def("cmdS", &EdCore::cmdS, DS.SARGS({ "resultBuffer: list" })).staticmethod("cmdS")
         .def("defun", &EdCore::defun, DS.SARGS({ "name: str", "funcnumber: int" })).staticmethod("defun")
-        .def("defunEx", &EdCore::defunEx, DS.SARGS({ "global: str", "name: str", "funcnumber: int" })).staticmethod("defunEx")
+        .def("defunEx", &EdCore::defunEx, DS.SARGS({ "globalName: str", "name: str", "funcnumber: int" })).staticmethod("defunEx")
         .def("disableDefaultARXExceptionHandler", &EdCore::disableDefaultARXExceptionHandler, DS.SARGS({ "val: bool" })).staticmethod("disableDefaultARXExceptionHandler")
         .def("disableUsrbrk", &EdCore::disableUsrbrk, DS.SARGS()).staticmethod("disableUsrbrk")
         .def("displayBorder", &EdCore::displayBorder, DS.SARGS({ "val: bool" })).staticmethod("displayBorder")
@@ -184,6 +188,7 @@ void makePyEdCoreWrapper()
         .def("graphScr", &EdCore::graphScr, DS.SARGS()).staticmethod("graphScr")
         .def("grDraw", &EdCore::grDraw1)
         .def("grDraw", &EdCore::grDraw2, DS.SARGS({ "pt1: PyGe.Point2d|PyGe.Point3d","pt2: PyGe.Point2d|PyGe.Point3d","color: int","highlight: int" })).staticmethod("grDraw")
+        .def("grDrawBox", &EdCore::grDrawBox, DS.SARGS({ "pts: list[PyGe.Point3d]","color: int","highlight: int" }))
         .def("getCommandPromptString", &EdCore::getCommandPromptString, DS.SARGS()).staticmethod("getCommandPromptString")
         .def("getLastCommandLines", &EdCore::getLastCommandLines, DS.SARGS({ "lineCount: int","ignoreNull: bool" })).staticmethod("getLastCommandLines")
         .def("getBlockEditMode", &EdCore::getBlockEditMode, DS.SARGS()).staticmethod("getBlockEditMode")
@@ -214,7 +219,7 @@ void makePyEdCoreWrapper()
         .def("postCommand", &EdCore::postCommand, DS.SARGS({ "str: str" })).staticmethod("postCommand")
         .def("postCommandPrompt", &EdCore::postCommandPrompt, DS.SARGS()).staticmethod("postCommandPrompt")
         .def("prompt", &EdCore::prompt, DS.SARGS({ "val: str" })).staticmethod("prompt")
-        .def("osnap", &EdCore::osnap, DS.SARGS({ "pt: AcGe.Point3d","mode: str" })).staticmethod("osnap")
+        .def("osnap", &EdCore::osnap, DS.SARGS({ "pt: PyGe.Point3d","mode: str" })).staticmethod("osnap")
         .def("redraw", &EdCore::redraw, DS.SARGS({ "id: PyDb.ObjectId","mode: int" })).staticmethod("redraw")
         .def("reloadMenus", &EdCore::reloadMenus, DS.SARGS({ "bIncrementalReloading: bool" })).staticmethod("reloadMenus")
         .def("restoreCurrentView", &EdCore::restoreCurrentView, DS.SARGS({ "vid: PyDb.ObjectId" })).staticmethod("restoreCurrentView")
@@ -225,7 +230,7 @@ void makePyEdCoreWrapper()
         .def("sendModelessOperationStart", &EdCore::sendModelessOperationStart, DS.SARGS({ "ctx: str" })).staticmethod("sendModelessOperationStart")
         .def("setColorDialog", &EdCore::setColorDialog, DS.SARGS({ "clr: int","bAllowMetaColor: bool","nCurLayerColor, int" })).staticmethod("setColorDialog")
         .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor1)
-        .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor2, DS.SARGS({ "clr: PyDb.AcCmColor","bAllowMetaColor: bool","bAllowMetaColor: bool","nCurLayerColor: PyDb.AcCmColor","tab: int = 7" })).staticmethod("setColorDialogTrueColor")
+        .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor2, DS.SARGS({ "clr: PyDb.AcCmColor","bAllowMetaColor: bool","nCurLayerColor: PyDb.AcCmColor","tab: int = 7" })).staticmethod("setColorDialogTrueColor")
         .def("setCurrentView", &EdCore::setCurrentView, DS.SARGS({ "vrec: PyDb.ViewTableRecord", "vp: PyDb.Viewport" })).staticmethod("setCurrentView")
         .def("setCurrentVPort", &EdCore::setCurrentVPort, DS.SARGS({ "vp: PyDb.Viewport" })).staticmethod("setCurrentVPort")
         .def("setStatusBarProgressMeter", &EdCore::setStatusBarProgressMeter, DS.SARGS({ "lable: str", "nMinPos: int","nMaxPos: int" })).staticmethod("setStatusBarProgressMeter")
@@ -233,9 +238,9 @@ void makePyEdCoreWrapper()
         .def("setXrefResolvedWithUpdateStatus", &EdCore::setXrefResolvedWithUpdateStatus, DS.SARGS({ "rec: PyDb.BlockTableRecord" })).staticmethod("setXrefResolvedWithUpdateStatus")
         .def("setUndoMark", &EdCore::setUndoMark, DS.SARGS({ "flag: bool" })).staticmethod("setUndoMark")
         .def("showHTMLModalWindow", &EdCore::showHTMLModalWindow1)
-        .def("showHTMLModalWindow", &EdCore::showHTMLModalWindow2, DS.SARGS({ "hwnd: int","val: uriOfHtmlPage","persistSizeAndPosition: bool=True" })).staticmethod("showHTMLModalWindow")
+        .def("showHTMLModalWindow", &EdCore::showHTMLModalWindow2, DS.SARGS({ "hwnd: int","uriOfHtmlPage: str","persistSizeAndPosition: bool=True" })).staticmethod("showHTMLModalWindow")
         .def("showHTMLModelessWindow", &EdCore::showHTMLModelessWindow1)
-        .def("showHTMLModelessWindow", &EdCore::showHTMLModelessWindow2, DS.SARGS({ "hwnd: int","val: uriOfHtmlPage","persistSizeAndPosition: bool=True" })).staticmethod("showHTMLModelessWindow")
+        .def("showHTMLModelessWindow", &EdCore::showHTMLModelessWindow2, DS.SARGS({ "hwnd: int","uriOfHtmlPage: str","persistSizeAndPosition: bool=True" })).staticmethod("showHTMLModelessWindow")
         .def("skipXrefNotification", &EdCore::skipXrefNotification, DS.SARGS({ "db: PyDb.Database","name: str" })).staticmethod("skipXrefNotification")
         .def("setFieldUpdateEnabled", &EdCore::setFieldUpdateEnabled, DS.SARGS({ "doc: PyAp.Document","enabled: bool" })).staticmethod("setFieldUpdateEnabled")
         .def("setFunHelp", &EdCore::setFunHelp, DS.SARGS({ "functionName: str", "helpfile: str","topic: str","iCmd: int" })).staticmethod("setFunHelp")
@@ -1163,6 +1168,41 @@ int EdCore::grDraw1(const AcGePoint2d& from, const AcGePoint2d& to, int colorInd
 int EdCore::grDraw2(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight)
 {
     return acedGrDraw(asDblArray(from), asDblArray(to), colorIndex, highlight);
+}
+
+int EdCore::grDrawBox(const boost::python::object& iterable, int colorIndex, int highlight)
+{
+    AcGePoint3dArray pnts = PyListToPoint3dArray(iterable);
+    if (pnts.length() != 4)
+        return RTERROR;
+
+    AcDbExtents ex;
+    for (const auto& pnt : pnts)
+        ex.addPoint(pnt);
+
+    pnts.remove(ex.minPoint());
+    pnts.remove(ex.maxPoint());
+
+    auto va = pnts[0] - ex.minPoint();
+    auto vb = pnts[1] - ex.minPoint();
+
+    auto sp = ex.minPoint();
+    auto np = sp + va;
+    grDraw2(sp, np, colorIndex, highlight);
+
+    sp = np;
+    np = sp + vb;
+    grDraw2(sp, np, colorIndex, highlight);
+
+    sp = np;
+    np = sp - va;
+    grDraw2(sp, np, colorIndex, highlight);
+
+    sp = np;
+    np = ex.minPoint();
+    grDraw2(sp, np, colorIndex, highlight);
+
+    return RTNORM;
 }
 
 AcGePoint3d EdCore::getMousePositionUCS()

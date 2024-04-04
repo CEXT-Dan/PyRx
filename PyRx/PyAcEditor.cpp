@@ -101,6 +101,18 @@ boost::python::tuple makeSelectionResult(const ads_name& name, Acad::PromptStatu
 
 void makePyEditorWrapper()
 {
+    constexpr const std::string_view getStringOverloads = "Overloads:\n"
+        "- prompt: str\n"
+        "- cronly: int, prompt: str\n";
+
+    constexpr const std::string_view getPointOverloads = "Overloads:\n"
+        "- prompt: str\n"
+        "- basePt: PyGe.Point3d, prompt: str\n";
+
+    constexpr const std::string_view nEntSelPExloads = "Overloads:\n"
+        "- prompt: str, flags: int\n"
+        "- prompt: str, selpt: PyGe.Point3d, flags: int\n";
+  
     PyDocString DS("Editor");
     class_<PyAcEditor>("Editor")
         .def("getCorner", &PyAcEditor::getCorner, DS.SARGS({ "basePt: PyGe.Point3d","prompt: str" })).staticmethod("getCorner")
@@ -109,17 +121,18 @@ void makePyEditorWrapper()
         .def("getReal", &PyAcEditor::getDouble, DS.SARGS({ "prompt: str" })).staticmethod("getReal")
         .def("getAngle", &PyAcEditor::getAngle, DS.SARGS({ "basePt: PyGe.Point3d","prompt: str" })).staticmethod("getAngle")
         .def("getCurrentSelectionSet", &PyAcEditor::getCurrentSelectionSet, DS.SARGS()).staticmethod("getCurrentSelectionSet")
-        .def("getString", &PyAcEditor::getString, DS.SARGS({ "cronly: int","prompt: str" })).staticmethod("getString")
+        .def("getString", &PyAcEditor::getString1)
+        .def("getString", &PyAcEditor::getString2, DS.SOVRL(getStringOverloads)).staticmethod("getString")
         .def("getPoint", &PyAcEditor::getPoint1)
-        .def("getPoint", &PyAcEditor::getPoint2, DS.SARGS({ "basePt: PyGe.Point3d='None'","prompt: str" })).staticmethod("getPoint")
+        .def("getPoint", &PyAcEditor::getPoint2, DS.SOVRL(getPointOverloads)).staticmethod("getPoint")
         .def("getDist", &PyAcEditor::getDist1)
-        .def("getDist", &PyAcEditor::getDist2, DS.SARGS({ "basePt: PyGe.Point3d='None'","prompt: str" })).staticmethod("getDist")
+        .def("getDist", &PyAcEditor::getDist2,DS.SOVRL(getPointOverloads)).staticmethod("getDist")
         .def("entSel", &PyAcEditor::entSel1)
         .def("entSel", &PyAcEditor::entSel2, DS.SARGS({ "prompt: str", "desc: PyRx.RxClass=PyDb.Entity" })).staticmethod("entSel")
         .def("nEntSelP", &PyAcEditor::nEntSelP1)
         .def("nEntSelP", &PyAcEditor::nEntSelP2, DS.SARGS({ "prompt: str","selpt: PyGe.Point3d='None'" })).staticmethod("nEntSelP")
         .def("nEntSelPEx", &PyAcEditor::nEntSelPEx1)
-        .def("nEntSelPEx", &PyAcEditor::nEntSelPEx2, DS.SARGS({ "prompt: str","selpt: PyGe.Point3d='None'", "flags: int" })).staticmethod("nEntSelPEx")
+        .def("nEntSelPEx", &PyAcEditor::nEntSelPEx2, DS.SOVRL(nEntSelPExloads)).staticmethod("nEntSelPEx")
         .def("getCurrentUCS", &PyAcEditor::curUCS, DS.SARGS()).staticmethod("getCurrentUCS")
         .def("setCurrentUCS", &PyAcEditor::setCurUCS, DS.SARGS({ "ucs: PyGe.Matrix3d" })).staticmethod("setCurrentUCS")
         .def("activeViewportId", &PyAcEditor::activeViewportId).staticmethod("activeViewportId")
@@ -236,7 +249,18 @@ boost::python::tuple PyAcEditor::getDist2(const AcGePoint3d& basePt, const std::
     return boost::python::make_tuple(res.first, res.second);
 }
 
-boost::python::tuple PyAcEditor::getString(int cronly, const std::string& prompt)
+boost::python::tuple PyAcEditor::getString1(const std::string& prompt)
+{
+    PyAutoLockGIL lock;
+    PyEdUserInteraction ui;
+    AcString str;
+    std::pair<Acad::PromptStatus, std::string> res;
+    res.first = static_cast<Acad::PromptStatus>(acedGetString(1, utf8_to_wstr(prompt).c_str(), str));
+    res.second = wstr_to_utf8(str);
+    return boost::python::make_tuple(res.first, res.second);
+}
+
+boost::python::tuple PyAcEditor::getString2(int cronly, const std::string& prompt)
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;

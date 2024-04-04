@@ -88,8 +88,11 @@ class Core(object):
     ...
 
     @staticmethod
-    def coordFromPixelToWorld (windnum: int = 'None',pt: tuple[int,int])-> PyGe.Point3d :
-      '''                             '''
+    def coordFromPixelToWorld ()-> PyGe.Point3d :
+      '''Overloads:
+    - pt: tuple[int,int]
+    - winnum: int, pt: tuple[int,int]
+    '''
     ...
 
     @staticmethod
@@ -113,7 +116,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def defunEx (global: str,name: str,funcnumber: int)-> int :
+    def defunEx (globalName: str,name: str,funcnumber: int)-> int :
       '''                             '''
     ...
 
@@ -308,6 +311,11 @@ class Core(object):
     ...
 
     @staticmethod
+    def grDrawBox (pts: list[PyGe.Point3d],color: int,highlight: int)-> int :
+      '''                             '''
+    ...
+
+    @staticmethod
     def graphScr ()-> None :
       '''                             '''
     ...
@@ -388,7 +396,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def osnap (pt: AcGe.Point3d,mode: str)-> PyGe.Point3d :
+    def osnap (pt: PyGe.Point3d,mode: str)-> PyGe.Point3d :
       '''                             '''
     ...
 
@@ -468,7 +476,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def setColorDialogTrueColor (clr: PyDb.AcCmColor,bAllowMetaColor: bool,bAllowMetaColor: bool,nCurLayerColor: PyDb.AcCmColor,tab: int = 7)-> tuple :
+    def setColorDialogTrueColor (clr: PyDb.AcCmColor,bAllowMetaColor: bool,nCurLayerColor: PyDb.AcCmColor,tab: int = 7)-> tuple :
       '''                             '''
     ...
 
@@ -523,12 +531,12 @@ class Core(object):
     ...
 
     @staticmethod
-    def showHTMLModalWindow (hwnd: int,val: uriOfHtmlPage,persistSizeAndPosition: bool=True)-> bool :
+    def showHTMLModalWindow (hwnd: int,uriOfHtmlPage: str,persistSizeAndPosition: bool=True)-> bool :
       '''                             '''
     ...
 
     @staticmethod
-    def showHTMLModelessWindow (hwnd: int,val: uriOfHtmlPage,persistSizeAndPosition: bool=True)-> int :
+    def showHTMLModelessWindow (hwnd: int,uriOfHtmlPage: str,persistSizeAndPosition: bool=True)-> int :
       '''                             '''
     ...
 
@@ -1006,8 +1014,11 @@ class Editor(object):
     ...
 
     @staticmethod
-    def getDist (basePt: PyGe.Point3d='None',prompt: str)-> tuple :
-      '''                             '''
+    def getDist ()-> tuple :
+      '''Overloads:
+    - prompt: str
+    - cronly: int, prompt: str
+    '''
     ...
 
     @staticmethod
@@ -1026,8 +1037,11 @@ class Editor(object):
     ...
 
     @staticmethod
-    def getPoint (basePt: PyGe.Point3d='None',prompt: str)-> tuple :
-      '''                             '''
+    def getPoint ()-> tuple :
+      '''Overloads:
+    - prompt: str
+    - cronly: int, prompt: str
+    '''
     ...
 
     @staticmethod
@@ -1036,8 +1050,11 @@ class Editor(object):
     ...
 
     @staticmethod
-    def getString (cronly: int,prompt: str)-> tuple :
-      '''                             '''
+    def getString ()-> tuple :
+      '''Overloads:
+    - prompt: str
+    - cronly: int, prompt: str
+    '''
     ...
 
     @staticmethod
@@ -1056,8 +1073,11 @@ class Editor(object):
     ...
 
     @staticmethod
-    def nEntSelPEx (prompt: str,selpt: PyGe.Point3d='None',flags: int)-> tuple :
-      '''                             '''
+    def nEntSelPEx (prompt: str,selpt: PyGe.Point3d='None')-> tuple :
+      '''Overloads:
+    - prompt: str, flags: int
+    - prompt: str, selpt: PyGe.Point3d, flags: int
+    '''
     ...
 
     @staticmethod

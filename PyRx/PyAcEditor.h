@@ -19,7 +19,8 @@ public:
     static boost::python::tuple getPoint2(const AcGePoint3d& basePt, const std::string& prompt);
     static boost::python::tuple getDist1(const std::string& prompt);
     static boost::python::tuple getDist2(const AcGePoint3d& basePt, const std::string& prompt);
-    static boost::python::tuple getString(int cronly, const std::string& prompt);
+    static boost::python::tuple getString1(const std::string& prompt);
+    static boost::python::tuple getString2(int cronly, const std::string& prompt);
     static boost::python::tuple entSel1(const std::string& prompt);
     static boost::python::tuple entSel2(const std::string& prompt, const PyRxClass& desc);
     static boost::python::tuple nEntSelP1(const std::string& prompt);
