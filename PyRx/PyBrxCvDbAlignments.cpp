@@ -106,12 +106,16 @@ BrxCvCivil3dEntityInfo* PyBrxCvCivil3dEntityInfo::impObj(const std::source_locat
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvCivil3dConverter
+constexpr const std::string_view ctor = "Overloads:\n"
+"- None: Any\n"
+"- sourceDb: PyDb.Database, targetDb: PyDb.Database, doLabels: PyBrxCv.Civil3dLabels\n";
+
 void makePyBrxCvCivil3dConverterWrapper()
 {
     PyDocString DS("CvCivil3dConverter");
     class_<PyBrxCvCivil3dConverter>("CvCivil3dConverter")
-        .def(init<>(DS.ARGS()))
-        .def(init<const PyDbDatabase&, PyDbDatabase&, BrxCvCivil3dConverter::Civil3dLabels>(DS.ARGS({ "sourceDb: PyDb.Database=None", "targetDb: PyDb.Database=None", "doLabels: PyBrxCv.Civil3dLabels=eDefaultLabels" })))
+        .def(init<>())
+        .def(init<const PyDbDatabase&, PyDbDatabase&, BrxCvCivil3dConverter::Civil3dLabels>(DS.CTOR(ctor)))
         .def("getCivilEntities", &PyBrxCvCivil3dConverter::getCivilEntities, DS.ARGS())
         .def("convert", &PyBrxCvCivil3dConverter::convert, DS.ARGS({ "entitiesToConvert : list" }))
         .def("attachedLabels", &PyBrxCvCivil3dConverter::attachedLabels, DS.ARGS({ "civilEntity: PyBrxCv.CvCivil3dEntityInfo" }))
@@ -198,7 +202,7 @@ void makePyBrxCvDbViewWrapper()
 {
     PyDocString DS("CvDbView");
     class_<PyBrxCvDbView, bases<PyBrxCvDbEntity>>("CvDbView")
-        .def(init<>(DS.ARGS()))
+        .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
@@ -416,7 +420,7 @@ void makePyBrxCvDbVAlignmentViewWrapper()
 {
     PyDocString DS("CvDbVAlignmentView");
     class_<PyBrxCvDbVAlignmentView, bases<PyBrxCvDbView>>("CvDbVAlignmentView")
-        .def(init<>(DS.ARGS()))
+        .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
@@ -2228,7 +2232,7 @@ void makePyBrxCvDbVAlignmentWrapper()
 {
     PyDocString DS("CvDbVAlignment");
     class_<PyBrxCvDbVAlignment, bases<PyBrxCvDbCurve>>("CvDbVAlignment")
-        .def(init<>(DS.ARGS()))
+        .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
@@ -3013,7 +3017,7 @@ void makePyBrxCvDb3dAlignmentWrapper()
 {
     PyDocString DS("CvDb3dAlignment");
     class_<PyBrxCvDb3dAlignment, bases<PyBrxCvDbCurve>>("CvDb3dAlignment")
-        .def(init<>(DS.ARGS()))
+        .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
