@@ -77,9 +77,9 @@ class TestBCadCivil(unittest.TestCase):
         elementId = hAlignment.firstElementId()
         while (elementId != 0):
             element = hAlignment.elementAtId(elementId)
-            elementId = element.nextId()
             if elementId != 0:
                 ids.append(elementId)
+            elementId = element.nextId()
                 
         self.assertEqual(len(ids),2)
             
