@@ -110,7 +110,7 @@ void makePyBrxCvCivil3dConverterWrapper()
 {
     PyDocString DS("CvCivil3dConverter");
     class_<PyBrxCvCivil3dConverter>("CvCivil3dConverter")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def(init<const PyDbDatabase&, PyDbDatabase&, BrxCvCivil3dConverter::Civil3dLabels>(DS.ARGS({ "sourceDb: PyDb.Database=None", "targetDb: PyDb.Database=None", "doLabels: PyBrxCv.Civil3dLabels=eDefaultLabels" })))
         .def("getCivilEntities", &PyBrxCvCivil3dConverter::getCivilEntities, DS.ARGS())
         .def("convert", &PyBrxCvCivil3dConverter::convert, DS.ARGS({ "entitiesToConvert : list" }))
@@ -198,7 +198,7 @@ void makePyBrxCvDbViewWrapper()
 {
     PyDocString DS("CvDbView");
     class_<PyBrxCvDbView, bases<PyBrxCvDbEntity>>("CvDbView")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
@@ -416,7 +416,7 @@ void makePyBrxCvDbVAlignmentViewWrapper()
 {
     PyDocString DS("CvDbVAlignmentView");
     class_<PyBrxCvDbVAlignmentView, bases<PyBrxCvDbView>>("CvDbVAlignmentView")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
@@ -1465,6 +1465,7 @@ void makePyBrxCvDbHAlignmentPIWrapper()
 {
     PyDocString DS("CvDbHAlignmentPI");
     class_<PyBrxCvDbHAlignmentPI, bases<PyBrxCvDbHAlignmentElement>>("CvDbHAlignmentPI")
+        .def(init<>(DS.ARGS()))
         .def("location", &PyBrxCvDbHAlignmentPI::location, DS.ARGS())
         .def("className", &PyBrxCvDbHAlignmentPI::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbHAlignmentPI::desc, DS.SARGS()).staticmethod("desc")
@@ -1986,7 +1987,7 @@ void makePyBrxCvDbHAlignmentSCSWrapper()
 {
     PyDocString DS("CvDbHAlignmentSCS");
     class_<PyBrxCvDbHAlignmentSCS, bases<PyBrxCvDbHAlignmentCurve>>("CvDbHAlignmentSCS")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("arc", &PyBrxCvDbHAlignmentSCS::arc, DS.ARGS())
         .def("spiralIn", &PyBrxCvDbHAlignmentSCS::spiralIn, DS.ARGS())
         .def("spiralOut", &PyBrxCvDbHAlignmentSCS::spiralOut, DS.ARGS())
@@ -2059,7 +2060,7 @@ void makePyBrxCvDbHAlignmentSTSWrapper()
 {
     PyDocString DS("CvDbHAlignmentSTS");
     class_<PyBrxCvDbHAlignmentSTS, bases<PyBrxCvDbHAlignmentCurve>>("CvDbHAlignmentSTS")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("line", &PyBrxCvDbHAlignmentSTS::line, DS.ARGS())
         .def("spiralIn", &PyBrxCvDbHAlignmentSTS::spiralIn, DS.ARGS())
         .def("spiralOut", &PyBrxCvDbHAlignmentSTS::spiralOut, DS.ARGS())
@@ -2138,7 +2139,7 @@ void makePyBrxCvDbHAlignmentSSCSSWrapper()
 {
     PyDocString DS("CvDbHAlignmentSSCSS");
     class_<PyBrxCvDbHAlignmentSSCSS, bases<PyBrxCvDbHAlignmentCurve>>("CvDbHAlignmentSSCSS")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("arc", &PyBrxCvDbHAlignmentSSCSS::arc, DS.ARGS())
         .def("spiral1", &PyBrxCvDbHAlignmentSSCSS::spiral1, DS.ARGS())
         .def("spiral2", &PyBrxCvDbHAlignmentSSCSS::spiral2, DS.ARGS())
@@ -2227,7 +2228,7 @@ void makePyBrxCvDbVAlignmentWrapper()
 {
     PyDocString DS("CvDbVAlignment");
     class_<PyBrxCvDbVAlignment, bases<PyBrxCvDbCurve>>("CvDbVAlignment")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
@@ -2667,7 +2668,7 @@ void makePyBrxCvDbVAlignmentPVIWrapper()
 {
     PyDocString DS("CvDbVAlignmentPVI");
     class_<PyBrxCvDbVAlignmentPVI, bases<PyBrxCvDbVAlignmentElement>>("CvDbVAlignmentPVI")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("location", &PyBrxCvDbVAlignmentPVI::location, DS.ARGS())
         .def("className", &PyBrxCvDbVAlignmentPVI::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbVAlignmentPVI::desc, DS.SARGS()).staticmethod("desc")
@@ -2777,7 +2778,7 @@ void makePyBrxCvDbVAlignmentTangentWrapper()
 {
     PyDocString DS("CvDbVAlignmentTangent");
     class_<PyBrxCvDbVAlignmentTangent, bases<PyBrxCvDbVAlignmentCurve>>("CvDbVAlignmentTangent")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("passThroughPoint1", &PyBrxCvDbVAlignmentTangent::passThroughPoint1, DS.ARGS())
         .def("passThroughPoint2", &PyBrxCvDbVAlignmentTangent::passThroughPoint2, DS.ARGS())
         .def("setPassThroughPoint1", &PyBrxCvDbVAlignmentTangent::setPassThroughPoint1, DS.ARGS({ "pt : PyGe.Point2d" }))
@@ -2847,7 +2848,7 @@ void makePyBrxCvDbVAlignmentArcWrapper()
 {
     PyDocString DS("CvDbVAlignmentArc");
     class_<PyBrxCvDbVAlignmentArc, bases<PyBrxCvDbVAlignmentCurve>>("CvDbVAlignmentArc")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("radius", &PyBrxCvDbVAlignmentArc::radius, DS.ARGS())
         .def("gradeIn", &PyBrxCvDbVAlignmentArc::gradeIn, DS.ARGS())
         .def("gradeOut", &PyBrxCvDbVAlignmentArc::gradeOut, DS.ARGS())
@@ -2941,7 +2942,7 @@ void makePyBrxCvDbVAlignmentParabolaWrapper()
 {
     PyDocString DS("CvDbVAlignmentParabola");
     class_<PyBrxCvDbVAlignmentParabola, bases<PyBrxCvDbVAlignmentCurve>>("CvDbVAlignmentParabola")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("radius", &PyBrxCvDbVAlignmentParabola::radius, DS.ARGS())
         .def("gradeIn", &PyBrxCvDbVAlignmentParabola::gradeIn, DS.ARGS())
         .def("gradeOut", &PyBrxCvDbVAlignmentParabola::gradeOut, DS.ARGS())
@@ -3012,7 +3013,7 @@ void makePyBrxCvDb3dAlignmentWrapper()
 {
     PyDocString DS("CvDb3dAlignment");
     class_<PyBrxCvDb3dAlignment, bases<PyBrxCvDbCurve>>("CvDb3dAlignment")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
