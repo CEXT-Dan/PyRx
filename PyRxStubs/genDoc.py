@@ -234,9 +234,11 @@ def generate_pyi(moduleName, module):
                                     if len(overloads):
                                         for overload in overloads:
                                             overload = overload.strip(',')
-                                            f.write('\n    @overload\n')
+                                            f.write('\n    @overload')
+                                            f.write('\n    @staticmethod\n')
                                             f.write(f'    def {func_name} {overload}{returnType} : ...')
-                                        f.write('\n    @staticmethod\n')
+                                            
+                                        f.write('\n    @staticmethod')
                                         f.write(f'\n    def {func_name} (self, *args, **kwargs){returnType} :\n')
                                         f.write(overloadAsComment)
                                         f.write('\n    ...\n')
