@@ -188,7 +188,11 @@ void makePyEdCoreWrapper()
         .def("graphScr", &EdCore::graphScr, DS.SARGS()).staticmethod("graphScr")
         .def("grDraw", &EdCore::grDraw1)
         .def("grDraw", &EdCore::grDraw2, DS.SARGS({ "pt1: PyGe.Point2d|PyGe.Point3d","pt2: PyGe.Point2d|PyGe.Point3d","color: int","highlight: int" })).staticmethod("grDraw")
-        .def("grDrawBox", &EdCore::grDrawBox, DS.SARGS({ "pts: list[PyGe.Point3d]","color: int","highlight: int" }))
+        .def("grDrawBox", &EdCore::grDrawBox, DS.SARGS({ "pts: list[PyGe.Point3d]","color: int","highlight: int" })).staticmethod("grDrawBox")
+        .def("grDrawPoly2d", &EdCore::grDrawPoly2d, DS.SARGS({ "pts: list[PyGe.Point3d]","color: int" })).staticmethod("grDrawPoly2d")
+        .def("grDrawPoly3d", &EdCore::grDrawPoly3d, DS.SARGS({ "pts: list[PyGe.Point3d]","color: int" })).staticmethod("grDrawPoly3d")
+        .def("grVecs", &EdCore::grVecs, DS.SARGS({ "resbuf: list","xform: PyGe.Matrix3d" })).staticmethod("grVecs")
+        .def("grText", &EdCore::grText, DS.SARGS({ "box: int","text: str","hl: int" })).staticmethod("grText")
         .def("getCommandPromptString", &EdCore::getCommandPromptString, DS.SARGS()).staticmethod("getCommandPromptString")
         .def("getLastCommandLines", &EdCore::getLastCommandLines, DS.SARGS({ "lineCount: int","ignoreNull: bool" })).staticmethod("getLastCommandLines")
         .def("getBlockEditMode", &EdCore::getBlockEditMode, DS.SARGS()).staticmethod("getBlockEditMode")
@@ -272,13 +276,13 @@ void makePyEdCoreWrapper()
         .def("xrefReload", &EdCore::xrefReload3)
         .def("xrefReload", &EdCore::xrefReload4, DS.SOVRL(xrefReloadOverloads)).staticmethod("xrefReload")
         .def("xrefResolve", &EdCore::xrefResolve1)
-        .def("xrefResolve", &EdCore::xrefResolve2, DS.SARGS({ "db: PyDb.Database", "bQuiet: bool=True"})).staticmethod("xrefResolve")
+        .def("xrefResolve", &EdCore::xrefResolve2, DS.SARGS({ "db: PyDb.Database", "bQuiet: bool=True" })).staticmethod("xrefResolve")
         .def("xrefUnload", &EdCore::xrefUnload1)
         .def("xrefUnload", &EdCore::xrefUnload2, DS.SOVRL(xrefUnloadOverloads)).staticmethod("xrefUnload")
         .def("xrefBind", &EdCore::xrefBind1)
-        .def("xrefBind", &EdCore::xrefBind2,DS.SOVRL(xrefBindOverloads)).staticmethod("xrefBind")
+        .def("xrefBind", &EdCore::xrefBind2, DS.SOVRL(xrefBindOverloads)).staticmethod("xrefBind")
         .def("xrefXBind", &EdCore::xrefXBind1)
-        .def("xrefXBind", &EdCore::xrefXBind2,DS.SOVRL(xrefXBindOverloads)).staticmethod("xrefXBind")
+        .def("xrefXBind", &EdCore::xrefXBind2, DS.SOVRL(xrefXBindOverloads)).staticmethod("xrefXBind")
         ;
 }
 
@@ -1203,6 +1207,55 @@ int EdCore::grDrawBox(const boost::python::object& iterable, int colorIndex, int
     grDraw2(sp, np, colorIndex, highlight);
 
     return RTNORM;
+}
+
+int EdCore::grDrawPoly2d(const boost::python::object& iterable, int colorIndex)
+{
+    AcGePoint2dArray pnts = PyListToPoint2dArray(iterable);
+    if (pnts.length() < 2)
+        return RTERROR;
+    AcResBufPtr rb(acutNewRb(RTSHORT));
+    rb->resval.rint = colorIndex;
+    resbuf* rbTail = rb.get();
+    for (size_t idx = 1; idx < pnts.length(); idx++)
+    {
+        rbTail = rbTail->rbnext = acutNewRb(RTPOINT);
+        memcpy_s(rbTail->resval.rpoint, sizeof(rbTail->resval.rpoint), asDblArray(pnts[idx - 1]), sizeof(rbTail->resval.rpoint));
+        rbTail = rbTail->rbnext = acutNewRb(RTPOINT);
+        memcpy_s(rbTail->resval.rpoint, sizeof(rbTail->resval.rpoint), asDblArray(pnts[idx]), sizeof(rbTail->resval.rpoint));
+    }
+    return acedGrVecs(rb.get(), NULL);
+}
+
+int EdCore::grDrawPoly3d(const boost::python::object& iterable, int colorIndex)
+{
+    AcGePoint3dArray pnts = PyListToPoint3dArray(iterable);
+    if (pnts.length() <2)
+        return RTERROR;
+    AcResBufPtr rb(acutNewRb(RTSHORT));
+    rb->resval.rint = colorIndex;
+    resbuf* rbTail = rb.get();
+    for (size_t idx = 1; idx < pnts.length(); idx++)
+    {
+        rbTail = rbTail->rbnext = acutNewRb(RT3DPOINT);
+        memcpy_s(rbTail->resval.rpoint, sizeof(rbTail->resval.rpoint), asDblArray(pnts[idx - 1]), sizeof(rbTail->resval.rpoint));
+        rbTail = rbTail->rbnext = acutNewRb(RT3DPOINT);
+        memcpy_s(rbTail->resval.rpoint, sizeof(rbTail->resval.rpoint), asDblArray(pnts[idx]), sizeof(rbTail->resval.rpoint));
+    }
+    return acedGrVecs(rb.get(), NULL);
+}
+
+int EdCore::grVecs(const boost::python::list& iterable, const AcGeMatrix3d& mat)
+{
+    AcResBufPtr rb(listToResbuf(iterable));
+    ads_matrix adsmat = { 0 };
+    memcpy_s(adsmat, sizeof(ads_matrix), mat.entry, sizeof(ads_matrix));
+    return acedGrVecs(rb.get(), adsmat);
+}
+
+int EdCore::grText(int box, const std::string& text, int hl)
+{
+    return acedGrText(box, utf8_to_wstr(text).c_str(), hl);
 }
 
 AcGePoint3d EdCore::getMousePositionUCS()

@@ -91,8 +91,11 @@ public:
     static PySysVar              autoSetVar(const std::string& sym, const  boost::python::object& val);
     static int                  grDraw1(const AcGePoint2d& from, const AcGePoint2d& to, int colorIndex, int highlight);
     static int                  grDraw2(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight);
-
     static int                  grDrawBox(const boost::python::object& iterable, int colorIndex, int highlight);
+    static int                  grDrawPoly2d(const boost::python::object& iterable, int colorIndex);
+    static int                  grDrawPoly3d(const boost::python::object& iterable, int colorIndex);
+    static int                  grVecs(const boost::python::list& iterable, const AcGeMatrix3d& mat);
+    static int                  grText(int box,const std::string& text, int hl);
     static AcGePoint3d          getMousePositionUCS();
     static AcGePoint3d          getMousePositionWCS();
     static std::string          hatchPalletteDialog(const std::string& pattern, bool showCustom);

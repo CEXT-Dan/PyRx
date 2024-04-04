@@ -332,7 +332,11 @@ std::wstring PyRxApp::the_error()
     WxPyAutoLock lock;
     if (PyErr_Occurred())
     {
-        PyObject* error_type, * the_error, * the_traceback, * py_error_string, * py_error_unicode;
+        PyObject* error_type = nullptr;
+        PyObject* the_error = nullptr;
+        PyObject* the_traceback = nullptr;
+        PyObject* py_error_string = nullptr;
+        PyObject* py_error_unicode = nullptr;
         PyErr_Fetch(&error_type, &the_error, &the_traceback);
         PyErr_NormalizeException(&error_type, &the_error, &the_traceback);
         if ((error_type != NULL))

@@ -322,6 +322,16 @@ class Core(object):
     ...
 
     @staticmethod
+    def grDrawPoly2d (pts: list[PyGe.Point3d],color: int)-> int :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def grDrawPoly3d (pts: list[PyGe.Point3d],color: int)-> int :
+      '''                             '''
+    ...
+
+    @staticmethod
     def graphScr ()-> None :
       '''                             '''
     ...

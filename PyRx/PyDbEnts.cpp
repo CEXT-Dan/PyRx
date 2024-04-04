@@ -2461,7 +2461,7 @@ PyDb3dPolyline::PyDb3dPolyline()
 }
 
 PyDb3dPolyline::PyDb3dPolyline(AcDb3dPolyline* ptr, bool autoDelete)
-    : PyDbCurve(ptr, true)
+    : PyDbCurve(ptr, autoDelete)
 {
 }
 
