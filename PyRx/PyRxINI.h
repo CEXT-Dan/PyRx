@@ -3,8 +3,8 @@ class PyRxINI
 {
 public:
 
-    static std::filesystem::path iniPath();
-    static std::tuple<bool, bool> pythonIsolated();
-    static std::tuple<bool, std::wstring> pythonvenv_path();
+    static const std::filesystem::path& iniPath();
+    static const std::tuple<bool, bool> pythonIsolated();
+    static const std::tuple<bool, std::wstring> pythonvenv_path();
 };
 
