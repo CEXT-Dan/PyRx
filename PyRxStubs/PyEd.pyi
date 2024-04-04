@@ -87,8 +87,13 @@ class Core(object):
       '''                             '''
     ...
 
+    @overload
+    def coordFromPixelToWorld (pt: tuple[int,int])-> PyGe.Point3d : ...
+    @overload
+    def coordFromPixelToWorld (winnum: int, pt: tuple[int,int])-> PyGe.Point3d : ...
     @staticmethod
-    def coordFromPixelToWorld ()-> PyGe.Point3d :
+
+    def coordFromPixelToWorld (self, *args, **kwargs)-> PyGe.Point3d :
       '''Overloads:
     - pt: tuple[int,int]
     - winnum: int, pt: tuple[int,int]
@@ -620,19 +625,29 @@ class Core(object):
       '''                             '''
     ...
 
+    @overload
+    def xrefAttach (path: str, name: str)-> None : ...
+    @overload
+    def xrefAttach (path: str, name: str, btrid: PyDb.ObjectId, refid: PyDb.ObjectId, pt: PyGe.Point3d, sc: PyGe.Scale3d, rot: float, bQuiet: bool, pHostDb: PyDb.Database, passwd: str)-> None : ...
     @staticmethod
-    def xrefAttach ()-> None :
+
+    def xrefAttach (self, *args, **kwargs)-> None :
       '''Overloads:
     - path: str, name: str
     - path: str, name: str, btrid: PyDb.ObjectId, refid: PyDb.ObjectId, pt: PyGe.Point3d, sc: PyGe.Scale3d, rot: float, bQuiet: bool, pHostDb: PyDb.Database, passwd: str
     '''
     ...
 
+    @overload
+    def xrefBind (XrefBlockname: str)-> None : ...
+    @overload
+    def xrefBind (XrefBlockname: str,bInsertBind: bool, bQuiet: bool, pHostDb: PyDb.Database)-> None : ...
     @staticmethod
-    def xrefBind (db: PyDb.Database,bQuiet: bool=True)-> None :
+
+    def xrefBind (self, *args, **kwargs)-> None :
       '''Overloads:
     - XrefBlockname: str
-    - XrefBlockname: str, bQuiet: bool, pHostDb: PyDb.Database
+    - XrefBlockname: str,bInsertBind: bool, bQuiet: bool, pHostDb: PyDb.Database
     '''
     ...
 
@@ -641,8 +656,13 @@ class Core(object):
       '''                             '''
     ...
 
+    @overload
+    def xrefDetach (XrefBlockname: str)-> None : ...
+    @overload
+    def xrefDetach (XrefBlockname: str, bQuiet: bool, pHostDb: PyDb.Database)-> None : ...
     @staticmethod
-    def xrefDetach (XrefPathname: str)-> None :
+
+    def xrefDetach (self, *args, **kwargs)-> None :
       '''Overloads:
     - XrefBlockname: str
     - XrefBlockname: str, bQuiet: bool, pHostDb: PyDb.Database
@@ -654,19 +674,35 @@ class Core(object):
       '''                             '''
     ...
 
+    @overload
+    def xrefOverlay (path: str, name: str)-> None : ...
+    @overload
+    def xrefOverlay (path: str, name: str, btrid: PyDb.ObjectId, refid: PyDb.ObjectId, pt: PyGe.Point3d, sc: PyGe.Scale3d, rot: float, bQuiet: bool, pHostDb: PyDb.Database, passwd: str)-> None : ...
     @staticmethod
-    def xrefOverlay (id: PyDb.ObjectId)-> None :
+
+    def xrefOverlay (self, *args, **kwargs)-> None :
       '''Overloads:
     - path: str, name: str
     - path: str, name: str, btrid: PyDb.ObjectId, refid: PyDb.ObjectId, pt: PyGe.Point3d, sc: PyGe.Scale3d, rot: float, bQuiet: bool, pHostDb: PyDb.Database, passwd: str
     '''
     ...
 
+    @overload
+    def xrefReload (symbolIds: list[PyDb.ObjectId])-> None : ...
+    @overload
+    def xrefReload (symbolIds: list[PyDb.ObjectId], bQuiet: bool, pHostDb: PyDb.Database)-> None : ...
+    @overload
+    def xrefReload (name: str)-> None : ...
+    @overload
+    def xrefReload (name: str, bQuiet: bool, pHostDb: PyDb.Database)-> None : ...
     @staticmethod
-    def xrefReload (id: PyDb.ObjectId)-> None :
+
+    def xrefReload (self, *args, **kwargs)-> None :
       '''Overloads:
-    - path: str, name: str
-    - path: str, name: str, btrid: PyDb.ObjectId, refid: PyDb.ObjectId, pt: PyGe.Point3d, sc: PyGe.Scale3d, rot: float, bQuiet: bool, pHostDb: PyDb.Database, passwd: str
+    - symbolIds: list[PyDb.ObjectId]
+    - symbolIds: list[PyDb.ObjectId], bQuiet: bool, pHostDb: PyDb.Database
+    - name: str
+    - name: str, bQuiet: bool, pHostDb: PyDb.Database
     '''
     ...
 
@@ -675,19 +711,29 @@ class Core(object):
       '''                             '''
     ...
 
+    @overload
+    def xrefUnload (XrefBlockname: str)-> None : ...
+    @overload
+    def xrefUnload (XrefBlockname: str, bQuiet: bool, pHostDb: PyDb.Database)-> None : ...
     @staticmethod
-    def xrefUnload (db: PyDb.Database,bQuiet: bool=True)-> None :
+
+    def xrefUnload (self, *args, **kwargs)-> None :
       '''Overloads:
     - XrefBlockname: str
     - XrefBlockname: str, bQuiet: bool, pHostDb: PyDb.Database
     '''
     ...
 
+    @overload
+    def xrefXBind (symbolIds: list[PyDb.ObjectId])-> None : ...
+    @overload
+    def xrefXBind (symbolIds: list[PyDb.ObjectId], bQuiet: bool, pHostDb: PyDb.Database)-> None : ...
     @staticmethod
-    def xrefXBind (db: PyDb.Database,bQuiet: bool=True)-> None :
+
+    def xrefXBind (self, *args, **kwargs)-> None :
       '''Overloads:
-    - XrefBlockname: str
-    - XrefBlockname: str, bQuiet: bool, pHostDb: PyDb.Database
+    - symbolIds: list[PyDb.ObjectId]
+    - symbolIds: list[PyDb.ObjectId], bQuiet: bool, pHostDb: PyDb.Database
     '''
     ...
 
@@ -1013,11 +1059,16 @@ class Editor(object):
       '''                             '''
     ...
 
+    @overload
+    def getDist (prompt: str)-> tuple : ...
+    @overload
+    def getDist (basePt: PyGe.Point3d, prompt: str)-> tuple : ...
     @staticmethod
-    def getDist ()-> tuple :
+
+    def getDist (self, *args, **kwargs)-> tuple :
       '''Overloads:
     - prompt: str
-    - cronly: int, prompt: str
+    - basePt: PyGe.Point3d, prompt: str
     '''
     ...
 
@@ -1036,11 +1087,16 @@ class Editor(object):
       '''                             '''
     ...
 
+    @overload
+    def getPoint (prompt: str)-> tuple : ...
+    @overload
+    def getPoint (basePt: PyGe.Point3d, prompt: str)-> tuple : ...
     @staticmethod
-    def getPoint ()-> tuple :
+
+    def getPoint (self, *args, **kwargs)-> tuple :
       '''Overloads:
     - prompt: str
-    - cronly: int, prompt: str
+    - basePt: PyGe.Point3d, prompt: str
     '''
     ...
 
@@ -1049,8 +1105,13 @@ class Editor(object):
       '''                             '''
     ...
 
+    @overload
+    def getString (prompt: str)-> tuple : ...
+    @overload
+    def getString (cronly: int, prompt: str)-> tuple : ...
     @staticmethod
-    def getString ()-> tuple :
+
+    def getString (self, *args, **kwargs)-> tuple :
       '''Overloads:
     - prompt: str
     - cronly: int, prompt: str
@@ -1072,8 +1133,13 @@ class Editor(object):
       '''                             '''
     ...
 
+    @overload
+    def nEntSelPEx (prompt: str, flags: int)-> tuple : ...
+    @overload
+    def nEntSelPEx (prompt: str, selpt: PyGe.Point3d, flags: int)-> tuple : ...
     @staticmethod
-    def nEntSelPEx (prompt: str,selpt: PyGe.Point3d='None')-> tuple :
+
+    def nEntSelPEx (self, *args, **kwargs)-> tuple :
       '''Overloads:
     - prompt: str, flags: int
     - prompt: str, selpt: PyGe.Point3d, flags: int

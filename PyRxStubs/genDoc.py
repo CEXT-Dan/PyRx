@@ -124,6 +124,25 @@ def parseOverLoads(overstr : str):
             res.append('(self)')
     return res
 
+def parseStaticOverLoads(overstr : str):
+    res = []
+    if overstr is None:
+        return res
+    if not '-' in overstr:
+        return res
+    overloads = [s.strip() for s in overstr.split('-')]
+    for overload in overloads[1:]:#skip the description
+        if len(overload):
+            if 'None:' in overload:
+                res.append('(/)'.format(overload))
+            else:
+                res.append('({})'.format(overload))
+        else:
+            res.append('()')
+    return res
+
+
+
 def findOverloadAsComment(sig):
     try:
         argb = sig.find('<[(')
@@ -201,18 +220,32 @@ def generate_pyi(moduleName, module):
                         args = findArgs(sig)
                         returnType = findReturnType(sig)
                         newDocString = removeArgStr(sig)
+                        
                         overloadAsComment = findOverloadAsComment(sig)
-                        overloads = parseOverLoads(findOverload(sig))
      
                         try:
                             f.write(f'    def {func_name} {inspect.signature(func)} :\n')
                             f.write(f"      '''{newDocString}'''")
                         except:
                             if len(args) != 0:
+                                
                                 if isStatic(args):
-                                    f.write('\n    @staticmethod\n')
+                                    overloads = parseStaticOverLoads(findOverload(sig))
+                                    if len(overloads):
+                                        for overload in overloads:
+                                            overload = overload.strip(',')
+                                            f.write('\n    @overload\n')
+                                            f.write(f'    def {func_name} {overload}{returnType} : ...')
+                                        f.write('\n    @staticmethod\n')
+                                        f.write(f'\n    def {func_name} (self, *args, **kwargs){returnType} :\n')
+                                        f.write(overloadAsComment)
+                                        f.write('\n    ...\n')
+                                        continue
+                                    else:
+                                        f.write('\n    @staticmethod\n')
+
                                 else:  
-                                    pass
+                                    overloads = parseOverLoads(findOverload(sig))
                                     if len(overloads):
                                         for overload in overloads:
                                             overload = overload.strip(',')

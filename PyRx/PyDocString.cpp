@@ -52,6 +52,9 @@ const char* PyDocString::OVRL(const std::string_view overloads)
 
 const char* PyDocString::SOVRL(const std::string_view overloads)
 {
+    outstr = m_argBegin;
+    outstr += "/";
+    outstr += m_argEnd;
     outstr += m_commentBegin;
     outstr += overloads;
     outstr += m_commenEnd;

@@ -8770,8 +8770,13 @@ reloadXrefs( (Core)arg1, (Database)arg2, (list)arg3, (bool)arg4) -> None :
       '''                             '''
     ...
 
+    @overload
+    def textFind (db: PyDb.Database, findString: str)-> list : ...
+    @overload
+    def textFind (db: PyDb.Database, findString: str,replaceString: str,searchOptions: int,ids: list[PyDb.ObjectId])-> list : ...
     @staticmethod
-    def textFind (tblname: str,sym: str,setnext: int)-> list :
+
+    def textFind (self, *args, **kwargs)-> list :
       '''Overloads:
     - db: PyDb.Database, findString: str
     - db: PyDb.Database, findString: str,replaceString: str,searchOptions: int,ids: list[PyDb.ObjectId]
