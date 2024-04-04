@@ -182,21 +182,29 @@ bool initWxApp()
 
 //------------------------------------------------------------------------------------------------
 // the PyRxApp, holds the command objects
-std::filesystem::path PyRxApp::modulePath()
+const std::filesystem::path& PyRxApp::modulePath()
 {
-    std::wstring buffer(MAX_PATH, 0);
-    GetModuleFileName(_hdllInstance, buffer.data(), buffer.size());
-    std::filesystem::path path = buffer.c_str();
-    path.remove_filename();
+    static std::filesystem::path path;
+    if (path.empty())
+    {
+        std::wstring buffer(MAX_PATH, 0);
+        GetModuleFileName(_hdllInstance, buffer.data(), buffer.size());
+        path = buffer.c_str();
+        path.remove_filename();
+    }
     return path;
 }
 
 static auto getInstallPath()
 {
-    std::wstring buffer(MAX_PATH, 0);
-    GetEnvironmentVariable(_T("localappdata"), buffer.data(), buffer.size());
-    std::filesystem::path path = buffer.c_str();
-    path /= _T("Programs\\PyRx");
+    static std::filesystem::path path;
+    if (path.empty())
+    {
+        std::wstring buffer(MAX_PATH, 0);
+        GetEnvironmentVariable(_T("localappdata"), buffer.data(), buffer.size());
+        path = buffer.c_str();
+        path /= _T("Programs\\PyRx");
+    }
     std::error_code ec;
     return std::tuple(std::filesystem::is_directory(path, ec), path);
 }
@@ -218,24 +226,19 @@ static void validateINIStubPath(const std::wstring& inipath, const std::wstring&
 
 void PyRxApp::appendINISettings()
 {
-    constexpr const wchar_t* ininame = _T("PyRx.INI");
-    const auto settingsPath = modulePath() / ininame;
-
     std::error_code ec;
+    const auto& settingsPath = PyRxINI::iniPath();
     if (std::filesystem::exists(settingsPath, ec) == false)
     {
-        acutPrintf(_T("\nFailed find %ls: "), ininame);
+        acutPrintf(_T("\nFailed find .INI: "));
         return;
     }
-
-    std::wstring stubPath(MAX_PATH, 0);
-    if (GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), _T(""), stubPath.data(), stubPath.size(), settingsPath.c_str()))
     {
-        validateINIStubPath(settingsPath, stubPath.c_str());
-    }
-    else
-    {
-        acutPrintf(_T("\nFailed to read setting %ls: \n"), _T("PYRXSTUBPATH"));
+        std::wstring stubPath(MAX_PATH, 0);
+        if (GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), _T(""), stubPath.data(), stubPath.size(), settingsPath.c_str()))
+            validateINIStubPath(settingsPath, stubPath.c_str());
+        else
+            acutPrintf(_T("\nFailed to read setting %ls: \n"), _T("PYRXSTUBPATH"));
     }
 }
 
