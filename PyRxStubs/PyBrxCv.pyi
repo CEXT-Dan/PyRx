@@ -157,8 +157,16 @@ class Civil3dProfileType(object):
     ...
 
 class CvCivil3dConverter(object):
-    def __init__ (self, sourceDb: PyDb.Database=None, targetDb: PyDb.Database=None, doLabels: PyBrxCv.Civil3dLabels=eDefaultLabels)-> None :
-      '''                             '''
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, sourceDb: PyDb.Database, targetDb: PyDb.Database, doLabels: PyBrxCv.Civil3dLabels)-> None : ...
+    def __init__ (self, *args, **kwargs)-> None :
+      '''Overloads:
+    - None: Any
+    - sourceDb: PyDb.Database, targetDb: PyDb.Database, doLabels: PyBrxCv.Civil3dLabels
+    '''
     ...
     def attachedLabels (self, civilEntity: PyBrxCv.CvCivil3dEntityInfo)-> list :
       '''                             '''
@@ -4056,11 +4064,8 @@ class CvDbHAlignmentLine(CvDbHAlignmentCurve):
     ...
 
 class CvDbHAlignmentPI(CvDbHAlignmentElement):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -4154,16 +4159,8 @@ class CvDbHAlignmentPI(CvDbHAlignmentElement):
     ...
 
 class CvDbHAlignmentSCS(CvDbHAlignmentCurve):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
     def arc (self)-> PyBrxCv.CvDbHAlignmentArc :
       '''                             '''
@@ -4278,16 +4275,8 @@ __init__( (object)arg1) -> None :
     ...
 
 class CvDbHAlignmentSSCSS(CvDbHAlignmentCurve):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
     def arc (self)-> PyBrxCv.CvDbHAlignmentArc :
       '''                             '''
@@ -4408,16 +4397,8 @@ __init__( (object)arg1) -> None :
     ...
 
 class CvDbHAlignmentSTS(CvDbHAlignmentCurve):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -11603,16 +11584,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     ...
 
 class CvDbVAlignmentArc(CvDbVAlignmentCurve):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -11922,16 +11895,8 @@ This class cannot be instantiated from Python'''
     ...
 
 class CvDbVAlignmentPVI(CvDbVAlignmentElement):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -12022,16 +11987,8 @@ __init__( (object)arg1) -> None :
     ...
 
 class CvDbVAlignmentParabola(CvDbVAlignmentCurve):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -12140,16 +12097,8 @@ __init__( (object)arg1) -> None :
     ...
 
 class CvDbVAlignmentTangent(CvDbVAlignmentCurve):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
