@@ -5,7 +5,8 @@
 std::filesystem::path PyRxINI::iniPath()
 {
     constexpr const wchar_t* ininame = _T("PyRx.INI");
-    return PyRxApp::modulePath() / ininame;
+    static std::filesystem::path spath = PyRxApp::modulePath() / ininame;
+    return spath;
 }
 
 std::tuple<bool, bool> PyRxINI::pythonIsolated()
