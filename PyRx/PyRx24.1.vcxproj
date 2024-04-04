@@ -237,6 +237,7 @@
     <ClCompile Include="PyPlPlotProgressDialog.cpp" />
     <ClCompile Include="PyRxApp.cpp" />
     <ClCompile Include="PyRxContainers.cpp" />
+    <ClCompile Include="PyRxINI.cpp" />
     <ClCompile Include="PyRxModule.cpp" />
     <ClCompile Include="PyRxModuleLoader.cpp" />
     <ClCompile Include="PyRxObject.cpp" />
@@ -358,6 +359,7 @@
     <ClInclude Include="PyPlPlotProgressDialog.h" />
     <ClInclude Include="PyRxApp.h" />
     <ClInclude Include="PyRxContainers.h" />
+    <ClInclude Include="PyRxINI.h" />
     <ClInclude Include="PyRxModule.h" />
     <ClInclude Include="PyRxModuleLoader.h" />
     <ClInclude Include="PyRxObject.h" />
