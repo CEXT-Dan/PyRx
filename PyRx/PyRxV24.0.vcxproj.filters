@@ -373,6 +373,9 @@
     <ClCompile Include="PyDbGripData.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyRxINI.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -749,6 +752,9 @@
     </ClInclude>
     <ClInclude Include="PyDbGripData.h">
       <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyRxINI.h">
+      <Filter>Header Files\PyRxApp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
