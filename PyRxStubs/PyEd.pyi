@@ -332,6 +332,16 @@ class Core(object):
     ...
 
     @staticmethod
+    def grText (box: int,text: str,hl: int)-> int :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def grVecs (resbuf: list,xform: PyGe.Matrix3d)-> int :
+      '''                             '''
+    ...
+
+    @staticmethod
     def graphScr ()-> None :
       '''                             '''
     ...
