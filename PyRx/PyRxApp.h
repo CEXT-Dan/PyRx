@@ -100,6 +100,7 @@ public:
     CmdNameMap commands;
     PyLispService lispService;
     PathForCommand pathForCommand;
+    std::set<std::wstring> loadedModuleNames;
 
     void* appPkt = nullptr;
     bool isLoaded = false;
