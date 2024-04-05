@@ -164,7 +164,7 @@ public:
     {
         constexpr TCHAR MAJOR1 = '1';
         constexpr TCHAR MINOR1 = '3';
-        constexpr TCHAR REVISION1 = '0', REVISION2 = '0', REVISION3 = '7';
+        constexpr TCHAR REVISION1 = '0', REVISION2 = '0', REVISION3 = '8';
 
         constexpr unsigned int compileYear = (__DATE__[7] - '0') * 1000 + (__DATE__[8] - '0') * 100 + (__DATE__[9] - '0') * 10 + (__DATE__[10] - '0');
         constexpr unsigned int compileMonth = (__DATE__[0] == 'J') ? ((__DATE__[1] == 'a') ? 1 : ((__DATE__[2] == 'n') ? 6 : 7))    // Jan, Jun or Jul
@@ -229,26 +229,6 @@ public:
                         return;
                 }
             }
-        }
-        catch (...)
-        {
-            acutPrintf(_T("\nException %ls: "), __FUNCTIONW__);
-        }
-        acutPrintf(_T("\npyreload failed: "));
-    }
-
-    static void AcRxPyApp_pyreloadall(void)
-    {
-        try
-        {
-            acutPrintf(_T("\nNot yet implemented "));
-            return;
-
-            WxPyAutoLock lock;
-            boost::python::object sys = boost::python::import("sys");
-            boost::python::object importlib = boost::python::import("importlib");
-            importlib.attr("invalidate_caches")();
-            AcRxPyApp_pyreload();
         }
         catch (...)
         {
@@ -344,9 +324,6 @@ public:
 IMPLEMENT_ARX_ENTRYPOINT(AcRxPyApp)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_SESSION, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_SESSION, NULL)
-#ifdef PYRXDEBUG
-//ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreloadall, pyreloadall, ACRX_CMD_SESSION, NULL)
-#endif
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyload, false)
