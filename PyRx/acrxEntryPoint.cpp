@@ -237,6 +237,19 @@ public:
         acutPrintf(_T("\npyreload failed: "));
     }
 
+    static void AcRxPyApp_pyreloadall(void)
+    {
+        try
+        {
+            acutPrintf(_T("\nNot yet implemented "));
+        }
+        catch (...)
+        {
+            acutPrintf(_T("\nException %ls: "), __FUNCTIONW__);
+        }
+        acutPrintf(_T("\npyreload failed: "));
+    }
+
     static void AcRxPyApp_pyrxver(void)
     {
         PRINTVER();
@@ -331,6 +344,9 @@ public:
 IMPLEMENT_ARX_ENTRYPOINT(AcRxPyApp)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_SESSION, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_SESSION, NULL)
+#ifdef PYRXDEBUG
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreloadall, pyreloadall, ACRX_CMD_SESSION, NULL)
+#endif
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyload, false)
