@@ -34,6 +34,9 @@ def OnPyInitApp() -> None:
         importlib.reload(UnitTestPyWx)
         importlib.reload(UnitTestPyActiveX)
         importlib.reload(dbc)
+        if "BRX" in host:
+            importlib.reload(UnitTestPyBcadCivil)
+
     except Exception as err:
         print(err)
         
