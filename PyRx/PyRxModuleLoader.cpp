@@ -66,7 +66,7 @@ static void onPyReload(const AcString& moduleName)
     }
     catch (...)
     {
-        acutPrintf(_T("\npyload failed: "));
+        acutPrintf(_T("\nOnPyReload failed: "));
     }
 }
 
@@ -92,7 +92,7 @@ static void onLoadPyModule(const AcString& moduleName)
     }
     catch (...)
     {
-        acutPrintf(_T("\npyload failed: "));
+        acutPrintf(_T("\nOnPyInitApp failed: "));
     }
 }
 
