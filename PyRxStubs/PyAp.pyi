@@ -51,6 +51,11 @@ class Application(object):
     ...
 
     @staticmethod
+    def getLoadedModules ()-> list :
+      '''                             '''
+    ...
+
+    @staticmethod
     def hostAPI ()-> str :
       '''                             '''
     ...
@@ -72,6 +77,11 @@ class Application(object):
 
     @staticmethod
     def registerOnIdleWinMsg (func: Any)-> None :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def reloadPythonModule (fullpath: str)-> bool :
       '''                             '''
     ...
 
