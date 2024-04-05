@@ -45,6 +45,8 @@ void makePyApApplictionWrapper()
         .def("applyHostIcon", &PyApApplication::applyHostIcon, DS.SARGS({ "wnd : int" })).staticmethod("applyHostIcon")
         .def("acadGetIDispatch", &PyApApplication::acadGetIDispatch, DS.SARGS()).staticmethod("acadGetIDispatch")
         .def("loadPythonModule", &PyApApplication::loadPythonModule, DS.SARGS({ "fullpath: str" })).staticmethod("loadPythonModule")
+        .def("reloadPythonModule", &PyApApplication::reloadPythonModule, DS.SARGS({ "fullpath: str" })).staticmethod("reloadPythonModule")
+        .def("getLoadedModules", &PyApApplication::getLoadedModules, DS.SARGS()).staticmethod("getLoadedModules")
         .def("wxApp", &PyApApplication::getwxApp, DS.SARGS()).staticmethod("wxApp")
         .def("hostAPI", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPI")
         .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
@@ -190,6 +192,30 @@ bool PyApApplication::loadPythonModule(const std::string& fullpath)
     PyAutoLockGIL lock;
     std::filesystem::path fp = utf8_to_wstr(fullpath);
     return ads_loadPythonModule(fp);
+}
+
+bool PyApApplication::reloadPythonModule(const std::string& fullpath)
+{
+    PyAutoLockGIL lock;
+    std::filesystem::path fp = utf8_to_wstr(fullpath);
+    return ads_reloadPythonModule(fp);
+}
+
+boost::python::list PyApApplication::getLoadedModules()
+{
+    PyAutoLockGIL lock;
+    auto& app = PyRxApp::instance();
+
+    std::set<std::wstring> pathset;
+
+    for (const auto& item : app.pathForCommand)
+        pathset.insert(tolower(item.second.wstring()));
+
+    boost::python::list pylist;
+    for (const auto& item : pathset)
+        pylist.append(wstr_to_utf8(item));
+
+    return pylist;
 }
 
 //-----------------------------------------------------------------------------------------
