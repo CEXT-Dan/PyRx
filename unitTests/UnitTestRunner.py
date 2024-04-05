@@ -22,7 +22,6 @@ print("testname = runtests")
 
 def OnPyInitApp() -> None:
     try:
-        print("\nLoading Unit tests: ")
         importlib.reload(UnitTestPyAcGe)
         importlib.reload(UnitTestPyRxObject)
         importlib.reload(UnitTestPyDatabase)
@@ -36,7 +35,7 @@ def OnPyInitApp() -> None:
         importlib.reload(dbc)
         if "BRX" in host:
             importlib.reload(UnitTestPyBcadCivil)
-
+        print("\nLoading Unit tests: ")
     except Exception as err:
         print(err)
         
