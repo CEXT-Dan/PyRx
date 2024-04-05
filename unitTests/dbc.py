@@ -17,5 +17,5 @@ def loaddbs():
  
 def cleardbs():
     global dbs
-    del(dbs) 
+    dbs = None
     
