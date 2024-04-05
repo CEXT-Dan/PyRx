@@ -17,6 +17,11 @@ def OnPyInitApp():
 # called when the app is inloaded
 def OnPyUnloadApp():
     print("\nOnPyUnloadApp")
+    
+    
+# called the pyreload command ic called on THIS module
+def OnPyReload():
+    print("\nOnPyReload")
 
 
 # called when a drawing is opened
@@ -27,8 +32,8 @@ def OnPyLoadDwg():
 # called when a drawing is closed
 def OnPyUnloadDwg():
     print("\nOnPyUnloadDwg")
-
-
+    
+    
 # prefix PyRxCmd_ defines a command
 # CmdFlags is optional, default is modal
 def PyRxCmd_mycommand(CmdFlags=Ap.CmdFlags.TRANSPARENT):

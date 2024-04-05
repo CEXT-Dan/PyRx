@@ -10,7 +10,6 @@ import UnitTestPyWx
 import UnitTestPyActiveX
 import dbc
 
-import importlib
 from pyrx_imp import Rx
 from pyrx_imp import Ap
 host = Ap.Application.hostAPI()
@@ -20,8 +19,9 @@ if "BRX" in host:
 
 print("testname = runtests")
 
-def OnPyInitApp() -> None:
+def OnPyReload() -> None:
     try:
+        import importlib
         importlib.reload(UnitTestPyAcGe)
         importlib.reload(UnitTestPyRxObject)
         importlib.reload(UnitTestPyDatabase)
@@ -35,7 +35,7 @@ def OnPyInitApp() -> None:
         importlib.reload(dbc)
         if "BRX" in host:
             importlib.reload(UnitTestPyBcadCivil)
-        print("\nLoading Unit tests: ")
+        print("\nReloading Unit tests: ")
     except Exception as err:
         print(err)
         

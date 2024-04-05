@@ -23,6 +23,7 @@ struct PyRxMethod
     PyObject* OnPyUnloadApp = nullptr;
     PyObject* OnPyLoadDwg = nullptr;
     PyObject* OnPyUnloadDwg = nullptr;
+    PyObject* OnPyReload = nullptr;
 };
 
 
