@@ -81,8 +81,7 @@ class TestBCadCivil(unittest.TestCase):
             if elementId != 0:
                 ids.append(elementId)
             elementId = element.nextId()
-                
-        self.assertEqual(len(ids),2)
+        self.assertEqual(len(ids),3)
             
 def pybcciviltest():
     try:
