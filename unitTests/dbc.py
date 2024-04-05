@@ -16,5 +16,6 @@ def loaddbs():
     dbs["TestPoints"].closeInput(True)
  
 def cleardbs():
+    global dbs
     del(dbs) 
     
