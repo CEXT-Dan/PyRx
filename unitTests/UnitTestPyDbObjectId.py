@@ -1,5 +1,6 @@
 import os 
 import unittest
+import testcfg
 
 import PyRx# = Runtime runtime 
 import PyGe# = Geometry

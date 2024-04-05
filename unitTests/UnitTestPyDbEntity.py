@@ -1,6 +1,7 @@
 import os
 import unittest
 import math
+import testcfg
 
 import PyRx as Rx
 import PyGe as Ge

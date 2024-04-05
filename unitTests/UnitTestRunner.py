@@ -9,6 +9,7 @@ import UnitTestPyEditor
 import UnitTestPyWx
 import UnitTestPyActiveX
 import dbc
+import testcfg
 
 from pyrx_imp import Rx
 from pyrx_imp import Ap
