@@ -23,6 +23,8 @@ print("testname = runtests")
 def OnPyReload() -> None:
     try:
         import importlib
+        importlib.reload(testcfg)
+        importlib.reload(dbc)
         importlib.reload(UnitTestPyAcGe)
         importlib.reload(UnitTestPyRxObject)
         importlib.reload(UnitTestPyDatabase)
@@ -33,7 +35,6 @@ def OnPyReload() -> None:
         importlib.reload(UnitTestPyEditor)
         importlib.reload(UnitTestPyWx)
         importlib.reload(UnitTestPyActiveX)
-        importlib.reload(dbc)
         if "BRX" in host:
             importlib.reload(UnitTestPyBcadCivil)
         print("\nReloading Unit tests: ")
