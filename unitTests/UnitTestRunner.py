@@ -10,6 +10,8 @@ import UnitTestPyWx
 import UnitTestPyActiveX
 import dbc
 
+import importlib
+from pyrx_imp import Rx
 from pyrx_imp import Ap
 host = Ap.Application.hostAPI()
 
@@ -18,6 +20,23 @@ if "BRX" in host:
 
 print("testname = runtests")
 
+def OnPyInitApp() -> None:
+    try:
+        print("\nLoading Unit tests: ")
+        importlib.reload(UnitTestPyAcGe)
+        importlib.reload(UnitTestPyRxObject)
+        importlib.reload(UnitTestPyDatabase)
+        importlib.reload(UnitTestPyDbObject)
+        importlib.reload(UnitTestPyDbObjectId)
+        importlib.reload(UnitTestPyDbEval)
+        importlib.reload(UnitTestPyDbEntity)
+        importlib.reload(UnitTestPyEditor)
+        importlib.reload(UnitTestPyWx)
+        importlib.reload(UnitTestPyActiveX)
+        importlib.reload(dbc)
+    except Exception as err:
+        print(err)
+        
 def cleanup(dbc):
     try:
         dbc.cleardbs()
@@ -28,7 +47,6 @@ def PyRxCmd_runtests() -> None:
     try:
         
         #TODO: make a prompt to select what tests to run
-        
         # uses dbx so load databases later
         UnitTestPyActiveX.pyactivex()
         
