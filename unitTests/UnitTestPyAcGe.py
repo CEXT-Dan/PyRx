@@ -338,6 +338,6 @@ def pyge():
                 runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
                 runner.run(suite)
         else:
-            print(unittest.TextTestRunner(testcfg.testVerbosity).run(suite))
+            print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
     except Exception as err:
         print(err)
