@@ -242,6 +242,13 @@ public:
         try
         {
             acutPrintf(_T("\nNot yet implemented "));
+            return;
+
+            WxPyAutoLock lock;
+            boost::python::object sys = boost::python::import("sys");
+            boost::python::object importlib = boost::python::import("importlib");
+            importlib.attr("invalidate_caches")();
+            AcRxPyApp_pyreload();
         }
         catch (...)
         {
