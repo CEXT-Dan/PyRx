@@ -26,6 +26,7 @@ public:
     static bool loadPythonModule(const std::string& fullpath);
     static bool reloadPythonModule(const std::string& fullpath);
     static boost::python::list getLoadedModules();
+    static boost::python::list getLoadedModuleNames();
 
 public:
     inline static std::map<PyObject*, boost::python::object> onidleFuncs;

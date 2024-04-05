@@ -47,6 +47,7 @@ void makePyApApplictionWrapper()
         .def("loadPythonModule", &PyApApplication::loadPythonModule, DS.SARGS({ "fullpath: str" })).staticmethod("loadPythonModule")
         .def("reloadPythonModule", &PyApApplication::reloadPythonModule, DS.SARGS({ "fullpath: str" })).staticmethod("reloadPythonModule")
         .def("getLoadedModules", &PyApApplication::getLoadedModules, DS.SARGS()).staticmethod("getLoadedModules")
+        .def("getLoadedModuleNames", &PyApApplication::getLoadedModuleNames, DS.SARGS()).staticmethod("getLoadedModuleNames")
         .def("wxApp", &PyApApplication::getwxApp, DS.SARGS()).staticmethod("wxApp")
         .def("hostAPI", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPI")
         .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
@@ -205,15 +206,24 @@ boost::python::list PyApApplication::getLoadedModules()
 {
     PyAutoLockGIL lock;
     auto& app = PyRxApp::instance();
-
-    std::set<std::wstring> pathset;
-
-    for (const auto& item : app.pathForCommand)
-        pathset.insert(tolower(item.second.wstring()));
-
     boost::python::list pylist;
-    for (const auto& item : pathset)
+    for (const auto& item : app.loadedModuleNames)
         pylist.append(wstr_to_utf8(item));
+
+    return pylist;
+}
+
+boost::python::list PyApApplication::getLoadedModuleNames()
+{
+    PyAutoLockGIL lock;
+    auto& app = PyRxApp::instance();
+    boost::python::list pylist;
+
+    for (const auto& item : app.loadedModuleNames)
+    {
+        std::filesystem::path _path = item;
+        pylist.append(wstr_to_utf8(_path.filename().replace_extension()));
+    }
 
     return pylist;
 }
