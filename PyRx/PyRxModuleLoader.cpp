@@ -10,6 +10,7 @@ static void loadPyAppReactors(PyRxMethod& method)
     method.OnPyUnloadApp = PyDict_GetItemString(method.mdict, "OnPyUnloadApp");
     method.OnPyLoadDwg = PyDict_GetItemString(method.mdict, "OnPyLoadDwg");
     method.OnPyUnloadDwg = PyDict_GetItemString(method.mdict, "OnPyUnloadDwg");
+    method.OnPyReload = PyDict_GetItemString(method.mdict, "OnPyReload");
 }
 
 static CString formatFileNameforCommandGroup(const TCHAR* modulename)
@@ -46,6 +47,27 @@ bool showNavFileDialog(PyModulePath& path)
 
     acutRelRb(pResBuf);
     return true;
+}
+
+static void onPyReload(const AcString& moduleName)
+{
+    try
+    {
+        WxPyAutoLock lock;
+        if (PyRxApp::instance().funcNameMap.contains(moduleName))
+        {
+            auto& method = PyRxApp::instance().funcNameMap.at(moduleName);
+            if (method.OnPyReload != nullptr)
+            {
+                if (PyCallable_Check(method.OnPyReload))
+                    method.rslt.reset(PyObject_CallNoArgs(method.OnPyReload));
+            }
+        }
+    }
+    catch (...)
+    {
+        acutPrintf(_T("\npyload failed: "));
+    }
 }
 
 static void onLoadPyModule(const AcString& moduleName)
@@ -196,6 +218,7 @@ bool reloadPythonModule(const PyModulePath& path, bool silent)
                 acutPrintf(_T("\nSuccess module %ls is reloaded: "), (const TCHAR*)path.moduleName);
             }
             onLoadPyModule(path.moduleName);
+            onPyReload(path.moduleName);
             return true;
         }
         else
