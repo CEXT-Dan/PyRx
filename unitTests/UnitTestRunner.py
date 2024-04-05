@@ -18,6 +18,12 @@ if "BRX" in host:
 
 print("testname = runtests")
 
+def cleanup(dbc):
+    try:
+        dbc.cleardbs()
+    except Exception as err:
+        print(err)
+    
 def PyRxCmd_runtests() -> None:
     try:
         
@@ -45,4 +51,4 @@ def PyRxCmd_runtests() -> None:
     except Exception as err:
         print(err)
     finally:
-        dbc.cleardbs()
+        cleanup(dbc)
