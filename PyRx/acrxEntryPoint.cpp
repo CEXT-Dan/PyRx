@@ -335,13 +335,6 @@ public:
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
-        char buffer[50];
-        int a = 10, b = 20, c;
-        c = a + b;
-        sprintf(buffer, "Sum of %d and %d is %d", a, b, c);
-
-        std::string s = buffer;
-        acutPrintf(utf8_to_wstr(s).c_str());
     }
 #endif
 };
