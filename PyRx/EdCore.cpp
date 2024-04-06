@@ -188,6 +188,7 @@ void makePyEdCoreWrapper()
         .def("graphScr", &EdCore::graphScr, DS.SARGS()).staticmethod("graphScr")
         .def("grDraw", &EdCore::grDraw1)
         .def("grDraw", &EdCore::grDraw2, DS.SARGS({ "pt1: PyGe.Point2d|PyGe.Point3d","pt2: PyGe.Point2d|PyGe.Point3d","color: int","highlight: int" })).staticmethod("grDraw")
+        .def("grDrawArc", &EdCore::grDrawArc, DS.SARGS({ "pt1: PyGe.Point3d","pt2: PyGe.Point3d","pt3: PyGe.Point3d","numsegs: int","color: int" })).staticmethod("grDrawArc")
         .def("grDrawBox", &EdCore::grDrawBox, DS.SARGS({ "pts: list[PyGe.Point3d]","color: int","highlight: int" })).staticmethod("grDrawBox")
         .def("grDrawCircle", &EdCore::grDrawCircle, DS.SARGS({ "cen: PyGe.Point3d", "radius: float", "numsegs: int","color: int" })).staticmethod("grDrawCircle")
         .def("grDrawPoly2d", &EdCore::grDrawPoly2d, DS.SARGS({ "pts: list[PyGe.Point3d]","color: int" })).staticmethod("grDrawPoly2d")
@@ -1177,6 +1178,28 @@ int EdCore::grDraw2(const AcGePoint3d& from, const AcGePoint3d& to, int colorInd
     return acedGrDraw(asDblArray(from), asDblArray(to), colorIndex, highlight);
 }
 
+int EdCore::grDrawArc(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, int nsegs, int colorIndex)
+{
+    AcGeVector3d vec;
+    ::ucsNormalVector(vec);
+    AcGeCircArc3d carc{ p1, p2, p3 };
+    AcGePoint3dArray pnts;
+    carc.getSamplePoints(nsegs, pnts);
+    pnts.append(pnts.first());
+    AcResBufPtr rb(acutNewRb(RTSHORT));
+    rb->resval.rint = colorIndex;
+    resbuf* rbTail = rb.get();
+    constexpr const size_t copysize = sizeof(rbTail->resval.rpoint);
+    for (size_t idx = 1; idx < pnts.length(); idx++)//duplicate code
+    {
+        rbTail = rbTail->rbnext = acutNewRb(RT3DPOINT);
+        memcpy_s(rbTail->resval.rpoint, copysize, asDblArray(pnts[idx - 1]), copysize);
+        rbTail = rbTail->rbnext = acutNewRb(RT3DPOINT);
+        memcpy_s(rbTail->resval.rpoint, copysize, asDblArray(pnts[idx]), copysize);
+    }
+    return acedGrVecs(rb.get(), NULL);
+}
+
 int EdCore::grDrawBox(const boost::python::object& iterable, int colorIndex, int highlight)
 {
     AcGePoint3dArray pnts = PyListToPoint3dArray(iterable);
@@ -1518,7 +1541,6 @@ void EdCore::unmarkForDelayXRefRelativePathResolve(const PyDbObjectId& xrefDefId
 #else
     acedUnmarkForDelayXRefRelativePathResolve(xrefDefId.m_id);
 #endif
-
 }
 
 int EdCore::update(int vport, const AcGePoint2d& p1, const AcGePoint2d& p2)
@@ -1578,17 +1600,8 @@ void EdCore::xrefAttach1(const std::string& path, const std::string& name)
 void EdCore::xrefAttach2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid,
     AcGePoint3d& pt, AcGeScale3d& sc, double rot, bool bQuiet, PyDbDatabase& pHostDb, const std::string& passwd)
 {
-    return PyThrowBadEs(acedXrefAttach(
-        utf8_to_wstr(path).c_str(),
-        utf8_to_wstr(name).c_str(),
-        &btrid.m_id,
-        &refid.m_id,
-        &pt,
-        &sc,
-        &rot,
-        bQuiet,
-        pHostDb.impObj(),
-        utf8_to_wstr(passwd).c_str()));
+    return PyThrowBadEs(acedXrefAttach(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str(),
+        &btrid.m_id, &refid.m_id, &pt, &sc, &rot, bQuiet, pHostDb.impObj(), utf8_to_wstr(passwd).c_str()));
 }
 
 std::string EdCore::xrefCreateBlockname(const std::string& XrefPathname)
@@ -1632,17 +1645,8 @@ void EdCore::xrefOverlay1(const std::string& path, const std::string& name)
 void EdCore::xrefOverlay2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid,
     AcGePoint3d& pt, AcGeScale3d& sc, double rot, bool bQuiet, PyDbDatabase& pHostDb, const std::string& passwd)
 {
-    return PyThrowBadEs(acedXrefOverlay(
-        utf8_to_wstr(path).c_str(),
-        utf8_to_wstr(name).c_str(),
-        &btrid.m_id,
-        &refid.m_id,
-        &pt,
-        &sc,
-        &rot,
-        bQuiet,
-        pHostDb.impObj(),
-        utf8_to_wstr(passwd).c_str()));
+    return PyThrowBadEs(acedXrefOverlay(utf8_to_wstr(path).c_str(),
+        utf8_to_wstr(name).c_str(), &btrid.m_id, &refid.m_id, &pt, &sc, &rot, bQuiet, pHostDb.impObj(), utf8_to_wstr(passwd).c_str()));
 }
 
 void EdCore::xrefReload1(const boost::python::list& symbolIds)

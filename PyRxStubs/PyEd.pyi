@@ -317,6 +317,11 @@ class Core(object):
     ...
 
     @staticmethod
+    def grDrawArc (pt1: PyGe.Point3d,pt2: PyGe.Point3d,pt3: PyGe.Point3d,numsegs: int,color: int)-> int :
+      '''                             '''
+    ...
+
+    @staticmethod
     def grDrawBox (pts: list[PyGe.Point3d],color: int,highlight: int)-> int :
       '''                             '''
     ...

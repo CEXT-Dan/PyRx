@@ -64,7 +64,7 @@ public:
     AcGePoint2d             evalPoint1(double param) const;
     boost::python::tuple    evalPoint2(double param, int numDeriv) const;
     boost::python::list     getSamplePoints1(int numSample) const;
-    boost::python::list     getSamplePoints2(double fromParam, double toParam, double approxEps) const;
+    boost::python::tuple    getSamplePoints2(double fromParam, double toParam, double approxEps) const;
     boost::python::tuple    getSplitCurves(double param);
     static PyGeCurve2d      cast(const PyGeEntity2d& src);
     static PyGeCurve2d      copycast(const PyGeEntity2d& src);
