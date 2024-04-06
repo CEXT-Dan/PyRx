@@ -13,6 +13,10 @@ using namespace boost::python;
 //PyGeCurve3d
 void makePyGeCurve3dWrapper()
 {
+    constexpr const std::string_view  getSamplePointsOverloads = "Overloads:\n"
+        "- numSample: int\n"
+        "- fromParam: float, toParam: float, approxEps: float\n";
+
     PyDocString DS("Curve3d");
     class_<PyGeCurve3d, bases<PyGeEntity3d>>("Curve3d", boost::python::no_init)
         .def("getInterval", &PyGeCurve3d::getInterval, DS.ARGS())
@@ -84,7 +88,7 @@ void makePyGeCurve3dWrapper()
         .def("evalPoint", &PyGeCurve3d::evalPoint1)
         .def("evalPoint", &PyGeCurve3d::evalPoint2, DS.ARGS({ "param : float","numDeriv : int = 1" }))
         .def("getSamplePoints", &PyGeCurve3d::getSamplePoints1)
-        .def("getSamplePoints", &PyGeCurve3d::getSamplePoints2)
+        .def("getSamplePoints", &PyGeCurve3d::getSamplePoints2, DS.OVRL(getSamplePointsOverloads))
         .def("cast", &PyGeCurve3d::cast, DS.SARGS({ "otherObject: PyGe.Curve3d" })).staticmethod("cast")
         .def("copycast", &PyGeCurve3d::copycast, DS.SARGS({ "otherObject: PyGe.Curve3d" })).staticmethod("copycast")
         .def("className", &PyGeCurve3d::className, DS.SARGS()).staticmethod("className")
@@ -578,27 +582,27 @@ boost::python::tuple PyGeCurve3d::evalPoint2(double param, int numDeriv) const
     return boost::python::make_tuple(pnt, vecs);
 }
 
-boost::python::list PyGeCurve3d::getSamplePoints1(int numSample) const
+boost::python::tuple PyGeCurve3d::getSamplePoints1(int numSample) const
 {
     PyAutoLockGIL lock;
+    AcGeDoubleArray paramArray;
     AcGePoint3dArray pointArray;
-    boost::python::list pointList;
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
     impObj()->getSamplePoints(numSample, pointArray);
-    for (const auto& item : pointArray)
-        pointList.append(item);
-    return pointList;
+#else
+    impObj()->getSamplePoints(numSample, pointArray, paramArray);
+#endif
+    return boost::python::make_tuple(Point3dArrayToPyList(pointArray), DoubleArrayToPyList(paramArray));
 }
 
-boost::python::list PyGeCurve3d::getSamplePoints2(double fromParam, double toParam, double approxEps) const
+boost::python::tuple PyGeCurve3d::getSamplePoints2(double fromParam, double toParam, double approxEps) const
 {
     PyAutoLockGIL lock;
     AcGeDoubleArray paramArray;
     AcGePoint3dArray pointArray;
     boost::python::list pointList;
     impObj()->getSamplePoints(fromParam, toParam, approxEps, pointArray, paramArray);
-    for (const auto& item : pointArray)
-        pointList.append(item);
-    return pointList;
+    return boost::python::make_tuple(Point3dArrayToPyList(pointArray), DoubleArrayToPyList(paramArray));
 }
 
 PyGeCurve3d PyGeCurve3d::cast(const PyGeEntity3d& src)

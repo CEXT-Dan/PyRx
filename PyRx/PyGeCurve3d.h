@@ -83,8 +83,8 @@ public:
     bool                    hasEndPoint() const;
     AcGePoint3d             evalPoint1(double param) const;
     boost::python::tuple    evalPoint2(double param, int numDeriv) const;
-    boost::python::list     getSamplePoints1(int numSample) const;
-    boost::python::list     getSamplePoints2(double fromParam, double toParam, double approxEps) const;
+    boost::python::tuple    getSamplePoints1(int numSample) const;
+    boost::python::tuple    getSamplePoints2(double fromParam, double toParam, double approxEps) const;
     static PyGeCurve3d      cast(const PyGeEntity3d& src);
     static PyGeCurve3d      copycast(const PyGeEntity3d& src);
     static std::string      className();

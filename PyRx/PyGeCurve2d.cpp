@@ -450,23 +450,18 @@ boost::python::list PyGeCurve2d::getSamplePoints1(int numSample) const
 {
     PyAutoLockGIL lock;
     AcGePoint2dArray pointArray;
-    boost::python::list pointList;
     impObj()->getSamplePoints(numSample, pointArray);
-    for (const auto& item : pointArray)
-        pointList.append(item);
-    return pointList;
+    return Point2dArrayToPyList(pointArray);
 }
 
-boost::python::list PyGeCurve2d::getSamplePoints2(double fromParam, double toParam, double approxEps) const
+boost::python::tuple PyGeCurve2d::getSamplePoints2(double fromParam, double toParam, double approxEps) const
 {
     PyAutoLockGIL lock;
     AcGeDoubleArray paramArray;
     AcGePoint2dArray pointArray;
     boost::python::list pointList;
     impObj()->getSamplePoints(fromParam, toParam, approxEps, pointArray, paramArray);
-    for (const auto& item : pointArray)
-        pointList.append(item);
-    return pointList;
+    return boost::python::make_tuple(Point2dArrayToPyList(pointArray), DoubleArrayToPyList(paramArray));
 }
 
 boost::python::tuple PyGeCurve2d::getSplitCurves(double param)

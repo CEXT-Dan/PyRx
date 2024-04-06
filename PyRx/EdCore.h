@@ -91,6 +91,7 @@ public:
     static PySysVar              autoSetVar(const std::string& sym, const  boost::python::object& val);
     static int                  grDraw1(const AcGePoint2d& from, const AcGePoint2d& to, int colorIndex, int highlight);
     static int                  grDraw2(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight);
+    static int                  grDrawArc(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, int nsegs, int colorIndex);
     static int                  grDrawBox(const boost::python::object& iterable, int colorIndex, int highlight);
     static int                  grDrawCircle(const AcGePoint3d& cen, double radius, int nsegs, int colorIndex);
 
