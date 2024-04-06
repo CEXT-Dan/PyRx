@@ -1,7 +1,7 @@
 #pragma once
-#include "PyBrxCvObject.h"
 
 #ifdef BRXAPP
+#include "PyBrxCvObject.h"
 
 class BrxCvDbPoint;
 class BrxCvDbPointReferencedEntity;

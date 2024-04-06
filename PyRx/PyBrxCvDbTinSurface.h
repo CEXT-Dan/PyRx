@@ -1,9 +1,9 @@
 #pragma once
 
+#ifdef BRXAPP
 #include "BrxCvDbTinSurface.h"
 #include "PyBrxCvObject.h"
 
-#ifdef BRXAPP
 class PyDbCurve;
 class PyDbObjectId;
 class PyBrxCvGradingRule;

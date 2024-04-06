@@ -1,8 +1,7 @@
 #pragma once
 
-#include "PyBrxCvObject.h"
-
 #ifdef BRXAPP
+#include "PyBrxCvObject.h"
 #include "BrxCvDbObjectManager.h"
 #include "BrxCvDbFileFormatManager.h"
 #include "BrxCvDbStyleManager.h"

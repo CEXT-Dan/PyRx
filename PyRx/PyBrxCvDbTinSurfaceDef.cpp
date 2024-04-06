@@ -1,10 +1,11 @@
 #include "stdafx.h"
+
+#ifdef BRXAPP
 #include "PyBrxCvDbTinSurfaceDef.h"
 #include "PyGeLinearEnt2d.h"
 #include "PyDbEnts.h"
 #include "PyDbObjectId.h"
 
-#ifdef BRXAPP
 using namespace boost::python;
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbTinSurfaceDefinition

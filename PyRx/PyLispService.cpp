@@ -50,7 +50,6 @@ int PyLispService::execLispFunc()
                     AcResBufPtr ptr(listToResbuf(reslist));
                     if (ptr != nullptr)
                         acedRetList(ptr.get());
-
                 }
                 else if (PyBool_Check(pResult.get()))
                 {

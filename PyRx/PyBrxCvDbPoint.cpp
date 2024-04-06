@@ -1,9 +1,9 @@
 #include "stdafx.h"
-#include "PyBrxCvDbPoint.h"
-#include "PyDbObjectId.h"
+
 
 #ifdef BRXAPP
-
+#include "PyBrxCvDbPoint.h"
+#include "PyDbObjectId.h"
 #include "BrxCvDbPoint.h"
 
 using namespace boost::python;
