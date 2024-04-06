@@ -1185,7 +1185,6 @@ int EdCore::grDrawArc(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePo
     AcGeCircArc3d carc{ p1, p2, p3 };
     AcGePoint3dArray pnts;
     carc.getSamplePoints(nsegs, pnts);
-    pnts.append(pnts.first());
     AcResBufPtr rb(acutNewRb(RTSHORT));
     rb->resval.rint = colorIndex;
     resbuf* rbTail = rb.get();
