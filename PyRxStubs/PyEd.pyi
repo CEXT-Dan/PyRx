@@ -322,6 +322,11 @@ class Core(object):
     ...
 
     @staticmethod
+    def grDrawCircle (cen: PyGe.Point3d,radius: float,numsegs: int,color: int)-> int :
+      '''                             '''
+    ...
+
+    @staticmethod
     def grDrawPoly2d (pts: list[PyGe.Point3d],color: int)-> int :
       '''                             '''
     ...

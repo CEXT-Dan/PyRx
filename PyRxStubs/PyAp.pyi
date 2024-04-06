@@ -51,6 +51,11 @@ class Application(object):
     ...
 
     @staticmethod
+    def getLoadedModuleNames ()-> list :
+      '''                             '''
+    ...
+
+    @staticmethod
     def getLoadedModules ()-> list :
       '''                             '''
     ...

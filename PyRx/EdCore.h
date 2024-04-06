@@ -92,6 +92,9 @@ public:
     static int                  grDraw1(const AcGePoint2d& from, const AcGePoint2d& to, int colorIndex, int highlight);
     static int                  grDraw2(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight);
     static int                  grDrawBox(const boost::python::object& iterable, int colorIndex, int highlight);
+    static int                  grDrawCircle(const AcGePoint3d& cen, double radius, int nsegs, int colorIndex);
+
+
     static int                  grDrawPoly2d(const boost::python::object& iterable, int colorIndex);
     static int                  grDrawPoly3d(const boost::python::object& iterable, int colorIndex);
     static int                  grVecs(const boost::python::list& iterable, const AcGeMatrix3d& mat);
