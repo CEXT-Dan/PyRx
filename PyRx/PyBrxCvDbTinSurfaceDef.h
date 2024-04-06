@@ -1,12 +1,13 @@
 #pragma once
 
+#ifdef BRXAPP
+
 #include "PyBrxCvObject.h"
 #include "BrxCvDbTinSurfaceDefinition.h"
 
 class PyGeLineSeg2d;
 class PyDbEntity;
 class PyDbObjectId;
-#ifdef BRXAPP
 
 
 //-----------------------------------------------------------------------------------

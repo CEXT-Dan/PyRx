@@ -1,8 +1,10 @@
 #include "stdafx.h"
+
+
+#ifdef BRXAPP
 #include "PyBrxCvDbObjectManager.h"
 #include "PyDbObjectId.h"
 
-#ifdef BRXAPP
 using namespace boost::python;
 
 void makePyBrxCvDbObjectManagerWrapper()

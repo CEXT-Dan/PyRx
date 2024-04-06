@@ -1,12 +1,12 @@
 #include "stdafx.h"
+
+#ifdef BRXAPP
 #include "PyBrxCv.h"
 #include "PyBrxCvDbAlignments.h"
 #include "PyBrxCvDbObjectManager.h"
 #include "PyBrxCvDbPoint.h"
 #include "PyBrxCvDbTinSurfaceDef.h"
 #include "PyBrxCvDbTinSurface.h"
-
-#ifdef BRXAPP
 
 using namespace boost::python;
 

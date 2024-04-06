@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "PyBrxCvDbTinSurface.h"
 
 #ifdef BRXAPP
+#include "PyBrxCvDbTinSurface.h"
 #include "PyBrxCvDbTinSurfaceDef.h"
 #include "PyDbObjectId.h"
 #include "PyDbCurve.h"

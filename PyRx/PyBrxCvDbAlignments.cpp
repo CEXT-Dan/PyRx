@@ -1,8 +1,10 @@
 #include "stdafx.h"
+
+
+#ifdef BRXAPP
 #include "PyBrxCvDbAlignments.h"
 #include "PyDbObjectId.h"
 
-#ifdef BRXAPP
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------
