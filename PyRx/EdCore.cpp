@@ -189,6 +189,7 @@ void makePyEdCoreWrapper()
         .def("grDraw", &EdCore::grDraw1)
         .def("grDraw", &EdCore::grDraw2, DS.SARGS({ "pt1: PyGe.Point2d|PyGe.Point3d","pt2: PyGe.Point2d|PyGe.Point3d","color: int","highlight: int" })).staticmethod("grDraw")
         .def("grDrawBox", &EdCore::grDrawBox, DS.SARGS({ "pts: list[PyGe.Point3d]","color: int","highlight: int" })).staticmethod("grDrawBox")
+        .def("grDrawCircle", &EdCore::grDrawCircle, DS.SARGS({ "cen: PyGe.Point3d", "radius: float", "numsegs: int","color: int" })).staticmethod("grDrawCircle")
         .def("grDrawPoly2d", &EdCore::grDrawPoly2d, DS.SARGS({ "pts: list[PyGe.Point3d]","color: int" })).staticmethod("grDrawPoly2d")
         .def("grDrawPoly3d", &EdCore::grDrawPoly3d, DS.SARGS({ "pts: list[PyGe.Point3d]","color: int" })).staticmethod("grDrawPoly3d")
         .def("grVecs", &EdCore::grVecs, DS.SARGS({ "resbuf: list","xform: PyGe.Matrix3d" })).staticmethod("grVecs")
@@ -569,7 +570,7 @@ boost::python::list EdCore::evaluateLisp(const std::string& str)
     AcResBufPtr pSafeRb(pRb);
     return resbufToList(pRb);
     //#endif
-}
+    }
 
 std::string EdCore::evaluateDiesel(const std::string& str)
 {
@@ -1211,6 +1212,27 @@ int EdCore::grDrawBox(const boost::python::object& iterable, int colorIndex, int
     return RTNORM;
 }
 
+int EdCore::grDrawCircle(const AcGePoint3d& cen, double radius, int nsegs, int colorIndex)
+{
+    AcGeVector3d vec;
+    ::ucsNormalVector(vec);
+    auto ca = AcGeCircArc3d(cen, vec, radius);
+    AcGePoint3dArray pnts;
+    ca.getSamplePoints(nsegs, pnts);
+    pnts.append(pnts.first());
+    AcResBufPtr rb(acutNewRb(RTSHORT));
+    rb->resval.rint = colorIndex;
+    resbuf* rbTail = rb.get();
+    for (size_t idx = 1; idx < pnts.length(); idx++)
+    {
+        rbTail = rbTail->rbnext = acutNewRb(RT3DPOINT);
+        memcpy_s(rbTail->resval.rpoint, sizeof(rbTail->resval.rpoint), asDblArray(pnts[idx - 1]), sizeof(rbTail->resval.rpoint));
+        rbTail = rbTail->rbnext = acutNewRb(RT3DPOINT);
+        memcpy_s(rbTail->resval.rpoint, sizeof(rbTail->resval.rpoint), asDblArray(pnts[idx]), sizeof(rbTail->resval.rpoint));
+    }
+    return acedGrVecs(rb.get(), NULL);
+}
+
 int EdCore::grDrawPoly2d(const boost::python::object& iterable, int colorIndex)
 {
     AcGePoint2dArray pnts = PyListToPoint2dArray(iterable);
@@ -1232,7 +1254,7 @@ int EdCore::grDrawPoly2d(const boost::python::object& iterable, int colorIndex)
 int EdCore::grDrawPoly3d(const boost::python::object& iterable, int colorIndex)
 {
     AcGePoint3dArray pnts = PyListToPoint3dArray(iterable);
-    if (pnts.length() <2)
+    if (pnts.length() < 2)
         return RTERROR;
     AcResBufPtr rb(acutNewRb(RTSHORT));
     rb->resval.rint = colorIndex;
