@@ -1028,8 +1028,12 @@ bool EdCore::setVar(const std::string& sym, const boost::python::object& src)
     {
         if (PyLong_Check(src.ptr()))
         {
+            AcResBufPtr buf;
             const int val = extract<int32_t>(src);
-            AcResBufPtr buf(acutBuildList(RTLONG, val, 0));
+            if (val <= SHRT_MAX)
+                buf.reset(acutBuildList(RTSHORT, val, 0));
+            else
+                buf.reset(acutBuildList(RTLONG, val, 0));
             return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
         }
         else if (PyFloat_Check(src.ptr()))
