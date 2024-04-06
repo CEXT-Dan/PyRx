@@ -315,7 +315,7 @@ void makePyBrxCvDbTinSurfaceWrapper()
         .def("subDMesh", &PyBrxCvDbTinSurface::subDMesh3,DS.OVRL(subDMeshOverloads))
         .def("solid3d", &PyBrxCvDbTinSurface::solid3d1)
         .def("solid3d", &PyBrxCvDbTinSurface::solid3d2, DS.OVRL(solid3dOverloads))
-        .def("drapePoint", &PyBrxCvDbTinSurface::drapePoint, DS.ARGS({ "pts : list[PyGe.Point3d]" }))
+        .def("drapePoint", &PyBrxCvDbTinSurface::drapePoints, DS.ARGS({ "pts : list[PyGe.Point3d]" }))
         .def("drapeId", &PyBrxCvDbTinSurface::drapeId, DS.ARGS({ "id : PyDb.ObjectId" }))
         .def("intersectionsWithLine", &PyBrxCvDbTinSurface::intersectionsWithLine, DS.ARGS({ "start : PyGe.Point3d","end : PyGe.Point3d", "type : PyBrxCv.TinSurfaceIntersectType","visibleOnly : bool" }))
         .def("getConstraints", &PyBrxCvDbTinSurface::getConstraints, DS.ARGS())
@@ -696,7 +696,7 @@ PyDb3dSolid PyBrxCvDbTinSurface::solid3d2(const PyBrxCvDbTinSurface& other) cons
     return PyDb3dSolid(impObj()->solid3d(other.impObj()), true);
 }
 
-boost::python::list PyBrxCvDbTinSurface::drapePoint(const boost::python::list& points) const
+boost::python::list PyBrxCvDbTinSurface::drapePoints(const boost::python::list& points) const
 {
     PyAutoLockGIL lock;
     AcArray<AcGePoint3dArray> borders;
