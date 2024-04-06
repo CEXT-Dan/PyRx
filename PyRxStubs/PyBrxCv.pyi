@@ -7151,7 +7151,7 @@ class CvDbTinSurface(CvDbEntity):
     def drapeId (self, id : PyDb.ObjectId)-> list :
       '''                             '''
     ...
-    def drapePoint (self, pts : list[PyGe.Point3d])-> list :
+    def drapePoints (self, pts : list[PyGe.Point3d])-> list :
       '''                             '''
     ...
     def draw (self)-> None :
@@ -13449,7 +13449,7 @@ class CvDbVolumeSurface(CvDbTinSurface):
     def drapeId (self, id : PyDb.ObjectId)-> list :
       '''                             '''
     ...
-    def drapePoint (self, pts : list[PyGe.Point3d])-> list :
+    def drapePoints (self, pts : list[PyGe.Point3d])-> list :
       '''                             '''
     ...
     def draw (self)-> None :
