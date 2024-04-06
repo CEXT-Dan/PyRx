@@ -976,7 +976,7 @@ boost::python::object EdCore::getVar(const std::string& sym)
         resbuf buf;
         if (acedGetVar(utf8_to_wstr(sym).c_str(), &buf) != RTNORM)
         {
-            return boost::python::make_tuple(false, boost::python::object());
+            PyThrowBadRt(RTERROR);
         }
         switch (buf.restype)
         {
@@ -1026,40 +1026,38 @@ bool EdCore::setVar(const std::string& sym, const boost::python::object& src)
     PyAutoLockGIL lock;
     try
     {
+        AcResBufPtr buf;
+        const AcString asSym = utf8_to_wstr(sym).c_str();
         if (PyLong_Check(src.ptr()))
         {
-            AcResBufPtr buf;
             const int val = extract<int32_t>(src);
             if (val <= SHRT_MAX)
                 buf.reset(acutBuildList(RTSHORT, val, 0));
             else
                 buf.reset(acutBuildList(RTLONG, val, 0));
-            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
         }
         else if (PyFloat_Check(src.ptr()))
         {
             const double val = extract<double>(src);
-            AcResBufPtr buf(acutBuildList(RTREAL, val, 0));
-            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+            buf.reset(acutBuildList(RTREAL, val, 0));
         }
         else if (extract<AcGePoint2d>(src).check())
         {
             const auto val = asDblArray(extract<AcGePoint2d>(src));
-            AcResBufPtr buf(acutBuildList(RTPOINT, val, 0));
-            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+            buf.reset(acutBuildList(RTPOINT, val, 0));
         }
         else if (extract<AcGePoint3d>(src).check())
         {
             const auto val = asDblArray(extract<AcGePoint3d>(src));
-            AcResBufPtr buf(acutBuildList(RT3DPOINT, val, 0));
-            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+            buf.reset(acutBuildList(RT3DPOINT, val, 0));
         }
         else if (extract<char*>(src).check())
         {
             const AcString str = utf8_to_wstr(extract<char*>(src)).c_str();
-            AcResBufPtr buf(acutBuildList(RTSTR, (const TCHAR*)str, 0));
-            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+            buf.reset(acutBuildList(RTSTR, (const TCHAR*)str, 0));
         }
+        PyThrowBadRt(acedSetVar(asSym, buf.get()));
+        return true;
     }
     catch (...)
     {
