@@ -570,7 +570,7 @@ boost::python::list EdCore::evaluateLisp(const std::string& str)
     AcResBufPtr pSafeRb(pRb);
     return resbufToList(pRb);
     //#endif
-    }
+}
 
 std::string EdCore::evaluateDiesel(const std::string& str)
 {
@@ -1216,19 +1216,20 @@ int EdCore::grDrawCircle(const AcGePoint3d& cen, double radius, int nsegs, int c
 {
     AcGeVector3d vec;
     ::ucsNormalVector(vec);
-    auto ca = AcGeCircArc3d(cen, vec, radius);
+    AcGeCircArc3d carc{ cen, vec, radius };
     AcGePoint3dArray pnts;
-    ca.getSamplePoints(nsegs, pnts);
+    carc.getSamplePoints(nsegs, pnts);
     pnts.append(pnts.first());
     AcResBufPtr rb(acutNewRb(RTSHORT));
     rb->resval.rint = colorIndex;
     resbuf* rbTail = rb.get();
+    constexpr const size_t copysize = sizeof(rbTail->resval.rpoint);
     for (size_t idx = 1; idx < pnts.length(); idx++)
     {
         rbTail = rbTail->rbnext = acutNewRb(RT3DPOINT);
-        memcpy_s(rbTail->resval.rpoint, sizeof(rbTail->resval.rpoint), asDblArray(pnts[idx - 1]), sizeof(rbTail->resval.rpoint));
+        memcpy_s(rbTail->resval.rpoint, copysize, asDblArray(pnts[idx - 1]), copysize);
         rbTail = rbTail->rbnext = acutNewRb(RT3DPOINT);
-        memcpy_s(rbTail->resval.rpoint, sizeof(rbTail->resval.rpoint), asDblArray(pnts[idx]), sizeof(rbTail->resval.rpoint));
+        memcpy_s(rbTail->resval.rpoint, copysize, asDblArray(pnts[idx]), copysize);
     }
     return acedGrVecs(rb.get(), NULL);
 }
@@ -1241,12 +1242,13 @@ int EdCore::grDrawPoly2d(const boost::python::object& iterable, int colorIndex)
     AcResBufPtr rb(acutNewRb(RTSHORT));
     rb->resval.rint = colorIndex;
     resbuf* rbTail = rb.get();
+    constexpr const size_t copysize = sizeof(rbTail->resval.rpoint);
     for (size_t idx = 1; idx < pnts.length(); idx++)
     {
         rbTail = rbTail->rbnext = acutNewRb(RTPOINT);
-        memcpy_s(rbTail->resval.rpoint, sizeof(rbTail->resval.rpoint), asDblArray(pnts[idx - 1]), sizeof(rbTail->resval.rpoint));
+        memcpy_s(rbTail->resval.rpoint, copysize, asDblArray(pnts[idx - 1]), copysize);
         rbTail = rbTail->rbnext = acutNewRb(RTPOINT);
-        memcpy_s(rbTail->resval.rpoint, sizeof(rbTail->resval.rpoint), asDblArray(pnts[idx]), sizeof(rbTail->resval.rpoint));
+        memcpy_s(rbTail->resval.rpoint, copysize, asDblArray(pnts[idx]), copysize);
     }
     return acedGrVecs(rb.get(), NULL);
 }
@@ -1259,12 +1261,13 @@ int EdCore::grDrawPoly3d(const boost::python::object& iterable, int colorIndex)
     AcResBufPtr rb(acutNewRb(RTSHORT));
     rb->resval.rint = colorIndex;
     resbuf* rbTail = rb.get();
+    constexpr const size_t copysize = sizeof(rbTail->resval.rpoint);
     for (size_t idx = 1; idx < pnts.length(); idx++)
     {
         rbTail = rbTail->rbnext = acutNewRb(RT3DPOINT);
-        memcpy_s(rbTail->resval.rpoint, sizeof(rbTail->resval.rpoint), asDblArray(pnts[idx - 1]), sizeof(rbTail->resval.rpoint));
+        memcpy_s(rbTail->resval.rpoint, copysize, asDblArray(pnts[idx - 1]), copysize);
         rbTail = rbTail->rbnext = acutNewRb(RT3DPOINT);
-        memcpy_s(rbTail->resval.rpoint, sizeof(rbTail->resval.rpoint), asDblArray(pnts[idx]), sizeof(rbTail->resval.rpoint));
+        memcpy_s(rbTail->resval.rpoint, copysize, asDblArray(pnts[idx]), copysize);
     }
     return acedGrVecs(rb.get(), NULL);
 }
