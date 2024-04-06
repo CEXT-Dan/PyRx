@@ -8833,11 +8833,13 @@ class IAcadHatch(DispatchBaseClass):
 
     def AppendInnerLoop(self, ObjectArray=defaultNamedNotOptArg):
         'Adds an inner loop to a hatch.'
+        ObjectArray = VTDISPArrayOrVal(ObjectArray)
         return self._oleobj_.InvokeTypes(15, LCID, 1, (24, 0), ((12, 1),),ObjectArray
             )
 
     def AppendOuterLoop(self, ObjectArray=defaultNamedNotOptArg):
         'Adds the outer loop to a hatch.'
+        ObjectArray = VTDISPArrayOrVal(ObjectArray)
         return self._oleobj_.InvokeTypes(14, LCID, 1, (24, 0), ((12, 1),),ObjectArray
             )
 
