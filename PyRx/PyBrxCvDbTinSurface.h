@@ -197,7 +197,7 @@ public:
     PyDb3dSolid  solid3d1(const BrxCvDbTinSurface::ETinSurfaceSolidType solidType, double thickness) const;
     PyDb3dSolid  solid3d2(const PyBrxCvDbTinSurface& other) const;
 
-    boost::python::list drapePoint(const AcGePoint3dArray& points) const;
+    boost::python::list drapePoint(const boost::python::list& points) const;
     boost::python::list drapeId(const PyDbObjectId& entId) const;
     boost::python::tuple intersectionsWithLine(const AcGePoint3d& ptLineStart, const AcGePoint3d& ptLineEnd, BrxCvDbTinSurface::ETinSurfaceIntersectType type, bool visibleOnly) const;
 

@@ -696,11 +696,11 @@ PyDb3dSolid PyBrxCvDbTinSurface::solid3d2(const PyBrxCvDbTinSurface& other) cons
     return PyDb3dSolid(impObj()->solid3d(other.impObj()), true);
 }
 
-boost::python::list PyBrxCvDbTinSurface::drapePoint(const AcGePoint3dArray& points) const
+boost::python::list PyBrxCvDbTinSurface::drapePoint(const boost::python::list& points) const
 {
     PyAutoLockGIL lock;
     AcArray<AcGePoint3dArray> borders;
-    impObj()->drape(borders, points);
+    impObj()->drape(borders, PyListToPoint3dArray(points));
     boost::python::list pylist;
     for (const auto& item : borders)
         pylist.append(Point3dArrayToPyList(item));
