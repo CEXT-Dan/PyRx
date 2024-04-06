@@ -9383,10 +9383,12 @@ class IAcadHatch(DispatchBaseClass):
     coclass_clsid = IID('{EC923120-5A21-11E7-B72E-BC5FF42AC839}')
 
     def AppendInnerLoop(self, ObjectArray=defaultNamedNotOptArg):
+        ObjectArray = VTDISPArrayOrVal(ObjectArray)
         return self._oleobj_.InvokeTypes(15, LCID, 1, (24, 0), ((12, 1),),ObjectArray
             )
 
     def AppendOuterLoop(self, ObjectArray=defaultNamedNotOptArg):
+        ObjectArray = VTDISPArrayOrVal(ObjectArray)
         return self._oleobj_.InvokeTypes(14, LCID, 1, (24, 0), ((12, 1),),ObjectArray
             )
 
