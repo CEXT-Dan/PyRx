@@ -158,7 +158,6 @@ void makePyDbTableStyleWrapper()
         .def("margin", &PyDbTableStyle::margin)
         .def("setMargin", &PyDbTableStyle::setMargin)
 
-
         .def("gridDoubleLineSpacing", &PyDbTableStyle::gridDoubleLineSpacing)
         .def("setGridDoubleLineSpacing", &PyDbTableStyle::setGridDoubleLineSpacing)
 
@@ -171,14 +170,14 @@ void makePyDbTableStyleWrapper()
         .def("getGridProperty", &PyDbTableStyle::getGridProperty)
         .def("setGridProperty", &PyDbTableStyle::setGridProperty)
 
-        .def("getTemplate", &PyDbTableStyle::getTemplate)
+        .def("getTemplate", &PyDbTableStyle::getTemplate, DS.ARGS())
         .def("setTemplate", &PyDbTableStyle::setTemplate)
-        .def("removeTemplate", &PyDbTableStyle::removeTemplate)
+        .def("removeTemplate", &PyDbTableStyle::removeTemplate, DS.ARGS())
 
-        .def("className", &PyDbTableStyle::className).staticmethod("className")
-        .def("desc", &PyDbTableStyle::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbTableStyle::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbTableStyle::cast).staticmethod("cast")
+        .def("className", &PyDbTableStyle::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbTableStyle::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbTableStyle::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbTableStyle::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
