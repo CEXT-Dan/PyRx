@@ -137,7 +137,7 @@ void makePyDbExtents2dWrapper()
         .def("transformBy", &AcDbExtents2d::transformBy, DS.ARGS({ "xform: PyGe.Matrix2d" }))
 #endif
         .def("intersectsWith", &AcDbExtents2dIntersects, DS.ARGS({ "ex: PyDb.Extents2d" }))
-        .def("coords", &AcDbExtents2dCoords)
+        .def("coords", &AcDbExtents2dCoords, DS.ARGS())
         .def("__str__", &AcDbExtents2dToString)
         .def("__repr__", &AcDbExtents2dToStringRepr)
         ;
@@ -209,7 +209,7 @@ void makePyDbExtentsWrapper()
         .def("expandBy", &AcDbExtents::expandBy, DS.ARGS({ "vec: PyGe.Vector3d" }))
         .def("transformBy", &AcDbExtents::transformBy, DS.ARGS({ "xform: PyGe.Matrix3d" }))
         .def("intersectsWith", &AcDbExtents3dIntersects, DS.ARGS({ "other: PyDb.Extents" }))
-        .def("coords", &AcDbExtents3dCoords)
+        .def("coords", &AcDbExtents3dCoords, DS.ARGS())
         .def("__str__", &AcDbExtentsToString)
         .def("__repr__", &AcDbExtentsToStringRepr)
         //.def("addBlockExt", &AcDbExtents::addBlockExt) //TODO
