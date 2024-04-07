@@ -102,7 +102,7 @@ public:
     static PyDbObject   cloneFrom(const PyRxObject& src);
     static PyDbObject   cast(const PyRxObject& src);
 public:
-    inline AcDbObject* impObj(const std::source_location& src = std::source_location::current()) const;
+    inline AcDbObject*  impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 template<typename T>

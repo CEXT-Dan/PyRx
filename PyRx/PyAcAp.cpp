@@ -42,7 +42,7 @@ static PyApDocument curPyDoc()
 
 BOOST_PYTHON_MODULE(PyAp)
 {
-    docstring_options local_docstring_options(true, true, true);
+    docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
 
     register_exception_translator<PyNullObject>(PyNullObject::translator);
     register_exception_translator<PyEditorError>(PyEditorError::translator);

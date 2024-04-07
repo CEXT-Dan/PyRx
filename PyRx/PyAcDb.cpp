@@ -218,7 +218,7 @@ void makePyDbExtentsWrapper()
 
 BOOST_PYTHON_MODULE(PyDb)
 {
-    docstring_options local_docstring_options(true, true, true);
+    docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
 
     //create in class order!
     makePyDbDateWrapper();

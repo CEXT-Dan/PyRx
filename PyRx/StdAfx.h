@@ -187,26 +187,30 @@ static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
 static inline const AcString PyLispFuncPrefix = _T("PyRxLisp_");
 static inline const AcString PyCommandFlagPrefix = _T("cmdflags=");
 
-static inline constexpr const char* PyApNamespace = "PyAp";
-static inline constexpr const char* PyRxNamespace = "PyRx";
-static inline constexpr const char* PyGeNamespace = "PyGe";
-static inline constexpr const char* PyGsNamespace = "PyGs";
-static inline constexpr const char* PyDbNamespace = "PyDb";
-static inline constexpr const char* PyGiNamespace = "PyGi";
-static inline constexpr const char* PyEdNamespace = "PyEd";
-static inline constexpr const char* PyPlNamespace = "PyPl";
-static inline constexpr const char* PyBrxCvNamespace = "PyBrxCv";
+constexpr const char* PyApNamespace = "PyAp";
+constexpr const char* PyRxNamespace = "PyRx";
+constexpr const char* PyGeNamespace = "PyGe";
+constexpr const char* PyGsNamespace = "PyGs";
+constexpr const char* PyDbNamespace = "PyDb";
+constexpr const char* PyGiNamespace = "PyGi";
+constexpr const char* PyEdNamespace = "PyEd";
+constexpr const char* PyPlNamespace = "PyPl";
+constexpr const char* PyBrxCvNamespace = "PyBrxCv";
 
-static inline constexpr const wchar_t* PyAppNamespaceW = L"PyRxApp";
-static inline constexpr const wchar_t* PyApNamespaceW = L"PyAp";
-static inline constexpr const wchar_t* PyRxNamespaceW = L"PyRx";
-static inline constexpr const wchar_t* PyGeNamespaceW = L"PyGe";
-static inline constexpr const wchar_t* PyGsNamespaceW = L"PyGs";
-static inline constexpr const wchar_t* PyDbNamespaceW = L"PyDb";
-static inline constexpr const wchar_t* PyGiNamespaceW = L"PyGi";
-static inline constexpr const wchar_t* PyEdNamespaceW = L"PyEd";
-static inline constexpr const wchar_t* PyPlNamespaceW = L"PyPl";
-static inline constexpr const wchar_t* PyBrxCvNamespaceW = L"PyBrxCv";
+constexpr const wchar_t* PyAppNamespaceW = L"PyRxApp";
+constexpr const wchar_t* PyApNamespaceW = L"PyAp";
+constexpr const wchar_t* PyRxNamespaceW = L"PyRx";
+constexpr const wchar_t* PyGeNamespaceW = L"PyGe";
+constexpr const wchar_t* PyGsNamespaceW = L"PyGs";
+constexpr const wchar_t* PyDbNamespaceW = L"PyDb";
+constexpr const wchar_t* PyGiNamespaceW = L"PyGi";
+constexpr const wchar_t* PyEdNamespaceW = L"PyEd";
+constexpr const wchar_t* PyPlNamespaceW = L"PyPl";
+constexpr const wchar_t* PyBrxCvNamespaceW = L"PyBrxCv";
+
+constexpr const bool py_show_user_defined = true;
+constexpr const bool py_show_py_signatures = true;
+constexpr const bool py_show_cpp_signatures = true;
 
 //-----------------------------------------------------------------------------
 #include "DocData.h" //- Your document specific data class holder
