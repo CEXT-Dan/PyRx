@@ -41,6 +41,50 @@ void makePyDbTableStyleWrapper()
         "- rowType: PyDb.RowType\n"
         "- cellStyle: str\n";
 
+    constexpr const std::string_view setDataTypeOverloads = "Overloads:\n"
+        "- nDataType: PyDb.ValueDataType, nUnitType: PyDb.ValueDataType\n"
+        "- nDataType: PyDb.ValueDataType, nUnitType: PyDb.ValueDataType, rowType: PyDb.RowType\n"
+        "- nDataType: PyDb.ValueDataType, nUnitType: PyDb.ValueDataType, cellStyle: str\n";
+
+    constexpr const std::string_view formatOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- rowType: PyDb.RowType\n"
+        "- cellStyle: str\n";
+
+    constexpr const std::string_view setFormatOverloads = "Overloads:\n"
+        "- sFormat: str\n"
+        "- sFormat: str, rowType: PyDb.RowType\n"
+        "- sFormat: str, cellStyle: str\n";
+
+    constexpr const std::string_view gridLineWeightOverloads = "Overloads:\n"
+        "- gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType\n"
+        "- gridLineType: PyDb.GridLineType ,cellStyle: str\n";
+
+    constexpr const std::string_view setGridLineWeighOverloads = "Overloads:\n"
+        "- lineWeight: PyDb.LineWeight, gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType\n"
+        "- lineWeight: PyDb.LineWeight, gridLineType: PyDb.GridLineType ,cellStyle: str\n";
+
+    constexpr const std::string_view gridColorOverloads = "Overloads:\n"
+        "- gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType\n"
+        "- gridLineType: PyDb.GridLineType ,cellStyle: str\n";
+
+    constexpr const std::string_view setGridColorOverloads = "Overloads:\n"
+        "- clr: PyDb.Color, gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType\n"
+        "- clr: PyDb.Color, gridLineType: PyDb.GridLineType ,cellStyle: str\n";
+
+    constexpr const std::string_view gridVisibilityOverloads = "Overloads:\n"
+        "- gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType\n"
+        "- gridLineType: PyDb.GridLineType ,cellStyle: str\n";
+
+    constexpr const std::string_view setGridVisibilityOverloads = "Overloads:\n"
+        "- vis: PyDb.Visibility, gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType\n"
+        "- vis: PyDb.Visibility, gridLineType: PyDb.GridLineType ,cellStyle: str\n";
+
+    constexpr const std::string_view createCellStyleOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- pszCellStyle: str\n"
+        "- pszCellStyle: str, fromCellStyle: str\n";
+
 
     PyDocString DS("TableStyle");
     class_<PyDbTableStyle, bases<PyDbObject>>("TableStyle")
@@ -64,116 +108,80 @@ void makePyDbTableStyleWrapper()
         .def("suppressTitleRow", &PyDbTableStyle::suppressTitleRow, DS.ARGS({ "val: bool" }))
         .def("isHeaderSuppressed", &PyDbTableStyle::isHeaderSuppressed, DS.ARGS())
         .def("suppressHeaderRow", &PyDbTableStyle::suppressHeaderRow, DS.ARGS({ "val: bool" }))
-
         .def("textStyle", &PyDbTableStyle::textStyle)
         .def("textStyle", &PyDbTableStyle::textStyle2, DS.OVRL(textStyleOverloads))
-
         .def("setTextStyle", &PyDbTableStyle::setTextStyle)
         .def("setTextStyle", &PyDbTableStyle::setTextStyle2, DS.OVRL(setTextStyleOverloads))
-
         .def("textHeight", &PyDbTableStyle::textHeight)
         .def("textHeight", &PyDbTableStyle::textHeight2, DS.OVRL(textHeightOverloads))
-
         .def("setTextHeight", &PyDbTableStyle::setTextHeight)
         .def("setTextHeight", &PyDbTableStyle::setTextHeight2, DS.OVRL(setTextHeightOverloads))
-
         .def("alignment", &PyDbTableStyle::alignment)
         .def("alignment", &PyDbTableStyle::alignment2, DS.OVRL(alignmenttOverloads))
-
         .def("setAlignment", &PyDbTableStyle::setAlignment)
         .def("setAlignment", &PyDbTableStyle::setAlignment2, DS.OVRL(setAlignmenttOverloads))
-
         .def("color", &PyDbTableStyle::color)
         .def("color", &PyDbTableStyle::color2, DS.OVRL(colorOverloads))
-
         .def("setColor", &PyDbTableStyle::setColor)
         .def("setColor", &PyDbTableStyle::setColor2, DS.OVRL(setColorOverloads))
-
         .def("backgroundColor", &PyDbTableStyle::backgroundColor)
         .def("backgroundColor", &PyDbTableStyle::backgroundColor2, DS.OVRL(colorOverloads))
-
         .def("setBackgroundColor", &PyDbTableStyle::setBackgroundColor)
         .def("setBackgroundColor", &PyDbTableStyle::setBackgroundColor2, DS.OVRL(setColorOverloads))
-
         .def("isBackgroundColorNone", &PyDbTableStyle::isBackgroundColorNone, DS.ARGS({ "rowType: PyDb.RowType" }))
         .def("setBackgroundColorNone", &PyDbTableStyle::setBackgroundColorNone, DS.ARGS({ "val: bool","rowType: PyDb.RowType" }))
-
         .def("getDataType", &PyDbTableStyle::getDataType)
         .def("getDataType", &PyDbTableStyle::getDataType2, DS.OVRL(getDataTypeOverloads))
-
         .def("setDataType", &PyDbTableStyle::setDataType1)
         .def("setDataType", &PyDbTableStyle::setDataType2)
-        .def("setDataType", &PyDbTableStyle::setDataType3)
-
+        .def("setDataType", &PyDbTableStyle::setDataType3, DS.OVRL(setDataTypeOverloads))
         .def("format", &PyDbTableStyle::format1)
         .def("format", &PyDbTableStyle::format2)
-        .def("format", &PyDbTableStyle::format3)
-
+        .def("format", &PyDbTableStyle::format3, DS.OVRL(formatOverloads))
         .def("setFormat", &PyDbTableStyle::setFormat1)
         .def("setFormat", &PyDbTableStyle::setFormat2)
-        .def("setFormat", &PyDbTableStyle::setFormat3)
-
+        .def("setFormat", &PyDbTableStyle::setFormat3, DS.OVRL(setFormatOverloads))
         .def("gridLineWeight", &PyDbTableStyle::gridLineWeight)
-        .def("gridLineWeight", &PyDbTableStyle::gridLineWeight2)
-
+        .def("gridLineWeight", &PyDbTableStyle::gridLineWeight2, DS.OVRL(gridLineWeightOverloads))
         .def("setGridLineWeight", &PyDbTableStyle::setGridLineWeight)
-        .def("setGridLineWeight", &PyDbTableStyle::setGridLineWeight2)
-
+        .def("setGridLineWeight", &PyDbTableStyle::setGridLineWeight2, DS.OVRL(setGridLineWeighOverloads))
         .def("gridColor", &PyDbTableStyle::gridColor)
-        .def("gridColor", &PyDbTableStyle::gridColor2)
-
+        .def("gridColor", &PyDbTableStyle::gridColor2, DS.OVRL(gridColorOverloads))
         .def("setGridColor", &PyDbTableStyle::setGridColor)
-        .def("setGridColor", &PyDbTableStyle::setGridColor2)
-
+        .def("setGridColor", &PyDbTableStyle::setGridColor2, DS.OVRL(setGridColorOverloads))
         .def("gridVisibility", &PyDbTableStyle::gridVisibility)
-        .def("gridVisibility", &PyDbTableStyle::gridVisibility2)
-
+        .def("gridVisibility", &PyDbTableStyle::gridVisibility2, DS.OVRL(gridVisibilityOverloads))
         .def("setGridVisibility", &PyDbTableStyle::setGridVisibility)
-        .def("setGridVisibility", &PyDbTableStyle::setGridVisibility2)
-
-        .def("postTableStyleToDb", &PyDbTableStyle::postTableStyleToDb)
-
+        .def("setGridVisibility", &PyDbTableStyle::setGridVisibility2, DS.OVRL(setGridVisibilityOverloads))
+        .def("postTableStyleToDb", &PyDbTableStyle::postTableStyleToDb, DS.ARGS({ "db: PyDb.Database","styleName: str" }))
         .def("createCellStyle", &PyDbTableStyle::createCellStyle1)
         .def("createCellStyle", &PyDbTableStyle::createCellStyle2)
-        .def("createCellStyle", &PyDbTableStyle::createCellStyle3)
-
-        .def("renameCellStyle", &PyDbTableStyle::renameCellStyle)
-        .def("deleteCellStyle", &PyDbTableStyle::deleteCellStyle)
-
-        .def("copyCellStyle", &PyDbTableStyle::copyCellStyle)
-        .def("isCellStyleInUse", &PyDbTableStyle::isCellStyleInUse)
-
+        .def("createCellStyle", &PyDbTableStyle::createCellStyle3, DS.OVRL(createCellStyleOverloads))
+        .def("renameCellStyle", &PyDbTableStyle::renameCellStyle, DS.ARGS({ "pszOldName: str", "pszNewName: str" }))
+        .def("deleteCellStyle", &PyDbTableStyle::deleteCellStyle, DS.ARGS({ "pszCellStyle: str" }))
+        .def("copyCellStyle", &PyDbTableStyle::copyCellStyle, DS.ARGS({ "pszSrcCellStyle: str", "pszTargetCellStyle: str" }))
+        .def("isCellStyleInUse", &PyDbTableStyle::isCellStyleInUse, DS.ARGS({ "pszCellStyle: str" }))
         .def("numCellStyles", &PyDbTableStyle::numCellStyles, DS.ARGS())
         .def("getCellStyles", &PyDbTableStyle::getCellStyles, DS.ARGS())
-
-        .def("cellClass", &PyDbTableStyle::cellClass)
-        .def("setCellClass", &PyDbTableStyle::setCellClass)
-
-        .def("rotation", &PyDbTableStyle::rotation)
-        .def("setRotation", &PyDbTableStyle::setRotation)
-
-        .def("isMergeAllEnabled", &PyDbTableStyle::isMergeAllEnabled)
-        .def("enableMergeAll", &PyDbTableStyle::enableMergeAll)
-
-        .def("margin", &PyDbTableStyle::margin)
-        .def("setMargin", &PyDbTableStyle::setMargin)
-
-        .def("gridDoubleLineSpacing", &PyDbTableStyle::gridDoubleLineSpacing)
-        .def("setGridDoubleLineSpacing", &PyDbTableStyle::setGridDoubleLineSpacing)
-
-        .def("gridLineStyle", &PyDbTableStyle::gridLineStyle)
-        .def("setGridLineStyle", &PyDbTableStyle::setGridLineStyle)
-
-        .def("gridLinetype", &PyDbTableStyle::gridLinetype)
-        .def("setGridLinetype", &PyDbTableStyle::setGridLinetype)
-
-        .def("getGridProperty", &PyDbTableStyle::getGridProperty)
-        .def("setGridProperty", &PyDbTableStyle::setGridProperty)
-
+        .def("cellClass", &PyDbTableStyle::cellClass, DS.ARGS({ "pszCellStyle: str" }))
+        .def("setCellClass", &PyDbTableStyle::setCellClass, DS.ARGS({ "val: int","pszCellStyle: str" }))
+        .def("rotation", &PyDbTableStyle::rotation, DS.ARGS({ "pszCellStyle: str" }))
+        .def("setRotation", &PyDbTableStyle::setRotation, DS.ARGS({ "val: float", "pszCellStyle: str" }))
+        .def("isMergeAllEnabled", &PyDbTableStyle::isMergeAllEnabled, DS.ARGS({ "pszCellStyle: str" }))
+        .def("enableMergeAll", &PyDbTableStyle::enableMergeAll, DS.ARGS({ "val: bool", "pszCellStyle: str" }))
+        .def("margin", &PyDbTableStyle::margin, DS.ARGS({ "nMargin: PyDb.CellMargin", "pszCellStyle: str" }))
+        .def("setMargin", &PyDbTableStyle::setMargin, DS.ARGS({ "nMargins: PyDb.CellMargin","val: float", "pszCellStyle: str" }))
+        .def("gridDoubleLineSpacing", &PyDbTableStyle::gridDoubleLineSpacing, DS.ARGS({ "gridLineType: PyDb.GridLineType", "pszCellStyle: str" }))
+        .def("setGridDoubleLineSpacing", &PyDbTableStyle::setGridDoubleLineSpacing, DS.ARGS({ "val: float","gridLineTypes: PyDb.GridLineType", "pszCellStyle: str" }))
+        .def("gridLineStyle", &PyDbTableStyle::gridLineStyle, DS.ARGS({ "gridLineType: PyDb.GridLineType", "pszCellStyle: str" }))
+        .def("setGridLineStyle", &PyDbTableStyle::setGridLineStyle, DS.ARGS({ "nLineStyle: PyDb.GridLineStyle","gridLineType: PyDb.GridLineType", "pszCellStyle: str" }))
+        .def("gridLinetype", &PyDbTableStyle::gridLinetype, DS.ARGS({ "gridLineType: PyDb.GridLineType", "pszCellStyle: str" }))
+        .def("setGridLinetype", &PyDbTableStyle::setGridLinetype, DS.ARGS({ "id: PyDb.ObjectId", "gridLineType: PyDb.GridLineType", "pszCellStyle: str" }))
+        .def("getGridProperty", &PyDbTableStyle::getGridProperty, DS.ARGS({ "gridLineType: PyDb.GridLineType", "pszCellStyle: str" }))
+        .def("setGridProperty", &PyDbTableStyle::setGridProperty, DS.ARGS({ "gridProp: PyDb.GridProperty" "gridLineType: PyDb.GridLineType", "pszCellStyle: str" }))
         .def("getTemplate", &PyDbTableStyle::getTemplate, DS.ARGS())
-        .def("setTemplate", &PyDbTableStyle::setTemplate)
+        .def("setTemplate", &PyDbTableStyle::setTemplate, DS.ARGS({ "id: PyDb.ObjectId" , "nOption: PyDb.MergeCellStyleOption" }))
         .def("removeTemplate", &PyDbTableStyle::removeTemplate, DS.ARGS())
-
         .def("className", &PyDbTableStyle::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbTableStyle::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbTableStyle::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
