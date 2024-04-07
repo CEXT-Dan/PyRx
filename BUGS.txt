@@ -1,7 +1,0 @@
-11-18-2023 -- [ZRX] Functions acedDefun, acedRegFunc fail -- reported to ZDN
-11-18-2023 -- [ZRX] AcGeCurveCurveInt3d fails -- reported to ZDN
-11-19-2023 -- [ZRX] AcDbText::setJustification fails -- reported to ZDN
-11-19-2023 -- [ZRX] AcDbObject::disableUndoRecording fails -- reported to ZDN
-
-
-
