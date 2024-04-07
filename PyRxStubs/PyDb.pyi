@@ -62188,31 +62188,8 @@ class TableIteratorOption(object):
     ...
 
 class TableStyle(DbObject):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode,bool)'''
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -62223,16 +62200,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def addReactor (self, reactor: PyDb.DbObjectReactor)-> None :
       '''                             '''
     ...
+
+    @overload
+    def alignment (self, rowType: PyDb.RowType)-> PyDb.CellAlignment : ...
+    @overload
+    def alignment (self, cellStyle: str)-> PyDb.CellAlignment : ...
     def alignment (self, *args, **kwargs)-> PyDb.CellAlignment :
-      '''alignment( (TableStyle)arg1, (RowType)arg2) -> CellAlignment :
-
-    C++ signature :
-        enum AcDb::CellAlignment alignment(class PyDbTableStyle {lvalue},enum AcDb::RowType)
-
-alignment( (TableStyle)arg1, (str)arg2) -> CellAlignment :
-
-    C++ signature :
-        enum AcDb::CellAlignment alignment(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - rowType: PyDb.RowType
+    - cellStyle: str
+    '''
     ...
     def assertNotifyEnabled (self)-> None :
       '''                             '''
@@ -62243,22 +62220,19 @@ alignment( (TableStyle)arg1, (str)arg2) -> CellAlignment :
     def assertWriteEnabled (self)-> None :
       '''                             '''
     ...
+
+    @overload
+    def backgroundColor (self, rowType: PyDb.RowType)-> PyDb.Color : ...
+    @overload
+    def backgroundColor (self, cellStyle: str)-> PyDb.Color : ...
     def backgroundColor (self, *args, **kwargs)-> PyDb.Color :
-      '''backgroundColor( (TableStyle)arg1, (RowType)arg2) -> Color :
-
-    C++ signature :
-        class AcCmColor backgroundColor(class PyDbTableStyle {lvalue},enum AcDb::RowType)
-
-backgroundColor( (TableStyle)arg1, (str)arg2) -> Color :
-
-    C++ signature :
-        class AcCmColor backgroundColor(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - rowType: PyDb.RowType
+    - cellStyle: str
+    '''
     ...
-    def bitFlags (self, *args, **kwargs)-> int :
-      '''bitFlags( (TableStyle)arg1) -> int :
-
-    C++ signature :
-        unsigned int bitFlags(class PyDbTableStyle {lvalue})'''
+    def bitFlags (self)-> int :
+      '''                             '''
     ...
     def bounds (self, ext: PyDb.Extents)-> bool :
       '''                             '''
@@ -62293,16 +62267,16 @@ backgroundColor( (TableStyle)arg1, (str)arg2) -> Color :
     def close (self)-> None :
       '''                             '''
     ...
+
+    @overload
+    def color (self, rowType: PyDb.RowType)-> PyDb.Color : ...
+    @overload
+    def color (self, cellStyle: str)-> PyDb.Color : ...
     def color (self, *args, **kwargs)-> PyDb.Color :
-      '''color( (TableStyle)arg1, (RowType)arg2) -> Color :
-
-    C++ signature :
-        class AcCmColor color(class PyDbTableStyle {lvalue},enum AcDb::RowType)
-
-color( (TableStyle)arg1, (str)arg2) -> Color :
-
-    C++ signature :
-        class AcCmColor color(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - rowType: PyDb.RowType
+    - cellStyle: str
+    '''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -62353,11 +62327,8 @@ createCellStyle( (TableStyle)arg1, (str)arg2, (str)arg3) -> None :
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def description (self, *args, **kwargs)-> str :
-      '''description( (TableStyle)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > description(class PyDbTableStyle {lvalue})'''
+    def description (self)-> str :
+      '''                             '''
     ...
     def disableUndoRecording (self, disable: bool)-> None :
       '''                             '''
@@ -62386,11 +62357,8 @@ createCellStyle( (TableStyle)arg1, (str)arg2, (str)arg3) -> None :
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def flowDirection (self, *args, **kwargs)-> PyDb.TableFlowDirection :
-      '''flowDirection( (TableStyle)arg1) -> TableFlowDirection :
-
-    C++ signature :
-        enum AcDb::FlowDirection flowDirection(class PyDbTableStyle {lvalue})'''
+    def flowDirection (self)-> PyDb.TableFlowDirection :
+      '''                             '''
     ...
     def format (self, *args, **kwargs)-> str :
       '''format( (TableStyle)arg1) -> str :
@@ -62408,22 +62376,19 @@ format( (TableStyle)arg1, (str)arg2) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > format(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getCellStyles (self, *args, **kwargs)-> list :
-      '''getCellStyles( (TableStyle)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getCellStyles(class PyDbTableStyle {lvalue})'''
+    def getCellStyles (self)-> list :
+      '''                             '''
     ...
+
+    @overload
+    def getDataType (self, rowType: PyDb.RowType)-> tuple : ...
+    @overload
+    def getDataType (self, cellStyle: str)-> tuple : ...
     def getDataType (self, *args, **kwargs)-> tuple :
-      '''getDataType( (TableStyle)arg1, (RowType)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getDataType(class PyDbTableStyle {lvalue},enum AcDb::RowType)
-
-getDataType( (TableStyle)arg1, (str)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getDataType(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - rowType: PyDb.RowType
+    - cellStyle: str
+    '''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -62440,11 +62405,8 @@ getDataType( (TableStyle)arg1, (str)arg2) -> tuple :
     def getHandle (self)-> PyDb.Handle :
       '''                             '''
     ...
-    def getName (self, *args, **kwargs)-> str :
-      '''getName( (TableStyle)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbTableStyle {lvalue})'''
+    def getName (self)-> str :
+      '''                             '''
     ...
     def getTemplate (self, *args, **kwargs)-> PyDb.ObjectId :
       '''getTemplate( (TableStyle)arg1) -> ObjectId :
@@ -62515,11 +62477,8 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     def hasXData (self, appname: str)-> bool :
       '''                             '''
     ...
-    def horzCellMargin (self, *args, **kwargs)-> float :
-      '''horzCellMargin( (TableStyle)arg1) -> float :
-
-    C++ signature :
-        double horzCellMargin(class PyDbTableStyle {lvalue})'''
+    def horzCellMargin (self)-> float :
+      '''                             '''
     ...
     def id (self)-> PyDb.ObjectId :
       '''                             '''
@@ -62539,11 +62498,8 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     def isAnnotative (self)-> PyDb.AnnotativeStates :
       '''                             '''
     ...
-    def isBackgroundColorNone (self, *args, **kwargs)-> bool :
-      '''isBackgroundColorNone( (TableStyle)arg1, (RowType)arg2) -> bool :
-
-    C++ signature :
-        bool isBackgroundColorNone(class PyDbTableStyle {lvalue},enum AcDb::RowType)'''
+    def isBackgroundColorNone (self, rowType: PyDb.RowType)-> bool :
+      '''                             '''
     ...
     def isCancelling (self)-> bool :
       '''                             '''
@@ -62560,11 +62516,8 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     def isErased (self)-> bool :
       '''                             '''
     ...
-    def isHeaderSuppressed (self, *args, **kwargs)-> bool :
-      '''isHeaderSuppressed( (TableStyle)arg1) -> bool :
-
-    C++ signature :
-        bool isHeaderSuppressed(class PyDbTableStyle {lvalue})'''
+    def isHeaderSuppressed (self)-> bool :
+      '''                             '''
     ...
     def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''                             '''
@@ -62605,11 +62558,8 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     def isReallyClosing (self)-> bool :
       '''                             '''
     ...
-    def isTitleSuppressed (self, *args, **kwargs)-> bool :
-      '''isTitleSuppressed( (TableStyle)arg1) -> bool :
-
-    C++ signature :
-        bool isTitleSuppressed(class PyDbTableStyle {lvalue})'''
+    def isTitleSuppressed (self)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self)-> bool :
       '''                             '''
@@ -62632,11 +62582,8 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     C++ signature :
         double margin(class PyDbTableStyle {lvalue},enum AcDb::CellMargin,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def numCellStyles (self, *args, **kwargs)-> int :
-      '''numCellStyles( (TableStyle)arg1) -> int :
-
-    C++ signature :
-        int numCellStyles(class PyDbTableStyle {lvalue})'''
+    def numCellStyles (self)-> int :
+      '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -62692,16 +62639,16 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     def setAcDbObjectIdsInFlux (self)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setAlignment (self, val:  PyDb.CellAlignment, rowType: PyDb.RowType)-> None : ...
+    @overload
+    def setAlignment (self, val:  PyDb.CellAlignment, cellStyle: str)-> None : ...
     def setAlignment (self, *args, **kwargs)-> None :
-      '''setAlignment( (TableStyle)arg1, (CellAlignment)arg2, (RowType)arg3) -> None :
-
-    C++ signature :
-        void setAlignment(class PyDbTableStyle {lvalue},enum AcDb::CellAlignment,enum AcDb::RowType)
-
-setAlignment( (TableStyle)arg1, (CellAlignment)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void setAlignment(class PyDbTableStyle {lvalue},enum AcDb::CellAlignment,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - val:  PyDb.CellAlignment, rowType: PyDb.RowType
+    - val:  PyDb.CellAlignment, cellStyle: str
+    '''
     ...
     def setAnnotative (self, state : PyDb.AnnotativeStates)-> None :
       '''                             '''
@@ -62709,28 +62656,22 @@ setAlignment( (TableStyle)arg1, (CellAlignment)arg2, (str)arg3) -> None :
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
+
+    @overload
+    def setBackgroundColor (self, val:  PyDb.Color, rowType: PyDb.RowType)-> None : ...
+    @overload
+    def setBackgroundColor (self, val:  PyDb.Color, cellStyle: str)-> None : ...
     def setBackgroundColor (self, *args, **kwargs)-> None :
-      '''setBackgroundColor( (TableStyle)arg1, (Color)arg2, (RowType)arg3) -> None :
-
-    C++ signature :
-        void setBackgroundColor(class PyDbTableStyle {lvalue},class AcCmColor,enum AcDb::RowType)
-
-setBackgroundColor( (TableStyle)arg1, (Color)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void setBackgroundColor(class PyDbTableStyle {lvalue},class AcCmColor,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - val:  PyDb.Color, rowType: PyDb.RowType
+    - val:  PyDb.Color, cellStyle: str
+    '''
     ...
-    def setBackgroundColorNone (self, *args, **kwargs)-> None :
-      '''setBackgroundColorNone( (TableStyle)arg1, (bool)arg2, (RowType)arg3) -> None :
-
-    C++ signature :
-        void setBackgroundColorNone(class PyDbTableStyle {lvalue},bool,enum AcDb::RowType)'''
+    def setBackgroundColorNone (self, val: bool, rowType: PyDb.RowType)-> None :
+      '''                             '''
     ...
-    def setBitFlags (self, *args, **kwargs)-> None :
-      '''setBitFlags( (TableStyle)arg1, (SubentType)arg2) -> None :
-
-    C++ signature :
-        void setBitFlags(class PyDbTableStyle {lvalue},unsigned int)'''
+    def setBitFlags (self, flags: int)-> None :
+      '''                             '''
     ...
     def setCellClass (self, *args, **kwargs)-> None :
       '''setCellClass( (TableStyle)arg1, (int)arg2, (str)arg3) -> None :
@@ -62738,16 +62679,16 @@ setBackgroundColor( (TableStyle)arg1, (Color)arg2, (str)arg3) -> None :
     C++ signature :
         void setCellClass(class PyDbTableStyle {lvalue},int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+
+    @overload
+    def setColor (self, val:  PyDb.Color, rowType: PyDb.RowType)-> None : ...
+    @overload
+    def setColor (self, val:  PyDb.Color, cellStyle: str)-> None : ...
     def setColor (self, *args, **kwargs)-> None :
-      '''setColor( (TableStyle)arg1, (Color)arg2, (RowType)arg3) -> None :
-
-    C++ signature :
-        void setColor(class PyDbTableStyle {lvalue},class AcCmColor,enum AcDb::RowType)
-
-setColor( (TableStyle)arg1, (Color)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void setColor(class PyDbTableStyle {lvalue},class AcCmColor,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - val:  PyDb.Color, rowType: PyDb.RowType
+    - val:  PyDb.Color, cellStyle: str
+    '''
     ...
     def setDataType (self, *args, **kwargs)-> None :
       '''setDataType( (TableStyle)arg1, (ValueDataType)arg2, (ValueUnitType)arg3) -> None :
@@ -62765,11 +62706,8 @@ setDataType( (TableStyle)arg1, (ValueDataType)arg2, (ValueUnitType)arg3, (str)ar
     C++ signature :
         void setDataType(class PyDbTableStyle {lvalue},enum AcValue::DataType,enum AcValue::UnitType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setDescription (self, *args, **kwargs)-> None :
-      '''setDescription( (TableStyle)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setDescription(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setDescription (self, val: str)-> None :
+      '''                             '''
     ...
 
     @overload
@@ -62782,11 +62720,8 @@ setDataType( (TableStyle)arg1, (ValueDataType)arg2, (ValueUnitType)arg3, (str)ar
     - propName: str, field: PyDb.Field
     '''
     ...
-    def setFlowDirection (self, *args, **kwargs)-> None :
-      '''setFlowDirection( (TableStyle)arg1, (TableFlowDirection)arg2) -> None :
-
-    C++ signature :
-        void setFlowDirection(class PyDbTableStyle {lvalue},enum AcDb::FlowDirection)'''
+    def setFlowDirection (self, val: PyDb.TableFlowDirection)-> None :
+      '''                             '''
     ...
     def setFormat (self, *args, **kwargs)-> None :
       '''setFormat( (TableStyle)arg1, (str)arg2) -> None :
@@ -62861,11 +62796,8 @@ setGridVisibility( (TableStyle)arg1, (Visibility)arg2, (GridLineType)arg3, (str)
     C++ signature :
         void setGridVisibility(class PyDbTableStyle {lvalue},enum AcDb::Visibility,enum AcDb::GridLineType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setHorzCellMargin (self, *args, **kwargs)-> None :
-      '''setHorzCellMargin( (TableStyle)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setHorzCellMargin(class PyDbTableStyle {lvalue},double)'''
+    def setHorzCellMargin (self, val: float)-> None :
+      '''                             '''
     ...
     def setMargin (self, *args, **kwargs)-> None :
       '''setMargin( (TableStyle)arg1, (CellMargin)arg2, (float)arg3, (str)arg4) -> None :
@@ -62873,11 +62805,8 @@ setGridVisibility( (TableStyle)arg1, (Visibility)arg2, (GridLineType)arg3, (str)
     C++ signature :
         void setMargin(class PyDbTableStyle {lvalue},enum AcDb::CellMargin,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setName (self, *args, **kwargs)-> None :
-      '''setName( (TableStyle)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self, val: str)-> None :
+      '''                             '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -62894,33 +62823,30 @@ setGridVisibility( (TableStyle)arg1, (Visibility)arg2, (GridLineType)arg3, (str)
     C++ signature :
         void setTemplate(class PyDbTableStyle {lvalue},class PyDbObjectId,enum AcDb::MergeCellStyleOption)'''
     ...
+
+    @overload
+    def setTextHeight (self, val: float, rowType: PyDb.RowType)-> None : ...
+    @overload
+    def setTextHeight (self, val: float, cellStyle: str)-> None : ...
     def setTextHeight (self, *args, **kwargs)-> None :
-      '''setTextHeight( (TableStyle)arg1, (float)arg2, (RowType)arg3) -> None :
-
-    C++ signature :
-        void setTextHeight(class PyDbTableStyle {lvalue},double,enum AcDb::RowType)
-
-setTextHeight( (TableStyle)arg1, (float)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void setTextHeight(class PyDbTableStyle {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - val: float, rowType: PyDb.RowType
+    - val: float, cellStyle: str
+    '''
     ...
+
+    @overload
+    def setTextStyle (self, id: PyDb.ObjectId, rowType: PyDb.RowType)-> None : ...
+    @overload
+    def setTextStyle (self, id: PyDb.ObjectId, cellStyle: str)-> None : ...
     def setTextStyle (self, *args, **kwargs)-> None :
-      '''setTextStyle( (TableStyle)arg1, (ObjectId)arg2, (RowType)arg3) -> None :
-
-    C++ signature :
-        void setTextStyle(class PyDbTableStyle {lvalue},class PyDbObjectId,enum AcDb::RowType)
-
-setTextStyle( (TableStyle)arg1, (ObjectId)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void setTextStyle(class PyDbTableStyle {lvalue},class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - id: PyDb.ObjectId, rowType: PyDb.RowType
+    - id: PyDb.ObjectId, cellStyle: str
+    '''
     ...
-    def setVertCellMargin (self, *args, **kwargs)-> None :
-      '''setVertCellMargin( (TableStyle)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setVertCellMargin(class PyDbTableStyle {lvalue},double)'''
+    def setVertCellMargin (self, val: float)-> None :
+      '''                             '''
     ...
     def setXData (self, xdata: list)-> None :
       '''                             '''
@@ -62928,42 +62854,36 @@ setTextStyle( (TableStyle)arg1, (ObjectId)arg2, (str)arg3) -> None :
     def snoop (self,  filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def suppressHeaderRow (self, *args, **kwargs)-> None :
-      '''suppressHeaderRow( (TableStyle)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void suppressHeaderRow(class PyDbTableStyle {lvalue},bool)'''
+    def suppressHeaderRow (self, val: bool)-> None :
+      '''                             '''
     ...
-    def suppressTitleRow (self, *args, **kwargs)-> None :
-      '''suppressTitleRow( (TableStyle)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void suppressTitleRow(class PyDbTableStyle {lvalue},bool)'''
+    def suppressTitleRow (self, val: bool)-> None :
+      '''                             '''
     ...
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
       '''                             '''
     ...
+
+    @overload
+    def textHeight (self, rowType: PyDb.RowType)-> float : ...
+    @overload
+    def textHeight (self, cellStyle: str)-> float : ...
     def textHeight (self, *args, **kwargs)-> float :
-      '''textHeight( (TableStyle)arg1, (RowType)arg2) -> float :
-
-    C++ signature :
-        double textHeight(class PyDbTableStyle {lvalue},enum AcDb::RowType)
-
-textHeight( (TableStyle)arg1, (str)arg2) -> float :
-
-    C++ signature :
-        double textHeight(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - rowType: PyDb.RowType
+    - cellStyle: str
+    '''
     ...
+
+    @overload
+    def textStyle (self, rowType: PyDb.RowType)-> PyDb.ObjectId : ...
+    @overload
+    def textStyle (self, cellStyle: str)-> PyDb.ObjectId : ...
     def textStyle (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''textStyle( (TableStyle)arg1, (RowType)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId textStyle(class PyDbTableStyle {lvalue},enum AcDb::RowType)
-
-textStyle( (TableStyle)arg1, (str)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId textStyle(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+      '''Overloads:
+    - rowType: PyDb.RowType
+    - cellStyle: str
+    '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
       '''                             '''
@@ -62971,11 +62891,8 @@ textStyle( (TableStyle)arg1, (str)arg2) -> ObjectId :
     def upgradeOpen (self)-> None :
       '''                             '''
     ...
-    def vertCellMargin (self, *args, **kwargs)-> float :
-      '''vertCellMargin( (TableStyle)arg1) -> float :
-
-    C++ signature :
-        double vertCellMargin(class PyDbTableStyle {lvalue})'''
+    def vertCellMargin (self)-> float :
+      '''                             '''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
