@@ -15,4 +15,4 @@ pip install pywin32
 
 ****BricsCAD, ZwCAD and GstarCAD****
 BRX, ZRX and GRX libraries are installed in AppData\Local\Programs\PyRx. Use the appload command and navigate to load the files. 
-add to you startup suite
+add to your startup suite
