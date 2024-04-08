@@ -19292,11 +19292,8 @@ class Extents(object):
     def addPoints (self, pts: list[PyGe.Point3d])-> None :
       '''                             '''
     ...
-    def coords (self, *args, **kwargs)-> tuple :
-      '''coords( (Extents)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple coords(class AcDbExtents)'''
+    def coords (self)-> tuple :
+      '''                             '''
     ...
     def expandBy (self, vec: PyGe.Vector3d)-> None :
       '''                             '''
@@ -19341,11 +19338,8 @@ class Extents2d(object):
     def addPoints (self, pts: list[PyGe.Point2d])-> None :
       '''                             '''
     ...
-    def coords (self, *args, **kwargs)-> tuple :
-      '''coords( (Extents2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple coords(class AcDbExtents2d)'''
+    def coords (self)-> tuple :
+      '''                             '''
     ...
     def expandBy (self, vec: PyGe.Vector2d)-> None :
       '''                             '''
@@ -49220,26 +49214,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class Profile3d(PyRx.RxObject):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbEntity)
-
-__init__( (object)arg1, (object)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcDb3dProfile)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
