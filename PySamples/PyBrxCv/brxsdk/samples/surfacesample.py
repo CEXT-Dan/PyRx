@@ -483,9 +483,34 @@ def samp_tinvolumesurface() -> None:
     except Exception as err:
         traceback.print_exception(err)
 
+def samp_tinvolumesurfaceelevation() -> None:
+    try:
+        # get database and select entity
+        db = Db.curDb()
+        esel = Ed.Editor.entSel("\nSelect TIN Surface: ", Cv.CvDbTinSurface.desc())
+        if esel[0] != Ed.PromptStatus.eOk:
+            print("Oops {}: ".format(esel[0])) 
+            return
+        pSurface = Cv.CvDbTinSurface(esel[1], Db.OpenMode.kForRead)
+
+        # get an elevation as float
+        ssResult = Ed.Editor.getDouble("\nEnter an elevation reference level:")
+        if ssResult[0] == Ed.PromptStatus.eNormal : 
+            elev = ssResult[1]
+
+        # do volume calculations
+        eSurface = Cv.CvDbVolumeSurface()
+        eSurface.initialize(pSurface, elev, Cv.VolumeSurfaceType.eTinVolumeToElevation, [])
+        dSurface = Cv.CvDbVolumeSurface()
+        dSurface.initialize(pSurface, elev, Cv.VolumeSurfaceType.eTinVolumeToDepth, [])
+        print("\nElevation volumes calculated: fill volume {}, cut volume {}".format(eSurface.fillVolume(), eSurface.cutVolume()))
+        print("\nDepth volumes calculated: fill volume {}, cut volume {}".format(dSurface.fillVolume(), dSurface.cutVolume()))
+
+    except Exception as err:
+        traceback.print_exception(err)
+
 # ToDo
 #sampTinMerge
-#samp_TinVolumeSurfaceElevation
 #samp_TinVolumeSurfaceBounded
 #sampTinToColorElevation
 #sampTinToColorSlope
