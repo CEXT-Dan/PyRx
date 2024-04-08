@@ -34,12 +34,14 @@ constexpr const wchar_t* PYRXSETTINGS = _T("PYRXSETTINGS");
 constexpr const wchar_t* WXPYTHONPATH = _T("WXPYTHONPATH");
 constexpr const wchar_t* PYTHONINSTALLEDPATH = _T("PYTHONINSTALLEDPATH");
 constexpr const wchar_t* WXPYTHONPATHLIB = _T("Lib\\site-packages\\wx");
+constexpr const wchar_t* PYTHONVENVEXEC = _T("Scripts\\python.exe");
 
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class PyRxLoader : public AcRxArxApp
 {
     std::wstring envToRestoreFrom;
+    inline static int PYRX_LOG = 0;
 
 public:
     PyRxLoader() : AcRxArxApp()
@@ -49,6 +51,14 @@ public:
     virtual AcRx::AppRetCode On_kInitAppMsg(void* pkt)
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
+        wchar_t buffer[8] = { 0 };
+        if (acedGetEnv(_T("PYRX_LOG"), buffer, 12) == RTNORM)
+        {
+            if (_wtoi(buffer) == 1)
+                PYRX_LOG = 1;
+            else
+                PYRX_LOG = 0;
+        }
         PyRxLoader_loader();
         envToRestoreFrom = getPathEnvironmentVariable();
         return (retCode);
@@ -94,31 +104,52 @@ public:
         return L"!ERROR!";
     }
 
-    static auto thisModulePath()
+    static void printlog(const std::wstring& message)
     {
-        std::wstring buffer(MAX_PATH, 0);
-        GetModuleFileName(_hdllInstance, buffer.data(), buffer.size());
-        std::filesystem::path path = buffer.c_str();
-        path.remove_filename();
+        if (PYRX_LOG)
+            acutPrintf(_T("\nLog %ls: "), message.c_str());
+    }
+
+    static const auto thisModulePath()
+    {
+        static std::filesystem::path path;
+        if (path.empty())
+        {
+            std::wstring buffer(MAX_PATH, 0);
+            GetModuleFileName(_hdllInstance, buffer.data(), buffer.size());
+            path = buffer.c_str();
+            path.remove_filename();
+            printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+        }
         std::error_code ec;
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
-    static auto getInstallPath()
+    static const auto getInstallPath()
     {
-        std::wstring buffer(MAX_PATH, 0);
-        GetEnvironmentVariable(_T("localappdata"), buffer.data(), buffer.size());
-        std::filesystem::path path = buffer.c_str();
-        path /= _T("Programs\\PyRx");
+        static std::filesystem::path path;
+        if (path.empty())
+        {
+            std::wstring buffer(MAX_PATH, 0);
+            GetEnvironmentVariable(_T("localappdata"), buffer.data(), buffer.size());
+            path = buffer.c_str();
+            path /= _T("Programs\\PyRx");
+            printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+        }
         std::error_code ec;
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
-    static auto getPythonVenvPath()
+    static const auto getPythonVenvPath()
     {
-        std::wstring buffer(MAX_PATH, 0);
-        GetEnvironmentVariable(_T("VIRTUAL_ENV"), buffer.data(), buffer.size());
-        std::filesystem::path path = buffer.c_str();
+        static std::filesystem::path path;
+        if (path.empty())
+        {
+            std::wstring buffer(MAX_PATH, 0);
+            GetEnvironmentVariable(_T("VIRTUAL_ENV"), buffer.data(), buffer.size());
+            path = buffer.c_str();
+            printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+        }
         std::error_code ec;
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
@@ -156,13 +187,19 @@ public:
         std::filesystem::path path = modulePath / ininame;
         std::error_code ec;
         if (std::filesystem::exists(path, ec))
+        {
+            printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
             return std::tuple(true, path);
+        }
         const auto [installPathFound, installPath] = getInstallPath();
         if (installPathFound)
         {
             path = installPath / ininamebin;
             if (std::filesystem::exists(path, ec))
+            {
+                printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
                 return std::tuple(true, path);
+            }
         }
         acutPrintf(_T("\nCan't find PyRx.INI: "));
         return std::tuple(false, std::filesystem::path{});
@@ -170,6 +207,7 @@ public:
 
     static auto tryFindPythonPath()
     {
+        std::filesystem::path path;
         std::wstring buffer = tolower(getPathEnvironmentVariable());
         std::vector<std::wstring> words;
         splitW(buffer, ';', words);
@@ -177,9 +215,14 @@ public:
         {
             rtrim(word, '\\');
             if (word.ends_with(PYTHONNAME))
-                return std::tuple(true, std::filesystem::path{ word });
+            {
+                const auto path = std::filesystem::path{ word };
+                printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+                return std::tuple(true, path);
+            }
         }
-        return std::tuple(false, std::filesystem::path{});
+        printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+        return std::tuple(false, path);
     }
 
     static void setEnvWithNoIni()
@@ -242,21 +285,30 @@ public:
 
     static void PyRxLoader_loader(void)
     {
-#ifdef PYRXDEBUG
-        const auto [f, p] = getPythonVenvPath();
-        acutPrintf(std::format(_T("\n{}-{}"), f, p.c_str()).c_str());
-#endif
         std::error_code ec;
         const auto oldpath = std::filesystem::current_path(ec);
+        const auto [virtual_env_found, virtual_env_path] = getPythonVenvPath();
         const auto [modulePathPound, modulePath] = thisModulePath();
         const auto [installPathFound, installPath] = getInstallPath();
         const auto [iniPathFound, inipath] = getIniPath();
         std::filesystem::current_path(modulePath, ec);
+
+        acedSetEnv(_T("PYRX_VIRTUAL_ENV"), L"");
+        acedSetEnv(_T("PYRX_PYTHONISOLATED"), L"0");
+
+        if (virtual_env_found)
         {
-            if (iniPathFound == false)
-                setEnvWithNoIni();
-            else
-                setEnvWithIni(inipath);
+            acedSetEnv(_T("PYRX_VIRTUAL_ENV"), (virtual_env_path / PYTHONVENVEXEC).c_str());
+            acedSetEnv(_T("PYRX_PYTHONISOLATED"), L"1");
+            setenvpath(virtual_env_path / WXPYTHONPATHLIB);
+        }
+        else if (iniPathFound)
+        {
+            setEnvWithIni(inipath);
+        }
+        else
+        {
+            setEnvWithNoIni();
         }
         if (auto arxpath = installPath / _T("Bin") / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
         {
