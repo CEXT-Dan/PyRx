@@ -207,22 +207,24 @@ public:
 
     static auto tryFindPythonPath()
     {
-        std::filesystem::path path;
-        std::wstring buffer = tolower(getPathEnvironmentVariable());
-        std::vector<std::wstring> words;
-        splitW(buffer, ';', words);
-        for (auto& word : words)
+        static std::filesystem::path path;
+        if (path.empty())
         {
-            rtrim(word, '\\');
-            if (word.ends_with(PYTHONNAME))
+            std::wstring buffer = tolower(getPathEnvironmentVariable());
+            std::vector<std::wstring> words;
+            splitW(buffer, ';', words);
+            for (auto& word : words)
             {
-                const auto path = std::filesystem::path{ word };
-                printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
-                return std::tuple(true, path);
+                rtrim(word, '\\');
+                if (word.ends_with(PYTHONNAME))
+                {
+                    path = std::filesystem::path{ word };
+                    printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+                    return std::tuple(!path.empty(), path);
+                }
             }
         }
-        printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
-        return std::tuple(false, path);
+        return std::tuple(!path.empty(), path);
     }
 
     static void setEnvWithNoIni()
