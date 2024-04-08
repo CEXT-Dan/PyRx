@@ -81,7 +81,10 @@ static bool initIsolated()
 
     auto [es, venv_executable] = PyRxINI::pythonvenv_path();
     if (es == false)
+    {
+        acutPrintf(_T("\nPYTHONEXECUTABLE failed %ls: "), __FUNCTIONW__);
         return false;
+    }
 
     auto status = PyConfig_SetString(&config, &config.executable, venv_executable.c_str());
     if (PyStatus_Exception(status))
