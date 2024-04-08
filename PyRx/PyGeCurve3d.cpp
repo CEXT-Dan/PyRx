@@ -1088,47 +1088,60 @@ AcGeCompositeCurve3d* PyGeCompositeCurve3d::impObj(const std::source_location& s
 //AcGeCircArc3d wrapper
 void makePyGeEllipArc3dWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- carc: PyGe.CircArc3d,\n"
+        "- cent: PyGe.Point3d, majorAxis: PyGe.Vector3d, minorAxis: PyGe.Vector3d, majorRadius: float,minorRadius: float\n"
+        "- cent: PyGe.Point3d, majorAxis: PyGe.Vector3d, minorAxis: PyGe.Vector3d, majorRadius: float,minorRadius: float, startAngle: float, endAngle: float\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- carc: PyGe.CircArc3d,\n"
+        "- cent: PyGe.Point3d, majorAxis: PyGe.Vector3d, minorAxis: PyGe.Vector3d, majorRadius: float,minorRadius: float\n"
+        "- cent: PyGe.Point3d, majorAxis: PyGe.Vector3d, minorAxis: PyGe.Vector3d, majorRadius: float,minorRadius: float, startAngle: float, endAngle: float\n";
+
+
+    PyDocString DS("EllipArc3d");
     class_<PyGeEllipArc3d, bases<PyGeCurve3d>>("EllipArc3d")
         .def(init<>())
 #if !defined(_BRXTARGET240)
         .def(init<const PyGeCircArc3d&>())
 #endif
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double>())
-        .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double, double, double>())
+        .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double, double, double>(DS.CTOR(ctor)))
         .def("closestPointToPlane", &PyGeEllipArc3d::closestPointToPlane1)
-        .def("closestPointToPlane", &PyGeEllipArc3d::closestPointToPlane2)
+        .def("closestPointToPlane", &PyGeEllipArc3d::closestPointToPlane2, DS.ARGS({ "plane: PyGe.PlanarEnt", "tol: PyGe.Tol=None" }))
         .def("intersectWith", &PyGeEllipArc3d::intersectWith1)
         .def("intersectWith", &PyGeEllipArc3d::intersectWith2)
         .def("intersectWith", &PyGeEllipArc3d::intersectWith3)
-        .def("intersectWith", &PyGeEllipArc3d::intersectWith4)
+        .def("intersectWith", &PyGeEllipArc3d::intersectWith4, DS.ARGS({ "other: PyGe.LinearEnt3d|PyGe.PlanarEnt", "tol: PyGe.Tol=None" }))
         .def("projIntersectWith", &PyGeEllipArc3d::projIntersectWith1)
-        .def("projIntersectWith", &PyGeEllipArc3d::projIntersectWith2)
-        .def("getPlane", &PyGeEllipArc3d::getPlane)
+        .def("projIntersectWith", &PyGeEllipArc3d::projIntersectWith2, DS.ARGS({ "other: PyGe.LinearEnt3d", "projDir: PyGe.Vector3d","tol: PyGe.Tol=None" }))
+        .def("getPlane", &PyGeEllipArc3d::getPlane, DS.ARGS())
         .def("isCircular", &PyGeEllipArc3d::isCircular1)
-        .def("isCircular", &PyGeEllipArc3d::isCircular2)
+        .def("isCircular", &PyGeEllipArc3d::isCircular2, DS.ARGS({ "tol: PyGe.Tol=None" }))
         .def("isInside", &PyGeEllipArc3d::isInside1)
-        .def("isInside", &PyGeEllipArc3d::isInside2)
-        .def("center", &PyGeEllipArc3d::center)
-        .def("minorRadius", &PyGeEllipArc3d::minorRadius)
-        .def("majorRadius", &PyGeEllipArc3d::majorRadius)
-        .def("minorAxis", &PyGeEllipArc3d::minorAxis)
-        .def("majorAxis", &PyGeEllipArc3d::majorAxis)
-        .def("normal", &PyGeEllipArc3d::normal)
-        .def("startAng", &PyGeEllipArc3d::startAng)
-        .def("endAng", &PyGeEllipArc3d::endAng)
-        .def("startPoint", &PyGeEllipArc3d::startPoint)
-        .def("endPoint", &PyGeEllipArc3d::endPoint)
-        .def("setCenter", &PyGeEllipArc3d::setCenter)
-        .def("setMinorRadius", &PyGeEllipArc3d::setMinorRadius)
-        .def("setMajorRadius", &PyGeEllipArc3d::setMajorRadius)
-        .def("setAxes", &PyGeEllipArc3d::setAxes)
-        .def("setAngles", &PyGeEllipArc3d::setAngles)
+        .def("isInside", &PyGeEllipArc3d::isInside2, DS.ARGS({ "pt: PyGe.Point3d","tol: PyGe.Tol=None" }))
+        .def("center", &PyGeEllipArc3d::center, DS.ARGS())
+        .def("minorRadius", &PyGeEllipArc3d::minorRadius, DS.ARGS())
+        .def("majorRadius", &PyGeEllipArc3d::majorRadius, DS.ARGS())
+        .def("minorAxis", &PyGeEllipArc3d::minorAxis, DS.ARGS())
+        .def("majorAxis", &PyGeEllipArc3d::majorAxis, DS.ARGS())
+        .def("normal", &PyGeEllipArc3d::normal, DS.ARGS())
+        .def("startAng", &PyGeEllipArc3d::startAng, DS.ARGS())
+        .def("endAng", &PyGeEllipArc3d::endAng, DS.ARGS())
+        .def("startPoint", &PyGeEllipArc3d::startPoint, DS.ARGS())
+        .def("endPoint", &PyGeEllipArc3d::endPoint, DS.ARGS())
+        .def("setCenter", &PyGeEllipArc3d::setCenter, DS.ARGS({ "pt: PyGe.Point3d" }))
+        .def("setMinorRadius", &PyGeEllipArc3d::setMinorRadius, DS.ARGS({ "val: float" }))
+        .def("setMajorRadius", &PyGeEllipArc3d::setMajorRadius, DS.ARGS({ "val: float" }))
+        .def("setAxes", &PyGeEllipArc3d::setAxes, DS.ARGS({ "majorAxis: PyGe.Vector3d","minorAxis: PyGe.Vector3d" }))
+        .def("setAngles", &PyGeEllipArc3d::setAngles, DS.ARGS({ "startAngle: float","endAngle: float" }))
         .def("set", &PyGeEllipArc3d::set1)
         .def("set", &PyGeEllipArc3d::set2)
-        .def("set", &PyGeEllipArc3d::set3)
-        .def("cast", &PyGeEllipArc3d::cast).staticmethod("cast")
-        .def("copycast", &PyGeEllipArc3d::copycast).staticmethod("copycast")
-        .def("className", &PyGeEllipArc3d::className).staticmethod("className")
+        .def("set", &PyGeEllipArc3d::set3, DS.OVRL(setOverloads))
+        .def("cast", &PyGeEllipArc3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeEllipArc3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeEllipArc3d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -1141,7 +1154,6 @@ PyGeEllipArc3d::PyGeEllipArc3d(AcGeEntity3d* pEnt)
     : PyGeCurve3d(pEnt)
 {
 }
-
 
 #if !defined(_BRXTARGET240)
 PyGeEllipArc3d::PyGeEllipArc3d(const AcGeEllipArc3d& ell)
