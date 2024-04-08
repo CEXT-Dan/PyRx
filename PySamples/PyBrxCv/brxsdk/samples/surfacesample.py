@@ -47,6 +47,24 @@ def samp_tincreate() -> None:
     except Exception as err:
         traceback.print_exception(err)
 
+def samp_tinlistall() -> None:
+    try:
+        # fetch database
+        db = Db.curDb()
+        filter = [(Db.DxfCode.kDxfStart, "BsysCvDbTinSurface")]
+        ssres = Ed.Editor.selectAll(filter)
+        if ssres[0] != Ed.PromptStatus.eOk:
+            print("Oops {}: ".format(ssres[0]))
+            return
+        
+        oIds = ssres[1].objectIds()
+        print("\nThere is {} TIN surfaces in the drawing.".format(len(oIds)))
+        for oId in oIds:
+            print("\nTheir handles are: {}".format(oId))
+
+    except Exception as err:
+        traceback.print_exception(err)
+
 def samp_tinaddbreakline() -> None:
     try:
         # fetch database and entity
@@ -509,11 +527,88 @@ def samp_tinvolumesurfaceelevation() -> None:
     except Exception as err:
         traceback.print_exception(err)
 
+def samp_tinvolumesurfacebounded() -> None:
+    try:
+        # defining offset parameters
+        SURFACE_SIZE = 10.0
+        
+        # defining roofShapedPoints
+        roofShapedPoints = []
+        roofShapedPoints.append(Ge.Point3d(-SURFACE_SIZE, -SURFACE_SIZE, 0))
+        roofShapedPoints.append(Ge.Point3d(0, -SURFACE_SIZE, SURFACE_SIZE))
+        roofShapedPoints.append(Ge.Point3d(SURFACE_SIZE, -SURFACE_SIZE, 0))
+        roofShapedPoints.append(Ge.Point3d(SURFACE_SIZE, SURFACE_SIZE, 0))
+        roofShapedPoints.append(Ge.Point3d(0, SURFACE_SIZE, SURFACE_SIZE))
+        roofShapedPoints.append(Ge.Point3d(-SURFACE_SIZE, SURFACE_SIZE, 0))
+
+        # defining flatPoints
+        flatPoints = []
+        flatPoints.append(Ge.Point3d(-SURFACE_SIZE, -SURFACE_SIZE, SURFACE_SIZE / 2))
+        flatPoints.append(Ge.Point3d(0, -SURFACE_SIZE, SURFACE_SIZE / 2))
+        flatPoints.append(Ge.Point3d(SURFACE_SIZE, -SURFACE_SIZE, SURFACE_SIZE / 2))
+        flatPoints.append(Ge.Point3d(SURFACE_SIZE, SURFACE_SIZE, SURFACE_SIZE / 2))
+        flatPoints.append(Ge.Point3d(0, SURFACE_SIZE, SURFACE_SIZE / 2))
+        flatPoints.append(Ge.Point3d(-SURFACE_SIZE, SURFACE_SIZE, SURFACE_SIZE / 2))
+
+        # open database and add surface object
+        db = Db.curDb()
+        
+        # add initial points to the surface 
+        tSurface = Cv.CvDbTinSurface()
+        tSurface.initialize(
+            Ge.Point3d(-SURFACE_SIZE, -SURFACE_SIZE, 0),
+            Ge.Point3d(SURFACE_SIZE, SURFACE_SIZE, 0),
+            len(roofShapedPoints))
+        successful = tSurface.addPoints(roofShapedPoints)
+
+        # add initial points to the surface 
+        tfSurface = Cv.CvDbTinSurface()
+        tfSurface.initialize(
+            Ge.Point3d(-SURFACE_SIZE, -SURFACE_SIZE, 0),
+            Ge.Point3d(SURFACE_SIZE, SURFACE_SIZE, 0),
+            len(flatPoints))
+        successful = tfSurface.addPoints(flatPoints)
+
+        db.addToModelspace(tSurface)
+        db.addToModelspace(tfSurface)
+
+        # volSurface1 bound the volume calculation to the upper left quarter of the created surface
+        bdrNDBR = []
+        bdrNDBR.append(Ge.Point3d(-SURFACE_SIZE, 0, 0))
+        bdrNDBR.append(Ge.Point3d(0, 0, 0))
+        bdrNDBR.append(Ge.Point3d(0, SURFACE_SIZE, 0))
+        bdrNDBR.append(Ge.Point3d(-SURFACE_SIZE, SURFACE_SIZE, 0))
+        volSurface1 = Cv.CvDbVolumeSurface()
+        volSurface1.initialize(tSurface, tfSurface, bdrNDBR)
+
+        # volSurface2 ound the volume calculation to the right half of the created surface
+        pPolyline = Db.Polyline()
+        pPolyline.addVertexAt(0, Ge.Point2d(0, -SURFACE_SIZE), 0, 0, 0)
+        pPolyline.addVertexAt(1, Ge.Point2d(SURFACE_SIZE, -SURFACE_SIZE), 0, 0, 0)
+        pPolyline.addVertexAt(2, Ge.Point2d(SURFACE_SIZE, SURFACE_SIZE), 0, 0, 0)
+        pPolyline.addVertexAt(3, Ge.Point2d(0, SURFACE_SIZE), 0, 0, 0)
+        pPolyline.setClosed(True)
+        db.addToModelspace(pPolyline)
+        volSurface2 = Cv.CvDbVolumeSurface()
+        volSurface2.initialize(tSurface, 0.0, Cv.VolumeSurfaceType.eTinVolumeToElevation, pPolyline.id(), 0.1)
+
+        print("\nvolSurface1 volumes calculated: fill volume {}, cut volume {}".format(volSurface1.fillVolume(), volSurface1.cutVolume()))
+        print("\nvolSurface2 volumes calculated: fill volume {}, cut volume {}".format(volSurface2.fillVolume(), volSurface2.cutVolume()))
+
+    except Exception as err:
+        traceback.print_exception(err)
+
 # ToDo
 #sampTinMerge
-#samp_TinVolumeSurfaceBounded
+#samp_do_TINListAllHandles
 #sampTinToColorElevation
 #sampTinToColorSlope
 #sampTinJig
 #sampGradingParameters
 #samp_GradingSetRegion
+#generateColorSheme
+##generateMeshes
+##generateFaces
+#do_colorSchemesByElevation
+#do_colorSchemesBySlope
+#do_TINJig
