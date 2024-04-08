@@ -641,7 +641,14 @@ void makePyGeCircArc3dWrapper()
         "- cent: PyGe.Point3d, nrm: PyGe.Vector3d, radius: float\n"
         "- cent: PyGe.Point3d, nrm: PyGe.Vector3d, refVec: PyGe.Vector3d, radius: float, startAngle: float, endAngle: float\n"
         "- startPoint: PyGe.Point3d, pnt: PyGe.Point3d, endPoint: PyGe.Point3d\n";
-      
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- cent: PyGe.Point3d, nrm: PyGe.Vector3d, radius: float\n"
+        "- cent: PyGe.Point3d, nrm: PyGe.Vector3d, refVec: PyGe.Vector3d, radius: float, startAngle: float, endAngle: float\n"
+        "- startPoint: PyGe.Point3d, pnt: PyGe.Point3d, endPoint: PyGe.Point3d\n"
+        "- curve1: PyGe.Curve3d, curve2: PyGe.Curve3d, radius: float\n"
+        "- curve1: PyGe.Curve3d, curve2: PyGe.Curve3d, curve3: PyGe.Curve3d\n";
+
 
     PyDocString DS("CircArc3d");
     class_<PyGeCircArc3d, bases<PyGeCurve3d>>("CircArc3d")
@@ -658,14 +665,14 @@ void makePyGeCircArc3dWrapper()
         .def("intersectWith", &PyGeCircArc3d::intersectWith3)
         .def("intersectWith", &PyGeCircArc3d::intersectWith4)
         .def("intersectWith", &PyGeCircArc3d::intersectWith5)
-        .def("intersectWith", &PyGeCircArc3d::intersectWith6)
+        .def("intersectWith", &PyGeCircArc3d::intersectWith6, DS.ARGS({ "other: PyGe.CircArc3d|PyGe.LinearEnt3d|PyGe.PlanarEnt", "tol: PyGe.Tol=None" }))
         .def("projIntersectWith", &PyGeCircArc3d::projIntersectWith1)
-        .def("projIntersectWith", &PyGeCircArc3d::projIntersectWith2)
+        .def("projIntersectWith", &PyGeCircArc3d::projIntersectWith2, DS.ARGS({ "other: PyGe.LinearEnt3d", "projDir: PyGe.Vector3d","tol: PyGe.Tol=None" }))
         .def("tangent", &PyGeCircArc3d::tangent1)
-        .def("tangent", &PyGeCircArc3d::tangent2)
-        .def("getPlane", &PyGeCircArc3d::getPlane)
+        .def("tangent", &PyGeCircArc3d::tangent2, DS.ARGS({ "pt: PyGe.Point3d","tol: PyGe.Tol=None" }))
+        .def("getPlane", &PyGeCircArc3d::getPlane, DS.ARGS())
         .def("isInside", &PyGeCircArc3d::isInside1)
-        .def("isInside", &PyGeCircArc3d::isInside2)
+        .def("isInside", &PyGeCircArc3d::isInside2, DS.ARGS({ "pt: PyGe.Point3d","tol: PyGe.Tol=None" }))
         .def("center", &PyGeCircArc3d::center, DS.ARGS())
         .def("normal", &PyGeCircArc3d::normal, DS.ARGS())
         .def("refVec", &PyGeCircArc3d::refVec, DS.ARGS())
@@ -682,7 +689,7 @@ void makePyGeCircArc3dWrapper()
         .def("set", &PyGeCircArc3d::set2)
         .def("set", &PyGeCircArc3d::set3)
         .def("set", &PyGeCircArc3d::set4)
-        .def("set", &PyGeCircArc3d::set5)
+        .def("set", &PyGeCircArc3d::set5, DS.OVRL(setOverloads))
         .def("cast", &PyGeCircArc3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeCircArc3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeCircArc3d::className, DS.SARGS()).staticmethod("className")
