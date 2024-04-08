@@ -11,6 +11,7 @@ from pyrx_imp import Cv
 
 from brxsdk.helper import debug
 from brxsdk.helper import helper
+#from pybrxcv.utils import cvdbalignment
 from brxsdk.samples import alignmentsample
 from brxsdk.samples import gradingsample
 from brxsdk.samples import surfacesample 
@@ -141,6 +142,13 @@ def PyRxCmd_samp_tinvolumesurface():
     # still having trouble here
     try:
         surfacesample.samp_tinvolumesurface()
+    except Exception as err:
+        print(err)
+
+def PyRxCmd_samp_tinvolumesurfaceelevation():
+    # still having trouble here
+    try:
+        surfacesample.samp_tinvolumesurfaceelevation()
     except Exception as err:
         print(err)
 
