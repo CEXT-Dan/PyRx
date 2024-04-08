@@ -9,6 +9,6 @@ import PyEd as Ed
 host = Ap.Application.hostAPI()
 
 #settings
-testVerbosity = 0
-logToFile = False
+testVerbosity = 2
+logToFile = True
 logFileName = "tout-{}-{}.{}".format(host, date.today(), 'txt')
