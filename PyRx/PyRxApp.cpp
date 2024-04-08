@@ -123,7 +123,6 @@ static bool initNonIsolated()
 
 bool WxRxApp::Init_wxPython()
 {
-
     PyPreConfig preConfig;
     PyPreConfig_InitPythonConfig(&preConfig);
 
@@ -131,20 +130,25 @@ bool WxRxApp::Init_wxPython()
     auto status = Py_PreInitialize(&preConfig);
     if (PyStatus_Exception(status))
     {
-        acutPrintf(_T("\nPreInitialize failed  %ls: "), __FUNCTIONW__);
+        acutPrintf(_T("\nPreInitialize failed %ls: "), __FUNCTIONW__);
         return false;
     }
-
     const auto [res, isolated] = PyRxINI::pythonIsolated();
     if (res && isolated)
     {
         if (!initIsolated())
+        {
+            acutPrintf(_T("\ninitIsolated failed, trying Py_Initialize  %ls: "), __FUNCTIONW__);
             Py_InitializeEx(0);
+        }
     }
     else
     {
         if (!initNonIsolated())
+        {
+            acutPrintf(_T("\ninitNonIsolated failed, trying Py_Initialize %ls: "), __FUNCTIONW__);
             Py_InitializeEx(0);
+        }
     }
     if (wxPyGetAPIPtr() == NULL || !wxPyCheckForApp(false))
     {

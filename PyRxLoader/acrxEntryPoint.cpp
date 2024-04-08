@@ -41,6 +41,7 @@ constexpr const wchar_t* PYTHONVENVEXEC = _T("Scripts\\python.exe");
 class PyRxLoader : public AcRxArxApp
 {
     std::wstring envToRestoreFrom;
+    inline static std::wstring log_buffer;
     inline static int PYRX_LOG = 0;
 
 public:
@@ -51,6 +52,7 @@ public:
     virtual AcRx::AppRetCode On_kInitAppMsg(void* pkt)
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
+        acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
         wchar_t buffer[8] = { 0 };
         if (acedGetEnv(_T("PYRX_LOG"), buffer, 12) == RTNORM)
         {
@@ -104,10 +106,22 @@ public:
         return L"!ERROR!";
     }
 
-    static void printlog(const std::wstring& message)
+    static void appendLog(const std::wstring& message)
     {
         if (PYRX_LOG)
-            acutPrintf(_T("\nLog %ls: "), message.c_str());
+        {
+            log_buffer.append(message);
+            log_buffer.append(_T("\n"));
+        }
+    }
+
+    static void PyRxOnIdleMsgFn()
+    {
+        if (log_buffer.size() && curDoc() != nullptr)
+        {
+            acutPrintf(log_buffer.c_str());
+            log_buffer.clear();
+        }
     }
 
     static const auto thisModulePath()
@@ -119,7 +133,7 @@ public:
             GetModuleFileName(_hdllInstance, buffer.data(), buffer.size());
             path = buffer.c_str();
             path.remove_filename();
-            printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+            appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
         }
         std::error_code ec;
         return std::tuple(std::filesystem::is_directory(path, ec), path);
@@ -134,7 +148,7 @@ public:
             GetEnvironmentVariable(_T("localappdata"), buffer.data(), buffer.size());
             path = buffer.c_str();
             path /= _T("Programs\\PyRx");
-            printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+            appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
         }
         std::error_code ec;
         return std::tuple(std::filesystem::is_directory(path, ec), path);
@@ -148,7 +162,7 @@ public:
             std::wstring buffer(MAX_PATH, 0);
             GetEnvironmentVariable(_T("VIRTUAL_ENV"), buffer.data(), buffer.size());
             path = buffer.c_str();
-            printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+            appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
         }
         std::error_code ec;
         return std::tuple(std::filesystem::is_directory(path, ec), path);
@@ -188,7 +202,7 @@ public:
         std::error_code ec;
         if (std::filesystem::exists(path, ec))
         {
-            printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+            appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
             return std::tuple(true, path);
         }
         const auto [installPathFound, installPath] = getInstallPath();
@@ -197,7 +211,7 @@ public:
             path = installPath / ininamebin;
             if (std::filesystem::exists(path, ec))
             {
-                printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+                appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
                 return std::tuple(true, path);
             }
         }
@@ -219,7 +233,7 @@ public:
                 if (word.ends_with(PYTHONNAME))
                 {
                     path = std::filesystem::path{ word };
-                    printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+                    appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
                     return std::tuple(!path.empty(), path);
                 }
             }
@@ -246,12 +260,12 @@ public:
             if (pythonPathFound)
             {
                 WritePrivateProfileString(PYRXSETTINGS, PYTHONINSTALLEDPATH, pythonPath.c_str(), inipath.c_str());
-                printlog(std::format(_T("{} {}"), __FUNCTIONW__, pythonPath.c_str()));
+                appendLog(std::format(_T("{} {}"), __FUNCTIONW__, pythonPath.c_str()));
                 setenvpath(pythonPath);
                 return;
             }
         }
-        printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+        appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
         setenvpath(path);
     }
 
@@ -265,12 +279,12 @@ public:
             {
                 std::filesystem::path wxPythonPath = pythonPath / WXPYTHONPATHLIB;
                 WritePrivateProfileString(PYRXSETTINGS, WXPYTHONPATH, wxPythonPath.c_str(), inipath.c_str());
-                printlog(std::format(_T("{} {}"), __FUNCTIONW__, wxPythonPath.c_str()));
+                appendLog(std::format(_T("{} {}"), __FUNCTIONW__, wxPythonPath.c_str()));
                 setenvpath(wxPythonPath);
                 return;
             }
         }
-        printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+        appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
         setenvpath(path);
     }
 
@@ -301,20 +315,23 @@ public:
 
         acedSetEnv(_T("PYRX_VIRTUAL_ENV"), L"");
         acedSetEnv(_T("PYRX_PYTHONISOLATED"), L"0");
-
         if (virtual_env_found)
         {
             acedSetEnv(_T("PYRX_VIRTUAL_ENV"), (virtual_env_path / PYTHONVENVEXEC).c_str());
             acedSetEnv(_T("PYRX_PYTHONISOLATED"), L"1");
             setenvpath(virtual_env_path / WXPYTHONPATHLIB);
+            appendLog(_T("\nLoading PyRx from venv condition"));
+            appendLog((virtual_env_path / WXPYTHONPATHLIB));
         }
         else if (iniPathFound)
         {
             setEnvWithIni(inipath);
+            appendLog(_T("\nLoading PyRx from ini condition"));
         }
         else
         {
             setEnvWithNoIni();
+            appendLog(_T("\nLoading PyRx from no ini condition"));
         }
         if (auto arxpath = installPath / _T("Bin") / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
         {
@@ -327,6 +344,7 @@ public:
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
                 acrxDynamicLinker->loadModule(foundPath, true);
         }
+        appendLog(_T("\nFinished PyRxLoader_loader"));
         std::filesystem::current_path(oldpath, ec);
     }
 };
