@@ -9,11 +9,6 @@ from pyrx_imp import Ed
 from pyrx_imp import Gs
 from pyrx_imp import Cv
 
-# debug
-# def PyRxCmd_pydebug() -> None:
-#     import PyRxDebug
-#     PyRxDebug.startListener()
-
 def cvDbVAlignment_iter(objId):
     try:
         vAlignment = Cv.CvDbVAlignment(objId)
