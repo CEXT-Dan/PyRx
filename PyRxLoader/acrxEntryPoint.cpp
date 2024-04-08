@@ -246,10 +246,12 @@ public:
             if (pythonPathFound)
             {
                 WritePrivateProfileString(PYRXSETTINGS, PYTHONINSTALLEDPATH, pythonPath.c_str(), inipath.c_str());
+                printlog(std::format(_T("{} {}"), __FUNCTIONW__, pythonPath.c_str()));
                 setenvpath(pythonPath);
                 return;
             }
         }
+        printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
         setenvpath(path);
     }
 
@@ -263,10 +265,12 @@ public:
             {
                 std::filesystem::path wxPythonPath = pythonPath / WXPYTHONPATHLIB;
                 WritePrivateProfileString(PYRXSETTINGS, WXPYTHONPATH, wxPythonPath.c_str(), inipath.c_str());
+                printlog(std::format(_T("{} {}"), __FUNCTIONW__, wxPythonPath.c_str()));
                 setenvpath(wxPythonPath);
                 return;
             }
         }
+        printlog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
         setenvpath(path);
     }
 
