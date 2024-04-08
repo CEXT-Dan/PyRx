@@ -1397,10 +1397,11 @@ AcGeEllipArc3d* PyGeEllipArc3d::impObj(const std::source_location& src /*= std::
 //PyGeExternalCurve3d wrapper
 void makePyGeExternalCurve3dWrapper()
 {
+    PyDocString DS("ExternalCurve3d");
     class_<PyGeExternalCurve3d, bases<PyGeCurve3d>>("ExternalCurve3d", boost::python::no_init)
-        .def("cast", &PyGeExternalCurve3d::cast).staticmethod("cast")
-        .def("copycast", &PyGeExternalCurve3d::copycast).staticmethod("copycast")
-        .def("className", &PyGeExternalCurve3d::className).staticmethod("className")
+        .def("cast", &PyGeExternalCurve3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeExternalCurve3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeExternalCurve3d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
