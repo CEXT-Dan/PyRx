@@ -1,3 +1,5 @@
+import traceback
+
 from pyrx_imp import Rx
 from pyrx_imp import Ge
 from pyrx_imp import Gi
@@ -9,30 +11,18 @@ from pyrx_imp import Cv
 
 import pandas as pd
 
+from ..helper import cvdbalignment
+from ..helper import helper
+
 # assembling sample in the style of BRX SDK samples\CsBrxMgdCivil\CsBrxMgdCivil\AlignmentSample.cs
 # only samp_createalignment, samp_reportalignment
 # missing do_CreateAlignmentFromPolyline, do_ReplaceAlignmentElement, do_StationsAndParamRelations, do_StationEquations, do_AlignmentJig
 
-print("added command - samp_createalignment")
-print("added command - samp_reportalignment")
-
-# debug
-def PyRxCmd_pydebug() -> None:
-    import PyRxDebug
-    PyRxDebug.startListener()
-
-# define helper function
-def angle_to(point1, point2):
-    pa = Ge.Point3d(point1[0],point1[1],0)
-    pb = Ge.Point3d(point2[0],point2[1],0)
-    res = (pa-pb).angleTo(Ge.Vector3d.kYAxis,Ge.Vector3d.kZAxis)
-    return res
-
-# define a command
-def PyRxCmd_samp_createalignment():
+def samp_createalignment():
     try:
         # get the working database, database is also a property of Document
-        db = Db.HostApplicationServices().workingDatabase()
+        # opening model for write
+        db = Db.curDb()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
         
         # create a horizontal alignment
@@ -106,10 +96,11 @@ def PyRxCmd_samp_createalignment():
         halignment.setStationEquations(stationEquations)
 
     except Exception as err:
-        print(err)
+        traceback.print_exception(err)
 
-def PyRxCmd_samp_alignmentreport():
+def samp_alignmentreport():
     try:
+        # defining data tuple
         data = {
             "Element": [],
             "Length": [],
@@ -119,9 +110,11 @@ def PyRxCmd_samp_alignmentreport():
             "Start Point": [],
             "End Point": [],
         }
-                
+        
+        # opening database
         db = Db.curDb()
         
+        # select entity
         esel = Ed.Editor.entSel("\nSelect Horizontal Alignment: ", Cv.CvDbHAlignment.desc())
         if esel[0] != Ed.PromptStatus.eOk:
             print("Not a Horizontal Alignment{}: ".format(esel[0])) 
@@ -134,16 +127,17 @@ def PyRxCmd_samp_alignmentreport():
         rawEndStation = stationEquations.getRawStationFromLength(hAlignment.length())
         stopStation = stationEquations.getStation(rawEndStation)
 
-        # looping through alignment elements (only line+scs)
-        for i in range(1, hAlignment.elementCount()+1):
-            element : Cv.CvDbHAlignmentElement = hAlignment.elementAtId(hAlignment.getElementId(i))
+        # looping through alignment elements and analyze (only line+scs)
+        ids = cvdbalignment.cvDbHAlignment_iter(hAlignment.id())
+        for i in range(len(ids)):
+            element : Cv.CvDbHAlignmentElement = hAlignment.elementAtId(ids[i])
             if Cv.HAlignmentElementType.eLine == element.type():
                 line: Cv.CvDbHAlignmentLine = Cv.CvDbHAlignmentLine.cast(element)
                 data["Element"].append("L"+str(i))
                 data["Length"].append(line.length())
                 data["Radius"].append(None)
                 data["A Value"].append(None)
-                data["Direction"].append(angle_to(line.startPoint(), line.endPoint()))
+                data["Direction"].append(helper.angle_to(line.startPoint(), line.endPoint()))
                 data["Start Point"].append(line.startPoint().toTuple())
                 data["End Point"].append(line.endPoint().toTuple())
             elif Cv.HAlignmentElementType.eSpiralCurveSpiral == element.type():
@@ -154,7 +148,7 @@ def PyRxCmd_samp_alignmentreport():
                     data["Length"].append(spiralIn.length())
                     data["Radius"].append("Infinity")
                     data["A Value"].append(spiralIn.paramA())
-                    data["Direction"].append(angle_to(spiralIn.startPoint(), spiralIn.endPoint()))
+                    data["Direction"].append(helper.angle_to(spiralIn.startPoint(), spiralIn.endPoint()))
                     data["Start Point"].append(spiralIn.startPoint().toTuple())
                     data["End Point"].append(spiralIn.endPoint().toTuple())
                 except Exception as err:
@@ -165,7 +159,7 @@ def PyRxCmd_samp_alignmentreport():
                     data["Length"].append(arc.length())
                     data["Radius"].append(arc.radius())
                     data["A Value"].append(None)
-                    data["Direction"].append(angle_to(arc.startPoint(), arc.endPoint()))
+                    data["Direction"].append(helper.angle_to(arc.startPoint(), arc.endPoint()))
                     data["Start Point"].append(arc.startPoint().toTuple())
                     data["End Point"].append(arc.endPoint().toTuple())
                 except Exception as err:
@@ -176,7 +170,7 @@ def PyRxCmd_samp_alignmentreport():
                     data["Length"].append(spiralOut.length())
                     data["Radius"].append("Infinity")
                     data["A Value"].append(spiralOut.paramA())
-                    data["Direction"].append(angle_to(spiralOut.startPoint(), spiralOut.endPoint()))
+                    data["Direction"].append(helper.angle_to(spiralOut.startPoint(), spiralOut.endPoint()))
                     data["Start Point"].append(spiralOut.startPoint().toTuple())
                     data["End Point"].append(spiralOut.endPoint().toTuple())
                 except Exception as err:
@@ -193,7 +187,7 @@ def PyRxCmd_samp_alignmentreport():
                 data["End Point"].append(None)
 
         df = pd.DataFrame(data)
-        print(df)
+        #print(df)
 
         table = Db.Table()
         # add one for the title and header
@@ -235,4 +229,4 @@ def PyRxCmd_samp_alignmentreport():
         model.appendAcDbEntity(table)
 
     except Exception as err:
-        print(err)
+        traceback.print_exception(err)
