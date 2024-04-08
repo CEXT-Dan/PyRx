@@ -114,6 +114,15 @@ public:
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
+    static auto getPythonVenvPath()
+    {
+        std::wstring buffer(MAX_PATH, 0);
+        GetEnvironmentVariable(_T("VIRTUAL_ENV"), buffer.data(), buffer.size());
+        std::filesystem::path path = buffer.c_str();
+        std::error_code ec;
+        return std::tuple(std::filesystem::is_directory(path, ec), path);
+    }
+
     static std::wstring getPathEnvironmentVariable()
     {
         std::wstring buffer(32767, 0);
@@ -233,6 +242,10 @@ public:
 
     static void PyRxLoader_loader(void)
     {
+#ifdef PYRXDEBUG
+        const auto [f, p] = getPythonVenvPath();
+        acutPrintf(std::format(_T("\n{}-{}"), f, p.c_str()).c_str());
+#endif
         std::error_code ec;
         const auto oldpath = std::filesystem::current_path(ec);
         const auto [modulePathPound, modulePath] = thisModulePath();
