@@ -467,13 +467,16 @@ def samp_tinvolumesurface() -> None:
             return
         
         # get surface, clone , offset etc. not working currently
+        CLONED_SURFACE_OFFSET = 10
         pSurface = Cv.CvDbTinSurface(esel[1], Db.OpenMode.kForRead)
-#        cSurface = Cv.CvDbTinSurface()
         cSurface = Cv.CvDbTinSurface.cloneFrom(pSurface)
-#        cSurface.cloneFrom(pSurface)
-        cSurface.raiseSurface(10)
+        cSurface.raiseSurface(CLONED_SURFACE_OFFSET)
         vSurface = Cv.CvDbVolumeSurface()
-        vSurface.initialize(pSurface, cSurface, [Ge.Point3d()])
+        vSurface.initialize(pSurface, cSurface, [])
+        if vSurface.area2d()*CLONED_SURFACE_OFFSET == vSurface.fillVolume():
+            print("\nVolume between the surfaces: {}".format(vSurface.fillVolume()))
+        else:
+            print("\nVolume was wrongly calculated!")
         db.addToModelspace(cSurface)
         db.addToModelspace(vSurface)
 
@@ -482,7 +485,6 @@ def samp_tinvolumesurface() -> None:
 
 # ToDo
 #sampTinMerge
-#samp_TinVolumeSurface
 #samp_TinVolumeSurfaceElevation
 #samp_TinVolumeSurfaceBounded
 #sampTinToColorElevation
