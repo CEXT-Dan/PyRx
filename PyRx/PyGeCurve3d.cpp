@@ -976,18 +976,28 @@ AcGeCircArc3d* PyGeCircArc3d::impObj(const std::source_location& src /*= std::so
 //AcGeCompositeCurve3d
 void makePyGeCompositeCurve3dWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- curveList: list[PyGe.Curve3d]\n"
+        "- curveList: list[PyGe.Curve3d], isOwnerOfCurves: list[int]\n";
+
+    constexpr const std::string_view setCurveListOverloads = "Overloads:\n"
+        "- curveList: list[PyGe.Curve3d]\n"
+        "- curveList: list[PyGe.Curve3d], isOwnerOfCurves: list[int]\n";
+
+    PyDocString DS("CompositeCurve3d");
     class_<PyGeCompositeCurve3d, bases<PyGeCurve3d>>("CompositeCurve3d")
         .def(init<>())
         .def(init<const boost::python::list&>())
-        .def(init<const boost::python::list&, const boost::python::list&>())
-        .def("getCurveList", &PyGeCompositeCurve3d::getCurveList)
+        .def(init<const boost::python::list&, const boost::python::list&>(DS.CTOR(ctor)))
+        .def("getCurveList", &PyGeCompositeCurve3d::getCurveList, DS.ARGS())
         .def("setCurveList", &PyGeCompositeCurve3d::setCurveList1)
-        .def("setCurveList", &PyGeCompositeCurve3d::setCurveList2)
-        .def("globalToLocalParam", &PyGeCompositeCurve3d::globalToLocalParam)
-        .def("localToGlobalParam", &PyGeCompositeCurve3d::localToGlobalParam)
-        .def("cast", &PyGeCompositeCurve3d::cast).staticmethod("cast")
-        .def("copycast", &PyGeCompositeCurve3d::copycast).staticmethod("copycast")
-        .def("className", &PyGeCompositeCurve3d::className).staticmethod("className")
+        .def("setCurveList", &PyGeCompositeCurve3d::setCurveList2, DS.OVRL(setCurveListOverloads))
+        .def("globalToLocalParam", &PyGeCompositeCurve3d::globalToLocalParam, DS.ARGS({ "param: float" }))
+        .def("localToGlobalParam", &PyGeCompositeCurve3d::localToGlobalParam, DS.ARGS({ "param: float","segNum: int" }))
+        .def("cast", &PyGeCompositeCurve3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeCompositeCurve3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeCompositeCurve3d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
