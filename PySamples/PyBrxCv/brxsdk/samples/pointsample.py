@@ -11,16 +11,7 @@ import math
 
 # assembling sample in the style of BRX SDK samples\CsBrxMgdCivil\CsBrxMgdCivil\PointSample.cs
 
-print("added command - samp_pointworkflow")
-print("added command - samp_pointgroupworkflow")
-
-# debug
-def PyRxCmd_pydebug() -> None:
-    import PyRxDebug
-    PyRxDebug.startListener()
-
-# define a command
-def PyRxCmd_samp_pointworkflow():
+def samp_pointworkflow():
     try:
         # get the working database, database is also a property of Document
         db = Db.HostApplicationServices().workingDatabase()
@@ -62,7 +53,7 @@ def PyRxCmd_samp_pointworkflow():
     except Exception as err:
         print(err)
 
-def PyRxCmd_sampe_pointgroupworkflow():
+def samp_pointgroupworkflow():
     try:
         # get the working database, database is also a property of Document
         db = Db.curDb()
