@@ -84,6 +84,12 @@ def PyRxCmd_samp_tincreate():
     except Exception as err:
         print(err)
 
+def PyRxCmd_samp_tinlistall():
+    try:
+        surfacesample.samp_tinlistall()
+    except Exception as err:
+        print(err)
+
 def PyRxCmd_samp_tinlistdata():
     try:
         surfacesample.samp_tinlistdata()
@@ -149,6 +155,13 @@ def PyRxCmd_samp_tinvolumesurfaceelevation():
     # still having trouble here
     try:
         surfacesample.samp_tinvolumesurfaceelevation()
+    except Exception as err:
+        print(err)
+
+def PyRxCmd_samp_tinvolumesurfacebounded():
+    # still having trouble here
+    try:
+        surfacesample.samp_tinvolumesurfacebounded()
     except Exception as err:
         print(err)
 
