@@ -14,28 +14,28 @@ void makePyDbSplineWrapper()
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n"
-        "- idfitPoints list[PyGe.Point3d]\n"
-        "- idfitPoints list[PyGe.Point3d], order: int, fitTolerance: float\n"
-        "- idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d\n"
-        "- idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, order: int, fitTolerance: float\n"
-        "- idfitPoints list[PyGe.Point3d], periodic: bool\n"
-        "- idfitPoints list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float\n"
-        "- idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization\n"
-        "- idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float\n"
-        "- degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights]\n"
-        "- degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights], controlPtTol: float, knotTol: float\n"
-        "- center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatioL float\n"
-        "- center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatioL float, startAngle: float, endAngle: float\n";
+        "- idfitPoints: list[PyGe.Point3d]\n"
+        "- idfitPoints: list[PyGe.Point3d], order: int, fitTolerance: float\n"
+        "- idfitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d\n"
+        "- idfitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, order: int, fitTolerance: float\n"
+        "- idfitPoints: list[PyGe.Point3d], periodic: bool\n"
+        "- idfitPoints: list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float\n"
+        "- idfitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization\n"
+        "- idfitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float\n"
+        "- degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], weights: list[float]\n"
+        "- degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], weights: list[float], controlPtTol: float, knotTol: float\n"
+        "- center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatioL: float\n"
+        "- center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatioL: float, startAngle: float, endAngle: float\n";
 
     constexpr const std::string_view setFitDataKnotOverloads = "Overloads:\n"
-        "- idfitPoints list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization\n"
-        "- idfitPoints list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization, degree: int, fitTolerance: float\n"
-        "- idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization\n"
-        "- idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float\n";
+        "- idfitPoints: list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization\n"
+        "- idfitPoints: list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization, degree: int, fitTolerance: float\n"
+        "- idfitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization\n"
+        "- idfitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float\n";
 
     constexpr const std::string_view setNurbsDataOverloads = "Overloads:\n"
-        "- degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights]\n"
-        "- degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights], controlPtTol: float, knotTol: float\n";
+        "- degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], weights: list[float]\n"
+        "- degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], weights: list[float], controlPtTol: float, knotTol: float\n";
 
     constexpr const std::string_view insertControlPointAtOverloads = "Overloads:\n"
         "- knotParam: int, ctrlPt: PyGe.Point3d\n"
