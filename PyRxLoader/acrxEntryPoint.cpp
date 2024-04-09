@@ -53,10 +53,10 @@ public:
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
-        wchar_t buffer[8] = { 0 };
-        if (acedGetEnv(_T("PYRX_LOG"), buffer, 12) == RTNORM)
+        std::array<wchar_t,8> buffer = { 0 };
+        if (acedGetEnv(_T("PYRX_LOG"), buffer.data(), buffer.size()) == RTNORM)
         {
-            if (_wtoi(buffer) == 1)
+            if (_wtoi(buffer.data()) == 1)
                 PYRX_LOG = 1;
             else
                 PYRX_LOG = 0;
