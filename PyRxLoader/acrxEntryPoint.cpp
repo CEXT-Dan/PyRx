@@ -49,11 +49,14 @@ public:
     {
     }
 
+    //(setenv "PYRX_LOG" "1")
+    //(setenv "PYRX_LOG" "0")
     virtual AcRx::AppRetCode On_kInitAppMsg(void* pkt)
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
+        acrxLockApplication(pkt);
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
-        std::array<wchar_t,8> buffer = { 0 };
+        std::array<wchar_t, 8> buffer = { 0 };
         if (acedGetEnv(_T("PYRX_LOG"), buffer.data(), buffer.size()) == RTNORM)
         {
             if (_wtoi(buffer.data()) == 1)
@@ -119,8 +122,11 @@ public:
     {
         if (log_buffer.size() && curDoc() != nullptr)
         {
-            acutPrintf(log_buffer.c_str());
+            acutPrintf(_T("\n%ls"), log_buffer.c_str());
             log_buffer.clear();
+#ifndef _GRXTARGET
+            acedRemoveOnIdleWinMsg(PyRxOnIdleMsgFn);
+#endif 
         }
     }
 
