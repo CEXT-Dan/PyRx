@@ -341,12 +341,14 @@ public:
         }
         if (auto arxpath = installPath / _T("Bin") / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
         {
+            appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, arxpath.c_str()));
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
                 acrxDynamicLinker->loadModule(foundPath, true);
         }
         else
         {
             arxpath = modulePath / getNameOfModuleToLoad();
+            appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, arxpath.c_str()));
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
                 acrxDynamicLinker->loadModule(foundPath, true);
         }
