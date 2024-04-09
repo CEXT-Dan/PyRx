@@ -86,7 +86,7 @@ public:
     {
     }
 
-    static const TCHAR* getNameOfModuleToLoad()
+    [[nodiscard]] static const TCHAR* getNameOfModuleToLoad()
     {
 #if defined(_ARXTARGET) && _ARXTARGET == 240
         return L"PyRx24.0.arx";
@@ -130,7 +130,7 @@ public:
         }
     }
 
-    static const auto thisModulePath()
+    [[nodiscard]] static const auto thisModulePath()
     {
         static std::filesystem::path path;
         if (path.empty())
@@ -145,7 +145,7 @@ public:
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
-    static const auto getInstallPath()
+    [[nodiscard]] static const auto getInstallPath()
     {
         static std::filesystem::path path;
         if (path.empty())
@@ -160,7 +160,7 @@ public:
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
-    static const auto getPythonVenvPath()
+    [[nodiscard]] static const auto getPythonVenvPath()
     {
         static std::filesystem::path path;
         if (path.empty())
@@ -174,7 +174,7 @@ public:
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
-    static std::wstring getPathEnvironmentVariable()
+    [[nodiscard]] static std::wstring getPathEnvironmentVariable()
     {
         std::wstring buffer(32767, 0);
         GetEnvironmentVariable(PATHENV, buffer.data(), buffer.size());
@@ -182,24 +182,7 @@ public:
         return buffer;
     }
 
-    static bool setenvpath(const std::wstring& pathToAdd)
-    {
-        const std::wstring pathToAddLower = tolower(pathToAdd);
-        std::wstring buffer = tolower(getPathEnvironmentVariable());
-        if (buffer.find(pathToAddLower) == std::string::npos)
-        {
-            buffer.append(_T(";"));
-            buffer.append(pathToAddLower.c_str());
-            if (SetEnvironmentVariable(_T("PATH"), buffer.data()) == 0)
-            {
-                acutPrintf(_T("\nFailed @ SetEnvironmentVariable %ls: "), _T("pathToAdd"));
-                return false;
-            }
-        }
-        return true;
-    }
-
-    static auto getIniPath()
+    [[nodiscard]] static auto getIniPath()
     {
         constexpr const wchar_t* ininame = _T("PyRx.INI");
         constexpr const wchar_t* ininamebin = _T("Bin\\PyRx.INI");
@@ -225,7 +208,7 @@ public:
         return std::tuple(false, std::filesystem::path{});
     }
 
-    static auto tryFindPythonPath()
+    [[nodiscard]] static auto tryFindPythonPath()
     {
         static std::filesystem::path path;
         if (path.empty())
@@ -245,6 +228,38 @@ public:
             }
         }
         return std::tuple(!path.empty(), path);
+    }
+
+    static bool setenvpath(const std::wstring& pathToAdd)
+    {
+        const std::wstring pathToAddLower = tolower(pathToAdd);
+        std::wstring buffer = tolower(getPathEnvironmentVariable());
+        if (buffer.find(pathToAddLower) == std::string::npos)
+        {
+            buffer.append(_T(";"));
+            buffer.append(pathToAddLower.c_str());
+            if (SetEnvironmentVariable(_T("PATH"), buffer.data()) == 0)
+            {
+                acutPrintf(_T("\nFailed @ SetEnvironmentVariable %ls: "), _T("pathToAdd"));
+                return false;
+            }
+        }
+        return true;
+    }
+
+    static void setEnvWithIni(const std::filesystem::path& inipath)
+    {
+        std::wstring pythonInstallPath(MAX_PATH, 0);
+        if (GetPrivateProfileStringW(PYRXSETTINGS, PYTHONINSTALLEDPATH, _T(""), pythonInstallPath.data(), pythonInstallPath.size(), inipath.c_str()) != 0)
+            validateINIPythonInstallPath(inipath, pythonInstallPath);
+        else
+            acutPrintf(_T("\nFailed to read setting %ls: "), PYTHONINSTALLEDPATH);
+
+        std::wstring wxPythonPath(MAX_PATH, 0);
+        if (GetPrivateProfileStringW(PYRXSETTINGS, WXPYTHONPATH, _T(""), wxPythonPath.data(), wxPythonPath.size(), inipath.c_str()) != 0)
+            validateINIwxPythonPath(inipath, wxPythonPath);
+        else
+            acutPrintf(_T("\nFailed to read setting %ls: "), WXPYTHONPATH);
     }
 
     static void setEnvWithNoIni()
@@ -292,21 +307,6 @@ public:
         }
         appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
         setenvpath(path);
-    }
-
-    static void setEnvWithIni(const std::filesystem::path& inipath)
-    {
-        std::wstring pythonInstallPath(MAX_PATH, 0);
-        if (GetPrivateProfileStringW(PYRXSETTINGS, PYTHONINSTALLEDPATH, _T(""), pythonInstallPath.data(), pythonInstallPath.size(), inipath.c_str()) != 0)
-            validateINIPythonInstallPath(inipath, pythonInstallPath);
-        else
-            acutPrintf(_T("\nFailed to read setting %ls: "), PYTHONINSTALLEDPATH);
-
-        std::wstring wxPythonPath(MAX_PATH, 0);
-        if (GetPrivateProfileStringW(PYRXSETTINGS, WXPYTHONPATH, _T(""), wxPythonPath.data(), wxPythonPath.size(), inipath.c_str()) != 0)
-            validateINIwxPythonPath(inipath, wxPythonPath);
-        else
-            acutPrintf(_T("\nFailed to read setting %ls: "), WXPYTHONPATH);
     }
 
     static void PyRxLoader_loader(void)
