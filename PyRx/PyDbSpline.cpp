@@ -9,6 +9,38 @@ using namespace boost::python;
 //AcDbSpline
 void makePyDbSplineWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n"
+        "- idfitPoints list[PyGe.Point3d]\n"
+        "- idfitPoints list[PyGe.Point3d], order: int, fitTolerance: float\n"
+        "- idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d\n"
+        "- idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, order: int, fitTolerance: float\n"
+        "- idfitPoints list[PyGe.Point3d], periodic: bool\n"
+        "- idfitPoints list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float\n"
+        "- idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization\n"
+        "- idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float\n"
+        "- degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights]\n"
+        "- degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights], controlPtTol: float, knotTol: float\n"
+        "- center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatioL float\n"
+        "- center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatioL float, startAngle: float, endAngle: float\n";
+
+    constexpr const std::string_view setFitDataKnotOverloads = "Overloads:\n"
+        "- idfitPoints list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization\n"
+        "- idfitPoints list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization, degree: int, fitTolerance: float\n"
+        "- idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization\n"
+        "- idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float\n";
+
+    constexpr const std::string_view setNurbsDataOverloads = "Overloads:\n"
+        "- degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights]\n"
+        "- degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights], controlPtTol: float, knotTol: float\n";
+
+    constexpr const std::string_view insertControlPointAtOverloads = "Overloads:\n"
+        "- knotParam: int, ctrlPt: PyGe.Point3d\n"
+        "- knotParam: int, ctrlPt: PyGe.Point3d,weight: float\n";
+
     PyDocString DS("Spline");
     class_<PyDbSpline, bases<PyDbCurve>>("Spline")
         .def(init<>())
@@ -28,7 +60,7 @@ void makePyDbSplineWrapper()
         .def(init<int, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, const boost::python::list&, const boost::python::list&, const boost::python::list&>())
         .def(init<int, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, const boost::python::list&, const boost::python::list&, const boost::python::list&, double, double>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double>())
-        .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double, double>())
+        .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double, double>(DS.CTOR(ctor)))
         .def("isNull", &PyDbSpline::isNull, DS.ARGS())
         .def("isRational", &PyDbSpline::isRational, DS.ARGS())
         .def("degree", &PyDbSpline::degree, DS.ARGS())
@@ -52,22 +84,22 @@ void makePyDbSplineWrapper()
         .def("setFitDataKnot", &PyDbSpline::setFitDataKnot1)
         .def("setFitDataKnot", &PyDbSpline::setFitDataKnot2)
         .def("setFitDataKnot", &PyDbSpline::setFitDataKnot3)
-        .def("setFitDataKnot", &PyDbSpline::setFitDataKnot4)
+        .def("setFitDataKnot", &PyDbSpline::setFitDataKnot4, DS.OVRL(setFitDataKnotOverloads))
         .def("purgeFitData", &PyDbSpline::purgeFitData, DS.ARGS())
         .def("updateFitData", &PyDbSpline::updateFitData, DS.ARGS())
         .def("getNurbsData", &PyDbSpline::getNurbsData, DS.ARGS())
         .def("setNurbsData", &PyDbSpline::setNurbsData1)
-        .def("setNurbsData", &PyDbSpline::setNurbsData2)
+        .def("setNurbsData", &PyDbSpline::setNurbsData2, DS.OVRL(setNurbsDataOverloads))
         .def("weightAt", &PyDbSpline::weightAt, DS.ARGS({ "val : int" }))
         .def("insertKnot", &PyDbSpline::insertKnot, DS.ARGS({ "val : float" }))
         .def("getOffsetCurvesGivenPlaneNormal", &PyDbSpline::getOffsetCurvesGivenPlaneNormal)
         .def("toPolyline", &PyDbSpline::toPolyline, DS.ARGS())
         .def("insertControlPointAt", &PyDbSpline::insertControlPointAt1)
-        .def("insertControlPointAt", &PyDbSpline::insertControlPointAt2)
+        .def("insertControlPointAt", &PyDbSpline::insertControlPointAt2, DS.OVRL(insertControlPointAtOverloads))
         .def("removeControlPointAt", &PyDbSpline::removeControlPointAt, DS.ARGS({ "val : int" }))
         .def("type", &PyDbSpline::type, DS.ARGS())
-        .def("setType", &PyDbSpline::setType)
-        .def("rebuild", &PyDbSpline::rebuild)
+        .def("setType", &PyDbSpline::setType, DS.ARGS({ "val: PyDb.SplineType" }))
+        .def("rebuild", &PyDbSpline::rebuild, DS.ARGS({ "degree: int","numPnts: int" }))
         .def("className", &PyDbSpline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbSpline::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbSpline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -527,7 +559,7 @@ void makePyDbHelixWrapper()
     class_<PyDbHelix, bases<PyDbSpline>>("Helix")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
         .def("createHelix", &PyDbHelix::createHelix, DS.ARGS())
         .def("axisPoint", &PyDbHelix::axisPoint, DS.ARGS())
         .def("setAxisPoint", &PyDbHelix::setAxisPoint1)

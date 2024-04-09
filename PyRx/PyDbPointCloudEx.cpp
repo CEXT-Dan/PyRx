@@ -143,7 +143,6 @@ void makePyDbPointCloudClassificationColorRampWrapper()
         ;
 }
 
-
 PyDbPointCloudClassificationColorRamp::PyDbPointCloudClassificationColorRamp()
     : m_pyImp(new AcDbPointCloudClassificationColorRamp())
 {
@@ -168,7 +167,6 @@ bool PyDbPointCloudClassificationColorRamp::visibility(int c) const
 {
     return impObj()->visibility(c);
 }
-
 
 void PyDbPointCloudClassificationColorRamp::setVisibility(int c, bool visibility)
 {
@@ -203,7 +201,6 @@ AcDbPointCloudClassificationColorRamp* PyDbPointCloudClassificationColorRamp::im
     return m_pyImp.get();
 }
 
-
 //-----------------------------------------------------------------------------------
 //PyDbPointCloudColorRamp
 void makePyDbPointCloudColorRampWrapper()
@@ -223,7 +220,6 @@ void makePyDbPointCloudColorRampWrapper()
         .def("className", &PyDbPointCloudColorRamp::className, DS.SARGS()).staticmethod("className")
         ;
 }
-
 
 PyDbPointCloudColorRamp::PyDbPointCloudColorRamp()
     : m_pyImp(new AcDbPointCloudColorRamp())
@@ -254,7 +250,6 @@ bool PyDbPointCloudColorRamp::visibility(int c) const
 {
     return impObj()->visibility(c);
 }
-
 
 void PyDbPointCloudColorRamp::setVisibility(int c, bool visibility)
 {
@@ -288,7 +283,6 @@ AcDbPointCloudColorRamp* PyDbPointCloudColorRamp::impObj(const std::source_locat
         }
     return m_pyImp.get();
 }
-
 
 //-----------------------------------------------------------------------------------
 //PyDbPointCloudColorMap
@@ -504,7 +498,6 @@ AcDbPointCloudColorMap* PyDbPointCloudColorMap::impObj(const std::source_locatio
         }
     return static_cast<AcDbPointCloudColorMap*>(m_pyImp.get());
 }
-
 
 //-----------------------------------------------------------------------------------
 //PyDbPointCloudDefEx
