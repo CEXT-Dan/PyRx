@@ -1344,7 +1344,7 @@ BOOST_PYTHON_MODULE(PyGe)
     makePyGeNurbCurve3dWrapper();
     makePyGePolyline3dWrapper();
 
-    enum_<AcGe::KnotParameterization>("AcGeKnotParameterization")
+    enum_<AcGe::KnotParameterization>("KnotParameterization")
         .value("kChord", AcGe::KnotParameterization::kChord)
         .value("kSqrtChord", AcGe::KnotParameterization::kSqrtChord)
         .value("kUniform", AcGe::KnotParameterization::kUniform)

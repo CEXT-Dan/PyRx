@@ -23,7 +23,7 @@ void makePyDbDatabaseWrapper()
 
     constexpr const std::string_view insertOverloads = "Overloads:\n"
         "- blockId: PyDb.ObjectId, pBlockName: str, db:PyDb.Database, preserveSourceDatabase: bool\n"
-        "- blockId: PyDb.ObjectId, pBlockName: str, ,pDestinationBlockName: str, db:PyDb.Database, preserveSourceDatabase: bool\n"
+        "- blockId: PyDb.ObjectId, pBlockName: str, pDestinationBlockName: str, db:PyDb.Database, preserveSourceDatabase: bool\n"
         "- xform: PyGe.Matrix3d, db: PyDb.Database, preserveSourceDatabase: bool\n";
 
     PyDocString DS("PyDb.Database");
