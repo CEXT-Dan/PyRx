@@ -25775,26 +25775,8 @@ class HatchStyle(object):
     ...
 
 class Helix(Spline):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead)-> None :
+      '''                             '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -26116,16 +26098,16 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def implRefCount (self)-> int :
       '''                             '''
     ...
+
+    @overload
+    def insertControlPointAt (self, knotParam: int, ctrlPt: PyGe.Point3d)-> None : ...
+    @overload
+    def insertControlPointAt (self, knotParam: int, ctrlPt: PyGe.Point3d,weight: float)-> None : ...
     def insertControlPointAt (self, *args, **kwargs)-> None :
-      '''insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void insertControlPointAt(class PyDbSpline {lvalue},double,class AcGePoint3d)
-
-insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> None :
-
-    C++ signature :
-        void insertControlPointAt(class PyDbSpline {lvalue},double,class AcGePoint3d,double)'''
+      '''Overloads:
+    - knotParam: int, ctrlPt: PyGe.Point3d
+    - knotParam: int, ctrlPt: PyGe.Point3d,weight: float
+    '''
     ...
     def insertFitPointAt (self, idx:int, pnt:PyGe.Point3d)-> None :
       '''                             '''
@@ -26282,11 +26264,8 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def rebuild (self, *args, **kwargs)-> None :
-      '''rebuild( (Spline)arg1, (int)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void rebuild(class PyDbSpline {lvalue},int,int)'''
+    def rebuild (self, degree: int, numPnts: int)-> None :
+      '''                             '''
     ...
     def receiveShadows (self)-> bool :
       '''                             '''
@@ -26374,26 +26353,22 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     C++ signature :
         void setFitData(class PyDbSpline {lvalue},class boost::python::list,int,double,class AcGeVector3d,class AcGeVector3d)'''
     ...
+
+    @overload
+    def setFitDataKnot (self, idfitPoints list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization)-> None : ...
+    @overload
+    def setFitDataKnot (self, idfitPoints list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization, degree: int, fitTolerance: float)-> None : ...
+    @overload
+    def setFitDataKnot (self, idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization)-> None : ...
+    @overload
+    def setFitDataKnot (self, idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float)-> None : ...
     def setFitDataKnot (self, *args, **kwargs)-> None :
-      '''setFitDataKnot( (Spline)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (AcGeKnotParameterization)arg5) -> None :
-
-    C++ signature :
-        void setFitDataKnot(class PyDbSpline {lvalue},class boost::python::list,class AcGeVector3d,class AcGeVector3d,enum AcGe::KnotParameterization)
-
-setFitDataKnot( (Spline)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (AcGeKnotParameterization)arg5, (int)arg6, (float)arg7) -> None :
-
-    C++ signature :
-        void setFitDataKnot(class PyDbSpline {lvalue},class boost::python::list,class AcGeVector3d,class AcGeVector3d,enum AcGe::KnotParameterization,int,double)
-
-setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)arg4) -> None :
-
-    C++ signature :
-        void setFitDataKnot(class PyDbSpline {lvalue},class boost::python::list,bool,enum AcGe::KnotParameterization)
-
-setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)arg4, (int)arg5, (float)arg6) -> None :
-
-    C++ signature :
-        void setFitDataKnot(class PyDbSpline {lvalue},class boost::python::list,bool,enum AcGe::KnotParameterization,int,double)'''
+      '''Overloads:
+    - idfitPoints list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization
+    - idfitPoints list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization, degree: int, fitTolerance: float
+    - idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization
+    - idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float
+    '''
     ...
     def setFitPointAt (self, idx:int, pnt:PyGe.Point3d)-> None :
       '''                             '''
@@ -26425,16 +26400,16 @@ setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)
     def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setNurbsData (self, degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights])-> None : ...
+    @overload
+    def setNurbsData (self, degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights], controlPtTol: float, knotTol: float)-> None : ...
     def setNurbsData (self, *args, **kwargs)-> None :
-      '''setNurbsData( (Spline)arg1, (int)arg2, (bool)arg3, (bool)arg4, (bool)arg5, (list)arg6, (list)arg7, (list)arg8) -> None :
-
-    C++ signature :
-        void setNurbsData(class PyDbSpline {lvalue},int,bool,bool,bool,class boost::python::list,class boost::python::list,class boost::python::list)
-
-setNurbsData( (Spline)arg1, (int)arg2, (bool)arg3, (bool)arg4, (bool)arg5, (list)arg6, (list)arg7, (list)arg8, (float)arg9, (float)arg10) -> None :
-
-    C++ signature :
-        void setNurbsData(class PyDbSpline {lvalue},int,bool,bool,bool,class boost::python::list,class boost::python::list,class boost::python::list,double,double)'''
+      '''Overloads:
+    - degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights]
+    - degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights], controlPtTol: float, knotTol: float
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -26476,11 +26451,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTwist (self, val : bool)-> None :
       '''                             '''
     ...
-    def setType (self, *args, **kwargs)-> None :
-      '''setType( (Spline)arg1, (SplineType)arg2) -> None :
-
-    C++ signature :
-        void setType(class PyDbSpline {lvalue},enum SplineType)'''
+    def setType (self, val: PyDb.SplineType)-> None :
+      '''                             '''
     ...
     def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
@@ -56650,101 +56622,58 @@ class SpatialFilter(DbObject):
     ...
 
 class Spline(Curve):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
+    @overload
+    def __init__ (self, idfitPoints list[PyGe.Point3d])-> None : ...
+    @overload
+    def __init__ (self, idfitPoints list[PyGe.Point3d], order: int, fitTolerance: float)-> None : ...
+    @overload
+    def __init__ (self, idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d)-> None : ...
+    @overload
+    def __init__ (self, idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, order: int, fitTolerance: float)-> None : ...
+    @overload
+    def __init__ (self, idfitPoints list[PyGe.Point3d], periodic: bool)-> None : ...
+    @overload
+    def __init__ (self, idfitPoints list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float)-> None : ...
+    @overload
+    def __init__ (self, idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization)-> None : ...
+    @overload
+    def __init__ (self, idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float)-> None : ...
+    @overload
+    def __init__ (self, degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights])-> None : ...
+    @overload
+    def __init__ (self, degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights], controlPtTol: float, knotTol: float)-> None : ...
+    @overload
+    def __init__ (self, center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatioL float)-> None : ...
+    @overload
+    def __init__ (self, center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatioL float, startAngle: float, endAngle: float)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode,bool)
-
-__init__( (object)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list)
-
-__init__( (object)arg1, (list)arg2, (int)arg3, (float)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,int,double)
-
-__init__( (object)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector3d,class AcGeVector3d)
-
-__init__( (object)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (int)arg5, (float)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector3d,class AcGeVector3d,int,double)
-
-__init__( (object)arg1, (list)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,bool)
-
-__init__( (object)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)arg4, (int)arg5, (float)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,bool,enum AcGe::KnotParameterization,int,double)
-
-__init__( (object)arg1, (list)arg2, (AcGeKnotParameterization)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,enum AcGe::KnotParameterization)
-
-__init__( (object)arg1, (list)arg2, (AcGeKnotParameterization)arg3, (int)arg4, (float)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,enum AcGe::KnotParameterization,int,double)
-
-__init__( (object)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (AcGeKnotParameterization)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector3d,class AcGeVector3d,enum AcGe::KnotParameterization)
-
-__init__( (object)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (AcGeKnotParameterization)arg5, (int)arg6, (float)arg7) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector3d,class AcGeVector3d,enum AcGe::KnotParameterization,int,double)
-
-__init__( (object)arg1, (int)arg2, (bool)arg3, (bool)arg4, (bool)arg5, (list)arg6, (list)arg7, (list)arg8) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,int,bool,bool,bool,class boost::python::list,class boost::python::list,class boost::python::list)
-
-__init__( (object)arg1, (int)arg2, (bool)arg3, (bool)arg4, (bool)arg5, (list)arg6, (list)arg7, (list)arg8, (float)arg9, (float)arg10) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,int,bool,bool,bool,class boost::python::list,class boost::python::list,class boost::python::list,double,double)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double)'''
+      '''Overloads:
+    - None: Any
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    - idfitPoints list[PyGe.Point3d]
+    - idfitPoints list[PyGe.Point3d], order: int, fitTolerance: float
+    - idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d
+    - idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, order: int, fitTolerance: float
+    - idfitPoints list[PyGe.Point3d], periodic: bool
+    - idfitPoints list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float
+    - idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization
+    - idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float
+    - degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights]
+    - degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights], controlPtTol: float, knotTol: float
+    - center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatioL float
+    - center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatioL float, startAngle: float, endAngle: float
+    '''
     ...
     def addContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -57048,16 +56977,16 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def implRefCount (self)-> int :
       '''                             '''
     ...
+
+    @overload
+    def insertControlPointAt (self, knotParam: int, ctrlPt: PyGe.Point3d)-> None : ...
+    @overload
+    def insertControlPointAt (self, knotParam: int, ctrlPt: PyGe.Point3d,weight: float)-> None : ...
     def insertControlPointAt (self, *args, **kwargs)-> None :
-      '''insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void insertControlPointAt(class PyDbSpline {lvalue},double,class AcGePoint3d)
-
-insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> None :
-
-    C++ signature :
-        void insertControlPointAt(class PyDbSpline {lvalue},double,class AcGePoint3d,double)'''
+      '''Overloads:
+    - knotParam: int, ctrlPt: PyGe.Point3d
+    - knotParam: int, ctrlPt: PyGe.Point3d,weight: float
+    '''
     ...
     def insertFitPointAt (self, idx:int, pnt:PyGe.Point3d)-> None :
       '''                             '''
@@ -57214,11 +57143,8 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def rebuild (self, *args, **kwargs)-> None :
-      '''rebuild( (Spline)arg1, (int)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void rebuild(class PyDbSpline {lvalue},int,int)'''
+    def rebuild (self, degree: int, numPnts: int)-> None :
+      '''                             '''
     ...
     def receiveShadows (self)-> bool :
       '''                             '''
@@ -57294,26 +57220,22 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     C++ signature :
         void setFitData(class PyDbSpline {lvalue},class boost::python::list,int,double,class AcGeVector3d,class AcGeVector3d)'''
     ...
+
+    @overload
+    def setFitDataKnot (self, idfitPoints list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization)-> None : ...
+    @overload
+    def setFitDataKnot (self, idfitPoints list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization, degree: int, fitTolerance: float)-> None : ...
+    @overload
+    def setFitDataKnot (self, idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization)-> None : ...
+    @overload
+    def setFitDataKnot (self, idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float)-> None : ...
     def setFitDataKnot (self, *args, **kwargs)-> None :
-      '''setFitDataKnot( (Spline)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (AcGeKnotParameterization)arg5) -> None :
-
-    C++ signature :
-        void setFitDataKnot(class PyDbSpline {lvalue},class boost::python::list,class AcGeVector3d,class AcGeVector3d,enum AcGe::KnotParameterization)
-
-setFitDataKnot( (Spline)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (AcGeKnotParameterization)arg5, (int)arg6, (float)arg7) -> None :
-
-    C++ signature :
-        void setFitDataKnot(class PyDbSpline {lvalue},class boost::python::list,class AcGeVector3d,class AcGeVector3d,enum AcGe::KnotParameterization,int,double)
-
-setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)arg4) -> None :
-
-    C++ signature :
-        void setFitDataKnot(class PyDbSpline {lvalue},class boost::python::list,bool,enum AcGe::KnotParameterization)
-
-setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)arg4, (int)arg5, (float)arg6) -> None :
-
-    C++ signature :
-        void setFitDataKnot(class PyDbSpline {lvalue},class boost::python::list,bool,enum AcGe::KnotParameterization,int,double)'''
+      '''Overloads:
+    - idfitPoints list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization
+    - idfitPoints list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization, degree: int, fitTolerance: float
+    - idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization
+    - idfitPoints list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float
+    '''
     ...
     def setFitPointAt (self, idx:int, pnt:PyGe.Point3d)-> None :
       '''                             '''
@@ -57342,16 +57264,16 @@ setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)
     def setMaterial (self, val: str|PyDb.ObjectId, dosubents : bool=True)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setNurbsData (self, degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights])-> None : ...
+    @overload
+    def setNurbsData (self, degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights], controlPtTol: float, knotTol: float)-> None : ...
     def setNurbsData (self, *args, **kwargs)-> None :
-      '''setNurbsData( (Spline)arg1, (int)arg2, (bool)arg3, (bool)arg4, (bool)arg5, (list)arg6, (list)arg7, (list)arg8) -> None :
-
-    C++ signature :
-        void setNurbsData(class PyDbSpline {lvalue},int,bool,bool,bool,class boost::python::list,class boost::python::list,class boost::python::list)
-
-setNurbsData( (Spline)arg1, (int)arg2, (bool)arg3, (bool)arg4, (bool)arg5, (list)arg6, (list)arg7, (list)arg8, (float)arg9, (float)arg10) -> None :
-
-    C++ signature :
-        void setNurbsData(class PyDbSpline {lvalue},int,bool,bool,bool,class boost::python::list,class boost::python::list,class boost::python::list,double,double)'''
+      '''Overloads:
+    - degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights]
+    - degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], knots: list[weights], controlPtTol: float, knotTol: float
+    '''
     ...
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -57378,11 +57300,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self, val: bool)-> None :
       '''                             '''
     ...
-    def setType (self, *args, **kwargs)-> None :
-      '''setType( (Spline)arg1, (SplineType)arg2) -> None :
-
-    C++ signature :
-        void setType(class PyDbSpline {lvalue},enum SplineType)'''
+    def setType (self, val: PyDb.SplineType)-> None :
+      '''                             '''
     ...
     def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
       '''                             '''
