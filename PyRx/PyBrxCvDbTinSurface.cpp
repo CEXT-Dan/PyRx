@@ -348,6 +348,7 @@ void makePyBrxCvDbTinSurfaceWrapper()
         .def("removeDefinitionAt", &PyBrxCvDbTinSurface::removeDefinitionAt, DS.ARGS({ " index: int" }))
         .def("removeAllDefinitions", &PyBrxCvDbTinSurface::removeAllDefinitions, DS.ARGS())
 
+        .def("mergeSurfaces", &PyBrxCvDbTinSurface::mergeSurfaces, DS.SARGS({ "theOne: PyBrxCv.CvDbTinSurface", "theOther: PyBrxCv.CvDbTinSurface" }))
         .def("className", &PyBrxCvDbTinSurface::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbTinSurface::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyBrxCvDbTinSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
