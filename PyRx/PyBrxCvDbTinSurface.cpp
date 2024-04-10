@@ -345,7 +345,7 @@ void makePyBrxCvDbTinSurfaceWrapper()
         .def("definitionAt", &PyBrxCvDbTinSurface::definitionAt, DS.ARGS({ "index : int" }))
         .def("findDefinition", &PyBrxCvDbTinSurface::findDefinition, DS.ARGS({ "id : int" }))
         .def("moveDefinition", &PyBrxCvDbTinSurface::moveDefinition, DS.ARGS({ "_from : int","_to : int" }))
-        .def("removeDefinitionAt", &PyBrxCvDbTinSurface::removeDefinitionAt, DS.ARGS({ " index: int" }))
+        .def("removeDefinitionAt", &PyBrxCvDbTinSurface::removeDefinitionAt, DS.ARGS({ "index: int" }))
         .def("removeAllDefinitions", &PyBrxCvDbTinSurface::removeAllDefinitions, DS.ARGS())
 
         .def("mergeSurfaces", &PyBrxCvDbTinSurface::mergeSurfaces, DS.SARGS({ "theOne: PyBrxCv.CvDbTinSurface", "theOther: PyBrxCv.CvDbTinSurface" }))

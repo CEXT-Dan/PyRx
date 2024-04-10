@@ -7439,7 +7439,7 @@ class CvDbTinSurface(CvDbEntity):
     ...
 
     @staticmethod
-    def mergeSurfaces (theOne : PyBrxCv.CvDbTinSurface,theOther : PyBrxCv.CvDbTinSurface)-> PyBrxCv.CvDbTinSurface :
+    def mergeSurfaces (theOne: PyBrxCv.CvDbTinSurface,theOther: PyBrxCv.CvDbTinSurface)-> PyBrxCv.CvDbTinSurface :
       '''                             '''
     ...
     def minElevation (self, visibleOnly : bool=False)-> float :
@@ -7505,7 +7505,7 @@ class CvDbTinSurface(CvDbEntity):
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeDefinitionAt (self,  index: int)-> bool :
+    def removeDefinitionAt (self, index: int)-> bool :
       '''                             '''
     ...
     def removeField (self, id: str|PyDb.ObjectId)-> None :
@@ -13759,7 +13759,7 @@ class CvDbVolumeSurface(CvDbTinSurface):
     ...
 
     @staticmethod
-    def mergeSurfaces (theOne : PyBrxCv.CvDbTinSurface,theOther : PyBrxCv.CvDbTinSurface)-> PyBrxCv.CvDbTinSurface :
+    def mergeSurfaces (theOne: PyBrxCv.CvDbTinSurface,theOther: PyBrxCv.CvDbTinSurface)-> PyBrxCv.CvDbTinSurface :
       '''                             '''
     ...
     def minElevation (self, visibleOnly : bool=False)-> float :
@@ -13825,7 +13825,7 @@ class CvDbVolumeSurface(CvDbTinSurface):
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
     ...
-    def removeDefinitionAt (self,  index: int)-> bool :
+    def removeDefinitionAt (self, index: int)-> bool :
       '''                             '''
     ...
     def removeField (self, id: str|PyDb.ObjectId)-> None :
