@@ -7437,6 +7437,11 @@ class CvDbTinSurface(CvDbEntity):
     def merge (self, other : PyBrxCv.CvDbTinSurface)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
+    def mergeSurfaces (theOne : PyBrxCv.CvDbTinSurface,theOther : PyBrxCv.CvDbTinSurface)-> PyBrxCv.CvDbTinSurface :
+      '''                             '''
+    ...
     def minElevation (self, visibleOnly : bool=False)-> float :
       '''                             '''
     ...
@@ -13750,6 +13755,11 @@ class CvDbVolumeSurface(CvDbTinSurface):
       '''                             '''
     ...
     def merge (self, other : PyBrxCv.CvDbTinSurface)-> bool :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def mergeSurfaces (theOne : PyBrxCv.CvDbTinSurface,theOther : PyBrxCv.CvDbTinSurface)-> PyBrxCv.CvDbTinSurface :
       '''                             '''
     ...
     def minElevation (self, visibleOnly : bool=False)-> float :
