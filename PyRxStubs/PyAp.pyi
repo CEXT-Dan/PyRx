@@ -61,6 +61,11 @@ class Application(object):
     ...
 
     @staticmethod
+    def getPyRxModulePath ()-> str :
+      '''                             '''
+    ...
+
+    @staticmethod
     def hostAPI ()-> str :
       '''                             '''
     ...
