@@ -48,6 +48,7 @@ void makePyApApplictionWrapper()
         .def("reloadPythonModule", &PyApApplication::reloadPythonModule, DS.SARGS({ "fullpath: str" })).staticmethod("reloadPythonModule")
         .def("getLoadedModules", &PyApApplication::getLoadedModules, DS.SARGS()).staticmethod("getLoadedModules")
         .def("getLoadedModuleNames", &PyApApplication::getLoadedModuleNames, DS.SARGS()).staticmethod("getLoadedModuleNames")
+        .def("getPyRxModulePath", &PyApApplication::getPyRxModulePath, DS.SARGS()).staticmethod("getPyRxModulePath")
         .def("wxApp", &PyApApplication::getwxApp, DS.SARGS()).staticmethod("wxApp")
         .def("hostAPI", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPI")
         .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
@@ -200,6 +201,11 @@ bool PyApApplication::reloadPythonModule(const std::string& fullpath)
     PyAutoLockGIL lock;
     std::filesystem::path fp = utf8_to_wstr(fullpath);
     return ads_reloadPythonModule(fp);
+}
+
+std::string PyApApplication::getPyRxModulePath()
+{
+    return wstr_to_utf8(PyRxApp::modulePath());
 }
 
 boost::python::list PyApApplication::getLoadedModules()

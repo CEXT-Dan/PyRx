@@ -87,6 +87,11 @@ public:
     static const std::filesystem::path& modulePath();
     static void     appendINISettings();
     static void     load_pyrx_onload();
+    static std::filesystem::path cwdAtInit();
+
+   
+
+
     static PyRxApp& instance();
 public:
 
