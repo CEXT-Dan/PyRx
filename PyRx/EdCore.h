@@ -12,6 +12,7 @@ class PySysVar;
 // TODO:
 // acedGetAcadFrame
 // acedGetApplicationFrame();
+// acedConvertEntityToHatch
 
 void makePyUtilWrapper();
 class Util
