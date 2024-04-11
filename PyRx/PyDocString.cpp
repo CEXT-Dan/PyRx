@@ -6,15 +6,16 @@ PyDocString::PyDocString(const std::string& val)
 {
 }
 
-const char* PyDocString::ARGS()
+const char* PyDocString::ARGS(int helpkey /*= -1*/)
 {
     outstr = m_argBegin;
     outstr += "self";
     outstr += m_argEnd;
+    outstr += std::format("{}{}{}", m_docstringBegin, helpkey, m_docstringEnd);
     return outstr.c_str();
 }
 
-const char* PyDocString::ARGS(std::initializer_list<std::string> pyargs)
+const char* PyDocString::ARGS(std::initializer_list<std::string> pyargs, int helpkey /*= -1*/)
 {
     outstr = m_argBegin;
     outstr += "self";
@@ -25,6 +26,7 @@ const char* PyDocString::ARGS(std::initializer_list<std::string> pyargs)
     }
     trim(outstr, ',');
     outstr += m_argEnd;
+    outstr += std::format("{}{}{}", m_docstringBegin, helpkey, m_docstringEnd);
     return outstr.c_str();
 }
 
@@ -33,9 +35,9 @@ const char* PyDocString::CTOR(const std::string_view overloads)
     outstr = m_argBegin;
     outstr += "self";
     outstr += m_argEnd;
-    outstr += m_commentBegin;
+    outstr += m_overloadBegin;
     outstr += overloads;
-    outstr += m_commenEnd;
+    outstr += m_overloadEnd;
     return outstr.c_str();
 }
 
@@ -44,9 +46,9 @@ const char* PyDocString::OVRL(const std::string_view overloads)
     outstr = m_argBegin;
     outstr +=  "self, ";
     outstr += m_argEnd;
-    outstr += m_commentBegin;
+    outstr += m_overloadBegin;
     outstr += overloads;
-    outstr += m_commenEnd;
+    outstr += m_overloadEnd;
     return outstr.c_str();
 }
 
@@ -55,20 +57,21 @@ const char* PyDocString::SOVRL(const std::string_view overloads)
     outstr = m_argBegin;
     outstr += "/";
     outstr += m_argEnd;
-    outstr += m_commentBegin;
+    outstr += m_overloadBegin;
     outstr += overloads;
-    outstr += m_commenEnd;
+    outstr += m_overloadEnd;
     return outstr.c_str();
 }
 
-const char* PyDocString::SARGS()
+const char* PyDocString::SARGS(int val /*= -1*/)
 {
     outstr = m_argBegin;
     outstr += m_argEnd;
+    outstr += std::format("{}{}{}", m_docstringBegin, val, m_docstringEnd);
     return outstr.c_str();
 }
 
-const char* PyDocString::SARGS(std::initializer_list<std::string> pyargs)
+const char* PyDocString::SARGS(std::initializer_list<std::string> pyargs, int helpkey /*= -1*/)
 {
     outstr = m_argBegin;
     for (auto& arg : pyargs)
@@ -77,23 +80,7 @@ const char* PyDocString::SARGS(std::initializer_list<std::string> pyargs)
     }
     trim(outstr, ',');
     outstr += m_argEnd;
+    outstr += std::format("{}{}{}", m_docstringBegin, helpkey, m_docstringEnd);
     return outstr.c_str();
 }
 
-const char* PyDocString::SARGS(std::initializer_list<std::string> pyargs, const std::string& comment)
-{
-    outstr = SARGS(pyargs);
-    outstr += m_commentBegin;
-    outstr += comment;
-    outstr += m_commenEnd;
-    return outstr.c_str();
-}
-
-const char* PyDocString::SARGS(std::initializer_list<std::string> pyargs, const std::string_view comment)
-{
-    outstr = SARGS(pyargs);
-    outstr += m_commentBegin;
-    outstr += comment;
-    outstr += m_commenEnd;
-    return outstr.c_str();
-}

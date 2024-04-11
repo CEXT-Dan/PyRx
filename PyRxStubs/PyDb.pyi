@@ -99,7 +99,7 @@ class AbstractViewTable(SymbolTable):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -131,7 +131,7 @@ class AbstractViewTable(SymbolTable):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAt (self, val: str)-> PyDb.ObjectId :
       '''                             '''
@@ -248,7 +248,7 @@ class AbstractViewTable(SymbolTable):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -304,7 +304,7 @@ class AbstractViewTable(SymbolTable):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -410,7 +410,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -448,7 +448,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def frontClipAtEye (self)-> bool :
       '''                             '''
@@ -601,7 +601,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -762,7 +762,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewDirection (self)-> PyGe.Vector3d :
       '''                             '''
@@ -1029,7 +1029,7 @@ class AlignedDimension(Dimension):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -1097,7 +1097,7 @@ class AlignedDimension(Dimension):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fieldFromMText (self, ref : PyDb.MText)-> None :
       '''                             '''
@@ -1379,7 +1379,7 @@ class AlignedDimension(Dimension):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -1717,7 +1717,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def useDefaultTextPosition (self)-> None :
       '''                             '''
@@ -1975,7 +1975,7 @@ class Arc(Curve):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
 
     @staticmethod
@@ -2035,7 +2035,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
         void extend(class PyDbCurve {lvalue},bool,class AcGePoint3d)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.CircArc3d :
       '''                             '''
@@ -2330,7 +2330,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -2471,7 +2471,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -2643,7 +2643,7 @@ class ArcDimension(Dimension):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -2708,7 +2708,7 @@ class ArcDimension(Dimension):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fieldFromMText (self, ref : PyDb.MText)-> None :
       '''                             '''
@@ -2993,7 +2993,7 @@ class ArcDimension(Dimension):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -3346,7 +3346,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def useDefaultTextPosition (self)-> None :
       '''                             '''
@@ -3508,7 +3508,7 @@ class AttributeDefinition(Text):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -3549,7 +3549,7 @@ class AttributeDefinition(Text):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fieldLength (self)-> int :
       '''                             '''
@@ -3820,7 +3820,7 @@ class AttributeDefinition(Text):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -4012,7 +4012,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def verticalMode (self)-> PyDb.TextHorzMode :
       '''                             '''
@@ -4148,7 +4148,7 @@ class AttributeReference(Text):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -4189,7 +4189,7 @@ class AttributeReference(Text):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fieldLength (self)-> int :
       '''                             '''
@@ -4460,7 +4460,7 @@ class AttributeReference(Text):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -4651,7 +4651,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def verticalMode (self)-> PyDb.TextHorzMode :
       '''                             '''
@@ -4766,7 +4766,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -4808,7 +4808,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -5013,7 +5013,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -5121,7 +5121,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -5230,7 +5230,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -5272,7 +5272,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -5477,7 +5477,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -5585,7 +5585,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -5712,7 +5712,7 @@ class BlockReference(Entity):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -5756,7 +5756,7 @@ class BlockReference(Entity):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def geomExtentsBestFit (self, val : PyGe.Matrix3d=PyGe.Matrix3d.kIdentity)-> PyDb.Extents :
       '''                             '''
@@ -5979,7 +5979,7 @@ class BlockReference(Entity):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -6114,7 +6114,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -6211,7 +6211,7 @@ class BlockTable(SymbolTable):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -6243,7 +6243,7 @@ class BlockTable(SymbolTable):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAt (self, val: str)-> PyDb.ObjectId :
       '''                             '''
@@ -6360,7 +6360,7 @@ class BlockTable(SymbolTable):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -6416,7 +6416,7 @@ class BlockTable(SymbolTable):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -6517,7 +6517,7 @@ class BlockTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -6552,7 +6552,7 @@ class BlockTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getBlockReferenceIds (self, directOnly : bool = True, bForceValidity : bool = False)-> list :
       '''                             '''
@@ -6726,7 +6726,7 @@ class BlockTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -6809,7 +6809,7 @@ class BlockTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -6931,7 +6931,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -6973,7 +6973,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -7178,7 +7178,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -7286,7 +7286,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -7722,7 +7722,7 @@ class Circle(Curve):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
 
     @staticmethod
@@ -7782,7 +7782,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
         void extend(class PyDbCurve {lvalue},bool,class AcGePoint3d)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.CircArc3d :
       '''                             '''
@@ -8074,7 +8074,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -8209,7 +8209,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -8895,7 +8895,7 @@ class Curve(Entity):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
 
     @staticmethod
@@ -8952,7 +8952,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
         void extend(class PyDbCurve {lvalue},bool,class AcGePoint3d)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.Curve3d :
       '''                             '''
@@ -9238,7 +9238,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -9352,7 +9352,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -11253,7 +11253,7 @@ class DbObject(PyGi.Drawable):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -11285,7 +11285,7 @@ class DbObject(PyGi.Drawable):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -11393,7 +11393,7 @@ class DbObject(PyGi.Drawable):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -11446,7 +11446,7 @@ class DbObject(PyGi.Drawable):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -11839,7 +11839,7 @@ class DiametricDimension(Dimension):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -11910,7 +11910,7 @@ class DiametricDimension(Dimension):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def farChordPoint (self)-> PyGe.Point3d :
       '''                             '''
@@ -12189,7 +12189,7 @@ class DiametricDimension(Dimension):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -12524,7 +12524,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def useDefaultTextPosition (self)-> None :
       '''                             '''
@@ -12794,7 +12794,7 @@ class Dictionary(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -12826,7 +12826,7 @@ class Dictionary(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAt (self, val : str)-> PyDb.ObjectId :
       '''                             '''
@@ -12946,7 +12946,7 @@ class Dictionary(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
 
     @overload
@@ -13019,7 +13019,7 @@ class Dictionary(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -13113,7 +13113,7 @@ class DimAssoc(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -13148,7 +13148,7 @@ class DimAssoc(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getDimAssocGeomIds (self)-> list :
       '''                             '''
@@ -13277,7 +13277,7 @@ class DimAssoc(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeAssociativity (self, force : bool=True)-> None :
       '''                             '''
@@ -13395,7 +13395,7 @@ class DimAssoc(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -13560,7 +13560,7 @@ class DimStyleTable(SymbolTable):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -13592,7 +13592,7 @@ class DimStyleTable(SymbolTable):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAt (self, val: str)-> PyDb.ObjectId :
       '''                             '''
@@ -13709,7 +13709,7 @@ class DimStyleTable(SymbolTable):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -13765,7 +13765,7 @@ class DimStyleTable(SymbolTable):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -13866,7 +13866,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -14132,7 +14132,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -14261,7 +14261,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -14554,7 +14554,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -14685,7 +14685,7 @@ class Dimension(Entity):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -14750,7 +14750,7 @@ class Dimension(Entity):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fieldFromMText (self, ref : PyDb.MText)-> None :
       '''                             '''
@@ -15023,7 +15023,7 @@ class Dimension(Entity):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -15343,7 +15343,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def useDefaultTextPosition (self)-> None :
       '''                             '''
@@ -16358,7 +16358,7 @@ class Ellipse(Curve):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
 
     @staticmethod
@@ -16418,7 +16418,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
         void extend(class PyDbCurve {lvalue},bool,class AcGePoint3d)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def get (self)-> tuple :
       '''                             '''
@@ -16731,7 +16731,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -16883,7 +16883,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -17001,7 +17001,7 @@ class Entity(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -17042,7 +17042,7 @@ class Entity(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -17247,7 +17247,7 @@ class Entity(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -17355,7 +17355,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -19455,7 +19455,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def createExtrudedSurface (self, *args, **kwargs)-> PyDb.ExtrudedSurface :
       '''createExtrudedSurface( (Profile3d)arg1, (Vector3d)arg2, (SweepOptions)arg3) -> ExtrudedSurface :
@@ -19521,7 +19521,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,enum AcDbSurface::EdgeExtensionType,bool)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getArea (self, *args, **kwargs)-> float :
       '''getArea( (Surface)arg1) -> float :
@@ -19762,7 +19762,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -19894,7 +19894,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def vIsolineDensity (self, *args, **kwargs)-> int :
       '''vIsolineDensity( (Surface)arg1) -> int :
@@ -20024,7 +20024,7 @@ class Face(Entity):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -20065,7 +20065,7 @@ class Face(Entity):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -20282,7 +20282,7 @@ class Face(Entity):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -20393,7 +20393,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -20508,7 +20508,7 @@ class FaceRecord(Vertex):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -20549,7 +20549,7 @@ class FaceRecord(Vertex):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -20766,7 +20766,7 @@ class FaceRecord(Vertex):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -20877,7 +20877,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -20992,7 +20992,7 @@ class Fcf(Entity):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -21057,7 +21057,7 @@ class Fcf(Entity):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getBoundingPline (self)-> list :
       '''                             '''
@@ -21277,7 +21277,7 @@ class Fcf(Entity):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -21430,7 +21430,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -21536,7 +21536,7 @@ class Field(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -21591,7 +21591,7 @@ class Field(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -21722,7 +21722,7 @@ class Field(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -21790,7 +21790,7 @@ class Field(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -22686,7 +22686,7 @@ class GeoData(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -22727,7 +22727,7 @@ class GeoData(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def geoRSSTag (self)-> str :
       '''                             '''
@@ -22880,7 +22880,7 @@ class GeoData(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -23020,7 +23020,7 @@ class GeoData(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def verticalUnitScale (self)-> float :
       '''                             '''
@@ -23156,7 +23156,7 @@ class GeoMap(RasterImage):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -23197,7 +23197,7 @@ class GeoMap(RasterImage):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fade (self)-> int :
       '''                             '''
@@ -23462,7 +23462,7 @@ class GeoMap(RasterImage):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -23636,7 +23636,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -23737,7 +23737,7 @@ class GeoPositionMarker(Entity):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -23781,7 +23781,7 @@ class GeoPositionMarker(Entity):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def geoPosition (self)-> PyGe.Point3d :
       '''                             '''
@@ -24013,7 +24013,7 @@ class GeoPositionMarker(Entity):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -24163,7 +24163,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -24443,7 +24443,7 @@ class Group(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -24478,7 +24478,7 @@ class Group(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -24616,7 +24616,7 @@ class Group(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def remove (self, id : PyDb.ObjectId|list[PyDb.ObjectId])-> None :
       '''                             '''
@@ -24720,7 +24720,7 @@ class Group(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -25072,7 +25072,7 @@ class Hatch(Entity):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -25128,7 +25128,7 @@ class Hatch(Entity):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getArea (self)-> float :
       '''                             '''
@@ -25435,7 +25435,7 @@ class Hatch(Entity):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeAssocObjIds (self)-> None :
       '''                             '''
@@ -25612,7 +25612,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -25857,7 +25857,7 @@ class Helix(Spline):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
 
     @staticmethod
@@ -25923,7 +25923,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
         void extend(class PyDbCurve {lvalue},bool,class AcGePoint3d)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fitTolerance (self)-> float :
       '''                             '''
@@ -26274,7 +26274,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -26503,7 +26503,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -26761,7 +26761,7 @@ class Image(Entity):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -26802,7 +26802,7 @@ class Image(Entity):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -27007,7 +27007,7 @@ class Image(Entity):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -27115,7 +27115,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -27380,7 +27380,7 @@ class LayerFilter(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -27412,7 +27412,7 @@ class LayerFilter(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAt (self, val : int)-> str :
       '''                             '''
@@ -27532,7 +27532,7 @@ class LayerFilter(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def remove (self, val : str)-> None :
       '''                             '''
@@ -27588,7 +27588,7 @@ class LayerFilter(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -27668,7 +27668,7 @@ class LayerTable(SymbolTable):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -27700,7 +27700,7 @@ class LayerTable(SymbolTable):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAt (self, val: str)-> PyDb.ObjectId :
       '''                             '''
@@ -27817,7 +27817,7 @@ class LayerTable(SymbolTable):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -27873,7 +27873,7 @@ class LayerTable(SymbolTable):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -27964,7 +27964,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -28002,7 +28002,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -28210,7 +28210,7 @@ plotStyleNameId( (LayerTableRecord)arg1, (ObjectId)arg2) -> ObjectId :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeAllOverrides (self, *args, **kwargs)-> None :
       '''removeAllOverrides( (LayerTableRecord)arg1) -> None :
@@ -28427,7 +28427,7 @@ transparency( (LayerTableRecord)arg1, (ObjectId)arg2) -> Transparency :
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -28513,7 +28513,7 @@ class Layout(PlotSettings):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -28548,7 +28548,7 @@ class Layout(PlotSettings):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getBlockTableRecordId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -28749,7 +28749,7 @@ class Layout(PlotSettings):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -28882,7 +28882,7 @@ class Layout(PlotSettings):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def useStandardScale (self)-> bool :
       '''                             '''
@@ -29202,7 +29202,7 @@ class Leader(Curve):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
 
     @staticmethod
@@ -29301,7 +29301,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
         void extend(class PyDbCurve {lvalue},bool,class AcGePoint3d)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def firstVertex (self)-> PyGe.Point3d :
       '''                             '''
@@ -29614,7 +29614,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -29791,7 +29791,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def vertexAt (self, val: int)-> PyGe.Point3d :
       '''                             '''
@@ -29909,7 +29909,7 @@ class Line(Curve):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
 
     @staticmethod
@@ -29969,7 +29969,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
         void extend(class PyDbCurve {lvalue},bool,class AcGePoint3d)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.LineSeg3d :
       '''                             '''
@@ -30261,7 +30261,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -30393,7 +30393,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -30553,7 +30553,7 @@ class LineAngularDimension2(Dimension):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -30621,7 +30621,7 @@ class LineAngularDimension2(Dimension):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fieldFromMText (self, ref : PyDb.MText)-> None :
       '''                             '''
@@ -30894,7 +30894,7 @@ class LineAngularDimension2(Dimension):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -31232,7 +31232,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def useDefaultTextPosition (self)-> None :
       '''                             '''
@@ -31436,7 +31436,7 @@ class LinetypeTable(SymbolTable):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -31468,7 +31468,7 @@ class LinetypeTable(SymbolTable):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAt (self, val: str)-> PyDb.ObjectId :
       '''                             '''
@@ -31585,7 +31585,7 @@ class LinetypeTable(SymbolTable):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -31641,7 +31641,7 @@ class LinetypeTable(SymbolTable):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -31721,7 +31721,7 @@ class LinetypeTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def dashLengthAt (self, *args, **kwargs)-> float :
       '''dashLengthAt( (LinetypeTableRecord)arg1, (int)arg2) -> float :
@@ -31759,7 +31759,7 @@ class LinetypeTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -31891,7 +31891,7 @@ class LinetypeTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -32073,7 +32073,7 @@ class LinetypeTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -32189,7 +32189,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def createExtrudedSurface (self, *args, **kwargs)-> PyDb.ExtrudedSurface :
       '''createExtrudedSurface( (Profile3d)arg1, (Vector3d)arg2, (SweepOptions)arg3) -> ExtrudedSurface :
@@ -32255,7 +32255,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,enum AcDbSurface::EdgeExtensionType,bool)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getArea (self, *args, **kwargs)-> float :
       '''getArea( (Surface)arg1) -> float :
@@ -32496,7 +32496,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -32628,7 +32628,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def vIsolineDensity (self, *args, **kwargs)-> int :
       '''vIsolineDensity( (Surface)arg1) -> int :
@@ -32767,7 +32767,7 @@ class MInsertBlock(BlockReference):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -32811,7 +32811,7 @@ class MInsertBlock(BlockReference):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def geomExtentsBestFit (self, val : PyGe.Matrix3d=PyGe.Matrix3d.kIdentity)-> PyDb.Extents :
       '''                             '''
@@ -33034,7 +33034,7 @@ class MInsertBlock(BlockReference):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -33187,7 +33187,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -33395,7 +33395,7 @@ connectionPoint( (MLeader)arg1, (Vector3d)arg2, (MLeaderTextAttachmentDirection)
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -33473,7 +33473,7 @@ connectionPoint( (MLeader)arg1, (Vector3d)arg2, (MLeaderTextAttachmentDirection)
         bool extendLeaderToText(class PyDbMLeader {lvalue})'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getArrowSize (self, *args, **kwargs)-> float :
       '''getArrowSize( (MLeader)arg1, (int)arg2) -> float :
@@ -33921,7 +33921,7 @@ moveMLeader( (MLeader)arg1, (Vector3d)arg2, (MLeaderMoveType)arg3, (bool)arg4) -
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -34402,7 +34402,7 @@ textAttachmentType( (MLeader)arg1, (MLeaderLeaderDirectionType)arg2) -> MLeaderT
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -34827,7 +34827,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -34931,7 +34931,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
         bool extendLeaderToText(class PyDbMLeaderStyle {lvalue})'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def firstSegmentAngleConstraint (self, *args, **kwargs)-> PyDb.MLeaderSegmentAngleType :
       '''firstSegmentAngleConstraint( (MLeaderStyle)arg1) -> MLeaderSegmentAngleType :
@@ -35105,7 +35105,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -35476,7 +35476,7 @@ setDrawLeaderOrderType( (MLeaderStyle)arg1, (DrawLeaderOrderType)arg2) -> None :
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -35706,7 +35706,7 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def createLoopsFromBoundaries (self, *args, **kwargs)-> list :
       '''createLoopsFromBoundaries( (MPolygon)arg1, (object)arg2, (bool)arg3, (float)arg4) -> list :
@@ -35765,7 +35765,7 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getArea (self)-> float :
       '''                             '''
@@ -36057,7 +36057,7 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -36228,7 +36228,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -36370,7 +36370,7 @@ class MText(Entity):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -36417,7 +36417,7 @@ class MText(Entity):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def flowDirection (self)-> PyDb.MTextFlowDirection :
       '''                             '''
@@ -36682,7 +36682,7 @@ class MText(Entity):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -36892,7 +36892,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def useBackgroundColorOn (self)-> bool :
       '''                             '''
@@ -37242,7 +37242,7 @@ class Mline(Entity):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -37286,7 +37286,7 @@ class Mline(Entity):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
 
     @overload
@@ -37523,7 +37523,7 @@ class Mline(Entity):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -37667,7 +37667,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def vertexAt (self, val : int)-> PyGe.Point3d :
       '''                             '''
@@ -37803,7 +37803,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -37866,7 +37866,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fillColor (self, *args, **kwargs)-> PyDb.Color :
       '''fillColor( (MlineStyle)arg1) -> Color :
@@ -38010,7 +38010,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -38194,7 +38194,7 @@ set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -38310,7 +38310,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def createExtrudedSurface (self, *args, **kwargs)-> PyDb.ExtrudedSurface :
       '''createExtrudedSurface( (Profile3d)arg1, (Vector3d)arg2, (SweepOptions)arg3) -> ExtrudedSurface :
@@ -38376,7 +38376,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,enum AcDbSurface::EdgeExtensionType,bool)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getArea (self, *args, **kwargs)-> float :
       '''getArea( (Surface)arg1) -> float :
@@ -38617,7 +38617,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -38749,7 +38749,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def vIsolineDensity (self, *args, **kwargs)-> int :
       '''vIsolineDensity( (Surface)arg1) -> int :
@@ -39187,7 +39187,7 @@ class OrdinateDimension(Dimension):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -39255,7 +39255,7 @@ class OrdinateDimension(Dimension):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fieldFromMText (self, ref : PyDb.MText)-> None :
       '''                             '''
@@ -39540,7 +39540,7 @@ class OrdinateDimension(Dimension):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -39875,7 +39875,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def useDefaultTextPosition (self)-> None :
       '''                             '''
@@ -40320,7 +40320,7 @@ class PdfDefinition(UnderlayDefinition):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -40357,7 +40357,7 @@ class PdfDefinition(UnderlayDefinition):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getActiveFileName (self)-> str :
       '''                             '''
@@ -40480,7 +40480,7 @@ class PdfDefinition(UnderlayDefinition):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -40542,7 +40542,7 @@ class PdfDefinition(UnderlayDefinition):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -40653,7 +40653,7 @@ class PdfReference(UnderlayReference):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -40697,7 +40697,7 @@ class PdfReference(UnderlayReference):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fade (self)-> int :
       '''                             '''
@@ -40956,7 +40956,7 @@ class PdfReference(UnderlayReference):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -41127,7 +41127,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -41266,7 +41266,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def createExtrudedSurface (self, *args, **kwargs)-> PyDb.ExtrudedSurface :
       '''createExtrudedSurface( (Profile3d)arg1, (Vector3d)arg2, (SweepOptions)arg3) -> ExtrudedSurface :
@@ -41332,7 +41332,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,enum AcDbSurface::EdgeExtensionType,bool)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getArea (self, *args, **kwargs)-> float :
       '''getArea( (Surface)arg1) -> float :
@@ -41573,7 +41573,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -41705,7 +41705,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def vIsolineDensity (self, *args, **kwargs)-> int :
       '''vIsolineDensity( (Surface)arg1) -> int :
@@ -41848,7 +41848,7 @@ class PlotSettings(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -41883,7 +41883,7 @@ class PlotSettings(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getCanonicalMediaName (self)-> str :
       '''                             '''
@@ -42060,7 +42060,7 @@ class PlotSettings(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -42178,7 +42178,7 @@ class PlotSettings(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def useStandardScale (self)-> bool :
       '''                             '''
@@ -42493,7 +42493,7 @@ class Point(Entity):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -42537,7 +42537,7 @@ class Point(Entity):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -42748,7 +42748,7 @@ class Point(Entity):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -42871,7 +42871,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -43034,7 +43034,7 @@ class Point3AngularDimension(Dimension):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -43102,7 +43102,7 @@ class Point3AngularDimension(Dimension):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fieldFromMText (self, ref : PyDb.MText)-> None :
       '''                             '''
@@ -43375,7 +43375,7 @@ class Point3AngularDimension(Dimension):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -43710,7 +43710,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def useDefaultTextPosition (self)-> None :
       '''                             '''
@@ -43892,7 +43892,7 @@ class PointCloudColorMap(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -43954,7 +43954,7 @@ class PointCloudColorMap(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getClassificationColorSchemeInUse (self, *args, **kwargs)-> list :
       '''getClassificationColorSchemeInUse( (PointCloudColorMap)arg1) -> list :
@@ -44091,7 +44091,7 @@ class PointCloudColorMap(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -44174,7 +44174,7 @@ class PointCloudColorMap(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -44450,7 +44450,7 @@ class PointCloudDefEx(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
 
     @staticmethod
@@ -44499,7 +44499,7 @@ class PointCloudDefEx(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def extents (self)-> PyDb.Extents :
       '''                             '''
@@ -44633,7 +44633,7 @@ class PointCloudDefEx(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -44707,7 +44707,7 @@ class PointCloudDefEx(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -44848,7 +44848,7 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -44901,7 +44901,7 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def geolocate (self)-> bool :
       '''                             '''
@@ -45217,7 +45217,7 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -45521,7 +45521,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -45817,7 +45817,7 @@ class PolyFaceMeshVertex(Vertex):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -45858,7 +45858,7 @@ class PolyFaceMeshVertex(Vertex):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -46066,7 +46066,7 @@ class PolyFaceMeshVertex(Vertex):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -46177,7 +46177,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -46292,7 +46292,7 @@ class PolygonMeshVertex(Vertex):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -46333,7 +46333,7 @@ class PolygonMeshVertex(Vertex):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -46541,7 +46541,7 @@ class PolygonMeshVertex(Vertex):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -46652,7 +46652,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def vertexType (self)-> object :
       '''                             '''
@@ -46776,7 +46776,7 @@ class Polyline(Curve):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
 
     @staticmethod
@@ -46836,7 +46836,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
         void extend(class PyDbCurve {lvalue},bool,class AcGePoint3d)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.CompositeCurve3d :
       '''                             '''
@@ -47185,7 +47185,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -47347,7 +47347,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -47482,7 +47482,7 @@ class Polyline2d(Curve):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
 
     @staticmethod
@@ -47548,7 +47548,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
         void extend(class PyDbCurve {lvalue},bool,class AcGePoint3d)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.Curve3d :
       '''                             '''
@@ -47872,7 +47872,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -48036,7 +48036,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def vertexIds (self)-> list :
       '''                             '''
@@ -48171,7 +48171,7 @@ class Polyline3d(Curve):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
 
     @staticmethod
@@ -48228,7 +48228,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
         void extend(class PyDbCurve {lvalue},bool,class AcGePoint3d)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.Curve3d :
       '''                             '''
@@ -48543,7 +48543,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -48677,7 +48677,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def vertexIds (self)-> list :
       '''                             '''
@@ -48795,7 +48795,7 @@ class Polyline3dVertex(Vertex):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -48836,7 +48836,7 @@ class Polyline3dVertex(Vertex):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -49044,7 +49044,7 @@ class Polyline3dVertex(Vertex):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -49155,7 +49155,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def vertexType (self)-> object :
       '''                             '''
@@ -49381,7 +49381,7 @@ class RadialDimension(Dimension):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -49452,7 +49452,7 @@ class RadialDimension(Dimension):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fieldFromMText (self, ref : PyDb.MText)-> None :
       '''                             '''
@@ -49728,7 +49728,7 @@ class RadialDimension(Dimension):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -50063,7 +50063,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def useDefaultTextPosition (self)-> None :
       '''                             '''
@@ -50232,7 +50232,7 @@ class RadialDimensionLarge(Dimension):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -50303,7 +50303,7 @@ class RadialDimensionLarge(Dimension):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fieldFromMText (self, ref : PyDb.MText)-> None :
       '''                             '''
@@ -50585,7 +50585,7 @@ class RadialDimensionLarge(Dimension):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -50935,7 +50935,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def useDefaultTextPosition (self)-> None :
       '''                             '''
@@ -51051,7 +51051,7 @@ class RasterImage(Image):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -51092,7 +51092,7 @@ class RasterImage(Image):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fade (self)-> int :
       '''                             '''
@@ -51348,7 +51348,7 @@ class RasterImage(Image):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -51510,7 +51510,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -51596,7 +51596,7 @@ class RasterImageDef(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
 
     @staticmethod
@@ -51639,7 +51639,7 @@ class RasterImageDef(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fileType (self)-> str :
       '''                             '''
@@ -51764,7 +51764,7 @@ class RasterImageDef(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -51855,7 +51855,7 @@ class RasterImageDef(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -51932,7 +51932,7 @@ class RasterImageDefReactor(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -51964,7 +51964,7 @@ class RasterImageDefReactor(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -52072,7 +52072,7 @@ class RasterImageDefReactor(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -52130,7 +52130,7 @@ class RasterImageDefReactor(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -52210,7 +52210,7 @@ class RegAppTable(SymbolTable):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -52242,7 +52242,7 @@ class RegAppTable(SymbolTable):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAt (self, val: str)-> PyDb.ObjectId :
       '''                             '''
@@ -52359,7 +52359,7 @@ class RegAppTable(SymbolTable):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -52415,7 +52415,7 @@ class RegAppTable(SymbolTable):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -52492,7 +52492,7 @@ class RegAppTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -52524,7 +52524,7 @@ class RegAppTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -52647,7 +52647,7 @@ class RegAppTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -52703,7 +52703,7 @@ class RegAppTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -52798,7 +52798,7 @@ class Region(Entity):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
 
     @staticmethod
@@ -52844,7 +52844,7 @@ class Region(Entity):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -53052,7 +53052,7 @@ class Region(Entity):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -53160,7 +53160,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -53445,7 +53445,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def createExtrudedSurface (self, *args, **kwargs)-> PyDb.ExtrudedSurface :
       '''createExtrudedSurface( (Profile3d)arg1, (Vector3d)arg2, (SweepOptions)arg3) -> ExtrudedSurface :
@@ -53511,7 +53511,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,enum AcDbSurface::EdgeExtensionType,bool)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getArea (self, *args, **kwargs)-> float :
       '''getArea( (Surface)arg1) -> float :
@@ -53752,7 +53752,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -53884,7 +53884,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def vIsolineDensity (self, *args, **kwargs)-> int :
       '''vIsolineDensity( (Surface)arg1) -> int :
@@ -54064,7 +54064,7 @@ class RotatedDimension(Dimension):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -54132,7 +54132,7 @@ class RotatedDimension(Dimension):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fieldFromMText (self, ref : PyDb.MText)-> None :
       '''                             '''
@@ -54414,7 +54414,7 @@ class RotatedDimension(Dimension):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -54758,7 +54758,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def useDefaultTextPosition (self)-> None :
       '''                             '''
@@ -54948,7 +54948,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -54990,7 +54990,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -55195,7 +55195,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -55303,7 +55303,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -55648,7 +55648,7 @@ class Solid3d(Entity):
         void createBox(class PyDb3dSolid {lvalue},double,double,double)'''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def createExtrudedSolid (self, *args, **kwargs)-> None :
       '''createExtrudedSolid( (Solid3d)arg1, (Entity)arg2, (Vector3d)arg3, (SweepOptions)arg4) -> None :
@@ -55775,7 +55775,7 @@ createSweptSolid( (Solid3d)arg1, (Entity)arg2, (SubentId)arg3, (Entity)arg4, (Sw
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def extrude (self, *args, **kwargs)-> None :
       '''extrude( (Solid3d)arg1, (Region)arg2, (float)arg3) -> None :
@@ -56103,7 +56103,7 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
         bool recordHistory(class PyDb3dSolid {lvalue})'''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -56282,7 +56282,7 @@ stlOut( (Solid3d)arg1, (str)arg2, (bool)arg3, (float)arg4) -> None :
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def usesGraphicsCache (self, *args, **kwargs)-> bool :
       '''usesGraphicsCache( (Solid3d)arg1) -> bool :
@@ -56371,7 +56371,7 @@ class SpatialFilter(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -56403,7 +56403,7 @@ class SpatialFilter(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getClipSpaceToWCSMatrix (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -56535,7 +56535,7 @@ class SpatialFilter(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -56597,7 +56597,7 @@ class SpatialFilter(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -56742,7 +56742,7 @@ class Spline(Curve):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
 
     @staticmethod
@@ -56805,7 +56805,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
         void extend(class PyDbCurve {lvalue},bool,class AcGePoint3d)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fitTolerance (self)-> float :
       '''                             '''
@@ -57153,7 +57153,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -57331,7 +57331,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -57707,7 +57707,7 @@ convertToSurface( (SubDMesh)arg1, (bool)arg2, (bool)arg3) -> Surface :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -57748,7 +57748,7 @@ convertToSurface( (SubDMesh)arg1, (bool)arg2, (bool)arg3) -> Surface :
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def extrudeConnectedFaces (self, *args, **kwargs)-> None :
       '''extrudeConnectedFaces( (SubDMesh)arg1, (list)arg2, (float)arg3, (Vector3d)arg4, (float)arg5) -> None :
@@ -58089,7 +58089,7 @@ getVertexAt( (SubDMesh)arg1, (SubentId)arg2) -> Point3d :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -58320,7 +58320,7 @@ subdRefine( (SubDMesh)arg1, (list)arg2) -> None :
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -58524,7 +58524,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def createExtrudedSurface (self, *args, **kwargs)-> PyDb.ExtrudedSurface :
       '''createExtrudedSurface( (Profile3d)arg1, (Vector3d)arg2, (SweepOptions)arg3) -> ExtrudedSurface :
@@ -58590,7 +58590,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,enum AcDbSurface::EdgeExtensionType,bool)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getArea (self, *args, **kwargs)-> float :
       '''getArea( (Surface)arg1) -> float :
@@ -58831,7 +58831,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -58963,7 +58963,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def vIsolineDensity (self, *args, **kwargs)-> int :
       '''vIsolineDensity( (Surface)arg1) -> int :
@@ -59394,7 +59394,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def createExtrudedSurface (self, *args, **kwargs)-> PyDb.ExtrudedSurface :
       '''createExtrudedSurface( (Profile3d)arg1, (Vector3d)arg2, (SweepOptions)arg3) -> ExtrudedSurface :
@@ -59460,7 +59460,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,enum AcDbSurface::EdgeExtensionType,bool)'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getArea (self, *args, **kwargs)-> float :
       '''getArea( (Surface)arg1) -> float :
@@ -59701,7 +59701,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -59833,7 +59833,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def vIsolineDensity (self, *args, **kwargs)-> int :
       '''vIsolineDensity( (Surface)arg1) -> int :
@@ -60059,7 +60059,7 @@ class SymbolTable(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -60092,7 +60092,7 @@ class SymbolTable(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAt (self, val: str)-> PyDb.ObjectId :
       '''                             '''
@@ -60209,7 +60209,7 @@ class SymbolTable(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -60265,7 +60265,7 @@ class SymbolTable(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -60342,7 +60342,7 @@ class SymbolTableRecord(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -60374,7 +60374,7 @@ class SymbolTableRecord(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -60497,7 +60497,7 @@ class SymbolTableRecord(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -60553,7 +60553,7 @@ class SymbolTableRecord(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -60818,7 +60818,7 @@ class Table(BlockReference):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
 
     @overload
@@ -60905,7 +60905,7 @@ class Table(BlockReference):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
 
     @overload
@@ -61360,7 +61360,7 @@ class Table(BlockReference):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeAllOverrides (self, row: int, col: int)-> None :
       '''                             '''
@@ -61934,7 +61934,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def vertCellMargin (self)-> float :
       '''                             '''
@@ -62191,7 +62191,7 @@ class TableStyle(DbObject):
     '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -62232,7 +62232,7 @@ class TableStyle(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def flowDirection (self)-> PyDb.TableFlowDirection :
       '''                             '''
@@ -62449,7 +62449,7 @@ class TableStyle(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -62700,7 +62700,7 @@ class TableStyle(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def vertCellMargin (self)-> float :
       '''                             '''
@@ -62830,7 +62830,7 @@ class Text(Entity):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -62871,7 +62871,7 @@ class Text(Entity):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getBoundingPoints (self)-> list :
       '''                             '''
@@ -63115,7 +63115,7 @@ class Text(Entity):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -63274,7 +63274,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def verticalMode (self)-> PyDb.TextHorzMode :
       '''                             '''
@@ -63442,7 +63442,7 @@ class TextStyleTable(SymbolTable):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -63474,7 +63474,7 @@ class TextStyleTable(SymbolTable):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAt (self, val: str)-> PyDb.ObjectId :
       '''                             '''
@@ -63591,7 +63591,7 @@ class TextStyleTable(SymbolTable):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -63647,7 +63647,7 @@ class TextStyleTable(SymbolTable):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -63727,7 +63727,7 @@ class TextStyleTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -63759,7 +63759,7 @@ class TextStyleTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fileName (self)-> str :
       '''                             '''
@@ -63903,7 +63903,7 @@ class TextStyleTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -63998,7 +63998,7 @@ class TextStyleTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -64530,7 +64530,7 @@ class UCSTable(SymbolTable):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -64562,7 +64562,7 @@ class UCSTable(SymbolTable):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAt (self, val: str)-> PyDb.ObjectId :
       '''                             '''
@@ -64679,7 +64679,7 @@ class UCSTable(SymbolTable):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -64735,7 +64735,7 @@ class UCSTable(SymbolTable):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -64812,7 +64812,7 @@ class UCSTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -64844,7 +64844,7 @@ class UCSTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -64970,7 +64970,7 @@ class UCSTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -65041,7 +65041,7 @@ class UCSTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -65124,7 +65124,7 @@ class UnderlayDefinition(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -65161,7 +65161,7 @@ class UnderlayDefinition(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getActiveFileName (self)-> str :
       '''                             '''
@@ -65284,7 +65284,7 @@ class UnderlayDefinition(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -65346,7 +65346,7 @@ class UnderlayDefinition(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -65477,7 +65477,7 @@ class UnderlayReference(Entity):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -65521,7 +65521,7 @@ class UnderlayReference(Entity):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fade (self)-> int :
       '''                             '''
@@ -65780,7 +65780,7 @@ class UnderlayReference(Entity):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -65951,7 +65951,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -66332,7 +66332,7 @@ class Vertex(Entity):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -66373,7 +66373,7 @@ class Vertex(Entity):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -66578,7 +66578,7 @@ class Vertex(Entity):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -66686,7 +66686,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -66804,7 +66804,7 @@ class Vertex2d(Vertex):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -66848,7 +66848,7 @@ class Vertex2d(Vertex):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getCompoundObjectTransform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -67062,7 +67062,7 @@ class Vertex2d(Vertex):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -67197,7 +67197,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def useTangent (self)-> None :
       '''                             '''
@@ -67309,7 +67309,7 @@ class ViewTable(AbstractViewTable):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -67341,7 +67341,7 @@ class ViewTable(AbstractViewTable):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAt (self, val: str)-> PyDb.ObjectId :
       '''                             '''
@@ -67458,7 +67458,7 @@ class ViewTable(AbstractViewTable):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -67514,7 +67514,7 @@ class ViewTable(AbstractViewTable):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -67636,7 +67636,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -67677,7 +67677,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def frontClipAtEye (self)-> bool :
       '''                             '''
@@ -67854,7 +67854,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -68051,7 +68051,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewDirection (self)-> PyGe.Vector3d :
       '''                             '''
@@ -68185,7 +68185,7 @@ class Viewport(Entity):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def customScale (self)-> float :
       '''                             '''
@@ -68241,7 +68241,7 @@ class Viewport(Entity):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def freezeLayersInViewport (self, ids : list[PyDb.ObjectId])-> None :
       '''                             '''
@@ -68578,7 +68578,7 @@ class Viewport(Entity):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -69008,7 +69008,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewCenter (self)-> PyGe.Point2d :
       '''                             '''
@@ -69109,7 +69109,7 @@ class ViewportTable(AbstractViewTable):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -69141,7 +69141,7 @@ class ViewportTable(AbstractViewTable):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getAt (self, val: str)-> PyDb.ObjectId :
       '''                             '''
@@ -69258,7 +69258,7 @@ class ViewportTable(AbstractViewTable):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -69314,7 +69314,7 @@ class ViewportTable(AbstractViewTable):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -69433,7 +69433,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -69471,7 +69471,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fastZoomsEnabled (self)-> bool :
       '''                             '''
@@ -69683,7 +69683,7 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -69939,7 +69939,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def upperRightCorner (self)-> PyGe.Point2d :
       '''                             '''
@@ -70135,7 +70135,7 @@ class Wipeout(RasterImage):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -70176,7 +70176,7 @@ class Wipeout(RasterImage):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def fade (self)-> int :
       '''                             '''
@@ -70435,7 +70435,7 @@ class Wipeout(RasterImage):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -70600,7 +70600,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -70683,7 +70683,7 @@ class Xrecord(DbObject):
       '''                             '''
     ...
     def createExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -70715,7 +70715,7 @@ class Xrecord(DbObject):
       '''                             '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
     ...
     def getField (self, prop: str='TEXT')-> PyDb.ObjectId :
       '''                             '''
@@ -70832,7 +70832,7 @@ class Xrecord(DbObject):
       '''                             '''
     ...
     def releaseExtensionDictionary (self)-> None :
-      '''                             '''
+      '''Removes the object's extension dictionary (that is, removes the object as the owner of the dictionary object) if it exists and is empty. Once removed, this function calls the dictionary's erase() method. Any reactors attached to the extension dictionary receive normal notification appropriate to an open for write, erase, close sequence.Returns Acad::eOk if successful.If the dictionary is not empty, then this function fails and returns Acad::eContainerNotEmpty.'''
     ...
     def removeContext (self, obj : PyDb.ObjectContext)-> None :
       '''                             '''
@@ -70894,7 +70894,7 @@ class Xrecord(DbObject):
       '''                             '''
     ...
     def upgradeOpen (self)-> None :
-      '''                             '''
+      '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
