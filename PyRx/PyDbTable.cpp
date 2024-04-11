@@ -263,7 +263,7 @@ void makePyDbTableWrapper()
 
     constexpr const std::string_view setFieldIdOverloads = "Overloads:\n"
         "- row: int, col: int,id: PyDb.ObjectId\n"
-        "- row: int, col: int, content: int,id: PyDb.ObjectId, nFlag: CellOption\n";
+        "- row: int, col: int, content: int,id: PyDb.ObjectId, nFlag: PyDb.CellOption\n";
 
     constexpr const std::string_view isAutoScaleOverloads = "Overloads:\n"
         "- row: int, col: int\n"

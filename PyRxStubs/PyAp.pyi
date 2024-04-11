@@ -765,10 +765,10 @@ class DocManager(PyRx.RxObject):
       '''                             '''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
-      '''                             '''
+      '''Function usage:This function is intended to allow classes to provide a means to compare class objects much the way strcmp() compares character strings.The object pointed to by other is compared with this object. The result of the comparison is returned.The possible AcRx::Ordering types are:AcRx::kLessThanAcRx::kEqualAcRx::kGreaterThanAcRx::kNotOrderableThe AcRx::kNotOrderable type is there because C++ classes often cannot support object value comparison.Function implementation in derived classes:There are no restrictions or expectations on how this function is implemented. Each class will have its own requirements for comparison.Default implementation:Simply returns AcRx::kNotOrderable since many C++ classes cannot support object value comparison.'''
     ...
     def copyFrom (self, other: PyRx.RxObject)-> None :
-      '''                             '''
+      '''Function usage:Copies the contents of other into the messaged object, whenever feasible. Function implementation in derived classes:If implemented, this function needs to be able to read the data in the object pointed to by other and copy any or all data as appropriate into this object. There is no requirement that the object pointed to by other and this object be of the same class, but that is the generally assumed condition.Default implementation: Because this function must be overridden to have any meaning, a fatal error will be caused when calling the default implementation. '''
     ...
     def curDocument (self)-> PyAp.Document :
       '''                             '''
@@ -779,7 +779,7 @@ class DocManager(PyRx.RxObject):
 
     @staticmethod
     def desc ()-> PyRx.RxClass :
-      '''                             '''
+      '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
     ...
     def disableDocumentActivation (self)-> None :
       '''                             '''
@@ -809,7 +809,7 @@ class DocManager(PyRx.RxObject):
       '''                             '''
     ...
     def isA (self)-> PyRx.RxClass :
-      '''                             '''
+      '''Function usage:For each class registered with ObjectARX, the implementation of this function is to return a pointer to the AcRxClass object for the class of the object in which this method is called. For classes not registered with ObjectARX, this method has no meaning.Function implementation in derived classes:This function is overridden in all derived classes. The AcRx macros declare and define this function, so that the override is taken care of as part of using the macros. The implementation of this function is simply to return ::desc(). For example. the implementation for AcDbLine would be:return AcDbLine::desc();Default implementation for AcRxObject:  { return AcRxObject::desc(); }'''
     ...
     def isApplicationContext (self)-> bool :
       '''                             '''
@@ -818,7 +818,7 @@ class DocManager(PyRx.RxObject):
       '''                             '''
     ...
     def isKindOf (self, rhs: PyRx.RxClass)-> bool :
-      '''                             '''
+      '''Returns true if "this" object is of a member of either the class represented by aClass, or a class derived from aClass. '''
     ...
     def isNullObj (self)-> bool :
       '''                             '''
@@ -845,7 +845,7 @@ class DocManager(PyRx.RxObject):
       '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
-      '''                             '''
+      '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
     def sendModelessInterrupt (self, doc: PyAp.Document)-> None :
       '''                             '''
@@ -927,10 +927,10 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
-      '''                             '''
+      '''Function usage:This function is intended to allow classes to provide a means to compare class objects much the way strcmp() compares character strings.The object pointed to by other is compared with this object. The result of the comparison is returned.The possible AcRx::Ordering types are:AcRx::kLessThanAcRx::kEqualAcRx::kGreaterThanAcRx::kNotOrderableThe AcRx::kNotOrderable type is there because C++ classes often cannot support object value comparison.Function implementation in derived classes:There are no restrictions or expectations on how this function is implemented. Each class will have its own requirements for comparison.Default implementation:Simply returns AcRx::kNotOrderable since many C++ classes cannot support object value comparison.'''
     ...
     def copyFrom (self, other: PyRx.RxObject)-> None :
-      '''                             '''
+      '''Function usage:Copies the contents of other into the messaged object, whenever feasible. Function implementation in derived classes:If implemented, this function needs to be able to read the data in the object pointed to by other and copy any or all data as appropriate into this object. There is no requirement that the object pointed to by other and this object be of the same class, but that is the generally assumed condition.Default implementation: Because this function must be overridden to have any meaning, a fatal error will be caused when calling the default implementation. '''
     ...
     def database (self)-> PyDb.Database :
       '''                             '''
@@ -938,7 +938,7 @@ This class cannot be instantiated from Python'''
 
     @staticmethod
     def desc ()-> PyRx.RxClass :
-      '''                             '''
+      '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
     ...
     def dispose (self)-> None :
       '''                             '''
@@ -979,13 +979,13 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def isA (self)-> PyRx.RxClass :
-      '''                             '''
+      '''Function usage:For each class registered with ObjectARX, the implementation of this function is to return a pointer to the AcRxClass object for the class of the object in which this method is called. For classes not registered with ObjectARX, this method has no meaning.Function implementation in derived classes:This function is overridden in all derived classes. The AcRx macros declare and define this function, so that the override is taken care of as part of using the macros. The implementation of this function is simply to return ::desc(). For example. the implementation for AcDbLine would be:return AcDbLine::desc();Default implementation for AcRxObject:  { return AcRxObject::desc(); }'''
     ...
     def isCommandInputInactive (self)-> bool :
       '''                             '''
     ...
     def isKindOf (self, rhs: PyRx.RxClass)-> bool :
-      '''                             '''
+      '''Returns true if "this" object is of a member of either the class represented by aClass, or a class derived from aClass. '''
     ...
     def isNullObj (self)-> bool :
       '''                             '''
@@ -1009,7 +1009,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
-      '''                             '''
+      '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
     def setDocTitle (self, title : str)-> None :
       '''                             '''
@@ -1057,10 +1057,10 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
-      '''                             '''
+      '''Function usage:This function is intended to allow classes to provide a means to compare class objects much the way strcmp() compares character strings.The object pointed to by other is compared with this object. The result of the comparison is returned.The possible AcRx::Ordering types are:AcRx::kLessThanAcRx::kEqualAcRx::kGreaterThanAcRx::kNotOrderableThe AcRx::kNotOrderable type is there because C++ classes often cannot support object value comparison.Function implementation in derived classes:There are no restrictions or expectations on how this function is implemented. Each class will have its own requirements for comparison.Default implementation:Simply returns AcRx::kNotOrderable since many C++ classes cannot support object value comparison.'''
     ...
     def copyFrom (self, other: PyRx.RxObject)-> None :
-      '''                             '''
+      '''Function usage:Copies the contents of other into the messaged object, whenever feasible. Function implementation in derived classes:If implemented, this function needs to be able to read the data in the object pointed to by other and copy any or all data as appropriate into this object. There is no requirement that the object pointed to by other and this object be of the same class, but that is the generally assumed condition.Default implementation: Because this function must be overridden to have any meaning, a fatal error will be caused when calling the default implementation. '''
     ...
 
     @staticmethod
@@ -1089,13 +1089,13 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
     def isA (self)-> PyRx.RxClass :
-      '''                             '''
+      '''Function usage:For each class registered with ObjectARX, the implementation of this function is to return a pointer to the AcRxClass object for the class of the object in which this method is called. For classes not registered with ObjectARX, this method has no meaning.Function implementation in derived classes:This function is overridden in all derived classes. The AcRx macros declare and define this function, so that the override is taken care of as part of using the macros. The implementation of this function is simply to return ::desc(). For example. the implementation for AcDbLine would be:return AcDbLine::desc();Default implementation for AcRxObject:  { return AcRxObject::desc(); }'''
     ...
     def isIdFilter (self)-> bool :
       '''                             '''
     ...
     def isKindOf (self, rhs: PyRx.RxClass)-> bool :
-      '''                             '''
+      '''Returns true if "this" object is of a member of either the class represented by aClass, or a class derived from aClass. '''
     ...
     def isNullObj (self)-> bool :
       '''                             '''
@@ -1113,7 +1113,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
-      '''                             '''
+      '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
     def removeNested (self, val : PyLy.LayerFilter)-> None :
       '''                             '''
@@ -1202,10 +1202,10 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
-      '''                             '''
+      '''Function usage:This function is intended to allow classes to provide a means to compare class objects much the way strcmp() compares character strings.The object pointed to by other is compared with this object. The result of the comparison is returned.The possible AcRx::Ordering types are:AcRx::kLessThanAcRx::kEqualAcRx::kGreaterThanAcRx::kNotOrderableThe AcRx::kNotOrderable type is there because C++ classes often cannot support object value comparison.Function implementation in derived classes:There are no restrictions or expectations on how this function is implemented. Each class will have its own requirements for comparison.Default implementation:Simply returns AcRx::kNotOrderable since many C++ classes cannot support object value comparison.'''
     ...
     def copyFrom (self, other: PyRx.RxObject)-> None :
-      '''                             '''
+      '''Function usage:Copies the contents of other into the messaged object, whenever feasible. Function implementation in derived classes:If implemented, this function needs to be able to read the data in the object pointed to by other and copy any or all data as appropriate into this object. There is no requirement that the object pointed to by other and this object be of the same class, but that is the generally assumed condition.Default implementation: Because this function must be overridden to have any meaning, a fatal error will be caused when calling the default implementation. '''
     ...
 
     @staticmethod
@@ -1234,13 +1234,13 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
     def isA (self)-> PyRx.RxClass :
-      '''                             '''
+      '''Function usage:For each class registered with ObjectARX, the implementation of this function is to return a pointer to the AcRxClass object for the class of the object in which this method is called. For classes not registered with ObjectARX, this method has no meaning.Function implementation in derived classes:This function is overridden in all derived classes. The AcRx macros declare and define this function, so that the override is taken care of as part of using the macros. The implementation of this function is simply to return ::desc(). For example. the implementation for AcDbLine would be:return AcDbLine::desc();Default implementation for AcRxObject:  { return AcRxObject::desc(); }'''
     ...
     def isIdFilter (self)-> bool :
       '''                             '''
     ...
     def isKindOf (self, rhs: PyRx.RxClass)-> bool :
-      '''                             '''
+      '''Returns true if "this" object is of a member of either the class represented by aClass, or a class derived from aClass. '''
     ...
     def isNullObj (self)-> bool :
       '''                             '''
@@ -1264,7 +1264,7 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
-      '''                             '''
+      '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
     def removeLayerId (self, *args, **kwargs)-> None :
       '''removeLayerId( (LayerGroup)arg1, (ObjectId)arg2) -> None :
@@ -1312,10 +1312,10 @@ cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3, (int)arg4, (Database)
         void cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class PyDbDatabase {lvalue})'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
-      '''                             '''
+      '''Function usage:This function is intended to allow classes to provide a means to compare class objects much the way strcmp() compares character strings.The object pointed to by other is compared with this object. The result of the comparison is returned.The possible AcRx::Ordering types are:AcRx::kLessThanAcRx::kEqualAcRx::kGreaterThanAcRx::kNotOrderableThe AcRx::kNotOrderable type is there because C++ classes often cannot support object value comparison.Function implementation in derived classes:There are no restrictions or expectations on how this function is implemented. Each class will have its own requirements for comparison.Default implementation:Simply returns AcRx::kNotOrderable since many C++ classes cannot support object value comparison.'''
     ...
     def copyFrom (self, other: PyRx.RxObject)-> None :
-      '''                             '''
+      '''Function usage:Copies the contents of other into the messaged object, whenever feasible. Function implementation in derived classes:If implemented, this function needs to be able to read the data in the object pointed to by other and copy any or all data as appropriate into this object. There is no requirement that the object pointed to by other and this object be of the same class, but that is the generally assumed condition.Default implementation: Because this function must be overridden to have any meaning, a fatal error will be caused when calling the default implementation. '''
     ...
     def copyLayout (self, *args, **kwargs)-> None :
       '''copyLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> None :
@@ -1427,10 +1427,10 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
       '''                             '''
     ...
     def isA (self)-> PyRx.RxClass :
-      '''                             '''
+      '''Function usage:For each class registered with ObjectARX, the implementation of this function is to return a pointer to the AcRxClass object for the class of the object in which this method is called. For classes not registered with ObjectARX, this method has no meaning.Function implementation in derived classes:This function is overridden in all derived classes. The AcRx macros declare and define this function, so that the override is taken care of as part of using the macros. The implementation of this function is simply to return ::desc(). For example. the implementation for AcDbLine would be:return AcDbLine::desc();Default implementation for AcRxObject:  { return AcRxObject::desc(); }'''
     ...
     def isKindOf (self, rhs: PyRx.RxClass)-> bool :
-      '''                             '''
+      '''Returns true if "this" object is of a member of either the class represented by aClass, or a class derived from aClass. '''
     ...
     def isNullObj (self)-> bool :
       '''                             '''
@@ -1467,7 +1467,7 @@ layoutExists( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> bool :
       '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
-      '''                             '''
+      '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
     def renameLayout (self, *args, **kwargs)-> None :
       '''renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> None :
@@ -1800,10 +1800,10 @@ class TransactionManager(PyDb.TransactionManager):
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
-      '''                             '''
+      '''Function usage:This function is intended to allow classes to provide a means to compare class objects much the way strcmp() compares character strings.The object pointed to by other is compared with this object. The result of the comparison is returned.The possible AcRx::Ordering types are:AcRx::kLessThanAcRx::kEqualAcRx::kGreaterThanAcRx::kNotOrderableThe AcRx::kNotOrderable type is there because C++ classes often cannot support object value comparison.Function implementation in derived classes:There are no restrictions or expectations on how this function is implemented. Each class will have its own requirements for comparison.Default implementation:Simply returns AcRx::kNotOrderable since many C++ classes cannot support object value comparison.'''
     ...
     def copyFrom (self, other: PyRx.RxObject)-> None :
-      '''                             '''
+      '''Function usage:Copies the contents of other into the messaged object, whenever feasible. Function implementation in derived classes:If implemented, this function needs to be able to read the data in the object pointed to by other and copy any or all data as appropriate into this object. There is no requirement that the object pointed to by other and this object be of the same class, but that is the generally assumed condition.Default implementation: Because this function must be overridden to have any meaning, a fatal error will be caused when calling the default implementation. '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
@@ -1839,10 +1839,10 @@ class TransactionManager(PyDb.TransactionManager):
       '''                             '''
     ...
     def isA (self)-> PyRx.RxClass :
-      '''                             '''
+      '''Function usage:For each class registered with ObjectARX, the implementation of this function is to return a pointer to the AcRxClass object for the class of the object in which this method is called. For classes not registered with ObjectARX, this method has no meaning.Function implementation in derived classes:This function is overridden in all derived classes. The AcRx macros declare and define this function, so that the override is taken care of as part of using the macros. The implementation of this function is simply to return ::desc(). For example. the implementation for AcDbLine would be:return AcDbLine::desc();Default implementation for AcRxObject:  { return AcRxObject::desc(); }'''
     ...
     def isKindOf (self, rhs: PyRx.RxClass)-> bool :
-      '''                             '''
+      '''Returns true if "this" object is of a member of either the class represented by aClass, or a class derived from aClass. '''
     ...
     def isNullObj (self)-> bool :
       '''                             '''
@@ -1857,7 +1857,7 @@ class TransactionManager(PyDb.TransactionManager):
       '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
-      '''                             '''
+      '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
     def queueForGraphicsFlush (self)-> None :
       '''                             '''
