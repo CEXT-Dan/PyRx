@@ -72,7 +72,7 @@ class AbstractViewTable(SymbolTable):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -90,7 +90,7 @@ class AbstractViewTable(SymbolTable):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -102,7 +102,7 @@ class AbstractViewTable(SymbolTable):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -119,10 +119,10 @@ class AbstractViewTable(SymbolTable):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -143,7 +143,7 @@ class AbstractViewTable(SymbolTable):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -236,10 +236,10 @@ class AbstractViewTable(SymbolTable):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -301,7 +301,7 @@ class AbstractViewTable(SymbolTable):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -377,7 +377,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -398,7 +398,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -413,7 +413,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -433,10 +433,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -466,7 +466,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getName (self)-> str :
       '''                             '''
@@ -589,10 +589,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def perspectiveEnabled (self)-> bool :
       '''                             '''
@@ -759,7 +759,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -987,7 +987,7 @@ class AlignedDimension(Dimension):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -1011,7 +1011,7 @@ class AlignedDimension(Dimension):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -1032,7 +1032,7 @@ class AlignedDimension(Dimension):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -1073,10 +1073,10 @@ class AlignedDimension(Dimension):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -1158,7 +1158,7 @@ class AlignedDimension(Dimension):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -1352,13 +1352,13 @@ class AlignedDimension(Dimension):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def oblique (self)-> float :
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -1714,7 +1714,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -1933,7 +1933,7 @@ class Arc(Curve):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -1957,7 +1957,7 @@ class Arc(Curve):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -1983,7 +1983,7 @@ class Arc(Curve):
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -2000,10 +2000,10 @@ class Arc(Curve):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -2091,7 +2091,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getOffsetCurves (self, dist: float)-> list :
       '''                             '''
@@ -2309,10 +2309,10 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -2468,7 +2468,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -2598,7 +2598,7 @@ class ArcDimension(Dimension):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -2625,7 +2625,7 @@ class ArcDimension(Dimension):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -2646,7 +2646,7 @@ class ArcDimension(Dimension):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -2684,10 +2684,10 @@ class ArcDimension(Dimension):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -2769,7 +2769,7 @@ class ArcDimension(Dimension):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -2969,10 +2969,10 @@ class ArcDimension(Dimension):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -3343,7 +3343,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -3460,7 +3460,7 @@ class AttributeDefinition(Text):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -3481,7 +3481,7 @@ class AttributeDefinition(Text):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -3511,7 +3511,7 @@ class AttributeDefinition(Text):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -3528,10 +3528,10 @@ class AttributeDefinition(Text):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -3587,7 +3587,7 @@ class AttributeDefinition(Text):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getMTextAttributeDefinition (self)-> PyDb.MText :
       '''                             '''
@@ -3793,13 +3793,13 @@ class AttributeDefinition(Text):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def oblique (self)-> float :
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -4009,7 +4009,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -4100,7 +4100,7 @@ class AttributeReference(Text):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -4121,7 +4121,7 @@ class AttributeReference(Text):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -4151,7 +4151,7 @@ class AttributeReference(Text):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -4168,10 +4168,10 @@ class AttributeReference(Text):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -4227,7 +4227,7 @@ class AttributeReference(Text):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getMTextAttribute (self)-> PyDb.MText :
       '''                             '''
@@ -4436,13 +4436,13 @@ class AttributeReference(Text):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def oblique (self)-> float :
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -4648,7 +4648,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -4724,7 +4724,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
     def cast (self, *args, **kwargs)-> PyDb.BlockBegin :
       '''cast( (RxObject)arg1) -> BlockBegin :
@@ -4748,7 +4748,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbBlockBegin cloneFrom(class PyRxObject)'''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -4769,7 +4769,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -4787,10 +4787,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -4840,7 +4840,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -4995,10 +4995,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -5118,7 +5118,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -5188,7 +5188,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
     def cast (self, *args, **kwargs)-> PyDb.BlockEnd :
       '''cast( (RxObject)arg1) -> BlockEnd :
@@ -5212,7 +5212,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbBlockEnd cloneFrom(class PyRxObject)'''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -5233,7 +5233,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -5251,10 +5251,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -5304,7 +5304,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -5459,10 +5459,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -5582,7 +5582,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -5673,7 +5673,7 @@ class BlockReference(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -5694,7 +5694,7 @@ class BlockReference(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -5715,7 +5715,7 @@ class BlockReference(Entity):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -5732,10 +5732,10 @@ class BlockReference(Entity):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -5794,7 +5794,7 @@ class BlockReference(Entity):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -5958,10 +5958,10 @@ class BlockReference(Entity):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -6111,7 +6111,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -6184,7 +6184,7 @@ class BlockTable(SymbolTable):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -6202,7 +6202,7 @@ class BlockTable(SymbolTable):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -6214,7 +6214,7 @@ class BlockTable(SymbolTable):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -6231,10 +6231,10 @@ class BlockTable(SymbolTable):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -6255,7 +6255,7 @@ class BlockTable(SymbolTable):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -6348,10 +6348,10 @@ class BlockTable(SymbolTable):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -6413,7 +6413,7 @@ class BlockTable(SymbolTable):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -6484,7 +6484,7 @@ class BlockTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -6505,7 +6505,7 @@ class BlockTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comments (self)-> str :
       '''                             '''
@@ -6520,7 +6520,7 @@ class BlockTableRecord(SymbolTableRecord):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -6537,10 +6537,10 @@ class BlockTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -6567,7 +6567,7 @@ class BlockTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getLayoutId (self)-> PyDb.ObjectId :
       '''                             '''
@@ -6699,7 +6699,7 @@ class BlockTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def objectIds (self, desc:PyRx.RxClass=PyDb.Entity)-> list :
       '''                             '''
@@ -6714,7 +6714,7 @@ class BlockTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def pathName (self)-> str :
       '''                             '''
@@ -6806,7 +6806,7 @@ class BlockTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -6889,7 +6889,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
     def cast (self, *args, **kwargs)-> PyDb.Body :
       '''cast( (RxObject)arg1) -> Body :
@@ -6913,7 +6913,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbBody cloneFrom(class PyRxObject)'''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -6934,7 +6934,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -6952,10 +6952,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -7005,7 +7005,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -7160,10 +7160,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -7283,7 +7283,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -7677,7 +7677,7 @@ class Circle(Curve):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -7704,7 +7704,7 @@ class Circle(Curve):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -7730,7 +7730,7 @@ class Circle(Curve):
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -7750,10 +7750,10 @@ class Circle(Curve):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -7838,7 +7838,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getOffsetCurves (self, dist: float)-> list :
       '''                             '''
@@ -8053,10 +8053,10 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -8206,7 +8206,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -8856,7 +8856,7 @@ class Curve(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -8877,7 +8877,7 @@ class Curve(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -8903,7 +8903,7 @@ class Curve(Entity):
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -8920,10 +8920,10 @@ class Curve(Entity):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -9008,7 +9008,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getOffsetCurves (self, dist: float)-> list :
       '''                             '''
@@ -9220,10 +9220,10 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -9349,7 +9349,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -11226,7 +11226,7 @@ class DbObject(PyGi.Drawable):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -11244,7 +11244,7 @@ class DbObject(PyGi.Drawable):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -11256,7 +11256,7 @@ class DbObject(PyGi.Drawable):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -11273,10 +11273,10 @@ class DbObject(PyGi.Drawable):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -11294,7 +11294,7 @@ class DbObject(PyGi.Drawable):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -11384,10 +11384,10 @@ class DbObject(PyGi.Drawable):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -11443,7 +11443,7 @@ class DbObject(PyGi.Drawable):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -11794,7 +11794,7 @@ class DiametricDimension(Dimension):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -11821,7 +11821,7 @@ class DiametricDimension(Dimension):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -11842,7 +11842,7 @@ class DiametricDimension(Dimension):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -11880,10 +11880,10 @@ class DiametricDimension(Dimension):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -11974,7 +11974,7 @@ class DiametricDimension(Dimension):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -12165,10 +12165,10 @@ class DiametricDimension(Dimension):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -12521,7 +12521,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -12767,7 +12767,7 @@ class Dictionary(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -12785,7 +12785,7 @@ class Dictionary(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -12797,7 +12797,7 @@ class Dictionary(DbObject):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -12814,10 +12814,10 @@ class Dictionary(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -12838,7 +12838,7 @@ class Dictionary(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -12937,10 +12937,10 @@ class Dictionary(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -13016,7 +13016,7 @@ class Dictionary(DbObject):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -13086,7 +13086,7 @@ class DimAssoc(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -13104,7 +13104,7 @@ class DimAssoc(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -13116,7 +13116,7 @@ class DimAssoc(DbObject):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -13136,10 +13136,10 @@ class DimAssoc(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -13160,7 +13160,7 @@ class DimAssoc(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -13259,13 +13259,13 @@ class DimAssoc(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def osnapPointRef (self, _type : int)-> PyDb.OsnapPointRef :
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def pointRef (self, _type : int)-> PyDb.PointRef :
       '''                             '''
@@ -13392,7 +13392,7 @@ class DimAssoc(DbObject):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -13533,7 +13533,7 @@ class DimStyleTable(SymbolTable):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -13551,7 +13551,7 @@ class DimStyleTable(SymbolTable):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -13563,7 +13563,7 @@ class DimStyleTable(SymbolTable):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -13580,10 +13580,10 @@ class DimStyleTable(SymbolTable):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -13604,7 +13604,7 @@ class DimStyleTable(SymbolTable):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -13697,10 +13697,10 @@ class DimStyleTable(SymbolTable):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -13762,7 +13762,7 @@ class DimStyleTable(SymbolTable):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -13839,7 +13839,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -13857,7 +13857,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -13869,7 +13869,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -14120,10 +14120,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -14141,7 +14141,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getName (self)-> str :
       '''                             '''
@@ -14252,10 +14252,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -14551,7 +14551,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -14643,7 +14643,7 @@ class Dimension(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -14667,7 +14667,7 @@ class Dimension(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -14688,7 +14688,7 @@ class Dimension(Entity):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -14726,10 +14726,10 @@ class Dimension(Entity):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -14811,7 +14811,7 @@ class Dimension(Entity):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -14999,10 +14999,10 @@ class Dimension(Entity):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -15340,7 +15340,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -16316,7 +16316,7 @@ class Ellipse(Curve):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -16340,7 +16340,7 @@ class Ellipse(Curve):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -16366,7 +16366,7 @@ class Ellipse(Curve):
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -16383,10 +16383,10 @@ class Ellipse(Curve):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -16477,7 +16477,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getOffsetCurves (self, dist: float)-> list :
       '''                             '''
@@ -16707,10 +16707,10 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def paramAtAngle (self, val : float)-> float :
       '''                             '''
@@ -16880,7 +16880,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -16962,7 +16962,7 @@ class Entity(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -16983,7 +16983,7 @@ class Entity(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -17004,7 +17004,7 @@ class Entity(DbObject):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -17021,10 +17021,10 @@ class Entity(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -17074,7 +17074,7 @@ class Entity(DbObject):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -17229,10 +17229,10 @@ class Entity(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -17352,7 +17352,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -19413,7 +19413,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
     def cast (self, *args, **kwargs)-> PyDb.ExtrudedSurface :
       '''cast( (RxObject)arg1) -> ExtrudedSurface :
@@ -19437,7 +19437,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbExtrudedSurface cloneFrom(class PyRxObject)'''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -19476,7 +19476,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbObjectId creationActionBodyId(class PyDbSurface {lvalue})'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -19494,10 +19494,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -19559,7 +19559,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPerimeter (self, *args, **kwargs)-> float :
       '''getPerimeter( (Surface)arg1) -> float :
@@ -19732,10 +19732,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class boost::python::list modificationActionBodyIds(class PyDbSurface {lvalue})'''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -19891,7 +19891,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
         unsigned short uIsolineDensity(class PyDbSurface {lvalue})'''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -19985,7 +19985,7 @@ class Face(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -20006,7 +20006,7 @@ class Face(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -20027,7 +20027,7 @@ class Face(Entity):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -20044,10 +20044,10 @@ class Face(Entity):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -20097,7 +20097,7 @@ class Face(Entity):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -20264,10 +20264,10 @@ class Face(Entity):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -20390,7 +20390,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -20469,7 +20469,7 @@ class FaceRecord(Vertex):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -20490,7 +20490,7 @@ class FaceRecord(Vertex):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -20511,7 +20511,7 @@ class FaceRecord(Vertex):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -20528,10 +20528,10 @@ class FaceRecord(Vertex):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -20581,7 +20581,7 @@ class FaceRecord(Vertex):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -20748,10 +20748,10 @@ class FaceRecord(Vertex):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -20874,7 +20874,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -20953,7 +20953,7 @@ class Fcf(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -20974,7 +20974,7 @@ class Fcf(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -20995,7 +20995,7 @@ class Fcf(Entity):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -21036,10 +21036,10 @@ class Fcf(Entity):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -21098,7 +21098,7 @@ class Fcf(Entity):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -21259,10 +21259,10 @@ class Fcf(Entity):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -21427,7 +21427,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -21503,7 +21503,7 @@ class Field(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -21524,7 +21524,7 @@ class Field(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -21539,7 +21539,7 @@ class Field(DbObject):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -21556,10 +21556,10 @@ class Field(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -21614,7 +21614,7 @@ class Field(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getValue (self)-> str :
       '''                             '''
@@ -21710,10 +21710,10 @@ class Field(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def postInDatabase (self, db: PyDb.Database)-> None :
       '''                             '''
@@ -21787,7 +21787,7 @@ class Field(DbObject):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -22650,7 +22650,7 @@ class GeoData(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -22668,7 +22668,7 @@ class GeoData(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -22689,7 +22689,7 @@ class GeoData(DbObject):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -22712,10 +22712,10 @@ class GeoData(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -22739,7 +22739,7 @@ class GeoData(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getMeshFace (self, idx : int)-> tuple :
       '''                             '''
@@ -22856,7 +22856,7 @@ class GeoData(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def observationCoverage (self)-> str :
       '''                             '''
@@ -22868,7 +22868,7 @@ class GeoData(DbObject):
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def postToDb (self)-> PyDb.ObjectId :
       '''                             '''
@@ -23017,7 +23017,7 @@ class GeoData(DbObject):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -23108,7 +23108,7 @@ class GeoMap(RasterImage):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -23135,7 +23135,7 @@ class GeoMap(RasterImage):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -23159,7 +23159,7 @@ class GeoMap(RasterImage):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -23176,10 +23176,10 @@ class GeoMap(RasterImage):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -23232,7 +23232,7 @@ class GeoMap(RasterImage):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getOrientation (self)-> tuple :
       '''                             '''
@@ -23438,10 +23438,10 @@ class GeoMap(RasterImage):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -23633,7 +23633,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -23698,7 +23698,7 @@ class GeoPositionMarker(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -23719,7 +23719,7 @@ class GeoPositionMarker(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -23740,7 +23740,7 @@ class GeoPositionMarker(Entity):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -23757,10 +23757,10 @@ class GeoPositionMarker(Entity):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -23816,7 +23816,7 @@ class GeoPositionMarker(Entity):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -23989,10 +23989,10 @@ class GeoPositionMarker(Entity):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -24160,7 +24160,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -24413,7 +24413,7 @@ class Group(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -24434,7 +24434,7 @@ class Group(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -24446,7 +24446,7 @@ class Group(DbObject):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -24466,10 +24466,10 @@ class Group(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -24487,7 +24487,7 @@ class Group(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getIndex (self, id: PyDb.ObjectId)-> int :
       '''                             '''
@@ -24601,13 +24601,13 @@ class Group(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def objectIds (self)-> list :
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def prepend (self, id : PyDb.ObjectId|list[PyDb.ObjectId])-> None :
       '''                             '''
@@ -24717,7 +24717,7 @@ class Group(DbObject):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -25033,7 +25033,7 @@ class Hatch(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -25054,7 +25054,7 @@ class Hatch(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -25075,7 +25075,7 @@ class Hatch(Entity):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -25092,10 +25092,10 @@ class Hatch(Entity):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -25175,7 +25175,7 @@ class Hatch(Entity):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getHatchLineDataAt (self, val : int)-> tuple :
       '''                             '''
@@ -25396,13 +25396,13 @@ class Hatch(Entity):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def originPoint (self)-> PyGe.Point2d :
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def patternAngle (self)-> float :
       '''                             '''
@@ -25609,7 +25609,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -25815,7 +25815,7 @@ class Helix(Spline):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -25836,7 +25836,7 @@ class Helix(Spline):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -25868,7 +25868,7 @@ class Helix(Spline):
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -25888,10 +25888,10 @@ class Helix(Spline):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -25997,7 +25997,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getNurbsData (self)-> tuple :
       '''                             '''
@@ -26250,10 +26250,10 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -26500,7 +26500,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -26722,7 +26722,7 @@ class Image(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -26743,7 +26743,7 @@ class Image(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -26764,7 +26764,7 @@ class Image(Entity):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -26781,10 +26781,10 @@ class Image(Entity):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -26834,7 +26834,7 @@ class Image(Entity):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -26989,10 +26989,10 @@ class Image(Entity):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -27112,7 +27112,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -27353,7 +27353,7 @@ class LayerFilter(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -27371,7 +27371,7 @@ class LayerFilter(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -27383,7 +27383,7 @@ class LayerFilter(DbObject):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -27400,10 +27400,10 @@ class LayerFilter(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -27424,7 +27424,7 @@ class LayerFilter(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -27523,10 +27523,10 @@ class LayerFilter(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -27585,7 +27585,7 @@ class LayerFilter(DbObject):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -27641,7 +27641,7 @@ class LayerTable(SymbolTable):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -27659,7 +27659,7 @@ class LayerTable(SymbolTable):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -27671,7 +27671,7 @@ class LayerTable(SymbolTable):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -27688,10 +27688,10 @@ class LayerTable(SymbolTable):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -27712,7 +27712,7 @@ class LayerTable(SymbolTable):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -27805,10 +27805,10 @@ class LayerTable(SymbolTable):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -27870,7 +27870,7 @@ class LayerTable(SymbolTable):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -27926,7 +27926,7 @@ class LayerTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -27944,7 +27944,7 @@ class LayerTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def color (self, *args, **kwargs)-> PyDb.Color :
       '''color( (LayerTableRecord)arg1) -> Color :
@@ -27967,7 +27967,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -27987,10 +27987,10 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -28011,7 +28011,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getName (self)-> str :
       '''                             '''
@@ -28179,10 +28179,10 @@ lineWeight( (LayerTableRecord)arg1, (ObjectId)arg2) -> LineWeight :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self, *args, **kwargs)-> str :
       '''plotStyleName( (LayerTableRecord)arg1) -> str :
@@ -28424,7 +28424,7 @@ transparency( (LayerTableRecord)arg1, (ObjectId)arg2) -> Transparency :
         class AcCmTransparency transparency(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -28486,7 +28486,7 @@ class Layout(PlotSettings):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -28504,7 +28504,7 @@ class Layout(PlotSettings):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -28516,7 +28516,7 @@ class Layout(PlotSettings):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -28533,10 +28533,10 @@ class Layout(PlotSettings):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawViewportsFirst (self)-> bool :
       '''                             '''
@@ -28572,7 +28572,7 @@ class Layout(PlotSettings):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getLayoutName (self)-> str :
       '''                             '''
@@ -28707,10 +28707,10 @@ class Layout(PlotSettings):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotAsRaster (self)-> bool :
       '''                             '''
@@ -28879,7 +28879,7 @@ class Layout(PlotSettings):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -29160,7 +29160,7 @@ class Leader(Curve):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -29181,7 +29181,7 @@ class Leader(Curve):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -29210,7 +29210,7 @@ class Leader(Curve):
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -29263,10 +29263,10 @@ class Leader(Curve):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -29360,7 +29360,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getOffsetCurves (self, dist: float)-> list :
       '''                             '''
@@ -29596,10 +29596,10 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -29788,7 +29788,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -29870,7 +29870,7 @@ class Line(Curve):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -29891,7 +29891,7 @@ class Line(Curve):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -29917,7 +29917,7 @@ class Line(Curve):
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -29934,10 +29934,10 @@ class Line(Curve):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -30025,7 +30025,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getOffsetCurves (self, dist: float)-> list :
       '''                             '''
@@ -30243,10 +30243,10 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -30390,7 +30390,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -30511,7 +30511,7 @@ class LineAngularDimension2(Dimension):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -30535,7 +30535,7 @@ class LineAngularDimension2(Dimension):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -30556,7 +30556,7 @@ class LineAngularDimension2(Dimension):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -30594,10 +30594,10 @@ class LineAngularDimension2(Dimension):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -30682,7 +30682,7 @@ class LineAngularDimension2(Dimension):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -30870,10 +30870,10 @@ class LineAngularDimension2(Dimension):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -31229,7 +31229,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -31409,7 +31409,7 @@ class LinetypeTable(SymbolTable):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -31427,7 +31427,7 @@ class LinetypeTable(SymbolTable):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -31439,7 +31439,7 @@ class LinetypeTable(SymbolTable):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -31456,10 +31456,10 @@ class LinetypeTable(SymbolTable):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -31480,7 +31480,7 @@ class LinetypeTable(SymbolTable):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -31573,10 +31573,10 @@ class LinetypeTable(SymbolTable):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -31638,7 +31638,7 @@ class LinetypeTable(SymbolTable):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -31691,7 +31691,7 @@ class LinetypeTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -31709,7 +31709,7 @@ class LinetypeTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comments (self)-> str :
       '''                             '''
@@ -31730,7 +31730,7 @@ class LinetypeTableRecord(SymbolTableRecord):
         double dashLengthAt(class PyDbLinetypeTableRecord {lvalue},int)'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -31747,10 +31747,10 @@ class LinetypeTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -31768,7 +31768,7 @@ class LinetypeTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getName (self)-> str :
       '''                             '''
@@ -31879,10 +31879,10 @@ class LinetypeTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def patternLength (self)-> float :
       '''                             '''
@@ -32070,7 +32070,7 @@ class LinetypeTableRecord(SymbolTableRecord):
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textAt(class PyDbLinetypeTableRecord {lvalue},int)'''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -32147,7 +32147,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
     def cast (self, *args, **kwargs)-> PyDb.LoftedSurface :
       '''cast( (RxObject)arg1) -> LoftedSurface :
@@ -32171,7 +32171,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbLoftedSurface cloneFrom(class PyRxObject)'''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -32210,7 +32210,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbObjectId creationActionBodyId(class PyDbSurface {lvalue})'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -32228,10 +32228,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -32293,7 +32293,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPerimeter (self, *args, **kwargs)-> float :
       '''getPerimeter( (Surface)arg1) -> float :
@@ -32466,10 +32466,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class boost::python::list modificationActionBodyIds(class PyDbSurface {lvalue})'''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -32625,7 +32625,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
         unsigned short uIsolineDensity(class PyDbSurface {lvalue})'''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -32722,7 +32722,7 @@ class MInsertBlock(BlockReference):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -32743,7 +32743,7 @@ class MInsertBlock(BlockReference):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -32770,7 +32770,7 @@ class MInsertBlock(BlockReference):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -32787,10 +32787,10 @@ class MInsertBlock(BlockReference):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -32849,7 +32849,7 @@ class MInsertBlock(BlockReference):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -33013,10 +33013,10 @@ class MInsertBlock(BlockReference):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -33184,7 +33184,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -33336,7 +33336,7 @@ addLeaderLine( (MLeader)arg1, (Point3d)arg2) -> int :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
     def cast (self, *args, **kwargs)-> PyDb.MLeader :
       '''cast( (RxObject)arg1) -> MLeader :
@@ -33360,7 +33360,7 @@ addLeaderLine( (MLeader)arg1, (Point3d)arg2) -> int :
         class PyDbMLeader cloneFrom(class PyRxObject)'''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -33398,7 +33398,7 @@ connectionPoint( (MLeader)arg1, (Vector3d)arg2, (MLeaderTextAttachmentDirection)
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -33422,10 +33422,10 @@ connectionPoint( (MLeader)arg1, (Vector3d)arg2, (MLeaderTextAttachmentDirection)
         double doglegLength(class PyDbMLeader {lvalue})'''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -33558,7 +33558,7 @@ getBlockAttributeValue( (MLeader)arg1, (ObjectId)arg2) -> str :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getLastVertex (self, *args, **kwargs)-> PyGe.Point3d :
       '''getLastVertex( (MLeader)arg1, (int)arg2) -> Point3d :
@@ -33885,10 +33885,10 @@ moveMLeader( (MLeader)arg1, (Vector3d)arg2, (MLeaderMoveType)arg3, (bool)arg4) -
         void objectClosed(class PyDbMLeader {lvalue},class PyDbObjectId)'''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plane (self, *args, **kwargs)-> PyGe.Plane :
       '''plane( (MLeader)arg1) -> Plane :
@@ -34399,7 +34399,7 @@ textAttachmentType( (MLeader)arg1, (MLeaderLeaderDirectionType)arg2) -> MLeaderT
         void updateLeaderLinePosition(class PyDbMLeader {lvalue})'''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -34793,7 +34793,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         double breakSize(class PyDbMLeaderStyle {lvalue})'''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -34812,7 +34812,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -34830,7 +34830,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -34866,10 +34866,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         double doglegLength(class PyDbMLeaderStyle {lvalue})'''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawLeaderOrderType (self, *args, **kwargs)-> PyDb.DrawLeaderOrderType :
       '''drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
@@ -34946,7 +34946,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getName (self, *args, **kwargs)-> str :
       '''getName( (MLeaderStyle)arg1) -> str :
@@ -35084,7 +35084,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
         int maxLeaderSegmentsPoints(class PyDbMLeaderStyle {lvalue})'''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def overwritePropChanged (self, *args, **kwargs)-> bool :
       '''overwritePropChanged( (MLeaderStyle)arg1) -> bool :
@@ -35093,7 +35093,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
         bool overwritePropChanged(class PyDbMLeaderStyle {lvalue})'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def postMLeaderStyleToDb (self, *args, **kwargs)-> PyDb.ObjectId :
       '''postMLeaderStyleToDb( (MLeaderStyle)arg1, (Database)arg2, (str)arg3) -> ObjectId :
@@ -35473,7 +35473,7 @@ setDrawLeaderOrderType( (MLeaderStyle)arg1, (DrawLeaderOrderType)arg2) -> None :
         class PyDbObjectId textStyleId(class PyDbMLeaderStyle {lvalue})'''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -35667,7 +35667,7 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -35688,7 +35688,7 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -35715,7 +35715,7 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
         class boost::python::list createLoopsFromBoundaries(class PyDbMPolygon {lvalue},class AcArray<class AcDbObjectId,class AcArrayMemCopyReallocator<class AcDbObjectId> >,bool,double)'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -35732,10 +35732,10 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -35806,7 +35806,7 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getLoopAtGsMarker (self, val : int)-> int :
       '''                             '''
@@ -36018,10 +36018,10 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def patternAngle (self)-> float :
       '''                             '''
@@ -36225,7 +36225,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -36319,7 +36319,7 @@ class MText(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -36340,7 +36340,7 @@ class MText(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -36373,7 +36373,7 @@ class MText(Entity):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -36396,10 +36396,10 @@ class MText(Entity):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -36491,7 +36491,7 @@ class MText(Entity):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -36664,10 +36664,10 @@ class MText(Entity):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -36889,7 +36889,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -37200,7 +37200,7 @@ class Mline(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -37221,7 +37221,7 @@ class Mline(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def closedMline (self)-> bool :
       '''                             '''
@@ -37245,7 +37245,7 @@ class Mline(Entity):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -37262,10 +37262,10 @@ class Mline(Entity):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -37335,7 +37335,7 @@ class Mline(Entity):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -37505,10 +37505,10 @@ class Mline(Entity):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -37664,7 +37664,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -37773,7 +37773,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
     def cast (self, *args, **kwargs)-> PyDb.MlineStyle :
       '''cast( (RxObject)arg1) -> MlineStyle :
@@ -37794,7 +37794,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
         class PyDbMlineStyle cloneFrom(class PyRxObject)'''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -37806,7 +37806,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -37830,10 +37830,10 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -37893,7 +37893,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -38001,10 +38001,10 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
         int numElements(class PyDbMlineStyle {lvalue})'''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -38191,7 +38191,7 @@ set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -38268,7 +38268,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
     def cast (self, *args, **kwargs)-> PyDb.NurbSurface :
       '''cast( (RxObject)arg1) -> NurbSurface :
@@ -38292,7 +38292,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbNurbSurface cloneFrom(class PyRxObject)'''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -38331,7 +38331,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbObjectId creationActionBodyId(class PyDbSurface {lvalue})'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -38349,10 +38349,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -38414,7 +38414,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPerimeter (self, *args, **kwargs)-> float :
       '''getPerimeter( (Surface)arg1) -> float :
@@ -38587,10 +38587,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class boost::python::list modificationActionBodyIds(class PyDbSurface {lvalue})'''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -38746,7 +38746,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
         unsigned short uIsolineDensity(class PyDbSurface {lvalue})'''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -39145,7 +39145,7 @@ class OrdinateDimension(Dimension):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -39169,7 +39169,7 @@ class OrdinateDimension(Dimension):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -39190,7 +39190,7 @@ class OrdinateDimension(Dimension):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -39231,10 +39231,10 @@ class OrdinateDimension(Dimension):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -39316,7 +39316,7 @@ class OrdinateDimension(Dimension):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -39513,13 +39513,13 @@ class OrdinateDimension(Dimension):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def origin (self)-> PyGe.Point3d :
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -39872,7 +39872,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -40293,7 +40293,7 @@ class PdfDefinition(UnderlayDefinition):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -40311,7 +40311,7 @@ class PdfDefinition(UnderlayDefinition):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -40323,7 +40323,7 @@ class PdfDefinition(UnderlayDefinition):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -40345,10 +40345,10 @@ class PdfDefinition(UnderlayDefinition):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -40369,7 +40369,7 @@ class PdfDefinition(UnderlayDefinition):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getItemName (self)-> str :
       '''                             '''
@@ -40471,10 +40471,10 @@ class PdfDefinition(UnderlayDefinition):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -40539,7 +40539,7 @@ class PdfDefinition(UnderlayDefinition):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -40598,7 +40598,7 @@ class PdfReference(UnderlayReference):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -40622,7 +40622,7 @@ class PdfReference(UnderlayReference):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -40656,7 +40656,7 @@ class PdfReference(UnderlayReference):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -40676,10 +40676,10 @@ class PdfReference(UnderlayReference):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -40750,7 +40750,7 @@ class PdfReference(UnderlayReference):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -40935,10 +40935,10 @@ class PdfReference(UnderlayReference):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -41124,7 +41124,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -41224,7 +41224,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
     def cast (self, *args, **kwargs)-> PyDb.PlaneSurface :
       '''cast( (RxObject)arg1) -> PlaneSurface :
@@ -41248,7 +41248,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbPlaneSurface cloneFrom(class PyRxObject)'''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -41287,7 +41287,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbObjectId creationActionBodyId(class PyDbSurface {lvalue})'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -41305,10 +41305,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -41370,7 +41370,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPerimeter (self, *args, **kwargs)-> float :
       '''getPerimeter( (Surface)arg1) -> float :
@@ -41543,10 +41543,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class boost::python::list modificationActionBodyIds(class PyDbSurface {lvalue})'''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -41702,7 +41702,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
         unsigned short uIsolineDensity(class PyDbSurface {lvalue})'''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -41821,7 +41821,7 @@ class PlotSettings(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -41839,7 +41839,7 @@ class PlotSettings(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -41851,7 +41851,7 @@ class PlotSettings(DbObject):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -41868,10 +41868,10 @@ class PlotSettings(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawViewportsFirst (self)-> bool :
       '''                             '''
@@ -41901,7 +41901,7 @@ class PlotSettings(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlotCfgName (self)-> str :
       '''                             '''
@@ -42018,10 +42018,10 @@ class PlotSettings(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotAsRaster (self)-> bool :
       '''                             '''
@@ -42175,7 +42175,7 @@ class PlotSettings(DbObject):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -42454,7 +42454,7 @@ class Point(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -42475,7 +42475,7 @@ class Point(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -42496,7 +42496,7 @@ class Point(Entity):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -42513,10 +42513,10 @@ class Point(Entity):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -42569,7 +42569,7 @@ class Point(Entity):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -42727,10 +42727,10 @@ class Point(Entity):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -42868,7 +42868,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -42989,7 +42989,7 @@ class Point3AngularDimension(Dimension):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -43016,7 +43016,7 @@ class Point3AngularDimension(Dimension):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -43037,7 +43037,7 @@ class Point3AngularDimension(Dimension):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -43075,10 +43075,10 @@ class Point3AngularDimension(Dimension):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -43163,7 +43163,7 @@ class Point3AngularDimension(Dimension):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -43351,10 +43351,10 @@ class Point3AngularDimension(Dimension):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -43707,7 +43707,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -43841,7 +43841,7 @@ class PointCloudColorMap(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -43871,7 +43871,7 @@ class PointCloudColorMap(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def colorScheme (self, *args, **kwargs)-> tuple :
       '''colorScheme( (PointCloudColorMap)arg1, (str)arg2) -> tuple :
@@ -43895,7 +43895,7 @@ class PointCloudColorMap(DbObject):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -43942,10 +43942,10 @@ class PointCloudColorMap(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -43980,7 +43980,7 @@ class PointCloudColorMap(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -44082,10 +44082,10 @@ class PointCloudColorMap(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -44171,7 +44171,7 @@ class PointCloudColorMap(DbObject):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -44415,7 +44415,7 @@ class PointCloudDefEx(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -44438,7 +44438,7 @@ class PointCloudDefEx(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -44458,7 +44458,7 @@ class PointCloudDefEx(DbObject):
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -44484,10 +44484,10 @@ class PointCloudDefEx(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -44517,7 +44517,7 @@ class PointCloudDefEx(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getRcsFilePath (self, guid : str)-> str :
       '''                             '''
@@ -44619,10 +44619,10 @@ class PointCloudDefEx(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
 
     @staticmethod
@@ -44704,7 +44704,7 @@ class PointCloudDefEx(DbObject):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -44800,7 +44800,7 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -44830,7 +44830,7 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -44851,7 +44851,7 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -44874,10 +44874,10 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -44975,7 +44975,7 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getLoadedVisiblePointCount (self)-> int :
       '''                             '''
@@ -45190,13 +45190,13 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def objectToWorldMatrix (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -45518,7 +45518,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -45778,7 +45778,7 @@ class PolyFaceMeshVertex(Vertex):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -45799,7 +45799,7 @@ class PolyFaceMeshVertex(Vertex):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -45820,7 +45820,7 @@ class PolyFaceMeshVertex(Vertex):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -45837,10 +45837,10 @@ class PolyFaceMeshVertex(Vertex):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -45890,7 +45890,7 @@ class PolyFaceMeshVertex(Vertex):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -46045,10 +46045,10 @@ class PolyFaceMeshVertex(Vertex):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -46174,7 +46174,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -46253,7 +46253,7 @@ class PolygonMeshVertex(Vertex):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -46274,7 +46274,7 @@ class PolygonMeshVertex(Vertex):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -46295,7 +46295,7 @@ class PolygonMeshVertex(Vertex):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -46312,10 +46312,10 @@ class PolygonMeshVertex(Vertex):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -46365,7 +46365,7 @@ class PolygonMeshVertex(Vertex):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -46520,10 +46520,10 @@ class PolygonMeshVertex(Vertex):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -46649,7 +46649,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -46737,7 +46737,7 @@ class Polyline(Curve):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -46758,7 +46758,7 @@ class Polyline(Curve):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -46784,7 +46784,7 @@ class Polyline(Curve):
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -46801,10 +46801,10 @@ class Polyline(Curve):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -46907,7 +46907,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getLineSeg2dAt (self, idx:int)-> PyGe.LineSeg2d :
       '''                             '''
@@ -47164,13 +47164,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def onSegAt (self, idx:int, pt2d:PyGe.Point2d, param:float)-> bool :
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -47344,7 +47344,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -47434,7 +47434,7 @@ class Polyline2d(Curve):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -47455,7 +47455,7 @@ class Polyline2d(Curve):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -47490,7 +47490,7 @@ class Polyline2d(Curve):
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -47513,10 +47513,10 @@ class Polyline2d(Curve):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -47604,7 +47604,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getOffsetCurves (self, dist: float)-> list :
       '''                             '''
@@ -47845,7 +47845,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def openSequenceEnd (self, mode: PyDb.OpenMode)-> PyDb.SequenceEnd :
       '''                             '''
@@ -47854,7 +47854,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -48033,7 +48033,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -48129,7 +48129,7 @@ class Polyline3d(Curve):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -48150,7 +48150,7 @@ class Polyline3d(Curve):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -48179,7 +48179,7 @@ class Polyline3d(Curve):
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -48196,10 +48196,10 @@ class Polyline3d(Curve):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -48284,7 +48284,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getOffsetCurves (self, dist: float)-> list :
       '''                             '''
@@ -48516,7 +48516,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def openSequenceEnd (self, mode: PyDb.OpenMode)-> PyDb.SequenceEnd :
       '''                             '''
@@ -48525,7 +48525,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -48674,7 +48674,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -48756,7 +48756,7 @@ class Polyline3dVertex(Vertex):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -48777,7 +48777,7 @@ class Polyline3dVertex(Vertex):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -48798,7 +48798,7 @@ class Polyline3dVertex(Vertex):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -48815,10 +48815,10 @@ class Polyline3dVertex(Vertex):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -48868,7 +48868,7 @@ class Polyline3dVertex(Vertex):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -49023,10 +49023,10 @@ class Polyline3dVertex(Vertex):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -49152,7 +49152,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -49333,7 +49333,7 @@ class RadialDimension(Dimension):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -49363,7 +49363,7 @@ class RadialDimension(Dimension):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -49384,7 +49384,7 @@ class RadialDimension(Dimension):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -49422,10 +49422,10 @@ class RadialDimension(Dimension):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -49513,7 +49513,7 @@ class RadialDimension(Dimension):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -49704,10 +49704,10 @@ class RadialDimension(Dimension):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -50060,7 +50060,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -50184,7 +50184,7 @@ class RadialDimensionLarge(Dimension):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -50214,7 +50214,7 @@ class RadialDimensionLarge(Dimension):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -50235,7 +50235,7 @@ class RadialDimensionLarge(Dimension):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -50273,10 +50273,10 @@ class RadialDimensionLarge(Dimension):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -50364,7 +50364,7 @@ class RadialDimensionLarge(Dimension):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -50558,13 +50558,13 @@ class RadialDimensionLarge(Dimension):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def overrideCenter (self)-> PyGe.Point3d :
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -50932,7 +50932,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -51003,7 +51003,7 @@ class RasterImage(Image):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -51030,7 +51030,7 @@ class RasterImage(Image):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -51054,7 +51054,7 @@ class RasterImage(Image):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -51071,10 +51071,10 @@ class RasterImage(Image):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -51127,7 +51127,7 @@ class RasterImage(Image):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getOrientation (self)-> tuple :
       '''                             '''
@@ -51324,10 +51324,10 @@ class RasterImage(Image):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -51507,7 +51507,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -51569,7 +51569,7 @@ class RasterImageDef(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -51587,7 +51587,7 @@ class RasterImageDef(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -51604,7 +51604,7 @@ class RasterImageDef(DbObject):
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -51621,10 +51621,10 @@ class RasterImageDef(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -51651,7 +51651,7 @@ class RasterImageDef(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -51755,10 +51755,10 @@ class RasterImageDef(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -51852,7 +51852,7 @@ class RasterImageDef(DbObject):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -51905,7 +51905,7 @@ class RasterImageDefReactor(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -51923,7 +51923,7 @@ class RasterImageDefReactor(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -51935,7 +51935,7 @@ class RasterImageDefReactor(DbObject):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -51952,10 +51952,10 @@ class RasterImageDefReactor(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -51973,7 +51973,7 @@ class RasterImageDefReactor(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -52063,10 +52063,10 @@ class RasterImageDefReactor(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -52127,7 +52127,7 @@ class RasterImageDefReactor(DbObject):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -52183,7 +52183,7 @@ class RegAppTable(SymbolTable):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -52201,7 +52201,7 @@ class RegAppTable(SymbolTable):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -52213,7 +52213,7 @@ class RegAppTable(SymbolTable):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -52230,10 +52230,10 @@ class RegAppTable(SymbolTable):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -52254,7 +52254,7 @@ class RegAppTable(SymbolTable):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -52347,10 +52347,10 @@ class RegAppTable(SymbolTable):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -52412,7 +52412,7 @@ class RegAppTable(SymbolTable):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -52465,7 +52465,7 @@ class RegAppTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -52483,7 +52483,7 @@ class RegAppTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -52495,7 +52495,7 @@ class RegAppTableRecord(SymbolTableRecord):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -52512,10 +52512,10 @@ class RegAppTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -52533,7 +52533,7 @@ class RegAppTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getName (self)-> str :
       '''                             '''
@@ -52638,10 +52638,10 @@ class RegAppTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -52700,7 +52700,7 @@ class RegAppTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -52759,7 +52759,7 @@ class Region(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -52780,7 +52780,7 @@ class Region(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -52806,7 +52806,7 @@ class Region(Entity):
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -52823,10 +52823,10 @@ class Region(Entity):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -52876,7 +52876,7 @@ class Region(Entity):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -53034,10 +53034,10 @@ class Region(Entity):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -53157,7 +53157,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -53403,7 +53403,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
     def cast (self, *args, **kwargs)-> PyDb.RevolvedSurface :
       '''cast( (RxObject)arg1) -> RevolvedSurface :
@@ -53427,7 +53427,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbRevolvedSurface cloneFrom(class PyRxObject)'''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -53466,7 +53466,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbObjectId creationActionBodyId(class PyDbSurface {lvalue})'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -53484,10 +53484,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -53549,7 +53549,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPerimeter (self, *args, **kwargs)-> float :
       '''getPerimeter( (Surface)arg1) -> float :
@@ -53722,10 +53722,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class boost::python::list modificationActionBodyIds(class PyDbSurface {lvalue})'''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -53881,7 +53881,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
         unsigned short uIsolineDensity(class PyDbSurface {lvalue})'''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -54022,7 +54022,7 @@ class RotatedDimension(Dimension):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -54046,7 +54046,7 @@ class RotatedDimension(Dimension):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -54067,7 +54067,7 @@ class RotatedDimension(Dimension):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -54108,10 +54108,10 @@ class RotatedDimension(Dimension):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -54193,7 +54193,7 @@ class RotatedDimension(Dimension):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -54387,13 +54387,13 @@ class RotatedDimension(Dimension):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def oblique (self)-> float :
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -54755,7 +54755,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -54906,7 +54906,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
     def cast (self, *args, **kwargs)-> PyDb.SequenceEnd :
       '''cast( (RxObject)arg1) -> SequenceEnd :
@@ -54930,7 +54930,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbSequenceEnd cloneFrom(class PyRxObject)'''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -54951,7 +54951,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -54969,10 +54969,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -55022,7 +55022,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -55177,10 +55177,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -55300,7 +55300,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -55570,7 +55570,7 @@ class Solid3d(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
     def cast (self, *args, **kwargs)-> PyDb.Solid3d :
       '''cast( (RxObject)arg1) -> Solid3d :
@@ -55612,7 +55612,7 @@ class Solid3d(Entity):
         class PyDb3dSolid cloneFrom(class PyRxObject)'''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -55736,7 +55736,7 @@ createSweptSolid( (Solid3d)arg1, (Entity)arg2, (SubentId)arg3, (Entity)arg4, (Sw
         void createWedge(class PyDb3dSolid {lvalue},double,double,double)'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -55754,10 +55754,10 @@ createSweptSolid( (Solid3d)arg1, (Entity)arg2, (SubentId)arg3, (Entity)arg4, (Sw
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -55853,7 +55853,7 @@ extrudeAlongPath( (Solid3d)arg1, (Region)arg2, (Curve)arg3, (float)arg4) -> None
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getMassProp (self, *args, **kwargs)-> tuple :
       '''getMassProp( (Solid3d)arg1) -> tuple :
@@ -56061,7 +56061,7 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
         unsigned int numChanges(class PyDb3dSolid {lvalue})'''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def offsetBody (self, *args, **kwargs)-> None :
       '''offsetBody( (Solid3d)arg1, (float)arg2) -> None :
@@ -56076,7 +56076,7 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
         void offsetFaces(class PyDb3dSolid {lvalue},class boost::python::list,double)'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -56279,7 +56279,7 @@ stlOut( (Solid3d)arg1, (str)arg2, (bool)arg3, (float)arg4) -> None :
         void transformFaces(class PyDb3dSolid {lvalue},class boost::python::list,class AcGeMatrix3d)'''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -56341,7 +56341,7 @@ class SpatialFilter(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -56362,7 +56362,7 @@ class SpatialFilter(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -56374,7 +56374,7 @@ class SpatialFilter(DbObject):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -56391,10 +56391,10 @@ class SpatialFilter(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -56418,7 +56418,7 @@ class SpatialFilter(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getOriginalInverseBlockXform (self)-> PyGe.Matrix3d :
       '''                             '''
@@ -56523,10 +56523,10 @@ class SpatialFilter(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryBounds (self, ref : PyDb.BlockReference=None)-> PyDb.Extents :
       '''                             '''
@@ -56594,7 +56594,7 @@ class SpatialFilter(DbObject):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -56703,7 +56703,7 @@ class Spline(Curve):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -56724,7 +56724,7 @@ class Spline(Curve):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -56750,7 +56750,7 @@ class Spline(Curve):
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -56770,10 +56770,10 @@ class Spline(Curve):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -56879,7 +56879,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getNurbsData (self)-> tuple :
       '''                             '''
@@ -57129,10 +57129,10 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -57328,7 +57328,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -57633,7 +57633,7 @@ class SubDMesh(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
     def cap (self, *args, **kwargs)-> None :
       '''cap( (SubDMesh)arg1, (list)arg2) -> None :
@@ -57660,7 +57660,7 @@ class SubDMesh(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collapse (self, *args, **kwargs)-> None :
       '''collapse( (SubDMesh)arg1, (SubentId)arg2) -> None :
@@ -57710,7 +57710,7 @@ convertToSurface( (SubDMesh)arg1, (bool)arg2, (bool)arg3) -> Surface :
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -57727,10 +57727,10 @@ convertToSurface( (SubDMesh)arg1, (bool)arg2, (bool)arg3) -> Surface :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -57831,7 +57831,7 @@ getCrease( (SubDMesh)arg1, (SubentId)arg2) -> float :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getNormalArray (self)-> list :
       '''                             '''
@@ -58071,10 +58071,10 @@ getVertexAt( (SubDMesh)arg1, (SubentId)arg2) -> Point3d :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -58317,7 +58317,7 @@ subdRefine( (SubDMesh)arg1, (list)arg2) -> None :
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -58482,7 +58482,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
     def cast (self, *args, **kwargs)-> PyDb.Surface :
       '''cast( (RxObject)arg1) -> Surface :
@@ -58506,7 +58506,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbSurface cloneFrom(class PyRxObject)'''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -58545,7 +58545,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbObjectId creationActionBodyId(class PyDbSurface {lvalue})'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -58563,10 +58563,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -58628,7 +58628,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPerimeter (self, *args, **kwargs)-> float :
       '''getPerimeter( (Surface)arg1) -> float :
@@ -58801,10 +58801,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class boost::python::list modificationActionBodyIds(class PyDbSurface {lvalue})'''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -58960,7 +58960,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
         unsigned short uIsolineDensity(class PyDbSurface {lvalue})'''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -59352,7 +59352,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
     def cast (self, *args, **kwargs)-> PyDb.SweptSurface :
       '''cast( (RxObject)arg1) -> SweptSurface :
@@ -59376,7 +59376,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbSweptSurface cloneFrom(class PyRxObject)'''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -59415,7 +59415,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbObjectId creationActionBodyId(class PyDbSurface {lvalue})'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -59433,10 +59433,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -59498,7 +59498,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPerimeter (self, *args, **kwargs)-> float :
       '''getPerimeter( (Surface)arg1) -> float :
@@ -59671,10 +59671,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class boost::python::list modificationActionBodyIds(class PyDbSurface {lvalue})'''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -59830,7 +59830,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
         unsigned short uIsolineDensity(class PyDbSurface {lvalue})'''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -60029,7 +60029,7 @@ class SymbolTable(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
     def cast (self, *args, **kwargs)-> PyDb.SymbolTable :
       '''cast( (RxObject)arg1) -> SymbolTable :
@@ -60050,7 +60050,7 @@ class SymbolTable(DbObject):
         class PyDbSymbolTable cloneFrom(class PyRxObject)'''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -60062,7 +60062,7 @@ class SymbolTable(DbObject):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -60080,10 +60080,10 @@ class SymbolTable(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -60104,7 +60104,7 @@ class SymbolTable(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -60197,10 +60197,10 @@ class SymbolTable(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -60262,7 +60262,7 @@ class SymbolTable(DbObject):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -60315,7 +60315,7 @@ class SymbolTableRecord(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -60333,7 +60333,7 @@ class SymbolTableRecord(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -60345,7 +60345,7 @@ class SymbolTableRecord(DbObject):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -60362,10 +60362,10 @@ class SymbolTableRecord(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -60383,7 +60383,7 @@ class SymbolTableRecord(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getName (self)-> str :
       '''                             '''
@@ -60488,10 +60488,10 @@ class SymbolTableRecord(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -60550,7 +60550,7 @@ class SymbolTableRecord(DbObject):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -60687,7 +60687,7 @@ class Table(BlockReference):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -60766,7 +60766,7 @@ class Table(BlockReference):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -60832,7 +60832,7 @@ class Table(BlockReference):
     '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -60875,10 +60875,10 @@ class Table(BlockReference):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -61006,7 +61006,7 @@ class Table(BlockReference):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getMergeRange (self, row: int, col: int)-> PyDb.CellRange :
       '''                             '''
@@ -61336,10 +61336,10 @@ class Table(BlockReference):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -61931,7 +61931,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -62133,7 +62133,7 @@ class TableStyle(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -62154,7 +62154,7 @@ class TableStyle(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
 
     @overload
@@ -62194,7 +62194,7 @@ class TableStyle(DbObject):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -62217,10 +62217,10 @@ class TableStyle(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -62275,7 +62275,7 @@ class TableStyle(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getName (self)-> str :
       '''                             '''
@@ -62437,10 +62437,10 @@ class TableStyle(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def postTableStyleToDb (self, db: PyDb.Database, styleName: str)-> PyDb.ObjectId :
       '''                             '''
@@ -62697,7 +62697,7 @@ class TableStyle(DbObject):
     '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -62785,7 +62785,7 @@ class Text(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -62806,7 +62806,7 @@ class Text(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -62833,7 +62833,7 @@ class Text(Entity):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -62850,10 +62850,10 @@ class Text(Entity):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -62906,7 +62906,7 @@ class Text(Entity):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -63091,13 +63091,13 @@ class Text(Entity):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def oblique (self)-> float :
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -63271,7 +63271,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -63415,7 +63415,7 @@ class TextStyleTable(SymbolTable):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -63433,7 +63433,7 @@ class TextStyleTable(SymbolTable):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -63445,7 +63445,7 @@ class TextStyleTable(SymbolTable):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -63462,10 +63462,10 @@ class TextStyleTable(SymbolTable):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -63486,7 +63486,7 @@ class TextStyleTable(SymbolTable):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -63579,10 +63579,10 @@ class TextStyleTable(SymbolTable):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -63644,7 +63644,7 @@ class TextStyleTable(SymbolTable):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -63700,7 +63700,7 @@ class TextStyleTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -63718,7 +63718,7 @@ class TextStyleTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -63730,7 +63730,7 @@ class TextStyleTableRecord(SymbolTableRecord):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -63747,10 +63747,10 @@ class TextStyleTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -63777,7 +63777,7 @@ class TextStyleTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getName (self)-> str :
       '''                             '''
@@ -63888,13 +63888,13 @@ class TextStyleTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def obliquingAngle (self)-> float :
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def priorSize (self)-> float :
       '''                             '''
@@ -63995,7 +63995,7 @@ class TextStyleTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -64503,7 +64503,7 @@ class UCSTable(SymbolTable):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -64521,7 +64521,7 @@ class UCSTable(SymbolTable):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -64533,7 +64533,7 @@ class UCSTable(SymbolTable):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -64550,10 +64550,10 @@ class UCSTable(SymbolTable):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -64574,7 +64574,7 @@ class UCSTable(SymbolTable):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -64667,10 +64667,10 @@ class UCSTable(SymbolTable):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -64732,7 +64732,7 @@ class UCSTable(SymbolTable):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -64785,7 +64785,7 @@ class UCSTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -64803,7 +64803,7 @@ class UCSTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -64815,7 +64815,7 @@ class UCSTableRecord(SymbolTableRecord):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -64832,10 +64832,10 @@ class UCSTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -64853,7 +64853,7 @@ class UCSTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getName (self)-> str :
       '''                             '''
@@ -64958,13 +64958,13 @@ class UCSTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def origin (self)-> PyGe.Point3d :
       '''                             '''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -65038,7 +65038,7 @@ class UCSTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -65097,7 +65097,7 @@ class UnderlayDefinition(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -65115,7 +65115,7 @@ class UnderlayDefinition(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -65127,7 +65127,7 @@ class UnderlayDefinition(DbObject):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -65149,10 +65149,10 @@ class UnderlayDefinition(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -65173,7 +65173,7 @@ class UnderlayDefinition(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getItemName (self)-> str :
       '''                             '''
@@ -65275,10 +65275,10 @@ class UnderlayDefinition(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -65343,7 +65343,7 @@ class UnderlayDefinition(DbObject):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -65422,7 +65422,7 @@ class UnderlayReference(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -65446,7 +65446,7 @@ class UnderlayReference(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -65480,7 +65480,7 @@ class UnderlayReference(Entity):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -65500,10 +65500,10 @@ class UnderlayReference(Entity):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -65574,7 +65574,7 @@ class UnderlayReference(Entity):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -65759,10 +65759,10 @@ class UnderlayReference(Entity):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -65948,7 +65948,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -66293,7 +66293,7 @@ class Vertex(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -66314,7 +66314,7 @@ class Vertex(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -66335,7 +66335,7 @@ class Vertex(Entity):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -66352,10 +66352,10 @@ class Vertex(Entity):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -66405,7 +66405,7 @@ class Vertex(Entity):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -66560,10 +66560,10 @@ class Vertex(Entity):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -66683,7 +66683,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -66765,7 +66765,7 @@ class Vertex2d(Vertex):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -66786,7 +66786,7 @@ class Vertex2d(Vertex):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -66807,7 +66807,7 @@ class Vertex2d(Vertex):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -66824,10 +66824,10 @@ class Vertex2d(Vertex):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -66880,7 +66880,7 @@ class Vertex2d(Vertex):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getPlane (self)-> PyGe.Plane :
       '''                             '''
@@ -67041,10 +67041,10 @@ class Vertex2d(Vertex):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -67194,7 +67194,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -67282,7 +67282,7 @@ class ViewTable(AbstractViewTable):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -67300,7 +67300,7 @@ class ViewTable(AbstractViewTable):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -67312,7 +67312,7 @@ class ViewTable(AbstractViewTable):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -67329,10 +67329,10 @@ class ViewTable(AbstractViewTable):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -67353,7 +67353,7 @@ class ViewTable(AbstractViewTable):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -67446,10 +67446,10 @@ class ViewTable(AbstractViewTable):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -67511,7 +67511,7 @@ class ViewTable(AbstractViewTable):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -67603,7 +67603,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -67624,7 +67624,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -67639,7 +67639,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -67662,10 +67662,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -67698,7 +67698,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getLayerState (self)-> str :
       '''                             '''
@@ -67842,10 +67842,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def perspectiveEnabled (self)-> bool :
       '''                             '''
@@ -68048,7 +68048,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -68134,7 +68134,7 @@ class Viewport(Entity):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -68161,7 +68161,7 @@ class Viewport(Entity):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -68191,7 +68191,7 @@ class Viewport(Entity):
       '''                             '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -68211,10 +68211,10 @@ class Viewport(Entity):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -68282,7 +68282,7 @@ class Viewport(Entity):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getLabelBlock (self)-> PyDb.ObjectId :
       '''                             '''
@@ -68545,10 +68545,10 @@ class Viewport(Entity):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotAsRaster (self)-> bool :
       '''                             '''
@@ -69005,7 +69005,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -69082,7 +69082,7 @@ class ViewportTable(AbstractViewTable):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -69100,7 +69100,7 @@ class ViewportTable(AbstractViewTable):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -69112,7 +69112,7 @@ class ViewportTable(AbstractViewTable):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -69129,10 +69129,10 @@ class ViewportTable(AbstractViewTable):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -69153,7 +69153,7 @@ class ViewportTable(AbstractViewTable):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -69246,10 +69246,10 @@ class ViewportTable(AbstractViewTable):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -69311,7 +69311,7 @@ class ViewportTable(AbstractViewTable):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -69397,7 +69397,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -69421,7 +69421,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -69436,7 +69436,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -69456,10 +69456,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -69492,7 +69492,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getName (self)-> str :
       '''                             '''
@@ -69657,10 +69657,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def perspectiveEnabled (self)-> bool :
       '''                             '''
@@ -69936,7 +69936,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -70087,7 +70087,7 @@ class Wipeout(RasterImage):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -70114,7 +70114,7 @@ class Wipeout(RasterImage):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def collisionType (self)-> PyDb.CollisionType :
       '''                             '''
@@ -70138,7 +70138,7 @@ class Wipeout(RasterImage):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -70155,10 +70155,10 @@ class Wipeout(RasterImage):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def draw (self)-> None :
       '''                             '''
@@ -70214,7 +70214,7 @@ class Wipeout(RasterImage):
     '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def getOrientation (self)-> tuple :
       '''                             '''
@@ -70411,10 +70411,10 @@ class Wipeout(RasterImage):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def plotStyleName (self)-> str :
       '''                             '''
@@ -70597,7 +70597,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
@@ -70656,7 +70656,7 @@ class Xrecord(DbObject):
       '''                             '''
     ...
     def cancel (self)-> None :
-      '''                             '''
+      '''Terminates the current open operation. All changes made to the object since it was opened are undone, the object is marked as closed, and "cancel" notification is sent.Returns Acad::eOk if successful.'''
     ...
 
     @staticmethod
@@ -70674,7 +70674,7 @@ class Xrecord(DbObject):
       '''                             '''
     ...
     def close (self)-> None :
-      '''                             '''
+      '''Closes the object. All changes made to the object since it was opened are committed to the database, the object is marked as pageable, and a "closed" notification (as well as any other appropriate notification such as "modified", "erased", and so on) is sent.Returns Acad::eOk if successful.If the object is not in an AcDbDatabase yet, then Acad::eNoDatabase is returned.If the object is sending notification, then Acad::eCloseWasNotifying is returned.If the subClose() call made within the close() method returns anything other than Acad::eOk, then that ErrorStatus is returned.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -70686,7 +70686,7 @@ class Xrecord(DbObject):
       '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
     ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
@@ -70703,10 +70703,10 @@ class Xrecord(DbObject):
       '''                             '''
     ...
     def downgradeOpen (self)-> None :
-      '''                             '''
+      '''Downgrades the object from being open AcDb::kForWrite, to being AcDb::kForRead. In the process, all changes made to the object while it was open for write are committed to the database and appropriate notification is sent.'''
     ...
     def downgradeToNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Restores an object from being open both AcDb::kForNotify and AcDb::kForWrite, to being open just AcDb::kForNotify. The wasWritable value that was returned from the matching AcDbObject::upgradeFromNotify() call should be passed into this function to restore the proper open status.This function must have been preceded by a call to upgradeFromNotify().Returns Acad::eOk if successful.'''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
       '''                             '''
@@ -70724,7 +70724,7 @@ class Xrecord(DbObject):
       '''                             '''
     ...
     def getHandle (self)-> PyDb.Handle :
-      '''                             '''
+      '''Fills in handle with the handle value for the object. If the object is not yet database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this condition.'''
     ...
     def handOverTo (self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool)-> None :
       '''                             '''
@@ -70820,10 +70820,10 @@ class Xrecord(DbObject):
       '''                             '''
     ...
     def objectId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the object. If the object is not yet database-resident, then the returned objectId will be set to AcDbObjectId::kNull.'''
     ...
     def ownerId (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''Returns the objectId of the owner of the object. If the object does not yet have an owner, or the ownerId data member has not yet been set using AcDbObject::setOwnerId, then the returned objectId will be set to AcDbObjectId::kNull.Appending the object to a BlockTable record, a symbol table, or a dictionary automatically calls AcDbObject::setOwnerId.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -70891,7 +70891,7 @@ class Xrecord(DbObject):
       '''                             '''
     ...
     def upgradeFromNotify (self, wasWritable: bool)-> None :
-      '''                             '''
+      '''Upgrades the object from being at least open AcDb::kForNotify to being open both AcDb::kForNotify and AcDb::kForWrite. The wasWritable argument is set to Adesk::kTrue if the object was already open for write, otherwise it's set to Adesk::kFalse. The wasWritable value should be saved to be passed into the downgradeToNotify() call later.This function must be followed at some point by a call to downgradeToNotify() with no open() (in any of its forms) or close() calls in between.This method should only be called from within other methods of the same object it is being called from. In other words, this method is intended to be used by an object to change it's own open status so that it can safely modify itself.upgradeFromNotify() and downgradeToNotify() call pairs are not nestable.Returns Acad::eOk if successful. If the object is not currently open AcDb::kForNotify, then Acad::eNotApplicable is returned. If the object is currently in the process of actually sending notification (that is, isNotifying() returns Adesk::kTrue), then Acad::eWasNotifying is returned.'''
     ...
     def upgradeOpen (self)-> None :
       '''If the object is currently open AcDb::kForRead with only one reader, then this function upgrades the object to open AcDb::kForWrite. In the process of changing to open for write, the object is closed, thus triggering any pertinent notification.Returns Acad::eOk if successful. If the object has more than one reader, then the open status is not changed and Adesk::eHadMultipleReaders is returned. If the object is already open AcDb::kForWrite, then Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then the open status is not changed and Acad::eWasNotifying is returned.'''
