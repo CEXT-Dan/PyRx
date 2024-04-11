@@ -20,6 +20,11 @@ void makePyDbEntityWrapper()
         "- None: Any\n"
         "- curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int\n";
 
+    constexpr const std::string_view setPlotStyleNameOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- nameType: PyDb.PlotStyleNameType, doSubents: bool\n"
+        "- nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool\n";
+
     PyDocString DS("PyDb.Entity");
     class_<PyDbEntity, bases<PyDbObject>>("Entity", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
@@ -46,7 +51,7 @@ void makePyDbEntityWrapper()
         .def("getPlotStyleNameId", &PyDbEntity::getPlotStyleNameId, DS.ARGS(4314))
         .def("setPlotStyleName", &PyDbEntity::setPlotStyleName1)
         .def("setPlotStyleName", &PyDbEntity::setPlotStyleName2)
-        .def("setPlotStyleName", &PyDbEntity::setPlotStyleName3)
+        .def("setPlotStyleName", &PyDbEntity::setPlotStyleName3, DS.OVRL(setPlotStyleNameOverloads, 4358))
         .def("linetype", &PyDbEntity::linetype, DS.ARGS(4330))
         .def("linetypeId", &PyDbEntity::linetypeId, DS.ARGS(4331))
         .def("setLinetype", &PyDbEntity::setLinetype1)
@@ -82,7 +87,7 @@ void makePyDbEntityWrapper()
         .def("intersectWith", &PyDbEntity::intersectWith1)
         .def("intersectWith", &PyDbEntity::intersectWith2)
         .def("intersectWith", &PyDbEntity::intersectWith3)
-        .def("intersectWith", &PyDbEntity::intersectWith4, DS.OVRL(intersectOverloads))
+        .def("intersectWith", &PyDbEntity::intersectWith4, DS.OVRL(intersectOverloads, 4324))
         .def("transformBy", &PyDbEntity::transformBy, DS.ARGS({ "matrix3d: PyGe.Matrix3d" }, 4398))
         .def("recordGraphicsModified", &PyDbEntity::recordGraphicsModified, DS.ARGS(4346))
         .def("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults1)
@@ -97,7 +102,7 @@ void makePyDbEntityWrapper()
         .def("removeReactor", &PyDbEntity::removeReactor, DS.ARGS({ "reactor: PyDb.EntityReactor" }))
         .def("getStretchPoints", &PyDbEntity::getStretchPoints, DS.ARGS(4315))
         .def("getGripPoints", &PyDbEntity::getGripPoints1)
-        .def("getGripPoints", &PyDbEntity::getGripPoints2, DS.OVRL(getGripPointsOverloads))
+        .def("getGripPoints", &PyDbEntity::getGripPoints2, DS.OVRL(getGripPointsOverloads, 4308))
         .def("addSubentPaths", &PyDbEntity::addSubentPaths, DS.ARGS({ "paths: list[PyDb.FullSubentPath]" }, 4283))
         .def("getSubentPathsAtGsMarker", &PyDbEntity::getSubentPathsAtGsMarker1, DS.ARGS({ "type: PyDb.SubentType","gsMark: int","pickPoint: PyGe.Point3d","viewXform: PyGe.Matrix3d" }, 4318))
         .def("highlight", &PyDbEntity::highlight1)
