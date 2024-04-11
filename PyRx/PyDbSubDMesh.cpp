@@ -76,7 +76,7 @@ void makePyDbSubDMeshWrapper()
         .def("computeSurfaceArea", &PyDbSubDMesh::computeSurfaceArea, DS.ARGS())
 
         .def("className", &PyDbSubDMesh::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbSubDMesh::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbSubDMesh::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbSubDMesh::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbSubDMesh::cast, DS.SARGS({ "otherObject:  PyRx.RxObject" })).staticmethod("cast")
         ;

@@ -183,7 +183,7 @@ void makePyDbTableStyleWrapper()
         .def("setTemplate", &PyDbTableStyle::setTemplate, DS.ARGS({ "id: PyDb.ObjectId" , "nOption: PyDb.MergeCellStyleOption" }))
         .def("removeTemplate", &PyDbTableStyle::removeTemplate, DS.ARGS())
         .def("className", &PyDbTableStyle::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbTableStyle::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbTableStyle::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbTableStyle::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbTableStyle::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;

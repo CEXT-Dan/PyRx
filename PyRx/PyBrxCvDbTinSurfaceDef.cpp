@@ -27,7 +27,7 @@ void makePyBrxCvDbTinSurfaceDefinitionWrapper()
         .def("setReadOnly", &PyBrxCvDbTinSurfaceDefinition::setReadOnly, DS.ARGS({ "val : bool" }))
         .def("id", &PyBrxCvDbTinSurfaceDefinition::id, DS.ARGS())
         .def("className", &PyBrxCvDbTinSurfaceDefinition::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinition::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinition::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinition::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -139,7 +139,7 @@ void makePyBrxCvDbTinSurfaceDefinitionGroupDefsWrapper()
         .def("getSubDefinitionAt", &PyBrxCvDbTinSurfaceDefinitionGroupDefs::getSubDefinitionAt, DS.ARGS({ "index : int" }))
         .def("removeSubDefinitionAt", &PyBrxCvDbTinSurfaceDefinitionGroupDefs::removeSubDefinitionAt, DS.ARGS({ "index : int" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionGroupDefs::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionGroupDefs::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionGroupDefs::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionGroupDefs::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -218,7 +218,7 @@ void makePyBrxCvDbTinSurfaceDefinitionTransformWrapper()
         .def("transformationMatrix", &PyBrxCvDbTinSurfaceDefinitionTransform::transformationMatrix, DS.ARGS())
         .def("setTransformationMatrix", &PyBrxCvDbTinSurfaceDefinitionTransform::setTransformationMatrix, DS.ARGS({ "xform : PyGe.Matrix3d" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionTransform::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionTransform::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionTransform::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionTransform::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -282,7 +282,7 @@ void makePyBrxCvDbTinSurfaceDefinitionAddPointWrapper()
         .def("position", &PyBrxCvDbTinSurfaceDefinitionAddPoint::position, DS.ARGS())
         .def("setPosition", &PyBrxCvDbTinSurfaceDefinitionAddPoint::setPosition, DS.ARGS({ "pt : PyGe.Point3d" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionAddPoint::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddPoint::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddPoint::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddPoint::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -346,7 +346,7 @@ void makePyBrxCvDbTinSurfaceDefinitionAddPointsWrapper()
         .def("positions", &PyBrxCvDbTinSurfaceDefinitionAddPoints::positions, DS.ARGS())
         .def("setPositions", &PyBrxCvDbTinSurfaceDefinitionAddPoints::setPositions, DS.ARGS({ "pt : list[PyGe.Point3d]" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionAddPoints::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddPoints::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddPoints::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddPoints::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -410,7 +410,7 @@ void makePyBrxCvDbTinSurfaceDefinitionDeletePointWrapper()
         .def("position", &PyBrxCvDbTinSurfaceDefinitionDeletePoint::position, DS.ARGS())
         .def("setPosition", &PyBrxCvDbTinSurfaceDefinitionDeletePoint::setPosition, DS.ARGS({ "pt : PyGe.Point2d" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionDeletePoint::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionDeletePoint::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionDeletePoint::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionDeletePoint::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -474,7 +474,7 @@ void makePyBrxCvDbTinSurfaceDefinitionDeletePointsWrapper()
         .def("positions", &PyBrxCvDbTinSurfaceDefinitionDeletePoints::positions, DS.ARGS())
         .def("setPositions", &PyBrxCvDbTinSurfaceDefinitionDeletePoints::setPositions, DS.ARGS({ "pt : list[PyGe.Point2d]" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionDeletePoints::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionDeletePoints::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionDeletePoints::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionDeletePoints::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -538,7 +538,7 @@ void makePyBrxCvDbTinSurfaceDefinitionSwapEdgeWrapper()
         .def("position", &PyBrxCvDbTinSurfaceDefinitionSwapEdge::position, DS.ARGS())
         .def("setPosition", &PyBrxCvDbTinSurfaceDefinitionSwapEdge::setPosition, DS.ARGS({ "pt : PyGe.Point2d" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionSwapEdge::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionSwapEdge::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionSwapEdge::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionSwapEdge::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -604,7 +604,7 @@ void makePyBrxCvDbTinSurfaceDefinitionMovePointWrapper()
         .def("toPosition", &PyBrxCvDbTinSurfaceDefinitionMovePoint::toPosition, DS.ARGS())
         .def("setToPosition", &PyBrxCvDbTinSurfaceDefinitionMovePoint::setToPosition, DS.ARGS({ "pt : PyGe.Point2d" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionMovePoint::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionMovePoint::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionMovePoint::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionMovePoint::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -682,7 +682,7 @@ void makePyBrxCvDbTinSurfaceDefinitionMovePointsWrapper()
         .def("setDisplacement", &PyBrxCvDbTinSurfaceDefinitionMovePoints::setDisplacement, DS.ARGS({ "vec : PyGe.Vector3d" }))
 
         .def("className", &PyBrxCvDbTinSurfaceDefinitionMovePoints::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionMovePoints::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionMovePoints::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionMovePoints::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -756,7 +756,7 @@ void makePyBrxCvDbTinSurfaceDefinitionDeleteEdgeWrapper()
         .def("position", &PyBrxCvDbTinSurfaceDefinitionDeleteEdge::position, DS.ARGS())
         .def("setPosition", &PyBrxCvDbTinSurfaceDefinitionDeleteEdge::setPosition, DS.ARGS({ "pt : PyGe.Point2d" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionDeleteEdge::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionDeleteEdge::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionDeleteEdge::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionDeleteEdge::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -822,7 +822,7 @@ void makePyBrxCvDbTinSurfaceDefinitionDeleteEdgesWrapper()
         .def("removePolygonAt", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::removePolygonAt, DS.ARGS({ "index : int" }))
         .def("removeAllPolygons", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::removeAllPolygons, DS.ARGS())
         .def("className", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionDeleteEdges::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -899,7 +899,7 @@ void makePyBrxCvDbTinSurfaceDefinitionAddLineWrapper()
         .def("line", &PyBrxCvDbTinSurfaceDefinitionAddLine::line, DS.ARGS())
         .def("setLine", &PyBrxCvDbTinSurfaceDefinitionAddLine::setLine, DS.ARGS({ "line : PyGe.LineSeg2d" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionAddLine::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddLine::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddLine::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddLine::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -963,7 +963,7 @@ void makePyBrxCvDbTinSurfaceDefinitionAddLinesWrapper()
         .def("lines", &PyBrxCvDbTinSurfaceDefinitionAddLines::lines, DS.ARGS())
         .def("setLines", &PyBrxCvDbTinSurfaceDefinitionAddLines::setLines, DS.ARGS({ "lines : list[PyGe.LineSeg2d]" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionAddLines::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddLines::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddLines::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddLines::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1031,7 +1031,7 @@ void makePyBrxCvDbTinSurfaceDefinitionModifyPointElevationWrapper()
         .def("isDeltaElevation", &PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::isDeltaElevation, DS.ARGS())
         .def("setIsDeltaElevation", &PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::setIsDeltaElevation, DS.ARGS({ "val : float" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1118,7 +1118,7 @@ void makePyBrxCvDbTinSurfaceDefinitionModifyPointsElevationWrapper()
         .def("setElevation", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::setElevation, DS.ARGS({ "val : float" }))
         .def("isDeltaElevation", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::isDeltaElevation, DS.ARGS())
         .def("className", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1204,7 +1204,7 @@ void makePyBrxCvDbTinSurfaceDefinitionModifyPointsElevationsWrapper()
         .def("removePointElevationAt", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::removePointElevationAt)
         .def("removeAllPointElevations", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::removeAllPointElevations)
         .def("className", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1285,7 +1285,7 @@ void makePyBrxCvDbTinSurfaceDefinitionCreateFromFacesWrapper()
         .def("isApplyEdgesVisibility", &PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::isApplyEdgesVisibility)
         .def("setIsApplyEdgesVisibility", &PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::setIsApplyEdgesVisibility)
         .def("className", &PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1375,7 +1375,7 @@ void makePyBrxCvDbTinSurfaceDefinitionAddDrawingObjectsWrapper()
         .def("removeDrawingObjectAt", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::removeDrawingObjectAt, DS.ARGS({ "idx : int" }))
         .def("removeAllDrawingObjects", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::removeAllDrawingObjects, DS.ARGS())
         .def("className", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1483,7 +1483,7 @@ void makePyBrxCvDbTinSurfaceDefinitionRiseLowerWrapper()
         .def("offset", &PyBrxCvDbTinSurfaceDefinitionRiseLower::offset, DS.ARGS())
         .def("setOffset", &PyBrxCvDbTinSurfaceDefinitionRiseLower::setOffset, DS.ARGS({ "val : float" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionRiseLower::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionRiseLower::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionRiseLower::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionRiseLower::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1553,7 +1553,7 @@ void makePyBrxCvDbTinSurfaceDefinitionCreateFromLandXMLWrapper()
         .def("dwgUnits", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::dwgUnits, DS.ARGS())
         .def("dwgUnits", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::dwgUnits, DS.ARGS({ "units : PyDb.UnitsValue" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1649,7 +1649,7 @@ void makePyBrxCvDbTinSurfaceDefinitionAddFromFilesWrapper()
         .def("fileFormatId", &PyBrxCvDbTinSurfaceDefinitionAddFromFiles::fileFormatId, DS.ARGS())
         .def("setFileFormatId", &PyBrxCvDbTinSurfaceDefinitionAddFromFiles::setFileFormatId, DS.ARGS({ "id : PyDb.ObjectId" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionAddFromFiles::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddFromFiles::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddFromFiles::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddFromFiles::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1723,7 +1723,7 @@ void makePyBrxCvDbTinSurfaceDefinitionAddFromPointCloudsWrapper()
         .def("pcObjectIds", &PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::pcObjectIds, DS.ARGS())
         .def("setPcObjectIds", &PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::setPcObjectIds, DS.ARGS({ "val : list[PyDb.ObjectId]" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1788,7 +1788,7 @@ void makePyBrxCvDbTinSurfaceDefinitionAddPointGroupsWrapper()
         .def("pointGroupsIds", &PyBrxCvDbTinSurfaceDefinitionAddPointGroups::pointGroupsIds, DS.ARGS())
         .def("setPointGroupsIds", &PyBrxCvDbTinSurfaceDefinitionAddPointGroups::setPointGroupsIds, DS.ARGS({ "val : list[PyDb.ObjectId]" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionAddPointGroups::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddPointGroups::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionAddPointGroups::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionAddPointGroups::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1854,7 +1854,7 @@ void makePyBrxCvDbTinSurfaceDefinitionCreateFromC3DWrapper()
         .def("surfaceName", &PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::surfaceName, DS.ARGS())
         .def("setSurfaceName", &PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::setSurfaceName, DS.ARGS({ "val : str" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1938,7 +1938,7 @@ void makePyBrxCvDbTinSurfaceDefinitionRemoveOuterEdgesWrapper()
         .def("maxAdjAngle", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::maxAdjAngle, DS.ARGS())
         .def("setMaxAdjAngle", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setMaxAdjAngle, DS.ARGS({ "val : float" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -2054,7 +2054,7 @@ void makePyBrxCvDbTinSurfaceDefinitionTrianglesVisibilityWrapper()
         .def("visible", &PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::visible, DS.ARGS())
         .def("setVisible", &PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::setVisible, DS.ARGS({ "val : bool" }))
         .def("className", &PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -2135,7 +2135,7 @@ void makePyBrxCvDbTinSurfaceDefinitionRemoveElevationsWrapper()
         .def("setRemoveAboveElevation", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveAboveElevation, DS.ARGS({ "val : float" }))
         .def("removedPointsCount", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::removedPointsCount, DS.ARGS())
         .def("className", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbTinSurfaceDefinitionRemoveElevations::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }

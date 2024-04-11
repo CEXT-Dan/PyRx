@@ -8,7 +8,7 @@ void makePyDbPointRefWrapper()
 {
     PyDocString DS("PointRef");
     class_<PyDbPointRef, bases<PyRxObject>>("PointRef", boost::python::no_init)
-        .def("desc", &PyDbPointRef::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbPointRef::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbPointRef::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -55,7 +55,7 @@ void makePyDbOsnapPointRefWrapper()
         .def("setIdPath", &PyDbOsnapPointRef::setIdPath)
         .def("setPoint", &PyDbOsnapPointRef::setPoint)
         .def("point", &PyDbOsnapPointRef::point)
-        .def("desc", &PyDbOsnapPointRef::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbOsnapPointRef::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbOsnapPointRef::className, DS.SARGS()).staticmethod("className")
         ;
 #endif

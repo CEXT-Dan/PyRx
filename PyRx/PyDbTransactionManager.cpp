@@ -25,7 +25,7 @@ void makePyDbTransactionManager()
         .def("getObject", &PyDbTransactionManager::getObject2)
         .def("getObject", &PyDbTransactionManager::getObject3, DS.ARGS({ "id: ObjectId","mode: OpenMode=OpenMode.kForRead","openErasedObject: bool=False" }))
         .def("queueForGraphicsFlush", &PyDbTransactionManager::queueForGraphicsFlush, DS.ARGS())
-        .def("desc", &PyDbTransactionManager::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbTransactionManager::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbTransactionManager::className, DS.SARGS()).staticmethod("className")
         ;
 }

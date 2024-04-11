@@ -61,7 +61,7 @@ void makePyDbCurveWrapper()
             DS.SARGS({ "curve: PyGe.Curve3d","normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis","tol: PyGe.Tol = 'default'" })).staticmethod("createFromAcGeCurve")
 
         .def("className", &PyDbCurve::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbCurve::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbCurve::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbCurve::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbCurve::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;

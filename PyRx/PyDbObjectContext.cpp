@@ -23,7 +23,7 @@ void makePyDbObjectContextCollectionWrapper()
         .def("hasContext", &PyDbObjectContextCollection::hasContext, DS.ARGS({ "name : str" }))
         .def("toList", &PyDbObjectContextCollection::toList1)
         .def("toList", &PyDbObjectContextCollection::toList2, DS.ARGS({ "desc:PyRx.RxClass=PyDb.ObjectContext" }))
-        .def("desc", &PyDbObjectContextCollection::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbObjectContextCollection::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbObjectContextCollection::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -149,7 +149,7 @@ void makePyDbObjectContextManagerWrapper()
         .def("registerContextCollection", &PyDbObjectContextManager::registerContextCollection, DS.ARGS({ "name : str","collection : PyDb.ObjectContextCollection" }))
         .def("unregisterContextCollection", &PyDbObjectContextManager::unregisterContextCollection, DS.ARGS({ "name : str" }))
         .def("contextCollection", &PyDbObjectContextManager::contextCollection, DS.ARGS({ "name : str" }))
-        .def("desc", &PyDbObjectContextManager::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbObjectContextManager::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbObjectContextManager::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -202,7 +202,7 @@ void makePyDbObjectContextWrapper()
         .def("setName", &PyDbObjectContext::setName, DS.ARGS({ "name : str" }))
         .def("uniqueIdentifier", &PyDbObjectContext::uniqueIdentifier, DS.ARGS())
         .def("collectionName", &PyDbObjectContext::collectionName, DS.ARGS())
-        .def("desc", &PyDbObjectContext::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbObjectContext::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbObjectContext::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -272,7 +272,7 @@ void makePyDbAnnotationScaleWrapper()
         .def("setPaperUnits", &PyDbAnnotationScale::setPaperUnits, DS.ARGS({ "val : float" }))
         .def("setDrawingUnits", &PyDbAnnotationScale::setDrawingUnits, DS.ARGS({ "val : float" }))
         .def("matchScaleId", &PyDbAnnotationScale::matchScaleId, DS.ARGS({ "val : int" }))
-        .def("desc", &PyDbAnnotationScale::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbAnnotationScale::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbAnnotationScale::className, DS.SARGS()).staticmethod("className")
         .def("cast", &PyDbAnnotationScale::cast, DS.SARGS({ "otherObject: PyDb.ObjectContext" })).staticmethod("cast")
         ;

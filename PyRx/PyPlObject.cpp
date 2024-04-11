@@ -253,7 +253,7 @@ void makePyPlDSDDataWrapper()
         .def("setPromptForPassword", &PyPlDSDData::setPromptForPassword)
         .def("initializeLayouts", &PyPlDSDData::initializeLayouts)
         .def("setInitializeLayouts", &PyPlDSDData::setInitializeLayouts)
-        .def("desc", &PyPlDSDData::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyPlDSDData::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyPlDSDData::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -634,7 +634,7 @@ void makePyPlDSDEntryWrapper()
         .def("orgSheetPath", &PyPlDSDEntry::orgSheetPath)
         .def("traceSession", &PyPlDSDEntry::traceSession)
         .def("setTraceSession", &PyPlDSDEntry::setTraceSession)
-        .def("desc", &PyPlDSDEntry::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyPlDSDEntry::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyPlDSDEntry::className, DS.SARGS()).staticmethod("className")
         ;
 
@@ -814,7 +814,7 @@ void makePyPlPlotInfoWrapper()
         .def("isValidated", &PyPlPlotInfo::isValidated)
         .def("mergeStatus", &PyPlPlotInfo::mergeStatus)
         .def("OrgFilePath", &PyPlPlotInfo::OrgFilePath)
-        .def("desc", &PyPlPlotInfo::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyPlPlotInfo::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyPlPlotInfo::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -948,7 +948,7 @@ void makePyPlPlotConfigWrapper()
         .def("getDefaultFileExtension", &PyPlPlotConfig::getDefaultFileExtension)
         .def("plotToFileCapability", &PyPlPlotConfig::plotToFileCapability)
         .def("saveToPC3", &PyPlPlotConfig::saveToPC3)
-        .def("desc", &PyPlPlotConfig::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyPlPlotConfig::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyPlPlotConfig::className, DS.SARGS()).staticmethod("className")
         ;
 
@@ -1090,7 +1090,7 @@ void makePyPlPlotPageInfoWrapper()
         .def("oleObjectCount", &PyPlPlotPageInfo::oleObjectCount, DS.SARGS())
         .def("gradientCount", &PyPlPlotPageInfo::gradientCount, DS.SARGS())
         .def("shadedViewportType", &PyPlPlotPageInfo::shadedViewportType, DS.SARGS())
-        .def("desc", &PyPlPlotPageInfo::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyPlPlotPageInfo::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyPlPlotPageInfo::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -1184,7 +1184,7 @@ void makePyPlPlotInfoValidatorWrapper()
         .def("setMediaMatchingThreshold", &PyPlPlotInfoValidator::setMediaMatchingThreshold)
         .def("setDefMediaMatchingThreshold", &PyPlPlotInfoValidator::setDefMediaMatchingThreshold)
         .def("mediaMatchingThreshold", &PyPlPlotInfoValidator::mediaMatchingThreshold)
-        .def("desc", &PyPlPlotInfoValidator::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyPlPlotInfoValidator::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyPlPlotInfoValidator::className, DS.SARGS()).staticmethod("className")
         ;
 
@@ -1398,7 +1398,7 @@ void makePyPlPrecisionEntryWrapper()
         .def("setColorResolution", &PyPlPrecisionEntry::setColorResolution)
         .def("monoResolution", &PyPlPrecisionEntry::monoResolution)
         .def("setMonoResolution", &PyPlPrecisionEntry::setMonoResolution)
-        .def("desc", &PyPlPrecisionEntry::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyPlPrecisionEntry::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyPlPrecisionEntry::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -1532,7 +1532,7 @@ void makePyPlPlotConfigInfoWrapper()
         .def("setDeviceType", &PyPlPlotConfigInfo::setDeviceType)
         .def("deviceId", &PyPlPlotConfigInfo::deviceId)
         .def("setDeviceId", &PyPlPlotConfigInfo::setDeviceId)
-        .def("desc", &PyPlPlotConfigInfo::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyPlPlotConfigInfo::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyPlPlotConfigInfo::className, DS.SARGS()).staticmethod("className")
         ;
 }

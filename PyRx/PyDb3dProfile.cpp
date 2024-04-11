@@ -19,7 +19,7 @@ void makePyDb3dProfileWrapper()
         .def("isFace", &PyDb3dProfile::isFace, DS.ARGS())
         .def("isEdge", &PyDb3dProfile::isEdge, DS.ARGS())
         .def("isValid", &PyDb3dProfile::isValid, DS.ARGS())
-        .def("desc", &PyDb3dProfile::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDb3dProfile::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDb3dProfile::className, DS.SARGS()).staticmethod("className")
         ;
 }

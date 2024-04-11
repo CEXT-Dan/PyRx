@@ -49,7 +49,7 @@ void makePyDbEllipseWrapper()
         .def("set", &PyDbEllipse::set2)
         .def("isNull", &PyDbEllipse::isNull, DS.ARGS())
         .def("className", &PyDbEllipse::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbEllipse::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbEllipse::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbEllipse::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbEllipse::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;

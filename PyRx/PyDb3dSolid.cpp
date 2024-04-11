@@ -477,7 +477,7 @@ void makePyDbRegionWrapper()
         .def("isNull", &PyDbRegion::isNull, DS.ARGS())
         .def("createFromCurves", &PyDbRegion::createFromCurves, DS.SARGS({ "curves: PyDb.Curve" })).staticmethod("createFromCurves")
         .def("className", &PyDbRegion::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbRegion::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbRegion::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbRegion::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbRegion::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;

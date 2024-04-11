@@ -21,7 +21,7 @@ void makePyGiObjectWrapper()
         .def("rolloverHit", &PyGiDrawable::rolloverHit, DS.ARGS({ "nSubentId: int", "nMouseFlags: int", "bReset: bool" }))
         .def("bounds", &PyGiDrawable::bounds, DS.ARGS({ "ext: PyDb.Extents" }))
         .def("className", &PyGiDrawable::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyGiDrawable::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyGiDrawable::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
     enum_<AcGiDrawable::DrawableType>("GiDrawableType")
         .value("kGeometry", AcGiDrawable::DrawableType::kGeometry)

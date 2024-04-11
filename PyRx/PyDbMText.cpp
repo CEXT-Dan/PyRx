@@ -108,7 +108,7 @@ void makePyDbMTextWrapper()
         .def("setHeight", &PyDbMText::setHeight, DS.ARGS({ "val : float" }))
         .def("getFragments", &PyDbMText::getFragments, DS.ARGS())
         .def("className", &PyDbMText::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbMText::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbMText::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbMText::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbMText::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;

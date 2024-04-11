@@ -205,7 +205,7 @@ void makePyDbViewportWrapper()
         .def("plotWireframe", &PyDbViewport::plotWireframe, DS.ARGS())
         .def("plotAsRaster", &PyDbViewport::plotAsRaster, DS.ARGS())
         .def("className", &PyDbViewport::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbViewport::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbViewport::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbViewport::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbViewport::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;

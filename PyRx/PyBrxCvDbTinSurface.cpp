@@ -350,7 +350,7 @@ void makePyBrxCvDbTinSurfaceWrapper()
 
         .def("mergeSurfaces", &PyBrxCvDbTinSurface::mergeSurfaces, DS.SARGS({ "theOne: PyBrxCv.CvDbTinSurface", "theOther: PyBrxCv.CvDbTinSurface" }))
         .def("className", &PyBrxCvDbTinSurface::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbTinSurface::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbTinSurface::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyBrxCvDbTinSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyBrxCvDbTinSurface::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
@@ -960,7 +960,7 @@ void makePyBrxCvDbVolumeSurfaceWrapper()
         .def("depthElevation", &PyBrxCvDbVolumeSurface::depthElevation, DS.ARGS())
 
         .def("className", &PyBrxCvDbVolumeSurface::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbVolumeSurface::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbVolumeSurface::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyBrxCvDbVolumeSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyBrxCvDbVolumeSurface::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
@@ -1125,7 +1125,7 @@ void makePyBrxCvDbGradingWrapper()
         .def("setGradingVisualStyle", &PyBrxCvDbGrading::setGradingVisualStyle, DS.ARGS({ "val : PyBrxCv.GradingVisualStyle" }))
 
         .def("className", &PyBrxCvDbGrading::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbGrading::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbGrading::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyBrxCvDbGrading::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyBrxCvDbGrading::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;

@@ -75,7 +75,7 @@ void makePyDbLeaderWrapper()
         .def("setColorIndex", &PyDbLeader::setColorIndex1)
         .def("setColorIndex", &PyDbLeader::setColorIndex2, DS.ARGS({ "idx: int","dosubents: bool=True" }))
         .def("className", &PyDbLeader::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbLeader::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbLeader::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbLeader::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbLeader::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;

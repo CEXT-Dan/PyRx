@@ -16,7 +16,7 @@ void makePyDbJoinEntityPEWrapper()
         .def("joinEntity", &PyDbJoinEntityPE::joinEntity2, DS.ARGS({ "primaryEntity : PyDb.Entity" , "secondaryEntity : PyDb.Entity", "tol : PyGe.Tol=None" }))
         .def("joinEntities", &PyDbJoinEntityPE::joinEntities1)
         .def("joinEntities", &PyDbJoinEntityPE::joinEntities2, DS.ARGS({ "primaryEntity : PyDb.Entity" , "secondaryEntities : list[PyDb.Entity]", "tol : PyGe.Tol=None" }))
-        .def("desc", &PyDbJoinEntityPE::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbJoinEntityPE::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbJoinEntityPE::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
