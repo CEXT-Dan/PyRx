@@ -5,6 +5,7 @@ import pydoc
 import enum
 import traceback
 from collections import OrderedDict
+import sqlite3
 
 import PyRx  # = Runtime runtime
 import PyGe  # = Geometry
@@ -100,6 +101,28 @@ def findArgs(sig):
     except:
         return ""
     
+def findDocStringKey(sig):
+    try:
+        argb = sig.find('<[{')
+        arge = sig.find('}]>')
+        if argb != -1:
+            return sig[argb+3:arge]
+        return "-1"
+    except:
+        return "-1"
+    
+def lookupDocString(key, conn: sqlite3.Connection):
+    try:
+        if key != "-1":
+            cur = conn.cursor()
+            cur.execute("SELECT VALUE FROM DOCSTRINGS WHERE ID=?", (key,))
+            ds = cur.fetchone()
+            if len(ds) != 0:
+                return ds[0].replace(u'\xa0', u'')
+        return ''
+    except:
+        return ''
+
 def findOverload(sig):
     argb = sig.find('<[(')
     arge = sig.find(')]>')
@@ -141,8 +164,6 @@ def parseStaticOverLoads(overstr : str):
             res.append('()')
     return res
 
-
-
 def findOverloadAsComment(sig):
     try:
         argb = sig.find('<[(')
@@ -182,7 +203,7 @@ def isStatic(ags : str) -> bool:
     
 # todo: boost generates a doc string that has the function signature
 # it should be able to parse this, or add something in the doc user string
-def generate_pyi(moduleName, module):
+def generate_pyi(moduleName, module, conn: sqlite3.Connection):
     with open(moduleName, 'w') as f:
         
         #write the base module names to the stub file
@@ -222,7 +243,10 @@ def generate_pyi(moduleName, module):
                         newDocString = removeArgStr(sig)
                         
                         overloadAsComment = findOverloadAsComment(sig)
-     
+                        
+                        key = findDocStringKey(sig)
+                        docstring = lookupDocString(key, conn)
+            
                         try:
                             f.write(f'    def {func_name} {inspect.signature(func)} :\n')
                             f.write(f"      '''{newDocString}'''")
@@ -260,7 +284,10 @@ def generate_pyi(moduleName, module):
                                             
                                 args = args.strip(',')
                                 f.write(f'    def {func_name} {args}{returnType} :\n')
-                                f.write(overloadAsComment)
+                                if len(docstring):
+                                    f.write(f"      '''{docstring}'''")
+                                else:
+                                    f.write(overloadAsComment)
                             else:
                                 f.write(f'    def {func_name} (self, *args, **kwargs){returnType} :\n')
                                 f.write(f"      '''{newDocString}'''")
@@ -296,10 +323,11 @@ def generate_txt_help(moduleName, module):
 
 def PyRxCmd_pygenpyi():
     try:
+        conn = sqlite3.connect(".\\DocString.db") 
         for module in all_modules:
             buildClassDict(module[0], module[1])
         for module in all_modules:
-            generate_pyi(module[0] + ".pyi", module[1])
+            generate_pyi(module[0] + ".pyi", module[1],conn)
     except Exception as err:
         traceback.print_exception(err)
 
