@@ -174,7 +174,7 @@ void makePyRxClassWrapper()
         .def("name", &PyRxClass::name, DS.ARGS())
         .def("myParent", &PyRxClass::myParent, DS.ARGS())
         .def("queryX", &PyRxObject::queryX, DS.ARGS({ "rhs :  PyRx.RxClass" }))
-        .def("desc", &PyRxClass::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyRxClass::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyRxClass::className, DS.SARGS()).staticmethod("className")
         ;
 }

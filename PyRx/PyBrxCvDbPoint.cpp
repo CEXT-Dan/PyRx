@@ -52,7 +52,7 @@ void makePyBrxCvDbPointWrapper()
         .def("update", &PyBrxCvDbPoint::update, DS.ARGS())
 
         .def("className", &PyBrxCvDbPoint::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbPoint::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbPoint::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyBrxCvDbPoint::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyBrxCvDbPoint::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
@@ -297,7 +297,7 @@ void makePyBrxCvDbPointReferencedEntityWrapper()
         .def("setId", &PyBrxCvDbPointReferencedEntity::setId, DS.ARGS({ "id : PyDb.ObjectId" }))
         .def("type", &PyBrxCvDbPointReferencedEntity::type, DS.ARGS())
         .def("className", &PyBrxCvDbPointReferencedEntity::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbPointReferencedEntity::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbPointReferencedEntity::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbPointReferencedEntity::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -397,7 +397,7 @@ void makePyBrxCvDbPointGroupWrapper()
         .def("update", &PyBrxCvDbPointGroup::update, DS.ARGS())
 
         .def("className", &PyBrxCvDbPointGroup::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbPointGroup::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbPointGroup::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyBrxCvDbPointGroup::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyBrxCvDbPointGroup::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;

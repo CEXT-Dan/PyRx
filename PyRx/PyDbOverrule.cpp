@@ -335,7 +335,7 @@ void makePyDbOsnapOverruleWrapper()
             DS.ARGS({ "pSubject: PyDb.Entity", "osMode: PyDb.OsnapMode", "gsMark: int","pickPnt: PyGe.Point3d","lastPnt: PyGe.Point3d","viewXform: PyGe.Matrix3d","insertionMat: PyGe.Matrix3d" }))
 
         .def("className", &PyDbOsnapOverrule::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbOsnapOverrule::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbOsnapOverrule::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
 }
 

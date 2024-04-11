@@ -61,7 +61,7 @@ void makePyDbDimAssocWrapper()
         .def("updateSubentPath", &PyDbDimAssoc::updateSubentPath, DS.ARGS({ "val : PyDb.IdMapping" }))
         .def("updateDueToMirror", &PyDbDimAssoc::updateDueToMirror, DS.ARGS({ "val : bool" }))
         .def("className", &PyDbDimAssoc::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbDimAssoc::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbDimAssoc::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbDimAssoc::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbDimAssoc::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;

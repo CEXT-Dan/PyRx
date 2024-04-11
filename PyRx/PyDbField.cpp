@@ -49,7 +49,7 @@ void makePyDbFieldtWrapper()
         .def("getFieldCode", &PyDbField::getFieldCode1)
         .def("getFieldCode", &PyDbField::getFieldCode2, DS.OVRL(getFieldCodeOverloads))
         .def("className", &PyDbField::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbField::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbField::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbField::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbField::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;

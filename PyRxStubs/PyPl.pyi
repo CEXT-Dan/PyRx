@@ -119,7 +119,7 @@ class DSDData(PlObject):
 
     @staticmethod
     def desc ()-> PyRx.RxClass :
-      '''                             '''
+      '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
     ...
     def destinationName (self, *args, **kwargs)-> str :
       '''destinationName( (DSDData)arg1) -> str :
@@ -487,7 +487,7 @@ class DSDEntry(PlObject):
 
     @staticmethod
     def desc ()-> PyRx.RxClass :
-      '''                             '''
+      '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
     ...
     def dispose (self)-> None :
       '''                             '''
@@ -723,7 +723,7 @@ This class cannot be instantiated from Python'''
 
     @staticmethod
     def desc ()-> PyRx.RxClass :
-      '''                             '''
+      '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
     ...
     def deviceName (self, *args, **kwargs)-> str :
       '''deviceName( (PlotConfig)arg1) -> str :
@@ -862,7 +862,7 @@ __init__( (object)arg1, (str)arg2, (str)arg3, (DeviceType)arg4) -> None :
 
     @staticmethod
     def desc ()-> PyRx.RxClass :
-      '''                             '''
+      '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
     ...
     def deviceId (self, *args, **kwargs)-> str :
       '''deviceId( (PlotConfigInfo)arg1) -> str :
@@ -1115,7 +1115,7 @@ class PlotInfo(PlObject):
 
     @staticmethod
     def desc ()-> PyRx.RxClass :
-      '''                             '''
+      '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
     ...
     def deviceOverride (self, *args, **kwargs)-> PyPl.PlotConfig :
       '''deviceOverride( (PlotInfo)arg1) -> PlotConfig :
@@ -1238,7 +1238,7 @@ class PlotInfoValidator(PlObject):
 
     @staticmethod
     def desc ()-> PyRx.RxClass :
-      '''                             '''
+      '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
     ...
     def dimensionalWeight (self, *args, **kwargs)-> int :
       '''dimensionalWeight( (PlotInfoValidator)arg1) -> int :
@@ -1474,7 +1474,7 @@ class PlotPageInfo(PlObject):
 
     @staticmethod
     def desc ()-> PyRx.RxClass :
-      '''                             '''
+      '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
     ...
     def dispose (self)-> None :
       '''                             '''
@@ -1762,7 +1762,7 @@ __init__( (object)arg1) -> None :
 
     @staticmethod
     def desc ()-> PyRx.RxClass :
-      '''                             '''
+      '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
     ...
     def description (self, *args, **kwargs)-> str :
       '''description( (PrecisionEntry)arg1) -> str :

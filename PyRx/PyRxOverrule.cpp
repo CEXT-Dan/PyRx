@@ -16,7 +16,7 @@ void makePyRxOverruleWrapper()
         .def("isOverruling", &PyRxOverrule::isOverruling, DS.ARGS()).staticmethod("isOverruling")
         .def("hasOverrule", &PyRxOverrule::hasOverrule, DS.SARGS({ "subject: PyRx.RxObject","rxClass: PyRx.RxClass" })).staticmethod("hasOverrule")
         .def("className", &PyRxOverrule::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyRxOverrule::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyRxOverrule::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
 }
 

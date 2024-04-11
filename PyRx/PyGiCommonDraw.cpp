@@ -15,7 +15,7 @@ void makePyGiCommonDrawWrapper()
         .def("isDragging", &PyGiCommonDraw::isDragging, DS.ARGS())
         .def("subEntityTraits", &PyGiCommonDraw::subEntityTraits, DS.ARGS())
         .def("className", &PyGiCommonDraw::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyGiCommonDraw::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyGiCommonDraw::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
 }
 
@@ -70,7 +70,7 @@ void makePyGiWorldDrawWrapper()
     class_<PyGiWorldDraw, bases<PyGiCommonDraw>>("WorldDraw", boost::python::no_init)
         .def("geometry", &PyGiWorldDraw::geometry, DS.ARGS())
         .def("className", &PyGiWorldDraw::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyGiWorldDraw::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyGiWorldDraw::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
 }
 
@@ -110,7 +110,7 @@ void makePyGiViewportDrawWrapper()
     class_<PyGiViewportDraw, bases<PyGiCommonDraw>>("ViewportDraw", boost::python::no_init)
         .def("geometry", &PyGiViewportDraw::geometry, DS.ARGS())
         .def("className", &PyGiViewportDraw::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyGiViewportDraw::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyGiViewportDraw::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
 }
 
@@ -387,7 +387,7 @@ void makePyGiWorldGeometryWrapper()
     PyDocString DS("WorldGeometry");
     class_<PyGiWorldGeometry, bases<PyGiGeometry>>("WorldGeometry", boost::python::no_init)
         .def("className", &PyGiGeometry::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyGiGeometry::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyGiGeometry::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
 }
 
@@ -421,7 +421,7 @@ void makePyGiViewportGeometryWrapper()
     PyDocString DS("ViewportGeometry");
     class_<PyGiViewportGeometry, bases<PyGiGeometry>>("ViewportGeometry", boost::python::no_init)
         .def("className", &PyGiGeometry::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyGiGeometry::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyGiGeometry::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
 }
 

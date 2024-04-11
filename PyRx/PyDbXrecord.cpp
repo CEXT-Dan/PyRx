@@ -24,7 +24,7 @@ void makePyDbXrecordWrapper()
         .def("mergeStyle", &PyDbXrecord::mergeStyle, DS.ARGS())
         .def("setMergeStyle", &PyDbXrecord::setMergeStyle, DS.ARGS({ "style: PyDb.DuplicateRecordCloning" }))
         .def("className", &PyDbXrecord::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbXrecord::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbXrecord::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyDbXrecord::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }

@@ -20,7 +20,7 @@ void makePyDbDatabaseReactorWrapper()
         .def("headerSysVarChanged", &PyDbDatabaseReactor::headerSysVarChanged, DS.ARGS({ "db: PyDb.Database", "name: str", "success: bool" }))
         .def("proxyResurrectionCompleted", &PyDbDatabaseReactor::proxyResurrectionCompleted, DS.ARGS({ "db: PyDb.Database", "name: str", "ids: list[PyDb.ObjectId]" }))
         .def("goodbye", &PyDbDatabaseReactor::goodbye, DS.ARGS({ "db: PyDb.Database" }))
-        .def("desc", &PyDbDatabaseReactor::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbDatabaseReactor::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbDatabaseReactor::className, DS.SARGS()).staticmethod("className")
         ;
 }

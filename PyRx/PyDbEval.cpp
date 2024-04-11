@@ -50,7 +50,7 @@ void makePyDbEvalVariantWrapper()
         .def("__ge__", &PyDbEvalVariant::operator>=)
         //static
         .def("className", &PyDbEvalVariant::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbEvalVariant::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbEvalVariant::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
 }
 

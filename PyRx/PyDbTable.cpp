@@ -555,7 +555,7 @@ void makePyDbTableWrapper()
         .def("cellValues", &PyDbTable::getValueIterator3)
         .def("cellValues", &PyDbTable::getValueIterator4, DS.OVRL(getIteratorOverloads))
         .def("className", &PyDbTable::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbTable::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbTable::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;

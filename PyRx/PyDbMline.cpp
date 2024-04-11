@@ -48,7 +48,7 @@ void makePyDbMlineWrapper()
         .def("getClosestPointTo", &PyDbMline::getClosestPointTo4, DS.OVRL(getClosestPointToOverloads))
         .def("getPlane", &PyDbMline::getPlane, DS.ARGS())
         .def("className", &PyDbMline::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbMline::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbMline::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbMline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbMline::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;

@@ -235,7 +235,7 @@ void makePyBrxCvDbViewWrapper()
         .def("fromWCSPoint2d", &PyBrxCvDbView::fromWCSPoint2d, DS.ARGS({ "pt : PyGe.Point2d" }))
 
         .def("className", &PyBrxCvDbView::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbView::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbView::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyBrxCvDbView::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyBrxCvDbView::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
@@ -431,7 +431,7 @@ void makePyBrxCvDbVAlignmentViewWrapper()
         .def("update", &PyBrxCvDbVAlignmentView::update2, DS.ARGS({ "bUpdateDependencies : bool=True","updateOrigin : bool=True" }))
 
         .def("className", &PyBrxCvDbVAlignmentView::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbVAlignmentView::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbVAlignmentView::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyBrxCvDbVAlignmentView::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyBrxCvDbVAlignmentView::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
@@ -879,7 +879,7 @@ void makePyBrxCvDbHAlignmentWrapper()
         .def("setStationEquations", &PyBrxCvDbHAlignment::setStationEquations, DS.ARGS({ "val: PyBrxCv.CvStationEquations" }))
 
         .def("className", &PyBrxCvDbHAlignment::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbHAlignment::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbHAlignment::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyBrxCvDbHAlignment::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyBrxCvDbHAlignment::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
@@ -1372,7 +1372,7 @@ void makePyBrxCvDbHAlignmentElementWrapper()
         .def("setTangencyConstraint", &PyBrxCvDbHAlignmentElement::setTangencyConstraint, DS.ARGS({ "val : PyBrxCv.ETangencyConstraint" }))
         .def("setParameterConstraint", &PyBrxCvDbHAlignmentElement::setParameterConstraint, DS.ARGS({ "val : PyBrxCv.EParameterConstraint" }))
         .def("className", &PyBrxCvDbHAlignmentElement::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbHAlignmentElement::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbHAlignmentElement::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbHAlignmentElement::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1474,7 +1474,7 @@ void makePyBrxCvDbHAlignmentPIWrapper()
         .def(init<>(DS.ARGS()))
         .def("location", &PyBrxCvDbHAlignmentPI::location, DS.ARGS())
         .def("className", &PyBrxCvDbHAlignmentPI::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbHAlignmentPI::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbHAlignmentPI::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbHAlignmentPI::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1529,7 +1529,7 @@ void makePyBrxCvDbHAlignmentCurveWrapper()
         .def("endStation", &PyBrxCvDbHAlignmentCurve::endStation, DS.ARGS())
         .def("length", &PyBrxCvDbHAlignmentCurve::length, DS.ARGS())
         .def("className", &PyBrxCvDbHAlignmentCurve::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbHAlignmentCurve::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbHAlignmentCurve::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbHAlignmentCurve::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1601,7 +1601,7 @@ void makePyBrxCvDbHAlignmentLineWrapper()
         .def("setPassThroughPoint1", &PyBrxCvDbHAlignmentLine::setPassThroughPoint1, DS.ARGS({ "pt : PyGe.Point2d" }))
         .def("setPassThroughPoint2", &PyBrxCvDbHAlignmentLine::setPassThroughPoint2, DS.ARGS({ "pt : PyGe.Point2d" }))
         .def("className", &PyBrxCvDbHAlignmentLine::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbHAlignmentLine::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbHAlignmentLine::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbHAlignmentLine::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1695,7 +1695,7 @@ void makePyBrxCvDbHAlignmentArcWrapper()
         .def("paramLength", &PyBrxCvDbHAlignmentArc::paramLength, DS.ARGS())
         .def("setParamLength", &PyBrxCvDbHAlignmentArc::setParamLength, DS.ARGS({ "val : float" }))
         .def("className", &PyBrxCvDbHAlignmentArc::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbHAlignmentArc::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbHAlignmentArc::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbHAlignmentArc::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1849,7 +1849,7 @@ void makePyBrxCvDbHAlignmentSpiralWrapper()
         .def("setParamA", &PyBrxCvDbHAlignmentSpiral::setParamA, DS.ARGS({ "val : float" }))
         .def("setParamLength", &PyBrxCvDbHAlignmentSpiral::setParamLength, DS.ARGS({ "val : float" }))
         .def("className", &PyBrxCvDbHAlignmentSpiral::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbHAlignmentSpiral::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbHAlignmentSpiral::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbHAlignmentSpiral::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -1998,7 +1998,7 @@ void makePyBrxCvDbHAlignmentSCSWrapper()
         .def("spiralIn", &PyBrxCvDbHAlignmentSCS::spiralIn, DS.ARGS())
         .def("spiralOut", &PyBrxCvDbHAlignmentSCS::spiralOut, DS.ARGS())
         .def("className", &PyBrxCvDbHAlignmentSCS::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbHAlignmentSCS::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbHAlignmentSCS::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbHAlignmentSCS::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -2072,7 +2072,7 @@ void makePyBrxCvDbHAlignmentSTSWrapper()
         .def("spiralOut", &PyBrxCvDbHAlignmentSTS::spiralOut, DS.ARGS())
         .def("spiralRatio", &PyBrxCvDbHAlignmentSTS::spiralRatio, DS.ARGS())
         .def("className", &PyBrxCvDbHAlignmentSTS::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbHAlignmentSTS::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbHAlignmentSTS::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbHAlignmentSTS::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -2152,7 +2152,7 @@ void makePyBrxCvDbHAlignmentSSCSSWrapper()
         .def("spiral3", &PyBrxCvDbHAlignmentSSCSS::spiral3, DS.ARGS())
         .def("spiral4", &PyBrxCvDbHAlignmentSSCSS::spiral4, DS.ARGS())
         .def("className", &PyBrxCvDbHAlignmentSSCSS::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbHAlignmentSSCSS::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbHAlignmentSSCSS::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbHAlignmentSSCSS::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -2281,7 +2281,7 @@ void makePyBrxCvDbVAlignmentWrapper()
         .def("update", &PyBrxCvDbVAlignment::update, DS.ARGS({ "updateDependencies: bool" }))
 
         .def("className", &PyBrxCvDbVAlignment::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbVAlignment::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbVAlignment::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyBrxCvDbVAlignment::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyBrxCvDbVAlignment::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
@@ -2585,7 +2585,7 @@ void makePyBrxCvDbVAlignmentElementWrapper()
         .def("setTangencyConstraint", &PyBrxCvDbVAlignmentElement::setTangencyConstraint, DS.ARGS({ "val : PyBrxCv.VAlignmentTangencyConstraint" }))
         .def("setParameterConstraint", &PyBrxCvDbVAlignmentElement::setParameterConstraint, DS.ARGS({ "val : PyBrxCv.VAlignmentParameterConstraint" }))
         .def("className", &PyBrxCvDbVAlignmentElement::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbVAlignmentElement::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbVAlignmentElement::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbVAlignmentElement::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -2677,7 +2677,7 @@ void makePyBrxCvDbVAlignmentPVIWrapper()
         .def(init<>(DS.ARGS()))
         .def("location", &PyBrxCvDbVAlignmentPVI::location, DS.ARGS())
         .def("className", &PyBrxCvDbVAlignmentPVI::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbVAlignmentPVI::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbVAlignmentPVI::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbVAlignmentPVI::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -2730,7 +2730,7 @@ void makePyBrxCvDbVAlignmentCurveWrapper()
         .def("endPoint", &PyBrxCvDbVAlignmentCurve::endPoint, DS.ARGS())
         .def("length", &PyBrxCvDbVAlignmentCurve::length, DS.ARGS())
         .def("className", &PyBrxCvDbVAlignmentCurve::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbVAlignmentCurve::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbVAlignmentCurve::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbVAlignmentCurve::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -2790,7 +2790,7 @@ void makePyBrxCvDbVAlignmentTangentWrapper()
         .def("setPassThroughPoint1", &PyBrxCvDbVAlignmentTangent::setPassThroughPoint1, DS.ARGS({ "pt : PyGe.Point2d" }))
         .def("setPassThroughPoint2", &PyBrxCvDbVAlignmentTangent::setPassThroughPoint2, DS.ARGS({ "pt : PyGe.Point2d" }))
         .def("className", &PyBrxCvDbVAlignmentTangent::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbVAlignmentTangent::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbVAlignmentTangent::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbVAlignmentTangent::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -2864,7 +2864,7 @@ void makePyBrxCvDbVAlignmentArcWrapper()
         .def("setCenter", &PyBrxCvDbVAlignmentArc::setCenter, DS.ARGS({ "pt : PyGe.Point2d" }))
         .def("setClockwise", &PyBrxCvDbVAlignmentArc::setClockwise, DS.ARGS({ "val : bool" }))
         .def("className", &PyBrxCvDbVAlignmentArc::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbVAlignmentArc::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbVAlignmentArc::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbVAlignmentArc::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -2954,7 +2954,7 @@ void makePyBrxCvDbVAlignmentParabolaWrapper()
         .def("gradeOut", &PyBrxCvDbVAlignmentParabola::gradeOut, DS.ARGS())
         .def("setRadius", &PyBrxCvDbVAlignmentParabola::setRadius, DS.ARGS({ "val : float" }))
         .def("className", &PyBrxCvDbVAlignmentParabola::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDbVAlignmentParabola::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDbVAlignmentParabola::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyBrxCvDbVAlignmentParabola::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -3032,7 +3032,7 @@ void makePyBrxCvDb3dAlignmentWrapper()
         .def("setVAlignment", &PyBrxCvDb3dAlignment::setVAlignment, DS.ARGS({ "id : PyDb.ObjectId" }))
 
         .def("className", &PyBrxCvDb3dAlignment::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrxCvDb3dAlignment::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyBrxCvDb3dAlignment::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyBrxCvDb3dAlignment::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyBrxCvDb3dAlignment::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;

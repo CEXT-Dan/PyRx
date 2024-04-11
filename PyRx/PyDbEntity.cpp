@@ -103,7 +103,7 @@ void makePyDbEntityWrapper()
         .def("highlight", &PyDbEntity::highlight1)
         .def("highlight", &PyDbEntity::highlight2, DS.ARGS({ "path: PyDb.FullSubentPath = None","highlightAll : bool = False" }))
         .def("className", &PyDbEntity::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbEntity::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyDbEntity::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbEntity::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbEntity::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;

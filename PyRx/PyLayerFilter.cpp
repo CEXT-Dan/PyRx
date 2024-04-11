@@ -31,7 +31,7 @@ void makePyLyLayerFilterWrapper()
         .def("filterExpression", &PyLyLayerFilter::filterExpression, DS.ARGS())
         .def("setFilterExpression", &PyLyLayerFilter::setFilterExpression, DS.ARGS({ "val : str" }))
         .def("compareTo", &PyLyLayerFilter::compareTo, DS.ARGS({ "other : PyLy.LayerFilter" }))
-        .def("desc", &PyLyLayerFilter::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyLyLayerFilter::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyLyLayerFilter::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -169,7 +169,7 @@ void makePyLyLayerGroupWrapper()
         .def("addLayerId", &PyLyLayerGroup::addLayerId)
         .def("removeLayerId", &PyLyLayerGroup::removeLayerId)
         .def("layerIds", &PyLyLayerGroup::layerIds)
-        .def("desc", &PyLyLayerGroup::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyLyLayerGroup::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyLyLayerGroup::className, DS.SARGS()).staticmethod("className")
         ;
 }

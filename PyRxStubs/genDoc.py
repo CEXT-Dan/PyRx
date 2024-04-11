@@ -111,14 +111,14 @@ def findDocStringKey(sig):
     except:
         return "-1"
     
-def lookupDocString(key, conn: sqlite3.Connection):
+def lookupDocString(docstringkey, conn: sqlite3.Connection):
     try:
-        if key != "-1":
+        if docstringkey != "-1":
             cur = conn.cursor()
-            cur.execute("SELECT VALUE FROM DOCSTRINGS WHERE ID=?", (key,))
+            cur.execute("SELECT VALUE FROM DOCSTRINGS WHERE ID=?", (docstringkey,))
             ds = cur.fetchone()
             if len(ds) != 0:
-                return ds[0].replace(u'\xa0', u'')
+                return ds[0].replace(u'\xa0', u'')#oops
         return ''
     except:
         return ''
@@ -243,10 +243,10 @@ def generate_pyi(moduleName, module, conn: sqlite3.Connection):
                         newDocString = removeArgStr(sig)
                         
                         overloadAsComment = findOverloadAsComment(sig)
+        
+                        docstringkey = findDocStringKey(sig)
+                        docstring = lookupDocString(docstringkey, conn)
                         
-                        key = findDocStringKey(sig)
-                        docstring = lookupDocString(key, conn)
-            
                         try:
                             f.write(f'    def {func_name} {inspect.signature(func)} :\n')
                             f.write(f"      '''{newDocString}'''")
@@ -323,13 +323,16 @@ def generate_txt_help(moduleName, module):
 
 def PyRxCmd_pygenpyi():
     try:
-        conn = sqlite3.connect(".\\DocString.db") 
+        conn = sqlite3.connect("DocString.db", isolation_level='DEFERRED') 
         for module in all_modules:
             buildClassDict(module[0], module[1])
         for module in all_modules:
             generate_pyi(module[0] + ".pyi", module[1],conn)
     except Exception as err:
         traceback.print_exception(err)
+    finally:
+        conn.close()
+        
 
 def PyRxCmd_pygenhtmlhelp():
     for module in all_modules:

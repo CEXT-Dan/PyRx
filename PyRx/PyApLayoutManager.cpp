@@ -36,7 +36,7 @@ void makePyApLayoutManagerWrapper()
         .def("setCaptureOnLayoutSwitch", &PyApLayoutManager::setCaptureOnLayoutSwitch, DS.ARGS({ "val : bool" }))
         .def("createLayoutFromTemplate", &PyApLayoutManager::createLayoutFromTemplate1)
         .def("createLayoutFromTemplate", &PyApLayoutManager::createLayoutFromTemplate2, DS.ARGS({ "newLayoutName : str","templatePath : str","layoutName : str","db : PyDb.Database='current'" }))
-        .def("desc", &PyApLayoutManager::desc, DS.SARGS()).staticmethod("desc")
+        .def("desc", &PyApLayoutManager::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyApLayoutManager::className, DS.SARGS()).staticmethod("className")
         ;
 }
