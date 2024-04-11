@@ -164,12 +164,15 @@ def parseStaticOverLoads(overstr : str):
             res.append('()')
     return res
 
-def findOverloadAsComment(sig):
+def findOverloadAsComment(sig, docstring):
     try:
         argb = sig.find('<[(')
         arge = sig.find(')]>')
         if argb != -1:
-            return "      '''{}'''".format(sig[argb+3:arge])
+            if len(docstring) != 0:
+                return "      '''{}\n\t-{}-'''".format(sig[argb+3:arge],docstring)
+            else:
+                return "      '''{}'''".format(sig[argb+3:arge])
         return "      '''                             '''"
     except:
         return "      '''                             '''"
@@ -242,11 +245,10 @@ def generate_pyi(moduleName, module, conn: sqlite3.Connection):
                         returnType = findReturnType(sig)
                         newDocString = removeArgStr(sig)
                         
-                        overloadAsComment = findOverloadAsComment(sig)
-        
                         docstringkey = findDocStringKey(sig)
                         docstring = lookupDocString(docstringkey, conn)
-                        
+                        overloadAsComment = findOverloadAsComment(sig,docstring)
+        
                         try:
                             f.write(f'    def {func_name} {inspect.signature(func)} :\n')
                             f.write(f"      '''{newDocString}'''")

@@ -165,7 +165,7 @@ class RxClass(RxObject):
 This class cannot be instantiated from Python'''
     ...
     def appName (self)-> str :
-      '''                             '''
+      '''Returns a pointer to the application name string which is the last parameter in the ACRX_DXF_DEFINE_MEMBERS macro and is also the last parameter to the global newAcRxClass() pseudo-constructor. This string is used as the application identifier in the error dialog that is displayed whenever an object of the class is loaded and the application is not present.WarningAs the const qualifier indicates, no attempt should be made to deallocate the returned string.'''
     ...
 
     @staticmethod
@@ -187,7 +187,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def dxfName (self)-> str :
-      '''                             '''
+      '''This function returns a pointer to the DXF name for the class. This string is only required to be non-NULL for classes derived from AcDbObject. Other classes may set this via the second to the last parameter of the global newAcRxClass() pseudo-constructor. If the dxfName string has not been set, then this function will return NULL.WarningAs the const qualifier indicates, no attempt should be made to deallocate the string.'''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -196,7 +196,7 @@ This class cannot be instantiated from Python'''
       '''Function usage:For each class registered with ObjectARX, the implementation of this function is to return a pointer to the AcRxClass object for the class of the object in which this method is called. For classes not registered with ObjectARX, this method has no meaning.Function implementation in derived classes:This function is overridden in all derived classes. The AcRx macros declare and define this function, so that the override is taken care of as part of using the macros. The implementation of this function is simply to return ::desc(). For example. the implementation for AcDbLine would be:return AcDbLine::desc();Default implementation for AcRxObject:  { return AcRxObject::desc(); }'''
     ...
     def isDerivedFrom (self, other : PyRx.RxClass)-> bool :
-      '''                             '''
+      '''Static method for checking if first (left) class arg is derived from second (right) one.'''
     ...
     def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''Returns true if "this" object is of a member of either the class represented by aClass, or a class derived from aClass. '''
@@ -208,13 +208,13 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def myParent (self)-> PyRx.RxClass :
-      '''                             '''
+      '''This function returns a pointer to the AcRxClass object associated with the base class of the class that is represented by the AcRxClass object on which this method is called.'''
     ...
     def name (self)-> str :
-      '''                             '''
+      '''This function returns a pointer to a string that is the name of the C++ class represented by this AcRxClass object.WarningAs the const qualifier indicates, no attempt should be made to deallocate the string.'''
     ...
     def queryX (self, rhs :  PyRx.RxClass)-> PyRx.RxObject :
-      '''                             '''
+      '''This function returns the protocol extension object stored with the key pProtocolClass. If there is no such object specific to the class represented by this AcRxClass object, then the protocol extension object for the parent class is used, or its parent class, or on up the hierarchy as far as needed to obtain the protocol extension object sought.If the pProtocolClass key is not present in this AcRxClass object nor in any of the base class's AcRxClass objects, then this function will return NULL. This function does the real work for AcRxObject::queryX() and is invoked from it.'''
     ...
 
 class RxObject(object):
