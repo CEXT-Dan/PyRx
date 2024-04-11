@@ -168,12 +168,12 @@ void makePyRxClassWrapper()
 {
     PyDocString DS("PyRx.RxClass");
     class_<PyRxClass, bases<PyRxObject>>("RxClass", boost::python::no_init)
-        .def("isDerivedFrom", &PyRxClass::isDerivedFrom, DS.ARGS({ "other : PyRx.RxClass" }))
-        .def("appName", &PyRxClass::appName, DS.ARGS())
-        .def("dxfName", &PyRxClass::dxfName, DS.ARGS())
-        .def("name", &PyRxClass::name, DS.ARGS())
-        .def("myParent", &PyRxClass::myParent, DS.ARGS())
-        .def("queryX", &PyRxObject::queryX, DS.ARGS({ "rhs :  PyRx.RxClass" }))
+        .def("isDerivedFrom", &PyRxClass::isDerivedFrom, DS.ARGS({ "other : PyRx.RxClass" }, 15281))
+        .def("appName", &PyRxClass::appName, DS.ARGS(15269))
+        .def("dxfName", &PyRxClass::dxfName, DS.ARGS(15278))
+        .def("name", &PyRxClass::name, DS.ARGS(15284))
+        .def("myParent", &PyRxClass::myParent, DS.ARGS(15283))
+        .def("queryX", &PyRxObject::queryX, DS.ARGS({ "rhs :  PyRx.RxClass" }, 15288))
         .def("desc", &PyRxClass::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyRxClass::className, DS.SARGS()).staticmethod("className")
         ;
