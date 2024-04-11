@@ -128,7 +128,7 @@ class AbstractViewTable(SymbolTable):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -445,7 +445,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -1091,7 +1091,7 @@ class AlignedDimension(Dimension):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -2018,7 +2018,7 @@ class Arc(Curve):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -2702,7 +2702,7 @@ class ArcDimension(Dimension):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -3543,7 +3543,7 @@ class AttributeDefinition(Text):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -4183,7 +4183,7 @@ class AttributeReference(Text):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -4802,7 +4802,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -5266,7 +5266,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -5747,7 +5747,7 @@ class BlockReference(Entity):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -6240,7 +6240,7 @@ class BlockTable(SymbolTable):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -6546,7 +6546,7 @@ class BlockTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explodable (self)-> bool :
       '''                             '''
@@ -6967,7 +6967,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -7765,7 +7765,7 @@ class Circle(Curve):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -8935,7 +8935,7 @@ class Curve(Entity):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -11282,7 +11282,7 @@ class DbObject(PyGi.Drawable):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -11898,7 +11898,7 @@ class DiametricDimension(Dimension):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -12823,7 +12823,7 @@ class Dictionary(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -13145,7 +13145,7 @@ class DimAssoc(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -13589,7 +13589,7 @@ class DimStyleTable(SymbolTable):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -14129,7 +14129,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -14744,7 +14744,7 @@ class Dimension(Entity):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -16401,7 +16401,7 @@ class Ellipse(Curve):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -17036,7 +17036,7 @@ class Entity(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -19509,7 +19509,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -20059,7 +20059,7 @@ class Face(Entity):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -20543,7 +20543,7 @@ class FaceRecord(Vertex):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -21051,7 +21051,7 @@ class Fcf(Entity):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -21565,7 +21565,7 @@ class Field(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
 
     @overload
@@ -22721,7 +22721,7 @@ class GeoData(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def eraseFromDb (self)-> None :
       '''                             '''
@@ -23191,7 +23191,7 @@ class GeoMap(RasterImage):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -23775,7 +23775,7 @@ class GeoPositionMarker(Entity):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -24475,7 +24475,7 @@ class Group(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -25110,7 +25110,7 @@ class Hatch(Entity):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def evaluateGradientColorAt (self, *args, **kwargs)-> PyDb.Color :
       '''evaluateGradientColorAt( (Hatch)arg1, (float)arg2) -> Color :
@@ -25906,7 +25906,7 @@ class Helix(Spline):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -26796,7 +26796,7 @@ class Image(Entity):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -27409,7 +27409,7 @@ class LayerFilter(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -27697,7 +27697,7 @@ class LayerTable(SymbolTable):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -27999,7 +27999,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -28545,7 +28545,7 @@ class Layout(PlotSettings):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -29278,7 +29278,7 @@ class Leader(Curve):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def erased (self, obj: PyDb.DbObject, val: bool=True)-> None :
       '''                             '''
@@ -29952,7 +29952,7 @@ class Line(Curve):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -30612,7 +30612,7 @@ class LineAngularDimension2(Dimension):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -31465,7 +31465,7 @@ class LinetypeTable(SymbolTable):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -31756,7 +31756,7 @@ class LinetypeTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -32243,7 +32243,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -32802,7 +32802,7 @@ class MInsertBlock(BlockReference):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -33461,7 +33461,7 @@ connectionPoint( (MLeader)arg1, (Vector3d)arg2, (MLeaderTextAttachmentDirection)
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -34922,7 +34922,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
         bool enableLanding(class PyDbMLeaderStyle {lvalue})'''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extendLeaderToText (self, *args, **kwargs)-> bool :
       '''extendLeaderToText( (MLeaderStyle)arg1) -> bool :
@@ -35750,7 +35750,7 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def evaluateHatch1 (self, *args, **kwargs)-> None :
       '''evaluateHatch1( (MPolygon)arg1) -> None :
@@ -36411,7 +36411,7 @@ class MText(Entity):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -37280,7 +37280,7 @@ class Mline(Entity):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -37863,7 +37863,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
         bool endSquareCap(class PyDbMlineStyle {lvalue})'''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -38364,7 +38364,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -39249,7 +39249,7 @@ class OrdinateDimension(Dimension):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -40354,7 +40354,7 @@ class PdfDefinition(UnderlayDefinition):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -40691,7 +40691,7 @@ class PdfReference(UnderlayReference):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -41320,7 +41320,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -41880,7 +41880,7 @@ class PlotSettings(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -42531,7 +42531,7 @@ class Point(Entity):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -43093,7 +43093,7 @@ class Point3AngularDimension(Dimension):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -43951,7 +43951,7 @@ class PointCloudColorMap(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -44496,7 +44496,7 @@ class PointCloudDefEx(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -44895,7 +44895,7 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -45852,7 +45852,7 @@ class PolyFaceMeshVertex(Vertex):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -46327,7 +46327,7 @@ class PolygonMeshVertex(Vertex):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -46819,7 +46819,7 @@ class Polyline(Curve):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -47531,7 +47531,7 @@ class Polyline2d(Curve):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -48211,7 +48211,7 @@ class Polyline3d(Curve):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -48830,7 +48830,7 @@ class Polyline3dVertex(Vertex):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -49440,7 +49440,7 @@ class RadialDimension(Dimension):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -50291,7 +50291,7 @@ class RadialDimensionLarge(Dimension):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -51086,7 +51086,7 @@ class RasterImage(Image):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -51636,7 +51636,7 @@ class RasterImageDef(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -51961,7 +51961,7 @@ class RasterImageDefReactor(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -52239,7 +52239,7 @@ class RegAppTable(SymbolTable):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -52521,7 +52521,7 @@ class RegAppTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -52838,7 +52838,7 @@ class Region(Entity):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -53499,7 +53499,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -54126,7 +54126,7 @@ class RotatedDimension(Dimension):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -54984,7 +54984,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -55769,7 +55769,7 @@ createSweptSolid( (Solid3d)arg1, (Entity)arg2, (SubentId)arg3, (Entity)arg4, (Sw
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -56400,7 +56400,7 @@ class SpatialFilter(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -56788,7 +56788,7 @@ class Spline(Curve):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -57742,7 +57742,7 @@ convertToSurface( (SubDMesh)arg1, (bool)arg2, (bool)arg3) -> Surface :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -58578,7 +58578,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -59448,7 +59448,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -60089,7 +60089,7 @@ class SymbolTable(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -60371,7 +60371,7 @@ class SymbolTableRecord(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -60896,7 +60896,7 @@ class Table(BlockReference):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -62229,7 +62229,7 @@ class TableStyle(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -62865,7 +62865,7 @@ class Text(Entity):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -63471,7 +63471,7 @@ class TextStyleTable(SymbolTable):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -63756,7 +63756,7 @@ class TextStyleTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -64559,7 +64559,7 @@ class UCSTable(SymbolTable):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -64841,7 +64841,7 @@ class UCSTableRecord(SymbolTableRecord):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -65158,7 +65158,7 @@ class UnderlayDefinition(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -65515,7 +65515,7 @@ class UnderlayReference(Entity):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -66367,7 +66367,7 @@ class Vertex(Entity):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -66842,7 +66842,7 @@ class Vertex2d(Vertex):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -67338,7 +67338,7 @@ class ViewTable(AbstractViewTable):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -67674,7 +67674,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -68232,7 +68232,7 @@ class Viewport(Entity):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def erased (self, obj: PyDb.Object, val: bool)-> None :
       '''                             '''
@@ -69138,7 +69138,7 @@ class ViewportTable(AbstractViewTable):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -69468,7 +69468,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
@@ -70170,7 +70170,7 @@ class Wipeout(RasterImage):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def explode (self)-> list :
       '''                             '''
@@ -70712,7 +70712,7 @@ class Xrecord(DbObject):
       '''                             '''
     ...
     def erase (self, erasing : bool=True)-> None :
-      '''                             '''
+      '''Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on. If erasing == Adesk::kFalse, then the erase bit is set off.'''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''Returns the objectId of the extension dictionary owned by the object. If the object does not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.'''
