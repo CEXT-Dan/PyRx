@@ -8,6 +8,7 @@ import UnitTestPyDbEntity
 import UnitTestPyEditor
 import UnitTestPyWx
 import UnitTestPyActiveX
+import UnitTestDocString
 import dbc
 import testcfg
 
@@ -37,6 +38,10 @@ def OnPyReload() -> None:
         importlib.reload(UnitTestPyActiveX)
         if "BRX" in host:
             importlib.reload(UnitTestPyBcadCivil)
+            
+        if not "BRX" in host:
+            importlib.reload(UnitTestDocString)
+            
         print("\nReloading Unit tests: ")
     except Exception as err:
         print(err)
@@ -69,6 +74,9 @@ def PyRxCmd_runtests() -> None:
 
         if "BRX" in host:
             UnitTestPyBcadCivil.pybcciviltest()
+            
+        if not "BRX" in host:
+            UnitTestDocString.docstringtester()
 
     except Exception as err:
         print(err)
