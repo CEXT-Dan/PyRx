@@ -378,13 +378,7 @@ def samp_tinmerge() -> None:
                     print("\nMerging surfaces failed")
             case 1:
                 try:
-                    nSurface = Cv.CvDbTinSurface()
-#                    nSurface.upgradeOpen()
-#                    nSurface.rebuild()
-#                    nSurface.updateObjectData()
-                    nSurface.merge(fSurface)
-#                    nSurface.rebuild()
-                    # nSurface.merge(sSurface)
+                    nSurface = Cv.CvDbTinSurface.mergeSurfaces(fSurface, sSurface)
                     db.addToModelspace(nSurface)
                     print("\nCreating new surface from first and second")
                 except:
