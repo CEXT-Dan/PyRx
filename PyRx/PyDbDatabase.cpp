@@ -29,7 +29,7 @@ void makePyDbDatabaseWrapper()
     PyDocString DS("PyDb.Database");
     class_<PyDbDatabase, bases<PyRxObject>>("Database")
         .def(init<>())
-        .def(init<bool, bool>(DS.ARGS({ "buildDefaultDrawing : bool=True", "noDocument: bool=False" })))
+        .def(init<bool, bool>(DS.ARGS({ "buildDefaultDrawing : bool=True", "noDocument: bool=False" }, 19135)))
         .def("addToBlock", &PyDbDatabase::addToBlock1)
         .def("addToBlock", &PyDbDatabase::addToBlock2, DS.ARGS({ "btrid : PyDb.ObjectId", "entity : PyDb.Entity | list[PyDb.Entity]" }))
         .def("addToModelspace", &PyDbDatabase::addToModelspace1)
@@ -500,21 +500,21 @@ void makePyDbDatabaseWrapper()
         .def("wblock", &PyDbDatabase::wblock1)
         .def("wblock", &PyDbDatabase::wblock2)
         .def("wblock", &PyDbDatabase::wblock3)
-        .def("wblock", &PyDbDatabase::wblock4, DS.OVRL(wblockOverloads))
+        .def("wblock", &PyDbDatabase::wblock4, DS.OVRL(wblockOverloads, 3389))
         .def("abortDeepClone", &PyDbDatabase::abortDeepClone, DS.ARGS({ "idmap: PyDb.IdMapping" }))
 
         .def("deepCloneObjects", &PyDbDatabase::deepCloneObjects1)
         .def("deepCloneObjects", &PyDbDatabase::deepCloneObjects2,
-            DS.ARGS({ "ids:list[PyDb.ObjectId]","owner:PyDb.ObjectId","idmap: PyDb.IdMapping","deferXlation:bool=False" }))
+            DS.ARGS({ "ids:list[PyDb.ObjectId]","owner:PyDb.ObjectId","idmap: PyDb.IdMapping","deferXlation:bool=False" }, 2913))
 
         .def("wblockCloneObjects", &PyDbDatabase::wblockCloneObjects1)
         .def("wblockCloneObjects", &PyDbDatabase::wblockCloneObjects2,
-            DS.ARGS({ "ids:list[PyDb.ObjectId]","owner:PyDb.ObjectId","idmap: PyDb.IdMapping","drc: PyDb.DuplicateRecordCloning","deferXlation:bool=False" }))
+            DS.ARGS({ "ids:list[PyDb.ObjectId]","owner:PyDb.ObjectId","idmap: PyDb.IdMapping","drc: PyDb.DuplicateRecordCloning","deferXlation:bool=False" }, 3390))
 
-        .def("getFilename", &PyDbDatabase::getFilename, DS.ARGS())
+        .def("getFilename", &PyDbDatabase::getFilename, DS.ARGS(2968))
         .def("readDwgFile", &PyDbDatabase::readDwgFile1)
         .def("readDwgFile", &PyDbDatabase::readDwgFile2,
-            DS.ARGS({ "fileName: str", "mode: DatabaseOpenMode=DatabaseOpenMode.kForReadAndReadShare", "bAllowCPConversion:bool=False","password:str='empty'" }))
+            DS.ARGS({ "fileName: str", "mode: DatabaseOpenMode=DatabaseOpenMode.kForReadAndReadShare", "bAllowCPConversion:bool=False","password:str='empty'" }, 3116))
 
         .def("blockTableId", &PyDbDatabase::blockTableId, DS.ARGS(2878))
         .def("modelSpaceId", &PyDbDatabase::modelSpaceId, DS.ARGS())
