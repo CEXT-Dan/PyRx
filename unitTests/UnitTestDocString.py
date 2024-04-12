@@ -24,6 +24,17 @@ def lookupDocString(docstringkey, conn: sqlite3.Connection):
         return ''
     except:
         return ''
+    
+def lookupRowNumber(docstringkey, conn: sqlite3.Connection):
+    try:
+        if docstringkey != "-1":
+            cur = conn.cursor()
+            cur.execute("SELECT ROWID, ID FROM DOCSTRINGS WHERE ID=?", (docstringkey,))
+            return cur.fetchone()
+        return (-1, 1)
+    except:
+        return (-1, 1)
+
 
 class TestDocStrring(unittest.TestCase):
     def __init__(self, *args, **kwargs):
@@ -34,7 +45,7 @@ class TestDocStrring(unittest.TestCase):
         self.conn.close()
 
 
-    def test_datbase_vaid(self):
+    def test_datbase_valid(self):
         self.assertEqual(lookupDocString("12", self.conn),'Description')
         self.assertEqual(lookupDocString("1035", self.conn),'Destructor.')
         self.assertEqual(lookupDocString("2024", self.conn),'Description')
@@ -51,8 +62,11 @@ class TestDocStrring(unittest.TestCase):
         self.assertEqual(lookupDocString("16123", self.conn),'Destructor.')
         self.assertEqual(lookupDocString("18573", self.conn),'Destructor.')
         self.assertEqual(lookupDocString("19132", self.conn),'Description')
-
-
+        
+    def test_datbase_keys(self):
+        for idx in range(1,19000,1000):
+            self.assertEqual(lookupRowNumber("{}".format(idx), self.conn),(idx, idx))
+        self.assertEqual(lookupRowNumber("19134", self.conn),(19134, 19134))
 
 def docstringtester():
     try:
