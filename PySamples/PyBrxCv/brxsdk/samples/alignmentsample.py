@@ -176,7 +176,7 @@ def samp_alignmentreport():
                 except Exception as err:
                     print(err)
             else:
-                print("Not checking on " + element.type())
+                print("Not checking on " + str(element.type()))
                 # fill empty table values to conform with layout
                 data["Element"].append("N"+str(i))
                 data["Length"].append(None)
