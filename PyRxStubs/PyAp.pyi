@@ -728,22 +728,22 @@ class DocManager(PyRx.RxObject):
         void __init__(struct _object * __ptr64)'''
     ...
     def activateDocument (self, doc: PyAp.Document, bPassScript: bool = False)-> None :
-      '''                             '''
+      '''This function will switch from the current document to another document. The function will NOT suspend execution of the code running under the application context. The caller is suspended if it is a normal or nomadic context. If the bPassScript is Adesk::kTrue, then the script that has called the command that is performing a document change will continue to run. This argument allows a script to continue running across documents.'''
     ...
     def appContextCloseDocument (self, doc: PyAp.Document)-> None :
-      '''                             '''
+      '''Immediately destroys the active document and a lot of related data.Caution: Since the document is destroyed, beware of what you reference after the call.'''
     ...
     def appContextNewDocument (self, templateName : str)-> None :
-      '''                             '''
+      '''This function allows synchronous access to the NEW drawing operation. It can only be called from the application context.'''
     ...
     def appContextOpenDocument (self, dwgName : str)-> None :
-      '''                             '''
+      '''This function allows synchronous access to the OPEN drawing operation. It can only be called from the application context.Based pParams, you can switch to a layout or view after the opening of the drawing.'''
     ...
     def appContextPromptOpenDocument (self)-> None :
-      '''                             '''
+      '''This function allows synchronous access to the OPEN drawing operation. It can only be called from the application context.Similar to appContextOpenDocument(), expect it prompts for a drawing name.'''
     ...
     def appContextRecoverDocument (self, dwgName : str)-> None :
-      '''                             '''
+      '''This function allows synchronous access to the RECOVER drawing operation. It can only be called from the application context. When running, no dialogs or prompts requiring user interaction will be required.'''
     ...
 
     @staticmethod
@@ -751,10 +751,10 @@ class DocManager(PyRx.RxObject):
       '''                             '''
     ...
     def beginExecuteInApplicationContext (self, func: Any, data: Any)-> PyDb.ErrorStatus :
-      '''                             '''
+      '''Allows anonymous code execution in command context (same as registering a command and calling sendStringToExecute to invoke it.). The command will be executed in the context of the MDI active document. The callback function will be called when the system has a chance to execute a command. This, at minimum, means that the caller of beginExecuteInCommandContext (i.e. your code) must return to its caller. All outstanding commands will be cancelled before the callback function is invoked.'''
     ...
     def beginExecuteInCommandContext (self, func: Any, data: Any)-> PyDb.ErrorStatus :
-      '''                             '''
+      '''Allows anonymous code execution in command context (same as registering a command and calling endStringToExecute to invoke it.). The command will be executed in the context of the MDI active document. The callback function will be called when the system has a chance to execute a command. This, at minimum, means that the caller of beginExecuteInCommandContext (i.e. your code) must return to its caller. All outstanding commands will be cancelled before the callback function is invoked.'''
     ...
 
     @staticmethod
@@ -762,7 +762,7 @@ class DocManager(PyRx.RxObject):
       '''                             '''
     ...
     def closeDocument (self, doc: PyAp.Document)-> None :
-      '''                             '''
+      '''This function closes the document specified by pAcTargetDocument. If the input document is not the current document, current document retains control. If input document is the current document, the document execution context is terminated before this function returns, terminating normal commands.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''Function usage:This function is intended to allow classes to provide a means to compare class objects much the way strcmp() compares character strings.The object pointed to by other is compared with this object. The result of the comparison is returned.The possible AcRx::Ordering types are:AcRx::kLessThanAcRx::kEqualAcRx::kGreaterThanAcRx::kNotOrderableThe AcRx::kNotOrderable type is there because C++ classes often cannot support object value comparison.Function implementation in derived classes:There are no restrictions or expectations on how this function is implemented. Each class will have its own requirements for comparison.Default implementation:Simply returns AcRx::kNotOrderable since many C++ classes cannot support object value comparison.'''
@@ -771,10 +771,10 @@ class DocManager(PyRx.RxObject):
       '''Function usage:Copies the contents of other into the messaged object, whenever feasible. Function implementation in derived classes:If implemented, this function needs to be able to read the data in the object pointed to by other and copy any or all data as appropriate into this object. There is no requirement that the object pointed to by other and this object be of the same class, but that is the generally assumed condition.Default implementation: Because this function must be overridden to have any meaning, a fatal error will be caused when calling the default implementation. '''
     ...
     def curDocument (self)-> PyAp.Document :
-      '''                             '''
+      '''This function returns the document having current context. The associated function, mdiActiveDocument(), returns the MDI active document. curDocument() and mdiActiveDocument() can be different. You can call curDocument() to make a document "current" without actually activating it. After finish your AcDbDatabase operation under the temporary current document, call setCurDocument(acDocManager->mdiActiveDocument()) to reset the MDI active document as the current document.'''
     ...
     def defaultFormatForSave (self)-> PyAp.SaveFormat :
-      '''                             '''
+      '''This function returns the current default save format.'''
     ...
 
     @staticmethod
@@ -782,40 +782,40 @@ class DocManager(PyRx.RxObject):
       '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
     ...
     def disableDocumentActivation (self)-> None :
-      '''                             '''
+      '''This function will disable the ability for the user to switch to another document. Applications must be sure to restore activation (using AcApDocManager::enableDocumentActivation) when complete. An example use might be when an application command is processing for long periods of time.Returns an error when already in a disabled mode; otherwise, returns Acad::eOk.'''
     ...
     def dispose (self)-> None :
       '''                             '''
     ...
     def document (self, db: PyDb.Database)-> PyAp.Document :
-      '''                             '''
+      '''This function returns the document that the input database belongs to. All databases created in ObjectARX, the current database, and any loaded Xref databases will have a document that they are associated with. Databases created by ObjectARX applications will be automatically associated with the document of the context in which they were created. This is then the document that the database will have its Undo recorded. It is also the document whose Transaction Manager must be used for objects from the database.'''
     ...
     def documentCount (self)-> int :
-      '''                             '''
+      '''This function returns the number of documents currently open.'''
     ...
     def documents (self)-> list :
       '''                             '''
     ...
     def enableDocumentActivation (self)-> None :
-      '''                             '''
+      '''This function will enable the ability for the user to switch to another document. This function is used to re-enable activation after a call to AcApDocManager::disableDocumentActivation.Returns an error when already in an enabled mode; otherwise, returns Acad::eOk.'''
     ...
     def executeInApplicationContext (self, func: Any, data: Any)-> None :
-      '''                             '''
+      '''Allows a void function to be called from the application context.'''
     ...
     def implRefCount (self)-> int :
       '''                             '''
     ...
     def inputPending (self, doc: PyAp.Document)-> int :
-      '''                             '''
+      '''This function will determine the state of the document's input buffer. Used only in conjunction with the AcApDocManager::sendStringToExecute function.Returns the number of characters waiting to be processed. A value of 0 indicates no pending input. A return value of -1 indicates an error.'''
     ...
     def isA (self)-> PyRx.RxClass :
       '''Function usage:For each class registered with ObjectARX, the implementation of this function is to return a pointer to the AcRxClass object for the class of the object in which this method is called. For classes not registered with ObjectARX, this method has no meaning.Function implementation in derived classes:This function is overridden in all derived classes. The AcRx macros declare and define this function, so that the override is taken care of as part of using the macros. The implementation of this function is simply to return ::desc(). For example. the implementation for AcDbLine would be:return AcDbLine::desc();Default implementation for AcRxObject:  { return AcRxObject::desc(); }'''
     ...
     def isApplicationContext (self)-> bool :
-      '''                             '''
+      '''This function is called by an executing function to determine if it is executing in the application context.'''
     ...
     def isDocumentActivationEnabled (self)-> bool :
-      '''                             '''
+      '''This function indicates whether document activation is enabled.Returns true if enabled or false otherwise.'''
     ...
     def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''Returns true if "this" object is of a member of either the class represented by aClass, or a class derived from aClass. '''
@@ -827,40 +827,40 @@ class DocManager(PyRx.RxObject):
       '''                             '''
     ...
     def lockDocument (self, doc: PyAp.Document, mode: PyAp.DocLockMode = kWrite, gcmd: str = None, lcmd: str = None, prmt: bool = True)-> None :
-      '''                             '''
+      '''This function is used for locking documents in order to access their resources. Resources include all AcDbDatabases objects associated with a document, and AcDbObject objects in those databases, and all AcDbDatabase resident system variables. It also includes all document based system variables, and the Transaction Manager associated with a document. The document does not need to be locked to open an AcDbObject in AcDb::kForRead, nor to get system variables.Applications should normally never have to lock or unlock the current document. Commands registered with addCommand() or aceddefun() will have the current document locked before starting, and unlocked after ending. This can be controlled using the addCommand() function tags.'''
     ...
     def mdiActiveDocument (self)-> PyAp.Document :
-      '''                             '''
+      '''This function returns the MDI active document. The associated function, curDocument(), returns the document having current context. curDocument() and mdiActiveDocument() can be different. You can call curDocument() to make a document "current" without actually activating it. After finish your AcDbDatabase operation under the temporary current document, call setCurDocument(acDocManager->mdiActiveDocument()) to reset the MDI active document as the current document.'''
     ...
     def newDocument (self)-> None :
-      '''                             '''
+      '''This function creates a new document using standard user interface interaction.'''
     ...
     def openDocument (self)-> None :
-      '''                             '''
+      '''This function opens a document using standard user interface interaction.'''
     ...
     def popResourceHandle (self)-> None :
-      '''                             '''
+      '''This function makes the resource file handle on top of the stack current and removes it from the stack.'''
     ...
     def pushAcadResourceHandle (self)-> None :
-      '''                             '''
+      '''This function pushes the current resource handle onto the current document's resource handle stack and makes the AutoCAD resource file current.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
     def sendModelessInterrupt (self, doc: PyAp.Document)-> None :
-      '''                             '''
+      '''This function causes the current command in the specified document to be interrupted if it is prompting for input using one of the acedGetxxx functions and was registered with the ACRX_CMD_INTERRUPTIBLE flag.Returns Acad::eOk if successful and Acad:eNoDocument if the target document is not accessible.'''
     ...
     def sendStringToExecute (self, doc: PyAp.Document, script: str, bActivate: bool = True, bWrapUpInactiveDoc: bool = False, bEchoString: bool = True)-> None :
-      '''                             '''
+      '''Send string to target document to execute. By default, the string is executed in the activate document. The string is executed as soon as possible when bActivate is false and bWrapUpInactiveDoc is true.bEchoString determines whether the sent string is echoed on the command line.'''
     ...
     def setCurDocument (self, doc: PyAp.Document, mode: PyAp.DocLockMode = kNone, activate: bool = False)-> None :
-      '''                             '''
+      '''This function allows an external application running under the Application context to make a document "current" without actually activating it. This current state is only valid during the context of the function calling this API. This enables safe manipulation of a document's data without the document actually being the top most or active document. The default parameters lockMode and activate allow document locking and activation to occur. These are shortcuts to allow several steps to be accomplished with a single API and can also be accomplished with the individual API calls.If you call acDocManager->setCurDocument(pDoc, AcAp::kWrite), you effectively set the current document and lock it. You will need to unlock this document once you are done with it. You can do this by calling acDocManager->unlockDocument(pDoc).'''
     ...
     def setDefaultFormatForSave (self, fmt : PyAp.SaveFormat)-> None :
-      '''                             '''
+      '''This method uses one of the SaveFormat values to set the file format to use when saving a drawing with the SAVEAS, SAVE, and QSAVE commands. This sets the session-wide default, which the user may choose to override temporarily for an individual document.This method directly sets the file format for interactive commands entered by the user. If you want your application to use the current save format, every time you wish to save the database, you will first need to call AcApDocument::formatForSave(), and then use the returned SaveFormat value to determine which function to call. For example, if formatForSave() returned kR12_dxf, you would call acdbDxfOutAsR12() to write the database as a Release 12 DXF file.In summary:Either you or your user may set a persistent session-wide default format for save that will be honored by all save commands except AUTOSAVE.Only the user can temporarily (not persistently between sessions) override this setting for a particular document.The formatForSave() method returns the format in which the user wishes an individual document to be saved, which will be either the session-wide default or the temporary override, as appropriate.'''
     ...
     def unlockDocument (self, doc: PyAp.Document)-> None :
-      '''                             '''
+      '''This function unlocks a previously locked document. Except for the kAutoWrite lock mode, all locks applied with lockDocument() MUST be paired with an unlockDocument() call. Never call unlockDocument() unless you have first had a successful lockDocument() call. kAutoWrite should never be unlocked with unlockDocument().'''
     ...
 
 class DocManagerReactor(object):
