@@ -23,117 +23,285 @@ void makeDbCoreWrapper()
 
     PyDocString DS("Core");
     class_<DbCore>("Core")
-        .def("attachPointCloudExEntity", &DbCore::attachPointCloudExEntity, DS.SARGS({ "path: str","pos: PyGe.Point3d","scale: float","rotation: float","db: PyDb.Database" })).staticmethod("attachPointCloudExEntity")
-        .def("activeDatabaseArray", &DbCore::activeDatabaseArray, DS.SARGS()).staticmethod("activeDatabaseArray")
-        .def("angToF", &DbCore::angToF, DS.SARGS({ "value:str","unit:int" })).staticmethod("angToF")
-        .def("angToS", &DbCore::angToS, DS.SARGS({ "value:float","unit:int","prec:int" })).staticmethod("angToS")
+        .def("attachPointCloudExEntity", &DbCore::attachPointCloudExEntity,
+            DS.SARGS({ "path: str","pos: PyGe.Point3d","scale: float","rotation: float","db: PyDb.Database" }, 2379)).staticmethod("attachPointCloudExEntity")
+
+        .def("activeDatabaseArray", &DbCore::activeDatabaseArray,
+            DS.SARGS(1411)).staticmethod("activeDatabaseArray")
+
+        .def("angToF", &DbCore::angToF,
+            DS.SARGS({ "value:str","unit:int" }, 1432)).staticmethod("angToF")
+
+        .def("angToS", &DbCore::angToS,
+            DS.SARGS({ "value:float","unit:int","prec:int" }, 1433)).staticmethod("angToS")
+
         .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve1)
         .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve2)
         .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve3,
-            DS.SARGS({ "geCurve:PyGe.Curve3d","dbCurve:PyDb.Curve","norm: PyGe.Vector3d=PyGe.Vector3d.kZAxis","tol:PyGe.Tol='tol'" })).staticmethod("assignGelibCurveToAcDbCurve")
-        .def("attachXref", &DbCore::attachXref, DS.SARGS({ "db: PyDb.Database","fname: str","blkname: str" })).staticmethod("attachXref")
+            DS.SARGS({ "geCurve:PyGe.Curve3d","dbCurve:PyDb.Curve","norm: PyGe.Vector3d=PyGe.Vector3d.kZAxis","tol:PyGe.Tol='tol'" }, 1552)).staticmethod("assignGelibCurveToAcDbCurve")
+
+        .def("attachXref", &DbCore::attachXref,
+            DS.SARGS({ "db: PyDb.Database","fname: str","blkname: str" }, 2380)).staticmethod("attachXref")
+
         .def("bindXrefs", &DbCore::bindXrefs1)
-        .def("bindXrefs", &DbCore::bindXrefs2, DS.SARGS({ "db: PyDb.Database","ids: list[PyDb.ObjectId]","bInsertBind: bool","bAllowUnresolved: bool=False","bequite: bool=True" })).staticmethod("bindXrefs")
-        .def("clearSetupForLayouts", &DbCore::clearSetupForLayouts, DS.SARGS({ "ctxhandle: int" })).staticmethod("clearSetupForLayouts")
+        .def("bindXrefs", &DbCore::bindXrefs2,
+            DS.SARGS({ "db: PyDb.Database","ids: list[PyDb.ObjectId]","bInsertBind: bool","bAllowUnresolved: bool=False","bequite: bool=True" }, 2466)).staticmethod("bindXrefs")
+
+        .def("clearSetupForLayouts", &DbCore::clearSetupForLayouts,
+            DS.SARGS({ "ctxhandle: int" }, 2714)).staticmethod("clearSetupForLayouts")
+
         .def("convertAcDbCurveToGelibCurve", &DbCore::convertAcDbCurveToGelibCurve1)
         .def("convertAcDbCurveToGelibCurve", &DbCore::convertAcDbCurveToGelibCurve2,
-            DS.SARGS({ "geCurve:PyGe.Curve2d","tol:PyGe.Tol='tol'" })).staticmethod("convertAcDbCurveToGelibCurve")
+            DS.SARGS({ "geCurve:PyGe.Curve2d","tol:PyGe.Tol='tol'" }, 2752)).staticmethod("convertAcDbCurveToGelibCurve")
 
         .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve1)
         .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve2)
         .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve3,
-            DS.SARGS({ "geCurve:PyGe.Curve3d","norm:PyGe.Vector3d=PyGe.Vector3d.kZAxis","tol:PyGe.Tol='tol'" })).staticmethod("convertGelibCurveToAcDbCurve")
+            DS.SARGS({ "geCurve:PyGe.Curve3d","norm:PyGe.Vector3d=PyGe.Vector3d.kZAxis","tol:PyGe.Tol='tol'" }, 2754)).staticmethod("convertGelibCurveToAcDbCurve")
 
-        .def("createViewByViewport", &DbCore::createViewByViewport, DS.SARGS({ "db: PyDb.Database","vpid: PyDb.ObjectId","name: str","cat: str","labelblock: PyDb.ObjectId" })).staticmethod("createViewByViewport")
-        .def("canonicalToSystemRange", &DbCore::canonicalToSystemRange, DS.SARGS({ "units: int","val: str" })).staticmethod("canonicalToSystemRange")
-        .def("detachXref", &DbCore::detachXref, DS.SARGS({ "db: PyDb.Database","xrefid: PyDb.ObjectId" })).staticmethod("detachXref")
-        .def("dictAdd", &DbCore::dictAdd, DS.SARGS({ "dictname: PyDb.ObjectId","symname: str","newid: PyDb.ObjectId" })).staticmethod("dictAdd")
-        .def("dictNext", &DbCore::dictNext, DS.SARGS({ "dictname: PyDb.ObjectId","rewind: int" })).staticmethod("dictNext")
-        .def("dictRemove", &DbCore::dictRemove, DS.SARGS({ "id: PyDb.ObjectId","name: str" })).staticmethod("dictRemove")
-        .def("dictRename", &DbCore::dictRename, DS.SARGS({ "id: PyDb.ObjectId","name: str","newname: str" })).staticmethod("dictRename")
-        .def("dictSearch", &DbCore::dictSearch, DS.SARGS({ "id: PyDb.ObjectId","name: str","next: int" })).staticmethod("dictSearch")
-        .def("displayPreviewFromDwg", &DbCore::displayPreviewFromDwg, DS.SARGS({ "name: str","handle: int" })).staticmethod("displayPreviewFromDwg")
-        .def("disToF", &DbCore::disToF, DS.SARGS({ "val: str","unit: int" })).staticmethod("disToF")
-        .def("doSetupForLayouts", &DbCore::doSetupForLayouts, DS.SARGS({ "db: PyDb.Database" })).staticmethod("doSetupForLayouts")
-        .def("dwkFileExists", &DbCore::dwkFileExists, DS.SARGS({ "name: str" })).staticmethod("dwkFileExists")
-        .def("dxfOutAs2000", &DbCore::dxfOutAs2000, DS.SARGS({ "db: PyDb.Database","name: str","precision: int" })).staticmethod("dxfOutAs2000")
-        .def("dxfOutAs2004", &DbCore::dxfOutAs2004, DS.SARGS({ "db: PyDb.Database","name: str","precision: int" })).staticmethod("dxfOutAs2004")
-        .def("dxfOutAsR12", &DbCore::dxfOutAsR12, DS.SARGS({ "db: PyDb.Database","name: str","precision: int" })).staticmethod("dxfOutAsR12")
-        .def("entGet", &DbCore::entGet, DS.SARGS({ "id : PyDb.ObjectId" })).staticmethod("entGet")
+        .def("createViewByViewport", &DbCore::createViewByViewport,
+            DS.SARGS({ "db: PyDb.Database","vpid: PyDb.ObjectId","name: str","cat: str","labelblock: PyDb.ObjectId" }, 2758)).staticmethod("createViewByViewport")
+
+        .def("canonicalToSystemRange", &DbCore::canonicalToSystemRange,
+            DS.SARGS({ "units: int","val: str" }, 2682)).staticmethod("canonicalToSystemRange")
+
+        .def("detachXref", &DbCore::detachXref, 
+            DS.SARGS({ "db: PyDb.Database","xrefid: PyDb.ObjectId" }, 3622)).staticmethod("detachXref")
+
+        .def("dictAdd", &DbCore::dictAdd, 
+            DS.SARGS({ "dictname: PyDb.ObjectId","symname: str","newid: PyDb.ObjectId" }, 3736)).staticmethod("dictAdd")
+
+        .def("dictNext", &DbCore::dictNext,
+            DS.SARGS({ "dictname: PyDb.ObjectId","rewind: int" }, 3778)).staticmethod("dictNext")
+
+        .def("dictRemove", &DbCore::dictRemove,
+            DS.SARGS({ "id: PyDb.ObjectId","name: str" }, 3779)).staticmethod("dictRemove")
+
+        .def("dictRename", &DbCore::dictRename,
+            DS.SARGS({ "id: PyDb.ObjectId","name: str","newname: str" }, 3780)).staticmethod("dictRename")
+
+        .def("dictSearch", &DbCore::dictSearch,
+            DS.SARGS({ "id: PyDb.ObjectId","name: str","next: int" }, 3781)).staticmethod("dictSearch")
+
+        .def("displayPreviewFromDwg", &DbCore::displayPreviewFromDwg,
+            DS.SARGS({ "name: str","handle: int" }, 4056)).staticmethod("displayPreviewFromDwg")
+
+        .def("disToF", &DbCore::disToF,
+            DS.SARGS({ "val: str","unit: int" }, 4057)).staticmethod("disToF")
+
+        .def("doSetupForLayouts", &DbCore::doSetupForLayouts,
+            DS.SARGS({ "db: PyDb.Database" }, 4058)).staticmethod("doSetupForLayouts")
+
+        .def("dwkFileExists", &DbCore::dwkFileExists,
+            DS.SARGS({ "name: str" }, 4134)).staticmethod("dwkFileExists")
+
+        .def("dxfOutAs2000", &DbCore::dxfOutAs2000,
+            DS.SARGS({ "db: PyDb.Database","name: str","precision: int" }, 4187)).staticmethod("dxfOutAs2000")
+
+        .def("dxfOutAs2004", &DbCore::dxfOutAs2004,
+            DS.SARGS({ "db: PyDb.Database","name: str","precision: int" }, 4188)).staticmethod("dxfOutAs2004")
+
+        .def("dxfOutAsR12", &DbCore::dxfOutAsR12,
+            DS.SARGS({ "db: PyDb.Database","name: str","precision: int" }, 4189)).staticmethod("dxfOutAsR12")
+
+        .def("entGet", &DbCore::entGet,
+            DS.SARGS({ "id : PyDb.ObjectId" }, 4268)).staticmethod("entGet")
+
         .def("entGetX", &DbCore::entGetX1)
-        .def("entGetX", &DbCore::entGetX2, DS.SARGS({ "id : PyDb.ObjectId","xdata: list" })).staticmethod("entGetX")
-        .def("entDel", &DbCore::entDel, DS.SARGS({ "id : PyDb.ObjectId" })).staticmethod("entDel")
-        .def("entLast", &DbCore::entLast, DS.SARGS()).staticmethod("entLast")
-        .def("entMod", &DbCore::entMod, DS.SARGS({ "resultBuffer : list" })).staticmethod("entMod")
-        .def("entNext", &DbCore::entNext, DS.SARGS({ "id : PyDb.ObjectId" })).staticmethod("entNext")
-        .def("entUpd", &DbCore::entUpd, DS.SARGS({ "id : PyDb.ObjectId" })).staticmethod("entUpd")
-        .def("entMake", &DbCore::entMake, DS.SARGS({ "resultBuffer : list" })).staticmethod("entMake")
-        .def("entMakeX", &DbCore::entMakeX, DS.SARGS({ "resultBuffer : list" })).staticmethod("entMakeX")
-        .def("fail", &DbCore::fail, DS.SARGS({ "msg: str" })).staticmethod("fail")
-        .def("findField", &DbCore::findField, DS.SARGS({ "val: str","idxfrom: int" })).staticmethod("findField")
-        .def("forceTextAdjust", &DbCore::forceTextAdjust, DS.SARGS({ "ids: list[PyDb.ObjectId]" })).staticmethod("forceTextAdjust")
-        .def("getCurUserViewportId", &DbCore::getCurUserViewportId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getCurUserViewportId")
-        .def("getCurVportId", &DbCore::getCurVportId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getCurVportId")
-        .def("getCurVportTableRecordId", &DbCore::getCurVportTableRecordId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getCurVportTableRecordId")
-        .def("getDimAssocId", &DbCore::getDimAssocId, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getDimAssocId")
-        .def("getDimAssocIds", &DbCore::getDimAssocIds, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getDimAssocIds")
-        .def("getDimStyleId", &DbCore::getDimStyleId, DS.SARGS({ "db: PyDb.Database","name: str","lockname: str" })).staticmethod("getDimStyleId")
-        .def("getDynDimStyleId", &DbCore::getDynDimStyleId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getDynDimStyleId")
-        .def("getGeoDataObjId", &DbCore::getGeoDataObjId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getGeoDataObjId")
-        .def("getProxyInfo", &DbCore::getProxyInfo, DS.SARGS({ "id: PyDb.DbObject" })).staticmethod("getProxyInfo")
-        .def("getMappedFontName", &DbCore::getMappedFontName, DS.SARGS({ "name: str" })).staticmethod("getMappedFontName")
-        .def("getReservedString", &DbCore::getReservedString, DS.SARGS({ "reservedType: PyDb.reservedStringEnumType","bGetLocalized: bool" })).staticmethod("getReservedString")
-        .def("getUnitsConversion", &DbCore::getUnitsConversion, DS.SARGS({ "ufrom: PyDb.UnitsValue","to: PyDb.UnitsValue" })).staticmethod("getUnitsConversion")
-        .def("getViewportVisualStyle", &DbCore::getViewportVisualStyle).staticmethod("getViewportVisualStyle")
-        .def("hasGeoData", &DbCore::hasGeoData, DS.SARGS({ "db: PyDb.Database" })).staticmethod("hasGeoData")
-        .def("handEnt", &DbCore::handEnt, DS.SARGS({ "handle: str" })).staticmethod("handEnt")
-        .def("isEnabledTightExtents", &DbCore::isEnabledTightExtents, DS.SARGS()).staticmethod("isEnabledTightExtents")
-        .def("isReservedString", &DbCore::isReservedString, DS.SARGS({ "val: str","reservedType: PyDb.reservedStringEnumType" })).staticmethod("isReservedString")
-        .def("inters", &DbCore::inters, DS.SARGS({ "from1: PyGe.Point3d", "to1: PyGe.Point3d","from2: PyGe.Point3d", "to2: PyGe.Point3d","teston: int" })).staticmethod("inters")
-        .def("loadLineTypeFile", &DbCore::loadLineTypeFile, DS.SARGS({ "ltname: str","fname: str","db: PyDb.Database" })).staticmethod("loadLineTypeFile")
-        .def("loadMlineStyleFile", &DbCore::loadMlineStyleFile, DS.SARGS({ "ltname: str","fname: str" })).staticmethod("loadMlineStyleFile")
-        .def("namedObjDict", &DbCore::namedObjDict, DS.SARGS()).staticmethod("namedObjDict")
-        .def("openDbObject", &DbCore::openDbObject, DS.SARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })).staticmethod("openDbObject")
+        .def("entGetX", &DbCore::entGetX2,
+            DS.SARGS({ "id : PyDb.ObjectId","xdata: list" }, 4269)).staticmethod("entGetX")
+
+        .def("entDel", &DbCore::entDel,
+            DS.SARGS({ "id : PyDb.ObjectId" }, 4267)).staticmethod("entDel")
+
+        .def("entLast", &DbCore::entLast,
+            DS.SARGS(4406)).staticmethod("entLast")
+
+        .def("entMod", &DbCore::entMod,
+            DS.SARGS({ "resultBuffer : list" }, 4409)).staticmethod("entMod")
+
+        .def("entNext", &DbCore::entNext,
+            DS.SARGS({ "id : PyDb.ObjectId" }, 4410)).staticmethod("entNext")
+
+        .def("entUpd", &DbCore::entUpd,
+            DS.SARGS({ "id : PyDb.ObjectId" }, 4411)).staticmethod("entUpd")
+
+        .def("entMake", &DbCore::entMake,
+            DS.SARGS({ "resultBuffer : list" }, 4407)).staticmethod("entMake")
+
+        .def("entMakeX", &DbCore::entMakeX,
+            DS.SARGS({ "resultBuffer : list" }, 4408)).staticmethod("entMakeX")
+
+        .def("fail", &DbCore::fail, 
+            DS.SARGS({ "msg: str" }, 4584)).staticmethod("fail")
+
+        .def("findField", &DbCore::findField,
+            DS.SARGS({ "val: str","idxfrom: int" }, 4672)).staticmethod("findField")
+
+        .def("forceTextAdjust", &DbCore::forceTextAdjust,
+            DS.SARGS({ "ids: list[PyDb.ObjectId]" }, 4673)).staticmethod("forceTextAdjust")
+
+        .def("getCurUserViewportId", &DbCore::getCurUserViewportId,
+            DS.SARGS({ "db: PyDb.Database" }, 4969)).staticmethod("getCurUserViewportId")
+
+        .def("getCurVportId", &DbCore::getCurVportId, 
+            DS.SARGS({ "db: PyDb.Database" }, 4970)).staticmethod("getCurVportId")
+
+        .def("getCurVportTableRecordId", &DbCore::getCurVportTableRecordId,
+            DS.SARGS({ "db: PyDb.Database" }, 4971)).staticmethod("getCurVportTableRecordId")
+
+        .def("getDimAssocId", &DbCore::getDimAssocId,
+            DS.SARGS({ "id: PyDb.ObjectId" }, 4972)).staticmethod("getDimAssocId")
+
+        .def("getDimAssocIds", &DbCore::getDimAssocIds,
+            DS.SARGS({ "id: PyDb.ObjectId" }, 4973)).staticmethod("getDimAssocIds")
+
+        .def("getDimStyleId", &DbCore::getDimStyleId, 
+            DS.SARGS({ "db: PyDb.Database","name: str","lockname: str" }, 4982)).staticmethod("getDimStyleId")
+
+        .def("getDynDimStyleId", &DbCore::getDynDimStyleId,
+            DS.SARGS({ "db: PyDb.Database" }, 4985)).staticmethod("getDynDimStyleId")
+
+        .def("getGeoDataObjId", &DbCore::getGeoDataObjId,
+            DS.SARGS({ "db: PyDb.Database" }, 4991)).staticmethod("getGeoDataObjId")
+
+        .def("getProxyInfo", &DbCore::getProxyInfo,
+            DS.SARGS({ "id: PyDb.DbObject" }, 5004)).staticmethod("getProxyInfo")
+
+        .def("getMappedFontName", &DbCore::getMappedFontName,
+            DS.SARGS({ "name: str" }, 4997)).staticmethod("getMappedFontName")
+
+        .def("getReservedString", &DbCore::getReservedString, 
+            DS.SARGS({ "reservedType: PyDb.reservedStringEnumType","bGetLocalized: bool" }, 5005)).staticmethod("getReservedString")
+
+        .def("getUnitsConversion", &DbCore::getUnitsConversion,
+            DS.SARGS({ "ufrom: PyDb.UnitsValue","to: PyDb.UnitsValue" },5009)).staticmethod("getUnitsConversion")
+
+        .def("getViewportVisualStyle", &DbCore::getViewportVisualStyle,
+            DS.SARGS(5010)).staticmethod("getViewportVisualStyle")
+
+        .def("hasGeoData", &DbCore::hasGeoData,
+            DS.SARGS({ "db: PyDb.Database" })).staticmethod("hasGeoData")
+
+        .def("handEnt", &DbCore::handEnt,
+            DS.SARGS({ "handle: str" }, 5233)).staticmethod("handEnt")
+
+        .def("isEnabledTightExtents", &DbCore::isEnabledTightExtents,
+            DS.SARGS(5677)).staticmethod("isEnabledTightExtents")
+
+        .def("isReservedString", &DbCore::isReservedString,
+            DS.SARGS({ "val: str","reservedType: PyDb.reservedStringEnumType" }, 5683)).staticmethod("isReservedString")
+
+        .def("inters", &DbCore::inters,
+            DS.SARGS({ "from1: PyGe.Point3d", "to1: PyGe.Point3d","from2: PyGe.Point3d", "to2: PyGe.Point3d","teston: int" }, 5674)).staticmethod("inters")
+
+        .def("loadLineTypeFile", &DbCore::loadLineTypeFile,
+            DS.SARGS({ "ltname: str","fname: str","db: PyDb.Database" }, 6158)).staticmethod("loadLineTypeFile")
+
+        .def("loadMlineStyleFile", &DbCore::loadMlineStyleFile,
+            DS.SARGS({ "ltname: str","fname: str" }, 6159)).staticmethod("loadMlineStyleFile")
+
+        .def("namedObjDict", &DbCore::namedObjDict,
+            DS.SARGS(6963)).staticmethod("namedObjDict")
+
+        .def("openDbObject", &DbCore::openDbObject,
+            DS.SARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" }, 7322)).staticmethod("openDbObject")
+
         .def("openDbObjects", &DbCore::openDbObjects1)
         .def("openDbObjects", &DbCore::openDbObjects2)
-        .def("openDbObjects", &DbCore::openDbObjects3, DS.SARGS({ "ids: list[PyDb.ObjectId]", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })).staticmethod("openDbObjects")
-        .def("openDbEntity", &DbCore::openDbEntity, DS.SARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })).staticmethod("openDbEntity")
+        .def("openDbObjects", &DbCore::openDbObjects3,
+            DS.SARGS({ "ids: list[PyDb.ObjectId]", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" }, 7322)).staticmethod("openDbObjects")
+
+        .def("openDbEntity", &DbCore::openDbEntity,
+            DS.SARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" }, 7321)).staticmethod("openDbEntity")
+
         .def("openDbEntities", &DbCore::openDbEntities1)
         .def("openDbEntities", &DbCore::openDbEntities2)
-        .def("openDbEntities", &DbCore::openDbEntities3, DS.SARGS({ "ids: list[PyDb.ObjectId]", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })).staticmethod("openDbEntities")
+        .def("openDbEntities", &DbCore::openDbEntities3,
+            DS.SARGS({ "ids: list[PyDb.ObjectId]", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" }, 7321)).staticmethod("openDbEntities")
+
         .def("postDimAssoc", &DbCore::postDimAssoc1)
-        .def("postDimAssoc", &DbCore::postDimAssoc2).staticmethod("postDimAssoc")
-        .def("queueAnnotationEntitiesForRegen", &DbCore::queueAnnotationEntitiesForRegen).staticmethod("queueAnnotationEntitiesForRegen")
-        .def("queueForRegen", &DbCore::queueForRegen, DS.SARGS({ "ids: list[PyDb.ObjectId]" })).staticmethod("queueForRegen")
-        .def("regApp", &DbCore::regApp, DS.SARGS({ "val: str" })).staticmethod("regApp")
+        .def("postDimAssoc", &DbCore::postDimAssoc2,
+            DS.SARGS({ "dimId: PyDb.ObjectId","assoc: PyDb.DimAssoc","isActive: bool=True" }, 7867)).staticmethod("postDimAssoc")
+
+        .def("queueAnnotationEntitiesForRegen", &DbCore::queueAnnotationEntitiesForRegen,
+            DS.SARGS({ "db: PyDb.Database" }, 7894)).staticmethod("queueAnnotationEntitiesForRegen")
+
+        .def("queueForRegen", &DbCore::queueForRegen,
+            DS.SARGS({ "ids: list[PyDb.ObjectId]" }, 7895)).staticmethod("queueForRegen")
+
+        .def("regApp", &DbCore::regApp,
+            DS.SARGS({ "val: str" }, 8140)).staticmethod("regApp")
+
         .def("reloadXrefs", &DbCore::reloadXrefs1)
-        .def("reloadXrefs", &DbCore::reloadXrefs2).staticmethod("reloadXrefs")
-        .def("rtos", &DbCore::rtos, DS.SARGS({ "val: float","unit: int","prec: int" })).staticmethod("rtos")
-        .def("resbufTest", &DbCore::resbufTest, DS.SARGS({ "resultBuffer: list" })).staticmethod("resbufTest")
-        .def("setEnableTightExtents", &DbCore::setEnableTightExtents, DS.SARGS({ "val: bool" })).staticmethod("setEnableTightExtents")
-        .def("snValid", &DbCore::snValid, DS.SARGS({ "val: str","pipetest: int" })).staticmethod("snValid")
-        .def("symUtil", &DbCore::symUtil, DS.SARGS()).staticmethod("symUtil")
-        .def("tblNext", &DbCore::tblNext, DS.SARGS({ "name: str","rewind: int" })).staticmethod("tblNext")
-        .def("tblObjName", &DbCore::tblObjName, DS.SARGS({ "tblname: str","sym: str" })).staticmethod("tblObjName")
-        .def("tblSearch", &DbCore::tblSearch, DS.SARGS({ "tblname: str","sym: str","setnext: int" })).staticmethod("tblSearch")
+        .def("reloadXrefs", &DbCore::reloadXrefs2,
+            DS.SARGS({ "db: PyDb.Database","ids: list[PyDb.ObjectId]","bQuiet: bool=True"  }, 8177)).staticmethod("reloadXrefs")
+
+        .def("rtos", &DbCore::rtos, 
+            DS.SARGS({ "val: float","unit: int","prec: int" }, 8318)).staticmethod("rtos")
+
+        .def("resbufTest", &DbCore::resbufTest,
+            DS.SARGS({ "resultBuffer: list" })).staticmethod("resbufTest")
+
+        .def("setEnableTightExtents", &DbCore::setEnableTightExtents,
+            DS.SARGS({ "val: bool" }, 8572)).staticmethod("setEnableTightExtents")
+
+        .def("snValid", &DbCore::snValid,
+            DS.SARGS({ "val: str","pipetest: int" }, 8640)).staticmethod("snValid")
+
+        .def("symUtil", &DbCore::symUtil,
+            DS.SARGS(9145)).staticmethod("symUtil")
+
+        .def("tblNext", &DbCore::tblNext,
+            DS.SARGS({ "name: str","rewind: int" }, 9450)).staticmethod("tblNext")
+
+        .def("tblObjName", &DbCore::tblObjName,
+            DS.SARGS({ "tblname: str","sym: str" }, 9451)).staticmethod("tblObjName")
+
+        .def("tblSearch", &DbCore::tblSearch,
+            DS.SARGS({ "tblname: str","sym: str","setnext: int" }, 9452)).staticmethod("tblSearch")
+
         .def("textFind", &DbCore::textFind1)
-        .def("textFind", &DbCore::textFind2, DS.SOVRL(textFindOverloads)).staticmethod("textFind")
-        .def("transactionManager", &DbCore::transactionManager, DS.SARGS()).staticmethod("transactionManager")
-        .def("ucsMatrix", &DbCore::ucsMatrix, DS.SARGS({ "db: PyDb.Database" })).staticmethod("ucsMatrix")
+        .def("textFind", &DbCore::textFind2,
+            DS.SOVRL(textFindOverloads, 9686)).staticmethod("textFind")
+
+        .def("transactionManager", &DbCore::transactionManager,
+            DS.SARGS(9784)).staticmethod("transactionManager")
+
+        .def("ucsMatrix", &DbCore::ucsMatrix,
+            DS.SARGS({ "db: PyDb.Database" }, 9808)).staticmethod("ucsMatrix")
+
         .def("unloadXrefs", &DbCore::unloadXrefs1)
-        .def("unloadXrefs", &DbCore::unloadXrefs2, DS.SARGS({ "db: PyDb.Database","ids: list[PyDb.ObjectId]","bequiet: bool=True" })).staticmethod("unloadXrefs")
-        .def("getSummaryInfo", &DbCore::getSummaryInfo, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getSummaryInfo")
-        .def("putSummaryInfo", &DbCore::putSummaryInfo, DS.SARGS({ "info: PyDb.DatabaseSummaryInfo","db: PyDb.Database" })).staticmethod("putSummaryInfo")
-        .def("updateDimension", &DbCore::updateDimension, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("updateDimension")
-        .def("validateCustomSummaryInfoKey", &DbCore::validateCustomSummaryInfoKey, DS.SARGS({ "val: str","info: PyDb.DatabaseSummaryInfo" })).staticmethod("validateCustomSummaryInfoKey")
+        .def("unloadXrefs", &DbCore::unloadXrefs2,
+            DS.SARGS({ "db: PyDb.Database","ids: list[PyDb.ObjectId]","bequiet: bool=True" }, 9915)).staticmethod("unloadXrefs")
+
+        .def("getSummaryInfo", &DbCore::getSummaryInfo,
+            DS.SARGS({ "db: PyDb.Database" }, 5007)).staticmethod("getSummaryInfo")
+
+        .def("putSummaryInfo", &DbCore::putSummaryInfo,
+            DS.SARGS({ "info: PyDb.DatabaseSummaryInfo","db: PyDb.Database" }, 7893)).staticmethod("putSummaryInfo")
+
+        .def("updateDimension", &DbCore::updateDimension,
+            DS.SARGS({ "id: PyDb.ObjectId" }, 9916)).staticmethod("updateDimension")
+
+        .def("validateCustomSummaryInfoKey", &DbCore::validateCustomSummaryInfoKey
+            , DS.SARGS({ "val: str","info: PyDb.DatabaseSummaryInfo" }, 9917)).staticmethod("validateCustomSummaryInfoKey")
+
         .def("ucs2Wcs", &DbCore::ucs2Wcs1)
-        .def("ucs2Wcs", &DbCore::ucs2Wcs2, DS.SARGS({ "p: PyGe.Point3d|PyGe.Vector3d","qout: PyGe.Point3d|PyGe.Vector3d" })).staticmethod("ucs2Wcs")
+        .def("ucs2Wcs", &DbCore::ucs2Wcs2,
+            DS.SARGS({ "p: PyGe.Point3d|PyGe.Vector3d","qout: PyGe.Point3d|PyGe.Vector3d" }, 9807)).staticmethod("ucs2Wcs")
+
         .def("wcs2Ecs", &DbCore::wcs2Ecs1)
-        .def("wcs2Ecs", &DbCore::wcs2Ecs2, DS.SARGS({ "p: PyGe.Point3d|PyGe.Vector3d", "normal: PyGe.Vector3d","qout: PyGe.Point3d|PyGe.Vector3d" })).staticmethod("wcs2Ecs")
+        .def("wcs2Ecs", &DbCore::wcs2Ecs2,
+            DS.SARGS({ "p: PyGe.Point3d|PyGe.Vector3d", "normal: PyGe.Vector3d","qout: PyGe.Point3d|PyGe.Vector3d" }, 10296)).staticmethod("wcs2Ecs")
+
         .def("wcs2Ucs", &DbCore::wcs2Ucs1)
-        .def("wcs2Ucs", &DbCore::wcs2Ucs2, DS.SARGS({ "p: PyGe.Point3d|PyGe.Vector3d","qout: PyGe.Point3d|PyGe.Vector3d" })).staticmethod("wcs2Ucs")
+        .def("wcs2Ucs", &DbCore::wcs2Ucs2,
+            DS.SARGS({ "p: PyGe.Point3d|PyGe.Vector3d","qout: PyGe.Point3d|PyGe.Vector3d" }, 10297)).staticmethod("wcs2Ucs")
+
         .def("ecs2Wcs", &DbCore::ecs2Wcs1)
-        .def("ecs2Wcs", &DbCore::ecs2Wcs2, DS.SARGS({ "p: PyGe.Point3d|PyGe.Vector3d", "normal: PyGe.Vector3d","qout: PyGe.Point3d|PyGe.Vector3d" })).staticmethod("ecs2Wcs")
+        .def("ecs2Wcs", &DbCore::ecs2Wcs2, 
+            DS.SARGS({ "p: PyGe.Point3d|PyGe.Vector3d", "normal: PyGe.Vector3d","qout: PyGe.Point3d|PyGe.Vector3d" }, 4227)).staticmethod("ecs2Wcs")
         ;
 }
 
