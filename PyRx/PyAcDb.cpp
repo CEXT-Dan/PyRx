@@ -46,6 +46,7 @@
 #include "PyDbDate.h"
 #include "PyDbSubDMesh.h"
 #include "PyDbGripData.h"
+#include "PyDbDbLayerStateManager.h"
 
 
 using namespace boost::python;
@@ -385,6 +386,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbGeoCoordinateSystemWrapper();
 
     makePyDbSubDMeshWrapper();
+    makePyDbDbLayerStateManagerWrapper();
     makeDbCoreWrapper();//LAST?
 
     //convenience 
@@ -393,6 +395,31 @@ BOOST_PYTHON_MODULE(PyDb)
     def("setWorkingDb", setWorkingPyDb);
 
     //enums
+    enum_<AcDbLayerStateManager::LayerStateMask>("LayerStateMask")
+        .value("kNone", AcDbLayerStateManager::LayerStateMask::kNone)
+        .value("kOn", AcDbLayerStateManager::LayerStateMask::kOn)
+        .value("kFrozen", AcDbLayerStateManager::LayerStateMask::kFrozen)
+        .value("kLocked", AcDbLayerStateManager::LayerStateMask::kLocked)
+        .value("kPlot", AcDbLayerStateManager::LayerStateMask::kPlot)
+        .value("kNewViewport", AcDbLayerStateManager::LayerStateMask::kNewViewport)
+        .value("kColor", AcDbLayerStateManager::LayerStateMask::kColor)
+        .value("kLineType", AcDbLayerStateManager::LayerStateMask::kLineType)
+        .value("kLineWeight", AcDbLayerStateManager::LayerStateMask::kLineWeight)
+        .value("kPlotStyle", AcDbLayerStateManager::LayerStateMask::kPlotStyle)
+        .value("kCurrentViewport", AcDbLayerStateManager::LayerStateMask::kCurrentViewport)
+#if defined(_BRXTARGET) && (_BRXTARGET > 240)
+        .value("kTransparency", AcDbLayerStateManager::LayerStateMask::kTransparency)
+#endif
+        .value("kAll", AcDbLayerStateManager::LayerStateMask::kAll)
+        .value("kStateIsHidden", AcDbLayerStateManager::LayerStateMask::kStateIsHidden)
+#if defined(_BRXTARGET) && (_BRXTARGET > 240)
+        .value("kLastRestored", AcDbLayerStateManager::LayerStateMask::kLastRestored)
+#endif
+#if defined(_BRXTARGET) && (_BRXTARGET > 240)
+        .value("kDecomposition", AcDbLayerStateManager::LayerStateMask::kDecomposition)
+#endif
+        .export_values()
+        ;
     enum_<AnnotativeStates>("AnnotativeStates")
         .value("kTrue", AnnotativeStates::kTrue)
         .value("kFalse", AnnotativeStates::kFalse)

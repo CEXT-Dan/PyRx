@@ -536,7 +536,7 @@ inline AcArray<Adesk::UInt64> PyListToUInt64Array(const boost::python::object& i
     return arr;
 }
 
-inline AcStringArray PyListAcStringArray(const boost::python::object& iterable)
+inline AcStringArray PyListToAcStringArray(const boost::python::object& iterable)
 {
     const auto& vec = py_list_to_std_vector<std::string>(iterable);
     AcStringArray arr;

@@ -9,6 +9,7 @@
 #include "PyDbIdMapping.h"
 #include "PyDbDatabaseReactor.h"
 #include "PyDbDate.h"
+#include "PyDbDbLayerStateManager.h"
 
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------
@@ -108,6 +109,7 @@ void makePyDbDatabaseWrapper()
         .def("forceWblockDatabaseCopy", &PyDbDatabase::forceWblockDatabaseCopy, DS.ARGS(2946))
         .def("geoCoordinateSystemId", &PyDbDatabase::geoCoordinateSystemId, DS.ARGS(2947))
         .def("geoMarkerVisibility", &PyDbDatabase::geoMarkerVisibility, DS.ARGS(2948))
+        .def("getLayerStateManager", &PyDbDatabase::getLayerStateManager, DS.ARGS())
         .def("get3dDwfPrec", &PyDbDatabase::get3dDwfPrec, DS.ARGS())
         .def("objectIds", &PyDbDatabase::objectIds)
         .def("objectIds", &PyDbDatabase::objectIdsOfType, DS.ARGS({ "desc:PyRx.RxClass=PyDb.DbObject" }))
@@ -958,6 +960,11 @@ bool PyDbDatabase::fillmode() const
 void PyDbDatabase::forceWblockDatabaseCopy()
 {
     impObj()->forceWblockDatabaseCopy();
+}
+
+PyDbDbLayerStateManager PyDbDatabase::getLayerStateManager() const
+{
+    return  PyDbDbLayerStateManager(impObj()->getLayerStateManager(), false);
 }
 
 std::string PyDbDatabase::geoCoordinateSystemId() const
