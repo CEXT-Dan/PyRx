@@ -11,6 +11,7 @@ class PyDbIdMapping;
 class PyDbDatabaseReactor;
 class PyDbDate;
 class PyDbObjectContextManager;
+class PyDbDbLayerStateManager;
 
 void makePyDbDatabaseWrapper();
 class PyDbDatabase : public PyRxObject
@@ -93,6 +94,7 @@ public:
     double              filletrad() const;
     bool                fillmode() const;
     void                forceWblockDatabaseCopy();
+    PyDbDbLayerStateManager getLayerStateManager() const;
     std::string         geoCoordinateSystemId() const;
     bool                geoMarkerVisibility() const;
     double              get3dDwfPrec() const;

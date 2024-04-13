@@ -1660,7 +1660,7 @@ PyBrxCvDbTinSurfaceDefinitionAddFromFiles::PyBrxCvDbTinSurfaceDefinitionAddFromF
 }
 
 PyBrxCvDbTinSurfaceDefinitionAddFromFiles::PyBrxCvDbTinSurfaceDefinitionAddFromFiles(const boost::python::list& paths, const PyDbObjectId& fileFormatId)
-    :PyBrxCvDbTinSurfaceDefinitionAddFromFiles(new BrxCvDbTinSurfaceDefinitionAddFromFiles(PyListAcStringArray(paths), fileFormatId.m_id), true)
+    :PyBrxCvDbTinSurfaceDefinitionAddFromFiles(new BrxCvDbTinSurfaceDefinitionAddFromFiles(PyListToAcStringArray(paths), fileFormatId.m_id), true)
 {
 }
 
@@ -1676,7 +1676,7 @@ boost::python::list PyBrxCvDbTinSurfaceDefinitionAddFromFiles::filesPaths() cons
 
 bool PyBrxCvDbTinSurfaceDefinitionAddFromFiles::setFilesPaths(const boost::python::list& filesPaths)
 {
-    return impObj()->setFilesPaths(PyListAcStringArray(filesPaths));
+    return impObj()->setFilesPaths(PyListToAcStringArray(filesPaths));
 }
 
 PyDbObjectId PyBrxCvDbTinSurfaceDefinitionAddFromFiles::fileFormatId() const

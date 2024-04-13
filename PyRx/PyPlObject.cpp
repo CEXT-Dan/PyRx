@@ -376,7 +376,7 @@ void PyPlDSDData::setUnrecognizedData1(const std::string& pSectionName, const st
 
 void PyPlDSDData::setUnrecognizedData2(const boost::python::list& sectionArray, const boost::python::list& dataArray)
 {
-    impObj()->setUnrecognizedData(PyListAcStringArray(sectionArray), PyListAcStringArray(dataArray));
+    impObj()->setUnrecognizedData(PyListToAcStringArray(sectionArray), PyListToAcStringArray(dataArray));
 }
 
 unsigned int PyPlDSDData::majorVersion() const
