@@ -139,8 +139,8 @@ public:
     void                copyLayout2(const std::string& copyname, const std::string& newname, const PyDbDatabase& pDb);
     void                deleteLayout1(const std::string& delname);
     void                deleteLayout2(const std::string& delname, PyDbDatabase& pDb);
-    void                createLayout1(const std::string& newname, PyDbObjectId& layoutId, PyDbObjectId& blockTableRecId);
-    void                createLayout2(const std::string& newname, PyDbObjectId& layoutId, PyDbObjectId& blockTableRecId, PyDbDatabase& pDb);
+    boost::python::tuple createLayout1(const std::string& newname);
+    boost::python::tuple createLayout2(const std::string& newname, PyDbDatabase& pDb);
     void                renameLayout1(const std::string& oldname, const std::string& newname);
     void                renameLayout2(const std::string& oldname, const std::string& newname, PyDbDatabase& pDb);
     void                cloneLayout1(PyDbLayout& pLBTR, const std::string& newname);

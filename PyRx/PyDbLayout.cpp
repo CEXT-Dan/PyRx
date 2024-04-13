@@ -690,33 +690,33 @@ void makePyDbLayoutManagerWrapper()
     class_<PyDbLayoutManager, bases<PyRxObject>>("LayoutManager")
         .def(init<>(DS.ARGS()))
         .def("setCurrentLayout", &PyDbLayoutManager::setCurrentLayout1)
-        .def("setCurrentLayout", &PyDbLayoutManager::setCurrentLayout2)
-        .def("setCurrentLayoutId", &PyDbLayoutManager::setCurrentLayoutId)
+        .def("setCurrentLayout", &PyDbLayoutManager::setCurrentLayout2, DS.ARGS({ "name: str","db: PyDb.Database=None" }))
+        .def("setCurrentLayoutId", &PyDbLayoutManager::setCurrentLayoutId, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("getActiveLayoutName", &PyDbLayoutManager::getActiveLayoutName1)
-        .def("getActiveLayoutName", &PyDbLayoutManager::getActiveLayoutName2)
+        .def("getActiveLayoutName", &PyDbLayoutManager::getActiveLayoutName2, DS.ARGS({ "allowModel: bool","db: PyDb.Database=None" }))
         .def("getActiveLayoutBTRId", &PyDbLayoutManager::getActiveLayoutBTRId1)
-        .def("getActiveLayoutBTRId", &PyDbLayoutManager::getActiveLayoutBTRId2)
+        .def("getActiveLayoutBTRId", &PyDbLayoutManager::getActiveLayoutBTRId2, DS.ARGS({ "db: PyDb.Database=None" }))
         .def("findLayoutNamed", &PyDbLayoutManager::findLayoutNamed1)
-        .def("findLayoutNamed", &PyDbLayoutManager::findLayoutNamed2)
+        .def("findLayoutNamed", &PyDbLayoutManager::findLayoutNamed2, DS.ARGS({ "name: str","db: PyDb.Database=None" }))
         .def("layoutExists", &PyDbLayoutManager::layoutExists1)
-        .def("layoutExists", &PyDbLayoutManager::layoutExists2)
+        .def("layoutExists", &PyDbLayoutManager::layoutExists2, DS.ARGS({ "name: str","db: PyDb.Database=None" }))
         .def("copyLayout", &PyDbLayoutManager::copyLayout1)
-        .def("copyLayout", &PyDbLayoutManager::copyLayout2)
+        .def("copyLayout", &PyDbLayoutManager::copyLayout2, DS.ARGS({ "name: str", "newname: str", "db: PyDb.Database=None" }))
         .def("deleteLayout", &PyDbLayoutManager::deleteLayout1)
-        .def("deleteLayout", &PyDbLayoutManager::deleteLayout2)
+        .def("deleteLayout", &PyDbLayoutManager::deleteLayout2, DS.ARGS({ "name: str","db: PyDb.Database=None" }))
         .def("createLayout", &PyDbLayoutManager::createLayout1)
-        .def("createLayout", &PyDbLayoutManager::createLayout2)
+        .def("createLayout", &PyDbLayoutManager::createLayout2, DS.ARGS({ "name: str","db: PyDb.Database=None" }))
         .def("renameLayout", &PyDbLayoutManager::renameLayout1)
-        .def("renameLayout", &PyDbLayoutManager::renameLayout2)
+        .def("renameLayout", &PyDbLayoutManager::renameLayout2, DS.ARGS({ "name: str", "newname: str", "db: PyDb.Database=None" }))
         .def("cloneLayout", &PyDbLayoutManager::cloneLayout1)
-        .def("cloneLayout", &PyDbLayoutManager::cloneLayout2)
-        .def("getNonRectVPIdFromClipId", &PyDbLayoutManager::getNonRectVPIdFromClipId)
+        .def("cloneLayout", &PyDbLayoutManager::cloneLayout2, DS.ARGS({ "layout: PyDb.Layout","newname: str", "newTabOrder: int", "db: PyDb.Database=None" }))
+        .def("getNonRectVPIdFromClipId", &PyDbLayoutManager::getNonRectVPIdFromClipId, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("isVpnumClipped", &PyDbLayoutManager::isVpnumClipped1)
-        .def("isVpnumClipped", &PyDbLayoutManager::isVpnumClipped2)
+        .def("isVpnumClipped", &PyDbLayoutManager::isVpnumClipped2, DS.ARGS({ "idx: int","db: PyDb.Database=None" }))
         .def("countLayouts", &PyDbLayoutManager::countLayouts1)
-        .def("countLayouts", &PyDbLayoutManager::countLayouts2)
-        .def("setupForLayouts", &PyDbLayoutManager::setupForLayouts).staticmethod("setupForLayouts")
-        .def("clearSetupForLayouts", &PyDbLayoutManager::clearSetupForLayouts).staticmethod("clearSetupForLayouts")
+        .def("countLayouts", &PyDbLayoutManager::countLayouts2, DS.ARGS({ "db: PyDb.Database=None" }))
+        .def("setupForLayouts", &PyDbLayoutManager::setupForLayouts, DS.SARGS({ "db: PyDb.Database" })).staticmethod("setupForLayouts")
+        .def("clearSetupForLayouts", &PyDbLayoutManager::clearSetupForLayouts, DS.SARGS({ "handle: int" })).staticmethod("clearSetupForLayouts")
         .def("desc", &PyDbLayoutManager::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbLayoutManager::className, DS.SARGS()).staticmethod("className")
         ;
@@ -811,14 +811,20 @@ void PyDbLayoutManager::deleteLayout2(const std::string& delname, PyDbDatabase& 
     return PyThrowBadEs(impObj()->deleteLayout(utf8_to_wstr(delname).c_str(), pDb.impObj()));
 }
 
-void PyDbLayoutManager::createLayout1(const std::string& newname, PyDbObjectId& layoutId, PyDbObjectId& blockTableRecId)
+boost::python::tuple PyDbLayoutManager::createLayout1(const std::string& newname)
 {
-    return PyThrowBadEs(impObj()->createLayout(utf8_to_wstr(newname).c_str(), layoutId.m_id, blockTableRecId.m_id));
+    PyDbObjectId layoutId; 
+    PyDbObjectId blockTableRecId;
+    PyThrowBadEs(impObj()->createLayout(utf8_to_wstr(newname).c_str(), layoutId.m_id, blockTableRecId.m_id));
+    return boost::python::make_tuple(layoutId, blockTableRecId);
 }
 
-void PyDbLayoutManager::createLayout2(const std::string& newname, PyDbObjectId& layoutId, PyDbObjectId& blockTableRecId, PyDbDatabase& pDb)
+boost::python::tuple PyDbLayoutManager::createLayout2(const std::string& newname, PyDbDatabase& pDb)
 {
-    return PyThrowBadEs(impObj()->createLayout(utf8_to_wstr(newname).c_str(), layoutId.m_id, blockTableRecId.m_id, pDb.impObj()));
+    PyDbObjectId layoutId;
+    PyDbObjectId blockTableRecId;
+    PyThrowBadEs(impObj()->createLayout(utf8_to_wstr(newname).c_str(), layoutId.m_id, blockTableRecId.m_id, pDb.impObj()));
+    return boost::python::make_tuple(layoutId, blockTableRecId);
 }
 
 void PyDbLayoutManager::renameLayout1(const std::string& oldname, const std::string& newname)
