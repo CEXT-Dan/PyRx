@@ -933,7 +933,7 @@ This class cannot be instantiated from Python'''
       '''Function usage:Copies the contents of other into the messaged object, whenever feasible. Function implementation in derived classes:If implemented, this function needs to be able to read the data in the object pointed to by other and copy any or all data as appropriate into this object. There is no requirement that the object pointed to by other and this object be of the same class, but that is the generally assumed condition.Default implementation: Because this function must be overridden to have any meaning, a fatal error will be caused when calling the default implementation. '''
     ...
     def database (self)-> PyDb.Database :
-      '''                             '''
+      '''Returns the database object (AcDbDatabase) being used by this AcApDocument.'''
     ...
 
     @staticmethod
@@ -944,7 +944,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def docTitle (self)-> str :
-      '''                             '''
+      '''Returns the window title of the document.'''
     ...
 
     @staticmethod
@@ -952,22 +952,22 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def downgradeDocOpen (self, promptForSave : bool)-> None :
-      '''                             '''
+      '''Converts the document status from writeable to read only.If bPromptForSave is true and the drawing is modified (based on dbmod), the user is prompted to save the drawing. If bPromptForSave is false and the drawing has been modified, an error is returned.'''
     ...
     def editor (self)-> PyEd.Editor :
       '''                             '''
     ...
     def fileName (self)-> str :
-      '''                             '''
+      '''Returns the full path and file name of the database being used by this AcApDocument.'''
     ...
     def formatForSave (self)-> PyAp.SaveFormat :
-      '''                             '''
+      '''This method returns the current save format that is being used by the SAVEAS, SAVE, and QSAVE commands. The value returned may be either the session-wide default setting, or a different setting that the user has selected for this document. If it is an override for this document, it will not persist across sessions.This method directly returns the file format for interactive commands entered by the user. If you want your application to use the current save format, every time you wish to save the database, you will first need to call formatForSave(), and then use the returned SaveFormat value to determine which function to call. For example, if formatForSave() returned kR12_dxf, you would call acdbDxfOutAsR12() to write the database as a Release 12 DXF file.In summary:Either you or your user may set a persistent session-wide default format for save that will be honored by all save commands except AUTOSAVE.Only the user can temporarily (not persistently between sessions) override this setting for a particular document.The formatForSave() method returns the format in which the user wishes an individual document to be saved, which will be either the session-wide default or the temporary override, as appropriate.'''
     ...
     def getCountOfLispList (self)-> int :
-      '''                             '''
+      '''Returns number of loaded LISP applications.'''
     ...
     def getItemOfLispList (self, index : int)-> tuple :
-      '''                             '''
+      '''Accesses the list of loaded LISP applications and returns information corresponding to the specified index.'''
     ...
     def getUserData (self)-> object :
       '''                             '''
@@ -976,13 +976,13 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def inputPointManager (self)-> PyEd.InputPointManager :
-      '''                             '''
+      '''This function will return this AcApDocument object's input point manager object.'''
     ...
     def isA (self)-> PyRx.RxClass :
       '''Function usage:For each class registered with ObjectARX, the implementation of this function is to return a pointer to the AcRxClass object for the class of the object in which this method is called. For classes not registered with ObjectARX, this method has no meaning.Function implementation in derived classes:This function is overridden in all derived classes. The AcRx macros declare and define this function, so that the override is taken care of as part of using the macros. The implementation of this function is simply to return ::desc(). For example. the implementation for AcDbLine would be:return AcDbLine::desc();Default implementation for AcRxObject:  { return AcRxObject::desc(); }'''
     ...
     def isCommandInputInactive (self)-> bool :
-      '''                             '''
+      '''This is isCommandInputInactive, a member of class AcApDocument.'''
     ...
     def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''Returns true if "this" object is of a member of either the class represented by aClass, or a class derived from aClass. '''
@@ -991,37 +991,37 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def isQuiescent (self)-> bool :
-      '''                             '''
+      '''This function determines if there is a command, LISP script, or ARX command active.Returns true if there is no command, LISP script, or ARX command active; otherwise, it returns false.'''
     ...
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
     def lockMode (self, bIncludeMyLocks : bool=False)-> PyAp.DocLockMode :
-      '''                             '''
+      '''This function provides a way for an application to determine if it could have permission to set a lock on a document. One rule about locking is that an execution context can override any of its own locks. If this application's context has an Exclusive Write lock, it can still apply another lock to the document. Returns the highest level lock set by other execution contexts if bIncludeMyLocks = false. If bIncludeMyLocks = true, then the function will return the highest level lock set by any execution context, include this application.'''
     ...
     def myLockMode (self)-> PyAp.DocLockMode :
-      '''                             '''
+      '''This function returns the current lock status that the current execution has on the document, and can be either stronger or weaker than that returned by AcApDocument::lockMode().'''
     ...
     def popDbmod (self)-> None :
-      '''                             '''
+      '''This method pops the top value off of the DBMOD system variable stack and copies that value into the document's DBMOD system variable. popDbmod() will return eOk if successful, eIllegalReplacement if the stack was empty, and eInvalidContext if the document is not fully operational. eInvalidContext should only occur during early edit session initialization, before the DBMOD value has been initialized.'''
     ...
     def pushDbmod (self)-> None :
-      '''                             '''
+      '''This method copies the current value of the DBMOD system variable onto a stack. This allows you to save the current value of the DBMOD read-only system variable for subsequent restoration through the popDbmod() method.pushDbmod() and its counterpart popDbmod() allow your application to modify a database without having it marked as modified, as is commonly done by applications during edit session initialization. This includes modification of database header variables or adding to and modifying objects in the database being edited, which all cause flags in the document system variable DBMOD to be set. When DBMOD is non-zero, the 'Save your drawing?' prompt is posted when a user attempts to quit out of a drawing. To avoid this prompt in your application, stack the current DBMOD value with pushDbmod() before beginning to modify the database in a manner that should not cause this query, restore DBMOD with popDbmod() when such modifications are complete.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
     def setDocTitle (self, title : str)-> None :
-      '''                             '''
+      '''Sets the title of the document.'''
     ...
     def setUserData (self, data : any)-> None :
       '''                             '''
     ...
     def transactionManager (self)-> PyAp.TransactionManager :
-      '''                             '''
+      '''This function returns the AcTransactionManager object for this AcApDocument. The global function actrTransactionManager() will return a pointer to the current document's transaction manager. This function is important because an application cannot mix objects from different documents in the same transaction. If an application is opening objects from more than one document at a time, and are using transactions, they must start a separate transaction for each document, using the transaction manager from each document.'''
     ...
     def upgradeDocOpen (self)-> None :
-      '''                             '''
+      '''Converts the document status from read only to write, if possible.'''
     ...
 
 class LayerFilter(PyRx.RxObject):
