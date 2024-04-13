@@ -1294,22 +1294,13 @@ class LayoutManager(PyDb.LayoutManager):
     def className ()-> str :
       '''                             '''
     ...
-    def clearSetupForLayouts (self, *args, **kwargs)-> None :
-      '''clearSetupForLayouts( (int)arg1) -> None :
 
-    C++ signature :
-        void clearSetupForLayouts(unsigned __int64)'''
+    @staticmethod
+    def clearSetupForLayouts (handle: int)-> None :
+      '''                             '''
     ...
-    def cloneLayout (self, *args, **kwargs)-> None :
-      '''cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3, (int)arg4, (Database)arg5) -> None :
-
-    C++ signature :
-        void cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class PyDbDatabase {lvalue})'''
+    def cloneLayout (self, layout: PyDb.Layout, newname: str, newTabOrder: int, db: PyDb.Database=None)-> None :
+      '''                             '''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''Function usage:This function is intended to allow classes to provide a means to compare class objects much the way strcmp() compares character strings.The object pointed to by other is compared with this object. The result of the comparison is returned.The possible AcRx::Ordering types are:AcRx::kLessThanAcRx::kEqualAcRx::kGreaterThanAcRx::kNotOrderableThe AcRx::kNotOrderable type is there because C++ classes often cannot support object value comparison.Function implementation in derived classes:There are no restrictions or expectations on how this function is implemented. Each class will have its own requirements for comparison.Default implementation:Simply returns AcRx::kNotOrderable since many C++ classes cannot support object value comparison.'''
@@ -1317,38 +1308,14 @@ cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3, (int)arg4, (Database)
     def copyFrom (self, other: PyRx.RxObject)-> None :
       '''Function usage:Copies the contents of other into the messaged object, whenever feasible. Function implementation in derived classes:If implemented, this function needs to be able to read the data in the object pointed to by other and copy any or all data as appropriate into this object. There is no requirement that the object pointed to by other and this object be of the same class, but that is the generally assumed condition.Default implementation: Because this function must be overridden to have any meaning, a fatal error will be caused when calling the default implementation. '''
     ...
-    def copyLayout (self, *args, **kwargs)-> None :
-      '''copyLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void copyLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-copyLayout( (LayoutManager)arg1, (str)arg2, (str)arg3, (Database)arg4) -> None :
-
-    C++ signature :
-        void copyLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    def copyLayout (self, name: str, newname: str, db: PyDb.Database=None)-> None :
+      '''                             '''
     ...
-    def countLayouts (self, *args, **kwargs)-> int :
-      '''countLayouts( (LayoutManager)arg1) -> int :
-
-    C++ signature :
-        int countLayouts(class PyDbLayoutManager {lvalue})
-
-countLayouts( (LayoutManager)arg1, (Database)arg2) -> int :
-
-    C++ signature :
-        int countLayouts(class PyDbLayoutManager {lvalue},class PyDbDatabase {lvalue})'''
+    def countLayouts (self, db: PyDb.Database=None)-> int :
+      '''                             '''
     ...
-    def createLayout (self, *args, **kwargs)-> None :
-      '''createLayout( (LayoutManager)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4) -> None :
-
-    C++ signature :
-        void createLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue})
-
-createLayout( (LayoutManager)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (Database)arg5) -> None :
-
-    C++ signature :
-        void createLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue},class PyDbDatabase {lvalue})'''
+    def createLayout (self, name: str, db: PyDb.Database=None)-> tuple :
+      '''                             '''
     ...
     def createLayoutFromTemplate (self, newLayoutName : str, templatePath : str, layoutName : str, db : PyDb.Database='current')-> PyDb.ObjectId :
       '''                             '''
@@ -1356,16 +1323,8 @@ createLayout( (LayoutManager)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (D
     def createViewports (self)-> bool :
       '''                             '''
     ...
-    def deleteLayout (self, *args, **kwargs)-> None :
-      '''deleteLayout( (LayoutManager)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void deleteLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-deleteLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
-
-    C++ signature :
-        void deleteLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+    def deleteLayout (self, name: str, db: PyDb.Database=None)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -1375,41 +1334,17 @@ deleteLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     def dispose (self)-> None :
       '''                             '''
     ...
-    def findLayoutNamed (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''findLayoutNamed( (LayoutManager)arg1, (str)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId findLayoutNamed(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-findLayoutNamed( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId findLayoutNamed(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    def findLayoutNamed (self, name: str, db: PyDb.Database=None)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def generateNextNewLayoutName (self, val : PyDb.Database='current')-> str :
       '''                             '''
     ...
-    def getActiveLayoutBTRId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getActiveLayoutBTRId( (LayoutManager)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getActiveLayoutBTRId(class PyDbLayoutManager {lvalue})
-
-getActiveLayoutBTRId( (LayoutManager)arg1, (Database)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getActiveLayoutBTRId(class PyDbLayoutManager {lvalue},class PyDbDatabase)'''
+    def getActiveLayoutBTRId (self, db: PyDb.Database=None)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def getActiveLayoutName (self, *args, **kwargs)-> str :
-      '''getActiveLayoutName( (LayoutManager)arg1, (bool)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveLayoutName(class PyDbLayoutManager {lvalue},bool)
-
-getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveLayoutName(class PyDbLayoutManager {lvalue},bool,class PyDbDatabase {lvalue})'''
+    def getActiveLayoutName (self, allowModel: bool, db: PyDb.Database=None)-> str :
+      '''                             '''
     ...
     def getActiveTab (self)-> str :
       '''                             '''
@@ -1417,11 +1352,8 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
     def getClipBoundaryElabration (self, val : PyDb.ObjectId)-> list :
       '''                             '''
     ...
-    def getNonRectVPIdFromClipId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getNonRectVPIdFromClipId( (LayoutManager)arg1, (ObjectId)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getNonRectVPIdFromClipId(class PyDbLayoutManager {lvalue},class PyDbObjectId {lvalue})'''
+    def getNonRectVPIdFromClipId (self, id: PyDb.ObjectId)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -1435,30 +1367,14 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
     def isNullObj (self)-> bool :
       '''                             '''
     ...
-    def isVpnumClipped (self, *args, **kwargs)-> bool :
-      '''isVpnumClipped( (LayoutManager)arg1, (int)arg2) -> bool :
-
-    C++ signature :
-        bool isVpnumClipped(class PyDbLayoutManager {lvalue},int)
-
-isVpnumClipped( (LayoutManager)arg1, (int)arg2, (Database)arg3) -> bool :
-
-    C++ signature :
-        bool isVpnumClipped(class PyDbLayoutManager {lvalue},int,class PyDbDatabase)'''
+    def isVpnumClipped (self, idx: int, db: PyDb.Database=None)-> bool :
+      '''                             '''
     ...
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def layoutExists (self, *args, **kwargs)-> bool :
-      '''layoutExists( (LayoutManager)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool layoutExists(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-layoutExists( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> bool :
-
-    C++ signature :
-        bool layoutExists(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    def layoutExists (self, name: str, db: PyDb.Database=None)-> bool :
+      '''                             '''
     ...
     def pageSetup (self, layoutBTRId : PyDb.ObjectId=PyDb.ObjectId.kNull, parent : int=0, isPageSetupDlg : bool=True)-> int :
       '''                             '''
@@ -1469,16 +1385,8 @@ layoutExists( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> bool :
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
-    def renameLayout (self, *args, **kwargs)-> None :
-      '''renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void renameLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3, (Database)arg4) -> None :
-
-    C++ signature :
-        void renameLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+    def renameLayout (self, name: str, newname: str, db: PyDb.Database=None)-> None :
+      '''                             '''
     ...
     def setCaptureOnLayoutSwitch (self, val : bool)-> None :
       '''                             '''
@@ -1486,22 +1394,11 @@ renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3, (Database)arg4) -> None
     def setCreateViewports (self, val : bool)-> None :
       '''                             '''
     ...
-    def setCurrentLayout (self, *args, **kwargs)-> None :
-      '''setCurrentLayout( (LayoutManager)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setCurrentLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-setCurrentLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
-
-    C++ signature :
-        void setCurrentLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+    def setCurrentLayout (self, name: str, db: PyDb.Database=None)-> None :
+      '''                             '''
     ...
-    def setCurrentLayoutId (self, *args, **kwargs)-> None :
-      '''setCurrentLayoutId( (LayoutManager)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setCurrentLayoutId(class PyDbLayoutManager {lvalue},class PyDbObjectId)'''
+    def setCurrentLayoutId (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
     def setDefaultPlotConfig (self, val : PyDb.ObjectId)-> None :
       '''                             '''
@@ -1521,11 +1418,10 @@ setCurrentLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     def setShowTabs (self, val : bool)-> None :
       '''                             '''
     ...
-    def setupForLayouts (self, *args, **kwargs)-> int :
-      '''setupForLayouts( (Database)arg1) -> int :
 
-    C++ signature :
-        unsigned __int64 setupForLayouts(class PyDbDatabase {lvalue})'''
+    @staticmethod
+    def setupForLayouts (db: PyDb.Database)-> int :
+      '''                             '''
     ...
     def showPageSetup (self)-> bool :
       '''                             '''
