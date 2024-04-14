@@ -36,8 +36,9 @@ Autolisp:
 (pyloaded) returns a list of loaded modules
 
 
-PyRx sample:
+#PyRx sample:
 
+```Python
 #imports 
 from pyrx_imp import Rx
 from pyrx_imp import Ge
@@ -84,11 +85,11 @@ def PyRxCmd_pydoit():
 
     except Exception as err:
         print(err)
+```	
 
-		
-...
-ActiveX sample:
+#ActiveX sample:
 
+```Python
 from pyrx_impx import Rx
 from pyrx_impx import Ge
 from pyrx_impx import Gi
@@ -136,6 +137,7 @@ def PyRxCmd_hitTest():
         traceback.print_exception(err)
     finally:
         axSs.Delete()
+```
 
 Blogs: https://pyarx.blogspot.com/
 Discussion forum:  https://www.theswamp.org/index.php?board=76.0
