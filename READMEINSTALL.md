@@ -1,5 +1,8 @@
 Install python (64 bit) python3.12.X with PATH checkbox set to true.
-see and [https://github.com/CEXT-Dan/PyRx/blob/main/pyinstall.png], [https://github.com/CEXT-Dan/PyRx/blob/main/env.png]in this folder
+
+![Python install](https://github.com/CEXT-Dan/PyRx/blob/main/pyinstall.png), 
+
+![Environment](https://github.com/CEXT-Dan/PyRx/blob/main/env.png)
 
 install wxPython 4.2.1 from https://pypi.org/project/wxPython/
 
