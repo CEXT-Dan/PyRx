@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ResultBuffer.h"
 #include "PyDbObjectId.h"
+#include "PyEdSelectionSet.h"
 using namespace boost::python;
 
 resbuf* listToResbuf(const boost::python::list& bpl)
@@ -221,7 +222,7 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                 {
 #ifdef NEVER
                     pTail->rbnext = acutNewRb(code);
-                    pTail->resval.rbinary.buf  = reinterpret_cast<char*>(listToResbuf(bpl));
+                    pTail->resval.rbinary.buf = reinterpret_cast<char*>(listToResbuf(bpl));
                     pTail->resval.rbinary.clen = strlen(pTail->resval.rbinary.buf);
 #endif
                     break;
@@ -333,9 +334,7 @@ boost::python::list resbufToList(resbuf* pRb)
             case RTPICKS:
             case RTENAME:
             {
-                AcDbObjectId id;
-                if (acdbGetObjectId(id, pTail->resval.rlname) == eOk)
-                    list.append(boost::python::make_tuple(pTail->restype, PyDbObjectId(id)));
+                list.append(boost::python::make_tuple(pTail->restype, PyEdSelectionSet(pTail->resval.rlname)));
             }
             break;
             case RTRESBUF:
