@@ -111,6 +111,7 @@ BOOST_PYTHON_MODULE(PyRx)
         .value("kT_atom", LispType::kT_atom)
         .value("kText", LispType::kText)
         .value("kVoid", LispType::kVoid)
+        .value("kSelectionSet", LispType::kSelectionSet)
         .export_values()
         ;
 
