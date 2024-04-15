@@ -74,12 +74,13 @@ class TestPyDbEvalVariant(unittest.TestCase):
 def pydbeval(): 
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestPyDbEvalVariant)
-        print('TestDbEval')
         if testcfg.logToFile:
             with open(testcfg.logFileName, "a") as f:
+                f.write("\n{:*^60s}\n".format("TestDbEval"))
                 runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
                 runner.run(suite)
         else:
+            print('TestDbEval')
             print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
     except Exception as err:
         print(err)

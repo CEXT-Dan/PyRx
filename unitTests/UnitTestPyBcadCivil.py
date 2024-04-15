@@ -86,12 +86,13 @@ class TestBCadCivil(unittest.TestCase):
 def pybcciviltest():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestBCadCivil)
-        print("TestBricsCADCivil")
         if testcfg.logToFile:
             with open(testcfg.logFileName, "a") as f:
+                f.write("\n{:*^60s}\n".format("TestBricsCADCivil"))
                 runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
                 runner.run(suite)
         else:
+            print("TestBricsCADCivil")
             print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
     except Exception as err:
         print(err)

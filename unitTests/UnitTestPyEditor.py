@@ -61,12 +61,13 @@ class TestEditor(unittest.TestCase):
 def pyeditor():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestEditor)
-        print('TestEditor')
         if testcfg.logToFile:
             with open(testcfg.logFileName, "a") as f:
+                f.write("\n{:*^60s}\n".format("TestEditor"))
                 runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
                 runner.run(suite)
         else:
+            print('TestEditor')
             print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
     except Exception as err:
         print(err)

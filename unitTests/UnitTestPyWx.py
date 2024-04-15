@@ -24,12 +24,13 @@ class TestWxPython(unittest.TestCase):
 def pywx():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestWxPython)
-        print('TestWxPython')
         if testcfg.logToFile:
             with open(testcfg.logFileName, "a") as f:
+                f.write("\n{:*^60s}\n".format("TestWxPython"))
                 runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
                 runner.run(suite)
         else:
+            print('TestWxPython')
             print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
     except Exception as err:
         print(err)

@@ -71,12 +71,13 @@ class TestDocStrring(unittest.TestCase):
 def docstringtester():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDocStrring)
-        print('TestDocStrring')
         if testcfg.logToFile:
             with open(testcfg.logFileName, "a") as f:
+                f.write("\n{:*^60s}\n".format("TestDocStrring"))
                 runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
                 runner.run(suite)
         else:
+            print('TestDocStrring')
             print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
     except Exception as err:
         print(err)

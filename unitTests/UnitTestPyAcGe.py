@@ -332,12 +332,13 @@ class TestGe(unittest.TestCase):
 def pyge():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestGe)
-        print('TestGe')
         if testcfg.logToFile:
             with open(testcfg.logFileName, "a") as f:
+                f.write("\n{:*^60s}\n".format("TestGe"))
                 runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
                 runner.run(suite)
         else:
+            print('TestGe')
             print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
     except Exception as err:
         print(err)
