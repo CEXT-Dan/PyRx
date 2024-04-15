@@ -332,9 +332,15 @@ boost::python::list resbufToList(resbuf* pRb)
                 list.append(boost::python::make_tuple(pTail->restype, wstr_to_utf8(pTail->resval.rstring)));
                 break;
             case RTPICKS:
-            case RTENAME:
             {
                 list.append(boost::python::make_tuple(pTail->restype, PyEdSelectionSet(pTail->resval.rlname)));
+                break;
+            }
+            case RTENAME:
+            {
+                AcDbObjectId id;
+                if (acdbGetObjectId(id, pTail->resval.rlname) == eOk)
+                    list.append(boost::python::make_tuple(pTail->restype, PyDbObjectId(id)));
             }
             break;
             case RTRESBUF:
