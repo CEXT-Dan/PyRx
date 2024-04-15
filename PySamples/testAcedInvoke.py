@@ -9,7 +9,7 @@ from pyrx_imp import Gs
 #args must end with (Rx.LispType.kNone,0)
 
 #  (defun C:ADDNUM ( x / ) (+ x x))
-def PyRxCmd_doit(CmDFlags = Ap.CmdFlags.SESSION):
+def PyRxCmd_doit1(CmDFlags = Ap.CmdFlags.SESSION):
     try:
         args = [(Rx.LispType.kText, "C:ADDNUM"),(Rx.LispType.kInt16,10),(Rx.LispType.kNone,0) ]
         result = Ed.Core.invoke(args)
