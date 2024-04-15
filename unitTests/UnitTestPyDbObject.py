@@ -73,11 +73,11 @@ def pydbobject():
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDbObject)
         if testcfg.logToFile:
             with open(testcfg.logFileName, "a") as f:
-                f.write("\n{:*^60s}\n".format("pydbobject"))
+                f.write("\n{:*^60s}\n".format("TestDbObject"))
                 runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
                 runner.run(suite)
         else:
-            print('pydbobject')
+            print('TestDbObject')
             print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
     except Exception as err:
         print.Printf(err)

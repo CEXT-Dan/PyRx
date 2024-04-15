@@ -446,11 +446,11 @@ def pyentity():
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDbEntity)
         if testcfg.logToFile:
             with open(testcfg.logFileName, "a") as f:
-                f.write("\n{:*^60s}\n".format("TestDbPoint"))
+                f.write("\n{:*^60s}\n".format("TestDbEntity"))
                 runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
                 runner.run(suite)
         else:
-            print('TestDbPoint')
+            print('TestDbEntity')
             print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
     except Exception as err:
         print.Printf(err)

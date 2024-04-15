@@ -68,11 +68,11 @@ def pyrxobject():
         suite = unittest.TestLoader().loadTestsFromTestCase(TestRxObject)
         if testcfg.logToFile:
             with open(testcfg.logFileName, "a") as f:
-                f.write("\n{:*^60s}\n".format("pyrxobject"))
+                f.write("\n{:*^60s}\n".format("TestRxObject"))
                 runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
                 runner.run(suite)
         else:
-            print('pyrxobject')
+            print('TestRxObject')
             print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
     except Exception as err:
         print.Printf(err)
