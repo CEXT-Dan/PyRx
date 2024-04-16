@@ -21,17 +21,19 @@ void                            ads_regen(void);
 
 #ifdef ZRXAPP
 int                             zcedEvaluateLisp(ACHAR const* str, resbuf*& result);
-extern Adesk::Boolean           zcedHatchPalletteDialog(wchar_t const*, Adesk::Boolean, wchar_t*&);
+extern Adesk::Boolean           zcedHatchPalletteDialog(wchar_t const*, Adesk::Boolean, wchar_t*&);;
 #endif
 
 #ifdef GRXAPP
 int                             gcedEvaluateLisp(ACHAR const* str, resbuf*& result);
 extern Adesk::Boolean           gcedHatchPalletteDialog(wchar_t const*, Adesk::Boolean, wchar_t*&);
+extern Adesk::Boolean           gcedPostCommand(const ACHAR*);
 #endif
 
 #ifdef BRXAPP
 int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
 extern  bool                    acedHatchPalletteDialog(const wchar_t*, bool, wchar_t*&);
+extern Adesk::Boolean           acedPostCommand(const ACHAR*);
 #endif
 
 
@@ -1085,9 +1087,13 @@ void EdCore::pSpace()
 
 void EdCore::postCommand(const std::string& str)
 {
-#if _ZRXTARGET == 240 || _GRXTARGET == 240 || _BRXTARGET == 240
+#if _ZRXTARGET == 240
     throw PyNotimplementedByHost();
-#else
+#endif
+#if _GRXTARGET == 240 
+    gcedPostCommand(utf8_to_wstr(str).c_str());
+#endif
+#if defined(_ARXTARGET) || defined(_BRXTARGET) 
     acedPostCommand(utf8_to_wstr(str).c_str());
 #endif
 }

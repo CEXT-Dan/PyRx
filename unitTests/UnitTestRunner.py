@@ -8,7 +8,6 @@ import UnitTestPyDbEntity
 import UnitTestPyEditor
 import UnitTestPyWx
 import UnitTestPyActiveX
-import UnitTestDocString
 import dbc
 import testcfg
 import os
@@ -17,6 +16,10 @@ from pyrx_imp import Rx
 from pyrx_imp import Ap
 from pyrx_imp import Ed
 host = Ap.Application.hostAPI()
+
+if not "BRX" in host:
+    import UnitTestDocString
+
 
 if "BRX" in host:
     import UnitTestPyBcadCivil
@@ -42,6 +45,7 @@ def OnPyReload() -> None:
         importlib.reload(UnitTestPyEditor)
         importlib.reload(UnitTestPyWx)
         importlib.reload(UnitTestPyActiveX)
+        
         if "BRX" in host:
             importlib.reload(UnitTestPyBcadCivil)
             
