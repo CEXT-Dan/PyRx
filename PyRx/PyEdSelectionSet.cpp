@@ -29,8 +29,31 @@ void makePyEdSelectionSetWrapper()
         ;
 }
 
+
+//used a shared pointer for reference counting. 
+struct PyEdSSDeleter
+{
+    explicit PyEdSSDeleter(bool autoDelete)
+       : m_autoDelete(autoDelete)
+    {
+    }
+    ~PyEdSSDeleter() = default;
+
+    inline void operator()(PySSName* ss) const
+    {
+        if (ss != nullptr)
+        {
+            if (m_autoDelete && ss->at(0) != 0 && ss->at(1) != 0)
+                acedSSFree(ss->data());
+            delete ss;
+        }
+    }
+
+    bool m_autoDelete = true;
+};
+
 PyEdSelectionSet::PyEdSelectionSet()
-    : m_pSet(new PySSName(), PyEdSSDeleter())
+    : m_pSet(new PySSName(), PyEdSSDeleter(true))
 {
     ads_name result = { 0L,0L };
     PyThrowBadRt(acedSSAdd(nullptr, nullptr, result));
@@ -38,7 +61,13 @@ PyEdSelectionSet::PyEdSelectionSet()
 }
 
 PyEdSelectionSet::PyEdSelectionSet(const ads_name& ss)
-    : m_pSet(new PySSName(), PyEdSSDeleter())
+    : m_pSet(new PySSName(), PyEdSSDeleter(true))
+{
+    memcpy(m_pSet->data(), ss, sizeof(ss));
+}
+
+PyEdSelectionSet::PyEdSelectionSet(const ads_name& ss, bool autoDelete)
+    : m_pSet(new PySSName(), PyEdSSDeleter(autoDelete))
 {
     memcpy(m_pSet->data(), ss, sizeof(ss));
 }
