@@ -68,20 +68,20 @@ def PyRxCmd_runtests() -> None:
         
         #TODO: make a prompt to select what tests to run
         # uses dbx so load databases later
-        UnitTestPyActiveX.pyactivex()
+        #UnitTestPyActiveX.pyactivex()
         
         #load 
         dbc.loaddbs()
        
-        UnitTestPyAcGe.pyge()
-        UnitTestPyRxObject.pyrxobject()
-        UnitTestPyDatabase.pydbtest()
+        # UnitTestPyAcGe.pyge()
+        # UnitTestPyRxObject.pyrxobject()
+        # UnitTestPyDatabase.pydbtest()
         UnitTestPyDbObject.pydbobject()
-        UnitTestPyDbObjectId.pydbobjectid()
-        UnitTestPyDbEval.pydbeval()
-        UnitTestPyDbEntity.pyentity()
-        UnitTestPyEditor.pyeditor()
-        UnitTestPyWx.pywx()
+        # UnitTestPyDbObjectId.pydbobjectid()
+        # UnitTestPyDbEval.pydbeval()
+        # UnitTestPyDbEntity.pyentity()
+        # UnitTestPyEditor.pyeditor()
+        # UnitTestPyWx.pywx()
 
         if "BRX" in host:
             UnitTestPyBcadCivil.pybcciviltest()

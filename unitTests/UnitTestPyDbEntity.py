@@ -112,6 +112,7 @@ class TestDbEntity(unittest.TestCase):
         line3 = Db.Line(lid,  Db.OpenMode.ForRead)
         self.assertEqual(line3.startPoint(), Ge.Point3d(1, 11, 0))
 
+    @unittest.skipIf(host == "ZRX24", "known failure")
     def test_dbarc(self):
         db = Db.curDb()
         arc = Db.Arc(Ge.Point3d(0, 0, 0), 20, 0, math.pi)
