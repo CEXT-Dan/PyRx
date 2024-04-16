@@ -11,15 +11,21 @@ import UnitTestPyActiveX
 import UnitTestDocString
 import dbc
 import testcfg
+import os
 
 from pyrx_imp import Rx
 from pyrx_imp import Ap
+from pyrx_imp import Ed
 host = Ap.Application.hostAPI()
 
 if "BRX" in host:
     import UnitTestPyBcadCivil
 
 print("testname = runtests")
+
+#load tests for lisp
+cwd = os.getcwd().replace('\\','/')
+Ed.Core.postCommand('(load "{}/testLisp.lsp") '.format(cwd))
 
 def OnPyReload() -> None:
     try:
@@ -61,7 +67,7 @@ def PyRxCmd_runtests() -> None:
         
         #load 
         dbc.loaddbs()
-        
+       
         UnitTestPyAcGe.pyge()
         UnitTestPyRxObject.pyrxobject()
         UnitTestPyDatabase.pydbtest()

@@ -11,3 +11,12 @@
     (pyloaded)
 )
 
+(defun c:testLispInvoke (args)
+    args
+)
+
+(setq PYRXGLOBALVAR 1)
+"True"
+
+
+

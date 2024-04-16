@@ -34,8 +34,7 @@ void makePyEdSelectionSetWrapper()
 struct PyEdSSDeleter
 {
     explicit PyEdSSDeleter(bool autoDelete)
-       : m_autoDelete(autoDelete)
-    {
+        : m_autoDelete(autoDelete) {
     }
     ~PyEdSSDeleter() = default;
 
@@ -43,7 +42,7 @@ struct PyEdSSDeleter
     {
         if (ss != nullptr)
         {
-            if (m_autoDelete && ss->at(0) != 0 && ss->at(1) != 0)
+            if (m_autoDelete && ss->at(0) + ss->at(1) != 0)
                 acedSSFree(ss->data());
             delete ss;
         }
