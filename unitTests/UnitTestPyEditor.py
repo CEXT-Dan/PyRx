@@ -57,6 +57,11 @@ class TestEditor(unittest.TestCase):
         rb = Ed.Core.getSym("PYRXGLOBALVAR")
         self.assertEqual(rb,[(Rx.LispType.kInt16, 1)])
         
+    def test_ed_core_invoke(self):
+        args = [(Rx.LispType.kText, "c:testLispInvoke"),(Rx.LispType.kInt16,10),(Rx.LispType.kNone,0) ]
+        rbout = Ed.Core.invoke(args)
+        self.assertEqual(rbout,[(Rx.LispType.kInt16,10)])
+        
     @unittest.skipIf(host == "BRX24", "BricsCAD known failure")
     def test_evaluateDiesel(self):
         val = Ed.Core.evaluateDiesel('$(eval,"Current layer: "$(getvar,clayer))')
