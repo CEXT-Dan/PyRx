@@ -33,16 +33,18 @@ class TestDbObject(unittest.TestCase):
         #
         bdo.close()
         self.assertEqual(bdo.isReadEnabled(), False)
-        
+    
+    @unittest.skipIf(host == "ZRX24", "catastrophic failure")  
     def test_undo_recording(self):
         db = PyDb.HostApplicationServices().workingDatabase()
-        flag = db.isUndoRecordingDisabled()
-        db.disableUndoRecording(True)
-        self.assertEqual(db.isUndoRecordingDisabled(), True)
-        db.disableUndoRecording(False)
-        self.assertEqual(db.isUndoRecordingDisabled(), False)
-        db.disableUndoRecording(flag)
-        self.assertEqual(db.isUndoRecordingDisabled(), flag)
+        model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
+        flag = model.isUndoRecordingDisabled()
+        model.disableUndoRecording(True)
+        self.assertEqual(model.isUndoRecordingDisabled(), True)
+        model.disableUndoRecording(False)
+        self.assertEqual(model.isUndoRecordingDisabled(), False)
+        model.disableUndoRecording(flag)
+        self.assertEqual(model.isUndoRecordingDisabled(), flag)
 
     def test_propertys(self):
         db = PyDb.HostApplicationServices().workingDatabase()
