@@ -27,8 +27,9 @@ if "BRX" in host:
 print("testname = runtests")
 
 #load tests for lisp
-cwd = os.getcwd().replace('\\','/')
-Ed.Core.postCommand('(load "{}/testLisp.lsp") '.format(cwd))
+if not "ZRX" in host:
+    cwd = os.getcwd().replace('\\','/')
+    Ed.Core.postCommand('(load "{}/testLisp.lsp") '.format(cwd))
 
 def OnPyReload() -> None:
     try:

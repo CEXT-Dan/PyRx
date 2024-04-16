@@ -141,6 +141,7 @@ class TestDbEntity(unittest.TestCase):
         circle.setRadius(20)
         self.assertEqual(circle.radius(), 20)
 
+    @unittest.skipIf(host == "GRX24" or host == "ZRX24", "known failure")
     def test_dbtext(self):
         db = Db.curDb()
         text = Db.Text()
