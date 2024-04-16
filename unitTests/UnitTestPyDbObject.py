@@ -33,6 +33,16 @@ class TestDbObject(unittest.TestCase):
         #
         bdo.close()
         self.assertEqual(bdo.isReadEnabled(), False)
+        
+    def test_undo_recording(self):
+        db = PyDb.HostApplicationServices().workingDatabase()
+        flag = db.isUndoRecordingDisabled()
+        db.disableUndoRecording(True)
+        self.assertEqual(db.isUndoRecordingDisabled(), True)
+        db.disableUndoRecording(False)
+        self.assertEqual(db.isUndoRecordingDisabled(), False)
+        db.disableUndoRecording(flag)
+        self.assertEqual(db.isUndoRecordingDisabled(), flag)
 
     def test_propertys(self):
         db = PyDb.HostApplicationServices().workingDatabase()
@@ -43,10 +53,6 @@ class TestDbObject(unittest.TestCase):
         self.assertEqual(dbo.database(), db)
         self.assertEqual(dbo.isAProxy(), False)
         self.assertEqual(dbo.isErased(), False)
-        dbo.disableUndoRecording(True)
-        self.assertEqual(dbo.isUndoRecordingDisabled(), True)
-        dbo.disableUndoRecording(False)
-        self.assertEqual(dbo.isUndoRecordingDisabled(), False)
 
     def test_xdata(self):
         # regapp
