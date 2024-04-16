@@ -8,25 +8,12 @@ typedef std::array<int64_t, 2> PySSName;
 
 void makePyEdSelectionSetWrapper();
 
-//used a shared pointer for reference counting. 
-struct PyEdSSDeleter
-{
-    inline void operator()(PySSName* ss) const
-    {
-        if (ss != nullptr)
-        {
-            if (ss->at(0) != 0 && ss->at(1) != 0)
-                acedSSFree(ss->data());
-            delete ss;
-        }
-    }
-};
-
 class PyEdSelectionSet
 {
 public:
     PyEdSelectionSet();
     PyEdSelectionSet(const ads_name& ss);
+    PyEdSelectionSet(const ads_name& ss, bool autoDelete);
     ~PyEdSelectionSet() = default;
     bool			    isInitialized() const;
     size_t              size();

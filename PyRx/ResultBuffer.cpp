@@ -287,8 +287,8 @@ boost::python::list resbufToList(resbuf* pRb)
             case AcDb::kDwgSoftPointerId:
             {
                 AcDbObjectId id;
-                if (acdbGetObjectId(id, pTail->resval.rlname) == eOk)
-                    list.append(boost::python::make_tuple(pTail->restype, PyDbObjectId(id)));
+                acdbGetObjectId(id, pTail->resval.rlname);
+                list.append(boost::python::make_tuple(pTail->restype, PyDbObjectId(id)));
             }
             break;
             }
@@ -333,14 +333,14 @@ boost::python::list resbufToList(resbuf* pRb)
                 break;
             case RTPICKS:
             {
-                list.append(boost::python::make_tuple(pTail->restype, PyEdSelectionSet(pTail->resval.rlname)));
+                list.append(boost::python::make_tuple(pTail->restype, PyEdSelectionSet(pTail->resval.rlname, false)));
                 break;
             }
             case RTENAME:
             {
                 AcDbObjectId id;
-                if (acdbGetObjectId(id, pTail->resval.rlname) == eOk)
-                    list.append(boost::python::make_tuple(pTail->restype, PyDbObjectId(id)));
+                acdbGetObjectId(id, pTail->resval.rlname);
+                list.append(boost::python::make_tuple(pTail->restype, PyDbObjectId(id)));
             }
             break;
             case RTRESBUF:
