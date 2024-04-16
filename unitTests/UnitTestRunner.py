@@ -88,6 +88,8 @@ def PyRxCmd_runtests() -> None:
             
         if not "BRX" in host:
             UnitTestDocString.docstringtester()
+            
+            
 
     except Exception as err:
         print(err)
