@@ -536,7 +536,7 @@ void EdCore::enableUsrbrk()
 boost::python::list EdCore::evaluateLisp(const std::string& str)
 {
     //#if _ZRXTARGET == 240 || _GRXTARGET == 240
-    throw PyNotimplementedByHost();
+    //throw PyNotimplementedByHost();
     //#else
     int np = 0;
     for (const auto item : str)
