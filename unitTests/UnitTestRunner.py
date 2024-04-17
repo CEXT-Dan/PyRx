@@ -89,9 +89,16 @@ def PyRxCmd_runtests() -> None:
         if not "BRX" in host:
             UnitTestDocString.docstringtester()
             
-            
-
     except Exception as err:
         print(err)
     finally:
         cleanup(dbc)
+        
+#helper finction for editor test
+def PyRxLisp_pylispsstest(args):
+    try:
+        if args[0][0] == Rx.LispType.kSelectionSet and args[0][1].size() > 0:
+            return True
+        return False
+    except Exception as err:
+        print(err)
