@@ -15,6 +15,10 @@
     args
 )
 
+(defun c:LispInvokeSStest()
+   (pylispsstest (ssget "X"))
+)
+
 (setq PYRXGLOBALVAR 1)
 "True"
 
