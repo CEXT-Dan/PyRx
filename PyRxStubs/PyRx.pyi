@@ -51,6 +51,9 @@ class LispType(object):
     def kPoint3d (self, *args, **kwargs)-> None :
       '''None'''
     ...
+    def kSelectionSet (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
     def kT_atom (self, *args, **kwargs)-> None :
       '''None'''
     ...
