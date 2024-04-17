@@ -52,7 +52,7 @@ def PyRxCmd_sstestx():
         # for loop
         print('\nway 1')
         for e in ss:
-            p = Ax.IGcadPoint(e)
+            p = Ax.IAcadPoint(e)
             print(p.Coordinates)
 
         # sdded array ss[ids]
