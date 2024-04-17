@@ -53,12 +53,10 @@ class TestEditor(unittest.TestCase):
         self.assertTrue(out[2] > 0)
         Ed.Editor.setCurrentUCS(Ge.Matrix3d())
        
-    @unittest.skipIf(host == "ZRX24", "known failure")  
     def test_ed_core_getsym(self):
         rb = Ed.Core.getSym("PYRXGLOBALVAR")
         self.assertEqual(rb,[(Rx.LispType.kInt16, 1)])
         
-    @unittest.skipIf(host == "ZRX24", "known failure")  
     def test_ed_core_invoke(self):
         args = [(Rx.LispType.kText, "c:testLispInvoke"),(Rx.LispType.kInt16,10),(Rx.LispType.kNone,0) ]
         rbout = Ed.Core.invoke(args)

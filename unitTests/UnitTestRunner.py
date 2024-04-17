@@ -24,12 +24,11 @@ if not "BRX" in host:
 if "BRX" in host:
     import UnitTestPyBcadCivil
 
-print("testname = runtests")
+print("testname = ------> runtests <-------")
 
-#load tests for lisp
-if not "ZRX" in host:
-    cwd = os.getcwd().replace('\\','/')
-    Ed.Core.postCommand('(load "{}/testLisp.lsp") '.format(cwd))
+#if not "ZRX" in host:
+cwd = os.getcwd().replace('\\','/')
+print(Ed.Core.evaluateLisp('(load "{}/testLisp.lsp") '.format(cwd)))
 
 def OnPyReload() -> None:
     try:
