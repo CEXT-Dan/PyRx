@@ -16,7 +16,12 @@ And
 Loader files for AutoCAD are in %AppData%\Roaming\Autodesk\ApplicationPlugins\PyRx.bundle
 
 win32com must be installed if you would like to use the ActiveX libraries
-pip install pywin32
+pip install pywin32, https://pypi.org/project/pywin32/
+
+Other recommended python libraries.
+debugpy for attaching to CAD and debugging, https://pypi.org/project/debugpy/
+ 
+
 
 ****BricsCAD, ZwCAD and GstarCAD****
 BRX, ZRX and GRX libraries are installed in %AppData%\Local\Programs\PyRx. Use the appload command and navigate to load the files. 
