@@ -12,7 +12,7 @@ void makePyLyLayerFilterWrapper()
 {
     PyDocString DS("LayerFilter");
     class_<PyLyLayerFilter, bases<PyRxObject>>("LayerFilter")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("name", &PyLyLayerFilter::name, DS.ARGS())
         .def("setName", &PyLyLayerFilter::setName, DS.ARGS({ "val : str" }))
         .def("allowRename", &PyLyLayerFilter::allowRename, DS.ARGS())
@@ -163,12 +163,12 @@ AcLyLayerFilter* PyLyLayerFilter::impObj(const std::source_location& src /*= std
 //PyLyLayerGroup
 void makePyLyLayerGroupWrapper()
 {
-    PyDocString DS("PyLyLayerFilter");
+    PyDocString DS("LayerGroup");
     class_<PyLyLayerGroup, bases<PyLyLayerFilter>>("LayerGroup")
-        .def(init<>())
-        .def("addLayerId", &PyLyLayerGroup::addLayerId)
-        .def("removeLayerId", &PyLyLayerGroup::removeLayerId)
-        .def("layerIds", &PyLyLayerGroup::layerIds)
+        .def(init<>(DS.ARGS()))
+        .def("addLayerId", &PyLyLayerGroup::addLayerId, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("removeLayerId", &PyLyLayerGroup::removeLayerId, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("layerIds", &PyLyLayerGroup::layerIds, DS.ARGS())
         .def("desc", &PyLyLayerGroup::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyLyLayerGroup::className, DS.SARGS()).staticmethod("className")
         ;
@@ -221,12 +221,17 @@ AcLyLayerGroup* PyLyLayerGroup::impObj(const std::source_location& src /*= std::
 //PyLayerFilterManager
 void makePyLayerFilterManagerWrapper()
 {
+    constexpr const std::string_view setFiltersOverloads = "Overloads:\n"
+        "- root: PyLy.LayerFilter, current: PyLy.LayerFilter\n"
+        "- rootCurrent : tuple[PyLy.LayerFilter,PyLy.LayerFilter]\n";
+
+    PyDocString DS("LayerFilterManager");
     class_<PyLayerFilterManager>("LayerFilterManager")
         .def(init<>())
-        .def(init<PyDbDatabase&>())
-        .def("getFilters", &PyLayerFilterManager::getFilters)
+        .def(init<PyDbDatabase&>(DS.ARGS({ "db: PyDb.Database=None" })))
+        .def("getFilters", &PyLayerFilterManager::getFilters, DS.ARGS())
         .def("setFilters", &PyLayerFilterManager::setFilters1)
-        .def("setFilters", &PyLayerFilterManager::setFilters2)
+        .def("setFilters", &PyLayerFilterManager::setFilters2, DS.OVRL(setFiltersOverloads))
         ;
 }
 
