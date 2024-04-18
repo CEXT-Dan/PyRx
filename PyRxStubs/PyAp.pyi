@@ -1025,16 +1025,8 @@ This class cannot be instantiated from Python'''
     ...
 
 class LayerFilter(PyRx.RxObject):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
     def addNested (self, val : PyLy.LayerFilter)-> None :
       '''                             '''
@@ -1129,57 +1121,30 @@ __init__( (object)arg1) -> None :
     ...
 
 class LayerFilterManager(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbDatabase {lvalue})'''
+    def __init__ (self, db: PyDb.Database=None)-> None :
+      '''                             '''
     ...
-    def getFilters (self, *args, **kwargs)-> tuple :
-      '''getFilters( (LayerFilterManager)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getFilters(class PyLayerFilterManager {lvalue})'''
+    def getFilters (self)-> tuple :
+      '''                             '''
     ...
+
+    @overload
+    def setFilters (self, root: PyLy.LayerFilter, current: PyLy.LayerFilter)-> None : ...
+    @overload
+    def setFilters (self, rootCurrent : tuple[PyLy.LayerFilter,PyLy.LayerFilter])-> None : ...
     def setFilters (self, *args, **kwargs)-> None :
-      '''setFilters( (LayerFilterManager)arg1, (tuple)arg2) -> None :
-
-    C++ signature :
-        void setFilters(class PyLayerFilterManager {lvalue},class boost::python::tuple {lvalue})
-
-setFilters( (LayerFilterManager)arg1, (LayerFilter)arg2, (LayerFilter)arg3) -> None :
-
-    C++ signature :
-        void setFilters(class PyLayerFilterManager {lvalue},class PyLyLayerFilter {lvalue},class PyLyLayerFilter {lvalue})'''
+      '''Overloads:
+    - root: PyLy.LayerFilter, current: PyLy.LayerFilter
+    - rootCurrent : tuple[PyLy.LayerFilter,PyLy.LayerFilter]
+    '''
     ...
 
 class LayerGroup(LayerFilter):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
-    def addLayerId (self, *args, **kwargs)-> None :
-      '''addLayerId( (LayerGroup)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void addLayerId(class PyLyLayerGroup {lvalue},class PyDbObjectId)'''
+    def addLayerId (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
     def addNested (self, val : PyLy.LayerFilter)-> None :
       '''                             '''
@@ -1251,11 +1216,8 @@ __init__( (object)arg1) -> None :
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def layerIds (self, *args, **kwargs)-> list :
-      '''layerIds( (LayerGroup)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list layerIds(class PyLyLayerGroup {lvalue})'''
+    def layerIds (self)-> list :
+      '''                             '''
     ...
     def name (self)-> str :
       '''                             '''
@@ -1266,11 +1228,8 @@ __init__( (object)arg1) -> None :
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
-    def removeLayerId (self, *args, **kwargs)-> None :
-      '''removeLayerId( (LayerGroup)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void removeLayerId(class PyLyLayerGroup {lvalue},class PyDbObjectId)'''
+    def removeLayerId (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
     def removeNested (self, val : PyLy.LayerFilter)-> None :
       '''                             '''
