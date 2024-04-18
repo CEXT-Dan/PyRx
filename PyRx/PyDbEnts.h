@@ -134,8 +134,8 @@ public:
     Adesk::Boolean      isPreset() const;
     Adesk::UInt16       fieldLength() const;
     void                setFieldLength(Adesk::UInt16);
-    void                setAttributeFromBlock(const AcGeMatrix3d& blkXform);
-    void                setAttributeFromBlock(const PyDbAttributeDefinition& pAttdef, const AcGeMatrix3d& blkXform);
+    void                setAttributeFromBlock1(const AcGeMatrix3d& blkXform);
+    void                setAttributeFromBlock2(const PyDbAttributeDefinition& pAttdef, const AcGeMatrix3d& blkXform);
     bool                lockPositionInBlock() const;
     void                setLockPositionInBlock(bool bValue);
     bool                isMTextAttribute() const;
