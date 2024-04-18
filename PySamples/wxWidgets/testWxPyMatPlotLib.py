@@ -13,8 +13,9 @@ from pyrx_imp import Db
 from pyrx_imp import Ap
 from pyrx_imp import Ed
 from pyrx_imp import Gs
-
 import wx
+
+import numpy as np
 
 print("Added command = showplotlib")
 
@@ -27,7 +28,6 @@ def PyRxCmd_showplotlib():
     except Exception as err:
         print(err)
 
-        
 class CanvasPanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent)
@@ -39,9 +39,13 @@ class CanvasPanel(wx.Panel):
         self.SetSizerAndFit(self.sizer)
 
     def draw(self):
-        t = arange(0.0, 3.0, 0.01)
-        s = sin(2 * pi * t)
-        self.axes.plot(t, s)
+        x = np.linspace(-3, 5, 150).reshape(1, -1)
+        y = np.linspace(-3, 5, 120).reshape(-1, 1)
+        z = np.cos(x) + np.sin(y)
+        x, y = x.flatten(), y.flatten()
+        cs = self.axes.contourf(x, y, z, hatches=['-', '/', '\\', '//'],
+                cmap='gray', extend='both', alpha=0.5)
+        self.figure.colorbar(cs)
         
 class TestDialog(wx.Dialog):
     def __init__(
