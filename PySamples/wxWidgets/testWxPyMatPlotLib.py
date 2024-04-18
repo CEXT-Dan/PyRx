@@ -16,7 +16,9 @@ from pyrx_imp import Gs
 
 import wx
 
-def PyRxCmd_wxpy():
+print("Added command = showplotlib")
+
+def PyRxCmd_showplotlib():
     try: 
         res = Ap.ResourceOverride()
         dlg = TestDialog(None, -1, "Plot",wx.Size(500,300))
@@ -34,27 +36,51 @@ class CanvasPanel(wx.Panel):
         self.canvas = FigureCanvas(self, -1, self.figure)
         self.sizer = wx.BoxSizer(wx.VERTICAL)
         self.sizer.Add(self.canvas, 1, wx.LEFT | wx.TOP | wx.GROW)
-        self.SetSizer(self.sizer)
-        self.Fit()
+        self.SetSizerAndFit(self.sizer)
 
     def draw(self):
         t = arange(0.0, 3.0, 0.01)
         s = sin(2 * pi * t)
         self.axes.plot(t, s)
-   
+        
 class TestDialog(wx.Dialog):
     def __init__(
             self, parent, id, title, size, pos=wx.DefaultPosition,
-            style=wx.DEFAULT_DIALOG_STYLE
-            ):
+            style=wx.DEFAULT_DIALOG_STYLE):
 
         wx.Dialog.__init__(self)
         self.Create(parent, id, title, pos, size, style)
+        self.Bind(wx.EVT_INIT_DIALOG, self.OnInitDialog)
+        
+
+        self.pltpanel = CanvasPanel(self)
+        
+        sizer = wx.BoxSizer(wx.VERTICAL)
+        sizer.SetMinSize(size)
+        sizer.Add(self.pltpanel, 1, wx.LEFT | wx.TOP | wx.GROW)
+        
+        btnsizer = wx.StdDialogButtonSizer()
+
+        if wx.Platform != "__WXMSW__":
+            btn = wx.ContextHelpButton(self)
+            btnsizer.AddButton(btn)
+
+        btn = wx.Button(self, wx.ID_OK)
+        btn.SetDefault()
+        btnsizer.AddButton(btn)
+
+        btn = wx.Button(self, wx.ID_CANCEL)
+        btnsizer.AddButton(btn)
+        btnsizer.Realize()
+
+        sizer.Add(btnsizer, 0, wx.RIGHT | wx.BOTTOM| wx.GROW, 5)
+        self.SetSizerAndFit(sizer)
+
+
+    def OnInitDialog(self, event):
         Ap.Application.setTitleThemeDark(self.GetHandle())
         Ap.Application.applyHostIcon(self.GetHandle())
-        
-        self.pltpanel = CanvasPanel(self)
         self.pltpanel.draw()
-
+   
 
         
