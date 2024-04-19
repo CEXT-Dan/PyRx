@@ -16,6 +16,7 @@ uses wxPython for the GUI, Dialogs and CAdUiPalette wrapper
 
 Embeds Python (3.12) and wxPython(4.2.1) into a loadable ARX module
 
+Read ths install info here https://github.com/CEXT-Dan/PyRx/blob/main/READMEINSTALL.md
 Get the latest build from https://github.com/CEXT-Dan/PyRx/releases
 
 On loading the ARX/BRX/GRX/ZRX module, the following commands are added to AutoCAD
