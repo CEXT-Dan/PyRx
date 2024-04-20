@@ -9,24 +9,28 @@ using namespace boost::python;
 
 void makePyDb3dSolidWrapper()
 {
+    constexpr const std::string_view createRevolvedSolidOverloads = "Overloads:\n"
+        "- pRevEnt: PyDb.Entity, axisPnt: PyGe.Point3d, axisDir: PyGe.Vector3d, revAngle: float, startAngle: float, revolveOptions: PyDb.RevolveOptions\n"
+        "- pRevEnt: PyDb.Entity,faceSubentId:PyDb.SubentId, axisPnt: PyGe.Point3d, axisDir: PyGe.Vector3d, revAngle: float, startAngle: float, revolveOptions: PyDb.RevolveOptions\n";
+
     PyDocString DS("PyDb.Solid3d");
     class_<PyDb3dSolid, bases<PyDbEntity>>("Solid3d")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>((DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }))))
-        .def("createBox", &PyDb3dSolid::createBox)
-        .def("createFrustum", &PyDb3dSolid::createFrustum)
-        .def("createSphere", &PyDb3dSolid::createSphere)
-        .def("createTorus", &PyDb3dSolid::createTorus)
+        .def("createBox", &PyDb3dSolid::createBox, DS.ARGS({ "xLen: float","yLen: float" ,"zLen: float" }))
+        .def("createFrustum", &PyDb3dSolid::createFrustum, DS.ARGS({ "height: float","xRadius: float","yRadius: float","topXRadius: float" }))
+        .def("createSphere", &PyDb3dSolid::createSphere, DS.ARGS({ "radius: float" }))
+        .def("createTorus", &PyDb3dSolid::createTorus, DS.ARGS({ "majorRadius: float", "minorRadius: float" }))
         .def("createPyramid", &PyDb3dSolid::createPyramid1)
-        .def("createPyramid", &PyDb3dSolid::createPyramid2)
-        .def("createWedge", &PyDb3dSolid::createWedge)
+        .def("createPyramid", &PyDb3dSolid::createPyramid2, DS.ARGS({ "height: float","sides: int","radius: float","topRadius: float=0.0" }))
+        .def("createWedge", &PyDb3dSolid::createWedge, DS.ARGS({ "xLen: float","yLen: float" ,"zLen: float" }))
         .def("extrude", &PyDb3dSolid::extrude1)
-        .def("extrude", &PyDb3dSolid::extrude2)
+        .def("extrude", &PyDb3dSolid::extrude2, DS.ARGS({ "region: PyDb.Region","height: float","taperAngle: float=0.0" }))
         .def("extrudeAlongPath", &PyDb3dSolid::extrudeAlongPath1)
-        .def("extrudeAlongPath", &PyDb3dSolid::extrudeAlongPath2)
+        .def("extrudeAlongPath", &PyDb3dSolid::extrudeAlongPath2, DS.ARGS({ "region: PyDb.Region","path: PyDb.Curve","taperAngle: float=0.0" }))
         .def("createRevolvedSolid", &PyDb3dSolid::createRevolvedSolid1)
-        .def("createRevolvedSolid", &PyDb3dSolid::createRevolvedSolid2)
+        .def("createRevolvedSolid", &PyDb3dSolid::createRevolvedSolid2,DS.OVRL(createRevolvedSolidOverloads))
         .def("createSweptSolid", &PyDb3dSolid::createSweptSolid1)
         .def("createSweptSolid", &PyDb3dSolid::createSweptSolid2)
         .def("createExtrudedSolid", &PyDb3dSolid::createExtrudedSolid1)
@@ -152,37 +156,37 @@ void PyDb3dSolid::extrudeAlongPath2(const PyDbRegion& region, const PyDbCurve& p
     return PyThrowBadEs(impObj()->extrudeAlongPath(region.impObj(), path.impObj(), taperAngle));
 }
 
-void PyDb3dSolid::createRevolvedSolid1(PyDbEntity& pRevEnt, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, double revAngle, double startAngle, PyDbRevolveOptions& revolveOptions)
+void PyDb3dSolid::createRevolvedSolid1(const PyDbEntity& pRevEnt, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, double revAngle, double startAngle, PyDbRevolveOptions& revolveOptions)
 {
     return PyThrowBadEs(impObj()->createRevolvedSolid(pRevEnt.impObj(), axisPnt, axisDir, revAngle, startAngle, *revolveOptions.impObj()));
 }
 
-void PyDb3dSolid::createRevolvedSolid2(PyDbEntity& pRevEnt, const PyDbSubentId& faceSubentId, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, double revAngle, double startAngle, PyDbRevolveOptions& revolveOptions)
+void PyDb3dSolid::createRevolvedSolid2(const PyDbEntity& pRevEnt, const PyDbSubentId& faceSubentId, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, double revAngle, double startAngle, PyDbRevolveOptions& revolveOptions)
 {
     return PyThrowBadEs(impObj()->createRevolvedSolid(pRevEnt.impObj(), *faceSubentId.impObj(), axisPnt, axisDir, revAngle, startAngle, *revolveOptions.impObj()));
 }
 
-void PyDb3dSolid::createSweptSolid1(PyDbEntity& pSweepEnt, PyDbEntity& pPathEnt, PyDbSweepOptions& sweepOptions)
+void PyDb3dSolid::createSweptSolid1(const PyDbEntity& pSweepEnt, const  PyDbEntity& pPathEnt, PyDbSweepOptions& sweepOptions)
 {
     return PyThrowBadEs(impObj()->createSweptSolid(pSweepEnt.impObj(), pPathEnt.impObj(), *sweepOptions.impObj()));
 }
 
-void PyDb3dSolid::createSweptSolid2(PyDbEntity& pSweepEnt, const PyDbSubentId& faceSubentId, PyDbEntity& pPathEnt, PyDbSweepOptions& sweepOptions)
+void PyDb3dSolid::createSweptSolid2(const PyDbEntity& pSweepEnt, const PyDbSubentId& faceSubentId, PyDbEntity& pPathEnt, PyDbSweepOptions& sweepOptions)
 {
     return PyThrowBadEs(impObj()->createSweptSolid(pSweepEnt.impObj(), *faceSubentId.impObj(), pPathEnt.impObj(), *sweepOptions.impObj()));
 }
 
-void PyDb3dSolid::createExtrudedSolid1(PyDbEntity& pSweepEnt, const AcGeVector3d& directionVec, PyDbSweepOptions& sweepOptions)
+void PyDb3dSolid::createExtrudedSolid1(const PyDbEntity& pSweepEnt, const AcGeVector3d& directionVec, PyDbSweepOptions& sweepOptions)
 {
     return PyThrowBadEs(impObj()->createExtrudedSolid(pSweepEnt.impObj(), directionVec, *sweepOptions.impObj()));
 }
 
-void PyDb3dSolid::createExtrudedSolid2(PyDbEntity& pSweepEnt, const PyDbSubentId& faceSubentId, const AcGeVector3d& directionVec, PyDbSweepOptions& sweepOptions)
+void PyDb3dSolid::createExtrudedSolid2(const PyDbEntity& pSweepEnt, const PyDbSubentId& faceSubentId, const AcGeVector3d& directionVec, PyDbSweepOptions& sweepOptions)
 {
     return PyThrowBadEs(impObj()->createExtrudedSolid(pSweepEnt.impObj(), *faceSubentId.impObj(), directionVec, *sweepOptions.impObj()));
 }
 
-void PyDb3dSolid::createExtrudedSolid3(PyDbEntity& pSweepEnt, const PyDbSubentId& faceSubentId, double height, PyDbSweepOptions& sweepOptions)
+void PyDb3dSolid::createExtrudedSolid3(const PyDbEntity& pSweepEnt, const PyDbSubentId& faceSubentId, double height, PyDbSweepOptions& sweepOptions)
 {
     return PyThrowBadEs(impObj()->createExtrudedSolid(pSweepEnt.impObj(), *faceSubentId.impObj(), height, *sweepOptions.impObj()));
 }
