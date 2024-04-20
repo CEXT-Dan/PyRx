@@ -121,6 +121,10 @@ def listToResbuf(src):
                 dest.append((Rx.LispType.kInt32, item))
             case 'str' : 
                 dest.append((Rx.LispType.kText, item))
+            case 'list' : 
+                dest.append((Rx.LispType.kListBegin, 0))
+                dest.extend(listToResbuf(item))
+                dest.append((Rx.LispType.kListEnd, 0))
             case _  : 
                 print("warning item not found!: ")
     return dest
