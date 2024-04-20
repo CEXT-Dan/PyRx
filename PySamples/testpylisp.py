@@ -103,3 +103,24 @@ def PyRxLisp_pylispstr(args):
         return "woohoo"
     except Exception as err:
         print(err)
+
+#sample conversion utility, needs work
+def listToResbuf(src):
+    dest = []
+    for item in src:
+        match type(item).__name__:
+            case 'ObjectId' : 
+                dest.append((Rx.LispType.kObjectId, item))
+            case 'Point3d' : 
+                dest.append((Rx.LispType.kPoint3d, item))
+            case 'Point2d' : 
+                dest.append((Rx.LispType.kPoint2d, item))
+            case 'float' : 
+                dest.append((Rx.LispType.kDouble, item))
+            case 'int' : 
+                dest.append((Rx.LispType.kInt32, item))
+            case 'str' : 
+                dest.append((Rx.LispType.kText, item))
+            case _  : 
+                print("warning item not found!: ")
+    return dest
