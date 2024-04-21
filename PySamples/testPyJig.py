@@ -12,8 +12,6 @@ print("command = pyjigstyle")
 print("command = pyjig")
 
 # just like in ARX, ent must not be null
-
-
 class MyJig(Ed.Jig):
     def __init__(self, line, basepoint):
         Ed.Jig.__init__(self, line)
@@ -49,7 +47,7 @@ def PyRxCmd_pyjigstyle():
         style.setStyleTypeForDragged(Ed.DragStyleType.kTransparent75)
 
         point_result_tuple = ed.getPoint("\nPick startPoint")
-        if point_result_tuple[0] != PyEd.PromptStatus.eNormal:
+        if point_result_tuple[0] != Ed.PromptStatus.eNormal:
             print('oops')
             return
 
