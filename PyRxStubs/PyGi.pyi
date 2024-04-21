@@ -8,7 +8,7 @@ import PyEd
 import PyPl
 from typing import overload
 
-class AcGiArcType(object):
+class ArcType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -19,172 +19,6 @@ class AcGiArcType(object):
       '''None'''
     ...
     def kAcGiArcSimple (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def name (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-
-class AcGiFillType(object):
-    def __init__ (self, /, *args, **kwargs) :
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def kAcGiFillAlways (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiFillNever (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def name (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-
-class AcGiOrientationTransformBehavior(object):
-    def __init__ (self, /, *args, **kwargs) :
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def kAcGiScreenOrientation (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiWorldOrientation (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiZAxisOrientation (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def name (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-
-class AcGiOrientationType(object):
-    def __init__ (self, /, *args, **kwargs) :
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def kAcGiClockwise (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiCounterClockwise (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiNoOrientation (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def name (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-
-class AcGiPositionTransformBehavior(object):
-    def __init__ (self, /, *args, **kwargs) :
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def kAcGiScreenLocalOriginPosition (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiScreenPosition (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiViewportPosition (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiWorldPosition (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiWorldWithScreenOffsetPosition (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def name (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-
-class AcGiRegenType(object):
-    def __init__ (self, /, *args, **kwargs) :
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def eAcGiRegenTypeInvalid (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiForExplode (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiHideOrShadeCommand (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiSaveWorldDrawForProxy (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiShadedDisplay (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiStandardDisplay (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def name (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-
-class AcGiScaleTransformBehavior(object):
-    def __init__ (self, /, *args, **kwargs) :
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def kAcGiScreenLocalOriginScale (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiScreenScale (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiViewportLocalOriginScale (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiViewportScale (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiWorldScale (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def name (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-
-class AcGiTransientDrawingMode(object):
-    def __init__ (self, /, *args, **kwargs) :
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def kAcGiContrast (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiDirectShortTerm (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiDirectTopmost (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiDrawingModeCount (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiHighlight (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiMain (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiSprite (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def name (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-
-class AcGiVisibility(object):
-    def __init__ (self, /, *args, **kwargs) :
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def kAcGiInvisible (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiSilhouette (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kAcGiVisible (self, *args, **kwargs)-> None :
       '''None'''
     ...
     def name (self, *args, **kwargs)-> None :
@@ -239,11 +73,28 @@ This class cannot be instantiated from Python'''
     def regenAbort (self)-> bool :
       '''                             '''
     ...
-    def regenType (self)-> PyGi.AcGiRegenType :
+    def regenType (self)-> PyGi.RegenType :
       '''                             '''
     ...
     def subEntityTraits (self)-> PyGi.SubEntityTraits :
       '''                             '''
+    ...
+
+class DefaultLightingType(object):
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def kBackLighting (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOneDistantLight (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kTwoDistantLights (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
     ...
 
 class DrawFlags(object):
@@ -525,8 +376,8 @@ This class cannot be instantiated from Python'''
     C++ signature :
         unsigned int drawFlags(class PyGiSubEntityTraits {lvalue})'''
     ...
-    def fillType (self, *args, **kwargs)-> PyGi.AcGiFillType :
-      '''fillType( (SubEntityTraits)arg1) -> AcGiFillType :
+    def fillType (self, *args, **kwargs)-> PyGi.FillType :
+      '''fillType( (SubEntityTraits)arg1) -> FillType :
 
     C++ signature :
         enum AcGiFillType fillType(class PyGiSubEntityTraits {lvalue})'''
@@ -610,7 +461,7 @@ This class cannot be instantiated from Python'''
         void setDrawFlags(class PyGiSubEntityTraits {lvalue},unsigned int)'''
     ...
     def setFillType (self, *args, **kwargs)-> None :
-      '''setFillType( (SubEntityTraits)arg1, (AcGiFillType)arg2) -> None :
+      '''setFillType( (SubEntityTraits)arg1, (FillType)arg2) -> None :
 
     C++ signature :
         void setFillType(class PyGiSubEntityTraits {lvalue},enum AcGiFillType)'''
@@ -740,6 +591,20 @@ setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3
         class PyDbObjectId visualStyle(class PyGiSubEntityTraits {lvalue})'''
     ...
 
+class FillType(object):
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def kAcGiFillAlways (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiFillNever (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+
 class Geometry(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
@@ -762,7 +627,7 @@ circle( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> bool :
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,double)
 
-circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6, (AcGiArcType)arg7) -> bool :
+circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6, (ArcType)arg7) -> bool :
 
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,double,enum AcGiArcType)
@@ -772,7 +637,7 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> boo
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
 
-circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiArcType)arg5) -> bool :
+circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (ArcType)arg5) -> bool :
 
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,enum AcGiArcType)'''
@@ -929,6 +794,9 @@ class GiAttributesFlags(object):
     def kDrawableViewIndependentViewportDraw (self, *args, **kwargs)-> None :
       '''None'''
     ...
+    def kThreadedWorldDrawViewportDraw (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
@@ -1010,6 +878,112 @@ This class cannot be instantiated from Python'''
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
 
+class OrientationTransformBehavior(object):
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def kAcGiScreenOrientation (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiWorldOrientation (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiZAxisOrientation (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+
+class OrientationType(object):
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def kAcGiClockwise (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiCounterClockwise (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiNoOrientation (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+
+class PositionTransformBehavior(object):
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def kAcGiScreenLocalOriginPosition (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiScreenPosition (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiViewportPosition (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiWorldPosition (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiWorldWithScreenOffsetPosition (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+
+class RegenType(object):
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def eAcGiRegenTypeInvalid (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiForExplode (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiHideOrShadeCommand (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiSaveWorldDrawForProxy (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiShadedDisplay (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiStandardDisplay (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+
+class ScaleTransformBehavior(object):
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def kAcGiScreenLocalOriginScale (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiScreenScale (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiViewportLocalOriginScale (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiViewportScale (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiWorldScale (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+
 class SelectionFlags(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
@@ -1082,8 +1056,8 @@ This class cannot be instantiated from Python'''
     C++ signature :
         unsigned int drawFlags(class PyGiSubEntityTraits {lvalue})'''
     ...
-    def fillType (self, *args, **kwargs)-> PyGi.AcGiFillType :
-      '''fillType( (SubEntityTraits)arg1) -> AcGiFillType :
+    def fillType (self, *args, **kwargs)-> PyGi.FillType :
+      '''fillType( (SubEntityTraits)arg1) -> FillType :
 
     C++ signature :
         enum AcGiFillType fillType(class PyGiSubEntityTraits {lvalue})'''
@@ -1167,7 +1141,7 @@ This class cannot be instantiated from Python'''
         void setDrawFlags(class PyGiSubEntityTraits {lvalue},unsigned int)'''
     ...
     def setFillType (self, *args, **kwargs)-> None :
-      '''setFillType( (SubEntityTraits)arg1, (AcGiFillType)arg2) -> None :
+      '''setFillType( (SubEntityTraits)arg1, (FillType)arg2) -> None :
 
     C++ signature :
         void setFillType(class PyGiSubEntityTraits {lvalue},enum AcGiFillType)'''
@@ -1297,6 +1271,35 @@ setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3
         class PyDbObjectId visualStyle(class PyGiSubEntityTraits {lvalue})'''
     ...
 
+class TransientDrawingMode(object):
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def kAcGiContrast (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiDirectShortTerm (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiDirectTopmost (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiDrawingModeCount (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiHighlight (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiMain (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiSprite (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+
 class TransientManager(object):
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -1311,7 +1314,7 @@ class TransientManager(object):
         bool addChildTransient(class PyGiTransientManager {lvalue},class PyGiDrawable {lvalue},class PyGiDrawable {lvalue})'''
     ...
     def addTransient (self, *args, **kwargs)-> bool :
-      '''addTransient( (TransientManager)arg1, (Drawable)arg2, (AcGiTransientDrawingMode)arg3, (int)arg4, (list)arg5) -> bool :
+      '''addTransient( (TransientManager)arg1, (Drawable)arg2, (TransientDrawingMode)arg3, (int)arg4, (list)arg5) -> bool :
 
     C++ signature :
         bool addTransient(class PyGiTransientManager {lvalue},class PyGiDrawable {lvalue},enum AcGiTransientDrawingMode,int,class boost::python::list)'''
@@ -1335,13 +1338,13 @@ class TransientManager(object):
         bool eraseTransient(class PyGiTransientManager {lvalue},class PyGiDrawable {lvalue},class boost::python::list)'''
     ...
     def eraseTransients (self, *args, **kwargs)-> bool :
-      '''eraseTransients( (TransientManager)arg1, (AcGiTransientDrawingMode)arg2, (int)arg3, (list)arg4) -> bool :
+      '''eraseTransients( (TransientManager)arg1, (TransientDrawingMode)arg2, (int)arg3, (list)arg4) -> bool :
 
     C++ signature :
         bool eraseTransients(class PyGiTransientManager {lvalue},enum AcGiTransientDrawingMode,int,class boost::python::list)'''
     ...
     def getFreeSubDrawingMode (self, *args, **kwargs)-> tuple :
-      '''getFreeSubDrawingMode( (TransientManager)arg1, (AcGiTransientDrawingMode)arg2, (int)arg3, (list)arg4) -> tuple :
+      '''getFreeSubDrawingMode( (TransientManager)arg1, (TransientDrawingMode)arg2, (int)arg3, (list)arg4) -> tuple :
 
     C++ signature :
         class boost::python::tuple getFreeSubDrawingMode(class PyGiTransientManager {lvalue},enum AcGiTransientDrawingMode,int,class boost::python::list)'''
@@ -1427,7 +1430,7 @@ This class cannot be instantiated from Python'''
     def regenAbort (self)-> bool :
       '''                             '''
     ...
-    def regenType (self)-> PyGi.AcGiRegenType :
+    def regenType (self)-> PyGi.RegenType :
       '''                             '''
     ...
     def subEntityTraits (self)-> PyGi.SubEntityTraits :
@@ -1456,7 +1459,7 @@ circle( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> bool :
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,double)
 
-circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6, (AcGiArcType)arg7) -> bool :
+circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6, (ArcType)arg7) -> bool :
 
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,double,enum AcGiArcType)
@@ -1466,7 +1469,7 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> boo
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
 
-circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiArcType)arg5) -> bool :
+circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (ArcType)arg5) -> bool :
 
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,enum AcGiArcType)'''
@@ -1563,6 +1566,23 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
       '''                             '''
     ...
 
+class Visibility(object):
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def kAcGiInvisible (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiSilhouette (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAcGiVisible (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+
 class WorldDraw(CommonDraw):
     def __init__ (self, *args, **kwargs)-> None :
       '''Raises an exception
@@ -1614,7 +1634,7 @@ This class cannot be instantiated from Python'''
     def regenAbort (self)-> bool :
       '''                             '''
     ...
-    def regenType (self)-> PyGi.AcGiRegenType :
+    def regenType (self)-> PyGi.RegenType :
       '''                             '''
     ...
     def subEntityTraits (self)-> PyGi.SubEntityTraits :
@@ -1643,7 +1663,7 @@ circle( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> bool :
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,double)
 
-circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6, (AcGiArcType)arg7) -> bool :
+circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6, (ArcType)arg7) -> bool :
 
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,double,enum AcGiArcType)
@@ -1653,7 +1673,7 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> boo
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
 
-circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiArcType)arg5) -> bool :
+circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (ArcType)arg5) -> bool :
 
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,enum AcGiArcType)'''

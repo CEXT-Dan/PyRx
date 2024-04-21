@@ -29,7 +29,7 @@ BOOST_PYTHON_MODULE(PyGi)
     makePyGiGraphicsKernelWrapper();
 #endif
 
-    enum_<AcGiTransientDrawingMode>("AcGiTransientDrawingMode")
+    enum_<AcGiTransientDrawingMode>("TransientDrawingMode")
         .value("kAcGiMain", AcGiTransientDrawingMode::kAcGiMain)
         .value("kAcGiSprite", AcGiTransientDrawingMode::kAcGiSprite)
         .value("kAcGiDirectShortTerm", AcGiTransientDrawingMode::kAcGiDirectShortTerm)
@@ -40,7 +40,7 @@ BOOST_PYTHON_MODULE(PyGi)
         .export_values()
         ;
 
-    enum_<AcGiPositionTransformBehavior>("AcGiPositionTransformBehavior")
+    enum_<AcGiPositionTransformBehavior>("PositionTransformBehavior")
         .value("kAcGiWorldPosition", AcGiPositionTransformBehavior::kAcGiWorldPosition)
         .value("kAcGiViewportPosition", AcGiPositionTransformBehavior::kAcGiViewportPosition)
         .value("kAcGiScreenPosition", AcGiPositionTransformBehavior::kAcGiScreenPosition)
@@ -48,7 +48,7 @@ BOOST_PYTHON_MODULE(PyGi)
         .value("kAcGiWorldWithScreenOffsetPosition", AcGiPositionTransformBehavior::kAcGiWorldWithScreenOffsetPosition)
         .export_values()
         ;
-    enum_<AcGiScaleTransformBehavior>("AcGiScaleTransformBehavior")
+    enum_<AcGiScaleTransformBehavior>("ScaleTransformBehavior")
         .value("kAcGiWorldScale", AcGiScaleTransformBehavior::kAcGiWorldScale)
         .value("kAcGiViewportScale", AcGiScaleTransformBehavior::kAcGiViewportScale)
         .value("kAcGiScreenScale", AcGiScaleTransformBehavior::kAcGiScreenScale)
@@ -56,7 +56,7 @@ BOOST_PYTHON_MODULE(PyGi)
         .value("kAcGiScreenLocalOriginScale", AcGiScaleTransformBehavior::kAcGiScreenLocalOriginScale)
         .export_values()
         ;
-    enum_<AcGiOrientationTransformBehavior>("AcGiOrientationTransformBehavior")
+    enum_<AcGiOrientationTransformBehavior>("OrientationTransformBehavior")
         .value("kAcGiWorldOrientation", AcGiOrientationTransformBehavior::kAcGiWorldOrientation)
         .value("kAcGiScreenOrientation", AcGiOrientationTransformBehavior::kAcGiScreenOrientation)
         .value("kAcGiZAxisOrientation", AcGiOrientationTransformBehavior::kAcGiZAxisOrientation)
@@ -68,36 +68,45 @@ BOOST_PYTHON_MODULE(PyGi)
         .value("kTransparency8Bit", AcGiGeometry::TransparencyMode::kTransparency8Bit)
         .export_values()
         ;
-    enum_<AcGiArcType>("AcGiArcType")
+    enum_<AcGiArcType>("ArcType")
         .value("kAcGiArcSimple", AcGiArcType::kAcGiArcSimple)
         .value("kAcGiArcSector", AcGiArcType::kAcGiArcSector)
         .value("kAcGiArcChord", AcGiArcType::kAcGiArcChord)
         .export_values()
         ;
-    enum_<AcGiOrientationType>("AcGiOrientationType")
+    enum_<AcGiOrientationType>("OrientationType")
         .value("kAcGiCounterClockwise", AcGiOrientationType::kAcGiCounterClockwise)
         .value("kAcGiNoOrientation", AcGiOrientationType::kAcGiNoOrientation)
         .value("kAcGiClockwise", AcGiOrientationType::kAcGiClockwise)
         .export_values()
         ;
-    enum_<AcGiFillType>("AcGiFillType")
+    enum_<AcGiFillType>("FillType")
         .value("kAcGiFillAlways", AcGiFillType::kAcGiFillAlways)
         .value("kAcGiFillNever", AcGiFillType::kAcGiFillNever)
         .export_values()
         ;
-    enum_<AcGiVisibility>("AcGiVisibility")
+    enum_<AcGiVisibility>("Visibility")
         .value("kAcGiInvisible", AcGiVisibility::kAcGiInvisible)
         .value("kAcGiVisible", AcGiVisibility::kAcGiVisible)
         .value("kAcGiSilhouette", AcGiVisibility::kAcGiSilhouette)
         .export_values()
         ;
-    enum_<AcGiRegenType>("AcGiRegenType")
+    enum_<AcGiRegenType>("RegenType")
         .value("eAcGiRegenTypeInvalid", AcGiRegenType::eAcGiRegenTypeInvalid)
         .value("kAcGiStandardDisplay", AcGiRegenType::kAcGiStandardDisplay)
         .value("kAcGiHideOrShadeCommand", AcGiRegenType::kAcGiHideOrShadeCommand)
         .value("kAcGiShadedDisplay", AcGiRegenType::kAcGiShadedDisplay)
         .value("kAcGiForExplode", AcGiRegenType::kAcGiForExplode)
         .value("kAcGiSaveWorldDrawForProxy", AcGiRegenType::kAcGiSaveWorldDrawForProxy)
+        .export_values()
+        ;
+
+    enum_<AcGiViewportTraits::DefaultLightingType>("DefaultLightingType")
+        .value("kOneDistantLight", AcGiViewportTraits::DefaultLightingType::kOneDistantLight)
+        .value("kTwoDistantLights", AcGiViewportTraits::DefaultLightingType::kTwoDistantLights)
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
+        .value("kBackLighting", AcGiViewportTraits::DefaultLightingType::kBackLighting)
+#endif
         .export_values()
         ;
 }

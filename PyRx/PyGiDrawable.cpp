@@ -34,7 +34,7 @@ void makePyGiObjectWrapper()
         .value("kImageBackground", AcGiDrawable::DrawableType::kImageBackground)
         .value("kGroundPlaneBackground", AcGiDrawable::DrawableType::kGroundPlaneBackground)
         .value("kViewport", AcGiDrawable::DrawableType::kViewport)
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .value("kWebLight", AcGiDrawable::DrawableType::kWebLight)
         .value("kSkyBackground", AcGiDrawable::DrawableType::kSkyBackground)
         .value("kImageBasedLightingBackground", AcGiDrawable::DrawableType::kImageBasedLightingBackground)
@@ -61,7 +61,7 @@ void makePyGiObjectWrapper()
         .value("kDrawableNotPlottable", AcGiDrawable::SetAttributesFlags::kDrawableNotPlottable)
         .value("kDrawableNotAllowLCS", AcGiDrawable::SetAttributesFlags::kDrawableNotAllowLCS)
         .value("kDrawableMergeControlOff", AcGiDrawable::SetAttributesFlags::kDrawableMergeControlOff)
-#if _ZRXTARGET > 240 || _GRXTARGET > 240
+#if _ZRXTARGET > 240 || _GRXTARGET > 240  || _BRXTARGET > 240  || _ARXTARGET > 0
         .value("kThreadedWorldDrawViewportDraw", AcGiDrawable::SetAttributesFlags::kThreadedWorldDrawViewportDraw)
 #endif
         .export_values()
