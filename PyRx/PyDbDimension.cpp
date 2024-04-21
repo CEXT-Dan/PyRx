@@ -143,7 +143,7 @@ void makePyDbDimensionWrapper()
         .def("cast", &PyDbDimension::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     enum_<AcDbDimension::DimInspect>("DimInspect")
         .value("kShapeRemove", AcDbDimension::DimInspect::kShapeRemove)
         .value("kShapeRound", AcDbDimension::DimInspect::kShapeRound)
@@ -155,7 +155,7 @@ void makePyDbDimensionWrapper()
         ;
 #endif
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     enum_<AcDbDimension::CenterMarkType>("CenterMarkType")
         .value("kMark", AcDbDimension::CenterMarkType::kMark)
         .value("kLine", AcDbDimension::CenterMarkType::kLine)

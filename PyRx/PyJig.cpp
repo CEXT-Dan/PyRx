@@ -96,7 +96,7 @@ void makePyEdJigWrapper()
         .export_values()
         ;
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     class_<AcEdDragStyle>("DragStyle")
         .def(init<>())
         .def(init<AcEdDragStyle::StyleType, AcEdDragStyle::StyleType>())
@@ -106,7 +106,7 @@ void makePyEdJigWrapper()
         .def("setStyleTypeForDragged", &AcEdDragStyle::setStyleTypeForDragged)
         ;
 #endif
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     enum_<AcEdDragStyle::StyleType>("DragStyleType")
         .value("kNone", AcEdDragStyle::StyleType::kNone)
         .value("kHide", AcEdDragStyle::StyleType::kHide)
