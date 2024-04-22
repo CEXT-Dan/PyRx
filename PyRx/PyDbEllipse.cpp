@@ -17,6 +17,10 @@ void makePyDbEllipseWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatio: float\n"
+        "- center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatio: float, startAngle: float, endAngle: float\n";
+
     PyDocString DS("PyDb.Ellipse");
     class_<PyDbEllipse, bases<PyDbCurve>>("Ellipse")
         .def(init<>())
@@ -46,7 +50,7 @@ void makePyDbEllipseWrapper()
         .def("angleAtParam", &PyDbEllipse::angleAtParam, DS.ARGS({ "val : float" }))
         .def("get", &PyDbEllipse::get, DS.ARGS())
         .def("set", &PyDbEllipse::set1)
-        .def("set", &PyDbEllipse::set2)
+        .def("set", &PyDbEllipse::set2, DS.OVRL(setOverloads))
         .def("isNull", &PyDbEllipse::isNull, DS.ARGS())
         .def("className", &PyDbEllipse::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbEllipse::desc, DS.SARGS(15560)).staticmethod("desc")

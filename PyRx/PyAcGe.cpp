@@ -1454,7 +1454,7 @@ BOOST_PYTHON_MODULE(PyGe)
         .value("kExternalObject", AcGe::EntityId::kExternalObject)
         .value("kCurveSurfaceInt", AcGe::EntityId::kCurveSurfaceInt)
         .value("kSurfaceSurfaceInt", AcGe::EntityId::kSurfaceSurfaceInt)
-#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
+#if !defined (_BRXTARGET240)
         .value("Helix", AcGe::EntityId::kHelix)
 #endif
         .export_values()

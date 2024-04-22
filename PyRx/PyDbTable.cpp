@@ -609,7 +609,7 @@ void makePyDbTableWrapper()
         .value("kDataRow", AcDb::RowType::kDataRow)
         .value("kTitleRow", AcDb::RowType::kTitleRow)
         .value("kHeaderRow", AcDb::RowType::kHeaderRow)
-#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
+#if !defined (_BRXTARGET240)
         .value("kAllRowTypes", AcDb::RowType::kAllRowTypes)
 #endif
         .export_values()
