@@ -230,12 +230,13 @@ boost::python::tuple PyDbHatch::getLoopBulgesAt(int loopIndex)
 
 void PyDbHatch::appendLoopEdges(Adesk::Int32 loopType, const boost::python::list& edgePtrs, const boost::python::list& edgeTypes)
 {
+    //TODO: hatch seems to take ownership of the curve
     AcGeVoidPointerArray _edgePtrs;
     const auto& curves = py_list_to_std_vector<PyGeCurve2d>(edgePtrs);
     for (const auto& curve : curves)
         _edgePtrs.append(curve.impObj()->copy());
     const auto& _edgeTypes = PyListToIntArray(edgeTypes);
-    return PyThrowBadEs(impObj()->appendLoop(loopType, _edgePtrs, _edgeTypes));
+    PyThrowBadEs(impObj()->appendLoop(loopType, _edgePtrs, _edgeTypes));
 }
 
 void PyDbHatch::appendLoopBulges(Adesk::Int32 loopType, const boost::python::list& vertices, const boost::python::list& bulges)
