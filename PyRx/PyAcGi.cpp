@@ -104,7 +104,7 @@ BOOST_PYTHON_MODULE(PyGi)
     enum_<AcGiViewportTraits::DefaultLightingType>("DefaultLightingType")
         .value("kOneDistantLight", AcGiViewportTraits::DefaultLightingType::kOneDistantLight)
         .value("kTwoDistantLights", AcGiViewportTraits::DefaultLightingType::kTwoDistantLights)
-#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
+#if !defined (_BRXTARGET240)
         .value("kBackLighting", AcGiViewportTraits::DefaultLightingType::kBackLighting)
 #endif
         .export_values()
