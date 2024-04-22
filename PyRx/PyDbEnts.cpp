@@ -36,6 +36,7 @@ void makePyDbTextWrapper()
         .def("isDefaultAlignment", &PyDbText::isDefaultAlignment, DS.ARGS(9735))
         .def("normal", &PyDbText::normal, DS.ARGS(9742))
         .def("setNormal", &PyDbText::setNormal, DS.ARGS({ "val : PyGe.Vector3d" }, 9752))
+        .def("direction", &PyDbText::direction, DS.ARGS(6859))
         .def("thickness", &PyDbText::thickness, DS.ARGS(9765))
         .def("setThickness", &PyDbText::setThickness, DS.ARGS({ "val : float" }, 9758))
         .def("oblique", &PyDbText::oblique, DS.ARGS(9743))
@@ -161,6 +162,12 @@ AcGeVector3d PyDbText::normal() const
 void PyDbText::setNormal(const AcGeVector3d& val)
 {
     return PyThrowBadEs(impObj()->setNormal(val));
+}
+
+AcGeVector3d PyDbText::direction() const
+{
+    AcGeVector3d v = AcGeVector3d::kXAxis;
+    return v.rotateBy(impObj()->rotation(), impObj()->normal());
 }
 
 double PyDbText::thickness() const
@@ -1963,7 +1970,7 @@ void makePyDbPointWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("position", &PyDbPoint::position, DS.ARGS(7766))
-        .def("setPosition", &PyDbPoint::setPosition, DS.ARGS({ "val : PyGe.Point3d" },7769))
+        .def("setPosition", &PyDbPoint::setPosition, DS.ARGS({ "val : PyGe.Point3d" }, 7769))
         .def("thickness", &PyDbPoint::thickness, DS.ARGS(7772))
         .def("setThickness", &PyDbPoint::setThickness, DS.ARGS({ "val : float" }, 7770))
         .def("normal", &PyDbPoint::normal, DS.ARGS(7765))
@@ -2120,7 +2127,7 @@ void makePyDb2dPolylineWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
         .def(init<AcDb::Poly2dType, const boost::python::list&, Adesk::Boolean>(DS.CTOR(ctords)))
         .def("polyType", &PyDb2dPolyline::polyType, DS.ARGS(1178))
-        .def("setPolyType", &PyDb2dPolyline::setPolyType, DS.ARGS({"val: PyDb.Poly2dType"}, 1187))
+        .def("setPolyType", &PyDb2dPolyline::setPolyType, DS.ARGS({ "val: PyDb.Poly2dType" }, 1187))
         .def("convertToPolyType", &PyDb2dPolyline::convertToPolyType, DS.ARGS({ "val: PyDb.Poly2dType" }, 1164))
         .def("makeClosed", &PyDb2dPolyline::makeClosed, DS.ARGS(1172))
         .def("makeOpen", &PyDb2dPolyline::makeOpen, DS.ARGS(1174))
@@ -3788,7 +3795,7 @@ void makePyDbFcfWrapper()
         .def("dimensionStyle", &PyDbFcf::dimensionStyle, DS.ARGS(4589))
         .def("getDimstyleData", &PyDbFcf::getDimstyleData, DS.ARGS(4597))
         .def("setDimstyleData", &PyDbFcf::setDimstyleData2)
-        .def("setDimstyleData", &PyDbFcf::setDimstyleData1,DS.OVRL(setDimstyleDataOverloads, 4605))
+        .def("setDimstyleData", &PyDbFcf::setDimstyleData1, DS.OVRL(setDimstyleDataOverloads, 4605))
         .def("setDimVars", &PyDbFcf::setDimVars, DS.ARGS(4608))
         .def("dimclrd", &PyDbFcf::dimclrd, DS.ARGS(4587))
         .def("dimclrt", &PyDbFcf::dimclrt, DS.ARGS(4588))

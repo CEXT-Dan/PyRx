@@ -32,6 +32,7 @@ public:
     Adesk::Boolean      isDefaultAlignment() const;
     AcGeVector3d        normal() const;
     void                setNormal(const AcGeVector3d& val);
+    AcGeVector3d        direction() const;
     double              thickness() const;
     void                setThickness(double);
     double              oblique() const;
