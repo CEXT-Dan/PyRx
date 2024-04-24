@@ -88,7 +88,32 @@ void makePyGsViewWrapper()
     PyDocString DS("PyGsView");
     class_<PyGsView>("GsView", boost::python::no_init)
         .def("isNullObj", &PyGsView::isNullObj, DS.ARGS())
+        .def("graphicsKernel", &PyGsView::graphicsKernel, DS.ARGS())
+        .def("setViewport", &PyGsView::setViewport, DS.ARGS({ "lowerLeft: PyGe.Point2d", "upperRight: PyGe.Point2d" }))
+        .def("getViewport", &PyGsView::getViewport, DS.ARGS())
+        .def("setViewportBorderVisibility", &PyGsView::setViewportBorderVisibility, DS.ARGS({ "val: bool" }))
+        .def("isViewportBorderVisible", &PyGsView::isViewportBorderVisible, DS.ARGS())
+        .def("setView", &PyGsView::setView1)
+        .def("setView", &PyGsView::setView2, DS.ARGS({ "pos: PyGe.Point3d", "target: PyGe.Point3d", "upVector: PyGe.Vector3d","fWidth: float","fHeight: float"," PyGs.Projection = kParallel" }))
         .def("position", &PyGsView::position, DS.ARGS())
+        .def("target", &PyGsView::target, DS.ARGS())
+        .def("upVector", &PyGsView::upVector, DS.ARGS())
+        .def("isPerspective", &PyGsView::isPerspective, DS.ARGS())
+        .def("fieldWidth", &PyGsView::fieldWidth, DS.ARGS())
+        .def("fieldHeight", &PyGsView::fieldHeight, DS.ARGS())
+        .def("setEnableFrontClip", &PyGsView::setEnableFrontClip, DS.ARGS({ "val: bool" }))
+        .def("isFrontClipped", &PyGsView::isFrontClipped, DS.ARGS())
+        .def("setFrontClip", &PyGsView::setFrontClip, DS.ARGS({ "val: float" }))
+        .def("frontClip", &PyGsView::frontClip, DS.ARGS())
+        .def("setEnableBackClip", &PyGsView::setEnableBackClip, DS.ARGS({ "val: bool" }))
+        .def("isBackClipped", &PyGsView::isBackClipped, DS.ARGS())
+        .def("setBackClip", &PyGsView::setBackClip, DS.ARGS({ "val: float" }))
+        .def("backClip", &PyGsView::backClip, DS.ARGS())
+        .def("viewingMatrix", &PyGsView::viewingMatrix, DS.ARGS())
+        .def("projectionMatrix", &PyGsView::projectionMatrix, DS.ARGS())
+        .def("screenMatrix", &PyGsView::screenMatrix, DS.ARGS())
+        .def("worldToDeviceMatrix", &PyGsView::worldToDeviceMatrix, DS.ARGS())
+        .def("objectToDeviceMatrix", &PyGsView::objectToDeviceMatrix, DS.ARGS())
         .def("className", &PyGsView::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -124,7 +149,7 @@ bool PyGsView::isNullObj()
 
 PyGsGraphicsKernel PyGsView::graphicsKernel()
 {
-   return PyGsGraphicsKernel(impObj()->graphicsKernel());
+    return PyGsGraphicsKernel(impObj()->graphicsKernel());
 }
 
 void PyGsView::setViewport(const AcGePoint2d& lowerLeft, const AcGePoint2d& upperRight)

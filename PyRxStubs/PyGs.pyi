@@ -15,10 +15,19 @@ class Core(object):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def getCurrent3DAcGsView (self, vpNum : int)-> PyGs.GsView :
+
+    @staticmethod
+    def getCurrent3DAcGsView (vpNum : int)-> PyGs.GsView :
       '''                             '''
     ...
-    def getCurrentAcGsView (self, vpNum : int)-> PyGs.GsView :
+
+    @staticmethod
+    def getCurrentAcGsView (vpNum : int)-> PyGs.GsView :
+      '''                             '''
+    ...
+
+    @staticmethod
+    def setViewParameters (vpNum : int,view : PyGs.View,bRegenRequired: bool,bRescaleRequired: bool,bSyncRequired: bool=False)-> bool :
       '''                             '''
     ...
 
@@ -61,15 +70,87 @@ class GsView(object):
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
+    def backClip (self)-> float :
+      '''                             '''
+    ...
 
     @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+    def fieldHeight (self)-> float :
+      '''                             '''
+    ...
+    def fieldWidth (self)-> float :
+      '''                             '''
+    ...
+    def frontClip (self)-> float :
+      '''                             '''
+    ...
+    def getViewport (self)-> tuple :
+      '''                             '''
+    ...
+    def graphicsKernel (self)-> PyGs.GraphicsKernel :
+      '''                             '''
+    ...
+    def isBackClipped (self)-> bool :
+      '''                             '''
+    ...
+    def isFrontClipped (self)-> bool :
+      '''                             '''
+    ...
     def isNullObj (self)-> bool :
       '''                             '''
     ...
+    def isPerspective (self)-> bool :
+      '''                             '''
+    ...
+    def isViewportBorderVisible (self)-> bool :
+      '''                             '''
+    ...
+    def objectToDeviceMatrix (self)-> PyGe.Matrix3d :
+      '''                             '''
+    ...
     def position (self)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def projectionMatrix (self)-> PyGe.Matrix3d :
+      '''                             '''
+    ...
+    def screenMatrix (self)-> PyGe.Matrix3d :
+      '''                             '''
+    ...
+    def setBackClip (self, val: float)-> None :
+      '''                             '''
+    ...
+    def setEnableBackClip (self, val: bool)-> None :
+      '''                             '''
+    ...
+    def setEnableFrontClip (self, val: bool)-> None :
+      '''                             '''
+    ...
+    def setFrontClip (self, val: float)-> None :
+      '''                             '''
+    ...
+    def setView (self, pos: PyGe.Point3d, target: PyGe.Point3d, upVector: PyGe.Vector3d, fWidth: float, fHeight: float,  PyGs.Projection = kParallel)-> None :
+      '''                             '''
+    ...
+    def setViewport (self, lowerLeft: PyGe.Point2d, upperRight: PyGe.Point2d)-> None :
+      '''                             '''
+    ...
+    def setViewportBorderVisibility (self, val: bool)-> None :
+      '''                             '''
+    ...
+    def target (self)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def upVector (self)-> PyGe.Vector3d :
+      '''                             '''
+    ...
+    def viewingMatrix (self)-> PyGe.Matrix3d :
+      '''                             '''
+    ...
+    def worldToDeviceMatrix (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
 
