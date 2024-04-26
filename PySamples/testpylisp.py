@@ -95,6 +95,15 @@ def PyRxLisp_pylisp3p(args):
         return Ge.Point3d(1.2, 1.4, 4.5)
     except Exception as err:
         print(err)
+        
+        
+# (pylisp3p2)
+def PyRxLisp_pylisp3p2(args):
+    try:
+        print("yay!")
+        return (Rx.LispType.kPoint3d, Ge.Point3d(1.2, 1.4, 4.5))
+    except Exception as err:
+        print(err)
 
 # (pylispstr)
 def PyRxLisp_pylispstr(args):

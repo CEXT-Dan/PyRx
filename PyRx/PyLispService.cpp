@@ -47,21 +47,10 @@ int retTuple(const boost::python::tuple& tpl)
             case AcDb::kDwg3Real:
             {
                 if (extract<AcGePoint3d>(tpl[1]).check())
-                {
-                    ads_point val;
-                    auto ptr = asDblArray(extract<AcGePoint3d>(tpl[1]));
-                    memcpy_s(val, sizeof(ads_point), ptr, sizeof(ads_point));
-                    acedRetPoint(val);
-                    return RSRSLT;
-                }
+                    acedRetPoint(asDblArray(extract<AcGePoint3d>(tpl[1])));
                 else if (extract<AcGeVector3d>(tpl[1]).check())
-                {
-                    ads_point val;
-                    auto ptr = asDblArray(extract<AcGeVector3d>(tpl[1]));
-                    memcpy_s(val, sizeof(ads_point), ptr, sizeof(ads_point));
-                    acedRetPoint(val);
-                    return RSRSLT;
-                }
+                    acedRetPoint(asDblArray(extract<AcGeVector3d>(tpl[1])));
+                return RSRSLT;
             }
             case AcDb::kDwgHandle:
             case AcDb::kDwgHardOwnershipId:
@@ -102,42 +91,26 @@ int retTuple(const boost::python::tuple& tpl)
             case RT3DPOINT:
             {
                 if (extract<AcGePoint3d>(tpl[1]).check())
-                {
-                    ads_point val;
-                    auto ptr = asDblArray(extract<AcGePoint3d>(tpl[1]));
-                    memcpy_s(val, sizeof(ads_point), ptr, sizeof(ads_point));
-                    acedRetPoint(val);
-                    return RSRSLT;
-                }
+                    acedRetPoint(asDblArray(extract<AcGePoint3d>(tpl[1])));
                 else if (extract<AcGeVector3d>(tpl[1]).check())
-                {
-                    ads_point val;
-                    auto ptr = asDblArray(extract<AcGeVector3d>(tpl[1]));
-                    memcpy_s(val, sizeof(ads_point), ptr, sizeof(ads_point));
-                    acedRetPoint(val);
-                    return RSRSLT;
-                }
-                break;
+                    acedRetPoint(asDblArray(extract<AcGeVector3d>(tpl[1])));
+                return RSRSLT;
             }
             case RTPOINT:
             {
-                auto sz = sizeof(double) * 2;
                 if (extract<AcGePoint2d>(tpl[1]).check())
                 {
-                    ads_point val = { 0.0 };
-                    auto ptr = asDblArray(extract<AcGePoint2d>(tpl[1]));
-                    memcpy_s(val, sz, ptr, sz);
-                    acedRetPoint(val);
-                    return RSRSLT;
+                    const AcGePoint2d& p = extract<AcGePoint2d>(tpl[1]);
+                    const AcGePoint3d val(p.x, p.y, 0);
+                    acedRetPoint(asDblArray(val));
                 }
                 else if (extract<AcGeVector2d>(tpl[1]).check())
                 {
-                    ads_point val = { 0.0 };
-                    auto ptr = asDblArray(extract<AcGePoint2d>(tpl[1]));
-                    memcpy_s(val, sz, ptr, sz);
-                    acedRetPoint(val);
-                    return RSRSLT;
+                    const AcGeVector2d& p = extract<AcGeVector2d>(tpl[1]);
+                    const AcGePoint3d val(p.x, p.y, 0);
+                    acedRetPoint(asDblArray(val));
                 }
+                return RSRSLT;
             }
             case RTSHORT:
             {
@@ -254,15 +227,14 @@ int PyLispService::execLispFunc()
                 }
                 else if (extract<AcGePoint2d>(pResult.get()).check())
                 {
-                    const AcGePoint2d p = extract<AcGePoint2d>(pResult.get());
+                    const AcGePoint2d& p = extract<AcGePoint2d>(pResult.get());
                     const AcGePoint3d val(p.x, p.y, 0);
                     acedRetPoint(asDblArray(val));
                     return RSRSLT;
                 }
                 else if (extract<AcGePoint3d>(pResult.get()).check())
                 {
-                    const AcGePoint3d val = extract<AcGePoint3d>(pResult.get());
-                    acedRetPoint(asDblArray(val));
+                    acedRetPoint(asDblArray(extract<AcGePoint3d>(pResult.get())));
                     return RSRSLT;
                 }
                 else if (extract<PyDbObjectId>(pResult.get()).check())
