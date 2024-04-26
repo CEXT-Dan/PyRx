@@ -2207,6 +2207,9 @@ class SelectionSet(object):
     def isInitialized (self)-> bool :
       '''                             '''
     ...
+    def keepAlive (self, flag: bool)-> None :
+      '''                             '''
+    ...
     def objectIds (self, desc: PyRx.RxClass=PyDb.Entity)-> list :
       '''                             '''
     ...

@@ -27,6 +27,11 @@ class Core(object):
     ...
 
     @staticmethod
+    def getViewParameters (vpNum : int,view : PyGs.View)-> bool :
+      '''                             '''
+    ...
+
+    @staticmethod
     def setViewParameters (vpNum : int,view : PyGs.View,bRegenRequired: bool,bRescaleRequired: bool,bSyncRequired: bool=False)-> bool :
       '''                             '''
     ...

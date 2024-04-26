@@ -125,7 +125,7 @@ def PyRxLisp_pylispss(args):
         print(err)
 
 #sample conversion utility, needs work
-def listToResbuf(src):
+def iterableToResbuf(src):
     dest = []
     for item in src:
         match type(item).__name__:
@@ -143,11 +143,11 @@ def listToResbuf(src):
                 dest.append((Rx.LispType.kText, item))
             case 'list' : 
                 dest.append((Rx.LispType.kListBegin, 0))
-                dest.extend(listToResbuf(item))
+                dest.extend(iterableToResbuf(item))
                 dest.append((Rx.LispType.kListEnd, 0))
             case 'tuple' : 
                 dest.append((Rx.LispType.kListBegin, 0))
-                dest.extend(listToResbuf(item))
+                dest.extend(iterableToResbuf(item))
                 dest.append((Rx.LispType.kListEnd, 0))
             case _  : 
                 print("warning item not found!: ")
