@@ -112,6 +112,17 @@ def PyRxLisp_pylispstr(args):
         return "woohoo"
     except Exception as err:
         print(err)
+        
+# (sslength(pylispss))
+sslist = []
+def PyRxLisp_pylispss(args):
+    try:
+        sslist.clear()
+        ssres = Ed.Editor.selectAll()
+        sslist.append(ssres[1])
+        return sslist[0]
+    except Exception as err:
+        print(err)
 
 #sample conversion utility, needs work
 def listToResbuf(src):

@@ -3,6 +3,7 @@
 #include "ResultBuffer.h"
 #include "PyRxApp.h"
 #include "PyDbObjectId.h"
+#include "PyEdSelectionSet.h"
 
 using namespace boost::python;
 
@@ -139,10 +140,9 @@ int retTuple(const boost::python::tuple& tpl)
             }
             case RTPICKS:
             {
-                ads_name name = { 0L };
-                const PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
-                acdbGetAdsName(name, id.m_id);
-                acedRetName(name, RTPICKS);
+                PyEdSelectionSet ss = extract<PyEdSelectionSet>(tpl[1]);
+                const AdsName& pyssname = ss.adsname();
+                acedRetName(ads_name{ pyssname.m_data[0], pyssname.m_data[1] }, RTPICKS);
                 return RSRSLT;
             }
             case RTENAME:
@@ -249,6 +249,13 @@ int PyLispService::execLispFunc()
                 {
                     const AcString str = utf8_to_wstr(extract<char*>(pResult.get())).c_str();
                     acedRetStr(str);
+                    return RSRSLT;
+                }
+                else if (extract<PyEdSelectionSet>(pResult.get()).check())
+                {
+                    PyEdSelectionSet ss = extract<PyEdSelectionSet>(pResult.get());
+                    const AdsName& pyssname = ss.adsname();
+                    acedRetName(ads_name{ pyssname.m_data[0], pyssname.m_data[1]}, RTPICKS);
                     return RSRSLT;
                 }
                 else if (extract<tuple>(pResult.get()).check())

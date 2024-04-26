@@ -28,6 +28,7 @@ public:
     boost::python::list ssNameX2(int ind);
     boost::python::list objectIds();
     boost::python::list objectIdsOfType(const PyRxClass& _class);
+    void                forceKeepAlive(bool keepIt);
 
 public:
     void filliterator();
