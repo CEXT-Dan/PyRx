@@ -2,7 +2,190 @@
 #include "PyLispService.h"
 #include "ResultBuffer.h"
 #include "PyRxApp.h"
+#include "PyDbObjectId.h"
+
 using namespace boost::python;
+
+int retTuple(const boost::python::tuple& tpl)
+{
+    int code = extract<int>(tpl[0]);
+    if (code < 5000)
+    {
+        switch (acdbGroupCodeToType(code))
+        {
+            case AcDb::kDwgText:
+            {
+                int _code = code == 0 ? RTDXF0 : code;
+                AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
+                acedRetStr(str);
+                return RSRSLT;
+            }
+            case AcDb::kDwgInt8:
+            {
+                int val = extract<int>(tpl[1]);
+                acedRetInt(val);
+                return RSRSLT;
+            }
+            case AcDb::kDwgInt16:
+            {
+                int val = extract<int>(tpl[1]);
+                acedRetInt(val);
+                return RSRSLT;
+            }
+            case AcDb::kDwgInt32:
+            {
+                int val = extract<int>(tpl[1]);
+                acedRetInt(val);
+                return RSRSLT;
+            }
+            case AcDb::kDwgReal:
+            {
+                double val = extract<double>(tpl[1]);
+                acedRetReal(val);
+                return RSRSLT;
+            }
+            case AcDb::kDwg3Real:
+            {
+                if (extract<AcGePoint3d>(tpl[1]).check())
+                {
+                    ads_point val;
+                    auto ptr = asDblArray(extract<AcGePoint3d>(tpl[1]));
+                    memcpy_s(val, sizeof(ads_point), ptr, sizeof(ads_point));
+                    acedRetPoint(val);
+                    return RSRSLT;
+                }
+                else if (extract<AcGeVector3d>(tpl[1]).check())
+                {
+                    ads_point val;
+                    auto ptr = asDblArray(extract<AcGeVector3d>(tpl[1]));
+                    memcpy_s(val, sizeof(ads_point), ptr, sizeof(ads_point));
+                    acedRetPoint(val);
+                    return RSRSLT;
+                }
+            }
+            case AcDb::kDwgHandle:
+            case AcDb::kDwgHardOwnershipId:
+            case AcDb::kDwgSoftOwnershipId:
+            case AcDb::kDwgHardPointerId:
+            case AcDb::kDwgSoftPointerId:
+            {
+                ads_name name = { 0L };
+                PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
+                acdbGetAdsName(name, id.m_id);
+                acedRetName(name, RTENAME);
+                return RSRSLT;
+            }
+        }
+    }
+    else
+    {
+        switch (code)
+        {
+            case RTT:
+            {
+                acedRetT();
+                return RSRSLT;
+            }
+            case RTNIL:
+            {
+                acedRetNil();
+                return RSRSLT;
+            }
+            case RTANG:
+            case RTREAL:
+            {
+                const double val = extract<double>(tpl[1]);
+                acedRetReal(val);
+                return RSRSLT;
+            }
+            case RTORINT:
+            case RT3DPOINT:
+            {
+                if (extract<AcGePoint3d>(tpl[1]).check())
+                {
+                    ads_point val;
+                    auto ptr = asDblArray(extract<AcGePoint3d>(tpl[1]));
+                    memcpy_s(val, sizeof(ads_point), ptr, sizeof(ads_point));
+                    acedRetPoint(val);
+                    return RSRSLT;
+                }
+                else if (extract<AcGeVector3d>(tpl[1]).check())
+                {
+                    ads_point val;
+                    auto ptr = asDblArray(extract<AcGeVector3d>(tpl[1]));
+                    memcpy_s(val, sizeof(ads_point), ptr, sizeof(ads_point));
+                    acedRetPoint(val);
+                    return RSRSLT;
+                }
+                break;
+            }
+            case RTPOINT:
+            {
+                auto sz = sizeof(double) * 2;
+                if (extract<AcGePoint2d>(tpl[1]).check())
+                {
+                    ads_point val = { 0.0 };
+                    auto ptr = asDblArray(extract<AcGePoint2d>(tpl[1]));
+                    memcpy_s(val, sz, ptr, sz);
+                    acedRetPoint(val);
+                    return RSRSLT;
+                }
+                else if (extract<AcGeVector2d>(tpl[1]).check())
+                {
+                    ads_point val = { 0.0 };
+                    auto ptr = asDblArray(extract<AcGePoint2d>(tpl[1]));
+                    memcpy_s(val, sz, ptr, sz);
+                    acedRetPoint(val);
+                    return RSRSLT;
+                }
+            }
+            case RTSHORT:
+            {
+                const short val = extract<int>(tpl[1]);
+                acedRetInt(val);
+                return RSRSLT;
+            }
+            case RTLONG:
+            {
+                const int val = extract<int>(tpl[1]);
+                acedRetInt(val);
+                return RSRSLT;
+            }
+            case RTLONG_PTR:
+            case RTINT64:
+            {
+                const int64_t val = extract<int64_t>(tpl[1]);
+                acedRetInt(int(val));
+                return RSRSLT;
+            }
+            case RTSTR:
+            {
+                const AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
+                acedRetStr(str);
+                return RSRSLT;
+            }
+            case RTPICKS:
+            {
+                ads_name name = { 0L };
+                const PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
+                acdbGetAdsName(name, id.m_id);
+                acedRetName(name, RTPICKS);
+                return RSRSLT;
+            }
+            case RTENAME:
+            {
+                ads_name name = { 0L };
+                const PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
+                acdbGetAdsName(name, id.m_id);
+                acedRetName(name, RTENAME);
+                return RSRSLT;
+            }
+        }
+    }
+    acutPrintf(L"\nInvalid input in retTuple");
+    return RSRSLT;
+}
+
 
 //TODO set current directory...
 int PyLispService::execLispFunc()
@@ -82,11 +265,25 @@ int PyLispService::execLispFunc()
                     acedRetPoint(asDblArray(val));
                     return RSRSLT;
                 }
+                else if (extract<PyDbObjectId>(pResult.get()).check())
+                {
+                    const PyDbObjectId val = extract<PyDbObjectId>(pResult.get());
+                    ads_name name;
+                    acdbGetAdsName(name, val.m_id);
+                    acedRetName(name, RTENAME);
+                    return RSRSLT;
+                }
                 else if (extract<char*>(pResult.get()).check())
                 {
                     const AcString str = utf8_to_wstr(extract<char*>(pResult.get())).c_str();
                     acedRetStr(str);
                     return RSRSLT;
+                }
+                else if (extract<tuple>(pResult.get()).check())
+                {
+                    tuple tpl = extract<tuple>(pResult.get());
+                    if (boost::python::len(tpl) == 2)
+                        return retTuple(tpl);
                 }
                 else
                 {
@@ -102,6 +299,7 @@ int PyLispService::execLispFunc()
     }
     return RSRSLT;
 }
+
 
 bool PyLispService::tryAddFunc(const AcString& pythonFuncName, PyObject* method)
 {
