@@ -62,7 +62,7 @@ void AcCellSetItem(AcCell& cell, int idx, int val)
 //  AcCellRange helpers
 static boost::shared_ptr<AcCellRange> AcCellRangeInit1()
 {
-#ifdef _ARXTARGET
+#if _ARXTARGET
     return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
 #endif
 
@@ -230,7 +230,7 @@ void makePyDbTableWrapper()
         "- nRow: int, nCol: int, nGridLineTypes: GridLineType, visible: PyDb.Visibility\n";
 
     constexpr const std::string_view setAlignmentOverloads = "Overloads:\n"
-        "- visible: PyDb.CellAlignment, rowType: PyDb.RowType\n"
+        "- align: PyDb.CellAlignment, rowType: PyDb.RowType\n"
         "- nRow: int, nCol: int, align: PyDb.CellAlignment\n";
 
     constexpr const std::string_view setBackgroundColorNoneOverloads = "Overloads:\n"
