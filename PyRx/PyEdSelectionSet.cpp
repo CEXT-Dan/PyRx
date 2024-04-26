@@ -25,6 +25,7 @@ void makePyEdSelectionSetWrapper()
         .def("ssNameX", &PyEdSelectionSet::ssNameX2, DS.ARGS({ "val: int = 0" }))
         .def("ssSetFirst", &PyEdSelectionSet::ssSetFirst, DS.ARGS())
         .def("ssXform", &PyEdSelectionSet::ssXform, DS.ARGS({ "xform: PyGe.Matrix3d" }))
+        .def("keepAlive", &PyRxObject::forceKeepAlive, DS.ARGS({ "flag: bool" }))
         .def("__iter__", range(&PyEdSelectionSet::begin, &PyEdSelectionSet::end))
         ;
 }
@@ -206,6 +207,14 @@ boost::python::list PyEdSelectionSet::objectIdsOfType(const PyRxClass& _class)
         }
     }
     return idList;
+}
+
+void PyEdSelectionSet::forceKeepAlive(bool keepIt)
+{
+    auto del_p = std::get_deleter<PyEdSSDeleter>(m_pSet);
+    if (del_p == nullptr)
+        PyThrowBadEs(Acad::eNotApplicable);
+    del_p->m_autoDelete = !keepIt;
 }
 
 PySSName* PyEdSelectionSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
