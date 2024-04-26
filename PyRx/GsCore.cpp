@@ -11,6 +11,7 @@ void makeGsCoreWrapper()
     class_<GsCore>("Core")
         .def("getCurrentAcGsView", &GsCore::getCurrentAcGsView, DS.SARGS({ "vpNum : int" })).staticmethod("getCurrentAcGsView")
         .def("getCurrent3DAcGsView", &GsCore::getCurrent3DAcGsView, DS.SARGS({ "vpNum : int" })).staticmethod("getCurrent3DAcGsView")
+        .def("getViewParameters", &GsCore::getViewParameters, DS.SARGS({ "vpNum : int", "view : PyGs.View"})).staticmethod("getViewParameters")
         .def("setViewParameters", &GsCore::setViewParameters1)
         .def("setViewParameters", &GsCore::setViewParameters2, DS.SARGS({ "vpNum : int", "view : PyGs.View", "bRegenRequired: bool","bRescaleRequired: bool","bSyncRequired: bool=False" })).staticmethod("setViewParameters")
         ;
@@ -28,6 +29,11 @@ PyGsView GsCore::getCurrent3DAcGsView(int vpNum)
 #else
     return PyGsView(acgsGetCurrent3dAcGsView(vpNum), false);
 #endif
+}
+
+bool GsCore::getViewParameters(int vpNum, PyGsView& view)
+{
+    return acgsGetViewParameters(vpNum, view.impObj());
 }
 
 bool GsCore::setViewParameters1(int viewportNumber, const PyGsView& obj, bool bRegenRequired, bool bRescaleRequired)
