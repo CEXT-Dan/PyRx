@@ -23,4 +23,19 @@
 "True"
 
 
+(defun c:LispRetStr()
+   "Hello World"
+)
+
+(defun c:LispRetInt()
+   42
+)
+
+(defun c:LispRetDouble()
+   94.1
+)
+
+(defun c:LispRetId()
+   (namedobjdict)
+)
 
