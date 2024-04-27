@@ -11,10 +11,10 @@ const std::filesystem::path& PyRxINI::iniPath()
 
 const std::tuple<bool, bool> PyRxINI::pythonIsolated()
 {
-    wchar_t buffer[8] = { 0 };
-    if (acedGetEnv(_T("PYRX_PYTHONISOLATED"), buffer, 12) == RTNORM)
+    std::array<wchar_t, 12> buffer = { 0 };
+    if (acedGetEnv(_T("PYRX_PYTHONISOLATED"), buffer.data(), buffer.size()) == RTNORM)
     {
-        if (_wtoi(buffer) == 1)
+        if (_wtoi(buffer.data()) == 1)
             return std::make_tuple(true, true);
 
     }
