@@ -120,7 +120,8 @@ void makePyDbDatabaseWrapper()
         .def("getCePlotStyleNameId", &PyDbDatabase::getCePlotStyleNameId, DS.ARGS(2952))
         .def("getDimstyleParentId", &PyDbDatabase::getDimstyleParentId, DS.ARGS(2966))
         .def("getNearestLineWeight", &PyDbDatabase::getNearestLineWeight, DS.SARGS({ "weight : int" }, 2981)).staticmethod("getNearestLineWeight")//static
-        .def("getViewportArray", &PyDbDatabase::getViewportArray, DS.ARGS(2997))
+        .def("getViewportArray", &PyDbDatabase::getViewportArray1)
+        .def("getViewportArray", &PyDbDatabase::getViewportArray2, DS.ARGS({ "val: bool=True" }, 2997))
         .def("getVisualStyleList", &PyDbDatabase::getVisualStyleList, DS.ARGS(3001))
         .def("globalMaterial", &PyDbDatabase::globalMaterial, DS.ARGS(3002))
         .def("groupDictionaryId", &PyDbDatabase::groupDictionaryId, DS.ARGS(3003))
@@ -1105,7 +1106,12 @@ AcDb::LineWeight PyDbDatabase::getNearestLineWeight(int weight)
     return AcDbDatabase::getNearestLineWeight(weight);
 }
 
-boost::python::list PyDbDatabase::getViewportArray() const
+boost::python::list PyDbDatabase::getViewportArray1() const
+{
+    return getViewportArray2(true);
+}
+
+boost::python::list PyDbDatabase::getViewportArray2(bool bGetPaperspaceVports) const
 {
     AcDbObjectIdArray vportIds;
     PyThrowBadEs(impObj()->getViewportArray(vportIds));
