@@ -113,7 +113,8 @@ public:
     std::string         dimpost() const;
     PyDbObjectId        getDimstyleParentId(PyDbObjectId& childStyle) const;
     static AcDb::LineWeight getNearestLineWeight(int weight);
-    boost::python::list getViewportArray() const;
+    boost::python::list getViewportArray1() const;
+    boost::python::list getViewportArray2(bool bGetPaperspaceVports) const;
     boost::python::list getVisualStyleList(); //TODO test
     PyDbObjectId        globalMaterial() const;
     PyDbObjectId        groupDictionaryId() const;
