@@ -25,13 +25,17 @@ void makePyDbSurfaceWrapper()
         .def("getPerimeter", &PyDbSurface::getPerimeter, DS.ARGS())
         .def("creationActionBodyId", &PyDbSurface::creationActionBodyId, DS.ARGS())
         .def("modificationActionBodyIds", &PyDbSurface::modificationActionBodyIds, DS.ARGS())
-        .def("extendEdges", &PyDbSurface::extendEdges, DS.ARGS({ "subEnts: list[PyDb.FullSubentPath]","extDist: float","extOption: SurfaceEdgeExtensionType","bAssociativeEnabled: bool"}))
+        .def("extendEdges", &PyDbSurface::extendEdges, DS.ARGS({ "subEnts: list[PyDb.FullSubentPath]","extDist: float","extOption: SurfaceEdgeExtensionType","bAssociativeEnabled: bool" }))
         .def("rayTest", &PyDbSurface::rayTest, DS.ARGS({ "rayBasePoint: PyGe.Point3d","rayDir: PyGe.Vector3d","rayRadius: float" }))
         .def("projectOnToSurface", &PyDbSurface::projectOnToSurface, DS.ARGS({ "object: PyDb.Entity","projectionDirection: PyGe.Vector3d" }))
         .def("createFrom", &PyDbSurface::createFrom, DS.SARGS({ "val: PyDb.Entity" })).staticmethod("createFrom")
 #if !defined(_BRXTARGET240)
-        .def("createExtrudedSurface", &PyDbSurface::createExtrudedSurface, 
-            DS.SARGS({ "pSweep: PyDb.Profile3d","directionVec: PyGe.Vector3d","sweepOptions: PyDb.SweepOptions"})).staticmethod("createExtrudedSurface")
+        .def("createExtrudedSurface", &PyDbSurface::createExtrudedSurface,
+            DS.SARGS({ "pSweep: PyDb.Profile3d","directionVec: PyGe.Vector3d","sweepOptions: PyDb.SweepOptions" }, 8933)).staticmethod("createExtrudedSurface")
+#endif
+#if !defined(_BRXTARGET240)
+        .def("createRevolvedSurface", &PyDbSurface::createRevolvedSurface,
+            DS.SARGS({ "pRev: PyDb.Profile3d","axisPnt: PyGe.Point3d","axisDir: PyGe.Vector3d","revAngle: float","startAngle: float","sweepOptions: PyDb.SweepOptions" })).staticmethod("createExtrudedSurface")
 #endif
         .def("className", &PyDbSurface::className).staticmethod("className")
         .def("desc", &PyDbSurface::desc).staticmethod("desc")
@@ -192,6 +196,15 @@ PyDbExtrudedSurface PyDbSurface::createExtrudedSurface(PyDb3dProfile& pSweep, co
     AcDbExtrudedSurface* newExtrudedSurface = nullptr;
     PyThrowBadEs(AcDbSurface::createExtrudedSurface(pSweep.impObj(), directionVec, *sweepOptions.impObj(), newExtrudedSurface));
     return PyDbExtrudedSurface(newExtrudedSurface, true);
+}
+#endif
+
+#if !defined(_BRXTARGET240)
+PyDbRevolvedSurface PyDbSurface::createRevolvedSurface(PyDb3dProfile& pRev, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, double revAngle, double startAngle, PyDbRevolveOptions& options)
+{
+    AcDbRevolvedSurface* newSurface = nullptr;
+    PyThrowBadEs(AcDbSurface::createRevolvedSurface(pRev.impObj(), axisPnt, axisDir, revAngle, startAngle, *options.impObj(), newSurface));
+    return PyDbRevolvedSurface(newSurface, true);
 }
 #endif
 
