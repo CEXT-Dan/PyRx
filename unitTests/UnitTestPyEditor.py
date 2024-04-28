@@ -73,6 +73,15 @@ class TestEditor(unittest.TestCase):
         val = Ed.Core.evaluateDiesel('$(eval,"Current layer: "$(getvar,clayer))')
         self.assertEqual(val, "Current layer: 0")
         
+    def test_ed_core_grDrawPoly2d(self):
+        p2d = [Ge.Point2d(100,100),Ge.Point2d(200,100),Ge.Point2d(200,200)]
+        res = Ed.Core.grDrawPoly2d(p2d,2)
+        self.assertEqual(res, 5100)
+        
+    def test_ed_core_grDrawPoly3d(self):
+        p3d = [Ge.Point3d(0,0,0),Ge.Point3d(100,0,0),Ge.Point3d(100,100,0)]
+        res = Ed.Core.grDrawPoly3d(p3d,3)
+        self.assertEqual(res, 5100)
 def pyeditor():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestEditor)
