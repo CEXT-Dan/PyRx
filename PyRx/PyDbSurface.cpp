@@ -35,7 +35,7 @@ void makePyDbSurfaceWrapper()
 #endif
 #if !defined(_BRXTARGET240)
         .def("createRevolvedSurface", &PyDbSurface::createRevolvedSurface,
-            DS.SARGS({ "pRev: PyDb.Profile3d","axisPnt: PyGe.Point3d","axisDir: PyGe.Vector3d","revAngle: float","startAngle: float","sweepOptions: PyDb.SweepOptions" })).staticmethod("createExtrudedSurface")
+            DS.SARGS({ "pRev: PyDb.Profile3d","axisPnt: PyGe.Point3d","axisDir: PyGe.Vector3d","revAngle: float","startAngle: float","sweepOptions: PyDb.SweepOptions" }, 8941)).staticmethod("createRevolvedSurface")
 #endif
         .def("className", &PyDbSurface::className).staticmethod("className")
         .def("desc", &PyDbSurface::desc).staticmethod("desc")
