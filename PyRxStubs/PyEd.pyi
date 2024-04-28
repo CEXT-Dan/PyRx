@@ -333,7 +333,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def grDrawPoly2d (pts: list[PyGe.Point3d],color: int)-> int :
+    def grDrawPoly2d (pts: list[PyGe.Point2d],color: int)-> int :
       '''                             '''
     ...
 

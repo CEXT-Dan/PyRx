@@ -37,8 +37,8 @@ void makePyDbSurfaceWrapper()
         .def("createRevolvedSurface", &PyDbSurface::createRevolvedSurface,
             DS.SARGS({ "pRev: PyDb.Profile3d","axisPnt: PyGe.Point3d","axisDir: PyGe.Vector3d","revAngle: float","startAngle: float","sweepOptions: PyDb.SweepOptions" }, 8941)).staticmethod("createRevolvedSurface")
 #endif
-        .def("className", &PyDbSurface::className).staticmethod("className")
-        .def("desc", &PyDbSurface::desc).staticmethod("desc")
+        .def("className", &PyDbSurface::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbSurface::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbSurface::cloneFrom).staticmethod("cloneFrom")
         .def("cast", &PyDbSurface::cast).staticmethod("cast")
         ;

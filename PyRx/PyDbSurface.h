@@ -44,20 +44,15 @@ public:
     boost::python::tuple    rayTest(const AcGePoint3d& rayBasePoint, const AcGeVector3d& rayDir,double rayRadius) const;
 
     // Acad::ErrorStatus ACDB_PORT convertToNurbSurface(AcDbNurbSurfaceArray& nsArray);
-    boost::python::list projectOnToSurface(const PyDbEntity& ent, const AcGeVector3d& projectionDirection);
-
+    boost::python::list         projectOnToSurface(const PyDbEntity& ent, const AcGeVector3d& projectionDirection);
 
     static PyDbSurface          createFrom(const PyDbEntity& pFromEntity);
 #if !defined(_BRXTARGET240)
     static PyDbExtrudedSurface  createExtrudedSurface(PyDb3dProfile& pSweep, const AcGeVector3d& directionVec, PyDbSweepOptions& sweepOptions);
 #endif
-
 #if !defined(_BRXTARGET240)
     static PyDbRevolvedSurface  createRevolvedSurface(PyDb3dProfile& pRev, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, double revAngle, double startAngle, PyDbRevolveOptions& options);
 #endif
-
-
-      
     static std::string      className();
     static PyRxClass        desc();
     static PyDbSurface		cloneFrom(const PyRxObject& src);
