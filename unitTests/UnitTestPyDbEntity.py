@@ -1,4 +1,5 @@
 import os
+from turtle import circle
 import unittest
 import math
 import testcfg
@@ -441,6 +442,17 @@ class TestDbEntity(unittest.TestCase):
         wipout = Db.Wipeout(pts,Ge.Vector3d.kZAxis)
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
         id = model.appendAcDbEntity(wipout)
+        self.assertTrue(id.isValid())
+      
+    @unittest.skipIf(host == "BRX24", "known failure")  
+    def test_create_extruded_surface(self):
+        db = Db.curDb()
+        opts = Db.SweepOptions()
+        circle = Db.Circle(Ge.Point3d(0,0,0),Ge.Vector3d.kZAxis,10)
+        dir = Ge.Point3d(0,0,100) -Ge.Point3d(0,0,0)
+        profile = Db.Profile3d(circle)
+        surf = Db.Surface.createExtrudedSurface(profile,dir,opts)
+        id = db.addToModelspace(surf)
         self.assertTrue(id.isValid())
         
 def pyentity():

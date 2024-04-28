@@ -10,9 +10,8 @@ void makePyDb3dProfileWrapper()
 {
     PyDocString DS("Profile3d");
     class_<PyDb3dProfile, bases<PyRxObject>>("Profile3d")
-        .def(init<>(DS.ARGS()))
-        .def(init<const PyDbEntity&>())
-        .def(init<const AcDb3dProfile&>())
+        .def(init<>())
+        .def(init<const PyDbEntity&>(DS.ARGS({ "val: PyDb.Entity" })))
         .def("isClosed", &PyDb3dProfile::isClosed, DS.ARGS())
         .def("isPlanar", &PyDb3dProfile::isPlanar, DS.ARGS())
         .def("isSubent", &PyDb3dProfile::isSubent, DS.ARGS())

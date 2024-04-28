@@ -2816,7 +2816,7 @@ void makePyDbCircleWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
-        "- center: PyGe.Point3d,normal: PyGe.Vector2d,radius : float\n"
+        "- center: PyGe.Point3d, normal: PyGe.Vector3d, radius: float\n"
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
