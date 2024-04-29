@@ -90,7 +90,7 @@ static bool initIsolated()
     if (PyStatus_Exception(status))
     {
         PyConfig_Clear(&config);
-        acutPrintf(_T("\nPyConfig_SetString failed %ls: "), __FUNCTIONW__);
+        acutPrintf(_T("\nPyConfig_SetString failed %ls, msg=%ls: "), __FUNCTIONW__, utf8_to_wstr(status.err_msg).c_str());
         return false;
     }
 
@@ -98,7 +98,7 @@ static bool initIsolated()
     PyConfig_Clear(&config);
     if (PyStatus_Exception(status))
     {
-        acutPrintf(_T("\nInitializeFromConfig failed %ls: "), __FUNCTIONW__);
+        acutPrintf(_T("\nInitializeFromConfig failed %ls, msg=%ls: "), __FUNCTIONW__, utf8_to_wstr(status.err_msg).c_str());
         return false;
     }
     return true;
@@ -115,7 +115,7 @@ static bool initNonIsolated()
 
     if (PyStatus_Exception(status))
     {
-        acutPrintf(_T("\nInitializeFromConfig failed %ls: "), __FUNCTIONW__);
+        acutPrintf(_T("\nInitializeFromConfig failed %ls, msg=%ls: "), __FUNCTIONW__, utf8_to_wstr(status.err_msg).c_str());
         return false;
     }
     return true;
@@ -130,7 +130,7 @@ bool WxRxApp::Init_wxPython()
     auto status = Py_PreInitialize(&preConfig);
     if (PyStatus_Exception(status))
     {
-        acutPrintf(_T("\nPreInitialize failed %ls: "), __FUNCTIONW__);
+        acutPrintf(_T("\nPreInitialize failed %ls, msg=%ls: "), __FUNCTIONW__, utf8_to_wstr(status.err_msg).c_str());
         return false;
     }
     const auto [res, isolated] = PyRxINI::pythonIsolated();
