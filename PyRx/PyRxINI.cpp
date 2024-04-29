@@ -16,7 +16,6 @@ const std::tuple<bool, bool> PyRxINI::pythonIsolated()
     {
         if (_wtoi(buffer.data()) == 1)
             return std::make_tuple(true, true);
-
     }
     int nDefault = 0;
     int result = GetPrivateProfileInt(_T("PYRXSETTINGS"), _T("PYTHONISOLATED"), nDefault, iniPath().c_str());
