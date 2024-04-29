@@ -29,7 +29,7 @@ def PyRxCmd_pydoit(CmdFlags=Ap.CmdFlags.TRANSPARENT):
         markers.append(dbl)
 
         tm = Gi.TransientManager.current()
-        tm.addTransient(dbl,Gi.AcGiTransientDrawingMode.kAcGiDirectShortTerm,128,vpids)
+        tm.addTransient(dbl,Gi.TransientDrawingMode.kAcGiDirectShortTerm,128,vpids)
         Ed.Core.vportTableRecords2Vports()
 
     except Exception as err:
