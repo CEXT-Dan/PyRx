@@ -349,11 +349,8 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def color (self, *args, **kwargs)-> int :
-      '''color( (SubEntityTraits)arg1) -> int :
-
-    C++ signature :
-        unsigned short color(class PyGiSubEntityTraits {lvalue})'''
+    def color (self)-> int :
+      '''                             '''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''Function usage:This function is intended to allow classes to provide a means to compare class objects much the way strcmp() compares character strings.The object pointed to by other is compared with this object. The result of the comparison is returned.The possible AcRx::Ordering types are:AcRx::kLessThanAcRx::kEqualAcRx::kGreaterThanAcRx::kNotOrderableThe AcRx::kNotOrderable type is there because C++ classes often cannot support object value comparison.Function implementation in derived classes:There are no restrictions or expectations on how this function is implemented. Each class will have its own requirements for comparison.Default implementation:Simply returns AcRx::kNotOrderable since many C++ classes cannot support object value comparison.'''
@@ -370,23 +367,14 @@ This class cannot be instantiated from Python'''
     def dispose (self)-> None :
       '''                             '''
     ...
-    def drawFlags (self, *args, **kwargs)-> int :
-      '''drawFlags( (SubEntityTraits)arg1) -> int :
-
-    C++ signature :
-        unsigned int drawFlags(class PyGiSubEntityTraits {lvalue})'''
+    def drawFlags (self)-> int :
+      '''                             '''
     ...
-    def fillType (self, *args, **kwargs)-> PyGi.FillType :
-      '''fillType( (SubEntityTraits)arg1) -> FillType :
-
-    C++ signature :
-        enum AcGiFillType fillType(class PyGiSubEntityTraits {lvalue})'''
+    def fillType (self)-> PyGi.FillType :
+      '''                             '''
     ...
-    def getPlotStyleNameId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getPlotStyleNameId( (SubEntityTraits)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getPlotStyleNameId(class PyGiSubEntityTraits {lvalue})'''
+    def getPlotStyleNameId (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -403,192 +391,95 @@ This class cannot be instantiated from Python'''
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def layerId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''layerId( (SubEntityTraits)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId layerId(class PyGiSubEntityTraits {lvalue})'''
+    def layerId (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def lineTypeId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''lineTypeId( (SubEntityTraits)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId lineTypeId(class PyGiSubEntityTraits {lvalue})'''
+    def lineTypeId (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def lineTypeScale (self, *args, **kwargs)-> float :
-      '''lineTypeScale( (SubEntityTraits)arg1) -> float :
-
-    C++ signature :
-        double lineTypeScale(class PyGiSubEntityTraits {lvalue})'''
+    def lineTypeScale (self)-> float :
+      '''                             '''
     ...
-    def lineWeight (self, *args, **kwargs)-> PyDb.LineWeight :
-      '''lineWeight( (SubEntityTraits)arg1) -> LineWeight :
-
-    C++ signature :
-        enum AcDb::LineWeight lineWeight(class PyGiSubEntityTraits {lvalue})'''
+    def lineWeight (self)-> PyDb.LineWeight :
+      '''                             '''
     ...
-    def materialId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''materialId( (SubEntityTraits)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId materialId(class PyGiSubEntityTraits {lvalue})'''
+    def materialId (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
-    def sectionable (self, *args, **kwargs)-> bool :
-      '''sectionable( (SubEntityTraits)arg1) -> bool :
-
-    C++ signature :
-        bool sectionable(class PyGiSubEntityTraits {lvalue})'''
+    def sectionable (self)-> bool :
+      '''                             '''
     ...
-    def selectionGeom (self, *args, **kwargs)-> bool :
-      '''selectionGeom( (SubEntityTraits)arg1) -> bool :
-
-    C++ signature :
-        bool selectionGeom(class PyGiSubEntityTraits {lvalue})'''
+    def selectionGeom (self)-> bool :
+      '''                             '''
     ...
-    def setColor (self, *args, **kwargs)-> None :
-      '''setColor( (SubEntityTraits)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setColor(class PyGiSubEntityTraits {lvalue},unsigned short)'''
+    def setColor (self, val: int)-> None :
+      '''                             '''
     ...
-    def setDrawFlags (self, *args, **kwargs)-> None :
-      '''setDrawFlags( (SubEntityTraits)arg1, (SubentType)arg2) -> None :
-
-    C++ signature :
-        void setDrawFlags(class PyGiSubEntityTraits {lvalue},unsigned int)'''
+    def setDrawFlags (self, flags: int)-> None :
+      '''                             '''
     ...
-    def setFillType (self, *args, **kwargs)-> None :
-      '''setFillType( (SubEntityTraits)arg1, (FillType)arg2) -> None :
-
-    C++ signature :
-        void setFillType(class PyGiSubEntityTraits {lvalue},enum AcGiFillType)'''
+    def setFillType (self, val: PyGi.FillType)-> None :
+      '''                             '''
     ...
-    def setLayer (self, *args, **kwargs)-> None :
-      '''setLayer( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setLayer(class PyGiSubEntityTraits {lvalue},class PyDbObjectId)'''
+    def setLayer (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setLineType (self, *args, **kwargs)-> None :
-      '''setLineType( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setLineType(class PyGiSubEntityTraits {lvalue},class PyDbObjectId)'''
+    def setLineType (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setLineTypeScale (self, *args, **kwargs)-> None :
-      '''setLineTypeScale( (SubEntityTraits)arg1) -> None :
-
-    C++ signature :
-        void setLineTypeScale(class PyGiSubEntityTraits {lvalue})
-
-setLineTypeScale( (SubEntityTraits)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLineTypeScale(class PyGiSubEntityTraits {lvalue},double)'''
+    def setLineTypeScale (self, val: float=1.0)-> None :
+      '''                             '''
     ...
-    def setLineWeight (self, *args, **kwargs)-> None :
-      '''setLineWeight( (SubEntityTraits)arg1, (LineWeight)arg2) -> None :
-
-    C++ signature :
-        void setLineWeight(class PyGiSubEntityTraits {lvalue},enum AcDb::LineWeight)'''
+    def setLineWeight (self, val: PyDb.LineWeight)-> None :
+      '''                             '''
     ...
-    def setMaterial (self, *args, **kwargs)-> None :
-      '''setMaterial( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setMaterial(class PyGiSubEntityTraits {lvalue},class PyDbObjectId)'''
+    def setMaterial (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setPlotStyleName (self, *args, **kwargs)-> None :
-      '''setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyGiSubEntityTraits {lvalue},enum AcDb::PlotStyleNameType)
-
-setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyGiSubEntityTraits {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId)'''
+    def setPlotStyleName (self, val: PyDb.PlotStyleNameType, id: PyDb.ObjectId=None)-> None :
+      '''                             '''
     ...
-    def setSectionable (self, *args, **kwargs)-> None :
-      '''setSectionable( (SubEntityTraits)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setSectionable(class PyGiSubEntityTraits {lvalue},bool)'''
+    def setSectionable (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setSelectionGeom (self, *args, **kwargs)-> None :
-      '''setSelectionGeom( (SubEntityTraits)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setSelectionGeom(class PyGiSubEntityTraits {lvalue},bool)'''
+    def setSelectionGeom (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setSelectionMarker (self, *args, **kwargs)-> None :
-      '''setSelectionMarker( (SubEntityTraits)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setSelectionMarker(class PyGiSubEntityTraits {lvalue},__int64)'''
+    def setSelectionMarker (self, val: int)-> None :
+      '''                             '''
     ...
-    def setShadowFlags (self, *args, **kwargs)-> None :
-      '''setShadowFlags( (SubEntityTraits)arg1, (ShadowFlags)arg2) -> None :
-
-    C++ signature :
-        void setShadowFlags(class PyGiSubEntityTraits {lvalue},enum AcGiSubEntityTraits::ShadowFlags)'''
+    def setShadowFlags (self, val: PyGi.ShadowFlags)-> None :
+      '''                             '''
     ...
-    def setThickness (self, *args, **kwargs)-> None :
-      '''setThickness( (SubEntityTraits)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setThickness(class PyGiSubEntityTraits {lvalue},double)'''
+    def setThickness (self, val: float)-> None :
+      '''                             '''
     ...
-    def setTransparency (self, *args, **kwargs)-> None :
-      '''setTransparency( (SubEntityTraits)arg1, (Transparency)arg2) -> None :
-
-    C++ signature :
-        void setTransparency(class PyGiSubEntityTraits {lvalue},class AcCmTransparency)'''
+    def setTransparency (self, val: PyDb.Transparency)-> None :
+      '''                             '''
     ...
-    def setTrueColor (self, *args, **kwargs)-> None :
-      '''setTrueColor( (SubEntityTraits)arg1, (EntityColor)arg2) -> None :
-
-    C++ signature :
-        void setTrueColor(class PyGiSubEntityTraits {lvalue},class AcCmEntityColor)'''
+    def setTrueColor (self, clr: PyDb.AcCmColor)-> None :
+      '''                             '''
     ...
-    def setVisualStyle (self, *args, **kwargs)-> None :
-      '''setVisualStyle( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setVisualStyle(class PyGiSubEntityTraits {lvalue},class PyDbObjectId)'''
+    def setVisualStyle (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def shadowFlags (self, *args, **kwargs)-> PyGi.ShadowFlags :
-      '''shadowFlags( (SubEntityTraits)arg1) -> ShadowFlags :
-
-    C++ signature :
-        enum AcGiSubEntityTraits::ShadowFlags shadowFlags(class PyGiSubEntityTraits {lvalue})'''
+    def shadowFlags (self)-> PyGi.ShadowFlags :
+      '''                             '''
     ...
-    def thickness (self, *args, **kwargs)-> float :
-      '''thickness( (SubEntityTraits)arg1) -> float :
-
-    C++ signature :
-        double thickness(class PyGiSubEntityTraits {lvalue})'''
+    def thickness (self)-> float :
+      '''                             '''
     ...
-    def transparency (self, *args, **kwargs)-> PyDb.Transparency :
-      '''transparency( (SubEntityTraits)arg1) -> Transparency :
-
-    C++ signature :
-        class AcCmTransparency transparency(class PyGiSubEntityTraits {lvalue})'''
+    def transparency (self)-> PyDb.Transparency :
+      '''                             '''
     ...
-    def trueColor (self, *args, **kwargs)-> PyDb.EntityColor :
-      '''trueColor( (SubEntityTraits)arg1) -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor trueColor(class PyGiSubEntityTraits {lvalue})'''
+    def trueColor (self)-> PyDb.EntityColor :
+      '''                             '''
     ...
-    def visualStyle (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''visualStyle( (SubEntityTraits)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId visualStyle(class PyGiSubEntityTraits {lvalue})'''
+    def visualStyle (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
 
 class FillType(object):
@@ -1029,11 +920,8 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def color (self, *args, **kwargs)-> int :
-      '''color( (SubEntityTraits)arg1) -> int :
-
-    C++ signature :
-        unsigned short color(class PyGiSubEntityTraits {lvalue})'''
+    def color (self)-> int :
+      '''                             '''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''Function usage:This function is intended to allow classes to provide a means to compare class objects much the way strcmp() compares character strings.The object pointed to by other is compared with this object. The result of the comparison is returned.The possible AcRx::Ordering types are:AcRx::kLessThanAcRx::kEqualAcRx::kGreaterThanAcRx::kNotOrderableThe AcRx::kNotOrderable type is there because C++ classes often cannot support object value comparison.Function implementation in derived classes:There are no restrictions or expectations on how this function is implemented. Each class will have its own requirements for comparison.Default implementation:Simply returns AcRx::kNotOrderable since many C++ classes cannot support object value comparison.'''
@@ -1041,32 +929,22 @@ This class cannot be instantiated from Python'''
     def copyFrom (self, other: PyRx.RxObject)-> None :
       '''Function usage:Copies the contents of other into the messaged object, whenever feasible. Function implementation in derived classes:If implemented, this function needs to be able to read the data in the object pointed to by other and copy any or all data as appropriate into this object. There is no requirement that the object pointed to by other and this object be of the same class, but that is the generally assumed condition.Default implementation: Because this function must be overridden to have any meaning, a fatal error will be caused when calling the default implementation. '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
     ...
     def dispose (self)-> None :
       '''                             '''
     ...
-    def drawFlags (self, *args, **kwargs)-> int :
-      '''drawFlags( (SubEntityTraits)arg1) -> int :
-
-    C++ signature :
-        unsigned int drawFlags(class PyGiSubEntityTraits {lvalue})'''
+    def drawFlags (self)-> int :
+      '''                             '''
     ...
-    def fillType (self, *args, **kwargs)-> PyGi.FillType :
-      '''fillType( (SubEntityTraits)arg1) -> FillType :
-
-    C++ signature :
-        enum AcGiFillType fillType(class PyGiSubEntityTraits {lvalue})'''
+    def fillType (self)-> PyGi.FillType :
+      '''                             '''
     ...
-    def getPlotStyleNameId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getPlotStyleNameId( (SubEntityTraits)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getPlotStyleNameId(class PyGiSubEntityTraits {lvalue})'''
+    def getPlotStyleNameId (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -1083,192 +961,95 @@ This class cannot be instantiated from Python'''
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def layerId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''layerId( (SubEntityTraits)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId layerId(class PyGiSubEntityTraits {lvalue})'''
+    def layerId (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def lineTypeId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''lineTypeId( (SubEntityTraits)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId lineTypeId(class PyGiSubEntityTraits {lvalue})'''
+    def lineTypeId (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def lineTypeScale (self, *args, **kwargs)-> float :
-      '''lineTypeScale( (SubEntityTraits)arg1) -> float :
-
-    C++ signature :
-        double lineTypeScale(class PyGiSubEntityTraits {lvalue})'''
+    def lineTypeScale (self)-> float :
+      '''                             '''
     ...
-    def lineWeight (self, *args, **kwargs)-> PyDb.LineWeight :
-      '''lineWeight( (SubEntityTraits)arg1) -> LineWeight :
-
-    C++ signature :
-        enum AcDb::LineWeight lineWeight(class PyGiSubEntityTraits {lvalue})'''
+    def lineWeight (self)-> PyDb.LineWeight :
+      '''                             '''
     ...
-    def materialId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''materialId( (SubEntityTraits)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId materialId(class PyGiSubEntityTraits {lvalue})'''
+    def materialId (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
-    def sectionable (self, *args, **kwargs)-> bool :
-      '''sectionable( (SubEntityTraits)arg1) -> bool :
-
-    C++ signature :
-        bool sectionable(class PyGiSubEntityTraits {lvalue})'''
+    def sectionable (self)-> bool :
+      '''                             '''
     ...
-    def selectionGeom (self, *args, **kwargs)-> bool :
-      '''selectionGeom( (SubEntityTraits)arg1) -> bool :
-
-    C++ signature :
-        bool selectionGeom(class PyGiSubEntityTraits {lvalue})'''
+    def selectionGeom (self)-> bool :
+      '''                             '''
     ...
-    def setColor (self, *args, **kwargs)-> None :
-      '''setColor( (SubEntityTraits)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setColor(class PyGiSubEntityTraits {lvalue},unsigned short)'''
+    def setColor (self, val: int)-> None :
+      '''                             '''
     ...
-    def setDrawFlags (self, *args, **kwargs)-> None :
-      '''setDrawFlags( (SubEntityTraits)arg1, (SubentType)arg2) -> None :
-
-    C++ signature :
-        void setDrawFlags(class PyGiSubEntityTraits {lvalue},unsigned int)'''
+    def setDrawFlags (self, flags: int)-> None :
+      '''                             '''
     ...
-    def setFillType (self, *args, **kwargs)-> None :
-      '''setFillType( (SubEntityTraits)arg1, (FillType)arg2) -> None :
-
-    C++ signature :
-        void setFillType(class PyGiSubEntityTraits {lvalue},enum AcGiFillType)'''
+    def setFillType (self, val: PyGi.FillType)-> None :
+      '''                             '''
     ...
-    def setLayer (self, *args, **kwargs)-> None :
-      '''setLayer( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setLayer(class PyGiSubEntityTraits {lvalue},class PyDbObjectId)'''
+    def setLayer (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setLineType (self, *args, **kwargs)-> None :
-      '''setLineType( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setLineType(class PyGiSubEntityTraits {lvalue},class PyDbObjectId)'''
+    def setLineType (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setLineTypeScale (self, *args, **kwargs)-> None :
-      '''setLineTypeScale( (SubEntityTraits)arg1) -> None :
-
-    C++ signature :
-        void setLineTypeScale(class PyGiSubEntityTraits {lvalue})
-
-setLineTypeScale( (SubEntityTraits)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLineTypeScale(class PyGiSubEntityTraits {lvalue},double)'''
+    def setLineTypeScale (self, val: float=1.0)-> None :
+      '''                             '''
     ...
-    def setLineWeight (self, *args, **kwargs)-> None :
-      '''setLineWeight( (SubEntityTraits)arg1, (LineWeight)arg2) -> None :
-
-    C++ signature :
-        void setLineWeight(class PyGiSubEntityTraits {lvalue},enum AcDb::LineWeight)'''
+    def setLineWeight (self, val: PyDb.LineWeight)-> None :
+      '''                             '''
     ...
-    def setMaterial (self, *args, **kwargs)-> None :
-      '''setMaterial( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setMaterial(class PyGiSubEntityTraits {lvalue},class PyDbObjectId)'''
+    def setMaterial (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setPlotStyleName (self, *args, **kwargs)-> None :
-      '''setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyGiSubEntityTraits {lvalue},enum AcDb::PlotStyleNameType)
-
-setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyGiSubEntityTraits {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId)'''
+    def setPlotStyleName (self, val: PyDb.PlotStyleNameType, id: PyDb.ObjectId=None)-> None :
+      '''                             '''
     ...
-    def setSectionable (self, *args, **kwargs)-> None :
-      '''setSectionable( (SubEntityTraits)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setSectionable(class PyGiSubEntityTraits {lvalue},bool)'''
+    def setSectionable (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setSelectionGeom (self, *args, **kwargs)-> None :
-      '''setSelectionGeom( (SubEntityTraits)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setSelectionGeom(class PyGiSubEntityTraits {lvalue},bool)'''
+    def setSelectionGeom (self, val: bool)-> None :
+      '''                             '''
     ...
-    def setSelectionMarker (self, *args, **kwargs)-> None :
-      '''setSelectionMarker( (SubEntityTraits)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setSelectionMarker(class PyGiSubEntityTraits {lvalue},__int64)'''
+    def setSelectionMarker (self, val: int)-> None :
+      '''                             '''
     ...
-    def setShadowFlags (self, *args, **kwargs)-> None :
-      '''setShadowFlags( (SubEntityTraits)arg1, (ShadowFlags)arg2) -> None :
-
-    C++ signature :
-        void setShadowFlags(class PyGiSubEntityTraits {lvalue},enum AcGiSubEntityTraits::ShadowFlags)'''
+    def setShadowFlags (self, val: PyGi.ShadowFlags)-> None :
+      '''                             '''
     ...
-    def setThickness (self, *args, **kwargs)-> None :
-      '''setThickness( (SubEntityTraits)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setThickness(class PyGiSubEntityTraits {lvalue},double)'''
+    def setThickness (self, val: float)-> None :
+      '''                             '''
     ...
-    def setTransparency (self, *args, **kwargs)-> None :
-      '''setTransparency( (SubEntityTraits)arg1, (Transparency)arg2) -> None :
-
-    C++ signature :
-        void setTransparency(class PyGiSubEntityTraits {lvalue},class AcCmTransparency)'''
+    def setTransparency (self, val: PyDb.Transparency)-> None :
+      '''                             '''
     ...
-    def setTrueColor (self, *args, **kwargs)-> None :
-      '''setTrueColor( (SubEntityTraits)arg1, (EntityColor)arg2) -> None :
-
-    C++ signature :
-        void setTrueColor(class PyGiSubEntityTraits {lvalue},class AcCmEntityColor)'''
+    def setTrueColor (self, clr: PyDb.AcCmColor)-> None :
+      '''                             '''
     ...
-    def setVisualStyle (self, *args, **kwargs)-> None :
-      '''setVisualStyle( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setVisualStyle(class PyGiSubEntityTraits {lvalue},class PyDbObjectId)'''
+    def setVisualStyle (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def shadowFlags (self, *args, **kwargs)-> PyGi.ShadowFlags :
-      '''shadowFlags( (SubEntityTraits)arg1) -> ShadowFlags :
-
-    C++ signature :
-        enum AcGiSubEntityTraits::ShadowFlags shadowFlags(class PyGiSubEntityTraits {lvalue})'''
+    def shadowFlags (self)-> PyGi.ShadowFlags :
+      '''                             '''
     ...
-    def thickness (self, *args, **kwargs)-> float :
-      '''thickness( (SubEntityTraits)arg1) -> float :
-
-    C++ signature :
-        double thickness(class PyGiSubEntityTraits {lvalue})'''
+    def thickness (self)-> float :
+      '''                             '''
     ...
-    def transparency (self, *args, **kwargs)-> PyDb.Transparency :
-      '''transparency( (SubEntityTraits)arg1) -> Transparency :
-
-    C++ signature :
-        class AcCmTransparency transparency(class PyGiSubEntityTraits {lvalue})'''
+    def transparency (self)-> PyDb.Transparency :
+      '''                             '''
     ...
-    def trueColor (self, *args, **kwargs)-> PyDb.EntityColor :
-      '''trueColor( (SubEntityTraits)arg1) -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor trueColor(class PyGiSubEntityTraits {lvalue})'''
+    def trueColor (self)-> PyDb.EntityColor :
+      '''                             '''
     ...
-    def visualStyle (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''visualStyle( (SubEntityTraits)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId visualStyle(class PyGiSubEntityTraits {lvalue})'''
+    def visualStyle (self)-> PyDb.ObjectId :
+      '''                             '''
     ...
 
 class TransientDrawingMode(object):
