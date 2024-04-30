@@ -358,11 +358,10 @@ This class cannot be instantiated from Python'''
     def copyFrom (self, other: PyRx.RxObject)-> None :
       '''Function usage:Copies the contents of other into the messaged object, whenever feasible. Function implementation in derived classes:If implemented, this function needs to be able to read the data in the object pointed to by other and copy any or all data as appropriate into this object. There is no requirement that the object pointed to by other and this object be of the same class, but that is the generally assumed condition.Default implementation: Because this function must be overridden to have any meaning, a fatal error will be caused when calling the default implementation. '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
     ...
     def dispose (self)-> None :
       '''                             '''
@@ -465,6 +464,9 @@ This class cannot be instantiated from Python'''
     ...
     def setVisualStyle (self, id: PyDb.ObjectId)-> None :
       '''                             '''
+    ...
+    def setupForEntity (self, entity: PyDb.Entity)-> None :
+      '''This call initializes the entire AcGiSubEntityTraits and AcGiDrawableTraits from the entity. This is more efficient than setting each property individually. The default implemetation of AcDbEntity::setAttributes() uses this method.If you are implementing AcGi you need not implement this method since and implementation is supplied which delegates to the setXXX methods in AcGiSubEntityTraits.'''
     ...
     def shadowFlags (self)-> PyGi.ShadowFlags :
       '''                             '''

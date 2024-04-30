@@ -1,6 +1,7 @@
 #pragma once
 #include "PyRxObject.h"
 class PyDbObjectId;
+class PyDbEntity;
 
 //-----------------------------------------------------------------------------------------
 //PyGiSubEntityTraits
@@ -66,6 +67,7 @@ class PyGiDrawableTraits : public PyGiSubEntityTraits
 public:
     PyGiDrawableTraits(AcGiDrawableTraits* ptr, bool autoDelete);
     virtual ~PyGiDrawableTraits() override = default;
+    void                setupForEntity(PyDbEntity& pEntity);
     static std::string	className();
     static PyRxClass	desc();
 public:
