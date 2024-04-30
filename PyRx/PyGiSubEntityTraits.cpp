@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyGiSubEntityTraits.h"
+#include "PyDbEntity.h"
 #include "PyDbObjectId.h"
 
 using namespace boost::python;
@@ -287,7 +288,7 @@ AcGiSubEntityTraits* PyGiSubEntityTraits::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGiSubEntityTraits*>(m_pyImp.get());
 }
 
@@ -295,15 +296,22 @@ AcGiSubEntityTraits* PyGiSubEntityTraits::impObj(const std::source_location& src
 //PyGiDrawableTraits
 void makePyGiDrawableTraitsWrapper()
 {
+    PyDocString DS("DrawableTraits");
     class_<PyGiDrawableTraits, bases<PyGiSubEntityTraits>>("DrawableTraits", boost::python::no_init)
+        .def("setupForEntity", &PyGiDrawableTraits::setupForEntity, DS.ARGS({ "entity: PyDb.Entity" }, 13052))
         .def("className", &PyGiDrawableTraits::className).staticmethod("className")
-        .def("desc", &PyGiDrawableTraits::desc).staticmethod("desc")
+        .def("desc", &PyGiDrawableTraits::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
 }
 
 PyGiDrawableTraits::PyGiDrawableTraits(AcGiDrawableTraits* ptr, bool autoDelete)
     : PyGiSubEntityTraits(ptr, autoDelete)
 {
+}
+
+void PyGiDrawableTraits::setupForEntity(PyDbEntity& pEntity)
+{
+    impObj()->setupForEntity(pEntity.impObj());
 }
 
 std::string PyGiDrawableTraits::className()
@@ -320,6 +328,6 @@ AcGiDrawableTraits* PyGiDrawableTraits::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGiDrawableTraits*>(m_pyImp.get());
 }
