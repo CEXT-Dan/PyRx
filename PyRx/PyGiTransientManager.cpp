@@ -6,16 +6,18 @@ using namespace boost::python;
 
 void makePyGiTransientManagerWrapper()
 {
+    PyDocString DS("TransientManager");
     class_<PyGiTransientManager>("TransientManager")
-        .def("addTransient", &PyGiTransientManager::addTransient)
-        .def("eraseTransient", &PyGiTransientManager::eraseTransient)
-        .def("eraseTransients", &PyGiTransientManager::eraseTransients)
-        .def("updateTransient", &PyGiTransientManager::updateTransient)
-        .def("addChildTransient", &PyGiTransientManager::addChildTransient)
-        .def("eraseChildTransient", &PyGiTransientManager::eraseChildTransient)
-        .def("updateChildTransient", &PyGiTransientManager::updateChildTransient)
-        .def("getFreeSubDrawingMode", &PyGiTransientManager::getFreeSubDrawingMode)
-        .def("current", &PyGiTransientManager::current).staticmethod("current")
+        .def(init<>(DS.ARGS()))
+        .def("addTransient", &PyGiTransientManager::addTransient, DS.ARGS({ "drawable: PyGi.Drawable","mode: PyGi.TransientDrawingMode","subDrawingMode: int","viewportNumbers: list[int]" }, 13943))
+        .def("eraseTransient", &PyGiTransientManager::eraseTransient, DS.ARGS({ "drawable: PyGi.Drawable","viewportNumbers: list[int]" }, 13945))
+        .def("eraseTransients", &PyGiTransientManager::eraseTransients, DS.ARGS({ "mode: PyGi.TransientDrawingMode","subDrawingMode: int","viewportNumbers: list[int]" }, 13946))
+        .def("updateTransient", &PyGiTransientManager::updateTransient, DS.ARGS({ "drawable: PyGi.Drawable","viewportNumbers: list[int]" }, 13949))
+        .def("addChildTransient", &PyGiTransientManager::addChildTransient, DS.ARGS({ "drawable: PyGi.Drawable", "parentDrawable: PyGi.Drawable" }, 13942))
+        .def("eraseChildTransient", &PyGiTransientManager::eraseChildTransient, DS.ARGS({ "drawable: PyGi.Drawable", "parentDrawable: PyGi.Drawable" }, 13944))
+        .def("updateChildTransient", &PyGiTransientManager::updateChildTransient, DS.ARGS({ "drawable: PyGi.Drawable", "parentDrawable: PyGi.Drawable" }, 13948))
+        .def("getFreeSubDrawingMode", &PyGiTransientManager::getFreeSubDrawingMode, DS.ARGS({ "mode: PyGi.TransientDrawingMode","subDrawingMode: int","viewportNumbers: list[int]" }, 13947))
+        .def("current", &PyGiTransientManager::current, DS.SARGS()).staticmethod("current")
         ;
 }
 
@@ -81,6 +83,6 @@ AcGiTransientManager* PyGiTransientManager::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return m_pyImp;
 }

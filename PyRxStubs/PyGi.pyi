@@ -1301,65 +1301,37 @@ class TransientDrawingMode(object):
     ...
 
 class TransientManager(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
-    def addChildTransient (self, *args, **kwargs)-> bool :
-      '''addChildTransient( (TransientManager)arg1, (Drawable)arg2, (Drawable)arg3) -> bool :
-
-    C++ signature :
-        bool addChildTransient(class PyGiTransientManager {lvalue},class PyGiDrawable {lvalue},class PyGiDrawable {lvalue})'''
+    def addChildTransient (self, drawable: PyGi.Drawable, parentDrawable: PyGi.Drawable)-> bool :
+      '''This function adds a child transient to specified parent transient. This allows for partial updates of the parent drawable.Returns true if successful. This function doesn't need to specify a drawing mode, subDrawingMode or viewportNumber; these properties of the child transient will be the same as parent transient'''
     ...
-    def addTransient (self, *args, **kwargs)-> bool :
-      '''addTransient( (TransientManager)arg1, (Drawable)arg2, (TransientDrawingMode)arg3, (int)arg4, (list)arg5) -> bool :
-
-    C++ signature :
-        bool addTransient(class PyGiTransientManager {lvalue},class PyGiDrawable {lvalue},enum AcGiTransientDrawingMode,int,class boost::python::list)'''
+    def addTransient (self, drawable: PyGi.Drawable, mode: PyGi.TransientDrawingMode, subDrawingMode: int, viewportNumbers: list[int])-> bool :
+      '''This function adds a transient to a list of viewports.Returns true if successful.'''
     ...
-    def current (self, *args, **kwargs)-> PyGi.TransientManager :
-      '''current() -> TransientManager :
 
-    C++ signature :
-        class PyGiTransientManager current()'''
+    @staticmethod
+    def current ()-> PyGi.TransientManager :
+      '''                             '''
     ...
-    def eraseChildTransient (self, *args, **kwargs)-> bool :
-      '''eraseChildTransient( (TransientManager)arg1, (Drawable)arg2, (Drawable)arg3) -> bool :
-
-    C++ signature :
-        bool eraseChildTransient(class PyGiTransientManager {lvalue},class PyGiDrawable {lvalue},class PyGiDrawable {lvalue})'''
+    def eraseChildTransient (self, drawable: PyGi.Drawable, parentDrawable: PyGi.Drawable)-> bool :
+      '''This function erases a child transient from specified parent transient.Returns true if successful.'''
     ...
-    def eraseTransient (self, *args, **kwargs)-> bool :
-      '''eraseTransient( (TransientManager)arg1, (Drawable)arg2, (list)arg3) -> bool :
-
-    C++ signature :
-        bool eraseTransient(class PyGiTransientManager {lvalue},class PyGiDrawable {lvalue},class boost::python::list)'''
+    def eraseTransient (self, drawable: PyGi.Drawable, viewportNumbers: list[int])-> bool :
+      '''This function erases a transient from a list of viewports.Returns true if successful. This function erases a specified drawable which has been added by addTransient().'''
     ...
-    def eraseTransients (self, *args, **kwargs)-> bool :
-      '''eraseTransients( (TransientManager)arg1, (TransientDrawingMode)arg2, (int)arg3, (list)arg4) -> bool :
-
-    C++ signature :
-        bool eraseTransients(class PyGiTransientManager {lvalue},enum AcGiTransientDrawingMode,int,class boost::python::list)'''
+    def eraseTransients (self, mode: PyGi.TransientDrawingMode, subDrawingMode: int, viewportNumbers: list[int])-> bool :
+      '''This function erases all transients in the specified subDrawingMode from a list of viewports.Returns true if successful.'''
     ...
-    def getFreeSubDrawingMode (self, *args, **kwargs)-> tuple :
-      '''getFreeSubDrawingMode( (TransientManager)arg1, (TransientDrawingMode)arg2, (int)arg3, (list)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getFreeSubDrawingMode(class PyGiTransientManager {lvalue},enum AcGiTransientDrawingMode,int,class boost::python::list)'''
+    def getFreeSubDrawingMode (self, mode: PyGi.TransientDrawingMode, subDrawingMode: int, viewportNumbers: list[int])-> tuple :
+      '''Get the free draw order in a certain transient drawing mode.Returns 0 if the input draw order is not free and transient manager also could not get a free draw order.Returns 1 if the inputting draw order is available.Returns 2 if the inputting draw order is unavailable, but transient manager could return a free draw order.'''
     ...
-    def updateChildTransient (self, *args, **kwargs)-> None :
-      '''updateChildTransient( (TransientManager)arg1, (Drawable)arg2, (Drawable)arg3) -> None :
-
-    C++ signature :
-        void updateChildTransient(class PyGiTransientManager {lvalue},class PyGiDrawable {lvalue},class PyGiDrawable {lvalue})'''
+    def updateChildTransient (self, drawable: PyGi.Drawable, parentDrawable: PyGi.Drawable)-> None :
+      '''This function only updates a child transient of the specified parent transient. This means partial updates of parent drawable.'''
     ...
-    def updateTransient (self, *args, **kwargs)-> None :
-      '''updateTransient( (TransientManager)arg1, (Drawable)arg2, (list)arg3) -> None :
-
-    C++ signature :
-        void updateTransient(class PyGiTransientManager {lvalue},class PyGiDrawable {lvalue},class boost::python::list)'''
+    def updateTransient (self, drawable: PyGi.Drawable, viewportNumbers: list[int])-> None :
+      '''Update a transient via the transient manager.'''
     ...
 
 class TransparencyMode(object):
