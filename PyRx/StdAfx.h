@@ -159,6 +159,12 @@
 #pragma comment( lib , "AcDbPointCloudObj.lib" )
 #pragma comment( lib , "AcGeolocationObj.lib" )
 #pragma comment( lib , "AcDrawBridge.lib" )
+#pragma comment( lib , "AdImaging.lib" )
+#pragma comment( lib , "AdIntImgServices.lib" )
+#endif
+
+#if defined(_BRXTARGET)
+#pragma comment( lib , "BrxATIL24.lib" )
 #endif
 
 #if defined(_GRXTARGET)
@@ -181,6 +187,7 @@
 
 #if defined(_ZRXTARGET)
 #pragma comment( lib , "ZwGs.lib" )
+#pragma comment( lib , "ZwImaging.lib" )
 #endif
 
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
