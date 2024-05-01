@@ -2,6 +2,7 @@
 #include "acgs.h"
 
 class PyGsView;
+class PyDbObjectId;
 
 
 void makeGsCoreWrapper();
@@ -14,5 +15,6 @@ public:
    static bool getViewParameters(int vpNum, PyGsView& view);
    static bool setViewParameters1(int viewportNumber, const PyGsView& obj, bool bRegenRequired, bool bRescaleRequired);
    static bool setViewParameters2(int viewportNumber, const PyGsView& obj, bool bRegenRequired, bool bRescaleRequired, bool bSyncRequired);
+   static wxImage getBlockImage(const PyDbObjectId& blkid, int x, int y);
 };
 

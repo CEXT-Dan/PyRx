@@ -17,6 +17,11 @@ class Core(object):
     ...
 
     @staticmethod
+    def getBlockImage (blkid: PyDb.ObjectId,sx: int,sy: int)-> object :
+      '''                             '''
+    ...
+
+    @staticmethod
     def getCurrent3DAcGsView (vpNum : int)-> PyGs.GsView :
       '''                             '''
     ...
