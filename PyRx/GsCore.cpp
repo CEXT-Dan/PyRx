@@ -133,6 +133,10 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     if (!pView->add(pBlock, pModel.get()))
         return nullptr;
 
+    AcDbExtents ex;
+    ex.addBlockExt(pBlock);
+    pView->zoomExtents(ex.minPoint(), ex.maxPoint());
+
     pOffDevice->update();
     pView->update();
 
@@ -165,6 +169,10 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     }
     if (!pWxImage->IsOk())
         return nullptr;
+
+    //This is wrong
+    //*pWxImage = pWxImage->Mirror();
+    //*pWxImage = pWxImage->Rotate180();
 
     pView->eraseAll();
 
