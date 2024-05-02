@@ -17,11 +17,42 @@
 #include "format_codecs/BmpFormatCodec.h"
 #include "RowProviderInterface.h"
 #include "FileWriteDescriptor.h"
+#include "DataBuffer.h"
 #pragma warning( pop )
 
 using namespace boost::python;
 
 //https://adndevblog.typepad.com/autocad/2013/01/capturing-a-screen-shot-using-objectarx.html
+
+struct AcGsViewDeleter
+{
+    explicit AcGsViewDeleter(AcGsGraphicsKernel* pGraphicsKernel)
+        :m_pGraphicsKernel(pGraphicsKernel)
+    {
+    }
+    void operator()(AcGsView* ptr)
+    {
+        m_pGraphicsKernel->deleteView(ptr);
+    }
+    AcGsGraphicsKernel* m_pGraphicsKernel = nullptr;
+};
+using AcGsViewPtr = std::unique_ptr <AcGsView, AcGsViewDeleter>;
+
+
+struct AcGsModelDeleter
+{
+    AcGsModelDeleter(AcGsGraphicsKernel* pGraphicsKernel)
+        :m_pGraphicsKernel(pGraphicsKernel)
+    {
+    }
+    void operator()(AcGsModel* ptr)
+    {
+        m_pGraphicsKernel->deleteModel(ptr);
+    }
+    AcGsGraphicsKernel* m_pGraphicsKernel = nullptr;
+};
+using AcGsModelPtr = std::unique_ptr <AcGsModel, AcGsModelDeleter>;
+
 
 Atil::DataModel* colorSpace(char*& pRGBData, int colorDepth, int paletteSize)
 {
@@ -160,6 +191,7 @@ bool GsCore::setViewParameters2(int viewportNumber, const PyGsView& obj, bool bR
 PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height)
 {
 #ifdef PYRXDEBUG
+    PyAutoLockGIL lock;
     AcGsKernelDescriptor descriptor;
     descriptor.addRequirement(AcGsKernelDescriptor::k3DDrawing);
     AcGsGraphicsKernel* pGraphicsKernel = AcGsManager::acquireGraphicsKernel(descriptor);
@@ -167,13 +199,15 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
         return nullptr;
 
     AcGsDevice* pOffDevice = pGraphicsKernel->createOffScreenDevice();
-    AcGsModel* pModel = acgsGetGsManager()->createAutoCADModel(*pGraphicsKernel);
-
-    AcGsView* view = acgsGetGsManager()->createView(pOffDevice);
-    pOffDevice->add(view);
+    AcGsModelPtr pModel (acgsGetGsManager()->createAutoCADModel(*pGraphicsKernel), AcGsModelDeleter{ pGraphicsKernel });
+    AcGsViewPtr pView(acgsGetGsManager()->createView(pOffDevice), AcGsViewDeleter{ pGraphicsKernel });
+    pOffDevice->add(pView.get());
 
     AcDbBlockTableRecordPointer pBlock(blkid.m_id);
-    view->add(pBlock, pModel);
+    AcDbBlockReference ref(AcGePoint3d::kOrigin, blkid.m_id);
+    pView->add(pBlock, pModel.get());
+    pView->zoomExtents(AcGePoint3d(0, 0, 0), AcGePoint3d(1000, 1000, 0));
+    pView->update();
 
     Atil::Size size(width, height);
     int nBytesPerRow = Atil::DataModel::bytesPerRow(width, Atil::DataModelAttributes::k32);
@@ -181,28 +215,39 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     std::unique_ptr<char[]>apCharBuffer(new char[nBufferSize]);
     char* pSnapshotData = apCharBuffer.get();
     std::unique_ptr <Atil::Image> pImage (constructAtilImg(pSnapshotData, nBufferSize, nBytesPerRow, width, height, 32, 0));
-    view->getSnapShot(pImage.get(), AcGsDCPoint(0, 0));
-    std::unique_ptr <Atil::ImageFormatCodec> pCodec (new BmpFormatCodec());
+    pOffDevice->getSnapShot(pImage.get(), AcGsDCPoint(0, 0));
+    if (!pImage->isValid())
+        return nullptr;
 
-    Atil::RowProviderInterface* pPipe = pImage->read(pImage->size(), Atil::Offset(0, 0));
+    Atil::Offset upperLeft(0, 0);
+    Atil::Size wholeImage = pImage->size();
+    Atil::ImageContext* imgContext = pImage->createContext(Atil::ImageContext::kRead, wholeImage, upperLeft);
+    Atil::DataModelAttributes::PixelType pixelType = imgContext->getPixelType();
+    if (pixelType != Atil::DataModelAttributes::kRgba)
+        return nullptr;
 
-    Atil::FileWriteDescriptor* pFWD = new Atil::FileWriteDescriptor(pCodec.get());
 
+    wxImage *pWxImage = new wxImage(wxSize(wholeImage.width, wholeImage.height));
 
-    wxImage wximage;
-    wximage.IsOk();
+    for (int x = 0; x < wholeImage.width; ++x)
+    {
+        for (int y = 0; y < wholeImage.height; ++y)
+        {
+            Atil::RgbColor p(imgContext->get32(x, y));
+            pWxImage->SetRGB(x, y, p.rgba.red, p.rgba.green, p.rgba.blue);
+        }
+    }
+    if (!pWxImage->IsOk())
+        return nullptr;
 
-    view->eraseAll();
+    pView->eraseAll();
     pOffDevice->eraseAll();
 
-    pGraphicsKernel->deleteView(view);
-    pGraphicsKernel->deleteModel(pModel);
 
-    PyObject* _wxobj = wxPyConstructObject(&wximage, wxT("wxImage"));
+    PyObject* _wxobj = wxPyConstructObject(pWxImage, wxT("wxImage"));
     if (_wxobj == nullptr)
         throw PyNullObject();
     return _wxobj;
-
 #else
     PyThrowBadEs(Acad::eNotImplementedYet);
     return nullptr;
