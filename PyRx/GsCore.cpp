@@ -38,7 +38,7 @@ struct AcGsViewDeleter
 {
     void operator()(AcGsView* ptr)
     {
-        //acgsGetGsManager()->destroyAutoCADView(ptr);
+        acgsGetGsManager()->destroyView(ptr);
     }
 };
 using AcGsViewPtr = std::unique_ptr <AcGsView, AcGsViewDeleter>;
@@ -51,46 +51,6 @@ struct AcGsModelDeleter
     }
 };
 using AcGsModelPtr = std::unique_ptr <AcGsModel, AcGsModelDeleter>;
-
-
-Atil::Image* constructAtilImg(char* pRGBData, unsigned long bufferSize, unsigned long rowBytes, unsigned long xSize, unsigned long ySize, int colorDepth, int paletteSize)
-{
-    if ((8 != colorDepth) && (32 != colorDepth))
-        return nullptr;
-    if (paletteSize)
-    {
-        if ((paletteSize < 0) || (paletteSize > 255))
-            return nullptr;
-    }
-    if ((xSize <= 0) || (ySize <= 0))
-        return nullptr;
-    // construct the Atil::Image object
-    if (!pRGBData)
-        return nullptr;
-
-    // Check the buffer for size and definition
-    if (!bufferSize)
-        return nullptr;
-
-    if (!rowBytes)
-        return nullptr;
-    // did they allocate enough?
-    if (rowBytes * ySize > bufferSize)
-        return nullptr;
-    try
-    {
-        Atil::RgbModel rgbM(32);
-        Atil::Size size(xSize, ySize);
-        Atil::Image* pImg = new Atil::Image(pRGBData, bufferSize, rowBytes, size, &rgbM);
-        return pImg;
-    }
-    catch (...)
-    {
-        acutPrintf(_T("Exception in %ls: ")__FUNCTIONW__);
-    }
-    return nullptr;
-
-}
 
 void makeGsCoreWrapper()
 {
@@ -134,6 +94,13 @@ bool GsCore::setViewParameters2(int viewportNumber, const PyGsView& obj, bool bR
     return acgsSetViewParameters(viewportNumber, obj.impObj(), bRegenRequired, bRescaleRequired, bSyncRequired);
 }
 
+static int cvport()
+{
+    struct resbuf rb;
+    acedGetVar(_T("CVPORT"), &rb);
+    return rb.resval.rint;
+}
+
 PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height)
 {
 #ifdef PYRXDEBUG
@@ -143,7 +110,7 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     AcGsManager* gsManager = acgsGetGsManager();
 
     AcGsKernelDescriptor descriptor;
-    descriptor.addRequirement(AcGsKernelDescriptor::k3DRapidRTRendering);
+    descriptor.addRequirement(AcGsKernelDescriptor::k3DDrawing);
 
     AcGsGraphicsKernel* pGraphicsKernel = AcGsManager::acquireGraphicsKernel(descriptor);
     if (pGraphicsKernel == nullptr)
@@ -151,43 +118,36 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
 
     //?
     AcGsDevicePtr pOffDevice(gsManager->createAutoCADOffScreenDevice(*pGraphicsKernel));
+    pOffDevice->onSize(width, height);
+
     AcGsModelPtr pModel(gsManager->createAutoCADModel(*pGraphicsKernel));
     AcGsViewPtr pView(gsManager->createView(pOffDevice.get()));
 
-    AcDbEntityUPtr pRef(new AcDbBlockReference(AcGePoint3d(0, 0, 0), blkid.m_id));
     if (!pOffDevice->add(pView.get()))
         return nullptr;
-    if (!pView->add(pRef.get(), pModel.get()))
+
+    int cv = cvport();
+    bool flag = acgsGetViewParameters(cv, pView.get());
+
+    AcDbBlockTableRecordPointer pBlock(blkid.m_id);
+    if (!pView->add(pBlock, pModel.get()))
         return nullptr;
 
-    //gray, so getSnapShot should be gray
-    AcGsColor bkclr;
-    bkclr.m_red = 128;
-    bkclr.m_green = 128;
-    bkclr.m_blue = 128;
-    pOffDevice->setBackgroundColor(bkclr);
-
-    pView->zoomWindow(AcGePoint2d(0, 0), AcGePoint2d(width, height));
-
-    //Atil::Size size(width, height);
-    //int nBytesPerRow = Atil::DataModel::bytesPerRow(width, Atil::DataModelAttributes::k32);
-    //unsigned long nBufferSize = height * nBytesPerRow;
-
-    //std::vector<char> apCharBuffer(nBufferSize);
-    //std::unique_ptr <Atil::Image> pImage(constructAtilImg(apCharBuffer.data(), nBufferSize, nBytesPerRow, width, height, 32, 0));
+    pOffDevice->update();
+    pView->update();
 
     Atil::RgbModel rgbModel(32);
     Atil::ImagePixel initialColor(rgbModel.pixelType());
-    std::unique_ptr <Atil::Image> pImage(new Atil::Image (Atil::Size(width, height), &rgbModel, initialColor));
+    Atil::Image image(Atil::Size(width, height), &rgbModel, initialColor);
 
-    //
-    pView->getSnapShot(pImage.get(), AcGsDCPoint(0, 0));
-    if (!pImage->isValid())
+    //pOffDevice->getSnapShot?
+    pView->getSnapShot(&image, AcGsDCPoint(0, 0));
+    if (!image.isValid())
         return nullptr;
 
     Atil::Offset upperLeft(0, 0);
-    Atil::Size wholeImage = pImage->size();
-    Atil::ImageContext* imgContext = pImage->createContext(Atil::ImageContext::kRead, wholeImage, upperLeft);
+    Atil::Size wholeImage = image.size();
+    Atil::ImageContext* imgContext = image.createContext(Atil::ImageContext::kWrite, wholeImage, upperLeft);
     Atil::DataModelAttributes::PixelType pixelType = imgContext->getPixelType();
     if (pixelType != Atil::DataModelAttributes::kRgba)
         return nullptr;
@@ -207,7 +167,6 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
         return nullptr;
 
     pView->eraseAll();
-    pOffDevice->eraseAll();
 
     PyObject* _wxobj = wxPyConstructObject(pWxImage, wxT("wxImage"));
     if (_wxobj == nullptr)
