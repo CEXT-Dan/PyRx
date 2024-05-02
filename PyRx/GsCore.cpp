@@ -130,57 +130,58 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
 
     AcGsKernelDescriptor descriptor;
     descriptor.addRequirement(AcGsKernelDescriptor::k3DDrawing);
-
     AcGsGraphicsKernel* pGraphicsKernel = AcGsManager::acquireGraphicsKernel(descriptor);
     if (pGraphicsKernel == nullptr)
         return nullptr;
-    //?
+
     AcGsDevicePtr pOffDevice(gsManager->createAutoCADOffScreenDevice(*pGraphicsKernel));
     pOffDevice->onSize(width, height);
-
     AcGsModelPtr pModel(gsManager->createAutoCADModel(*pGraphicsKernel));
     AcGsViewPtr pView(gsManager->createView(pOffDevice.get()));
     if (!pOffDevice->add(pView.get()))
         return nullptr;
 
-    bool flag = acgsGetViewParameters(cvport(), pView.get());
+    if (bool flag = acgsGetViewParameters(cvport(), pView.get()); flag == false)
+        acutPrintf(_T("\nFailed to copy view parameters: "));
 
 #ifdef PYRXDEBUG
-    auto uv = pView->upVector();
-    acutPrintf(_T("\n(%f,%f,%f)"), uv.x, uv.y, uv.z);
-    auto tg = pView->target();
-    acutPrintf(_T("\n(%f,%f,%f)"), tg.x, tg.y, tg.z);
-    acutPrintf(_T("\n%ls"),AcGeMatrix3dToString(pView->viewingMatrix()).c_str());
+    /* auto uv = pView->upVector();
+     acutPrintf(_T("\n(%f,%f,%f)"), uv.x, uv.y, uv.z);
+     auto tg = pView->target();
+     acutPrintf(_T("\n(%f,%f,%f)"), tg.x, tg.y, tg.z);
+     acutPrintf(_T("\n%ls"),AcGeMatrix3dToString(pView->viewingMatrix()).c_str());*/
 #endif
 
     AcDbBlockTableRecordPointer pBlock(blkid.m_id);
     if (!pView->add(pBlock, pModel.get()))
         return nullptr;
 
+#if defined(_ARXTARGET)
+    auto v = pView->upVector();
+    pView->setView(pView->position(), pView->target(), v.negate(), pView->fieldWidth(), pView->fieldHeight());
+#else
+    pView->setView(pView->position(), pView->target(), pView->upVector(), pView->fieldWidth(), pView->fieldHeight());
+#endif
+
     AcDbExtents ex;
     ex.addBlockExt(pBlock);
     pView->zoomExtents(ex.minPoint(), ex.maxPoint());
 
+#ifdef PYRXDEBUG//TODO: Add this
+    //AcGsColor bkclr;
+    //bkclr.m_blue = 128;
+    //bkclr.m_green = 128;
+    //bkclr.m_red = 128;
+    //pOffDevice->setBackgroundColor(bkclr);
+#endif
+
+    //do all view settings before here;
     pOffDevice->update();
     pView->update();
 
     Atil::RgbModel rgbModel(32);
     Atil::ImagePixel initialColor(rgbModel.pixelType());
     Atil::Image image(Atil::Size(width, height), &rgbModel, initialColor);
-
-#ifdef PYRXDEBUG//TODO: Add this
-    AcGsColor bkclr;
-    bkclr.m_blue = 128;
-    bkclr.m_green = 128;
-    bkclr.m_red = 128;
-    pOffDevice->setBackgroundColor(bkclr);
-#endif
-
-#if defined(_ARXTARGET)
-    auto v = pView->upVector();
-    pView->setView(pView->position(), pView->target(), v.negate(), pView->fieldWidth(), pView->fieldHeight());
-#endif
-
     pView->getSnapShot(&image, AcGsDCPoint(0, 0));
     if (!image.isValid())
         return nullptr;
