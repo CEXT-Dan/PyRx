@@ -38,7 +38,9 @@ struct AcGsViewDeleter
 {
     void operator()(AcGsView* ptr)
     {
+#if !defined (_BRXTARGET240)
         acgsGetGsManager()->destroyView(ptr);
+#endif
     }
 };
 using AcGsViewPtr = std::unique_ptr <AcGsView, AcGsViewDeleter>;
@@ -101,12 +103,29 @@ static int cvport()
     return rb.resval.rint;
 }
 
+#ifdef PYRXDEBUG
+static std::wstring AcGeMatrix3dToString(const AcGeMatrix3d& x)
+{
+    return std::format(L"(({0},{1},{2},{3}),({4},{5},{6},{7}),({8},{9},{10},{11}),({12},{13},{14},{15}))",
+        x.entry[0][0], x.entry[0][1], x.entry[0][2], x.entry[0][3],
+        x.entry[1][0], x.entry[1][1], x.entry[1][2], x.entry[1][3],
+        x.entry[2][0], x.entry[2][1], x.entry[2][2], x.entry[2][3],
+        x.entry[3][0], x.entry[3][1], x.entry[3][2], x.entry[3][3]);
+}
+#endif
+
 PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height)
 {
-#ifdef PYRXDEBUG
+#if defined(_ZRXTARGET)
+    PyThrowBadEs(Acad::eNotImplementedYet);
+    return nullptr;
+#endif
+#if defined(_GRXTARGET)
+    PyThrowBadEs(Acad::eNotImplementedYet);
+    return nullptr;
+#endif
 
     PyAutoLockGIL lock;
-
     AcGsManager* gsManager = acgsGetGsManager();
 
     AcGsKernelDescriptor descriptor;
@@ -115,19 +134,24 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     AcGsGraphicsKernel* pGraphicsKernel = AcGsManager::acquireGraphicsKernel(descriptor);
     if (pGraphicsKernel == nullptr)
         return nullptr;
-
     //?
     AcGsDevicePtr pOffDevice(gsManager->createAutoCADOffScreenDevice(*pGraphicsKernel));
     pOffDevice->onSize(width, height);
 
     AcGsModelPtr pModel(gsManager->createAutoCADModel(*pGraphicsKernel));
     AcGsViewPtr pView(gsManager->createView(pOffDevice.get()));
-
     if (!pOffDevice->add(pView.get()))
         return nullptr;
 
-    int cv = cvport();
-    bool flag = acgsGetViewParameters(cv, pView.get());
+    bool flag = acgsGetViewParameters(cvport(), pView.get());
+
+#ifdef PYRXDEBUG
+    auto uv = pView->upVector();
+    acutPrintf(_T("\n(%f,%f,%f)"), uv.x, uv.y, uv.z);
+    auto tg = pView->target();
+    acutPrintf(_T("\n(%f,%f,%f)"), tg.x, tg.y, tg.z);
+    acutPrintf(_T("\n%ls"),AcGeMatrix3dToString(pView->viewingMatrix()).c_str());
+#endif
 
     AcDbBlockTableRecordPointer pBlock(blkid.m_id);
     if (!pView->add(pBlock, pModel.get()))
@@ -144,7 +168,19 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     Atil::ImagePixel initialColor(rgbModel.pixelType());
     Atil::Image image(Atil::Size(width, height), &rgbModel, initialColor);
 
-    //pOffDevice->getSnapShot?
+#ifdef PYRXDEBUG//TODO: Add this
+    AcGsColor bkclr;
+    bkclr.m_blue = 128;
+    bkclr.m_green = 128;
+    bkclr.m_red = 128;
+    pOffDevice->setBackgroundColor(bkclr);
+#endif
+
+#if defined(_ARXTARGET)
+    auto v = pView->upVector();
+    pView->setView(pView->position(), pView->target(), v.negate(), pView->fieldWidth(), pView->fieldHeight());
+#endif
+
     pView->getSnapShot(&image, AcGsDCPoint(0, 0));
     if (!image.isValid())
         return nullptr;
@@ -170,9 +206,9 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     if (!pWxImage->IsOk())
         return nullptr;
 
-    //This is wrong
-    //*pWxImage = pWxImage->Mirror();
-    //*pWxImage = pWxImage->Rotate180();
+#if defined(_ARXTARGET)
+     *pWxImage = pWxImage->Mirror();
+#endif // _ARXTARGET
 
     pView->eraseAll();
 
@@ -180,8 +216,4 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     if (_wxobj == nullptr)
         throw PyNullObject();
     return _wxobj;
-#else
-    PyThrowBadEs(Acad::eNotImplementedYet);
-    return nullptr;
-#endif
 }
