@@ -61,9 +61,13 @@ void makeGsCoreWrapper()
         .def("getCurrentAcGsView", &GsCore::getCurrentAcGsView, DS.SARGS({ "vpNum : int" })).staticmethod("getCurrentAcGsView")
         .def("getCurrent3DAcGsView", &GsCore::getCurrent3DAcGsView, DS.SARGS({ "vpNum : int" })).staticmethod("getCurrent3DAcGsView")
         .def("getViewParameters", &GsCore::getViewParameters, DS.SARGS({ "vpNum : int", "view : PyGs.View" })).staticmethod("getViewParameters")
+
         .def("setViewParameters", &GsCore::setViewParameters1)
-        .def("setViewParameters", &GsCore::setViewParameters2, DS.SARGS({ "vpNum : int", "view : PyGs.View", "bRegenRequired: bool","bRescaleRequired: bool","bSyncRequired: bool=False" })).staticmethod("setViewParameters")
-        .def("getBlockImage", &GsCore::getBlockImage, DS.SARGS({ "blkid: PyDb.ObjectId" , "sx: int", "sy: int" })).staticmethod("getBlockImage")
+        .def("setViewParameters", &GsCore::setViewParameters2,
+            DS.SARGS({ "vpNum : int", "view : PyGs.View", "bRegen: bool","bRescale: bool","bSync: bool=False" })).staticmethod("setViewParameters")
+
+        .def("getBlockImage", &GsCore::getBlockImage,
+            DS.SARGS({ "blkid: PyDb.ObjectId" , "sx: int", "sy: int","rgb: list[int]=None" }), arg("rgb") = boost::python::object()).staticmethod("getBlockImage")
         ;
 }
 
@@ -103,18 +107,7 @@ static int cvport()
     return rb.resval.rint;
 }
 
-#ifdef PYRXDEBUG
-static std::wstring AcGeMatrix3dToString(const AcGeMatrix3d& x)
-{
-    return std::format(L"(({0},{1},{2},{3}),({4},{5},{6},{7}),({8},{9},{10},{11}),({12},{13},{14},{15}))",
-        x.entry[0][0], x.entry[0][1], x.entry[0][2], x.entry[0][3],
-        x.entry[1][0], x.entry[1][1], x.entry[1][2], x.entry[1][3],
-        x.entry[2][0], x.entry[2][1], x.entry[2][2], x.entry[2][3],
-        x.entry[3][0], x.entry[3][1], x.entry[3][2], x.entry[3][3]);
-}
-#endif
-
-PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height)
+PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height, boost::python::object& rgb)
 {
 #if defined(_ZRXTARGET)
     PyThrowBadEs(Acad::eNotImplementedYet);
@@ -135,22 +128,14 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
         return nullptr;
 
     AcGsDevicePtr pOffDevice(gsManager->createAutoCADOffScreenDevice(*pGraphicsKernel));
-    pOffDevice->onSize(width, height);
     AcGsModelPtr pModel(gsManager->createAutoCADModel(*pGraphicsKernel));
     AcGsViewPtr pView(gsManager->createView(pOffDevice.get()));
+    pOffDevice->onSize(width, height);
     if (!pOffDevice->add(pView.get()))
         return nullptr;
 
     if (bool flag = acgsGetViewParameters(cvport(), pView.get()); flag == false)
         acutPrintf(_T("\nFailed to copy view parameters: "));
-
-#ifdef PYRXDEBUG
-    /* auto uv = pView->upVector();
-     acutPrintf(_T("\n(%f,%f,%f)"), uv.x, uv.y, uv.z);
-     auto tg = pView->target();
-     acutPrintf(_T("\n(%f,%f,%f)"), tg.x, tg.y, tg.z);
-     acutPrintf(_T("\n%ls"),AcGeMatrix3dToString(pView->viewingMatrix()).c_str());*/
-#endif
 
     AcDbBlockTableRecordPointer pBlock(blkid.m_id);
     if (!pView->add(pBlock, pModel.get()))
@@ -167,13 +152,18 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     ex.addBlockExt(pBlock);
     pView->zoomExtents(ex.minPoint(), ex.maxPoint());
 
-#ifdef PYRXDEBUG//TODO: Add this
-    //AcGsColor bkclr;
-    //bkclr.m_blue = 128;
-    //bkclr.m_green = 128;
-    //bkclr.m_red = 128;
-    //pOffDevice->setBackgroundColor(bkclr);
-#endif
+    if (!rgb.is_none())
+    {
+        auto _rgb = PyListToInt32Array(rgb);
+        if (_rgb.length() == 3)
+        {
+            AcGsColor bkclr;
+            bkclr.m_blue = _rgb[0];
+            bkclr.m_green = _rgb[1];
+            bkclr.m_red = _rgb[2];
+            pOffDevice->setBackgroundColor(bkclr);
+        }
+    }
 
     //do all view settings before here;
     pOffDevice->update();
@@ -208,12 +198,12 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
         return nullptr;
 
 #if defined(_ARXTARGET)
-     *pWxImage = pWxImage->Mirror();
+    *pWxImage = pWxImage->Mirror();
 #endif // _ARXTARGET
 
     pView->eraseAll();
 
-    PyObject* _wxobj = wxPyConstructObject(pWxImage, wxT("wxImage"));
+    PyObject* _wxobj = wxPyConstructObject(pWxImage, wxT("wxImage"), true);
     if (_wxobj == nullptr)
         throw PyNullObject();
     return _wxobj;
