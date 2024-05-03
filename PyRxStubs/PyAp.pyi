@@ -111,11 +111,8 @@ class Application(object):
     ...
 
 class AutoDocLock(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -721,11 +718,8 @@ class DocLockMode(object):
     ...
 
 class DocManager(PyRx.RxObject):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
     def activateDocument (self, doc: PyAp.Document, bPassScript: bool = False)-> None :
       '''This function will switch from the current document to another document. The function will NOT suspend execution of the code running under the application context. The caller is suspended if it is a normal or nomadic context. If the bPassScript is Adesk::kTrue, then the script that has called the command that is performing a document change will continue to run. This argument allows a script to continue running across documents.'''
