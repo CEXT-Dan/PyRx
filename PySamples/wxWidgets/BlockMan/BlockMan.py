@@ -16,6 +16,7 @@ class DocReactor(Ap.DocManagerReactor):
         if not dwgdoc.isNullObj():
             self.panel.documentBecameCurrent(dwgdoc)
 
+
 class PalettePanel(wx.Panel):
     def __init__(self):
         super().__init__()
@@ -74,8 +75,16 @@ class PalettePanel(wx.Panel):
     def OnInitListCtrl(self):
         self.listctrl.InsertColumn(0, "Item", width=245)
 
-    def OnDragInit(self, event):
-        print("drag")
+    def OnDragInit(self, event: wx.ListEvent):
+        lock = Ap.AutoDocLock()
+        item = event.GetText()
+        db = self.dwgdoc.database()
+        bt = Db.BlockTable(db.blockTableId())
+        id = bt.getAt(item)
+        pos = Ed.Core.getMousePositionUCS()
+        ref = Db.BlockReference(pos,id)
+        jig = Blockig(ref,pos,db)
+        jig.doit()
 
     def OnItemSelected(self, event: wx.ListEvent):
         lock = Ap.AutoDocLock()
@@ -109,10 +118,37 @@ class PalettePanel(wx.Panel):
                 continue
             if not name in imdict:
                 imdict[name] = None
+#jig
+class Blockig(Ed.Jig):
+    def __init__(self, blockRef, basepoint, db):
+        Ed.Jig.__init__(self, blockRef)
+        self.ref : Db.BlockReference = blockRef
+        self.curPoint: Ge.Point3d = basepoint
+        self.db : Db.Database = db
 
+    def sampler(self):
+        self.setUserInputControls
+        (
+           Ed.UserInputControls(
+              Ed.UserInputControls.kAccept3dCoordinates | 
+              Ed.UserInputControls.kNullResponseAccepted)
+        )
+        point_result_tuple = self.acquirePoint(self.curPoint)
+        self.curPoint = point_result_tuple[1]
+        return point_result_tuple[0]
 
+    def update(self):
+        self.ref.setPosition(self.curPoint)
+        return True
+    
+    def doit(self):
+        self.setDispPrompt("\nPick Point: ")
+        if self.drag() != Ed.DragStatus.kNormal:
+            print('oops')
+            return
+        self.db.addToCurrentspace(self.ref)
+        
 palette = Ap.PaletteSet("BlockPalette")
-
 
 def createPalette() -> None:
     try:
