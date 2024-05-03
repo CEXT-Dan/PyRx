@@ -6,7 +6,6 @@ from wx import xrc
 
 print("added command wxblockman")
 
-
 class DocReactor(Ap.DocManagerReactor):
     def __init__(self, PalettePanel):
         Ap.DocManagerReactor.__init__(self)
@@ -28,7 +27,7 @@ class PalettePanel(wx.Panel):
 
     def documentBecameCurrent(self, dwgdoc):
         self.dwgdoc = dwgdoc
-        self.validateDictForDoc(dwgdoc)
+        self.validateimageDictForDoc(dwgdoc)
         self.listctrl.DeleteAllItems()
         d: dict = self.findImageDictForDoc(dwgdoc)
         for idx, key in enumerate(d.keys()):
@@ -57,7 +56,7 @@ class PalettePanel(wx.Panel):
         self.Bind(wx.EVT_SIZE, self.OnSize)
         self.Bind(wx.EVT_LIST_BEGIN_DRAG, self.OnDragInit, self.listctrl)
         self.Bind(wx.EVT_LIST_ITEM_SELECTED, self.OnItemSelected, self.listctrl)
-        
+
         self.documentBecameCurrent(Ap.curDoc())
         self.set_dark_mode(self)
 
@@ -86,7 +85,7 @@ class PalettePanel(wx.Panel):
             db = self.dwgdoc.database()
             bt = Db.BlockTable(db.blockTableId())
             id = bt.getAt(item)
-            imdict[item] = Gs.Core.getBlockImage(id, 256, 144, 1.0, [49, 56, 66])
+            imdict[item] = Gs.Core.getBlockImage(id, 252, 140, 1.0, [49, 56, 66])
         img: wx.Image = imdict[item]
         self.imagectrl.SetBitmap(img.ConvertToBitmap())
 
@@ -95,7 +94,7 @@ class PalettePanel(wx.Panel):
             self.imageDict[dwgdoc] = {}
         return self.imageDict[dwgdoc]
 
-    def validateDictForDoc(self, dwgdoc: Ap.Document):
+    def validateimageDictForDoc(self, dwgdoc: Ap.Document):
         lock = Ap.AutoDocLock()
         imdict = self.findImageDictForDoc(dwgdoc)
         db = dwgdoc.database()
@@ -111,7 +110,9 @@ class PalettePanel(wx.Panel):
             if not name in imdict:
                 imdict[name] = None
 
+
 palette = Ap.PaletteSet("BlockPalette")
+
 
 def createPalette() -> None:
     try:
