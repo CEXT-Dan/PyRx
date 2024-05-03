@@ -67,7 +67,7 @@ void makeGsCoreWrapper()
             DS.SARGS({ "vpNum : int", "view : PyGs.View", "bRegen: bool","bRescale: bool","bSync: bool=False" })).staticmethod("setViewParameters")
 
         .def("getBlockImage", &GsCore::getBlockImage,
-            DS.SARGS({ "blkid: PyDb.ObjectId" , "sx: int", "sy: int","bkrgb: list[int]=None" }), arg("bkrgb") = boost::python::object()).staticmethod("getBlockImage")
+            DS.SARGS({ "blkid: PyDb.ObjectId" , "sx: int", "sy: int", "zoomFactor: float", "bkrgb: list[int]=None" }), arg("bkrgb") = boost::python::object()).staticmethod("getBlockImage")
         ;
 }
 
@@ -107,7 +107,23 @@ static int cvport()
     return rb.resval.rint;
 }
 
-PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height, boost::python::object& rgb)
+static void parseBackgroundColor(AcGsDevice* pDevice, boost::python::object& rgb)
+{
+    if (pDevice != nullptr && !rgb.is_none())
+    {
+        auto _rgb = PyListToInt32Array(rgb);
+        if (_rgb.length() == 3)
+        {
+            AcGsColor bkclr;
+            bkclr.m_red = _rgb[0];
+            bkclr.m_green = _rgb[1];
+            bkclr.m_blue = _rgb[2];
+            pDevice->setBackgroundColor(bkclr);
+        }
+    }
+}
+
+PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height, double zf, boost::python::object& rgb)
 {
 #if defined(_ZRXTARGET)
     PyThrowBadEs(Acad::eNotImplementedYet);
@@ -137,6 +153,8 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     if (bool flag = acgsGetViewParameters(cvport(), pView.get()); flag == false)
         acutPrintf(_T("\nFailed to copy view parameters: "));
 
+    parseBackgroundColor(pOffDevice.get(), rgb);
+
     AcDbBlockTableRecordPointer pBlock(blkid.m_id);
     if (!pView->add(pBlock, pModel.get()))
         return nullptr;
@@ -147,23 +165,10 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
 #else
     pView->setView(pView->position(), pView->target(), pView->upVector(), pView->fieldWidth(), pView->fieldHeight());
 #endif
-
     AcDbExtents ex;
     ex.addBlockExt(pBlock);
     pView->zoomExtents(ex.minPoint(), ex.maxPoint());
-
-    if (!rgb.is_none())
-    {
-        auto _rgb = PyListToInt32Array(rgb);
-        if (_rgb.length() == 3)
-        {
-            AcGsColor bkclr;
-            bkclr.m_red = _rgb[0];
-            bkclr.m_green = _rgb[1];
-            bkclr.m_blue = _rgb[2];
-            pOffDevice->setBackgroundColor(bkclr);
-        }
-    }
+    pView->zoom(zf);
 
     //do all view settings before here;
     pOffDevice->update();
@@ -178,7 +183,7 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
 
     Atil::Offset upperLeft(0, 0);
     Atil::Size wholeImage = image.size();
-    Atil::ImageContext* imgContext = image.createContext(Atil::ImageContext::kWrite, wholeImage, upperLeft);
+    Atil::ImageContext* imgContext = image.createContext(Atil::ImageContext::kRead, wholeImage, upperLeft);
     Atil::DataModelAttributes::PixelType pixelType = imgContext->getPixelType();
     if (pixelType != Atil::DataModelAttributes::kRgba)
         return nullptr;
