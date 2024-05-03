@@ -17,7 +17,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def getBlockImage (blkid: PyDb.ObjectId,sx: int,sy: int)-> object :
+    def getBlockImage (blkid: PyDb.ObjectId,sx: int,sy: int,zoomFactor: float,bkrgb: list[int]=None)-> object :
       '''                             '''
     ...
 
@@ -37,7 +37,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def setViewParameters (vpNum : int,view : PyGs.View,bRegenRequired: bool,bRescaleRequired: bool,bSyncRequired: bool=False)-> bool :
+    def setViewParameters (vpNum : int,view : PyGs.View,bRegen: bool,bRescale: bool,bSync: bool=False)-> bool :
       '''                             '''
     ...
 
