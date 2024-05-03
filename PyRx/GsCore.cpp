@@ -67,7 +67,7 @@ void makeGsCoreWrapper()
             DS.SARGS({ "vpNum : int", "view : PyGs.View", "bRegen: bool","bRescale: bool","bSync: bool=False" })).staticmethod("setViewParameters")
 
         .def("getBlockImage", &GsCore::getBlockImage,
-            DS.SARGS({ "blkid: PyDb.ObjectId" , "sx: int", "sy: int","rgb: list[int]=None" }), arg("rgb") = boost::python::object()).staticmethod("getBlockImage")
+            DS.SARGS({ "blkid: PyDb.ObjectId" , "sx: int", "sy: int","bkrgb: list[int]=None" }), arg("bkrgb") = boost::python::object()).staticmethod("getBlockImage")
         ;
 }
 
@@ -158,9 +158,9 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
         if (_rgb.length() == 3)
         {
             AcGsColor bkclr;
-            bkclr.m_blue = _rgb[0];
+            bkclr.m_red = _rgb[0];
             bkclr.m_green = _rgb[1];
-            bkclr.m_red = _rgb[2];
+            bkclr.m_blue = _rgb[2];
             pOffDevice->setBackgroundColor(bkclr);
         }
     }
