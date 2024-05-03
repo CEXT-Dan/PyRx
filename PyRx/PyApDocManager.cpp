@@ -391,6 +391,7 @@ void makePyApDocManagerWrapper()
 {
     PyDocString DS("DocManager");
     class_<PyApDocManager, bases<PyRxObject>>("DocManager")
+        .def(init<>(DS.ARGS()))
         .def("curDocument", &PyApDocManager::curDocument, DS.ARGS(107))
         .def("mdiActiveDocument", &PyApDocManager::mdiActiveDocument, DS.ARGS(121))
         .def("isApplicationContext", &PyApDocManager::isApplicationContext, DS.ARGS(118))
@@ -700,6 +701,7 @@ void makePyAutoDocLockWrapper()
 {
     PyDocString DS("AutoDocLock");
     class_<PyAutoDocLock>("AutoDocLock")
+        .def(init<>(DS.ARGS()))
         .def("className", &PyAutoDocLock::className, DS.SARGS()).staticmethod("className")
         ;
 }

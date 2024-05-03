@@ -79,6 +79,7 @@ class PalettePanel(wx.Panel):
         print("drag")
 
     def OnItemSelected(self, event: wx.ListEvent):
+        lock = Ap.AutoDocLock()
         item = event.GetText()
         imdict = self.findImageDictForDoc(self.dwgdoc)
         if imdict[item] == None:
@@ -95,6 +96,7 @@ class PalettePanel(wx.Panel):
         return self.imageDict[dwgdoc]
 
     def validateDictForDoc(self, dwgdoc: Ap.Document):
+        lock = Ap.AutoDocLock()
         imdict = self.findImageDictForDoc(dwgdoc)
         db = dwgdoc.database()
         bt = Db.BlockTable(db.blockTableId())
