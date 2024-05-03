@@ -6,6 +6,7 @@ from wx import xrc
 
 print("added command wxblockman")
 
+#create a docment reactor to notify the palette of document switching 
 class DocReactor(Ap.DocManagerReactor):
     def __init__(self, PalettePanel):
         Ap.DocManagerReactor.__init__(self)
@@ -17,6 +18,7 @@ class DocReactor(Ap.DocManagerReactor):
             self.panel.documentBecameCurrent(dwgdoc)
 
 
+#the palette set holds a collection of panels, this os one
 class PalettePanel(wx.Panel):
     def __init__(self):
         super().__init__()
@@ -34,11 +36,12 @@ class PalettePanel(wx.Panel):
         for idx, key in enumerate(d.keys()):
             self.listctrl.InsertItem(idx, key)
 
+    #import the .XRC file and init the controls 
     def OnShow(self, event):
         res = Ap.ResourceOverride()
         wx.ToolTip.Enable(True)
         self.res = xrc.XmlResource("./BlockMan.xrc")
-        self.childpanel = self.res.LoadPanel(self, "ID_BLOCKMAN")
+        self.childpanel = self.res.LoadPanel(self, "wxID_BLOCKMAN")
         if not self.childpanel:
             raise Exception("failed to find xrc file")
 
@@ -61,6 +64,7 @@ class PalettePanel(wx.Panel):
         self.documentBecameCurrent(Ap.curDoc())
         self.set_dark_mode(self)
 
+    # some colors I thought were cool
     def set_dark_mode(self, control):
         bkclr = wx.Colour(palette.paletteBackgroundColor())
         fgcolor = wx.Colour(palette.paletteTabTextColor())
@@ -75,6 +79,7 @@ class PalettePanel(wx.Panel):
     def OnInitListCtrl(self):
         self.listctrl.InsertColumn(0, "Item", width=245)
 
+    #create a new ref and pass it to the jig
     def OnDragInit(self, event: wx.ListEvent):
         lock = Ap.AutoDocLock()
         item = event.GetText()
@@ -86,6 +91,7 @@ class PalettePanel(wx.Panel):
         jig = Blockig(ref,pos,db)
         jig.doit()
 
+    #search for an image in the cache, if none, make one
     def OnItemSelected(self, event: wx.ListEvent):
         lock = Ap.AutoDocLock()
         item = event.GetText()

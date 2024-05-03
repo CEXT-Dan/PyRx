@@ -112,7 +112,7 @@ class Application(object):
 
 class AutoDocLock(object):
     def __init__ (self)-> None :
-      '''                             '''
+      '''This function is used for locking documents in order to access their resources. Resources include all AcDbDatabases objects associated with a document, and AcDbObject objects in those databases, and all AcDbDatabase resident system variables. It also includes all document based system variables, and the Transaction Manager associated with a document. The document does not need to be locked to open an AcDbObject in AcDb::kForRead, nor to get system variables.Applications should normally never have to lock or unlock the current document. Commands registered with addCommand() or aceddefun() will have the current document locked before starting, and unlocked after ending. This can be controlled using the addCommand() function tags.'''
     ...
 
     @staticmethod
@@ -719,7 +719,7 @@ class DocLockMode(object):
 
 class DocManager(PyRx.RxObject):
     def __init__ (self)-> None :
-      '''                             '''
+      '''The AcApDocumentManager object is the container for all the document objects (there is one document object for each drawing that is open and being edited). There is only one instance, which can be obtained using the macro named acDocManager.'''
     ...
     def activateDocument (self, doc: PyAp.Document, bPassScript: bool = False)-> None :
       '''This function will switch from the current document to another document. The function will NOT suspend execution of the code running under the application context. The caller is suspended if it is a normal or nomadic context. If the bPassScript is Adesk::kTrue, then the script that has called the command that is performing a document change will continue to run. This argument allows a script to continue running across documents.'''
@@ -742,7 +742,7 @@ class DocManager(PyRx.RxObject):
 
     @staticmethod
     def autoLock ()-> PyAp.AutoDocLock :
-      '''                             '''
+      '''This function is used for locking documents in order to access their resources. Resources include all AcDbDatabases objects associated with a document, and AcDbObject objects in those databases, and all AcDbDatabase resident system variables. It also includes all document based system variables, and the Transaction Manager associated with a document. The document does not need to be locked to open an AcDbObject in AcDb::kForRead, nor to get system variables.Applications should normally never have to lock or unlock the current document. Commands registered with addCommand() or aceddefun() will have the current document locked before starting, and unlocked after ending. This can be controlled using the addCommand() function tags.'''
     ...
     def beginExecuteInApplicationContext (self, func: Any, data: Any)-> PyDb.ErrorStatus :
       '''Allows anonymous code execution in command context (same as registering a command and calling sendStringToExecute to invoke it.). The command will be executed in the context of the MDI active document. The callback function will be called when the system has a chance to execute a command. This, at minimum, means that the caller of beginExecuteInCommandContext (i.e. your code) must return to its caller. All outstanding commands will be cancelled before the callback function is invoked.'''
@@ -858,11 +858,8 @@ class DocManager(PyRx.RxObject):
     ...
 
 class DocManagerReactor(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''This class provides notification for a variety of document management events.'''
     ...
     def addReactor (self)-> None :
       '''                             '''
@@ -1509,11 +1506,8 @@ class PaletteSet(object):
     ...
 
 class ResourceOverride(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''Use an instance of this class to switch between default and module's resources. When the object is constructed, a new resource provider will be switched in. Upon destruction the original resource provider will be restored. For example:void MyFunc()    {        CAcModuleResourceOverride myResources;        .        .    }Upon entry to this function, the module's resources will be selected. When the function returns, the default resources will be restored. A resource override can be used in any of three ways:Use the default constructor (no arguments) to switch to the module's resources. The default resources will be restored by the destructor. The module/default resources are those maintained by the DLL's CAcExtensionModule.Pass NULL (or 0) to the constructor. The DLL's resources will be selected and the resources that were in effect will be restored when the override object is destroyed.Pass a non-NULL handle to the constructor. The associated module's resources will be selected and the resources that were in effect will be restored when the override object is destroyed.'''
     ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
