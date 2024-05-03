@@ -238,7 +238,9 @@ boost::python::list PyApApplication::getLoadedModuleNames()
 //makeAPyApResourceOverrideWrapper
 void makePyApResourceOverrideWrapper()
 {
+    PyDocString DS("ResourceOverride");
     class_<PyApResourceOverride>("ResourceOverride")
+        .def(init<>(DS.ARGS(16801)))
         .def("className", &PyApApplication::className).staticmethod("className")
         ;
 }

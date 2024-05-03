@@ -11,6 +11,7 @@ void makePyApDocManagerReactorWrapper()
 {
     PyDocString DS("DocManagerReactor");
     class_<PyApDocManagerReactor>("DocManagerReactor")
+        .def(init<>(DS.ARGS(78)))
         .def("documentCreateStarted", &PyApDocManagerReactor::documentCreateStartedWr, DS.ARGS({ "val : Document" }))
         .def("documentCreated", &PyApDocManagerReactor::documentCreatedWr, DS.ARGS({ "val : Document" }))
         .def("documentToBeDestroyed", &PyApDocManagerReactor::documentToBeDestroyedWr, DS.ARGS({ "val : Document" }))
@@ -391,7 +392,7 @@ void makePyApDocManagerWrapper()
 {
     PyDocString DS("DocManager");
     class_<PyApDocManager, bases<PyRxObject>>("DocManager")
-        .def(init<>(DS.ARGS()))
+        .def(init<>(DS.ARGS(77)))
         .def("curDocument", &PyApDocManager::curDocument, DS.ARGS(107))
         .def("mdiActiveDocument", &PyApDocManager::mdiActiveDocument, DS.ARGS(121))
         .def("isApplicationContext", &PyApDocManager::isApplicationContext, DS.ARGS(118))
@@ -428,7 +429,7 @@ void makePyApDocManagerWrapper()
         .def("executeInApplicationContext", &PyApDocManager::executeInApplicationContext, DS.ARGS({ "func: Any","data: Any" }, 115))
         .def("beginExecuteInCommandContext", &PyApDocManager::beginExecuteInCommandContext, DS.ARGS({ "func: Any","data: Any" }, 105))
         .def("beginExecuteInApplicationContext", &PyApDocManager::beginExecuteInApplicationContext, DS.ARGS({ "func: Any","data: Any" }, 104))
-        .def("autoLock", &PyApDocManager::autoLock, DS.SARGS()).staticmethod("autoLock")
+        .def("autoLock", &PyApDocManager::autoLock, DS.SARGS(120)).staticmethod("autoLock")
         .def("className", &PyApDocManager::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -701,7 +702,7 @@ void makePyAutoDocLockWrapper()
 {
     PyDocString DS("AutoDocLock");
     class_<PyAutoDocLock>("AutoDocLock")
-        .def(init<>(DS.ARGS()))
+        .def(init<>(DS.ARGS(120)))
         .def("className", &PyAutoDocLock::className, DS.SARGS()).staticmethod("className")
         ;
 }
