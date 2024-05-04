@@ -107,7 +107,7 @@ static int cvport()
     return rb.resval.rint;
 }
 
-static void parseBackgroundColor(AcGsDevice* pDevice, boost::python::object& rgb)
+static void getBackgroundColorFromPy(AcGsDevice* pDevice, boost::python::object& rgb)
 {
     if (pDevice != nullptr && !rgb.is_none())
     {
@@ -156,7 +156,6 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     throw PyNotimplementedByHost();
     return nullptr;
 #endif
-
     PyAutoLockGIL lock;
     AcGsManager* gsManager = acgsGetGsManager();
 
@@ -166,6 +165,7 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     if (pGraphicsKernel == nullptr)
         return nullptr;
 
+    //No performance change from getOffScreenDevice, getOffScreenDevice is funky with BRX
     AcGsDevicePtr pOffDevice(gsManager->createAutoCADOffScreenDevice(*pGraphicsKernel));
     AcGsModelPtr pModel(gsManager->createAutoCADModel(*pGraphicsKernel));
     AcGsViewPtr pView(gsManager->createView(pOffDevice.get()));
@@ -176,8 +176,7 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     if (bool flag = acgsGetViewParameters(cvport(), pView.get()); flag == false)
         acutPrintf(_T("\nFailed to copy view parameters: "));
 
-    parseBackgroundColor(pOffDevice.get(), rgb);
-
+    getBackgroundColorFromPy(pOffDevice.get(), rgb);
     AcDbBlockTableRecordPointer pBlock(blkid.m_id);
     if (!pView->add(pBlock, pModel.get()))
         return nullptr;
@@ -208,15 +207,14 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     if (pixelType != Atil::DataModelAttributes::kRgba)
         return nullptr;
 
-    //I know, I'll work on this later
+    //Slow, but works across all platforms ARX and BRX have different data, alpha channel.?
     wxImage* pWxImage = new wxImage(wxSize(wholeImage.width, wholeImage.height));
     for (int x = 0; x < wholeImage.width; ++x)
     {
         for (int y = 0; y < wholeImage.height; ++y)
         {
             Atil::RgbColor pix(imgContext->get32(x, y));
-            const auto& rgba = pix.rgba;
-            pWxImage->SetRGB(x, y, rgba.red, rgba.green, rgba.blue);
+            pWxImage->SetRGB(x, y, pix.rgba.red, pix.rgba.green, pix.rgba.blue);
         }
     }
     if (!pWxImage->IsOk())
@@ -227,9 +225,6 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
 #endif // _ARXTARGET
 
     pView->eraseAll();
-
-    PyObject* _wxobj = wxPyConstructObject(pWxImage, wxT("wxImage"), true);
-    if (_wxobj == nullptr)
-        throw PyNullObject();
-    return _wxobj;
+    //Python becomes the owner, tested : )
+    return wxPyConstructObject(pWxImage, wxT("wxImage"), true);
 }

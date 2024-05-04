@@ -67,7 +67,7 @@ public:
     void        rollUp();
     bool        removePalette(int nPaletteIndex);
     int         getPaletteCount();
-    PyObject*   getFullRect();//TODO test:
+    PyObject*   getFullRect();
     bool        rolledUp();
     CAdUiPaletteSet::AdUiTitleBarLocation titleBarLocation();
     void        setTitleBarLocation(CAdUiPaletteSet::AdUiTitleBarLocation loc);
