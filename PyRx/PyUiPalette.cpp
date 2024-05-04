@@ -32,7 +32,7 @@ PyCAdUiPaletteSet* PyCAdUiPaletteSetImpl::bckptr(const std::source_location& src
 {
     if (m_bckPtr == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return m_bckPtr;
 }
 
@@ -95,8 +95,12 @@ PyCAdUiPaletteSet::PyCAdUiPaletteSet(const std::string& name)
 #if defined(_GRXTARGET) && (_GRXTARGET == 240)
     return;
 #endif
+#if defined(_BRXTARGET) //SR176835
+    m_name = utf8_to_wstr(name).c_str();
+    impObj()->SetName(m_name);
+#else
     impObj()->SetName(utf8_to_wstr(name).c_str());
-
+#endif
 #ifdef NEVER  //TODO, test if this is the case!
     GUID id;
     HRESULT hr = CoCreateGuid(&id);
@@ -111,8 +115,12 @@ PyCAdUiPaletteSet::PyCAdUiPaletteSet(const std::string& name, const std::string&
 #if defined(_GRXTARGET) && (_GRXTARGET == 240)
     return;
 #endif
+#if defined(_BRXTARGET) //SR176835
+    m_name = utf8_to_wstr(name).c_str();
+    impObj()->SetName(m_name);
+#else
     impObj()->SetName(utf8_to_wstr(name).c_str());
-
+#endif
     GUID id;
     CString sguid = utf8_to_wstr(guid).c_str();
     HRESULT hr = CLSIDFromString(sguid, (LPCLSID)&id);
@@ -155,6 +163,9 @@ bool PyCAdUiPaletteSet::create()
     );
     impObj()->EnableDocking(CBRS_ALIGN_LEFT | CBRS_ALIGN_RIGHT);
     createChildren();
+#if defined(_BRXTARGET) //SR176835
+    impObj()->SetName(m_name);
+#endif
     m_created = true;
     return m_created;
 }
@@ -397,7 +408,7 @@ COLORREF PyCAdUiPaletteSet::paletteBackgroundColor() const
     auto theme = impObj()->GetTheme();
     if (theme == nullptr) [[unlikely]] {
         throw PyNullObject();
-    }
+        }
     return theme->GetColor(kPaletteBackground);
 #endif
 }
@@ -410,7 +421,7 @@ COLORREF PyCAdUiPaletteSet::paletteTabTextColor() const
     auto theme = impObj()->GetTheme();
     if (theme == nullptr) [[unlikely]] {
         throw PyNullObject();
-    }
+        }
     return theme->GetColor(kPaletteTabText);
 #endif
 }
@@ -419,7 +430,7 @@ PyCAdUiPaletteSetImpl* PyCAdUiPaletteSet::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<PyCAdUiPaletteSetImpl*>(m_pyImp.get());
 }
 
@@ -499,7 +510,7 @@ PyCAdUiPalette* PyCAdUiPaletteImpl::bckptr(const std::source_location& src /*= s
 {
     if (m_bckPtr == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return m_bckPtr;
 }
 
@@ -521,7 +532,7 @@ PyCAdUiPaletteImpl* PyCAdUiPalette::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<PyCAdUiPaletteImpl*>(m_pyImp.get());
 }
 
