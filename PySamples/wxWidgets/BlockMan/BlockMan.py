@@ -153,6 +153,7 @@ class Blockig(Ed.Jig):
             print('oops')
             return
         self.db.addToCurrentspace(self.ref)
+        self.ref.close()
         
 palette = Ap.PaletteSet("BlockPalette")
 
