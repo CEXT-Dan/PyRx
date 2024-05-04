@@ -182,14 +182,12 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     if (!pView->add(pBlock, pModel.get()))
         return nullptr;
 
-    AcDbExtents ex;
 #if defined(_ARXTARGET)
     auto v = pView->upVector();
     pView->setView(pView->position(), pView->target(), v.negate(), pView->fieldWidth(), pView->fieldHeight());
-    ex = calcBlockExtents(*pBlock);
-#else
-    ex.addBlockExt(pBlock);
 #endif
+    AcDbExtents ex;
+    ex = calcBlockExtents(*pBlock);
     pView->zoomExtents(ex.minPoint(), ex.maxPoint());
     pView->zoom(zf);
 
