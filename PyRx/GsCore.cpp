@@ -123,6 +123,29 @@ static void parseBackgroundColor(AcGsDevice* pDevice, boost::python::object& rgb
     }
 }
 
+static AcDbExtents calcBlockExtents(AcDbBlockTableRecord& rec)
+{
+    AcDbExtents ex;
+    auto [es, iter] = makeBlockTableRecordIterator(rec);
+    if (es != eOk)
+    {
+        ex.addBlockExt(&rec);
+        return ex;
+    }
+    AcDbObjectId id;
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        if (iter->getEntityId(id) == eOk)
+        {
+            AcDbExtents subex;
+            AcDbEntityPointer pEnt(id);
+            if (pEnt->getGeomExtents(subex) == eOk)
+                ex.addExt(subex);
+        }
+    }
+    return ex;
+}
+
 PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height, double zf, boost::python::object& rgb)
 {
 #if defined(_ZRXTARGET)
@@ -159,14 +182,14 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     if (!pView->add(pBlock, pModel.get()))
         return nullptr;
 
+    AcDbExtents ex;
 #if defined(_ARXTARGET)
     auto v = pView->upVector();
     pView->setView(pView->position(), pView->target(), v.negate(), pView->fieldWidth(), pView->fieldHeight());
+    ex = calcBlockExtents(*pBlock);
 #else
-    pView->setView(pView->position(), pView->target(), pView->upVector(), pView->fieldWidth(), pView->fieldHeight());
-#endif
-    AcDbExtents ex;
     ex.addBlockExt(pBlock);
+#endif
     pView->zoomExtents(ex.minPoint(), ex.maxPoint());
     pView->zoom(zf);
 
