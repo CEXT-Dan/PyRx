@@ -88,6 +88,7 @@ void makePyCAdUiPaletteSetWrapper()
         ;
 }
 
+
 PyCAdUiPaletteSet::PyCAdUiPaletteSet(const std::string& name)
 {
     CAcModuleResourceOverride resourceOverride;
@@ -375,8 +376,8 @@ PyObject* PyCAdUiPaletteSet::getFullRect()
     PyAutoLockGIL lock;
     CRect rect;
     impObj()->GetFullRect(rect);
-    wxRect _wxRect(rect.left, rect.top, rect.right, rect.bottom);
-    return wxPyConstructObject(&_wxRect, wxT("wxRect"));
+    wxRect *_wxRect = new wxRect(rect.left, rect.top, rect.right, rect.bottom);
+    return wxPyConstructObject(_wxRect, wxT("wxRect"), true);
 }
 
 bool PyCAdUiPaletteSet::rolledUp()

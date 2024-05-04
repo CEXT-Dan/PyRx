@@ -92,7 +92,7 @@ class MyPanel(wx.Panel):
             self.set_dark_mode(child)
         
     def OnSize(self,event):
-        print(self.GetRect())
+        #print(self.GetRect())
         event.Skip()
     
     def OnInitListCtrl(self):
@@ -149,6 +149,13 @@ def createPalette():
         #palette.setOpacity(50)
         palette.setVisible(True)
         palette.setName("Didn't think this would work")
+      
+    except Exception as err:
+        print(err)
+        
+def PyRxCmd_wxpalettetest():
+    try:
+        print("woohoo", palette.getFullRect())
     except Exception as err:
         print(err)
 
