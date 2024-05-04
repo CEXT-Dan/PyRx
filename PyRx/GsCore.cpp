@@ -149,11 +149,11 @@ static AcDbExtents calcBlockExtents(AcDbBlockTableRecord& rec)
 PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height, double zf, boost::python::object& rgb)
 {
 #if defined(_ZRXTARGET)
-    PyThrowBadEs(Acad::eNotImplementedYet);
+    throw PyNotimplementedByHost();
     return nullptr;
 #endif
 #if defined(_GRXTARGET)
-    PyThrowBadEs(Acad::eNotImplementedYet);
+    throw PyNotimplementedByHost();
     return nullptr;
 #endif
 
@@ -186,8 +186,7 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     auto v = pView->upVector();
     pView->setView(pView->position(), pView->target(), v.negate(), pView->fieldWidth(), pView->fieldHeight());
 #endif
-    AcDbExtents ex;
-    ex = calcBlockExtents(*pBlock);
+    AcDbExtents ex = calcBlockExtents(*pBlock);
     pView->zoomExtents(ex.minPoint(), ex.maxPoint());
     pView->zoom(zf);
 
