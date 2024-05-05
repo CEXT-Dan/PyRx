@@ -18,7 +18,7 @@ class DocReactor(Ap.DocManagerReactor):
             self.panel.documentBecameCurrent(dwgdoc)
 
 
-#the palette set holds a collection of panels, this os one
+#the palette set holds a collection of panels, this is one
 class PalettePanel(wx.Panel):
     def __init__(self):
         super().__init__()
