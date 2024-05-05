@@ -89,12 +89,12 @@ double AcGeScale2dGetItem(const AcGeScale2d& p, int idx)
 {
     switch (idx)
     {
-    case 0:
-        return p.sx;
-    case 1:
-        return p.sy;
-    default:
-        throw PyAcadErrorStatus(eOutOfRange);
+        case 0:
+            return p.sx;
+        case 1:
+            return p.sy;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -102,14 +102,14 @@ void AcGeScale2dSetItem(AcGeScale2d& p, int idx, double val)
 {
     switch (idx)
     {
-    case 0:
-        p.sx = val;
-        break;
-    case 1:
-        p.sy = val;
-        break;
-    default:
-        throw PyAcadErrorStatus(eOutOfRange);
+        case 0:
+            p.sx = val;
+            break;
+        case 1:
+            p.sy = val;
+            break;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -225,12 +225,12 @@ double AcGePoint2dGetItem(const AcGePoint2d& p, int idx)
 {
     switch (idx)
     {
-    case 0:
-        return p.x;
-    case 1:
-        return p.y;
-    default:
-        throw PyAcadErrorStatus(eOutOfRange);
+        case 0:
+            return p.x;
+        case 1:
+            return p.y;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -238,14 +238,14 @@ void AcGePoint2dSetItem(AcGePoint2d& p, int idx, double val)
 {
     switch (idx)
     {
-    case 0:
-        p.x = val;
-        break;
-    case 1:
-        p.y = val;
-        break;
-    default:
-        throw PyAcadErrorStatus(eOutOfRange);
+        case 0:
+            p.x = val;
+            break;
+        case 1:
+            p.y = val;
+            break;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -367,12 +367,12 @@ double AcGeVector2dGetItem(const AcGeVector2d& p, int idx)
 {
     switch (idx)
     {
-    case 0:
-        return p.x;
-    case 1:
-        return p.y;
-    default:
-        throw PyAcadErrorStatus(eOutOfRange);
+        case 0:
+            return p.x;
+        case 1:
+            return p.y;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -380,14 +380,14 @@ void AcGeVector2dSetItem(AcGeVector2d& p, int idx, double val)
 {
     switch (idx)
     {
-    case 0:
-        p.x = val;
-        break;
-    case 1:
-        p.y = val;
-        break;
-    default:
-        throw PyAcadErrorStatus(eOutOfRange);
+        case 0:
+            p.x = val;
+            break;
+        case 1:
+            p.y = val;
+            break;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -619,14 +619,14 @@ double AcGeScale3dGetItem(const AcGeScale3d& p, int idx)
 {
     switch (idx)
     {
-    case 0:
-        return p.sx;
-    case 1:
-        return p.sy;
-    case 2:
-        return p.sz;
-    default:
-        throw PyAcadErrorStatus(eOutOfRange);
+        case 0:
+            return p.sx;
+        case 1:
+            return p.sy;
+        case 2:
+            return p.sz;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -634,17 +634,17 @@ void AcGeScale3dSetItem(AcGeScale3d& p, int idx, double val)
 {
     switch (idx)
     {
-    case 0:
-        p.sx = val;
-        break;
-    case 1:
-        p.sy = val;
-        break;
-    case 2:
-        p.sz = val;
-        break;
-    default:
-        throw PyAcadErrorStatus(eOutOfRange);
+        case 0:
+            p.sx = val;
+            break;
+        case 1:
+            p.sy = val;
+            break;
+        case 2:
+            p.sz = val;
+            break;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -753,14 +753,14 @@ double AcGePoint3dGetItem(const AcGePoint3d& p, int idx)
 {
     switch (idx)
     {
-    case 0:
-        return p.x;
-    case 1:
-        return p.y;
-    case 2:
-        return p.z;
-    default:
-        throw PyAcadErrorStatus(eOutOfRange);
+        case 0:
+            return p.x;
+        case 1:
+            return p.y;
+        case 2:
+            return p.z;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -768,17 +768,17 @@ void AcGePoint3dSetItem(AcGePoint3d& p, int idx, double val)
 {
     switch (idx)
     {
-    case 0:
-        p.x = val;
-        break;
-    case 1:
-        p.y = val;
-        break;
-    case 2:
-        p.z = val;
-        break;
-    default:
-        throw PyAcadErrorStatus(eOutOfRange);
+        case 0:
+            p.x = val;
+            break;
+        case 1:
+            p.y = val;
+            break;
+        case 2:
+            p.z = val;
+            break;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -808,8 +808,8 @@ void makePyGePoint3dWrapper()
         .def_readwrite("x", &AcGePoint3d::x)
         .def_readwrite("y", &AcGePoint3d::y)
         .def_readwrite("z", &AcGePoint3d::z)
-        .add_static_property("kOrigin", &AcGePoint3dkOrigin,DS.SARGS(12585))
-        .def("setToProduct", &AcGePoint3d::setToProduct, return_self<>(), DS.ARGS({ "mat: PyGe.Matrix3d","pnt:  PyGe.Point3d" },12592))
+        .add_static_property("kOrigin", &AcGePoint3dkOrigin, DS.SARGS(12585))
+        .def("setToProduct", &AcGePoint3d::setToProduct, return_self<>(), DS.ARGS({ "mat: PyGe.Matrix3d","pnt:  PyGe.Point3d" }, 12592))
         .def("transformBy", &AcGePoint3d::transformBy, return_self<>(), DS.ARGS({ "mat: PyGe.Matrix3d" }, 12594))
         .def("rotateBy", &AcGePoint3d::rotateBy, arg("AcGePoint3d") = AcGePoint3dkOrigin(), return_self<>(),
             DS.ARGS({ "angle: float","vec:  PyGe.Vector3d","wrtPoint:  PyGe.Point3d=Point3d.kOrigin" }, 12589))
@@ -920,14 +920,14 @@ double AcGeVector3dGetItem(const AcGeVector3d& p, int idx)
 {
     switch (idx)
     {
-    case 0:
-        return p.x;
-    case 1:
-        return p.y;
-    case 2:
-        return p.z;
-    default:
-        throw PyAcadErrorStatus(eOutOfRange);
+        case 0:
+            return p.x;
+        case 1:
+            return p.y;
+        case 2:
+            return p.z;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -935,17 +935,17 @@ void AcGeVector3dSetItem(AcGeVector3d& p, int idx, double val)
 {
     switch (idx)
     {
-    case 0:
-        p.x = val;
-        break;
-    case 1:
-        p.y = val;
-        break;
-    case 2:
-        p.z = val;
-        break;
-    default:
-        throw PyAcadErrorStatus(eOutOfRange);
+        case 0:
+            p.x = val;
+            break;
+        case 1:
+            p.y = val;
+            break;
+        case 2:
+            p.z = val;
+            break;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -961,7 +961,15 @@ static void makePyGeVector3dWrapper()
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- x: float,y: float,z: float\n"
-        "- pln: PyGe.PlanarEnt, pnt2d: PyGe.Point2d\n";
+        "- pln: PyGe.PlanarEnt, pnt2d: PyGe.Vector2d\n";
+
+    constexpr const std::string_view setToProductOverloads = "Overloads:\n"
+        "- vec: PyGe.Vector2d, s: float\n"
+        "- xform: PyGe.Matrix3d, vec: PyGe.Vector3d\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- x: float,y: float,z: float\n"
+        "- pln: PyGe.PlanarEnt, pnt2d: PyGe.Vector2d\n";
 
     PyDocString DS("PyGe.Vector3d");
     class_<AcGeVector3d>("Vector3d")
@@ -976,38 +984,38 @@ static void makePyGeVector3dWrapper()
         .add_static_property("kYAxis", &AcGeVector3dkYAxis, DS.SARGS(12897))
         .add_static_property("kZAxis", &AcGeVector3dkZAxis, DS.SARGS(12898))
         .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeVector3d&, double)>("setToProduct", &AcGeVector3d::setToProduct, return_self<>())
-        .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeMatrix3d&, const AcGeVector3d&)>("setToProduct", &AcGeVector3d::setToProduct, return_self<>())
-        .def("transformBy", &AcGeVector3d::transformBy, return_self<>())
-        .def("rotateBy", &AcGeVector3d::rotateBy, return_self<>())
-        .def("mirror", &AcGeVector3d::mirror, return_self<>())
-        .def("convert2d", &AcGeVector3d::convert2d)
-        .def("setToSum", &AcGeVector3d::setToSum, return_self<>())
-        .def("negate", &AcGeVector3d::negate, return_self<>())
-        .def("perpVector", &AcGeVector3d::perpVector)
+        .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeMatrix3d&, const AcGeVector3d&)>("setToProduct", &AcGeVector3d::setToProduct, DS.OVRL(setToProductOverloads), return_self<>())
+        .def("transformBy", &AcGeVector3d::transformBy, DS.ARGS({ "xform: PyGe.Matrix3d" }), return_self<>())
+        .def("rotateBy", &AcGeVector3d::rotateBy, DS.ARGS({ "angle: float","axis: PyGe.Vector3d" }), return_self<>())
+        .def("mirror", &AcGeVector3d::mirror, DS.ARGS({ "normalToPlane: PyGe.Vector3d" }), return_self<>())
+        .def("convert2d", &AcGeVector3d::convert2d, DS.ARGS({ "pln: PyGe.PlanarEnt" }))
+        .def("setToSum", &AcGeVector3d::setToSum, DS.ARGS({ "v1: PyGe.Vector3d","v2: PyGe.Vector3d" }), return_self<>())
+        .def("negate", &AcGeVector3d::negate, DS.ARGS(), return_self<>())
+        .def("perpVector", &AcGeVector3d::perpVector, DS.ARGS())
         .def<double(AcGeVector3d::*)(const AcGeVector3d&) const>("angleTo", &AcGeVector3d::angleTo)
-        .def<double(AcGeVector3d::*)(const AcGeVector3d&, const AcGeVector3d&) const>("angleTo", &AcGeVector3d::angleTo)
-        .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeTol& tol)>("normalize", &AcGeVector3d::normalize, arg("AcGeTol") = getTol(), return_self<>())
-        .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeTol& tol, AcGeError& flag)>("normalize", &AcGeVector3d::normalize, return_self<>())
-        .def("angleOnPlane", &AcGeVector3d::angleOnPlane)
+        .def<double(AcGeVector3d::*)(const AcGeVector3d&, const AcGeVector3d&) const>("angleTo", &AcGeVector3d::angleTo, DS.ARGS({ "vec: PyGe.Vector3d","ref: PyGe.Vector3d=None" }))
+        .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeTol& tol)>("normalize", &AcGeVector3d::normalize, arg("AcGeTol") = getTol(), DS.ARGS(), return_self<>())
+        .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeTol& tol, AcGeError& flag)>("normalize", &AcGeVector3d::normalize, arg("AcGeTol") = getTol(), DS.ARGS(), return_self<>())
+        .def("angleOnPlane", &AcGeVector3d::angleOnPlane, DS.ARGS({ "pln: PyGe.PlanarEnt" }))
         .def("normal", &AcGeVector3d::normal, arg("AcGeTol") = getTol(), DS.ARGS({ "tol: PyGe.Tol=None" }))
         .def("length", &AcGeVector3d::length, DS.ARGS())
         .def("lengthSqrd", &AcGeVector3d::lengthSqrd, DS.ARGS())
         .def("isUnitLength", &AcGeVector3d::isUnitLength, arg("AcGeTol") = getTol(), DS.ARGS({ "tol: PyGe.Tol=None" }))
         .def("isZeroLength", &AcGeVector3d::isZeroLength, arg("AcGeTol") = getTol(), DS.ARGS({ "tol: PyGe.Tol=None" }))
-        .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isParallelTo", &AcGeVector3d::isParallelTo, arg("AcGeTol") = getTol())
-        .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isCodirectionalTo", &AcGeVector3d::isCodirectionalTo, arg("AcGeTol") = getTol())
-        .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isPerpendicularTo", &AcGeVector3d::isPerpendicularTo, arg("AcGeTol") = getTol())
-        .def("dotProduct", &AcGeVector3d::dotProduct)
-        .def("crossProduct", &AcGeVector3d::crossProduct)
-        .def("rotateTo", &AcGeVector3d::rotateTo)
+        .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isParallelTo", &AcGeVector3d::isParallelTo, arg("AcGeTol") = getTol(), DS.ARGS({ "vec: PyGe.Vector3d","tol: PyGe.Tol=None"  }))
+        .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isCodirectionalTo", &AcGeVector3d::isCodirectionalTo, arg("AcGeTol") = getTol(), DS.ARGS({ "vec: PyGe.Vector3d","tol: PyGe.Tol=None" }))
+        .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isPerpendicularTo", &AcGeVector3d::isPerpendicularTo, arg("AcGeTol") = getTol(), DS.ARGS({ "vec: PyGe.Vector3d","tol: PyGe.Tol=None" }))
+        .def("dotProduct", &AcGeVector3d::dotProduct, DS.ARGS({ "vec: PyGe.Vector3d" }))
+        .def("crossProduct", &AcGeVector3d::crossProduct, DS.ARGS({ "vec: PyGe.Vector3d" }))
+        .def("rotateTo", &AcGeVector3d::rotateTo, DS.ARGS({ "vec: PyGe.Vector3d", "axis: PyGe.Vector3d= PyGe.Vector3d.kIdentity" }))
         .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&, const AcGeVector3d&) const>("project", &AcGeVector3d::project)
-        .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&, const AcGeVector3d&, const AcGeTol&, AcGeError&) const>("project", &AcGeVector3d::project)
+        .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&, const AcGeVector3d&, const AcGeTol&, AcGeError&) const>("project", &AcGeVector3d::project, DS.ARGS({ "pln: PyGe.Vector3d","dir: PyGe.Vector3d","tol: PyGe.Tol=None" }))
         .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&) const>("orthoProject", &AcGeVector3d::orthoProject)
-        .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&, AcGeError&) const>("orthoProject", &AcGeVector3d::orthoProject)
-        .def("isEqualTo", &AcGeVector3d::isEqualTo, arg("AcGeTol") = getTol())
-        .def("largestElement", &AcGeVector3d::largestElement)
+        .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&, AcGeError&) const>("orthoProject", &AcGeVector3d::orthoProject, DS.ARGS({ "planeNormal: PyGe.Vector3d","tol: PyGe.Tol=None" }))
+        .def("isEqualTo", &AcGeVector3d::isEqualTo, arg("AcGeTol") = getTol(), DS.ARGS({ "vec: PyGe.Vector3d","tol: PyGe.Tol=None" }))
+        .def("largestElement", &AcGeVector3d::largestElement, DS.ARGS())
         .def<AcGeVector3d& (AcGeVector3d::*)(double, double, double)>("set", &AcGeVector3d::set, return_self<>())
-        .def<AcGeVector3d& (AcGeVector3d::*)(const AcGePlanarEnt&, const AcGeVector2d&)>("set", &AcGeVector3d::set, return_self<>())
+        .def<AcGeVector3d& (AcGeVector3d::*)(const AcGePlanarEnt&, const AcGeVector2d&)>("set", &AcGeVector3d::set,DS.OVRL(setOverloads), return_self<>())
         .def("__eq__", &AcGeVector3d::operator==)
         .def("__ne__", &AcGeVector3d::operator!=)
         .def<AcGeVector3d(AcGeVector3d::*)(double)const>("__mul__", &AcGeVector3d::operator*)
@@ -1021,14 +1029,14 @@ static void makePyGeVector3dWrapper()
         .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&)const>("__sub__", &AcGeVector3d::operator-)
         .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeVector3d&)>("__isub__", &AcGeVector3d::operator-=, return_self<>())
         .def_pickle(AcGeVector3dpickle())
-        .def("toList", &AcGeVector3dToList)
-        .def("toTuple", &AcGeVector3dToTuple)
-        .def("toString", &AcGeVector3dToString)
-        .def("__str__", &AcGeVector3dToString)
-        .def("__repr__", &AcGeVector3dToStringRepr)
-        .def("__hash__", AcGeVector3dHash)
-        .def("__getitem__", &AcGeVector3dGetItem)
-        .def("__setitem__", &AcGeVector3dSetItem)
+        .def("toList", &AcGeVector3dToList, DS.ARGS())
+        .def("toTuple", &AcGeVector3dToTuple, DS.ARGS())
+        .def("toString", &AcGeVector3dToString, DS.ARGS())
+        .def("__str__", &AcGeVector3dToString, DS.ARGS())
+        .def("__repr__", &AcGeVector3dToStringRepr, DS.ARGS())
+        .def("__hash__", AcGeVector3dHash, DS.ARGS())
+        .def("__getitem__", &AcGeVector3dGetItem, DS.ARGS({ "idx: int" }))
+        .def("__setitem__", &AcGeVector3dSetItem, DS.ARGS({ "idx: int","val: float" }))
         .def("__init__", make_constructor(&PyGeVector3dInitTuple))
         ;
 }
