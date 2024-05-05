@@ -33,6 +33,7 @@ def PyRxCmd_doitsd():
     try:
         db = Db.Database(False,True)
         db.readDwgFile("M:/Dev/Projects/PyRxGit/PySamples/dwg/Floor Plan Sample.dwg ")
+        db.closeInput(True)
         doSideDb(db)
     except Exception as err:
         traceback.print_exception(err)

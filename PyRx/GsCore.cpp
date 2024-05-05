@@ -107,7 +107,7 @@ static int cvport()
     return rb.resval.rint;
 }
 
-static void getBackgroundColorFromPy(AcGsDevice* pDevice, boost::python::object& rgb)
+static void setBackgroundColorFromPy(AcGsDevice* pDevice, boost::python::object& rgb)
 {
     if (pDevice != nullptr && !rgb.is_none())
     {
@@ -146,7 +146,7 @@ static AcDbExtents calcBlockExtents(AcDbBlockTableRecord& rec)
     return ex;
 }
 
-PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height, double zf, boost::python::object& rgb)
+PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height, double zf, boost::python::object& pyrgb)
 {
 #if defined(_ZRXTARGET)
     throw PyNotimplementedByHost();
@@ -176,14 +176,16 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     if (bool flag = acgsGetViewParameters(cvport(), pView.get()); flag == false)
         acutPrintf(_T("\nFailed to copy view parameters: "));
 
-    getBackgroundColorFromPy(pOffDevice.get(), rgb);
+    setBackgroundColorFromPy(pOffDevice.get(), pyrgb);
     AcDbBlockTableRecordPointer pBlock(blkid.m_id);
     if (!pView->add(pBlock, pModel.get()))
         return nullptr;
 
 #if defined(_ARXTARGET)
     auto v = pView->upVector();
-    pView->setView(pView->position(), pView->target(), v.negate(), pView->fieldWidth(), pView->fieldHeight());
+    pView->setView(pView->position(), pView->target(), v.negate(), width, height);
+#else
+    pView->setView(pView->position(), pView->target(), pView->upVector(), width, height);
 #endif
     AcDbExtents ex = calcBlockExtents(*pBlock);
     pView->zoomExtents(ex.minPoint(), ex.maxPoint());
