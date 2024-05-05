@@ -25,6 +25,8 @@ using namespace boost::python;
 
 //https://adndevblog.typepad.com/autocad/2013/01/capturing-a-screen-shot-using-objectarx.html
 
+//------------------------------------------------------------------------------------
+//GsCore Helpers
 struct AcGsDeviceDeleter
 {
     void operator()(AcGsDevice* ptr)
@@ -53,52 +55,6 @@ struct AcGsModelDeleter
     }
 };
 using AcGsModelPtr = std::unique_ptr <AcGsModel, AcGsModelDeleter>;
-
-void makeGsCoreWrapper()
-{
-    PyDocString DS("Core");
-    class_<GsCore>("Core")
-        .def("getCurrentAcGsView", &GsCore::getCurrentAcGsView, DS.SARGS({ "vpNum : int" })).staticmethod("getCurrentAcGsView")
-        .def("getCurrent3DAcGsView", &GsCore::getCurrent3DAcGsView, DS.SARGS({ "vpNum : int" })).staticmethod("getCurrent3DAcGsView")
-        .def("getViewParameters", &GsCore::getViewParameters, DS.SARGS({ "vpNum : int", "view : PyGs.View" })).staticmethod("getViewParameters")
-
-        .def("setViewParameters", &GsCore::setViewParameters1)
-        .def("setViewParameters", &GsCore::setViewParameters2,
-            DS.SARGS({ "vpNum : int", "view : PyGs.View", "bRegen: bool","bRescale: bool","bSync: bool=False" })).staticmethod("setViewParameters")
-
-        .def("getBlockImage", &GsCore::getBlockImage,
-            DS.SARGS({ "blkid: PyDb.ObjectId" , "sx: int", "sy: int", "zoomFactor: float", "bkrgb: list[int]=None" }), arg("bkrgb") = boost::python::object()).staticmethod("getBlockImage")
-        ;
-}
-
-PyGsView GsCore::getCurrentAcGsView(int vpNum)
-{
-    return PyGsView(acgsGetCurrentAcGsView(vpNum), false);
-}
-
-PyGsView GsCore::getCurrent3DAcGsView(int vpNum)
-{
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
-    throw PyNotimplementedByHost();
-#else
-    return PyGsView(acgsGetCurrent3dAcGsView(vpNum), false);
-#endif
-}
-
-bool GsCore::getViewParameters(int vpNum, PyGsView& view)
-{
-    return acgsGetViewParameters(vpNum, view.impObj());
-}
-
-bool GsCore::setViewParameters1(int viewportNumber, const PyGsView& obj, bool bRegenRequired, bool bRescaleRequired)
-{
-    return acgsSetViewParameters(viewportNumber, obj.impObj(), bRegenRequired, bRescaleRequired);
-}
-
-bool GsCore::setViewParameters2(int viewportNumber, const PyGsView& obj, bool bRegenRequired, bool bRescaleRequired, bool bSyncRequired)
-{
-    return acgsSetViewParameters(viewportNumber, obj.impObj(), bRegenRequired, bRescaleRequired, bSyncRequired);
-}
 
 static int cvport()
 {
@@ -144,6 +100,55 @@ static AcDbExtents calcBlockExtents(AcDbBlockTableRecord& rec)
         }
     }
     return ex;
+}
+
+
+//------------------------------------------------------------------------------------
+//GsCore
+void makeGsCoreWrapper()
+{
+    PyDocString DS("Core");
+    class_<GsCore>("Core")
+        .def("getCurrentAcGsView", &GsCore::getCurrentAcGsView, DS.SARGS({ "vpNum : int" })).staticmethod("getCurrentAcGsView")
+        .def("getCurrent3DAcGsView", &GsCore::getCurrent3DAcGsView, DS.SARGS({ "vpNum : int" })).staticmethod("getCurrent3DAcGsView")
+        .def("getViewParameters", &GsCore::getViewParameters, DS.SARGS({ "vpNum : int", "view : PyGs.View" })).staticmethod("getViewParameters")
+
+        .def("setViewParameters", &GsCore::setViewParameters1)
+        .def("setViewParameters", &GsCore::setViewParameters2,
+            DS.SARGS({ "vpNum : int", "view : PyGs.View", "bRegen: bool","bRescale: bool","bSync: bool=False" })).staticmethod("setViewParameters")
+
+        .def("getBlockImage", &GsCore::getBlockImage,
+            DS.SARGS({ "blkid: PyDb.ObjectId" , "sx: int", "sy: int", "zoomFactor: float", "bkrgb: list[int]=None" }), arg("bkrgb") = boost::python::object()).staticmethod("getBlockImage")
+        ;
+}
+
+PyGsView GsCore::getCurrentAcGsView(int vpNum)
+{
+    return PyGsView(acgsGetCurrentAcGsView(vpNum), false);
+}
+
+PyGsView GsCore::getCurrent3DAcGsView(int vpNum)
+{
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
+    return PyGsView(acgsGetCurrent3dAcGsView(vpNum), false);
+#endif
+}
+
+bool GsCore::getViewParameters(int vpNum, PyGsView& view)
+{
+    return acgsGetViewParameters(vpNum, view.impObj());
+}
+
+bool GsCore::setViewParameters1(int viewportNumber, const PyGsView& obj, bool bRegenRequired, bool bRescaleRequired)
+{
+    return acgsSetViewParameters(viewportNumber, obj.impObj(), bRegenRequired, bRescaleRequired);
+}
+
+bool GsCore::setViewParameters2(int viewportNumber, const PyGsView& obj, bool bRegenRequired, bool bRescaleRequired, bool bSyncRequired)
+{
+    return acgsSetViewParameters(viewportNumber, obj.impObj(), bRegenRequired, bRescaleRequired, bSyncRequired);
 }
 
 PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height, double zf, boost::python::object& pyrgb)
