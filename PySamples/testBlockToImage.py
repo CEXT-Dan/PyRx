@@ -90,6 +90,33 @@ def PyRxCmd_doit64W():
 
     except Exception as err:
         traceback.print_exception(err)
+        
+def PyRxCmd_doit64TR():
+    try:
+        start = timer()
+
+        db = Db.curDb()
+        bt = Db.BlockTable(db.blockTableId())
+        cnt = 0
+        for name, id in bt.toDict().items():
+            btr = Db.BlockTableRecord(id)
+            if btr.isLayout():
+                continue
+            if btr.isAnonymous():
+                continue
+            if name.startswith("A$"):
+                continue
+            img: wx.Image = Gs.Core.getBlockImage(id, 64, 64, 1.0, [0, 0, 0])
+            img.SetMaskColour(0,0,0)
+            img.SetMask(True)
+            img.SaveFile("E:/temp/{}_{}_64.png".format(name, host), wx.BITMAP_TYPE_PNG)
+            cnt += 1
+
+        end = timer()
+        print(cnt, end - start)
+
+    except Exception as err:
+        traceback.print_exception(err)
 
 
 def PyRxCmd_doit128():
