@@ -9823,16 +9823,16 @@ __init__( (object)arg1) -> None :
         bool isConformal(class AcGeMatrix2d {lvalue},double {lvalue},double {lvalue},bool {lvalue},class AcGeVector2d {lvalue})'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A45DB503A0>]) -> bool :
+      '''isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC543A0>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x000002A45DB503A0>])'''
+        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC543A0>])'''
     ...
     def isScaledOrtho (self, *args, **kwargs)-> bool :
-      '''isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A45DB504C0>]) -> bool :
+      '''isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC544C0>]) -> bool :
 
     C++ signature :
-        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002A45DB504C0>])'''
+        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC544C0>])'''
     ...
     def isSingular (self, *args, **kwargs)-> bool :
       '''isSingular( (Matrix2d)arg1, (Tol)arg2) -> bool :
@@ -9841,10 +9841,10 @@ __init__( (object)arg1) -> None :
         bool isSingular(class AcGeMatrix2d {lvalue},class AcGeTol)'''
     ...
     def isUniScaledOrtho (self, *args, **kwargs)-> bool :
-      '''isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A45DB50430>]) -> bool :
+      '''isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC54430>]) -> bool :
 
     C++ signature :
-        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002A45DB50430>])'''
+        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC54430>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
@@ -17369,40 +17369,40 @@ class Vector2d(object):
       '''                             '''
     ...
     def isCodirectionalTo (self, *args, **kwargs)-> bool :
-      '''isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A45DB501F0>]) -> bool :
+      '''isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC541F0>]) -> bool :
 
     C++ signature :
-        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002A45DB501F0>])'''
+        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC541F0>])'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A45DB50310>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC54310>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002A45DB50310>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC54310>])'''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A45DB50160>]) -> bool :
+      '''isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC54160>]) -> bool :
 
     C++ signature :
-        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002A45DB50160>])'''
+        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC54160>])'''
     ...
     def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A45DB50280>]) -> bool :
+      '''isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC54280>]) -> bool :
 
     C++ signature :
-        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002A45DB50280>])'''
+        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC54280>])'''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A45DB50040>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC54040>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002A45DB50040>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC54040>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A45DB500D0>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC540D0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002A45DB500D0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC540D0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
@@ -17432,16 +17432,16 @@ class Vector2d(object):
         class AcGeVector2d {lvalue} negate(class AcGeVector2d {lvalue})'''
     ...
     def normal (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A45D683EB0>]) -> Vector2d :
+      '''normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FB13EB0>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002A45D683EB0>])'''
+        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FB13EB0>])'''
     ...
     def normalize (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002A45D683F40>]) -> Vector2d :
+      '''normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FB13F40>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002A45D683F40>])'''
+        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FB13F40>])'''
     ...
     def rotateBy (self, *args, **kwargs)-> PyGe.Vector2d :
       '''rotateBy( (Vector2d)arg1, (float)arg2) -> Vector2d :
@@ -17519,37 +17519,37 @@ class Vector3d(object):
     '''
     ...
     def angleOnPlane (self, pln: PyGe.PlanarEnt)-> float :
-      '''                             '''
+      '''Returns the angle between the orthogonal projection of this vector into the plane through the origin with the same normal as planar entity pln and the zeroth basis vector v0 of the planar entity pln provided by the function pln.getCoordSystem (p, v0, v1).'''
     ...
     def angleTo (self, vec: PyGe.Vector3d, ref: PyGe.Vector3d=None)-> float :
-      '''                             '''
+      '''Returns the angle between this vector and the vector vec in the range [0, Pi].'''
     ...
     def convert2d (self, pln: PyGe.PlanarEnt)-> PyGe.Vector2d :
-      '''                             '''
+      '''Returns 2D vector with the coordinates corresponding to the decomposition of this vector in the basis uAxis, vAxis in the planar entity pln, where uAxis and vAxis can be found by function call pln.get(p, uAxis, vAxis).Contract: This 3D vector is assumed to be parallel to the planar entity pln.'''
     ...
     def crossProduct (self, vec: PyGe.Vector3d)-> PyGe.Vector3d :
-      '''                             '''
+      '''Returns the cross product of this vector and vector vec.'''
     ...
     def dotProduct (self, vec: PyGe.Vector3d)-> float :
-      '''                             '''
+      '''Returns the dot product of this vector and vector v.'''
     ...
     def isCodirectionalTo (self, vec: PyGe.Vector3d, tol: PyGe.Tol=None)-> bool :
-      '''                             '''
+      '''Checks if this vector is codirectional to the vector vec. Namely, it checks if after normalization this vector is within the distance tol.equalVector() from the normalization of the vector vec.Returns Adesk::kTrue if this condition is met and Adesk::kFalse otherwise.'''
     ...
     def isEqualTo (self, vec: PyGe.Vector3d, tol: PyGe.Tol=None)-> bool :
-      '''                             '''
+      '''Checks if this vector is within the distance tol.equalVector() from the vector vec.The default value of the tolerance class tol is AcGeContext::gTol.Returns Adesk::kTrue if this condition is met and Adesk::kFalse otherwise.'''
     ...
     def isParallelTo (self, vec: PyGe.Vector3d, tol: PyGe.Tol=None)-> bool :
-      '''                             '''
+      '''Checks if this vector is parallel to the vector vec. Namely, it checks if after normalization (and negation, in the case of negative dot product with the vector vec), this vector is within the distance tol.equalVector() from the normalization of the vector vec.Returns Adesk::kTrue if this condition is met and Adesk::kFalse otherwise.'''
     ...
     def isPerpendicularTo (self, vec: PyGe.Vector3d, tol: PyGe.Tol=None)-> bool :
-      '''                             '''
+      '''Checks if this vector is perpendicular to the vector vec. Namely, it checks if after normalization the dot product of this vector with the normalization of the vector vec is less than tol.equalVector() in absolute value.Returns Adesk::kTrue if this condition is met and Adesk::kFalse otherwise.'''
     ...
     def isUnitLength (self, tol: PyGe.Tol=None)-> bool :
-      '''                             '''
+      '''Returns Adesk::kTrue if this vector is equal to its normalization. Returns Adesk::kFalse otherwise.'''
     ...
     def isZeroLength (self, tol: PyGe.Tol=None)-> bool :
-      '''                             '''
+      '''Returns Adesk::kTrue if this vector is a zero length vector, Adesk::kFalse otherwise.'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
@@ -17564,40 +17564,40 @@ class Vector3d(object):
       '''None'''
     ...
     def largestElement (self)-> int :
-      '''                             '''
+      '''Returns the index of the largest absolute value coordinate of this vector.'''
     ...
     def length (self)-> float :
-      '''                             '''
+      '''Returns the Euclidean length of this vector.'''
     ...
     def lengthSqrd (self)-> float :
-      '''                             '''
+      '''Returns the square of the Euclidean length of this vector.'''
     ...
     def mirror (self, normalToPlane: PyGe.Vector3d)-> PyGe.Vector3d :
-      '''                             '''
+      '''Returns the 3D vector which is the result of mirroring of this vector with respect to the plane with the normal normalToPlane passing through the origin.'''
     ...
     def negate (self)-> PyGe.Vector3d :
-      '''                             '''
+      '''Negates this vector, namely sets it to be equal to the vector (-x,-y). Returns the reference to this vector.'''
     ...
     def normal (self, tol: PyGe.Tol=None)-> PyGe.Vector3d :
-      '''                             '''
+      '''Returns the unit vector codirectional to this vector. The vector is not normalized if its length is less than tol.equalVector(), in which case the returned vector is the same as this vector. '''
     ...
     def normalize (self)-> PyGe.Vector3d :
-      '''                             '''
+      '''Sets this vector to the unit vector codirectional to this vector. Returns the reference to this vector. This vector is not normalized if its length is less than tol.equalVector(), in which case it remains unchanged. The flag argument will be set to the following value to indicate if a failure may have occurred: k0This.'''
     ...
     def orthoProject (self, planeNormal: PyGe.Vector3d, tol: PyGe.Tol=None)-> PyGe.Vector3d :
-      '''                             '''
+      '''Returns a 3D vector which is the result of the orthogonal projection of this point into the plane with normal planeNormal passing through the origin.'''
     ...
     def perpVector (self)-> PyGe.Vector3d :
-      '''                             '''
+      '''Returns a vector orthogonal to this vector. The choice of the orthogonal vector is determined by the function AcGeContext::gOrthoVector.'''
     ...
     def project (self, pln: PyGe.Vector3d, dir: PyGe.Vector3d, tol: PyGe.Tol=None)-> PyGe.Vector3d :
-      '''                             '''
+      '''Returns the 3D vector that is the result of the parallel projection of this vector into the plane with normal planeNormal passing through the origin. The direction of projection is defined by vector projectDirection.'''
     ...
     def rotateBy (self, angle: float, axis: PyGe.Vector3d)-> PyGe.Vector3d :
-      '''                             '''
+      '''Returns 3D point which is the result of rotation of this vector around the line with axis passing through the origin. Rotation angle is given by the argument ang, where positive direction of rotation is defined by the right-hand rule.'''
     ...
     def rotateTo (self, vec: PyGe.Vector3d, axis: PyGe.Vector3d= PyGe.Vector3d.kIdentity)-> PyGe.Matrix3d :
-      '''                             '''
+      '''Returns a matrix mat such that matX this vector yields the argument vector vec. There is no unique matrix to represent a rotation from this vector to vec when they are parallel and in opposite directions. In this case, the argument axis is used (if it is perpendicular to this vector) to uniquely determine the resultant matrix. axis defaults to the zero-length vector, in which case an arbitrary (but correct) matrix will be returned that rotates this vector to vec.Contract: This vector and vec must be non-zero length.'''
     ...
 
     @overload
@@ -17622,7 +17622,7 @@ class Vector3d(object):
     '''
     ...
     def setToSum (self, v1: PyGe.Vector3d, v2: PyGe.Vector3d)-> PyGe.Vector3d :
-      '''                             '''
+      '''Sets this vector to the sum of the vector v1 and vector v2. Returns the reference to this vector.'''
     ...
     def toList (self)-> list :
       '''                             '''
@@ -17634,7 +17634,7 @@ class Vector3d(object):
       '''                             '''
     ...
     def transformBy (self, xform: PyGe.Matrix3d)-> PyGe.Vector3d :
-      '''                             '''
+      '''Transform this vector by pre-multiplying it by the matrix leftSide. Returns the reference to this vector. Result is the same as setToProduct(leftSide, *this).'''
     ...
     def x (self, *args, **kwargs)-> None :
       '''None'''
