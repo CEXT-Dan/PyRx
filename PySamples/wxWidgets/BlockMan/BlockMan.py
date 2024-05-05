@@ -147,6 +147,7 @@ class Blockig(Ed.Jig):
         self.ref.setPosition(self.curPoint)
         return True
     
+    #TODO make attibutes
     def doit(self):
         self.setDispPrompt("\nPick Point: ")
         if self.drag() != Ed.DragStatus.kNormal:

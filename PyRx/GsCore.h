@@ -5,6 +5,8 @@ class PyGsView;
 class PyDbObjectId;
 
 
+//------------------------------------------------------------------------------------
+//GsCore
 void makeGsCoreWrapper();
 
 class GsCore
