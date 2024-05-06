@@ -771,7 +771,7 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("k2dCurveFitVertex", AcDb::Vertex2dType::k2dCurveFitVertex)
         .export_values()
         ;
-    enum_<AcDb::TextVertMode>("TextHorzMode")
+    enum_<AcDb::TextVertMode>("TextVertMode")
         .value("kTextBase", AcDb::TextVertMode::kTextBase)
         .value("kTextBottom", AcDb::TextVertMode::kTextBottom)
         .value("kTextVertMid", AcDb::TextVertMode::kTextVertMid)
