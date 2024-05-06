@@ -1204,6 +1204,11 @@ static std::string AcGeMatrix3dToStringRepr(const AcGeMatrix3d& x)
 
 void makePyGeMatrix3dWrapper()
 {
+    constexpr const std::string_view setToMirroringloads = "Overloads:\n"
+        "- val: PyGe.Plane\n"
+        "- val: PyGe.Line3d\n"
+        "- val: PyGe.Point3d\n";
+
     PyDocString DS("PyGe.Matrix3d");
     class_<AcGeMatrix3d>("Matrix3d")
         .def(init<>(DS.ARGS()))
@@ -1239,13 +1244,14 @@ void makePyGeMatrix3dWrapper()
 
         .def("setToMirroring", &AcGeMatrix3dsetToMirroring)
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeLine3d&)>("setToMirroring", &AcGeMatrix3d::setToMirroring, return_self<>())
-        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGePoint3d&)>("setToMirroring", &AcGeMatrix3d::setToMirroring, return_self<>())
+        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGePoint3d&)>("setToMirroring", &AcGeMatrix3d::setToMirroring,DS.OVRL(setToMirroringloads), return_self<>())
 
         .def("setToProjection", &AcGeMatrix3d::setToProjection, return_self<>())
         .def("setToAlignCoordSys", &AcGeMatrix3d::setToAlignCoordSys, return_self<>())
 
         .def("setToWorldToPlane", &AcGeMatrix3dworldToPlane)
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeVector3d&)>("setToWorldToPlane", &AcGeMatrix3d::setToWorldToPlane, return_self<>())
+
         .def("setToPlaneToWorld", &AcGeMatrix3dplaneToWorld)
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeVector3d&)>("setToPlaneToWorld", &AcGeMatrix3d::setToPlaneToWorld, return_self<>())
 
