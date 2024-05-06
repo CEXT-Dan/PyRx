@@ -9823,16 +9823,16 @@ __init__( (object)arg1) -> None :
         bool isConformal(class AcGeMatrix2d {lvalue},double {lvalue},double {lvalue},bool {lvalue},class AcGeVector2d {lvalue})'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC543A0>]) -> bool :
+      '''isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002736CEE43A0>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC543A0>])'''
+        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x000002736CEE43A0>])'''
     ...
     def isScaledOrtho (self, *args, **kwargs)-> bool :
-      '''isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC544C0>]) -> bool :
+      '''isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002736CEE44C0>]) -> bool :
 
     C++ signature :
-        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC544C0>])'''
+        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002736CEE44C0>])'''
     ...
     def isSingular (self, *args, **kwargs)-> bool :
       '''isSingular( (Matrix2d)arg1, (Tol)arg2) -> bool :
@@ -9841,10 +9841,10 @@ __init__( (object)arg1) -> None :
         bool isSingular(class AcGeMatrix2d {lvalue},class AcGeTol)'''
     ...
     def isUniScaledOrtho (self, *args, **kwargs)-> bool :
-      '''isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC54430>]) -> bool :
+      '''isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002736CEE4430>]) -> bool :
 
     C++ signature :
-        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC54430>])'''
+        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002736CEE4430>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
@@ -10098,21 +10098,19 @@ planeToWorld( (Plane)arg1) -> Matrix3d :
     def setToIdentity (self)-> PyGe.Matrix3d :
       '''                             '''
     ...
+
+    @overload
+    def setToMirroring (self, val: PyGe.Plane)-> None : ...
+    @overload
+    def setToMirroring (self, val: PyGe.Line3d)-> None : ...
+    @overload
+    def setToMirroring (self, val: PyGe.Point3d)-> None : ...
     def setToMirroring (self, *args, **kwargs)-> None :
-      '''setToMirroring( (Matrix3d)arg1, (Plane)arg2) -> None :
-
-    C++ signature :
-        void setToMirroring(class AcGeMatrix3d {lvalue},class PyGePlane)
-
-setToMirroring( (Matrix3d)arg1, (object)arg2) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d {lvalue} setToMirroring(class AcGeMatrix3d {lvalue},class AcGeLine3d)
-
-setToMirroring( (Matrix3d)arg1, (Point3d)arg2) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d {lvalue} setToMirroring(class AcGeMatrix3d {lvalue},class AcGePoint3d)'''
+      '''Overloads:
+    - val: PyGe.Plane
+    - val: PyGe.Line3d
+    - val: PyGe.Point3d
+    '''
     ...
     def setToPlaneToWorld (self, *args, **kwargs)-> None :
       '''setToPlaneToWorld( (Matrix3d)arg1, (Plane)arg2) -> None :
@@ -17369,40 +17367,40 @@ class Vector2d(object):
       '''                             '''
     ...
     def isCodirectionalTo (self, *args, **kwargs)-> bool :
-      '''isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC541F0>]) -> bool :
+      '''isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002736CEE41F0>]) -> bool :
 
     C++ signature :
-        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC541F0>])'''
+        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002736CEE41F0>])'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC54310>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002736CEE4310>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC54310>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002736CEE4310>])'''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC54160>]) -> bool :
+      '''isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002736CEE4160>]) -> bool :
 
     C++ signature :
-        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC54160>])'''
+        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002736CEE4160>])'''
     ...
     def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC54280>]) -> bool :
+      '''isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002736CEE4280>]) -> bool :
 
     C++ signature :
-        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC54280>])'''
+        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002736CEE4280>])'''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC54040>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002736CEE4040>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC54040>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002736CEE4040>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FC540D0>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002736CEE40D0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FC540D0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002736CEE40D0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
@@ -17432,16 +17430,16 @@ class Vector2d(object):
         class AcGeVector2d {lvalue} negate(class AcGeVector2d {lvalue})'''
     ...
     def normal (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FB13EB0>]) -> Vector2d :
+      '''normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002736CDB3EB0>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FB13EB0>])'''
+        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002736CDB3EB0>])'''
     ...
     def normalize (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002CA5FB13F40>]) -> Vector2d :
+      '''normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002736CDB3F40>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002CA5FB13F40>])'''
+        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002736CDB3F40>])'''
     ...
     def rotateBy (self, *args, **kwargs)-> PyGe.Vector2d :
       '''rotateBy( (Vector2d)arg1, (float)arg2) -> Vector2d :

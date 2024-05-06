@@ -30,22 +30,40 @@ static AcString moduleNameFromPath(const std::filesystem::path& path)
     return val;
 }
 
+static int getFileDia()
+{
+    resbuf rb;
+    if (acedGetVar(_T("FILEDIA"), &rb) == RTNORM)
+        return rb.resval.rint;
+    return 1;
+}
+
 bool showNavFileDialog(PyModulePath& path)
 {
-    struct resbuf* pResBuf = nullptr;
-    int ret = acedGetFileNavDialog(_T("Select Python File"), _T(""), _T("py"), _T("Browse Python File"), 0, &pResBuf);
-    if (ret != RTNORM || pResBuf == nullptr)
+    if (getFileDia() == 1)
     {
-        acutPrintf(_T("\nFailed to read file: "));
-        return false;
+        struct resbuf* pResBuf = nullptr;
+        int ret = acedGetFileNavDialog(_T("Select Python File"), _T(""), _T("py"), _T("Browse Python File"), 0, &pResBuf);
+        if (ret != RTNORM || pResBuf == nullptr)
+        {
+            acutPrintf(_T("\nFailed to read file: "));
+            return false;
+        }
+        std::filesystem::path _path{ pResBuf->resval.rstring };
+        path.fullPath = _path;
+        path.moduleName = moduleNameFromPath(_path);
+        path.modulePath = _path.remove_filename();
+        acutRelRb(pResBuf);
     }
-    std::filesystem::path _path{ pResBuf->resval.rstring };
-
-    path.fullPath = pResBuf->resval.rstring;
-    path.moduleName = moduleNameFromPath(_path);
-    path.modulePath = _path.remove_filename();
-
-    acutRelRb(pResBuf);
+    else
+    {
+        RxAutoOutStr outstr;
+        acedGetFullString(0, _T("Select Python File: "), outstr.buf);
+        std::filesystem::path _path{ outstr.buf};
+        path.fullPath = outstr.buf;
+        path.moduleName = moduleNameFromPath(_path);
+        path.modulePath = _path.remove_filename();
+    }
     return true;
 }
 
