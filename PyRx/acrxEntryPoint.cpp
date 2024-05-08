@@ -282,6 +282,20 @@ public:
         return RSRSLT;
     }
 
+    static int ADSPREFIX(pyreload(void))
+    {
+        WxPyAutoLock lock;
+        AcResBufPtr pArgs(acedGetArgs());
+
+        if (pArgs != nullptr && pArgs->restype == RTSTR)
+        {
+            std::filesystem::path pypath = pArgs->resval.rstring;
+            bool flag = ads_reloadPythonModule(pypath);
+            flag ? acedRetT() : acedRetNil();
+        }
+        return RSRSLT;
+    }
+
     static int ADSPREFIX(pyloaded(void))
     {
         AcResBufPtr pArgs(acutNewRb(RTSTR));
@@ -326,6 +340,7 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_S
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyload, false)
+ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyreload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyloaded, false)
 #ifdef PYPERFPROFILER
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofiler, pyprofiler, ACRX_CMD_MODAL, NULL)
