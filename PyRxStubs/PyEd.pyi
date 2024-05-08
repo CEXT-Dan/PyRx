@@ -779,8 +779,23 @@ class Core(object):
     ...
 
 class CursorType(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kCrosshair (self, *args, **kwargs)-> None :
       '''None'''
@@ -829,8 +844,23 @@ class CursorType(object):
     ...
 
 class DragStatus(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def eNormal (self, *args, **kwargs)-> None :
       '''None'''
@@ -930,8 +960,23 @@ __init__( (object)arg1, (DragStyleType)arg2, (DragStyleType)arg3) -> None :
     ...
 
 class DragStyleType(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kDeletedEffect (self, *args, **kwargs)-> None :
       '''None'''
@@ -1023,8 +1068,23 @@ class DrawJig(object):
     ...
 
 class DrawOrderCmdType(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kDrawOrderAbove (self, *args, **kwargs)-> None :
       '''None'''
@@ -2065,8 +2125,23 @@ class Jig(object):
     ...
 
 class PointHistory(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def eAligned (self, *args, **kwargs)-> None :
       '''None'''
@@ -2148,8 +2223,23 @@ class PointHistory(object):
     ...
 
 class PromptStatus(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def eCancel (self, *args, **kwargs)-> None :
       '''None'''
@@ -2294,8 +2384,23 @@ addDefaultContextMenu( (UIContext)arg1, (str)arg2) -> bool :
     ...
 
 class UserInputControls(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kAccept3dCoordinates (self, *args, **kwargs)-> None :
       '''None'''

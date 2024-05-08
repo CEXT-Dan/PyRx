@@ -9,8 +9,23 @@ import PyPl
 from typing import overload
 
 class AcGeError(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def k0Arg1 (self, *args, **kwargs)-> None :
       '''None'''
@@ -5801,8 +5816,23 @@ class EntityId(object):
     def Helix (self, *args, **kwargs)-> None :
       '''None'''
     ...
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kAugPolyline2d (self, *args, **kwargs)-> None :
       '''None'''
@@ -7182,8 +7212,23 @@ set( (Interval)arg1) -> None :
     ...
 
 class KnotParameterization(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kChord (self, *args, **kwargs)-> None :
       '''None'''
@@ -9778,6 +9823,12 @@ This class cannot be instantiated from Python'''
     ...
 
 class Matrix2d(object):
+    def __imul__ (self, *args, **kwargs)-> PyGe.Matrix2d :
+      '''__imul__( (Matrix2d)arg1, (Matrix2d)arg2) -> Matrix2d :
+
+    C++ signature :
+        class AcGeMatrix2d {lvalue} __imul__(class AcGeMatrix2d {lvalue},class AcGeMatrix2d)'''
+    ...
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -9788,6 +9839,12 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
+    ...
+    def __mul__ (self, *args, **kwargs)-> PyGe.Matrix2d :
+      '''__mul__( (Matrix2d)arg1, (Matrix2d)arg2) -> Matrix2d :
+
+    C++ signature :
+        class AcGeMatrix2d __mul__(class AcGeMatrix2d {lvalue},class AcGeMatrix2d)'''
     ...
     def alignCoordSys (self, *args, **kwargs)-> PyGe.Matrix2d :
       '''alignCoordSys( (Point2d)arg1, (Vector2d)arg2, (Vector2d)arg3, (Point2d)arg4, (Vector2d)arg5, (Vector2d)arg6) -> Matrix2d :
@@ -9973,8 +10030,20 @@ translation( (Vector2d)arg1) -> Matrix2d :
     ...
 
 class Matrix3d(object):
+    def __imul__ (self, *args, **kwargs)-> PyGe.Matrix3d :
+      '''__imul__( (Matrix3d)arg1, (Matrix3d)arg2) -> Matrix3d :
+
+    C++ signature :
+        class AcGeMatrix3d {lvalue} __imul__(class AcGeMatrix3d {lvalue},class AcGeMatrix3d)'''
+    ...
     def __init__ (self)-> None :
       '''                             '''
+    ...
+    def __mul__ (self, *args, **kwargs)-> PyGe.Matrix3d :
+      '''__mul__( (Matrix3d)arg1, (Matrix3d)arg2) -> Matrix3d :
+
+    C++ signature :
+        class AcGeMatrix3d __mul__(class AcGeMatrix3d {lvalue},class AcGeMatrix3d)'''
     ...
     def alignCoordSys (self, *args, **kwargs)-> PyGe.Matrix3d :
       '''alignCoordSys( (Point3d)arg1, (Vector3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (Point3d)arg5, (Vector3d)arg6, (Vector3d)arg7, (Vector3d)arg8) -> Matrix3d :
@@ -11649,8 +11718,23 @@ paramOf( (Surface)arg1, (Point3d)arg2, (Tol)arg3) -> Point2d :
     ...
 
 class OffsetCrvExtType(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kChamfer (self, *args, **kwargs)-> None :
       '''None'''
@@ -12917,6 +13001,18 @@ set( (Plane)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
     ...
 
 class Point2d(object):
+    def __add__ (self, *args, **kwargs)-> PyGe.Point2d :
+      '''__add__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d __add__(class AcGePoint2d {lvalue},class AcGeVector2d)'''
+    ...
+    def __imul__ (self, *args, **kwargs)-> PyGe.Point2d :
+      '''__imul__( (Point2d)arg1, (float)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d {lvalue} __imul__(class AcGePoint2d {lvalue},double)'''
+    ...
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -12927,6 +13023,41 @@ class Point2d(object):
     - None: Any
     - x: float, y: float
     '''
+    ...
+    def __isub__ (self, *args, **kwargs)-> PyGe.Point2d :
+      '''__isub__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d {lvalue} __isub__(class AcGePoint2d {lvalue},class AcGeVector2d)'''
+    ...
+    def __itruediv__ (self, *args, **kwargs)-> PyGe.Point2d :
+      '''__itruediv__( (Point2d)arg1, (float)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d {lvalue} __itruediv__(class AcGePoint2d {lvalue},double)'''
+    ...
+    def __mul__ (self, *args, **kwargs)-> PyGe.Point2d :
+      '''__mul__( (Point2d)arg1, (float)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d __mul__(class AcGePoint2d {lvalue},double)'''
+    ...
+    def __sub__ (self, *args, **kwargs)-> PyGe.Point2d :
+      '''__sub__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d __sub__(class AcGePoint2d {lvalue},class AcGeVector2d)
+
+__sub__( (Point2d)arg1, (Point2d)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d __sub__(class AcGePoint2d {lvalue},class AcGePoint2d)'''
+    ...
+    def __truediv__ (self, *args, **kwargs)-> PyGe.Point2d :
+      '''__truediv__( (Point2d)arg1, (float)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d __truediv__(class AcGePoint2d {lvalue},double)'''
     ...
     def asVector (self)-> PyGe.Vector2d :
       '''                             '''
@@ -12999,6 +13130,12 @@ class Point2d(object):
     ...
 
 class Point3d(object):
+    def __add__ (self, vec: PyGe.Vector3d)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def __imul__ (self, val: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -13015,6 +13152,24 @@ class Point3d(object):
     - x: float,y: float,z: float
     - pln: PyGe.PlanarEnt, pnt2d: PyGe.Point2d
     '''
+    ...
+    def __isub__ (self, vec: PyGe.Vector3d)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def __itruediv__ (self, val: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def __mul__ (self, val: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def __rmul__ (self, val: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def __sub__ (self, val: PyGe.Vector3d | PyGe.Point3d)-> PyGe.Vector3d :
+      '''                             '''
+    ...
+    def __truediv__ (self, val: float)-> PyGe.Point3d :
+      '''                             '''
     ...
     def asVector (self)-> PyGe.Vector3d :
       '''Converts 3D point into 3D vector with the same set of coordinates ( see AcGeVector3d ).Return value is a class AcGeVector3d.'''
@@ -15679,6 +15834,17 @@ class Ray3d(LinearEnt3d):
     ...
 
 class Scale2d(object):
+    def __imul__ (self, *args, **kwargs)-> PyGe.Scale2d :
+      '''__imul__( (Scale2d)arg1, (float)arg2) -> Scale2d :
+
+    C++ signature :
+        class AcGeScale2d {lvalue} __imul__(class AcGeScale2d {lvalue},double)
+
+__imul__( (Scale2d)arg1, (Scale2d)arg2) -> Scale2d :
+
+    C++ signature :
+        class AcGeScale2d {lvalue} __imul__(class AcGeScale2d {lvalue},class AcGeScale2d)'''
+    ...
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -15692,6 +15858,17 @@ class Scale2d(object):
     - factor: float
     - xFactor: float, yFactor: float
     '''
+    ...
+    def __mul__ (self, *args, **kwargs)-> PyGe.Scale2d :
+      '''__mul__( (Scale2d)arg1, (float)arg2) -> Scale2d :
+
+    C++ signature :
+        class AcGeScale2d __mul__(class AcGeScale2d {lvalue},double)
+
+__mul__( (Scale2d)arg1, (Scale2d)arg2) -> Scale2d :
+
+    C++ signature :
+        class AcGeScale2d __mul__(class AcGeScale2d {lvalue},class AcGeScale2d)'''
     ...
     def postMultBy (self, right: PyGe.Scale2d)-> PyGe.Scale2d :
       '''                             '''
@@ -15721,6 +15898,17 @@ class Scale2d(object):
     ...
 
 class Scale3d(object):
+    def __imul__ (self, *args, **kwargs)-> PyGe.Scale3d :
+      '''__imul__( (Scale3d)arg1, (float)arg2) -> Scale3d :
+
+    C++ signature :
+        class AcGeScale3d {lvalue} __imul__(class AcGeScale3d {lvalue},double)
+
+__imul__( (Scale3d)arg1, (Scale3d)arg2) -> Scale3d :
+
+    C++ signature :
+        class AcGeScale3d {lvalue} __imul__(class AcGeScale3d {lvalue},class AcGeScale3d)'''
+    ...
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -15734,6 +15922,17 @@ class Scale3d(object):
     - factor: float
     - sx: float,sy: float,sz: float
     '''
+    ...
+    def __mul__ (self, *args, **kwargs)-> PyGe.Scale3d :
+      '''__mul__( (Scale3d)arg1, (float)arg2) -> Scale3d :
+
+    C++ signature :
+        class AcGeScale3d __mul__(class AcGeScale3d {lvalue},double)
+
+__mul__( (Scale3d)arg1, (Scale3d)arg2) -> Scale3d :
+
+    C++ signature :
+        class AcGeScale3d __mul__(class AcGeScale3d {lvalue},class AcGeScale3d)'''
     ...
     def postMultBy (self, *args, **kwargs)-> PyGe.Scale3d :
       '''postMultBy( (Scale3d)arg1, (Scale3d)arg2) -> Scale3d :
@@ -17322,6 +17521,18 @@ paramOf( (Surface)arg1, (Point3d)arg2, (Tol)arg3) -> Point2d :
     ...
 
 class Vector2d(object):
+    def __add__ (self, *args, **kwargs)-> PyGe.Vector2d :
+      '''__add__( (Vector2d)arg1, (Vector2d)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d __add__(class AcGeVector2d {lvalue},class AcGeVector2d)'''
+    ...
+    def __imul__ (self, *args, **kwargs)-> PyGe.Vector2d :
+      '''__imul__( (Vector2d)arg1, (float)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d {lvalue} __imul__(class AcGeVector2d {lvalue},double)'''
+    ...
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -17332,6 +17543,52 @@ class Vector2d(object):
     - None: Any
     - x: float, y: float
     '''
+    ...
+    def __isub__ (self, *args, **kwargs)-> PyGe.Vector2d :
+      '''__isub__( (Vector2d)arg1, (Vector2d)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d {lvalue} __isub__(class AcGeVector2d {lvalue},class AcGeVector2d)'''
+    ...
+    def __itruediv__ (self, *args, **kwargs)-> PyGe.Vector2d :
+      '''__itruediv__( (Vector2d)arg1, (float)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d {lvalue} __itruediv__(class AcGeVector2d {lvalue},double)'''
+    ...
+    def __mul__ (self, *args, **kwargs)-> PyGe.Vector2d :
+      '''__mul__( (Vector2d)arg1, (float)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d __mul__(class AcGeVector2d {lvalue},double)'''
+    ...
+    def __rmul__ (self, *args, **kwargs)-> PyGe.Vector2d :
+      '''__rmul__( (Vector2d)arg1, (float)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d __rmul__(class AcGeVector2d,double)
+
+__rmul__( (Vector2d)arg1, (Matrix2d)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d __rmul__(class AcGeVector2d,class AcGeMatrix2d)'''
+    ...
+    def __sub__ (self, *args, **kwargs)-> PyGe.Vector2d :
+      '''__sub__( (Vector2d)arg1) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d __sub__(class AcGeVector2d {lvalue})
+
+__sub__( (Vector2d)arg1, (Vector2d)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d __sub__(class AcGeVector2d {lvalue},class AcGeVector2d)'''
+    ...
+    def __truediv__ (self, *args, **kwargs)-> PyGe.Vector2d :
+      '''__truediv__( (Vector2d)arg1, (float)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d __truediv__(class AcGeVector2d {lvalue},double)'''
     ...
     def angle (self)-> float :
       '''                             '''
@@ -17481,6 +17738,18 @@ setToProduct( (Vector2d)arg1, (Matrix2d)arg2, (Vector2d)arg3) -> Vector2d :
     ...
 
 class Vector3d(object):
+    def __add__ (self, *args, **kwargs)-> PyGe.Vector3d :
+      '''__add__( (Vector3d)arg1, (Vector3d)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d __add__(class AcGeVector3d {lvalue},class AcGeVector3d)'''
+    ...
+    def __imul__ (self, *args, **kwargs)-> PyGe.Vector3d :
+      '''__imul__( (Vector3d)arg1, (float)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d {lvalue} __imul__(class AcGeVector3d {lvalue},double)'''
+    ...
 
     @overload
     def __init__ (self, /)-> None : ...
@@ -17497,6 +17766,47 @@ class Vector3d(object):
     - x: float,y: float,z: float
     - pln: PyGe.PlanarEnt, pnt2d: PyGe.Vector2d
     '''
+    ...
+    def __isub__ (self, *args, **kwargs)-> PyGe.Vector3d :
+      '''__isub__( (Vector3d)arg1, (Vector3d)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d {lvalue} __isub__(class AcGeVector3d {lvalue},class AcGeVector3d)'''
+    ...
+    def __itruediv__ (self, *args, **kwargs)-> PyGe.Vector3d :
+      '''__itruediv__( (Vector3d)arg1, (float)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d {lvalue} __itruediv__(class AcGeVector3d {lvalue},double)'''
+    ...
+    def __mul__ (self, *args, **kwargs)-> PyGe.Vector3d :
+      '''__mul__( (Vector3d)arg1, (float)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d __mul__(class AcGeVector3d {lvalue},double)'''
+    ...
+    def __rmul__ (self, *args, **kwargs)-> PyGe.Vector3d :
+      '''__rmul__( (Vector3d)arg1, (float)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d __rmul__(class AcGeVector3d,double)
+
+__rmul__( (Vector3d)arg1, (Matrix3d)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d __rmul__(class AcGeVector3d,class AcGeMatrix3d)'''
+    ...
+    def __sub__ (self, *args, **kwargs)-> PyGe.Vector3d :
+      '''__sub__( (Vector3d)arg1, (Vector3d)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d __sub__(class AcGeVector3d {lvalue},class AcGeVector3d)'''
+    ...
+    def __truediv__ (self, *args, **kwargs)-> PyGe.Vector3d :
+      '''__truediv__( (Vector3d)arg1, (float)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d __truediv__(class AcGeVector3d {lvalue},double)'''
     ...
     def angleOnPlane (self, pln: PyGe.PlanarEnt)-> float :
       '''Returns the angle between the orthogonal projection of this vector into the plane through the origin with the same normal as planar entity pln and the zeroth basis vector v0 of the planar entity pln provided by the function pln.getCoordSystem (p, v0, v1).'''

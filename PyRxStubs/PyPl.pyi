@@ -34,8 +34,23 @@ class Core(object):
     ...
 
 class CustomSizeResult(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def eDeviceLoadFailed (self, *args, **kwargs)-> None :
       '''None'''
@@ -602,8 +617,23 @@ class DSDEntry(PlObject):
     ...
 
 class DeviceType(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kOneOffConfig (self, *args, **kwargs)-> None :
       '''None'''
@@ -622,8 +652,23 @@ class DeviceType(object):
     ...
 
 class MatchingPolicy(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kMatchDisabled (self, *args, **kwargs)-> None :
       '''None'''
@@ -685,8 +730,23 @@ This class cannot be instantiated from Python'''
     ...
 
 class PlotCancelStatus(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kPlotCancelStatusCount (self, *args, **kwargs)-> None :
       '''None'''
@@ -1413,8 +1473,23 @@ class PlotInfoValidator(PlObject):
     ...
 
 class PlotMSGIndex(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kCancelJobBtnMsg (self, *args, **kwargs)-> None :
       '''None'''
@@ -1714,8 +1789,23 @@ __init__( (object)arg1, (int)arg2, (bool)arg3, (int)arg4, (bool)arg5) -> None :
     ...
 
 class PlotToFileCapability(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kMustPlotToFile (self, *args, **kwargs)-> None :
       '''None'''
@@ -1877,8 +1967,23 @@ __init__( (object)arg1) -> None :
     ...
 
 class ProcessPlotState(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kBackgroundPlotting (self, *args, **kwargs)-> None :
       '''None'''
@@ -1894,8 +1999,23 @@ class ProcessPlotState(object):
     ...
 
 class RefreshCode(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kAll (self, *args, **kwargs)-> None :
       '''None'''
@@ -1917,8 +2037,23 @@ class RefreshCode(object):
     ...
 
 class SetupType(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def k3dDwf (self, *args, **kwargs)-> None :
       '''None'''
@@ -1940,8 +2075,23 @@ class SetupType(object):
     ...
 
 class SheetCancelStatus(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kSheetCancelStatusCount (self, *args, **kwargs)-> None :
       '''None'''
@@ -1963,8 +2113,23 @@ class SheetCancelStatus(object):
     ...
 
 class SheetType(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kMultiDWF (self, *args, **kwargs)-> None :
       '''None'''
@@ -1998,8 +2163,23 @@ class SheetType(object):
     ...
 
 class StdConfigs(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kDWF6ePlot (self, *args, **kwargs)-> None :
       '''None'''
@@ -2054,8 +2234,23 @@ class StdConfigs(object):
     ...
 
 class StyTypes(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kAllTypes (self, *args, **kwargs)-> None :
       '''None'''

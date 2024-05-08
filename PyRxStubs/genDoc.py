@@ -46,6 +46,22 @@ def include_attr(name) -> bool:
     try:
         if name == '__init__':
             return True
+        elif name ==  '__mul__':
+            return True
+        elif name ==  '__imul__':
+            return True
+        elif name ==  '__rmul__':
+            return True
+        elif name ==  '__truediv__':
+            return True
+        elif name ==  '__itruediv__':
+            return True
+        elif name ==  '__add__':
+            return True
+        elif name ==  '__sub__':
+            return True
+        elif name ==  '__isub__':
+            return True
         elif name.startswith('__'):
             return False
         elif name == 'names':

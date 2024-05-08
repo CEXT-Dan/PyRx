@@ -9,8 +9,23 @@ import PyPl
 from typing import overload
 
 class ArcType(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kAcGiArcChord (self, *args, **kwargs)-> None :
       '''None'''
@@ -81,8 +96,23 @@ This class cannot be instantiated from Python'''
     ...
 
 class DefaultLightingType(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kBackLighting (self, *args, **kwargs)-> None :
       '''None'''
@@ -98,8 +128,23 @@ class DefaultLightingType(object):
     ...
 
 class DrawFlags(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kDrawFillSelectionWindow (self, *args, **kwargs)-> None :
       '''None'''
@@ -485,8 +530,23 @@ This class cannot be instantiated from Python'''
     ...
 
 class FillType(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kAcGiFillAlways (self, *args, **kwargs)-> None :
       '''None'''
@@ -630,8 +690,23 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (ArcTy
     ...
 
 class GiAttributesFlags(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kDrawableBlockDependentViewportDraw (self, *args, **kwargs)-> None :
       '''None'''
@@ -695,8 +770,23 @@ class GiAttributesFlags(object):
     ...
 
 class GiDrawableType(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kAmbientLight (self, *args, **kwargs)-> None :
       '''None'''
@@ -772,8 +862,23 @@ This class cannot be instantiated from Python'''
     ...
 
 class OrientationTransformBehavior(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kAcGiScreenOrientation (self, *args, **kwargs)-> None :
       '''None'''
@@ -789,8 +894,23 @@ class OrientationTransformBehavior(object):
     ...
 
 class OrientationType(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kAcGiClockwise (self, *args, **kwargs)-> None :
       '''None'''
@@ -806,8 +926,23 @@ class OrientationType(object):
     ...
 
 class PositionTransformBehavior(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kAcGiScreenLocalOriginPosition (self, *args, **kwargs)-> None :
       '''None'''
@@ -829,8 +964,23 @@ class PositionTransformBehavior(object):
     ...
 
 class RegenType(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def eAcGiRegenTypeInvalid (self, *args, **kwargs)-> None :
       '''None'''
@@ -855,8 +1005,23 @@ class RegenType(object):
     ...
 
 class ScaleTransformBehavior(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kAcGiScreenLocalOriginScale (self, *args, **kwargs)-> None :
       '''None'''
@@ -878,8 +1043,23 @@ class ScaleTransformBehavior(object):
     ...
 
 class SelectionFlags(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kNoSelectionFlags (self, *args, **kwargs)-> None :
       '''None'''
@@ -892,8 +1072,23 @@ class SelectionFlags(object):
     ...
 
 class ShadowFlags(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kNoDrawFlags (self, *args, **kwargs)-> None :
       '''None'''
@@ -1055,8 +1250,23 @@ This class cannot be instantiated from Python'''
     ...
 
 class TransientDrawingMode(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kAcGiContrast (self, *args, **kwargs)-> None :
       '''None'''
@@ -1118,8 +1328,23 @@ class TransientManager(object):
     ...
 
 class TransparencyMode(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kTransparency1Bit (self, *args, **kwargs)-> None :
       '''None'''
@@ -1322,8 +1547,23 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (ArcTy
     ...
 
 class Visibility(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kAcGiInvisible (self, *args, **kwargs)-> None :
       '''None'''

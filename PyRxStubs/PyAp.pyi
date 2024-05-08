@@ -9,8 +9,23 @@ import PyPl
 from typing import overload
 
 class AdUiTitleBarLocation(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kLeft (self, *args, **kwargs)-> None :
       '''None'''
@@ -689,8 +704,23 @@ Base 0 means to interpret the base from the string as an integer literal.
     ...
 
 class DocLockMode(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def kAutoWrite (self, *args, **kwargs)-> None :
       '''None'''
@@ -1517,8 +1547,23 @@ class ResourceOverride(object):
     ...
 
 class SaveFormat(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
     ...
     def k2000_Standard (self, *args, **kwargs)-> None :
       '''None'''
