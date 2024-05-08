@@ -27,52 +27,38 @@ using namespace boost::python;
 
 //---------------------------------------------------------------------------------------------------------------
 // hashing
-// 
-// this is not exact, the rule is 
-// (Point1 == Point2) == (Point1.__hash__() ==  Point2.__hash__())
-// must be true, we use AutoCad's (Point1 == Point2) which has different behavior than rounding each element
-
-inline double roundPointComponentTo(double value, double precision = AcGeContext::gTol.equalPoint())
-{
-    return std::round(value / precision) * precision;
-}
-
-inline double roundVectorComponentTo(double value, double precision = AcGeContext::gTol.equalVector())
-{
-    return std::round(value / precision) * precision;
-}
 
 inline std::size_t AcGePoint2dHash(const AcGePoint2d& p)
 {
     std::size_t seed = 0;
-    boost::hash_combine(seed, roundPointComponentTo(p.x));
-    boost::hash_combine(seed, roundPointComponentTo(p.y));
+    boost::hash_combine(seed, p.x);
+    boost::hash_combine(seed, p.y);
     return seed;
 }
 
 inline std::size_t AcGeVector2dHash(const AcGeVector2d& p)
 {
     std::size_t seed = 0;
-    boost::hash_combine(seed, roundVectorComponentTo(p.x));
-    boost::hash_combine(seed, roundVectorComponentTo(p.y));
+    boost::hash_combine(seed, p.x);
+    boost::hash_combine(seed, p.y);
     return seed;
 }
 
 inline std::size_t AcGePoint3dHash(const AcGePoint3d& p)
 {
     std::size_t seed = 0;
-    boost::hash_combine(seed, roundPointComponentTo(p.x));
-    boost::hash_combine(seed, roundPointComponentTo(p.y));
-    boost::hash_combine(seed, roundPointComponentTo(p.z));
+    boost::hash_combine(seed, p.x);
+    boost::hash_combine(seed, p.y);
+    boost::hash_combine(seed, p.z);
     return seed;
 }
 
 inline std::size_t AcGeVector3dHash(const AcGeVector3d& p)
 {
     std::size_t seed = 0;
-    boost::hash_combine(seed, roundVectorComponentTo(p.x));
-    boost::hash_combine(seed, roundVectorComponentTo(p.y));
-    boost::hash_combine(seed, roundVectorComponentTo(p.z));
+    boost::hash_combine(seed, p.x);
+    boost::hash_combine(seed, p.y);
+    boost::hash_combine(seed, p.z);
     return seed;
 }
 
@@ -1271,8 +1257,8 @@ void makePyGeMatrix3dWrapper()
         .def("toString", &AcGeMatrix3dToString, DS.ARGS())
         .def("toList", &AcGeMatrix3dToList, DS.ARGS())
         .def("toTuple", &AcGeMatrix3dToTuple, DS.ARGS())
-        .def("__str__", &AcGeMatrix3dToString)
-        .def("__repr__", &AcGeMatrix3dToStringRepr)
+        .def("__str__", &AcGeMatrix3dToString, DS.ARGS())
+        .def("__repr__", &AcGeMatrix3dToStringRepr, DS.ARGS())
         ;
 }
 
