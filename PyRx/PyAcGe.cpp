@@ -27,7 +27,6 @@ using namespace boost::python;
 
 //---------------------------------------------------------------------------------------------------------------
 // hashing
-
 inline std::size_t AcGePoint2dHash(const AcGePoint2d& p)
 {
     std::size_t seed = 0;
@@ -772,6 +771,7 @@ void makePyGePoint3dWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
+        "- floats: tuple[float] | list[float]\n"
         "- x: float,y: float,z: float\n"
         "- pln: PyGe.PlanarEnt, pnt2d: PyGe.Point2d\n";
 
@@ -803,28 +803,35 @@ void makePyGePoint3dWrapper()
         .def("isEqualTo", &AcGePoint3d::isEqualTo, DS.ARGS({ "pnt: PyGe.Point3d", "tol: PyGe.Tol=None" }, 12584), arg("AcGeTol") = getTol())
         .def<AcGePoint3d& (AcGePoint3d::*)(const AcGePlanarEnt&, const AcGePoint2d&)>("set", &AcGePoint3d::set, return_self<>())
         .def<AcGePoint3d& (AcGePoint3d::*)(double, double, double)>("set", &AcGePoint3d::set, return_self<>(), DS.OVRL(setOverloads))
-        .def("__eq__", &AcGePoint3d::operator==)
-        .def("__ne__", &AcGePoint3d::operator!=)
-        .def<AcGePoint3d(AcGePoint3d::*)(double)const>("__mul__", &AcGePoint3d::operator*)
-        .def<AcGePoint3d& (AcGePoint3d::*)(double)>("__imul__", &AcGePoint3d::operator*=, return_self<>())
-        .def("__rmul__", &rmul_double_AcGepoint3d)
-        .def("__rmul__", &rmul_AcGePoint3d_AcGeMatrix3d)
-        .def<AcGePoint3d(AcGePoint3d::*)(double)const>("__truediv__", &AcGePoint3d::operator/)
-        .def<AcGePoint3d& (AcGePoint3d::*)(double)>("__itruediv__", &AcGePoint3d::operator/=, return_self<>())
-        .def<AcGePoint3d(AcGePoint3d::*)(const AcGeVector3d&)const>("__add__", &AcGePoint3d::operator+)
-        .def<AcGePoint3d& (AcGePoint3d::*)(const AcGeVector3d&)>("__iadd__", &AcGePoint3d::operator+=, return_self<>())
-        .def<AcGePoint3d(AcGePoint3d::*)(const AcGeVector3d&)const>("__sub__", &AcGePoint3d::operator-)
-        .def<AcGePoint3d& (AcGePoint3d::*)(const AcGeVector3d&)>("__isub__", &AcGePoint3d::operator-=, return_self<>())
+
+        .def("__eq__", &AcGePoint3d::operator==, DS.ARGS({ "pt: PyGe.Point3d" }))
+        .def("__ne__", &AcGePoint3d::operator!=, DS.ARGS({ "pt: PyGe.Point3d" }))
+
+        .def<AcGePoint3d(AcGePoint3d::*)(double)const>("__mul__", &AcGePoint3d::operator*, DS.ARGS({ "val: float" }))
+        .def<AcGePoint3d& (AcGePoint3d::*)(double)>("__imul__", &AcGePoint3d::operator*=, return_self<>(), DS.ARGS({ "val: float" }))
+
+        .def("__rmul__", &rmul_double_AcGepoint3d, DS.ARGS({ "val: float" }))
+        .def("__rmul__", &rmul_AcGePoint3d_AcGeMatrix3d, DS.ARGS({ "xform: PyGe.Matrix3d" }))
+
+        .def<AcGePoint3d(AcGePoint3d::*)(double)const>("__truediv__", &AcGePoint3d::operator/, DS.ARGS({ "val: float" }))
+        .def<AcGePoint3d& (AcGePoint3d::*)(double)>("__itruediv__", &AcGePoint3d::operator/=, DS.ARGS({ "val: float" }), return_self<>())
+
+        .def<AcGePoint3d(AcGePoint3d::*)(const AcGeVector3d&)const>("__add__", &AcGePoint3d::operator+, DS.ARGS({ "vec: PyGe.Vector3d" }))
+        .def<AcGePoint3d& (AcGePoint3d::*)(const AcGeVector3d&)>("__iadd__", &AcGePoint3d::operator+=, DS.ARGS({ "vec: PyGe.Vector3d" }), return_self<>())
+
         .def<AcGeVector3d(AcGePoint3d::*)(const AcGePoint3d&)const>("__sub__", &AcGePoint3d::operator-)
+        .def<AcGePoint3d(AcGePoint3d::*)(const AcGeVector3d&)const>("__sub__", &AcGePoint3d::operator-, DS.ARGS({ "val: PyGe.Vector3d | PyGe.Point3d" }))
+        .def<AcGePoint3d& (AcGePoint3d::*)(const AcGeVector3d&)>("__isub__", &AcGePoint3d::operator-=, DS.ARGS({ "vec: PyGe.Vector3d" }), return_self<>())
+
         .def_pickle(AcGePoint3dpickle())
         .def("toList", &AcGePoint3dToList, DS.ARGS())
         .def("toTuple", &AcGePoint3dToTuple, DS.ARGS())
         .def("toString", &AcGePoint3dToString, DS.ARGS())
-        .def("__str__", &AcGePoint3dToString)
-        .def("__repr__", &AcGePoint3dToStringRepr)
-        .def("__hash__", &AcGePoint3dHash)
-        .def("__getitem__", &AcGePoint3dGetItem)
-        .def("__setitem__", &AcGePoint3dSetItem)
+        .def("__str__", &AcGePoint3dToString, DS.ARGS())
+        .def("__repr__", &AcGePoint3dToStringRepr, DS.ARGS())
+        .def("__hash__", &AcGePoint3dHash, DS.ARGS())
+        .def("__getitem__", &AcGePoint3dGetItem, DS.ARGS({ "idx: int" }))
+        .def("__setitem__", &AcGePoint3dSetItem, DS.ARGS({ "idx: int","val: float" }))
         .def("__init__", make_constructor(&PyGePoint3dInitTuple))
         ;
 }
@@ -939,6 +946,7 @@ static void makePyGeVector3dWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
+        "- floats: tuple[float] | list[float]\n"
         "- x: float,y: float,z: float\n"
         "- pln: PyGe.PlanarEnt, pnt2d: PyGe.Vector2d\n";
 
