@@ -22,19 +22,12 @@
 #include "PyGeSurfSurfInt.h"
 #include "PyGeKnotVector.h"
 
-// TODO: memory management is awkward in AcGeEntity!
-// check Composite Entity memory handling
-// CompositeCurve3d returns member pointers which may cause issues.
-// it may be safer to return copies of everything 
 
 using namespace boost::python;
 
-//TODO: make a AcGeVoidPointerArrayToList, cast to the correct object here so the user does not have to
-//boost::python::list AcGeVoidPointerArrayToList(const AcGeVoidPointerArray& src)
-
 //---------------------------------------------------------------------------------------------------------------
-//hashing
-
+// hashing
+// 
 // this is not exact, the rule is 
 // (Point1 == Point2) == (Point1.__hash__() ==  Point2.__hash__())
 // must be true, we use AutoCad's (Point1 == Point2) which has different behavior than rounding each element

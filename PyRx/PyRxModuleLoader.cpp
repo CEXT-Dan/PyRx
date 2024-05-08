@@ -58,7 +58,8 @@ bool showNavFileDialog(PyModulePath& path)
     else
     {
         RxAutoOutStr outstr;
-        acedGetFullString(0, _T("Select Python File: "), outstr.buf);
+        if (acedGetFullString(0, _T("Select Python File: "), outstr.buf) != RTNORM)
+            return false;
         std::filesystem::path _path{ outstr.buf};
         path.fullPath = outstr.buf;
         path.moduleName = moduleNameFromPath(_path);
