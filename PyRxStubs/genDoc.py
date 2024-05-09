@@ -62,6 +62,10 @@ def include_attr(name) -> bool:
             return True
         elif name ==  '__isub__':
             return True
+        elif name ==  '__getitem__':
+            return True
+        elif name ==  '__setitem__':
+            return True
         elif name.startswith('__'):
             return False
         elif name == 'names':
