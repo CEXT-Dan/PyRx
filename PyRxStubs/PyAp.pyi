@@ -1332,6 +1332,9 @@ class LayoutManager(PyDb.LayoutManager):
     def getClipBoundaryElabration (self, val : PyDb.ObjectId)-> list :
       '''                             '''
     ...
+    def getLayouts (self, db: PyDb.Database=None)-> dict :
+      '''                             '''
+    ...
     def getNonRectVPIdFromClipId (self, id: PyDb.ObjectId)-> PyDb.ObjectId :
       '''                             '''
     ...

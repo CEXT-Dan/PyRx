@@ -151,6 +151,9 @@ public:
     int                 countLayouts1();
     int                 countLayouts2(PyDbDatabase& pDb);
 
+    boost::python::dict getLayouts1();
+    boost::python::dict getLayouts2(PyDbDatabase& pDb);
+
     //void              addReactor(AcDbLayoutManagerReactor* newObj);
     //void              removeReactor(AcDbLayoutManagerReactor* delObj)
 
