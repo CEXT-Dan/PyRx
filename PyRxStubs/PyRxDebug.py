@@ -24,7 +24,7 @@ def startListener():
         #config
         DEBUG_HOST = "127.0.0.1"
         DEBUG_PORT = 5678
-        PYTHON_PATH = sys.prefix + "\\python.exe"
+        PYTHON_PATH = sys.base_prefix + "\\python.exe"
         
         os.environ["PYDEVD_DISABLE_FILE_VALIDATION"] = "1"
         debugpy.configure(python=PYTHON_PATH)
