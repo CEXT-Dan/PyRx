@@ -715,6 +715,8 @@ void makePyDbLayoutManagerWrapper()
         .def("isVpnumClipped", &PyDbLayoutManager::isVpnumClipped2, DS.ARGS({ "idx: int","db: PyDb.Database=None" }))
         .def("countLayouts", &PyDbLayoutManager::countLayouts1)
         .def("countLayouts", &PyDbLayoutManager::countLayouts2, DS.ARGS({ "db: PyDb.Database=None" }))
+        .def("getLayouts", &PyDbLayoutManager::getLayouts1)
+        .def("getLayouts", &PyDbLayoutManager::getLayouts2, DS.ARGS({ "db: PyDb.Database=None" }))
         .def("setupForLayouts", &PyDbLayoutManager::setupForLayouts, DS.SARGS({ "db: PyDb.Database" })).staticmethod("setupForLayouts")
         .def("clearSetupForLayouts", &PyDbLayoutManager::clearSetupForLayouts, DS.SARGS({ "handle: int" })).staticmethod("clearSetupForLayouts")
         .def("desc", &PyDbLayoutManager::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -813,7 +815,7 @@ void PyDbLayoutManager::deleteLayout2(const std::string& delname, PyDbDatabase& 
 
 boost::python::tuple PyDbLayoutManager::createLayout1(const std::string& newname)
 {
-    PyDbObjectId layoutId; 
+    PyDbObjectId layoutId;
     PyDbObjectId blockTableRecId;
     PyThrowBadEs(impObj()->createLayout(utf8_to_wstr(newname).c_str(), layoutId.m_id, blockTableRecId.m_id));
     return boost::python::make_tuple(layoutId, blockTableRecId);
@@ -870,6 +872,34 @@ int PyDbLayoutManager::countLayouts1()
 int PyDbLayoutManager::countLayouts2(PyDbDatabase& pDb)
 {
     return impObj()->countLayouts(pDb.impObj());
+}
+
+static boost::python::dict getLayouts(AcDbDatabase* pDb)
+{
+    PyAutoLockGIL lock;
+    boost::python::dict _items;
+    if (pDb != nullptr)
+    {
+        AcDbDictionaryPointer pLayouts(pDb->layoutDictionaryId());
+        for (std::unique_ptr<AcDbDictionaryIterator> iter(pLayouts->newIterator()); !iter->done(); iter->next())
+        {
+            const std::string& utf8name = wstr_to_utf8(iter->name());
+            _items[utf8name] = PyDbObjectId(iter->objectId());
+
+        }
+    }
+    return _items;
+}
+
+boost::python::dict PyDbLayoutManager::getLayouts1()
+{
+    AcDbDatabase* pDb = acdbHostApplicationServices()->workingDatabase();
+    return getLayouts(pDb);
+}
+
+boost::python::dict PyDbLayoutManager::getLayouts2(PyDbDatabase& pDb)
+{
+    return getLayouts(pDb.impObj());
 }
 
 Adesk::ULongPtr PyDbLayoutManager::setupForLayouts(PyDbDatabase& pDb)
