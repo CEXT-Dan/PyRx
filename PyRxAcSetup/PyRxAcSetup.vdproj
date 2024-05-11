@@ -34,6 +34,12 @@
         "Entry"
         {
         "MsmKey" = "8:_072CE5CE48B8AEB352E9D02651E754B2"
+        "OwnerKey" = "8:_CAF784A33690446583566565CE0793C4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_072CE5CE48B8AEB352E9D02651E754B2"
         "OwnerKey" = "8:_C477AE423CF94A06AE9703DC61025681"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -75,8 +81,26 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_07BC4903FC3B4C3A9067AD3617933997"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_10127E569CEEB062F9F0361D248AF77F"
         "OwnerKey" = "8:_00A567BF228F4618A21F0703E846E917"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_10127E569CEEB062F9F0361D248AF77F"
+        "OwnerKey" = "8:_CAF784A33690446583566565CE0793C4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_10127E569CEEB062F9F0361D248AF77F"
+        "OwnerKey" = "8:_07BC4903FC3B4C3A9067AD3617933997"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -244,6 +268,18 @@
         "Entry"
         {
         "MsmKey" = "8:_24F3815953066E4CC3E479947F25FE7F"
+        "OwnerKey" = "8:_CAF784A33690446583566565CE0793C4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_24F3815953066E4CC3E479947F25FE7F"
+        "OwnerKey" = "8:_07BC4903FC3B4C3A9067AD3617933997"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_24F3815953066E4CC3E479947F25FE7F"
         "OwnerKey" = "8:_FF6AD2FEE6A3481395D38D0B26425D32"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -400,6 +436,18 @@
         "Entry"
         {
         "MsmKey" = "8:_35628468CF739D2D5A385FA8A51C84BF"
+        "OwnerKey" = "8:_CAF784A33690446583566565CE0793C4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_35628468CF739D2D5A385FA8A51C84BF"
+        "OwnerKey" = "8:_07BC4903FC3B4C3A9067AD3617933997"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_35628468CF739D2D5A385FA8A51C84BF"
         "OwnerKey" = "8:_FF6AD2FEE6A3481395D38D0B26425D32"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -532,6 +580,18 @@
         "Entry"
         {
         "MsmKey" = "8:_3CC1685071071AA68B6C7CCB257708AA"
+        "OwnerKey" = "8:_CAF784A33690446583566565CE0793C4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3CC1685071071AA68B6C7CCB257708AA"
+        "OwnerKey" = "8:_07BC4903FC3B4C3A9067AD3617933997"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3CC1685071071AA68B6C7CCB257708AA"
         "OwnerKey" = "8:_FF6AD2FEE6A3481395D38D0B26425D32"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -658,25 +718,7 @@
         "Entry"
         {
         "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_FF6AD2FEE6A3481395D38D0B26425D32"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_F80AA2A9BFE042E49AFACBD5ABD19774"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_F0762DA2EB93401ABCF4EAED157BD1FF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_CEB2CCE358814411AECEC4A41C62651C"
+        "OwnerKey" = "8:_CAF784A33690446583566565CE0793C4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -706,49 +748,7 @@
         "Entry"
         {
         "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_9032A0DF83F64EFD827C80C4B9CD79C4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_883E7BC3407A46C2838034D3C9B92C0F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_7146CD4324354DA282D793FA5CB1A614"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_7117C90B702B44EDA0FAD356DC95FFEA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_6D0494D9D4E54096A6ACFBD935FCCC63"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_605CFD7AB76C4B66B82ECDA33562C6C2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
         "OwnerKey" = "8:_385B03B2DEDE4D2C9ACFD82978F72385"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_3553517E3AEE4015B2D90C92B7893CB1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -760,25 +760,19 @@
         "Entry"
         {
         "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_30E02C79E203458293B6EA8D1FD1C630"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
         "OwnerKey" = "8:_30670A9882814371AE117F11CA97C30E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D61A0516BB78C7ADBCC69D91C4724EE"
-        "OwnerKey" = "8:_1D07E9B02EF74C359FA45D9119085C68"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_3FD0CCE84E0FD8C08F666FC7CC6DF542"
         "OwnerKey" = "8:_00A567BF228F4618A21F0703E846E917"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3FD0CCE84E0FD8C08F666FC7CC6DF542"
+        "OwnerKey" = "8:_CAF784A33690446583566565CE0793C4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -827,6 +821,18 @@
         {
         "MsmKey" = "8:_50F533996434EC4E83FEA0C2636B6FC2"
         "OwnerKey" = "8:_00A567BF228F4618A21F0703E846E917"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_50F533996434EC4E83FEA0C2636B6FC2"
+        "OwnerKey" = "8:_CAF784A33690446583566565CE0793C4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_50F533996434EC4E83FEA0C2636B6FC2"
+        "OwnerKey" = "8:_07BC4903FC3B4C3A9067AD3617933997"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -953,6 +959,18 @@
         {
         "MsmKey" = "8:_521B287DD19A701012EA90F0A53242D5"
         "OwnerKey" = "8:_00A567BF228F4618A21F0703E846E917"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_521B287DD19A701012EA90F0A53242D5"
+        "OwnerKey" = "8:_CAF784A33690446583566565CE0793C4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_521B287DD19A701012EA90F0A53242D5"
+        "OwnerKey" = "8:_07BC4903FC3B4C3A9067AD3617933997"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1079,6 +1097,18 @@
         {
         "MsmKey" = "8:_5A6D42152638FDDE2CC05B5FE92A2368"
         "OwnerKey" = "8:_00A567BF228F4618A21F0703E846E917"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5A6D42152638FDDE2CC05B5FE92A2368"
+        "OwnerKey" = "8:_CAF784A33690446583566565CE0793C4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5A6D42152638FDDE2CC05B5FE92A2368"
+        "OwnerKey" = "8:_07BC4903FC3B4C3A9067AD3617933997"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1259,6 +1289,18 @@
         {
         "MsmKey" = "8:_7EFE83001E2D2FF98371FCB2149FD30D"
         "OwnerKey" = "8:_00A567BF228F4618A21F0703E846E917"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7EFE83001E2D2FF98371FCB2149FD30D"
+        "OwnerKey" = "8:_CAF784A33690446583566565CE0793C4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7EFE83001E2D2FF98371FCB2149FD30D"
+        "OwnerKey" = "8:_07BC4903FC3B4C3A9067AD3617933997"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1467,6 +1509,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_CAF784A33690446583566565CE0793C4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CD1BB199E066411E830AFF53FBD12106"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1499,6 +1547,18 @@
         {
         "MsmKey" = "8:_E964F9F2519DA74DA97BE342BBA5D26E"
         "OwnerKey" = "8:_00A567BF228F4618A21F0703E846E917"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E964F9F2519DA74DA97BE342BBA5D26E"
+        "OwnerKey" = "8:_CAF784A33690446583566565CE0793C4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E964F9F2519DA74DA97BE342BBA5D26E"
+        "OwnerKey" = "8:_07BC4903FC3B4C3A9067AD3617933997"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -3080,7 +3140,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_00A567BF228F4618A21F0703E846E917"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.0\\x64\\Debug\\PyRx24.0.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.0\\x64\\Release\\PyRx24.0.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
@@ -3106,9 +3166,37 @@
                 {
                 }
             }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_07BC4903FC3B4C3A9067AD3617933997"
+            {
+            "SourcePath" = "8:..\\Bin\\PyRxZ25.0\\x64\\Release\\RxLoaderZ25.0.zrx"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{B4A8CCF5-B59C-4509-84BE-6F4CB29EBD0C}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1D07E9B02EF74C359FA45D9119085C68"
             {
-            "SourcePath" = "8:..\\Bin\\PyRxZ24.0\\x64\\Debug\\RxLoaderZ24.0.zrx"
+            "SourcePath" = "8:..\\Bin\\PyRxZ24.0\\x64\\Release\\RxLoaderZ24.0.zrx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
@@ -3136,7 +3224,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_30670A9882814371AE117F11CA97C30E"
             {
-            "SourcePath" = "8:..\\Bin\\PyRxZ24.0\\x64\\Debug\\PyRxZ24.0.zrx"
+            "SourcePath" = "8:..\\Bin\\PyRxZ24.0\\x64\\Release\\PyRxZ24.0.zrx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
@@ -3164,7 +3252,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_30E02C79E203458293B6EA8D1FD1C630"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx25.0\\x64\\Debug\\RxLoader25.0.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx25.0\\x64\\Release\\RxLoader25.0.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
@@ -3192,7 +3280,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3164CBB5078F4A6DB846F850519B9129"
             {
-            "SourcePath" = "8:..\\Bin\\PyRxV24.0\\x64\\Debug\\PyRxV24.0.brx"
+            "SourcePath" = "8:..\\Bin\\PyRxV24.0\\x64\\Release\\PyRxV24.0.brx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
@@ -3220,7 +3308,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3553517E3AEE4015B2D90C92B7893CB1"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx25.0\\x64\\Debug\\RxLoader25.0.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx25.0\\x64\\Release\\RxLoader25.0.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -3248,7 +3336,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_385B03B2DEDE4D2C9ACFD82978F72385"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx25.0\\x64\\Debug\\PyRx25.0.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx25.0\\x64\\Release\\PyRx25.0.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
@@ -3276,7 +3364,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_605CFD7AB76C4B66B82ECDA33562C6C2"
             {
-            "SourcePath" = "8:..\\Bin\\PyRxG24.0\\x64\\Debug\\RxLoaderG24.0.grx"
+            "SourcePath" = "8:..\\Bin\\PyRxG24.0\\x64\\Release\\RxLoaderG24.0.grx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
@@ -3304,7 +3392,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_6D0494D9D4E54096A6ACFBD935FCCC63"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.3\\x64\\Debug\\RxLoader24.3.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.3\\x64\\Release\\RxLoader24.3.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -3332,7 +3420,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7117C90B702B44EDA0FAD356DC95FFEA"
             {
-            "SourcePath" = "8:..\\Bin\\PyRxV24.0\\x64\\Debug\\RxLoaderV24.0.brx"
+            "SourcePath" = "8:..\\Bin\\PyRxV24.0\\x64\\Release\\RxLoaderV24.0.brx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
@@ -3360,7 +3448,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7146CD4324354DA282D793FA5CB1A614"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.1\\x64\\Debug\\RxLoader24.1.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.1\\x64\\Release\\RxLoader24.1.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
@@ -3388,7 +3476,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_883E7BC3407A46C2838034D3C9B92C0F"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.0\\x64\\Debug\\RxLoader24.0.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.0\\x64\\Release\\RxLoader24.0.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
@@ -3416,7 +3504,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9032A0DF83F64EFD827C80C4B9CD79C4"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.1\\x64\\Debug\\RxLoader24.1.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.1\\x64\\Release\\RxLoader24.1.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -3444,7 +3532,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9A919C9BB9A7482194EE9A3004AD9A81"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.1\\x64\\Debug\\PyRx24.1.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.1\\x64\\Release\\PyRx24.1.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
@@ -3472,7 +3560,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A3C4FCED79784A4C90975E9D41525B6A"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.2\\x64\\Debug\\PyRx24.2.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.2\\x64\\Release\\PyRx24.2.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
@@ -3500,7 +3588,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B3715CA3E0DC40D0A7CC851A6852FE71"
             {
-            "SourcePath" = "8:..\\Bin\\PyRxG24.0\\x64\\Debug\\PyRxG24.0.grx"
+            "SourcePath" = "8:..\\Bin\\PyRxG24.0\\x64\\Release\\PyRxG24.0.grx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
@@ -3528,7 +3616,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C477AE423CF94A06AE9703DC61025681"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.3\\x64\\Debug\\PyRx24.3.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.3\\x64\\Release\\PyRx24.3.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
@@ -3554,9 +3642,37 @@
                 {
                 }
             }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_CAF784A33690446583566565CE0793C4"
+            {
+            "SourcePath" = "8:..\\Bin\\PyRxZ25.0\\x64\\Release\\PyRxZ25.0.zrx"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{254ED7F5-4891-44D2-A6BD-F5B3891ECDBF}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_CEB2CCE358814411AECEC4A41C62651C"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.0\\x64\\Debug\\RxLoader24.0.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.0\\x64\\Release\\RxLoader24.0.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -3584,7 +3700,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F0762DA2EB93401ABCF4EAED157BD1FF"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.3\\x64\\Debug\\RxLoader24.3.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.3\\x64\\Release\\RxLoader24.3.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
@@ -3612,7 +3728,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F80AA2A9BFE042E49AFACBD5ABD19774"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.2\\x64\\Debug\\RxLoader24.2.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.2\\x64\\Release\\RxLoader24.2.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -3640,7 +3756,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_FF6AD2FEE6A3481395D38D0B26425D32"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.2\\x64\\Debug\\RxLoader24.2.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.2\\x64\\Release\\RxLoader24.2.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
