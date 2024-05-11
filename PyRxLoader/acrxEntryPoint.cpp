@@ -104,6 +104,8 @@ public:
         return L"PyRxG24.0.grx";
 #elif defined(_ZRXTARGET) && _ZRXTARGET == 240
         return L"PyRxZ24.0.Zrx";
+#elif defined(_ZRXTARGET) && _ZRXTARGET == 250
+        return L"PyRxZ25.0.Zrx";
 #endif
         acutPrintf(_T("Error in getNameOfModuleToLoad: "));
         return L"!ERROR!";
