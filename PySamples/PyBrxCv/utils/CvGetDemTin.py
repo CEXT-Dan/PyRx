@@ -96,15 +96,17 @@ def PyRxCmd_cvgetdemtin():
                 pline.addVertexAt(idx,Ge.Point2d(tp[0], tp[1]))
             pline.setClosed(False)
             pline.setElevation(row['Z'])
+            plid = db.addToModelspace(pline)
             breakline = Cv.CvDbTinSurfaceBreakline(Cv.TinBreaklineType.eTinBreaklineNormal)
-            breakline.setDataId(pline.id(), 0.1)
+            breakline.setDataId(plid, 0.05)
             constraints.append(breakline)
-            # model.appendAcDbEntity(pline)
+
         successful = pSurface.addConstraints(constraints, True)
         if not successful:
             print("\nFailed to add constraints\n")
             return
-        # model.appendAcDbEntity(pSurface)
+        pSurface.setStyle(Cv.TinSurfaceStyle.eTinStyleContours)
+        pSurface.updateObjectData()
         db.addToModelspace(pSurface)
 
         # print summary
