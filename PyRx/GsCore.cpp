@@ -186,6 +186,7 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
         acutPrintf(_T("\nFailed to copy view parameters: "));
     setBackgroundColorFromPy(pOffDevice.get(), pyrgb);
     AcDbBlockTableRecordPointer pBlock(blkid.m_id);
+    PyThrowBadEs(pBlock.openStatus());
     if (!pView->add(pBlock, pModel.get()))
         return nullptr;
 #if !defined(_BRXTARGET)
@@ -206,17 +207,16 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     pView->getSnapShot(&image, AcGsDCPoint(0, 0));
     if (!image.isValid())
         return nullptr;
-    Atil::Offset upperLeft(0, 0);
-    Atil::Size wholeImage = image.size();
-    Atil::ImageContext* imgContext = image.createContext(Atil::ImageContext::kRead, wholeImage, upperLeft);
+    Atil::Size imageSize = image.size();
+    Atil::ImageContext* imgContext = image.createContext(Atil::ImageContext::kRead, imageSize, Atil::Offset(0, 0));
     Atil::DataModelAttributes::PixelType pixelType = imgContext->getPixelType();
-    if (pixelType != Atil::DataModelAttributes::kRgba) //GRX fails here, is not kRgba
+    if (pixelType != Atil::DataModelAttributes::kRgba) // !!GRX fails here, is not kRgba
         return nullptr;
     //Slow, but works across all platforms ARX and BRX have different data, alpha channel.?
-    wxImage* pWxImage = new wxImage(wxSize(wholeImage.width, wholeImage.height));
-    for (int x = 0; x < wholeImage.width; ++x)
+    wxImage* pWxImage = new wxImage(wxSize(imageSize.width, imageSize.height));
+    for (Atil::Int32 x = 0; x < imageSize.width; ++x)
     {
-        for (int y = 0; y < wholeImage.height; ++y)
+        for (Atil::Int32 y = 0; y < imageSize.height; ++y)
         {
             Atil::RgbColor pix(imgContext->get32(x, y));
             pWxImage->SetRGB(x, y, pix.rgba.red, pix.rgba.green, pix.rgba.blue);
