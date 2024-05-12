@@ -74,11 +74,13 @@ void PyApApplication::applyHostIcon(UINT_PTR _hwnd)
     hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(20001));
 #elif defined(_GRXTARGET) && _GRXTARGET <= 240
     hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(1017));
-#else
+#elif defined(_ARXTARGET)
     auto main = CWnd::FromHandle(adsw_acadMainWnd());
     if (main == nullptr)
         return;
     hIcon = main->GetIcon(TRUE);
+#else
+    acutPrintf(_T("\nError in %ls"), __FUNCTIONW__);
 #endif
     if (hIcon == 0)
         return;
