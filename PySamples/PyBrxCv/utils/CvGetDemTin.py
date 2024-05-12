@@ -41,7 +41,7 @@ def getLocationRaster(location):
  
     X, p = stitch_dem(bounds, # X: array, p: TIF
                     dem_name='glo_30',  # Global Copernicus 30 meter resolution DEM
-                    dst_ellipsoidal_height=True,
+                    dst_ellipsoidal_height=False,
                     dst_area_or_point='Point')
     return X, p, bounds
 
