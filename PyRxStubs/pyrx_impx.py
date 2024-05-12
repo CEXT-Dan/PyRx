@@ -25,6 +25,8 @@ if flag is not None:
             import GxApp24 as Ax
         elif host == "ZRX24":
             import ZxApp24 as Ax
+        elif host == "ZRX25":
+            import ZxApp25 as Ax
         elif host == "ARX24":
             import AxApp24 as Ax
         elif host == "ARX25":
