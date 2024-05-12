@@ -70,7 +70,7 @@ void PyApApplication::applyHostIcon(UINT_PTR _hwnd)
     HICON hIcon = 0;
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(31233));
-#elif defined(_ZRXTARGET) && _ZRXTARGET <= 240
+#elif defined(_ZRXTARGET) && _ZRXTARGET <= 250
     hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(20001));
 #elif defined(_GRXTARGET) && _GRXTARGET <= 240
     hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(1017));
