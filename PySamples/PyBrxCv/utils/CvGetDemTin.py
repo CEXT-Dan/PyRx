@@ -49,7 +49,6 @@ def PyRxCmd_cvgetdemtin():
     try:
         # db = Db.HostApplicationServices().workingDatabase()
         db = Db.curDb()
-        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
 
         # checking for georeference, ifnot request and set
         geoDataId = getGeoDataId(db)
