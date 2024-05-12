@@ -1,15 +1,10 @@
-import os
+import traceback
+from pyrx_imp import Ap, Db, Ed, Ge, Gi, Gs, Rx
 import wx
 
-import PyRx  # = Runtime runtime
-import PyGe  # = Geometry
-import PyGi  # = Graphics interface
-import PyDb  # = database
-import PyAp  # = application, document classes services
-import PyEd  # = editor
 
 def OnPyInitApp():
-    print(err)("\nOnPyInitApp")
+    print("\nOnPyInitApp")
     print("Added command 'wxpy'")
 
 def OnPyUnloadApp():
@@ -25,7 +20,7 @@ def OnPyUnloadDwg():
 def PyRxCmd_wxpy():
     try: 
         #calls CAcModuleResourceOverride
-        res = PyAp.ResourceOverride()
+        res = Ap.ResourceOverride()
         
         dlg = TestDialog(None, -1, "mY fRirst diaLog",wx.Size(700,300))
         if dlg.ShowModal() == wx.ID_OK:

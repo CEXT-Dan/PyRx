@@ -218,7 +218,7 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     {
         for (Atil::Int32 y = 0; y < imageSize.height; ++y)
         {
-            Atil::RgbColor pix(imgContext->get32(x, y));
+            const Atil::RgbColor pix(imgContext->get32(x, y));
             pWxImage->SetRGB(x, y, pix.rgba.red, pix.rgba.green, pix.rgba.blue);
         }
     }
