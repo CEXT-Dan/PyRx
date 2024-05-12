@@ -153,67 +153,65 @@ bool GsCore::setViewParameters2(int viewportNumber, const PyGsView& obj, bool bR
 
 PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height, double zf, boost::python::object& pyrgb)
 {
-#if defined(_ZRXTARGET) && _ZRXTARGET <= 250
-    throw PyNotimplementedByHost();
-    return nullptr;
-#endif
 #if defined(_GRXTARGET) && _GRXTARGET <= 240
     throw PyNotimplementedByHost();
     return nullptr;
 #endif
     PyAutoLockGIL lock;
     AcGsManager* gsManager = acgsGetGsManager();
-
     AcGsKernelDescriptor descriptor;
     descriptor.addRequirement(AcGsKernelDescriptor::k3DDrawing);
     AcGsGraphicsKernel* pGraphicsKernel = AcGsManager::acquireGraphicsKernel(descriptor);
     if (pGraphicsKernel == nullptr)
         return nullptr;
-
-    //No performance change from getOffScreenDevice, getOffScreenDevice is funky with BRX
     AcGsDevicePtr pOffDevice(gsManager->createAutoCADOffScreenDevice(*pGraphicsKernel));
+    if (pOffDevice == nullptr)
+        PyThrowBadEs(eNullPtr);
     AcGsModelPtr pModel(gsManager->createAutoCADModel(*pGraphicsKernel));
+    if (pModel == nullptr)
+        PyThrowBadEs(eNullPtr);
+#if defined(_ZRXTARGET) || defined(_GRXTARGET)//todo test this in acad, bcad
+    AcGsViewPtr pView(pGraphicsKernel->createView());
+        if (pView == nullptr)
+            PyThrowBadEs(eNullPtr);
+#else
     AcGsViewPtr pView(gsManager->createView(pOffDevice.get()));
+    if (pView == nullptr)
+        PyThrowBadEs(eNullPtr);
+#endif
     pOffDevice->onSize(width, height);
     if (!pOffDevice->add(pView.get()))
         return nullptr;
-
     if (bool flag = acgsGetViewParameters(cvport(), pView.get()); flag == false)
         acutPrintf(_T("\nFailed to copy view parameters: "));
-
     setBackgroundColorFromPy(pOffDevice.get(), pyrgb);
     AcDbBlockTableRecordPointer pBlock(blkid.m_id);
     if (!pView->add(pBlock, pModel.get()))
         return nullptr;
-
-#if defined(_ARXTARGET)
+#if !defined(_BRXTARGET)
     auto v = pView->upVector();
     pView->setView(pView->position(), pView->target(), v.negate(), width, height);
 #else
     pView->setView(pView->position(), pView->target(), pView->upVector(), width, height);
-#endif
+#endif// _BRXTARGET
     AcDbExtents ex = calcBlockExtents(*pBlock);
     pView->zoomExtents(ex.minPoint(), ex.maxPoint());
     pView->zoom(zf);
-
     //do all view settings before here;
     pOffDevice->update();
     pView->update();
-
     Atil::RgbModel rgbModel(32);
     Atil::ImagePixel initialColor(rgbModel.pixelType());
     Atil::Image image(Atil::Size(width, height), &rgbModel, initialColor);
     pView->getSnapShot(&image, AcGsDCPoint(0, 0));
     if (!image.isValid())
         return nullptr;
-
     Atil::Offset upperLeft(0, 0);
     Atil::Size wholeImage = image.size();
     Atil::ImageContext* imgContext = image.createContext(Atil::ImageContext::kRead, wholeImage, upperLeft);
     Atil::DataModelAttributes::PixelType pixelType = imgContext->getPixelType();
-    if (pixelType != Atil::DataModelAttributes::kRgba)
+    if (pixelType != Atil::DataModelAttributes::kRgba) //GRX fails here, is not kRgba
         return nullptr;
-
     //Slow, but works across all platforms ARX and BRX have different data, alpha channel.?
     wxImage* pWxImage = new wxImage(wxSize(wholeImage.width, wholeImage.height));
     for (int x = 0; x < wholeImage.width; ++x)
@@ -226,11 +224,9 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     }
     if (!pWxImage->IsOk())
         return nullptr;
-
-#if defined(_ARXTARGET)
+#if !defined(_BRXTARGET)
     *pWxImage = pWxImage->Mirror();
-#endif // _ARXTARGET
-
+#endif // _BRXTARGET
     pView->eraseAll();
     //Python becomes the owner, tested : )
     return wxPyConstructObject(pWxImage, wxT("wxImage"), true);
