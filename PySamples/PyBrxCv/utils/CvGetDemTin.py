@@ -54,7 +54,7 @@ def PyRxCmd_cvgetdemtin():
         geoDataId = getGeoDataId(db)
         if geoDataId.isNull():
             return
-        geoData = Db.GeoData(geoDataId, Db.OpenMode.kForWrite)
+        geoData = Db.GeoData(geoDataId, Db.OpenMode.kForRead)
         if not geoData.coordinateSystem():
             print("\nAborting, please set the coordinate system first")
             return
@@ -98,7 +98,8 @@ def PyRxCmd_cvgetdemtin():
             pline.setElevation(row['Z'])
             plid = db.addToModelspace(pline)
             breakline = Cv.CvDbTinSurfaceBreakline(Cv.TinBreaklineType.eTinBreaklineNormal)
-            breakline.setDataId(plid, 0.05)
+            breakline.setDataId(plid, 0.1)
+            breakline.setIntersectionElevation(Cv.TinIntersectionElevation.eTinNotAllowed)
             constraints.append(breakline)
 
         successful = pSurface.addConstraints(constraints, True)
@@ -106,6 +107,10 @@ def PyRxCmd_cvgetdemtin():
             print("\nFailed to add constraints\n")
             return
         pSurface.setStyle(Cv.TinSurfaceStyle.eTinStyleContours)
+        pSurface.setMajorContoursInterval(50)
+        pSurface.setMajorContoursColor(27)
+        pSurface.setMinorContoursInterval(5)
+        pSurface.setMinorContoursColor(253)
         pSurface.updateObjectData()
         db.addToModelspace(pSurface)
 
