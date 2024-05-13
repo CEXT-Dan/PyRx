@@ -263,7 +263,7 @@ void makePyDbAnnotationScaleWrapper()
 {
     PyDocString DS("AnnotationScale");
     class_<PyDbAnnotationScale, bases<PyDbObjectContext>>("AnnotationScale")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("copyFrom", &PyDbAnnotationScale::copyFrom, DS.ARGS({ "otherObject: PyRx.RxObject" }))
         .def("getPaperUnits", &PyDbAnnotationScale::getPaperUnits, DS.ARGS())
         .def("getDrawingUnits", &PyDbAnnotationScale::getDrawingUnits, DS.ARGS())
