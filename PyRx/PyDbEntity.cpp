@@ -643,13 +643,14 @@ AcDbEntity* PyDbEntity::impObj(const std::source_location& src /*= std::source_l
 //PyDbBlockBegin
 void makePyDbBlockBeginWrapper()
 {
+    PyDocString DS("BlockBegin");
     class_<PyDbBlockBegin, bases<PyDbEntity>>("BlockBegin", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbBlockBegin::className).staticmethod("className")
-        .def("desc", &PyDbBlockBegin::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbBlockBegin::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbBlockBegin::cast).staticmethod("cast")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def("className", &PyDbBlockBegin::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbBlockBegin::desc,DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbBlockBegin::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbBlockBegin::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -702,13 +703,14 @@ AcDbBlockBegin* PyDbBlockBegin::impObj(const std::source_location& src /*= std::
 //PyDbBlockEnd
 void makePyDbBlockEndWrapper()
 {
+    PyDocString DS("BlockEnd");
     class_<PyDbBlockEnd, bases<PyDbEntity>>("BlockEnd", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbBlockEnd::className).staticmethod("className")
-        .def("desc", &PyDbBlockEnd::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbBlockEnd::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbBlockEnd::cast).staticmethod("cast")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def("className", &PyDbBlockEnd::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbBlockEnd::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbBlockEnd::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbBlockEnd::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -761,13 +763,14 @@ AcDbBlockEnd* PyDbBlockEnd::impObj(const std::source_location& src /*= std::sour
 //PyDbSequenceEnd
 void makePyDbSequenceEndWrapper()
 {
+    PyDocString DS("SequenceEnd");
     class_<PyDbSequenceEnd, bases<PyDbEntity>>("SequenceEnd", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbSequenceEnd::className).staticmethod("className")
-        .def("desc", &PyDbSequenceEnd::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbSequenceEnd::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbSequenceEnd::cast).staticmethod("cast")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }))))
+        .def("className", &PyDbSequenceEnd::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbSequenceEnd::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbSequenceEnd::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbSequenceEnd::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -820,17 +823,21 @@ AcDbSequenceEnd* PyDbSequenceEnd::impObj(const std::source_location& src /*= std
 //PyDbSubentId
 void makePyDbSubentIdWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- type: PyDb.SubentType, indexMarker: int\n"
+        "- pTypeClass: PyRx.RxClass, indexMarker: int\n";
     PyDocString DS("PyDb.SubentId");
     class_<PyDbSubentId>("SubentId")
         .def(init<>())
         .def(init<AcDb::SubentType, Adesk::GsMarker>())
-        .def(init<PyRxClass&, Adesk::GsMarker>())
+        .def(init<PyRxClass&, Adesk::GsMarker>(DS.CTOR(ctor)))
         .def("type", &PyDbSubentId::type, DS.ARGS())
-        .def("setType", &PyDbSubentId::setType)
+        .def("setType", &PyDbSubentId::setType, DS.ARGS({ "val: PyDb.SubentType" }))
         .def("typeClass", &PyDbSubentId::typeClass, DS.ARGS())
-        .def("setTypeClass", &PyDbSubentId::setTypeClass)
+        .def("setTypeClass", &PyDbSubentId::setTypeClass, DS.SARGS({ "val: PyRx.RxClass" }))
         .def("index", &PyDbSubentId::index, DS.ARGS())
-        .def("setIndex", &PyDbSubentId::setIndex)
+        .def("setIndex", &PyDbSubentId::setIndex, DS.ARGS({ "indexMarker: int" }))
         .add_static_property("kNull", &PyDbSubentId::kNull, DS.SARGS())
         //operators
         .def("__eq__", &PyDbSubentId::operator==)

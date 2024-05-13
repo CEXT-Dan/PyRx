@@ -1166,6 +1166,15 @@ AcDbDimStyleTableRecord* PyDbDimStyleTableRecord::impObj(const std::source_locat
 // PyDbAbstractViewTableRecord
 void makePyDbAbstractViewTableRecordWrapper()
 {
+    constexpr const std::string_view setUcsOverloads = "Overloads:\n"
+        "- origin: PyGe.Point3d, xAxis: PyGe.Vector3d, yAxis : PyGe.Vector3d\n"
+        "- view: PyDb.OrthographicView\n"
+        "- ucsId: PyDb.ObjectId\n";
+
+    constexpr const std::string_view ssetViewDirectionOverloads = "Overloads:\n"
+        "- viewDirection: PyGe.Vector3d\n"
+        "- view: PyDb.OrthographicView\n";
+
     PyDocString DS("AbstractViewTableRecord");
     class_<PyDbAbstractViewTableRecord, bases<PyDbSymbolTableRecord>>("AbstractViewTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
@@ -1180,6 +1189,7 @@ void makePyDbAbstractViewTableRecordWrapper()
         .def("setTarget", &PyDbAbstractViewTableRecord::setTarget, DS.ARGS({ "val : PyGe.Point3d" }))
         .def("viewDirection", &PyDbAbstractViewTableRecord::viewDirection, DS.ARGS())
         .def("setViewDirection", &PyDbAbstractViewTableRecord::setViewDirection1)
+        .def("setViewDirection", &PyDbAbstractViewTableRecord::setViewDirection2, DS.OVRL(ssetViewDirectionOverloads))
         .def("viewTwist", &PyDbAbstractViewTableRecord::viewTwist, DS.ARGS())
         .def("setViewTwist", &PyDbAbstractViewTableRecord::setViewTwist, DS.ARGS({ "val : float" }))
         .def("lensLength", &PyDbAbstractViewTableRecord::lensLength, DS.ARGS())
@@ -1203,7 +1213,7 @@ void makePyDbAbstractViewTableRecordWrapper()
         .def("isDefaultLightingOn", &PyDbAbstractViewTableRecord::isDefaultLightingOn, DS.ARGS())
         .def("setDefaultLightingOn", &PyDbAbstractViewTableRecord::setDefaultLightingOn, DS.ARGS({ "val : bool" }))
         .def("defaultLightingType", &PyDbAbstractViewTableRecord::defaultLightingType, DS.ARGS())
-        .def("setDefaultLightingType", &PyDbAbstractViewTableRecord::setDefaultLightingType)
+        .def("setDefaultLightingType", &PyDbAbstractViewTableRecord::setDefaultLightingType, DS.ARGS({ "val: PyGi.DefaultLightingType" }))
         .def("brightness", &PyDbAbstractViewTableRecord::brightness, DS.ARGS())
         .def("setBrightness", &PyDbAbstractViewTableRecord::setBrightness, DS.ARGS({ "val : float" }))
         .def("contrast", &PyDbAbstractViewTableRecord::contrast, DS.ARGS())
@@ -1219,11 +1229,10 @@ void makePyDbAbstractViewTableRecordWrapper()
         .def("elevation", &PyDbAbstractViewTableRecord::elevation, DS.ARGS())
         .def("setUcs", &PyDbAbstractViewTableRecord::setUcs1)
         .def("setUcs", &PyDbAbstractViewTableRecord::setUcs2)
-        .def("setUcs", &PyDbAbstractViewTableRecord::setUcs3)
+        .def("setUcs", &PyDbAbstractViewTableRecord::setUcs3,DS.OVRL(setUcsOverloads))
         .def("setUcsToWorld", &PyDbAbstractViewTableRecord::setUcsToWorld, DS.ARGS())
         .def("setElevation", &PyDbAbstractViewTableRecord::setElevation, DS.ARGS({ "val : float" }))
         .def("isViewOrthographic", &PyDbAbstractViewTableRecord::isViewOrthographic, DS.ARGS())
-        .def("setViewDirection", &PyDbAbstractViewTableRecord::setViewDirection2)
         .def("className", &PyDbAbstractViewTableRecord::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbAbstractViewTableRecord::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbAbstractViewTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")

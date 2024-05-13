@@ -185,9 +185,11 @@ PyDbObjectId PyDbObjectId::fromOldId(INT_PTR oldId)
 // AdsName
 void makePyAdsNameWrapper()
 {
+    PyDocString DS("AdsName");
     class_<AdsName>("AdsName")
-        .def("toObjectId", &AdsName::toObjectId)
-        .def("fromObjectId", &AdsName::fromObjectId)
+        .def(init<>(DS.ARGS()))
+        .def("toObjectId", &AdsName::toObjectId, DS.ARGS())
+        .def("fromObjectId", &AdsName::fromObjectId, DS.ARGS({ "id: PyDb.ObjectId" }))
         ;
 }
 
