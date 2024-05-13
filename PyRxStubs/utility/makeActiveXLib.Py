@@ -80,7 +80,7 @@ def PyRxCmd_makeComWrappers():
     #makeComSmcomponents24()
     #makeComBcadApplication24()
     #makeComBcadDB24()
-    makeComZcadApp24()
-    makeComZcadApp25()
+    #makeComZcadApp24()
+    #makeComZcadApp25()
     print("done")
 

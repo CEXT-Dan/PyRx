@@ -185,11 +185,14 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eCurveThroughPoint", BrxCvDbHAlignment::EArcParameterType::eCurveThroughPoint)
         .export_values()
         ;
-
-    //these conflict
-    enum_<BrxCvDbHAlignment::ESpiralDefinitionType>("SpiralDefinitionType2")
+    enum_<BrxCvDbHAlignment::ESpiralDefinitionType>("SpiralDefinitionType")
         .value("eClothoid", BrxCvDbHAlignment::ESpiralDefinitionType::eClothoid)
         .value("eCubicParabola", BrxCvDbHAlignment::ESpiralDefinitionType::eCubicParabola)
+        .export_values()
+        ;
+    enum_<BrxCvDbHAlignmentSpiral::ESpiralDefinitionType>("SpiralDefinitionTypeSpiral")
+        .value("eClothoid", BrxCvDbHAlignmentSpiral::ESpiralDefinitionType::eClothoid)
+        .value("eCubicParabola", BrxCvDbHAlignmentSpiral::ESpiralDefinitionType::eCubicParabola)
         .export_values()
         ;
     enum_<BrxCvDbHAlignment::ESpiralParameterType>("SpiralParameterType2")
@@ -198,7 +201,6 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .export_values()
         ;
 
-    //with these test!
     enum_<BrxCvDbHAlignmentSpiral::ESpiralCurveType>("SpiralCurveType")
         .value("eInCurve", BrxCvDbHAlignmentSpiral::ESpiralCurveType::eInCurve)
         .value("eOutCurve", BrxCvDbHAlignmentSpiral::ESpiralCurveType::eOutCurve)
@@ -209,11 +211,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eCubicParabola", BrxCvDbHAlignmentSpiral::ESpiralParameterType::eParamA)
         .export_values()
         ;
-    enum_<BrxCvDbHAlignmentSpiral::ESpiralDefinitionType>("SpiralDefinitionType")
-        .value("eClothoid", BrxCvDbHAlignmentSpiral::ESpiralDefinitionType::eClothoid)
-        .value("eCubicParabola", BrxCvDbHAlignmentSpiral::ESpiralDefinitionType::eCubicParabola)
-        .export_values()
-        ;
+
     enum_<BrxCvDbHAlignmentSpiral::ESpiralDirectionType>("SpiralDirectionType")
         .value("eDirectionRight", BrxCvDbHAlignmentSpiral::ESpiralDirectionType::eDirectionRight)
         .value("eDirectionLeft", BrxCvDbHAlignmentSpiral::ESpiralDirectionType::eDirectionLeft)
@@ -393,7 +391,6 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eCivilPoint", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::EDrawingObjectType::eCivilPoint)
         .export_values()
         ;
-    //TinIntersectionElevation conflict
     enum_<BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation>("TinIntersectionElevation")
         .value("eTinNotAllowed", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation::eTinNotAllowed)
         .value("eTinElevationMin", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation::eTinElevationMin)
@@ -401,7 +398,6 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eTinElevationMid", BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation::eTinElevationMid)
         .export_values()
         ;
-
     enum_<BrxCvDbTinSurfaceConstraint::ETinConstraintType>("TinConstraintType")
         .value("eTinBreakline", BrxCvDbTinSurfaceConstraint::ETinConstraintType::eTinBreakline)
         .value("eTinBoundary", BrxCvDbTinSurfaceConstraint::ETinConstraintType::eTinBoundary)
@@ -413,8 +409,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eTinNonDestructive", BrxCvDbTinSurfaceBreakline::ETinBreaklineType::eTinNonDestructive)
         .export_values()
         ;
-    //TinIntersectionElevation conflict
-    enum_<BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation>("TinIntersectionElevation")
+    enum_<BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation>("BreaklineIntersectionElevation")
         .value("eTinNotAllowed", BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation::eTinNotAllowed)
         .value("eTinElevationMin", BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation::eTinElevationMin)
         .value("eTinElevationMax", BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation::eTinElevationMax)
