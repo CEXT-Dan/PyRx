@@ -25029,7 +25029,7 @@ class IAcadXline(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IAcadZcCmColor(DispatchBaseClass):
+class IAcadAcCmColor(DispatchBaseClass):
     'ZWCAD ZwCmColor Interface'
     CLSID = IID('{EF920046-5A25-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EF920388-5A25-11E7-B72E-BC5FF42AC839}')
@@ -26797,15 +26797,15 @@ class AcadXline(CoClassBaseClass): # A CoClass
     default_interface = IAcadXline
 
 # This CoClass is known by the name 'ZWCAD.ZcCmColor.2025'
-class AcadZcCmColor(CoClassBaseClass): # A CoClass
+class AcadAcCmColor(CoClassBaseClass): # A CoClass
     # ZWCAD True Color Object
     CLSID = IID('{EF920388-5A25-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IAcadZcCmColor,
+        IAcadAcCmColor,
     ]
-    default_interface = IAcadZcCmColor
+    default_interface = IAcadAcCmColor
 
 IArcTextObj_vtables_dispatch_ = 1
 IArcTextObj_vtables_ = [
@@ -31789,7 +31789,7 @@ CLSIDToClassMap = {
     '{EF920417-5A25-11E7-B72E-BC5FF42AC839}' : IAcadModelSpace,
     '{EF920212-5A25-11E7-B72E-BC5FF42AC839}' : IAcadBlock,
     '{EF920024-5A25-11E7-B72E-BC5FF42AC839}' : IAcadEntity,
-    '{EF920046-5A25-11E7-B72E-BC5FF42AC839}' : IAcadZcCmColor,
+    '{EF920046-5A25-11E7-B72E-BC5FF42AC839}' : IAcadAcCmColor,
     '{EF920409-5A25-11E7-B72E-BC5FF42AC839}' : IAcadHyperlinks,
     '{EF920258-5A25-11E7-B72E-BC5FF42AC839}' : IAcadHyperlink,
     '{EF920408-5A25-11E7-B72E-BC5FF42AC839}' : IAcad3DFace,
@@ -31996,7 +31996,7 @@ CLSIDToClassMap = {
     '{EF920256-5A25-11E7-B72E-BC5FF42AC839}' : AcadDimRadialLarge,
     '{EF920073-5A25-11E7-B72E-BC5FF42AC839}' : AcadDimArcLength,
     '{EF920145-5A25-11E7-B72E-BC5FF42AC839}' : ArcTextObj,
-    '{EF920388-5A25-11E7-B72E-BC5FF42AC839}' : AcadZcCmColor,
+    '{EF920388-5A25-11E7-B72E-BC5FF42AC839}' : AcadAcCmColor,
     '{EF920183-5A25-11E7-B72E-BC5FF42AC839}' : AcadHyperlink,
     '{EF920104-5A25-11E7-B72E-BC5FF42AC839}' : AcadHyperlinks,
     '{EF920066-5A25-11E7-B72E-BC5FF42AC839}' : AcadBlock,
@@ -32105,7 +32105,7 @@ VTablesToClassMap = {
     '{EF920417-5A25-11E7-B72E-BC5FF42AC839}' : 'IAcadModelSpace',
     '{EF920212-5A25-11E7-B72E-BC5FF42AC839}' : 'IAcadBlock',
     '{EF920024-5A25-11E7-B72E-BC5FF42AC839}' : 'IAcadEntity',
-    '{EF920046-5A25-11E7-B72E-BC5FF42AC839}' : 'IAcadZcCmColor',
+    '{EF920046-5A25-11E7-B72E-BC5FF42AC839}' : 'IAcadAcCmColor',
     '{EF920409-5A25-11E7-B72E-BC5FF42AC839}' : 'IAcadHyperlinks',
     '{EF920258-5A25-11E7-B72E-BC5FF42AC839}' : 'IAcadHyperlink',
     '{EF920408-5A25-11E7-B72E-BC5FF42AC839}' : 'IAcad3DFace',
@@ -32265,7 +32265,7 @@ NamesToIIDMap = {
     'IAcadModelSpace' : '{EF920417-5A25-11E7-B72E-BC5FF42AC839}',
     'IAcadBlock' : '{EF920212-5A25-11E7-B72E-BC5FF42AC839}',
     'IAcadEntity' : '{EF920024-5A25-11E7-B72E-BC5FF42AC839}',
-    'IAcadZcCmColor' : '{EF920046-5A25-11E7-B72E-BC5FF42AC839}',
+    'IAcadAcCmColor' : '{EF920046-5A25-11E7-B72E-BC5FF42AC839}',
     'IAcadHyperlinks' : '{EF920409-5A25-11E7-B72E-BC5FF42AC839}',
     'IAcadHyperlink' : '{EF920258-5A25-11E7-B72E-BC5FF42AC839}',
     'IAcad3DFace' : '{EF920408-5A25-11E7-B72E-BC5FF42AC839}',
