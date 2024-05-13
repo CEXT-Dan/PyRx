@@ -58,6 +58,26 @@ class ArcType(object):
       '''None'''
     ...
 
+class BreaklineIntersectionElevation(object):
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def eTinElevationMax (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinElevationMid (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinElevationMin (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def eTinNotAllowed (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+
 class Civil3dAlignmentType(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
@@ -4647,7 +4667,7 @@ class CvDbHAlignmentSpiral(CvDbHAlignmentCurve):
     def spiralCurveType (self)-> PyBrxCv.SpiralCurveType :
       '''                             '''
     ...
-    def spiralDefinition (self)-> PyBrxCv.SpiralDefinitionType :
+    def spiralDefinition (self)-> PyBrxCv.SpiralDefinitionTypeSpiral :
       '''                             '''
     ...
     def startDirection (self)-> float :
@@ -7767,7 +7787,7 @@ class CvDbTinSurfaceBreakline(CvDbTinSurfaceConstraint):
     def id (self)-> int :
       '''                             '''
     ...
-    def intersectionElevation (self)-> PyBrxCv.TinIntersectionElevation :
+    def intersectionElevation (self)-> PyBrxCv.BreaklineIntersectionElevation :
       '''                             '''
     ...
     def isDbResident (self)-> bool :
@@ -7928,7 +7948,7 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
-__init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (RewriteSymbolics)arg5) -> None :
+__init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (TinIntersectionElevation)arg5) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class boost::python::list,double,bool,enum BrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation)'''
@@ -7955,7 +7975,7 @@ __init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (RewriteSymbolics)a
     def copyFrom (self, other: PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def crossingsElevation (self)-> RewriteSymbolics :
+    def crossingsElevation (self)-> PyBrxCv.TinIntersectionElevation :
       '''                             '''
     ...
 
@@ -14826,7 +14846,7 @@ class SpiralDefinitionType(object):
       '''None'''
     ...
 
-class SpiralDefinitionType2(object):
+class SpiralDefinitionTypeSpiral(object):
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
