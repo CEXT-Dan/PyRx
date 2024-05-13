@@ -2789,7 +2789,6 @@ class IAcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddHatch', '{EC92319B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IAcadLeader
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, major and minor radii and height.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -11562,10 +11561,12 @@ class IAcadMLeader(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(27, LCID, 1, (3, 0), (),)
 
     def AddLeaderLine(self, leaderIndex=defaultNamedNotOptArg, pointArray=defaultNamedNotOptArg):
+        pointArray = VTR8ArrayOrVal(pointArray)
         return self._oleobj_.InvokeTypes(29, LCID, 1, (3, 0), ((3, 1), (12, 1)),leaderIndex
             , pointArray)
 
     def AddLeaderLineEx(self, pointArray=defaultNamedNotOptArg):
+        pointArray = VTR8ArrayOrVal(pointArray)
         return self._oleobj_.InvokeTypes(30, LCID, 1, (3, 0), ((12, 1),),pointArray
             )
 
