@@ -351,16 +351,16 @@ class CvDb3dAlignment(CvDbCurve):
     def explode (self)-> list :
       '''                             '''
     ...
+
+    @overload
+    def extend (self, newParam: float)-> None : ...
+    @overload
+    def extend (self, extendStart: bool, toPoint: PyGe.Point3d)-> None : ...
     def extend (self, *args, **kwargs)-> None :
-      '''extend( (Curve)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void extend(class PyDbCurve {lvalue},double)
-
-extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void extend(class PyDbCurve {lvalue},int,class AcGePoint3d)'''
+      '''Overloads:
+    - newParam: float
+    - extendStart: bool, toPoint: PyGe.Point3d
+    '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
@@ -740,21 +740,19 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setPlotStyleName (self, /)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, doSubents: bool)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool)-> None : ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
-      '''setPlotStyleName( (Entity)arg1, (str)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
+      '''Overloads:
+    - None: Any
+    - nameType: PyDb.PlotStyleNameType, doSubents: bool
+    - nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool
+    '''
     ...
     def setPropertiesFrom (self, entity: PyDb.Entity, dosubents : bool=True)-> None :
       '''                             '''
@@ -804,7 +802,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -933,16 +931,16 @@ class CvDbCurve(PyDb.Curve):
     def explode (self)-> list :
       '''                             '''
     ...
+
+    @overload
+    def extend (self, newParam: float)-> None : ...
+    @overload
+    def extend (self, extendStart: bool, toPoint: PyGe.Point3d)-> None : ...
     def extend (self, *args, **kwargs)-> None :
-      '''extend( (Curve)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void extend(class PyDbCurve {lvalue},double)
-
-extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void extend(class PyDbCurve {lvalue},int,class AcGePoint3d)'''
+      '''Overloads:
+    - newParam: float
+    - extendStart: bool, toPoint: PyGe.Point3d
+    '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
@@ -1313,21 +1311,19 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setPlotStyleName (self, /)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, doSubents: bool)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool)-> None : ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
-      '''setPlotStyleName( (Entity)arg1, (str)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
+      '''Overloads:
+    - None: Any
+    - nameType: PyDb.PlotStyleNameType, doSubents: bool
+    - nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool
+    '''
     ...
     def setPropertiesFrom (self, entity: PyDb.Entity, dosubents : bool=True)-> None :
       '''                             '''
@@ -1371,7 +1367,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -1777,21 +1773,19 @@ class CvDbEntity(PyDb.Entity):
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setPlotStyleName (self, /)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, doSubents: bool)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool)-> None : ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
-      '''setPlotStyleName( (Entity)arg1, (str)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
+      '''Overloads:
+    - None: Any
+    - nameType: PyDb.PlotStyleNameType, doSubents: bool
+    - nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool
+    '''
     ...
     def setPropertiesFrom (self, entity: PyDb.Entity, dosubents : bool=True)-> None :
       '''                             '''
@@ -1835,7 +1829,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -2160,7 +2154,7 @@ class CvDbFileFormatManager(CvDbObjectManager):
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -2629,21 +2623,19 @@ class CvDbGrading(CvDbEntity):
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setPlotStyleName (self, /)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, doSubents: bool)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool)-> None : ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
-      '''setPlotStyleName( (Entity)arg1, (str)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
+      '''Overloads:
+    - None: Any
+    - nameType: PyDb.PlotStyleNameType, doSubents: bool
+    - nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool
+    '''
     ...
     def setPropertiesFrom (self, entity: PyDb.Entity, dosubents : bool=True)-> None :
       '''                             '''
@@ -2708,7 +2700,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -3030,16 +3022,16 @@ class CvDbHAlignment(CvDbCurve):
     def explode (self)-> list :
       '''                             '''
     ...
+
+    @overload
+    def extend (self, newParam: float)-> None : ...
+    @overload
+    def extend (self, extendStart: bool, toPoint: PyGe.Point3d)-> None : ...
     def extend (self, *args, **kwargs)-> None :
-      '''extend( (Curve)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void extend(class PyDbCurve {lvalue},double)
-
-extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void extend(class PyDbCurve {lvalue},int,class AcGePoint3d)'''
+      '''Overloads:
+    - newParam: float
+    - extendStart: bool, toPoint: PyGe.Point3d
+    '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
@@ -3469,21 +3461,19 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setPlotStyleName (self, /)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, doSubents: bool)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool)-> None : ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
-      '''setPlotStyleName( (Entity)arg1, (str)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
+      '''Overloads:
+    - None: Any
+    - nameType: PyDb.PlotStyleNameType, doSubents: bool
+    - nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool
+    '''
     ...
     def setPropertiesFrom (self, entity: PyDb.Entity, dosubents : bool=True)-> None :
       '''                             '''
@@ -3566,7 +3556,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -4948,7 +4938,7 @@ class CvDbObject(PyDb.DbObject):
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -5257,7 +5247,7 @@ class CvDbObjectManager(CvDbObject):
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -5744,21 +5734,19 @@ class CvDbPoint(CvDbEntity):
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setPlotStyleName (self, /)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, doSubents: bool)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool)-> None : ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
-      '''setPlotStyleName( (Entity)arg1, (str)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
+      '''Overloads:
+    - None: Any
+    - nameType: PyDb.PlotStyleNameType, doSubents: bool
+    - nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool
+    '''
     ...
     def setPosition (self, pt : PyGe.Point3d)-> bool :
       '''                             '''
@@ -5823,7 +5811,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -6210,7 +6198,7 @@ class CvDbPointGroup(CvDbObject):
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -6544,7 +6532,7 @@ class CvDbPointGroupManager(CvDbObjectManager):
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -6931,7 +6919,7 @@ class CvDbStyleManager(CvDbObjectManager):
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -7603,21 +7591,19 @@ class CvDbTinSurface(CvDbEntity):
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setPlotStyleName (self, /)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, doSubents: bool)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool)-> None : ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
-      '''setPlotStyleName( (Entity)arg1, (str)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
+      '''Overloads:
+    - None: Any
+    - nameType: PyDb.PlotStyleNameType, doSubents: bool
+    - nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool
+    '''
     ...
     def setPropertiesFrom (self, entity: PyDb.Entity, dosubents : bool=True)-> None :
       '''                             '''
@@ -7713,7 +7699,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -11062,16 +11048,16 @@ class CvDbVAlignment(CvDbCurve):
     def explode (self)-> list :
       '''                             '''
     ...
+
+    @overload
+    def extend (self, newParam: float)-> None : ...
+    @overload
+    def extend (self, extendStart: bool, toPoint: PyGe.Point3d)-> None : ...
     def extend (self, *args, **kwargs)-> None :
-      '''extend( (Curve)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void extend(class PyDbCurve {lvalue},double)
-
-extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void extend(class PyDbCurve {lvalue},int,class AcGePoint3d)'''
+      '''Overloads:
+    - newParam: float
+    - extendStart: bool, toPoint: PyGe.Point3d
+    '''
     ...
     def extensionDictionary (self)-> PyDb.ObjectId :
       '''                             '''
@@ -11499,21 +11485,19 @@ extend( (Curve)arg1, (int)arg2, (Point3d)arg3) -> None :
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setPlotStyleName (self, /)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, doSubents: bool)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool)-> None : ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
-      '''setPlotStyleName( (Entity)arg1, (str)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
+      '''Overloads:
+    - None: Any
+    - nameType: PyDb.PlotStyleNameType, doSubents: bool
+    - nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool
+    '''
     ...
     def setPropertiesFrom (self, entity: PyDb.Entity, dosubents : bool=True)-> None :
       '''                             '''
@@ -11578,7 +11562,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -12664,21 +12648,19 @@ class CvDbVAlignmentView(CvDbView):
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setPlotStyleName (self, /)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, doSubents: bool)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool)-> None : ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
-      '''setPlotStyleName( (Entity)arg1, (str)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
+      '''Overloads:
+    - None: Any
+    - nameType: PyDb.PlotStyleNameType, doSubents: bool
+    - nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool
+    '''
     ...
     def setPropertiesFrom (self, entity: PyDb.Entity, dosubents : bool=True)-> None :
       '''                             '''
@@ -12740,7 +12722,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -13203,21 +13185,19 @@ class CvDbView(CvDbEntity):
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setPlotStyleName (self, /)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, doSubents: bool)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool)-> None : ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
-      '''setPlotStyleName( (Entity)arg1, (str)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
+      '''Overloads:
+    - None: Any
+    - nameType: PyDb.PlotStyleNameType, doSubents: bool
+    - nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool
+    '''
     ...
     def setPropertiesFrom (self, entity: PyDb.Entity, dosubents : bool=True)-> None :
       '''                             '''
@@ -13276,7 +13256,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -13923,21 +13903,19 @@ class CvDbVolumeSurface(CvDbTinSurface):
     def setOwnerId (self, owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
+
+    @overload
+    def setPlotStyleName (self, /)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, doSubents: bool)-> None : ...
+    @overload
+    def setPlotStyleName (self, nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool)-> None : ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
-      '''setPlotStyleName( (Entity)arg1, (str)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,int)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,int)'''
+      '''Overloads:
+    - None: Any
+    - nameType: PyDb.PlotStyleNameType, doSubents: bool
+    - nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool
+    '''
     ...
     def setPropertiesFrom (self, entity: PyDb.Entity, dosubents : bool=True)-> None :
       '''                             '''
@@ -14036,7 +14014,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (int)ar
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> int :
       '''                             '''
     ...
-    def xData (self, appname: str)-> list :
+    def xData (self, appname: str = None)-> list :
       '''                             '''
     ...
     def xDataTransformBy (self, xform: PyGe.Matrix3d)-> None :
