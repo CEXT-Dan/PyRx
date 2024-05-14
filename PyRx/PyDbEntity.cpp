@@ -766,7 +766,7 @@ void makePyDbSequenceEndWrapper()
     PyDocString DS("SequenceEnd");
     class_<PyDbSequenceEnd, bases<PyDbEntity>>("SequenceEnd", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }))))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
         .def("className", &PyDbSequenceEnd::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbSequenceEnd::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbSequenceEnd::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")

@@ -7,8 +7,10 @@
 //#include "format_codecs/PngFormatCodec.h"
 
 
-//ZWCAD 'register' is no longer a supported storage class
+#if defined(_ZRXTARGET) && _ZRXTARGET <= 240 || defined(_GRXTARGET) && _GRXTARGET <= 240
+//ZWCAD24 'register' is no longer a supported storage class
 #pragma warning( disable: 5033 )
+#endif
 #include "Image.h"
 #include "RgbModel.h"
 #include "RgbGrayModel.h"
@@ -19,7 +21,9 @@
 #include "RowProviderInterface.h"
 #include "FileWriteDescriptor.h"
 #include "DataBuffer.h"
+#if defined(_ZRXTARGET) && _ZRXTARGET <= 240 || defined(_GRXTARGET) && _GRXTARGET <= 240
 #pragma warning( pop )
+#endif
 
 using namespace boost::python;
 
