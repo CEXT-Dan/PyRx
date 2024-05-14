@@ -54,3 +54,4 @@ __pycache__
 /*.code-workspace
 /PyRx/PyRxZ25.0
 /PyRxLoader/RxLoaderZ25.0
+/unitTests/testResults/*.txt
