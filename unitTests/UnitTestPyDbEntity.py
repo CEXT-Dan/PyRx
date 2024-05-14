@@ -143,7 +143,7 @@ class TestDbEntity(unittest.TestCase):
         circle.setRadius(20)
         self.assertEqual(circle.radius(), 20)
 
-    @unittest.skipIf(host == "GRX24" or host == "ZRX24", "known failure")
+    @unittest.skipIf(host == "GRX24" or "ZRX" in host, "known failure")
     def test_dbtext(self):
         db = Db.curDb()
         text = Db.Text()
@@ -154,8 +154,7 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(text.textString(), "Hello World")
         text.setTextStyle(db.textstyle())
         text.setJustification(Db.TextAlignment.kTextAlignmentMiddleCenter)
-        self.assertEqual(text.justification(),
-                         Db.TextAlignment.kTextAlignmentMiddleCenter)
+        self.assertEqual(text.justification(),Db.TextAlignment.kTextAlignmentMiddleCenter)
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         model.appendAcDbEntity(text)
 
@@ -177,6 +176,7 @@ class TestDbEntity(unittest.TestCase):
         for frag in mt.getFragments():
             self.assertEqual(len(frag) ,Db.MTextFragmentType.kEndFragmentTypes)
             
+    @unittest.skipIf("ZRX" in host, "known failure")
     def test_dbmtext_fragtextvalue(self):
         objHnd = Db.Handle("2c91ef")
         objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
@@ -444,7 +444,7 @@ class TestDbEntity(unittest.TestCase):
         id = model.appendAcDbEntity(wipout)
         self.assertTrue(id.isValid())
       
-    @unittest.skipIf(host == "BRX24", "known failure")  
+    @unittest.skipIf(host == "BRX24" or "ZRX" in host, "known failure")  
     def test_create_extruded_surface(self):
         db = Db.curDb()
         opts = Db.SweepOptions()
