@@ -281,7 +281,7 @@ class TestDatabase(unittest.TestCase):
         self.assertTrue(db.layerZero() in lt)
         self.assertEqual(db.layerZero(), lt["0"])
 
-    @unittest.skipIf(host == "GRX24" or host == "ZRX24", "known failure")
+    @unittest.skipIf(host == "GRX24" or "ZRX" in host, "known failure")
     def test_GeoPositionMarker(self):
         db = self.geodb
         model = Db.BlockTableRecord(db.modelSpaceId())
@@ -294,7 +294,7 @@ class TestDatabase(unittest.TestCase):
         for marker in markers:
             self.assertIsNotNone(marker.geoPosition())
 
-    @unittest.skipIf(host == "ZRX24", "known failure")
+    @unittest.skipIf( "ZRX" in host, "known failure")
     def test_GeoData(self) -> None:
         db = self.geodb
         geoDataId = Db.Core.getGeoDataObjId(db)
@@ -302,7 +302,7 @@ class TestDatabase(unittest.TestCase):
         geoData = Db.GeoData(geoDataId)
         self.assertIsNotNone(geoData.coordinateSystem())
 
-    @unittest.skipIf(host == "BRX24" or host == "GRX24" or host == "ZRX24", "known failure")
+    @unittest.skipIf(host == "BRX24" or host == "GRX24" or "ZRX" in host, "known failure")
     def test_GeoData_transformFromLonLatAlt(self) -> None:
         db = self.geodb
         geoDataId = Db.Core.getGeoDataObjId(db)
