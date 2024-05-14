@@ -11,4 +11,4 @@ host = Ap.Application.hostAPI()
 #settings
 testVerbosity = 2#2 for logfile, 0 for on screan
 logToFile = True
-logFileName = "tout-{}-{}.{}".format(host, date.today(), 'txt')
+logFileName = "testResults/tout-{}-{}.{}".format(host, date.today(), 'txt')
