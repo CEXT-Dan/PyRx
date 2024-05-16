@@ -280,23 +280,24 @@ AcDbEvalVariant* PyDbEvalVariant::impObj(const std::source_location& src /*= std
 //PyDbDynBlockReferenceProperty
 void makePyDbDynBlockReferencePropertyWrapper()
 {
+    PyDocString DS("PyDb.DynBlockReferenceProperty");
     class_<PyDbDynBlockReferenceProperty>("DynBlockReferenceProperty")
-        .def(init<>())
-        .def("blockId", &PyDbDynBlockReferenceProperty::blockId)
-        .def("propertyName", &PyDbDynBlockReferenceProperty::propertyName)
-        .def("propertyType", &PyDbDynBlockReferenceProperty::propertyType)
-        .def("readOnly", &PyDbDynBlockReferenceProperty::readOnly)
-        .def("show", &PyDbDynBlockReferenceProperty::show)
-        .def("visibleInCurrentVisibilityState", &PyDbDynBlockReferenceProperty::visibleInCurrentVisibilityState)
-        .def("description", &PyDbDynBlockReferenceProperty::description)
-        .def("unitsType", &PyDbDynBlockReferenceProperty::unitsType)
-        .def("getAllowedValues", &PyDbDynBlockReferenceProperty::getAllowedValues)
-        .def("value", &PyDbDynBlockReferenceProperty::value)
-        .def("setValue", &PyDbDynBlockReferenceProperty::setValue)
+        .def(init<>(DS.ARGS()))
+        .def("blockId", &PyDbDynBlockReferenceProperty::blockId, DS.ARGS())
+        .def("propertyName", &PyDbDynBlockReferenceProperty::propertyName, DS.ARGS())
+        .def("propertyType", &PyDbDynBlockReferenceProperty::propertyType, DS.ARGS())
+        .def("readOnly", &PyDbDynBlockReferenceProperty::readOnly, DS.ARGS())
+        .def("show", &PyDbDynBlockReferenceProperty::show, DS.ARGS())
+        .def("visibleInCurrentVisibilityState", &PyDbDynBlockReferenceProperty::visibleInCurrentVisibilityState, DS.ARGS())
+        .def("description", &PyDbDynBlockReferenceProperty::description, DS.ARGS())
+        .def("unitsType", &PyDbDynBlockReferenceProperty::unitsType, DS.ARGS())
+        .def("getAllowedValues", &PyDbDynBlockReferenceProperty::getAllowedValues, DS.ARGS())
+        .def("value", &PyDbDynBlockReferenceProperty::value, DS.ARGS())
+        .def("setValue", &PyDbDynBlockReferenceProperty::setValue, DS.ARGS({ "val: PyDb.EvalVariant" }))
         //operators
         .def("__eq__", &PyDbDynBlockReferenceProperty::operator==)
         //static
-        .def("className", &PyDbDynBlockReferenceProperty::className).staticmethod("className")
+        .def("className", &PyDbDynBlockReferenceProperty::className, DS.SARGS()).staticmethod("className")
         ;
     enum_<AcDbDynBlockReferenceProperty::UnitsType>("DynUnitsType")
         .value("kNoUnits", AcDbDynBlockReferenceProperty::UnitsType::kNoUnits)

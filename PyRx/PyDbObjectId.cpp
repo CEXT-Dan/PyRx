@@ -245,9 +245,10 @@ PyDbHardPointerId& PyDbHardPointerId::operator=(const PyDbHardPointerId& rhs)
 //PyDbHardOwnershipId
 void makePyDbAcDbHardOwnershipIdWrapper()
 {
+    PyDocString DS("HardOwnershipId");
     class_<PyDbHardOwnershipId, bases<PyDbObjectId>>("HardOwnershipId")
         .def(init<>())
-        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&>(DS.ARGS({ "id: PyDb.ObjectId=PyDb.ObjectId.kNull" })))
         ;
     implicitly_convertible<PyDbHardOwnershipId, PyDbObjectId>();
 }
@@ -277,9 +278,10 @@ PyDbHardOwnershipId& PyDbHardOwnershipId::operator=(const PyDbHardOwnershipId& r
 // PyDbSoftPointerId
 void makePySoftPointerIdWrapper()
 {
+    PyDocString DS("SoftPointerId");
     class_<PyDbSoftPointerId, bases<PyDbObjectId>>("SoftPointerId")
         .def(init<>())
-        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&>(DS.ARGS({ "id: PyDb.ObjectId=PyDb.ObjectId.kNull" })))
         ;
     implicitly_convertible<PyDbSoftPointerId, PyDbObjectId>();
 }
@@ -309,9 +311,10 @@ PyDbSoftPointerId& PyDbSoftPointerId::operator=(const PyDbSoftPointerId& rhs)
 
 void makePyDbSoftOwnershipIdWrapper()
 {
+    PyDocString DS("SoftOwnershipId");
     class_<PyDbSoftOwnershipId, bases<PyDbObjectId>>("SoftOwnershipId")
         .def(init<>())
-        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&>(DS.ARGS({ "id: PyDb.ObjectId=PyDb.ObjectId.kNull" })))
         ;
     implicitly_convertible<PyDbSoftOwnershipId, PyDbObjectId>();
 }

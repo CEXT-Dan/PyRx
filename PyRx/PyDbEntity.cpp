@@ -922,16 +922,23 @@ AcDbSubentId* PyDbSubentId::impObj(const std::source_location& src /*= std::sour
 //PyDbFullSubentPath
 void makePyDbFullSubentPathWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- sub: PyDb.SubentType, gsMarker: int\n"
+        "- id: PyDb.ObjectId, sub: PyDb.SubentType, gsMarker: int\n"
+        "- id: PyDb.ObjectId, sub: PyDb.SubentId\n"
+        "- ids: list[PyDb.ObjectId], sub: PyDb.SubentId\n";
+
     PyDocString DS("PyDb.FullSubentPath");
     class_<PyDbFullSubentPath>("FullSubentPath")
         .def(init<>())
         .def(init<AcDb::SubentType, Adesk::GsMarker>())
         .def(init<const PyDbObjectId&, AcDb::SubentType, Adesk::GsMarker>())
         .def(init<const PyDbObjectId&, const PyDbSubentId&>())
-        .def(init<const boost::python::list&, const PyDbSubentId&>())
-        .def("setObjectIds", &PyDbFullSubentPath::setObjectIds)
+        .def(init<const boost::python::list&, const PyDbSubentId&>(DS.CTOR(ctor)))
+        .def("setObjectIds", &PyDbFullSubentPath::setObjectIds, DS.ARGS({ "ids: list[PyDb.ObjectId]" }))
         .def("objectIds", &PyDbFullSubentPath::objectIds, DS.ARGS())
-        .def("setSubentId", &PyDbFullSubentPath::setSubentId)
+        .def("setSubentId", &PyDbFullSubentPath::setSubentId, DS.ARGS({ "id: PyDb.SubentId" }))
         .def("setSubentId", &PyDbFullSubentPath::subentId, DS.ARGS())
         .add_static_property("kNull", &PyDbSubentId::kNull, DS.SARGS())
         //operators

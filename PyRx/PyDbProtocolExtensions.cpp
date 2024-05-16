@@ -11,7 +11,7 @@ void makePyDbJoinEntityPEWrapper()
 #if defined (_ARXTARGET) || defined (_BRXTARGET)
     PyDocString DS("JoinEntityPE");
     class_<PyDbJoinEntityPE, bases<PyRxObject>>("JoinEntityPE", boost::python::no_init)
-        .def(init<const PyRxObject&>())
+        .def(init<const PyRxObject&>(DS.ARGS({ "obj: PyRx.RxObject" })))
         .def("joinEntity", &PyDbJoinEntityPE::joinEntity1)
         .def("joinEntity", &PyDbJoinEntityPE::joinEntity2, DS.ARGS({ "primaryEntity : PyDb.Entity" , "secondaryEntity : PyDb.Entity", "tol : PyGe.Tol=None" }))
         .def("joinEntities", &PyDbJoinEntityPE::joinEntities1)
