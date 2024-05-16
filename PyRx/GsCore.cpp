@@ -176,8 +176,8 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
         PyThrowBadEs(eNullPtr);
 #if defined(_ZRXTARGET) || defined(_GRXTARGET)//todo test this in acad, bcad
     AcGsViewPtr pView(pGraphicsKernel->createView());
-        if (pView == nullptr)
-            PyThrowBadEs(eNullPtr);
+    if (pView == nullptr)
+        PyThrowBadEs(eNullPtr);
 #else
     AcGsViewPtr pView(gsManager->createView(pOffDevice.get()));
     if (pView == nullptr)
