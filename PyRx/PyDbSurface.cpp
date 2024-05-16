@@ -247,10 +247,10 @@ void makePyDbExtrudedSurfaceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
-        .def("className", &PyDbExtrudedSurface::className).staticmethod("className")
-        .def("desc", &PyDbExtrudedSurface::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbExtrudedSurface::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbExtrudedSurface::cast).staticmethod("cast")
+        .def("className", &PyDbExtrudedSurface::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbExtrudedSurface::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbExtrudedSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbExtrudedSurface::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 

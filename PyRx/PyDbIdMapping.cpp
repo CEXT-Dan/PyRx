@@ -8,11 +8,17 @@ using namespace boost::python;
 //PyIdPair
 void makePyIdPairWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- key: PyDb.ObjectId, val: PyDb.ObjectId\n"
+        "- key: PyDb.ObjectId, val: PyDb.ObjectId, isCloned: bool\n"
+        "- key: PyDb.ObjectId, val: PyDb.ObjectId, isCloned: bool, isPrimary: bool, isOwnerXlated: bool \n";
+
     PyDocString DS("IdPair");
     class_<PyIdPair>("IdPair")
         .def(init<>())
         .def(init<const PyDbObjectId&, const PyDbObjectId&, bool>())
-        .def(init<const PyDbObjectId&, const PyDbObjectId&, bool, bool, bool>())
+        .def(init<const PyDbObjectId&, const PyDbObjectId&, bool, bool, bool>(DS.CTOR(ctor)))
         .def("key", &PyIdPair::key, DS.ARGS())
         .def("value", &PyIdPair::value, DS.ARGS())
         .def("isCloned", &PyIdPair::isCloned, DS.ARGS())

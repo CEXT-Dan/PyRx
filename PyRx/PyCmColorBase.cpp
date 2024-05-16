@@ -111,9 +111,13 @@ void makePyCmTransparencyWrapper()
 //AcCmEntityColor no conversion, so we don't need a py wrapper
 void makePyCmEntityColorWrapper()
 {
+    constexpr const std::string_view setRgbOverloads = "Overloads:\n"
+        "- rgbquad: int\n"
+        "- r: int, g: int, b: int\n";
+
     PyDocString DS("PyDb.EntityColor");
     class_<AcCmEntityColor>("EntityColor")
-        .def(init<Adesk::UInt8, Adesk::UInt8, Adesk::UInt8>())
+        .def(init<Adesk::UInt8, Adesk::UInt8, Adesk::UInt8>(DS.ARGS({ "r: int","g: int","b: int"   })))
 #if _ZRXTARGET == 240 || _GRXTARGET == 240 || _BRXTARGET == 240
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(AcCmEntityColor::ColorMethod)>("setColorMethod", &AcCmEntityColor::setColorMethod)
         .def<AcCmEntityColor::ColorMethod(AcCmEntityColor::*)()const>("colorMethod", &AcCmEntityColor::colorMethod)
@@ -175,7 +179,7 @@ void makePyCmEntityColorWrapper()
         .def("setCOLORREF", &AcCmEntityColor::setCOLORREF, DS.ARGS({ "val : int" }))
         .def("getCOLORREF", &AcCmEntityColor::getCOLORREF, DS.ARGS())
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::RGBQuad)>("setRGB", &AcCmEntityColor::setRGB)
-        .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::UInt8, Adesk::UInt8, Adesk::UInt8)>("setRGB", &AcCmEntityColor::setRGB)
+        .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::UInt8, Adesk::UInt8, Adesk::UInt8)>("setRGB", &AcCmEntityColor::setRGB, DS.OVRL(setRgbOverloads))
         .def("getRGB", &AcCmEntityColor::getRGB, DS.ARGS())
         .def("setRGBM", &AcCmEntityColor::setRGBM, DS.ARGS({ "val : int" }))
         .def("getRGBM", &AcCmEntityColor::getRGBM, DS.ARGS())
