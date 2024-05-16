@@ -23,6 +23,7 @@ void makeDbCoreWrapper()
 
     PyDocString DS("Core");
     class_<DbCore>("Core")
+        .def(init<>(DS.ARGS()))
         .def("attachPointCloudExEntity", &DbCore::attachPointCloudExEntity,
             DS.SARGS({ "path: str","pos: PyGe.Point3d","scale: float","rotation: float","db: PyDb.Database" }, 2379)).staticmethod("attachPointCloudExEntity")
 

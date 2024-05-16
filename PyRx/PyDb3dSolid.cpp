@@ -586,10 +586,10 @@ void makePyDbBodyWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>((DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }))))
-        .def("className", &PyDbBody::className).staticmethod("className")
-        .def("desc", &PyDbBody::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbBody::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbBody::cast).staticmethod("cast")
+        .def("className", &PyDbBody::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbBody::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbBody::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbBody::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
