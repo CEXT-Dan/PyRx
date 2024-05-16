@@ -27,8 +27,8 @@ void makePyDbObjectOverruleWrapper()
         .def("baseErase", &PyDbObjectOverrule::baseErase, DS.ARGS({ "object: PyDb.DbObject","erased : bool" }))
         .def("baseDeepClone", &PyDbObjectOverrule::baseDeepClone, DS.ARGS({ "subject: PyDb.DbObject","owner: PyDb.DbObject","mapping: PyDb.IdMapping","isPrimary : bool" }))
         .def("baseWblockClone", &PyDbObjectOverrule::baseWblockClone, DS.ARGS({ "subject: PyDb.DbObject","owner: PyRx.RxObject","mapping: PyDb.IdMapping","isPrimary : bool" }))
-        .def("className", &PyDbObjectOverrule::className).staticmethod("className")
-        .def("desc", &PyDbObjectOverrule::desc).staticmethod("desc")
+        .def("className", &PyDbObjectOverrule::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbObjectOverrule::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
 }
 

@@ -686,7 +686,7 @@ void makePyDbObjectReactorWrapper()
 {
     PyDocString DS("DbObjectReactor");
     class_<PyDbObjectReactor, bases<PyRxObject>>("DbObjectReactor")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("cancelled", &PyDbObjectReactor::cancelled, DS.ARGS({ "obj: PyDb.DbObject" }))
         .def("copied", &PyDbObjectReactor::copied, DS.ARGS({ "obj: PyDb.DbObject","newObj: PyDb.DbObject" }))
         .def("erased", &PyDbObjectReactor::erased, DS.ARGS({ "obj: PyDb.DbObject", "flag: bool" }))
@@ -1111,7 +1111,7 @@ void makePyDbEntityReactorWrapper()
 {
     PyDocString DS("EntityReactor");
     class_<PyDbEntityReactor, bases<PyRxObject>>("EntityReactor")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("cancelled", &PyDbEntityReactor::cancelled, DS.ARGS({ "obj: PyDb.DbObject" }))
         .def("copied", &PyDbEntityReactor::copied, DS.ARGS({ "obj: PyDb.DbObject","newObj: PyDb.DbObject" }))
         .def("erased", &PyDbEntityReactor::erased, DS.ARGS({ "obj: PyDb.DbObject", "flag: bool" }))

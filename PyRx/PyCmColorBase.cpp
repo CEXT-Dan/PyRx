@@ -32,6 +32,7 @@ void makePyCmColorWrapper()
 {
     PyDocString DS("PyDb.Color");
     class_<AcCmColor>("Color")
+        .def(init<>(DS.ARGS()))
 #if defined(_ZRXTARGET) && (_ZRXTARGET > 240)
         .def("setNone", &AcCmColor::setNone, DS.ARGS())
         .def("setByBlock", &AcCmColor::setByBlock, DS.ARGS())
@@ -80,7 +81,7 @@ void makePyCmTransparencyWrapper()
     PyDocString DS("PyDb.Transparency");
     class_<AcCmTransparency>("Transparency")
         .def(init<Adesk::UInt8>())
-        .def(init<double>())
+        .def(init<double>(DS.ARGS({ "alpha : int|float" })))
         .def("setAlpha", &AcCmTransparency::setAlpha, DS.ARGS({ "alpha : int" }))
         .def("setAlphaPercent", &AcCmTransparency::setAlphaPercent, DS.ARGS({ "alphaPercent : float" }))
         .def("alpha", &AcCmTransparency::alpha, DS.ARGS())
