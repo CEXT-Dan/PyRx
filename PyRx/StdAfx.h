@@ -240,32 +240,26 @@ constexpr auto makeBlockTableRecordIterator = makeIterator<AcDbBlockTableRecordI
 
 class PerfTimer
 {
-private:
-    LARGE_INTEGER frequency{};
-    LARGE_INTEGER t1{};
-    LARGE_INTEGER t2{};
-    double elapsedTime = 0;
+    std::wstring m_funcName;
+    std::chrono::high_resolution_clock::time_point t1;
+    std::chrono::high_resolution_clock::time_point t2;
 public:
-    PerfTimer(const CString& funcName);
+    PerfTimer(const wchar_t* funcName);
     ~PerfTimer() = default;
-    void end();
-
-private:
-    CString m_funcName;
+    void end(const wchar_t* msg);
 };
 
-inline PerfTimer::PerfTimer(const CString& funcName)
+inline PerfTimer::PerfTimer(const wchar_t* funcName)
     : m_funcName(funcName)
 {
-    QueryPerformanceFrequency(&frequency);
-    QueryPerformanceCounter(&t1);
+    t1 = std::chrono::high_resolution_clock::now();
 }
 
-inline void PerfTimer::end()
+inline void PerfTimer::end(const wchar_t* msg)
 {
-    QueryPerformanceCounter(&t2);
-    elapsedTime = (float)(t2.QuadPart - t1.QuadPart) / frequency.QuadPart;
-    acutPrintf(_T("\n%ls %lf"), (const TCHAR*)m_funcName, elapsedTime);
+    t2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsedTime = duration_cast<std::chrono::duration<double>>(t2 - t1);
+    acutPrintf(_T("\n%ls %ls, %lf seconds"), m_funcName.c_str(), msg, elapsedTime.count());
 }
 
 //-------------------------------------------------------------------------------------
