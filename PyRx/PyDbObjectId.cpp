@@ -213,9 +213,10 @@ void AdsName::fromObjectId(const PyDbObjectId& id)
 // PyDbHardPointerId
 void makePyDbHardPointerIdWrapper()
 {
+    PyDocString DS("HardPointerId");
     class_<PyDbHardPointerId, bases<PyDbObjectId>>("HardPointerId")
         .def(init<>())
-        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&>(DS.ARGS({ "id: PyDb.ObjectId=PyDb.ObjectId.kNull" })))
         ;
     implicitly_convertible<PyDbHardPointerId, PyDbObjectId>();
 }

@@ -130,6 +130,10 @@
 #define BOOST_PYTHON_STATIC_LIB
 #define PY_SSIZE_T_CLEAN
 
+#if !defined (_MSC_PLATFORM_TOOLSET)
+#pragma message ("_MSC_PLATFORM_TOOLSET is not defined!!!")
+#endif
+
 #include <Python.h>
 #pragma comment( lib , "python312.lib" )
 
