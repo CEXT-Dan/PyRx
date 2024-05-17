@@ -3,7 +3,7 @@ import inspect
 import io
 import pydoc
 import traceback
-import sqlite3
+import json
 
 import PyRx  # = Runtime runtime
 import PyGe  # = Geometry
@@ -129,14 +129,13 @@ def findDocStringKey(sig):
     except:
         return "-1"
     
-def lookupDocString(docstringkey, conn: sqlite3.Connection):
+def lookupDocString(docstringkey, conn):
     try:
-        if docstringkey != "-1":
-            cur = conn.cursor()
-            cur.execute("SELECT VALUE FROM DOCSTRINGS WHERE ID=?", (docstringkey,))
-            ds = cur.fetchone()
+        key = int(docstringkey)
+        if key in conn:
+            ds = conn[key]
             if len(ds) != 0:
-                return ds[0].replace(u'\xa0', u'')#oops
+                return ds.replace(u'\xa0', u'')#oops
         return ''
     except:
         return ''
@@ -224,7 +223,7 @@ def isStatic(ags : str) -> bool:
     
 # todo: boost generates a doc string that has the function signature
 # it should be able to parse this, or add something in the doc user string
-def generate_pyi(moduleName, module, conn: sqlite3.Connection):
+def generate_pyi(moduleName, module, conn):
     with open(moduleName, 'w') as f:
         
         #write the base module names to the stub file
@@ -333,28 +332,21 @@ def generate_html_help(moduleName, module):
     with open(moduleName, mode='w') as f:
 	    print(str, file=f)
 
-
-def generate_txt_help(moduleName, module):
-    doc_content = io.StringIO()
-    helper = pydoc.Helper(output=doc_content)
-    helper.help(module)
-    with open(moduleName, mode='w') as f:
-	    print(str, file=f)
-
 def PyRxCmd_pygenpyi():
     try:
-        conn = sqlite3.connect("DocString.db", isolation_level='DEFERRED') 
+        conn = {}
+        path = "./DocStrings.json"
+        with open(path) as json_file:
+            data = json.load(json_file)
+            rows = data['rows']
+            for row in rows:
+                conn[row[0]] = row[2]
+        print(len(conn))
         for module in all_modules:
             buildClassDict(module[0], module[1])
         for module in all_modules:
             generate_pyi(module[0] + ".pyi", module[1],conn)
     except Exception as err:
         traceback.print_exception(err)
-    finally:
-        conn.close()
+
         
-
-def PyRxCmd_pygenhtmlhelp():
-    for module in all_modules:
-        generate_html_help(module[0] + ".html", module[1])
-
