@@ -53,12 +53,13 @@ class PalettePanel(wx.Panel):
         event.Skip()
         
     def doit(self):
-        self.output.Clear()
         ai_result = self.ai.prompt(message=self.input.Value)
+        self.output.Clear()
         self.output.SetValue(ai_result['message'])
         
     def OnSend(self,event):
         try:
+            self.output.SetValue('waiting for response....')
             thread = Thread(target=self.doit)
             thread.start()
         except Exception as err:
