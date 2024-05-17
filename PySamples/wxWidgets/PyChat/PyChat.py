@@ -4,6 +4,7 @@ from pyrx_imp import Rx, Ge, Db, Ap, Ed, Gi, Gs
 import wx
 from wx import xrc
 
+from threading import Thread
 from meta_ai_api import MetaAI
 
 print("added command PyChat")
@@ -51,14 +52,19 @@ class PalettePanel(wx.Panel):
     def OnSize(self, event):
         event.Skip()
         
+    def doit(self):
+        self.output.Clear()
+        ai_result = self.ai.prompt(message=self.input.Value)
+        self.output.SetValue(ai_result['message'])
+        
     def OnSend(self,event):
         try:
-            self.output.Clear()
-            ai_result = self.ai.prompt(message=self.input.Value)
-            self.output.SetValue(ai_result['message'])
+            thread = Thread(target=self.doit)
+            thread.start()
         except Exception as err:
             traceback.print_exception(err)
-
+        
+  
 pychatpalette = Ap.PaletteSet("PyChat")
 
 def createPalette() -> None:
