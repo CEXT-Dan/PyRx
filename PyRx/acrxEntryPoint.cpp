@@ -328,6 +328,7 @@ public:
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
+        acprintnl(L"hello world");
     }
 #endif
 };
