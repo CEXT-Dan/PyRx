@@ -1,6 +1,23 @@
 #pragma once
 
 
+#if defined (_MSC_PLATFORM_TOOLSET) && _MSC_PLATFORM_TOOLSET <= 142
+template <class... _Args>
+using ac_Fmt_string = std::_Basic_format_string<wchar_t, std::type_identity_t<_Args>...>;
+
+template <class... _Types>
+constexpr void acprint(const ac_Fmt_string<_Types...> _Fmt, _Types&&... _Args)
+{
+    acutPrintf(std::vformat(_Fmt._Str, std::make_wformat_args(_Args...)).c_str());
+}
+#else
+template <class... _Types>
+constexpr void acprint(const std::wformat_string<_Types...> _Fmt, _Types&&... _Args)
+{
+    acutPrintf(std::vformat(_Fmt.get(), std::make_wformat_args(_Args...)).c_str());
+}
+#endif
+
 constexpr inline std::wstring& tolower(std::wstring& s) noexcept {
     std::transform(s.begin(), s.end(), s.begin(),
         [](wchar_t c) { return std::tolower(c); });
@@ -223,7 +240,7 @@ public:
     TCHAR* buf = nullptr;
 };
 
-#if defined ( MSC_PLATFORM_TOOLSET_v142 )
+#if defined (_MSC_PLATFORM_TOOLSET) && _MSC_PLATFORM_TOOLSET <= 142
 template <>
 struct std::hash<std::filesystem::path>
 {
