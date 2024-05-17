@@ -1220,7 +1220,7 @@ class Editor(object):
     - prompt: str
     - cronly: int, prompt: str
     
-	-Deprecated. Function acedGetFullString() is an alternate form of acedGetString(). Instead of truncating any characters beyond the 132, acedGetFullString() returns a new copy of the entire string using acutUpdString() and updates pResult to point to the new copy. Aside from the manner in which it returns the input string, this function behaves exactly like acedGetString().The caller is responsible for freeing the returned string using acutDelString().This function returns the same error codes as acedGetString(). If there is insufficient memory for a copy of the string, this function returns RTERROR.WarningCallers should always check that pResult is not null before using it. If pResult is initially null, under some conditions, acedGetFullString() returns RTNORM but pResult is not be changed, which leaves it with a null value.See function acedGetString() for more information.-'''
+	-Gets user input for a string, cronly If nonzero, the string can contain blanks and the user must terminate it by entering [Return]; if zero, entering either a blank or [Return] terminates the string-'''
     ...
 
     @staticmethod
