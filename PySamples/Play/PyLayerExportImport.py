@@ -61,7 +61,7 @@ def PyRxCmd_py_layerexport() -> None:
 
 def PyRxCmd_py_layerimport() -> None:
     try:
-        path = Ed.Core.getFileD("Enter file name for storing layer table", "mylayerfile.xlsx", "xlsx", 33)
+        path = Ed.Core.getFileD("Enter file name for storing layer table", "mylayerfile.xlsx", "xlsx", 32)
         db = Db.curDb()
 
         try:
