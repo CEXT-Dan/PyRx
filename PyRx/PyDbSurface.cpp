@@ -312,10 +312,10 @@ void makePyDbLoftedSurfaceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
-        .def("className", &PyDbLoftedSurface::className).staticmethod("className")
-        .def("desc", &PyDbLoftedSurface::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbLoftedSurface::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbLoftedSurface::cast).staticmethod("cast")
+        .def("className", &PyDbLoftedSurface::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbLoftedSurface::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbLoftedSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbLoftedSurface::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -378,10 +378,10 @@ void makePyDbNurbSurfaceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
-        .def("className", &PyDbNurbSurface::className).staticmethod("className")
-        .def("desc", &PyDbNurbSurface::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbNurbSurface::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbNurbSurface::cast).staticmethod("cast")
+        .def("className", &PyDbNurbSurface::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbNurbSurface::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbNurbSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbNurbSurface::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -443,10 +443,10 @@ void makePyDbPlaneSurfaceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
-        .def("className", &PyDbPlaneSurface::className).staticmethod("className")
-        .def("desc", &PyDbPlaneSurface::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbPlaneSurface::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbPlaneSurface::cast).staticmethod("cast")
+        .def("className", &PyDbPlaneSurface::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbPlaneSurface::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbPlaneSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbPlaneSurface::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -509,10 +509,10 @@ void makePyDbRevolvedSurfaceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
-        .def("className", &PyDbRevolvedSurface::className).staticmethod("className")
-        .def("desc", &PyDbRevolvedSurface::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbRevolvedSurface::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbRevolvedSurface::cast).staticmethod("cast")
+        .def("className", &PyDbRevolvedSurface::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbRevolvedSurface::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbRevolvedSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbRevolvedSurface::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -575,10 +575,10 @@ void makePyDbSweptSurfaceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
-        .def("className", &PyDbSweptSurface::className).staticmethod("className")
-        .def("desc", &PyDbSweptSurface::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbSweptSurface::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbSweptSurface::cast).staticmethod("cast")
+        .def("className", &PyDbSweptSurface::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbSweptSurface::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbSweptSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbSweptSurface::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 

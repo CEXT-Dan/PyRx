@@ -459,83 +459,112 @@ AcDbLeader* PyDbLeader::impObj(const std::source_location& src /*= std::source_l
 //PyDbMLeader
 void makePyDbMLeaderWrapper()
 {
+    constexpr const std::string_view setLeaderLineColorOverloads = "Overloads:\n"
+        "- clr: PyDb.AcCmColor\n"
+        "- leaderLineIndex: int, clr: PyDb.AcCmColor\n";
+
+    constexpr const std::string_view setLeaderLineTypeIdOverloads = "Overloads:\n"
+        "- id: PyDb.ObjectId\n"
+        "- leaderLineIndex: int, id: PyDb.ObjectId\n";
+
+    constexpr const std::string_view setLeaderLineWeightOverloads = "Overloads:\n"
+        "- lw: PyDb.LineWeight\n"
+        "- leaderLineIndex: int, lw: PyDb.LineWeight\n";
+
+    constexpr const std::string_view setDoglegLengthOverloads = "Overloads:\n"
+        "- val: float\n"
+        "- leaderIndex: int, val: float\n";
+
+    constexpr const std::string_view setArrowSymbolIdOverloads = "Overloads:\n"
+        "- arrowSymbolId: PyDb.ObjectId\n"
+        "- leaderLineIndex: int, arrowSymbolId: PyDb.ObjectId\n";
+
+    constexpr const std::string_view setArrowSizeOverloads = "Overloads:\n"
+        "- val: float\n"
+        "- leaderLineIndex: int, val: float\n";
+
+
+    PyDocString DS("MLeader");
     class_<PyDbMLeader, bases<PyDbEntity>>("MLeader")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("objectClosed", &PyDbMLeader::objectClosed)
-        .def("modified", &PyDbMLeader::modified)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def("objectClosed", &PyDbMLeader::objectClosed, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("modified", &PyDbMLeader::modified, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("setOverride", &PyDbMLeader::setOverride1)
-        .def("setOverride", &PyDbMLeader::setOverride2)
-        .def("isOverride", &PyDbMLeader::isOverride)
-        .def("setScale", &PyDbMLeader::setScale)
-        .def("scale", &PyDbMLeader::scale)
-        .def("getBlockAttributeValue", &PyDbMLeader::getBlockAttributeValue1)
-        .def("setBlockAttributeValue", &PyDbMLeader::setBlockAttributeValue1)
-        .def("getBlockAttributeValue", &PyDbMLeader::getBlockAttributeValue2)
-        .def("setBlockAttributeValue", &PyDbMLeader::setBlockAttributeValue2)
-        .def("plane", &PyDbMLeader::plane)
-        .def("setPlane", &PyDbMLeader::setPlane)
-        .def("normal", &PyDbMLeader::normal)
+        .def("setOverride", &PyDbMLeader::setOverride2, DS.ARGS({ "val: PyDb.MLeaderPropertyOverrideType", "isOverride: bool=True" }))
+        .def("isOverride", &PyDbMLeader::isOverride, DS.ARGS({ "val: PyDb.MLeaderPropertyOverrideType"}))
+        .def("setScale", &PyDbMLeader::setScale, DS.ARGS({ "val: float" }))
+        .def("scale", &PyDbMLeader::scale, DS.ARGS())
+        .def("getBlockAttribute", &PyDbMLeader::getBlockAttribute, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("setBlockAttribute", &PyDbMLeader::setBlockAttribute, DS.ARGS({ "id: PyDb.ObjectId" ,"attribute: PyDb.Attribute"}))
+        .def("getBlockAttributeValue", &PyDbMLeader::getBlockAttributeValue, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("setBlockAttributeValue", &PyDbMLeader::setBlockAttributeValue, DS.ARGS({ "id: PyDb.ObjectId" "val: str" }))
+        .def("plane", &PyDbMLeader::plane, DS.ARGS())
+        .def("setPlane", &PyDbMLeader::setPlane, DS.ARGS({ "val: PyGe.Plane" }))
+        .def("normal", &PyDbMLeader::normal, DS.ARGS())
         .def("moveMLeader", &PyDbMLeader::moveMLeader1)
-        .def("moveMLeader", &PyDbMLeader::moveMLeader2)
-        .def("getContentGeomExtents", &PyDbMLeader::getContentGeomExtents)
-        .def("numLeaders", &PyDbMLeader::numLeaders)
-        .def("getLeaderIndexes", &PyDbMLeader::getLeaderIndexes)
-        .def("removeLeader", &PyDbMLeader::removeLeader)
-        .def("numLeaderLines", &PyDbMLeader::numLeaderLines)
+        .def("moveMLeader", &PyDbMLeader::moveMLeader2, DS.ARGS({ "vec: PyGe.Vector3d","moveType: PyDb.MLeaderMoveType","bAutoSwitchDogleg: bool=True" }))
+        .def("getContentGeomExtents", &PyDbMLeader::getContentGeomExtents, DS.ARGS())
+        .def("numLeaders", &PyDbMLeader::numLeaders, DS.ARGS())
+        .def("getLeaderIndexes", &PyDbMLeader::getLeaderIndexes, DS.ARGS())
+        .def("removeLeader", &PyDbMLeader::removeLeader, DS.ARGS({ "leaderIndex: int" }))
+        .def("numLeaderLines", &PyDbMLeader::numLeaderLines, DS.ARGS())
         .def("getLeaderLineIndexes", &PyDbMLeader::getLeaderLineIndexes1)
-        .def("getLeaderLineIndexes", &PyDbMLeader::getLeaderLineIndexes2)
-        .def("addLeader", &PyDbMLeader::addLeader)
+        .def("getLeaderLineIndexes", &PyDbMLeader::getLeaderLineIndexes2, DS.ARGS({ "leaderIndex: int = None" }))
+        .def("addLeader", &PyDbMLeader::addLeader, DS.ARGS())
         .def("addLeaderLine", &PyDbMLeader::addLeaderLine1)
-        .def("addLeaderLine", &PyDbMLeader::addLeaderLine2)
-        .def("removeLeaderLine", &PyDbMLeader::removeLeaderLine)
-        .def("addFirstVertex", &PyDbMLeader::addFirstVertex)
-        .def("removeFirstVertex", &PyDbMLeader::removeFirstVertex)
-        .def("getFirstVertex", &PyDbMLeader::getFirstVertex)
-        .def("setFirstVertex", &PyDbMLeader::setFirstVertex)
-        .def("addLastVertex", &PyDbMLeader::addLastVertex)
-        .def("removeLastVertex", &PyDbMLeader::removeLastVertex)
-        .def("getLastVertex", &PyDbMLeader::getLastVertex)
-        .def("setLastVertex", &PyDbMLeader::setLastVertex)
-        .def("numVertices", &PyDbMLeader::numVertices)
-        .def("setVertex", &PyDbMLeader::setVertex)
-        .def("getVertex", &PyDbMLeader::getVertex)
-        .def("getLeaderIndex", &PyDbMLeader::getLeaderIndex)
-        .def("setDoglegDirection", &PyDbMLeader::setDoglegDirection)
-        .def("getDoglegDirection", &PyDbMLeader::getDoglegDirection)
-        .def("setLeaderLineType", &PyDbMLeader::setLeaderLineType1)
-        .def("setLeaderLineType", &PyDbMLeader::setLeaderLineType2)
-        .def("leaderLineType", &PyDbMLeader::leaderLineType)
-        .def("getLeaderLineType", &PyDbMLeader::getLeaderLineType)
-        .def("leaderLineColor", &PyDbMLeader::leaderLineColor)
-        .def("setLeaderLineColor1", &PyDbMLeader::setLeaderLineColor1)
-        .def("setLeaderLineColor1", &PyDbMLeader::setLeaderLineColor2)
-        .def("getLeaderLineColor", &PyDbMLeader::getLeaderLineColor)
-        .def("leaderLineTypeId", &PyDbMLeader::leaderLineTypeId)
+        .def("addLeaderLine", &PyDbMLeader::addLeaderLine2, DS.ARGS({ "val: int|PyGe.Point3d" }))
+        .def("removeLeaderLine", &PyDbMLeader::removeLeaderLine, DS.ARGS({ "leaderLineIndex: int" }))
+        .def("addFirstVertex", &PyDbMLeader::addFirstVertex, DS.ARGS({ "leaderLineIndex: int","pt: PyGe.Point3d" }))
+        .def("removeFirstVertex", &PyDbMLeader::removeFirstVertex, DS.ARGS({ "leaderLineIndex: int" }))
+        .def("getFirstVertex", &PyDbMLeader::getFirstVertex, DS.ARGS({ "leaderLineIndex: int" }))
+        .def("setFirstVertex", &PyDbMLeader::setFirstVertex, DS.ARGS({ "leaderLineIndex: int","pt: PyGe.Point3d" }))
+        .def("addLastVertex", &PyDbMLeader::addLastVertex, DS.ARGS({ "leaderLineIndex: int","pt: PyGe.Point3d" }))
+        .def("removeLastVertex", &PyDbMLeader::removeLastVertex, DS.ARGS({ "leaderLineIndex: int" }))
+        .def("getLastVertex", &PyDbMLeader::getLastVertex, DS.ARGS({ "leaderLineIndex: int" }))
+        .def("setLastVertex", &PyDbMLeader::setLastVertex, DS.ARGS({ "leaderLineIndex: int","pt: PyGe.Point3d" }))
+        .def("numVertices", &PyDbMLeader::numVertices, DS.ARGS({ "leaderLineIndex: int" }))
+        .def("setVertex", &PyDbMLeader::setVertex, DS.ARGS({ "leaderLineIndex: int","idx: int","pt: PyGe.Point3d" }))
+        .def("getVertex", &PyDbMLeader::getVertex, DS.ARGS({ "leaderLineIndex: int","idx: int"}))
+        .def("getLeaderIndex", &PyDbMLeader::getLeaderIndex, DS.ARGS({ "leaderLineIndex: int" }))
+        .def("setDoglegDirection", &PyDbMLeader::setDoglegDirection, DS.ARGS({ "leaderIndex: int","vec: PyGe.Vector3d" }))
+        .def("getDoglegDirection", &PyDbMLeader::getDoglegDirection, DS.ARGS({ "leaderIndex: int" }))
+        .def("setLeaderLineType", &PyDbMLeader::setLeaderLineType1, DS.ARGS({ "leaderLineType: PyDb.MLeaderLeaderType" }))
+        .def("setLeaderLineType", &PyDbMLeader::setLeaderLineType2, DS.ARGS({ "leaderIndex: int", "leaderLineType: PyDb.MLeaderLeaderType" }))
+        .def("leaderLineType", &PyDbMLeader::leaderLineType, DS.ARGS())
+        .def("getLeaderLineType", &PyDbMLeader::getLeaderLineType, DS.ARGS({ "leaderLineIndex: int" }))
+        .def("leaderLineColor", &PyDbMLeader::leaderLineColor, DS.ARGS())
+        .def("setLeaderLineColor", &PyDbMLeader::setLeaderLineColor1)
+        .def("setLeaderLineColor", &PyDbMLeader::setLeaderLineColor2, DS.OVRL(setLeaderLineColorOverloads))
+        .def("getLeaderLineColor", &PyDbMLeader::getLeaderLineColor, DS.ARGS({ "leaderLineIndex: int" }))
+        .def("leaderLineTypeId", &PyDbMLeader::leaderLineTypeId, DS.ARGS())
         .def("setLeaderLineTypeId", &PyDbMLeader::setLeaderLineTypeId1)
-        .def("setLeaderLineTypeId", &PyDbMLeader::setLeaderLineTypeId2)
-        .def("getLeaderLineTypeId", &PyDbMLeader::getLeaderLineTypeId)
-        .def("leaderLineWeight", &PyDbMLeader::leaderLineWeight)
-        .def("setLeaderLineWeight1", &PyDbMLeader::setLeaderLineWeight1)
-        .def("setLeaderLineWeight1", &PyDbMLeader::setLeaderLineWeight2)
-        .def("getLeaderLineWeight", &PyDbMLeader::getLeaderLineWeight)
-        .def("setLandingGap", &PyDbMLeader::setLandingGap)
-        .def("landingGap", &PyDbMLeader::landingGap)
-        .def("setEnableLanding", &PyDbMLeader::setEnableLanding)
-        .def("enableLanding", &PyDbMLeader::enableLanding)
-        .def("setEnableDogleg", &PyDbMLeader::setEnableDogleg)
-        .def("enableDogleg", &PyDbMLeader::enableDogleg)
-        .def("doglegLength", &PyDbMLeader::doglegLength)
+        .def("setLeaderLineTypeId", &PyDbMLeader::setLeaderLineTypeId2, DS.OVRL(setLeaderLineTypeIdOverloads))
+        .def("getLeaderLineTypeId", &PyDbMLeader::getLeaderLineTypeId, DS.ARGS({ "leaderLineIndex: int" }))
+        .def("leaderLineWeight", &PyDbMLeader::leaderLineWeight, DS.ARGS())
+        .def("setLeaderLineWeight", &PyDbMLeader::setLeaderLineWeight1)
+        .def("setLeaderLineWeight", &PyDbMLeader::setLeaderLineWeight2, DS.OVRL(setLeaderLineWeightOverloads))
+        .def("getLeaderLineWeight", &PyDbMLeader::getLeaderLineWeight, DS.ARGS({ "leaderLineIndex: int" }))
+        .def("setLandingGap", &PyDbMLeader::setLandingGap, DS.ARGS({ "val: float" }))
+        .def("landingGap", &PyDbMLeader::landingGap, DS.ARGS())
+        .def("setEnableLanding", &PyDbMLeader::setEnableLanding, DS.ARGS({ "val: bool" }))
+        .def("enableLanding", &PyDbMLeader::enableLanding, DS.ARGS())
+        .def("setEnableDogleg", &PyDbMLeader::setEnableDogleg, DS.ARGS({ "val: bool" }))
+        .def("enableDogleg", &PyDbMLeader::enableDogleg, DS.ARGS())
+        .def("doglegLength", &PyDbMLeader::doglegLength, DS.ARGS())
         .def("setDoglegLength", &PyDbMLeader::setDoglegLength1)
-        .def("setDoglegLength", &PyDbMLeader::setDoglegLength2)
-        .def("getDoglegLength", &PyDbMLeader::getDoglegLength)
-        .def("arrowSymbolId", &PyDbMLeader::arrowSymbolId)
+        .def("setDoglegLength", &PyDbMLeader::setDoglegLength2, DS.OVRL(setDoglegLengthOverloads))
+        .def("getDoglegLength", &PyDbMLeader::getDoglegLength, DS.ARGS({ "leaderIndex: int" }))
+        .def("arrowSymbolId", &PyDbMLeader::arrowSymbolId, DS.ARGS())
         .def("setArrowSymbolId", &PyDbMLeader::setArrowSymbolId1)
-        .def("setArrowSymbolId", &PyDbMLeader::setArrowSymbolId2)
-        .def("getArrowSymbolId", &PyDbMLeader::getArrowSymbolId)
-        .def("arrowSize", &PyDbMLeader::arrowSize)
+        .def("setArrowSymbolId", &PyDbMLeader::setArrowSymbolId2, DS.OVRL(setArrowSymbolIdOverloads))
+        .def("getArrowSymbolId", &PyDbMLeader::getArrowSymbolId, DS.ARGS({ "leaderLineIndex: int" }))
+        .def("arrowSize", &PyDbMLeader::arrowSize, DS.ARGS())
         .def("setArrowSize", &PyDbMLeader::setArrowSize1)
-        .def("setArrowSize", &PyDbMLeader::setArrowSize2)
+        .def("setArrowSize", &PyDbMLeader::setArrowSize2, DS.OVRL(setArrowSizeOverloads))
+
         .def("getArrowSize", &PyDbMLeader::getArrowSize)
         .def("contentType", &PyDbMLeader::contentType)
         .def("setContentType", &PyDbMLeader::setContentType)
@@ -662,8 +691,18 @@ PyDbMLeader::PyDbMLeader(AcDbMLeader* ptr, bool autoDelete)
 {
 }
 
+PyDbMLeader::PyDbMLeader(const PyDbObjectId& id)
+    : PyDbEntity(openAcDbObject<AcDbMLeader>(id, AcDb::OpenMode::kForRead), false)
+{
+}
+
 PyDbMLeader::PyDbMLeader(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbEntity(openAcDbObject<AcDbMLeader>(id, mode), false)
+{
+}
+
+PyDbMLeader::PyDbMLeader(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbEntity(openAcDbObject<AcDbMLeader>(id, mode, erased), false)
 {
 }
 
@@ -702,7 +741,7 @@ double PyDbMLeader::scale() const
     return impObj()->scale();
 }
 
-PyDbAttribute PyDbMLeader::getBlockAttributeValue1(const PyDbObjectId& attdefId) const
+PyDbAttribute PyDbMLeader::getBlockAttribute(const PyDbObjectId& attdefId) const
 {
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();
@@ -714,12 +753,12 @@ PyDbAttribute PyDbMLeader::getBlockAttributeValue1(const PyDbObjectId& attdefId)
 
 }
 
-void PyDbMLeader::setBlockAttributeValue1(const PyDbObjectId& attdefId, const PyDbAttribute& pAtt)
+void PyDbMLeader::setBlockAttribute(const PyDbObjectId& attdefId, const PyDbAttribute& pAtt)
 {
     return PyThrowBadEs(impObj()->setBlockAttributeValue(attdefId.m_id, pAtt.impObj()));
 }
 
-std::string PyDbMLeader::getBlockAttributeValue2(const PyDbObjectId& attdefId) const
+std::string PyDbMLeader::getBlockAttributeValue(const PyDbObjectId& attdefId) const
 {
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();
@@ -730,7 +769,7 @@ std::string PyDbMLeader::getBlockAttributeValue2(const PyDbObjectId& attdefId) c
 #endif
 }
 
-void PyDbMLeader::setBlockAttributeValue2(const PyDbObjectId& attdefId, const std::string& pAtt)
+void PyDbMLeader::setBlockAttributeValue(const PyDbObjectId& attdefId, const std::string& pAtt)
 {
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();
@@ -872,9 +911,13 @@ boost::python::list PyDbMLeader::getLeaderLineIndexes1() const
 
 boost::python::list PyDbMLeader::getLeaderLineIndexes2(int leaderIndex) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     AcDbIntArray leaderIndexes;
-    PyThrowBadEs(impObj()->getLeaderLineIndexes(leaderIndexes));
+    PyThrowBadEs(impObj()->getLeaderLineIndexes(leaderIndex,leaderIndexes));
     return IntArrayToPyList(leaderIndexes);
+#endif
 }
 
 AcGePoint3d PyDbMLeader::getLastVertex(int leaderLineIndex) const
