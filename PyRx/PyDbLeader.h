@@ -101,7 +101,9 @@ public:
     PyDbMLeader();
     virtual ~PyDbMLeader() override = default;
     PyDbMLeader(AcDbMLeader* ptr, bool autoDelete);
+    PyDbMLeader(const PyDbObjectId& id);
     PyDbMLeader(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbMLeader(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     void                objectClosed(const PyDbObjectId& dbObjId);
     void                modified(const PyDbObject& dbObj);
     void                setOverride1(AcDbMLeader::PropertyOverrideType propertyType);
@@ -109,10 +111,10 @@ public:
     bool                isOverride(AcDbMLeader::PropertyOverrideType propertyType) const;
     void                setScale(double scale);
     double              scale() const;
-    PyDbAttribute       getBlockAttributeValue1(const PyDbObjectId& attdefId) const;
-    void                setBlockAttributeValue1(const PyDbObjectId& attdefId, const PyDbAttribute& pAtt);
-    std::string         getBlockAttributeValue2(const PyDbObjectId& attdefId) const;
-    void                setBlockAttributeValue2(const PyDbObjectId& attdefId, const  std::string& pAtt);
+    PyDbAttribute       getBlockAttribute(const PyDbObjectId& attdefId) const;
+    void                setBlockAttribute(const PyDbObjectId& attdefId, const PyDbAttribute& pAtt);
+    std::string         getBlockAttributeValue(const PyDbObjectId& attdefId) const;
+    void                setBlockAttributeValue(const PyDbObjectId& attdefId, const  std::string& pAtt);
     PyGePlane           plane() const;
     void                setPlane(const PyGePlane& plane);
     AcGeVector3d        normal() const;
