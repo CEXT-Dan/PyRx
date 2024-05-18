@@ -483,6 +483,17 @@ void makePyDbMLeaderWrapper()
         "- val: float\n"
         "- leaderLineIndex: int, val: float\n";
 
+    constexpr const std::string_view textAttachmentTypeOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- val: PyDb.MLeaderLeaderDirectionType\n";
+
+    constexpr const std::string_view setTextAttachmentTypeOverloads = "Overloads:\n"
+        "- textAttachmentType: PyDb.MLeaderTextAttachmentType\n"
+        "- textAttachmentType: PyDb.MLeaderTextAttachmentType, val: PyDb.MLeaderLeaderDirectionType\n";
+
+    constexpr const std::string_view connectionPointOverloads = "Overloads:\n"
+        "- vec: PyGe.Vector3d\n"
+        "- vec: PyGe.Vector3d, textAttachmentDirection: PyDb.MLeaderTextAttachmentDirection\n";
 
     PyDocString DS("MLeader");
     class_<PyDbMLeader, bases<PyDbEntity>>("MLeader")
@@ -564,64 +575,63 @@ void makePyDbMLeaderWrapper()
         .def("arrowSize", &PyDbMLeader::arrowSize, DS.ARGS())
         .def("setArrowSize", &PyDbMLeader::setArrowSize1)
         .def("setArrowSize", &PyDbMLeader::setArrowSize2, DS.OVRL(setArrowSizeOverloads))
-
-        .def("getArrowSize", &PyDbMLeader::getArrowSize)
-        .def("contentType", &PyDbMLeader::contentType)
-        .def("setContentType", &PyDbMLeader::setContentType)
-        .def("textStyleId", &PyDbMLeader::textStyleId)
-        .def("setTextStyleId", &PyDbMLeader::setTextStyleId)
+        .def("getArrowSize", &PyDbMLeader::getArrowSize, DS.ARGS({ "leaderLineIndex: int" }))
+        .def("contentType", &PyDbMLeader::contentType, DS.ARGS())
+        .def("setContentType", &PyDbMLeader::setContentType, DS.ARGS({ "val: PyDb.MLeaderContentType" }))
+        .def("textStyleId", &PyDbMLeader::textStyleId, DS.ARGS())
+        .def("setTextStyleId", &PyDbMLeader::setTextStyleId, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("textAttachmentType", &PyDbMLeader::textAttachmentType1)
-        .def("textAttachmentType", &PyDbMLeader::textAttachmentType2)
+        .def("textAttachmentType", &PyDbMLeader::textAttachmentType2, DS.OVRL(textAttachmentTypeOverloads))
         .def("setTextAttachmentType", &PyDbMLeader::setTextAttachmentType1)
-        .def("setTextAttachmentType", &PyDbMLeader::setTextAttachmentType2)
-        .def("textAngleType", &PyDbMLeader::textAngleType)
-        .def("setTextAngleType", &PyDbMLeader::setTextAngleType)
-        .def("textAlignmentType", &PyDbMLeader::textAlignmentType)
-        .def("setTextAlignmentType", &PyDbMLeader::setTextAlignmentType)
-        .def("setTextColor", &PyDbMLeader::setTextColor)
-        .def("textColor", &PyDbMLeader::textColor)
-        .def("setTextHeight", &PyDbMLeader::setTextHeight)
-        .def("textHeight", &PyDbMLeader::textHeight)
-        .def("setEnableFrameText", &PyDbMLeader::setEnableFrameText)
-        .def("enableFrameText", &PyDbMLeader::enableFrameText)
-        .def("setMText", &PyDbMLeader::setMText)
-        .def("mtext", &PyDbMLeader::mtext)
-        .def("setBlockContentId", &PyDbMLeader::setBlockContentId)
-        .def("blockContentId", &PyDbMLeader::blockContentId)
-        .def("setBlockColor", &PyDbMLeader::setBlockColor)
-        .def("blockColor", &PyDbMLeader::blockColor)
-        .def("setBlockScale", &PyDbMLeader::setBlockScale)
-        .def("blockScale", &PyDbMLeader::blockScale)
-        .def("setBlockRotation", &PyDbMLeader::setBlockRotation)
-        .def("blockRotation", &PyDbMLeader::blockRotation)
-        .def("setBlockConnectionType", &PyDbMLeader::setBlockConnectionType)
-        .def("blockConnectionType", &PyDbMLeader::blockConnectionType)
-        .def("setEnableAnnotationScale", &PyDbMLeader::setEnableAnnotationScale)
-        .def("enableAnnotationScale", &PyDbMLeader::enableAnnotationScale)
-        .def("getOverridedMLeaderStyle", &PyDbMLeader::getOverridedMLeaderStyle)
-        .def("setMLeaderStyle", &PyDbMLeader::setMLeaderStyle)
-        .def("MLeaderStyle", &PyDbMLeader::MLeaderStyle)
-        .def("setBlockPosition", &PyDbMLeader::setBlockPosition)
-        .def("getBlockPosition", &PyDbMLeader::getBlockPosition)
-        .def("setTextLocation", &PyDbMLeader::setTextLocation)
-        .def("getTextLocation", &PyDbMLeader::getTextLocation)
-        .def("setToleranceLocation", &PyDbMLeader::setToleranceLocation)
-        .def("getToleranceLocation", &PyDbMLeader::getToleranceLocation)
-        .def("hasContent", &PyDbMLeader::hasContent)
+        .def("setTextAttachmentType", &PyDbMLeader::setTextAttachmentType2,DS.OVRL(setTextAttachmentTypeOverloads))
+        .def("textAngleType", &PyDbMLeader::textAngleType, DS.ARGS())
+        .def("setTextAngleType", &PyDbMLeader::setTextAngleType, DS.ARGS({ "val: PyDb.MLeaderTextAngleType" }))
+        .def("textAlignmentType", &PyDbMLeader::textAlignmentType, DS.ARGS())
+        .def("setTextAlignmentType", &PyDbMLeader::setTextAlignmentType, DS.ARGS({ "val: PyDb.MLeaderTextAlignmentType" }))
+        .def("setTextColor", &PyDbMLeader::setTextColor, DS.ARGS({ "clr: PyDb.AcCmColor" }))
+        .def("textColor", &PyDbMLeader::textColor, DS.ARGS())
+        .def("setTextHeight", &PyDbMLeader::setTextHeight, DS.ARGS({ "val: float" }))
+        .def("textHeight", &PyDbMLeader::textHeight, DS.ARGS())
+        .def("setEnableFrameText", &PyDbMLeader::setEnableFrameText, DS.ARGS({ "val: bool" }))
+        .def("enableFrameText", &PyDbMLeader::enableFrameText, DS.ARGS())
+        .def("setMText", &PyDbMLeader::setMText, DS.ARGS({ "val: PyDb.MText" }))
+        .def("mtext", &PyDbMLeader::mtext, DS.ARGS())
+        .def("setBlockContentId", &PyDbMLeader::setBlockContentId, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("blockContentId", &PyDbMLeader::blockContentId, DS.ARGS())
+        .def("setBlockColor", &PyDbMLeader::setBlockColor, DS.ARGS({ "clr: PyDb.AcCmColor" }))
+        .def("blockColor", &PyDbMLeader::blockColor, DS.ARGS())
+        .def("setBlockScale", &PyDbMLeader::setBlockScale, DS.ARGS({ "val: PyGe.Scale3d" }))
+        .def("blockScale", &PyDbMLeader::blockScale, DS.ARGS())
+        .def("setBlockRotation", &PyDbMLeader::setBlockRotation, DS.ARGS({ "val: float" }))
+        .def("blockRotation", &PyDbMLeader::blockRotation, DS.ARGS())
+        .def("setBlockConnectionType", &PyDbMLeader::setBlockConnectionType, DS.ARGS({ "val: PyDb.MLeaderBlockConnectionType" }))
+        .def("blockConnectionType", &PyDbMLeader::blockConnectionType, DS.ARGS())
+        .def("setEnableAnnotationScale", &PyDbMLeader::setEnableAnnotationScale, DS.ARGS({ "val: bool" }))
+        .def("enableAnnotationScale", &PyDbMLeader::enableAnnotationScale, DS.ARGS())
+        .def("getOverridedMLeaderStyle", &PyDbMLeader::getOverridedMLeaderStyle, DS.ARGS({ "outVal: PyDb.MLeaderStyle" }))
+        .def("setMLeaderStyle", &PyDbMLeader::setMLeaderStyle, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("MLeaderStyle", &PyDbMLeader::MLeaderStyle, DS.ARGS())
+        .def("setBlockPosition", &PyDbMLeader::setBlockPosition, DS.ARGS({ "pt: PyGe.Point3d" }))
+        .def("getBlockPosition", &PyDbMLeader::getBlockPosition, DS.ARGS())
+        .def("setTextLocation", &PyDbMLeader::setTextLocation, DS.ARGS({ "pt: PyGe.Point3d" }))
+        .def("getTextLocation", &PyDbMLeader::getTextLocation, DS.ARGS())
+        .def("setToleranceLocation", &PyDbMLeader::setToleranceLocation, DS.ARGS({ "pt: PyGe.Point3d" }))
+        .def("getToleranceLocation", &PyDbMLeader::getToleranceLocation, DS.ARGS())
+        .def("hasContent", &PyDbMLeader::hasContent, DS.ARGS())
         .def("connectionPoint", &PyDbMLeader::connectionPoint1)
-        .def("connectionPoint", &PyDbMLeader::connectionPoint2)
-        .def("recomputeBreakPoints", &PyDbMLeader::recomputeBreakPoints)
-        .def("postMLeaderToDb", &PyDbMLeader::postMLeaderToDb)
-        .def("updateLeaderLinePosition", &PyDbMLeader::updateLeaderLinePosition)
-        .def("removeLeaderLineRefAssoc", &PyDbMLeader::removeLeaderLineRefAssoc)
-        .def("setTextAttachmentDirection", &PyDbMLeader::setTextAttachmentDirection)
-        .def("textAttachmentDirection", &PyDbMLeader::textAttachmentDirection)
-        .def("setExtendLeaderToText", &PyDbMLeader::setExtendLeaderToText)
-        .def("extendLeaderToText", &PyDbMLeader::extendLeaderToText)
-        .def("className", &PyDbMLeader::className).staticmethod("className")
-        .def("desc", &PyDbMLeader::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbMLeader::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbMLeader::cast).staticmethod("cast")
+        .def("connectionPoint", &PyDbMLeader::connectionPoint2, DS.OVRL(connectionPointOverloads))
+        .def("recomputeBreakPoints", &PyDbMLeader::recomputeBreakPoints, DS.ARGS())
+        .def("postMLeaderToDb", &PyDbMLeader::postMLeaderToDb, DS.ARGS({ "db: PyDb.Database" }))
+        .def("updateLeaderLinePosition", &PyDbMLeader::updateLeaderLinePosition, DS.ARGS())
+        .def("removeLeaderLineRefAssoc", &PyDbMLeader::removeLeaderLineRefAssoc, DS.ARGS({ "leaderLineIndex: int" }))
+        .def("setTextAttachmentDirection", &PyDbMLeader::setTextAttachmentDirection, DS.ARGS({ "textAttachmentDirection: PyDb.MLeaderTextAttachmentDirection" }))
+        .def("textAttachmentDirection", &PyDbMLeader::textAttachmentDirection, DS.ARGS())
+        .def("setExtendLeaderToText", &PyDbMLeader::setExtendLeaderToText, DS.ARGS({ "val: bool" }))
+        .def("extendLeaderToText", &PyDbMLeader::extendLeaderToText, DS.ARGS())
+        .def("className", &PyDbMLeader::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbMLeader::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbMLeader::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbMLeader::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 
     enum_<AcDbMLeader::MoveType>("MLeaderMoveType")
@@ -750,7 +760,6 @@ PyDbAttribute PyDbMLeader::getBlockAttribute(const PyDbObjectId& attdefId) const
     PyThrowBadEs(impObj()->getBlockAttributeValue(attdefId.m_id, patt));
     return PyDbAttribute(patt, true);
 #endif
-
 }
 
 void PyDbMLeader::setBlockAttribute(const PyDbObjectId& attdefId, const PyDbAttribute& pAtt)
@@ -1538,6 +1547,7 @@ AcDbMLeader* PyDbMLeader::impObj(const std::source_location& src /*= std::source
 //PyDbMLeaderStyle
 void makePyDbMLeaderStyleWrapper()
 {
+    PyDocString DS("MLeaderStyle");
     class_<PyDbMLeaderStyle, bases<PyDbObject>>("MLeaderStyle")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -1735,7 +1745,7 @@ std::string PyDbMLeaderStyle::getName() const
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     RxAutoOutStr name;
     PyThrowBadEs(impObj()->getName(name.buf));
-    return wstr_to_utf8(name.buf);
+    return name.str();
 #else
     AcString name;
     PyThrowBadEs(impObj()->getName(name));
