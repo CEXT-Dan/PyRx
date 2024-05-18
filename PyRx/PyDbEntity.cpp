@@ -827,6 +827,7 @@ void makePyDbSubentIdWrapper()
         "- None: Any\n"
         "- type: PyDb.SubentType, indexMarker: int\n"
         "- pTypeClass: PyRx.RxClass, indexMarker: int\n";
+
     PyDocString DS("PyDb.SubentId");
     class_<PyDbSubentId>("SubentId")
         .def(init<>())

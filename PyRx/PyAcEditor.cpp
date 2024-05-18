@@ -121,16 +121,12 @@ void makePyEditorWrapper()
         .def("getReal", &PyAcEditor::getDouble, DS.SARGS({ "prompt: str" }, 10871)).staticmethod("getReal")
         .def("getAngle", &PyAcEditor::getAngle, DS.SARGS({ "basePt: PyGe.Point3d","prompt: str" }, 10825)).staticmethod("getAngle")
         .def("getCurrentSelectionSet", &PyAcEditor::getCurrentSelectionSet, DS.SARGS(10846)).staticmethod("getCurrentSelectionSet")
-
         .def("getString", &PyAcEditor::getString1)
         .def("getString", &PyAcEditor::getString2, DS.SOVRL(getStringOverloads, 10859)).staticmethod("getString")
-
         .def("getPoint", &PyAcEditor::getPoint1)
         .def("getPoint", &PyAcEditor::getPoint2, DS.SOVRL(getPointOverloads, 10870)).staticmethod("getPoint")
-
         .def("getDist", &PyAcEditor::getDist1)
         .def("getDist", &PyAcEditor::getDist2,DS.SOVRL(getPointOverloads, 10852)).staticmethod("getDist")
-
         .def("entSel", &PyAcEditor::entSel1)
         .def("entSel", &PyAcEditor::entSel2, DS.SARGS({ "prompt: str", "desc: PyRx.RxClass=PyDb.Entity" }, 10813)).staticmethod("entSel")
         .def("nEntSelP", &PyAcEditor::nEntSelP1)
