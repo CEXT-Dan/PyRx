@@ -296,48 +296,51 @@ AcDbMline* PyDbMline::impObj(const std::source_location& src /*= std::source_loc
 //PyDbMlineStyle
 void makePyDbMlineStyleWrapper()
 {
+    PyDocString DS("MlineStyle");
     class_<PyDbMlineStyle, bases<PyDbObject>>("MlineStyle")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("initMlineStyle", &PyDbMlineStyle::initMlineStyle)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def("initMlineStyle", &PyDbMlineStyle::initMlineStyle, DS.ARGS())
         .def("set", &PyDbMlineStyle::set1)
-        .def("set", &PyDbMlineStyle::set2)
-        .def("setDescription", &PyDbMlineStyle::setDescription)
-        .def("description", &PyDbMlineStyle::description)
-        .def("setName", &PyDbMlineStyle::setName)
-        .def("name", &PyDbMlineStyle::name)
+        .def("set", &PyDbMlineStyle::set2, DS.ARGS({ "src: PyDb.MlineStyle","checkIfReferenced: bool=True" }))
+        .def("setDescription", &PyDbMlineStyle::setDescription, DS.ARGS({ "val: str" }))
+        .def("description", &PyDbMlineStyle::description, DS.ARGS())
+        .def("setName", &PyDbMlineStyle::setName, DS.ARGS({ "val: str" }))
+        .def("name", &PyDbMlineStyle::name, DS.ARGS())
         .def("setShowMiters", &PyDbMlineStyle::setShowMiters)
-        .def("showMiters", &PyDbMlineStyle::showMiters)
+        .def("showMiters", &PyDbMlineStyle::showMiters, DS.ARGS())
         .def("setStartSquareCap", &PyDbMlineStyle::setStartSquareCap)
-        .def("startSquareCap", &PyDbMlineStyle::startSquareCap)
+        .def("startSquareCap", &PyDbMlineStyle::startSquareCap, DS.ARGS())
         .def("setStartRoundCap", &PyDbMlineStyle::setStartRoundCap)
-        .def("startRoundCap", &PyDbMlineStyle::startRoundCap)
+        .def("startRoundCap", &PyDbMlineStyle::startRoundCap, DS.ARGS())
         .def("setStartInnerArcs", &PyDbMlineStyle::setStartInnerArcs)
-        .def("startInnerArcs", &PyDbMlineStyle::startInnerArcs)
+        .def("startInnerArcs", &PyDbMlineStyle::startInnerArcs, DS.ARGS())
         .def("setEndSquareCap", &PyDbMlineStyle::setEndSquareCap)
-        .def("endSquareCap", &PyDbMlineStyle::endSquareCap)
+        .def("endSquareCap", &PyDbMlineStyle::endSquareCap, DS.ARGS())
         .def("setEndRoundCap", &PyDbMlineStyle::setEndRoundCap)
-        .def("endRoundCap", &PyDbMlineStyle::endRoundCap)
+        .def("endRoundCap", &PyDbMlineStyle::endRoundCap, DS.ARGS())
         .def("setEndInnerArcs", &PyDbMlineStyle::setEndInnerArcs)
-        .def("endInnerArcs", &PyDbMlineStyle::endInnerArcs)
+        .def("endInnerArcs", &PyDbMlineStyle::endInnerArcs, DS.ARGS())
         .def("setFillColor", &PyDbMlineStyle::setFillColor)
-        .def("fillColor", &PyDbMlineStyle::fillColor)
+        .def("fillColor", &PyDbMlineStyle::fillColor, DS.ARGS())
         .def("setFilled", &PyDbMlineStyle::setFilled)
-        .def("filled", &PyDbMlineStyle::filled)
+        .def("filled", &PyDbMlineStyle::filled, DS.ARGS())
         .def("setStartAngle", &PyDbMlineStyle::setStartAngle)
-        .def("startAngle", &PyDbMlineStyle::startAngle)
+        .def("startAngle", &PyDbMlineStyle::startAngle, DS.ARGS())
         .def("setEndAngle", &PyDbMlineStyle::setEndAngle)
-        .def("endAngle", &PyDbMlineStyle::endAngle)
+        .def("endAngle", &PyDbMlineStyle::endAngle, DS.ARGS())
         .def("addElement", &PyDbMlineStyle::addElement1)
-        .def("addElement", &PyDbMlineStyle::addElement2)
-        .def("removeElementAt", &PyDbMlineStyle::removeElementAt)
-        .def("numElements", &PyDbMlineStyle::numElements)
-        .def("setElement", &PyDbMlineStyle::setElement)
-        .def("getElementAt", &PyDbMlineStyle::getElementAt)
-        .def("className", &PyDbMlineStyle::className).staticmethod("className")
-        .def("desc", &PyDbMlineStyle::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbMlineStyle::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbMlineStyle::cast).staticmethod("cast")
+        .def("addElement", &PyDbMlineStyle::addElement2, DS.ARGS({ "offset: float","clr: PyDb.AcCmColor","ltid: PyDb.ObjectId","checkIfReferenced: bool=True" }))
+        .def("removeElementAt", &PyDbMlineStyle::removeElementAt, DS.ARGS({ "val: int" }))
+        .def("numElements", &PyDbMlineStyle::numElements, DS.ARGS())
+        .def("setElement", &PyDbMlineStyle::setElement, DS.ARGS({ "offset: float","clr: PyDb.AcCmColor","ltid: PyDb.ObjectId"}))
+        .def("getElementAt", &PyDbMlineStyle::getElementAt, DS.ARGS({ "val: int" }))
+        .def("className", &PyDbMlineStyle::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbMlineStyle::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbMlineStyle::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbMlineStyle::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -351,8 +354,19 @@ PyDbMlineStyle::PyDbMlineStyle(AcDbMlineStyle* ptr, bool autoDelete)
 {
 }
 
+PyDbMlineStyle::PyDbMlineStyle(const PyDbObjectId& id)
+    : PyDbObject(openAcDbObject<AcDbMlineStyle>(id, AcDb::OpenMode::kForRead), false)
+{
+
+}
+
 PyDbMlineStyle::PyDbMlineStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbObject(openAcDbObject<AcDbMlineStyle>(id, mode), false)
+{
+}
+
+PyDbMlineStyle::PyDbMlineStyle(const PyDbObjectId& id, AcDb::OpenMode mode, bool openErased)
+    : PyDbObject(openAcDbObject<AcDbMlineStyle>(id, mode, openErased), false)
 {
 }
 
