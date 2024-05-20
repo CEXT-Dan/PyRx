@@ -255,7 +255,9 @@ public:
     PyDbMLeaderStyle();
     virtual ~PyDbMLeaderStyle() override = default;
     PyDbMLeaderStyle(AcDbMLeaderStyle* ptr, bool autoDelete);
+    PyDbMLeaderStyle(const PyDbObjectId& id);
     PyDbMLeaderStyle(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbMLeaderStyle(const PyDbObjectId& id, AcDb::OpenMode mode, bool openEdased);
     std::string             getName() const;
     void                    setName(const std::string& pszName);
     bool                    isRenamable() const;
