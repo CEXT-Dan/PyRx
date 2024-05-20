@@ -627,9 +627,9 @@ AcDbHatch* PyDbHatch::impObj(const std::source_location& src /*= std::source_loc
 void makePyDbMPolygonWrapper()
 {
     constexpr const std::string_view appendLoopFromBoundaryOverloads = "Overloads:\n"
-        "- circle PyDb.Circle, excludeCrossing: bool, tol: float\n"
-        "- pline PyDb.Polyline, excludeCrossing: bool, tol: float\n"
-        "- pline2d PyDb.Polyline2d, excludeCrossing: bool, tol: float\n";
+        "- circle: PyDb.Circle, excludeCrossing: bool, tol: float\n"
+        "- pline: PyDb.Polyline, excludeCrossing: bool, tol: float\n"
+        "- pline2d: PyDb.Polyline2d, excludeCrossing: bool, tol: float\n";
 
     PyDocString DS("MPolygon");
     class_<PyDbMPolygon, bases<PyDbEntity>>("MPolygon")
