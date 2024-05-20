@@ -62,7 +62,9 @@ class PyDbMlineStyle : public PyDbObject
 public:
     PyDbMlineStyle();
     PyDbMlineStyle(AcDbMlineStyle* ptr, bool autoDelete);
+    PyDbMlineStyle(const PyDbObjectId& id);
     PyDbMlineStyle(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbMlineStyle(const PyDbObjectId& id, AcDb::OpenMode mode,bool);
     void              initMlineStyle();
     void              set1(const PyDbMlineStyle& src);
     void              set2(const PyDbMlineStyle& src, bool checkIfReferenced);
