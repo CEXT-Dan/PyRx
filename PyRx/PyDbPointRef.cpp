@@ -46,15 +46,20 @@ AcDbPointRef* PyDbPointRef::impObj(const std::source_location& src /*= std::sour
 void makePyDbOsnapPointRefWrapper()
 {
 #if !defined(_BRXTARGET240)
+
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- refPt: PyGe.Point3d\n";
+
     PyDocString DS("OsnapPointRef");
     class_<PyDbOsnapPointRef, bases<PyDbPointRef>>("OsnapPointRef")
         .def(init<>())
-        .def(init<const AcGePoint3d&>())
-        .def("osnapType", &PyDbOsnapPointRef::osnapType)
-        .def("setOsnapType", &PyDbOsnapPointRef::setOsnapType)
-        .def("setIdPath", &PyDbOsnapPointRef::setIdPath)
-        .def("setPoint", &PyDbOsnapPointRef::setPoint)
-        .def("point", &PyDbOsnapPointRef::point)
+        .def(init<const AcGePoint3d&>(DS.CTOR(ctor)))
+        .def("osnapType", &PyDbOsnapPointRef::osnapType, DS.ARGS())
+        .def("setOsnapType", &PyDbOsnapPointRef::setOsnapType, DS.ARGS({ "val: PyDb.OsnapType" }))
+        .def("setIdPath", &PyDbOsnapPointRef::setIdPath, DS.ARGS({ "id: PyDb.ObjectId", "sub: PyDb.SubentType","gsMarker: int" }))
+        .def("setPoint", &PyDbOsnapPointRef::setPoint, DS.ARGS({ "pt: PyGe.Point3d" }))
+        .def("point", &PyDbOsnapPointRef::point, DS.ARGS())
         .def("desc", &PyDbOsnapPointRef::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbOsnapPointRef::className, DS.SARGS()).staticmethod("className")
         ;
