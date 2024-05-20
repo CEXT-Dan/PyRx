@@ -107,6 +107,7 @@ public:
     PyDbMPolygon(AcDbMPolygon* ptr, bool autoDelete);
     PyDbMPolygon(const PyDbObjectId& id);
     PyDbMPolygon(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbMPolygon(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     virtual ~PyDbMPolygon() override = default;
 
     PyDbHatch               hatch();
