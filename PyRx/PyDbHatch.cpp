@@ -626,11 +626,17 @@ AcDbHatch* PyDbHatch::impObj(const std::source_location& src /*= std::source_loc
 //PyDbMPolygon
 void makePyDbMPolygonWrapper()
 {
+    constexpr const std::string_view appendLoopFromBoundaryOverloads = "Overloads:\n"
+        "- circle PyDb.Circle, excludeCrossing: bool, tol: float\n"
+        "- pline PyDb.Polyline, excludeCrossing: bool, tol: float\n"
+        "- pline2d PyDb.Polyline2d, excludeCrossing: bool, tol: float\n";
+
     PyDocString DS("MPolygon");
     class_<PyDbMPolygon, bases<PyDbEntity>>("MPolygon")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("hatch", &PyDbMPolygon::hatch, DS.ARGS())
         .def("elevation", &PyDbMPolygon::elevation, DS.ARGS())
         .def("setElevation", &PyDbMPolygon::setElevation, DS.ARGS({ "val : float" }))
@@ -654,36 +660,36 @@ void makePyDbMPolygonWrapper()
         .def("setGradientAngle", &PyDbMPolygon::setGradientAngle, DS.ARGS({ "val : float" }))
         .def("setGradientShift", &PyDbMPolygon::setGradientShift, DS.ARGS({ "val : float" }))
         .def("setGradientOneColorMode", &PyDbMPolygon::setGradientOneColorMode, DS.ARGS({ "val : bool" }))
-        .def("setGradientColors", &PyDbMPolygon::setGradientColors)
-        .def("setGradient", &PyDbMPolygon::setGradient)
+        .def("setGradientColors", &PyDbMPolygon::setGradientColors, DS.ARGS({ "colors: list[PyDb.AcCmColor]", "values: list[float]"}))
+        .def("setGradient", &PyDbMPolygon::setGradient, DS.ARGS({ "val: PyDb.HatchGradientPatternType", "name: str"}))
         .def("patternColor", &PyDbMPolygon::patternColor, DS.ARGS())
-        .def("setPatternColor", &PyDbMPolygon::setPatternColor)
+        .def("setPatternColor", &PyDbMPolygon::setPatternColor, DS.ARGS({ "clr: PyDb.AcCmColor" }))
         .def("getArea", &PyDbMPolygon::getArea, DS.ARGS())
         .def("getPerimeter", &PyDbMPolygon::getPerimeter, DS.ARGS())
         .def("isBalanced", &PyDbMPolygon::isBalanced, DS.ARGS())
         .def("getOffsetVector", &PyDbMPolygon::getOffsetVector, DS.ARGS())
         .def("appendLoopFromBoundary", &PyDbMPolygon::appendLoopFromBoundary1)
         .def("appendLoopFromBoundary", &PyDbMPolygon::appendLoopFromBoundary2)
-        .def("appendLoopFromBoundary", &PyDbMPolygon::appendLoopFromBoundary3)
+        .def("appendLoopFromBoundary", &PyDbMPolygon::appendLoopFromBoundary3, DS.OVRL(appendLoopFromBoundaryOverloads))
         .def("numMPolygonLoops", &PyDbMPolygon::numMPolygonLoops, DS.ARGS())
-        .def("getMPolygonLoopAt", &PyDbMPolygon::getMPolygonLoopAt, DS.ARGS({ "val : int" }))
-        .def("insertMPolygonLoopAt", &PyDbMPolygon::insertMPolygonLoopAt)
-        .def("appendMPolygonLoop", &PyDbMPolygon::appendMPolygonLoop)
+        .def("getMPolygonLoopAt", &PyDbMPolygon::getMPolygonLoopAt, DS.ARGS({ "loopIndex : int" }))
+        .def("insertMPolygonLoopAt", &PyDbMPolygon::insertMPolygonLoopAt, DS.ARGS({ "loopIndex: int","vertices: list[PyGe.Point2d]", "bulges: list[float]","excludeCrossing: bool","tol: float" }))
+        .def("appendMPolygonLoop", &PyDbMPolygon::appendMPolygonLoop, DS.ARGS({ "vertices: list[PyGe.Point2d]", "bulges: list[float]","excludeCrossing: bool","tol: float" }))
         .def("removeMPolygonLoopAt", &PyDbMPolygon::removeMPolygonLoopAt, DS.ARGS({ "val : int" }))
         .def("balanceTree", &PyDbMPolygon::balanceTree, DS.ARGS())
         .def("balanceDisplay", &PyDbMPolygon::balanceDisplay, DS.ARGS())
         .def("getLoopDirection", &PyDbMPolygon::getLoopDirection, DS.ARGS({ "val : int" }))
-        .def("setLoopDirection", &PyDbMPolygon::setLoopDirection)
-        .def("getLoopAtGsMarker", &PyDbMPolygon::getLoopAtGsMarker, DS.ARGS({ "val : int" }))
-        .def("getChildLoops", &PyDbMPolygon::getChildLoops, DS.ARGS({ "val : int" }))
-        .def("getParentLoop", &PyDbMPolygon::getParentLoop, DS.ARGS({ "val : int" }))
+        .def("setLoopDirection", &PyDbMPolygon::setLoopDirection, DS.ARGS({ "lindex: int","dir: PyDb.MPolygonloopDir" }))
+        .def("getLoopAtGsMarker", &PyDbMPolygon::getLoopAtGsMarker, DS.ARGS({ "gsMark : int" }))
+        .def("getChildLoops", &PyDbMPolygon::getChildLoops, DS.ARGS({ "curLoop : int" }))
+        .def("getParentLoop", &PyDbMPolygon::getParentLoop, DS.ARGS({ "curLoop : int" }))
         .def("getClosestLoopTo", &PyDbMPolygon::getClosestLoopTo, DS.ARGS({ "val : PyGe.Point3d" }))
         .def("isPointInsideMPolygon", &PyDbMPolygon::isPointInsideMPolygon, DS.ARGS({ "val : PyGe.Point3d","tol : float" }))
         .def("isPointOnLoopBoundary", &PyDbMPolygon::isPointOnLoopBoundary, DS.ARGS({ "val : PyGe.Point3d","loop : int", "tol : float" }))
-        .def("loopCrossesItself", &PyDbMPolygon::loopCrossesItself)
-        .def("selfCrosses", &PyDbMPolygon::selfCrosses)
+        .def("loopCrossesItself", &PyDbMPolygon::loopCrossesItself, DS.ARGS({ "vertices: list[PyGe.Point2d]", "bulges: list[float]","tol: float" }))
+        .def("selfCrosses", &PyDbMPolygon::selfCrosses, DS.ARGS({ "vertices: list[PyGe.Point2d]", "bulges: list[float]","tol: float" }))
         .def("includesTouchingLoops", &PyDbMPolygon::includesTouchingLoops, DS.ARGS({ "val : float" }))
-        .def("createLoopsFromBoundaries", &PyDbMPolygon::createLoopsFromBoundaries)
+        .def("createLoopsFromBoundaries", &PyDbMPolygon::createLoopsFromBoundaries, DS.ARGS({ "ids: list[PyDb.ObjectId]" ,"excludeCrossing: bool","tol: float" }))
         .def("className", &PyDbMPolygon::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbMPolygon::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbMPolygon::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -715,6 +721,11 @@ PyDbMPolygon::PyDbMPolygon(const PyDbObjectId& id)
 
 PyDbMPolygon::PyDbMPolygon(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbEntity(openAcDbObject<AcDbMPolygon>(id, mode), false)
+{
+}
+
+PyDbMPolygon::PyDbMPolygon(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbEntity(openAcDbObject<AcDbMPolygon>(id, mode, erased), false)
 {
 }
 
