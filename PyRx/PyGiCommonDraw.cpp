@@ -58,7 +58,7 @@ AcGiCommonDraw* PyGiCommonDraw::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGiCommonDraw*>(m_pyImp.get());
 }
 
@@ -98,7 +98,7 @@ AcGiWorldDraw* PyGiWorldDraw::impObj(const std::source_location& src /*= std::so
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGiWorldDraw*>(m_pyImp.get());
 }
 
@@ -138,7 +138,7 @@ AcGiViewportDraw* PyGiViewportDraw::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGiViewportDraw*>(m_pyImp.get());
 }
 
@@ -275,25 +275,25 @@ Adesk::Boolean PyGiGeometry::circularArc4(const AcGePoint3d& start, const AcGePo
     return impObj()->circularArc(start, point, end, arcType);
 }
 
-Adesk::Boolean PyGiGeometry::polyline1(const boost::python::list& vertexList)
+Adesk::Boolean PyGiGeometry::polyline1(const boost::python::object& vertexList)
 {
     std::vector<AcGePoint3d> pnts = py_list_to_std_vector<AcGePoint3d>(vertexList);
     return impObj()->polyline(pnts.size(), pnts.data());
 }
 
-Adesk::Boolean PyGiGeometry::polyline2(const boost::python::list& vertexList, const AcGeVector3d& normal)
+Adesk::Boolean PyGiGeometry::polyline2(const boost::python::object& vertexList, const AcGeVector3d& normal)
 {
     std::vector<AcGePoint3d> pnts = py_list_to_std_vector<AcGePoint3d>(vertexList);
     return impObj()->polyline(pnts.size(), pnts.data(), &normal);
 }
 
-Adesk::Boolean PyGiGeometry::polyline3(const boost::python::list& vertexList, const AcGeVector3d& normal, Adesk::LongPtr marker)
+Adesk::Boolean PyGiGeometry::polyline3(const boost::python::object& vertexList, const AcGeVector3d& normal, Adesk::LongPtr marker)
 {
     std::vector<AcGePoint3d> pnts = py_list_to_std_vector<AcGePoint3d>(vertexList);
     return impObj()->polyline(pnts.size(), pnts.data(), &normal, marker);
 }
 
-Adesk::Boolean PyGiGeometry::polygon(const boost::python::list& vertexList) const
+Adesk::Boolean PyGiGeometry::polygon(const boost::python::object& vertexList) const
 {
     std::vector<AcGePoint3d> pnts = py_list_to_std_vector<AcGePoint3d>(vertexList);
     return impObj()->polygon(pnts.size(), pnts.data());
@@ -376,7 +376,7 @@ AcGiGeometry* PyGiGeometry::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGiGeometry*>(m_pyImp.get());
 }
 
@@ -410,7 +410,7 @@ AcGiWorldGeometry* PyGiWorldGeometry::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGiWorldGeometry*>(m_pyImp.get());
 }
 
@@ -444,6 +444,6 @@ AcGiViewportGeometry* PyGiViewportGeometry::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGiViewportGeometry*>(m_pyImp.get());
 }
