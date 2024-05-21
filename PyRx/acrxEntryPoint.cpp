@@ -130,6 +130,18 @@ public:
         return retCode;
     }
 
+    static void initPyRx()
+    {
+        static bool doneOnce = false;
+        if (!doneOnce)
+        {
+            PRINTVER();
+            if (!PyRxApp::instance().init())
+                acutPrintf(_T("\nPyInit Failed"));
+            doneOnce = true;
+        }
+    }
+
     static void loadDBXModules()
     {
 #if defined(_ARXTARGET)
@@ -149,14 +161,7 @@ public:
 
     static void PyRxOnIdleMsgFn()
     {
-        static bool doneOnce = false;
-        if (!doneOnce)
-        {
-            PRINTVER();
-            if (!PyRxApp::instance().init())
-                acutPrintf(_T("\nPyInit Failed"));
-            doneOnce = true;
-        }
+        initPyRx();
         PyApApplication::PyOnIdleMsgFn();
     }
 
