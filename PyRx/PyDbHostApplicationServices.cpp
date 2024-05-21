@@ -824,32 +824,45 @@ AcDbDatabaseSummaryInfo* PyDbDatabaseSummaryInfo::impObj(const std::source_locat
 //PyDbPlotSettingsValidator
 void makePyDbPlotSettingsValidatorWrapper()
 {
+    constexpr const std::string_view setPlotCfgNameOverloads = "Overloads:\n"
+        "- settings: PyDb.PlotSettings, plotDeviceName: str\n"
+        "- settings: PyDb.PlotSettings, plotDeviceName: str, mediaName: str\n";
+
+    constexpr const std::string_view setPlotWindowAreaOverloads = "Overloads:\n"
+        "- settings: PyDb.PlotSettings, ex: PyDb.Extents2d\n"
+        "- settings: PyDb.PlotSettings, xmin: float, ymin: float, xmax: float, ymax: float\n";
+
+    constexpr const std::string_view getLocaleMediaNameOverloads = "Overloads:\n"
+        "- settings: PyDb.PlotSettings, canonicalName: str\n"
+        "- settings: PyDb.PlotSettings, idx: int\n";
+
     PyDocString DS("PlotSettingsValidator");
     class_<PyDbPlotSettingsValidator>("PlotSettingsValidator")
+        .def(init<>(DS.ARGS()))
         .def("setPlotCfgName", &PyDbPlotSettingsValidator::setPlotCfgName1)
-        .def("setPlotCfgName", &PyDbPlotSettingsValidator::setPlotCfgName2)
-        .def("setCanonicalMediaName", &PyDbPlotSettingsValidator::setCanonicalMediaName)
-        .def("setPlotOrigin", &PyDbPlotSettingsValidator::setPlotOrigin)
-        .def("setPlotPaperUnits", &PyDbPlotSettingsValidator::setPlotPaperUnits)
-        .def("setPlotRotation", &PyDbPlotSettingsValidator::setPlotRotation)
-        .def("setPlotCentered", &PyDbPlotSettingsValidator::setPlotCentered)
-        .def("setPlotType", &PyDbPlotSettingsValidator::setPlotType)
+        .def("setPlotCfgName", &PyDbPlotSettingsValidator::setPlotCfgName2, DS.OVRL(setPlotCfgNameOverloads))
+        .def("setCanonicalMediaName", &PyDbPlotSettingsValidator::setCanonicalMediaName, DS.ARGS({ "settings: PyDb.PlotSettings","mediaName: str" }))
+        .def("setPlotOrigin", &PyDbPlotSettingsValidator::setPlotOrigin, DS.ARGS({ "settings: PyDb.PlotSettings","xCoordinate: float","yCoordinate: float" }))
+        .def("setPlotPaperUnits", &PyDbPlotSettingsValidator::setPlotPaperUnits, DS.ARGS({ "settings: PyDb.PlotSettings","units: PyDb.PlotPaperUnits" }))
+        .def("setPlotRotation", &PyDbPlotSettingsValidator::setPlotRotation, DS.ARGS({ "settings: PyDb.PlotSettings","rotationType: PyDb.PlotRotation" }))
+        .def("setPlotCentered", &PyDbPlotSettingsValidator::setPlotCentered, DS.ARGS({ "settings: PyDb.PlotSettings","isCentered: bool" }))
+        .def("setPlotType", &PyDbPlotSettingsValidator::setPlotType, DS.ARGS({ "settings: PyDb.PlotSettings","plotAreaType: PyDb.PlotType" }))
         .def("setPlotWindowArea", &PyDbPlotSettingsValidator::setPlotWindowArea1)
-        .def("setPlotWindowArea", &PyDbPlotSettingsValidator::setPlotWindowArea2)
-        .def("setPlotViewName", &PyDbPlotSettingsValidator::setPlotViewName)
-        .def("setUseStandardScale", &PyDbPlotSettingsValidator::setUseStandardScale)
-        .def("setCustomPrintScale", &PyDbPlotSettingsValidator::setCustomPrintScale)
-        .def("setCurrentStyleSheet", &PyDbPlotSettingsValidator::setCurrentStyleSheet)
-        .def("setStdScaleType", &PyDbPlotSettingsValidator::setStdScaleType)
-        .def("setStdScale", &PyDbPlotSettingsValidator::setStdScale)
-        .def("plotDeviceList", &PyDbPlotSettingsValidator::plotDeviceList)
-        .def("canonicalMediaNameList", &PyDbPlotSettingsValidator::canonicalMediaNameList)
+        .def("setPlotWindowArea", &PyDbPlotSettingsValidator::setPlotWindowArea2, DS.OVRL(setPlotWindowAreaOverloads))
+        .def("setPlotViewName", &PyDbPlotSettingsValidator::setPlotViewName, DS.ARGS({ "settings: PyDb.PlotSettings","viewName: str" }))
+        .def("setUseStandardScale", &PyDbPlotSettingsValidator::setUseStandardScale, DS.ARGS({ "settings: PyDb.PlotSettings","useStandard: bool" }))
+        .def("setCustomPrintScale", &PyDbPlotSettingsValidator::setCustomPrintScale, DS.ARGS({ "settings: PyDb.PlotSettings","numerator: float","denominator: float" }))
+        .def("setCurrentStyleSheet", &PyDbPlotSettingsValidator::setCurrentStyleSheet, DS.ARGS({ "settings: PyDb.PlotSettings","styleSheetName: str" }))
+        .def("setStdScaleType", &PyDbPlotSettingsValidator::setStdScaleType, DS.ARGS({ "settings: PyDb.PlotSettings","scaleType: PyDb.StdScaleType" }))
+        .def("setStdScale", &PyDbPlotSettingsValidator::setStdScale, DS.ARGS({ "settings: PyDb.PlotSettings","scale: float" }))
+        .def("plotDeviceList", &PyDbPlotSettingsValidator::plotDeviceList, DS.ARGS())
+        .def("canonicalMediaNameList", &PyDbPlotSettingsValidator::canonicalMediaNameList, DS.ARGS({ "settings: PyDb.PlotSettings"}))
         .def("getLocaleMediaName", &PyDbPlotSettingsValidator::getLocaleMediaName1)
-        .def("getLocaleMediaName", &PyDbPlotSettingsValidator::getLocaleMediaName2)
-        .def("setClosestMediaName", &PyDbPlotSettingsValidator::setClosestMediaName)
-        .def("plotStyleSheetList", &PyDbPlotSettingsValidator::plotStyleSheetList)
-        .def("setZoomToPaperOnUpdate", &PyDbPlotSettingsValidator::setZoomToPaperOnUpdate)
-        .def("setDefaultPlotConfig", &PyDbPlotSettingsValidator::setDefaultPlotConfig)
+        .def("getLocaleMediaName", &PyDbPlotSettingsValidator::getLocaleMediaName2, DS.OVRL(getLocaleMediaNameOverloads))
+        .def("setClosestMediaName", &PyDbPlotSettingsValidator::setClosestMediaName, DS.ARGS({ "settings: PyDb.PlotSettings", "paperWidth: float","paperHeight: float","units: PyDb.PlotPaperUnits","matchPrintableArea: bool" }))
+        .def("plotStyleSheetList", &PyDbPlotSettingsValidator::plotStyleSheetList, DS.ARGS())
+        .def("setZoomToPaperOnUpdate", &PyDbPlotSettingsValidator::setZoomToPaperOnUpdate, DS.ARGS({ "settings: PyDb.PlotSettings","doZoom: bool" }))
+        .def("setDefaultPlotConfig", &PyDbPlotSettingsValidator::setDefaultPlotConfig, DS.ARGS({ "settings: PyDb.PlotSettings" }))
         .def("className", &PyDbPlotSettingsValidator::className, DS.SARGS()).staticmethod("className")
         ;
 }

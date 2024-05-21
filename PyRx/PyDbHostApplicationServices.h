@@ -150,7 +150,6 @@ class PyDbPlotSettingsValidator
 public:
     PyDbPlotSettingsValidator() = default;
     ~PyDbPlotSettingsValidator() = default;
-
     void                setPlotCfgName1(PyDbPlotSettings& settings, const std::string& plotDeviceName);
     void                setPlotCfgName2(PyDbPlotSettings& settings, const std::string& plotDeviceName, const std::string& mediaName);
     void                setCanonicalMediaName(PyDbPlotSettings& settings, const std::string& mediaName);
