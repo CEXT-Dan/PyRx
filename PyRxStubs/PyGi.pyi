@@ -504,7 +504,7 @@ This class cannot be instantiated from Python'''
     def setTransparency (self, val: PyDb.Transparency)-> None :
       '''                             '''
     ...
-    def setTrueColor (self, clr: PyDb.AcCmColor)-> None :
+    def setTrueColor (self, clr: PyDb.EntityColor)-> None :
       '''                             '''
     ...
     def setVisualStyle (self, id: PyDb.ObjectId)-> None :
@@ -1227,7 +1227,7 @@ This class cannot be instantiated from Python'''
     def setTransparency (self, val: PyDb.Transparency)-> None :
       '''                             '''
     ...
-    def setTrueColor (self, clr: PyDb.AcCmColor)-> None :
+    def setTrueColor (self, clr: PyDb.EntityColor)-> None :
       '''                             '''
     ...
     def setVisualStyle (self, id: PyDb.ObjectId)-> None :
