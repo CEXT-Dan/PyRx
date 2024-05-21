@@ -563,37 +563,33 @@ class Geometry(PyRx.RxObject):
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
+
+    @overload
+    def circle (self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d)-> bool : ...
+    @overload
+    def circle (self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d)-> bool : ...
     def circle (self, *args, **kwargs)-> bool :
-      '''circle( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4) -> bool :
-
-    C++ signature :
-        bool circle(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d)
-
-circle( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> bool :
-
-    C++ signature :
-        bool circle(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)'''
+      '''Overloads:
+    - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d
+    - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d
+    '''
     ...
+
+    @overload
+    def circularArc (self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float)-> bool : ...
+    @overload
+    def circularArc (self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGe.ArcType)-> bool : ...
+    @overload
+    def circularArc (self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d)-> bool : ...
+    @overload
+    def circularArc (self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, arcType: PyGe.ArcType)-> bool : ...
     def circularArc (self, *args, **kwargs)-> bool :
-      '''circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6) -> bool :
-
-    C++ signature :
-        bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,double)
-
-circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6, (ArcType)arg7) -> bool :
-
-    C++ signature :
-        bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,double,enum AcGiArcType)
-
-circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> bool :
-
-    C++ signature :
-        bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
-
-circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (ArcType)arg5) -> bool :
-
-    C++ signature :
-        bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,enum AcGiArcType)'''
+      '''Overloads:
+    - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float
+    - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGe.ArcType
+    - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d
+    - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, arcType: PyGe.ArcType
+    '''
     ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
@@ -1422,37 +1418,33 @@ class ViewportGeometry(Geometry):
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
+
+    @overload
+    def circle (self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d)-> bool : ...
+    @overload
+    def circle (self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d)-> bool : ...
     def circle (self, *args, **kwargs)-> bool :
-      '''circle( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4) -> bool :
-
-    C++ signature :
-        bool circle(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d)
-
-circle( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> bool :
-
-    C++ signature :
-        bool circle(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)'''
+      '''Overloads:
+    - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d
+    - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d
+    '''
     ...
+
+    @overload
+    def circularArc (self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float)-> bool : ...
+    @overload
+    def circularArc (self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGe.ArcType)-> bool : ...
+    @overload
+    def circularArc (self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d)-> bool : ...
+    @overload
+    def circularArc (self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, arcType: PyGe.ArcType)-> bool : ...
     def circularArc (self, *args, **kwargs)-> bool :
-      '''circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6) -> bool :
-
-    C++ signature :
-        bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,double)
-
-circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6, (ArcType)arg7) -> bool :
-
-    C++ signature :
-        bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,double,enum AcGiArcType)
-
-circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> bool :
-
-    C++ signature :
-        bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
-
-circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (ArcType)arg5) -> bool :
-
-    C++ signature :
-        bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,enum AcGiArcType)'''
+      '''Overloads:
+    - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float
+    - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGe.ArcType
+    - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d
+    - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, arcType: PyGe.ArcType
+    '''
     ...
 
     @staticmethod
@@ -1641,37 +1633,33 @@ class WorldGeometry(Geometry):
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
+
+    @overload
+    def circle (self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d)-> bool : ...
+    @overload
+    def circle (self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d)-> bool : ...
     def circle (self, *args, **kwargs)-> bool :
-      '''circle( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4) -> bool :
-
-    C++ signature :
-        bool circle(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d)
-
-circle( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> bool :
-
-    C++ signature :
-        bool circle(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)'''
+      '''Overloads:
+    - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d
+    - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d
+    '''
     ...
+
+    @overload
+    def circularArc (self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float)-> bool : ...
+    @overload
+    def circularArc (self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGe.ArcType)-> bool : ...
+    @overload
+    def circularArc (self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d)-> bool : ...
+    @overload
+    def circularArc (self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, arcType: PyGe.ArcType)-> bool : ...
     def circularArc (self, *args, **kwargs)-> bool :
-      '''circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6) -> bool :
-
-    C++ signature :
-        bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,double)
-
-circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6, (ArcType)arg7) -> bool :
-
-    C++ signature :
-        bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,double,enum AcGiArcType)
-
-circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> bool :
-
-    C++ signature :
-        bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
-
-circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (ArcType)arg5) -> bool :
-
-    C++ signature :
-        bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,enum AcGiArcType)'''
+      '''Overloads:
+    - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float
+    - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGe.ArcType
+    - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d
+    - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, arcType: PyGe.ArcType
+    '''
     ...
 
     @staticmethod

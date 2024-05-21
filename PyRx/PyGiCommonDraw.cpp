@@ -146,6 +146,16 @@ AcGiViewportDraw* PyGiViewportDraw::impObj(const std::source_location& src /*= s
 //PyGiGeometry
 void makePyGiGeometryWrapper()
 {
+    constexpr const std::string_view circleOverloads = "Overloads:\n"
+        "- center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d\n"
+        "- p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d\n";
+
+    constexpr const std::string_view circularArcOverloads = "Overloads:\n"
+        "- center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float\n"
+        "- center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGe.ArcType\n"
+        "- p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d\n"
+        "- p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, arcType: PyGe.ArcType\n";
+
     PyDocString DS("Geometry");
     class_<PyGiGeometry, bases<PyRxObject>>("Geometry", boost::python::no_init)
         .def("getModelToWorldTransform", &PyGiGeometry::getModelToWorldTransform, DS.ARGS())
@@ -159,11 +169,11 @@ void makePyGiGeometryWrapper()
         .def("pushScaleTransform", &PyGiGeometry::pushScaleTransform2, DS.ARGS({ "behavior : PyGi.AcGiScaleTransformBehavior"," extents : PyGe.Point2d|PyGe.Point2d" }))
         .def("pushOrientationTransform", &PyGiGeometry::pushOrientationTransform, DS.ARGS({ " behavior : PyGi.AcGiOrientationTransformBehavior" }))
         .def("circle", &PyGiGeometry::circle1)
-        .def("circle", &PyGiGeometry::circle2)
+        .def("circle", &PyGiGeometry::circle2,DS.OVRL(circleOverloads))
         .def("circularArc", &PyGiGeometry::circularArc1)
         .def("circularArc", &PyGiGeometry::circularArc2)
         .def("circularArc", &PyGiGeometry::circularArc3)
-        .def("circularArc", &PyGiGeometry::circularArc4)
+        .def("circularArc", &PyGiGeometry::circularArc4, DS.OVRL(circularArcOverloads))
         .def("polyline", &PyGiGeometry::polyline1)
         .def("polyline", &PyGiGeometry::polyline2)
         .def("polyline", &PyGiGeometry::polyline3, DS.ARGS({ "vertexList : list[PyGe.Point3d]","normal : PyGe.Vector3d=default","marker : int=default" }))
