@@ -348,7 +348,7 @@ Adesk::Boolean PyGiGeometry::worldLine(const AcGePoint3d pnt1, const AcGePoint3d
     return impObj()->worldLine(pnts);
 }
 
-Adesk::Boolean PyGiGeometry::edge(const boost::python::list& edges) const
+Adesk::Boolean PyGiGeometry::edge(const boost::python::object& edges) const
 {
     AcArray<AcGeCurve2d*> _edges;
     std::vector<PyGeCurve2d> _pyedges = py_list_to_std_vector<PyGeCurve2d>(edges);
