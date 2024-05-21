@@ -124,7 +124,7 @@ void PyGiSubEntityTraits::setSelectionMarker(const Adesk::LongPtr markerId)
 
 void PyGiSubEntityTraits::setFillType(const AcGiFillType val)
 {
-    impObj()->setSelectionMarker(val);
+    impObj()->setFillType(val);
 }
 
 void PyGiSubEntityTraits::setLineWeight(const AcDb::LineWeight lw)
