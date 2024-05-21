@@ -12,7 +12,7 @@ void makePyGiSubEntityTraitsWrapper()
     PyDocString DS("SubEntityTraits");
     class_<PyGiSubEntityTraits, bases<PyRxObject>>("SubEntityTraits", boost::python::no_init)
         .def("setColor", &PyGiSubEntityTraits::setColor, DS.ARGS({ "val: int" }))
-        .def("setTrueColor", &PyGiSubEntityTraits::setTrueColor, DS.ARGS({ "clr: PyDb.Color" }))
+        .def("setTrueColor", &PyGiSubEntityTraits::setTrueColor, DS.ARGS({ "clr: PyDb.EntityColor" }))
         .def("setLayer", &PyGiSubEntityTraits::setLayer, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("setLineType", &PyGiSubEntityTraits::setLineType, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("setSelectionMarker", &PyGiSubEntityTraits::setSelectionMarker, DS.ARGS({ "val: int" }))
