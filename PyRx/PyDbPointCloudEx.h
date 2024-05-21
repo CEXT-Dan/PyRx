@@ -26,24 +26,17 @@ public:
     ~PyDbPointCloudCrop() = default;
     void                        clear();
     bool                        isValid() const;
-
     AcDbPointCloudCrop::CropType type() const;
     void                         setCropType(AcDbPointCloudCrop::CropType type);
-
     bool                        isInside() const;
     void                        setInside(bool bInside);
-
     bool                        isInverted() const;
     void                        setInvert(bool toInvert);
-
     boost::python::tuple        getCropPlane();
     void                        setCropPlane(const PyGePlane& plane);
-
     int                         length() const;
-
     void                        set(const boost::python::list& points);
     boost::python::list         get();
-
 public:
     static std::string          className();
 public:
