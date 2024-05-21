@@ -1672,11 +1672,8 @@ class SaveFormat(object):
     ...
 
 class TransactionManager(PyDb.TransactionManager):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
     def abortTransaction (self)-> None :
       '''                             '''
@@ -1684,11 +1681,10 @@ class TransactionManager(PyDb.TransactionManager):
     def addNewlyCreatedDBRObject (self, obj: DbObject, add: bool=True)-> None :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''Function usage:This function is intended to allow classes to provide a means to compare class objects much the way strcmp() compares character strings.The object pointed to by other is compared with this object. The result of the comparison is returned.The possible AcRx::Ordering types are:AcRx::kLessThanAcRx::kEqualAcRx::kGreaterThanAcRx::kNotOrderableThe AcRx::kNotOrderable type is there because C++ classes often cannot support object value comparison.Function implementation in derived classes:There are no restrictions or expectations on how this function is implemented. Each class will have its own requirements for comparison.Default implementation:Simply returns AcRx::kNotOrderable since many C++ classes cannot support object value comparison.'''
@@ -1696,29 +1692,22 @@ class TransactionManager(PyDb.TransactionManager):
     def copyFrom (self, other: PyRx.RxObject)-> None :
       '''Function usage:Copies the contents of other into the messaged object, whenever feasible. Function implementation in derived classes:If implemented, this function needs to be able to read the data in the object pointed to by other and copy any or all data as appropriate into this object. There is no requirement that the object pointed to by other and this object be of the same class, but that is the generally assumed condition.Default implementation: Because this function must be overridden to have any meaning, a fatal error will be caused when calling the default implementation. '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
 
-    C++ signature :
-        class PyRxClass desc()'''
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+      '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
     ...
     def dispose (self)-> None :
       '''                             '''
     ...
-    def enableGraphicsFlush (self, *args, **kwargs)-> None :
-      '''enableGraphicsFlush( (TransactionManager)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void enableGraphicsFlush(class PyTransactionManager {lvalue},bool)'''
+    def enableGraphicsFlush (self, val: bool)-> None :
+      '''                             '''
     ...
     def endTransaction (self)-> None :
       '''                             '''
     ...
-    def flushGraphics (self, *args, **kwargs)-> None :
-      '''flushGraphics( (TransactionManager)arg1) -> None :
-
-    C++ signature :
-        void flushGraphics(class PyTransactionManager {lvalue})'''
+    def flushGraphics (self)-> None :
+      '''                             '''
     ...
     def getAllObjects (self)-> list :
       '''                             '''
