@@ -136,15 +136,16 @@ AcDbTransactionManager* PyDbTransactionManager::impObj(const std::source_locatio
 }
 
 //-----------------------------------------------------------------------------
-//----- AcTransactionManager
+//----- AcTransactionManager  ** this is init in PyAp Module!!!
 void makePyTransactionManagerManager()
 {
+    PyDocString DS("TransactionManager");
     class_<PyTransactionManager, bases<PyDbTransactionManager>>("TransactionManager")
-
-        .def("flushGraphics", &PyTransactionManager::flushGraphics)
-        .def("enableGraphicsFlush", &PyTransactionManager::enableGraphicsFlush)
-        .def("desc", &PyTransactionManager::desc).staticmethod("desc")
-        .def("className", &PyTransactionManager::className).staticmethod("className")
+        .def(init<>(DS.ARGS()))
+        .def("flushGraphics", &PyTransactionManager::flushGraphics, DS.ARGS())
+        .def("enableGraphicsFlush", &PyTransactionManager::enableGraphicsFlush, DS.ARGS({ "val: bool" }))
+        .def("desc", &PyTransactionManager::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("className", &PyTransactionManager::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -190,14 +191,15 @@ AcTransactionManager* PyTransactionManager::impObj(const std::source_location& s
 //----- PyTransaction
 void makePyTransaction()
 {
+    PyDocString DS("Transaction");
     class_<PyTransaction, bases<PyRxObject>>("Transaction", boost::python::no_init)
         .def("getObject", &PyTransaction::getObject1)
         .def("getObject", &PyTransaction::getObject2)
-        .def("getObject", &PyTransaction::getObject3)
-        .def("getAllObjects", &PyTransaction::getAllObjects)
-        .def("numOpenedObjects", &PyTransaction::numOpenedObjects)
-        .def("desc", &PyTransaction::desc).staticmethod("desc")
-        .def("className", &PyTransaction::className).staticmethod("className")
+        .def("getObject", &PyTransaction::getObject3, DS.ARGS({ "id: ObjectId","mode: OpenMode=OpenMode.kForRead","openErasedObject: bool=False" }))
+        .def("getAllObjects", &PyTransaction::getAllObjects, DS.ARGS())
+        .def("numOpenedObjects", &PyTransaction::numOpenedObjects, DS.ARGS())
+        .def("desc", &PyTransaction::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("className", &PyTransaction::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
