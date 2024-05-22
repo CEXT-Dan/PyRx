@@ -562,7 +562,7 @@ PyDbObjectId PyDbDatabase::addToBlock1(const PyDbObjectId& id, PyDbEntity& ent)
     return outid;
 }
 
-boost::python::list PyDbDatabase::addToBlock2(const PyDbObjectId& id, const boost::python::list& ents)
+boost::python::list PyDbDatabase::addToBlock2(const PyDbObjectId& id, const boost::python::object& ents)
 {
     PyAutoLockGIL lock;
     boost::python::list ids;
@@ -586,7 +586,7 @@ PyDbObjectId PyDbDatabase::addToModelspace1(PyDbEntity& ent)
     return addToBlock1(PyDbObjectId(acdbSymUtil()->blockModelSpaceId(impObj())), ent);
 }
 
-boost::python::list PyDbDatabase::addToModelspace2(const boost::python::list& ents)
+boost::python::list PyDbDatabase::addToModelspace2(const boost::python::object& ents)
 {
     return addToBlock2(PyDbObjectId(acdbSymUtil()->blockModelSpaceId(impObj())), ents);
 }
@@ -596,7 +596,7 @@ PyDbObjectId PyDbDatabase::addToCurrentspace1(PyDbEntity& ent)
     return addToBlock1(impObj()->currentSpaceId(), ent);
 }
 
-boost::python::list PyDbDatabase::addToCurrentspace2(const boost::python::list& ent)
+boost::python::list PyDbDatabase::addToCurrentspace2(const boost::python::object& ent)
 {
     return addToBlock2(impObj()->currentSpaceId(), ent);
 }
