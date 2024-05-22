@@ -9,39 +9,50 @@ using namespace boost::python;
 
 void makePyDbSubDMeshWrapper()
 {
+    constexpr const std::string_view backgroundColorOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- row: int, col: int\n";
+
+    constexpr const std::string_view extrudeFacesOverloads = "Overloads:\n"
+        "- subentPaths: list[PyDb.FullSubentPath], length: float, dir: PyGe.Vector3d, taper: float\n"
+        "- subentPaths: list[PyDb.FullSubentPath], alongPath: list[PyGe.Point3d], taper: float\n";
+
+    constexpr const std::string_view extrudeConnectedFacesOverloads = "Overloads:\n"
+        "- subentPaths: list[PyDb.FullSubentPath], length: float, dir: PyGe.Vector3d, taper: float\n"
+        "- subentPaths: list[PyDb.FullSubentPath], alongPath: list[PyGe.Point3d], taper: float\n";
+
     PyDocString DS("PyDb.SubDMesh");
     class_<PyDbSubDMesh, bases<PyDbEntity>>("SubDMesh")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode:  PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
-
-        .def("setSubDMesh", &PyDbSubDMesh::setSubDMesh)
-        .def("setSphere", &PyDbSubDMesh::setSphere)
-        .def("setCylinder", &PyDbSubDMesh::setCylinder)
-        .def("setCone", &PyDbSubDMesh::setCone)
-        .def("setTorus", &PyDbSubDMesh::setTorus)
-        .def("setBox", &PyDbSubDMesh::setBox)
-        .def("setWedge", &PyDbSubDMesh::setWedge)
-        .def("setPyramid", &PyDbSubDMesh::setPyramid)
-        .def("subdDivideUp", &PyDbSubDMesh::subdDivideUp)
-        .def("subdDivideDown", &PyDbSubDMesh::subdDivideDown)
+        .def("setSubDMesh", &PyDbSubDMesh::setSubDMesh, DS.ARGS({ "vertexArray: list[PyGe.Point3d]", "faceArray: list[int]", "subDLevel: int" }))
+        .def("setSphere", &PyDbSubDMesh::setSphere, DS.ARGS({ "radius: float","divAxis: int","divHeight: int","subDLevel: int" }))
+        .def("setCylinder", &PyDbSubDMesh::setCylinder, DS.ARGS({ "majorRadius: float","minorRadius: float","height: float", "divAxis: int","divHeight: int","divCap: int","subDLevel: int" }))
+        .def("setCone", &PyDbSubDMesh::setCone, DS.ARGS({ "majorRadius: float","minorRadius: float","height: float", "divAxis: int","divHeight: int","divCap: int","radiusRatio: float","subDLevel: int" }))
+        .def("setTorus", &PyDbSubDMesh::setTorus, DS.ARGS({ "majorRadius: float", "divSection: int", "divSweepPath: int","sectionRadiusRatio: float","sectionRotate: float","subDLevel: int" }))
+        .def("setBox", &PyDbSubDMesh::setBox, DS.ARGS({ "xLen: float","yLen: float","zLen: float","divX: int","divY: int","divZ: int","subDLevel: int" }))
+        .def("setWedge", &PyDbSubDMesh::setWedge, DS.ARGS({ "xLen: float","yLen: float","zLen: float","divLength: int","divWidth: int","divHeight: int","divSlope: int","divCap: int","subDLevel: int" }))
+        .def("setPyramid", &PyDbSubDMesh::setPyramid, DS.ARGS({ "radius: float","height: float","divLength: int","divHeight: int","divCap: int","nSides: int","radiusRatio: float","subDLevel: int" }))
+        .def("subdDivideUp", &PyDbSubDMesh::subdDivideUp, DS.ARGS())
+        .def("subdDivideDown", &PyDbSubDMesh::subdDivideDown, DS.ARGS())
         .def("subdRefine", &PyDbSubDMesh::subdRefine1)
-        .def("subdRefine", &PyDbSubDMesh::subdRefine2)
-        .def("subdLevel", &PyDbSubDMesh::subdLevel)
-        .def("splitFace", &PyDbSubDMesh::splitFace)
+        .def("subdRefine", &PyDbSubDMesh::subdRefine2, DS.ARGS({ "subentPaths: list[PyDb.FullSubentPath]=None" }))
+        .def("subdLevel", &PyDbSubDMesh::subdLevel, DS.ARGS())
+        .def("splitFace", &PyDbSubDMesh::splitFace, DS.ARGS({ "subentFaceId: PyDb.SubentId", "subent0: PyDb.SubentId", "point0: PyGe.Point3d","subent1: PyDb.SubentId", "point1: PyGe.Point3d" }))
         .def("extrudeFaces", &PyDbSubDMesh::extrudeFaces1)
-        .def("extrudeFaces", &PyDbSubDMesh::extrudeFaces2)
+        .def("extrudeFaces", &PyDbSubDMesh::extrudeFaces2, DS.OVRL(extrudeFacesOverloads))
         .def("extrudeConnectedFaces", &PyDbSubDMesh::extrudeConnectedFaces1)
-        .def("extrudeConnectedFaces", &PyDbSubDMesh::extrudeConnectedFaces2)
-        .def("mergeFaces", &PyDbSubDMesh::mergeFaces)
-        .def("collapse", &PyDbSubDMesh::collapse)
-        .def("cap", &PyDbSubDMesh::cap)
-        .def("spin", &PyDbSubDMesh::spin)
+        .def("extrudeConnectedFaces", &PyDbSubDMesh::extrudeConnectedFaces2, DS.OVRL(extrudeConnectedFacesOverloads))
+        .def("mergeFaces", &PyDbSubDMesh::mergeFaces, DS.ARGS({ "subentPaths: list[PyDb.FullSubentPath]" }))
+        .def("collapse", &PyDbSubDMesh::collapse, DS.ARGS({ "subentFaceId: PyDb.SubentId" }))
+        .def("cap", &PyDbSubDMesh::cap, DS.ARGS({ "subentPaths: list[PyDb.FullSubentPath]" }))
+        .def("spin", &PyDbSubDMesh::spin, DS.ARGS({ "subentFaceId: PyDb.SubentId" }))
         .def("isWatertight", &PyDbSubDMesh::isWatertight, DS.ARGS())
         .def("numOfFaces", &PyDbSubDMesh::numOfFaces, DS.ARGS())
         .def("numOfSubDividedFaces", &PyDbSubDMesh::numOfSubDividedFaces, DS.ARGS())
-        .def("numOfSubDividedFacesAt", &PyDbSubDMesh::numOfSubDividedFacesAt)
+        .def("numOfSubDividedFacesAt", &PyDbSubDMesh::numOfSubDividedFacesAt, DS.ARGS({ "subentPaths: list[PyDb.FullSubentPath]" }))
         .def("numOfVertices", &PyDbSubDMesh::numOfVertices, DS.ARGS())
         .def("numOfSubDividedVertices", &PyDbSubDMesh::numOfSubDividedVertices, DS.ARGS())
         .def("numOfEdges", &PyDbSubDMesh::numOfEdges, DS.ARGS())
@@ -53,15 +64,18 @@ void makePyDbSubDMeshWrapper()
         .def("getSubDividedFaceArray", &PyDbSubDMesh::getSubDividedFaceArray, DS.ARGS())
         .def("getSubDividedNormalArray", &PyDbSubDMesh::getSubDividedNormalArray, DS.ARGS())
         .def("getVertexAt", &PyDbSubDMesh::getVertexAt1)
-        .def("getVertexAt", &PyDbSubDMesh::getVertexAt2)
+        .def("getVertexAt", &PyDbSubDMesh::getVertexAt2, DS.ARGS({ "id: int:PyDb.SubentId" }))
         .def("setVertexAt", &PyDbSubDMesh::setVertexAt1)
-        .def("setVertexAt", &PyDbSubDMesh::setVertexAt2)
+        .def("setVertexAt", &PyDbSubDMesh::setVertexAt2, DS.ARGS({ "id: int:PyDb.SubentId","pt: PyGe.Point3d" }))
         .def("getSubDividedVertexAt", &PyDbSubDMesh::getSubDividedVertexAt1)
-        .def("getSubDividedVertexAt", &PyDbSubDMesh::getSubDividedVertexAt2)
+        .def("getSubDividedVertexAt", &PyDbSubDMesh::getSubDividedVertexAt2, DS.ARGS({ "id: int:PyDb.SubentId" }))
+
         .def("setCrease", &PyDbSubDMesh::setCrease1)
         .def("setCrease", &PyDbSubDMesh::setCrease2)
+
         .def("getCrease", &PyDbSubDMesh::getCrease1)
         .def("getCrease", &PyDbSubDMesh::getCrease2)
+
         .def("getAdjacentSubentPath", &PyDbSubDMesh::getAdjacentSubentPath)
         .def("getSubentPath", &PyDbSubDMesh::getSubentPath)
         .def("convertToSurface", &PyDbSubDMesh::convertToSurface1)
@@ -190,7 +204,7 @@ void PyDbSubDMesh::subdRefine1()
     PyThrowBadEs(impObj()->subdRefine());
 }
 
-void PyDbSubDMesh::subdRefine2(const boost::python::list& subentPaths)
+void PyDbSubDMesh::subdRefine2(const boost::python::object& subentPaths)
 {
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();
