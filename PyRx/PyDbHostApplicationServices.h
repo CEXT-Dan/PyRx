@@ -1,6 +1,7 @@
 #pragma once
 #include "PyRxObject.h"
 
+#pragma pack (push, 8)
 class PyDbObjectId;
 class PyDbDatabase;
 class PyDbLayoutManager;
@@ -218,3 +219,4 @@ public:
     static bool         hasTableStyle(const std::string& name, const PyDbDatabase& db);
     static bool         hasVisualStyle(const std::string& name, const PyDbDatabase& db);
 };
+#pragma pack (pop)

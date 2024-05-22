@@ -604,8 +604,7 @@ boost::python::list PyDbDatabase::addToCurrentspace2(const boost::python::object
 PyDbObjectId PyDbDatabase::addAcDbObject(PyDbObject& obj)
 {
     PyDbObjectId id;
-    if (auto es = impObj()->addAcDbObject(id.m_id, obj.impObj()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->addAcDbObject(id.m_id, obj.impObj()));
     return id;
 }
 
@@ -2607,7 +2606,6 @@ void PyDbDatabase::setPreviewType(Adesk::Int16 val)
 #else
     return PyThrowBadEs(impObj()->setPreviewType(val));
 #endif
-
 }
 
 void PyDbDatabase::setProjectName(const std::string& val)

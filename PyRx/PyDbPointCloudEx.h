@@ -11,6 +11,7 @@
 #include "AcDbPointCloudDefEx.h"
 #include "AcDbPointCloudCrop.h"
 
+#pragma pack (push, 8)
 class PyRxObject;
 class PyDbObjectId;
 class PyDbDatabase;
@@ -98,7 +99,6 @@ public:
 public:
     std::shared_ptr<AcDbPointCloudColorRamp> m_pyImp;
 };
-
 
 //-----------------------------------------------------------------------------------
 //PyDbPointCloudColorMap
@@ -191,7 +191,6 @@ public:
 public:
     AcDbPointCloudDefEx* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //-----------------------------------------------------------------------------------
 //PyDbPointCloudEx
@@ -316,3 +315,5 @@ public:
 };
 
 #endif
+
+#pragma pack (pop)

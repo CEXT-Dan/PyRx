@@ -1,5 +1,6 @@
 #pragma once
 
+#pragma pack (push, 8)
 class PyGiDrawable;
 
 void makePyGiTransientManagerWrapper();
@@ -24,4 +25,5 @@ public:
 public:
     AcGiTransientManager* m_pyImp = nullptr;
 };
+#pragma pack (pop)
 

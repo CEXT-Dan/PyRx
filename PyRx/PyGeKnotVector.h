@@ -1,5 +1,5 @@
 #pragma once
-
+#pragma pack (push, 8)
 //-----------------------------------------------------------------------------------------
 //PyGeKnotVector wrapper
 void makePyGeKnotVectorWrapper();
@@ -51,3 +51,4 @@ public:
     AcGeKnotVector m_imp;
 };
 
+#pragma pack (pop)

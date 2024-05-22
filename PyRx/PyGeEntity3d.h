@@ -1,4 +1,5 @@
 #pragma once
+#pragma pack (push, 8)
 class  PyGePlane;
 
 //-----------------------------------------------------------------------------------------
@@ -56,3 +57,4 @@ inline T PyGeEntity3dCast(const PyGeEntity3d& src)
     std::swap(dst.m_imp, tmp.m_imp);
     return dst;
 }
+#pragma pack (pop)

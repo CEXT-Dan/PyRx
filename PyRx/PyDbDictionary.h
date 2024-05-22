@@ -1,6 +1,7 @@
 #pragma once
 #include "PyDbObject.h"
 
+#pragma pack (push, 8)
 void makePyDbDictionaryWrapper();
 
 //---------------------------------------------------------------------------------------- -
@@ -32,3 +33,5 @@ public:
 public:
     AcDbDictionary* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+#pragma pack (pop)

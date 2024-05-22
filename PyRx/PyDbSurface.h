@@ -8,6 +8,8 @@
 #include "dbrevolvedsurf.h"
 #include "dbsweptsurf.h"
 
+#pragma pack (push, 8)
+
 class PyDbObjectId;
 #if !defined(_BRXTARGET240)
 class PyDb3dProfile;
@@ -118,7 +120,6 @@ public:
     AcDbNurbSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //----------------------------------------------------------------------
 //AcDbPlaneSurface  
 void makePyDbPlaneSurfaceWrapper();
@@ -137,7 +138,6 @@ public:
 public:
     AcDbPlaneSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //----------------------------------------------------------------------
 //PyDbRevolvedSurface  
@@ -158,7 +158,6 @@ public:
     AcDbRevolvedSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //----------------------------------------------------------------------
 //AcDbSweptSurface  
 void makePyDbSweptSurfaceWrapper();
@@ -178,4 +177,4 @@ public:
     AcDbSweptSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
+#pragma pack (pop)

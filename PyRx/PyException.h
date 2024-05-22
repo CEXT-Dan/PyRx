@@ -1,6 +1,8 @@
 #pragma once
 #include <exception>
 
+#pragma pack (push, 8)
+
 static std::string appHostName()
 {
 #ifdef _ZRXTARGET 
@@ -141,3 +143,4 @@ inline void PyThrowBadRt(int es, const std::source_location& src = std::source_l
     if (es != RTNORM) [[unlikely]]
         throw PyAcadErrorStatus(eInvalidInput, src);
 }
+#pragma pack (pop)

@@ -1,8 +1,8 @@
 #pragma once
-
 #include "PyGeEntity2d.h"
 #include "PyGeCurve2d.h"
 
+#pragma pack (push, 8)
 class PyGeInterval;
 
 //-----------------------------------------------------------------------------------------
@@ -50,3 +50,4 @@ public:
     AcGeCurveCurveInt2d* impObj() const;
 #endif
 };
+#pragma pack (pop)

@@ -2,6 +2,7 @@
 #include "PyDbCurve.h"
 #include "dbhelix.h"
 
+#pragma pack (push, 8)
 class PyGeNurbCurve3d;
 class PyDbPolyline;
 
@@ -143,3 +144,4 @@ public:
 public:
     inline AcDbHelix* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+#pragma pack (pop)

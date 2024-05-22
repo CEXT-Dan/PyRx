@@ -1,6 +1,7 @@
 #pragma once
 #include "PyGeEntity2d.h"
 
+#pragma pack (push, 8)
 //-----------------------------------------------------------------------------------------
 //PyGeBoundBlock2d wrapper
 void makePyGeBoundBlock2dWrapper();
@@ -34,4 +35,5 @@ public:
     AcGeBoundBlock2d* impObj(const std::source_location& src = std::source_location::current()) const;
 #endif
 };
+#pragma pack (pop)
 

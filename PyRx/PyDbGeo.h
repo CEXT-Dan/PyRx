@@ -4,7 +4,7 @@
 #include "AcDbGeoPositionMarker.h"
 #include "AcDbGeoCoordinateSystem.h"
 
-
+#pragma pack (push, 8)
 class PyDbMText;
 class PyDbObjectId;
 
@@ -188,3 +188,4 @@ public:
 };
 
 
+#pragma pack (pop)

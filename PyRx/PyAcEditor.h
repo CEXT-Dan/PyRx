@@ -1,5 +1,6 @@
 #pragma once
 
+#pragma pack (push, 8)
 class PyDbObjectId;
 class PyDbDatabase;
 class PyApDocument;
@@ -63,3 +64,4 @@ public:
     static std::string          className();
 };
 
+#pragma pack (pop)

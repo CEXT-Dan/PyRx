@@ -1,5 +1,7 @@
 #pragma once
 #include "PyGiDrawable.h"
+
+#pragma pack (push, 8)
 class PyDbEntity;
 class PyDbObjectId;
 class PyDbDatabase;
@@ -260,3 +262,5 @@ public://prevent reentry on error
     bool reg_modifiedGraphics = true;
     bool reg_dragCloneToBeDeleted = true;
 };
+
+#pragma pack (pop)

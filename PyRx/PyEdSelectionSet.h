@@ -1,6 +1,7 @@
 #pragma once
 
 #include "PyDbObjectId.h"
+#pragma pack (push, 8)
 
 class PyRxClass;
 class AdsName;
@@ -42,3 +43,4 @@ public:
     std::shared_ptr<PySSName> m_pSet;
 };
 
+#pragma pack (pop)

@@ -1,5 +1,8 @@
 #pragma once
 #include "PyGeEntity2d.h"
+
+#pragma pack (push, 8)
+
 class PyGeCurve2d;
 //-----------------------------------------------------------------------------------------
 //PyGePointEnt2d wrapper
@@ -79,4 +82,4 @@ public:
     AcGePosition2d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
+#pragma pack (pop)

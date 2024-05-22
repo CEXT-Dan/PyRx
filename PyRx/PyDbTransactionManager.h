@@ -1,5 +1,7 @@
 #pragma once
 #include "PyRxObject.h"
+
+#pragma pack (push, 8)
 class PyDbObject;
 class PyDbObjectId;
 class PyTransaction;
@@ -76,5 +78,5 @@ public:
 public:
     AcTransaction* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
+#pragma pack (pop)
 

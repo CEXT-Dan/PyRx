@@ -2,6 +2,7 @@
 #include "PyDbEntity.h"
 #include "PyDbMtext.h"
 
+#pragma pack (push, 8)
 class PyDbObjectId;
 void makePyDbMTextWrapper();
 class PyDbMText : public PyDbEntity
@@ -86,3 +87,4 @@ public:
 public:
     AcDbMText* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+#pragma pack (pop)

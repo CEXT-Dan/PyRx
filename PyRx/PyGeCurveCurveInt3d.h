@@ -1,6 +1,7 @@
 #pragma once
 #include "PyGeEntity3d.h"
 
+#pragma pack (push, 8)
 class PyGeInterval;
 class PyGeCurve3d;
 class PyGePointOnCurve3d;
@@ -50,4 +51,4 @@ public:
     AcGeCurveCurveInt3d* impObj(const std::source_location& src = std::source_location::current()) const;
 #endif
 };
-
+#pragma pack (pop)

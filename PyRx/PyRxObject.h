@@ -1,4 +1,5 @@
 #pragma once
+#pragma pack (push, 8)
 class PyRxClass;
 
 //-----------------------------------------------------------------------------------------
@@ -62,3 +63,4 @@ public:
     inline AcRxClass* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+#pragma pack (pop)

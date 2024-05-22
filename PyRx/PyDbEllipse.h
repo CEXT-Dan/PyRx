@@ -2,6 +2,7 @@
 
 #include "PyDbCurve.h"
 
+#pragma pack (push, 8)
 class PyGeEllipArc3d;
 
 //-----------------------------------------------------------------------------------
@@ -65,3 +66,4 @@ public:
     inline AcDbEllipse* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+#pragma pack (pop)

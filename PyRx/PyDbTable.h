@@ -1,5 +1,7 @@
 #pragma once
 #include "PyDbEnts.h"
+
+#pragma pack (push, 8)
 //-----------------------------------------------------------------------------------
 //PyDbTable
 void makePyDbTableWrapper();
@@ -317,3 +319,5 @@ public:
 public:
     AcDbTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+#pragma pack (pop)

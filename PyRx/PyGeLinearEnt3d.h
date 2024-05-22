@@ -1,5 +1,7 @@
 #pragma once
 #include "PyGeCurve3d.h"
+
+#pragma pack (push, 8)
 class PyGePlanarEnt;
 class PyGePlane;
 class PyGeLine3d;
@@ -112,3 +114,5 @@ public:
 public:
     AcGeRay3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+#pragma pack (pop)

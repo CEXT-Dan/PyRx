@@ -1,6 +1,7 @@
 #pragma once
 #include "PyRxObject.h"
 
+#pragma pack (push, 8)
 class PyGiDrawable;
 class PyGiWorldGeometry;
 class PyGiViewportGeometry;
@@ -44,7 +45,6 @@ public:
     AcGiWorldDraw* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //-----------------------------------------------------------------------------------------
 //PyGiViewportDraw
 void makePyGiViewportDrawWrapper();
@@ -61,7 +61,6 @@ public:
 public:
     AcGiViewportDraw* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //-----------------------------------------------------------------------------------------
 //PyGiGeometry
@@ -146,6 +145,7 @@ public:
 public:
     AcGiViewportGeometry* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+#pragma pack (pop)
 
 
 

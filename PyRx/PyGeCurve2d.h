@@ -1,5 +1,7 @@
 #pragma once
 #include "PyGeEntity2d.h"
+
+#pragma pack (push, 8)
 class PyGeInterval;
 class PyGePointOnCurve2d;
 class PyGeBoundBlock2d;
@@ -210,3 +212,5 @@ public:
 public:
     AcGeCompositeCurve2d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+#pragma pack (pop)

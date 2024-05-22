@@ -2,6 +2,7 @@
 #include "PyDbObject.h"
 #include "PyDbObjectId.h"
 
+#pragma pack (push, 8)
 class PyDbEntity;
 class PyDbBlockBegin;
 class PyDbBlockEnd;
@@ -693,3 +694,4 @@ public:
 public:
     AcDbLinetypeTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+#pragma pack (pop)

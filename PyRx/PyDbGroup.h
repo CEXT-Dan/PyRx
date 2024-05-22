@@ -1,6 +1,7 @@
 #pragma once
 #include "PyDbObject.h"
 
+#pragma pack (push, 8)
 class PyDbEntity;
 
 //----------------------------------------------------------------------------------------
@@ -67,3 +68,4 @@ public:
 public:
     inline AcDbGroup* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+#pragma pack (pop)

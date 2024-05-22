@@ -2,6 +2,7 @@
 #include "PyRxObject.h"
 #include "dbdimptref.h"
 
+#pragma pack (push, 8)
 class PyDbObjectId;
 
 //-----------------------------------------------------------------------------------------
@@ -49,5 +50,5 @@ public:
     AcDbOsnapPointRef* impObj(const std::source_location& src = std::source_location::current()) const;
 #endif
 };
-
+#pragma pack (pop)
 

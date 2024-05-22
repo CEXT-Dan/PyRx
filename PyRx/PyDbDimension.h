@@ -2,6 +2,7 @@
 #include "PyDbEntity.h"
 #include "PyDbSymbolTableRecord.h"
 
+#pragma pack (push, 8)
 class PyDbObjectId;
 class PyDbMText;
 
@@ -569,3 +570,4 @@ public:
 public:
     AcDbRotatedDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+#pragma pack (pop)

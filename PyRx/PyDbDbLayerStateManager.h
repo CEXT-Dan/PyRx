@@ -1,6 +1,8 @@
 #pragma once
 
 #include "PyRxObject.h"
+
+#pragma pack (push, 8)
 class PyDbObjectId;
 class PyDbDatabase;
 
@@ -57,3 +59,5 @@ public:
 public:
     AcDbLayerStateManager* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+#pragma pack (pop)

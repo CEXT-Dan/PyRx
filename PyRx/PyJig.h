@@ -1,7 +1,7 @@
 #pragma once
 #include "PyRxObject.h"
 
-
+#pragma pack (push, 8)
 class PyDbEntity;
 class PyDbObjectId;
 
@@ -81,3 +81,4 @@ public:
     virtual AcDbEntity*         entity() const override;
     static std::string          className();
 };
+#pragma pack (pop)

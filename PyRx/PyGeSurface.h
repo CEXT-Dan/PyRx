@@ -1,5 +1,7 @@
 #pragma once
 #include "PyGeEntity3d.h"
+
+#pragma pack (push, 8)
 class PyGeInterval;
 class PyGePointOnSurface;
 class PyGeLinearEnt3d;
@@ -314,3 +316,5 @@ public:
     AcGeTorus* impObj(const std::source_location& src = std::source_location::current()) const;
 #endif
 };
+
+#pragma pack (pop)

@@ -1,4 +1,5 @@
 #pragma once
+#pragma pack (push, 8)
 #include "PyRxObject.h"
 
 //-----------------------------------------------------------------------------------------
@@ -22,4 +23,4 @@ public:
 public:
 	AcRxOverrule* impObj(const std::source_location & src = std::source_location::current()) const;
 };
-
+#pragma pack (pop)

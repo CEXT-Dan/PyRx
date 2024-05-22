@@ -1,6 +1,7 @@
 #pragma once
 #include "PyRxObject.h"
 
+#pragma pack (push, 8)
 class PyDbEntity;
 class AcDbJoinEntityPE;
 
@@ -26,6 +27,9 @@ public:
     AcDbJoinEntityPE* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
+
+#pragma pack (pop)
+
 
 //AcDbAnnotativeObjectPE TODO:
 

@@ -1,4 +1,5 @@
 #pragma once
+#pragma pack (push, 8)
 #include "PyRxObject.h"
 
 
@@ -350,3 +351,4 @@ public:
 };
 
 #endif
+#pragma pack (pop)

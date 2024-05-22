@@ -1,5 +1,5 @@
 #pragma once
-
+#pragma pack (push, 8)
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
 // dead
 #else
@@ -32,3 +32,4 @@ public:
 };
 
 #endif
+#pragma pack (pop)

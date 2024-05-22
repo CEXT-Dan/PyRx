@@ -1,5 +1,7 @@
 #pragma once
 #include "PyDbObject.h"
+
+#pragma pack (push, 8)
 class PyDbObjectId;
 void makePyDbTableStyleWrapper();
 class PyDbTableStyle : public PyDbObject
@@ -109,3 +111,5 @@ public:
 public:
     AcDbTableStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+#pragma pack (pop)
