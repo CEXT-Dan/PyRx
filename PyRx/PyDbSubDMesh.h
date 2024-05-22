@@ -31,7 +31,7 @@ public:
     void            subdDivideUp();
     void            subdDivideDown();
     void            subdRefine1();
-    void            subdRefine2(const boost::python::list& subentPaths);
+    void            subdRefine2(const boost::python::object& subentPaths);
     Adesk::Int32    subdLevel();
     void            splitFace(const PyDbSubentId& subentFaceId, const PyDbSubentId& subent0, const AcGePoint3d& point0, const PyDbSubentId& subent1, const AcGePoint3d& point1);
     void            extrudeFaces1(const boost::python::list& subentPaths,double length, const AcGeVector3d& dir, double taper);
