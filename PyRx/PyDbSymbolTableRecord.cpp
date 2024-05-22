@@ -1581,6 +1581,10 @@ AcDbAbstractViewTableRecord* PyDbAbstractViewTableRecord::impObj(const std::sour
 // PyDbViewportTableRecord
 void makePyDbViewportTableRecordWrapper()
 {
+    constexpr const std::string_view setPreviousBackgroundOverloads = "Overloads:\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, stype: PyGi.DrawableType, bForcedSwitch: bool\n";
+
     PyDocString DS("ViewportTableRecord");
     class_<PyDbViewportTableRecord, bases<PyDbAbstractViewTableRecord>>("ViewportTableRecord")
         .def(init<>())
@@ -1633,9 +1637,9 @@ void makePyDbViewportTableRecordWrapper()
         .def("setGridMajor", &PyDbViewportTableRecord::setGridMajor, DS.ARGS({ "val : int" }))
         .def("setBackground", &PyDbViewportTableRecord::setBackground, DS.ARGS({ "val : PyDb.ObjectId" }))
         .def("previousBackground", &PyDbViewportTableRecord::previousBackground1)
-        .def("previousBackground", &PyDbViewportTableRecord::previousBackground2)
+        .def("previousBackground", &PyDbViewportTableRecord::previousBackground2, DS.ARGS({ "val: PyGi.DrawableType=PyGi.DrawableType.kGeometry" }))
         .def("setPreviousBackground", &PyDbViewportTableRecord::setPreviousBackground1)
-        .def("setPreviousBackground", &PyDbViewportTableRecord::setPreviousBackground2)
+        .def("setPreviousBackground", &PyDbViewportTableRecord::setPreviousBackground2, DS.OVRL(setPreviousBackgroundOverloads))
         .def("previousBackgroundForcedSwitch", &PyDbViewportTableRecord::previousBackgroundForcedSwitch, DS.ARGS())
         .def("className", &PyDbViewportTableRecord::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbViewportTableRecord::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -2019,8 +2023,8 @@ void makePyDbViewTableRecordWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode.kForRead" })))
         .def("annotationScale", &PyDbViewTableRecord::annotationScale, DS.ARGS())
-        .def("setAnnotationScale", &PyDbViewTableRecord::setAnnotationScale)
-        .def("setParametersFromViewport", &PyDbViewTableRecord::setParametersFromViewport)
+        .def("setAnnotationScale", &PyDbViewTableRecord::setAnnotationScale, DS.ARGS({ "val: PyDb.AnnotationScale" }))
+        .def("setParametersFromViewport", &PyDbViewTableRecord::setParametersFromViewport, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("isPaperspaceView", &PyDbViewTableRecord::isPaperspaceView, DS.ARGS())
         .def("setIsPaperspaceView", &PyDbViewTableRecord::setIsPaperspaceView, DS.ARGS({ "val : bool" }))
         .def("isUcsAssociatedToView", &PyDbViewTableRecord::isUcsAssociatedToView, DS.ARGS())
@@ -3103,7 +3107,7 @@ void makePyDbTextStyleTableRecordWrapper()
         .def("obliquingAngle", &PyDbTextStyleTableRecord::obliquingAngle, DS.ARGS())
         .def("setObliquingAngle", &PyDbTextStyleTableRecord::setObliquingAngle, DS.ARGS({ "val : float" }))
         .def("flagBits", &PyDbTextStyleTableRecord::flagBits, DS.ARGS())
-        .def("setFlagBits", &PyDbTextStyleTableRecord::setFlagBits)
+        .def("setFlagBits", &PyDbTextStyleTableRecord::setFlagBits, DS.ARGS({ "flag: int" }))
         .def("priorSize", &PyDbTextStyleTableRecord::priorSize, DS.ARGS())
         .def("setPriorSize", &PyDbTextStyleTableRecord::setPriorSize, DS.ARGS({ "val : int" }))
         .def("fileName", &PyDbTextStyleTableRecord::fileName, DS.ARGS())

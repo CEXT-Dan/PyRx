@@ -39,8 +39,8 @@ void makePyDbSurfaceWrapper()
 #endif
         .def("className", &PyDbSurface::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbSurface::desc, DS.SARGS(15560)).staticmethod("desc")
-        .def("cloneFrom", &PyDbSurface::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbSurface::cast).staticmethod("cast")
+        .def("cloneFrom", &PyDbSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbSurface::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 
 
