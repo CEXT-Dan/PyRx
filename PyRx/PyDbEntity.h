@@ -1,5 +1,7 @@
 #pragma once
 #include "PyDbObject.h"
+
+#pragma pack (push, 8)
 class PyCmColor;
 class PyGePlane;
 class PyDbFullSubentPath;
@@ -261,3 +263,5 @@ inline boost::python::list FullSubentPathArrayToPyList(const AcDbFullSubentPathA
         pyPyList.append(PyDbFullSubentPath(item));
     return pyPyList;
 }
+
+#pragma pack (pop)

@@ -1,5 +1,6 @@
 #pragma once
 
+#pragma pack (push, 8)
 class PyDbObjectId;
 class PyDbDatabase;
 
@@ -62,3 +63,4 @@ public:
     std::shared_ptr<AcDbIdMapping> m_pyImp;
 };
 
+#pragma pack (pop)

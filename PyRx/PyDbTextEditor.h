@@ -3,6 +3,7 @@
 #ifdef PYRX_IN_PROGRESS_INPLACE_TEXT_EDITOR
 #include "dbtexteditor.h"
 
+#pragma pack (push, 8)
 //-----------------------------------------------------------------------------------------
 //PyDbTextEditorLocation
 void makePyDbTextEditorLocationWrapper();
@@ -113,5 +114,7 @@ public:
     static std::string className();
     inline AcDbTextEditorColumn* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+#pragma pack (pop)
 
 #endif//PYRX_IN_PROGRESS_INPLACE_TEXT_EDITOR

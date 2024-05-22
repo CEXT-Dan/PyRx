@@ -1,5 +1,6 @@
 #pragma once
 
+#pragma pack (push, 8)
 class PyDbObjectId;
 
 //-----------------------------------------------------------------------------------------
@@ -16,3 +17,4 @@ public:
 public:
     AcGsManager* m_pyImp = nullptr;
 };
+#pragma pack (pop)

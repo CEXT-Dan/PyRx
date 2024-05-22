@@ -3,6 +3,8 @@
 #include "PyDbCurve.h"
 #include "PyDbSymbolTableRecord.h"
 
+#pragma pack(push, 8)
+
 class PyDbObjectId;
 class PyGeLineSeg2d;
 class PyGeLineSeg3d;
@@ -794,3 +796,5 @@ public:
 public:
     inline AcDbFcf* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+#pragma pack (pop)

@@ -1,5 +1,7 @@
 #pragma once
 #include "PyRxObject.h"
+
+#pragma pack (push, 8)
 class PyDbObjectId;
 class PyDbEntity;
 
@@ -56,8 +58,6 @@ public:
     AcGiSubEntityTraits* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
-
 //-----------------------------------------------------------------------------------------
 //PyGiDrawableTraits
 void makePyGiDrawableTraitsWrapper();
@@ -74,3 +74,4 @@ public:
     AcGiDrawableTraits* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+#pragma pack (pop)

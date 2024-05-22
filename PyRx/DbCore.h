@@ -1,5 +1,6 @@
 #pragma once
 
+#pragma pack (push, 8)
 class PyDbObject;
 class PyDbObjectId;
 class PyDbEntity;
@@ -124,3 +125,4 @@ public:
     static bool                 ecs2Wcs2(const AcGeVector3d& p, const AcGeVector3d& normal, AcGeVector3d& q);
 };
 
+#pragma pack (pop)

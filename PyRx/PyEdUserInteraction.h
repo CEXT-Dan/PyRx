@@ -1,6 +1,7 @@
 #pragma once
-class PyRxClass;
 
+#pragma pack (push, 8)
+class PyRxClass;
 class PyApDocument;
 
 //-----------------------------------------------------------------------------------------
@@ -31,7 +32,6 @@ private:
     std::shared_ptr<PySysVarImpl> m_impl;
 };
 
-
 //-----------------------------------------------------------------------------------------
 // PyEdUserInteraction
 void makePyEdUserInteractionWrapper();
@@ -48,7 +48,6 @@ protected:
     void userInteraction(AcApDocument* pDocument, bool prompting);
     void undoUserInteraction();
 };
-
 
 //-----------------------------------------------------------------------------------------
 // PyEdUIContext
@@ -78,3 +77,4 @@ public:
     static bool addDefaultContextMenu2(PyEdUIContext& pContext, const std::string& appName);
     static bool removeDefaultContextMenu(PyEdUIContext& pContext);
 };
+#pragma pack (pop)

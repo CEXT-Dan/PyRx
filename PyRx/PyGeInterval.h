@@ -1,4 +1,5 @@
 #pragma once
+#pragma pack (push, 8)
 
 //-------------------------------------------------------------------------------------------------------
 //PyGeInterval
@@ -63,4 +64,6 @@ public:
 public:
     AcGeInterval imp;
 };
+#pragma pack (pop)
+
 

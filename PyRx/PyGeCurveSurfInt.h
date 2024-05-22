@@ -1,6 +1,8 @@
 #pragma once
 #include "PyGeEntity3d.h"
 
+#pragma pack (push, 8)
+
 class PyGeCurve3d;
 class PyGeSurface;
 
@@ -37,4 +39,6 @@ public:
 #endif
 
 };
+
+#pragma pack (pop)
 

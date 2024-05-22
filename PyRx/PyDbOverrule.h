@@ -5,6 +5,8 @@
 #include "dbobjectoverrule.h"
 #include "dbentityoverrule.h"
 
+#pragma pack (push, 8)
+
 class PyDbObjectId;
 class PyDbObject;
 class PyDbIdMapping;
@@ -61,7 +63,6 @@ public:
     mutable bool reg_deepClone = true;
     mutable bool reg_wblockClone = true;
 };
-
 
 //-----------------------------------------------------------------------------------------
 //PyDbOsnapOverrule
@@ -147,3 +148,4 @@ public:
     mutable bool reg_getOsnapPoints = true;
     mutable bool reg_getOsnapPointsXform = true;
 };
+#pragma pack (pop)

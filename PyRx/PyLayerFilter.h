@@ -1,6 +1,8 @@
 #pragma once
 #include "PyRxObject.h"
 
+#pragma pack (push, 8)
+
 class PyDbLayerTableRecord;
 class PyDbDatabase;
 class PyDbObjectId;
@@ -76,6 +78,7 @@ public:
     AcLyLayerFilterManager* imp = nullptr;
 };
 
+#pragma pack (pop)
 
 
 

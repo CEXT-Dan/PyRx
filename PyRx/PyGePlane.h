@@ -1,7 +1,7 @@
 #pragma once
 
 #include "PyGePlanarEnt.h"
-
+#pragma pack (push, 8)
 class PyGeLinearEnt3d;
 class PyGeBoundedPlane;
 
@@ -65,3 +65,4 @@ public:
 public:
     AcGeBoundedPlane* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+#pragma pack (pop)

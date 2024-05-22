@@ -2,6 +2,7 @@
 
 #include "PyRxObject.h"
 
+#pragma pack (push, 8)
 class PyApDocument;
 class PyDbDatabase;
 class PyAutoDocLock;
@@ -177,3 +178,5 @@ public:
 public:
     std::shared_ptr<PyAutoDocLockImp> imp;
 };
+
+#pragma pack (pop)

@@ -1,6 +1,7 @@
 #pragma once
 #include "PyRxObject.h"
 
+#pragma pack (push, 8)
 class PyEdInputPointFilter;
 class PyEdInputPointMonitor;
 class PyEdInputPoint;
@@ -172,3 +173,4 @@ public:
 public:
     AcEdInputPointMonitorResult& rpyimp;
 };
+#pragma pack (pop)

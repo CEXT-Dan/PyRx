@@ -1,4 +1,5 @@
 #pragma once
+#pragma pack (push, 8)
 
 //------------------------------------------------------------------------------------------------
 //  PyModulePath command path and name
@@ -35,3 +36,4 @@ public:
     static void regCommand(const AcString& moduleName, const AcString& name, int context);
 };
 
+#pragma pack (pop)

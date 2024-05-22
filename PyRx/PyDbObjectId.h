@@ -1,5 +1,7 @@
 #pragma once
 #include "PyDbDatabase.h"
+
+#pragma pack (push, 8)
 //-----------------------------------------------------------------------------------------
 //PyDbObjectId
 void makePyDbObjectIdWrapper();
@@ -191,3 +193,5 @@ public:
     AcDbXrefObjectId m_imp;
 #endif
 };
+
+#pragma pack (pop)

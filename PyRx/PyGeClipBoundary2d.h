@@ -1,6 +1,7 @@
 #pragma once
 #include "PyGeEntity2d.h"
 
+#pragma pack (push, 8)
 //-----------------------------------------------------------------------------------------
 //PyGeClipBoundary2d wrapper
 void makePyGeClipBoundary2dWrapper();
@@ -22,3 +23,4 @@ public:
 #endif
 };
 
+#pragma pack (pop)

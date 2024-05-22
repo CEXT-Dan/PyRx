@@ -1,6 +1,7 @@
 #pragma once
 #include "PyDbEntity.h"
 
+#pragma pack (push, 8)
 class PyDbObjectId;
 class PyDbRegion;
 class PyDbCurve;
@@ -199,3 +200,4 @@ public:
 private:
     std::shared_ptr<AcDbSweepOptions> m_pyImp;
 };
+#pragma pack (pop)

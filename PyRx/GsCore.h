@@ -1,6 +1,7 @@
 #pragma once
 #include "acgs.h"
 
+#pragma pack (push, 8)
 class PyGsView;
 class PyDbObjectId;
 
@@ -20,3 +21,4 @@ public:
    static PyObject* getBlockImage(const PyDbObjectId& blkid, int x, int y, double zf, boost::python::object& rgb);
 };
 
+#pragma pack (pop)

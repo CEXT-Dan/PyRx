@@ -1,6 +1,7 @@
 #pragma once
 #include "PyRxObject.h"
 
+#pragma pack (push, 8)
 class AcRxValue;
 class PyDbObjectId;
 //-----------------------------------------------------------------------------------------
@@ -91,3 +92,4 @@ public:
     std::shared_ptr<AcDbDynBlockReferenceProperty> m_pyImp;
 };
 
+#pragma pack (pop)

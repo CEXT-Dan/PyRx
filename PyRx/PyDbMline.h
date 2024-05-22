@@ -1,6 +1,7 @@
 #pragma once
 #include "PyDbEntity.h"
 
+#pragma pack (push, 8)
 class PyGePlane;
 class PyDbObjectId;
 
@@ -109,3 +110,5 @@ public:
 public:
     AcDbMlineStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+#pragma pack (pop)

@@ -1,5 +1,6 @@
 #pragma once
 
+#pragma pack (push, 8)
 class PyGeLine2d;
 //-----------------------------------------------------------------------------------------
 //PyGeEntity2d wrapper
@@ -46,3 +47,4 @@ inline T PyGeEntity2dCast(const PyGeEntity2d& src)
     std::swap(dst.m_imp, tmp.m_imp);
     return dst;
 }
+#pragma pack (pop)

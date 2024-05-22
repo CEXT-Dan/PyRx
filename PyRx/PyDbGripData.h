@@ -1,6 +1,6 @@
 #pragma once
 
-
+#pragma pack (push, 8)
 //-----------------------------------------------------------------------------------------
 //PyDbGripData wrapper
 void makePyDbGripDataWrapper();
@@ -23,3 +23,4 @@ public:
     std::shared_ptr<AcDbGripData> m_imp;
 };
 
+#pragma pack (pop)

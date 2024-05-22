@@ -4,6 +4,7 @@
 #include "dbunderlaydef.h"
 #include "dbunderlayhost.h"
 
+#pragma pack (push, 8)
 class PyDbObjectId;
 
 //-----------------------------------------------------------------------------------
@@ -57,8 +58,6 @@ public:
 public:
     AcDbUnderlayDefinition* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
-
 
 //-----------------------------------------------------------------------------------
 //PyDbUnderlayReference
@@ -148,8 +147,6 @@ public:
     AcDbPdfDefinition* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
-
 //-----------------------------------------------------------------------------------
 //PyDbPdfReference
 void makePyDbPdfReferenceWrapper();
@@ -171,3 +168,4 @@ public:
 public:
     AcDbPdfReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+#pragma pack (pop)

@@ -1,5 +1,7 @@
 #pragma once
 #include "PyDbLayout.h"
+
+#pragma pack (push, 8)
 //-----------------------------------------------------------------------------------------
 //PyApLayoutManager
 void makePyApLayoutManagerWrapper();
@@ -45,3 +47,4 @@ public:
 
 };
 
+#pragma pack (pop)

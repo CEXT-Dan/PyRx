@@ -1,5 +1,7 @@
 #pragma once
 #include "PyGeCurve2d.h"
+#pragma pack (push, 8)
+
 class PyGeLine2d;
 //-----------------------------------------------------------------------------------------
 //AcGeLinearEnt2d wrapper
@@ -121,3 +123,4 @@ inline boost::python::list AcGeLineSeg2dArrayToPyList(const AcArray<AcGeLineSeg2
         pyPyList.append(PyGeLineSeg2d(item));
     return pyPyList;
 }
+#pragma pack (pop)

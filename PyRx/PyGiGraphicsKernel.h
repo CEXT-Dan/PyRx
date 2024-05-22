@@ -1,5 +1,5 @@
 #pragma once
-
+#pragma pack (push, 8)
 
 //-----------------------------------------------------------------------------------------
 //PyGiKernelDescriptor
@@ -39,3 +39,5 @@ class PyGiContext
 {
 
 };
+
+#pragma pack (pop)

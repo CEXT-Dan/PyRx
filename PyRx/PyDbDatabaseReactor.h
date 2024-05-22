@@ -1,6 +1,7 @@
 #pragma once
 #include "PyRxObject.h"
 
+#pragma pack (push, 8)
 class PyDbObject;
 class PyDbDatabase;
 class PyDbDatabaseReactor;
@@ -66,3 +67,4 @@ public:
     bool reg_goodbye = true;
 };
 
+#pragma pack (pop)

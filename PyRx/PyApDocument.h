@@ -2,6 +2,7 @@
 
 #include "PyDbDatabase.h "
 
+#pragma pack (push, 8)
 class PyAcEditor;
 class PyTransactionManager;
 class PyEdInputPointManager;
@@ -44,3 +45,4 @@ public:
     AcApDocument* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+#pragma pack (pop)

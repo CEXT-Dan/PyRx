@@ -1,6 +1,7 @@
 #pragma once
 #include "PyRxObject.h"
 
+#pragma pack (push, 8)
 class PyDbHandle;
 class PyDbDwgFiler;
 class PyDbObjectId;
@@ -233,3 +234,5 @@ public:
 
 
 #endif// ENABLE_FILER
+
+#pragma pack (pop)

@@ -1,10 +1,8 @@
 #pragma once
-//CAdUiPaletteSet
-//CAdUiPalette
 
+#pragma pack (push, 8)
 class PyCAdUiPalette;
 class PyCAdUiPaletteSet;
-
 
 //---------------------------------------------------------------------
 //PyCAdUiPaletteSetImpl
@@ -86,7 +84,6 @@ private:
     bool m_created = false;
 };
 
-
 //---------------------------------------------------------------------
 //PyCAdUiPaletteImpl
 class PyCAdUiPaletteImpl : public CAdUiPalette
@@ -112,7 +109,6 @@ private:
     PyCAdUiPalette* m_bckPtr = nullptr;
 };
 
-
 //---------------------------------------------------------------------
 //PyCAdUiPalette
 void makePyCAdUiPaletteWrapper();
@@ -125,3 +121,5 @@ public:
 private:
     std::shared_ptr<PyCAdUiPaletteImpl> m_pyImp;
 };
+
+#pragma pack (pop)

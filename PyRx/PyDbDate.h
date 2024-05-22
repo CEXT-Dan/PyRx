@@ -1,5 +1,6 @@
 #pragma once
 
+#pragma pack (push, 8)
 void makePyDbDateWrapper();
 
 class PyDbDate
@@ -60,3 +61,4 @@ public:
     std::shared_ptr<AcDbDate> m_pyImp;
 };
 
+#pragma pack (pop)

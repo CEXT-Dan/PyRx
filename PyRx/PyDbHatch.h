@@ -3,6 +3,8 @@
 #include "PyDb3dSolid.h"
 #include "dbMPolygon.h"
 
+#pragma pack (push, 8)
+
 class PyDbObjectId;
 class PyDbCircle;
 class PyDbPolyline;
@@ -174,3 +176,4 @@ public:
     AcDbMPolygon* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
 };
+#pragma pack (pop)

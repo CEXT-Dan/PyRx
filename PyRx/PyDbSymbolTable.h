@@ -3,6 +3,8 @@
 #include "PyDbObject.h"
 #include "PyDbObjectId.h"
 
+#pragma pack (push, 8)
+
 class PyDbSymbolTableRecord;
 class PyDbDimStyleTableRecord;
 class PyDbBlockTableRecord;
@@ -14,8 +16,6 @@ class PyDbLayerTableRecord;
 class PyDbAbstractViewTableRecord;
 class PyDbViewportTableRecord;
 class PyDbViewTableRecord;
-
-
 
 //---------------------------------------------------------------------------------------- -
 //PyDbSymbolTable
@@ -261,3 +261,4 @@ public:
 public:
     AcDbViewTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+#pragma pack (pop)

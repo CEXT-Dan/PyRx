@@ -1,6 +1,8 @@
 #pragma once
 #include "PyDbEntity.h"
 
+#pragma pack (push, 8)
+
 class PyGeCurve3d;
 class PyDbSpline;
 class PyGePlane;
@@ -72,3 +74,4 @@ public:
 public:
     inline AcDbCurve* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+#pragma pack (pop)

@@ -1,7 +1,7 @@
 #pragma once
-
 #include "PyGeCurve2d.h"
 
+#pragma pack (push, 8)
 class PyGeKnotVector;
 class PyGeLineSeg2d;
 class PyGePolyline2d;
@@ -40,7 +40,6 @@ public:
 #endif
 };
 
-
 //-----------------------------------------------------------------------------------------
 //AcGeCubicSplineCurve2d wrapper
 void makePyGeCubicSplineCurve2dWrapper();
@@ -67,7 +66,6 @@ public:
     AcGeCubicSplineCurve2d* impObj(const std::source_location& src = std::source_location::current()) const;
 #endif
 };
-
 
 //-----------------------------------------------------------------------------------------
 //AcGeNurbCurve2d  wrapper
@@ -151,7 +149,6 @@ public:
 #endif
 };
 
-
 //-----------------------------------------------------------------------------------------
 //PyGePolyline2d  wrapper
 void makePyGePolyline2dWrapper();
@@ -174,6 +171,8 @@ public:
     AcGePolyline2d* impObj(const std::source_location& src = std::source_location::current()) const;
 #endif
 };
+
+#pragma pack (pop)
 
 
 

@@ -1,5 +1,5 @@
 #pragma once
-
+#pragma pack (push, 8)
 //-----------------------------------------------------------------------------------------
 //PyPlPlotProgressDialog
 void makePyPlPlotProgressDialogWrapper();
@@ -50,3 +50,4 @@ private:
 };
 
 //AcPlPlotProgressDialog
+#pragma pack (pop)

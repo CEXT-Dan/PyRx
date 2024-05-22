@@ -1,6 +1,8 @@
 #pragma once
 #include "PyRxObject.h"
 
+#pragma pack (push, 8)
+
 class PyDbEntity;
 #if !defined(_BRXTARGET240)
 //-----------------------------------------------------------------------------------------
@@ -31,3 +33,5 @@ public:
     inline AcDb3dProfile* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
+
+#pragma pack (pop)

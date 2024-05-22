@@ -1,6 +1,6 @@
 #pragma once
 #include "PyDbObject.h"
-
+#pragma pack (push, 8)
 
 class PyDbObjectId;
 class PyDbBlockReference;
@@ -59,7 +59,6 @@ public:
     inline AcDbSpatialFilter* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //----------------------------------------------------------------------------------------
 //PyDbLayerFilter
 void makePyDbLayerFilterWrapper();
@@ -85,4 +84,4 @@ public:
 public:
     inline AcDbLayerFilter* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
+#pragma pack (pop)

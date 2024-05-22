@@ -1,5 +1,6 @@
 #pragma once
 
+#pragma pack (push, 8)
 class  PyApDocManager;
 
 void makePyApApplictionWrapper();
@@ -46,3 +47,4 @@ public:
     CAcModuleResourceOverride myResources;
 };
 
+#pragma pack (pop)

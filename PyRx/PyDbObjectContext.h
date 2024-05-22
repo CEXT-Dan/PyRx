@@ -7,6 +7,8 @@
 class PyDbObject;
 class PyDbObjectContext;
 
+#pragma pack (push, 8)
+
 //-----------------------------------------------------------------------------------------
 //PyDbObjectContextCollection
 void makePyDbObjectContextCollectionWrapper();
@@ -102,3 +104,4 @@ public:
 public:
     AcDbAnnotationScale* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+#pragma pack (pop)

@@ -1,7 +1,7 @@
 #pragma once
 #include "PyGeSurface.h"
 
-
+#pragma pack (push, 8)
 class PyGeLineSeg3d;
 class PyGeLinearEnt3d;
 class PyGeCircArc3d;
@@ -43,4 +43,4 @@ public:
 public:
     AcGePlanarEnt* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
+#pragma pack (pop)

@@ -2,6 +2,7 @@
 #include "PyDbEntity.h"
 #include "AcDbGeoTypes.h"
 
+#pragma pack (push, 8)
 class PyDbObjectId;
 class PyDbDictionary;
 
@@ -230,3 +231,4 @@ public:
 public:
     AcDbGeoMap* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+#pragma pack (pop)

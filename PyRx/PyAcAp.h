@@ -1,3 +1,6 @@
 #pragma once
 
-void initPyApModule();
+#pragma pack (push, 8)
+void initPyApModule()
+#pragma pack (pop)
+;

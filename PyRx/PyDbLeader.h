@@ -2,6 +2,8 @@
 #include "PyDbCurve.h"
 #include "dbmleader.h"
 
+#pragma pack (push, 8)
+
 class PyDbObjectId;
 class PyDbHardPointerId;
 class PyDbAttribute;
@@ -355,3 +357,5 @@ public:
 public:
     AcDbMLeaderStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+#pragma pack (pop)

@@ -2,6 +2,7 @@
 
 #include "PyGeCurve3d.h"
 
+#pragma pack (push, 8)
 class PyGeKnotVector;
 class PyGePolyline3d;
 class PyGeEllipArc3d;
@@ -176,4 +177,4 @@ public:
 public:
     AcGePolyline3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
+#pragma pack (pop)

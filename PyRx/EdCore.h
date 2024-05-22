@@ -1,4 +1,6 @@
 #pragma once
+#pragma pack (push, 8)
+
 class PyDbObjectId;
 class PyDbDatabase;
 class PyDbMText;
@@ -189,3 +191,5 @@ public:
     static void                 xrefXBind1(const boost::python::list& symbolIds);
     static void                 xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb);
 };
+#pragma pack (pop)
+

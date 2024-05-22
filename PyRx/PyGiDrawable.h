@@ -2,6 +2,7 @@
 #include "PyRxObject.h"
 #include "PyRxOverrule.h"
 
+#pragma pack (push, 8)
 class PyGiWorldDraw;
 class PyGiViewportDraw;
 class PyGiDrawableTraits;
@@ -75,3 +76,4 @@ private:
     mutable bool isViewportDrawOverride = true;
     mutable bool isViewportDrawLogicalFlagsOverride = true;
 };
+#pragma pack (pop)
