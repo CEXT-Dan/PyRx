@@ -10,6 +10,7 @@ void makePyUnderlayLayerWrapper()
 {
     PyDocString DS("UnderlayLayer");
     class_<PyUnderlayLayer>("UnderlayLayer")
+        .def(init<>(DS.ARGS()))
         .def("name", &PyUnderlayLayer::name, DS.ARGS())
         .def("state", &PyUnderlayLayer::state, DS.ARGS())
         .def("setName", &PyUnderlayLayer::setName, DS.ARGS({ "name : str" }))
