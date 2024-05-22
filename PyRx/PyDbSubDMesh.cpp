@@ -21,6 +21,18 @@ void makePyDbSubDMeshWrapper()
         "- subentPaths: list[PyDb.FullSubentPath], length: float, dir: PyGe.Vector3d, taper: float\n"
         "- subentPaths: list[PyDb.FullSubentPath], alongPath: list[PyGe.Point3d], taper: float\n";
 
+    constexpr const std::string_view setCreaseOverloads = "Overloads:\n"
+        "- creaseVal: float\n"
+        "- subentPaths: list[PyDb.FullSubentPath], creaseVal: float\n";
+
+    constexpr const std::string_view getCreaseOverloads = "Overloads:\n"
+        "- id: int|PyDb.SubentId\n"
+        "- subentPaths: list[PyDb.FullSubentPath]\n";
+
+    constexpr const std::string_view convertToSurfaceOverloads = "Overloads:\n"
+        "- bConvertAsSmooth: bool, id: PyDb.SubentId\n"
+        "- bConvertAsSmooth: bool, optimize: bool\n";
+
     PyDocString DS("PyDb.SubDMesh");
     class_<PyDbSubDMesh, bases<PyDbEntity>>("SubDMesh")
         .def(init<>())
@@ -64,31 +76,27 @@ void makePyDbSubDMeshWrapper()
         .def("getSubDividedFaceArray", &PyDbSubDMesh::getSubDividedFaceArray, DS.ARGS())
         .def("getSubDividedNormalArray", &PyDbSubDMesh::getSubDividedNormalArray, DS.ARGS())
         .def("getVertexAt", &PyDbSubDMesh::getVertexAt1)
-        .def("getVertexAt", &PyDbSubDMesh::getVertexAt2, DS.ARGS({ "id: int:PyDb.SubentId" }))
+        .def("getVertexAt", &PyDbSubDMesh::getVertexAt2, DS.ARGS({ "id: int|PyDb.SubentId" }))
         .def("setVertexAt", &PyDbSubDMesh::setVertexAt1)
-        .def("setVertexAt", &PyDbSubDMesh::setVertexAt2, DS.ARGS({ "id: int:PyDb.SubentId","pt: PyGe.Point3d" }))
+        .def("setVertexAt", &PyDbSubDMesh::setVertexAt2, DS.ARGS({ "id: int|PyDb.SubentId","pt: PyGe.Point3d" }))
         .def("getSubDividedVertexAt", &PyDbSubDMesh::getSubDividedVertexAt1)
-        .def("getSubDividedVertexAt", &PyDbSubDMesh::getSubDividedVertexAt2, DS.ARGS({ "id: int:PyDb.SubentId" }))
-
+        .def("getSubDividedVertexAt", &PyDbSubDMesh::getSubDividedVertexAt2, DS.ARGS({ "id: int|PyDb.SubentId" }))
         .def("setCrease", &PyDbSubDMesh::setCrease1)
-        .def("setCrease", &PyDbSubDMesh::setCrease2)
-
+        .def("setCrease", &PyDbSubDMesh::setCrease2,DS.OVRL(setCreaseOverloads))
         .def("getCrease", &PyDbSubDMesh::getCrease1)
-        .def("getCrease", &PyDbSubDMesh::getCrease2)
-
-        .def("getAdjacentSubentPath", &PyDbSubDMesh::getAdjacentSubentPath)
-        .def("getSubentPath", &PyDbSubDMesh::getSubentPath)
+        .def("getCrease", &PyDbSubDMesh::getCrease2, DS.OVRL(getCreaseOverloads))
+        .def("getAdjacentSubentPath", &PyDbSubDMesh::getAdjacentSubentPath, DS.ARGS({ "path: PyDb.FullSubentPath", "stype: PyDb.SubentType" }))
+        .def("getSubentPath", &PyDbSubDMesh::getSubentPath, DS.ARGS({ "index: int", "stype: PyDb.SubentType" }))
         .def("convertToSurface", &PyDbSubDMesh::convertToSurface1)
-        .def("convertToSurface", &PyDbSubDMesh::convertToSurface2)
-        .def("convertToSolid", &PyDbSubDMesh::convertToSolid)
-        .def("getSubentColor", &PyDbSubDMesh::getSubentColor)
-        .def("setSubentColor", &PyDbSubDMesh::setSubentColor)
-        .def("getSubentMaterial", &PyDbSubDMesh::getSubentMaterial)
-        .def("setSubentMaterial", &PyDbSubDMesh::setSubentMaterial)
-        .def("getFacePlane", &PyDbSubDMesh::getFacePlane)
+        .def("convertToSurface", &PyDbSubDMesh::convertToSurface2, DS.OVRL(convertToSurfaceOverloads))
+        .def("convertToSolid", &PyDbSubDMesh::convertToSolid, DS.ARGS({ "bConvertAsSmooth: bool","optimize: bool" }))
+        .def("getSubentColor", &PyDbSubDMesh::getSubentColor, DS.ARGS({ "id: PyDb.SubentId" }))
+        .def("setSubentColor", &PyDbSubDMesh::setSubentColor, DS.ARGS({ "id: PyDb.SubentId","clr: PyDb.Color" }))
+        .def("getSubentMaterial", &PyDbSubDMesh::getSubentMaterial, DS.ARGS({ "id: PyDb.SubentId" }))
+        .def("setSubentMaterial", &PyDbSubDMesh::setSubentMaterial, DS.ARGS({ "id: PyDb.SubentId","materialId: PyDb.ObjectId" }))
+        .def("getFacePlane", &PyDbSubDMesh::getFacePlane, DS.ARGS({ "id: PyDb.SubentId" }))
         .def("computeVolume", &PyDbSubDMesh::computeVolume, DS.ARGS())
         .def("computeSurfaceArea", &PyDbSubDMesh::computeSurfaceArea, DS.ARGS())
-
         .def("className", &PyDbSubDMesh::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbSubDMesh::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbSubDMesh::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
