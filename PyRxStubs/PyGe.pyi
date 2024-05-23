@@ -711,27 +711,11 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3, (float)arg4, (bool)arg5) -
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d,double,bool)'''
     ...
-    def area (self, *args, **kwargs)-> float :
-      '''area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double)
-
-area( (Curve2d)arg1, (float)arg2, (float)arg3, (Tol)arg4) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double,class AcGeTol)'''
+    def area (self, startParam : float, endParam : float, tol : float = None)-> float :
+      '''                             '''
     ...
-    def boundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''boundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue})
-
-boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def cast (self, *args, **kwargs)-> PyGe.CircArc2d :
       '''cast( (Entity2d)arg1) -> CircArc2d :
@@ -751,26 +735,8 @@ boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def closestPointTo (self, *args, **kwargs)-> PyGe.Point2d :
-      '''closestPointTo( (Curve2d)arg1, (Point2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-closestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
+      '''                             '''
     ...
     def copy (self, *args, **kwargs)-> PyGe.Entity2d :
       '''copy( (Entity2d)arg1) -> Entity2d :
@@ -784,26 +750,8 @@ closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class PyGeCircArc2d copycast(class PyGeEntity2d)'''
     ...
-    def distanceTo (self, *args, **kwargs)-> float :
-      '''distanceTo( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-distanceTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
     def endAng (self, *args, **kwargs)-> float :
       '''endAng( (CircArc2d)arg1) -> float :
@@ -817,118 +765,52 @@ distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         class AcGePoint2d endPoint(class PyGeCircArc2d {lvalue})'''
     ...
-    def evalPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
-
-evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
+    def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def explode (self, *args, **kwargs)-> list :
-      '''explode( (Curve2d)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue})
-
-explode( (Curve2d)arg1, (Interval)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def explode (self, val : PyGe.Interval = None)-> list :
+      '''                             '''
     ...
-    def getClosestPointTo (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getClosestPointTo( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getClosestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
-    def getClosestPointsTo (self, *args, **kwargs)-> tuple :
-      '''getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getEndPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getEndPoint(class PyGeCurve2d {lvalue})'''
+    def getEndPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getInterval (self, *args, **kwargs)-> PyGe.Interval :
-      '''getInterval( (Curve2d)arg1) -> Interval :
-
-    C++ signature :
-        class PyGeInterval getInterval(class PyGeCurve2d {lvalue})'''
+    def getInterval (self)-> PyGe.Interval :
+      '''                             '''
     ...
-    def getNormalPoint (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getNormalPoint( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
+
+    @overload
+    def getSamplePoints (self, numSample: int)-> list : ...
+    @overload
+    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> list : ...
     def getSamplePoints (self, *args, **kwargs)-> list :
-      '''getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
-
-getSamplePoints( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSamplePoints(class PyGeCurve2d {lvalue},double,double,double)'''
+      '''Overloads:
+    - numSample: int
+    - fromParam: float, toParam: float, approxEps: float
+    '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> tuple :
-      '''getSplitCurves( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSplitCurves(class PyGeCurve2d {lvalue},double)'''
+    def getSplitCurves (self, param : float)-> tuple :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getStartPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getStartPoint(class PyGeCurve2d {lvalue})'''
+    def getStartPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getTrimmedOffset (self, *args, **kwargs)-> list :
-      '''getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType)
-
-getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType,class AcGeTol)'''
+    def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
+      '''                             '''
     ...
-    def hasEndPoint (self, *args, **kwargs)-> bool :
-      '''hasEndPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasEndPoint(class PyGeCurve2d {lvalue})'''
+    def hasEndPoint (self)-> bool :
+      '''                             '''
     ...
-    def hasStartPoint (self, *args, **kwargs)-> bool :
-      '''hasStartPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasStartPoint(class PyGeCurve2d {lvalue})'''
+    def hasStartPoint (self)-> bool :
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> tuple :
       '''intersectWith( (CircArc2d)arg1, (LinearEnt2d)arg2) -> tuple :
@@ -957,27 +839,11 @@ intersectWith( (CircArc2d)arg1, (CircArc2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         bool isClockWise(class PyGeCircArc2d {lvalue})'''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue})
-
-isClosed( (Curve2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isClosed (self, tol : PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
-    def isDegenerate (self, *args, **kwargs)-> tuple :
-      '''isDegenerate( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue})
-
-isDegenerate( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''isEqualTo( (Entity2d)arg1, (Entity2d)arg2) -> bool :
@@ -1007,16 +873,8 @@ isInside( (CircArc2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isKindOf(class PyGeEntity2d {lvalue},enum AcGe::EntityId)'''
     ...
-    def isLinear (self, *args, **kwargs)-> tuple :
-      '''isLinear( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue})
-
-isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isLinear (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (Entity2d)arg1) -> bool :
@@ -1024,43 +882,14 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> tuple :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
-
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+    def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def isPeriodic (self, *args, **kwargs)-> tuple :
-      '''isPeriodic( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isPeriodic(class PyGeCurve2d {lvalue})'''
+    def isPeriodic (self)-> tuple :
+      '''                             '''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double)
-
-length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double,double)'''
+    def length (self, frm : float, to : float, tol : float = None)-> float :
+      '''                             '''
     ...
     def mirror (self, *args, **kwargs)-> None :
       '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
@@ -1068,38 +897,14 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
-    def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue})
-
-orthoBoundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
-    def paramAtLength (self, *args, **kwargs)-> float :
-      '''paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double)
-
-paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (float)arg5) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double,bool,double)'''
+    def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
+      '''                             '''
     ...
-    def paramOf (self, *args, **kwargs)-> float :
-      '''paramOf( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
     def radius (self, *args, **kwargs)-> float :
       '''radius( (CircArc2d)arg1) -> float :
@@ -1113,11 +918,8 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         class AcGeVector2d refVec(class PyGeCircArc2d {lvalue})'''
     ...
-    def reverseParam (self, *args, **kwargs)-> None :
-      '''reverseParam( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void reverseParam(class PyGeCurve2d {lvalue})'''
+    def reverseParam (self)-> None :
+      '''                             '''
     ...
     def rotateBy (self, *args, **kwargs)-> None :
       '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
@@ -1184,16 +986,8 @@ set( (CircArc2d)arg1, (Curve2d)arg2, (Curve2d)arg3, (Curve2d)arg4) -> None :
     C++ signature :
         void setCenter(class PyGeCircArc2d {lvalue},class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> None :
-      '''setInterval( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void setInterval(class PyGeCurve2d {lvalue})
-
-setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def setInterval (self, val : PyGe.Interval = None)-> None :
+      '''                             '''
     ...
     def setRadius (self, *args, **kwargs)-> None :
       '''setRadius( (CircArc2d)arg1, (float)arg2) -> None :
@@ -1644,27 +1438,11 @@ class CompositeCurve2d(Curve2d):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def area (self, *args, **kwargs)-> float :
-      '''area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double)
-
-area( (Curve2d)arg1, (float)arg2, (float)arg3, (Tol)arg4) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double,class AcGeTol)'''
+    def area (self, startParam : float, endParam : float, tol : float = None)-> float :
+      '''                             '''
     ...
-    def boundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''boundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue})
-
-boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def cast (self, *args, **kwargs)-> PyGe.CompositeCurve2d :
       '''cast( (Entity2d)arg1) -> CompositeCurve2d :
@@ -1678,26 +1456,8 @@ boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def closestPointTo (self, *args, **kwargs)-> PyGe.Point2d :
-      '''closestPointTo( (Curve2d)arg1, (Point2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-closestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
+      '''                             '''
     ...
     def copy (self, *args, **kwargs)-> PyGe.Entity2d :
       '''copy( (Entity2d)arg1) -> Entity2d :
@@ -1711,161 +1471,61 @@ closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class PyGeCompositeCurve2d copycast(class PyGeEntity2d)'''
     ...
-    def distanceTo (self, *args, **kwargs)-> float :
-      '''distanceTo( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-distanceTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
-    def evalPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
-
-evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
+    def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def explode (self, *args, **kwargs)-> list :
-      '''explode( (Curve2d)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue})
-
-explode( (Curve2d)arg1, (Interval)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def explode (self, val : PyGe.Interval = None)-> list :
+      '''                             '''
     ...
-    def getClosestPointTo (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getClosestPointTo( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getClosestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
-    def getClosestPointsTo (self, *args, **kwargs)-> tuple :
-      '''getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getEndPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getEndPoint(class PyGeCurve2d {lvalue})'''
+    def getEndPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getInterval (self, *args, **kwargs)-> PyGe.Interval :
-      '''getInterval( (Curve2d)arg1) -> Interval :
-
-    C++ signature :
-        class PyGeInterval getInterval(class PyGeCurve2d {lvalue})'''
+    def getInterval (self)-> PyGe.Interval :
+      '''                             '''
     ...
-    def getNormalPoint (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getNormalPoint( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
+
+    @overload
+    def getSamplePoints (self, numSample: int)-> list : ...
+    @overload
+    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> list : ...
     def getSamplePoints (self, *args, **kwargs)-> list :
-      '''getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
-
-getSamplePoints( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSamplePoints(class PyGeCurve2d {lvalue},double,double,double)'''
+      '''Overloads:
+    - numSample: int
+    - fromParam: float, toParam: float, approxEps: float
+    '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> tuple :
-      '''getSplitCurves( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSplitCurves(class PyGeCurve2d {lvalue},double)'''
+    def getSplitCurves (self, param : float)-> tuple :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getStartPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getStartPoint(class PyGeCurve2d {lvalue})'''
+    def getStartPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getTrimmedOffset (self, *args, **kwargs)-> list :
-      '''getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType)
-
-getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType,class AcGeTol)'''
+    def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
+      '''                             '''
     ...
-    def hasEndPoint (self, *args, **kwargs)-> bool :
-      '''hasEndPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasEndPoint(class PyGeCurve2d {lvalue})'''
+    def hasEndPoint (self)-> bool :
+      '''                             '''
     ...
-    def hasStartPoint (self, *args, **kwargs)-> bool :
-      '''hasStartPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasStartPoint(class PyGeCurve2d {lvalue})'''
+    def hasStartPoint (self)-> bool :
+      '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue})
-
-isClosed( (Curve2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isClosed (self, tol : PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
-    def isDegenerate (self, *args, **kwargs)-> tuple :
-      '''isDegenerate( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue})
-
-isDegenerate( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''isEqualTo( (Entity2d)arg1, (Entity2d)arg2) -> bool :
@@ -1884,16 +1544,8 @@ isEqualTo( (Entity2d)arg1, (Entity2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isKindOf(class PyGeEntity2d {lvalue},enum AcGe::EntityId)'''
     ...
-    def isLinear (self, *args, **kwargs)-> tuple :
-      '''isLinear( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue})
-
-isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isLinear (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (Entity2d)arg1) -> bool :
@@ -1901,43 +1553,14 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> tuple :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
-
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+    def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def isPeriodic (self, *args, **kwargs)-> tuple :
-      '''isPeriodic( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isPeriodic(class PyGeCurve2d {lvalue})'''
+    def isPeriodic (self)-> tuple :
+      '''                             '''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double)
-
-length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double,double)'''
+    def length (self, frm : float, to : float, tol : float = None)-> float :
+      '''                             '''
     ...
     def mirror (self, *args, **kwargs)-> None :
       '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
@@ -1945,44 +1568,17 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
-    def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue})
-
-orthoBoundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
-    def paramAtLength (self, *args, **kwargs)-> float :
-      '''paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double)
-
-paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (float)arg5) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double,bool,double)'''
+    def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
+      '''                             '''
     ...
-    def paramOf (self, *args, **kwargs)-> float :
-      '''paramOf( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
-    def reverseParam (self, *args, **kwargs)-> None :
-      '''reverseParam( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void reverseParam(class PyGeCurve2d {lvalue})'''
+    def reverseParam (self)-> None :
+      '''                             '''
     ...
     def rotateBy (self, *args, **kwargs)-> None :
       '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
@@ -2006,16 +1602,8 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
     C++ signature :
         void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> None :
-      '''setInterval( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void setInterval(class PyGeCurve2d {lvalue})
-
-setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def setInterval (self, val : PyGe.Interval = None)-> None :
+      '''                             '''
     ...
     def transformBy (self, *args, **kwargs)-> None :
       '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
@@ -2558,27 +2146,11 @@ __init__( (object)arg1, (KnotVector)arg2, (list)arg3, (list)arg4, (bool)arg5) ->
     C++ signature :
         void __init__(struct _object * __ptr64,class PyGeKnotVector,class boost::python::list,class boost::python::list,bool)'''
     ...
-    def area (self, *args, **kwargs)-> float :
-      '''area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double)
-
-area( (Curve2d)arg1, (float)arg2, (float)arg3, (Tol)arg4) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double,class AcGeTol)'''
+    def area (self, startParam : float, endParam : float, tol : float = None)-> float :
+      '''                             '''
     ...
-    def boundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''boundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue})
-
-boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def cast (self, *args, **kwargs)-> PyGe.SplineEnt2d :
       '''cast( (Entity2d)arg1) -> SplineEnt2d :
@@ -2592,26 +2164,8 @@ boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def closestPointTo (self, *args, **kwargs)-> PyGe.Point2d :
-      '''closestPointTo( (Curve2d)arg1, (Point2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-closestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
+      '''                             '''
     ...
     def continuityAtKnot (self, *args, **kwargs)-> int :
       '''continuityAtKnot( (SplineEnt2d)arg1, (int)arg2) -> int :
@@ -2648,26 +2202,8 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     C++ signature :
         int degree(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def distanceTo (self, *args, **kwargs)-> float :
-      '''distanceTo( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-distanceTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
     def endParam (self, *args, **kwargs)-> float :
       '''endParam( (SplineEnt2d)arg1) -> float :
@@ -2681,27 +2217,11 @@ distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         class AcGePoint2d endPoint(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def evalPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
-
-evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
+    def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def explode (self, *args, **kwargs)-> list :
-      '''explode( (Curve2d)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue})
-
-explode( (Curve2d)arg1, (Interval)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def explode (self, val : PyGe.Interval = None)-> list :
+      '''                             '''
     ...
     def firstDerivAt (self, *args, **kwargs)-> PyGe.Vector2d :
       '''firstDerivAt( (CubicSplineCurve2d)arg1, (int)arg2) -> Vector2d :
@@ -2715,90 +2235,43 @@ explode( (Curve2d)arg1, (Interval)arg2) -> list :
     C++ signature :
         class AcGePoint2d fitPointAt(class PyGeCubicSplineCurve2d {lvalue},int)'''
     ...
-    def getClosestPointTo (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getClosestPointTo( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getClosestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
-    def getClosestPointsTo (self, *args, **kwargs)-> tuple :
-      '''getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getEndPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getEndPoint(class PyGeCurve2d {lvalue})'''
+    def getEndPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getInterval (self, *args, **kwargs)-> PyGe.Interval :
-      '''getInterval( (Curve2d)arg1) -> Interval :
-
-    C++ signature :
-        class PyGeInterval getInterval(class PyGeCurve2d {lvalue})'''
+    def getInterval (self)-> PyGe.Interval :
+      '''                             '''
     ...
-    def getNormalPoint (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getNormalPoint( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
+
+    @overload
+    def getSamplePoints (self, numSample: int)-> list : ...
+    @overload
+    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> list : ...
     def getSamplePoints (self, *args, **kwargs)-> list :
-      '''getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
-
-getSamplePoints( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSamplePoints(class PyGeCurve2d {lvalue},double,double,double)'''
+      '''Overloads:
+    - numSample: int
+    - fromParam: float, toParam: float, approxEps: float
+    '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> tuple :
-      '''getSplitCurves( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSplitCurves(class PyGeCurve2d {lvalue},double)'''
+    def getSplitCurves (self, param : float)-> tuple :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getStartPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getStartPoint(class PyGeCurve2d {lvalue})'''
+    def getStartPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getTrimmedOffset (self, *args, **kwargs)-> list :
-      '''getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType)
-
-getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType,class AcGeTol)'''
+    def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
+      '''                             '''
     ...
-    def hasEndPoint (self, *args, **kwargs)-> bool :
-      '''hasEndPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasEndPoint(class PyGeCurve2d {lvalue})'''
+    def hasEndPoint (self)-> bool :
+      '''                             '''
     ...
     def hasFitData (self, *args, **kwargs)-> bool :
       '''hasFitData( (SplineEnt2d)arg1) -> bool :
@@ -2806,33 +2279,14 @@ getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4)
     C++ signature :
         bool hasFitData(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def hasStartPoint (self, *args, **kwargs)-> bool :
-      '''hasStartPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasStartPoint(class PyGeCurve2d {lvalue})'''
+    def hasStartPoint (self)-> bool :
+      '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue})
-
-isClosed( (Curve2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isClosed (self, tol : PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
-    def isDegenerate (self, *args, **kwargs)-> tuple :
-      '''isDegenerate( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue})
-
-isDegenerate( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''isEqualTo( (Entity2d)arg1, (Entity2d)arg2) -> bool :
@@ -2851,16 +2305,8 @@ isEqualTo( (Entity2d)arg1, (Entity2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isKindOf(class PyGeEntity2d {lvalue},enum AcGe::EntityId)'''
     ...
-    def isLinear (self, *args, **kwargs)-> tuple :
-      '''isLinear( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue})
-
-isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isLinear (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (Entity2d)arg1) -> bool :
@@ -2868,32 +2314,11 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> tuple :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
-
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+    def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def isPeriodic (self, *args, **kwargs)-> tuple :
-      '''isPeriodic( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isPeriodic(class PyGeCurve2d {lvalue})'''
+    def isPeriodic (self)-> tuple :
+      '''                             '''
     ...
     def isRational (self, *args, **kwargs)-> bool :
       '''isRational( (SplineEnt2d)arg1) -> bool :
@@ -2913,16 +2338,8 @@ isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class PyGeKnotVector knots(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double)
-
-length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double,double)'''
+    def length (self, frm : float, to : float, tol : float = None)-> float :
+      '''                             '''
     ...
     def mirror (self, *args, **kwargs)-> None :
       '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
@@ -2954,44 +2371,17 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         int order(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue})
-
-orthoBoundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
-    def paramAtLength (self, *args, **kwargs)-> float :
-      '''paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double)
-
-paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (float)arg5) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double,bool,double)'''
+    def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
+      '''                             '''
     ...
-    def paramOf (self, *args, **kwargs)-> float :
-      '''paramOf( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
-    def reverseParam (self, *args, **kwargs)-> None :
-      '''reverseParam( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void reverseParam(class PyGeCurve2d {lvalue})'''
+    def reverseParam (self)-> None :
+      '''                             '''
     ...
     def rotateBy (self, *args, **kwargs)-> None :
       '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
@@ -3033,16 +2423,8 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
     C++ signature :
         void setFitPointAt(class PyGeCubicSplineCurve2d {lvalue},int,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> None :
-      '''setInterval( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void setInterval(class PyGeCurve2d {lvalue})
-
-setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def setInterval (self, val : PyGe.Interval = None)-> None :
+      '''                             '''
     ...
     def setKnotAt (self, *args, **kwargs)-> None :
       '''setKnotAt( (SplineEnt2d)arg1, (int)arg2, (float)arg3) -> None :
@@ -3415,60 +2797,24 @@ class Curve2d(Entity2d):
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def area (self, *args, **kwargs)-> float :
-      '''area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double)
-
-area( (Curve2d)arg1, (float)arg2, (float)arg3, (Tol)arg4) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double,class AcGeTol)'''
+    def area (self, startParam : float, endParam : float, tol : float = None)-> float :
+      '''                             '''
     ...
-    def boundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''boundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue})
-
-boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''cast( (Entity2d)arg1) -> Curve2d :
 
-    C++ signature :
-        class PyGeCurve2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Curve2d)-> PyGe.Curve2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def closestPointTo (self, *args, **kwargs)-> PyGe.Point2d :
-      '''closestPointTo( (Curve2d)arg1, (Point2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-closestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
+      '''                             '''
     ...
     def copy (self, *args, **kwargs)-> PyGe.Entity2d :
       '''copy( (Entity2d)arg1) -> Entity2d :
@@ -3476,167 +2822,66 @@ closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class PyGeEntity2d copy(class PyGeEntity2d {lvalue})'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''copycast( (Entity2d)arg1) -> Curve2d :
 
-    C++ signature :
-        class PyGeCurve2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Curve2d)-> PyGe.Curve2d :
+      '''                             '''
     ...
-    def distanceTo (self, *args, **kwargs)-> float :
-      '''distanceTo( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-distanceTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
-    def evalPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
-
-evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
+    def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def explode (self, *args, **kwargs)-> list :
-      '''explode( (Curve2d)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue})
-
-explode( (Curve2d)arg1, (Interval)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def explode (self, val : PyGe.Interval = None)-> list :
+      '''                             '''
     ...
-    def getClosestPointTo (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getClosestPointTo( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getClosestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
-    def getClosestPointsTo (self, *args, **kwargs)-> tuple :
-      '''getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getEndPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getEndPoint(class PyGeCurve2d {lvalue})'''
+    def getEndPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getInterval (self, *args, **kwargs)-> PyGe.Interval :
-      '''getInterval( (Curve2d)arg1) -> Interval :
-
-    C++ signature :
-        class PyGeInterval getInterval(class PyGeCurve2d {lvalue})'''
+    def getInterval (self)-> PyGe.Interval :
+      '''                             '''
     ...
-    def getNormalPoint (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getNormalPoint( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
+
+    @overload
+    def getSamplePoints (self, numSample: int)-> list : ...
+    @overload
+    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> list : ...
     def getSamplePoints (self, *args, **kwargs)-> list :
-      '''getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
-
-getSamplePoints( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSamplePoints(class PyGeCurve2d {lvalue},double,double,double)'''
+      '''Overloads:
+    - numSample: int
+    - fromParam: float, toParam: float, approxEps: float
+    '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> tuple :
-      '''getSplitCurves( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSplitCurves(class PyGeCurve2d {lvalue},double)'''
+    def getSplitCurves (self, param : float)-> tuple :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getStartPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getStartPoint(class PyGeCurve2d {lvalue})'''
+    def getStartPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getTrimmedOffset (self, *args, **kwargs)-> list :
-      '''getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType)
-
-getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType,class AcGeTol)'''
+    def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
+      '''                             '''
     ...
-    def hasEndPoint (self, *args, **kwargs)-> bool :
-      '''hasEndPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasEndPoint(class PyGeCurve2d {lvalue})'''
+    def hasEndPoint (self)-> bool :
+      '''                             '''
     ...
-    def hasStartPoint (self, *args, **kwargs)-> bool :
-      '''hasStartPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasStartPoint(class PyGeCurve2d {lvalue})'''
+    def hasStartPoint (self)-> bool :
+      '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue})
-
-isClosed( (Curve2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isClosed (self, tol : PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
-    def isDegenerate (self, *args, **kwargs)-> tuple :
-      '''isDegenerate( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue})
-
-isDegenerate( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''isEqualTo( (Entity2d)arg1, (Entity2d)arg2) -> bool :
@@ -3655,16 +2900,8 @@ isEqualTo( (Entity2d)arg1, (Entity2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isKindOf(class PyGeEntity2d {lvalue},enum AcGe::EntityId)'''
     ...
-    def isLinear (self, *args, **kwargs)-> tuple :
-      '''isLinear( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue})
-
-isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isLinear (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (Entity2d)arg1) -> bool :
@@ -3672,43 +2909,14 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> tuple :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
-
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+    def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def isPeriodic (self, *args, **kwargs)-> tuple :
-      '''isPeriodic( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isPeriodic(class PyGeCurve2d {lvalue})'''
+    def isPeriodic (self)-> tuple :
+      '''                             '''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double)
-
-length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double,double)'''
+    def length (self, frm : float, to : float, tol : float = None)-> float :
+      '''                             '''
     ...
     def mirror (self, *args, **kwargs)-> None :
       '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
@@ -3716,44 +2924,17 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
-    def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue})
-
-orthoBoundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
-    def paramAtLength (self, *args, **kwargs)-> float :
-      '''paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double)
-
-paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (float)arg5) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double,bool,double)'''
+    def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
+      '''                             '''
     ...
-    def paramOf (self, *args, **kwargs)-> float :
-      '''paramOf( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
-    def reverseParam (self, *args, **kwargs)-> None :
-      '''reverseParam( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void reverseParam(class PyGeCurve2d {lvalue})'''
+    def reverseParam (self)-> None :
+      '''                             '''
     ...
     def rotateBy (self, *args, **kwargs)-> None :
       '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
@@ -3777,16 +2958,8 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
     C++ signature :
         void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> None :
-      '''setInterval( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void setInterval(class PyGeCurve2d {lvalue})
-
-setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def setInterval (self, val : PyGe.Interval = None)-> None :
+      '''                             '''
     ...
     def transformBy (self, *args, **kwargs)-> None :
       '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
@@ -4870,27 +4043,11 @@ __init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (float)ar
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d,class AcGeVector2d,double,double,double,double)'''
     ...
-    def area (self, *args, **kwargs)-> float :
-      '''area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double)
-
-area( (Curve2d)arg1, (float)arg2, (float)arg3, (Tol)arg4) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double,class AcGeTol)'''
+    def area (self, startParam : float, endParam : float, tol : float = None)-> float :
+      '''                             '''
     ...
-    def boundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''boundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue})
-
-boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def cast (self, *args, **kwargs)-> PyGe.EllipArc2d :
       '''cast( (Entity2d)arg1) -> EllipArc2d :
@@ -4910,26 +4067,8 @@ boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def closestPointTo (self, *args, **kwargs)-> PyGe.Point2d :
-      '''closestPointTo( (Curve2d)arg1, (Point2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-closestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
+      '''                             '''
     ...
     def copy (self, *args, **kwargs)-> PyGe.Entity2d :
       '''copy( (Entity2d)arg1) -> Entity2d :
@@ -4943,26 +4082,8 @@ closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class PyGeEllipArc2d copycast(class PyGeEntity2d)'''
     ...
-    def distanceTo (self, *args, **kwargs)-> float :
-      '''distanceTo( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-distanceTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
     def endAng (self, *args, **kwargs)-> float :
       '''endAng( (EllipArc2d)arg1) -> float :
@@ -4976,118 +4097,52 @@ distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         class AcGePoint2d endPoint(class PyGeEllipArc2d {lvalue})'''
     ...
-    def evalPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
-
-evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
+    def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def explode (self, *args, **kwargs)-> list :
-      '''explode( (Curve2d)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue})
-
-explode( (Curve2d)arg1, (Interval)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def explode (self, val : PyGe.Interval = None)-> list :
+      '''                             '''
     ...
-    def getClosestPointTo (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getClosestPointTo( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getClosestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
-    def getClosestPointsTo (self, *args, **kwargs)-> tuple :
-      '''getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getEndPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getEndPoint(class PyGeCurve2d {lvalue})'''
+    def getEndPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getInterval (self, *args, **kwargs)-> PyGe.Interval :
-      '''getInterval( (Curve2d)arg1) -> Interval :
-
-    C++ signature :
-        class PyGeInterval getInterval(class PyGeCurve2d {lvalue})'''
+    def getInterval (self)-> PyGe.Interval :
+      '''                             '''
     ...
-    def getNormalPoint (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getNormalPoint( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
+
+    @overload
+    def getSamplePoints (self, numSample: int)-> list : ...
+    @overload
+    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> list : ...
     def getSamplePoints (self, *args, **kwargs)-> list :
-      '''getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
-
-getSamplePoints( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSamplePoints(class PyGeCurve2d {lvalue},double,double,double)'''
+      '''Overloads:
+    - numSample: int
+    - fromParam: float, toParam: float, approxEps: float
+    '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> tuple :
-      '''getSplitCurves( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSplitCurves(class PyGeCurve2d {lvalue},double)'''
+    def getSplitCurves (self, param : float)-> tuple :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getStartPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getStartPoint(class PyGeCurve2d {lvalue})'''
+    def getStartPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getTrimmedOffset (self, *args, **kwargs)-> list :
-      '''getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType)
-
-getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType,class AcGeTol)'''
+    def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
+      '''                             '''
     ...
-    def hasEndPoint (self, *args, **kwargs)-> bool :
-      '''hasEndPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasEndPoint(class PyGeCurve2d {lvalue})'''
+    def hasEndPoint (self)-> bool :
+      '''                             '''
     ...
-    def hasStartPoint (self, *args, **kwargs)-> bool :
-      '''hasStartPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasStartPoint(class PyGeCurve2d {lvalue})'''
+    def hasStartPoint (self)-> bool :
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> tuple :
       '''intersectWith( (EllipArc2d)arg1, (LinearEnt2d)arg2) -> tuple :
@@ -5117,27 +4172,11 @@ isCircular( (EllipArc2d)arg1, (Tol)arg2) -> bool :
     C++ signature :
         bool isClockWise(class PyGeEllipArc2d {lvalue})'''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue})
-
-isClosed( (Curve2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isClosed (self, tol : PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
-    def isDegenerate (self, *args, **kwargs)-> tuple :
-      '''isDegenerate( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue})
-
-isDegenerate( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''isEqualTo( (Entity2d)arg1, (Entity2d)arg2) -> bool :
@@ -5167,16 +4206,8 @@ isInside( (EllipArc2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isKindOf(class PyGeEntity2d {lvalue},enum AcGe::EntityId)'''
     ...
-    def isLinear (self, *args, **kwargs)-> tuple :
-      '''isLinear( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue})
-
-isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isLinear (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (Entity2d)arg1) -> bool :
@@ -5184,43 +4215,14 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> tuple :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
-
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+    def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def isPeriodic (self, *args, **kwargs)-> tuple :
-      '''isPeriodic( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isPeriodic(class PyGeCurve2d {lvalue})'''
+    def isPeriodic (self)-> tuple :
+      '''                             '''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double)
-
-length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double,double)'''
+    def length (self, frm : float, to : float, tol : float = None)-> float :
+      '''                             '''
     ...
     def majorAxis (self, *args, **kwargs)-> PyGe.Vector2d :
       '''majorAxis( (EllipArc2d)arg1) -> Vector2d :
@@ -5252,44 +4254,17 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
-    def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue})
-
-orthoBoundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
-    def paramAtLength (self, *args, **kwargs)-> float :
-      '''paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double)
-
-paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (float)arg5) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double,bool,double)'''
+    def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
+      '''                             '''
     ...
-    def paramOf (self, *args, **kwargs)-> float :
-      '''paramOf( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
-    def reverseParam (self, *args, **kwargs)-> None :
-      '''reverseParam( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void reverseParam(class PyGeCurve2d {lvalue})'''
+    def reverseParam (self)-> None :
+      '''                             '''
     ...
     def rotateBy (self, *args, **kwargs)-> None :
       '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
@@ -5347,16 +4322,8 @@ set( (EllipArc2d)arg1, (CircArc2d)arg2) -> None :
     C++ signature :
         void setCenter(class PyGeEllipArc2d {lvalue},class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> None :
-      '''setInterval( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void setInterval(class PyGeCurve2d {lvalue})
-
-setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def setInterval (self, val : PyGe.Interval = None)-> None :
+      '''                             '''
     ...
     def setMajorRadius (self, *args, **kwargs)-> None :
       '''setMajorRadius( (EllipArc2d)arg1, (float)arg2) -> None :
@@ -6243,27 +5210,11 @@ class ExternalCurve2d(Curve2d):
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def area (self, *args, **kwargs)-> float :
-      '''area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double)
-
-area( (Curve2d)arg1, (float)arg2, (float)arg3, (Tol)arg4) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double,class AcGeTol)'''
+    def area (self, startParam : float, endParam : float, tol : float = None)-> float :
+      '''                             '''
     ...
-    def boundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''boundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue})
-
-boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def cast (self, *args, **kwargs)-> PyGe.ExternalCurve2d :
       '''cast( (Entity2d)arg1) -> ExternalCurve2d :
@@ -6277,26 +5228,8 @@ boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def closestPointTo (self, *args, **kwargs)-> PyGe.Point2d :
-      '''closestPointTo( (Curve2d)arg1, (Point2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-closestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
+      '''                             '''
     ...
     def copy (self, *args, **kwargs)-> PyGe.Entity2d :
       '''copy( (Entity2d)arg1) -> Entity2d :
@@ -6310,161 +5243,61 @@ closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class PyGeExternalCurve2d copycast(class PyGeEntity2d)'''
     ...
-    def distanceTo (self, *args, **kwargs)-> float :
-      '''distanceTo( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-distanceTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
-    def evalPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
-
-evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
+    def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def explode (self, *args, **kwargs)-> list :
-      '''explode( (Curve2d)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue})
-
-explode( (Curve2d)arg1, (Interval)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def explode (self, val : PyGe.Interval = None)-> list :
+      '''                             '''
     ...
-    def getClosestPointTo (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getClosestPointTo( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getClosestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
-    def getClosestPointsTo (self, *args, **kwargs)-> tuple :
-      '''getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getEndPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getEndPoint(class PyGeCurve2d {lvalue})'''
+    def getEndPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getInterval (self, *args, **kwargs)-> PyGe.Interval :
-      '''getInterval( (Curve2d)arg1) -> Interval :
-
-    C++ signature :
-        class PyGeInterval getInterval(class PyGeCurve2d {lvalue})'''
+    def getInterval (self)-> PyGe.Interval :
+      '''                             '''
     ...
-    def getNormalPoint (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getNormalPoint( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
+
+    @overload
+    def getSamplePoints (self, numSample: int)-> list : ...
+    @overload
+    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> list : ...
     def getSamplePoints (self, *args, **kwargs)-> list :
-      '''getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
-
-getSamplePoints( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSamplePoints(class PyGeCurve2d {lvalue},double,double,double)'''
+      '''Overloads:
+    - numSample: int
+    - fromParam: float, toParam: float, approxEps: float
+    '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> tuple :
-      '''getSplitCurves( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSplitCurves(class PyGeCurve2d {lvalue},double)'''
+    def getSplitCurves (self, param : float)-> tuple :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getStartPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getStartPoint(class PyGeCurve2d {lvalue})'''
+    def getStartPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getTrimmedOffset (self, *args, **kwargs)-> list :
-      '''getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType)
-
-getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType,class AcGeTol)'''
+    def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
+      '''                             '''
     ...
-    def hasEndPoint (self, *args, **kwargs)-> bool :
-      '''hasEndPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasEndPoint(class PyGeCurve2d {lvalue})'''
+    def hasEndPoint (self)-> bool :
+      '''                             '''
     ...
-    def hasStartPoint (self, *args, **kwargs)-> bool :
-      '''hasStartPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasStartPoint(class PyGeCurve2d {lvalue})'''
+    def hasStartPoint (self)-> bool :
+      '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue})
-
-isClosed( (Curve2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isClosed (self, tol : PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
-    def isDegenerate (self, *args, **kwargs)-> tuple :
-      '''isDegenerate( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue})
-
-isDegenerate( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''isEqualTo( (Entity2d)arg1, (Entity2d)arg2) -> bool :
@@ -6483,16 +5316,8 @@ isEqualTo( (Entity2d)arg1, (Entity2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isKindOf(class PyGeEntity2d {lvalue},enum AcGe::EntityId)'''
     ...
-    def isLinear (self, *args, **kwargs)-> tuple :
-      '''isLinear( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue})
-
-isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isLinear (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (Entity2d)arg1) -> bool :
@@ -6500,43 +5325,14 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> tuple :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
-
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+    def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def isPeriodic (self, *args, **kwargs)-> tuple :
-      '''isPeriodic( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isPeriodic(class PyGeCurve2d {lvalue})'''
+    def isPeriodic (self)-> tuple :
+      '''                             '''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double)
-
-length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double,double)'''
+    def length (self, frm : float, to : float, tol : float = None)-> float :
+      '''                             '''
     ...
     def mirror (self, *args, **kwargs)-> None :
       '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
@@ -6544,44 +5340,17 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
-    def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue})
-
-orthoBoundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
-    def paramAtLength (self, *args, **kwargs)-> float :
-      '''paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double)
-
-paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (float)arg5) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double,bool,double)'''
+    def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
+      '''                             '''
     ...
-    def paramOf (self, *args, **kwargs)-> float :
-      '''paramOf( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
-    def reverseParam (self, *args, **kwargs)-> None :
-      '''reverseParam( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void reverseParam(class PyGeCurve2d {lvalue})'''
+    def reverseParam (self)-> None :
+      '''                             '''
     ...
     def rotateBy (self, *args, **kwargs)-> None :
       '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
@@ -6605,16 +5374,8 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
     C++ signature :
         void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> None :
-      '''setInterval( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void setInterval(class PyGeCurve2d {lvalue})
-
-setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def setInterval (self, val : PyGe.Interval = None)-> None :
+      '''                             '''
     ...
     def transformBy (self, *args, **kwargs)-> None :
       '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
@@ -7488,27 +6249,11 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)'''
     ...
-    def area (self, *args, **kwargs)-> float :
-      '''area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double)
-
-area( (Curve2d)arg1, (float)arg2, (float)arg3, (Tol)arg4) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double,class AcGeTol)'''
+    def area (self, startParam : float, endParam : float, tol : float = None)-> float :
+      '''                             '''
     ...
-    def boundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''boundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue})
-
-boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def cast (self, *args, **kwargs)-> PyGe.Line2d :
       '''cast( (Entity2d)arg1) -> Line2d :
@@ -7522,26 +6267,8 @@ boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def closestPointTo (self, *args, **kwargs)-> PyGe.Point2d :
-      '''closestPointTo( (Curve2d)arg1, (Point2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-closestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
+      '''                             '''
     ...
     def copy (self, *args, **kwargs)-> PyGe.Entity2d :
       '''copy( (Entity2d)arg1) -> Entity2d :
@@ -7561,82 +6288,26 @@ closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class AcGeVector2d direction(class PyGeLinearEnt2d {lvalue})'''
     ...
-    def distanceTo (self, *args, **kwargs)-> float :
-      '''distanceTo( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-distanceTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
-    def evalPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
-
-evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
+    def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def explode (self, *args, **kwargs)-> list :
-      '''explode( (Curve2d)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue})
-
-explode( (Curve2d)arg1, (Interval)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def explode (self, val : PyGe.Interval = None)-> list :
+      '''                             '''
     ...
-    def getClosestPointTo (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getClosestPointTo( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getClosestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
-    def getClosestPointsTo (self, *args, **kwargs)-> tuple :
-      '''getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getEndPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getEndPoint(class PyGeCurve2d {lvalue})'''
+    def getEndPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getInterval (self, *args, **kwargs)-> PyGe.Interval :
-      '''getInterval( (Curve2d)arg1) -> Interval :
-
-    C++ signature :
-        class PyGeInterval getInterval(class PyGeCurve2d {lvalue})'''
+    def getInterval (self)-> PyGe.Interval :
+      '''                             '''
     ...
     def getLine (self, *args, **kwargs)-> PyGe.Line2d :
       '''getLine( (LinearEnt2d)arg1) -> Line2d :
@@ -7644,16 +6315,8 @@ getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class PyGeLine2d getLine(class PyGeLinearEnt2d {lvalue})'''
     ...
-    def getNormalPoint (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getNormalPoint( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
     def getPerpLine (self, *args, **kwargs)-> PyGe.Line2d :
       '''getPerpLine( (LinearEnt2d)arg1, (Point2d)arg2) -> Line2d :
@@ -7661,51 +6324,31 @@ getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
     C++ signature :
         class PyGeLine2d getPerpLine(class PyGeLinearEnt2d {lvalue},class AcGePoint2d)'''
     ...
+
+    @overload
+    def getSamplePoints (self, numSample: int)-> list : ...
+    @overload
+    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> list : ...
     def getSamplePoints (self, *args, **kwargs)-> list :
-      '''getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
-
-getSamplePoints( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSamplePoints(class PyGeCurve2d {lvalue},double,double,double)'''
+      '''Overloads:
+    - numSample: int
+    - fromParam: float, toParam: float, approxEps: float
+    '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> tuple :
-      '''getSplitCurves( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSplitCurves(class PyGeCurve2d {lvalue},double)'''
+    def getSplitCurves (self, param : float)-> tuple :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getStartPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getStartPoint(class PyGeCurve2d {lvalue})'''
+    def getStartPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getTrimmedOffset (self, *args, **kwargs)-> list :
-      '''getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType)
-
-getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType,class AcGeTol)'''
+    def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
+      '''                             '''
     ...
-    def hasEndPoint (self, *args, **kwargs)-> bool :
-      '''hasEndPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasEndPoint(class PyGeCurve2d {lvalue})'''
+    def hasEndPoint (self)-> bool :
+      '''                             '''
     ...
-    def hasStartPoint (self, *args, **kwargs)-> bool :
-      '''hasStartPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasStartPoint(class PyGeCurve2d {lvalue})'''
+    def hasStartPoint (self)-> bool :
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> tuple :
       '''intersectWith( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> tuple :
@@ -7718,16 +6361,8 @@ intersectWith( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class boost::python::tuple intersectWith(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue})
-
-isClosed( (Curve2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isClosed (self, tol : PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isColinearTo (self, *args, **kwargs)-> bool :
       '''isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
@@ -7740,16 +6375,8 @@ isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isColinearTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def isDegenerate (self, *args, **kwargs)-> tuple :
-      '''isDegenerate( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue})
-
-isDegenerate( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''isEqualTo( (Entity2d)arg1, (Entity2d)arg2) -> bool :
@@ -7768,16 +6395,8 @@ isEqualTo( (Entity2d)arg1, (Entity2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isKindOf(class PyGeEntity2d {lvalue},enum AcGe::EntityId)'''
     ...
-    def isLinear (self, *args, **kwargs)-> tuple :
-      '''isLinear( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue})
-
-isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isLinear (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (Entity2d)arg1) -> bool :
@@ -7785,26 +6404,8 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> tuple :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
-
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+    def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
       '''isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
@@ -7817,11 +6418,8 @@ isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isParallelTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def isPeriodic (self, *args, **kwargs)-> tuple :
-      '''isPeriodic( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isPeriodic(class PyGeCurve2d {lvalue})'''
+    def isPeriodic (self)-> tuple :
+      '''                             '''
     ...
     def isPerpendicularTo (self, *args, **kwargs)-> bool :
       '''isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
@@ -7840,16 +6438,8 @@ isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     def kYAxis (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double)
-
-length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double,double)'''
+    def length (self, frm : float, to : float, tol : float = None)-> float :
+      '''                             '''
     ...
     def mirror (self, *args, **kwargs)-> None :
       '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
@@ -7857,16 +6447,8 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
-    def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue})
-
-orthoBoundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def overlap (self, *args, **kwargs)-> tuple :
       '''overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> tuple :
@@ -7879,27 +6461,11 @@ overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class boost::python::tuple overlap(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def paramAtLength (self, *args, **kwargs)-> float :
-      '''paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double)
-
-paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (float)arg5) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double,bool,double)'''
+    def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
+      '''                             '''
     ...
-    def paramOf (self, *args, **kwargs)-> float :
-      '''paramOf( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
     def pointOnLine (self, *args, **kwargs)-> PyGe.Point2d :
       '''pointOnLine( (LinearEnt2d)arg1) -> Point2d :
@@ -7907,11 +6473,8 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         class AcGePoint2d pointOnLine(class PyGeLinearEnt2d {lvalue})'''
     ...
-    def reverseParam (self, *args, **kwargs)-> None :
-      '''reverseParam( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void reverseParam(class PyGeCurve2d {lvalue})'''
+    def reverseParam (self)-> None :
+      '''                             '''
     ...
     def rotateBy (self, *args, **kwargs)-> None :
       '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
@@ -7946,16 +6509,8 @@ set( (Line2d)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     C++ signature :
         void set(class PyGeLine2d {lvalue},class AcGePoint2d,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> None :
-      '''setInterval( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void setInterval(class PyGeCurve2d {lvalue})
-
-setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def setInterval (self, val : PyGe.Interval = None)-> None :
+      '''                             '''
     ...
     def transformBy (self, *args, **kwargs)-> None :
       '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
@@ -8274,16 +6829,8 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)'''
     ...
-    def area (self, *args, **kwargs)-> float :
-      '''area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double)
-
-area( (Curve2d)arg1, (float)arg2, (float)arg3, (Tol)arg4) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double,class AcGeTol)'''
+    def area (self, startParam : float, endParam : float, tol : float = None)-> float :
+      '''                             '''
     ...
     def baryComb (self, *args, **kwargs)-> PyGe.Point2d :
       '''baryComb( (LineSeg2d)arg1, (float)arg2) -> Point2d :
@@ -8291,16 +6838,8 @@ area( (Curve2d)arg1, (float)arg2, (float)arg3, (Tol)arg4) -> float :
     C++ signature :
         class AcGePoint2d baryComb(class PyGeLineSeg2d {lvalue},double)'''
     ...
-    def boundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''boundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue})
-
-boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def cast (self, *args, **kwargs)-> PyGe.LineSeg2d :
       '''cast( (Entity2d)arg1) -> LineSeg2d :
@@ -8314,26 +6853,8 @@ boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def closestPointTo (self, *args, **kwargs)-> PyGe.Point2d :
-      '''closestPointTo( (Curve2d)arg1, (Point2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-closestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
+      '''                             '''
     ...
     def copy (self, *args, **kwargs)-> PyGe.Entity2d :
       '''copy( (Entity2d)arg1) -> Entity2d :
@@ -8353,26 +6874,8 @@ closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class AcGeVector2d direction(class PyGeLinearEnt2d {lvalue})'''
     ...
-    def distanceTo (self, *args, **kwargs)-> float :
-      '''distanceTo( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-distanceTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
     def endPoint (self, *args, **kwargs)-> PyGe.Point2d :
       '''endPoint( (LineSeg2d)arg1) -> Point2d :
@@ -8380,27 +6883,11 @@ distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         class AcGePoint2d endPoint(class PyGeLineSeg2d {lvalue})'''
     ...
-    def evalPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
-
-evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
+    def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def explode (self, *args, **kwargs)-> list :
-      '''explode( (Curve2d)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue})
-
-explode( (Curve2d)arg1, (Interval)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def explode (self, val : PyGe.Interval = None)-> list :
+      '''                             '''
     ...
     def getBisector (self, *args, **kwargs)-> PyGe.Line2d :
       '''getBisector( (LineSeg2d)arg1) -> Line2d :
@@ -8408,39 +6895,17 @@ explode( (Curve2d)arg1, (Interval)arg2) -> list :
     C++ signature :
         class PyGeLine2d getBisector(class PyGeLineSeg2d {lvalue})'''
     ...
-    def getClosestPointTo (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getClosestPointTo( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getClosestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
-    def getClosestPointsTo (self, *args, **kwargs)-> tuple :
-      '''getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getEndPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getEndPoint(class PyGeCurve2d {lvalue})'''
+    def getEndPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getInterval (self, *args, **kwargs)-> PyGe.Interval :
-      '''getInterval( (Curve2d)arg1) -> Interval :
-
-    C++ signature :
-        class PyGeInterval getInterval(class PyGeCurve2d {lvalue})'''
+    def getInterval (self)-> PyGe.Interval :
+      '''                             '''
     ...
     def getLine (self, *args, **kwargs)-> PyGe.Line2d :
       '''getLine( (LinearEnt2d)arg1) -> Line2d :
@@ -8448,16 +6913,8 @@ getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class PyGeLine2d getLine(class PyGeLinearEnt2d {lvalue})'''
     ...
-    def getNormalPoint (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getNormalPoint( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
     def getPerpLine (self, *args, **kwargs)-> PyGe.Line2d :
       '''getPerpLine( (LinearEnt2d)arg1, (Point2d)arg2) -> Line2d :
@@ -8465,51 +6922,31 @@ getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
     C++ signature :
         class PyGeLine2d getPerpLine(class PyGeLinearEnt2d {lvalue},class AcGePoint2d)'''
     ...
+
+    @overload
+    def getSamplePoints (self, numSample: int)-> list : ...
+    @overload
+    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> list : ...
     def getSamplePoints (self, *args, **kwargs)-> list :
-      '''getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
-
-getSamplePoints( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSamplePoints(class PyGeCurve2d {lvalue},double,double,double)'''
+      '''Overloads:
+    - numSample: int
+    - fromParam: float, toParam: float, approxEps: float
+    '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> tuple :
-      '''getSplitCurves( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSplitCurves(class PyGeCurve2d {lvalue},double)'''
+    def getSplitCurves (self, param : float)-> tuple :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getStartPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getStartPoint(class PyGeCurve2d {lvalue})'''
+    def getStartPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getTrimmedOffset (self, *args, **kwargs)-> list :
-      '''getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType)
-
-getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType,class AcGeTol)'''
+    def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
+      '''                             '''
     ...
-    def hasEndPoint (self, *args, **kwargs)-> bool :
-      '''hasEndPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasEndPoint(class PyGeCurve2d {lvalue})'''
+    def hasEndPoint (self)-> bool :
+      '''                             '''
     ...
-    def hasStartPoint (self, *args, **kwargs)-> bool :
-      '''hasStartPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasStartPoint(class PyGeCurve2d {lvalue})'''
+    def hasStartPoint (self)-> bool :
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> tuple :
       '''intersectWith( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> tuple :
@@ -8522,16 +6959,8 @@ intersectWith( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class boost::python::tuple intersectWith(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue})
-
-isClosed( (Curve2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isClosed (self, tol : PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isColinearTo (self, *args, **kwargs)-> bool :
       '''isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
@@ -8544,16 +6973,8 @@ isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isColinearTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def isDegenerate (self, *args, **kwargs)-> tuple :
-      '''isDegenerate( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue})
-
-isDegenerate( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''isEqualTo( (Entity2d)arg1, (Entity2d)arg2) -> bool :
@@ -8572,16 +6993,8 @@ isEqualTo( (Entity2d)arg1, (Entity2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isKindOf(class PyGeEntity2d {lvalue},enum AcGe::EntityId)'''
     ...
-    def isLinear (self, *args, **kwargs)-> tuple :
-      '''isLinear( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue})
-
-isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isLinear (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (Entity2d)arg1) -> bool :
@@ -8589,26 +7002,8 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> tuple :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
-
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+    def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
       '''isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
@@ -8621,11 +7016,8 @@ isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isParallelTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def isPeriodic (self, *args, **kwargs)-> tuple :
-      '''isPeriodic( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isPeriodic(class PyGeCurve2d {lvalue})'''
+    def isPeriodic (self)-> tuple :
+      '''                             '''
     ...
     def isPerpendicularTo (self, *args, **kwargs)-> bool :
       '''isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
@@ -8666,16 +7058,8 @@ length( (LineSeg2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
-    def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue})
-
-orthoBoundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def overlap (self, *args, **kwargs)-> tuple :
       '''overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> tuple :
@@ -8688,27 +7072,11 @@ overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class boost::python::tuple overlap(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def paramAtLength (self, *args, **kwargs)-> float :
-      '''paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double)
-
-paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (float)arg5) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double,bool,double)'''
+    def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
+      '''                             '''
     ...
-    def paramOf (self, *args, **kwargs)-> float :
-      '''paramOf( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
     def pointOnLine (self, *args, **kwargs)-> PyGe.Point2d :
       '''pointOnLine( (LinearEnt2d)arg1) -> Point2d :
@@ -8716,11 +7084,8 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         class AcGePoint2d pointOnLine(class PyGeLinearEnt2d {lvalue})'''
     ...
-    def reverseParam (self, *args, **kwargs)-> None :
-      '''reverseParam( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void reverseParam(class PyGeCurve2d {lvalue})'''
+    def reverseParam (self)-> None :
+      '''                             '''
     ...
     def rotateBy (self, *args, **kwargs)-> None :
       '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
@@ -8765,16 +7130,8 @@ set( (LineSeg2d)arg1, (Curve2d)arg2, (Point2d)arg3) -> None :
     C++ signature :
         void set(class PyGeLineSeg2d {lvalue},class PyGeCurve2d,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> None :
-      '''setInterval( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void setInterval(class PyGeCurve2d {lvalue})
-
-setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def setInterval (self, val : PyGe.Interval = None)-> None :
+      '''                             '''
     ...
     def startPoint (self, *args, **kwargs)-> PyGe.Point2d :
       '''startPoint( (LineSeg2d)arg1) -> Point2d :
@@ -9105,27 +7462,11 @@ class LinearEnt2d(Curve2d):
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def area (self, *args, **kwargs)-> float :
-      '''area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double)
-
-area( (Curve2d)arg1, (float)arg2, (float)arg3, (Tol)arg4) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double,class AcGeTol)'''
+    def area (self, startParam : float, endParam : float, tol : float = None)-> float :
+      '''                             '''
     ...
-    def boundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''boundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue})
-
-boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def cast (self, *args, **kwargs)-> PyGe.LinearEnt2d :
       '''cast( (Entity2d)arg1) -> LinearEnt2d :
@@ -9139,26 +7480,8 @@ boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def closestPointTo (self, *args, **kwargs)-> PyGe.Point2d :
-      '''closestPointTo( (Curve2d)arg1, (Point2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-closestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
+      '''                             '''
     ...
     def copy (self, *args, **kwargs)-> PyGe.Entity2d :
       '''copy( (Entity2d)arg1) -> Entity2d :
@@ -9178,82 +7501,26 @@ closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class AcGeVector2d direction(class PyGeLinearEnt2d {lvalue})'''
     ...
-    def distanceTo (self, *args, **kwargs)-> float :
-      '''distanceTo( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-distanceTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
-    def evalPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
-
-evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
+    def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def explode (self, *args, **kwargs)-> list :
-      '''explode( (Curve2d)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue})
-
-explode( (Curve2d)arg1, (Interval)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def explode (self, val : PyGe.Interval = None)-> list :
+      '''                             '''
     ...
-    def getClosestPointTo (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getClosestPointTo( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getClosestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
-    def getClosestPointsTo (self, *args, **kwargs)-> tuple :
-      '''getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getEndPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getEndPoint(class PyGeCurve2d {lvalue})'''
+    def getEndPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getInterval (self, *args, **kwargs)-> PyGe.Interval :
-      '''getInterval( (Curve2d)arg1) -> Interval :
-
-    C++ signature :
-        class PyGeInterval getInterval(class PyGeCurve2d {lvalue})'''
+    def getInterval (self)-> PyGe.Interval :
+      '''                             '''
     ...
     def getLine (self, *args, **kwargs)-> PyGe.Line2d :
       '''getLine( (LinearEnt2d)arg1) -> Line2d :
@@ -9261,16 +7528,8 @@ getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class PyGeLine2d getLine(class PyGeLinearEnt2d {lvalue})'''
     ...
-    def getNormalPoint (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getNormalPoint( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
     def getPerpLine (self, *args, **kwargs)-> PyGe.Line2d :
       '''getPerpLine( (LinearEnt2d)arg1, (Point2d)arg2) -> Line2d :
@@ -9278,51 +7537,31 @@ getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
     C++ signature :
         class PyGeLine2d getPerpLine(class PyGeLinearEnt2d {lvalue},class AcGePoint2d)'''
     ...
+
+    @overload
+    def getSamplePoints (self, numSample: int)-> list : ...
+    @overload
+    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> list : ...
     def getSamplePoints (self, *args, **kwargs)-> list :
-      '''getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
-
-getSamplePoints( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSamplePoints(class PyGeCurve2d {lvalue},double,double,double)'''
+      '''Overloads:
+    - numSample: int
+    - fromParam: float, toParam: float, approxEps: float
+    '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> tuple :
-      '''getSplitCurves( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSplitCurves(class PyGeCurve2d {lvalue},double)'''
+    def getSplitCurves (self, param : float)-> tuple :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getStartPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getStartPoint(class PyGeCurve2d {lvalue})'''
+    def getStartPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getTrimmedOffset (self, *args, **kwargs)-> list :
-      '''getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType)
-
-getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType,class AcGeTol)'''
+    def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
+      '''                             '''
     ...
-    def hasEndPoint (self, *args, **kwargs)-> bool :
-      '''hasEndPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasEndPoint(class PyGeCurve2d {lvalue})'''
+    def hasEndPoint (self)-> bool :
+      '''                             '''
     ...
-    def hasStartPoint (self, *args, **kwargs)-> bool :
-      '''hasStartPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasStartPoint(class PyGeCurve2d {lvalue})'''
+    def hasStartPoint (self)-> bool :
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> tuple :
       '''intersectWith( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> tuple :
@@ -9335,16 +7574,8 @@ intersectWith( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class boost::python::tuple intersectWith(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue})
-
-isClosed( (Curve2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isClosed (self, tol : PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isColinearTo (self, *args, **kwargs)-> bool :
       '''isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
@@ -9357,16 +7588,8 @@ isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isColinearTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def isDegenerate (self, *args, **kwargs)-> tuple :
-      '''isDegenerate( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue})
-
-isDegenerate( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''isEqualTo( (Entity2d)arg1, (Entity2d)arg2) -> bool :
@@ -9385,16 +7608,8 @@ isEqualTo( (Entity2d)arg1, (Entity2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isKindOf(class PyGeEntity2d {lvalue},enum AcGe::EntityId)'''
     ...
-    def isLinear (self, *args, **kwargs)-> tuple :
-      '''isLinear( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue})
-
-isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isLinear (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (Entity2d)arg1) -> bool :
@@ -9402,26 +7617,8 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> tuple :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
-
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+    def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
       '''isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
@@ -9434,11 +7631,8 @@ isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isParallelTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def isPeriodic (self, *args, **kwargs)-> tuple :
-      '''isPeriodic( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isPeriodic(class PyGeCurve2d {lvalue})'''
+    def isPeriodic (self)-> tuple :
+      '''                             '''
     ...
     def isPerpendicularTo (self, *args, **kwargs)-> bool :
       '''isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
@@ -9451,16 +7645,8 @@ isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isPerpendicularTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double)
-
-length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double,double)'''
+    def length (self, frm : float, to : float, tol : float = None)-> float :
+      '''                             '''
     ...
     def mirror (self, *args, **kwargs)-> None :
       '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
@@ -9468,16 +7654,8 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
-    def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue})
-
-orthoBoundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def overlap (self, *args, **kwargs)-> tuple :
       '''overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> tuple :
@@ -9490,27 +7668,11 @@ overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class boost::python::tuple overlap(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def paramAtLength (self, *args, **kwargs)-> float :
-      '''paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double)
-
-paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (float)arg5) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double,bool,double)'''
+    def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
+      '''                             '''
     ...
-    def paramOf (self, *args, **kwargs)-> float :
-      '''paramOf( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
     def pointOnLine (self, *args, **kwargs)-> PyGe.Point2d :
       '''pointOnLine( (LinearEnt2d)arg1) -> Point2d :
@@ -9518,11 +7680,8 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         class AcGePoint2d pointOnLine(class PyGeLinearEnt2d {lvalue})'''
     ...
-    def reverseParam (self, *args, **kwargs)-> None :
-      '''reverseParam( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void reverseParam(class PyGeCurve2d {lvalue})'''
+    def reverseParam (self)-> None :
+      '''                             '''
     ...
     def rotateBy (self, *args, **kwargs)-> None :
       '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
@@ -9546,16 +7705,8 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
     C++ signature :
         void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> None :
-      '''setInterval( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void setInterval(class PyGeCurve2d {lvalue})
-
-setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def setInterval (self, val : PyGe.Interval = None)-> None :
+      '''                             '''
     ...
     def transformBy (self, *args, **kwargs)-> None :
       '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
@@ -9880,16 +8031,16 @@ __init__( (object)arg1) -> None :
         bool isConformal(class AcGeMatrix2d {lvalue},double {lvalue},double {lvalue},bool {lvalue},class AcGeVector2d {lvalue})'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B2844B88B0>]) -> bool :
+      '''isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000027F86A188B0>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x000001B2844B88B0>])'''
+        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x0000027F86A188B0>])'''
     ...
     def isScaledOrtho (self, *args, **kwargs)-> bool :
-      '''isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B2844B89D0>]) -> bool :
+      '''isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000027F86A189D0>]) -> bool :
 
     C++ signature :
-        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B2844B89D0>])'''
+        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000027F86A189D0>])'''
     ...
     def isSingular (self, *args, **kwargs)-> bool :
       '''isSingular( (Matrix2d)arg1, (Tol)arg2) -> bool :
@@ -9898,10 +8049,10 @@ __init__( (object)arg1) -> None :
         bool isSingular(class AcGeMatrix2d {lvalue},class AcGeTol)'''
     ...
     def isUniScaledOrtho (self, *args, **kwargs)-> bool :
-      '''isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B2844B8940>]) -> bool :
+      '''isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000027F86A18940>]) -> bool :
 
     C++ signature :
-        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B2844B8940>])'''
+        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000027F86A18940>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
@@ -10276,27 +8427,11 @@ __init__( (object)arg1, (list)arg2, (Vector2d)arg3, (Vector2d)arg4, (bool)arg5, 
     C++ signature :
         void addKnot(class PyGeNurbCurve2d {lvalue},double)'''
     ...
-    def area (self, *args, **kwargs)-> float :
-      '''area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double)
-
-area( (Curve2d)arg1, (float)arg2, (float)arg3, (Tol)arg4) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double,class AcGeTol)'''
+    def area (self, startParam : float, endParam : float, tol : float = None)-> float :
+      '''                             '''
     ...
-    def boundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''boundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue})
-
-boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def buildFitData (self, *args, **kwargs)-> bool :
       '''buildFitData( (NurbCurve2d)arg1) -> bool :
@@ -10321,26 +8456,8 @@ buildFitData( (NurbCurve2d)arg1, (KnotParameterization)arg2) -> bool :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def closestPointTo (self, *args, **kwargs)-> PyGe.Point2d :
-      '''closestPointTo( (Curve2d)arg1, (Point2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-closestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
+      '''                             '''
     ...
     def continuityAtKnot (self, *args, **kwargs)-> int :
       '''continuityAtKnot( (SplineEnt2d)arg1, (int)arg2) -> int :
@@ -10389,26 +8506,8 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     C++ signature :
         bool deleteFitPointAt(class PyGeNurbCurve2d {lvalue},int)'''
     ...
-    def distanceTo (self, *args, **kwargs)-> float :
-      '''distanceTo( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-distanceTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
     def elevateDegree (self, *args, **kwargs)-> None :
       '''elevateDegree( (NurbCurve2d)arg1, (int)arg2) -> None :
@@ -10434,49 +8533,17 @@ distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         bool evalMode(class PyGeNurbCurve2d {lvalue})'''
     ...
-    def evalPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
-
-evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
+    def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def explode (self, *args, **kwargs)-> list :
-      '''explode( (Curve2d)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue})
-
-explode( (Curve2d)arg1, (Interval)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def explode (self, val : PyGe.Interval = None)-> list :
+      '''                             '''
     ...
-    def getClosestPointTo (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getClosestPointTo( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getClosestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
-    def getClosestPointsTo (self, *args, **kwargs)-> tuple :
-      '''getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def getDefinitionData (self, *args, **kwargs)-> tuple :
       '''getDefinitionData( (NurbCurve2d)arg1) -> tuple :
@@ -10484,11 +8551,8 @@ getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class boost::python::tuple getDefinitionData(class PyGeNurbCurve2d {lvalue})'''
     ...
-    def getEndPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getEndPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getEndPoint(class PyGeCurve2d {lvalue})'''
+    def getEndPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def getFitData (self, *args, **kwargs)-> tuple :
       '''getFitData( (NurbCurve2d)arg1) -> tuple :
@@ -10514,22 +8578,11 @@ getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class boost::python::tuple getFitTolerance(class PyGeNurbCurve2d {lvalue})'''
     ...
-    def getInterval (self, *args, **kwargs)-> PyGe.Interval :
-      '''getInterval( (Curve2d)arg1) -> Interval :
-
-    C++ signature :
-        class PyGeInterval getInterval(class PyGeCurve2d {lvalue})'''
+    def getInterval (self)-> PyGe.Interval :
+      '''                             '''
     ...
-    def getNormalPoint (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getNormalPoint( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
     def getParamsOfC1Discontinuity (self, *args, **kwargs)-> tuple :
       '''getParamsOfC1Discontinuity( (NurbCurve2d)arg1, (Tol)arg2) -> tuple :
@@ -10543,39 +8596,25 @@ getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
     C++ signature :
         class boost::python::tuple getParamsOfG1Discontinuity(class PyGeNurbCurve2d {lvalue},class AcGeTol)'''
     ...
+
+    @overload
+    def getSamplePoints (self, numSample: int)-> list : ...
+    @overload
+    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> list : ...
     def getSamplePoints (self, *args, **kwargs)-> list :
-      '''getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
-
-getSamplePoints( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSamplePoints(class PyGeCurve2d {lvalue},double,double,double)'''
+      '''Overloads:
+    - numSample: int
+    - fromParam: float, toParam: float, approxEps: float
+    '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> tuple :
-      '''getSplitCurves( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSplitCurves(class PyGeCurve2d {lvalue},double)'''
+    def getSplitCurves (self, param : float)-> tuple :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getStartPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getStartPoint(class PyGeCurve2d {lvalue})'''
+    def getStartPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getTrimmedOffset (self, *args, **kwargs)-> list :
-      '''getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType)
-
-getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType,class AcGeTol)'''
+    def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
+      '''                             '''
     ...
     def hardTrimByParams (self, *args, **kwargs)-> None :
       '''hardTrimByParams( (NurbCurve2d)arg1, (float)arg2, (float)arg3) -> None :
@@ -10583,11 +8622,8 @@ getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4)
     C++ signature :
         void hardTrimByParams(class PyGeNurbCurve2d {lvalue},double,double)'''
     ...
-    def hasEndPoint (self, *args, **kwargs)-> bool :
-      '''hasEndPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasEndPoint(class PyGeCurve2d {lvalue})'''
+    def hasEndPoint (self)-> bool :
+      '''                             '''
     ...
     def hasFitData (self, *args, **kwargs)-> bool :
       '''hasFitData( (SplineEnt2d)arg1) -> bool :
@@ -10595,11 +8631,8 @@ getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4)
     C++ signature :
         bool hasFitData(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def hasStartPoint (self, *args, **kwargs)-> bool :
-      '''hasStartPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasStartPoint(class PyGeCurve2d {lvalue})'''
+    def hasStartPoint (self)-> bool :
+      '''                             '''
     ...
     def insertKnot (self, *args, **kwargs)-> None :
       '''insertKnot( (NurbCurve2d)arg1, (float)arg2) -> None :
@@ -10607,27 +8640,11 @@ getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4)
     C++ signature :
         void insertKnot(class PyGeNurbCurve2d {lvalue},double)'''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue})
-
-isClosed( (Curve2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isClosed (self, tol : PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
-    def isDegenerate (self, *args, **kwargs)-> tuple :
-      '''isDegenerate( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue})
-
-isDegenerate( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''isEqualTo( (Entity2d)arg1, (Entity2d)arg2) -> bool :
@@ -10646,16 +8663,8 @@ isEqualTo( (Entity2d)arg1, (Entity2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isKindOf(class PyGeEntity2d {lvalue},enum AcGe::EntityId)'''
     ...
-    def isLinear (self, *args, **kwargs)-> tuple :
-      '''isLinear( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue})
-
-isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isLinear (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (Entity2d)arg1) -> bool :
@@ -10663,32 +8672,11 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> tuple :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
-
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+    def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def isPeriodic (self, *args, **kwargs)-> tuple :
-      '''isPeriodic( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isPeriodic(class PyGeCurve2d {lvalue})'''
+    def isPeriodic (self)-> tuple :
+      '''                             '''
     ...
     def isRational (self, *args, **kwargs)-> bool :
       '''isRational( (SplineEnt2d)arg1) -> bool :
@@ -10714,16 +8702,8 @@ isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class PyGeKnotVector knots(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double)
-
-length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double,double)'''
+    def length (self, frm : float, to : float, tol : float = None)-> float :
+      '''                             '''
     ...
     def makeClosed (self, *args, **kwargs)-> None :
       '''makeClosed( (NurbCurve2d)arg1) -> None :
@@ -10791,38 +8771,14 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         int order(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue})
-
-orthoBoundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
-    def paramAtLength (self, *args, **kwargs)-> float :
-      '''paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double)
-
-paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (float)arg5) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double,bool,double)'''
+    def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
+      '''                             '''
     ...
-    def paramOf (self, *args, **kwargs)-> float :
-      '''paramOf( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
     def purgeFitData (self, *args, **kwargs)-> bool :
       '''purgeFitData( (NurbCurve2d)arg1) -> bool :
@@ -10830,11 +8786,8 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         bool purgeFitData(class PyGeNurbCurve2d {lvalue})'''
     ...
-    def reverseParam (self, *args, **kwargs)-> None :
-      '''reverseParam( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void reverseParam(class PyGeCurve2d {lvalue})'''
+    def reverseParam (self)-> None :
+      '''                             '''
     ...
     def rotateBy (self, *args, **kwargs)-> None :
       '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
@@ -10915,16 +8868,8 @@ setFitData( (NurbCurve2d)arg1, (int)arg2, (list)arg3, (Tol)arg4) -> None :
     C++ signature :
         bool setFitTolerance(class PyGeNurbCurve2d {lvalue},class AcGeTol)'''
     ...
-    def setInterval (self, *args, **kwargs)-> None :
-      '''setInterval( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void setInterval(class PyGeCurve2d {lvalue})
-
-setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def setInterval (self, val : PyGe.Interval = None)-> None :
+      '''                             '''
     ...
     def setKnotAt (self, *args, **kwargs)-> None :
       '''setKnotAt( (SplineEnt2d)arg1, (int)arg2, (float)arg3) -> None :
@@ -11727,27 +9672,11 @@ class OffsetCurve2d(Curve2d):
     C++ signature :
         void __init__(struct _object * __ptr64,class PyGeCurve2d,double)'''
     ...
-    def area (self, *args, **kwargs)-> float :
-      '''area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double)
-
-area( (Curve2d)arg1, (float)arg2, (float)arg3, (Tol)arg4) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double,class AcGeTol)'''
+    def area (self, startParam : float, endParam : float, tol : float = None)-> float :
+      '''                             '''
     ...
-    def boundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''boundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue})
-
-boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def cast (self, *args, **kwargs)-> PyGe.OffsetCurve2d :
       '''cast( (Entity2d)arg1) -> OffsetCurve2d :
@@ -11761,26 +9690,8 @@ boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def closestPointTo (self, *args, **kwargs)-> PyGe.Point2d :
-      '''closestPointTo( (Curve2d)arg1, (Point2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-closestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
+      '''                             '''
     ...
     def copy (self, *args, **kwargs)-> PyGe.Entity2d :
       '''copy( (Entity2d)arg1) -> Entity2d :
@@ -11794,161 +9705,61 @@ closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class PyGeOffsetCurve2d copycast(class PyGeEntity2d)'''
     ...
-    def distanceTo (self, *args, **kwargs)-> float :
-      '''distanceTo( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-distanceTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
-    def evalPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
-
-evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
+    def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def explode (self, *args, **kwargs)-> list :
-      '''explode( (Curve2d)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue})
-
-explode( (Curve2d)arg1, (Interval)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def explode (self, val : PyGe.Interval = None)-> list :
+      '''                             '''
     ...
-    def getClosestPointTo (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getClosestPointTo( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getClosestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
-    def getClosestPointsTo (self, *args, **kwargs)-> tuple :
-      '''getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getEndPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getEndPoint(class PyGeCurve2d {lvalue})'''
+    def getEndPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getInterval (self, *args, **kwargs)-> PyGe.Interval :
-      '''getInterval( (Curve2d)arg1) -> Interval :
-
-    C++ signature :
-        class PyGeInterval getInterval(class PyGeCurve2d {lvalue})'''
+    def getInterval (self)-> PyGe.Interval :
+      '''                             '''
     ...
-    def getNormalPoint (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getNormalPoint( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
+
+    @overload
+    def getSamplePoints (self, numSample: int)-> list : ...
+    @overload
+    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> list : ...
     def getSamplePoints (self, *args, **kwargs)-> list :
-      '''getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
-
-getSamplePoints( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSamplePoints(class PyGeCurve2d {lvalue},double,double,double)'''
+      '''Overloads:
+    - numSample: int
+    - fromParam: float, toParam: float, approxEps: float
+    '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> tuple :
-      '''getSplitCurves( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSplitCurves(class PyGeCurve2d {lvalue},double)'''
+    def getSplitCurves (self, param : float)-> tuple :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getStartPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getStartPoint(class PyGeCurve2d {lvalue})'''
+    def getStartPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getTrimmedOffset (self, *args, **kwargs)-> list :
-      '''getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType)
-
-getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType,class AcGeTol)'''
+    def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
+      '''                             '''
     ...
-    def hasEndPoint (self, *args, **kwargs)-> bool :
-      '''hasEndPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasEndPoint(class PyGeCurve2d {lvalue})'''
+    def hasEndPoint (self)-> bool :
+      '''                             '''
     ...
-    def hasStartPoint (self, *args, **kwargs)-> bool :
-      '''hasStartPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasStartPoint(class PyGeCurve2d {lvalue})'''
+    def hasStartPoint (self)-> bool :
+      '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue})
-
-isClosed( (Curve2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isClosed (self, tol : PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
-    def isDegenerate (self, *args, **kwargs)-> tuple :
-      '''isDegenerate( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue})
-
-isDegenerate( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''isEqualTo( (Entity2d)arg1, (Entity2d)arg2) -> bool :
@@ -11967,16 +9778,8 @@ isEqualTo( (Entity2d)arg1, (Entity2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isKindOf(class PyGeEntity2d {lvalue},enum AcGe::EntityId)'''
     ...
-    def isLinear (self, *args, **kwargs)-> tuple :
-      '''isLinear( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue})
-
-isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isLinear (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (Entity2d)arg1) -> bool :
@@ -11984,43 +9787,14 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> tuple :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
-
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+    def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def isPeriodic (self, *args, **kwargs)-> tuple :
-      '''isPeriodic( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isPeriodic(class PyGeCurve2d {lvalue})'''
+    def isPeriodic (self)-> tuple :
+      '''                             '''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double)
-
-length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double,double)'''
+    def length (self, frm : float, to : float, tol : float = None)-> float :
+      '''                             '''
     ...
     def mirror (self, *args, **kwargs)-> None :
       '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
@@ -12028,44 +9802,17 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
-    def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue})
-
-orthoBoundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
-    def paramAtLength (self, *args, **kwargs)-> float :
-      '''paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double)
-
-paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (float)arg5) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double,bool,double)'''
+    def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
+      '''                             '''
     ...
-    def paramOf (self, *args, **kwargs)-> float :
-      '''paramOf( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
-    def reverseParam (self, *args, **kwargs)-> None :
-      '''reverseParam( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void reverseParam(class PyGeCurve2d {lvalue})'''
+    def reverseParam (self)-> None :
+      '''                             '''
     ...
     def rotateBy (self, *args, **kwargs)-> None :
       '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
@@ -12089,16 +9836,8 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
     C++ signature :
         void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> None :
-      '''setInterval( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void setInterval(class PyGeCurve2d {lvalue})
-
-setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def setInterval (self, val : PyGe.Interval = None)-> None :
+      '''                             '''
     ...
     def transformBy (self, *args, **kwargs)-> None :
       '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
@@ -13993,27 +11732,11 @@ __init__( (object)arg1, (Curve2d)arg2, (float)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyGeCurve2d,double)'''
     ...
-    def area (self, *args, **kwargs)-> float :
-      '''area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double)
-
-area( (Curve2d)arg1, (float)arg2, (float)arg3, (Tol)arg4) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double,class AcGeTol)'''
+    def area (self, startParam : float, endParam : float, tol : float = None)-> float :
+      '''                             '''
     ...
-    def boundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''boundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue})
-
-boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def cast (self, *args, **kwargs)-> PyGe.SplineEnt2d :
       '''cast( (Entity2d)arg1) -> SplineEnt2d :
@@ -14027,26 +11750,8 @@ boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def closestPointTo (self, *args, **kwargs)-> PyGe.Point2d :
-      '''closestPointTo( (Curve2d)arg1, (Point2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-closestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
+      '''                             '''
     ...
     def continuityAtKnot (self, *args, **kwargs)-> int :
       '''continuityAtKnot( (SplineEnt2d)arg1, (int)arg2) -> int :
@@ -14083,26 +11788,8 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     C++ signature :
         int degree(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def distanceTo (self, *args, **kwargs)-> float :
-      '''distanceTo( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-distanceTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
     def endParam (self, *args, **kwargs)-> float :
       '''endParam( (SplineEnt2d)arg1) -> float :
@@ -14116,27 +11803,11 @@ distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         class AcGePoint2d endPoint(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def evalPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
-
-evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
+    def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def explode (self, *args, **kwargs)-> list :
-      '''explode( (Curve2d)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue})
-
-explode( (Curve2d)arg1, (Interval)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def explode (self, val : PyGe.Interval = None)-> list :
+      '''                             '''
     ...
     def fitPointAt (self, *args, **kwargs)-> PyGe.Point2d :
       '''fitPointAt( (Polyline2d)arg1, (int)arg2) -> Point2d :
@@ -14144,90 +11815,43 @@ explode( (Curve2d)arg1, (Interval)arg2) -> list :
     C++ signature :
         class AcGePoint2d fitPointAt(class PyGePolyline2d {lvalue},int)'''
     ...
-    def getClosestPointTo (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getClosestPointTo( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getClosestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
-    def getClosestPointsTo (self, *args, **kwargs)-> tuple :
-      '''getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getEndPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getEndPoint(class PyGeCurve2d {lvalue})'''
+    def getEndPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getInterval (self, *args, **kwargs)-> PyGe.Interval :
-      '''getInterval( (Curve2d)arg1) -> Interval :
-
-    C++ signature :
-        class PyGeInterval getInterval(class PyGeCurve2d {lvalue})'''
+    def getInterval (self)-> PyGe.Interval :
+      '''                             '''
     ...
-    def getNormalPoint (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getNormalPoint( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
+
+    @overload
+    def getSamplePoints (self, numSample: int)-> list : ...
+    @overload
+    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> list : ...
     def getSamplePoints (self, *args, **kwargs)-> list :
-      '''getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
-
-getSamplePoints( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSamplePoints(class PyGeCurve2d {lvalue},double,double,double)'''
+      '''Overloads:
+    - numSample: int
+    - fromParam: float, toParam: float, approxEps: float
+    '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> tuple :
-      '''getSplitCurves( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSplitCurves(class PyGeCurve2d {lvalue},double)'''
+    def getSplitCurves (self, param : float)-> tuple :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getStartPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getStartPoint(class PyGeCurve2d {lvalue})'''
+    def getStartPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getTrimmedOffset (self, *args, **kwargs)-> list :
-      '''getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType)
-
-getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType,class AcGeTol)'''
+    def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
+      '''                             '''
     ...
-    def hasEndPoint (self, *args, **kwargs)-> bool :
-      '''hasEndPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasEndPoint(class PyGeCurve2d {lvalue})'''
+    def hasEndPoint (self)-> bool :
+      '''                             '''
     ...
     def hasFitData (self, *args, **kwargs)-> bool :
       '''hasFitData( (SplineEnt2d)arg1) -> bool :
@@ -14235,33 +11859,14 @@ getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4)
     C++ signature :
         bool hasFitData(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def hasStartPoint (self, *args, **kwargs)-> bool :
-      '''hasStartPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasStartPoint(class PyGeCurve2d {lvalue})'''
+    def hasStartPoint (self)-> bool :
+      '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue})
-
-isClosed( (Curve2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isClosed (self, tol : PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
-    def isDegenerate (self, *args, **kwargs)-> tuple :
-      '''isDegenerate( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue})
-
-isDegenerate( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''isEqualTo( (Entity2d)arg1, (Entity2d)arg2) -> bool :
@@ -14280,16 +11885,8 @@ isEqualTo( (Entity2d)arg1, (Entity2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isKindOf(class PyGeEntity2d {lvalue},enum AcGe::EntityId)'''
     ...
-    def isLinear (self, *args, **kwargs)-> tuple :
-      '''isLinear( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue})
-
-isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isLinear (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (Entity2d)arg1) -> bool :
@@ -14297,32 +11894,11 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> tuple :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
-
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+    def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def isPeriodic (self, *args, **kwargs)-> tuple :
-      '''isPeriodic( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isPeriodic(class PyGeCurve2d {lvalue})'''
+    def isPeriodic (self)-> tuple :
+      '''                             '''
     ...
     def isRational (self, *args, **kwargs)-> bool :
       '''isRational( (SplineEnt2d)arg1) -> bool :
@@ -14342,16 +11918,8 @@ isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class PyGeKnotVector knots(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double)
-
-length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double,double)'''
+    def length (self, frm : float, to : float, tol : float = None)-> float :
+      '''                             '''
     ...
     def mirror (self, *args, **kwargs)-> None :
       '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
@@ -14383,44 +11951,17 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         int order(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue})
-
-orthoBoundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
-    def paramAtLength (self, *args, **kwargs)-> float :
-      '''paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double)
-
-paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (float)arg5) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double,bool,double)'''
+    def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
+      '''                             '''
     ...
-    def paramOf (self, *args, **kwargs)-> float :
-      '''paramOf( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
-    def reverseParam (self, *args, **kwargs)-> None :
-      '''reverseParam( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void reverseParam(class PyGeCurve2d {lvalue})'''
+    def reverseParam (self)-> None :
+      '''                             '''
     ...
     def rotateBy (self, *args, **kwargs)-> None :
       '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
@@ -14456,16 +11997,8 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
     C++ signature :
         void setFitPointAt(class PyGePolyline2d {lvalue},int,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> None :
-      '''setInterval( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void setInterval(class PyGeCurve2d {lvalue})
-
-setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def setInterval (self, val : PyGe.Interval = None)-> None :
+      '''                             '''
     ...
     def setKnotAt (self, *args, **kwargs)-> None :
       '''setKnotAt( (SplineEnt2d)arg1, (int)arg2, (float)arg3) -> None :
@@ -15073,27 +12606,11 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)'''
     ...
-    def area (self, *args, **kwargs)-> float :
-      '''area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double)
-
-area( (Curve2d)arg1, (float)arg2, (float)arg3, (Tol)arg4) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double,class AcGeTol)'''
+    def area (self, startParam : float, endParam : float, tol : float = None)-> float :
+      '''                             '''
     ...
-    def boundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''boundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue})
-
-boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def cast (self, *args, **kwargs)-> PyGe.Ray2d :
       '''cast( (Entity2d)arg1) -> Ray2d :
@@ -15107,26 +12624,8 @@ boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def closestPointTo (self, *args, **kwargs)-> PyGe.Point2d :
-      '''closestPointTo( (Curve2d)arg1, (Point2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-closestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
+      '''                             '''
     ...
     def copy (self, *args, **kwargs)-> PyGe.Entity2d :
       '''copy( (Entity2d)arg1) -> Entity2d :
@@ -15146,82 +12645,26 @@ closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class AcGeVector2d direction(class PyGeLinearEnt2d {lvalue})'''
     ...
-    def distanceTo (self, *args, **kwargs)-> float :
-      '''distanceTo( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-distanceTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
-    def evalPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
-
-evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
+    def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def explode (self, *args, **kwargs)-> list :
-      '''explode( (Curve2d)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue})
-
-explode( (Curve2d)arg1, (Interval)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def explode (self, val : PyGe.Interval = None)-> list :
+      '''                             '''
     ...
-    def getClosestPointTo (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getClosestPointTo( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getClosestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
-    def getClosestPointsTo (self, *args, **kwargs)-> tuple :
-      '''getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getEndPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getEndPoint(class PyGeCurve2d {lvalue})'''
+    def getEndPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getInterval (self, *args, **kwargs)-> PyGe.Interval :
-      '''getInterval( (Curve2d)arg1) -> Interval :
-
-    C++ signature :
-        class PyGeInterval getInterval(class PyGeCurve2d {lvalue})'''
+    def getInterval (self)-> PyGe.Interval :
+      '''                             '''
     ...
     def getLine (self, *args, **kwargs)-> PyGe.Line2d :
       '''getLine( (LinearEnt2d)arg1) -> Line2d :
@@ -15229,16 +12672,8 @@ getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class PyGeLine2d getLine(class PyGeLinearEnt2d {lvalue})'''
     ...
-    def getNormalPoint (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getNormalPoint( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
     def getPerpLine (self, *args, **kwargs)-> PyGe.Line2d :
       '''getPerpLine( (LinearEnt2d)arg1, (Point2d)arg2) -> Line2d :
@@ -15246,51 +12681,31 @@ getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
     C++ signature :
         class PyGeLine2d getPerpLine(class PyGeLinearEnt2d {lvalue},class AcGePoint2d)'''
     ...
+
+    @overload
+    def getSamplePoints (self, numSample: int)-> list : ...
+    @overload
+    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> list : ...
     def getSamplePoints (self, *args, **kwargs)-> list :
-      '''getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
-
-getSamplePoints( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSamplePoints(class PyGeCurve2d {lvalue},double,double,double)'''
+      '''Overloads:
+    - numSample: int
+    - fromParam: float, toParam: float, approxEps: float
+    '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> tuple :
-      '''getSplitCurves( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSplitCurves(class PyGeCurve2d {lvalue},double)'''
+    def getSplitCurves (self, param : float)-> tuple :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getStartPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getStartPoint(class PyGeCurve2d {lvalue})'''
+    def getStartPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getTrimmedOffset (self, *args, **kwargs)-> list :
-      '''getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType)
-
-getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType,class AcGeTol)'''
+    def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
+      '''                             '''
     ...
-    def hasEndPoint (self, *args, **kwargs)-> bool :
-      '''hasEndPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasEndPoint(class PyGeCurve2d {lvalue})'''
+    def hasEndPoint (self)-> bool :
+      '''                             '''
     ...
-    def hasStartPoint (self, *args, **kwargs)-> bool :
-      '''hasStartPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasStartPoint(class PyGeCurve2d {lvalue})'''
+    def hasStartPoint (self)-> bool :
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> tuple :
       '''intersectWith( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> tuple :
@@ -15303,16 +12718,8 @@ intersectWith( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class boost::python::tuple intersectWith(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue})
-
-isClosed( (Curve2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isClosed (self, tol : PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isColinearTo (self, *args, **kwargs)-> bool :
       '''isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
@@ -15325,16 +12732,8 @@ isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isColinearTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def isDegenerate (self, *args, **kwargs)-> tuple :
-      '''isDegenerate( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue})
-
-isDegenerate( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''isEqualTo( (Entity2d)arg1, (Entity2d)arg2) -> bool :
@@ -15353,16 +12752,8 @@ isEqualTo( (Entity2d)arg1, (Entity2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isKindOf(class PyGeEntity2d {lvalue},enum AcGe::EntityId)'''
     ...
-    def isLinear (self, *args, **kwargs)-> tuple :
-      '''isLinear( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue})
-
-isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isLinear (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (Entity2d)arg1) -> bool :
@@ -15370,26 +12761,8 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> tuple :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
-
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+    def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
       '''isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
@@ -15402,11 +12775,8 @@ isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isParallelTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def isPeriodic (self, *args, **kwargs)-> tuple :
-      '''isPeriodic( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isPeriodic(class PyGeCurve2d {lvalue})'''
+    def isPeriodic (self)-> tuple :
+      '''                             '''
     ...
     def isPerpendicularTo (self, *args, **kwargs)-> bool :
       '''isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
@@ -15419,16 +12789,8 @@ isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isPerpendicularTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double)
-
-length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double,double)'''
+    def length (self, frm : float, to : float, tol : float = None)-> float :
+      '''                             '''
     ...
     def mirror (self, *args, **kwargs)-> None :
       '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
@@ -15436,16 +12798,8 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
-    def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue})
-
-orthoBoundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def overlap (self, *args, **kwargs)-> tuple :
       '''overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> tuple :
@@ -15458,27 +12812,11 @@ overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class boost::python::tuple overlap(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def paramAtLength (self, *args, **kwargs)-> float :
-      '''paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double)
-
-paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (float)arg5) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double,bool,double)'''
+    def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
+      '''                             '''
     ...
-    def paramOf (self, *args, **kwargs)-> float :
-      '''paramOf( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
     def pointOnLine (self, *args, **kwargs)-> PyGe.Point2d :
       '''pointOnLine( (LinearEnt2d)arg1) -> Point2d :
@@ -15486,11 +12824,8 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         class AcGePoint2d pointOnLine(class PyGeLinearEnt2d {lvalue})'''
     ...
-    def reverseParam (self, *args, **kwargs)-> None :
-      '''reverseParam( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void reverseParam(class PyGeCurve2d {lvalue})'''
+    def reverseParam (self)-> None :
+      '''                             '''
     ...
     def rotateBy (self, *args, **kwargs)-> None :
       '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
@@ -15525,16 +12860,8 @@ set( (Ray2d)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     C++ signature :
         void set(class PyGeRay2d {lvalue},class AcGePoint2d,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> None :
-      '''setInterval( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void setInterval(class PyGeCurve2d {lvalue})
-
-setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def setInterval (self, val : PyGe.Interval = None)-> None :
+      '''                             '''
     ...
     def transformBy (self, *args, **kwargs)-> None :
       '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
@@ -16249,27 +13576,11 @@ class SplineEnt2d(Curve2d):
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def area (self, *args, **kwargs)-> float :
-      '''area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double)
-
-area( (Curve2d)arg1, (float)arg2, (float)arg3, (Tol)arg4) -> float :
-
-    C++ signature :
-        double area(class PyGeCurve2d {lvalue},double,double,class AcGeTol)'''
+    def area (self, startParam : float, endParam : float, tol : float = None)-> float :
+      '''                             '''
     ...
-    def boundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''boundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue})
-
-boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d boundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
     def cast (self, *args, **kwargs)-> PyGe.SplineEnt2d :
       '''cast( (Entity2d)arg1) -> SplineEnt2d :
@@ -16283,26 +13594,8 @@ boundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def closestPointTo (self, *args, **kwargs)-> PyGe.Point2d :
-      '''closestPointTo( (Curve2d)arg1, (Point2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-closestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d closestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple closestPointTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
+      '''                             '''
     ...
     def continuityAtKnot (self, *args, **kwargs)-> int :
       '''continuityAtKnot( (SplineEnt2d)arg1, (int)arg2) -> int :
@@ -16339,26 +13632,8 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     C++ signature :
         int degree(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def distanceTo (self, *args, **kwargs)-> float :
-      '''distanceTo( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-distanceTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double distanceTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
     def endParam (self, *args, **kwargs)-> float :
       '''endParam( (SplineEnt2d)arg1) -> float :
@@ -16372,112 +13647,49 @@ distanceTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         class AcGePoint2d endPoint(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def evalPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
-
-evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
+    def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def explode (self, *args, **kwargs)-> list :
-      '''explode( (Curve2d)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue})
-
-explode( (Curve2d)arg1, (Interval)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list explode(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def explode (self, val : PyGe.Interval = None)-> list :
+      '''                             '''
     ...
-    def getClosestPointTo (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getClosestPointTo( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getClosestPointTo( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getClosestPointTo(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
-    def getClosestPointsTo (self, *args, **kwargs)-> tuple :
-      '''getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d)
-
-getClosestPointsTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getClosestPointsTo(class PyGeCurve2d {lvalue},class PyGeCurve2d,class AcGeTol)'''
+    def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getEndPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getEndPoint(class PyGeCurve2d {lvalue})'''
+    def getEndPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getInterval (self, *args, **kwargs)-> PyGe.Interval :
-      '''getInterval( (Curve2d)arg1) -> Interval :
-
-    C++ signature :
-        class PyGeInterval getInterval(class PyGeCurve2d {lvalue})'''
+    def getInterval (self)-> PyGe.Interval :
+      '''                             '''
     ...
-    def getNormalPoint (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''getNormalPoint( (Curve2d)arg1, (Point2d)arg2) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
-
-    C++ signature :
-        class PyGePointOnCurve2d getNormalPoint(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
+
+    @overload
+    def getSamplePoints (self, numSample: int)-> list : ...
+    @overload
+    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> list : ...
     def getSamplePoints (self, *args, **kwargs)-> list :
-      '''getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
-
-getSamplePoints( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSamplePoints(class PyGeCurve2d {lvalue},double,double,double)'''
+      '''Overloads:
+    - numSample: int
+    - fromParam: float, toParam: float, approxEps: float
+    '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> tuple :
-      '''getSplitCurves( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSplitCurves(class PyGeCurve2d {lvalue},double)'''
+    def getSplitCurves (self, param : float)-> tuple :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getStartPoint( (Curve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getStartPoint(class PyGeCurve2d {lvalue})'''
+    def getStartPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getTrimmedOffset (self, *args, **kwargs)-> list :
-      '''getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType)
-
-getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4) -> list :
-
-    C++ signature :
-        class boost::python::list getTrimmedOffset(class PyGeCurve2d {lvalue},double,enum AcGe::OffsetCrvExtType,class AcGeTol)'''
+    def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
+      '''                             '''
     ...
-    def hasEndPoint (self, *args, **kwargs)-> bool :
-      '''hasEndPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasEndPoint(class PyGeCurve2d {lvalue})'''
+    def hasEndPoint (self)-> bool :
+      '''                             '''
     ...
     def hasFitData (self, *args, **kwargs)-> bool :
       '''hasFitData( (SplineEnt2d)arg1) -> bool :
@@ -16485,33 +13697,14 @@ getTrimmedOffset( (Curve2d)arg1, (float)arg2, (OffsetCrvExtType)arg3, (Tol)arg4)
     C++ signature :
         bool hasFitData(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def hasStartPoint (self, *args, **kwargs)-> bool :
-      '''hasStartPoint( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasStartPoint(class PyGeCurve2d {lvalue})'''
+    def hasStartPoint (self)-> bool :
+      '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve2d)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue})
-
-isClosed( (Curve2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isClosed (self, tol : PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
-    def isDegenerate (self, *args, **kwargs)-> tuple :
-      '''isDegenerate( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue})
-
-isDegenerate( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isDegenerate(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''isEqualTo( (Entity2d)arg1, (Entity2d)arg2) -> bool :
@@ -16530,16 +13723,8 @@ isEqualTo( (Entity2d)arg1, (Entity2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isKindOf(class PyGeEntity2d {lvalue},enum AcGe::EntityId)'''
     ...
-    def isLinear (self, *args, **kwargs)-> tuple :
-      '''isLinear( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue})
-
-isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isLinear(class PyGeCurve2d {lvalue},class AcGeTol)'''
+    def isLinear (self, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (Entity2d)arg1) -> bool :
@@ -16547,32 +13732,11 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> tuple :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
-
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+    def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple :
+      '''                             '''
     ...
-    def isPeriodic (self, *args, **kwargs)-> tuple :
-      '''isPeriodic( (Curve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isPeriodic(class PyGeCurve2d {lvalue})'''
+    def isPeriodic (self)-> tuple :
+      '''                             '''
     ...
     def isRational (self, *args, **kwargs)-> bool :
       '''isRational( (SplineEnt2d)arg1) -> bool :
@@ -16592,16 +13756,8 @@ isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class PyGeKnotVector knots(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double)
-
-length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
-
-    C++ signature :
-        double length(class PyGeCurve2d {lvalue},double,double,double)'''
+    def length (self, frm : float, to : float, tol : float = None)-> float :
+      '''                             '''
     ...
     def mirror (self, *args, **kwargs)-> None :
       '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
@@ -16627,44 +13783,17 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         int order(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue})
-
-orthoBoundBlock( (Curve2d)arg1, (Interval)arg2) -> BoundBlock2d :
-
-    C++ signature :
-        class PyGeBoundBlock2d orthoBoundBlock(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
-    def paramAtLength (self, *args, **kwargs)-> float :
-      '''paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double)
-
-paramAtLength( (Curve2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (float)arg5) -> float :
-
-    C++ signature :
-        double paramAtLength(class PyGeCurve2d {lvalue},double,double,bool,double)'''
+    def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
+      '''                             '''
     ...
-    def paramOf (self, *args, **kwargs)-> float :
-      '''paramOf( (Curve2d)arg1, (Point2d)arg2) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d)
-
-paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
-
-    C++ signature :
-        double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
+      '''                             '''
     ...
-    def reverseParam (self, *args, **kwargs)-> None :
-      '''reverseParam( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void reverseParam(class PyGeCurve2d {lvalue})'''
+    def reverseParam (self)-> None :
+      '''                             '''
     ...
     def rotateBy (self, *args, **kwargs)-> None :
       '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
@@ -16694,16 +13823,8 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
     C++ signature :
         void setControlPointAt(class PyGeSplineEnt2d {lvalue},int,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> None :
-      '''setInterval( (Curve2d)arg1) -> None :
-
-    C++ signature :
-        void setInterval(class PyGeCurve2d {lvalue})
-
-setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
+    def setInterval (self, val : PyGe.Interval = None)-> None :
+      '''                             '''
     ...
     def setKnotAt (self, *args, **kwargs)-> None :
       '''setKnotAt( (SplineEnt2d)arg1, (int)arg2, (float)arg3) -> None :
@@ -17606,40 +14727,40 @@ __sub__( (Vector2d)arg1, (Vector2d)arg2) -> Vector2d :
       '''                             '''
     ...
     def isCodirectionalTo (self, *args, **kwargs)-> bool :
-      '''isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B2844B8700>]) -> bool :
+      '''isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000027F86A18700>]) -> bool :
 
     C++ signature :
-        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001B2844B8700>])'''
+        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000027F86A18700>])'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B2844B8820>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000027F86A18820>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001B2844B8820>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000027F86A18820>])'''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B2844B8670>]) -> bool :
+      '''isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000027F86A18670>]) -> bool :
 
     C++ signature :
-        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001B2844B8670>])'''
+        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000027F86A18670>])'''
     ...
     def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B2844B8790>]) -> bool :
+      '''isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000027F86A18790>]) -> bool :
 
     C++ signature :
-        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001B2844B8790>])'''
+        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000027F86A18790>])'''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B2844B8550>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000027F86A18550>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B2844B8550>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000027F86A18550>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B2844B85E0>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000027F86A185E0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B2844B85E0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000027F86A185E0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
@@ -17669,16 +14790,16 @@ __sub__( (Vector2d)arg1, (Vector2d)arg2) -> Vector2d :
         class AcGeVector2d {lvalue} negate(class AcGeVector2d {lvalue})'''
     ...
     def normal (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B2844B8430>]) -> Vector2d :
+      '''normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000027F86A18430>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B2844B8430>])'''
+        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000027F86A18430>])'''
     ...
     def normalize (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B2844B84C0>]) -> Vector2d :
+      '''normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000027F86A184C0>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B2844B84C0>])'''
+        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000027F86A184C0>])'''
     ...
     def rotateBy (self, *args, **kwargs)-> PyGe.Vector2d :
       '''rotateBy( (Vector2d)arg1, (float)arg2) -> Vector2d :
