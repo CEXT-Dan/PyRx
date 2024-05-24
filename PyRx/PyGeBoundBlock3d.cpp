@@ -7,26 +7,35 @@ using namespace boost::python;
 void makePyGeBoundBlock3dWrapper()
 {
 #if !defined(_BRXTARGET240)
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- base: PyGe.Point3d, dir1: PyGe.Vector3d, dir2: PyGe.Vector3d,dir3: PyGe.Vector3d\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- pt1: PyGe.Point3d, pt2: PyGe.Point3d\n"
+        "- base: PyGe.Point3d, dir1: PyGe.Vector3d, dir2: PyGe.Vector3d,dir3: PyGe.Vector3d\n";
+
+    PyDocString DS("BoundBlock3d");
     class_<PyGeBoundBlock3d, bases<PyGeEntity3d>>("BoundBlock3d")
         .def(init<>())
-        .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, const AcGeVector3d&>())
-        .def("getMinPoint", &PyGeBoundBlock3d::getMinPoint)
-        .def("getMaxPoint", &PyGeBoundBlock3d::getMaxPoint)
-        .def("getBasePoint", &PyGeBoundBlock3d::getBasePoint)
-        .def("getDirection1", &PyGeBoundBlock3d::getDirection1)
-        .def("getDirection3", &PyGeBoundBlock3d::getDirection3)
-        .def("getDirection3", &PyGeBoundBlock3d::getDirection3)
-        .def("set", &PyGeBoundBlock3d::set1, return_self<>())
-        .def("set", &PyGeBoundBlock3d::set2, return_self<>())
-        .def("extend", &PyGeBoundBlock3d::extend, return_self<>())
-        .def("swell", &PyGeBoundBlock3d::swell, return_self<>())
-        .def("contains", &PyGeBoundBlock3d::contains)
-        .def("isDisjoint", &PyGeBoundBlock3d::isDisjoint)
-        .def("isBox", &PyGeBoundBlock3d::isBox)
-        .def("setToBox", &PyGeBoundBlock3d::setToBox, return_self<>())
-        .def("cast", &PyGeBoundBlock3d::cast).staticmethod("cast")
-        .def("copycast", &PyGeBoundBlock3d::copycast).staticmethod("copycast")
-        .def("className", &PyGeBoundBlock3d::className).staticmethod("className")
+        .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, const AcGeVector3d&>(DS.CTOR(ctor)))
+        .def("getMinPoint", &PyGeBoundBlock3d::getMinPoint, DS.ARGS())
+        .def("getMaxPoint", &PyGeBoundBlock3d::getMaxPoint, DS.ARGS())
+        .def("getBasePoint", &PyGeBoundBlock3d::getBasePoint, DS.ARGS())
+        .def("getDirection1", &PyGeBoundBlock3d::getDirection1, DS.ARGS())
+        .def("getDirection3", &PyGeBoundBlock3d::getDirection3, DS.ARGS())
+        .def("getDirection3", &PyGeBoundBlock3d::getDirection3, DS.ARGS())
+        .def("set", &PyGeBoundBlock3d::set1)
+        .def("set", &PyGeBoundBlock3d::set2, DS.OVRL(setOverloads))
+        .def("extend", &PyGeBoundBlock3d::extend, DS.ARGS({ "pt: PyGe.Point3d" }))
+        .def("swell", &PyGeBoundBlock3d::swell, DS.ARGS({ "val: float" }))
+        .def("contains", &PyGeBoundBlock3d::contains, DS.ARGS({ "pt: PyGe.Point3d" }))
+        .def("isDisjoint", &PyGeBoundBlock3d::isDisjoint, DS.ARGS({ "block: PyGe.BoundBlock3d" }))
+        .def("isBox", &PyGeBoundBlock3d::isBox, DS.ARGS())
+        .def("setToBox", &PyGeBoundBlock3d::setToBox, DS.ARGS({ "val: bool" }))
+        .def("cast", &PyGeBoundBlock3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeBoundBlock3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeBoundBlock3d::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }

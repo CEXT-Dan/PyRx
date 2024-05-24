@@ -68,101 +68,64 @@ class AcGeError(object):
     ...
 
 class BoundBlock2d(Entity2d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, pt1: PyGe.Point2d, pt2: PyGe.Point2d)-> None : ...
+    @overload
+    def __init__ (self, base: PyGe.Point2d, dir1: PyGe.Vector2d, dir2: PyGe.Vector2d)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)
-
-__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d,class AcGeVector2d)'''
+      '''Overloads:
+    - None: Any
+    - pt1: PyGe.Point2d, pt2: PyGe.Point2d
+    - base: PyGe.Point2d, dir1: PyGe.Vector2d, dir2: PyGe.Vector2d
+    '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''cast( (Entity2d)arg1) -> BoundBlock2d :
 
-    C++ signature :
-        class PyGeBoundBlock2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def contains (self, *args, **kwargs)-> bool :
-      '''contains( (BoundBlock2d)arg1, (Point2d)arg2) -> bool :
-
-    C++ signature :
-        bool contains(class PyGeBoundBlock2d {lvalue},class AcGePoint2d)'''
+    def contains (self, pt: PyGe.Point2d)-> bool :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''copycast( (Entity2d)arg1) -> BoundBlock2d :
 
-    C++ signature :
-        class PyGeBoundBlock2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyGe.BoundBlock2d :
+      '''                             '''
     ...
-    def extend (self, *args, **kwargs)-> None :
-      '''extend( (BoundBlock2d)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void extend(class PyGeBoundBlock2d {lvalue},class AcGePoint2d)'''
+    def extend (self, pt: PyGe.Point2d)-> None :
+      '''                             '''
     ...
-    def getBasePoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getBasePoint( (BoundBlock2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getBasePoint(class PyGeBoundBlock2d {lvalue})'''
+    def getBasePoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getDirection1 (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''getDirection1( (BoundBlock2d)arg1) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d getDirection1(class PyGeBoundBlock2d {lvalue})'''
+    def getDirection1 (self)-> PyGe.Vector2d :
+      '''                             '''
     ...
-    def getDirection2 (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''getDirection2( (BoundBlock2d)arg1) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d getDirection2(class PyGeBoundBlock2d {lvalue})'''
+    def getDirection2 (self)-> PyGe.Vector2d :
+      '''                             '''
     ...
-    def getMaxPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getMaxPoint( (BoundBlock2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getMaxPoint(class PyGeBoundBlock2d {lvalue})'''
+    def getMaxPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def getMinPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''getMinPoint( (BoundBlock2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getMinPoint(class PyGeBoundBlock2d {lvalue})'''
+    def getMinPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def isBox (self, *args, **kwargs)-> bool :
-      '''isBox( (BoundBlock2d)arg1) -> bool :
-
-    C++ signature :
-        bool isBox(class PyGeBoundBlock2d {lvalue})'''
+    def isBox (self)-> bool :
+      '''                             '''
     ...
-    def isDisjoint (self, *args, **kwargs)-> bool :
-      '''isDisjoint( (BoundBlock2d)arg1, (BoundBlock2d)arg2) -> bool :
-
-    C++ signature :
-        bool isDisjoint(class PyGeBoundBlock2d {lvalue},class PyGeBoundBlock2d)'''
+    def isDisjoint (self, block: PyGe.BoundBlock2d)-> bool :
+      '''                             '''
     ...
     def isEqualTo (self, val : PyGe.Entity2d, tol : PyGe.Tol=None)-> bool :
       '''                             '''
@@ -185,28 +148,22 @@ __init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4) -> None :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point2d=PyGe.Point2d.kOrgin)-> None :
       '''                             '''
     ...
+
+    @overload
+    def set (self, pt1: PyGe.Point2d, pt2: PyGe.Point2d)-> None : ...
+    @overload
+    def set (self, base: PyGe.Point2d, dir1: PyGe.Vector2d, dir2: PyGe.Vector2d)-> None : ...
     def set (self, *args, **kwargs)-> None :
-      '''set( (BoundBlock2d)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void set(class PyGeBoundBlock2d {lvalue},class AcGePoint2d,class AcGePoint2d)
-
-set( (BoundBlock2d)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4) -> None :
-
-    C++ signature :
-        void set(class PyGeBoundBlock2d {lvalue},class AcGePoint2d,class AcGeVector2d,class AcGeVector2d)'''
+      '''Overloads:
+    - pt1: PyGe.Point2d, pt2: PyGe.Point2d
+    - base: PyGe.Point2d, dir1: PyGe.Vector2d, dir2: PyGe.Vector2d
+    '''
     ...
-    def setToBox (self, *args, **kwargs)-> None :
-      '''setToBox( (BoundBlock2d)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setToBox(class PyGeBoundBlock2d {lvalue},bool)'''
+    def setToBox (self, val: bool)-> None :
+      '''                             '''
     ...
-    def swell (self, *args, **kwargs)-> None :
-      '''swell( (BoundBlock2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void swell(class PyGeBoundBlock2d {lvalue},double)'''
+    def swell (self, val: float)-> None :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix2d)-> None :
       '''                             '''
@@ -219,101 +176,61 @@ set( (BoundBlock2d)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4) -> None 
     ...
 
 class BoundBlock3d(Entity3d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, base: PyGe.Point3d, dir1: PyGe.Vector3d, dir2: PyGe.Vector3d,dir3: PyGe.Vector3d)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (Vector3d)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,class AcGeVector3d)'''
+      '''Overloads:
+    - None: Any
+    - base: PyGe.Point3d, dir1: PyGe.Vector3d, dir2: PyGe.Vector3d,dir3: PyGe.Vector3d
+    '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.BoundBlock3d :
-      '''cast( (Entity3d)arg1) -> BoundBlock3d :
 
-    C++ signature :
-        class PyGeBoundBlock3d cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.BoundBlock3d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def contains (self, *args, **kwargs)-> bool :
-      '''contains( (BoundBlock3d)arg1, (Point3d)arg2) -> bool :
-
-    C++ signature :
-        bool contains(class PyGeBoundBlock3d {lvalue},class AcGePoint3d)'''
+    def contains (self, pt: PyGe.Point3d)-> bool :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.BoundBlock3d :
-      '''copycast( (Entity3d)arg1) -> BoundBlock3d :
 
-    C++ signature :
-        class PyGeBoundBlock3d copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.BoundBlock3d :
+      '''                             '''
     ...
-    def extend (self, *args, **kwargs)-> PyGe.BoundBlock3d :
-      '''extend( (BoundBlock3d)arg1, (Point3d)arg2) -> BoundBlock3d :
-
-    C++ signature :
-        class PyGeBoundBlock3d {lvalue} extend(class PyGeBoundBlock3d {lvalue},class AcGePoint3d)'''
+    def extend (self, pt: PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def getBasePoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''getBasePoint( (BoundBlock3d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getBasePoint(class PyGeBoundBlock3d {lvalue})'''
+    def getBasePoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def getDirection1 (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''getDirection1( (BoundBlock3d)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getDirection1(class PyGeBoundBlock3d {lvalue})'''
+    def getDirection1 (self)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def getDirection3 (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''getDirection3( (BoundBlock3d)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getDirection3(class PyGeBoundBlock3d {lvalue})
-
-getDirection3( (BoundBlock3d)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getDirection3(class PyGeBoundBlock3d {lvalue})'''
+    def getDirection3 (self)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def getMaxPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''getMaxPoint( (BoundBlock3d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getMaxPoint(class PyGeBoundBlock3d {lvalue})'''
+    def getMaxPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def getMinPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''getMinPoint( (BoundBlock3d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getMinPoint(class PyGeBoundBlock3d {lvalue})'''
+    def getMinPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def isBox (self, *args, **kwargs)-> bool :
-      '''isBox( (BoundBlock3d)arg1) -> bool :
-
-    C++ signature :
-        bool isBox(class PyGeBoundBlock3d {lvalue})'''
+    def isBox (self)-> bool :
+      '''                             '''
     ...
-    def isDisjoint (self, *args, **kwargs)-> bool :
-      '''isDisjoint( (BoundBlock3d)arg1, (BoundBlock3d)arg2) -> bool :
-
-    C++ signature :
-        bool isDisjoint(class PyGeBoundBlock3d {lvalue},class PyGeBoundBlock3d)'''
+    def isDisjoint (self, block: PyGe.BoundBlock3d)-> bool :
+      '''                             '''
     ...
     def isEqualTo (self, val : PyGe.Entity3d, tol : PyGe.Tol=None)-> bool :
       '''Determines if two entities are equal to each other. Two entities are considered to be equal only if they are of the same type and they represent the same 3D point set. For instance, if the two entities are of types AcGeCircArc3d and AcGeEllipArc3d then they are not considered equal even if the ellipse is completely coincident with the circle. Also, two curves are not considered equal unless they have the same parameterization. For instance, two infinite coincident lines are not considered equal if they have different scaling in their parameterization. '''
@@ -336,28 +253,22 @@ getDirection3( (BoundBlock3d)arg1) -> Vector3d :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point3d = 'origin')-> None :
       '''Scales the entity about the input point by the input scale factor. Input scale factor must be greater than 0.'''
     ...
-    def set (self, *args, **kwargs)-> PyGe.BoundBlock3d :
-      '''set( (BoundBlock3d)arg1, (Point3d)arg2, (Point3d)arg3) -> BoundBlock3d :
 
-    C++ signature :
-        class PyGeBoundBlock3d {lvalue} set(class PyGeBoundBlock3d {lvalue},class AcGePoint3d,class AcGePoint3d)
-
-set( (BoundBlock3d)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (Vector3d)arg5) -> BoundBlock3d :
-
-    C++ signature :
-        class PyGeBoundBlock3d {lvalue} set(class PyGeBoundBlock3d {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,class AcGeVector3d)'''
+    @overload
+    def set (self, pt1: PyGe.Point3d, pt2: PyGe.Point3d)-> None : ...
+    @overload
+    def set (self, base: PyGe.Point3d, dir1: PyGe.Vector3d, dir2: PyGe.Vector3d,dir3: PyGe.Vector3d)-> None : ...
+    def set (self, *args, **kwargs)-> None :
+      '''Overloads:
+    - pt1: PyGe.Point3d, pt2: PyGe.Point3d
+    - base: PyGe.Point3d, dir1: PyGe.Vector3d, dir2: PyGe.Vector3d,dir3: PyGe.Vector3d
+    '''
     ...
-    def setToBox (self, *args, **kwargs)-> PyGe.BoundBlock3d :
-      '''setToBox( (BoundBlock3d)arg1, (bool)arg2) -> BoundBlock3d :
-
-    C++ signature :
-        class PyGeBoundBlock3d {lvalue} setToBox(class PyGeBoundBlock3d {lvalue},bool)'''
+    def setToBox (self, val: bool)-> None :
+      '''                             '''
     ...
-    def swell (self, *args, **kwargs)-> PyGe.BoundBlock3d :
-      '''swell( (BoundBlock3d)arg1, (float)arg2) -> BoundBlock3d :
-
-    C++ signature :
-        class PyGeBoundBlock3d {lvalue} swell(class PyGeBoundBlock3d {lvalue},double)'''
+    def swell (self, val: float)-> None :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix3d)-> None :
       '''Transforms the entity by applying the input matrix.'''
@@ -7418,16 +7329,16 @@ __init__( (object)arg1) -> None :
         bool isConformal(class AcGeMatrix2d {lvalue},double {lvalue},double {lvalue},bool {lvalue},class AcGeVector2d {lvalue})'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000025B8A02DE10>]) -> bool :
+      '''isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000015DE42E88B0>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x0000025B8A02DE10>])'''
+        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x0000015DE42E88B0>])'''
     ...
     def isScaledOrtho (self, *args, **kwargs)-> bool :
-      '''isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000025B8A02DF30>]) -> bool :
+      '''isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000015DE42E89D0>]) -> bool :
 
     C++ signature :
-        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000025B8A02DF30>])'''
+        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000015DE42E89D0>])'''
     ...
     def isSingular (self, *args, **kwargs)-> bool :
       '''isSingular( (Matrix2d)arg1, (Tol)arg2) -> bool :
@@ -7436,10 +7347,10 @@ __init__( (object)arg1) -> None :
         bool isSingular(class AcGeMatrix2d {lvalue},class AcGeTol)'''
     ...
     def isUniScaledOrtho (self, *args, **kwargs)-> bool :
-      '''isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000025B8A02DEA0>]) -> bool :
+      '''isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000015DE42E8940>]) -> bool :
 
     C++ signature :
-        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000025B8A02DEA0>])'''
+        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000015DE42E8940>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
@@ -13713,40 +13624,40 @@ __sub__( (Vector2d)arg1, (Vector2d)arg2) -> Vector2d :
       '''                             '''
     ...
     def isCodirectionalTo (self, *args, **kwargs)-> bool :
-      '''isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000025B8A02DC60>]) -> bool :
+      '''isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000015DE42E8700>]) -> bool :
 
     C++ signature :
-        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000025B8A02DC60>])'''
+        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000015DE42E8700>])'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000025B8A02DD80>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000015DE42E8820>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000025B8A02DD80>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000015DE42E8820>])'''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000025B8A02DBD0>]) -> bool :
+      '''isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000015DE42E8670>]) -> bool :
 
     C++ signature :
-        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000025B8A02DBD0>])'''
+        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000015DE42E8670>])'''
     ...
     def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000025B8A02DCF0>]) -> bool :
+      '''isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000015DE42E8790>]) -> bool :
 
     C++ signature :
-        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000025B8A02DCF0>])'''
+        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000015DE42E8790>])'''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000025B8A02DAB0>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000015DE42E8550>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000025B8A02DAB0>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000015DE42E8550>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000025B8A02DB40>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000015DE42E85E0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000025B8A02DB40>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000015DE42E85E0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
@@ -13776,16 +13687,16 @@ __sub__( (Vector2d)arg1, (Vector2d)arg2) -> Vector2d :
         class AcGeVector2d {lvalue} negate(class AcGeVector2d {lvalue})'''
     ...
     def normal (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000025B8A02D870>]) -> Vector2d :
+      '''normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000015DE42E8430>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000025B8A02D870>])'''
+        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000015DE42E8430>])'''
     ...
     def normalize (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000025B8A02DA20>]) -> Vector2d :
+      '''normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000015DE42E84C0>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000025B8A02DA20>])'''
+        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000015DE42E84C0>])'''
     ...
     def rotateBy (self, *args, **kwargs)-> PyGe.Vector2d :
       '''rotateBy( (Vector2d)arg1, (float)arg2) -> Vector2d :

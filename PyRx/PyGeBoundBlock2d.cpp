@@ -8,26 +8,36 @@ using namespace boost::python;
 void makePyGeBoundBlock2dWrapper()
 {
 #if !defined(_BRXTARGET240)
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- pt1: PyGe.Point2d, pt2: PyGe.Point2d\n"
+        "- base: PyGe.Point2d, dir1: PyGe.Vector2d, dir2: PyGe.Vector2d\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- pt1: PyGe.Point2d, pt2: PyGe.Point2d\n"
+        "- base: PyGe.Point2d, dir1: PyGe.Vector2d, dir2: PyGe.Vector2d\n";
+
+    PyDocString DS("BoundBlock2d");
     class_<PyGeBoundBlock2d, bases<PyGeEntity2d>>("BoundBlock2d")
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())
-        .def(init<const AcGePoint2d&, const AcGeVector2d&, const AcGeVector2d&>())
-        .def("getMinPoint", &PyGeBoundBlock2d::getMinPoint)
-        .def("getMaxPoint", &PyGeBoundBlock2d::getMaxPoint)
-        .def("getBasePoint", &PyGeBoundBlock2d::getBasePoint)
-        .def("getDirection1", &PyGeBoundBlock2d::getDirection1)
-        .def("getDirection2", &PyGeBoundBlock2d::getDirection2)
+        .def(init<const AcGePoint2d&, const AcGeVector2d&, const AcGeVector2d&>(DS.CTOR(ctor)))
+        .def("getMinPoint", &PyGeBoundBlock2d::getMinPoint, DS.ARGS())
+        .def("getMaxPoint", &PyGeBoundBlock2d::getMaxPoint, DS.ARGS())
+        .def("getBasePoint", &PyGeBoundBlock2d::getBasePoint, DS.ARGS())
+        .def("getDirection1", &PyGeBoundBlock2d::getDirection1, DS.ARGS())
+        .def("getDirection2", &PyGeBoundBlock2d::getDirection2, DS.ARGS())
         .def("set", &PyGeBoundBlock2d::set1)
-        .def("set", &PyGeBoundBlock2d::set2)
-        .def("extend", &PyGeBoundBlock2d::extend)
-        .def("swell", &PyGeBoundBlock2d::swell)
-        .def("contains", &PyGeBoundBlock2d::contains)
-        .def("isDisjoint", &PyGeBoundBlock2d::isDisjoint)
-        .def("isBox", &PyGeBoundBlock2d::isBox)
-        .def("setToBox", &PyGeBoundBlock2d::setToBox)
-        .def("cast", &PyGeBoundBlock2d::cast).staticmethod("cast")
-        .def("copycast", &PyGeBoundBlock2d::copycast).staticmethod("copycast")
-        .def("className", &PyGeBoundBlock2d::className).staticmethod("className")
+        .def("set", &PyGeBoundBlock2d::set2, DS.OVRL(setOverloads))
+        .def("extend", &PyGeBoundBlock2d::extend, DS.ARGS({ "pt: PyGe.Point2d" }))
+        .def("swell", &PyGeBoundBlock2d::swell, DS.ARGS({ "val: float" }))
+        .def("contains", &PyGeBoundBlock2d::contains, DS.ARGS({ "pt: PyGe.Point2d" }))
+        .def("isDisjoint", &PyGeBoundBlock2d::isDisjoint, DS.ARGS({ "block: PyGe.BoundBlock2d" }))
+        .def("isBox", &PyGeBoundBlock2d::isBox, DS.ARGS())
+        .def("setToBox", &PyGeBoundBlock2d::setToBox, DS.ARGS({ "val: bool" }))
+        .def("cast", &PyGeBoundBlock2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGeBoundBlock2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGeBoundBlock2d::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
