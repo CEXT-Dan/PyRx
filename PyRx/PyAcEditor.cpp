@@ -390,7 +390,7 @@ boost::python::tuple PyAcEditor::select1()
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::select2(const boost::python::list& filter)
+boost::python::tuple PyAcEditor::select2(const boost::python::object& filter)
 {
     PyEdUserInteraction ui;
     ads_name name = { 0L };
@@ -410,7 +410,7 @@ boost::python::tuple PyAcEditor::select3(const std::string& add, const std::stri
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::select4(const std::string& add, const std::string& remove, const boost::python::list& filter)
+boost::python::tuple PyAcEditor::select4(const std::string& add, const std::string& remove, const boost::python::object& filter)
 {
     PyEdUserInteraction ui;
     ads_name name = { 0L };
@@ -447,7 +447,7 @@ boost::python::tuple PyAcEditor::selectWindow1(const AcGePoint3d& pt1, const AcG
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::selectWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::list& filter)
+boost::python::tuple PyAcEditor::selectWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::object& filter)
 {
     PyEdUserInteraction ui;
     ads_name name = { 0L };
@@ -456,7 +456,7 @@ boost::python::tuple PyAcEditor::selectWindow2(const AcGePoint3d& pt1, const AcG
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::selectFence1(const boost::python::list& points)
+boost::python::tuple PyAcEditor::selectFence1(const boost::python::object& points)
 {
     PyEdUserInteraction ui;
     ads_name name = { 0L };
@@ -465,7 +465,7 @@ boost::python::tuple PyAcEditor::selectFence1(const boost::python::list& points)
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::selectFence2(const boost::python::list& points, const boost::python::list& filter)
+boost::python::tuple PyAcEditor::selectFence2(const boost::python::object& points, const boost::python::object& filter)
 {
     PyEdUserInteraction ui;
     ads_name name = { 0L };
@@ -475,7 +475,7 @@ boost::python::tuple PyAcEditor::selectFence2(const boost::python::list& points,
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::selectWindowPolygon1(const boost::python::list& points)
+boost::python::tuple PyAcEditor::selectWindowPolygon1(const boost::python::object& points)
 {
     PyEdUserInteraction ui;
     ads_name name = { 0L };
@@ -484,7 +484,7 @@ boost::python::tuple PyAcEditor::selectWindowPolygon1(const boost::python::list&
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::selectWindowPolygon2(const boost::python::list& points, const boost::python::list& filter)
+boost::python::tuple PyAcEditor::selectWindowPolygon2(const boost::python::object& points, const boost::python::object& filter)
 {
     PyEdUserInteraction ui;
     ads_name name = { 0L };
@@ -539,7 +539,7 @@ boost::python::tuple PyAcEditor::ssget1(const std::string& args, const boost::py
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::ssget2(const std::string& args, const boost::python::object& arg1, const boost::python::object& arg2, const boost::python::list& filter)
+boost::python::tuple PyAcEditor::ssget2(const std::string& args, const boost::python::object& arg1, const boost::python::object& arg2, const boost::python::object& filter)
 {
     PyEdUserInteraction ui;
     ads_name name = { 0L };

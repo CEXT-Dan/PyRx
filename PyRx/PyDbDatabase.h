@@ -26,11 +26,11 @@ public:
     virtual ~PyDbDatabase() override = default;
 
     PyDbObjectId        addToBlock1(const PyDbObjectId&id, PyDbEntity& ent);
-    boost::python::list addToBlock2(const PyDbObjectId& id, const boost::python::object& ent);
+    boost::python::list addToBlock2(const PyDbObjectId& id, const boost::python::list& ent);
     PyDbObjectId        addToModelspace1(PyDbEntity& ent);
-    boost::python::list addToModelspace2(const boost::python::object& ent);
+    boost::python::list addToModelspace2(const boost::python::list& ent);
     PyDbObjectId        addToCurrentspace1(PyDbEntity& ent);
-    boost::python::list addToCurrentspace2(const boost::python::object& ent);
+    boost::python::list addToCurrentspace2(const boost::python::list& ent);
     PyDbObjectId        addAcDbObject(PyDbObject& obj);
     void                addReactor(PyDbDatabaseReactor& pReactor) const;
     double              angbase() const;
