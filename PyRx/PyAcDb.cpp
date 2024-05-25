@@ -47,6 +47,7 @@
 #include "PyDbSubDMesh.h"
 #include "PyDbGripData.h"
 #include "PyDbDbLayerStateManager.h"
+#include "PyDbSection.h"
 
 
 using namespace boost::python;
@@ -382,6 +383,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbGeoPositionMarkerWrapper();
     makePyDbGeoMapWrapper();
     makePyDbGeoCoordinateSystemWrapper();
+
+    makePyDbSectionWrapper();
 
     makePyDbSubDMeshWrapper();
     makePyDbDbLayerStateManagerWrapper();

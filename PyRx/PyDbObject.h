@@ -116,6 +116,15 @@ inline T PyDbObjectCast(const PyRxObject& src)
     return dest;
 }
 
+template<typename T1, typename T2>
+inline T1 PyDbObjectCloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(T2::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return T1(static_cast<T2*>(src.impObj()->clone()), true);
+}
+
+
 // TODO: This could be done better 
 // boost::python::wrapper<> causes issues with subclassing i couldn't solve
 // just made two classes, one for AcDbObjectReactor, and AcDbEntityReactor
