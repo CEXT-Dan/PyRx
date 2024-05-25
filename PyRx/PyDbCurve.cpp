@@ -429,9 +429,7 @@ PyRxClass PyDbCurve::desc()
 
 PyDbCurve PyDbCurve::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbCurve::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbCurve(static_cast<AcDbCurve*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbCurve, AcDbCurve>(src);
 }
 
 PyDbCurve PyDbCurve::cast(const PyRxObject& src)

@@ -436,9 +436,7 @@ PyRxClass PyDbLeader::desc()
 
 PyDbLeader PyDbLeader::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbLeader::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbLeader(static_cast<AcDbLeader*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbLeader, AcDbLeader>(src);
 }
 
 PyDbLeader PyDbLeader::cast(const PyRxObject& src)
@@ -1525,9 +1523,7 @@ PyRxClass PyDbMLeader::desc()
 
 PyDbMLeader PyDbMLeader::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbMLeader::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbMLeader(static_cast<AcDbMLeader*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbMLeader, AcDbMLeader>(src);
 }
 
 PyDbMLeader PyDbMLeader::cast(const PyRxObject& src)

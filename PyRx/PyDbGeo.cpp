@@ -431,9 +431,7 @@ std::string PyDbGeoData::className()
 
 PyDbGeoData PyDbGeoData::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbGeoData::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbGeoData(static_cast<AcDbGeoData*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbGeoData, AcDbGeoData>(src);
 }
 
 PyDbGeoData PyDbGeoData::cast(const PyRxObject& src)
@@ -659,9 +657,7 @@ std::string PyDbGeoPositionMarker::className()
 
 PyDbGeoPositionMarker PyDbGeoPositionMarker::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbGeoPositionMarker::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbGeoPositionMarker(static_cast<AcDbGeoPositionMarker*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbGeoPositionMarker, AcDbGeoPositionMarker>(src);
 }
 
 PyDbGeoPositionMarker PyDbGeoPositionMarker::cast(const PyRxObject& src)

@@ -126,9 +126,7 @@ PyRxClass PyDbSymbolTable::desc()
 
 PyDbSymbolTable PyDbSymbolTable::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbSymbolTable::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbSymbolTable(static_cast<AcDbSymbolTable*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbSymbolTable, AcDbSymbolTable>(src);
 }
 
 PyDbSymbolTable PyDbSymbolTable::cast(const PyRxObject& src)
@@ -222,9 +220,7 @@ PyRxClass PyDbDimStyleTable::desc()
 
 PyDbDimStyleTable PyDbDimStyleTable::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbDimStyleTable::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbDimStyleTable(static_cast<AcDbDimStyleTable*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbDimStyleTable, AcDbDimStyleTable>(src);
 }
 
 PyDbDimStyleTable PyDbDimStyleTable::cast(const PyRxObject& src)
@@ -292,9 +288,7 @@ PyRxClass PyDbBlockTable::desc()
 
 PyDbBlockTable PyDbBlockTable::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbBlockTable::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbBlockTable(static_cast<AcDbBlockTable*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbBlockTable, AcDbBlockTable>(src);
 }
 
 PyDbBlockTable PyDbBlockTable::cast(const PyRxObject& src)
@@ -360,9 +354,7 @@ PyRxClass PyDbTextStyleTable::desc()
 
 PyDbTextStyleTable PyDbTextStyleTable::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbTextStyleTable::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbTextStyleTable(static_cast<AcDbTextStyleTable*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbTextStyleTable, AcDbTextStyleTable>(src);
 }
 
 PyDbTextStyleTable PyDbTextStyleTable::cast(const PyRxObject& src)
@@ -428,9 +420,7 @@ PyRxClass PyDbLinetypeTable::desc()
 
 PyDbLinetypeTable PyDbLinetypeTable::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbLinetypeTable::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbLinetypeTable(static_cast<AcDbLinetypeTable*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbLinetypeTable, AcDbLinetypeTable>(src);
 }
 
 PyDbLinetypeTable PyDbLinetypeTable::cast(const PyRxObject& src)
@@ -496,9 +486,7 @@ PyRxClass PyDbRegAppTable::desc()
 
 PyDbRegAppTable PyDbRegAppTable::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbRegAppTable::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbRegAppTable(static_cast<AcDbRegAppTable*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbRegAppTable, AcDbRegAppTable>(src);
 }
 
 PyDbRegAppTable PyDbRegAppTable::cast(const PyRxObject& src)
@@ -564,9 +552,7 @@ PyRxClass PyDbUCSTable::desc()
 
 PyDbUCSTable PyDbUCSTable::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbUCSTable::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbUCSTable(static_cast<AcDbUCSTable*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbUCSTable, AcDbUCSTable>(src);
 }
 
 PyDbUCSTable PyDbUCSTable::cast(const PyRxObject& src)
@@ -632,9 +618,7 @@ PyRxClass PyDbLayerTable::desc()
 
 PyDbLayerTable PyDbLayerTable::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbLayerTable::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbLayerTable(static_cast<AcDbLayerTable*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbLayerTable, AcDbLayerTable>(src);
 }
 
 PyDbLayerTable PyDbLayerTable::cast(const PyRxObject& src)
@@ -698,9 +682,7 @@ PyRxClass PyDbAbstractViewTable::desc()
 
 PyDbAbstractViewTable PyDbAbstractViewTable::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbAbstractViewTable::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbAbstractViewTable(static_cast<AcDbAbstractViewTable*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbAbstractViewTable, AcDbAbstractViewTable>(src);
 }
 
 PyDbAbstractViewTable PyDbAbstractViewTable::cast(const PyRxObject& src)
@@ -770,9 +752,7 @@ PyRxClass PyDbViewportTable::desc()
 
 PyDbViewportTable PyDbViewportTable::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbViewportTable::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbViewportTable(static_cast<AcDbViewportTable*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbViewportTable, AcDbViewportTable>(src);
 }
 
 PyDbViewportTable PyDbViewportTable::cast(const PyRxObject& src)
@@ -842,17 +822,12 @@ PyRxClass PyDbViewTable::desc()
 
 PyDbViewTable PyDbViewTable::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbViewTable::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbViewTable(static_cast<AcDbViewTable*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbViewTable, AcDbViewTable>(src);
 }
 
 PyDbViewTable PyDbViewTable::cast(const PyRxObject& src)
 {
-    PyDbViewTable dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
-    return dest;
+    return PyDbObjectCast<PyDbViewTable>(src);
 }
 
 AcDbViewTable* PyDbViewTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const

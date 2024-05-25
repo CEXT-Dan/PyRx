@@ -2118,9 +2118,7 @@ PyRxClass PyDbTable::desc()
 
 PyDbTable PyDbTable::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbTable::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbTable(static_cast<AcDbTable*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbTable, AcDbTable>(src);
 }
 
 PyDbTable PyDbTable::cast(const PyRxObject& src)

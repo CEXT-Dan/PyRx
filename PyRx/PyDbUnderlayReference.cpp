@@ -151,9 +151,7 @@ PyRxClass PyDbUnderlayDefinition::desc()
 
 PyDbUnderlayDefinition PyDbUnderlayDefinition::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbUnderlayDefinition::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbUnderlayDefinition(static_cast<AcDbUnderlayDefinition*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbUnderlayDefinition, AcDbUnderlayDefinition>(src);
 }
 
 PyDbUnderlayDefinition PyDbUnderlayDefinition::cast(const PyRxObject& src)
@@ -497,9 +495,7 @@ PyRxClass PyDbUnderlayReference::desc()
 
 PyDbUnderlayReference PyDbUnderlayReference::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbUnderlayReference::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbUnderlayReference(static_cast<AcDbUnderlayReference*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbUnderlayReference, AcDbUnderlayReference>(src);
 }
 
 PyDbUnderlayReference PyDbUnderlayReference::cast(const PyRxObject& src)
@@ -572,9 +568,7 @@ PyRxClass PyDbPdfDefinition::desc()
 
 PyDbPdfDefinition PyDbPdfDefinition::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbPdfDefinition::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbPdfDefinition(static_cast<AcDbPdfDefinition*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbPdfDefinition, AcDbPdfDefinition>(src);
 }
 
 PyDbPdfDefinition PyDbPdfDefinition::cast(const PyRxObject& src)
@@ -638,9 +632,7 @@ PyRxClass PyDbPdfReference::desc()
 
 PyDbPdfReference PyDbPdfReference::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbPdfReference::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbPdfReference(static_cast<AcDbPdfReference*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbPdfReference, AcDbPdfReference>(src);
 }
 
 PyDbPdfReference PyDbPdfReference::cast(const PyRxObject& src)

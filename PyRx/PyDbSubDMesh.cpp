@@ -581,9 +581,7 @@ PyRxClass PyDbSubDMesh::desc()
 
 PyDbSubDMesh PyDbSubDMesh::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbSubDMesh::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbSubDMesh(static_cast<AcDbSubDMesh*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbSubDMesh, AcDbSubDMesh>(src);
 }
 
 PyDbSubDMesh PyDbSubDMesh::cast(const PyRxObject& src)

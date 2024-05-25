@@ -242,9 +242,7 @@ PyRxClass PyDbEllipse::desc()
 
 PyDbEllipse PyDbEllipse::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbCurve::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbEllipse(static_cast<AcDbEllipse*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbEllipse, AcDbEllipse>(src);
 }
 
 PyDbEllipse PyDbEllipse::cast(const PyRxObject& src)

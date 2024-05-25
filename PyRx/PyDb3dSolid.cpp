@@ -459,9 +459,7 @@ PyRxClass PyDb3dSolid::desc()
 
 PyDb3dSolid PyDb3dSolid::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDb3dSolid::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDb3dSolid(static_cast<AcDb3dSolid*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDb3dSolid, AcDb3dSolid>(src);
 }
 
 PyDb3dSolid PyDb3dSolid::cast(const PyRxObject& src)
@@ -559,9 +557,7 @@ PyRxClass PyDbRegion::desc()
 
 PyDbRegion PyDbRegion::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbRegion::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbRegion(static_cast<AcDbRegion*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbRegion, AcDbRegion>(src);
 }
 
 PyDbRegion PyDbRegion::cast(const PyRxObject& src)
@@ -625,9 +621,7 @@ PyRxClass PyDbBody::desc()
 
 PyDbBody PyDbBody::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbBody::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbBody(static_cast<AcDbBody*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbBody, AcDbBody>(src);
 }
 
 PyDbBody PyDbBody::cast(const PyRxObject& src)

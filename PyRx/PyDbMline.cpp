@@ -274,9 +274,7 @@ PyRxClass PyDbMline::desc()
 
 PyDbMline PyDbMline::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbMline::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbMline(static_cast<AcDbMline*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbMline, AcDbMline>(src);
 }
 
 PyDbMline PyDbMline::cast(const PyRxObject& src)
@@ -567,9 +565,7 @@ PyRxClass PyDbMlineStyle::desc()
 
 PyDbMlineStyle PyDbMlineStyle::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbMlineStyle::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbMlineStyle(static_cast<AcDbMlineStyle*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbMlineStyle, AcDbMlineStyle>(src);
 }
 
 PyDbMlineStyle PyDbMlineStyle::cast(const PyRxObject& src)

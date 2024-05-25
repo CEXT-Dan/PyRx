@@ -860,9 +860,7 @@ PyRxClass PyDbTableStyle::desc()
 
 PyDbTableStyle PyDbTableStyle::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbTableStyle::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbTableStyle(static_cast<AcDbTableStyle*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbTableStyle, AcDbTableStyle>(src);
 }
 
 PyDbTableStyle PyDbTableStyle::cast(const PyRxObject& src)

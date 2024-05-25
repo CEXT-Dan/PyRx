@@ -271,9 +271,7 @@ PyRxClass PyDbField::desc()
 
 PyDbField PyDbField::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbField::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbField(static_cast<AcDbField*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbField, AcDbField>(src);
 }
 
 PyDbField PyDbField::cast(const PyRxObject& src)

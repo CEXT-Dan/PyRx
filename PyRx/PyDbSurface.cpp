@@ -220,9 +220,7 @@ PyRxClass PyDbSurface::desc()
 
 PyDbSurface PyDbSurface::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbSurface::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbSurface(static_cast<AcDbSurface*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbSurface, AcDbSurface>(src);
 }
 
 PyDbSurface PyDbSurface::cast(const PyRxObject& src)
@@ -286,9 +284,7 @@ PyRxClass PyDbExtrudedSurface::desc()
 
 PyDbExtrudedSurface PyDbExtrudedSurface::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbExtrudedSurface::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbExtrudedSurface(static_cast<AcDbExtrudedSurface*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbExtrudedSurface, AcDbExtrudedSurface>(src);
 }
 
 PyDbExtrudedSurface PyDbExtrudedSurface::cast(const PyRxObject& src)
@@ -351,9 +347,7 @@ PyRxClass PyDbLoftedSurface::desc()
 
 PyDbLoftedSurface PyDbLoftedSurface::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbLoftedSurface::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbLoftedSurface(static_cast<AcDbLoftedSurface*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbLoftedSurface, AcDbLoftedSurface>(src);
 }
 
 PyDbLoftedSurface PyDbLoftedSurface::cast(const PyRxObject& src)
@@ -417,9 +411,7 @@ PyRxClass PyDbNurbSurface::desc()
 
 PyDbNurbSurface PyDbNurbSurface::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbNurbSurface::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbNurbSurface(static_cast<AcDbNurbSurface*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbNurbSurface, AcDbNurbSurface>(src);
 }
 
 PyDbNurbSurface PyDbNurbSurface::cast(const PyRxObject& src)
@@ -482,9 +474,7 @@ PyRxClass PyDbPlaneSurface::desc()
 
 PyDbPlaneSurface PyDbPlaneSurface::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbPlaneSurface::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbPlaneSurface(static_cast<AcDbPlaneSurface*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbPlaneSurface, AcDbPlaneSurface>(src);
 }
 
 PyDbPlaneSurface PyDbPlaneSurface::cast(const PyRxObject& src)
@@ -548,9 +538,7 @@ PyRxClass PyDbRevolvedSurface::desc()
 
 PyDbRevolvedSurface PyDbRevolvedSurface::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbRevolvedSurface::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbRevolvedSurface(static_cast<AcDbRevolvedSurface*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbRevolvedSurface, AcDbRevolvedSurface>(src);
 }
 
 PyDbRevolvedSurface PyDbRevolvedSurface::cast(const PyRxObject& src)
@@ -614,9 +602,7 @@ PyRxClass PyDbSweptSurface::desc()
 
 PyDbSweptSurface PyDbSweptSurface::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbSweptSurface::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbSweptSurface(static_cast<AcDbSweptSurface*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbSweptSurface, AcDbSweptSurface>(src);
 }
 
 PyDbSweptSurface PyDbSweptSurface::cast(const PyRxObject& src)

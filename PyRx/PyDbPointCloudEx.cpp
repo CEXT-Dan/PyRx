@@ -478,9 +478,7 @@ PyRxClass PyDbPointCloudColorMap::desc()
 
 PyDbPointCloudColorMap PyDbPointCloudColorMap::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbPointCloudColorMap::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbPointCloudColorMap(static_cast<AcDbPointCloudColorMap*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbPointCloudColorMap, AcDbPointCloudColorMap>(src);
 }
 
 PyDbPointCloudColorMap PyDbPointCloudColorMap::cast(const PyRxObject& src)
@@ -722,9 +720,7 @@ PyRxClass PyDbPointCloudDefEx::desc()
 
 PyDbPointCloudDefEx PyDbPointCloudDefEx::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbPointCloudDefEx::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbPointCloudDefEx(static_cast<AcDbPointCloudDefEx*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbPointCloudDefEx, AcDbPointCloudDefEx>(src);
 }
 
 PyDbPointCloudDefEx PyDbPointCloudDefEx::cast(const PyRxObject& src)
@@ -1346,9 +1342,7 @@ PyRxClass PyDbPointCloudEx::desc()
 
 PyDbPointCloudEx PyDbPointCloudEx::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbPointCloudEx::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbPointCloudEx(static_cast<AcDbPointCloudEx*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbPointCloudEx, AcDbPointCloudEx>(src);
 }
 
 PyDbPointCloudEx PyDbPointCloudEx::cast(const PyRxObject& src)

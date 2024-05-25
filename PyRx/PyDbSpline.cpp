@@ -533,9 +533,7 @@ PyRxClass PyDbSpline::desc()
 
 PyDbSpline PyDbSpline::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbSpline::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbSpline(static_cast<AcDbSpline*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbSpline, AcDbSpline>(src);
 }
 
 PyDbSpline PyDbSpline::cast(const PyRxObject& src)
@@ -756,9 +754,7 @@ PyRxClass PyDbHelix::desc()
 
 PyDbHelix PyDbHelix::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbHelix::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbHelix(static_cast<AcDbHelix*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbHelix, AcDbHelix>(src);
 }
 
 PyDbHelix PyDbHelix::cast(const PyRxObject& src)
