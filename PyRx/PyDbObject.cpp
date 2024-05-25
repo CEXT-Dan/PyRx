@@ -511,9 +511,7 @@ std::string PyDbObject::className()
 
 PyDbObject PyDbObject::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbObject::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbObject(static_cast<AcDbObject*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbObject, AcDbObject>(src);
 }
 
 PyDbObject PyDbObject::cast(const PyRxObject& src)

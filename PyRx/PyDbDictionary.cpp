@@ -145,9 +145,7 @@ PyRxClass PyDbDictionary::desc()
 
 PyDbDictionary PyDbDictionary::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbDictionary::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbDictionary(static_cast<AcDbDictionary*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbDictionary, AcDbDictionary>(src);
 }
 
 PyDbDictionary PyDbDictionary::cast(const PyRxObject& src)

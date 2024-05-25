@@ -182,9 +182,7 @@ std::string PyDbSpatialFilter::className()
 
 PyDbSpatialFilter PyDbSpatialFilter::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbSpatialFilter::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbSpatialFilter(static_cast<AcDbSpatialFilter*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbSpatialFilter, AcDbSpatialFilter>(src);
 }
 
 PyDbSpatialFilter PyDbSpatialFilter::cast(const PyRxObject& src)
@@ -293,9 +291,7 @@ std::string PyDbLayerFilter::className()
 
 PyDbLayerFilter PyDbLayerFilter::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbLayerFilter::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbLayerFilter(static_cast<AcDbLayerFilter*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbLayerFilter, AcDbLayerFilter>(src);
 }
 
 PyDbLayerFilter PyDbLayerFilter::cast(const PyRxObject& src)

@@ -55,9 +55,7 @@ PyRxClass PyDbImage::desc()
 
 PyDbImage PyDbImage::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbImage::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbImage(static_cast<AcDbImage*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbImage, AcDbImage>(src);
 }
 
 PyDbImage PyDbImage::cast(const PyRxObject& src)
@@ -289,9 +287,7 @@ PyRxClass PyDbRasterImageDef::desc()
 
 PyDbRasterImageDef PyDbRasterImageDef::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbRasterImageDef::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbRasterImageDef(static_cast<AcDbRasterImageDef*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbRasterImageDef, AcDbRasterImageDef>(src);
 }
 
 PyDbRasterImageDef PyDbRasterImageDef::cast(const PyRxObject& src)
@@ -361,9 +357,7 @@ PyRxClass PyDbRasterImageDefReactor::desc()
 
 PyDbRasterImageDefReactor PyDbRasterImageDefReactor::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbRasterImageDefReactor::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbRasterImageDefReactor(static_cast<AcDbRasterImageDefReactor*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbRasterImageDefReactor, AcDbRasterImageDefReactor>(src);
 }
 
 PyDbRasterImageDefReactor PyDbRasterImageDefReactor::cast(const PyRxObject& src)
@@ -689,9 +683,7 @@ PyRxClass PyDbRasterImage::desc()
 
 PyDbRasterImage PyDbRasterImage::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbRasterImage::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbRasterImage(static_cast<AcDbRasterImage*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbRasterImage, AcDbRasterImage>(src);
 }
 
 PyDbRasterImage PyDbRasterImage::cast(const PyRxObject& src)
@@ -816,9 +808,7 @@ PyRxClass PyDbWipeout::desc()
 
 PyDbWipeout PyDbWipeout::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbWipeout::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbWipeout(static_cast<AcDbWipeout*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbWipeout, AcDbWipeout>(src);
 }
 
 PyDbWipeout PyDbWipeout::cast(const PyRxObject& src)
@@ -994,9 +984,7 @@ PyRxClass PyDbGeoMap::desc()
 
 PyDbGeoMap PyDbGeoMap::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbGeoMap::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbGeoMap(static_cast<AcDbGeoMap*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbGeoMap, AcDbGeoMap>(src);
 }
 
 PyDbGeoMap PyDbGeoMap::cast(const PyRxObject& src)

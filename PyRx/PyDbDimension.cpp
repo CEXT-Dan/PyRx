@@ -986,9 +986,7 @@ PyRxClass PyDbDimension::desc()
 
 PyDbDimension PyDbDimension::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbDimension::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbDimension(static_cast<AcDbDimension*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbDimension, AcDbDimension>(src);
 }
 
 PyDbDimension PyDbDimension::cast(const PyRxObject& src)
@@ -1168,9 +1166,7 @@ PyRxClass PyDb2LineAngularDimension::desc()
 
 PyDb2LineAngularDimension PyDb2LineAngularDimension::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDb2LineAngularDimension::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDb2LineAngularDimension(static_cast<AcDb2LineAngularDimension*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDb2LineAngularDimension, AcDb2LineAngularDimension>(src);
 }
 
 PyDb2LineAngularDimension PyDb2LineAngularDimension::cast(const PyRxObject& src)
@@ -1336,9 +1332,7 @@ PyRxClass PyDb3PointAngularDimension::desc()
 
 PyDb3PointAngularDimension PyDb3PointAngularDimension::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDb3PointAngularDimension::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDb3PointAngularDimension(static_cast<AcDb3PointAngularDimension*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDb3PointAngularDimension, AcDb3PointAngularDimension>(src);
 }
 
 PyDb3PointAngularDimension PyDb3PointAngularDimension::cast(const PyRxObject& src)
@@ -1523,10 +1517,7 @@ PyRxClass PyDbAlignedDimension::desc()
 
 PyDbAlignedDimension PyDbAlignedDimension::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbAlignedDimension::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbAlignedDimension(static_cast<AcDbAlignedDimension*>(src.impObj()->clone()), true);
-
+    return PyDbObjectCloneFrom<PyDbAlignedDimension, AcDbAlignedDimension>(src);
 }
 
 PyDbAlignedDimension PyDbAlignedDimension::cast(const PyRxObject& src)
@@ -1763,9 +1754,7 @@ PyRxClass PyDbArcDimension::desc()
 
 PyDbArcDimension PyDbArcDimension::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbArcDimension::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbArcDimension(static_cast<AcDbArcDimension*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbArcDimension, AcDbArcDimension>(src);
 }
 
 PyDbArcDimension PyDbArcDimension::cast(const PyRxObject& src)
@@ -1939,9 +1928,7 @@ PyRxClass PyDbDiametricDimension::desc()
 
 PyDbDiametricDimension PyDbDiametricDimension::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbDiametricDimension::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbDiametricDimension(static_cast<AcDbDiametricDimension*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbDiametricDimension, AcDbDiametricDimension>(src);
 }
 
 PyDbDiametricDimension PyDbDiametricDimension::cast(const PyRxObject& src)
@@ -2119,9 +2106,7 @@ PyRxClass PyDbOrdinateDimension::desc()
 
 PyDbOrdinateDimension PyDbOrdinateDimension::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbOrdinateDimension::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbOrdinateDimension(static_cast<AcDbOrdinateDimension*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbOrdinateDimension, AcDbOrdinateDimension>(src);
 }
 
 PyDbOrdinateDimension PyDbOrdinateDimension::cast(const PyRxObject& src)
@@ -2278,9 +2263,7 @@ PyRxClass PyDbRadialDimension::desc()
 
 PyDbRadialDimension PyDbRadialDimension::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbRadialDimension::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbRadialDimension(static_cast<AcDbRadialDimension*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbRadialDimension, AcDbRadialDimension>(src);
 }
 
 PyDbRadialDimension PyDbRadialDimension::cast(const PyRxObject& src)
@@ -2507,9 +2490,7 @@ PyRxClass PyDbRadialDimensionLarge::desc()
 
 PyDbRadialDimensionLarge PyDbRadialDimensionLarge::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbRadialDimensionLarge::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbRadialDimensionLarge(static_cast<AcDbRadialDimensionLarge*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbRadialDimensionLarge, AcDbRadialDimensionLarge>(src);
 }
 
 PyDbRadialDimensionLarge PyDbRadialDimensionLarge::cast(const PyRxObject& src)
@@ -2705,9 +2686,7 @@ PyRxClass PyDbRotatedDimension::desc()
 
 PyDbRotatedDimension PyDbRotatedDimension::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbRotatedDimension::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbRotatedDimension(static_cast<AcDbRotatedDimension*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbRotatedDimension, AcDbRotatedDimension>(src);
 }
 
 PyDbRotatedDimension PyDbRotatedDimension::cast(const PyRxObject& src)

@@ -604,9 +604,7 @@ PyRxClass PyDbHatch::desc()
 
 PyDbHatch PyDbHatch::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbHatch::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbHatch(static_cast<AcDbHatch*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbHatch, AcDbHatch>(src);
 }
 
 PyDbHatch PyDbHatch::cast(const PyRxObject& src)
@@ -1035,9 +1033,7 @@ PyRxClass PyDbMPolygon::desc()
 
 PyDbMPolygon PyDbMPolygon::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbMPolygon::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbMPolygon(static_cast<AcDbMPolygon*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbMPolygon, AcDbMPolygon>(src);
 }
 
 PyDbMPolygon PyDbMPolygon::cast(const PyRxObject& src)

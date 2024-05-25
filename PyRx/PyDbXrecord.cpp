@@ -128,9 +128,7 @@ PyRxClass PyDbXrecord::desc()
 
 PyDbXrecord PyDbXrecord::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbXrecord::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbXrecord(static_cast<AcDbXrecord*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbXrecord, AcDbXrecord>(src);
 }
 
 PyDbXrecord PyDbXrecord::cast(const PyRxObject& src)

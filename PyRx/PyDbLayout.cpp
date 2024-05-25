@@ -476,9 +476,7 @@ PyRxClass PyDbPlotSettings::desc()
 
 PyDbPlotSettings PyDbPlotSettings::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbPlotSettings::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbPlotSettings(static_cast<AcDbPlotSettings*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbPlotSettings, AcDbPlotSettings>(src);
 }
 
 PyDbPlotSettings PyDbPlotSettings::cast(const PyRxObject& src)
@@ -664,9 +662,7 @@ PyRxClass PyDbLayout::desc()
 
 PyDbLayout PyDbLayout::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbLayout::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbLayout(static_cast<AcDbLayout*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbLayout, AcDbLayout>(src);
 }
 
 PyDbLayout PyDbLayout::cast(const PyRxObject& src)

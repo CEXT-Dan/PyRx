@@ -333,9 +333,7 @@ std::string PyDbGroup::className()
 
 PyDbGroup PyDbGroup::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbGroup::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbGroup(static_cast<AcDbGroup*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbGroup, AcDbGroup>(src);
 }
 
 PyDbGroup PyDbGroup::cast(const PyRxObject& src)

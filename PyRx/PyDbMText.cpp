@@ -604,9 +604,7 @@ PyRxClass PyDbMText::desc()
 
 PyDbMText PyDbMText::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbMText::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbMText(static_cast<AcDbMText*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbMText, AcDbMText>(src);
 }
 
 PyDbMText PyDbMText::cast(const PyRxObject& src)

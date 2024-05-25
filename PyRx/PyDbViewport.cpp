@@ -1426,9 +1426,7 @@ PyRxClass PyDbViewport::desc()
 
 PyDbViewport PyDbViewport::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbViewport::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbViewport(static_cast<AcDbViewport*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbViewport, AcDbViewport>(src);
 }
 
 PyDbViewport PyDbViewport::cast(const PyRxObject& src)

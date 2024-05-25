@@ -99,9 +99,7 @@ PyRxClass PyDbSymbolTableRecord::desc()
 
 PyDbSymbolTableRecord PyDbSymbolTableRecord::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbSymbolTableRecord::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbSymbolTableRecord(static_cast<AcDbSymbolTableRecord*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbSymbolTableRecord, AcDbSymbolTableRecord>(src);
 }
 
 PyDbSymbolTableRecord PyDbSymbolTableRecord::cast(const PyRxObject& src)
@@ -1144,9 +1142,7 @@ PyRxClass PyDbDimStyleTableRecord::desc()
 
 PyDbDimStyleTableRecord PyDbDimStyleTableRecord::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbDimStyleTableRecord::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbDimStyleTableRecord(static_cast<AcDbDimStyleTableRecord*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbDimStyleTableRecord, AcDbDimStyleTableRecord>(src);
 }
 
 PyDbDimStyleTableRecord PyDbDimStyleTableRecord::cast(const PyRxObject& src)
@@ -1559,9 +1555,7 @@ PyRxClass PyDbAbstractViewTableRecord::desc()
 
 PyDbAbstractViewTableRecord PyDbAbstractViewTableRecord::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbAbstractViewTableRecord::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbAbstractViewTableRecord(static_cast<AcDbAbstractViewTableRecord*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbAbstractViewTableRecord, AcDbAbstractViewTableRecord>(src);
 }
 
 PyDbAbstractViewTableRecord PyDbAbstractViewTableRecord::cast(const PyRxObject& src)
@@ -1995,9 +1989,7 @@ PyRxClass PyDbViewportTableRecord::desc()
 
 PyDbViewportTableRecord PyDbViewportTableRecord::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbViewportTableRecord::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbViewportTableRecord(static_cast<AcDbViewportTableRecord*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbViewportTableRecord, AcDbViewportTableRecord>(src);
 }
 
 PyDbViewportTableRecord PyDbViewportTableRecord::cast(const PyRxObject& src)
@@ -2243,9 +2235,7 @@ PyRxClass PyDbViewTableRecord::desc()
 
 PyDbViewTableRecord PyDbViewTableRecord::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbViewTableRecord::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbViewTableRecord(static_cast<AcDbViewTableRecord*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbViewTableRecord, AcDbViewTableRecord>(src);
 }
 
 PyDbViewTableRecord PyDbViewTableRecord::cast(const PyRxObject& src)
@@ -2648,9 +2638,7 @@ PyRxClass PyDbBlockTableRecord::desc()
 
 PyDbBlockTableRecord PyDbBlockTableRecord::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbBlockTableRecord::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbBlockTableRecord(static_cast<AcDbBlockTableRecord*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbBlockTableRecord, AcDbBlockTableRecord>(src);
 }
 
 PyDbBlockTableRecord PyDbBlockTableRecord::cast(const PyRxObject& src)
@@ -3069,9 +3057,7 @@ PyRxClass PyDbLayerTableRecord::desc()
 
 PyDbLayerTableRecord PyDbLayerTableRecord::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbLayerTableRecord::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbLayerTableRecord(static_cast<AcDbLayerTableRecord*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbLayerTableRecord, AcDbLayerTableRecord>(src);
 }
 
 PyDbLayerTableRecord PyDbLayerTableRecord::cast(const PyRxObject& src)
@@ -3280,9 +3266,7 @@ PyRxClass PyDbTextStyleTableRecord::desc()
 
 PyDbTextStyleTableRecord PyDbTextStyleTableRecord::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbTextStyleTableRecord::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbTextStyleTableRecord(static_cast<AcDbTextStyleTableRecord*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbTextStyleTableRecord, AcDbTextStyleTableRecord>(src);
 }
 
 PyDbTextStyleTableRecord PyDbTextStyleTableRecord::cast(const PyRxObject& src)
@@ -3402,9 +3386,7 @@ PyRxClass PyDbUCSTableRecord::desc()
 
 PyDbUCSTableRecord PyDbUCSTableRecord::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbUCSTableRecord::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbUCSTableRecord(static_cast<AcDbUCSTableRecord*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbUCSTableRecord, AcDbUCSTableRecord>(src);
 }
 
 PyDbUCSTableRecord PyDbUCSTableRecord::cast(const PyRxObject& src)
@@ -3468,9 +3450,7 @@ PyRxClass PyDbRegAppTableRecord::desc()
 
 PyDbRegAppTableRecord PyDbRegAppTableRecord::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbRegAppTableRecord::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbRegAppTableRecord(static_cast<AcDbRegAppTableRecord*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbRegAppTableRecord, AcDbRegAppTableRecord>(src);
 }
 
 PyDbRegAppTableRecord PyDbRegAppTableRecord::cast(const PyRxObject& src)
@@ -3694,9 +3674,7 @@ PyRxClass PyDbLinetypeTableRecord::desc()
 
 PyDbLinetypeTableRecord PyDbLinetypeTableRecord::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbLinetypeTableRecord::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbLinetypeTableRecord(static_cast<AcDbLinetypeTableRecord*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbLinetypeTableRecord, AcDbLinetypeTableRecord>(src);
 }
 
 PyDbLinetypeTableRecord PyDbLinetypeTableRecord::cast(const PyRxObject& src)

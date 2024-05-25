@@ -359,9 +359,7 @@ std::string PyDbDimAssoc::className()
 
 PyDbDimAssoc PyDbDimAssoc::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbDimAssoc::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbDimAssoc(static_cast<AcDbDimAssoc*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbDimAssoc, AcDbDimAssoc>(src);
 }
 
 PyDbDimAssoc PyDbDimAssoc::cast(const PyRxObject& src)

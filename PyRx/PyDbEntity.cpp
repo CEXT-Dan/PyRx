@@ -621,9 +621,7 @@ PyRxClass PyDbEntity::desc()
 
 PyDbEntity PyDbEntity::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbEntity::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbEntity(static_cast<AcDbEntity*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbEntity, AcDbEntity>(src);
 }
 
 PyDbEntity PyDbEntity::cast(const PyRxObject& src)
@@ -681,9 +679,7 @@ PyRxClass PyDbBlockBegin::desc()
 
 PyDbBlockBegin PyDbBlockBegin::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbBlockBegin::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbBlockBegin(static_cast<AcDbBlockBegin*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbBlockBegin, AcDbBlockBegin>(src);
 }
 
 PyDbBlockBegin PyDbBlockBegin::cast(const PyRxObject& src)
@@ -741,9 +737,7 @@ PyRxClass PyDbBlockEnd::desc()
 
 PyDbBlockEnd PyDbBlockEnd::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbBlockEnd::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbBlockEnd(static_cast<AcDbBlockEnd*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbBlockEnd, AcDbBlockEnd>(src);
 }
 
 PyDbBlockEnd PyDbBlockEnd::cast(const PyRxObject& src)
@@ -801,9 +795,7 @@ PyRxClass PyDbSequenceEnd::desc()
 
 PyDbSequenceEnd PyDbSequenceEnd::cloneFrom(const PyRxObject& src)
 {
-    if (!src.impObj()->isKindOf(AcDbSequenceEnd::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
-    return PyDbSequenceEnd(static_cast<AcDbSequenceEnd*>(src.impObj()->clone()), true);
+    return PyDbObjectCloneFrom<PyDbSequenceEnd, AcDbSequenceEnd>(src);
 }
 
 PyDbSequenceEnd PyDbSequenceEnd::cast(const PyRxObject& src)
