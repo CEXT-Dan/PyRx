@@ -358,6 +358,9 @@
     <ClCompile Include="PyDbDbLayerStateManager.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbSection.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -718,6 +721,9 @@
       <Filter>Header Files\PyRxApp</Filter>
     </ClInclude>
     <ClInclude Include="PyDbDbLayerStateManager.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbSection.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>

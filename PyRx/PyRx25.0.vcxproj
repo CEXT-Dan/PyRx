@@ -147,6 +147,7 @@
     <ClCompile Include="PyDbOverrule.cpp" />
     <ClCompile Include="PyDbPointCloudEx.cpp" />
     <ClCompile Include="PyDbPointRef.cpp" />
+    <ClCompile Include="PyDbSection.cpp" />
     <ClCompile Include="PyDbSpatialFilter.cpp" />
     <ClCompile Include="PyDbSubDMesh.cpp" />
     <ClCompile Include="PyDbTextEditor.cpp" />
@@ -269,6 +270,7 @@
     <ClInclude Include="PyDbOverrule.h" />
     <ClInclude Include="PyDbPointCloudEx.h" />
     <ClInclude Include="PyDbPointRef.h" />
+    <ClInclude Include="PyDbSection.h" />
     <ClInclude Include="PyDbSpatialFilter.h" />
     <ClInclude Include="PyDbSubDMesh.h" />
     <ClInclude Include="PyDbTextEditor.h" />

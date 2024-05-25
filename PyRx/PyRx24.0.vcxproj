@@ -138,6 +138,7 @@
     <ClCompile Include="PlCore.cpp" />
     <ClCompile Include="PyDbDbLayerStateManager.cpp" />
     <ClCompile Include="PyDbGripData.cpp" />
+    <ClCompile Include="PyDbSection.cpp" />
     <ClCompile Include="PyDbSubDMesh.cpp" />
     <ClCompile Include="PyDb3dProfile.cpp" />
     <ClCompile Include="PyDbDatabaseReactor.cpp" />
@@ -260,6 +261,7 @@
     <ClInclude Include="PlCore.h" />
     <ClInclude Include="PyDbDbLayerStateManager.h" />
     <ClInclude Include="PyDbGripData.h" />
+    <ClInclude Include="PyDbSection.h" />
     <ClInclude Include="PyDbSubDMesh.h" />
     <ClInclude Include="PyDb3dProfile.h" />
     <ClInclude Include="PyDbDatabaseReactor.h" />
