@@ -7266,11 +7266,8 @@ This class cannot be instantiated from Python'''
     ...
 
 class Matrix2d(object):
-    def __imul__ (self, *args, **kwargs)-> PyGe.Matrix2d :
-      '''__imul__( (Matrix2d)arg1, (Matrix2d)arg2) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d {lvalue} __imul__(class AcGeMatrix2d {lvalue},class AcGeMatrix2d)'''
+    def __imul__ (self, xform: PyGe.Matrix2d)-> PyGe.Matrix2d :
+      '''                             '''
     ...
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -7283,38 +7280,25 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def __mul__ (self, *args, **kwargs)-> PyGe.Matrix2d :
-      '''__mul__( (Matrix2d)arg1, (Matrix2d)arg2) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d __mul__(class AcGeMatrix2d {lvalue},class AcGeMatrix2d)'''
+    def __mul__ (self, xform: PyGe.Matrix2d)-> PyGe.Matrix2d :
+      '''                             '''
     ...
-    def alignCoordSys (self, *args, **kwargs)-> PyGe.Matrix2d :
-      '''alignCoordSys( (Point2d)arg1, (Vector2d)arg2, (Vector2d)arg3, (Point2d)arg4, (Vector2d)arg5, (Vector2d)arg6) -> Matrix2d :
 
-    C++ signature :
-        class AcGeMatrix2d alignCoordSys(class AcGePoint2d,class AcGeVector2d,class AcGeVector2d,class AcGePoint2d,class AcGeVector2d,class AcGeVector2d)'''
+    @staticmethod
+    def alignCoordSys (fo: PyGe.Point2d,fe0: PyGe.Vector2d,fe1: PyGe.Vector2d,to: PyGe.Point2d,te0: PyGe.Vector2d,te1: PyGe.Vector2d)-> PyGe.Matrix2d :
+      '''                             '''
     ...
     def det (self)-> float :
       '''                             '''
     ...
-    def elementAt (self, *args, **kwargs)-> float :
-      '''elementAt( (Matrix2d)arg1, (SubentType)arg2, (SubentType)arg3) -> float :
-
-    C++ signature :
-        double elementAt(class AcGeMatrix2d {lvalue},unsigned int,unsigned int)'''
+    def elementAt (self, row: int, col: int)-> float :
+      '''                             '''
     ...
-    def getCoordSystem (self, *args, **kwargs)-> None :
-      '''getCoordSystem( (Matrix2d)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4) -> None :
-
-    C++ signature :
-        void getCoordSystem(class AcGeMatrix2d {lvalue},class AcGePoint2d {lvalue},class AcGeVector2d {lvalue},class AcGeVector2d {lvalue})'''
+    def getCoordSystem (self, or: PyGe.Point2d, e0: PyGe.Vector2d, e1: PyGe.Vector2d)-> None :
+      '''                             '''
     ...
-    def getTranslation (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''getTranslation( (Matrix2d)arg1) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d getTranslation(class AcGeMatrix2d {lvalue})'''
+    def getTranslation (self)-> PyGe.Vector2d :
+      '''                             '''
     ...
     def inverse (self)-> PyGe.Matrix2d :
       '''                             '''
@@ -7322,67 +7306,36 @@ __init__( (object)arg1) -> None :
     def invert (self)-> PyGe.Matrix2d :
       '''                             '''
     ...
-    def isConformal (self, *args, **kwargs)-> bool :
-      '''isConformal( (Matrix2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (Vector2d)arg5) -> bool :
-
-    C++ signature :
-        bool isConformal(class AcGeMatrix2d {lvalue},double {lvalue},double {lvalue},bool {lvalue},class AcGeVector2d {lvalue})'''
+    def isEqualTo (self, xform: PyGe.Matrix2d)-> bool :
+      '''                             '''
     ...
-    def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B74C258940>]) -> bool :
-
-    C++ signature :
-        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x000001B74C258940>])'''
+    def isScaledOrtho (self, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
-    def isScaledOrtho (self, *args, **kwargs)-> bool :
-      '''isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B74C258A60>]) -> bool :
-
-    C++ signature :
-        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B74C258A60>])'''
+    def isSingular (self, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
-    def isSingular (self, *args, **kwargs)-> bool :
-      '''isSingular( (Matrix2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isSingular(class AcGeMatrix2d {lvalue},class AcGeTol)'''
-    ...
-    def isUniScaledOrtho (self, *args, **kwargs)-> bool :
-      '''isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B74C2589D0>]) -> bool :
-
-    C++ signature :
-        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B74C2589D0>])'''
+    def isUniScaledOrtho (self, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def mirroring (self, *args, **kwargs)-> PyGe.Matrix2d :
-      '''mirroring( (Point2d)arg1) -> Matrix2d :
 
-    C++ signature :
-        class AcGeMatrix2d mirroring(class AcGePoint2d)
-
-mirroring( (object)arg1) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d mirroring(class AcGeLine2d)'''
+    @staticmethod
+    def mirroring (pt: PyGe.Point2d|PyGe.Line2d)-> PyGe.Matrix2d :
+      '''                             '''
     ...
-    def postMultBy (self, *args, **kwargs)-> PyGe.Matrix2d :
-      '''postMultBy( (Matrix2d)arg1, (Matrix2d)arg2) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d {lvalue} postMultBy(class AcGeMatrix2d {lvalue},class AcGeMatrix2d)'''
+    def postMultBy (self, xform: PyGe.Matrix2d)-> PyGe.Matrix2d :
+      '''                             '''
     ...
-    def preMultBy (self, *args, **kwargs)-> PyGe.Matrix2d :
-      '''preMultBy( (Matrix2d)arg1, (Matrix2d)arg2) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d {lvalue} preMultBy(class AcGeMatrix2d {lvalue},class AcGeMatrix2d)'''
+    def preMultBy (self, xform: PyGe.Matrix2d)-> PyGe.Matrix2d :
+      '''                             '''
     ...
-    def rotation (self, *args, **kwargs)-> PyGe.Matrix2d :
-      '''rotation( (float)arg1, (Point2d)arg2) -> Matrix2d :
 
-    C++ signature :
-        class AcGeMatrix2d rotation(double,class AcGePoint2d)'''
+    @staticmethod
+    def rotation (val: float,pt: PyGe.Point2d)-> PyGe.Matrix2d :
+      '''                             '''
     ...
     def scale (self)-> float :
       '''                             '''
@@ -7392,64 +7345,32 @@ mirroring( (object)arg1) -> Matrix2d :
     def scaling (scaleAll:float,center: PyGe.Point2d)-> PyGe.Matrix2d :
       '''                             '''
     ...
-    def setCoordSystem (self, *args, **kwargs)-> PyGe.Matrix2d :
-      '''setCoordSystem( (Matrix2d)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d {lvalue} setCoordSystem(class AcGeMatrix2d {lvalue},class AcGePoint2d,class AcGeVector2d,class AcGeVector2d)'''
+    def setCoordSystem (self, or: PyGe.Point2d, e0: PyGe.Vector2d, e1: PyGe.Vector2d)-> PyGe.Matrix2d :
+      '''                             '''
     ...
-    def setToAlignCoordSys (self, *args, **kwargs)-> PyGe.Matrix2d :
-      '''setToAlignCoordSys( (Matrix2d)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (Point2d)arg5, (Vector2d)arg6, (Vector2d)arg7) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d {lvalue} setToAlignCoordSys(class AcGeMatrix2d {lvalue},class AcGePoint2d,class AcGeVector2d,class AcGeVector2d,class AcGePoint2d,class AcGeVector2d,class AcGeVector2d)'''
+    def setToAlignCoordSys (self, fo: PyGe.Point2d, fe0: PyGe.Vector2d, fe1: PyGe.Vector2d, to: PyGe.Point2d, te0: PyGe.Vector2d, te1: PyGe.Vector2d)-> PyGe.Matrix2d :
+      '''                             '''
     ...
-    def setToIdentity (self, *args, **kwargs)-> PyGe.Matrix2d :
-      '''setToIdentity( (Matrix2d)arg1) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d {lvalue} setToIdentity(class AcGeMatrix2d {lvalue})'''
+    def setToIdentity (self)-> PyGe.Matrix2d :
+      '''                             '''
     ...
-    def setToMirroring (self, *args, **kwargs)-> PyGe.Matrix2d :
-      '''setToMirroring( (Matrix2d)arg1, (Point2d)arg2) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d {lvalue} setToMirroring(class AcGeMatrix2d {lvalue},class AcGePoint2d)
-
-setToMirroring( (Matrix2d)arg1, (object)arg2) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d {lvalue} setToMirroring(class AcGeMatrix2d {lvalue},class AcGeLine2d)'''
+    def setToMirroring (self, pt: PyGe.Point2d|PyGe.Line2d)-> PyGe.Matrix2d :
+      '''                             '''
     ...
-    def setToProduct (self, *args, **kwargs)-> PyGe.Matrix2d :
-      '''setToProduct( (Matrix2d)arg1, (Matrix2d)arg2, (Matrix2d)arg3) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d {lvalue} setToProduct(class AcGeMatrix2d {lvalue},class AcGeMatrix2d,class AcGeMatrix2d)'''
+    def setToProduct (self, xform1: PyGe.Matrix2d, xform2: PyGe.Matrix2d)-> PyGe.Matrix2d :
+      '''                             '''
     ...
-    def setToRotation (self, *args, **kwargs)-> PyGe.Matrix2d :
-      '''setToRotation( (Matrix2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d(0.00000000000000,0.00000000000000)>]) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d {lvalue} setToRotation(class AcGeMatrix2d {lvalue},double [,class AcGePoint2d=<PyGe.Point2d(0.00000000000000,0.00000000000000)>])'''
+    def setToRotation (self, val: float, pt: PyGe.Point2d=PyGe.Point2d.kOrgin)-> PyGe.Matrix2d :
+      '''                             '''
     ...
-    def setToScaling (self, *args, **kwargs)-> PyGe.Matrix2d :
-      '''setToScaling( (Matrix2d)arg1, (float)arg2, (Point2d)arg3) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d {lvalue} setToScaling(class AcGeMatrix2d {lvalue},double,class AcGePoint2d)'''
+    def setToScaling (self, val: float, pt: PyGe.Point2d=PyGe.Point2d.kOrgin)-> PyGe.Matrix2d :
+      '''                             '''
     ...
-    def setToTranslation (self, *args, **kwargs)-> PyGe.Matrix2d :
-      '''setToTranslation( (Matrix2d)arg1, (Vector2d)arg2) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d {lvalue} setToTranslation(class AcGeMatrix2d {lvalue},class AcGeVector2d)'''
+    def setToTranslation (self, vec: PyGe.Vector2d)-> PyGe.Matrix2d :
+      '''                             '''
     ...
-    def setTranslation (self, *args, **kwargs)-> PyGe.Matrix2d :
-      '''setTranslation( (Matrix2d)arg1, (Vector2d)arg2) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d {lvalue} setTranslation(class AcGeMatrix2d {lvalue},class AcGeVector2d)'''
+    def setTranslation (self, vec: PyGe.Vector2d)-> PyGe.Matrix2d :
+      '''                             '''
     ...
     def toList (self)-> list :
       '''                             '''
@@ -13523,10 +13444,10 @@ class Vector2d(object):
       '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B74C258820>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000022624FB8820>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001B74C258820>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000022624FB8820>])'''
     ...
     def isParallelTo (self, vec: PyGe.Vector2d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -13535,16 +13456,16 @@ class Vector2d(object):
       '''                             '''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B74C258550>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000022624FB8550>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B74C258550>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000022624FB8550>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B74C2585E0>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000022624FB85E0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B74C2585E0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000022624FB85E0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
