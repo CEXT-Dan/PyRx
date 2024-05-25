@@ -1201,12 +1201,10 @@ void makePyGeMatrix3dWrapper()
         "- val: PyGe.Line3d\n"
         "- val: PyGe.Point3d\n";
 
-
     constexpr const std::string_view inverseOverloads = "Overloads:\n"
         "- None: Any\n"
         "- tol: PyGe.Tol\n"
         "- xform: PyGe.Matrix3d, tol: float";
-
 
     PyDocString DS("PyGe.Matrix3d");
     class_<AcGeMatrix3d>("Matrix3d")
