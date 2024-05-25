@@ -1201,6 +1201,13 @@ void makePyGeMatrix3dWrapper()
         "- val: PyGe.Line3d\n"
         "- val: PyGe.Point3d\n";
 
+
+    constexpr const std::string_view inverseOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- tol: PyGe.Tol\n"
+        "- xform: PyGe.Matrix3d, tol: float";
+
+
     PyDocString DS("PyGe.Matrix3d");
     class_<AcGeMatrix3d>("Matrix3d")
         .def(init<>(DS.ARGS()))
@@ -1210,11 +1217,11 @@ void makePyGeMatrix3dWrapper()
         .def("postMultBy", &AcGeMatrix3d::postMultBy, DS.ARGS({ "val: PyGe.Matrix3d" }), return_self<>())
         .def("setToProduct", &AcGeMatrix3d::setToProduct, DS.ARGS({ "mat1: PyGe.Matrix3d","mat2: PyGe.Matrix3d" }), return_self<>())
         .def("invert", &AcGeMatrix3d::invert, DS.ARGS(), return_self<>())
-        .def<AcGeMatrix3d(AcGeMatrix3d::*)(void)const>("inverse", &AcGeMatrix3d::inverse)
 #if !defined(_BRXTARGET240)
-        .def<AcGeMatrix3d(AcGeMatrix3d::*)(const AcGeTol&)const>("inverse", &AcGeMatrix3d::inverse, DS.ARGS({ "tol: PyGe.Tol=None" }))
+        .def<AcGeMatrix3d(AcGeMatrix3d::*)(const AcGeTol&)const>("inverse", &AcGeMatrix3d::inverse)
 #endif
-        .def<Adesk::Boolean(AcGeMatrix3d::*)(AcGeMatrix3d&, double)const>("inverse", &AcGeMatrix3d::inverse)
+        .def<AcGeMatrix3d(AcGeMatrix3d::*)(void)const>("inverse", &AcGeMatrix3d::inverse)
+        .def<Adesk::Boolean(AcGeMatrix3d::*)(AcGeMatrix3d&, double)const>("inverse", &AcGeMatrix3d::inverse, DS.OVRL(inverseOverloads))
         .def("isSingular", &AcGeMatrix3d::isSingular, DS.ARGS({ "val: PyGe.Tol=None" }))
         .def("transposeIt", &AcGeMatrix3d::transposeIt, DS.ARGS(), return_self<>())
         .def("transpose", &AcGeMatrix3d::transpose, DS.ARGS())
@@ -1238,7 +1245,6 @@ void makePyGeMatrix3dWrapper()
         .def("setToAlignCoordSys", &AcGeMatrix3d::setToAlignCoordSys, return_self<>(), DS.ARGS(
             { "fromOrigin: PyGe.Point3d","fromXAxis: PyGe.Vector3d","fromYAxis: PyGe.Vector3d","fromZAxis: PyGe.Vector3d",
                    "toOrigin: PyGe.Point3d","toXAxis: PyGe.Vector3d","toYAxis: PyGe.Vector3d","toZAxis: PyGe.Vector3d" }))
-
         .def("setToWorldToPlane", &AcGeMatrix3dworldToPlane)
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeVector3d&)>("setToWorldToPlane", &AcGeMatrix3d::setToWorldToPlane, DS.ARGS({ "val: PyGe.Vector3d | PyGe.Plane" }), return_self<>())
         .def("setToPlaneToWorld", &AcGeMatrix3dplaneToWorld)
@@ -1255,12 +1261,9 @@ void makePyGeMatrix3dWrapper()
         .def("mirroring", &AcGeMatrix3dmirroring2)
         .def("mirroring", &AcGeMatrix3dmirroring3, DS.SARGS({ "val: PyGe.Point3d|PyGe.Plane|PyGe.Line3d" })).staticmethod("mirroring")
         .def("projection", &AcGeMatrix3dprojection, DS.SARGS({ "projectionPlane: PyGe.Plane","projectDir: PyGe.Vector3d" })).staticmethod("projection")
-
         .def("alignCoordSys", &AcGeMatrix3dalignCoordSys, DS.SARGS(
             { "fromOrigin: PyGe.Point3d","fromXAxis: PyGe.Vector3d","fromYAxis: PyGe.Vector3d","fromZAxis: PyGe.Vector3d",
                    "toOrigin: PyGe.Point3d","toXAxis: PyGe.Vector3d","toYAxis: PyGe.Vector3d","toZAxis: PyGe.Vector3d" })).staticmethod("alignCoordSys")//
-
-
         .def("worldToPlane", &AcGeMatrix3dworldToPlane1)
         .def("worldToPlane", &AcGeMatrix3dworldToPlane2, DS.SARGS({ "val: PyGe.Vector3d|PyGe.Plane" })).staticmethod("worldToPlane")
         .def("planeToWorld", &AcGeMatrix3dplaneToWorld1)
