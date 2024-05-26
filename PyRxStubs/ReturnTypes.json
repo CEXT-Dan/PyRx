@@ -1,0 +1,114 @@
+{
+    "type": "table",
+    "database": null,
+    "name": "RETURNTYPES",
+    "withoutRowId": false,
+    "strict": false,
+    "ddl": "CREATE TABLE RETURNTYPES (Key TEXT UNIQUE NOT NULL ON CONFLICT ROLLBACK, Value TEXT);",
+    "columns": [
+        {
+            "name": "Key",
+            "type": "TEXT",
+            "constraints": [
+                {
+                    "type": "UNIQUE",
+                    "definition": "UNIQUE "
+                },
+                {
+                    "type": "NOT NULL",
+                    "definition": "NOT NULL ON CONFLICT ROLLBACK"
+                }
+            ]
+        },
+        {
+            "name": "Value",
+            "type": "TEXT"
+        }
+    ],
+    "rows": [
+        [
+            "PyEd::Editor::getKword",
+            "tuple[int, str]"
+        ],
+        [
+            "PyEd::Editor::getCorner",
+            "tuple[PyEd.PromptStatus, PyGe.Point3d]"
+        ],
+        [
+            "PyEd::Editor::getInteger",
+            "tuple[PyEd.PromptStatus, int]"
+        ],
+        [
+            "PyEd::Editor::getDouble",
+            "tuple[PyEd.PromptStatus, float]"
+        ],
+        [
+            "PyEd::Editor::getAngle",
+            "tuple[PyEd.PromptStatus, float]"
+        ],
+        [
+            "PyEd::Editor::getPoint",
+            "tuple[PyEd.PromptStatus, PyGe.Point3d]"
+        ],
+        [
+            "PyEd::Editor::getDist",
+            "tuple[PyEd.PromptStatus, float]"
+        ],
+        [
+            "PyEd::Editor::getReal",
+            "tuple[PyEd.PromptStatus, float]"
+        ],
+        [
+            "PyEd::Editor::getString",
+            "tuple[PyEd.PromptStatus, str]"
+        ],
+        [
+            "PyEd::Editor::select",
+            "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
+        ],
+        [
+            "PyEd::Editor::selectFence",
+            "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
+        ],
+        [
+            "PyEd::Editor::selectLast",
+            "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
+        ],
+        [
+            "PyEd::Editor::selectPrevious",
+            "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
+        ],
+        [
+            "PyEd::Editor::selectPrompt",
+            "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
+        ],
+        [
+            "PyEd::Editor::selectWindow",
+            "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
+        ],
+        [
+            "PyEd::Editor::selectWindowPolygon",
+            "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
+        ],
+        [
+            "PyEd::Editor::ssget",
+            "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
+        ],
+        [
+            "PyEd::Editor::selectAll",
+            "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
+        ],
+        [
+            "PyEd::Editor::entSel",
+            "tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d]"
+        ],
+        [
+            "PyEd::Editor::nEntSelP",
+            "tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d,PyGe.Matrix3d,list[PyDb.ObjectId]]"
+        ],
+        [
+            "PyEd::Editor::nEntSelPEx",
+            "tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId]]"
+        ]
+    ]
+}
