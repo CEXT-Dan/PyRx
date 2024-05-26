@@ -97,11 +97,8 @@ public:
     void                addSubentPaths(const boost::python::list& newPaths);
     boost::python::list getSubentPathsAtGsMarker1(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform);
     boost::python::list getSubentPathsAtGsMarker2(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform, int numInserts, PyDbObjectId& entAndInsertStack);
-
     void                highlight1() const;
     void                highlight2(const PyDbFullSubentPath& subId, const Adesk::Boolean highlightAll)const;
-
-
     static std::string  className();
     static PyRxClass    desc();
     static PyDbEntity   cloneFrom(const PyRxObject& src);
@@ -119,6 +116,14 @@ inline AcArray<AcDbEntity*> PyListToPyDbEntityPtrArray(const boost::python::obje
     return arr;
 }
 
+inline boost::python::list AcDbEntityArrayToPyList(const AcArray<AcDbEntity*>& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto item : arr)
+        pyPyList.append(PyDbEntity(item,true));
+    return pyPyList;
+}
 
 //-------------------------------------------------------------------------------------------------------------
 //PyDbBlockBegin
