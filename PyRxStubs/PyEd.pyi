@@ -2301,7 +2301,7 @@ class SelectionSet(object):
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def objectIds (self, desc: PyRx.RxClass=PyDb.Entity)-> list :
+    def objectIds (self, desc: PyRx.RxClass=PyDb.Entity)-> list[PyDb.ObjectId] :
       '''                             '''
     ...
     def remove (self, id: PyDb.ObjectId)-> None :
