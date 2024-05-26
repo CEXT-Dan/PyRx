@@ -205,7 +205,11 @@ def findReturnType(sig):
         ib = sig.find('->')
         ie = sig.find(':')
         if ib != -1:
-            return '-> ' + findReturnTypeModlue(sig[ib+2:ie].strip())
+            rtType = findReturnTypeModlue(sig[ib+2:ie].strip())
+            #Type hinting work around for tuples #63 
+            if rtType == 'tuple':
+                rtType = 'tuple[Any,...]'
+            return '-> ' + rtType
         return "-> None"
     except:
         return "-> None"
@@ -230,6 +234,7 @@ def generate_pyi(moduleName, module, conn):
         for mname in all_modules_names:
             f.write(f'import {mname}\n')
         f.write('from typing import overload\n')
+        f.write('from typing import Any\n')
 
         for name, obj in inspect.getmembers(module):
             if inspect.isclass(obj):

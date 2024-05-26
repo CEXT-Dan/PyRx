@@ -7,6 +7,7 @@ import PyAp
 import PyEd
 import PyPl
 from typing import overload
+from typing import Any
 
 class AutoSysVar(object):
     def __init__ (self, varname:str, value)-> None :
@@ -103,7 +104,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def coordFromWorldToPixel (windnum: int ,pnt: PyGe.Point3d)-> tuple :
+    def coordFromWorldToPixel (windnum: int ,pnt: PyGe.Point3d)-> tuple[Any,...] :
       '''Converts coordinates in given viewport to Windows screen coordinates.Returns TRUE if it successfully converts the coordinates; otherwise, returns FALSE.'''
     ...
 
@@ -228,12 +229,12 @@ class Core(object):
     ...
 
     @staticmethod
-    def getCurVportPixelToDisplay ()-> tuple :
+    def getCurVportPixelToDisplay ()-> tuple[Any,...] :
       ''' This function sets xFactor and yFactor to the x and y pixel space to display space conversion factors for the current viewport. These values represent the size of a pixel in display coordinates. If there is no current viewport, then both are set to 0.0.'''
     ...
 
     @staticmethod
-    def getCurVportScreenToDisplay ()-> tuple :
+    def getCurVportScreenToDisplay ()-> tuple[Any,...] :
       ''' This function sets xFactor and yFactor to the x and y screen space to display space conversion factors for the current viewport. If there is no current viewport, then both are set to 0.0.'''
     ...
 
@@ -283,7 +284,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def getRGB (colorIndex : int)-> tuple :
+    def getRGB (colorIndex : int)-> tuple[Any,...] :
       '''This function returns a RGB color value in Win32 COLORREF (0x00bbggrr) format for the color specified by the AutoCAD Color Index (ACI) number. The ACI number must be a value between 0 and 255.If this function is passed a value less than 0 or greater than 255, then the return value will be meaningless.'''
     ...
 
@@ -508,12 +509,12 @@ class Core(object):
     ...
 
     @staticmethod
-    def setColorDialog (clr: int,bAllowMetaColor: bool,nCurLayerColor, int)-> tuple :
+    def setColorDialog (clr: int,bAllowMetaColor: bool,nCurLayerColor, int)-> tuple[Any,...] :
       '''This function starts the SetColor dialog within the AutoCAD editor. The value passed in via nColor is used as the default color index in the dialog. Upon return nColor contains the color index of the color selected by the user. If bAllowMetaColor is Adesk::kTrue, the BYLAYER and BYBLOCK meta-colors are allowed in the dialog. nCurLayerColor is used as the color index of the color to show for BYLAYER.If the SetColor dialog is invoked using this function, only the color index tab is available. To enable the user to select additional color types, invoke the SetColor dialog with the acedSetColorDialogTrueColor() function.Returns Adesk::kTrue if the dialog was successfully terminated via the OK button, or Adesk::kFalse if the dialog was canceled.'''
     ...
 
     @staticmethod
-    def setColorDialogTrueColor (clr: PyDb.AcCmColor,bAllowMetaColor: bool,nCurLayerColor: PyDb.AcCmColor,tab: int = 7)-> tuple :
+    def setColorDialogTrueColor (clr: PyDb.AcCmColor,bAllowMetaColor: bool,nCurLayerColor: PyDb.AcCmColor,tab: int = 7)-> tuple[Any,...] :
       '''This function starts the Set Color dialog box within the AutoCAD editor.The value passed in color is the default color in the dialog. This can affect which tab and controls are active upon entering the dialog box. When the function returns, color contains the color selected by the user or the original value if the dialog box was aborted.If bAllowMetaColor is Adesk::kTrue, the BYLAYER and BYBLOCK metacolors are allowed in the dialog. curLayerColor is the color to show for BYLAYER.The function returns Adesk::kTrue if the dialog box was successfully terminated by the OK button; it returns Adesk::kFalse if the dialog box was canceled.'''
     ...
 
@@ -583,7 +584,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def textBox (resultBuffer: list)-> tuple :
+    def textBox (resultBuffer: list)-> tuple[Any,...] :
       '''Finds the coordinates of a box that encloses a text entity. Assumes that the origin is (0,0) and the rotation is 0 (or 270 if the text is vertical). If the text is located at a different point or is rotated, your program must handle these values explicitly.If the text is horizontal and is not rotated, p1 (the bottom-left corner) and p2 (the top-right corner) describe the bounding box of the text. The coordinates are expressed in the ECS of ent, with the origin (0,0) at the left endpoint of the baseline. (The origin is not the bottom-left corner if the text contains letters with descenders, such as g and p.) If the text is vertical or rotated, p1 and p2 still observe the left-to-right, bottom-to-top order; the offsets are negative, if necessary.If the result-buffer list passed in ent begins with a -1 (entity name) group, this group must name an existing text, attdef, or attrib entity. No further groups need to be present, but if the list contains further groups, these override the entity's actual attributes.If the result-buffer list doesn't begin with a -1 group, it must begin with a 0 (entity type) group, and it must contain a group that contains the string itself. This is a 1 (value) group for a text or attrib entity, or a 2 (tag string) group for an attdef entity. Other values are assumed to be the default values unless they are explicitly specified. The defaults are as follows:Style (group 7)--Defaults to the current text styleSize (group 40)--Defaults to the size of the style if that is fixed; otherwise, defaults to the current default size of the styleWidth factor (group 41)--Defaults to the default width of the styleObliquing angle (group 51)--Defaults to the default angle of the styleIf acedTextBox() succeeds, it returns RTNORM; it returns RTERROR if ent does not correctly specify a text entity. If acedTextBox() fails, it sets the system variable ERRNO to a value that indicates the reason for the failure.'''
     ...
 
@@ -1010,16 +1011,16 @@ class DrawJig(object):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def acquireAngle (self, basePnt: PyGe.Point3d=None)-> tuple :
+    def acquireAngle (self, basePnt: PyGe.Point3d=None)-> tuple[Any,...] :
       '''                             '''
     ...
-    def acquireDist (self, basePnt: PyGe.Point3d=None)-> tuple :
+    def acquireDist (self, basePnt: PyGe.Point3d=None)-> tuple[Any,...] :
       '''                             '''
     ...
-    def acquirePoint (self, basePnt: PyGe.Point3d=None)-> tuple :
+    def acquirePoint (self, basePnt: PyGe.Point3d=None)-> tuple[Any,...] :
       '''                             '''
     ...
-    def acquireString (self)-> tuple :
+    def acquireString (self)-> tuple[Any,...] :
       '''                             '''
     ...
 
@@ -1134,17 +1135,17 @@ class Editor(object):
     ...
 
     @staticmethod
-    def entSel (prompt: str,desc: PyRx.RxClass=PyDb.Entity)-> tuple :
+    def entSel (prompt: str,desc: PyRx.RxClass=PyDb.Entity)-> tuple[Any,...] :
       '''Prompts the user to select an entity by specifying a point.Pauses for user input and returns both an entity name and the point that is used to select the entity.The acedEntSel() function does not return the names of nongraphical objects.Some entity operations require knowledge of the point by which the entity was selected. Examples are the AutoCAD BREAK, TRIM, and EXTEND commands, as well as OSNAP; acedEntSel() provides the same capability to ARX applications. The acedEntSel() function ignores the current OSNAP setting (no object snap) unless the user specifically requests it.When the user responds to acedEntSel() by specifying a complex entity, it returns the polyline or block header. This differs from the function acedNEntSelP(), which returns the nearest block attribute or polyline vertex.The acedEntSel() function returns RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [Esc]). A prior call to acedInitGet() can also enable a return value of RTKWORD (see the description of acedInitGet()). When acedEntSel() fails, it sets the system variable ERRNO to a value that indicates the reason for the failure.'''
     ...
 
     @staticmethod
-    def getAngle (basePt: PyGe.Point3d,prompt: str)-> tuple :
+    def getAngle (basePt: PyGe.Point3d,prompt: str)-> tuple[Any,...] :
       '''Gets user input for an angle, taking into account the current value of the ANGBASE system variable.The AutoCAD user can specify the angle by entering a number in the current angular units format. The user can set the angle also by specifying two 2D locations on the graphics screen. AutoCAD draws a rubber-band line from the first point to the current crosshair position to help the user visualize the angle. If the pt argument is not null, AutoCAD uses this value as the first of the two points. The angle is measured in the XY plane of the current UCS (acedGetAngle() ignores the Z field of pt).The direction of angular increase is always counterclockwise.The acedGetAngle() function is almost identical to acedGetOrient(), but it takes into account the current value of the ANGBASE system variable. For acedGetOrient(), the 0 angle is always to the right: "east" or "3 o'clock." For acedGetAngle(), the 0 angle is the value of ANGBASE, which can be set to any of the four 90-degree quadrants. Both acedGetAngle() and acedGetOrient() return a (real) angle value in radians measured counterclockwise from a base (0) angle. For acedGetAngle(), the base equals ANGBASE; for acedGetOrient(), the base is at the right. Both functions honor the current value of ANGDIR, which affects the value the user enters but not the value that these functions return.For example, if ANGBASE is set to 90 degrees (north) and ANGDIR is set to 1 (clockwise direction for increasing angles), as shown in the figure that accompanies the following table, then given these conditions, the values returned by acedGetAngle() and acedGetOrient() will be as shown in the table.Results from acedGetAngle and acedGetOrient:User input (degrees)acedGetAngle() returnsacedGetOrient() returns00.01.5708-901.57083.141591803.141594.71239904.712390.0The user cannot respond to acedGetAngle() by entering an AutoLISP expression.You can use acedGetAngle() to obtain a rotation amount for a block insertion, because an input of 0 degrees always returns 0 radians. You can use acedGetOrient() to obtain the baseline angle for a text entity to be aligned with other objects.The acedGetAngle() function returns RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [Esc] ). It returns RTMODELESS, if the active command was registered using the ACRX_CMD_INTERRUPTIBLE flag and the document has received a modeless interrupt signal from a call to  AcApDocManager::sendModelessInterrupt(). A prior call to acedInitGet() can also enable return values of RTNONE or RTKWORD (see the description of acedInitGet()).If the optional pt or prompt is not used, pass a null pointer for these arguments.'''
     ...
 
     @staticmethod
-    def getCorner (basePt: PyGe.Point3d,prompt: str)-> tuple :
+    def getCorner (basePt: PyGe.Point3d,prompt: str)-> tuple[Any,...] :
       '''Gets user input for the corner of a rectangle.The AutoCAD user can specify the corner by entering a point in the current units format; acedGetCorner() treats pt as a three-dimensional point. The user can specify the corner also by specifying a location on the graphics screen. AutoCAD draws a dynamically sized rectangle from pt to the current crosshair position to help the user visualize the location of the second corner. The rectangle is drawn in the XY plane of the current DCS. When the pointing device is used, acedGetCorner() ignores the Z field of pt and sets the Z field of result to the current elevation.The user cannot respond to acedGetCorner() by entering an AutoLISP expression.The acedGetCorner() function returns one of the following: RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [Esc]). It returns RTMODELESS, if the active command was registered using the ACRX_CMD_INTERRUPTIBLE flag and the document has received a modeless interrupt signal from a call to  AcApDocManager::sendModelessInterrupt(). A prior call to acedInitGet() can also enable return values of RTNONE or RTKWORD.'''
     ...
 
@@ -1160,12 +1161,12 @@ class Editor(object):
 
     @overload
     @staticmethod
-    def getDist (prompt: str)-> tuple : ...
+    def getDist (prompt: str)-> tuple[Any,...] : ...
     @overload
     @staticmethod
-    def getDist (basePt: PyGe.Point3d, prompt: str)-> tuple : ...
+    def getDist (basePt: PyGe.Point3d, prompt: str)-> tuple[Any,...] : ...
     @staticmethod
-    def getDist (self, *args, **kwargs)-> tuple :
+    def getDist (self, *args, **kwargs)-> tuple[Any,...] :
       '''Overloads:
     - prompt: str
     - basePt: PyGe.Point3d, prompt: str
@@ -1174,28 +1175,28 @@ class Editor(object):
     ...
 
     @staticmethod
-    def getDouble (prompt: str)-> tuple :
+    def getDouble (prompt: str)-> tuple[Any,...] :
       '''Gets user input for a real value.The AutoCAD user can enter any valid real value, but the user cannot respond to acedGetReal() by entering an AutoLISP expression.The acedGetReal() function returns one of the following: RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [Esc]). It returns RTMODELESS, if the active command was registered using the ACRX_CMD_INTERRUPTIBLE flag and the document has received a modeless interrupt signal from a call to  AcApDocManager::sendModelessInterrupt(). A prior call to acedInitGet() can also enable return values of RTNONE or RTKWORD.'''
     ...
 
     @staticmethod
-    def getInteger (prompt: str)-> tuple :
+    def getInteger (prompt: str)-> tuple[Any,...] :
       '''Gets user input for an integer.The AutoCAD user can enter any valid 32-bit integer.The user cannot respond to acedGetInt() by entering an AutoLISP expression.The acedGetInt() function returns one of the following: RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [ESC]). A prior call to acedInitGet() can also enable return values of RTNONE or RTKWORD.'''
     ...
 
     @staticmethod
-    def getKword (keyword: str)-> tuple :
+    def getKword (keyword: str)-> tuple[Any,...] :
       '''Deprecated. Function acedGetFullKword() is an alternate form of acedGetKword(). Instead of truncating any characters beyond the 131, acedGetFullKword() returns a new copy of the entire string using acutUpdString() and updates pStr to point to the new copy. Aside from the manner in which it returns the input string, this function behaves exactly like acedGetKword().The caller is responsible for freeing the returned string using acutDelString().This function returns the same error codes as acedGetInput(). If there is insufficient memory for a copy of the string, this function returns RTERROR.See function acedGetKword() for more information.'''
     ...
 
     @overload
     @staticmethod
-    def getPoint (prompt: str)-> tuple : ...
+    def getPoint (prompt: str)-> tuple[Any,...] : ...
     @overload
     @staticmethod
-    def getPoint (basePt: PyGe.Point3d, prompt: str)-> tuple : ...
+    def getPoint (basePt: PyGe.Point3d, prompt: str)-> tuple[Any,...] : ...
     @staticmethod
-    def getPoint (self, *args, **kwargs)-> tuple :
+    def getPoint (self, *args, **kwargs)-> tuple[Any,...] :
       '''Overloads:
     - prompt: str
     - basePt: PyGe.Point3d, prompt: str
@@ -1204,18 +1205,18 @@ class Editor(object):
     ...
 
     @staticmethod
-    def getReal (prompt: str)-> tuple :
+    def getReal (prompt: str)-> tuple[Any,...] :
       '''Gets user input for a real value.The AutoCAD user can enter any valid real value, but the user cannot respond to acedGetReal() by entering an AutoLISP expression.The acedGetReal() function returns one of the following: RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [Esc]). It returns RTMODELESS, if the active command was registered using the ACRX_CMD_INTERRUPTIBLE flag and the document has received a modeless interrupt signal from a call to  AcApDocManager::sendModelessInterrupt(). A prior call to acedInitGet() can also enable return values of RTNONE or RTKWORD.'''
     ...
 
     @overload
     @staticmethod
-    def getString (prompt: str)-> tuple : ...
+    def getString (prompt: str)-> tuple[Any,...] : ...
     @overload
     @staticmethod
-    def getString (cronly: int, prompt: str)-> tuple : ...
+    def getString (cronly: int, prompt: str)-> tuple[Any,...] : ...
     @staticmethod
-    def getString (self, *args, **kwargs)-> tuple :
+    def getString (self, *args, **kwargs)-> tuple[Any,...] :
       '''Overloads:
     - prompt: str
     - cronly: int, prompt: str
@@ -1234,18 +1235,18 @@ class Editor(object):
     ...
 
     @staticmethod
-    def nEntSelP (prompt: str,selpt: PyGe.Point3d=None)-> tuple :
+    def nEntSelP (prompt: str,selpt: PyGe.Point3d=None)-> tuple[Any,...] :
       '''                             '''
     ...
 
     @overload
     @staticmethod
-    def nEntSelPEx (prompt: str, flags: int)-> tuple : ...
+    def nEntSelPEx (prompt: str, flags: int)-> tuple[Any,...] : ...
     @overload
     @staticmethod
-    def nEntSelPEx (prompt: str, selpt: PyGe.Point3d, flags: int)-> tuple : ...
+    def nEntSelPEx (prompt: str, selpt: PyGe.Point3d, flags: int)-> tuple[Any,...] : ...
     @staticmethod
-    def nEntSelPEx (self, *args, **kwargs)-> tuple :
+    def nEntSelPEx (self, *args, **kwargs)-> tuple[Any,...] :
       '''Overloads:
     - prompt: str, flags: int
     - prompt: str, selpt: PyGe.Point3d, flags: int
@@ -1258,42 +1259,42 @@ class Editor(object):
     ...
 
     @staticmethod
-    def select (filter: list=None)-> tuple :
+    def select (filter: list=None)-> tuple[Any,...] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectAll (filter: list=None)-> tuple :
+    def selectAll (filter: list=None)-> tuple[Any,...] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectFence (points: list[PyGe.Point3d],filter: list=None)-> tuple :
+    def selectFence (points: list[PyGe.Point3d],filter: list=None)-> tuple[Any,...] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectLast (filter: list=None)-> tuple :
+    def selectLast (filter: list=None)-> tuple[Any,...] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectPrevious (filter: list=None)-> tuple :
+    def selectPrevious (filter: list=None)-> tuple[Any,...] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectPrompt (addPromt: str,remPromt: str,filter: list=None)-> tuple :
+    def selectPrompt (addPromt: str,remPromt: str,filter: list=None)-> tuple[Any,...] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectWindow (pt1: PyGe.Point3d,pt2: PyGe.Point3d,filter: list=None)-> tuple :
+    def selectWindow (pt1: PyGe.Point3d,pt2: PyGe.Point3d,filter: list=None)-> tuple[Any,...] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectWindowPolygon (points: list[PyGe.Point3d],filter: list=None)-> tuple :
+    def selectWindowPolygon (points: list[PyGe.Point3d],filter: list=None)-> tuple[Any,...] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
@@ -1308,7 +1309,7 @@ class Editor(object):
     ...
 
     @staticmethod
-    def ssget (mode: str,arg1: any,arg2: any,filter: list=None)-> tuple :
+    def ssget (mode: str,arg1: any,arg2: any,filter: list=None)-> tuple[Any,...] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
@@ -2070,16 +2071,16 @@ class Jig(object):
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbEntity)'''
     ...
-    def acquireAngle (self, basePnt: PyGe.Point3d=None)-> tuple :
+    def acquireAngle (self, basePnt: PyGe.Point3d=None)-> tuple[Any,...] :
       '''                             '''
     ...
-    def acquireDist (self, basePnt: PyGe.Point3d=None)-> tuple :
+    def acquireDist (self, basePnt: PyGe.Point3d=None)-> tuple[Any,...] :
       '''                             '''
     ...
-    def acquirePoint (self, basePnt: PyGe.Point3d=None)-> tuple :
+    def acquirePoint (self, basePnt: PyGe.Point3d=None)-> tuple[Any,...] :
       '''                             '''
     ...
-    def acquireString (self)-> tuple :
+    def acquireString (self)-> tuple[Any,...] :
       '''                             '''
     ...
     def append (self)-> PyDb.ObjectId :

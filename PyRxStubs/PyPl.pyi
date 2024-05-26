@@ -7,6 +7,7 @@ import PyAp
 import PyEd
 import PyPl
 from typing import overload
+from typing import Any
 
 class Core(object):
     def __init__ (self, *args, **kwargs)-> None :
@@ -145,7 +146,7 @@ class DSDData(PlObject):
     def dispose (self)-> None :
       '''                             '''
     ...
-    def get3dDwfOptions (self, *args, **kwargs)-> tuple :
+    def get3dDwfOptions (self, *args, **kwargs)-> tuple[Any,...] :
       '''get3dDwfOptions( (DSDData)arg1) -> tuple :
 
     C++ signature :
@@ -818,7 +819,7 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getDefaultFileExtension(class PyPlPlotConfig {lvalue})'''
     ...
-    def getDescriptionFields (self, *args, **kwargs)-> tuple :
+    def getDescriptionFields (self, *args, **kwargs)-> tuple[Any,...] :
       '''getDescriptionFields( (PlotConfig)arg1) -> tuple :
 
     C++ signature :
@@ -1637,13 +1638,13 @@ __init__( (object)arg1, (int)arg2, (bool)arg3, (int)arg4, (bool)arg5) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotMsgString(class PyPlPlotProgressDialog {lvalue},enum AcPlPlotProgressDialog::PlotMSGIndex)'''
     ...
-    def getPlotProgressRange (self, *args, **kwargs)-> tuple :
+    def getPlotProgressRange (self, *args, **kwargs)-> tuple[Any,...] :
       '''getPlotProgressRange( (PlotProgressDialog)arg1) -> tuple :
 
     C++ signature :
         class boost::python::tuple getPlotProgressRange(class PyPlPlotProgressDialog {lvalue})'''
     ...
-    def getSheetProgressRange (self, *args, **kwargs)-> tuple :
+    def getSheetProgressRange (self, *args, **kwargs)-> tuple[Any,...] :
       '''getSheetProgressRange( (PlotProgressDialog)arg1) -> tuple :
 
     C++ signature :

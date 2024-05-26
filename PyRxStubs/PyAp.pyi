@@ -7,6 +7,7 @@ import PyAp
 import PyEd
 import PyPl
 from typing import overload
+from typing import Any
 
 class AdUiTitleBarLocation(object):
     def __add__ (self, value, /) :
@@ -987,7 +988,7 @@ This class cannot be instantiated from Python'''
     def getCountOfLispList (self)-> int :
       '''Returns number of loaded LISP applications.'''
     ...
-    def getItemOfLispList (self, index : int)-> tuple :
+    def getItemOfLispList (self, index : int)-> tuple[Any,...] :
       '''Accesses the list of loaded LISP applications and returns information corresponding to the specified index.'''
     ...
     def getUserData (self)-> object :
@@ -1145,7 +1146,7 @@ class LayerFilterManager(object):
     def __init__ (self, db: PyDb.Database=None)-> None :
       '''                             '''
     ...
-    def getFilters (self)-> tuple :
+    def getFilters (self)-> tuple[Any,...] :
       '''                             '''
     ...
 
@@ -1294,7 +1295,7 @@ class LayoutManager(PyDb.LayoutManager):
     def countLayouts (self, db: PyDb.Database=None)-> int :
       '''                             '''
     ...
-    def createLayout (self, name: str, db: PyDb.Database=None)-> tuple :
+    def createLayout (self, name: str, db: PyDb.Database=None)-> tuple[Any,...] :
       '''                             '''
     ...
     def createLayoutFromTemplate (self, newLayoutName : str, templatePath : str, layoutName : str, db : PyDb.Database='current')-> PyDb.ObjectId :

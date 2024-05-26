@@ -7,6 +7,7 @@ import PyAp
 import PyEd
 import PyPl
 from typing import overload
+from typing import Any
 
 class Core(object):
     def __init__ (self, *args, **kwargs)-> None :
@@ -97,7 +98,7 @@ This class cannot be instantiated from Python'''
     def frontClip (self)-> float :
       '''                             '''
     ...
-    def getViewport (self)-> tuple :
+    def getViewport (self)-> tuple[Any,...] :
       '''                             '''
     ...
     def graphicsKernel (self)-> PyGs.GraphicsKernel :

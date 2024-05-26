@@ -7,6 +7,7 @@ import PyAp
 import PyEd
 import PyPl
 from typing import overload
+from typing import Any
 
 class ArcType(object):
     def __add__ (self, value, /) :
@@ -1313,7 +1314,7 @@ class TransientManager(object):
     def eraseTransients (self, mode: PyGi.TransientDrawingMode, subDrawingMode: int, viewportNumbers: list[int])-> bool :
       '''This function erases all transients in the specified subDrawingMode from a list of viewports.Returns true if successful.'''
     ...
-    def getFreeSubDrawingMode (self, mode: PyGi.TransientDrawingMode, subDrawingMode: int, viewportNumbers: list[int])-> tuple :
+    def getFreeSubDrawingMode (self, mode: PyGi.TransientDrawingMode, subDrawingMode: int, viewportNumbers: list[int])-> tuple[Any,...] :
       '''Get the free draw order in a certain transient drawing mode.Returns 0 if the input draw order is not free and transient manager also could not get a free draw order.Returns 1 if the inputting draw order is available.Returns 2 if the inputting draw order is unavailable, but transient manager could return a free draw order.'''
     ...
     def updateChildTransient (self, drawable: PyGi.Drawable, parentDrawable: PyGi.Drawable)-> None :
