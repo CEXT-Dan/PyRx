@@ -17,6 +17,9 @@ pyrx_rt_type = {
     "Editor::ssget":                "tuple[PyEd.PromptStatus, PyEd.SelectionSet]",
     "Editor::selectAll":            "tuple[PyEd.PromptStatus, PyEd.SelectionSet]",
     "Editor::entSel":               "tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d]",
+    
+    "Editor::nEntSelP": "tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d,PyGe.Matrix3d,list[PyDb.ObjectId]",
+    "Editor::nEntSelPEx": "tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId]",
 }
 
 def parsesig(sig: str) -> None:
