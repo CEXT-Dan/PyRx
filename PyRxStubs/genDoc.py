@@ -5,6 +5,8 @@ import pydoc
 import traceback
 import json
 
+import genDocTypes
+
 import PyRx  # = Runtime runtime
 import PyGe  # = Geometry
 import PyGi  # = Graphics interface
@@ -16,8 +18,11 @@ import PyPl  # = plot
 
 if  "BRX" in  PyAp.Application.hostAPI():
     import PyBrxCv
+      
+def OnPyReload():
+        import importlib
+        importlib.reload(genDocTypes)
     
-
 # debug
 def PyRxCmd_pydebug() -> None:
     import PyRxDebug
@@ -200,7 +205,7 @@ def findReturnTypeModlue(sig):
     else:
         return sig
     
-def findReturnType(sig):
+def findReturnType(name,sig):
     try:
         ib = sig.find('->')
         ie = sig.find(':')
@@ -208,7 +213,8 @@ def findReturnType(sig):
             rtType = findReturnTypeModlue(sig[ib+2:ie].strip())
             #Type hinting work around for tuples #63 
             if rtType == 'tuple':
-                rtType = 'tuple[Any,...]'
+                return '-> ' + genDocTypes.tryResolveTupleType(name,sig)
+            
             return '-> ' + rtType
         return "-> None"
     except:
@@ -264,7 +270,7 @@ def generate_pyi(moduleName, module, conn):
                         sig = "{0}".format(func.__doc__)
                         
                         args = findArgs(sig)
-                        returnType = findReturnType(sig)
+                        returnType = findReturnType(name,sig)
                         newDocString = removeArgStr(sig)
                         
                         docstringkey = findDocStringKey(sig)
@@ -323,7 +329,7 @@ def generate_pyi(moduleName, module, conn):
                 # f.write(f'function {name}:\n')
                 try:
                     sig = "{0}".format(obj.__doc__)
-                    returnType = findReturnType(sig)
+                    returnType = findReturnType(name,sig)
                     newDocString = removeArgStr(sig)
                     f.write(f'def {name} (*args, **kwargs){returnType} :\n')
                     f.write(f"    '''{newDocString}'''")
