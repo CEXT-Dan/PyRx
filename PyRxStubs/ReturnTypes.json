@@ -109,6 +109,10 @@
         [
             "PyEd::Editor::nEntSelPEx",
             "tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId]]"
+        ],
+        [
+            "objectIds",
+            "list[PyDb.ObjectId]"
         ]
     ]
 }
