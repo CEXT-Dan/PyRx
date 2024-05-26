@@ -1205,7 +1205,7 @@ class Editor(object):
     ...
 
     @staticmethod
-    def getReal (prompt: str)-> tuple[Any,...] :
+    def getReal (prompt: str)-> tuple[PyEd.PromptStatus, float] :
       '''Gets user input for a real value.The AutoCAD user can enter any valid real value, but the user cannot respond to acedGetReal() by entering an AutoLISP expression.The acedGetReal() function returns one of the following: RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [Esc]). It returns RTMODELESS, if the active command was registered using the ACRX_CMD_INTERRUPTIBLE flag and the document has received a modeless interrupt signal from a call to  AcApDocManager::sendModelessInterrupt(). A prior call to acedInitGet() can also enable return values of RTNONE or RTKWORD.'''
     ...
 
