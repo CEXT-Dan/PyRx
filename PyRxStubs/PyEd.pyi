@@ -1235,18 +1235,18 @@ class Editor(object):
     ...
 
     @staticmethod
-    def nEntSelP (prompt: str,selpt: PyGe.Point3d=None)-> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d,PyGe.Matrix3d,list[PyDb.ObjectId] :
+    def nEntSelP (prompt: str,selpt: PyGe.Point3d=None)-> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d,PyGe.Matrix3d,list[PyDb.ObjectId]] :
       '''                             '''
     ...
 
     @overload
     @staticmethod
-    def nEntSelPEx (prompt: str, flags: int)-> tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId] : ...
+    def nEntSelPEx (prompt: str, flags: int)-> tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId]] : ...
     @overload
     @staticmethod
-    def nEntSelPEx (prompt: str, selpt: PyGe.Point3d, flags: int)-> tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId] : ...
+    def nEntSelPEx (prompt: str, selpt: PyGe.Point3d, flags: int)-> tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId]] : ...
     @staticmethod
-    def nEntSelPEx (self, *args, **kwargs)-> tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId] :
+    def nEntSelPEx (self, *args, **kwargs)-> tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId]] :
       '''Overloads:
     - prompt: str, flags: int
     - prompt: str, selpt: PyGe.Point3d, flags: int
