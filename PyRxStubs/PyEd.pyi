@@ -1135,17 +1135,17 @@ class Editor(object):
     ...
 
     @staticmethod
-    def entSel (prompt: str,desc: PyRx.RxClass=PyDb.Entity)-> tuple[Any,...] :
+    def entSel (prompt: str,desc: PyRx.RxClass=PyDb.Entity)-> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d] :
       '''Prompts the user to select an entity by specifying a point.Pauses for user input and returns both an entity name and the point that is used to select the entity.The acedEntSel() function does not return the names of nongraphical objects.Some entity operations require knowledge of the point by which the entity was selected. Examples are the AutoCAD BREAK, TRIM, and EXTEND commands, as well as OSNAP; acedEntSel() provides the same capability to ARX applications. The acedEntSel() function ignores the current OSNAP setting (no object snap) unless the user specifically requests it.When the user responds to acedEntSel() by specifying a complex entity, it returns the polyline or block header. This differs from the function acedNEntSelP(), which returns the nearest block attribute or polyline vertex.The acedEntSel() function returns RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [Esc]). A prior call to acedInitGet() can also enable a return value of RTKWORD (see the description of acedInitGet()). When acedEntSel() fails, it sets the system variable ERRNO to a value that indicates the reason for the failure.'''
     ...
 
     @staticmethod
-    def getAngle (basePt: PyGe.Point3d,prompt: str)-> tuple[Any,...] :
+    def getAngle (basePt: PyGe.Point3d,prompt: str)-> tuple[PyEd.PromptStatus, float] :
       '''Gets user input for an angle, taking into account the current value of the ANGBASE system variable.The AutoCAD user can specify the angle by entering a number in the current angular units format. The user can set the angle also by specifying two 2D locations on the graphics screen. AutoCAD draws a rubber-band line from the first point to the current crosshair position to help the user visualize the angle. If the pt argument is not null, AutoCAD uses this value as the first of the two points. The angle is measured in the XY plane of the current UCS (acedGetAngle() ignores the Z field of pt).The direction of angular increase is always counterclockwise.The acedGetAngle() function is almost identical to acedGetOrient(), but it takes into account the current value of the ANGBASE system variable. For acedGetOrient(), the 0 angle is always to the right: "east" or "3 o'clock." For acedGetAngle(), the 0 angle is the value of ANGBASE, which can be set to any of the four 90-degree quadrants. Both acedGetAngle() and acedGetOrient() return a (real) angle value in radians measured counterclockwise from a base (0) angle. For acedGetAngle(), the base equals ANGBASE; for acedGetOrient(), the base is at the right. Both functions honor the current value of ANGDIR, which affects the value the user enters but not the value that these functions return.For example, if ANGBASE is set to 90 degrees (north) and ANGDIR is set to 1 (clockwise direction for increasing angles), as shown in the figure that accompanies the following table, then given these conditions, the values returned by acedGetAngle() and acedGetOrient() will be as shown in the table.Results from acedGetAngle and acedGetOrient:User input (degrees)acedGetAngle() returnsacedGetOrient() returns00.01.5708-901.57083.141591803.141594.71239904.712390.0The user cannot respond to acedGetAngle() by entering an AutoLISP expression.You can use acedGetAngle() to obtain a rotation amount for a block insertion, because an input of 0 degrees always returns 0 radians. You can use acedGetOrient() to obtain the baseline angle for a text entity to be aligned with other objects.The acedGetAngle() function returns RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [Esc] ). It returns RTMODELESS, if the active command was registered using the ACRX_CMD_INTERRUPTIBLE flag and the document has received a modeless interrupt signal from a call to  AcApDocManager::sendModelessInterrupt(). A prior call to acedInitGet() can also enable return values of RTNONE or RTKWORD (see the description of acedInitGet()).If the optional pt or prompt is not used, pass a null pointer for these arguments.'''
     ...
 
     @staticmethod
-    def getCorner (basePt: PyGe.Point3d,prompt: str)-> tuple[Any,...] :
+    def getCorner (basePt: PyGe.Point3d,prompt: str)-> tuple[PyEd.PromptStatus, PyGe.Point3d] :
       '''Gets user input for the corner of a rectangle.The AutoCAD user can specify the corner by entering a point in the current units format; acedGetCorner() treats pt as a three-dimensional point. The user can specify the corner also by specifying a location on the graphics screen. AutoCAD draws a dynamically sized rectangle from pt to the current crosshair position to help the user visualize the location of the second corner. The rectangle is drawn in the XY plane of the current DCS. When the pointing device is used, acedGetCorner() ignores the Z field of pt and sets the Z field of result to the current elevation.The user cannot respond to acedGetCorner() by entering an AutoLISP expression.The acedGetCorner() function returns one of the following: RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [Esc]). It returns RTMODELESS, if the active command was registered using the ACRX_CMD_INTERRUPTIBLE flag and the document has received a modeless interrupt signal from a call to  AcApDocManager::sendModelessInterrupt(). A prior call to acedInitGet() can also enable return values of RTNONE or RTKWORD.'''
     ...
 
@@ -1161,12 +1161,12 @@ class Editor(object):
 
     @overload
     @staticmethod
-    def getDist (prompt: str)-> tuple[Any,...] : ...
+    def getDist (prompt: str)-> tuple[PyEd.PromptStatus, float] : ...
     @overload
     @staticmethod
-    def getDist (basePt: PyGe.Point3d, prompt: str)-> tuple[Any,...] : ...
+    def getDist (basePt: PyGe.Point3d, prompt: str)-> tuple[PyEd.PromptStatus, float] : ...
     @staticmethod
-    def getDist (self, *args, **kwargs)-> tuple[Any,...] :
+    def getDist (self, *args, **kwargs)-> tuple[PyEd.PromptStatus, float] :
       '''Overloads:
     - prompt: str
     - basePt: PyGe.Point3d, prompt: str
@@ -1175,28 +1175,28 @@ class Editor(object):
     ...
 
     @staticmethod
-    def getDouble (prompt: str)-> tuple[Any,...] :
+    def getDouble (prompt: str)-> tuple[PyEd.PromptStatus, float] :
       '''Gets user input for a real value.The AutoCAD user can enter any valid real value, but the user cannot respond to acedGetReal() by entering an AutoLISP expression.The acedGetReal() function returns one of the following: RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [Esc]). It returns RTMODELESS, if the active command was registered using the ACRX_CMD_INTERRUPTIBLE flag and the document has received a modeless interrupt signal from a call to  AcApDocManager::sendModelessInterrupt(). A prior call to acedInitGet() can also enable return values of RTNONE or RTKWORD.'''
     ...
 
     @staticmethod
-    def getInteger (prompt: str)-> tuple[Any,...] :
+    def getInteger (prompt: str)-> tuple[PyEd.PromptStatus, int] :
       '''Gets user input for an integer.The AutoCAD user can enter any valid 32-bit integer.The user cannot respond to acedGetInt() by entering an AutoLISP expression.The acedGetInt() function returns one of the following: RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [ESC]). A prior call to acedInitGet() can also enable return values of RTNONE or RTKWORD.'''
     ...
 
     @staticmethod
-    def getKword (keyword: str)-> tuple[Any,...] :
+    def getKword (keyword: str)-> tuple[int, str] :
       '''Deprecated. Function acedGetFullKword() is an alternate form of acedGetKword(). Instead of truncating any characters beyond the 131, acedGetFullKword() returns a new copy of the entire string using acutUpdString() and updates pStr to point to the new copy. Aside from the manner in which it returns the input string, this function behaves exactly like acedGetKword().The caller is responsible for freeing the returned string using acutDelString().This function returns the same error codes as acedGetInput(). If there is insufficient memory for a copy of the string, this function returns RTERROR.See function acedGetKword() for more information.'''
     ...
 
     @overload
     @staticmethod
-    def getPoint (prompt: str)-> tuple[Any,...] : ...
+    def getPoint (prompt: str)-> tuple[PyEd.PromptStatus, PyGe.Point3d] : ...
     @overload
     @staticmethod
-    def getPoint (basePt: PyGe.Point3d, prompt: str)-> tuple[Any,...] : ...
+    def getPoint (basePt: PyGe.Point3d, prompt: str)-> tuple[PyEd.PromptStatus, PyGe.Point3d] : ...
     @staticmethod
-    def getPoint (self, *args, **kwargs)-> tuple[Any,...] :
+    def getPoint (self, *args, **kwargs)-> tuple[PyEd.PromptStatus, PyGe.Point3d] :
       '''Overloads:
     - prompt: str
     - basePt: PyGe.Point3d, prompt: str
@@ -1211,12 +1211,12 @@ class Editor(object):
 
     @overload
     @staticmethod
-    def getString (prompt: str)-> tuple[Any,...] : ...
+    def getString (prompt: str)-> tuple[PyEd.PromptStatus, str] : ...
     @overload
     @staticmethod
-    def getString (cronly: int, prompt: str)-> tuple[Any,...] : ...
+    def getString (cronly: int, prompt: str)-> tuple[PyEd.PromptStatus, str] : ...
     @staticmethod
-    def getString (self, *args, **kwargs)-> tuple[Any,...] :
+    def getString (self, *args, **kwargs)-> tuple[PyEd.PromptStatus, str] :
       '''Overloads:
     - prompt: str
     - cronly: int, prompt: str
@@ -1259,42 +1259,42 @@ class Editor(object):
     ...
 
     @staticmethod
-    def select (filter: list=None)-> tuple[Any,...] :
+    def select (filter: list=None)-> tuple[PyEd.PromptStatus, PyEd.SelectionSet] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectAll (filter: list=None)-> tuple[Any,...] :
+    def selectAll (filter: list=None)-> tuple[PyEd.PromptStatus, PyEd.SelectionSet] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectFence (points: list[PyGe.Point3d],filter: list=None)-> tuple[Any,...] :
+    def selectFence (points: list[PyGe.Point3d],filter: list=None)-> tuple[PyEd.PromptStatus, PyEd.SelectionSet] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectLast (filter: list=None)-> tuple[Any,...] :
+    def selectLast (filter: list=None)-> tuple[PyEd.PromptStatus, PyEd.SelectionSet] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectPrevious (filter: list=None)-> tuple[Any,...] :
+    def selectPrevious (filter: list=None)-> tuple[PyEd.PromptStatus, PyEd.SelectionSet] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectPrompt (addPromt: str,remPromt: str,filter: list=None)-> tuple[Any,...] :
+    def selectPrompt (addPromt: str,remPromt: str,filter: list=None)-> tuple[PyEd.PromptStatus, PyEd.SelectionSet] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectWindow (pt1: PyGe.Point3d,pt2: PyGe.Point3d,filter: list=None)-> tuple[Any,...] :
+    def selectWindow (pt1: PyGe.Point3d,pt2: PyGe.Point3d,filter: list=None)-> tuple[PyEd.PromptStatus, PyEd.SelectionSet] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectWindowPolygon (points: list[PyGe.Point3d],filter: list=None)-> tuple[Any,...] :
+    def selectWindowPolygon (points: list[PyGe.Point3d],filter: list=None)-> tuple[PyEd.PromptStatus, PyEd.SelectionSet] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
@@ -1309,7 +1309,7 @@ class Editor(object):
     ...
 
     @staticmethod
-    def ssget (mode: str,arg1: any,arg2: any,filter: list=None)-> tuple[Any,...] :
+    def ssget (mode: str,arg1: any,arg2: any,filter: list=None)-> tuple[PyEd.PromptStatus, PyEd.SelectionSet] :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
