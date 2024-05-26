@@ -204,8 +204,13 @@ def resolverParseSig(sig: str) -> None:
     endsig = sig.find("(")
     return sig[0:endsig].strip()
 
+# I don't want to write for every derived sig like xData, getGripPoints
+# see if there's conflits with this
 def tryResolveTupleType(moduleName: str, name: str, sig: str,rtTypes) -> str | None:
     psig = "{}::{}::{}".format(moduleName,name, resolverParseSig(sig))
+    if psig in rtTypes:
+        return rtTypes[psig]
+    psig = "{}".format(resolverParseSig(sig))
     if psig in rtTypes:
         return rtTypes[psig]
     print(psig)
@@ -215,20 +220,24 @@ def tryResolveListType(moduleName: str,name: str, sig: str,rtTypes) -> str | Non
     psig = "{}::{}::{}".format(moduleName,name, resolverParseSig(sig))
     if psig in rtTypes:
         return rtTypes[psig]
+    psig = "{}".format(resolverParseSig(sig))
+    if psig in rtTypes:
+        return rtTypes[psig]
     print(psig)
-    return "list[Any,...]"
+    return "list"
 
 def findReturnType(moduleName,name,sig,rtTypes):
     try:
+        mName = moduleName[0:4]
         ib = sig.find('->')
         ie = sig.find(':')
         if ib != -1:
             rtType = findReturnTypeModlue(sig[ib+2:ie].strip())
             #Type hinting work around for tuples #63 
             if rtType == 'tuple':
-                return '-> ' + tryResolveTupleType(moduleName,name,sig,rtTypes)
+                return '-> ' + tryResolveTupleType(mName,name,sig,rtTypes)
             elif rtType == 'list':
-                 return '-> ' + tryResolveListType(moduleName,name,sig,rtTypes)
+                 return '-> ' + tryResolveListType(mName,name,sig,rtTypes)
             
             return '-> ' + rtType
         return "-> None"
