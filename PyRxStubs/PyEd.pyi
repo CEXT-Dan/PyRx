@@ -1234,7 +1234,7 @@ class Editor(object):
     ...
 
     @staticmethod
-    def nEntSelP (prompt: str,selpt: PyGe.Point3d='None')-> tuple :
+    def nEntSelP (prompt: str,selpt: PyGe.Point3d=None)-> tuple :
       '''                             '''
     ...
 
@@ -1258,42 +1258,42 @@ class Editor(object):
     ...
 
     @staticmethod
-    def select (filer: list='None')-> tuple :
+    def select (filter: list=None)-> tuple :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectAll (filer: list='None')-> tuple :
+    def selectAll (filter: list=None)-> tuple :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectFence (points: list[PyGe.Point3d],filer: list='None')-> tuple :
+    def selectFence (points: list[PyGe.Point3d],filter: list=None)-> tuple :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectLast (filer: list='None')-> tuple :
+    def selectLast (filter: list=None)-> tuple :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectPrevious (filer: list='None')-> tuple :
+    def selectPrevious (filter: list=None)-> tuple :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectPrompt (addPromt: str,remPromt: str,filer: list='None')-> tuple :
+    def selectPrompt (addPromt: str,remPromt: str,filter: list=None)-> tuple :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectWindow (pt1: PyGe.Point3d,pt2: PyGe.Point3d,filer: list='None')-> tuple :
+    def selectWindow (pt1: PyGe.Point3d,pt2: PyGe.Point3d,filter: list=None)-> tuple :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
     @staticmethod
-    def selectWindowPolygon (points: list[PyGe.Point3d],filer: list='None')-> tuple :
+    def selectWindowPolygon (points: list[PyGe.Point3d],filter: list=None)-> tuple :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
@@ -1308,7 +1308,7 @@ class Editor(object):
     ...
 
     @staticmethod
-    def ssget (mode: str,arg1: any,arg2: any,filer: list='None')-> tuple :
+    def ssget (mode: str,arg1: any,arg2: any,filter: list=None)-> tuple :
       '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
     ...
 
