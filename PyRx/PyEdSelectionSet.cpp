@@ -74,6 +74,8 @@ PyEdSelectionSet::PyEdSelectionSet(const ads_name& ss, bool autoDelete)
 
 bool PyEdSelectionSet::isInitialized() const
 {
+    if (m_pSet == nullptr)
+        return false;
     return (m_pSet->at(0) + m_pSet->at(1)) != 0;
 }
 
