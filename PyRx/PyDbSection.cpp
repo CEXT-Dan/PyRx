@@ -4,6 +4,96 @@
 
 using namespace boost::python;
 
+void makePyDbSectionSettingsWrapper()
+{
+    PyDocString DS("PyDb.SectionSettings");
+    class_<PyDbSectionSettings, bases<PyDbObject>>("SectionSettings")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def("className", &PyDbSectionSettings::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbSectionSettings::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbSectionSettings::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbSectionSettings::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+    enum_<AcDbSectionSettings::SectionType>("SectionSectionType")
+        .value("kLiveSection", AcDbSectionSettings::SectionType::kLiveSection)
+        .value("k2dSection", AcDbSectionSettings::SectionType::k2dSection)
+        .value("k3dSection", AcDbSectionSettings::SectionType::k3dSection)
+        .export_values()
+        ;
+    enum_<AcDbSectionSettings::Geometry>("SectionGeometry")
+        .value("kIntersectionBoundary", AcDbSectionSettings::Geometry::kIntersectionBoundary)
+        .value("kIntersectionFill", AcDbSectionSettings::Geometry::kIntersectionFill)
+        .value("kBackgroundGeometry", AcDbSectionSettings::Geometry::kBackgroundGeometry)
+        .value("kForegroundGeometry", AcDbSectionSettings::Geometry::kForegroundGeometry)
+        .value("kCurveTangencyLines", AcDbSectionSettings::Geometry::kCurveTangencyLines)
+        .export_values()
+        ;
+    enum_<AcDbSectionSettings::Generation>("SectionGeneration")
+        .value("kSourceAllObjects", AcDbSectionSettings::Generation::kSourceAllObjects)
+        .value("kSourceSelectedObjects", AcDbSectionSettings::Generation::kSourceSelectedObjects)
+        .value("kDestinationNewBlock", AcDbSectionSettings::Generation::kDestinationNewBlock)
+        .value("kDestinationReplaceBlock", AcDbSectionSettings::Generation::kDestinationReplaceBlock)
+        .value("kDestinationFile", AcDbSectionSettings::Generation::kDestinationFile)
+        .export_values()
+        ;
+}
+
+PyDbSectionSettings::PyDbSectionSettings()
+    : PyDbSectionSettings(new AcDbSectionSettings(), true)
+{
+}
+
+PyDbSectionSettings::PyDbSectionSettings(const PyDbObjectId& id)
+    : PyDbSectionSettings(openAcDbObject<AcDbSectionSettings>(id, AcDb::OpenMode::kForRead), false)
+{
+}
+
+PyDbSectionSettings::PyDbSectionSettings(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbSectionSettings(openAcDbObject<AcDbSectionSettings>(id, mode), false)
+{
+}
+
+PyDbSectionSettings::PyDbSectionSettings(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSectionSettings(openAcDbObject<AcDbSectionSettings>(id, mode, erased), false)
+{
+}
+
+PyDbSectionSettings::PyDbSectionSettings(AcDbSectionSettings* ptr, bool autoDelete)
+    : PyDbObject(ptr, autoDelete)
+{
+}
+
+PyRxClass PyDbSectionSettings::desc()
+{
+    return PyRxClass(AcDbSectionSettings::desc(), false);
+}
+
+std::string PyDbSectionSettings::className()
+{
+    return "AcDbSectionSettings";
+}
+
+PyDbSectionSettings PyDbSectionSettings::cloneFrom(const PyRxObject& src)
+{
+    return PyDbObjectCloneFrom<PyDbSectionSettings, AcDbSectionSettings>(src);
+}
+
+PyDbSectionSettings PyDbSectionSettings::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbSectionSettings>(src);
+}
+
+AcDbSectionSettings* PyDbSectionSettings::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<AcDbSectionSettings*>(m_pyImp.get());
+}
+
 //-----------------------------------------------------------------------------------
 //PyDbSection
 void makePyDbSectionWrapper()

@@ -5,7 +5,27 @@
 class PyDbObjectId;
 
 // AcDbSectionManager
-// AcDbSectionSettings
+
+//-----------------------------------------------------------------------------------
+//PyDbSectionSettings
+void makePyDbSectionSettingsWrapper();
+class PyDbSectionSettings : public PyDbObject
+{
+public:
+    PyDbSectionSettings();
+    PyDbSectionSettings(AcDbSectionSettings* ptr, bool autoDelete);
+    PyDbSectionSettings(const PyDbObjectId&);
+    PyDbSectionSettings(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbSectionSettings(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    inline virtual ~PyDbSectionSettings() override = default;
+    //
+    static PyRxClass    desc();
+    static std::string  className();
+    static PyDbSectionSettings   cloneFrom(const PyRxObject& src);
+    static PyDbSectionSettings   cast(const PyRxObject& src);
+public:
+    inline AcDbSectionSettings* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 //-----------------------------------------------------------------------------------
 //PyDbSection
