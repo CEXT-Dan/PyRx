@@ -3,8 +3,6 @@ import pydoc
 import traceback
 import json
 
-import genDocTypes
-
 import PyRx  # = Runtime runtime
 import PyGe  # = Geometry
 import PyGi  # = Graphics interface
@@ -20,10 +18,6 @@ import PyPl  # = plot
 if  "BRX" in  PyAp.Application.hostAPI():
     import PyBrxCv
       
-def OnPyReload():
-        import importlib
-        importlib.reload(genDocTypes)
-    
 # debug
 def PyRxCmd_pydebug() -> None:
     import PyRxDebug
@@ -206,7 +200,25 @@ def findReturnTypeModlue(sig):
     else:
         return sig
     
-def findReturnType(name,sig):
+def resolverParseSig(sig: str) -> None:
+    endsig = sig.find("(")
+    return sig[0:endsig].strip()
+
+def tryResolveTupleType(moduleName: str, name: str, sig: str,rtTypes) -> str | None:
+    psig = "{}::{}::{}".format(moduleName,name, resolverParseSig(sig))
+    if psig in rtTypes:
+        return rtTypes[psig]
+    print(psig)
+    return "tuple[Any,...]"
+
+def tryResolveListType(moduleName: str,name: str, sig: str,rtTypes) -> str | None:
+    psig = "{}::{}::{}".format(moduleName,name, resolverParseSig(sig))
+    if psig in rtTypes:
+        return rtTypes[psig]
+    print(psig)
+    return "list[Any,...]"
+
+def findReturnType(moduleName,name,sig,rtTypes):
     try:
         ib = sig.find('->')
         ie = sig.find(':')
@@ -214,7 +226,9 @@ def findReturnType(name,sig):
             rtType = findReturnTypeModlue(sig[ib+2:ie].strip())
             #Type hinting work around for tuples #63 
             if rtType == 'tuple':
-                return '-> ' + genDocTypes.tryResolveTupleType(name,sig)
+                return '-> ' + tryResolveTupleType(moduleName,name,sig,rtTypes)
+            elif rtType == 'list':
+                 return '-> ' + tryResolveListType(moduleName,name,sig,rtTypes)
             
             return '-> ' + rtType
         return "-> None"
@@ -234,7 +248,7 @@ def isStatic(ags : str) -> bool:
     
 # todo: boost generates a doc string that has the function signature
 # it should be able to parse this, or add something in the doc user string
-def generate_pyi(moduleName, module, conn):
+def generate_pyi(moduleName, module, dsdict,rtTypes):
     with open(moduleName, 'w') as f:
         
         #write the base module names to the stub file
@@ -247,7 +261,6 @@ def generate_pyi(moduleName, module, conn):
             if inspect.isclass(obj):
                 if name == '__loader__':
                     continue
-                
                 f.write('\n')
                 
                 basesname = ''
@@ -265,17 +278,16 @@ def generate_pyi(moduleName, module, conn):
                 else:
                     f.write(f'class {name}(object):\n')
                 
-
                 for func_name, func in inspect.getmembers(obj):
                     if include_attr(func_name):
                         sig = "{0}".format(func.__doc__)
                         
                         args = findArgs(sig)
-                        returnType = findReturnType(name,sig)
+                        returnType = findReturnType(moduleName,name,sig,rtTypes)
                         newDocString = removeArgStr(sig)
                         
                         docstringkey = findDocStringKey(sig)
-                        docstring = lookupDocString(docstringkey, conn)
+                        docstring = lookupDocString(docstringkey, dsdict)
                         overloadAsComment = findOverloadAsComment(sig,docstring)
         
                         try:
@@ -330,14 +342,13 @@ def generate_pyi(moduleName, module, conn):
                 # f.write(f'function {name}:\n')
                 try:
                     sig = "{0}".format(obj.__doc__)
-                    returnType = findReturnType(name,sig)
+                    returnType = findReturnType(moduleName,name,sig,rtTypes)
                     newDocString = removeArgStr(sig)
                     f.write(f'def {name} (*args, **kwargs){returnType} :\n')
                     f.write(f"    '''{newDocString}'''")
                     f.write('\n    ...\n')
                 except Exception as err:
                     print(err)
-
 
 def generate_html_help(moduleName, module):
     str = pydoc.html.docmodule(module)
@@ -346,18 +357,29 @@ def generate_html_help(moduleName, module):
 
 def PyRxCmd_pygenpyi():
     try:
-        conn = {}
-        path = "./DocStrings.json"
-        with open(path) as json_file:
+        dsdict = {}
+        rtTypes = {}
+        
+        dsPath = "./DocStrings.json"
+        with open(dsPath) as json_file:
             data = json.load(json_file)
             rows = data['rows']
             for row in rows:
-                conn[row[0]] = row[2]
-        print(len(conn))
+                dsdict[row[0]] = row[2]
+        print(len(dsdict))
+        
+        reTypesPath = "./ReturnTypes.json"
+        with open(reTypesPath) as json_file:
+            data = json.load(json_file)
+            rows = data['rows']
+            for row in rows:
+                rtTypes[row[0]] = row[1]
+        print(len(rtTypes))
+        
         for module in all_modules:
             buildClassDict(module[0], module[1])
         for module in all_modules:
-            generate_pyi(module[0] + ".pyi", module[1],conn)
+            generate_pyi(module[0] + ".pyi", module[1],dsdict,rtTypes)
     except Exception as err:
         traceback.print_exception(err)
 
