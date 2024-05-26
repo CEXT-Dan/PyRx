@@ -1,6 +1,4 @@
-import os
 import inspect
-import io
 import pydoc
 import traceback
 import json
@@ -15,6 +13,9 @@ import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
 import PyPl  # = plot
+
+#! move along nothing to see here
+#! its smells like code smell, like, victory!
 
 if  "BRX" in  PyAp.Application.hostAPI():
     import PyBrxCv
