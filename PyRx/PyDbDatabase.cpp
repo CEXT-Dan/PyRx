@@ -120,6 +120,7 @@ void makePyDbDatabaseWrapper()
         .def("getCePlotStyleNameId", &PyDbDatabase::getCePlotStyleNameId, DS.ARGS(2952))
         .def("getDimstyleParentId", &PyDbDatabase::getDimstyleParentId, DS.ARGS(2966))
         .def("getNearestLineWeight", &PyDbDatabase::getNearestLineWeight, DS.SARGS({ "weight : int" }, 2981)).staticmethod("getNearestLineWeight")//static
+        .def("getSectionManagerId", &PyDbDatabase::getSectionManagerId)
         .def("getViewportArray", &PyDbDatabase::getViewportArray1)
         .def("getViewportArray", &PyDbDatabase::getViewportArray2, DS.ARGS({ "val: bool=True" }, 2997))
         .def("getVisualStyleList", &PyDbDatabase::getVisualStyleList, DS.ARGS(3001))
@@ -1103,6 +1104,11 @@ PyDbObjectId PyDbDatabase::getDimstyleParentId(PyDbObjectId& childStyle) const
 AcDb::LineWeight PyDbDatabase::getNearestLineWeight(int weight)
 {
     return AcDbDatabase::getNearestLineWeight(weight);
+}
+
+PyDbObjectId PyDbDatabase::getSectionManagerId() const
+{
+    return PyDbObjectId(impObj()->getSectionManager());
 }
 
 boost::python::list PyDbDatabase::getViewportArray1() const

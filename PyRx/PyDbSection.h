@@ -1,10 +1,36 @@
 #pragma once
 #include "PyDbEntity.h"
 #include "DbSection.h"
+#include "DbSectionManager.h"
 
 class PyDbObjectId;
 
-// AcDbSectionManager
+//-----------------------------------------------------------------------------------
+//PyDbSectionManager
+void makePyDbSectionManagerWrapper();
+class PyDbSectionManager : public PyDbObject
+{
+public:
+    PyDbSectionManager(const PyDbObjectId&);
+    PyDbSectionManager(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbSectionManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyDbSectionManager(AcDbSectionManager* ptr, bool autoDelete);
+    inline virtual ~PyDbSectionManager() override = default;
+
+    PyDbObjectId        getSection(const std::string& name);
+    PyDbObjectId        getLiveSection() const;
+    int                 numSections(void) const;
+    std::string         getUniqueSectionName(const std::string& pszBaseName) const;
+    boost::python::list objectIds() const;
+
+
+    static PyRxClass    desc();
+    static std::string  className();
+    static PyDbSectionManager   cloneFrom(const PyRxObject& src);
+    static PyDbSectionManager   cast(const PyRxObject& src);
+public:
+    inline AcDbSectionManager* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 //-----------------------------------------------------------------------------------
 //PyDbSectionSettings

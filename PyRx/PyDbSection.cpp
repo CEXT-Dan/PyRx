@@ -4,6 +4,129 @@
 
 using namespace boost::python;
 
+//-----------------------------------------------------------------------------------
+//PyDbSectionManager
+void makePyDbSectionManagerWrapper()
+{
+    PyDocString DS("PyDb.SectionManager");
+    class_<PyDbSectionManager, bases<PyDbObject>>("SectionManager", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
+
+        .def("getSection", &PyDbSectionManager::getSection)
+        .def("getLiveSection", &PyDbSectionManager::getLiveSection)
+        .def("numSections", &PyDbSectionManager::numSections)
+        .def("getUniqueSectionName", &PyDbSectionManager::getUniqueSectionName)
+        .def("objectIds", &PyDbSectionManager::objectIds)
+        
+        .def("className", &PyDbSectionManager::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbSectionManager::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbSectionManager::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbSectionManager::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbSectionManager::PyDbSectionManager(const PyDbObjectId& id)
+    : PyDbSectionManager(openAcDbObject<AcDbSectionManager>(id, AcDb::OpenMode::kForRead), false)
+{
+}
+
+PyDbSectionManager::PyDbSectionManager(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbSectionManager(openAcDbObject<AcDbSectionManager>(id, mode), false)
+{
+}
+
+PyDbSectionManager::PyDbSectionManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSectionManager(openAcDbObject<AcDbSectionManager>(id, mode, erased), false)
+{
+}
+
+PyDbSectionManager::PyDbSectionManager(AcDbSectionManager* ptr, bool autoDelete)
+    : PyDbObject(ptr, autoDelete)
+{
+}
+
+PyDbObjectId PyDbSectionManager::getSection(const std::string& name)
+{
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
+    PyDbObjectId id;
+    PyThrowBadEs(impObj()->getSection(utf8_to_wstr(name).c_str(), id.m_id));
+    return id;
+#endif
+}
+
+PyDbObjectId PyDbSectionManager::getLiveSection() const
+{
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
+    PyDbObjectId id;
+    PyThrowBadEs(impObj()->getLiveSection(id.m_id));
+    return id;
+#endif
+}
+
+int PyDbSectionManager::numSections(void) const
+{
+    return impObj()->numSections();
+}
+
+std::string PyDbSectionManager::getUniqueSectionName(const std::string& pszBaseName) const
+{
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
+    AcString val;
+    PyThrowBadEs(impObj()->getUniqueSectionName(utf8_to_wstr(pszBaseName).c_str(), val));
+    return wstr_to_utf8(val);
+#endif
+}
+
+boost::python::list PyDbSectionManager::objectIds() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list ids;
+    AcDbSectionManagerIterator* _iter = nullptr;
+    PyThrowBadEs(impObj()->newIterator(_iter));
+    std::unique_ptr<AcDbSectionManagerIterator> iter(_iter);
+    for (iter->start(); !iter->done(); iter->step())
+        ids.append(PyDbObjectId(iter->getSection()));
+    return ids;
+}
+
+PyRxClass PyDbSectionManager::desc()
+{
+    return PyRxClass(AcDbEntity::desc(), false);
+}
+
+std::string PyDbSectionManager::className()
+{
+    return "AcDbSectionManager";
+}
+
+PyDbSectionManager PyDbSectionManager::cloneFrom(const PyRxObject& src)
+{
+    return PyDbObjectCloneFrom<PyDbSectionManager, AcDbSectionManager>(src);
+}
+
+PyDbSectionManager PyDbSectionManager::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbSectionManager>(src);
+}
+
+AcDbSectionManager* PyDbSectionManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<AcDbSectionManager*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyDbSectionSettings
 void makePyDbSectionSettingsWrapper()
 {
     PyDocString DS("PyDb.SectionSettings");
