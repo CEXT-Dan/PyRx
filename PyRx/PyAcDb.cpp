@@ -385,6 +385,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbGeoCoordinateSystemWrapper();
 
     makePyDbSectionWrapper();
+    makePyDbSectionSettingsWrapper();
 
     makePyDbSubDMeshWrapper();
     makePyDbDbLayerStateManagerWrapper();

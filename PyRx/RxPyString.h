@@ -240,7 +240,7 @@ public:
         if (buf != nullptr)
             acutDelString(buf);
     }
-    inline std::string str() const
+    inline [[nodiscard]] std::string str() const
     {
         return wstr_to_utf8(buf);
     }

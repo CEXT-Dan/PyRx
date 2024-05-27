@@ -12,6 +12,52 @@ void makePyDbSectionSettingsWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+
+        .def("reset", &PyDbSectionSettings::reset1)
+        .def("reset", &PyDbSectionSettings::reset2)
+        .def("currentSectionType", &PyDbSectionSettings::currentSectionType)
+        .def("setCurrentSectionType", &PyDbSectionSettings::setCurrentSectionType)
+        .def("generationOptions", &PyDbSectionSettings::generationOptions)
+        .def("setGenerationOptions", &PyDbSectionSettings::setGenerationOptions)
+        .def("getSourceObjects", &PyDbSectionSettings::getSourceObjects)
+        .def("setSourceObjects", &PyDbSectionSettings::setSourceObjects)
+        .def("destinationBlock", &PyDbSectionSettings::destinationBlock)
+        .def("setDestinationBlock", &PyDbSectionSettings::setDestinationBlock)
+        .def("destinationFile", &PyDbSectionSettings::destinationFile)
+        .def("setDestinationFile", &PyDbSectionSettings::setDestinationFile)
+        .def("visibility", &PyDbSectionSettings::visibility)
+        .def("setVisibility", &PyDbSectionSettings::setVisibility)
+        .def("color", &PyDbSectionSettings::color)
+        .def("setColor", &PyDbSectionSettings::setColor)
+        .def("layer", &PyDbSectionSettings::layer)
+        .def("setLayer", &PyDbSectionSettings::setLayer)
+        .def("linetype", &PyDbSectionSettings::linetype)
+        .def("setLinetype", &PyDbSectionSettings::setLinetype)
+        .def("linetypeScale", &PyDbSectionSettings::linetypeScale)
+        .def("setLinetypeScale", &PyDbSectionSettings::setLinetypeScale)
+        .def("plotStyleName", &PyDbSectionSettings::plotStyleName)
+        .def("setPlotStyleName", &PyDbSectionSettings::setPlotStyleName)
+        .def("lineWeight", &PyDbSectionSettings::lineWeight)
+        .def("setLineWeight", &PyDbSectionSettings::setLineWeight)
+        .def("faceTransparency", &PyDbSectionSettings::faceTransparency)
+        .def("setFaceTransparency", &PyDbSectionSettings::setFaceTransparency)
+        .def("edgeTransparency", &PyDbSectionSettings::edgeTransparency)
+        .def("setEdgeTransparency", &PyDbSectionSettings::setEdgeTransparency)
+        .def("hatchVisibility", &PyDbSectionSettings::hatchVisibility)
+        .def("setHatchVisibility", &PyDbSectionSettings::setHatchVisibility)
+        .def("getHatchPattern", &PyDbSectionSettings::getHatchPattern)
+        .def("setHatchPattern", &PyDbSectionSettings::setHatchPattern)
+        .def("hatchAngle", &PyDbSectionSettings::hatchAngle)
+        .def("setHatchAngle", &PyDbSectionSettings::setHatchAngle)
+        .def("hatchSpacing", &PyDbSectionSettings::hatchSpacing)
+        .def("setHatchSpacing", &PyDbSectionSettings::setHatchSpacing)
+        .def("hatchScale", &PyDbSectionSettings::hatchScale)
+        .def("setHatchScale", &PyDbSectionSettings::setHatchScale)
+        .def("hiddenLine", &PyDbSectionSettings::hiddenLine)
+        .def("setHiddenLine", &PyDbSectionSettings::setHiddenLine)
+        .def("divisionLines", &PyDbSectionSettings::divisionLines)
+        .def("setDivisionLines", &PyDbSectionSettings::setDivisionLines)
+
         .def("className", &PyDbSectionSettings::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbSectionSettings::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbSectionSettings::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -64,6 +110,237 @@ PyDbSectionSettings::PyDbSectionSettings(const PyDbObjectId& id, AcDb::OpenMode 
 PyDbSectionSettings::PyDbSectionSettings(AcDbSectionSettings* ptr, bool autoDelete)
     : PyDbObject(ptr, autoDelete)
 {
+}
+
+void PyDbSectionSettings::reset1(void)
+{
+    PyThrowBadEs(impObj()->reset());
+}
+
+void PyDbSectionSettings::reset2(AcDbSectionSettings::SectionType nSecType)
+{
+    PyThrowBadEs(impObj()->reset(nSecType));
+}
+
+AcDbSectionSettings::SectionType PyDbSectionSettings::currentSectionType(void) const
+{
+    return impObj()->currentSectionType();
+}
+
+void PyDbSectionSettings::setCurrentSectionType(AcDbSectionSettings::SectionType nSecType)
+{
+    PyThrowBadEs(impObj()->setCurrentSectionType(nSecType));
+}
+
+AcDbSectionSettings::Generation PyDbSectionSettings::generationOptions(AcDbSectionSettings::SectionType nSecType) const
+{
+    return impObj()->generationOptions(nSecType);
+}
+
+void PyDbSectionSettings::setGenerationOptions(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Generation nOptions)
+{
+    PyThrowBadEs(impObj()->setGenerationOptions(nSecType, nOptions));
+}
+
+boost::python::list PyDbSectionSettings::getSourceObjects(AcDbSectionSettings::SectionType nSecType) const
+{
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
+    PyAutoLockGIL lock;
+    AcDbObjectIdArray ids;
+    PyThrowBadEs(impObj()->getSourceObjects(nSecType, ids));
+    return ObjectIdArrayToPyList(ids);
+#endif
+}
+
+void PyDbSectionSettings::setSourceObjects(AcDbSectionSettings::SectionType nSecType, const boost::python::list& ids)
+{
+    PyThrowBadEs(impObj()->setSourceObjects(nSecType,PyListToObjectIdArray(ids)));
+}
+
+PyDbObjectId PyDbSectionSettings::destinationBlock(AcDbSectionSettings::SectionType nSecType) const
+{
+    return PyDbObjectId(impObj()->destinationBlock(nSecType));
+}
+
+void PyDbSectionSettings::setDestinationBlock(AcDbSectionSettings::SectionType nSecType, const PyDbObjectId& id)
+{
+    PyThrowBadEs(impObj()->setDestinationBlock(nSecType, id.m_id));
+}
+
+std::string PyDbSectionSettings::destinationFile(AcDbSectionSettings::SectionType nSecType) const
+{
+    return wstr_to_utf8(impObj()->destinationFile(nSecType));
+}
+
+void PyDbSectionSettings::setDestinationFile(AcDbSectionSettings::SectionType nSecType, const std::string& pszFileName)
+{
+    PyThrowBadEs(impObj()->setDestinationFile(nSecType, utf8_to_wstr(pszFileName).c_str()));
+}
+
+bool PyDbSectionSettings::visibility(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const
+{
+    return impObj()->visibility(nSecType, nGeometry);
+}
+
+void PyDbSectionSettings::setVisibility(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, bool bVisible)
+{
+    PyThrowBadEs(impObj()->setVisibility(nSecType, nGeometry, bVisible));
+}
+
+AcCmColor PyDbSectionSettings::color(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const
+{
+    return impObj()->color(nSecType, nGeometry);
+}
+
+void PyDbSectionSettings::setColor(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, const AcCmColor& color)
+{
+    PyThrowBadEs(impObj()->setColor(nSecType, nGeometry, color));
+}
+
+std::string PyDbSectionSettings::layer(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const
+{
+    return wstr_to_utf8(impObj()->layer(nSecType, nGeometry));
+}
+
+void PyDbSectionSettings::setLayer(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, const std::string& pszLayer)
+{
+    PyThrowBadEs(impObj()->setLayer(nSecType, nGeometry, utf8_to_wstr(pszLayer).c_str()));
+}
+
+std::string PyDbSectionSettings::linetype(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const
+{
+    return wstr_to_utf8(impObj()->linetype(nSecType, nGeometry));
+}
+
+void PyDbSectionSettings::setLinetype(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, const std::string& pszLinetype)
+{
+    PyThrowBadEs(impObj()->setLinetype(nSecType, nGeometry, utf8_to_wstr(pszLinetype).c_str()));
+}
+
+double PyDbSectionSettings::linetypeScale(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const
+{
+    return impObj()->linetypeScale(nSecType, nGeometry);
+}
+
+void PyDbSectionSettings::setLinetypeScale(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, double fScale)
+{
+    PyThrowBadEs(impObj()->setLinetypeScale(nSecType, nGeometry, fScale));
+}
+
+std::string PyDbSectionSettings::plotStyleName(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const
+{
+    return wstr_to_utf8(impObj()->plotStyleName(nSecType, nGeometry));
+}
+
+void PyDbSectionSettings::setPlotStyleName(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, const std::string& pszPlotStyleName)
+{
+    PyThrowBadEs(impObj()->setPlotStyleName(nSecType, nGeometry, utf8_to_wstr(pszPlotStyleName).c_str()));
+}
+
+AcDb::LineWeight PyDbSectionSettings::lineWeight(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const
+{
+    return impObj()->lineWeight(nSecType, nGeometry);
+}
+
+void PyDbSectionSettings::setLineWeight(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, AcDb::LineWeight nLineWeight)
+{
+    PyThrowBadEs(impObj()->setLineWeight(nSecType, nGeometry, nLineWeight));
+}
+
+int PyDbSectionSettings::faceTransparency(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const
+{
+    return impObj()->faceTransparency(nSecType, nGeometry);
+}
+
+void PyDbSectionSettings::setFaceTransparency(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, int nTransparency)
+{
+    PyThrowBadEs(impObj()->setFaceTransparency(nSecType, nGeometry, nTransparency));
+}
+
+int PyDbSectionSettings::edgeTransparency(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const
+{
+    return impObj()->edgeTransparency(nSecType, nGeometry);
+}
+
+void PyDbSectionSettings::setEdgeTransparency(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, int nTransparency)
+{
+    PyThrowBadEs(impObj()->setEdgeTransparency(nSecType, nGeometry, nTransparency));
+}
+
+bool PyDbSectionSettings::hatchVisibility(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const
+{
+    return impObj()->hatchVisibility(nSecType, nGeometry);
+}
+
+void PyDbSectionSettings::setHatchVisibility(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, bool bVisible)
+{
+    PyThrowBadEs(impObj()->setHatchVisibility(nSecType, nGeometry, bVisible));
+}
+
+boost::python::tuple PyDbSectionSettings::getHatchPattern(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const
+{
+    PyAutoLockGIL lock;
+    AcDbHatch::HatchPatternType nPatternType = AcDbHatch::kUserDefined;
+    const TCHAR* val = nullptr;
+    PyThrowBadEs(impObj()->getHatchPattern(nSecType, nGeometry, nPatternType, val));
+    return boost::python::make_tuple(nPatternType,wstr_to_utf8(val));
+}
+
+void PyDbSectionSettings::setHatchPattern(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, AcDbHatch::HatchPatternType nPatternType, const std::string& pszPatternName)
+{
+    PyThrowBadEs(impObj()->setHatchPattern(nSecType, nGeometry, nPatternType, utf8_to_wstr(pszPatternName).c_str()));
+}
+
+double PyDbSectionSettings::hatchAngle(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const
+{
+    return impObj()->hatchAngle(nSecType, nGeometry);
+}
+
+void PyDbSectionSettings::setHatchAngle(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, double fAngle)
+{
+    PyThrowBadEs(impObj()->setHatchAngle(nSecType, nGeometry, fAngle));
+}
+
+double PyDbSectionSettings::hatchSpacing(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const
+{
+    return impObj()->hatchSpacing(nSecType, nGeometry);
+}
+
+void PyDbSectionSettings::setHatchSpacing(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, double fSpacing)
+{
+    PyThrowBadEs(impObj()->setHatchSpacing(nSecType, nGeometry, fSpacing));
+}
+
+double PyDbSectionSettings::hatchScale(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const
+{
+    return impObj()->hatchScale(nSecType, nGeometry);
+}
+
+void PyDbSectionSettings::setHatchScale(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, double fScale)
+{
+    PyThrowBadEs(impObj()->setHatchScale(nSecType, nGeometry, fScale));
+}
+
+bool PyDbSectionSettings::hiddenLine(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const
+{
+    return impObj()->hiddenLine(nSecType, nGeometry);
+}
+
+void PyDbSectionSettings::setHiddenLine(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, bool bHiddenLine)
+{
+    PyThrowBadEs(impObj()->setHiddenLine(nSecType, nGeometry, bHiddenLine));
+}
+
+bool PyDbSectionSettings::divisionLines(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const
+{
+    return impObj()->divisionLines(nSecType, nGeometry);
+}
+
+void PyDbSectionSettings::setDivisionLines(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, bool bShow)
+{
+    PyThrowBadEs(impObj()->setDivisionLines(nSecType, nGeometry, bShow));
 }
 
 PyRxClass PyDbSectionSettings::desc()
