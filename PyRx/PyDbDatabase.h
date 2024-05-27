@@ -115,6 +115,7 @@ public:
     std::string         dimpost() const;
     PyDbObjectId        getDimstyleParentId(PyDbObjectId& childStyle) const;
     static AcDb::LineWeight getNearestLineWeight(int weight);
+    PyDbObjectId        getSectionManagerId() const;
     boost::python::list getViewportArray1() const;
     boost::python::list getViewportArray2(bool bGetPaperspaceVports) const;
     boost::python::list getVisualStyleList(); //TODO test
@@ -483,8 +484,8 @@ public:
     AcGeVector3d		ucsydir() const;
     bool				undoRecording() const;
     Adesk::Int16		unitmode() const;
-    void	updateDataLink(AcDb::UpdateDirection nDir, AcDb::UpdateOption nOption);
-    void	updateExt(bool doBestFit);
+    void	            updateDataLink(AcDb::UpdateDirection nDir, AcDb::UpdateOption nOption);
+    void	            updateExt(bool doBestFit);
     Adesk::UInt8	    updateThumbnail() const;
     Adesk::Int16	    useri1() const;
     Adesk::Int16	    useri2() const;
