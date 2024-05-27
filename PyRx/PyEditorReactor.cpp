@@ -349,9 +349,8 @@ void PyEditorReactor::otherInsert(AcDbDatabase* pTo, AcDbIdMapping& idMap, AcDbD
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     PyDbDatabase from(pFrom);
-    PyDbIdMapping maping(idMap);
-    maping.forceKeepAlive(true);
-    otherInsertWr(to, maping, from);
+    PyDbIdMapping mapping(idMap,true);
+    otherInsertWr(to, mapping, from);
 }
 
 void PyEditorReactor::abortInsert(AcDbDatabase* pTo)
@@ -399,8 +398,7 @@ void PyEditorReactor::otherWblock(AcDbDatabase* pTo, AcDbIdMapping& idMap, AcDbD
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     PyDbDatabase from(pFrom);
-    PyDbIdMapping mapping(idMap);
-    mapping.forceKeepAlive(true);
+    PyDbIdMapping mapping(idMap, true);
     otherWblockWr(to, mapping, from);
 }
 
@@ -428,8 +426,7 @@ void PyEditorReactor::beginDeepClone(AcDbDatabase* pTo, AcDbIdMapping& idMap)
         return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
-    PyDbIdMapping mapping(idMap);
-    mapping.forceKeepAlive(true);
+    PyDbIdMapping mapping(idMap, true);
     beginDeepCloneWr(to, mapping);
 }
 
@@ -438,8 +435,7 @@ void PyEditorReactor::beginDeepCloneXlation(AcDbIdMapping& idMap, Acad::ErrorSta
     if (reg_beginDeepCloneXlation == false)
         return;
     PyAutoLockGIL lock;
-    PyDbIdMapping mapping(idMap);
-    mapping.forceKeepAlive(true);
+    PyDbIdMapping mapping(idMap, true);
     auto stat = beginDeepCloneXlationWr(mapping);
     if (es != nullptr)
         *es = stat;
@@ -450,8 +446,7 @@ void PyEditorReactor::abortDeepClone(AcDbIdMapping& idMap)
     if (reg_abortDeepClone == false)
         return;
     PyAutoLockGIL lock;
-    PyDbIdMapping mapping(idMap);
-    mapping.forceKeepAlive(true);
+    PyDbIdMapping mapping(idMap, true);
     abortDeepCloneWr(mapping);
 }
 
@@ -460,8 +455,7 @@ void PyEditorReactor::endDeepClone(AcDbIdMapping& idMap)
     if (reg_endDeepClone == false)
         return;
     PyAutoLockGIL lock;
-    PyDbIdMapping mapping(idMap);
-    mapping.forceKeepAlive(true);
+    PyDbIdMapping mapping(idMap, true);
     endDeepCloneWr(mapping);
 }
 
@@ -797,8 +791,7 @@ void PyEditorReactor::beginWblockObjects(AcDbDatabase* pFrom, AcDbIdMapping& idM
         return;
     PyAutoLockGIL lock;
     PyDbDatabase from(pFrom);
-    PyDbIdMapping mapping(idMap);
-    mapping.forceKeepAlive(true);
+    PyDbIdMapping mapping(idMap, true);
     beginWblockObjectsWr(from, mapping);
 }
 
