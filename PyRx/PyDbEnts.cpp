@@ -305,7 +305,7 @@ void PyDbText::convertFieldToText()
 
 bool PyDbText::hitTest(const AcGePoint3d& ptHit) const
 {
-#if _ZRXTARGET == 240 || _GRXTARGET == 240 || _BRXTARGET == 240
+#if defined (_ZRXTARGET) && _ZRXTARGET <= 250 || defined (_GRXTARGET) && _GRXTARGET == 240  || defined (_BRXTARGET) &&_BRXTARGET == 240
     throw PyNotimplementedByHost();
 #else
     return impObj()->hitTest(ptHit);
@@ -314,7 +314,7 @@ bool PyDbText::hitTest(const AcGePoint3d& ptHit) const
 
 boost::python::list PyDbText::getBoundingPoints() const
 {
-#if _ZRXTARGET == 240 || _GRXTARGET == 240
+#if defined (_ZRXTARGET) && _ZRXTARGET <= 250 || defined (_GRXTARGET) && _GRXTARGET == 240
     throw PyNotimplementedByHost();
 #else
     AcGePoint3dArray boundingPoints;
