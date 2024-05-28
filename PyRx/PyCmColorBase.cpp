@@ -118,7 +118,7 @@ void makePyCmEntityColorWrapper()
     PyDocString DS("PyDb.EntityColor");
     class_<AcCmEntityColor>("EntityColor")
         .def(init<Adesk::UInt8, Adesk::UInt8, Adesk::UInt8>(DS.ARGS({ "r: int","g: int","b: int"   })))
-#if _ZRXTARGET == 240 || _GRXTARGET == 240 || _BRXTARGET == 240
+#if defined (_ZRXTARGET) && _ZRXTARGET <= 250 || defined (_GRXTARGET) && _GRXTARGET == 240  || defined (_BRXTARGET) &&_BRXTARGET == 240
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(AcCmEntityColor::ColorMethod)>("setColorMethod", &AcCmEntityColor::setColorMethod)
         .def<AcCmEntityColor::ColorMethod(AcCmEntityColor::*)()const>("colorMethod", &AcCmEntityColor::colorMethod)
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::UInt32)>("setColor", &AcCmEntityColor::setColor)
