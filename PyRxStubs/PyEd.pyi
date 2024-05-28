@@ -1314,7 +1314,7 @@ class Editor(object):
     ...
 
     @staticmethod
-    def traceBoundary (point: PyGe.Point3d,detectIslands: bool)-> list :
+    def traceBoundary (point: PyGe.Point3d,detectIslands: bool)-> list[PyDb.Polyline] :
       '''Performs a boundary trace on the given seedPoint, and returns a set of AcDbPolyline * objects that represent the boundary found.To succeed, the entities that form the boundary to be found must be entirely visible on screen in the AutoCAD editor.'''
     ...
 
@@ -1885,7 +1885,7 @@ class InputPoint(object):
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def alignmentPaths (self)-> list :
+    def alignmentPaths (self)-> list[PyGe.Curve] :
       '''                             '''
     ...
     def cartesianSnappedPoint (self)-> PyGe.Point3d :
@@ -1903,25 +1903,25 @@ This class cannot be instantiated from Python'''
     def grippedPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def gsSelectionMark (self)-> list :
+    def gsSelectionMark (self)-> list[int] :
       '''                             '''
     ...
     def history (self)-> PyEd.PointHistory :
       '''                             '''
     ...
-    def keyPointEntities (self)-> list :
+    def keyPointEntities (self)-> list[PyDb.ObjectId] :
       '''                             '''
     ...
-    def keyPointGsSelectionMark (self)-> list :
+    def keyPointGsSelectionMark (self)-> list[int] :
       '''                             '''
     ...
     def lastPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def nestedKeyPointEntities (self)-> list :
+    def nestedKeyPointEntities (self)-> list[list[PyDb.ObjectId]] :
       '''                             '''
     ...
-    def nestedPickedEntities (self)-> list :
+    def nestedPickedEntities (self)-> list[list[PyDb.ObjectId]] :
       '''                             '''
     ...
     def osnapMask (self)-> PyDb.OsnapMask :

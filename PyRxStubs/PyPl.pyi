@@ -146,19 +146,19 @@ class DSDData(PlObject):
     def dispose (self)-> None :
       '''                             '''
     ...
-    def get3dDwfOptions (self, *args, **kwargs)-> tuple[Any,...] :
+    def get3dDwfOptions (self, *args, **kwargs)-> tuple[bool,bool] :
       '''get3dDwfOptions( (DSDData)arg1) -> tuple :
 
     C++ signature :
         class boost::python::tuple get3dDwfOptions(class PyPlDSDData {lvalue})'''
     ...
-    def getDSDEntries (self, *args, **kwargs)-> list :
+    def getDSDEntries (self, *args, **kwargs)-> list[PyPl.DSDEntry] :
       '''getDSDEntries( (DSDData)arg1) -> list :
 
     C++ signature :
         class boost::python::list getDSDEntries(class PyPlDSDData {lvalue})'''
     ...
-    def getPrecisionEntries (self, *args, **kwargs)-> list :
+    def getPrecisionEntries (self, *args, **kwargs)-> list[PyPl.PrecisionEntry] :
       '''getPrecisionEntries( (DSDData)arg1) -> list :
 
     C++ signature :
@@ -807,7 +807,7 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > fullPath(class PyPlPlotConfig {lvalue})'''
     ...
-    def getCanonicalMediaNameList (self, *args, **kwargs)-> list :
+    def getCanonicalMediaNameList (self, *args, **kwargs)-> list[str] :
       '''getCanonicalMediaNameList( (PlotConfig)arg1) -> list :
 
     C++ signature :
@@ -819,7 +819,7 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getDefaultFileExtension(class PyPlPlotConfig {lvalue})'''
     ...
-    def getDescriptionFields (self, *args, **kwargs)-> tuple[Any,...] :
+    def getDescriptionFields (self, *args, **kwargs)-> tuple[str,...] :
       '''getDescriptionFields( (PlotConfig)arg1) -> tuple :
 
     C++ signature :
@@ -1013,7 +1013,7 @@ class PlotConfigManager(object):
     C++ signature :
         class PyPlPlotConfig getCurrentConfig(class PyPlPlotConfigManager {lvalue})'''
     ...
-    def getDevicesList (self, *args, **kwargs)-> list :
+    def getDevicesList (self, *args, **kwargs)-> list[PyPl.PlotConfigInfo] :
       '''getDevicesList( (PlotConfigManager)arg1) -> list :
 
     C++ signature :
@@ -1025,7 +1025,7 @@ class PlotConfigManager(object):
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getStdConfigName(class PyPlPlotConfigManager {lvalue},enum AcPlPlotConfigManager::StdConfigs)'''
     ...
-    def getStyleList (self, *args, **kwargs)-> list :
+    def getStyleList (self, *args, **kwargs)-> list[str] :
       '''getStyleList( (PlotConfigManager)arg1) -> list :
 
     C++ signature :
@@ -1638,13 +1638,13 @@ __init__( (object)arg1, (int)arg2, (bool)arg3, (int)arg4, (bool)arg5) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotMsgString(class PyPlPlotProgressDialog {lvalue},enum AcPlPlotProgressDialog::PlotMSGIndex)'''
     ...
-    def getPlotProgressRange (self, *args, **kwargs)-> tuple[Any,...] :
+    def getPlotProgressRange (self, *args, **kwargs)-> tuple[int,int] :
       '''getPlotProgressRange( (PlotProgressDialog)arg1) -> tuple :
 
     C++ signature :
         class boost::python::tuple getPlotProgressRange(class PyPlPlotProgressDialog {lvalue})'''
     ...
-    def getSheetProgressRange (self, *args, **kwargs)-> tuple[Any,...] :
+    def getSheetProgressRange (self, *args, **kwargs)-> tuple[int,int] :
       '''getSheetProgressRange( (PlotProgressDialog)arg1) -> tuple :
 
     C++ signature :
