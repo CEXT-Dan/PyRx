@@ -113,6 +113,54 @@
         [
             "objectIds",
             "list[PyDb.ObjectId]"
+        ],
+        [
+            "acquireString",
+            "tuple[PyGe.DragStatus,str]"
+        ],
+        [
+            "acquireAngle",
+            "tuple[PyGe.DragStatus,float]"
+        ],
+        [
+            "acquireDist",
+            "tuple[PyGe.DragStatus,float]"
+        ],
+        [
+            "acquirePoint",
+            "tuple[PyGe.DragStatus,PyGe.Point3d]"
+        ],
+        [
+            "PyEd::SelectionSet::toList",
+            "list[PyDb.ObjectId]"
+        ],
+        [
+            "PyEd::Editor::getCurrentSelectionSet",
+            "list[PyDb.ObjectId]"
+        ],
+        [
+            "PyEd::InputPoint::pickedEntities",
+            "list[PyDb.ObjectId]"
+        ],
+        [
+            "PyEd::Core::getRGB",
+            "tuple[int,...]"
+        ],
+        [
+            "PyAp::DocManager::documents",
+            "list[PyAp.Document]"
+        ],
+        [
+            "PyDb::explode",
+            "list[PyDb.Entity]"
+        ],
+        [
+            "PyDb::getGripPoints",
+            "tuple[list[PyGe.Point3d],list[int],list[int]]"
+        ],
+        [
+            "PyDb::getStretchPoints",
+            "list[PyGe.Point3d]"
         ]
     ]
 }
