@@ -161,6 +161,50 @@
         [
             "PyDb::getStretchPoints",
             "list[PyGe.Point3d]"
+        ],
+        [
+            "PyDb::xData",
+            "list"
+        ],
+        [
+            "PyDb::intersectWith",
+            "list[PyGe.Point3d]"
+        ],
+        [
+            "recordIds",
+            "list[PyDb.ObjectId]"
+        ],
+        [
+            "PyDb::getOffsetCurves",
+            "list[PyDb.Curve]"
+        ],
+        [
+            "PyDb::getOffsetCurvesGivenPlaneNormal",
+            "list[PyDb.Curve]"
+        ],
+        [
+            "PyDb::getSplitCurves",
+            "list[PyDb.Curve]"
+        ],
+        [
+            "PyDb::getSplitCurvesAtParam",
+            "list[PyDb.Curve]"
+        ],
+        [
+            "PyDb::getSplitCurvesAtParams",
+            "list[PyDb.Curve]"
+        ],
+        [
+            "PyDb::getSplitCurvesAtPoint",
+            "list[PyDb.Curve]"
+        ],
+        [
+            "PyDb::getSplitCurvesAtPoints",
+            "list[PyDb.Curve]"
+        ],
+        [
+            "PyDb::appendAcDbEntities",
+            "list[PyDb.ObjectId]"
         ]
     ]
 }
