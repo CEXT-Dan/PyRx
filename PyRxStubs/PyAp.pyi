@@ -818,7 +818,7 @@ class DocManager(PyRx.RxObject):
     def documentCount (self)-> int :
       '''This function returns the number of documents currently open.'''
     ...
-    def documents (self)-> list :
+    def documents (self)-> list[PyAp.Document] :
       '''                             '''
     ...
     def enableDocumentActivation (self)-> None :

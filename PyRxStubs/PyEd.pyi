@@ -284,7 +284,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def getRGB (colorIndex : int)-> tuple[Any,...] :
+    def getRGB (colorIndex : int)-> tuple[int,...] :
       '''This function returns a RGB color value in Win32 COLORREF (0x00bbggrr) format for the color specified by the AutoCAD Color Index (ACI) number. The ACI number must be a value between 0 and 255.If this function is passed a value less than 0 or greater than 255, then the return value will be meaningless.'''
     ...
 
@@ -1011,16 +1011,16 @@ class DrawJig(object):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def acquireAngle (self, basePnt: PyGe.Point3d=None)-> tuple[Any,...] :
+    def acquireAngle (self, basePnt: PyGe.Point3d=None)-> tuple[PyGe.DragStatus,float] :
       '''                             '''
     ...
-    def acquireDist (self, basePnt: PyGe.Point3d=None)-> tuple[Any,...] :
+    def acquireDist (self, basePnt: PyGe.Point3d=None)-> tuple[PyGe.DragStatus,float] :
       '''                             '''
     ...
-    def acquirePoint (self, basePnt: PyGe.Point3d=None)-> tuple[Any,...] :
+    def acquirePoint (self, basePnt: PyGe.Point3d=None)-> tuple[PyGe.DragStatus,PyGe.Point3d] :
       '''                             '''
     ...
-    def acquireString (self)-> tuple[Any,...] :
+    def acquireString (self)-> tuple[PyGe.DragStatus,str] :
       '''                             '''
     ...
 
@@ -1150,7 +1150,7 @@ class Editor(object):
     ...
 
     @staticmethod
-    def getCurrentSelectionSet ()-> list :
+    def getCurrentSelectionSet ()-> list[PyDb.ObjectId] :
       '''This function fills sset in with the object IDs of all entities in the current selection set within AutoCAD.The "current selection set" may be one of the following: a pickfirst set, a selection set selected by the select command or any other command that does a selection (that is, similar to the "Previous" selection option), or the most recent set from an ssget.If a pickfirst set is available it will always be used. If no pickfirst set is available, then whichever of the other two types is available will be used. If both of the other two types are available, then whichever was most recently created will be used.If a pickfirst selection set is "selected" by a call to this function, then the entity highlighting and grips will disappear just as they would when any AutoCAD command uses a pickfirst selection set.If an ssget type of selection is "selected" by a call to this function, then sset will essentially be a copy of the selection set and the original ssget selection set will still be valid.Only certain AutoCAD commands create a selection set that can be found by acdbGetCurrentSelectionSet(). These commands are listed below:ACISOUTAMECONVERTARRAYATTEXTAUDITBHATCHBMPOUTCHANGECHPROPCONVERTCONVERTPOLYCOPYCOPYCLIPCUTCLIPDIVIDEDVIEWDXFOUT (partial)ERASEEXPLODEEXTENDEXTRUDEGROUPHATCHHIDEINTERFEREINTERSECTLISTMASSPROPMEASUREMIRRORMOVEMVIEWOOPSPEDITREGIONREVOLVEROTATESCALESECTIONSELECTSLICESPELLSPLINESTLOUTSTRETCHSUBTRACTTRIMUNIONVPVISWBLOCKWMFOUTXCLIP'''
     ...
 
@@ -1933,7 +1933,7 @@ This class cannot be instantiated from Python'''
     def osnappedPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def pickedEntities (self)-> list :
+    def pickedEntities (self)-> list[PyDb.ObjectId] :
       '''                             '''
     ...
     def pointComputed (self)-> bool :
@@ -2071,16 +2071,16 @@ class Jig(object):
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbEntity)'''
     ...
-    def acquireAngle (self, basePnt: PyGe.Point3d=None)-> tuple[Any,...] :
+    def acquireAngle (self, basePnt: PyGe.Point3d=None)-> tuple[PyGe.DragStatus,float] :
       '''                             '''
     ...
-    def acquireDist (self, basePnt: PyGe.Point3d=None)-> tuple[Any,...] :
+    def acquireDist (self, basePnt: PyGe.Point3d=None)-> tuple[PyGe.DragStatus,float] :
       '''                             '''
     ...
-    def acquirePoint (self, basePnt: PyGe.Point3d=None)-> tuple[Any,...] :
+    def acquirePoint (self, basePnt: PyGe.Point3d=None)-> tuple[PyGe.DragStatus,PyGe.Point3d] :
       '''                             '''
     ...
-    def acquireString (self)-> tuple[Any,...] :
+    def acquireString (self)-> tuple[PyGe.DragStatus,str] :
       '''                             '''
     ...
     def append (self)-> PyDb.ObjectId :
@@ -2319,7 +2319,7 @@ class SelectionSet(object):
     def ssXform (self, xform: PyGe.Matrix3d)-> PyEd.PromptStatus :
       '''                             '''
     ...
-    def toList (self)-> list :
+    def toList (self)-> list[PyDb.ObjectId] :
       '''                             '''
     ...
 

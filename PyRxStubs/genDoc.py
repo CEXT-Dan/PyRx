@@ -206,24 +206,37 @@ def resolverParseSig(sig: str) -> None:
 
 # I don't want to write for every derived sig like xData, getGripPoints
 # see if there's conflits with this
-def tryResolveTupleType(moduleName: str, name: str, sig: str,rtTypes) -> str | None:
-    psig = "{}::{}::{}".format(moduleName,name, resolverParseSig(sig))
+def tryResolveTupleType(moduleName: str, className: str, sig: str,rtTypes) -> str | None:
+    psig = "{}::{}::{}".format(moduleName,className, resolverParseSig(sig))
     if psig in rtTypes:
         return rtTypes[psig]
+    
+    psig = "{}::{}".format(moduleName,resolverParseSig(sig))
+    if psig in rtTypes:
+        return rtTypes[psig]
+    
     psig = "{}".format(resolverParseSig(sig))
     if psig in rtTypes:
         return rtTypes[psig]
-    print(psig)
+    
+    print("{}::{}::{}".format(moduleName,className, resolverParseSig(sig)))
     return "tuple[Any,...]"
 
-def tryResolveListType(moduleName: str,name: str, sig: str,rtTypes) -> str | None:
-    psig = "{}::{}::{}".format(moduleName,name, resolverParseSig(sig))
+def tryResolveListType(moduleName: str,className: str, sig: str,rtTypes) -> str | None:
+    
+    psig = "{}::{}::{}".format(moduleName,className, resolverParseSig(sig))
     if psig in rtTypes:
         return rtTypes[psig]
+    
+    psig = "{}::{}".format(moduleName,resolverParseSig(sig))
+    if psig in rtTypes:
+        return rtTypes[psig]
+    
     psig = "{}".format(resolverParseSig(sig))
     if psig in rtTypes:
         return rtTypes[psig]
-    print(psig)
+    
+    print("{}::{}::{}".format(moduleName,className, resolverParseSig(sig)))
     return "list"
 
 def findReturnType(moduleName,name,sig,rtTypes):
