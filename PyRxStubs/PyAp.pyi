@@ -67,12 +67,12 @@ class Application(object):
     ...
 
     @staticmethod
-    def getLoadedModuleNames ()-> list :
+    def getLoadedModuleNames ()-> list[str] :
       '''                             '''
     ...
 
     @staticmethod
-    def getLoadedModules ()-> list :
+    def getLoadedModules ()-> list[str] :
       '''                             '''
     ...
 
@@ -988,7 +988,7 @@ This class cannot be instantiated from Python'''
     def getCountOfLispList (self)-> int :
       '''Returns number of loaded LISP applications.'''
     ...
-    def getItemOfLispList (self, index : int)-> tuple[Any,...] :
+    def getItemOfLispList (self, index : int)-> tuple[str,bool] :
       '''Accesses the list of loaded LISP applications and returns information corresponding to the specified index.'''
     ...
     def getUserData (self)-> object :
@@ -1096,7 +1096,7 @@ class LayerFilter(PyRx.RxObject):
     def generateNested (self)-> None :
       '''                             '''
     ...
-    def getNestedFilters (self)-> list :
+    def getNestedFilters (self)-> list[PyAp.LayerFilter] :
       '''                             '''
     ...
     def implRefCount (self)-> int :
@@ -1146,7 +1146,7 @@ class LayerFilterManager(object):
     def __init__ (self, db: PyDb.Database=None)-> None :
       '''                             '''
     ...
-    def getFilters (self)-> tuple[Any,...] :
+    def getFilters (self)-> tuple[PyAp.LayerFilter,PyAp.LayerFilter] :
       '''                             '''
     ...
 
@@ -1214,7 +1214,7 @@ class LayerGroup(LayerFilter):
     def generateNested (self)-> None :
       '''                             '''
     ...
-    def getNestedFilters (self)-> list :
+    def getNestedFilters (self)-> list[PyAp.LayerFilter] :
       '''                             '''
     ...
     def implRefCount (self)-> int :
@@ -1238,7 +1238,7 @@ class LayerGroup(LayerFilter):
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def layerIds (self)-> list :
+    def layerIds (self)-> list[PyDb.ObjectId] :
       '''                             '''
     ...
     def name (self)-> str :
@@ -1295,7 +1295,7 @@ class LayoutManager(PyDb.LayoutManager):
     def countLayouts (self, db: PyDb.Database=None)-> int :
       '''                             '''
     ...
-    def createLayout (self, name: str, db: PyDb.Database=None)-> tuple[Any,...] :
+    def createLayout (self, name: str, db: PyDb.Database=None)-> tuple[PyDb.ObjectId,PyDb.ObjectId] :
       '''                             '''
     ...
     def createLayoutFromTemplate (self, newLayoutName : str, templatePath : str, layoutName : str, db : PyDb.Database='current')-> PyDb.ObjectId :
@@ -1330,7 +1330,7 @@ class LayoutManager(PyDb.LayoutManager):
     def getActiveTab (self)-> str :
       '''                             '''
     ...
-    def getClipBoundaryElabration (self, val : PyDb.ObjectId)-> list :
+    def getClipBoundaryElabration (self, val : PyDb.ObjectId)-> list[PyGe.Point2d] :
       '''                             '''
     ...
     def getLayouts (self, db: PyDb.Database=None)-> dict :
@@ -1363,7 +1363,7 @@ class LayoutManager(PyDb.LayoutManager):
     def pageSetup (self, layoutBTRId : PyDb.ObjectId=PyDb.ObjectId.kNull, parent : int=0, isPageSetupDlg : bool=True)-> int :
       '''                             '''
     ...
-    def pointInViewports (self, val : PyGe.Point3d)-> list :
+    def pointInViewports (self, val : PyGe.Point3d)-> list[PyDb.ObjectId] :
       '''                             '''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
@@ -1710,7 +1710,7 @@ class TransactionManager(PyDb.TransactionManager):
     def flushGraphics (self)-> None :
       '''                             '''
     ...
-    def getAllObjects (self)-> list :
+    def getAllObjects (self)-> list[PyDb.DbObject] :
       '''                             '''
     ...
     def getObject (self, id: ObjectId, mode: OpenMode=OpenMode.kForRead, openErasedObject: bool=False)-> PyDb.DbObject :

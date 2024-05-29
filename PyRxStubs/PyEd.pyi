@@ -104,7 +104,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def coordFromWorldToPixel (windnum: int ,pnt: PyGe.Point3d)-> tuple[Any,...] :
+    def coordFromWorldToPixel (windnum: int ,pnt: PyGe.Point3d)-> tuple[int,int] :
       '''Converts coordinates in given viewport to Windows screen coordinates.Returns TRUE if it successfully converts the coordinates; otherwise, returns FALSE.'''
     ...
 
@@ -229,17 +229,17 @@ class Core(object):
     ...
 
     @staticmethod
-    def getCurVportPixelToDisplay ()-> tuple[Any,...] :
+    def getCurVportPixelToDisplay ()-> tuple[float,float] :
       ''' This function sets xFactor and yFactor to the x and y pixel space to display space conversion factors for the current viewport. These values represent the size of a pixel in display coordinates. If there is no current viewport, then both are set to 0.0.'''
     ...
 
     @staticmethod
-    def getCurVportScreenToDisplay ()-> tuple[Any,...] :
+    def getCurVportScreenToDisplay ()-> tuple[float,float] :
       ''' This function sets xFactor and yFactor to the x and y screen space to display space conversion factors for the current viewport. If there is no current viewport, then both are set to 0.0.'''
     ...
 
     @staticmethod
-    def getCurrentSelectionSet ()-> list :
+    def getCurrentSelectionSet ()-> list[PyDb.ObjectId] :
       '''This function fills sset in with the object IDs of all entities in the current selection set within AutoCAD.The "current selection set" may be one of the following: a pickfirst set, a selection set selected by the select command or any other command that does a selection (that is, similar to the "Previous" selection option), or the most recent set from an ssget.If a pickfirst set is available it will always be used. If no pickfirst set is available, then whichever of the other two types is available will be used. If both of the other two types are available, then whichever was most recently created will be used.If a pickfirst selection set is "selected" by a call to this function, then the entity highlighting and grips will disappear just as they would when any AutoCAD command uses a pickfirst selection set.If an ssget type of selection is "selected" by a call to this function, then sset will essentially be a copy of the selection set and the original ssget selection set will still be valid.Only certain AutoCAD commands create a selection set that can be found by acdbGetCurrentSelectionSet(). These commands are listed below:ACISOUTAMECONVERTARRAYATTEXTAUDITBHATCHBMPOUTCHANGECHPROPCONVERTCONVERTPOLYCOPYCOPYCLIPCUTCLIPDIVIDEDVIEWDXFOUT (partial)ERASEEXPLODEEXTENDEXTRUDEGROUPHATCHHIDEINTERFEREINTERSECTLISTMASSPROPMEASUREMIRRORMOVEMVIEWOOPSPEDITREGIONREVOLVEROTATESCALESECTIONSELECTSLICESPELLSPLINESTLOUTSTRETCHSUBTRACTTRIMUNIONVPVISWBLOCKWMFOUTXCLIP'''
     ...
 
@@ -264,7 +264,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def getLastCommandLines (lineCount: int,ignoreNull: bool)-> list :
+    def getLastCommandLines (lineCount: int,ignoreNull: bool)-> list[str] :
       '''                             '''
     ...
 
@@ -279,7 +279,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def getPredefinedHatchPatterns ()-> list :
+    def getPredefinedHatchPatterns ()-> list[str] :
       '''                             '''
     ...
 
@@ -509,12 +509,12 @@ class Core(object):
     ...
 
     @staticmethod
-    def setColorDialog (clr: int,bAllowMetaColor: bool,nCurLayerColor, int)-> tuple[Any,...] :
+    def setColorDialog (clr: int,bAllowMetaColor: bool,nCurLayerColor, int)-> tuple[bool,int] :
       '''This function starts the SetColor dialog within the AutoCAD editor. The value passed in via nColor is used as the default color index in the dialog. Upon return nColor contains the color index of the color selected by the user. If bAllowMetaColor is Adesk::kTrue, the BYLAYER and BYBLOCK meta-colors are allowed in the dialog. nCurLayerColor is used as the color index of the color to show for BYLAYER.If the SetColor dialog is invoked using this function, only the color index tab is available. To enable the user to select additional color types, invoke the SetColor dialog with the acedSetColorDialogTrueColor() function.Returns Adesk::kTrue if the dialog was successfully terminated via the OK button, or Adesk::kFalse if the dialog was canceled.'''
     ...
 
     @staticmethod
-    def setColorDialogTrueColor (clr: PyDb.AcCmColor,bAllowMetaColor: bool,nCurLayerColor: PyDb.AcCmColor,tab: int = 7)-> tuple[Any,...] :
+    def setColorDialogTrueColor (clr: PyDb.AcCmColor,bAllowMetaColor: bool,nCurLayerColor: PyDb.AcCmColor,tab: int = 7)-> tuple[bool,PyDb.Color] :
       '''This function starts the Set Color dialog box within the AutoCAD editor.The value passed in color is the default color in the dialog. This can affect which tab and controls are active upon entering the dialog box. When the function returns, color contains the color selected by the user or the original value if the dialog box was aborted.If bAllowMetaColor is Adesk::kTrue, the BYLAYER and BYBLOCK metacolors are allowed in the dialog. curLayerColor is the color to show for BYLAYER.The function returns Adesk::kTrue if the dialog box was successfully terminated by the OK button; it returns Adesk::kFalse if the dialog box was canceled.'''
     ...
 
@@ -584,7 +584,7 @@ class Core(object):
     ...
 
     @staticmethod
-    def textBox (resultBuffer: list)-> tuple[Any,...] :
+    def textBox (resultBuffer: list)-> tuple[PyGe.Point3d,PyGe.Point3d] :
       '''Finds the coordinates of a box that encloses a text entity. Assumes that the origin is (0,0) and the rotation is 0 (or 270 if the text is vertical). If the text is located at a different point or is rotated, your program must handle these values explicitly.If the text is horizontal and is not rotated, p1 (the bottom-left corner) and p2 (the top-right corner) describe the bounding box of the text. The coordinates are expressed in the ECS of ent, with the origin (0,0) at the left endpoint of the baseline. (The origin is not the bottom-left corner if the text contains letters with descenders, such as g and p.) If the text is vertical or rotated, p1 and p2 still observe the left-to-right, bottom-to-top order; the offsets are negative, if necessary.If the result-buffer list passed in ent begins with a -1 (entity name) group, this group must name an existing text, attdef, or attrib entity. No further groups need to be present, but if the list contains further groups, these override the entity's actual attributes.If the result-buffer list doesn't begin with a -1 group, it must begin with a 0 (entity type) group, and it must contain a group that contains the string itself. This is a 1 (value) group for a text or attrib entity, or a 2 (tag string) group for an attdef entity. Other values are assumed to be the default values unless they are explicitly specified. The defaults are as follows:Style (group 7)--Defaults to the current text styleSize (group 40)--Defaults to the size of the style if that is fixed; otherwise, defaults to the current default size of the styleWidth factor (group 41)--Defaults to the default width of the styleObliquing angle (group 51)--Defaults to the default angle of the styleIf acedTextBox() succeeds, it returns RTNORM; it returns RTERROR if ent does not correctly specify a text entity. If acedTextBox() fails, it sets the system variable ERRNO to a value that indicates the reason for the failure.'''
     ...
 
