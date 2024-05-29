@@ -549,6 +549,74 @@
         [
             "PyDb::modificationActionBodyIds",
             "list[PyDb.ObjectId]"
+        ],
+        [
+            "PyDb::SweepOptions::checkSweepCurve",
+            "tuple[PyDb.Planarity,PyGe.Point3d,PyGe.Vector3d,bool,float]"
+        ],
+        [
+            "PyDb::SubDMesh::getVertices",
+            "list[PyGe.Point3d]"
+        ],
+        [
+            "PyDb::SubDMesh::getSubentPath",
+            "list[list[PyDb.FullSubentPath]]"
+        ],
+        [
+            "PyDb::SubDMesh::getAdjacentSubentPath",
+            "list[list[PyDb.FullSubentPath]]"
+        ],
+        [
+            "PyDb::SubDMesh::getSubDividedVertices",
+            "list[PyGe.Point3d]"
+        ],
+        [
+            "PyDb::SubDMesh::getSubDividedNormalArray",
+            "list[PyGe.Vector3d]"
+        ],
+        [
+            "PyDb::SubDMesh::getSubDividedFaceArray",
+            "list[int]"
+        ],
+        [
+            "PyDb::SubDMesh::getNormalArray",
+            "list[PyGe.Vector3d]"
+        ],
+        [
+            "PyDb::SubDMesh::getEdgeArray",
+            "list[int]"
+        ],
+        [
+            "PyDb::SubDMesh::getCrease",
+            "list[float]|float"
+        ],
+        [
+            "PyDb::SubDMesh::getFaceArray",
+            "list[int]"
+        ],
+        [
+            "PyDb::Spline::getNurbsData",
+            "tuple"
+        ],
+        [
+            "PyDb::Spline::getFitTangents",
+            "tuple[PyGe.Vector3d,PyGe.Vector3d]"
+        ],
+        [
+            "PyDb::Spline::getFitDataKnot",
+            "tuple"
+        ],
+        [
+            "PyDb::Spline::getFitData",
+            "tuple"
+        ],
+        [
+            "PyDb::SpatialFilter::getVolume",
+            "tuple[PyGe.Point3d,PyGe.Point3d,,PyGe.Vector3d,,PyGe.Vector3d]"
+        ],
+        [
+            "PyDb::SpatialFilter::getDefinition",
+            "tuple"
         ]
     ]
 }
