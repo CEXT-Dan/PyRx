@@ -68,6 +68,23 @@ class AcGeError(object):
       '''None'''
     ...
 
+class AutoTol(object):
+    def __init__ (self)-> None :
+      '''                             '''
+    ...
+    def equalPoint (self)-> float :
+      '''                             '''
+    ...
+    def equalVector (self)-> float :
+      '''                             '''
+    ...
+    def setEqualPoint (self, val : float)-> None :
+      '''                             '''
+    ...
+    def setEqualVector (self, val : float)-> None :
+      '''                             '''
+    ...
+
 class BoundBlock2d(Entity2d):
 
     @overload
@@ -13205,19 +13222,13 @@ paramOf( (Surface)arg1, (Point3d)arg2, (Tol)arg3) -> Point2d :
     ...
 
 class Tol(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
-    def current (self, *args, **kwargs)-> None :
-      '''None'''
+
+    @staticmethod
+    def current ()-> PyGe.Tol :
+      '''                             '''
     ...
     def equalPoint (self)-> float :
       '''                             '''
@@ -13230,6 +13241,12 @@ __init__( (object)arg1) -> None :
     ...
     def setEqualVector (self, val : float)-> None :
       '''                             '''
+    ...
+    def setGlobalTol (self, *args, **kwargs)-> None :
+      '''setGlobalTol( (Tol)arg1) -> None :
+
+    C++ signature :
+        void setGlobalTol(class AcGeTol)'''
     ...
 
 class Torus(Surface):
@@ -13455,10 +13472,10 @@ class Vector2d(object):
       '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002D406A8C820>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000024389589CF0>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002D406A8C820>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000024389589CF0>])'''
     ...
     def isParallelTo (self, vec: PyGe.Vector2d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -13467,16 +13484,16 @@ class Vector2d(object):
       '''                             '''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002D406A8C550>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000024389589A20>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002D406A8C550>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000024389589A20>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002D406A8C5E0>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000024389589AB0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002D406A8C5E0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000024389589AB0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
