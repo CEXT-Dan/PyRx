@@ -493,6 +493,62 @@
         [
             "PyDb::Text::getBoundingPoints",
             "list[PyGe.Point3d]"
+        ],
+        [
+            "PyDb::TableStyle::getDataType",
+            "tuple[PyDb.ValueDataType,PyDb.ValueUnitType]"
+        ],
+        [
+            "PyDb::TableStyle::getCellStyles",
+            "list[str]"
+        ],
+        [
+            "PyDb::Table::tableStyleOverrides",
+            "list[int]"
+        ],
+        [
+            "PyDb::Table::isMergedCell",
+            "tuple[bool,int,int,int,int]"
+        ],
+        [
+            "PyDb::Table::hitTest",
+            "tuple[bool,int,int,int,int]"
+        ],
+        [
+            "PyDb::Table::getCellExtents",
+            "list[PyGe.Point3d]"
+        ],
+        [
+            "PyDb::Table::cells",
+            "list[PyDb.Cell]"
+        ],
+        [
+            "PyDb::Table::cellValues",
+            "list[tuple[int,int,str]]"
+        ],
+        [
+            "PyDb::Table::getDataType",
+            "tuple[PyDb.ValueDataType,PyDb.ValueUnitType]"
+        ],
+        [
+            "PyDb::Table::cellStyleOverrides",
+            "list[int]"
+        ],
+        [
+            "PyDb::Table::attributeIds",
+            "list[PyDb.ObjectId]"
+        ],
+        [
+            "PyDb::rayTest",
+            "tuple[list[PyDb.SubentId],list[float]]"
+        ],
+        [
+            "PyDb::projectOnToSurface",
+            "list[PyDb.Entity]"
+        ],
+        [
+            "PyDb::modificationActionBodyIds",
+            "list[PyDb.ObjectId]"
         ]
     ]
 }
