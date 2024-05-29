@@ -25,39 +25,50 @@
 
 using namespace boost::python;
 
+inline double roundPointComponentTo(double value, double precision = AcGeContext::gTol.equalPoint())
+{
+    return std::round(value / precision) * precision;
+}
+
+inline double roundVectorComponentTo(double value, double precision = AcGeContext::gTol.equalVector())
+{
+    return std::round(value / precision) * precision;
+}
+
+
 //---------------------------------------------------------------------------------------------------------------
 // hashing
 inline std::size_t AcGePoint2dHash(const AcGePoint2d& p)
 {
     std::size_t seed = 0;
-    boost::hash_combine(seed, p.x);
-    boost::hash_combine(seed, p.y);
+    boost::hash_combine(seed, roundPointComponentTo(p.x));
+    boost::hash_combine(seed, roundPointComponentTo(p.y));
     return seed;
 }
 
 inline std::size_t AcGeVector2dHash(const AcGeVector2d& p)
 {
     std::size_t seed = 0;
-    boost::hash_combine(seed, p.x);
-    boost::hash_combine(seed, p.y);
+    boost::hash_combine(seed, roundVectorComponentTo(p.x));
+    boost::hash_combine(seed, roundVectorComponentTo(p.y));
     return seed;
 }
 
 inline std::size_t AcGePoint3dHash(const AcGePoint3d& p)
 {
     std::size_t seed = 0;
-    boost::hash_combine(seed, p.x);
-    boost::hash_combine(seed, p.y);
-    boost::hash_combine(seed, p.z);
+    boost::hash_combine(seed, roundPointComponentTo(p.x));
+    boost::hash_combine(seed, roundPointComponentTo(p.y));
+    boost::hash_combine(seed, roundPointComponentTo(p.z));
     return seed;
 }
 
 inline std::size_t AcGeVector3dHash(const AcGeVector3d& p)
 {
     std::size_t seed = 0;
-    boost::hash_combine(seed, p.x);
-    boost::hash_combine(seed, p.y);
-    boost::hash_combine(seed, p.z);
+    boost::hash_combine(seed, roundVectorComponentTo(p.x));
+    boost::hash_combine(seed, roundVectorComponentTo(p.y));
+    boost::hash_combine(seed, roundVectorComponentTo(p.z));
     return seed;
 }
 
@@ -146,16 +157,68 @@ static AcGeTol getTol()
     return AcGeContext::gTol;
 }
 
+static void setGlobalTol(const AcGeTol& tol)
+{
+    AcGeContext::gTol = tol;
+}
+
 void makePyGeTolWrapper()
 {
     PyDocString DS("Tol");
     class_<AcGeTol>("Tol")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("equalPoint", &AcGeTol::equalPoint, DS.ARGS())
         .def("equalVector", &AcGeTol::equalVector, DS.ARGS())
         .def("setEqualPoint", &AcGeTol::setEqualPoint, DS.ARGS({ "val : float" }))
         .def("setEqualVector", &AcGeTol::setEqualVector, DS.ARGS({ "val : float" }))
-        .add_static_property("current", &getTol, DS.SARGS())
+        .def("setGlobalTol", &setGlobalTol).staticmethod("setGlobalTol")
+        .def("current", &getTol, DS.SARGS()).staticmethod("current")
+        ;
+}
+
+struct AutoTol
+{
+    AutoTol()
+    {
+        AcGeContext::gTol = getTol();
+    }
+    ~AutoTol()
+    {
+        AcGeContext::gTol = m_tol;
+    }
+
+    double equalPoint()
+    {
+        return AcGeContext::gTol.equalPoint();
+    }
+
+    double equalVector()
+    {
+        return AcGeContext::gTol.equalVector();
+    }
+
+    void setEqualPoint(double ep)
+    {
+        AcGeContext::gTol.setEqualPoint(ep);
+    }
+
+    void setEqualVector(double ev)
+    {
+        AcGeContext::gTol.setEqualVector(ev);
+    }
+
+    AcGeTol m_tol = getTol();
+};
+
+void makePyGeAutoTolWrapper()
+{
+    PyDocString DS("AutoTol");
+    class_<AutoTol>("AutoTol")
+        .def(init<>(DS.ARGS()))
+        .def("equalPoint", &AutoTol::equalPoint, DS.ARGS())
+        .def("equalVector", &AutoTol::equalVector, DS.ARGS())
+        .def("setEqualPoint", &AutoTol::setEqualPoint, DS.ARGS({ "val : float" }))
+        .def("setEqualVector", &AutoTol::setEqualVector, DS.ARGS({ "val : float" }))
         ;
 }
 
@@ -1284,6 +1347,7 @@ BOOST_PYTHON_MODULE(PyGe)
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
 
     makePyGeTolWrapper();
+    makePyGeAutoTolWrapper();
     //
     makePyGeKnotVectorWrapper();
     makePyGePoint2dWrapper();
