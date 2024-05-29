@@ -122,7 +122,8 @@
       <AdditionalIncludeDirectories>$(NOINHERIT)$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy /Y "$(SolutionDir)\PyRxAcSetup\Include\PyRxDebug.INI" "$(outdir)\PyRx.INI"</Command>
+      <Command>copy /Y "$(SolutionDir)\PyRxAcSetup\Include\PyRxDebug.INI" "$(outdir)\PyRx.INI"
+copy /y $(TargetPath) $(SolutionDir)PyRxAcSetup\Release\Bin\$(TargetFileName)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
