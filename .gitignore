@@ -55,3 +55,7 @@ __pycache__
 /PyRx/PyRxZ25.0
 /PyRxLoader/RxLoaderZ25.0
 /unitTests/testResults/*.txt
+/PyRxAcSetup/Bin/*.arx
+/PyRxAcSetup/Bin/*.grx
+/PyRxAcSetup/Bin/*.brx
+/PyRxAcSetup/Bin/*.zrx

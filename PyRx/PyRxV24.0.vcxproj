@@ -128,7 +128,7 @@
       <AdditionalIncludeDirectories>$(NOINHERIT)$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy /y $(TargetPath) $(SolutionDir)PyRxAcSetup\Release\Bin\$(TargetFileName)</Command>
+      <Command>copy /y $(TargetPath) $(SolutionDir)PyRxAcSetup\Bin\$(TargetFileName)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
