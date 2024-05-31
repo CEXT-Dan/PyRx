@@ -107,7 +107,6 @@ PyDbText::PyDbText(const AcGePoint3d& position, const std::string& text, PyDbObj
 {
 }
 
-
 PyDbText::PyDbText(const PyDbObjectId& id)
     : PyDbText(id, AcDb::OpenMode::kForRead)
 {
@@ -127,7 +126,6 @@ PyDbText::PyDbText(AcDbText* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
 }
-
 
 AcGePoint3d PyDbText::position() const
 {
