@@ -612,7 +612,7 @@
         ],
         [
             "PyDb::SpatialFilter::getVolume",
-            "tuple[PyGe.Point3d,PyGe.Point3d,,PyGe.Vector3d,,PyGe.Vector3d]"
+            "tuple[PyGe.Point3d,PyGe.Point3d,PyGe.Vector3d,PyGe.Vector3d]"
         ],
         [
             "PyDb::SpatialFilter::getDefinition",
@@ -661,6 +661,34 @@
         [
             "PyDb::Section::generateSectionGeometry",
             "tuple"
+        ],
+        [
+            "PyDb::RotatedDimension::textDefinedSize",
+            "tuple[float,float]"
+        ],
+        [
+            "PyDb::RotatedDimension::isConstraintObject",
+            "tuple[bool,bool]"
+        ],
+        [
+            "PyDb::RevolveOptions::checkRevolveCurve",
+            "tuple[bool,bool,bool]"
+        ],
+        [
+            "PyDb::Region::createFromCurves",
+            "list[PyDb.Region]"
+        ],
+        [
+            "PyDb::RasterImage::getVertices",
+            "list[PyGe.Point3d]"
+        ],
+        [
+            "PyDb::RasterImage::getOrientation",
+            "tuple[PyGe.Point3d,PyGe.Vector3d,PyGe.Vector3d]"
+        ],
+        [
+            "PyDb::RasterImage::clipBoundary",
+            "list[PyGe.Point2d]"
         ]
     ]
 }
