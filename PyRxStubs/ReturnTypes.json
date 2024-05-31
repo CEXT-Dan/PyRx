@@ -617,6 +617,50 @@
         [
             "PyDb::SpatialFilter::getDefinition",
             "tuple"
+        ],
+        [
+            "PyDb::Solid3d::separateBody",
+            "list[PyDb.Solid3d]"
+        ],
+        [
+            "PyDb::Solid3d::projectOnToSolid",
+            "list[PyDb.Entity]"
+        ],
+        [
+            "PyDb::Solid3d::getMassProp",
+            "tuple"
+        ],
+        [
+            "PyDb::Solid3d::checkInterference",
+            "tuple[bool,PyDb.Solid3d]"
+        ],
+        [
+            "PyDb::SnoopDwgFiler::buffer",
+            "list"
+        ],
+        [
+            "PyDb::SectionSettings::getSourceObjects",
+            "list[PyDb.ObjectId]"
+        ],
+        [
+            "PyDb::SectionSettings::getHatchPattern",
+            "tuple[PyDb.HatchPatternType,str]"
+        ],
+        [
+            "PyDb::Section::plane",
+            "tuple[PyGe.Vector3d,PyGe.Vector3d]"
+        ],
+        [
+            "PyDb::Section::hitTest",
+            "tuple[bool,int,PyGe.Poin3d,PyDb.SectionSubItem]"
+        ],
+        [
+            "PyDb::Section::getVertices",
+            "list[PyGe.Point3d]"
+        ],
+        [
+            "PyDb::Section::generateSectionGeometry",
+            "tuple"
         ]
     ]
 }
