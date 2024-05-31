@@ -121,7 +121,7 @@ void makePyEdJigWrapper()
 }
 
 PyJig::PyJig(const PyDbEntity& ent)
-    : m_pEnt(ent.impObj()), AcEdJig()
+    : AcEdJig(), m_pEnt(ent.impObj())
 {
 }
 

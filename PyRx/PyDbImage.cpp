@@ -781,7 +781,7 @@ void PyDbWipeout::setFrom(const boost::python::list& pylist, const AcGeVector3d&
 
     AcGeVector3d uCorner(scale, 0.0, 0.0);
     AcGeVector3d vOnPlane(0.0, scale, 0.0);
-    AcGePoint3d origin; (minPoint.x, minPoint.y, 0.0);
+    AcGePoint3d origin(minPoint.x, minPoint.y, 0.0);
 
     ads_point tmp = { 0.0,0.0,0.0 };
     acdbEcs2Wcs(asDblArray(origin), tmp, asDblArray(normal), false);

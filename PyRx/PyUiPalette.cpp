@@ -449,7 +449,7 @@ PyCAdUiPaletteImpl::PyCAdUiPaletteImpl()
 }
 
 PyCAdUiPaletteImpl::PyCAdUiPaletteImpl(PyCAdUiPalette* bckPtr, wxPanel* panel)
-    : m_bckPtr(bckPtr), m_panel(panel)
+    : m_panel(panel), m_bckPtr(bckPtr)
 {
 }
 

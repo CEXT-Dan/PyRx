@@ -51,7 +51,7 @@ std::string PyDbSymbolTableRecord::getName()
     return wstr_to_utf8(arxName);
 }
 
-void PyDbSymbolTableRecord::setName(const std::string name)
+void PyDbSymbolTableRecord::setName(const std::string& name)
 {
     return PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
 }

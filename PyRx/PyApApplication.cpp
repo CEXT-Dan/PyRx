@@ -96,8 +96,7 @@ void PyApApplication::setTitleThemeDark(UINT_PTR _hwnd)
     HWND hwnd = (HWND)_hwnd;
     constexpr DWORD DWMWA_USE_IMMERSIVE_DARK_MODE_I20 = 20;
     BOOL USE_DARK_MODE = true;
-    BOOL SET_IMMERSIVE_DARK_MODE_SUCCESS = SUCCEEDED(DwmSetWindowAttribute(
-        hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE_I20, &USE_DARK_MODE, sizeof(USE_DARK_MODE)));
+    DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE_I20, &USE_DARK_MODE, sizeof(USE_DARK_MODE));
     const auto style = GetWindowLong(hwnd, GWL_STYLE);
     SetWindowLong(hwnd, GWL_STYLE, 0);
     SetWindowLong(hwnd, GWL_STYLE, style);

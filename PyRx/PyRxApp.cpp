@@ -323,13 +323,12 @@ bool PyRxApp::uninit()
             Py_FinalizeEx();
         }
 #endif
-        bool isLoaded = false;
     }
     catch (...)
     {
         acutPrintf(_T("exception in uninit"));
     }
-    return !isLoaded;
+    return false;
 }
 
 bool PyRxApp::setPyConfig()

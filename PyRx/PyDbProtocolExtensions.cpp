@@ -57,7 +57,7 @@ boost::python::list PyDbJoinEntityPE::joinEntities2(PyDbEntity& pPrimaryEntity, 
     PyAutoLockGIL lock;
     AcArray<AcDbEntity*> _otherEntities;
     auto pyents = py_list_to_std_vector<PyDbEntity>(otherEntities);
-    for (auto item : pyents)
+    for (const auto& item : pyents)
         _otherEntities.append(item.impObj());
     AcGeIntArray _joinedEntityIndices;
     boost::python::list joinedEntityIndices;

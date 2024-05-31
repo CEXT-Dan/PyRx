@@ -1299,7 +1299,7 @@ int EdCore::grDrawPoly3d(const boost::python::object& iterable, int colorIndex)
 int EdCore::grVecs(const boost::python::list& iterable, const AcGeMatrix3d& mat)
 {
     AcResBufPtr rb(listToResbuf(iterable));
-    ads_matrix adsmat = { 0 };
+    ads_matrix adsmat = { { 0 } };
     memcpy_s(adsmat, sizeof(ads_matrix), mat.entry, sizeof(ads_matrix));
     return acedGrVecs(rb.get(), adsmat);
 }

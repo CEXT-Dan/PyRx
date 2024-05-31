@@ -477,7 +477,7 @@ void PyApDocManager::lockDocument2(PyApDocument& pDoc, AcAp::DocLockMode mode)
     return PyThrowBadEs(impObj()->lockDocument(pDoc.impObj(), mode));
 }
 
-void PyApDocManager::lockDocument3(PyApDocument& pDoc, AcAp::DocLockMode mode, const std::string& pGlobalCmdName, const std::string pLocalCmdName, bool prompt)
+void PyApDocManager::lockDocument3(PyApDocument& pDoc, AcAp::DocLockMode mode, const std::string& pGlobalCmdName, const std::string& pLocalCmdName, bool prompt)
 {
     return PyThrowBadEs(impObj()->lockDocument(pDoc.impObj(), mode, utf8_to_wstr(pGlobalCmdName).c_str(), utf8_to_wstr(pLocalCmdName).c_str(), prompt));
 }

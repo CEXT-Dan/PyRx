@@ -254,7 +254,8 @@ std::string PyPlPlotProgressDialog::className()
 
 AcPlPlotProgressDialog* PyPlPlotProgressDialog::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_impl == nullptr) [[unlikely]]
+    if (m_impl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return m_impl.get();
+        }
+    return m_impl.get();
 }

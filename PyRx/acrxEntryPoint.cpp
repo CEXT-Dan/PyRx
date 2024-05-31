@@ -51,7 +51,7 @@ public:
     {
     }
 
-    virtual AcRx::AppRetCode On_kInitAppMsg(void* pkt)
+    virtual AcRx::AppRetCode On_kInitAppMsg(void* pkt) override
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         acdbModelerStart();
@@ -62,7 +62,7 @@ public:
         return (retCode);
     }
 
-    virtual AcRx::AppRetCode On_kUnloadAppMsg(void* pkt)
+    virtual AcRx::AppRetCode On_kUnloadAppMsg(void* pkt) override
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
         acdbModelerEnd();
@@ -148,14 +148,14 @@ public:
         const int version = acdbHostApplicationServices()->releaseMajorVersion();
         const auto acismobj = std::format(_T("acismobj{}.dbx"), version);
         if (const auto result = acrxLoadModule(acismobj.c_str(), false, false); !result)
-            acutPrintf(_T("Faled to load %ls: "), acismobj);
+            acutPrintf(_T("Faled to load %ls: "), acismobj.c_str());
         const auto acMPolygonObj = std::format(_T("AcMPolygonObj{}.dbx"), version);
         if (const auto result = acrxLoadModule(acMPolygonObj.c_str(), false, false); !result)
-            acutPrintf(_T("Faled to load %ls: "), acismobj);
+            acutPrintf(_T("Faled to load %ls: "), acismobj.c_str());
 #endif
     }
 
-    virtual void RegisterServerComponents()
+    virtual void RegisterServerComponents() override
     {
     }
 
@@ -339,6 +339,7 @@ public:
 };
 
 //-----------------------------------------------------------------------------
+#pragma warning ( push )
 #pragma warning( disable: 4838 )
 IMPLEMENT_ARX_ENTRYPOINT(AcRxPyApp)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_SESSION, NULL)

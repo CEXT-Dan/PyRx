@@ -9,10 +9,6 @@ using namespace boost::python;
 
 void makePyDbSubDMeshWrapper()
 {
-    constexpr const std::string_view backgroundColorOverloads = "Overloads:\n"
-        "- None: Any\n"
-        "- row: int, col: int\n";
-
     constexpr const std::string_view extrudeFacesOverloads = "Overloads:\n"
         "- subentPaths: list[PyDb.FullSubentPath], length: float, dir: PyGe.Vector3d, taper: float\n"
         "- subentPaths: list[PyDb.FullSubentPath], alongPath: list[PyGe.Point3d], taper: float\n";
