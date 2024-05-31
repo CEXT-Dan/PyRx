@@ -229,8 +229,7 @@ PyDbObjectId PyDbEvalVariant::getObjectId()
 AcGePoint2d PyDbEvalVariant::getPoint2d()
 {
     AcGePoint2d val;
-    int restype = impObj()->restype;
-    if (restype != RTPOINT)
+    if (impObj()->restype != RTPOINT)
         throw PyAcadErrorStatus(eInvalidInput);
     val[0] = impObj()->resval.rpoint[0];
     val[1] = impObj()->resval.rpoint[1];
@@ -373,7 +372,7 @@ boost::python::list PyDbDynBlockReferenceProperty::getAllowedValues()
     boost::python::list pyList;
     AcDbEvalVariantArray values;
     PyThrowBadEs(impObj()->getAllowedValues(values));
-    for (const auto item : values)
+    for (const auto& item : values)
         pyList.append(PyDbEvalVariant(item));
     return pyList;
 }

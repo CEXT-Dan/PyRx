@@ -766,9 +766,9 @@ void PyDbDatabaseSummaryInfo::setCustomSummaryFromDict(boost::python::dict& pydi
         boost::python::extract<std::string> keyExtractor(keys[i]);
         if (keyExtractor.check())
         {
-            std::string key = keyExtractor();
+            const std::string& key = keyExtractor();
             boost::python::extract<std::string> valExtractor(pydict[key]);
-            std::string val = valExtractor();
+            const std::string& val = valExtractor();
             if (hasKey(impObj(), utf8_to_wstr(key).c_str()))
                 setCustomSummaryInfo1(key, val);
             else

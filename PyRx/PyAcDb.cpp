@@ -85,7 +85,6 @@ std::string AcDbExtents2dToStringRepr(const AcDbExtents2d& p)
 
 static bool AcDbExtents2dIntersects(const AcDbExtents2d& extents, const AcDbExtents2d& other)
 {
-    auto tol = AcGeContext::gTol.equalPoint();
     auto min = extents.minPoint();
     auto max = extents.maxPoint();
     auto omin = other.minPoint();
@@ -166,7 +165,7 @@ static bool AcDbExtents3dIntersects(const AcDbExtents& extents, const AcDbExtent
     auto omin = other.minPoint();
     auto omax = other.maxPoint();
     return(min.x < omax.x && max.x > omin.x &&
-        max.y > omin.y && min.y < max.y || (min.z < omax.z && max.z > omin.z));
+        (max.y > omin.y && min.y < max.y) || (min.z < omax.z && max.z > omin.z));
 }
 
 static boost::python::tuple AcDbExtents3dCoords(const AcDbExtents& extents)

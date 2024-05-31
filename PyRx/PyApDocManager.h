@@ -104,7 +104,7 @@ public:
 
     void                lockDocument1(PyApDocument& pDoc);
     void                lockDocument2(PyApDocument& pDoc, AcAp::DocLockMode mode);
-    void                lockDocument3(PyApDocument& pDoc, AcAp::DocLockMode mode, const std::string& pGlobalCmdName, const std::string pLocalCmdName, bool prompt);
+    void                lockDocument3(PyApDocument& pDoc, AcAp::DocLockMode mode, const std::string& pGlobalCmdName, const std::string& pLocalCmdName, bool prompt);
     void                unlockDocument(PyApDocument& pDoc);
     boost::python::list newAcApDocumentIterator();
     void                setDefaultFormatForSave(AcApDocument::SaveFormat format);

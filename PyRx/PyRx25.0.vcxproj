@@ -47,12 +47,18 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.arx</TargetExt>
     <TargetName>$(ProjectName)</TargetName>
+    <ClangTidyChecks>performance*,-clang-diagnostic-nonportable-include-path,-clang-diagnostic-invalid-token-paste</ClangTidyChecks>
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
+    <CodeAnalysisRuleSet>$(ProjectDir)\PerformanceRule.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IntDir>$(ProjectName)\$(PlatformName)\$(Configuration)/</IntDir>
     <OutDir>$(SolutionDir)\Bin\$(ProjectName)\$(PlatformName)\$(Configuration)/</OutDir>
     <TargetExt>.arx</TargetExt>
     <TargetName>$(ProjectName)</TargetName>
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
+    <ClangTidyChecks>performance*,-clang-diagnostic-nonportable-include-path,-clang-diagnostic-invalid-token-paste</ClangTidyChecks>
+    <CodeAnalysisRuleSet>$(ProjectDir)\PerformanceRule.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

@@ -105,7 +105,7 @@ public:
         double startDegreeInRads, double endDegreeInRads, double tiltDegreeInRads);
     Adesk::Boolean      ellipticalArc2(const AcGePoint3d& center, const AcGeVector3d& normal, double majorAxisLength, double minorAxisLength,
         double startDegreeInRads, double endDegreeInRads, double tiltDegreeInRads, AcGiArcType arcType);
-    Adesk::Boolean      worldLine(const AcGePoint3d pnt1, const AcGePoint3d pnt2);
+    Adesk::Boolean      worldLine(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
     Adesk::Boolean      edge(const boost::python::object& edges) const;
     Adesk::Boolean		draw(PyGiDrawable& drawable);
     static std::string	className();

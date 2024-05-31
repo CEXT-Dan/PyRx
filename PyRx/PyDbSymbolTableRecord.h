@@ -22,7 +22,7 @@ public:
     PyDbSymbolTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbSymbolTableRecord() override = default;
     std::string         getName();
-    void                setName(const std::string name);
+    void                setName(const std::string& name);
     bool                isDependent() const;
     bool                isResolved() const;
     bool                isRenamable() const;

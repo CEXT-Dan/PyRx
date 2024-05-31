@@ -12,11 +12,11 @@ int retTuple(const boost::python::tuple& tpl)
     int code = extract<int>(tpl[0]);
     if (code < 5000)
     {
-        switch (acdbGroupCodeToType(code))
+        int _code = code == 0 ? RTDXF0 : code;
+        switch (acdbGroupCodeToType(_code))
         {
             case AcDb::kDwgText:
             {
-                int _code = code == 0 ? RTDXF0 : code;
                 AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
                 acedRetStr(str);
                 return RSRSLT;

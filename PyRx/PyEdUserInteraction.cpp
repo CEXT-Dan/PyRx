@@ -229,20 +229,18 @@ AcGePoint3d PyEdUIContext::hitPoint() const
 boost::python::object PyEdUIContext::getMenuContextWr(const PyRxClass& pyclass, const boost::python::list& pyids)
 {
     PyAutoLockGIL lock;
-    boost::python::object val;
     try
     {
         if (const override& f = this->get_override("getMenuContext"))
         {
-            val = f(pyclass, pyids);
-            return val;
+           return f(pyclass, pyids);
         }
     }
     catch (...)
     {
         printExceptionMsg();
     }
-    return val;
+    return boost::python::object();
 }
 
 void PyEdUIContext::onCommandWr(Adesk::UInt32 cmd)

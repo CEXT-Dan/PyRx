@@ -352,7 +352,7 @@ Adesk::Boolean PyGiGeometry::ellipticalArc2(const AcGePoint3d& center, const AcG
     return impObj()->ellipticalArc(center, normal, majorAxisLength, minorAxisLength, startDegreeInRads, endDegreeInRads, tiltDegreeInRads, arcType);
 }
 
-Adesk::Boolean PyGiGeometry::worldLine(const AcGePoint3d pnt1, const AcGePoint3d pnt2)
+Adesk::Boolean PyGiGeometry::worldLine(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
 {
     const AcGePoint3d pnts[2] = { pnt1,  pnt2 };
     return impObj()->worldLine(pnts);
