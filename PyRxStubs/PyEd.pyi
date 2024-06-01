@@ -1134,9 +1134,23 @@ class Editor(object):
       '''Returns true if pDoc is non-NULL and duplicate selections are allowed for the document to which it points. Otherwise, returns false.'''
     ...
 
+    @overload
     @staticmethod
-    def entSel (prompt: str,desc: PyRx.RxClass=PyDb.Entity)-> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d] :
-      '''Prompts the user to select an entity by specifying a point.Pauses for user input and returns both an entity name and the point that is used to select the entity.The acedEntSel() function does not return the names of nongraphical objects.Some entity operations require knowledge of the point by which the entity was selected. Examples are the AutoCAD BREAK, TRIM, and EXTEND commands, as well as OSNAP; acedEntSel() provides the same capability to ARX applications. The acedEntSel() function ignores the current OSNAP setting (no object snap) unless the user specifically requests it.When the user responds to acedEntSel() by specifying a complex entity, it returns the polyline or block header. This differs from the function acedNEntSelP(), which returns the nearest block attribute or polyline vertex.The acedEntSel() function returns RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [Esc]). A prior call to acedInitGet() can also enable a return value of RTKWORD (see the description of acedInitGet()). When acedEntSel() fails, it sets the system variable ERRNO to a value that indicates the reason for the failure.'''
+    def entSel (prompt: str)-> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d] : ...
+    @overload
+    @staticmethod
+    def entSel (prompt: str, eType: PyRx.RxClass)-> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d] : ...
+    @overload
+    @staticmethod
+    def entSel (prompt: str, eTypes: list[PyRx.RxClass])-> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d] : ...
+    @staticmethod
+    def entSel (self, *args, **kwargs)-> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d] :
+      '''Overloads:
+    - prompt: str
+    - prompt: str, eType: PyRx.RxClass
+    - prompt: str, eTypes: list[PyRx.RxClass]
+    
+	-Prompts the user to select an entity by specifying a point.Pauses for user input and returns both an entity name and the point that is used to select the entity.The acedEntSel() function does not return the names of nongraphical objects.Some entity operations require knowledge of the point by which the entity was selected. Examples are the AutoCAD BREAK, TRIM, and EXTEND commands, as well as OSNAP; acedEntSel() provides the same capability to ARX applications. The acedEntSel() function ignores the current OSNAP setting (no object snap) unless the user specifically requests it.When the user responds to acedEntSel() by specifying a complex entity, it returns the polyline or block header. This differs from the function acedNEntSelP(), which returns the nearest block attribute or polyline vertex.The acedEntSel() function returns RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [Esc]). A prior call to acedInitGet() can also enable a return value of RTKWORD (see the description of acedInitGet()). When acedEntSel() fails, it sets the system variable ERRNO to a value that indicates the reason for the failure.-'''
     ...
 
     @staticmethod

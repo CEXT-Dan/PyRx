@@ -112,7 +112,12 @@ void makePyEditorWrapper()
     constexpr const std::string_view nEntSelPExloads = "Overloads:\n"
         "- prompt: str, flags: int\n"
         "- prompt: str, selpt: PyGe.Point3d, flags: int\n";
-  
+
+    constexpr const std::string_view entselOverloads = "Overloads:\n"
+        "- prompt: str\n"
+        "- prompt: str, eType: PyRx.RxClass\n"
+        "- prompt: str, eTypes: list[PyRx.RxClass]\n";
+
     PyDocString DS("Editor");
     class_<PyAcEditor>("Editor")
         .def("getCorner", &PyAcEditor::getCorner, DS.SARGS({ "basePt: PyGe.Point3d","prompt: str" }, 10840)).staticmethod("getCorner")
@@ -126,9 +131,10 @@ void makePyEditorWrapper()
         .def("getPoint", &PyAcEditor::getPoint1)
         .def("getPoint", &PyAcEditor::getPoint2, DS.SOVRL(getPointOverloads, 10870)).staticmethod("getPoint")
         .def("getDist", &PyAcEditor::getDist1)
-        .def("getDist", &PyAcEditor::getDist2,DS.SOVRL(getPointOverloads, 10852)).staticmethod("getDist")
+        .def("getDist", &PyAcEditor::getDist2, DS.SOVRL(getPointOverloads, 10852)).staticmethod("getDist")
         .def("entSel", &PyAcEditor::entSel1)
-        .def("entSel", &PyAcEditor::entSel2, DS.SARGS({ "prompt: str", "desc: PyRx.RxClass=PyDb.Entity" }, 10813)).staticmethod("entSel")
+        .def("entSel", &PyAcEditor::entSel2)
+        .def("entSel", &PyAcEditor::entSel3, DS.SOVRL(entselOverloads, 10813)).staticmethod("entSel")
         .def("nEntSelP", &PyAcEditor::nEntSelP1)
         .def("nEntSelP", &PyAcEditor::nEntSelP2, DS.SARGS({ "prompt: str","selpt: PyGe.Point3d=None" })).staticmethod("nEntSelP")
         .def("nEntSelPEx", &PyAcEditor::nEntSelPEx1)
@@ -271,7 +277,7 @@ boost::python::tuple PyAcEditor::getString2(int cronly, const std::string& promp
     return boost::python::make_tuple(res.first, res.second);
 }
 
-boost::python::tuple entSel(const std::string& prompt, AcRxClass* desc)
+boost::python::tuple entSel(const std::string& prompt,const AcRxClassArray& descs)
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
@@ -280,19 +286,32 @@ boost::python::tuple entSel(const std::string& prompt, AcRxClass* desc)
     auto stat = static_cast<Acad::PromptStatus>(acedEntSel(utf8_to_wstr(prompt).c_str(), name, pnt));
     PyDbObjectId id;
     acdbGetObjectId(id.m_id, name);
-    if (id.m_id.objectClass()->isDerivedFrom(desc))
-        return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
+    for (const auto& item : descs)
+    {
+        if (id.m_id.objectClass()->isDerivedFrom(item))
+            return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
+    }
     return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(Acad::PromptStatus::eRejected, id, asPnt3d(pnt));
 }
 
 boost::python::tuple PyAcEditor::entSel1(const std::string& prompt)
 {
-    return entSel(prompt, AcDbEntity::desc());
+    AcRxClassArray arr;
+    arr.append(AcDbEntity::desc());
+    return entSel(prompt, arr);
 }
 
 boost::python::tuple PyAcEditor::entSel2(const std::string& prompt, const PyRxClass& desc)
 {
-    return entSel(prompt, desc.impObj());
+    AcRxClassArray arr;
+    arr.append(desc.impObj());
+    return entSel(prompt, arr);
+}
+
+boost::python::tuple PyAcEditor::entSel3(const std::string& prompt, const boost::python::list& filter)
+{
+    const auto& classes = PyListToAcRxClassArray(filter);
+    return entSel(prompt, classes);
 }
 
 static boost::python::tuple nEntSelP(const std::string& prompt, const AcGePoint3d& ptres, int opt)
