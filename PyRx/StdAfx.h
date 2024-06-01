@@ -231,6 +231,8 @@ extern AcApDataManager<CDocData> DocVars;
 
 const TCHAR* getappname();
 
+using AcRxClassArray = AcArray<AcRxClass*>;
+
 template<typename IteratorType>
 constexpr auto makeIterator = [](const auto& record)
     {

@@ -24,6 +24,7 @@ public:
     static boost::python::tuple getString2(int cronly, const std::string& prompt);
     static boost::python::tuple entSel1(const std::string& prompt);
     static boost::python::tuple entSel2(const std::string& prompt, const PyRxClass& desc);
+    static boost::python::tuple entSel3(const std::string& prompt, const boost::python::list& filter);
     static boost::python::tuple nEntSelP1(const std::string& prompt);
     static boost::python::tuple nEntSelP2(const std::string& prompt, const AcGePoint3d& ptres);
     static boost::python::tuple nEntSelPEx1(const std::string& prompt, int uTransSpaceFlag);
