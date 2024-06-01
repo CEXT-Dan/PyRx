@@ -967,7 +967,7 @@ class CircArc3d(Curve3d):
     def getProjClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.PointOnCurve3d,PyGe.PointOnCurve3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
 
@@ -1003,7 +1003,7 @@ class CircArc3d(Curve3d):
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''Determines if start point and endpoint of curve are the same.'''
     ...
-    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Returns Adesk::kTrue if both curve are planar and lie in the same plane. The plane parameter is only valid if this function returns a value of Adesk::kTrue.'''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
@@ -1030,7 +1030,7 @@ class CircArc3d(Curve3d):
     def isPeriodic (self)-> tuple[Any,...] :
       '''Determines if the curve is periodic. The curve is periodic if and only if it is closed and the two points evalPoint(t) and evalPoint(t+period) are always the same point for all values of t.'''
     ...
-    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
@@ -1057,7 +1057,7 @@ class CircArc3d(Curve3d):
     def projClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
     def projIntersectWith (self, other: PyGe.LinearEnt3d, projDir: PyGe.Vector3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
@@ -1429,7 +1429,7 @@ class CompositeCurve3d(Curve3d):
     def getProjClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.PointOnCurve3d,PyGe.PointOnCurve3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
 
@@ -1465,7 +1465,7 @@ class CompositeCurve3d(Curve3d):
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''Determines if start point and endpoint of curve are the same.'''
     ...
-    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Returns Adesk::kTrue if both curve are planar and lie in the same plane. The plane parameter is only valid if this function returns a value of Adesk::kTrue.'''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
@@ -1489,7 +1489,7 @@ class CompositeCurve3d(Curve3d):
     def isPeriodic (self)-> tuple[Any,...] :
       '''Determines if the curve is periodic. The curve is periodic if and only if it is closed and the two points evalPoint(t) and evalPoint(t+period) are always the same point for all values of t.'''
     ...
-    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
@@ -1516,7 +1516,7 @@ class CompositeCurve3d(Curve3d):
     def projClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
     def project (self, projectionPlane : PyGe.Plane, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Entity3d :
@@ -2287,7 +2287,7 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def getProjClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.PointOnCurve3d,PyGe.PointOnCurve3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
 
@@ -2326,7 +2326,7 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''Determines if start point and endpoint of curve are the same.'''
     ...
-    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Returns Adesk::kTrue if both curve are planar and lie in the same plane. The plane parameter is only valid if this function returns a value of Adesk::kTrue.'''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
@@ -2350,7 +2350,7 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def isPeriodic (self)-> tuple[Any,...] :
       '''Determines if the curve is periodic. The curve is periodic if and only if it is closed and the two points evalPoint(t) and evalPoint(t+period) are always the same point for all values of t.'''
     ...
-    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
     def isRational (self, *args, **kwargs)-> bool :
@@ -2416,7 +2416,7 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def projClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
     def project (self, projectionPlane : PyGe.Plane, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Entity3d :
@@ -2682,7 +2682,7 @@ This class cannot be instantiated from Python'''
     def getProjClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.PointOnCurve3d,PyGe.PointOnCurve3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
 
@@ -2715,7 +2715,7 @@ This class cannot be instantiated from Python'''
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''Determines if start point and endpoint of curve are the same.'''
     ...
-    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Returns Adesk::kTrue if both curve are planar and lie in the same plane. The plane parameter is only valid if this function returns a value of Adesk::kTrue.'''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
@@ -2739,7 +2739,7 @@ This class cannot be instantiated from Python'''
     def isPeriodic (self)-> tuple[Any,...] :
       '''Determines if the curve is periodic. The curve is periodic if and only if it is closed and the two points evalPoint(t) and evalPoint(t+period) are always the same point for all values of t.'''
     ...
-    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
@@ -2763,7 +2763,7 @@ This class cannot be instantiated from Python'''
     def projClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
     def project (self, projectionPlane : PyGe.Plane, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Entity3d :
@@ -4000,7 +4000,7 @@ class EllipArc3d(Curve3d):
     def getProjClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.PointOnCurve3d,PyGe.PointOnCurve3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
 
@@ -4039,7 +4039,7 @@ class EllipArc3d(Curve3d):
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''Determines if start point and endpoint of curve are the same.'''
     ...
-    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Returns Adesk::kTrue if both curve are planar and lie in the same plane. The plane parameter is only valid if this function returns a value of Adesk::kTrue.'''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
@@ -4066,7 +4066,7 @@ class EllipArc3d(Curve3d):
     def isPeriodic (self)-> tuple[Any,...] :
       '''Determines if the curve is periodic. The curve is periodic if and only if it is closed and the two points evalPoint(t) and evalPoint(t+period) are always the same point for all values of t.'''
     ...
-    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
@@ -4105,7 +4105,7 @@ class EllipArc3d(Curve3d):
     def projClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
     def projIntersectWith (self, other: PyGe.LinearEnt3d, projDir: PyGe.Vector3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
@@ -4900,7 +4900,7 @@ This class cannot be instantiated from Python'''
     def getProjClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.PointOnCurve3d,PyGe.PointOnCurve3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
 
@@ -4933,7 +4933,7 @@ This class cannot be instantiated from Python'''
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''Determines if start point and endpoint of curve are the same.'''
     ...
-    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Returns Adesk::kTrue if both curve are planar and lie in the same plane. The plane parameter is only valid if this function returns a value of Adesk::kTrue.'''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
@@ -4957,7 +4957,7 @@ This class cannot be instantiated from Python'''
     def isPeriodic (self)-> tuple[Any,...] :
       '''Determines if the curve is periodic. The curve is periodic if and only if it is closed and the two points evalPoint(t) and evalPoint(t+period) are always the same point for all values of t.'''
     ...
-    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
@@ -4981,7 +4981,7 @@ This class cannot be instantiated from Python'''
     def projClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
     def project (self, projectionPlane : PyGe.Plane, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Entity3d :
@@ -6009,7 +6009,7 @@ class Line3d(LinearEnt3d):
     def getProjClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.PointOnCurve3d,PyGe.PointOnCurve3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
 
@@ -6048,7 +6048,7 @@ class Line3d(LinearEnt3d):
     def isColinearTo (self, pt: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
     ...
-    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Returns Adesk::kTrue if both curve are planar and lie in the same plane. The plane parameter is only valid if this function returns a value of Adesk::kTrue.'''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
@@ -6126,7 +6126,7 @@ class Line3d(LinearEnt3d):
     - line: PyGe.PlanarEnt, tol: PyGe.Tol
     '''
     ...
-    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
     def kXAxis (self, *args, **kwargs)-> None :
@@ -6165,7 +6165,7 @@ class Line3d(LinearEnt3d):
     def projClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
     def projIntersectWith (self, other: PyGe.LinearEnt3d, projDir: PyGe.Vector3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
@@ -6606,7 +6606,7 @@ class LineSeg3d(LinearEnt3d):
     def getProjClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.PointOnCurve3d,PyGe.PointOnCurve3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
 
@@ -6645,7 +6645,7 @@ class LineSeg3d(LinearEnt3d):
     def isColinearTo (self, pt: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
     ...
-    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Returns Adesk::kTrue if both curve are planar and lie in the same plane. The plane parameter is only valid if this function returns a value of Adesk::kTrue.'''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
@@ -6723,7 +6723,7 @@ class LineSeg3d(LinearEnt3d):
     - line: PyGe.PlanarEnt, tol: PyGe.Tol
     '''
     ...
-    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
 
@@ -6767,7 +6767,7 @@ class LineSeg3d(LinearEnt3d):
     def projClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
     def projIntersectWith (self, other: PyGe.LinearEnt3d, projDir: PyGe.Vector3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
@@ -7105,7 +7105,7 @@ This class cannot be instantiated from Python'''
     def getProjClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.PointOnCurve3d,PyGe.PointOnCurve3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
 
@@ -7144,7 +7144,7 @@ This class cannot be instantiated from Python'''
     def isColinearTo (self, pt: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
     ...
-    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Returns Adesk::kTrue if both curve are planar and lie in the same plane. The plane parameter is only valid if this function returns a value of Adesk::kTrue.'''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
@@ -7222,7 +7222,7 @@ This class cannot be instantiated from Python'''
     - line: PyGe.PlanarEnt, tol: PyGe.Tol
     '''
     ...
-    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
@@ -7252,7 +7252,7 @@ This class cannot be instantiated from Python'''
     def projClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
     def projIntersectWith (self, other: PyGe.LinearEnt3d, projDir: PyGe.Vector3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
@@ -7396,7 +7396,7 @@ __init__( (object)arg1) -> None :
     def toString (self)-> str :
       '''                             '''
     ...
-    def toTuple (self)-> tuple[Any,...] :
+    def toTuple (self)-> tuple :
       '''                             '''
     ...
 
@@ -7562,7 +7562,7 @@ class Matrix3d(object):
     def toString (self)-> str :
       '''                             '''
     ...
-    def toTuple (self)-> tuple[Any,...] :
+    def toTuple (self)-> tuple :
       '''                             '''
     ...
 
@@ -8349,7 +8349,7 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def getProjClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.PointOnCurve3d,PyGe.PointOnCurve3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
 
@@ -8400,7 +8400,7 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''Determines if start point and endpoint of curve are the same.'''
     ...
-    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Returns Adesk::kTrue if both curve are planar and lie in the same plane. The plane parameter is only valid if this function returns a value of Adesk::kTrue.'''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
@@ -8424,7 +8424,7 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def isPeriodic (self)-> tuple[Any,...] :
       '''Determines if the curve is periodic. The curve is periodic if and only if it is closed and the two points evalPoint(t) and evalPoint(t+period) are always the same point for all values of t.'''
     ...
-    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
     def isRational (self, *args, **kwargs)-> bool :
@@ -8532,7 +8532,7 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def projClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
     def project (self, projectionPlane : PyGe.Plane, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Entity3d :
@@ -9068,7 +9068,7 @@ class OffsetCurve3d(Curve3d):
     def getProjClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.PointOnCurve3d,PyGe.PointOnCurve3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
 
@@ -9101,7 +9101,7 @@ class OffsetCurve3d(Curve3d):
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''Determines if start point and endpoint of curve are the same.'''
     ...
-    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Returns Adesk::kTrue if both curve are planar and lie in the same plane. The plane parameter is only valid if this function returns a value of Adesk::kTrue.'''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
@@ -9125,7 +9125,7 @@ class OffsetCurve3d(Curve3d):
     def isPeriodic (self)-> tuple[Any,...] :
       '''Determines if the curve is periodic. The curve is periodic if and only if it is closed and the two points evalPoint(t) and evalPoint(t+period) are always the same point for all values of t.'''
     ...
-    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
@@ -9167,7 +9167,7 @@ class OffsetCurve3d(Curve3d):
     def projClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
     def project (self, projectionPlane : PyGe.Plane, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Entity3d :
@@ -9945,13 +9945,13 @@ __sub__( (Point2d)arg1, (Point2d)arg2) -> Vector2d :
     def setToSum (self, pt: PyGe.Point2d, vec: PyGe.Vector2d)-> PyGe.Point2d :
       '''                             '''
     ...
-    def toList (self)-> list :
+    def toList (self)-> list[float,float] :
       '''                             '''
     ...
     def toString (self)-> str :
       '''                             '''
     ...
-    def toTuple (self)-> tuple[Any,...] :
+    def toTuple (self)-> tuple[float,float] :
       '''                             '''
     ...
     def transformBy (self, *args, **kwargs)-> PyGe.Point2d :
@@ -10062,13 +10062,13 @@ class Point3d(object):
     def setToSum (self, pnt:  PyGe.Point3d, vec:  PyGe.Vector3d)-> PyGe.Point3d :
       '''Sets this point to the sum of the pnt and vector vec. Returns the reference to this point.'''
     ...
-    def toList (self)-> list :
+    def toList (self)-> list[float,float,float] :
       '''                             '''
     ...
     def toString (self)-> str :
       '''                             '''
     ...
-    def toTuple (self)-> tuple[Any,...] :
+    def toTuple (self)-> tuple[float,float,float] :
       '''                             '''
     ...
     def transformBy (self, mat: PyGe.Matrix3d)-> PyGe.Point3d :
@@ -11127,7 +11127,7 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def getProjClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.PointOnCurve3d,PyGe.PointOnCurve3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
 
@@ -11166,7 +11166,7 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''Determines if start point and endpoint of curve are the same.'''
     ...
-    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Returns Adesk::kTrue if both curve are planar and lie in the same plane. The plane parameter is only valid if this function returns a value of Adesk::kTrue.'''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
@@ -11190,7 +11190,7 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def isPeriodic (self)-> tuple[Any,...] :
       '''Determines if the curve is periodic. The curve is periodic if and only if it is closed and the two points evalPoint(t) and evalPoint(t+period) are always the same point for all values of t.'''
     ...
-    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
     def isRational (self, *args, **kwargs)-> bool :
@@ -11256,7 +11256,7 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def projClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
     def project (self, projectionPlane : PyGe.Plane, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Entity3d :
@@ -11827,7 +11827,7 @@ class Ray3d(LinearEnt3d):
     def getProjClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.PointOnCurve3d,PyGe.PointOnCurve3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
 
@@ -11866,7 +11866,7 @@ class Ray3d(LinearEnt3d):
     def isColinearTo (self, pt: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
     ...
-    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Returns Adesk::kTrue if both curve are planar and lie in the same plane. The plane parameter is only valid if this function returns a value of Adesk::kTrue.'''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
@@ -11944,7 +11944,7 @@ class Ray3d(LinearEnt3d):
     - line: PyGe.PlanarEnt, tol: PyGe.Tol
     '''
     ...
-    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
@@ -11974,7 +11974,7 @@ class Ray3d(LinearEnt3d):
     def projClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
     def projIntersectWith (self, other: PyGe.LinearEnt3d, projDir: PyGe.Vector3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
@@ -12751,7 +12751,7 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def getProjClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def getProjClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.PointOnCurve3d,PyGe.PointOnCurve3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
 
@@ -12790,7 +12790,7 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''Determines if start point and endpoint of curve are the same.'''
     ...
-    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Returns Adesk::kTrue if both curve are planar and lie in the same plane. The plane parameter is only valid if this function returns a value of Adesk::kTrue.'''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
@@ -12814,7 +12814,7 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def isPeriodic (self)-> tuple[Any,...] :
       '''Determines if the curve is periodic. The curve is periodic if and only if it is closed and the two points evalPoint(t) and evalPoint(t+period) are always the same point for all values of t.'''
     ...
-    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
     def isRational (self, *args, **kwargs)-> bool :
@@ -12874,7 +12874,7 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def projClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def projClosestPointsTo (self, pt : PyGe.Curve3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
     def project (self, projectionPlane : PyGe.Plane, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Entity3d :
@@ -12975,13 +12975,13 @@ __init__( (object)arg1, (Surface)arg2, (Surface)arg3, (Tol)arg4) -> None :
     C++ signature :
         int getDimension(class PyGeSurfSurfInt {lvalue},int)'''
     ...
-    def getIntConfigs (self, *args, **kwargs)-> tuple[Any,...] :
+    def getIntConfigs (self, *args, **kwargs)-> tuple :
       '''getIntConfigs( (SurfSurfInt)arg1, (int)arg2) -> tuple :
 
     C++ signature :
         class boost::python::tuple getIntConfigs(class PyGeSurfSurfInt {lvalue},int)'''
     ...
-    def getIntPointParams (self, *args, **kwargs)-> tuple[Any,...] :
+    def getIntPointParams (self, *args, **kwargs)-> tuple[PyGe.Point2d,PyGe.Point2d] :
       '''getIntPointParams( (SurfSurfInt)arg1, (int)arg2) -> tuple :
 
     C++ signature :
@@ -13486,10 +13486,10 @@ class Vector2d(object):
       '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002008115F880>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000275EA39C820>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002008115F880>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x00000275EA39C820>])'''
     ...
     def isParallelTo (self, vec: PyGe.Vector2d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -13498,16 +13498,16 @@ class Vector2d(object):
       '''                             '''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002008115F490>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000275EA39C550>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002008115F490>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000275EA39C550>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002008115F520>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000275EA39C5E0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002008115F520>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000275EA39C5E0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
@@ -13556,13 +13556,13 @@ class Vector2d(object):
     def setToSum (self, v1: PyGe.Vector2d, v2: PyGe.Vector2d)-> PyGe.Vector2d :
       '''                             '''
     ...
-    def toList (self)-> list :
+    def toList (self)-> list[float,float] :
       '''                             '''
     ...
     def toString (self)-> str :
       '''                             '''
     ...
-    def toTuple (self)-> tuple[Any,...] :
+    def toTuple (self)-> tuple[float,float] :
       '''                             '''
     ...
     def transformBy (self, xform: PyGe.Matrix2d)-> PyGe.Vector2d :
@@ -13758,13 +13758,13 @@ __rmul__( (Vector3d)arg1, (Matrix3d)arg2) -> Vector3d :
     def setToSum (self, v1: PyGe.Vector3d, v2: PyGe.Vector3d)-> PyGe.Vector3d :
       '''Sets this vector to the sum of the vector v1 and vector v2. Returns the reference to this vector.'''
     ...
-    def toList (self)-> list :
+    def toList (self)-> list[float,float,float] :
       '''                             '''
     ...
     def toString (self)-> str :
       '''                             '''
     ...
-    def toTuple (self)-> tuple[Any,...] :
+    def toTuple (self)-> tuple[float,float,float] :
       '''                             '''
     ...
     def transformBy (self, xform: PyGe.Matrix3d)-> PyGe.Vector3d :

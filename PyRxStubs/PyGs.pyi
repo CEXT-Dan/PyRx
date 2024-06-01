@@ -98,7 +98,7 @@ This class cannot be instantiated from Python'''
     def frontClip (self)-> float :
       '''                             '''
     ...
-    def getViewport (self)-> tuple[Any,...] :
+    def getViewport (self)-> tuple[PyGe.Point2d,PyGe.Point2d] :
       '''                             '''
     ...
     def graphicsKernel (self)-> PyGs.GraphicsKernel :
