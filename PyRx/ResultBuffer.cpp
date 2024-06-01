@@ -30,9 +30,10 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                 {
                     case AcDb::kDwgText:
                     {
-                        int _code = code == 0 ? RTDXF0 : code;
+                        if (code == 0)
+                            code = RTDXF0;
                         AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
-                        pTail->rbnext = acutBuildList(_code, (const TCHAR*)str, 0);
+                        pTail->rbnext = acutBuildList(code, (const TCHAR*)str, 0);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
                         break;

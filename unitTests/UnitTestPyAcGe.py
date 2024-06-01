@@ -117,7 +117,7 @@ class TestGe(unittest.TestCase):
         point2 = PyGe.Point2d(100, 100)
         point1.isEqualTo(point2)
         self.assertTrue(point1.isEqualTo(point2))
-        self.assertTrue(point1.isEqualTo(point2, PyGe.Tol.current))
+        self.assertTrue(point1.isEqualTo(point2, PyGe.Tol.current()))
 
     def test_point2d_kOrigin(self):
         origin = PyGe.Point2d.kOrigin
@@ -157,7 +157,7 @@ class TestGe(unittest.TestCase):
         v2 = PyGe.Vector2d.kXAxis
         ans = v1.isParallelTo(v2)
         self.assertEqual(ans, True)
-        ans = v1.isParallelTo(v2, PyGe.Tol.current)
+        ans = v1.isParallelTo(v2, PyGe.Tol.current())
         self.assertEqual(ans, True)
 
     def test_vector2d_isParallelTo(self):
@@ -165,7 +165,7 @@ class TestGe(unittest.TestCase):
         v2 = PyGe.Vector2d.kYAxis
         ans = v1.isPerpendicularTo(v2)
         self.assertEqual(ans, True)
-        ans = v1.isPerpendicularTo(v2, PyGe.Tol.current)
+        ans = v1.isPerpendicularTo(v2, PyGe.Tol.current())
         self.assertEqual(ans, True)
 
     def test_vector2d_make1(self):
