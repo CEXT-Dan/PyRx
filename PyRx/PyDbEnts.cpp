@@ -976,9 +976,18 @@ void PyDbBlockReference::explodeToOwnerSpace() const
 std::string PyDbBlockReference::getBlockName() const
 {
     AcString name;
-    AcDbBlockTableRecordPointer bBlock(impObj()->blockTableRecord());
-    if (bBlock.openStatus() == eOk)
+    AcDbObjectId blkid = impObj()->blockTableRecord();
+    AcDbDynBlockReference dynBlk(blkid);
+    if (dynBlk.isDynamicBlock())
+    {
+        AcDbBlockTableRecordPointer bBlock(dynBlk.dynamicBlockTableRecord());
         PyThrowBadEs(bBlock->getName(name));
+    }
+    else
+    {
+        AcDbBlockTableRecordPointer bBlock(impObj()->blockTableRecord());
+        PyThrowBadEs(bBlock->getName(name));
+    }
     return wstr_to_utf8(name);
 }
 
