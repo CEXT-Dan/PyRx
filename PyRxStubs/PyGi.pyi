@@ -828,6 +828,36 @@ class GiDrawableType(object):
       '''None'''
     ...
 
+class GiGraphicsKernel(object):
+    def __init__ (self, *args, **kwargs)-> None :
+      '''Raises an exception
+This class cannot be instantiated from Python'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def getDescriptor (self, *args, **kwargs)-> PyGi.GiKernelDescriptor :
+      '''getDescriptor( (GiGraphicsKernel)arg1) -> GiKernelDescriptor :
+
+    C++ signature :
+        class PyGiKernelDescriptor getDescriptor(class PyGiGraphicsKernel {lvalue})'''
+    ...
+
+class GiKernelDescriptor(object):
+    def __init__ (self, *args, **kwargs)-> None :
+      '''Raises an exception
+This class cannot be instantiated from Python'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+
 class OrientationTransformBehavior(object):
     def __add__ (self, value, /) :
       '''Return self+value.'''

@@ -9851,8 +9851,11 @@ set( (Plane)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
     ...
 
 class Point2d(object):
-    def __add__ (self, vec: PyGe.Vector2d)-> PyGe.Point2d :
-      '''                             '''
+    def __add__ (self, *args, **kwargs)-> PyGe.Point2d :
+      '''__add__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d __add__(class AcGePoint2d {lvalue},class AcGeVector2d)'''
     ...
     def __getitem__ (self, idx: int)-> float :
       '''                             '''
@@ -9871,8 +9874,11 @@ class Point2d(object):
     - x: float, y: float
     '''
     ...
-    def __isub__ (self, vec: PyGe.Vector2d)-> PyGe.Point2d :
-      '''                             '''
+    def __isub__ (self, *args, **kwargs)-> PyGe.Point2d :
+      '''__isub__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d {lvalue} __isub__(class AcGePoint2d {lvalue},class AcGeVector2d)'''
     ...
     def __itruediv__ (self, val: float)-> PyGe.Point2d :
       '''                             '''
@@ -9883,8 +9889,16 @@ class Point2d(object):
     def __setitem__ (self, idx: int, val: float)-> None :
       '''                             '''
     ...
-    def __sub__ (self, vec: PyGe.Vector2d)-> PyGe.Point2d :
-      '''                             '''
+    def __sub__ (self, *args, **kwargs)-> PyGe.Point2d :
+      '''__sub__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d __sub__(class AcGePoint2d {lvalue},class AcGeVector2d)
+
+__sub__( (Point2d)arg1, (Point2d)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d __sub__(class AcGePoint2d {lvalue},class AcGePoint2d)'''
     ...
     def __truediv__ (self, val: float)-> PyGe.Point2d :
       '''                             '''
@@ -13472,10 +13486,10 @@ class Vector2d(object):
       '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000022235AEC820>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002B308BFDD80>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000022235AEC820>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002B308BFDD80>])'''
     ...
     def isParallelTo (self, vec: PyGe.Vector2d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -13484,16 +13498,16 @@ class Vector2d(object):
       '''                             '''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000022235AEC550>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002B308BFDAB0>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000022235AEC550>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002B308BFDAB0>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000022235AEC5E0>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002B308BFDB40>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000022235AEC5E0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002B308BFDB40>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
