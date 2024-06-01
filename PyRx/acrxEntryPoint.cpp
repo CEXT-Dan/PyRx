@@ -333,7 +333,6 @@ public:
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
-        acprintnl(L"{}",_T(__DATE__));
     }
 #endif
 };
