@@ -83,13 +83,19 @@ std::string AcDbExtents2dToStringRepr(const AcDbExtents2d& p)
     return std::format("<{}.Extents2d(({:.14f},{:.14f}),({:.14f},{:.14f}))>", PyGeNamespace, mi.x, mi.y, ma.x, ma.y);
 }
 
+//TODO: test
 static bool AcDbExtents2dIntersects(const AcDbExtents2d& extents, const AcDbExtents2d& other)
 {
-    auto min = extents.minPoint();
-    auto max = extents.maxPoint();
+    auto smin = extents.minPoint();
+    auto smax = extents.maxPoint();
     auto omin = other.minPoint();
     auto omax = other.maxPoint();
-    return(min.x < omax.x && max.x > omin.x && max.y > omin.y && min.y < max.y);
+    if (((smin.x <= omin.x && omin.x <= smax.x) || (omin.x <= smin.x && smin.x <= omax.x)) &&
+        ((smin.y <= omin.y && omin.y <= smax.y) || (omin.y <= smin.y && smin.y <= omax.y)))
+    {
+        return true;
+    }
+    return false;
 }
 
 static boost::python::tuple AcDbExtents2dCoords(const AcDbExtents2d& extents)
@@ -157,15 +163,21 @@ std::string AcDbExtentsToStringRepr(const AcDbExtents& p)
 }
 
 //TODO: test
+//https://gamedev.stackexchange.com/questions/23748/testing-whether-two-cubes-are-touching-in-space
 static bool AcDbExtents3dIntersects(const AcDbExtents& extents, const AcDbExtents& other)
 {
-    auto tol = AcGeContext::gTol.equalPoint();
-    auto min = extents.minPoint();
-    auto max = extents.maxPoint();
+    auto smin = extents.minPoint();
+    auto smax = extents.maxPoint();
     auto omin = other.minPoint();
     auto omax = other.maxPoint();
-    return(min.x < omax.x && max.x > omin.x &&
-        (max.y > omin.y && min.y < max.y) || (min.z < omax.z && max.z > omin.z));
+
+    if (((smin.x <= omin.x && omin.x <= smax.x) || (omin.x <= smin.x && smin.x <= omax.x)) &&
+        ((smin.y <= omin.y && omin.y <= smax.y) || (omin.y <= smin.y && smin.y <= omax.y)) &&
+        ((smin.z <= omin.z && omin.z <= smax.z) || (omin.z <= smin.z && smin.z <= omax.z)))
+    {
+        return true;
+    }
+    return false;
 }
 
 static boost::python::tuple AcDbExtents3dCoords(const AcDbExtents& extents)
