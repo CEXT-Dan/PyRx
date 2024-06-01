@@ -36,9 +36,9 @@ def lookupRowNumber(docstringkey, conn: sqlite3.Connection):
         return (-1, 1)
 
 
-class TestDocStrring(unittest.TestCase):
+class TestDocString(unittest.TestCase):
     def __init__(self, *args, **kwargs):
-        super(TestDocStrring, self).__init__(*args, **kwargs)
+        super(TestDocString, self).__init__(*args, **kwargs)
         self.conn = sqlite3.connect("..\\PyRxStubs\\DocString.db", isolation_level='DEFERRED') 
         
     def __del__(self):
@@ -70,14 +70,14 @@ class TestDocStrring(unittest.TestCase):
 
 def docstringtester():
     try:
-        suite = unittest.TestLoader().loadTestsFromTestCase(TestDocStrring)
+        suite = unittest.TestLoader().loadTestsFromTestCase(TestDocString)
         if testcfg.logToFile:
             with open(testcfg.logFileName, "a") as f:
-                f.write("\n{:*^60s}\n".format("TestDocStrring"))
+                f.write("\n{:*^60s}\n".format("TestDocString"))
                 runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
                 runner.run(suite)
         else:
-            print('TestDocStrring')
+            print('TestDocString')
             print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
     except Exception as err:
         print(err)
