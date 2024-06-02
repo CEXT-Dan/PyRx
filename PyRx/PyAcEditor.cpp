@@ -103,7 +103,9 @@ void makePyEditorWrapper()
 {
     constexpr const std::string_view getStringOverloads = "Overloads:\n"
         "- prompt: str\n"
-        "- cronly: int, prompt: str\n";
+        "- prompt: str, condition :PyEd.PromptCondition\n"
+        "- cronly: int, prompt: str\n"
+        "- cronly: int, prompt: str, condition :PyEd.PromptCondition\n";
 
     constexpr const std::string_view getPointOverloads = "Overloads:\n"
         "- prompt: str\n"
@@ -130,7 +132,9 @@ void makePyEditorWrapper()
         .def("getAngle", &PyAcEditor::getAngle, DS.SARGS({ "basePt: PyGe.Point3d","prompt: str" }, 10825)).staticmethod("getAngle")
         .def("getCurrentSelectionSet", &PyAcEditor::getCurrentSelectionSet, DS.SARGS(10846)).staticmethod("getCurrentSelectionSet")
         .def("getString", &PyAcEditor::getString1)
-        .def("getString", &PyAcEditor::getString2, DS.SOVRL(getStringOverloads, 10859)).staticmethod("getString")
+        .def("getString", &PyAcEditor::getString2)
+        .def("getString", &PyAcEditor::getString3)
+        .def("getString", &PyAcEditor::getString4, DS.SOVRL(getStringOverloads, 10859)).staticmethod("getString")
         .def("getPoint", &PyAcEditor::getPoint1)
         .def("getPoint", &PyAcEditor::getPoint2, DS.SOVRL(getPointOverloads, 10870)).staticmethod("getPoint")
         .def("getDist", &PyAcEditor::getDist1)
@@ -203,7 +207,9 @@ boost::python::tuple PyAcEditor::getInteger2(const std::string& prompt, PromptCo
     PyEdUserInteraction ui;
     Acad::PromptStatus stat = static_cast<Acad::PromptStatus>(acedGetInt(utf8_to_wstr(prompt).c_str(), &val));
     if (stat != Acad::eNormal || condition == eNone)
+    {
         return boost::python::make_tuple(stat, val);
+    }
     if (GETBIT(condition, PromptCondition::eNoZero))
     {
         if (val == 0)
@@ -228,16 +234,18 @@ boost::python::tuple PyAcEditor::getDouble2(const std::string& prompt, PromptCon
     PyEdUserInteraction ui;
     double val = 0;
     Acad::PromptStatus stat = static_cast<Acad::PromptStatus>(acedGetReal(utf8_to_wstr(prompt).c_str(), &val));
-    if(stat != Acad::eNormal || condition == eNone)
+    if (stat != Acad::eNormal || condition == eNone)
+    {
         return boost::python::make_tuple(stat, val);
+    }
     if (GETBIT(condition, PromptCondition::eNoZero))
     {
         if (std::fabs(val) < AcGeContext::gTol.equalPoint())
             return boost::python::make_tuple(Acad::PromptStatus::eRejected, val);
     }
-    if(GETBIT(condition, PromptCondition::eNoNegitive))
+    if (GETBIT(condition, PromptCondition::eNoNegitive))
     {
-        if(val < 0)
+        if (val < 0)
             return boost::python::make_tuple(Acad::PromptStatus::eRejected, val);
     }
     return boost::python::make_tuple(stat, val);
@@ -280,6 +288,10 @@ boost::python::tuple PyAcEditor::getDist1(const std::string& prompt)
     PyEdUserInteraction ui;
     std::pair<Acad::PromptStatus, double> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetDist(nullptr, utf8_to_wstr(prompt).c_str(), &res.second));
+    if (res.first != Acad::eNormal)
+       return boost::python::make_tuple(res.first, res.second);
+    if (std::fabs(res.second) < AcGeContext::gTol.equalPoint())
+        return boost::python::make_tuple(Acad::PromptStatus::eRejected, res.second);
     return boost::python::make_tuple(res.first, res.second);
 }
 
@@ -289,32 +301,48 @@ boost::python::tuple PyAcEditor::getDist2(const AcGePoint3d& basePt, const std::
     PyEdUserInteraction ui;
     std::pair<Acad::PromptStatus, double> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetDist(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res.second));
+    if (res.first != Acad::eNormal)
+        return boost::python::make_tuple(res.first, res.second);
+    if (std::fabs(res.second) < AcGeContext::gTol.equalPoint())
+        return boost::python::make_tuple(Acad::PromptStatus::eRejected, res.second);
     return boost::python::make_tuple(res.first, res.second);
 }
 
 boost::python::tuple PyAcEditor::getString1(const std::string& prompt)
 {
-    PyAutoLockGIL lock;
-    PyEdUserInteraction ui;
-    RxAutoOutStr str;
-    std::pair<Acad::PromptStatus, std::string> res;
-    res.first = static_cast<Acad::PromptStatus>(acedGetFullString(1, utf8_to_wstr(prompt).c_str(), str.buf));
-    res.second = str.str();
-    return boost::python::make_tuple(res.first, res.second);
+    return getString4(0, prompt, PromptCondition::eNone);
 }
 
 boost::python::tuple PyAcEditor::getString2(int cronly, const std::string& prompt)
 {
-    PyAutoLockGIL lock;
-    PyEdUserInteraction ui;
-    RxAutoOutStr str;
-    std::pair<Acad::PromptStatus, std::string> res;
-    res.first = static_cast<Acad::PromptStatus>(acedGetFullString(cronly, utf8_to_wstr(prompt).c_str(), str.buf));
-    res.second = str.str();
-    return boost::python::make_tuple(res.first, res.second);
+    return getString4(cronly, prompt, PromptCondition::eNone);
 }
 
-boost::python::tuple entSel(const std::string& prompt,const AcRxClassArray& descs)
+boost::python::tuple PyAcEditor::getString3(const std::string& prompt, PromptCondition condition)
+{
+    return getString4(0, prompt, PromptCondition::eNone);
+}
+
+boost::python::tuple PyAcEditor::getString4(int cronly, const std::string& prompt, PromptCondition condition)
+{
+    PyAutoLockGIL lock;
+    PyEdUserInteraction ui;
+    RxAutoOutStr val;
+    Acad::PromptStatus stat = static_cast<Acad::PromptStatus>(acedGetFullString(cronly, utf8_to_wstr(prompt).c_str(), val.buf));
+    const std::string sval = val.str();
+    if (stat != Acad::eNormal || condition == eNone)
+    {
+        return boost::python::make_tuple(stat, sval);
+    }
+    if (GETBIT(condition, PromptCondition::eNoEmpty))
+    {
+        if (sval.empty())
+            return boost::python::make_tuple(Acad::PromptStatus::eRejected, sval);
+    }
+    return boost::python::make_tuple(stat, sval);
+}
+
+boost::python::tuple entSel(const std::string& prompt, const AcRxClassArray& descs)
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
