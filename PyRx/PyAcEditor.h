@@ -1,6 +1,15 @@
 #pragma once
 
 #pragma pack (push, 8)
+
+enum PromptCondition
+{
+    eNone = 0,
+    eNoZero = 1,
+    eNoNegitive = 2,
+};
+
+
 class PyDbObjectId;
 class PyDbDatabase;
 class PyApDocument;
@@ -14,7 +23,9 @@ public:
 
     static boost::python::tuple getCorner(const AcGePoint3d& basePt, const std::string& prompt);
     static boost::python::tuple getInteger(const std::string& prompt);
-    static boost::python::tuple getDouble(const std::string& prompt);
+    static boost::python::tuple getDouble1(const std::string& prompt);
+    static boost::python::tuple getDouble2(const std::string& prompt, PromptCondition condition);
+
     static boost::python::tuple getAngle(const AcGePoint3d& basePt, const std::string& prompt);
     static boost::python::tuple getPoint1(const std::string& prompt);
     static boost::python::tuple getPoint2(const AcGePoint3d& basePt, const std::string& prompt);
@@ -61,7 +72,7 @@ public:
     static void                 setAllowDuplicateSelection(PyApDocument& doc, bool flag);
     static bool                 duplicateSelectionsAllowed(PyApDocument& doc);
     static void                 regen();
-    static int                  getViewportNumber(int ptx,int pty);
+    static int                  getViewportNumber(int ptx, int pty);
     static std::string          className();
 };
 
