@@ -54,6 +54,13 @@ BOOST_PYTHON_MODULE(PyEd)
         .value("eDirect", Acad::PromptStatus::eDirect)
         .export_values()
         ;
+    enum_<PromptCondition>("PromptCondition")
+        .value("eNone", PromptCondition::eNone)
+        .value("eNoZero", PromptCondition::eNoZero)
+        .value("eNoNegitive", PromptCondition::eNoNegitive)
+        .export_values()
+        ;
+
     enum_<AcEdDrawOrderCmdType>("DrawOrderCmdType")
         .value("kDrawOrderNone", AcEdDrawOrderCmdType::kDrawOrderNone)
         .value("kDrawOrderBottom", AcEdDrawOrderCmdType::kDrawOrderBottom)

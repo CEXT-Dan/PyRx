@@ -122,8 +122,13 @@ void makePyEditorWrapper()
     class_<PyAcEditor>("Editor")
         .def("getCorner", &PyAcEditor::getCorner, DS.SARGS({ "basePt: PyGe.Point3d","prompt: str" }, 10840)).staticmethod("getCorner")
         .def("getInteger", &PyAcEditor::getInteger, DS.SARGS({ "prompt: str" }, 10865)).staticmethod("getInteger")
-        .def("getDouble", &PyAcEditor::getDouble, DS.SARGS({ "prompt: str" }, 10871)).staticmethod("getDouble")
-        .def("getReal", &PyAcEditor::getDouble, DS.SARGS({ "prompt: str" }, 10871)).staticmethod("getReal")
+
+        .def("getDouble", &PyAcEditor::getDouble1)
+        .def("getDouble", &PyAcEditor::getDouble2, DS.SARGS({ "prompt: str, condition :PyEd.PromptCondition = PyEd.PromptCondition.eNone" }, 10871)).staticmethod("getDouble")
+
+        .def("getReal", &PyAcEditor::getDouble1)
+        .def("getReal", &PyAcEditor::getDouble2, DS.SARGS({ "prompt: str, condition :PyEd.PromptCondition = PyEd.PromptCondition.eNone" }, 10871)).staticmethod("getReal")
+
         .def("getAngle", &PyAcEditor::getAngle, DS.SARGS({ "basePt: PyGe.Point3d","prompt: str" }, 10825)).staticmethod("getAngle")
         .def("getCurrentSelectionSet", &PyAcEditor::getCurrentSelectionSet, DS.SARGS(10846)).staticmethod("getCurrentSelectionSet")
         .def("getString", &PyAcEditor::getString1)
@@ -197,13 +202,31 @@ boost::python::tuple PyAcEditor::getInteger(const std::string& prompt)
     return boost::python::make_tuple(res.first, res.second);
 }
 
-boost::python::tuple PyAcEditor::getDouble(const std::string& prompt)
+
+boost::python::tuple PyAcEditor::getDouble2(const std::string& prompt, PromptCondition condition)
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    std::pair<Acad::PromptStatus, double> res;
-    res.first = static_cast<Acad::PromptStatus>(acedGetReal(utf8_to_wstr(prompt).c_str(), &res.second));
-    return boost::python::make_tuple(res.first, res.second);
+    double val = 0;
+    Acad::PromptStatus stat = static_cast<Acad::PromptStatus>(acedGetReal(utf8_to_wstr(prompt).c_str(), &val));
+    if(stat != Acad::eNormal || condition == eNone)
+        return boost::python::make_tuple(stat, val);
+    if (GETBIT(condition, PromptCondition::eNoZero))
+    {
+        if (std::abs(val) < AcGeContext::gTol.equalPoint())
+            return boost::python::make_tuple(Acad::PromptStatus::eRejected, val);
+    }
+    if(GETBIT(condition, PromptCondition::eNoNegitive))
+    {
+        if(val < 0)
+            return boost::python::make_tuple(Acad::PromptStatus::eRejected, val);
+    }
+    return boost::python::make_tuple(stat, val);
+}
+
+boost::python::tuple PyAcEditor::getDouble1(const std::string& prompt)
+{
+    return getDouble2(prompt, PromptCondition::eNone);
 }
 
 boost::python::tuple PyAcEditor::getAngle(const AcGePoint3d& basePt, const std::string& prompt)
