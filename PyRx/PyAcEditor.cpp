@@ -320,7 +320,7 @@ boost::python::tuple PyAcEditor::getString2(int cronly, const std::string& promp
 
 boost::python::tuple PyAcEditor::getString3(const std::string& prompt, PromptCondition condition)
 {
-    return getString4(0, prompt, PromptCondition::eNone);
+    return getString4(0, prompt, condition);
 }
 
 boost::python::tuple PyAcEditor::getString4(int cronly, const std::string& prompt, PromptCondition condition)
