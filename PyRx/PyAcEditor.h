@@ -1,10 +1,10 @@
 #pragma once
-
 #pragma pack (push, 8)
 
 enum PromptCondition
 {
     eNone = 0,
+    eNoEmpty = 1,
     eNoZero = 1,
     eNoNegitive = 2,
 };
@@ -34,8 +34,14 @@ public:
     static boost::python::tuple getPoint2(const AcGePoint3d& basePt, const std::string& prompt);
     static boost::python::tuple getDist1(const std::string& prompt);
     static boost::python::tuple getDist2(const AcGePoint3d& basePt, const std::string& prompt);
+
     static boost::python::tuple getString1(const std::string& prompt);
     static boost::python::tuple getString2(int cronly, const std::string& prompt);
+
+    static boost::python::tuple getString3(const std::string& prompt, PromptCondition condition);
+    static boost::python::tuple getString4(int cronly, const std::string& prompt, PromptCondition condition);
+
+
     static boost::python::tuple entSel1(const std::string& prompt);
     static boost::python::tuple entSel2(const std::string& prompt, const PyRxClass& desc);
     static boost::python::tuple entSel3(const std::string& prompt, const boost::python::list& filter);

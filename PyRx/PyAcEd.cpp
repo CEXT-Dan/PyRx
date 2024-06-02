@@ -57,6 +57,7 @@ BOOST_PYTHON_MODULE(PyEd)
     enum_<PromptCondition>("PromptCondition")
         .value("eNone", PromptCondition::eNone)
         .value("eNoZero", PromptCondition::eNoZero)
+        .value("eNoEmpty", PromptCondition::eNoEmpty)
         .value("eNoNegitive", PromptCondition::eNoNegitive)
         .export_values()
         ;

@@ -1228,12 +1228,20 @@ class Editor(object):
     def getString (prompt: str)-> tuple[PyEd.PromptStatus, str] : ...
     @overload
     @staticmethod
+    def getString (prompt: str, condition :PyEd.PromptCondition)-> tuple[PyEd.PromptStatus, str] : ...
+    @overload
+    @staticmethod
     def getString (cronly: int, prompt: str)-> tuple[PyEd.PromptStatus, str] : ...
+    @overload
+    @staticmethod
+    def getString (cronly: int, prompt: str, condition :PyEd.PromptCondition)-> tuple[PyEd.PromptStatus, str] : ...
     @staticmethod
     def getString (self, *args, **kwargs)-> tuple[PyEd.PromptStatus, str] :
       '''Overloads:
     - prompt: str
+    - prompt: str, condition :PyEd.PromptCondition
     - cronly: int, prompt: str
+    - cronly: int, prompt: str, condition :PyEd.PromptCondition
     
 	-Gets user input for a string, cronly If nonzero, the string can contain blanks and the user must terminate it by entering [Return]; if zero, entering either a blank or [Return] terminates the string-'''
     ...
@@ -2255,6 +2263,9 @@ class PromptCondition(object):
     ...
     def __truediv__ (self, value, /) :
       '''Return self/value.'''
+    ...
+    def eNoEmpty (self, *args, **kwargs)-> None :
+      '''None'''
     ...
     def eNoNegitive (self, *args, **kwargs)-> None :
       '''None'''
