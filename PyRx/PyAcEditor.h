@@ -22,7 +22,10 @@ class PyAcEditor
 public:
 
     static boost::python::tuple getCorner(const AcGePoint3d& basePt, const std::string& prompt);
-    static boost::python::tuple getInteger(const std::string& prompt);
+
+    static boost::python::tuple getInteger1(const std::string& prompt);
+    static boost::python::tuple getInteger2(const std::string& prompt, PromptCondition condition);
+
     static boost::python::tuple getDouble1(const std::string& prompt);
     static boost::python::tuple getDouble2(const std::string& prompt, PromptCondition condition);
 

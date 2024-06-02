@@ -1189,12 +1189,12 @@ class Editor(object):
     ...
 
     @staticmethod
-    def getDouble (prompt: str, condition :PyEd.PromptCondition = PyEd.PromptCondition.eNone)-> tuple[PyEd.PromptStatus, float] :
+    def getDouble (prompt: str,condition :PyEd.PromptCondition = PyEd.PromptCondition.eNone)-> tuple[PyEd.PromptStatus, float] :
       '''Gets user input for a real value.The AutoCAD user can enter any valid real value, but the user cannot respond to acedGetReal() by entering an AutoLISP expression.The acedGetReal() function returns one of the following: RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [Esc]). It returns RTMODELESS, if the active command was registered using the ACRX_CMD_INTERRUPTIBLE flag and the document has received a modeless interrupt signal from a call to  AcApDocManager::sendModelessInterrupt(). A prior call to acedInitGet() can also enable return values of RTNONE or RTKWORD.'''
     ...
 
     @staticmethod
-    def getInteger (prompt: str)-> tuple[PyEd.PromptStatus, int] :
+    def getInteger (prompt: str,condition :PyEd.PromptCondition = PyEd.PromptCondition.eNone)-> tuple[PyEd.PromptStatus, int] :
       '''Gets user input for an integer.The AutoCAD user can enter any valid 32-bit integer.The user cannot respond to acedGetInt() by entering an AutoLISP expression.The acedGetInt() function returns one of the following: RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [ESC]). A prior call to acedInitGet() can also enable return values of RTNONE or RTKWORD.'''
     ...
 
@@ -1219,7 +1219,7 @@ class Editor(object):
     ...
 
     @staticmethod
-    def getReal (prompt: str, condition :PyEd.PromptCondition = PyEd.PromptCondition.eNone)-> tuple[PyEd.PromptStatus, float] :
+    def getReal (prompt: str,condition :PyEd.PromptCondition = PyEd.PromptCondition.eNone)-> tuple[PyEd.PromptStatus, float] :
       '''Gets user input for a real value.The AutoCAD user can enter any valid real value, but the user cannot respond to acedGetReal() by entering an AutoLISP expression.The acedGetReal() function returns one of the following: RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by pressing [Esc]). It returns RTMODELESS, if the active command was registered using the ACRX_CMD_INTERRUPTIBLE flag and the document has received a modeless interrupt signal from a call to  AcApDocManager::sendModelessInterrupt(). A prior call to acedInitGet() can also enable return values of RTNONE or RTKWORD.'''
     ...
 
