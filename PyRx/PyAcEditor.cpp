@@ -290,7 +290,7 @@ boost::python::tuple PyAcEditor::getDist1(const std::string& prompt)
     res.first = static_cast<Acad::PromptStatus>(acedGetDist(nullptr, utf8_to_wstr(prompt).c_str(), &res.second));
     if (res.first != Acad::eNormal)
        return boost::python::make_tuple(res.first, res.second);
-    if (std::fabs(res.second) < AcGeContext::gTol.equalPoint())
+    if (res.second < 0)
         return boost::python::make_tuple(Acad::PromptStatus::eRejected, res.second);
     return boost::python::make_tuple(res.first, res.second);
 }
@@ -303,7 +303,7 @@ boost::python::tuple PyAcEditor::getDist2(const AcGePoint3d& basePt, const std::
     res.first = static_cast<Acad::PromptStatus>(acedGetDist(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res.second));
     if (res.first != Acad::eNormal)
         return boost::python::make_tuple(res.first, res.second);
-    if (std::fabs(res.second) < AcGeContext::gTol.equalPoint())
+    if (res.second < 0)
         return boost::python::make_tuple(Acad::PromptStatus::eRejected, res.second);
     return boost::python::make_tuple(res.first, res.second);
 }
