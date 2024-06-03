@@ -142,14 +142,12 @@ public:
     std::string         textStringFmt2(int row, int col, int nContent, AcValue::FormatOption nOption) const;
     std::string         textStringFmt3(const AcCell& cell, AcValue::FormatOption nOption) const;//
 
-
     void                setTextString(int row, int col, const std::string& text);
     void                setTextString2(int row, int col, int nContent, const  std::string& text);
     void                setTextString3(const AcCell& cell, const std::string& text);
 
     PyDbObjectId        fieldId(int row, int col) const;
     void                setFieldId(int row, int col, const PyDbObjectId& fieldId);
-
 
     AcDb::RotationAngle textRotation(int row, int col) const;
     void                setTextRotation(int row, int col, AcDb::RotationAngle rot);
@@ -238,13 +236,11 @@ public:
     void                setDataFormat1(int row, int col, const std::string& pszFormat);
     void                setDataFormat2(int row, int col, int nContent, const std::string& pszFormat);
 
-
     bool                hasFormula(int nRow, int nCol, int nContent) const;
     std::string         getFormula(int nRow, int nCol, int nContent) const;
     void                setFormula(int nRow, int nCol, int nContent, const  std::string& pszFormula);
     PyDbObjectId        fieldId2(int row, int col, int nContent) const;
     void                setFieldId2(int row, int col, int nContent, const PyDbObjectId& fieldId, AcDb::CellOption nFlag);
-
 
     std::string         getBlockAttributeValue1(int row, int col, const PyDbObjectId& attdefId) const;
     std::string         getBlockAttributeValue2(int row, int col, int nContent, const PyDbObjectId& attdefId) const;
@@ -311,7 +307,7 @@ public:
     double              breakSpacing(void) const;
     void                setBreakSpacing(double fSpacing);
     AcCellRange         cellRange() const;
-    public:
+public:
     static std::string  className();
     static PyRxClass    desc();
     static PyDbTable    cloneFrom(const PyRxObject& src);

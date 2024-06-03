@@ -682,11 +682,9 @@ Acad::PromptStatus PyAcEditor::initGet(int val, const std::string& skwl)
 boost::python::tuple PyAcEditor::getKword(const std::string& skwl)
 {
     PyAutoLockGIL lock;
-    ACHAR* pStr = nullptr;
-    int resval = acedGetFullKword(utf8_to_wstr(skwl).c_str(), pStr);
-    std::string resStr = wstr_to_utf8(pStr);
-    acutDelString(pStr);
-    return boost::python::make_tuple(resval, resStr);
+    RxAutoOutStr pStr;
+    int resval = acedGetFullKword(utf8_to_wstr(skwl).c_str(), pStr.buf);
+    return boost::python::make_tuple(resval, pStr.str());
 }
 
 boost::python::list PyAcEditor::traceBoundary(const AcGePoint3d& seedPoint, bool detectIslands)
