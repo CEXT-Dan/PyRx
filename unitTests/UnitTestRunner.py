@@ -63,7 +63,11 @@ def cleanup(dbc):
         dbc.cleardbs()
     except Exception as err:
         print(err)
-    
+
+#CmDFlags = Ap.CmdFlags.SESSION
+#Ap.DocManager().appContextNewDocument("")
+#lock = Ap.AutoDocLock()
+
 def PyRxCmd_runtests() -> None:
     try:
         
@@ -73,7 +77,7 @@ def PyRxCmd_runtests() -> None:
         
         #load 
         dbc.loaddbs()
-       
+    
         UnitTestPyAcGe.pyge()
         UnitTestPyRxObject.pyrxobject()
         UnitTestPyDatabase.pydbtest()
