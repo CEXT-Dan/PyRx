@@ -755,9 +755,9 @@ std::string EdCore::getEnv(const std::string& env)
     PyThrowBadRt(acedGetEnv(utf8_to_wstr(env).c_str(), val));
     return wstr_to_utf8(val);
 #else
-    std::array<wchar_t, 1024> buff = { 0 };
+    std::wstring buff(8096, 0);
     PyThrowBadRt(acedGetEnv(utf8_to_wstr(env).c_str(), buff.data(), buff.size()));
-    return wstr_to_utf8(buff.data());
+    return wstr_to_utf8(buff.c_str());
 #endif
 }
 
@@ -768,9 +768,9 @@ void EdCore::setEnv(const std::string& sym, const std::string& val)
 
 std::string EdCore::getCfg(const std::string& str)
 {
-    std::array<wchar_t, 2048> buff = { 0 };
+    std::wstring buff(2048, 0);
     PyThrowBadRt(acedGetCfg(utf8_to_wstr(str).c_str(), buff.data(), buff.size()));
-    return wstr_to_utf8(buff.data());
+    return wstr_to_utf8(buff.c_str());
 }
 
 void EdCore::setCfg(const std::string& sym, const std::string& val)
