@@ -521,6 +521,8 @@ public:
     void                insertVertexAt2(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb3dPolylineVertex& pNewVertex);
     PyDb3dPolylineVertex openVertex(const PyDbObjectId& vertId, AcDb::OpenMode mode) const;
     PyDbSequenceEnd      openSequenceEnd(AcDb::OpenMode);
+    PyGeCompositeCurve3d  getAcGeCurve1() const;
+    PyGeCompositeCurve3d  getAcGeCurve2(const AcGeTol& tol) const;
     boost::python::list vertexIds() const;
     static std::string  className();
     static PyRxClass    desc();

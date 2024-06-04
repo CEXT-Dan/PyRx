@@ -2439,6 +2439,8 @@ void makePyDb3dPolylineWrapper()
         .def("openVertex", &PyDb3dPolyline::openVertex, DS.ARGS({ "id : PyDb.ObjectId", "mode: PyDb.OpenMode" }, 1245))
         .def("openSequenceEnd", &PyDb3dPolyline::openSequenceEnd, DS.ARGS({ "mode: PyDb.OpenMode" }, 1244))
         .def("vertexIds", &PyDb3dPolyline::vertexIds, DS.ARGS())
+        .def("getAcGeCurve", &PyDb3dPolyline::getAcGeCurve1)
+        .def("getAcGeCurve", &PyDb3dPolyline::getAcGeCurve2, DS.ARGS({ "tol: PyGe.Tol = 'default'" }, 2775))
         .def("className", &PyDb3dPolyline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDb3dPolyline::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDb3dPolyline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -2558,6 +2560,20 @@ PyDbSequenceEnd PyDb3dPolyline::openSequenceEnd(AcDb::OpenMode mode)
     AcDbSequenceEnd* pEnd = nullptr;
     PyThrowBadEs(impObj()->openSequenceEnd(pEnd, mode));
     return PyDbSequenceEnd(pEnd, true);
+}
+
+PyGeCompositeCurve3d PyDb3dPolyline::getAcGeCurve1() const
+{
+    AcGeCurve3d* pGeCurve = nullptr;
+    PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve));
+    return PyGeCompositeCurve3d(pGeCurve);
+}
+
+PyGeCompositeCurve3d PyDb3dPolyline::getAcGeCurve2(const AcGeTol& tol) const
+{
+    AcGeCurve3d* pGeCurve = nullptr;
+    PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve, tol));
+    return PyGeCompositeCurve3d(pGeCurve);
 }
 
 boost::python::list PyDb3dPolyline::vertexIds() const
