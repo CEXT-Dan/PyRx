@@ -3235,3 +3235,131 @@ AcDbFcf* PyDbFcf::impObj(const std::source_location& src /*= std::source_locatio
         }
     return static_cast<AcDbFcf*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//AcDbSolid
+void makePyDbSolidWrapper()
+{
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- pnt0: PyGe.Point3d, pnt1: PyGe.Point3d, pnt2: PyGe.Point3d\n"
+        "- pnt0: PyGe.Point3d, pnt1: PyGe.Point3d, pnt2: PyGe.Point3d, pnt3: PyGe.Point3d\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("Solid");
+    class_<PyDbSolid, bases<PyDbEntity>>("Solid")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>(DS.CTOR(ctords)))
+        .def("getPointAt", &PyDbSolid::getPointAt, DS.ARGS({ "idx: int" }))
+        .def("setPointAt", &PyDbSolid::setPointAt, DS.ARGS({ "idx: int","pt: PyGe.Point3d" }))
+        .def("thickness", &PyDbSolid::thickness, DS.ARGS())
+        .def("setThickness", &PyDbSolid::setThickness, DS.ARGS({ "val: float" }))
+        .def("normal", &PyDbSolid::normal, DS.ARGS())
+        .def("setNormal", &PyDbSolid::setNormal, DS.ARGS({ "vec: PyGe.Vector3d" }))
+        .def("className", &PyDbSolid::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbSolid::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbSolid::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbSolid::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbSolid::PyDbSolid()
+    : PyDbSolid(new AcDbSolid(), true)
+{
+}
+
+PyDbSolid::PyDbSolid(const PyDbObjectId& id)
+    : PyDbEntity(openAcDbObject<AcDbSolid>(id, AcDb::kForRead), false)
+{
+}
+
+PyDbSolid::PyDbSolid(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbEntity(openAcDbObject<AcDbSolid>(id, mode), false)
+{
+}
+
+PyDbSolid::PyDbSolid(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbEntity(openAcDbObject<AcDbSolid>(id, mode, erased), false)
+{
+}
+
+PyDbSolid::PyDbSolid(const AcGePoint3d& pnt0, const AcGePoint3d& pnt1, const AcGePoint3d& pnt3)
+    : PyDbSolid(new AcDbSolid(pnt0, pnt1, pnt3), true)
+{
+}
+
+PyDbSolid::PyDbSolid(const AcGePoint3d& pnt0, const AcGePoint3d& pnt1, const AcGePoint3d& pnt2, const AcGePoint3d& pnt3)
+    : PyDbSolid(new AcDbSolid(pnt0, pnt1, pnt2, pnt3), true)
+{
+}
+
+PyDbSolid::PyDbSolid(AcDbSolid* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
+{
+}
+
+AcGePoint3d PyDbSolid::getPointAt(Adesk::UInt16 idx)
+{
+    AcGePoint3d pntRes;
+    PyThrowBadEs(impObj()->getPointAt(idx, pntRes));
+    return pntRes;
+}
+
+void PyDbSolid::setPointAt(Adesk::UInt16 idx, const AcGePoint3d& val)
+{
+    PyThrowBadEs(impObj()->setPointAt(idx, val));
+}
+
+double PyDbSolid::thickness() const
+{
+    return impObj()->thickness();
+}
+
+void PyDbSolid::setThickness(double val)
+{
+    PyThrowBadEs(impObj()->setThickness(val));
+}
+
+AcGeVector3d PyDbSolid::normal() const
+{
+    return impObj()->normal();
+}
+
+void PyDbSolid::setNormal(const AcGeVector3d& val)
+{
+    PyThrowBadEs(impObj()->setNormal(val));
+}
+
+std::string PyDbSolid::className()
+{
+    return "AcDbSolid";
+}
+
+PyRxClass PyDbSolid::desc()
+{
+    return PyRxClass(AcDbFcf::desc(), false);
+}
+
+PyDbSolid PyDbSolid::cloneFrom(const PyRxObject& src)
+{
+    return PyDbObjectCloneFrom<PyDbSolid, AcDbSolid>(src);
+}
+
+PyDbSolid PyDbSolid::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbSolid>(src);
+}
+
+AcDbSolid* PyDbSolid::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<AcDbSolid*>(m_pyImp.get());
+}
