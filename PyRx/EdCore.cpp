@@ -540,14 +540,14 @@ boost::python::list EdCore::evaluateLisp(const std::string& str)
     {
         switch (item)
         {
-        case '(':
-            np++;
-            break;
-        case ')':
-            np--;
-            break;
-        default:
-            break;
+            case '(':
+                np++;
+                break;
+            case ')':
+                np--;
+                break;
+            default:
+                break;
         }
     }
     if (np != 0)
@@ -936,33 +936,33 @@ boost::python::dict EdCore::getSysVars()
         }
         switch (buf.restype)
         {
-        case RTSTR:
-        {
-            pydict[utf8Name] = wstr_to_utf8(buf.resval.rstring);
-            acutDelString(buf.resval.rstring);
-            break;
-        }
-        case RTSHORT:
-        {
-            pydict[utf8Name] = buf.resval.rint;
-            break;
-        }
-        case RTLONG:
-        {
-            pydict[utf8Name] = buf.resval.rlong;
-            break;
-        }
-        case RTREAL:
-        {
-            pydict[utf8Name] = buf.resval.rreal;
-            break;
-        }
-        case RTPOINT:
-        case RT3DPOINT:
-        {
-            pydict[utf8Name] = asPnt3d(buf.resval.rpoint);
-            break;
-        }
+            case RTSTR:
+            {
+                pydict[utf8Name] = wstr_to_utf8(buf.resval.rstring);
+                acutDelString(buf.resval.rstring);
+                break;
+            }
+            case RTSHORT:
+            {
+                pydict[utf8Name] = buf.resval.rint;
+                break;
+            }
+            case RTLONG:
+            {
+                pydict[utf8Name] = buf.resval.rlong;
+                break;
+            }
+            case RTREAL:
+            {
+                pydict[utf8Name] = buf.resval.rreal;
+                break;
+            }
+            case RTPOINT:
+            case RT3DPOINT:
+            {
+                pydict[utf8Name] = asPnt3d(buf.resval.rpoint);
+                break;
+            }
         }
     }
     return pydict;
@@ -980,38 +980,38 @@ boost::python::object EdCore::getVar(const std::string& sym)
         }
         switch (buf.restype)
         {
-        case RTSHORT:
-        {
-            return boost::python::object(buf.resval.rint);
-        }
-        case RTLONG:
-        {
-            return boost::python::object(buf.resval.rlong);
-        }
-        case RTREAL:
-        {
-            return boost::python::object(buf.resval.rreal);
-        }
-        case RTSTR:
-        {
-            std::string val = wstr_to_utf8(buf.resval.rstring);
-            acutDelString(buf.resval.rstring);
-            return boost::python::object(val);
-        }
-        case RTPOINT:
-        {
-            AcGePoint2d pnt = asPnt2d(buf.resval.rpoint);
-            return boost::python::object(pnt);
-        }
-        case RT3DPOINT:
-        {
-            AcGePoint3d pnt = asPnt3d(buf.resval.rpoint);
-            return boost::python::object(pnt);
-        }
-        default:
-        {
-            return boost::python::object();
-        }
+            case RTSHORT:
+            {
+                return boost::python::object(buf.resval.rint);
+            }
+            case RTLONG:
+            {
+                return boost::python::object(buf.resval.rlong);
+            }
+            case RTREAL:
+            {
+                return boost::python::object(buf.resval.rreal);
+            }
+            case RTSTR:
+            {
+                std::string val = wstr_to_utf8(buf.resval.rstring);
+                acutDelString(buf.resval.rstring);
+                return boost::python::object(val);
+            }
+            case RTPOINT:
+            {
+                AcGePoint2d pnt = asPnt2d(buf.resval.rpoint);
+                return boost::python::object(pnt);
+            }
+            case RT3DPOINT:
+            {
+                AcGePoint3d pnt = asPnt3d(buf.resval.rpoint);
+                return boost::python::object(pnt);
+            }
+            default:
+            {
+                return boost::python::object();
+            }
         }
     }
     catch (...)
