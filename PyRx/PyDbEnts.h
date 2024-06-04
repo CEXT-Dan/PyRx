@@ -1,4 +1,5 @@
 #pragma once
+#include "dbents.h"
 #include "PyDbEntity.h"
 #include "PyDbCurve.h"
 #include "PyDbSymbolTableRecord.h"
@@ -659,5 +660,41 @@ public:
 public:
     inline AcDbFcf* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+
+//-----------------------------------------------------------------------------------
+//AcDbSolid
+void makePyDbSolidWrapper();
+
+class PyDbSolid : public PyDbEntity
+{
+public:
+    PyDbSolid();
+    PyDbSolid(AcDbSolid* ptr, bool autoDelete);
+    PyDbSolid(const PyDbObjectId& id);
+    PyDbSolid(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbSolid(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyDbSolid(const AcGePoint3d& pnt0, const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
+    PyDbSolid(const AcGePoint3d& pnt0, const AcGePoint3d& pnt1, const AcGePoint3d& pnt2, const AcGePoint3d& pnt3);
+    virtual ~PyDbSolid() override = default;
+
+    AcGePoint3d         getPointAt(Adesk::UInt16 idx);
+    void                setPointAt(Adesk::UInt16 idx, const AcGePoint3d& val);
+
+    double              thickness() const;
+    void                setThickness(double);
+
+    AcGeVector3d        normal() const;
+    void                setNormal(const AcGeVector3d& val);
+
+public:
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbSolid	cloneFrom(const PyRxObject& src);
+    static PyDbSolid    cast(const PyRxObject& src);
+public:
+    inline AcDbSolid* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 
 #pragma pack (pop)

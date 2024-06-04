@@ -399,6 +399,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbSectionSettingsWrapper();
     makePyDbSectionManagerWrapper();
 
+    makePyDbSolidWrapper();
+
     makePyDbSubDMeshWrapper();
     makePyDbDbLayerStateManagerWrapper();
     makeDbCoreWrapper();//LAST?
