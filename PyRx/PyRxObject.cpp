@@ -32,6 +32,9 @@ struct PyRxObjectDeleter
     {
     }
 
+    // in the case of a side database GC'd before one of its member objects 
+    // we crash. p is invalid. this can be handled in python. but there could be 
+    // a clever solution
     inline bool isDbroThenClose(AcRxObject* p) const
     {
         static constexpr const wchar_t* fmt = _T("\nStatus = %ls in %ls: ");
