@@ -1,21 +1,23 @@
 import traceback
 from pyrx_imp import Ap, Db, Ed, Ge, Gi, Gs, Rx
 
-#Db.LayoutManager.getLayouts
-def remoteDb(path : str):
+
+# Db.LayoutManager.getLayouts
+def remoteDb(path: str):
     db = Db.Database(False, True)
     db.readDwgFile(path)
     db.closeInput(True)
     try:
-        man =  Db.LayoutManager()
+        man = Db.LayoutManager()
         token = man.setupForLayouts(db)
         print(man.getLayouts(db))
     finally:
         man.clearSetupForLayouts(token)
-  
+
+
 def PyRxCmd_doit():
     try:
-        man =  Db.LayoutManager()
+        man = Db.LayoutManager()
         print(man.getLayouts())
         remoteDb("E:/06457Submittal.dwg")
     except Exception as err:

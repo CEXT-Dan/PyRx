@@ -1,12 +1,5 @@
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
-import traceback as Trace
-
+import traceback
+from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
 
 def PyRxCmd_doit():
     try:
@@ -31,4 +24,4 @@ def PyRxCmd_doit():
         lm.setFilters( fliter[0],newFilter)
             
     except Exception as err:
-        Trace.print_exception(err)
+        traceback.print_exception(err)

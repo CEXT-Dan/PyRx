@@ -1,17 +1,11 @@
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
+import traceback
+from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
 
 import traceback
 import openpyxl as Ex  # using openpyxl
 
 
-def selectRefs() -> [Db.ObjectId]:
-    
+def selectRefs() -> list[Db.ObjectId]:
     entSetRes = Ed.Editor.entSel(
         "\nSelectBlock: \n", Db.BlockReference.desc())
     if entSetRes[0] != Ed.PromptStatus.eNormal:

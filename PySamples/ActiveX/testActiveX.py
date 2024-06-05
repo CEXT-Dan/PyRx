@@ -1,12 +1,6 @@
 # import
-from pyrx_impx import Rx
-from pyrx_impx import Ge
-from pyrx_impx import Gi
-from pyrx_impx import Db
-from pyrx_impx import Ap
-from pyrx_impx import Ed
-from pyrx_impx import Gs
-from pyrx_impx import Ax
+import traceback
+from pyrx_impx import Rx, Ge, Gs, Gi, Db, Ap, Ed, Ax
 
 # requires win32com
 
@@ -33,11 +27,12 @@ print("added command = insertX")
 # there's only one app, might as well cache it
 theApp = Ax.getApp()
 
+
 def PyRxCmd_sstestx():
     try:
 
         doc = theApp.ActiveDocument
-        ss = doc.SelectionSets.Add('mysset')
+        ss = doc.SelectionSets.Add("mysset")
 
         # safe arrays
         ss.SelectOnScreen([0], ["POINT"])
@@ -50,18 +45,18 @@ def PyRxCmd_sstestx():
         ss.AddItems(entstoadd)
 
         # for loop
-        print('\nway 1')
+        print("\nway 1")
         for e in ss:
             p = Ax.IAcadPoint(e)
             print(p.Coordinates)
 
         # sdded array ss[ids]
-        print('\nway 2')
+        print("\nway 2")
         for i in range(ss.Count):
             print(ss[i].ObjectName)
 
         # added array Item(idx)
-        print('\nway 3')
+        print("\nway 3")
         for i in range(ss.Count):
             print(ss.Item(i).ObjectName)
 
@@ -114,7 +109,7 @@ def PyRxCmd_AddLineX():
 def PyRxCmd_MenuGroupsX():
     try:
         menuGroups: Ax.IAcadMenuGroups = theApp.MenuGroups
-        print("Menu.Count",  menuGroups.Count)
+        print("Menu.Count", menuGroups.Count)
 
         menuGroup: Ax.IAcadMenuGroup = menuGroups.Item(0)
         pops: Ax.IAcadPopupMenus = menuGroup.Menus
@@ -154,8 +149,7 @@ def PyRxCmd_getpointwithbasex():
         pt1 = ut.GetPoint("\nGet point:")
         retAngle = None
         try:
-            retAngle = ut.GetPointWithBase(
-                pt1, "\nGet Point with base:")
+            retAngle = ut.GetPointWithBase(pt1, "\nGet Point with base:")
         except:
             pass
         if retAngle is not None:
@@ -177,7 +171,7 @@ def PyRxCmd_layerStateX():
     try:
         state: Ax.IAcadLayerStateManager = Ax.AcadLayerStateManager()
         state.SetDatabase(theApp.ActiveDocument.Database)
-        state.Export('WOOHOOSTATE', 'e:\\temp\\WOOHOOSTATE.txt')
+        state.Export("WOOHOOSTATE", "e:\\temp\\WOOHOOSTATE.txt")
     except Exception as err:
         traceback.print_exception(err)
 
@@ -210,6 +204,7 @@ def PyRxCmd_mleaderx():
     except Exception as err:
         traceback.print_exception(err)
 
+
 # 0.9011179999997694!
 
 
@@ -236,7 +231,7 @@ def PyRxCmd_moveToOriginX():
     try:
         dbx = Ax.getDbx()
         dbx.Open("e:\\06457Submittal.dwg")
-        minpt = [float('inf'), float('inf'), float('inf')]
+        minpt = [float("inf"), float("inf"), float("inf")]
 
         ents = []
         ent: Ax.IAcadEntity
@@ -251,19 +246,19 @@ def PyRxCmd_moveToOriginX():
                 continue
 
         for ent in ents:
-            ent.Move(minpt,  (0, 0, 0))
+            ent.Move(minpt, (0, 0, 0))
 
         dbx.SaveAs("e:\\06457Submittal2.dwg")
     except Exception as err:
         traceback.print_exception(err)
+
 
 # ActiveX
 def PyRxCmd_insertX():
     try:
         axApp = Ax.getApp()
         path = "M:\\Dev\\Projects\\PyRxGit\\PySamples\\dwg\\18X36RP.dwg"
-        ref = axApp.ActiveDocument.ModelSpace.InsertBlock(
-            (0, 0, 0), path, 1, 1, 1, 0)
+        ref = axApp.ActiveDocument.ModelSpace.InsertBlock((0, 0, 0), path, 1, 1, 1, 0)
         print(ref.Name)
     except Exception as err:
         traceback.print_exception(err)
