@@ -199,8 +199,7 @@ void PyDbBlockReference::explodeToOwnerSpace() const
 std::string PyDbBlockReference::getBlockName() const
 {
     AcString name;
-    AcDbObjectId blkid = impObj()->blockTableRecord();
-    AcDbDynBlockReference dynBlk(blkid);
+    AcDbDynBlockReference dynBlk(impObj()->objectId());
     if (dynBlk.isDynamicBlock())
     {
         AcDbBlockTableRecordPointer bBlock(dynBlk.dynamicBlockTableRecord());
