@@ -677,16 +677,12 @@ public:
     PyDbSolid(const AcGePoint3d& pnt0, const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
     PyDbSolid(const AcGePoint3d& pnt0, const AcGePoint3d& pnt1, const AcGePoint3d& pnt2, const AcGePoint3d& pnt3);
     virtual ~PyDbSolid() override = default;
-
     AcGePoint3d         getPointAt(Adesk::UInt16 idx);
     void                setPointAt(Adesk::UInt16 idx, const AcGePoint3d& val);
-
     double              thickness() const;
     void                setThickness(double);
-
     AcGeVector3d        normal() const;
     void                setNormal(const AcGeVector3d& val);
-
 public:
     static std::string  className();
     static PyRxClass    desc();
@@ -694,6 +690,35 @@ public:
     static PyDbSolid    cast(const PyRxObject& src);
 public:
     inline AcDbSolid* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//AcDbTrace
+void makePyDbTraceWrapper();
+
+class PyDbTrace : public PyDbEntity
+{
+public:
+    PyDbTrace();
+    PyDbTrace(const PyDbObjectId& id);
+    PyDbTrace(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbTrace(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyDbTrace(const AcGePoint3d& pnt0, const AcGePoint3d& pnt1, const AcGePoint3d& pnt2, const AcGePoint3d& pnt3);
+    PyDbTrace(AcDbTrace* ptr, bool autoDelete);
+    virtual ~PyDbTrace() override = default;
+    AcGePoint3d         getPointAt(Adesk::UInt16 idx);
+    void                setPointAt(Adesk::UInt16 idx, const AcGePoint3d& val);
+    double              thickness() const;
+    void                setThickness(double val);
+    AcGeVector3d        normal() const;
+    void                setNormal(const AcGeVector3d& val);
+public:
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbTrace	cloneFrom(const PyRxObject& src);
+    static PyDbTrace    cast(const PyRxObject& src);
+public:
+    inline AcDbTrace*   impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 

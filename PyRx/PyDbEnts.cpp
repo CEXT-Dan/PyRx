@@ -3275,22 +3275,22 @@ PyDbSolid::PyDbSolid()
 }
 
 PyDbSolid::PyDbSolid(const PyDbObjectId& id)
-    : PyDbEntity(openAcDbObject<AcDbSolid>(id, AcDb::kForRead), false)
+    : PyDbSolid(openAcDbObject<AcDbSolid>(id, AcDb::kForRead), false)
 {
 }
 
 PyDbSolid::PyDbSolid(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbObject<AcDbSolid>(id, mode), false)
+    : PyDbSolid(openAcDbObject<AcDbSolid>(id, mode), false)
 {
 }
 
 PyDbSolid::PyDbSolid(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
-    : PyDbEntity(openAcDbObject<AcDbSolid>(id, mode, erased), false)
+    : PyDbSolid(openAcDbObject<AcDbSolid>(id, mode, erased), false)
 {
 }
 
-PyDbSolid::PyDbSolid(const AcGePoint3d& pnt0, const AcGePoint3d& pnt1, const AcGePoint3d& pnt3)
-    : PyDbSolid(new AcDbSolid(pnt0, pnt1, pnt3), true)
+PyDbSolid::PyDbSolid(const AcGePoint3d& pnt0, const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
+    : PyDbSolid(new AcDbSolid(pnt0, pnt1, pnt2), true)
 {
 }
 
@@ -3343,7 +3343,7 @@ std::string PyDbSolid::className()
 
 PyRxClass PyDbSolid::desc()
 {
-    return PyRxClass(AcDbFcf::desc(), false);
+    return PyRxClass(AcDbSolid::desc(), false);
 }
 
 PyDbSolid PyDbSolid::cloneFrom(const PyRxObject& src)
@@ -3362,4 +3362,125 @@ AcDbSolid* PyDbSolid::impObj(const std::source_location& src /*= std::source_loc
         throw PyNullObject(src);
         }
     return static_cast<AcDbSolid*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//AcDbTrace
+void makePyDbTraceWrapper()
+{
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- pnt0: PyGe.Point3d, pnt1: PyGe.Point3d, pnt2: PyGe.Point3d, pnt3: PyGe.Point3d\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("Trace");
+    class_<PyDbTrace, bases<PyDbEntity>>("Trace")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>(DS.CTOR(ctords)))
+        .def("getPointAt", &PyDbTrace::getPointAt, DS.ARGS({ "idx: int" }))
+        .def("setPointAt", &PyDbTrace::setPointAt, DS.ARGS({ "idx: int","pt: PyGe.Point3d" }))
+        .def("thickness", &PyDbTrace::thickness, DS.ARGS())
+        .def("setThickness", &PyDbTrace::setThickness, DS.ARGS({ "val: float" }))
+        .def("normal", &PyDbTrace::normal, DS.ARGS())
+        .def("setNormal", &PyDbTrace::setNormal, DS.ARGS({ "vec: PyGe.Vector3d" }))
+        .def("className", &PyDbTrace::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbTrace::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbTrace::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbTrace::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbTrace::PyDbTrace()
+    : PyDbTrace(new AcDbTrace(), true)
+{
+}
+
+PyDbTrace::PyDbTrace(const PyDbObjectId& id)
+    : PyDbTrace(openAcDbObject<AcDbTrace>(id, AcDb::kForRead), false)
+{
+}
+
+PyDbTrace::PyDbTrace(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbTrace(openAcDbObject<AcDbTrace>(id, mode), false)
+{
+}
+
+PyDbTrace::PyDbTrace(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbTrace(openAcDbObject<AcDbTrace>(id, mode, erased), false)
+{
+}
+
+PyDbTrace::PyDbTrace(const AcGePoint3d& pnt0, const AcGePoint3d& pnt1, const AcGePoint3d& pnt2, const AcGePoint3d& pnt3)
+    : PyDbTrace(new AcDbTrace(pnt0, pnt1, pnt2, pnt3), true)
+{
+}
+
+PyDbTrace::PyDbTrace(AcDbTrace* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
+{
+}
+
+AcGePoint3d PyDbTrace::getPointAt(Adesk::UInt16 idx)
+{
+    AcGePoint3d pntRes;
+    PyThrowBadEs(impObj()->getPointAt(idx, pntRes));
+    return pntRes;
+}
+
+void PyDbTrace::setPointAt(Adesk::UInt16 idx, const AcGePoint3d& val)
+{
+    PyThrowBadEs(impObj()->setPointAt(idx, val));
+}
+
+double PyDbTrace::thickness() const
+{
+    return impObj()->thickness();
+}
+
+void PyDbTrace::setThickness(double val)
+{
+    PyThrowBadEs(impObj()->setThickness(val));
+}
+
+AcGeVector3d PyDbTrace::normal() const
+{
+    return impObj()->normal();
+}
+
+void PyDbTrace::setNormal(const AcGeVector3d& val)
+{
+    PyThrowBadEs(impObj()->setNormal(val));
+}
+
+std::string PyDbTrace::className()
+{
+    return "AcDbTrace";
+}
+
+PyRxClass PyDbTrace::desc()
+{
+    return PyRxClass(AcDbTrace::desc(), false);
+}
+
+PyDbTrace PyDbTrace::cloneFrom(const PyRxObject& src)
+{
+    return PyDbObjectCloneFrom<PyDbTrace, AcDbTrace>(src);
+}
+
+PyDbTrace PyDbTrace::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbTrace>(src);
+}
+
+AcDbTrace* PyDbTrace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<AcDbTrace*>(m_pyImp.get());
 }
