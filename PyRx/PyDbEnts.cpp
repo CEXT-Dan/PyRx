@@ -3534,7 +3534,6 @@ void makePyDbShapeWrapper()
 
 PyDbShape::PyDbShape()
     : PyDbShape(new AcDbShape(), true)
-
 {
 }
 
