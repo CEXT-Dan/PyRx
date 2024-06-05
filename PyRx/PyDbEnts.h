@@ -721,5 +721,51 @@ public:
     inline AcDbTrace*   impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//AcDbShape
+void makePyDbShapeWrapper();
+
+class PyDbShape : public PyDbEntity
+{
+public:
+    PyDbShape();
+    PyDbShape(const PyDbObjectId& id);
+    PyDbShape(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbShape(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyDbShape(const AcGePoint3d& position, double size, double rotation, double widthFactor);
+    PyDbShape(AcDbShape* ptr, bool autoDelete);
+    virtual ~PyDbShape() override = default;
+
+    AcGePoint3d     position() const;
+    void            setPosition(const AcGePoint3d& val);
+    double          size() const;
+    void            setSize(double val);
+    std::string     name() const;
+    void            setName(const std::string& val);
+    double          rotation() const;
+    void            setRotation(double val);
+    double          widthFactor() const;
+    void            setWidthFactor(double val);
+    double          oblique() const;
+    void            setOblique(double val);
+    double          thickness() const;
+    void            setThickness(double val);
+    AcGeVector3d    normal() const;
+    void            setNormal(const AcGeVector3d& val);
+    Adesk::Int16    shapeNumber() const;
+    void            setShapeNumber(Adesk::Int16 idx);
+    PyDbObjectId    styleId() const;
+    void            setStyleId(const PyDbObjectId& id);
+
+public:
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbShape	cloneFrom(const PyRxObject& src);
+    static PyDbShape    cast(const PyRxObject& src);
+public:
+    inline AcDbShape*   impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
 
 #pragma pack (pop)

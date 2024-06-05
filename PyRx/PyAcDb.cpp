@@ -401,6 +401,7 @@ BOOST_PYTHON_MODULE(PyDb)
 
     makePyDbSolidWrapper();
     makePyDbTraceWrapper();
+    makePyDbShapeWrapper();
 
     makePyDbSubDMeshWrapper();
     makePyDbDbLayerStateManagerWrapper();
