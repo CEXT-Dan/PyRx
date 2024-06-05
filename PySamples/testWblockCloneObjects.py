@@ -1,13 +1,9 @@
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
+from pyrx_imp import Rx, Ge, Gs, Db, Ap, Ed
 import traceback
 
-def importDimStyleFromDb(destDb : Db.Database, srcDb : Db.Database):
+print("added command pywbco")
+
+def importDimStyleFromDb(destDb : Db.Database, srcDb : Db.Database) -> None:
     
     idmap = Db.IdMapping()
     srcdims = Db.DimStyleTable(srcDb.dimStyleTableId())
@@ -18,7 +14,7 @@ def importDimStyleFromDb(destDb : Db.Database, srcDb : Db.Database):
         idmap, 
         Db.DuplicateRecordCloning.kDrcIgnore)
     
-def PyRxCmd_doit():
+def PyRxCmd_pywbco() -> None:
     try:
         lock = Ap.AutoDocLock()
         destDb = Db.curDb()
