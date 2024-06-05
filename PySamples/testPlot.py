@@ -1,11 +1,5 @@
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
-from pyrx_imp import Pl
+import traceback
+from pyrx_imp import Ap, Db, Ed, Ge, Gi, Gs, Rx
 
 # port of
 # https://through-the-interface.typepad.com/through_the_interface/2007/10/plotting-a-wind.html
