@@ -2738,7 +2738,7 @@ Adesk::Boolean PyDbPolyline::hasWidth() const
 
 void PyDbPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol)
 {
-#if defined(_GRXTARGET240) || (_BRXTARGET == 240)
+#if defined(_GRXTARGET240) || defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->makeClosedIfStartAndEndVertexCoincide(distTol));
@@ -3483,4 +3483,217 @@ AcDbTrace* PyDbTrace::impObj(const std::source_location& src /*= std::source_loc
         throw PyNullObject(src);
         }
     return static_cast<AcDbTrace*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//AcDbShape
+void makePyDbShapeWrapper()
+{
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- pnt: PyGe.Point3d, size: float, rotation: float, widthFactor: float\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("Shape");
+    class_<PyDbShape, bases<PyDbEntity>>("Shape")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def(init<const AcGePoint3d&, double, double, double>(DS.CTOR(ctords)))
+
+        .def("position", &PyDbShape::position, DS.ARGS())
+        .def("setPosition", &PyDbShape::setPosition, DS.ARGS({ "pt: PyGe.Point3d" }))
+        .def("size", &PyDbShape::size, DS.ARGS())
+        .def("setSize", &PyDbShape::setSize, DS.ARGS({ "val: float" }))
+        .def("name", &PyDbShape::name, DS.ARGS())
+        .def("setName", &PyDbShape::setName, DS.ARGS({ "val: str" }))
+        .def("rotation", &PyDbShape::rotation, DS.ARGS())
+        .def("setRotation", &PyDbShape::setRotation, DS.ARGS({ "val: float" }))
+        .def("widthFactor", &PyDbShape::widthFactor, DS.ARGS())
+        .def("setWidthFactor", &PyDbShape::setWidthFactor, DS.ARGS({ "val: float" }))
+        .def("oblique", &PyDbShape::oblique, DS.ARGS())
+        .def("setOblique", &PyDbShape::setOblique, DS.ARGS({ "val: float" }))
+        .def("thickness", &PyDbShape::thickness, DS.ARGS())
+        .def("setThickness", &PyDbShape::setThickness, DS.ARGS({ "val: float" }))
+        .def("normal", &PyDbShape::normal, DS.ARGS())
+        .def("setNormal", &PyDbShape::setNormal, DS.ARGS({ "vec: PyGe.Vector3d" }))
+        .def("shapeNumber", &PyDbShape::shapeNumber, DS.ARGS())
+        .def("setShapeNumber", &PyDbShape::setShapeNumber, DS.ARGS({ "idx: int" }))
+        .def("styleId", &PyDbShape::styleId, DS.ARGS())
+        .def("setStyleId", &PyDbShape::setStyleId, DS.ARGS({ "id: PyDb.ObjectId" }))
+
+        .def("className", &PyDbShape::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbShape::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbShape::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbShape::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbShape::PyDbShape()
+    : PyDbShape(new AcDbShape(), true)
+
+{
+}
+
+PyDbShape::PyDbShape(const PyDbObjectId& id)
+    : PyDbShape(openAcDbObject<AcDbShape>(id, AcDb::kForRead), false)
+{
+}
+
+PyDbShape::PyDbShape(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbShape(openAcDbObject<AcDbShape>(id, mode), false)
+{
+}
+
+PyDbShape::PyDbShape(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbShape(openAcDbObject<AcDbShape>(id, mode, erased), false)
+{
+}
+
+PyDbShape::PyDbShape(const AcGePoint3d& position, double size, double rotation, double widthFactor)
+    : PyDbShape(new AcDbShape(position, size, rotation, widthFactor), true)
+{
+}
+
+PyDbShape::PyDbShape(AcDbShape* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
+{
+}
+
+AcGePoint3d PyDbShape::position() const
+{
+    return impObj()->position();
+}
+
+void PyDbShape::setPosition(const AcGePoint3d& val)
+{
+    PyThrowBadEs(impObj()->setPosition(val));
+}
+
+double PyDbShape::size() const
+{
+    return impObj()->size();
+}
+
+void PyDbShape::setSize(double val)
+{
+    PyThrowBadEs(impObj()->setSize(val));
+}
+
+std::string PyDbShape::name() const
+{
+#if defined(_BRXTARGET240)
+    return wstr_to_utf8(impObj()->name());
+#else
+    AcString val;
+    PyThrowBadEs(impObj()->name(val));
+    return wstr_to_utf8(val);
+#endif
+}
+
+void PyDbShape::setName(const std::string& val)
+{
+    PyThrowBadEs(impObj()->setName(utf8_to_wstr(val).c_str()));
+}
+
+double PyDbShape::rotation() const
+{
+    return impObj()->rotation();
+}
+
+void PyDbShape::setRotation(double val)
+{
+    PyThrowBadEs(impObj()->setRotation(val));
+}
+
+double PyDbShape::widthFactor() const
+{
+    return impObj()->widthFactor();
+}
+
+void PyDbShape::setWidthFactor(double val)
+{
+    PyThrowBadEs(impObj()->setWidthFactor(val));
+}
+
+double PyDbShape::oblique() const
+{
+    return impObj()->oblique();
+}
+
+void PyDbShape::setOblique(double val)
+{
+    PyThrowBadEs(impObj()->setOblique(val));
+}
+
+double PyDbShape::thickness() const
+{
+    return impObj()->thickness();
+}
+
+void PyDbShape::setThickness(double val)
+{
+    PyThrowBadEs(impObj()->setThickness(val));
+}
+
+AcGeVector3d PyDbShape::normal() const
+{
+    return impObj()->normal();
+}
+
+void PyDbShape::setNormal(const AcGeVector3d& val)
+{
+    PyThrowBadEs(impObj()->setNormal(val));
+}
+
+
+Adesk::Int16 PyDbShape::shapeNumber() const
+{
+    return impObj()->shapeNumber();
+}
+
+void PyDbShape::setShapeNumber(Adesk::Int16 idx)
+{
+    PyThrowBadEs(impObj()->setShapeNumber(idx));
+}
+
+PyDbObjectId PyDbShape::styleId() const
+{
+    return impObj()->styleId();
+}
+
+void PyDbShape::setStyleId(const PyDbObjectId& id)
+{
+    PyThrowBadEs(impObj()->setStyleId(id.m_id));
+}
+
+std::string PyDbShape::className()
+{
+    return "AcDbShape";
+}
+
+PyRxClass PyDbShape::desc()
+{
+    return PyRxClass(AcDbShape::desc(), false);
+}
+
+PyDbShape PyDbShape::cloneFrom(const PyRxObject& src)
+{
+    return PyDbObjectCloneFrom<PyDbShape, AcDbShape>(src);
+}
+
+PyDbShape PyDbShape::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbShape>(src);
+}
+
+AcDbShape* PyDbShape::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<AcDbShape*>(m_pyImp.get());
 }
