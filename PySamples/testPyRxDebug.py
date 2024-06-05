@@ -1,29 +1,9 @@
 import traceback
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
-
-import PyRxDebug
-
+from pyrx_imp import Rx, Ge, Gs, Gi, Db, Ap, Ed
 
 def PyRxCmd_pystartdebug():
+    import PyRxDebug
     PyRxDebug.startListener()
-
-
-# sample vs code config
-# {
-#     "name": "Remote Attach",
-#     "type": "python",
-#     "request": "attach",
-#     "port": 5678,
-#     "host": "127.0.0.1",
-#     "justMyCode": false
-# }
-
 
 def PyRxCmd_doit():
     try:

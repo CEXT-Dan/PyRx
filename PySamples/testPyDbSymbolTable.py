@@ -1,9 +1,5 @@
-import PyRx  # = Runtime runtime 
-import PyGe  # = Geometry
-import PyGi  # = Graphics interface
-import PyDb  # = database
-import PyAp  # = application, document classes services 
-import PyEd  # = editor 
+import traceback
+from pyrx_imp import Rx, Ge, Gs, Gi, Db, Ap, Ed
 
 def OnPyInitApp():
     print("\nOnPyInitApp")
@@ -13,21 +9,21 @@ def OnPyUnloadApp():
         
 def OnPyLoadDwg():
 	print("\nOnPyLoadDwg")
-	print("\nrun pydbsymtabletest :")
+	print("\nadded command = pydbsymtabletest :")
 	   
 def OnPyUnloadDwg():
    print("\nOnPyUnloadDwg")
 
-def PyRxCmd_pydbsymtabletest():
+def PyRxCmd_pydbsymtabletest() -> None:
 	try:
 		PyDbSymOpenForRead()
 	except Exception as err:
 		print(err)
 		
-def PyDbSymOpenForRead():
-	db = PyDb.HostApplicationServices().workingDatabase()  
+def PyDbSymOpenForRead() -> None:
+	db = Db.HostApplicationServices().workingDatabase()  
 	btid = db.blockTableId()
-	table = PyDb.SymbolTable(btid,PyDb.OpenMode.kForRead)
+	table = Db.SymbolTable(btid,Db.OpenMode.kForRead)
 	if table.isNullObj():
 		print("\nFAIL")
 	else:

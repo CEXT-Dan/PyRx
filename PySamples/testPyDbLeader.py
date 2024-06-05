@@ -1,11 +1,7 @@
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
+import traceback
+from pyrx_imp import Rx, Ge, Gs, Gi, Db, Ap, Ed
 
+print("added command = pytestLeader")
 
 def PyRxCmd_pytestLeader():
     try:
@@ -15,7 +11,7 @@ def PyRxCmd_pytestLeader():
         #create anno
         mtext = Db.MText()
         mtext.setDatabaseDefaults()
-        mtext.setLocation(PyGe.Point3d(105, 100,0))
+        mtext.setLocation(Ge.Point3d(105, 100,0))
         mtext.setContents("what we have, is failure to communicate")
         
         #add anno to db and close!
@@ -25,8 +21,8 @@ def PyRxCmd_pytestLeader():
         #create leader
         leader = Db.Leader()
         leader.setDatabaseDefaults()
-        leader.appendVertex(PyGe.Point3d(0,0,0))
-        leader.appendVertex(PyGe.Point3d(100,100,0))
+        leader.appendVertex(Ge.Point3d(0,0,0))
+        leader.appendVertex(Ge.Point3d(100,100,0))
         
         #set leader to red
         c = Db.Color()
