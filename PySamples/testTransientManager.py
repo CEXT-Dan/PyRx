@@ -1,11 +1,7 @@
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
 import traceback
+from pyrx_imp import Rx, Ge, Gs, Gi, Db, Ap, Ed
+
+print("added command pydrawtmp")
 
 vpids = []
 markers = []
@@ -17,7 +13,7 @@ def clear():
     vpids.clear()
     markers.clear()
         
-def PyRxCmd_pydoit(CmdFlags=Ap.CmdFlags.TRANSPARENT):
+def PyRxCmd_pydrawtmp(CmdFlags=Ap.CmdFlags.TRANSPARENT):
     try:
         clear()
         
