@@ -3503,7 +3503,6 @@ void makePyDbShapeWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
         .def(init<const AcGePoint3d&, double, double, double>(DS.CTOR(ctords)))
-
         .def("position", &PyDbShape::position, DS.ARGS())
         .def("setPosition", &PyDbShape::setPosition, DS.ARGS({ "pt: PyGe.Point3d" }))
         .def("size", &PyDbShape::size, DS.ARGS())
@@ -3524,7 +3523,6 @@ void makePyDbShapeWrapper()
         .def("setShapeNumber", &PyDbShape::setShapeNumber, DS.ARGS({ "idx: int" }))
         .def("styleId", &PyDbShape::styleId, DS.ARGS())
         .def("setStyleId", &PyDbShape::setStyleId, DS.ARGS({ "id: PyDb.ObjectId" }))
-
         .def("className", &PyDbShape::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbShape::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbShape::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -3647,7 +3645,6 @@ void PyDbShape::setNormal(const AcGeVector3d& val)
 {
     PyThrowBadEs(impObj()->setNormal(val));
 }
-
 
 Adesk::Int16 PyDbShape::shapeNumber() const
 {
