@@ -12,8 +12,9 @@ void makePyPlCoreWrapper()
 {
     PyDocString DS("Core");
     class_<PlCore>("Core")
-        .def("processPlotState", &PlCore::processPlotState).staticmethod("processPlotState")
-        .def("publishExecute", &PlCore::publishExecute).staticmethod("publishExecute")
+        .def(init<>(DS.ARGS()))
+        .def("processPlotState", &PlCore::processPlotState, DS.SARGS()).staticmethod("processPlotState")
+        .def("publishExecute", &PlCore::publishExecute, DS.SARGS({ "dsdDataObj: PyPl.DSDData","pConfig: PyPl.PlotConfig","bShowPlotProgress: bool" })).staticmethod("publishExecute")
         .def("className", &PlCore::className, DS.SARGS()).staticmethod("className")
         ;
 }

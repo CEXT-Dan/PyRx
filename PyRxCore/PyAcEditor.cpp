@@ -122,6 +122,7 @@ void makePyEditorWrapper()
 
     PyDocString DS("Editor");
     class_<PyAcEditor>("Editor")
+        .def(init<>(DS.ARGS()))
         .def("getCorner", &PyAcEditor::getCorner, DS.SARGS({ "basePt: PyGe.Point3d","prompt: str" }, 10840)).staticmethod("getCorner")
         .def("getInteger", &PyAcEditor::getInteger1)
         .def("getInteger", &PyAcEditor::getInteger2, DS.SARGS({ "prompt: str","condition :PyEd.PromptCondition = PyEd.PromptCondition.eNone" }, 10865)).staticmethod("getInteger")

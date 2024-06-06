@@ -2765,23 +2765,20 @@ bool PyAcDbDynBlockTableRecord::getIsDynamicBlock(const PyDbBlockTableRecord& pB
 {
 #if defined(_ARXTARGET) && (_ARXTARGET >= 250)
     return AcDbDynBlockTableRecord::isDynamicBlock(pBlockTableRecord.impObj());
-#else
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+#elif defined(_BRXTARGET) && (_BRXTARGET <= 240)
     throw PyNotimplementedByHost();
 #else
-    AcDbEvalGraph* graphPtr = nullptr;
     constexpr const wchar_t* key = L"ACAD_ENHANCEDBLOCK";
-    if (AcDbEvalGraph::getGraph(pBlockTableRecord.impObj(), key, &graphPtr, AcDb::OpenMode::kForRead) == eOk)
+    if (AcDbEvalGraph* graphPtr = nullptr; AcDbEvalGraph::getGraph(pBlockTableRecord.impObj(), key, &graphPtr, AcDb::OpenMode::kForRead) == eOk)
     {
         if (graphPtr != nullptr)
         {
             graphPtr->close();
             return true;
         }
-}
-#endif//BRX
+    }
     return false;
-#endif//ARX
+#endif
 }
 
 std::string PyAcDbDynBlockTableRecord::className()
