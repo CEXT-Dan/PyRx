@@ -10,28 +10,23 @@ from typing import overload
 from typing import Any
 
 class Core(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
     def className ()-> str :
       '''                             '''
     ...
-    def processPlotState (self, *args, **kwargs)-> PyPl.ProcessPlotState :
-      '''processPlotState() -> ProcessPlotState :
 
-    C++ signature :
-        enum ProcessPlotState processPlotState()'''
+    @staticmethod
+    def processPlotState ()-> PyPl.ProcessPlotState :
+      '''                             '''
     ...
-    def publishExecute (self, *args, **kwargs)-> None :
-      '''publishExecute( (DSDData)arg1, (PlotConfig)arg2, (bool)arg3) -> None :
 
-    C++ signature :
-        void publishExecute(class PyPlDSDData,class PyPlPlotConfig,bool)'''
+    @staticmethod
+    def publishExecute (dsdDataObj: PyPl.DSDData,pConfig: PyPl.PlotConfig,bShowPlotProgress: bool)-> None :
+      '''                             '''
     ...
 
 class CustomSizeResult(object):

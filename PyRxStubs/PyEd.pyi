@@ -21,11 +21,8 @@ class AutoSysVar(object):
     ...
 
 class Core(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -1107,11 +1104,8 @@ class DrawOrderCmdType(object):
     ...
 
 class Editor(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -1356,11 +1350,8 @@ class Editor(object):
     ...
 
 class EditorReactor(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
     def abortAttach (self, *args, **kwargs)-> None :
       '''abortAttach( (EditorReactor)arg1, (Database)arg2) -> None :
@@ -1368,29 +1359,17 @@ class EditorReactor(object):
     C++ signature :
         void abortAttach(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def abortDeepClone (self, *args, **kwargs)-> None :
-      '''abortDeepClone( (EditorReactor)arg1, (IdMapping)arg2) -> None :
-
-    C++ signature :
-        void abortDeepClone(class PyEditorReactor {lvalue},class PyDbIdMapping {lvalue})'''
+    def abortDeepClone (self, idMap: PyDb.IdMapping)-> None :
+      '''                             '''
     ...
-    def abortDxfIn (self, *args, **kwargs)-> None :
-      '''abortDxfIn( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void abortDxfIn(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def abortDxfIn (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def abortDxfOut (self, *args, **kwargs)-> None :
-      '''abortDxfOut( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void abortDxfOut(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def abortDxfOut (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def abortInsert (self, *args, **kwargs)-> None :
-      '''abortInsert( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void abortInsert(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def abortInsert (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
     def abortRestore (self, *args, **kwargs)-> None :
       '''abortRestore( (EditorReactor)arg1, (Database)arg2) -> None :
@@ -1398,23 +1377,14 @@ class EditorReactor(object):
     C++ signature :
         void abortRestore(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def abortSave (self, *args, **kwargs)-> None :
-      '''abortSave( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void abortSave(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def abortSave (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def abortWblock (self, *args, **kwargs)-> None :
-      '''abortWblock( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void abortWblock(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def abortWblock (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def addReactor (self, *args, **kwargs)-> None :
-      '''addReactor( (EditorReactor)arg1) -> None :
-
-    C++ signature :
-        void addReactor(class PyEditorReactor {lvalue})'''
+    def addReactor (self)-> None :
+      '''                             '''
     ...
     def beginAttach (self, *args, **kwargs)-> None :
       '''beginAttach( (EditorReactor)arg1, (Database)arg2, (str)arg3, (Database)arg4) -> None :
@@ -1428,17 +1398,11 @@ class EditorReactor(object):
     C++ signature :
         void beginCloseAll(class PyEditorReactor {lvalue})'''
     ...
-    def beginDeepClone (self, *args, **kwargs)-> None :
-      '''beginDeepClone( (EditorReactor)arg1, (Database)arg2, (IdMapping)arg3) -> None :
-
-    C++ signature :
-        void beginDeepClone(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class PyDbIdMapping {lvalue})'''
+    def beginDeepClone (self, db: PyDb.Database, idMap: PyDb.IdMapping)-> None :
+      '''                             '''
     ...
-    def beginDeepCloneXlation (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''beginDeepCloneXlation( (EditorReactor)arg1, (IdMapping)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus beginDeepCloneXlation(class PyEditorReactor {lvalue},class PyDbIdMapping {lvalue})'''
+    def beginDeepCloneXlation (self, idMap: PyDb.IdMapping)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
     def beginDocClose (self, *args, **kwargs)-> None :
       '''beginDocClose( (EditorReactor)arg1, (Database)arg2) -> None :
@@ -1452,23 +1416,14 @@ class EditorReactor(object):
     C++ signature :
         void beginDoubleClick(class PyEditorReactor {lvalue},class AcGePoint3d)'''
     ...
-    def beginDwgOpen (self, *args, **kwargs)-> None :
-      '''beginDwgOpen( (EditorReactor)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void beginDwgOpen(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def beginDwgOpen (self, fineName: str)-> None :
+      '''                             '''
     ...
-    def beginDxfIn (self, *args, **kwargs)-> None :
-      '''beginDxfIn( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void beginDxfIn(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def beginDxfIn (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def beginDxfOut (self, *args, **kwargs)-> None :
-      '''beginDxfOut( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void beginDxfOut(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def beginDxfOut (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
     def beginInsert (self, *args, **kwargs)-> None :
       '''beginInsert( (EditorReactor)arg1, (Database)arg2, (str)arg3, (Database)arg4) -> None :
@@ -1499,17 +1454,11 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     C++ signature :
         void beginRightClick(class PyEditorReactor {lvalue},class AcGePoint3d)'''
     ...
-    def beginSave (self, *args, **kwargs)-> None :
-      '''beginSave( (EditorReactor)arg1, (Database)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void beginSave(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def beginSave (self, db: PyDb.Database, fname: str)-> None :
+      '''                             '''
     ...
-    def beginWblock (self, *args, **kwargs)-> None :
-      '''beginWblock( (EditorReactor)arg1, (Database)arg2, (Database)arg3, (ObjectId)arg4) -> None :
-
-    C++ signature :
-        void beginWblock(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class PyDbDatabase {lvalue},class PyDbObjectId {lvalue})'''
+    def beginWblock (self, dbTo: PyDb.Database, dbFrom: PyDb.Database, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
     def beginWblockObjects (self, *args, **kwargs)-> None :
       '''beginWblockObjects( (EditorReactor)arg1, (Database)arg2, (IdMapping)arg3) -> None :
@@ -1529,41 +1478,23 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     C++ signature :
         void comandeered(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class PyDbObjectId {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def commandCancelled (self, *args, **kwargs)-> None :
-      '''commandCancelled( (EditorReactor)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void commandCancelled(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def commandCancelled (self, cmdStr: str)-> None :
+      '''                             '''
     ...
-    def commandEnded (self, *args, **kwargs)-> None :
-      '''commandEnded( (EditorReactor)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void commandEnded(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def commandEnded (self, cmdStr: str)-> None :
+      '''                             '''
     ...
-    def commandFailed (self, *args, **kwargs)-> None :
-      '''commandFailed( (EditorReactor)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void commandFailed(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def commandFailed (self, cmdStr: str)-> None :
+      '''                             '''
     ...
-    def commandWillStart (self, *args, **kwargs)-> None :
-      '''commandWillStart( (EditorReactor)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void commandWillStart(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def commandWillStart (self, cmdStr: str)-> None :
+      '''                             '''
     ...
-    def databaseConstructed (self, *args, **kwargs)-> None :
-      '''databaseConstructed( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void databaseConstructed(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def databaseConstructed (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def databaseToBeDestroyed (self, *args, **kwargs)-> None :
-      '''databaseToBeDestroyed( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void databaseToBeDestroyed(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def databaseToBeDestroyed (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
     def docCloseAborted (self, *args, **kwargs)-> None :
       '''docCloseAborted( (EditorReactor)arg1, (Database)arg2) -> None :
@@ -1589,17 +1520,11 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     C++ signature :
         void dwgViewResized(class PyEditorReactor {lvalue},__int64)'''
     ...
-    def dxfInComplete (self, *args, **kwargs)-> None :
-      '''dxfInComplete( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void dxfInComplete(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def dxfInComplete (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def dxfOutComplete (self, *args, **kwargs)-> None :
-      '''dxfOutComplete( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void dxfOutComplete(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def dxfOutComplete (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
     def endAttach (self, *args, **kwargs)-> None :
       '''endAttach( (EditorReactor)arg1, (Database)arg2) -> None :
@@ -1607,23 +1532,14 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     C++ signature :
         void endAttach(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def endDeepClone (self, *args, **kwargs)-> None :
-      '''endDeepClone( (EditorReactor)arg1, (IdMapping)arg2) -> None :
-
-    C++ signature :
-        void endDeepClone(class PyEditorReactor {lvalue},class PyDbIdMapping {lvalue})'''
+    def endDeepClone (self, idMap: PyDb.IdMapping)-> None :
+      '''                             '''
     ...
-    def endDwgOpen (self, *args, **kwargs)-> None :
-      '''endDwgOpen( (EditorReactor)arg1, (str)arg2, (Database)arg3) -> None :
-
-    C++ signature :
-        void endDwgOpen(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+    def endDwgOpen (self, fineName: str, db: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def endInsert (self, *args, **kwargs)-> None :
-      '''endInsert( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void endInsert(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def endInsert (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
     def endRestore (self, *args, **kwargs)-> None :
       '''endRestore( (EditorReactor)arg1, (Database)arg2) -> None :
@@ -1631,11 +1547,8 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     C++ signature :
         void endRestore(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def endWblock (self, *args, **kwargs)-> None :
-      '''endWblock( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void endWblock(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def endWblock (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
     def fullRegenEnded (self, *args, **kwargs)-> None :
       '''fullRegenEnded( (EditorReactor)arg1, (Database)arg2, (list)arg3) -> None :
@@ -1649,11 +1562,8 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     C++ signature :
         void fullRegenWillStart(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def initialDwgFileOpenComplete (self, *args, **kwargs)-> None :
-      '''initialDwgFileOpenComplete( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void initialDwgFileOpenComplete(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def initialDwgFileOpenComplete (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
     def layoutSwitched (self, *args, **kwargs)-> None :
       '''layoutSwitched( (EditorReactor)arg1, (str)arg2) -> None :
@@ -1667,23 +1577,14 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     C++ signature :
         void layoutToBeSwitched(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def lispCancelled (self, *args, **kwargs)-> None :
-      '''lispCancelled( (EditorReactor)arg1) -> None :
-
-    C++ signature :
-        void lispCancelled(class PyEditorReactor {lvalue})'''
+    def lispCancelled (self)-> None :
+      '''                             '''
     ...
-    def lispEnded (self, *args, **kwargs)-> None :
-      '''lispEnded( (EditorReactor)arg1) -> None :
-
-    C++ signature :
-        void lispEnded(class PyEditorReactor {lvalue})'''
+    def lispEnded (self)-> None :
+      '''                             '''
     ...
-    def lispWillStart (self, *args, **kwargs)-> None :
-      '''lispWillStart( (EditorReactor)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void lispWillStart(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def lispWillStart (self, val: str)-> None :
+      '''                             '''
     ...
     def mainFrameMovedOrResized (self, *args, **kwargs)-> None :
       '''mainFrameMovedOrResized( (EditorReactor)arg1, (int)arg2, (bool)arg3) -> None :
@@ -1715,17 +1616,11 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     C++ signature :
         void otherAttach(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def otherInsert (self, *args, **kwargs)-> None :
-      '''otherInsert( (EditorReactor)arg1, (Database)arg2, (IdMapping)arg3, (Database)arg4) -> None :
-
-    C++ signature :
-        void otherInsert(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class PyDbIdMapping {lvalue},class PyDbDatabase {lvalue})'''
+    def otherInsert (self, dbTo: PyDb.Database, idMap: PyDb.IdMapping, dbFrom: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def otherWblock (self, *args, **kwargs)-> None :
-      '''otherWblock( (EditorReactor)arg1, (Database)arg2, (IdMapping)arg3, (Database)arg4) -> None :
-
-    C++ signature :
-        void otherWblock(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class PyDbIdMapping {lvalue},class PyDbDatabase {lvalue})'''
+    def otherWblock (self, dbTo: PyDb.Database, idMap: PyDb.IdMapping, dbFrom: PyDb.Database)-> None :
+      '''                             '''
     ...
     def partialOpenNotice (self, *args, **kwargs)-> None :
       '''partialOpenNotice( (EditorReactor)arg1, (Database)arg2) -> None :
@@ -1763,17 +1658,11 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     C++ signature :
         void redirected(class PyEditorReactor {lvalue},class PyDbObjectId {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def removeReactor (self, *args, **kwargs)-> None :
-      '''removeReactor( (EditorReactor)arg1) -> None :
-
-    C++ signature :
-        void removeReactor(class PyEditorReactor {lvalue})'''
+    def removeReactor (self)-> None :
+      '''                             '''
     ...
-    def saveComplete (self, *args, **kwargs)-> None :
-      '''saveComplete( (EditorReactor)arg1, (Database)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void saveComplete(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def saveComplete (self, db: PyDb.Database, fname: str)-> None :
+      '''                             '''
     ...
     def sysVarChanged (self, *args, **kwargs)-> None :
       '''sysVarChanged( (EditorReactor)arg1, (str)arg2, (bool)arg3) -> None :
@@ -1841,11 +1730,8 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     C++ signature :
         void undoSubcommandNumber(class PyEditorReactor {lvalue},int,int)'''
     ...
-    def veto (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''veto( (EditorReactor)arg1) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus veto(class PyEditorReactor {lvalue})'''
+    def veto (self)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
     def viewChanged (self, *args, **kwargs)-> None :
       '''viewChanged( (EditorReactor)arg1) -> None :
@@ -1853,11 +1739,8 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     C++ signature :
         void viewChanged(class PyEditorReactor {lvalue})'''
     ...
-    def wblockNotice (self, *args, **kwargs)-> None :
-      '''wblockNotice( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void wblockNotice(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def wblockNotice (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
     def xrefSubcommandAttachItem (self, *args, **kwargs)-> None :
       '''xrefSubcommandAttachItem( (EditorReactor)arg1, (Database)arg2, (int)arg3, (str)arg4) -> None :

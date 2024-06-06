@@ -137,6 +137,7 @@ void makePyEdCoreWrapper()
 
     PyDocString DS("Core");
     class_<EdCore>("Core")
+        .def(init<>(DS.ARGS()))
         .def("alert", &EdCore::alert, DS.SARGS({ "msg: str" }, 10717)).staticmethod("alert")
         .def("arxLoad", &EdCore::arxLoad, DS.SARGS({ "path: str" }, 10718)).staticmethod("arxLoad")
         .def("arxLoaded", &EdCore::arxLoaded, DS.SARGS(10719)).staticmethod("arxLoaded")
