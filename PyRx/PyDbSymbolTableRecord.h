@@ -1,6 +1,7 @@
 #pragma once
 #include "PyDbObject.h"
 #include "PyDbObjectId.h"
+#include "dbdynblk.h"
 
 #pragma pack (push, 8)
 class PyDbEntity;
@@ -485,6 +486,43 @@ public:
     std::vector<PyDbObjectId>::iterator end();
     std::vector<PyDbObjectId> m_iterable{ 0 };
 };
+
+
+//---------------------------------------------------------------------------------------- -
+// PyDbDynBlockTableRecord
+
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+class AcDbDynBlockTableRecord
+{
+public:
+    AcDbDynBlockTableRecord(const AcDbObjectId& id)
+    {
+    }
+    bool isDynamicBlock() const
+    {
+        throw PyNotimplementedByHost();
+        return false;
+    }
+};
+#endif
+
+void makePyDbDynBlockTableRecordWrapper();
+class PyAcDbDynBlockTableRecord
+{
+public:
+    PyAcDbDynBlockTableRecord(const PyDbObjectId& id);
+    bool                isDynamicBlock() const;
+    PyDbObjectId        blockTableRecordId() const;
+    boost::python::list getAnonymousBlockIds() const;
+    void                updateAnonymousBlocks() const;
+    static bool         getIsDynamicBlock(const PyDbBlockTableRecord& pBlockTableRecord);
+    static std::string  className();
+public:
+    inline AcDbDynBlockTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<AcDbDynBlockTableRecord> m_imp;
+};
+
 
 //---------------------------------------------------------------------------------------- -
 // PyDbLayerTableRecord

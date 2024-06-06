@@ -403,6 +403,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbTraceWrapper();
     makePyDbShapeWrapper();
 
+    makePyDbDynBlockTableRecordWrapper();
+
     makePyDbSubDMeshWrapper();
     makePyDbDbLayerStateManagerWrapper();
     makeDbCoreWrapper();//LAST?
