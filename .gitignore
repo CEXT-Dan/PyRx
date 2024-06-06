@@ -59,3 +59,13 @@ __pycache__
 /PyRxAcSetup/Bin/*.grx
 /PyRxAcSetup/Bin/*.brx
 /PyRxAcSetup/Bin/*.zrx
+/PyRxCore/PyRx24.0
+/PyRxCore/PyRx24.1
+/PyRxCore/PyRx24.2
+/PyRxCore/PyRx24.3
+/PyRxCore/PyRx25.0
+/PyRxCore/PyRxG24.0
+/PyRxCore/PyRxV24.0
+/PyRxCore/PyRxZ24.0
+/PyRxCore/PyRxZ25.0
+/PyRxCore/*.user
