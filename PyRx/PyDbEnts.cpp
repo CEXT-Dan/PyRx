@@ -247,7 +247,7 @@ void makePyDbDynBlockReferenceWrapper() //TODO: Make test
 {
     PyDocString DS("PyDb.DynBlockReference");
     class_<PyDbDynBlockReference>("DynBlockReference", no_init)
-        .def(init<const PyDbObjectId&>(DS.ARGS({ "val : ObjectId" })))
+        .def(init<const PyDbObjectId&>(DS.ARGS({ "val :  PyDb.ObjectId" })))
         .def("isDynamicBlock", &PyDbDynBlockReference::isDynamicBlock1, DS.ARGS(4216))
         .def("blockId", &PyDbDynBlockReference::blockId, DS.ARGS(4212))
         .def("resetBlock", &PyDbDynBlockReference::resetBlock, DS.ARGS(4217))
@@ -256,7 +256,7 @@ void makePyDbDynBlockReferenceWrapper() //TODO: Make test
         .def("dynamicBlockTableRecord", &PyDbDynBlockReference::dynamicBlockTableRecord, DS.ARGS(4214))
         .def("anonymousBlockTableRecord", &PyDbDynBlockReference::anonymousBlockTableRecord, DS.ARGS(4211))
         .def("getBlockProperties", &PyDbDynBlockReference::getBlockProperties, DS.ARGS(4215))
-        .def("getIsDynamicBlock", &PyDbDynBlockReference::isDynamicBlock2, DS.SARGS({ "otherObject: ObjectId" })).staticmethod("getIsDynamicBlock")
+        .def("getIsDynamicBlock", &PyDbDynBlockReference::isDynamicBlock2, DS.SARGS({ "otherObject:  PyDb.ObjectId" })).staticmethod("getIsDynamicBlock")
         .def("className", &PyDbDynBlockReference::className, DS.SARGS()).staticmethod("className")
         ;
 }

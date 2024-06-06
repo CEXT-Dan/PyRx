@@ -498,11 +498,6 @@ public:
     AcDbDynBlockTableRecord(const AcDbObjectId& id)
     {
     }
-    bool isDynamicBlock() const
-    {
-        throw PyNotimplementedByHost();
-        return false;
-    }
 };
 #endif
 
