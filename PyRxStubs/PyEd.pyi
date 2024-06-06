@@ -2109,17 +2109,11 @@ class SelectionSet(object):
     ...
 
 class UIContext(object):
-    def OnUpdateMenu (self, *args, **kwargs)-> None :
-      '''OnUpdateMenu( (UIContext)arg1) -> None :
-
-    C++ signature :
-        void OnUpdateMenu(class PyEdUIContext {lvalue})'''
+    def OnUpdateMenu (self)-> None :
+      '''                             '''
     ...
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
     def addDefaultContextMenu (self, *args, **kwargs)-> bool :
       '''addDefaultContextMenu( (UIContext)arg1) -> bool :
@@ -2138,23 +2132,14 @@ addDefaultContextMenu( (UIContext)arg1, (str)arg2) -> bool :
     C++ signature :
         bool addObjectContextMenu(class PyRxClass {lvalue},class PyEdUIContext {lvalue})'''
     ...
-    def getMenuContext (self, *args, **kwargs)-> object :
-      '''getMenuContext( (UIContext)arg1, (RxClass)arg2, (list)arg3) -> object :
-
-    C++ signature :
-        class boost::python::api::object getMenuContext(class PyEdUIContext {lvalue},class PyRxClass,class boost::python::list)'''
+    def getMenuContext (self, val: PyRx.RxClass, ids: list[PyDb.ObjectId])-> object :
+      '''                             '''
     ...
-    def hitPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''hitPoint( (UIContext)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d hitPoint(class PyEdUIContext {lvalue})'''
+    def hitPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def onCommand (self, *args, **kwargs)-> None :
-      '''onCommand( (UIContext)arg1, (SubentType)arg2) -> None :
-
-    C++ signature :
-        void onCommand(class PyEdUIContext {lvalue},unsigned int)'''
+    def onCommand (self, mnuCmd: int)-> None :
+      '''                             '''
     ...
     def removeDefaultContextMenu (self, *args, **kwargs)-> bool :
       '''removeDefaultContextMenu( (UIContext)arg1) -> bool :
