@@ -2510,9 +2510,8 @@ bool PyDbBlockTableRecord::isDynamicBlock()
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();
 #else
-    AcDbEvalGraph* graphPtr = nullptr;
     constexpr const wchar_t* key = L"ACAD_ENHANCEDBLOCK";
-    if (AcDbEvalGraph::getGraph(impObj(), key, &graphPtr, AcDb::OpenMode::kForRead) == eOk)
+    if (AcDbEvalGraph* graphPtr = nullptr; AcDbEvalGraph::getGraph(impObj(), key, &graphPtr, AcDb::OpenMode::kForRead) == eOk)
     {
         if (graphPtr != nullptr)
         {
