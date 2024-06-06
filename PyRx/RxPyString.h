@@ -205,6 +205,35 @@ constexpr inline void wEraseSubStr(std::wstring& mainStr, const std::wstring& to
         mainStr.erase(pos, toErase.length());
 }
 
+constexpr inline void eraseSubStr(std::string& mainStr, const std::string& toErase) noexcept
+{
+    size_t pos = mainStr.find(toErase);
+    if (pos != std::wstring::npos)
+        mainStr.erase(pos, toErase.length());
+}
+
+std::string removeAll(std::string str, const std::string& from) 
+{
+    size_t start_pos = 0;
+    while ((start_pos = str.find(from)) != std::string::npos) 
+    {
+        str.erase(start_pos, from.length());
+    }
+    return str;
+}
+
+constexpr inline void remove_triple_spaces(std::string& str)
+{
+    for (auto r = std::search_n(str.begin(), str.end(), 3, ' '); r != str.end(); r = std::search_n(r, str.end(), 3, ' '))
+        r = str.erase(r); ;
+}
+
+constexpr inline void remove_double_spaces(std::string& str)
+{
+    for (auto r = std::search_n(str.begin(), str.end(), 2, ' '); r != str.end(); r = std::search_n(r, str.end(), 2, ' '))
+        r = str.erase(r); ;
+}
+
 constexpr inline std::wstring cstr_to_wstr(const CString& cstr) noexcept
 {
     return std::wstring(cstr, cstr.GetLength());
