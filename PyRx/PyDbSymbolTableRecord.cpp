@@ -2702,6 +2702,92 @@ std::vector<PyDbObjectId>::iterator PyDbBlockTableRecord::end()
 }
 
 //---------------------------------------------------------------------------------------- -
+// PyDbDynBlockTableRecord
+void makePyDbDynBlockTableRecordWrapper()
+{
+    PyDocString DS("DynBlockTableRecord");
+    class_<PyAcDbDynBlockTableRecord>("DynBlockTableRecord", no_init)
+        .def(init<const PyDbObjectId&>(DS.ARGS({ "val : ObjectId" })))
+        .def("isDynamicBlock", &PyAcDbDynBlockTableRecord::isDynamicBlock, DS.ARGS())
+        .def("blockTableRecordId", &PyAcDbDynBlockTableRecord::blockTableRecordId, DS.ARGS())
+        .def("getAnonymousBlockIds", &PyAcDbDynBlockTableRecord::getAnonymousBlockIds, DS.ARGS())
+        .def("updateAnonymousBlocks", &PyAcDbDynBlockTableRecord::updateAnonymousBlocks, DS.ARGS())
+        .def("getIsDynamicBlock", &PyAcDbDynBlockTableRecord::getIsDynamicBlock, DS.SARGS({ "otherObject: PyDb.BlockTableRecord" })).staticmethod("getIsDynamicBlock")
+        .def("className", &PyAcDbDynBlockTableRecord::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcDbDynBlockTableRecord::PyAcDbDynBlockTableRecord(const PyDbObjectId& id)
+    : m_imp(new AcDbDynBlockTableRecord(id.m_id))
+{
+}
+
+bool PyAcDbDynBlockTableRecord::isDynamicBlock() const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->isDynamicBlock();
+#endif
+}
+
+PyDbObjectId PyAcDbDynBlockTableRecord::blockTableRecordId() const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
+    return PyDbObjectId(impObj()->blockTableRecordId());
+#endif
+}
+
+boost::python::list PyAcDbDynBlockTableRecord::getAnonymousBlockIds() const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
+    AcDbObjectIdArray ids;
+    PyThrowBadEs(impObj()->getAnonymousBlockIds(ids));
+    return ObjectIdArrayToPyList(ids);
+#endif
+}
+
+void PyAcDbDynBlockTableRecord::updateAnonymousBlocks() const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->updateAnonymousBlocks());
+#endif
+}
+
+bool PyAcDbDynBlockTableRecord::getIsDynamicBlock(const PyDbBlockTableRecord& pBlockTableRecord)
+{
+#if defined(_ARXTARGET) && (_ARXTARGET >= 250)
+    return AcDbDynBlockTableRecord::isDynamicBlock(pBlockTableRecord.impObj());
+#else
+    AcDbDynBlockTableRecord dyn(pBlockTableRecord.impObj()->objectId());
+    return dyn.isDynamicBlock();
+#endif
+}
+
+std::string PyAcDbDynBlockTableRecord::className()
+{
+    return "AcDbDynBlockTableRecord";
+}
+
+AcDbDynBlockTableRecord* PyAcDbDynBlockTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
+    if (m_imp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return m_imp.get();
+#endif
+}
+
+//---------------------------------------------------------------------------------------- -
 //AcDbLayerTableRecord wrapper
 void makePyDbLayerTableRecordWrapper()
 {
