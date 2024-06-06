@@ -68,6 +68,8 @@ bool PyDbSymbolTable::has2(const PyDbObjectId& entryid)
 PyDbObjectId PyDbSymbolTable::add(const PyDbSymbolTableRecord& pRecord)
 {
     PyDbObjectId id;
+    if (!impObj()->isWriteEnabled())
+        PyThrowBadEs(eNotOpenForWrite);
     PyThrowBadEs(impObj()->add(id.m_id, pRecord.impObj()));
     return id;
 }
@@ -204,6 +206,8 @@ PyDbDimStyleTable::PyDbDimStyleTable(const PyDbObjectId& id)
 PyDbObjectId PyDbDimStyleTable::add(const PyDbDimStyleTableRecord& entry)
 {
     PyDbObjectId id;
+    if (!impObj()->isWriteEnabled())
+        PyThrowBadEs(eNotOpenForWrite);
     PyThrowBadEs(impObj()->add(id.m_id, entry.impObj()));
     return id;
 }
@@ -271,8 +275,9 @@ PyDbBlockTable::PyDbBlockTable(const PyDbObjectId& id)
 PyDbObjectId PyDbBlockTable::add(const PyDbBlockTableRecord& entry)
 {
     PyDbObjectId id;
-    if (auto es = impObj()->add(id.m_id, entry.impObj()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    if (!impObj()->isWriteEnabled())
+        PyThrowBadEs(eNotOpenForWrite);
+    PyThrowBadEs(impObj()->add(id.m_id, entry.impObj()));
     return id;
 }
 
@@ -338,6 +343,8 @@ PyDbTextStyleTable::PyDbTextStyleTable(const PyDbObjectId& id, AcDb::OpenMode mo
 PyDbObjectId PyDbTextStyleTable::add(const PyDbTextStyleTableRecord& entry)
 {
     PyDbObjectId id;
+    if (!impObj()->isWriteEnabled())
+        PyThrowBadEs(eNotOpenForWrite);
     PyThrowBadEs(impObj()->add(id.m_id, entry.impObj()));
     return id;
 }
@@ -404,6 +411,8 @@ PyDbLinetypeTable::PyDbLinetypeTable(const PyDbObjectId& id, AcDb::OpenMode mode
 PyDbObjectId PyDbLinetypeTable::add(const PyDbLinetypeTableRecord& entry)
 {
     PyDbObjectId id;
+    if (!impObj()->isWriteEnabled())
+        PyThrowBadEs(eNotOpenForWrite);
     PyThrowBadEs(impObj()->add(id.m_id, entry.impObj()));
     return id;
 }
@@ -470,6 +479,8 @@ PyDbRegAppTable::PyDbRegAppTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDbObjectId PyDbRegAppTable::add(const PyDbRegAppTableRecord& entry)
 {
     PyDbObjectId id;
+    if (!impObj()->isWriteEnabled())
+        PyThrowBadEs(eNotOpenForWrite);
     PyThrowBadEs(impObj()->add(id.m_id, entry.impObj()));
     return id;
 }
@@ -536,6 +547,8 @@ PyDbUCSTable::PyDbUCSTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDbObjectId PyDbUCSTable::add(const PyDbUCSTableRecord& entry)
 {
     PyDbObjectId id;
+    if (!impObj()->isWriteEnabled())
+        PyThrowBadEs(eNotOpenForWrite);
     PyThrowBadEs(impObj()->add(id.m_id, entry.impObj()));
     return id;
 }
@@ -602,6 +615,8 @@ PyDbLayerTable::PyDbLayerTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDbObjectId PyDbLayerTable::add(const PyDbLayerTableRecord& entry)
 {
     PyDbObjectId id;
+    if (!impObj()->isWriteEnabled())
+        PyThrowBadEs(eNotOpenForWrite);
     PyThrowBadEs(impObj()->add(id.m_id, entry.impObj()));
     return id;
 }
@@ -667,6 +682,8 @@ PyDbAbstractViewTable::PyDbAbstractViewTable(const PyDbObjectId& id, AcDb::OpenM
 
 PyDbObjectId PyDbAbstractViewTable::add(const PyDbAbstractViewTableRecord& entry)
 {
+    if (!impObj()->isWriteEnabled())
+        PyThrowBadEs(eNotOpenForWrite);
     return PyDbSymbolTable::add(entry);
 }
 
@@ -737,6 +754,8 @@ PyDbViewportTable::PyDbViewportTable(AcDbViewportTable* ptr, bool autoDelete)
 
 PyDbObjectId PyDbViewportTable::add(const PyDbViewportTableRecord& entry)
 {
+    if (!impObj()->isWriteEnabled())
+        PyThrowBadEs(eNotOpenForWrite);
     return PyDbAbstractViewTable::add(entry);
 }
 
@@ -807,6 +826,8 @@ PyDbViewTable::PyDbViewTable(AcDbViewTable* ptr, bool autoDelete)
 
 PyDbObjectId PyDbViewTable::add(const PyDbViewTableRecord& entry)
 {
+    if (!impObj()->isWriteEnabled())
+        PyThrowBadEs(eNotOpenForWrite);
     return PyDbAbstractViewTable::add(entry);
 }
 
