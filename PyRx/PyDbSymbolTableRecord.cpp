@@ -2277,6 +2277,7 @@ void makePyDbBlockTableRecordWrapper()
         .def("getPreviewIcon", &PyDbBlockTableRecord::getPreviewIcon, DS.ARGS())
         .def("clearPreviewIcon", &PyDbBlockTableRecord::clearPreviewIcon, DS.ARGS())
         .def("isAnonymous", &PyDbBlockTableRecord::isAnonymous, DS.ARGS())
+        .def("isDynamicBlock", &PyDbBlockTableRecord::isDynamicBlock, DS.ARGS())
         .def("isFromExternalReference", &PyDbBlockTableRecord::isFromExternalReference, DS.ARGS())
         .def("isFromOverlayReference", &PyDbBlockTableRecord::isFromOverlayReference, DS.ARGS())
         .def("setIsFromOverlayReference", &PyDbBlockTableRecord::setIsFromOverlayReference, DS.ARGS({ "val : bool" }))
@@ -2500,6 +2501,25 @@ void PyDbBlockTableRecord::clearPreviewIcon() const
 bool PyDbBlockTableRecord::isAnonymous() const
 {
     return impObj()->isAnonymous();
+}
+
+bool PyDbBlockTableRecord::isDynamicBlock()
+{
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
+    AcDbEvalGraph* graphPtr = nullptr;
+    constexpr const wchar_t* key = L"ACAD_ENHANCEDBLOCK";
+    if (AcDbEvalGraph::getGraph(impObj(), key, &graphPtr, AcDb::OpenMode::kForRead) == eOk)
+    {
+        if (graphPtr != nullptr)
+        {
+            graphPtr->close();
+            return true;
+        }
+    }
+    return false;
+#endif
 }
 
 bool PyDbBlockTableRecord::isFromExternalReference() const
