@@ -53,6 +53,8 @@ std::string PyDbSymbolTableRecord::getName()
 
 void PyDbSymbolTableRecord::setName(const std::string& name)
 {
+    if (!impObj()->isWriteEnabled())
+        PyThrowBadEs(eNotOpenForWrite);
     return PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
 }
 

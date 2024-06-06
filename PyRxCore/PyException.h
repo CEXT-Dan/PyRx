@@ -25,6 +25,9 @@ inline CStringA formatfname(const char* pname)
     str.Replace("__cdecl", "");
     str.Replace("const", "");
     str.Replace("&", "");
+    str.Replace("std::basic_string< char,struct std::char_traits<char>, std::allocator<char> >", "std::string");
+    str.Replace("std::basic_string<char,struct std::char_traits<char>, std::allocator<char> >", "std::string");
+    str.Replace("std::basic_string<char,struct std::char_traits<char>, std::allocator<char>>", "std::string");
     while (str.Replace("  ", " "));
     str.Trim();
     return str;
