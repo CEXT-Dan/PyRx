@@ -11,7 +11,7 @@ void makePyEditorReactorWrapper()
 {
     constexpr const std::string_view beginInsertOverloads = "Overloads:\n"
         "- dbTo: PyDb.Database, pBlockName: str, dbFrom: PyDb.Database\n"
-        "- dbTo: PyDb.Database, xform: PyGe.Matrix3d, dbFrom: PyDb.Database\n\n"; 
+        "- dbTo: PyDb.Database, xform: PyGe.Matrix3d, dbFrom: PyDb.Database\n\n";
 
     PyDocString DS("EditorReactor");
     class_<PyEditorReactor>("EditorReactor")
@@ -51,7 +51,7 @@ void makePyEditorReactorWrapper()
         .def("abortWblock", &PyEditorReactor::abortWblockWr, DS.ARGS({ "db: PyDb.Database" }))
         .def("endWblock", &PyEditorReactor::endWblockWr, DS.ARGS({ "db: PyDb.Database" }))
         .def("beginDeepClone", &PyEditorReactor::beginDeepCloneWr, DS.ARGS({ "db: PyDb.Database", "idMap: PyDb.IdMapping" }))
-        .def("beginDeepCloneXlation", &PyEditorReactor::beginDeepCloneXlationWr, DS.ARGS({"idMap: PyDb.IdMapping" }))
+        .def("beginDeepCloneXlation", &PyEditorReactor::beginDeepCloneXlationWr, DS.ARGS({ "idMap: PyDb.IdMapping" }))
         .def("abortDeepClone", &PyEditorReactor::abortDeepCloneWr, DS.ARGS({ "idMap: PyDb.IdMapping" }))
         .def("endDeepClone", &PyEditorReactor::endDeepCloneWr, DS.ARGS({ "idMap: PyDb.IdMapping" }))
         .def("sysVarChanged", &PyEditorReactor::sysVarChangedWr, DS.ARGS({ "varName: str","success: bool" }))
@@ -63,13 +63,13 @@ void makePyEditorReactorWrapper()
         .def("redirected", &PyEditorReactor::redirectedWr, DS.ARGS({ "newId: PyDb.ObjectId","oldId: PyDb.ObjectId" }))
         .def("comandeered", &PyEditorReactor::comandeeredWr, DS.ARGS({ "dbTo: PyDb.Database", "id: PyDb.ObjectId","dbFrom: PyDb.Database" }))
         .def("beginRestore", &PyEditorReactor::beginRestoreWr, DS.ARGS({ "dbTo: PyDb.Database", "val: str" ,"dbFrom: PyDb.Database" }))
-        .def("abortRestore", &PyEditorReactor::abortRestoreWr, DS.ARGS({ "dbTo: PyDb.Database"}))
+        .def("abortRestore", &PyEditorReactor::abortRestoreWr, DS.ARGS({ "dbTo: PyDb.Database" }))
         .def("endRestore", &PyEditorReactor::endRestoreWr, DS.ARGS({ "dbTo: PyDb.Database" }))
         .def("xrefSubcommandBindItem", &PyEditorReactor::xrefSubcommandBindItemWr, DS.ARGS({ "db: PyDb.Database","activity: int", "blockId: PyDb.ObjectId" }))
         .def("xrefSubcommandAttachItem", &PyEditorReactor::xrefSubcommandAttachItemWr, DS.ARGS({ "db: PyDb.Database","activity: int", "path: str" }))
         .def("xrefSubcommandOverlayItem", &PyEditorReactor::xrefSubcommandOverlayItemWr, DS.ARGS({ "db: PyDb.Database","activity: int", "path: str" }))
         .def("xrefSubcommandDetachItem", &PyEditorReactor::xrefSubcommandDetachItemWr, DS.ARGS({ "db: PyDb.Database","activity: int", "blockId: PyDb.ObjectId" }))
-        .def("xrefSubcommandPathItem", &PyEditorReactor::xrefSubcommandPathItemWr, DS.ARGS({ "activity: int", "blockId: PyDb.ObjectId" ,"path: str"}))
+        .def("xrefSubcommandPathItem", &PyEditorReactor::xrefSubcommandPathItemWr, DS.ARGS({ "activity: int", "blockId: PyDb.ObjectId" ,"path: str" }))
         .def("xrefSubcommandReloadItem", &PyEditorReactor::xrefSubcommandReloadItemWr, DS.ARGS({ "db: PyDb.Database","activity: int", "blockId: PyDb.ObjectId" }))
         .def("xrefSubcommandUnloadItem", &PyEditorReactor::xrefSubcommandUnloadItemWr, DS.ARGS({ "db: PyDb.Database","activity: int", "blockId: PyDb.ObjectId" }))
         .def("undoSubcommandAuto", &PyEditorReactor::undoSubcommandAutoWr, DS.ARGS({ "activity: int","state: bool" }))
@@ -83,8 +83,8 @@ void makePyEditorReactorWrapper()
         .def("layoutSwitched", &PyEditorReactor::layoutSwitchedWr, DS.ARGS({ "layoutName: str" }))
         .def("layoutToBeSwitched", &PyEditorReactor::layoutToBeSwitchedWr, DS.ARGS({ "oldLayoutName: str","newLayoutName: str" }))
         .def("dwgViewResized", &PyEditorReactor::dwgViewResizedWr, DS.ARGS({ "hwndDwgView: int" }))
-        .def("fullRegenEnded", &PyEditorReactor::fullRegenEndedWr, DS.ARGS({ "db: PyDb.Database", "regenedViewports: list[int]"}))
-        .def("docFrameMovedOrResized", &PyEditorReactor::docFrameMovedOrResizedWr, DS.ARGS({ "hwndDocFrame: int", "moved: bool"}))
+        .def("fullRegenEnded", &PyEditorReactor::fullRegenEndedWr, DS.ARGS({ "db: PyDb.Database", "regenedViewports: list[int]" }))
+        .def("docFrameMovedOrResized", &PyEditorReactor::docFrameMovedOrResizedWr, DS.ARGS({ "hwndDocFrame: int", "moved: bool" }))
         .def("mainFrameMovedOrResized", &PyEditorReactor::mainFrameMovedOrResizedWr, DS.ARGS({ "hwndDocFrame: int", "moved: bool" }))
         .def("beginDoubleClick", &PyEditorReactor::beginDoubleClickWr, DS.ARGS({ "pt: PyGe.Point3d" }))
         .def("beginRightClick", &PyEditorReactor::beginRightClickWr, DS.ARGS({ "pt: PyGe.Point3d" }))
@@ -355,7 +355,7 @@ void PyEditorReactor::otherInsert(AcDbDatabase* pTo, AcDbIdMapping& idMap, AcDbD
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     PyDbDatabase from(pFrom);
-    PyDbIdMapping mapping(idMap,true);
+    PyDbIdMapping mapping(idMap, true);
     otherInsertWr(to, mapping, from);
 }
 

@@ -160,11 +160,13 @@ void PyEdUserInteraction::undoUserInteraction()
 // PyEdUIContext
 void makePyEdUIContextWrapper()
 {
+    PyDocString DS("UIContext");
     class_<PyEdUIContext>("UIContext")
-        .def("getMenuContext", &PyEdUIContext::getMenuContextWr)
-        .def("onCommand", &PyEdUIContext::onCommandWr)
-        .def("OnUpdateMenu", &PyEdUIContext::OnUpdateMenuWr)
-        .def("hitPoint", &PyEdUIContext::hitPoint)
+        .def(init<>(DS.ARGS()))
+        .def("getMenuContext", &PyEdUIContext::getMenuContextWr, DS.ARGS({ "val: PyRx.RxClass","ids: list[PyDb.ObjectId]" }))
+        .def("onCommand", &PyEdUIContext::onCommandWr, DS.ARGS({ "mnuCmd: int" }))
+        .def("OnUpdateMenu", &PyEdUIContext::OnUpdateMenuWr, DS.ARGS())
+        .def("hitPoint", &PyEdUIContext::hitPoint, DS.ARGS())
         .def("addObjectContextMenu", &PyEdUIContext::addObjectContextMenu).staticmethod("addObjectContextMenu")
         .def("removeObjectContextMenu", &PyEdUIContext::removeObjectContextMenu).staticmethod("removeObjectContextMenu")
         .def("addDefaultContextMenu", &PyEdUIContext::addDefaultContextMenu1)
