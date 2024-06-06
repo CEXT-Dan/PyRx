@@ -17,10 +17,24 @@ static std::string appHostName()
     return "ARX";
 }
 
+//TODO:
+inline CStringA formatfname(const char* pname)
+{
+    CStringA str = pname;
+    str.Replace("class", "");
+    str.Replace("__cdecl", "");
+    str.Replace("const", "");
+    str.Replace("&", "");
+    while (str.Replace("  ", " "));
+    str.Trim();
+    return str;
+}
+
 inline void printExceptionMsg(const std::source_location& src = std::source_location::current())
 {
-    constexpr std::string_view fmtstr("\nException,line {} in function {} {}: ");
-    acutPrintf(utf8_to_wstr(std::format(fmtstr, src.line(), src.function_name(), src.file_name())).c_str());
+    constexpr std::string_view fmtstr("\nException,line {}, in function {} {}: ");
+    const auto& fname = formatfname(src.function_name());
+    acutPrintf(utf8_to_wstr(std::format(fmtstr, src.line(), (const char*)fname, src.file_name())).c_str());
 }
 
 struct PyNotThatKindOfClass
@@ -36,7 +50,8 @@ struct PyNotThatKindOfClass
     {
         constexpr std::string_view fmtstr("\nNot that kind of class! in function {} {}: ");
         const std::filesystem::path file = m_src.file_name();
-        return std::format(fmtstr, m_src.function_name(), file.filename().string());
+        const auto& fname = formatfname(m_src.function_name());
+        return std::format(fmtstr, (const char*)fname, file.filename().string());
     }
 
     static void translator(PyNotThatKindOfClass const& x)
@@ -56,9 +71,10 @@ struct PyNullObject
 
     inline std::string format() const
     {
-        constexpr std::string_view fmtstr("\nException! Object is NULL, in function {} ,Line {}, File {}: ");
+        constexpr std::string_view fmtstr("\nException! Object is NULL, in function {}, Line {}, File {}: ");
         const std::filesystem::path file = m_src.file_name();
-        return std::format(fmtstr, m_src.function_name(), m_src.line(), file.filename().string());
+        const auto& fname = formatfname(m_src.function_name());
+        return std::format(fmtstr, (const char*)fname, m_src.line(), file.filename().string());
     }
 
     static void translator(PyNullObject const& x)
@@ -80,7 +96,8 @@ struct PyEditorError
     {
         constexpr std::string_view fmtstr("\nEditor error! function {} {}: ");
         const std::filesystem::path file = m_src.file_name();
-        return std::format(fmtstr, m_src.function_name(), file.filename().string());
+        const auto& fname = formatfname(m_src.function_name());
+        return std::format(fmtstr, (const char*)fname, file.filename().string());
     }
 
     static void translator(PyEditorError const& x)
@@ -99,9 +116,10 @@ struct PyAcadErrorStatus
 
     inline std::string format() const
     {
-        constexpr std::string_view fmtstr("\nException!({}) in function {}, Line {}, File {}: ");
+        constexpr std::string_view fmtstr("\nException!({}), function {}, Line {}, File {}: ");
         const std::filesystem::path file = m_src.file_name();
-        return std::format(fmtstr, wstr_to_utf8(acadErrorStatusText(m_es)), m_src.function_name(), m_src.line(), file.filename().string());
+        const auto& fname = formatfname(m_src.function_name());
+        return std::format(fmtstr, wstr_to_utf8(acadErrorStatusText(m_es)), (const char*)fname, m_src.line(), file.filename().string());
     }
 
     inline static void translator(PyAcadErrorStatus const& x)
@@ -123,7 +141,8 @@ struct PyNotimplementedByHost
     {
         constexpr std::string_view fmtstr("\nException, Not implemented in {}!, function {} ,Line {}, File {}: ");
         const std::filesystem::path file = m_src.file_name();
-        return std::format(fmtstr, appHostName(), m_src.function_name(), m_src.line(), file.filename().string());
+        const auto& fname = formatfname(m_src.function_name());
+        return std::format(fmtstr, appHostName(), (const char*)fname, m_src.line(), file.filename().string());
     }
 
     inline static void translator(PyNotimplementedByHost const& x)
