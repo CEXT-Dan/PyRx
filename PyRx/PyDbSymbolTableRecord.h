@@ -448,6 +448,7 @@ public:
     boost::python::object getPreviewIcon() const;
     void                clearPreviewIcon() const;
     bool                isAnonymous() const;
+    bool                isDynamicBlock();
     bool                isFromExternalReference() const;
     bool                isFromOverlayReference() const;
     void                setIsFromOverlayReference(bool bIsOverlay);
