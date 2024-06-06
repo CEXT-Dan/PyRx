@@ -50,8 +50,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,3,23,0
- PRODUCTVERSION 1,3,23,0
+ FILEVERSION 1,3,24,0
+ PRODUCTVERSION 1,3,24,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -68,12 +68,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "DRM"
             VALUE "FileDescription", "PyRx Python ObjectARX"
-            VALUE "FileVersion", "1.3.23.0"
+            VALUE "FileVersion", "1.3.24.0"
             VALUE "InternalName", "PyRx"
             VALUE "LegalCopyright", "Copyright Daniel Marcotte © 2024"
             VALUE "OriginalFilename", "PyRx.arx"
             VALUE "ProductName", "PyRx Application"
-            VALUE "ProductVersion", "1.3.23.0"
+            VALUE "ProductVersion", "1.3.24.0"
         END
     END
     BLOCK "VarFileInfo"
