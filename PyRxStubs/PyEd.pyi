@@ -1353,11 +1353,8 @@ class EditorReactor(object):
     def __init__ (self)-> None :
       '''                             '''
     ...
-    def abortAttach (self, *args, **kwargs)-> None :
-      '''abortAttach( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void abortAttach(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def abortAttach (self, dbFrom: PyDb.Database)-> None :
+      '''                             '''
     ...
     def abortDeepClone (self, idMap: PyDb.IdMapping)-> None :
       '''                             '''
@@ -1371,11 +1368,8 @@ class EditorReactor(object):
     def abortInsert (self, db: PyDb.Database)-> None :
       '''                             '''
     ...
-    def abortRestore (self, *args, **kwargs)-> None :
-      '''abortRestore( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void abortRestore(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def abortRestore (self, dbTo: PyDb.Database)-> None :
+      '''                             '''
     ...
     def abortSave (self, db: PyDb.Database)-> None :
       '''                             '''
@@ -1386,17 +1380,11 @@ class EditorReactor(object):
     def addReactor (self)-> None :
       '''                             '''
     ...
-    def beginAttach (self, *args, **kwargs)-> None :
-      '''beginAttach( (EditorReactor)arg1, (Database)arg2, (str)arg3, (Database)arg4) -> None :
-
-    C++ signature :
-        void beginAttach(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+    def beginAttach (self, dbTo: PyDb.Database, val: str, dbFrom: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def beginCloseAll (self, *args, **kwargs)-> None :
-      '''beginCloseAll( (EditorReactor)arg1) -> None :
-
-    C++ signature :
-        void beginCloseAll(class PyEditorReactor {lvalue})'''
+    def beginCloseAll (self)-> None :
+      '''                             '''
     ...
     def beginDeepClone (self, db: PyDb.Database, idMap: PyDb.IdMapping)-> None :
       '''                             '''
@@ -1404,17 +1392,11 @@ class EditorReactor(object):
     def beginDeepCloneXlation (self, idMap: PyDb.IdMapping)-> PyDb.ErrorStatus :
       '''                             '''
     ...
-    def beginDocClose (self, *args, **kwargs)-> None :
-      '''beginDocClose( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void beginDocClose(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def beginDocClose (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def beginDoubleClick (self, *args, **kwargs)-> None :
-      '''beginDoubleClick( (EditorReactor)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void beginDoubleClick(class PyEditorReactor {lvalue},class AcGePoint3d)'''
+    def beginDoubleClick (self, pt: PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def beginDwgOpen (self, fineName: str)-> None :
       '''                             '''
@@ -1425,34 +1407,26 @@ class EditorReactor(object):
     def beginDxfOut (self, db: PyDb.Database)-> None :
       '''                             '''
     ...
+
+    @overload
+    def beginInsert (self, dbTo: PyDb.Database, pBlockName: str, dbFrom: PyDb.Database)-> None : ...
+    @overload
+    def beginInsert (self, dbTo: PyDb.Database, xform: PyGe.Matrix3d, dbFrom: PyDb.Database)-> None : ...
     def beginInsert (self, *args, **kwargs)-> None :
-      '''beginInsert( (EditorReactor)arg1, (Database)arg2, (str)arg3, (Database)arg4) -> None :
-
-    C++ signature :
-        void beginInsert(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})
-
-beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4) -> None :
-
-    C++ signature :
-        void beginInsert(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class AcGeMatrix3d,class PyDbDatabase {lvalue})'''
+      '''Overloads:
+    - dbTo: PyDb.Database, pBlockName: str, dbFrom: PyDb.Database
+    - dbTo: PyDb.Database, xform: PyGe.Matrix3d, dbFrom: PyDb.Database
+    
+    '''
     ...
-    def beginQuit (self, *args, **kwargs)-> None :
-      '''beginQuit( (EditorReactor)arg1) -> None :
-
-    C++ signature :
-        void beginQuit(class PyEditorReactor {lvalue})'''
+    def beginQuit (self)-> None :
+      '''                             '''
     ...
-    def beginRestore (self, *args, **kwargs)-> None :
-      '''beginRestore( (EditorReactor)arg1, (Database)arg2, (str)arg3, (Database)arg4) -> None :
-
-    C++ signature :
-        void beginRestore(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+    def beginRestore (self, dbTo: PyDb.Database, val: str, dbFrom: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def beginRightClick (self, *args, **kwargs)-> None :
-      '''beginRightClick( (EditorReactor)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void beginRightClick(class PyEditorReactor {lvalue},class AcGePoint3d)'''
+    def beginRightClick (self, pt: PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def beginSave (self, db: PyDb.Database, fname: str)-> None :
       '''                             '''
@@ -1460,23 +1434,14 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     def beginWblock (self, dbTo: PyDb.Database, dbFrom: PyDb.Database, id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def beginWblockObjects (self, *args, **kwargs)-> None :
-      '''beginWblockObjects( (EditorReactor)arg1, (Database)arg2, (IdMapping)arg3) -> None :
-
-    C++ signature :
-        void beginWblockObjects(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class PyDbIdMapping {lvalue})'''
+    def beginWblockObjects (self, dbTo: PyDb.Database, idMap: PyDb.IdMapping)-> None :
+      '''                             '''
     ...
-    def cmdIUnkModified (self, *args, **kwargs)-> None :
-      '''cmdIUnkModified( (EditorReactor)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void cmdIUnkModified(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def cmdIUnkModified (self, command: str)-> None :
+      '''                             '''
     ...
-    def comandeered (self, *args, **kwargs)-> None :
-      '''comandeered( (EditorReactor)arg1, (Database)arg2, (ObjectId)arg3, (Database)arg4) -> None :
-
-    C++ signature :
-        void comandeered(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class PyDbObjectId {lvalue},class PyDbDatabase {lvalue})'''
+    def comandeered (self, dbTo: PyDb.Database, id: PyDb.ObjectId, dbFrom: PyDb.Database)-> None :
+      '''                             '''
     ...
     def commandCancelled (self, cmdStr: str)-> None :
       '''                             '''
@@ -1496,29 +1461,17 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     def databaseToBeDestroyed (self, db: PyDb.Database)-> None :
       '''                             '''
     ...
-    def docCloseAborted (self, *args, **kwargs)-> None :
-      '''docCloseAborted( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void docCloseAborted(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def docCloseAborted (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def docCloseWillStart (self, *args, **kwargs)-> None :
-      '''docCloseWillStart( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void docCloseWillStart(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def docCloseWillStart (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def docFrameMovedOrResized (self, *args, **kwargs)-> None :
-      '''docFrameMovedOrResized( (EditorReactor)arg1, (int)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void docFrameMovedOrResized(class PyEditorReactor {lvalue},__int64,bool)'''
+    def docFrameMovedOrResized (self, hwndDocFrame: int, moved: bool)-> None :
+      '''                             '''
     ...
-    def dwgViewResized (self, *args, **kwargs)-> None :
-      '''dwgViewResized( (EditorReactor)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void dwgViewResized(class PyEditorReactor {lvalue},__int64)'''
+    def dwgViewResized (self, hwndDwgView: int)-> None :
+      '''                             '''
     ...
     def dxfInComplete (self, db: PyDb.Database)-> None :
       '''                             '''
@@ -1526,11 +1479,8 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     def dxfOutComplete (self, db: PyDb.Database)-> None :
       '''                             '''
     ...
-    def endAttach (self, *args, **kwargs)-> None :
-      '''endAttach( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void endAttach(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def endAttach (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
     def endDeepClone (self, idMap: PyDb.IdMapping)-> None :
       '''                             '''
@@ -1541,41 +1491,26 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     def endInsert (self, db: PyDb.Database)-> None :
       '''                             '''
     ...
-    def endRestore (self, *args, **kwargs)-> None :
-      '''endRestore( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void endRestore(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def endRestore (self, dbTo: PyDb.Database)-> None :
+      '''                             '''
     ...
     def endWblock (self, db: PyDb.Database)-> None :
       '''                             '''
     ...
-    def fullRegenEnded (self, *args, **kwargs)-> None :
-      '''fullRegenEnded( (EditorReactor)arg1, (Database)arg2, (list)arg3) -> None :
-
-    C++ signature :
-        void fullRegenEnded(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class boost::python::list)'''
+    def fullRegenEnded (self, db: PyDb.Database, regenedViewports: list[int])-> None :
+      '''                             '''
     ...
-    def fullRegenWillStart (self, *args, **kwargs)-> None :
-      '''fullRegenWillStart( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void fullRegenWillStart(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def fullRegenWillStart (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
     def initialDwgFileOpenComplete (self, db: PyDb.Database)-> None :
       '''                             '''
     ...
-    def layoutSwitched (self, *args, **kwargs)-> None :
-      '''layoutSwitched( (EditorReactor)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void layoutSwitched(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def layoutSwitched (self, layoutName: str)-> None :
+      '''                             '''
     ...
-    def layoutToBeSwitched (self, *args, **kwargs)-> None :
-      '''layoutToBeSwitched( (EditorReactor)arg1, (str)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void layoutToBeSwitched(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def layoutToBeSwitched (self, oldLayoutName: str, newLayoutName: str)-> None :
+      '''                             '''
     ...
     def lispCancelled (self)-> None :
       '''                             '''
@@ -1586,35 +1521,20 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     def lispWillStart (self, val: str)-> None :
       '''                             '''
     ...
-    def mainFrameMovedOrResized (self, *args, **kwargs)-> None :
-      '''mainFrameMovedOrResized( (EditorReactor)arg1, (int)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void mainFrameMovedOrResized(class PyEditorReactor {lvalue},__int64,bool)'''
+    def mainFrameMovedOrResized (self, hwndDocFrame: int, moved: bool)-> None :
+      '''                             '''
     ...
-    def modelessOperationEnded (self, *args, **kwargs)-> None :
-      '''modelessOperationEnded( (EditorReactor)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void modelessOperationEnded(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def modelessOperationEnded (self, context: str)-> None :
+      '''                             '''
     ...
-    def modelessOperationWillStart (self, *args, **kwargs)-> None :
-      '''modelessOperationWillStart( (EditorReactor)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void modelessOperationWillStart(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def modelessOperationWillStart (self, context: str)-> None :
+      '''                             '''
     ...
-    def objectsLazyLoaded (self, *args, **kwargs)-> None :
-      '''objectsLazyLoaded( (EditorReactor)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void objectsLazyLoaded(class PyEditorReactor {lvalue},class boost::python::list)'''
+    def objectsLazyLoaded (self, ids: list[PyDb.ObjectId])-> None :
+      '''                             '''
     ...
-    def otherAttach (self, *args, **kwargs)-> None :
-      '''otherAttach( (EditorReactor)arg1, (Database)arg2, (Database)arg3) -> None :
-
-    C++ signature :
-        void otherAttach(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class PyDbDatabase {lvalue})'''
+    def otherAttach (self, dbTo: PyDb.Database, dbFrom: PyDb.Database)-> None :
+      '''                             '''
     ...
     def otherInsert (self, dbTo: PyDb.Database, idMap: PyDb.IdMapping, dbFrom: PyDb.Database)-> None :
       '''                             '''
@@ -1622,41 +1542,23 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     def otherWblock (self, dbTo: PyDb.Database, idMap: PyDb.IdMapping, dbFrom: PyDb.Database)-> None :
       '''                             '''
     ...
-    def partialOpenNotice (self, *args, **kwargs)-> None :
-      '''partialOpenNotice( (EditorReactor)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void partialOpenNotice(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
+    def partialOpenNotice (self, db: PyDb.Database)-> None :
+      '''                             '''
     ...
-    def pickfirstModified (self, *args, **kwargs)-> None :
-      '''pickfirstModified( (EditorReactor)arg1) -> None :
-
-    C++ signature :
-        void pickfirstModified(class PyEditorReactor {lvalue})'''
+    def pickfirstModified (self)-> None :
+      '''                             '''
     ...
-    def preXrefLockFile (self, *args, **kwargs)-> None :
-      '''preXrefLockFile( (EditorReactor)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void preXrefLockFile(class PyEditorReactor {lvalue},class PyDbObjectId {lvalue})'''
+    def preXrefLockFile (self, id: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def quitAborted (self, *args, **kwargs)-> None :
-      '''quitAborted( (EditorReactor)arg1) -> None :
-
-    C++ signature :
-        void quitAborted(class PyEditorReactor {lvalue})'''
+    def quitAborted (self)-> None :
+      '''                             '''
     ...
-    def quitWillStart (self, *args, **kwargs)-> None :
-      '''quitWillStart( (EditorReactor)arg1) -> None :
-
-    C++ signature :
-        void quitWillStart(class PyEditorReactor {lvalue})'''
+    def quitWillStart (self)-> None :
+      '''                             '''
     ...
-    def redirected (self, *args, **kwargs)-> None :
-      '''redirected( (EditorReactor)arg1, (ObjectId)arg2, (ObjectId)arg3) -> None :
-
-    C++ signature :
-        void redirected(class PyEditorReactor {lvalue},class PyDbObjectId {lvalue},class PyDbObjectId {lvalue})'''
+    def redirected (self, newId: PyDb.ObjectId, oldId: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
     def removeReactor (self)-> None :
       '''                             '''
@@ -1664,125 +1566,68 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     def saveComplete (self, db: PyDb.Database, fname: str)-> None :
       '''                             '''
     ...
-    def sysVarChanged (self, *args, **kwargs)-> None :
-      '''sysVarChanged( (EditorReactor)arg1, (str)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void sysVarChanged(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
+    def sysVarChanged (self, varName: str, success: bool)-> None :
+      '''                             '''
     ...
-    def sysVarWillChange (self, *args, **kwargs)-> None :
-      '''sysVarWillChange( (EditorReactor)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void sysVarWillChange(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def sysVarWillChange (self, varName: str)-> None :
+      '''                             '''
     ...
-    def toolbarBitmapSizeChanged (self, *args, **kwargs)-> None :
-      '''toolbarBitmapSizeChanged( (EditorReactor)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void toolbarBitmapSizeChanged(class PyEditorReactor {lvalue},bool)'''
+    def toolbarBitmapSizeChanged (self, large: bool)-> None :
+      '''                             '''
     ...
-    def toolbarBitmapSizeWillChange (self, *args, **kwargs)-> None :
-      '''toolbarBitmapSizeWillChange( (EditorReactor)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void toolbarBitmapSizeWillChange(class PyEditorReactor {lvalue},bool)'''
+    def toolbarBitmapSizeWillChange (self, large: bool)-> None :
+      '''                             '''
     ...
-    def undoSubcommandAuto (self, *args, **kwargs)-> None :
-      '''undoSubcommandAuto( (EditorReactor)arg1, (int)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void undoSubcommandAuto(class PyEditorReactor {lvalue},int,bool)'''
+    def undoSubcommandAuto (self, activity: int, state: bool)-> None :
+      '''                             '''
     ...
-    def undoSubcommandBack (self, *args, **kwargs)-> None :
-      '''undoSubcommandBack( (EditorReactor)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void undoSubcommandBack(class PyEditorReactor {lvalue},int)'''
+    def undoSubcommandBack (self, activity: int)-> None :
+      '''                             '''
     ...
-    def undoSubcommandBegin (self, *args, **kwargs)-> None :
-      '''undoSubcommandBegin( (EditorReactor)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void undoSubcommandBegin(class PyEditorReactor {lvalue},int)'''
+    def undoSubcommandBegin (self, activity: int)-> None :
+      '''                             '''
     ...
-    def undoSubcommandControl (self, *args, **kwargs)-> None :
-      '''undoSubcommandControl( (EditorReactor)arg1, (int)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void undoSubcommandControl(class PyEditorReactor {lvalue},int,int)'''
+    def undoSubcommandControl (self, activity: int, option: int)-> None :
+      '''                             '''
     ...
-    def undoSubcommandEnd (self, *args, **kwargs)-> None :
-      '''undoSubcommandEnd( (EditorReactor)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void undoSubcommandEnd(class PyEditorReactor {lvalue},int)'''
+    def undoSubcommandEnd (self, activity: int)-> None :
+      '''                             '''
     ...
-    def undoSubcommandMark (self, *args, **kwargs)-> None :
-      '''undoSubcommandMark( (EditorReactor)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void undoSubcommandMark(class PyEditorReactor {lvalue},int)'''
+    def undoSubcommandMark (self, activity: int)-> None :
+      '''                             '''
     ...
-    def undoSubcommandNumber (self, *args, **kwargs)-> None :
-      '''undoSubcommandNumber( (EditorReactor)arg1, (int)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void undoSubcommandNumber(class PyEditorReactor {lvalue},int,int)'''
+    def undoSubcommandNumber (self, activity: int, num: int)-> None :
+      '''                             '''
     ...
     def veto (self)-> PyDb.ErrorStatus :
       '''                             '''
     ...
-    def viewChanged (self, *args, **kwargs)-> None :
-      '''viewChanged( (EditorReactor)arg1) -> None :
-
-    C++ signature :
-        void viewChanged(class PyEditorReactor {lvalue})'''
+    def viewChanged (self)-> None :
+      '''                             '''
     ...
     def wblockNotice (self, db: PyDb.Database)-> None :
       '''                             '''
     ...
-    def xrefSubcommandAttachItem (self, *args, **kwargs)-> None :
-      '''xrefSubcommandAttachItem( (EditorReactor)arg1, (Database)arg2, (int)arg3, (str)arg4) -> None :
-
-    C++ signature :
-        void xrefSubcommandAttachItem(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def xrefSubcommandAttachItem (self, db: PyDb.Database, activity: int, path: str)-> None :
+      '''                             '''
     ...
-    def xrefSubcommandBindItem (self, *args, **kwargs)-> None :
-      '''xrefSubcommandBindItem( (EditorReactor)arg1, (Database)arg2, (int)arg3, (ObjectId)arg4) -> None :
-
-    C++ signature :
-        void xrefSubcommandBindItem(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},int,class PyDbObjectId {lvalue})'''
+    def xrefSubcommandBindItem (self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def xrefSubcommandDetachItem (self, *args, **kwargs)-> None :
-      '''xrefSubcommandDetachItem( (EditorReactor)arg1, (Database)arg2, (int)arg3, (ObjectId)arg4) -> None :
-
-    C++ signature :
-        void xrefSubcommandDetachItem(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},int,class PyDbObjectId {lvalue})'''
+    def xrefSubcommandDetachItem (self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def xrefSubcommandOverlayItem (self, *args, **kwargs)-> None :
-      '''xrefSubcommandOverlayItem( (EditorReactor)arg1, (Database)arg2, (int)arg3, (str)arg4) -> None :
-
-    C++ signature :
-        void xrefSubcommandOverlayItem(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def xrefSubcommandOverlayItem (self, db: PyDb.Database, activity: int, path: str)-> None :
+      '''                             '''
     ...
-    def xrefSubcommandPathItem (self, *args, **kwargs)-> None :
-      '''xrefSubcommandPathItem( (EditorReactor)arg1, (int)arg2, (ObjectId)arg3, (str)arg4) -> None :
-
-    C++ signature :
-        void xrefSubcommandPathItem(class PyEditorReactor {lvalue},int,class PyDbObjectId {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def xrefSubcommandPathItem (self, activity: int, blockId: PyDb.ObjectId, path: str)-> None :
+      '''                             '''
     ...
-    def xrefSubcommandReloadItem (self, *args, **kwargs)-> None :
-      '''xrefSubcommandReloadItem( (EditorReactor)arg1, (Database)arg2, (int)arg3, (ObjectId)arg4) -> None :
-
-    C++ signature :
-        void xrefSubcommandReloadItem(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},int,class PyDbObjectId {lvalue})'''
+    def xrefSubcommandReloadItem (self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def xrefSubcommandUnloadItem (self, *args, **kwargs)-> None :
-      '''xrefSubcommandUnloadItem( (EditorReactor)arg1, (Database)arg2, (int)arg3, (ObjectId)arg4) -> None :
-
-    C++ signature :
-        void xrefSubcommandUnloadItem(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},int,class PyDbObjectId {lvalue})'''
+    def xrefSubcommandUnloadItem (self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
 
 class InputPoint(object):
