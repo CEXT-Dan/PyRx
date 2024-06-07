@@ -509,43 +509,60 @@ AcGeCurve2d* PyGeCurve2d::impObj(const std::source_location& src /*= std::source
 //AcGeCircArc2d wrapper
 void makePyGeCircArc2dWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- cent: PyGe.Point2d, radius: float\n"
+        "- cent: PyGe.Point2d, radius: float, startAngle: float, endAngle: float\n"
+        "- cent: PyGe.Point2d, radius: float, startAngle: float, endAngle: float, refVec: PyGe.Vector2d, isClockWise: bool\n"
+        "- startPoint: PyGe.Point2d, pnt: PyGe.Point2d, endPoint: PyGe.Point2d\n"
+        "- startPoint: PyGe.Point2d, endPoint: PyGe.Point2d, bulge: float, bulgeFlag: bool\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- cent: PyGe.Point2d, radius: float\n"
+        "- cent: PyGe.Point2d, radius: float, startAngle: float, endAngle: float, refVec: AcGe.Vector2d, isClockWise: bool\n"
+        "- startPoint: PyGe.Point2d, pnt: PyGe.Point2d, endPoint: PyGe.Point2d\n"
+        "- startPoint: PyGe.Point2d, endPoint: PyGe.Point2d, bulge: float, bulgeFlag: bool\n"
+        "- curve1: PyGe.Curve2d, curve2: PyGe.Curve2d, radius: float\n"
+        "- curve1: PyGe.Curve2d, curve2: PyGe.Curve2d, curve3: PyGe.Curve2d\n";
+
+    PyDocString DS("CircArc2d");
     class_<PyGeCircArc2d, bases<PyGeCurve2d>>("CircArc2d")
         .def(init<>())
         .def(init<const AcGePoint2d&, double>())
         .def(init<const AcGePoint2d&, double, double, double>())
         .def(init<const AcGePoint2d&, double, double, double, const AcGeVector2d&, bool>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&, const AcGePoint2d&>())
-        .def(init<const AcGePoint2d&, const AcGePoint2d&, double, bool>())
+        .def(init<const AcGePoint2d&, const AcGePoint2d&, double, bool>(DS.CTOR(ctor)))
         .def("intersectWith", &PyGeCircArc2d::intersectWith1)
         .def("intersectWith", &PyGeCircArc2d::intersectWith2)
         .def("intersectWith", &PyGeCircArc2d::intersectWith3)
-        .def("intersectWith", &PyGeCircArc2d::intersectWith4)
+        .def("intersectWith", &PyGeCircArc2d::intersectWith4, DS.ARGS({ "val: PyGe.CircArc2d | PyGe.LinearEnt2d", "tol: PyGe.Tol=None" }))
         .def("tangent", &PyGeCircArc2d::tangent1)
-        .def("tangent", &PyGeCircArc2d::tangent2)
+        .def("tangent", &PyGeCircArc2d::tangent2, DS.ARGS({ "pt: PyGe.Point2d","tol: PyGe.Tol=None" }))
         .def("isInside", &PyGeCircArc2d::isInside1)
-        .def("isInside", &PyGeCircArc2d::isInside2)
-        .def("center", &PyGeCircArc2d::center)
-        .def("radius", &PyGeCircArc2d::radius)
-        .def("startAng", &PyGeCircArc2d::startAng)
-        .def("endAng", &PyGeCircArc2d::endAng)
-        .def("isClockWise", &PyGeCircArc2d::isClockWise)
-        .def("refVec", &PyGeCircArc2d::refVec)
-        .def("startPoint", &PyGeCircArc2d::startPoint)
-        .def("endPoint", &PyGeCircArc2d::endPoint)
-        .def("setCenter", &PyGeCircArc2d::setCenter)
-        .def("setRadius", &PyGeCircArc2d::setRadius)
-        .def("setAngles", &PyGeCircArc2d::setAngles)
+        .def("isInside", &PyGeCircArc2d::isInside2, DS.ARGS({ "pt: PyGe.Point2d","tol: PyGe.Tol=None" }))
+        .def("center", &PyGeCircArc2d::center, DS.ARGS())
+        .def("radius", &PyGeCircArc2d::radius, DS.ARGS())
+        .def("startAng", &PyGeCircArc2d::startAng, DS.ARGS())
+        .def("endAng", &PyGeCircArc2d::endAng, DS.ARGS())
+        .def("isClockWise", &PyGeCircArc2d::isClockWise, DS.ARGS())
+        .def("refVec", &PyGeCircArc2d::refVec, DS.ARGS())
+        .def("startPoint", &PyGeCircArc2d::startPoint, DS.ARGS())
+        .def("endPoint", &PyGeCircArc2d::endPoint, DS.ARGS())
+        .def("setCenter", &PyGeCircArc2d::setCenter, DS.ARGS({ "pt: PyGe.Point2d" }))
+        .def("setRadius", &PyGeCircArc2d::setRadius, DS.ARGS({ "val: float" }))
+        .def("setAngles", &PyGeCircArc2d::setAngles, DS.ARGS({ "startAng: float","endAng: float" }))
         .def("setToComplement", &PyGeCircArc2d::setToComplement)
-        .def("setRefVec", &PyGeCircArc2d::setRefVec)
+        .def("setRefVec", &PyGeCircArc2d::setRefVec, DS.ARGS())
         .def("set", &PyGeCircArc2d::set1)
         .def("set", &PyGeCircArc2d::set2)
         .def("set", &PyGeCircArc2d::set3)
         .def("set", &PyGeCircArc2d::set4)
         .def("set", &PyGeCircArc2d::set5)
-        .def("set", &PyGeCircArc2d::set6)
-        .def("cast", &PyGeCircArc2d::cast).staticmethod("cast")
-        .def("copycast", &PyGeCircArc2d::copycast).staticmethod("copycast")
-        .def("className", &PyGeCircArc2d::className).staticmethod("className")
+        .def("set", &PyGeCircArc2d::set6, DS.OVRL(setOverloads))
+        .def("cast", &PyGeCircArc2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGeCircArc2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGeCircArc2d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
