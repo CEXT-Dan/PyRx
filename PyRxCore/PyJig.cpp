@@ -12,7 +12,7 @@ void makePyEdJigWrapper()
 {
     PyDocString DS("Jig");
     class_<PyJig, boost::noncopyable>("Jig", boost::python::no_init)
-        .def(init<const PyDbEntity&>())
+        .def(init<const PyDbEntity&>(DS.ARGS({ "entity: PyDb.Entity" })))
         .def("drag", &PyJig::dragwr1)
 #if !defined(_BRXTARGET240)
         .def("drag", &PyJig::dragwr2, DS.ARGS({ "style: PyEd.DragStyle=None" }))
@@ -99,11 +99,11 @@ void makePyEdJigWrapper()
 #if !defined (_BRXTARGET240)
     class_<AcEdDragStyle>("DragStyle")
         .def(init<>())
-        .def(init<AcEdDragStyle::StyleType, AcEdDragStyle::StyleType>())
-        .def("styleTypeForOriginal", &AcEdDragStyle::styleTypeForOriginal)
-        .def("styleTypeForDragged", &AcEdDragStyle::styleTypeForDragged)
-        .def("setStyleTypeForOriginal", &AcEdDragStyle::setStyleTypeForOriginal)
-        .def("setStyleTypeForDragged", &AcEdDragStyle::setStyleTypeForDragged)
+        .def(init<AcEdDragStyle::StyleType, AcEdDragStyle::StyleType>(DS.ARGS({ "styleTypeForOriginal: PyEd.DragStyleType","styleTypeForDragged: PyEd.DragStyleType" })))
+        .def("styleTypeForOriginal", &AcEdDragStyle::styleTypeForOriginal, DS.ARGS())
+        .def("styleTypeForDragged", &AcEdDragStyle::styleTypeForDragged, DS.ARGS())
+        .def("setStyleTypeForOriginal", &AcEdDragStyle::setStyleTypeForOriginal,DS.ARGS({ "styleTypeForOriginal: PyEd.DragStyleType" }))
+        .def("setStyleTypeForDragged", &AcEdDragStyle::setStyleTypeForDragged, DS.ARGS({ "styleTypeForDragged: PyEd.DragStyleType" }))
         ;
 #endif
 #if !defined (_BRXTARGET240)
@@ -293,6 +293,7 @@ void makePyEdDrawJigWrapper()
 {
     PyDocString DS("DrawJig");
     class_<PyDrawJig, boost::noncopyable>("DrawJig")
+        .def(init<>(DS.ARGS()))
         .def("drag", &PyDrawJig::dragwr1)
 #if !defined(_BRXTARGET240)
         .def("drag", &PyDrawJig::dragwr2, DS.ARGS({ "style: PyEd.DragStyle=None" }))

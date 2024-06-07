@@ -10,14 +10,11 @@ from typing import overload
 from typing import Any
 
 class AutoSysVar(object):
-    def __init__ (self, varname:str, value)-> None :
+    def __init__ (self, varName:str, value)-> None :
       '''                             '''
     ...
-    def detach (self, *args, **kwargs)-> None :
-      '''detach( (AutoSysVar)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void detach(class PySysVar {lvalue},bool)'''
+    def detach (self, val: bool)-> None :
+      '''                             '''
     ...
 
 class Core(object):
@@ -916,45 +913,20 @@ class DragStatus(object):
     ...
 
 class DragStyle(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (DragStyleType)arg2, (DragStyleType)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,enum AcEdDragStyle::StyleType,enum AcEdDragStyle::StyleType)'''
+    def __init__ (self, styleTypeForOriginal: PyEd.DragStyleType, styleTypeForDragged: PyEd.DragStyleType)-> None :
+      '''                             '''
     ...
-    def setStyleTypeForDragged (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''setStyleTypeForDragged( (DragStyle)arg1, (DragStyleType)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setStyleTypeForDragged(class AcEdDragStyle {lvalue},enum AcEdDragStyle::StyleType)'''
+    def setStyleTypeForDragged (self, styleTypeForDragged: PyEd.DragStyleType)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
-    def setStyleTypeForOriginal (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''setStyleTypeForOriginal( (DragStyle)arg1, (DragStyleType)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setStyleTypeForOriginal(class AcEdDragStyle {lvalue},enum AcEdDragStyle::StyleType)'''
+    def setStyleTypeForOriginal (self, styleTypeForOriginal: PyEd.DragStyleType)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
-    def styleTypeForDragged (self, *args, **kwargs)-> PyEd.DragStyleType :
-      '''styleTypeForDragged( (DragStyle)arg1) -> DragStyleType :
-
-    C++ signature :
-        enum AcEdDragStyle::StyleType styleTypeForDragged(class AcEdDragStyle {lvalue})'''
+    def styleTypeForDragged (self)-> PyEd.DragStyleType :
+      '''                             '''
     ...
-    def styleTypeForOriginal (self, *args, **kwargs)-> PyEd.DragStyleType :
-      '''styleTypeForOriginal( (DragStyle)arg1) -> DragStyleType :
-
-    C++ signature :
-        enum AcEdDragStyle::StyleType styleTypeForOriginal(class AcEdDragStyle {lvalue})'''
+    def styleTypeForOriginal (self)-> PyEd.DragStyleType :
+      '''                             '''
     ...
 
 class DragStyleType(object):
@@ -1002,11 +974,8 @@ class DragStyleType(object):
     ...
 
 class DrawJig(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
     def acquireAngle (self, basePnt: PyGe.Point3d=None)-> tuple[PyGe.DragStatus,float] :
       '''                             '''
@@ -1697,17 +1666,11 @@ This class cannot be instantiated from Python'''
     ...
 
 class InputPointFilter(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
-    def processInputPoint (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''processInputPoint( (InputPointFilter)arg1, (InputPoint)arg2, (InputPointFilterResult)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus processInputPoint(class PyEdInputPointFilter {lvalue},class PyEdInputPoint,class PyEdInputPointFilterResult {lvalue})'''
+    def processInputPoint (self, input: PyEd.InputPoint, output: PyEd.InputPointFilterResult)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
 
 class InputPointFilterResult(object):
@@ -1789,11 +1752,8 @@ This class cannot be instantiated from Python'''
     ...
 
 class InputPointMonitor(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
     def monitorInputPoint (self, input : PyEd.InputPoint, output : PyEd.InputPointMonitorResult)-> PyDb.ErrorStatus :
       '''                             '''
@@ -1815,11 +1775,8 @@ This class cannot be instantiated from Python'''
     ...
 
 class Jig(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbEntity)'''
+    def __init__ (self, entity: PyDb.Entity)-> None :
+      '''                             '''
     ...
     def acquireAngle (self, basePnt: PyGe.Point3d=None)-> tuple[PyGe.DragStatus,float] :
       '''                             '''
@@ -2115,22 +2072,15 @@ class UIContext(object):
     def __init__ (self)-> None :
       '''                             '''
     ...
-    def addDefaultContextMenu (self, *args, **kwargs)-> bool :
-      '''addDefaultContextMenu( (UIContext)arg1) -> bool :
 
-    C++ signature :
-        bool addDefaultContextMenu(class PyEdUIContext {lvalue})
-
-addDefaultContextMenu( (UIContext)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool addDefaultContextMenu(class PyEdUIContext {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @staticmethod
+    def addDefaultContextMenu (context: PyEd.UIContext,appName: str=None)-> bool :
+      '''                             '''
     ...
-    def addObjectContextMenu (self, *args, **kwargs)-> bool :
-      '''addObjectContextMenu( (RxClass)arg1, (UIContext)arg2) -> bool :
 
-    C++ signature :
-        bool addObjectContextMenu(class PyRxClass {lvalue},class PyEdUIContext {lvalue})'''
+    @staticmethod
+    def addObjectContextMenu (val: PyRx.RxClass,context: PyEd.UIContext)-> bool :
+      '''                             '''
     ...
     def getMenuContext (self, val: PyRx.RxClass, ids: list[PyDb.ObjectId])-> object :
       '''                             '''
@@ -2141,17 +2091,15 @@ addDefaultContextMenu( (UIContext)arg1, (str)arg2) -> bool :
     def onCommand (self, mnuCmd: int)-> None :
       '''                             '''
     ...
-    def removeDefaultContextMenu (self, *args, **kwargs)-> bool :
-      '''removeDefaultContextMenu( (UIContext)arg1) -> bool :
 
-    C++ signature :
-        bool removeDefaultContextMenu(class PyEdUIContext {lvalue})'''
+    @staticmethod
+    def removeDefaultContextMenu (context: PyEd.UIContext)-> bool :
+      '''                             '''
     ...
-    def removeObjectContextMenu (self, *args, **kwargs)-> bool :
-      '''removeObjectContextMenu( (RxClass)arg1, (UIContext)arg2) -> bool :
 
-    C++ signature :
-        bool removeObjectContextMenu(class PyRxClass {lvalue},class PyEdUIContext {lvalue})'''
+    @staticmethod
+    def removeObjectContextMenu (val: PyRx.RxClass,context: PyEd.UIContext)-> bool :
+      '''                             '''
     ...
 
 class UserInputControls(object):
@@ -2234,11 +2182,8 @@ class UserInteraction(object):
     ...
 
 class Util(object):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod

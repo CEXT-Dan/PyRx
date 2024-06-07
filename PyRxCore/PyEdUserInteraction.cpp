@@ -14,8 +14,8 @@ void makePySysVarWrapper()
 {
     PyDocString DS("AutoSysVar");
     class_<PySysVar>("AutoSysVar", no_init)
-        .def(init<const std::string&, const boost::python::object& >(DS.ARGS({ "varname:str","value" })))
-        .def("detach", &PySysVar::detach)
+        .def(init<const std::string&, const boost::python::object& >(DS.ARGS({ "varName:str","value" })))
+        .def("detach", &PySysVar::detach, DS.ARGS({ "val: bool" }))
         ;
 }
 
@@ -167,11 +167,11 @@ void makePyEdUIContextWrapper()
         .def("onCommand", &PyEdUIContext::onCommandWr, DS.ARGS({ "mnuCmd: int" }))
         .def("OnUpdateMenu", &PyEdUIContext::OnUpdateMenuWr, DS.ARGS())
         .def("hitPoint", &PyEdUIContext::hitPoint, DS.ARGS())
-        .def("addObjectContextMenu", &PyEdUIContext::addObjectContextMenu).staticmethod("addObjectContextMenu")
-        .def("removeObjectContextMenu", &PyEdUIContext::removeObjectContextMenu).staticmethod("removeObjectContextMenu")
+        .def("addObjectContextMenu", &PyEdUIContext::addObjectContextMenu, DS.SARGS({ "val: PyRx.RxClass","context: PyEd.UIContext" })).staticmethod("addObjectContextMenu")
+        .def("removeObjectContextMenu", &PyEdUIContext::removeObjectContextMenu, DS.SARGS({ "val: PyRx.RxClass","context: PyEd.UIContext" })).staticmethod("removeObjectContextMenu")
         .def("addDefaultContextMenu", &PyEdUIContext::addDefaultContextMenu1)
-        .def("addDefaultContextMenu", &PyEdUIContext::addDefaultContextMenu2).staticmethod("addDefaultContextMenu")
-        .def("removeDefaultContextMenu", &PyEdUIContext::removeDefaultContextMenu).staticmethod("removeDefaultContextMenu")
+        .def("addDefaultContextMenu", &PyEdUIContext::addDefaultContextMenu2, DS.SARGS({ "context: PyEd.UIContext","appName: str=None" })).staticmethod("addDefaultContextMenu")
+        .def("removeDefaultContextMenu", &PyEdUIContext::removeDefaultContextMenu, DS.SARGS({ "context: PyEd.UIContext" })).staticmethod("removeDefaultContextMenu")
         ;
 }
 
@@ -235,7 +235,7 @@ boost::python::object PyEdUIContext::getMenuContextWr(const PyRxClass& pyclass, 
     {
         if (const override& f = this->get_override("getMenuContext"))
         {
-           return f(pyclass, pyids);
+            return f(pyclass, pyids);
         }
     }
     catch (...)
