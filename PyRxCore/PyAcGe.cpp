@@ -1538,6 +1538,25 @@ BOOST_PYTHON_MODULE(PyGe)
 #endif
         .export_values()
         ;
+
+    enum_<AcGeXConfig>("AcGeXConfig")
+        .value("kNotDefined", AcGe::AcGeXConfig::kNotDefined)
+        .value("kUnknown", AcGe::AcGeXConfig::kUnknown)
+        .value("kLeftRight", AcGe::AcGeXConfig::kLeftRight)
+        .value("kRightLeft", AcGe::AcGeXConfig::kRightLeft)
+        .value("kLeftLeft", AcGe::AcGeXConfig::kLeftLeft)
+        .value("kRightRight", AcGe::AcGeXConfig::kRightRight)
+        .value("kPointLeft", AcGe::AcGeXConfig::kPointLeft)
+        .value("kPointRight", AcGe::AcGeXConfig::kPointRight)
+        .value("kLeftOverlap", AcGe::AcGeXConfig::kLeftOverlap)
+        .value("kOverlapLeft", AcGe::AcGeXConfig::kOverlapLeft)
+        .value("kRightOverlap", AcGe::AcGeXConfig::kRightOverlap)
+        .value("kOverlapRight", AcGe::AcGeXConfig::kOverlapRight)
+        .value("kOverlapStart", AcGe::AcGeXConfig::kOverlapStart)
+        .value("kOverlapEnd", AcGe::AcGeXConfig::kOverlapEnd)
+        .value("kOverlapOverlap", AcGe::AcGeXConfig::kOverlapOverlap)
+        .export_values()
+        ;
 };
 
 void initPyGeModule()
