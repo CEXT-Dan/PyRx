@@ -68,6 +68,74 @@ class AcGeError(object):
       '''None'''
     ...
 
+class AcGeXConfig(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
+    ...
+    def kLeftLeft (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kLeftOverlap (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kLeftRight (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kNotDefined (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOverlapEnd (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOverlapLeft (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOverlapOverlap (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOverlapRight (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOverlapStart (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kPointLeft (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kPointRight (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kRightLeft (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kRightOverlap (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kRightRight (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kUnknown (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+
 class AutoTol(object):
     def __init__ (self)-> None :
       '''                             '''
@@ -12022,10 +12090,10 @@ class Vector2d(object):
       '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002AF8753C820>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001DC6A7FC820>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002AF8753C820>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001DC6A7FC820>])'''
     ...
     def isParallelTo (self, vec: PyGe.Vector2d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -12034,16 +12102,16 @@ class Vector2d(object):
       '''                             '''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002AF8753C550>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001DC6A7FC550>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002AF8753C550>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001DC6A7FC550>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002AF8753C5E0>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001DC6A7FC5E0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002AF8753C5E0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001DC6A7FC5E0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''

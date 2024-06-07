@@ -311,7 +311,6 @@ class TestGe(unittest.TestCase):
         seg.reverseParam()
         self.assertEqual(seg.startPoint(), pnt2)
     
-
     @unittest.skipIf(host == "BRX24" or host == "GRX24" or "ZRX" in host, "known failure")  
     def test_surfSurfInt(self):
         vec = PyGe.Vector3d.kXAxis
@@ -329,6 +328,26 @@ class TestGe(unittest.TestCase):
         composite = pl.getAcGeCurve()
         gecurves = composite.getCurveList()
         self.assertEqual(len(gecurves),21)
+        
+    def test_CurveCurveInt3d_overlap(self):
+        objHnd1 = Db.Handle("2c9405")
+        objId1 =  dbc.dbs["06457"].getObjectId(False, objHnd1)
+        self.assertEqual(objId1.isValid(), True)
+        objHnd2 = Db.Handle("2c9406")
+        objId2 =  dbc.dbs["06457"].getObjectId(False, objHnd2)
+        self.assertEqual(objId2.isValid(), True)
+        dbcurve1 = Db.Curve(objId1)
+        dbcurve2 = Db.Curve(objId2)
+        gecurve1 = dbcurve1.getAcGeCurve()
+        gecurve2 = dbcurve2.getAcGeCurve()
+        inter = PyGe.CurveCurveInt3d(gecurve1,gecurve2)
+        self.assertEqual(inter.overlapCount(), 1)
+        ranges  = inter.getOverlapRanges(0)
+        r1 :PyGe.Interval = ranges[0]
+        r2 :PyGe.Interval = ranges[1]
+        self.assertAlmostEqual(r1.length(), 1142.86444953577)
+        self.assertAlmostEqual(r2.length(), 1142.86444953577)
+
         
 def pyge():
     try:
