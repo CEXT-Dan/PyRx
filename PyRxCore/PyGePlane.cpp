@@ -200,21 +200,32 @@ AcGePlane* PyGePlane::impObj(const std::source_location& src /*= std::source_loc
 //PyGeBoundedPlane wrapper
 void makePyGeBoundedPlaneWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- origin: PyGe.Point3d, uVec: PyGe.Vector3d, vVec: PyGe.Vector3d\n"
+        "- p1: PyGe.Point3d, origin: PyGe.Point3d, p2: PyGe.Point3d\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- origin: PyGe.Point3d, uVec: PyGe.Vector3d, vVec: PyGe.Vector3d\n"
+        "- p1: PyGe.Point3d, origin: PyGe.Point3d, p2: PyGe.Point3d\n";
+
+
+    PyDocString DS("BoundedPlane");
     class_<PyGeBoundedPlane, bases<PyGePlanarEnt>>("BoundedPlane")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&>())
-        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>(DS.CTOR(ctor)))
         .def("intersectWith", &PyGeBoundedPlane::intersectWith1)
         .def("intersectWith", &PyGeBoundedPlane::intersectWith2)
         .def("intersectWith", &PyGeBoundedPlane::intersectWith3)
         .def("intersectWith", &PyGeBoundedPlane::intersectWith4)
         .def("intersectWith", &PyGeBoundedPlane::intersectWith5)
-        .def("intersectWith", &PyGeBoundedPlane::intersectWith6)
+        .def("intersectWith", &PyGeBoundedPlane::intersectWith6, DS.ARGS({ "val: PyGe.LinearEnt3d | PyGe.Plane | PyGe.BoundedPlane", "tol: PyGe.Tol=None"}))
         .def("set", &PyGeBoundedPlane::set1)
-        .def("set", &PyGeBoundedPlane::set2)
-        .def("cast", &PyGeBoundedPlane::cast).staticmethod("cast")
-        .def("copycast", &PyGeBoundedPlane::cast).staticmethod("copycast")
-        .def("className", &PyGeBoundedPlane::className).staticmethod("className")
+        .def("set", &PyGeBoundedPlane::set2, DS.OVRL(setOverloads))
+        .def("cast", &PyGeBoundedPlane::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeBoundedPlane::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeBoundedPlane::className, DS.SARGS()).staticmethod("className")
         ;
 }
 

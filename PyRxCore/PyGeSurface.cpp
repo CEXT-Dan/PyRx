@@ -9,29 +9,41 @@ using namespace boost::python;
 //AcGeSurface wrapper
 void makePyGeSurfaceWrapper()
 {
+    constexpr const std::string_view isOnOverloads = "Overloads:\n"
+        "- pnt: PyGe.Point3d\n"
+        "- pnt: PyGe.Point3d, tol: PyGe.Tol = None\n"
+        "- pnt: PyGe.Point3d, paramPoint: PyGe.Point2d\n"
+        "- pnt: PyGe.Point3d, paramPoint: PyGe.Point2d, tol: PyGe.Tol = None\n";
+
+    constexpr const std::string_view evalPointOverloads = "Overloads:\n"
+        "- param: PyGe.Point2d\n"
+        "- param: PyGe.Point3d, derivOrd: int, vecs: list[PyGe.Vector3d]\n"
+        "- param: PyGe.Point3d, derivOrd: int, vecs: list[PyGe.Vector3d], normal: PyGe.Vector3d\n";
+
+    PyDocString DS("Surface");
     class_<PyGeSurface, bases<PyGeEntity3d>>("Surface", boost::python::no_init)
         .def("paramOf", &PyGeSurface::paramOf)
-        .def("paramOf", &PyGeSurface::paramOfTol)
+        .def("paramOf", &PyGeSurface::paramOfTol, DS.ARGS({ "pt: PyGe.Point3d","tol: PyGe.Tol=None" }))
         .def("isOn", &PyGeSurface::isOn1)
         .def("isOn", &PyGeSurface::isOn2)
         .def("isOn", &PyGeSurface::isOn3)
-        .def("isOn", &PyGeSurface::isOn4)
+        .def("isOn", &PyGeSurface::isOn4,DS.OVRL(isOnOverloads))
         .def("closestPointTo", &PyGeSurface::closestPointTo1)
-        .def("closestPointTo", &PyGeSurface::closestPointTo2)
+        .def("closestPointTo", &PyGeSurface::closestPointTo2, DS.ARGS({ "pt: PyGe.Point3d","tol: PyGe.Tol=None" }))
         .def("distanceTo", &PyGeSurface::distanceTo1)
-        .def("distanceTo", &PyGeSurface::distanceTo2)
-        .def("isNormalReversed", &PyGeSurface::isNormalReversed)
-        .def("reverseNormal", &PyGeSurface::reverseNormal)
+        .def("distanceTo", &PyGeSurface::distanceTo2, DS.ARGS({ "pt: PyGe.Point3d","tol: PyGe.Tol=None" }))
+        .def("isNormalReversed", &PyGeSurface::isNormalReversed, DS.ARGS())
+        .def("reverseNormal", &PyGeSurface::reverseNormal, DS.ARGS())
         .def("isClosedInU", &PyGeSurface::isClosedInU1)
-        .def("isClosedInU", &PyGeSurface::isClosedInU2)
+        .def("isClosedInU", &PyGeSurface::isClosedInU2, DS.ARGS({ "tol: PyGe.Tol=None" }))
         .def("isClosedInV", &PyGeSurface::isClosedInV1)
-        .def("isClosedInV", &PyGeSurface::isClosedInV2)
+        .def("isClosedInV", &PyGeSurface::isClosedInV2, DS.ARGS({ "tol: PyGe.Tol=None" }))
         .def("evalPoint", &PyGeSurface::evalPoint1)
         .def("evalPoint", &PyGeSurface::evalPoint2)
-        .def("evalPoint", &PyGeSurface::evalPoint3)
-        .def("cast", &PyGeSurface::cast).staticmethod("cast")
-        .def("copycast", &PyGeSurface::copycast).staticmethod("copycast")
-        .def("className", &PyGeSurface::className).staticmethod("className")
+        .def("evalPoint", &PyGeSurface::evalPoint3, DS.OVRL(evalPointOverloads))
+        .def("cast", &PyGeSurface::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeSurface::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeSurface::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
