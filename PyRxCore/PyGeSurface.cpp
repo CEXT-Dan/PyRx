@@ -234,33 +234,44 @@ AcGeSurface* PyGeSurface::impObj(const std::source_location& src /*= std::source
 void makePyGeConeWrapper()
 {
 #if !defined(_BRXTARGET240)
+
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- cosineAngle: float, sineAngle: float, baseOrigin: PyGe.Point3d, baseRadius: float, axisOfSymmetry: PyGe.Vector3d\n"
+        "- cosineAngle: float, sineAngle: float, baseOrigin: PyGe.Point3d, baseRadius: float, axisOfSymmetry: PyGe.Vector3d, refAxis: PyGe.Vector3d, height: PyGe.Interval, startAngle: float, endAngle: float\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- cosineAngle: float, sineAngle: float, baseOrigin: PyGe.Point3d, baseRadius: float, axisOfSymmetry: PyGe.Vector3d\n"
+        "- cosineAngle: float, sineAngle: float, baseOrigin: PyGe.Point3d, baseRadius: float, axisOfSymmetry: PyGe.Vector3d, refAxis: PyGe.Vector3d, height: PyGe.Interval, startAngle: float, endAngle: float\n";
+
+    PyDocString DS("Cone");
     class_<PyGeCone, bases<PyGeSurface>>("Cone")
         .def(init<>())
         .def(init<double, double, const  AcGePoint3d&, double, const AcGeVector3d&>())
-        .def(init<double, double, const  AcGePoint3d&, double, const AcGeVector3d&, const AcGeVector3d&, const AcGeInterval&, double, double>())
-        .def("baseRadius", &PyGeCone::baseRadius)
-        .def("baseCenter", &PyGeCone::baseCenter)
-        .def("getAngles", &PyGeCone::getAngles)
-        .def("halfAngle", &PyGeCone::halfAngle)
-        .def("getHalfAngle", &PyGeCone::getHalfAngle)
-        .def("getHeight", &PyGeCone::getHeight)
-        .def("heightAt", &PyGeCone::heightAt)
-        .def("axisOfSymmetry", &PyGeCone::axisOfSymmetry)
-        .def("refAxis", &PyGeCone::refAxis)
-        .def("apex", &PyGeCone::apex)
+        .def(init<double, double, const  AcGePoint3d&, double, const AcGeVector3d&, const AcGeVector3d&, const AcGeInterval&, double, double>(DS.CTOR(ctor)))
+        .def("baseRadius", &PyGeCone::baseRadius, DS.ARGS())
+        .def("baseCenter", &PyGeCone::baseCenter, DS.ARGS())
+        .def("getAngles", &PyGeCone::getAngles, DS.ARGS())
+        .def("halfAngle", &PyGeCone::halfAngle, DS.ARGS())
+        .def("getHalfAngle", &PyGeCone::getHalfAngle, DS.ARGS())
+        .def("getHeight", &PyGeCone::getHeight, DS.ARGS())
+        .def("heightAt", &PyGeCone::heightAt, DS.ARGS({ "val: float" }))
+        .def("axisOfSymmetry", &PyGeCone::axisOfSymmetry, DS.ARGS())
+        .def("refAxis", &PyGeCone::refAxis, DS.ARGS())
+        .def("apex", &PyGeCone::apex, DS.ARGS())
         .def("isClosed", &PyGeCone::isClosed1)
-        .def("isClosed", &PyGeCone::isClosed2)
-        .def("isOuterNormal", &PyGeCone::isOuterNormal)
-        .def("setBaseRadius", &PyGeCone::setBaseRadius)
-        .def("setAngles", &PyGeCone::setAngles)
-        .def("setHeight", &PyGeCone::setHeight)
+        .def("isClosed", &PyGeCone::isClosed2, DS.ARGS({ "tol: PyGe.Tol=None" }))
+        .def("isOuterNormal", &PyGeCone::isOuterNormal, DS.ARGS())
+        .def("setBaseRadius", &PyGeCone::setBaseRadius, DS.ARGS({ "val: float" }))
+        .def("setAngles", &PyGeCone::setAngles, DS.ARGS({ "startAngle: float", "endAngle: float" }))
+        .def("setHeight", &PyGeCone::setHeight, DS.ARGS({ "val: PyGe.Interval" }))
         .def("set", &PyGeCone::set1)
-        .def("set", &PyGeCone::set2)
+        .def("set", &PyGeCone::set2, DS.OVRL(setOverloads))
         .def("intersectWith", &PyGeCone::intersectWith1)
-        .def("intersectWith", &PyGeCone::intersectWith2)
-        .def("cast", &PyGeCone::cast).staticmethod("cast")
-        .def("copycast", &PyGeCone::copycast).staticmethod("copycast")
-        .def("className", &PyGeCone::className).staticmethod("className")
+        .def("intersectWith", &PyGeCone::intersectWith2, DS.ARGS({ "val: PyGe.LinearEnt3d",  "tol: PyGe.Tol=None" }))
+        .def("cast", &PyGeCone::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeCone::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeCone::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
