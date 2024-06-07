@@ -163,8 +163,10 @@ PyEdInputPointMonitor* PyEdInputPointMonitorImpl::backPtr(const std::source_loca
 //PyEdInputPointFilter
 void makePyEdInputPointFilterWrapper()
 {
+    PyDocString DS("InputPointFilter");
     class_<PyEdInputPointFilter>("InputPointFilter")
-        .def("processInputPoint", &PyEdInputPointFilter::processInputPoint)
+        .def(init<>(DS.ARGS()))
+        .def("processInputPoint", &PyEdInputPointFilter::processInputPoint, DS.ARGS({ "input: PyEd.InputPoint","output: PyEd.InputPointFilterResult" }))
         ;
 }
 
@@ -202,6 +204,7 @@ void makePyEdInputPointMonitorWrapper()
 {
     PyDocString DS("InputPointMonitor");
     class_<PyEdInputPointMonitor>("InputPointMonitor")
+        .def(init<>(DS.ARGS()))
         .def("monitorInputPoint", &PyEdInputPointMonitor::monitorInputPoint,DS.ARGS({ "input : PyEd.InputPoint","output : PyEd.InputPointMonitorResult" }))
         ;
 }

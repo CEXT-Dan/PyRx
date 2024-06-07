@@ -60,6 +60,7 @@ void makePyUtilWrapper()
 {
     PyDocString DS("Util");
     class_<Util>("Util")
+        .def(init<>(DS.ARGS()))
         .def("angle", &Util::angle, DS.SARGS({ "pt1: PyGe.Point3d","pt2: PyGe.Point3d" })).staticmethod("angle")
         .def("cvUnit", &Util::cvUnit, DS.SARGS({ "val: float","oldunit: str","newunit: str" })).staticmethod("cvUnit")
         .def("distance", &Util::distance, DS.SARGS({ "pt1: PyGe.Point3d","pt2: PyGe.Point3d" })).staticmethod("distance")
