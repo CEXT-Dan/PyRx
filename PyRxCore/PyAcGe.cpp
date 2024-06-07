@@ -22,7 +22,6 @@
 #include "PyGeSurfSurfInt.h"
 #include "PyGeKnotVector.h"
 
-
 using namespace boost::python;
 
 inline double roundPointComponentToGTol(double value)
@@ -155,7 +154,7 @@ void makePyGeScale2dWrapper()
 //AcGeTol
 static AcGeTol getTol()
 {
-    return AcGeContext::gTol;//copy
+    return AcGeContext::gTol;// copy to python doesn't accidentally change it 
 }
 
 static void setGlobalTol(const AcGeTol& tol)
@@ -663,7 +662,6 @@ static void makePyGeMatrix2dWrapper()
         ;
 }
 
-
 //---------------------------------------------------------------------------------------------------------------
 //AcGeScale3d
 double AcGeScale3dGetItem(const AcGeScale3d& p, int idx)
@@ -1123,18 +1121,22 @@ static AcGeMatrix3d AcGeMatrix3dmirroring1(const PyGePlane& pln)
 {
     return AcGeMatrix3d::mirroring(*pln.impObj());
 }
+
 static AcGeMatrix3d AcGeMatrix3dmirroring2(const AcGePoint3d& pnt)
 {
     return AcGeMatrix3d::mirroring(pnt);
 }
+
 static AcGeMatrix3d AcGeMatrix3dmirroring3(const AcGeLine3d& line)
 {
     return AcGeMatrix3d::mirroring(line);
 }
+
 static AcGeMatrix3d AcGeMatrix3dprojection(const PyGePlane& projectionPlane, const AcGeVector3d& projectDir)
 {
     return AcGeMatrix3d::projection(*projectionPlane.impObj(), projectDir);
 }
+
 static AcGeMatrix3d AcGeMatrix3dalignCoordSys(const AcGePoint3d& fromOrigin,
     const AcGeVector3d& fromXAxis,
     const AcGeVector3d& fromYAxis,
@@ -1151,14 +1153,17 @@ static AcGeMatrix3d AcGeMatrix3dworldToPlane1(const AcGeVector3d& normal)
 {
     return AcGeMatrix3d::worldToPlane(normal);
 }
+
 static AcGeMatrix3d AcGeMatrix3dworldToPlane2(const PyGePlane& plane)
 {
     return AcGeMatrix3d::worldToPlane(*plane.impObj());
 }
+
 static AcGeMatrix3d AcGeMatrix3dplaneToWorld1(const AcGeVector3d& normal)
 {
     return AcGeMatrix3d::planeToWorld(normal);
 }
+
 static AcGeMatrix3d AcGeMatrix3dplaneToWorld2(const PyGePlane& plane)
 {
     return AcGeMatrix3d::planeToWorld(*plane.impObj());

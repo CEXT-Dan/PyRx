@@ -10,35 +10,44 @@ using namespace boost::python;
 void makePyGeCurveCurveInt3dWrapper()
 {
 #if !defined(_BRXTARGET240)
+
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- curve1: PyGe.Curve3d, curve2: PyGe.Curve3d\n"
+        "- curve1: PyGe.Curve3d, curve2: PyGe.Curve3d, planeNormal: PyGe.Vector3d, tol: PyGe.Tol\n"
+        "- curve1: PyGe.Curve3d, curve2: PyGe.Curve3d, range1: PyGe.Interval, range2: PyGe.Interval\n"
+        "- curve1: PyGe.Curve3d, curve2: PyGe.Curve3d, range1: PyGe.Interval, range2: PyGe.Interval, tol: PyGe.Tol\n";
+
+    PyDocString DS("CurveCurveInt3d");
     class_<PyGeCurveCurveInt3d, bases<PyGeEntity3d>>("CurveCurveInt3d")
         .def(init<>())
         .def(init<const PyGeCurve3d&, const PyGeCurve3d&>())
         .def(init<const PyGeCurve3d&, const PyGeCurve3d&, const AcGeVector3d&, const AcGeTol&>())
         .def(init<const PyGeCurve3d&, const PyGeCurve3d&, const PyGeInterval&, const PyGeInterval&>())
-        .def(init<const PyGeCurve3d&, const PyGeCurve3d&, const PyGeInterval&, const PyGeInterval&, const AcGeVector3d&, const AcGeTol&>())
-        .def("curve1", &PyGeCurveCurveInt3d::curve1)//not overload
-        .def("curve2", &PyGeCurveCurveInt3d::curve2)//not overload
-        .def("getIntRanges", &PyGeCurveCurveInt3d::getIntRanges)
-        .def("planeNormal", &PyGeCurveCurveInt3d::planeNormal)
-        .def("tolerance", &PyGeCurveCurveInt3d::tolerance)
-        .def("numIntPoints", &PyGeCurveCurveInt3d::numIntPoints)
-        .def("intPoint", &PyGeCurveCurveInt3d::intPoint)
-        .def("getIntParams", &PyGeCurveCurveInt3d::getIntParams)
-        .def("getPointOnCurve1", &PyGeCurveCurveInt3d::getPointOnCurve1)
-        .def("getPointOnCurve2", &PyGeCurveCurveInt3d::getPointOnCurve2)
-        .def("getIntConfigs", &PyGeCurveCurveInt3d::getIntConfigs)
-        .def("isTangential", &PyGeCurveCurveInt3d::isTangential)
-        .def("isTransversal", &PyGeCurveCurveInt3d::isTransversal)
-        .def("intPointTol", &PyGeCurveCurveInt3d::intPointTol)
-        .def("overlapCount", &PyGeCurveCurveInt3d::overlapCount)
-        .def("overlapDirection", &PyGeCurveCurveInt3d::overlapDirection)
-        .def("getOverlapRanges", &PyGeCurveCurveInt3d::getOverlapRanges)
-        .def("changeCurveOrder", &PyGeCurveCurveInt3d::changeCurveOrder)
-        .def("orderWrt1", &PyGeCurveCurveInt3d::orderWrt1)//not overload
-        .def("orderWrt2", &PyGeCurveCurveInt3d::orderWrt2)//not overload
-        .def("cast", &PyGeCurveCurveInt3d::cast).staticmethod("cast")
-        .def("copycast", &PyGeCurveCurveInt3d::copycast).staticmethod("copycast")
-        .def("className", &PyGeCurveCurveInt3d::className).staticmethod("className")
+        .def(init<const PyGeCurve3d&, const PyGeCurve3d&, const PyGeInterval&, const PyGeInterval&, const AcGeVector3d&, const AcGeTol&>(DS.CTOR(ctor)))
+        .def("curve1", &PyGeCurveCurveInt3d::curve1, DS.ARGS())//not overload
+        .def("curve2", &PyGeCurveCurveInt3d::curve2, DS.ARGS())//not overload
+        .def("getIntRanges", &PyGeCurveCurveInt3d::getIntRanges, DS.ARGS())
+        .def("planeNormal", &PyGeCurveCurveInt3d::planeNormal, DS.ARGS())
+        .def("tolerance", &PyGeCurveCurveInt3d::tolerance, DS.ARGS())
+        .def("numIntPoints", &PyGeCurveCurveInt3d::numIntPoints, DS.ARGS())
+        .def("intPoint", &PyGeCurveCurveInt3d::intPoint, DS.ARGS({ "intNum: int" }))
+        .def("getIntParams", &PyGeCurveCurveInt3d::getIntParams, DS.ARGS({ "intNum: int" }))
+        .def("getPointOnCurve1", &PyGeCurveCurveInt3d::getPointOnCurve1, DS.ARGS({ "intNum: int" }))
+        .def("getPointOnCurve2", &PyGeCurveCurveInt3d::getPointOnCurve2, DS.ARGS({ "intNum: int" }))
+        .def("getIntConfigs", &PyGeCurveCurveInt3d::getIntConfigs, DS.ARGS({ "intNum: int" }))
+        .def("isTangential", &PyGeCurveCurveInt3d::isTangential, DS.ARGS({ "intNum: int" }))
+        .def("isTransversal", &PyGeCurveCurveInt3d::isTransversal, DS.ARGS({ "intNum: int" }))
+        .def("intPointTol", &PyGeCurveCurveInt3d::intPointTol, DS.ARGS({ "intNum: int" }))
+        .def("overlapCount", &PyGeCurveCurveInt3d::overlapCount, DS.ARGS())
+        .def("overlapDirection", &PyGeCurveCurveInt3d::overlapDirection, DS.ARGS())
+        .def("getOverlapRanges", &PyGeCurveCurveInt3d::getOverlapRanges, DS.ARGS({ "intNum: int" }))
+        .def("changeCurveOrder", &PyGeCurveCurveInt3d::changeCurveOrder, DS.ARGS())
+        .def("orderWrt1", &PyGeCurveCurveInt3d::orderWrt1, DS.ARGS())//not overload
+        .def("orderWrt2", &PyGeCurveCurveInt3d::orderWrt2, DS.ARGS())//not overload
+        .def("cast", &PyGeCurveCurveInt3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeCurveCurveInt3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeCurveCurveInt3d::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
