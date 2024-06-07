@@ -658,8 +658,6 @@ void makePyGeCircArc3dWrapper()
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>(DS.CTOR(ctor)))
         .def("closestPointToPlane", &PyGeCircArc3d::closestPointToPlane1)
         .def("closestPointToPlane", &PyGeCircArc3d::closestPointToPlane2, DS.ARGS({ "plane: PyGe.PlanarEnt", "tol: PyGe.Tol=None" }))
-
-        //TODO:
         .def("intersectWith", &PyGeCircArc3d::intersectWith1)
         .def("intersectWith", &PyGeCircArc3d::intersectWith2)
         .def("intersectWith", &PyGeCircArc3d::intersectWith3)
@@ -1090,7 +1088,7 @@ void makePyGeEllipArc3dWrapper()
 {
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
-        "- carc: PyGe.CircArc3d,\n"
+        "- carc: PyGe.CircArc3d\n"
         "- cent: PyGe.Point3d, majorAxis: PyGe.Vector3d, minorAxis: PyGe.Vector3d, majorRadius: float,minorRadius: float\n"
         "- cent: PyGe.Point3d, majorAxis: PyGe.Vector3d, minorAxis: PyGe.Vector3d, majorRadius: float,minorRadius: float, startAngle: float, endAngle: float\n";
 

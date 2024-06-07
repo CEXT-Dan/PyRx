@@ -1030,17 +1030,15 @@ class CompositeCurve2d(Curve2d):
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.CompositeCurve2d :
-      '''cast( (Entity2d)arg1) -> CompositeCurve2d :
 
-    C++ signature :
-        class PyGeCompositeCurve2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.CompositeCurve2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
       '''                             '''
@@ -1048,11 +1046,10 @@ class CompositeCurve2d(Curve2d):
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.CompositeCurve2d :
-      '''copycast( (Entity2d)arg1) -> CompositeCurve2d :
 
-    C++ signature :
-        class PyGeCompositeCurve2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyGe.CompositeCurve2d :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
@@ -3311,31 +3308,22 @@ set( (Cylinder)arg1, (float)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5,
     ...
 
 class EllipArc2d(Curve2d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, carc: PyGe.CircArc2d)-> None : ...
+    @overload
+    def __init__ (self, cent: PyGe.Point2d, majorAxis: PyGe.Vector2d, minorAxis: PyGe.Vector2d, majorRadius: float,minorRadius: float)-> None : ...
+    @overload
+    def __init__ (self, cent: PyGe.Point2d, majorAxis: PyGe.Vector2d, minorAxis: PyGe.Vector2d, majorRadius: float,minorRadius: float, startAngle: float, endAngle: float)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (CircArc2d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCircArc2d)
-
-__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (float)arg5, (float)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d,class AcGeVector2d,double,double)
-
-__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d,class AcGeVector2d,double,double,double,double)'''
+      '''Overloads:
+    - None: Any
+    - carc: PyGe.CircArc2d
+    - cent: PyGe.Point2d, majorAxis: PyGe.Vector2d, minorAxis: PyGe.Vector2d, majorRadius: float,minorRadius: float
+    - cent: PyGe.Point2d, majorAxis: PyGe.Vector2d, minorAxis: PyGe.Vector2d, majorRadius: float,minorRadius: float, startAngle: float, endAngle: float
+    '''
     ...
     def area (self, startParam : float, endParam : float, tol : float = None)-> float :
       '''                             '''
@@ -3343,23 +3331,18 @@ __init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (float)ar
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.EllipArc2d :
-      '''cast( (Entity2d)arg1) -> EllipArc2d :
 
-    C++ signature :
-        class PyGeEllipArc2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.EllipArc2d :
+      '''                             '''
     ...
-    def center (self, *args, **kwargs)-> PyGe.Point2d :
-      '''center( (EllipArc2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d center(class PyGeEllipArc2d {lvalue})'''
+    def center (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
       '''                             '''
@@ -3367,26 +3350,19 @@ __init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (float)ar
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.EllipArc2d :
-      '''copycast( (Entity2d)arg1) -> EllipArc2d :
 
-    C++ signature :
-        class PyGeEllipArc2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyGe.EllipArc2d :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
     ...
-    def endAng (self, *args, **kwargs)-> float :
-      '''endAng( (EllipArc2d)arg1) -> float :
-
-    C++ signature :
-        double endAng(class PyGeEllipArc2d {lvalue})'''
+    def endAng (self)-> float :
+      '''                             '''
     ...
-    def endPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''endPoint( (EllipArc2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d endPoint(class PyGeEllipArc2d {lvalue})'''
+    def endPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
       '''                             '''
@@ -3435,33 +3411,14 @@ __init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (float)ar
     def hasStartPoint (self)-> bool :
       '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> tuple[Any,...] :
-      '''intersectWith( (EllipArc2d)arg1, (LinearEnt2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGeEllipArc2d {lvalue},class PyGeLinearEnt2d)
-
-intersectWith( (EllipArc2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGeEllipArc2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def intersectWith (self, val: PyGe.LinearEnt2d, tol: PyGe.Tol = None)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def isCircular (self, *args, **kwargs)-> bool :
-      '''isCircular( (EllipArc2d)arg1) -> bool :
-
-    C++ signature :
-        bool isCircular(class PyGeEllipArc2d {lvalue})
-
-isCircular( (EllipArc2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isCircular(class PyGeEllipArc2d {lvalue},class AcGeTol)'''
+    def isCircular (self, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
-    def isClockWise (self, *args, **kwargs)-> bool :
-      '''isClockWise( (EllipArc2d)arg1) -> bool :
-
-    C++ signature :
-        bool isClockWise(class PyGeEllipArc2d {lvalue})'''
+    def isClockWise (self)-> bool :
+      '''                             '''
     ...
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''                             '''
@@ -3472,16 +3429,8 @@ isCircular( (EllipArc2d)arg1, (Tol)arg2) -> bool :
     def isEqualTo (self, val : PyGe.Entity2d, tol : PyGe.Tol=None)-> bool :
       '''                             '''
     ...
-    def isInside (self, *args, **kwargs)-> bool :
-      '''isInside( (EllipArc2d)arg1, (Point2d)arg2) -> bool :
-
-    C++ signature :
-        bool isInside(class PyGeEllipArc2d {lvalue},class AcGePoint2d)
-
-isInside( (EllipArc2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isInside(class PyGeEllipArc2d {lvalue},class AcGePoint2d,class AcGeTol)'''
+    def isInside (self, pt: PyGe.Point2d, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isKindOf (self, val : PyGe.EntityId)-> bool :
       '''                             '''
@@ -3501,29 +3450,17 @@ isInside( (EllipArc2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
     def length (self, frm : float, to : float, tol : float = None)-> float :
       '''                             '''
     ...
-    def majorAxis (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''majorAxis( (EllipArc2d)arg1) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d majorAxis(class PyGeEllipArc2d {lvalue})'''
+    def majorAxis (self)-> PyGe.Vector2d :
+      '''                             '''
     ...
-    def majorRadius (self, *args, **kwargs)-> float :
-      '''majorRadius( (EllipArc2d)arg1) -> float :
-
-    C++ signature :
-        double majorRadius(class PyGeEllipArc2d {lvalue})'''
+    def majorRadius (self)-> float :
+      '''                             '''
     ...
-    def minorAxis (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''minorAxis( (EllipArc2d)arg1) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d minorAxis(class PyGeEllipArc2d {lvalue})'''
+    def minorAxis (self)-> PyGe.Vector2d :
+      '''                             '''
     ...
-    def minorRadius (self, *args, **kwargs)-> float :
-      '''minorRadius( (EllipArc2d)arg1) -> float :
-
-    C++ signature :
-        double minorRadius(class PyGeEllipArc2d {lvalue})'''
+    def minorRadius (self)-> float :
+      '''                             '''
     ...
     def mirror (self, val : PyGe.Line2d)-> None :
       '''                             '''
@@ -3546,66 +3483,43 @@ isInside( (EllipArc2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point2d=PyGe.Point2d.kOrgin)-> None :
       '''                             '''
     ...
+
+    @overload
+    def set (self, carc: PyGe.CircArc2d,)-> None : ...
+    @overload
+    def set (self, cent: PyGe.Point2d, majorAxis: PyGe.Vector2d, minorAxis: PyGe.Vector2d, majorRadius: float,minorRadius: float)-> None : ...
+    @overload
+    def set (self, cent: PyGe.Point2d, majorAxis: PyGe.Vector2d, minorAxis: PyGe.Vector2d, majorRadius: float,minorRadius: float, startAngle: float, endAngle: float)-> None : ...
     def set (self, *args, **kwargs)-> None :
-      '''set( (EllipArc2d)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (float)arg5, (float)arg6) -> None :
-
-    C++ signature :
-        void set(class PyGeEllipArc2d {lvalue},class AcGePoint2d,class AcGeVector2d,class AcGeVector2d,double,double)
-
-set( (EllipArc2d)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> None :
-
-    C++ signature :
-        void set(class PyGeEllipArc2d {lvalue},class AcGePoint2d,class AcGeVector2d,class AcGeVector2d,double,double,double,double)
-
-set( (EllipArc2d)arg1, (CircArc2d)arg2) -> None :
-
-    C++ signature :
-        void set(class PyGeEllipArc2d {lvalue},class PyGeCircArc2d)'''
+      '''Overloads:
+    - carc: PyGe.CircArc2d,
+    - cent: PyGe.Point2d, majorAxis: PyGe.Vector2d, minorAxis: PyGe.Vector2d, majorRadius: float,minorRadius: float
+    - cent: PyGe.Point2d, majorAxis: PyGe.Vector2d, minorAxis: PyGe.Vector2d, majorRadius: float,minorRadius: float, startAngle: float, endAngle: float
+    '''
     ...
-    def setAngles (self, *args, **kwargs)-> None :
-      '''setAngles( (EllipArc2d)arg1, (float)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setAngles(class PyGeEllipArc2d {lvalue},double,double)'''
+    def setAngles (self, startAngle: float, endAngle: float)-> None :
+      '''                             '''
     ...
-    def setAxes (self, *args, **kwargs)-> None :
-      '''setAxes( (EllipArc2d)arg1, (Vector2d)arg2, (Vector2d)arg3) -> None :
-
-    C++ signature :
-        void setAxes(class PyGeEllipArc2d {lvalue},class AcGeVector2d,class AcGeVector2d)'''
+    def setAxes (self, majorAxis: PyGe.Vector2d, minorAxis: PyGe.Vector2d)-> None :
+      '''                             '''
     ...
-    def setCenter (self, *args, **kwargs)-> None :
-      '''setCenter( (EllipArc2d)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setCenter(class PyGeEllipArc2d {lvalue},class AcGePoint2d)'''
+    def setCenter (self, pt: PyGe.Point2d)-> None :
+      '''                             '''
     ...
     def setInterval (self, val : PyGe.Interval = None)-> None :
       '''                             '''
     ...
-    def setMajorRadius (self, *args, **kwargs)-> None :
-      '''setMajorRadius( (EllipArc2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setMajorRadius(class PyGeEllipArc2d {lvalue},double)'''
+    def setMajorRadius (self, val: float)-> None :
+      '''                             '''
     ...
-    def setMinorRadius (self, *args, **kwargs)-> None :
-      '''setMinorRadius( (EllipArc2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setMinorRadius(class PyGeEllipArc2d {lvalue},double)'''
+    def setMinorRadius (self, val: float)-> None :
+      '''                             '''
     ...
-    def startAng (self, *args, **kwargs)-> float :
-      '''startAng( (EllipArc2d)arg1) -> float :
-
-    C++ signature :
-        double startAng(class PyGeEllipArc2d {lvalue})'''
+    def startAng (self)-> float :
+      '''                             '''
     ...
-    def startPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''startPoint( (EllipArc2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d startPoint(class PyGeEllipArc2d {lvalue})'''
+    def startPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix2d)-> None :
       '''                             '''
@@ -3622,7 +3536,7 @@ class EllipArc3d(Curve3d):
     @overload
     def __init__ (self, /)-> None : ...
     @overload
-    def __init__ (self, carc: PyGe.CircArc3d,)-> None : ...
+    def __init__ (self, carc: PyGe.CircArc3d)-> None : ...
     @overload
     def __init__ (self, cent: PyGe.Point3d, majorAxis: PyGe.Vector3d, minorAxis: PyGe.Vector3d, majorRadius: float,minorRadius: float)-> None : ...
     @overload
@@ -3630,7 +3544,7 @@ class EllipArc3d(Curve3d):
     def __init__ (self, *args, **kwargs)-> None :
       '''Overloads:
     - None: Any
-    - carc: PyGe.CircArc3d,
+    - carc: PyGe.CircArc3d
     - cent: PyGe.Point3d, majorAxis: PyGe.Vector3d, minorAxis: PyGe.Vector3d, majorRadius: float,minorRadius: float
     - cent: PyGe.Point3d, majorAxis: PyGe.Vector3d, minorAxis: PyGe.Vector3d, majorRadius: float,minorRadius: float, startAngle: float, endAngle: float
     '''
@@ -4358,17 +4272,15 @@ This class cannot be instantiated from Python'''
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.ExternalCurve2d :
-      '''cast( (Entity2d)arg1) -> ExternalCurve2d :
 
-    C++ signature :
-        class PyGeExternalCurve2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.ExternalCurve2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
       '''                             '''
@@ -4376,11 +4288,10 @@ This class cannot be instantiated from Python'''
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.ExternalCurve2d :
-      '''copycast( (Entity2d)arg1) -> ExternalCurve2d :
 
-    C++ signature :
-        class PyGeExternalCurve2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyGe.ExternalCurve2d :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
@@ -8411,17 +8322,15 @@ class OffsetCurve2d(Curve2d):
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.OffsetCurve2d :
-      '''cast( (Entity2d)arg1) -> OffsetCurve2d :
 
-    C++ signature :
-        class PyGeOffsetCurve2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.OffsetCurve2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
       '''                             '''
@@ -8429,11 +8338,10 @@ class OffsetCurve2d(Curve2d):
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.OffsetCurve2d :
-      '''copycast( (Entity2d)arg1) -> OffsetCurve2d :
 
-    C++ signature :
-        class PyGeOffsetCurve2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyGe.OffsetCurve2d :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
@@ -12703,10 +12611,10 @@ class Vector2d(object):
       '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002190B10C820>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000029208A4C820>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002190B10C820>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000029208A4C820>])'''
     ...
     def isParallelTo (self, vec: PyGe.Vector2d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -12715,16 +12623,16 @@ class Vector2d(object):
       '''                             '''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002190B10C550>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000029208A4C550>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002190B10C550>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000029208A4C550>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002190B10C5E0>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000029208A4C5E0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002190B10C5E0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000029208A4C5E0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
