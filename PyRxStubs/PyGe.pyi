@@ -8616,26 +8616,23 @@ class PointEnt2d(Entity2d):
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.PointEnt2d :
-      '''cast( (Entity2d)arg1) -> PointEnt2d :
 
-    C++ signature :
-        class PyGePointEnt2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.PointEnt2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.PointEnt2d :
-      '''copycast( (Entity2d)arg1) -> PointEnt2d :
 
-    C++ signature :
-        class PyGePointEnt2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyGe.PointEnt2d :
+      '''                             '''
     ...
     def isEqualTo (self, val : PyGe.Entity2d, tol : PyGe.Tol=None)-> bool :
       '''                             '''
@@ -8652,11 +8649,8 @@ This class cannot be instantiated from Python'''
     def mirror (self, val : PyGe.Line2d)-> None :
       '''                             '''
     ...
-    def point2d (self, *args, **kwargs)-> PyGe.Point2d :
-      '''point2d( (PointEnt2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d point2d(class PyGePointEnt2d {lvalue})'''
+    def point2d (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def rotateBy (self, angle : float, pt : PyGe.Point3d=PyGe.Point2d.kOrgin)-> None :
       '''                             '''
@@ -8679,26 +8673,23 @@ class PointEnt3d(Entity3d):
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.PointEnt3d :
-      '''cast( (Entity3d)arg1) -> PointEnt3d :
 
-    C++ signature :
-        class PyGePointEnt3d cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.PointEnt3d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.PointEnt3d :
-      '''copycast( (Entity3d)arg1) -> PointEnt3d :
 
-    C++ signature :
-        class PyGePointEnt3d copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.PointEnt3d :
+      '''                             '''
     ...
     def isEqualTo (self, val : PyGe.Entity3d, tol : PyGe.Tol=None)-> bool :
       '''Determines if two entities are equal to each other. Two entities are considered to be equal only if they are of the same type and they represent the same 3D point set. For instance, if the two entities are of types AcGeCircArc3d and AcGeEllipArc3d then they are not considered equal even if the ellipse is completely coincident with the circle. Also, two curves are not considered equal unless they have the same parameterization. For instance, two infinite coincident lines are not considered equal if they have different scaling in their parameterization. '''
@@ -8715,11 +8706,8 @@ This class cannot be instantiated from Python'''
     def mirror (self, val : PyGe.Plane)-> None :
       '''Transforms the entity by mirroring it across the input plane.'''
     ...
-    def point3d (self, *args, **kwargs)-> PyGe.Point3d :
-      '''point3d( (PointEnt3d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d point3d(class PyGePointEnt3d {lvalue})'''
+    def point3d (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def rotateBy (self, angle : float, vec : PyGe.Vector3d, pt : PyGe.Point3d = 'origin')-> None :
       '''Rotates the entity by the input angle about the line defined by the input point and vector.'''
@@ -8738,69 +8726,54 @@ This class cannot be instantiated from Python'''
     ...
 
 class PointOnCurve2d(PointEnt2d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, curve: PyGe.Curve2d)-> None : ...
+    @overload
+    def __init__ (self, curve: PyGe.Curve2d, param: float)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Curve2d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve2d)
-
-__init__( (object)arg1, (Curve2d)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve2d,double)'''
+      '''Overloads:
+    - None: Any
+    - curve: PyGe.Curve2d
+    - curve: PyGe.Curve2d, param: float
+    '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.PointEnt2d :
-      '''cast( (Entity2d)arg1) -> PointEnt2d :
 
-    C++ signature :
-        class PyGePointEnt2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.PointEnt2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.PointOnCurve2d :
-      '''copycast( (Entity2d)arg1) -> PointOnCurve2d :
 
-    C++ signature :
-        class PyGePointOnCurve2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyGe.PointOnCurve2d :
+      '''                             '''
     ...
-    def curve (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''curve( (PointOnCurve2d)arg1) -> Curve2d :
+    def curve (self)-> PyGe.Curve2d :
+      '''                             '''
+    ...
 
-    C++ signature :
-        class PyGeCurve2d curve(class PyGePointOnCurve2d {lvalue})'''
-    ...
+    @overload
+    def deriv (self, order: int)-> PyGe.Vector2d : ...
+    @overload
+    def deriv (self, order: int, param: float)-> PyGe.Vector2d : ...
+    @overload
+    def deriv (self, order: int, curve: PyGe.Curve2d, param: float)-> PyGe.Vector2d : ...
     def deriv (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''deriv( (PointOnCurve2d)arg1, (int)arg2) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d deriv(class PyGePointOnCurve2d {lvalue},int)
-
-deriv( (PointOnCurve2d)arg1, (int)arg2, (float)arg3) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d deriv(class PyGePointOnCurve2d {lvalue},int,double)
-
-deriv( (PointOnCurve2d)arg1, (int)arg2, (Curve2d)arg3, (float)arg4) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d deriv(class PyGePointOnCurve2d {lvalue},int,class PyGeCurve2d,double)'''
+      '''Overloads:
+    - order: int
+    - order: int, param: float
+    - order: int, curve: PyGe.Curve2d, param: float
+    '''
     ...
     def isEqualTo (self, val : PyGe.Entity2d, tol : PyGe.Tol=None)-> bool :
       '''                             '''
@@ -8817,33 +8790,25 @@ deriv( (PointOnCurve2d)arg1, (int)arg2, (Curve2d)arg3, (float)arg4) -> Vector2d 
     def mirror (self, val : PyGe.Line2d)-> None :
       '''                             '''
     ...
-    def parameter (self, *args, **kwargs)-> float :
-      '''parameter( (PointOnCurve2d)arg1) -> float :
-
-    C++ signature :
-        double parameter(class PyGePointOnCurve2d {lvalue})'''
+    def parameter (self)-> float :
+      '''                             '''
     ...
+
+    @overload
+    def point (self, /)-> PyGe.Point2d : ...
+    @overload
+    def point (self, param: float)-> PyGe.Point2d : ...
+    @overload
+    def point (self, curve: PyGe.Curve2d, param: float)-> PyGe.Point2d : ...
     def point (self, *args, **kwargs)-> PyGe.Point2d :
-      '''point( (PointOnCurve2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d point(class PyGePointOnCurve2d {lvalue})
-
-point( (PointOnCurve2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d point(class PyGePointOnCurve2d {lvalue},double)
-
-point( (PointOnCurve2d)arg1, (Curve2d)arg2, (float)arg3) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d point(class PyGePointOnCurve2d {lvalue},class PyGeCurve2d,double)'''
+      '''Overloads:
+    - None: Any
+    - param: float
+    - curve: PyGe.Curve2d, param: float
+    '''
     ...
-    def point2d (self, *args, **kwargs)-> PyGe.Point2d :
-      '''point2d( (PointEnt2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d point2d(class PyGePointEnt2d {lvalue})'''
+    def point2d (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def rotateBy (self, angle : float, pt : PyGe.Point3d=PyGe.Point2d.kOrgin)-> None :
       '''                             '''
@@ -8851,17 +8816,11 @@ point( (PointOnCurve2d)arg1, (Curve2d)arg2, (float)arg3) -> Point2d :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point2d=PyGe.Point2d.kOrgin)-> None :
       '''                             '''
     ...
-    def setCurve (self, *args, **kwargs)-> None :
-      '''setCurve( (PointOnCurve2d)arg1, (Curve2d)arg2) -> None :
-
-    C++ signature :
-        void setCurve(class PyGePointOnCurve2d {lvalue},class PyGeCurve2d)'''
+    def setCurve (self, val: PyGe.Curve2d)-> None :
+      '''                             '''
     ...
-    def setParameter (self, *args, **kwargs)-> None :
-      '''setParameter( (PointOnCurve2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setParameter(class PyGePointOnCurve2d {lvalue},double)'''
+    def setParameter (self, val: float)-> None :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix2d)-> None :
       '''                             '''
@@ -8874,80 +8833,57 @@ point( (PointOnCurve2d)arg1, (Curve2d)arg2, (float)arg3) -> Point2d :
     ...
 
 class PointOnCurve3d(PointEnt3d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, curve: PyGe.Curve3d)-> None : ...
+    @overload
+    def __init__ (self, curve: PyGe.Curve3d, param: float)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Curve3d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve3d)
-
-__init__( (object)arg1, (Curve3d)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve3d,double)'''
+      '''Overloads:
+    - None: Any
+    - curve: PyGe.Curve3d
+    - curve: PyGe.Curve3d, param: float
+    '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.PointOnCurve3d :
-      '''cast( (Entity3d)arg1) -> PointOnCurve3d :
 
-    C++ signature :
-        class PyGePointOnCurve3d cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.PointOnCurve3d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.PointOnCurve3d :
-      '''copycast( (Entity3d)arg1) -> PointOnCurve3d :
 
-    C++ signature :
-        class PyGePointOnCurve3d copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.PointOnCurve3d :
+      '''                             '''
     ...
-    def curvature (self, *args, **kwargs)-> float :
-      '''curvature( (PointOnCurve3d)arg1) -> float :
-
-    C++ signature :
-        double curvature(class PyGePointOnCurve3d {lvalue})
-
-curvature( (PointOnCurve3d)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double curvature(class PyGePointOnCurve3d {lvalue},double)'''
+    def curvature (self, param: float=None)-> float :
+      '''                             '''
     ...
-    def curve (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''curve( (PointOnCurve3d)arg1) -> Curve3d :
-
-    C++ signature :
-        class PyGeCurve3d curve(class PyGePointOnCurve3d {lvalue})'''
+    def curve (self)-> PyGe.Curve3d :
+      '''                             '''
     ...
+
+    @overload
+    def deriv (self, order: int)-> PyGe.Vector3d : ...
+    @overload
+    def deriv (self, order: int, param: float)-> PyGe.Vector3d : ...
+    @overload
+    def deriv (self, order: int, curve: PyGe.Curve3d, param: float)-> PyGe.Vector3d : ...
     def deriv (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''deriv( (PointOnCurve3d)arg1, (int)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d deriv(class PyGePointOnCurve3d {lvalue},int)
-
-deriv( (PointOnCurve3d)arg1, (int)arg2, (float)arg3) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d deriv(class PyGePointOnCurve3d {lvalue},int,double)
-
-deriv( (PointOnCurve3d)arg1, (int)arg2, (Curve3d)arg3, (float)arg4) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d deriv(class PyGePointOnCurve3d {lvalue},int,class PyGeCurve3d,double)'''
+      '''Overloads:
+    - order: int
+    - order: int, param: float
+    - order: int, curve: PyGe.Curve3d, param: float
+    '''
     ...
     def isEqualTo (self, val : PyGe.Entity3d, tol : PyGe.Tol=None)-> bool :
       '''Determines if two entities are equal to each other. Two entities are considered to be equal only if they are of the same type and they represent the same 3D point set. For instance, if the two entities are of types AcGeCircArc3d and AcGeEllipArc3d then they are not considered equal even if the ellipse is completely coincident with the circle. Also, two curves are not considered equal unless they have the same parameterization. For instance, two infinite coincident lines are not considered equal if they have different scaling in their parameterization. '''
@@ -8961,42 +8897,31 @@ deriv( (PointOnCurve3d)arg1, (int)arg2, (Curve3d)arg3, (float)arg4) -> Vector3d 
     def isOn (self, pt : PyGe.Point3d, tol : PyGe.Tol=None)-> bool :
       '''Returns Adesk::kTrue if pnt lies on entity; otherwise, returns Adesk::kFalse.'''
     ...
-    def isSingular (self, *args, **kwargs)-> bool :
-      '''isSingular( (PointOnCurve3d)arg1) -> bool :
-
-    C++ signature :
-        bool isSingular(class PyGePointOnCurve3d {lvalue})'''
+    def isSingular (self)-> bool :
+      '''                             '''
     ...
     def mirror (self, val : PyGe.Plane)-> None :
       '''Transforms the entity by mirroring it across the input plane.'''
     ...
-    def parameter (self, *args, **kwargs)-> float :
-      '''parameter( (PointOnCurve3d)arg1) -> float :
-
-    C++ signature :
-        double parameter(class PyGePointOnCurve3d {lvalue})'''
+    def parameter (self)-> float :
+      '''                             '''
     ...
+
+    @overload
+    def point (self, /)-> PyGe.Point3d : ...
+    @overload
+    def point (self, param: float)-> PyGe.Point3d : ...
+    @overload
+    def point (self, curve: PyGe.Curve3d, param: float)-> PyGe.Point3d : ...
     def point (self, *args, **kwargs)-> PyGe.Point3d :
-      '''point( (PointOnCurve3d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d point(class PyGePointOnCurve3d {lvalue})
-
-point( (PointOnCurve3d)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d point(class PyGePointOnCurve3d {lvalue},double)
-
-point( (PointOnCurve3d)arg1, (Curve3d)arg2, (float)arg3) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d point(class PyGePointOnCurve3d {lvalue},class PyGeCurve3d,double)'''
+      '''Overloads:
+    - None: Any
+    - param: float
+    - curve: PyGe.Curve3d, param: float
+    '''
     ...
-    def point3d (self, *args, **kwargs)-> PyGe.Point3d :
-      '''point3d( (PointEnt3d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d point3d(class PyGePointEnt3d {lvalue})'''
+    def point3d (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def rotateBy (self, angle : float, vec : PyGe.Vector3d, pt : PyGe.Point3d = 'origin')-> None :
       '''Rotates the entity by the input angle about the line defined by the input point and vector.'''
@@ -9004,17 +8929,11 @@ point( (PointOnCurve3d)arg1, (Curve3d)arg2, (float)arg3) -> Point3d :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point3d = 'origin')-> None :
       '''Scales the entity about the input point by the input scale factor. Input scale factor must be greater than 0.'''
     ...
-    def setCurve (self, *args, **kwargs)-> None :
-      '''setCurve( (PointOnCurve3d)arg1, (Curve3d)arg2) -> None :
-
-    C++ signature :
-        void setCurve(class PyGePointOnCurve3d {lvalue},class PyGeCurve3d)'''
+    def setCurve (self, curve: PyGe.Curve3d)-> None :
+      '''                             '''
     ...
-    def setParameter (self, *args, **kwargs)-> None :
-      '''setParameter( (PointOnCurve3d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setParameter(class PyGePointOnCurve3d {lvalue},double)'''
+    def setParameter (self, param: float)-> None :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix3d)-> None :
       '''Transforms the entity by applying the input matrix.'''
@@ -9154,11 +9073,8 @@ point( (PointOnSurface)arg1, (Surface)arg2, (Point2d)arg3) -> Point3d :
     C++ signature :
         class AcGePoint3d point(class PyGePointOnSurface {lvalue},class PyGeSurface,class AcGePoint2d)'''
     ...
-    def point3d (self, *args, **kwargs)-> PyGe.Point3d :
-      '''point3d( (PointEnt3d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d point3d(class PyGePointEnt3d {lvalue})'''
+    def point3d (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def rotateBy (self, angle : float, vec : PyGe.Vector3d, pt : PyGe.Point3d = 'origin')-> None :
       '''Rotates the entity by the input angle about the line defined by the input point and vector.'''
@@ -9701,47 +9617,37 @@ class Polyline3d(SplineEnt3d):
     ...
 
 class Position2d(PointEnt2d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, pnt: PyGe.Point2d)-> None : ...
+    @overload
+    def __init__ (self, x: float, y: float)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d)
-
-__init__( (object)arg1, (float)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,double)'''
+      '''Overloads:
+    - None: Any
+    - pnt: PyGe.Point2d
+    - x: float, y: float
+    '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.Position2d :
-      '''cast( (Entity2d)arg1) -> Position2d :
 
-    C++ signature :
-        class PyGePosition2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.Position2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.Position2d :
-      '''copycast( (Entity2d)arg1) -> Position2d :
 
-    C++ signature :
-        class PyGePosition2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyGe.Position2d :
+      '''                             '''
     ...
     def isEqualTo (self, val : PyGe.Entity2d, tol : PyGe.Tol=None)-> bool :
       '''                             '''
@@ -9758,11 +9664,8 @@ __init__( (object)arg1, (float)arg2, (float)arg3) -> None :
     def mirror (self, val : PyGe.Line2d)-> None :
       '''                             '''
     ...
-    def point2d (self, *args, **kwargs)-> PyGe.Point2d :
-      '''point2d( (PointEnt2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d point2d(class PyGePointEnt2d {lvalue})'''
+    def point2d (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def rotateBy (self, angle : float, pt : PyGe.Point3d=PyGe.Point2d.kOrgin)-> None :
       '''                             '''
@@ -9770,16 +9673,16 @@ __init__( (object)arg1, (float)arg2, (float)arg3) -> None :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point2d=PyGe.Point2d.kOrgin)-> None :
       '''                             '''
     ...
+
+    @overload
+    def set (self, pnt: PyGe.Point2d)-> None : ...
+    @overload
+    def set (self, x: float, y: float)-> None : ...
     def set (self, *args, **kwargs)-> None :
-      '''set( (Position2d)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void set(class PyGePosition2d {lvalue},class AcGePoint2d)
-
-set( (Position2d)arg1, (float)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void set(class PyGePosition2d {lvalue},double,double)'''
+      '''Overloads:
+    - pnt: PyGe.Point2d
+    - x: float, y: float
+    '''
     ...
     def transformBy (self, val : PyGe.Matrix2d)-> None :
       '''                             '''
@@ -9849,11 +9752,8 @@ __init__( (object)arg1, (float)arg2, (float)arg3, (float)arg4) -> None :
     def mirror (self, val : PyGe.Plane)-> None :
       '''Transforms the entity by mirroring it across the input plane.'''
     ...
-    def point3d (self, *args, **kwargs)-> PyGe.Point3d :
-      '''point3d( (PointEnt3d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d point3d(class PyGePointEnt3d {lvalue})'''
+    def point3d (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def rotateBy (self, angle : float, vec : PyGe.Vector3d, pt : PyGe.Point3d = 'origin')-> None :
       '''Rotates the entity by the input angle about the line defined by the input point and vector.'''
@@ -11536,10 +11436,10 @@ class Vector2d(object):
       '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001CF04A0C820>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023D064DC820>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001CF04A0C820>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000023D064DC820>])'''
     ...
     def isParallelTo (self, vec: PyGe.Vector2d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -11548,16 +11448,16 @@ class Vector2d(object):
       '''                             '''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001CF04A0C550>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023D064DC550>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001CF04A0C550>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000023D064DC550>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001CF04A0C5E0>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023D064DC5E0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001CF04A0C5E0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000023D064DC5E0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
