@@ -1530,36 +1530,25 @@ class Cone(Surface):
     ...
 
 class CubicSplineCurve2d(SplineEnt2d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, curve: PyGe.Curve2d, epsilon: float)-> None : ...
+    @overload
+    def __init__ (self, fitPnts: list[PyGe.Point2d], tol: PyGe.Tol)-> None : ...
+    @overload
+    def __init__ (self, fitPnts: list[PyGe.Point2d], startDeriv: PyGe.Vector2d, endDeriv: PyGe.Vector2d,tol: PyGe.Tol)-> None : ...
+    @overload
+    def __init__ (self, knots: PyGe.KnotVector, fitPnts: list[PyGe.Point2d], firstDerivs: list[PyGe.Point2d], isPeriodic: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Curve2d)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve2d,double)
-
-__init__( (object)arg1, (list)arg2, (Tol)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeTol)
-
-__init__( (object)arg1, (list)arg2, (Vector2d)arg3, (Vector2d)arg4, (Tol)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector2d,class AcGeVector2d,class AcGeTol)
-
-__init__( (object)arg1, (KnotVector)arg2, (list)arg3, (list)arg4, (bool)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeKnotVector,class boost::python::list,class boost::python::list,bool)'''
+      '''Overloads:
+    - None: Any
+    - curve: PyGe.Curve2d, epsilon: float
+    - fitPnts: list[PyGe.Point2d], tol: PyGe.Tol
+    - fitPnts: list[PyGe.Point2d], startDeriv: PyGe.Vector2d, endDeriv: PyGe.Vector2d,tol: PyGe.Tol
+    - knots: PyGe.KnotVector, fitPnts: list[PyGe.Point2d], firstDerivs: list[PyGe.Point2d], isPeriodic: bool
+    '''
     ...
     def area (self, startParam : float, endParam : float, tol : float = None)-> float :
       '''                             '''
@@ -1567,67 +1556,44 @@ __init__( (object)arg1, (KnotVector)arg2, (list)arg3, (list)arg4, (bool)arg5) ->
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.SplineEnt2d :
-      '''cast( (Entity2d)arg1) -> SplineEnt2d :
 
-    C++ signature :
-        class PyGeSplineEnt2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.SplineEnt2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
       '''                             '''
     ...
-    def continuityAtKnot (self, *args, **kwargs)-> int :
-      '''continuityAtKnot( (SplineEnt2d)arg1, (int)arg2) -> int :
-
-    C++ signature :
-        int continuityAtKnot(class PyGeSplineEnt2d {lvalue},int)
-
-continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
-
-    C++ signature :
-        int continuityAtKnot(class PyGeSplineEnt2d {lvalue},int,class AcGeTol)'''
+    def continuityAtKnot (self, idx: int, tol: PyGe.Tol=None)-> int :
+      '''                             '''
     ...
-    def controlPointAt (self, *args, **kwargs)-> PyGe.Point2d :
-      '''controlPointAt( (SplineEnt2d)arg1, (int)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d controlPointAt(class PyGeSplineEnt2d {lvalue},int)'''
+    def controlPointAt (self, idx: int)-> PyGe.Point2d :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.CubicSplineCurve2d :
-      '''copycast( (Entity2d)arg1) -> CubicSplineCurve2d :
 
-    C++ signature :
-        class PyGeCubicSplineCurve2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyGe.CubicSplineCurve2d :
+      '''                             '''
     ...
-    def degree (self, *args, **kwargs)-> int :
-      '''degree( (SplineEnt2d)arg1) -> int :
-
-    C++ signature :
-        int degree(class PyGeSplineEnt2d {lvalue})'''
+    def degree (self)-> int :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
     ...
-    def endParam (self, *args, **kwargs)-> float :
-      '''endParam( (SplineEnt2d)arg1) -> float :
-
-    C++ signature :
-        double endParam(class PyGeSplineEnt2d {lvalue})'''
+    def endParam (self)-> float :
+      '''                             '''
     ...
-    def endPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''endPoint( (SplineEnt2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d endPoint(class PyGeSplineEnt2d {lvalue})'''
+    def endPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
       '''                             '''
@@ -1635,17 +1601,11 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def explode (self, val : PyGe.Interval = None)-> list :
       '''                             '''
     ...
-    def firstDerivAt (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''firstDerivAt( (CubicSplineCurve2d)arg1, (int)arg2) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d firstDerivAt(class PyGeCubicSplineCurve2d {lvalue},int)'''
+    def firstDerivAt (self, val: int)-> PyGe.Vector2d :
+      '''                             '''
     ...
-    def fitPointAt (self, *args, **kwargs)-> PyGe.Point2d :
-      '''fitPointAt( (CubicSplineCurve2d)arg1, (int)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d fitPointAt(class PyGeCubicSplineCurve2d {lvalue},int)'''
+    def fitPointAt (self, val: int)-> PyGe.Point2d :
+      '''                             '''
     ...
     def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
       '''                             '''
@@ -1685,11 +1645,8 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def hasEndPoint (self)-> bool :
       '''                             '''
     ...
-    def hasFitData (self, *args, **kwargs)-> bool :
-      '''hasFitData( (SplineEnt2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasFitData(class PyGeSplineEnt2d {lvalue})'''
+    def hasFitData (self)-> bool :
+      '''                             '''
     ...
     def hasStartPoint (self)-> bool :
       '''                             '''
@@ -1718,23 +1675,14 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def isPeriodic (self)-> tuple[Any,...] :
       '''                             '''
     ...
-    def isRational (self, *args, **kwargs)-> bool :
-      '''isRational( (SplineEnt2d)arg1) -> bool :
-
-    C++ signature :
-        bool isRational(class PyGeSplineEnt2d {lvalue})'''
+    def isRational (self)-> bool :
+      '''                             '''
     ...
-    def knotAt (self, *args, **kwargs)-> float :
-      '''knotAt( (SplineEnt2d)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double knotAt(class PyGeSplineEnt2d {lvalue},int)'''
+    def knotAt (self, idx: int)-> float :
+      '''                             '''
     ...
-    def knots (self, *args, **kwargs)-> PyGe.KnotVector :
-      '''knots( (SplineEnt2d)arg1) -> KnotVector :
-
-    C++ signature :
-        class PyGeKnotVector knots(class PyGeSplineEnt2d {lvalue})'''
+    def knots (self)-> PyGe.KnotVector :
+      '''                             '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
       '''                             '''
@@ -1742,29 +1690,17 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def mirror (self, val : PyGe.Line2d)-> None :
       '''                             '''
     ...
-    def numControlPoints (self, *args, **kwargs)-> int :
-      '''numControlPoints( (SplineEnt2d)arg1) -> int :
-
-    C++ signature :
-        int numControlPoints(class PyGeSplineEnt2d {lvalue})'''
+    def numControlPoints (self)-> int :
+      '''                             '''
     ...
-    def numFitPoints (self, *args, **kwargs)-> int :
-      '''numFitPoints( (CubicSplineCurve2d)arg1) -> int :
-
-    C++ signature :
-        int numFitPoints(class PyGeCubicSplineCurve2d {lvalue})'''
+    def numFitPoints (self)-> int :
+      '''                             '''
     ...
-    def numKnots (self, *args, **kwargs)-> int :
-      '''numKnots( (SplineEnt2d)arg1) -> int :
-
-    C++ signature :
-        int numKnots(class PyGeSplineEnt2d {lvalue})'''
+    def numKnots (self)-> int :
+      '''                             '''
     ...
-    def order (self, *args, **kwargs)-> int :
-      '''order( (SplineEnt2d)arg1) -> int :
-
-    C++ signature :
-        int order(class PyGeSplineEnt2d {lvalue})'''
+    def order (self)-> int :
+      '''                             '''
     ...
     def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
@@ -1784,44 +1720,26 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point2d=PyGe.Point2d.kOrgin)-> None :
       '''                             '''
     ...
-    def setControlPointAt (self, *args, **kwargs)-> None :
-      '''setControlPointAt( (SplineEnt2d)arg1, (int)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void setControlPointAt(class PyGeSplineEnt2d {lvalue},int,class AcGePoint2d)'''
+    def setControlPointAt (self, idx: int, val: PyGe.Point2d)-> None :
+      '''                             '''
     ...
-    def setFirstDerivAt (self, *args, **kwargs)-> None :
-      '''setFirstDerivAt( (CubicSplineCurve2d)arg1, (int)arg2, (Vector2d)arg3) -> None :
-
-    C++ signature :
-        void setFirstDerivAt(class PyGeCubicSplineCurve2d {lvalue},int,class AcGeVector2d)'''
+    def setFirstDerivAt (self, val: int, pt: PyGe.Vector2d)-> None :
+      '''                             '''
     ...
-    def setFitPointAt (self, *args, **kwargs)-> None :
-      '''setFitPointAt( (CubicSplineCurve2d)arg1, (int)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void setFitPointAt(class PyGeCubicSplineCurve2d {lvalue},int,class AcGePoint2d)'''
+    def setFitPointAt (self, val: int, pt: PyGe.Point2d)-> None :
+      '''                             '''
     ...
     def setInterval (self, val : PyGe.Interval = None)-> None :
       '''                             '''
     ...
-    def setKnotAt (self, *args, **kwargs)-> None :
-      '''setKnotAt( (SplineEnt2d)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setKnotAt(class PyGeSplineEnt2d {lvalue},int,double)'''
+    def setKnotAt (self, idx: int, val: float)-> None :
+      '''                             '''
     ...
-    def startParam (self, *args, **kwargs)-> float :
-      '''startParam( (SplineEnt2d)arg1) -> float :
-
-    C++ signature :
-        double startParam(class PyGeSplineEnt2d {lvalue})'''
+    def startParam (self)-> float :
+      '''                             '''
     ...
-    def startPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''startPoint( (SplineEnt2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d startPoint(class PyGeSplineEnt2d {lvalue})'''
+    def startPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix2d)-> None :
       '''                             '''
@@ -6958,79 +6876,55 @@ class Matrix3d(object):
     ...
 
 class NurbCurve2d(SplineEnt2d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, src: PyGe.NurbCurve2d)-> None : ...
+    @overload
+    def __init__ (self, src: PyGe.LineSeg2d)-> None : ...
+    @overload
+    def __init__ (self, src: PyGe.EllipArc2d)-> None : ...
+    @overload
+    def __init__ (self, curve: PyGe.Curve2d, epsilon: float)-> None : ...
+    @overload
+    def __init__ (self, fitPnts: list[PyGe.Point2d], tol: PyGe.Tol)-> None : ...
+    @overload
+    def __init__ (self, degree: int, fitPolyline: PyGe.Polyline2d, fitTolerance: PyGe.Tol)-> None : ...
+    @overload
+    def __init__ (self, degree: int, fitPolyline: PyGe.Polyline2d, isPeriodic: bool)-> None : ...
+    @overload
+    def __init__ (self, degree: int, knots: PyGe.KnotVector, cntrlPnts: list[PyGe.Point2d], isPeriodic: bool)-> None : ...
+    @overload
+    def __init__ (self, fitPoints: list[PyGe.Point2d], fitTangents: list[PyGe.Vector2d], fitTolerance: PyGe.Tol,isPeriodic: bool)-> None : ...
+    @overload
+    def __init__ (self, fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, startTangentDefined: bool, endTangentDefined: bool, fitTolerance: PyGe.Tol)-> None : ...
+    @overload
+    def __init__ (self, fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, startTangentDefined: bool, endTangentDefined: bool, knotParam: PyGe.KnotParameterization, fitTolerance: PyGe.Tol)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (EllipArc2d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeEllipArc2d)
-
-__init__( (object)arg1, (LineSeg2d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeLineSeg2d)
-
-__init__( (object)arg1, (Curve2d)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve2d,double)
-
-__init__( (object)arg1, (list)arg2, (Tol)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeTol)
-
-__init__( (object)arg1, (int)arg2, (Polyline2d)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,int,class PyGePolyline2d,bool)
-
-__init__( (object)arg1, (int)arg2, (KnotVector)arg3, (list)arg4, (bool)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,int,class PyGeKnotVector,class boost::python::list,bool)
-
-__init__( (object)arg1, (list)arg2, (list)arg3, (Tol)arg4, (bool)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,class boost::python::list,class AcGeTol,bool)
-
-__init__( (object)arg1, (list)arg2, (Vector2d)arg3, (Vector2d)arg4, (bool)arg5, (bool)arg6, (Tol)arg7) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector2d,class AcGeVector2d,bool,bool,class AcGeTol)
-
-__init__( (object)arg1, (list)arg2, (Vector2d)arg3, (Vector2d)arg4, (bool)arg5, (bool)arg6, (KnotParameterization)arg7, (Tol)arg8) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector2d,class AcGeVector2d,bool,bool,enum AcGe::KnotParameterization,class AcGeTol)'''
+      '''Overloads:
+    - None: Any
+    - src: PyGe.NurbCurve2d
+    - src: PyGe.LineSeg2d
+    - src: PyGe.EllipArc2d
+    - curve: PyGe.Curve2d, epsilon: float
+    - fitPnts: list[PyGe.Point2d], tol: PyGe.Tol
+    - degree: int, fitPolyline: PyGe.Polyline2d, fitTolerance: PyGe.Tol
+    - degree: int, fitPolyline: PyGe.Polyline2d, isPeriodic: bool
+    - degree: int, knots: PyGe.KnotVector, cntrlPnts: list[PyGe.Point2d], isPeriodic: bool
+    - fitPoints: list[PyGe.Point2d], fitTangents: list[PyGe.Vector2d], fitTolerance: PyGe.Tol,isPeriodic: bool
+    - fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, startTangentDefined: bool, endTangentDefined: bool, fitTolerance: PyGe.Tol
+    - fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, startTangentDefined: bool, endTangentDefined: bool, knotParam: PyGe.KnotParameterization, fitTolerance: PyGe.Tol
+    '''
     ...
-    def addControlPointAt (self, *args, **kwargs)-> bool :
-      '''addControlPointAt( (NurbCurve2d)arg1, (float)arg2, (Point2d)arg3, (float)arg4) -> bool :
-
-    C++ signature :
-        bool addControlPointAt(class PyGeNurbCurve2d {lvalue},double,class AcGePoint2d,double)'''
+    def addControlPointAt (self, newKnot: float, pt: PyGe.Point2d, weight: float)-> bool :
+      '''                             '''
     ...
-    def addFitPointAt (self, *args, **kwargs)-> bool :
-      '''addFitPointAt( (NurbCurve2d)arg1, (int)arg2, (Point2d)arg3) -> bool :
-
-    C++ signature :
-        bool addFitPointAt(class PyGeNurbCurve2d {lvalue},int,class AcGePoint2d)'''
+    def addFitPointAt (self, idx: int, pt: PyGe.Point2d)-> bool :
+      '''                             '''
     ...
-    def addKnot (self, *args, **kwargs)-> None :
-      '''addKnot( (NurbCurve2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void addKnot(class PyGeNurbCurve2d {lvalue},double)'''
+    def addKnot (self, val: float)-> None :
+      '''                             '''
     ...
     def area (self, startParam : float, endParam : float, tol : float = None)-> float :
       '''                             '''
@@ -7038,102 +6932,59 @@ __init__( (object)arg1, (list)arg2, (Vector2d)arg3, (Vector2d)arg4, (bool)arg5, 
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
     ...
-    def buildFitData (self, *args, **kwargs)-> bool :
-      '''buildFitData( (NurbCurve2d)arg1) -> bool :
-
-    C++ signature :
-        bool buildFitData(class PyGeNurbCurve2d {lvalue})
-
-buildFitData( (NurbCurve2d)arg1, (KnotParameterization)arg2) -> bool :
-
-    C++ signature :
-        bool buildFitData(class PyGeNurbCurve2d {lvalue},enum AcGe::KnotParameterization)'''
+    def buildFitData (self, val: PyGe.KnotParameterization=None)-> bool :
+      '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.SplineEnt2d :
-      '''cast( (Entity2d)arg1) -> SplineEnt2d :
 
-    C++ signature :
-        class PyGeSplineEnt2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.SplineEnt2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
       '''                             '''
     ...
-    def continuityAtKnot (self, *args, **kwargs)-> int :
-      '''continuityAtKnot( (SplineEnt2d)arg1, (int)arg2) -> int :
-
-    C++ signature :
-        int continuityAtKnot(class PyGeSplineEnt2d {lvalue},int)
-
-continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
-
-    C++ signature :
-        int continuityAtKnot(class PyGeSplineEnt2d {lvalue},int,class AcGeTol)'''
+    def continuityAtKnot (self, idx: int, tol: PyGe.Tol=None)-> int :
+      '''                             '''
     ...
-    def controlPointAt (self, *args, **kwargs)-> PyGe.Point2d :
-      '''controlPointAt( (SplineEnt2d)arg1, (int)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d controlPointAt(class PyGeSplineEnt2d {lvalue},int)'''
+    def controlPointAt (self, idx: int)-> PyGe.Point2d :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.NurbCurve2d :
-      '''copycast( (Entity2d)arg1) -> NurbCurve2d :
 
-    C++ signature :
-        class PyGeNurbCurve2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyGe.NurbCurve2d :
+      '''                             '''
     ...
-    def degree (self, *args, **kwargs)-> int :
-      '''degree( (SplineEnt2d)arg1) -> int :
-
-    C++ signature :
-        int degree(class PyGeSplineEnt2d {lvalue})'''
+    def degree (self)-> int :
+      '''                             '''
     ...
-    def deleteControlPointAt (self, *args, **kwargs)-> bool :
-      '''deleteControlPointAt( (NurbCurve2d)arg1, (int)arg2) -> bool :
-
-    C++ signature :
-        bool deleteControlPointAt(class PyGeNurbCurve2d {lvalue},int)'''
+    def deleteControlPointAt (self, val: int)-> bool :
+      '''                             '''
     ...
-    def deleteFitPointAt (self, *args, **kwargs)-> bool :
-      '''deleteFitPointAt( (NurbCurve2d)arg1, (int)arg2) -> bool :
-
-    C++ signature :
-        bool deleteFitPointAt(class PyGeNurbCurve2d {lvalue},int)'''
+    def deleteFitPointAt (self, idx: int)-> bool :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
     ...
-    def elevateDegree (self, *args, **kwargs)-> None :
-      '''elevateDegree( (NurbCurve2d)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void elevateDegree(class PyGeNurbCurve2d {lvalue},int)'''
+    def elevateDegree (self, val: int)-> None :
+      '''                             '''
     ...
-    def endParam (self, *args, **kwargs)-> float :
-      '''endParam( (SplineEnt2d)arg1) -> float :
-
-    C++ signature :
-        double endParam(class PyGeSplineEnt2d {lvalue})'''
+    def endParam (self)-> float :
+      '''                             '''
     ...
-    def endPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''endPoint( (SplineEnt2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d endPoint(class PyGeSplineEnt2d {lvalue})'''
+    def endPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def evalMode (self, *args, **kwargs)-> bool :
-      '''evalMode( (NurbCurve2d)arg1) -> bool :
-
-    C++ signature :
-        bool evalMode(class PyGeNurbCurve2d {lvalue})'''
+    def evalMode (self)-> bool :
+      '''                             '''
     ...
     def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
       '''                             '''
@@ -7147,38 +6998,23 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple[Any,...] :
       '''                             '''
     ...
-    def getDefinitionData (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getDefinitionData( (NurbCurve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getDefinitionData(class PyGeNurbCurve2d {lvalue})'''
+    def getDefinitionData (self)-> tuple[Any,...] :
+      '''                             '''
     ...
     def getEndPoint (self)-> PyGe.Point2d :
       '''                             '''
     ...
-    def getFitData (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getFitData( (NurbCurve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getFitData(class PyGeNurbCurve2d {lvalue})'''
+    def getFitData (self)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def getFitPointAt (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getFitPointAt( (NurbCurve2d)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getFitPointAt(class PyGeNurbCurve2d {lvalue},int)'''
+    def getFitPointAt (self, idx: int)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def getFitTangents (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getFitTangents( (NurbCurve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getFitTangents(class PyGeNurbCurve2d {lvalue})'''
+    def getFitTangents (self)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def getFitTolerance (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getFitTolerance( (NurbCurve2d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getFitTolerance(class PyGeNurbCurve2d {lvalue})'''
+    def getFitTolerance (self)-> tuple[Any,...] :
+      '''                             '''
     ...
     def getInterval (self)-> PyGe.Interval :
       '''                             '''
@@ -7186,17 +7022,11 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
       '''                             '''
     ...
-    def getParamsOfC1Discontinuity (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getParamsOfC1Discontinuity( (NurbCurve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getParamsOfC1Discontinuity(class PyGeNurbCurve2d {lvalue},class AcGeTol)'''
+    def getParamsOfC1Discontinuity (self, tol: PyGe.Tol)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def getParamsOfG1Discontinuity (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getParamsOfG1Discontinuity( (NurbCurve2d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getParamsOfG1Discontinuity(class PyGeNurbCurve2d {lvalue},class AcGeTol)'''
+    def getParamsOfG1Discontinuity (self, tol: PyGe.Tol)-> tuple[Any,...] :
+      '''                             '''
     ...
 
     @overload
@@ -7218,29 +7048,20 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
       '''                             '''
     ...
-    def hardTrimByParams (self, *args, **kwargs)-> None :
-      '''hardTrimByParams( (NurbCurve2d)arg1, (float)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void hardTrimByParams(class PyGeNurbCurve2d {lvalue},double,double)'''
+    def hardTrimByParams (self, newStartParam: float, newEndParam: float)-> None :
+      '''                             '''
     ...
     def hasEndPoint (self)-> bool :
       '''                             '''
     ...
-    def hasFitData (self, *args, **kwargs)-> bool :
-      '''hasFitData( (SplineEnt2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasFitData(class PyGeSplineEnt2d {lvalue})'''
+    def hasFitData (self)-> bool :
+      '''                             '''
     ...
     def hasStartPoint (self)-> bool :
       '''                             '''
     ...
-    def insertKnot (self, *args, **kwargs)-> None :
-      '''insertKnot( (NurbCurve2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void insertKnot(class PyGeNurbCurve2d {lvalue},double)'''
+    def insertKnot (self, val: float)-> None :
+      '''                             '''
     ...
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''                             '''
@@ -7266,95 +7087,53 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def isPeriodic (self)-> tuple[Any,...] :
       '''                             '''
     ...
-    def isRational (self, *args, **kwargs)-> bool :
-      '''isRational( (SplineEnt2d)arg1) -> bool :
-
-    C++ signature :
-        bool isRational(class PyGeSplineEnt2d {lvalue})'''
+    def isRational (self)-> bool :
+      '''                             '''
     ...
-    def joinWith (self, *args, **kwargs)-> None :
-      '''joinWith( (NurbCurve2d)arg1, (NurbCurve2d)arg2) -> None :
-
-    C++ signature :
-        void joinWith(class PyGeNurbCurve2d {lvalue},class PyGeNurbCurve2d)'''
+    def joinWith (self, val: PyGe.NurbCurve2d)-> None :
+      '''                             '''
     ...
-    def knotAt (self, *args, **kwargs)-> float :
-      '''knotAt( (SplineEnt2d)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double knotAt(class PyGeSplineEnt2d {lvalue},int)'''
+    def knotAt (self, idx: int)-> float :
+      '''                             '''
     ...
-    def knots (self, *args, **kwargs)-> PyGe.KnotVector :
-      '''knots( (SplineEnt2d)arg1) -> KnotVector :
-
-    C++ signature :
-        class PyGeKnotVector knots(class PyGeSplineEnt2d {lvalue})'''
+    def knots (self)-> PyGe.KnotVector :
+      '''                             '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
       '''                             '''
     ...
-    def makeClosed (self, *args, **kwargs)-> None :
-      '''makeClosed( (NurbCurve2d)arg1) -> None :
-
-    C++ signature :
-        void makeClosed(class PyGeNurbCurve2d {lvalue})'''
+    def makeClosed (self)-> None :
+      '''                             '''
     ...
-    def makeNonPeriodic (self, *args, **kwargs)-> None :
-      '''makeNonPeriodic( (NurbCurve2d)arg1) -> None :
-
-    C++ signature :
-        void makeNonPeriodic(class PyGeNurbCurve2d {lvalue})'''
+    def makeNonPeriodic (self)-> None :
+      '''                             '''
     ...
-    def makeOpen (self, *args, **kwargs)-> None :
-      '''makeOpen( (NurbCurve2d)arg1) -> None :
-
-    C++ signature :
-        void makeOpen(class PyGeNurbCurve2d {lvalue})'''
+    def makeOpen (self)-> None :
+      '''                             '''
     ...
-    def makePeriodic (self, *args, **kwargs)-> None :
-      '''makePeriodic( (NurbCurve2d)arg1) -> None :
-
-    C++ signature :
-        void makePeriodic(class PyGeNurbCurve2d {lvalue})'''
+    def makePeriodic (self)-> None :
+      '''                             '''
     ...
-    def makeRational (self, *args, **kwargs)-> None :
-      '''makeRational( (NurbCurve2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void makeRational(class PyGeNurbCurve2d {lvalue},double)'''
+    def makeRational (self, val: float)-> None :
+      '''                             '''
     ...
     def mirror (self, val : PyGe.Line2d)-> None :
       '''                             '''
     ...
-    def numControlPoints (self, *args, **kwargs)-> int :
-      '''numControlPoints( (SplineEnt2d)arg1) -> int :
-
-    C++ signature :
-        int numControlPoints(class PyGeSplineEnt2d {lvalue})'''
+    def numControlPoints (self)-> int :
+      '''                             '''
     ...
-    def numFitPoints (self, *args, **kwargs)-> int :
-      '''numFitPoints( (NurbCurve2d)arg1) -> int :
-
-    C++ signature :
-        int numFitPoints(class PyGeNurbCurve2d {lvalue})'''
+    def numFitPoints (self)-> int :
+      '''                             '''
     ...
-    def numKnots (self, *args, **kwargs)-> int :
-      '''numKnots( (SplineEnt2d)arg1) -> int :
-
-    C++ signature :
-        int numKnots(class PyGeSplineEnt2d {lvalue})'''
+    def numKnots (self)-> int :
+      '''                             '''
     ...
-    def numWeights (self, *args, **kwargs)-> int :
-      '''numWeights( (NurbCurve2d)arg1) -> int :
-
-    C++ signature :
-        int numWeights(class PyGeNurbCurve2d {lvalue})'''
+    def numWeights (self)-> int :
+      '''                             '''
     ...
-    def order (self, *args, **kwargs)-> int :
-      '''order( (SplineEnt2d)arg1) -> int :
-
-    C++ signature :
-        int order(class PyGeSplineEnt2d {lvalue})'''
+    def order (self)-> int :
+      '''                             '''
     ...
     def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
@@ -7365,11 +7144,8 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
     ...
-    def purgeFitData (self, *args, **kwargs)-> bool :
-      '''purgeFitData( (NurbCurve2d)arg1) -> bool :
-
-    C++ signature :
-        bool purgeFitData(class PyGeNurbCurve2d {lvalue})'''
+    def purgeFitData (self)-> bool :
+      '''                             '''
     ...
     def reverseParam (self)-> None :
       '''                             '''
@@ -7380,89 +7156,55 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point2d=PyGe.Point2d.kOrgin)-> None :
       '''                             '''
     ...
-    def setControlPointAt (self, *args, **kwargs)-> None :
-      '''setControlPointAt( (SplineEnt2d)arg1, (int)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void setControlPointAt(class PyGeSplineEnt2d {lvalue},int,class AcGePoint2d)'''
+    def setControlPointAt (self, idx: int, val: PyGe.Point2d)-> None :
+      '''                             '''
     ...
-    def setEvalMode (self, *args, **kwargs)-> None :
-      '''setEvalMode( (NurbCurve2d)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setEvalMode(class PyGeNurbCurve2d {lvalue},bool)'''
+    def setEvalMode (self, val: bool)-> None :
+      '''                             '''
     ...
+
+    @overload
+    def setFitData (self, degree: int, fitPoints: list[PyGe.Point2d], fitTolerance: PyGe.Tol)-> None : ...
+    @overload
+    def setFitData (self, fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, fitTolerance: PyGe.Tol)-> None : ...
+    @overload
+    def setFitData (self, fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, knotParam: PyGe.KnotParameterization, fitTolerance: PyGe.Tol)-> None : ...
+    @overload
+    def setFitData (self, knots: PyGe.KnotVector, fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, fitTolerance: PyGe.Tol, isPeriodic: bool)-> None : ...
     def setFitData (self, *args, **kwargs)-> None :
-      '''setFitData( (NurbCurve2d)arg1, (list)arg2, (Vector2d)arg3, (Vector2d)arg4, (Tol)arg5) -> None :
-
-    C++ signature :
-        void setFitData(class PyGeNurbCurve2d {lvalue},class boost::python::list,class AcGeVector2d,class AcGeVector2d,class AcGeTol)
-
-setFitData( (NurbCurve2d)arg1, (list)arg2, (Vector2d)arg3, (Vector2d)arg4, (KnotParameterization)arg5, (Tol)arg6) -> None :
-
-    C++ signature :
-        void setFitData(class PyGeNurbCurve2d {lvalue},class boost::python::list,class AcGeVector2d,class AcGeVector2d,enum AcGe::KnotParameterization,class AcGeTol)
-
-setFitData( (NurbCurve2d)arg1, (KnotVector)arg2, (list)arg3, (Vector2d)arg4, (Vector2d)arg5, (Tol)arg6, (bool)arg7) -> None :
-
-    C++ signature :
-        void setFitData(class PyGeNurbCurve2d {lvalue},class PyGeKnotVector,class boost::python::list,class AcGeVector2d,class AcGeVector2d,class AcGeTol,bool)
-
-setFitData( (NurbCurve2d)arg1, (int)arg2, (list)arg3, (Tol)arg4) -> None :
-
-    C++ signature :
-        void setFitData(class PyGeNurbCurve2d {lvalue},int,class boost::python::list,class AcGeTol)'''
+      '''Overloads:
+    - degree: int, fitPoints: list[PyGe.Point2d], fitTolerance: PyGe.Tol
+    - fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, fitTolerance: PyGe.Tol
+    - fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, knotParam: PyGe.KnotParameterization, fitTolerance: PyGe.Tol
+    - knots: PyGe.KnotVector, fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, fitTolerance: PyGe.Tol, isPeriodic: bool 
+    '''
     ...
-    def setFitKnotParameterization (self, *args, **kwargs)-> bool :
-      '''setFitKnotParameterization( (NurbCurve2d)arg1, (KnotParameterization)arg2) -> bool :
-
-    C++ signature :
-        bool setFitKnotParameterization(class PyGeNurbCurve2d {lvalue},enum AcGe::KnotParameterization)'''
+    def setFitKnotParameterization (self, val: PyGe.KnotParameterization)-> bool :
+      '''                             '''
     ...
-    def setFitPointAt (self, *args, **kwargs)-> bool :
-      '''setFitPointAt( (NurbCurve2d)arg1, (int)arg2, (Point2d)arg3) -> bool :
-
-    C++ signature :
-        bool setFitPointAt(class PyGeNurbCurve2d {lvalue},int,class AcGePoint2d)'''
+    def setFitPointAt (self, idx: int, pt: PyGe.Point2d)-> bool :
+      '''                             '''
     ...
-    def setFitTangents (self, *args, **kwargs)-> bool :
-      '''setFitTangents( (NurbCurve2d)arg1, (Vector2d)arg2, (Vector2d)arg3) -> bool :
-
-    C++ signature :
-        bool setFitTangents(class PyGeNurbCurve2d {lvalue},class AcGeVector2d,class AcGeVector2d)'''
+    def setFitTangents (self, startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d)-> bool :
+      '''                             '''
     ...
-    def setFitTolerance (self, *args, **kwargs)-> bool :
-      '''setFitTolerance( (NurbCurve2d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool setFitTolerance(class PyGeNurbCurve2d {lvalue},class AcGeTol)'''
+    def setFitTolerance (self, tol: PyGe.Tol)-> bool :
+      '''                             '''
     ...
     def setInterval (self, val : PyGe.Interval = None)-> None :
       '''                             '''
     ...
-    def setKnotAt (self, *args, **kwargs)-> None :
-      '''setKnotAt( (SplineEnt2d)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setKnotAt(class PyGeSplineEnt2d {lvalue},int,double)'''
+    def setKnotAt (self, idx: int, val: float)-> None :
+      '''                             '''
     ...
-    def setWeightAt (self, *args, **kwargs)-> None :
-      '''setWeightAt( (NurbCurve2d)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setWeightAt(class PyGeNurbCurve2d {lvalue},int,double)'''
+    def setWeightAt (self, idx: int, val: float)-> None :
+      '''                             '''
     ...
-    def startParam (self, *args, **kwargs)-> float :
-      '''startParam( (SplineEnt2d)arg1) -> float :
-
-    C++ signature :
-        double startParam(class PyGeSplineEnt2d {lvalue})'''
+    def startParam (self)-> float :
+      '''                             '''
     ...
-    def startPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''startPoint( (SplineEnt2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d startPoint(class PyGeSplineEnt2d {lvalue})'''
+    def startPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix2d)-> None :
       '''                             '''
@@ -7473,11 +7215,8 @@ setFitData( (NurbCurve2d)arg1, (int)arg2, (list)arg3, (Tol)arg4) -> None :
     def type (self)-> PyGe.EntityId :
       '''                             '''
     ...
-    def weightAt (self, *args, **kwargs)-> float :
-      '''weightAt( (NurbCurve2d)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double weightAt(class PyGeNurbCurve2d {lvalue},int)'''
+    def weightAt (self, idx: int)-> float :
+      '''                             '''
     ...
 
 class NurbCurve3d(SplineEnt3d):
@@ -9890,67 +9629,44 @@ __init__( (object)arg1, (Curve2d)arg2, (float)arg3) -> None :
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.SplineEnt2d :
-      '''cast( (Entity2d)arg1) -> SplineEnt2d :
 
-    C++ signature :
-        class PyGeSplineEnt2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.SplineEnt2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
       '''                             '''
     ...
-    def continuityAtKnot (self, *args, **kwargs)-> int :
-      '''continuityAtKnot( (SplineEnt2d)arg1, (int)arg2) -> int :
-
-    C++ signature :
-        int continuityAtKnot(class PyGeSplineEnt2d {lvalue},int)
-
-continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
-
-    C++ signature :
-        int continuityAtKnot(class PyGeSplineEnt2d {lvalue},int,class AcGeTol)'''
+    def continuityAtKnot (self, idx: int, tol: PyGe.Tol=None)-> int :
+      '''                             '''
     ...
-    def controlPointAt (self, *args, **kwargs)-> PyGe.Point2d :
-      '''controlPointAt( (SplineEnt2d)arg1, (int)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d controlPointAt(class PyGeSplineEnt2d {lvalue},int)'''
+    def controlPointAt (self, idx: int)-> PyGe.Point2d :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyDb.Polyline2d :
-      '''copycast( (Entity2d)arg1) -> Polyline2d :
 
-    C++ signature :
-        class PyGePolyline2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyDb.Polyline2d :
+      '''                             '''
     ...
-    def degree (self, *args, **kwargs)-> int :
-      '''degree( (SplineEnt2d)arg1) -> int :
-
-    C++ signature :
-        int degree(class PyGeSplineEnt2d {lvalue})'''
+    def degree (self)-> int :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
     ...
-    def endParam (self, *args, **kwargs)-> float :
-      '''endParam( (SplineEnt2d)arg1) -> float :
-
-    C++ signature :
-        double endParam(class PyGeSplineEnt2d {lvalue})'''
+    def endParam (self)-> float :
+      '''                             '''
     ...
-    def endPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''endPoint( (SplineEnt2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d endPoint(class PyGeSplineEnt2d {lvalue})'''
+    def endPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
       '''                             '''
@@ -9958,11 +9674,8 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def explode (self, val : PyGe.Interval = None)-> list :
       '''                             '''
     ...
-    def fitPointAt (self, *args, **kwargs)-> PyGe.Point2d :
-      '''fitPointAt( (Polyline2d)arg1, (int)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d fitPointAt(class PyGePolyline2d {lvalue},int)'''
+    def fitPointAt (self, idx: int)-> PyGe.Point2d :
+      '''                             '''
     ...
     def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
       '''                             '''
@@ -10002,11 +9715,8 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def hasEndPoint (self)-> bool :
       '''                             '''
     ...
-    def hasFitData (self, *args, **kwargs)-> bool :
-      '''hasFitData( (SplineEnt2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasFitData(class PyGeSplineEnt2d {lvalue})'''
+    def hasFitData (self)-> bool :
+      '''                             '''
     ...
     def hasStartPoint (self)-> bool :
       '''                             '''
@@ -10035,23 +9745,14 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def isPeriodic (self)-> tuple[Any,...] :
       '''                             '''
     ...
-    def isRational (self, *args, **kwargs)-> bool :
-      '''isRational( (SplineEnt2d)arg1) -> bool :
-
-    C++ signature :
-        bool isRational(class PyGeSplineEnt2d {lvalue})'''
+    def isRational (self)-> bool :
+      '''                             '''
     ...
-    def knotAt (self, *args, **kwargs)-> float :
-      '''knotAt( (SplineEnt2d)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double knotAt(class PyGeSplineEnt2d {lvalue},int)'''
+    def knotAt (self, idx: int)-> float :
+      '''                             '''
     ...
-    def knots (self, *args, **kwargs)-> PyGe.KnotVector :
-      '''knots( (SplineEnt2d)arg1) -> KnotVector :
-
-    C++ signature :
-        class PyGeKnotVector knots(class PyGeSplineEnt2d {lvalue})'''
+    def knots (self)-> PyGe.KnotVector :
+      '''                             '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
       '''                             '''
@@ -10059,29 +9760,17 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def mirror (self, val : PyGe.Line2d)-> None :
       '''                             '''
     ...
-    def numControlPoints (self, *args, **kwargs)-> int :
-      '''numControlPoints( (SplineEnt2d)arg1) -> int :
-
-    C++ signature :
-        int numControlPoints(class PyGeSplineEnt2d {lvalue})'''
+    def numControlPoints (self)-> int :
+      '''                             '''
     ...
-    def numFitPoints (self, *args, **kwargs)-> int :
-      '''numFitPoints( (Polyline2d)arg1) -> int :
-
-    C++ signature :
-        int numFitPoints(class PyGePolyline2d {lvalue})'''
+    def numFitPoints (self)-> int :
+      '''                             '''
     ...
-    def numKnots (self, *args, **kwargs)-> int :
-      '''numKnots( (SplineEnt2d)arg1) -> int :
-
-    C++ signature :
-        int numKnots(class PyGeSplineEnt2d {lvalue})'''
+    def numKnots (self)-> int :
+      '''                             '''
     ...
-    def order (self, *args, **kwargs)-> int :
-      '''order( (SplineEnt2d)arg1) -> int :
-
-    C++ signature :
-        int order(class PyGeSplineEnt2d {lvalue})'''
+    def order (self)-> int :
+      '''                             '''
     ...
     def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
@@ -10101,38 +9790,23 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point2d=PyGe.Point2d.kOrgin)-> None :
       '''                             '''
     ...
-    def setControlPointAt (self, *args, **kwargs)-> None :
-      '''setControlPointAt( (SplineEnt2d)arg1, (int)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void setControlPointAt(class PyGeSplineEnt2d {lvalue},int,class AcGePoint2d)'''
+    def setControlPointAt (self, idx: int, val: PyGe.Point2d)-> None :
+      '''                             '''
     ...
-    def setFitPointAt (self, *args, **kwargs)-> None :
-      '''setFitPointAt( (Polyline2d)arg1, (int)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void setFitPointAt(class PyGePolyline2d {lvalue},int,class AcGePoint2d)'''
+    def setFitPointAt (self, idx: int, pt: PyGe.Point2d)-> None :
+      '''                             '''
     ...
     def setInterval (self, val : PyGe.Interval = None)-> None :
       '''                             '''
     ...
-    def setKnotAt (self, *args, **kwargs)-> None :
-      '''setKnotAt( (SplineEnt2d)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setKnotAt(class PyGeSplineEnt2d {lvalue},int,double)'''
+    def setKnotAt (self, idx: int, val: float)-> None :
+      '''                             '''
     ...
-    def startParam (self, *args, **kwargs)-> float :
-      '''startParam( (SplineEnt2d)arg1) -> float :
-
-    C++ signature :
-        double startParam(class PyGeSplineEnt2d {lvalue})'''
+    def startParam (self)-> float :
+      '''                             '''
     ...
-    def startPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''startPoint( (SplineEnt2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d startPoint(class PyGeSplineEnt2d {lvalue})'''
+    def startPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix2d)-> None :
       '''                             '''
@@ -11446,67 +11120,44 @@ This class cannot be instantiated from Python'''
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.SplineEnt2d :
-      '''cast( (Entity2d)arg1) -> SplineEnt2d :
 
-    C++ signature :
-        class PyGeSplineEnt2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.SplineEnt2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
       '''                             '''
     ...
-    def continuityAtKnot (self, *args, **kwargs)-> int :
-      '''continuityAtKnot( (SplineEnt2d)arg1, (int)arg2) -> int :
-
-    C++ signature :
-        int continuityAtKnot(class PyGeSplineEnt2d {lvalue},int)
-
-continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
-
-    C++ signature :
-        int continuityAtKnot(class PyGeSplineEnt2d {lvalue},int,class AcGeTol)'''
+    def continuityAtKnot (self, idx: int, tol: PyGe.Tol=None)-> int :
+      '''                             '''
     ...
-    def controlPointAt (self, *args, **kwargs)-> PyGe.Point2d :
-      '''controlPointAt( (SplineEnt2d)arg1, (int)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d controlPointAt(class PyGeSplineEnt2d {lvalue},int)'''
+    def controlPointAt (self, idx: int)-> PyGe.Point2d :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.SplineEnt2d :
-      '''copycast( (Entity2d)arg1) -> SplineEnt2d :
 
-    C++ signature :
-        class PyGeSplineEnt2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyGe.SplineEnt2d :
+      '''                             '''
     ...
-    def degree (self, *args, **kwargs)-> int :
-      '''degree( (SplineEnt2d)arg1) -> int :
-
-    C++ signature :
-        int degree(class PyGeSplineEnt2d {lvalue})'''
+    def degree (self)-> int :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
     ...
-    def endParam (self, *args, **kwargs)-> float :
-      '''endParam( (SplineEnt2d)arg1) -> float :
-
-    C++ signature :
-        double endParam(class PyGeSplineEnt2d {lvalue})'''
+    def endParam (self)-> float :
+      '''                             '''
     ...
-    def endPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''endPoint( (SplineEnt2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d endPoint(class PyGeSplineEnt2d {lvalue})'''
+    def endPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
       '''                             '''
@@ -11552,11 +11203,8 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def hasEndPoint (self)-> bool :
       '''                             '''
     ...
-    def hasFitData (self, *args, **kwargs)-> bool :
-      '''hasFitData( (SplineEnt2d)arg1) -> bool :
-
-    C++ signature :
-        bool hasFitData(class PyGeSplineEnt2d {lvalue})'''
+    def hasFitData (self)-> bool :
+      '''                             '''
     ...
     def hasStartPoint (self)-> bool :
       '''                             '''
@@ -11585,23 +11233,14 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def isPeriodic (self)-> tuple[Any,...] :
       '''                             '''
     ...
-    def isRational (self, *args, **kwargs)-> bool :
-      '''isRational( (SplineEnt2d)arg1) -> bool :
-
-    C++ signature :
-        bool isRational(class PyGeSplineEnt2d {lvalue})'''
+    def isRational (self)-> bool :
+      '''                             '''
     ...
-    def knotAt (self, *args, **kwargs)-> float :
-      '''knotAt( (SplineEnt2d)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double knotAt(class PyGeSplineEnt2d {lvalue},int)'''
+    def knotAt (self, idx: int)-> float :
+      '''                             '''
     ...
-    def knots (self, *args, **kwargs)-> PyGe.KnotVector :
-      '''knots( (SplineEnt2d)arg1) -> KnotVector :
-
-    C++ signature :
-        class PyGeKnotVector knots(class PyGeSplineEnt2d {lvalue})'''
+    def knots (self)-> PyGe.KnotVector :
+      '''                             '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
       '''                             '''
@@ -11609,23 +11248,14 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def mirror (self, val : PyGe.Line2d)-> None :
       '''                             '''
     ...
-    def numControlPoints (self, *args, **kwargs)-> int :
-      '''numControlPoints( (SplineEnt2d)arg1) -> int :
-
-    C++ signature :
-        int numControlPoints(class PyGeSplineEnt2d {lvalue})'''
+    def numControlPoints (self)-> int :
+      '''                             '''
     ...
-    def numKnots (self, *args, **kwargs)-> int :
-      '''numKnots( (SplineEnt2d)arg1) -> int :
-
-    C++ signature :
-        int numKnots(class PyGeSplineEnt2d {lvalue})'''
+    def numKnots (self)-> int :
+      '''                             '''
     ...
-    def order (self, *args, **kwargs)-> int :
-      '''order( (SplineEnt2d)arg1) -> int :
-
-    C++ signature :
-        int order(class PyGeSplineEnt2d {lvalue})'''
+    def order (self)-> int :
+      '''                             '''
     ...
     def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
@@ -11645,32 +11275,20 @@ continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point2d=PyGe.Point2d.kOrgin)-> None :
       '''                             '''
     ...
-    def setControlPointAt (self, *args, **kwargs)-> None :
-      '''setControlPointAt( (SplineEnt2d)arg1, (int)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void setControlPointAt(class PyGeSplineEnt2d {lvalue},int,class AcGePoint2d)'''
+    def setControlPointAt (self, idx: int, val: PyGe.Point2d)-> None :
+      '''                             '''
     ...
     def setInterval (self, val : PyGe.Interval = None)-> None :
       '''                             '''
     ...
-    def setKnotAt (self, *args, **kwargs)-> None :
-      '''setKnotAt( (SplineEnt2d)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setKnotAt(class PyGeSplineEnt2d {lvalue},int,double)'''
+    def setKnotAt (self, idx: int, val: float)-> None :
+      '''                             '''
     ...
-    def startParam (self, *args, **kwargs)-> float :
-      '''startParam( (SplineEnt2d)arg1) -> float :
-
-    C++ signature :
-        double startParam(class PyGeSplineEnt2d {lvalue})'''
+    def startParam (self)-> float :
+      '''                             '''
     ...
-    def startPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''startPoint( (SplineEnt2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d startPoint(class PyGeSplineEnt2d {lvalue})'''
+    def startPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix2d)-> None :
       '''                             '''
@@ -12404,10 +12022,10 @@ class Vector2d(object):
       '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000028581D3C820>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002AF8753C820>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000028581D3C820>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002AF8753C820>])'''
     ...
     def isParallelTo (self, vec: PyGe.Vector2d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -12416,16 +12034,16 @@ class Vector2d(object):
       '''                             '''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000028581D3C550>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002AF8753C550>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000028581D3C550>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002AF8753C550>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000028581D3C5E0>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002AF8753C5E0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000028581D3C5E0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002AF8753C5E0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
