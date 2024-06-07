@@ -8,11 +8,12 @@ using namespace boost::python;
 //PyGePointEnt2d wrapper
 void makePyGePointEnt2dWrapper()
 {
+    PyDocString DS("PointEnt2d");
     class_<PyGePointEnt2d, bases<PyGeEntity2d>>("PointEnt2d", boost::python::no_init)
-        .def("point2d", &PyGePointEnt2d::point2d)
-        .def("cast", &PyGePointEnt2d::cast).staticmethod("cast")
-        .def("copycast", &PyGePointEnt2d::copycast).staticmethod("copycast")
-        .def("className", &PyGePointEnt2d::className).staticmethod("className")
+        .def("point2d", &PyGePointEnt2d::point2d, DS.ARGS())
+        .def("cast", &PyGePointEnt2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGePointEnt2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGePointEnt2d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -57,23 +58,39 @@ AcGePointEnt2d* PyGePointEnt2d::impObj(const std::source_location& src /*= std::
 //PyGePointOnCurve2d wrapper
 void makePyGePointOnCurve2dWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- curve: PyGe.Curve2d\n"
+        "- curve: PyGe.Curve2d, param: float\n";
+
+    constexpr const std::string_view pointOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- param: float\n"
+        "- curve: PyGe.Curve2d, param: float\n";
+
+    constexpr const std::string_view derivOverloads = "Overloads:\n"
+        "- order: int\n"
+        "- order: int, param: float\n"
+        "- order: int, curve: PyGe.Curve2d, param: float\n";
+        
+    PyDocString DS("PointOnCurve2d");
     class_<PyGePointOnCurve2d, bases<PyGePointEnt2d>>("PointOnCurve2d")
         .def(init<>())
         .def(init<const PyGeCurve2d&>())
-        .def(init<const PyGeCurve2d&, double>())
-        .def("curve", &PyGePointOnCurve2d::curve)
-        .def("parameter", &PyGePointOnCurve2d::parameter)
+        .def(init<const PyGeCurve2d&, double>(DS.CTOR(ctor)))
+        .def("curve", &PyGePointOnCurve2d::curve, DS.ARGS())
+        .def("parameter", &PyGePointOnCurve2d::parameter, DS.ARGS())
         .def("point", &PyGePointOnCurve2d::point1)
         .def("point", &PyGePointOnCurve2d::point2)
-        .def("point", &PyGePointOnCurve2d::point3)
+        .def("point", &PyGePointOnCurve2d::point3, DS.OVRL(pointOverloads))
         .def("deriv", &PyGePointOnCurve2d::deriv1)
         .def("deriv", &PyGePointOnCurve2d::deriv2)
-        .def("deriv", &PyGePointOnCurve2d::deriv3)
-        .def("setCurve", &PyGePointOnCurve2d::setCurve)
-        .def("setParameter", &PyGePointOnCurve2d::setParameter)
-        .def("cast", &PyGePointOnCurve2d::cast).staticmethod("cast")
-        .def("copycast", &PyGePointOnCurve2d::copycast).staticmethod("copycast")
-        .def("className", &PyGePointOnCurve2d::className).staticmethod("className")
+        .def("deriv", &PyGePointOnCurve2d::deriv3, DS.OVRL(derivOverloads))
+        .def("setCurve", &PyGePointOnCurve2d::setCurve, DS.ARGS({ "val: PyGe.Curve2d" }))
+        .def("setParameter", &PyGePointOnCurve2d::setParameter, DS.ARGS({ "val: float" }))
+        .def("cast", &PyGePointOnCurve2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGePointOnCurve2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGePointOnCurve2d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -240,15 +257,25 @@ AcGePointOnCurve2d* PyGePointOnCurve2d::impObj(const std::source_location& src /
 //AcGePosition2d wrapper
 void makePyGePosition2dWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- pnt: PyGe.Point2d\n"
+        "- x: float, y: float\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- pnt: PyGe.Point2d\n"
+        "- x: float, y: float\n";
+
+    PyDocString DS("Position2d");
     class_<PyGePosition2d, bases<PyGePointEnt2d>>("Position2d")
         .def(init<>())
         .def(init<const AcGePoint2d&>())
-        .def(init<double, double>())
+        .def(init<double, double>(DS.CTOR(ctor)))
         .def("set", &PyGePosition2d::set1)
-        .def("set", &PyGePosition2d::set2)
-        .def("cast", &PyGePosition2d::cast).staticmethod("cast")
-        .def("copycast", &PyGePosition2d::copycast).staticmethod("copycast")
-        .def("className", &PyGePosition2d::className).staticmethod("className")
+        .def("set", &PyGePosition2d::set2, DS.OVRL(setOverloads))
+        .def("cast", &PyGePosition2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGePosition2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGePosition2d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 

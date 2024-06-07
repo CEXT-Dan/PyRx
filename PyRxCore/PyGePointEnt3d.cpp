@@ -9,11 +9,12 @@ using namespace boost::python;
 //PyGePointEnt3d
 void makePyGePointEnt3dWrapper()
 {
+    PyDocString DS("PointEnt3d");
     class_<PyGePointEnt3d, bases<PyGeEntity3d>>("PointEnt3d", boost::python::no_init)
-        .def("point3d", &PyGePointEnt3d::point3d)
-        .def("cast", &PyGePointEnt3d::cast).staticmethod("cast")
-        .def("copycast", &PyGePointEnt3d::copycast).staticmethod("copycast")
-        .def("className", &PyGePointEnt3d::className).staticmethod("className")
+        .def("point3d", &PyGePointEnt3d::point3d, DS.ARGS())
+        .def("cast", &PyGePointEnt3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGePointEnt3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGePointEnt3d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -58,26 +59,42 @@ AcGePointEnt3d* PyGePointEnt3d::impObj(const std::source_location& src /*= std::
 //PyGePointOnCurve3d
 void makePyGePointOnCurve3dWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- curve: PyGe.Curve3d\n"
+        "- curve: PyGe.Curve3d, param: float\n";
+
+    constexpr const std::string_view pointOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- param: float\n"
+        "- curve: PyGe.Curve3d, param: float\n";
+
+    constexpr const std::string_view derivOverloads = "Overloads:\n"
+        "- order: int\n"
+        "- order: int, param: float\n"
+        "- order: int, curve: PyGe.Curve3d, param: float\n";
+
+    PyDocString DS("PointOnCurve3d");
     class_<PyGePointOnCurve3d, bases<PyGePointEnt3d>>("PointOnCurve3d")
         .def(init<>())
         .def(init<const PyGeCurve3d&>())
-        .def(init<const PyGeCurve3d&, double>())
-        .def("curve", &PyGePointOnCurve3d::curve)
-        .def("parameter", &PyGePointOnCurve3d::parameter)
+        .def(init<const PyGeCurve3d&, double>(DS.CTOR(ctor)))
+        .def("curve", &PyGePointOnCurve3d::curve, DS.ARGS())
+        .def("parameter", &PyGePointOnCurve3d::parameter, DS.ARGS())
         .def("point", &PyGePointOnCurve3d::point1)
         .def("point", &PyGePointOnCurve3d::point2)
-        .def("point", &PyGePointOnCurve3d::point3)
+        .def("point", &PyGePointOnCurve3d::point3, DS.OVRL(pointOverloads))
         .def("deriv", &PyGePointOnCurve3d::deriv1)
         .def("deriv", &PyGePointOnCurve3d::deriv2)
-        .def("deriv", &PyGePointOnCurve3d::deriv3)
-        .def("isSingular", &PyGePointOnCurve3d::isSingular)
+        .def("deriv", &PyGePointOnCurve3d::deriv3, DS.OVRL(derivOverloads))
+        .def("isSingular", &PyGePointOnCurve3d::isSingular, DS.ARGS())
         .def("curvature", &PyGePointOnCurve3d::curvature1)
-        .def("curvature", &PyGePointOnCurve3d::curvature2)
-        .def("setCurve", &PyGePointOnCurve3d::setCurve)
-        .def("setParameter", &PyGePointOnCurve3d::setParameter)
-        .def("cast", &PyGePointOnCurve3d::cast).staticmethod("cast")
-        .def("copycast", &PyGePointOnCurve3d::copycast).staticmethod("copycast")
-        .def("className", &PyGePointOnCurve3d::className).staticmethod("className")
+        .def("curvature", &PyGePointOnCurve3d::curvature2, DS.ARGS({ "param: float=None" }))
+        .def("setCurve", &PyGePointOnCurve3d::setCurve, DS.ARGS({ "curve: PyGe.Curve3d" }))
+        .def("setParameter", &PyGePointOnCurve3d::setParameter, DS.ARGS({ "param: float" }))
+        .def("cast", &PyGePointOnCurve3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGePointOnCurve3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGePointOnCurve3d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
