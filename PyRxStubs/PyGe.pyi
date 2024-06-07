@@ -3015,44 +3015,32 @@ set( (CurveSurfInt)arg1, (Curve3d)arg2, (Surface)arg3, (Tol)arg4) -> None :
     ...
 
 class Cylinder(Surface):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, radius: float, origin: PyGe.Point3d, axisOfSymmetry: PyGe.Vector3d)-> None : ...
+    @overload
+    def __init__ (self, radius: float, origin: PyGe.Point3d, axisOfSymmetry: PyGe.Vector3d, refAxis: PyGe.Vector3d, height: PyGe.Interval, startAngle: float, endAngle: float)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (float)arg2, (Point3d)arg3, (Vector3d)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,class AcGePoint3d,class AcGeVector3d)
-
-__init__( (object)arg1, (float)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5, (Interval)arg6, (float)arg7, (float)arg8) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,class PyGeInterval,double,double)'''
+      '''Overloads:
+    - None: Any
+    - radius: float, origin: PyGe.Point3d, axisOfSymmetry: PyGe.Vector3d
+    - radius: float, origin: PyGe.Point3d, axisOfSymmetry: PyGe.Vector3d, refAxis: PyGe.Vector3d, height: PyGe.Interval, startAngle: float, endAngle: float
+    '''
     ...
-    def axisOfSymmetry (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''axisOfSymmetry( (Cylinder)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d axisOfSymmetry(class PyGeCylinder {lvalue})'''
+    def axisOfSymmetry (self)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.Cylinder :
-      '''cast( (Entity3d)arg1) -> Cylinder :
 
-    C++ signature :
-        class PyGeCylinder cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.Cylinder :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> PyGe.Point3d :
       '''                             '''
@@ -3060,11 +3048,10 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)ar
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.Cylinder :
-      '''copycast( (Entity3d)arg1) -> Cylinder :
 
-    C++ signature :
-        class PyGeCylinder copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.Cylinder :
+      '''                             '''
     ...
     def distanceTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> float :
       '''                             '''
@@ -3083,45 +3070,20 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)ar
     - param: PyGe.Point3d, derivOrd: int, vecs: list[PyGe.Vector3d], normal: PyGe.Vector3d
     '''
     ...
-    def getAngles (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getAngles( (Cylinder)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getAngles(class PyGeCylinder {lvalue})'''
+    def getAngles (self)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def getHeight (self, *args, **kwargs)-> PyGe.Interval :
-      '''getHeight( (Cylinder)arg1) -> Interval :
-
-    C++ signature :
-        class PyGeInterval getHeight(class PyGeCylinder {lvalue})'''
+    def getHeight (self)-> PyGe.Interval :
+      '''                             '''
     ...
-    def heightAt (self, *args, **kwargs)-> float :
-      '''heightAt( (Cylinder)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double heightAt(class PyGeCylinder {lvalue},double)'''
+    def heightAt (self, u: float)-> float :
+      '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> tuple[Any,...] :
-      '''intersectWith( (Cylinder)arg1, (LinearEnt3d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGeCylinder {lvalue},class PyGeLinearEnt3d)
-
-intersectWith( (Cylinder)arg1, (LinearEnt3d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGeCylinder {lvalue},class PyGeLinearEnt3d,class AcGeTol {lvalue})'''
+    def intersectWith (self, val: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Cylinder)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCylinder {lvalue})
-
-isClosed( (Cylinder)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCylinder {lvalue},class AcGeTol)'''
+    def isClosed (self, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isClosedInU (self, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -3158,35 +3120,23 @@ isClosed( (Cylinder)arg1, (Tol)arg2) -> bool :
     - pnt: PyGe.Point3d, paramPoint: PyGe.Point2d, tol: PyGe.Tol = None
     '''
     ...
-    def isOuterNormal (self, *args, **kwargs)-> bool :
-      '''isOuterNormal( (Cylinder)arg1) -> bool :
-
-    C++ signature :
-        bool isOuterNormal(class PyGeCylinder {lvalue})'''
+    def isOuterNormal (self)-> bool :
+      '''                             '''
     ...
     def mirror (self, val : PyGe.Plane)-> None :
       '''Transforms the entity by mirroring it across the input plane.'''
     ...
-    def origin (self, *args, **kwargs)-> PyGe.Point3d :
-      '''origin( (Cylinder)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d origin(class PyGeCylinder {lvalue})'''
+    def origin (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def paramOf (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> PyGe.Point2d :
       '''                             '''
     ...
-    def radius (self, *args, **kwargs)-> float :
-      '''radius( (Cylinder)arg1) -> float :
-
-    C++ signature :
-        double radius(class PyGeCylinder {lvalue})'''
+    def radius (self)-> float :
+      '''                             '''
     ...
-    def refAxis (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''refAxis( (Cylinder)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d refAxis(class PyGeCylinder {lvalue})'''
+    def refAxis (self)-> PyGe.Vector3d :
+      '''                             '''
     ...
     def reverseNormal (self)-> None :
       '''                             '''
@@ -3197,34 +3147,25 @@ isClosed( (Cylinder)arg1, (Tol)arg2) -> bool :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point3d = 'origin')-> None :
       '''Scales the entity about the input point by the input scale factor. Input scale factor must be greater than 0.'''
     ...
+
+    @overload
+    def set (self, radius: float, origin: PyGe.Point3d, axisOfSymmetry: PyGe.Vector3d)-> None : ...
+    @overload
+    def set (self, radius: float, origin: PyGe.Point3d, axisOfSymmetry: PyGe.Vector3d, refAxis: PyGe.Vector3d, height: PyGe.Interval, startAngle: float, endAngle: float)-> None : ...
     def set (self, *args, **kwargs)-> None :
-      '''set( (Cylinder)arg1, (float)arg2, (Point3d)arg3, (Vector3d)arg4) -> None :
-
-    C++ signature :
-        void set(class PyGeCylinder {lvalue},double,class AcGePoint3d,class AcGeVector3d)
-
-set( (Cylinder)arg1, (float)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5, (Interval)arg6, (float)arg7, (float)arg8) -> None :
-
-    C++ signature :
-        void set(class PyGeCylinder {lvalue},double,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,class PyGeInterval,double,double)'''
+      '''Overloads:
+    - radius: float, origin: PyGe.Point3d, axisOfSymmetry: PyGe.Vector3d
+    - radius: float, origin: PyGe.Point3d, axisOfSymmetry: PyGe.Vector3d, refAxis: PyGe.Vector3d, height: PyGe.Interval, startAngle: float, endAngle: float
+    '''
     ...
-    def setAngles (self, *args, **kwargs)-> None :
-      '''setAngles( (Cylinder)arg1, (float)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setAngles(class PyGeCylinder {lvalue},double,double)'''
+    def setAngles (self, start: float, end: float)-> None :
+      '''                             '''
     ...
-    def setHeight (self, *args, **kwargs)-> None :
-      '''setHeight( (Cylinder)arg1, (Interval)arg2) -> None :
-
-    C++ signature :
-        void setHeight(class PyGeCylinder {lvalue},class PyGeInterval)'''
+    def setHeight (self, val: PyGe.Interval)-> None :
+      '''                             '''
     ...
-    def setRadius (self, *args, **kwargs)-> None :
-      '''setRadius( (Cylinder)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setRadius(class PyGeCylinder {lvalue},double)'''
+    def setRadius (self, val: float)-> None :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix3d)-> None :
       '''Transforms the entity by applying the input matrix.'''
@@ -4089,17 +4030,15 @@ class ExternalBoundedSurface(Surface):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.ExternalBoundedSurface :
-      '''cast( (Entity3d)arg1) -> ExternalBoundedSurface :
 
-    C++ signature :
-        class PyGeExternalBoundedSurface cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.ExternalBoundedSurface :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> PyGe.Point3d :
       '''                             '''
@@ -4107,11 +4046,10 @@ class ExternalBoundedSurface(Surface):
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.ExternalBoundedSurface :
-      '''copycast( (Entity3d)arg1) -> ExternalBoundedSurface :
 
-    C++ signature :
-        class PyGeExternalBoundedSurface copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.ExternalBoundedSurface :
+      '''                             '''
     ...
     def distanceTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> float :
       '''                             '''
@@ -4508,17 +4446,15 @@ class ExternalSurface(Surface):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.ExternalSurface :
-      '''cast( (Entity3d)arg1) -> ExternalSurface :
 
-    C++ signature :
-        class PyGeExternalSurface cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.ExternalSurface :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> PyGe.Point3d :
       '''                             '''
@@ -4526,11 +4462,10 @@ class ExternalSurface(Surface):
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.ExternalSurface :
-      '''copycast( (Entity3d)arg1) -> ExternalSurface :
 
-    C++ signature :
-        class PyGeExternalSurface copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.ExternalSurface :
+      '''                             '''
     ...
     def distanceTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> float :
       '''                             '''
@@ -8105,17 +8040,15 @@ class NurbSurface(Surface):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.NurbSurface :
-      '''cast( (Entity3d)arg1) -> NurbSurface :
 
-    C++ signature :
-        class PyGeNurbSurface cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyDb.NurbSurface :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> PyGe.Point3d :
       '''                             '''
@@ -8123,11 +8056,10 @@ class NurbSurface(Surface):
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyDb.NurbSurface :
-      '''copycast( (Entity3d)arg1) -> NurbSurface :
 
-    C++ signature :
-        class PyGeNurbSurface copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyDb.NurbSurface :
+      '''                             '''
     ...
     def distanceTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> float :
       '''                             '''
@@ -8611,17 +8543,15 @@ class OffsetSurface(Surface):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.OffsetSurface :
-      '''cast( (Entity3d)arg1) -> OffsetSurface :
 
-    C++ signature :
-        class PyGeOffsetSurface cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.OffsetSurface :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> PyGe.Point3d :
       '''                             '''
@@ -8629,11 +8559,10 @@ class OffsetSurface(Surface):
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.OffsetSurface :
-      '''copycast( (Entity3d)arg1) -> OffsetSurface :
 
-    C++ signature :
-        class PyGeOffsetSurface copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.OffsetSurface :
+      '''                             '''
     ...
     def distanceTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> float :
       '''                             '''
@@ -11341,44 +11270,32 @@ class Scale3d(object):
     ...
 
 class Sphere(Surface):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, radius: float, center: PyGe.Point3d)-> None : ...
+    @overload
+    def __init__ (self, radius: float, center: PyGe.Point3d, northAxis: PyGe.Vector3d, refAxis: PyGe.Vector3d, startAngleU: float, endAngleU: float, startAngleV: float, endAngleV: float)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (float)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,class AcGePoint3d)
-
-__init__( (object)arg1, (float)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6, (float)arg7, (float)arg8, (float)arg9) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double,double)'''
+      '''Overloads:
+    - None: Any
+    - radius: float, center: PyGe.Point3d
+    - radius: float, center: PyGe.Point3d, northAxis: PyGe.Vector3d, refAxis: PyGe.Vector3d, startAngleU: float, endAngleU: float, startAngleV: float, endAngleV: float
+    '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.Sphere :
-      '''cast( (Entity3d)arg1) -> Sphere :
 
-    C++ signature :
-        class PyGeSphere cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.Sphere :
+      '''                             '''
     ...
-    def center (self, *args, **kwargs)-> PyGe.Point3d :
-      '''center( (Sphere)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d center(class PyGeSphere {lvalue})'''
+    def center (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> PyGe.Point3d :
       '''                             '''
@@ -11386,11 +11303,10 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)ar
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.Sphere :
-      '''copycast( (Entity3d)arg1) -> Sphere :
 
-    C++ signature :
-        class PyGeSphere copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.Sphere :
+      '''                             '''
     ...
     def distanceTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> float :
       '''                             '''
@@ -11409,39 +11325,17 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)ar
     - param: PyGe.Point3d, derivOrd: int, vecs: list[PyGe.Vector3d], normal: PyGe.Vector3d
     '''
     ...
-    def getAnglesInU (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getAnglesInU( (Sphere)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getAnglesInU(class PyGeSphere {lvalue})'''
+    def getAnglesInU (self)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def getAnglesInV (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getAnglesInV( (Sphere)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getAnglesInV(class PyGeSphere {lvalue})'''
+    def getAnglesInV (self)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> tuple[Any,...] :
-      '''intersectWith( (Sphere)arg1, (LinearEnt3d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGeSphere {lvalue},class PyGeLinearEnt3d)
-
-intersectWith( (Sphere)arg1, (LinearEnt3d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGeSphere {lvalue},class PyGeLinearEnt3d,class AcGeTol)'''
+    def intersectWith (self, val: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Sphere)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeSphere {lvalue})
-
-isClosed( (Sphere)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeSphere {lvalue},class AcGeTol)'''
+    def isClosed (self, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isClosedInU (self, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -11478,41 +11372,26 @@ isClosed( (Sphere)arg1, (Tol)arg2) -> bool :
     - pnt: PyGe.Point3d, paramPoint: PyGe.Point2d, tol: PyGe.Tol = None
     '''
     ...
-    def isOuterNormal (self, *args, **kwargs)-> bool :
-      '''isOuterNormal( (Sphere)arg1) -> bool :
-
-    C++ signature :
-        bool isOuterNormal(class PyGeSphere {lvalue})'''
+    def isOuterNormal (self)-> bool :
+      '''                             '''
     ...
     def mirror (self, val : PyGe.Plane)-> None :
       '''Transforms the entity by mirroring it across the input plane.'''
     ...
-    def northAxis (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''northAxis( (Sphere)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d northAxis(class PyGeSphere {lvalue})'''
+    def northAxis (self)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def northPole (self, *args, **kwargs)-> PyGe.Point3d :
-      '''northPole( (Sphere)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d northPole(class PyGeSphere {lvalue})'''
+    def northPole (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def paramOf (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> PyGe.Point2d :
       '''                             '''
     ...
-    def radius (self, *args, **kwargs)-> float :
-      '''radius( (Sphere)arg1) -> float :
-
-    C++ signature :
-        double radius(class PyGeSphere {lvalue})'''
+    def radius (self)-> float :
+      '''                             '''
     ...
-    def refAxis (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''refAxis( (Sphere)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d refAxis(class PyGeSphere {lvalue})'''
+    def refAxis (self)-> PyGe.Vector3d :
+      '''                             '''
     ...
     def reverseNormal (self)-> None :
       '''                             '''
@@ -11523,40 +11402,28 @@ isClosed( (Sphere)arg1, (Tol)arg2) -> bool :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point3d = 'origin')-> None :
       '''Scales the entity about the input point by the input scale factor. Input scale factor must be greater than 0.'''
     ...
+
+    @overload
+    def set (self, radius: float, center: PyGe.Point3d)-> None : ...
+    @overload
+    def set (self, radius: float, center: PyGe.Point3d, northAxis: PyGe.Vector3d, refAxis: PyGe.Vector3d, startAngleU: float, endAngleU: float, startAngleV: float, endAngleV: float)-> None : ...
     def set (self, *args, **kwargs)-> None :
-      '''set( (Sphere)arg1, (float)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void set(class PyGeSphere {lvalue},double,class AcGePoint3d)
-
-set( (Sphere)arg1, (float)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6, (float)arg7, (float)arg8, (float)arg9) -> None :
-
-    C++ signature :
-        void set(class PyGeSphere {lvalue},double,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double,double)'''
+      '''Overloads:
+    - radius: float, center: PyGe.Point3d
+    - radius: float, center: PyGe.Point3d, northAxis: PyGe.Vector3d, refAxis: PyGe.Vector3d, startAngleU: float, endAngleU: float, startAngleV: float, endAngleV: float
+    '''
     ...
-    def setAnglesInU (self, *args, **kwargs)-> None :
-      '''setAnglesInU( (Sphere)arg1, (float)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setAnglesInU(class PyGeSphere {lvalue},double,double)'''
+    def setAnglesInU (self, start: float, end: float)-> None :
+      '''                             '''
     ...
-    def setAnglesInV (self, *args, **kwargs)-> None :
-      '''setAnglesInV( (Sphere)arg1, (float)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setAnglesInV(class PyGeSphere {lvalue},double,double)'''
+    def setAnglesInV (self, start: float, end: float)-> None :
+      '''                             '''
     ...
-    def setRadius (self, *args, **kwargs)-> None :
-      '''setRadius( (Sphere)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setRadius(class PyGeSphere {lvalue},double)'''
+    def setRadius (self, val: float)-> None :
+      '''                             '''
     ...
-    def southPole (self, *args, **kwargs)-> PyGe.Point3d :
-      '''southPole( (Sphere)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d southPole(class PyGeSphere {lvalue})'''
+    def southPole (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix3d)-> None :
       '''Transforms the entity by applying the input matrix.'''
@@ -12376,17 +12243,15 @@ class Torus(Surface):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.Torus :
-      '''cast( (Entity3d)arg1) -> Torus :
 
-    C++ signature :
-        class PyGeTorus cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.Torus :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> PyGe.Point3d :
       '''                             '''
@@ -12394,11 +12259,10 @@ class Torus(Surface):
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.Torus :
-      '''copycast( (Entity3d)arg1) -> Torus :
 
-    C++ signature :
-        class PyGeTorus copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.Torus :
+      '''                             '''
     ...
     def distanceTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> float :
       '''                             '''
@@ -12540,10 +12404,10 @@ class Vector2d(object):
       '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000223E606C820>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000028581D3C820>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x00000223E606C820>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000028581D3C820>])'''
     ...
     def isParallelTo (self, vec: PyGe.Vector2d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -12552,16 +12416,16 @@ class Vector2d(object):
       '''                             '''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000223E606C550>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000028581D3C550>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000223E606C550>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000028581D3C550>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000223E606C5E0>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000028581D3C5E0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000223E606C5E0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000028581D3C5E0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''

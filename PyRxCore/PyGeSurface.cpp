@@ -461,30 +461,40 @@ AcGeCone* PyGeCone::impObj(const std::source_location& src /*= std::source_locat
 //AcGeCylinder wrapper
 void makePyGeCylinderWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- radius: float, origin: PyGe.Point3d, axisOfSymmetry: PyGe.Vector3d\n"
+        "- radius: float, origin: PyGe.Point3d, axisOfSymmetry: PyGe.Vector3d, refAxis: PyGe.Vector3d, height: PyGe.Interval, startAngle: float, endAngle: float\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- radius: float, origin: PyGe.Point3d, axisOfSymmetry: PyGe.Vector3d\n"
+        "- radius: float, origin: PyGe.Point3d, axisOfSymmetry: PyGe.Vector3d, refAxis: PyGe.Vector3d, height: PyGe.Interval, startAngle: float, endAngle: float\n";
+
+    PyDocString DS("Cylinder");
     class_<PyGeCylinder, bases<PyGeSurface>>("Cylinder")
         .def(init<>())
         .def(init<double, const AcGePoint3d&, const AcGeVector3d&>())
-        .def(init<double, const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, const PyGeInterval&, double, double>())
-        .def("radius", &PyGeCylinder::radius)
-        .def("origin", &PyGeCylinder::origin)
-        .def("getAngles", &PyGeCylinder::getAngles)
-        .def("getHeight", &PyGeCylinder::getHeight)
-        .def("heightAt", &PyGeCylinder::heightAt)
-        .def("axisOfSymmetry", &PyGeCylinder::axisOfSymmetry)
-        .def("refAxis", &PyGeCylinder::refAxis)
-        .def("isOuterNormal", &PyGeCylinder::isOuterNormal)
+        .def(init<double, const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, const PyGeInterval&, double, double>(DS.CTOR(ctor)))
+        .def("radius", &PyGeCylinder::radius, DS.ARGS())
+        .def("origin", &PyGeCylinder::origin, DS.ARGS())
+        .def("getAngles", &PyGeCylinder::getAngles, DS.ARGS())
+        .def("getHeight", &PyGeCylinder::getHeight, DS.ARGS())
+        .def("heightAt", &PyGeCylinder::heightAt, DS.ARGS({ "u: float" }))
+        .def("axisOfSymmetry", &PyGeCylinder::axisOfSymmetry, DS.ARGS())
+        .def("refAxis", &PyGeCylinder::refAxis, DS.ARGS())
+        .def("isOuterNormal", &PyGeCylinder::isOuterNormal, DS.ARGS())
         .def("isClosed", &PyGeCylinder::isClosed1)
-        .def("isClosed", &PyGeCylinder::isClosed2)
-        .def("setRadius", &PyGeCylinder::setRadius)
-        .def("setAngles", &PyGeCylinder::setAngles)
-        .def("setHeight", &PyGeCylinder::setHeight)
+        .def("isClosed", &PyGeCylinder::isClosed2, DS.ARGS({ "tol: PyGe.Tol=None" }))
+        .def("setRadius", &PyGeCylinder::setRadius, DS.ARGS({ "val: float" }))
+        .def("setAngles", &PyGeCylinder::setAngles, DS.ARGS({ "start: float", "end: float" }))
+        .def("setHeight", &PyGeCylinder::setHeight, DS.ARGS({ "val: PyGe.Interval" }))
         .def("set", &PyGeCylinder::set1)
-        .def("set", &PyGeCylinder::set2)
+        .def("set", &PyGeCylinder::set2, DS.OVRL(setOverloads))
         .def("intersectWith", &PyGeCylinder::intersectWith1)
-        .def("intersectWith", &PyGeCylinder::intersectWith2)
-        .def("cast", &PyGeCylinder::cast).staticmethod("cast")
-        .def("copycast", &PyGeCylinder::copycast).staticmethod("copycast")
-        .def("className", &PyGeCylinder::className).staticmethod("className")
+        .def("intersectWith", &PyGeCylinder::intersectWith2, DS.ARGS({ "val: PyGe.LinearEnt3d",  "tol: PyGe.Tol=None" }))
+        .def("cast", &PyGeCylinder::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeCylinder::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeCylinder::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -665,10 +675,11 @@ AcGeCylinder* PyGeCylinder::impObj(const std::source_location& src /*= std::sour
 void makePyGeExternalBoundedSurfaceWrapper()
 {
 #if !defined(_BRXTARGET240)
+    PyDocString DS("ExternalBoundedSurface");
     class_<PyGeExternalBoundedSurface, bases<PyGeSurface>>("ExternalBoundedSurface")
-        .def("cast", &PyGeExternalBoundedSurface::cast).staticmethod("cast")
-        .def("copycast", &PyGeExternalBoundedSurface::copycast).staticmethod("copycast")
-        .def("className", &PyGeExternalBoundedSurface::className).staticmethod("className")
+        .def("cast", &PyGeExternalBoundedSurface::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeExternalBoundedSurface::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeExternalBoundedSurface::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
@@ -728,10 +739,11 @@ AcGeExternalBoundedSurface* PyGeExternalBoundedSurface::impObj(const std::source
 void makePyGeExternalSurfaceWrapper()
 {
 #if !defined(_BRXTARGET240)
+    PyDocString DS("ExternalSurface");
     class_<PyGeExternalSurface, bases<PyGeSurface>>("ExternalSurface")
-        .def("cast", &PyGeExternalSurface::cast).staticmethod("cast")
-        .def("copycast", &PyGeExternalSurface::copycast).staticmethod("copycast")
-        .def("className", &PyGeExternalSurface::className).staticmethod("className")
+        .def("cast", &PyGeExternalSurface::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeExternalSurface::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeExternalSurface::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
@@ -790,10 +802,11 @@ AcGeExternalSurface* PyGeExternalSurface::impObj(const std::source_location& src
 void makePyGeNurbSurfaceWrapper()
 {
 #if !defined(_BRXTARGET240)
+    PyDocString DS("NurbSurface");
     class_<PyGeNurbSurface, bases<PyGeSurface>>("NurbSurface")
-        .def("cast", &PyGeNurbSurface::cast).staticmethod("cast")
-        .def("copycast", &PyGeNurbSurface::copycast).staticmethod("copycast")
-        .def("className", &PyGeNurbSurface::className).staticmethod("className")
+        .def("cast", &PyGeNurbSurface::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeNurbSurface::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeNurbSurface::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
@@ -852,10 +865,11 @@ AcGeNurbSurface* PyGeNurbSurface::impObj(const std::source_location& src /*= std
 void makePyGeOffsetSurfaceWrapper()
 {
 #if !defined(_BRXTARGET240)
+    PyDocString DS("OffsetSurface");
     class_<PyGeOffsetSurface, bases<PyGeSurface>>("OffsetSurface")
-        .def("cast", &PyGeOffsetSurface::cast).staticmethod("cast")
-        .def("copycast", &PyGeOffsetSurface::copycast).staticmethod("copycast")
-        .def("className", &PyGeOffsetSurface::className).staticmethod("className")
+        .def("cast", &PyGeOffsetSurface::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeOffsetSurface::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeOffsetSurface::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
@@ -913,31 +927,41 @@ AcGeOffsetSurface* PyGeOffsetSurface::impObj(const std::source_location& src /*=
 //AcGeSphere wrapper
 void makePyGeSphereWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- radius: float, center: PyGe.Point3d\n"
+        "- radius: float, center: PyGe.Point3d, northAxis: PyGe.Vector3d, refAxis: PyGe.Vector3d, startAngleU: float, endAngleU: float, startAngleV: float, endAngleV: float\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- radius: float, center: PyGe.Point3d\n"
+        "- radius: float, center: PyGe.Point3d, northAxis: PyGe.Vector3d, refAxis: PyGe.Vector3d, startAngleU: float, endAngleU: float, startAngleV: float, endAngleV: float\n";
+
+    PyDocString DS("Sphere");
     class_<PyGeSphere, bases<PyGeSurface>>("Sphere")
         .def(init<>())
         .def(init<double, const AcGePoint3d&>())
-        .def(init<double, const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double, double, double>())
-        .def("radius", &PyGeSphere::radius)
-        .def("center", &PyGeSphere::center)
-        .def("getAnglesInU", &PyGeSphere::getAnglesInU)
-        .def("getAnglesInV", &PyGeSphere::getAnglesInV)
-        .def("northAxis", &PyGeSphere::northAxis)
-        .def("refAxis", &PyGeSphere::refAxis)
-        .def("northPole", &PyGeSphere::northPole)
-        .def("southPole", &PyGeSphere::southPole)
-        .def("isOuterNormal", &PyGeSphere::isOuterNormal)
+        .def(init<double, const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double, double, double>(DS.CTOR(ctor)))
+        .def("radius", &PyGeSphere::radius, DS.ARGS())
+        .def("center", &PyGeSphere::center, DS.ARGS())
+        .def("getAnglesInU", &PyGeSphere::getAnglesInU, DS.ARGS())
+        .def("getAnglesInV", &PyGeSphere::getAnglesInV, DS.ARGS())
+        .def("northAxis", &PyGeSphere::northAxis, DS.ARGS())
+        .def("refAxis", &PyGeSphere::refAxis, DS.ARGS())
+        .def("northPole", &PyGeSphere::northPole, DS.ARGS())
+        .def("southPole", &PyGeSphere::southPole, DS.ARGS())
+        .def("isOuterNormal", &PyGeSphere::isOuterNormal, DS.ARGS())
         .def("isClosed", &PyGeSphere::isClosed1)
-        .def("isClosed", &PyGeSphere::isClosed2)
-        .def("setRadius", &PyGeSphere::setRadius)
-        .def("setAnglesInU", &PyGeSphere::setAnglesInU)
-        .def("setAnglesInV", &PyGeSphere::setAnglesInV)
+        .def("isClosed", &PyGeSphere::isClosed2, DS.ARGS({ "tol: PyGe.Tol=None" }))
+        .def("setRadius", &PyGeSphere::setRadius, DS.ARGS({ "val: float" }))
+        .def("setAnglesInU", &PyGeSphere::setAnglesInU, DS.ARGS({ "start: float","end: float" }))
+        .def("setAnglesInV", &PyGeSphere::setAnglesInV, DS.ARGS({ "start: float","end: float" }))
         .def("set", &PyGeSphere::set1)
-        .def("set", &PyGeSphere::set2)
+        .def("set", &PyGeSphere::set2, DS.OVRL(setOverloads))
         .def("intersectWith", &PyGeSphere::intersectWith1)
-        .def("intersectWith", &PyGeSphere::intersectWith2)
-        .def("cast", &PyGeSphere::cast).staticmethod("cast")
-        .def("copycast", &PyGeSphere::copycast).staticmethod("copycast")
-        .def("className", &PyGeSphere::className).staticmethod("className")
+        .def("intersectWith", &PyGeSphere::intersectWith2, DS.ARGS({ "val: PyGe.LinearEnt3d",  "tol: PyGe.Tol=None" }))
+        .def("cast", &PyGeSphere::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeSphere::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeSphere::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -1119,10 +1143,11 @@ AcGeSphere* PyGeSphere::impObj(const std::source_location& src /*= std::source_l
 void makePyGeTorusWrapper()
 {
 #if !defined(_BRXTARGET240)
+    PyDocString DS("Torus");
     class_<PyGeTorus, bases<PyGeSurface>>("Torus")
-        .def("cast", &PyGeTorus::cast).staticmethod("cast")
-        .def("copycast", &PyGeTorus::copycast).staticmethod("copycast")
-        .def("className", &PyGeTorus::className).staticmethod("className")
+        .def("cast", &PyGeTorus::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeTorus::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeTorus::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
