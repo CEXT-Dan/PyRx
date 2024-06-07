@@ -663,11 +663,8 @@ class CircArc2d(Curve2d):
     def setRefVec (self)-> None :
       '''                             '''
     ...
-    def setToComplement (self, *args, **kwargs)-> None :
-      '''setToComplement( (CircArc2d)arg1) -> None :
-
-    C++ signature :
-        void setToComplement(class PyGeCircArc2d {lvalue})'''
+    def setToComplement (self)-> None :
+      '''                             '''
     ...
     def startAng (self)-> float :
       '''                             '''
@@ -1361,62 +1358,41 @@ class CompositeCurve3d(Curve3d):
     ...
 
 class Cone(Surface):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, cosineAngle: float, sineAngle: float, baseOrigin: PyGe.Point3d, baseRadius: float, axisOfSymmetry: PyGe.Vector3d)-> None : ...
+    @overload
+    def __init__ (self, cosineAngle: float, sineAngle: float, baseOrigin: PyGe.Point3d, baseRadius: float, axisOfSymmetry: PyGe.Vector3d, refAxis: PyGe.Vector3d, height: PyGe.Interval, startAngle: float, endAngle: float)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (float)arg2, (float)arg3, (Point3d)arg4, (float)arg5, (Vector3d)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,double,class AcGePoint3d,double,class AcGeVector3d)
-
-__init__( (object)arg1, (float)arg2, (float)arg3, (Point3d)arg4, (float)arg5, (Vector3d)arg6, (Vector3d)arg7, (object)arg8, (float)arg9, (float)arg10) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,double,class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,class AcGeInterval,double,double)'''
+      '''Overloads:
+    - None: Any
+    - cosineAngle: float, sineAngle: float, baseOrigin: PyGe.Point3d, baseRadius: float, axisOfSymmetry: PyGe.Vector3d
+    - cosineAngle: float, sineAngle: float, baseOrigin: PyGe.Point3d, baseRadius: float, axisOfSymmetry: PyGe.Vector3d, refAxis: PyGe.Vector3d, height: PyGe.Interval, startAngle: float, endAngle: float
+    '''
     ...
-    def apex (self, *args, **kwargs)-> PyGe.Point3d :
-      '''apex( (Cone)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d apex(class PyGeCone {lvalue})'''
+    def apex (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def axisOfSymmetry (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''axisOfSymmetry( (Cone)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d axisOfSymmetry(class PyGeCone {lvalue})'''
+    def axisOfSymmetry (self)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def baseCenter (self, *args, **kwargs)-> PyGe.Point3d :
-      '''baseCenter( (Cone)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d baseCenter(class PyGeCone {lvalue})'''
+    def baseCenter (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def baseRadius (self, *args, **kwargs)-> float :
-      '''baseRadius( (Cone)arg1) -> float :
-
-    C++ signature :
-        double baseRadius(class PyGeCone {lvalue})'''
+    def baseRadius (self)-> float :
+      '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.Cone :
-      '''cast( (Entity3d)arg1) -> Cone :
 
-    C++ signature :
-        class PyGeCone cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.Cone :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> PyGe.Point3d :
       '''                             '''
@@ -1424,11 +1400,10 @@ __init__( (object)arg1, (float)arg2, (float)arg3, (Point3d)arg4, (float)arg5, (V
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.Cone :
-      '''copycast( (Entity3d)arg1) -> Cone :
 
-    C++ signature :
-        class PyGeCone copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.Cone :
+      '''                             '''
     ...
     def distanceTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> float :
       '''                             '''
@@ -1447,57 +1422,26 @@ __init__( (object)arg1, (float)arg2, (float)arg3, (Point3d)arg4, (float)arg5, (V
     - param: PyGe.Point3d, derivOrd: int, vecs: list[PyGe.Vector3d], normal: PyGe.Vector3d
     '''
     ...
-    def getAngles (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getAngles( (Cone)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getAngles(class PyGeCone {lvalue})'''
+    def getAngles (self)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def getHalfAngle (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getHalfAngle( (Cone)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getHalfAngle(class PyGeCone {lvalue})'''
+    def getHalfAngle (self)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def getHeight (self, *args, **kwargs)-> PyGe.Interval :
-      '''getHeight( (Cone)arg1) -> Interval :
-
-    C++ signature :
-        class PyGeInterval getHeight(class PyGeCone {lvalue})'''
+    def getHeight (self)-> PyGe.Interval :
+      '''                             '''
     ...
-    def halfAngle (self, *args, **kwargs)-> float :
-      '''halfAngle( (Cone)arg1) -> float :
-
-    C++ signature :
-        double halfAngle(class PyGeCone {lvalue})'''
+    def halfAngle (self)-> float :
+      '''                             '''
     ...
-    def heightAt (self, *args, **kwargs)-> float :
-      '''heightAt( (Cone)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double heightAt(class PyGeCone {lvalue},double)'''
+    def heightAt (self, val: float)-> float :
+      '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> tuple[Any,...] :
-      '''intersectWith( (Cone)arg1, (LinearEnt3d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGeCone {lvalue},class PyGeLinearEnt3d)
-
-intersectWith( (Cone)arg1, (LinearEnt3d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGeCone {lvalue},class PyGeLinearEnt3d,class AcGeTol {lvalue})'''
+    def intersectWith (self, val: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Cone)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCone {lvalue})
-
-isClosed( (Cone)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyGeCone {lvalue},class AcGeTol)'''
+    def isClosed (self, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isClosedInU (self, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -1534,11 +1478,8 @@ isClosed( (Cone)arg1, (Tol)arg2) -> bool :
     - pnt: PyGe.Point3d, paramPoint: PyGe.Point2d, tol: PyGe.Tol = None
     '''
     ...
-    def isOuterNormal (self, *args, **kwargs)-> bool :
-      '''isOuterNormal( (Cone)arg1) -> bool :
-
-    C++ signature :
-        bool isOuterNormal(class PyGeCone {lvalue})'''
+    def isOuterNormal (self)-> bool :
+      '''                             '''
     ...
     def mirror (self, val : PyGe.Plane)-> None :
       '''Transforms the entity by mirroring it across the input plane.'''
@@ -1546,11 +1487,8 @@ isClosed( (Cone)arg1, (Tol)arg2) -> bool :
     def paramOf (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> PyGe.Point2d :
       '''                             '''
     ...
-    def refAxis (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''refAxis( (Cone)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d refAxis(class PyGeCone {lvalue})'''
+    def refAxis (self)-> PyGe.Vector3d :
+      '''                             '''
     ...
     def reverseNormal (self)-> None :
       '''                             '''
@@ -1561,34 +1499,25 @@ isClosed( (Cone)arg1, (Tol)arg2) -> bool :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point3d = 'origin')-> None :
       '''Scales the entity about the input point by the input scale factor. Input scale factor must be greater than 0.'''
     ...
+
+    @overload
+    def set (self, cosineAngle: float, sineAngle: float, baseOrigin: PyGe.Point3d, baseRadius: float, axisOfSymmetry: PyGe.Vector3d)-> None : ...
+    @overload
+    def set (self, cosineAngle: float, sineAngle: float, baseOrigin: PyGe.Point3d, baseRadius: float, axisOfSymmetry: PyGe.Vector3d, refAxis: PyGe.Vector3d, height: PyGe.Interval, startAngle: float, endAngle: float)-> None : ...
     def set (self, *args, **kwargs)-> None :
-      '''set( (Cone)arg1, (float)arg2, (float)arg3, (Point3d)arg4, (float)arg5, (Vector3d)arg6) -> None :
-
-    C++ signature :
-        void set(class PyGeCone {lvalue},double,double,class AcGePoint3d,double,class AcGeVector3d)
-
-set( (Cone)arg1, (float)arg2, (float)arg3, (Point3d)arg4, (float)arg5, (Vector3d)arg6, (Vector3d)arg7, (Interval)arg8, (float)arg9, (float)arg10) -> None :
-
-    C++ signature :
-        void set(class PyGeCone {lvalue},double,double,class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,class PyGeInterval,double,double)'''
+      '''Overloads:
+    - cosineAngle: float, sineAngle: float, baseOrigin: PyGe.Point3d, baseRadius: float, axisOfSymmetry: PyGe.Vector3d
+    - cosineAngle: float, sineAngle: float, baseOrigin: PyGe.Point3d, baseRadius: float, axisOfSymmetry: PyGe.Vector3d, refAxis: PyGe.Vector3d, height: PyGe.Interval, startAngle: float, endAngle: float
+    '''
     ...
-    def setAngles (self, *args, **kwargs)-> None :
-      '''setAngles( (Cone)arg1, (float)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setAngles(class PyGeCone {lvalue},double,double)'''
+    def setAngles (self, startAngle: float, endAngle: float)-> None :
+      '''                             '''
     ...
-    def setBaseRadius (self, *args, **kwargs)-> None :
-      '''setBaseRadius( (Cone)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setBaseRadius(class PyGeCone {lvalue},double)'''
+    def setBaseRadius (self, val: float)-> None :
+      '''                             '''
     ...
-    def setHeight (self, *args, **kwargs)-> None :
-      '''setHeight( (Cone)arg1, (Interval)arg2) -> None :
-
-    C++ signature :
-        void setHeight(class PyGeCone {lvalue},class PyGeInterval)'''
+    def setHeight (self, val: PyGe.Interval)-> None :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix3d)-> None :
       '''Transforms the entity by applying the input matrix.'''
@@ -12611,10 +12540,10 @@ class Vector2d(object):
       '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000029208A4C820>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000223E606C820>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000029208A4C820>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x00000223E606C820>])'''
     ...
     def isParallelTo (self, vec: PyGe.Vector2d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -12623,16 +12552,16 @@ class Vector2d(object):
       '''                             '''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000029208A4C550>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000223E606C550>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000029208A4C550>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000223E606C550>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000029208A4C5E0>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000223E606C5E0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000029208A4C5E0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000223E606C5E0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
