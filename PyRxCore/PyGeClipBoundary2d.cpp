@@ -7,13 +7,19 @@ using namespace boost::python;
 void makePyGeClipBoundary2dWrapper()
 {
 #if !defined(_BRXTARGET240)
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- cornerA: PyGe.Point2d, cornerB: PyGe.Point2d\n"
+        "- clipBoundary: list[PyGe.Point2d]\n";
+
+    PyDocString DS("ClipBoundary2d");
     class_<PyGeClipBoundary2d, bases<PyGeEntity2d>>("ClipBoundary2d")
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())
-        .def(init<const boost::python::list&>())
-        .def("cast", &PyGeClipBoundary2d::cast).staticmethod("cast")
-        .def("copycast", &PyGeClipBoundary2d::copycast).staticmethod("copycast")
-        .def("className", &PyGeClipBoundary2d::className).staticmethod("className")
+        .def(init<const boost::python::list&>(DS.CTOR(ctor)))
+        .def("cast", &PyGeClipBoundary2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGeClipBoundary2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGeClipBoundary2d::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }

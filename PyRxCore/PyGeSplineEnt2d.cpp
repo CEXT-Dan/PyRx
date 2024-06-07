@@ -268,22 +268,13 @@ AcGeCubicSplineCurve2d* PyGeCubicSplineCurve2d::impObj(const std::source_locatio
 void makePyGeNurbCurve2dWrapper()
 {
 #if !defined(_BRXTARGET240)
-
-
-    //PyGeNurbCurve2d(const boost::python::list & fitPoints, const AcGeVector2d & startTangent, const AcGeVector2d & endTangent, 
-    // Adesk::Boolean startTangentDefined, Adesk::Boolean endTangentDefined, AcGe::KnotParameterization knotParam, const AcGeTol & fitTolerance);
-
-    //PyGeNurbCurve2d(const boost::python::list & fitPoints, const AcGeVector2d & startTangent, const AcGeVector2d & endTangent, Adesk::Boolean startTangentDefined,
-    //    Adesk::Boolean endTangentDefined, const AcGeTol & fitTolerance);
-
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
-        "- src: PyGe.NurbCurve2d\n"
+        "- src: PyGe.Curve2d\n"
         "- src: PyGe.LineSeg2d\n"
         "- src: PyGe.EllipArc2d\n"
         "- curve: PyGe.Curve2d, epsilon: float\n"
         "- fitPnts: list[PyGe.Point2d], tol: PyGe.Tol\n"
-        "- degree: int, fitPolyline: PyGe.Polyline2d, fitTolerance: PyGe.Tol\n"
         "- degree: int, fitPolyline: PyGe.Polyline2d, isPeriodic: bool\n"
         "- degree: int, knots: PyGe.KnotVector, cntrlPnts: list[PyGe.Point2d], isPeriodic: bool\n"
         "- fitPoints: list[PyGe.Point2d], fitTangents: list[PyGe.Vector2d], fitTolerance: PyGe.Tol,isPeriodic: bool\n"
