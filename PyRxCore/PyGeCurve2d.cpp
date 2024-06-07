@@ -843,38 +843,50 @@ AcGeCircArc2d* PyGeCircArc2d::impObj(const std::source_location& src /*= std::so
 void makePyGeEllipArc2Wrapper()
 {
 #if !defined(_BRXTARGET240)
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- carc: PyGe.CircArc2d\n"
+        "- cent: PyGe.Point2d, majorAxis: PyGe.Vector2d, minorAxis: PyGe.Vector2d, majorRadius: float,minorRadius: float\n"
+        "- cent: PyGe.Point2d, majorAxis: PyGe.Vector2d, minorAxis: PyGe.Vector2d, majorRadius: float,minorRadius: float, startAngle: float, endAngle: float\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- carc: PyGe.CircArc2d,\n"
+        "- cent: PyGe.Point2d, majorAxis: PyGe.Vector2d, minorAxis: PyGe.Vector2d, majorRadius: float,minorRadius: float\n"
+        "- cent: PyGe.Point2d, majorAxis: PyGe.Vector2d, minorAxis: PyGe.Vector2d, majorRadius: float,minorRadius: float, startAngle: float, endAngle: float\n";
+
+    PyDocString DS("EllipArc2d");
     class_<PyGeEllipArc2d, bases<PyGeCurve2d>>("EllipArc2d")
         .def(init<>())
         .def(init<const PyGeCircArc2d&>())
         .def(init<const AcGePoint2d&, const AcGeVector2d&, const AcGeVector2d&, double, double>())
-        .def(init<const AcGePoint2d&, const AcGeVector2d&, const AcGeVector2d&, double, double, double, double>())
+        .def(init<const AcGePoint2d&, const AcGeVector2d&, const AcGeVector2d&, double, double, double, double>(DS.CTOR(ctor)))
         .def("intersectWith", &PyGeEllipArc2d::intersectWith1)
-        .def("intersectWith", &PyGeEllipArc2d::intersectWith2)
+        .def("intersectWith", &PyGeEllipArc2d::intersectWith2, DS.ARGS({ "val: PyGe.LinearEnt2d",  "tol: PyGe.Tol = None"}))
         .def("isCircular", &PyGeEllipArc2d::isCircular1)
-        .def("isCircular", &PyGeEllipArc2d::isCircular2)
+        .def("isCircular", &PyGeEllipArc2d::isCircular2, DS.ARGS({ "tol: PyGe.Tol=None" }))
         .def("isInside", &PyGeEllipArc2d::isInside1)
-        .def("isInside", &PyGeEllipArc2d::isInside2)
-        .def("center", &PyGeEllipArc2d::center)
-        .def("minorRadius", &PyGeEllipArc2d::minorRadius)
-        .def("majorRadius", &PyGeEllipArc2d::majorRadius)
-        .def("minorAxis", &PyGeEllipArc2d::minorAxis)
-        .def("majorAxis", &PyGeEllipArc2d::majorAxis)
-        .def("startAng", &PyGeEllipArc2d::startAng)
-        .def("endAng", &PyGeEllipArc2d::endAng)
-        .def("startPoint", &PyGeEllipArc2d::startPoint)
-        .def("endPoint", &PyGeEllipArc2d::endPoint)
-        .def("isClockWise", &PyGeEllipArc2d::isClockWise)
-        .def("setCenter", &PyGeEllipArc2d::setCenter)
-        .def("setMinorRadius", &PyGeEllipArc2d::setMinorRadius)
-        .def("setMajorRadius", &PyGeEllipArc2d::setMajorRadius)
-        .def("setAxes", &PyGeEllipArc2d::setAxes)
-        .def("setAngles", &PyGeEllipArc2d::setAngles)
+        .def("isInside", &PyGeEllipArc2d::isInside2, DS.ARGS({ "pt: PyGe.Point2d","tol: PyGe.Tol=None" }))
+        .def("center", &PyGeEllipArc2d::center, DS.ARGS())
+        .def("minorRadius", &PyGeEllipArc2d::minorRadius, DS.ARGS())
+        .def("majorRadius", &PyGeEllipArc2d::majorRadius, DS.ARGS())
+        .def("minorAxis", &PyGeEllipArc2d::minorAxis, DS.ARGS())
+        .def("majorAxis", &PyGeEllipArc2d::majorAxis, DS.ARGS())
+        .def("startAng", &PyGeEllipArc2d::startAng, DS.ARGS())
+        .def("endAng", &PyGeEllipArc2d::endAng, DS.ARGS())
+        .def("startPoint", &PyGeEllipArc2d::startPoint, DS.ARGS())
+        .def("endPoint", &PyGeEllipArc2d::endPoint, DS.ARGS())
+        .def("isClockWise", &PyGeEllipArc2d::isClockWise, DS.ARGS())
+        .def("setCenter", &PyGeEllipArc2d::setCenter, DS.ARGS({ "pt: PyGe.Point2d" }))
+        .def("setMinorRadius", &PyGeEllipArc2d::setMinorRadius, DS.ARGS({ "val: float" }))
+        .def("setMajorRadius", &PyGeEllipArc2d::setMajorRadius, DS.ARGS({ "val: float" }))
+        .def("setAxes", &PyGeEllipArc2d::setAxes, DS.ARGS({ "majorAxis: PyGe.Vector2d","minorAxis: PyGe.Vector2d" }))
+        .def("setAngles", &PyGeEllipArc2d::setAngles, DS.ARGS({ "startAngle: float","endAngle: float" }))
         .def("set", &PyGeEllipArc2d::set1)
         .def("set", &PyGeEllipArc2d::set2)
-        .def("set", &PyGeEllipArc2d::set3)
-        .def("cast", &PyGeEllipArc2d::cast).staticmethod("cast")
-        .def("copycast", &PyGeEllipArc2d::copycast).staticmethod("copycast")
-        .def("className", &PyGeEllipArc2d::className).staticmethod("className")
+        .def("set", &PyGeEllipArc2d::set3, DS.OVRL(setOverloads))
+        .def("cast", &PyGeEllipArc2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGeEllipArc2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGeEllipArc2d::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
@@ -1070,10 +1082,11 @@ AcGeEllipArc2d* PyGeEllipArc2d::impObj(const std::source_location& src /*= std::
 void makePyGeExternalCurve2dWrapper()
 {
 #if !defined(_BRXTARGET240)
+    PyDocString DS("ExternalCurve2d");
     class_<PyGeExternalCurve2d, bases<PyGeCurve2d>>("ExternalCurve2d", boost::python::no_init)
-        .def("cast", &PyGeExternalCurve2d::cast).staticmethod("cast")
-        .def("copycast", &PyGeExternalCurve2d::copycast).staticmethod("copycast")
-        .def("className", &PyGeExternalCurve2d::className).staticmethod("className")
+        .def("cast", &PyGeExternalCurve2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGeExternalCurve2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGeExternalCurve2d::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
@@ -1118,11 +1131,12 @@ AcGeExternalCurve2d* PyGeExternalCurve2d::impObj(const std::source_location& src
 void makePyGeOffsetCurve2dWrapper()
 {
 #if !defined(_BRXTARGET240)
+    PyDocString DS("OffsetCurve2d");
     class_<PyGeOffsetCurve2d, bases<PyGeCurve2d>>("OffsetCurve2d", boost::python::no_init)
         .def(init<const PyGeCurve2d&, double>())
-        .def("cast", &PyGeOffsetCurve2d::cast).staticmethod("cast")
-        .def("copycast", &PyGeOffsetCurve2d::copycast).staticmethod("copycast")
-        .def("className", &PyGeOffsetCurve2d::className).staticmethod("className")
+        .def("cast", &PyGeOffsetCurve2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGeOffsetCurve2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGeOffsetCurve2d::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
@@ -1170,10 +1184,11 @@ AcGeOffsetCurve2d* PyGeOffsetCurve2d::impObj(const std::source_location& src /*=
 //AcGeCompositeCurve2d wrapper
 void makePyGeCompositeCurve2dWrapper()
 {
+    PyDocString DS("CompositeCurve2d");
     class_<PyGeCompositeCurve2d, bases<PyGeCurve2d>>("CompositeCurve2d")
-        .def("cast", &PyGeCompositeCurve2d::cast).staticmethod("cast")
-        .def("copycast", &PyGeCompositeCurve2d::copycast).staticmethod("copycast")
-        .def("className", &PyGeCompositeCurve2d::className).staticmethod("className")
+        .def("cast", &PyGeCompositeCurve2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGeCompositeCurve2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGeCompositeCurve2d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
