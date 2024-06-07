@@ -9,27 +9,28 @@ using namespace boost::python;
 void makePyGeSplineEnt2dWrapper()
 {
 #if !defined(_BRXTARGET240)
+    PyDocString DS("SplineEnt2d");
     class_<PyGeSplineEnt2d, bases<PyGeCurve2d>>("SplineEnt2d", boost::python::no_init)
-        .def("isRational", &PyGeSplineEnt2d::isRational)
-        .def("degree", &PyGeSplineEnt2d::degree)
-        .def("order", &PyGeSplineEnt2d::order)
-        .def("numKnots", &PyGeSplineEnt2d::numKnots)
-        .def("knots", &PyGeSplineEnt2d::knots)
-        .def("numControlPoints", &PyGeSplineEnt2d::numControlPoints)
+        .def("isRational", &PyGeSplineEnt2d::isRational, DS.ARGS())
+        .def("degree", &PyGeSplineEnt2d::degree, DS.ARGS())
+        .def("order", &PyGeSplineEnt2d::order, DS.ARGS())
+        .def("numKnots", &PyGeSplineEnt2d::numKnots, DS.ARGS())
+        .def("knots", &PyGeSplineEnt2d::knots, DS.ARGS())
+        .def("numControlPoints", &PyGeSplineEnt2d::numControlPoints, DS.ARGS())
         .def("continuityAtKnot", &PyGeSplineEnt2d::continuityAtKnot1)
-        .def("continuityAtKnot", &PyGeSplineEnt2d::continuityAtKnot2)
-        .def("startParam", &PyGeSplineEnt2d::startParam)
-        .def("endParam", &PyGeSplineEnt2d::endParam)
-        .def("startPoint", &PyGeSplineEnt2d::startPoint)
-        .def("endPoint", &PyGeSplineEnt2d::endPoint)
-        .def("hasFitData", &PyGeSplineEnt2d::hasFitData)
-        .def("knotAt", &PyGeSplineEnt2d::knotAt)
-        .def("setKnotAt", &PyGeSplineEnt2d::setKnotAt)
-        .def("controlPointAt", &PyGeSplineEnt2d::controlPointAt)
-        .def("setControlPointAt", &PyGeSplineEnt2d::setControlPointAt)
-        .def("cast", &PyGeSplineEnt2d::cast).staticmethod("cast")
-        .def("copycast", &PyGeSplineEnt2d::copycast).staticmethod("copycast")
-        .def("className", &PyGeSplineEnt2d::className).staticmethod("className")
+        .def("continuityAtKnot", &PyGeSplineEnt2d::continuityAtKnot2, DS.ARGS({ "idx: int","tol: PyGe.Tol=None" }))
+        .def("startParam", &PyGeSplineEnt2d::startParam, DS.ARGS())
+        .def("endParam", &PyGeSplineEnt2d::endParam, DS.ARGS())
+        .def("startPoint", &PyGeSplineEnt2d::startPoint, DS.ARGS())
+        .def("endPoint", &PyGeSplineEnt2d::endPoint, DS.ARGS())
+        .def("hasFitData", &PyGeSplineEnt2d::hasFitData, DS.ARGS())
+        .def("knotAt", &PyGeSplineEnt2d::knotAt, DS.ARGS({ "idx: int" }))
+        .def("setKnotAt", &PyGeSplineEnt2d::setKnotAt, DS.ARGS({ "idx: int","val: float" }))
+        .def("controlPointAt", &PyGeSplineEnt2d::controlPointAt, DS.ARGS({ "idx: int" }))
+        .def("setControlPointAt", &PyGeSplineEnt2d::setControlPointAt, DS.ARGS({ "idx: int","val: PyGe.Point2d" }))
+        .def("cast", &PyGeSplineEnt2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGeSplineEnt2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGeSplineEnt2d::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
@@ -159,20 +160,28 @@ void makePyGeCubicSplineCurve2dWrapper()
 {
 
 #if !defined(_BRXTARGET240)
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- curve: PyGe.Curve2d, epsilon: float\n"
+        "- fitPnts: list[PyGe.Point2d], tol: PyGe.Tol\n"
+        "- fitPnts: list[PyGe.Point2d], startDeriv: PyGe.Vector2d, endDeriv: PyGe.Vector2d,tol: PyGe.Tol\n"
+        "- knots: PyGe.KnotVector, fitPnts: list[PyGe.Point2d], firstDerivs: list[PyGe.Point2d], isPeriodic: bool\n";
+
+    PyDocString DS("CubicSplineCurve2d");
     class_<PyGeCubicSplineCurve2d, bases<PyGeSplineEnt2d>>("CubicSplineCurve2d")
         .def(init<>())
         .def(init<const PyGeCurve2d&, double>())
         .def(init<const boost::python::list&, const AcGeTol&>())
         .def(init<const boost::python::list&, const AcGeVector2d&, const AcGeVector2d&, const AcGeTol&>())
-        .def(init<const PyGeKnotVector&, const boost::python::list&, const boost::python::list&, Adesk::Boolean>())
-        .def("numFitPoints", &PyGeCubicSplineCurve2d::numFitPoints)
-        .def("fitPointAt", &PyGeCubicSplineCurve2d::fitPointAt)
-        .def("setFitPointAt", &PyGeCubicSplineCurve2d::setFitPointAt)
-        .def("firstDerivAt", &PyGeCubicSplineCurve2d::firstDerivAt)
-        .def("setFirstDerivAt", &PyGeCubicSplineCurve2d::setFirstDerivAt)
-        .def("cast", &PyGeCubicSplineCurve2d::cast).staticmethod("cast")
-        .def("copycast", &PyGeCubicSplineCurve2d::copycast).staticmethod("copycast")
-        .def("className", &PyGeCubicSplineCurve2d::className).staticmethod("className")
+        .def(init<const PyGeKnotVector&, const boost::python::list&, const boost::python::list&, Adesk::Boolean>(DS.CTOR(ctor)))
+        .def("numFitPoints", &PyGeCubicSplineCurve2d::numFitPoints, DS.ARGS())
+        .def("fitPointAt", &PyGeCubicSplineCurve2d::fitPointAt, DS.ARGS({ "val: int" }))
+        .def("setFitPointAt", &PyGeCubicSplineCurve2d::setFitPointAt, DS.ARGS({ "val: int","pt: PyGe.Point2d" }))
+        .def("firstDerivAt", &PyGeCubicSplineCurve2d::firstDerivAt, DS.ARGS({ "val: int" }))
+        .def("setFirstDerivAt", &PyGeCubicSplineCurve2d::setFirstDerivAt, DS.ARGS({ "val: int","pt: PyGe.Vector2d" }))
+        .def("cast", &PyGeCubicSplineCurve2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGeCubicSplineCurve2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGeCubicSplineCurve2d::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
@@ -259,6 +268,36 @@ AcGeCubicSplineCurve2d* PyGeCubicSplineCurve2d::impObj(const std::source_locatio
 void makePyGeNurbCurve2dWrapper()
 {
 #if !defined(_BRXTARGET240)
+
+
+    //PyGeNurbCurve2d(const boost::python::list & fitPoints, const AcGeVector2d & startTangent, const AcGeVector2d & endTangent, 
+    // Adesk::Boolean startTangentDefined, Adesk::Boolean endTangentDefined, AcGe::KnotParameterization knotParam, const AcGeTol & fitTolerance);
+
+    //PyGeNurbCurve2d(const boost::python::list & fitPoints, const AcGeVector2d & startTangent, const AcGeVector2d & endTangent, Adesk::Boolean startTangentDefined,
+    //    Adesk::Boolean endTangentDefined, const AcGeTol & fitTolerance);
+
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- src: PyGe.NurbCurve2d\n"
+        "- src: PyGe.LineSeg2d\n"
+        "- src: PyGe.EllipArc2d\n"
+        "- curve: PyGe.Curve2d, epsilon: float\n"
+        "- fitPnts: list[PyGe.Point2d], tol: PyGe.Tol\n"
+        "- degree: int, fitPolyline: PyGe.Polyline2d, fitTolerance: PyGe.Tol\n"
+        "- degree: int, fitPolyline: PyGe.Polyline2d, isPeriodic: bool\n"
+        "- degree: int, knots: PyGe.KnotVector, cntrlPnts: list[PyGe.Point2d], isPeriodic: bool\n"
+        "- fitPoints: list[PyGe.Point2d], fitTangents: list[PyGe.Vector2d], fitTolerance: PyGe.Tol,isPeriodic: bool\n"
+        "- fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, startTangentDefined: bool, endTangentDefined: bool, fitTolerance: PyGe.Tol\n"
+        "- fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, startTangentDefined: bool, endTangentDefined: bool, knotParam: PyGe.KnotParameterization, fitTolerance: PyGe.Tol\n";
+
+    constexpr const std::string_view setFitDatas = "Overloads:\n"
+        "- degree: int, fitPoints: list[PyGe.Point2d], fitTolerance: PyGe.Tol\n"
+        "- fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, fitTolerance: PyGe.Tol\n"
+        "- fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, knotParam: PyGe.KnotParameterization, fitTolerance: PyGe.Tol\n"
+        "- knots: PyGe.KnotVector, fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, fitTolerance: PyGe.Tol, isPeriodic: bool \n";
+
+        
+   PyDocString DS("CubicSplineCurve2d");
    class_<PyGeNurbCurve2d, bases<PyGeSplineEnt2d>>("NurbCurve2d")
         .def(init<>())
         .def(init<const PyGeEllipArc2d&>())
@@ -269,48 +308,48 @@ void makePyGeNurbCurve2dWrapper()
         .def(init<int, const PyGeKnotVector&, const boost::python::list&, Adesk::Boolean>())
         .def(init<const boost::python::list&, const boost::python::list&, const AcGeTol&, Adesk::Boolean>())
         .def(init<const boost::python::list&, const AcGeVector2d&, const AcGeVector2d&, Adesk::Boolean, Adesk::Boolean, const AcGeTol&>())
-        .def(init<const boost::python::list&, const AcGeVector2d&, const AcGeVector2d&, Adesk::Boolean, Adesk::Boolean, AcGe::KnotParameterization, const AcGeTol&>())
-        .def("numFitPoints", &PyGeNurbCurve2d::numFitPoints)
-        .def("getFitPointAt", &PyGeNurbCurve2d::getFitPointAt)
-        .def("getFitTolerance", &PyGeNurbCurve2d::getFitTolerance)
-        .def("getFitTangents", &PyGeNurbCurve2d::getFitTangents)
-        .def("getFitData", &PyGeNurbCurve2d::getFitData)
-        .def("getDefinitionData", &PyGeNurbCurve2d::getDefinitionData)
-        .def("numWeights", &PyGeNurbCurve2d::numWeights)
-        .def("weightAt", &PyGeNurbCurve2d::weightAt)
-        .def("evalMode", &PyGeNurbCurve2d::evalMode)
-        .def("getParamsOfC1Discontinuity", &PyGeNurbCurve2d::getParamsOfC1Discontinuity)
-        .def("getParamsOfG1Discontinuity", &PyGeNurbCurve2d::getParamsOfG1Discontinuity)
-        .def("setFitPointAt", &PyGeNurbCurve2d::setFitPointAt)
-        .def("addFitPointAt", &PyGeNurbCurve2d::addFitPointAt)
-        .def("deleteFitPointAt", &PyGeNurbCurve2d::deleteFitPointAt)
-        .def("setFitTolerance", &PyGeNurbCurve2d::setFitTolerance)
-        .def("setFitTangents", &PyGeNurbCurve2d::setFitTangents)
-        .def("setFitKnotParameterization", &PyGeNurbCurve2d::setFitKnotParameterization)
+        .def(init<const boost::python::list&, const AcGeVector2d&, const AcGeVector2d&, Adesk::Boolean, Adesk::Boolean, AcGe::KnotParameterization, const AcGeTol&>(DS.CTOR(ctor)))
+        .def("numFitPoints", &PyGeNurbCurve2d::numFitPoints, DS.ARGS())
+        .def("getFitPointAt", &PyGeNurbCurve2d::getFitPointAt, DS.ARGS({ "idx: int" }))
+        .def("getFitTolerance", &PyGeNurbCurve2d::getFitTolerance, DS.ARGS())
+        .def("getFitTangents", &PyGeNurbCurve2d::getFitTangents, DS.ARGS())
+        .def("getFitData", &PyGeNurbCurve2d::getFitData, DS.ARGS())
+        .def("getDefinitionData", &PyGeNurbCurve2d::getDefinitionData, DS.ARGS())
+        .def("numWeights", &PyGeNurbCurve2d::numWeights, DS.ARGS())
+        .def("weightAt", &PyGeNurbCurve2d::weightAt, DS.ARGS({ "idx: int" }))
+        .def("evalMode", &PyGeNurbCurve2d::evalMode, DS.ARGS())
+        .def("getParamsOfC1Discontinuity", &PyGeNurbCurve2d::getParamsOfC1Discontinuity, DS.ARGS({ "tol: PyGe.Tol" }))
+        .def("getParamsOfG1Discontinuity", &PyGeNurbCurve2d::getParamsOfG1Discontinuity, DS.ARGS({ "tol: PyGe.Tol" }))
+        .def("setFitPointAt", &PyGeNurbCurve2d::setFitPointAt, DS.ARGS({ "idx: int", "pt: PyGe.Point2d" }))
+        .def("addFitPointAt", &PyGeNurbCurve2d::addFitPointAt, DS.ARGS({ "idx: int", "pt: PyGe.Point2d" }))
+        .def("deleteFitPointAt", &PyGeNurbCurve2d::deleteFitPointAt, DS.ARGS({ "idx: int" }))
+        .def("setFitTolerance", &PyGeNurbCurve2d::setFitTolerance, DS.ARGS({ "tol: PyGe.Tol" }))
+        .def("setFitTangents", &PyGeNurbCurve2d::setFitTangents, DS.ARGS({ "startTangent: PyGe.Vector2d" , "endTangent: PyGe.Vector2d" }))
+        .def("setFitKnotParameterization", &PyGeNurbCurve2d::setFitKnotParameterization, DS.ARGS({ "val: PyGe.KnotParameterization" }))
         .def("setFitData", &PyGeNurbCurve2d::setFitData1)
         .def("setFitData", &PyGeNurbCurve2d::setFitData2)
         .def("setFitData", &PyGeNurbCurve2d::setFitData3)
-        .def("setFitData", &PyGeNurbCurve2d::setFitData4)
-        .def("purgeFitData", &PyGeNurbCurve2d::purgeFitData)
+        .def("setFitData", &PyGeNurbCurve2d::setFitData4, DS.OVRL(setFitDatas))
+        .def("purgeFitData", &PyGeNurbCurve2d::purgeFitData, DS.ARGS())
         .def("buildFitData", &PyGeNurbCurve2d::buildFitData1)
-        .def("buildFitData", &PyGeNurbCurve2d::buildFitData2)
-        .def("addKnot", &PyGeNurbCurve2d::addKnot)
-        .def("insertKnot", &PyGeNurbCurve2d::insertKnot)
-        .def("setWeightAt", &PyGeNurbCurve2d::setWeightAt)
-        .def("setEvalMode", &PyGeNurbCurve2d::setEvalMode)
-        .def("joinWith", &PyGeNurbCurve2d::joinWith)
-        .def("hardTrimByParams", &PyGeNurbCurve2d::hardTrimByParams)
-        .def("makeRational", &PyGeNurbCurve2d::makeRational)
-        .def("makeClosed", &PyGeNurbCurve2d::makeClosed)
-        .def("makePeriodic", &PyGeNurbCurve2d::makePeriodic)
-        .def("makeNonPeriodic", &PyGeNurbCurve2d::makeNonPeriodic)
-        .def("makeOpen", &PyGeNurbCurve2d::makeOpen)
-        .def("elevateDegree", &PyGeNurbCurve2d::elevateDegree)
-        .def("addControlPointAt", &PyGeNurbCurve2d::addControlPointAt)
-        .def("deleteControlPointAt", &PyGeNurbCurve2d::deleteControlPointAt)
-        .def("cast", &PyGeNurbCurve2d::cast).staticmethod("cast")
-        .def("copycast", &PyGeNurbCurve2d::copycast).staticmethod("copycast")
-        .def("className", &PyGeNurbCurve2d::className).staticmethod("className")
+        .def("buildFitData", &PyGeNurbCurve2d::buildFitData2, DS.ARGS({ "val: PyGe.KnotParameterization=None" }))
+        .def("addKnot", &PyGeNurbCurve2d::addKnot, DS.ARGS({ "val: float" }))
+        .def("insertKnot", &PyGeNurbCurve2d::insertKnot, DS.ARGS({ "val: float" }))
+        .def("setWeightAt", &PyGeNurbCurve2d::setWeightAt, DS.ARGS({ "idx: int","val: float" }))
+        .def("setEvalMode", &PyGeNurbCurve2d::setEvalMode, DS.ARGS({ "val: bool" }))
+        .def("joinWith", &PyGeNurbCurve2d::joinWith, DS.ARGS({ "val: PyGe.NurbCurve2d" }))
+        .def("hardTrimByParams", &PyGeNurbCurve2d::hardTrimByParams, DS.ARGS({ "newStartParam: float","newEndParam: float" }))
+        .def("makeRational", &PyGeNurbCurve2d::makeRational, DS.ARGS({ "val: float" }))
+        .def("makeClosed", &PyGeNurbCurve2d::makeClosed, DS.ARGS())
+        .def("makePeriodic", &PyGeNurbCurve2d::makePeriodic, DS.ARGS())
+        .def("makeNonPeriodic", &PyGeNurbCurve2d::makeNonPeriodic, DS.ARGS())
+        .def("makeOpen", &PyGeNurbCurve2d::makeOpen, DS.ARGS())
+        .def("elevateDegree", &PyGeNurbCurve2d::elevateDegree, DS.ARGS({ "val: int" }))
+        .def("addControlPointAt", &PyGeNurbCurve2d::addControlPointAt, DS.ARGS({ "newKnot: float","pt: PyGe.Point2d","weight: float" }))
+        .def("deleteControlPointAt", &PyGeNurbCurve2d::deleteControlPointAt, DS.ARGS({ "val: int" }))
+        .def("cast", &PyGeNurbCurve2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGeNurbCurve2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGeNurbCurve2d::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
@@ -630,17 +669,24 @@ void makePyGePolyline2dWrapper()
 {
 
 #if !defined(_BRXTARGET240)
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- points: list[PyGe.Point2d]\n"
+        "- knots: PyGe.KnotVector, points: list[PyGe.Point2d]"
+        "- crv: PyGe.Curve2d, apprEps: float";
+
+    PyDocString DS("Polyline2d");
     class_<PyGePolyline2d, bases<PyGeSplineEnt2d>>("Polyline2d")
         .def(init<>())
         .def(init<const boost::python::list&>())
         .def(init<const PyGeKnotVector&, const boost::python::list&>())
         .def(init<const PyGeCurve2d&, double>())
-        .def("numFitPoints", &PyGePolyline2d::numFitPoints)
-        .def("fitPointAt", &PyGePolyline2d::fitPointAt)
-        .def("setFitPointAt", &PyGePolyline2d::setFitPointAt)
-        .def("cast", &PyGePolyline2d::cast).staticmethod("cast")
-        .def("copycast", &PyGePolyline2d::copycast).staticmethod("copycast")
-        .def("className", &PyGePolyline2d::className).staticmethod("className")
+        .def("numFitPoints", &PyGePolyline2d::numFitPoints, DS.ARGS())
+        .def("fitPointAt", &PyGePolyline2d::fitPointAt, DS.ARGS({ "idx: int" }))
+        .def("setFitPointAt", &PyGePolyline2d::setFitPointAt, DS.ARGS({ "idx: int","pt: PyGe.Point2d"  }))
+        .def("cast", &PyGePolyline2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGePolyline2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGePolyline2d::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
