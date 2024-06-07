@@ -9,27 +9,28 @@ using namespace boost::python;
 //PyGeSplineEnt3d wrapper
 void makePyGeSplineEnt3dWrapper()
 {
+    PyDocString DS("SplineEnt3d");
     class_<PyGeSplineEnt3d, bases<PyGeCurve3d>>("SplineEnt3d", boost::python::no_init)
-        .def("isRational", &PyGeSplineEnt3d::isRational)
-        .def("degree", &PyGeSplineEnt3d::degree)
-        .def("order", &PyGeSplineEnt3d::order)
-        .def("numKnots", &PyGeSplineEnt3d::numKnots)
-        .def("knots", &PyGeSplineEnt3d::knots)
-        .def("numControlPoints", &PyGeSplineEnt3d::numControlPoints)
+        .def("isRational", &PyGeSplineEnt3d::isRational, DS.ARGS())
+        .def("degree", &PyGeSplineEnt3d::degree, DS.ARGS())
+        .def("order", &PyGeSplineEnt3d::order, DS.ARGS())
+        .def("numKnots", &PyGeSplineEnt3d::numKnots, DS.ARGS())
+        .def("knots", &PyGeSplineEnt3d::knots, DS.ARGS())
+        .def("numControlPoints", &PyGeSplineEnt3d::numControlPoints, DS.ARGS())
         .def("continuityAtKnot", &PyGeSplineEnt3d::continuityAtKnot1)
-        .def("continuityAtKnot", &PyGeSplineEnt3d::continuityAtKnot2)
-        .def("startParam", &PyGeSplineEnt3d::startParam)
-        .def("endParam", &PyGeSplineEnt3d::endParam)
-        .def("startPoint", &PyGeSplineEnt3d::startPoint)
-        .def("endPoint", &PyGeSplineEnt3d::endPoint)
-        .def("hasFitData", &PyGeSplineEnt3d::hasFitData)
-        .def("knotAt", &PyGeSplineEnt3d::knotAt)
-        .def("setKnotAt", &PyGeSplineEnt3d::setKnotAt)
-        .def("controlPointAt", &PyGeSplineEnt3d::controlPointAt)
-        .def("setControlPointAt", &PyGeSplineEnt3d::setControlPointAt)
-        .def("cast", &PyGeSplineEnt3d::cast).staticmethod("cast")
-        .def("copycast", &PyGeSplineEnt3d::copycast).staticmethod("copycast")
-        .def("className", &PyGeSplineEnt3d::className).staticmethod("className")
+        .def("continuityAtKnot", &PyGeSplineEnt3d::continuityAtKnot2, DS.ARGS({ "idx: int", "tol: PyGe.Tol=None" }))
+        .def("startParam", &PyGeSplineEnt3d::startParam, DS.ARGS())
+        .def("endParam", &PyGeSplineEnt3d::endParam, DS.ARGS())
+        .def("startPoint", &PyGeSplineEnt3d::startPoint, DS.ARGS())
+        .def("endPoint", &PyGeSplineEnt3d::endPoint, DS.ARGS())
+        .def("hasFitData", &PyGeSplineEnt3d::hasFitData, DS.ARGS())
+        .def("knotAt", &PyGeSplineEnt3d::knotAt, DS.ARGS({ "idx: int" }))
+        .def("setKnotAt", &PyGeSplineEnt3d::setKnotAt, DS.ARGS({ "idx: int", "val: float" }))
+        .def("controlPointAt", &PyGeSplineEnt3d::controlPointAt, DS.ARGS({ "idx: int" }))
+        .def("setControlPointAt", &PyGeSplineEnt3d::setControlPointAt, DS.ARGS({ "idx: int", "val: PyGe.Point3d" }))
+        .def("cast", &PyGeSplineEnt3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeSplineEnt3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeSplineEnt3d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -162,7 +163,7 @@ AcGeSplineEnt3d* PyGeSplineEnt3d::impObj(const std::source_location& src /*= std
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeSplineEnt3d*>(m_imp.get());
 }
 
@@ -171,20 +172,28 @@ AcGeSplineEnt3d* PyGeSplineEnt3d::impObj(const std::source_location& src /*= std
 void makePyGeCubicSplineCurve3dWrapper()
 {
 #if !defined(_BRXTARGET240)
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- curve: PyGe.Curve3d, epsilon: float\n"
+        "- fitPnts: list[PyGe.Point3d], tol: PyGe.Tol\n"
+        "- fitPnts: list[PyGe.Point3d], startDeriv: PyGe.Vector3d, endDeriv: PyGe.Vector3d, tol: PyGe.Tol\n"
+        "- knots: PyGe.KnotVector, fitPnts: list[PyGe.Point3d], firstDerivs: list[PyGe.Vector3d], isPeriodic: bool\n";
+
+    PyDocString DS("CubicSplineCurve3d");
     class_<PyGeCubicSplineCurve3d, bases<PyGeSplineEnt3d>>("CubicSplineCurve3d")
         .def(init<>())
         .def(init<const PyGeCurve3d&, double>())
         .def(init<const boost::python::list&, const AcGeTol&>())
         .def(init<const boost::python::list&, const AcGeVector3d&, const AcGeVector3d&, const AcGeTol&>())
-        .def(init<const PyGeKnotVector&, const boost::python::list&, const boost::python::list&, Adesk::Boolean>())
-        .def("numFitPoints", &PyGeCubicSplineCurve3d::numFitPoints)
-        .def("fitPointAt", &PyGeCubicSplineCurve3d::fitPointAt)
-        .def("setFitPointAt", &PyGeCubicSplineCurve3d::setFitPointAt)
-        .def("firstDerivAt", &PyGeCubicSplineCurve3d::firstDerivAt)
-        .def("setFirstDerivAt", &PyGeCubicSplineCurve3d::setFirstDerivAt)
-        .def("cast", &PyGeCubicSplineCurve3d::cast).staticmethod("cast")
-        .def("copycast", &PyGeCubicSplineCurve3d::copycast).staticmethod("copycast")
-        .def("className", &PyGeCubicSplineCurve3d::className).staticmethod("className")
+        .def(init<const PyGeKnotVector&, const boost::python::list&, const boost::python::list&, Adesk::Boolean>(DS.CTOR(ctor)))
+        .def("numFitPoints", &PyGeCubicSplineCurve3d::numFitPoints, DS.ARGS())
+        .def("fitPointAt", &PyGeCubicSplineCurve3d::fitPointAt, DS.ARGS({ "idx: int" }))
+        .def("setFitPointAt", &PyGeCubicSplineCurve3d::setFitPointAt, DS.ARGS({ "idx: int" ,"pt: PyGe.Point3d" }))
+        .def("firstDerivAt", &PyGeCubicSplineCurve3d::firstDerivAt, DS.ARGS({ "idx: int" }))
+        .def("setFirstDerivAt", &PyGeCubicSplineCurve3d::setFirstDerivAt, DS.ARGS({ "idx: int" ,"vec: PyGe.Vector3d" }))
+        .def("cast", &PyGeCubicSplineCurve3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeCubicSplineCurve3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeCubicSplineCurve3d::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
@@ -277,6 +286,30 @@ AcGeCubicSplineCurve3d* PyGeCubicSplineCurve3d::impObj(const std::source_locatio
 void makePyGeNurbCurve3dWrapper()
 {
 #if !defined(_BRXTARGET240)
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- src: PyGe.Curve3d\n"
+        "- src: PyGe.LineSeg3d\n"
+        "- src: PyGe.EllipArc3d\n"
+        "- curve: PyGe.Curve3d, epsilon: float\n"
+        "- fitPnts: list[PyGe.Point3d], tol: PyGe.Tol\n"
+        "- degree: int, fitPolyline: PyGe.Polyline3d, isPeriodic: bool\n"
+        "- degree: int, knots: PyGe.KnotVector, cntrlPnts: list[PyGe.Point3d], isPeriodic: bool\n"
+        "- fitPoints: list[PyGe.Point3d], fitTangents: list[PyGe.Vector3d], fitTolerance: PyGe.Tol,isPeriodic: bool\n"
+        "- fitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, startTangentDefined: bool, endTangentDefined: bool, fitTolerance: PyGe.Tol\n"
+        "- fitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, startTangentDefined: bool, endTangentDefined: bool, knotParam: PyGe.KnotParameterization, fitTolerance: PyGe.Tol\n";
+
+    constexpr const std::string_view setFitTangentsOverloads = "Overloads:\n"
+        "- startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d\n"
+        "- startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, startTangentDefined: bool, endTangentDefined: bool\n";
+
+    constexpr const std::string_view setFitDatas = "Overloads:\n"
+        "- degree: int, fitPoints: list[PyGe.Point3d], fitTolerance: PyGe.Tol\n"
+        "- fitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, fitTolerance: PyGe.Tol\n"
+        "- fitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, fitTolerance: PyGe.Tol\n"
+        "- knots: PyGe.KnotVector, fitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, fitTolerance: PyGe.Tol, isPeriodic: bool \n";
+
+    PyDocString DS("NurbCurve3d");
     class_<PyGeNurbCurve3d, bases<PyGeSplineEnt3d>>("NurbCurve3d")
         .def(init<>())
         .def(init<const PyGeEllipArc3d&>())
@@ -287,49 +320,49 @@ void makePyGeNurbCurve3dWrapper()
         .def(init<int, const PyGeKnotVector&, const boost::python::list&, Adesk::Boolean>())
         .def(init<const boost::python::list&, const boost::python::list&, const AcGeTol&, Adesk::Boolean>())
         .def(init<const boost::python::list&, const AcGeVector3d&, const AcGeVector3d&, Adesk::Boolean, Adesk::Boolean, const AcGeTol&>())
-        .def(init<const boost::python::list&, const AcGeVector3d&, const AcGeVector3d&, Adesk::Boolean, Adesk::Boolean, AcGe::KnotParameterization, const AcGeTol&>())
-        .def("numFitPoints", &PyGeNurbCurve3d::numFitPoints)
-        .def("getFitPointAt", &PyGeNurbCurve3d::getFitPointAt)
-        .def("getFitTolerance", &PyGeNurbCurve3d::getFitTolerance)
-        .def("getFitTangents", &PyGeNurbCurve3d::getFitTangents)
-        .def("getFitData", &PyGeNurbCurve3d::getFitData)
-        .def("getDefinitionData", &PyGeNurbCurve3d::getDefinitionData)
-        .def("numWeights", &PyGeNurbCurve3d::numWeights)
-        .def("weightAt", &PyGeNurbCurve3d::weightAt)
-        .def("evalMode", &PyGeNurbCurve3d::evalMode)
-        .def("getParamsOfC1Discontinuity", &PyGeNurbCurve3d::getParamsOfC1Discontinuity)
-        .def("getParamsOfG1Discontinuity", &PyGeNurbCurve3d::getParamsOfG1Discontinuity)
-        .def("setFitPointAt", &PyGeNurbCurve3d::setFitPointAt)
-        .def("addFitPointAt", &PyGeNurbCurve3d::addFitPointAt)
-        .def("deleteFitPointAt", &PyGeNurbCurve3d::deleteFitPointAt)
-        .def("setFitTolerance", &PyGeNurbCurve3d::setFitTolerance)
+        .def(init<const boost::python::list&, const AcGeVector3d&, const AcGeVector3d&, Adesk::Boolean, Adesk::Boolean, AcGe::KnotParameterization, const AcGeTol&>(DS.CTOR(ctor)))
+        .def("numFitPoints", &PyGeNurbCurve3d::numFitPoints, DS.ARGS())
+        .def("getFitPointAt", &PyGeNurbCurve3d::getFitPointAt, DS.ARGS({ "idx: int" }))
+        .def("getFitTolerance", &PyGeNurbCurve3d::getFitTolerance, DS.ARGS())
+        .def("getFitTangents", &PyGeNurbCurve3d::getFitTangents, DS.ARGS())
+        .def("getFitData", &PyGeNurbCurve3d::getFitData, DS.ARGS())
+        .def("getDefinitionData", &PyGeNurbCurve3d::getDefinitionData, DS.ARGS())
+        .def("numWeights", &PyGeNurbCurve3d::numWeights, DS.ARGS())
+        .def("weightAt", &PyGeNurbCurve3d::weightAt, DS.ARGS({ "idx: int" }))
+        .def("evalMode", &PyGeNurbCurve3d::evalMode, DS.ARGS())
+        .def("getParamsOfC1Discontinuity", &PyGeNurbCurve3d::getParamsOfC1Discontinuity, DS.ARGS({ "tol: PyGe.Tol" }))
+        .def("getParamsOfG1Discontinuity", &PyGeNurbCurve3d::getParamsOfG1Discontinuity, DS.ARGS({ "tol: PyGe.Tol" }))
+        .def("setFitPointAt", &PyGeNurbCurve3d::setFitPointAt, DS.ARGS({ "idx: int","pt: PyGe.Point3d" }))
+        .def("addFitPointAt", &PyGeNurbCurve3d::addFitPointAt, DS.ARGS({ "idx: int","pt: PyGe.Point3d" }))
+        .def("deleteFitPointAt", &PyGeNurbCurve3d::deleteFitPointAt, DS.ARGS({ "idx: int" }))
+        .def("setFitTolerance", &PyGeNurbCurve3d::setFitTolerance, DS.ARGS({ "tol: PyGe.Tol" }))
         .def("setFitTangents", &PyGeNurbCurve3d::setFitTangents1)
-        .def("setFitTangents", &PyGeNurbCurve3d::setFitTangents2)
-        .def("setFitKnotParameterization", &PyGeNurbCurve3d::setFitKnotParameterization)
+        .def("setFitTangents", &PyGeNurbCurve3d::setFitTangents2, DS.OVRL(setFitTangentsOverloads))
+        .def("setFitKnotParameterization", &PyGeNurbCurve3d::setFitKnotParameterization, DS.ARGS({ "val: PyGe.KnotParameterization" }))
         .def("setFitData", &PyGeNurbCurve3d::setFitData1)
         .def("setFitData", &PyGeNurbCurve3d::setFitData2)
         .def("setFitData", &PyGeNurbCurve3d::setFitData3)
-        .def("setFitData", &PyGeNurbCurve3d::setFitData4)
-        .def("purgeFitData", &PyGeNurbCurve3d::purgeFitData)
+        .def("setFitData", &PyGeNurbCurve3d::setFitData4, DS.OVRL(setFitDatas))
+        .def("purgeFitData", &PyGeNurbCurve3d::purgeFitData, DS.ARGS())
         .def("buildFitData", &PyGeNurbCurve3d::buildFitData1)
-        .def("buildFitData", &PyGeNurbCurve3d::buildFitData2)
-        .def("addKnot", &PyGeNurbCurve3d::addKnot)
-        .def("insertKnot", &PyGeNurbCurve3d::insertKnot)
-        .def("setWeightAt", &PyGeNurbCurve3d::setWeightAt)
-        .def("setEvalMode", &PyGeNurbCurve3d::setEvalMode)
-        .def("joinWith", &PyGeNurbCurve3d::joinWith)
-        .def("hardTrimByParams", &PyGeNurbCurve3d::hardTrimByParams)
-        .def("makeRational", &PyGeNurbCurve3d::makeRational)
-        .def("makeClosed", &PyGeNurbCurve3d::makeClosed)
-        .def("makePeriodic", &PyGeNurbCurve3d::makePeriodic)
-        .def("makeNonPeriodic", &PyGeNurbCurve3d::makeNonPeriodic)
-        .def("makeOpen", &PyGeNurbCurve3d::makeOpen)
-        .def("elevateDegree", &PyGeNurbCurve3d::elevateDegree)
-        .def("addControlPointAt", &PyGeNurbCurve3d::addControlPointAt)
-        .def("deleteControlPointAt", &PyGeNurbCurve3d::deleteControlPointAt)
-        .def("cast", &PyGeNurbCurve3d::cast).staticmethod("cast")
-        .def("copycast", &PyGeNurbCurve3d::copycast).staticmethod("copycast")
-        .def("className", &PyGeNurbCurve3d::className).staticmethod("className")
+        .def("buildFitData", &PyGeNurbCurve3d::buildFitData2, DS.ARGS({ "val: PyGe.KnotParameterization=None" }))
+        .def("addKnot", &PyGeNurbCurve3d::addKnot, DS.ARGS({ "val: float" }))
+        .def("insertKnot", &PyGeNurbCurve3d::insertKnot, DS.ARGS({ "val: float" }))
+        .def("setWeightAt", &PyGeNurbCurve3d::setWeightAt, DS.ARGS({ "idx: int", "val: float" }))
+        .def("setEvalMode", &PyGeNurbCurve3d::setEvalMode, DS.ARGS({ "val: bool" }))
+        .def("joinWith", &PyGeNurbCurve3d::joinWith, DS.ARGS({ "val: PyGe.NurbCurve3d" }))
+        .def("hardTrimByParams", &PyGeNurbCurve3d::hardTrimByParams, DS.ARGS({ "newStartParam: float","newEndParam: float" }))
+        .def("makeRational", &PyGeNurbCurve3d::makeRational, DS.ARGS({ "val: float" }))
+        .def("makeClosed", &PyGeNurbCurve3d::makeClosed, DS.ARGS())
+        .def("makePeriodic", &PyGeNurbCurve3d::makePeriodic, DS.ARGS())
+        .def("makeNonPeriodic", &PyGeNurbCurve3d::makeNonPeriodic, DS.ARGS())
+        .def("makeOpen", &PyGeNurbCurve3d::makeOpen, DS.ARGS())
+        .def("elevateDegree", &PyGeNurbCurve3d::elevateDegree, DS.ARGS({ "val: int" }))
+        .def("addControlPointAt", &PyGeNurbCurve3d::addControlPointAt, DS.ARGS({ "newKnot: float","pt: PyGe.Point3d","weight: float" }))
+        .def("deleteControlPointAt", &PyGeNurbCurve3d::deleteControlPointAt, DS.ARGS({ "idx: int" }))
+        .def("cast", &PyGeNurbCurve3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeNurbCurve3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeNurbCurve3d::className, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("className")
         ;
 #endif
 }
@@ -654,7 +687,7 @@ AcGeNurbCurve3d* PyGeNurbCurve3d::impObj(const std::source_location& src /*= std
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeNurbCurve3d*>(m_imp.get());
 }
 #endif
@@ -663,19 +696,26 @@ AcGeNurbCurve3d* PyGeNurbCurve3d::impObj(const std::source_location& src /*= std
 //AcGeNurbCurve3d  wrapper
 void makePyGePolyline3dWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- points: list[PyGe.Point3d]\n"
+        "- knots: PyGe.KnotVector, points: list[PyGe.Point3d]"
+        "- crv: PyGe.Curve3d, apprEps: float";
+
+    PyDocString DS("Polyline3d");
     class_<PyGePolyline3d, bases<PyGeSplineEnt3d>>("Polyline3d")
         .def(init<>())
         .def(init<const boost::python::list&>())
         .def(init<const PyGeKnotVector&, const boost::python::list&>())
 #if !defined(_BRXTARGET240)
-        .def(init<const PyGeCurve3d&, double>())
+        .def(init<const PyGeCurve3d&, double>(DS.CTOR(ctor)))
 #endif
-        .def("numFitPoints", &PyGePolyline3d::numFitPoints)
-        .def("fitPointAt", &PyGePolyline3d::fitPointAt)
-        .def("setFitPointAt", &PyGePolyline3d::setFitPointAt)
-        .def("cast", &PyGePolyline3d::cast).staticmethod("cast")
-        .def("copycast", &PyGePolyline3d::copycast).staticmethod("copycast")
-        .def("className", &PyGePolyline3d::className).staticmethod("className")
+        .def("numFitPoints", &PyGePolyline3d::numFitPoints, DS.ARGS())
+        .def("fitPointAt", &PyGePolyline3d::fitPointAt, DS.ARGS({ "idx: int" }))
+        .def("setFitPointAt", &PyGePolyline3d::setFitPointAt, DS.ARGS({ "idx: int","pt: PyGe.Point3d" }))
+        .def("cast", &PyGePolyline3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGePolyline3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGePolyline3d::className, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("className")
         ;
 }
 
@@ -749,6 +789,6 @@ AcGePolyline3d* PyGePolyline3d::impObj(const std::source_location& src /*= std::
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGePolyline3d*>(m_imp.get());
 }

@@ -71,7 +71,6 @@ PyGeCurveCurveInt3d::PyGeCurveCurveInt3d(const PyGeCurve3d& curve1, const PyGeCu
 PyGeCurveCurveInt3d::PyGeCurveCurveInt3d(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeInterval& range1, const PyGeInterval& range2)
     : PyGeEntity3d(new AcGeCurveCurveInt3d(*curve1.impObj(), *curve2.impObj(), range1.imp, range2.imp))
 {
-
 }
 
 PyGeCurveCurveInt3d::PyGeCurveCurveInt3d(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeInterval& range1, const PyGeInterval& range2, const AcGeVector3d& planeNormal, const AcGeTol& tol)
@@ -130,7 +129,7 @@ AcGePoint3d PyGeCurveCurveInt3d::intPoint(int intNum) const
 
 boost::python::tuple PyGeCurveCurveInt3d::getIntParams(int intNum) const
 {
-    double param1 = 0; 
+    double param1 = 0;
     double param2 = 0;
     PyAutoLockGIL lock;
     impObj()->getIntParams(intNum, param1, param2);
@@ -190,7 +189,7 @@ boost::python::tuple PyGeCurveCurveInt3d::getOverlapRanges(int overlapNum) const
     PyAutoLockGIL lock;
     PyGeInterval range1;
     PyGeInterval range2;
-    impObj()->getOverlapRanges(overlapNum,range1.imp, range2.imp);
+    impObj()->getOverlapRanges(overlapNum, range1.imp, range2.imp);
     return boost::python::make_tuple(range1, range2);
 }
 

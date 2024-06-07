@@ -697,7 +697,7 @@ class CircArc2d(Curve2d):
     @overload
     def set (self, cent: PyGe.Point2d, radius: float)-> None : ...
     @overload
-    def set (self, cent: PyGe.Point2d, radius: float, startAngle: float, endAngle: float, refVec: AcGe.Vector2d, isClockWise: bool)-> None : ...
+    def set (self, cent: PyGe.Point2d, radius: float, startAngle: float, endAngle: float, refVec: PyGe.Vector2d, isClockWise: bool)-> None : ...
     @overload
     def set (self, startPoint: PyGe.Point2d, pnt: PyGe.Point2d, endPoint: PyGe.Point2d)-> None : ...
     @overload
@@ -709,7 +709,7 @@ class CircArc2d(Curve2d):
     def set (self, *args, **kwargs)-> None :
       '''Overloads:
     - cent: PyGe.Point2d, radius: float
-    - cent: PyGe.Point2d, radius: float, startAngle: float, endAngle: float, refVec: AcGe.Vector2d, isClockWise: bool
+    - cent: PyGe.Point2d, radius: float, startAngle: float, endAngle: float, refVec: PyGe.Vector2d, isClockWise: bool
     - startPoint: PyGe.Point2d, pnt: PyGe.Point2d, endPoint: PyGe.Point2d
     - startPoint: PyGe.Point2d, endPoint: PyGe.Point2d, bulge: float, bulgeFlag: bool
     - curve1: PyGe.Curve2d, curve2: PyGe.Curve2d, radius: float
@@ -1009,47 +1009,37 @@ class CircArc3d(Curve3d):
     ...
 
 class ClipBoundary2d(Entity2d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, cornerA: PyGe.Point2d, cornerB: PyGe.Point2d)-> None : ...
+    @overload
+    def __init__ (self, clipBoundary: list[PyGe.Point2d])-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)
-
-__init__( (object)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list)'''
+      '''Overloads:
+    - None: Any
+    - cornerA: PyGe.Point2d, cornerB: PyGe.Point2d
+    - clipBoundary: list[PyGe.Point2d]
+    '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.ClipBoundary2d :
-      '''cast( (Entity2d)arg1) -> ClipBoundary2d :
 
-    C++ signature :
-        class PyGeClipBoundary2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.ClipBoundary2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.ClipBoundary2d :
-      '''copycast( (Entity2d)arg1) -> ClipBoundary2d :
 
-    C++ signature :
-        class PyGeClipBoundary2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyGe.ClipBoundary2d :
+      '''                             '''
     ...
     def isEqualTo (self, val : PyGe.Entity2d, tol : PyGe.Tol=None)-> bool :
       '''                             '''
@@ -1083,11 +1073,8 @@ __init__( (object)arg1, (list)arg2) -> None :
     ...
 
 class CompositeCurve2d(Curve2d):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
     def area (self, startParam : float, endParam : float, tol : float = None)-> float :
       '''                             '''
@@ -1820,36 +1807,25 @@ class CubicSplineCurve2d(SplineEnt2d):
     ...
 
 class CubicSplineCurve3d(SplineEnt3d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, curve: PyGe.Curve3d, epsilon: float)-> None : ...
+    @overload
+    def __init__ (self, fitPnts: list[PyGe.Point3d], tol: PyGe.Tol)-> None : ...
+    @overload
+    def __init__ (self, fitPnts: list[PyGe.Point3d], startDeriv: PyGe.Vector3d, endDeriv: PyGe.Vector3d, tol: PyGe.Tol)-> None : ...
+    @overload
+    def __init__ (self, knots: PyGe.KnotVector, fitPnts: list[PyGe.Point3d], firstDerivs: list[PyGe.Vector3d], isPeriodic: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Curve3d)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve3d,double)
-
-__init__( (object)arg1, (list)arg2, (Tol)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeTol)
-
-__init__( (object)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (Tol)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector3d,class AcGeVector3d,class AcGeTol)
-
-__init__( (object)arg1, (KnotVector)arg2, (list)arg3, (list)arg4, (bool)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeKnotVector,class boost::python::list,class boost::python::list,bool)'''
+      '''Overloads:
+    - None: Any
+    - curve: PyGe.Curve3d, epsilon: float
+    - fitPnts: list[PyGe.Point3d], tol: PyGe.Tol
+    - fitPnts: list[PyGe.Point3d], startDeriv: PyGe.Vector3d, endDeriv: PyGe.Vector3d, tol: PyGe.Tol
+    - knots: PyGe.KnotVector, fitPnts: list[PyGe.Point3d], firstDerivs: list[PyGe.Vector3d], isPeriodic: bool
+    '''
     ...
     def area (self, startParam : float, endParam : float, tol : float = None)-> float :
       '''Returns the area of the interval of the curve defined by startParam and endParam. Returns Adesk::kTrue if area was successfully computed to within the specified tolerance. If the curve is not planar, then the area cannot be calculated and a value of Adesk::kFalse is returned. If the points at startParam and endParam are the same, then this function returns the area of the closed curve. If the points are different, then this function connects the two points with a line segment and return the signed area between the curve and the line segment. If the line segment does not intersect the curve at any points between startParam and endParam, then the returned area is positive. If the line segment intersects the curves at any points between startParam and endParam, then the returned area is the sum of the sub-areas created by the intersection of the line segment with the curve. Each sub-area has a positive or negative area, depending on whether the curve lies above or below the line segment. The total area returned by this function can therefore be positive, negative, or 0. '''
@@ -1857,67 +1833,44 @@ __init__( (object)arg1, (KnotVector)arg2, (list)arg3, (list)arg4, (bool)arg5) ->
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock3d :
       '''Returns the bounding box of the curve. The sides of the returned box are parallel to the coordinate axes. '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.CubicSplineCurve3d :
-      '''cast( (Entity3d)arg1) -> CubicSplineCurve3d :
 
-    C++ signature :
-        class PyGeCubicSplineCurve3d cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.CubicSplineCurve3d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point3d | PyGe.Curve3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the closest point on this curve to the input point. This function is the same as closestPointTo(), except that the closest point is returned as an AcGePointOnCurve3d object.'''
     ...
-    def continuityAtKnot (self, *args, **kwargs)-> int :
-      '''continuityAtKnot( (SplineEnt3d)arg1, (int)arg2) -> int :
-
-    C++ signature :
-        int continuityAtKnot(class PyGeSplineEnt3d {lvalue},int)
-
-continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
-
-    C++ signature :
-        int continuityAtKnot(class PyGeSplineEnt3d {lvalue},int,class AcGeTol)'''
+    def continuityAtKnot (self, idx: int, tol: PyGe.Tol=None)-> int :
+      '''                             '''
     ...
-    def controlPointAt (self, *args, **kwargs)-> PyGe.Point3d :
-      '''controlPointAt( (SplineEnt3d)arg1, (int)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d controlPointAt(class PyGeSplineEnt3d {lvalue},int)'''
+    def controlPointAt (self, idx: int)-> PyGe.Point3d :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.CubicSplineCurve3d :
-      '''copycast( (Entity3d)arg1) -> CubicSplineCurve3d :
 
-    C++ signature :
-        class PyGeCubicSplineCurve3d copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.CubicSplineCurve3d :
+      '''                             '''
     ...
-    def degree (self, *args, **kwargs)-> int :
-      '''degree( (SplineEnt3d)arg1) -> int :
-
-    C++ signature :
-        int degree(class PyGeSplineEnt3d {lvalue})'''
+    def degree (self)-> int :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point3d | PyGe.Curve3d, tol : PyGe.Tol=None)-> float :
       '''Returns the distance between the input point and the closest point on this curve.'''
     ...
-    def endParam (self, *args, **kwargs)-> float :
-      '''endParam( (SplineEnt3d)arg1) -> float :
-
-    C++ signature :
-        double endParam(class PyGeSplineEnt3d {lvalue})'''
+    def endParam (self)-> float :
+      '''                             '''
     ...
-    def endPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''endPoint( (SplineEnt3d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d endPoint(class PyGeSplineEnt3d {lvalue})'''
+    def endPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point3d :
       '''Returns the point on the curve that corresponds to the input parameter value. Also returns the number of derivative vectors that are specified in numDeriv. The numDeriv parameter should not be set larger than 2.'''
@@ -1925,17 +1878,11 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def explode (self, val : PyGe.Interval = None)-> list :
       '''Explodes the curve into its individual components. If the curve is a composite curve, then explodedCurves contains the list of component curves of the composite. If the curve is a spline, then it is exploded at the points of C1 discontinuity and explodedCurves contains a copy of each continuous sub-curve. This function returns Adesk::kTrue if the curve was exploded (that is, the curve was a composite or a discontinuous spline) and Adesk::kFalse otherwise. The number of entries returned in newExplodedCurves is always the same as the number of entries in explodedCurves. Each flag in newExplodedCurves indicates whether the corresponding curve in explodedCurves was created with the new operator. If the flag is 1, then it is the responsibility of the caller to delete the curve. If the flag is 0, the curve is deleted by gelib and the caller should not attempt to delete it. If no intrvl parameter is supplied, then the interval is taken to be the entire curve. '''
     ...
-    def firstDerivAt (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''firstDerivAt( (CubicSplineCurve3d)arg1, (int)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d firstDerivAt(class PyGeCubicSplineCurve3d {lvalue},int)'''
+    def firstDerivAt (self, idx: int)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def fitPointAt (self, *args, **kwargs)-> PyGe.Point3d :
-      '''fitPointAt( (CubicSplineCurve3d)arg1, (int)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d fitPointAt(class PyGeCubicSplineCurve3d {lvalue},int)'''
+    def fitPointAt (self, idx: int)-> PyGe.Point3d :
+      '''                             '''
     ...
     def getClosestPointTo (self, other : PyGe.Point3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the closest point on this curve to the input point. This function is the same as closestPointTo(), except that the closest point is returned as an AcGePointOnCurve3d object.'''
@@ -1982,11 +1929,8 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def hasEndPoint (self)-> bool :
       '''Returns Adesk::kTrue if curve has an endpoint. A return value of Adesk::kFalse means that the parametric interval of the curve does not have an upper bound. The endPnt parameter contains meaningful data only if this function returns a value of Adesk::kTrue.'''
     ...
-    def hasFitData (self, *args, **kwargs)-> bool :
-      '''hasFitData( (SplineEnt3d)arg1) -> bool :
-
-    C++ signature :
-        bool hasFitData(class PyGeSplineEnt3d {lvalue})'''
+    def hasFitData (self)-> bool :
+      '''                             '''
     ...
     def hasStartPoint (self)-> bool :
       '''Returns Adesk::kTrue if curve has a start point. A return value of Adesk::kFalse means that the parametric interval of the curve does not have a lower bound. The startPnt parameter contains meaningful data only if this function returns a value of Adesk::kTrue.'''
@@ -2021,23 +1965,14 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
-    def isRational (self, *args, **kwargs)-> bool :
-      '''isRational( (SplineEnt3d)arg1) -> bool :
-
-    C++ signature :
-        bool isRational(class PyGeSplineEnt3d {lvalue})'''
+    def isRational (self)-> bool :
+      '''                             '''
     ...
-    def knotAt (self, *args, **kwargs)-> float :
-      '''knotAt( (SplineEnt3d)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double knotAt(class PyGeSplineEnt3d {lvalue},int)'''
+    def knotAt (self, idx: int)-> float :
+      '''                             '''
     ...
-    def knots (self, *args, **kwargs)-> PyGe.KnotVector :
-      '''knots( (SplineEnt3d)arg1) -> KnotVector :
-
-    C++ signature :
-        class PyGeKnotVector knots(class PyGeSplineEnt3d {lvalue})'''
+    def knots (self)-> PyGe.KnotVector :
+      '''                             '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
       '''Returns the arc length of the curve between the two parameter values.'''
@@ -2045,29 +1980,17 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def mirror (self, val : PyGe.Plane)-> None :
       '''Transforms the entity by mirroring it across the input plane.'''
     ...
-    def numControlPoints (self, *args, **kwargs)-> int :
-      '''numControlPoints( (SplineEnt3d)arg1) -> int :
-
-    C++ signature :
-        int numControlPoints(class PyGeSplineEnt3d {lvalue})'''
+    def numControlPoints (self)-> int :
+      '''                             '''
     ...
-    def numFitPoints (self, *args, **kwargs)-> int :
-      '''numFitPoints( (CubicSplineCurve3d)arg1) -> int :
-
-    C++ signature :
-        int numFitPoints(class PyGeCubicSplineCurve3d {lvalue})'''
+    def numFitPoints (self)-> int :
+      '''                             '''
     ...
-    def numKnots (self, *args, **kwargs)-> int :
-      '''numKnots( (SplineEnt3d)arg1) -> int :
-
-    C++ signature :
-        int numKnots(class PyGeSplineEnt3d {lvalue})'''
+    def numKnots (self)-> int :
+      '''                             '''
     ...
-    def order (self, *args, **kwargs)-> int :
-      '''order( (SplineEnt3d)arg1) -> int :
-
-    C++ signature :
-        int order(class PyGeSplineEnt3d {lvalue})'''
+    def order (self)-> int :
+      '''                             '''
     ...
     def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock3d :
       '''Returns the bounding box of the curve. The sides of the returned box are parallel to the coordinate axes.'''
@@ -2099,44 +2022,26 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point3d = 'origin')-> None :
       '''Scales the entity about the input point by the input scale factor. Input scale factor must be greater than 0.'''
     ...
-    def setControlPointAt (self, *args, **kwargs)-> None :
-      '''setControlPointAt( (SplineEnt3d)arg1, (int)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void setControlPointAt(class PyGeSplineEnt3d {lvalue},int,class AcGePoint3d)'''
+    def setControlPointAt (self, idx: int, val: PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setFirstDerivAt (self, *args, **kwargs)-> None :
-      '''setFirstDerivAt( (CubicSplineCurve3d)arg1, (int)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void setFirstDerivAt(class PyGeCubicSplineCurve3d {lvalue},int,class AcGeVector3d)'''
+    def setFirstDerivAt (self, idx: int, vec: PyGe.Vector3d)-> None :
+      '''                             '''
     ...
-    def setFitPointAt (self, *args, **kwargs)-> None :
-      '''setFitPointAt( (CubicSplineCurve3d)arg1, (int)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void setFitPointAt(class PyGeCubicSplineCurve3d {lvalue},int,class AcGePoint3d)'''
+    def setFitPointAt (self, idx: int, pt: PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setInterval (self, val : PyGe.Interval = None)-> None :
       '''Sets the domain of the curve to the input interval.'''
     ...
-    def setKnotAt (self, *args, **kwargs)-> None :
-      '''setKnotAt( (SplineEnt3d)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setKnotAt(class PyGeSplineEnt3d {lvalue},int,double)'''
+    def setKnotAt (self, idx: int, val: float)-> None :
+      '''                             '''
     ...
-    def startParam (self, *args, **kwargs)-> float :
-      '''startParam( (SplineEnt3d)arg1) -> float :
-
-    C++ signature :
-        double startParam(class PyGeSplineEnt3d {lvalue})'''
+    def startParam (self)-> float :
+      '''                             '''
     ...
-    def startPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''startPoint( (SplineEnt3d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d startPoint(class PyGeSplineEnt3d {lvalue})'''
+    def startPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix3d)-> None :
       '''Transforms the entity by applying the input matrix.'''
@@ -6874,7 +6779,7 @@ class NurbCurve2d(SplineEnt2d):
     @overload
     def __init__ (self, /)-> None : ...
     @overload
-    def __init__ (self, src: PyGe.NurbCurve2d)-> None : ...
+    def __init__ (self, src: PyGe.Curve2d)-> None : ...
     @overload
     def __init__ (self, src: PyGe.LineSeg2d)-> None : ...
     @overload
@@ -6883,8 +6788,6 @@ class NurbCurve2d(SplineEnt2d):
     def __init__ (self, curve: PyGe.Curve2d, epsilon: float)-> None : ...
     @overload
     def __init__ (self, fitPnts: list[PyGe.Point2d], tol: PyGe.Tol)-> None : ...
-    @overload
-    def __init__ (self, degree: int, fitPolyline: PyGe.Polyline2d, fitTolerance: PyGe.Tol)-> None : ...
     @overload
     def __init__ (self, degree: int, fitPolyline: PyGe.Polyline2d, isPeriodic: bool)-> None : ...
     @overload
@@ -6898,12 +6801,11 @@ class NurbCurve2d(SplineEnt2d):
     def __init__ (self, *args, **kwargs)-> None :
       '''Overloads:
     - None: Any
-    - src: PyGe.NurbCurve2d
+    - src: PyGe.Curve2d
     - src: PyGe.LineSeg2d
     - src: PyGe.EllipArc2d
     - curve: PyGe.Curve2d, epsilon: float
     - fitPnts: list[PyGe.Point2d], tol: PyGe.Tol
-    - degree: int, fitPolyline: PyGe.Polyline2d, fitTolerance: PyGe.Tol
     - degree: int, fitPolyline: PyGe.Polyline2d, isPeriodic: bool
     - degree: int, knots: PyGe.KnotVector, cntrlPnts: list[PyGe.Point2d], isPeriodic: bool
     - fitPoints: list[PyGe.Point2d], fitTangents: list[PyGe.Vector2d], fitTolerance: PyGe.Tol,isPeriodic: bool
@@ -7214,79 +7116,52 @@ class NurbCurve2d(SplineEnt2d):
     ...
 
 class NurbCurve3d(SplineEnt3d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, src: PyGe.Curve3d)-> None : ...
+    @overload
+    def __init__ (self, src: PyGe.LineSeg3d)-> None : ...
+    @overload
+    def __init__ (self, src: PyGe.EllipArc3d)-> None : ...
+    @overload
+    def __init__ (self, curve: PyGe.Curve3d, epsilon: float)-> None : ...
+    @overload
+    def __init__ (self, fitPnts: list[PyGe.Point3d], tol: PyGe.Tol)-> None : ...
+    @overload
+    def __init__ (self, degree: int, fitPolyline: PyGe.Polyline3d, isPeriodic: bool)-> None : ...
+    @overload
+    def __init__ (self, degree: int, knots: PyGe.KnotVector, cntrlPnts: list[PyGe.Point3d], isPeriodic: bool)-> None : ...
+    @overload
+    def __init__ (self, fitPoints: list[PyGe.Point3d], fitTangents: list[PyGe.Vector3d], fitTolerance: PyGe.Tol,isPeriodic: bool)-> None : ...
+    @overload
+    def __init__ (self, fitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, startTangentDefined: bool, endTangentDefined: bool, fitTolerance: PyGe.Tol)-> None : ...
+    @overload
+    def __init__ (self, fitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, startTangentDefined: bool, endTangentDefined: bool, knotParam: PyGe.KnotParameterization, fitTolerance: PyGe.Tol)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (EllipArc3d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeEllipArc3d)
-
-__init__( (object)arg1, (LineSeg3d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeLineSeg3d)
-
-__init__( (object)arg1, (Curve3d)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve3d,double)
-
-__init__( (object)arg1, (list)arg2, (Tol)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeTol)
-
-__init__( (object)arg1, (int)arg2, (Polyline3d)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,int,class PyGePolyline3d,bool)
-
-__init__( (object)arg1, (int)arg2, (KnotVector)arg3, (list)arg4, (bool)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,int,class PyGeKnotVector,class boost::python::list,bool)
-
-__init__( (object)arg1, (list)arg2, (list)arg3, (Tol)arg4, (bool)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,class boost::python::list,class AcGeTol,bool)
-
-__init__( (object)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (bool)arg5, (bool)arg6, (Tol)arg7) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector3d,class AcGeVector3d,bool,bool,class AcGeTol)
-
-__init__( (object)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (bool)arg5, (bool)arg6, (KnotParameterization)arg7, (Tol)arg8) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector3d,class AcGeVector3d,bool,bool,enum AcGe::KnotParameterization,class AcGeTol)'''
+      '''Overloads:
+    - None: Any
+    - src: PyGe.Curve3d
+    - src: PyGe.LineSeg3d
+    - src: PyGe.EllipArc3d
+    - curve: PyGe.Curve3d, epsilon: float
+    - fitPnts: list[PyGe.Point3d], tol: PyGe.Tol
+    - degree: int, fitPolyline: PyGe.Polyline3d, isPeriodic: bool
+    - degree: int, knots: PyGe.KnotVector, cntrlPnts: list[PyGe.Point3d], isPeriodic: bool
+    - fitPoints: list[PyGe.Point3d], fitTangents: list[PyGe.Vector3d], fitTolerance: PyGe.Tol,isPeriodic: bool
+    - fitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, startTangentDefined: bool, endTangentDefined: bool, fitTolerance: PyGe.Tol
+    - fitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, startTangentDefined: bool, endTangentDefined: bool, knotParam: PyGe.KnotParameterization, fitTolerance: PyGe.Tol
+    '''
     ...
-    def addControlPointAt (self, *args, **kwargs)-> bool :
-      '''addControlPointAt( (NurbCurve3d)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> bool :
-
-    C++ signature :
-        bool addControlPointAt(class PyGeNurbCurve3d {lvalue},double,class AcGePoint3d,double)'''
+    def addControlPointAt (self, newKnot: float, pt: PyGe.Point3d, weight: float)-> bool :
+      '''                             '''
     ...
-    def addFitPointAt (self, *args, **kwargs)-> bool :
-      '''addFitPointAt( (NurbCurve3d)arg1, (int)arg2, (Point3d)arg3) -> bool :
-
-    C++ signature :
-        bool addFitPointAt(class PyGeNurbCurve3d {lvalue},int,class AcGePoint3d)'''
+    def addFitPointAt (self, idx: int, pt: PyGe.Point3d)-> bool :
+      '''                             '''
     ...
-    def addKnot (self, *args, **kwargs)-> None :
-      '''addKnot( (NurbCurve3d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void addKnot(class PyGeNurbCurve3d {lvalue},double)'''
+    def addKnot (self, val: float)-> None :
+      '''                             '''
     ...
     def area (self, startParam : float, endParam : float, tol : float = None)-> float :
       '''Returns the area of the interval of the curve defined by startParam and endParam. Returns Adesk::kTrue if area was successfully computed to within the specified tolerance. If the curve is not planar, then the area cannot be calculated and a value of Adesk::kFalse is returned. If the points at startParam and endParam are the same, then this function returns the area of the closed curve. If the points are different, then this function connects the two points with a line segment and return the signed area between the curve and the line segment. If the line segment does not intersect the curve at any points between startParam and endParam, then the returned area is positive. If the line segment intersects the curves at any points between startParam and endParam, then the returned area is the sum of the sub-areas created by the intersection of the line segment with the curve. Each sub-area has a positive or negative area, depending on whether the curve lies above or below the line segment. The total area returned by this function can therefore be positive, negative, or 0. '''
@@ -7294,102 +7169,59 @@ __init__( (object)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (bool)arg5, 
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock3d :
       '''Returns the bounding box of the curve. The sides of the returned box are parallel to the coordinate axes. '''
     ...
-    def buildFitData (self, *args, **kwargs)-> bool :
-      '''buildFitData( (NurbCurve3d)arg1) -> bool :
-
-    C++ signature :
-        bool buildFitData(class PyGeNurbCurve3d {lvalue})
-
-buildFitData( (NurbCurve3d)arg1, (KnotParameterization)arg2) -> bool :
-
-    C++ signature :
-        bool buildFitData(class PyGeNurbCurve3d {lvalue},enum AcGe::KnotParameterization)'''
+    def buildFitData (self, val: PyGe.KnotParameterization=None)-> bool :
+      '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.NurbCurve3d :
-      '''cast( (Entity3d)arg1) -> NurbCurve3d :
 
-    C++ signature :
-        class PyGeNurbCurve3d cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.NurbCurve3d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className (otherObject: PyGe.Entity3d)-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point3d | PyGe.Curve3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the closest point on this curve to the input point. This function is the same as closestPointTo(), except that the closest point is returned as an AcGePointOnCurve3d object.'''
     ...
-    def continuityAtKnot (self, *args, **kwargs)-> int :
-      '''continuityAtKnot( (SplineEnt3d)arg1, (int)arg2) -> int :
-
-    C++ signature :
-        int continuityAtKnot(class PyGeSplineEnt3d {lvalue},int)
-
-continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
-
-    C++ signature :
-        int continuityAtKnot(class PyGeSplineEnt3d {lvalue},int,class AcGeTol)'''
+    def continuityAtKnot (self, idx: int, tol: PyGe.Tol=None)-> int :
+      '''                             '''
     ...
-    def controlPointAt (self, *args, **kwargs)-> PyGe.Point3d :
-      '''controlPointAt( (SplineEnt3d)arg1, (int)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d controlPointAt(class PyGeSplineEnt3d {lvalue},int)'''
+    def controlPointAt (self, idx: int)-> PyGe.Point3d :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.NurbCurve3d :
-      '''copycast( (Entity3d)arg1) -> NurbCurve3d :
 
-    C++ signature :
-        class PyGeNurbCurve3d copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.NurbCurve3d :
+      '''                             '''
     ...
-    def degree (self, *args, **kwargs)-> int :
-      '''degree( (SplineEnt3d)arg1) -> int :
-
-    C++ signature :
-        int degree(class PyGeSplineEnt3d {lvalue})'''
+    def degree (self)-> int :
+      '''                             '''
     ...
-    def deleteControlPointAt (self, *args, **kwargs)-> bool :
-      '''deleteControlPointAt( (NurbCurve3d)arg1, (int)arg2) -> bool :
-
-    C++ signature :
-        bool deleteControlPointAt(class PyGeNurbCurve3d {lvalue},int)'''
+    def deleteControlPointAt (self, idx: int)-> bool :
+      '''                             '''
     ...
-    def deleteFitPointAt (self, *args, **kwargs)-> bool :
-      '''deleteFitPointAt( (NurbCurve3d)arg1, (int)arg2) -> bool :
-
-    C++ signature :
-        bool deleteFitPointAt(class PyGeNurbCurve3d {lvalue},int)'''
+    def deleteFitPointAt (self, idx: int)-> bool :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point3d | PyGe.Curve3d, tol : PyGe.Tol=None)-> float :
       '''Returns the distance between the input point and the closest point on this curve.'''
     ...
-    def elevateDegree (self, *args, **kwargs)-> None :
-      '''elevateDegree( (NurbCurve3d)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void elevateDegree(class PyGeNurbCurve3d {lvalue},int)'''
+    def elevateDegree (self, val: int)-> None :
+      '''                             '''
     ...
-    def endParam (self, *args, **kwargs)-> float :
-      '''endParam( (SplineEnt3d)arg1) -> float :
-
-    C++ signature :
-        double endParam(class PyGeSplineEnt3d {lvalue})'''
+    def endParam (self)-> float :
+      '''                             '''
     ...
-    def endPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''endPoint( (SplineEnt3d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d endPoint(class PyGeSplineEnt3d {lvalue})'''
+    def endPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def evalMode (self, *args, **kwargs)-> bool :
-      '''evalMode( (NurbCurve3d)arg1) -> bool :
-
-    C++ signature :
-        bool evalMode(class PyGeNurbCurve3d {lvalue})'''
+    def evalMode (self)-> bool :
+      '''                             '''
     ...
     def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point3d :
       '''Returns the point on the curve that corresponds to the input parameter value. Also returns the number of derivative vectors that are specified in numDeriv. The numDeriv parameter should not be set larger than 2.'''
@@ -7403,38 +7235,23 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def getClosestPointsTo (self, other : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
     ...
-    def getDefinitionData (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getDefinitionData( (NurbCurve3d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getDefinitionData(class PyGeNurbCurve3d {lvalue})'''
+    def getDefinitionData (self)-> tuple[Any,...] :
+      '''                             '''
     ...
     def getEndPoint (self)-> PyGe.Point3d :
       '''                             '''
     ...
-    def getFitData (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getFitData( (NurbCurve3d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getFitData(class PyGeNurbCurve3d {lvalue})'''
+    def getFitData (self)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def getFitPointAt (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getFitPointAt( (NurbCurve3d)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getFitPointAt(class PyGeNurbCurve3d {lvalue},int)'''
+    def getFitPointAt (self, idx: int)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def getFitTangents (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getFitTangents( (NurbCurve3d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getFitTangents(class PyGeNurbCurve3d {lvalue})'''
+    def getFitTangents (self)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def getFitTolerance (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getFitTolerance( (NurbCurve3d)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getFitTolerance(class PyGeNurbCurve3d {lvalue})'''
+    def getFitTolerance (self)-> tuple[Any,...] :
+      '''                             '''
     ...
     def getInterval (self)-> PyGe.Interval :
       '''Returns the parametric range of the curve. The function evalPoint(double) always returns a point on this curve when called with a value within the returned interval.'''
@@ -7442,17 +7259,11 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def getNormalPoint (self, pnt : PyGe.Point3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the point on the input curve whose normal passes through the input point. The returned point lies on a plane that also contains the input point and is perpendicular to the curve tangent at that point. The returned point is therefore at a local minimum or a local maximum from the input point. The curve does not need to be planar. If the curve is planar, the input point does not need to lie in the plane of the curve. On input, the second parameter is assumed to contain the parameter value of an initial guess. If there is more than one normal point on the curve, the returned point will be the one whose parameter value is closest to the input parameter value.'''
     ...
-    def getParamsOfC1Discontinuity (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getParamsOfC1Discontinuity( (NurbCurve3d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getParamsOfC1Discontinuity(class PyGeNurbCurve3d {lvalue},class AcGeTol)'''
+    def getParamsOfC1Discontinuity (self, tol: PyGe.Tol)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def getParamsOfG1Discontinuity (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getParamsOfG1Discontinuity( (NurbCurve3d)arg1, (Tol)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getParamsOfG1Discontinuity(class PyGeNurbCurve3d {lvalue},class AcGeTol)'''
+    def getParamsOfG1Discontinuity (self, tol: PyGe.Tol)-> tuple[Any,...] :
+      '''                             '''
     ...
     def getProjClosestPointTo (self, pt : PyGe.Point3d, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
@@ -7481,29 +7292,20 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def getTrimmedOffset (self, dist : float, planeNormal : PyGe.Vector3d, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
       '''Returns one or more offset curves that represent the trimmed offset of the curve. The curve must be planar and planeNormal must be perpendicular to the plane of the curve. The positive direction of offset at a point on the curve is taken to be the cross product of planeNormal with the tangent vector at that point. The curve may be offset in either of two directions by specifying a positive or negative offset distance; planeNormal determines which direction is the positive direction of offset. The returned offset curves are trimmed so that they do not contain any points of self-intersection. Each curve that is returned in offsetCurveList is created with the new and it is the responsibility of the caller to delete these curves. Each curve that is returned in offsetCurveList is a connected curve and may be a composite curve if the offset curve had to be trimmed to remove self-intersecting loops. offsetCurveList only contains more than one curve if the offset operation produces multiple curves which are not connected. If the original curve contains points of C1 discontinuity and the direction of offset causes the offset curve to be disjoint (for instance, if the original curve is a composite curve that is a rectangle and the direction of offset is to the outside of the rectangle), then the offset curve is closed with an arc or a line segment, or the curves are simply extended depending on the value of extensionType.'''
     ...
-    def hardTrimByParams (self, *args, **kwargs)-> None :
-      '''hardTrimByParams( (NurbCurve3d)arg1, (float)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void hardTrimByParams(class PyGeNurbCurve3d {lvalue},double,double)'''
+    def hardTrimByParams (self, newStartParam: float, newEndParam: float)-> None :
+      '''                             '''
     ...
     def hasEndPoint (self)-> bool :
       '''Returns Adesk::kTrue if curve has an endpoint. A return value of Adesk::kFalse means that the parametric interval of the curve does not have an upper bound. The endPnt parameter contains meaningful data only if this function returns a value of Adesk::kTrue.'''
     ...
-    def hasFitData (self, *args, **kwargs)-> bool :
-      '''hasFitData( (SplineEnt3d)arg1) -> bool :
-
-    C++ signature :
-        bool hasFitData(class PyGeSplineEnt3d {lvalue})'''
+    def hasFitData (self)-> bool :
+      '''                             '''
     ...
     def hasStartPoint (self)-> bool :
       '''Returns Adesk::kTrue if curve has a start point. A return value of Adesk::kFalse means that the parametric interval of the curve does not have a lower bound. The startPnt parameter contains meaningful data only if this function returns a value of Adesk::kTrue.'''
     ...
-    def insertKnot (self, *args, **kwargs)-> None :
-      '''insertKnot( (NurbCurve3d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void insertKnot(class PyGeNurbCurve3d {lvalue},double)'''
+    def insertKnot (self, val: float)-> None :
+      '''                             '''
     ...
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''Determines if start point and endpoint of curve are the same.'''
@@ -7535,95 +7337,53 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
-    def isRational (self, *args, **kwargs)-> bool :
-      '''isRational( (SplineEnt3d)arg1) -> bool :
-
-    C++ signature :
-        bool isRational(class PyGeSplineEnt3d {lvalue})'''
+    def isRational (self)-> bool :
+      '''                             '''
     ...
-    def joinWith (self, *args, **kwargs)-> None :
-      '''joinWith( (NurbCurve3d)arg1, (NurbCurve3d)arg2) -> None :
-
-    C++ signature :
-        void joinWith(class PyGeNurbCurve3d {lvalue},class PyGeNurbCurve3d)'''
+    def joinWith (self, val: PyGe.NurbCurve3d)-> None :
+      '''                             '''
     ...
-    def knotAt (self, *args, **kwargs)-> float :
-      '''knotAt( (SplineEnt3d)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double knotAt(class PyGeSplineEnt3d {lvalue},int)'''
+    def knotAt (self, idx: int)-> float :
+      '''                             '''
     ...
-    def knots (self, *args, **kwargs)-> PyGe.KnotVector :
-      '''knots( (SplineEnt3d)arg1) -> KnotVector :
-
-    C++ signature :
-        class PyGeKnotVector knots(class PyGeSplineEnt3d {lvalue})'''
+    def knots (self)-> PyGe.KnotVector :
+      '''                             '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
       '''Returns the arc length of the curve between the two parameter values.'''
     ...
-    def makeClosed (self, *args, **kwargs)-> None :
-      '''makeClosed( (NurbCurve3d)arg1) -> None :
-
-    C++ signature :
-        void makeClosed(class PyGeNurbCurve3d {lvalue})'''
+    def makeClosed (self)-> None :
+      '''                             '''
     ...
-    def makeNonPeriodic (self, *args, **kwargs)-> None :
-      '''makeNonPeriodic( (NurbCurve3d)arg1) -> None :
-
-    C++ signature :
-        void makeNonPeriodic(class PyGeNurbCurve3d {lvalue})'''
+    def makeNonPeriodic (self)-> None :
+      '''                             '''
     ...
-    def makeOpen (self, *args, **kwargs)-> None :
-      '''makeOpen( (NurbCurve3d)arg1) -> None :
-
-    C++ signature :
-        void makeOpen(class PyGeNurbCurve3d {lvalue})'''
+    def makeOpen (self)-> None :
+      '''                             '''
     ...
-    def makePeriodic (self, *args, **kwargs)-> None :
-      '''makePeriodic( (NurbCurve3d)arg1) -> None :
-
-    C++ signature :
-        void makePeriodic(class PyGeNurbCurve3d {lvalue})'''
+    def makePeriodic (self)-> None :
+      '''                             '''
     ...
-    def makeRational (self, *args, **kwargs)-> None :
-      '''makeRational( (NurbCurve3d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void makeRational(class PyGeNurbCurve3d {lvalue},double)'''
+    def makeRational (self, val: float)-> None :
+      '''                             '''
     ...
     def mirror (self, val : PyGe.Plane)-> None :
       '''Transforms the entity by mirroring it across the input plane.'''
     ...
-    def numControlPoints (self, *args, **kwargs)-> int :
-      '''numControlPoints( (SplineEnt3d)arg1) -> int :
-
-    C++ signature :
-        int numControlPoints(class PyGeSplineEnt3d {lvalue})'''
+    def numControlPoints (self)-> int :
+      '''                             '''
     ...
-    def numFitPoints (self, *args, **kwargs)-> int :
-      '''numFitPoints( (NurbCurve3d)arg1) -> int :
-
-    C++ signature :
-        int numFitPoints(class PyGeNurbCurve3d {lvalue})'''
+    def numFitPoints (self)-> int :
+      '''                             '''
     ...
-    def numKnots (self, *args, **kwargs)-> int :
-      '''numKnots( (SplineEnt3d)arg1) -> int :
-
-    C++ signature :
-        int numKnots(class PyGeSplineEnt3d {lvalue})'''
+    def numKnots (self)-> int :
+      '''                             '''
     ...
-    def numWeights (self, *args, **kwargs)-> int :
-      '''numWeights( (NurbCurve3d)arg1) -> int :
-
-    C++ signature :
-        int numWeights(class PyGeNurbCurve3d {lvalue})'''
+    def numWeights (self)-> int :
+      '''                             '''
     ...
-    def order (self, *args, **kwargs)-> int :
-      '''order( (SplineEnt3d)arg1) -> int :
-
-    C++ signature :
-        int order(class PyGeSplineEnt3d {lvalue})'''
+    def order (self)-> int :
+      '''                             '''
     ...
     def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock3d :
       '''Returns the bounding box of the curve. The sides of the returned box are parallel to the coordinate axes.'''
@@ -7646,11 +7406,8 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def project (self, projectionPlane : PyGe.Plane, projDir : PyGe.Vector3d, tol : PyGe.Tol=None)-> PyGe.Entity3d :
       '''Returns the entity that is the projection of the curve onto the projection plane in the specified direction. The projectDirection vector must not be parallel to the projection plane. The returned entity may not be of the same type as the original curve and may not even be a curve (for instance, a line projects into a point if it is parallel to projectDirection). The returned entity is created with the new and it is the responsibility of the caller to delete it.'''
     ...
-    def purgeFitData (self, *args, **kwargs)-> bool :
-      '''purgeFitData( (NurbCurve3d)arg1) -> bool :
-
-    C++ signature :
-        bool purgeFitData(class PyGeNurbCurve3d {lvalue})'''
+    def purgeFitData (self)-> bool :
+      '''                             '''
     ...
     def reverseParam (self)-> None :
       '''Reverses the parametric direction of the curve. The point set of the curve is unchanged, but the direction of the curve is reversed.'''
@@ -7661,94 +7418,63 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point3d = 'origin')-> None :
       '''Scales the entity about the input point by the input scale factor. Input scale factor must be greater than 0.'''
     ...
-    def setControlPointAt (self, *args, **kwargs)-> None :
-      '''setControlPointAt( (SplineEnt3d)arg1, (int)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void setControlPointAt(class PyGeSplineEnt3d {lvalue},int,class AcGePoint3d)'''
+    def setControlPointAt (self, idx: int, val: PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setEvalMode (self, *args, **kwargs)-> None :
-      '''setEvalMode( (NurbCurve3d)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setEvalMode(class PyGeNurbCurve3d {lvalue},bool)'''
+    def setEvalMode (self, val: bool)-> None :
+      '''                             '''
     ...
+
+    @overload
+    def setFitData (self, degree: int, fitPoints: list[PyGe.Point3d], fitTolerance: PyGe.Tol)-> None : ...
+    @overload
+    def setFitData (self, fitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, fitTolerance: PyGe.Tol)-> None : ...
+    @overload
+    def setFitData (self, fitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, fitTolerance: PyGe.Tol)-> None : ...
+    @overload
+    def setFitData (self, knots: PyGe.KnotVector, fitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, fitTolerance: PyGe.Tol, isPeriodic: bool)-> None : ...
     def setFitData (self, *args, **kwargs)-> None :
-      '''setFitData( (NurbCurve3d)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (Tol)arg5) -> None :
-
-    C++ signature :
-        void setFitData(class PyGeNurbCurve3d {lvalue},class boost::python::list,class AcGeVector3d,class AcGeVector3d,class AcGeTol)
-
-setFitData( (NurbCurve3d)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (KnotParameterization)arg5, (Tol)arg6) -> None :
-
-    C++ signature :
-        void setFitData(class PyGeNurbCurve3d {lvalue},class boost::python::list,class AcGeVector3d,class AcGeVector3d,enum AcGe::KnotParameterization,class AcGeTol)
-
-setFitData( (NurbCurve3d)arg1, (KnotVector)arg2, (list)arg3, (Vector3d)arg4, (Vector3d)arg5, (Tol)arg6, (bool)arg7) -> None :
-
-    C++ signature :
-        void setFitData(class PyGeNurbCurve3d {lvalue},class PyGeKnotVector,class boost::python::list,class AcGeVector3d,class AcGeVector3d,class AcGeTol,bool)
-
-setFitData( (NurbCurve3d)arg1, (int)arg2, (list)arg3, (Tol)arg4) -> None :
-
-    C++ signature :
-        void setFitData(class PyGeNurbCurve3d {lvalue},int,class boost::python::list,class AcGeTol)'''
+      '''Overloads:
+    - degree: int, fitPoints: list[PyGe.Point3d], fitTolerance: PyGe.Tol
+    - fitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, fitTolerance: PyGe.Tol
+    - fitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, fitTolerance: PyGe.Tol
+    - knots: PyGe.KnotVector, fitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, fitTolerance: PyGe.Tol, isPeriodic: bool 
+    '''
     ...
-    def setFitKnotParameterization (self, *args, **kwargs)-> bool :
-      '''setFitKnotParameterization( (NurbCurve3d)arg1, (KnotParameterization)arg2) -> bool :
-
-    C++ signature :
-        bool setFitKnotParameterization(class PyGeNurbCurve3d {lvalue},enum AcGe::KnotParameterization)'''
+    def setFitKnotParameterization (self, val: PyGe.KnotParameterization)-> bool :
+      '''                             '''
     ...
-    def setFitPointAt (self, *args, **kwargs)-> bool :
-      '''setFitPointAt( (NurbCurve3d)arg1, (int)arg2, (Point3d)arg3) -> bool :
-
-    C++ signature :
-        bool setFitPointAt(class PyGeNurbCurve3d {lvalue},int,class AcGePoint3d)'''
+    def setFitPointAt (self, idx: int, pt: PyGe.Point3d)-> bool :
+      '''                             '''
     ...
+
+    @overload
+    def setFitTangents (self, startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d)-> bool : ...
+    @overload
+    def setFitTangents (self, startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, startTangentDefined: bool, endTangentDefined: bool)-> bool : ...
     def setFitTangents (self, *args, **kwargs)-> bool :
-      '''setFitTangents( (NurbCurve3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
-
-    C++ signature :
-        bool setFitTangents(class PyGeNurbCurve3d {lvalue},class AcGeVector3d,class AcGeVector3d)
-
-setFitTangents( (NurbCurve3d)arg1, (Vector3d)arg2, (Vector3d)arg3, (bool)arg4, (bool)arg5) -> bool :
-
-    C++ signature :
-        bool setFitTangents(class PyGeNurbCurve3d {lvalue},class AcGeVector3d,class AcGeVector3d,bool,bool)'''
+      '''Overloads:
+    - startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d
+    - startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, startTangentDefined: bool, endTangentDefined: bool
+    '''
     ...
-    def setFitTolerance (self, *args, **kwargs)-> bool :
-      '''setFitTolerance( (NurbCurve3d)arg1, (Tol)arg2) -> bool :
-
-    C++ signature :
-        bool setFitTolerance(class PyGeNurbCurve3d {lvalue},class AcGeTol)'''
+    def setFitTolerance (self, tol: PyGe.Tol)-> bool :
+      '''                             '''
     ...
     def setInterval (self, val : PyGe.Interval = None)-> None :
       '''Sets the domain of the curve to the input interval.'''
     ...
-    def setKnotAt (self, *args, **kwargs)-> None :
-      '''setKnotAt( (SplineEnt3d)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setKnotAt(class PyGeSplineEnt3d {lvalue},int,double)'''
+    def setKnotAt (self, idx: int, val: float)-> None :
+      '''                             '''
     ...
-    def setWeightAt (self, *args, **kwargs)-> None :
-      '''setWeightAt( (NurbCurve3d)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setWeightAt(class PyGeNurbCurve3d {lvalue},int,double)'''
+    def setWeightAt (self, idx: int, val: float)-> None :
+      '''                             '''
     ...
-    def startParam (self, *args, **kwargs)-> float :
-      '''startParam( (SplineEnt3d)arg1) -> float :
-
-    C++ signature :
-        double startParam(class PyGeSplineEnt3d {lvalue})'''
+    def startParam (self)-> float :
+      '''                             '''
     ...
-    def startPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''startPoint( (SplineEnt3d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d startPoint(class PyGeSplineEnt3d {lvalue})'''
+    def startPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix3d)-> None :
       '''Transforms the entity by applying the input matrix.'''
@@ -7759,11 +7485,8 @@ setFitTangents( (NurbCurve3d)arg1, (Vector3d)arg2, (Vector3d)arg3, (bool)arg4, (
     def type (self)-> PyGe.EntityId :
       '''Returns the type of the entity.'''
     ...
-    def weightAt (self, *args, **kwargs)-> float :
-      '''weightAt( (NurbCurve3d)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double weightAt(class PyGeNurbCurve3d {lvalue},int)'''
+    def weightAt (self, idx: int)-> float :
+      '''                             '''
     ...
 
 class NurbSurface(Surface):
@@ -9813,31 +9536,20 @@ __init__( (object)arg1, (Curve2d)arg2, (float)arg3) -> None :
     ...
 
 class Polyline3d(SplineEnt3d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, points: list[PyGe.Point3d])-> None : ...
+    @overload
+    def __init__ (self, knots: PyGe.KnotVector, points: list[PyGe.Point3d])-> None : ...
+    @overload
+    def __init__ (self, crv: PyGe.Curve3d, apprEps: float)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list)
-
-__init__( (object)arg1, (KnotVector)arg2, (list)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeKnotVector,class boost::python::list)
-
-__init__( (object)arg1, (Curve3d)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve3d,double)'''
+      '''Overloads:
+    - None: Any
+    - points: list[PyGe.Point3d]
+    - knots: PyGe.KnotVector, points: list[PyGe.Point3d]- crv: PyGe.Curve3d, apprEps: float'''
     ...
     def area (self, startParam : float, endParam : float, tol : float = None)-> float :
       '''Returns the area of the interval of the curve defined by startParam and endParam. Returns Adesk::kTrue if area was successfully computed to within the specified tolerance. If the curve is not planar, then the area cannot be calculated and a value of Adesk::kFalse is returned. If the points at startParam and endParam are the same, then this function returns the area of the closed curve. If the points are different, then this function connects the two points with a line segment and return the signed area between the curve and the line segment. If the line segment does not intersect the curve at any points between startParam and endParam, then the returned area is positive. If the line segment intersects the curves at any points between startParam and endParam, then the returned area is the sum of the sub-areas created by the intersection of the line segment with the curve. Each sub-area has a positive or negative area, depending on whether the curve lies above or below the line segment. The total area returned by this function can therefore be positive, negative, or 0. '''
@@ -9845,67 +9557,44 @@ __init__( (object)arg1, (Curve3d)arg2, (float)arg3) -> None :
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock3d :
       '''Returns the bounding box of the curve. The sides of the returned box are parallel to the coordinate axes. '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.Polyline3d :
-      '''cast( (Entity3d)arg1) -> Polyline3d :
 
-    C++ signature :
-        class PyGePolyline3d cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyDb.Polyline3d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className (otherObject: PyGe.Entity3d)-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point3d | PyGe.Curve3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the closest point on this curve to the input point. This function is the same as closestPointTo(), except that the closest point is returned as an AcGePointOnCurve3d object.'''
     ...
-    def continuityAtKnot (self, *args, **kwargs)-> int :
-      '''continuityAtKnot( (SplineEnt3d)arg1, (int)arg2) -> int :
-
-    C++ signature :
-        int continuityAtKnot(class PyGeSplineEnt3d {lvalue},int)
-
-continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
-
-    C++ signature :
-        int continuityAtKnot(class PyGeSplineEnt3d {lvalue},int,class AcGeTol)'''
+    def continuityAtKnot (self, idx: int, tol: PyGe.Tol=None)-> int :
+      '''                             '''
     ...
-    def controlPointAt (self, *args, **kwargs)-> PyGe.Point3d :
-      '''controlPointAt( (SplineEnt3d)arg1, (int)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d controlPointAt(class PyGeSplineEnt3d {lvalue},int)'''
+    def controlPointAt (self, idx: int)-> PyGe.Point3d :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyDb.Polyline3d :
-      '''copycast( (Entity3d)arg1) -> Polyline3d :
 
-    C++ signature :
-        class PyGePolyline3d copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyDb.Polyline3d :
+      '''                             '''
     ...
-    def degree (self, *args, **kwargs)-> int :
-      '''degree( (SplineEnt3d)arg1) -> int :
-
-    C++ signature :
-        int degree(class PyGeSplineEnt3d {lvalue})'''
+    def degree (self)-> int :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point3d | PyGe.Curve3d, tol : PyGe.Tol=None)-> float :
       '''Returns the distance between the input point and the closest point on this curve.'''
     ...
-    def endParam (self, *args, **kwargs)-> float :
-      '''endParam( (SplineEnt3d)arg1) -> float :
-
-    C++ signature :
-        double endParam(class PyGeSplineEnt3d {lvalue})'''
+    def endParam (self)-> float :
+      '''                             '''
     ...
-    def endPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''endPoint( (SplineEnt3d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d endPoint(class PyGeSplineEnt3d {lvalue})'''
+    def endPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point3d :
       '''Returns the point on the curve that corresponds to the input parameter value. Also returns the number of derivative vectors that are specified in numDeriv. The numDeriv parameter should not be set larger than 2.'''
@@ -9913,11 +9602,8 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def explode (self, val : PyGe.Interval = None)-> list :
       '''Explodes the curve into its individual components. If the curve is a composite curve, then explodedCurves contains the list of component curves of the composite. If the curve is a spline, then it is exploded at the points of C1 discontinuity and explodedCurves contains a copy of each continuous sub-curve. This function returns Adesk::kTrue if the curve was exploded (that is, the curve was a composite or a discontinuous spline) and Adesk::kFalse otherwise. The number of entries returned in newExplodedCurves is always the same as the number of entries in explodedCurves. Each flag in newExplodedCurves indicates whether the corresponding curve in explodedCurves was created with the new operator. If the flag is 1, then it is the responsibility of the caller to delete the curve. If the flag is 0, the curve is deleted by gelib and the caller should not attempt to delete it. If no intrvl parameter is supplied, then the interval is taken to be the entire curve. '''
     ...
-    def fitPointAt (self, *args, **kwargs)-> PyGe.Point3d :
-      '''fitPointAt( (Polyline3d)arg1, (int)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d fitPointAt(class PyGePolyline3d {lvalue},int)'''
+    def fitPointAt (self, idx: int)-> PyGe.Point3d :
+      '''                             '''
     ...
     def getClosestPointTo (self, other : PyGe.Point3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
       '''Finds the closest point on this curve to the input point. This function is the same as closestPointTo(), except that the closest point is returned as an AcGePointOnCurve3d object.'''
@@ -9964,11 +9650,8 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def hasEndPoint (self)-> bool :
       '''Returns Adesk::kTrue if curve has an endpoint. A return value of Adesk::kFalse means that the parametric interval of the curve does not have an upper bound. The endPnt parameter contains meaningful data only if this function returns a value of Adesk::kTrue.'''
     ...
-    def hasFitData (self, *args, **kwargs)-> bool :
-      '''hasFitData( (SplineEnt3d)arg1) -> bool :
-
-    C++ signature :
-        bool hasFitData(class PyGeSplineEnt3d {lvalue})'''
+    def hasFitData (self)-> bool :
+      '''                             '''
     ...
     def hasStartPoint (self)-> bool :
       '''Returns Adesk::kTrue if curve has a start point. A return value of Adesk::kFalse means that the parametric interval of the curve does not have a lower bound. The startPnt parameter contains meaningful data only if this function returns a value of Adesk::kTrue.'''
@@ -10003,23 +9686,14 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
-    def isRational (self, *args, **kwargs)-> bool :
-      '''isRational( (SplineEnt3d)arg1) -> bool :
-
-    C++ signature :
-        bool isRational(class PyGeSplineEnt3d {lvalue})'''
+    def isRational (self)-> bool :
+      '''                             '''
     ...
-    def knotAt (self, *args, **kwargs)-> float :
-      '''knotAt( (SplineEnt3d)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double knotAt(class PyGeSplineEnt3d {lvalue},int)'''
+    def knotAt (self, idx: int)-> float :
+      '''                             '''
     ...
-    def knots (self, *args, **kwargs)-> PyGe.KnotVector :
-      '''knots( (SplineEnt3d)arg1) -> KnotVector :
-
-    C++ signature :
-        class PyGeKnotVector knots(class PyGeSplineEnt3d {lvalue})'''
+    def knots (self)-> PyGe.KnotVector :
+      '''                             '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
       '''Returns the arc length of the curve between the two parameter values.'''
@@ -10027,29 +9701,17 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def mirror (self, val : PyGe.Plane)-> None :
       '''Transforms the entity by mirroring it across the input plane.'''
     ...
-    def numControlPoints (self, *args, **kwargs)-> int :
-      '''numControlPoints( (SplineEnt3d)arg1) -> int :
-
-    C++ signature :
-        int numControlPoints(class PyGeSplineEnt3d {lvalue})'''
+    def numControlPoints (self)-> int :
+      '''                             '''
     ...
-    def numFitPoints (self, *args, **kwargs)-> int :
-      '''numFitPoints( (Polyline3d)arg1) -> int :
-
-    C++ signature :
-        int numFitPoints(class PyGePolyline3d {lvalue})'''
+    def numFitPoints (self)-> int :
+      '''                             '''
     ...
-    def numKnots (self, *args, **kwargs)-> int :
-      '''numKnots( (SplineEnt3d)arg1) -> int :
-
-    C++ signature :
-        int numKnots(class PyGeSplineEnt3d {lvalue})'''
+    def numKnots (self)-> int :
+      '''                             '''
     ...
-    def order (self, *args, **kwargs)-> int :
-      '''order( (SplineEnt3d)arg1) -> int :
-
-    C++ signature :
-        int order(class PyGeSplineEnt3d {lvalue})'''
+    def order (self)-> int :
+      '''                             '''
     ...
     def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock3d :
       '''Returns the bounding box of the curve. The sides of the returned box are parallel to the coordinate axes.'''
@@ -10081,38 +9743,23 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point3d = 'origin')-> None :
       '''Scales the entity about the input point by the input scale factor. Input scale factor must be greater than 0.'''
     ...
-    def setControlPointAt (self, *args, **kwargs)-> None :
-      '''setControlPointAt( (SplineEnt3d)arg1, (int)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void setControlPointAt(class PyGeSplineEnt3d {lvalue},int,class AcGePoint3d)'''
+    def setControlPointAt (self, idx: int, val: PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setFitPointAt (self, *args, **kwargs)-> None :
-      '''setFitPointAt( (Polyline3d)arg1, (int)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void setFitPointAt(class PyGePolyline3d {lvalue},int,class AcGePoint3d)'''
+    def setFitPointAt (self, idx: int, pt: PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setInterval (self, val : PyGe.Interval = None)-> None :
       '''Sets the domain of the curve to the input interval.'''
     ...
-    def setKnotAt (self, *args, **kwargs)-> None :
-      '''setKnotAt( (SplineEnt3d)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setKnotAt(class PyGeSplineEnt3d {lvalue},int,double)'''
+    def setKnotAt (self, idx: int, val: float)-> None :
+      '''                             '''
     ...
-    def startParam (self, *args, **kwargs)-> float :
-      '''startParam( (SplineEnt3d)arg1) -> float :
-
-    C++ signature :
-        double startParam(class PyGeSplineEnt3d {lvalue})'''
+    def startParam (self)-> float :
+      '''                             '''
     ...
-    def startPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''startPoint( (SplineEnt3d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d startPoint(class PyGeSplineEnt3d {lvalue})'''
+    def startPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix3d)-> None :
       '''Transforms the entity by applying the input matrix.'''
@@ -11305,67 +10952,44 @@ This class cannot be instantiated from Python'''
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock3d :
       '''Returns the bounding box of the curve. The sides of the returned box are parallel to the coordinate axes. '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.SplineEnt3d :
-      '''cast( (Entity3d)arg1) -> SplineEnt3d :
 
-    C++ signature :
-        class PyGeSplineEnt3d cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.SplineEnt3d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point3d | PyGe.Curve3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the closest point on this curve to the input point. This function is the same as closestPointTo(), except that the closest point is returned as an AcGePointOnCurve3d object.'''
     ...
-    def continuityAtKnot (self, *args, **kwargs)-> int :
-      '''continuityAtKnot( (SplineEnt3d)arg1, (int)arg2) -> int :
-
-    C++ signature :
-        int continuityAtKnot(class PyGeSplineEnt3d {lvalue},int)
-
-continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
-
-    C++ signature :
-        int continuityAtKnot(class PyGeSplineEnt3d {lvalue},int,class AcGeTol)'''
+    def continuityAtKnot (self, idx: int, tol: PyGe.Tol=None)-> int :
+      '''                             '''
     ...
-    def controlPointAt (self, *args, **kwargs)-> PyGe.Point3d :
-      '''controlPointAt( (SplineEnt3d)arg1, (int)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d controlPointAt(class PyGeSplineEnt3d {lvalue},int)'''
+    def controlPointAt (self, idx: int)-> PyGe.Point3d :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.SplineEnt3d :
-      '''copycast( (Entity3d)arg1) -> SplineEnt3d :
 
-    C++ signature :
-        class PyGeSplineEnt3d copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.SplineEnt3d :
+      '''                             '''
     ...
-    def degree (self, *args, **kwargs)-> int :
-      '''degree( (SplineEnt3d)arg1) -> int :
-
-    C++ signature :
-        int degree(class PyGeSplineEnt3d {lvalue})'''
+    def degree (self)-> int :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point3d | PyGe.Curve3d, tol : PyGe.Tol=None)-> float :
       '''Returns the distance between the input point and the closest point on this curve.'''
     ...
-    def endParam (self, *args, **kwargs)-> float :
-      '''endParam( (SplineEnt3d)arg1) -> float :
-
-    C++ signature :
-        double endParam(class PyGeSplineEnt3d {lvalue})'''
+    def endParam (self)-> float :
+      '''                             '''
     ...
-    def endPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''endPoint( (SplineEnt3d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d endPoint(class PyGeSplineEnt3d {lvalue})'''
+    def endPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point3d :
       '''Returns the point on the curve that corresponds to the input parameter value. Also returns the number of derivative vectors that are specified in numDeriv. The numDeriv parameter should not be set larger than 2.'''
@@ -11418,11 +11042,8 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def hasEndPoint (self)-> bool :
       '''Returns Adesk::kTrue if curve has an endpoint. A return value of Adesk::kFalse means that the parametric interval of the curve does not have an upper bound. The endPnt parameter contains meaningful data only if this function returns a value of Adesk::kTrue.'''
     ...
-    def hasFitData (self, *args, **kwargs)-> bool :
-      '''hasFitData( (SplineEnt3d)arg1) -> bool :
-
-    C++ signature :
-        bool hasFitData(class PyGeSplineEnt3d {lvalue})'''
+    def hasFitData (self)-> bool :
+      '''                             '''
     ...
     def hasStartPoint (self)-> bool :
       '''Returns Adesk::kTrue if curve has a start point. A return value of Adesk::kFalse means that the parametric interval of the curve does not have a lower bound. The startPnt parameter contains meaningful data only if this function returns a value of Adesk::kTrue.'''
@@ -11457,23 +11078,14 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
       '''Determines if curve is planar. If the curve is a line, then this function returns an arbitrary plane that contains the line. The plane parameter contains meaningful data only if this function returns a value of Adesk::kTrue. '''
     ...
-    def isRational (self, *args, **kwargs)-> bool :
-      '''isRational( (SplineEnt3d)arg1) -> bool :
-
-    C++ signature :
-        bool isRational(class PyGeSplineEnt3d {lvalue})'''
+    def isRational (self)-> bool :
+      '''                             '''
     ...
-    def knotAt (self, *args, **kwargs)-> float :
-      '''knotAt( (SplineEnt3d)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double knotAt(class PyGeSplineEnt3d {lvalue},int)'''
+    def knotAt (self, idx: int)-> float :
+      '''                             '''
     ...
-    def knots (self, *args, **kwargs)-> PyGe.KnotVector :
-      '''knots( (SplineEnt3d)arg1) -> KnotVector :
-
-    C++ signature :
-        class PyGeKnotVector knots(class PyGeSplineEnt3d {lvalue})'''
+    def knots (self)-> PyGe.KnotVector :
+      '''                             '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
       '''Returns the arc length of the curve between the two parameter values.'''
@@ -11481,23 +11093,14 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def mirror (self, val : PyGe.Plane)-> None :
       '''Transforms the entity by mirroring it across the input plane.'''
     ...
-    def numControlPoints (self, *args, **kwargs)-> int :
-      '''numControlPoints( (SplineEnt3d)arg1) -> int :
-
-    C++ signature :
-        int numControlPoints(class PyGeSplineEnt3d {lvalue})'''
+    def numControlPoints (self)-> int :
+      '''                             '''
     ...
-    def numKnots (self, *args, **kwargs)-> int :
-      '''numKnots( (SplineEnt3d)arg1) -> int :
-
-    C++ signature :
-        int numKnots(class PyGeSplineEnt3d {lvalue})'''
+    def numKnots (self)-> int :
+      '''                             '''
     ...
-    def order (self, *args, **kwargs)-> int :
-      '''order( (SplineEnt3d)arg1) -> int :
-
-    C++ signature :
-        int order(class PyGeSplineEnt3d {lvalue})'''
+    def order (self)-> int :
+      '''                             '''
     ...
     def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock3d :
       '''Returns the bounding box of the curve. The sides of the returned box are parallel to the coordinate axes.'''
@@ -11529,32 +11132,20 @@ continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point3d = 'origin')-> None :
       '''Scales the entity about the input point by the input scale factor. Input scale factor must be greater than 0.'''
     ...
-    def setControlPointAt (self, *args, **kwargs)-> None :
-      '''setControlPointAt( (SplineEnt3d)arg1, (int)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void setControlPointAt(class PyGeSplineEnt3d {lvalue},int,class AcGePoint3d)'''
+    def setControlPointAt (self, idx: int, val: PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setInterval (self, val : PyGe.Interval = None)-> None :
       '''Sets the domain of the curve to the input interval.'''
     ...
-    def setKnotAt (self, *args, **kwargs)-> None :
-      '''setKnotAt( (SplineEnt3d)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setKnotAt(class PyGeSplineEnt3d {lvalue},int,double)'''
+    def setKnotAt (self, idx: int, val: float)-> None :
+      '''                             '''
     ...
-    def startParam (self, *args, **kwargs)-> float :
-      '''startParam( (SplineEnt3d)arg1) -> float :
-
-    C++ signature :
-        double startParam(class PyGeSplineEnt3d {lvalue})'''
+    def startParam (self)-> float :
+      '''                             '''
     ...
-    def startPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''startPoint( (SplineEnt3d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d startPoint(class PyGeSplineEnt3d {lvalue})'''
+    def startPoint (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix3d)-> None :
       '''Transforms the entity by applying the input matrix.'''
@@ -12016,10 +11607,10 @@ class Vector2d(object):
       '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000163A140C820>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000024163ECC820>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x00000163A140C820>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000024163ECC820>])'''
     ...
     def isParallelTo (self, vec: PyGe.Vector2d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -12028,16 +11619,16 @@ class Vector2d(object):
       '''                             '''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000163A140C550>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000024163ECC550>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000163A140C550>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000024163ECC550>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000163A140C5E0>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000024163ECC5E0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000163A140C5E0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000024163ECC5E0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''

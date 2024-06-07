@@ -519,7 +519,7 @@ void makePyGeCircArc2dWrapper()
 
     constexpr const std::string_view setOverloads = "Overloads:\n"
         "- cent: PyGe.Point2d, radius: float\n"
-        "- cent: PyGe.Point2d, radius: float, startAngle: float, endAngle: float, refVec: AcGe.Vector2d, isClockWise: bool\n"
+        "- cent: PyGe.Point2d, radius: float, startAngle: float, endAngle: float, refVec: PyGe.Vector2d, isClockWise: bool\n"
         "- startPoint: PyGe.Point2d, pnt: PyGe.Point2d, endPoint: PyGe.Point2d\n"
         "- startPoint: PyGe.Point2d, endPoint: PyGe.Point2d, bulge: float, bulgeFlag: bool\n"
         "- curve1: PyGe.Curve2d, curve2: PyGe.Curve2d, radius: float\n"
@@ -1186,6 +1186,7 @@ void makePyGeCompositeCurve2dWrapper()
 {
     PyDocString DS("CompositeCurve2d");
     class_<PyGeCompositeCurve2d, bases<PyGeCurve2d>>("CompositeCurve2d")
+        .def(init<>(DS.ARGS()))
         .def("cast", &PyGeCompositeCurve2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
         .def("copycast", &PyGeCompositeCurve2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
         .def("className", &PyGeCompositeCurve2d::className, DS.SARGS()).staticmethod("className")
