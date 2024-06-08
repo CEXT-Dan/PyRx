@@ -4405,243 +4405,138 @@ class KnotParameterization(object):
     ...
 
 class KnotVector(object):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, size: int, growSize: int)-> None : ...
+    @overload
+    def __init__ (self, data: list[float])-> None : ...
+    @overload
+    def __init__ (self, plusMult: int, other: PyGe.KnotVector)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (int)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,int,int)
-
-__init__( (object)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list)
-
-__init__( (object)arg1, (int)arg2, (KnotVector)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,int,class PyGeKnotVector)'''
+      '''Overloads:
+    - None: Any
+    - size: int, growSize: int
+    - data: list[float]
+    - plusMult: int, other: PyGe.KnotVector
+    '''
     ...
+
+    @overload
+    def append (self, val:float)-> int : ...
+    @overload
+    def append (self, tail: PyGe.KnotVector)-> int : ...
+    @overload
+    def append (self, tail: PyGe.KnotVector, knotRatio: float)-> int : ...
     def append (self, *args, **kwargs)-> int :
-      '''append( (KnotVector)arg1, (float)arg2) -> int :
-
-    C++ signature :
-        int append(class PyGeKnotVector {lvalue},double)
-
-append( (KnotVector)arg1, (KnotVector)arg2) -> None :
-
-    C++ signature :
-        void append(class PyGeKnotVector {lvalue},class PyGeKnotVector {lvalue})
-
-append( (KnotVector)arg1, (KnotVector)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void append(class PyGeKnotVector {lvalue},class PyGeKnotVector {lvalue},double)'''
+      '''Overloads:
+    - val:float
+    - tail: PyGe.KnotVector
+    - tail: PyGe.KnotVector, knotRatio: float
+    '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def contains (self, *args, **kwargs)-> bool :
-      '''contains( (KnotVector)arg1, (float)arg2) -> bool :
-
-    C++ signature :
-        bool contains(class PyGeKnotVector {lvalue},double)'''
+    def contains (self, param: float)-> bool :
+      '''                             '''
     ...
-    def endParam (self, *args, **kwargs)-> float :
-      '''endParam( (KnotVector)arg1) -> float :
-
-    C++ signature :
-        double endParam(class PyGeKnotVector {lvalue})'''
+    def endParam (self)-> float :
+      '''                             '''
     ...
-    def getDistinctKnots (self, *args, **kwargs)-> list :
-      '''getDistinctKnots( (KnotVector)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getDistinctKnots(class PyGeKnotVector {lvalue})'''
+    def getDistinctKnots (self)-> list :
+      '''                             '''
     ...
-    def getInterval (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getInterval( (KnotVector)arg1, (int)arg2, (float)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getInterval(class PyGeKnotVector {lvalue},int,double)'''
+    def getInterval (self, ord: int, param: float)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def growLength (self, *args, **kwargs)-> int :
-      '''growLength( (KnotVector)arg1) -> int :
-
-    C++ signature :
-        int growLength(class PyGeKnotVector {lvalue})'''
+    def growLength (self)-> int :
+      '''                             '''
     ...
-    def insert (self, *args, **kwargs)-> None :
-      '''insert( (KnotVector)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void insert(class PyGeKnotVector {lvalue},double)'''
+    def insert (self, u: float)-> None :
+      '''                             '''
     ...
-    def insertAt (self, *args, **kwargs)-> None :
-      '''insertAt( (KnotVector)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void insertAt(class PyGeKnotVector {lvalue},int,double)
-
-insertAt( (KnotVector)arg1, (int)arg2, (float)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void insertAt(class PyGeKnotVector {lvalue},int,double,int)'''
+    def insertAt (self, idx: int, u: float, multiplicity: int)-> None :
+      '''                             '''
     ...
-    def isEmpty (self, *args, **kwargs)-> bool :
-      '''isEmpty( (KnotVector)arg1) -> bool :
-
-    C++ signature :
-        bool isEmpty(class PyGeKnotVector {lvalue})'''
+    def isEmpty (self)-> bool :
+      '''                             '''
     ...
-    def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (KnotVector)arg1, (KnotVector)arg2) -> bool :
-
-    C++ signature :
-        bool isEqualTo(class PyGeKnotVector {lvalue},class PyGeKnotVector)'''
+    def isEqualTo (self, other: PyGe.KnotVector)-> bool :
+      '''                             '''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (KnotVector)arg1, (float)arg2) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeKnotVector {lvalue},double)'''
+    def isOn (self, knot: float)-> bool :
+      '''                             '''
     ...
-    def length (self, *args, **kwargs)-> int :
-      '''length( (KnotVector)arg1) -> int :
-
-    C++ signature :
-        int length(class PyGeKnotVector {lvalue})'''
+    def length (self)-> int :
+      '''                             '''
     ...
-    def logicalLength (self, *args, **kwargs)-> int :
-      '''logicalLength( (KnotVector)arg1) -> int :
-
-    C++ signature :
-        int logicalLength(class PyGeKnotVector {lvalue})'''
+    def logicalLength (self)-> int :
+      '''                             '''
     ...
-    def multiplicityAt (self, *args, **kwargs)-> int :
-      '''multiplicityAt( (KnotVector)arg1, (int)arg2) -> int :
-
-    C++ signature :
-        int multiplicityAt(class PyGeKnotVector {lvalue},int)'''
+    def multiplicityAt (self, idx: int)-> int :
+      '''                             '''
     ...
-    def multiplicityAtParam (self, *args, **kwargs)-> int :
-      '''multiplicityAtParam( (KnotVector)arg1, (float)arg2) -> int :
-
-    C++ signature :
-        int multiplicityAtParam(class PyGeKnotVector {lvalue},double)'''
+    def multiplicityAtParam (self, param: float)-> int :
+      '''                             '''
     ...
-    def numIntervals (self, *args, **kwargs)-> int :
-      '''numIntervals( (KnotVector)arg1) -> int :
-
-    C++ signature :
-        int numIntervals(class PyGeKnotVector {lvalue})'''
+    def numIntervals (self)-> int :
+      '''                             '''
     ...
-    def physicalLength (self, *args, **kwargs)-> int :
-      '''physicalLength( (KnotVector)arg1) -> int :
-
-    C++ signature :
-        int physicalLength(class PyGeKnotVector {lvalue})'''
+    def physicalLength (self)-> int :
+      '''                             '''
     ...
-    def removeAt (self, *args, **kwargs)-> None :
-      '''removeAt( (KnotVector)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void removeAt(class PyGeKnotVector {lvalue},int)'''
+    def removeAt (self, idx: int)-> None :
+      '''                             '''
     ...
-    def removeSubVector (self, *args, **kwargs)-> None :
-      '''removeSubVector( (KnotVector)arg1, (int)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void removeSubVector(class PyGeKnotVector {lvalue},int,int)'''
+    def removeSubVector (self, start: int, end: int)-> None :
+      '''                             '''
     ...
-    def reverse (self, *args, **kwargs)-> None :
-      '''reverse( (KnotVector)arg1) -> None :
-
-    C++ signature :
-        void reverse(class PyGeKnotVector {lvalue})'''
+    def reverse (self)-> None :
+      '''                             '''
     ...
-    def setGrowLength (self, *args, **kwargs)-> None :
-      '''setGrowLength( (KnotVector)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setGrowLength(class PyGeKnotVector {lvalue},int)'''
+    def setGrowLength (self, length: int)-> None :
+      '''                             '''
     ...
-    def setLogicalLength (self, *args, **kwargs)-> None :
-      '''setLogicalLength( (KnotVector)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setLogicalLength(class PyGeKnotVector {lvalue},int)'''
+    def setLogicalLength (self, length: int)-> None :
+      '''                             '''
     ...
-    def setPhysicalLength (self, *args, **kwargs)-> None :
-      '''setPhysicalLength( (KnotVector)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setPhysicalLength(class PyGeKnotVector {lvalue},int)'''
+    def setPhysicalLength (self, length: int)-> None :
+      '''                             '''
     ...
-    def setRange (self, *args, **kwargs)-> None :
-      '''setRange( (KnotVector)arg1, (float)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setRange(class PyGeKnotVector {lvalue},double,double)'''
+    def setRange (self, lower: float, upper: float)-> None :
+      '''                             '''
     ...
-    def setTolerance (self, *args, **kwargs)-> None :
-      '''setTolerance( (KnotVector)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setTolerance(class PyGeKnotVector {lvalue},double)'''
+    def setTolerance (self, tol: float)-> None :
+      '''                             '''
     ...
-    def split (self, *args, **kwargs)-> tuple[Any,...] :
-      '''split( (KnotVector)arg1, (float)arg2, (int)arg3, (int)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple split(class PyGeKnotVector {lvalue},double,int,int)'''
+    def split (self, param: float, multilast: int, multifirst: int)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def startParam (self, *args, **kwargs)-> float :
-      '''startParam( (KnotVector)arg1) -> float :
-
-    C++ signature :
-        double startParam(class PyGeKnotVector {lvalue})'''
+    def startParam (self)-> float :
+      '''                             '''
     ...
-    def tolerance (self, *args, **kwargs)-> float :
-      '''tolerance( (KnotVector)arg1) -> float :
-
-    C++ signature :
-        double tolerance(class PyGeKnotVector {lvalue})'''
+    def tolerance (self)-> float :
+      '''                             '''
     ...
 
 class Line2d(LinearEnt2d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, start: PyGe.Point3d, direction: PyGe.Vector2d)-> None : ...
+    @overload
+    def __init__ (self, start: PyGe.Point3d, end: PyGe.Point3d)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d)
-
-__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)'''
+      '''Overloads:
+    - None: Any
+    - start: PyGe.Point3d, direction: PyGe.Vector2d
+    - start: PyGe.Point3d, end: PyGe.Point3d
+    '''
     ...
     def area (self, startParam : float, endParam : float, tol : float = None)-> float :
       '''                             '''
@@ -4649,17 +4544,15 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.Line2d :
-      '''cast( (Entity2d)arg1) -> Line2d :
 
-    C++ signature :
-        class PyGeLine2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.Line2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
       '''                             '''
@@ -4667,17 +4560,13 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.Line2d :
-      '''copycast( (Entity2d)arg1) -> Line2d :
 
-    C++ signature :
-        class PyGeLine2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyGe.Line2d :
+      '''                             '''
     ...
-    def direction (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''direction( (LinearEnt2d)arg1) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d direction(class PyGeLinearEnt2d {lvalue})'''
+    def direction (self)-> PyGe.Vector2d :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
@@ -4700,20 +4589,14 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     def getInterval (self)-> PyGe.Interval :
       '''                             '''
     ...
-    def getLine (self, *args, **kwargs)-> PyGe.Line2d :
-      '''getLine( (LinearEnt2d)arg1) -> Line2d :
-
-    C++ signature :
-        class PyGeLine2d getLine(class PyGeLinearEnt2d {lvalue})'''
+    def getLine (self)-> PyGe.Line2d :
+      '''                             '''
     ...
     def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
       '''                             '''
     ...
-    def getPerpLine (self, *args, **kwargs)-> PyGe.Line2d :
-      '''getPerpLine( (LinearEnt2d)arg1, (Point2d)arg2) -> Line2d :
-
-    C++ signature :
-        class PyGeLine2d getPerpLine(class PyGeLinearEnt2d {lvalue},class AcGePoint2d)'''
+    def getPerpLine (self, pt: PyGe.Point2d)-> PyGe.Line2d :
+      '''                             '''
     ...
 
     @overload
@@ -4741,30 +4624,14 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     def hasStartPoint (self)-> bool :
       '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> tuple[Any,...] :
-      '''intersectWith( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-intersectWith( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def intersectWith (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+      '''                             '''
     ...
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''                             '''
     ...
-    def isColinearTo (self, *args, **kwargs)-> bool :
-      '''isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
-
-    C++ signature :
-        bool isColinearTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isColinearTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def isColinearTo (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
       '''                             '''
@@ -4784,30 +4651,14 @@ isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple[Any,...] :
       '''                             '''
     ...
-    def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def isParallelTo (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isPeriodic (self)-> tuple[Any,...] :
       '''                             '''
     ...
-    def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def isPerpendicularTo (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def kXAxis (self, *args, **kwargs)-> None :
       '''None'''
@@ -4824,16 +4675,8 @@ isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
     ...
-    def overlap (self, *args, **kwargs)-> tuple[Any,...] :
-      '''overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple overlap(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple overlap(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def overlap (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+      '''                             '''
     ...
     def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
       '''                             '''
@@ -4841,11 +4684,8 @@ overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
     def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
     ...
-    def pointOnLine (self, *args, **kwargs)-> PyGe.Point2d :
-      '''pointOnLine( (LinearEnt2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d pointOnLine(class PyGeLinearEnt2d {lvalue})'''
+    def pointOnLine (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def reverseParam (self)-> None :
       '''                             '''
@@ -4856,16 +4696,16 @@ overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point2d=PyGe.Point2d.kOrgin)-> None :
       '''                             '''
     ...
+
+    @overload
+    def set (self, start: PyGe.Point3d, direction: PyGe.Vector2d)-> None : ...
+    @overload
+    def set (self, start: PyGe.Point3d, end: PyGe.Point3d)-> None : ...
     def set (self, *args, **kwargs)-> None :
-      '''set( (Line2d)arg1, (Point2d)arg2, (Vector2d)arg3) -> None :
-
-    C++ signature :
-        void set(class PyGeLine2d {lvalue},class AcGePoint2d,class AcGeVector2d)
-
-set( (Line2d)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void set(class PyGeLine2d {lvalue},class AcGePoint2d,class AcGePoint2d)'''
+      '''Overloads:
+    - start: PyGe.Point3d, direction: PyGe.Vector2d
+    - start: PyGe.Point3d, end: PyGe.Point3d
+    '''
     ...
     def setInterval (self, val : PyGe.Interval = None)-> None :
       '''                             '''
@@ -5157,50 +4997,38 @@ class Line3d(LinearEnt3d):
     ...
 
 class LineSeg2d(LinearEnt2d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, start: PyGe.Point3d, direction: PyGe.Vector2d)-> None : ...
+    @overload
+    def __init__ (self, start: PyGe.Point3d, end: PyGe.Point3d)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d)
-
-__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)'''
+      '''Overloads:
+    - None: Any
+    - start: PyGe.Point3d, direction: PyGe.Vector2d
+    - start: PyGe.Point3d, end: PyGe.Point3d
+    '''
     ...
     def area (self, startParam : float, endParam : float, tol : float = None)-> float :
       '''                             '''
     ...
-    def baryComb (self, *args, **kwargs)-> PyGe.Point2d :
-      '''baryComb( (LineSeg2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d baryComb(class PyGeLineSeg2d {lvalue},double)'''
+    def baryComb (self, blendCoeff: float)-> PyGe.Point2d :
+      '''                             '''
     ...
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.LineSeg2d :
-      '''cast( (Entity2d)arg1) -> LineSeg2d :
 
-    C++ signature :
-        class PyGeLineSeg2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.LineSeg2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
       '''                             '''
@@ -5208,26 +5036,19 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.LineSeg2d :
-      '''copycast( (Entity2d)arg1) -> LineSeg2d :
 
-    C++ signature :
-        class PyGeLineSeg2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyGe.LineSeg2d :
+      '''                             '''
     ...
-    def direction (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''direction( (LinearEnt2d)arg1) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d direction(class PyGeLinearEnt2d {lvalue})'''
+    def direction (self)-> PyGe.Vector2d :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
     ...
-    def endPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''endPoint( (LineSeg2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d endPoint(class PyGeLineSeg2d {lvalue})'''
+    def endPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
       '''                             '''
@@ -5235,11 +5056,8 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     def explode (self, val : PyGe.Interval = None)-> list :
       '''                             '''
     ...
-    def getBisector (self, *args, **kwargs)-> PyGe.Line2d :
-      '''getBisector( (LineSeg2d)arg1) -> Line2d :
-
-    C++ signature :
-        class PyGeLine2d getBisector(class PyGeLineSeg2d {lvalue})'''
+    def getBisector (self)-> PyGe.Line2d :
+      '''                             '''
     ...
     def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
       '''                             '''
@@ -5253,20 +5071,14 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     def getInterval (self)-> PyGe.Interval :
       '''                             '''
     ...
-    def getLine (self, *args, **kwargs)-> PyGe.Line2d :
-      '''getLine( (LinearEnt2d)arg1) -> Line2d :
-
-    C++ signature :
-        class PyGeLine2d getLine(class PyGeLinearEnt2d {lvalue})'''
+    def getLine (self)-> PyGe.Line2d :
+      '''                             '''
     ...
     def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
       '''                             '''
     ...
-    def getPerpLine (self, *args, **kwargs)-> PyGe.Line2d :
-      '''getPerpLine( (LinearEnt2d)arg1, (Point2d)arg2) -> Line2d :
-
-    C++ signature :
-        class PyGeLine2d getPerpLine(class PyGeLinearEnt2d {lvalue},class AcGePoint2d)'''
+    def getPerpLine (self, pt: PyGe.Point2d)-> PyGe.Line2d :
+      '''                             '''
     ...
 
     @overload
@@ -5294,30 +5106,14 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     def hasStartPoint (self)-> bool :
       '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> tuple[Any,...] :
-      '''intersectWith( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-intersectWith( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def intersectWith (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+      '''                             '''
     ...
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''                             '''
     ...
-    def isColinearTo (self, *args, **kwargs)-> bool :
-      '''isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
-
-    C++ signature :
-        bool isColinearTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isColinearTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def isColinearTo (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
       '''                             '''
@@ -5337,52 +5133,31 @@ isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple[Any,...] :
       '''                             '''
     ...
-    def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def isParallelTo (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isPeriodic (self)-> tuple[Any,...] :
       '''                             '''
     ...
-    def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def isPerpendicularTo (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
+
+    @overload
+    def length (self, /)-> float : ...
+    @overload
+    def length (self, fromParam: float, toParam: float)-> float : ...
+    @overload
+    def length (self, fromParam: float, toParam: float, tol: float)-> float : ...
     def length (self, *args, **kwargs)-> float :
-      '''length( (LineSeg2d)arg1) -> float :
-
-    C++ signature :
-        double length(class PyGeLineSeg2d {lvalue})
-
-length( (LineSeg2d)arg1, (float)arg2, (float)arg3) -> float :
-
-    C++ signature :
-        double length(class PyGeLineSeg2d {lvalue},double,double)
-
-length( (LineSeg2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
-
-    C++ signature :
-        double length(class PyGeLineSeg2d {lvalue},double,double,double)'''
+      '''Overloads:
+    - None: Any
+    - fromParam: float, toParam: float
+    - fromParam: float, toParam: float, tol: float
+    '''
     ...
-    def midPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''midPoint( (LineSeg2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d midPoint(class PyGeLineSeg2d {lvalue})'''
+    def midPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def mirror (self, val : PyGe.Line2d)-> None :
       '''                             '''
@@ -5390,16 +5165,8 @@ length( (LineSeg2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
     ...
-    def overlap (self, *args, **kwargs)-> tuple[Any,...] :
-      '''overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple overlap(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple overlap(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def overlap (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+      '''                             '''
     ...
     def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
       '''                             '''
@@ -5407,11 +5174,8 @@ overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
     def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
     ...
-    def pointOnLine (self, *args, **kwargs)-> PyGe.Point2d :
-      '''pointOnLine( (LinearEnt2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d pointOnLine(class PyGeLinearEnt2d {lvalue})'''
+    def pointOnLine (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def reverseParam (self)-> None :
       '''                             '''
@@ -5422,35 +5186,28 @@ overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point2d=PyGe.Point2d.kOrgin)-> None :
       '''                             '''
     ...
+
+    @overload
+    def set (self, start: PyGe.Point3d, direction: PyGe.Vector2d)-> None : ...
+    @overload
+    def set (self, start: PyGe.Point3d, end: PyGe.Point3d)-> None : ...
+    @overload
+    def set (self, curve1: PyGe.Curve2d, curve2: PyGe.Curve2d)-> None : ...
+    @overload
+    def set (self, curve1: PyGe.Curve2d, pnt: PyGe.Point3d)-> None : ...
     def set (self, *args, **kwargs)-> None :
-      '''set( (LineSeg2d)arg1, (Point2d)arg2, (Vector2d)arg3) -> None :
-
-    C++ signature :
-        void set(class PyGeLineSeg2d {lvalue},class AcGePoint2d,class AcGeVector2d)
-
-set( (LineSeg2d)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void set(class PyGeLineSeg2d {lvalue},class AcGePoint2d,class AcGePoint2d)
-
-set( (LineSeg2d)arg1, (Curve2d)arg2, (Curve2d)arg3) -> None :
-
-    C++ signature :
-        void set(class PyGeLineSeg2d {lvalue},class PyGeCurve2d,class PyGeCurve2d)
-
-set( (LineSeg2d)arg1, (Curve2d)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void set(class PyGeLineSeg2d {lvalue},class PyGeCurve2d,class AcGePoint2d)'''
+      '''Overloads:
+    - start: PyGe.Point3d, direction: PyGe.Vector2d
+    - start: PyGe.Point3d, end: PyGe.Point3d
+    - curve1: PyGe.Curve2d, curve2: PyGe.Curve2d
+    - curve1: PyGe.Curve2d, pnt: PyGe.Point3d
+    '''
     ...
     def setInterval (self, val : PyGe.Interval = None)-> None :
       '''                             '''
     ...
-    def startPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''startPoint( (LineSeg2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d startPoint(class PyGeLineSeg2d {lvalue})'''
+    def startPoint (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix2d)-> None :
       '''                             '''
@@ -5480,26 +5237,21 @@ class LineSeg3d(LinearEnt3d):
     def area (self, startParam : float, endParam : float, tol : float = None)-> float :
       '''Returns the area of the interval of the curve defined by startParam and endParam. Returns Adesk::kTrue if area was successfully computed to within the specified tolerance. If the curve is not planar, then the area cannot be calculated and a value of Adesk::kFalse is returned. If the points at startParam and endParam are the same, then this function returns the area of the closed curve. If the points are different, then this function connects the two points with a line segment and return the signed area between the curve and the line segment. If the line segment does not intersect the curve at any points between startParam and endParam, then the returned area is positive. If the line segment intersects the curves at any points between startParam and endParam, then the returned area is the sum of the sub-areas created by the intersection of the line segment with the curve. Each sub-area has a positive or negative area, depending on whether the curve lies above or below the line segment. The total area returned by this function can therefore be positive, negative, or 0. '''
     ...
-    def baryComb (self, *args, **kwargs)-> PyGe.Point3d :
-      '''baryComb( (LineSeg3d)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d baryComb(class PyGeLineSeg3d {lvalue},double)'''
+    def baryComb (self)-> PyGe.Point3d :
+      '''                             '''
     ...
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock3d :
       '''Returns the bounding box of the curve. The sides of the returned box are parallel to the coordinate axes. '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.LineSeg3d :
-      '''cast( (Entity3d)arg1) -> LineSeg3d :
 
-    C++ signature :
-        class PyGeLineSeg3d cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.LineSeg3d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point3d | PyGe.Curve3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the closest point on this curve to the input point. This function is the same as closestPointTo(), except that the closest point is returned as an AcGePointOnCurve3d object.'''
@@ -5507,11 +5259,10 @@ class LineSeg3d(LinearEnt3d):
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.LineSeg3d :
-      '''copycast( (Entity3d)arg1) -> LineSeg3d :
 
-    C++ signature :
-        class PyGeLineSeg3d copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.LineSeg3d :
+      '''                             '''
     ...
     def direction (self)-> PyGe.Vector3d :
       '''                             '''
@@ -5772,17 +5523,15 @@ This class cannot be instantiated from Python'''
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.LinearEnt2d :
-      '''cast( (Entity2d)arg1) -> LinearEnt2d :
 
-    C++ signature :
-        class PyGeLinearEnt2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.LinearEnt2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
       '''                             '''
@@ -5790,17 +5539,13 @@ This class cannot be instantiated from Python'''
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.LinearEnt2d :
-      '''copycast( (Entity2d)arg1) -> LinearEnt2d :
 
-    C++ signature :
-        class PyGeLinearEnt2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyGe.LinearEnt2d :
+      '''                             '''
     ...
-    def direction (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''direction( (LinearEnt2d)arg1) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d direction(class PyGeLinearEnt2d {lvalue})'''
+    def direction (self)-> PyGe.Vector2d :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
@@ -5823,20 +5568,14 @@ This class cannot be instantiated from Python'''
     def getInterval (self)-> PyGe.Interval :
       '''                             '''
     ...
-    def getLine (self, *args, **kwargs)-> PyGe.Line2d :
-      '''getLine( (LinearEnt2d)arg1) -> Line2d :
-
-    C++ signature :
-        class PyGeLine2d getLine(class PyGeLinearEnt2d {lvalue})'''
+    def getLine (self)-> PyGe.Line2d :
+      '''                             '''
     ...
     def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
       '''                             '''
     ...
-    def getPerpLine (self, *args, **kwargs)-> PyGe.Line2d :
-      '''getPerpLine( (LinearEnt2d)arg1, (Point2d)arg2) -> Line2d :
-
-    C++ signature :
-        class PyGeLine2d getPerpLine(class PyGeLinearEnt2d {lvalue},class AcGePoint2d)'''
+    def getPerpLine (self, pt: PyGe.Point2d)-> PyGe.Line2d :
+      '''                             '''
     ...
 
     @overload
@@ -5864,30 +5603,14 @@ This class cannot be instantiated from Python'''
     def hasStartPoint (self)-> bool :
       '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> tuple[Any,...] :
-      '''intersectWith( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-intersectWith( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def intersectWith (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+      '''                             '''
     ...
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''                             '''
     ...
-    def isColinearTo (self, *args, **kwargs)-> bool :
-      '''isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
-
-    C++ signature :
-        bool isColinearTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isColinearTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def isColinearTo (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
       '''                             '''
@@ -5907,30 +5630,14 @@ isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple[Any,...] :
       '''                             '''
     ...
-    def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def isParallelTo (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isPeriodic (self)-> tuple[Any,...] :
       '''                             '''
     ...
-    def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def isPerpendicularTo (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
       '''                             '''
@@ -5941,16 +5648,8 @@ isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
     ...
-    def overlap (self, *args, **kwargs)-> tuple[Any,...] :
-      '''overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple overlap(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple overlap(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def overlap (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+      '''                             '''
     ...
     def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
       '''                             '''
@@ -5958,11 +5657,8 @@ overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
     def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
     ...
-    def pointOnLine (self, *args, **kwargs)-> PyGe.Point2d :
-      '''pointOnLine( (LinearEnt2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d pointOnLine(class PyGeLinearEnt2d {lvalue})'''
+    def pointOnLine (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def reverseParam (self)-> None :
       '''                             '''
@@ -9560,26 +9256,19 @@ class Position3d(PointEnt3d):
     ...
 
 class Ray2d(LinearEnt2d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, start: PyGe.Point3d, direction: PyGe.Vector2d)-> None : ...
+    @overload
+    def __init__ (self, start: PyGe.Point3d, end: PyGe.Point3d)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d)
-
-__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)'''
+      '''Overloads:
+    - None: Any
+    - start: PyGe.Point3d, direction: PyGe.Vector2d
+    - start: PyGe.Point3d, end: PyGe.Point3d
+    '''
     ...
     def area (self, startParam : float, endParam : float, tol : float = None)-> float :
       '''                             '''
@@ -9587,17 +9276,15 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.Ray2d :
-      '''cast( (Entity2d)arg1) -> Ray2d :
 
-    C++ signature :
-        class PyGeRay2d cast(class PyGeEntity2d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.Ray2d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> PyGe.Point2d :
       '''                             '''
@@ -9605,17 +9292,13 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     def copy (self)-> PyGe.Entity2d :
       '''                             '''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.Ray2d :
-      '''copycast( (Entity2d)arg1) -> Ray2d :
 
-    C++ signature :
-        class PyGeRay2d copycast(class PyGeEntity2d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity2d)-> PyGe.Ray2d :
+      '''                             '''
     ...
-    def direction (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''direction( (LinearEnt2d)arg1) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d direction(class PyGeLinearEnt2d {lvalue})'''
+    def direction (self)-> PyGe.Vector2d :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point2d | PyGe.Curve2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
@@ -9638,20 +9321,14 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     def getInterval (self)-> PyGe.Interval :
       '''                             '''
     ...
-    def getLine (self, *args, **kwargs)-> PyGe.Line2d :
-      '''getLine( (LinearEnt2d)arg1) -> Line2d :
-
-    C++ signature :
-        class PyGeLine2d getLine(class PyGeLinearEnt2d {lvalue})'''
+    def getLine (self)-> PyGe.Line2d :
+      '''                             '''
     ...
     def getNormalPoint (self, pnt : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
       '''                             '''
     ...
-    def getPerpLine (self, *args, **kwargs)-> PyGe.Line2d :
-      '''getPerpLine( (LinearEnt2d)arg1, (Point2d)arg2) -> Line2d :
-
-    C++ signature :
-        class PyGeLine2d getPerpLine(class PyGeLinearEnt2d {lvalue},class AcGePoint2d)'''
+    def getPerpLine (self, pt: PyGe.Point2d)-> PyGe.Line2d :
+      '''                             '''
     ...
 
     @overload
@@ -9679,30 +9356,14 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     def hasStartPoint (self)-> bool :
       '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> tuple[Any,...] :
-      '''intersectWith( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-intersectWith( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def intersectWith (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+      '''                             '''
     ...
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
       '''                             '''
     ...
-    def isColinearTo (self, *args, **kwargs)-> bool :
-      '''isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
-
-    C++ signature :
-        bool isColinearTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isColinearTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def isColinearTo (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
       '''                             '''
@@ -9722,30 +9383,14 @@ isColinearTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple[Any,...] :
       '''                             '''
     ...
-    def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isParallelTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def isParallelTo (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def isPeriodic (self)-> tuple[Any,...] :
       '''                             '''
     ...
-    def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isPerpendicularTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def isPerpendicularTo (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> bool :
+      '''                             '''
     ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
       '''                             '''
@@ -9756,16 +9401,8 @@ isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock2d :
       '''                             '''
     ...
-    def overlap (self, *args, **kwargs)-> tuple[Any,...] :
-      '''overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple overlap(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d)
-
-overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple overlap(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
+    def overlap (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+      '''                             '''
     ...
     def paramAtLength (self, datumParam: float, length: float, posParamDir: bool=True, tol: float=None)-> float :
       '''                             '''
@@ -9773,11 +9410,8 @@ overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
     def paramOf (self, pt : PyGe.Point2d, tol : PyGe.Tol=None)-> float :
       '''                             '''
     ...
-    def pointOnLine (self, *args, **kwargs)-> PyGe.Point2d :
-      '''pointOnLine( (LinearEnt2d)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d pointOnLine(class PyGeLinearEnt2d {lvalue})'''
+    def pointOnLine (self)-> PyGe.Point2d :
+      '''                             '''
     ...
     def reverseParam (self)-> None :
       '''                             '''
@@ -9788,16 +9422,16 @@ overlap( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> tuple :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point2d=PyGe.Point2d.kOrgin)-> None :
       '''                             '''
     ...
+
+    @overload
+    def set (self, start: PyGe.Point3d, direction: PyGe.Vector2d)-> None : ...
+    @overload
+    def set (self, start: PyGe.Point3d, end: PyGe.Point3d)-> None : ...
     def set (self, *args, **kwargs)-> None :
-      '''set( (Ray2d)arg1, (Point2d)arg2, (Vector2d)arg3) -> None :
-
-    C++ signature :
-        void set(class PyGeRay2d {lvalue},class AcGePoint2d,class AcGeVector2d)
-
-set( (Ray2d)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void set(class PyGeRay2d {lvalue},class AcGePoint2d,class AcGePoint2d)'''
+      '''Overloads:
+    - start: PyGe.Point3d, direction: PyGe.Vector2d
+    - start: PyGe.Point3d, end: PyGe.Point3d
+    '''
     ...
     def setInterval (self, val : PyGe.Interval = None)-> None :
       '''                             '''
@@ -11210,10 +10844,10 @@ class Vector2d(object):
       '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B306E2C820>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000269217CF910>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001B306E2C820>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x00000269217CF910>])'''
     ...
     def isParallelTo (self, vec: PyGe.Vector2d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -11222,16 +10856,16 @@ class Vector2d(object):
       '''                             '''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B306E2C550>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000269217CF520>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B306E2C550>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000269217CF520>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B306E2C5E0>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000269217CF5B0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B306E2C5E0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000269217CF5B0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''

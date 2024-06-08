@@ -6,24 +6,25 @@ using namespace boost::python;
 //AcGeLinearEnt2d wrapper
 void makePyGeLinearEnt2dWrapper()
 {
+    PyDocString DS("LinearEnt2d");
     class_<PyGeLinearEnt2d, bases<PyGeCurve2d>>("LinearEnt2d", boost::python::no_init)
         .def("intersectWith", &PyGeLinearEnt2d::intersectWith1)
-        .def("intersectWith", &PyGeLinearEnt2d::intersectWith2)
+        .def("intersectWith", &PyGeLinearEnt2d::intersectWith2, DS.ARGS({ "other: PyGe.LinearEnt2d","tol: PyGe.Tol=None" }))
         .def("overlap", &PyGeLinearEnt2d::overlap1)
-        .def("overlap", &PyGeLinearEnt2d::overlap2)
+        .def("overlap", &PyGeLinearEnt2d::overlap2, DS.ARGS({ "other: PyGe.LinearEnt2d","tol: PyGe.Tol=None" }))
         .def("isParallelTo", &PyGeLinearEnt2d::isParallelTo1)
-        .def("isParallelTo", &PyGeLinearEnt2d::isParallelTo2)
+        .def("isParallelTo", &PyGeLinearEnt2d::isParallelTo2, DS.ARGS({ "other: PyGe.LinearEnt2d","tol: PyGe.Tol=None" }))
         .def("isPerpendicularTo", &PyGeLinearEnt2d::isPerpendicularTo1)
-        .def("isPerpendicularTo", &PyGeLinearEnt2d::isPerpendicularTo2)
+        .def("isPerpendicularTo", &PyGeLinearEnt2d::isPerpendicularTo2, DS.ARGS({ "other: PyGe.LinearEnt2d","tol: PyGe.Tol=None" }))
         .def("isColinearTo", &PyGeLinearEnt2d::isColinearTo1)
-        .def("isColinearTo", &PyGeLinearEnt2d::isColinearTo2)
-        .def("getPerpLine", &PyGeLinearEnt2d::getPerpLine)
-        .def("getLine", &PyGeLinearEnt2d::getLine)
-        .def("pointOnLine", &PyGeLinearEnt2d::pointOnLine)
-        .def("direction", &PyGeLinearEnt2d::direction)
-        .def("cast", &PyGeLinearEnt2d::cast).staticmethod("cast")
-        .def("copycast", &PyGeLinearEnt2d::copycast).staticmethod("copycast")
-        .def("className", &PyGeLinearEnt2d::className).staticmethod("className")
+        .def("isColinearTo", &PyGeLinearEnt2d::isColinearTo2, DS.ARGS({ "other: PyGe.LinearEnt2d","tol: PyGe.Tol=None" }))
+        .def("getPerpLine", &PyGeLinearEnt2d::getPerpLine, DS.ARGS({ "pt: PyGe.Point2d" }))
+        .def("getLine", &PyGeLinearEnt2d::getLine, DS.ARGS())
+        .def("pointOnLine", &PyGeLinearEnt2d::pointOnLine, DS.ARGS())
+        .def("direction", &PyGeLinearEnt2d::direction, DS.ARGS())
+        .def("cast", &PyGeLinearEnt2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGeLinearEnt2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGeLinearEnt2d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -149,17 +150,27 @@ AcGeLinearEnt2d* PyGeLinearEnt2d::impObj(const std::source_location& src /*= std
 //AcGeLine2d  wrapper
 void makePyGeLine2dWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- start: PyGe.Point3d, direction: PyGe.Vector2d\n"
+        "- start: PyGe.Point3d, end: PyGe.Point3d\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- start: PyGe.Point3d, direction: PyGe.Vector2d\n"
+        "- start: PyGe.Point3d, end: PyGe.Point3d\n";
+
+    PyDocString DS("Line2d");
     class_<PyGeLine2d, bases<PyGeLinearEnt2d>>("Line2d")
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGeVector2d&>())
-        .def(init<const AcGePoint2d&, const AcGePoint2d&>())
+        .def(init<const AcGePoint2d&, const AcGePoint2d&>(DS.CTOR(ctor)))
         .add_static_property("kXAxis", PyGeLine2d::kXAxis)
         .add_static_property("kYAxis", PyGeLine2d::kYAxis)
         .def("set", &PyGeLine2d::set1)
-        .def("set", &PyGeLine2d::set2)
-        .def("cast", &PyGeLine2d::cast).staticmethod("cast")
-        .def("copycast", &PyGeLine2d::copycast).staticmethod("copycast")
-        .def("className", &PyGeLine2d::className).staticmethod("className")
+        .def("set", &PyGeLine2d::set2, DS.OVRL(setOverloads))
+        .def("cast", &PyGeLine2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGeLine2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGeLine2d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -247,25 +258,42 @@ AcGeLine2d* PyGeLine2d::impObj(const std::source_location& src /*= std::source_l
 //AcGeLine2d  wrapper
 void makePyGeLineSeg2dWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- start: PyGe.Point3d, direction: PyGe.Vector2d\n"
+        "- start: PyGe.Point3d, end: PyGe.Point3d\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- start: PyGe.Point3d, direction: PyGe.Vector2d\n"
+        "- start: PyGe.Point3d, end: PyGe.Point3d\n"
+        "- curve1: PyGe.Curve2d, curve2: PyGe.Curve2d\n"
+        "- curve1: PyGe.Curve2d, pnt: PyGe.Point3d\n";
+
+    constexpr const std::string_view lengthOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- fromParam: float, toParam: float\n"
+        "- fromParam: float, toParam: float, tol: float\n";
+
+    PyDocString DS("LineSeg2d");
     class_<PyGeLineSeg2d, bases<PyGeLinearEnt2d>>("LineSeg2d")
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGeVector2d&>())
-        .def(init<const AcGePoint2d&, const AcGePoint2d&>())
+        .def(init<const AcGePoint2d&, const AcGePoint2d&>(DS.CTOR(ctor)))
         .def("set", &PyGeLineSeg2d::set1)
         .def("set", &PyGeLineSeg2d::set2)
         .def("set", &PyGeLineSeg2d::set3)
-        .def("set", &PyGeLineSeg2d::set4)
-        .def("getBisector", &PyGeLineSeg2d::getBisector)
-        .def("baryComb", &PyGeLineSeg2d::baryComb)
-        .def("startPoint", &PyGeLineSeg2d::startPoint)
-        .def("midPoint", &PyGeLineSeg2d::midPoint)
-        .def("endPoint", &PyGeLineSeg2d::endPoint)
+        .def("set", &PyGeLineSeg2d::set4, DS.OVRL(setOverloads))
+        .def("getBisector", &PyGeLineSeg2d::getBisector, DS.ARGS())
+        .def("baryComb", &PyGeLineSeg2d::baryComb, DS.ARGS({ "blendCoeff: float" }))
+        .def("startPoint", &PyGeLineSeg2d::startPoint, DS.ARGS())
+        .def("midPoint", &PyGeLineSeg2d::midPoint, DS.ARGS())
+        .def("endPoint", &PyGeLineSeg2d::endPoint, DS.ARGS())
         .def("length", &PyGeLineSeg2d::length1)
         .def("length", &PyGeLineSeg2d::length2)
-        .def("length", &PyGeLineSeg2d::length3)
-        .def("cast", &PyGeLineSeg2d::cast).staticmethod("cast")
-        .def("copycast", &PyGeLineSeg2d::copycast).staticmethod("copycast")
-        .def("className", &PyGeLineSeg2d::className).staticmethod("className")
+        .def("length", &PyGeLineSeg2d::length3, DS.OVRL(lengthOverloads))
+        .def("cast", &PyGeLineSeg2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGeLineSeg2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGeLineSeg2d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -411,15 +439,25 @@ AcGeLineSeg2d* PyGeLineSeg2d::impObj(const std::source_location& src /*= std::so
 //AcGeRay2d  wrapper
 void makePyGeRay2dWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- start: PyGe.Point3d, direction: PyGe.Vector2d\n"
+        "- start: PyGe.Point3d, end: PyGe.Point3d\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- start: PyGe.Point3d, direction: PyGe.Vector2d\n"
+        "- start: PyGe.Point3d, end: PyGe.Point3d\n";
+
+    PyDocString DS("Ray2d");
     class_<PyGeRay2d, bases<PyGeLinearEnt2d>>("Ray2d")
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGeVector2d&>())
-        .def(init<const AcGePoint2d&, const AcGePoint2d&>())
+        .def(init<const AcGePoint2d&, const AcGePoint2d&>(DS.CTOR(ctor)))
         .def("set", &PyGeRay2d::set1)
-        .def("set", &PyGeRay2d::set2)
-        .def("cast", &PyGeRay2d::cast).staticmethod("cast")
-        .def("copycast", &PyGeRay2d::copycast).staticmethod("copycast")
-        .def("className", &PyGeRay2d::className).staticmethod("className")
+        .def("set", &PyGeRay2d::set2, DS.OVRL(setOverloads))
+        .def("cast", &PyGeRay2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
+        .def("copycast", &PyGeRay2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
+        .def("className", &PyGeRay2d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
