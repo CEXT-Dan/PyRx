@@ -68,6 +68,41 @@ class AcGeError(object):
       '''None'''
     ...
 
+class AcGeSSIConfig(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
+    ...
+    def kSSICoincident (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kSSIIn (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kSSIOut (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kSSIUnknown (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+
 class AcGeXConfig(object):
     def __add__ (self, value, /) :
       '''Return self+value.'''
