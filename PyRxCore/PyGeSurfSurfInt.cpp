@@ -9,26 +9,32 @@ using namespace boost::python;
 void makePyGeSurfSurfIntWrapper()
 {
 #if !defined(_BRXTARGET240)
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- srf1: PyGe.Surface, srf2: PyGe.Surface\n"
+        "- srf1: PyGe.Surface, srf2: PyGe.Surface, tol: PyGe.Tol\n";
+
+    PyDocString DS("SurfSurfInt");
     class_<PyGeSurfSurfInt, bases<PyGeEntity3d>>("SurfSurfInt")
         .def(init<>())
         .def(init<const PyGeSurface&, const PyGeSurface&>())
-        .def(init<const PyGeSurface&, const PyGeSurface&, const AcGeTol&>())
-        .def("surface1", &PyGeSurfSurfInt::surface1)
-        .def("surface2", &PyGeSurfSurfInt::surface2)
-        .def("tolerance", &PyGeSurfSurfInt::tolerance)
-        .def("numResults", &PyGeSurfSurfInt::numResults)
-        .def("intCurve", &PyGeSurfSurfInt::intCurve)
-        .def("intParamCurve", &PyGeSurfSurfInt::intParamCurve)
-        .def("intPoint", &PyGeSurfSurfInt::intPoint)
-        .def("getIntPointParams", &PyGeSurfSurfInt::getIntPointParams)
-        .def("getIntConfigs", &PyGeSurfSurfInt::getIntConfigs)
-        .def("getDimension", &PyGeSurfSurfInt::getDimension)
-        .def("getType", &PyGeSurfSurfInt::getType)
+        .def(init<const PyGeSurface&, const PyGeSurface&, const AcGeTol&>(DS.CTOR(ctor)))
+        .def("surface1", &PyGeSurfSurfInt::surface1, DS.ARGS())
+        .def("surface2", &PyGeSurfSurfInt::surface2, DS.ARGS())
+        .def("tolerance", &PyGeSurfSurfInt::tolerance, DS.ARGS())
+        .def("numResults", &PyGeSurfSurfInt::numResults, DS.ARGS())
+        .def("intCurve", &PyGeSurfSurfInt::intCurve, DS.ARGS({ "intNum: int","isExternal: bool" }))
+        .def("intParamCurve", &PyGeSurfSurfInt::intParamCurve, DS.ARGS({ "intNum: int","isExternal: bool","isFirst: bool" }))
+        .def("intPoint", &PyGeSurfSurfInt::intPoint, DS.ARGS({ "intNum: int" }))
+        .def("getIntPointParams", &PyGeSurfSurfInt::getIntPointParams, DS.ARGS({ "intNum: int" }))
+        .def("getIntConfigs", &PyGeSurfSurfInt::getIntConfigs, DS.ARGS({ "intNum: int" }))
+        .def("getDimension", &PyGeSurfSurfInt::getDimension, DS.ARGS({ "intNum: int" }))
+        .def("getType", &PyGeSurfSurfInt::getType, DS.ARGS({ "intNum: int" }))
         .def("set", &PyGeSurfSurfInt::set1)
-        .def("set", &PyGeSurfSurfInt::set2)
-        .def("cast", &PyGeSurfSurfInt::cast).staticmethod("cast")
-        .def("copycast", &PyGeSurfSurfInt::copycast).staticmethod("copycast")
-        .def("className", &PyGeSurfSurfInt::className).staticmethod("className")
+        .def("set", &PyGeSurfSurfInt::set2, DS.ARGS({ "srf1: PyGe.Surface","srf2: PyGe.Surface","tol: PyGe.Tol=None" }))
+        .def("cast", &PyGeSurfSurfInt::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeSurfSurfInt::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeSurfSurfInt::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }
