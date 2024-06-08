@@ -677,6 +677,7 @@ void makePyGeExternalBoundedSurfaceWrapper()
 #if !defined(_BRXTARGET240)
     PyDocString DS("ExternalBoundedSurface");
     class_<PyGeExternalBoundedSurface, bases<PyGeSurface>>("ExternalBoundedSurface")
+        .def(init<>(DS.ARGS()))
         .def("cast", &PyGeExternalBoundedSurface::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeExternalBoundedSurface::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeExternalBoundedSurface::className, DS.SARGS()).staticmethod("className")
@@ -703,7 +704,6 @@ PyGeExternalBoundedSurface::PyGeExternalBoundedSurface(AcGeExternalBoundedSurfac
 PyGeExternalBoundedSurface::PyGeExternalBoundedSurface(AcGeEntity3d* src)
     : PyGeSurface(src)
 {
-
 }
 
 PyGeExternalBoundedSurface PyGeExternalBoundedSurface::cast(const PyGeEntity3d& src)
@@ -741,6 +741,7 @@ void makePyGeExternalSurfaceWrapper()
 #if !defined(_BRXTARGET240)
     PyDocString DS("ExternalSurface");
     class_<PyGeExternalSurface, bases<PyGeSurface>>("ExternalSurface")
+        .def(init<>(DS.ARGS()))
         .def("cast", &PyGeExternalSurface::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeExternalSurface::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeExternalSurface::className, DS.SARGS()).staticmethod("className")
@@ -804,6 +805,7 @@ void makePyGeNurbSurfaceWrapper()
 #if !defined(_BRXTARGET240)
     PyDocString DS("NurbSurface");
     class_<PyGeNurbSurface, bases<PyGeSurface>>("NurbSurface")
+        .def(init<>(DS.ARGS()))
         .def("cast", &PyGeNurbSurface::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeNurbSurface::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeNurbSurface::className, DS.SARGS()).staticmethod("className")
@@ -867,6 +869,7 @@ void makePyGeOffsetSurfaceWrapper()
 #if !defined(_BRXTARGET240)
     PyDocString DS("OffsetSurface");
     class_<PyGeOffsetSurface, bases<PyGeSurface>>("OffsetSurface")
+        .def(init<>(DS.ARGS()))
         .def("cast", &PyGeOffsetSurface::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeOffsetSurface::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeOffsetSurface::className, DS.SARGS()).staticmethod("className")
@@ -1145,6 +1148,7 @@ void makePyGeTorusWrapper()
 #if !defined(_BRXTARGET240)
     PyDocString DS("Torus");
     class_<PyGeTorus, bases<PyGeSurface>>("Torus")
+        .def(init<>(DS.ARGS()))
         .def("cast", &PyGeTorus::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeTorus::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeTorus::className, DS.SARGS()).staticmethod("className")

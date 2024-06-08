@@ -6,64 +6,76 @@ using namespace boost::python;
 
 void makePyGeIntervalWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- lower: float, upper: float\n"
+        "- bounded:bool, upper: float\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- lower: float, upper: float\n"
+        "- bounded:bool, upper: float\n";
+
+
+    PyDocString DS("Interval");
     class_<PyGeInterval>("Interval")
         .def(init<>())
         .def(init<double, double>())
-        .def(init<Adesk::Boolean, double>())
-        .def("lowerBound", &PyGeInterval::lowerBound)
-        .def("upperBound", &PyGeInterval::upperBound)
-        .def("element", &PyGeInterval::element)
-        .def("getBounds", &PyGeInterval::getBounds)
-        .def("length", &PyGeInterval::length)
-        .def("tolerance", &PyGeInterval::tolerance)
+        .def(init<Adesk::Boolean, double>(DS.CTOR(ctor)))
+        .def("lowerBound", &PyGeInterval::lowerBound, DS.ARGS())
+        .def("upperBound", &PyGeInterval::upperBound, DS.ARGS())
+        .def("element", &PyGeInterval::element, DS.ARGS())
+        .def("getBounds", &PyGeInterval::getBounds, DS.ARGS())
+        .def("length", &PyGeInterval::length, DS.ARGS())
+        .def("tolerance", &PyGeInterval::tolerance, DS.ARGS())
         .def("set", &PyGeInterval::set1)
         .def("set", &PyGeInterval::set2)
-        .def("set", &PyGeInterval::set3)
-        .def("setUpper", &PyGeInterval::setUpper)
-        .def("setLower", &PyGeInterval::setLower)
-        .def("setTolerance", &PyGeInterval::setTolerance)
-        .def("getMerge", &PyGeInterval::getMerge)
-        .def("subtract", &PyGeInterval::subtract)
-        .def("intersectWith", &PyGeInterval::intersectWith)
-        .def("isBounded", &PyGeInterval::isBounded)
-        .def("isBoundedAbove", &PyGeInterval::isBoundedAbove)
-        .def("isBoundedBelow", &PyGeInterval::isBoundedBelow)
-        .def("isUnBounded", &PyGeInterval::isUnBounded)
-        .def("isSingleton", &PyGeInterval::isSingleton)
-        .def("isDisjoint", &PyGeInterval::isDisjoint)
+        .def("set", &PyGeInterval::set3, DS.OVRL(setOverloads))
+        .def("setUpper", &PyGeInterval::setUpper, DS.ARGS({ "val: float" }))
+        .def("setLower", &PyGeInterval::setLower, DS.ARGS({ "val: float" }))
+        .def("setTolerance", &PyGeInterval::setTolerance, DS.ARGS({ "val: float" }))
+        .def("getMerge", &PyGeInterval::getMerge, DS.ARGS({ "val: float" }))
+        .def("subtract", &PyGeInterval::subtract, DS.ARGS({ "val: PyGe.Interval" }))
+        .def("intersectWith", &PyGeInterval::intersectWith, DS.ARGS({ "val: PyGe.Interval" }))
+        .def("isBounded", &PyGeInterval::isBounded, DS.ARGS())
+        .def("isBoundedAbove", &PyGeInterval::isBoundedAbove, DS.ARGS())
+        .def("isBoundedBelow", &PyGeInterval::isBoundedBelow, DS.ARGS())
+        .def("isUnBounded", &PyGeInterval::isUnBounded, DS.ARGS())
+        .def("isSingleton", &PyGeInterval::isSingleton, DS.ARGS())
+        .def("isDisjoint", &PyGeInterval::isDisjoint, DS.ARGS({ "val: PyGe.Interval" }))
         .def("contains", &PyGeInterval::contains1)
-        .def("contains", &PyGeInterval::contains2)
-        .def("isContinuousAtUpper", &PyGeInterval::isContinuousAtUpper)
-        .def("isOverlapAtUpper", &PyGeInterval::isOverlapAtUpper)
+        .def("contains", &PyGeInterval::contains2, DS.ARGS({ "val: PyGe.Interval|float" }))
+        .def("isContinuousAtUpper", &PyGeInterval::isContinuousAtUpper, DS.ARGS({ "val: PyGe.Interval" }))
+        .def("isOverlapAtUpper", &PyGeInterval::isOverlapAtUpper, DS.ARGS({ "val: PyGe.Interval" }))
         .def("isEqualAtUpper", &PyGeInterval::isEqualAtUpper1)
-        .def("isEqualAtUpper", &PyGeInterval::isEqualAtUpper2)
+        .def("isEqualAtUpper", &PyGeInterval::isEqualAtUpper2, DS.ARGS({ "val: PyGe.Interval|float" }))
         .def("isEqualAtLower", &PyGeInterval::isEqualAtLower1)
-        .def("isEqualAtLower", &PyGeInterval::isEqualAtLower2)
-        .def("isPeriodicallyOn", &PyGeInterval::isPeriodicallyOn)
+        .def("isEqualAtLower", &PyGeInterval::isEqualAtLower2, DS.ARGS({ "val: PyGe.Interval|float" }))
+        .def("isPeriodicallyOn", &PyGeInterval::isPeriodicallyOn, DS.ARGS({ "val: float" }))
         .def("isGreater", &PyGeInterval::isGreater1)
-        .def("isGreater", &PyGeInterval::isGreater2)
+        .def("isGreater", &PyGeInterval::isGreater2, DS.ARGS({ "val: PyGe.Interval|float" }))
         .def("isGreaterOrEqual", &PyGeInterval::isGreaterOrEqual1)
-        .def("isGreaterOrEqual", &PyGeInterval::isGreaterOrEqual2)
+        .def("isGreaterOrEqual", &PyGeInterval::isGreaterOrEqual2, DS.ARGS({ "val: PyGe.Interval|float" }))
         .def("isLess", &PyGeInterval::isLess1)
-        .def("isLess", &PyGeInterval::isLess2)
+        .def("isLess", &PyGeInterval::isLess2, DS.ARGS({ "val: PyGe.Interval|float" }))
         .def("isLessOrEqual", &PyGeInterval::isLessOrEqual1)
-        .def("isLessOrEqual", &PyGeInterval::isLessOrEqual2)
+        .def("isLessOrEqual", &PyGeInterval::isLessOrEqual2, DS.ARGS({ "val: PyGe.Interval|float" }))
 
         //operators 
-        .def("__eq__", &PyGeInterval::operator==)
-        .def("__ne__", &PyGeInterval::operator!=)
+        .def("__eq__", &PyGeInterval::operator==, DS.ARGS({ "val: PyGe.Interval" }))
+        .def("__ne__", &PyGeInterval::operator!=, DS.ARGS({ "val: PyGe.Interval" }))
 
         .def("__lt__", &PyGeInterval::isLess1)
-        .def("__lt__", &PyGeInterval::isLess2)
+        .def("__lt__", &PyGeInterval::isLess2, DS.ARGS({ "val: PyGe.Interval|float" }))
         .def("__le__", &PyGeInterval::isLessOrEqual1)
-        .def("__le__", &PyGeInterval::isLessOrEqual2)
+        .def("__le__", &PyGeInterval::isLessOrEqual2, DS.ARGS({ "val: PyGe.Interval|float" }))
 
         .def("__gt__", &PyGeInterval::isGreater1)
-        .def("__gt__", &PyGeInterval::isGreater2)
+        .def("__gt__", &PyGeInterval::isGreater2, DS.ARGS({ "val: PyGe.Interval|float" }))
         .def("__ge__", &PyGeInterval::isGreaterOrEqual1)
-        .def("__ge__", &PyGeInterval::isGreaterOrEqual2)
+        .def("__ge__", &PyGeInterval::isGreaterOrEqual2, DS.ARGS({ "val: PyGe.Interval|float" }))
 
-        .def("className", &PyGeInterval::className).staticmethod("className")
+        .def("className", &PyGeInterval::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -79,7 +91,6 @@ PyGeInterval::PyGeInterval(const AcGeInterval& src)
 PyGeInterval::PyGeInterval(double lower, double upper)
     : imp(lower, upper)
 {
-
 }
 
 PyGeInterval::PyGeInterval(Adesk::Boolean boundedBelow, double bound)
@@ -156,19 +167,28 @@ void PyGeInterval::setTolerance(double tol)
     imp.setTolerance(tol);
 }
 
-void PyGeInterval::getMerge(const PyGeInterval& otherInterval, PyGeInterval& result) const
+PyGeInterval PyGeInterval::getMerge(const PyGeInterval& otherInterval) const
 {
+    PyGeInterval result;
     imp.getMerge(otherInterval.imp, result.imp);
+    return result;
 }
 
-int PyGeInterval::subtract(const PyGeInterval& otherInterval, PyGeInterval& lInterval, PyGeInterval& rInterval) const
+boost::python::tuple PyGeInterval::subtract(const PyGeInterval& otherInterval) const
 {
-    return imp.subtract(otherInterval.imp, lInterval.imp, rInterval.imp);
+    PyAutoLockGIL lock;
+    PyGeInterval lInterval;
+    PyGeInterval rInterval;
+    int res = imp.subtract(otherInterval.imp, lInterval.imp, rInterval.imp);
+    return boost::python::make_tuple(res, lInterval, rInterval);
 }
 
-Adesk::Boolean PyGeInterval::intersectWith(const PyGeInterval& otherInterval, PyGeInterval& result) const
+boost::python::tuple PyGeInterval::intersectWith(const PyGeInterval& otherInterval) const
 {
-    return imp.intersectWith(otherInterval.imp, result.imp);
+    PyAutoLockGIL lock;
+    PyGeInterval result;
+    auto res = imp.intersectWith(otherInterval.imp, result.imp);
+    return boost::python::make_tuple(res, result);
 }
 
 Adesk::Boolean PyGeInterval::isBounded() const
@@ -216,9 +236,12 @@ Adesk::Boolean PyGeInterval::isContinuousAtUpper(const PyGeInterval& otherInterv
     return imp.isContinuousAtUpper(otherInterval.imp);
 }
 
-Adesk::Boolean PyGeInterval::isOverlapAtUpper(const PyGeInterval& otherInterval, PyGeInterval& overlap) const
+boost::python::tuple PyGeInterval::isOverlapAtUpper(const PyGeInterval& otherInterval) const
 {
-    return imp.isOverlapAtUpper(otherInterval.imp, overlap.imp);
+    PyAutoLockGIL lock;
+    PyGeInterval overlap;
+    auto r = imp.isOverlapAtUpper(otherInterval.imp, overlap.imp);
+    return boost::python::make_tuple(r, overlap);
 }
 
 Adesk::Boolean PyGeInterval::isEqualAtUpper1(const PyGeInterval& otherInterval) const

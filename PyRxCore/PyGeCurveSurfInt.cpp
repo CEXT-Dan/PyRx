@@ -9,24 +9,34 @@ using namespace boost::python;
 void makePyGeCurveSurfIntWrapper()
 {
 #if !defined(_BRXTARGET240)
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- curve: PyGe.Curve3d, surf: PyGe.Surface\n"
+        "- curve: PyGe.Curve3d, surf: PyGe.Surface, tol: PyGe.Tol\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- curve: PyGe.Curve3d, surf: PyGe.Surface\n"
+        "- curve: PyGe.Curve3d, surf: PyGe.Surface, tol: PyGe.Tol\n";
+
+    PyDocString DS("CurveSurfInt");
     class_<PyGeCurveSurfInt, bases<PyGeEntity3d>>("CurveSurfInt")
         .def(init<>())
         .def(init<const PyGeCurve3d&, const PyGeSurface&>())
-        .def(init<const PyGeCurve3d&, const PyGeSurface&, const AcGeTol&>())
-        .def("curve", &PyGeCurveSurfInt::curve)
-        .def("surface", &PyGeCurveSurfInt::surface)
-        .def("tolerance", &PyGeCurveSurfInt::tolerance)
-        .def("numIntPoints", &PyGeCurveSurfInt::numIntPoints)
-        .def("intPoint", &PyGeCurveSurfInt::intPoint)
-        .def("getIntParams", &PyGeCurveSurfInt::getIntParams)
-        .def("getPointOnCurve", &PyGeCurveSurfInt::getPointOnCurve)
-        .def("getPointOnSurface", &PyGeCurveSurfInt::getPointOnSurface)
-        .def("getIntConfigs", &PyGeCurveSurfInt::getIntConfigs)
+        .def(init<const PyGeCurve3d&, const PyGeSurface&, const AcGeTol&>(DS.CTOR(ctor)))
+        .def("curve", &PyGeCurveSurfInt::curve, DS.ARGS())
+        .def("surface", &PyGeCurveSurfInt::surface, DS.ARGS())
+        .def("tolerance", &PyGeCurveSurfInt::tolerance, DS.ARGS())
+        .def("numIntPoints", &PyGeCurveSurfInt::numIntPoints, DS.ARGS())
+        .def("intPoint", &PyGeCurveSurfInt::intPoint, DS.ARGS({ "intNum: int" }))
+        .def("getIntParams", &PyGeCurveSurfInt::getIntParams, DS.ARGS({ "intNum: int" }))
+        .def("getPointOnCurve", &PyGeCurveSurfInt::getPointOnCurve, DS.ARGS({ "intNum: int" }))
+        .def("getPointOnSurface", &PyGeCurveSurfInt::getPointOnSurface, DS.ARGS({ "intNum: int" }))
+        .def("getIntConfigs", &PyGeCurveSurfInt::getIntConfigs, DS.ARGS({ "intNum: int" }))
         .def("set", &PyGeCurveSurfInt::set1)
-        .def("set", &PyGeCurveSurfInt::set2)
-        .def("cast", &PyGeCurveSurfInt::cast).staticmethod("cast")
-        .def("copycast", &PyGeCurveSurfInt::copycast).staticmethod("copycast")
-        .def("className", &PyGeCurveSurfInt::className).staticmethod("className")
+        .def("set", &PyGeCurveSurfInt::set2, DS.OVRL(setOverloads))
+        .def("cast", &PyGeCurveSurfInt::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeCurveSurfInt::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeCurveSurfInt::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }

@@ -2622,83 +2622,55 @@ class CurveCurveInt3d(Entity3d):
     ...
 
 class CurveSurfInt(Entity3d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, curve: PyGe.Curve3d, surf: PyGe.Surface)-> None : ...
+    @overload
+    def __init__ (self, curve: PyGe.Curve3d, surf: PyGe.Surface, tol: PyGe.Tol)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Curve3d)arg2, (Surface)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve3d,class PyGeSurface)
-
-__init__( (object)arg1, (Curve3d)arg2, (Surface)arg3, (Tol)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve3d,class PyGeSurface,class AcGeTol)'''
+      '''Overloads:
+    - None: Any
+    - curve: PyGe.Curve3d, surf: PyGe.Surface
+    - curve: PyGe.Curve3d, surf: PyGe.Surface, tol: PyGe.Tol
+    '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.CurveSurfInt :
-      '''cast( (Entity3d)arg1) -> CurveSurfInt :
 
-    C++ signature :
-        class PyGeCurveSurfInt cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.CurveSurfInt :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.CurveSurfInt :
-      '''copycast( (Entity3d)arg1) -> CurveSurfInt :
 
-    C++ signature :
-        class PyGeCurveSurfInt copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.CurveSurfInt :
+      '''                             '''
     ...
-    def curve (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''curve( (CurveSurfInt)arg1) -> Curve3d :
-
-    C++ signature :
-        class PyGeCurve3d curve(class PyGeCurveSurfInt {lvalue})'''
+    def curve (self)-> PyGe.Curve3d :
+      '''                             '''
     ...
-    def getIntConfigs (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getIntConfigs( (CurveSurfInt)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getIntConfigs(class PyGeCurveSurfInt {lvalue},int)'''
+    def getIntConfigs (self, intNum: int)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def getIntParams (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getIntParams( (CurveSurfInt)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getIntParams(class PyGeCurveSurfInt {lvalue},int)'''
+    def getIntParams (self, intNum: int)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def getPointOnCurve (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getPointOnCurve( (CurveSurfInt)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getPointOnCurve(class PyGeCurveSurfInt {lvalue},int)'''
+    def getPointOnCurve (self, intNum: int)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def getPointOnSurface (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getPointOnSurface( (CurveSurfInt)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getPointOnSurface(class PyGeCurveSurfInt {lvalue},int)'''
+    def getPointOnSurface (self, intNum: int)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def intPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''intPoint( (CurveSurfInt)arg1, (int)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d intPoint(class PyGeCurveSurfInt {lvalue},int)'''
+    def intPoint (self, intNum: int)-> PyGe.Point3d :
+      '''                             '''
     ...
     def isEqualTo (self, val : PyGe.Entity3d, tol : PyGe.Tol=None)-> bool :
       '''Determines if two entities are equal to each other. Two entities are considered to be equal only if they are of the same type and they represent the same 3D point set. For instance, if the two entities are of types AcGeCircArc3d and AcGeEllipArc3d then they are not considered equal even if the ellipse is completely coincident with the circle. Also, two curves are not considered equal unless they have the same parameterization. For instance, two infinite coincident lines are not considered equal if they have different scaling in their parameterization. '''
@@ -2715,11 +2687,8 @@ __init__( (object)arg1, (Curve3d)arg2, (Surface)arg3, (Tol)arg4) -> None :
     def mirror (self, val : PyGe.Plane)-> None :
       '''Transforms the entity by mirroring it across the input plane.'''
     ...
-    def numIntPoints (self, *args, **kwargs)-> int :
-      '''numIntPoints( (CurveSurfInt)arg1) -> int :
-
-    C++ signature :
-        int numIntPoints(class PyGeCurveSurfInt {lvalue})'''
+    def numIntPoints (self)-> int :
+      '''                             '''
     ...
     def rotateBy (self, angle : float, vec : PyGe.Vector3d, pt : PyGe.Point3d = 'origin')-> None :
       '''Rotates the entity by the input angle about the line defined by the input point and vector.'''
@@ -2727,28 +2696,22 @@ __init__( (object)arg1, (Curve3d)arg2, (Surface)arg3, (Tol)arg4) -> None :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point3d = 'origin')-> None :
       '''Scales the entity about the input point by the input scale factor. Input scale factor must be greater than 0.'''
     ...
+
+    @overload
+    def set (self, curve: PyGe.Curve3d, surf: PyGe.Surface)-> None : ...
+    @overload
+    def set (self, curve: PyGe.Curve3d, surf: PyGe.Surface, tol: PyGe.Tol)-> None : ...
     def set (self, *args, **kwargs)-> None :
-      '''set( (CurveSurfInt)arg1, (Curve3d)arg2, (Surface)arg3) -> None :
-
-    C++ signature :
-        void set(class PyGeCurveSurfInt {lvalue},class PyGeCurve3d,class PyGeSurface)
-
-set( (CurveSurfInt)arg1, (Curve3d)arg2, (Surface)arg3, (Tol)arg4) -> None :
-
-    C++ signature :
-        void set(class PyGeCurveSurfInt {lvalue},class PyGeCurve3d,class PyGeSurface,class AcGeTol)'''
+      '''Overloads:
+    - curve: PyGe.Curve3d, surf: PyGe.Surface
+    - curve: PyGe.Curve3d, surf: PyGe.Surface, tol: PyGe.Tol
+    '''
     ...
-    def surface (self, *args, **kwargs)-> PyDb.Surface :
-      '''surface( (CurveSurfInt)arg1) -> Surface :
-
-    C++ signature :
-        class PyGeSurface surface(class PyGeCurveSurfInt {lvalue})'''
+    def surface (self)-> PyDb.Surface :
+      '''                             '''
     ...
-    def tolerance (self, *args, **kwargs)-> PyGe.Tol :
-      '''tolerance( (CurveSurfInt)arg1) -> Tol :
-
-    C++ signature :
-        class AcGeTol tolerance(class PyGeCurveSurfInt {lvalue})'''
+    def tolerance (self)-> PyGe.Tol :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix3d)-> None :
       '''Transforms the entity by applying the input matrix.'''
@@ -3770,11 +3733,8 @@ class EntityId(object):
     ...
 
 class ExternalBoundedSurface(Surface):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -4186,11 +4146,8 @@ This class cannot be instantiated from Python'''
     ...
 
 class ExternalSurface(Surface):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -4291,251 +4248,122 @@ class ExternalSurface(Surface):
     ...
 
 class Interval(object):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, lower: float, upper: float)-> None : ...
+    @overload
+    def __init__ (self, bounded:bool, upper: float)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (float)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,double)
-
-__init__( (object)arg1, (bool)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,bool,double)'''
+      '''Overloads:
+    - None: Any
+    - lower: float, upper: float
+    - bounded:bool, upper: float
+    '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
-    def contains (self, *args, **kwargs)-> bool :
-      '''contains( (Interval)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool contains(class PyGeInterval {lvalue},class PyGeInterval)
-
-contains( (Interval)arg1, (float)arg2) -> bool :
-
-    C++ signature :
-        bool contains(class PyGeInterval {lvalue},double)'''
+    def contains (self, val: PyGe.Interval|float)-> bool :
+      '''                             '''
     ...
-    def element (self, *args, **kwargs)-> float :
-      '''element( (Interval)arg1) -> float :
-
-    C++ signature :
-        double element(class PyGeInterval {lvalue})'''
+    def element (self)-> float :
+      '''                             '''
     ...
-    def getBounds (self, *args, **kwargs)-> tuple[Any,...] :
-      '''getBounds( (Interval)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getBounds(class PyGeInterval {lvalue})'''
+    def getBounds (self)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def getMerge (self, *args, **kwargs)-> None :
-      '''getMerge( (Interval)arg1, (Interval)arg2, (Interval)arg3) -> None :
-
-    C++ signature :
-        void getMerge(class PyGeInterval {lvalue},class PyGeInterval,class PyGeInterval {lvalue})'''
+    def getMerge (self, val: float)-> PyGe.Interval :
+      '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> bool :
-      '''intersectWith( (Interval)arg1, (Interval)arg2, (Interval)arg3) -> bool :
-
-    C++ signature :
-        bool intersectWith(class PyGeInterval {lvalue},class PyGeInterval,class PyGeInterval {lvalue})'''
+    def intersectWith (self, val: PyGe.Interval)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def isBounded (self, *args, **kwargs)-> bool :
-      '''isBounded( (Interval)arg1) -> bool :
-
-    C++ signature :
-        bool isBounded(class PyGeInterval {lvalue})'''
+    def isBounded (self)-> bool :
+      '''                             '''
     ...
-    def isBoundedAbove (self, *args, **kwargs)-> bool :
-      '''isBoundedAbove( (Interval)arg1) -> bool :
-
-    C++ signature :
-        bool isBoundedAbove(class PyGeInterval {lvalue})'''
+    def isBoundedAbove (self)-> bool :
+      '''                             '''
     ...
-    def isBoundedBelow (self, *args, **kwargs)-> bool :
-      '''isBoundedBelow( (Interval)arg1) -> bool :
-
-    C++ signature :
-        bool isBoundedBelow(class PyGeInterval {lvalue})'''
+    def isBoundedBelow (self)-> bool :
+      '''                             '''
     ...
-    def isContinuousAtUpper (self, *args, **kwargs)-> bool :
-      '''isContinuousAtUpper( (Interval)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool isContinuousAtUpper(class PyGeInterval {lvalue},class PyGeInterval)'''
+    def isContinuousAtUpper (self, val: PyGe.Interval)-> bool :
+      '''                             '''
     ...
-    def isDisjoint (self, *args, **kwargs)-> bool :
-      '''isDisjoint( (Interval)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool isDisjoint(class PyGeInterval {lvalue},class PyGeInterval)'''
+    def isDisjoint (self, val: PyGe.Interval)-> bool :
+      '''                             '''
     ...
-    def isEqualAtLower (self, *args, **kwargs)-> bool :
-      '''isEqualAtLower( (Interval)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool isEqualAtLower(class PyGeInterval {lvalue},class PyGeInterval)
-
-isEqualAtLower( (Interval)arg1, (float)arg2) -> bool :
-
-    C++ signature :
-        bool isEqualAtLower(class PyGeInterval {lvalue},double)'''
+    def isEqualAtLower (self, val: PyGe.Interval|float)-> bool :
+      '''                             '''
     ...
-    def isEqualAtUpper (self, *args, **kwargs)-> bool :
-      '''isEqualAtUpper( (Interval)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool isEqualAtUpper(class PyGeInterval {lvalue},class PyGeInterval)
-
-isEqualAtUpper( (Interval)arg1, (float)arg2) -> bool :
-
-    C++ signature :
-        bool isEqualAtUpper(class PyGeInterval {lvalue},double)'''
+    def isEqualAtUpper (self, val: PyGe.Interval|float)-> bool :
+      '''                             '''
     ...
-    def isGreater (self, *args, **kwargs)-> bool :
-      '''isGreater( (Interval)arg1, (float)arg2) -> bool :
-
-    C++ signature :
-        bool isGreater(class PyGeInterval {lvalue},double)
-
-isGreater( (Interval)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool isGreater(class PyGeInterval {lvalue},class PyGeInterval)'''
+    def isGreater (self, val: PyGe.Interval|float)-> bool :
+      '''                             '''
     ...
-    def isGreaterOrEqual (self, *args, **kwargs)-> bool :
-      '''isGreaterOrEqual( (Interval)arg1, (float)arg2) -> bool :
-
-    C++ signature :
-        bool isGreaterOrEqual(class PyGeInterval {lvalue},double)
-
-isGreaterOrEqual( (Interval)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool isGreaterOrEqual(class PyGeInterval {lvalue},class PyGeInterval)'''
+    def isGreaterOrEqual (self, val: PyGe.Interval|float)-> bool :
+      '''                             '''
     ...
-    def isLess (self, *args, **kwargs)-> bool :
-      '''isLess( (Interval)arg1, (float)arg2) -> bool :
-
-    C++ signature :
-        bool isLess(class PyGeInterval {lvalue},double)
-
-isLess( (Interval)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool isLess(class PyGeInterval {lvalue},class PyGeInterval)'''
+    def isLess (self, val: PyGe.Interval|float)-> bool :
+      '''                             '''
     ...
-    def isLessOrEqual (self, *args, **kwargs)-> bool :
-      '''isLessOrEqual( (Interval)arg1, (float)arg2) -> bool :
-
-    C++ signature :
-        bool isLessOrEqual(class PyGeInterval {lvalue},double)
-
-isLessOrEqual( (Interval)arg1, (Interval)arg2) -> bool :
-
-    C++ signature :
-        bool isLessOrEqual(class PyGeInterval {lvalue},class PyGeInterval)'''
+    def isLessOrEqual (self, val: PyGe.Interval|float)-> bool :
+      '''                             '''
     ...
-    def isOverlapAtUpper (self, *args, **kwargs)-> bool :
-      '''isOverlapAtUpper( (Interval)arg1, (Interval)arg2, (Interval)arg3) -> bool :
-
-    C++ signature :
-        bool isOverlapAtUpper(class PyGeInterval {lvalue},class PyGeInterval,class PyGeInterval {lvalue})'''
+    def isOverlapAtUpper (self, val: PyGe.Interval)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def isPeriodicallyOn (self, *args, **kwargs)-> tuple[Any,...] :
-      '''isPeriodicallyOn( (Interval)arg1, (float)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isPeriodicallyOn(class PyGeInterval {lvalue},double)'''
+    def isPeriodicallyOn (self, val: float)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def isSingleton (self, *args, **kwargs)-> bool :
-      '''isSingleton( (Interval)arg1) -> bool :
-
-    C++ signature :
-        bool isSingleton(class PyGeInterval {lvalue})'''
+    def isSingleton (self)-> bool :
+      '''                             '''
     ...
-    def isUnBounded (self, *args, **kwargs)-> bool :
-      '''isUnBounded( (Interval)arg1) -> bool :
-
-    C++ signature :
-        bool isUnBounded(class PyGeInterval {lvalue})'''
+    def isUnBounded (self)-> bool :
+      '''                             '''
     ...
-    def length (self, *args, **kwargs)-> float :
-      '''length( (Interval)arg1) -> float :
-
-    C++ signature :
-        double length(class PyGeInterval {lvalue})'''
+    def length (self)-> float :
+      '''                             '''
     ...
-    def lowerBound (self, *args, **kwargs)-> float :
-      '''lowerBound( (Interval)arg1) -> float :
-
-    C++ signature :
-        double lowerBound(class PyGeInterval {lvalue})'''
+    def lowerBound (self)-> float :
+      '''                             '''
     ...
+
+    @overload
+    def set (self, /)-> None : ...
+    @overload
+    def set (self, lower: float, upper: float)-> None : ...
+    @overload
+    def set (self, bounded:bool, upper: float)-> None : ...
     def set (self, *args, **kwargs)-> None :
-      '''set( (Interval)arg1, (float)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void set(class PyGeInterval {lvalue},double,double)
-
-set( (Interval)arg1, (bool)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void set(class PyGeInterval {lvalue},bool,double)
-
-set( (Interval)arg1) -> None :
-
-    C++ signature :
-        void set(class PyGeInterval {lvalue})'''
+      '''Overloads:
+    - None: Any
+    - lower: float, upper: float
+    - bounded:bool, upper: float
+    '''
     ...
-    def setLower (self, *args, **kwargs)-> None :
-      '''setLower( (Interval)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLower(class PyGeInterval {lvalue},double)'''
+    def setLower (self, val: float)-> None :
+      '''                             '''
     ...
-    def setTolerance (self, *args, **kwargs)-> None :
-      '''setTolerance( (Interval)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setTolerance(class PyGeInterval {lvalue},double)'''
+    def setTolerance (self, val: float)-> None :
+      '''                             '''
     ...
-    def setUpper (self, *args, **kwargs)-> None :
-      '''setUpper( (Interval)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setUpper(class PyGeInterval {lvalue},double)'''
+    def setUpper (self, val: float)-> None :
+      '''                             '''
     ...
-    def subtract (self, *args, **kwargs)-> int :
-      '''subtract( (Interval)arg1, (Interval)arg2, (Interval)arg3, (Interval)arg4) -> int :
-
-    C++ signature :
-        int subtract(class PyGeInterval {lvalue},class PyGeInterval,class PyGeInterval {lvalue},class PyGeInterval {lvalue})'''
+    def subtract (self, val: PyGe.Interval)-> tuple[Any,...] :
+      '''                             '''
     ...
-    def tolerance (self, *args, **kwargs)-> float :
-      '''tolerance( (Interval)arg1) -> float :
-
-    C++ signature :
-        double tolerance(class PyGeInterval {lvalue})'''
+    def tolerance (self)-> float :
+      '''                             '''
     ...
-    def upperBound (self, *args, **kwargs)-> float :
-      '''upperBound( (Interval)arg1) -> float :
-
-    C++ signature :
-        double upperBound(class PyGeInterval {lvalue})'''
+    def upperBound (self)-> float :
+      '''                             '''
     ...
 
 class KnotParameterization(object):
@@ -7419,11 +7247,8 @@ class NurbCurve3d(SplineEnt3d):
     ...
 
 class NurbSurface(Surface):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -7922,11 +7747,8 @@ class OffsetCurve3d(Curve3d):
     ...
 
 class OffsetSurface(Surface):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -8946,63 +8768,52 @@ class PointOnCurve3d(PointEnt3d):
     ...
 
 class PointOnSurface(PointEnt3d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, surface: PyGe.Surface)-> None : ...
+    @overload
+    def __init__ (self, surface: PyGe.Surface, pnt: PyGe.Point2d)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Surface)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeSurface)
-
-__init__( (object)arg1, (Surface)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeSurface,class AcGePoint2d)'''
+      '''Overloads:
+    - None: Any
+    - surface: PyGe.Surface
+    - surface: PyGe.Surface, pnt: PyGe.Point2d
+    
+    '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.PointOnSurface :
-      '''cast( (Entity3d)arg1) -> PointOnSurface :
 
-    C++ signature :
-        class PyGePointOnSurface cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.PointOnSurface :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.PointOnSurface :
-      '''copycast( (Entity3d)arg1) -> PointOnSurface :
 
-    C++ signature :
-        class PyGePointOnSurface copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.PointOnSurface :
+      '''                             '''
     ...
+
+    @overload
+    def inverseTangentVector (self, vec: PyGe.Vector2d)-> PyGe.Vector2d : ...
+    @overload
+    def inverseTangentVector (self, vec: PyGe.Vector2d, param: PyGe.Vector2d)-> PyGe.Vector2d : ...
+    @overload
+    def inverseTangentVector (self, vec: PyGe.Vector2d, surface: PyGe.Surface, param: PyGe.Vector2d)-> PyGe.Vector2d : ...
     def inverseTangentVector (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''inverseTangentVector( (PointOnSurface)arg1, (Vector3d)arg2) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d inverseTangentVector(class PyGePointOnSurface {lvalue},class AcGeVector3d)
-
-inverseTangentVector( (PointOnSurface)arg1, (Vector3d)arg2, (Point2d)arg3) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d inverseTangentVector(class PyGePointOnSurface {lvalue},class AcGeVector3d,class AcGePoint2d)
-
-inverseTangentVector( (PointOnSurface)arg1, (Vector3d)arg2, (Surface)arg3, (Point2d)arg4) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d inverseTangentVector(class PyGePointOnSurface {lvalue},class AcGeVector3d,class PyGeSurface,class AcGePoint2d)'''
+      '''Overloads:
+    - vec: PyGe.Vector2d
+    - vec: PyGe.Vector2d, param: PyGe.Vector2d
+    - vec: PyGe.Vector2d, surface: PyGe.Surface, param: PyGe.Vector2d
+    '''
     ...
     def isEqualTo (self, val : PyGe.Entity3d, tol : PyGe.Tol=None)-> bool :
       '''Determines if two entities are equal to each other. Two entities are considered to be equal only if they are of the same type and they represent the same 3D point set. For instance, if the two entities are of types AcGeCircArc3d and AcGeEllipArc3d then they are not considered equal even if the ellipse is completely coincident with the circle. Also, two curves are not considered equal unless they have the same parameterization. For instance, two infinite coincident lines are not considered equal if they have different scaling in their parameterization. '''
@@ -9019,59 +8830,50 @@ inverseTangentVector( (PointOnSurface)arg1, (Vector3d)arg2, (Surface)arg3, (Poin
     def mirror (self, val : PyGe.Plane)-> None :
       '''Transforms the entity by mirroring it across the input plane.'''
     ...
+
+    @overload
+    def mixedPartial (self, /)-> PyGe.Vector3d : ...
+    @overload
+    def mixedPartial (self, param: PyGe.Point2d)-> PyGe.Vector3d : ...
+    @overload
+    def mixedPartial (self, surface: PyGe.Surface, param: PyGe.Point2d)-> PyGe.Vector3d : ...
     def mixedPartial (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''mixedPartial( (PointOnSurface)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d mixedPartial(class PyGePointOnSurface {lvalue})
-
-mixedPartial( (PointOnSurface)arg1, (Point2d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d mixedPartial(class PyGePointOnSurface {lvalue},class AcGePoint2d)
-
-mixedPartial( (PointOnSurface)arg1, (Surface)arg2, (Point2d)arg3) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d mixedPartial(class PyGePointOnSurface {lvalue},class PyGeSurface,class AcGePoint2d)'''
+      '''Overloads:
+    - None: Any
+    - param: PyGe.Point2d
+    - surface: PyGe.Surface, param: PyGe.Point2d
+    '''
     ...
+
+    @overload
+    def normal (self, /)-> PyGe.Vector3d : ...
+    @overload
+    def normal (self, param: PyGe.Point2d)-> PyGe.Vector3d : ...
+    @overload
+    def normal (self, surface: PyGe.Surface, param: PyGe.Point2d)-> PyGe.Vector3d : ...
     def normal (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normal( (PointOnSurface)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyGePointOnSurface {lvalue})
-
-normal( (PointOnSurface)arg1, (Point2d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyGePointOnSurface {lvalue},class AcGePoint2d)
-
-normal( (PointOnSurface)arg1, (Surface)arg2, (Point2d)arg3) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyGePointOnSurface {lvalue},class PyGeSurface,class AcGePoint2d)'''
+      '''Overloads:
+    - None: Any
+    - param: PyGe.Point2d
+    - surface: PyGe.Surface, param: PyGe.Point2d
+    '''
     ...
-    def parameter (self, *args, **kwargs)-> PyGe.Point2d :
-      '''parameter( (PointOnSurface)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d parameter(class PyGePointOnSurface {lvalue})'''
+    def parameter (self)-> PyGe.Point2d :
+      '''                             '''
     ...
+
+    @overload
+    def point (self, /)-> PyGe.Point3d : ...
+    @overload
+    def point (self, param: PyGe.Point2d)-> PyGe.Point3d : ...
+    @overload
+    def point (self, surface: PyGe.Surface, param: PyGe.Point2d)-> PyGe.Point3d : ...
     def point (self, *args, **kwargs)-> PyGe.Point3d :
-      '''point( (PointOnSurface)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d point(class PyGePointOnSurface {lvalue})
-
-point( (PointOnSurface)arg1, (Point2d)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d point(class PyGePointOnSurface {lvalue},class AcGePoint2d)
-
-point( (PointOnSurface)arg1, (Surface)arg2, (Point2d)arg3) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d point(class PyGePointOnSurface {lvalue},class PyGeSurface,class AcGePoint2d)'''
+      '''Overloads:
+    - None: Any
+    - param: PyGe.Point2d
+    - surface: PyGe.Surface, param: PyGe.Point2d
+    '''
     ...
     def point3d (self)-> PyGe.Point3d :
       '''                             '''
@@ -9082,39 +8884,28 @@ point( (PointOnSurface)arg1, (Surface)arg2, (Point2d)arg3) -> Point3d :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point3d = 'origin')-> None :
       '''Scales the entity about the input point by the input scale factor. Input scale factor must be greater than 0.'''
     ...
-    def setParameter (self, *args, **kwargs)-> None :
-      '''setParameter( (PointOnSurface)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setParameter(class PyGePointOnSurface {lvalue},class AcGePoint2d)'''
+    def setParameter (self, param: PyGe.Point2d)-> None :
+      '''                             '''
     ...
-    def setSurface (self, *args, **kwargs)-> None :
-      '''setSurface( (PointOnSurface)arg1, (Surface)arg2) -> None :
-
-    C++ signature :
-        void setSurface(class PyGePointOnSurface {lvalue},class PyGeSurface)'''
+    def setSurface (self, val: PyGe.Surface)-> None :
+      '''                             '''
     ...
-    def surface (self, *args, **kwargs)-> PyDb.Surface :
-      '''surface( (PointOnSurface)arg1) -> Surface :
-
-    C++ signature :
-        class PyGeSurface surface(class PyGePointOnSurface {lvalue})'''
+    def surface (self)-> PyDb.Surface :
+      '''                             '''
     ...
+
+    @overload
+    def tangentVector (self, vec: PyGe.Vector2d)-> PyGe.Vector3d : ...
+    @overload
+    def tangentVector (self, vec: PyGe.Vector2d, param: PyGe.Vector2d)-> PyGe.Vector3d : ...
+    @overload
+    def tangentVector (self, vec: PyGe.Vector2d, surface: PyGe.Surface, param: PyGe.Vector2d)-> PyGe.Vector3d : ...
     def tangentVector (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''tangentVector( (PointOnSurface)arg1, (Vector2d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d tangentVector(class PyGePointOnSurface {lvalue},class AcGeVector2d)
-
-tangentVector( (PointOnSurface)arg1, (Vector2d)arg2, (Point2d)arg3) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d tangentVector(class PyGePointOnSurface {lvalue},class AcGeVector2d,class AcGePoint2d)
-
-tangentVector( (PointOnSurface)arg1, (Vector2d)arg2, (Surface)arg3, (Point2d)arg4) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d tangentVector(class PyGePointOnSurface {lvalue},class AcGeVector2d,class PyGeSurface,class AcGePoint2d)'''
+      '''Overloads:
+    - vec: PyGe.Vector2d
+    - vec: PyGe.Vector2d, param: PyGe.Vector2d
+    - vec: PyGe.Vector2d, surface: PyGe.Surface, param: PyGe.Vector2d
+    '''
     ...
     def transformBy (self, val : PyGe.Matrix3d)-> None :
       '''Transforms the entity by applying the input matrix.'''
@@ -9125,37 +8916,33 @@ tangentVector( (PointOnSurface)arg1, (Vector2d)arg2, (Surface)arg3, (Point2d)arg
     def type (self)-> PyGe.EntityId :
       '''Returns the type of the entity.'''
     ...
+
+    @overload
+    def uDeriv (self, order: int)-> PyGe.Vector3d : ...
+    @overload
+    def uDeriv (self, order: int, param: PyGe.Point2d)-> PyGe.Vector3d : ...
+    @overload
+    def uDeriv (self, order: int, surface: PyGe.Surface, param: PyGe.Point2d)-> PyGe.Vector3d : ...
     def uDeriv (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''uDeriv( (PointOnSurface)arg1, (int)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d uDeriv(class PyGePointOnSurface {lvalue},int)
-
-uDeriv( (PointOnSurface)arg1, (int)arg2, (Point2d)arg3) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d uDeriv(class PyGePointOnSurface {lvalue},int,class AcGePoint2d)
-
-uDeriv( (PointOnSurface)arg1, (int)arg2, (Surface)arg3, (Point2d)arg4) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d uDeriv(class PyGePointOnSurface {lvalue},int,class PyGeSurface,class AcGePoint2d)'''
+      '''Overloads:
+    - order: int
+    - order: int, param: PyGe.Point2d
+    - order: int, surface: PyGe.Surface, param: PyGe.Point2d
+    '''
     ...
+
+    @overload
+    def vDeriv (self, order: int)-> PyGe.Vector3d : ...
+    @overload
+    def vDeriv (self, order: int, param: PyGe.Point2d)-> PyGe.Vector3d : ...
+    @overload
+    def vDeriv (self, order: int, surface: PyGe.Surface, param: PyGe.Point2d)-> PyGe.Vector3d : ...
     def vDeriv (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''vDeriv( (PointOnSurface)arg1, (int)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d vDeriv(class PyGePointOnSurface {lvalue},int)
-
-vDeriv( (PointOnSurface)arg1, (int)arg2, (Point2d)arg3) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d vDeriv(class PyGePointOnSurface {lvalue},int,class AcGePoint2d)
-
-vDeriv( (PointOnSurface)arg1, (int)arg2, (Surface)arg3, (Point2d)arg4) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d vDeriv(class PyGePointOnSurface {lvalue},int,class PyGeSurface,class AcGePoint2d)'''
+      '''Overloads:
+    - order: int
+    - order: int, param: PyGe.Point2d
+    - order: int, surface: PyGe.Surface, param: PyGe.Point2d
+    '''
     ...
 
 class Polyline2d(SplineEnt2d):
@@ -9695,47 +9482,37 @@ class Position2d(PointEnt2d):
     ...
 
 class Position3d(PointEnt3d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, pnt: PyGe.Point3d)-> None : ...
+    @overload
+    def __init__ (self, x: float, y: float, z: float)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d)
-
-__init__( (object)arg1, (float)arg2, (float)arg3, (float)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,double,double)'''
+      '''Overloads:
+    - None: Any
+    - pnt: PyGe.Point3d
+    - x: float, y: float, z: float
+    '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.Position3d :
-      '''cast( (Entity3d)arg1) -> Position3d :
 
-    C++ signature :
-        class PyGePosition3d cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.Position3d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.Position3d :
-      '''copycast( (Entity3d)arg1) -> Position3d :
 
-    C++ signature :
-        class PyGePosition3d copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.Position3d :
+      '''                             '''
     ...
     def isEqualTo (self, val : PyGe.Entity3d, tol : PyGe.Tol=None)-> bool :
       '''Determines if two entities are equal to each other. Two entities are considered to be equal only if they are of the same type and they represent the same 3D point set. For instance, if the two entities are of types AcGeCircArc3d and AcGeEllipArc3d then they are not considered equal even if the ellipse is completely coincident with the circle. Also, two curves are not considered equal unless they have the same parameterization. For instance, two infinite coincident lines are not considered equal if they have different scaling in their parameterization. '''
@@ -9761,16 +9538,16 @@ __init__( (object)arg1, (float)arg2, (float)arg3, (float)arg4) -> None :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point3d = 'origin')-> None :
       '''Scales the entity about the input point by the input scale factor. Input scale factor must be greater than 0.'''
     ...
+
+    @overload
+    def set (self, pnt: PyGe.Point3d)-> None : ...
+    @overload
+    def set (self, x: float, y: float, z: float)-> None : ...
     def set (self, *args, **kwargs)-> None :
-      '''set( (Position3d)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void set(class PyGePosition3d {lvalue},class AcGePoint3d)
-
-set( (Position3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> None :
-
-    C++ signature :
-        void set(class PyGePosition3d {lvalue},double,double,double)'''
+      '''Overloads:
+    - pnt: PyGe.Point3d
+    - x: float, y: float, z: float
+    '''
     ...
     def transformBy (self, val : PyGe.Matrix3d)-> None :
       '''Transforms the entity by applying the input matrix.'''
@@ -11269,11 +11046,8 @@ class Tol(object):
     ...
 
 class Torus(Surface):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
 
     @staticmethod
@@ -11436,10 +11210,10 @@ class Vector2d(object):
       '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023D064DC820>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B306E2C820>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000023D064DC820>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001B306E2C820>])'''
     ...
     def isParallelTo (self, vec: PyGe.Vector2d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -11448,16 +11222,16 @@ class Vector2d(object):
       '''                             '''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023D064DC550>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B306E2C550>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000023D064DC550>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B306E2C550>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023D064DC5E0>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B306E2C5E0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000023D064DC5E0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B306E2C5E0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
