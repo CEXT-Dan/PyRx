@@ -1,4 +1,4 @@
-Install python (64 bit) python3.12.X with PATH checkbox set to true.
+Install python (64 bit) python3.12.X with the :exclamation:PATH checkbox:exclamation: set to true.
 
 ![Python install](https://github.com/CEXT-Dan/PyRx/blob/main/pyinstall.png), 
 
