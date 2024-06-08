@@ -27,5 +27,8 @@ debugpy for attaching to CAD and debugging, https://pypi.org/project/debugpy/
 BRX, ZRX and GRX libraries are installed in %AppData%\Local\Programs\PyRx. Use the appload command and navigate to load the files. 
 add to your startup suite
 
+If the module does not load the first time around. Run (setenv "PYRX_LOG" "0") from lisp.
+The next time you attempt to load the module, some information will be printed on the screen  
+
 BricsCAD users,
 This these modules have nothing to do with BricsCAD BIMPYTHON.
