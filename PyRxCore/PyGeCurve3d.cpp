@@ -1438,19 +1438,20 @@ AcGeExternalCurve3d* PyGeExternalCurve3d::impObj(const std::source_location& src
 //AcGeOffsetCurve3d wrapper
 void makePyGeOffsetCurve3dWrapper()
 {
+    PyDocString DS("OffsetCurve3d");
     class_<PyGeOffsetCurve3d, bases<PyGeCurve3d>>("OffsetCurve3d", boost::python::no_init)
-        .def(init<const PyGeCurve3d&, const AcGeVector3d&, double>())
-        .def("curve", &PyGeOffsetCurve3d::curve)
-        .def("normal", &PyGeOffsetCurve3d::normal)
-        .def("offsetDistance", &PyGeOffsetCurve3d::offsetDistance)
-        .def("paramDirection", &PyGeOffsetCurve3d::paramDirection)
-        .def("transformation", &PyGeOffsetCurve3d::transformation)
-        .def("setCurve", &PyGeOffsetCurve3d::setCurve)
-        .def("setNormal", &PyGeOffsetCurve3d::setNormal)
-        .def("setOffsetDistance", &PyGeOffsetCurve3d::setOffsetDistance)
-        .def("cast", &PyGeOffsetCurve3d::cast).staticmethod("cast")
-        .def("copycast", &PyGeOffsetCurve3d::copycast).staticmethod("copycast")
-        .def("className", &PyGeOffsetCurve3d::className).staticmethod("className")
+        .def(init<const PyGeCurve3d&, const AcGeVector3d&, double>(DS.ARGS({ "baseCurve: PyGe.Curve3d", "planeNormal: PyGe.Vector3d", "offsetDistance: float" })))
+        .def("curve", &PyGeOffsetCurve3d::curve, DS.ARGS())
+        .def("normal", &PyGeOffsetCurve3d::normal, DS.ARGS())
+        .def("offsetDistance", &PyGeOffsetCurve3d::offsetDistance, DS.ARGS())
+        .def("paramDirection", &PyGeOffsetCurve3d::paramDirection, DS.ARGS())
+        .def("transformation", &PyGeOffsetCurve3d::transformation, DS.ARGS())
+        .def("setCurve", &PyGeOffsetCurve3d::setCurve, DS.ARGS({ "val: PyGe.Curve3d" }))
+        .def("setNormal", &PyGeOffsetCurve3d::setNormal, DS.ARGS({ "normal: PyGe.Vector3d" }))
+        .def("setOffsetDistance", &PyGeOffsetCurve3d::setOffsetDistance, DS.ARGS({ "val: float" }))
+        .def("cast", &PyGeOffsetCurve3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGeOffsetCurve3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGeOffsetCurve3d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 

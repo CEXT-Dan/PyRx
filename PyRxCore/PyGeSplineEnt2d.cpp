@@ -288,7 +288,7 @@ void makePyGeNurbCurve2dWrapper()
         "- knots: PyGe.KnotVector, fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, fitTolerance: PyGe.Tol, isPeriodic: bool \n";
 
         
-   PyDocString DS("CubicSplineCurve2d");
+   PyDocString DS("NurbCurve2d");
    class_<PyGeNurbCurve2d, bases<PyGeSplineEnt2d>>("NurbCurve2d")
         .def(init<>())
         .def(init<const PyGeEllipArc2d&>())
@@ -671,7 +671,7 @@ void makePyGePolyline2dWrapper()
         .def(init<>())
         .def(init<const boost::python::list&>())
         .def(init<const PyGeKnotVector&, const boost::python::list&>())
-        .def(init<const PyGeCurve2d&, double>())
+        .def(init<const PyGeCurve2d&, double>(DS.CTOR(ctor)))
         .def("numFitPoints", &PyGePolyline2d::numFitPoints, DS.ARGS())
         .def("fitPointAt", &PyGePolyline2d::fitPointAt, DS.ARGS({ "idx: int" }))
         .def("setFitPointAt", &PyGePolyline2d::setFitPointAt, DS.ARGS({ "idx: int","pt: PyGe.Point2d"  }))

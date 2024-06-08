@@ -1125,7 +1125,6 @@ AcGeExternalCurve2d* PyGeExternalCurve2d::impObj(const std::source_location& src
 }
 #endif
 
-
 //-----------------------------------------------------------------------------------------
 //AcGeOffsetCurve2d wrapper
 void makePyGeOffsetCurve2dWrapper()
@@ -1133,7 +1132,7 @@ void makePyGeOffsetCurve2dWrapper()
 #if !defined(_BRXTARGET240)
     PyDocString DS("OffsetCurve2d");
     class_<PyGeOffsetCurve2d, bases<PyGeCurve2d>>("OffsetCurve2d", boost::python::no_init)
-        .def(init<const PyGeCurve2d&, double>())
+        .def(init<const PyGeCurve2d&, double>(DS.ARGS({ "baseCurve: PyGe.Curve2d",  "offsetDistance: float"})))
         .def("cast", &PyGeOffsetCurve2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
         .def("copycast", &PyGeOffsetCurve2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
         .def("className", &PyGeOffsetCurve2d::className, DS.SARGS()).staticmethod("className")
