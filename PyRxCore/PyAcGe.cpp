@@ -24,6 +24,14 @@
 
 using namespace boost::python;
 
+//---------------------------------------------------------------------------------------------------------------
+// hashing
+
+// This gives users control over how hashing behaves 
+// Python's dictionary, set calls __hash__, and should be equivalent to equals 
+// AcGePoint3d == AcGePoint3d uses tol, not perfect but good enough
+// tiny overhead as it's another C++ <-> Python call. 
+
 inline double roundPointComponentToGTol(double value)
 {
     const double precision = AcGeContext::gTol.equalPoint();
@@ -36,8 +44,6 @@ inline double roundVectorComponentToGTOL(double value)
     return std::round(value / precision) * precision;
 }
 
-//---------------------------------------------------------------------------------------------------------------
-// hashing
 inline std::size_t AcGePoint2dHash(const AcGePoint2d& p)
 {
     std::size_t seed = 0;

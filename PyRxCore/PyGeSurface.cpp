@@ -27,7 +27,7 @@ void makePyGeSurfaceWrapper()
         .def("isOn", &PyGeSurface::isOn1)
         .def("isOn", &PyGeSurface::isOn2)
         .def("isOn", &PyGeSurface::isOn3)
-        .def("isOn", &PyGeSurface::isOn4,DS.OVRL(isOnOverloads))
+        .def("isOn", &PyGeSurface::isOn4, DS.OVRL(isOnOverloads))
         .def("closestPointTo", &PyGeSurface::closestPointTo1)
         .def("closestPointTo", &PyGeSurface::closestPointTo2, DS.ARGS({ "pt: PyGe.Point3d","tol: PyGe.Tol=None" }))
         .def("distanceTo", &PyGeSurface::distanceTo1)
@@ -225,7 +225,7 @@ AcGeSurface* PyGeSurface::impObj(const std::source_location& src /*= std::source
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeSurface*>(m_imp.get());
 }
 
@@ -452,7 +452,7 @@ AcGeCone* PyGeCone::impObj(const std::source_location& src /*= std::source_locat
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeCone*>(m_imp.get());
 }
 #endif
@@ -666,7 +666,7 @@ AcGeCylinder* PyGeCylinder::impObj(const std::source_location& src /*= std::sour
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeCylinder*>(m_imp.get());
 }
 
@@ -729,7 +729,7 @@ AcGeExternalBoundedSurface* PyGeExternalBoundedSurface::impObj(const std::source
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeExternalBoundedSurface*>(m_imp.get());
 }
 #endif
@@ -793,7 +793,7 @@ AcGeExternalSurface* PyGeExternalSurface::impObj(const std::source_location& src
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeExternalSurface*>(m_imp.get());
 }
 #endif
@@ -857,7 +857,7 @@ AcGeNurbSurface* PyGeNurbSurface::impObj(const std::source_location& src /*= std
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeNurbSurface*>(m_imp.get());
 }
 #endif
@@ -921,7 +921,7 @@ AcGeOffsetSurface* PyGeOffsetSurface::impObj(const std::source_location& src /*=
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeOffsetSurface*>(m_imp.get());
 }
 #endif
@@ -1137,7 +1137,7 @@ AcGeSphere* PyGeSphere::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeSphere*>(m_imp.get());
 }
 
@@ -1200,7 +1200,7 @@ AcGeTorus* PyGeTorus::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeTorus*>(m_imp.get());
 }
 #endif

@@ -169,7 +169,7 @@ AcGeBoundBlock2d* PyGeBoundBlock2d::impObj(const std::source_location& src /*= s
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeBoundBlock2d*>(m_imp.get());
 }
 #endif

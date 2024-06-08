@@ -142,7 +142,7 @@ AcGeLinearEnt2d* PyGeLinearEnt2d::impObj(const std::source_location& src /*= std
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeLinearEnt2d*>(m_imp.get());
 }
 
@@ -250,7 +250,7 @@ AcGeLine2d* PyGeLine2d::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeLine2d*>(m_imp.get());
 }
 
@@ -431,7 +431,7 @@ AcGeLineSeg2d* PyGeLineSeg2d::impObj(const std::source_location& src /*= std::so
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeLineSeg2d*>(m_imp.get());
 }
 
@@ -527,6 +527,6 @@ AcGeRay2d* PyGeRay2d::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeRay2d*>(m_imp.get());
 }
