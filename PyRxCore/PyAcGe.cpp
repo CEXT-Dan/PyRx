@@ -1568,6 +1568,13 @@ BOOST_PYTHON_MODULE(PyGe)
         .value("kOverlapOverlap", AcGe::AcGeXConfig::kOverlapOverlap)
         .export_values()
         ;
+    enum_<AcGe::ssiConfig>("AcGeSSIConfig")
+        .value("kSSIUnknown", AcGe::ssiConfig::kSSIUnknown)
+        .value("kSSIOut", AcGe::ssiConfig::kSSIOut)
+        .value("kSSIIn", AcGe::ssiConfig::kSSIIn)
+        .value("kSSICoincident", AcGe::ssiConfig::kSSICoincident)
+        .export_values()
+        ;
 };
 
 void initPyGeModule()

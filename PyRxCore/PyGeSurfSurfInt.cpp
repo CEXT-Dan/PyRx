@@ -141,7 +141,7 @@ boost::python::tuple PyGeSurfSurfInt::getIntConfigs(int intNum) const
     impObj()->getIntConfigs(intNum, surf1Left, surf1Right, surf2Left, surf2Right, intType, dim, err);
     if (err != AcGe::kXXOk)
         throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
-    return boost::python::make_tuple((int)surf1Left, (int)surf1Right, (int)surf2Left, (int)surf2Right, dim);
+    return boost::python::make_tuple(surf1Left, surf1Right, surf2Left, surf2Right, dim);
 }
 
 int PyGeSurfSurfInt::getDimension(int intNum) const
