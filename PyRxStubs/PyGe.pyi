@@ -9,6 +9,50 @@ import PyPl
 from typing import overload
 from typing import Any
 
+class AcGeCSIConfig(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
+    ...
+    def kXCoincident (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kXCoincidentUnbounded (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kXIn (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kXOut (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kXTanIn (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kXTanOut (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kXUnknown (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+
 class AcGeError(object):
     def __add__ (self, value, /) :
       '''Return self+value.'''
@@ -97,6 +141,38 @@ class AcGeSSIConfig(object):
       '''None'''
     ...
     def kSSIUnknown (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+
+class AcGeSSIType(object):
+    def __add__ (self, value, /) :
+      '''Return self+value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /) :
+      '''Return self*value.'''
+    ...
+    def __rmul__ (self, value, /) :
+      '''Return value*self.'''
+    ...
+    def __sub__ (self, value, /) :
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /) :
+      '''Return self/value.'''
+    ...
+    def kSSIAntiTangent (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kSSITangent (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kSSITransverse (self, *args, **kwargs)-> None :
       '''None'''
     ...
     def name (self, *args, **kwargs)-> None :

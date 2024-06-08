@@ -1575,6 +1575,22 @@ BOOST_PYTHON_MODULE(PyGe)
         .value("kSSICoincident", AcGe::ssiConfig::kSSICoincident)
         .export_values()
         ;
+    enum_<AcGe::ssiType>("AcGeSSIType")
+        .value("kSSITransverse", AcGe::ssiType::kSSITransverse)
+        .value("kSSITangent", AcGe::ssiType::kSSITangent)
+        .value("kSSIAntiTangent", AcGe::ssiType::kSSIAntiTangent)
+        .export_values()
+        ;
+    enum_<AcGe::csiConfig>("AcGeCSIConfig")
+        .value("kXUnknown", AcGe::csiConfig::kXUnknown)
+        .value("kXOut", AcGe::csiConfig::kXOut)
+        .value("kXIn", AcGe::csiConfig::kXIn)
+        .value("kXTanOut", AcGe::csiConfig::kXTanOut)
+        .value("kXTanIn", AcGe::csiConfig::kXTanIn)
+        .value("kXCoincident", AcGe::csiConfig::kXCoincident)
+        .value("kXCoincidentUnbounded", AcGe::csiConfig::kXCoincidentUnbounded)
+        .export_values()
+        ;
 };
 
 void initPyGeModule()
