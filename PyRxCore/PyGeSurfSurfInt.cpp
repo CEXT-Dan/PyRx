@@ -195,7 +195,7 @@ AcGeSurfSurfInt* PyGeSurfSurfInt::impObj(const std::source_location& src /*= std
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeSurfSurfInt*>(m_imp.get());
 }
 #endif

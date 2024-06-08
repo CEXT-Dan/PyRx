@@ -149,7 +149,7 @@ AcGeSplineEnt2d* PyGeSplineEnt2d::impObj(const std::source_location& src /*= std
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeSplineEnt2d*>(m_imp.get());
 }
 #endif
@@ -287,9 +287,9 @@ void makePyGeNurbCurve2dWrapper()
         "- fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, knotParam: PyGe.KnotParameterization, fitTolerance: PyGe.Tol\n"
         "- knots: PyGe.KnotVector, fitPoints: list[PyGe.Point2d], startTangent: PyGe.Vector2d, endTangent: PyGe.Vector2d, fitTolerance: PyGe.Tol, isPeriodic: bool \n";
 
-        
-   PyDocString DS("NurbCurve2d");
-   class_<PyGeNurbCurve2d, bases<PyGeSplineEnt2d>>("NurbCurve2d")
+
+    PyDocString DS("NurbCurve2d");
+    class_<PyGeNurbCurve2d, bases<PyGeSplineEnt2d>>("NurbCurve2d")
         .def(init<>())
         .def(init<const PyGeEllipArc2d&>())
         .def(init<const PyGeLineSeg2d&>())
@@ -674,7 +674,7 @@ void makePyGePolyline2dWrapper()
         .def(init<const PyGeCurve2d&, double>(DS.CTOR(ctor)))
         .def("numFitPoints", &PyGePolyline2d::numFitPoints, DS.ARGS())
         .def("fitPointAt", &PyGePolyline2d::fitPointAt, DS.ARGS({ "idx: int" }))
-        .def("setFitPointAt", &PyGePolyline2d::setFitPointAt, DS.ARGS({ "idx: int","pt: PyGe.Point2d"  }))
+        .def("setFitPointAt", &PyGePolyline2d::setFitPointAt, DS.ARGS({ "idx: int","pt: PyGe.Point2d" }))
         .def("cast", &PyGePolyline2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
         .def("copycast", &PyGePolyline2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
         .def("className", &PyGePolyline2d::className, DS.SARGS()).staticmethod("className")
@@ -744,7 +744,7 @@ AcGePolyline2d* PyGePolyline2d::impObj(const std::source_location& src /*= std::
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGePolyline2d*>(m_imp.get());
 }
 #endif

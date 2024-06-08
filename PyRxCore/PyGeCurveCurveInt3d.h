@@ -17,9 +17,9 @@ public:
     PyGeCurveCurveInt3d();
     PyGeCurveCurveInt3d(const AcGeCurveCurveInt3d& src);
     PyGeCurveCurveInt3d(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2);
-    PyGeCurveCurveInt3d(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const AcGeVector3d& planeNormal,const AcGeTol& tol);
+    PyGeCurveCurveInt3d(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const AcGeVector3d& planeNormal, const AcGeTol& tol);
     PyGeCurveCurveInt3d(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeInterval& range1, const PyGeInterval& range2);
-    PyGeCurveCurveInt3d(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeInterval& range1, const PyGeInterval& range2,const AcGeVector3d& planeNormal, const AcGeTol& tol);
+    PyGeCurveCurveInt3d(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeInterval& range1, const PyGeInterval& range2, const AcGeVector3d& planeNormal, const AcGeTol& tol);
     PyGeCurveCurveInt3d(AcGeEntity3d* pEnt);
 
     PyGeCurve3d             curve1() const;

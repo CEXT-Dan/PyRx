@@ -23,7 +23,7 @@ void makePyGeEntity3dWrapper()
         .def("scaleBy", &PyGeEntity3d::scaleBy1)
         .def("scaleBy", &PyGeEntity3d::scaleBy2, DS.ARGS({ "scaleFactor : float","pt : PyGe.Point3d = 'origin'" }, 12052))
         .def("isOn", &PyGeEntity3d::isOn1)
-        .def("isOn", &PyGeEntity3d::isOn2, DS.ARGS({ "pt : PyGe.Point3d","tol : PyGe.Tol=None"  }, 12048))
+        .def("isOn", &PyGeEntity3d::isOn2, DS.ARGS({ "pt : PyGe.Point3d","tol : PyGe.Tol=None" }, 12048))
         .def("isNull", &PyGeEntity3d::isNull, DS.ARGS())
         .def("__eq__", &PyGeEntity3d::operator==)
         .def("__ne__", &PyGeEntity3d::operator!=)
@@ -164,6 +164,6 @@ AcGeEntity3d* PyGeEntity3d::impObj(const std::source_location& src /*= std::sour
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return m_imp.get();
 }

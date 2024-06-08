@@ -180,7 +180,7 @@ AcGeCurveSurfInt* PyGeCurveSurfInt::impObj(const std::source_location& src /*= s
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeCurveSurfInt*>(m_imp.get());
 }
 #endif

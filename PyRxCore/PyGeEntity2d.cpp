@@ -55,7 +55,7 @@ PyGeEntity2d::PyGeEntity2d(AcGeEntity2d* pEnt)
 }
 
 PyGeEntity2d::PyGeEntity2d(const AcGeEntity2d* pEnt)
-  : m_imp(const_cast<AcGeEntity2d*>(pEnt),PyGePyGeEntity2dDeleter(false))
+    : m_imp(const_cast<AcGeEntity2d*>(pEnt), PyGePyGeEntity2dDeleter(false))
 {
 }
 
@@ -164,6 +164,6 @@ AcGeEntity2d* PyGeEntity2d::impObj(const std::source_location& src /*= std::sour
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return m_imp.get();
 }

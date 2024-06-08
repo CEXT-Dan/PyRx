@@ -196,6 +196,6 @@ AcGePlanarEnt* PyGePlanarEnt::impObj(const std::source_location& src /*= std::so
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGePlanarEnt*>(m_imp.get());
 }

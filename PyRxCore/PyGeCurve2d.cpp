@@ -501,7 +501,7 @@ AcGeCurve2d* PyGeCurve2d::impObj(const std::source_location& src /*= std::source
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeCurve2d*>(m_imp.get());
 }
 
@@ -834,7 +834,7 @@ AcGeCircArc2d* PyGeCircArc2d::impObj(const std::source_location& src /*= std::so
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeCircArc2d*>(m_imp.get());
 }
 
@@ -861,7 +861,7 @@ void makePyGeEllipArc2Wrapper()
         .def(init<const AcGePoint2d&, const AcGeVector2d&, const AcGeVector2d&, double, double>())
         .def(init<const AcGePoint2d&, const AcGeVector2d&, const AcGeVector2d&, double, double, double, double>(DS.CTOR(ctor)))
         .def("intersectWith", &PyGeEllipArc2d::intersectWith1)
-        .def("intersectWith", &PyGeEllipArc2d::intersectWith2, DS.ARGS({ "val: PyGe.LinearEnt2d",  "tol: PyGe.Tol = None"}))
+        .def("intersectWith", &PyGeEllipArc2d::intersectWith2, DS.ARGS({ "val: PyGe.LinearEnt2d",  "tol: PyGe.Tol = None" }))
         .def("isCircular", &PyGeEllipArc2d::isCircular1)
         .def("isCircular", &PyGeEllipArc2d::isCircular2, DS.ARGS({ "tol: PyGe.Tol=None" }))
         .def("isInside", &PyGeEllipArc2d::isInside1)
@@ -1073,7 +1073,7 @@ AcGeEllipArc2d* PyGeEllipArc2d::impObj(const std::source_location& src /*= std::
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeEllipArc2d*>(m_imp.get());
 }
 #endif
@@ -1120,7 +1120,7 @@ AcGeExternalCurve2d* PyGeExternalCurve2d::impObj(const std::source_location& src
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeExternalCurve2d*>(m_imp.get());
 }
 #endif
@@ -1132,7 +1132,7 @@ void makePyGeOffsetCurve2dWrapper()
 #if !defined(_BRXTARGET240)
     PyDocString DS("OffsetCurve2d");
     class_<PyGeOffsetCurve2d, bases<PyGeCurve2d>>("OffsetCurve2d", boost::python::no_init)
-        .def(init<const PyGeCurve2d&, double>(DS.ARGS({ "baseCurve: PyGe.Curve2d",  "offsetDistance: float"})))
+        .def(init<const PyGeCurve2d&, double>(DS.ARGS({ "baseCurve: PyGe.Curve2d",  "offsetDistance: float" })))
         .def("cast", &PyGeOffsetCurve2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
         .def("copycast", &PyGeOffsetCurve2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
         .def("className", &PyGeOffsetCurve2d::className, DS.SARGS()).staticmethod("className")
@@ -1174,7 +1174,7 @@ AcGeOffsetCurve2d* PyGeOffsetCurve2d::impObj(const std::source_location& src /*=
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeOffsetCurve2d*>(m_imp.get());
 }
 #endif
@@ -1225,7 +1225,7 @@ AcGeCompositeCurve2d* PyGeCompositeCurve2d::impObj(const std::source_location& s
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeCompositeCurve2d*>(m_imp.get());
 }
 
