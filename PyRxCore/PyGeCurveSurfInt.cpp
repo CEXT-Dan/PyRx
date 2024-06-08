@@ -144,7 +144,7 @@ boost::python::tuple PyGeCurveSurfInt::getIntConfigs(int intNum) const
     impObj()->getIntConfigs(intNum, lower, higher, smallAngle, err);
     if (err != AcGe::kXXOk)
         throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
-    return boost::python::make_tuple((int)lower, (int)higher, smallAngle);
+    return boost::python::make_tuple(lower, higher, smallAngle);
 }
 
 void PyGeCurveSurfInt::set1(const PyGeCurve3d& cvr, const PyGeSurface& srf)
