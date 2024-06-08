@@ -270,8 +270,8 @@ def isStatic(ags : str) -> bool:
     
 # todo: boost generates a doc string that has the function signature
 # it should be able to parse this, or add something in the doc user string
-def generate_pyi(moduleName, module, dsdict,rtTypes):
-    with open(moduleName, 'w') as f:
+def generate_pyi(stubPath,moduleName, module, dsdict,rtTypes):
+    with open(stubPath, 'w') as f:
         
         #write the base module names to the stub file
         for mname in all_modules_names:
@@ -381,7 +381,7 @@ def PyRxCmd_pygenpyi():
     try:
         dsdict = {}
         rtTypes = {}
-        
+ 
         dsPath = "./DocStrings.json"
         with open(dsPath) as json_file:
             data = json.load(json_file)
@@ -401,7 +401,9 @@ def PyRxCmd_pygenpyi():
         for module in all_modules:
             buildClassDict(module[0], module[1])
         for module in all_modules:
-            generate_pyi(module[0] + ".pyi", module[1],dsdict,rtTypes)
+            stubname = "{}.pyi".format(module[0])
+            stubPath="../{}".format(stubname)
+            generate_pyi(stubPath,stubname, module[1],dsdict,rtTypes)
     except Exception as err:
         traceback.print_exception(err)
 
