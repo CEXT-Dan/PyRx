@@ -26,9 +26,9 @@ public:
     void                 setUpper(double upper);
     void                 setLower(double lower);
     void                 setTolerance(double tol);
-    void                 getMerge(const PyGeInterval& otherInterval, PyGeInterval& result) const;
-    int                  subtract(const PyGeInterval& otherInterval, PyGeInterval& lInterval, PyGeInterval& rInterval) const;
-    Adesk::Boolean       intersectWith(const PyGeInterval& otherInterval, PyGeInterval& result) const;
+    PyGeInterval         getMerge(const PyGeInterval& otherInterval) const;
+    boost::python::tuple subtract(const PyGeInterval& otherInterval) const;
+    boost::python::tuple intersectWith(const PyGeInterval& otherInterval) const;
     Adesk::Boolean       isBounded() const;
     Adesk::Boolean       isBoundedAbove() const;
     Adesk::Boolean       isBoundedBelow() const;
@@ -38,7 +38,7 @@ public:
     Adesk::Boolean       contains1(const PyGeInterval& otherInterval) const;
     Adesk::Boolean       contains2(double val) const;
     Adesk::Boolean       isContinuousAtUpper(const PyGeInterval& otherInterval) const;
-    Adesk::Boolean       isOverlapAtUpper(const PyGeInterval& otherInterval, PyGeInterval& overlap) const;
+    boost::python::tuple isOverlapAtUpper(const PyGeInterval& otherInterval) const;
     Adesk::Boolean       isEqualAtUpper1(const PyGeInterval& otherInterval) const;
     Adesk::Boolean       isEqualAtUpper2(double value) const;
     Adesk::Boolean       isEqualAtLower1(const PyGeInterval& otherInterval) const;

@@ -249,38 +249,80 @@ AcGePointOnCurve3d* PyGePointOnCurve3d::impObj(const std::source_location& src /
 //PyGePointOnSurface
 void makePyGePointOnSurfaceWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- surface: PyGe.Surface\n"
+        "- surface: PyGe.Surface, pnt: PyGe.Point2d\n\n";
+
+    constexpr const std::string_view pointOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- param: PyGe.Point2d\n"
+        "- surface: PyGe.Surface, param: PyGe.Point2d\n";
+
+    constexpr const std::string_view normalOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- param: PyGe.Point2d\n"
+        "- surface: PyGe.Surface, param: PyGe.Point2d\n";
+
+    constexpr const std::string_view uderivOverloads = "Overloads:\n"
+        "- order: int\n"
+        "- order: int, param: PyGe.Point2d\n"
+        "- order: int, surface: PyGe.Surface, param: PyGe.Point2d\n";
+
+    constexpr const std::string_view vderivOverloads = "Overloads:\n"
+        "- order: int\n"
+        "- order: int, param: PyGe.Point2d\n"
+        "- order: int, surface: PyGe.Surface, param: PyGe.Point2d\n";
+
+    constexpr const std::string_view mixedPartialOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- param: PyGe.Point2d\n"
+        "- surface: PyGe.Surface, param: PyGe.Point2d\n";
+
+    constexpr const std::string_view tangentVectorOverloads = "Overloads:\n"
+        "- vec: PyGe.Vector2d\n"
+        "- vec: PyGe.Vector2d, param: PyGe.Vector2d\n"
+        "- vec: PyGe.Vector2d, surface: PyGe.Surface, param: PyGe.Vector2d\n";
+
+    constexpr const std::string_view inverseTangentVectorOverloads = "Overloads:\n"
+        "- vec: PyGe.Vector2d\n"
+        "- vec: PyGe.Vector2d, param: PyGe.Vector2d\n"
+        "- vec: PyGe.Vector2d, surface: PyGe.Surface, param: PyGe.Vector2d\n";
+
+
+    PyDocString DS("PointOnSurface");
     class_<PyGePointOnSurface, bases<PyGePointEnt3d>>("PointOnSurface")
         .def(init<>())
         .def(init<const PyGeSurface&>())
-        .def(init<const PyGeSurface&, const AcGePoint2d&>())
-        .def("surface", &PyGePointOnSurface::surface)
-        .def("parameter", &PyGePointOnSurface::parameter)
+        .def(init<const PyGeSurface&, const AcGePoint2d&>(DS.CTOR(ctor)))
+        .def("surface", &PyGePointOnSurface::surface, DS.ARGS())
+        .def("parameter", &PyGePointOnSurface::parameter, DS.ARGS())
         .def("point", &PyGePointOnSurface::point1)
         .def("point", &PyGePointOnSurface::point2)
-        .def("point", &PyGePointOnSurface::point3)
+        .def("point", &PyGePointOnSurface::point3, DS.OVRL(pointOverloads))
         .def("normal", &PyGePointOnSurface::normal1)
         .def("normal", &PyGePointOnSurface::normal2)
-        .def("normal", &PyGePointOnSurface::normal3)
+        .def("normal", &PyGePointOnSurface::normal3, DS.OVRL(normalOverloads))
         .def("uDeriv", &PyGePointOnSurface::uDeriv1)
         .def("uDeriv", &PyGePointOnSurface::uDeriv2)
-        .def("uDeriv", &PyGePointOnSurface::uDeriv3)
+        .def("uDeriv", &PyGePointOnSurface::uDeriv3, DS.OVRL(uderivOverloads))
         .def("vDeriv", &PyGePointOnSurface::vDeriv1)
         .def("vDeriv", &PyGePointOnSurface::vDeriv2)
-        .def("vDeriv", &PyGePointOnSurface::vDeriv3)
+        .def("vDeriv", &PyGePointOnSurface::vDeriv3, DS.OVRL(vderivOverloads))
         .def("mixedPartial", &PyGePointOnSurface::mixedPartial1)
         .def("mixedPartial", &PyGePointOnSurface::mixedPartial2)
-        .def("mixedPartial", &PyGePointOnSurface::mixedPartial3)
+        .def("mixedPartial", &PyGePointOnSurface::mixedPartial3, DS.OVRL(mixedPartialOverloads))
         .def("tangentVector", &PyGePointOnSurface::tangentVector1)
         .def("tangentVector", &PyGePointOnSurface::tangentVector2)
-        .def("tangentVector", &PyGePointOnSurface::tangentVector3)
+        .def("tangentVector", &PyGePointOnSurface::tangentVector3, DS.OVRL(tangentVectorOverloads))
         .def("inverseTangentVector", &PyGePointOnSurface::inverseTangentVector1)
         .def("inverseTangentVector", &PyGePointOnSurface::inverseTangentVector2)
-        .def("inverseTangentVector", &PyGePointOnSurface::inverseTangentVector3)
-        .def("setSurface", &PyGePointOnSurface::setSurface)
-        .def("setParameter", &PyGePointOnSurface::setParameter)
-        .def("cast", &PyGePointOnSurface::cast).staticmethod("cast")
-        .def("copycast", &PyGePointOnSurface::copycast).staticmethod("copycast")
-        .def("className", &PyGePointOnSurface::className).staticmethod("className")
+        .def("inverseTangentVector", &PyGePointOnSurface::inverseTangentVector3, DS.OVRL(inverseTangentVectorOverloads))
+        .def("setSurface", &PyGePointOnSurface::setSurface, DS.ARGS({ "val: PyGe.Surface" }))
+        .def("setParameter", &PyGePointOnSurface::setParameter, DS.ARGS({ "param: PyGe.Point2d" }))
+        .def("cast", &PyGePointOnSurface::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGePointOnSurface::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGePointOnSurface::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -538,15 +580,25 @@ AcGePointOnSurface* PyGePointOnSurface::impObj(const std::source_location& src /
 //PyGePosition3d
 void makePyGePosition3dWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- pnt: PyGe.Point3d\n"
+        "- x: float, y: float, z: float\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- pnt: PyGe.Point3d\n"
+        "- x: float, y: float, z: float\n";
+
+    PyDocString DS("Position3d");
     class_<PyGePosition3d, bases<PyGePointEnt3d>>("Position3d")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
-        .def(init<double, double, double>())
+        .def(init<double, double, double>(DS.CTOR(ctor)))
         .def("set", &PyGePosition3d::set1)
-        .def("set", &PyGePosition3d::set2)
-        .def("cast", &PyGePosition3d::cast).staticmethod("cast")
-        .def("copycast", &PyGePosition3d::copycast).staticmethod("copycast")
-        .def("className", &PyGePosition3d::className).staticmethod("className")
+        .def("set", &PyGePosition3d::set2, DS.OVRL(setOverloads))
+        .def("cast", &PyGePosition3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGePosition3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGePosition3d::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
