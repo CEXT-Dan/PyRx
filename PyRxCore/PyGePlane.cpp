@@ -8,26 +8,40 @@ using namespace boost::python;
 //PyGePlane wrapper
 void makePyGePlaneWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- origin: PyGe.Point3d, normal: PyGe.Vector3d\n"
+        "- origin: PyGe.Point3d, uAxis: PyGe.Vector3d, vAxis: PyGe.Vector3d\n"
+        "- pntU: PyGe.Point3d, origin: PyGe.Point3d, pntV: PyGe.Point3d\n"
+        "- a: float, b: float, c: float, d: float\n";
+
+    constexpr const std::string_view setOverloads = "Overloads:\n"
+        "- origin: PyGe.Point3d, normal: PyGe.Vector3d\n"
+        "- origin: PyGe.Point3d, uAxis: PyGe.Vector3d, vAxis: PyGe.Vector3d\n"
+        "- pntU: PyGe.Point3d, origin: PyGe.Point3d, pntV: PyGe.Point3d\n"
+        "- a: float, b: float, c: float, d: float\n";
+
+    PyDocString DS("Plane");
     class_<PyGePlane, bases<PyGePlanarEnt>>("Plane")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
-        .def(init<double, double, double, double>())
-        .def("signedDistanceTo", &PyGePlane::signedDistanceTo)
+        .def(init<double, double, double, double>(DS.CTOR(ctor)))
+        .def("signedDistanceTo", &PyGePlane::signedDistanceTo, DS.ARGS({ "pt: PyGe.Point3d" }))
         .def("intersectWith", &PyGePlane::intersectWith1)
         .def("intersectWith", &PyGePlane::intersectWith2)
         .def("intersectWith", &PyGePlane::intersectWith3)
         .def("intersectWith", &PyGePlane::intersectWith4)
         .def("intersectWith", &PyGePlane::intersectWith5)
-        .def("intersectWith", &PyGePlane::intersectWith6)
+        .def("intersectWith", &PyGePlane::intersectWith6, DS.ARGS({ "val: PyGe.LinearEnt3d | PyGe.Plane | PyGe.BoundedPlane", "tol: PyGe.Tol=None" }))
         .def("set", &PyGePlane::set1)
         .def("set", &PyGePlane::set2)
         .def("set", &PyGePlane::set3)
-        .def("set", &PyGePlane::set4)
-        .def("cast", &PyGePlane::cast).staticmethod("cast")
-        .def("copycast", &PyGePlane::cast).staticmethod("copycast")
-        .def("className", &PyGePlane::className).staticmethod("className")
+        .def("set", &PyGePlane::set4, DS.OVRL(setOverloads))
+        .def("cast", &PyGePlane::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
+        .def("copycast", &PyGePlane::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("className", &PyGePlane::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -192,7 +206,7 @@ AcGePlane* PyGePlane::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGePlane*>(m_imp.get());
 }
 
@@ -220,7 +234,7 @@ void makePyGeBoundedPlaneWrapper()
         .def("intersectWith", &PyGeBoundedPlane::intersectWith3)
         .def("intersectWith", &PyGeBoundedPlane::intersectWith4)
         .def("intersectWith", &PyGeBoundedPlane::intersectWith5)
-        .def("intersectWith", &PyGeBoundedPlane::intersectWith6, DS.ARGS({ "val: PyGe.LinearEnt3d | PyGe.Plane | PyGe.BoundedPlane", "tol: PyGe.Tol=None"}))
+        .def("intersectWith", &PyGeBoundedPlane::intersectWith6, DS.ARGS({ "val: PyGe.LinearEnt3d | PyGe.Plane | PyGe.BoundedPlane", "tol: PyGe.Tol=None" }))
         .def("set", &PyGeBoundedPlane::set1)
         .def("set", &PyGeBoundedPlane::set2, DS.OVRL(setOverloads))
         .def("cast", &PyGeBoundedPlane::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
@@ -372,6 +386,6 @@ AcGeBoundedPlane* PyGeBoundedPlane::impObj(const std::source_location& src /*= s
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeBoundedPlane*>(m_imp.get());
 }

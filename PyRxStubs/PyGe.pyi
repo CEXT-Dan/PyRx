@@ -5932,16 +5932,8 @@ class Matrix2d(object):
     def __imul__ (self, xform: PyGe.Matrix2d)-> PyGe.Matrix2d :
       '''                             '''
     ...
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+      '''                             '''
     ...
     def __mul__ (self, xform: PyGe.Matrix2d)-> PyGe.Matrix2d :
       '''                             '''
@@ -7077,11 +7069,8 @@ class OffsetCrvExtType(object):
     ...
 
 class OffsetCurve2d(Curve2d):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (Curve2d)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve2d,double)'''
+    def __init__ (self, baseCurve: PyGe.Curve2d, offsetDistance: float)-> None :
+      '''                             '''
     ...
     def area (self, startParam : float, endParam : float, tol : float = None)-> float :
       '''                             '''
@@ -7222,11 +7211,8 @@ class OffsetCurve2d(Curve2d):
     ...
 
 class OffsetCurve3d(Curve3d):
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (Curve3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve3d,class AcGeVector3d,double)'''
+    def __init__ (self, baseCurve: PyGe.Curve3d, planeNormal: PyGe.Vector3d, offsetDistance: float)-> None :
+      '''                             '''
     ...
     def area (self, startParam : float, endParam : float, tol : float = None)-> float :
       '''Returns the area of the interval of the curve defined by startParam and endParam. Returns Adesk::kTrue if area was successfully computed to within the specified tolerance. If the curve is not planar, then the area cannot be calculated and a value of Adesk::kFalse is returned. If the points at startParam and endParam are the same, then this function returns the area of the closed curve. If the points are different, then this function connects the two points with a line segment and return the signed area between the curve and the line segment. If the line segment does not intersect the curve at any points between startParam and endParam, then the returned area is positive. If the line segment intersects the curves at any points between startParam and endParam, then the returned area is the sum of the sub-areas created by the intersection of the line segment with the curve. Each sub-area has a positive or negative area, depending on whether the curve lies above or below the line segment. The total area returned by this function can therefore be positive, negative, or 0. '''
@@ -7234,17 +7220,15 @@ class OffsetCurve3d(Curve3d):
     def boundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock3d :
       '''Returns the bounding box of the curve. The sides of the returned box are parallel to the coordinate axes. '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.OffsetCurve3d :
-      '''cast( (Entity3d)arg1) -> OffsetCurve3d :
 
-    C++ signature :
-        class PyGeOffsetCurve3d cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.OffsetCurve3d :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, other : PyGe.Point3d | PyGe.Curve3d, tol : PyGe.Tol=None)-> PyGe.Point3d :
       '''Finds the closest point on this curve to the input point. This function is the same as closestPointTo(), except that the closest point is returned as an AcGePointOnCurve3d object.'''
@@ -7252,17 +7236,13 @@ class OffsetCurve3d(Curve3d):
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.OffsetCurve3d :
-      '''copycast( (Entity3d)arg1) -> OffsetCurve3d :
 
-    C++ signature :
-        class PyGeOffsetCurve3d copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.OffsetCurve3d :
+      '''                             '''
     ...
-    def curve (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''curve( (OffsetCurve3d)arg1) -> Curve3d :
-
-    C++ signature :
-        class PyGeCurve3d curve(class PyGeOffsetCurve3d {lvalue})'''
+    def curve (self)-> PyGe.Curve3d :
+      '''                             '''
     ...
     def distanceTo (self, pt : PyGe.Point3d | PyGe.Curve3d, tol : PyGe.Tol=None)-> float :
       '''Returns the distance between the input point and the closest point on this curve.'''
@@ -7357,17 +7337,11 @@ class OffsetCurve3d(Curve3d):
     def mirror (self, val : PyGe.Plane)-> None :
       '''Transforms the entity by mirroring it across the input plane.'''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normal( (OffsetCurve3d)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyGeOffsetCurve3d {lvalue})'''
+    def normal (self)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def offsetDistance (self, *args, **kwargs)-> float :
-      '''offsetDistance( (OffsetCurve3d)arg1) -> float :
-
-    C++ signature :
-        double offsetDistance(class PyGeOffsetCurve3d {lvalue})'''
+    def offsetDistance (self)-> float :
+      '''                             '''
     ...
     def orthoBoundBlock (self, range : PyGe.Interval = None)-> PyGe.BoundBlock3d :
       '''Returns the bounding box of the curve. The sides of the returned box are parallel to the coordinate axes.'''
@@ -7378,11 +7352,8 @@ class OffsetCurve3d(Curve3d):
     def paramAtLength (self, datumParam : float, length : float, posParamDir : bool=True, tol : float=None)-> float :
       '''Returns the parameter value of the point whose arc length distance (from the point with parameter value datumParam) is the input length. In other words, ift = paramAtLength (datumParam, len, posParamDir, tol) then length (t, datumParam, tol) is (approximately) equal to len. If posParamDir is set to Adesk::kTrue, then the returned parameter value is greater than datumParam. Otherwise it will be less than datumParam. '''
     ...
-    def paramDirection (self, *args, **kwargs)-> bool :
-      '''paramDirection( (OffsetCurve3d)arg1) -> bool :
-
-    C++ signature :
-        bool paramDirection(class PyGeOffsetCurve3d {lvalue})'''
+    def paramDirection (self)-> bool :
+      '''                             '''
     ...
     def paramOf (self, pt : PyGe.Point3d, tol : PyGe.Tol=None)-> float :
       '''Returns the parameter value of pnt. This function assumes that pnt lies on the curve and does not verify this. If pnt does not lie on the curve, this function will return unpredictable results. If it is not known whether pnt lies on the curve, the user should not call this function but should instead call AcGeCurve3d::isOn (pnt, param, tol). '''
@@ -7405,35 +7376,23 @@ class OffsetCurve3d(Curve3d):
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point3d = 'origin')-> None :
       '''Scales the entity about the input point by the input scale factor. Input scale factor must be greater than 0.'''
     ...
-    def setCurve (self, *args, **kwargs)-> None :
-      '''setCurve( (OffsetCurve3d)arg1, (Curve3d)arg2) -> None :
-
-    C++ signature :
-        void setCurve(class PyGeOffsetCurve3d {lvalue},class PyGeCurve3d)'''
+    def setCurve (self, val: PyGe.Curve3d)-> None :
+      '''                             '''
     ...
     def setInterval (self, val : PyGe.Interval = None)-> None :
       '''Sets the domain of the curve to the input interval.'''
     ...
-    def setNormal (self, *args, **kwargs)-> None :
-      '''setNormal( (OffsetCurve3d)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyGeOffsetCurve3d {lvalue},class AcGeVector3d)'''
+    def setNormal (self, normal: PyGe.Vector3d)-> None :
+      '''                             '''
     ...
-    def setOffsetDistance (self, *args, **kwargs)-> None :
-      '''setOffsetDistance( (OffsetCurve3d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setOffsetDistance(class PyGeOffsetCurve3d {lvalue},double)'''
+    def setOffsetDistance (self, val: float)-> None :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix3d)-> None :
       '''Transforms the entity by applying the input matrix.'''
     ...
-    def transformation (self, *args, **kwargs)-> PyGe.Matrix3d :
-      '''transformation( (OffsetCurve3d)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d transformation(class PyGeOffsetCurve3d {lvalue})'''
+    def transformation (self)-> PyGe.Matrix3d :
+      '''                             '''
     ...
     def translateBy (self, vec : PyGe.Vector3d)-> None :
       '''Translates the entity by the input vector.'''
@@ -7678,48 +7637,35 @@ This class cannot be instantiated from Python'''
     ...
 
 class Plane(PlanarEnt):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, origin: PyGe.Point3d, normal: PyGe.Vector3d)-> None : ...
+    @overload
+    def __init__ (self, origin: PyGe.Point3d, uAxis: PyGe.Vector3d, vAxis: PyGe.Vector3d)-> None : ...
+    @overload
+    def __init__ (self, pntU: PyGe.Point3d, origin: PyGe.Point3d, pntV: PyGe.Point3d)-> None : ...
+    @overload
+    def __init__ (self, a: float, b: float, c: float, d: float)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
-
-__init__( (object)arg1, (float)arg2, (float)arg3, (float)arg4, (float)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,double,double,double)'''
+      '''Overloads:
+    - None: Any
+    - origin: PyGe.Point3d, normal: PyGe.Vector3d
+    - origin: PyGe.Point3d, uAxis: PyGe.Vector3d, vAxis: PyGe.Vector3d
+    - pntU: PyGe.Point3d, origin: PyGe.Point3d, pntV: PyGe.Point3d
+    - a: float, b: float, c: float, d: float
+    '''
     ...
-    def cast (self, *args, **kwargs)-> PyGe.Plane :
-      '''cast( (Entity3d)arg1) -> Plane :
 
-    C++ signature :
-        class PyGePlane cast(class PyGeEntity3d)'''
+    @staticmethod
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.Plane :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
 
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    @staticmethod
+    def className ()-> str :
+      '''                             '''
     ...
     def closestPointTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> PyGe.Point3d :
       '''                             '''
@@ -7733,11 +7679,10 @@ __init__( (object)arg1, (float)arg2, (float)arg3, (float)arg4, (float)arg5) -> N
     def copy (self)-> PyGe.Entity3d :
       '''Returns a pointer to a copy of this entity. This copy is created using the new and it is the responsibility of the caller to delete it.'''
     ...
-    def copycast (self, *args, **kwargs)-> PyGe.Plane :
-      '''copycast( (Entity3d)arg1) -> Plane :
 
-    C++ signature :
-        class PyGePlane copycast(class PyGeEntity3d)'''
+    @staticmethod
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.Plane :
+      '''                             '''
     ...
     def distanceTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> float :
       '''                             '''
@@ -7762,36 +7707,8 @@ __init__( (object)arg1, (float)arg2, (float)arg3, (float)arg4, (float)arg5) -> N
     def getCoordSystem (self)-> tuple[Any,...] :
       '''                             '''
     ...
-    def intersectWith (self, *args, **kwargs)-> tuple[Any,...] :
-      '''intersectWith( (Plane)arg1, (LinearEnt3d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGePlane {lvalue},class PyGeLinearEnt3d)
-
-intersectWith( (Plane)arg1, (LinearEnt3d)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGePlane {lvalue},class PyGeLinearEnt3d,class AcGeTol)
-
-intersectWith( (Plane)arg1, (Plane)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGePlane {lvalue},class PyGePlane)
-
-intersectWith( (Plane)arg1, (Plane)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGePlane {lvalue},class PyGePlane,class AcGeTol)
-
-intersectWith( (Plane)arg1, (BoundedPlane)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGePlane {lvalue},class PyGeBoundedPlane)
-
-intersectWith( (Plane)arg1, (BoundedPlane)arg2, (Tol)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple intersectWith(class PyGePlane {lvalue},class PyGeBoundedPlane,class AcGeTol)'''
+    def intersectWith (self, val: PyGe.LinearEnt3d | PyGe.Plane | PyGe.BoundedPlane, tol: PyGe.Tol=None)-> tuple[Any,...] :
+      '''                             '''
     ...
     def isClosedInU (self, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -7858,32 +7775,25 @@ intersectWith( (Plane)arg1, (BoundedPlane)arg2, (Tol)arg3) -> tuple :
     def scaleBy (self, scaleFactor : float, pt : PyGe.Point3d = 'origin')-> None :
       '''Scales the entity about the input point by the input scale factor. Input scale factor must be greater than 0.'''
     ...
+
+    @overload
+    def set (self, origin: PyGe.Point3d, normal: PyGe.Vector3d)-> None : ...
+    @overload
+    def set (self, origin: PyGe.Point3d, uAxis: PyGe.Vector3d, vAxis: PyGe.Vector3d)-> None : ...
+    @overload
+    def set (self, pntU: PyGe.Point3d, origin: PyGe.Point3d, pntV: PyGe.Point3d)-> None : ...
+    @overload
+    def set (self, a: float, b: float, c: float, d: float)-> None : ...
     def set (self, *args, **kwargs)-> None :
-      '''set( (Plane)arg1, (Point3d)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void set(class PyGePlane {lvalue},class AcGePoint3d,class AcGeVector3d)
-
-set( (Plane)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> None :
-
-    C++ signature :
-        void set(class PyGePlane {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
-
-set( (Plane)arg1, (float)arg2, (float)arg3, (float)arg4, (float)arg5) -> None :
-
-    C++ signature :
-        void set(class PyGePlane {lvalue},double,double,double,double)
-
-set( (Plane)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
-
-    C++ signature :
-        void set(class PyGePlane {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d)'''
+      '''Overloads:
+    - origin: PyGe.Point3d, normal: PyGe.Vector3d
+    - origin: PyGe.Point3d, uAxis: PyGe.Vector3d, vAxis: PyGe.Vector3d
+    - pntU: PyGe.Point3d, origin: PyGe.Point3d, pntV: PyGe.Point3d
+    - a: float, b: float, c: float, d: float
+    '''
     ...
-    def signedDistanceTo (self, *args, **kwargs)-> float :
-      '''signedDistanceTo( (Plane)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double signedDistanceTo(class PyGePlane {lvalue},class AcGePoint3d)'''
+    def signedDistanceTo (self, pt: PyGe.Point3d)-> float :
+      '''                             '''
     ...
     def transformBy (self, val : PyGe.Matrix3d)-> None :
       '''Transforms the entity by applying the input matrix.'''
@@ -7896,11 +7806,8 @@ set( (Plane)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
     ...
 
 class Point2d(object):
-    def __add__ (self, *args, **kwargs)-> PyGe.Point2d :
-      '''__add__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d __add__(class AcGePoint2d {lvalue},class AcGeVector2d)'''
+    def __add__ (self, vec: PyGe.Vector3d)-> PyGe.Point2d :
+      '''                             '''
     ...
     def __getitem__ (self, idx: int)-> float :
       '''                             '''
@@ -7919,11 +7826,8 @@ class Point2d(object):
     - x: float, y: float
     '''
     ...
-    def __isub__ (self, *args, **kwargs)-> PyGe.Point2d :
-      '''__isub__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d {lvalue} __isub__(class AcGePoint2d {lvalue},class AcGeVector2d)'''
+    def __isub__ (self, vec: PyGe.Vector3d)-> PyGe.Point2d :
+      '''                             '''
     ...
     def __itruediv__ (self, val: float)-> PyGe.Point2d :
       '''                             '''
@@ -7934,16 +7838,8 @@ class Point2d(object):
     def __setitem__ (self, idx: int, val: float)-> None :
       '''                             '''
     ...
-    def __sub__ (self, *args, **kwargs)-> PyGe.Point2d :
-      '''__sub__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d __sub__(class AcGePoint2d {lvalue},class AcGeVector2d)
-
-__sub__( (Point2d)arg1, (Point2d)arg2) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d __sub__(class AcGePoint2d {lvalue},class AcGePoint2d)'''
+    def __sub__ (self, other: PyGe.Point3d|PyGe.Vector3d)-> PyGe.Point2d :
+      '''                             '''
     ...
     def __truediv__ (self, val: float)-> PyGe.Point2d :
       '''                             '''
@@ -7960,32 +7856,20 @@ __sub__( (Point2d)arg1, (Point2d)arg2) -> Vector2d :
     def kOrigin (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Point2d :
-      '''mirror( (Point2d)arg1, (object)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d {lvalue} mirror(class AcGePoint2d {lvalue},class AcGeLine2d)'''
+    def mirror (self, pt: PyGe.Line2d)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Point2d :
-      '''rotateBy( (Point2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d(0.00000000000000,0.00000000000000)>]) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d {lvalue} rotateBy(class AcGePoint2d {lvalue},double [,class AcGePoint2d=<PyGe.Point2d(0.00000000000000,0.00000000000000)>])'''
+    def rotateBy (self, val: float, pt: PyGe.Point2d=PyGe.Point2d.kOrgin)-> PyGe.Point2d :
+      '''                             '''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Point2d :
-      '''scaleBy( (Point2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d(0.00000000000000,0.00000000000000)>]) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d {lvalue} scaleBy(class AcGePoint2d {lvalue},double [,class AcGePoint2d=<PyGe.Point2d(0.00000000000000,0.00000000000000)>])'''
+    def scaleBy (self, val: float, pt: PyGe.Point2d=PyGe.Point2d.kOrgin)-> PyGe.Point2d :
+      '''                             '''
     ...
     def set (self, xx: float, yy: float)-> PyGe.Point2d :
       '''                             '''
     ...
-    def setToProduct (self, *args, **kwargs)-> PyGe.Point2d :
-      '''setToProduct( (Point2d)arg1, (Matrix2d)arg2, (Point2d)arg3) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d {lvalue} setToProduct(class AcGePoint2d {lvalue},class AcGeMatrix2d,class AcGePoint2d)'''
+    def setToProduct (self, mat: PyGe.Matrix2d, pt: PyGe.Point2d)-> PyGe.Point2d :
+      '''                             '''
     ...
     def setToSum (self, pt: PyGe.Point2d, vec: PyGe.Vector2d)-> PyGe.Point2d :
       '''                             '''
@@ -7999,11 +7883,8 @@ __sub__( (Point2d)arg1, (Point2d)arg2) -> Vector2d :
     def toTuple (self)-> tuple[float,float] :
       '''                             '''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Point2d :
-      '''transformBy( (Point2d)arg1, (Matrix2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d {lvalue} transformBy(class AcGePoint2d {lvalue},class AcGeMatrix2d)'''
+    def transformBy (self, xform: PyGe.Matrix2d)-> PyGe.Point2d :
+      '''                             '''
     ...
     def x (self, *args, **kwargs)-> None :
       '''None'''
@@ -8642,31 +8523,20 @@ class PointOnSurface(PointEnt3d):
     ...
 
 class Polyline2d(SplineEnt2d):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, points: list[PyGe.Point2d])-> None : ...
+    @overload
+    def __init__ (self, knots: PyGe.KnotVector, points: list[PyGe.Point2d])-> None : ...
+    @overload
+    def __init__ (self, crv: PyGe.Curve2d, apprEps: float)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list)
-
-__init__( (object)arg1, (KnotVector)arg2, (list)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeKnotVector,class boost::python::list)
-
-__init__( (object)arg1, (Curve2d)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve2d,double)'''
+      '''Overloads:
+    - None: Any
+    - points: list[PyGe.Point2d]
+    - knots: PyGe.KnotVector, points: list[PyGe.Point2d]- crv: PyGe.Curve2d, apprEps: float'''
     ...
     def area (self, startParam : float, endParam : float, tol : float = None)-> float :
       '''                             '''
@@ -10844,10 +10714,10 @@ class Vector2d(object):
       '''                             '''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000269217CF910>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002338835C9D0>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x00000269217CF910>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002338835C9D0>])'''
     ...
     def isParallelTo (self, vec: PyGe.Vector2d, tol: PyGe.Tol=None)-> bool :
       '''                             '''
@@ -10856,16 +10726,16 @@ class Vector2d(object):
       '''                             '''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000269217CF520>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002338835C700>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000269217CF520>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002338835C700>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000269217CF5B0>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002338835C790>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000269217CF5B0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002338835C790>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
