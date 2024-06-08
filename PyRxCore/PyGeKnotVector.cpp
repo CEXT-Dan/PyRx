@@ -7,43 +7,55 @@ using namespace boost::python;
 void makePyGeKnotVectorWrapper()
 {
 #if !defined(_BRXTARGET240)
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- size: int, growSize: int\n"
+        "- data: list[float]\n"
+        "- plusMult: int, other: PyGe.KnotVector\n";
+
+    constexpr const std::string_view appendOverloads = "Overloads:\n"
+        "- val:float\n"
+        "- tail: PyGe.KnotVector\n"
+        "- tail: PyGe.KnotVector, knotRatio: float\n";
+
+    PyDocString DS("KnotVector");
     class_<PyGeKnotVector>("KnotVector")
         .def(init<>())
         .def(init<int, int>())
         .def(init<const boost::python::list&>())
-        .def(init<int, const PyGeKnotVector&>())
-        .def("isEqualTo", &PyGeKnotVector::isEqualTo)
-        .def("startParam", &PyGeKnotVector::startParam)
-        .def("endParam", &PyGeKnotVector::endParam)
-        .def("multiplicityAt", &PyGeKnotVector::multiplicityAt)
-        .def("multiplicityAtParam", &PyGeKnotVector::multiplicityAtParam)
-        .def("numIntervals", &PyGeKnotVector::numIntervals)
-        .def("getInterval", &PyGeKnotVector::getInterval)
-        .def("getDistinctKnots", &PyGeKnotVector::getDistinctKnots)
-        .def("contains", &PyGeKnotVector::contains)
-        .def("isOn", &PyGeKnotVector::isOn)
-        .def("reverse", &PyGeKnotVector::reverse)
-        .def("removeAt", &PyGeKnotVector::removeAt)
-        .def("removeSubVector", &PyGeKnotVector::removeSubVector)
+        .def(init<int, const PyGeKnotVector&>(DS.CTOR(ctor)))
+        .def("isEqualTo", &PyGeKnotVector::isEqualTo, DS.ARGS({ "other: PyGe.KnotVector" }))
+        .def("startParam", &PyGeKnotVector::startParam, DS.ARGS())
+        .def("endParam", &PyGeKnotVector::endParam, DS.ARGS())
+        .def("multiplicityAt", &PyGeKnotVector::multiplicityAt, DS.ARGS({ "idx: int" }))
+        .def("multiplicityAtParam", &PyGeKnotVector::multiplicityAtParam, DS.ARGS({ "param: float" }))
+        .def("numIntervals", &PyGeKnotVector::numIntervals, DS.ARGS())
+        .def("getInterval", &PyGeKnotVector::getInterval, DS.ARGS({ "ord: int","param: float" }))
+        .def("getDistinctKnots", &PyGeKnotVector::getDistinctKnots, DS.ARGS())
+        .def("contains", &PyGeKnotVector::contains, DS.ARGS({ "param: float" }))
+        .def("isOn", &PyGeKnotVector::isOn, DS.ARGS({ "knot: float" }))
+        .def("reverse", &PyGeKnotVector::reverse, DS.ARGS())
+        .def("removeAt", &PyGeKnotVector::removeAt, DS.ARGS({ "idx: int" }))
+        .def("removeSubVector", &PyGeKnotVector::removeSubVector, DS.ARGS({ "start: int","end: int" }))
         .def("insertAt", &PyGeKnotVector::insertAt1)
-        .def("insertAt", &PyGeKnotVector::insertAt2)
-        .def("insert", &PyGeKnotVector::insert)
+        .def("insertAt", &PyGeKnotVector::insertAt2, DS.ARGS({ "idx: int","u: float", "multiplicity: int"}))
+        .def("insert", &PyGeKnotVector::insert, DS.ARGS({ "u: float" }))
         .def("append", &PyGeKnotVector::append1)
         .def("append", &PyGeKnotVector::append2)
-        .def("append", &PyGeKnotVector::append3)
-        .def("split", &PyGeKnotVector::split)
-        .def("setRange", &PyGeKnotVector::setRange)
-        .def("tolerance", &PyGeKnotVector::tolerance)
-        .def("setTolerance", &PyGeKnotVector::setTolerance)
-        .def("length", &PyGeKnotVector::length)
-        .def("isEmpty", &PyGeKnotVector::isEmpty)
-        .def("logicalLength", &PyGeKnotVector::logicalLength)
-        .def("setLogicalLength", &PyGeKnotVector::setLogicalLength)
-        .def("physicalLength", &PyGeKnotVector::physicalLength)
-        .def("setPhysicalLength", &PyGeKnotVector::setPhysicalLength)
-        .def("growLength", &PyGeKnotVector::growLength)
-        .def("setGrowLength", &PyGeKnotVector::setGrowLength)
-        .def("className", &PyGeKnotVector::className).staticmethod("className")
+        .def("append", &PyGeKnotVector::append3,DS.OVRL(appendOverloads))
+        .def("split", &PyGeKnotVector::split, DS.ARGS({ "param: float", "multilast: int", "multifirst: int"}))
+        .def("setRange", &PyGeKnotVector::setRange, DS.ARGS({ "lower: float","upper: float" }))
+        .def("tolerance", &PyGeKnotVector::tolerance, DS.ARGS())
+        .def("setTolerance", &PyGeKnotVector::setTolerance, DS.ARGS({ "tol: float" }))
+        .def("length", &PyGeKnotVector::length, DS.ARGS())
+        .def("isEmpty", &PyGeKnotVector::isEmpty, DS.ARGS())
+        .def("logicalLength", &PyGeKnotVector::logicalLength, DS.ARGS())
+        .def("setLogicalLength", &PyGeKnotVector::setLogicalLength, DS.ARGS({ "length: int" }))
+        .def("physicalLength", &PyGeKnotVector::physicalLength, DS.ARGS())
+        .def("setPhysicalLength", &PyGeKnotVector::setPhysicalLength, DS.ARGS({ "length: int" }))
+        .def("growLength", &PyGeKnotVector::growLength, DS.ARGS())
+        .def("setGrowLength", &PyGeKnotVector::setGrowLength, DS.ARGS({ "length: int" }))
+        .def("className", &PyGeKnotVector::className, DS.SARGS()).staticmethod("className")
         ;
 #endif
 }

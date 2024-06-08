@@ -16,7 +16,6 @@ void makePyGeIntervalWrapper()
         "- lower: float, upper: float\n"
         "- bounded:bool, upper: float\n";
 
-
     PyDocString DS("Interval");
     class_<PyGeInterval>("Interval")
         .def(init<>())
