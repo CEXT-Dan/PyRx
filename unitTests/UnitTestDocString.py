@@ -39,7 +39,7 @@ def lookupRowNumber(docstringkey, conn: sqlite3.Connection):
 class TestDocString(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestDocString, self).__init__(*args, **kwargs)
-        self.conn = sqlite3.connect("..\\PyRxStubs\\DocString.db", isolation_level='DEFERRED') 
+        self.conn = sqlite3.connect("..\\PyRxStubs\\utility\\DocString.db", isolation_level='DEFERRED') 
         
     def __del__(self):
         self.conn.close()
