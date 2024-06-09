@@ -893,49 +893,49 @@ class DocManagerReactor(object):
       '''This class provides notification for a variety of document management events.'''
     ...
     def addReactor (self)-> None :
-      '''                             '''
+      '''This function adds an AcApDocManagerReactor object to the document manager.'''
     ...
     def documentActivated (self, val : Document)-> None :
-      '''                             '''
+      '''This notification is sent once a document has been activated and its context has been successfully switched.'''
     ...
     def documentActivationModified (self, val : bool)-> None :
-      '''                             '''
+      '''This notification is sent for changes caused by disableDocumentActivation() or enableDocumentActivation().'''
     ...
     def documentBecameCurrent (self, val : Document)-> None :
-      '''                             '''
+      '''This notification is sent whenever the current document changes. It should not be confused with a document getting focus, or becoming active. It is possible for the same document to go in and out of focus, or become active and inactive. This notification is only sent when a document becomes active, and is different than the last active document.'''
     ...
     def documentCreateCanceled (self, val : Document)-> None :
-      '''                             '''
+      '''This notification is sent when a user action has canceled a document's creation. This notification is only sent in MDI mode and after a documentCreateStarted() notification.'''
     ...
     def documentCreateStarted (self, val : Document)-> None :
-      '''                             '''
+      '''This notification is sent when a document is first instantiated and no database is yet available.'''
     ...
     def documentCreated (self, val : Document)-> None :
-      '''                             '''
+      '''This notification is sent when a new AcApDocument has been constructed. A new message in acrxEntryPoint() can also be used by applications to monitor when a new document has been started, but this method provides a pointer to the new AcApDocument.'''
     ...
     def documentDestroyed (self, val : str)-> None :
-      '''                             '''
+      '''This notification is sent when a document is completely destroyed and the underlying database corresponding to this document has also been deleted.'''
     ...
     def documentLockModeChangeVetoed (self, doc : Document, globalCmdName : str)-> None :
-      '''                             '''
+      '''Requests to established locks on a document can be vetoed by reactors receiving the documentLockModeChanged() callback. If this happens, then all reactors will receive this callback so that all will know the request was vetoed, even though not all the reactors may have received the documentLockModeChanged() callback before the veto occurred.'''
     ...
     def documentLockModeChanged (self, doc : Document, myPrevMode : DocLockMode, myCurMode : DocLockMode, currentMode : DocLockMode, globalCmdName : str)-> None :
-      '''                             '''
+      '''This callback is given every time a lock is established or removed on a document. You can distinguish between a lock or an unlock call. Unlock calls will always have a command name prefixed with a '#' character. Lock calls can be vetoed, but unlock calls cannot.'''
     ...
     def documentLockModeWillChange (self, myCurMode : DocLockMode, myNewMode : DocLockMode, curMode : DocLockMode, globalCmdName : str)-> None :
-      '''                             '''
+      '''This callback is given before all lock changes are made on documents. It cannot be vetoed.'''
     ...
     def documentToBeActivated (self, val : Document)-> None :
-      '''                             '''
+      '''This notification is sent when a document is about to be activated.'''
     ...
     def documentToBeDeactivated (self, val : Document)-> None :
-      '''                             '''
+      '''This notification is sent when a document is about to be deactivated.'''
     ...
     def documentToBeDestroyed (self, val : Document)-> None :
-      '''                             '''
+      '''This notification is sent at the beginning of document destruction.'''
     ...
     def removeReactor (self)-> None :
-      '''                             '''
+      '''This function removes the specified AcApDocManagerReactor object from the document manager.'''
     ...
 
 class Document(PyRx.RxObject):
@@ -1051,16 +1051,16 @@ class LayerFilter(PyRx.RxObject):
       '''                             '''
     ...
     def addNested (self, val : PyLy.LayerFilter)-> None :
-      '''                             '''
+      '''Adds the filter to this filter as a nested filter.Returns Acad::eNotApplicable when allowNested() is false. Returns Acad::eInvalidInput when filter is null. Returns Acad::eOk when successful.'''
     ...
     def allowDelete (self)-> bool :
-      '''                             '''
+      '''Returns true if this filter can be removed.'''
     ...
     def allowNested (self)-> bool :
-      '''                             '''
+      '''Returns true if this filter allows nested filters.'''
     ...
     def allowRename (self)-> bool :
-      '''                             '''
+      '''Returns a Boolean value indicating whether or not renaming this filter is allowed.'''
     ...
 
     @staticmethod
@@ -1068,7 +1068,7 @@ class LayerFilter(PyRx.RxObject):
       '''                             '''
     ...
     def compareTo (self, other : PyLy.LayerFilter)-> bool :
-      '''                             '''
+      '''Returns true if this filter and pOther allow the same layers.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''Function usage:This function is intended to allow classes to provide a means to compare class objects much the way strcmp() compares character strings.The object pointed to by other is compared with this object. The result of the comparison is returned.The possible AcRx::Ordering types are:AcRx::kLessThanAcRx::kEqualAcRx::kGreaterThanAcRx::kNotOrderableThe AcRx::kNotOrderable type is there because C++ classes often cannot support object value comparison.Function implementation in derived classes:There are no restrictions or expectations on how this function is implemented. Each class will have its own requirements for comparison.Default implementation:Simply returns AcRx::kNotOrderable since many C++ classes cannot support object value comparison.'''
@@ -1085,19 +1085,19 @@ class LayerFilter(PyRx.RxObject):
       '''                             '''
     ...
     def dynamicallyGenerated (self)-> bool :
-      '''                             '''
+      '''When implemented in a derived class, this function should return true if the filter is dynamically generated by its parent and should not be persisted on its own.'''
     ...
     def filter (self, val : PyDb.LayerTableRecord)-> bool :
-      '''                             '''
+      '''Returns true if the given AcDbLayerTableRecord is visible with this filter. '''
     ...
     def filterExpression (self)-> str :
-      '''                             '''
+      '''Returns a filter expression of this form:    /*    BNF for the valid boolean expression we evaluate    <bool_expr>::= <bool_expr> or <and_expr> | <and_expr>    <and_expr>::=<and_expr> and <rel_expr> | <rel_expr>    <rel_expr>::=<variable><rel_op><constant>     <rel_op>::= == | !=    <constant>::=A-Z0-9*?~@.,-    <variable>::=#A-Z0-9    */This function may return null if the filter cannot be described this way.'''
     ...
     def generateNested (self)-> None :
-      '''                             '''
+      '''Called by the ObjectDBX framework after a filter is loaded from persistent storage. This is an opportunity for the filter to generate nested filters. Should return Acad::eOk if successful. Any other return value will abort the loading of this filter and the filter will not be added to the filter tree.'''
     ...
     def getNestedFilters (self)-> list[PyAp.LayerFilter] :
-      '''                             '''
+      '''Returns an array containing the nested filters of this filter. The returned array is const; clients should not remove or add filters to this array.'''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -1106,7 +1106,7 @@ class LayerFilter(PyRx.RxObject):
       '''Function usage:For each class registered with ObjectARX, the implementation of this function is to return a pointer to the AcRxClass object for the class of the object in which this method is called. For classes not registered with ObjectARX, this method has no meaning.Function implementation in derived classes:This function is overridden in all derived classes. The AcRx macros declare and define this function, so that the override is taken care of as part of using the macros. The implementation of this function is simply to return ::desc(). For example. the implementation for AcDbLine would be:return AcDbLine::desc();Default implementation for AcRxObject:  { return AcRxObject::desc(); }'''
     ...
     def isIdFilter (self)-> bool :
-      '''                             '''
+      '''Returns true if this filter only filters for the object ID property of a layer. These filters are also known as layer groups.'''
     ...
     def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''Returns true if "this" object is of a member of either the class represented by aClass, or a class derived from aClass. '''
@@ -1115,31 +1115,31 @@ class LayerFilter(PyRx.RxObject):
       '''                             '''
     ...
     def isProxy (self)-> bool :
-      '''                             '''
+      '''Returns true if this is a proxy filter. A filter becomes a proxy when ObjectDBX does not find the code (ObjectARX or ObjectDBX application) behind the filter. Proxy filters are not shown to the user by AutoCAD, but their persistent data is round tripped.'''
     ...
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
     def name (self)-> str :
-      '''                             '''
+      '''Returns the name of the filter. This usually what is entered by the user when filter is created. However, for some filters such as the Xref or All filter, this is a localized constant.'''
     ...
     def parent (self)-> PyAp.LayerFilter :
-      '''                             '''
+      '''Returns the parent filter for this filter. All filters except the top level ("All") filter have a parent. The top level filter returns null.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
     def removeNested (self, val : PyLy.LayerFilter)-> None :
-      '''                             '''
+      '''Removes the given filter from the list of nested filters for this filter. Returns Acad::eOk when successful. Returns Acad::eNotApplicable when filter->allowDelete() is false. Returns Acad::eInvalidInput when filter is null. '''
     ...
     def setFilterExpression (self, val : str)-> None :
-      '''                             '''
+      '''Sets a new filter expression. See filterExpression() for valid filter expressions. Returns eNotApplicable if the filter is not expression-based. Returns eInvalidInput if the expression is invalid. Returns eOk otherwise.'''
     ...
     def setName (self, val : str)-> None :
-      '''                             '''
+      '''Sets the name of the filter.If renaming is not allowed, this function returns Acad::eNotApplicable. If the name is null, then it returns Acad::eInvalidInput. Returns Acad::eOk when successful.'''
     ...
     def showEditor (self)-> int :
-      '''                             '''
+      '''Called by the host application to show an editor window for the filter. The editor is displayed as a child of the active popup window.Return kUseDefault if you want to instruct the host application to display the default filter dialog.'''
     ...
 
 class LayerFilterManager(object):
@@ -1169,16 +1169,16 @@ class LayerGroup(LayerFilter):
       '''                             '''
     ...
     def addNested (self, val : PyLy.LayerFilter)-> None :
-      '''                             '''
+      '''Adds the filter to this filter as a nested filter.Returns Acad::eNotApplicable when allowNested() is false. Returns Acad::eInvalidInput when filter is null. Returns Acad::eOk when successful.'''
     ...
     def allowDelete (self)-> bool :
-      '''                             '''
+      '''Returns true if this filter can be removed.'''
     ...
     def allowNested (self)-> bool :
-      '''                             '''
+      '''Returns true if this filter allows nested filters.'''
     ...
     def allowRename (self)-> bool :
-      '''                             '''
+      '''Returns a Boolean value indicating whether or not renaming this filter is allowed.'''
     ...
 
     @staticmethod
@@ -1186,7 +1186,7 @@ class LayerGroup(LayerFilter):
       '''                             '''
     ...
     def compareTo (self, other : PyLy.LayerFilter)-> bool :
-      '''                             '''
+      '''Returns true if this filter and pOther allow the same layers.'''
     ...
     def comparedTo (self, other: PyRx.RxObject)-> PyRx.Ordering :
       '''Function usage:This function is intended to allow classes to provide a means to compare class objects much the way strcmp() compares character strings.The object pointed to by other is compared with this object. The result of the comparison is returned.The possible AcRx::Ordering types are:AcRx::kLessThanAcRx::kEqualAcRx::kGreaterThanAcRx::kNotOrderableThe AcRx::kNotOrderable type is there because C++ classes often cannot support object value comparison.Function implementation in derived classes:There are no restrictions or expectations on how this function is implemented. Each class will have its own requirements for comparison.Default implementation:Simply returns AcRx::kNotOrderable since many C++ classes cannot support object value comparison.'''
@@ -1203,19 +1203,19 @@ class LayerGroup(LayerFilter):
       '''                             '''
     ...
     def dynamicallyGenerated (self)-> bool :
-      '''                             '''
+      '''When implemented in a derived class, this function should return true if the filter is dynamically generated by its parent and should not be persisted on its own.'''
     ...
     def filter (self, val : PyDb.LayerTableRecord)-> bool :
-      '''                             '''
+      '''Returns true if the given AcDbLayerTableRecord is visible with this filter. '''
     ...
     def filterExpression (self)-> str :
-      '''                             '''
+      '''Returns a filter expression of this form:    /*    BNF for the valid boolean expression we evaluate    <bool_expr>::= <bool_expr> or <and_expr> | <and_expr>    <and_expr>::=<and_expr> and <rel_expr> | <rel_expr>    <rel_expr>::=<variable><rel_op><constant>     <rel_op>::= == | !=    <constant>::=A-Z0-9*?~@.,-    <variable>::=#A-Z0-9    */This function may return null if the filter cannot be described this way.'''
     ...
     def generateNested (self)-> None :
-      '''                             '''
+      '''Called by the ObjectDBX framework after a filter is loaded from persistent storage. This is an opportunity for the filter to generate nested filters. Should return Acad::eOk if successful. Any other return value will abort the loading of this filter and the filter will not be added to the filter tree.'''
     ...
     def getNestedFilters (self)-> list[PyAp.LayerFilter] :
-      '''                             '''
+      '''Returns an array containing the nested filters of this filter. The returned array is const; clients should not remove or add filters to this array.'''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -1224,7 +1224,7 @@ class LayerGroup(LayerFilter):
       '''Function usage:For each class registered with ObjectARX, the implementation of this function is to return a pointer to the AcRxClass object for the class of the object in which this method is called. For classes not registered with ObjectARX, this method has no meaning.Function implementation in derived classes:This function is overridden in all derived classes. The AcRx macros declare and define this function, so that the override is taken care of as part of using the macros. The implementation of this function is simply to return ::desc(). For example. the implementation for AcDbLine would be:return AcDbLine::desc();Default implementation for AcRxObject:  { return AcRxObject::desc(); }'''
     ...
     def isIdFilter (self)-> bool :
-      '''                             '''
+      '''Returns true if this filter only filters for the object ID property of a layer. These filters are also known as layer groups.'''
     ...
     def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''Returns true if "this" object is of a member of either the class represented by aClass, or a class derived from aClass. '''
@@ -1233,7 +1233,7 @@ class LayerGroup(LayerFilter):
       '''                             '''
     ...
     def isProxy (self)-> bool :
-      '''                             '''
+      '''Returns true if this is a proxy filter. A filter becomes a proxy when ObjectDBX does not find the code (ObjectARX or ObjectDBX application) behind the filter. Proxy filters are not shown to the user by AutoCAD, but their persistent data is round tripped.'''
     ...
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
@@ -1242,10 +1242,10 @@ class LayerGroup(LayerFilter):
       '''                             '''
     ...
     def name (self)-> str :
-      '''                             '''
+      '''Returns the name of the filter. This usually what is entered by the user when filter is created. However, for some filters such as the Xref or All filter, this is a localized constant.'''
     ...
     def parent (self)-> PyAp.LayerFilter :
-      '''                             '''
+      '''Returns the parent filter for this filter. All filters except the top level ("All") filter have a parent. The top level filter returns null.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
@@ -1254,16 +1254,16 @@ class LayerGroup(LayerFilter):
       '''                             '''
     ...
     def removeNested (self, val : PyLy.LayerFilter)-> None :
-      '''                             '''
+      '''Removes the given filter from the list of nested filters for this filter. Returns Acad::eOk when successful. Returns Acad::eNotApplicable when filter->allowDelete() is false. Returns Acad::eInvalidInput when filter is null. '''
     ...
     def setFilterExpression (self, val : str)-> None :
-      '''                             '''
+      '''Sets a new filter expression. See filterExpression() for valid filter expressions. Returns eNotApplicable if the filter is not expression-based. Returns eInvalidInput if the expression is invalid. Returns eOk otherwise.'''
     ...
     def setName (self, val : str)-> None :
-      '''                             '''
+      '''Sets the name of the filter.If renaming is not allowed, this function returns Acad::eNotApplicable. If the name is null, then it returns Acad::eInvalidInput. Returns Acad::eOk when successful.'''
     ...
     def showEditor (self)-> int :
-      '''                             '''
+      '''Called by the host application to show an editor window for the filter. The editor is displayed as a child of the active popup window.Return kUseDefault if you want to instruct the host application to display the default filter dialog.'''
     ...
 
 class LayoutManager(PyDb.LayoutManager):
@@ -1299,10 +1299,10 @@ class LayoutManager(PyDb.LayoutManager):
       '''                             '''
     ...
     def createLayoutFromTemplate (self, newLayoutName : str, templatePath : str, layoutName : str, db : PyDb.Database='current')-> PyDb.ObjectId :
-      '''                             '''
+      '''Creates a new layout from an existing layout that is stored in a drawing or drawing template file.'''
     ...
     def createViewports (self)-> bool :
-      '''                             '''
+      '''This function returns kTrue if a viewport will be created by default in a paper space layout, and kFalse otherwise.'''
     ...
     def deleteLayout (self, name: str, db: PyDb.Database=None)-> None :
       '''                             '''
@@ -1319,7 +1319,7 @@ class LayoutManager(PyDb.LayoutManager):
       '''                             '''
     ...
     def generateNextNewLayoutName (self, val : PyDb.Database='current')-> str :
-      '''                             '''
+      '''This function scans the existing layouts (included deleted ones) for name matches of the type "Layout#" where # is a number starting at 1 and increasing. The function starts with Layout1 and keeps trying to find one that isn't already used in this format and then returns it.'''
     ...
     def getActiveLayoutBTRId (self, db: PyDb.Database=None)-> PyDb.ObjectId :
       '''                             '''
@@ -1328,7 +1328,7 @@ class LayoutManager(PyDb.LayoutManager):
       '''                             '''
     ...
     def getActiveTab (self)-> str :
-      '''                             '''
+      '''This function returns the name of the currently selected layout tab which is also the name of the current AcDbLayout object.'''
     ...
     def getClipBoundaryElabration (self, val : PyDb.ObjectId)-> list[PyGe.Point2d] :
       '''                             '''
@@ -1361,10 +1361,10 @@ class LayoutManager(PyDb.LayoutManager):
       '''                             '''
     ...
     def pageSetup (self, layoutBTRId : PyDb.ObjectId=PyDb.ObjectId.kNull, parent : int=0, isPageSetupDlg : bool=True)-> int :
-      '''                             '''
+      '''By default, this function launches the Page Setup dialog with the current AcDbLayout object. Optionally, this function takes arguments to initialize it with a different AcDbLayout object, a pointer to a different parent window, and whether to bring up the shared Plot dialog instead of the Page Setup dialog.The function returns O if the Page Setup dialog has been canceled; 1 if the the Page Setup dialog has succeeded; and -1 for any error conditions.'''
     ...
     def pointInViewports (self, val : PyGe.Point3d)-> list[PyDb.ObjectId] :
-      '''                             '''
+      '''This function takes a Paperspace pick point, and passes back a list, in the form of an AcDbObjectIdArray, of the AcDbObjectId entities of every AcDbViewport that overlays the pick point, including non-rectangular viewports.If viewports overlap each other at the pick point, all of them will be returned, but the first AcDbViewport Id in the array will be the viewport that would be selected if the user double-clicked at the point. The PaperSpace viewport will never be included in the array. If no viewports are at the pick point, ePointNotOnEntity will be returned, and the AcDbObjectIdArray will not be created. If at least one viewport is in the array, eOk will be returned. The caller must delete the returned AcDbObjectIdArray when finished with it. This routine allows an application to easily determine if a given point lies within a non-rectangular (clipped) viewport.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
@@ -1373,10 +1373,10 @@ class LayoutManager(PyDb.LayoutManager):
       '''                             '''
     ...
     def setCaptureOnLayoutSwitch (self, val : bool)-> None :
-      '''                             '''
+      '''Controls whether a thumbnail is generated for a layout after it has been set active. An argument of kTrue enables the generation of the thumbnail; kFalse disables the generation of the thumbnail.'''
     ...
     def setCreateViewports (self, val : bool)-> None :
-      '''                             '''
+      '''This function establishes whether a viewport is created by default on initial entry into a paper space layout.'''
     ...
     def setCurrentLayout (self, name: str, db: PyDb.Database=None)-> None :
       '''                             '''
@@ -1385,22 +1385,22 @@ class LayoutManager(PyDb.LayoutManager):
       '''                             '''
     ...
     def setDefaultPlotConfig (self, val : PyDb.ObjectId)-> None :
-      '''                             '''
+      '''This function sets appropriate defaults for the AcDbLayout associated with the given AcDbBlockTableRecord.'''
     ...
     def setShowPageSetup (self, val : bool)-> None :
-      '''                             '''
+      '''This function sets whether the Page Setup dialog is launched upon initial entry into a paper space layout tab.'''
     ...
     def setShowPaperBackground (self, val : bool)-> None :
-      '''                             '''
+      '''This function sets whether the paper shadow is visible for the current or active AcDbLayout object. An argument of kTrue sets the paper shadow visible; kFalse makes it invisible.'''
     ...
     def setShowPaperMargins (self, val : bool)-> None :
-      '''                             '''
+      '''This function sets whether the printable area or paper margin (the dashed rectangle) is visible for the current or active AcDbLayout object. An argument of kTrue sets the paper margin visible; kFalse makes it invisible.'''
     ...
     def setShowPrintBorder (self, val : bool)-> None :
-      '''                             '''
+      '''This function sets whether the print border (paper boundary) is visible for the current or active AcDbLayout object. An argument of kTrue sets the print border visible; kFalse makes it invisible.'''
     ...
     def setShowTabs (self, val : bool)-> None :
-      '''                             '''
+      '''This function sets whether the layout tabs are visible. An argument of kTrue sets the layout tabs to be visible; kFalse makes them invisible.'''
     ...
 
     @staticmethod
@@ -1408,25 +1408,25 @@ class LayoutManager(PyDb.LayoutManager):
       '''                             '''
     ...
     def showPageSetup (self)-> bool :
-      '''                             '''
+      '''This function returns whether the Page Setup dialog is automatically launched upon initial entry into a paper space layout. A return of 1 indicates it is launched; 0, it isn't.'''
     ...
     def showPaperBackground (self)-> bool :
-      '''                             '''
+      '''This function sets whether the Page Setup dialog is launched upon initial entry into a paper space layout tab.'''
     ...
     def showPaperMargins (self)-> bool :
-      '''                             '''
+      '''This function returns whether the current AcDbLayout object's paper margins are visible. A return of 1 indicates it's visible; 0, invisible.'''
     ...
     def showPrintBorder (self)-> bool :
-      '''                             '''
+      '''This function returns whether the current AcDbLayout object's print border is visible. A return of 1 indicates it's visible; 0, invisible.'''
     ...
     def showTabs (self)-> bool :
-      '''                             '''
+      '''This function returns whether the layout tabs are visible. A return of 1 indicates they're visible; 0, invisible.'''
     ...
     def updateCurrentPaper (self, zoomToPaper : bool=False)-> None :
-      '''                             '''
+      '''This function updates the paper space paper image to reflect the current state of the active AcDbLayout object. Optionally, an argument of kTrue can be passed in to perform a zoom to change the view to the extents of the paper image boundary.'''
     ...
     def updateLayoutTabs (self)-> None :
-      '''                             '''
+      '''This function regenerates the layout tabs to update them to the current state of the AcDbLayout objects they represent.'''
     ...
 
 class PaletteSet(object):
