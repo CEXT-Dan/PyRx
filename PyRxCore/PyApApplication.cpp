@@ -34,7 +34,6 @@ const TCHAR* getComAPIVer()
     return L"!ERROR!";
 }
 
-
 //-----------------------------------------------------------------------------------------
 //PyApApplication  Wrapper
 void makePyApApplictionWrapper()
@@ -176,6 +175,7 @@ static bool executePyOnIdleFunc(const boost::python::object& func)
     return false;
 }
 
+//TODO this is always spinning:
 void PyApApplication::PyOnIdleMsgFn()
 {
     if (onidleFuncs.size() != 0)
@@ -233,7 +233,6 @@ boost::python::list PyApApplication::getLoadedModuleNames()
         std::filesystem::path _path = item;
         pylist.append(wstr_to_utf8(_path.filename().replace_extension()));
     }
-
     return pylist;
 }
 
