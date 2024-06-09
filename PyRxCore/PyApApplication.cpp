@@ -196,7 +196,7 @@ bool PyApApplication::loadPythonModule(const std::string& fullpath)
 {
     PyAutoLockGIL lock;
     std::filesystem::path fp = utf8_to_wstr(fullpath);
-    return ads_loadPythonModule(fp);
+    return ads_loadPythonModule(fp, false);
 }
 
 bool PyApApplication::reloadPythonModule(const std::string& fullpath)

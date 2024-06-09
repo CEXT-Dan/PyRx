@@ -172,7 +172,7 @@ static void reloadCommands(PyRxMethod& method, const PyModulePath& path)
     }
 }
 
-bool loadPythonModule(const PyModulePath& path, bool silent)
+bool loadPythonModule(const PyModulePath& path, bool silent, bool skipReactors)
 {
     std::error_code ec;
     const auto oldpath = std::filesystem::current_path(ec);
@@ -202,7 +202,10 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
         {
             acutPrintf(_T("\nSuccess module %ls is loaded: "), (const TCHAR*)path.moduleName);
         }
-        onLoadPyModule(path.moduleName);
+        if (!skipReactors)
+        {
+            onLoadPyModule(path.moduleName);
+        }
         rxApp.loadedModuleNames.insert(tolower(path.fullPath.wstring()));
         return true;
     }
@@ -261,7 +264,7 @@ bool reloadPythonModule(const PyModulePath& path, bool silent)
     }
 }
 
-bool ads_loadPythonModule(const std::filesystem::path& pypath)
+bool ads_loadPythonModule(const std::filesystem::path& pypath, bool skipReactors)
 {
     try
     {
@@ -270,7 +273,7 @@ bool ads_loadPythonModule(const std::filesystem::path& pypath)
         modulePath.fullPath = pypath;
         modulePath.moduleName = moduleNameFromPath(_path);
         modulePath.modulePath = _path.remove_filename();
-        return loadPythonModule(modulePath, true);
+        return loadPythonModule(modulePath, true, skipReactors);
     }
     catch (...)
     {

@@ -208,7 +208,7 @@ public:
                 PyModulePath pypath;
                 if (showNavFileDialog(pypath))
                 {
-                    if (loadPythonModule(pypath, false))
+                    if (loadPythonModule(pypath, false, false))
                         return;
                 }
             }
@@ -281,7 +281,7 @@ public:
         if (pArgs != nullptr && pArgs->restype == RTSTR)
         {
             std::filesystem::path pypath = pArgs->resval.rstring;
-            bool flag = ads_loadPythonModule(pypath);
+            bool flag = ads_loadPythonModule(pypath, false);
             flag ? acedRetT() : acedRetNil();
         }
         return RSRSLT;
