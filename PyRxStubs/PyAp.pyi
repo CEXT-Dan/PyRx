@@ -1437,37 +1437,37 @@ class PaletteSet(object):
       '''                             '''
     ...
     def autoRollupStyle (self)-> bool :
-      '''                             '''
+      '''Returns true if the palette set has the PSS_AUTO_ROLLUP style set; otherwise, returns false.'''
     ...
     def closeButtonStyle (self)-> bool :
-      '''                             '''
+      '''Returns true if the palette set has the PSS_CLOSE_BUTTON style set; otherwise, returns false.'''
     ...
     def editNameStyle (self)-> bool :
-      '''                             '''
+      '''Returns true if the palette has the PS_EDIT_NAME style set; otherwise, returns false.'''
     ...
     def getActivePaletteTabIndex (self)-> int :
-      '''                             '''
+      '''Returns the zero-based tab index of the currently active palette.'''
     ...
     def getAutoRollup (self)-> bool :
-      '''                             '''
+      '''Returns true if auto rollup is enabled. Returns false if it is disabled or if the the auto-rollup style is not set for the palette set.'''
     ...
     def getFullRect (self)-> object :
-      '''                             '''
+      '''Gets the full window rectangle of the palette set. This function retrieves the rectangle of the unrolled palette set even if the palette set is currently rolled up.'''
     ...
     def getName (self)-> str :
-      '''                             '''
+      '''Returns the name of the palette set.'''
     ...
     def getOpacity (self)-> int :
-      '''                             '''
+      '''Returns the current opacity for the palette set.Valid values are in the range 0 to 100, where 0 is completely transparent and 100 is completely opaque.'''
     ...
     def getPaletteCount (self)-> int :
-      '''                             '''
+      '''Returns the number of palettes in the palette set.'''
     ...
     def getPaletteSetStyle (self)-> int :
-      '''                             '''
+      '''Returns the palette set style, which is a combination of the CAdUiPaletteSet palette style constants.'''
     ...
     def getRolloverOpacity (self)-> int :
-      '''                             '''
+      '''Returns the rollover opacity value.'''
     ...
     def paletteBackgroundColor (self)-> int :
       '''                             '''
@@ -1476,67 +1476,67 @@ class PaletteSet(object):
       '''                             '''
     ...
     def propertiesMenuStyle (self)-> bool :
-      '''                             '''
+      '''Returns true if the palette set has the PSS_PROPERTIES_MENU style set; otherwise, returns false.'''
     ...
     def removePalette (self, val : int)-> bool :
-      '''                             '''
+      '''Removes the palette specified by nPaletteIndex from the palette set. Returns true if the palette was successfuly removed; otherwise, returns false.'''
     ...
     def rollOut (self, delay : bool=False)-> None :
-      '''                             '''
+      '''Triggers a roll out of the palette set if auto-rollup is on and the palette set is not docked.If bDelay is true, the palette set will use an extended rollup delay time. When the parameter is false, the palette set will use the normal delay time for rolling up.'''
     ...
     def rollUp (self)-> None :
-      '''                             '''
+      '''Triggers a roll up of the palette set if auto-rollup is on and the palette set is not docked.'''
     ...
     def rolledUp (self)-> bool :
-      '''                             '''
+      '''Returns true if the palette set is rolled up; returns false if it is unrolled.'''
     ...
     def setActivePalette (self, val : int)-> bool :
-      '''                             '''
+      '''Sets the palette specified by nPaletteIndex to be the currently active palette.'''
     ...
     def setAutoRollup (self, val : bool)-> bool :
-      '''                             '''
+      '''Enables and disables auto rollup for the palette set.Setting the auto-rollup state also causes the palette set to react as necessary. For example, it will roll out if auto rollup is disabled and may roll up, depending on the cursor position, if auto rollup is enabled.'''
     ...
     def setName (self, name : str)-> bool :
-      '''                             '''
+      '''Sets the name of the palette set.Returns true if the palette set name is successfully set to pszName; otherwise, returns false. '''
     ...
     def setOpacity (self, val : int)-> bool :
-      '''                             '''
+      '''Sets the opacity for the palette set. the opacity must be in the range 0 to 100, where 0 is completely transparent and 100 is completely opaque.'''
     ...
     def setPaletteSetStyle (self, val : int)-> None :
-      '''                             '''
+      '''Sets the palette set style.'''
     ...
     def setRolloverOpacity (self, val : int)-> bool :
-      '''                             '''
+      '''Sets the value of the rollover opacity.Returns true if successful.'''
     ...
     def setTitleBarLocation (self, val : AdUiTitleBarLocation)-> None :
-      '''                             '''
+      '''Sets the title bar orientation (left or right) for the palette set. '''
     ...
     def setToolId (self, guid : str)-> bool :
-      '''                             '''
+      '''Sets the identifier associated with a control bar. Since a control identifier needs to be unique, class IDs are used for that purpose. You can generate a class ID using the system utility GUIDGEN.A good place to call this method is right after you called the Create() method. It must be called before RestoreControlBar() because the persistency system relies on the control bar IDs.'''
     ...
     def setVisible (self, val : bool)-> None :
       '''                             '''
     ...
     def showIconStyle (self)-> bool :
-      '''                             '''
+      '''This is ShowIconStyle, a member of class CAdUiPaletteSet.'''
     ...
     def showRollupButtonStyle (self)-> bool :
-      '''                             '''
+      '''This is ShowRollupButtonStyle, a member of class CAdUiPaletteSet.'''
     ...
     def singlePaletteTabStyle (self)-> bool :
-      '''                             '''
+      '''Returns true if the palette set has the PSS_SINGLE_PALETTE_TAB style set; otherwise, returns false.'''
     ...
     def snapStyle (self)-> bool :
-      '''                             '''
+      '''Returns true if the palette set has the PSS_SNAP style set; otherwise, returns false.'''
     ...
     def titleBarLocation (self)-> PyAp.AdUiTitleBarLocation :
-      '''                             '''
+      '''Returns the current location of the palette set title bar, either kRight or kLeft.'''
     ...
     def updateTabs (self)-> None :
-      '''                             '''
+      '''Updates the palette set's tab display.The base palette implementation calls this function when a palette name changes.'''
     ...
     def useSinglePaletteTabNameStyle (self)-> bool :
-      '''                             '''
+      '''Returns true if the palette set has the PSS_USE_SINGLE_PALETTE_TAB_NAME style set.'''
     ...
 
 class ResourceOverride(object):

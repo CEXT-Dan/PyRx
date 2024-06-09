@@ -132,19 +132,19 @@ void makePyDbExtents2dWrapper()
     class_<AcDbExtents2d>("Extents2d")
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&>(DS.CTOR(ctords)))
-        .def("minPoint", &AcDbExtents2d::minPoint, DS.ARGS())
-        .def("maxPoint", &AcDbExtents2d::maxPoint, DS.ARGS())
+        .def("minPoint", &AcDbExtents2d::minPoint, DS.ARGS(4523))
+        .def("maxPoint", &AcDbExtents2d::maxPoint, DS.ARGS(4522))
         .def("midPoint", &AcDbExtents2dMidPoint, DS.ARGS())
-        .def("set", &AcDbExtents2d::set, DS.ARGS({ "min: PyGe.Point2d","max: PyGe.Point2d" }))
-        .def("addPoint", &AcDbExtents2d::addPoint, DS.ARGS({ "pt: PyGe.Point2d" }))
-        .def("addPoints", &AcDbExtents2dAddPoints, DS.ARGS({ "pts: list[PyGe.Point2d]" }))
-        .def("addExt", &AcDbExtents2d::addExt, DS.ARGS({ "ex: PyDb.Extents2d" }))
-        .def("expandBy", &AcDbExtents2d::expandBy, DS.ARGS({ "vec: PyGe.Vector2d" }))
-        .def("transformBy", &AcDbExtents2d::transformBy, DS.ARGS({ "xform: PyGe.Matrix2d" }))
+        .def("set", &AcDbExtents2d::set, DS.ARGS({ "min: PyGe.Point2d","max: PyGe.Point2d" }, 4524))
+        .def("addPoint", &AcDbExtents2d::addPoint, DS.ARGS({ "pt: PyGe.Point2d" }, 4520))
+        .def("addPoints", &AcDbExtents2dAddPoints, DS.ARGS({ "pts: list[PyGe.Point2d]" }, 4520))
+        .def("addExt", &AcDbExtents2d::addExt, DS.ARGS({ "ex: PyDb.Extents2d" }, 4519))
+        .def("expandBy", &AcDbExtents2d::expandBy, DS.ARGS({ "vec: PyGe.Vector2d" }, 4521))
+        .def("transformBy", &AcDbExtents2d::transformBy, DS.ARGS({ "xform: PyGe.Matrix2d" }, 4525))
         .def("intersectsWith", &AcDbExtents2dIntersects, DS.ARGS({ "ex: PyDb.Extents2d" }))
         .def("coords", &AcDbExtents2dCoords, DS.ARGS())
-        .def("__str__", &AcDbExtents2dToString)
-        .def("__repr__", &AcDbExtents2dToStringRepr)
+        .def("__str__", &AcDbExtents2dToString, DS.ARGS())
+        .def("__repr__", &AcDbExtents2dToStringRepr, DS.ARGS())
         ;
 }
 
@@ -200,6 +200,11 @@ static AcGePoint3d AcDbExtents3dMidPoint(const AcDbExtents& extents)
     return seg.midPoint();
 }
 
+static void AcDbExtentsaddBlockExt(AcDbExtents& extents, const PyDbBlockTableRecord& rec)
+{
+    extents.addBlockExt(rec.impObj());
+}
+
 void makePyDbExtentsWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -210,20 +215,20 @@ void makePyDbExtentsWrapper()
     class_<AcDbExtents>("Extents")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&>(DS.CTOR(ctords)))
-        .def("minPoint", &AcDbExtents::minPoint, DS.ARGS())
-        .def("maxPoint", &AcDbExtents::maxPoint, DS.ARGS())
+        .def("minPoint", &AcDbExtents::minPoint, DS.ARGS(4533))
+        .def("maxPoint", &AcDbExtents::maxPoint, DS.ARGS(4532))
         .def("midPoint", &AcDbExtents3dMidPoint, DS.ARGS())
-        .def("set", &AcDbExtents::set, DS.ARGS({ "min: PyGe.Point3d","max: PyGe.Point3d" }))
-        .def("addPoint", &AcDbExtents::addPoint, DS.ARGS({ "pt: PyGe.Point3d" }))
-        .def("addPoints", &AcDbExtents3dAddPoints, DS.ARGS({ "pts: list[PyGe.Point3d]" }))
-        .def("addExt", &AcDbExtents::addExt, DS.ARGS({ "extents: PyDb.Extents" }))
-        .def("expandBy", &AcDbExtents::expandBy, DS.ARGS({ "vec: PyGe.Vector3d" }))
-        .def("transformBy", &AcDbExtents::transformBy, DS.ARGS({ "xform: PyGe.Matrix3d" }))
+        .def("set", &AcDbExtents::set, DS.ARGS({ "min: PyGe.Point3d","max: PyGe.Point3d" }, 4534))
+        .def("addPoint", &AcDbExtents::addPoint, DS.ARGS({ "pt: PyGe.Point3d" }, 4530))
+        .def("addPoints", &AcDbExtents3dAddPoints, DS.ARGS({ "pts: list[PyGe.Point3d]" }, 4530))
+        .def("addExt", &AcDbExtents::addExt, DS.ARGS({ "extents: PyDb.Extents" }, 4529))
+        .def("expandBy", &AcDbExtents::expandBy, DS.ARGS({ "vec: PyGe.Vector3d" }, 4531))
+        .def("transformBy", &AcDbExtents::transformBy, DS.ARGS({ "xform: PyGe.Matrix3d" }, 4535))
         .def("intersectsWith", &AcDbExtents3dIntersects, DS.ARGS({ "other: PyDb.Extents" }))
         .def("coords", &AcDbExtents3dCoords, DS.ARGS())
-        .def("__str__", &AcDbExtentsToString)
-        .def("__repr__", &AcDbExtentsToStringRepr)
-        //.def("addBlockExt", &AcDbExtents::addBlockExt) //TODO
+        .def("addBlockExt", &AcDbExtentsaddBlockExt, DS.ARGS({ "btr: PyDb.BlockTableRecord" }, 4528))
+        .def("__str__", &AcDbExtentsToString, DS.ARGS())
+        .def("__repr__", &AcDbExtentsToStringRepr, DS.ARGS())
         ;
 }
 
