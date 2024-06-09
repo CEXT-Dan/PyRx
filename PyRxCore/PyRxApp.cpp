@@ -257,7 +257,7 @@ void PyRxApp::load_pyrx_onload()
         if (std::filesystem::exists((const wchar_t*)foundPath, ec))
         {
             PyAutoLockGIL lock;
-            ads_loadPythonModule(pyrx_onloadPath);
+            ads_loadPythonModule(pyrx_onloadPath, true);
         }
     }
 }
