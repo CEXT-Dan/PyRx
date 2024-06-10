@@ -335,6 +335,22 @@ public:
     {
     }
 #endif
+
+#ifdef PYRXDEBUG
+    static int ADSPREFIX(pylispsstest(void))
+    {
+        AcResBufPtr pArgs(acedGetArgs());
+        if (pArgs != nullptr && pArgs->restype == RTPICKS)
+        {
+            Adesk::Int32 len = 0;
+            if (auto rt = acedSSLength(pArgs->resval.rlname, &len); rt == RTNORM && len > 0)
+                acedRetT();
+            else
+                acedRetNil();
+        }
+        return RSRSLT;
+    }
+#endif
 };
 
 //-----------------------------------------------------------------------------
@@ -355,5 +371,8 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofilerreset, pyprofilerres
 #endif
 #ifdef PYRXDEBUG
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit, idoit, ACRX_CMD_MODAL, NULL)
+#endif
+#ifdef PYRXDEBUG//for unit test
+ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pylispsstest, false)
 #endif
 #pragma warning( pop )
