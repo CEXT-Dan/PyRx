@@ -189,9 +189,8 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
     // must be added to the pythons search path
     PyRxApp::appendSearchPath(path.modulePath);
 
-    PyRxMethod method;
-
     // wants the file name, no extension, in the same case as existing
+    PyRxMethod method;
     method.modname.reset(wstr_to_py(path.fullPath.filename().replace_extension()));
     method.mod.reset(PyImport_Import(method.modname.get()));
     if (method.mod != nullptr)
