@@ -315,6 +315,20 @@ public:
         return RSRSLT;
     }
 
+    static int ADSPREFIX(pyrxlispsstest(void))
+    {
+        AcResBufPtr pArgs(acedGetArgs());
+        if (pArgs != nullptr && pArgs->restype == RTPICKS)
+        {
+            Adesk::Int32 len = 0;
+            if (auto rt = acedSSLength(pArgs->resval.rlname, &len); rt == RTNORM && len > 0)
+                acedRetT();
+            else
+                acedRetNil();
+        }
+        return RSRSLT;
+    }
+
 #ifdef PYPERFPROFILER
     static void AcRxPyApp_pyprofiler(void)
     {
@@ -336,21 +350,6 @@ public:
     }
 #endif
 
-#ifdef PYRXDEBUG
-    static int ADSPREFIX(pylispsstest(void))
-    {
-        AcResBufPtr pArgs(acedGetArgs());
-        if (pArgs != nullptr && pArgs->restype == RTPICKS)
-        {
-            Adesk::Int32 len = 0;
-            if (auto rt = acedSSLength(pArgs->resval.rlname, &len); rt == RTNORM && len > 0)
-                acedRetT();
-            else
-                acedRetNil();
-        }
-        return RSRSLT;
-    }
-#endif
 };
 
 //-----------------------------------------------------------------------------
@@ -364,6 +363,7 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyreload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyloaded, false)
+ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlispsstest, false)
 #ifdef PYPERFPROFILER
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofiler, pyprofiler, ACRX_CMD_MODAL, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofilerend, pyprofilerend, ACRX_CMD_MODAL, NULL)
@@ -371,8 +371,5 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofilerreset, pyprofilerres
 #endif
 #ifdef PYRXDEBUG
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit, idoit, ACRX_CMD_MODAL, NULL)
-#endif
-#ifdef PYRXDEBUG//for unit test
-ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pylispsstest, false)
 #endif
 #pragma warning( pop )

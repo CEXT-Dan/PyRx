@@ -1119,12 +1119,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9699A1665F954042AEF4FA024E877540"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_99336B43937F4C1382DB8B0934253ADB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2240,26 +2234,6 @@
             {
             "SourcePath" = "8:..\\PyRxStubs\\AxApp25.py"
             "TargetName" = "8:AxApp25.py"
-            "Tag" = "8:"
-            "Folder" = "8:_C4A75CB2FE9749859C0A048D0475E643"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9699A1665F954042AEF4FA024E877540"
-            {
-            "SourcePath" = "8:..\\PyRxStubs\\genDoc.py"
-            "TargetName" = "8:genDoc.py"
             "Tag" = "8:"
             "Folder" = "8:_C4A75CB2FE9749859C0A048D0475E643"
             "Condition" = "8:"
