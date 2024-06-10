@@ -322,13 +322,21 @@ public:
         {
             Adesk::Int32 len = 0;
             if (auto rt = acedSSLength(pArgs->resval.rlname, &len); rt == RTNORM && len > 0)
+            {
                 acedRetT();
-            else
-                acedRetNil();
+                return RSRSLT;
+            }
         }
+        acedRetNil();
         return RSRSLT;
     }
 
+    static int ADSPREFIX(pyrxlisprttest(void))
+    {
+        AcResBufPtr pArgs(acedGetArgs());
+        acedRetList(pArgs.get());
+        return RSRSLT;
+    }
 #ifdef PYPERFPROFILER
     static void AcRxPyApp_pyprofiler(void)
     {
@@ -364,6 +372,7 @@ ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyreload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyloaded, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlispsstest, false)
+ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlisprttest, false)
 #ifdef PYPERFPROFILER
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofiler, pyprofiler, ACRX_CMD_MODAL, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofilerend, pyprofilerend, ACRX_CMD_MODAL, NULL)

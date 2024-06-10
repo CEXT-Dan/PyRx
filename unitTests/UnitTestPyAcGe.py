@@ -329,6 +329,7 @@ class TestGe(unittest.TestCase):
         gecurves = composite.getCurveList()
         self.assertEqual(len(gecurves),21)
         
+    @unittest.skipIf(host == "BRX24", "BricsCAD known failure")
     def test_CurveCurveInt3d_overlap(self):
         objHnd1 = Db.Handle("2c9405")
         objId1 =  dbc.dbs["06457"].getObjectId(False, objHnd1)
