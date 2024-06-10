@@ -13,7 +13,7 @@ import dbc
 import testcfg
 import os
 import traceback
-
+#
 from pyrx_imp import Rx
 from pyrx_imp import Ap
 from pyrx_imp import Ed
@@ -22,20 +22,10 @@ host = Ap.Application.hostAPI()
 if not "BRX" in host:
     import UnitTestDocString
 
-
 if "BRX" in host:
     import UnitTestPyBcadCivil
     
-
 print("\nadded command = runtests: ")
-
-# def OnPyLoadDwg() -> None:
-#         try:
-#             cwd = os.getcwd().replace('\\','/')
-#             print(Ed.Core.evaluateLisp('(load "{}/testLisp.lsp") '.format(cwd)))
-#         except Exception as err:
-#             traceback.print_exception(err)
-#         loadedOnce = True
 
 def OnPyReload() -> None:
     try:
@@ -69,10 +59,6 @@ def cleanup(dbc):
         dbc.cleardbs()
     except Exception as err:
         traceback.print_exception(err)
-
-#CmDFlags = Ap.CmdFlags.SESSION
-#Ap.DocManager().appContextNewDocument("")
-#lock = Ap.AutoDocLock()
 
 def PyRxCmd_runtests() -> None:
     try:
