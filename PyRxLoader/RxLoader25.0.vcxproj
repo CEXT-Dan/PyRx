@@ -84,7 +84,8 @@
       <AdditionalIncludeDirectories>$(NOINHERIT)$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy /Y "$(SolutionDir)\PyRxAcSetup\Include\PyRxDebug.INI" "$(outdir)\PyRx.INI"</Command>
+      <Command>copy /Y "$(SolutionDir)\PyRxAcSetup\Include\PyRxDebug.INI" "$(outdir)\PyRx.INI"
+copy /Y "$(SolutionDir)\PyRxAcSetup\Include\internal_onload.py" "$(outdir)\pyrx_onload.py"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
