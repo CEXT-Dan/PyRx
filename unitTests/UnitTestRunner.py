@@ -12,6 +12,7 @@ import UnitTestResbuf
 import dbc
 import testcfg
 import os
+import traceback
 
 from pyrx_imp import Rx
 from pyrx_imp import Ap
@@ -24,12 +25,17 @@ if not "BRX" in host:
 
 if "BRX" in host:
     import UnitTestPyBcadCivil
+    
 
-print("testname = ------> runtests <-------")
+print("\nadded command = runtests: ")
 
-#if not "ZRX" in host:
-cwd = os.getcwd().replace('\\','/')
-print(Ed.Core.evaluateLisp('(load "{}/testLisp.lsp") '.format(cwd)))
+# def OnPyLoadDwg() -> None:
+#         try:
+#             cwd = os.getcwd().replace('\\','/')
+#             print(Ed.Core.evaluateLisp('(load "{}/testLisp.lsp") '.format(cwd)))
+#         except Exception as err:
+#             traceback.print_exception(err)
+#         loadedOnce = True
 
 def OnPyReload() -> None:
     try:
@@ -56,13 +62,13 @@ def OnPyReload() -> None:
             
         print("\nReloading Unit tests: ")
     except Exception as err:
-        print(err)
+        traceback.print_exception(err)
         
 def cleanup(dbc):
     try:
         dbc.cleardbs()
     except Exception as err:
-        print(err)
+        traceback.print_exception(err)
 
 #CmDFlags = Ap.CmdFlags.SESSION
 #Ap.DocManager().appContextNewDocument("")
@@ -70,6 +76,8 @@ def cleanup(dbc):
 
 def PyRxCmd_runtests() -> None:
     try:
+        cwd = os.getcwd().replace('\\','/')
+        print(Ed.Core.evaluateLisp('(load "{}/testLisp.lsp") '.format(cwd)))
         
         #TODO: make a prompt to select what tests to run
         # uses dbx so load databases later
@@ -96,15 +104,6 @@ def PyRxCmd_runtests() -> None:
             UnitTestDocString.docstringtester()
             
     except Exception as err:
-        print(err)
+        traceback.print_exception(err)(err)
     finally:
         cleanup(dbc)
-        
-#helper finction for editor test
-def PyRxLisp_pylispsstest(args):
-    try:
-        if args[0][0] == Rx.LispType.kSelectionSet and args[0][1].size() > 0:
-            return True
-        return False
-    except Exception as err:
-        print(err)
