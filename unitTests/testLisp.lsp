@@ -16,7 +16,7 @@
 )
 
 (defun c:LispInvokeSStest()
-   (pylispsstest (ssget "X"))
+   (pyrxlispsstest (ssget "X"))
 )
 
 (setq PYRXGLOBALVAR 1)
