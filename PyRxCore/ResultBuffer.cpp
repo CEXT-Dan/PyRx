@@ -2,7 +2,25 @@
 #include "ResultBuffer.h"
 #include "PyDbObjectId.h"
 #include "PyEdSelectionSet.h"
+#include "PyRxApp.h"
 using namespace boost::python;
+
+static resbuf* makebin(const boost::python::object& bpl, int code)
+{
+    boost::python::object inbuf = bpl;
+    if (!PyObject_CheckBuffer(inbuf.ptr()))
+        PyThrowBadEs(eInvalidInput);
+    Py_buffer view;
+    if (PyObject_GetBuffer(inbuf.ptr(), &view, PyBUF_SIMPLE) == -1)
+        PyThrowBadEs(eInvalidInput);
+    resbuf* pRb = acutNewRb(code);
+    pRb->rbnext = nullptr;
+    acutNewBuffer(pRb->resval.rbinary.buf, view.len);
+    memcpy_s(pRb->resval.rbinary.buf, view.len, view.buf, view.len);
+    pRb->resval.rbinary.clen = static_cast<short>(view.len);
+    PyBuffer_Release(&view);
+    return pRb;
+}
 
 resbuf* listToResbuf(const boost::python::object& bpl)
 {
@@ -90,22 +108,11 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                     }
                     case AcDb::kDwgBChunk:
                     {
-                        boost::python::object inbuf = tpl[1];
-                        if (!PyObject_CheckBuffer(inbuf.ptr()))
-                            PyThrowBadEs(eInvalidInput);
-                        Py_buffer view;
-                        if (PyObject_GetBuffer(inbuf.ptr(), &view, PyBUF_SIMPLE) == -1)
-                            PyThrowBadEs(eInvalidInput);
-                        pTail->rbnext = acutNewRb(code);
-                        pTail->rbnext->rbnext = nullptr;
-                        acutNewBuffer(pTail->rbnext->resval.rbinary.buf, view.len);
-                        memcpy_s(pTail->rbnext->resval.rbinary.buf, view.len, view.buf, view.len);
-                        pTail->rbnext->resval.rbinary.clen = static_cast<short>(view.len);
+                        pTail->rbnext = makebin(tpl[1], code);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
-                        PyBuffer_Release(&view);
-                        break;
                     }
+                    break;
                     case AcDb::kDwgHandle:
                     case AcDb::kDwgHardOwnershipId:
                     case AcDb::kDwgSoftOwnershipId:
@@ -239,20 +246,9 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                     break;
                     case RTRESBUF:
                     {
-                        boost::python::object inbuf = tpl[1];
-                        if (!PyObject_CheckBuffer(inbuf.ptr()))
-                            PyThrowBadEs(eInvalidInput);
-                        Py_buffer view;
-                        if (PyObject_GetBuffer(inbuf.ptr(), &view, PyBUF_SIMPLE) == -1)
-                            PyThrowBadEs(eInvalidInput);
-                        pTail->rbnext = acutNewRb(code);
-                        pTail->rbnext->rbnext = nullptr;
-                        acutNewBuffer(pTail->rbnext->resval.rbinary.buf, view.len);
-                        memcpy_s(pTail->rbnext->resval.rbinary.buf, view.len, view.buf, view.len);
-                        pTail->rbnext->resval.rbinary.clen = static_cast<short>(view.len);
+                        pTail->rbnext = makebin(tpl[1], code);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
-                        PyBuffer_Release(&view);
                     }
                     break;
                 }
@@ -306,10 +302,14 @@ boost::python::list resbufToList(resbuf* pRb)
                     break;
                 case AcDb::kDwgBChunk:
                 {
-                    boost::python::object memoryView(boost::python::handle<>(PyMemoryView_FromMemory(pTail->resval.rbinary.buf, (size_t)pTail->resval.rbinary.clen, PyBUF_READ)));
-                    list.append(boost::python::make_tuple(pTail->restype, memoryView));
+                    const size_t len = pTail->resval.rbinary.clen;
+                    std::shared_ptr<char[]> buffer(new char[len]);
+                    memcpy_s(buffer.get(), len, pTail->resval.rbinary.buf, len);
+                    auto pyview = PyMemoryView_FromMemory(buffer.get(), len, PyBUF_WRITE);
+                    list.append(boost::python::make_tuple(pTail->restype, boost::python::object{ boost::python::handle<>(pyview) }));
                     break;
                 }
+                break;
                 case AcDb::kDwgHandle://is ads_name in docs
                 case AcDb::kDwgHardOwnershipId:
                 case AcDb::kDwgSoftOwnershipId:
@@ -375,8 +375,9 @@ boost::python::list resbufToList(resbuf* pRb)
                 break;
                 case RTRESBUF:
                 {
-                    boost::python::object memoryView(boost::python::handle<>(PyMemoryView_FromMemory(pTail->resval.rbinary.buf, (size_t)pTail->resval.rbinary.clen, PyBUF_READ)));
-                    list.append(boost::python::make_tuple(pTail->restype, memoryView));
+                    list.append(boost::python::make_tuple(pTail->restype,
+                        boost::python::object(boost::python::handle<>(
+                            PyMemoryView_FromMemory(pTail->resval.rbinary.buf, (size_t)pTail->resval.rbinary.clen, PyBUF_READ)))));
                     break;
                 }
                 break;
