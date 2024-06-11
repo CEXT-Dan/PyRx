@@ -302,11 +302,8 @@ boost::python::list resbufToList(resbuf* pRb)
                     break;
                 case AcDb::kDwgBChunk:
                 {
-                    const size_t len = pTail->resval.rbinary.clen;
-                    std::shared_ptr<char[]> buffer(new char[len]);
-                    memcpy_s(buffer.get(), len, pTail->resval.rbinary.buf, len);
-                    auto pyview = PyMemoryView_FromMemory(buffer.get(), len, PyBUF_WRITE);
-                    list.append(boost::python::make_tuple(pTail->restype, boost::python::object{ boost::python::handle<>(pyview) }));
+                    PyObjectPtr pObj(PyMemoryView_FromMemory(pTail->resval.rbinary.buf, pTail->resval.rbinary.clen, PyBUF_WRITE));
+                    list.append(boost::python::make_tuple(pTail->restype, boost::python::object{ boost::python::handle<>(PyBytes_FromObject(pObj.get())) }));
                     break;
                 }
                 break;
@@ -375,9 +372,8 @@ boost::python::list resbufToList(resbuf* pRb)
                 break;
                 case RTRESBUF:
                 {
-                    list.append(boost::python::make_tuple(pTail->restype,
-                        boost::python::object(boost::python::handle<>(
-                            PyMemoryView_FromMemory(pTail->resval.rbinary.buf, (size_t)pTail->resval.rbinary.clen, PyBUF_READ)))));
+                    PyObjectPtr pObj(PyMemoryView_FromMemory(pTail->resval.rbinary.buf, pTail->resval.rbinary.clen, PyBUF_WRITE));
+                    list.append(boost::python::make_tuple(pTail->restype, boost::python::object{ boost::python::handle<>(PyBytes_FromObject(pObj.get())) }));
                     break;
                 }
                 break;
