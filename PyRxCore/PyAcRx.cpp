@@ -28,7 +28,8 @@ enum class LispType
     kSelectionSet = 5007,
     kT_atom = 5021,
     kText = 5005,
-    kVoid = 5014
+    kVoid = 5014,
+    kBinary = RTRESBUF,
 };
 
 //-----------------------------------------------------------------------------------------------------------
@@ -112,6 +113,7 @@ BOOST_PYTHON_MODULE(PyRx)
         .value("kText", LispType::kText)
         .value("kVoid", LispType::kVoid)
         .value("kSelectionSet", LispType::kSelectionSet)
+        .value("kBinary", LispType::kBinary)
         .export_values()
         ;
 

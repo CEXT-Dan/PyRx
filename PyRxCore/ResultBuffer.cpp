@@ -88,6 +88,24 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                         }
                         break;
                     }
+                    case AcDb::kDwgBChunk:
+                    {
+                        boost::python::object inbuf = tpl[1];
+                        if (!PyObject_CheckBuffer(inbuf.ptr()))
+                            PyThrowBadEs(eInvalidInput);
+                        Py_buffer view;
+                        if (PyObject_GetBuffer(inbuf.ptr(), &view, PyBUF_SIMPLE) == -1)
+                            PyThrowBadEs(eInvalidInput);
+                        pTail->rbnext = acutNewRb(code);
+                        pTail->rbnext->rbnext = nullptr;
+                        acutNewBuffer(pTail->rbnext->resval.rbinary.buf, view.len);
+                        memcpy_s(pTail->rbnext->resval.rbinary.buf, view.len, view.buf, view.len);
+                        pTail->rbnext->resval.rbinary.clen = static_cast<short>(view.len);
+                        if (pTail->rbnext != nullptr)
+                            pTail = pTail->rbnext;
+                        PyBuffer_Release(&view);
+                        break;
+                    }
                     case AcDb::kDwgHandle:
                     case AcDb::kDwgHardOwnershipId:
                     case AcDb::kDwgSoftOwnershipId:
@@ -102,8 +120,8 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                             if (pTail->rbnext != nullptr)
                                 pTail = pTail->rbnext;
                         }
+                        break;
                     }
-                    break;
                 }
             }
             else
@@ -221,12 +239,20 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                     break;
                     case RTRESBUF:
                     {
-#ifdef NEVER
+                        boost::python::object inbuf = tpl[1];
+                        if (!PyObject_CheckBuffer(inbuf.ptr()))
+                            PyThrowBadEs(eInvalidInput);
+                        Py_buffer view;
+                        if (PyObject_GetBuffer(inbuf.ptr(), &view, PyBUF_SIMPLE) == -1)
+                            PyThrowBadEs(eInvalidInput);
                         pTail->rbnext = acutNewRb(code);
-                        pTail->resval.rbinary.buf = reinterpret_cast<char*>(listToResbuf(bpl));
-                        pTail->resval.rbinary.clen = strlen(pTail->resval.rbinary.buf);
-#endif
-                        break;
+                        pTail->rbnext->rbnext = nullptr;
+                        acutNewBuffer(pTail->rbnext->resval.rbinary.buf, view.len);
+                        memcpy_s(pTail->rbnext->resval.rbinary.buf, view.len, view.buf, view.len);
+                        pTail->rbnext->resval.rbinary.clen = static_cast<short>(view.len);
+                        if (pTail->rbnext != nullptr)
+                            pTail = pTail->rbnext;
+                        PyBuffer_Release(&view);
                     }
                     break;
                 }
@@ -253,14 +279,11 @@ boost::python::list resbufToList(resbuf* pRb)
     {
         if (pTail->restype < 5000)
         {
-            switch (pTail->restype)
+            if (pTail->restype == AcDb::kDxfXdWorldXDisp || pTail->restype == AcDb::kDxfXdWorldXDir)
             {
-                case AcDb::kDxfXdWorldXDisp:
-                case AcDb::kDxfXdWorldXDir:
-                    list.append(boost::python::make_tuple(pTail->restype, asVec3d(pTail->resval.rpoint)));
-                    continue;
+                list.append(boost::python::make_tuple(pTail->restype, asVec3d(pTail->resval.rpoint)));
+                continue;
             }
-
             switch (acdbGroupCodeToType(pTail->restype))
             {
                 case AcDb::kDwgText:
@@ -281,7 +304,13 @@ boost::python::list resbufToList(resbuf* pRb)
                 case AcDb::kDwg3Real:
                     list.append(boost::python::make_tuple(pTail->restype, asPnt3d(pTail->resval.rpoint)));
                     break;
-                case AcDb::kDwgHandle://TODO!! this is wrong?
+                case AcDb::kDwgBChunk:
+                {
+                    boost::python::object memoryView(boost::python::handle<>(PyMemoryView_FromMemory(pTail->resval.rbinary.buf, (size_t)pTail->resval.rbinary.clen, PyBUF_READ)));
+                    list.append(boost::python::make_tuple(pTail->restype, memoryView));
+                    break;
+                }
+                case AcDb::kDwgHandle://is ads_name in docs
                 case AcDb::kDwgHardOwnershipId:
                 case AcDb::kDwgSoftOwnershipId:
                 case AcDb::kDwgHardPointerId:
@@ -346,9 +375,8 @@ boost::python::list resbufToList(resbuf* pRb)
                 break;
                 case RTRESBUF:
                 {
-#ifdef NEVER
-                    list.append(boost::python::make_tuple(pTail->restype, resbufToList(reinterpret_cast<resbuf*>(pTail->resval.rbinary.buf))));
-#endif
+                    boost::python::object memoryView(boost::python::handle<>(PyMemoryView_FromMemory(pTail->resval.rbinary.buf, (size_t)pTail->resval.rbinary.clen, PyBUF_READ)));
+                    list.append(boost::python::make_tuple(pTail->restype, memoryView));
                     break;
                 }
                 break;
