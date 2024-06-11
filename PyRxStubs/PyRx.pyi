@@ -31,6 +31,9 @@ class LispType(object):
     def kAngle (self, *args, **kwargs)-> None :
       '''None'''
     ...
+    def kBinary (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
     def kDottedPair (self, *args, **kwargs)-> None :
       '''None'''
     ...
