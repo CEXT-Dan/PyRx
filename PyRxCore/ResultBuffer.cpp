@@ -244,13 +244,6 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                         }
                     }
                     break;
-                    case RTRESBUF:
-                    {
-                        pTail->rbnext = makebin(tpl[1], code);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
-                    }
-                    break;
                 }
             }
         }
@@ -306,7 +299,6 @@ boost::python::list resbufToList(resbuf* pRb)
                     list.append(boost::python::make_tuple(pTail->restype, boost::python::object{ boost::python::handle<>(PyBytes_FromObject(pObj.get())) }));
                     break;
                 }
-                break;
                 case AcDb::kDwgHandle://is ads_name in docs
                 case AcDb::kDwgHardOwnershipId:
                 case AcDb::kDwgSoftOwnershipId:
@@ -316,8 +308,8 @@ boost::python::list resbufToList(resbuf* pRb)
                     AcDbObjectId id;
                     acdbGetObjectId(id, pTail->resval.rlname);
                     list.append(boost::python::make_tuple(pTail->restype, PyDbObjectId(id)));
+                    break;
                 }
-                break;
             }
         }
         else
@@ -368,15 +360,8 @@ boost::python::list resbufToList(resbuf* pRb)
                     AcDbObjectId id;
                     acdbGetObjectId(id, pTail->resval.rlname);
                     list.append(boost::python::make_tuple(pTail->restype, PyDbObjectId(id)));
-                }
-                break;
-                case RTRESBUF:
-                {
-                    PyObjectPtr pObj(PyMemoryView_FromMemory(pTail->resval.rbinary.buf, pTail->resval.rbinary.clen, PyBUF_WRITE));
-                    list.append(boost::python::make_tuple(pTail->restype, boost::python::object{ boost::python::handle<>(PyBytes_FromObject(pObj.get())) }));
                     break;
                 }
-                break;
             }
         }
     }
