@@ -97,6 +97,18 @@ class TestResbuf(unittest.TestCase):
 
         result = Db.Core.resbufTest(args)
         self.assertEqual(result, expected)
+        
+    def test_binary_chunk(self):
+        args = [(Db.DxfCode.kDxfBinaryChunk, bytes(b'mystring1'))]
+        expected = [(Db.DxfCode.kDxfBinaryChunk, bytes(b'mystring1'))]
+        result = Db.Core.resbufTest(args)
+        self.assertEqual(result, expected)
+        
+    def test_empty_string(self):
+        args = [(Rx.LispType.kText, None)]
+        expected = [(Rx.LispType.kText, "")]
+        result = Db.Core.resbufTest(args)
+        self.assertEqual(result, expected)
 
 
 def resbuftester():
