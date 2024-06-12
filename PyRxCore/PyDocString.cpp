@@ -15,7 +15,7 @@ const char* PyDocString::ARGS(int helpkey /*= -1*/)
     return outstr.c_str();
 }
 
-const char* PyDocString::ARGS(std::initializer_list<std::string> pyargs, int helpkey /*= -1*/)
+const char* PyDocString::ARGS(std::initializer_list<std::string_view> pyargs, int helpkey /*= -1*/)
 {
     outstr = m_argBegin;
     outstr += "self";
@@ -73,7 +73,7 @@ const char* PyDocString::SARGS(int val /*= -1*/)
     return outstr.c_str();
 }
 
-const char* PyDocString::SARGS(std::initializer_list<std::string> pyargs, int helpkey /*= -1*/)
+const char* PyDocString::SARGS(std::initializer_list<std::string_view> pyargs, int helpkey /*= -1*/)
 {
     outstr = m_argBegin;
     for (auto& arg : pyargs)
