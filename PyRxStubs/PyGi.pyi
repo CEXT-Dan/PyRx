@@ -72,7 +72,7 @@ This class cannot be instantiated from Python'''
       '''Function usage:For each class registered with ObjectARX, the implementation of this function is to return a pointer to the AcRxClass object for the class of the object in which this method is called. For classes not registered with ObjectARX, this method has no meaning.Function implementation in derived classes:This function is overridden in all derived classes. The AcRx macros declare and define this function, so that the override is taken care of as part of using the macros. The implementation of this function is simply to return ::desc(). For example. the implementation for AcDbLine would be:return AcDbLine::desc();Default implementation for AcRxObject:  { return AcRxObject::desc(); }'''
     ...
     def isDragging (self)-> bool :
-      '''                             '''
+      '''Returns Adesk::kTrue if the entity is currently being dragged; otherwise, returns Adesk::kFalse.Graphically complex entities might find that using a simpler graphical representation during dragging enhances performance with little or no loss of functionality.'''
     ...
     def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''Returns true if "this" object is of a member of either the class represented by aClass, or a class derived from aClass. '''
@@ -87,13 +87,13 @@ This class cannot be instantiated from Python'''
       '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
     def regenAbort (self)-> bool :
-      '''                             '''
+      '''Provides a means to find out if an immediate termination of the graphics regeneration is requested by the system. If the return value is Adesk::kFalse, then all is well. But, if the return value is Adesk::kTrue, then an immediate clean up and return should be accomplished.'''
     ...
     def regenType (self)-> PyGi.RegenType :
-      '''                             '''
+      '''Returns the current elaboration mode. The current elaboration modes of type AcGiRegenType are:kAcGiStandardDisplayThe display you normally see is being generated (REGEN).kAcGiHideOrShadeCommandThe HIDE or SHADE command is being executed.kAcGRenderCommandThe RENDER command is being executed.kAcGiSaveWorldDrawForProxyThe graphics will be going into the entity's graphics metafile in case the entity is a proxy when next loaded, so provide graphics for proxy representation.This information allows the user to take special action for the four different situations. Normally, you may not need to consider which mode is in effect. However, if RENDER is running, then only geometry with filled area is accepted (filled polygon, etc.); other geometry (polyline, unfilled polygon, etc.) is ignored.'''
     ...
     def subEntityTraits (self)-> PyGi.SubEntityTraits :
-      '''                             '''
+      '''Returns a reference to the AcGiSubEntityTraits object.The subEntityTraits object gives the user control of, and access to, the attribute (color, layer, linetype, etc.) settings of the current geometry. For a description of this object, see class AcGiSubEntityTraits.'''
     ...
 
 class DefaultLightingType(object):
@@ -199,7 +199,7 @@ class Drawable(PyRx.RxObject):
 This class cannot be instantiated from Python'''
     ...
     def bounds (self, ext: PyDb.Extents)-> bool :
-      '''                             '''
+      '''This method returns reasonable, but not necessarily precise, bounds for the drawable. In the case of nested drawables, the bounds of any child drawables are included as well. In the case of view-dependent geometries, or other drawables with potentially varying bounds, the union of all possible representations is returned.In the case of uncertain extents or infinite extents (such as an infinite line or ray), the method returns False to indicate the bounds are not available.The behavior of the drawable is undefined if the geometry created by the drawable in its viewportDraw() and/or worldDraw() implementation extends outside the bounds returned by AcGiDrawable::bounds().'''
     ...
 
     @staticmethod
@@ -221,10 +221,10 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def drawableType (self)-> PyGi.GiDrawableType :
-      '''                             '''
+      '''Returns the type of the current drawable.'''
     ...
     def id (self)-> PyDb.ObjectId :
-      '''                             '''
+      '''This function returns the database ID that corresponds to this drawable (if the drawable is persistent).'''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -239,7 +239,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def isPersistent (self)-> bool :
-      '''                             '''
+      '''This function will determine if the calling AcGiDrawable object is persistent (stored in a database).Returns Adesk::kTrue if the AcGiDrawable object is database resident (belongs to an AcGsModel that requires the use of open and close functions). Returns Adesk::kFalse if the AcGiDrawable object is non-persistent (pointer-based); these drawables are accessed directly through their AcGiDrawable pointer.'''
     ...
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
@@ -248,19 +248,19 @@ This class cannot be instantiated from Python'''
       '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
     def rolloverHit (self, nSubentId: int, nMouseFlags: int, bReset: bool)-> bool :
-      '''                             '''
+      '''For internal use only.'''
     ...
     def setAttributes (self, traits: PyGi.DrawableTraits)-> int :
-      '''                             '''
+      '''This function will take the input AcGiDrawableTraits object and set the values for the current object's subentity traits.The setAttributes() method is called by the GS to setup a drawable's default attributes. The current rendering state will employ these ambient attributes before worldDraw() and viewportDraw() are executed (and for the 3D GS before their cached geometry is drawn).'''
     ...
     def viewportDraw (self, vpdraw: PyGi.ViewportDraw)-> None :
-      '''                             '''
+      '''In response to viewportDraw(), a drawable uses the passed in AcGiViewportDraw interface to describe its view-dependent geometry. This function is called per view; the results may be cached, but the 3D GS guarantees it will call viewportDraw() (if specified by the return value from worldDraw()) for each view and whenever the view parameters are modified. See AcGsView for more information.'''
     ...
     def viewportDrawLogicalFlags (self, vpdraw: PyGi.ViewportDraw)-> int :
-      '''                             '''
+      '''Entity implementers who desire view-independent viewportDraw caching must provide a meaningful response to this API -- the return value is a combination of the AcGiDrawablesetAttributes flags. In particular, the graphic system is watching for the kDrawableRegenTypeDependantGeometry flag which indicates that the entity in this logical set employs isolines. The passed in AcGiViewportDraw context can be used by the drawable to help determine which logical set is being regenerated.'''
     ...
     def worldDraw (self, wdraw: PyGi.WorldDraw)-> bool :
-      '''                             '''
+      '''In response to worldDraw(), a drawable uses the passed-in AcGiWorldDraw interface to describe its geometry that is sharable across viewports.The 3D GS guarantees that this function will be called at least once, but subsequent display updates may be cached. Use AcGsModel::onModified() to invalidate any cache that the GS has associated with a drawable so that worldDraw() will again be called upon the next display update.A return value of Adesk::kFalse indicates that the 3D GS must call viewportDraw() in order to obtain the complete geometry and attribute set for this drawable.'''
     ...
 
 class DrawableOverrule(PyRx.Overrule):
@@ -573,7 +573,8 @@ This class cannot be instantiated from Python'''
       '''Overloads:
     - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d
     - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d
-    '''
+    
+	-Displays a circle primitive with center at center and a radius of radius. The circle is on the plane defined by the normal vector normal and the point center.A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated and the application wants to get control back as soon as possible.-'''
     ...
 
     @overload
@@ -590,7 +591,8 @@ This class cannot be instantiated from Python'''
     - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGe.ArcType
     - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d
     - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, arcType: PyGe.ArcType
-    '''
+    
+	-Displays an arc primitive defined by the arc's center of curvature center, the radius of curvature radius, the containment plane's normal vector normal, the vector from the center of curvature to the arc start point startVector, the angle that the arc spans sweepAngle, and the arc type arcType.A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated and the application wants to get control back as soon as possible.-'''
     ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
@@ -614,19 +616,19 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def draw (self, drawable : PyGi.Drawable)-> bool :
-      '''                             '''
+      '''Instructs the graphics system to regenerate pDrawable as a component of this object.For example, a Block Definition (AcDbBlockTableRecord) uses it to draw its contained objects. Any object that owns another AcDb object should use this method to have that subentity draw itself (as opposed to directly calling its worldDraw() method).This allows a graphics system to cache the graphics of the object. Calling worldDraw directly would prevent this type of caching.To implement this method:Set up linetype, layer, color, and fill type for the AcGiDrawable using a call to setAttributes(), passing in your implementation of AcGiSubEntityTraits.Call worldDraw() on the drawable and record the return value.If false is returned, call viewportDraw() once for each viewport.Returning false to the caller indicates that you did not process the request.'''
     ...
     def edge (self, edgeList : list[PyGe.Curve2d])-> bool :
-      '''                             '''
+      '''Define the boundary of the fill.'''
     ...
     def ellipticalArc (self, center:PyGe.Point3d, norm:PyGe.Vector3d, majAxisLen:float, minAxisLen:float, startDeg:float, endDeg:float, tilt:float, arcType:ArcType=kAcGiArcSimple)-> bool :
-      '''                             '''
+      '''This method draws an elliptical arc or full ellipse, filled or unfilled.'''
     ...
     def getModelToWorldTransform (self)-> PyGe.Matrix3d :
-      '''                             '''
+      '''This gets the net block insert transform; that is, the model-to-world coordinate transform. The main purpose of the BLOCK entity is to transform an entity--whether to stretch, rotate, or move it. It is possible that during the current worldDraw(), the entity is in one or more BLOCKs. In this case, to determine the end result of the entity being transformed by one or more BLOCKs, use the net block insert transform (model-to-world coordinate transform) on your entity's model coordinate geometry. This will determine the location in world coordinate space that it occupies.'''
     ...
     def getWorldToModelTransform (self)-> PyGe.Matrix3d :
-      '''                             '''
+      '''This gets the inverse of the net block insert transform. This can transform an entity's world coordinate representation back into the original model coordinates.'''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -643,47 +645,47 @@ This class cannot be instantiated from Python'''
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def pline (self, p1 : PyDb.Polyline, fromIndex : int, numSegs : int)-> bool :
-      '''                             '''
+    def pline (self, p1 : PyDb.Polyline, fromIndex : int=0, numSegs : int=0)-> bool :
+      '''This function uses the AcDbPolylinelwBuf as the template for the geometry it draws. It generates display geometry that duplicates the geometry of the polyline's segments.'''
     ...
     def polygon (self, vertexList : list[PyGe.Point3d])-> bool :
-      '''                             '''
+      '''Draws a filled or unfilled polygon, depending on AcGiSubEntityTraits::fillType(). An edge between the last vertex and the first vertex is automatically created in order to generate a closed polygon.The caller is responsible for the memory used by the pVertexList array.'''
     ...
     def polyline (self, vertexList : list[PyGe.Point3d], normal : PyGe.Vector3d=default, marker : int=default)-> bool :
-      '''                             '''
+      '''Walks down the list of vertex points pVertexList drawing line segments from point to point (hence the requirement for a minimum of two points). If a thickness is currently specified it will be applied to the segments of this polyline. The caller is responsible for the memory used by the pVertexList array.The lBaseSubEntMarker argument has been added to allow the caller to specify sequential sub-entity markers for the segments of the polyline. If lBaseSubEntMarker'n' is greater than zero then the segments of the polyline will be assigned markers beginning with 'n' incrementing by 1 for each segment.'''
     ...
     def popModelTransform (self)-> bool :
-      '''                             '''
+      '''The method must be called to restore the model transform after a call to pushModelTransform().Returns Adesk::kTrue if successful; otherwise, returns Adesk::kFalse.'''
     ...
     def pushModelTransform (self, val : PyGe.Vector3d|PyGe.Matrix3d)-> bool :
-      '''                             '''
+      '''This function pushes a new transform onto the transform stack. It generates the input matrix using the arbitrary axis algorithm and the supplied vector.When you have finished with the transform, you must call popModelTransform() to leave the pipe in the same state as before.Returns Adesk::kTrue if successful; otherwise, returns Adesk::kFalse.'''
     ...
     def pushOrientationTransform (self,  behavior : PyGi.AcGiOrientationTransformBehavior)-> PyGe.Matrix3d :
-      '''                             '''
+      '''This method places orientation transform behavior onto the current transform stack'''
     ...
     def pushPositionTransform (self, behavior : PyGi.AcGiPositionTransformBehavior,  offset : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
-      '''                             '''
+      '''This method places position transform behavior onto the current transform stack.This method ignores z for position if behavior implies a 2D coordinate system, such as kAcGiViewportPosition, kAcGiScreenPosition , kAcGiScreenLocalOriginPosition, or kAcGiWorldWithScreenOffsetPosition .'''
     ...
     def pushScaleTransform (self, behavior : PyGi.AcGiScaleTransformBehavior,  extents : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
-      '''                             '''
+      '''This method places scale transform behavior onto the current transform stack.This method ignores z for scale if behavior implies a 2D coordinate system, such as kAcGiViewportScale, kAcGiScreenScale, kAcGiViewportLocalOriginScale, or kAcGiScreenLocalOriginScale.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
     def ray (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
-      '''                             '''
+      '''This function displays a ray that starts at raysStartingPoint and passes through aDifferentRayPoint.A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated and the application wants to get control back as soon as possible.'''
     ...
     def rowOfDots (self, count : int, start: PyGe.Point3d, step : PyGe.Vector3d)-> bool :
-      '''                             '''
+      '''This method draws a row of dots.'''
     ...
     def text (self, pos : PyGe.Point3d, normal : PyGe.Vector3d, direction : PyGe.Vector3d, height : float, width : float, oblique : float, msg : str)-> bool :
-      '''                             '''
+      '''This method uses the current AcGiTextStyle when generating the text graphics primitive. When worldDraw() is first entered, the AcGiTextStyle is set to the STANDARD text style that's built into the acad.exe file (not the STANDARD text style in the drawing).The position, normal, and direction can be thought of as the foundation for a coordinate system that orients the text in 3D world space, where the position is the origin, the direction is the X axis, and the normal is the Z axis.The obliquing angle for oblique is the angular slant from vertical of each character, much the way italic text is angled.A copy of the text string is used in pMsg, so the calling application is responsible for the memory of the string passed in.WarningThe direction and normal vectors must be mutually perpendicular or the results will be unpredictable.Here is an example of some text drawing code:Adesk::Boolean someEntity::worldDraw(AcGiWorldDraw *pWd){    // Position this text to start at 'origin', draw parallel    // to the XY-plane at an upward slant of 45 degrees.    //    AcGePoint3d origin(2.0, 2.0, 3.0);    AcGeVector3d direction(1.0, 1.0, 0.0);    AcGeVector3d normal(0.0, 0.0, 1.0);    pWd->geometry().text(origin, normal, direction, 1.0,        1.0, 0.0, "some text");    return Adesk:kTrue;}A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated and the application wants to get control back as soon as possible.'''
     ...
     def worldLine (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
-      '''                             '''
+      '''This function draws a line between the two points in the pnts array. The points must be in world coordinates.A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated, and the application wants to get control back as soon as possible.'''
     ...
     def xline (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
-      '''                             '''
+      '''An xline passing oneXlinePoint and a DifferentXlinePoint is displayed.A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated and the application wants to get control back as soon as possible.'''
     ...
 
 class GiAttributesFlags(object):
@@ -839,11 +841,8 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def getDescriptor (self, *args, **kwargs)-> PyGi.GiKernelDescriptor :
-      '''getDescriptor( (GiGraphicsKernel)arg1) -> GiKernelDescriptor :
-
-    C++ signature :
-        class PyGiKernelDescriptor getDescriptor(class PyGiGraphicsKernel {lvalue})'''
+    def getDescriptor (self)-> PyGi.GiKernelDescriptor :
+      '''This method returns the kernel descriptor for the graphics kernel. A given kernel only has one descriptor, but it's possible for multiple kernels to have the same descriptor.'''
     ...
 
 class GiKernelDescriptor(object):
@@ -856,6 +855,9 @@ This class cannot be instantiated from Python'''
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def supports (self)-> bool :
+      '''This used by a consumer of an AcGsGraphicsKernel to determine which features are supported by the kernel.'''
     ...
 
 class OrientationTransformBehavior(object):
@@ -1381,7 +1383,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def geometry (self)-> PyGi.ViewportGeometry :
-      '''                             '''
+      '''Returns a reference to the AcGiViewportGeometry object. The viewportGeometry object allows the user to generate geometry (polylines, arcs, meshes, etc.). For a description of this object, see class AcGiViewportGeometry.'''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -1390,7 +1392,7 @@ This class cannot be instantiated from Python'''
       '''Function usage:For each class registered with ObjectARX, the implementation of this function is to return a pointer to the AcRxClass object for the class of the object in which this method is called. For classes not registered with ObjectARX, this method has no meaning.Function implementation in derived classes:This function is overridden in all derived classes. The AcRx macros declare and define this function, so that the override is taken care of as part of using the macros. The implementation of this function is simply to return ::desc(). For example. the implementation for AcDbLine would be:return AcDbLine::desc();Default implementation for AcRxObject:  { return AcRxObject::desc(); }'''
     ...
     def isDragging (self)-> bool :
-      '''                             '''
+      '''Returns Adesk::kTrue if the entity is currently being dragged; otherwise, returns Adesk::kFalse.Graphically complex entities might find that using a simpler graphical representation during dragging enhances performance with little or no loss of functionality.'''
     ...
     def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''Returns true if "this" object is of a member of either the class represented by aClass, or a class derived from aClass. '''
@@ -1405,13 +1407,13 @@ This class cannot be instantiated from Python'''
       '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
     def regenAbort (self)-> bool :
-      '''                             '''
+      '''Provides a means to find out if an immediate termination of the graphics regeneration is requested by the system. If the return value is Adesk::kFalse, then all is well. But, if the return value is Adesk::kTrue, then an immediate clean up and return should be accomplished.'''
     ...
     def regenType (self)-> PyGi.RegenType :
-      '''                             '''
+      '''Returns the current elaboration mode. The current elaboration modes of type AcGiRegenType are:kAcGiStandardDisplayThe display you normally see is being generated (REGEN).kAcGiHideOrShadeCommandThe HIDE or SHADE command is being executed.kAcGRenderCommandThe RENDER command is being executed.kAcGiSaveWorldDrawForProxyThe graphics will be going into the entity's graphics metafile in case the entity is a proxy when next loaded, so provide graphics for proxy representation.This information allows the user to take special action for the four different situations. Normally, you may not need to consider which mode is in effect. However, if RENDER is running, then only geometry with filled area is accepted (filled polygon, etc.); other geometry (polyline, unfilled polygon, etc.) is ignored.'''
     ...
     def subEntityTraits (self)-> PyGi.SubEntityTraits :
-      '''                             '''
+      '''Returns a reference to the AcGiSubEntityTraits object.The subEntityTraits object gives the user control of, and access to, the attribute (color, layer, linetype, etc.) settings of the current geometry. For a description of this object, see class AcGiSubEntityTraits.'''
     ...
 
 class ViewportGeometry(Geometry):
@@ -1428,7 +1430,8 @@ This class cannot be instantiated from Python'''
       '''Overloads:
     - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d
     - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d
-    '''
+    
+	-Displays a circle primitive with center at center and a radius of radius. The circle is on the plane defined by the normal vector normal and the point center.A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated and the application wants to get control back as soon as possible.-'''
     ...
 
     @overload
@@ -1445,7 +1448,8 @@ This class cannot be instantiated from Python'''
     - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGe.ArcType
     - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d
     - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, arcType: PyGe.ArcType
-    '''
+    
+	-Displays an arc primitive defined by the arc's center of curvature center, the radius of curvature radius, the containment plane's normal vector normal, the vector from the center of curvature to the arc start point startVector, the angle that the arc spans sweepAngle, and the arc type arcType.A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated and the application wants to get control back as soon as possible.-'''
     ...
 
     @staticmethod
@@ -1467,19 +1471,19 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def draw (self, drawable : PyGi.Drawable)-> bool :
-      '''                             '''
+      '''Instructs the graphics system to regenerate pDrawable as a component of this object.For example, a Block Definition (AcDbBlockTableRecord) uses it to draw its contained objects. Any object that owns another AcDb object should use this method to have that subentity draw itself (as opposed to directly calling its worldDraw() method).This allows a graphics system to cache the graphics of the object. Calling worldDraw directly would prevent this type of caching.To implement this method:Set up linetype, layer, color, and fill type for the AcGiDrawable using a call to setAttributes(), passing in your implementation of AcGiSubEntityTraits.Call worldDraw() on the drawable and record the return value.If false is returned, call viewportDraw() once for each viewport.Returning false to the caller indicates that you did not process the request.'''
     ...
     def edge (self, edgeList : list[PyGe.Curve2d])-> bool :
-      '''                             '''
+      '''Define the boundary of the fill.'''
     ...
     def ellipticalArc (self, center:PyGe.Point3d, norm:PyGe.Vector3d, majAxisLen:float, minAxisLen:float, startDeg:float, endDeg:float, tilt:float, arcType:ArcType=kAcGiArcSimple)-> bool :
-      '''                             '''
+      '''This method draws an elliptical arc or full ellipse, filled or unfilled.'''
     ...
     def getModelToWorldTransform (self)-> PyGe.Matrix3d :
-      '''                             '''
+      '''This gets the net block insert transform; that is, the model-to-world coordinate transform. The main purpose of the BLOCK entity is to transform an entity--whether to stretch, rotate, or move it. It is possible that during the current worldDraw(), the entity is in one or more BLOCKs. In this case, to determine the end result of the entity being transformed by one or more BLOCKs, use the net block insert transform (model-to-world coordinate transform) on your entity's model coordinate geometry. This will determine the location in world coordinate space that it occupies.'''
     ...
     def getWorldToModelTransform (self)-> PyGe.Matrix3d :
-      '''                             '''
+      '''This gets the inverse of the net block insert transform. This can transform an entity's world coordinate representation back into the original model coordinates.'''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -1496,47 +1500,47 @@ This class cannot be instantiated from Python'''
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def pline (self, p1 : PyDb.Polyline, fromIndex : int, numSegs : int)-> bool :
-      '''                             '''
+    def pline (self, p1 : PyDb.Polyline, fromIndex : int=0, numSegs : int=0)-> bool :
+      '''This function uses the AcDbPolylinelwBuf as the template for the geometry it draws. It generates display geometry that duplicates the geometry of the polyline's segments.'''
     ...
     def polygon (self, vertexList : list[PyGe.Point3d])-> bool :
-      '''                             '''
+      '''Draws a filled or unfilled polygon, depending on AcGiSubEntityTraits::fillType(). An edge between the last vertex and the first vertex is automatically created in order to generate a closed polygon.The caller is responsible for the memory used by the pVertexList array.'''
     ...
     def polyline (self, vertexList : list[PyGe.Point3d], normal : PyGe.Vector3d=default, marker : int=default)-> bool :
-      '''                             '''
+      '''Walks down the list of vertex points pVertexList drawing line segments from point to point (hence the requirement for a minimum of two points). If a thickness is currently specified it will be applied to the segments of this polyline. The caller is responsible for the memory used by the pVertexList array.The lBaseSubEntMarker argument has been added to allow the caller to specify sequential sub-entity markers for the segments of the polyline. If lBaseSubEntMarker'n' is greater than zero then the segments of the polyline will be assigned markers beginning with 'n' incrementing by 1 for each segment.'''
     ...
     def popModelTransform (self)-> bool :
-      '''                             '''
+      '''The method must be called to restore the model transform after a call to pushModelTransform().Returns Adesk::kTrue if successful; otherwise, returns Adesk::kFalse.'''
     ...
     def pushModelTransform (self, val : PyGe.Vector3d|PyGe.Matrix3d)-> bool :
-      '''                             '''
+      '''This function pushes a new transform onto the transform stack. It generates the input matrix using the arbitrary axis algorithm and the supplied vector.When you have finished with the transform, you must call popModelTransform() to leave the pipe in the same state as before.Returns Adesk::kTrue if successful; otherwise, returns Adesk::kFalse.'''
     ...
     def pushOrientationTransform (self,  behavior : PyGi.AcGiOrientationTransformBehavior)-> PyGe.Matrix3d :
-      '''                             '''
+      '''This method places orientation transform behavior onto the current transform stack'''
     ...
     def pushPositionTransform (self, behavior : PyGi.AcGiPositionTransformBehavior,  offset : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
-      '''                             '''
+      '''This method places position transform behavior onto the current transform stack.This method ignores z for position if behavior implies a 2D coordinate system, such as kAcGiViewportPosition, kAcGiScreenPosition , kAcGiScreenLocalOriginPosition, or kAcGiWorldWithScreenOffsetPosition .'''
     ...
     def pushScaleTransform (self, behavior : PyGi.AcGiScaleTransformBehavior,  extents : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
-      '''                             '''
+      '''This method places scale transform behavior onto the current transform stack.This method ignores z for scale if behavior implies a 2D coordinate system, such as kAcGiViewportScale, kAcGiScreenScale, kAcGiViewportLocalOriginScale, or kAcGiScreenLocalOriginScale.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
     def ray (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
-      '''                             '''
+      '''This function displays a ray that starts at raysStartingPoint and passes through aDifferentRayPoint.A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated and the application wants to get control back as soon as possible.'''
     ...
     def rowOfDots (self, count : int, start: PyGe.Point3d, step : PyGe.Vector3d)-> bool :
-      '''                             '''
+      '''This method draws a row of dots.'''
     ...
     def text (self, pos : PyGe.Point3d, normal : PyGe.Vector3d, direction : PyGe.Vector3d, height : float, width : float, oblique : float, msg : str)-> bool :
-      '''                             '''
+      '''This method uses the current AcGiTextStyle when generating the text graphics primitive. When worldDraw() is first entered, the AcGiTextStyle is set to the STANDARD text style that's built into the acad.exe file (not the STANDARD text style in the drawing).The position, normal, and direction can be thought of as the foundation for a coordinate system that orients the text in 3D world space, where the position is the origin, the direction is the X axis, and the normal is the Z axis.The obliquing angle for oblique is the angular slant from vertical of each character, much the way italic text is angled.A copy of the text string is used in pMsg, so the calling application is responsible for the memory of the string passed in.WarningThe direction and normal vectors must be mutually perpendicular or the results will be unpredictable.Here is an example of some text drawing code:Adesk::Boolean someEntity::worldDraw(AcGiWorldDraw *pWd){    // Position this text to start at 'origin', draw parallel    // to the XY-plane at an upward slant of 45 degrees.    //    AcGePoint3d origin(2.0, 2.0, 3.0);    AcGeVector3d direction(1.0, 1.0, 0.0);    AcGeVector3d normal(0.0, 0.0, 1.0);    pWd->geometry().text(origin, normal, direction, 1.0,        1.0, 0.0, "some text");    return Adesk:kTrue;}A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated and the application wants to get control back as soon as possible.'''
     ...
     def worldLine (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
-      '''                             '''
+      '''This function draws a line between the two points in the pnts array. The points must be in world coordinates.A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated, and the application wants to get control back as soon as possible.'''
     ...
     def xline (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
-      '''                             '''
+      '''An xline passing oneXlinePoint and a DifferentXlinePoint is displayed.A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated and the application wants to get control back as soon as possible.'''
     ...
 
 class Visibility(object):
@@ -1596,7 +1600,7 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def geometry (self)-> PyGi.WorldGeometry :
-      '''                             '''
+      '''Returns a reference to the AcGiWorldGeometry object. The AcGiWorldGeometry object allows the user to generate geometry (polylines, arcs, meshes, etc.). For a description of this object, see class AcGiWorldGeometry.'''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -1605,7 +1609,7 @@ This class cannot be instantiated from Python'''
       '''Function usage:For each class registered with ObjectARX, the implementation of this function is to return a pointer to the AcRxClass object for the class of the object in which this method is called. For classes not registered with ObjectARX, this method has no meaning.Function implementation in derived classes:This function is overridden in all derived classes. The AcRx macros declare and define this function, so that the override is taken care of as part of using the macros. The implementation of this function is simply to return ::desc(). For example. the implementation for AcDbLine would be:return AcDbLine::desc();Default implementation for AcRxObject:  { return AcRxObject::desc(); }'''
     ...
     def isDragging (self)-> bool :
-      '''                             '''
+      '''Returns Adesk::kTrue if the entity is currently being dragged; otherwise, returns Adesk::kFalse.Graphically complex entities might find that using a simpler graphical representation during dragging enhances performance with little or no loss of functionality.'''
     ...
     def isKindOf (self, rhs: PyRx.RxClass)-> bool :
       '''Returns true if "this" object is of a member of either the class represented by aClass, or a class derived from aClass. '''
@@ -1620,13 +1624,13 @@ This class cannot be instantiated from Python'''
       '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
     def regenAbort (self)-> bool :
-      '''                             '''
+      '''Provides a means to find out if an immediate termination of the graphics regeneration is requested by the system. If the return value is Adesk::kFalse, then all is well. But, if the return value is Adesk::kTrue, then an immediate clean up and return should be accomplished.'''
     ...
     def regenType (self)-> PyGi.RegenType :
-      '''                             '''
+      '''Returns the current elaboration mode. The current elaboration modes of type AcGiRegenType are:kAcGiStandardDisplayThe display you normally see is being generated (REGEN).kAcGiHideOrShadeCommandThe HIDE or SHADE command is being executed.kAcGRenderCommandThe RENDER command is being executed.kAcGiSaveWorldDrawForProxyThe graphics will be going into the entity's graphics metafile in case the entity is a proxy when next loaded, so provide graphics for proxy representation.This information allows the user to take special action for the four different situations. Normally, you may not need to consider which mode is in effect. However, if RENDER is running, then only geometry with filled area is accepted (filled polygon, etc.); other geometry (polyline, unfilled polygon, etc.) is ignored.'''
     ...
     def subEntityTraits (self)-> PyGi.SubEntityTraits :
-      '''                             '''
+      '''Returns a reference to the AcGiSubEntityTraits object.The subEntityTraits object gives the user control of, and access to, the attribute (color, layer, linetype, etc.) settings of the current geometry. For a description of this object, see class AcGiSubEntityTraits.'''
     ...
 
 class WorldGeometry(Geometry):
@@ -1643,7 +1647,8 @@ This class cannot be instantiated from Python'''
       '''Overloads:
     - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d
     - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d
-    '''
+    
+	-Displays a circle primitive with center at center and a radius of radius. The circle is on the plane defined by the normal vector normal and the point center.A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated and the application wants to get control back as soon as possible.-'''
     ...
 
     @overload
@@ -1660,7 +1665,8 @@ This class cannot be instantiated from Python'''
     - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGe.ArcType
     - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d
     - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, arcType: PyGe.ArcType
-    '''
+    
+	-Displays an arc primitive defined by the arc's center of curvature center, the radius of curvature radius, the containment plane's normal vector normal, the vector from the center of curvature to the arc start point startVector, the angle that the arc spans sweepAngle, and the arc type arcType.A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated and the application wants to get control back as soon as possible.-'''
     ...
 
     @staticmethod
@@ -1682,19 +1688,19 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def draw (self, drawable : PyGi.Drawable)-> bool :
-      '''                             '''
+      '''Instructs the graphics system to regenerate pDrawable as a component of this object.For example, a Block Definition (AcDbBlockTableRecord) uses it to draw its contained objects. Any object that owns another AcDb object should use this method to have that subentity draw itself (as opposed to directly calling its worldDraw() method).This allows a graphics system to cache the graphics of the object. Calling worldDraw directly would prevent this type of caching.To implement this method:Set up linetype, layer, color, and fill type for the AcGiDrawable using a call to setAttributes(), passing in your implementation of AcGiSubEntityTraits.Call worldDraw() on the drawable and record the return value.If false is returned, call viewportDraw() once for each viewport.Returning false to the caller indicates that you did not process the request.'''
     ...
     def edge (self, edgeList : list[PyGe.Curve2d])-> bool :
-      '''                             '''
+      '''Define the boundary of the fill.'''
     ...
     def ellipticalArc (self, center:PyGe.Point3d, norm:PyGe.Vector3d, majAxisLen:float, minAxisLen:float, startDeg:float, endDeg:float, tilt:float, arcType:ArcType=kAcGiArcSimple)-> bool :
-      '''                             '''
+      '''This method draws an elliptical arc or full ellipse, filled or unfilled.'''
     ...
     def getModelToWorldTransform (self)-> PyGe.Matrix3d :
-      '''                             '''
+      '''This gets the net block insert transform; that is, the model-to-world coordinate transform. The main purpose of the BLOCK entity is to transform an entity--whether to stretch, rotate, or move it. It is possible that during the current worldDraw(), the entity is in one or more BLOCKs. In this case, to determine the end result of the entity being transformed by one or more BLOCKs, use the net block insert transform (model-to-world coordinate transform) on your entity's model coordinate geometry. This will determine the location in world coordinate space that it occupies.'''
     ...
     def getWorldToModelTransform (self)-> PyGe.Matrix3d :
-      '''                             '''
+      '''This gets the inverse of the net block insert transform. This can transform an entity's world coordinate representation back into the original model coordinates.'''
     ...
     def implRefCount (self)-> int :
       '''                             '''
@@ -1711,45 +1717,45 @@ This class cannot be instantiated from Python'''
     def keepAlive (self, flag: bool)-> None :
       '''                             '''
     ...
-    def pline (self, p1 : PyDb.Polyline, fromIndex : int, numSegs : int)-> bool :
-      '''                             '''
+    def pline (self, p1 : PyDb.Polyline, fromIndex : int=0, numSegs : int=0)-> bool :
+      '''This function uses the AcDbPolylinelwBuf as the template for the geometry it draws. It generates display geometry that duplicates the geometry of the polyline's segments.'''
     ...
     def polygon (self, vertexList : list[PyGe.Point3d])-> bool :
-      '''                             '''
+      '''Draws a filled or unfilled polygon, depending on AcGiSubEntityTraits::fillType(). An edge between the last vertex and the first vertex is automatically created in order to generate a closed polygon.The caller is responsible for the memory used by the pVertexList array.'''
     ...
     def polyline (self, vertexList : list[PyGe.Point3d], normal : PyGe.Vector3d=default, marker : int=default)-> bool :
-      '''                             '''
+      '''Walks down the list of vertex points pVertexList drawing line segments from point to point (hence the requirement for a minimum of two points). If a thickness is currently specified it will be applied to the segments of this polyline. The caller is responsible for the memory used by the pVertexList array.The lBaseSubEntMarker argument has been added to allow the caller to specify sequential sub-entity markers for the segments of the polyline. If lBaseSubEntMarker'n' is greater than zero then the segments of the polyline will be assigned markers beginning with 'n' incrementing by 1 for each segment.'''
     ...
     def popModelTransform (self)-> bool :
-      '''                             '''
+      '''The method must be called to restore the model transform after a call to pushModelTransform().Returns Adesk::kTrue if successful; otherwise, returns Adesk::kFalse.'''
     ...
     def pushModelTransform (self, val : PyGe.Vector3d|PyGe.Matrix3d)-> bool :
-      '''                             '''
+      '''This function pushes a new transform onto the transform stack. It generates the input matrix using the arbitrary axis algorithm and the supplied vector.When you have finished with the transform, you must call popModelTransform() to leave the pipe in the same state as before.Returns Adesk::kTrue if successful; otherwise, returns Adesk::kFalse.'''
     ...
     def pushOrientationTransform (self,  behavior : PyGi.AcGiOrientationTransformBehavior)-> PyGe.Matrix3d :
-      '''                             '''
+      '''This method places orientation transform behavior onto the current transform stack'''
     ...
     def pushPositionTransform (self, behavior : PyGi.AcGiPositionTransformBehavior,  offset : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
-      '''                             '''
+      '''This method places position transform behavior onto the current transform stack.This method ignores z for position if behavior implies a 2D coordinate system, such as kAcGiViewportPosition, kAcGiScreenPosition , kAcGiScreenLocalOriginPosition, or kAcGiWorldWithScreenOffsetPosition .'''
     ...
     def pushScaleTransform (self, behavior : PyGi.AcGiScaleTransformBehavior,  extents : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d :
-      '''                             '''
+      '''This method places scale transform behavior onto the current transform stack.This method ignores z for scale if behavior implies a 2D coordinate system, such as kAcGiViewportScale, kAcGiScreenScale, kAcGiViewportLocalOriginScale, or kAcGiScreenLocalOriginScale.'''
     ...
     def queryX (self, rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''This method searches for a protocol extension object associated with this object.The method begins the search by examining the AcRxClass object associated with this object, and if no protocol extension object is found, the search continues in the base class of the object's class and so on up the inheritance tree for the class. This procedure provides a form of protocol extension inheritance. An object's AcRxClass member may be found by using the class's isA() method.If the search for a protocol extension object is unsuccessful, then NULL is returned.'''
     ...
     def ray (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
-      '''                             '''
+      '''This function displays a ray that starts at raysStartingPoint and passes through aDifferentRayPoint.A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated and the application wants to get control back as soon as possible.'''
     ...
     def rowOfDots (self, count : int, start: PyGe.Point3d, step : PyGe.Vector3d)-> bool :
-      '''                             '''
+      '''This method draws a row of dots.'''
     ...
     def text (self, pos : PyGe.Point3d, normal : PyGe.Vector3d, direction : PyGe.Vector3d, height : float, width : float, oblique : float, msg : str)-> bool :
-      '''                             '''
+      '''This method uses the current AcGiTextStyle when generating the text graphics primitive. When worldDraw() is first entered, the AcGiTextStyle is set to the STANDARD text style that's built into the acad.exe file (not the STANDARD text style in the drawing).The position, normal, and direction can be thought of as the foundation for a coordinate system that orients the text in 3D world space, where the position is the origin, the direction is the X axis, and the normal is the Z axis.The obliquing angle for oblique is the angular slant from vertical of each character, much the way italic text is angled.A copy of the text string is used in pMsg, so the calling application is responsible for the memory of the string passed in.WarningThe direction and normal vectors must be mutually perpendicular or the results will be unpredictable.Here is an example of some text drawing code:Adesk::Boolean someEntity::worldDraw(AcGiWorldDraw *pWd){    // Position this text to start at 'origin', draw parallel    // to the XY-plane at an upward slant of 45 degrees.    //    AcGePoint3d origin(2.0, 2.0, 3.0);    AcGeVector3d direction(1.0, 1.0, 0.0);    AcGeVector3d normal(0.0, 0.0, 1.0);    pWd->geometry().text(origin, normal, direction, 1.0,        1.0, 0.0, "some text");    return Adesk:kTrue;}A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated and the application wants to get control back as soon as possible.'''
     ...
     def worldLine (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
-      '''                             '''
+      '''This function draws a line between the two points in the pnts array. The points must be in world coordinates.A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated, and the application wants to get control back as soon as possible.'''
     ...
     def xline (self, p1 : PyGe.Point3d, p2 : PyGe.Point3d)-> bool :
-      '''                             '''
+      '''An xline passing oneXlinePoint and a DifferentXlinePoint is displayed.A return value of Adesk::kFalse (that is, 0) indicates that the primitive has been successfully stored in the graphics database. A return value of Adesk::kTrue indicates that the operation has been terminated and the application wants to get control back as soon as possible.'''
     ...

@@ -11,15 +11,15 @@ void makePyGiObjectWrapper()
 {
     PyDocString DS("PyGi.Drawable");
     class_<PyGiDrawable, bases<PyRxObject>>("Drawable", boost::python::no_init)
-        .def("setAttributes", &PyGiDrawable::setAttributes, DS.ARGS({ "traits: PyGi.DrawableTraits" }))
-        .def("worldDraw", &PyGiDrawable::worldDraw, DS.ARGS({ "wdraw: PyGi.WorldDraw" }))
-        .def("viewportDraw", &PyGiDrawable::viewportDraw, DS.ARGS({ "vpdraw: PyGi.ViewportDraw" }))
-        .def("viewportDrawLogicalFlags", &PyGiDrawable::viewportDrawLogicalFlags, DS.ARGS({ "vpdraw: PyGi.ViewportDraw" }))
-        .def("isPersistent", &PyGiDrawable::isPersistent, DS.ARGS())
-        .def("id", &PyGiDrawable::id, DS.ARGS())
-        .def("drawableType", &PyGiDrawable::drawableType, DS.ARGS())
-        .def("rolloverHit", &PyGiDrawable::rolloverHit, DS.ARGS({ "nSubentId: int", "nMouseFlags: int", "bReset: bool" }))
-        .def("bounds", &PyGiDrawable::bounds, DS.ARGS({ "ext: PyDb.Extents" }))
+        .def("setAttributes", &PyGiDrawable::setAttributes, DS.ARGS({ "traits: PyGi.DrawableTraits" }, 13061))
+        .def("worldDraw", &PyGiDrawable::worldDraw, DS.ARGS({ "wdraw: PyGi.WorldDraw" }, 13070))
+        .def("viewportDraw", &PyGiDrawable::viewportDraw, DS.ARGS({ "vpdraw: PyGi.ViewportDraw" }, 13068))
+        .def("viewportDrawLogicalFlags", &PyGiDrawable::viewportDrawLogicalFlags, DS.ARGS({ "vpdraw: PyGi.ViewportDraw" }, 13069))
+        .def("isPersistent", &PyGiDrawable::isPersistent, DS.ARGS(13059))
+        .def("id", &PyGiDrawable::id, DS.ARGS(13058))
+        .def("drawableType", &PyGiDrawable::drawableType, DS.ARGS(13055))
+        .def("rolloverHit", &PyGiDrawable::rolloverHit, DS.ARGS({ "nSubentId: int", "nMouseFlags: int", "bReset: bool" }, 13060))
+        .def("bounds", &PyGiDrawable::bounds, DS.ARGS({ "ext: PyDb.Extents" }, 13054))
         .def("className", &PyGiDrawable::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyGiDrawable::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -137,7 +137,7 @@ AcGiDrawable* PyGiDrawable::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGiDrawable*>(m_pyImp.get());
 }
 
@@ -305,6 +305,6 @@ AcGiDrawableOverrule* PyGiDrawableOverrule::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGiDrawableOverrule*>(m_pyImp.get());
 }
