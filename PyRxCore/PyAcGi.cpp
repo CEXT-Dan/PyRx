@@ -62,7 +62,7 @@ BOOST_PYTHON_MODULE(PyGi)
         .value("kAcGiZAxisOrientation", AcGiOrientationTransformBehavior::kAcGiZAxisOrientation)
         .export_values()
         ;
-    enum_<AcGiGeometry::TransparencyMode>("TransparencyMode")//TODO: check for clash
+    enum_<AcGiGeometry::TransparencyMode>("TransparencyMode")
         .value("kTransparencyOff", AcGiGeometry::TransparencyMode::kTransparencyOff)
         .value("kTransparency1Bit", AcGiGeometry::TransparencyMode::kTransparency1Bit)
         .value("kTransparency8Bit", AcGiGeometry::TransparencyMode::kTransparency8Bit)

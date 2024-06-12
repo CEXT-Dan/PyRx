@@ -408,7 +408,7 @@ public:
     void	            setTextstyle(const PyDbObjectId& objId);
     void	            setThickness(double thickness);
     void	            setTilemode(bool mode);
-    void	            setTimeZone(AcDb::TimeZone tz);//TODO: enum
+    void	            setTimeZone(AcDb::TimeZone tz);
     void	            setTimeZoneAsUtcOffset(double offset);
     void	            setTracewid(double width);
     void	            setTreedepth(Adesk::Int16 depth);
