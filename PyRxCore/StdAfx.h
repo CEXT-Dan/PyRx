@@ -464,7 +464,6 @@ inline boost::python::list AcStringArrayToPyList(const AcStringArray& arr)
     return pyPyList;
 }
 
-//TODO avoid copy
 inline AcGeDoubleArray PyListToDoubleArray(const boost::python::object& iterable)
 {
     const auto& vec = py_list_to_std_vector<double>(iterable);

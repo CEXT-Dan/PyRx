@@ -174,7 +174,7 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     AcGsModelPtr pModel(gsManager->createAutoCADModel(*pGraphicsKernel));
     if (pModel == nullptr)
         PyThrowBadEs(eNullPtr);
-#if defined(_ZRXTARGET) || defined(_GRXTARGET)//todo test this in acad, bcad
+#if defined(_ZRXTARGET) || defined(_GRXTARGET)//TODO: test this in acad, bcad
     AcGsViewPtr pView(pGraphicsKernel->createView());
     if (pView == nullptr)
         PyThrowBadEs(eNullPtr);
