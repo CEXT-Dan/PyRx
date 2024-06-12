@@ -1,3 +1,5 @@
+from pyrx_imp import Rx
+
 def CheckTestResults(path):
     with open(path) as testFile:
         testPass = True
@@ -15,5 +17,3 @@ def CheckTestResults(path):
             print("\nFAIL")
 
         return testPass
-
-CheckTestResults("testResults/tout-ARX25-2024-06-12.txt")

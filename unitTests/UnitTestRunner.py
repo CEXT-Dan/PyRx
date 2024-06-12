@@ -13,6 +13,7 @@ import dbc
 import testcfg
 import os
 import traceback
+import TestResultsChecker
 #
 from pyrx_imp import Rx
 from pyrx_imp import Ap
@@ -88,6 +89,8 @@ def PyRxCmd_runtests() -> None:
             
         if not "BRX" in host:
             UnitTestDocString.docstringtester()
+            
+        TestResultsChecker.CheckTestResults(testcfg.logFileName)
             
     except Exception as err:
         traceback.print_exception(err)(err)
