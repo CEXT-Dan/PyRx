@@ -5,7 +5,9 @@ using namespace boost::python;
 
 void makePyGiKernelDescriptorWrapper()
 {
+    PyDocString DS("GiKernelDescriptor");
     class_<PyGiKernelDescriptor>("GiKernelDescriptor", boost::python::no_init)
+        .def("supports", &PyGiKernelDescriptor::supports, DS.ARGS(13289))
         .def("className", &PyGiKernelDescriptor::className).staticmethod("className")
         ;
 }
@@ -38,8 +40,9 @@ AcGiKernelDescriptor* PyGiKernelDescriptor::impObj(const std::source_location& s
 //PyGiGraphicsKernel
 void makePyGiGraphicsKernelWrapper()
 {
+    PyDocString DS("GiGraphicsKernel");
     class_<PyGiGraphicsKernel>("GiGraphicsKernel", boost::python::no_init)
-        .def("getDescriptor", &PyGiGraphicsKernel::getDescriptor)
+        .def("getDescriptor", &PyGiGraphicsKernel::getDescriptor, DS.ARGS(13217))
         .def("className", &PyGiGraphicsKernel::className).staticmethod("className")
         ;
 }
