@@ -320,6 +320,16 @@ class TestGe(unittest.TestCase):
         si = PyGe.SurfSurfInt(p1,p3)
         self.assertEqual(si.numResults(),1)
         
+    def test_ge3dcurve_length(self):
+        seg = PyGe.LineSeg3d(PyGe.Point3d(0,0,0), PyGe.Point3d(100,0,0))
+        length = seg.length(0,1)
+        self.assertEqual(length,100)
+        
+    def test_ge2dcurve_length(self):
+        seg = PyGe.LineSeg2d(PyGe.Point2d(0,0), PyGe.Point2d(100,0))
+        length = seg.length(0,1)
+        self.assertEqual(length,100)
+    
     def test_CompositeCurve3d_getCurveList(self):
         objHnd = Db.Handle("2c92e2")
         objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
