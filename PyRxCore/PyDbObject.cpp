@@ -506,26 +506,23 @@ boost::python::object PyDbObject::getBinaryData(const std::string& key)
     char* data = nullptr;
     Adesk::Int32 size = 0;
     AcString wky = utf8_to_wstr(key).c_str();
-    impObj()->getBinaryData(wky, size, data);
-    PyObjectPtr pObj(PyMemoryView_FromMemory(data, size, PyBUF_WRITE));
+    PyThrowBadEs(impObj()->getBinaryData(wky, size, data));
+    PyObjectPtr pObj(PyMemoryView_FromMemory(data, size, PyBUF_READ));
     acutDelBuffer(data);
     return boost::python::object{ boost::python::handle<>(PyBytes_FromObject(pObj.get())) };
 }
 
-void PyDbObject::setBinaryData(const std::string& key, const boost::python::object& obj)
+void PyDbObject::setBinaryData(const std::string& key, const boost::python::object& inbuf)
 {
     AcString wky = utf8_to_wstr(key).c_str();
-    boost::python::object inbuf = obj;
     if (!PyObject_CheckBuffer(inbuf.ptr()))
         PyThrowBadEs(eInvalidInput);
     Py_buffer view;
     if (PyObject_GetBuffer(inbuf.ptr(), &view, PyBUF_SIMPLE) == -1)
         PyThrowBadEs(eInvalidInput);
-    char* data = nullptr;
-    acutNewBuffer(data, view.len);
-    memcpy_s(data, view.len, view.buf, view.len);
-    impObj()->setBinaryData(wky, view.len, data);
+    auto es = impObj()->setBinaryData(wky, view.len, (char*)view.buf);
     PyBuffer_Release(&view);
+    PyThrowBadEs(es);
 }
 
 PyRxClass PyDbObject::desc()
