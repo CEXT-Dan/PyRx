@@ -96,6 +96,8 @@ void makePyDbObjectWrapper()
         .def("xmitPropagateModify", &PyDbObject::xmitPropagateModify, DS.ARGS(7256))
         .def("setAcDbObjectIdsInFlux", &PyDbObject::setAcDbObjectIdsInFlux, DS.ARGS(7227))
         .def("isAcDbObjectIdsInFlux", &PyDbObject::isAcDbObjectIdsInFlux, DS.ARGS(7193))
+        .def("getBinaryData", &PyDbObject::getBinaryData, DS.ARGS({ "key: str" }))
+        .def("setBinaryData", &PyDbObject::setBinaryData, DS.ARGS({ "key: str", "data: memoryview" }))
         .def("desc", &PyDbObject::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbObject::className, DS.SARGS()).staticmethod("className")
         .def("cloneFrom", &PyDbObject::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -497,6 +499,33 @@ void PyDbObject::setAcDbObjectIdsInFlux()
 Adesk::Boolean PyDbObject::isAcDbObjectIdsInFlux() const
 {
     return impObj()->isAcDbObjectIdsInFlux();
+}
+
+boost::python::object PyDbObject::getBinaryData(const std::string& key)
+{
+    char* data = nullptr;
+    Adesk::Int32 size = 0;
+    AcString wky = utf8_to_wstr(key).c_str();
+    impObj()->getBinaryData(wky, size, data);
+    PyObjectPtr pObj(PyMemoryView_FromMemory(data, size, PyBUF_WRITE));
+    acutDelBuffer(data);
+    return boost::python::object{ boost::python::handle<>(PyBytes_FromObject(pObj.get())) };
+}
+
+void PyDbObject::setBinaryData(const std::string& key, const boost::python::object& obj)
+{
+    AcString wky = utf8_to_wstr(key).c_str();
+    boost::python::object inbuf = obj;
+    if (!PyObject_CheckBuffer(inbuf.ptr()))
+        PyThrowBadEs(eInvalidInput);
+    Py_buffer view;
+    if (PyObject_GetBuffer(inbuf.ptr(), &view, PyBUF_SIMPLE) == -1)
+        PyThrowBadEs(eInvalidInput);
+    char* data = nullptr;
+    acutNewBuffer(data, view.len);
+    memcpy_s(data, view.len, view.buf, view.len);
+    impObj()->setBinaryData(wky, view.len, data);
+    PyBuffer_Release(&view);
 }
 
 PyRxClass PyDbObject::desc()
