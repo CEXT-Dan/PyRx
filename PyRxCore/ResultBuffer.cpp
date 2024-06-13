@@ -294,7 +294,7 @@ boost::python::list resbufToList(resbuf* pRb)
                     break;
                 case AcDb::kDwgBChunk:
                 {
-                    PyObjectPtr pObj(PyMemoryView_FromMemory(pTail->resval.rbinary.buf, pTail->resval.rbinary.clen, PyBUF_WRITE));
+                    PyObjectPtr pObj(PyMemoryView_FromMemory(pTail->resval.rbinary.buf, pTail->resval.rbinary.clen, PyBUF_READ));
                     list.append(boost::python::make_tuple(pTail->restype, boost::python::object{ boost::python::handle<>(PyBytes_FromObject(pObj.get())) }));
                     break;
                 }

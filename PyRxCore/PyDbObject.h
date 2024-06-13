@@ -101,7 +101,7 @@ public:
     Adesk::Boolean      isAcDbObjectIdsInFlux() const;
 
     boost::python::object getBinaryData(const std::string& key);
-    void                  setBinaryData(const std::string& key, const boost::python::object& obj);
+    void                  setBinaryData(const std::string& key, const boost::python::object& inbuf);
 
     static PyRxClass    desc();
     static std::string  className();
