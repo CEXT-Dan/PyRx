@@ -309,12 +309,12 @@ boost::python::tuple PyGeCurve2d::isLinear2(const AcGeTol& tol) const
 
 double PyGeCurve2d::length1(double fromParam, double toParam) const
 {
-    return impObj()->length(fromParam, fromParam);
+    return impObj()->length(fromParam, toParam);
 }
 
 double PyGeCurve2d::length2(double fromParam, double toParam, double tol) const
 {
-    return impObj()->length(fromParam, fromParam, tol);
+    return impObj()->length(fromParam, toParam, tol);
 }
 
 double PyGeCurve2d::paramAtLength1(double datumParam, double length) const
