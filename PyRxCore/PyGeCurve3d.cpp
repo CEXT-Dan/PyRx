@@ -459,12 +459,12 @@ boost::python::tuple PyGeCurve3d::isPeriodic() const
 
 double PyGeCurve3d::length1(double fromParam, double toParam) const
 {
-    return impObj()->length(fromParam, fromParam);
+    return impObj()->length(fromParam, toParam);
 }
 
 double PyGeCurve3d::length2(double fromParam, double toParam, double tol) const
 {
-    return impObj()->length(fromParam, fromParam, tol);
+    return impObj()->length(fromParam, toParam, tol);
 }
 
 double PyGeCurve3d::paramAtLength1(double datumParam, double length) const
