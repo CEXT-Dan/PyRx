@@ -99,6 +99,10 @@ public:
     void                xmitPropagateModify() const;
     void                setAcDbObjectIdsInFlux();
     Adesk::Boolean      isAcDbObjectIdsInFlux() const;
+
+    boost::python::object getBinaryData(const std::string& key);
+    void                  setBinaryData(const std::string& key, const boost::python::object& obj);
+
     static PyRxClass    desc();
     static std::string  className();
     static PyDbObject   cloneFrom(const PyRxObject& src);
