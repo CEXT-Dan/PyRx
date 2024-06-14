@@ -187,12 +187,12 @@ def findOverloadAsComment(sig, docstring):
         arge = sig.find(')]>')
         if argb != -1:
             if len(docstring) != 0:
-                return "      '''{}\n\t-{}-'''".format(sig[argb+3:arge],docstring)
+                return "        '''{}\n\t-{}-'''".format(sig[argb+3:arge],docstring)
             else:
-                return "      '''{}'''".format(sig[argb+3:arge])
-        return "      '''                             '''"
+                return "        '''{}'''".format(sig[argb+3:arge])
+        return "        '''                             '''"
     except:
-        return "      '''                             '''"
+        return "        '''                             '''"
 
 def findReturnTypeModlue(sig):
     if sig in class_types:
@@ -300,7 +300,10 @@ def generate_pyi(stubPath,moduleName, module, dsdict,rtTypes):
                 else:
                     f.write(f'class {name}(object):\n')
                 
+                direct_obj_members = obj.__dict__.keys()
                 for func_name, func in inspect.getmembers(obj):
+                    if func_name not in direct_obj_members:
+                        continue
                     if include_attr(func_name):
                         sig = "{0}".format(func.__doc__)
                         
@@ -314,7 +317,7 @@ def generate_pyi(stubPath,moduleName, module, dsdict,rtTypes):
         
                         try:
                             f.write(f'    def {func_name} {inspect.signature(func)} :\n')
-                            f.write(f"      '''{newDocString}'''")
+                            f.write(f"        '''{newDocString}'''")
                         except:
                             if len(args) != 0:
                                 
@@ -330,7 +333,7 @@ def generate_pyi(stubPath,moduleName, module, dsdict,rtTypes):
                                         f.write('\n    @staticmethod')
                                         f.write(f'\n    def {func_name} (self, *args, **kwargs){returnType} :\n')
                                         f.write(overloadAsComment)
-                                        f.write('\n    ...\n')
+                                        f.write('\n        ...\n')
                                         continue
                                     else:
                                         f.write('\n    @staticmethod\n')
@@ -344,20 +347,20 @@ def generate_pyi(stubPath,moduleName, module, dsdict,rtTypes):
                                             f.write(f'    def {func_name} {overload}{returnType} : ...')
                                         f.write(f'\n    def {func_name} (self, *args, **kwargs){returnType} :\n')
                                         f.write(overloadAsComment)
-                                        f.write('\n    ...\n')
+                                        f.write('\n        ...\n')
                                         continue
                                             
                                 args = args.strip(',')
                                 f.write(f'    def {func_name} {args}{returnType} :\n')
                                 if len(docstring):
-                                    f.write(f"      '''{docstring}'''")
+                                    f.write(f"        '''{docstring}'''")
                                 else:
                                     f.write(overloadAsComment)
                             else:
                                 f.write(f'    def {func_name} (self, *args, **kwargs){returnType} :\n')
-                                f.write(f"      '''{newDocString}'''")
+                                f.write(f"        '''{newDocString}'''")
 
-                        f.write('\n    ...\n')
+                        f.write('\n        ...\n')
 
             elif inspect.isbuiltin(obj):
                 f.write('\n')
