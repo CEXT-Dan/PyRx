@@ -510,8 +510,9 @@ boost::python::object PyDbObject::getBinaryData(const std::string& key)
     AcString wky = utf8_to_wstr(key).c_str();
     PyThrowBadEs(impObj()->getBinaryData(wky, size, data));
     PyObjectPtr pObj(PyMemoryView_FromMemory(data, size, PyBUF_READ));
+    boost::python::object obj{ boost::python::handle<>(PyBytes_FromObject(pObj.get())) };
     acutDelBuffer(data);
-    return boost::python::object{ boost::python::handle<>(PyBytes_FromObject(pObj.get())) };
+    return obj;
 }
 
 void PyDbObject::setBinaryData(const std::string& key, const boost::python::object& inbuf)

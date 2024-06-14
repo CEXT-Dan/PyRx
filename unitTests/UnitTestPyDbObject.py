@@ -86,7 +86,6 @@ class TestDbObject(unittest.TestCase):
         self.assertEqual(p.y, 10)
         self.assertEqual(p.z, 100)
         
-    @unittest.skipIf("ZRX" in host, "ZwCAD known failure")
     def test_BinaryData(self):
         data = PyData()
         dataBytes = pickle.dumps(data)
