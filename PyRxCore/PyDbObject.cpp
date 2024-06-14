@@ -536,15 +536,15 @@ boost::python::object PyDbObject::getXDBinaryData(const std::string& key)
         PyThrowBadEs(eNoDatabase);
     AcString wky = utf8_to_wstr(key).c_str();
     AcDbRegAppTablePointer rapp(pDb->regAppTableId());
-    if(auto es = rapp.openStatus(); es != eOk)
+    if (auto es = rapp.openStatus(); es != eOk)
         PyThrowBadEs(es);
     if (!rapp->has(wky))
         PyThrowBadEs(eRegappIdNotFound);
     AcResBufPtr pHead(impObj()->xData(wky));
-    if(pHead == nullptr)
+    if (pHead == nullptr)
         return boost::python::object();
     std::vector<char> vbuf;
-    for (auto tail = pHead.get(); tail->rbnext != nullptr; tail = tail->rbnext)
+    for (auto tail = pHead.get(); tail != nullptr; tail = tail->rbnext)
     {
         if (tail->restype == AcDb::kDxfXdBinaryChunk)
         {
@@ -567,40 +567,39 @@ void PyDbObject::setXDBinaryData(const std::string& key, const boost::python::ob
     AcDbRegAppTablePointer rapp(pDb->regAppTableId());
     if (auto es = rapp.openStatus(); es != eOk)
         PyThrowBadEs(es);
-
     if (!rapp->has(wky))
     {
         AcDbObjectId id;
         AcDbRegAppTableRecordPointer prec;
         if (auto es = prec.create(); es != eOk)
             PyThrowBadEs(es);
+        prec->setName(wky);
         rapp->upgradeOpen();
         if (auto es = rapp->add(prec); es != eOk)
             PyThrowBadEs(es);
     }
-
     if (!PyObject_CheckBuffer(inbuf.ptr()))
         PyThrowBadEs(eInvalidInput);
     Py_buffer view;
     if (PyObject_GetBuffer(inbuf.ptr(), &view, PyBUF_SIMPLE) == -1)
         PyThrowBadEs(eInvalidInput);
-
-    size_t viewSize = view.len;
+    const size_t chunk = 127;
+    const size_t viewSize = view.len;
     const char* viewBuff = static_cast<const char*>(view.buf);
-
     AcResBufPtr pHead(acutBuildList(AcDb::kDxfRegAppName, wky.constPtr(), 0));
     resbuf* pTail = pHead.get();
-
-    for (size_t i = 0; i < viewSize; i += 127) 
+    for (size_t i = 0; i < viewSize; i += chunk)
     {
-        auto last = std::min(viewSize, i + 127);
-        pTail->rbnext = acutNewRb(AcDb::kDxfXdBinaryChunk);
-        pTail->rbnext->resval.rbinary.clen = last;
-        pTail->rbnext->restype = 0;
-        memcpy_s(pTail->rbnext->resval.rbinary.buf, last, viewBuff + last, last);
+        const auto left = std::min((viewSize - i), chunk);
+        resbuf* pRb = acutNewRb(AcDb::kDxfXdBinaryChunk);
+        pRb->resval.rbinary.clen = left;
+        acutNewBuffer(pRb->resval.rbinary.buf, left);//AcResBufPtr cleans up
+        memcpy_s(pRb->resval.rbinary.buf, left, viewBuff + i, left);
+        pTail->rbnext = pRb;
+        pTail = pTail->rbnext;
     }
     PyBuffer_Release(&view);
-    impObj()->setXData(pHead.get());
+    PyThrowBadEs(impObj()->setXData(pHead.get()));
 }
 
 PyRxClass PyDbObject::desc()
@@ -661,7 +660,6 @@ void PyDbObjectReactorImpl::copied(const AcDbObject* src, const AcDbObject* newO
         imp->copied(obj, obj2);
     }
 }
-
 
 void PyDbObjectReactorImpl::erased(const AcDbObject* src, Adesk::Boolean bErasing)
 {
