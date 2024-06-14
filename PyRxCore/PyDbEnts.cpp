@@ -1568,7 +1568,7 @@ boost::python::list PyDb2dPolyline::vertexIds() const
     PyAutoLockGIL lock;
     boost::python::list ids;
     for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
-        ids.append(iter->objectId());
+        ids.append(PyDbObjectId(iter->objectId()));
     return ids;
 }
 
@@ -1803,7 +1803,7 @@ boost::python::list PyDb3dPolyline::vertexIds() const
     PyAutoLockGIL lock;
     boost::python::list ids;
     for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
-        ids.append(iter->objectId());
+        ids.append(PyDbObjectId(iter->objectId()));
     return ids;
 }
 
