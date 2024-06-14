@@ -505,6 +505,7 @@ Adesk::Boolean PyDbObject::isAcDbObjectIdsInFlux() const
 
 boost::python::object PyDbObject::getBinaryData(const std::string& key)
 {
+    PyAutoLockGIL lock;
     char* data = nullptr;
     Adesk::Int32 size = 0;
     AcString wky = utf8_to_wstr(key).c_str();
@@ -517,6 +518,7 @@ boost::python::object PyDbObject::getBinaryData(const std::string& key)
 
 void PyDbObject::setBinaryData(const std::string& key, const boost::python::object& inbuf)
 {
+    PyAutoLockGIL lock;
     AcString wky = utf8_to_wstr(key).c_str();
     if (!PyObject_CheckBuffer(inbuf.ptr()))
         PyThrowBadEs(eInvalidInput);
@@ -530,6 +532,7 @@ void PyDbObject::setBinaryData(const std::string& key, const boost::python::obje
 
 boost::python::object PyDbObject::getXDBinaryData(const std::string& key)
 {
+    PyAutoLockGIL lock;
     AcDbDatabase* pDb = impObj()->database();
     if (pDb == nullptr)
         pDb = acdbHostApplicationServices()->workingDatabase();
@@ -559,6 +562,7 @@ boost::python::object PyDbObject::getXDBinaryData(const std::string& key)
 
 void PyDbObject::setXDBinaryData(const std::string& key, const boost::python::object& inbuf)
 {
+    PyAutoLockGIL lock;
     AcDbDatabase* pDb = impObj()->database();
     if (pDb == nullptr)
         pDb = acdbHostApplicationServices()->workingDatabase();

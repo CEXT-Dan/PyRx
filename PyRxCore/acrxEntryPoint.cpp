@@ -355,46 +355,6 @@ public:
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
-        std::vector<char> inbuf;
-        for (int i = 0; i < 255; i++)
-            inbuf.push_back(i);
-
-        AcDbDatabase* pDb = acdbHostApplicationServices()->workingDatabase();
-        AcDbObjectId id;
-        {
-            AcDbObjectPointer<AcDbLine> pLine;
-            pLine.create();
-            pLine->setEndPoint(AcGePoint3d(100, 0, 0));
-            AcDbBlockTableRecordPointer csp(pDb->currentSpaceId(), AcDb::OpenMode::kForWrite);
-            if (csp->appendAcDbEntity(id, pLine) != eOk)
-                return;
-        }
-        {
-            AcDbObjectPointer<AcDbLine> pLine(id, AcDb::OpenMode::kForWrite);
-            if (pLine->setBinaryData(_T("MYKEY"), inbuf.size(), inbuf.data()) != eOk)
-                return;
-        }
-        {
-            Adesk::Int32 len = 0;
-            char* bout = nullptr;
-            AcDbObjectPointer<AcDbLine> pLine(id, AcDb::OpenMode::kForRead);
-            if (pLine->getBinaryData(_T("MYKEY"), len, bout) != eOk)
-                return;
-
-            std::string_view view(bout, len);
-
-            acutPrintf(_T("\nSize %d %d"), inbuf.size(), inbuf.size());
-            
-            if (inbuf.size() == view.size())
-            {
-                for (size_t i = 0; i < inbuf.size(); i++)
-                {
-                    if (inbuf[i] != view[i])
-                        acutPrintf(_T("\n%d %d"), inbuf[i], view[i]);
-                }
-            }
-            acutDelBuffer(bout);
-        }
     }
 #endif
 
