@@ -72,7 +72,7 @@ class TestDbObject(unittest.TestCase):
         success = PyDb.Core.regApp("PYTHONTEST")
         self.assertEqual(success, True)
         # set
-        id = PyDb.HostApplicationServices().workingDatabase().dimStyleTableId()
+        id = PyDb.HostApplicationServices().workingDatabase().textstyle()
         dbo = PyDb.DbObject(id, PyDb.OpenMode.kForWrite)
         self.assertEqual(dbo.isWriteEnabled(), True)
         xd = [(PyDb.DxfCode.kDxfRegAppName, "PYTHONTEST"),
@@ -96,6 +96,7 @@ class TestDbObject(unittest.TestCase):
         bOut = dbo.getBinaryData("PYXR")
         self.assertEqual(bOut, dataBytes)
     
+    #@unittest.skipIf("ZRX" in host, "ZwCAD known failure")
     def test_BinaryXdData(self):
         data = PyData()
         dataBytes = pickle.dumps(data)

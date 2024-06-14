@@ -564,19 +564,21 @@ void PyDbObject::setXDBinaryData(const std::string& key, const boost::python::ob
     if (pDb == nullptr)
         PyThrowBadEs(eNoDatabase);
     AcString wky = utf8_to_wstr(key).c_str();
-    AcDbRegAppTablePointer rapp(pDb->regAppTableId());
-    if (auto es = rapp.openStatus(); es != eOk)
-        PyThrowBadEs(es);
-    if (!rapp->has(wky))
-    {
-        AcDbObjectId id;
-        AcDbRegAppTableRecordPointer prec;
-        if (auto es = prec.create(); es != eOk)
+    {//scope
+        AcDbRegAppTablePointer rapp(pDb->regAppTableId());
+        if (auto es = rapp.openStatus(); es != eOk)
             PyThrowBadEs(es);
-        prec->setName(wky);
-        rapp->upgradeOpen();
-        if (auto es = rapp->add(prec); es != eOk)
-            PyThrowBadEs(es);
+        if (!rapp->has(wky))
+        {
+            AcDbObjectId id;
+            AcDbRegAppTableRecordPointer prec;
+            if (auto es = prec.create(); es != eOk)
+                PyThrowBadEs(es);
+            rapp->upgradeOpen();
+            if (auto es = rapp->add(prec); es != eOk)
+                PyThrowBadEs(es);
+            prec->setName(wky);
+        }
     }
     if (!PyObject_CheckBuffer(inbuf.ptr()))
         PyThrowBadEs(eInvalidInput);
