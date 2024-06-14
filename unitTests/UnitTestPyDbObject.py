@@ -1,6 +1,7 @@
 import os
 import unittest
 import testcfg
+import pickle
 
 import PyRx  # = Runtime runtime
 import PyGe  # = Geometry
@@ -8,6 +9,15 @@ import PyGi  # = Graphics interface
 import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
+
+class PyData:
+    sd1 = "check out the brain on brad, lets make this bigger than 127 bytes"
+    sd2 = "check out the brain on brad, lets make this bigger than 127 bytes"
+    fd1 = 3.14159265359
+    id1 = 42
+    
+    def printData(self):
+        print("\n{}\n{}\n{}\n{}".format(self.sd1,self.sd2,self.fd1,self.id1))
 
 host = PyAp.Application.hostAPI()
 
@@ -75,7 +85,24 @@ class TestDbObject(unittest.TestCase):
         self.assertEqual(p.x, 1)
         self.assertEqual(p.y, 10)
         self.assertEqual(p.z, 100)
-
+        
+    def test_BinaryData(self):
+        data = PyData()
+        dataBytes = pickle.dumps(data)
+        id = PyDb.HostApplicationServices().workingDatabase().layerTableId()
+        dbo = PyDb.DbObject(id, PyDb.OpenMode.kForWrite)
+        dbo.setBinaryData("PYXR", dataBytes)
+        bOut = dbo.getBinaryData("PYXR")
+        self.assertEqual(bOut, dataBytes)
+        
+    def test_BinaryXdData(self):
+        data = PyData()
+        dataBytes = pickle.dumps(data)
+        id = PyDb.HostApplicationServices().workingDatabase().modelSpaceId()
+        dbo = PyDb.DbObject(id, PyDb.OpenMode.kForWrite)
+        dbo.setXDBinaryData("PYXD", dataBytes)
+        bOut = dbo.getXDBinaryData("PYXD")
+        self.assertEqual(bOut, dataBytes)
 
 def pydbobject():
     try:
