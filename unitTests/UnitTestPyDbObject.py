@@ -96,7 +96,6 @@ class TestDbObject(unittest.TestCase):
         bOut = dbo.getBinaryData("PYXR")
         self.assertEqual(bOut, dataBytes)
     
-    #@unittest.skipIf("ZRX" in host, "ZwCAD known failure")
     def test_BinaryXdData(self):
         data = PyData()
         dataBytes = pickle.dumps(data)
