@@ -103,6 +103,9 @@ public:
     boost::python::object getBinaryData(const std::string& key);
     void                  setBinaryData(const std::string& key, const boost::python::object& inbuf);
 
+    boost::python::object getXDBinaryData(const std::string& key);
+    void                  setXDBinaryData(const std::string& key, const boost::python::object& inbuf);
+
     static PyRxClass    desc();
     static std::string  className();
     static PyDbObject   cloneFrom(const PyRxObject& src);
