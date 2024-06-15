@@ -552,8 +552,8 @@ boost::python::object PyDbObject::getXDBinaryData(const std::string& key)
     {
         if (tail->restype == AcDb::kDxfXdBinaryChunk)
         {
-            std::string_view view(tail->resval.rbinary.buf, tail->resval.rbinary.clen);
-            vbuf.insert(vbuf.end(), view.begin(), view.end());
+            const std::span<char> memview(tail->resval.rbinary.buf, tail->resval.rbinary.clen);
+            vbuf.insert(vbuf.end(), memview.begin(), memview.end());
         }
     }
     PyObjectPtr pObj(PyMemoryView_FromMemory(vbuf.data(), vbuf.size(), PyBUF_READ));
