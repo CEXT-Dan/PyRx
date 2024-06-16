@@ -124,6 +124,9 @@ static void loadCommands(PyRxMethod& method, const PyModulePath& path)
     for (Py_ssize_t i = 0; PyDict_Next(method.mdict, &i, &pKey, &pValue);)
     {
         const AcString key = utf8_to_wstr(PyUnicode_AsUTF8(pKey)).c_str();
+#ifdef PYRXDEBUG
+        acutPrintf(_T("\nDict item =  %ls"), (const TCHAR*)key);
+#endif
         if (key.find(PyCommandPrefix) != -1)
         {
             const AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1).makeUpper();
