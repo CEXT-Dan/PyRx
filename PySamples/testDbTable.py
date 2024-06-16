@@ -87,10 +87,9 @@ def PyRxCmd_doit4():
             return
         
         table = Db.Table(es[1])
-        opt = Db.FormatOption.kIgnoreMtextFormat
-        for cell in table.cells(Db.CellRange(1,0,3,3)):
-            print(table.textStringFmt(cell[0],cell[1],opt))
-
+        for cellValue in table.cellValues():
+            print(cellValue)
+            
     except Exception as err:
         traceback.print_exception(err)
                 
