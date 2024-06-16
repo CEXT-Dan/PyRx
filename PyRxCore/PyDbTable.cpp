@@ -1658,24 +1658,58 @@ boost::python::list PyDbTable::getIterator4(const AcCellRange& pRange) const
     return l;
 }
 
+static boost::python::tuple acValueToPyVal(const AcDbTable& table, int r, int c)
+{
+    const AcValue& acval = table.value(r, c);
+    switch (acval.dataType())
+    {
+        case AcValue::DataType::kString:
+        {
+            AcDbMText mt;
+            mt.setContents(table.textString(r, c));
+            return boost::python::make_tuple(r, c, wstr_to_utf8(mt.text()));
+            break;
+        }
+        case AcValue::DataType::kDouble:
+        {
+            double val = 0.0;
+            if (acval.get(val))
+                return boost::python::make_tuple(r, c, val);
+            break;
+        }
+        case AcValue::DataType::kLong:
+        {
+            Adesk::Int32 val = 0;
+            if (acval.get(val))
+                return boost::python::make_tuple(r, c, val);
+            break;
+        }
+        default:
+        {
+            AcDbMText mt;
+            mt.setContents(table.textString(r, c));
+            return boost::python::make_tuple(r, c, wstr_to_utf8(mt.text()));
+            break;
+        }
+    }
+    return boost::python::make_tuple(r, c, boost::python::object());
+}
+
 boost::python::list PyDbTable::getValueIterator1()
 {
-    AcDbMText mt;
     PyAutoLockGIL lock;
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator());
     for (iter->start(); !iter->done(); iter->step())
     {
         const auto& c = iter->getCell();
-        mt.setContents(impObj()->textString(c.mnRow, c.mnColumn));
-        l.append(boost::python::make_tuple(c.mnRow, c.mnColumn, wstr_to_utf8(mt.text())));
+        l.append(acValueToPyVal(*impObj(), c.mnRow, c.mnColumn));
     }
     return l;
 }
 
 boost::python::list PyDbTable::getValueIterator2(AcDb::TableIteratorOption nOption) const
 {
-    AcDbMText mt;
     PyAutoLockGIL lock;
     boost::python::list l;
     const auto range = cellRange();
@@ -1683,23 +1717,20 @@ boost::python::list PyDbTable::getValueIterator2(AcDb::TableIteratorOption nOpti
     for (iter->start(); !iter->done(); iter->step())
     {
         const auto& c = iter->getCell();
-        mt.setContents(impObj()->textString(c.mnRow, c.mnColumn));
-        l.append(boost::python::make_tuple(c.mnRow, c.mnColumn, wstr_to_utf8(mt.text())));
+        l.append(acValueToPyVal(*impObj(), c.mnRow, c.mnColumn));
     }
     return l;
 }
 
 boost::python::list PyDbTable::getValueIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const
 {
-    AcDbMText mt;
     PyAutoLockGIL lock;
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&pRange, nOption));
     for (iter->start(); !iter->done(); iter->step())
     {
         const auto& c = iter->getCell();
-        mt.setContents(impObj()->textString(c.mnRow, c.mnColumn));
-        l.append(boost::python::make_tuple(c.mnRow, c.mnColumn, wstr_to_utf8(mt.text())));
+        l.append(acValueToPyVal(*impObj(), c.mnRow, c.mnColumn));
     }
     return l;
 }
@@ -1713,8 +1744,7 @@ boost::python::list PyDbTable::getValueIterator4(const AcCellRange& pRange) cons
     for (iter->start(); !iter->done(); iter->step())
     {
         const auto& c = iter->getCell();
-        mt.setContents(impObj()->textString(c.mnRow, c.mnColumn));
-        l.append(boost::python::make_tuple(c.mnRow, c.mnColumn, wstr_to_utf8(mt.text())));
+        l.append(acValueToPyVal(*impObj(), c.mnRow, c.mnColumn));
     }
     return l;
 }
