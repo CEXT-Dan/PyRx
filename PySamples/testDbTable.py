@@ -73,7 +73,7 @@ def PyRxCmd_doit3():
             return
         
         table = Db.Table(es[1])
-        for cell in table.getIterator(Db.CellRange(1,0,3,3)):
+        for cell in table.cells(Db.CellRange(1,0,3,3)):
             print(table.textString(cell))
 
     except Exception as err:
@@ -88,7 +88,7 @@ def PyRxCmd_doit4():
         
         table = Db.Table(es[1])
         opt = Db.FormatOption.kIgnoreMtextFormat
-        for cell in table.getIterator(Db.CellRange(1,0,3,3)):
+        for cell in table.cells(Db.CellRange(1,0,3,3)):
             print(table.textStringFmt(cell[0],cell[1],opt))
 
     except Exception as err:
