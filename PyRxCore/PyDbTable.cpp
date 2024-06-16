@@ -34,12 +34,12 @@ int AcCellGetItem(const AcCell& cell, int idx)
 {
     switch (idx)
     {
-    case 0:
-        return cell.mnRow;
-    case 1:
-        return cell.mnColumn;
-    default:
-        throw PyAcadErrorStatus(eOutOfRange);
+        case 0:
+            return cell.mnRow;
+        case 1:
+            return cell.mnColumn;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -47,14 +47,14 @@ void AcCellSetItem(AcCell& cell, int idx, int val)
 {
     switch (idx)
     {
-    case 0:
-        cell.mnRow = val;
-        break;
-    case 1:
-        cell.mnColumn = val;
-        break;
-    default:
-        throw PyAcadErrorStatus(eOutOfRange);
+        case 0:
+            cell.mnRow = val;
+            break;
+        case 1:
+            cell.mnColumn = val;
+            break;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -125,16 +125,16 @@ int AcCellRangeGetItem(const AcCellRange& range, int idx)
 {
     switch (idx)
     {
-    case 0:
-        return range.mnTopRow;
-    case 1:
-        return range.mnLeftColumn;
-    case 2:
-        return range.mnBottomRow;
-    case 3:
-        return range.mnRightColumn;
-    default:
-        throw PyAcadErrorStatus(eOutOfRange);
+        case 0:
+            return range.mnTopRow;
+        case 1:
+            return range.mnLeftColumn;
+        case 2:
+            return range.mnBottomRow;
+        case 3:
+            return range.mnRightColumn;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -142,20 +142,20 @@ void AcCellRangeSetItem(AcCellRange& range, int idx, int val)
 {
     switch (idx)
     {
-    case 0:
-        range.mnTopRow = val;
-        break;
-    case 1:
-        range.mnLeftColumn = val;
-        break;
-    case 2:
-        range.mnBottomRow = val;
-        break;
-    case 3:
-        range.mnRightColumn = val;
-        break;
-    default:
-        throw PyAcadErrorStatus(eOutOfRange);
+        case 0:
+            range.mnTopRow = val;
+            break;
+        case 1:
+            range.mnLeftColumn = val;
+            break;
+        case 2:
+            range.mnBottomRow = val;
+            break;
+        case 3:
+            range.mnRightColumn = val;
+            break;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
