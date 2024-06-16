@@ -60,6 +60,10 @@
 #define SETBIT(flags, bit, value) ((value) ? (flags |= (bit)) : (flags &= ~(bit)))
 #define GETBIT(flags, bit) (((flags) & (bit)) ? true : false)
 
+#if defined(_ZRXTARGET) && (_ZRXTARGET == 250)
+#define _ZRXTARGET250 250
+#endif
+
 #if defined(_ZRXTARGET) && (_ZRXTARGET <= 240)
 #define _ZRXTARGET240 240
 #endif
