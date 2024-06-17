@@ -4,6 +4,16 @@
 #include "PyRxApp.h"
 #include "PyCmd.h"
 
+static std::set<AcString>& invalidModuleNames()
+{
+    static std::set<AcString> snames;
+    if (snames.size() == 0){
+        snames.insert(_T("test"));
+        snames.insert(_T("platform"));
+    }
+    return snames;
+}
+
 static void loadPyAppReactors(PyRxMethod& method)
 {
     method.OnPyInitApp = PyDict_GetItemString(method.mdict, "OnPyInitApp");
@@ -124,9 +134,6 @@ static void loadCommands(PyRxMethod& method, const PyModulePath& path)
     for (Py_ssize_t i = 0; PyDict_Next(method.mdict, &i, &pKey, &pValue);)
     {
         const AcString key = utf8_to_wstr(PyUnicode_AsUTF8(pKey)).c_str();
-#ifdef PYRXDEBUG
-        acutPrintf(_T("\nDict item =  %ls"), (const TCHAR*)key);
-#endif
         if (key.find(PyCommandPrefix) != -1)
         {
             const AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1).makeUpper();
@@ -179,6 +186,12 @@ static void reloadCommands(PyRxMethod& method, const PyModulePath& path)
 
 bool loadPythonModule(const PyModulePath& path, bool silent)
 {
+    AcString moduleToLoad = path.moduleName;
+    if (invalidModuleNames().contains(moduleToLoad.makeLower()))
+    {
+        acutPrintf(_T("\nInvalid module name %ls"), (const TCHAR*)path.moduleName);
+        return false;
+    }
     std::error_code ec;
     const auto oldpath = std::filesystem::current_path(ec);
     std::filesystem::current_path(path.modulePath, ec);

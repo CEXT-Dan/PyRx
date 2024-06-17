@@ -4083,6 +4083,9 @@ class DbObject(PyGi.Drawable):
     def database (self)-> PyDb.Database :
         '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
         ...
+    def databaseToUse (self)-> PyDb.Database :
+        '''This method returns a pointer to a AcDbDatabase object that can be used with this AcDbObject. If the AcDbObject is in an AcDbDatabase, then a pointer to the AcDbDatabase returned by the object's database() method will be returned, otherwise, if the AcDbObject has a non-nullptr intendedDatabase, then a pointer to that AcDbDatabase will be returned, otherwise a pointer to the current AcDbHostApplicationServices' workingDatabase will be returned.'''
+        ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
         '''This function gives control of deep clone operations to the object. In the default implementation, the object is cloned and appended to the owner object (pOwnerObject). The cloning is performed by an AcDbDeepCloneFiler. A record is also added to the idMap. Then, using the filer, any owned objects are deep cloned, with isPrimary set to Adesk::kFalse.'''
         ...

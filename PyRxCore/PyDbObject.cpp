@@ -31,8 +31,8 @@ void makePyDbObjectWrapper()
         .def("ownerId", &PyDbObject::ownerId, DS.ARGS(7219))
         .def("setOwnerId", &PyDbObject::setOwnerId, DS.ARGS({ "owner: PyDb.ObjectId" }, 7232))
         .def("database", &PyDbObject::database, DS.ARGS(7160))
+        .def("databaseToUse", &PyDbObject::databaseToUse, DS.ARGS(7161))
 #ifdef NEVER
-        .def("databaseToUse", &PyDbObject::databaseToUse)
         .def("intendedDatabase", &PyDbObject::intendedDatabase)
         .def("setIntendedDatabase", &PyDbObject::setIntendedDatabase)
 #endif
@@ -182,6 +182,26 @@ PyDbDatabase PyDbObject::database() const
 {
     return PyDbDatabase(impObj()->database());
 }
+
+PyDbDatabase PyDbObject::databaseToUse()
+{
+    const auto imp = impObj();
+    if(imp->database() == nullptr)
+        return  PyDbDatabase(acdbHostApplicationServices()->workingDatabase());
+    return PyDbDatabase(imp->database());
+}
+
+#ifdef NEVER //AutoCAD bug
+PyDbDatabase PyDbObject::intendedDatabase()
+{
+    return PyDbDatabase(impObj()->intendedDatabase());
+}
+
+void PyDbObject::setIntendedDatabase(PyDbDatabase& pDb)
+{
+    return PyThrowBadEs(impObj()->setIntendedDatabase(pDb.impObj()));
+}
+#endif
 
 void PyDbObject::createExtensionDictionary()
 {

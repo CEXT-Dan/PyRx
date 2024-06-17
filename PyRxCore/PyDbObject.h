@@ -39,6 +39,11 @@ public:
     PyDbObjectId        ownerId() const;
     void                setOwnerId(const PyDbObjectId& objId);
     PyDbDatabase        database() const;
+    PyDbDatabase        databaseToUse();
+#ifdef NEVER //AutoCAD bug
+    PyDbDatabase        intendedDatabase();
+    void                setIntendedDatabase(PyDbDatabase& pDb);
+#endif
     void                createExtensionDictionary();
     PyDbObjectId        extensionDictionary() const;
     void                releaseExtensionDictionary();
@@ -111,7 +116,7 @@ public:
     static PyDbObject   cloneFrom(const PyRxObject& src);
     static PyDbObject   cast(const PyRxObject& src);
 public:
-    inline AcDbObject*  impObj(const std::source_location& src = std::source_location::current()) const;
+    inline AcDbObject* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 template<typename T>
