@@ -4217,7 +4217,7 @@ class DbObject(PyGi.Drawable):
     def setAnnotative (self, state : PyDb.AnnotativeStates)-> None :
         '''                             '''
         ...
-    def setBinaryData (self, key: str, data: memoryview)-> None :
+    def setBinaryData (self, key: str, data: memoryview)-> PyDb.ObjectId :
         '''                             '''
         ...
 
@@ -19956,7 +19956,7 @@ class Table(BlockReference):
     def cellStyle (self, row: int, col: int)-> str :
         '''                             '''
         ...
-    def cellStyleOverrides (self, row: int)-> list[int] :
+    def cellStyleOverrides (self, row: int, col: int)-> list[int] :
         '''                             '''
         ...
     def cellType (self, row: int, col: int)-> PyDb.CellType :
@@ -20001,7 +20001,7 @@ class Table(BlockReference):
     def className ()-> str :
         '''                             '''
         ...
-    def clearCellOverrides (self, row: int)-> None :
+    def clearCellOverrides (self, row: int, col: int)-> None :
         '''                             '''
         ...
     def clearSubSelection (self)-> None :
