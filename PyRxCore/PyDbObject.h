@@ -106,7 +106,7 @@ public:
     Adesk::Boolean      isAcDbObjectIdsInFlux() const;
 
     boost::python::object getBinaryData(const std::string& key);
-    void                  setBinaryData(const std::string& key, const boost::python::object& inbuf);
+    PyDbObjectId        setBinaryData(const std::string& key, const boost::python::object& inbuf);
 
     boost::python::object getXDBinaryData(const std::string& key);
     void                  setXDBinaryData(const std::string& key, const boost::python::object& inbuf);

@@ -536,7 +536,7 @@ boost::python::object PyDbObject::getBinaryData(const std::string& key)
     return obj;
 }
 
-void PyDbObject::setBinaryData(const std::string& key, const boost::python::object& inbuf)
+PyDbObjectId PyDbObject::setBinaryData(const std::string& key, const boost::python::object& inbuf)
 {
     PyAutoLockGIL lock;
     AcString wky = utf8_to_wstr(key).c_str();
@@ -548,6 +548,16 @@ void PyDbObject::setBinaryData(const std::string& key, const boost::python::obje
     auto es = impObj()->setBinaryData(wky, view.len, (char*)view.buf);
     PyBuffer_Release(&view);
     PyThrowBadEs(es);
+
+    //Discussion #68
+    AcDbObjectId exId;
+    if(exId = impObj()->extensionDictionary(); exId.isNull())
+        PyThrowBadEs(eNotInDatabase);
+    AcDbDictionaryPointer pEx(exId);
+    PyThrowBadEs(pEx.openStatus());
+    AcDbObjectId xrId;
+    PyThrowBadEs(pEx->getAt(wky, xrId));
+    return PyDbObjectId(xrId);
 }
 
 boost::python::object PyDbObject::getXDBinaryData(const std::string& key)
