@@ -251,9 +251,11 @@ void PyRxApp::appendINISettings()
 void PyRxApp::load_pyrx_onload()
 {
     std::wstring buffer(5, 0);
-    GetEnvironmentVariable(_T("PYRX_DISABLE_ONLOAD"), buffer.data(), buffer.size());;
-    if (std::stoi(buffer) == 1)
-        return;
+    if (GetEnvironmentVariable(_T("PYRX_DISABLE_ONLOAD"), buffer.data(), buffer.size()))
+    {
+        if (std::stoi(buffer) == 1)
+            return;
+    }
     const auto pyrx_onloadPath = modulePath() / _T("pyrx_onload.py");
     if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, pyrx_onloadPath.c_str()) == eOk && foundPath.length() != 0)
     {

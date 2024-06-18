@@ -91,9 +91,11 @@ class TestDbObject(unittest.TestCase):
         dataBytes = pickle.dumps(data)
         id = PyDb.HostApplicationServices().workingDatabase().dimStyleTableId()
         dbo = PyDb.DbObject(id, PyDb.OpenMode.kForWrite)
-        dbo.setBinaryData("PYXR", dataBytes)
+        xrid :PyDb.ObjectId = dbo.setBinaryData("PYXR", dataBytes)
         bOut = dbo.getBinaryData("PYXR")
         self.assertEqual(bOut, dataBytes)
+        self.assertTrue(xrid.isValid())
+        self.assertTrue(xrid.isDerivedFrom(PyDb.Xrecord.desc()))
     
     def test_BinaryXdData(self):
         data = PyData()
