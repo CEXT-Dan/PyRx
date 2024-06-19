@@ -94,3 +94,39 @@ def PyRxCmd_doit4():
         traceback.print_exception(err)
                 
 
+def PyRxCmd_setMargins1():
+    try:
+        db = Db.curDb()
+        table = Db.Table()
+        table.setDatabaseDefaults(db)
+        table.setTableStyle(db.tablestyle())
+        table.setVertCellMargin(0.07)
+        table.setHorzCellMargin(0.07)
+        table.setSize(5,5)
+        table.generateLayout()
+        db.addToModelspace(table)
+
+        print(table.vertCellMargin())
+        print(table.horzCellMargin())
+
+    except Exception as err:
+        traceback.print_exception(err)
+        
+def PyRxCmd_setMargins2():
+    try:
+        db = Db.curDb()
+        table = Db.Table()
+        table.setDatabaseDefaults(db)
+        table.setTableStyle(db.tablestyle())
+        table.setSize(5, 5)
+        table.generateLayout()
+        db.addToModelspace(table)
+
+        v = Db.CellMargin.kCellMarginLeft | Db.CellMargin.kCellMarginRight
+        h = Db.CellMargin.kCellMarginTop | Db.CellMargin.kCellMarginBottom
+        
+        table.setMargin(-1, -1, Db.CellMargin(v), 0.08)
+        table.setMargin(-1, -1, Db.CellMargin(h), 0.08)
+
+    except Exception as err:
+        traceback.print_exception(err)
