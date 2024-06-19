@@ -1175,6 +1175,11 @@ class Editor(object):
         ...
 
     @staticmethod
+    def selectImplied ()-> tuple[Any,...] :
+        '''                             '''
+        ...
+
+    @staticmethod
     def selectLast (filter: list=None)-> tuple[PyEd.PromptStatus, PyEd.SelectionSet] :
         '''Returns a selection set obtained by specifying one of the AutoCAD selection modes. A selection mode is specified either by prompting the AutoCAD user or by filtering the drawing database.You must release the allocated selection set after you are finished with processing the selection. If you fail to do this the selection set will be kept on the stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection sets per session, the unreleased selection sets can result in failed object selections through ObjectARX.'''
         ...
