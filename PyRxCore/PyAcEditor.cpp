@@ -155,6 +155,7 @@ void makePyEditorWrapper()
         .def("selectAll", &PyAcEditor::selectAll2, DS.SARGS({ "filter: list=None" }, 11344)).staticmethod("selectAll")
         .def("select", &PyAcEditor::select1)
         .def("select", &PyAcEditor::select2, DS.SARGS({ "filter: list=None" }, 11344))
+        .def("selectImplied", &PyAcEditor::selectImplied, DS.SARGS()).staticmethod("selectImplied")
         .def("selectPrompt", &PyAcEditor::select3)
         .def("selectPrompt", &PyAcEditor::select4, DS.SARGS({ "addPromt: str","remPromt: str","filter: list=None" }, 11344)).staticmethod("selectPrompt")
         .def("selectWindow", &PyAcEditor::selectWindow1)
@@ -290,7 +291,7 @@ boost::python::tuple PyAcEditor::getDist1(const std::string& prompt)
     std::pair<Acad::PromptStatus, double> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetDist(nullptr, utf8_to_wstr(prompt).c_str(), &res.second));
     if (res.first != Acad::eNormal)
-       return boost::python::make_tuple(res.first, res.second);
+        return boost::python::make_tuple(res.first, res.second);
     if (res.second < 0)
         return boost::python::make_tuple(Acad::PromptStatus::eRejected, res.second);
     return boost::python::make_tuple(res.first, res.second);
@@ -522,6 +523,15 @@ boost::python::tuple PyAcEditor::selectAll2(const boost::python::list& filter)
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_A"), nullptr, nullptr, pFilter.get(), name));
     return makeSelectionResult(name, stat);
+}
+
+boost::python::tuple PyAcEditor::selectImplied()
+{
+    PyEdUserInteraction ui;
+    resbuf* resbufPtr = nullptr;
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGetFirst(0L, &resbufPtr));
+    AcResBufPtr pHolder(resbufPtr);
+    return makeSelectionResult(resbufPtr->resval.rlname, stat);
 }
 
 boost::python::tuple PyAcEditor::selectWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2)

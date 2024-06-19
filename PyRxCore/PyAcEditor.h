@@ -55,6 +55,7 @@ public:
     static boost::python::tuple select4(const std::string& add, const std::string& remove, const boost::python::object& filter);
     static boost::python::tuple selectAll1();
     static boost::python::tuple selectAll2(const boost::python::list& filter);
+    static boost::python::tuple selectImplied();
     static boost::python::tuple selectWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
     static boost::python::tuple selectWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::object& filter);
     static boost::python::tuple selectFence1(const boost::python::object& points);
