@@ -524,7 +524,7 @@
         ],
         [
             "PyDb::Table::cellValues",
-            "list[tuple[int,int,str]]"
+            "list[tuple[int,int,Any]]"
         ],
         [
             "PyDb::Table::getDataType",
@@ -1625,6 +1625,10 @@
         [
             "PyGe::CircArc3d::closestPointToPlane",
             "tuple[PyGe.Point3d,PyGe.Point3d]"
+        ],
+        [
+            "PyDb::Table::cellStrValues",
+            "list[tuple[int,int,str]]"
         ]
     ]
 }
