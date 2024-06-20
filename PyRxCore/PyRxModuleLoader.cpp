@@ -4,16 +4,6 @@
 #include "PyRxApp.h"
 #include "PyCmd.h"
 
-static std::set<AcString>& invalidModuleNames()
-{
-    static std::set<AcString> snames;
-    if (snames.size() == 0){
-        snames.insert(_T("test"));
-        snames.insert(_T("platform"));
-    }
-    return snames;
-}
-
 static void loadPyAppReactors(PyRxMethod& method)
 {
     method.OnPyInitApp = PyDict_GetItemString(method.mdict, "OnPyInitApp");
@@ -186,12 +176,6 @@ static void reloadCommands(PyRxMethod& method, const PyModulePath& path)
 
 bool loadPythonModule(const PyModulePath& path, bool silent)
 {
-    AcString moduleToLoad = path.moduleName;
-    if (invalidModuleNames().contains(moduleToLoad.makeLower()))
-    {
-        acutPrintf(_T("\nInvalid module name %ls"), (const TCHAR*)path.moduleName);
-        return false;
-    }
     std::error_code ec;
     const auto oldpath = std::filesystem::current_path(ec);
     std::filesystem::current_path(path.modulePath, ec);
@@ -211,6 +195,12 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
     method.mod.reset(PyImport_Import(method.modname.get()));
     if (method.mod != nullptr)
     {
+        std::filesystem::path actual = PyModule_GetFilename(method.mod.get());
+        if (!std::filesystem::equivalent(actual, path.fullPath, ec))
+        {
+            acutPrintf(_T("\nFailed, paths do not match!: "));
+            return false;
+        }
         method.mdict = PyModule_GetDict(method.mod.get());
         loadPyAppReactors(method);
         loadCommands(method, path);
