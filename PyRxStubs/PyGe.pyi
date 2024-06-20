@@ -336,7 +336,7 @@ class BoundedPlane(PlanarEnt):
     def copycast (otherObject: PyGe.Entity3d)-> PyGe.BoundedPlane :
         '''                             '''
         ...
-    def intersectWith (self, val: PyGe.LinearEnt3d | PyGe.Plane | PyGe.BoundedPlane, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def intersectWith (self, val: PyGe.LinearEnt3d | PyGe.Plane | PyGe.BoundedPlane, tol: PyGe.Tol=None)-> tuple[bool,PyGe.LineSeg3d] :
         '''                             '''
         ...
 
@@ -3288,25 +3288,25 @@ class NurbCurve3d(SplineEnt3d):
     def evalMode (self)-> bool :
         '''                             '''
         ...
-    def getDefinitionData (self)-> tuple[Any,...] :
+    def getDefinitionData (self)-> tuple :
         '''                             '''
         ...
-    def getFitData (self)-> tuple[Any,...] :
+    def getFitData (self)-> tuple :
         '''                             '''
         ...
-    def getFitPointAt (self, idx: int)-> tuple[Any,...] :
+    def getFitPointAt (self, idx: int)-> tuple[bool,PyGe.Point3d] :
         '''                             '''
         ...
-    def getFitTangents (self)-> tuple[Any,...] :
+    def getFitTangents (self)-> tuple[bool.PyGeVector3d,PyGeVector3d,bool,bool] :
         '''                             '''
         ...
-    def getFitTolerance (self)-> tuple[Any,...] :
+    def getFitTolerance (self)-> tuple[bool,AcGe.Tol] :
         '''                             '''
         ...
-    def getParamsOfC1Discontinuity (self, tol: PyGe.Tol)-> tuple[Any,...] :
+    def getParamsOfC1Discontinuity (self, tol: PyGe.Tol)-> tuple[float,...] :
         '''                             '''
         ...
-    def getParamsOfG1Discontinuity (self, tol: PyGe.Tol)-> tuple[Any,...] :
+    def getParamsOfG1Discontinuity (self, tol: PyGe.Tol)-> tuple[float,...] :
         '''                             '''
         ...
     def hardTrimByParams (self, newStartParam: float, newEndParam: float)-> None :
@@ -3519,10 +3519,10 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
         '''                             '''
         ...
-    def closestPointToLinearEnt (self, other: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def closestPointToLinearEnt (self, other: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
         '''                             '''
         ...
-    def closestPointToPlanarEnt (self, other: PyGe.PlanarEnt, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def closestPointToPlanarEnt (self, other: PyGe.PlanarEnt, tol: PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
         '''                             '''
         ...
 
@@ -3530,13 +3530,13 @@ This class cannot be instantiated from Python'''
     def copycast (otherObject: PyGe.Entity3d)-> PyGe.PlanarEnt :
         '''                             '''
         ...
-    def getCoefficients (self)-> tuple[Any,...] :
+    def getCoefficients (self)-> tuple[float,float,float,float] :
         '''                             '''
         ...
-    def getCoordSystem (self)-> tuple[Any,...] :
+    def getCoordSystem (self)-> tuple[PyGe.Point3d,PyGe.Vector3d,PyGe.Vector3d] :
         '''                             '''
         ...
-    def intersectWith (self, other: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def intersectWith (self, other: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[bool,PyGe.Point3d] :
         '''                             '''
         ...
     def isCoplanarTo (self, other: PyGe.PlanarEnt, tol: PyGe.Tol=None)-> bool :
@@ -3591,7 +3591,7 @@ class Plane(PlanarEnt):
     def copycast (otherObject: PyGe.Entity3d)-> PyGe.Plane :
         '''                             '''
         ...
-    def intersectWith (self, val: PyGe.LinearEnt3d | PyGe.Plane | PyGe.BoundedPlane, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def intersectWith (self, val: PyGe.LinearEnt3d | PyGe.Plane | PyGe.BoundedPlane, tol: PyGe.Tol=None)-> tuple[bool,PyGe.Point3d] :
         '''                             '''
         ...
 
@@ -4552,13 +4552,13 @@ class Sphere(Surface):
     def copycast (otherObject: PyGe.Entity3d)-> PyGe.Sphere :
         '''                             '''
         ...
-    def getAnglesInU (self)-> tuple[Any,...] :
+    def getAnglesInU (self)-> tuple[float,float] :
         '''                             '''
         ...
-    def getAnglesInV (self)-> tuple[Any,...] :
+    def getAnglesInV (self)-> tuple[float,float] :
         '''                             '''
         ...
-    def intersectWith (self, val: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def intersectWith (self, val: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[int,PyGe.Point3d,PyGe.Point3d] :
         '''                             '''
         ...
     def isClosed (self, tol: PyGe.Tol=None)-> bool :

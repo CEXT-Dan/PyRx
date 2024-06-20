@@ -6597,7 +6597,7 @@ class DynBlockTableRecord(object):
     def className ()-> str :
         '''                             '''
         ...
-    def getAnonymousBlockIds (self)-> list :
+    def getAnonymousBlockIds (self)-> list[PyDb.ObjectId] :
         '''                             '''
         ...
 

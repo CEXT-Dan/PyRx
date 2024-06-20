@@ -1175,7 +1175,7 @@ class Editor(object):
         ...
 
     @staticmethod
-    def selectImplied ()-> tuple[Any,...] :
+    def selectImplied ()-> tuple[PyEd.PromptStatus, PyEd.SelectionSet] :
         '''                             '''
         ...
 

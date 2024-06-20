@@ -1285,6 +1285,82 @@
         [
             "PyGe::Matrix3d::toTuple",
             "tuple"
+        ],
+        [
+            "PyEd::Editor::selectImplied",
+            "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
+        ],
+        [
+            "PyDb::DynBlockTableRecord::getAnonymousBlockIds",
+            "list[PyDb.ObjectId]"
+        ],
+        [
+            "PyGe::Sphere::intersectWith",
+            "tuple[int,PyGe.Point3d,PyGe.Point3d]"
+        ],
+        [
+            "PyGe::Sphere::getAnglesInV",
+            "tuple[float,float]"
+        ],
+        [
+            "PyGe::Sphere::getAnglesInU",
+            "tuple[float,float]"
+        ],
+        [
+            "PyGe::Plane::intersectWith",
+            "tuple[bool,PyGe.Point3d]"
+        ],
+        [
+            "PyGe::PlanarEnt::intersectWith",
+            "tuple[bool,PyGe.Point3d]"
+        ],
+        [
+            "PyGe::PlanarEnt::getCoordSystem",
+            "tuple[PyGe.Point3d,PyGe.Vector3d,PyGe.Vector3d]"
+        ],
+        [
+            "PyGe::PlanarEnt::getCoefficients",
+            "tuple[float,float,float,float]"
+        ],
+        [
+            "PyGe::PlanarEnt::closestPointToPlanarEnt",
+            "tuple[PyGe.Point3d,PyGe.Point3d]"
+        ],
+        [
+            "PyGe::PlanarEnt::closestPointToLinearEnt",
+            "tuple[PyGe.Point3d,PyGe.Point3d]"
+        ],
+        [
+            "PyGe::BoundedPlane::intersectWith",
+            "tuple[bool,PyGe.LineSeg3d]"
+        ],
+        [
+            "PyGe::NurbCurve3d::getParamsOfG1Discontinuity",
+            "tuple[float,...]"
+        ],
+        [
+            "PyGe::NurbCurve3d::getParamsOfC1Discontinuity",
+            "tuple[float,...]"
+        ],
+        [
+            "PyGe::NurbCurve3d::getFitTolerance",
+            "tuple[bool,AcGe.Tol]"
+        ],
+        [
+            "PyGe::NurbCurve3d::getFitTangents",
+            "tuple[bool.PyGeVector3d,PyGeVector3d,bool,bool]"
+        ],
+        [
+            "PyGe::NurbCurve3d::getFitPointAt",
+            "tuple[bool,PyGe.Point3d]"
+        ],
+        [
+            "PyGe::NurbCurve3d::getFitData",
+            "tuple"
+        ],
+        [
+            "PyGe::NurbCurve3d::getDefinitionData",
+            "tuple"
         ]
     ]
 }
