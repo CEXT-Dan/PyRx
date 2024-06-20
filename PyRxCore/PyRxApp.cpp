@@ -248,13 +248,13 @@ void PyRxApp::appendINISettings()
     }
 }
 
-void PyRxApp::load_pyrx_onload()
+bool PyRxApp::load_pyrx_onload()
 {
     std::wstring buffer(5, 0);
     if (GetEnvironmentVariable(_T("PYRX_DISABLE_ONLOAD"), buffer.data(), buffer.size()))
     {
         if (std::stoi(buffer) == 1)
-            return;
+            return false;
     }
     const auto pyrx_onloadPath = modulePath() / _T("pyrx_onload.py");
     if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, pyrx_onloadPath.c_str()) == eOk && foundPath.length() != 0)
@@ -263,9 +263,10 @@ void PyRxApp::load_pyrx_onload()
         if (std::filesystem::exists((const wchar_t*)foundPath, ec))
         {
             PyAutoLockGIL lock;
-            ads_loadPythonModule(pyrx_onloadPath);
+            return ads_loadPythonModule(pyrx_onloadPath);
         }
     }
+    return false;
 }
 
 PyRxApp& PyRxApp::instance()
@@ -296,7 +297,6 @@ bool PyRxApp::init()
         {
             isLoaded = true;
             acutPrintf(_T("Python Interpreter Loaded successfully!\n"));
-            load_pyrx_onload();
         }
         else
         {
