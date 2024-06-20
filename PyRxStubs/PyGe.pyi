@@ -399,7 +399,7 @@ class CircArc2d(Curve2d):
     def endPoint (self)-> PyGe.Point2d :
         '''                             '''
         ...
-    def intersectWith (self, val: PyGe.CircArc2d | PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def intersectWith (self, val: PyGe.CircArc2d | PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> tuple[bool,int,PyGe.Point2d,PyGe.Point2d] :
         '''                             '''
         ...
     def isClockWise (self)-> bool :
@@ -458,7 +458,7 @@ class CircArc2d(Curve2d):
     def startPoint (self)-> PyGe.Point2d :
         '''                             '''
         ...
-    def tangent (self, pt: PyGe.Point2d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def tangent (self, pt: PyGe.Point2d, tol: PyGe.Tol=None)-> tuple[bool,PyGe.Line3d,PyGe.AcGeError] :
         '''                             '''
         ...
 
@@ -493,7 +493,7 @@ class CircArc3d(Curve3d):
     def className ()-> str :
         '''                             '''
         ...
-    def closestPointToPlane (self, plane: PyGe.PlanarEnt, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def closestPointToPlane (self, plane: PyGe.PlanarEnt, tol: PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
         '''                             '''
         ...
 
@@ -510,7 +510,7 @@ class CircArc3d(Curve3d):
     def getPlane (self)-> PyGe.Plane :
         '''                             '''
         ...
-    def intersectWith (self, other: PyGe.CircArc3d|PyGe.LinearEnt3d|PyGe.PlanarEnt, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def intersectWith (self, other: PyGe.CircArc3d|PyGe.LinearEnt3d|PyGe.PlanarEnt, tol: PyGe.Tol=None)-> tuple[bool,int,PyGe.Point3d,PyGe.Point3d] :
         '''                             '''
         ...
     def isInside (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> bool :
@@ -519,7 +519,7 @@ class CircArc3d(Curve3d):
     def normal (self)-> PyGe.Vector3d :
         '''                             '''
         ...
-    def projIntersectWith (self, other: PyGe.LinearEnt3d, projDir: PyGe.Vector3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def projIntersectWith (self, other: PyGe.LinearEnt3d, projDir: PyGe.Vector3d, tol: PyGe.Tol=None)-> tuple :
         '''                             '''
         ...
     def radius (self)-> float :
@@ -566,7 +566,7 @@ class CircArc3d(Curve3d):
     def startPoint (self)-> PyGe.Point3d :
         '''                             '''
         ...
-    def tangent (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def tangent (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> tuple[bool,PyGe.Line3d] :
         '''                             '''
         ...
 
@@ -651,10 +651,10 @@ class CompositeCurve3d(Curve3d):
     def copycast (otherObject: PyGe.Entity3d)-> PyGe.CompositeCurve3d :
         '''                             '''
         ...
-    def getCurveList (self)-> list :
+    def getCurveList (self)-> list[PyGe.Curve3d] :
         '''                             '''
         ...
-    def globalToLocalParam (self, param: float)-> tuple[Any,...] :
+    def globalToLocalParam (self, param: float)-> tuple[float,int] :
         '''                             '''
         ...
     def localToGlobalParam (self, param: float, segNum: int)-> float :
@@ -714,10 +714,10 @@ class Cone(Surface):
     def copycast (otherObject: PyGe.Entity3d)-> PyGe.Cone :
         '''                             '''
         ...
-    def getAngles (self)-> tuple[Any,...] :
+    def getAngles (self)-> tuple[float,float] :
         '''                             '''
         ...
-    def getHalfAngle (self)-> tuple[Any,...] :
+    def getHalfAngle (self)-> tuple[float,float] :
         '''                             '''
         ...
     def getHeight (self)-> PyGe.Interval :
@@ -729,7 +729,7 @@ class Cone(Surface):
     def heightAt (self, val: float)-> float :
         '''                             '''
         ...
-    def intersectWith (self, val: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def intersectWith (self, val: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[bool,int,PyGe.Point3d,PyGe.Point3d] :
         '''                             '''
         ...
     def isClosed (self, tol: PyGe.Tol=None)-> bool :
@@ -901,13 +901,13 @@ This class cannot be instantiated from Python'''
     def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point2d :
         '''                             '''
         ...
-    def explode (self, val : PyGe.Interval = None)-> list :
+    def explode (self, val : PyGe.Interval = None)-> list[PyGe.Curve2d] :
         '''                             '''
         ...
     def getClosestPointTo (self, other : PyGe.Point2d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve2d :
         '''                             '''
         ...
-    def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def getClosestPointsTo (self, other : PyGe.Curve2d, tol : PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
         '''                             '''
         ...
     def getEndPoint (self)-> PyGe.Point2d :
@@ -921,22 +921,22 @@ This class cannot be instantiated from Python'''
         ...
 
     @overload
-    def getSamplePoints (self, numSample: int)-> list : ...
+    def getSamplePoints (self, numSample: int)-> tuple[list[PyGe.Point2d],list[float]] : ...
     @overload
-    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> list : ...
-    def getSamplePoints (self, *args, **kwargs)-> list :
+    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> tuple[list[PyGe.Point2d],list[float]] : ...
+    def getSamplePoints (self, *args, **kwargs)-> tuple[list[PyGe.Point2d],list[float]] :
         '''Overloads:
     - numSample: int
     - fromParam: float, toParam: float, approxEps: float
     '''
         ...
-    def getSplitCurves (self, param : float)-> tuple[Any,...] :
+    def getSplitCurves (self, param : float)-> tuple[PyGe.Curve2d,PyGe.Curve2d] :
         '''                             '''
         ...
     def getStartPoint (self)-> PyGe.Point2d :
         '''                             '''
         ...
-    def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
+    def getTrimmedOffset (self, dist : float, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list[PyGe.Curve2d] :
         '''                             '''
         ...
     def hasEndPoint (self)-> bool :
@@ -948,16 +948,16 @@ This class cannot be instantiated from Python'''
     def isClosed (self, tol : PyGe.Tol=None)-> bool :
         '''                             '''
         ...
-    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Entity2d] :
         '''                             '''
         ...
-    def isLinear (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isLinear (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Line2d] :
         '''                             '''
         ...
-    def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isOn (self, pt : float | PyGe.Point2d, tol : PyGe.Tol=None)-> tuple :
         '''                             '''
         ...
-    def isPeriodic (self)-> tuple[Any,...] :
+    def isPeriodic (self)-> tuple[bool,float] :
         '''                             '''
         ...
     def length (self, frm : float, to : float, tol : float = None)-> float :
@@ -1014,13 +1014,13 @@ This class cannot be instantiated from Python'''
     def evalPoint (self, param : float, numDeriv : int = 1)-> PyGe.Point3d :
         '''Returns the point on the curve that corresponds to the input parameter value. Also returns the number of derivative vectors that are specified in numDeriv. The numDeriv parameter should not be set larger than 2.'''
         ...
-    def explode (self, val : PyGe.Interval = None)-> list :
+    def explode (self, val : PyGe.Interval = None)-> list[PyGe.Curve3d] :
         '''Explodes the curve into its individual components. If the curve is a composite curve, then explodedCurves contains the list of component curves of the composite. If the curve is a spline, then it is exploded at the points of C1 discontinuity and explodedCurves contains a copy of each continuous sub-curve. This function returns Adesk::kTrue if the curve was exploded (that is, the curve was a composite or a discontinuous spline) and Adesk::kFalse otherwise. The number of entries returned in newExplodedCurves is always the same as the number of entries in explodedCurves. Each flag in newExplodedCurves indicates whether the corresponding curve in explodedCurves was created with the new operator. If the flag is 1, then it is the responsibility of the caller to delete the curve. If the flag is 0, the curve is deleted by gelib and the caller should not attempt to delete it. If no intrvl parameter is supplied, then the interval is taken to be the entire curve. '''
         ...
     def getClosestPointTo (self, other : PyGe.Point3d, tol : PyGe.Tol=None)-> PyGe.PointOnCurve3d :
         '''Finds the closest point on this curve to the input point. This function is the same as closestPointTo(), except that the closest point is returned as an AcGePointOnCurve3d object.'''
         ...
-    def getClosestPointsTo (self, other : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def getClosestPointsTo (self, other : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
         '''Finds the point on the curve which when projected onto a plane whose normal is projectDirection is the closest point on the projected curve to the input point. This function is mainly used by graphics where projectDirection is the line of sight. In this case, this function returns the point on the curve that appears to be closest to the input point (but may not be the actual closest point). This function is the same as projClosestPointTo(const AcGePoint3d&, ...) but returns the closest point as a AcGePointOnCurve3d object instead of a AcGePoint3d object.'''
         ...
     def getEndPoint (self)-> PyGe.Point3d :
@@ -1040,23 +1040,23 @@ This class cannot be instantiated from Python'''
         ...
 
     @overload
-    def getSamplePoints (self, numSample: int)-> tuple[Any,...] : ...
+    def getSamplePoints (self, numSample: int)-> tuple[list[PyGe.Point3d],list[float]] : ...
     @overload
-    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> tuple[Any,...] : ...
-    def getSamplePoints (self, *args, **kwargs)-> tuple[Any,...] :
+    def getSamplePoints (self, fromParam: float, toParam: float, approxEps: float)-> tuple[list[PyGe.Point3d],list[float]] : ...
+    def getSamplePoints (self, *args, **kwargs)-> tuple[list[PyGe.Point3d],list[float]] :
         '''Overloads:
     - numSample: int
     - fromParam: float, toParam: float, approxEps: float
     
 	-Returns the specified number of points on the curve. The points are equally spaced by parameter value. So if the interval of the curve [0,1] and numSample is 5, the parameter values of the returned points are 0, 0.25, 0.5, 0.75, and 1.-'''
         ...
-    def getSplitCurves (self, param : float)-> tuple[Any,...] :
+    def getSplitCurves (self, param : float)-> tuple[PyGe.Curve3d,PyGe.Curve3d] :
         '''Returns two segments which are obtained by splitting the curve at the input parameter value. If the specified parameter value does not lie within the parametric interval of the curve or if it corresponds to the start point or endpoint of the curve, then piece1 and piece2 are set to null. This function uses the new to create the curve segments whose addresses are returned in piece1 and piece2. It is the responsibility of the caller to delete these objects. '''
         ...
     def getStartPoint (self)-> PyGe.Point3d :
         '''                             '''
         ...
-    def getTrimmedOffset (self, dist : float, planeNormal : PyGe.Vector3d, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list :
+    def getTrimmedOffset (self, dist : float, planeNormal : PyGe.Vector3d, extensionType : PyGe.OffsetCrvExtType, tol : PyGe.Tol=None)-> list[PyGe.Curve3d] :
         '''Returns one or more offset curves that represent the trimmed offset of the curve. The curve must be planar and planeNormal must be perpendicular to the plane of the curve. The positive direction of offset at a point on the curve is taken to be the cross product of planeNormal with the tangent vector at that point. The curve may be offset in either of two directions by specifying a positive or negative offset distance; planeNormal determines which direction is the positive direction of offset. The returned offset curves are trimmed so that they do not contain any points of self-intersection. Each curve that is returned in offsetCurveList is created with the new and it is the responsibility of the caller to delete these curves. Each curve that is returned in offsetCurveList is a connected curve and may be a composite curve if the offset curve had to be trimmed to remove self-intersecting loops. offsetCurveList only contains more than one curve if the offset operation produces multiple curves which are not connected. If the original curve contains points of C1 discontinuity and the direction of offset causes the offset curve to be disjoint (for instance, if the original curve is a composite curve that is a rectangle and the direction of offset is to the outside of the rectangle), then the offset curve is closed with an arc or a line segment, or the curves are simply extended depending on the value of extensionType.'''
         ...
     def hasEndPoint (self)-> bool :
@@ -1071,16 +1071,16 @@ This class cannot be instantiated from Python'''
     def isCoplanarWith (self, curve : PyGe.Curve3d, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
         '''Returns Adesk::kTrue if both curve are planar and lie in the same plane. The plane parameter is only valid if this function returns a value of Adesk::kTrue.'''
         ...
-    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isDegenerate (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Entity3d] :
         '''Determines if the curve is degenerate and if so returns the type of entity which the curve degenerates into. For example, if the curve is a circle with a radius of 0 then degenerateType is set to AcGe::kPoint3d. If the curve is an ellipse with a minor radius of 0 and a major radius of 1, then degenerateType is set to AcGe::kLineSeg3d. The degenerateType parameter is only set to something meaningful when this function returns a value of Adesk::kTrue.'''
         ...
-    def isLinear (self, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isLinear (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Line3d] :
         '''Determines if curve is linear. This function returns an infinite line even if the curve is not infinite. The line parameter contains meaningful data only if this function returns a value of Adesk::kTrue.'''
         ...
-    def isOn (self, pt : float | PyGe.Point3d, tol : PyGe.Tol=None)-> tuple[Any,...] :
+    def isOn (self, pt : float | PyGe.Point3d, tol : PyGe.Tol=None)-> tuple :
         '''Determines if input parameter value is within valid parametric range of curve.'''
         ...
-    def isPeriodic (self)-> tuple[Any,...] :
+    def isPeriodic (self)-> tuple[bool,float] :
         '''Determines if the curve is periodic. The curve is periodic if and only if it is closed and the two points evalPoint(t) and evalPoint(t+period) are always the same point for all values of t.'''
         ...
     def isPlanar (self, tol : PyGe.Tol=None)-> tuple[bool,PyGe.Plane] :
@@ -1162,16 +1162,16 @@ class CurveCurveInt2d(Entity2d):
     def curve2 (self)-> PyGe.Curve2d :
         '''                             '''
         ...
-    def getIntConfigs (self, intNum: int)-> tuple[Any,...] :
+    def getIntConfigs (self, intNum: int)-> tuple :
         '''                             '''
         ...
-    def getIntParams (self, intNum: int)-> tuple[Any,...] :
+    def getIntParams (self, intNum: int)-> tuple[float,float] :
         '''                             '''
         ...
-    def getIntRanges (self)-> tuple[Any,...] :
+    def getIntRanges (self)-> tuple[PyGe.Interval,PyGe.Interval] :
         '''                             '''
         ...
-    def getOverlapRanges (self, intNum: int)-> tuple[Any,...] :
+    def getOverlapRanges (self, intNum: int)-> tuple[PyGe.Interval,PyGe.Interval] :
         '''                             '''
         ...
     def getPointOnCurve1 (self, intNum: int)-> PyGe.PointOnCurve2d :
@@ -1256,16 +1256,16 @@ class CurveCurveInt3d(Entity3d):
     def curve2 (self)-> PyGe.Curve3d :
         '''                             '''
         ...
-    def getIntConfigs (self, intNum: int)-> tuple[Any,...] :
+    def getIntConfigs (self, intNum: int)-> tuple :
         '''                             '''
         ...
-    def getIntParams (self, intNum: int)-> tuple[Any,...] :
+    def getIntParams (self, intNum: int)-> tuple[float,float] :
         '''                             '''
         ...
-    def getIntRanges (self)-> tuple[Any,...] :
+    def getIntRanges (self)-> tuple[PyGe.Interval,PyGe.Interval] :
         '''                             '''
         ...
-    def getOverlapRanges (self, intNum: int)-> tuple[Any,...] :
+    def getOverlapRanges (self, intNum: int)-> tuple[PyGe.Interval,PyGe.Interval] :
         '''                             '''
         ...
     def getPointOnCurve1 (self, intNum: int)-> PyGe.PointOnCurve3d :
@@ -1341,10 +1341,10 @@ class CurveSurfInt(Entity3d):
     def curve (self)-> PyGe.Curve3d :
         '''                             '''
         ...
-    def getIntConfigs (self, intNum: int)-> tuple[Any,...] :
+    def getIntConfigs (self, intNum: int)-> tuple :
         '''                             '''
         ...
-    def getIntParams (self, intNum: int)-> tuple[Any,...] :
+    def getIntParams (self, intNum: int)-> tuple[float,PyGe.Point2d] :
         '''                             '''
         ...
     def getPointOnCurve (self, intNum: int)-> PyGe.PointOnCurve3d :
@@ -1419,7 +1419,7 @@ class Cylinder(Surface):
     def heightAt (self, u: float)-> float :
         '''                             '''
         ...
-    def intersectWith (self, val: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[int,PyGe.Point3d,PyGe.Point3d] :
+    def intersectWith (self, val: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[bool,int,PyGe.Point3d,PyGe.Point3d] :
         '''                             '''
         ...
     def isClosed (self, tol: PyGe.Tol=None)-> bool :
