@@ -5,6 +5,9 @@
 
 class PyGeCurve3d;
 class PyGeSurface;
+class PyGePointOnCurve3d;
+class PyGePointOnSurface;
+
 
 void makePyGeCurveSurfIntWrapper();
 class PyGeCurveSurfInt : public PyGeEntity3d
@@ -24,8 +27,8 @@ public:
     AcGePoint3d             intPoint(int intNum) const;
 
     boost::python::tuple    getIntParams(int intNum) const;
-    boost::python::tuple    getPointOnCurve(int intNum) const;
-    boost::python::tuple    getPointOnSurface(int intNum) const;
+    PyGePointOnCurve3d      getPointOnCurve(int intNum) const;
+    PyGePointOnSurface      getPointOnSurface(int intNum) const;
     boost::python::tuple    getIntConfigs(int intNum) const;
 
     void                    set1(const PyGeCurve3d& cvr, const PyGeSurface& srf);

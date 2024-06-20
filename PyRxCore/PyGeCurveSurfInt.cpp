@@ -112,7 +112,7 @@ boost::python::tuple PyGeCurveSurfInt::getIntParams(int intNum) const
     return boost::python::make_tuple(param, pnt);
 }
 
-boost::python::tuple PyGeCurveSurfInt::getPointOnCurve(int intNum) const
+PyGePointOnCurve3d PyGeCurveSurfInt::getPointOnCurve(int intNum) const
 {
     PyAutoLockGIL lock;
     AcGePointOnCurve3d curve;
@@ -120,10 +120,10 @@ boost::python::tuple PyGeCurveSurfInt::getPointOnCurve(int intNum) const
     impObj()->getPointOnCurve(intNum, curve, err);
     if (err != AcGe::kXXOk)
         throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
-    return boost::python::make_tuple(PyGePointOnCurve3d(curve.copy()));
+    return PyGePointOnCurve3d(curve.copy());
 }
 
-boost::python::tuple PyGeCurveSurfInt::getPointOnSurface(int intNum) const
+PyGePointOnSurface PyGeCurveSurfInt::getPointOnSurface(int intNum) const
 {
     PyAutoLockGIL lock;
     AcGePointOnSurface curve;
@@ -131,7 +131,7 @@ boost::python::tuple PyGeCurveSurfInt::getPointOnSurface(int intNum) const
     impObj()->getPointOnSurface(intNum, curve, err);
     if (err != AcGe::kXXOk)
         throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
-    return boost::python::make_tuple(PyGePointOnSurface(curve.copy()));
+    return PyGePointOnSurface(curve.copy());
 }
 
 boost::python::tuple PyGeCurveSurfInt::getIntConfigs(int intNum) const
