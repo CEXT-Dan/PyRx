@@ -1344,7 +1344,7 @@
         ],
         [
             "PyGe::NurbCurve3d::getFitTolerance",
-            "tuple[bool,AcGe.Tol]"
+            "tuple[bool,PyGe.Tol]"
         ],
         [
             "PyGe::NurbCurve3d::getFitTangents",
@@ -1372,7 +1372,7 @@
         ],
         [
             "PyGe::NurbCurve2d::getFitTolerance",
-            "tuple[bool,AcGe.Tol]"
+            "tuple[bool,PyGe.Tol]"
         ],
         [
             "PyGe::NurbCurve2d::getFitTangents",
