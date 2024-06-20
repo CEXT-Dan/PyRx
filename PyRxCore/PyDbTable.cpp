@@ -554,6 +554,10 @@ void makePyDbTableWrapper()
         .def("cellValues", &PyDbTable::getValueIterator2)
         .def("cellValues", &PyDbTable::getValueIterator3)
         .def("cellValues", &PyDbTable::getValueIterator4, DS.OVRL(getIteratorOverloads))
+        .def("cellStrValues", &PyDbTable::getStrValueIterator1)
+        .def("cellStrValues", &PyDbTable::getStrValueIterator2)
+        .def("cellStrValues", &PyDbTable::getStrValueIterator3)
+        .def("cellStrValues", &PyDbTable::getStrValueIterator4, DS.OVRL(getIteratorOverloads))
         .def("className", &PyDbTable::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbTable::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -1620,7 +1624,6 @@ boost::python::list PyDbTable::getIterator1()
 
 boost::python::list PyDbTable::getIterator2(AcDb::TableIteratorOption nOption) const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
     PyAutoLockGIL lock;
     boost::python::list l;
     const auto range = cellRange();
@@ -1628,14 +1631,6 @@ boost::python::list PyDbTable::getIterator2(AcDb::TableIteratorOption nOption) c
     for (iter->start(); !iter->done(); iter->step())
         l.append(iter->getCell());
     return l;
-#else
-    PyAutoLockGIL lock;
-    boost::python::list l;
-    std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(nullptr, nOption));
-    for (iter->start(); !iter->done(); iter->step())
-        l.append(iter->getCell());
-    return l;
-#endif
 }
 
 boost::python::list PyDbTable::getIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const
@@ -1655,6 +1650,67 @@ boost::python::list PyDbTable::getIterator4(const AcCellRange& pRange) const
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&pRange, AcDb::kTableIteratorNone));
     for (iter->start(); !iter->done(); iter->step())
         l.append(iter->getCell());
+    return l;
+}
+
+boost::python::list PyDbTable::getStrValueIterator1()
+{
+    PyAutoLockGIL lock;
+    AcDbMText mt;
+    boost::python::list l;
+    std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator());
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        const auto& c = iter->getCell();
+        mt.setContents(impObj()->textString(c.mnRow, c.mnColumn));
+        l.append(boost::python::make_tuple(c.mnRow, c.mnColumn, wstr_to_utf8(mt.text())));
+    }
+    return l;
+}
+
+boost::python::list PyDbTable::getStrValueIterator2(AcDb::TableIteratorOption nOption) const
+{
+    PyAutoLockGIL lock;
+    AcDbMText mt;
+    boost::python::list l;
+    const auto range = cellRange();
+    std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&range, nOption));
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        const auto& c = iter->getCell();
+        mt.setContents(impObj()->textString(c.mnRow, c.mnColumn));
+        l.append(boost::python::make_tuple(c.mnRow, c.mnColumn, wstr_to_utf8(mt.text())));
+    }
+    return l;
+}
+
+boost::python::list PyDbTable::getStrValueIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const
+{
+    PyAutoLockGIL lock;
+    AcDbMText mt;
+    boost::python::list l;
+    std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&pRange, nOption));
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        const auto& c = iter->getCell();
+        mt.setContents(impObj()->textString(c.mnRow, c.mnColumn));
+        l.append(boost::python::make_tuple(c.mnRow, c.mnColumn, wstr_to_utf8(mt.text())));
+    }
+    return l;
+}
+
+boost::python::list PyDbTable::getStrValueIterator4(const AcCellRange& pRange) const
+{
+    PyAutoLockGIL lock;
+    AcDbMText mt;
+    boost::python::list l;
+    std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&pRange, AcDb::kTableIteratorNone));
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        const auto& c = iter->getCell();
+        mt.setContents(impObj()->textString(c.mnRow, c.mnColumn));
+        l.append(boost::python::make_tuple(c.mnRow, c.mnColumn, wstr_to_utf8(mt.text())));
+    }
     return l;
 }
 

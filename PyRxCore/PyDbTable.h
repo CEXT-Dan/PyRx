@@ -204,6 +204,11 @@ public:
     boost::python::list getIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const;
     boost::python::list getIterator4(const AcCellRange& pRange) const;
 
+    boost::python::list getStrValueIterator1();
+    boost::python::list getStrValueIterator2(AcDb::TableIteratorOption nOption) const;
+    boost::python::list getStrValueIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const;
+    boost::python::list getStrValueIterator4(const AcCellRange& pRange) const;
+
     boost::python::list getValueIterator1();
     boost::python::list getValueIterator2(AcDb::TableIteratorOption nOption) const;
     boost::python::list getValueIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const;
