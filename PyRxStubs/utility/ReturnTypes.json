@@ -728,11 +728,11 @@
         ],
         [
             "PyDb::PointCloudEx::getPlaneOrPointAt",
-            "tuple[bool,list[PyGePoint3d]]"
+            "tuple[bool,list[PyGe.Point3d]]"
         ],
         [
             "PyDb::PointCloudEx::getPlaneBoundaryAt",
-            "tuple[bool,list[PyGePoint3d]]"
+            "tuple[bool,list[PyGe.Point3d]]"
         ],
         [
             "PyDb::PointCloudEx::getCylinderAt",
@@ -840,19 +840,19 @@
         ],
         [
             "PyDb::OsnapOverrule::getOsnapPointsX",
-            "tuple[int,list[PyGePoint3d]]"
+            "tuple[int,list[PyGe.Point3d]]"
         ],
         [
             "PyDb::OsnapOverrule::getOsnapPoints",
-            "tuple[int,list[PyGePoint3d]]"
+            "tuple[int,list[PyGe.Point3d]]"
         ],
         [
             "PyDb::OsnapOverrule::baseGetOsnapPointsX",
-            "tuple[int,list[PyGePoint3d]]"
+            "tuple[int,list[PyGe.Point3d]]"
         ],
         [
             "PyDb::OsnapOverrule::baseGetOsnapPoints",
-            "tuple[int,list[PyGePoint3d]]"
+            "tuple[int,list[PyGe.Point3d]]"
         ],
         [
             "PyDb::OrdinateDimension::textDefinedSize",
@@ -1076,11 +1076,11 @@
         ],
         [
             "PyDb::Extents2d::coords",
-            "tuple[float,..]"
+            "tuple[float,...]"
         ],
         [
             "PyDb::Extents::coords",
-            "tuple[float,..]"
+            "tuple[float,...]"
         ],
         [
             "PyDb::Ellipse::get",

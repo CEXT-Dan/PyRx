@@ -8814,7 +8814,7 @@ class Extents(object):
     def addPoints (self, pts: list[PyGe.Point3d])-> None :
         '''Expand this box to also enclose the point pt.'''
         ...
-    def coords (self)-> tuple[float,..] :
+    def coords (self)-> tuple[float,...] :
         '''                             '''
         ...
     def expandBy (self, vec: PyGe.Vector3d)-> None :
@@ -8860,7 +8860,7 @@ class Extents2d(object):
     def addPoints (self, pts: list[PyGe.Point2d])-> None :
         '''Updates the extents to include point.'''
         ...
-    def coords (self)-> tuple[float,..] :
+    def coords (self)-> tuple[float,...] :
         '''                             '''
         ...
     def expandBy (self, vec: PyGe.Vector2d)-> None :
@@ -14858,10 +14858,10 @@ class OsnapOverrule(PyRx.Overrule):
     def __init__ (self)-> None :
         '''                             '''
         ...
-    def baseGetOsnapPoints (self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> tuple[int,list[PyGePoint3d]] :
+    def baseGetOsnapPoints (self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> tuple[int,list[PyGe.Point3d]] :
         '''                             '''
         ...
-    def baseGetOsnapPointsX (self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, insertionMat: PyGe.Matrix3d)-> tuple[int,list[PyGePoint3d]] :
+    def baseGetOsnapPointsX (self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, insertionMat: PyGe.Matrix3d)-> tuple[int,list[PyGe.Point3d]] :
         '''                             '''
         ...
     def baseIsContentSnappable (self, object: PyDb.Entity)-> bool :
@@ -14877,10 +14877,10 @@ class OsnapOverrule(PyRx.Overrule):
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
-    def getOsnapPoints (self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> tuple[int,list[PyGePoint3d]] :
+    def getOsnapPoints (self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> tuple[int,list[PyGe.Point3d]] :
         '''                             '''
         ...
-    def getOsnapPointsX (self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, insertionMat: PyGe.Matrix3d)-> tuple[int,list[PyGePoint3d]] :
+    def getOsnapPointsX (self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, insertionMat: PyGe.Matrix3d)-> tuple[int,list[PyGe.Point3d]] :
         '''                             '''
         ...
     def isApplicable (self, object: PyRx.RxObject)-> bool :
@@ -15970,10 +15970,10 @@ class PointCloudEx(Entity):
     def getNativeCloudExtent (self)-> PyDb.Extents :
         '''                             '''
         ...
-    def getPlaneBoundaryAt (self, xform: PyGe.Matrix3d, pt: PyGe.Point3d)-> tuple[bool,list[PyGePoint3d]] :
+    def getPlaneBoundaryAt (self, xform: PyGe.Matrix3d, pt: PyGe.Point3d)-> tuple[bool,list[PyGe.Point3d]] :
         '''                             '''
         ...
-    def getPlaneOrPointAt (self, xform: PyGe.Matrix3d, pt: PyGe.Point3d)-> tuple[bool,list[PyGePoint3d]] :
+    def getPlaneOrPointAt (self, xform: PyGe.Matrix3d, pt: PyGe.Point3d)-> tuple[bool,list[PyGe.Point3d]] :
         '''                             '''
         ...
     def getPointCloudCropping (self, index: int)-> PyDb.PointCloudCrop :
