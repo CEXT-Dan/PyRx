@@ -629,8 +629,8 @@ boost::python::tuple PyGeCylinder::intersectWith1(const PyGeLinearEnt3d& linEnt)
     int intn = 0;
     AcGePoint3d p1;
     AcGePoint3d p2;
-    impObj()->intersectWith(*linEnt.impObj(), intn, p1, p2);
-    return boost::python::make_tuple(intn, p1, p2);
+    auto res = impObj()->intersectWith(*linEnt.impObj(), intn, p1, p2);
+    return boost::python::make_tuple(res,intn, p1, p2);
 }
 
 boost::python::tuple PyGeCylinder::intersectWith2(const PyGeLinearEnt3d& linEnt, AcGeTol& tol) const
@@ -639,8 +639,8 @@ boost::python::tuple PyGeCylinder::intersectWith2(const PyGeLinearEnt3d& linEnt,
     int intn = 0;
     AcGePoint3d p1;
     AcGePoint3d p2;
-    impObj()->intersectWith(*linEnt.impObj(), intn, p1, p2, tol);
-    return boost::python::make_tuple(intn, p1, p2);
+    auto res = impObj()->intersectWith(*linEnt.impObj(), intn, p1, p2, tol);
+    return boost::python::make_tuple(res, intn, p1, p2);
 }
 
 PyGeCylinder PyGeCylinder::cast(const PyGeEntity3d& src)
