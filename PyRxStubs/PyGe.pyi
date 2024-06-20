@@ -3129,7 +3129,7 @@ class NurbCurve2d(SplineEnt2d):
     def getFitTangents (self)-> tuple[bool.PyGe.Vector2d,PyGe.Vector2d] :
         '''                             '''
         ...
-    def getFitTolerance (self)-> tuple[bool,AcGe.Tol] :
+    def getFitTolerance (self)-> tuple[bool,PyGe.Tol] :
         '''                             '''
         ...
     def getParamsOfC1Discontinuity (self, tol: PyGe.Tol)-> tuple[bool,list[float]] :
@@ -3300,7 +3300,7 @@ class NurbCurve3d(SplineEnt3d):
     def getFitTangents (self)-> tuple[bool.PyGe.Vector3d,PyGe.Vector3d,bool,bool] :
         '''                             '''
         ...
-    def getFitTolerance (self)-> tuple[bool,AcGe.Tol] :
+    def getFitTolerance (self)-> tuple[bool,PyGe.Tol] :
         '''                             '''
         ...
     def getParamsOfC1Discontinuity (self, tol: PyGe.Tol)-> tuple[bool,list[float]] :
