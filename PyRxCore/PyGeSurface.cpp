@@ -415,8 +415,8 @@ boost::python::tuple PyGeCone::intersectWith1(const PyGeLinearEnt3d& linEnt) con
     int intn = 0;
     AcGePoint3d p1;
     AcGePoint3d p2;
-    impObj()->intersectWith(*linEnt.impObj(), intn, p1, p2);
-    return boost::python::make_tuple(intn, p1, p2);
+    auto flag = impObj()->intersectWith(*linEnt.impObj(), intn, p1, p2);
+    return boost::python::make_tuple(flag,intn, p1, p2);
 }
 
 boost::python::tuple PyGeCone::intersectWith2(const PyGeLinearEnt3d& linEnt, AcGeTol& tol) const
@@ -425,8 +425,8 @@ boost::python::tuple PyGeCone::intersectWith2(const PyGeLinearEnt3d& linEnt, AcG
     int intn = 0;
     AcGePoint3d p1;
     AcGePoint3d p2;
-    impObj()->intersectWith(*linEnt.impObj(), intn, p1, p2, tol);
-    return boost::python::make_tuple(intn, p1, p2);
+    auto flag = impObj()->intersectWith(*linEnt.impObj(), intn, p1, p2, tol);
+    return boost::python::make_tuple(flag,intn, p1, p2);
 }
 
 PyGeCone PyGeCone::cast(const PyGeEntity3d& src)
