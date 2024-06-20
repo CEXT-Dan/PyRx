@@ -130,32 +130,8 @@ public:
         return retCode;
     }
 
-    static void runUserPyOnload()
+    virtual void RegisterServerComponents() override
     {
-        // HACK: only autocad has acDocManager.beginExecuteInCommandContext()
-        // acedDefun fails in application context 
-        static bool doneOnce = false;
-        if (!doneOnce)
-        {
-            if (curDoc() != nullptr)
-            {
-                if (PyRxApp::instance().isLoaded)
-                    acDocManager->sendStringToExecute(curDoc(), L"_pyloadonpy ", true, false, false);
-                doneOnce = true;
-            }
-        }
-    }
-
-    static void initPyRx()
-    {
-        static bool doneOnce = false;
-        if (!doneOnce)
-        {
-            PRINTVER();
-            if (!PyRxApp::instance().init())
-                acutPrintf(_T("\nPyInit Failed"));
-            doneOnce = true;
-        }
     }
 
     static void loadDBXModules()
@@ -171,8 +147,32 @@ public:
 #endif
     }
 
-    virtual void RegisterServerComponents() override
+    static void initPyRx()
     {
+        static bool doneOnce = false;
+        if (!doneOnce)
+        {
+            PRINTVER();
+            if (!PyRxApp::instance().init())
+                acutPrintf(_T("\nPyInit Failed"));
+            doneOnce = true;
+        }
+    }
+
+    static void runUserPyOnload()
+    {
+        // HACK: only autocad has acDocManager.beginExecuteInCommandContext()
+        // acedDefun fails in application context 
+        static bool doneOnce = false;
+        if (!doneOnce)
+        {
+            if (curDoc() != nullptr)
+            {
+                if (PyRxApp::instance().isLoaded)
+                    acDocManager->sendStringToExecute(curDoc(), L"_pyloadonpy ", true, false, false);
+                doneOnce = true;
+            }
+        }
     }
 
     static void PyRxOnIdleMsgFn()
@@ -302,11 +302,11 @@ public:
         }
     }
 
-#if defined(_ZRXTARGET250)
+#if defined(_ZRXTARGET250)//issue #81
     static int ADSPREFIX(adspyload(void))
 #else
     static int ADSPREFIX(pyload(void))
-#endif
+#endif// _ZRXTARGET250
     {
         WxPyAutoLock lock;
         AcResBufPtr pArgs(acedGetArgs());
@@ -320,11 +320,11 @@ public:
         return RSRSLT;
     }
 
-#if defined(_ZRXTARGET250)
+#if defined(_ZRXTARGET250)//issue #81
     static int ADSPREFIX(adspyreload(void))
 #else
     static int ADSPREFIX(pyreload(void))
-#endif
+#endif// _ZRXTARGET250
     {
         WxPyAutoLock lock;
         AcResBufPtr pArgs(acedGetArgs());
@@ -338,11 +338,11 @@ public:
         return RSRSLT;
     }
 
-#if defined(_ZRXTARGET250)
+#if defined(_ZRXTARGET250)//issue #81
     static int ADSPREFIX(adspyloaded(void))
 #else
     static int ADSPREFIX(pyloaded(void))
-#endif
+#endif// _ZRXTARGET250
     {
         AcResBufPtr pArgs(acutNewRb(RTSTR));
         resbuf* pTail = pArgs.get();
@@ -356,7 +356,7 @@ public:
         return RSRSLT;
     }
 
-    //These are for unit test
+    // These are for unit tests
     static int ADSPREFIX(pyrxlispsstest(void))
     {
         AcResBufPtr pArgs(acedGetArgs());
@@ -410,9 +410,9 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_SESSI
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_SESSION, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
-ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyloadonpy, pyloadonpy, ACRX_CMD_TRANSPARENT| ACRX_CMD_NOHISTORY, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyloadonpy, pyloadonpy, ACRX_CMD_TRANSPARENT | ACRX_CMD_NOHISTORY, NULL)
 
-#if defined(_ZRXTARGET250)
+#if defined(_ZRXTARGET250) //issue #81
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyreload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyloaded, false)
@@ -420,7 +420,8 @@ ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyloaded, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyreload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyloaded, false)
-#endif
+#endif//_ZRXTARGET250
+
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlispsstest, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlisprttest, false)
 #ifdef PYPERFPROFILER
@@ -430,5 +431,5 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofilerreset, pyprofilerres
 #endif
 #ifdef PYRXDEBUG
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit, idoit, ACRX_CMD_MODAL, NULL)
-#endif
+#endif //PYRXDEBUG
 #pragma warning( pop )
