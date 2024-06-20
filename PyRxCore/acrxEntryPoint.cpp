@@ -130,6 +130,23 @@ public:
         return retCode;
     }
 
+    static void runUserPyOnload()
+    {
+        // HACK: only autocad has acDocManager.beginExecuteInCommandContext()
+        // acedDefun fails in application context 
+        
+        static bool doneOnce = false;
+        if (!doneOnce)
+        {
+            if (curDoc() != nullptr)
+            {
+                if (PyRxApp::instance().isLoaded)
+                    acDocManager->sendStringToExecute(curDoc(), L"_loadpyonoad ", true, false, false);
+                doneOnce = true;
+            }
+        }
+    }
+
     static void initPyRx()
     {
         static bool doneOnce = false;
@@ -162,6 +179,7 @@ public:
     static void PyRxOnIdleMsgFn()
     {
         initPyRx();
+        runUserPyOnload();
         PyApApplication::PyOnIdleMsgFn();
     }
 
@@ -196,6 +214,18 @@ public:
     static void PRINTVER()
     {
         acutPrintf(_T("\nPyRx version <%ls> loaded:\n"), GETVER().constPtr());
+    }
+
+    static void AcRxPyApp_pyloadonpy(void)
+    {
+        try
+        {
+            PyRxApp::instance().load_pyrx_onload();
+        }
+        catch (...)
+        {
+            acutPrintf(_T("\nException %ls: "), __FUNCTIONW__);
+        }
     }
 
     static void AcRxPyApp_pyload(void)
@@ -381,6 +411,8 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_SESSI
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_SESSION, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyloadonpy, pyloadonpy, ACRX_CMD_TRANSPARENT, NULL)
+
 #if defined(_ZRXTARGET250)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyreload, false)

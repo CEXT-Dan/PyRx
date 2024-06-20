@@ -86,7 +86,7 @@ public:
     static std::wstring the_error();
     static const std::filesystem::path& modulePath();
     static void     appendINISettings();
-    static void     load_pyrx_onload();
+    static bool     load_pyrx_onload();
  
     static PyRxApp& instance();
 public:
