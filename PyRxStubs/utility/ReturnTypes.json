@@ -1336,11 +1336,11 @@
         ],
         [
             "PyGe::NurbCurve3d::getParamsOfG1Discontinuity",
-            "tuple[float,...]"
+            "tuple[bool,list[float]]"
         ],
         [
             "PyGe::NurbCurve3d::getParamsOfC1Discontinuity",
-            "tuple[float,...]"
+            "tuple[bool,list[float]]"
         ],
         [
             "PyGe::NurbCurve3d::getFitTolerance",
@@ -1348,7 +1348,7 @@
         ],
         [
             "PyGe::NurbCurve3d::getFitTangents",
-            "tuple[bool.PyGeVector3d,PyGeVector3d,bool,bool]"
+            "tuple[bool.PyGe.Vector3d,PyGe.Vector3d,bool,bool]"
         ],
         [
             "PyGe::NurbCurve3d::getFitPointAt",
@@ -1361,6 +1361,114 @@
         [
             "PyGe::NurbCurve3d::getDefinitionData",
             "tuple"
+        ],
+        [
+            "PyGe::NurbCurve2d::getParamsOfG1Discontinuity",
+            "tuple[bool,list[float]]"
+        ],
+        [
+            "PyGe::NurbCurve2d::getParamsOfC1Discontinuity",
+            "tuple[bool,list[float]]"
+        ],
+        [
+            "PyGe::NurbCurve2d::getFitTolerance",
+            "tuple[bool,AcGe.Tol]"
+        ],
+        [
+            "PyGe::NurbCurve2d::getFitTangents",
+            "tuple[bool.PyGe.Vector2d,PyGe.Vector2d]"
+        ],
+        [
+            "PyGe::NurbCurve2d::getFitPointAt",
+            "tuple[bool,PyGe.Point2d]"
+        ],
+        [
+            "PyGe::NurbCurve2d::getDefinitionData",
+            "tuple"
+        ],
+        [
+            "PyGe::NurbCurve2d::getFitData",
+            "tuple"
+        ],
+        [
+            "PyGe::LinearEnt3d::projIntersectWith",
+            "tuple[bool,PyGe.Point3d,PyGe.Point3d]"
+        ],
+        [
+            "PyGe::LinearEnt3d::overlap",
+            "tuple[bool,PyGe.LinearEnt3d]"
+        ],
+        [
+            "PyGe::LinearEnt3d::isOn",
+            "tuple[bool,float]"
+        ],
+        [
+            "PyGe::LinearEnt3d::intersectWith",
+            "tuple[bool,PyGe.Point3d,PyGe.Point3d]"
+        ],
+        [
+            "PyGe::LinearEnt2d::overlap",
+            "tuple[bool,PyGe.LinearEnt2d]"
+        ],
+        [
+            "PyGe::LinearEnt2d::intersectWith",
+            "tuple[bool,PyGe.Point2d]"
+        ],
+        [
+            "PyGe::KnotVector::split",
+            "tuple[PyGe.KnotVector,PyGe.KnotVector]"
+        ],
+        [
+            "PyGe::KnotVector::getInterval",
+            "tuple[int,PyGe.Interval]"
+        ],
+        [
+            "PyGe::KnotVector::getDistinctKnots",
+            "list[float]"
+        ],
+        [
+            "PyGe::Interval::subtract",
+            "tuple[int,PyGe.Interval,PyGe.Interval]"
+        ],
+        [
+            "PyGe::Interval::isPeriodicallyOn",
+            "tuple[bool,float]"
+        ],
+        [
+            "PyGe::Interval::isOverlapAtUpper",
+            "tuple[bool,PyGe.Interval]"
+        ],
+        [
+            "PyGe::Interval::intersectWith",
+            "tuple[bool,PyGe.Interval]"
+        ],
+        [
+            "PyGe::Interval::getBounds",
+            "tuple[float,float]"
+        ],
+        [
+            "PyGe::EllipArc3d::projIntersectWith",
+            "tuple"
+        ],
+        [
+            "PyGe::EllipArc3d::intersectWith",
+            "tuple[bool,int,PyGe.Point3d,PyGe.Point3d]"
+        ],
+        [
+            "PyGe::EllipArc3d::closestPointToPlane",
+            "tuple[PyGe.Point3d,PyGe.Point3d]"
+        ],
+        [
+            "PyGe::EllipArc2d::intersectWith",
+            "tuple[bool,int,PyGe.Point2d,PyGe.Point2d]"
+        ],
+        [
+            "PyGe::Cylinder::intersectWith",
+            "tuple[int,PyGe.Point3d,PyGe.Point3d]"
+        ],
+        [
+            "PyGe::Cylinder::getAngles",
+            "tuple[float,float]"
         ]
     ]
 }

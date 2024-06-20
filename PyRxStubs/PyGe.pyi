@@ -1347,10 +1347,10 @@ class CurveSurfInt(Entity3d):
     def getIntParams (self, intNum: int)-> tuple[Any,...] :
         '''                             '''
         ...
-    def getPointOnCurve (self, intNum: int)-> tuple[Any,...] :
+    def getPointOnCurve (self, intNum: int)-> PyGe.PointOnCurve3d :
         '''                             '''
         ...
-    def getPointOnSurface (self, intNum: int)-> tuple[Any,...] :
+    def getPointOnSurface (self, intNum: int)-> PyGe.PointOnSurface :
         '''                             '''
         ...
     def intPoint (self, intNum: int)-> PyGe.Point3d :
@@ -1410,7 +1410,7 @@ class Cylinder(Surface):
     def copycast (otherObject: PyGe.Entity3d)-> PyGe.Cylinder :
         '''                             '''
         ...
-    def getAngles (self)-> tuple[Any,...] :
+    def getAngles (self)-> tuple[float,float] :
         '''                             '''
         ...
     def getHeight (self)-> PyGe.Interval :
@@ -1419,7 +1419,7 @@ class Cylinder(Surface):
     def heightAt (self, u: float)-> float :
         '''                             '''
         ...
-    def intersectWith (self, val: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def intersectWith (self, val: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[int,PyGe.Point3d,PyGe.Point3d] :
         '''                             '''
         ...
     def isClosed (self, tol: PyGe.Tol=None)-> bool :
@@ -1500,7 +1500,7 @@ class EllipArc2d(Curve2d):
     def endPoint (self)-> PyGe.Point2d :
         '''                             '''
         ...
-    def intersectWith (self, val: PyGe.LinearEnt2d, tol: PyGe.Tol = None)-> tuple[Any,...] :
+    def intersectWith (self, val: PyGe.LinearEnt2d, tol: PyGe.Tol = None)-> tuple[bool,int,PyGe.Point2d,PyGe.Point2d] :
         '''                             '''
         ...
     def isCircular (self, tol: PyGe.Tol=None)-> bool :
@@ -1591,7 +1591,7 @@ class EllipArc3d(Curve3d):
     def className ()-> str :
         '''                             '''
         ...
-    def closestPointToPlane (self, plane: PyGe.PlanarEnt, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def closestPointToPlane (self, plane: PyGe.PlanarEnt, tol: PyGe.Tol=None)-> tuple[PyGe.Point3d,PyGe.Point3d] :
         '''                             '''
         ...
 
@@ -1608,7 +1608,7 @@ class EllipArc3d(Curve3d):
     def getPlane (self)-> PyGe.Plane :
         '''                             '''
         ...
-    def intersectWith (self, other: PyGe.LinearEnt3d|PyGe.PlanarEnt, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def intersectWith (self, other: PyGe.LinearEnt3d|PyGe.PlanarEnt, tol: PyGe.Tol=None)-> tuple[bool,int,PyGe.Point3d,PyGe.Point3d] :
         '''                             '''
         ...
     def isCircular (self, tol: PyGe.Tol=None)-> bool :
@@ -1632,7 +1632,7 @@ class EllipArc3d(Curve3d):
     def normal (self)-> PyGe.Vector3d :
         '''                             '''
         ...
-    def projIntersectWith (self, other: PyGe.LinearEnt3d, projDir: PyGe.Vector3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def projIntersectWith (self, other: PyGe.LinearEnt3d, projDir: PyGe.Vector3d, tol: PyGe.Tol=None)-> tuple :
         '''                             '''
         ...
 
@@ -2122,13 +2122,13 @@ class Interval(object):
     def element (self)-> float :
         '''                             '''
         ...
-    def getBounds (self)-> tuple[Any,...] :
+    def getBounds (self)-> tuple[float,float] :
         '''                             '''
         ...
     def getMerge (self, val: float)-> PyGe.Interval :
         '''                             '''
         ...
-    def intersectWith (self, val: PyGe.Interval)-> tuple[Any,...] :
+    def intersectWith (self, val: PyGe.Interval)-> tuple[bool,PyGe.Interval] :
         '''                             '''
         ...
     def isBounded (self)-> bool :
@@ -2164,10 +2164,10 @@ class Interval(object):
     def isLessOrEqual (self, val: PyGe.Interval|float)-> bool :
         '''                             '''
         ...
-    def isOverlapAtUpper (self, val: PyGe.Interval)-> tuple[Any,...] :
+    def isOverlapAtUpper (self, val: PyGe.Interval)-> tuple[bool,PyGe.Interval] :
         '''                             '''
         ...
-    def isPeriodicallyOn (self, val: float)-> tuple[Any,...] :
+    def isPeriodicallyOn (self, val: float)-> tuple[bool,float] :
         '''                             '''
         ...
     def isSingleton (self)-> bool :
@@ -2205,7 +2205,7 @@ class Interval(object):
     def setUpper (self, val: float)-> None :
         '''                             '''
         ...
-    def subtract (self, val: PyGe.Interval)-> tuple[Any,...] :
+    def subtract (self, val: PyGe.Interval)-> tuple[int,PyGe.Interval,PyGe.Interval] :
         '''                             '''
         ...
     def tolerance (self)-> float :
@@ -2275,10 +2275,10 @@ class KnotVector(object):
     def endParam (self)-> float :
         '''                             '''
         ...
-    def getDistinctKnots (self)-> list :
+    def getDistinctKnots (self)-> list[float] :
         '''                             '''
         ...
-    def getInterval (self, ord: int, param: float)-> tuple[Any,...] :
+    def getInterval (self, ord: int, param: float)-> tuple[int,PyGe.Interval] :
         '''                             '''
         ...
     def growLength (self)-> int :
@@ -2341,7 +2341,7 @@ class KnotVector(object):
     def setTolerance (self, tol: float)-> None :
         '''                             '''
         ...
-    def split (self, param: float, multilast: int, multifirst: int)-> tuple[Any,...] :
+    def split (self, param: float, multilast: int, multifirst: int)-> tuple[PyGe.KnotVector,PyGe.KnotVector] :
         '''                             '''
         ...
     def startParam (self)-> float :
@@ -2627,7 +2627,7 @@ This class cannot be instantiated from Python'''
     def getPerpLine (self, pt: PyGe.Point2d)-> PyGe.Line2d :
         '''                             '''
         ...
-    def intersectWith (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def intersectWith (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> tuple[bool,PyGe.Point2d] :
         '''                             '''
         ...
     def isColinearTo (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> bool :
@@ -2639,7 +2639,7 @@ This class cannot be instantiated from Python'''
     def isPerpendicularTo (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> bool :
         '''                             '''
         ...
-    def overlap (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def overlap (self, other: PyGe.LinearEnt2d, tol: PyGe.Tol=None)-> tuple[bool,PyGe.LinearEnt2d] :
         '''                             '''
         ...
     def pointOnLine (self)-> PyGe.Point2d :
@@ -2675,7 +2675,7 @@ This class cannot be instantiated from Python'''
     def getPerpPlane (self, pt: PyGe.Point3d)-> PyGe.Plane :
         '''                             '''
         ...
-    def intersectWith (self, other: PyGe.LinearEnt3d | PyGe.PlanarEnt, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def intersectWith (self, other: PyGe.LinearEnt3d | PyGe.PlanarEnt, tol: PyGe.Tol=None)-> tuple[bool,PyGe.Point3d,PyGe.Point3d] :
         '''                             '''
         ...
     def isColinearTo (self, pt: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> bool :
@@ -2683,18 +2683,18 @@ This class cannot be instantiated from Python'''
         ...
 
     @overload
-    def isOn (self, pnt: PyGe.Point3d)-> tuple[Any,...] : ...
+    def isOn (self, pnt: PyGe.Point3d)-> tuple[bool,float] : ...
     @overload
-    def isOn (self, pnt: PyGe.Point3d, tol: PyGe.Tol)-> tuple[Any,...] : ...
+    def isOn (self, pnt: PyGe.Point3d, tol: PyGe.Tol)-> tuple[bool,float] : ...
     @overload
-    def isOn (self, param: float)-> tuple[Any,...] : ...
+    def isOn (self, param: float)-> tuple[bool,float] : ...
     @overload
-    def isOn (self, param: float, tol: PyGe.Tol)-> tuple[Any,...] : ...
+    def isOn (self, param: float, tol: PyGe.Tol)-> tuple[bool,float] : ...
     @overload
-    def isOn (self, plane: PyGe.Plane)-> tuple[Any,...] : ...
+    def isOn (self, plane: PyGe.Plane)-> tuple[bool,float] : ...
     @overload
-    def isOn (self, plane: PyGe.Plane, tol: PyGe.Tol)-> tuple[Any,...] : ...
-    def isOn (self, *args, **kwargs)-> tuple[Any,...] :
+    def isOn (self, plane: PyGe.Plane, tol: PyGe.Tol)-> tuple[bool,float] : ...
+    def isOn (self, *args, **kwargs)-> tuple[bool,float] :
         '''Overloads:
     - pnt: PyGe.Point3d
     - pnt: PyGe.Point3d, tol: PyGe.Tol
@@ -2738,13 +2738,13 @@ This class cannot be instantiated from Python'''
     - line: PyGe.PlanarEnt, tol: PyGe.Tol
     '''
         ...
-    def overlap (self, other: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def overlap (self, other: PyGe.LinearEnt3d, tol: PyGe.Tol=None)-> tuple[bool,PyGe.LinearEnt3d] :
         '''                             '''
         ...
     def pointOnLine (self)-> PyGe.Point3d :
         '''                             '''
         ...
-    def projIntersectWith (self, other: PyGe.LinearEnt3d, projDir: PyGe.Vector3d, tol: PyGe.Tol=None)-> tuple[Any,...] :
+    def projIntersectWith (self, other: PyGe.LinearEnt3d, projDir: PyGe.Vector3d, tol: PyGe.Tol=None)-> tuple[bool,PyGe.Point3d,PyGe.Point3d] :
         '''                             '''
         ...
 
@@ -3117,25 +3117,25 @@ class NurbCurve2d(SplineEnt2d):
     def evalMode (self)-> bool :
         '''                             '''
         ...
-    def getDefinitionData (self)-> tuple[Any,...] :
+    def getDefinitionData (self)-> tuple :
         '''                             '''
         ...
-    def getFitData (self)-> tuple[Any,...] :
+    def getFitData (self)-> tuple :
         '''                             '''
         ...
-    def getFitPointAt (self, idx: int)-> tuple[Any,...] :
+    def getFitPointAt (self, idx: int)-> tuple[bool,PyGe.Point2d] :
         '''                             '''
         ...
-    def getFitTangents (self)-> tuple[Any,...] :
+    def getFitTangents (self)-> tuple[bool.PyGe.Vector2d,PyGe.Vector2d] :
         '''                             '''
         ...
-    def getFitTolerance (self)-> tuple[Any,...] :
+    def getFitTolerance (self)-> tuple[bool,AcGe.Tol] :
         '''                             '''
         ...
-    def getParamsOfC1Discontinuity (self, tol: PyGe.Tol)-> tuple[Any,...] :
+    def getParamsOfC1Discontinuity (self, tol: PyGe.Tol)-> tuple[bool,list[float]] :
         '''                             '''
         ...
-    def getParamsOfG1Discontinuity (self, tol: PyGe.Tol)-> tuple[Any,...] :
+    def getParamsOfG1Discontinuity (self, tol: PyGe.Tol)-> tuple[bool,list[float]] :
         '''                             '''
         ...
     def hardTrimByParams (self, newStartParam: float, newEndParam: float)-> None :
@@ -3297,16 +3297,16 @@ class NurbCurve3d(SplineEnt3d):
     def getFitPointAt (self, idx: int)-> tuple[bool,PyGe.Point3d] :
         '''                             '''
         ...
-    def getFitTangents (self)-> tuple[bool.PyGeVector3d,PyGeVector3d,bool,bool] :
+    def getFitTangents (self)-> tuple[bool.PyGe.Vector3d,PyGe.Vector3d,bool,bool] :
         '''                             '''
         ...
     def getFitTolerance (self)-> tuple[bool,AcGe.Tol] :
         '''                             '''
         ...
-    def getParamsOfC1Discontinuity (self, tol: PyGe.Tol)-> tuple[float,...] :
+    def getParamsOfC1Discontinuity (self, tol: PyGe.Tol)-> tuple[bool,list[float]] :
         '''                             '''
         ...
-    def getParamsOfG1Discontinuity (self, tol: PyGe.Tol)-> tuple[float,...] :
+    def getParamsOfG1Discontinuity (self, tol: PyGe.Tol)-> tuple[bool,list[float]] :
         '''                             '''
         ...
     def hardTrimByParams (self, newStartParam: float, newEndParam: float)-> None :
