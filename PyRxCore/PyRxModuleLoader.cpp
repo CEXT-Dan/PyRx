@@ -60,7 +60,7 @@ bool showNavFileDialog(PyModulePath& path)
         RxAutoOutStr outstr;
         if (acedGetFullString(0, _T("Select Python File: "), outstr.buf) != RTNORM)
             return false;
-        std::filesystem::path _path{ outstr.buf};
+        std::filesystem::path _path{ outstr.buf };
         path.fullPath = outstr.buf;
         path.moduleName = moduleNameFromPath(_path);
         path.modulePath = _path.remove_filename();
@@ -177,20 +177,17 @@ static void reloadCommands(PyRxMethod& method, const PyModulePath& path)
 bool loadPythonModule(const PyModulePath& path, bool silent)
 {
     std::error_code ec;
+    auto& rxApp = PyRxApp::instance();
     const auto oldpath = std::filesystem::current_path(ec);
     std::filesystem::current_path(path.modulePath, ec);
 
-    auto& rxApp = PyRxApp::instance();
     if (rxApp.funcNameMap.contains(path.moduleName))
     {
         acutPrintf(_T("\nModule %ls Already loaded, use pyreload"), (const TCHAR*)path.moduleName);
         return true;
     }
-    // must be added to the pythons search path
+    PyRxMethod method; // wants the file name, no extension, in the same case as existing
     PyRxApp::appendSearchPath(path.modulePath);
-
-    // wants the file name, no extension, in the same case as existing
-    PyRxMethod method;
     method.modname.reset(wstr_to_py(path.fullPath.filename().replace_extension()));
     method.mod.reset(PyImport_Import(method.modname.get()));
     if (method.mod != nullptr)
