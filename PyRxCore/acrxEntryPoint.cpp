@@ -134,14 +134,13 @@ public:
     {
         // HACK: only autocad has acDocManager.beginExecuteInCommandContext()
         // acedDefun fails in application context 
-        
         static bool doneOnce = false;
         if (!doneOnce)
         {
             if (curDoc() != nullptr)
             {
                 if (PyRxApp::instance().isLoaded)
-                    acDocManager->sendStringToExecute(curDoc(), L"_loadpyonoad ", true, false, false);
+                    acDocManager->sendStringToExecute(curDoc(), L"_pyloadonpy ", true, false, false);
                 doneOnce = true;
             }
         }
