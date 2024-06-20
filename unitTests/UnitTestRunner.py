@@ -93,6 +93,6 @@ def PyRxCmd_runtests() -> None:
         TestResultsChecker.CheckTestResults(testcfg.logFileName)
             
     except Exception as err:
-        traceback.print_exception(err)(err)
+        traceback.print_exception(err)
     finally:
         cleanup(dbc)

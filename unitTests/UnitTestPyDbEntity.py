@@ -467,4 +467,4 @@ def pyentity():
             print('TestDbEntity')
             print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
     except Exception as err:
-        print.Printf(err)
+            print(err)
