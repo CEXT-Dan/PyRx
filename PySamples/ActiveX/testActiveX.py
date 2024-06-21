@@ -262,3 +262,13 @@ def PyRxCmd_insertX():
         print(ref.Name)
     except Exception as err:
         traceback.print_exception(err)
+
+# note the session context
+def PyRxCmd_xzoomnclose(CmdFlags = Ap.CmdFlags.SESSION) -> None:
+    try:
+        axApp = Ax.getApp()
+        axDoc = axApp.ActiveDocument
+        axApp.ZoomExtents()
+        axDoc.Close(True)
+    except Exception as err:
+        traceback.print_exception(err)
