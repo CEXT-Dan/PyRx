@@ -229,20 +229,32 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                         break;
                     }
                     case RTPICKS:
+                    {
+                        ads_name name = { 0L };
+                        const PyEdSelectionSet ss = extract<PyEdSelectionSet>(tpl[1]);
+                        {
+                            const auto& adsn = ss.adsname();
+                            name[0] = adsn.m_data[0];
+                            name[1] = adsn.m_data[1];
+                            pTail->rbnext = acutBuildList(code, name, 0);
+                            if (pTail->rbnext != nullptr)
+                                pTail = pTail->rbnext;
+                        }
+                        break;
+                    }
                     case RTENAME:
                     {
+
+                        ads_name name = { 0L };
+                        const PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
+                        if (acdbGetAdsName(name, id.m_id) == eOk)
                         {
-                            ads_name name = { 0L };
-                            const PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
-                            if (acdbGetAdsName(name, id.m_id) == eOk)
-                            {
-                                pTail->rbnext = acutBuildList(code, name, 0);
-                                if (pTail->rbnext != nullptr)
-                                    pTail = pTail->rbnext;
-                            }
+                            pTail->rbnext = acutBuildList(code, name, 0);
+                            if (pTail->rbnext != nullptr)
+                                pTail = pTail->rbnext;
                         }
+                        break;
                     }
-                    break;
                 }
             }
         }
