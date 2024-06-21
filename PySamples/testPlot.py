@@ -1,18 +1,21 @@
 import traceback
-from pyrx_imp import Ap, Db, Ed, Ge, Gi, Gs, Rx
+from pyrx_imp import Ap, Db, Ed, Ge, Gi, Gs, Rx, Pl
 
 # port of
 # https://through-the-interface.typepad.com/through_the_interface/2007/10/plotting-a-wind.html
 
 import traceback
 
-
+#AutoCAD only?
 def PyRxCmd_doit():
     try:
 
         doc = Ap.curDoc()
         db = doc.database()
-
+        
+        autovar = Ed.AutoSysVar('BACKGROUNDPLOT', 0)
+        
+    
         ppr = Ed.Editor.getPoint("\nSelect first corner of plot area: ")
         if ppr[0] != Ed.PromptStatus.eOk:
             return
@@ -112,15 +115,14 @@ def PyRxCmd_doit():
 
 def PyRxCmd_doit2():
     try:
+        autovar = Ed.AutoSysVar('BACKGROUNDPLOT', 0)
         db = Db.curDb()
         pdfPath = "C:\\temp\\pdf\\myPDF.pdf"
         deviceName = "DWG To PDF.pc3"
         docName = db.getFilename()
 
         dsdEntries = []
-        symUtilServices = Db.SymUtilServices()
         layoutDict = Db.Dictionary(db.layoutDictionaryId())
-
         for name, id in layoutDict.asDict().items():
 
             if name == "Model":
@@ -146,9 +148,10 @@ def PyRxCmd_doit2():
 
         plotConfigManager = Pl.PlotConfigManager()
         plotConfig = plotConfigManager.setCurrentConfig(deviceName)
+        plotConfig.setPlotToFile(False)
 
         Ed.Core.arxLoad("AcPublish.arx")
-        Pl.Core.publishExecute(dsdData, plotConfig, False)
+        Pl.Core.publishExecute(dsdData, plotConfig, True)
 
     except Exception as err:
         print(traceback.format_exc())

@@ -1,8 +1,16 @@
 import traceback
 from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
 
+print("added command = esnoop")
 
-def PyRxCmd_doit():
+"""
+dumps the dwg filer for an AcDbObject into a list of tuples
+(Type , Value)
+
+"""
+
+
+def PyRxCmd_esnoop():
     try:
         snoop = Db.SnoopDwgFiler()
         entRes = Ed.Editor.entSel("\nSelect: ")

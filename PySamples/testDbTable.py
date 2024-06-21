@@ -31,7 +31,7 @@ def PyRxCmd_doit():
         traceback.print_exception(err)
   
 # create from pandas       
-def PyRxCmd_doit2():
+def PyRxCmd_doit2() -> None:
     try:
         db = Db.curDb()
  
@@ -66,7 +66,7 @@ def PyRxCmd_doit2():
         print(traceback.format_exc())
 
 #simple iteration
-def PyRxCmd_doit3():
+def PyRxCmd_doit3() -> None:
     try:
         es = Ed.Editor.entSel("\nSelect a table: ", Db.Table.desc())
         if es[0]!= Ed.PromptStatus.eNormal:
@@ -79,19 +79,35 @@ def PyRxCmd_doit3():
     except Exception as err:
         traceback.print_exception(err)
         
-#simple iteration Format opt
-def PyRxCmd_doit4():
+#simple iteration cellValues preserves the type. int, float, string
+def PyRxCmd_doit4() -> None:
     try:
         es = Ed.Editor.entSel("\nSelect a table: ", Db.Table.desc())
         if es[0]!= Ed.PromptStatus.eNormal:
             return
         
+        opts = Db.TableIteratorOption.kTableIteratorSkipMerged
+        
         table = Db.Table(es[1])
-        for cellValue in table.cellValues():
+        for cellValue in table.cellValues(opts):
             print(cellValue)
             
     except Exception as err:
         traceback.print_exception(err)
+  
+#simple iteration cellStrValues, returns list of tuples (nRow, nCol, String)
+def PyRxCmd_doit5() -> None:
+    try:
+        es = Ed.Editor.entSel("\nSelect: ",Db.Table.desc())
+        table = Db.Table(es[1])
+        
+        opts = Db.TableIteratorOption.kTableIteratorSkipMerged
+        for item in table.cellStrValues(opts):
+            if item[2] != '':
+                print(item)
+        
+    except Exception:
+        traceback.print_exc()
                 
 
 def PyRxCmd_setMargins1():

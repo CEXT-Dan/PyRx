@@ -1,11 +1,4 @@
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
-from pyrx_impx import Ax
+from pyrx_impx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 import timeit
 
 #run this before release!!!
@@ -69,12 +62,14 @@ def move_points_iter():
         ent.transformBy(mat)
         
 def move_points_com():
+    
+        objType = "AcDbPoint"
         mat = Ge.Matrix3d()
         mat.setToTranslation(Ge.Point3d(100, 100, 0).asVector())
         comMat = mat.toList()
 
         for ent in theApp.ActiveDocument.ModelSpace:
-            if ent.ObjectName == "AcDbPoint":
+            if ent.ObjectName == objType:
                 ent.TransformBy(comMat)
 
 
