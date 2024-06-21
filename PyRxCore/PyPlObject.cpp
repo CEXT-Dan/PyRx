@@ -86,8 +86,9 @@ struct PyPlPlotEngineDeleter
 {
     inline void operator()(AcPlPlotEngine* p) const
     {
-        if (p == nullptr) [[unlikely]]
-            return;
+        if (p == nullptr) [[unlikely]]{
+                return;
+            }
             p->destroy();
     };
 };
