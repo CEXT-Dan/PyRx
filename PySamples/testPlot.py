@@ -118,8 +118,16 @@ def PyRxCmd_doit2():
         autovar = Ed.AutoSysVar('BACKGROUNDPLOT', 0)
         db = Db.curDb()
         pdfPath = "C:\\temp\\pdf\\myPDF.pdf"
-        deviceName = "DWG To PDF.pc3"
         docName = db.getFilename()
+        
+        #ARX 
+        deviceName = "DWG To PDF.pc3"
+        
+        #BRX Not ready
+        #deviceName = "Print As PDF.pc3"
+        
+        #ZWCAD
+        #deviceName = "DWG To PDF.pc5"
 
         dsdEntries = []
         layoutDict = Db.Dictionary(db.layoutDictionaryId())
