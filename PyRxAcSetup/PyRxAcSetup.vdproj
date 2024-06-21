@@ -1654,6 +1654,30 @@
         "Entry"
         {
         "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
+        "OwnerKey" = "8:_FF6AD2FEE6A3481395D38D0B26425D32"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
+        "OwnerKey" = "8:_F80AA2A9BFE042E49AFACBD5ABD19774"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
+        "OwnerKey" = "8:_F0762DA2EB93401ABCF4EAED157BD1FF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
+        "OwnerKey" = "8:_CEB2CCE358814411AECEC4A41C62651C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
         "OwnerKey" = "8:_CAF784A33690446583566565CE0793C4"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1684,7 +1708,49 @@
         "Entry"
         {
         "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
+        "OwnerKey" = "8:_9032A0DF83F64EFD827C80C4B9CD79C4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
+        "OwnerKey" = "8:_883E7BC3407A46C2838034D3C9B92C0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
+        "OwnerKey" = "8:_7146CD4324354DA282D793FA5CB1A614"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
+        "OwnerKey" = "8:_7117C90B702B44EDA0FAD356DC95FFEA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
+        "OwnerKey" = "8:_6D0494D9D4E54096A6ACFBD935FCCC63"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
+        "OwnerKey" = "8:_605CFD7AB76C4B66B82ECDA33562C6C2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
         "OwnerKey" = "8:_385B03B2DEDE4D2C9ACFD82978F72385"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
+        "OwnerKey" = "8:_3553517E3AEE4015B2D90C92B7893CB1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1696,7 +1762,25 @@
         "Entry"
         {
         "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
+        "OwnerKey" = "8:_30E02C79E203458293B6EA8D1FD1C630"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
         "OwnerKey" = "8:_30670A9882814371AE117F11CA97C30E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
+        "OwnerKey" = "8:_1D07E9B02EF74C359FA45D9119085C68"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F365651D6AFC6FE6775EE397D3B70CC0"
+        "OwnerKey" = "8:_07BC4903FC3B4C3A9067AD3617933997"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2683,7 +2767,7 @@
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.3.025"
+        "ProductVersion" = "8:1.3.026"
         "Manufacturer" = "8:Daniel Marcotte"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/CEXT-Dan/PyRx"
