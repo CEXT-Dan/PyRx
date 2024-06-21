@@ -32,7 +32,7 @@ def PyRxCmd_doit():
                 ws.cell(row=nrow+1, column=ncol+1, value=att.textString())
 
         # save it
-        wb.save('e://pyattout.xlsx')
+        wb.save('e:\\pyattout.xlsx')
 
     except Exception as err:
         traceback.print_exception(err)
