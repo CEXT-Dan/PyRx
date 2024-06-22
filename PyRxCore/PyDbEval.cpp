@@ -443,6 +443,8 @@ void makePyDbAcValueWrapper()
         .def("getObjectId", &PyDbAcValue::getObjectId, DS.ARGS())
         .def("getPoint2d", &PyDbAcValue::getPoint2d, DS.ARGS())
         .def("getPoint3d", &PyDbAcValue::getPoint3d, DS.ARGS())
+        .def("format", &PyDbAcValue::format, DS.ARGS({ "val: PyDb.ValueFormatOption" }))
+        .def("convertTo", &PyDbAcValue::convertTo, DS.ARGS({ "dt: PyDb.ValueDataType", "vt: PyDb.ValueUnitType" }))
         .def("className", &PyDbAcValue::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbAcValue::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -608,6 +610,16 @@ AcGePoint3d PyDbAcValue::getPoint3d()
     AcGePoint3d value;
     PyThrowFalse(impObj()->get(value));
     return value;
+}
+
+std::string PyDbAcValue::format(AcValue::FormatOption nOption)
+{
+    return wstr_to_utf8(impObj()->format(nOption));
+}
+
+bool PyDbAcValue::convertTo(AcValue::DataType nDataType, AcValue::UnitType nUnitType)
+{
+    return impObj()->convertTo(nDataType, nUnitType);
 }
 
 PyRxClass PyDbAcValue::desc()
