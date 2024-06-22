@@ -30,11 +30,15 @@ public:
     std::string         getFormat(void) const;
     void                setFormat(const std::string& pszFormat);
     std::string         getValue(void) const;
-    void                evaluate1();
-    void                evaluate2(AcDbField::EvalContext nContext);
-    void                evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db);
+
+    boost::python::tuple evaluate1();
+    boost::python::tuple evaluate2(AcDbField::EvalContext nContext);
+    boost::python::tuple evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db);
+
     std::string         getFieldCode1(AcDbField::FieldCodeFlag nFlag);
     std::string         getFieldCode2(AcDbField::FieldCodeFlag nFlag, const boost::python::list&, AcDb::OpenMode mode);
+
+    void                setData(const std::string& key, const std::string& value);
     static std::string  className();
     static PyRxClass    desc();
     static PyDbField    cloneFrom(const PyRxObject& src);
