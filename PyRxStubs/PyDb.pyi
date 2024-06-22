@@ -323,6 +323,104 @@ class AcGeoMapType(object):
         '''None'''
         ...
 
+class AcValue(PyRx.RxObject):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, intval: int)-> None : ...
+    @overload
+    def __init__ (self, floatval: float)-> None : ...
+    @overload
+    def __init__ (self, strval: str)-> None : ...
+    @overload
+    def __init__ (self, idval: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, pnt2dval: PyGe.Point2d)-> None : ...
+    @overload
+    def __init__ (self, pnt3dval: PyGe.Point3d)-> None : ...
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Overloads:
+    - None: Any
+    - intval: int
+    - floatval: float
+    - strval: str
+    - idval: PyDb.ObjectId
+    - pnt2dval: PyGe.Point2d
+    - pnt3dval: PyGe.Point3d
+    '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+    def dataType (self)-> PyDb.ValueDataType :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+    def getDouble (self)-> float :
+        '''                             '''
+        ...
+    def getFormat (self)-> str :
+        '''                             '''
+        ...
+    def getInt32 (self)-> int :
+        '''                             '''
+        ...
+    def getObjectId (self)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+    def getPoint2d (self)-> PyGe.Point2d :
+        '''                             '''
+        ...
+    def getPoint3d (self)-> PyGe.Point3d :
+        '''                             '''
+        ...
+    def getString (self)-> str :
+        '''                             '''
+        ...
+    def isValid (self)-> bool :
+        '''                             '''
+        ...
+    def reset (self, nDataType: PyDb.ValueDataType=PyDb.ValueDataType.kUnknown)-> bool :
+        '''                             '''
+        ...
+    def resetValue (self)-> bool :
+        '''                             '''
+        ...
+    def setDouble (self, val: float)-> None :
+        '''                             '''
+        ...
+    def setFormat (self, val: str)-> bool :
+        '''                             '''
+        ...
+    def setInt32 (self, val: int)-> None :
+        '''                             '''
+        ...
+    def setObjectId (self, id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+    def setPoint2d (self, pt: PyGe.Point3d)-> None :
+        '''                             '''
+        ...
+    def setPoint3d (self, pt: PyGe.Point2d)-> None :
+        '''                             '''
+        ...
+    def setString (self, val: str)-> None :
+        '''                             '''
+        ...
+    def setUnitType (self, val: PyDb.ValueUnitType)-> bool :
+        '''                             '''
+        ...
+    def unitType (self)-> PyDb.ValueUnitType :
+        '''                             '''
+        ...
+
 class AdsName(object):
     def __init__ (self)-> None :
         '''                             '''
@@ -9217,12 +9315,12 @@ class Field(DbObject):
         ...
 
     @overload
-    def evaluate (self, /)-> None : ...
+    def evaluate (self, /)-> tuple[Any,...] : ...
     @overload
-    def evaluate (self, nFlag: PyDb.FieldEvalContext)-> None : ...
+    def evaluate (self, nFlag: PyDb.FieldEvalContext)-> tuple[Any,...] : ...
     @overload
-    def evaluate (self, nFlag: PyDb.FieldEvalContext, db: PyDb.Database)-> None : ...
-    def evaluate (self, *args, **kwargs)-> None :
+    def evaluate (self, nFlag: PyDb.FieldEvalContext, db: PyDb.Database)-> tuple[Any,...] : ...
+    def evaluate (self, *args, **kwargs)-> tuple[Any,...] :
         '''Overloads:
     - None: Any
     - nFlag: PyDb.FieldEvalContext
@@ -9262,6 +9360,9 @@ class Field(DbObject):
         ...
     def postInDatabase (self, db: PyDb.Database)-> None :
         '''Posts the field and its child fields to the database. Although this function posts the field to the database, it will not have any owner until it is set in an object, and unowned fields will not be saved with the drawing. To set the field in an object, use AcDbObject::setField or AcDbField::setInObject.Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.'''
+        ...
+    def setData (self, key: str, value: str)-> None :
+        '''                             '''
         ...
     def setEvaluationOption (self, val : PyDb.FieldEvalOption)-> None :
         '''Sets the evaluation option for the field. The field is evaluated only if the evaluation option set in the field matches the evaluation context in which it is evaluated.Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.'''
@@ -20694,6 +20795,23 @@ class Table(BlockReference):
     - row: int, col, nContent: int, id: PyDb.ObjectId
     '''
         ...
+
+    @overload
+    def setValue (self, row: int, col: int, val: PyDb.AcValue)-> None : ...
+    @overload
+    def setValue (self, row: int, col: int, content: int, val: PyDb.AcValue)-> None : ...
+    @overload
+    def setValue (self, row: int, col: int, content: int, val: PyDb.AcValue, opt: PyDb.ValueParseOption)-> None : ...
+    @overload
+    def setValue (self, row: int, col: int, content: int, val: str, opt: PyDb.ValueParseOption)-> None : ...
+    def setValue (self, *args, **kwargs)-> None :
+        '''Overloads:
+    - row: int, col: int, val: PyDb.AcValue
+    - row: int, col: int, content: int, val: PyDb.AcValue
+    - row: int, col: int, content: int, val: PyDb.AcValue, opt: PyDb.ValueParseOption
+    - row: int, col: int, content: int, val: str, opt: PyDb.ValueParseOption
+    '''
+        ...
     def setVertCellMargin (self, val : float)-> None :
         '''                             '''
         ...
@@ -20792,6 +20910,20 @@ class Table(BlockReference):
         '''Overloads:
     - nDir: UpdateDirection, nOption: UpdateOption
     - row: int, col: int, nDir: UpdateDirection, nOption: UpdateOption
+    '''
+        ...
+
+    @overload
+    def value (self, row: int, col: int)-> PyDb.AcValue : ...
+    @overload
+    def value (self, row: int, col: int, content: int)-> PyDb.AcValue : ...
+    @overload
+    def value (self, row: int, col: int, content: int, opt: PyDb.ValueFormatOption)-> PyDb.AcValue : ...
+    def value (self, *args, **kwargs)-> PyDb.AcValue :
+        '''Overloads:
+    - row: int, col: int
+    - row: int, col: int, content: int
+    - row: int, col: int, content: int, opt: PyDb.ValueFormatOption
     '''
         ...
     def vertCellMargin (self)-> float :

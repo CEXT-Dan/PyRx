@@ -422,8 +422,29 @@ void makePyDbAcValueWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const AcGePoint2d&>())
         .def(init<const AcGePoint3d&>(DS.CTOR(ctords)))
-        .def("className", &PyDbEvalVariant::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbEvalVariant::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("reset", &PyDbAcValue::reset1)
+        .def("reset", &PyDbAcValue::reset2,  DS.ARGS({ "nDataType: PyDb.ValueDataType=PyDb.ValueDataType.kUnknown" }))
+        .def("resetValue", &PyDbAcValue::resetValue, DS.ARGS())
+        .def("dataType", &PyDbAcValue::dataType, DS.ARGS())
+        .def("unitType", &PyDbAcValue::unitType, DS.ARGS())
+        .def("setUnitType", &PyDbAcValue::setUnitType, DS.ARGS({ "val: PyDb.ValueUnitType" }))
+        .def("getFormat", &PyDbAcValue::getFormat, DS.ARGS())
+        .def("setFormat", &PyDbAcValue::setFormat, DS.ARGS({ "val: str" }))
+        .def("isValid", &PyDbAcValue::isValid, DS.ARGS())
+        .def("setDouble", &PyDbAcValue::setDouble, DS.ARGS({ "val: float" }))
+        .def("setInt32", &PyDbAcValue::setInt32, DS.ARGS({ "val: int" }))
+        .def("setString", &PyDbAcValue::setString, DS.ARGS({ "val: str" }))
+        .def("setObjectId", &PyDbAcValue::setObjectId, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("setPoint3d", &PyDbAcValue::setPoint3d, DS.ARGS({ "pt: PyGe.Point2d" }))
+        .def("setPoint2d", &PyDbAcValue::setPoint2d, DS.ARGS({ "pt: PyGe.Point3d" }))
+        .def("getDouble", &PyDbAcValue::getDouble, DS.ARGS())
+        .def("getInt32", &PyDbAcValue::getInt32, DS.ARGS())
+        .def("getString", &PyDbAcValue::getString, DS.ARGS())
+        .def("getObjectId", &PyDbAcValue::getObjectId, DS.ARGS())
+        .def("getPoint2d", &PyDbAcValue::getPoint2d, DS.ARGS())
+        .def("getPoint3d", &PyDbAcValue::getPoint3d, DS.ARGS())
+        .def("className", &PyDbAcValue::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbAcValue::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
 }
 
@@ -467,12 +488,17 @@ PyDbAcValue::PyDbAcValue(AcValue* ptr, bool autoDelete)
 {
 }
 
-bool PyDbAcValue::reset(void)
+PyDbAcValue::PyDbAcValue(const AcValue& pt)
+    : PyDbAcValue(new AcValue(pt), true)
+{
+}
+
+bool PyDbAcValue::reset1(void)
 {
     return impObj()->reset();
 }
 
-bool PyDbAcValue::reset(AcValue::DataType nDataType)
+bool PyDbAcValue::reset2(AcValue::DataType nDataType)
 {
     return impObj()->reset(nDataType);
 }
