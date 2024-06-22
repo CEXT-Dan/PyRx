@@ -2,6 +2,8 @@
 #include "PyDbEnts.h"
 
 #pragma pack (push, 8)
+
+class PyDbAcValue;
 //-----------------------------------------------------------------------------------
 //PyDbTable
 void makePyDbTableWrapper();
@@ -229,11 +231,14 @@ public:
     AcDb::CellContentType contentType1(int nRow, int nCol) const;
     AcDb::CellContentType contentType2(int nRow, int nCol, int nIndex) const;
 
-    //AcValue value(int row,int col,int nContent) const;
-    //AcValue value(int row, int col, int nContent,AcValue::FormatOption nOption) const;
-    //void setValue(int row,int col,int nContent, const AcValue& val);
-    //void setValue(int row,int col,int nContent,const AcValue& val,AcValue::ParseOption nOption);
-    //void setValue(int row,int col,int nContent,const wchar_t* pszText, AcValue::ParseOption nOption);
+    PyDbAcValue         value1(int row, int col) const;
+    PyDbAcValue         value2(int row, int col, int nContent) const;
+    PyDbAcValue         value3(int row, int col, int nContent, AcValue::FormatOption nOption) const;
+
+    void                setValue1(int row, int col, const PyDbAcValue& val);
+    void                setValue2(int row, int col, int nContent, const PyDbAcValue& val);
+    void                setValue3(int row, int col, int nContent, const PyDbAcValue& val, AcValue::ParseOption nOption);
+    void                setValue4(int row, int col, int nContent, const std::string& pszText, AcValue::ParseOption nOption);
 
     std::string         dataFormat1(int row, int col) const;
     std::string         dataFormat2(int row, int col, int nContent) const;

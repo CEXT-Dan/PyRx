@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyDbTable.h"
 #include "PyDbObjectId.h"
+#include "PyDbEval.h"
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------
@@ -316,6 +317,17 @@ void makePyDbTableWrapper()
         "- pRange: PyDb.CellRange\n"
         "- pRange: PyDb.CellRange, nOption: TableIteratorOption\n";
 
+    constexpr const std::string_view valueOverloads = "Overloads:\n"
+        "- row: int, col: int\n"
+        "- row: int, col: int, content: int\n"
+        "- row: int, col: int, content: int, opt: PyDb.ValueFormatOption\n";
+
+    constexpr const std::string_view setValueOverloads = "Overloads:\n"
+        "- row: int, col: int, val: PyDb.AcValue\n"
+        "- row: int, col: int, content: int, val: PyDb.AcValue\n"
+        "- row: int, col: int, content: int, val: PyDb.AcValue, opt: PyDb.ValueParseOption\n"
+        "- row: int, col: int, content: int, val: str, opt: PyDb.ValueParseOption\n";
+
     PyDocString DS("Table");
     class_<PyDbTable, bases<PyDbBlockReference>>("Table")
         .def(init<>())
@@ -525,6 +537,13 @@ void makePyDbTableWrapper()
         .def("getGridProperty", &PyDbTable::getGridProperty, DS.ARGS({ "row: int", "col: int","nGridLineType: GridLineType" }))
         //.def("setGridProperty", &PyDbTable::setGridProperty1)// TODO:
         //.def("setGridProperty", &PyDbTable::setGridProperty2)
+        .def("value", &PyDbTable::value1)
+        .def("value", &PyDbTable::value2)
+        .def("value", &PyDbTable::value3, DS.OVRL(valueOverloads))
+        .def("setValue", &PyDbTable::setValue1)
+        .def("setValue", &PyDbTable::setValue2)
+        .def("setValue", &PyDbTable::setValue3)
+        .def("setValue", &PyDbTable::setValue4, DS.OVRL(setValueOverloads))
         .def("isLinked", &PyDbTable::isLinked, DS.ARGS({ "row: int", "col: int" }))
         .def("getDataLink", &PyDbTable::getDataLink, DS.ARGS({ "row: int", "col: int" }))
         .def("setDataLink", &PyDbTable::setDataLink, DS.ARGS({ "row: int", "col: int","id : PyDb.ObjectId","update : bool" }))
@@ -1863,6 +1882,41 @@ AcDb::CellContentType PyDbTable::contentType1(int nRow, int nCol) const
 AcDb::CellContentType PyDbTable::contentType2(int nRow, int nCol, int nIndex) const
 {
     return impObj()->contentType(nRow, nCol, nIndex);
+}
+
+PyDbAcValue PyDbTable::value1(int row, int col) const
+{
+    return PyDbAcValue(impObj()->value(row, col));
+}
+
+PyDbAcValue PyDbTable::value2(int row, int col, int nContent) const
+{
+   return PyDbAcValue(impObj()->value(row, col, nContent));
+}
+
+PyDbAcValue PyDbTable::value3(int row, int col, int nContent, AcValue::FormatOption nOption) const
+{
+    return PyDbAcValue(impObj()->value(row, col, nContent, nOption));
+}
+
+void PyDbTable::setValue1(int row, int col, const PyDbAcValue& val)
+{
+    PyThrowBadEs(impObj()->setValue(row, col, *val.impObj()));
+}
+
+void PyDbTable::setValue2(int row, int col, int nContent, const PyDbAcValue& val)
+{
+    PyThrowBadEs(impObj()->setValue(row, col, nContent ,*val.impObj()));
+}
+
+void PyDbTable::setValue3(int row, int col, int nContent, const PyDbAcValue& val, AcValue::ParseOption nOption)
+{
+    PyThrowBadEs(impObj()->setValue(row, col, nContent, *val.impObj(), nOption));
+}
+
+void PyDbTable::setValue4(int row, int col, int nContent, const std::string& pszText, AcValue::ParseOption nOption)
+{
+    PyThrowBadEs(impObj()->setValue(row, col, nContent,utf8_to_wstr(pszText).c_str(), nOption));
 }
 
 std::string PyDbTable::dataFormat1(int row, int col) const

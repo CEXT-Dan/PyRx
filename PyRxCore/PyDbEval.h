@@ -107,11 +107,13 @@ public:
     PyDbAcValue(const AcGePoint2d& pt);
     PyDbAcValue(const AcGePoint3d& pt);
 
+    PyDbAcValue(const AcValue& pt);
+
     PyDbAcValue(AcValue* ptr, bool autoDelete);
     ~PyDbAcValue() = default;
 
-    bool                reset(void);
-    bool                reset(AcValue::DataType nDataType);
+    bool                reset1(void);
+    bool                reset2(AcValue::DataType nDataType);
     bool                resetValue(void);
     AcValue::DataType   dataType(void) const;
     AcValue::UnitType   unitType(void) const;
