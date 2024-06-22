@@ -48,6 +48,7 @@ void makePyDbFieldtWrapper()
         .def("evaluate", &PyDbField::evaluate3, DS.OVRL(evaluateOverloads, 4628))
         .def("getFieldCode", &PyDbField::getFieldCode1)
         .def("getFieldCode", &PyDbField::getFieldCode2, DS.OVRL(getFieldCodeOverloads, 4637))
+        .def("setData", &PyDbField::setData, DS.ARGS({ "key: str","value: str" }))
         .def("className", &PyDbField::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbField::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbField::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -229,19 +230,31 @@ std::string PyDbField::getValue(void) const
     return wstr_to_utf8(impObj()->getValue());
 }
 
-void PyDbField::evaluate1()
+boost::python::tuple PyDbField::evaluate1()
 {
-    return PyThrowBadEs(impObj()->evaluate(32, acdbHostApplicationServices()->workingDatabase()));
+    PyAutoLockGIL lock;
+    int pNumFound = 0;
+    int pNumEvaluated = 0;
+    PyThrowBadEs(impObj()->evaluate(32, acdbHostApplicationServices()->workingDatabase(), &pNumFound, &pNumEvaluated));
+    return boost::python::make_tuple(pNumFound, pNumEvaluated);
 }
 
-void PyDbField::evaluate2(AcDbField::EvalContext nContext)
+boost::python::tuple PyDbField::evaluate2(AcDbField::EvalContext nContext)
 {
-    return PyThrowBadEs(impObj()->evaluate(nContext, acdbHostApplicationServices()->workingDatabase()));
+    PyAutoLockGIL lock;
+    int pNumFound = 0;
+    int pNumEvaluated = 0;
+    PyThrowBadEs(impObj()->evaluate(nContext, acdbHostApplicationServices()->workingDatabase(), &pNumFound, &pNumEvaluated));
+    return boost::python::make_tuple(pNumFound, pNumEvaluated);
 }
 
-void PyDbField::evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db)
+boost::python::tuple PyDbField::evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db)
 {
-    return PyThrowBadEs(impObj()->evaluate(nContext, db.impObj()));
+    PyAutoLockGIL lock;
+    int pNumFound = 0;
+    int pNumEvaluated = 0;
+    PyThrowBadEs(impObj()->evaluate(nContext, db.impObj(), &pNumFound, &pNumEvaluated));
+    return boost::python::make_tuple(pNumFound, pNumEvaluated);
 }
 
 std::string PyDbField::getFieldCode1(AcDbField::FieldCodeFlag nFlag)
@@ -257,6 +270,12 @@ std::string PyDbField::getFieldCode2(AcDbField::FieldCodeFlag nFlag, const boost
     for (const auto& item : PyList)
         pChildFields.append(item.impObj());
     return wstr_to_utf8(impObj()->getFieldCode(nFlag, &pChildFields, mode));
+}
+
+void PyDbField::setData(const std::string& key, const std::string& value)
+{
+    AcValue val(utf8_to_wstr(value).c_str());
+    PyThrowBadEs(impObj()->setData(utf8_to_wstr(key).c_str(), &val));
 }
 
 std::string PyDbField::className()
