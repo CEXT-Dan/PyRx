@@ -136,6 +136,9 @@ public:
     AcGePoint2d         getPoint2d();
     AcGePoint3d         getPoint3d();
 
+    std::string         format(AcValue::FormatOption nOption);
+    bool                convertTo(AcValue::DataType nDataType, AcValue::UnitType nUnitType);
+
     static PyRxClass    desc();
     static std::string  className();
 public:
