@@ -92,4 +92,29 @@ public:
     std::shared_ptr<AcDbDynBlockReferenceProperty> m_pyImp;
 };
 
+//-----------------------------------------------------------------------------------------
+//PyDbAcValue
+void makePyDbAcValueWrapper();
+
+class PyDbAcValue : public PyRxObject
+{
+public:
+    PyDbAcValue();
+    PyDbAcValue(double fValue);
+    PyDbAcValue(Adesk::Int32 lValue);
+    PyDbAcValue(const std::string& pszValue);
+    PyDbAcValue(const PyDbObjectId& id);
+    PyDbAcValue(const AcGePoint2d& pt);
+    PyDbAcValue(const AcGePoint3d& pt);
+
+    PyDbAcValue(AcValue* ptr, bool autoDelete);
+    ~PyDbAcValue() = default;
+
+    static PyRxClass    desc();
+    static std::string  className();
+public:
+    AcValue* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
 #pragma pack (pop)

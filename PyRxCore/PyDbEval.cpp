@@ -398,3 +398,88 @@ AcDbDynBlockReferenceProperty* PyDbDynBlockReferenceProperty::impObj(const std::
         throw PyNullObject(src);
     return static_cast<AcDbDynBlockReferenceProperty*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------------
+//PyDbAcValue
+
+constexpr const std::string_view ctords = "Overloads:\n"
+"- None: Any\n"
+"- intval: int\n"
+"- floatval: float\n"
+"- strval: str\n"
+"- idval: PyDb.ObjectId\n"
+"- pnt2dval: PyGe.Point2d\n"
+"- pnt3dval: PyGe.Point3d\n";
+
+void makePyDbAcValueWrapper()
+{
+    PyDocString DS("PyDb.AcValue");
+    class_<PyDbAcValue, bases<PyRxObject>>("AcValue")
+        .def(init<>())
+        .def(init<double>())
+        .def(init<Adesk::Int32>())
+        .def(init<const std::string&>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const AcGePoint2d&>())
+        .def(init<const AcGePoint3d&>(DS.CTOR(ctords)))
+        .def("className", &PyDbEvalVariant::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbEvalVariant::desc, DS.SARGS(15560)).staticmethod("desc")
+        ;
+}
+
+PyDbAcValue::PyDbAcValue()
+    : PyDbAcValue(new AcValue(),true)
+{
+}
+
+PyDbAcValue::PyDbAcValue(Adesk::Int32 lValue)
+    : PyDbAcValue(new AcValue(lValue), true)
+{
+}
+
+PyDbAcValue::PyDbAcValue(double fValue)
+    : PyDbAcValue(new AcValue(fValue), true)
+{
+}
+
+PyDbAcValue::PyDbAcValue(const std::string& pszValue)
+    : PyDbAcValue(new AcValue(utf8_to_wstr(pszValue).c_str()), true)
+{
+}
+
+PyDbAcValue::PyDbAcValue(const PyDbObjectId& id)
+    : PyDbAcValue(new AcValue(id.m_id), true)
+{
+}
+
+PyDbAcValue::PyDbAcValue(const AcGePoint2d& pt)
+    : PyDbAcValue(new AcValue(pt), true)
+{
+}
+
+PyDbAcValue::PyDbAcValue(const AcGePoint3d& pt)
+    : PyDbAcValue(new AcValue(pt), true)
+{
+}
+
+PyDbAcValue::PyDbAcValue(AcValue* ptr, bool autoDelete)
+    : PyRxObject(ptr, autoDelete, false)
+{
+}
+
+PyRxClass PyDbAcValue::desc()
+{
+    return PyRxClass(AcValue::desc(), false);
+}
+
+std::string PyDbAcValue::className()
+{
+    return "AcValue";
+}
+
+AcValue* PyDbAcValue::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcValue*>(m_pyImp.get());
+}
