@@ -165,4 +165,10 @@ inline void PyThrowBadRt(int es, const std::source_location& src = std::source_l
     if (es != RTNORM) [[unlikely]]
         throw PyAcadErrorStatus(eInvalidInput, src);
 }
+
+inline void PyThrowFalse(bool es, const std::source_location& src = std::source_location::current())
+{
+    if (es == false) [[unlikely]]
+        throw PyAcadErrorStatus(eInvalidInput, src);
+}
 #pragma pack (pop)

@@ -467,6 +467,123 @@ PyDbAcValue::PyDbAcValue(AcValue* ptr, bool autoDelete)
 {
 }
 
+bool PyDbAcValue::reset(void)
+{
+    return impObj()->reset();
+}
+
+bool PyDbAcValue::reset(AcValue::DataType nDataType)
+{
+    return impObj()->reset(nDataType);
+}
+
+bool PyDbAcValue::resetValue(void)
+{
+    return impObj()->resetValue();
+}
+
+AcValue::DataType PyDbAcValue::dataType(void) const
+{
+    return impObj()->dataType();
+}
+
+AcValue::UnitType PyDbAcValue::unitType(void) const
+{
+    return impObj()->unitType();
+}
+
+bool PyDbAcValue::setUnitType(AcValue::UnitType nUnitType)
+{
+    return impObj()->setUnitType(nUnitType);
+}
+
+std::string PyDbAcValue::getFormat(void) const
+{
+    return wstr_to_utf8(impObj()->getFormat());
+}
+
+bool PyDbAcValue::setFormat(const std::string& pszFormat)
+{
+    return impObj()->setFormat(utf8_to_wstr(pszFormat).c_str());
+}
+
+bool PyDbAcValue::isValid(void) const
+{
+    return impObj()->isValid();
+}
+
+void PyDbAcValue::setDouble(double value)
+{
+    PyThrowFalse(impObj()->set(value));
+}
+
+void PyDbAcValue::setInt32(Adesk::Int32 value)
+{
+    PyThrowFalse(impObj()->set(value));
+}
+
+void PyDbAcValue::setString(const std::string& value)
+{
+    PyThrowFalse(impObj()->set(utf8_to_wstr(value).c_str()));
+}
+
+void PyDbAcValue::setObjectId(const PyDbObjectId& value)
+{
+    PyThrowFalse(impObj()->set(value.m_id));
+}
+
+void PyDbAcValue::setPoint3d(const AcGePoint3d& value)
+{
+    PyThrowFalse(impObj()->set(value));
+}
+
+void PyDbAcValue::setPoint2d(const AcGePoint2d& value)
+{
+    PyThrowFalse(impObj()->set(value));
+}
+
+double PyDbAcValue::getDouble()
+{
+    double value;
+    PyThrowFalse(impObj()->get(value));
+    return value;
+}
+
+Int32 PyDbAcValue::getInt32()
+{
+    Int32 value;
+    PyThrowFalse(impObj()->get(value));
+    return value;
+}
+
+std::string PyDbAcValue::getString()
+{
+    RxAutoOutStr value;
+    PyThrowFalse(impObj()->get(value.buf));
+    return value.str();
+}
+
+PyDbObjectId PyDbAcValue::getObjectId()
+{
+    PyDbObjectId value;
+    PyThrowFalse(impObj()->get(value.m_id));
+    return value;
+}
+
+AcGePoint2d PyDbAcValue::getPoint2d()
+{
+    AcGePoint2d value;
+    PyThrowFalse(impObj()->get(value));
+    return value;
+}
+
+AcGePoint3d PyDbAcValue::getPoint3d()
+{
+    AcGePoint3d value;
+    PyThrowFalse(impObj()->get(value));
+    return value;
+}
+
 PyRxClass PyDbAcValue::desc()
 {
     return PyRxClass(AcValue::desc(), false);

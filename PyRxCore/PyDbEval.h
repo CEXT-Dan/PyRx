@@ -110,6 +110,30 @@ public:
     PyDbAcValue(AcValue* ptr, bool autoDelete);
     ~PyDbAcValue() = default;
 
+    bool                reset(void);
+    bool                reset(AcValue::DataType nDataType);
+    bool                resetValue(void);
+    AcValue::DataType   dataType(void) const;
+    AcValue::UnitType   unitType(void) const;
+    bool                setUnitType(AcValue::UnitType nUnitType);
+    std::string         getFormat(void) const;
+    bool                setFormat(const std::string& pszFormat);
+    bool                isValid(void) const;
+
+    void                setDouble(double value);
+    void                setInt32(Adesk::Int32 value);
+    void                setString(const std::string& value);
+    void                setObjectId(const PyDbObjectId& value);
+    void                setPoint3d(const AcGePoint3d& value);
+    void                setPoint2d(const AcGePoint2d& value);
+
+    double              getDouble();
+    Int32               getInt32();
+    std::string         getString();
+    PyDbObjectId        getObjectId();
+    AcGePoint2d         getPoint2d();
+    AcGePoint3d         getPoint3d();
+
     static PyRxClass    desc();
     static std::string  className();
 public:
