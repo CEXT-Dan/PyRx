@@ -361,6 +361,9 @@
     <ClCompile Include="PyDbSection.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PySmSheetSetMgrImpl.cpp">
+      <Filter>Source Files\PySm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -726,6 +729,9 @@
     <ClInclude Include="PyDbSection.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
+    <ClInclude Include="PySmSheetSetMgrImpl.h">
+      <Filter>Header Files\PySm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -790,6 +796,12 @@
     </Filter>
     <Filter Include="Source Files\PyRxApp">
       <UniqueIdentifier>{5da8b309-1b5e-4ede-aca1-fec711787728}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PySm">
+      <UniqueIdentifier>{7c148b95-9462-40d7-83a1-77debd0627e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PySm">
+      <UniqueIdentifier>{93c044bf-390f-4b83-b955-f7e692647215}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

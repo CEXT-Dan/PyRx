@@ -248,6 +248,7 @@
     <ClCompile Include="PyRxObject.cpp" />
     <ClCompile Include="PyRxOverrule.cpp" />
     <ClCompile Include="PyEdSelectionSet.cpp" />
+    <ClCompile Include="PySmSheetSetMgrImpl.cpp" />
     <ClCompile Include="PyUiPalette.cpp" />
     <ClCompile Include="ResultBuffer.cpp" />
     <ClCompile Include="StdAfx.cpp">
@@ -372,6 +373,7 @@
     <ClInclude Include="PyRxObject.h" />
     <ClInclude Include="PyRxOverrule.h" />
     <ClInclude Include="PyEdSelectionSet.h" />
+    <ClInclude Include="PySmSheetSetMgrImpl.h" />
     <ClInclude Include="PyUiPalette.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResultBuffer.h" />
