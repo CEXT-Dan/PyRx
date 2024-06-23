@@ -31,6 +31,8 @@
 #include "PyRxModuleLoader.h"
 #include "PyApApplication.h"
 
+#include "PySmSheetSetMgrImpl.h"
+
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
@@ -397,6 +399,20 @@ public:
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
+#if defined(_ARXTARGET) || defined(_BRXTARGET) 
+
+       try
+       {
+           PySmSheetSetMgrImpl mgr;
+           auto db = mgr.CreateDatabase(_T("E:\\WOOHOO.DST"));
+           mgr.Close(db);
+       }
+       catch (...)
+       {
+           acutPrintf(_T("\nOops"));
+           
+       }
+#endif
     }
 #endif
 
