@@ -76,6 +76,15 @@
 #define _BRXTARGET240 240
 #endif
 
+#if defined(_ARXTARGET) && (_ARXTARGET <= 243)
+#define _ARXTARGET240 240
+#endif
+
+#if defined(_ARXTARGET) && (_ARXTARGET == 250)
+#define _ARXTARGET250 250
+#endif
+
+
 //- ObjectARX and OMF headers needs this
 #include <map>
 #include <vector>
@@ -197,6 +206,21 @@
 #if defined(_ZRXTARGET)
 #pragma comment( lib , "ZwGs.lib" )
 #pragma comment( lib , "ZwImaging.lib" )
+#endif
+
+#if defined(_BRXTARGET240)
+#define SMLIB "M:\\Dev\ArxSdk\\BRXSDKV24_2_03\\inc-x64\\axbricscadsm.tlb"
+#import SMLIB raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#endif
+
+#if defined(_ARXTARGET240)
+#define SMLIB "M:\\Dev\\ArxSdk\\ARX2021\\inc-x64\\acsmcomponents24.tlb"
+#import SMLIB raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#endif
+
+#if defined(_ARXTARGET250)
+#define SMLIB "M:\\Dev\\ArxSdk\\ARX2025\\inc-x64\\acsmcomponents25.tlb"
+#import SMLIB raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
