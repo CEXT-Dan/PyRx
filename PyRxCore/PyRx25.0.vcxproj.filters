@@ -362,7 +362,7 @@
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
     <ClCompile Include="PySmSheetSetMgrImpl.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\PySm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

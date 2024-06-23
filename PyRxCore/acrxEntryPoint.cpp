@@ -405,6 +405,16 @@ public:
        {
            PySmSheetSetMgrImpl mgr;
            auto db = mgr.CreateDatabase(_T("E:\\WOOHOO.DST"));
+           auto ss = db.GetSheetSet();
+
+           db.LockDb();
+           ss.SetName(_T("SSName"));
+           ss.SetDesc(_T("SSDesc"));
+           db.UnlockDb(true);
+
+           acutPrintf(_T("\nName = %ls: "), (LPCTSTR)ss.GetName());
+           acutPrintf(_T("\nDesc = %ls: "), (LPCTSTR)ss.GetDesc());
+
            mgr.Close(db);
        }
        catch (...)
