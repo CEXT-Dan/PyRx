@@ -7,7 +7,8 @@
 class PySmPersistImpl
 {
 public:
-    PySmPersistImpl(IAcSmPersist* other);
+    explicit PySmPersistImpl(IAcSmPersist* other);
+    virtual ~PySmPersistImpl() = default;
     IAcSmPersist* impObj(const std::source_location& src = std::source_location::current()) const;
     IAcSmPersistPtr m_pimpl;
 };
@@ -17,8 +18,44 @@ public:
 class PySmComponentImpl : public PySmPersistImpl
 {
 public:
-    PySmComponentImpl(IAcSmComponent* other);
+    explicit PySmComponentImpl(IAcSmComponent* other);
+    virtual ~PySmComponentImpl() override = default;
+    CString         GetName() const;
+    void            SetName(const CString& csName);
+    CString         GetDesc() const;
+    void            SetDesc(const CString& csDesc);
     IAcSmComponent* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------------
+//PySmSubset
+class PySmSubsetImpl : public PySmComponentImpl
+{
+public:
+    explicit PySmSubsetImpl(IAcSmSubset* other);
+    virtual ~PySmSubsetImpl() override = default;
+    IAcSmSubset* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmSheetSet
+class PySmSheetSetImpl : public PySmSubsetImpl
+{
+public:
+    explicit PySmSheetSetImpl(IAcSmSheetSet* other);
+    virtual ~PySmSheetSetImpl() override = default;
+    IAcSmSheetSet* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmSheetImpl
+class PySmSheetImpl : public PySmComponentImpl
+{
+public:
+    explicit PySmSheetImpl(IAcSmSheet* other);
+    virtual ~PySmSheetImpl() override = default;
+    IAcSmSheet* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -26,7 +63,13 @@ public:
 class PySmSmDatabaseImpl : public PySmComponentImpl
 {
 public:
-    PySmSmDatabaseImpl(IAcSmDatabase* other);
+    explicit PySmSmDatabaseImpl(IAcSmDatabase* other);
+    virtual ~PySmSmDatabaseImpl() override = default;
+
+    void        LockDb();
+    void        UnlockDb(bool commit);
+
+    PySmSheetSetImpl  GetSheetSet();
     IAcSmDatabase* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -34,9 +77,7 @@ public:
 class PySmSheetSetMgrImpl
 {
 public:
-
     PySmSheetSetMgrImpl();
-
     PySmSmDatabaseImpl CreateDatabase(const CString& filename);
     PySmSmDatabaseImpl CreateDatabase(const CString& filename, const CString& templatefilename, bool bAlwaysCreate);
     PySmSmDatabaseImpl OpenDatabase(const CString& filename);
