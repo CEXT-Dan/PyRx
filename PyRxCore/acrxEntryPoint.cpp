@@ -402,42 +402,6 @@ public:
 
         try
         {
-            PySmSheetSetMgrImpl mgr;
-            auto v = mgr.GetDatabaseEnumerator();
-            acutPrintf(_T("\nCount = %ld"), v.size());
-
-            for (auto& item : v)
-            {
-                item.LockDb();
-                item.SetDesc(L"OMH");
-                acutPrintf(L"\nName = %ls", (LPCTSTR)item.GetName());
-                acutPrintf(L"\nDesc = %ls", (LPCTSTR)item.GetDesc());
-                acutPrintf(L"\nFname = %ls", (LPCTSTR)item.GetFileName());
-
-
-                for (auto& subitem : item.GetEnumerator())
-                {
-                    acutPrintf(L"\nSubName = %ls", (LPCTSTR)subitem.GetTypeName());
-                }
-
-
-                item.UnlockDb(true);
-            }
-
-            /*auto db = acdbHostApplicationServices()->workingDatabase();
-
-            auto lman = acdbHostApplicationServices()->layoutManager();
-            const auto layoutName = lman->findActiveLayout(false);
-
-            AcDbObjectId layoutId;
-            AcDbDictionaryPointer pDict(db->layoutDictionaryId());
-            pDict->getAt(layoutName, layoutId);
-
-            AcDbObjectPointer<AcDbLayout> pLayout(layoutId);
-
-            auto res = mgr.GetSheetFromLayout(pLayout);*/
-
-
         }
         catch (PyAcadHrError& er)
         {
