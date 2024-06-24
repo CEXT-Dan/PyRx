@@ -7,8 +7,52 @@
 //PySmPersist
 PySmPersistImpl::PySmPersistImpl(IAcSmPersist* other)
 {
-    if (other != nullptr)
-        m_pimpl.Attach(other);
+     m_pimpl.Attach(other);
+}
+
+bool PySmPersistImpl::GetIsDirty() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->GetIsDirty(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+CString PySmPersistImpl::GetTypeName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetTypeName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PySmPersistImpl::InitNew(const PySmPersistImpl& owner)
+{
+    PyThrowBadHr(impObj()->InitNew(owner.impObj()));
+}
+
+PySmPersistImpl PySmPersistImpl::GetOwner() const
+{
+    IAcSmPersist *rtVal = nullptr;
+    PyThrowBadHr(impObj()->GetOwner(&rtVal));
+    return PySmPersistImpl(rtVal);
+}
+
+void PySmPersistImpl::SetOwner(const PySmPersistImpl& owner)
+{
+    PyThrowBadHr(impObj()->SetOwner(owner.impObj()));
+}
+
+PySmSmDatabaseImpl PySmPersistImpl::GetDatabase() const
+{
+    IAcSmDatabase* rtVal = nullptr;
+    PyThrowBadHr(impObj()->GetDatabase(&rtVal));
+    return PySmSmDatabaseImpl(rtVal);
+}
+
+PySmObjectIdImpl PySmPersistImpl::GetObjectId() const
+{
+    IAcSmObjectId* rtVal = nullptr;
+    PyThrowBadHr(impObj()->GetObjectId(&rtVal));
+    return PySmObjectIdImpl(rtVal);
 }
 
 IAcSmPersist* PySmPersistImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -17,6 +61,63 @@ IAcSmPersist* PySmPersistImpl::impObj(const std::source_location& src /*= std::s
         throw PyNullObject(src);
         }
     return static_cast<IAcSmPersist*>(m_pimpl.GetInterfacePtr());
+}
+
+//-----------------------------------------------------------------------------------------
+//IAcSmObjectId
+PySmObjectIdImpl::PySmObjectIdImpl(IAcSmObjectId* other)
+{
+    m_pimpl.Attach(other);
+}
+
+CString PySmObjectIdImpl::GetHandle() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetHandle(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+PySmSmDatabaseImpl PySmObjectIdImpl::GetDatabase() const
+{
+    IAcSmDatabase* pVal = nullptr;
+    PyThrowBadHr(impObj()->GetDatabase(&pVal));
+    return PySmSmDatabaseImpl(pVal);
+}
+
+PySmPersistImpl PySmObjectIdImpl::GetPersistObject() const
+{
+    IAcSmPersist* pVal = nullptr;
+    PyThrowBadHr(impObj()->GetPersistObject(&pVal));
+    return PySmPersistImpl(pVal);
+}
+
+PySmPersistImpl PySmObjectIdImpl::GetOwner() const
+{
+    IAcSmPersist* pVal = nullptr;
+    PyThrowBadHr(impObj()->GetOwner(&pVal));
+    return PySmPersistImpl(pVal);
+}
+
+bool PySmObjectIdImpl::IsEqual(const PySmObjectIdImpl& other)
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->IsEqual(other.impObj(), &rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+bool PySmObjectIdImpl::IsValid()
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->IsValid(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+IAcSmObjectId* PySmObjectIdImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmObjectId*>(m_pimpl.GetInterfacePtr());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -29,31 +130,27 @@ PySmComponentImpl::PySmComponentImpl(IAcSmComponent* other)
 CString PySmComponentImpl::GetName() const
 {
     _bstr_t bstrName;
-    if(HRESULT hr = impObj()->GetName(&bstrName.GetBSTR());  FAILED(hr))
-        acutPrintf(_T("\nFailed! %lx %ls"), hr, __FUNCTIONW__);
+    PyThrowBadHr(impObj()->GetName(&bstrName.GetBSTR()));
     return (LPCTSTR)bstrName;
 }
 
 void PySmComponentImpl::SetName(const CString& csName)
 {
     _bstr_t bstrName(csName);
-    if(HRESULT hr = impObj()->SetName(bstrName); FAILED(hr))
-        acutPrintf(_T("\nFailed! %lx %ls"), hr , __FUNCTIONW__);
+    PyThrowBadHr(impObj()->SetName(bstrName));
 }
 
 CString PySmComponentImpl::GetDesc() const
 {
     _bstr_t bstrDesc;
-    if (HRESULT hr = impObj()->GetDesc(&bstrDesc.GetBSTR());  FAILED(hr))
-        acutPrintf(_T("\nFailed! %lx %ls"), hr, __FUNCTIONW__);
+    PyThrowBadHr(impObj()->GetDesc(&bstrDesc.GetBSTR()));
     return (LPCTSTR)bstrDesc;
 }
 
 void PySmComponentImpl::SetDesc(const CString& csDesc)
 {
     _bstr_t bstrDesc(csDesc);
-    if (HRESULT hr = impObj()->SetDesc(bstrDesc); FAILED(hr))
-        acutPrintf(_T("\nFailed! %lx %ls"), hr, __FUNCTIONW__);
+    PyThrowBadHr(impObj()->SetDesc(bstrDesc));
 }
 
 IAcSmComponent* PySmComponentImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -118,22 +215,19 @@ PySmSmDatabaseImpl::PySmSmDatabaseImpl(IAcSmDatabase* other)
 
 void PySmSmDatabaseImpl::LockDb()
 {
-    if (HRESULT hr = impObj()->LockDb(impObj()); FAILED(hr))
-        acutPrintf(_T("\nFailed! %lx %ls"), hr, __FUNCTIONW__);
+    PyThrowBadHr(impObj()->LockDb(impObj()));
 }
 
 void PySmSmDatabaseImpl::UnlockDb(bool commit)
 {
     auto b = commit ? VARIANT_TRUE : VARIANT_FALSE;
-    if (HRESULT hr = impObj()->UnlockDb(impObj(),b); FAILED(hr))
-        acutPrintf(_T("\nFailed! %lx %ls"), hr, __FUNCTIONW__);
+    PyThrowBadHr(impObj()->UnlockDb(impObj(),b));
 }
 
 PySmSheetSetImpl PySmSmDatabaseImpl::GetSheetSet()
 {
     IAcSmSheetSet* pSheet = nullptr;
-    if (HRESULT hr = impObj()->GetSheetSet(&pSheet); FAILED(hr))
-        acutPrintf(_T("\nFailed! %lx %ls"), hr, __FUNCTIONW__);
+    PyThrowBadHr(impObj()->GetSheetSet(&pSheet));
     return PySmSheetSetImpl(pSheet);
 }
 
@@ -160,12 +254,7 @@ PySmSmDatabaseImpl PySmSheetSetMgrImpl::CreateDatabase(const CString& filename)
 {
     IAcSmDatabase* pDb = nullptr;
     _bstr_t bstrName(filename);
-    if(HRESULT hr = impObj()->CreateDatabase(bstrName, NULL, TRUE, &pDb); FAILED(hr))
-    {
-        acutPrintf(_T("\nFailed! %lx %ls"), hr, __FUNCTIONW__);
-        if (E_INVALIDARG == hr)
-            acutPrintf(_T("\n File name invalid!"));
-    }
+    PyThrowBadHr(impObj()->CreateDatabase(bstrName, NULL, TRUE, &pDb));
     return PySmSmDatabaseImpl(pDb);
 }
 
@@ -175,12 +264,7 @@ PySmSmDatabaseImpl PySmSheetSetMgrImpl::CreateDatabase(const CString& filename, 
     _bstr_t bstrName(filename);
     _bstr_t bstrTemplate(templatefilename);
     BOOL flag = bAlwaysCreate ? TRUE : FALSE;
-    if (HRESULT hr = impObj()->CreateDatabase(bstrName, bstrTemplate, bAlwaysCreate, &pDb); FAILED(hr))
-    {
-        acutPrintf(_T("\nFailed! %lx %ls"), hr, __FUNCTIONW__);
-        if (E_INVALIDARG == hr)
-            acutPrintf(_T("\nFile name invalid!"));
-    }
+    PyThrowBadHr(impObj()->CreateDatabase(bstrName, bstrTemplate, bAlwaysCreate, &pDb));
     return PySmSmDatabaseImpl(pDb);
 }
 
@@ -188,9 +272,7 @@ PySmSmDatabaseImpl PySmSheetSetMgrImpl::OpenDatabase(const CString& filename)
 {
     IAcSmDatabase* pDb = nullptr;
     _bstr_t bstrName(filename);
-
-    if (HRESULT hr = impObj()->OpenDatabase(bstrName,TRUE, &pDb); FAILED(hr))
-        acutPrintf(_T("\nFailed! %lx %ls"), hr, __FUNCTIONW__);
+    PyThrowBadHr(impObj()->OpenDatabase(bstrName, TRUE, &pDb));
     return PySmSmDatabaseImpl(pDb);
 }
 
@@ -198,21 +280,39 @@ PySmSmDatabaseImpl PySmSheetSetMgrImpl::FindOpenDatabase(const CString& filename
 {
     IAcSmDatabase* pDb = nullptr;
     _bstr_t bstrName(filename);
-    if (HRESULT hr = impObj()->FindOpenDatabase(bstrName, &pDb); FAILED(hr))
-        acutPrintf(_T("\nFailed! %lx %ls"), hr, __FUNCTIONW__);
+    PyThrowBadHr(impObj()->FindOpenDatabase(bstrName, &pDb));
     return PySmSmDatabaseImpl(pDb);
 }
 
 void PySmSheetSetMgrImpl::CloseAll()
 {
-    if (HRESULT hr = impObj()->CloseAll(); FAILED(hr))
-        acutPrintf(_T("\nFailed! %lx %ls"), hr, __FUNCTIONW__);
+    PyThrowBadHr(impObj()->CloseAll());
 }
 
 void PySmSheetSetMgrImpl::Close(PySmSmDatabaseImpl& db)
 {
-    if (HRESULT hr = impObj()->Close(db.impObj()); FAILED(hr))
-        acutPrintf(_T("\nFailed! %lx %ls"), hr, __FUNCTIONW__);
+    PyThrowBadHr(impObj()->Close(db.impObj()));
+}
+
+auto PySmSheetSetMgrImpl::GetParentSheetSet(const CString& dwg, const CString& layout)
+{
+    IAcSmDatabase* pDb = nullptr;
+    IAcSmSheetSet* pSheet = nullptr;
+    _bstr_t bstrDwg(dwg);
+    _bstr_t bstrLayout(layout);
+    PyThrowBadHr(impObj()->GetParentSheetSet(bstrDwg, bstrLayout, &pSheet, &pDb));
+    return std::pair(PySmSmDatabaseImpl(pDb), PySmSheetSetImpl(pSheet));
+}
+
+auto PySmSheetSetMgrImpl::GetSheetFromLayout(const AcDbObject& pAcDbLayout)
+{
+    IAcSmDatabase* pDb = nullptr;
+    IAcSmSheet* pSheet = nullptr;
+    IAcadObject* _pAcDbLayout = nullptr;
+
+    //pAcDbLayout.getClassID()
+    PyThrowBadHr(impObj()->GetSheetFromLayout(_pAcDbLayout,&pSheet, &pDb));
+    return std::pair(PySmSmDatabaseImpl(pDb), PySmSheetImpl(pSheet));
 }
 
 IAcSmSheetSetMgr* PySmSheetSetMgrImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

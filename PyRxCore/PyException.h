@@ -1,5 +1,6 @@
 #pragma once
 #include <exception>
+#include <system_error>
 
 #pragma pack (push, 8)
 
@@ -131,6 +132,29 @@ struct PyAcadErrorStatus
     }
 };
 
+struct PyAcadHrError
+{
+    HRESULT m_hr;
+    std::source_location m_src;
+
+    explicit PyAcadHrError(const HRESULT hr, const std::source_location& src = std::source_location::current())
+        : m_hr(hr), m_src(src) {}
+
+    inline std::string format() const
+    {
+        constexpr std::string_view fmtstr("\nException!({}), function {}, Line {}, File {}: ");
+        const std::filesystem::path file = m_src.file_name();
+        const auto& fname = formatfname(m_src.function_name());
+        return std::format(fmtstr, std::system_category().message(m_hr), (const char*)fname, m_src.line(), file.filename().string());
+    }
+
+    inline static void translator(PyAcadHrError const& x)
+    {
+        PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
+    }
+};
+
+
 struct PyNotimplementedByHost
 {
     const std::source_location m_src;
@@ -153,6 +177,12 @@ struct PyNotimplementedByHost
         PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
     }
 };
+
+inline void PyThrowBadHr(HRESULT hr, const std::source_location& src = std::source_location::current())
+{
+    if (FAILED(hr)) [[unlikely]]
+        throw PyAcadHrError(hr, src);
+}
 
 inline void PyThrowBadEs(Acad::ErrorStatus es, const std::source_location& src = std::source_location::current())
 {

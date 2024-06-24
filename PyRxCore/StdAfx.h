@@ -209,18 +209,15 @@
 #endif
 
 #if defined(_BRXTARGET240)
-#define SMLIB "M:\\Dev\ArxSdk\\BRXSDKV24_2_03\\inc-x64\\axbricscadsm.tlb"
-#import SMLIB raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "axbricscadsm.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
 #if defined(_ARXTARGET240)
-#define SMLIB "M:\\Dev\\ArxSdk\\ARX2021\\inc-x64\\acsmcomponents24.tlb"
-#import SMLIB raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "acsmcomponents24.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
 #if defined(_ARXTARGET250)
-#define SMLIB "M:\\Dev\\ArxSdk\\ARX2025\\inc-x64\\acsmcomponents25.tlb"
-#import SMLIB raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "acsmcomponents25.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
