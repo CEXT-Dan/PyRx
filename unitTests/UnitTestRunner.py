@@ -85,7 +85,8 @@ def PyRxCmd_runtests() -> None:
         UnitTestPyEditor.pyeditor()
         UnitTestResbuf.resbuftester()
         UnitTestPyWx.pywx()
-        UnitTestSheetSet.sheetSetTester()
+        if "ARX" in host or "BRX" in host:
+            UnitTestSheetSet.sheetSetTester()
 
         if "BRX" in host:
             UnitTestPyBcadCivil.pybcciviltest()
