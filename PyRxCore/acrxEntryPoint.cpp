@@ -401,34 +401,37 @@ public:
     {
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
 
-       try
-       {
-           PySmSheetSetMgrImpl mgr;
-           auto db = mgr.CreateDatabase(_T("E:\\WOOHOO.DST"));
-           auto ss = db.GetSheetSet();
+        try
+        {
+            PySmSheetSetMgrImpl mgr;
 
-           db.LockDb();
-           ss.SetName(_T("SSName"));
-           ss.SetDesc(_T("SSDesc"));
-           db.UnlockDb(true);
+            auto db = acdbHostApplicationServices()->workingDatabase();
 
-           acutPrintf(_T("\nName = %ls: "), (LPCTSTR)ss.GetName());
-           acutPrintf(_T("\nDesc = %ls: "), (LPCTSTR)ss.GetDesc());
+            auto lman = acdbHostApplicationServices()->layoutManager();
+            const auto layoutName = lman->findActiveLayout(false);
 
-           mgr.Close(db);
-       }
-       catch (PyAcadHrError& er)
-       {
-           acutPrintf(_T("\nPyAcadHrError %ls"), utf8_to_wstr(er.format()).c_str());
-       }
-       catch (_com_error& x)
-       {
-           acutPrintf(_T("\ncom_error %ls"), x.ErrorMessage());
-       }
-       catch (...)
-       {
-           acutPrintf(_T("\nOops"));
-       }
+            AcDbObjectId layoutId;
+            AcDbDictionaryPointer pDict(db->layoutDictionaryId());
+            pDict->getAt(layoutName, layoutId);
+
+            AcDbObjectPointer<AcDbLayout> pLayout(layoutId);
+
+            auto res = mgr.GetSheetFromLayout(pLayout);
+
+
+        }
+        catch (PyAcadHrError& er)
+        {
+            acutPrintf(_T("\nPyAcadHrError %ls"), utf8_to_wstr(er.format()).c_str());
+        }
+        catch (_com_error& x)
+        {
+            acutPrintf(_T("\ncom_error %ls"), x.ErrorMessage());
+        }
+        catch (...)
+        {
+            acutPrintf(_T("\nOops"));
+        }
 #endif
     }
 #endif

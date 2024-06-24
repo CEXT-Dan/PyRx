@@ -2,6 +2,21 @@
 
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
 
+#if defined(_BRXTARGET240)
+#import "axbricscaddb1.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "axbricscadsm.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#endif
+
+#if defined(_ARXTARGET240)
+#import "axdb24enu.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "acsmcomponents24.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#endif
+
+#if defined(_ARXTARGET250)
+#import "axdb25enu.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "acsmcomponents25.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#endif
+
 class PySmSmDatabaseImpl;
 class PySmObjectIdImpl;
 
@@ -114,7 +129,7 @@ public:
     //void Unregister(int cookie);
 
     auto                GetParentSheetSet(const CString& dwg, const CString& layout);
-    auto                GetSheetFromLayout(const AcDbObject& pAcDbLayout);
+    std::pair<PySmSmDatabaseImpl, PySmSheetImpl>  GetSheetFromLayout(AcDbObject* pAcDbLayout);
 
     //IAcSmEnumDatabase GetDatabaseEnumerator();
 
