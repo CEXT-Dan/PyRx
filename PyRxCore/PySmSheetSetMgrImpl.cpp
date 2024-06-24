@@ -3,11 +3,48 @@
 
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
 
-//-----------------------------------------------------------------------------------------
+#if defined(_ARXTARGET)
+#include "axboiler.h"
+#endif
+
+#if defined(_BRXTARGET)
+extern HRESULT AcAxGetIUnknownOfObject(LPUNKNOWN*, AcDbObjectId&, LPDISPATCH);
+extern HRESULT AcAxGetIUnknownOfObject(LPUNKNOWN*, AcDbObject*, LPDISPATCH);
+#endif
+
+
+static IAcadObject* GetIAcadObjectFromAcDbObjectId(AcDbObjectId& eid)
+{
+    IUnknown* pUnk = NULL;
+    LPDISPATCH disp = acedGetIDispatch(false);
+    if (AcAxGetIUnknownOfObject(&pUnk, eid, disp) == S_OK && pUnk) {
+        IAcadObject* pObj = NULL;
+        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) {
+            return pObj;
+        }
+    }
+    return NULL;
+}
+
+static IAcadObject* GetIAcadObjectFromAcDbObject(AcDbObject* pSrcObject)
+{
+    IUnknown* pUnk = NULL;
+    LPDISPATCH disp = acedGetIDispatch(false);
+    if (AcAxGetIUnknownOfObject(&pUnk, pSrcObject, disp) == S_OK && pUnk) {
+        IAcadObject* pObj = NULL;
+        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) {
+            return pObj;
+        }
+    }
+    return NULL;
+}
+
+
+//----------------------------------------------------------------------------------------
 //PySmPersist
 PySmPersistImpl::PySmPersistImpl(IAcSmPersist* other)
 {
-     m_pimpl.Attach(other);
+    m_pimpl.Attach(other);
 }
 
 bool PySmPersistImpl::GetIsDirty() const
@@ -31,7 +68,7 @@ void PySmPersistImpl::InitNew(const PySmPersistImpl& owner)
 
 PySmPersistImpl PySmPersistImpl::GetOwner() const
 {
-    IAcSmPersist *rtVal = nullptr;
+    IAcSmPersist* rtVal = nullptr;
     PyThrowBadHr(impObj()->GetOwner(&rtVal));
     return PySmPersistImpl(rtVal);
 }
@@ -221,7 +258,7 @@ void PySmSmDatabaseImpl::LockDb()
 void PySmSmDatabaseImpl::UnlockDb(bool commit)
 {
     auto b = commit ? VARIANT_TRUE : VARIANT_FALSE;
-    PyThrowBadHr(impObj()->UnlockDb(impObj(),b));
+    PyThrowBadHr(impObj()->UnlockDb(impObj(), b));
 }
 
 PySmSheetSetImpl PySmSmDatabaseImpl::GetSheetSet()
@@ -304,15 +341,16 @@ auto PySmSheetSetMgrImpl::GetParentSheetSet(const CString& dwg, const CString& l
     return std::pair(PySmSmDatabaseImpl(pDb), PySmSheetSetImpl(pSheet));
 }
 
-auto PySmSheetSetMgrImpl::GetSheetFromLayout(const AcDbObject& pAcDbLayout)
+std::pair<PySmSmDatabaseImpl, PySmSheetImpl> PySmSheetSetMgrImpl::GetSheetFromLayout(AcDbObject* pAcDbLayout)
 {
-    IAcSmDatabase* pDb = nullptr;
+    if (pAcDbLayout == nullptr)
+        throw PyNullObject();
+    IAcSmDatabase* pAxDb = nullptr;
     IAcSmSheet* pSheet = nullptr;
-    IAcadObject* _pAcDbLayout = nullptr;
-
-    //pAcDbLayout.getClassID()
-    PyThrowBadHr(impObj()->GetSheetFromLayout(_pAcDbLayout,&pSheet, &pDb));
-    return std::pair(PySmSmDatabaseImpl(pDb), PySmSheetImpl(pSheet));
+    IAcadObject* pAxLayout = GetIAcadObjectFromAcDbObject(pAcDbLayout);
+    PyThrowBadHr(impObj()->GetSheetFromLayout(pAxLayout, &pSheet, &pAxDb));
+    pAxLayout->Release();
+    return std::pair(PySmSmDatabaseImpl(pAxDb), PySmSheetImpl(pSheet));
 }
 
 IAcSmSheetSetMgr* PySmSheetSetMgrImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

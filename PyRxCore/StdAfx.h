@@ -179,6 +179,7 @@
 #pragma comment( lib , "AcDrawBridge.lib" )
 #pragma comment( lib , "AdImaging.lib" )
 #pragma comment( lib , "AdIntImgServices.lib" )
+#pragma comment( lib , "axdb.lib" )
 #endif
 
 #if defined(_BRXTARGET)
@@ -206,18 +207,6 @@
 #if defined(_ZRXTARGET)
 #pragma comment( lib , "ZwGs.lib" )
 #pragma comment( lib , "ZwImaging.lib" )
-#endif
-
-#if defined(_BRXTARGET240)
-#import "axbricscadsm.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
-#endif
-
-#if defined(_ARXTARGET240)
-#import "acsmcomponents24.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
-#endif
-
-#if defined(_ARXTARGET250)
-#import "acsmcomponents25.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
