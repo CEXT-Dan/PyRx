@@ -7,36 +7,35 @@
 #include "axboiler.h"
 #endif
 
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET)//TODO: link error
 extern HRESULT AcAxGetIUnknownOfObject(LPUNKNOWN*, AcDbObjectId&, LPDISPATCH);
 extern HRESULT AcAxGetIUnknownOfObject(LPUNKNOWN*, AcDbObject*, LPDISPATCH);
 #endif
 
-
 static IAcadObject* GetIAcadObjectFromAcDbObjectId(AcDbObjectId& eid)
 {
-    IUnknown* pUnk = NULL;
+    IUnknown* pUnk = nullptr;
     LPDISPATCH disp = acedGetIDispatch(false);
     if (AcAxGetIUnknownOfObject(&pUnk, eid, disp) == S_OK && pUnk) {
-        IAcadObject* pObj = NULL;
+        IAcadObject* pObj = nullptr;
         if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) {
             return pObj;
         }
     }
-    return NULL;
+    return nullptr;
 }
 
 static IAcadObject* GetIAcadObjectFromAcDbObject(AcDbObject* pSrcObject)
 {
-    IUnknown* pUnk = NULL;
+    IUnknown* pUnk = nullptr;
     LPDISPATCH disp = acedGetIDispatch(false);
     if (AcAxGetIUnknownOfObject(&pUnk, pSrcObject, disp) == S_OK && pUnk) {
-        IAcadObject* pObj = NULL;
+        IAcadObject* pObj = nullptr;
         if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) {
             return pObj;
         }
     }
-    return NULL;
+    return nullptr;
 }
 
 
@@ -331,7 +330,7 @@ void PySmSheetSetMgrImpl::Close(PySmSmDatabaseImpl& db)
     PyThrowBadHr(impObj()->Close(db.impObj()));
 }
 
-auto PySmSheetSetMgrImpl::GetParentSheetSet(const CString& dwg, const CString& layout)
+std::pair<PySmSmDatabaseImpl, PySmSheetSetImpl> PySmSheetSetMgrImpl::GetParentSheetSet(const CString& dwg, const CString& layout)
 {
     IAcSmDatabase* pDb = nullptr;
     IAcSmSheetSet* pSheet = nullptr;
@@ -347,10 +346,20 @@ std::pair<PySmSmDatabaseImpl, PySmSheetImpl> PySmSheetSetMgrImpl::GetSheetFromLa
         throw PyNullObject();
     IAcSmDatabase* pAxDb = nullptr;
     IAcSmSheet* pSheet = nullptr;
-    IAcadObject* pAxLayout = GetIAcadObjectFromAcDbObject(pAcDbLayout);
+    IAcadObjectPtr pAxLayout (GetIAcadObjectFromAcDbObject(pAcDbLayout));
     PyThrowBadHr(impObj()->GetSheetFromLayout(pAxLayout, &pSheet, &pAxDb));
-    pAxLayout->Release();
     return std::pair(PySmSmDatabaseImpl(pAxDb), PySmSheetImpl(pSheet));
+}
+
+std::vector< PySmSmDatabaseImpl> PySmSheetSetMgrImpl::GetDatabaseEnumerator()
+{
+    std::vector<PySmSmDatabaseImpl> v;
+    IAcSmEnumDatabasePtr iter;
+    PyThrowBadHr(impObj()->GetDatabaseEnumerator(&iter));
+    IAcSmDatabase* pAxDb = nullptr;
+    while (SUCCEEDED(iter->Next(&pAxDb)) && pAxDb != nullptr)
+        v.push_back(PySmSmDatabaseImpl(pAxDb));
+    return v;
 }
 
 IAcSmSheetSetMgr* PySmSheetSetMgrImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

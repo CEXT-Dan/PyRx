@@ -128,10 +128,9 @@ public:
     //int Register(IAcSmEvents eventHandler);
     //void Unregister(int cookie);
 
-    auto                GetParentSheetSet(const CString& dwg, const CString& layout);
-    std::pair<PySmSmDatabaseImpl, PySmSheetImpl>  GetSheetFromLayout(AcDbObject* pAcDbLayout);
-
-    //IAcSmEnumDatabase GetDatabaseEnumerator();
+    std::pair<PySmSmDatabaseImpl, PySmSheetSetImpl> GetParentSheetSet(const CString& dwg, const CString& layout);
+    std::pair<PySmSmDatabaseImpl, PySmSheetImpl>    GetSheetFromLayout(AcDbObject* pAcDbLayout);
+    std::vector< PySmSmDatabaseImpl>                GetDatabaseEnumerator();
 
     IAcSmSheetSetMgr* impObj(const std::source_location& src = std::source_location::current()) const;
     IAcSmSheetSetMgrPtr m_pimpl;
