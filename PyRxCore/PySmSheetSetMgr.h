@@ -7,7 +7,6 @@ class PySmPersistImpl;
 
 //-----------------------------------------------------------------------------------------
 //PySmPersist
-
 void makePySmPersistWrapper();
 class PySmPersist
 {
