@@ -388,6 +388,9 @@
     <ClCompile Include="PySmSheetSetMgr.cpp">
       <Filter>Source Files\PySm</Filter>
     </ClCompile>
+    <ClCompile Include="PyAcSm.cpp">
+      <Filter>Source Files\PySm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -778,6 +781,9 @@
       <Filter>Header Files\PySm</Filter>
     </ClInclude>
     <ClInclude Include="PySmSheetSetMgr.h">
+      <Filter>Header Files\PySm</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcSm.h">
       <Filter>Header Files\PySm</Filter>
     </ClInclude>
   </ItemGroup>

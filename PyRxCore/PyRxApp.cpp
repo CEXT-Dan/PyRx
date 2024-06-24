@@ -8,6 +8,7 @@
 #include "PyAcAp.h"
 #include "PyAcEd.h"
 #include "PyAcPl.h"
+#include "PyAcSm.h"
 #include "PyBrxCv.h"
 #include "PyRxModule.h"
 #include "PyRxModuleLoader.h"
@@ -287,6 +288,7 @@ bool PyRxApp::init()
         initPyApModule();
         initPyEdModule();
         initPyPlModule();
+        initPySmModule();
 #ifdef BRXAPP
         initPyBrxCvModule();
 #endif
