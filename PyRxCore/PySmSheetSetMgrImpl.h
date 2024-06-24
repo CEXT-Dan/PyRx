@@ -2,6 +2,9 @@
 
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
 
+class PySmSmDatabaseImpl;
+class PySmObjectIdImpl;
+
 //-----------------------------------------------------------------------------------------
 //PySmPersist
 class PySmPersistImpl
@@ -9,8 +12,34 @@ class PySmPersistImpl
 public:
     explicit PySmPersistImpl(IAcSmPersist* other);
     virtual ~PySmPersistImpl() = default;
+
+    bool                GetIsDirty() const;
+    CString             GetTypeName() const;
+    void                InitNew(const PySmPersistImpl& owner);
+    PySmPersistImpl     GetOwner() const;
+    void                SetOwner(const PySmPersistImpl& owner);
+    PySmSmDatabaseImpl  GetDatabase() const;
+    PySmObjectIdImpl    GetObjectId() const;
+
     IAcSmPersist* impObj(const std::source_location& src = std::source_location::current()) const;
     IAcSmPersistPtr m_pimpl;
+};
+
+//-----------------------------------------------------------------------------------------
+//IAcSmObjectId
+class PySmObjectIdImpl
+{
+public:
+    explicit PySmObjectIdImpl(IAcSmObjectId* other);
+    virtual ~PySmObjectIdImpl() = default;
+    CString             GetHandle() const;
+    PySmSmDatabaseImpl  GetDatabase() const;
+    PySmPersistImpl     GetPersistObject() const;
+    PySmPersistImpl     GetOwner() const;
+    bool                IsEqual(const PySmObjectIdImpl& other);
+    bool                IsValid();
+    IAcSmObjectId*      impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcSmObjectIdPtr m_pimpl;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -26,7 +55,6 @@ public:
     void            SetDesc(const CString& csDesc);
     IAcSmComponent* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //-----------------------------------------------------------------------------------------
 //PySmSubset
@@ -65,31 +93,29 @@ class PySmSmDatabaseImpl : public PySmComponentImpl
 public:
     explicit PySmSmDatabaseImpl(IAcSmDatabase* other);
     virtual ~PySmSmDatabaseImpl() override = default;
-
-    void        LockDb();
-    void        UnlockDb(bool commit);
-
-    PySmSheetSetImpl  GetSheetSet();
+    void                LockDb();
+    void                UnlockDb(bool commit);
+    PySmSheetSetImpl    GetSheetSet();
     IAcSmDatabase* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 class PySmSheetSetMgrImpl
 {
 public:
     PySmSheetSetMgrImpl();
-    PySmSmDatabaseImpl CreateDatabase(const CString& filename);
-    PySmSmDatabaseImpl CreateDatabase(const CString& filename, const CString& templatefilename, bool bAlwaysCreate);
-    PySmSmDatabaseImpl OpenDatabase(const CString& filename);
-    PySmSmDatabaseImpl FindOpenDatabase(const CString& filename);
-    void CloseAll();
-    void Close(PySmSmDatabaseImpl& db);
+    PySmSmDatabaseImpl  CreateDatabase(const CString& filename);
+    PySmSmDatabaseImpl  CreateDatabase(const CString& filename, const CString& templatefilename, bool bAlwaysCreate);
+    PySmSmDatabaseImpl  OpenDatabase(const CString& filename);
+    PySmSmDatabaseImpl  FindOpenDatabase(const CString& filename);
+    void                CloseAll();
+    void                Close(PySmSmDatabaseImpl& db);
 
     //int Register(IAcSmEvents eventHandler);
     //void Unregister(int cookie);
 
-    //AcSmDatabase GetParentSheetSet(string dwg, string layout, out AcSmSheetSet sheetSet);
-    //AcSmDatabase GetSheetFromLayout(AcadObject pAcDbLayout, out AcSmSheet sheet);
+    auto                GetParentSheetSet(const CString& dwg, const CString& layout);
+    auto                GetSheetFromLayout(const AcDbObject& pAcDbLayout);
+
     //IAcSmEnumDatabase GetDatabaseEnumerator();
 
     IAcSmSheetSetMgr* impObj(const std::source_location& src = std::source_location::current()) const;
