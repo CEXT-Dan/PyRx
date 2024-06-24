@@ -91,6 +91,11 @@ PySmObjectIdImpl PySmPersistImpl::GetObjectId() const
     return PySmObjectIdImpl(rtVal);
 }
 
+void PySmPersistImpl::swap(PySmPersistImpl& other)
+{
+    std::swap(m_pimpl, other.m_pimpl);
+}
+
 IAcSmPersist* PySmPersistImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -249,6 +254,32 @@ PySmSmDatabaseImpl::PySmSmDatabaseImpl(IAcSmDatabase* other)
 {
 }
 
+void PySmSmDatabaseImpl::LoadFromFile(const CString& filename)
+{
+    _bstr_t bstrFilename(filename);
+    PyThrowBadHr(impObj()->SetName(bstrFilename));
+}
+
+CString PySmSmDatabaseImpl::GetFileName() const
+{
+    _bstr_t bstrFilename;
+    PyThrowBadHr(impObj()->GetFileName(&bstrFilename.GetBSTR()));
+    return (LPCTSTR)bstrFilename;
+}
+
+void PySmSmDatabaseImpl::SetFileName(const CString& filename)
+{
+    _bstr_t bstrFilename(filename);
+    PyThrowBadHr(impObj()->SetFileName(bstrFilename));
+}
+
+CString PySmSmDatabaseImpl::GetTemplateDstFileName() const
+{
+    _bstr_t bstrFilename;
+    PyThrowBadHr(impObj()->GetTemplateDstFileName(&bstrFilename.GetBSTR()));
+    return (LPCTSTR)bstrFilename;
+}
+
 void PySmSmDatabaseImpl::LockDb()
 {
     PyThrowBadHr(impObj()->LockDb(impObj()));
@@ -260,11 +291,37 @@ void PySmSmDatabaseImpl::UnlockDb(bool commit)
     PyThrowBadHr(impObj()->UnlockDb(impObj(), b));
 }
 
-PySmSheetSetImpl PySmSmDatabaseImpl::GetSheetSet()
+PySmSheetSetImpl PySmSmDatabaseImpl::GetSheetSet() const
 {
     IAcSmSheetSet* pSheet = nullptr;
     PyThrowBadHr(impObj()->GetSheetSet(&pSheet));
     return PySmSheetSetImpl(pSheet);
+}
+
+AcSmLockStatus PySmSmDatabaseImpl::GetLockStatus() const
+{
+    AcSmLockStatus st = AcSmLockStatus::AcSmLockStatus_UnLocked;
+    PyThrowBadHr(impObj()->GetLockStatus(&st));
+    return st;
+}
+
+std::pair<CString, CString> PySmSmDatabaseImpl::GetLockOwnerInfo() const
+{
+    _bstr_t bstrUserName;
+    _bstr_t bstrMachineName;
+    PyThrowBadHr(impObj()->GetLockOwnerInfo(&bstrUserName.GetBSTR(), &bstrMachineName.GetBSTR()));
+    return std::make_pair(CString{ (LPCTSTR)bstrUserName }, CString{ (LPCTSTR)bstrMachineName });
+}
+
+std::vector<PySmPersistImpl> PySmSmDatabaseImpl::GetEnumerator() const
+{
+    std::vector<PySmPersistImpl> v;
+    IAcSmEnumPersistPtr iter;
+    PyThrowBadHr(impObj()->GetEnumerator(&iter));
+    IAcSmPersist* pAx = nullptr;
+    while (SUCCEEDED(iter->Next(&pAx)) && pAx != nullptr)
+        v.push_back(PySmPersistImpl(pAx));
+    return v;
 }
 
 IAcSmDatabase* PySmSmDatabaseImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -351,7 +408,7 @@ std::pair<PySmSmDatabaseImpl, PySmSheetImpl> PySmSheetSetMgrImpl::GetSheetFromLa
     return std::pair(PySmSmDatabaseImpl(pAxDb), PySmSheetImpl(pSheet));
 }
 
-std::vector< PySmSmDatabaseImpl> PySmSheetSetMgrImpl::GetDatabaseEnumerator()
+std::vector<PySmSmDatabaseImpl> PySmSheetSetMgrImpl::GetDatabaseEnumerator()
 {
     std::vector<PySmSmDatabaseImpl> v;
     IAcSmEnumDatabasePtr iter;

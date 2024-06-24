@@ -35,9 +35,11 @@ public:
     void                SetOwner(const PySmPersistImpl& owner);
     PySmSmDatabaseImpl  GetDatabase() const;
     PySmObjectIdImpl    GetObjectId() const;
+    void                swap(PySmPersistImpl& other);
 
-    IAcSmPersist* impObj(const std::source_location& src = std::source_location::current()) const;
-    IAcSmPersistPtr m_pimpl;
+public:
+    IAcSmPersist*       impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcSmPersistPtr     m_pimpl;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -108,9 +110,19 @@ class PySmSmDatabaseImpl : public PySmComponentImpl
 public:
     explicit PySmSmDatabaseImpl(IAcSmDatabase* other);
     virtual ~PySmSmDatabaseImpl() override = default;
+    void                LoadFromFile(const CString& filename);
+    CString             GetFileName() const;
+    void                SetFileName(const CString& filename);
+    CString             GetTemplateDstFileName() const;
+    PySmSheetSetImpl    GetSheetSet() const;
+    AcSmLockStatus      GetLockStatus() const;
+    std::pair<CString, CString>     GetLockOwnerInfo() const;
+    std::vector<PySmPersistImpl>    GetEnumerator() const;
+
+
+
     void                LockDb();
     void                UnlockDb(bool commit);
-    PySmSheetSetImpl    GetSheetSet();
     IAcSmDatabase* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -130,8 +142,9 @@ public:
 
     std::pair<PySmSmDatabaseImpl, PySmSheetSetImpl> GetParentSheetSet(const CString& dwg, const CString& layout);
     std::pair<PySmSmDatabaseImpl, PySmSheetImpl>    GetSheetFromLayout(AcDbObject* pAcDbLayout);
-    std::vector< PySmSmDatabaseImpl>                GetDatabaseEnumerator();
+    std::vector<PySmSmDatabaseImpl>                 GetDatabaseEnumerator();
 
+public:
     IAcSmSheetSetMgr* impObj(const std::source_location& src = std::source_location::current()) const;
     IAcSmSheetSetMgrPtr m_pimpl;
 };
