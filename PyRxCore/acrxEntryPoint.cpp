@@ -384,7 +384,6 @@ public:
 #ifdef PYPERFPROFILER
     static void AcRxPyApp_pyprofiler(void)
     {
-        ///
     }
     static void AcRxPyApp_pyprofilerend(void)
     {
@@ -404,8 +403,10 @@ public:
         try
         {
             PySmSheetSetMgrImpl mgr;
+            auto v = mgr.GetDatabaseEnumerator();
+            acutPrintf(_T("\nCount = %ld"), v.size());
 
-            auto db = acdbHostApplicationServices()->workingDatabase();
+            /*auto db = acdbHostApplicationServices()->workingDatabase();
 
             auto lman = acdbHostApplicationServices()->layoutManager();
             const auto layoutName = lman->findActiveLayout(false);
@@ -416,7 +417,7 @@ public:
 
             AcDbObjectPointer<AcDbLayout> pLayout(layoutId);
 
-            auto res = mgr.GetSheetFromLayout(pLayout);
+            auto res = mgr.GetSheetFromLayout(pLayout);*/
 
 
         }
