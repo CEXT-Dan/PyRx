@@ -11,6 +11,7 @@ import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
 import PyPl  # = plot
+import PySm  # = SheetSet
 
 #! move along nothing to see here
 #! its smells like code smell, like, victory!
@@ -26,9 +27,10 @@ def PyRxCmd_pydebug() -> None:
 class_types = {}
 
 all_modules = [("PyRx", PyRx), ("PyGe", PyGe), ("PyGi", PyGi),("PyGs", PyGs), 
-               ("PyDb", PyDb), ("PyAp", PyAp), ("PyEd", PyEd), ("PyPl", PyPl)]
+               ("PyDb", PyDb), ("PyAp", PyAp), ("PyEd", PyEd), ("PyPl", PyPl),
+               ("PySm", PySm)]
 
-all_modules_names = ["PyRx", "PyGe", "PyGi", "PyGs", "PyDb", "PyAp", "PyEd", "PyPl"]
+all_modules_names = ["PyRx", "PyGe", "PyGi", "PyGs", "PyDb", "PyAp", "PyEd", "PyPl","PySm"]
 
 #add brx modules only 
 if  "BRX" in  PyAp.Application.hostAPI():
