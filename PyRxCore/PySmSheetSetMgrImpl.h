@@ -17,7 +17,7 @@
 #import "acsmcomponents25.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
-class PySmSmDatabaseImpl;
+class PySmDatabaseImpl;
 class PySmObjectIdImpl;
 
 //-----------------------------------------------------------------------------------------
@@ -26,6 +26,7 @@ class PySmPersistImpl
 {
 public:
     explicit PySmPersistImpl(IAcSmPersist* other);
+    PySmPersistImpl(const PySmPersistImpl& other) = default;
     virtual ~PySmPersistImpl() = default;
 
     bool                GetIsDirty() const;
@@ -33,7 +34,7 @@ public:
     void                InitNew(const PySmPersistImpl& owner);
     PySmPersistImpl     GetOwner() const;
     void                SetOwner(const PySmPersistImpl& owner);
-    PySmSmDatabaseImpl  GetDatabase() const;
+    PySmDatabaseImpl  GetDatabase() const;
     PySmObjectIdImpl    GetObjectId() const;
     void                swap(PySmPersistImpl& other);
 
@@ -50,7 +51,7 @@ public:
     explicit PySmObjectIdImpl(IAcSmObjectId* other);
     virtual ~PySmObjectIdImpl() = default;
     CString             GetHandle() const;
-    PySmSmDatabaseImpl  GetDatabase() const;
+    PySmDatabaseImpl  GetDatabase() const;
     PySmPersistImpl     GetPersistObject() const;
     PySmPersistImpl     GetOwner() const;
     bool                IsEqual(const PySmObjectIdImpl& other);
@@ -65,6 +66,7 @@ class PySmComponentImpl : public PySmPersistImpl
 {
 public:
     explicit PySmComponentImpl(IAcSmComponent* other);
+    explicit PySmComponentImpl(const PySmComponentImpl& other) = default;
     virtual ~PySmComponentImpl() override = default;
     CString         GetName() const;
     void            SetName(const CString& csName);
@@ -105,11 +107,12 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //PySmComponent
-class PySmSmDatabaseImpl : public PySmComponentImpl
+class PySmDatabaseImpl : public PySmComponentImpl
 {
 public:
-    explicit PySmSmDatabaseImpl(IAcSmDatabase* other);
-    virtual ~PySmSmDatabaseImpl() override = default;
+    explicit PySmDatabaseImpl(IAcSmDatabase* other);
+    explicit PySmDatabaseImpl(const PySmDatabaseImpl& other) = default;
+    virtual ~PySmDatabaseImpl() override = default;
     void                LoadFromFile(const CString& filename);
     CString             GetFileName() const;
     void                SetFileName(const CString& filename);
@@ -118,8 +121,6 @@ public:
     AcSmLockStatus      GetLockStatus() const;
     std::pair<CString, CString>     GetLockOwnerInfo() const;
     std::vector<PySmPersistImpl>    GetEnumerator() const;
-
-
 
     void                LockDb();
     void                UnlockDb(bool commit);
@@ -130,19 +131,19 @@ class PySmSheetSetMgrImpl
 {
 public:
     PySmSheetSetMgrImpl();
-    PySmSmDatabaseImpl  CreateDatabase(const CString& filename);
-    PySmSmDatabaseImpl  CreateDatabase(const CString& filename, const CString& templatefilename, bool bAlwaysCreate);
-    PySmSmDatabaseImpl  OpenDatabase(const CString& filename);
-    PySmSmDatabaseImpl  FindOpenDatabase(const CString& filename);
+    PySmDatabaseImpl  CreateDatabase(const CString& filename);
+    PySmDatabaseImpl  CreateDatabase(const CString& filename, const CString& templatefilename, bool bAlwaysCreate);
+    PySmDatabaseImpl  OpenDatabase(const CString& filename);
+    PySmDatabaseImpl  FindOpenDatabase(const CString& filename);
     void                CloseAll();
-    void                Close(PySmSmDatabaseImpl& db);
+    void                Close(PySmDatabaseImpl& db);
 
     //int Register(IAcSmEvents eventHandler);
     //void Unregister(int cookie);
 
-    std::pair<PySmSmDatabaseImpl, PySmSheetSetImpl> GetParentSheetSet(const CString& dwg, const CString& layout);
-    std::pair<PySmSmDatabaseImpl, PySmSheetImpl>    GetSheetFromLayout(AcDbObject* pAcDbLayout);
-    std::vector<PySmSmDatabaseImpl>                 GetDatabaseEnumerator();
+    std::pair<PySmDatabaseImpl, PySmSheetSetImpl> GetParentSheetSet(const CString& dwg, const CString& layout);
+    std::pair<PySmDatabaseImpl, PySmSheetImpl>    GetSheetFromLayout(AcDbObject* pAcDbLayout);
+    std::vector<PySmDatabaseImpl>                 GetDatabaseEnumerator();
 
 public:
     IAcSmSheetSetMgr* impObj(const std::source_location& src = std::source_location::current()) const;

@@ -77,11 +77,11 @@ void PySmPersistImpl::SetOwner(const PySmPersistImpl& owner)
     PyThrowBadHr(impObj()->SetOwner(owner.impObj()));
 }
 
-PySmSmDatabaseImpl PySmPersistImpl::GetDatabase() const
+PySmDatabaseImpl PySmPersistImpl::GetDatabase() const
 {
     IAcSmDatabase* rtVal = nullptr;
     PyThrowBadHr(impObj()->GetDatabase(&rtVal));
-    return PySmSmDatabaseImpl(rtVal);
+    return PySmDatabaseImpl(rtVal);
 }
 
 PySmObjectIdImpl PySmPersistImpl::GetObjectId() const
@@ -118,11 +118,11 @@ CString PySmObjectIdImpl::GetHandle() const
     return (LPCTSTR)bstrVal;
 }
 
-PySmSmDatabaseImpl PySmObjectIdImpl::GetDatabase() const
+PySmDatabaseImpl PySmObjectIdImpl::GetDatabase() const
 {
     IAcSmDatabase* pVal = nullptr;
     PyThrowBadHr(impObj()->GetDatabase(&pVal));
-    return PySmSmDatabaseImpl(pVal);
+    return PySmDatabaseImpl(pVal);
 }
 
 PySmPersistImpl PySmObjectIdImpl::GetPersistObject() const
@@ -249,63 +249,63 @@ IAcSmSheet* PySmSheetImpl::impObj(const std::source_location& src /*= std::sourc
 
 //-----------------------------------------------------------------------------------------
 //PySmSmDatabase
-PySmSmDatabaseImpl::PySmSmDatabaseImpl(IAcSmDatabase* other)
+PySmDatabaseImpl::PySmDatabaseImpl(IAcSmDatabase* other)
     : PySmComponentImpl(other)
 {
 }
 
-void PySmSmDatabaseImpl::LoadFromFile(const CString& filename)
+void PySmDatabaseImpl::LoadFromFile(const CString& filename)
 {
     _bstr_t bstrFilename(filename);
     PyThrowBadHr(impObj()->SetName(bstrFilename));
 }
 
-CString PySmSmDatabaseImpl::GetFileName() const
+CString PySmDatabaseImpl::GetFileName() const
 {
     _bstr_t bstrFilename;
     PyThrowBadHr(impObj()->GetFileName(&bstrFilename.GetBSTR()));
     return (LPCTSTR)bstrFilename;
 }
 
-void PySmSmDatabaseImpl::SetFileName(const CString& filename)
+void PySmDatabaseImpl::SetFileName(const CString& filename)
 {
     _bstr_t bstrFilename(filename);
     PyThrowBadHr(impObj()->SetFileName(bstrFilename));
 }
 
-CString PySmSmDatabaseImpl::GetTemplateDstFileName() const
+CString PySmDatabaseImpl::GetTemplateDstFileName() const
 {
     _bstr_t bstrFilename;
     PyThrowBadHr(impObj()->GetTemplateDstFileName(&bstrFilename.GetBSTR()));
     return (LPCTSTR)bstrFilename;
 }
 
-void PySmSmDatabaseImpl::LockDb()
+void PySmDatabaseImpl::LockDb()
 {
     PyThrowBadHr(impObj()->LockDb(impObj()));
 }
 
-void PySmSmDatabaseImpl::UnlockDb(bool commit)
+void PySmDatabaseImpl::UnlockDb(bool commit)
 {
     auto b = commit ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->UnlockDb(impObj(), b));
 }
 
-PySmSheetSetImpl PySmSmDatabaseImpl::GetSheetSet() const
+PySmSheetSetImpl PySmDatabaseImpl::GetSheetSet() const
 {
     IAcSmSheetSet* pSheet = nullptr;
     PyThrowBadHr(impObj()->GetSheetSet(&pSheet));
     return PySmSheetSetImpl(pSheet);
 }
 
-AcSmLockStatus PySmSmDatabaseImpl::GetLockStatus() const
+AcSmLockStatus PySmDatabaseImpl::GetLockStatus() const
 {
     AcSmLockStatus st = AcSmLockStatus::AcSmLockStatus_UnLocked;
     PyThrowBadHr(impObj()->GetLockStatus(&st));
     return st;
 }
 
-std::pair<CString, CString> PySmSmDatabaseImpl::GetLockOwnerInfo() const
+std::pair<CString, CString> PySmDatabaseImpl::GetLockOwnerInfo() const
 {
     _bstr_t bstrUserName;
     _bstr_t bstrMachineName;
@@ -313,7 +313,7 @@ std::pair<CString, CString> PySmSmDatabaseImpl::GetLockOwnerInfo() const
     return std::make_pair(CString{ (LPCTSTR)bstrUserName }, CString{ (LPCTSTR)bstrMachineName });
 }
 
-std::vector<PySmPersistImpl> PySmSmDatabaseImpl::GetEnumerator() const
+std::vector<PySmPersistImpl> PySmDatabaseImpl::GetEnumerator() const
 {
     std::vector<PySmPersistImpl> v;
     IAcSmEnumPersistPtr iter;
@@ -324,7 +324,7 @@ std::vector<PySmPersistImpl> PySmSmDatabaseImpl::GetEnumerator() const
     return v;
 }
 
-IAcSmDatabase* PySmSmDatabaseImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcSmDatabase* PySmDatabaseImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -343,38 +343,38 @@ PySmSheetSetMgrImpl::PySmSheetSetMgrImpl()
     }
 }
 
-PySmSmDatabaseImpl PySmSheetSetMgrImpl::CreateDatabase(const CString& filename)
+PySmDatabaseImpl PySmSheetSetMgrImpl::CreateDatabase(const CString& filename)
 {
     IAcSmDatabase* pDb = nullptr;
     _bstr_t bstrName(filename);
     PyThrowBadHr(impObj()->CreateDatabase(bstrName, NULL, TRUE, &pDb));
-    return PySmSmDatabaseImpl(pDb);
+    return PySmDatabaseImpl(pDb);
 }
 
-PySmSmDatabaseImpl PySmSheetSetMgrImpl::CreateDatabase(const CString& filename, const CString& templatefilename, bool bAlwaysCreate)
+PySmDatabaseImpl PySmSheetSetMgrImpl::CreateDatabase(const CString& filename, const CString& templatefilename, bool bAlwaysCreate)
 {
     IAcSmDatabase* pDb = nullptr;
     _bstr_t bstrName(filename);
     _bstr_t bstrTemplate(templatefilename);
     BOOL flag = bAlwaysCreate ? TRUE : FALSE;
     PyThrowBadHr(impObj()->CreateDatabase(bstrName, bstrTemplate, bAlwaysCreate, &pDb));
-    return PySmSmDatabaseImpl(pDb);
+    return PySmDatabaseImpl(pDb);
 }
 
-PySmSmDatabaseImpl PySmSheetSetMgrImpl::OpenDatabase(const CString& filename)
+PySmDatabaseImpl PySmSheetSetMgrImpl::OpenDatabase(const CString& filename)
 {
     IAcSmDatabase* pDb = nullptr;
     _bstr_t bstrName(filename);
     PyThrowBadHr(impObj()->OpenDatabase(bstrName, TRUE, &pDb));
-    return PySmSmDatabaseImpl(pDb);
+    return PySmDatabaseImpl(pDb);
 }
 
-PySmSmDatabaseImpl PySmSheetSetMgrImpl::FindOpenDatabase(const CString& filename)
+PySmDatabaseImpl PySmSheetSetMgrImpl::FindOpenDatabase(const CString& filename)
 {
     IAcSmDatabase* pDb = nullptr;
     _bstr_t bstrName(filename);
     PyThrowBadHr(impObj()->FindOpenDatabase(bstrName, &pDb));
-    return PySmSmDatabaseImpl(pDb);
+    return PySmDatabaseImpl(pDb);
 }
 
 void PySmSheetSetMgrImpl::CloseAll()
@@ -382,22 +382,22 @@ void PySmSheetSetMgrImpl::CloseAll()
     PyThrowBadHr(impObj()->CloseAll());
 }
 
-void PySmSheetSetMgrImpl::Close(PySmSmDatabaseImpl& db)
+void PySmSheetSetMgrImpl::Close(PySmDatabaseImpl& db)
 {
     PyThrowBadHr(impObj()->Close(db.impObj()));
 }
 
-std::pair<PySmSmDatabaseImpl, PySmSheetSetImpl> PySmSheetSetMgrImpl::GetParentSheetSet(const CString& dwg, const CString& layout)
+std::pair<PySmDatabaseImpl, PySmSheetSetImpl> PySmSheetSetMgrImpl::GetParentSheetSet(const CString& dwg, const CString& layout)
 {
     IAcSmDatabase* pDb = nullptr;
     IAcSmSheetSet* pSheet = nullptr;
     _bstr_t bstrDwg(dwg);
     _bstr_t bstrLayout(layout);
     PyThrowBadHr(impObj()->GetParentSheetSet(bstrDwg, bstrLayout, &pSheet, &pDb));
-    return std::pair(PySmSmDatabaseImpl(pDb), PySmSheetSetImpl(pSheet));
+    return std::pair(PySmDatabaseImpl(pDb), PySmSheetSetImpl(pSheet));
 }
 
-std::pair<PySmSmDatabaseImpl, PySmSheetImpl> PySmSheetSetMgrImpl::GetSheetFromLayout(AcDbObject* pAcDbLayout)
+std::pair<PySmDatabaseImpl, PySmSheetImpl> PySmSheetSetMgrImpl::GetSheetFromLayout(AcDbObject* pAcDbLayout)
 {
     if (pAcDbLayout == nullptr)
         throw PyNullObject();
@@ -405,17 +405,17 @@ std::pair<PySmSmDatabaseImpl, PySmSheetImpl> PySmSheetSetMgrImpl::GetSheetFromLa
     IAcSmSheet* pSheet = nullptr;
     IAcadObjectPtr pAxLayout (GetIAcadObjectFromAcDbObject(pAcDbLayout));
     PyThrowBadHr(impObj()->GetSheetFromLayout(pAxLayout, &pSheet, &pAxDb));
-    return std::pair(PySmSmDatabaseImpl(pAxDb), PySmSheetImpl(pSheet));
+    return std::pair(PySmDatabaseImpl(pAxDb), PySmSheetImpl(pSheet));
 }
 
-std::vector<PySmSmDatabaseImpl> PySmSheetSetMgrImpl::GetDatabaseEnumerator()
+std::vector<PySmDatabaseImpl> PySmSheetSetMgrImpl::GetDatabaseEnumerator()
 {
-    std::vector<PySmSmDatabaseImpl> v;
+    std::vector<PySmDatabaseImpl> v;
     IAcSmEnumDatabasePtr iter;
     PyThrowBadHr(impObj()->GetDatabaseEnumerator(&iter));
     IAcSmDatabase* pAxDb = nullptr;
     while (SUCCEEDED(iter->Next(&pAxDb)) && pAxDb != nullptr)
-        v.push_back(PySmSmDatabaseImpl(pAxDb));
+        v.push_back(PySmDatabaseImpl(pAxDb));
     return v;
 }
 
