@@ -108,11 +108,18 @@ public:
     void            setNumber(const std::string& csVal);
     std::string     getTitle() const;
     void            setTitle(const std::string& csVal);
-    //GetDoNotPlot
-    //SetDoNotPlot
+    bool            getDoNotPlot() const;
+    void            setDoNotPlot(bool flag);
     //GetLayout
     //SetLayout
     //GetSheetViews
+    std::string     getRevisionDate() const;
+    void            setRevisionDate(const std::string& csVal);
+    std::string     getIssuePurpose() const;
+    void            setIssuePurpose(const std::string& csVal);
+    std::string     getCategory() const;
+    void            setCategory(const std::string& csVal);
+
     static PySmSheet cast(const PySmPersist& src);
     static std::string className();
 public:

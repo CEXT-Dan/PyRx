@@ -15,6 +15,7 @@ inline T PySmObjectCast(const PySmPersist& src)
     std::swap(rxo.m_pyImp, dest.m_pyImp);
     return dest;
 }
+
 //-----------------------------------------------------------------------------------------
 //PySmPersist
 void makePySmPersistWrapper()
@@ -267,6 +268,14 @@ void makePySmSheetWrapper()
         .def("setNumber", &PySmSheet::setNumber)
         .def("getTitle", &PySmSheet::getTitle)
         .def("setTitle", &PySmSheet::setTitle)
+        .def("getDoNotPlot", &PySmSheet::getDoNotPlot)
+        .def("setDoNotPlot", &PySmSheet::setDoNotPlot)
+        .def("getRevisionDate", &PySmSheet::getRevisionDate)
+        .def("setRevisionDate", &PySmSheet::setRevisionDate)
+        .def("getIssuePurpose", &PySmSheet::getIssuePurpose)
+        .def("setIssuePurpose", &PySmSheet::setIssuePurpose)
+        .def("getCategory", &PySmSheet::getCategory)
+        .def("setCategory", &PySmSheet::setCategory)
         .def("cast", &PySmSheet::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheet::className, DS.SARGS()).staticmethod("className")
         ;
@@ -300,6 +309,46 @@ std::string PySmSheet::getTitle() const
 void PySmSheet::setTitle(const std::string& csVal)
 {
     impObj()->SetTitle(utf8_to_wstr(csVal).c_str());
+}
+
+bool PySmSheet::getDoNotPlot() const
+{
+    return impObj()->GetDoNotPlot();
+}
+
+void PySmSheet::setDoNotPlot(bool flag)
+{
+    impObj()->SetDoNotPlot(flag);
+}
+
+std::string PySmSheet::getRevisionDate() const
+{
+    return wstr_to_utf8(impObj()->GetRevisionDate());
+}
+
+void PySmSheet::setRevisionDate(const std::string& csVal)
+{
+    impObj()->SetRevisionDate(utf8_to_wstr(csVal).c_str());
+}
+
+std::string PySmSheet::getIssuePurpose() const
+{
+    return wstr_to_utf8(impObj()->GetIssuePurpose());
+}
+
+void PySmSheet::setIssuePurpose(const std::string& csVal)
+{
+    impObj()->SetIssuePurpose(utf8_to_wstr(csVal).c_str());
+}
+
+std::string PySmSheet::getCategory() const
+{
+    return wstr_to_utf8(impObj()->GetCategory());
+}
+
+void PySmSheet::setCategory(const std::string& csVal)
+{
+    impObj()->SetCategory(utf8_to_wstr(csVal).c_str());
 }
 
 PySmSheet PySmSheet::cast(const PySmPersist& src)
