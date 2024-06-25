@@ -25,7 +25,7 @@ class PySmObjectIdImpl;
 class PySmPersistImpl
 {
 public:
-    explicit PySmPersistImpl(IAcSmPersist* other);
+    PySmPersistImpl(IAcSmPersist* other);
     PySmPersistImpl(const PySmPersistImpl& other) = default;
     virtual ~PySmPersistImpl() = default;
 
@@ -36,6 +36,7 @@ public:
     void                SetOwner(const PySmPersistImpl& owner);
     PySmDatabaseImpl    GetDatabase() const;
     PySmObjectIdImpl    GetObjectId() const;
+    void                Clear();
     void                swap(PySmPersistImpl& other);
 
 public:
@@ -48,7 +49,8 @@ public:
 class PySmObjectIdImpl
 {
 public:
-    explicit PySmObjectIdImpl(IAcSmObjectId* other);
+    PySmObjectIdImpl(IAcSmObjectId* other);
+    PySmObjectIdImpl(const PySmObjectIdImpl& other) = default;
     virtual ~PySmObjectIdImpl() = default;
     CString             GetHandle() const;
     PySmDatabaseImpl    GetDatabase() const;
@@ -58,6 +60,20 @@ public:
     bool                IsValid();
     IAcSmObjectId* impObj(const std::source_location& src = std::source_location::current()) const;
     IAcSmObjectIdPtr m_pimpl;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmFileReference
+class PySmFileReferenceImpl : public PySmPersistImpl
+{
+public:
+    explicit PySmFileReferenceImpl(IAcSmFileReference* other);
+    explicit PySmFileReferenceImpl(const PySmFileReferenceImpl& other) = default;
+    virtual ~PySmFileReferenceImpl() override = default;
+    void        SetFileName(const CString& csVal);
+    CString     GetFileName() const;
+    CString     ResolveFileName() const;
+    IAcSmFileReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -107,6 +123,12 @@ public:
     void        SetNumber(const CString& csVal);
     CString     GetTitle() const;
     void        SetTitle(const CString& csVal);
+
+    //GetDoNotPlot
+    //SetDoNotPlot
+    //GetLayout
+    //SetLayout
+    //GetSheetViews
 
     IAcSmSheet* impObj(const std::source_location& src = std::source_location::current()) const;
 };

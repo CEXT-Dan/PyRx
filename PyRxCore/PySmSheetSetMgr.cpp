@@ -21,7 +21,12 @@ void makePySmPersistWrapper()
 {
     PyDocString DS("Persist");
     class_<PySmPersist>("Persist", boost::python::no_init)
+        .def("getIsDirty", &PySmPersist::getIsDirty, DS.SARGS())
         .def("getTypeName", &PySmPersist::getTypeName, DS.SARGS())
+        .def("initNew", &PySmPersist::initNew)
+        .def("getOwner", &PySmPersist::getOwner)
+        .def("setOwner", &PySmPersist::setOwner)
+        .def("getDatabase", &PySmPersist::getDatabase)
         .def("cast", &PySmPersist::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmPersist::className, DS.SARGS()).staticmethod("className")
         ;
@@ -38,9 +43,34 @@ PySmPersist::PySmPersist(const PySmPersistImpl& other)
 {
 }
 
+bool PySmPersist::getIsDirty() const
+{
+    return impObj()->GetIsDirty();
+}
+
 std::string PySmPersist::getTypeName() const
 {
     return wstr_to_utf8(impObj()->GetTypeName());
+}
+
+void PySmPersist::initNew(const PySmPersist& owner)
+{
+    impObj()->InitNew(*owner.impObj());
+}
+
+PySmPersist PySmPersist::getOwner() const
+{
+    return PySmPersist(impObj()->GetOwner());
+}
+
+void PySmPersist::setOwner(const PySmPersist& owner)
+{
+    impObj()->SetOwner(*owner.impObj());
+}
+
+PySmDatabase PySmPersist::getDatabase() const
+{
+    return PySmDatabase(impObj()->GetDatabase());
 }
 
 PySmPersist PySmPersist::cast(const PySmPersist& src)
@@ -54,6 +84,70 @@ std::string PySmPersist::className()
 }
 
 PySmPersistImpl* PySmPersist::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return m_pyImp.get();
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmObjectId
+void makePySmObjectIdWrapper()
+{
+    PyDocString DS("ObjectId");
+    class_<PySmObjectId>("ObjectId", boost::python::no_init)
+        .def("getHandle", &PySmObjectId::getHandle)
+        .def("getDatabase", &PySmObjectId::getDatabase)
+        .def("getPersistObject", &PySmObjectId::getPersistObject)
+        .def("getOwner", &PySmObjectId::getOwner)
+        .def("isEqual", &PySmObjectId::isEqual)
+        .def("isValid", &PySmObjectId::isValid)
+        .def("className", &PySmObjectId::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmObjectId::PySmObjectId(const PySmObjectIdImpl& other)
+    : m_pyImp(new PySmObjectIdImpl(other))
+{
+}
+
+std::string PySmObjectId::getHandle() const
+{
+    return wstr_to_utf8(impObj()->GetHandle());
+}
+
+PySmDatabase PySmObjectId::getDatabase() const
+{
+    return PySmDatabase(impObj()->GetDatabase());
+}
+
+PySmPersist PySmObjectId::getPersistObject() const
+{
+    return PySmPersist(impObj()->GetPersistObject());
+}
+
+PySmPersist PySmObjectId::getOwner() const
+{
+    return PySmPersist(impObj()->GetOwner());
+}
+
+bool PySmObjectId::isEqual(const PySmObjectId& other)
+{
+    return impObj()->IsEqual(*other.impObj());
+}
+
+bool PySmObjectId::isValid()
+{
+    return impObj()->IsValid();
+}
+
+std::string PySmObjectId::className()
+{
+    return "AcSmObjectId";
+}
+
+PySmObjectIdImpl* PySmObjectId::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);

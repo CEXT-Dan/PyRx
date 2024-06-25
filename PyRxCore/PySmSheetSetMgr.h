@@ -5,12 +5,16 @@
 
 class PyDbObject;
 class PySmPersistImpl;
+class PySmObjectIdImpl;
 class PySmSheetSetMgrImpl;
 class PySmComponentImpl;
 class PySmDatabaseImpl;
 class PySmSubsetImpl;
 class PySmSheetSetImpl;
 class PySmSheetImpl;
+
+class PySmObjectId;
+class PySmDatabase;
 
 
 //-----------------------------------------------------------------------------------------
@@ -22,13 +26,40 @@ public:
     PySmPersist(PySmPersistImpl* ptr);
     PySmPersist(const PySmPersistImpl& other);
 
+    bool               getIsDirty() const;
     std::string        getTypeName() const;
+    void               initNew(const PySmPersist& owner);
+    PySmPersist        getOwner() const;
+    void               setOwner(const PySmPersist& owner);
+    PySmDatabase       getDatabase() const;
+    //PySmObjectId       getObjectId() const;
+
     static PySmPersist cast(const PySmPersist& src);
     static std::string className();
 public:
     inline PySmPersistImpl* impObj(const std::source_location& src = std::source_location::current()) const;
     std::shared_ptr<PySmPersistImpl> m_pyImp = nullptr;
 };
+
+//-----------------------------------------------------------------------------------------
+//PySmObjectId
+void makePySmObjectIdWrapper();
+class PySmObjectId
+{
+public:
+    PySmObjectId(const PySmObjectIdImpl& other);
+    std::string         getHandle() const;
+    PySmDatabase        getDatabase() const;
+    PySmPersist         getPersistObject() const;
+    PySmPersist         getOwner() const;
+    bool                isEqual(const PySmObjectId& other);
+    bool                isValid();
+    static std::string  className();
+public:
+    inline PySmObjectIdImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    std::shared_ptr<PySmObjectIdImpl> m_pyImp = nullptr;
+};
+
 
 //-----------------------------------------------------------------------------------------
 //PySmComponent
@@ -77,7 +108,11 @@ public:
     void            setNumber(const std::string& csVal);
     std::string     getTitle() const;
     void            setTitle(const std::string& csVal);
-
+    //GetDoNotPlot
+    //SetDoNotPlot
+    //GetLayout
+    //SetLayout
+    //GetSheetViews
     static PySmSheet cast(const PySmPersist& src);
     static std::string className();
 public:

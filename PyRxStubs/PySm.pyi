@@ -99,10 +99,39 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
         '''                             '''
         ...
+    def getDatabase (self, *args, **kwargs)-> PySm.Database :
+        '''getDatabase( (Persist)arg1) -> Database :
+
+    C++ signature :
+        class PySmDatabase getDatabase(class PySmPersist {lvalue})'''
+        ...
+
+    @staticmethod
+    def getIsDirty ()-> bool :
+        '''                             '''
+        ...
+    def getOwner (self, *args, **kwargs)-> PySm.Persist :
+        '''getOwner( (Persist)arg1) -> Persist :
+
+    C++ signature :
+        class PySmPersist getOwner(class PySmPersist {lvalue})'''
+        ...
 
     @staticmethod
     def getTypeName ()-> str :
         '''                             '''
+        ...
+    def initNew (self, *args, **kwargs)-> None :
+        '''initNew( (Persist)arg1, (Persist)arg2) -> None :
+
+    C++ signature :
+        void initNew(class PySmPersist {lvalue},class PySmPersist)'''
+        ...
+    def setOwner (self, *args, **kwargs)-> None :
+        '''setOwner( (Persist)arg1, (Persist)arg2) -> None :
+
+    C++ signature :
+        void setOwner(class PySmPersist {lvalue},class PySmPersist)'''
         ...
 
 class Sheet(Component):

@@ -91,6 +91,11 @@ PySmObjectIdImpl PySmPersistImpl::GetObjectId() const
     return PySmObjectIdImpl(rtVal);
 }
 
+void PySmPersistImpl::Clear()
+{
+    PyThrowBadHr(impObj()->Clear());
+}
+
 void PySmPersistImpl::swap(PySmPersistImpl& other)
 {
     std::swap(m_pimpl, other.m_pimpl);
@@ -160,6 +165,41 @@ IAcSmObjectId* PySmObjectIdImpl::impObj(const std::source_location& src /*= std:
         throw PyNullObject(src);
         }
     return static_cast<IAcSmObjectId*>(m_pimpl.GetInterfacePtr());
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmFileReference
+PySmFileReferenceImpl::PySmFileReferenceImpl(IAcSmFileReference* other)
+    : PySmPersistImpl(other)
+{
+}
+
+void PySmFileReferenceImpl::SetFileName(const CString& csVal)
+{
+    _bstr_t bstrVal(csVal);
+    PyThrowBadHr(impObj()->SetFileName(bstrVal));
+}
+
+CString PySmFileReferenceImpl::GetFileName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetFileName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+CString PySmFileReferenceImpl::ResolveFileName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetFileName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+IAcSmFileReference* PySmFileReferenceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmFileReference*>(m_pimpl.GetInterfacePtr());
 }
 
 //-----------------------------------------------------------------------------------------
