@@ -9,8 +9,8 @@ using namespace boost::python;
 
 void makePySmPersistWrapper()
 {
-    PyDocString DS("SmPersist");
-    class_<PySmPersist>("SmPersist", boost::python::no_init)
+    PyDocString DS("Persist");
+    class_<PySmPersist>("Persist", boost::python::no_init)
         .def("getTypeName", &PySmPersist::getTypeName, DS.SARGS())
         .def("className", &PySmPersist::className, DS.SARGS()).staticmethod("className")
         ;
@@ -48,8 +48,8 @@ PySmPersistImpl* PySmPersist::impObj(const std::source_location& src /*= std::so
 //PySmComponent
 void makePySmComponentWrapper()
 {
-    PyDocString DS("SmComponent");
-    class_<PySmComponent,bases<PySmPersist>>("SmComponent", boost::python::no_init)
+    PyDocString DS("Component");
+    class_<PySmComponent, bases<PySmPersist>>("Component", boost::python::no_init)
         .def("getName", &PySmComponent::getName)
         .def("setName", &PySmComponent::setName)
         .def("getDesc", &PySmComponent::getDesc)
@@ -59,7 +59,7 @@ void makePySmComponentWrapper()
 }
 
 PySmComponent::PySmComponent(PySmComponentImpl* ptr)
-  : PySmPersist(ptr)
+    : PySmPersist(ptr)
 {
 }
 
@@ -102,11 +102,110 @@ PySmComponentImpl* PySmComponent::impObj(const std::source_location& src /*= std
 }
 
 //-----------------------------------------------------------------------------------------
+//PySmSubset
+void makePySmSubsetWrapper()
+{
+    PyDocString DS("Subset");
+    class_<PySmSubset, bases<PySmComponent>>("Subset", boost::python::no_init)
+        .def("className", &PySmSubset::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmSubset::PySmSubset(PySmSubsetImpl* ptr)
+    : PySmComponent(ptr)
+{
+}
+
+PySmSubset::PySmSubset(const PySmSubsetImpl& other)
+    : PySmComponent(other)
+{
+}
+
+std::string PySmSubset::className()
+{
+    return "IAcSmSubset";
+}
+
+PySmSubsetImpl* PySmSubset::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmSubsetImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmSheet
+void makePySmSheetWrapper()
+{
+    PyDocString DS("Sheet");
+    class_<PySmSheet, bases<PySmComponent>>("Sheet", boost::python::no_init)
+        .def("className", &PySmSheet::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmSheet::PySmSheet(PySmSheetImpl* ptr)
+ : PySmComponent(ptr)
+{
+}
+
+PySmSheet::PySmSheet(const PySmSheetImpl& other)
+    : PySmComponent(other)
+{
+}
+
+std::string PySmSheet::className()
+{
+    return "IAcSmSheet";
+}
+
+PySmSheetImpl* PySmSheet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmSheetImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmSheetSet
+void makePySmSheetSetWrapper()
+{
+    PyDocString DS("SheetSet");
+    class_<PySmSheetSet, bases<PySmSubset>>("SheetSet", boost::python::no_init)
+        .def("className", &PySmSheetSet::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmSheetSet::PySmSheetSet(PySmSheetSetImpl* ptr)
+    : PySmSubset(ptr)
+{
+}
+
+PySmSheetSet::PySmSheetSet(const PySmSheetSetImpl& other)
+    : PySmSubset(other)
+{
+}
+
+std::string PySmSheetSet::className()
+{
+    return "IAcSmSheetSet";
+}
+
+PySmSheetSetImpl* PySmSheetSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmSheetSetImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
 //PySmSmDatabase
 void makePySmDatabaseWrapper()
 {
-    PyDocString DS("PySmDatabase");
-    class_<PySmDatabase, bases<PySmComponent>>("PySmDatabase", boost::python::no_init)
+    PyDocString DS("Database");
+    class_<PySmDatabase, bases<PySmComponent>>("Database", boost::python::no_init)
         .def("smObjects", &PySmDatabase::smObjects)
         .def("className", &PySmDatabase::className, DS.SARGS()).staticmethod("className")
         ;
@@ -150,8 +249,8 @@ PySmDatabaseImpl* PySmDatabase::impObj(const std::source_location& src /*= std::
 //PySmSheetSetMgr
 void makePySmSheetSetMgrWrapper()
 {
-    PyDocString DS("SmSheetSetMgr");
-    class_<PySmSheetSetMgr>("SmSheetSetMgr")
+    PyDocString DS("SheetSetMgr");
+    class_<PySmSheetSetMgr>("SheetSetMgr")
 
         .def("createDatabase", &PySmSheetSetMgr::createDatabase1)
         .def("createDatabase", &PySmSheetSetMgr::createDatabase2)
@@ -167,7 +266,7 @@ void makePySmSheetSetMgrWrapper()
 }
 
 PySmSheetSetMgr::PySmSheetSetMgr()
-    : m_pyImp (new PySmSheetSetMgrImpl())
+    : m_pyImp(new PySmSheetSetMgrImpl())
 {
 }
 
@@ -240,4 +339,3 @@ PySmSheetSetMgrImpl* PySmSheetSetMgr::impObj(const std::source_location& src /*=
     return m_pyImp.get();
 }
 #endif
-

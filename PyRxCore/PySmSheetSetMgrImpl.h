@@ -76,7 +76,7 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
-//PySmSubset
+//PySmSubsetImpl
 class PySmSubsetImpl : public PySmComponentImpl
 {
 public:
