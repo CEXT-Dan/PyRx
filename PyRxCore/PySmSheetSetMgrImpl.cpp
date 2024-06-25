@@ -202,7 +202,7 @@ IAcSmComponent* PySmComponentImpl::impObj(const std::source_location& src /*= st
 }
 
 //-----------------------------------------------------------------------------------------
-//PySmSubset
+//PySmSubsetImpl
 PySmSubsetImpl::PySmSubsetImpl(IAcSmSubset* other)
     : PySmComponentImpl(other)
 {
@@ -217,7 +217,7 @@ IAcSmSubset* PySmSubsetImpl::impObj(const std::source_location& src /*= std::sou
 }
 
 //-----------------------------------------------------------------------------------------
-//PySmSheetSet
+//PySmSheetSetImpl
 PySmSheetSetImpl::PySmSheetSetImpl(IAcSmSheetSet* other)
     : PySmSubsetImpl(other)
 {

@@ -8,6 +8,10 @@ class PySmPersistImpl;
 class PySmSheetSetMgrImpl;
 class PySmComponentImpl;
 class PySmDatabaseImpl;
+class PySmSubsetImpl;
+class PySmSheetSetImpl;
+class PySmSheetImpl;
+
 
 //-----------------------------------------------------------------------------------------
 //PySmPersist
@@ -42,6 +46,45 @@ public:
     static std::string className();
 public:
     inline PySmComponentImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmSubset
+void makePySmSubsetWrapper();
+class PySmSubset : public PySmComponent
+{
+public:
+    PySmSubset(PySmSubsetImpl* ptr);
+    PySmSubset(const PySmSubsetImpl& other);
+    static std::string className();
+public:
+    inline PySmSubsetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmSheet
+void makePySmSheetWrapper();
+class PySmSheet : public PySmComponent
+{
+public:
+    PySmSheet(PySmSheetImpl* ptr);
+    PySmSheet(const PySmSheetImpl& other);
+    static std::string className();
+public:
+    inline PySmSheetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmSheetSet
+void makePySmSheetSetWrapper();
+class PySmSheetSet : public PySmSubset
+{
+public:
+    PySmSheetSet(PySmSheetSetImpl* ptr);
+    PySmSheetSet(const PySmSheetSetImpl& other);
+    static std::string className();
+public:
+    inline PySmSheetSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
