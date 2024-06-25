@@ -149,11 +149,35 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
         '''                             '''
         ...
+    def getCategory (self, *args, **kwargs)-> str :
+        '''getCategory( (Sheet)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCategory(class PySmSheet {lvalue})'''
+        ...
+    def getDoNotPlot (self, *args, **kwargs)-> bool :
+        '''getDoNotPlot( (Sheet)arg1) -> bool :
+
+    C++ signature :
+        bool getDoNotPlot(class PySmSheet {lvalue})'''
+        ...
+    def getIssuePurpose (self, *args, **kwargs)-> str :
+        '''getIssuePurpose( (Sheet)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getIssuePurpose(class PySmSheet {lvalue})'''
+        ...
     def getNumber (self, *args, **kwargs)-> str :
         '''getNumber( (Sheet)arg1) -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getNumber(class PySmSheet {lvalue})'''
+        ...
+    def getRevisionDate (self, *args, **kwargs)-> str :
+        '''getRevisionDate( (Sheet)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getRevisionDate(class PySmSheet {lvalue})'''
         ...
     def getTitle (self, *args, **kwargs)-> str :
         '''getTitle( (Sheet)arg1) -> str :
@@ -161,11 +185,35 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getTitle(class PySmSheet {lvalue})'''
         ...
+    def setCategory (self, *args, **kwargs)-> None :
+        '''setCategory( (Sheet)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setCategory(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        ...
+    def setDoNotPlot (self, *args, **kwargs)-> None :
+        '''setDoNotPlot( (Sheet)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDoNotPlot(class PySmSheet {lvalue},bool)'''
+        ...
+    def setIssuePurpose (self, *args, **kwargs)-> None :
+        '''setIssuePurpose( (Sheet)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setIssuePurpose(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        ...
     def setNumber (self, *args, **kwargs)-> None :
         '''setNumber( (Sheet)arg1, (str)arg2) -> None :
 
     C++ signature :
         void setNumber(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        ...
+    def setRevisionDate (self, *args, **kwargs)-> None :
+        '''setRevisionDate( (Sheet)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setRevisionDate(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
         ...
     def setTitle (self, *args, **kwargs)-> None :
         '''setTitle( (Sheet)arg1, (str)arg2) -> None :

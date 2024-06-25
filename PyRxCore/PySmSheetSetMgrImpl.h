@@ -124,13 +124,23 @@ public:
     CString     GetTitle() const;
     void        SetTitle(const CString& csVal);
 
-    //GetDoNotPlot
-    //SetDoNotPlot
+    bool        GetDoNotPlot() const;
+    void        SetDoNotPlot(bool flag);
     //GetLayout
     //SetLayout
     //GetSheetViews
 
+    CString     GetRevisionDate() const;
+    void        SetRevisionDate(const CString& csVal);
+    CString     GetIssuePurpose() const;
+    void        SetIssuePurpose(const CString& csVal);
+    CString     GetCategory() const;
+    void        SetCategory(const CString& csVal);
+
     IAcSmSheet* impObj(const std::source_location& src = std::source_location::current()) const;
+#if defined(_ARXTARGET)
+    IAcSmSheet2* impObj2(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-----------------------------------------------------------------------------------------

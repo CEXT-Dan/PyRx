@@ -306,6 +306,87 @@ void PySmSheetImpl::SetTitle(const CString& csVal)
     PyThrowBadHr(impObj()->SetTitle(bstrVal));
 }
 
+bool PySmSheetImpl::GetDoNotPlot() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->GetDoNotPlot(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PySmSheetImpl::SetDoNotPlot(bool flag)
+{
+    PyThrowBadHr(impObj()->SetDoNotPlot(flag? VARIANT_TRUE: VARIANT_FALSE));
+}
+
+CString PySmSheetImpl::GetRevisionDate() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#endif
+#if defined(_ARXTARGET)
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj2()->GetRevisionDate(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif
+}
+
+void PySmSheetImpl::SetRevisionDate(const CString& csVal)
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#endif
+#if defined(_ARXTARGET)
+    _bstr_t bstrVal(csVal);
+    PyThrowBadHr(impObj2()->SetRevisionDate(bstrVal));
+#endif
+}
+
+CString PySmSheetImpl::GetIssuePurpose() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#endif
+#if defined(_ARXTARGET)
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj2()->GetIssuePurpose(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif
+}
+
+void PySmSheetImpl::SetIssuePurpose(const CString& csVal)
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#endif
+#if defined(_ARXTARGET)
+    _bstr_t bstrVal(csVal);
+    PyThrowBadHr(impObj2()->SetIssuePurpose(bstrVal));
+#endif
+}
+
+CString PySmSheetImpl::GetCategory() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#endif
+#if defined(_ARXTARGET)
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj2()->GetCategory(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif
+}
+
+void PySmSheetImpl::SetCategory(const CString& csVal)
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#endif
+#if defined(_ARXTARGET)
+    _bstr_t bstrVal(csVal);
+    PyThrowBadHr(impObj2()->SetCategory(bstrVal));
+#endif
+}
+
 IAcSmSheet* PySmSheetImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -313,6 +394,20 @@ IAcSmSheet* PySmSheetImpl::impObj(const std::source_location& src /*= std::sourc
         }
     return static_cast<IAcSmSheet*>(m_pimpl.GetInterfacePtr());
 }
+
+#if defined(_ARXTARGET)
+IAcSmSheet2* PySmSheetImpl::impObj2(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl != nullptr)
+    {
+        IAcSmSheet2* pObj = nullptr;
+        if (m_pimpl->QueryInterface(IID_IAcSmSheet2, (void**)&pObj) == S_OK && pObj) {
+            return pObj;
+        }
+    }
+    throw PyNullObject(src);
+}
+#endif
 
 //-----------------------------------------------------------------------------------------
 //PySmSmDatabase
