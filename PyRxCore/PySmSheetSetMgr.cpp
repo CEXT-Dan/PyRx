@@ -7,11 +7,22 @@
 
 using namespace boost::python;
 
+template<typename T>
+inline T PySmObjectCast(const PySmPersist& src)
+{
+    T dest(nullptr);
+    PySmPersist rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+//-----------------------------------------------------------------------------------------
+//PySmPersist
 void makePySmPersistWrapper()
 {
     PyDocString DS("Persist");
     class_<PySmPersist>("Persist", boost::python::no_init)
         .def("getTypeName", &PySmPersist::getTypeName, DS.SARGS())
+        .def("cast", &PySmPersist::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmPersist::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -29,6 +40,11 @@ PySmPersist::PySmPersist(const PySmPersistImpl& other)
 std::string PySmPersist::getTypeName() const
 {
     return wstr_to_utf8(impObj()->GetTypeName());
+}
+
+PySmPersist PySmPersist::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmPersist>(src);
 }
 
 std::string PySmPersist::className()
@@ -54,6 +70,7 @@ void makePySmComponentWrapper()
         .def("setName", &PySmComponent::setName)
         .def("getDesc", &PySmComponent::getDesc)
         .def("setDesc", &PySmComponent::setDesc)
+        .def("cast", &PySmComponent::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmComponent::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -88,6 +105,11 @@ void PySmComponent::setDesc(const std::string& csDesc)
     impObj()->SetDesc(utf8_to_wstr(csDesc).c_str());
 }
 
+PySmComponent PySmComponent::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmComponent>(src);
+}
+
 std::string PySmComponent::className()
 {
     return "IAcSmPersist";
@@ -107,6 +129,7 @@ void makePySmSubsetWrapper()
 {
     PyDocString DS("Subset");
     class_<PySmSubset, bases<PySmComponent>>("Subset", boost::python::no_init)
+        .def("cast", &PySmSubset::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSubset::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -119,6 +142,11 @@ PySmSubset::PySmSubset(PySmSubsetImpl* ptr)
 PySmSubset::PySmSubset(const PySmSubsetImpl& other)
     : PySmComponent(other)
 {
+}
+
+PySmSubset PySmSubset::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmSubset>(src);
 }
 
 std::string PySmSubset::className()
@@ -140,18 +168,24 @@ void makePySmSheetWrapper()
 {
     PyDocString DS("Sheet");
     class_<PySmSheet, bases<PySmComponent>>("Sheet", boost::python::no_init)
+        .def("cast", &PySmSheet::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheet::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
 PySmSheet::PySmSheet(PySmSheetImpl* ptr)
- : PySmComponent(ptr)
+    : PySmComponent(ptr)
 {
 }
 
 PySmSheet::PySmSheet(const PySmSheetImpl& other)
     : PySmComponent(other)
 {
+}
+
+PySmSheet PySmSheet::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmSheet>(src);
 }
 
 std::string PySmSheet::className()
@@ -173,6 +207,7 @@ void makePySmSheetSetWrapper()
 {
     PyDocString DS("SheetSet");
     class_<PySmSheetSet, bases<PySmSubset>>("SheetSet", boost::python::no_init)
+        .def("cast", &PySmSheetSet::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheetSet::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -185,6 +220,11 @@ PySmSheetSet::PySmSheetSet(PySmSheetSetImpl* ptr)
 PySmSheetSet::PySmSheetSet(const PySmSheetSetImpl& other)
     : PySmSubset(other)
 {
+}
+
+PySmSheetSet PySmSheetSet::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmSheetSet>(src);
 }
 
 std::string PySmSheetSet::className()
@@ -207,6 +247,7 @@ void makePySmDatabaseWrapper()
     PyDocString DS("Database");
     class_<PySmDatabase, bases<PySmComponent>>("Database", boost::python::no_init)
         .def("smObjects", &PySmDatabase::smObjects)
+        .def("cast", &PySmDatabase::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmDatabase::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -229,6 +270,11 @@ boost::python::list PySmDatabase::smObjects()
     for (const auto& i : v)
         pylist.append(PySmPersist(i));
     return pylist;
+}
+
+PySmDatabase PySmDatabase::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmDatabase>(src);
 }
 
 std::string PySmDatabase::className()
@@ -256,7 +302,7 @@ void makePySmSheetSetMgrWrapper()
         .def("createDatabase", &PySmSheetSetMgr::createDatabase2)
         .def("openDatabase", &PySmSheetSetMgr::openDatabase)
         .def("findOpenDatabase", &PySmSheetSetMgr::findOpenDatabase)
-        .def("closeAll", &PySmSheetSetMgr::closeAll)
+        .def("closeAll", &PySmSheetSetMgr::closeAll, DS.SARGS())
         .def("close", &PySmSheetSetMgr::close)
         .def("getParentSheetSet", &PySmSheetSetMgr::getParentSheetSet)
         .def("getSheetFromLayout", &PySmSheetSetMgr::getSheetFromLayout)

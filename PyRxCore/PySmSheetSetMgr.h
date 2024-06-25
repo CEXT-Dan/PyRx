@@ -23,6 +23,7 @@ public:
     PySmPersist(const PySmPersistImpl& other);
 
     std::string        getTypeName() const;
+    static PySmPersist cast(const PySmPersist& src);
     static std::string className();
 public:
     inline PySmPersistImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -42,8 +43,9 @@ public:
     void            setName(const std::string& csName);
     std::string     getDesc() const;
     void            setDesc(const std::string& csDesc);
-;
-    static std::string className();
+
+    static PySmComponent cast(const PySmPersist& src);
+    static std::string   className();
 public:
     inline PySmComponentImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -56,6 +58,7 @@ class PySmSubset : public PySmComponent
 public:
     PySmSubset(PySmSubsetImpl* ptr);
     PySmSubset(const PySmSubsetImpl& other);
+    static PySmSubset  cast(const PySmPersist& src);
     static std::string className();
 public:
     inline PySmSubsetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -69,6 +72,7 @@ class PySmSheet : public PySmComponent
 public:
     PySmSheet(PySmSheetImpl* ptr);
     PySmSheet(const PySmSheetImpl& other);
+    static PySmSheet cast(const PySmPersist& src);
     static std::string className();
 public:
     inline PySmSheetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -82,6 +86,7 @@ class PySmSheetSet : public PySmSubset
 public:
     PySmSheetSet(PySmSheetSetImpl* ptr);
     PySmSheetSet(const PySmSheetSetImpl& other);
+    static PySmSheetSet cast(const PySmPersist& src);
     static std::string className();
 public:
     inline PySmSheetSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -97,6 +102,7 @@ public:
     PySmDatabase(PySmDatabaseImpl* ptr);
     PySmDatabase(const PySmDatabaseImpl& other);
     boost::python::list smObjects();
+    static PySmDatabase cast(const PySmPersist& src);
     static std::string className();
 public:
     inline PySmDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;

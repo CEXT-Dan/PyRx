@@ -17,6 +17,11 @@ This class cannot be instantiated from Python'''
         ...
 
     @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.Component :
+        '''                             '''
+        ...
+
+    @staticmethod
     def className ()-> str :
         '''                             '''
         ...
@@ -52,6 +57,11 @@ This class cannot be instantiated from Python'''
         ...
 
     @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.Database :
+        '''                             '''
+        ...
+
+    @staticmethod
     def className ()-> str :
         '''                             '''
         ...
@@ -66,6 +76,11 @@ class Persist(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
 This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.Persist :
+        '''                             '''
         ...
 
     @staticmethod
@@ -96,11 +111,10 @@ class SheetSetMgr(object):
     C++ signature :
         void close(class PySmSheetSetMgr {lvalue},class PySmDatabase {lvalue})'''
         ...
-    def closeAll (self, *args, **kwargs)-> None :
-        '''closeAll( (SheetSetMgr)arg1) -> None :
 
-    C++ signature :
-        void closeAll(class PySmSheetSetMgr {lvalue})'''
+    @staticmethod
+    def closeAll ()-> None :
+        '''                             '''
         ...
     def createDatabase (self, *args, **kwargs)-> PySm.Database :
         '''createDatabase( (SheetSetMgr)arg1, (str)arg2) -> Database :
