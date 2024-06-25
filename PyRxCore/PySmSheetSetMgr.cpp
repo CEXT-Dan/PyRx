@@ -28,8 +28,9 @@ void makePySmPersistWrapper()
 }
 
 PySmPersist::PySmPersist(PySmPersistImpl* ptr)
-    : m_pyImp(new PySmPersistImpl(ptr->impObj()))
 {
+    if (ptr != nullptr)
+        m_pyImp.reset(new PySmPersistImpl(ptr->impObj()));
 }
 
 PySmPersist::PySmPersist(const PySmPersistImpl& other)
@@ -49,7 +50,7 @@ PySmPersist PySmPersist::cast(const PySmPersist& src)
 
 std::string PySmPersist::className()
 {
-    return "IAcSmPersist";
+    return "AcSmPersist";
 }
 
 PySmPersistImpl* PySmPersist::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -112,7 +113,7 @@ PySmComponent PySmComponent::cast(const PySmPersist& src)
 
 std::string PySmComponent::className()
 {
-    return "IAcSmPersist";
+    return "AcSmPersist";
 }
 
 PySmComponentImpl* PySmComponent::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -151,7 +152,7 @@ PySmSubset PySmSubset::cast(const PySmPersist& src)
 
 std::string PySmSubset::className()
 {
-    return "IAcSmSubset";
+    return "AcSmSubset";
 }
 
 PySmSubsetImpl* PySmSubset::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -190,7 +191,7 @@ PySmSheet PySmSheet::cast(const PySmPersist& src)
 
 std::string PySmSheet::className()
 {
-    return "IAcSmSheet";
+    return "AcSmSheet";
 }
 
 PySmSheetImpl* PySmSheet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -229,7 +230,7 @@ PySmSheetSet PySmSheetSet::cast(const PySmPersist& src)
 
 std::string PySmSheetSet::className()
 {
-    return "IAcSmSheetSet";
+    return "AcSmSheetSet";
 }
 
 PySmSheetSetImpl* PySmSheetSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -279,7 +280,7 @@ PySmDatabase PySmDatabase::cast(const PySmPersist& src)
 
 std::string PySmDatabase::className()
 {
-    return "IAcSmDatabase";
+    return "AcSmDatabase";
 }
 
 PySmDatabaseImpl* PySmDatabase::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -374,7 +375,7 @@ boost::python::list PySmSheetSetMgr::databases() const
 
 std::string PySmSheetSetMgr::className()
 {
-    return "IAcSmSheetSetMgr";
+    return "AcSmSheetSetMgr";
 }
 
 PySmSheetSetMgrImpl* PySmSheetSetMgr::impObj(const std::source_location& src /*= std::source_location::current()*/) const

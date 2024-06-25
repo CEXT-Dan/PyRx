@@ -93,6 +93,38 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
 
+class Sheet(Component):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.Sheet :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class SheetSet(Subset):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.SheetSet :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class SheetSetMgr(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''__init__( (object)arg1) -> None :
@@ -156,4 +188,20 @@ createDatabase( (SheetSetMgr)arg1, (str)arg2, (str)arg3, (bool)arg4) -> Database
 
     C++ signature :
         class PySmDatabase openDatabase(class PySmSheetSetMgr {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        ...
+
+class Subset(Component):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.Subset :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
         ...
