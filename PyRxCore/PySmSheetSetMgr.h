@@ -72,6 +72,12 @@ class PySmSheet : public PySmComponent
 public:
     PySmSheet(PySmSheetImpl* ptr);
     PySmSheet(const PySmSheetImpl& other);
+
+    std::string     getNumber() const;
+    void            setNumber(const std::string& csVal);
+    std::string     getTitle() const;
+    void            setTitle(const std::string& csVal);
+
     static PySmSheet cast(const PySmPersist& src);
     static std::string className();
 public:
@@ -92,7 +98,6 @@ public:
     inline PySmSheetSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //-----------------------------------------------------------------------------------------
 //PySmSmDatabase
 void makePySmDatabaseWrapper();
@@ -101,7 +106,20 @@ class PySmDatabase : public PySmComponent
 public:
     PySmDatabase(PySmDatabaseImpl* ptr);
     PySmDatabase(const PySmDatabaseImpl& other);
-    boost::python::list smObjects();
+
+
+    //void                loadFromFile(const CString& filename);
+    //CString             getFileName() const;
+    //void                setFileName(const CString& filename);
+    //CString             getTemplateDstFileName() const;
+    //PySmSheetSetImpl    getSheetSet() const;
+    //AcSmLockStatus      getLockStatus() const;
+    //boost::python::tuple getLockOwnerInfo() const;
+
+    void                lockDb();
+    void                unlockDb(bool commit);
+
+    boost::python::list getPersistObjects();
     static PySmDatabase cast(const PySmPersist& src);
     static std::string className();
 public:

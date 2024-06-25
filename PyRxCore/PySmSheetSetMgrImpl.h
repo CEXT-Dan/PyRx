@@ -102,6 +102,12 @@ class PySmSheetImpl : public PySmComponentImpl
 public:
     explicit PySmSheetImpl(IAcSmSheet* other);
     virtual ~PySmSheetImpl() override = default;
+
+    CString     GetNumber() const;
+    void        SetNumber(const CString& csVal);
+    CString     GetTitle() const;
+    void        SetTitle(const CString& csVal);
+
     IAcSmSheet* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

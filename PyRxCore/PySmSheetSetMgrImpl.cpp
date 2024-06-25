@@ -240,6 +240,32 @@ PySmSheetImpl::PySmSheetImpl(IAcSmSheet* other)
 {
 }
 
+CString PySmSheetImpl::GetNumber() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetNumber(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PySmSheetImpl::SetNumber(const CString& csVal)
+{
+    _bstr_t bstrVal(csVal);
+    PyThrowBadHr(impObj()->SetNumber(bstrVal));
+}
+
+CString PySmSheetImpl::GetTitle() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetTitle(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PySmSheetImpl::SetTitle(const CString& csVal)
+{
+    _bstr_t bstrVal(csVal);
+    PyThrowBadHr(impObj()->SetTitle(bstrVal));
+}
+
 IAcSmSheet* PySmSheetImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
