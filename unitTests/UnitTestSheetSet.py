@@ -1,6 +1,6 @@
-import os
 import unittest
 import testcfg
+import dbc
 
 import PyRx as Rx
 import PyGe as Ge
@@ -17,17 +17,16 @@ class TestSheetSet(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestSheetSet, self).__init__(*args, **kwargs)
 
-    def test_binary_chunk(self):
-        args = [(Db.DxfCode.kDxfBinaryChunk, bytes(b'mystring1'))]
-        expected = [(Db.DxfCode.kDxfBinaryChunk, bytes(b'mystring1'))]
-        result = Db.Core.resbufTest(args)
-        self.assertEqual(result, expected)
-        
-    def test_empty_string(self):
-        args = [(Rx.LispType.kText, None)]
-        expected = [(Rx.LispType.kText, "")]
-        result = Db.Core.resbufTest(args)
-        self.assertEqual(result, expected)
+    def test_cast_to_sheet(self):
+        path = dbc.mediapath + "SSTest.dst"
+        mgr = Sm.SheetSetMgr()
+        smdb = mgr.openDatabase(path)
+        for smo in smdb.getPersistObjects():
+            if Sm.Sheet.className() == smo.getTypeName():
+                sheet = Sm.Sheet.cast(smo)
+                self.assertGreater(len(sheet.getTitle()), 0)
+                self.assertGreater(len(sheet.getTitle()), 0)
+        mgr.closeAll()
 
 
 def sheetSetTester():
