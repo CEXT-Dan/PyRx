@@ -3,6 +3,7 @@
 
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
 
+class PyDbObject;
 class PySmPersistImpl;
 class PySmSheetSetMgrImpl;
 class PySmComponentImpl;
@@ -15,7 +16,7 @@ class PySmPersist
 {
 public:
     PySmPersist(PySmPersistImpl* ptr);
-    PySmPersist(PySmPersistImpl& other);
+    PySmPersist(const PySmPersistImpl& other);
 
     std::string        getTypeName() const;
     static std::string className();
@@ -31,7 +32,12 @@ class PySmComponent : public PySmPersist
 {
 public:
     PySmComponent(PySmComponentImpl* ptr);
-    PySmComponent(PySmComponentImpl& other);
+    PySmComponent(const PySmComponentImpl& other);
+
+    std::string     getName() const;
+    void            setName(const std::string& csName);
+    std::string     getDesc() const;
+    void            setDesc(const std::string& csDesc);
 ;
     static std::string className();
 public:
@@ -46,13 +52,12 @@ class PySmDatabase : public PySmComponent
 {
 public:
     PySmDatabase(PySmDatabaseImpl* ptr);
-    PySmDatabase(PySmDatabaseImpl& other);
-    ;
+    PySmDatabase(const PySmDatabaseImpl& other);
+    boost::python::list smObjects();
     static std::string className();
 public:
     inline PySmDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 
 //-----------------------------------------------------------------------------------------
@@ -62,8 +67,16 @@ class PySmSheetSetMgr
 {
 public:
     PySmSheetSetMgr();
-    boost::python::list databases() const;
-    static std::string className();
+    PySmDatabase         createDatabase1(const std::string& filename);
+    PySmDatabase         createDatabase2(const std::string& filename, const std::string& templatefilename, bool bAlwaysCreate);
+    PySmDatabase         openDatabase(const std::string& filename);
+    PySmDatabase         findOpenDatabase(const std::string& filename);
+    void                 closeAll();
+    void                 close(PySmDatabase& db);
+    boost::python::tuple getParentSheetSet(const std::string& dwg, const std::string& layout);
+    boost::python::tuple getSheetFromLayout(PyDbObject& pAcDbLayout);
+    boost::python::list  databases() const;
+    static std::string   className();
 public:
     inline PySmSheetSetMgrImpl* impObj(const std::source_location& src = std::source_location::current()) const;
     std::shared_ptr<PySmSheetSetMgrImpl> m_pyImp = nullptr;

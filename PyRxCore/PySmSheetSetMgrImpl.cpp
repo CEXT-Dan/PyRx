@@ -38,7 +38,6 @@ static IAcadObject* GetIAcadObjectFromAcDbObject(AcDbObject* pSrcObject)
     return nullptr;
 }
 
-
 //----------------------------------------------------------------------------------------
 //PySmPersist
 PySmPersistImpl::PySmPersistImpl(IAcSmPersist* other)
@@ -339,7 +338,7 @@ PySmSheetSetMgrImpl::PySmSheetSetMgrImpl()
     if (m_pimpl == nullptr)
     {
         if (FAILED(m_pimpl.CreateInstance(CLSID_AcSmSheetSetMgr)))
-            acutPrintf(_T("\n Error Cannot get sheet set manager!!"));
+            acutPrintf(_T("\nError Cannot get sheet set manager!!: "));
     }
 }
 
@@ -403,7 +402,7 @@ std::pair<PySmDatabaseImpl, PySmSheetImpl> PySmSheetSetMgrImpl::GetSheetFromLayo
         throw PyNullObject();
     IAcSmDatabase* pAxDb = nullptr;
     IAcSmSheet* pSheet = nullptr;
-    IAcadObjectPtr pAxLayout (GetIAcadObjectFromAcDbObject(pAcDbLayout));
+    IAcadObjectPtr pAxLayout(GetIAcadObjectFromAcDbObject(pAcDbLayout));
     PyThrowBadHr(impObj()->GetSheetFromLayout(pAxLayout, &pSheet, &pAxDb));
     return std::pair(PySmDatabaseImpl(pAxDb), PySmSheetImpl(pSheet));
 }

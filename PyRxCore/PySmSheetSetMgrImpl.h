@@ -34,12 +34,12 @@ public:
     void                InitNew(const PySmPersistImpl& owner);
     PySmPersistImpl     GetOwner() const;
     void                SetOwner(const PySmPersistImpl& owner);
-    PySmDatabaseImpl  GetDatabase() const;
+    PySmDatabaseImpl    GetDatabase() const;
     PySmObjectIdImpl    GetObjectId() const;
     void                swap(PySmPersistImpl& other);
 
 public:
-    IAcSmPersist*       impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcSmPersist* impObj(const std::source_location& src = std::source_location::current()) const;
     IAcSmPersistPtr     m_pimpl;
 };
 
@@ -51,12 +51,12 @@ public:
     explicit PySmObjectIdImpl(IAcSmObjectId* other);
     virtual ~PySmObjectIdImpl() = default;
     CString             GetHandle() const;
-    PySmDatabaseImpl  GetDatabase() const;
+    PySmDatabaseImpl    GetDatabase() const;
     PySmPersistImpl     GetPersistObject() const;
     PySmPersistImpl     GetOwner() const;
     bool                IsEqual(const PySmObjectIdImpl& other);
     bool                IsValid();
-    IAcSmObjectId*      impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcSmObjectId* impObj(const std::source_location& src = std::source_location::current()) const;
     IAcSmObjectIdPtr m_pimpl;
 };
 
@@ -135,8 +135,8 @@ public:
     PySmDatabaseImpl  CreateDatabase(const CString& filename, const CString& templatefilename, bool bAlwaysCreate);
     PySmDatabaseImpl  OpenDatabase(const CString& filename);
     PySmDatabaseImpl  FindOpenDatabase(const CString& filename);
-    void                CloseAll();
-    void                Close(PySmDatabaseImpl& db);
+    void              CloseAll();
+    void              Close(PySmDatabaseImpl& db);
 
     //int Register(IAcSmEvents eventHandler);
     //void Unregister(int cookie);
