@@ -42,7 +42,8 @@ static IAcadObject* GetIAcadObjectFromAcDbObject(AcDbObject* pSrcObject)
 //PySmPersist
 PySmPersistImpl::PySmPersistImpl(IAcSmPersist* other)
 {
-    m_pimpl.Attach(other);
+    if (other != nullptr)
+        m_pimpl.Attach(other);
 }
 
 bool PySmPersistImpl::GetIsDirty() const
@@ -107,7 +108,8 @@ IAcSmPersist* PySmPersistImpl::impObj(const std::source_location& src /*= std::s
 //IAcSmObjectId
 PySmObjectIdImpl::PySmObjectIdImpl(IAcSmObjectId* other)
 {
-    m_pimpl.Attach(other);
+    if (other != nullptr)
+        m_pimpl.Attach(other);
 }
 
 CString PySmObjectIdImpl::GetHandle() const

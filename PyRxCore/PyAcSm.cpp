@@ -11,6 +11,9 @@ BOOST_PYTHON_MODULE(PySm)
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
     makePySmPersistWrapper();
     makePySmComponentWrapper();
+    makePySmSubsetWrapper();
+    makePySmSheetWrapper();
+    makePySmSheetSetWrapper();
     makePySmDatabaseWrapper();
     makePySmSheetSetMgrWrapper();
 #endif
