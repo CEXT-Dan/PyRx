@@ -65,11 +65,23 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
         '''                             '''
         ...
-    def smObjects (self, *args, **kwargs)-> list :
-        '''smObjects( (Database)arg1) -> list :
+    def getPersistObjects (self, *args, **kwargs)-> list :
+        '''getPersistObjects( (Database)arg1) -> list :
 
     C++ signature :
-        class boost::python::list smObjects(class PySmDatabase {lvalue})'''
+        class boost::python::list getPersistObjects(class PySmDatabase {lvalue})'''
+        ...
+    def lockDb (self, *args, **kwargs)-> None :
+        '''lockDb( (Database)arg1) -> None :
+
+    C++ signature :
+        void lockDb(class PySmDatabase {lvalue})'''
+        ...
+    def unlockDb (self, *args, **kwargs)-> None :
+        '''unlockDb( (Database)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void unlockDb(class PySmDatabase {lvalue},bool)'''
         ...
 
 class Persist(object):
@@ -107,6 +119,30 @@ This class cannot be instantiated from Python'''
     @staticmethod
     def className ()-> str :
         '''                             '''
+        ...
+    def getNumber (self, *args, **kwargs)-> str :
+        '''getNumber( (Sheet)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getNumber(class PySmSheet {lvalue})'''
+        ...
+    def getTitle (self, *args, **kwargs)-> str :
+        '''getTitle( (Sheet)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getTitle(class PySmSheet {lvalue})'''
+        ...
+    def setNumber (self, *args, **kwargs)-> None :
+        '''setNumber( (Sheet)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setNumber(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        ...
+    def setTitle (self, *args, **kwargs)-> None :
+        '''setTitle( (Sheet)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setTitle(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
         ...
 
 class SheetSet(Subset):

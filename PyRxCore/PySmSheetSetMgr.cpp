@@ -169,6 +169,10 @@ void makePySmSheetWrapper()
 {
     PyDocString DS("Sheet");
     class_<PySmSheet, bases<PySmComponent>>("Sheet", boost::python::no_init)
+        .def("getNumber", &PySmSheet::getNumber)
+        .def("setNumber", &PySmSheet::setNumber)
+        .def("getTitle", &PySmSheet::getTitle)
+        .def("setTitle", &PySmSheet::setTitle)
         .def("cast", &PySmSheet::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheet::className, DS.SARGS()).staticmethod("className")
         ;
@@ -182,6 +186,26 @@ PySmSheet::PySmSheet(PySmSheetImpl* ptr)
 PySmSheet::PySmSheet(const PySmSheetImpl& other)
     : PySmComponent(other)
 {
+}
+
+std::string PySmSheet::getNumber() const
+{
+    return wstr_to_utf8(impObj()->GetNumber());
+}
+
+void PySmSheet::setNumber(const std::string& csVal)
+{
+    impObj()->SetNumber(utf8_to_wstr(csVal).c_str());
+}
+
+std::string PySmSheet::getTitle() const
+{
+    return wstr_to_utf8(impObj()->GetTitle());
+}
+
+void PySmSheet::setTitle(const std::string& csVal)
+{
+    impObj()->SetTitle(utf8_to_wstr(csVal).c_str());
 }
 
 PySmSheet PySmSheet::cast(const PySmPersist& src)
@@ -247,7 +271,9 @@ void makePySmDatabaseWrapper()
 {
     PyDocString DS("Database");
     class_<PySmDatabase, bases<PySmComponent>>("Database", boost::python::no_init)
-        .def("smObjects", &PySmDatabase::smObjects)
+        .def("lockDb", &PySmDatabase::lockDb)
+        .def("unlockDb", &PySmDatabase::unlockDb)
+        .def("getPersistObjects", &PySmDatabase::getPersistObjects)
         .def("cast", &PySmDatabase::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmDatabase::className, DS.SARGS()).staticmethod("className")
         ;
@@ -263,7 +289,17 @@ PySmDatabase::PySmDatabase(const PySmDatabaseImpl& other)
 {
 }
 
-boost::python::list PySmDatabase::smObjects()
+void PySmDatabase::lockDb()
+{
+    impObj()->LockDb();
+}
+
+void PySmDatabase::unlockDb(bool commit)
+{
+    impObj()->UnlockDb(commit);
+}
+
+boost::python::list PySmDatabase::getPersistObjects()
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
