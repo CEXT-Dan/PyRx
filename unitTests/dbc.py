@@ -3,7 +3,10 @@ import PyDb as Db
 
 dbs = {}
 
+mediapath = os.getcwd() + "\\testmedia\\"
+
 def loaddbs():
+    global mediapath
     mediapath = os.getcwd() + "\\testmedia\\"
     file_06457 = Db.HostApplicationServices().findFile(mediapath + "06457.dwg")
     dbs["06457"] = Db.Database(False, True)
