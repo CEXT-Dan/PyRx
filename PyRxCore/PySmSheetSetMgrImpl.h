@@ -81,8 +81,9 @@ public:
 class PySmCustomPropertyValueImpl : public PySmPersistImpl
 {
 public:
-    explicit PySmCustomPropertyValueImpl(IAcSmCustomPropertyValue* other);
-    explicit PySmCustomPropertyValueImpl(const PySmCustomPropertyValueImpl& other) = default;
+    PySmCustomPropertyValueImpl();
+    PySmCustomPropertyValueImpl(IAcSmCustomPropertyValue* other);
+    PySmCustomPropertyValueImpl(const PySmCustomPropertyValueImpl& other) = default;
     virtual ~PySmCustomPropertyValueImpl() override = default;
     AcValue         GetValue() const;
     void            SetValue(const AcValue& acVal);
@@ -109,7 +110,6 @@ public:
     std::vector<std::pair<CString, AcValue>> GetPropertyValues() const;
     IAcSmCustomPropertyBag* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //-----------------------------------------------------------------------------------------
 //PySmComponent

@@ -3,6 +3,7 @@
 
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
 
+class PyDbAcValue;
 class PyDbObject;
 class PySmPersistImpl;
 class PySmObjectIdImpl;
@@ -12,6 +13,8 @@ class PySmDatabaseImpl;
 class PySmSubsetImpl;
 class PySmSheetSetImpl;
 class PySmSheetImpl;
+class PySmCustomPropertyValueImpl;
+class PySmCustomPropertyBagImpl;
 
 class PySmObjectId;
 class PySmDatabase;
@@ -60,6 +63,45 @@ public:
     std::shared_ptr<PySmObjectIdImpl> m_pyImp = nullptr;
 };
 
+//-----------------------------------------------------------------------------------------
+//PySmFileReference
+
+//-----------------------------------------------------------------------------------------
+//PySmCustomPropertyValue
+void makePySmCustomPropertyValueWrapper();
+class PySmCustomPropertyValue : public PySmPersist
+{
+public:
+    PySmCustomPropertyValue();
+    PySmCustomPropertyValue(PySmCustomPropertyValueImpl* ptr);
+    PySmCustomPropertyValue(const PySmCustomPropertyValue& other);
+
+    PyDbAcValue     getValue() const;
+    void            setValue(const PyDbAcValue& acVal);
+    //PropertyFlags   getFlags() const;
+    //void            setFlags(PropertyFlags flags);
+
+    static PySmCustomPropertyValue cast(const PySmPersist& src);
+    static std::string   className();
+public:
+    inline PySmCustomPropertyValueImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------------
+//PySmCustomPropertyBag
+void makePySmCustomPropertyBagWrapper();
+class PySmCustomPropertyBag : public PySmPersist
+{
+public:
+    PySmCustomPropertyBag(PySmCustomPropertyBagImpl* ptr);
+    PySmCustomPropertyBag(const PySmCustomPropertyBagImpl& other);
+
+    static PySmCustomPropertyBag cast(const PySmPersist& src);
+    static std::string   className();
+public:
+    inline PySmCustomPropertyBagImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 //-----------------------------------------------------------------------------------------
 //PySmComponent

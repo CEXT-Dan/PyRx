@@ -10,6 +10,8 @@ BOOST_PYTHON_MODULE(PySm)
 
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
     makePySmPersistWrapper();
+    makePySmCustomPropertyValueWrapper();
+    makePySmCustomPropertyBagWrapper();
     makePySmComponentWrapper();
     makePySmSubsetWrapper();
     makePySmSheetWrapper();
