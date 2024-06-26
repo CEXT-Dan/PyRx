@@ -2,7 +2,6 @@
 
 
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
-
 class PyDbAcValue;
 class PyDbObject;
 class PySmPersistImpl;
@@ -18,6 +17,16 @@ class PySmCustomPropertyBagImpl;
 
 class PySmObjectId;
 class PySmDatabase;
+
+//aligned with COM's PropertyFlags
+enum class SmPropertyFlags : int 
+{
+    EMPTY = 0,
+    CUSTOM_SHEETSET_PROP = 1,
+    CUSTOM_SHEET_PROP = 2,
+    CUSTOM_SUBSET_PROP = 4,
+    IS_CHILD = 8
+};
 
 
 //-----------------------------------------------------------------------------------------
@@ -76,10 +85,11 @@ public:
     PySmCustomPropertyValue(PySmCustomPropertyValueImpl* ptr);
     PySmCustomPropertyValue(const PySmCustomPropertyValueImpl& other);
 
+    //TODO these should be python objects
     PyDbAcValue     getValue() const;
     void            setValue(const PyDbAcValue& acVal);
-    //PropertyFlags   getFlags() const;
-    //void            setFlags(PropertyFlags flags);
+    SmPropertyFlags getFlags() const;
+    void            setFlags(SmPropertyFlags flags);
 
     static PySmCustomPropertyValue cast(const PySmPersist& src);
     static std::string   className();

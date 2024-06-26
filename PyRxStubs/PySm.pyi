@@ -113,11 +113,23 @@ class CustomPropertyValue(Persist):
     def className ()-> str :
         '''                             '''
         ...
+    def getFlags (self, *args, **kwargs)-> PySm.PropertyFlags :
+        '''getFlags( (CustomPropertyValue)arg1) -> PropertyFlags :
+
+    C++ signature :
+        enum SmPropertyFlags getFlags(class PySmCustomPropertyValue {lvalue})'''
+        ...
     def getValue (self, *args, **kwargs)-> PyDb.AcValue :
         '''getValue( (CustomPropertyValue)arg1) -> AcValue :
 
     C++ signature :
         class PyDbAcValue getValue(class PySmCustomPropertyValue {lvalue})'''
+        ...
+    def setFlags (self, *args, **kwargs)-> None :
+        '''setFlags( (CustomPropertyValue)arg1, (PropertyFlags)arg2) -> None :
+
+    C++ signature :
+        void setFlags(class PySmCustomPropertyValue {lvalue},enum SmPropertyFlags)'''
         ...
     def setValue (self, *args, **kwargs)-> None :
         '''setValue( (CustomPropertyValue)arg1, (AcValue)arg2) -> None :
@@ -228,6 +240,23 @@ This class cannot be instantiated from Python'''
 
     C++ signature :
         void setOwner(class PySmPersist {lvalue},class PySmPersist)'''
+        ...
+
+class PropertyFlags(object):
+    def kEmpty (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kIsChild (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kSheetProp (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kSheetSetProp (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kSubSetProp (self, *args, **kwargs)-> None :
+        '''None'''
         ...
 
 class Sheet(Component):
