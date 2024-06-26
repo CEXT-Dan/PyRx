@@ -50,6 +50,76 @@ This class cannot be instantiated from Python'''
         void setName(class PySmComponent {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
         ...
 
+class CustomPropertyBag(Persist):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.CustomPropertyBag :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+    def getProperties (self, *args, **kwargs)-> list :
+        '''getProperties( (CustomPropertyBag)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getProperties(class PySmCustomPropertyBag {lvalue})'''
+        ...
+    def getPropertyValues (self, *args, **kwargs)-> list :
+        '''getPropertyValues( (CustomPropertyBag)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getPropertyValues(class PySmCustomPropertyBag {lvalue})'''
+        ...
+    def getValue (self, *args, **kwargs)-> PySm.CustomPropertyValue :
+        '''getValue( (CustomPropertyBag)arg1, (str)arg2) -> CustomPropertyValue :
+
+    C++ signature :
+        class PySmCustomPropertyValue getValue(class PySmCustomPropertyBag {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        ...
+    def setValue (self, *args, **kwargs)-> None :
+        '''setValue( (CustomPropertyBag)arg1, (str)arg2, (CustomPropertyValue)arg3) -> None :
+
+    C++ signature :
+        void setValue(class PySmCustomPropertyBag {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PySmCustomPropertyValue)'''
+        ...
+
+class CustomPropertyValue(Persist):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.CustomPropertyValue :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+    def getValue (self, *args, **kwargs)-> PyDb.AcValue :
+        '''getValue( (CustomPropertyValue)arg1) -> AcValue :
+
+    C++ signature :
+        class PyDbAcValue getValue(class PySmCustomPropertyValue {lvalue})'''
+        ...
+    def setValue (self, *args, **kwargs)-> None :
+        '''setValue( (CustomPropertyValue)arg1, (AcValue)arg2) -> None :
+
+    C++ signature :
+        void setValue(class PySmCustomPropertyValue {lvalue},class PyDbAcValue)'''
+        ...
+
 class Database(Component):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception

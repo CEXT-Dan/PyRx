@@ -180,7 +180,7 @@ PySmCustomPropertyValue::PySmCustomPropertyValue(PySmCustomPropertyValueImpl* pt
 {
 }
 
-PySmCustomPropertyValue::PySmCustomPropertyValue(const PySmCustomPropertyValue& other)
+PySmCustomPropertyValue::PySmCustomPropertyValue(const PySmCustomPropertyValueImpl& other)
     : PySmPersist(other)
 {
 }
@@ -219,7 +219,10 @@ void makePySmCustomPropertyBagWrapper()
 {
     PyDocString DS("CustomPropertyBag");
     class_<PySmCustomPropertyBag, bases<PySmPersist>>("CustomPropertyBag", boost::python::no_init)
-
+        .def("getValue", &PySmCustomPropertyBag::getProperty)
+        .def("setValue", &PySmCustomPropertyBag::setProperty)
+        .def("getProperties", &PySmCustomPropertyBag::getProperties)
+        .def("getPropertyValues", &PySmCustomPropertyBag::getPropertyValues)
         .def("cast", &PySmCustomPropertyBag::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmCustomPropertyBag::className, DS.SARGS()).staticmethod("className")
         ;
@@ -233,6 +236,34 @@ PySmCustomPropertyBag::PySmCustomPropertyBag(PySmCustomPropertyBagImpl* ptr)
 PySmCustomPropertyBag::PySmCustomPropertyBag(const PySmCustomPropertyBagImpl& other)
     : PySmPersist(other)
 {
+}
+
+PySmCustomPropertyValue PySmCustomPropertyBag::getProperty(const std::string& propName) const
+{
+    return PySmCustomPropertyValue(impObj()->GetProperty(utf8_to_wstr(propName).c_str()));
+}
+
+void PySmCustomPropertyBag::setProperty(const std::string& propName, const PySmCustomPropertyValue& prop)
+{
+    impObj()->SetProperty(utf8_to_wstr(propName).c_str(), *prop.impObj());
+}
+
+boost::python::list PySmCustomPropertyBag::getProperties() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (auto& i : impObj()->GetProperties())
+        pylist.append(boost::python::make_tuple(wstr_to_utf8(i.first), PySmCustomPropertyValue(i.second)));
+    return pylist;
+}
+
+boost::python::list PySmCustomPropertyBag::getPropertyValues() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (auto& i : impObj()->GetPropertyValues())
+        pylist.append(boost::python::make_tuple(wstr_to_utf8(i.first), PyDbAcValue(i.second)));
+    return pylist;
 }
 
 PySmCustomPropertyBag PySmCustomPropertyBag::cast(const PySmPersist& src)
