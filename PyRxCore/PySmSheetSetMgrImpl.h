@@ -145,6 +145,10 @@ public:
     explicit PySmSheetSetImpl(IAcSmSheetSet* other);
     virtual ~PySmSheetSetImpl() override = default;
     IAcSmSheetSet* impObj(const std::source_location& src = std::source_location::current()) const;
+#if defined(_ARXTARGET)
+    IAcSmSheetSet2* impObj2(const std::source_location& src = std::source_location::current()) const;
+#endif
+
 };
 
 //-----------------------------------------------------------------------------------------
