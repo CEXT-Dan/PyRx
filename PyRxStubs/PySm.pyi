@@ -179,6 +179,12 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getRevisionDate(class PySmSheet {lvalue})'''
         ...
+    def getRevisionNumber (self, *args, **kwargs)-> str :
+        '''getRevisionNumber( (Sheet)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getRevisionNumber(class PySmSheet {lvalue})'''
+        ...
     def getTitle (self, *args, **kwargs)-> str :
         '''getTitle( (Sheet)arg1) -> str :
 
@@ -214,6 +220,12 @@ This class cannot be instantiated from Python'''
 
     C++ signature :
         void setRevisionDate(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        ...
+    def setRevisionNumber (self, *args, **kwargs)-> None :
+        '''setRevisionNumber( (Sheet)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setRevisionNumber(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
         ...
     def setTitle (self, *args, **kwargs)-> None :
         '''setTitle( (Sheet)arg1, (str)arg2) -> None :

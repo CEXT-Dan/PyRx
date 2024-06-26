@@ -318,6 +318,29 @@ void PySmSheetImpl::SetDoNotPlot(bool flag)
     PyThrowBadHr(impObj()->SetDoNotPlot(flag? VARIANT_TRUE: VARIANT_FALSE));
 }
 
+CString PySmSheetImpl::GetRevisionNumber() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#endif
+#if defined(_ARXTARGET)
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj2()->GetRevisionNumber(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif
+}
+
+void PySmSheetImpl::SetRevisionNumber(const CString& csVal)
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#endif
+#if defined(_ARXTARGET)
+    _bstr_t bstrVal(csVal);
+    PyThrowBadHr(impObj2()->SetRevisionNumber(bstrVal));
+#endif
+}
+
 CString PySmSheetImpl::GetRevisionDate() const
 {
 #if defined(_BRXTARGET)
