@@ -1,9 +1,11 @@
 #include "stdafx.h"
 #include "PySmSheetSetMgr.h"
 
+
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
 #include "PySmSheetSetMgrImpl.h"
 #include "PyDbObject.h"
+#include "PyDbEval.h"
 
 using namespace boost::python;
 
@@ -154,6 +156,101 @@ PySmObjectIdImpl* PySmObjectId::impObj(const std::source_location& src /*= std::
         throw PyNullObject(src);
         }
     return m_pyImp.get();
+}
+//-----------------------------------------------------------------------------------------
+//PySmCustomPropertyValue
+void makePySmCustomPropertyValueWrapper()
+{
+    PyDocString DS("CustomPropertyValue");
+    class_<PySmCustomPropertyValue, bases<PySmPersist>>("CustomPropertyValue")
+        .def("getValue", &PySmCustomPropertyValue::getValue)
+        .def("setValue", &PySmCustomPropertyValue::setValue)
+        .def("cast", &PySmCustomPropertyValue::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmCustomPropertyValue::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmCustomPropertyValue::PySmCustomPropertyValue()
+    : PySmCustomPropertyValue(new PySmCustomPropertyValueImpl())
+{
+}
+
+PySmCustomPropertyValue::PySmCustomPropertyValue(PySmCustomPropertyValueImpl* ptr)
+    : PySmPersist(ptr)
+{
+}
+
+PySmCustomPropertyValue::PySmCustomPropertyValue(const PySmCustomPropertyValue& other)
+    : PySmPersist(other)
+{
+}
+
+PyDbAcValue PySmCustomPropertyValue::getValue() const
+{
+    return PyDbAcValue(impObj()->GetValue());
+}
+
+void PySmCustomPropertyValue::setValue(const PyDbAcValue& acVal)
+{
+    impObj()->SetValue(*acVal.impObj());
+}
+
+PySmCustomPropertyValue PySmCustomPropertyValue::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmCustomPropertyValue>(src);
+}
+
+std::string PySmCustomPropertyValue::className()
+{
+    return "AcSmCustomPropertyValue";
+}
+
+PySmCustomPropertyValueImpl* PySmCustomPropertyValue::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmCustomPropertyValueImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmCustomPropertyBag
+void makePySmCustomPropertyBagWrapper()
+{
+    PyDocString DS("CustomPropertyBag");
+    class_<PySmCustomPropertyBag, bases<PySmPersist>>("CustomPropertyBag", boost::python::no_init)
+
+        .def("cast", &PySmCustomPropertyBag::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmCustomPropertyBag::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmCustomPropertyBag::PySmCustomPropertyBag(PySmCustomPropertyBagImpl* ptr)
+    : PySmPersist(ptr)
+{
+}
+
+PySmCustomPropertyBag::PySmCustomPropertyBag(const PySmCustomPropertyBagImpl& other)
+    : PySmPersist(other)
+{
+}
+
+PySmCustomPropertyBag PySmCustomPropertyBag::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmCustomPropertyBag>(src);
+}
+
+std::string PySmCustomPropertyBag::className()
+{
+    return "AcSmCustomPropertyBag";
+}
+
+PySmCustomPropertyBagImpl* PySmCustomPropertyBag::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmCustomPropertyBagImpl*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------

@@ -209,6 +209,12 @@ PySmCustomPropertyValueImpl::PySmCustomPropertyValueImpl(IAcSmCustomPropertyValu
 {
 }
 
+PySmCustomPropertyValueImpl::PySmCustomPropertyValueImpl()
+    : PySmPersistImpl(nullptr)
+{
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmCustomPropertyValue));
+}
+
 AcValue PySmCustomPropertyValueImpl::GetValue() const
 {
     //TODO: TEST
