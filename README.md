@@ -41,12 +41,8 @@ Autolisp:<br/>
 
 ```Python
 #imports 
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
+from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed, Sm
+import traceback
 
  # these four functions are called as they would be in ARX
 def OnPyInitApp():
@@ -91,13 +87,7 @@ def PyRxCmd_pydoit():
 #ActiveX sample:
 
 ```Python
-from pyrx_impx import Rx
-from pyrx_impx import Ge
-from pyrx_impx import Gi
-from pyrx_impx import Db
-from pyrx_impx import Ap
-from pyrx_impx import Ed
-from pyrx_impx import Ax
+from pyrx_impx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 import traceback
 
 def PyRxCmd_makeTable():
