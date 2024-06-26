@@ -84,6 +84,26 @@ This class cannot be instantiated from Python'''
         void unlockDb(class PySmDatabase {lvalue},bool)'''
         ...
 
+class LockStatus(object):
+    def kLockedAccessDenied (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kLockedLocal (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kLockedNotConnected (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kLockedReadOnly (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kLockedRemote (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kUnLocked (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class Persist(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
