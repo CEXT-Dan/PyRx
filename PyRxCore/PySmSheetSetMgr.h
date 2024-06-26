@@ -74,7 +74,7 @@ class PySmCustomPropertyValue : public PySmPersist
 public:
     PySmCustomPropertyValue();
     PySmCustomPropertyValue(PySmCustomPropertyValueImpl* ptr);
-    PySmCustomPropertyValue(const PySmCustomPropertyValue& other);
+    PySmCustomPropertyValue(const PySmCustomPropertyValueImpl& other);
 
     PyDbAcValue     getValue() const;
     void            setValue(const PyDbAcValue& acVal);
@@ -96,7 +96,10 @@ class PySmCustomPropertyBag : public PySmPersist
 public:
     PySmCustomPropertyBag(PySmCustomPropertyBagImpl* ptr);
     PySmCustomPropertyBag(const PySmCustomPropertyBagImpl& other);
-
+    PySmCustomPropertyValue getProperty(const std::string& propName) const;
+    void                    setProperty(const std::string& propName, const PySmCustomPropertyValue& prop);
+    boost::python::list     getProperties() const;
+    boost::python::list     getPropertyValues() const;
     static PySmCustomPropertyBag cast(const PySmPersist& src);
     static std::string   className();
 public:
