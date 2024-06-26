@@ -203,6 +203,86 @@ IAcSmFileReference* PySmFileReferenceImpl::impObj(const std::source_location& sr
 }
 
 //-----------------------------------------------------------------------------------------
+//PySmCustomPropertyValue
+PySmCustomPropertyValueImpl::PySmCustomPropertyValueImpl(IAcSmCustomPropertyValue* other)
+    : PySmPersistImpl(other)
+{
+}
+
+AcValue PySmCustomPropertyValueImpl::GetValue() const
+{
+    //TODO: TEST
+    _variant_t varVal = {};
+    PyThrowBadHr(impObj()->GetValue(&varVal));
+    switch (varVal.vt)
+    {
+        case VT_I2:
+            return AcValue(Adesk::Int32(varVal.iVal));
+        case VT_I4:
+            return AcValue(Adesk::Int32(varVal.lVal));
+        case VT_R4:
+            return AcValue(varVal.fltVal);
+        case VT_R8:
+            return AcValue(varVal.dblVal);
+        case VT_BSTR:
+            return AcValue(varVal.bstrVal);
+        default:
+            break;
+    }
+    return AcValue();
+}
+
+void PySmCustomPropertyValueImpl::SetValue(const AcValue& acVal)
+{
+    //TODO: TEST
+    _variant_t varVal = {};
+    switch (acVal.dataType())
+    {
+        case AcValue::kLong:
+        {
+            Adesk::Int32 val = acVal;
+            varVal = _variant_t(int32_t(val));
+        }
+        break;
+        case AcValue::kDouble:
+        {
+            double val = acVal;
+            varVal = _variant_t(val);
+        }
+        break;
+        case AcValue::kString:
+        {
+            const wchar_t* val = acVal;
+            varVal = _variant_t(val);
+        }
+        break;
+        default:
+            PyThrowBadEs(eInvalidInput);
+    }
+    PyThrowBadHr(impObj()->SetValue(varVal));
+}
+
+PropertyFlags PySmCustomPropertyValueImpl::GetFlags() const
+{
+    PropertyFlags flags;
+    PyThrowBadHr(impObj()->GetFlags(&flags));
+    return flags;
+}
+
+void PySmCustomPropertyValueImpl::SetFlags(PropertyFlags flags)
+{
+    PyThrowBadHr(impObj()->SetFlags(flags));
+}
+
+IAcSmCustomPropertyValue* PySmCustomPropertyValueImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmCustomPropertyValue*>(m_pimpl.GetInterfacePtr());
+}
+
+//-----------------------------------------------------------------------------------------
 //PySmComponent
 PySmComponentImpl::PySmComponentImpl(IAcSmComponent* other)
     : PySmPersistImpl(other)
@@ -315,15 +395,14 @@ bool PySmSheetImpl::GetDoNotPlot() const
 
 void PySmSheetImpl::SetDoNotPlot(bool flag)
 {
-    PyThrowBadHr(impObj()->SetDoNotPlot(flag? VARIANT_TRUE: VARIANT_FALSE));
+    PyThrowBadHr(impObj()->SetDoNotPlot(flag ? VARIANT_TRUE : VARIANT_FALSE));
 }
 
 CString PySmSheetImpl::GetRevisionNumber() const
 {
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
-#endif
-#if defined(_ARXTARGET)
+#elif defined(_ARXTARGET)
     _bstr_t bstrVal;
     PyThrowBadHr(impObj2()->GetRevisionNumber(&bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
@@ -334,8 +413,7 @@ void PySmSheetImpl::SetRevisionNumber(const CString& csVal)
 {
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
-#endif
-#if defined(_ARXTARGET)
+#elif defined(_ARXTARGET)
     _bstr_t bstrVal(csVal);
     PyThrowBadHr(impObj2()->SetRevisionNumber(bstrVal));
 #endif
@@ -345,8 +423,7 @@ CString PySmSheetImpl::GetRevisionDate() const
 {
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
-#endif
-#if defined(_ARXTARGET)
+#elif defined(_ARXTARGET)
     _bstr_t bstrVal;
     PyThrowBadHr(impObj2()->GetRevisionDate(&bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
@@ -357,8 +434,7 @@ void PySmSheetImpl::SetRevisionDate(const CString& csVal)
 {
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
-#endif
-#if defined(_ARXTARGET)
+#elif defined(_ARXTARGET)
     _bstr_t bstrVal(csVal);
     PyThrowBadHr(impObj2()->SetRevisionDate(bstrVal));
 #endif
@@ -368,8 +444,7 @@ CString PySmSheetImpl::GetIssuePurpose() const
 {
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
-#endif
-#if defined(_ARXTARGET)
+#elif defined(_ARXTARGET)
     _bstr_t bstrVal;
     PyThrowBadHr(impObj2()->GetIssuePurpose(&bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
@@ -380,8 +455,7 @@ void PySmSheetImpl::SetIssuePurpose(const CString& csVal)
 {
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
-#endif
-#if defined(_ARXTARGET)
+#elif defined(_ARXTARGET)
     _bstr_t bstrVal(csVal);
     PyThrowBadHr(impObj2()->SetIssuePurpose(bstrVal));
 #endif
@@ -391,8 +465,7 @@ CString PySmSheetImpl::GetCategory() const
 {
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
-#endif
-#if defined(_ARXTARGET)
+#elif defined(_ARXTARGET)
     _bstr_t bstrVal;
     PyThrowBadHr(impObj2()->GetCategory(&bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
@@ -403,8 +476,7 @@ void PySmSheetImpl::SetCategory(const CString& csVal)
 {
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
-#endif
-#if defined(_ARXTARGET)
+#elif defined(_ARXTARGET)
     _bstr_t bstrVal(csVal);
     PyThrowBadHr(impObj2()->SetCategory(bstrVal));
 #endif
