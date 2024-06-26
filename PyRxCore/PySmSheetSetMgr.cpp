@@ -294,6 +294,7 @@ void makePySmComponentWrapper()
         .def("setName", &PySmComponent::setName)
         .def("getDesc", &PySmComponent::getDesc)
         .def("setDesc", &PySmComponent::setDesc)
+        .def("getCustomPropertyBag", &PySmComponent::getCustomPropertyBag)
         .def("cast", &PySmComponent::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmComponent::className, DS.SARGS()).staticmethod("className")
         ;
@@ -327,6 +328,11 @@ std::string PySmComponent::getDesc() const
 void PySmComponent::setDesc(const std::string& csDesc)
 {
     impObj()->SetDesc(utf8_to_wstr(csDesc).c_str());
+}
+
+PySmCustomPropertyBag PySmComponent::getCustomPropertyBag() const
+{
+    return PySmCustomPropertyBag(impObj()->GetCustomPropertyBag());
 }
 
 PySmComponent PySmComponent::cast(const PySmPersist& src)
@@ -405,6 +411,7 @@ void makePySmSheetWrapper()
         .def("getIssuePurpose", &PySmSheet::getIssuePurpose)
         .def("setIssuePurpose", &PySmSheet::setIssuePurpose)
         .def("getCategory", &PySmSheet::getCategory)
+        .def("setCategory", &PySmSheet::setCategory)
         .def("setCategory", &PySmSheet::setCategory)
         .def("cast", &PySmSheet::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheet::className, DS.SARGS()).staticmethod("className")

@@ -443,10 +443,14 @@ void makePyDbAcValueWrapper()
         .def("getObjectId", &PyDbAcValue::getObjectId, DS.ARGS())
         .def("getPoint2d", &PyDbAcValue::getPoint2d, DS.ARGS())
         .def("getPoint3d", &PyDbAcValue::getPoint3d, DS.ARGS())
-        .def("format", &PyDbAcValue::format, DS.ARGS({ "val: PyDb.ValueFormatOption" }))
+        .def("format", &PyDbAcValue::format1)
+        .def("format", &PyDbAcValue::format2, DS.ARGS({ "val: PyDb.ValueFormatOption=PyDb.ValueFormatOption.kFormatOptionNone" }))
         .def("convertTo", &PyDbAcValue::convertTo, DS.ARGS({ "dt: PyDb.ValueDataType", "vt: PyDb.ValueUnitType" }))
         .def("className", &PyDbAcValue::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbAcValue::desc, DS.SARGS(15560)).staticmethod("desc")
+
+        .def("__str__", &PyDbAcValue::format1, DS.ARGS())
+        .def("__repr__", &PyDbAcValue::format1, DS.ARGS())
         ;
 }
 
@@ -612,7 +616,12 @@ AcGePoint3d PyDbAcValue::getPoint3d()
     return value;
 }
 
-std::string PyDbAcValue::format(AcValue::FormatOption nOption)
+std::string PyDbAcValue::format1()
+{
+    return wstr_to_utf8(impObj()->format());
+}
+
+std::string PyDbAcValue::format2(AcValue::FormatOption nOption)
 {
     return wstr_to_utf8(impObj()->format(nOption));
 }
