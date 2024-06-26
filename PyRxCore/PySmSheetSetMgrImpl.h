@@ -77,6 +77,22 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
+//PySmCustomPropertyValue
+class PySmCustomPropertyValueImpl : public PySmPersistImpl
+{
+public:
+    explicit PySmCustomPropertyValueImpl(IAcSmCustomPropertyValue* other);
+    explicit PySmCustomPropertyValueImpl(const PySmCustomPropertyValueImpl& other) = default;
+    virtual ~PySmCustomPropertyValueImpl() override = default;
+    AcValue         GetValue() const;
+    void            SetValue(const AcValue& acVal);
+    PropertyFlags   GetFlags() const;
+    void            SetFlags(PropertyFlags flags);
+    IAcSmCustomPropertyValue* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------------
 //PySmComponent
 class PySmComponentImpl : public PySmPersistImpl
 {
