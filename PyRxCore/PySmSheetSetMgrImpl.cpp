@@ -320,6 +320,7 @@ std::vector<std::pair<CString,PySmCustomPropertyValueImpl>> PySmCustomPropertyBa
     {
         v.push_back(std::make_pair(CString((LPCTSTR)bstrName), PySmCustomPropertyValueImpl(pAxProp)));
         pAxProp = nullptr;
+        bstrName = _bstr_t{};
     }
     return v;
 }
@@ -336,6 +337,7 @@ std::vector<std::pair<CString, AcValue>> PySmCustomPropertyBagImpl::GetPropertyV
         PySmCustomPropertyValueImpl prop(pAxProp);
         v.push_back(std::make_pair(CString((LPCTSTR)bstrName), prop.GetValue()));
         pAxProp = nullptr;
+        bstrName = _bstr_t{};
     }
     return v;
 }
@@ -425,6 +427,20 @@ IAcSmSheetSet* PySmSheetSetImpl::impObj(const std::source_location& src /*= std:
         }
     return static_cast<IAcSmSheetSet*>(m_pimpl.GetInterfacePtr());
 }
+
+#if defined(_ARXTARGET)
+IAcSmSheetSet2* PySmSheetSetImpl::impObj2(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl != nullptr)
+    {
+        IAcSmSheetSet2* pObj = nullptr;
+        if (m_pimpl->QueryInterface(IID_IAcSmSheetSet2, (void**)&pObj) == S_OK && pObj) {
+            return pObj;
+        }
+    }
+    throw PyNullObject(src);
+}
+#endif
 
 //-----------------------------------------------------------------------------------------
 //PySmSheetImpl
