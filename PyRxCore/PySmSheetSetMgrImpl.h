@@ -130,6 +130,8 @@ public:
     //SetLayout
     //GetSheetViews
 
+    CString     GetRevisionNumber() const;
+    void        SetRevisionNumber(const CString& csVal);
     CString     GetRevisionDate() const;
     void        SetRevisionDate(const CString& csVal);
     CString     GetIssuePurpose() const;

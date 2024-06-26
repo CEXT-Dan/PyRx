@@ -270,6 +270,8 @@ void makePySmSheetWrapper()
         .def("setTitle", &PySmSheet::setTitle)
         .def("getDoNotPlot", &PySmSheet::getDoNotPlot)
         .def("setDoNotPlot", &PySmSheet::setDoNotPlot)
+        .def("getRevisionNumber", &PySmSheet::getRevisionNumber)
+        .def("setRevisionNumber", &PySmSheet::setRevisionNumber)
         .def("getRevisionDate", &PySmSheet::getRevisionDate)
         .def("setRevisionDate", &PySmSheet::setRevisionDate)
         .def("getIssuePurpose", &PySmSheet::getIssuePurpose)
@@ -319,6 +321,16 @@ bool PySmSheet::getDoNotPlot() const
 void PySmSheet::setDoNotPlot(bool flag)
 {
     impObj()->SetDoNotPlot(flag);
+}
+
+std::string PySmSheet::getRevisionNumber() const
+{
+    return wstr_to_utf8(impObj()->GetRevisionNumber());
+}
+
+void PySmSheet::setRevisionNumber(const std::string& csVal)
+{
+    impObj()->SetRevisionNumber(utf8_to_wstr(csVal).c_str());
 }
 
 std::string PySmSheet::getRevisionDate() const

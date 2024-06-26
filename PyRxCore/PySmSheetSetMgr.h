@@ -113,6 +113,8 @@ public:
     //GetLayout
     //SetLayout
     //GetSheetViews
+    std::string     getRevisionNumber() const;
+    void            setRevisionNumber(const std::string& csVal);
     std::string     getRevisionDate() const;
     void            setRevisionDate(const std::string& csVal);
     std::string     getIssuePurpose() const;
