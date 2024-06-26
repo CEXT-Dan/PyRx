@@ -119,6 +119,7 @@ public:
     void            setName(const std::string& csName);
     std::string     getDesc() const;
     void            setDesc(const std::string& csDesc);
+    PySmCustomPropertyBag getCustomPropertyBag() const;
 
     static PySmComponent cast(const PySmPersist& src);
     static std::string   className();

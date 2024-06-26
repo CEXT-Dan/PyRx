@@ -317,7 +317,10 @@ std::vector<std::pair<CString,PySmCustomPropertyValueImpl>> PySmCustomPropertyBa
     _bstr_t bstrName;
     IAcSmCustomPropertyValue* pAxProp = nullptr;
     while (SUCCEEDED(iter->Next(&bstrName.GetBSTR(), &pAxProp)) && pAxProp != nullptr)
+    {
         v.push_back(std::make_pair(CString((LPCTSTR)bstrName), PySmCustomPropertyValueImpl(pAxProp)));
+        pAxProp = nullptr;
+    }
     return v;
 }
 
@@ -332,6 +335,7 @@ std::vector<std::pair<CString, AcValue>> PySmCustomPropertyBagImpl::GetPropertyV
     {
         PySmCustomPropertyValueImpl prop(pAxProp);
         v.push_back(std::make_pair(CString((LPCTSTR)bstrName), prop.GetValue()));
+        pAxProp = nullptr;
     }
     return v;
 }

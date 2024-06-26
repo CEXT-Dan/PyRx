@@ -25,6 +25,12 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
         '''                             '''
         ...
+    def getCustomPropertyBag (self, *args, **kwargs)-> PySm.CustomPropertyBag :
+        '''getCustomPropertyBag( (Component)arg1) -> CustomPropertyBag :
+
+    C++ signature :
+        class PySmCustomPropertyBag getCustomPropertyBag(class PySmComponent {lvalue})'''
+        ...
     def getDesc (self, *args, **kwargs)-> str :
         '''getDesc( (Component)arg1) -> str :
 
@@ -283,6 +289,11 @@ This class cannot be instantiated from Python'''
         ...
     def setCategory (self, *args, **kwargs)-> None :
         '''setCategory( (Sheet)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setCategory(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setCategory( (Sheet)arg1, (str)arg2) -> None :
 
     C++ signature :
         void setCategory(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
