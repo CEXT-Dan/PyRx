@@ -165,8 +165,19 @@ void makePySmCustomPropertyValueWrapper()
     class_<PySmCustomPropertyValue, bases<PySmPersist>>("CustomPropertyValue")
         .def("getValue", &PySmCustomPropertyValue::getValue)
         .def("setValue", &PySmCustomPropertyValue::setValue)
+        .def("getFlags", &PySmCustomPropertyValue::getFlags)
+        .def("setFlags", &PySmCustomPropertyValue::setFlags)
         .def("cast", &PySmCustomPropertyValue::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmCustomPropertyValue::className, DS.SARGS()).staticmethod("className")
+        ;
+
+    enum_<SmPropertyFlags>("PropertyFlags")
+        .value("kEmpty", SmPropertyFlags::EMPTY)
+        .value("kSheetSetProp", SmPropertyFlags::CUSTOM_SHEETSET_PROP)
+        .value("kSheetProp", SmPropertyFlags::CUSTOM_SHEET_PROP)
+        .value("kSubSetProp", SmPropertyFlags::CUSTOM_SUBSET_PROP)
+        .value("kIsChild", SmPropertyFlags::IS_CHILD)
+        .export_values()
         ;
 }
 
@@ -193,6 +204,16 @@ PyDbAcValue PySmCustomPropertyValue::getValue() const
 void PySmCustomPropertyValue::setValue(const PyDbAcValue& acVal)
 {
     impObj()->SetValue(*acVal.impObj());
+}
+
+SmPropertyFlags PySmCustomPropertyValue::getFlags() const
+{
+    return static_cast<SmPropertyFlags>(impObj()->GetFlags());
+}
+
+void PySmCustomPropertyValue::setFlags(SmPropertyFlags flags)
+{
+    impObj()->SetFlags(static_cast<PropertyFlags>(flags));
 }
 
 PySmCustomPropertyValue PySmCustomPropertyValue::cast(const PySmPersist& src)
