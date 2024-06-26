@@ -283,6 +283,62 @@ IAcSmCustomPropertyValue* PySmCustomPropertyValueImpl::impObj(const std::source_
 }
 
 //-----------------------------------------------------------------------------------------
+//PySmCustomPropertyBag
+PySmCustomPropertyBagImpl::PySmCustomPropertyBagImpl(IAcSmCustomPropertyBag* other)
+    : PySmPersistImpl(other)
+{
+}
+
+PySmCustomPropertyValueImpl PySmCustomPropertyBagImpl::GetProperty(const CString& propName) const
+{
+    _bstr_t bstrName(propName);
+    IAcSmCustomPropertyValue* pProp = nullptr;
+    PyThrowBadHr(impObj()->GetProperty(bstrName, &pProp));
+    return PySmCustomPropertyValueImpl(pProp);
+}
+
+void PySmCustomPropertyBagImpl::SetProperty(const CString& propName, const PySmCustomPropertyValueImpl& prop)
+{
+    _bstr_t bstrName(propName);
+    PyThrowBadHr(impObj()->SetProperty(bstrName, prop.impObj()));
+}
+
+std::vector<std::pair<CString,PySmCustomPropertyValueImpl>> PySmCustomPropertyBagImpl::GetProperties() const
+{
+    std::vector<std::pair<CString, PySmCustomPropertyValueImpl>> v;
+    IAcSmEnumPropertyPtr iter;
+    PyThrowBadHr(impObj()->GetPropertyEnumerator(&iter));
+    _bstr_t bstrName;
+    IAcSmCustomPropertyValue* pAxProp = nullptr;
+    while (SUCCEEDED(iter->Next(&bstrName.GetBSTR(), &pAxProp)) && pAxProp != nullptr)
+        v.push_back(std::make_pair(CString((LPCTSTR)bstrName), PySmCustomPropertyValueImpl(pAxProp)));
+    return v;
+}
+
+std::vector<std::pair<CString, AcValue>> PySmCustomPropertyBagImpl::GetPropertyValues() const
+{
+    std::vector<std::pair<CString, AcValue>> v;
+    IAcSmEnumPropertyPtr iter;
+    PyThrowBadHr(impObj()->GetPropertyEnumerator(&iter));
+    _bstr_t bstrName;
+    IAcSmCustomPropertyValue* pAxProp = nullptr;
+    while (SUCCEEDED(iter->Next(&bstrName.GetBSTR(), &pAxProp)) && pAxProp != nullptr)
+    {
+        PySmCustomPropertyValueImpl prop(pAxProp);
+        v.push_back(std::make_pair(CString((LPCTSTR)bstrName), prop.GetValue()));
+    }
+    return v;
+}
+
+IAcSmCustomPropertyBag* PySmCustomPropertyBagImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmCustomPropertyBag*>(m_pimpl.GetInterfacePtr());
+}
+
+//-----------------------------------------------------------------------------------------
 //PySmComponent
 PySmComponentImpl::PySmComponentImpl(IAcSmComponent* other)
     : PySmPersistImpl(other)
@@ -313,6 +369,13 @@ void PySmComponentImpl::SetDesc(const CString& csDesc)
 {
     _bstr_t bstrDesc(csDesc);
     PyThrowBadHr(impObj()->SetDesc(bstrDesc));
+}
+
+PySmCustomPropertyBagImpl PySmComponentImpl::GetCustomPropertyBag() const
+{
+    IAcSmCustomPropertyBag* pBag = nullptr;
+    PyThrowBadHr(impObj()->GetCustomPropertyBag(&pBag));
+    return PySmCustomPropertyBagImpl(pBag);
 }
 
 IAcSmComponent* PySmComponentImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

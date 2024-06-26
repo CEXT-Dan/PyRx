@@ -91,6 +91,25 @@ public:
     IAcSmCustomPropertyValue* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------------
+//PySmEnumProperty
+
+//-----------------------------------------------------------------------------------------
+//PySmCustomPropertyBag
+class PySmCustomPropertyBagImpl : public PySmPersistImpl
+{
+public:
+    explicit PySmCustomPropertyBagImpl(IAcSmCustomPropertyBag* other);
+    explicit PySmCustomPropertyBagImpl(const PySmCustomPropertyBagImpl& other) = default;
+    virtual ~PySmCustomPropertyBagImpl() override = default;
+
+    PySmCustomPropertyValueImpl GetProperty(const CString& propName) const;
+    void                        SetProperty(const CString& propName, const PySmCustomPropertyValueImpl& prop);
+    std::vector<std::pair<CString, PySmCustomPropertyValueImpl>> GetProperties() const;
+    std::vector<std::pair<CString, AcValue>> GetPropertyValues() const;
+    IAcSmCustomPropertyBag* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 
 //-----------------------------------------------------------------------------------------
 //PySmComponent
@@ -104,6 +123,7 @@ public:
     void            SetName(const CString& csName);
     CString         GetDesc() const;
     void            SetDesc(const CString& csDesc);
+    PySmCustomPropertyBagImpl GetCustomPropertyBag() const;
     IAcSmComponent* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
