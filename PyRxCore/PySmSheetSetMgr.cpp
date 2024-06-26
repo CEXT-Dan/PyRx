@@ -432,6 +432,16 @@ void makePySmDatabaseWrapper()
         .def("cast", &PySmDatabase::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmDatabase::className, DS.SARGS()).staticmethod("className")
         ;
+
+    enum_<AcSmLockStatus>("LockStatus")
+        .value("kUnLocked", AcSmLockStatus::AcSmLockStatus_UnLocked)
+        .value("kLockedLocal", AcSmLockStatus::AcSmLockStatus_Locked_Local)
+        .value("kLockedRemote", AcSmLockStatus::AcSmLockStatus_Locked_Remote)
+        .value("kLockedReadOnly", AcSmLockStatus::AcSmLockStatus_Locked_ReadOnly)
+        .value("kLockedNotConnected", AcSmLockStatus::AcSmLockStatus_Locked_NotConnected)
+        .value("kLockedAccessDenied", AcSmLockStatus::AcSmLockStatus_Locked_AccessDenied)
+        .export_values()
+        ;
 }
 
 PySmDatabase::PySmDatabase(PySmDatabaseImpl* ptr)
