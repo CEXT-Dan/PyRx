@@ -258,6 +258,22 @@ This class cannot be instantiated from Python'''
         void setOwner(class PySmPersist {lvalue},class PySmPersist)'''
         ...
 
+class PersistProxy(Persist):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.PersistProxy :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class PropertyFlags(object):
     def kEmpty (self, *args, **kwargs)-> None :
         '''None'''

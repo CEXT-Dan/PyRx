@@ -345,6 +345,45 @@ PySmFileReferenceImpl* PySmFileReference::impObj(const std::source_location& src
 }
 
 //-----------------------------------------------------------------------------------------
+//PySmPersistProxy
+void makePySmPersistProxyWrapper()
+{
+    PyDocString DS("PersistProxy");
+    class_<PySmPersistProxy, bases<PySmPersist>>("PersistProxy", boost::python::no_init)
+        .def("cast", &PySmPersistProxy::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmPersistProxy::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmPersistProxy::PySmPersistProxy(PySmPublishOptionImpl* ptr)
+    : PySmPersist(ptr)
+{
+}
+
+PySmPersistProxy::PySmPersistProxy(const PySmPublishOptionImpl& other)
+    : PySmPersist(other)
+{
+}
+
+PySmPersistProxy PySmPersistProxy::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmPersistProxy>(src);
+}
+
+std::string PySmPersistProxy::className()
+{
+    return "AcSmPersistProxy";
+}
+
+PySmPersistProxyImpl* PySmPersistProxy::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmPersistProxyImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
 //PySmPublishOption
 void makePySmPublishOptioneWrapper()
 {
@@ -821,4 +860,3 @@ PySmSheetSetMgrImpl* PySmSheetSetMgr::impObj(const std::source_location& src /*=
     return m_pyImp.get();
 }
 #endif
-
