@@ -28,12 +28,13 @@ class PySmSheetViewImpl;
 class PySmSheetViewsImpl;
 class PySmViewCategoryImpl;
 class PySmViewCategoriesImpl;
+class PySmAcDbDatabaseImpl;
 
 class PySmObjectId;
 class PySmDatabase;
 
 //aligned with COM's PropertyFlags
-enum class SmPropertyFlags : int 
+enum class SmPropertyFlags : int
 {
     EMPTY = 0,
     CUSTOM_SHEETSET_PROP = 1,
@@ -64,6 +65,21 @@ public:
 public:
     inline PySmPersistImpl* impObj(const std::source_location& src = std::source_location::current()) const;
     std::shared_ptr<PySmPersistImpl> m_pyImp = nullptr;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmAcDbDatabase
+void makePySmAcDbDatabaseWrapper();
+class PySmAcDbDatabase
+{
+public:
+    PySmAcDbDatabase(PySmAcDbDatabaseImpl* ptr);
+    PySmAcDbDatabase(const PySmAcDbDatabaseImpl& other);
+
+    static std::string className();
+public:
+    inline PySmAcDbDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    std::shared_ptr<PySmAcDbDatabaseImpl> m_pyImp = nullptr;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -107,7 +123,6 @@ public:
     inline PySmCustomPropertyValueImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //-----------------------------------------------------------------------------------------
 //PySmCustomPropertyBag
 void makePySmCustomPropertyBagWrapper();
@@ -139,7 +154,6 @@ public:
 public:
     inline PySmFileReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //-----------------------------------------------------------------------------------------
 //PySmProjectPointLocation
@@ -330,7 +344,6 @@ public:
     inline PySmViewCategoriesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //-----------------------------------------------------------------------------------------
 //PySmCalloutBlocks
 void makePySmCalloutBlocksWrapper();
@@ -433,7 +446,6 @@ public:
 public:
     inline PySmDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //-----------------------------------------------------------------------------------------
 //PySmSheetSetMgr

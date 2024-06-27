@@ -110,6 +110,22 @@ IAcSmPersist* PySmPersistImpl::impObj(const std::source_location& src /*= std::s
 }
 
 //-----------------------------------------------------------------------------------------
+//PySmAcDbDatabase
+PySmAcDbDatabaseImpl::PySmAcDbDatabaseImpl(IAcSmAcDbDatabase* other)
+{
+    if (other != nullptr)
+        m_pimpl.Attach(other);
+}
+
+IAcSmAcDbDatabase* PySmAcDbDatabaseImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmAcDbDatabase*>(m_pimpl.GetInterfacePtr());
+}
+
+//-----------------------------------------------------------------------------------------
 //IAcSmObjectId
 PySmObjectIdImpl::PySmObjectIdImpl(IAcSmObjectId* other)
 {
@@ -309,7 +325,7 @@ void PySmCustomPropertyBagImpl::SetProperty(const CString& propName, const PySmC
     PyThrowBadHr(impObj()->SetProperty(bstrName, prop.impObj()));
 }
 
-std::vector<std::pair<CString,PySmCustomPropertyValueImpl>> PySmCustomPropertyBagImpl::GetProperties() const
+std::vector<std::pair<CString, PySmCustomPropertyValueImpl>> PySmCustomPropertyBagImpl::GetProperties() const
 {
     std::vector<std::pair<CString, PySmCustomPropertyValueImpl>> v;
     IAcSmEnumPropertyPtr iter;
@@ -504,7 +520,6 @@ IAcSmResources* PySmSmResourcesImpl::impObj(const std::source_location& src /*= 
     return static_cast<IAcSmResources*>(m_pimpl.GetInterfacePtr());
 }
 
-
 //-----------------------------------------------------------------------------------------
 //PySmViewCategory
 PySmViewCategoryImpl::PySmViewCategoryImpl(IAcSmViewCategory* other)
@@ -557,7 +572,6 @@ PySmSheetViewsImpl::PySmSheetViewsImpl(IAcSmSheetViews* other)
     : PySmComponentImpl(other)
 {
 }
-
 
 IAcSmSheetViews* PySmSheetViewsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
@@ -971,5 +985,4 @@ IAcSmSheetSetMgr* PySmSheetSetMgrImpl::impObj(const std::source_location& src /*
         }
     return static_cast<IAcSmSheetSetMgr*>(m_pimpl.GetInterfacePtr());
 }
-
 #endif
