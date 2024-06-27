@@ -40,8 +40,23 @@ public:
     void                swap(PySmPersistImpl& other);
 
 public:
-    IAcSmPersist*       impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcSmPersist* impObj(const std::source_location& src = std::source_location::current()) const;
     IAcSmPersistPtr     m_pimpl;
+};
+
+
+//-----------------------------------------------------------------------------------------
+//PySmAcDbDatabase
+class PySmAcDbDatabaseImpl
+{
+public:
+    PySmAcDbDatabaseImpl(IAcSmAcDbDatabase* other);
+    PySmAcDbDatabaseImpl(const PySmAcDbDatabaseImpl& other) = default;
+    virtual ~PySmAcDbDatabaseImpl() = default;
+
+public:
+    IAcSmAcDbDatabase*    impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcSmAcDbDatabasePtr  m_pimpl;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -59,7 +74,7 @@ public:
     bool                IsEqual(const PySmObjectIdImpl& other);
     bool                IsValid();
 public:
-    IAcSmObjectId*      impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcSmObjectId* impObj(const std::source_location& src = std::source_location::current()) const;
     IAcSmObjectIdPtr m_pimpl;
 };
 
@@ -292,7 +307,6 @@ public:
 #if defined(_ARXTARGET)
     IAcSmSheetSet2* impObj2(const std::source_location& src = std::source_location::current()) const;
 #endif
-
 };
 
 //-----------------------------------------------------------------------------------------

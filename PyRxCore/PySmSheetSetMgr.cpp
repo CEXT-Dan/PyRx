@@ -97,6 +97,40 @@ PySmPersistImpl* PySmPersist::impObj(const std::source_location& src /*= std::so
 }
 
 //-----------------------------------------------------------------------------------------
+//PySmAcDbDatabase
+void makePySmAcDbDatabaseWrapper()
+{
+    PyDocString DS("AcDbDatabase");
+    class_<PySmAcDbDatabase>("AcDbDatabase", boost::python::no_init)
+        .def("className", &PySmAcDbDatabase::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmAcDbDatabase::PySmAcDbDatabase(PySmAcDbDatabaseImpl* ptr)
+{
+    if (ptr != nullptr)
+        m_pyImp.reset(new PySmAcDbDatabaseImpl(ptr->impObj()));
+}
+
+PySmAcDbDatabase::PySmAcDbDatabase(const PySmAcDbDatabaseImpl& other)
+    : m_pyImp(new PySmAcDbDatabaseImpl(other))
+{
+}
+
+std::string PySmAcDbDatabase::className()
+{
+    return "AcSmAcDbDatabase";
+}
+
+PySmAcDbDatabaseImpl* PySmAcDbDatabase::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return m_pyImp.get();
+}
+
+//-----------------------------------------------------------------------------------------
 //PySmObjectId
 void makePySmObjectIdWrapper()
 {
@@ -159,6 +193,7 @@ PySmObjectIdImpl* PySmObjectId::impObj(const std::source_location& src /*= std::
         }
     return m_pyImp.get();
 }
+
 //-----------------------------------------------------------------------------------------
 //PySmCustomPropertyValue
 void makePySmCustomPropertyValueWrapper()
@@ -705,7 +740,7 @@ PySmSheetViews::PySmSheetViews(PySmSheetViewsImpl* ptr)
 }
 
 PySmSheetViews::PySmSheetViews(const PySmSheetViewsImpl& other)
-: PySmComponent(other)
+    : PySmComponent(other)
 {
 }
 
@@ -1195,7 +1230,6 @@ void makePySmSheetSetMgrWrapper()
 {
     PyDocString DS("SheetSetMgr");
     class_<PySmSheetSetMgr>("SheetSetMgr")
-
         .def("createDatabase", &PySmSheetSetMgr::createDatabase1)
         .def("createDatabase", &PySmSheetSetMgr::createDatabase2)
         .def("openDatabase", &PySmSheetSetMgr::openDatabase)
