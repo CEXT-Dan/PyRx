@@ -345,6 +345,45 @@ PySmFileReferenceImpl* PySmFileReference::impObj(const std::source_location& src
 }
 
 //-----------------------------------------------------------------------------------------
+//PySmPublishOption
+void makePySmPublishOptioneWrapper()
+{
+    PyDocString DS("PublishOption");
+    class_<PySmPublishOption, bases<PySmPersist>>("PublishOption", boost::python::no_init)
+        .def("cast", &PySmPublishOption::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmPublishOption::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmPublishOption::PySmPublishOption(PySmPublishOptionImpl* ptr)
+    : PySmPersist(ptr)
+{
+}
+
+PySmPublishOption::PySmPublishOption(const PySmPublishOptionImpl& other)
+    : PySmPersist(other)
+{
+}
+
+PySmPublishOption PySmPublishOption::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmPublishOption>(src);
+}
+
+std::string PySmPublishOption::className()
+{
+    return "AcSmPublishOptions";
+}
+
+PySmPublishOptionImpl* PySmPublishOption::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmPublishOptionImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
 //PySmComponent
 void makePySmComponentWrapper()
 {

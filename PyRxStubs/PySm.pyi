@@ -275,6 +275,22 @@ class PropertyFlags(object):
         '''None'''
         ...
 
+class PublishOption(Persist):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.PublishOption :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class Sheet(Component):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception

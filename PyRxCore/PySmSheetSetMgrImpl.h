@@ -113,6 +113,17 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
+//PySmPublishOption
+class PySmPublishOptionImpl : public PySmPersistImpl
+{
+public:
+    explicit PySmPublishOptionImpl(IAcSmPublishOptions* other);
+    explicit PySmPublishOptionImpl(const PySmPublishOptionImpl& other) = default;
+    virtual ~PySmPublishOptionImpl() override = default;
+    IAcSmPublishOptions* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
 //PySmComponent
 class PySmComponentImpl : public PySmPersistImpl
 {

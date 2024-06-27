@@ -350,6 +350,22 @@ IAcSmCustomPropertyBag* PySmCustomPropertyBagImpl::impObj(const std::source_loca
     return static_cast<IAcSmCustomPropertyBag*>(m_pimpl.GetInterfacePtr());
 }
 
+
+//-----------------------------------------------------------------------------------------
+//PySmPublishOption
+PySmPublishOptionImpl::PySmPublishOptionImpl(IAcSmPublishOptions* other)
+    : PySmPersistImpl(other)
+{
+}
+
+IAcSmPublishOptions* PySmPublishOptionImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmPublishOptions*>(m_pimpl.GetInterfacePtr());
+}
+
 //-----------------------------------------------------------------------------------------
 //PySmComponent
 PySmComponentImpl::PySmComponentImpl(IAcSmComponent* other)
