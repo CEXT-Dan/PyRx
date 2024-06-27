@@ -476,6 +476,22 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
 
+class SheetSelSets(Component):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.SheetSelSets :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class SheetSet(Subset):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
