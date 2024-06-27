@@ -21,6 +21,22 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
 
+class AcDbLayoutReference(NamedAcDbObjectReference):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.AcDbLayoutReference :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class CalloutBlocks(Component):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
