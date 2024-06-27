@@ -14,6 +14,7 @@ class PySmSheetSetImpl;
 class PySmSheetImpl;
 class PySmCustomPropertyValueImpl;
 class PySmCustomPropertyBagImpl;
+class PySmFileReferenceImpl;
 
 class PySmObjectId;
 class PySmDatabase;
@@ -114,6 +115,22 @@ public:
     static std::string   className();
 public:
     inline PySmCustomPropertyBagImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmFileReference
+void makePySmFileReferenceWrapper();
+class PySmFileReference : public PySmPersist
+{
+public:
+    PySmFileReference(PySmFileReferenceImpl* ptr);
+    PySmFileReference(const PySmFileReferenceImpl& other);
+
+
+    static PySmFileReference cast(const PySmPersist& src);
+    static std::string   className();
+public:
+    inline PySmFileReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------

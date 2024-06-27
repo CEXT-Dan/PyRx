@@ -12,6 +12,7 @@ BOOST_PYTHON_MODULE(PySm)
     makePySmPersistWrapper();
     makePySmCustomPropertyValueWrapper();
     makePySmCustomPropertyBagWrapper();
+    makePySmFileReferenceWrapper();
     makePySmComponentWrapper();
     makePySmSubsetWrapper();
     makePySmSheetWrapper();
