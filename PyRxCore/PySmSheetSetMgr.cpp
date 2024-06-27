@@ -414,6 +414,14 @@ std::string PySmObjectReference::className()
     return "AcSmObjectReference";
 }
 
+PySmObjectReferenceImpl* PySmObjectReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmObjectReferenceImpl*>(m_pyImp.get());
+}
+
 //-----------------------------------------------------------------------------------------
 //PySmPersistProxy
 void makePySmPersistProxyWrapper()
@@ -563,7 +571,7 @@ PySmComponentImpl* PySmComponent::impObj(const std::source_location& src /*= std
 
 //-----------------------------------------------------------------------------------------
 //PycSmSheetSelSet
-void makePycSmSheetSelSetWrapper()
+void makePySmSheetSelSetWrapper()
 {
     PyDocString DS("SheetSelSet");
     class_<PySmSheetSelSet, bases<PySmComponent>>("SheetSelSet", boost::python::no_init)
@@ -598,6 +606,80 @@ PySmSheetSelSetImpl* PySmSheetSelSet::impObj(const std::source_location& src /*=
         throw PyNullObject(src);
         }
     return static_cast<PySmSheetSelSetImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PycSmSheetSelSets
+void makePySmSheetSelSetsWrapper()
+{
+    PyDocString DS("SheetSelSets");
+    class_<PySmSheetSelSets, bases<PySmComponent>>("SheetSelSets", boost::python::no_init)
+        .def("cast", &PySmSheetSelSets::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmSheetSelSets::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmSheetSelSets::PySmSheetSelSets(PySmSheetSelSetsImpl* ptr)
+    : PySmComponent(ptr)
+{
+}
+
+PySmSheetSelSets::PySmSheetSelSets(const PySmSheetSelSetsImpl& other)
+    : PySmComponent(other)
+{
+}
+
+PySmSheetSelSets PySmSheetSelSets::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmSheetSelSets>(src);
+}
+
+std::string PySmSheetSelSets::className()
+{
+    return "AcSmSheetSelSets";
+}
+
+PySmSheetSelSetsImpl* PySmSheetSelSets::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmSheetSelSetsImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmSmResources
+void makePySmSmResourcesWrapper()
+{
+
+}
+
+PySmSmResources::PySmSmResources(PySmSmResourcesImpl* ptr)
+    : PySmComponent(ptr)
+{
+}
+
+PySmSmResources::PySmSmResources(const PySmSmResourcesImpl& other)
+    : PySmComponent(other)
+{
+}
+
+PySmSmResources PySmSmResources::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmSmResources>(src);
+}
+
+std::string PySmSmResources::className()
+{
+    return "AcSmResources";
+}
+
+PySmSmResourcesImpl* PySmSmResources::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmSmResourcesImpl*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -1000,3 +1082,4 @@ PySmSheetSetMgrImpl* PySmSheetSetMgr::impObj(const std::source_location& src /*=
     return m_pyImp.get();
 }
 #endif
+

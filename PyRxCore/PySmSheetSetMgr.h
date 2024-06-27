@@ -21,6 +21,8 @@ class PySmObjectReferenceImpl;
 class PySmProjectPointLocationImpl;
 class PySmCalloutBlocksImpl;
 class PySmSheetSelSetImpl;
+class PySmSheetSelSetsImpl;
+class PySmSmResourcesImpl;
 
 class PySmObjectId;
 class PySmDatabase;
@@ -34,7 +36,6 @@ enum class SmPropertyFlags : int
     CUSTOM_SUBSET_PROP = 4,
     IS_CHILD = 8
 };
-
 
 //-----------------------------------------------------------------------------------------
 //PySmPersist
@@ -149,7 +150,6 @@ public:
     inline PySmProjectPointLocationImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //-----------------------------------------------------------------------------------------
 //PySmObjectReference
 void makePySmObjectReferenceWrapper();
@@ -215,7 +215,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //PycSmSheetSelSet
-void makePycSmSheetSelSetWrapper();
+void makePySmSheetSelSetWrapper();
 class PySmSheetSelSet : public PySmComponent
 {
 public:
@@ -226,6 +226,36 @@ public:
 public:
     inline PySmSheetSelSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//-----------------------------------------------------------------------------------------
+//PycSmSheetSelSets
+void makePySmSheetSelSetsWrapper();
+class PySmSheetSelSets : public PySmComponent
+{
+public:
+    PySmSheetSelSets(PySmSheetSelSetsImpl* ptr);
+    PySmSheetSelSets(const PySmSheetSelSetsImpl& other);
+    static PySmSheetSelSets  cast(const PySmPersist& src);
+    static std::string       className();
+public:
+    inline PySmSheetSelSetsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------------
+//PySmSmResources
+void makePySmSmResourcesWrapper();
+class PySmSmResources : public PySmComponent
+{
+public:
+    PySmSmResources(PySmSmResourcesImpl* ptr);
+    PySmSmResources(const PySmSmResourcesImpl& other);
+    static PySmSmResources  cast(const PySmPersist& src);
+    static std::string      className();
+public:
+    inline PySmSmResourcesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 
 //-----------------------------------------------------------------------------------------
 //PySmCalloutBlocks

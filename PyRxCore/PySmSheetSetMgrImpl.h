@@ -182,6 +182,29 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
+//PycSmSheetSelSets
+class PySmSheetSelSetsImpl : public PySmComponentImpl
+{
+public:
+    explicit PySmSheetSelSetsImpl(IAcSmSheetSelSets* other);
+    explicit PySmSheetSelSetsImpl(const PySmSheetSelSetsImpl& other) = default;
+    virtual ~PySmSheetSelSetsImpl() override = default;
+    IAcSmSheetSelSets* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmSmResources
+class PySmSmResourcesImpl : public PySmComponentImpl
+{
+public:
+    explicit PySmSmResourcesImpl(IAcSmResources* other);
+    explicit PySmSmResourcesImpl(const PySmSmResourcesImpl& other) = default;
+    virtual ~PySmSmResourcesImpl() override = default;
+    IAcSmResources* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------------
 //IAcSmCalloutBlocks
 class PySmCalloutBlocksImpl : public PySmComponentImpl
 {
