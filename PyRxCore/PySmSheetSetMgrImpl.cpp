@@ -218,7 +218,6 @@ IAcSmFileReference* PySmFileReferenceImpl::impObj(const std::source_location& sr
     return static_cast<IAcSmFileReference*>(m_pimpl.GetInterfacePtr());
 }
 
-
 //-----------------------------------------------------------------------------------------
 //PySmAcDbObjectReference
 PySmAcDbObjectReferenceImpl::PySmAcDbObjectReferenceImpl(IAcSmAcDbObjectReference* other)
@@ -247,6 +246,20 @@ IAcSmNamedAcDbObjectReference* PySmNamedAcDbObjectReferenceImpl::impObj(const st
         throw PyNullObject(src);
         }
     return static_cast<IAcSmNamedAcDbObjectReference*>(m_pimpl.GetInterfacePtr());
+}
+
+//-----------------------------------------------------------------------------------------
+//IAcSmAcDbLayoutReference
+PySmAcDbLayoutReferenceImpl::PySmAcDbLayoutReferenceImpl(IAcSmAcDbLayoutReference* other)
+    : PySmNamedAcDbObjectReferenceImpl(other)
+{
+}
+IAcSmAcDbLayoutReference* PySmAcDbLayoutReferenceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmAcDbLayoutReference*>(m_pimpl.GetInterfacePtr());
 }
 
 //-----------------------------------------------------------------------------------------

@@ -115,6 +115,17 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
+//PySmAcDbLayoutReference
+class PySmAcDbLayoutReferenceImpl : public PySmNamedAcDbObjectReferenceImpl
+{
+public:
+    explicit PySmAcDbLayoutReferenceImpl(IAcSmAcDbLayoutReference* other);
+    explicit PySmAcDbLayoutReferenceImpl(const PySmAcDbLayoutReferenceImpl& other) = default;
+    virtual ~PySmAcDbLayoutReferenceImpl() override = default;
+    IAcSmAcDbLayoutReference* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
 //PySmCustomPropertyValue
 class PySmCustomPropertyValueImpl : public PySmPersistImpl
 {

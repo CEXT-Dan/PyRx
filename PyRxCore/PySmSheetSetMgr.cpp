@@ -436,7 +436,7 @@ PySmNamedAcDbObjectReference::PySmNamedAcDbObjectReference(PySmNamedAcDbObjectRe
 {
 }
 
-PySmNamedAcDbObjectReference::PySmNamedAcDbObjectReference(const PySmNamedAcDbObjectReference& other)
+PySmNamedAcDbObjectReference::PySmNamedAcDbObjectReference(const PySmNamedAcDbObjectReferenceImpl& other)
     : PySmAcDbObjectReference(other)
 {
 }
@@ -448,7 +448,7 @@ PySmNamedAcDbObjectReference PySmNamedAcDbObjectReference::cast(const PySmPersis
 
 std::string PySmNamedAcDbObjectReference::className()
 {
-    return "IAcSmNamedAcDbObjectReference";
+    return "AcSmNamedAcDbObjectReference";
 }
 
 PySmNamedAcDbObjectReferenceImpl* PySmNamedAcDbObjectReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -457,6 +457,45 @@ PySmNamedAcDbObjectReferenceImpl* PySmNamedAcDbObjectReference::impObj(const std
         throw PyNullObject(src);
         }
     return static_cast<PySmNamedAcDbObjectReferenceImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmAcDbLayoutReference
+void makePySmAcDbLayoutReferenceWrapper()
+{
+    PyDocString DS("AcDbLayoutReference");
+    class_<PySmAcDbLayoutReference, bases<PySmNamedAcDbObjectReference>>("AcDbLayoutReference", boost::python::no_init)
+        .def("cast", &PySmAcDbLayoutReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmAcDbLayoutReference::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmAcDbLayoutReference::PySmAcDbLayoutReference(PySmAcDbLayoutReferenceImpl* ptr)
+    : PySmNamedAcDbObjectReference(ptr)
+{
+}
+
+PySmAcDbLayoutReference::PySmAcDbLayoutReference(const PySmNamedAcDbObjectReferenceImpl& other)
+    : PySmNamedAcDbObjectReference(other)
+{
+}
+
+PySmAcDbLayoutReference PySmAcDbLayoutReference::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmAcDbLayoutReference>(src);
+}
+
+std::string PySmAcDbLayoutReference::className()
+{
+    return "AcSmAcDbLayoutReference";
+}
+
+PySmAcDbLayoutReferenceImpl* PySmAcDbLayoutReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmAcDbLayoutReferenceImpl*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------

@@ -31,6 +31,7 @@ class PySmViewCategoriesImpl;
 class PySmAcDbDatabaseImpl;
 class PySmAcDbObjectReferenceImpl;
 class PySmNamedAcDbObjectReferenceImpl;
+class PySmAcDbLayoutReferenceImpl;
 
 class PySmObjectId;
 class PySmDatabase;
@@ -178,12 +179,27 @@ class PySmNamedAcDbObjectReference : public PySmAcDbObjectReference
 {
 public:
     PySmNamedAcDbObjectReference(PySmNamedAcDbObjectReferenceImpl* ptr);
-    PySmNamedAcDbObjectReference(const PySmNamedAcDbObjectReference& other);
+    PySmNamedAcDbObjectReference(const PySmNamedAcDbObjectReferenceImpl& other);
     static PySmNamedAcDbObjectReference cast(const PySmPersist& src);
     static std::string   className();
 public:
     inline PySmNamedAcDbObjectReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//-----------------------------------------------------------------------------------------
+//PySmAcDbLayoutReference
+void makePySmAcDbLayoutReferenceWrapper();
+class PySmAcDbLayoutReference : public PySmNamedAcDbObjectReference
+{
+public:
+    PySmAcDbLayoutReference(PySmAcDbLayoutReferenceImpl* ptr);
+    PySmAcDbLayoutReference(const PySmNamedAcDbObjectReferenceImpl& other);
+    static PySmAcDbLayoutReference cast(const PySmPersist& src);
+    static std::string   className();
+public:
+    inline PySmAcDbLayoutReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 
 //-----------------------------------------------------------------------------------------
 //PySmProjectPointLocation
