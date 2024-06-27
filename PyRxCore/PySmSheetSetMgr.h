@@ -15,6 +15,7 @@ class PySmSheetImpl;
 class PySmCustomPropertyValueImpl;
 class PySmCustomPropertyBagImpl;
 class PySmFileReferenceImpl;
+class PySmPublishOptionImpl;
 
 class PySmObjectId;
 class PySmDatabase;
@@ -125,12 +126,24 @@ class PySmFileReference : public PySmPersist
 public:
     PySmFileReference(PySmFileReferenceImpl* ptr);
     PySmFileReference(const PySmFileReferenceImpl& other);
-
-
     static PySmFileReference cast(const PySmPersist& src);
     static std::string   className();
 public:
     inline PySmFileReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmPublishOption
+void makePySmPublishOptioneWrapper();
+class PySmPublishOption : public PySmPersist
+{
+public:
+    PySmPublishOption(PySmPublishOptionImpl* ptr);
+    PySmPublishOption(const PySmPublishOptionImpl& other);
+    static PySmPublishOption cast(const PySmPersist& src);
+    static std::string   className();
+public:
+    inline PySmPublishOptionImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
