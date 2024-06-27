@@ -208,6 +208,22 @@ class LockStatus(object):
         '''None'''
         ...
 
+class ObjectReference(Persist):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.ObjectReference :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class Persist(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
@@ -266,6 +282,22 @@ This class cannot be instantiated from Python'''
 
     @staticmethod
     def cast (otherObject: PySm.Persist)-> PySm.PersistProxy :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class ProjectPointLocation(Persist):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.ProjectPointLocation :
         '''                             '''
         ...
 
