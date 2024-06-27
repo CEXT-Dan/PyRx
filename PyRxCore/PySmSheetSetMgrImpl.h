@@ -171,7 +171,7 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
-//PycSmSheetSelSet
+//PySmSheetSelSet
 class PySmSheetSelSetImpl : public PySmComponentImpl
 {
 public:
@@ -182,7 +182,7 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
-//PycSmSheetSelSets
+//PySmSheetSelSets
 class PySmSheetSelSetsImpl : public PySmComponentImpl
 {
 public:
@@ -203,9 +203,30 @@ public:
     IAcSmResources* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------------
+//PySmSheetViews
+class PySmSheetViewsImpl : public PySmComponentImpl
+{
+public:
+    explicit PySmSheetViewsImpl(IAcSmSheetViews* other);
+    explicit PySmSheetViewsImpl(const PySmSheetViewsImpl& other) = default;
+    virtual ~PySmSheetViewsImpl() override = default;
+    IAcSmSheetViews* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 //-----------------------------------------------------------------------------------------
-//IAcSmCalloutBlocks
+//PySmProjectPointLocations
+class PySmProjectPointLocationsImpl : public PySmComponentImpl
+{
+public:
+    explicit PySmProjectPointLocationsImpl(IAcSmProjectPointLocations* other);
+    explicit PySmProjectPointLocationsImpl(const PySmProjectPointLocationsImpl& other) = default;
+    virtual ~PySmProjectPointLocationsImpl() override = default;
+    IAcSmProjectPointLocations* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmCalloutBlocks
 class PySmCalloutBlocksImpl : public PySmComponentImpl
 {
 public:

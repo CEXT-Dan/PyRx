@@ -505,6 +505,37 @@ IAcSmResources* PySmSmResourcesImpl::impObj(const std::source_location& src /*= 
 }
 
 //-----------------------------------------------------------------------------------------
+//PySmSheetViews
+PySmSheetViewsImpl::PySmSheetViewsImpl(IAcSmSheetViews* other)
+    : PySmComponentImpl(other)
+{
+}
+
+
+IAcSmSheetViews* PySmSheetViewsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmSheetViews*>(m_pimpl.GetInterfacePtr());
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmProjectPointLocations
+PySmProjectPointLocationsImpl::PySmProjectPointLocationsImpl(IAcSmProjectPointLocations* other)
+    : PySmComponentImpl(other)
+{
+}
+
+IAcSmProjectPointLocations* PySmProjectPointLocationsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmProjectPointLocations*>(m_pimpl.GetInterfacePtr());
+}
+
+//-----------------------------------------------------------------------------------------
 //IAcSmCalloutBlocks
 PySmCalloutBlocksImpl::PySmCalloutBlocksImpl(IAcSmCalloutBlocks* other)
     : PySmComponentImpl(other)
@@ -895,4 +926,3 @@ IAcSmSheetSetMgr* PySmSheetSetMgrImpl::impObj(const std::source_location& src /*
 }
 
 #endif
-
