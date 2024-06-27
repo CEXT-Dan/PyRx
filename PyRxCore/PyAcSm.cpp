@@ -23,7 +23,10 @@ BOOST_PYTHON_MODULE(PySm)
     makePySmSheetSelSetsWrapper();
     makePySmSmResourcesWrapper();
     makePySmProjectPointLocationsWrapper();
+    makePySmSheetViewWrapper();
     makePySmSheetViewsWrapper();
+    makePySmViewCategoryWrapper();
+    makePySmViewCategoriesWrapper();
     makePySmSubsetWrapper();
     makePySmSheetWrapper();
     makePySmSheetSetWrapper();

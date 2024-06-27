@@ -204,6 +204,39 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
+//PySmViewCategory
+class PySmViewCategoryImpl : public PySmComponentImpl
+{
+public:
+    explicit PySmViewCategoryImpl(IAcSmViewCategory* other);
+    explicit PySmViewCategoryImpl(const PySmViewCategoryImpl& other) = default;
+    virtual ~PySmViewCategoryImpl() override = default;
+    IAcSmViewCategory* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmViewCategories
+class PySmViewCategoriesImpl : public PySmComponentImpl
+{
+public:
+    explicit PySmViewCategoriesImpl(IAcSmViewCategories* other);
+    explicit PySmViewCategoriesImpl(const PySmViewCategoriesImpl& other) = default;
+    virtual ~PySmViewCategoriesImpl() override = default;
+    IAcSmViewCategories* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmSheetView
+class PySmSheetViewImpl : public PySmComponentImpl
+{
+public:
+    explicit PySmSheetViewImpl(IAcSmSheetView* other);
+    explicit PySmSheetViewImpl(const PySmSheetViewImpl& other) = default;
+    virtual ~PySmSheetViewImpl() override = default;
+    IAcSmSheetView* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
 //PySmSheetViews
 class PySmSheetViewsImpl : public PySmComponentImpl
 {
