@@ -504,6 +504,53 @@ IAcSmResources* PySmSmResourcesImpl::impObj(const std::source_location& src /*= 
     return static_cast<IAcSmResources*>(m_pimpl.GetInterfacePtr());
 }
 
+
+//-----------------------------------------------------------------------------------------
+//PySmViewCategory
+PySmViewCategoryImpl::PySmViewCategoryImpl(IAcSmViewCategory* other)
+    : PySmComponentImpl(other)
+{
+}
+
+IAcSmViewCategory* PySmViewCategoryImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmViewCategory*>(m_pimpl.GetInterfacePtr());
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmViewCategories
+PySmViewCategoriesImpl::PySmViewCategoriesImpl(IAcSmViewCategories* other)
+    : PySmComponentImpl(other)
+{
+}
+
+IAcSmViewCategories* PySmViewCategoriesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmViewCategories*>(m_pimpl.GetInterfacePtr());
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmSheetView
+PySmSheetViewImpl::PySmSheetViewImpl(IAcSmSheetView* other)
+    : PySmComponentImpl(other)
+{
+}
+
+IAcSmSheetView* PySmSheetViewImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmSheetView*>(m_pimpl.GetInterfacePtr());
+}
+
+
 //-----------------------------------------------------------------------------------------
 //PySmSheetViews
 PySmSheetViewsImpl::PySmSheetViewsImpl(IAcSmSheetViews* other)

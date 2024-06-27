@@ -24,7 +24,10 @@ class PySmSheetSelSetImpl;
 class PySmSheetSelSetsImpl;
 class PySmSmResourcesImpl;
 class PySmProjectPointLocationsImpl;
+class PySmSheetViewImpl;
 class PySmSheetViewsImpl;
+class PySmViewCategoryImpl;
+class PySmViewCategoriesImpl;
 
 class PySmObjectId;
 class PySmDatabase;
@@ -244,6 +247,20 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
+//PySmSheetView
+void makePySmSheetViewWrapper();
+class PySmSheetView : public PySmComponent
+{
+public:
+    PySmSheetView(PySmSheetViewImpl* ptr);
+    PySmSheetView(const PySmSheetViewImpl& other);
+    static PySmSheetView  cast(const PySmPersist& src);
+    static std::string     className();
+public:
+    inline PySmSheetViewImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
 //PySmSheetViews
 void makePySmSheetViewsWrapper();
 class PySmSheetViews : public PySmComponent
@@ -285,6 +302,33 @@ public:
     inline PySmSmResourcesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------------
+//PySmViewCategory
+void makePySmViewCategoryWrapper();
+class PySmViewCategory : public PySmComponent
+{
+public:
+    PySmViewCategory(PySmViewCategoryImpl* ptr);
+    PySmViewCategory(const PySmSmResourcesImpl& other);
+    static PySmViewCategory  cast(const PySmPersist& src);
+    static std::string       className();
+public:
+    inline PySmViewCategoryImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmViewCategories
+void makePySmViewCategoriesWrapper();
+class PySmViewCategories : public PySmComponent
+{
+public:
+    PySmViewCategories(PySmViewCategoryImpl* ptr);
+    PySmViewCategories(const PySmViewCategoriesImpl& other);
+    static PySmViewCategories  cast(const PySmPersist& src);
+    static std::string         className();
+public:
+    inline PySmViewCategoriesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 
 //-----------------------------------------------------------------------------------------

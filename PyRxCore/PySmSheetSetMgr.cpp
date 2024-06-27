@@ -650,6 +650,45 @@ PySmSheetSelSetsImpl* PySmSheetSelSets::impObj(const std::source_location& src /
 }
 
 //-----------------------------------------------------------------------------------------
+//PySmSheetView
+void makePySmSheetViewWrapper()
+{
+    PyDocString DS("SheetView");
+    class_<PySmSheetView, bases<PySmComponent>>("SheetView", boost::python::no_init)
+        .def("cast", &PySmSheetView::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmSheetView::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmSheetView::PySmSheetView(PySmSheetViewImpl* ptr)
+    : PySmComponent(ptr)
+{
+}
+
+PySmSheetView::PySmSheetView(const PySmSheetViewImpl& other)
+    : PySmComponent(other)
+{
+}
+
+PySmSheetView PySmSheetView::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmSheetView>(src);
+}
+
+std::string PySmSheetView::className()
+{
+    return "AcSmSheetView";
+}
+
+PySmSheetViewImpl* PySmSheetView::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmSheetViewImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
 //PySmSheetViews
 void makePySmSheetViewsWrapper()
 {
@@ -764,6 +803,84 @@ PySmSmResourcesImpl* PySmSmResources::impObj(const std::source_location& src /*=
         throw PyNullObject(src);
         }
     return static_cast<PySmSmResourcesImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmViewCategory
+void makePySmViewCategoryWrapper()
+{
+    PyDocString DS("ViewCategory");
+    class_<PySmViewCategory, bases<PySmComponent>>("ViewCategory", boost::python::no_init)
+        .def("cast", &PySmViewCategory::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmViewCategory::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmViewCategory::PySmViewCategory(PySmViewCategoryImpl* ptr)
+    : PySmComponent(ptr)
+{
+}
+
+PySmViewCategory::PySmViewCategory(const PySmSmResourcesImpl& other)
+    : PySmComponent(other)
+{
+}
+
+PySmViewCategory PySmViewCategory::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmViewCategory>(src);
+}
+
+std::string PySmViewCategory::className()
+{
+    return "AcSmViewCategory";
+}
+
+PySmViewCategoryImpl* PySmViewCategory::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmViewCategoryImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmViewCategories
+void makePySmViewCategoriesWrapper()
+{
+    PyDocString DS("ViewCategories");
+    class_<PySmViewCategories, bases<PySmComponent>>("ViewCategories", boost::python::no_init)
+        .def("cast", &PySmViewCategories::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmViewCategories::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmViewCategories::PySmViewCategories(PySmViewCategoryImpl* ptr)
+    : PySmComponent(ptr)
+{
+}
+
+PySmViewCategories::PySmViewCategories(const PySmViewCategoriesImpl& other)
+    : PySmComponent(other)
+{
+}
+
+PySmViewCategories PySmViewCategories::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmViewCategories>(src);
+}
+
+std::string PySmViewCategories::className()
+{
+    return "AcSmViewCategories";
+}
+
+PySmViewCategoriesImpl* PySmViewCategories::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmViewCategoriesImpl*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
