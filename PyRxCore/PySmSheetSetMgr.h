@@ -29,6 +29,8 @@ class PySmSheetViewsImpl;
 class PySmViewCategoryImpl;
 class PySmViewCategoriesImpl;
 class PySmAcDbDatabaseImpl;
+class PySmAcDbObjectReferenceImpl;
+class PySmNamedAcDbObjectReferenceImpl;
 
 class PySmObjectId;
 class PySmDatabase;
@@ -153,6 +155,34 @@ public:
     static std::string   className();
 public:
     inline PySmFileReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmAcDbObjectReference
+void makePySmAcDbObjectReferenceWrapper();
+class PySmAcDbObjectReference : public PySmFileReference
+{
+public:
+    PySmAcDbObjectReference(PySmAcDbObjectReferenceImpl* ptr);
+    PySmAcDbObjectReference(const PySmAcDbObjectReferenceImpl& other);
+    static PySmAcDbObjectReference cast(const PySmPersist& src);
+    static std::string   className();
+public:
+    inline PySmAcDbObjectReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmNamedAcDbObjectReference
+void makePySmNamedAcDbObjectReferenceWrapper();
+class PySmNamedAcDbObjectReference : public PySmAcDbObjectReference
+{
+public:
+    PySmNamedAcDbObjectReference(PySmNamedAcDbObjectReferenceImpl* ptr);
+    PySmNamedAcDbObjectReference(const PySmNamedAcDbObjectReference& other);
+    static PySmNamedAcDbObjectReference cast(const PySmPersist& src);
+    static std::string   className();
+public:
+    inline PySmNamedAcDbObjectReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------

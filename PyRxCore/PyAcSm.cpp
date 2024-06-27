@@ -14,6 +14,8 @@ BOOST_PYTHON_MODULE(PySm)
     makePySmCustomPropertyValueWrapper();
     makePySmCustomPropertyBagWrapper();
     makePySmFileReferenceWrapper();
+    makePySmAcDbObjectReferenceWrapper();
+    makePySmNamedAcDbObjectReferenceWrapper();
     makePySmPublishOptioneWrapper();
     makePySmPersistProxyWrapper();
     makePySmObjectReferenceWrapper();

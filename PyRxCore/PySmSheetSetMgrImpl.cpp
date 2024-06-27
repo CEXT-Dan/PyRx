@@ -218,6 +218,37 @@ IAcSmFileReference* PySmFileReferenceImpl::impObj(const std::source_location& sr
     return static_cast<IAcSmFileReference*>(m_pimpl.GetInterfacePtr());
 }
 
+
+//-----------------------------------------------------------------------------------------
+//PySmAcDbObjectReference
+PySmAcDbObjectReferenceImpl::PySmAcDbObjectReferenceImpl(IAcSmAcDbObjectReference* other)
+    : PySmFileReferenceImpl(other)
+{
+}
+
+IAcSmAcDbObjectReference* PySmAcDbObjectReferenceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmAcDbObjectReference*>(m_pimpl.GetInterfacePtr());
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmNamedAcDbObjectReference
+PySmNamedAcDbObjectReferenceImpl::PySmNamedAcDbObjectReferenceImpl(IAcSmNamedAcDbObjectReference* other)
+    : PySmAcDbObjectReferenceImpl(other)
+{
+}
+
+IAcSmNamedAcDbObjectReference* PySmNamedAcDbObjectReferenceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmNamedAcDbObjectReference*>(m_pimpl.GetInterfacePtr());
+}
+
 //-----------------------------------------------------------------------------------------
 //PySmCustomPropertyValue
 PySmCustomPropertyValueImpl::PySmCustomPropertyValueImpl(IAcSmCustomPropertyValue* other)
@@ -396,6 +427,20 @@ IAcSmProjectPointLocation* PySmProjectPointLocationImpl::impObj(const std::sourc
         }
     return static_cast<IAcSmProjectPointLocation*>(m_pimpl.GetInterfacePtr());
 }
+
+#if defined(_ARXTARGET)
+IAcSmProjectPointLocation2* PySmProjectPointLocationImpl::impObj2(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl != nullptr)
+    {
+        IAcSmProjectPointLocation2* pObj = nullptr;
+        if (m_pimpl->QueryInterface(IID_IAcSmProjectPointLocation2, (void**)&pObj) == S_OK && pObj) {
+            return pObj;
+        }
+    }
+    throw PyNullObject(src);
+}
+#endif
 
 //-----------------------------------------------------------------------------------------
 //PySmPersistProxy

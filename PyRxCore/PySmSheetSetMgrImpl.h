@@ -93,6 +93,28 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
+//PySmAcDbObjectReference
+class PySmAcDbObjectReferenceImpl : public PySmFileReferenceImpl
+{
+public:
+    explicit PySmAcDbObjectReferenceImpl(IAcSmAcDbObjectReference* other);
+    explicit PySmAcDbObjectReferenceImpl(const PySmAcDbObjectReferenceImpl& other) = default;
+    virtual ~PySmAcDbObjectReferenceImpl() override = default;
+    IAcSmAcDbObjectReference* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmNamedAcDbObjectReference
+class PySmNamedAcDbObjectReferenceImpl : public PySmAcDbObjectReferenceImpl
+{
+public:
+    explicit PySmNamedAcDbObjectReferenceImpl(IAcSmNamedAcDbObjectReference* other);
+    explicit PySmNamedAcDbObjectReferenceImpl(const PySmNamedAcDbObjectReferenceImpl& other) = default;
+    virtual ~PySmNamedAcDbObjectReferenceImpl() override = default;
+    IAcSmNamedAcDbObjectReference* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
 //PySmCustomPropertyValue
 class PySmCustomPropertyValueImpl : public PySmPersistImpl
 {
@@ -145,6 +167,9 @@ public:
     explicit PySmProjectPointLocationImpl(const PySmProjectPointLocationImpl& other) = default;
     virtual ~PySmProjectPointLocationImpl() override = default;
     IAcSmProjectPointLocation* impObj(const std::source_location& src = std::source_location::current()) const;
+#if defined(_ARXTARGET)
+    IAcSmProjectPointLocation2* impObj2(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-----------------------------------------------------------------------------------------
