@@ -23,6 +23,8 @@ class PySmCalloutBlocksImpl;
 class PySmSheetSelSetImpl;
 class PySmSheetSelSetsImpl;
 class PySmSmResourcesImpl;
+class PySmProjectPointLocationsImpl;
+class PySmSheetViewsImpl;
 
 class PySmObjectId;
 class PySmDatabase;
@@ -241,6 +243,33 @@ public:
     inline PySmSheetSelSetsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------------
+//PySmSheetViews
+void makePySmSheetViewsWrapper();
+class PySmSheetViews : public PySmComponent
+{
+public:
+    PySmSheetViews(PySmSheetViewsImpl* ptr);
+    PySmSheetViews(const PySmSheetViewsImpl& other);
+    static PySmSheetViews  cast(const PySmPersist& src);
+    static std::string     className();
+public:
+    inline PySmSheetViewsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmProjectPointLocations
+void makePySmProjectPointLocationsWrapper();
+class PySmProjectPointLocations : public PySmComponent
+{
+public:
+    PySmProjectPointLocations(PySmProjectPointLocationsImpl* ptr);
+    PySmProjectPointLocations(const PySmProjectPointLocationsImpl& other);
+    static PySmProjectPointLocations  cast(const PySmPersist& src);
+    static std::string      className();
+public:
+    inline PySmProjectPointLocationsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 //-----------------------------------------------------------------------------------------
 //PySmSmResources
@@ -255,6 +284,7 @@ public:
 public:
     inline PySmSmResourcesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
 
 
 //-----------------------------------------------------------------------------------------

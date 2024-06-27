@@ -9,6 +9,8 @@
 
 using namespace boost::python;
 
+//-----------------------------------------------------------------------------------------
+//PySmObjectCast
 template<typename T>
 inline T PySmObjectCast(const PySmPersist& src)
 {
@@ -648,10 +650,92 @@ PySmSheetSelSetsImpl* PySmSheetSelSets::impObj(const std::source_location& src /
 }
 
 //-----------------------------------------------------------------------------------------
+//PySmSheetViews
+void makePySmSheetViewsWrapper()
+{
+    PyDocString DS("SheetViews");
+    class_<PySmSheetViews, bases<PySmComponent>>("SheetViews", boost::python::no_init)
+        .def("cast", &PySmSheetViews::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmSheetViews::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmSheetViews::PySmSheetViews(PySmSheetViewsImpl* ptr)
+    : PySmComponent(ptr)
+{
+}
+
+PySmSheetViews::PySmSheetViews(const PySmSheetViewsImpl& other)
+: PySmComponent(other)
+{
+}
+
+PySmSheetViews PySmSheetViews::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmSheetViews>(src);
+}
+
+std::string PySmSheetViews::className()
+{
+    return "AcSmSheetViews";
+}
+
+PySmSheetViewsImpl* PySmSheetViews::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmSheetViewsImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmProjectPointLocations
+void makePySmProjectPointLocationsWrapper()
+{
+    PyDocString DS("ProjectPointLocations");
+    class_<PySmProjectPointLocations, bases<PySmComponent>>("ProjectPointLocations", boost::python::no_init)
+        .def("cast", &PySmProjectPointLocations::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmProjectPointLocations::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmProjectPointLocations::PySmProjectPointLocations(PySmProjectPointLocationsImpl* ptr)
+    : PySmComponent(ptr)
+{
+}
+
+PySmProjectPointLocations::PySmProjectPointLocations(const PySmProjectPointLocationsImpl& other)
+    : PySmComponent(other)
+{
+}
+
+PySmProjectPointLocations PySmProjectPointLocations::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmProjectPointLocations>(src);
+}
+
+std::string PySmProjectPointLocations::className()
+{
+    return "IAcSmProjectPointLocations";
+}
+
+PySmProjectPointLocationsImpl* PySmProjectPointLocations::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmProjectPointLocationsImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
 //PySmSmResources
 void makePySmSmResourcesWrapper()
 {
-
+    PyDocString DS("Resources");
+    class_<PySmSmResources, bases<PySmComponent>>("Resources", boost::python::no_init)
+        .def("cast", &PySmSmResources::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmSmResources::className, DS.SARGS()).staticmethod("className")
+        ;
 }
 
 PySmSmResources::PySmSmResources(PySmSmResourcesImpl* ptr)
@@ -1082,4 +1166,3 @@ PySmSheetSetMgrImpl* PySmSheetSetMgr::impObj(const std::source_location& src /*=
     return m_pyImp.get();
 }
 #endif
-

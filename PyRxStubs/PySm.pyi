@@ -322,6 +322,22 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
 
+class ProjectPointLocations(Component):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.ProjectPointLocations :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class PropertyFlags(object):
     def kEmpty (self, *args, **kwargs)-> None :
         '''None'''
@@ -347,6 +363,22 @@ This class cannot be instantiated from Python'''
 
     @staticmethod
     def cast (otherObject: PySm.Persist)-> PySm.PublishOption :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class Resources(Component):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.Resources :
         '''                             '''
         ...
 
@@ -571,6 +603,22 @@ createDatabase( (SheetSetMgr)arg1, (str)arg2, (str)arg3, (bool)arg4) -> Database
 
     C++ signature :
         class PySmDatabase openDatabase(class PySmSheetSetMgr {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        ...
+
+class SheetViews(Component):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.SheetViews :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
         ...
 
 class Subset(Component):
