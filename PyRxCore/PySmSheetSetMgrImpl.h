@@ -113,6 +113,17 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
+//PySmPersistProxy
+class PySmPersistProxyImpl : public PySmPersistImpl
+{
+public:
+    explicit PySmPersistProxyImpl(IAcSmPersistProxy* other);
+    explicit PySmPersistProxyImpl(const PySmPersistProxyImpl& other) = default;
+    virtual ~PySmPersistProxyImpl() override = default;
+    IAcSmPersistProxy* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
 //PySmPublishOption
 class PySmPublishOptionImpl : public PySmPersistImpl
 {

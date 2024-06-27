@@ -16,6 +16,7 @@ class PySmCustomPropertyValueImpl;
 class PySmCustomPropertyBagImpl;
 class PySmFileReferenceImpl;
 class PySmPublishOptionImpl;
+class PySmPersistProxyImpl;
 
 class PySmObjectId;
 class PySmDatabase;
@@ -130,6 +131,20 @@ public:
     static std::string   className();
 public:
     inline PySmFileReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmPersistProxy
+void makePySmPersistProxyWrapper();
+class PySmPersistProxy : public PySmPersist
+{
+public:
+    PySmPersistProxy(PySmPublishOptionImpl* ptr);
+    PySmPersistProxy(const PySmPublishOptionImpl& other);
+    static PySmPersistProxy cast(const PySmPersist& src);
+    static std::string      className();
+public:
+    inline PySmPersistProxyImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
