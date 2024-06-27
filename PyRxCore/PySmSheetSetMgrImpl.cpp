@@ -626,6 +626,20 @@ IAcSmSubset* PySmSubsetImpl::impObj(const std::source_location& src /*= std::sou
     return static_cast<IAcSmSubset*>(m_pimpl.GetInterfacePtr());
 }
 
+#if defined(_ARXTARGET)
+IAcSmSubset2* PySmSubsetImpl::impObj2(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl != nullptr)
+    {
+        IAcSmSubset2* pObj = nullptr;
+        if (m_pimpl->QueryInterface(IID_IAcSmSubset2, (void**)&pObj) == S_OK && pObj) {
+            return pObj;
+        }
+    }
+    throw PyNullObject(src);
+}
+#endif
+
 //-----------------------------------------------------------------------------------------
 //PySmSheetSetImpl
 PySmSheetSetImpl::PySmSheetSetImpl(IAcSmSheetSet* other)

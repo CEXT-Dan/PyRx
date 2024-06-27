@@ -293,6 +293,9 @@ public:
     explicit PySmSubsetImpl(const PySmSubsetImpl& other) = default;
     virtual ~PySmSubsetImpl() override = default;
     IAcSmSubset* impObj(const std::source_location& src = std::source_location::current()) const;
+#if defined(_ARXTARGET)
+    IAcSmSubset2* impObj2(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-----------------------------------------------------------------------------------------
