@@ -306,6 +306,45 @@ PySmCustomPropertyBagImpl* PySmCustomPropertyBag::impObj(const std::source_locat
 }
 
 //-----------------------------------------------------------------------------------------
+//PySmFileReference
+void makePySmFileReferenceWrapper()
+{
+    PyDocString DS("FileReference");
+    class_<PySmFileReference, bases<PySmPersist>>("FileReference", boost::python::no_init)
+        .def("cast", &PySmFileReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmFileReference::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmFileReference::PySmFileReference(PySmFileReferenceImpl* ptr)
+    : PySmPersist(ptr)
+{
+}
+
+PySmFileReference::PySmFileReference(const PySmFileReferenceImpl& other)
+    : PySmPersist(other)
+{
+}
+
+PySmFileReference PySmFileReference::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmFileReference>(src);
+}
+
+std::string PySmFileReference::className()
+{
+    return "AcSmFileReference";
+}
+
+PySmFileReferenceImpl* PySmFileReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmFileReferenceImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
 //PySmComponent
 void makePySmComponentWrapper()
 {
@@ -743,3 +782,4 @@ PySmSheetSetMgrImpl* PySmSheetSetMgr::impObj(const std::source_location& src /*=
     return m_pyImp.get();
 }
 #endif
+

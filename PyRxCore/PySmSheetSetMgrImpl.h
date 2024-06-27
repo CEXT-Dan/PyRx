@@ -40,7 +40,7 @@ public:
     void                swap(PySmPersistImpl& other);
 
 public:
-    IAcSmPersist* impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcSmPersist*       impObj(const std::source_location& src = std::source_location::current()) const;
     IAcSmPersistPtr     m_pimpl;
 };
 
@@ -58,7 +58,8 @@ public:
     PySmPersistImpl     GetOwner() const;
     bool                IsEqual(const PySmObjectIdImpl& other);
     bool                IsValid();
-    IAcSmObjectId* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    IAcSmObjectId*      impObj(const std::source_location& src = std::source_location::current()) const;
     IAcSmObjectIdPtr m_pimpl;
 };
 
