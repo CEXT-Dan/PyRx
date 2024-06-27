@@ -199,6 +199,22 @@ This class cannot be instantiated from Python'''
         void unlockDb(class PySmDatabase {lvalue},bool)'''
         ...
 
+class DbObjectReference(FileReference):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.ProjectPointLocation :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class FileReference(Persist):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
@@ -233,6 +249,22 @@ class LockStatus(object):
         ...
     def kUnLocked (self, *args, **kwargs)-> None :
         '''None'''
+        ...
+
+class NamedAcDbObjectReference(DbObjectReference):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.NamedAcDbObjectReference :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
         ...
 
 class ObjectReference(Persist):
