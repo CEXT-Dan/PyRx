@@ -20,6 +20,7 @@ class PySmPersistProxyImpl;
 class PySmObjectReferenceImpl;
 class PySmProjectPointLocationImpl;
 class PySmCalloutBlocksImpl;
+class PySmSheetSelSetImpl;
 
 class PySmObjectId;
 class PySmDatabase;
@@ -210,6 +211,20 @@ public:
     static std::string   className();
 public:
     inline PySmComponentImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PycSmSheetSelSet
+void makePycSmSheetSelSetWrapper();
+class PySmSheetSelSet : public PySmComponent
+{
+public:
+    PySmSheetSelSet(PySmSheetSelSetImpl* ptr);
+    PySmSheetSelSet(const PySmSheetSelSetImpl& other);
+    static PySmSheetSelSet  cast(const PySmPersist& src);
+    static std::string       className();
+public:
+    inline PySmSheetSelSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------

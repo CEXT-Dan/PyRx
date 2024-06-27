@@ -19,6 +19,7 @@ BOOST_PYTHON_MODULE(PySm)
     makePySmProjectPointLocationWrapper();
     makePySmComponentWrapper();
     makePySmCalloutBlocksWrapper();
+    makePycSmSheetSelSetWrapper();
     makePySmSubsetWrapper();
     makePySmSheetWrapper();
     makePySmSheetSetWrapper();

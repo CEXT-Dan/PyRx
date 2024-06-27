@@ -171,6 +171,17 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
+//PycSmSheetSelSet
+class PySmSheetSelSetImpl : public PySmComponentImpl
+{
+public:
+    explicit PySmSheetSelSetImpl(IAcSmSheetSelSet* other);
+    explicit PySmSheetSelSetImpl(const PySmSheetSelSetImpl& other) = default;
+    virtual ~PySmSheetSelSetImpl() override = default;
+    IAcSmSheetSelSet* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
 //IAcSmCalloutBlocks
 class PySmCalloutBlocksImpl : public PySmComponentImpl
 {

@@ -460,6 +460,22 @@ setCategory( (Sheet)arg1, (str)arg2) -> None :
         void setTitle(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
         ...
 
+class SheetSelSet(Component):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.SheetSelSet :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class SheetSet(Subset):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception

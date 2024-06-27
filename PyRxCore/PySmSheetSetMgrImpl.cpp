@@ -460,6 +460,21 @@ IAcSmComponent* PySmComponentImpl::impObj(const std::source_location& src /*= st
 }
 
 //-----------------------------------------------------------------------------------------
+//PycSmSheetSelSet
+PySmSheetSelSetImpl::PySmSheetSelSetImpl(IAcSmSheetSelSet* other)
+    : PySmComponentImpl(other)
+{
+}
+
+IAcSmSheetSelSet* PySmSheetSelSetImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmSheetSelSet*>(m_pimpl.GetInterfacePtr());
+}
+
+//-----------------------------------------------------------------------------------------
 //IAcSmCalloutBlocks
 PySmCalloutBlocksImpl::PySmCalloutBlocksImpl(IAcSmCalloutBlocks* other)
     : PySmComponentImpl(other)
