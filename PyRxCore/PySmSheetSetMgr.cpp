@@ -562,6 +562,37 @@ PySmComponentImpl* PySmComponent::impObj(const std::source_location& src /*= std
 }
 
 //-----------------------------------------------------------------------------------------
+//PySmCalloutBlocks
+void makePySmCalloutBlocksWrapper()
+{
+    PyDocString DS("CalloutBlocks");
+    class_<PySmCalloutBlocks, bases<PySmComponent>>("CalloutBlocks", boost::python::no_init)
+        .def("cast", &PySmCalloutBlocks::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmCalloutBlocks::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmCalloutBlocks::PySmCalloutBlocks(PySmCalloutBlocksImpl* ptr)
+    : PySmComponent(ptr)
+{
+}
+
+PySmCalloutBlocks::PySmCalloutBlocks(const PySmCalloutBlocksImpl& other)
+    : PySmComponent(other)
+{
+}
+
+PySmCalloutBlocks PySmCalloutBlocks::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmCalloutBlocks>(src);
+}
+
+std::string PySmCalloutBlocks::className()
+{
+    return "AcSmCalloutBlocks";
+}
+
+//-----------------------------------------------------------------------------------------
 //PySmSubset
 void makePySmSubsetWrapper()
 {

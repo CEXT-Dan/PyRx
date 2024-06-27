@@ -460,6 +460,21 @@ IAcSmComponent* PySmComponentImpl::impObj(const std::source_location& src /*= st
 }
 
 //-----------------------------------------------------------------------------------------
+//IAcSmCalloutBlocks
+PySmCalloutBlocksImpl::PySmCalloutBlocksImpl(IAcSmCalloutBlocks* other)
+    : PySmComponentImpl(other)
+{
+}
+
+IAcSmCalloutBlocks* PySmCalloutBlocksImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmCalloutBlocks*>(m_pimpl.GetInterfacePtr());
+}
+
+//-----------------------------------------------------------------------------------------
 //PySmSubsetImpl
 PySmSubsetImpl::PySmSubsetImpl(IAcSmSubset* other)
     : PySmComponentImpl(other)

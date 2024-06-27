@@ -94,9 +94,6 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
-//PySmEnumProperty
-
-//-----------------------------------------------------------------------------------------
 //PySmCustomPropertyBag
 class PySmCustomPropertyBagImpl : public PySmPersistImpl
 {
@@ -174,11 +171,23 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
+//IAcSmCalloutBlocks
+class PySmCalloutBlocksImpl : public PySmComponentImpl
+{
+public:
+    explicit PySmCalloutBlocksImpl(IAcSmCalloutBlocks* other);
+    explicit PySmCalloutBlocksImpl(const PySmCalloutBlocksImpl& other) = default;
+    virtual ~PySmCalloutBlocksImpl() override = default;
+    IAcSmCalloutBlocks* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
 //PySmSubsetImpl
 class PySmSubsetImpl : public PySmComponentImpl
 {
 public:
     explicit PySmSubsetImpl(IAcSmSubset* other);
+    explicit PySmSubsetImpl(const PySmSubsetImpl& other) = default;
     virtual ~PySmSubsetImpl() override = default;
     IAcSmSubset* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -189,6 +198,7 @@ class PySmSheetSetImpl : public PySmSubsetImpl
 {
 public:
     explicit PySmSheetSetImpl(IAcSmSheetSet* other);
+    explicit PySmSheetSetImpl(const PySmSheetSetImpl& other) = default;
     virtual ~PySmSheetSetImpl() override = default;
     IAcSmSheetSet* impObj(const std::source_location& src = std::source_location::current()) const;
 #if defined(_ARXTARGET)
@@ -203,6 +213,7 @@ class PySmSheetImpl : public PySmComponentImpl
 {
 public:
     explicit PySmSheetImpl(IAcSmSheet* other);
+    explicit PySmSheetImpl(const PySmSheetImpl& other) = default;
     virtual ~PySmSheetImpl() override = default;
 
     CString     GetNumber() const;
