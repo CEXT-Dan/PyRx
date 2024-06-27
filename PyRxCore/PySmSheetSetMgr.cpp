@@ -562,6 +562,45 @@ PySmComponentImpl* PySmComponent::impObj(const std::source_location& src /*= std
 }
 
 //-----------------------------------------------------------------------------------------
+//PycSmSheetSelSet
+void makePycSmSheetSelSetWrapper()
+{
+    PyDocString DS("SheetSelSet");
+    class_<PySmSheetSelSet, bases<PySmComponent>>("SheetSelSet", boost::python::no_init)
+        .def("cast", &PySmSheetSelSet::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmSheetSelSet::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmSheetSelSet::PySmSheetSelSet(PySmSheetSelSetImpl* ptr)
+    : PySmComponent(ptr)
+{
+}
+
+PySmSheetSelSet::PySmSheetSelSet(const PySmSheetSelSetImpl& other)
+    : PySmComponent(other)
+{
+}
+
+PySmSheetSelSet PySmSheetSelSet::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmSheetSelSet>(src);
+}
+
+std::string PySmSheetSelSet::className()
+{
+    return "AcSmSheetSelSet";
+}
+
+PySmSheetSelSetImpl* PySmSheetSelSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmSheetSelSetImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
 //PySmCalloutBlocks
 void makePySmCalloutBlocksWrapper()
 {
