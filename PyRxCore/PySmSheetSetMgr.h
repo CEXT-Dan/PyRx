@@ -19,6 +19,7 @@ class PySmPublishOptionImpl;
 class PySmPersistProxyImpl;
 class PySmObjectReferenceImpl;
 class PySmProjectPointLocationImpl;
+class PySmCalloutBlocksImpl;
 
 class PySmObjectId;
 class PySmDatabase;
@@ -209,6 +210,20 @@ public:
     static std::string   className();
 public:
     inline PySmComponentImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmCalloutBlocks
+void makePySmCalloutBlocksWrapper();
+class PySmCalloutBlocks : public PySmComponent
+{
+public:
+    PySmCalloutBlocks(PySmCalloutBlocksImpl* ptr);
+    PySmCalloutBlocks(const PySmCalloutBlocksImpl& other);
+    static PySmCalloutBlocks  cast(const PySmPersist& src);
+    static std::string        className();
+public:
+    inline PySmCalloutBlocksImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
