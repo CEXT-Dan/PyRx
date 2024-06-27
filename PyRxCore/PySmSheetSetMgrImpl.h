@@ -112,6 +112,29 @@ public:
     IAcSmCustomPropertyBag* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+
+//-----------------------------------------------------------------------------------------
+//PySmObjectReference
+class PySmObjectReferenceImpl : public PySmPersistImpl
+{
+public:
+    explicit PySmObjectReferenceImpl(IAcSmObjectReference* other);
+    explicit PySmObjectReferenceImpl(const PySmObjectReferenceImpl& other) = default;
+    virtual ~PySmObjectReferenceImpl() override = default;
+    IAcSmObjectReference* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmProjectPointLocation
+class PySmProjectPointLocationImpl : public PySmPersistImpl
+{
+public:
+    explicit PySmProjectPointLocationImpl(IAcSmProjectPointLocation* other);
+    explicit PySmProjectPointLocationImpl(const PySmProjectPointLocationImpl& other) = default;
+    virtual ~PySmProjectPointLocationImpl() override = default;
+    IAcSmProjectPointLocation* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 //-----------------------------------------------------------------------------------------
 //PySmPersistProxy
 class PySmPersistProxyImpl : public PySmPersistImpl

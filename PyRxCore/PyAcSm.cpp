@@ -15,6 +15,8 @@ BOOST_PYTHON_MODULE(PySm)
     makePySmFileReferenceWrapper();
     makePySmPublishOptioneWrapper();
     makePySmPersistProxyWrapper();
+    makePySmObjectReferenceWrapper();
+    makePySmProjectPointLocationWrapper();
     makePySmComponentWrapper();
     makePySmSubsetWrapper();
     makePySmSheetWrapper();

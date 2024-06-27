@@ -351,6 +351,37 @@ IAcSmCustomPropertyBag* PySmCustomPropertyBagImpl::impObj(const std::source_loca
 }
 
 //-----------------------------------------------------------------------------------------
+//PySmObjectReference
+PySmObjectReferenceImpl::PySmObjectReferenceImpl(IAcSmObjectReference* other)
+    : PySmPersistImpl(other)
+{
+}
+
+IAcSmObjectReference* PySmObjectReferenceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmObjectReference*>(m_pimpl.GetInterfacePtr());
+}
+
+
+//-----------------------------------------------------------------------------------------
+//PySmProjectPointLocation
+PySmProjectPointLocationImpl::PySmProjectPointLocationImpl(IAcSmProjectPointLocation* other)
+    : PySmPersistImpl(other)
+{
+}
+
+IAcSmProjectPointLocation* PySmProjectPointLocationImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmProjectPointLocation*>(m_pimpl.GetInterfacePtr());
+}
+
+//-----------------------------------------------------------------------------------------
 //PySmPersistProxy
 PySmPersistProxyImpl::PySmPersistProxyImpl(IAcSmPersistProxy* other)
     : PySmPersistImpl(other)

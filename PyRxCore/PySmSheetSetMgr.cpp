@@ -345,6 +345,76 @@ PySmFileReferenceImpl* PySmFileReference::impObj(const std::source_location& src
 }
 
 //-----------------------------------------------------------------------------------------
+//PySmProjectPointLocation
+void makePySmProjectPointLocationWrapper()
+{
+    PyDocString DS("ProjectPointLocation");
+    class_<PySmProjectPointLocation, bases<PySmPersist>>("ProjectPointLocation", boost::python::no_init)
+        .def("cast", &PySmProjectPointLocation::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmProjectPointLocation::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmProjectPointLocation::PySmProjectPointLocation(PySmProjectPointLocationImpl* ptr)
+    : PySmPersist(ptr)
+{
+}
+
+PySmProjectPointLocation::PySmProjectPointLocation(const PySmProjectPointLocationImpl& other)
+    : PySmPersist(other)
+{
+}
+
+PySmProjectPointLocation PySmProjectPointLocation::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmProjectPointLocation>(src);
+}
+
+std::string PySmProjectPointLocation::className()
+{
+    return "AcSmProjectPointLocation";
+}
+
+PySmProjectPointLocationImpl* PySmProjectPointLocation::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmProjectPointLocationImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmObjectReference
+void makePySmObjectReferenceWrapper()
+{
+    PyDocString DS("ObjectReference");
+    class_<PySmObjectReference, bases<PySmPersist>>("ObjectReference", boost::python::no_init)
+        .def("cast", &PySmObjectReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmObjectReference::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmObjectReference::PySmObjectReference(PySmObjectReferenceImpl* ptr)
+    : PySmPersist(ptr)
+{
+}
+
+PySmObjectReference::PySmObjectReference(const PySmObjectReferenceImpl& other)
+    : PySmPersist(other)
+{
+}
+
+PySmObjectReference PySmObjectReference::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmObjectReference>(src);
+}
+
+std::string PySmObjectReference::className()
+{
+    return "AcSmObjectReference";
+}
+
+//-----------------------------------------------------------------------------------------
 //PySmPersistProxy
 void makePySmPersistProxyWrapper()
 {

@@ -17,6 +17,8 @@ class PySmCustomPropertyBagImpl;
 class PySmFileReferenceImpl;
 class PySmPublishOptionImpl;
 class PySmPersistProxyImpl;
+class PySmObjectReferenceImpl;
+class PySmProjectPointLocationImpl;
 
 class PySmObjectId;
 class PySmDatabase;
@@ -76,9 +78,6 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
-//PySmFileReference
-
-//-----------------------------------------------------------------------------------------
 //PySmCustomPropertyValue
 void makePySmCustomPropertyValueWrapper();
 class PySmCustomPropertyValue : public PySmPersist
@@ -131,6 +130,36 @@ public:
     static std::string   className();
 public:
     inline PySmFileReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------------
+//PySmProjectPointLocation
+void makePySmProjectPointLocationWrapper();
+class PySmProjectPointLocation : public PySmPersist
+{
+public:
+    PySmProjectPointLocation(PySmProjectPointLocationImpl* ptr);
+    PySmProjectPointLocation(const PySmProjectPointLocationImpl& other);
+    static PySmProjectPointLocation cast(const PySmPersist& src);
+    static std::string              className();
+public:
+    inline PySmProjectPointLocationImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------------
+//PySmObjectReference
+void makePySmObjectReferenceWrapper();
+class PySmObjectReference : public PySmPersist
+{
+public:
+    PySmObjectReference(PySmObjectReferenceImpl* ptr);
+    PySmObjectReference(const PySmObjectReferenceImpl& other);
+    static PySmObjectReference cast(const PySmPersist& src);
+    static std::string         className();
+public:
+    inline PySmObjectReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
