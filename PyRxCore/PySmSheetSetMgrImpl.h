@@ -25,6 +25,7 @@ class PySmObjectIdImpl;
 class PySmPersistImpl
 {
 public:
+    PySmPersistImpl();
     PySmPersistImpl(IAcSmPersist* other);
     PySmPersistImpl(const PySmPersistImpl& other) = default;
     virtual ~PySmPersistImpl() = default;
@@ -44,7 +45,6 @@ public:
     IAcSmPersistPtr     m_pimpl;
 };
 
-
 //-----------------------------------------------------------------------------------------
 //PySmAcDbDatabase
 class PySmAcDbDatabaseImpl
@@ -55,7 +55,7 @@ public:
     virtual ~PySmAcDbDatabaseImpl() = default;
 
 public:
-    IAcSmAcDbDatabase*    impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcSmAcDbDatabase* impObj(const std::source_location& src = std::source_location::current()) const;
     IAcSmAcDbDatabasePtr  m_pimpl;
 };
 
@@ -83,8 +83,9 @@ public:
 class PySmFileReferenceImpl : public PySmPersistImpl
 {
 public:
-    explicit PySmFileReferenceImpl(IAcSmFileReference* other);
-    explicit PySmFileReferenceImpl(const PySmFileReferenceImpl& other) = default;
+    PySmFileReferenceImpl();
+    PySmFileReferenceImpl(IAcSmFileReference* other);
+    PySmFileReferenceImpl(const PySmFileReferenceImpl& other) = default;
     virtual ~PySmFileReferenceImpl() override = default;
     void        SetFileName(const CString& csVal);
     CString     GetFileName() const;
@@ -97,8 +98,9 @@ public:
 class PySmAcDbObjectReferenceImpl : public PySmFileReferenceImpl
 {
 public:
-    explicit PySmAcDbObjectReferenceImpl(IAcSmAcDbObjectReference* other);
-    explicit PySmAcDbObjectReferenceImpl(const PySmAcDbObjectReferenceImpl& other) = default;
+    PySmAcDbObjectReferenceImpl();
+    PySmAcDbObjectReferenceImpl(IAcSmAcDbObjectReference* other);
+    PySmAcDbObjectReferenceImpl(const PySmAcDbObjectReferenceImpl& other) = default;
     virtual ~PySmAcDbObjectReferenceImpl() override = default;
     IAcSmAcDbObjectReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -108,8 +110,9 @@ public:
 class PySmNamedAcDbObjectReferenceImpl : public PySmAcDbObjectReferenceImpl
 {
 public:
-    explicit PySmNamedAcDbObjectReferenceImpl(IAcSmNamedAcDbObjectReference* other);
-    explicit PySmNamedAcDbObjectReferenceImpl(const PySmNamedAcDbObjectReferenceImpl& other) = default;
+    PySmNamedAcDbObjectReferenceImpl();
+    PySmNamedAcDbObjectReferenceImpl(IAcSmNamedAcDbObjectReference* other);
+    PySmNamedAcDbObjectReferenceImpl(const PySmNamedAcDbObjectReferenceImpl& other) = default;
     virtual ~PySmNamedAcDbObjectReferenceImpl() override = default;
     IAcSmNamedAcDbObjectReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -119,8 +122,9 @@ public:
 class PySmAcDbLayoutReferenceImpl : public PySmNamedAcDbObjectReferenceImpl
 {
 public:
-    explicit PySmAcDbLayoutReferenceImpl(IAcSmAcDbLayoutReference* other);
-    explicit PySmAcDbLayoutReferenceImpl(const PySmAcDbLayoutReferenceImpl& other) = default;
+    PySmAcDbLayoutReferenceImpl();
+    PySmAcDbLayoutReferenceImpl(IAcSmAcDbLayoutReference* other);
+    PySmAcDbLayoutReferenceImpl(const PySmAcDbLayoutReferenceImpl& other) = default;
     virtual ~PySmAcDbLayoutReferenceImpl() override = default;
     IAcSmAcDbLayoutReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -130,8 +134,9 @@ public:
 class PySmAcDbViewReferenceImpl : public PySmNamedAcDbObjectReferenceImpl
 {
 public:
-    explicit PySmAcDbViewReferenceImpl(IAcSmAcDbViewReference* other);
-    explicit PySmAcDbViewReferenceImpl(const PySmAcDbViewReferenceImpl& other) = default;
+    PySmAcDbViewReferenceImpl();
+    PySmAcDbViewReferenceImpl(IAcSmAcDbViewReference* other);
+    PySmAcDbViewReferenceImpl(const PySmAcDbViewReferenceImpl& other) = default;
     virtual ~PySmAcDbViewReferenceImpl() override = default;
     IAcSmAcDbViewReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -141,8 +146,9 @@ public:
 class PySmAcDbBlockRecordReferenceImpl : public PySmNamedAcDbObjectReferenceImpl
 {
 public:
-    explicit PySmAcDbBlockRecordReferenceImpl(IAcSmAcDbBlockRecordReference* other);
-    explicit PySmAcDbBlockRecordReferenceImpl(const PySmAcDbBlockRecordReferenceImpl& other) = default;
+    PySmAcDbBlockRecordReferenceImpl();
+    PySmAcDbBlockRecordReferenceImpl(IAcSmAcDbBlockRecordReference* other);
+    PySmAcDbBlockRecordReferenceImpl(const PySmAcDbBlockRecordReferenceImpl& other) = default;
     virtual ~PySmAcDbBlockRecordReferenceImpl() override = default;
     IAcSmAcDbBlockRecordReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -168,8 +174,9 @@ public:
 class PySmCustomPropertyBagImpl : public PySmPersistImpl
 {
 public:
-    explicit PySmCustomPropertyBagImpl(IAcSmCustomPropertyBag* other);
-    explicit PySmCustomPropertyBagImpl(const PySmCustomPropertyBagImpl& other) = default;
+    PySmCustomPropertyBagImpl();
+    PySmCustomPropertyBagImpl(IAcSmCustomPropertyBag* other);
+    PySmCustomPropertyBagImpl(const PySmCustomPropertyBagImpl& other) = default;
     virtual ~PySmCustomPropertyBagImpl() override = default;
 
     PySmCustomPropertyValueImpl GetProperty(const CString& propName) const;
@@ -184,8 +191,9 @@ public:
 class PySmObjectReferenceImpl : public PySmPersistImpl
 {
 public:
-    explicit PySmObjectReferenceImpl(IAcSmObjectReference* other);
-    explicit PySmObjectReferenceImpl(const PySmObjectReferenceImpl& other) = default;
+    PySmObjectReferenceImpl();
+    PySmObjectReferenceImpl(IAcSmObjectReference* other);
+    PySmObjectReferenceImpl(const PySmObjectReferenceImpl& other) = default;
     virtual ~PySmObjectReferenceImpl() override = default;
     IAcSmObjectReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -195,8 +203,9 @@ public:
 class PySmProjectPointLocationImpl : public PySmPersistImpl
 {
 public:
-    explicit PySmProjectPointLocationImpl(IAcSmProjectPointLocation* other);
-    explicit PySmProjectPointLocationImpl(const PySmProjectPointLocationImpl& other) = default;
+    PySmProjectPointLocationImpl();
+    PySmProjectPointLocationImpl(IAcSmProjectPointLocation* other);
+    PySmProjectPointLocationImpl(const PySmProjectPointLocationImpl& other) = default;
     virtual ~PySmProjectPointLocationImpl() override = default;
     IAcSmProjectPointLocation* impObj(const std::source_location& src = std::source_location::current()) const;
 #if defined(_ARXTARGET)
@@ -209,8 +218,9 @@ public:
 class PySmPersistProxyImpl : public PySmPersistImpl
 {
 public:
-    explicit PySmPersistProxyImpl(IAcSmPersistProxy* other);
-    explicit PySmPersistProxyImpl(const PySmPersistProxyImpl& other) = default;
+    PySmPersistProxyImpl();
+    PySmPersistProxyImpl(IAcSmPersistProxy* other);
+    PySmPersistProxyImpl(const PySmPersistProxyImpl& other) = default;
     virtual ~PySmPersistProxyImpl() override = default;
     IAcSmPersistProxy* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -220,8 +230,9 @@ public:
 class PySmPublishOptionsImpl : public PySmPersistImpl
 {
 public:
-    explicit PySmPublishOptionsImpl(IAcSmPublishOptions* other);
-    explicit PySmPublishOptionsImpl(const PySmPublishOptionsImpl& other) = default;
+    PySmPublishOptionsImpl();
+    PySmPublishOptionsImpl(IAcSmPublishOptions* other);
+    PySmPublishOptionsImpl(const PySmPublishOptionsImpl& other) = default;
     virtual ~PySmPublishOptionsImpl() override = default;
     IAcSmPublishOptions* impObj(const std::source_location& src = std::source_location::current()) const;
 #if defined(_ARXTARGET)
@@ -240,8 +251,9 @@ public:
 class PySmComponentImpl : public PySmPersistImpl
 {
 public:
-    explicit PySmComponentImpl(IAcSmComponent* other);
-    explicit PySmComponentImpl(const PySmComponentImpl& other) = default;
+    PySmComponentImpl();
+    PySmComponentImpl(IAcSmComponent* other);
+    PySmComponentImpl(const PySmComponentImpl& other) = default;
     virtual ~PySmComponentImpl() override = default;
     CString         GetName() const;
     void            SetName(const CString& csName);
@@ -256,8 +268,9 @@ public:
 class PySmSheetSelSetImpl : public PySmComponentImpl
 {
 public:
-    explicit PySmSheetSelSetImpl(IAcSmSheetSelSet* other);
-    explicit PySmSheetSelSetImpl(const PySmSheetSelSetImpl& other) = default;
+    PySmSheetSelSetImpl();
+    PySmSheetSelSetImpl(IAcSmSheetSelSet* other);
+    PySmSheetSelSetImpl(const PySmSheetSelSetImpl& other) = default;
     virtual ~PySmSheetSelSetImpl() override = default;
     IAcSmSheetSelSet* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -267,8 +280,9 @@ public:
 class PySmSheetSelSetsImpl : public PySmComponentImpl
 {
 public:
-    explicit PySmSheetSelSetsImpl(IAcSmSheetSelSets* other);
-    explicit PySmSheetSelSetsImpl(const PySmSheetSelSetsImpl& other) = default;
+    PySmSheetSelSetsImpl();
+    PySmSheetSelSetsImpl(IAcSmSheetSelSets* other);
+    PySmSheetSelSetsImpl(const PySmSheetSelSetsImpl& other) = default;
     virtual ~PySmSheetSelSetsImpl() override = default;
     IAcSmSheetSelSets* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -278,8 +292,9 @@ public:
 class PySmResourcesImpl : public PySmComponentImpl
 {
 public:
-    explicit PySmResourcesImpl(IAcSmResources* other);
-    explicit PySmResourcesImpl(const PySmResourcesImpl& other) = default;
+    PySmResourcesImpl();
+    PySmResourcesImpl(IAcSmResources* other);
+    PySmResourcesImpl(const PySmResourcesImpl& other) = default;
     virtual ~PySmResourcesImpl() override = default;
     IAcSmResources* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -289,8 +304,9 @@ public:
 class PySmViewCategoryImpl : public PySmComponentImpl
 {
 public:
-    explicit PySmViewCategoryImpl(IAcSmViewCategory* other);
-    explicit PySmViewCategoryImpl(const PySmViewCategoryImpl& other) = default;
+    PySmViewCategoryImpl();
+    PySmViewCategoryImpl(IAcSmViewCategory* other);
+    PySmViewCategoryImpl(const PySmViewCategoryImpl& other) = default;
     virtual ~PySmViewCategoryImpl() override = default;
     IAcSmViewCategory* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -300,8 +316,9 @@ public:
 class PySmViewCategoriesImpl : public PySmComponentImpl
 {
 public:
-    explicit PySmViewCategoriesImpl(IAcSmViewCategories* other);
-    explicit PySmViewCategoriesImpl(const PySmViewCategoriesImpl& other) = default;
+    PySmViewCategoriesImpl();
+    PySmViewCategoriesImpl(IAcSmViewCategories* other);
+    PySmViewCategoriesImpl(const PySmViewCategoriesImpl& other) = default;
     virtual ~PySmViewCategoriesImpl() override = default;
     IAcSmViewCategories* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -311,8 +328,9 @@ public:
 class PySmSheetViewImpl : public PySmComponentImpl
 {
 public:
-    explicit PySmSheetViewImpl(IAcSmSheetView* other);
-    explicit PySmSheetViewImpl(const PySmSheetViewImpl& other) = default;
+    PySmSheetViewImpl();
+    PySmSheetViewImpl(IAcSmSheetView* other);
+    PySmSheetViewImpl(const PySmSheetViewImpl& other) = default;
     virtual ~PySmSheetViewImpl() override = default;
     IAcSmSheetView* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -322,8 +340,9 @@ public:
 class PySmSheetViewsImpl : public PySmComponentImpl
 {
 public:
-    explicit PySmSheetViewsImpl(IAcSmSheetViews* other);
-    explicit PySmSheetViewsImpl(const PySmSheetViewsImpl& other) = default;
+    PySmSheetViewsImpl();
+    PySmSheetViewsImpl(IAcSmSheetViews* other);
+    PySmSheetViewsImpl(const PySmSheetViewsImpl& other) = default;
     virtual ~PySmSheetViewsImpl() override = default;
     IAcSmSheetViews* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -333,8 +352,9 @@ public:
 class PySmProjectPointLocationsImpl : public PySmComponentImpl
 {
 public:
-    explicit PySmProjectPointLocationsImpl(IAcSmProjectPointLocations* other);
-    explicit PySmProjectPointLocationsImpl(const PySmProjectPointLocationsImpl& other) = default;
+    PySmProjectPointLocationsImpl();
+    PySmProjectPointLocationsImpl(IAcSmProjectPointLocations* other);
+    PySmProjectPointLocationsImpl(const PySmProjectPointLocationsImpl& other) = default;
     virtual ~PySmProjectPointLocationsImpl() override = default;
     IAcSmProjectPointLocations* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -344,8 +364,9 @@ public:
 class PySmCalloutBlocksImpl : public PySmComponentImpl
 {
 public:
-    explicit PySmCalloutBlocksImpl(IAcSmCalloutBlocks* other);
-    explicit PySmCalloutBlocksImpl(const PySmCalloutBlocksImpl& other) = default;
+    PySmCalloutBlocksImpl();
+    PySmCalloutBlocksImpl(IAcSmCalloutBlocks* other);
+    PySmCalloutBlocksImpl(const PySmCalloutBlocksImpl& other) = default;
     virtual ~PySmCalloutBlocksImpl() override = default;
     IAcSmCalloutBlocks* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -355,8 +376,9 @@ public:
 class PySmSubsetImpl : public PySmComponentImpl
 {
 public:
-    explicit PySmSubsetImpl(IAcSmSubset* other);
-    explicit PySmSubsetImpl(const PySmSubsetImpl& other) = default;
+    PySmSubsetImpl();
+    PySmSubsetImpl(IAcSmSubset* other);
+    PySmSubsetImpl(const PySmSubsetImpl& other) = default;
     virtual ~PySmSubsetImpl() override = default;
     IAcSmSubset* impObj(const std::source_location& src = std::source_location::current()) const;
 #if defined(_ARXTARGET)
@@ -369,8 +391,9 @@ public:
 class PySmSheetSetImpl : public PySmSubsetImpl
 {
 public:
-    explicit PySmSheetSetImpl(IAcSmSheetSet* other);
-    explicit PySmSheetSetImpl(const PySmSheetSetImpl& other) = default;
+    PySmSheetSetImpl();
+    PySmSheetSetImpl(IAcSmSheetSet* other);
+    PySmSheetSetImpl(const PySmSheetSetImpl& other) = default;
     virtual ~PySmSheetSetImpl() override = default;
 
     PySmFileReferenceImpl   GetAltPageSetups() const;
@@ -386,7 +409,7 @@ public:
     PySmAcDbBlockRecordReferenceImpl GetDefLabelBlk() const;
     void                             SetDefLabelBlk(const PySmAcDbBlockRecordReferenceImpl& blk);
     PySmPublishOptionsImpl   GetPublishOptions() const;
-    void                     Sync(const AcDbDatabase* pDb);
+    void                     Sync(AcDbDatabase* pDb);
     void                     UpdateSheetCustomProps();
 
     IAcSmSheetSet* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -400,8 +423,9 @@ public:
 class PySmSheetImpl : public PySmComponentImpl
 {
 public:
-    explicit PySmSheetImpl(IAcSmSheet* other);
-    explicit PySmSheetImpl(const PySmSheetImpl& other) = default;
+    PySmSheetImpl();
+    PySmSheetImpl(IAcSmSheet* other);
+    PySmSheetImpl(const PySmSheetImpl& other) = default;
     virtual ~PySmSheetImpl() override = default;
 
     CString     GetNumber() const;
@@ -435,8 +459,9 @@ public:
 class PySmDatabaseImpl : public PySmComponentImpl
 {
 public:
-    explicit PySmDatabaseImpl(IAcSmDatabase* other);
-    explicit PySmDatabaseImpl(const PySmDatabaseImpl& other) = default;
+    PySmDatabaseImpl();
+    PySmDatabaseImpl(IAcSmDatabase* other);
+    PySmDatabaseImpl(const PySmDatabaseImpl& other) = default;
     virtual ~PySmDatabaseImpl() override = default;
     void                LoadFromFile(const CString& filename);
     CString             GetFileName() const;
