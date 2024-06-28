@@ -25,7 +25,7 @@ inline T PySmObjectCast(const PySmPersist& src)
 void makePySmPersistWrapper()
 {
     PyDocString DS("Persist");
-    class_<PySmPersist>("Persist", boost::python::no_init)
+    class_<PySmPersist>("Persist")
         .def("getIsDirty", &PySmPersist::getIsDirty, DS.SARGS())
         .def("getTypeName", &PySmPersist::getTypeName, DS.SARGS())
         .def("initNew", &PySmPersist::initNew)
@@ -35,6 +35,11 @@ void makePySmPersistWrapper()
         .def("cast", &PySmPersist::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmPersist::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmPersist::PySmPersist()
+    : PySmPersist(new PySmPersistImpl())
+{
 }
 
 PySmPersist::PySmPersist(PySmPersistImpl* ptr)
@@ -276,7 +281,7 @@ PySmCustomPropertyValueImpl* PySmCustomPropertyValue::impObj(const std::source_l
 void makePySmCustomPropertyBagWrapper()
 {
     PyDocString DS("CustomPropertyBag");
-    class_<PySmCustomPropertyBag, bases<PySmPersist>>("CustomPropertyBag", boost::python::no_init)
+    class_<PySmCustomPropertyBag, bases<PySmPersist>>("CustomPropertyBag")
         .def("getValue", &PySmCustomPropertyBag::getProperty)
         .def("setValue", &PySmCustomPropertyBag::setProperty)
         .def("getProperties", &PySmCustomPropertyBag::getProperties)
@@ -284,6 +289,11 @@ void makePySmCustomPropertyBagWrapper()
         .def("cast", &PySmCustomPropertyBag::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmCustomPropertyBag::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmCustomPropertyBag::PySmCustomPropertyBag()
+    : PySmCustomPropertyBag(new PySmCustomPropertyBagImpl())
+{
 }
 
 PySmCustomPropertyBag::PySmCustomPropertyBag(PySmCustomPropertyBagImpl* ptr)
@@ -347,10 +357,15 @@ PySmCustomPropertyBagImpl* PySmCustomPropertyBag::impObj(const std::source_locat
 void makePySmFileReferenceWrapper()
 {
     PyDocString DS("FileReference");
-    class_<PySmFileReference, bases<PySmPersist>>("FileReference", boost::python::no_init)
+    class_<PySmFileReference, bases<PySmPersist>>("FileReference")
         .def("cast", &PySmFileReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmFileReference::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmFileReference::PySmFileReference()
+    : PySmFileReference(new PySmFileReferenceImpl())
+{
 }
 
 PySmFileReference::PySmFileReference(PySmFileReferenceImpl* ptr)
@@ -386,10 +401,15 @@ PySmFileReferenceImpl* PySmFileReference::impObj(const std::source_location& src
 void makePySmAcDbObjectReferenceWrapper()
 {
     PyDocString DS("DbObjectReference");
-    class_<PySmAcDbObjectReference, bases<PySmFileReference>>("DbObjectReference", boost::python::no_init)
+    class_<PySmAcDbObjectReference, bases<PySmFileReference>>("DbObjectReference")
         .def("cast", &PySmProjectPointLocation::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmProjectPointLocation::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmAcDbObjectReference::PySmAcDbObjectReference()
+    : PySmAcDbObjectReference(new PySmAcDbObjectReferenceImpl())
+{
 }
 
 PySmAcDbObjectReference::PySmAcDbObjectReference(PySmAcDbObjectReferenceImpl* ptr)
@@ -425,10 +445,15 @@ PySmAcDbObjectReferenceImpl* PySmAcDbObjectReference::impObj(const std::source_l
 void makePySmNamedAcDbObjectReferenceWrapper()
 {
     PyDocString DS("NamedDbObjectReference");
-    class_<PySmNamedAcDbObjectReference, bases<PySmAcDbObjectReference>>("NamedDbObjectReference", boost::python::no_init)
+    class_<PySmNamedAcDbObjectReference, bases<PySmAcDbObjectReference>>("NamedDbObjectReference")
         .def("cast", &PySmNamedAcDbObjectReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmNamedAcDbObjectReference::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmNamedAcDbObjectReference::PySmNamedAcDbObjectReference()
+    : PySmNamedAcDbObjectReference(new PySmNamedAcDbObjectReferenceImpl())
+{
 }
 
 PySmNamedAcDbObjectReference::PySmNamedAcDbObjectReference(PySmNamedAcDbObjectReferenceImpl* ptr)
@@ -464,10 +489,15 @@ PySmNamedAcDbObjectReferenceImpl* PySmNamedAcDbObjectReference::impObj(const std
 void makePySmAcDbLayoutReferenceWrapper()
 {
     PyDocString DS("DbLayoutReference");
-    class_<PySmAcDbLayoutReference, bases<PySmNamedAcDbObjectReference>>("DbLayoutReference", boost::python::no_init)
+    class_<PySmAcDbLayoutReference, bases<PySmNamedAcDbObjectReference>>("DbLayoutReference")
         .def("cast", &PySmAcDbLayoutReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmAcDbLayoutReference::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmAcDbLayoutReference::PySmAcDbLayoutReference()
+    : PySmAcDbLayoutReference(new PySmAcDbLayoutReferenceImpl())
+{
 }
 
 PySmAcDbLayoutReference::PySmAcDbLayoutReference(PySmAcDbLayoutReferenceImpl* ptr)
@@ -475,7 +505,7 @@ PySmAcDbLayoutReference::PySmAcDbLayoutReference(PySmAcDbLayoutReferenceImpl* pt
 {
 }
 
-PySmAcDbLayoutReference::PySmAcDbLayoutReference(const PySmNamedAcDbObjectReferenceImpl& other)
+PySmAcDbLayoutReference::PySmAcDbLayoutReference(const PySmAcDbLayoutReferenceImpl& other)
     : PySmNamedAcDbObjectReference(other)
 {
 }
@@ -503,10 +533,15 @@ PySmAcDbLayoutReferenceImpl* PySmAcDbLayoutReference::impObj(const std::source_l
 void makePySmAcDbViewReferenceWrapper()
 {
     PyDocString DS("DbViewReference");
-    class_<PySmAcDbViewReference, bases<PySmNamedAcDbObjectReference>>("DbViewReference", boost::python::no_init)
+    class_<PySmAcDbViewReference, bases<PySmNamedAcDbObjectReference>>("DbViewReference")
         .def("cast", &PySmAcDbViewReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmAcDbViewReference::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmAcDbViewReference::PySmAcDbViewReference()
+    : PySmAcDbViewReference(new PySmAcDbViewReferenceImpl())
+{
 }
 
 PySmAcDbViewReference::PySmAcDbViewReference(PySmAcDbViewReferenceImpl* ptr)
@@ -542,10 +577,15 @@ PySmAcDbViewReferenceImpl* PySmAcDbViewReference::impObj(const std::source_locat
 void makePySmAcDbBlockRecordReferenceWrapper()
 {
     PyDocString DS("DbBlockRecordReference");
-    class_<PySmAcDbBlockRecordReference, bases<PySmNamedAcDbObjectReference>>("DbBlockRecordReference", boost::python::no_init)
+    class_<PySmAcDbBlockRecordReference, bases<PySmNamedAcDbObjectReference>>("DbBlockRecordReference")
         .def("cast", &PySmAcDbBlockRecordReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmAcDbBlockRecordReference::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmAcDbBlockRecordReference::PySmAcDbBlockRecordReference()
+    : PySmAcDbBlockRecordReference(new PySmAcDbBlockRecordReferenceImpl())
+{
 }
 
 PySmAcDbBlockRecordReference::PySmAcDbBlockRecordReference(PySmAcDbBlockRecordReferenceImpl* ptr)
@@ -581,10 +621,15 @@ PySmAcDbBlockRecordReferenceImpl* PySmAcDbBlockRecordReference::impObj(const std
 void makePySmProjectPointLocationWrapper()
 {
     PyDocString DS("ProjectPointLocation");
-    class_<PySmProjectPointLocation, bases<PySmPersist>>("ProjectPointLocation", boost::python::no_init)
+    class_<PySmProjectPointLocation, bases<PySmPersist>>("ProjectPointLocation")
         .def("cast", &PySmProjectPointLocation::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmProjectPointLocation::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmProjectPointLocation::PySmProjectPointLocation()
+    : PySmProjectPointLocation(new PySmProjectPointLocationImpl())
+{
 }
 
 PySmProjectPointLocation::PySmProjectPointLocation(PySmProjectPointLocationImpl* ptr)
@@ -620,10 +665,15 @@ PySmProjectPointLocationImpl* PySmProjectPointLocation::impObj(const std::source
 void makePySmObjectReferenceWrapper()
 {
     PyDocString DS("ObjectReference");
-    class_<PySmObjectReference, bases<PySmPersist>>("ObjectReference", boost::python::no_init)
+    class_<PySmObjectReference, bases<PySmPersist>>("ObjectReference")
         .def("cast", &PySmObjectReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmObjectReference::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmObjectReference::PySmObjectReference()
+    : PySmObjectReference(new PySmObjectReferenceImpl())
+{
 }
 
 PySmObjectReference::PySmObjectReference(PySmObjectReferenceImpl* ptr)
@@ -659,18 +709,23 @@ PySmObjectReferenceImpl* PySmObjectReference::impObj(const std::source_location&
 void makePySmPersistProxyWrapper()
 {
     PyDocString DS("PersistProxy");
-    class_<PySmPersistProxy, bases<PySmPersist>>("PersistProxy", boost::python::no_init)
+    class_<PySmPersistProxy, bases<PySmPersist>>("PersistProxy")
         .def("cast", &PySmPersistProxy::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmPersistProxy::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PySmPersistProxy::PySmPersistProxy(PySmPublishOptionsImpl* ptr)
+PySmPersistProxy::PySmPersistProxy()
+    : PySmPersistProxy(new PySmPersistProxyImpl())
+{
+}
+
+PySmPersistProxy::PySmPersistProxy(PySmPersistProxyImpl* ptr)
     : PySmPersist(ptr)
 {
 }
 
-PySmPersistProxy::PySmPersistProxy(const PySmPublishOptionsImpl& other)
+PySmPersistProxy::PySmPersistProxy(const PySmPersistProxyImpl& other)
     : PySmPersist(other)
 {
 }
@@ -737,7 +792,7 @@ PySmPublishOptionsImpl* PySmPublishOption::impObj(const std::source_location& sr
 void makePySmComponentWrapper()
 {
     PyDocString DS("Component");
-    class_<PySmComponent, bases<PySmPersist>>("Component", boost::python::no_init)
+    class_<PySmComponent, bases<PySmPersist>>("Component")
         .def("getName", &PySmComponent::getName)
         .def("setName", &PySmComponent::setName)
         .def("getDesc", &PySmComponent::getDesc)
@@ -746,6 +801,11 @@ void makePySmComponentWrapper()
         .def("cast", &PySmComponent::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmComponent::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmComponent::PySmComponent()
+    : PySmComponent(new PySmComponentImpl())
+{
 }
 
 PySmComponent::PySmComponent(PySmComponentImpl* ptr)
@@ -806,10 +866,15 @@ PySmComponentImpl* PySmComponent::impObj(const std::source_location& src /*= std
 void makePySmSheetSelSetWrapper()
 {
     PyDocString DS("SheetSelSet");
-    class_<PySmSheetSelSet, bases<PySmComponent>>("SheetSelSet", boost::python::no_init)
+    class_<PySmSheetSelSet, bases<PySmComponent>>("SheetSelSet")
         .def("cast", &PySmSheetSelSet::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheetSelSet::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmSheetSelSet::PySmSheetSelSet()
+    : PySmSheetSelSet(new PySmSheetSelSetImpl())
+{
 }
 
 PySmSheetSelSet::PySmSheetSelSet(PySmSheetSelSetImpl* ptr)
@@ -845,10 +910,15 @@ PySmSheetSelSetImpl* PySmSheetSelSet::impObj(const std::source_location& src /*=
 void makePySmSheetSelSetsWrapper()
 {
     PyDocString DS("SheetSelSets");
-    class_<PySmSheetSelSets, bases<PySmComponent>>("SheetSelSets", boost::python::no_init)
+    class_<PySmSheetSelSets, bases<PySmComponent>>("SheetSelSets")
         .def("cast", &PySmSheetSelSets::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheetSelSets::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmSheetSelSets::PySmSheetSelSets()
+    : PySmSheetSelSets(new PySmSheetSelSetsImpl())
+{
 }
 
 PySmSheetSelSets::PySmSheetSelSets(PySmSheetSelSetsImpl* ptr)
@@ -884,10 +954,15 @@ PySmSheetSelSetsImpl* PySmSheetSelSets::impObj(const std::source_location& src /
 void makePySmSheetViewWrapper()
 {
     PyDocString DS("SheetView");
-    class_<PySmSheetView, bases<PySmComponent>>("SheetView", boost::python::no_init)
+    class_<PySmSheetView, bases<PySmComponent>>("SheetView")
         .def("cast", &PySmSheetView::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheetView::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmSheetView::PySmSheetView()
+    : PySmSheetView(new PySmSheetViewImpl())
+{
 }
 
 PySmSheetView::PySmSheetView(PySmSheetViewImpl* ptr)
@@ -923,10 +998,15 @@ PySmSheetViewImpl* PySmSheetView::impObj(const std::source_location& src /*= std
 void makePySmSheetViewsWrapper()
 {
     PyDocString DS("SheetViews");
-    class_<PySmSheetViews, bases<PySmComponent>>("SheetViews", boost::python::no_init)
+    class_<PySmSheetViews, bases<PySmComponent>>("SheetViews")
         .def("cast", &PySmSheetViews::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheetViews::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmSheetViews::PySmSheetViews()
+    : PySmSheetViews(new PySmSheetViewsImpl())
+{
 }
 
 PySmSheetViews::PySmSheetViews(PySmSheetViewsImpl* ptr)
@@ -962,10 +1042,15 @@ PySmSheetViewsImpl* PySmSheetViews::impObj(const std::source_location& src /*= s
 void makePySmProjectPointLocationsWrapper()
 {
     PyDocString DS("ProjectPointLocations");
-    class_<PySmProjectPointLocations, bases<PySmComponent>>("ProjectPointLocations", boost::python::no_init)
+    class_<PySmProjectPointLocations, bases<PySmComponent>>("ProjectPointLocations")
         .def("cast", &PySmProjectPointLocations::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmProjectPointLocations::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmProjectPointLocations::PySmProjectPointLocations()
+    : PySmProjectPointLocations(new PySmProjectPointLocationsImpl())
+{
 }
 
 PySmProjectPointLocations::PySmProjectPointLocations(PySmProjectPointLocationsImpl* ptr)
@@ -1001,10 +1086,15 @@ PySmProjectPointLocationsImpl* PySmProjectPointLocations::impObj(const std::sour
 void makePySmSmResourcesWrapper()
 {
     PyDocString DS("Resources");
-    class_<PySmSmResources, bases<PySmComponent>>("Resources", boost::python::no_init)
+    class_<PySmSmResources, bases<PySmComponent>>("Resources")
         .def("cast", &PySmSmResources::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSmResources::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmSmResources::PySmSmResources()
+    : PySmSmResources(new PySmResourcesImpl())
+{
 }
 
 PySmSmResources::PySmSmResources(PySmResourcesImpl* ptr)
@@ -1040,10 +1130,15 @@ PySmResourcesImpl* PySmSmResources::impObj(const std::source_location& src /*= s
 void makePySmViewCategoryWrapper()
 {
     PyDocString DS("ViewCategory");
-    class_<PySmViewCategory, bases<PySmComponent>>("ViewCategory", boost::python::no_init)
+    class_<PySmViewCategory, bases<PySmComponent>>("ViewCategory")
         .def("cast", &PySmViewCategory::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmViewCategory::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmViewCategory::PySmViewCategory()
+    : PySmViewCategory(new PySmViewCategoryImpl())
+{
 }
 
 PySmViewCategory::PySmViewCategory(PySmViewCategoryImpl* ptr)
@@ -1051,7 +1146,7 @@ PySmViewCategory::PySmViewCategory(PySmViewCategoryImpl* ptr)
 {
 }
 
-PySmViewCategory::PySmViewCategory(const PySmResourcesImpl& other)
+PySmViewCategory::PySmViewCategory(const PySmViewCategoryImpl& other)
     : PySmComponent(other)
 {
 }
@@ -1079,13 +1174,18 @@ PySmViewCategoryImpl* PySmViewCategory::impObj(const std::source_location& src /
 void makePySmViewCategoriesWrapper()
 {
     PyDocString DS("ViewCategories");
-    class_<PySmViewCategories, bases<PySmComponent>>("ViewCategories", boost::python::no_init)
+    class_<PySmViewCategories, bases<PySmComponent>>("ViewCategories")
         .def("cast", &PySmViewCategories::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmViewCategories::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PySmViewCategories::PySmViewCategories(PySmViewCategoryImpl* ptr)
+PySmViewCategories::PySmViewCategories()
+    : PySmViewCategories(new PySmViewCategoriesImpl())
+{
+}
+
+PySmViewCategories::PySmViewCategories(PySmViewCategoriesImpl* ptr)
     : PySmComponent(ptr)
 {
 }
@@ -1118,10 +1218,15 @@ PySmViewCategoriesImpl* PySmViewCategories::impObj(const std::source_location& s
 void makePySmCalloutBlocksWrapper()
 {
     PyDocString DS("CalloutBlocks");
-    class_<PySmCalloutBlocks, bases<PySmComponent>>("CalloutBlocks", boost::python::no_init)
+    class_<PySmCalloutBlocks, bases<PySmComponent>>("CalloutBlocks")
         .def("cast", &PySmCalloutBlocks::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmCalloutBlocks::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmCalloutBlocks::PySmCalloutBlocks()
+    : PySmCalloutBlocks(new PySmCalloutBlocksImpl())
+{
 }
 
 PySmCalloutBlocks::PySmCalloutBlocks(PySmCalloutBlocksImpl* ptr)
@@ -1157,10 +1262,15 @@ PySmCalloutBlocksImpl* PySmCalloutBlocks::impObj(const std::source_location& src
 void makePySmSubsetWrapper()
 {
     PyDocString DS("Subset");
-    class_<PySmSubset, bases<PySmComponent>>("Subset", boost::python::no_init)
+    class_<PySmSubset, bases<PySmComponent>>("Subset")
         .def("cast", &PySmSubset::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSubset::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmSubset::PySmSubset()
+    : PySmSubset(new PySmSubsetImpl())
+{
 }
 
 PySmSubset::PySmSubset(PySmSubsetImpl* ptr)
@@ -1196,7 +1306,7 @@ PySmSubsetImpl* PySmSubset::impObj(const std::source_location& src /*= std::sour
 void makePySmSheetWrapper()
 {
     PyDocString DS("Sheet");
-    class_<PySmSheet, bases<PySmComponent>>("Sheet", boost::python::no_init)
+    class_<PySmSheet, bases<PySmComponent>>("Sheet")
         .def("getNumber", &PySmSheet::getNumber)
         .def("setNumber", &PySmSheet::setNumber)
         .def("getTitle", &PySmSheet::getTitle)
@@ -1215,6 +1325,11 @@ void makePySmSheetWrapper()
         .def("cast", &PySmSheet::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheet::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmSheet::PySmSheet()
+    : PySmSheet(new PySmSheetImpl())
+{
 }
 
 PySmSheet::PySmSheet(PySmSheetImpl* ptr)
@@ -1320,10 +1435,15 @@ PySmSheetImpl* PySmSheet::impObj(const std::source_location& src /*= std::source
 void makePySmSheetSetWrapper()
 {
     PyDocString DS("SheetSet");
-    class_<PySmSheetSet, bases<PySmSubset>>("SheetSet", boost::python::no_init)
+    class_<PySmSheetSet, bases<PySmSubset>>("SheetSet")
         .def("cast", &PySmSheetSet::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheetSet::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PySmSheetSet::PySmSheetSet()
+    : PySmSheetSet(new PySmSheetSetImpl())
+{
 }
 
 PySmSheetSet::PySmSheetSet(PySmSheetSetImpl* ptr)
@@ -1359,7 +1479,7 @@ PySmSheetSetImpl* PySmSheetSet::impObj(const std::source_location& src /*= std::
 void makePySmDatabaseWrapper()
 {
     PyDocString DS("Database");
-    class_<PySmDatabase, bases<PySmComponent>>("Database", boost::python::no_init)
+    class_<PySmDatabase, bases<PySmComponent>>("Database")
         .def("loadFromFile", &PySmDatabase::loadFromFile)
         .def("getFileName", &PySmDatabase::getFileName)
         .def("setFileName", &PySmDatabase::setFileName)
@@ -1383,6 +1503,10 @@ void makePySmDatabaseWrapper()
         .value("kLockedAccessDenied", SmLockStatus::AcSmLockStatus_Locked_AccessDenied)
         .export_values()
         ;
+}
+PySmDatabase::PySmDatabase()
+    : PySmDatabase(new PySmDatabaseImpl())
+{
 }
 
 PySmDatabase::PySmDatabase(PySmDatabaseImpl* ptr)

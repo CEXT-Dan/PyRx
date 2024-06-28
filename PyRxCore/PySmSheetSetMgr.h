@@ -65,6 +65,7 @@ void makePySmPersistWrapper();
 class PySmPersist
 {
 public:
+    PySmPersist();
     PySmPersist(PySmPersistImpl* ptr);
     PySmPersist(const PySmPersistImpl& other);
 
@@ -145,6 +146,7 @@ void makePySmCustomPropertyBagWrapper();
 class PySmCustomPropertyBag : public PySmPersist
 {
 public:
+    PySmCustomPropertyBag();
     PySmCustomPropertyBag(PySmCustomPropertyBagImpl* ptr);
     PySmCustomPropertyBag(const PySmCustomPropertyBagImpl& other);
     PySmCustomPropertyValue getProperty(const std::string& propName) const;
@@ -163,6 +165,7 @@ void makePySmFileReferenceWrapper();
 class PySmFileReference : public PySmPersist
 {
 public:
+    PySmFileReference();
     PySmFileReference(PySmFileReferenceImpl* ptr);
     PySmFileReference(const PySmFileReferenceImpl& other);
     static PySmFileReference cast(const PySmPersist& src);
@@ -177,6 +180,7 @@ void makePySmAcDbObjectReferenceWrapper();
 class PySmAcDbObjectReference : public PySmFileReference
 {
 public:
+    PySmAcDbObjectReference();
     PySmAcDbObjectReference(PySmAcDbObjectReferenceImpl* ptr);
     PySmAcDbObjectReference(const PySmAcDbObjectReferenceImpl& other);
     static PySmAcDbObjectReference cast(const PySmPersist& src);
@@ -191,6 +195,7 @@ void makePySmNamedAcDbObjectReferenceWrapper();
 class PySmNamedAcDbObjectReference : public PySmAcDbObjectReference
 {
 public:
+    PySmNamedAcDbObjectReference();
     PySmNamedAcDbObjectReference(PySmNamedAcDbObjectReferenceImpl* ptr);
     PySmNamedAcDbObjectReference(const PySmNamedAcDbObjectReferenceImpl& other);
     static PySmNamedAcDbObjectReference cast(const PySmPersist& src);
@@ -205,8 +210,9 @@ void makePySmAcDbLayoutReferenceWrapper();
 class PySmAcDbLayoutReference : public PySmNamedAcDbObjectReference
 {
 public:
+    PySmAcDbLayoutReference();
     PySmAcDbLayoutReference(PySmAcDbLayoutReferenceImpl* ptr);
-    PySmAcDbLayoutReference(const PySmNamedAcDbObjectReferenceImpl& other);
+    PySmAcDbLayoutReference(const PySmAcDbLayoutReferenceImpl& other);
     static PySmAcDbLayoutReference cast(const PySmPersist& src);
     static std::string   className();
 public:
@@ -219,6 +225,7 @@ void makePySmAcDbViewReferenceWrapper();
 class PySmAcDbViewReference : public PySmNamedAcDbObjectReference
 {
 public:
+    PySmAcDbViewReference();
     PySmAcDbViewReference(PySmAcDbViewReferenceImpl* ptr);
     PySmAcDbViewReference(const PySmAcDbViewReferenceImpl& other);
     static PySmAcDbViewReference cast(const PySmPersist& src);
@@ -233,6 +240,7 @@ void makePySmAcDbBlockRecordReferenceWrapper();
 class PySmAcDbBlockRecordReference : public PySmNamedAcDbObjectReference
 {
 public:
+    PySmAcDbBlockRecordReference();
     PySmAcDbBlockRecordReference(PySmAcDbBlockRecordReferenceImpl* ptr);
     PySmAcDbBlockRecordReference(const PySmAcDbBlockRecordReferenceImpl& other);
     static PySmAcDbBlockRecordReference cast(const PySmPersist& src);
@@ -247,6 +255,7 @@ void makePySmProjectPointLocationWrapper();
 class PySmProjectPointLocation : public PySmPersist
 {
 public:
+    PySmProjectPointLocation();
     PySmProjectPointLocation(PySmProjectPointLocationImpl* ptr);
     PySmProjectPointLocation(const PySmProjectPointLocationImpl& other);
     static PySmProjectPointLocation cast(const PySmPersist& src);
@@ -261,6 +270,7 @@ void makePySmObjectReferenceWrapper();
 class PySmObjectReference : public PySmPersist
 {
 public:
+    PySmObjectReference();
     PySmObjectReference(PySmObjectReferenceImpl* ptr);
     PySmObjectReference(const PySmObjectReferenceImpl& other);
     static PySmObjectReference cast(const PySmPersist& src);
@@ -275,8 +285,9 @@ void makePySmPersistProxyWrapper();
 class PySmPersistProxy : public PySmPersist
 {
 public:
-    PySmPersistProxy(PySmPublishOptionsImpl* ptr);
-    PySmPersistProxy(const PySmPublishOptionsImpl& other);
+    PySmPersistProxy();
+    PySmPersistProxy(PySmPersistProxyImpl* ptr);
+    PySmPersistProxy(const PySmPersistProxyImpl& other);
     static PySmPersistProxy cast(const PySmPersist& src);
     static std::string      className();
 public:
@@ -303,6 +314,7 @@ void makePySmComponentWrapper();
 class PySmComponent : public PySmPersist
 {
 public:
+    PySmComponent();
     PySmComponent(PySmComponentImpl* ptr);
     PySmComponent(const PySmComponentImpl& other);
 
@@ -324,6 +336,7 @@ void makePySmSheetSelSetWrapper();
 class PySmSheetSelSet : public PySmComponent
 {
 public:
+    PySmSheetSelSet();
     PySmSheetSelSet(PySmSheetSelSetImpl* ptr);
     PySmSheetSelSet(const PySmSheetSelSetImpl& other);
     static PySmSheetSelSet  cast(const PySmPersist& src);
@@ -338,6 +351,7 @@ void makePySmSheetSelSetsWrapper();
 class PySmSheetSelSets : public PySmComponent
 {
 public:
+    PySmSheetSelSets();
     PySmSheetSelSets(PySmSheetSelSetsImpl* ptr);
     PySmSheetSelSets(const PySmSheetSelSetsImpl& other);
     static PySmSheetSelSets  cast(const PySmPersist& src);
@@ -352,6 +366,7 @@ void makePySmSheetViewWrapper();
 class PySmSheetView : public PySmComponent
 {
 public:
+    PySmSheetView();
     PySmSheetView(PySmSheetViewImpl* ptr);
     PySmSheetView(const PySmSheetViewImpl& other);
     static PySmSheetView  cast(const PySmPersist& src);
@@ -366,6 +381,7 @@ void makePySmSheetViewsWrapper();
 class PySmSheetViews : public PySmComponent
 {
 public:
+    PySmSheetViews();
     PySmSheetViews(PySmSheetViewsImpl* ptr);
     PySmSheetViews(const PySmSheetViewsImpl& other);
     static PySmSheetViews  cast(const PySmPersist& src);
@@ -380,6 +396,7 @@ void makePySmProjectPointLocationsWrapper();
 class PySmProjectPointLocations : public PySmComponent
 {
 public:
+    PySmProjectPointLocations();
     PySmProjectPointLocations(PySmProjectPointLocationsImpl* ptr);
     PySmProjectPointLocations(const PySmProjectPointLocationsImpl& other);
     static PySmProjectPointLocations  cast(const PySmPersist& src);
@@ -394,6 +411,7 @@ void makePySmSmResourcesWrapper();
 class PySmSmResources : public PySmComponent
 {
 public:
+    PySmSmResources();
     PySmSmResources(PySmResourcesImpl* ptr);
     PySmSmResources(const PySmResourcesImpl& other);
     static PySmSmResources  cast(const PySmPersist& src);
@@ -408,8 +426,9 @@ void makePySmViewCategoryWrapper();
 class PySmViewCategory : public PySmComponent
 {
 public:
+    PySmViewCategory();
     PySmViewCategory(PySmViewCategoryImpl* ptr);
-    PySmViewCategory(const PySmResourcesImpl& other);
+    PySmViewCategory(const PySmViewCategoryImpl& other);
     static PySmViewCategory  cast(const PySmPersist& src);
     static std::string       className();
 public:
@@ -422,7 +441,8 @@ void makePySmViewCategoriesWrapper();
 class PySmViewCategories : public PySmComponent
 {
 public:
-    PySmViewCategories(PySmViewCategoryImpl* ptr);
+    PySmViewCategories();
+    PySmViewCategories(PySmViewCategoriesImpl* ptr);
     PySmViewCategories(const PySmViewCategoriesImpl& other);
     static PySmViewCategories  cast(const PySmPersist& src);
     static std::string         className();
@@ -436,6 +456,7 @@ void makePySmCalloutBlocksWrapper();
 class PySmCalloutBlocks : public PySmComponent
 {
 public:
+    PySmCalloutBlocks();
     PySmCalloutBlocks(PySmCalloutBlocksImpl* ptr);
     PySmCalloutBlocks(const PySmCalloutBlocksImpl& other);
     static PySmCalloutBlocks  cast(const PySmPersist& src);
@@ -450,6 +471,7 @@ void makePySmSubsetWrapper();
 class PySmSubset : public PySmComponent
 {
 public:
+    PySmSubset();
     PySmSubset(PySmSubsetImpl* ptr);
     PySmSubset(const PySmSubsetImpl& other);
     static PySmSubset  cast(const PySmPersist& src);
@@ -464,6 +486,7 @@ void makePySmSheetWrapper();
 class PySmSheet : public PySmComponent
 {
 public:
+    PySmSheet();
     PySmSheet(PySmSheetImpl* ptr);
     PySmSheet(const PySmSheetImpl& other);
 
@@ -497,6 +520,7 @@ void makePySmSheetSetWrapper();
 class PySmSheetSet : public PySmSubset
 {
 public:
+    PySmSheetSet();
     PySmSheetSet(PySmSheetSetImpl* ptr);
     PySmSheetSet(const PySmSheetSetImpl& other);
     static PySmSheetSet cast(const PySmPersist& src);
@@ -511,6 +535,7 @@ void makePySmDatabaseWrapper();
 class PySmDatabase : public PySmComponent
 {
 public:
+    PySmDatabase();
     PySmDatabase(PySmDatabaseImpl* ptr);
     PySmDatabase(const PySmDatabaseImpl& other);
     void                loadFromFile(const std::string& filename);

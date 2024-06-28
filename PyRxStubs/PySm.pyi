@@ -23,8 +23,10 @@ This class cannot be instantiated from Python'''
 
 class CalloutBlocks(Component):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -39,8 +41,10 @@ This class cannot be instantiated from Python'''
 
 class Component(Persist):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -85,8 +89,10 @@ This class cannot be instantiated from Python'''
 
 class CustomPropertyBag(Persist):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -167,8 +173,10 @@ class CustomPropertyValue(Persist):
 
 class Database(Component):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -243,8 +251,10 @@ This class cannot be instantiated from Python'''
 
 class DbBlockRecordReference(NamedDbObjectReference):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -259,8 +269,10 @@ This class cannot be instantiated from Python'''
 
 class DbLayoutReference(NamedDbObjectReference):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -275,8 +287,10 @@ This class cannot be instantiated from Python'''
 
 class DbObjectReference(FileReference):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -291,8 +305,10 @@ This class cannot be instantiated from Python'''
 
 class DbViewReference(NamedDbObjectReference):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -307,8 +323,10 @@ This class cannot be instantiated from Python'''
 
 class FileReference(Persist):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -343,8 +361,10 @@ class LockStatus(object):
 
 class NamedDbObjectReference(DbObjectReference):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -359,8 +379,10 @@ This class cannot be instantiated from Python'''
 
 class ObjectReference(Persist):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -375,8 +397,10 @@ This class cannot be instantiated from Python'''
 
 class Persist(object):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -425,8 +449,10 @@ This class cannot be instantiated from Python'''
 
 class PersistProxy(Persist):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -441,8 +467,10 @@ This class cannot be instantiated from Python'''
 
 class ProjectPointLocation(Persist):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -457,8 +485,10 @@ This class cannot be instantiated from Python'''
 
 class ProjectPointLocations(Component):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -506,8 +536,10 @@ This class cannot be instantiated from Python'''
 
 class Resources(Component):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -522,8 +554,10 @@ This class cannot be instantiated from Python'''
 
 class Sheet(Component):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -627,8 +661,10 @@ setCategory( (Sheet)arg1, (str)arg2) -> None :
 
 class SheetSelSet(Component):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -643,8 +679,10 @@ This class cannot be instantiated from Python'''
 
 class SheetSelSets(Component):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -659,8 +697,10 @@ This class cannot be instantiated from Python'''
 
 class SheetSet(Subset):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -740,8 +780,10 @@ createDatabase( (SheetSetMgr)arg1, (str)arg2, (str)arg3, (bool)arg4) -> Database
 
 class SheetView(Component):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -756,8 +798,10 @@ This class cannot be instantiated from Python'''
 
 class SheetViews(Component):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -772,8 +816,10 @@ This class cannot be instantiated from Python'''
 
 class Subset(Component):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -788,8 +834,10 @@ This class cannot be instantiated from Python'''
 
 class ViewCategories(Component):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
@@ -804,8 +852,10 @@ This class cannot be instantiated from Python'''
 
 class ViewCategory(Component):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
