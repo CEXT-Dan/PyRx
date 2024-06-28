@@ -58,7 +58,6 @@ enum class SmLockStatus : int
     AcSmLockStatus_Locked_AccessDenied = 16
 };
 
-
 //-----------------------------------------------------------------------------------------
 //PySmPersist
 void makePySmPersistWrapper();
