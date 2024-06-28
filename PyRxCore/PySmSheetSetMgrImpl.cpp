@@ -263,6 +263,36 @@ IAcSmAcDbLayoutReference* PySmAcDbLayoutReferenceImpl::impObj(const std::source_
 }
 
 //-----------------------------------------------------------------------------------------
+//PySmAcDbViewReference
+PySmAcDbViewReferenceImpl::PySmAcDbViewReferenceImpl(IAcSmAcDbViewReference* other)
+    : PySmNamedAcDbObjectReferenceImpl(other)
+{
+}
+
+IAcSmAcDbViewReference* PySmAcDbViewReferenceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmAcDbViewReference*>(m_pimpl.GetInterfacePtr());
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmAcDbBlockRecordReference
+PySmAcDbBlockRecordReferenceImpl::PySmAcDbBlockRecordReferenceImpl(IAcSmAcDbBlockRecordReference* other)
+    : PySmNamedAcDbObjectReferenceImpl(other)
+{
+}
+
+IAcSmAcDbBlockRecordReference* PySmAcDbBlockRecordReferenceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IAcSmAcDbBlockRecordReference*>(m_pimpl.GetInterfacePtr());
+}
+
+//-----------------------------------------------------------------------------------------
 //PySmCustomPropertyValue
 PySmCustomPropertyValueImpl::PySmCustomPropertyValueImpl(IAcSmCustomPropertyValue* other)
     : PySmPersistImpl(other)

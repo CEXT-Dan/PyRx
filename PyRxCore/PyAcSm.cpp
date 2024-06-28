@@ -17,6 +17,8 @@ BOOST_PYTHON_MODULE(PySm)
     makePySmAcDbObjectReferenceWrapper();
     makePySmNamedAcDbObjectReferenceWrapper();
     makePySmAcDbLayoutReferenceWrapper();
+    makePySmAcDbViewReferenceWrapper();
+    makePySmAcDbBlockRecordReferenceWrapper();
     makePySmPublishOptioneWrapper();
     makePySmPersistProxyWrapper();
     makePySmObjectReferenceWrapper();
