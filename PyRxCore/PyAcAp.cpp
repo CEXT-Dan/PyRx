@@ -49,6 +49,8 @@ BOOST_PYTHON_MODULE(PyAp)
     register_exception_translator<PyAcadErrorStatus>(PyAcadErrorStatus::translator);
     register_exception_translator<PyNotThatKindOfClass>(PyNotThatKindOfClass::translator);
     register_exception_translator<PyNotimplementedByHost>(PyNotimplementedByHost::translator);
+    register_exception_translator<PyAcadHrError>(PyAcadHrError::translator);
+    register_exception_translator<PyAcadHrError>(PyAcadHrError::translator);
 
     PyDocString DS("CmdFlags");
     class_<CmdFlags>("CmdFlags")

@@ -16,7 +16,11 @@ host = Ap.Application.hostAPI()
 class TestSheetSet(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestSheetSet, self).__init__(*args, **kwargs)
-
+        
+    def test_all_ctor(self):
+        o1 = Sm.Persist()
+        self.assertFalse(o1)
+       
     def test_cast_to_sheet(self):
         path = dbc.mediapath + "SSTest.dst"
         mgr = Sm.SheetSetMgr()

@@ -297,12 +297,13 @@ public:
 //-----------------------------------------------------------------------------------------
 //PySmPublishOption
 void makePySmPublishOptioneWrapper();
-class PySmPublishOption : public PySmPersist
+class PySmPublishOptions : public PySmPersist
 {
 public:
-    PySmPublishOption(PySmPublishOptionsImpl* ptr);
-    PySmPublishOption(const PySmPublishOptionsImpl& other);
-    static PySmPublishOption cast(const PySmPersist& src);
+    PySmPublishOptions();
+    PySmPublishOptions(PySmPublishOptionsImpl* ptr);
+    PySmPublishOptions(const PySmPublishOptionsImpl& other);
+    static PySmPublishOptions cast(const PySmPersist& src);
     static std::string   className();
 public:
     inline PySmPublishOptionsImpl* impObj(const std::source_location& src = std::source_location::current()) const;

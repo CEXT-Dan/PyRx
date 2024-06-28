@@ -26,12 +26,12 @@ void makePySmPersistWrapper()
 {
     PyDocString DS("Persist");
     class_<PySmPersist>("Persist")
-        .def("getIsDirty", &PySmPersist::getIsDirty, DS.SARGS())
-        .def("getTypeName", &PySmPersist::getTypeName, DS.SARGS())
+        .def("getIsDirty", &PySmPersist::getIsDirty, DS.ARGS())
+        .def("getTypeName", &PySmPersist::getTypeName, DS.ARGS())
         .def("initNew", &PySmPersist::initNew)
-        .def("getOwner", &PySmPersist::getOwner)
+        .def("getOwner", &PySmPersist::getOwner, DS.ARGS())
         .def("setOwner", &PySmPersist::setOwner)
-        .def("getDatabase", &PySmPersist::getDatabase)
+        .def("getDatabase", &PySmPersist::getDatabase, DS.ARGS())
         .def("cast", &PySmPersist::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmPersist::className, DS.SARGS()).staticmethod("className")
         ;
@@ -752,34 +752,39 @@ PySmPersistProxyImpl* PySmPersistProxy::impObj(const std::source_location& src /
 //PySmPublishOption
 void makePySmPublishOptioneWrapper()
 {
-    PyDocString DS("PublishOption");
-    class_<PySmPublishOption, bases<PySmPersist>>("PublishOption", boost::python::no_init)
-        .def("cast", &PySmPublishOption::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
-        .def("className", &PySmPublishOption::className, DS.SARGS()).staticmethod("className")
+    PyDocString DS("PublishOptions");
+    class_<PySmPublishOptions, bases<PySmPersist>>("PublishOptions")
+        .def("cast", &PySmPublishOptions::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmPublishOptions::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PySmPublishOption::PySmPublishOption(PySmPublishOptionsImpl* ptr)
+PySmPublishOptions::PySmPublishOptions()
+    : PySmPublishOptions(new PySmPublishOptionsImpl())
+{
+}
+
+PySmPublishOptions::PySmPublishOptions(PySmPublishOptionsImpl* ptr)
     : PySmPersist(ptr)
 {
 }
 
-PySmPublishOption::PySmPublishOption(const PySmPublishOptionsImpl& other)
+PySmPublishOptions::PySmPublishOptions(const PySmPublishOptionsImpl& other)
     : PySmPersist(other)
 {
 }
 
-PySmPublishOption PySmPublishOption::cast(const PySmPersist& src)
+PySmPublishOptions PySmPublishOptions::cast(const PySmPersist& src)
 {
-    return PySmObjectCast<PySmPublishOption>(src);
+    return PySmObjectCast<PySmPublishOptions>(src);
 }
 
-std::string PySmPublishOption::className()
+std::string PySmPublishOptions::className()
 {
     return "AcSmPublishOptions";
 }
 
-PySmPublishOptionsImpl* PySmPublishOption::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+PySmPublishOptionsImpl* PySmPublishOptions::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
