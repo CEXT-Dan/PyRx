@@ -41,10 +41,8 @@ class CalloutBlocks(Component):
 
 class Component(Persist):
     def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+        '''Raises an exception
+This class cannot be instantiated from Python'''
         ...
 
     @staticmethod
@@ -397,10 +395,8 @@ class ObjectReference(Persist):
 
 class Persist(object):
     def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+        '''Raises an exception
+This class cannot be instantiated from Python'''
         ...
 
     @staticmethod
@@ -412,26 +408,16 @@ class Persist(object):
     def className ()-> str :
         '''                             '''
         ...
-    def getDatabase (self, *args, **kwargs)-> PySm.Database :
-        '''getDatabase( (Persist)arg1) -> Database :
-
-    C++ signature :
-        class PySmDatabase getDatabase(class PySmPersist {lvalue})'''
-        ...
-
-    @staticmethod
-    def getIsDirty ()-> bool :
+    def getDatabase (self)-> PySm.Database :
         '''                             '''
         ...
-    def getOwner (self, *args, **kwargs)-> PySm.Persist :
-        '''getOwner( (Persist)arg1) -> Persist :
-
-    C++ signature :
-        class PySmPersist getOwner(class PySmPersist {lvalue})'''
+    def getIsDirty (self)-> bool :
+        '''                             '''
         ...
-
-    @staticmethod
-    def getTypeName ()-> str :
+    def getOwner (self)-> PySm.Persist :
+        '''                             '''
+        ...
+    def getTypeName (self)-> str :
         '''                             '''
         ...
     def initNew (self, *args, **kwargs)-> None :
@@ -518,14 +504,16 @@ class PropertyFlags(object):
         '''None'''
         ...
 
-class PublishOption(Persist):
+class PublishOptions(Persist):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
-    def cast (otherObject: PySm.Persist)-> PySm.PublishOption :
+    def cast (otherObject: PySm.Persist)-> PySm.PublishOptions :
         '''                             '''
         ...
 
