@@ -775,6 +775,18 @@ PySmSheetSetImpl::PySmSheetSetImpl(IAcSmSheetSet* other)
 {
 }
 
+PySmFileReferenceImpl PySmSheetSetImpl::GetAltPageSetups() const
+{
+    IAcSmFileReference* ptr = nullptr;
+    PyThrowBadHr(impObj()->GetAltPageSetups(&ptr));
+    return PySmFileReferenceImpl(ptr);
+}
+
+void PySmSheetSetImpl::SetAltPageSetups(const PySmFileReferenceImpl& alt)
+{
+    PyThrowBadHr(impObj()->SetAltPageSetups(alt.impObj()));
+}
+
 IAcSmSheetSet* PySmSheetSetImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

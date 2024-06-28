@@ -372,6 +372,24 @@ public:
     explicit PySmSheetSetImpl(IAcSmSheetSet* other);
     explicit PySmSheetSetImpl(const PySmSheetSetImpl& other) = default;
     virtual ~PySmSheetSetImpl() override = default;
+    PySmFileReferenceImpl   GetAltPageSetups() const;
+    void                    SetAltPageSetups(const PySmFileReferenceImpl& alt);
+
+
+   //GetDefAltPageSetup()
+   //SetDefAltPageSetup()
+   //GetPromptForDwgName()
+   //SetPromptForDwgName()
+   //GetSheetSelSets()
+   //GetResources()
+   //GetCalloutBlocks()
+   //GetViewCategories()
+   //GetDefLabelBlk()
+   //SetDefLabelBlk()
+   //GetPublishOptions()
+   //Sync()
+   //UpdateSheetCustomProps()
+
     IAcSmSheetSet* impObj(const std::source_location& src = std::source_location::current()) const;
 #if defined(_ARXTARGET)
     IAcSmSheetSet2* impObj2(const std::source_location& src = std::source_location::current()) const;
