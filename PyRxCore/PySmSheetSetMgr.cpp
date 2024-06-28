@@ -424,8 +424,8 @@ PySmAcDbObjectReferenceImpl* PySmAcDbObjectReference::impObj(const std::source_l
 //PySmNamedAcDbObjectReference
 void makePySmNamedAcDbObjectReferenceWrapper()
 {
-    PyDocString DS("NamedAcDbObjectReference");
-    class_<PySmNamedAcDbObjectReference, bases<PySmAcDbObjectReference>>("NamedAcDbObjectReference", boost::python::no_init)
+    PyDocString DS("NamedDbObjectReference");
+    class_<PySmNamedAcDbObjectReference, bases<PySmAcDbObjectReference>>("NamedDbObjectReference", boost::python::no_init)
         .def("cast", &PySmNamedAcDbObjectReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmNamedAcDbObjectReference::className, DS.SARGS()).staticmethod("className")
         ;
@@ -463,8 +463,8 @@ PySmNamedAcDbObjectReferenceImpl* PySmNamedAcDbObjectReference::impObj(const std
 //PySmAcDbLayoutReference
 void makePySmAcDbLayoutReferenceWrapper()
 {
-    PyDocString DS("AcDbLayoutReference");
-    class_<PySmAcDbLayoutReference, bases<PySmNamedAcDbObjectReference>>("AcDbLayoutReference", boost::python::no_init)
+    PyDocString DS("DbLayoutReference");
+    class_<PySmAcDbLayoutReference, bases<PySmNamedAcDbObjectReference>>("DbLayoutReference", boost::python::no_init)
         .def("cast", &PySmAcDbLayoutReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmAcDbLayoutReference::className, DS.SARGS()).staticmethod("className")
         ;
@@ -502,8 +502,8 @@ PySmAcDbLayoutReferenceImpl* PySmAcDbLayoutReference::impObj(const std::source_l
 //PySmAcDbViewReference
 void makePySmAcDbViewReferenceWrapper()
 {
-    PyDocString DS("AcDbViewReference");
-    class_<PySmAcDbViewReference, bases<PySmNamedAcDbObjectReference>>("AcDbViewReference", boost::python::no_init)
+    PyDocString DS("DbViewReference");
+    class_<PySmAcDbViewReference, bases<PySmNamedAcDbObjectReference>>("DbViewReference", boost::python::no_init)
         .def("cast", &PySmAcDbViewReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmAcDbViewReference::className, DS.SARGS()).staticmethod("className")
         ;
@@ -541,8 +541,8 @@ PySmAcDbViewReferenceImpl* PySmAcDbViewReference::impObj(const std::source_locat
 //PySmAcDbBlockRecordReference
 void makePySmAcDbBlockRecordReferenceWrapper()
 {
-    PyDocString DS("AcDbBlockRecordReference");
-    class_<PySmAcDbBlockRecordReference, bases<PySmNamedAcDbObjectReference>>("AcDbBlockRecordReference", boost::python::no_init)
+    PyDocString DS("DbBlockRecordReference");
+    class_<PySmAcDbBlockRecordReference, bases<PySmNamedAcDbObjectReference>>("DbBlockRecordReference", boost::python::no_init)
         .def("cast", &PySmAcDbBlockRecordReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmAcDbBlockRecordReference::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1142,6 +1142,14 @@ PySmCalloutBlocks PySmCalloutBlocks::cast(const PySmPersist& src)
 std::string PySmCalloutBlocks::className()
 {
     return "AcSmCalloutBlocks";
+}
+
+PySmCalloutBlocksImpl* PySmCalloutBlocks::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmCalloutBlocksImpl*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------

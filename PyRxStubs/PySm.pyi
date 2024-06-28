@@ -10,58 +10,10 @@ import PySm
 from typing import overload
 from typing import Any
 
-class AcDbBlockRecordReference(NamedAcDbObjectReference):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
-    @staticmethod
-    def cast (otherObject: PySm.Persist)-> PySm.AcDbBlockRecordReference :
-        '''                             '''
-        ...
-
-    @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-
 class AcDbDatabase(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
 This class cannot be instantiated from Python'''
-        ...
-
-    @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-
-class AcDbLayoutReference(NamedAcDbObjectReference):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
-    @staticmethod
-    def cast (otherObject: PySm.Persist)-> PySm.AcDbLayoutReference :
-        '''                             '''
-        ...
-
-    @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-
-class AcDbViewReference(NamedAcDbObjectReference):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
-    @staticmethod
-    def cast (otherObject: PySm.Persist)-> PySm.AcDbViewReference :
-        '''                             '''
         ...
 
     @staticmethod
@@ -247,6 +199,38 @@ This class cannot be instantiated from Python'''
         void unlockDb(class PySmDatabase {lvalue},bool)'''
         ...
 
+class DbBlockRecordReference(NamedDbObjectReference):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.DbBlockRecordReference :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class DbLayoutReference(NamedDbObjectReference):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.DbLayoutReference :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class DbObjectReference(FileReference):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
@@ -255,6 +239,22 @@ This class cannot be instantiated from Python'''
 
     @staticmethod
     def cast (otherObject: PySm.Persist)-> PySm.ProjectPointLocation :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class DbViewReference(NamedDbObjectReference):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.DbViewReference :
         '''                             '''
         ...
 
@@ -299,14 +299,14 @@ class LockStatus(object):
         '''None'''
         ...
 
-class NamedAcDbObjectReference(DbObjectReference):
+class NamedDbObjectReference(DbObjectReference):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
 This class cannot be instantiated from Python'''
         ...
 
     @staticmethod
-    def cast (otherObject: PySm.Persist)-> PySm.NamedAcDbObjectReference :
+    def cast (otherObject: PySm.Persist)-> PySm.NamedDbObjectReference :
         '''                             '''
         ...
 
