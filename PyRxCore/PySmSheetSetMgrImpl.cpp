@@ -515,6 +515,46 @@ IAcSmPublishOptions* PySmPublishOptionImpl::impObj(const std::source_location& s
     return static_cast<IAcSmPublishOptions*>(m_pimpl.GetInterfacePtr());
 }
 
+#if defined(_ARXTARGET)
+IAcSmPublishOptions2* PySmPublishOptionImpl::impObj2(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl != nullptr)
+    {
+        IAcSmPublishOptions2* pObj = nullptr;
+        if (m_pimpl->QueryInterface(IID_IAcSmPublishOptions2, (void**)&pObj) == S_OK && pObj) {
+            return pObj;
+        }
+    }
+    throw PyNullObject(src);
+}
+#endif
+#if defined(_ARXTARGET)
+IAcSmPublishOptions3* PySmPublishOptionImpl::impObj3(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl != nullptr)
+    {
+        IAcSmPublishOptions3* pObj = nullptr;
+        if (m_pimpl->QueryInterface(IID_IAcSmPublishOptions3, (void**)&pObj) == S_OK && pObj) {
+            return pObj;
+        }
+    }
+    throw PyNullObject(src);
+}
+#endif
+#if defined(_ARXTARGET)
+IAcSmPublishOptions4* PySmPublishOptionImpl::impObj4(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl != nullptr)
+    {
+        IAcSmPublishOptions4* pObj = nullptr;
+        if (m_pimpl->QueryInterface(IID_IAcSmPublishOptions4, (void**)&pObj) == S_OK && pObj) {
+            return pObj;
+        }
+    }
+    throw PyNullObject(src);
+}
+#endif
+
 //-----------------------------------------------------------------------------------------
 //PySmComponent
 PySmComponentImpl::PySmComponentImpl(IAcSmComponent* other)
