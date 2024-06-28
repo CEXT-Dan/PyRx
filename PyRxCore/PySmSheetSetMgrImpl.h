@@ -224,6 +224,15 @@ public:
     explicit PySmPublishOptionImpl(const PySmPublishOptionImpl& other) = default;
     virtual ~PySmPublishOptionImpl() override = default;
     IAcSmPublishOptions* impObj(const std::source_location& src = std::source_location::current()) const;
+#if defined(_ARXTARGET)
+    IAcSmPublishOptions2* impObj2(const std::source_location& src = std::source_location::current()) const;
+#endif
+#if defined(_ARXTARGET)
+    IAcSmPublishOptions3* impObj3(const std::source_location& src = std::source_location::current()) const;
+#endif
+#if defined(_ARXTARGET)
+    IAcSmPublishOptions4* impObj4(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-----------------------------------------------------------------------------------------
