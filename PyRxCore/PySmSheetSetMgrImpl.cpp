@@ -54,11 +54,6 @@ static IAcadDatabase* GetIAcadDatabaseFromAcDbDatabse(AcDbDatabase* pSrcObject)
 
 //----------------------------------------------------------------------------------------
 //PySmPersist
-PySmPersistImpl::PySmPersistImpl()
-{
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmPersist));
-}
-
 PySmPersistImpl::PySmPersistImpl(IAcSmPersist* other)
 {
     if (other != nullptr)
@@ -207,7 +202,7 @@ IAcSmObjectId* PySmObjectIdImpl::impObj(const std::source_location& src /*= std:
 PySmFileReferenceImpl::PySmFileReferenceImpl()
     : PySmPersistImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmFileReference));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmFileReference));
 }
 
 PySmFileReferenceImpl::PySmFileReferenceImpl(IAcSmFileReference* other)
@@ -248,7 +243,7 @@ IAcSmFileReference* PySmFileReferenceImpl::impObj(const std::source_location& sr
 PySmAcDbObjectReferenceImpl::PySmAcDbObjectReferenceImpl()
     : PySmFileReferenceImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmAcDbObjectReference));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmAcDbObjectReference));
 }
 
 PySmAcDbObjectReferenceImpl::PySmAcDbObjectReferenceImpl(IAcSmAcDbObjectReference* other)
@@ -269,7 +264,7 @@ IAcSmAcDbObjectReference* PySmAcDbObjectReferenceImpl::impObj(const std::source_
 PySmNamedAcDbObjectReferenceImpl::PySmNamedAcDbObjectReferenceImpl()
     : PySmAcDbObjectReferenceImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmNamedAcDbObjectReference));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmNamedAcDbObjectReference));
 }
 
 PySmNamedAcDbObjectReferenceImpl::PySmNamedAcDbObjectReferenceImpl(IAcSmNamedAcDbObjectReference* other)
@@ -290,7 +285,7 @@ IAcSmNamedAcDbObjectReference* PySmNamedAcDbObjectReferenceImpl::impObj(const st
 PySmAcDbLayoutReferenceImpl::PySmAcDbLayoutReferenceImpl()
     : PySmNamedAcDbObjectReferenceImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmAcDbLayoutReference));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmAcDbLayoutReference));
 }
 
 PySmAcDbLayoutReferenceImpl::PySmAcDbLayoutReferenceImpl(IAcSmAcDbLayoutReference* other)
@@ -311,7 +306,7 @@ IAcSmAcDbLayoutReference* PySmAcDbLayoutReferenceImpl::impObj(const std::source_
 PySmAcDbViewReferenceImpl::PySmAcDbViewReferenceImpl()
     : PySmNamedAcDbObjectReferenceImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmAcDbViewReference));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmAcDbViewReference));
 }
 
 PySmAcDbViewReferenceImpl::PySmAcDbViewReferenceImpl(IAcSmAcDbViewReference* other)
@@ -332,7 +327,7 @@ IAcSmAcDbViewReference* PySmAcDbViewReferenceImpl::impObj(const std::source_loca
 PySmAcDbBlockRecordReferenceImpl::PySmAcDbBlockRecordReferenceImpl()
     : PySmNamedAcDbObjectReferenceImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmAcDbBlockRecordReference));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmAcDbBlockRecordReference));
 }
 
 PySmAcDbBlockRecordReferenceImpl::PySmAcDbBlockRecordReferenceImpl(IAcSmAcDbBlockRecordReference* other)
@@ -439,7 +434,7 @@ IAcSmCustomPropertyValue* PySmCustomPropertyValueImpl::impObj(const std::source_
 PySmCustomPropertyBagImpl::PySmCustomPropertyBagImpl()
     : PySmPersistImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmCustomPropertyBag));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmCustomPropertyBag));
 }
 
 PySmCustomPropertyBagImpl::PySmCustomPropertyBagImpl(IAcSmCustomPropertyBag* other)
@@ -507,7 +502,11 @@ IAcSmCustomPropertyBag* PySmCustomPropertyBagImpl::impObj(const std::source_loca
 PySmObjectReferenceImpl::PySmObjectReferenceImpl()
     : PySmPersistImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmObjectReference));
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmObjectReference));
+#endif
 }
 
 PySmObjectReferenceImpl::PySmObjectReferenceImpl(IAcSmObjectReference* other)
@@ -529,7 +528,7 @@ IAcSmObjectReference* PySmObjectReferenceImpl::impObj(const std::source_location
 PySmProjectPointLocationImpl::PySmProjectPointLocationImpl()
     : PySmPersistImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmPersist));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmProjectPointLocation));
 }
 
 PySmProjectPointLocationImpl::PySmProjectPointLocationImpl(IAcSmProjectPointLocation* other)
@@ -564,7 +563,11 @@ IAcSmProjectPointLocation2* PySmProjectPointLocationImpl::impObj2(const std::sou
 PySmPersistProxyImpl::PySmPersistProxyImpl()
     : PySmPersistImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmPersistProxy));
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmPersistProxy));
+#endif
 }
 
 PySmPersistProxyImpl::PySmPersistProxyImpl(IAcSmPersistProxy* other)
@@ -585,7 +588,7 @@ IAcSmPersistProxy* PySmPersistProxyImpl::impObj(const std::source_location& src 
 PySmPublishOptionsImpl::PySmPublishOptionsImpl()
     : PySmPersistImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmPublishOptions));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmPublishOptions));
 }
 
 PySmPublishOptionsImpl::PySmPublishOptionsImpl(IAcSmPublishOptions* other)
@@ -643,12 +646,6 @@ IAcSmPublishOptions4* PySmPublishOptionsImpl::impObj4(const std::source_location
 
 //-----------------------------------------------------------------------------------------
 //PySmComponent
-PySmComponentImpl::PySmComponentImpl()
-    : PySmPersistImpl(nullptr)
-{
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmComponent));
-}
-
 PySmComponentImpl::PySmComponentImpl(IAcSmComponent* other)
     : PySmPersistImpl(other)
 {
@@ -700,7 +697,7 @@ IAcSmComponent* PySmComponentImpl::impObj(const std::source_location& src /*= st
 PySmSheetSelSetImpl::PySmSheetSelSetImpl()
     : PySmComponentImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmSheetSelSet));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmSheetSelSet));
 }
 
 PySmSheetSelSetImpl::PySmSheetSelSetImpl(IAcSmSheetSelSet* other)
@@ -721,7 +718,7 @@ IAcSmSheetSelSet* PySmSheetSelSetImpl::impObj(const std::source_location& src /*
 PySmSheetSelSetsImpl::PySmSheetSelSetsImpl()
     : PySmComponentImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmSheetSelSets));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmSheetSelSets));
 }
 
 PySmSheetSelSetsImpl::PySmSheetSelSetsImpl(IAcSmSheetSelSets* other)
@@ -742,7 +739,7 @@ IAcSmSheetSelSets* PySmSheetSelSetsImpl::impObj(const std::source_location& src 
 PySmResourcesImpl::PySmResourcesImpl()
     : PySmComponentImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmResources));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmResources));
 }
 
 PySmResourcesImpl::PySmResourcesImpl(IAcSmResources* other)
@@ -763,7 +760,7 @@ IAcSmResources* PySmResourcesImpl::impObj(const std::source_location& src /*= st
 PySmViewCategoryImpl::PySmViewCategoryImpl()
     : PySmComponentImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmViewCategory));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmViewCategory));
 }
 
 PySmViewCategoryImpl::PySmViewCategoryImpl(IAcSmViewCategory* other)
@@ -784,7 +781,7 @@ IAcSmViewCategory* PySmViewCategoryImpl::impObj(const std::source_location& src 
 PySmViewCategoriesImpl::PySmViewCategoriesImpl()
     : PySmComponentImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmViewCategories));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmViewCategories));
 }
 
 PySmViewCategoriesImpl::PySmViewCategoriesImpl(IAcSmViewCategories* other)
@@ -805,7 +802,7 @@ IAcSmViewCategories* PySmViewCategoriesImpl::impObj(const std::source_location& 
 PySmSheetViewImpl::PySmSheetViewImpl()
     : PySmComponentImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmSheetView));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmSheetView));
 }
 
 PySmSheetViewImpl::PySmSheetViewImpl(IAcSmSheetView* other)
@@ -827,7 +824,7 @@ IAcSmSheetView* PySmSheetViewImpl::impObj(const std::source_location& src /*= st
 PySmSheetViewsImpl::PySmSheetViewsImpl()
     : PySmComponentImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmSheetViews));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmSheetViews));
 }
 
 PySmSheetViewsImpl::PySmSheetViewsImpl(IAcSmSheetViews* other)
@@ -848,7 +845,7 @@ IAcSmSheetViews* PySmSheetViewsImpl::impObj(const std::source_location& src /*= 
 PySmProjectPointLocationsImpl::PySmProjectPointLocationsImpl()
     : PySmComponentImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmProjectPointLocations));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmProjectPointLocations));
 }
 
 PySmProjectPointLocationsImpl::PySmProjectPointLocationsImpl(IAcSmProjectPointLocations* other)
@@ -869,7 +866,7 @@ IAcSmProjectPointLocations* PySmProjectPointLocationsImpl::impObj(const std::sou
 PySmCalloutBlocksImpl::PySmCalloutBlocksImpl()
     : PySmComponentImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmCalloutBlocks));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmCalloutBlocks));
 }
 
 PySmCalloutBlocksImpl::PySmCalloutBlocksImpl(IAcSmCalloutBlocks* other)
@@ -890,7 +887,7 @@ IAcSmCalloutBlocks* PySmCalloutBlocksImpl::impObj(const std::source_location& sr
 PySmSubsetImpl::PySmSubsetImpl()
     : PySmComponentImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmSubset));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmSubset));
 }
 
 PySmSubsetImpl::PySmSubsetImpl(IAcSmSubset* other)
@@ -925,7 +922,7 @@ IAcSmSubset2* PySmSubsetImpl::impObj2(const std::source_location& src /*= std::s
 PySmSheetSetImpl::PySmSheetSetImpl()
     : PySmSubsetImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmSheetSet));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmSheetSet));
 }
 
 PySmSheetSetImpl::PySmSheetSetImpl(IAcSmSheetSet* other)
@@ -1054,7 +1051,7 @@ IAcSmSheetSet2* PySmSheetSetImpl::impObj2(const std::source_location& src /*= st
 PySmSheetImpl::PySmSheetImpl()
     : PySmComponentImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmSheet));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmSheet));
 }
 
 PySmSheetImpl::PySmSheetImpl(IAcSmSheet* other)
@@ -1211,7 +1208,7 @@ IAcSmSheet2* PySmSheetImpl::impObj2(const std::source_location& src /*= std::sou
 PySmDatabaseImpl::PySmDatabaseImpl()
     : PySmComponentImpl(nullptr)
 {
-    PyThrowBadHr(m_pimpl.CreateInstance(IID_IAcSmDatabase));
+    PyThrowBadHr(m_pimpl.CreateInstance(CLSID_AcSmDatabase));
 }
 
 PySmDatabaseImpl::PySmDatabaseImpl(IAcSmDatabase* other)

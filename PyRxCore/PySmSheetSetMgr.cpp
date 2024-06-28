@@ -25,7 +25,7 @@ inline T PySmObjectCast(const PySmPersist& src)
 void makePySmPersistWrapper()
 {
     PyDocString DS("Persist");
-    class_<PySmPersist>("Persist")
+    class_<PySmPersist>("Persist", boost::python::no_init)
         .def("getIsDirty", &PySmPersist::getIsDirty, DS.ARGS())
         .def("getTypeName", &PySmPersist::getTypeName, DS.ARGS())
         .def("initNew", &PySmPersist::initNew)
@@ -35,11 +35,6 @@ void makePySmPersistWrapper()
         .def("cast", &PySmPersist::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmPersist::className, DS.SARGS()).staticmethod("className")
         ;
-}
-
-PySmPersist::PySmPersist()
-    : PySmPersist(new PySmPersistImpl())
-{
 }
 
 PySmPersist::PySmPersist(PySmPersistImpl* ptr)
@@ -797,7 +792,7 @@ PySmPublishOptionsImpl* PySmPublishOptions::impObj(const std::source_location& s
 void makePySmComponentWrapper()
 {
     PyDocString DS("Component");
-    class_<PySmComponent, bases<PySmPersist>>("Component")
+    class_<PySmComponent, bases<PySmPersist>>("Component", boost::python::no_init)
         .def("getName", &PySmComponent::getName)
         .def("setName", &PySmComponent::setName)
         .def("getDesc", &PySmComponent::getDesc)
@@ -806,11 +801,6 @@ void makePySmComponentWrapper()
         .def("cast", &PySmComponent::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmComponent::className, DS.SARGS()).staticmethod("className")
         ;
-}
-
-PySmComponent::PySmComponent()
-    : PySmComponent(new PySmComponentImpl())
-{
 }
 
 PySmComponent::PySmComponent(PySmComponentImpl* ptr)

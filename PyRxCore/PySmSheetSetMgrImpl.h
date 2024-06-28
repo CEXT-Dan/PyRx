@@ -25,7 +25,6 @@ class PySmObjectIdImpl;
 class PySmPersistImpl
 {
 public:
-    PySmPersistImpl();
     PySmPersistImpl(IAcSmPersist* other);
     PySmPersistImpl(const PySmPersistImpl& other) = default;
     virtual ~PySmPersistImpl() = default;
@@ -251,7 +250,6 @@ public:
 class PySmComponentImpl : public PySmPersistImpl
 {
 public:
-    PySmComponentImpl();
     PySmComponentImpl(IAcSmComponent* other);
     PySmComponentImpl(const PySmComponentImpl& other) = default;
     virtual ~PySmComponentImpl() override = default;

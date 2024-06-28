@@ -65,7 +65,6 @@ void makePySmPersistWrapper();
 class PySmPersist
 {
 public:
-    PySmPersist();
     PySmPersist(PySmPersistImpl* ptr);
     PySmPersist(const PySmPersistImpl& other);
 
@@ -315,7 +314,6 @@ void makePySmComponentWrapper();
 class PySmComponent : public PySmPersist
 {
 public:
-    PySmComponent();
     PySmComponent(PySmComponentImpl* ptr);
     PySmComponent(const PySmComponentImpl& other);
 
