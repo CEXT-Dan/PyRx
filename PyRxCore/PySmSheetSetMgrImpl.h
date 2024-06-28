@@ -126,6 +126,28 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
+//PySmAcDbViewReference
+class PySmAcDbViewReferenceImpl : public PySmNamedAcDbObjectReferenceImpl
+{
+public:
+    explicit PySmAcDbViewReferenceImpl(IAcSmAcDbViewReference* other);
+    explicit PySmAcDbViewReferenceImpl(const PySmAcDbViewReferenceImpl& other) = default;
+    virtual ~PySmAcDbViewReferenceImpl() override = default;
+    IAcSmAcDbViewReference* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PySmAcDbBlockRecordReference
+class PySmAcDbBlockRecordReferenceImpl : public PySmNamedAcDbObjectReferenceImpl
+{
+public:
+    explicit PySmAcDbBlockRecordReferenceImpl(IAcSmAcDbBlockRecordReference* other);
+    explicit PySmAcDbBlockRecordReferenceImpl(const PySmAcDbBlockRecordReferenceImpl& other) = default;
+    virtual ~PySmAcDbBlockRecordReferenceImpl() override = default;
+    IAcSmAcDbBlockRecordReference* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
 //PySmCustomPropertyValue
 class PySmCustomPropertyValueImpl : public PySmPersistImpl
 {
@@ -156,7 +178,6 @@ public:
     std::vector<std::pair<CString, AcValue>> GetPropertyValues() const;
     IAcSmCustomPropertyBag* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //-----------------------------------------------------------------------------------------
 //PySmObjectReference

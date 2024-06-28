@@ -10,6 +10,22 @@ import PySm
 from typing import overload
 from typing import Any
 
+class AcDbBlockRecordReference(NamedAcDbObjectReference):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.AcDbBlockRecordReference :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class AcDbDatabase(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
@@ -29,6 +45,22 @@ This class cannot be instantiated from Python'''
 
     @staticmethod
     def cast (otherObject: PySm.Persist)-> PySm.AcDbLayoutReference :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class AcDbViewReference(NamedAcDbObjectReference):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.AcDbViewReference :
         '''                             '''
         ...
 

@@ -499,6 +499,84 @@ PySmAcDbLayoutReferenceImpl* PySmAcDbLayoutReference::impObj(const std::source_l
 }
 
 //-----------------------------------------------------------------------------------------
+//PySmAcDbViewReference
+void makePySmAcDbViewReferenceWrapper()
+{
+    PyDocString DS("AcDbViewReference");
+    class_<PySmAcDbViewReference, bases<PySmNamedAcDbObjectReference>>("AcDbViewReference", boost::python::no_init)
+        .def("cast", &PySmAcDbViewReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmAcDbViewReference::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmAcDbViewReference::PySmAcDbViewReference(PySmAcDbViewReferenceImpl* ptr)
+    : PySmNamedAcDbObjectReference(ptr)
+{
+}
+
+PySmAcDbViewReference::PySmAcDbViewReference(const PySmAcDbViewReferenceImpl& other)
+    : PySmNamedAcDbObjectReference(other)
+{
+}
+
+PySmAcDbViewReference PySmAcDbViewReference::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmAcDbViewReference>(src);
+}
+
+std::string PySmAcDbViewReference::className()
+{
+    return "AcSmAcDbLayoutReference";
+}
+
+PySmAcDbViewReferenceImpl* PySmAcDbViewReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmAcDbViewReferenceImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PySmAcDbBlockRecordReference
+void makePySmAcDbBlockRecordReferenceWrapper()
+{
+    PyDocString DS("AcDbBlockRecordReference");
+    class_<PySmAcDbBlockRecordReference, bases<PySmNamedAcDbObjectReference>>("AcDbBlockRecordReference", boost::python::no_init)
+        .def("cast", &PySmAcDbBlockRecordReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmAcDbBlockRecordReference::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PySmAcDbBlockRecordReference::PySmAcDbBlockRecordReference(PySmAcDbBlockRecordReferenceImpl* ptr)
+    : PySmNamedAcDbObjectReference(ptr)
+{
+}
+
+PySmAcDbBlockRecordReference::PySmAcDbBlockRecordReference(const PySmAcDbBlockRecordReferenceImpl& other)
+    : PySmNamedAcDbObjectReference(other)
+{
+}
+
+PySmAcDbBlockRecordReference PySmAcDbBlockRecordReference::cast(const PySmPersist& src)
+{
+    return PySmObjectCast<PySmAcDbBlockRecordReference>(src);
+}
+
+std::string PySmAcDbBlockRecordReference::className()
+{
+    return "AcSmAcDbBlockRecordReference";
+}
+
+PySmAcDbBlockRecordReferenceImpl* PySmAcDbBlockRecordReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PySmAcDbBlockRecordReferenceImpl*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
 //PySmProjectPointLocation
 void makePySmProjectPointLocationWrapper()
 {
