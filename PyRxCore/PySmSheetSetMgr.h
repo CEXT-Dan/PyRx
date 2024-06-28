@@ -48,6 +48,17 @@ enum class SmPropertyFlags : int
     IS_CHILD = 8
 };
 
+enum class SmLockStatus : int
+{
+    AcSmLockStatus_UnLocked = 0,
+    AcSmLockStatus_Locked_Local = 1,
+    AcSmLockStatus_Locked_Remote = 2,
+    AcSmLockStatus_Locked_ReadOnly = 4,
+    AcSmLockStatus_Locked_NotConnected = 8,
+    AcSmLockStatus_Locked_AccessDenied = 16
+};
+
+
 //-----------------------------------------------------------------------------------------
 //PySmPersist
 void makePySmPersistWrapper();
@@ -502,22 +513,18 @@ class PySmDatabase : public PySmComponent
 public:
     PySmDatabase(PySmDatabaseImpl* ptr);
     PySmDatabase(const PySmDatabaseImpl& other);
-
-
-    //void                loadFromFile(const CString& filename);
-    //CString             getFileName() const;
-    //void                setFileName(const CString& filename);
-    //CString             getTemplateDstFileName() const;
-    //PySmSheetSetImpl    getSheetSet() const;
-    //AcSmLockStatus      getLockStatus() const;
-    //boost::python::tuple getLockOwnerInfo() const;
-
+    void                loadFromFile(const std::string& filename);
+    std::string         getFileName() const;
+    void                setFileName(const std::string& filename);
+    std::string         getTemplateDstFileName() const;
+    PySmSheetSet        getSheetSet() const;
+    SmLockStatus        getLockStatus() const;
+    boost::python::tuple getLockOwnerInfo() const;
     void                lockDb();
     void                unlockDb(bool commit);
-
     boost::python::list getPersistObjects();
     static PySmDatabase cast(const PySmPersist& src);
-    static std::string className();
+    static std::string  className();
 public:
     inline PySmDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };

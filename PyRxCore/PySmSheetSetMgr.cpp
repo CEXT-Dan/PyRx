@@ -1360,6 +1360,13 @@ void makePySmDatabaseWrapper()
 {
     PyDocString DS("Database");
     class_<PySmDatabase, bases<PySmComponent>>("Database", boost::python::no_init)
+        .def("loadFromFile", &PySmDatabase::loadFromFile)
+        .def("getFileName", &PySmDatabase::getFileName)
+        .def("setFileName", &PySmDatabase::setFileName)
+        .def("getTemplateDstFileName", &PySmDatabase::getTemplateDstFileName)
+        .def("getSheetSet", &PySmDatabase::getSheetSet)
+        .def("getLockStatus", &PySmDatabase::getLockStatus)
+        .def("getLockOwnerInfo", &PySmDatabase::getLockOwnerInfo)
         .def("lockDb", &PySmDatabase::lockDb)
         .def("unlockDb", &PySmDatabase::unlockDb)
         .def("getPersistObjects", &PySmDatabase::getPersistObjects)
@@ -1367,13 +1374,13 @@ void makePySmDatabaseWrapper()
         .def("className", &PySmDatabase::className, DS.SARGS()).staticmethod("className")
         ;
 
-    enum_<AcSmLockStatus>("LockStatus")
-        .value("kUnLocked", AcSmLockStatus::AcSmLockStatus_UnLocked)
-        .value("kLockedLocal", AcSmLockStatus::AcSmLockStatus_Locked_Local)
-        .value("kLockedRemote", AcSmLockStatus::AcSmLockStatus_Locked_Remote)
-        .value("kLockedReadOnly", AcSmLockStatus::AcSmLockStatus_Locked_ReadOnly)
-        .value("kLockedNotConnected", AcSmLockStatus::AcSmLockStatus_Locked_NotConnected)
-        .value("kLockedAccessDenied", AcSmLockStatus::AcSmLockStatus_Locked_AccessDenied)
+    enum_<SmLockStatus>("LockStatus")
+        .value("kUnLocked", SmLockStatus::AcSmLockStatus_UnLocked)
+        .value("kLockedLocal", SmLockStatus::AcSmLockStatus_Locked_Local)
+        .value("kLockedRemote", SmLockStatus::AcSmLockStatus_Locked_Remote)
+        .value("kLockedReadOnly", SmLockStatus::AcSmLockStatus_Locked_ReadOnly)
+        .value("kLockedNotConnected", SmLockStatus::AcSmLockStatus_Locked_NotConnected)
+        .value("kLockedAccessDenied", SmLockStatus::AcSmLockStatus_Locked_AccessDenied)
         .export_values()
         ;
 }
@@ -1386,6 +1393,43 @@ PySmDatabase::PySmDatabase(PySmDatabaseImpl* ptr)
 PySmDatabase::PySmDatabase(const PySmDatabaseImpl& other)
     : PySmComponent(other)
 {
+}
+
+void PySmDatabase::loadFromFile(const std::string& filename)
+{
+    impObj()->LoadFromFile(utf8_to_wstr(filename).c_str());
+}
+
+std::string PySmDatabase::getFileName() const
+{
+    return wstr_to_utf8(impObj()->GetFileName());
+}
+
+void PySmDatabase::setFileName(const std::string& filename)
+{
+    impObj()->SetFileName(utf8_to_wstr(filename).c_str());
+}
+
+std::string PySmDatabase::getTemplateDstFileName() const
+{
+    return wstr_to_utf8(impObj()->GetTemplateDstFileName());
+}
+
+PySmSheetSet PySmDatabase::getSheetSet() const
+{
+    return PySmSheetSet(impObj()->GetSheetSet());
+}
+
+SmLockStatus PySmDatabase::getLockStatus() const
+{
+    return SmLockStatus(impObj()->GetLockStatus());
+}
+
+boost::python::tuple PySmDatabase::getLockOwnerInfo() const
+{
+    PyAutoLockGIL lock;
+    const auto& info = impObj()->GetLockOwnerInfo();
+    return boost::python::make_tuple(wstr_to_utf8(info.first), wstr_to_utf8(info.second));
 }
 
 void PySmDatabase::lockDb()

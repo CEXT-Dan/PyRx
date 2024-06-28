@@ -180,17 +180,59 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
         '''                             '''
         ...
+    def getFileName (self, *args, **kwargs)-> str :
+        '''getFileName( (Database)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getFileName(class PySmDatabase {lvalue})'''
+        ...
+    def getLockOwnerInfo (self, *args, **kwargs)-> tuple[Any,...] :
+        '''getLockOwnerInfo( (Database)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getLockOwnerInfo(class PySmDatabase {lvalue})'''
+        ...
+    def getLockStatus (self, *args, **kwargs)-> PySm.LockStatus :
+        '''getLockStatus( (Database)arg1) -> LockStatus :
+
+    C++ signature :
+        enum SmLockStatus getLockStatus(class PySmDatabase {lvalue})'''
+        ...
     def getPersistObjects (self, *args, **kwargs)-> list :
         '''getPersistObjects( (Database)arg1) -> list :
 
     C++ signature :
         class boost::python::list getPersistObjects(class PySmDatabase {lvalue})'''
         ...
+    def getSheetSet (self, *args, **kwargs)-> PySm.SheetSet :
+        '''getSheetSet( (Database)arg1) -> SheetSet :
+
+    C++ signature :
+        class PySmSheetSet getSheetSet(class PySmDatabase {lvalue})'''
+        ...
+    def getTemplateDstFileName (self, *args, **kwargs)-> str :
+        '''getTemplateDstFileName( (Database)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getTemplateDstFileName(class PySmDatabase {lvalue})'''
+        ...
+    def loadFromFile (self, *args, **kwargs)-> None :
+        '''loadFromFile( (Database)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void loadFromFile(class PySmDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        ...
     def lockDb (self, *args, **kwargs)-> None :
         '''lockDb( (Database)arg1) -> None :
 
     C++ signature :
         void lockDb(class PySmDatabase {lvalue})'''
+        ...
+    def setFileName (self, *args, **kwargs)-> None :
+        '''setFileName( (Database)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setFileName(class PySmDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
         ...
     def unlockDb (self, *args, **kwargs)-> None :
         '''unlockDb( (Database)arg1, (bool)arg2) -> None :
