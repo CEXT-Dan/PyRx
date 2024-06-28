@@ -217,12 +217,12 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //PySmPublishOption
-class PySmPublishOptionImpl : public PySmPersistImpl
+class PySmPublishOptionsImpl : public PySmPersistImpl
 {
 public:
-    explicit PySmPublishOptionImpl(IAcSmPublishOptions* other);
-    explicit PySmPublishOptionImpl(const PySmPublishOptionImpl& other) = default;
-    virtual ~PySmPublishOptionImpl() override = default;
+    explicit PySmPublishOptionsImpl(IAcSmPublishOptions* other);
+    explicit PySmPublishOptionsImpl(const PySmPublishOptionsImpl& other) = default;
+    virtual ~PySmPublishOptionsImpl() override = default;
     IAcSmPublishOptions* impObj(const std::source_location& src = std::source_location::current()) const;
 #if defined(_ARXTARGET)
     IAcSmPublishOptions2* impObj2(const std::source_location& src = std::source_location::current()) const;
@@ -275,12 +275,12 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //PySmSmResources
-class PySmSmResourcesImpl : public PySmComponentImpl
+class PySmResourcesImpl : public PySmComponentImpl
 {
 public:
-    explicit PySmSmResourcesImpl(IAcSmResources* other);
-    explicit PySmSmResourcesImpl(const PySmSmResourcesImpl& other) = default;
-    virtual ~PySmSmResourcesImpl() override = default;
+    explicit PySmResourcesImpl(IAcSmResources* other);
+    explicit PySmResourcesImpl(const PySmResourcesImpl& other) = default;
+    virtual ~PySmResourcesImpl() override = default;
     IAcSmResources* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -372,23 +372,22 @@ public:
     explicit PySmSheetSetImpl(IAcSmSheetSet* other);
     explicit PySmSheetSetImpl(const PySmSheetSetImpl& other) = default;
     virtual ~PySmSheetSetImpl() override = default;
+
     PySmFileReferenceImpl   GetAltPageSetups() const;
     void                    SetAltPageSetups(const PySmFileReferenceImpl& alt);
-
-
-   //GetDefAltPageSetup()
-   //SetDefAltPageSetup()
-   //GetPromptForDwgName()
-   //SetPromptForDwgName()
-   //GetSheetSelSets()
-   //GetResources()
-   //GetCalloutBlocks()
-   //GetViewCategories()
-   //GetDefLabelBlk()
-   //SetDefLabelBlk()
-   //GetPublishOptions()
-   //Sync()
-   //UpdateSheetCustomProps()
+    PySmNamedAcDbObjectReferenceImpl GetDefAltPageSetup() const;
+    void                    SetDefAltPageSetup(const PySmNamedAcDbObjectReferenceImpl& alt);
+    bool                    GetPromptForDwgName() const;
+    void                    SetPromptForDwgName(bool flag);
+    PySmSheetSelSetsImpl    GetSheetSelSets() const;
+    PySmResourcesImpl       GetResources() const;
+    PySmCalloutBlocksImpl   GetCalloutBlocks() const;
+    PySmViewCategoriesImpl  GetViewCategories() const;
+    PySmAcDbBlockRecordReferenceImpl GetDefLabelBlk() const;
+    void                             SetDefLabelBlk(const PySmAcDbBlockRecordReferenceImpl& blk);
+    PySmPublishOptionsImpl   GetPublishOptions() const;
+    void                     Sync(const AcDbDatabase* pDb);
+    void                     UpdateSheetCustomProps();
 
     IAcSmSheetSet* impObj(const std::source_location& src = std::source_location::current()) const;
 #if defined(_ARXTARGET)
