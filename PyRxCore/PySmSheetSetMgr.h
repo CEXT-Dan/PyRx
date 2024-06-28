@@ -15,14 +15,14 @@ class PySmSheetImpl;
 class PySmCustomPropertyValueImpl;
 class PySmCustomPropertyBagImpl;
 class PySmFileReferenceImpl;
-class PySmPublishOptionImpl;
+class PySmPublishOptionsImpl;
 class PySmPersistProxyImpl;
 class PySmObjectReferenceImpl;
 class PySmProjectPointLocationImpl;
 class PySmCalloutBlocksImpl;
 class PySmSheetSelSetImpl;
 class PySmSheetSelSetsImpl;
-class PySmSmResourcesImpl;
+class PySmResourcesImpl;
 class PySmProjectPointLocationsImpl;
 class PySmSheetViewImpl;
 class PySmSheetViewsImpl;
@@ -275,8 +275,8 @@ void makePySmPersistProxyWrapper();
 class PySmPersistProxy : public PySmPersist
 {
 public:
-    PySmPersistProxy(PySmPublishOptionImpl* ptr);
-    PySmPersistProxy(const PySmPublishOptionImpl& other);
+    PySmPersistProxy(PySmPublishOptionsImpl* ptr);
+    PySmPersistProxy(const PySmPublishOptionsImpl& other);
     static PySmPersistProxy cast(const PySmPersist& src);
     static std::string      className();
 public:
@@ -289,12 +289,12 @@ void makePySmPublishOptioneWrapper();
 class PySmPublishOption : public PySmPersist
 {
 public:
-    PySmPublishOption(PySmPublishOptionImpl* ptr);
-    PySmPublishOption(const PySmPublishOptionImpl& other);
+    PySmPublishOption(PySmPublishOptionsImpl* ptr);
+    PySmPublishOption(const PySmPublishOptionsImpl& other);
     static PySmPublishOption cast(const PySmPersist& src);
     static std::string   className();
 public:
-    inline PySmPublishOptionImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    inline PySmPublishOptionsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -394,12 +394,12 @@ void makePySmSmResourcesWrapper();
 class PySmSmResources : public PySmComponent
 {
 public:
-    PySmSmResources(PySmSmResourcesImpl* ptr);
-    PySmSmResources(const PySmSmResourcesImpl& other);
+    PySmSmResources(PySmResourcesImpl* ptr);
+    PySmSmResources(const PySmResourcesImpl& other);
     static PySmSmResources  cast(const PySmPersist& src);
     static std::string      className();
 public:
-    inline PySmSmResourcesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    inline PySmResourcesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -409,7 +409,7 @@ class PySmViewCategory : public PySmComponent
 {
 public:
     PySmViewCategory(PySmViewCategoryImpl* ptr);
-    PySmViewCategory(const PySmSmResourcesImpl& other);
+    PySmViewCategory(const PySmResourcesImpl& other);
     static PySmViewCategory  cast(const PySmPersist& src);
     static std::string       className();
 public:

@@ -665,12 +665,12 @@ void makePySmPersistProxyWrapper()
         ;
 }
 
-PySmPersistProxy::PySmPersistProxy(PySmPublishOptionImpl* ptr)
+PySmPersistProxy::PySmPersistProxy(PySmPublishOptionsImpl* ptr)
     : PySmPersist(ptr)
 {
 }
 
-PySmPersistProxy::PySmPersistProxy(const PySmPublishOptionImpl& other)
+PySmPersistProxy::PySmPersistProxy(const PySmPublishOptionsImpl& other)
     : PySmPersist(other)
 {
 }
@@ -704,12 +704,12 @@ void makePySmPublishOptioneWrapper()
         ;
 }
 
-PySmPublishOption::PySmPublishOption(PySmPublishOptionImpl* ptr)
+PySmPublishOption::PySmPublishOption(PySmPublishOptionsImpl* ptr)
     : PySmPersist(ptr)
 {
 }
 
-PySmPublishOption::PySmPublishOption(const PySmPublishOptionImpl& other)
+PySmPublishOption::PySmPublishOption(const PySmPublishOptionsImpl& other)
     : PySmPersist(other)
 {
 }
@@ -724,12 +724,12 @@ std::string PySmPublishOption::className()
     return "AcSmPublishOptions";
 }
 
-PySmPublishOptionImpl* PySmPublishOption::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+PySmPublishOptionsImpl* PySmPublishOption::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
         }
-    return static_cast<PySmPublishOptionImpl*>(m_pyImp.get());
+    return static_cast<PySmPublishOptionsImpl*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -1007,12 +1007,12 @@ void makePySmSmResourcesWrapper()
         ;
 }
 
-PySmSmResources::PySmSmResources(PySmSmResourcesImpl* ptr)
+PySmSmResources::PySmSmResources(PySmResourcesImpl* ptr)
     : PySmComponent(ptr)
 {
 }
 
-PySmSmResources::PySmSmResources(const PySmSmResourcesImpl& other)
+PySmSmResources::PySmSmResources(const PySmResourcesImpl& other)
     : PySmComponent(other)
 {
 }
@@ -1027,12 +1027,12 @@ std::string PySmSmResources::className()
     return "AcSmResources";
 }
 
-PySmSmResourcesImpl* PySmSmResources::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+PySmResourcesImpl* PySmSmResources::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
         }
-    return static_cast<PySmSmResourcesImpl*>(m_pyImp.get());
+    return static_cast<PySmResourcesImpl*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -1051,7 +1051,7 @@ PySmViewCategory::PySmViewCategory(PySmViewCategoryImpl* ptr)
 {
 }
 
-PySmViewCategory::PySmViewCategory(const PySmSmResourcesImpl& other)
+PySmViewCategory::PySmViewCategory(const PySmResourcesImpl& other)
     : PySmComponent(other)
 {
 }

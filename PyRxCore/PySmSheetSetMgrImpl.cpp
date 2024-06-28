@@ -502,12 +502,12 @@ IAcSmPersistProxy* PySmPersistProxyImpl::impObj(const std::source_location& src 
 
 //-----------------------------------------------------------------------------------------
 //PySmPublishOption
-PySmPublishOptionImpl::PySmPublishOptionImpl(IAcSmPublishOptions* other)
+PySmPublishOptionsImpl::PySmPublishOptionsImpl(IAcSmPublishOptions* other)
     : PySmPersistImpl(other)
 {
 }
 
-IAcSmPublishOptions* PySmPublishOptionImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcSmPublishOptions* PySmPublishOptionsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -516,7 +516,7 @@ IAcSmPublishOptions* PySmPublishOptionImpl::impObj(const std::source_location& s
 }
 
 #if defined(_ARXTARGET)
-IAcSmPublishOptions2* PySmPublishOptionImpl::impObj2(const std::source_location& src /*= std::source_location::current()*/) const
+IAcSmPublishOptions2* PySmPublishOptionsImpl::impObj2(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl != nullptr)
     {
@@ -529,7 +529,7 @@ IAcSmPublishOptions2* PySmPublishOptionImpl::impObj2(const std::source_location&
 }
 #endif
 #if defined(_ARXTARGET)
-IAcSmPublishOptions3* PySmPublishOptionImpl::impObj3(const std::source_location& src /*= std::source_location::current()*/) const
+IAcSmPublishOptions3* PySmPublishOptionsImpl::impObj3(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl != nullptr)
     {
@@ -542,7 +542,7 @@ IAcSmPublishOptions3* PySmPublishOptionImpl::impObj3(const std::source_location&
 }
 #endif
 #if defined(_ARXTARGET)
-IAcSmPublishOptions4* PySmPublishOptionImpl::impObj4(const std::source_location& src /*= std::source_location::current()*/) const
+IAcSmPublishOptions4* PySmPublishOptionsImpl::impObj4(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl != nullptr)
     {
@@ -635,12 +635,12 @@ IAcSmSheetSelSets* PySmSheetSelSetsImpl::impObj(const std::source_location& src 
 
 //-----------------------------------------------------------------------------------------
 //PycSmSheetSelSets
-PySmSmResourcesImpl::PySmSmResourcesImpl(IAcSmResources* other)
+PySmResourcesImpl::PySmResourcesImpl(IAcSmResources* other)
     : PySmComponentImpl(other)
 {
 }
 
-IAcSmResources* PySmSmResourcesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcSmResources* PySmResourcesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -785,6 +785,87 @@ PySmFileReferenceImpl PySmSheetSetImpl::GetAltPageSetups() const
 void PySmSheetSetImpl::SetAltPageSetups(const PySmFileReferenceImpl& alt)
 {
     PyThrowBadHr(impObj()->SetAltPageSetups(alt.impObj()));
+}
+
+PySmNamedAcDbObjectReferenceImpl PySmSheetSetImpl::GetDefAltPageSetup() const
+{
+    IAcSmNamedAcDbObjectReference* ptr = nullptr;
+    PyThrowBadHr(impObj()->GetDefAltPageSetup(&ptr));
+    return PySmNamedAcDbObjectReferenceImpl(ptr);
+}
+
+void PySmSheetSetImpl::SetDefAltPageSetup(const PySmNamedAcDbObjectReferenceImpl& alt)
+{
+    PyThrowBadHr(impObj()->SetAltPageSetups(alt.impObj()));
+}
+
+bool PySmSheetSetImpl::GetPromptForDwgName() const
+{
+    VARIANT_BOOL flag;
+    PyThrowBadHr(impObj()->GetPromptForDwgName(&flag));
+    return flag == VARIANT_TRUE;
+}
+
+void PySmSheetSetImpl::SetPromptForDwgName(bool flag)
+{
+    PyThrowBadHr(impObj()->SetPromptForDwgName(flag == true? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PySmSheetSelSetsImpl PySmSheetSetImpl::GetSheetSelSets() const
+{
+    IAcSmSheetSelSets* ptr = nullptr;
+    PyThrowBadHr(impObj()->GetSheetSelSets(&ptr));
+    return PySmSheetSelSetsImpl(ptr);
+}
+
+PySmResourcesImpl PySmSheetSetImpl::GetResources() const
+{
+    IAcSmResources* ptr = nullptr;
+    PyThrowBadHr(impObj()->GetResources(&ptr));
+    return PySmResourcesImpl(ptr);
+}
+
+PySmCalloutBlocksImpl PySmSheetSetImpl::GetCalloutBlocks() const
+{
+    IAcSmCalloutBlocks* ptr = nullptr;
+    PyThrowBadHr(impObj()->GetCalloutBlocks(&ptr));
+    return PySmCalloutBlocksImpl(ptr);
+}
+
+PySmViewCategoriesImpl PySmSheetSetImpl::GetViewCategories() const
+{
+    IAcSmViewCategories* ptr = nullptr;
+    PyThrowBadHr(impObj()->GetViewCategories(&ptr));
+    return PySmViewCategoriesImpl(ptr);
+}
+
+PySmAcDbBlockRecordReferenceImpl PySmSheetSetImpl::GetDefLabelBlk() const
+{
+    IAcSmAcDbBlockRecordReference* ptr = nullptr;
+    PyThrowBadHr(impObj()->GetDefLabelBlk(&ptr));
+    return PySmAcDbBlockRecordReferenceImpl(ptr);
+}
+
+void PySmSheetSetImpl::SetDefLabelBlk(const PySmAcDbBlockRecordReferenceImpl& blk)
+{
+    PyThrowBadHr(impObj()->SetDefLabelBlk(blk.impObj()));
+}
+
+PySmPublishOptionsImpl PySmSheetSetImpl::GetPublishOptions() const
+{
+    IAcSmPublishOptions* ptr = nullptr;
+    PyThrowBadHr(impObj()->GetPublishOptions(&ptr));
+    return PySmPublishOptionsImpl(ptr);
+}
+
+void PySmSheetSetImpl::Sync(const AcDbDatabase* pDb)
+{
+    PyThrowBadEs(eNotImplementedYet);
+}
+
+void PySmSheetSetImpl::UpdateSheetCustomProps()
+{
+    PyThrowBadHr(impObj()->UpdateSheetCustomProps());
 }
 
 IAcSmSheetSet* PySmSheetSetImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
