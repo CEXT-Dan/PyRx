@@ -630,6 +630,79 @@ PySmProjectPointLocationImpl::PySmProjectPointLocationImpl(IAcSmProjectPointLoca
 {
 }
 
+CString PySmProjectPointLocationImpl::GetURL() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetURL(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PySmProjectPointLocationImpl::SetURL(const CString& csVal)
+{
+    _bstr_t bstrVal(csVal);
+    PyThrowBadHr(impObj()->SetURL(bstrVal));
+}
+
+CString PySmProjectPointLocationImpl::GetFolder() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetFolder(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PySmProjectPointLocationImpl::SetFolder(const CString& csVal)
+{
+    _bstr_t bstrVal(csVal);
+    PyThrowBadHr(impObj()->SetFolder(bstrVal));
+}
+
+CString PySmProjectPointLocationImpl::GetUsername() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetUsername(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PySmProjectPointLocationImpl::SetUsername(const CString& csVal)
+{
+    _bstr_t bstrVal(csVal);
+    PyThrowBadHr(impObj()->SetUsername(bstrVal));
+}
+
+CString PySmProjectPointLocationImpl::GetPassword() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetPassword(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PySmProjectPointLocationImpl::SetPassword(const CString& csVal)
+{
+    _bstr_t bstrVal(csVal);
+    PyThrowBadHr(impObj()->SetPassword(bstrVal));
+}
+
+long PySmProjectPointLocationImpl::GetResourceType() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+    return 0;
+#else
+    long val = 0;
+    PyThrowBadHr(impObj2()->GetResourceType(&val));
+    return val;
+#endif
+}
+
+void PySmProjectPointLocationImpl::SetResourceType(long val)
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadHr(impObj2()->SetResourceType(val));
+#endif
+}
+
 IAcSmProjectPointLocation* PySmProjectPointLocationImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

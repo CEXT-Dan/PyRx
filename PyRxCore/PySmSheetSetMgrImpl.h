@@ -214,7 +214,6 @@ public:
 
     void            SetReferencedObject(PySmPersistImpl& pObject);
     PySmPersistImpl GetReferencedObject() const;
-
     AcSmObjectReferenceFlags GetReferenceFlags() const;
     void                     SetReferenceFlags(AcSmObjectReferenceFlags flags);
 
@@ -231,6 +230,18 @@ public:
     PySmProjectPointLocationImpl(IAcSmProjectPointLocation* other);
     PySmProjectPointLocationImpl(const PySmProjectPointLocationImpl& other) = default;
     virtual ~PySmProjectPointLocationImpl() override = default;
+
+    CString     GetURL() const;
+    void        SetURL(const CString& csVal);
+    CString     GetFolder() const;
+    void        SetFolder(const CString& csVal);
+    CString     GetUsername() const;
+    void        SetUsername(const CString& csVal);
+    CString     GetPassword() const;
+    void        SetPassword(const CString& csVal);
+    long        GetResourceType() const;
+    void        SetResourceType(long val);
+
     IAcSmProjectPointLocation* impObj(const std::source_location& src = std::source_location::current()) const;
 #if defined(_ARXTARGET)
     IAcSmProjectPointLocation2* impObj2(const std::source_location& src = std::source_location::current()) const;
