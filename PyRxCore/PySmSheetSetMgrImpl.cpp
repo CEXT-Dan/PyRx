@@ -763,6 +763,203 @@ PySmPublishOptionsImpl::PySmPublishOptionsImpl(IAcSmPublishOptions* other)
 {
 }
 
+PySmFileReferenceImpl PySmPublishOptionsImpl::GetDefaultOutputdir() const
+{
+    IAcSmFileReference* ptr = nullptr;
+    PyThrowBadHr(impObj()->GetDefaultOutputdir(&ptr));
+    return PySmFileReferenceImpl(ptr);
+}
+
+void PySmPublishOptionsImpl::SetDefaultOutputdir(PySmFileReferenceImpl& val)
+{
+    PyThrowBadHr(impObj()->SetDefaultOutputdir(val.impObj()));
+}
+
+bool PySmPublishOptionsImpl::GetDwfType() const
+{
+    VARIANT_BOOL flag;
+    PyThrowBadHr(impObj()->GetDwfType(&flag));
+    return flag == VARIANT_TRUE;
+}
+
+void PySmPublishOptionsImpl::SetDwfType(bool val)
+{
+    PyThrowBadHr(impObj()->SetDwfType(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PySmPublishOptionsImpl::GetPromptForName() const
+{
+    VARIANT_BOOL flag;
+    PyThrowBadHr(impObj()->GetPromptForName(&flag));
+    return flag == VARIANT_TRUE;
+}
+
+void PySmPublishOptionsImpl::SetPromptForName(bool val)
+{
+    PyThrowBadHr(impObj()->SetPromptForName(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PySmPublishOptionsImpl::GetUsePassword() const
+{
+    VARIANT_BOOL flag;
+    PyThrowBadHr(impObj()->GetUsePassword(&flag));
+    return flag == VARIANT_TRUE;
+}
+
+void PySmPublishOptionsImpl::SetUsePassword(bool val)
+{
+    PyThrowBadHr(impObj()->SetUsePassword(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PySmPublishOptionsImpl::GetPromptForPassword() const
+{
+    VARIANT_BOOL flag;
+    PyThrowBadHr(impObj()->GetPromptForPassword(&flag));
+    return flag == VARIANT_TRUE;
+}
+
+void PySmPublishOptionsImpl::SetPromptForPassword(bool val)
+{
+    PyThrowBadHr(impObj()->SetPromptForPassword(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PySmPublishOptionsImpl::GetLayerInfo() const
+{
+    VARIANT_BOOL flag;
+    PyThrowBadHr(impObj()->GetLayerInfo(&flag));
+    return flag == VARIANT_TRUE;
+}
+
+void PySmPublishOptionsImpl::SetLayerInfo(bool val)
+{
+    PyThrowBadHr(impObj()->SetLayerInfo(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PySmCustomPropertyBagImpl PySmPublishOptionsImpl::GetUnrecognizedData() const
+{
+    IAcSmCustomPropertyBag* ptr = nullptr;
+    PyThrowBadHr(impObj()->GetUnrecognizedData(&ptr));
+    return PySmCustomPropertyBagImpl(ptr);
+}
+
+void PySmPublishOptionsImpl::SetUnrecognizedData(PySmCustomPropertyBagImpl& val)
+{
+    PyThrowBadHr(impObj()->SetUnrecognizedData(val.impObj()));
+}
+
+PySmCustomPropertyBagImpl PySmPublishOptionsImpl::GetUnrecognizedSections() const
+{
+    IAcSmCustomPropertyBag* ptr = nullptr;
+    PyThrowBadHr(impObj()->GetUnrecognizedSections(&ptr));
+    return PySmCustomPropertyBagImpl(ptr);
+}
+
+void PySmPublishOptionsImpl::SetUnrecognizedSections(PySmCustomPropertyBagImpl& val)
+{
+    PyThrowBadHr(impObj()->SetUnrecognizedSections(val.impObj()));
+}
+
+bool PySmPublishOptionsImpl::GetIncludeSheetSetData() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    VARIANT_BOOL flag;
+    PyThrowBadHr(impObj2()->GetLayerInfo(&flag));
+    return flag == VARIANT_TRUE;
+#endif
+}
+
+void PySmPublishOptionsImpl::SetIncludeSheetSetData(bool val)
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadHr(impObj2()->SetIncludeSheetSetData(val ? VARIANT_TRUE : VARIANT_FALSE));
+#endif
+}
+
+bool PySmPublishOptionsImpl::GetIncludeSheetData() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    VARIANT_BOOL flag;
+    PyThrowBadHr(impObj2()->GetIncludeSheetData(&flag));
+    return flag == VARIANT_TRUE;
+#endif
+}
+
+void PySmPublishOptionsImpl::SetIncludeSheetData(bool val)
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadHr(impObj2()->SetIncludeSheetData(val ? VARIANT_TRUE : VARIANT_FALSE));
+#endif
+}
+
+long PySmPublishOptionsImpl::GetEplotFormat() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    long val = 0;
+    PyThrowBadHr(impObj3()->GetEplotFormat(&val));
+    return val;
+#endif
+}
+
+void PySmPublishOptionsImpl::SetEplotFormat(long val)
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadHr(impObj3()->SetEplotFormat(val));
+#endif
+}
+
+bool PySmPublishOptionsImpl::GetLinesMerge() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    VARIANT_BOOL flag;
+    PyThrowBadHr(impObj4()->GetLinesMerge(&flag));
+    return flag == VARIANT_TRUE;
+#endif
+}
+
+void PySmPublishOptionsImpl::SetLinesMerge(bool val)
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadHr(impObj4()->SetLinesMerge(val ? VARIANT_TRUE : VARIANT_FALSE));
+#endif
+}
+
+CString PySmPublishOptionsImpl::GetDefaultFilename() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj4()->GetDefaultFilename(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif
+}
+
+void PySmPublishOptionsImpl::SetDefaultFilename(const CString& csVal)
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrVal(csVal);
+    PyThrowBadHr(impObj4()->SetDefaultFilename(bstrVal));
+#endif
+}
+
 IAcSmPublishOptions* PySmPublishOptionsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

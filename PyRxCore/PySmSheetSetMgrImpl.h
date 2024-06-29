@@ -257,6 +257,12 @@ public:
     PySmPersistProxyImpl(IAcSmPersistProxy* other);
     PySmPersistProxyImpl(const PySmPersistProxyImpl& other) = default;
     virtual ~PySmPersistProxyImpl() override = default;
+
+    //TODO: looks pretty advanced
+    //virtual HRESULT __stdcall SetClassID(/*[in]*/ GUID classID) = 0;
+    //virtual HRESULT __stdcall SetTypeName(/*[in]*/ BSTR value) = 0;
+    //virtual HRESULT __stdcall GetRawData(unsigned char** ppData,long* pBufSize) = 0;
+
     IAcSmPersistProxy* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -269,6 +275,41 @@ public:
     PySmPublishOptionsImpl(IAcSmPublishOptions* other);
     PySmPublishOptionsImpl(const PySmPublishOptionsImpl& other) = default;
     virtual ~PySmPublishOptionsImpl() override = default;
+
+    PySmFileReferenceImpl   GetDefaultOutputdir() const;
+    void                    SetDefaultOutputdir(PySmFileReferenceImpl& val);
+    bool                    GetDwfType() const;
+    void                    SetDwfType(bool val);
+    bool                    GetPromptForName() const;
+    void                    SetPromptForName(bool val);
+    bool                    GetUsePassword() const;
+    void                    SetUsePassword(bool val);
+    bool                    GetPromptForPassword() const;
+    void                    SetPromptForPassword(bool val);
+    bool                    GetLayerInfo() const;
+    void                    SetLayerInfo(bool val);
+
+    PySmCustomPropertyBagImpl   GetUnrecognizedData() const;
+    void                        SetUnrecognizedData(PySmCustomPropertyBagImpl& val);
+    PySmCustomPropertyBagImpl   GetUnrecognizedSections() const;
+    void                        SetUnrecognizedSections(PySmCustomPropertyBagImpl& val);
+
+    //2
+    bool                    GetIncludeSheetSetData() const;
+    void                    SetIncludeSheetSetData(bool val);
+    bool                    GetIncludeSheetData() const;
+    void                    SetIncludeSheetData(bool val);
+
+    //3
+    long                    GetEplotFormat() const;
+    void                    SetEplotFormat(long val);
+
+    //4
+    bool                    GetLinesMerge() const;
+    void                    SetLinesMerge(bool val);
+    CString                 GetDefaultFilename() const;
+    void                    SetDefaultFilename(const CString& csVal);
+
     IAcSmPublishOptions* impObj(const std::source_location& src = std::source_location::current()) const;
 #if defined(_ARXTARGET)
     IAcSmPublishOptions2* impObj2(const std::source_location& src = std::source_location::current()) const;
