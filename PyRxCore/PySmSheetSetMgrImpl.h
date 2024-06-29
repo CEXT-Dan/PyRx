@@ -104,6 +104,13 @@ public:
     PySmAcDbObjectReferenceImpl();
     PySmAcDbObjectReferenceImpl(IAcSmAcDbObjectReference* other);
     PySmAcDbObjectReferenceImpl(const PySmAcDbObjectReferenceImpl& other) = default;
+
+    void        SetAcDbHandle(AcDbHandle &hwnd);
+    AcDbHandle  GetAcDbHandle() const;
+    //GetAcSmAcDbDatabase()
+    void        SetAcDbObject(AcDbObject* pDbObj);
+    AcDbHandle  ResolveAcDbObject(AcDbDatabase* pDb);
+
     virtual ~PySmAcDbObjectReferenceImpl() override = default;
     IAcSmAcDbObjectReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
