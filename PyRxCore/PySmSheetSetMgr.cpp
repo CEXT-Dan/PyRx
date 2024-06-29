@@ -28,10 +28,12 @@ void makePySmPersistWrapper()
     class_<PySmPersist>("Persist", boost::python::no_init)
         .def("getIsDirty", &PySmPersist::getIsDirty, DS.ARGS())
         .def("getTypeName", &PySmPersist::getTypeName, DS.ARGS())
-        .def("initNew", &PySmPersist::initNew)
+        .def("initNew", &PySmPersist::initNew, DS.ARGS({ "owner: PySm.Persist" }))
         .def("getOwner", &PySmPersist::getOwner, DS.ARGS())
-        .def("setOwner", &PySmPersist::setOwner)
+        .def("setOwner", &PySmPersist::setOwner, DS.ARGS({ "owner: PySm.Persist" }))
         .def("getDatabase", &PySmPersist::getDatabase, DS.ARGS())
+        .def("getObjectId", &PySmPersist::getObjectId, DS.ARGS())
+        .def("isNull", &PySmPersist::isNull, DS.ARGS())
         .def("cast", &PySmPersist::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmPersist::className, DS.SARGS()).staticmethod("className")
         ;
@@ -76,6 +78,16 @@ void PySmPersist::setOwner(const PySmPersist& owner)
 PySmDatabase PySmPersist::getDatabase() const
 {
     return PySmDatabase(impObj()->GetDatabase());
+}
+
+PySmObjectId PySmPersist::getObjectId() const
+{
+    return PySmObjectId(impObj()->GetObjectId());
+}
+
+bool PySmPersist::isNull() const
+{
+    return impObj()->IsNull();
 }
 
 PySmPersist PySmPersist::cast(const PySmPersist& src)
@@ -1606,6 +1618,11 @@ void makePySmSheetSetMgrWrapper()
         .def("getSheetFromLayout", &PySmSheetSetMgr::getSheetFromLayout)
         .def("databases", &PySmSheetSetMgr::databases)
         .def("className", &PySmSheetSetMgr::className, DS.SARGS()).staticmethod("className")
+
+#ifdef PYRXDEBUG
+        .def("runTest", &PySmSheetSetMgr::runTest, DS.SARGS()).staticmethod("runTest")
+#endif
+
         ;
 }
 
@@ -1674,6 +1691,13 @@ std::string PySmSheetSetMgr::className()
 {
     return "AcSmSheetSetMgr";
 }
+
+#ifdef PYRXDEBUG
+bool PySmSheetSetMgr::runTest()
+{
+    return PySmSheetSetMgrImpl::runTest();
+}
+#endif
 
 PySmSheetSetMgrImpl* PySmSheetSetMgr::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
