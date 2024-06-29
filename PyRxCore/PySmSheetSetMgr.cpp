@@ -365,6 +365,9 @@ void makePySmFileReferenceWrapper()
 {
     PyDocString DS("FileReference");
     class_<PySmFileReference, bases<PySmPersist>>("FileReference")
+        .def("setFileName", &PySmFileReference::setFileName, DS.ARGS({ "val: str" }))
+        .def("getFileName", &PySmFileReference::getFileName, DS.ARGS())
+        .def("getFileName", &PySmFileReference::resolveFileName, DS.ARGS())
         .def("cast", &PySmFileReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmFileReference::className, DS.SARGS()).staticmethod("className")
         ;
@@ -383,6 +386,21 @@ PySmFileReference::PySmFileReference(PySmFileReferenceImpl* ptr)
 PySmFileReference::PySmFileReference(const PySmFileReferenceImpl& other)
     : PySmPersist(other)
 {
+}
+
+void PySmFileReference::setFileName(const std::string& csVal)
+{
+    impObj()->SetFileName(utf8_to_wstr(csVal).c_str());
+}
+
+std::string PySmFileReference::getFileName() const
+{
+    return wstr_to_utf8(impObj()->GetFileName());
+}
+
+std::string PySmFileReference::resolveFileName() const
+{
+    return wstr_to_utf8(impObj()->ResolveFileName());
 }
 
 PySmFileReference PySmFileReference::cast(const PySmPersist& src)

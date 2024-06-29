@@ -270,6 +270,35 @@ PySmAcDbObjectReferenceImpl::PySmAcDbObjectReferenceImpl(IAcSmAcDbObjectReferenc
 {
 }
 
+void PySmAcDbObjectReferenceImpl::SetAcDbHandle(AcDbHandle& hwnd)
+{
+    std::array<wchar_t, AcDbHandle::kStrSiz> buffer { 0 };
+    hwnd.getIntoAsciiBuffer(buffer.data(), buffer.size());
+    _bstr_t bstrHwnd{ buffer.data() };
+    PyThrowBadHr(impObj()->SetAcDbHandle(bstrHwnd));
+}
+
+AcDbHandle PySmAcDbObjectReferenceImpl::GetAcDbHandle() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetAcDbHandle(&bstrVal.GetBSTR()));
+    return AcDbHandle{ bstrVal };
+}
+
+void PySmAcDbObjectReferenceImpl::SetAcDbObject(AcDbObject* pDbObj)
+{
+    IAcadObjectPtr pAxObj(GetIAcadObjectFromAcDbObject(pDbObj));
+    PyThrowBadHr(impObj()->SetAcDbObject(pAxObj));
+}
+
+AcDbHandle PySmAcDbObjectReferenceImpl::ResolveAcDbObject(AcDbDatabase* pDb)
+{
+    _bstr_t bstrVal;
+    IAcadDatabasePtr axDb = GetIAcadDatabaseFromAcDbDatabse(pDb);
+    PyThrowBadHr(impObj()->ResolveAcDbObject(axDb, &bstrVal.GetBSTR()));
+    return AcDbHandle{ bstrVal };
+}
+
 IAcSmAcDbObjectReference* PySmAcDbObjectReferenceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

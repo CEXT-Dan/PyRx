@@ -167,6 +167,9 @@ public:
     PySmFileReference();
     PySmFileReference(PySmFileReferenceImpl* ptr);
     PySmFileReference(const PySmFileReferenceImpl& other);
+    void            setFileName(const std::string& csVal);
+    std::string     getFileName() const;
+    std::string     resolveFileName() const;
     static PySmFileReference cast(const PySmPersist& src);
     static std::string   className();
 public:

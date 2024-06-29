@@ -336,6 +336,12 @@ class FileReference(Persist):
     def className ()-> str :
         '''                             '''
         ...
+    def getFileName (self)-> str :
+        '''                             '''
+        ...
+    def setFileName (self, val: str)-> None :
+        '''                             '''
+        ...
 
 class LockStatus(object):
     def kLockedAccessDenied (self, *args, **kwargs)-> None :
@@ -414,23 +420,23 @@ This class cannot be instantiated from Python'''
     def getIsDirty (self)-> bool :
         '''                             '''
         ...
+    def getObjectId (self)-> object :
+        '''                             '''
+        ...
     def getOwner (self)-> PySm.Persist :
         '''                             '''
         ...
     def getTypeName (self)-> str :
         '''                             '''
         ...
-    def initNew (self, *args, **kwargs)-> None :
-        '''initNew( (Persist)arg1, (Persist)arg2) -> None :
-
-    C++ signature :
-        void initNew(class PySmPersist {lvalue},class PySmPersist)'''
+    def initNew (self, owner: PySm.Persist)-> None :
+        '''                             '''
         ...
-    def setOwner (self, *args, **kwargs)-> None :
-        '''setOwner( (Persist)arg1, (Persist)arg2) -> None :
-
-    C++ signature :
-        void setOwner(class PySmPersist {lvalue},class PySmPersist)'''
+    def isNull (self)-> bool :
+        '''                             '''
+        ...
+    def setOwner (self, owner: PySm.Persist)-> None :
+        '''                             '''
         ...
 
 class PersistProxy(Persist):
@@ -764,6 +770,11 @@ createDatabase( (SheetSetMgr)arg1, (str)arg2, (str)arg3, (bool)arg4) -> Database
 
     C++ signature :
         class PySmDatabase openDatabase(class PySmSheetSetMgr {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        ...
+
+    @staticmethod
+    def runTest ()-> bool :
+        '''                             '''
         ...
 
 class SheetView(Component):
