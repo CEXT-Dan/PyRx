@@ -285,6 +285,13 @@ AcDbHandle PySmAcDbObjectReferenceImpl::GetAcDbHandle() const
     return AcDbHandle{ bstrVal };
 }
 
+PySmAcDbDatabaseImpl PySmAcDbObjectReferenceImpl::GetAcSmAcDbDatabase() const
+{
+    IAcSmAcDbDatabase *ptr = nullptr;
+    PyThrowBadHr(impObj()->GetAcSmAcDbDatabase(&ptr));
+    return PySmAcDbDatabaseImpl(ptr);
+}
+
 void PySmAcDbObjectReferenceImpl::SetAcDbObject(AcDbObject* pDbObj)
 {
     IAcadObjectPtr pAxObj(GetIAcadObjectFromAcDbObject(pDbObj));

@@ -107,7 +107,7 @@ public:
 
     void        SetAcDbHandle(AcDbHandle &hwnd);
     AcDbHandle  GetAcDbHandle() const;
-    //GetAcSmAcDbDatabase()
+    PySmAcDbDatabaseImpl GetAcSmAcDbDatabase() const;
     void        SetAcDbObject(AcDbObject* pDbObj);
     AcDbHandle  ResolveAcDbObject(AcDbDatabase* pDb);
 
