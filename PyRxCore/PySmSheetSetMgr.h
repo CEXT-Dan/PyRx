@@ -73,7 +73,8 @@ public:
     PySmPersist        getOwner() const;
     void               setOwner(const PySmPersist& owner);
     PySmDatabase       getDatabase() const;
-    //PySmObjectId       getObjectId() const;
+    PySmObjectId       getObjectId() const;
+    bool               isNull() const;
 
     static PySmPersist cast(const PySmPersist& src);
     static std::string className();
@@ -569,6 +570,11 @@ public:
     boost::python::tuple getSheetFromLayout(PyDbObject& pAcDbLayout);
     boost::python::list  databases() const;
     static std::string   className();
+
+#ifdef PYRXDEBUG
+    static bool          runTest();
+#endif
+
 public:
     inline PySmSheetSetMgrImpl* impObj(const std::source_location& src = std::source_location::current()) const;
     std::shared_ptr<PySmSheetSetMgrImpl> m_pyImp = nullptr;

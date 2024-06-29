@@ -110,6 +110,11 @@ void PySmPersistImpl::Clear()
     PyThrowBadHr(impObj()->Clear());
 }
 
+bool PySmPersistImpl::IsNull()
+{
+    return impObj() == nullptr;
+}
+
 void PySmPersistImpl::swap(PySmPersistImpl& other)
 {
     std::swap(m_pimpl, other.m_pimpl);
@@ -129,6 +134,20 @@ PySmAcDbDatabaseImpl::PySmAcDbDatabaseImpl(IAcSmAcDbDatabase* other)
 {
     if (other != nullptr)
         m_pimpl.Attach(other);
+}
+
+IAcadDatabasePtr PySmAcDbDatabaseImpl::GetIAcadDatabase()
+{
+    IAcadDatabase* axdb;
+    PyThrowBadHr(m_pimpl->GetIAcadDatabase(&axdb));
+    return IAcadDatabasePtr{ axdb };
+}
+
+AcDbDatabase* PySmAcDbDatabaseImpl::GetAcDbDatabase()
+{
+    LPVOID pDb;// eewww, LPVOID is prettier than void* though : |
+    PyThrowBadHr(m_pimpl->GetAcDbDatabase(&pDb));
+    return  reinterpret_cast<AcDbDatabase*>(pDb);
 }
 
 IAcSmAcDbDatabase* PySmAcDbDatabaseImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -360,7 +379,7 @@ AcValue PySmCustomPropertyValueImpl::GetValue() const
 {
     //TODO: TEST
     _variant_t varVal = {};
-    PyThrowBadHr(impObj()->GetValue(&varVal));
+    PyThrowBadHr(impObj()->GetValue(&varVal.GetVARIANT()));
     switch (varVal.vt)
     {
         case VT_I2:
@@ -1380,6 +1399,41 @@ std::vector<PySmDatabaseImpl> PySmSheetSetMgrImpl::GetDatabaseEnumerator()
         v.push_back(PySmDatabaseImpl(pAxDb));
     return v;
 }
+
+#ifdef PYRXDEBUG
+static void printcomerr(HRESULT hr, std::string_view message)
+{
+    acutPrintf(utf8_to_wstr(std::format("\n{}, {}", std::system_category().message(hr), message)).c_str());
+}
+bool PySmSheetSetMgrImpl::runTest()
+{
+    IAcSmCustomPropertyValuePtr _cmpptr;
+    {
+        HRESULT hr = S_OK;
+        
+        hr = _cmpptr.CreateInstance(CLSID_AcSmCustomPropertyValue);
+        printcomerr(hr, "_cmpptr.CreateInstance(CLSID_AcSmCustomPropertyValue)");
+
+        IAcSmPersistPtr owner;
+        hr = _cmpptr->GetOwner(&owner);
+        printcomerr(hr, "_cmpptr->GetOwner");
+
+        _bstr_t name;
+        hr = _cmpptr->GetTypeName(&name.GetBSTR());
+        printcomerr(hr, "_cmpptr->GetTypeName");
+        acutPrintf(_T(" %ls"), (const wchar_t*)name);
+
+        _variant_t v;
+        hr = _cmpptr->GetValue(&v.GetVARIANT());
+        printcomerr(hr, "_cmpptr->GetValue");
+
+        VARIANT_BOOL rtVal;
+        hr = _cmpptr->GetIsDirty(&rtVal);
+        printcomerr(hr, "_cmpptr->GetIsDirty");
+    }
+    return true;
+}
+#endif PYRXDEBUG
 
 IAcSmSheetSetMgr* PySmSheetSetMgrImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {

@@ -18,8 +18,34 @@ class TestSheetSet(unittest.TestCase):
         super(TestSheetSet, self).__init__(*args, **kwargs)
         
     def test_all_ctor(self):
-        o1 = Sm.Persist()
-        self.assertFalse(o1)
+        self.assertFalse(Sm.CustomPropertyValue().isNull())
+        self.assertFalse(Sm.CustomPropertyBag().isNull())
+        self.assertFalse(Sm.FileReference().isNull())
+        self.assertFalse(Sm.NamedDbObjectReference().isNull())
+        self.assertFalse(Sm.DbLayoutReference().isNull())
+        self.assertFalse(Sm.DbViewReference().isNull())
+        self.assertFalse(Sm.DbBlockRecordReference().isNull())
+        self.assertFalse(Sm.ProjectPointLocation().isNull())
+        self.assertFalse(Sm.DbObjectReference().isNull())
+        
+        if not "BRX" in host:
+            self.assertFalse(Sm.PersistProxy().isNull())
+            self.assertFalse(Sm.ObjectReference().isNull())
+        
+        self.assertFalse(Sm.PublishOptions().isNull())
+        self.assertFalse(Sm.SheetSelSet().isNull())
+        self.assertFalse(Sm.SheetSelSets().isNull())
+        self.assertFalse(Sm.SheetView().isNull())
+        self.assertFalse(Sm.SheetViews().isNull())
+        self.assertFalse(Sm.ProjectPointLocations().isNull())
+        self.assertFalse(Sm.Resources().isNull())
+        self.assertFalse(Sm.ViewCategory().isNull())
+        self.assertFalse(Sm.ViewCategories().isNull())
+        self.assertFalse(Sm.CalloutBlocks().isNull())
+        self.assertFalse(Sm.Subset().isNull())
+        self.assertFalse(Sm.Sheet().isNull())
+        self.assertFalse(Sm.SheetSet().isNull())
+        self.assertFalse(Sm.Database().isNull())
        
     def test_cast_to_sheet(self):
         path = dbc.mediapath + "SSTest.dst"

@@ -37,6 +37,7 @@ public:
     PySmDatabaseImpl    GetDatabase() const;
     PySmObjectIdImpl    GetObjectId() const;
     void                Clear();
+    bool                IsNull();
     void                swap(PySmPersistImpl& other);
 
 public:
@@ -52,6 +53,9 @@ public:
     PySmAcDbDatabaseImpl(IAcSmAcDbDatabase* other);
     PySmAcDbDatabaseImpl(const PySmAcDbDatabaseImpl& other) = default;
     virtual ~PySmAcDbDatabaseImpl() = default;
+
+    IAcadDatabasePtr    GetIAcadDatabase();
+    AcDbDatabase*       GetAcDbDatabase();
 
 public:
     IAcSmAcDbDatabase* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -492,6 +496,10 @@ public:
     std::pair<PySmDatabaseImpl, PySmSheetSetImpl> GetParentSheetSet(const CString& dwg, const CString& layout);
     std::pair<PySmDatabaseImpl, PySmSheetImpl>    GetSheetFromLayout(AcDbObject* pAcDbLayout);
     std::vector<PySmDatabaseImpl>                 GetDatabaseEnumerator();
+
+#ifdef PYRXDEBUG
+    static bool       runTest();
+#endif
 
 public:
     IAcSmSheetSetMgr* impObj(const std::source_location& src = std::source_location::current()) const;
