@@ -58,6 +58,13 @@ enum class SmLockStatus : int
     AcSmLockStatus_Locked_AccessDenied = 16
 };
 
+enum class SmObjectReferenceFlags : int
+{
+    AcSmObjectReference_SoftPointer = 1,
+    AcSmObjectReference_HardPointer = 2
+};
+
+
 //-----------------------------------------------------------------------------------------
 //PySmPersist
 void makePySmPersistWrapper();

@@ -327,6 +327,21 @@ PySmNamedAcDbObjectReferenceImpl::PySmNamedAcDbObjectReferenceImpl(IAcSmNamedAcD
 {
 }
 
+void PySmNamedAcDbObjectReferenceImpl::SetOwnerAcDbHandle(AcDbHandle& hwnd)
+{
+    std::array<wchar_t, AcDbHandle::kStrSiz> buffer{ 0 };
+    hwnd.getIntoAsciiBuffer(buffer.data(), buffer.size());
+    _bstr_t bstrHwnd{ buffer.data() };
+    PyThrowBadHr(impObj()->SetOwnerAcDbHandle(bstrHwnd));
+}
+
+AcDbHandle PySmNamedAcDbObjectReferenceImpl::GetOwnerAcDbHandle() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetOwnerAcDbHandle(&bstrVal.GetBSTR()));
+    return AcDbHandle{ bstrVal };
+}
+
 IAcSmNamedAcDbObjectReference* PySmNamedAcDbObjectReferenceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -567,6 +582,30 @@ PySmObjectReferenceImpl::PySmObjectReferenceImpl()
 PySmObjectReferenceImpl::PySmObjectReferenceImpl(IAcSmObjectReference* other)
     : PySmPersistImpl(other)
 {
+}
+
+void PySmObjectReferenceImpl::SetReferencedObject(PySmPersistImpl& pObject)
+{
+    PyThrowBadHr(impObj()->SetReferencedObject(pObject.impObj()));
+}
+
+PySmPersistImpl PySmObjectReferenceImpl::GetReferencedObject() const
+{
+    IAcSmPersist* ptr = nullptr;
+    PyThrowBadHr(impObj()->GetReferencedObject(&ptr));
+    return PySmPersistImpl(ptr);
+}
+
+AcSmObjectReferenceFlags PySmObjectReferenceImpl::GetReferenceFlags() const
+{
+    AcSmObjectReferenceFlags flags;
+    PyThrowBadHr(impObj()->GetReferenceFlags(&flags));
+    return flags;
+}
+
+void PySmObjectReferenceImpl::SetReferenceFlags(AcSmObjectReferenceFlags flags)
+{
+    PyThrowBadHr(impObj()->SetReferenceFlags(flags));
 }
 
 IAcSmObjectReference* PySmObjectReferenceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
