@@ -124,6 +124,13 @@ public:
     PySmNamedAcDbObjectReferenceImpl(IAcSmNamedAcDbObjectReference* other);
     PySmNamedAcDbObjectReferenceImpl(const PySmNamedAcDbObjectReferenceImpl& other) = default;
     virtual ~PySmNamedAcDbObjectReferenceImpl() override = default;
+
+    // SetName
+    // GetName don't think we need to override
+
+    void        SetOwnerAcDbHandle(AcDbHandle& hwnd);
+    AcDbHandle  GetOwnerAcDbHandle() const;
+
     IAcSmNamedAcDbObjectReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -204,6 +211,13 @@ public:
     PySmObjectReferenceImpl();
     PySmObjectReferenceImpl(IAcSmObjectReference* other);
     PySmObjectReferenceImpl(const PySmObjectReferenceImpl& other) = default;
+
+    void            SetReferencedObject(PySmPersistImpl& pObject);
+    PySmPersistImpl GetReferencedObject() const;
+
+    AcSmObjectReferenceFlags GetReferenceFlags() const;
+    void                     SetReferenceFlags(AcSmObjectReferenceFlags flags);
+
     virtual ~PySmObjectReferenceImpl() override = default;
     IAcSmObjectReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
