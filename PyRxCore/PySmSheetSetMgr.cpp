@@ -6,6 +6,8 @@
 #include "PySmSheetSetMgrImpl.h"
 #include "PyDbObject.h"
 #include "PyDbEval.h"
+#include "PyDbDatabase.h"
+#include "PyDbObjectId.h"
 
 using namespace boost::python;
 
@@ -33,6 +35,7 @@ void makePySmPersistWrapper()
         .def("setOwner", &PySmPersist::setOwner, DS.ARGS({ "owner: PySm.Persist" }))
         .def("getDatabase", &PySmPersist::getDatabase, DS.ARGS())
         .def("getObjectId", &PySmPersist::getObjectId, DS.ARGS())
+        .def("clear", &PySmPersist::clear, DS.ARGS())
         .def("isNull", &PySmPersist::isNull, DS.ARGS())
         .def("cast", &PySmPersist::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmPersist::className, DS.SARGS()).staticmethod("className")
@@ -85,6 +88,11 @@ PySmObjectId PySmPersist::getObjectId() const
     return PySmObjectId(impObj()->GetObjectId());
 }
 
+void PySmPersist::clear()
+{
+    impObj()->Clear();
+}
+
 bool PySmPersist::isNull() const
 {
     return impObj()->IsNull();
@@ -114,6 +122,7 @@ void makePySmAcDbDatabaseWrapper()
 {
     PyDocString DS("AcDbDatabase");
     class_<PySmAcDbDatabase>("AcDbDatabase", boost::python::no_init)
+        .def("getAcDbDatabase", &PySmAcDbDatabase::getAcDbDatabase, DS.ARGS())
         .def("className", &PySmAcDbDatabase::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -127,6 +136,11 @@ PySmAcDbDatabase::PySmAcDbDatabase(PySmAcDbDatabaseImpl* ptr)
 PySmAcDbDatabase::PySmAcDbDatabase(const PySmAcDbDatabaseImpl& other)
     : m_pyImp(new PySmAcDbDatabaseImpl(other))
 {
+}
+
+PyDbDatabase PySmAcDbDatabase::getAcDbDatabase() const
+{
+   return PyDbDatabase(impObj()->GetAcDbDatabase());
 }
 
 std::string PySmAcDbDatabase::className()
@@ -427,8 +441,13 @@ void makePySmAcDbObjectReferenceWrapper()
 {
     PyDocString DS("DbObjectReference");
     class_<PySmAcDbObjectReference, bases<PySmFileReference>>("DbObjectReference")
-        .def("cast", &PySmProjectPointLocation::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
-        .def("className", &PySmProjectPointLocation::className, DS.SARGS()).staticmethod("className")
+        .def("setAcDbHandle", &PySmAcDbObjectReference::setAcDbHandle, DS.ARGS({ "val: PyDb,Handle" }))
+        .def("getAcDbHandle", &PySmAcDbObjectReference::getAcDbHandle, DS.ARGS())
+        .def("getAcSmAcDbDatabase", &PySmAcDbObjectReference::getAcSmAcDbDatabase, DS.ARGS())
+        .def("setAcDbObject", &PySmAcDbObjectReference::setAcDbObject, DS.ARGS({ "val: PyDb.Object" }))
+        .def("resolveAcDbObject", &PySmAcDbObjectReference::resolveAcDbObject, DS.ARGS({ "db: PyDb.Database" }))
+        .def("cast", &PySmAcDbObjectReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
+        .def("className", &PySmAcDbObjectReference::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -452,6 +471,31 @@ PySmAcDbObjectReference PySmAcDbObjectReference::cast(const PySmPersist& src)
     return PySmObjectCast<PySmAcDbObjectReference>(src);
 }
 
+void PySmAcDbObjectReference::setAcDbHandle(PyDbHandle& hwnd)
+{
+    impObj()->SetAcDbHandle(hwnd.m_hnd);
+}
+
+PyDbHandle PySmAcDbObjectReference::getAcDbHandle() const
+{
+    return PyDbHandle(impObj()->GetAcDbHandle());
+}
+
+PySmAcDbDatabase PySmAcDbObjectReference::getAcSmAcDbDatabase() const
+{
+    return PySmAcDbDatabase(impObj()->GetAcSmAcDbDatabase());
+}
+
+void PySmAcDbObjectReference::setAcDbObject(PyDbObject& pDbObj)
+{
+    impObj()->SetAcDbObject(pDbObj.impObj());
+}
+
+PyDbHandle PySmAcDbObjectReference::resolveAcDbObject(PyDbDatabase& pDb)
+{
+    return PyDbHandle(impObj()->ResolveAcDbObject(pDb.impObj()));
+}
+
 std::string PySmAcDbObjectReference::className()
 {
     return "AcSmAcDbObjectReference";
@@ -471,6 +515,8 @@ void makePySmNamedAcDbObjectReferenceWrapper()
 {
     PyDocString DS("NamedDbObjectReference");
     class_<PySmNamedAcDbObjectReference, bases<PySmAcDbObjectReference>>("NamedDbObjectReference")
+        .def("SetOwnerAcDbHandle", &PySmNamedAcDbObjectReference::SetOwnerAcDbHandle, DS.ARGS({ "val: PyDb,Handle" }))
+        .def("GetOwnerAcDbHandle", &PySmNamedAcDbObjectReference::GetOwnerAcDbHandle, DS.ARGS())
         .def("cast", &PySmNamedAcDbObjectReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmNamedAcDbObjectReference::className, DS.SARGS()).staticmethod("className")
         ;
@@ -494,6 +540,16 @@ PySmNamedAcDbObjectReference::PySmNamedAcDbObjectReference(const PySmNamedAcDbOb
 PySmNamedAcDbObjectReference PySmNamedAcDbObjectReference::cast(const PySmPersist& src)
 {
     return PySmObjectCast<PySmNamedAcDbObjectReference>(src);
+}
+
+void PySmNamedAcDbObjectReference::SetOwnerAcDbHandle(PyDbHandle& hwnd)
+{
+    impObj()->SetOwnerAcDbHandle(hwnd.m_hnd);
+}
+
+PyDbHandle PySmNamedAcDbObjectReference::GetOwnerAcDbHandle() const
+{
+    return PyDbHandle(impObj()->GetOwnerAcDbHandle());
 }
 
 std::string PySmNamedAcDbObjectReference::className()
