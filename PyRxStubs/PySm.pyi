@@ -93,29 +93,17 @@ class CustomPropertyBag(Persist):
     def className ()-> str :
         '''                             '''
         ...
-    def getProperties (self, *args, **kwargs)-> list :
-        '''getProperties( (CustomPropertyBag)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getProperties(class PySmCustomPropertyBag {lvalue})'''
+    def getProperties (self)-> list :
+        '''                             '''
         ...
-    def getPropertyValues (self, *args, **kwargs)-> list :
-        '''getPropertyValues( (CustomPropertyBag)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getPropertyValues(class PySmCustomPropertyBag {lvalue})'''
+    def getPropertyValues (self)-> list :
+        '''                             '''
         ...
-    def getValue (self, *args, **kwargs)-> PySm.CustomPropertyValue :
-        '''getValue( (CustomPropertyBag)arg1, (str)arg2) -> CustomPropertyValue :
-
-    C++ signature :
-        class PySmCustomPropertyValue getValue(class PySmCustomPropertyBag {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getValue (self, prop: str)-> PySm.CustomPropertyValue :
+        '''                             '''
         ...
-    def setValue (self, *args, **kwargs)-> None :
-        '''setValue( (CustomPropertyBag)arg1, (str)arg2, (CustomPropertyValue)arg3) -> None :
-
-    C++ signature :
-        void setValue(class PySmCustomPropertyBag {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PySmCustomPropertyValue)'''
+    def setValue (self, prop: str, val: PySm.CustomPropertyValue)-> None :
+        '''                             '''
         ...
 
 class CustomPropertyValue(Persist):
@@ -132,29 +120,17 @@ class CustomPropertyValue(Persist):
     def className ()-> str :
         '''                             '''
         ...
-    def getFlags (self, *args, **kwargs)-> PySm.PropertyFlags :
-        '''getFlags( (CustomPropertyValue)arg1) -> PropertyFlags :
-
-    C++ signature :
-        enum SmPropertyFlags getFlags(class PySmCustomPropertyValue {lvalue})'''
+    def getFlags (self)-> PySm.PropertyFlags :
+        '''                             '''
         ...
-    def getValue (self, *args, **kwargs)-> PyDb.AcValue :
-        '''getValue( (CustomPropertyValue)arg1) -> AcValue :
-
-    C++ signature :
-        class PyDbAcValue getValue(class PySmCustomPropertyValue {lvalue})'''
+    def getValue (self)-> PyDb.AcValue :
+        '''                             '''
         ...
-    def setFlags (self, *args, **kwargs)-> None :
-        '''setFlags( (CustomPropertyValue)arg1, (PropertyFlags)arg2) -> None :
-
-    C++ signature :
-        void setFlags(class PySmCustomPropertyValue {lvalue},enum SmPropertyFlags)'''
+    def setFlags (self, flags: PySm.PropertyFlags)-> None :
+        '''                             '''
         ...
-    def setValue (self, *args, **kwargs)-> None :
-        '''setValue( (CustomPropertyValue)arg1, (AcValue)arg2) -> None :
-
-    C++ signature :
-        void setValue(class PySmCustomPropertyValue {lvalue},class PyDbAcValue)'''
+    def setValue (self, val: PyDb.AcValue)-> None :
+        '''                             '''
         ...
 
 class Database(Component):
@@ -171,65 +147,35 @@ class Database(Component):
     def className ()-> str :
         '''                             '''
         ...
-    def getFileName (self, *args, **kwargs)-> str :
-        '''getFileName( (Database)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getFileName(class PySmDatabase {lvalue})'''
+    def getFileName (self)-> str :
+        '''                             '''
         ...
-    def getLockOwnerInfo (self, *args, **kwargs)-> tuple[Any,...] :
-        '''getLockOwnerInfo( (Database)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getLockOwnerInfo(class PySmDatabase {lvalue})'''
+    def getLockOwnerInfo (self)-> tuple[Any,...] :
+        '''                             '''
         ...
-    def getLockStatus (self, *args, **kwargs)-> PySm.LockStatus :
-        '''getLockStatus( (Database)arg1) -> LockStatus :
-
-    C++ signature :
-        enum SmLockStatus getLockStatus(class PySmDatabase {lvalue})'''
+    def getLockStatus (self)-> PySm.LockStatus :
+        '''                             '''
         ...
-    def getPersistObjects (self, *args, **kwargs)-> list :
-        '''getPersistObjects( (Database)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getPersistObjects(class PySmDatabase {lvalue})'''
+    def getPersistObjects (self)-> list :
+        '''                             '''
         ...
-    def getSheetSet (self, *args, **kwargs)-> PySm.SheetSet :
-        '''getSheetSet( (Database)arg1) -> SheetSet :
-
-    C++ signature :
-        class PySmSheetSet getSheetSet(class PySmDatabase {lvalue})'''
+    def getSheetSet (self)-> PySm.SheetSet :
+        '''                             '''
         ...
-    def getTemplateDstFileName (self, *args, **kwargs)-> str :
-        '''getTemplateDstFileName( (Database)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getTemplateDstFileName(class PySmDatabase {lvalue})'''
+    def getTemplateDstFileName (self)-> str :
+        '''                             '''
         ...
-    def loadFromFile (self, *args, **kwargs)-> None :
-        '''loadFromFile( (Database)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void loadFromFile(class PySmDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def loadFromFile (self, filename: str)-> None :
+        '''                             '''
         ...
-    def lockDb (self, *args, **kwargs)-> None :
-        '''lockDb( (Database)arg1) -> None :
-
-    C++ signature :
-        void lockDb(class PySmDatabase {lvalue})'''
+    def lockDb (self)-> None :
+        '''                             '''
         ...
-    def setFileName (self, *args, **kwargs)-> None :
-        '''setFileName( (Database)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setFileName(class PySmDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setFileName (self, filename: str)-> None :
+        '''                             '''
         ...
-    def unlockDb (self, *args, **kwargs)-> None :
-        '''unlockDb( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void unlockDb(class PySmDatabase {lvalue},bool)'''
+    def unlockDb (self, commit: bool)-> None :
+        '''                             '''
         ...
 
 class DbBlockRecordReference(NamedDbObjectReference):
@@ -389,7 +335,7 @@ class ObjectReference(Persist):
     def getReferencedObject (self)-> PySm.Persist :
         '''                             '''
         ...
-    def setReferenceFlags (self, val: PySm.SmObjectReferenceFlags)-> None :
+    def setReferenceFlags (self, val: PySm.ObjectReferenceFlags)-> None :
         '''                             '''
         ...
     def setReferencedObject (self, val: PySm.Persist)-> None :
@@ -848,57 +794,39 @@ class SheetSetMgr(object):
     def className ()-> str :
         '''                             '''
         ...
-    def close (self, *args, **kwargs)-> None :
-        '''close( (SheetSetMgr)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void close(class PySmSheetSetMgr {lvalue},class PySmDatabase {lvalue})'''
+    def close (self, smDb: PySm.Database)-> None :
+        '''                             '''
         ...
 
     @staticmethod
     def closeAll ()-> None :
         '''                             '''
         ...
+
+    @overload
+    def createDatabase (self, filename: str)-> PySm.Database : ...
+    @overload
+    def createDatabase (self, filename: str, template: str, bAlwaysCreate: bool)-> PySm.Database : ...
     def createDatabase (self, *args, **kwargs)-> PySm.Database :
-        '''createDatabase( (SheetSetMgr)arg1, (str)arg2) -> Database :
-
-    C++ signature :
-        class PySmDatabase createDatabase(class PySmSheetSetMgr {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-createDatabase( (SheetSetMgr)arg1, (str)arg2, (str)arg3, (bool)arg4) -> Database :
-
-    C++ signature :
-        class PySmDatabase createDatabase(class PySmSheetSetMgr {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
+        '''Overloads:
+    - filename: str
+    - filename: str, template: str, bAlwaysCreate: bool
+    '''
         ...
-    def databases (self, *args, **kwargs)-> list :
-        '''databases( (SheetSetMgr)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list databases(class PySmSheetSetMgr {lvalue})'''
+    def databases (self)-> list :
+        '''                             '''
         ...
-    def findOpenDatabase (self, *args, **kwargs)-> PySm.Database :
-        '''findOpenDatabase( (SheetSetMgr)arg1, (str)arg2) -> Database :
-
-    C++ signature :
-        class PySmDatabase findOpenDatabase(class PySmSheetSetMgr {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def findOpenDatabase (self, filename: str)-> PySm.Database :
+        '''                             '''
         ...
-    def getParentSheetSet (self, *args, **kwargs)-> tuple[Any,...] :
-        '''getParentSheetSet( (SheetSetMgr)arg1, (str)arg2, (str)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getParentSheetSet(class PySmSheetSetMgr {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getParentSheetSet (self, dwg: str, dwg: layout)-> tuple[Any,...] :
+        '''                             '''
         ...
-    def getSheetFromLayout (self, *args, **kwargs)-> tuple[Any,...] :
-        '''getSheetFromLayout( (SheetSetMgr)arg1, (DbObject)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getSheetFromLayout(class PySmSheetSetMgr {lvalue},class PyDbObject {lvalue})'''
+    def getSheetFromLayout (self, layout: PyDb.Object)-> tuple[Any,...] :
+        '''                             '''
         ...
-    def openDatabase (self, *args, **kwargs)-> PySm.Database :
-        '''openDatabase( (SheetSetMgr)arg1, (str)arg2) -> Database :
-
-    C++ signature :
-        class PySmDatabase openDatabase(class PySmSheetSetMgr {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def openDatabase (self, filename: str)-> PySm.Database :
+        '''                             '''
         ...
 
     @staticmethod

@@ -1115,7 +1115,7 @@ PySmSheetSelSetImpl PySmSheetSelSetsImpl::Add(const CString& name, const CString
 {
     _bstr_t bstrName(name);
     _bstr_t bstrDeck(desc);
-    IAcSmSheetSelSet *ptr = nullptr;
+    IAcSmSheetSelSet* ptr = nullptr;
     PyThrowBadHr(impObj()->Add(bstrName, bstrDeck, &ptr));
     return PySmSheetSelSetImpl(ptr);
 }
@@ -1405,7 +1405,7 @@ PySmProjectPointLocationsImpl::PySmProjectPointLocationsImpl(IAcSmProjectPointLo
 PySmProjectPointLocationImpl PySmProjectPointLocationsImpl::GetLocation(const CString& locationName) const
 {
     _bstr_t bstrVal{ locationName };
-    IAcSmProjectPointLocation *ptr = nullptr;
+    IAcSmProjectPointLocation* ptr = nullptr;
     PyThrowBadHr(impObj()->GetLocation(bstrVal, &ptr));
     return PySmProjectPointLocationImpl(ptr);
 }
