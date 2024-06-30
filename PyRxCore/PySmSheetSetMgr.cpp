@@ -140,7 +140,7 @@ PySmAcDbDatabase::PySmAcDbDatabase(const PySmAcDbDatabaseImpl& other)
 
 PyDbDatabase PySmAcDbDatabase::getAcDbDatabase() const
 {
-   return PyDbDatabase(impObj()->GetAcDbDatabase());
+    return PyDbDatabase(impObj()->GetAcDbDatabase());
 }
 
 std::string PySmAcDbDatabase::className()
@@ -843,7 +843,7 @@ PySmPersist PySmObjectReference::getReferencedObject() const
 
 SmObjectReferenceFlags PySmObjectReference::getReferenceFlags() const
 {
-   return static_cast<SmObjectReferenceFlags>(impObj()->GetReferenceFlags());
+    return static_cast<SmObjectReferenceFlags>(impObj()->GetReferenceFlags());
 }
 
 void PySmObjectReference::setReferenceFlags(SmObjectReferenceFlags flags)
@@ -1258,7 +1258,7 @@ void makePySmSheetSelSetsWrapper()
     PyDocString DS("SheetSelSets");
     class_<PySmSheetSelSets, bases<PySmComponent>>("SheetSelSets")
         .def("add", &PySmSheetSelSets::add, DS.ARGS({ "name: str","desc: str" }))
-        .def("remove", &PySmSheetSelSets::remove, DS.ARGS({ "val: PySm.SheetSelSet"}))
+        .def("remove", &PySmSheetSelSets::remove, DS.ARGS({ "val: PySm.SheetSelSet" }))
         .def("getSheetSelSets", &PySmSheetSelSets::getSheetSelSets, DS.ARGS())
         .def("cast", &PySmSheetSelSets::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheetSelSets::className, DS.SARGS()).staticmethod("className")
@@ -1324,6 +1324,14 @@ void makePySmSheetViewWrapper()
 {
     PyDocString DS("SheetView");
     class_<PySmSheetView, bases<PySmComponent>>("SheetView")
+        .def("getNamedView", &PySmSheetView::getNamedView, DS.ARGS())
+        .def("setNamedView", &PySmSheetView::setNamedView, DS.ARGS({ "val: PySm.AcDbViewReference" }))
+        .def("getCategory", &PySmSheetView::getCategory, DS.ARGS())
+        .def("setCategory", &PySmSheetView::setCategory, DS.ARGS({ "val: PySm.ViewCategory" }))
+        .def("getNumber", &PySmSheetView::getNumber, DS.ARGS())
+        .def("setNumber", &PySmSheetView::setNumber, DS.ARGS({ "val: str" }))
+        .def("getTitle", &PySmSheetView::getTitle, DS.ARGS())
+        .def("setTitle", &PySmSheetView::setTitle, DS.ARGS({ "val: str" }))
         .def("cast", &PySmSheetView::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheetView::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1342,6 +1350,46 @@ PySmSheetView::PySmSheetView(PySmSheetViewImpl* ptr)
 PySmSheetView::PySmSheetView(const PySmSheetViewImpl& other)
     : PySmComponent(other)
 {
+}
+
+PySmAcDbViewReference PySmSheetView::getNamedView() const
+{
+    return PySmAcDbViewReference(impObj()->GetNamedView());
+}
+
+void PySmSheetView::setNamedView(PySmAcDbViewReference& view)
+{
+    impObj()->SetNamedView(*view.impObj());
+}
+
+PySmViewCategory PySmSheetView::getCategory() const
+{
+    return PySmViewCategory(impObj()->GetCategory());
+}
+
+void PySmSheetView::setCategory(PySmViewCategory& view)
+{
+    impObj()->SetCategory(*view.impObj());
+}
+
+std::string PySmSheetView::getNumber() const
+{
+    return wstr_to_utf8(impObj()->GetNumber());
+}
+
+void PySmSheetView::setNumber(const std::string& csVal)
+{
+    impObj()->SetNumber(utf8_to_wstr(csVal).c_str());
+}
+
+std::string PySmSheetView::getTitle() const
+{
+    return wstr_to_utf8(impObj()->GetTitle());
+}
+
+void PySmSheetView::setTitle(const std::string& csVal)
+{
+    impObj()->SetTitle(utf8_to_wstr(csVal).c_str());
 }
 
 PySmSheetView PySmSheetView::cast(const PySmPersist& src)
@@ -1368,6 +1416,8 @@ void makePySmSheetViewsWrapper()
 {
     PyDocString DS("SheetViews");
     class_<PySmSheetViews, bases<PySmComponent>>("SheetViews")
+        .def("getSheetViews", &PySmSheetViews::getSheetViews, DS.ARGS())
+        .def("sync", &PySmSheetViews::sync, DS.ARGS({ "val: PySm.AcDbLayoutReference","db: PyDb.Database" }))
         .def("cast", &PySmSheetViews::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheetViews::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1386,6 +1436,21 @@ PySmSheetViews::PySmSheetViews(PySmSheetViewsImpl* ptr)
 PySmSheetViews::PySmSheetViews(const PySmSheetViewsImpl& other)
     : PySmComponent(other)
 {
+}
+
+boost::python::list PySmSheetViews::getSheetViews() const
+{
+    const auto& v = impObj()->GetSheetViews();
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& i : v)
+        pylist.append(PySmSheetView(i));
+    return pylist;
+}
+
+void PySmSheetViews::sync(PySmAcDbLayoutReference& lref, PyDbDatabase& pDb)
+{
+    impObj()->Sync(*lref.impObj(), pDb.impObj());
 }
 
 PySmSheetViews PySmSheetViews::cast(const PySmPersist& src)
@@ -1412,6 +1477,9 @@ void makePySmProjectPointLocationsWrapper()
 {
     PyDocString DS("ProjectPointLocations");
     class_<PySmProjectPointLocations, bases<PySmComponent>>("ProjectPointLocations")
+        .def("getLocation", &PySmProjectPointLocations::getLocation, DS.ARGS({ "locationName: str" }))
+        .def("removeLocation", &PySmProjectPointLocations::removeLocation, DS.ARGS({ "val: PySm.ProjectPointLocation" }))
+        .def("addNewLocation", &PySmProjectPointLocations::addNewLocation, DS.ARGS({ "name: str","url: str","folder: str","username: str","password: str" }))
         .def("cast", &PySmProjectPointLocations::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmProjectPointLocations::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1430,6 +1498,36 @@ PySmProjectPointLocations::PySmProjectPointLocations(PySmProjectPointLocationsIm
 PySmProjectPointLocations::PySmProjectPointLocations(const PySmProjectPointLocationsImpl& other)
     : PySmComponent(other)
 {
+}
+
+PySmProjectPointLocation PySmProjectPointLocations::getLocation(const std::string& locationName) const
+{
+    return PySmProjectPointLocation(impObj()->GetLocation(utf8_to_wstr(locationName).c_str()));
+}
+
+void PySmProjectPointLocations::removeLocation(PySmProjectPointLocation& val)
+{
+    impObj()->RemoveLocation(*val.impObj());
+}
+
+PySmProjectPointLocation PySmProjectPointLocations::addNewLocation(const std::string& name, const std::string& url, const std::string& folder, const std::string& username, const std::string& password)
+{
+    return PySmProjectPointLocation(impObj()->AddNewLocation(
+        utf8_to_wstr(name).c_str(),
+        utf8_to_wstr(url).c_str(),
+        utf8_to_wstr(folder).c_str(),
+        utf8_to_wstr(username).c_str(),
+        utf8_to_wstr(password).c_str()));
+}
+
+boost::python::list PySmProjectPointLocations::getProjectPointLocations() const
+{
+    const auto& v = impObj()->GetProjectPointLocations();
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& i : v)
+        pylist.append(PySmProjectPointLocation(i));
+    return pylist;
 }
 
 PySmProjectPointLocations PySmProjectPointLocations::cast(const PySmPersist& src)
@@ -1456,6 +1554,9 @@ void makePySmSmResourcesWrapper()
 {
     PyDocString DS("Resources");
     class_<PySmSmResources, bases<PySmComponent>>("Resources")
+        .def("add", &PySmSmResources::add, DS.ARGS({ "val: PySm.FileReference" }))
+        .def("remove", &PySmSmResources::remove, DS.ARGS({ "val: PySm.FileReference" }))
+        .def("getFileReferences", &PySmSmResources::getFileReferences, DS.ARGS())
         .def("cast", &PySmSmResources::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSmResources::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1474,6 +1575,26 @@ PySmSmResources::PySmSmResources(PySmResourcesImpl* ptr)
 PySmSmResources::PySmSmResources(const PySmResourcesImpl& other)
     : PySmComponent(other)
 {
+}
+
+void PySmSmResources::add(PySmFileReference& val)
+{
+    impObj()->Add(*val.impObj());
+}
+
+void PySmSmResources::remove(PySmFileReference& val)
+{
+    impObj()->Remove(*val.impObj());
+}
+
+boost::python::list PySmSmResources::getFileReferences()
+{
+    const auto& v = impObj()->GetFileReferences();
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& i : v)
+        pylist.append(PySmFileReference(i));
+    return pylist;
 }
 
 PySmSmResources PySmSmResources::cast(const PySmPersist& src)

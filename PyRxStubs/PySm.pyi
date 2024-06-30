@@ -533,6 +533,9 @@ class ProjectPointLocations(Component):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
         ...
+    def addNewLocation (self, name: str, url: str, folder: str, username: str, password: str)-> PySm.ProjectPointLocation :
+        '''                             '''
+        ...
 
     @staticmethod
     def cast (otherObject: PySm.Persist)-> PySm.ProjectPointLocations :
@@ -541,6 +544,12 @@ class ProjectPointLocations(Component):
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def getLocation (self, locationName: str)-> PySm.ProjectPointLocation :
+        '''                             '''
+        ...
+    def removeLocation (self, val: PySm.ProjectPointLocation)-> None :
         '''                             '''
         ...
 
@@ -667,6 +676,9 @@ class Resources(Component):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
         ...
+    def add (self, val: PySm.FileReference)-> None :
+        '''                             '''
+        ...
 
     @staticmethod
     def cast (otherObject: PySm.Persist)-> PySm.Resources :
@@ -675,6 +687,12 @@ class Resources(Component):
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def getFileReferences (self)-> list :
+        '''                             '''
+        ...
+    def remove (self, val: PySm.FileReference)-> None :
         '''                             '''
         ...
 
@@ -944,6 +962,30 @@ class SheetView(Component):
     def className ()-> str :
         '''                             '''
         ...
+    def getCategory (self)-> PySm.ViewCategory :
+        '''                             '''
+        ...
+    def getNamedView (self)-> PySm.DbViewReference :
+        '''                             '''
+        ...
+    def getNumber (self)-> str :
+        '''                             '''
+        ...
+    def getTitle (self)-> str :
+        '''                             '''
+        ...
+    def setCategory (self, val: PySm.ViewCategory)-> None :
+        '''                             '''
+        ...
+    def setNamedView (self, val: PySm.AcDbViewReference)-> None :
+        '''                             '''
+        ...
+    def setNumber (self, val: str)-> None :
+        '''                             '''
+        ...
+    def setTitle (self, val: str)-> None :
+        '''                             '''
+        ...
 
 class SheetViews(Component):
     def __init__ (self, *args, **kwargs)-> None :
@@ -960,6 +1002,12 @@ class SheetViews(Component):
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def getSheetViews (self)-> list :
+        '''                             '''
+        ...
+    def sync (self, val: PySm.AcDbLayoutReference, db: PyDb.Database)-> None :
         '''                             '''
         ...
 

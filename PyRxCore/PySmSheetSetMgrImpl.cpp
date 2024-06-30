@@ -1364,7 +1364,7 @@ PySmSheetViewsImpl::PySmSheetViewsImpl(IAcSmSheetViews* other)
 {
 }
 
-PySmSheetViewArray PySmSheetViewsImpl::GetheetViews() const
+PySmSheetViewArray PySmSheetViewsImpl::GetSheetViews() const
 {
     PySmSheetViewArray v;
     IAcSmEnumSheetViewPtr iter;
