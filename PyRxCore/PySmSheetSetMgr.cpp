@@ -703,6 +703,16 @@ void makePySmProjectPointLocationWrapper()
 {
     PyDocString DS("ProjectPointLocation");
     class_<PySmProjectPointLocation, bases<PySmPersist>>("ProjectPointLocation")
+        .def("getURL", &PySmProjectPointLocation::getURL, DS.ARGS())
+        .def("getURL", &PySmProjectPointLocation::setURL, DS.ARGS({ "val: str" }))
+        .def("getFolder", &PySmProjectPointLocation::getFolder, DS.ARGS())
+        .def("setFolder", &PySmProjectPointLocation::setFolder, DS.ARGS({ "val: str" }))
+        .def("getUsername", &PySmProjectPointLocation::getUsername, DS.ARGS())
+        .def("setUsername", &PySmProjectPointLocation::setUsername, DS.ARGS({ "val: str" }))
+        .def("getPassword", &PySmProjectPointLocation::getPassword, DS.ARGS())
+        .def("setPassword", &PySmProjectPointLocation::setPassword, DS.ARGS({ "val: str" }))
+        .def("getResourceType", &PySmProjectPointLocation::getResourceType, DS.ARGS())
+        .def("setResourceType", &PySmProjectPointLocation::setResourceType, DS.ARGS({ "val: int" }))
         .def("cast", &PySmProjectPointLocation::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmProjectPointLocation::className, DS.SARGS()).staticmethod("className")
         ;
@@ -721,6 +731,56 @@ PySmProjectPointLocation::PySmProjectPointLocation(PySmProjectPointLocationImpl*
 PySmProjectPointLocation::PySmProjectPointLocation(const PySmProjectPointLocationImpl& other)
     : PySmPersist(other)
 {
+}
+
+std::string PySmProjectPointLocation::getURL() const
+{
+    return wstr_to_utf8(impObj()->GetURL());
+}
+
+void PySmProjectPointLocation::setURL(const std::string& csVal)
+{
+    impObj()->SetURL(utf8_to_wstr(csVal).c_str());
+}
+
+std::string PySmProjectPointLocation::getFolder() const
+{
+    return wstr_to_utf8(impObj()->GetFolder());
+}
+
+void PySmProjectPointLocation::setFolder(const std::string& csVal)
+{
+    impObj()->SetFolder(utf8_to_wstr(csVal).c_str());
+}
+
+std::string PySmProjectPointLocation::getUsername() const
+{
+    return wstr_to_utf8(impObj()->GetUsername());
+}
+
+void PySmProjectPointLocation::setUsername(const std::string& csVal)
+{
+    impObj()->SetUsername(utf8_to_wstr(csVal).c_str());
+}
+
+std::string PySmProjectPointLocation::getPassword() const
+{
+    return wstr_to_utf8(impObj()->GetPassword());
+}
+
+void PySmProjectPointLocation::setPassword(const std::string& csVal)
+{
+    impObj()->SetPassword(utf8_to_wstr(csVal).c_str());
+}
+
+long PySmProjectPointLocation::getResourceType() const
+{
+    return impObj()->GetResourceType();
+}
+
+void PySmProjectPointLocation::setResourceType(long val)
+{
+    impObj()->SetResourceType(val);
 }
 
 PySmProjectPointLocation PySmProjectPointLocation::cast(const PySmPersist& src)
