@@ -19,6 +19,25 @@
 
 class PySmDatabaseImpl;
 class PySmObjectIdImpl;
+class PySmComponentImpl;
+class PySmSheetSelSetImpl;
+class PySmFileReferenceImpl;
+class PySmSheetViewImpl;
+class PySmCalloutBlocksImpl;
+class PySmViewCategoryImpl;
+class PySmProjectPointLocationImpl;
+class PySmAcDbBlockRecordReferenceImpl;
+class PySmSheetImpl;
+
+using PySmComponentArray = std::vector<PySmComponentImpl>;
+using PySmSheetSelSetArray = std::vector<PySmSheetSelSetImpl>;
+using PySmFileReferenceArray = std::vector<PySmFileReferenceImpl>;
+using PySmSheetViewArray = std::vector<PySmSheetViewImpl>;
+using PySmViewCategoryArray = std::vector<PySmViewCategoryImpl>;
+using PySmProjectPointLocationArray = std::vector<PySmProjectPointLocationImpl>;
+using PySmAcDbBlockRecordReferenceArray = std::vector<PySmAcDbBlockRecordReferenceImpl>;
+using PySmSheetArray = std::vector<PySmSheetImpl>;
+
 
 //-----------------------------------------------------------------------------------------
 //PySmPersist
@@ -124,9 +143,6 @@ public:
     PySmNamedAcDbObjectReferenceImpl(IAcSmNamedAcDbObjectReference* other);
     PySmNamedAcDbObjectReferenceImpl(const PySmNamedAcDbObjectReferenceImpl& other) = default;
     virtual ~PySmNamedAcDbObjectReferenceImpl() override = default;
-
-    // SetName
-    // GetName don't think we need to override
 
     void        SetOwnerAcDbHandle(AcDbHandle& hwnd);
     AcDbHandle  GetOwnerAcDbHandle() const;
@@ -347,6 +363,11 @@ public:
     PySmSheetSelSetImpl(IAcSmSheetSelSet* other);
     PySmSheetSelSetImpl(const PySmSheetSelSetImpl& other) = default;
     virtual ~PySmSheetSelSetImpl() override = default;
+
+    void    Add(PySmComponentImpl& val);
+    void    Remove(PySmComponentImpl& val);
+    PySmComponentArray GetComponents() const;
+
     IAcSmSheetSelSet* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -359,6 +380,11 @@ public:
     PySmSheetSelSetsImpl(IAcSmSheetSelSets* other);
     PySmSheetSelSetsImpl(const PySmSheetSelSetsImpl& other) = default;
     virtual ~PySmSheetSelSetsImpl() override = default;
+
+    PySmSheetSelSetImpl Add(const CString& name, const CString& desc);
+    void Remove(PySmSheetSelSetImpl& ss);
+    PySmSheetSelSetArray GetSheetSelSets() const;
+
     IAcSmSheetSelSets* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -371,6 +397,11 @@ public:
     PySmResourcesImpl(IAcSmResources* other);
     PySmResourcesImpl(const PySmResourcesImpl& other) = default;
     virtual ~PySmResourcesImpl() override = default;
+
+    void        Add(PySmFileReferenceImpl& val);
+    void        Remove(PySmFileReferenceImpl& val);
+    PySmFileReferenceArray GetFileReferences();
+
     IAcSmResources* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -383,6 +414,10 @@ public:
     PySmViewCategoryImpl(IAcSmViewCategory* other);
     PySmViewCategoryImpl(const PySmViewCategoryImpl& other) = default;
     virtual ~PySmViewCategoryImpl() override = default;
+
+    PySmSheetViewArray      GetSheetViews();
+    PySmCalloutBlocksImpl   GetCalloutBlocks();
+
     IAcSmViewCategory* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -395,6 +430,12 @@ public:
     PySmViewCategoriesImpl(IAcSmViewCategories* other);
     PySmViewCategoriesImpl(const PySmViewCategoriesImpl& other) = default;
     virtual ~PySmViewCategoriesImpl() override = default;
+
+    PySmViewCategoryArray   GetPySmViewCategorys(); //gramma
+    PySmViewCategoryImpl    CreateViewCategory(const CString& csName, const CString& csDesc, const CString& csId);
+    void                    RemoveViewCategory(PySmViewCategoryImpl& cat);
+    PySmViewCategoryImpl    GetDefaultViewCategory();
+
     IAcSmViewCategories* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -407,6 +448,19 @@ public:
     PySmSheetViewImpl(IAcSmSheetView* other);
     PySmSheetViewImpl(const PySmSheetViewImpl& other) = default;
     virtual ~PySmSheetViewImpl() override = default;
+
+    PySmAcDbViewReferenceImpl   GetNamedView() const;
+    void SetNamedView(PySmAcDbViewReferenceImpl& view);
+
+    PySmViewCategoryImpl        GetCategory() const;
+    void SetCategory(PySmViewCategoryImpl& view);
+
+    CString GetNumber() const;
+    void    SetNumber(const CString& csVal);
+
+    CString GetTitle() const;
+    void    SetTitle(const CString& csVal);
+
     IAcSmSheetView* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -419,6 +473,10 @@ public:
     PySmSheetViewsImpl(IAcSmSheetViews* other);
     PySmSheetViewsImpl(const PySmSheetViewsImpl& other) = default;
     virtual ~PySmSheetViewsImpl() override = default;
+
+    PySmSheetViewArray GetheetViews() const;
+    void               Sync(PySmAcDbLayoutReferenceImpl& lref, AcDbDatabase* pDb);
+
     IAcSmSheetViews* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -431,6 +489,12 @@ public:
     PySmProjectPointLocationsImpl(IAcSmProjectPointLocations* other);
     PySmProjectPointLocationsImpl(const PySmProjectPointLocationsImpl& other) = default;
     virtual ~PySmProjectPointLocationsImpl() override = default;
+
+    PySmProjectPointLocationImpl GetLocation(const CString& locationName) const;
+    void RemoveLocation(PySmProjectPointLocationImpl& val);
+    PySmProjectPointLocationImpl AddNewLocation(const CString& name, const CString& url, const CString& folder, const CString& username, const CString& password);
+    PySmProjectPointLocationArray GetProjectPointLocations() const;;
+
     IAcSmProjectPointLocations* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -443,6 +507,11 @@ public:
     PySmCalloutBlocksImpl(IAcSmCalloutBlocks* other);
     PySmCalloutBlocksImpl(const PySmCalloutBlocksImpl& other) = default;
     virtual ~PySmCalloutBlocksImpl() override = default;
+
+    void Add(PySmAcDbBlockRecordReferenceImpl& blkRef);
+    void Remove(PySmAcDbBlockRecordReferenceImpl& blkRef);
+    PySmAcDbBlockRecordReferenceArray getAcDbBlockRecordReferences() const;
+
     IAcSmCalloutBlocks* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -455,6 +524,33 @@ public:
     PySmSubsetImpl(IAcSmSubset* other);
     PySmSubsetImpl(const PySmSubsetImpl& other) = default;
     virtual ~PySmSubsetImpl() override = default;
+
+    PySmFileReferenceImpl GetNewSheetLocation();
+    void SetNewSheetLocation(PySmFileReferenceImpl& fref);
+
+    PySmAcDbLayoutReferenceImpl GetDefDwtLayout() const;
+    void SetDefDwtLayout(PySmAcDbLayoutReferenceImpl& fref);
+
+    bool GetPromptForDwt() const;
+    void SetPromptForDwt(bool val);
+
+    PySmSheetArray  GetSheets() const;
+    PySmSheetImpl   AddNewSheet(const CString& name, const CString& desc);
+
+    void InsertComponent(PySmComponentImpl& newSheet, PySmComponentImpl& beforeComp);
+    void InsertComponentAfter(PySmComponentImpl& newSheet, PySmComponentImpl& afterComp);
+
+    PySmSheetImpl ImportSheet(PySmAcDbLayoutReferenceImpl& fref);
+    void RemoveSheet(PySmSheetImpl& val);
+
+    PySmSubsetImpl CreateSubset(const CString& name, const CString& desc);
+    void RemoveSubset(PySmSubsetImpl& val);
+    void UpdateInMemoryDwgHints();
+
+    bool GetOverrideSheetPublish() const;
+    void SetOverrideSheetPublish(bool val);
+
+
     IAcSmSubset* impObj(const std::source_location& src = std::source_location::current()) const;
 #if defined(_ARXTARGET)
     IAcSmSubset2* impObj2(const std::source_location& src = std::source_location::current()) const;
@@ -510,9 +606,9 @@ public:
 
     bool        GetDoNotPlot() const;
     void        SetDoNotPlot(bool flag);
-    //GetLayout
-    //SetLayout
-    //GetSheetViews
+    PySmAcDbLayoutReferenceImpl GetLayout();
+    void SetLayout(PySmAcDbLayoutReferenceImpl& val);
+    PySmSheetViewsImpl GetSheetViews() const;
 
     CString     GetRevisionNumber() const;
     void        SetRevisionNumber(const CString& csVal);
