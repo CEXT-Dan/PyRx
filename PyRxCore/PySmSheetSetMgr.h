@@ -37,6 +37,8 @@ class PySmAcDbBlockRecordReferenceImpl;
 
 class PySmObjectId;
 class PySmDatabase;
+class PyDbDatabase;
+class PyDbHandle;
 
 //aligned with COM's PropertyFlags
 enum class SmPropertyFlags : int
@@ -81,6 +83,7 @@ public:
     void               setOwner(const PySmPersist& owner);
     PySmDatabase       getDatabase() const;
     PySmObjectId       getObjectId() const;
+    void               clear();
     bool               isNull() const;
 
     static PySmPersist cast(const PySmPersist& src);
@@ -98,7 +101,7 @@ class PySmAcDbDatabase
 public:
     PySmAcDbDatabase(PySmAcDbDatabaseImpl* ptr);
     PySmAcDbDatabase(const PySmAcDbDatabaseImpl& other);
-
+    PyDbDatabase getAcDbDatabase() const;
     static std::string className();
 public:
     inline PySmAcDbDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -193,6 +196,13 @@ public:
     PySmAcDbObjectReference(PySmAcDbObjectReferenceImpl* ptr);
     PySmAcDbObjectReference(const PySmAcDbObjectReferenceImpl& other);
     static PySmAcDbObjectReference cast(const PySmPersist& src);
+
+    void        setAcDbHandle(PyDbHandle& hwnd);
+    PyDbHandle  getAcDbHandle() const;
+    PySmAcDbDatabase getAcSmAcDbDatabase() const;
+    void        setAcDbObject(PyDbObject& pDbObj);
+    PyDbHandle  resolveAcDbObject(PyDbDatabase& pDb);
+
     static std::string   className();
 public:
     inline PySmAcDbObjectReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -208,6 +218,10 @@ public:
     PySmNamedAcDbObjectReference(PySmNamedAcDbObjectReferenceImpl* ptr);
     PySmNamedAcDbObjectReference(const PySmNamedAcDbObjectReferenceImpl& other);
     static PySmNamedAcDbObjectReference cast(const PySmPersist& src);
+
+    void        SetOwnerAcDbHandle(PyDbHandle& hwnd);
+    PyDbHandle  GetOwnerAcDbHandle() const;
+
     static std::string   className();
 public:
     inline PySmNamedAcDbObjectReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;

@@ -2130,30 +2130,6 @@ static void printcomerr(HRESULT hr, std::string_view message)
 }
 bool PySmSheetSetMgrImpl::runTest()
 {
-    IAcSmCustomPropertyValuePtr _cmpptr;
-    {
-        HRESULT hr = S_OK;
-
-        hr = _cmpptr.CreateInstance(CLSID_AcSmCustomPropertyValue);
-        printcomerr(hr, "_cmpptr.CreateInstance(CLSID_AcSmCustomPropertyValue)");
-
-        IAcSmPersistPtr owner;
-        hr = _cmpptr->GetOwner(&owner);
-        printcomerr(hr, "_cmpptr->GetOwner");
-
-        _bstr_t name;
-        hr = _cmpptr->GetTypeName(&name.GetBSTR());
-        printcomerr(hr, "_cmpptr->GetTypeName");
-        acutPrintf(_T(" %ls"), (const wchar_t*)name);
-
-        _variant_t v;
-        hr = _cmpptr->GetValue(&v.GetVARIANT());
-        printcomerr(hr, "_cmpptr->GetValue");
-
-        VARIANT_BOOL rtVal;
-        hr = _cmpptr->GetIsDirty(&rtVal);
-        printcomerr(hr, "_cmpptr->GetIsDirty");
-    }
     return true;
 }
 #endif PYRXDEBUG

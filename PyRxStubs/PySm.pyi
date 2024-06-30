@@ -20,6 +20,9 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
         '''                             '''
         ...
+    def getAcDbDatabase (self)-> PySm.Database :
+        '''                             '''
+        ...
 
 class CalloutBlocks(Component):
     def __init__ (self, *args, **kwargs)-> None :
@@ -292,12 +295,27 @@ class DbObjectReference(FileReference):
         ...
 
     @staticmethod
-    def cast (otherObject: PySm.Persist)-> PySm.ProjectPointLocation :
+    def cast (otherObject: PySm.Persist)-> PySm.DbObjectReference :
         '''                             '''
         ...
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def getAcDbHandle (self)-> PyDb.Handle :
+        '''                             '''
+        ...
+    def getAcSmAcDbDatabase (self)-> PySm.AcDbDatabase :
+        '''                             '''
+        ...
+    def resolveAcDbObject (self, db: PyDb.Database)-> PyDb.Handle :
+        '''                             '''
+        ...
+    def setAcDbHandle (self, val: PyDb,Handle)-> None :
+        '''                             '''
+        ...
+    def setAcDbObject (self, val: PyDb.Object)-> None :
         '''                             '''
         ...
 
@@ -364,6 +382,12 @@ class LockStatus(object):
         ...
 
 class NamedDbObjectReference(DbObjectReference):
+    def GetOwnerAcDbHandle (self)-> PyDb.Handle :
+        '''                             '''
+        ...
+    def SetOwnerAcDbHandle (self, val: PyDb,Handle)-> None :
+        '''                             '''
+        ...
     def __init__ (self, *args, **kwargs)-> None :
         '''__init__( (object)arg1) -> None :
 
@@ -412,6 +436,9 @@ This class cannot be instantiated from Python'''
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def clear (self)-> None :
         '''                             '''
         ...
     def getDatabase (self)-> PySm.Database :
