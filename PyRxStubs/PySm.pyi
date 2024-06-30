@@ -57,35 +57,20 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
         '''                             '''
         ...
-    def getCustomPropertyBag (self, *args, **kwargs)-> PySm.CustomPropertyBag :
-        '''getCustomPropertyBag( (Component)arg1) -> CustomPropertyBag :
-
-    C++ signature :
-        class PySmCustomPropertyBag getCustomPropertyBag(class PySmComponent {lvalue})'''
+    def getCustomPropertyBag (self)-> PySm.CustomPropertyBag :
+        '''                             '''
         ...
-    def getDesc (self, *args, **kwargs)-> str :
-        '''getDesc( (Component)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getDesc(class PySmComponent {lvalue})'''
+    def getDesc (self)-> str :
+        '''                             '''
         ...
-    def getName (self, *args, **kwargs)-> str :
-        '''getName( (Component)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PySmComponent {lvalue})'''
+    def getName (self)-> str :
+        '''                             '''
         ...
-    def setDesc (self, *args, **kwargs)-> None :
-        '''setDesc( (Component)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setDesc(class PySmComponent {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setDesc (self, val: str)-> None :
+        '''                             '''
         ...
-    def setName (self, *args, **kwargs)-> None :
-        '''setName( (Component)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PySmComponent {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self, val: str)-> None :
+        '''                             '''
         ...
 
 class CustomPropertyBag(Persist):
@@ -807,6 +792,9 @@ class SheetSelSet(Component):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
         ...
+    def add (self, val: PySm.Component)-> None :
+        '''                             '''
+        ...
 
     @staticmethod
     def cast (otherObject: PySm.Persist)-> PySm.SheetSelSet :
@@ -817,6 +805,12 @@ class SheetSelSet(Component):
     def className ()-> str :
         '''                             '''
         ...
+    def getComponents (self)-> list :
+        '''                             '''
+        ...
+    def remove (self)-> None :
+        '''                             '''
+        ...
 
 class SheetSelSets(Component):
     def __init__ (self, *args, **kwargs)-> None :
@@ -824,6 +818,9 @@ class SheetSelSets(Component):
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
+        ...
+    def add (self, name: str, desc: str)-> PySm.SheetSelSet :
+        '''                             '''
         ...
 
     @staticmethod
@@ -833,6 +830,12 @@ class SheetSelSets(Component):
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def getSheetSelSets (self)-> list :
+        '''                             '''
+        ...
+    def remove (self, val: PySm.SheetSelSet)-> None :
         '''                             '''
         ...
 
