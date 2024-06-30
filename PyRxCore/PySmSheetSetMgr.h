@@ -308,6 +308,10 @@ public:
     PySmObjectReference();
     PySmObjectReference(PySmObjectReferenceImpl* ptr);
     PySmObjectReference(const PySmObjectReferenceImpl& other);
+    void                    setReferencedObject(PySmPersist& pObject);
+    PySmPersist             getReferencedObject() const;
+    SmObjectReferenceFlags  getReferenceFlags() const;
+    void                    setReferenceFlags(SmObjectReferenceFlags flags);
     static PySmObjectReference cast(const PySmPersist& src);
     static std::string         className();
 public:
@@ -338,6 +342,34 @@ public:
     PySmPublishOptions();
     PySmPublishOptions(PySmPublishOptionsImpl* ptr);
     PySmPublishOptions(const PySmPublishOptionsImpl& other);
+
+    PySmFileReference       getDefaultOutputdir() const;
+    void                    setDefaultOutputdir(PySmFileReference& val);
+    bool                    getDwfType() const;
+    void                    setDwfType(bool val);
+    bool                    getPromptForName() const;
+    void                    setPromptForName(bool val);
+    bool                    getUsePassword() const;
+    void                    setUsePassword(bool val);
+    bool                    getPromptForPassword() const;
+    void                    setPromptForPassword(bool val);
+    bool                    getLayerInfo() const;
+    void                    setLayerInfo(bool val);
+    PySmCustomPropertyBag   getUnrecognizedData() const;
+    void                    setUnrecognizedData(PySmCustomPropertyBag& val);
+    PySmCustomPropertyBag   getUnrecognizedSections() const;
+    void                    setUnrecognizedSections(PySmCustomPropertyBag& val);
+    bool                    getIncludeSheetSetData() const;
+    void                    setIncludeSheetSetData(bool val);
+    bool                    getIncludeSheetData() const;
+    void                    setIncludeSheetData(bool val);
+    long                    getEplotFormat() const;
+    void                    setEplotFormat(long val);
+    bool                    getLinesMerge() const;
+    void                    setLinesMerge(bool val);
+    std::string             getDefaultFilename() const;
+    void                    setDefaultFilename(const std::string& csVal);
+
     static PySmPublishOptions cast(const PySmPersist& src);
     static std::string   className();
 public:
