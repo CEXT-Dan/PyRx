@@ -31,6 +31,9 @@ class CalloutBlocks(Component):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
         ...
+    def add (self, val: PySm.DbBlockRecordReference)-> None :
+        '''                             '''
+        ...
 
     @staticmethod
     def cast (otherObject: PySm.Persist)-> PySm.CalloutBlocks :
@@ -39,6 +42,12 @@ class CalloutBlocks(Component):
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def getDbBlockRecordReferences (self)-> list :
+        '''                             '''
+        ...
+    def remove (self, val: PySm.DbBlockRecordReference)-> None :
         '''                             '''
         ...
 
@@ -713,94 +722,56 @@ class Sheet(Component):
     def className ()-> str :
         '''                             '''
         ...
-    def getCategory (self, *args, **kwargs)-> str :
-        '''getCategory( (Sheet)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCategory(class PySmSheet {lvalue})'''
+    def getCategory (self)-> str :
+        '''                             '''
         ...
-    def getDoNotPlot (self, *args, **kwargs)-> bool :
-        '''getDoNotPlot( (Sheet)arg1) -> bool :
-
-    C++ signature :
-        bool getDoNotPlot(class PySmSheet {lvalue})'''
+    def getDoNotPlot (self)-> bool :
+        '''                             '''
         ...
-    def getIssuePurpose (self, *args, **kwargs)-> str :
-        '''getIssuePurpose( (Sheet)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getIssuePurpose(class PySmSheet {lvalue})'''
+    def getIssuePurpose (self)-> str :
+        '''                             '''
         ...
-    def getNumber (self, *args, **kwargs)-> str :
-        '''getNumber( (Sheet)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getNumber(class PySmSheet {lvalue})'''
+    def getLayout (self)-> PySm.DbLayoutReference :
+        '''                             '''
         ...
-    def getRevisionDate (self, *args, **kwargs)-> str :
-        '''getRevisionDate( (Sheet)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getRevisionDate(class PySmSheet {lvalue})'''
+    def getNumber (self)-> str :
+        '''                             '''
         ...
-    def getRevisionNumber (self, *args, **kwargs)-> str :
-        '''getRevisionNumber( (Sheet)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getRevisionNumber(class PySmSheet {lvalue})'''
+    def getRevisionDate (self)-> str :
+        '''                             '''
         ...
-    def getTitle (self, *args, **kwargs)-> str :
-        '''getTitle( (Sheet)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getTitle(class PySmSheet {lvalue})'''
+    def getRevisionNumber (self)-> str :
+        '''                             '''
         ...
-    def setCategory (self, *args, **kwargs)-> None :
-        '''setCategory( (Sheet)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setCategory(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-setCategory( (Sheet)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setCategory(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getSheetViews (self)-> PySm.SheetViews :
+        '''                             '''
         ...
-    def setDoNotPlot (self, *args, **kwargs)-> None :
-        '''setDoNotPlot( (Sheet)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setDoNotPlot(class PySmSheet {lvalue},bool)'''
+    def getTitle (self)-> str :
+        '''                             '''
         ...
-    def setIssuePurpose (self, *args, **kwargs)-> None :
-        '''setIssuePurpose( (Sheet)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setIssuePurpose(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setCategory (self, val: str)-> None :
+        '''                             '''
         ...
-    def setNumber (self, *args, **kwargs)-> None :
-        '''setNumber( (Sheet)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setNumber(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setDoNotPlot (self, val: bool)-> None :
+        '''                             '''
         ...
-    def setRevisionDate (self, *args, **kwargs)-> None :
-        '''setRevisionDate( (Sheet)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setRevisionDate(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setIssuePurpose (self, val: str)-> None :
+        '''                             '''
         ...
-    def setRevisionNumber (self, *args, **kwargs)-> None :
-        '''setRevisionNumber( (Sheet)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setRevisionNumber(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setLayout (self, val: PySm.DbLayoutReference)-> None :
+        '''                             '''
         ...
-    def setTitle (self, *args, **kwargs)-> None :
-        '''setTitle( (Sheet)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setTitle(class PySmSheet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setNumber (self, val: str)-> None :
+        '''                             '''
+        ...
+    def setRevisionDate (self, val: str)-> None :
+        '''                             '''
+        ...
+    def setRevisionNumber (self, val: str)-> None :
+        '''                             '''
+        ...
+    def setTitle (self, val: str)-> None :
+        '''                             '''
         ...
 
 class SheetSelSet(Component):
@@ -1018,6 +989,9 @@ class Subset(Component):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
         ...
+    def addNewSheet (self, name: str, desc: str)-> PySm.Sheet :
+        '''                             '''
+        ...
 
     @staticmethod
     def cast (otherObject: PySm.Persist)-> PySm.Subset :
@@ -1026,6 +1000,54 @@ class Subset(Component):
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def createSubset (self, name: str, desc: str)-> PySm.Subset :
+        '''                             '''
+        ...
+    def getDefDwtLayout (self)-> PySm.DbLayoutReference :
+        '''                             '''
+        ...
+    def getNewSheetLocation (self)-> PySm.FileReference :
+        '''                             '''
+        ...
+    def getOverrideSheetPublish (self)-> bool :
+        '''                             '''
+        ...
+    def getPromptForDwt (self)-> bool :
+        '''                             '''
+        ...
+    def getSheets (self)-> list :
+        '''                             '''
+        ...
+    def importSheet (self, val: PySm.DbLayoutReference)-> PySm.Sheet :
+        '''                             '''
+        ...
+    def insertComponent (self, newSheet: PySm.Component, beforeSheet: PySm.Component)-> None :
+        '''                             '''
+        ...
+    def insertComponentAfter (self, newSheet: PySm.Component, afterSheet: PySm.Component)-> None :
+        '''                             '''
+        ...
+    def removeSheet (self, val: PySm.Sheet)-> None :
+        '''                             '''
+        ...
+    def removeSubset (self, val: PySm.Subset)-> None :
+        '''                             '''
+        ...
+    def setDefDwtLayout (self, val: PySm.DbLayoutReference)-> None :
+        '''                             '''
+        ...
+    def setNewSheetLocation (self, val: PySm.FileReference)-> None :
+        '''                             '''
+        ...
+    def setOverrideSheetPublish (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setPromptForDwt (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def updateInMemoryDwgHints (self)-> None :
         '''                             '''
         ...
 
@@ -1046,6 +1068,18 @@ class ViewCategories(Component):
     def className ()-> str :
         '''                             '''
         ...
+    def createViewCategory (self, name: str, desc: str, id: str)-> PySm.ViewCategory :
+        '''                             '''
+        ...
+    def getDefaultViewCategory (self)-> PySm.ViewCategory :
+        '''                             '''
+        ...
+    def getViewCategories (self)-> list :
+        '''                             '''
+        ...
+    def removeViewCategory (self, val: PySm.ViewCategory)-> None :
+        '''                             '''
+        ...
 
 class ViewCategory(Component):
     def __init__ (self, *args, **kwargs)-> None :
@@ -1062,5 +1096,11 @@ class ViewCategory(Component):
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def getCalloutBlocks (self)-> PySm.CalloutBlocks :
+        '''                             '''
+        ...
+    def getSheetViews (self)-> list :
         '''                             '''
         ...
