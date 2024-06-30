@@ -632,10 +632,8 @@ public:
     bool            getDoNotPlot() const;
     void            setDoNotPlot(bool flag);
 
-
     PySmAcDbLayoutReference getLayout();
     void setLayout(PySmAcDbLayoutReference& val);
-
     PySmSheetViews getSheetViews() const;
 
     std::string     getRevisionNumber() const;
@@ -663,22 +661,23 @@ public:
     PySmSheetSet(PySmSheetSetImpl* ptr);
     PySmSheetSet(const PySmSheetSetImpl& other);
 
-    //PySmFileReferenceImpl   GetAltPageSetups() const;
-    //void                    SetAltPageSetups(const PySmFileReferenceImpl& alt);
-    //PySmNamedAcDbObjectReferenceImpl GetDefAltPageSetup() const;
-    //void                    SetDefAltPageSetup(const PySmNamedAcDbObjectReferenceImpl& alt);
-    //bool                    GetPromptForDwgName() const;
-    //void                    SetPromptForDwgName(bool flag);
-    //PySmSheetSelSetsImpl    GetSheetSelSets() const;
-    //PySmResourcesImpl       GetResources() const;
-    //PySmCalloutBlocksImpl   GetCalloutBlocks() const;
-    //PySmViewCategoriesImpl  GetViewCategories() const;
-    //PySmAcDbBlockRecordReferenceImpl GetDefLabelBlk() const;
-    //void                             SetDefLabelBlk(const PySmAcDbBlockRecordReferenceImpl& blk);
-    //PySmPublishOptionsImpl   GetPublishOptions() const;
-    //void                     Sync(AcDbDatabase* pDb);
-    //void                     UpdateSheetCustomProps();
+    PySmFileReference   getAltPageSetups() const;
+    void                setAltPageSetups(const PySmFileReference& alt);
 
+    PySmNamedAcDbObjectReference getDefAltPageSetup() const;
+    void                         setDefAltPageSetup(const PySmNamedAcDbObjectReference& alt);
+
+    bool                    getPromptForDwgName() const;
+    void                    setPromptForDwgName(bool flag);
+    PySmSheetSelSets        getSheetSelSets() const;
+    PySmSmResources         getResources() const;
+    PySmCalloutBlocks       getCalloutBlocks() const;
+    PySmViewCategories      getViewCategories() const;
+    PySmAcDbBlockRecordReference getDefLabelBlk() const;
+    void                         setDefLabelBlk(const PySmAcDbBlockRecordReference& blk);
+    PySmPublishOptions       getPublishOptions() const;
+    void                     sync(PyDbDatabase& pDb);
+    void                     updateSheetCustomProps();
 
     static PySmSheetSet cast(const PySmPersist& src);
     static std::string className();

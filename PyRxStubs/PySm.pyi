@@ -25,11 +25,8 @@ This class cannot be instantiated from Python'''
         ...
 
 class CalloutBlocks(Component):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
     def add (self, val: PySm.DbBlockRecordReference)-> None :
         '''                             '''
@@ -83,11 +80,8 @@ This class cannot be instantiated from Python'''
         ...
 
 class CustomPropertyBag(Persist):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -125,11 +119,8 @@ class CustomPropertyBag(Persist):
         ...
 
 class CustomPropertyValue(Persist):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -167,11 +158,8 @@ class CustomPropertyValue(Persist):
         ...
 
 class Database(Component):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -245,11 +233,8 @@ class Database(Component):
         ...
 
 class DbBlockRecordReference(NamedDbObjectReference):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -263,11 +248,8 @@ class DbBlockRecordReference(NamedDbObjectReference):
         ...
 
 class DbLayoutReference(NamedDbObjectReference):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -281,11 +263,8 @@ class DbLayoutReference(NamedDbObjectReference):
         ...
 
 class DbObjectReference(FileReference):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -314,11 +293,8 @@ class DbObjectReference(FileReference):
         ...
 
 class DbViewReference(NamedDbObjectReference):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -332,11 +308,8 @@ class DbViewReference(NamedDbObjectReference):
         ...
 
 class FileReference(Persist):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -382,11 +355,8 @@ class NamedDbObjectReference(DbObjectReference):
     def SetOwnerAcDbHandle (self, val: PyDb,Handle)-> None :
         '''                             '''
         ...
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -400,11 +370,8 @@ class NamedDbObjectReference(DbObjectReference):
         ...
 
 class ObjectReference(Persist):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -416,7 +383,7 @@ class ObjectReference(Persist):
     def className ()-> str :
         '''                             '''
         ...
-    def getReferenceFlags (self)-> object :
+    def getReferenceFlags (self)-> PySm.ObjectReferenceFlags :
         '''                             '''
         ...
     def getReferencedObject (self)-> PySm.Persist :
@@ -427,6 +394,14 @@ class ObjectReference(Persist):
         ...
     def setReferencedObject (self, val: PySm.Persist)-> None :
         '''                             '''
+        ...
+
+class ObjectReferenceFlags(object):
+    def kHardPointer (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kSoftPointer (self, *args, **kwargs)-> None :
+        '''None'''
         ...
 
 class Persist(object):
@@ -473,11 +448,8 @@ This class cannot be instantiated from Python'''
         ...
 
 class PersistProxy(Persist):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -491,11 +463,8 @@ class PersistProxy(Persist):
         ...
 
 class ProjectPointLocation(Persist):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -536,11 +505,8 @@ class ProjectPointLocation(Persist):
         ...
 
 class ProjectPointLocations(Component):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
     def addNewLocation (self, name: str, url: str, folder: str, username: str, password: str)-> PySm.ProjectPointLocation :
         '''                             '''
@@ -580,11 +546,8 @@ class PropertyFlags(object):
         ...
 
 class PublishOptions(Persist):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -679,11 +642,8 @@ class PublishOptions(Persist):
         ...
 
 class Resources(Component):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
     def add (self, val: PySm.FileReference)-> None :
         '''                             '''
@@ -706,11 +666,8 @@ class Resources(Component):
         ...
 
 class Sheet(Component):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -775,11 +732,8 @@ class Sheet(Component):
         ...
 
 class SheetSelSet(Component):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
     def add (self, val: PySm.Component)-> None :
         '''                             '''
@@ -802,11 +756,8 @@ class SheetSelSet(Component):
         ...
 
 class SheetSelSets(Component):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
     def add (self, name: str, desc: str)-> PySm.SheetSelSet :
         '''                             '''
@@ -829,11 +780,8 @@ class SheetSelSets(Component):
         ...
 
 class SheetSet(Subset):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -845,13 +793,55 @@ class SheetSet(Subset):
     def className ()-> str :
         '''                             '''
         ...
+    def getAltPageSetups (self)-> PySm.FileReference :
+        '''                             '''
+        ...
+    def getCalloutBlocks (self)-> PySm.CalloutBlocks :
+        '''                             '''
+        ...
+    def getDefAltPageSetup (self)-> PySm.NamedDbObjectReference :
+        '''                             '''
+        ...
+    def getDefLabelBlk (self)-> PySm.DbBlockRecordReference :
+        '''                             '''
+        ...
+    def getPromptForDwgName (self)-> bool :
+        '''                             '''
+        ...
+    def getPublishOptions (self)-> PySm.PublishOptions :
+        '''                             '''
+        ...
+    def getResources (self)-> PySm.Resources :
+        '''                             '''
+        ...
+    def getSheetSelSets (self)-> PySm.SheetSelSets :
+        '''                             '''
+        ...
+    def getViewCategories (self)-> PySm.ViewCategories :
+        '''                             '''
+        ...
+    def setAltPageSetups (self, val: PySm.FileReference)-> None :
+        '''                             '''
+        ...
+    def setDefAltPageSetup (self, val: PySm.NamedDbObjectReference)-> None :
+        '''                             '''
+        ...
+    def setDefLabelBlk (self, val: PySm.DbBlockRecordReference)-> None :
+        '''                             '''
+        ...
+    def setPromptForDwgName (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def sync (self, db: PyDb.Database)-> None :
+        '''                             '''
+        ...
+    def updateSheetCustomProps (self)-> None :
+        '''                             '''
+        ...
 
 class SheetSetMgr(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -917,11 +907,8 @@ createDatabase( (SheetSetMgr)arg1, (str)arg2, (str)arg3, (bool)arg4) -> Database
         ...
 
 class SheetView(Component):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -959,11 +946,8 @@ class SheetView(Component):
         ...
 
 class SheetViews(Component):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -983,11 +967,8 @@ class SheetViews(Component):
         ...
 
 class Subset(Component):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
     def addNewSheet (self, name: str, desc: str)-> PySm.Sheet :
         '''                             '''
@@ -1052,11 +1033,8 @@ class Subset(Component):
         ...
 
 class ViewCategories(Component):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -1082,11 +1060,8 @@ class ViewCategories(Component):
         ...
 
 class ViewCategory(Component):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
