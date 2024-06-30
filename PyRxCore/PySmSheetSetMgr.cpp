@@ -1621,6 +1621,8 @@ void makePySmViewCategoryWrapper()
 {
     PyDocString DS("ViewCategory");
     class_<PySmViewCategory, bases<PySmComponent>>("ViewCategory")
+        .def("getSheetViews", &PySmViewCategory::getSheetViews, DS.ARGS())
+        .def("getCalloutBlocks", &PySmViewCategory::getCalloutBlocks, DS.ARGS())
         .def("cast", &PySmViewCategory::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmViewCategory::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1639,6 +1641,21 @@ PySmViewCategory::PySmViewCategory(PySmViewCategoryImpl* ptr)
 PySmViewCategory::PySmViewCategory(const PySmViewCategoryImpl& other)
     : PySmComponent(other)
 {
+}
+
+boost::python::list PySmViewCategory::getSheetViews()
+{
+    const auto& v = impObj()->GetSheetViews();
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& i : v)
+        pylist.append(PySmSheetView(i));
+    return pylist;
+}
+
+PySmCalloutBlocks PySmViewCategory::getCalloutBlocks()
+{
+    return PySmCalloutBlocks(impObj()->GetCalloutBlocks());
 }
 
 PySmViewCategory PySmViewCategory::cast(const PySmPersist& src)
@@ -1665,6 +1682,10 @@ void makePySmViewCategoriesWrapper()
 {
     PyDocString DS("ViewCategories");
     class_<PySmViewCategories, bases<PySmComponent>>("ViewCategories")
+        .def("getViewCategories", &PySmViewCategories::getViewCategories, DS.ARGS())
+        .def("createViewCategory", &PySmViewCategories::createViewCategory, DS.ARGS({ "name: str", "desc: str", "id: str" }))
+        .def("removeViewCategory", &PySmViewCategories::removeViewCategory, DS.ARGS({ "val: PySm.ViewCategory" }))
+        .def("getDefaultViewCategory", &PySmViewCategories::getDefaultViewCategory, DS.ARGS())
         .def("cast", &PySmViewCategories::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmViewCategories::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1683,6 +1704,31 @@ PySmViewCategories::PySmViewCategories(PySmViewCategoriesImpl* ptr)
 PySmViewCategories::PySmViewCategories(const PySmViewCategoriesImpl& other)
     : PySmComponent(other)
 {
+}
+
+boost::python::list PySmViewCategories::getViewCategories()
+{
+    const auto& v = impObj()->GetPySmViewCategorys();
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& i : v)
+        pylist.append(PySmViewCategory(i));
+    return pylist;
+}
+
+PySmViewCategory PySmViewCategories::createViewCategory(const std::string& csName, const std::string& csDesc, const std::string& csId)
+{
+   return PySmViewCategory(impObj()->CreateViewCategory(utf8_to_wstr(csName).c_str(), utf8_to_wstr(csDesc).c_str(), utf8_to_wstr(csId).c_str()));
+}
+
+void PySmViewCategories::removeViewCategory(PySmViewCategory& cat)
+{
+    impObj()->RemoveViewCategory(*cat.impObj());
+}
+
+PySmViewCategory PySmViewCategories::getDefaultViewCategory()
+{
+    return PySmViewCategory(impObj()->GetDefaultViewCategory());
 }
 
 PySmViewCategories PySmViewCategories::cast(const PySmPersist& src)
@@ -1709,6 +1755,11 @@ void makePySmCalloutBlocksWrapper()
 {
     PyDocString DS("CalloutBlocks");
     class_<PySmCalloutBlocks, bases<PySmComponent>>("CalloutBlocks")
+
+        .def("add", &PySmCalloutBlocks::add, DS.ARGS({ "val: PySm.DbBlockRecordReference" }))
+        .def("remove", &PySmCalloutBlocks::remove, DS.ARGS({ "val: PySm.DbBlockRecordReference" }))
+        .def("getDbBlockRecordReferences", &PySmCalloutBlocks::getDbBlockRecordReferences, DS.ARGS())
+
         .def("cast", &PySmCalloutBlocks::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmCalloutBlocks::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1727,6 +1778,26 @@ PySmCalloutBlocks::PySmCalloutBlocks(PySmCalloutBlocksImpl* ptr)
 PySmCalloutBlocks::PySmCalloutBlocks(const PySmCalloutBlocksImpl& other)
     : PySmComponent(other)
 {
+}
+
+void PySmCalloutBlocks::add(PySmAcDbBlockRecordReference& blkRef)
+{
+    impObj()->Add(*blkRef.impObj());
+}
+
+void PySmCalloutBlocks::remove(PySmAcDbBlockRecordReference& blkRef)
+{
+    impObj()->Remove(*blkRef.impObj());
+}
+
+boost::python::list PySmCalloutBlocks::getDbBlockRecordReferences() const
+{
+    const auto& v = impObj()->getAcDbBlockRecordReferences();
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& i : v)
+        pylist.append(PySmAcDbBlockRecordReference(i));
+    return pylist;
 }
 
 PySmCalloutBlocks PySmCalloutBlocks::cast(const PySmPersist& src)
@@ -1753,6 +1824,23 @@ void makePySmSubsetWrapper()
 {
     PyDocString DS("Subset");
     class_<PySmSubset, bases<PySmComponent>>("Subset")
+        .def("getNewSheetLocation", &PySmSubset::getNewSheetLocation, DS.ARGS())
+        .def("setNewSheetLocation", &PySmSubset::setNewSheetLocation, DS.ARGS({ "val: PySm.FileReference" }))
+        .def("getDefDwtLayout", &PySmSubset::getDefDwtLayout, DS.ARGS())
+        .def("setDefDwtLayout", &PySmSubset::setDefDwtLayout, DS.ARGS({ "val: PySm.DbLayoutReference" }))
+        .def("getPromptForDwt", &PySmSubset::getPromptForDwt, DS.ARGS())
+        .def("setPromptForDwt", &PySmSubset::setPromptForDwt, DS.ARGS({ "val: bool" }))
+        .def("getSheets", &PySmSubset::getSheets, DS.ARGS())
+        .def("addNewSheet", &PySmSubset::addNewSheet, DS.ARGS({ "name: str","desc: str" }))
+        .def("insertComponent", &PySmSubset::insertComponent, DS.ARGS({ "newSheet: PySm.Component","beforeSheet: PySm.Component" }))
+        .def("insertComponentAfter", &PySmSubset::insertComponentAfter, DS.ARGS({ "newSheet: PySm.Component","afterSheet: PySm.Component" }))
+        .def("importSheet", &PySmSubset::importSheet, DS.ARGS({ "val: PySm.DbLayoutReference" }))
+        .def("removeSheet", &PySmSubset::removeSheet, DS.ARGS({ "val: PySm.Sheet" }))
+        .def("createSubset", &PySmSubset::createSubset, DS.ARGS({ "name: str","desc: str" }))
+        .def("removeSubset", &PySmSubset::removeSubset, DS.ARGS({ "val: PySm.Subset" }))
+        .def("updateInMemoryDwgHints", &PySmSubset::updateInMemoryDwgHints, DS.ARGS())
+        .def("getOverrideSheetPublish", &PySmSubset::getOverrideSheetPublish, DS.ARGS())
+        .def("setOverrideSheetPublish", &PySmSubset::setOverrideSheetPublish, DS.ARGS({ "val: bool" }))
         .def("cast", &PySmSubset::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSubset::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1771,6 +1859,96 @@ PySmSubset::PySmSubset(PySmSubsetImpl* ptr)
 PySmSubset::PySmSubset(const PySmSubsetImpl& other)
     : PySmComponent(other)
 {
+}
+
+PySmFileReference PySmSubset::getNewSheetLocation()
+{
+    return PySmFileReference(impObj()->GetNewSheetLocation());
+}
+
+void PySmSubset::setNewSheetLocation(PySmFileReference& fref)
+{
+    impObj()->SetNewSheetLocation(*fref.impObj());
+}
+
+PySmAcDbLayoutReference PySmSubset::getDefDwtLayout() const
+{
+    return PySmAcDbLayoutReference(impObj()->GetDefDwtLayout());
+}
+
+void PySmSubset::setDefDwtLayout(PySmAcDbLayoutReference& fref)
+{
+    impObj()->SetDefDwtLayout(*fref.impObj());
+}
+
+bool PySmSubset::getPromptForDwt() const
+{
+    return impObj()->GetPromptForDwt();
+}
+
+void PySmSubset::setPromptForDwt(bool val)
+{
+    impObj()->SetPromptForDwt(val);
+}
+
+boost::python::list PySmSubset::getSheets() const
+{
+    const auto& v = impObj()->GetSheets();
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& i : v)
+        pylist.append(PySmSheet(i));
+    return pylist;
+}
+
+PySmSheet PySmSubset::addNewSheet(const std::string& name, const std::string& desc)
+{
+    return PySmSheet(impObj()->AddNewSheet(utf8_to_wstr(name).c_str(), utf8_to_wstr(desc).c_str()));
+}
+
+void PySmSubset::insertComponent(PySmComponent& newSheet, PySmComponent& beforeComp)
+{
+    impObj()->InsertComponent(*newSheet.impObj(), *beforeComp.impObj());
+}
+
+void PySmSubset::insertComponentAfter(PySmComponent& newSheet, PySmComponent& afterComp)
+{
+    impObj()->InsertComponent(*newSheet.impObj(), *afterComp.impObj());
+}
+
+PySmSheet PySmSubset::importSheet(PySmAcDbLayoutReference& fref)
+{
+    return PySmSheet(impObj()->ImportSheet(*fref.impObj()));
+}
+
+void PySmSubset::removeSheet(PySmSheet& val)
+{
+    impObj()->RemoveSheet(*val.impObj());
+}
+
+PySmSubset PySmSubset::createSubset(const std::string& name, const std::string& desc)
+{
+    return PySmSubset(impObj()->CreateSubset(utf8_to_wstr(name).c_str(), utf8_to_wstr(desc).c_str()));
+}
+
+void PySmSubset::removeSubset(PySmSubset& val)
+{
+    impObj()->RemoveSubset(*val.impObj());
+}
+
+void PySmSubset::updateInMemoryDwgHints()
+{
+    impObj()->UpdateInMemoryDwgHints();
+}
+
+bool PySmSubset::getOverrideSheetPublish() const
+{
+    return impObj()->GetOverrideSheetPublish();
+}
+
+void PySmSubset::setOverrideSheetPublish(bool val)
+{
+    impObj()->SetOverrideSheetPublish(val);
 }
 
 PySmSubset PySmSubset::cast(const PySmPersist& src)
@@ -1797,21 +1975,23 @@ void makePySmSheetWrapper()
 {
     PyDocString DS("Sheet");
     class_<PySmSheet, bases<PySmComponent>>("Sheet")
-        .def("getNumber", &PySmSheet::getNumber)
-        .def("setNumber", &PySmSheet::setNumber)
-        .def("getTitle", &PySmSheet::getTitle)
-        .def("setTitle", &PySmSheet::setTitle)
-        .def("getDoNotPlot", &PySmSheet::getDoNotPlot)
-        .def("setDoNotPlot", &PySmSheet::setDoNotPlot)
-        .def("getRevisionNumber", &PySmSheet::getRevisionNumber)
-        .def("setRevisionNumber", &PySmSheet::setRevisionNumber)
-        .def("getRevisionDate", &PySmSheet::getRevisionDate)
-        .def("setRevisionDate", &PySmSheet::setRevisionDate)
-        .def("getIssuePurpose", &PySmSheet::getIssuePurpose)
-        .def("setIssuePurpose", &PySmSheet::setIssuePurpose)
-        .def("getCategory", &PySmSheet::getCategory)
-        .def("setCategory", &PySmSheet::setCategory)
-        .def("setCategory", &PySmSheet::setCategory)
+        .def("getNumber", &PySmSheet::getNumber, DS.ARGS())
+        .def("setNumber", &PySmSheet::setNumber, DS.ARGS({ "val: str" }))
+        .def("getTitle", &PySmSheet::getTitle, DS.ARGS())
+        .def("setTitle", &PySmSheet::setTitle, DS.ARGS({ "val: str" }))
+        .def("getDoNotPlot", &PySmSheet::getDoNotPlot, DS.ARGS())
+        .def("setDoNotPlot", &PySmSheet::setDoNotPlot, DS.ARGS({ "val: bool" }))
+        .def("getRevisionNumber", &PySmSheet::getRevisionNumber, DS.ARGS())
+        .def("setRevisionNumber", &PySmSheet::setRevisionNumber, DS.ARGS({ "val: str" }))
+        .def("getRevisionDate", &PySmSheet::getRevisionDate, DS.ARGS())
+        .def("setRevisionDate", &PySmSheet::setRevisionDate, DS.ARGS({ "val: str" }))
+        .def("getIssuePurpose", &PySmSheet::getIssuePurpose, DS.ARGS())
+        .def("setIssuePurpose", &PySmSheet::setIssuePurpose, DS.ARGS({ "val: str" }))
+        .def("getCategory", &PySmSheet::getCategory, DS.ARGS())
+        .def("setCategory", &PySmSheet::setCategory, DS.ARGS({ "val: str" }))
+        .def("getLayout", &PySmSheet::getLayout, DS.ARGS())
+        .def("setLayout", &PySmSheet::setLayout, DS.ARGS({ "val: PySm.DbLayoutReference" }))
+        .def("getSheetViews", &PySmSheet::getSheetViews, DS.ARGS())
         .def("cast", &PySmSheet::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheet::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1860,6 +2040,21 @@ bool PySmSheet::getDoNotPlot() const
 void PySmSheet::setDoNotPlot(bool flag)
 {
     impObj()->SetDoNotPlot(flag);
+}
+
+PySmAcDbLayoutReference PySmSheet::getLayout()
+{
+    return PySmAcDbLayoutReference(impObj()->GetLayout());
+}
+
+void PySmSheet::setLayout(PySmAcDbLayoutReference& val)
+{
+    impObj()->SetLayout(*val.impObj());
+}
+
+PySmSheetViews PySmSheet::getSheetViews() const
+{
+    return PySmSheetViews(impObj()->GetSheetViews());
 }
 
 std::string PySmSheet::getRevisionNumber() const
