@@ -1121,11 +1121,11 @@ void makePySmComponentWrapper()
 {
     PyDocString DS("Component");
     class_<PySmComponent, bases<PySmPersist>>("Component", boost::python::no_init)
-        .def("getName", &PySmComponent::getName)
-        .def("setName", &PySmComponent::setName)
-        .def("getDesc", &PySmComponent::getDesc)
-        .def("setDesc", &PySmComponent::setDesc)
-        .def("getCustomPropertyBag", &PySmComponent::getCustomPropertyBag)
+        .def("getName", &PySmComponent::getName, DS.ARGS())
+        .def("setName", &PySmComponent::setName, DS.ARGS({ "val: str" }))
+        .def("getDesc", &PySmComponent::getDesc, DS.ARGS())
+        .def("setDesc", &PySmComponent::setDesc, DS.ARGS({ "val: str" }))
+        .def("getCustomPropertyBag", &PySmComponent::getCustomPropertyBag, DS.ARGS())
         .def("cast", &PySmComponent::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmComponent::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1190,6 +1190,9 @@ void makePySmSheetSelSetWrapper()
 {
     PyDocString DS("SheetSelSet");
     class_<PySmSheetSelSet, bases<PySmComponent>>("SheetSelSet")
+        .def("add", &PySmSheetSelSet::add, DS.ARGS({ "val: PySm.Component" }))
+        .def("remove", &PySmSheetSelSet::remove, DS.ARGS())
+        .def("getComponents", &PySmSheetSelSet::getComponents, DS.ARGS())
         .def("cast", &PySmSheetSelSet::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheetSelSet::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1208,6 +1211,26 @@ PySmSheetSelSet::PySmSheetSelSet(PySmSheetSelSetImpl* ptr)
 PySmSheetSelSet::PySmSheetSelSet(const PySmSheetSelSetImpl& other)
     : PySmComponent(other)
 {
+}
+
+void PySmSheetSelSet::add(PySmComponent& val)
+{
+    impObj()->Add(*val.impObj());
+}
+
+void PySmSheetSelSet::remove(PySmComponent& val)
+{
+    impObj()->Remove(*val.impObj());
+}
+
+boost::python::list PySmSheetSelSet::getComponents() const
+{
+    const auto& v = impObj()->GetComponents();
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& i : v)
+        pylist.append(PySmComponent(i));
+    return pylist;
 }
 
 PySmSheetSelSet PySmSheetSelSet::cast(const PySmPersist& src)
@@ -1234,6 +1257,9 @@ void makePySmSheetSelSetsWrapper()
 {
     PyDocString DS("SheetSelSets");
     class_<PySmSheetSelSets, bases<PySmComponent>>("SheetSelSets")
+        .def("add", &PySmSheetSelSets::add, DS.ARGS({ "name: str","desc: str" }))
+        .def("remove", &PySmSheetSelSets::remove, DS.ARGS({ "val: PySm.SheetSelSet"}))
+        .def("getSheetSelSets", &PySmSheetSelSets::getSheetSelSets, DS.ARGS())
         .def("cast", &PySmSheetSelSets::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheetSelSets::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1252,6 +1278,26 @@ PySmSheetSelSets::PySmSheetSelSets(PySmSheetSelSetsImpl* ptr)
 PySmSheetSelSets::PySmSheetSelSets(const PySmSheetSelSetsImpl& other)
     : PySmComponent(other)
 {
+}
+
+PySmSheetSelSet PySmSheetSelSets::add(const std::string& name, const std::string& desc)
+{
+    return PySmSheetSelSet(impObj()->Add(utf8_to_wstr(name).c_str(), utf8_to_wstr(desc).c_str()));
+}
+
+void PySmSheetSelSets::remove(PySmSheetSelSet& ss)
+{
+    impObj()->Remove(*ss.impObj());
+}
+
+boost::python::list PySmSheetSelSets::getSheetSelSets() const
+{
+    const auto& v = impObj()->GetSheetSelSets();
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& i : v)
+        pylist.append(PySmSheetSelSet(i));
+    return pylist;
 }
 
 PySmSheetSelSets PySmSheetSelSets::cast(const PySmPersist& src)

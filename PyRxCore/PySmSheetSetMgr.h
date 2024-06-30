@@ -406,8 +406,13 @@ public:
     PySmSheetSelSet();
     PySmSheetSelSet(PySmSheetSelSetImpl* ptr);
     PySmSheetSelSet(const PySmSheetSelSetImpl& other);
+
+    void    add(PySmComponent& val);
+    void    remove(PySmComponent& val);
+    boost::python::list getComponents() const;
+
     static PySmSheetSelSet  cast(const PySmPersist& src);
-    static std::string       className();
+    static std::string      className();
 public:
     inline PySmSheetSelSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -421,6 +426,11 @@ public:
     PySmSheetSelSets();
     PySmSheetSelSets(PySmSheetSelSetsImpl* ptr);
     PySmSheetSelSets(const PySmSheetSelSetsImpl& other);
+
+    PySmSheetSelSet add(const std::string& name, const std::string& desc);
+    void            remove(PySmSheetSelSet& ss);
+    boost::python::list getSheetSelSets() const;
+
     static PySmSheetSelSets  cast(const PySmPersist& src);
     static std::string       className();
 public:
