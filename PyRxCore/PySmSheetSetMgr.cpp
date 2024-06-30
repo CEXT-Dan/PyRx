@@ -162,12 +162,12 @@ void makePySmObjectIdWrapper()
 {
     PyDocString DS("ObjectId");
     class_<PySmObjectId>("ObjectId", boost::python::no_init)
-        .def("getHandle", &PySmObjectId::getHandle)
-        .def("getDatabase", &PySmObjectId::getDatabase)
-        .def("getPersistObject", &PySmObjectId::getPersistObject)
-        .def("getOwner", &PySmObjectId::getOwner)
-        .def("isEqual", &PySmObjectId::isEqual)
-        .def("isValid", &PySmObjectId::isValid)
+        .def("getHandle", &PySmObjectId::getHandle, DS.ARGS())
+        .def("getDatabase", &PySmObjectId::getDatabase, DS.ARGS())
+        .def("getPersistObject", &PySmObjectId::getPersistObject, DS.ARGS())
+        .def("getOwner", &PySmObjectId::getOwner, DS.ARGS())
+        .def("isEqual", &PySmObjectId::isEqual, DS.ARGS({ "val: PySm.ObjectId" }))
+        .def("isValid", &PySmObjectId::isValid, DS.ARGS())
         .def("className", &PySmObjectId::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -227,10 +227,10 @@ void makePySmCustomPropertyValueWrapper()
     PyDocString DS("CustomPropertyValue");
     class_<PySmCustomPropertyValue, bases<PySmPersist>>("CustomPropertyValue")
         .def(init<>(DS.ARGS()))
-        .def("getValue", &PySmCustomPropertyValue::getValue)
-        .def("setValue", &PySmCustomPropertyValue::setValue)
-        .def("getFlags", &PySmCustomPropertyValue::getFlags)
-        .def("setFlags", &PySmCustomPropertyValue::setFlags)
+        .def("getValue", &PySmCustomPropertyValue::getValue, DS.ARGS())
+        .def("setValue", &PySmCustomPropertyValue::setValue, DS.ARGS({ "val: PyDb.AcValue" }))
+        .def("getFlags", &PySmCustomPropertyValue::getFlags, DS.ARGS())
+        .def("setFlags", &PySmCustomPropertyValue::setFlags, DS.ARGS({ "flags: PySm.PropertyFlags" }))
         .def("cast", &PySmCustomPropertyValue::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmCustomPropertyValue::className, DS.SARGS()).staticmethod("className")
         ;
@@ -311,10 +311,10 @@ void makePySmCustomPropertyBagWrapper()
     PyDocString DS("CustomPropertyBag");
     class_<PySmCustomPropertyBag, bases<PySmPersist>>("CustomPropertyBag")
         .def(init<>(DS.ARGS()))
-        .def("getValue", &PySmCustomPropertyBag::getProperty)
-        .def("setValue", &PySmCustomPropertyBag::setProperty)
-        .def("getProperties", &PySmCustomPropertyBag::getProperties)
-        .def("getPropertyValues", &PySmCustomPropertyBag::getPropertyValues)
+        .def("getValue", &PySmCustomPropertyBag::getProperty, DS.ARGS({ "prop: str" }))
+        .def("setValue", &PySmCustomPropertyBag::setProperty, DS.ARGS({ "prop: str" ,"val: PySm.CustomPropertyValue" }))
+        .def("getProperties", &PySmCustomPropertyBag::getProperties, DS.ARGS())
+        .def("getPropertyValues", &PySmCustomPropertyBag::getPropertyValues, DS.ARGS())
         .def("cast", &PySmCustomPropertyBag::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmCustomPropertyBag::className, DS.SARGS()).staticmethod("className")
         ;
@@ -825,7 +825,7 @@ void makePySmObjectReferenceWrapper()
         .def(init<>(DS.ARGS()))
         .def("setReferencedObject", &PySmObjectReference::setReferencedObject, DS.ARGS({ "val: PySm.Persist" }))
         .def("getReferencedObject", &PySmObjectReference::getReferencedObject, DS.ARGS())
-        .def("setReferenceFlags", &PySmObjectReference::setReferenceFlags, DS.ARGS({ "val: PySm.SmObjectReferenceFlags" }))
+        .def("setReferenceFlags", &PySmObjectReference::setReferenceFlags, DS.ARGS({ "val: PySm.ObjectReferenceFlags" }))
         .def("getReferenceFlags", &PySmObjectReference::getReferenceFlags, DS.ARGS())
         .def("cast", &PySmObjectReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmObjectReference::className, DS.SARGS()).staticmethod("className")
@@ -963,7 +963,6 @@ void makePySmPublishOptioneWrapper()
         .def("setLinesMerge", &PySmPublishOptions::setLinesMerge, DS.ARGS({ "val: bool" }))
         .def("getDefaultFilename", &PySmPublishOptions::getDefaultFilename, DS.ARGS())
         .def("setDefaultFilename", &PySmPublishOptions::setDefaultFilename, DS.ARGS({ "val: str" }))
-
         .def("cast", &PySmPublishOptions::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmPublishOptions::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1743,7 +1742,7 @@ boost::python::list PySmViewCategories::getViewCategories()
 
 PySmViewCategory PySmViewCategories::createViewCategory(const std::string& csName, const std::string& csDesc, const std::string& csId)
 {
-   return PySmViewCategory(impObj()->CreateViewCategory(utf8_to_wstr(csName).c_str(), utf8_to_wstr(csDesc).c_str(), utf8_to_wstr(csId).c_str()));
+    return PySmViewCategory(impObj()->CreateViewCategory(utf8_to_wstr(csName).c_str(), utf8_to_wstr(csDesc).c_str(), utf8_to_wstr(csId).c_str()));
 }
 
 void PySmViewCategories::removeViewCategory(PySmViewCategory& cat)
@@ -2186,7 +2185,7 @@ PySmSheetSet::PySmSheetSet(const PySmSheetSetImpl& other)
 
 PySmFileReference PySmSheetSet::getAltPageSetups() const
 {
-   return PySmFileReference(impObj()->GetAltPageSetups());
+    return PySmFileReference(impObj()->GetAltPageSetups());
 }
 
 void PySmSheetSet::setAltPageSetups(const PySmFileReference& alt)
@@ -2284,16 +2283,16 @@ void makePySmDatabaseWrapper()
     PyDocString DS("Database");
     class_<PySmDatabase, bases<PySmComponent>>("Database")
         .def(init<>(DS.ARGS()))
-        .def("loadFromFile", &PySmDatabase::loadFromFile)
-        .def("getFileName", &PySmDatabase::getFileName)
-        .def("setFileName", &PySmDatabase::setFileName)
-        .def("getTemplateDstFileName", &PySmDatabase::getTemplateDstFileName)
-        .def("getSheetSet", &PySmDatabase::getSheetSet)
-        .def("getLockStatus", &PySmDatabase::getLockStatus)
-        .def("getLockOwnerInfo", &PySmDatabase::getLockOwnerInfo)
-        .def("lockDb", &PySmDatabase::lockDb)
-        .def("unlockDb", &PySmDatabase::unlockDb)
-        .def("getPersistObjects", &PySmDatabase::getPersistObjects)
+        .def("loadFromFile", &PySmDatabase::loadFromFile, DS.ARGS({ "filename: str" }))
+        .def("getFileName", &PySmDatabase::getFileName, DS.ARGS())
+        .def("setFileName", &PySmDatabase::setFileName, DS.ARGS({ "filename: str" }))
+        .def("getTemplateDstFileName", &PySmDatabase::getTemplateDstFileName, DS.ARGS())
+        .def("getSheetSet", &PySmDatabase::getSheetSet, DS.ARGS())
+        .def("getLockStatus", &PySmDatabase::getLockStatus, DS.ARGS())
+        .def("getLockOwnerInfo", &PySmDatabase::getLockOwnerInfo, DS.ARGS())
+        .def("lockDb", &PySmDatabase::lockDb, DS.ARGS())
+        .def("unlockDb", &PySmDatabase::unlockDb, DS.ARGS({ "commit: bool" }))
+        .def("getPersistObjects", &PySmDatabase::getPersistObjects, DS.ARGS())
         .def("cast", &PySmDatabase::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmDatabase::className, DS.SARGS()).staticmethod("className")
         ;
@@ -2403,18 +2402,23 @@ PySmDatabaseImpl* PySmDatabase::impObj(const std::source_location& src /*= std::
 //PySmSheetSetMgr
 void makePySmSheetSetMgrWrapper()
 {
+    constexpr const std::string_view createDatabaseOverloads = "Overloads:\n"
+        "- filename: str\n"
+        "- filename: str, template: str, bAlwaysCreate: bool\n";
+
+
     PyDocString DS("SheetSetMgr");
     class_<PySmSheetSetMgr>("SheetSetMgr")
         .def(init<>(DS.ARGS()))
         .def("createDatabase", &PySmSheetSetMgr::createDatabase1)
-        .def("createDatabase", &PySmSheetSetMgr::createDatabase2)
-        .def("openDatabase", &PySmSheetSetMgr::openDatabase)
-        .def("findOpenDatabase", &PySmSheetSetMgr::findOpenDatabase)
+        .def("createDatabase", &PySmSheetSetMgr::createDatabase2, DS.OVRL(createDatabaseOverloads))
+        .def("openDatabase", &PySmSheetSetMgr::openDatabase, DS.ARGS({ "filename: str" }))
+        .def("findOpenDatabase", &PySmSheetSetMgr::findOpenDatabase, DS.ARGS({ "filename: str" }))
         .def("closeAll", &PySmSheetSetMgr::closeAll, DS.SARGS())
-        .def("close", &PySmSheetSetMgr::close)
-        .def("getParentSheetSet", &PySmSheetSetMgr::getParentSheetSet)
-        .def("getSheetFromLayout", &PySmSheetSetMgr::getSheetFromLayout)
-        .def("databases", &PySmSheetSetMgr::databases)
+        .def("close", &PySmSheetSetMgr::close, DS.ARGS({ "smDb: PySm.Database" }))
+        .def("getParentSheetSet", &PySmSheetSetMgr::getParentSheetSet, DS.ARGS({ "dwg: str","dwg: layout" }))
+        .def("getSheetFromLayout", &PySmSheetSetMgr::getSheetFromLayout, DS.ARGS({ "layout: PyDb.Object" }))
+        .def("databases", &PySmSheetSetMgr::databases, DS.ARGS())
         .def("className", &PySmSheetSetMgr::className, DS.SARGS()).staticmethod("className")
 #ifdef PYRXDEBUG
         .def("runTest", &PySmSheetSetMgr::runTest, DS.SARGS()).staticmethod("runTest")
