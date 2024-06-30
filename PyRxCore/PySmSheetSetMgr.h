@@ -281,6 +281,18 @@ public:
     PySmProjectPointLocation();
     PySmProjectPointLocation(PySmProjectPointLocationImpl* ptr);
     PySmProjectPointLocation(const PySmProjectPointLocationImpl& other);
+
+    std::string getURL() const;
+    void        setURL(const std::string& csVal);
+    std::string getFolder() const;
+    void        setFolder(const std::string& csVal);
+    std::string getUsername() const;
+    void        setUsername(const std::string& csVal);
+    std::string getPassword() const;
+    void        setPassword(const std::string& csVal);
+    long        getResourceType() const;
+    void        setResourceType(long val);
+
     static PySmProjectPointLocation cast(const PySmPersist& src);
     static std::string              className();
 public:
