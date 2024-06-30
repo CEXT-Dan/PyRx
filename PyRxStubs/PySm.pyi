@@ -422,6 +422,18 @@ class ObjectReference(Persist):
     def className ()-> str :
         '''                             '''
         ...
+    def getReferenceFlags (self)-> object :
+        '''                             '''
+        ...
+    def getReferencedObject (self)-> PySm.Persist :
+        '''                             '''
+        ...
+    def setReferenceFlags (self, val: PySm.SmObjectReferenceFlags)-> None :
+        '''                             '''
+        ...
+    def setReferencedObject (self, val: PySm.Persist)-> None :
+        '''                             '''
+        ...
 
 class Persist(object):
     def __init__ (self, *args, **kwargs)-> None :
@@ -501,6 +513,33 @@ class ProjectPointLocation(Persist):
     def className ()-> str :
         '''                             '''
         ...
+    def getFolder (self)-> str :
+        '''                             '''
+        ...
+    def getPassword (self)-> str :
+        '''                             '''
+        ...
+    def getResourceType (self)-> int :
+        '''                             '''
+        ...
+    def getURL (self)-> str :
+        '''                             '''
+        ...
+    def getUsername (self)-> str :
+        '''                             '''
+        ...
+    def setFolder (self, val: str)-> None :
+        '''                             '''
+        ...
+    def setPassword (self, val: str)-> None :
+        '''                             '''
+        ...
+    def setResourceType (self, val: int)-> None :
+        '''                             '''
+        ...
+    def setUsername (self, val: str)-> None :
+        '''                             '''
+        ...
 
 class ProjectPointLocations(Component):
     def __init__ (self, *args, **kwargs)-> None :
@@ -552,6 +591,87 @@ class PublishOptions(Persist):
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def getDefaultFilename (self)-> str :
+        '''                             '''
+        ...
+    def getDefaultOutputdir (self)-> PySm.FileReference :
+        '''                             '''
+        ...
+    def getDwfType (self)-> bool :
+        '''                             '''
+        ...
+    def getEplotFormat (self)-> int :
+        '''                             '''
+        ...
+    def getIncludeSheetData (self)-> bool :
+        '''                             '''
+        ...
+    def getIncludeSheetSetData (self)-> bool :
+        '''                             '''
+        ...
+    def getLayerInfo (self)-> bool :
+        '''                             '''
+        ...
+    def getLinesMerge (self)-> bool :
+        '''                             '''
+        ...
+    def getPromptForName (self)-> bool :
+        '''                             '''
+        ...
+    def getPromptForPassword (self)-> bool :
+        '''                             '''
+        ...
+    def getUnrecognizedData (self)-> PySm.CustomPropertyBag :
+        '''                             '''
+        ...
+    def getUnrecognizedSections (self)-> PySm.CustomPropertyBag :
+        '''                             '''
+        ...
+    def getUsePassword (self)-> bool :
+        '''                             '''
+        ...
+    def setDefaultFilename (self, val: str)-> None :
+        '''                             '''
+        ...
+    def setDefaultOutputdir (self, *args, **kwargs)-> None :
+        '''setDefaultOutputdir( (PublishOptions)arg1, (FileReference)arg2) -> None :
+
+    C++ signature :
+        void setDefaultOutputdir(class PySmPublishOptions {lvalue},class PySmFileReference {lvalue})'''
+        ...
+    def setDwfType (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setEplotFormat (self, val: int)-> None :
+        '''                             '''
+        ...
+    def setIncludeSheetData (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setIncludeSheetSetData (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setLayerInfo (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setLinesMerge (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setPromptForName (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setPromptForPassword (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setUnrecognizedData (self, val: PySm.CustomPropertyBag)-> None :
+        '''                             '''
+        ...
+    def setUnrecognizedSections (self, val: PySm.CustomPropertyBag)-> None :
+        '''                             '''
+        ...
+    def setUsePassword (self, val: bool)-> None :
         '''                             '''
         ...
 

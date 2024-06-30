@@ -807,6 +807,10 @@ void makePySmObjectReferenceWrapper()
 {
     PyDocString DS("ObjectReference");
     class_<PySmObjectReference, bases<PySmPersist>>("ObjectReference")
+        .def("setReferencedObject", &PySmObjectReference::setReferencedObject, DS.ARGS({ "val: PySm.Persist" }))
+        .def("getReferencedObject", &PySmObjectReference::getReferencedObject, DS.ARGS())
+        .def("setReferenceFlags", &PySmObjectReference::setReferenceFlags, DS.ARGS({ "val: PySm.SmObjectReferenceFlags" }))
+        .def("getReferenceFlags", &PySmObjectReference::getReferenceFlags, DS.ARGS())
         .def("cast", &PySmObjectReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmObjectReference::className, DS.SARGS()).staticmethod("className")
         ;
@@ -825,6 +829,26 @@ PySmObjectReference::PySmObjectReference(PySmObjectReferenceImpl* ptr)
 PySmObjectReference::PySmObjectReference(const PySmObjectReferenceImpl& other)
     : PySmPersist(other)
 {
+}
+
+void PySmObjectReference::setReferencedObject(PySmPersist& pObject)
+{
+    impObj()->SetReferencedObject(*pObject.impObj());
+}
+
+PySmPersist PySmObjectReference::getReferencedObject() const
+{
+    return PySmPersist(impObj()->GetReferencedObject());
+}
+
+SmObjectReferenceFlags PySmObjectReference::getReferenceFlags() const
+{
+   return static_cast<SmObjectReferenceFlags>(impObj()->GetReferenceFlags());
+}
+
+void PySmObjectReference::setReferenceFlags(SmObjectReferenceFlags flags)
+{
+    impObj()->SetReferenceFlags(static_cast<AcSmObjectReferenceFlags>(flags));
 }
 
 PySmObjectReference PySmObjectReference::cast(const PySmPersist& src)
@@ -895,6 +919,34 @@ void makePySmPublishOptioneWrapper()
 {
     PyDocString DS("PublishOptions");
     class_<PySmPublishOptions, bases<PySmPersist>>("PublishOptions")
+
+        .def("getDefaultOutputdir", &PySmPublishOptions::getDefaultOutputdir, DS.ARGS())
+        .def("setDefaultOutputdir", &PySmPublishOptions::setDefaultOutputdir)
+        .def("getDwfType", &PySmPublishOptions::getDwfType, DS.ARGS())
+        .def("setDwfType", &PySmPublishOptions::setDwfType, DS.ARGS({ "val: bool" }))
+        .def("getPromptForName", &PySmPublishOptions::getPromptForName, DS.ARGS())
+        .def("setPromptForName", &PySmPublishOptions::setPromptForName, DS.ARGS({ "val: bool" }))
+        .def("getUsePassword", &PySmPublishOptions::getUsePassword, DS.ARGS())
+        .def("setUsePassword", &PySmPublishOptions::setUsePassword, DS.ARGS({ "val: bool" }))
+        .def("getPromptForPassword", &PySmPublishOptions::getPromptForPassword, DS.ARGS())
+        .def("setPromptForPassword", &PySmPublishOptions::setPromptForPassword, DS.ARGS({ "val: bool" }))
+        .def("getLayerInfo", &PySmPublishOptions::getLayerInfo, DS.ARGS())
+        .def("setLayerInfo", &PySmPublishOptions::setLayerInfo, DS.ARGS({ "val: bool" }))
+        .def("getUnrecognizedData", &PySmPublishOptions::getUnrecognizedData, DS.ARGS())
+        .def("setUnrecognizedData", &PySmPublishOptions::setUnrecognizedData, DS.ARGS({ "val: PySm.CustomPropertyBag" }))
+        .def("getUnrecognizedSections", &PySmPublishOptions::getUnrecognizedSections, DS.ARGS())
+        .def("setUnrecognizedSections", &PySmPublishOptions::setUnrecognizedSections, DS.ARGS({ "val: PySm.CustomPropertyBag" }))
+        .def("getIncludeSheetSetData", &PySmPublishOptions::getIncludeSheetSetData, DS.ARGS())
+        .def("setIncludeSheetSetData", &PySmPublishOptions::setIncludeSheetSetData, DS.ARGS({ "val: bool" }))
+        .def("getIncludeSheetData", &PySmPublishOptions::getIncludeSheetData, DS.ARGS())
+        .def("setIncludeSheetData", &PySmPublishOptions::setIncludeSheetData, DS.ARGS({ "val: bool" }))
+        .def("getEplotFormat", &PySmPublishOptions::getEplotFormat, DS.ARGS())
+        .def("setEplotFormat", &PySmPublishOptions::setEplotFormat, DS.ARGS({ "val: int" }))
+        .def("getLinesMerge", &PySmPublishOptions::getLinesMerge, DS.ARGS())
+        .def("setLinesMerge", &PySmPublishOptions::setLinesMerge, DS.ARGS({ "val: bool" }))
+        .def("getDefaultFilename", &PySmPublishOptions::getDefaultFilename, DS.ARGS())
+        .def("setDefaultFilename", &PySmPublishOptions::setDefaultFilename, DS.ARGS({ "val: str" }))
+
         .def("cast", &PySmPublishOptions::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmPublishOptions::className, DS.SARGS()).staticmethod("className")
         ;
@@ -913,6 +965,136 @@ PySmPublishOptions::PySmPublishOptions(PySmPublishOptionsImpl* ptr)
 PySmPublishOptions::PySmPublishOptions(const PySmPublishOptionsImpl& other)
     : PySmPersist(other)
 {
+}
+
+PySmFileReference PySmPublishOptions::getDefaultOutputdir() const
+{
+    return PySmFileReference(impObj()->GetDefaultOutputdir());
+}
+
+void PySmPublishOptions::setDefaultOutputdir(PySmFileReference& val)
+{
+    impObj()->SetDefaultOutputdir(*val.impObj());
+}
+
+bool PySmPublishOptions::getDwfType() const
+{
+    return impObj()->GetDwfType();
+}
+
+void PySmPublishOptions::setDwfType(bool val)
+{
+    impObj()->SetDwfType(val);
+}
+
+bool PySmPublishOptions::getPromptForName() const
+{
+    return impObj()->GetPromptForName();
+}
+
+void PySmPublishOptions::setPromptForName(bool val)
+{
+    impObj()->SetPromptForName(val);
+}
+
+bool PySmPublishOptions::getUsePassword() const
+{
+    return impObj()->GetUsePassword();
+}
+
+void PySmPublishOptions::setUsePassword(bool val)
+{
+    impObj()->SetUsePassword(val);
+}
+
+bool PySmPublishOptions::getPromptForPassword() const
+{
+    return impObj()->GetPromptForPassword();
+}
+
+void PySmPublishOptions::setPromptForPassword(bool val)
+{
+    impObj()->SetPromptForPassword(val);
+}
+
+bool PySmPublishOptions::getLayerInfo() const
+{
+    return impObj()->GetLayerInfo();
+}
+
+void PySmPublishOptions::setLayerInfo(bool val)
+{
+    impObj()->SetLayerInfo(val);
+}
+
+PySmCustomPropertyBag PySmPublishOptions::getUnrecognizedData() const
+{
+    return PySmCustomPropertyBag(impObj()->GetUnrecognizedData());
+}
+
+void PySmPublishOptions::setUnrecognizedData(PySmCustomPropertyBag& val)
+{
+    impObj()->SetUnrecognizedData(*val.impObj());
+}
+
+PySmCustomPropertyBag PySmPublishOptions::getUnrecognizedSections() const
+{
+    return PySmCustomPropertyBag(impObj()->GetUnrecognizedSections());
+}
+
+void PySmPublishOptions::setUnrecognizedSections(PySmCustomPropertyBag& val)
+{
+    impObj()->SetUnrecognizedSections(*val.impObj());
+}
+
+bool PySmPublishOptions::getIncludeSheetSetData() const
+{
+    return impObj()->GetIncludeSheetSetData();
+}
+
+void PySmPublishOptions::setIncludeSheetSetData(bool val)
+{
+    impObj()->SetIncludeSheetSetData(val);
+}
+
+bool PySmPublishOptions::getIncludeSheetData() const
+{
+    return impObj()->GetIncludeSheetData();
+}
+
+void PySmPublishOptions::setIncludeSheetData(bool val)
+{
+    impObj()->SetIncludeSheetData(val);
+}
+
+long PySmPublishOptions::getEplotFormat() const
+{
+    return impObj()->GetEplotFormat();
+}
+
+void PySmPublishOptions::setEplotFormat(long val)
+{
+    impObj()->SetEplotFormat(val);
+}
+
+bool PySmPublishOptions::getLinesMerge() const
+{
+    return impObj()->GetLinesMerge();
+}
+
+void PySmPublishOptions::setLinesMerge(bool val)
+{
+    impObj()->SetLinesMerge(val);
+}
+
+std::string PySmPublishOptions::getDefaultFilename() const
+{
+    return wstr_to_utf8(impObj()->GetDefaultFilename());
+}
+
+void PySmPublishOptions::setDefaultFilename(const std::string& csVal)
+{
+    impObj()->SetDefaultFilename(utf8_to_wstr(csVal).c_str());
 }
 
 PySmPublishOptions PySmPublishOptions::cast(const PySmPersist& src)
