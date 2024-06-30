@@ -474,7 +474,7 @@ public:
     PySmSheetViewsImpl(const PySmSheetViewsImpl& other) = default;
     virtual ~PySmSheetViewsImpl() override = default;
 
-    PySmSheetViewArray GetheetViews() const;
+    PySmSheetViewArray GetSheetViews() const;
     void               Sync(PySmAcDbLayoutReferenceImpl& lref, AcDbDatabase* pDb);
 
     IAcSmSheetViews* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -493,7 +493,7 @@ public:
     PySmProjectPointLocationImpl GetLocation(const CString& locationName) const;
     void RemoveLocation(PySmProjectPointLocationImpl& val);
     PySmProjectPointLocationImpl AddNewLocation(const CString& name, const CString& url, const CString& folder, const CString& username, const CString& password);
-    PySmProjectPointLocationArray GetProjectPointLocations() const;;
+    PySmProjectPointLocationArray GetProjectPointLocations() const;
 
     IAcSmProjectPointLocations* impObj(const std::source_location& src = std::source_location::current()) const;
 };

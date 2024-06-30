@@ -40,6 +40,8 @@ class PySmDatabase;
 class PyDbDatabase;
 class PyDbHandle;
 
+class PySmViewCategory;
+
 //aligned with COM's PropertyFlags
 enum class SmPropertyFlags : int
 {
@@ -446,8 +448,17 @@ public:
     PySmSheetView();
     PySmSheetView(PySmSheetViewImpl* ptr);
     PySmSheetView(const PySmSheetViewImpl& other);
-    static PySmSheetView  cast(const PySmPersist& src);
-    static std::string     className();
+
+    PySmAcDbViewReference   getNamedView() const;
+    void                    setNamedView(PySmAcDbViewReference& view);
+    PySmViewCategory        getCategory() const;
+    void                    setCategory(PySmViewCategory& view);
+    std::string             getNumber() const;
+    void                    setNumber(const std::string& csVal);
+    std::string             getTitle() const;
+    void                    setTitle(const  std::string& csVal);
+    static PySmSheetView    cast(const PySmPersist& src);
+    static std::string      className();
 public:
     inline PySmSheetViewImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -461,6 +472,8 @@ public:
     PySmSheetViews();
     PySmSheetViews(PySmSheetViewsImpl* ptr);
     PySmSheetViews(const PySmSheetViewsImpl& other);
+    boost::python::list  getSheetViews() const;
+    void                 sync(PySmAcDbLayoutReference& lref, PyDbDatabase& pDb);
     static PySmSheetViews  cast(const PySmPersist& src);
     static std::string     className();
 public:
@@ -476,6 +489,12 @@ public:
     PySmProjectPointLocations();
     PySmProjectPointLocations(PySmProjectPointLocationsImpl* ptr);
     PySmProjectPointLocations(const PySmProjectPointLocationsImpl& other);
+
+    PySmProjectPointLocation    getLocation(const std::string& locationName) const;
+    void                        removeLocation(PySmProjectPointLocation& val);
+    PySmProjectPointLocation    addNewLocation(const std::string& name, const std::string& url, const std::string& folder, const std::string& username, const std::string& password);
+    boost::python::list         getProjectPointLocations() const;
+
     static PySmProjectPointLocations  cast(const PySmPersist& src);
     static std::string      className();
 public:
@@ -491,6 +510,11 @@ public:
     PySmSmResources();
     PySmSmResources(PySmResourcesImpl* ptr);
     PySmSmResources(const PySmResourcesImpl& other);
+
+    void                add(PySmFileReference& val);
+    void                remove(PySmFileReference& val);
+    boost::python::list getFileReferences();
+
     static PySmSmResources  cast(const PySmPersist& src);
     static std::string      className();
 public:
@@ -506,6 +530,10 @@ public:
     PySmViewCategory();
     PySmViewCategory(PySmViewCategoryImpl* ptr);
     PySmViewCategory(const PySmViewCategoryImpl& other);
+
+    //PySmSheetViewArray      GetSheetViews();
+    //PySmCalloutBlocksImpl   GetCalloutBlocks();
+
     static PySmViewCategory  cast(const PySmPersist& src);
     static std::string       className();
 public:
@@ -521,6 +549,12 @@ public:
     PySmViewCategories();
     PySmViewCategories(PySmViewCategoriesImpl* ptr);
     PySmViewCategories(const PySmViewCategoriesImpl& other);
+
+    //PySmViewCategoryArray   GetPySmViewCategorys(); //gramma
+    //PySmViewCategoryImpl    CreateViewCategory(const CString& csName, const CString& csDesc, const CString& csId);
+    //void                    RemoveViewCategory(PySmViewCategoryImpl& cat);
+    //PySmViewCategoryImpl    GetDefaultViewCategory();
+
     static PySmViewCategories  cast(const PySmPersist& src);
     static std::string         className();
 public:
@@ -536,6 +570,12 @@ public:
     PySmCalloutBlocks();
     PySmCalloutBlocks(PySmCalloutBlocksImpl* ptr);
     PySmCalloutBlocks(const PySmCalloutBlocksImpl& other);
+
+    //void Add(PySmAcDbBlockRecordReferenceImpl& blkRef);
+    //void Remove(PySmAcDbBlockRecordReferenceImpl& blkRef);
+    //PySmAcDbBlockRecordReferenceArray getAcDbBlockRecordReferences() const;
+
+
     static PySmCalloutBlocks  cast(const PySmPersist& src);
     static std::string        className();
 public:
@@ -551,6 +591,32 @@ public:
     PySmSubset();
     PySmSubset(PySmSubsetImpl* ptr);
     PySmSubset(const PySmSubsetImpl& other);
+
+    //PySmFileReferenceImpl GetNewSheetLocation();
+    //void SetNewSheetLocation(PySmFileReferenceImpl& fref);
+
+    //PySmAcDbLayoutReferenceImpl GetDefDwtLayout() const;
+    //void SetDefDwtLayout(PySmAcDbLayoutReferenceImpl& fref);
+
+    //bool GetPromptForDwt() const;
+    //void SetPromptForDwt(bool val);
+
+    //PySmSheetArray  GetSheets() const;
+    //PySmSheetImpl   AddNewSheet(const CString& name, const CString& desc);
+
+    //void InsertComponent(PySmComponentImpl& newSheet, PySmComponentImpl& beforeComp);
+    //void InsertComponentAfter(PySmComponentImpl& newSheet, PySmComponentImpl& afterComp);
+
+    //PySmSheetImpl ImportSheet(PySmAcDbLayoutReferenceImpl& fref);
+    //void RemoveSheet(PySmSheetImpl& val);
+
+    //PySmSubsetImpl CreateSubset(const CString& name, const CString& desc);
+    //void RemoveSubset(PySmSubsetImpl& val);
+    //void UpdateInMemoryDwgHints();
+
+    //bool GetOverrideSheetPublish() const;
+    //void SetOverrideSheetPublish(bool val);
+
     static PySmSubset  cast(const PySmPersist& src);
     static std::string className();
 public:
@@ -600,6 +666,24 @@ public:
     PySmSheetSet();
     PySmSheetSet(PySmSheetSetImpl* ptr);
     PySmSheetSet(const PySmSheetSetImpl& other);
+
+    //PySmFileReferenceImpl   GetAltPageSetups() const;
+    //void                    SetAltPageSetups(const PySmFileReferenceImpl& alt);
+    //PySmNamedAcDbObjectReferenceImpl GetDefAltPageSetup() const;
+    //void                    SetDefAltPageSetup(const PySmNamedAcDbObjectReferenceImpl& alt);
+    //bool                    GetPromptForDwgName() const;
+    //void                    SetPromptForDwgName(bool flag);
+    //PySmSheetSelSetsImpl    GetSheetSelSets() const;
+    //PySmResourcesImpl       GetResources() const;
+    //PySmCalloutBlocksImpl   GetCalloutBlocks() const;
+    //PySmViewCategoriesImpl  GetViewCategories() const;
+    //PySmAcDbBlockRecordReferenceImpl GetDefLabelBlk() const;
+    //void                             SetDefLabelBlk(const PySmAcDbBlockRecordReferenceImpl& blk);
+    //PySmPublishOptionsImpl   GetPublishOptions() const;
+    //void                     Sync(AcDbDatabase* pDb);
+    //void                     UpdateSheetCustomProps();
+
+
     static PySmSheetSet cast(const PySmPersist& src);
     static std::string className();
 public:
