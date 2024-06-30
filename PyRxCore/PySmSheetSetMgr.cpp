@@ -226,6 +226,7 @@ void makePySmCustomPropertyValueWrapper()
 {
     PyDocString DS("CustomPropertyValue");
     class_<PySmCustomPropertyValue, bases<PySmPersist>>("CustomPropertyValue")
+        .def(init<>(DS.ARGS()))
         .def("getValue", &PySmCustomPropertyValue::getValue)
         .def("setValue", &PySmCustomPropertyValue::setValue)
         .def("getFlags", &PySmCustomPropertyValue::getFlags)
@@ -240,6 +241,12 @@ void makePySmCustomPropertyValueWrapper()
         .value("kSheetProp", SmPropertyFlags::CUSTOM_SHEET_PROP)
         .value("kSubSetProp", SmPropertyFlags::CUSTOM_SUBSET_PROP)
         .value("kIsChild", SmPropertyFlags::IS_CHILD)
+        .export_values()
+        ;
+
+    enum_<SmObjectReferenceFlags>("ObjectReferenceFlags")
+        .value("kSoftPointer", SmObjectReferenceFlags::AcSmObjectReference_SoftPointer)
+        .value("kHardPointer", SmObjectReferenceFlags::AcSmObjectReference_HardPointer)
         .export_values()
         ;
 }
@@ -303,6 +310,7 @@ void makePySmCustomPropertyBagWrapper()
 {
     PyDocString DS("CustomPropertyBag");
     class_<PySmCustomPropertyBag, bases<PySmPersist>>("CustomPropertyBag")
+        .def(init<>(DS.ARGS()))
         .def("getValue", &PySmCustomPropertyBag::getProperty)
         .def("setValue", &PySmCustomPropertyBag::setProperty)
         .def("getProperties", &PySmCustomPropertyBag::getProperties)
@@ -379,6 +387,7 @@ void makePySmFileReferenceWrapper()
 {
     PyDocString DS("FileReference");
     class_<PySmFileReference, bases<PySmPersist>>("FileReference")
+        .def(init<>(DS.ARGS()))
         .def("setFileName", &PySmFileReference::setFileName, DS.ARGS({ "val: str" }))
         .def("getFileName", &PySmFileReference::getFileName, DS.ARGS())
         .def("getFileName", &PySmFileReference::resolveFileName, DS.ARGS())
@@ -441,6 +450,7 @@ void makePySmAcDbObjectReferenceWrapper()
 {
     PyDocString DS("DbObjectReference");
     class_<PySmAcDbObjectReference, bases<PySmFileReference>>("DbObjectReference")
+        .def(init<>(DS.ARGS()))
         .def("setAcDbHandle", &PySmAcDbObjectReference::setAcDbHandle, DS.ARGS({ "val: PyDb,Handle" }))
         .def("getAcDbHandle", &PySmAcDbObjectReference::getAcDbHandle, DS.ARGS())
         .def("getAcSmAcDbDatabase", &PySmAcDbObjectReference::getAcSmAcDbDatabase, DS.ARGS())
@@ -515,6 +525,7 @@ void makePySmNamedAcDbObjectReferenceWrapper()
 {
     PyDocString DS("NamedDbObjectReference");
     class_<PySmNamedAcDbObjectReference, bases<PySmAcDbObjectReference>>("NamedDbObjectReference")
+        .def(init<>(DS.ARGS()))
         .def("SetOwnerAcDbHandle", &PySmNamedAcDbObjectReference::SetOwnerAcDbHandle, DS.ARGS({ "val: PyDb,Handle" }))
         .def("GetOwnerAcDbHandle", &PySmNamedAcDbObjectReference::GetOwnerAcDbHandle, DS.ARGS())
         .def("cast", &PySmNamedAcDbObjectReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
@@ -571,6 +582,7 @@ void makePySmAcDbLayoutReferenceWrapper()
 {
     PyDocString DS("DbLayoutReference");
     class_<PySmAcDbLayoutReference, bases<PySmNamedAcDbObjectReference>>("DbLayoutReference")
+        .def(init<>(DS.ARGS()))
         .def("cast", &PySmAcDbLayoutReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmAcDbLayoutReference::className, DS.SARGS()).staticmethod("className")
         ;
@@ -615,6 +627,7 @@ void makePySmAcDbViewReferenceWrapper()
 {
     PyDocString DS("DbViewReference");
     class_<PySmAcDbViewReference, bases<PySmNamedAcDbObjectReference>>("DbViewReference")
+        .def(init<>(DS.ARGS()))
         .def("cast", &PySmAcDbViewReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmAcDbViewReference::className, DS.SARGS()).staticmethod("className")
         ;
@@ -659,6 +672,7 @@ void makePySmAcDbBlockRecordReferenceWrapper()
 {
     PyDocString DS("DbBlockRecordReference");
     class_<PySmAcDbBlockRecordReference, bases<PySmNamedAcDbObjectReference>>("DbBlockRecordReference")
+        .def(init<>(DS.ARGS()))
         .def("cast", &PySmAcDbBlockRecordReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmAcDbBlockRecordReference::className, DS.SARGS()).staticmethod("className")
         ;
@@ -703,6 +717,7 @@ void makePySmProjectPointLocationWrapper()
 {
     PyDocString DS("ProjectPointLocation");
     class_<PySmProjectPointLocation, bases<PySmPersist>>("ProjectPointLocation")
+        .def(init<>(DS.ARGS()))
         .def("getURL", &PySmProjectPointLocation::getURL, DS.ARGS())
         .def("getURL", &PySmProjectPointLocation::setURL, DS.ARGS({ "val: str" }))
         .def("getFolder", &PySmProjectPointLocation::getFolder, DS.ARGS())
@@ -807,6 +822,7 @@ void makePySmObjectReferenceWrapper()
 {
     PyDocString DS("ObjectReference");
     class_<PySmObjectReference, bases<PySmPersist>>("ObjectReference")
+        .def(init<>(DS.ARGS()))
         .def("setReferencedObject", &PySmObjectReference::setReferencedObject, DS.ARGS({ "val: PySm.Persist" }))
         .def("getReferencedObject", &PySmObjectReference::getReferencedObject, DS.ARGS())
         .def("setReferenceFlags", &PySmObjectReference::setReferenceFlags, DS.ARGS({ "val: PySm.SmObjectReferenceFlags" }))
@@ -875,6 +891,7 @@ void makePySmPersistProxyWrapper()
 {
     PyDocString DS("PersistProxy");
     class_<PySmPersistProxy, bases<PySmPersist>>("PersistProxy")
+        .def(init<>(DS.ARGS()))
         .def("cast", &PySmPersistProxy::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmPersistProxy::className, DS.SARGS()).staticmethod("className")
         ;
@@ -919,7 +936,7 @@ void makePySmPublishOptioneWrapper()
 {
     PyDocString DS("PublishOptions");
     class_<PySmPublishOptions, bases<PySmPersist>>("PublishOptions")
-
+        .def(init<>(DS.ARGS()))
         .def("getDefaultOutputdir", &PySmPublishOptions::getDefaultOutputdir, DS.ARGS())
         .def("setDefaultOutputdir", &PySmPublishOptions::setDefaultOutputdir)
         .def("getDwfType", &PySmPublishOptions::getDwfType, DS.ARGS())
@@ -1190,6 +1207,7 @@ void makePySmSheetSelSetWrapper()
 {
     PyDocString DS("SheetSelSet");
     class_<PySmSheetSelSet, bases<PySmComponent>>("SheetSelSet")
+        .def(init<>(DS.ARGS()))
         .def("add", &PySmSheetSelSet::add, DS.ARGS({ "val: PySm.Component" }))
         .def("remove", &PySmSheetSelSet::remove, DS.ARGS())
         .def("getComponents", &PySmSheetSelSet::getComponents, DS.ARGS())
@@ -1257,6 +1275,7 @@ void makePySmSheetSelSetsWrapper()
 {
     PyDocString DS("SheetSelSets");
     class_<PySmSheetSelSets, bases<PySmComponent>>("SheetSelSets")
+        .def(init<>(DS.ARGS()))
         .def("add", &PySmSheetSelSets::add, DS.ARGS({ "name: str","desc: str" }))
         .def("remove", &PySmSheetSelSets::remove, DS.ARGS({ "val: PySm.SheetSelSet" }))
         .def("getSheetSelSets", &PySmSheetSelSets::getSheetSelSets, DS.ARGS())
@@ -1324,6 +1343,7 @@ void makePySmSheetViewWrapper()
 {
     PyDocString DS("SheetView");
     class_<PySmSheetView, bases<PySmComponent>>("SheetView")
+        .def(init<>(DS.ARGS()))
         .def("getNamedView", &PySmSheetView::getNamedView, DS.ARGS())
         .def("setNamedView", &PySmSheetView::setNamedView, DS.ARGS({ "val: PySm.AcDbViewReference" }))
         .def("getCategory", &PySmSheetView::getCategory, DS.ARGS())
@@ -1416,6 +1436,7 @@ void makePySmSheetViewsWrapper()
 {
     PyDocString DS("SheetViews");
     class_<PySmSheetViews, bases<PySmComponent>>("SheetViews")
+        .def(init<>(DS.ARGS()))
         .def("getSheetViews", &PySmSheetViews::getSheetViews, DS.ARGS())
         .def("sync", &PySmSheetViews::sync, DS.ARGS({ "val: PySm.AcDbLayoutReference","db: PyDb.Database" }))
         .def("cast", &PySmSheetViews::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
@@ -1477,6 +1498,7 @@ void makePySmProjectPointLocationsWrapper()
 {
     PyDocString DS("ProjectPointLocations");
     class_<PySmProjectPointLocations, bases<PySmComponent>>("ProjectPointLocations")
+        .def(init<>(DS.ARGS()))
         .def("getLocation", &PySmProjectPointLocations::getLocation, DS.ARGS({ "locationName: str" }))
         .def("removeLocation", &PySmProjectPointLocations::removeLocation, DS.ARGS({ "val: PySm.ProjectPointLocation" }))
         .def("addNewLocation", &PySmProjectPointLocations::addNewLocation, DS.ARGS({ "name: str","url: str","folder: str","username: str","password: str" }))
@@ -1554,6 +1576,7 @@ void makePySmSmResourcesWrapper()
 {
     PyDocString DS("Resources");
     class_<PySmSmResources, bases<PySmComponent>>("Resources")
+        .def(init<>(DS.ARGS()))
         .def("add", &PySmSmResources::add, DS.ARGS({ "val: PySm.FileReference" }))
         .def("remove", &PySmSmResources::remove, DS.ARGS({ "val: PySm.FileReference" }))
         .def("getFileReferences", &PySmSmResources::getFileReferences, DS.ARGS())
@@ -1621,6 +1644,7 @@ void makePySmViewCategoryWrapper()
 {
     PyDocString DS("ViewCategory");
     class_<PySmViewCategory, bases<PySmComponent>>("ViewCategory")
+        .def(init<>(DS.ARGS()))
         .def("getSheetViews", &PySmViewCategory::getSheetViews, DS.ARGS())
         .def("getCalloutBlocks", &PySmViewCategory::getCalloutBlocks, DS.ARGS())
         .def("cast", &PySmViewCategory::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
@@ -1682,6 +1706,7 @@ void makePySmViewCategoriesWrapper()
 {
     PyDocString DS("ViewCategories");
     class_<PySmViewCategories, bases<PySmComponent>>("ViewCategories")
+        .def(init<>(DS.ARGS()))
         .def("getViewCategories", &PySmViewCategories::getViewCategories, DS.ARGS())
         .def("createViewCategory", &PySmViewCategories::createViewCategory, DS.ARGS({ "name: str", "desc: str", "id: str" }))
         .def("removeViewCategory", &PySmViewCategories::removeViewCategory, DS.ARGS({ "val: PySm.ViewCategory" }))
@@ -1755,11 +1780,10 @@ void makePySmCalloutBlocksWrapper()
 {
     PyDocString DS("CalloutBlocks");
     class_<PySmCalloutBlocks, bases<PySmComponent>>("CalloutBlocks")
-
+        .def(init<>(DS.ARGS()))
         .def("add", &PySmCalloutBlocks::add, DS.ARGS({ "val: PySm.DbBlockRecordReference" }))
         .def("remove", &PySmCalloutBlocks::remove, DS.ARGS({ "val: PySm.DbBlockRecordReference" }))
         .def("getDbBlockRecordReferences", &PySmCalloutBlocks::getDbBlockRecordReferences, DS.ARGS())
-
         .def("cast", &PySmCalloutBlocks::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmCalloutBlocks::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1824,6 +1848,7 @@ void makePySmSubsetWrapper()
 {
     PyDocString DS("Subset");
     class_<PySmSubset, bases<PySmComponent>>("Subset")
+        .def(init<>(DS.ARGS()))
         .def("getNewSheetLocation", &PySmSubset::getNewSheetLocation, DS.ARGS())
         .def("setNewSheetLocation", &PySmSubset::setNewSheetLocation, DS.ARGS({ "val: PySm.FileReference" }))
         .def("getDefDwtLayout", &PySmSubset::getDefDwtLayout, DS.ARGS())
@@ -1975,6 +2000,7 @@ void makePySmSheetWrapper()
 {
     PyDocString DS("Sheet");
     class_<PySmSheet, bases<PySmComponent>>("Sheet")
+        .def(init<>(DS.ARGS()))
         .def("getNumber", &PySmSheet::getNumber, DS.ARGS())
         .def("setNumber", &PySmSheet::setNumber, DS.ARGS({ "val: str" }))
         .def("getTitle", &PySmSheet::getTitle, DS.ARGS())
@@ -2121,6 +2147,23 @@ void makePySmSheetSetWrapper()
 {
     PyDocString DS("SheetSet");
     class_<PySmSheetSet, bases<PySmSubset>>("SheetSet")
+        .def(init<>(DS.ARGS()))
+        .def("getAltPageSetups", &PySmSheetSet::getAltPageSetups, DS.ARGS())
+        .def("setAltPageSetups", &PySmSheetSet::setAltPageSetups, DS.ARGS({ "val: PySm.FileReference" }))
+        .def("getDefAltPageSetup", &PySmSheetSet::getDefAltPageSetup, DS.ARGS())
+        .def("setDefAltPageSetup", &PySmSheetSet::setDefAltPageSetup, DS.ARGS({ "val: PySm.NamedDbObjectReference" }))
+        .def("getPromptForDwgName", &PySmSheetSet::getPromptForDwgName, DS.ARGS())
+        .def("setPromptForDwgName", &PySmSheetSet::setPromptForDwgName, DS.ARGS({ "val: bool" }))
+        .def("getSheetSelSets", &PySmSheetSet::getSheetSelSets, DS.ARGS())
+        .def("getResources", &PySmSheetSet::getResources, DS.ARGS())
+        .def("getCalloutBlocks", &PySmSheetSet::getCalloutBlocks, DS.ARGS())
+        .def("getViewCategories", &PySmSheetSet::getViewCategories, DS.ARGS())
+        .def("getDefLabelBlk", &PySmSheetSet::getDefLabelBlk, DS.ARGS())
+        .def("setDefLabelBlk", &PySmSheetSet::setDefLabelBlk, DS.ARGS({ "val: PySm.DbBlockRecordReference" }))
+        .def("getPublishOptions", &PySmSheetSet::getPublishOptions, DS.ARGS())
+        .def("sync", &PySmSheetSet::sync, DS.ARGS({ "db: PyDb.Database" }))
+        .def("updateSheetCustomProps", &PySmSheetSet::updateSheetCustomProps, DS.ARGS())
+
         .def("cast", &PySmSheetSet::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheetSet::className, DS.SARGS()).staticmethod("className")
         ;
@@ -2139,6 +2182,81 @@ PySmSheetSet::PySmSheetSet(PySmSheetSetImpl* ptr)
 PySmSheetSet::PySmSheetSet(const PySmSheetSetImpl& other)
     : PySmSubset(other)
 {
+}
+
+PySmFileReference PySmSheetSet::getAltPageSetups() const
+{
+   return PySmFileReference(impObj()->GetAltPageSetups());
+}
+
+void PySmSheetSet::setAltPageSetups(const PySmFileReference& alt)
+{
+    impObj()->SetAltPageSetups(*alt.impObj());
+}
+
+PySmNamedAcDbObjectReference PySmSheetSet::getDefAltPageSetup() const
+{
+    return PySmNamedAcDbObjectReference(impObj()->GetDefAltPageSetup());
+}
+
+void PySmSheetSet::setDefAltPageSetup(const PySmNamedAcDbObjectReference& alt)
+{
+    impObj()->SetDefAltPageSetup(*alt.impObj());
+}
+
+bool PySmSheetSet::getPromptForDwgName() const
+{
+    return  impObj()->GetPromptForDwgName();
+}
+
+void PySmSheetSet::setPromptForDwgName(bool flag)
+{
+    impObj()->SetPromptForDwgName(flag);
+}
+
+PySmSheetSelSets PySmSheetSet::getSheetSelSets() const
+{
+    return PySmSheetSelSets(impObj()->GetSheetSelSets());
+}
+
+PySmSmResources PySmSheetSet::getResources() const
+{
+    return PySmSmResources(impObj()->GetResources());
+}
+
+PySmCalloutBlocks PySmSheetSet::getCalloutBlocks() const
+{
+    return PySmCalloutBlocks(impObj()->GetCalloutBlocks());
+}
+
+PySmViewCategories PySmSheetSet::getViewCategories() const
+{
+    return PySmViewCategories(impObj()->GetViewCategories());
+}
+
+PySmAcDbBlockRecordReference PySmSheetSet::getDefLabelBlk() const
+{
+    return PySmAcDbBlockRecordReference(impObj()->GetDefLabelBlk());
+}
+
+void PySmSheetSet::setDefLabelBlk(const PySmAcDbBlockRecordReference& blk)
+{
+    impObj()->SetDefLabelBlk(*blk.impObj());
+}
+
+PySmPublishOptions PySmSheetSet::getPublishOptions() const
+{
+    return PySmPublishOptions(impObj()->GetPublishOptions());
+}
+
+void PySmSheetSet::sync(PyDbDatabase& pDb)
+{
+    impObj()->Sync(pDb.impObj());
+}
+
+void PySmSheetSet::updateSheetCustomProps()
+{
+    impObj()->UpdateSheetCustomProps();
 }
 
 PySmSheetSet PySmSheetSet::cast(const PySmPersist& src)
@@ -2165,6 +2283,7 @@ void makePySmDatabaseWrapper()
 {
     PyDocString DS("Database");
     class_<PySmDatabase, bases<PySmComponent>>("Database")
+        .def(init<>(DS.ARGS()))
         .def("loadFromFile", &PySmDatabase::loadFromFile)
         .def("getFileName", &PySmDatabase::getFileName)
         .def("setFileName", &PySmDatabase::setFileName)
@@ -2286,6 +2405,7 @@ void makePySmSheetSetMgrWrapper()
 {
     PyDocString DS("SheetSetMgr");
     class_<PySmSheetSetMgr>("SheetSetMgr")
+        .def(init<>(DS.ARGS()))
         .def("createDatabase", &PySmSheetSetMgr::createDatabase1)
         .def("createDatabase", &PySmSheetSetMgr::createDatabase2)
         .def("openDatabase", &PySmSheetSetMgr::openDatabase)
@@ -2296,11 +2416,9 @@ void makePySmSheetSetMgrWrapper()
         .def("getSheetFromLayout", &PySmSheetSetMgr::getSheetFromLayout)
         .def("databases", &PySmSheetSetMgr::databases)
         .def("className", &PySmSheetSetMgr::className, DS.SARGS()).staticmethod("className")
-
 #ifdef PYRXDEBUG
         .def("runTest", &PySmSheetSetMgr::runTest, DS.SARGS()).staticmethod("runTest")
 #endif
-
         ;
 }
 
