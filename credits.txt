@@ -1,4 +1,12 @@
 -==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-
+Thanks to the project's contributors
+-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-
+Canary818
+schoeller
+gswifort
+Woohoo! 
+
+-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-
 PSF LICENSE AGREEMENT FOR PYTHON 3.12.3
 -==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-
 1. This LICENSE AGREEMENT is between the Python Software Foundation ("PSF"), and
@@ -150,4 +158,20 @@ This module uses ARX
 // restrictions set forth in FAR 52.227-19 (Commercial Computer
 // Software - Restricted Rights) and DFAR 252.227-7013(c)(1)(ii)
 // (Rights in Technical Data and Computer Software), as applicable.
-//
+
+
+-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-
+This module uses BRX for BricsCAD builds
+-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-
+//https://www.bricsys.com/brx-sdk-license-agreement
+
+-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-
+This module uses ZRX for ZwCAD builds
+-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-
+https://www.zwsoft.com/
+
+-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-
+This module uses GRX for GstarCAD builds
+-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-
+https://www.gstarcad.net/
+
