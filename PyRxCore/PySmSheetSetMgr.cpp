@@ -120,8 +120,8 @@ PySmPersistImpl* PySmPersist::impObj(const std::source_location& src /*= std::so
 //PySmAcDbDatabase
 void makePySmAcDbDatabaseWrapper()
 {
-    PyDocString DS("AcDbDatabase");
-    class_<PySmAcDbDatabase>("AcDbDatabase", boost::python::no_init)
+    PyDocString DS("DbDatabase");
+    class_<PySmAcDbDatabase>("DbDatabase", boost::python::no_init)
         .def("getAcDbDatabase", &PySmAcDbDatabase::getAcDbDatabase, DS.ARGS())
         .def("className", &PySmAcDbDatabase::className, DS.SARGS()).staticmethod("className")
         ;
