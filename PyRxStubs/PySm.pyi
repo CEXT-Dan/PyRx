@@ -295,12 +295,6 @@ class LockStatus(object):
         ...
 
 class NamedDbObjectReference(DbObjectReference):
-    def GetOwnerAcDbHandle (self)-> PyDb.Handle :
-        '''                             '''
-        ...
-    def SetOwnerAcDbHandle (self, val: PyDb,Handle)-> None :
-        '''                             '''
-        ...
     def __init__ (self)-> None :
         '''                             '''
         ...
@@ -312,6 +306,18 @@ class NamedDbObjectReference(DbObjectReference):
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def getName (self)-> str :
+        '''                             '''
+        ...
+    def getOwnerAcDbHandle (self)-> PyDb.Handle :
+        '''                             '''
+        ...
+    def setName (self, val: str)-> None :
+        '''                             '''
+        ...
+    def setOwnerAcDbHandle (self, val: PyDb.Handle)-> None :
         '''                             '''
         ...
 
@@ -547,11 +553,8 @@ class PublishOptions(Persist):
     def setDefaultFilename (self, val: str)-> None :
         '''                             '''
         ...
-    def setDefaultOutputdir (self, *args, **kwargs)-> None :
-        '''setDefaultOutputdir( (PublishOptions)arg1, (FileReference)arg2) -> None :
-
-    C++ signature :
-        void setDefaultOutputdir(class PySmPublishOptions {lvalue},class PySmFileReference {lvalue})'''
+    def setDefaultOutputdir (self, val: PySm.FileReference)-> None :
+        '''                             '''
         ...
     def setDwfType (self, val: bool)-> None :
         '''                             '''
@@ -813,10 +816,10 @@ class SheetSetMgr(object):
     - filename: str, template: str, bAlwaysCreate: bool
     '''
         ...
-    def databases (self)-> list :
+    def findOpenDatabase (self, filename: str)-> PySm.Database :
         '''                             '''
         ...
-    def findOpenDatabase (self, filename: str)-> PySm.Database :
+    def getDatabases (self)-> list :
         '''                             '''
         ...
     def getParentSheetSet (self, dwg: str, dwg: layout)-> tuple[Any,...] :

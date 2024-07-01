@@ -223,6 +223,9 @@ public:
     PySmNamedAcDbObjectReference(const PySmNamedAcDbObjectReferenceImpl& other);
     static PySmNamedAcDbObjectReference cast(const PySmPersist& src);
 
+    std::string getName() const;
+    void        setName(const std::string& val);
+
     void        SetOwnerAcDbHandle(PyDbHandle& hwnd);
     PyDbHandle  GetOwnerAcDbHandle() const;
 
@@ -725,7 +728,7 @@ public:
     void                 close(PySmDatabase& db);
     boost::python::tuple getParentSheetSet(const std::string& dwg, const std::string& layout);
     boost::python::tuple getSheetFromLayout(PyDbObject& pAcDbLayout);
-    boost::python::list  databases() const;
+    boost::python::list  getDatabases() const;
     static std::string   className();
 
 #ifdef PYRXDEBUG

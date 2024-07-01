@@ -526,8 +526,10 @@ void makePySmNamedAcDbObjectReferenceWrapper()
     PyDocString DS("NamedDbObjectReference");
     class_<PySmNamedAcDbObjectReference, bases<PySmAcDbObjectReference>>("NamedDbObjectReference")
         .def(init<>(DS.ARGS()))
-        .def("SetOwnerAcDbHandle", &PySmNamedAcDbObjectReference::SetOwnerAcDbHandle, DS.ARGS({ "val: PyDb,Handle" }))
-        .def("GetOwnerAcDbHandle", &PySmNamedAcDbObjectReference::GetOwnerAcDbHandle, DS.ARGS())
+        .def("setName", &PySmNamedAcDbObjectReference::setName, DS.ARGS({ "val: str" }))
+        .def("getName", &PySmNamedAcDbObjectReference::getName, DS.ARGS())
+        .def("setOwnerAcDbHandle", &PySmNamedAcDbObjectReference::SetOwnerAcDbHandle, DS.ARGS({ "val: PyDb.Handle" }))
+        .def("getOwnerAcDbHandle", &PySmNamedAcDbObjectReference::GetOwnerAcDbHandle, DS.ARGS())
         .def("cast", &PySmNamedAcDbObjectReference::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmNamedAcDbObjectReference::className, DS.SARGS()).staticmethod("className")
         ;
@@ -551,6 +553,16 @@ PySmNamedAcDbObjectReference::PySmNamedAcDbObjectReference(const PySmNamedAcDbOb
 PySmNamedAcDbObjectReference PySmNamedAcDbObjectReference::cast(const PySmPersist& src)
 {
     return PySmObjectCast<PySmNamedAcDbObjectReference>(src);
+}
+
+std::string PySmNamedAcDbObjectReference::getName() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PySmNamedAcDbObjectReference::setName(const std::string& val)
+{
+    return impObj()->SetName(utf8_to_wstr(val).c_str());
 }
 
 void PySmNamedAcDbObjectReference::SetOwnerAcDbHandle(PyDbHandle& hwnd)
@@ -938,7 +950,7 @@ void makePySmPublishOptioneWrapper()
     class_<PySmPublishOptions, bases<PySmPersist>>("PublishOptions")
         .def(init<>(DS.ARGS()))
         .def("getDefaultOutputdir", &PySmPublishOptions::getDefaultOutputdir, DS.ARGS())
-        .def("setDefaultOutputdir", &PySmPublishOptions::setDefaultOutputdir)
+        .def("setDefaultOutputdir", &PySmPublishOptions::setDefaultOutputdir, DS.ARGS({ "val: PySm.FileReference" }))
         .def("getDwfType", &PySmPublishOptions::getDwfType, DS.ARGS())
         .def("setDwfType", &PySmPublishOptions::setDwfType, DS.ARGS({ "val: bool" }))
         .def("getPromptForName", &PySmPublishOptions::getPromptForName, DS.ARGS())
@@ -2418,7 +2430,7 @@ void makePySmSheetSetMgrWrapper()
         .def("close", &PySmSheetSetMgr::close, DS.ARGS({ "smDb: PySm.Database" }))
         .def("getParentSheetSet", &PySmSheetSetMgr::getParentSheetSet, DS.ARGS({ "dwg: str","dwg: layout" }))
         .def("getSheetFromLayout", &PySmSheetSetMgr::getSheetFromLayout, DS.ARGS({ "layout: PyDb.Object" }))
-        .def("databases", &PySmSheetSetMgr::databases, DS.ARGS())
+        .def("getDatabases", &PySmSheetSetMgr::getDatabases, DS.ARGS())
         .def("className", &PySmSheetSetMgr::className, DS.SARGS()).staticmethod("className")
 #ifdef PYRXDEBUG
         .def("runTest", &PySmSheetSetMgr::runTest, DS.SARGS()).staticmethod("runTest")
@@ -2477,7 +2489,7 @@ boost::python::tuple PySmSheetSetMgr::getSheetFromLayout(PyDbObject& pAcDbLayout
     return boost::python::make_tuple();
 }
 
-boost::python::list PySmSheetSetMgr::databases() const
+boost::python::list PySmSheetSetMgr::getDatabases() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
