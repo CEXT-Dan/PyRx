@@ -1570,7 +1570,7 @@ PySmProjectPointLocations PySmProjectPointLocations::cast(const PySmPersist& src
 
 std::string PySmProjectPointLocations::className()
 {
-    return "IAcSmProjectPointLocations";
+    return "AcSmProjectPointLocations";
 }
 
 PySmProjectPointLocationsImpl* PySmProjectPointLocations::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2409,7 +2409,6 @@ PySmDatabaseImpl* PySmDatabase::impObj(const std::source_location& src /*= std::
     return static_cast<PySmDatabaseImpl*>(m_pyImp.get());
 }
 
-
 //-----------------------------------------------------------------------------------------
 //PySmSheetSetMgr
 void makePySmSheetSetMgrWrapper()
@@ -2417,7 +2416,6 @@ void makePySmSheetSetMgrWrapper()
     constexpr const std::string_view createDatabaseOverloads = "Overloads:\n"
         "- filename: str\n"
         "- filename: str, template: str, bAlwaysCreate: bool\n";
-
 
     PyDocString DS("SheetSetMgr");
     class_<PySmSheetSetMgr>("SheetSetMgr")
@@ -2477,16 +2475,14 @@ boost::python::tuple PySmSheetSetMgr::getParentSheetSet(const std::string& dwg, 
 {
     PyAutoLockGIL lock;
     const auto& val = impObj()->GetParentSheetSet(utf8_to_wstr(dwg).c_str(), utf8_to_wstr(layout).c_str());
-    //
-    return boost::python::make_tuple();
+    return boost::python::make_tuple(PySmDatabase(val.first), PySmSheetSet(val.second));
 }
 
 boost::python::tuple PySmSheetSetMgr::getSheetFromLayout(PyDbObject& pAcDbLayout)
 {
     PyAutoLockGIL lock;
     const auto& val = impObj()->GetSheetFromLayout(pAcDbLayout.impObj());
-    //
-    return boost::python::make_tuple();
+    return boost::python::make_tuple(PySmDatabase(val.first), PySmSheet(val.second));
 }
 
 boost::python::list PySmSheetSetMgr::getDatabases() const
