@@ -10,20 +10,6 @@ import PySm
 from typing import overload
 from typing import Any
 
-class AcDbDatabase(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
-    @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def getAcDbDatabase (self)-> PySm.Database :
-        '''                             '''
-        ...
-
 class CalloutBlocks(Component):
     def __init__ (self)-> None :
         '''                             '''
@@ -41,7 +27,7 @@ class CalloutBlocks(Component):
     def className ()-> str :
         '''                             '''
         ...
-    def getDbBlockRecordReferences (self)-> list :
+    def getDbBlockRecordReferences (self)-> list[PySm.DbBlockRecordReference] :
         '''                             '''
         ...
     def remove (self, val: PySm.DbBlockRecordReference)-> None :
@@ -93,10 +79,10 @@ class CustomPropertyBag(Persist):
     def className ()-> str :
         '''                             '''
         ...
-    def getProperties (self)-> list :
+    def getProperties (self)-> list[tuple[str,PySm.CustomPropertyValue]] :
         '''                             '''
         ...
-    def getPropertyValues (self)-> list :
+    def getPropertyValues (self)-> list[tuple[str,PyDb.AcValue]] :
         '''                             '''
         ...
     def getValue (self, prop: str)-> PySm.CustomPropertyValue :
@@ -150,13 +136,13 @@ class Database(Component):
     def getFileName (self)-> str :
         '''                             '''
         ...
-    def getLockOwnerInfo (self)-> tuple[Any,...] :
+    def getLockOwnerInfo (self)-> tuple[str,str] :
         '''                             '''
         ...
     def getLockStatus (self)-> PySm.LockStatus :
         '''                             '''
         ...
-    def getPersistObjects (self)-> list :
+    def getPersistObjects (self)-> list[PySm.Persist] :
         '''                             '''
         ...
     def getSheetSet (self)-> PySm.SheetSet :
@@ -193,6 +179,20 @@ class DbBlockRecordReference(NamedDbObjectReference):
         '''                             '''
         ...
 
+class DbDatabase(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+    def getAcDbDatabase (self)-> PySm.Database :
+        '''                             '''
+        ...
+
 class DbLayoutReference(NamedDbObjectReference):
     def __init__ (self)-> None :
         '''                             '''
@@ -225,7 +225,7 @@ class DbObjectReference(FileReference):
     def getAcDbHandle (self)-> PyDb.Handle :
         '''                             '''
         ...
-    def getAcSmAcDbDatabase (self)-> PySm.AcDbDatabase :
+    def getAcSmAcDbDatabase (self)-> PySm.DbDatabase :
         '''                             '''
         ...
     def resolveAcDbObject (self, db: PyDb.Database)-> PyDb.Handle :
@@ -607,7 +607,7 @@ class Resources(Component):
     def className ()-> str :
         '''                             '''
         ...
-    def getFileReferences (self)-> list :
+    def getFileReferences (self)-> list[PySm.FileReference] :
         '''                             '''
         ...
     def remove (self, val: PySm.FileReference)-> None :
@@ -697,7 +697,7 @@ class SheetSelSet(Component):
     def className ()-> str :
         '''                             '''
         ...
-    def getComponents (self)-> list :
+    def getComponents (self)-> list[PySm.Component] :
         '''                             '''
         ...
     def remove (self)-> None :
@@ -721,7 +721,7 @@ class SheetSelSets(Component):
     def className ()-> str :
         '''                             '''
         ...
-    def getSheetSelSets (self)-> list :
+    def getSheetSelSets (self)-> list[PySm.SheetSelSet] :
         '''                             '''
         ...
     def remove (self, val: PySm.SheetSelSet)-> None :
@@ -819,13 +819,13 @@ class SheetSetMgr(object):
     def findOpenDatabase (self, filename: str)-> PySm.Database :
         '''                             '''
         ...
-    def getDatabases (self)-> list :
+    def getDatabases (self)-> list[PySm.Database] :
         '''                             '''
         ...
-    def getParentSheetSet (self, dwg: str, dwg: layout)-> tuple[Any,...] :
+    def getParentSheetSet (self, dwg: str, dwg: layout)-> tuple[PySm.Database,PySm.SheetSet] :
         '''                             '''
         ...
-    def getSheetFromLayout (self, layout: PyDb.Object)-> tuple[Any,...] :
+    def getSheetFromLayout (self, layout: PyDb.Object)-> tuple[PySm.Database,PySm.Sheet] :
         '''                             '''
         ...
     def openDatabase (self, filename: str)-> PySm.Database :
@@ -890,7 +890,7 @@ class SheetViews(Component):
     def className ()-> str :
         '''                             '''
         ...
-    def getSheetViews (self)-> list :
+    def getSheetViews (self)-> list[PySm.SheetView] :
         '''                             '''
         ...
     def sync (self, val: PySm.AcDbLayoutReference, db: PyDb.Database)-> None :
@@ -929,7 +929,7 @@ class Subset(Component):
     def getPromptForDwt (self)-> bool :
         '''                             '''
         ...
-    def getSheets (self)-> list :
+    def getSheets (self)-> list[PySm.Sheet] :
         '''                             '''
         ...
     def importSheet (self, val: PySm.DbLayoutReference)-> PySm.Sheet :
@@ -983,7 +983,7 @@ class ViewCategories(Component):
     def getDefaultViewCategory (self)-> PySm.ViewCategory :
         '''                             '''
         ...
-    def getViewCategories (self)-> list :
+    def getViewCategories (self)-> list[PySm.ViewCategory] :
         '''                             '''
         ...
     def removeViewCategory (self, val: PySm.ViewCategory)-> None :
@@ -1007,6 +1007,6 @@ class ViewCategory(Component):
     def getCalloutBlocks (self)-> PySm.CalloutBlocks :
         '''                             '''
         ...
-    def getSheetViews (self)-> list :
+    def getSheetViews (self)-> list[PySm.SheetView] :
         '''                             '''
         ...

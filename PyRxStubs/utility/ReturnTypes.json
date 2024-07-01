@@ -1629,6 +1629,70 @@
         [
             "PyDb::Table::cellStrValues",
             "list[tuple[int,int,str]]"
+        ],
+        [
+            "PyDb::Field::evaluate",
+            "tuple[int,int]"
+        ],
+        [
+            "PySm::ViewCategory::getSheetViews",
+            "list[PySm.SheetView]"
+        ],
+        [
+            "PySm::ViewCategories::getViewCategories",
+            "list[PySm.ViewCategory]"
+        ],
+        [
+            "PySm::Subset::getSheets",
+            "list[PySm.Sheet]"
+        ],
+        [
+            "PySm::SheetViews::getSheetViews",
+            "list[PySm.SheetView]"
+        ],
+        [
+            "PySm::SheetSetMgr::getSheetFromLayout",
+            "tuple[PySm.Database,PySm.Sheet]"
+        ],
+        [
+            "PySm::SheetSetMgr::getParentSheetSet",
+            "tuple[PySm.Database,PySm.SheetSet]"
+        ],
+        [
+            "PySm::SheetSelSets::getSheetSelSets",
+            "list[PySm.SheetSelSet]"
+        ],
+        [
+            "PySm::SheetSelSet::getComponents",
+            "list[PySm.Component]"
+        ],
+        [
+            "PySm::Resources::getFileReferences",
+            "list[PySm.FileReference]"
+        ],
+        [
+            "PySm::SheetSetMgr::getDatabases",
+            "list[PySm.Database]"
+        ],
+        [
+            "PySm::Database::getPersistObjects",
+            "list[PySm.Persist]"
+        ],
+        [
+            "PySm::Database::getLockOwnerInfo",
+            "tuple[str,str]"
+        ],
+        [
+            "PySm::CustomPropertyBag::getPropertyValues",
+            "list[tuple[str,PyDb.AcValue]]"
+        ],
+        [
+            "PySm::CustomPropertyBag::getProperties",
+            "list[tuple[str,PySm.CustomPropertyValue]]"
+        ],
+        [
+            "PySm::CalloutBlocks::getDbBlockRecordReferences",
+            "list[PySm.DbBlockRecordReference]"
         ]
     ]
 }
