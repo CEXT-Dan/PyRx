@@ -10,6 +10,10 @@ def CheckTestResults(path):
                     testPass = False
                     print("\n", line.rstrip(" ... FAIL\n"), "test failed")
 
+                elif line[-10:] == "... ERROR\n":
+                    testPass = False
+                    print("\n", line.rstrip(" ... ERROR\n"), "test failed")
+
         if testPass == True:
             print("\nPASS")
         
