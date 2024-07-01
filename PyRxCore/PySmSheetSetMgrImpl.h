@@ -145,7 +145,7 @@ public:
     virtual ~PySmNamedAcDbObjectReferenceImpl() override = default;
     void        SetName(const CString& name);
     CString     GetName() const;
-    void        SetOwnerAcDbHandle(AcDbHandle& hwnd);
+    void        SetOwnerAcDbHandle(const AcDbHandle& hwnd);
     AcDbHandle  GetOwnerAcDbHandle() const;
 
     IAcSmNamedAcDbObjectReference* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -229,7 +229,7 @@ public:
     PySmObjectReferenceImpl(IAcSmObjectReference* other);
     PySmObjectReferenceImpl(const PySmObjectReferenceImpl& other) = default;
 
-    void            SetReferencedObject(PySmPersistImpl& pObject);
+    void            SetReferencedObject(const PySmPersistImpl& pObject);
     PySmPersistImpl GetReferencedObject() const;
     AcSmObjectReferenceFlags GetReferenceFlags() const;
     void                     SetReferenceFlags(AcSmObjectReferenceFlags flags);
@@ -294,7 +294,7 @@ public:
     virtual ~PySmPublishOptionsImpl() override = default;
 
     PySmFileReferenceImpl   GetDefaultOutputdir() const;
-    void                    SetDefaultOutputdir(PySmFileReferenceImpl& val);
+    void                    SetDefaultOutputdir(const PySmFileReferenceImpl& val);
     bool                    GetDwfType() const;
     void                    SetDwfType(bool val);
     bool                    GetPromptForName() const;
@@ -307,9 +307,9 @@ public:
     void                    SetLayerInfo(bool val);
 
     PySmCustomPropertyBagImpl   GetUnrecognizedData() const;
-    void                        SetUnrecognizedData(PySmCustomPropertyBagImpl& val);
+    void                        SetUnrecognizedData(const PySmCustomPropertyBagImpl& val);
     PySmCustomPropertyBagImpl   GetUnrecognizedSections() const;
-    void                        SetUnrecognizedSections(PySmCustomPropertyBagImpl& val);
+    void                        SetUnrecognizedSections(const PySmCustomPropertyBagImpl& val);
 
     //2
     bool                    GetIncludeSheetSetData() const;
@@ -365,8 +365,8 @@ public:
     PySmSheetSelSetImpl(const PySmSheetSelSetImpl& other) = default;
     virtual ~PySmSheetSelSetImpl() override = default;
 
-    void    Add(PySmComponentImpl& val);
-    void    Remove(PySmComponentImpl& val);
+    void    Add(const PySmComponentImpl& val);
+    void    Remove(const PySmComponentImpl& val);
     PySmComponentArray GetComponents() const;
 
     IAcSmSheetSelSet* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -383,7 +383,7 @@ public:
     virtual ~PySmSheetSelSetsImpl() override = default;
 
     PySmSheetSelSetImpl Add(const CString& name, const CString& desc);
-    void Remove(PySmSheetSelSetImpl& ss);
+    void Remove(const PySmSheetSelSetImpl& ss);
     PySmSheetSelSetArray GetSheetSelSets() const;
 
     IAcSmSheetSelSets* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -399,8 +399,8 @@ public:
     PySmResourcesImpl(const PySmResourcesImpl& other) = default;
     virtual ~PySmResourcesImpl() override = default;
 
-    void        Add(PySmFileReferenceImpl& val);
-    void        Remove(PySmFileReferenceImpl& val);
+    void        Add(const PySmFileReferenceImpl& val);
+    void        Remove(const PySmFileReferenceImpl& val);
     PySmFileReferenceArray GetFileReferences();
 
     IAcSmResources* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -434,7 +434,7 @@ public:
 
     PySmViewCategoryArray   GetPySmViewCategorys(); //gramma
     PySmViewCategoryImpl    CreateViewCategory(const CString& csName, const CString& csDesc, const CString& csId);
-    void                    RemoveViewCategory(PySmViewCategoryImpl& cat);
+    void                    RemoveViewCategory(const PySmViewCategoryImpl& cat);
     PySmViewCategoryImpl    GetDefaultViewCategory();
 
     IAcSmViewCategories* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -451,10 +451,10 @@ public:
     virtual ~PySmSheetViewImpl() override = default;
 
     PySmAcDbViewReferenceImpl   GetNamedView() const;
-    void SetNamedView(PySmAcDbViewReferenceImpl& view);
+    void SetNamedView(const PySmAcDbViewReferenceImpl& view);
 
     PySmViewCategoryImpl        GetCategory() const;
-    void SetCategory(PySmViewCategoryImpl& view);
+    void SetCategory(const PySmViewCategoryImpl& view);
 
     CString GetNumber() const;
     void    SetNumber(const CString& csVal);
@@ -476,7 +476,7 @@ public:
     virtual ~PySmSheetViewsImpl() override = default;
 
     PySmSheetViewArray GetSheetViews() const;
-    void               Sync(PySmAcDbLayoutReferenceImpl& lref, AcDbDatabase* pDb);
+    void               Sync(const PySmAcDbLayoutReferenceImpl& lref, AcDbDatabase* pDb);
 
     IAcSmSheetViews* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -492,7 +492,7 @@ public:
     virtual ~PySmProjectPointLocationsImpl() override = default;
 
     PySmProjectPointLocationImpl GetLocation(const CString& locationName) const;
-    void RemoveLocation(PySmProjectPointLocationImpl& val);
+    void RemoveLocation(const PySmProjectPointLocationImpl& val);
     PySmProjectPointLocationImpl AddNewLocation(const CString& name, const CString& url, const CString& folder, const CString& username, const CString& password);
     PySmProjectPointLocationArray GetProjectPointLocations() const;
 
@@ -509,8 +509,8 @@ public:
     PySmCalloutBlocksImpl(const PySmCalloutBlocksImpl& other) = default;
     virtual ~PySmCalloutBlocksImpl() override = default;
 
-    void Add(PySmAcDbBlockRecordReferenceImpl& blkRef);
-    void Remove(PySmAcDbBlockRecordReferenceImpl& blkRef);
+    void Add(const PySmAcDbBlockRecordReferenceImpl& blkRef);
+    void Remove(const PySmAcDbBlockRecordReferenceImpl& blkRef);
     PySmAcDbBlockRecordReferenceArray getAcDbBlockRecordReferences() const;
 
     IAcSmCalloutBlocks* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -527,10 +527,10 @@ public:
     virtual ~PySmSubsetImpl() override = default;
 
     PySmFileReferenceImpl GetNewSheetLocation();
-    void SetNewSheetLocation(PySmFileReferenceImpl& fref);
+    void SetNewSheetLocation(const PySmFileReferenceImpl& fref);
 
     PySmAcDbLayoutReferenceImpl GetDefDwtLayout() const;
-    void SetDefDwtLayout(PySmAcDbLayoutReferenceImpl& fref);
+    void SetDefDwtLayout(const PySmAcDbLayoutReferenceImpl& fref);
 
     bool GetPromptForDwt() const;
     void SetPromptForDwt(bool val);
@@ -538,14 +538,14 @@ public:
     PySmSheetArray  GetSheets() const;
     PySmSheetImpl   AddNewSheet(const CString& name, const CString& desc);
 
-    void InsertComponent(PySmComponentImpl& newSheet, PySmComponentImpl& beforeComp);
-    void InsertComponentAfter(PySmComponentImpl& newSheet, PySmComponentImpl& afterComp);
+    void InsertComponent(const PySmComponentImpl& newSheet, const PySmComponentImpl& beforeComp);
+    void InsertComponentAfter(const PySmComponentImpl& newSheet, const PySmComponentImpl& afterComp);
 
-    PySmSheetImpl ImportSheet(PySmAcDbLayoutReferenceImpl& fref);
-    void RemoveSheet(PySmSheetImpl& val);
+    PySmSheetImpl ImportSheet(const PySmAcDbLayoutReferenceImpl& fref);
+    void RemoveSheet(const PySmSheetImpl& val);
 
     PySmSubsetImpl CreateSubset(const CString& name, const CString& desc);
-    void RemoveSubset(PySmSubsetImpl& val);
+    void RemoveSubset(const PySmSubsetImpl& val);
     void UpdateInMemoryDwgHints();
 
     bool GetOverrideSheetPublish() const;
@@ -608,7 +608,7 @@ public:
     bool        GetDoNotPlot() const;
     void        SetDoNotPlot(bool flag);
     PySmAcDbLayoutReferenceImpl GetLayout();
-    void SetLayout(PySmAcDbLayoutReferenceImpl& val);
+    void SetLayout(const PySmAcDbLayoutReferenceImpl& val);
     PySmSheetViewsImpl GetSheetViews() const;
 
     CString     GetRevisionNumber() const;
@@ -658,7 +658,7 @@ public:
     PySmDatabaseImpl  OpenDatabase(const CString& filename);
     PySmDatabaseImpl  FindOpenDatabase(const CString& filename);
     void              CloseAll();
-    void              Close(PySmDatabaseImpl& db);
+    void              Close(const PySmDatabaseImpl& db);
 
     //int Register(IAcSmEvents eventHandler);
     //void Unregister(int cookie);
