@@ -143,7 +143,8 @@ public:
     PySmNamedAcDbObjectReferenceImpl(IAcSmNamedAcDbObjectReference* other);
     PySmNamedAcDbObjectReferenceImpl(const PySmNamedAcDbObjectReferenceImpl& other) = default;
     virtual ~PySmNamedAcDbObjectReferenceImpl() override = default;
-
+    void        SetName(const CString& name);
+    CString     GetName() const;
     void        SetOwnerAcDbHandle(AcDbHandle& hwnd);
     AcDbHandle  GetOwnerAcDbHandle() const;
 

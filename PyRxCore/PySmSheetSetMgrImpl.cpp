@@ -327,6 +327,19 @@ PySmNamedAcDbObjectReferenceImpl::PySmNamedAcDbObjectReferenceImpl(IAcSmNamedAcD
 {
 }
 
+void PySmNamedAcDbObjectReferenceImpl::SetName(const CString& name)
+{
+    _bstr_t bstrVal{ name };
+    PyThrowBadHr(impObj()->SetName(bstrVal));
+}
+
+CString PySmNamedAcDbObjectReferenceImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
 void PySmNamedAcDbObjectReferenceImpl::SetOwnerAcDbHandle(AcDbHandle& hwnd)
 {
     std::array<wchar_t, AcDbHandle::kStrSiz> buffer{ 0 };
