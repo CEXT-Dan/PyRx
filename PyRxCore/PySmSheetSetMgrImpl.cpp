@@ -1570,6 +1570,11 @@ PySmSheetImpl PySmSubsetImpl::AddNewSheet(const CString& name, const CString& de
     return PySmSheetImpl(ptr);
 }
 
+void PySmSubsetImpl::InsertComponentFirst(const PySmComponentImpl& newSheet)
+{
+    PyThrowBadHr(impObj()->InsertComponent(newSheet.impObj(), nullptr));
+}
+
 void PySmSubsetImpl::InsertComponent(const PySmComponentImpl& newSheet, const  PySmComponentImpl& beforeComp)
 {
     PyThrowBadHr(impObj()->InsertComponent(newSheet.impObj(), beforeComp.impObj()));
