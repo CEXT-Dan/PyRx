@@ -2298,8 +2298,8 @@ PySmSheetSetImpl* PySmSheetSet::impObj(const std::source_location& src /*= std::
 //PySmSmDatabase
 void makePySmDatabaseWrapper()
 {
-    PyDocString DS("Database");
-    class_<PySmDatabase, bases<PySmComponent>>("Database")
+    PyDocString DS("PySm.SmDatabase");
+    class_<PySmDatabase, bases<PySmComponent>>("SmDatabase")
         .def(init<>(DS.ARGS()))
         .def("loadFromFile", &PySmDatabase::loadFromFile, DS.ARGS({ "filename: str" }))
         .def("getFileName", &PySmDatabase::getFileName, DS.ARGS())

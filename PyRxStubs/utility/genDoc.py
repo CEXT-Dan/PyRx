@@ -381,7 +381,8 @@ def generate_html_help(moduleName, module):
     str = pydoc.html.docmodule(module)
     with open(moduleName, mode='w') as f:
 	    print(str, file=f)
-
+     
+#TODO resolve modules prefixes PyDb.Database vs PySmDatabase
 def PyRxCmd_pygenpyi():
     try:
         dsdict = {}
