@@ -538,6 +538,7 @@ public:
     PySmSheetArray  GetSheets() const;
     PySmSheetImpl   AddNewSheet(const CString& name, const CString& desc);
 
+    void InsertComponentFirst(const PySmComponentImpl& newSheet);
     void InsertComponent(const PySmComponentImpl& newSheet, const PySmComponentImpl& beforeComp);
     void InsertComponentAfter(const PySmComponentImpl& newSheet, const PySmComponentImpl& afterComp);
 

@@ -29,6 +29,9 @@ inline CStringA formatfname(const char* pname)
     str.Replace("std::basic_string< char,struct std::char_traits<char>, std::allocator<char> >", "std::string");
     str.Replace("std::basic_string<char,struct std::char_traits<char>, std::allocator<char> >", "std::string");
     str.Replace("std::basic_string<char,struct std::char_traits<char>, std::allocator<char>>", "std::string");
+    str.Replace("ATL::CStringT< wchar_t, StrTraitMFC_DLL<wchar_t, ATL::ChTraitsCRT<wchar_t> > >", "CString");
+    str.Replace("ATL::CStringT<wchar_t, StrTraitMFC_DLL<wchar_t, ATL::ChTraitsCRT<wchar_t> > >", "CString");
+    str.Replace("ATL::CStringT<wchar_t, StrTraitMFC_DLL<wchar_t, ATL::ChTraitsCRT<wchar_t>>>", "CString");
     while (str.Replace("  ", " "));
     str.Trim();
     return str;

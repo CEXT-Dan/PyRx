@@ -603,6 +603,7 @@ public:
     void                setPromptForDwt(bool val);
     boost::python::list getSheets() const;
     PySmSheet           addNewSheet(const std::string& name, const std::string& desc);
+    void                insertComponentFirst(PySmComponent& newSheet);
     void                insertComponent(PySmComponent& newSheet, PySmComponent& beforeComp);
     void                insertComponentAfter(PySmComponent& newSheet, PySmComponent& afterComp);
     PySmSheet           importSheet(PySmAcDbLayoutReference& fref);

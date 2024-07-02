@@ -1868,6 +1868,7 @@ void makePySmSubsetWrapper()
         .def("setPromptForDwt", &PySmSubset::setPromptForDwt, DS.ARGS({ "val: bool" }))
         .def("getSheets", &PySmSubset::getSheets, DS.ARGS())
         .def("addNewSheet", &PySmSubset::addNewSheet, DS.ARGS({ "name: str","desc: str" }))
+        .def("insertComponentFirst", &PySmSubset::insertComponentFirst, DS.ARGS({ "newSheet: PySm.Component" }))
         .def("insertComponent", &PySmSubset::insertComponent, DS.ARGS({ "newSheet: PySm.Component","beforeSheet: PySm.Component" }))
         .def("insertComponentAfter", &PySmSubset::insertComponentAfter, DS.ARGS({ "newSheet: PySm.Component","afterSheet: PySm.Component" }))
         .def("importSheet", &PySmSubset::importSheet, DS.ARGS({ "val: PySm.DbLayoutReference" }))
@@ -1940,6 +1941,11 @@ boost::python::list PySmSubset::getSheets() const
 PySmSheet PySmSubset::addNewSheet(const std::string& name, const std::string& desc)
 {
     return PySmSheet(impObj()->AddNewSheet(utf8_to_wstr(name).c_str(), utf8_to_wstr(desc).c_str()));
+}
+
+void PySmSubset::insertComponentFirst(PySmComponent& newSheet)
+{
+    impObj()->InsertComponentFirst(*newSheet.impObj());
 }
 
 void PySmSubset::insertComponent(PySmComponent& newSheet, PySmComponent& beforeComp)
