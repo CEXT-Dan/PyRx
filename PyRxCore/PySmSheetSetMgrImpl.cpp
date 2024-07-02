@@ -196,14 +196,14 @@ PySmPersistImpl PySmObjectIdImpl::GetOwner() const
 
 bool PySmObjectIdImpl::IsEqual(const PySmObjectIdImpl& other)
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->IsEqual(other.impObj(), &rtVal));
     return rtVal == VARIANT_TRUE;
 }
 
 bool PySmObjectIdImpl::IsValid()
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->IsValid(&rtVal));
     return rtVal == VARIANT_TRUE;
 }
@@ -231,7 +231,7 @@ PySmFileReferenceImpl::PySmFileReferenceImpl(IAcSmFileReference* other)
 
 void PySmFileReferenceImpl::SetFileName(const CString& csVal)
 {
-    _bstr_t bstrVal(csVal);
+    _bstr_t bstrVal{ csVal };
     PyThrowBadHr(impObj()->SetFileName(bstrVal));
 }
 
@@ -527,7 +527,7 @@ PySmCustomPropertyBagImpl::PySmCustomPropertyBagImpl(IAcSmCustomPropertyBag* oth
 
 PySmCustomPropertyValueImpl PySmCustomPropertyBagImpl::GetProperty(const CString& propName) const
 {
-    _bstr_t bstrName(propName);
+    _bstr_t bstrName{ propName };
     IAcSmCustomPropertyValue* pProp = nullptr;
     PyThrowBadHr(impObj()->GetProperty(bstrName, &pProp));
     return PySmCustomPropertyValueImpl(pProp);
@@ -611,7 +611,7 @@ PySmPersistImpl PySmObjectReferenceImpl::GetReferencedObject() const
 
 AcSmObjectReferenceFlags PySmObjectReferenceImpl::GetReferenceFlags() const
 {
-    AcSmObjectReferenceFlags flags;
+    AcSmObjectReferenceFlags flags = AcSmObjectReference_SoftPointer;
     PyThrowBadHr(impObj()->GetReferenceFlags(&flags));
     return flags;
 }
@@ -652,7 +652,7 @@ CString PySmProjectPointLocationImpl::GetURL() const
 
 void PySmProjectPointLocationImpl::SetURL(const CString& csVal)
 {
-    _bstr_t bstrVal(csVal);
+    _bstr_t bstrVal{ csVal };
     PyThrowBadHr(impObj()->SetURL(bstrVal));
 }
 
@@ -665,7 +665,7 @@ CString PySmProjectPointLocationImpl::GetFolder() const
 
 void PySmProjectPointLocationImpl::SetFolder(const CString& csVal)
 {
-    _bstr_t bstrVal(csVal);
+    _bstr_t bstrVal{ csVal };
     PyThrowBadHr(impObj()->SetFolder(bstrVal));
 }
 
@@ -678,7 +678,7 @@ CString PySmProjectPointLocationImpl::GetUsername() const
 
 void PySmProjectPointLocationImpl::SetUsername(const CString& csVal)
 {
-    _bstr_t bstrVal(csVal);
+    _bstr_t bstrVal{ csVal };
     PyThrowBadHr(impObj()->SetUsername(bstrVal));
 }
 
@@ -691,7 +691,7 @@ CString PySmProjectPointLocationImpl::GetPassword() const
 
 void PySmProjectPointLocationImpl::SetPassword(const CString& csVal)
 {
-    _bstr_t bstrVal(csVal);
+    _bstr_t bstrVal{ csVal };
     PyThrowBadHr(impObj()->SetPassword(bstrVal));
 }
 
@@ -790,7 +790,7 @@ void PySmPublishOptionsImpl::SetDefaultOutputdir(const PySmFileReferenceImpl& va
 
 bool PySmPublishOptionsImpl::GetDwfType() const
 {
-    VARIANT_BOOL flag;
+    VARIANT_BOOL flag = VARIANT_FALSE;
     PyThrowBadHr(impObj()->GetDwfType(&flag));
     return flag == VARIANT_TRUE;
 }
@@ -802,7 +802,7 @@ void PySmPublishOptionsImpl::SetDwfType(bool val)
 
 bool PySmPublishOptionsImpl::GetPromptForName() const
 {
-    VARIANT_BOOL flag;
+    VARIANT_BOOL flag = VARIANT_FALSE;
     PyThrowBadHr(impObj()->GetPromptForName(&flag));
     return flag == VARIANT_TRUE;
 }
@@ -814,7 +814,7 @@ void PySmPublishOptionsImpl::SetPromptForName(bool val)
 
 bool PySmPublishOptionsImpl::GetUsePassword() const
 {
-    VARIANT_BOOL flag;
+    VARIANT_BOOL flag = VARIANT_FALSE;
     PyThrowBadHr(impObj()->GetUsePassword(&flag));
     return flag == VARIANT_TRUE;
 }
@@ -826,7 +826,7 @@ void PySmPublishOptionsImpl::SetUsePassword(bool val)
 
 bool PySmPublishOptionsImpl::GetPromptForPassword() const
 {
-    VARIANT_BOOL flag;
+    VARIANT_BOOL flag = VARIANT_FALSE;
     PyThrowBadHr(impObj()->GetPromptForPassword(&flag));
     return flag == VARIANT_TRUE;
 }
@@ -838,7 +838,7 @@ void PySmPublishOptionsImpl::SetPromptForPassword(bool val)
 
 bool PySmPublishOptionsImpl::GetLayerInfo() const
 {
-    VARIANT_BOOL flag;
+    VARIANT_BOOL flag = VARIANT_FALSE;
     PyThrowBadHr(impObj()->GetLayerInfo(&flag));
     return flag == VARIANT_TRUE;
 }
@@ -877,7 +877,7 @@ bool PySmPublishOptionsImpl::GetIncludeSheetSetData() const
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
 #else
-    VARIANT_BOOL flag;
+    VARIANT_BOOL flag = VARIANT_FALSE;
     PyThrowBadHr(impObj2()->GetLayerInfo(&flag));
     return flag == VARIANT_TRUE;
 #endif
@@ -897,7 +897,7 @@ bool PySmPublishOptionsImpl::GetIncludeSheetData() const
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
 #else
-    VARIANT_BOOL flag;
+    VARIANT_BOOL flag = VARIANT_FALSE;
     PyThrowBadHr(impObj2()->GetIncludeSheetData(&flag));
     return flag == VARIANT_TRUE;
 #endif
@@ -937,7 +937,7 @@ bool PySmPublishOptionsImpl::GetLinesMerge() const
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
 #else
-    VARIANT_BOOL flag;
+    VARIANT_BOOL flag = VARIANT_FALSE;
     PyThrowBadHr(impObj4()->GetLinesMerge(&flag));
     return flag == VARIANT_TRUE;
 #endif
@@ -968,7 +968,7 @@ void PySmPublishOptionsImpl::SetDefaultFilename(const CString& csVal)
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
 #else
-    _bstr_t bstrVal(csVal);
+    _bstr_t bstrVal{ csVal };
     PyThrowBadHr(impObj4()->SetDefaultFilename(bstrVal));
 #endif
 }
@@ -1050,7 +1050,7 @@ CString PySmComponentImpl::GetDesc() const
 
 void PySmComponentImpl::SetDesc(const CString& csDesc)
 {
-    _bstr_t bstrDesc(csDesc);
+    _bstr_t bstrDesc{ csDesc };
     PyThrowBadHr(impObj()->SetDesc(bstrDesc));
 }
 
@@ -1126,8 +1126,8 @@ PySmSheetSelSetsImpl::PySmSheetSelSetsImpl(IAcSmSheetSelSets* other)
 
 PySmSheetSelSetImpl PySmSheetSelSetsImpl::Add(const CString& name, const CString& desc)
 {
-    _bstr_t bstrName(name);
-    _bstr_t bstrDeck(desc);
+    _bstr_t bstrName{ name };
+    _bstr_t bstrDeck{ desc };
     IAcSmSheetSelSet* ptr = nullptr;
     PyThrowBadHr(impObj()->Add(bstrName, bstrDeck, &ptr));
     return PySmSheetSelSetImpl(ptr);
@@ -1264,9 +1264,9 @@ PySmViewCategoryArray PySmViewCategoriesImpl::GetPySmViewCategorys()
 
 PySmViewCategoryImpl PySmViewCategoriesImpl::CreateViewCategory(const CString& csName, const CString& csDesc, const CString& csId)
 {
-    _bstr_t bstrName(csName);
-    _bstr_t bstrDesc(csDesc);
-    _bstr_t bstrId(csId);
+    _bstr_t bstrName{ csName };
+    _bstr_t bstrDesc{ csDesc };
+    _bstr_t bstrId{ csId };
     IAcSmViewCategory* ptr = nullptr;
     PyThrowBadHr(impObj()->CreateViewCategory(bstrName, bstrDesc, bstrId, &ptr));
     return PySmViewCategoryImpl(ptr);
@@ -1540,7 +1540,7 @@ void PySmSubsetImpl::SetDefDwtLayout(const PySmAcDbLayoutReferenceImpl& fref)
 
 bool PySmSubsetImpl::GetPromptForDwt() const
 {
-    VARIANT_BOOL flag;
+    VARIANT_BOOL flag = VARIANT_FALSE;
     PyThrowBadHr(impObj()->GetPromptForDwt(&flag));
     return flag == VARIANT_TRUE;
 }
@@ -1621,7 +1621,7 @@ bool PySmSubsetImpl::GetOverrideSheetPublish() const
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
 #else
-    VARIANT_BOOL flag;
+    VARIANT_BOOL flag = VARIANT_FALSE;
     PyThrowBadHr(impObj2()->GetOverrideSheetPublish(&flag));
     return flag == VARIANT_TRUE;
 #endif
@@ -1697,7 +1697,7 @@ void PySmSheetSetImpl::SetDefAltPageSetup(const PySmNamedAcDbObjectReferenceImpl
 
 bool PySmSheetSetImpl::GetPromptForDwgName() const
 {
-    VARIANT_BOOL flag;
+    VARIANT_BOOL flag = VARIANT_FALSE;
     PyThrowBadHr(impObj()->GetPromptForDwgName(&flag));
     return flag == VARIANT_TRUE;
 }
@@ -1828,7 +1828,7 @@ void PySmSheetImpl::SetTitle(const CString& csVal)
 
 bool PySmSheetImpl::GetDoNotPlot() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->GetDoNotPlot(&rtVal));
     return rtVal == VARIANT_TRUE;
 }
@@ -2113,8 +2113,8 @@ std::pair<PySmDatabaseImpl, PySmSheetSetImpl> PySmSheetSetMgrImpl::GetParentShee
 {
     IAcSmDatabase* pDb = nullptr;
     IAcSmSheetSet* pSheet = nullptr;
-    _bstr_t bstrDwg(dwg);
-    _bstr_t bstrLayout(layout);
+    _bstr_t bstrDwg{ dwg };
+    _bstr_t bstrLayout{ layout };
     PyThrowBadHr(impObj()->GetParentSheetSet(bstrDwg, bstrLayout, &pSheet, &pDb));
     return std::pair(PySmDatabaseImpl(pDb), PySmSheetSetImpl(pSheet));
 }
