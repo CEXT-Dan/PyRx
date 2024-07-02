@@ -2009,8 +2009,7 @@ void PySmDatabaseImpl::LockDb()
 
 void PySmDatabaseImpl::UnlockDb(bool commit)
 {
-    auto b = commit ? VARIANT_TRUE : VARIANT_FALSE;
-    PyThrowBadHr(impObj()->UnlockDb(impObj(), b));
+    PyThrowBadHr(impObj()->UnlockDb(impObj(), commit ? VARIANT_TRUE : VARIANT_FALSE));
 }
 
 PySmSheetSetImpl PySmDatabaseImpl::GetSheetSet() const

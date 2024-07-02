@@ -1543,7 +1543,8 @@ void PySmProjectPointLocations::removeLocation(PySmProjectPointLocation& val)
     impObj()->RemoveLocation(*val.impObj());
 }
 
-PySmProjectPointLocation PySmProjectPointLocations::addNewLocation(const std::string& name, const std::string& url, const std::string& folder, const std::string& username, const std::string& password)
+PySmProjectPointLocation PySmProjectPointLocations::addNewLocation(const std::string& name, 
+    const std::string& url, const std::string& folder, const std::string& username, const std::string& password)
 {
     return PySmProjectPointLocation(impObj()->AddNewLocation(
         utf8_to_wstr(name).c_str(),
@@ -2180,7 +2181,6 @@ void makePySmSheetSetWrapper()
         .def("getPublishOptions", &PySmSheetSet::getPublishOptions, DS.ARGS())
         .def("sync", &PySmSheetSet::sync, DS.ARGS({ "db: PyDb.Database" }))
         .def("updateSheetCustomProps", &PySmSheetSet::updateSheetCustomProps, DS.ARGS())
-
         .def("cast", &PySmSheetSet::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
         .def("className", &PySmSheetSet::className, DS.SARGS()).staticmethod("className")
         ;
@@ -2432,7 +2432,7 @@ void makePySmSheetSetMgrWrapper()
         .def("findOpenDatabase", &PySmSheetSetMgr::findOpenDatabase, DS.ARGS({ "filename: str" }))
         .def("closeAll", &PySmSheetSetMgr::closeAll, DS.SARGS())
         .def("close", &PySmSheetSetMgr::close, DS.ARGS({ "smDb: PySm.Database" }))
-        .def("getParentSheetSet", &PySmSheetSetMgr::getParentSheetSet, DS.ARGS({ "dwg: str","dwg: layout" }))
+        .def("getParentSheetSet", &PySmSheetSetMgr::getParentSheetSet, DS.ARGS({ "dwg: str","layout: str" }))
         .def("getSheetFromLayout", &PySmSheetSetMgr::getSheetFromLayout, DS.ARGS({ "layout: PyDb.Object" }))
         .def("getDatabases", &PySmSheetSetMgr::getDatabases, DS.ARGS())
         .def("className", &PySmSheetSetMgr::className, DS.SARGS()).staticmethod("className")
