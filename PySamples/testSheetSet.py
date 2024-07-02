@@ -1,7 +1,13 @@
 from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed, Sm
 from pathlib import Path
 import traceback
+import os
 import wx
+
+# this sample is based off
+# https://adndevblog.typepad.com/autocad/2013/09/using-sheetset-manager-api-in-vbnet.html
+# some commands require the data from http://www.hyperpics.com/au2009/CP318-4
+
 
 def PyRxCmd_pycreatesheetset():
     try:
@@ -68,46 +74,6 @@ def PyRxCmd_pystepThroughTheOpenSheetSets():
         traceback.print_exception(err)
 
 
-def createSubset(
-    sheetSetDatabase: Sm.Database,
-    name: str,
-    description: str,
-    newSheetLocation: str,
-    newSheetDWTLocation: str,
-    newSheetDWTLayout: str,
-    promptForDWT: bool,
-) -> None:
-    try:
-        sheetSetDatabase.lockDb()
-
-        # Check to see if a path was provided
-        if len(newSheetLocation) == 0:
-            newSheetLocation = str(Path(sheetSetDatabase.getFileName()).parent)
-
-        # Create a subset with the provided name and description
-        sheetset = sheetSetDatabase.getSheetSet()
-        subset = sheetset.createSubset(name, description)
-
-        # Create a reference to a File Reference object
-        fileref = subset.getNewSheetLocation()
-        fileref.setFileName(newSheetLocation)
-
-        # Set the location for new sheets added to the subset
-        subset.setNewSheetLocation(fileref)
-
-        # Create a reference to a Layout Reference object
-        layoutref = subset.getDefDwtLayout()
-        if len(newSheetDWTLocation) != 0:
-            layoutref.setFileName(newSheetDWTLocation)
-            layoutref.setName(newSheetDWTLayout)
-            subset.setDefDwtLayout(layoutref)
-
-        subset.setPromptForDwt(promptForDWT)
-
-    finally:
-        sheetSetDatabase.unlockDb(True)
-
-
 def PyRxCmd_pycreateSubset():
     try:
 
@@ -116,9 +82,9 @@ def PyRxCmd_pycreateSubset():
         ssdb = mgr.createDatabase(path)
         sset = ssdb.getSheetSet()
         ssdb.lockDb()
+        
         sset.setName("CP318-4")
         sset.setDesc("AU2009 Sheet Set Object Demo")
-        ssdb.unlockDb(True)
 
         createSubset(
             ssdb,
@@ -129,7 +95,7 @@ def PyRxCmd_pycreateSubset():
             "Sheet",
             False,
         )
-        
+
         createSubset(
             ssdb,
             "Elevations",
@@ -139,8 +105,123 @@ def PyRxCmd_pycreateSubset():
             "Sheet",
             False,
         )
+    
+    except Exception as err:
+        traceback.print_exception(err)
+    finally:
+        ssdb.unlockDb(True)
+
+
+def PyRxCmd_pycreateSheetSetAddSheet():
+    try:
+
+        path = "E:\\temp"
+        fullpath = "E:\\temp\\CP318-5.dst"
+        dwtfullpath = "E:\\temp\\CP318-5.dwt"
+        
+        mgr = Sm.SheetSetMgr()
+        ssdb = mgr.createDatabase(fullpath)
+
+        ssdb.lockDb()
+
+        setSheetSetDefaults(
+            ssdb,
+            "CP318-5",
+            "AU2009 Sheet Set Object Demo",
+            path,
+            dwtfullpath,
+            "Sheet",
+            False,
+        )
+
+        addSheet(ssdb, "Title Page", "Project Title Page", "Title Page", "T1")
 
     except Exception as err:
         traceback.print_exception(err)
+    finally:
+        ssdb.unlockDb(True)
+        
+    
+def createSubset(
+    sheetSetDatabase: Sm.Database,
+    name: str,
+    description: str,
+    newSheetLocation: str,
+    newSheetDWTLocation: str,
+    newSheetDWTLayout: str,
+    promptForDWT: bool,
+) -> None:
+
+    # Check to see if a path was provided
+    if len(newSheetLocation) == 0:
+        newSheetLocation = str(Path(sheetSetDatabase.getFileName()).parent)
+        
+    # Create a subset with the provided name and description
+    sheetset = sheetSetDatabase.getSheetSet()
+    subset = sheetset.createSubset(name, description)
+    
+    # Create a reference to a File Reference object
+    fileref = subset.getNewSheetLocation()
+    fileref.setFileName(newSheetLocation)
+    
+    # Set the location for new sheets added to the subset
+    subset.setNewSheetLocation(fileref)
+    
+    # Create a reference to a Layout Reference object
+    layoutref = subset.getDefDwtLayout()
+    if len(newSheetDWTLocation) != 0:
+        layoutref.setFileName(newSheetDWTLocation)
+        layoutref.setName(newSheetDWTLayout)
+        subset.setDefDwtLayout(layoutref)
+        
+    subset.setPromptForDwt(promptForDWT)
 
 
+def setSheetSetDefaults(
+    sheetSetDatabase: Sm.Database,
+    name: str,
+    description: str,
+    newSheetLocation: str,
+    newSheetDWTLocation: str,
+    newSheetDWTLayout: str,
+    promptForDWT: bool,
+):
+
+    sheetSet = sheetSetDatabase.getSheetSet()
+    sheetSet.setName(name)
+    sheetSet.setDesc(description)
+
+    if len(newSheetLocation) == 0:
+        newSheetLocation = str(Path(sheetSetDatabase.getFileName()).parent)
+
+    fileReference = sheetSet.getNewSheetLocation()
+    fileReference.setFileName(newSheetLocation)
+    sheetSet.setNewSheetLocation(fileReference)
+
+    if len(newSheetDWTLocation) != 0:
+        layoutReference = sheetSet.getDefDwtLayout()
+        layoutReference.setFileName(newSheetDWTLocation)
+        layoutReference.setName(newSheetDWTLayout)
+        sheetSet.setDefDwtLayout(layoutReference)
+        
+    sheetSet.setPromptForDwt(promptForDWT)
+
+
+def addSheet(
+    component: Sm.Component, name: str, description: str, title: str, number: str
+):
+
+    sheet = None
+
+    if component.getTypeName() == Sm.Subset.className():
+        subset = Sm.Subset.cast(component)
+        sheet = subset.addNewSheet(name, description)
+        subset.insertComponentFirst(sheet)
+    else:
+        smdb = component.getDatabase()
+        ss = smdb.getSheetSet()
+        sheet = ss.addNewSheet(name, description)
+        ss.insertComponentFirst(sheet)
+
+    sheet.setNumber(number)
+    sheet.setTitle(title)
