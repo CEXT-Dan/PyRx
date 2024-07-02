@@ -822,7 +822,7 @@ class SheetSetMgr(object):
     def getDatabases (self)-> list[PySm.Database] :
         '''                             '''
         ...
-    def getParentSheetSet (self, dwg: str, dwg: layout)-> tuple[PySm.Database,PySm.SheetSet] :
+    def getParentSheetSet (self, dwg: str, layout: str)-> tuple[PySm.Database,PySm.SheetSet] :
         '''                             '''
         ...
     def getSheetFromLayout (self, layout: PyDb.Object)-> tuple[PySm.Database,PySm.Sheet] :

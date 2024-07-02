@@ -497,7 +497,10 @@ public:
 
     PySmProjectPointLocation    getLocation(const std::string& locationName) const;
     void                        removeLocation(PySmProjectPointLocation& val);
-    PySmProjectPointLocation    addNewLocation(const std::string& name, const std::string& url, const std::string& folder, const std::string& username, const std::string& password);
+
+    PySmProjectPointLocation    addNewLocation(const std::string& name, 
+        const std::string& url, const std::string& folder, const std::string& username, const std::string& password);
+
     boost::python::list         getProjectPointLocations() const;
 
     static PySmProjectPointLocations  cast(const PySmPersist& src);
