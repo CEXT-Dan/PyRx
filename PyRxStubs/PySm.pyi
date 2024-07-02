@@ -941,6 +941,9 @@ class Subset(Component):
     def insertComponentAfter (self, newSheet: PySm.Component, afterSheet: PySm.Component)-> None :
         '''                             '''
         ...
+    def insertComponentFirst (self, newSheet: PySm.Component)-> None :
+        '''                             '''
+        ...
     def removeSheet (self, val: PySm.Sheet)-> None :
         '''                             '''
         ...
