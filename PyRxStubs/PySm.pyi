@@ -119,51 +119,6 @@ class CustomPropertyValue(Persist):
         '''                             '''
         ...
 
-class Database(Component):
-    def __init__ (self)-> None :
-        '''                             '''
-        ...
-
-    @staticmethod
-    def cast (otherObject: PySm.Persist)-> PySm.Database :
-        '''                             '''
-        ...
-
-    @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def getFileName (self)-> str :
-        '''                             '''
-        ...
-    def getLockOwnerInfo (self)-> tuple[str,str] :
-        '''                             '''
-        ...
-    def getLockStatus (self)-> PySm.LockStatus :
-        '''                             '''
-        ...
-    def getPersistObjects (self)-> list[PySm.Persist] :
-        '''                             '''
-        ...
-    def getSheetSet (self)-> PySm.SheetSet :
-        '''                             '''
-        ...
-    def getTemplateDstFileName (self)-> str :
-        '''                             '''
-        ...
-    def loadFromFile (self, filename: str)-> None :
-        '''                             '''
-        ...
-    def lockDb (self)-> None :
-        '''                             '''
-        ...
-    def setFileName (self, filename: str)-> None :
-        '''                             '''
-        ...
-    def unlockDb (self, commit: bool)-> None :
-        '''                             '''
-        ...
-
 class DbBlockRecordReference(NamedDbObjectReference):
     def __init__ (self)-> None :
         '''                             '''
@@ -189,7 +144,7 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
         '''                             '''
         ...
-    def getAcDbDatabase (self)-> PySm.Database :
+    def getAcDbDatabase (self)-> PyDb.Database :
         '''                             '''
         ...
 
@@ -374,7 +329,7 @@ This class cannot be instantiated from Python'''
     def clear (self)-> None :
         '''                             '''
         ...
-    def getDatabase (self)-> PySm.Database :
+    def getDatabase (self)-> PySm.SmDatabase :
         '''                             '''
         ...
     def getIsDirty (self)-> bool :
@@ -807,28 +762,28 @@ class SheetSetMgr(object):
         ...
 
     @overload
-    def createDatabase (self, filename: str)-> PySm.Database : ...
+    def createDatabase (self, filename: str)-> PySm.SmDatabase : ...
     @overload
-    def createDatabase (self, filename: str, template: str, bAlwaysCreate: bool)-> PySm.Database : ...
-    def createDatabase (self, *args, **kwargs)-> PySm.Database :
+    def createDatabase (self, filename: str, template: str, bAlwaysCreate: bool)-> PySm.SmDatabase : ...
+    def createDatabase (self, *args, **kwargs)-> PySm.SmDatabase :
         '''Overloads:
     - filename: str
     - filename: str, template: str, bAlwaysCreate: bool
     '''
         ...
-    def findOpenDatabase (self, filename: str)-> PySm.Database :
+    def findOpenDatabase (self, filename: str)-> PySm.SmDatabase :
         '''                             '''
         ...
-    def getDatabases (self)-> list[PySm.Database] :
+    def getDatabases (self)-> list[PySm.SmDatabase] :
         '''                             '''
         ...
-    def getParentSheetSet (self, dwg: str, layout: str)-> tuple[PySm.Database,PySm.SheetSet] :
+    def getParentSheetSet (self, dwg: str, layout: str)-> tuple[PySm.SmDatabase,PySm.SheetSet] :
         '''                             '''
         ...
-    def getSheetFromLayout (self, layout: PyDb.Object)-> tuple[PySm.Database,PySm.Sheet] :
+    def getSheetFromLayout (self, layout: PyDb.Object)-> tuple[PySm.SmDatabase,PySm.Sheet] :
         '''                             '''
         ...
-    def openDatabase (self, filename: str)-> PySm.Database :
+    def openDatabase (self, filename: str)-> PySm.SmDatabase :
         '''                             '''
         ...
 
@@ -894,6 +849,51 @@ class SheetViews(Component):
         '''                             '''
         ...
     def sync (self, val: PySm.AcDbLayoutReference, db: PyDb.Database)-> None :
+        '''                             '''
+        ...
+
+class SmDatabase(Component):
+    def __init__ (self)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PySm.Persist)-> PySm.SmDatabase :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+    def getFileName (self)-> str :
+        '''                             '''
+        ...
+    def getLockOwnerInfo (self)-> tuple[str,str] :
+        '''                             '''
+        ...
+    def getLockStatus (self)-> PySm.LockStatus :
+        '''                             '''
+        ...
+    def getPersistObjects (self)-> list[PySm.Persist] :
+        '''                             '''
+        ...
+    def getSheetSet (self)-> PySm.SheetSet :
+        '''                             '''
+        ...
+    def getTemplateDstFileName (self)-> str :
+        '''                             '''
+        ...
+    def loadFromFile (self, filename: str)-> None :
+        '''                             '''
+        ...
+    def lockDb (self)-> None :
+        '''                             '''
+        ...
+    def setFileName (self, filename: str)-> None :
+        '''                             '''
+        ...
+    def unlockDb (self, commit: bool)-> None :
         '''                             '''
         ...
 

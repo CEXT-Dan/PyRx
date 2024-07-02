@@ -1343,7 +1343,7 @@ class BlockTableRecord(SymbolTableRecord):
     def setPathName (self, val : str)-> None :
         '''                             '''
         ...
-    def xrefDatabase (self, val : bool)-> PySm.Database :
+    def xrefDatabase (self, val : bool)-> PyDb.Database :
         '''                             '''
         ...
     def xrefStatus (self)-> PyDb.XrefStatus :
@@ -4185,10 +4185,10 @@ class DbObject(PyGi.Drawable):
     def createExtensionDictionary (self)-> None :
         '''Creates an AcDbDictionary object and sets it up as the extension dictionary for the AcDbObject.Returns Acad::eOk if successful. If an extension dictionary already exists, Acad::eAlreadyInDb is returned.'''
         ...
-    def database (self)-> PySm.Database :
+    def database (self)-> PyDb.Database :
         '''Returns a pointer to the AcDbDatabase object that contains the AcDbObject.'''
         ...
-    def databaseToUse (self)-> PySm.Database :
+    def databaseToUse (self)-> PyDb.Database :
         '''This method returns a pointer to a AcDbDatabase object that can be used with this AcDbObject. If the AcDbObject is in an AcDbDatabase, then a pointer to the AcDbDatabase returned by the object's database() method will be returned, otherwise, if the AcDbObject has a non-nullptr intendedDatabase, then a pointer to that AcDbDatabase will be returned, otherwise a pointer to the current AcDbHostApplicationServices' workingDatabase will be returned.'''
         ...
     def deepClone (self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True)-> PyDb.DbObject :
@@ -11291,7 +11291,7 @@ class HostApplicationServices(object):
     def versionString (self)-> str :
         '''This method is called by the database in various places to provide version numbers.The return value of this method depends on the implementation of AcDbHostApplicationServices. The following table shows AutoCAD 2025 values:ProductReturn ValueAutoCAD"25.0"RealDWG"25.0"OEM"25.0"For binary-compatible API releases, the minor version (i.e., the digit to the right of the decimal point) increments the previous release's minor version value by 1.This method should not be overridden because it is used to identify support files.'''
         ...
-    def workingDatabase (self)-> PySm.Database :
+    def workingDatabase (self)-> PyDb.Database :
         '''This method may not be overridden.workingDatabase() may be called by the host application, by database code, and by both dependent and independent ObjectARX applications. When AutoCAD is the host application, this is equivalent to the old acdbCurDwg() API, and will return a pointer to the primary database open in whichever document (window) has focus. In other host applications, the meaning of working database will be application-defined.'''
         ...
 
@@ -11311,7 +11311,7 @@ class IdMapping(object):
     def deepCloneContext (self)-> PyDb.DeepCloneType :
         '''                             '''
         ...
-    def destDb (self)-> PySm.Database :
+    def destDb (self)-> PyDb.Database :
         '''                             '''
         ...
     def duplicateRecordCloning (self)-> PyDb.DuplicateRecordCloning :
@@ -11320,7 +11320,7 @@ class IdMapping(object):
     def idPairs (self)-> list[PyDb.IdPair] :
         '''                             '''
         ...
-    def origDb (self)-> PySm.Database :
+    def origDb (self)-> PyDb.Database :
         '''                             '''
         ...
     def remove (self, key: PyDb.ObjectId)-> bool :
@@ -11601,7 +11601,7 @@ class LayerStateManager(PyRx.RxObject):
     def exportLayerState (self, sName: str, fName: str)-> None :
         '''exportLayerState() reads the passed-in layer state name and exports the corresponding layer state to the export file. The layer state name must be passed with a single 0 after the name.Return ValueDescriptionAcad::eOkThe export was successfulAcad::eNullObjectIdThe layer state dictionary ID is NullAcad::eNoFileNameThe passed in filename is Null or zero bytesAcad::eWrongObjectTypeThe passed in layer state name refers to something other than an XrecordAcad::eCantOpenFileThe passed-in filename cannot be opened for writingAcad::eNotInitializedYetThe database is NullAcad::eKeyNotFoundThe passed-in layer state name was not found in the layer state dictionaryOther possible Acad::ErrorStatus values unequal to Acad::eOk can come from internal calls to:AcDbDatabase::getPlotStyleNameDictionary() while opening the plotstyle dictionaryAcDbDictionary::nameAt() while reading the string name of the plotstyle IDacdbGetObjectId() while getting the object ID of the linetype, plotstyle, or layeracdbOpenObject() while opening the Xrecord of the layer stateAcDbSymbolUtilities::getSymbolName() while getting the string form of the linetype or layer'''
         ...
-    def getDatabase (self)-> PySm.Database :
+    def getDatabase (self)-> PyDb.Database :
         '''Returns a pointer to the hosting database for AcDbLayerStateManager.'''
         ...
     def getLastRestoredLayerState (self)-> tuple[str,PyDb.ObjectId] :
@@ -14696,7 +14696,7 @@ class ObjectId(object):
     def convertToRedirectedId (self)-> bool :
         '''This function will take the object ID for this object if it has been redirected from another database, and convert it to the actual object ID for the other database (for example: the object ID from an xref database). If this object ID is not redirected or if it has a value of AcDbObjectId::kNull, the function will do nothing.'''
         ...
-    def database (self)-> PySm.Database :
+    def database (self)-> PyDb.Database :
         '''This function returns a pointer to the database in which the object ID is resident. If the object ID is NULL, then NULL is returned.'''
         ...
 
@@ -14737,7 +14737,7 @@ class ObjectId(object):
     def objectLeftOnDisk (self)-> bool :
         '''                             '''
         ...
-    def originalDatabase (self)-> PySm.Database :
+    def originalDatabase (self)-> PyDb.Database :
         '''If this object ID is in an xref database and the object associated with this object ID has been redirected to the host database, then this method will return a pointer to the xref database. If the object associated with this object ID is not from an xref database or is not redirected, then this method is the same as AcDbObjectId::database().'''
         ...
     def setFromOldId (self, oldId : int)-> None :
@@ -23892,7 +23892,7 @@ class XrefStatus(object):
         '''None'''
         ...
 
-def curDb (*args, **kwargs)-> PySm.Database :
+def curDb (*args, **kwargs)-> PyDb.Database :
     '''curDb() -> Database :
 
     C++ signature :
@@ -23906,7 +23906,7 @@ def setWorkingDb (*args, **kwargs)-> None :
         void setWorkingDb(class PyDbDatabase {lvalue})'''
     ...
 
-def workingDb (*args, **kwargs)-> PySm.Database :
+def workingDb (*args, **kwargs)-> PyDb.Database :
     '''workingDb() -> Database :
 
     C++ signature :

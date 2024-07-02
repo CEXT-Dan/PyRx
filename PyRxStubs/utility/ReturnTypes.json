@@ -1652,11 +1652,11 @@
         ],
         [
             "PySm::SheetSetMgr::getSheetFromLayout",
-            "tuple[PySm.Database,PySm.Sheet]"
+            "tuple[PySm.SmDatabase,PySm.Sheet]"
         ],
         [
             "PySm::SheetSetMgr::getParentSheetSet",
-            "tuple[PySm.Database,PySm.SheetSet]"
+            "tuple[PySm.SmDatabase,PySm.SheetSet]"
         ],
         [
             "PySm::SheetSelSets::getSheetSelSets",
@@ -1672,14 +1672,14 @@
         ],
         [
             "PySm::SheetSetMgr::getDatabases",
-            "list[PySm.Database]"
+            "list[PySm.SmDatabase]"
         ],
         [
-            "PySm::Database::getPersistObjects",
+            "PySm::SmDatabase::getPersistObjects",
             "list[PySm.Persist]"
         ],
         [
-            "PySm::Database::getLockOwnerInfo",
+            "PySm::SmDatabase::getLockOwnerInfo",
             "tuple[str,str]"
         ],
         [

@@ -875,7 +875,7 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
         '''                             '''
         ...
-    def database (self)-> PySm.Database :
+    def database (self)-> PyDb.Database :
         '''Returns the database object (AcDbDatabase) being used by this AcApDocument.'''
         ...
     def docTitle (self)-> str :
