@@ -12,6 +12,7 @@ class PyDbDatabaseReactorImpl : public AcDbDatabaseReactor
 {
 public:
     explicit PyDbDatabaseReactorImpl(PyDbDatabaseReactor* backPtr);
+    virtual ~PyDbDatabaseReactorImpl() override = default;
     virtual void objectAppended(const AcDbDatabase* pDb, const AcDbObject* pObj) override;
     virtual void objectUnAppended(const AcDbDatabase* pDb, const AcDbObject* pObj) override;
     virtual void objectReAppended(const AcDbDatabase* pDb, const AcDbObject* pObj) override;
@@ -22,19 +23,16 @@ public:
     virtual void headerSysVarChanged(const AcDbDatabase* pDb, const ACHAR* name, Adesk::Boolean bSuccess) override;
     virtual void proxyResurrectionCompleted(const AcDbDatabase* pDb, const ACHAR* appname, AcDbObjectIdArray& objects) override;
     virtual void goodbye(const AcDbDatabase* pDb) override;
-
 public:
     PyDbDatabaseReactor* impObj(const std::source_location& src = std::source_location::current()) const;
     PyDbDatabaseReactor* m_backPtr = nullptr;
 };
-
 
 class PyDbDatabaseReactor : public PyRxObject, public boost::python::wrapper<PyDbDatabaseReactor>
 {
 public:
     PyDbDatabaseReactor();
     virtual ~PyDbDatabaseReactor() override = default;
-
     virtual void objectAppended(const PyDbDatabase& pDb, const PyDbObject& pObj);
     virtual void objectUnAppended(const PyDbDatabase& pDb, const PyDbObject& pObj);
     virtual void objectReAppended(const PyDbDatabase& pDb, const PyDbObject& pObj);
@@ -45,12 +43,9 @@ public:
     virtual void headerSysVarChanged(const PyDbDatabase& pDb, const std::string& name, bool bSuccess);
     virtual void proxyResurrectionCompleted(const PyDbDatabase& pDb, const std::string& appname, boost::python::list& objects);
     virtual void goodbye(const PyDbDatabase& pDb);
-
 public:
     static PyRxClass    desc();
     static std::string  className();
-
-
 public:
     AcDbDatabaseReactor* impObj(const std::source_location& src = std::source_location::current()) const;
 
