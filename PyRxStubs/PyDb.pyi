@@ -18853,7 +18853,7 @@ class Spline(Curve):
         '''                             '''
         ...
     def degree (self)-> int :
-        '''                             '''
+        '''Returns the degree of the spline's polynomial representation. The value is in the range 1 to 25.'''
         ...
 
     @staticmethod
@@ -18861,34 +18861,34 @@ class Spline(Curve):
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
     def elevateDegree (self, val : int)-> None :
-        '''                             '''
+        '''Increases the degree (which is the same as the order -1) of the spline to newDegree. Once incremented it cannot be decremented. The valid range is between (current degree) and 25.'''
         ...
     def fitTolerance (self)-> float :
-        '''                             '''
+        '''Returns the tolerance value used for curve fitting. This is the maximum distance (in drawing units) that the spline curve is allowed to deviate from the fit points.'''
         ...
     def getControlPointAt (self, idx:int)-> PyGe.Point3d :
-        '''                             '''
+        '''Returns, via point (in WCS coordinates), the value of the control point at position index in the list of control points. If index is negative or more than the number of control points in the spline, then point is set to the last control point.Returns Acad::eOk if successful, otherwise returns Acad::eGeneralModelingFailure.'''
         ...
     def getFitData (self)-> tuple :
-        '''                             '''
+        '''This function has been deprecated and will be removed in a future release.'''
         ...
     def getFitDataKnot (self)-> tuple :
         '''                             '''
         ...
     def getFitPointAt (self, idx:int)-> PyGe.Point3d :
-        '''                             '''
+        '''Returns with point set to the value of the fit point at position index.Returns Acad::eOk if successful, otherwise Acad::eGeneralModelingFailure is returned (for example, if the spline doesn't have fit data or index is greater than the number of fit points in the spline).'''
         ...
     def getFitTangents (self)-> tuple[PyGe.Vector3d,PyGe.Vector3d] :
-        '''                             '''
+        '''Returns with startTangent and endTangent set to the start point and end point tangent vectors in WCS coordinates.Returns Acad::eOk is successful, otherwise Acad::eGeneralModelingFailure is returned (for example, if the spline has no fit data).'''
         ...
     def getNurbsData (self)-> tuple :
-        '''                             '''
+        '''Returns the NURBS data of the spline via degree, rational, closed, periodic, controlPoints, knots, weights, controlPtTol, and knotTol.Whether or not the spline has fit data, it always has NURBS data if it has an underlying gelib object within it (that is, as long as AcDbSpline::isNull() == Adesk::kFalse).'''
         ...
     def getOffsetCurvesGivenPlaneNormal (self, normal: PyGe.Vector3d, dist: float)-> list[PyDb.Curve] :
         '''This function creates one or more entities that, together, make up the result of offsetting the curve by the distance offsetDist in the plane with normal vector normal. For many curves, the result will be a single new curve, which may not be of the same class as the original curve. For example, offsetting an AcDbEllipse results in an AcDbSpline, since the result of offsetting an ellipse does not fit the equation of an ellipse. However, in some cases it might be necessary for the offset result to be several curves. To allow for this possibility, a dynamic array of void pointers is used to hold pointers to the resulting entity or entities.To use this array of pointers, the calling application must cast the pointer(s) to the appropriate object type(s). If only a specific entity type or set of types are to be handled, then using the cast method of the class(es) desired to see if each pointer can be safely cast to that object type will work. If the actual object type is desired, then each object's isA() method may be used to get a pointer to the object's AcRxClass object, which has a name() method to get the classname of the object.If the offsetDist value is negative this is usually interpreted as being an offset to make a smaller curve (that is, for an arc it would offset to a radius that is offsetDist less than the starting curve's radius). Or, if smaller has no meaning, then a negative offsetDist may be interpreted as an offset in the direction of smaller X,Y,Z WCS coordinates. However, this is not enforced, so custom entities can interpret the sign of the offsetDist value however they wish.The entities returned in the offsetCurves arrays are dynamically allocated, but have not been added to an AcDbDatabase yet. So, the application that calls this function is responsible for their memory. If they are subsequently appended to a database, then the database takes over responsibility for their memory. Otherwise, the application is responsible for deleting them when they are no longer needed.Returns Acad::eOk if offsetting is successfully completed. If the offset distance is invalid, or if normal is a zero length vector or the entity is linear and normal is not perpendicular with the entity, then Acad::eInvalidInput is returned. Other ErrorStatus return values are implementation dependent.The default implementation returns Acad::eNotImplemented.'''
         ...
     def hasFitData (self)-> bool :
-        '''                             '''
+        '''This function returns Adesk::kTrue if and only if the spline has fit data associated with it.'''
         ...
 
     @overload
@@ -18899,43 +18899,44 @@ class Spline(Curve):
         '''Overloads:
     - knotParam: int, ctrlPt: PyGe.Point3d
     - knotParam: int, ctrlPt: PyGe.Point3d,weight: float
-    '''
+    
+	-Add a control point on the spline at the given knot parameter. If the spline is non-rational, the weight value will be ingored.-'''
         ...
     def insertFitPointAt (self, idx:int, pnt:PyGe.Point3d)-> None :
-        '''                             '''
+        '''Adds point to the list of fit points and refits the spline. point is added at the index position in the fit points list. If index is negative, then point is added at the beginning of the spline. If index is greater than the number of fit points in the spline, then point is added at the end of the spline.Returns Acad::eOk if successful, otherwise returns Acad::eGeneralModelingFailure.'''
         ...
     def insertKnot (self, val : float)-> None :
-        '''                             '''
+        '''Inserts a new knot into the spline at the location on the spline defined by param. The param value must be within the spline's parameter range.To obtain the spline's parameter range, use the AcDbSpline::getNurbsData() method to obtain an array of the current knot values. The first knot value is the spline's start parameter value, while the last knot is the spline's end parameter.Returns Acad::eOk if successful, otherwise returns Acad::eGeneralModelingFailure.'''
         ...
     def isNull (self)-> bool :
-        '''                             '''
+        '''Returns Adesk::kTrue if this AcDbSpline object does not have an gelib object within it.'''
         ...
     def isRational (self)-> bool :
-        '''                             '''
+        '''This function returns Adesk::kTrue if and only if the spline is rational.'''
         ...
     def numControlPoints (self)-> int :
-        '''                             '''
+        '''Returns the number of control points in the spline.'''
         ...
     def numFitPoints (self)-> int :
-        '''                             '''
+        '''Returns the number of fit points associated with the spline.WarningDo not call this function unless the spline has fit data (that is, AcDbSpline::hasFitData() == Adesk::kTrue),'''
         ...
     def purgeFitData (self)-> None :
-        '''                             '''
+        '''Purges the fit data if the spline is a fitted spline. Once the fit data has been removed, the spline uses its control point or NURBS data.Returns Acad::eOk if successful. Otherwise Acad::eGeneralModelingFailure is returned.(In ARX SDK versions 1.0 and 1.1, calling this function on a spline with no fit data triggers an assert in non production versions of AutoCAD. This assert can be safely ignored.)'''
         ...
     def rebuild (self, degree: int, numPnts: int)-> None :
-        '''                             '''
+        '''Rebuild the spline with the degree and number of control points. This will change the shape of the spline. The degree can't be higher than 11.'''
         ...
     def removeControlPointAt (self, val : int)-> None :
-        '''                             '''
+        '''Remove a control point at the given index'''
         ...
     def removeFitPointAt (self, idx:int)-> None :
-        '''                             '''
+        '''Removes the fit point at index in the list of fit points of the spline and refits the spline. There must be at least three fit points in the spline for this function to succeed.Returns Acad::eOk if successful.If index is negative or is greater than the number of fit points in the spline, then Acad::eInvalidInput is returned.If the current number of fit points is only two or gelib is not successful in refitting the spline, then Acad::eGeneralModelingFailure is returned.'''
         ...
     def setControlPointAt (self, idx:int, pnt:PyGe.Point3d)-> None :
-        '''                             '''
+        '''Sets point (in WCS coordinates) to be the control point at the index position in the control points list replacing the point value that was previously at index position.Returns Acad::eOk if successful, otherwise Acad::eGeneralModelingFailure is returned.'''
         ...
     def setFitData (self, fitPoints: list[PyGe.Point3d], degree: int, fitTolerance: float, startTan : PyGe.Vector3d, endTan : PyGe.Vector3d)-> None :
-        '''                             '''
+        '''This function has been deprecated and will be removed in a future release.'''
         ...
 
     @overload
@@ -18955,13 +18956,13 @@ class Spline(Curve):
     '''
         ...
     def setFitPointAt (self, idx:int, pnt:PyGe.Point3d)-> None :
-        '''                             '''
+        '''Sets point (in WCS coordinates) to be the fit point at the index position in the fit points list (replacing the point value previously at index) and then refits the spline.Returns Acad::eOk if successful, otherwise returns Acad::eGeneralModelingFailure.'''
         ...
     def setFitTangents (self, start : PyGe.Vector3d, end : PyGe.Vector3d)-> None :
-        '''                             '''
+        '''Sets the start end tangents of spline to be startTangent and endTangent respectively and refits the spline.Returns Acad::eOk if successful, otherwise Acad::eGeneralModelingFailure is returned.'''
         ...
     def setFitTol (self, val : float)-> None :
-        '''                             '''
+        '''Sets tol to be the new fit point tolerance for the spline and then refits the spline curve. If tol is 0, then the spline passes through all the fit points.Returns Acad::eOk if successful, otherwise Acad::eGeneralModelingFailure is returned.'''
         ...
 
     @overload
@@ -18972,22 +18973,23 @@ class Spline(Curve):
         '''Overloads:
     - degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], weights: list[float]
     - degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], weights: list[float], controlPtTol: float, knotTol: float
-    '''
+    
+	-This function replaces any existing spline data with the data passed in via degree, rational, closed, periodic, controlPoints, knots, weights, controlPtTol and knotTol.If the spline is to be rational, then rational should be Adesk::kTrue.If the spline is to be closed (that is, a closed loop), then closed should be Adesk::kTrue.If the spline is to be periodic, then periodic should be Adesk::kTrue. This parameter should only be set to Adesk::kTrue if the spline is closed. A periodic spline is a spline with period T such that the point at parameter value t + T is the same as the point at parameter value t for any value of t.The weights array is only used when rational == Adesk::kTrue. If used, it must have the same number of entries as the controlPoints array. All weight values must be greater than 0.0.If isPeriodic = Adesk::kFalse then length of knot vector must be greater than length of the control array by degree+1.If isPeriodic = Adesk::kTrue then:the length of knot vector must be greater than length of the control array by 1. The first and the last control points must NOT be identical.The knotTol value is used to determine which knot values are to be treated as the same. If the difference between two knot values is less than knotTol, then the two values are treated as the same (and the first of the two values will be used).The controlPtTol value is used to determine if two control points are to be treated as the same point. If the distance between two control points is less than controlPtTol, then those two control points are treated as the same point. If the first and last control points are within controlPtTol of each other, the spline is closed regardless of the closed value.Returns Acad::eOk if successful.If gelib is unable to create a spline, then Acad::eGeneralModelingFailure is returned.-'''
         ...
     def setType (self, val: PyDb.SplineType)-> None :
-        '''                             '''
+        '''Change the spline's type. It will impact how the spline is represented -- either by fit points or control points.'''
         ...
     def toPolyline (self)-> PyDb.Polyline :
-        '''                             '''
+        '''Generates a polyline to approximate a spline.'''
         ...
     def type (self)-> PyDb.SplineType :
-        '''                             '''
+        '''Returns the type of the spline -- either created by fit points or by control points.'''
         ...
     def updateFitData (self)-> None :
-        '''                             '''
+        '''Updates the fit data of the spline. If the spline's fit tolerance == 0, then the spline is refitted; otherwise the fit data is purged (in which case the control point or NURBS data will be used by the spline).Returns Acad::eOk if successful, otherwise returns Acad::eGeneralModelingFailure.'''
         ...
     def weightAt (self, val : int)-> float :
-        '''                             '''
+        '''Returns the weight of the control point at index.Weights can only exist for rational splines, so if the spline is not rational, -1 is returned.If index is negative or greater than the number of control points, then 1 is returned.'''
         ...
 
 class SplineType(object):
