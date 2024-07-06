@@ -22290,31 +22290,31 @@ class UnderlayDefinition(DbObject):
 
     @staticmethod
     def dictionaryKey (underlayDefinitionType: PyRx.RxClass)-> str :
-        '''                             '''
+        '''Returns the name of the dictionary that holds the AcDbUnderlayDefinition objects in the named objects dictionary.'''
         ...
     def getActiveFileName (self)-> str :
-        '''                             '''
+        '''Gets the name of the file that this underlay references and returns it through the file parameter. This name is always a full path. Returns Acad::eOk if successful.'''
         ...
     def getItemName (self)-> str :
-        '''                             '''
+        '''Returns a pointer to the internal data member that holds the name of the underlay item that this underlay currently references.WarningThe returned string should not be modified or freed. Also, it may be invalidated if modifications are made to the underlay definition.'''
         ...
     def getSourceFileName (self)-> str :
-        '''                             '''
+        '''Returns a pointer to the internal data member that holds the name of the file that this underlay references. This name is in the form (relative or full path) that the user specified.WarningThe returned string should not be modified or freed. Also, it may be invalidated if modifications are made to the underlay definition.'''
         ...
     def isLoaded (self)-> bool :
-        '''                             '''
+        '''Gets a Boolean value indicating whether the underlay is currently loaded. Returns true if the underlay is loaded.'''
         ...
     def load (self, passwd : str=None)-> None :
-        '''                             '''
+        '''Attempts to load the file returned by the getActiveFileName() function. If password is null but is necessary to open the file, this function will prompt the user.Returns Acad::eOk if successful.'''
         ...
     def setItemName (self, item : str)-> None :
-        '''                             '''
+        ''' Sets the name of the underlay item that this underlay should reference. Returns Acad::eOk if successful.'''
         ...
     def setSourceFileName (self, file : str)-> None :
-        '''                             '''
+        '''Sets the name of the file that this underlay references. This name can be expressed in any of the following forms:relative path (relative to the host drawing)file name only (will be searched on the support search path)full pathReturns Acad::eOk if succesful.'''
         ...
     def unload (self)-> None :
-        '''                             '''
+        '''Unloads the underlay file. References will behave as if the file was never loaded.'''
         ...
 
 class UnderlayLayer(object):
@@ -22322,16 +22322,16 @@ class UnderlayLayer(object):
         '''                             '''
         ...
     def name (self)-> str :
-        '''                             '''
+        '''Returns the name of the underlay layer as an AcString.'''
         ...
     def setName (self, name : str)-> None :
-        '''                             '''
+        '''Sets the name for the underlay layer.'''
         ...
     def setState (self, state : bool)-> None :
-        '''                             '''
+        '''Sets the state of the underlay layer.'''
         ...
     def state (self)-> bool :
-        '''                             '''
+        '''Returns the state of the underlay later.'''
         ...
 
 class UnderlayReference(Entity):
@@ -22349,7 +22349,7 @@ class UnderlayReference(Entity):
         '''                             '''
         ...
     def clipBoundary (self)-> list[PyGe.Point2d] :
-        '''                             '''
+        '''Returns an array of points that specify the clip boundary of the underlay. The boundary is defined in model coordinates. You must use the transformation matrix returned by the transform() function to obtain WCS points.'''
         ...
 
     @staticmethod
@@ -22357,20 +22357,20 @@ class UnderlayReference(Entity):
         '''                             '''
         ...
     def contrast (self)-> int :
-        '''                             '''
+        '''Returns the contrast value for the underlay ([0-100]).'''
         ...
 
     @staticmethod
     def contrastDefault ()-> int :
-        '''                             '''
+        '''Returns the default contrast value.'''
         ...
 
     @staticmethod
     def contrastLowerLimit ()-> int :
-        '''                             '''
+        '''Returns the lower limit of the legal contrast values.'''
         ...
     def definitionId (self)-> PyDb.ObjectId :
-        '''                             '''
+        '''Returns the object ID of the AcDbUnderlayDefinition that this underlay references.'''
         ...
 
     @staticmethod
@@ -22378,124 +22378,124 @@ class UnderlayReference(Entity):
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
     def fade (self)-> int :
-        '''                             '''
+        '''Returns the fade value for the underlay ([0-100]).'''
         ...
 
     @staticmethod
     def fadeDefault ()-> int :
-        '''                             '''
+        '''Returns the default fade value.'''
         ...
 
     @staticmethod
     def fadeLowerLimit ()-> int :
-        '''                             '''
+        '''Returns the lower limit of the legal fade values.'''
         ...
 
     @staticmethod
     def fadeUpperLimit ()-> int :
-        '''                             '''
+        '''Returns the upper limit of the legal fade values.'''
         ...
     def generateClipBoundaryFromPline (self, val : PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Generates the clip boundary from a polyline.'''
         ...
     def getUnderlayLayer (self, val : int)-> PyDb.UnderlayLayer :
-        '''                             '''
+        '''Get underlay layer information (layer name and layer on/off state) for the layer name passed in.Returns Acad::eOk if successful'''
         ...
     def height (self)-> float :
-        '''                             '''
+        '''This is height, a member of class AcDbUnderlayReference.'''
         ...
     def isAdjustedForBackground (self)-> bool :
-        '''                             '''
+        '''Returns a value indicating whether the underlay content is adjusted for the current background color. Not all underlay types observe this setting.'''
         ...
     def isClipInverted (self)-> bool :
-        '''                             '''
+        '''Checks if the clip is inverted.'''
         ...
     def isClipped (self)-> bool :
-        '''                             '''
+        '''Returns a Boolean value indicating whether the clip boundary should be used.'''
         ...
     def isFramePlottable (self)-> bool :
-        '''                             '''
+        '''Returns true if the frame is plottable.'''
         ...
     def isFrameVisible (self)-> bool :
-        '''                             '''
+        '''Returns true if the frame is visible.'''
         ...
     def isMonochrome (self)-> bool :
-        '''                             '''
+        '''Returns a Boolean value indicating whether the underlay content is shown inmonochrome.'''
         ...
     def isOn (self)-> bool :
-        '''                             '''
+        '''Returns a value indicating whether the underlay content is shown.This variable governs the visibilty of the underlay content, not its frame or clipping boundary. '''
         ...
     def normal (self)-> PyGe.Vector3d :
-        '''                             '''
+        '''Returns the normal of the underlay.'''
         ...
     def position (self)-> PyGe.Point3d :
-        '''                             '''
+        '''Returns the position of the underlay in WCS (or block space coordinates if the reference is part of a block).'''
         ...
     def rotation (self)-> float :
-        '''                             '''
+        '''Returns the rotation value around the axis defined by the point returned by position() and the vector returned by normal().'''
         ...
     def scaleFactors (self)-> PyGe.Scale3d :
-        '''                             '''
+        '''Returns the scale factors used to scale the underlay.'''
         ...
     def setClipBoundary (self, pnts : list[PyGe.Point2d])-> None :
-        '''                             '''
+        ''' Sets the clip boundary of the underlay. The boundary is defined in model coordinates. (i.e. Given WCS points one must use the inverse of the transformation matrix return by tranform() to obtain points that can be passed to this function.) Returns Acad::eOk if succesful.'''
         ...
     def setClipInverted (self, val : bool)-> None :
-        '''                             '''
+        '''Sets whether the clip is inverted.'''
         ...
     def setContrast (self, val : int)-> None :
-        '''                             '''
+        ''' Sets the contrast value for the underlay ([0-100]). Returns Acad::eOk if succesful.'''
         ...
     def setDefinitionId (self, val : PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Sets the object ID of the AcDbUnderlayDefinition that this underlay references.'''
         ...
     def setFade (self, val : int)-> None :
-        '''                             '''
+        ''' Sets the fade value for the underlay ([0-100]). Returns Acad::eOk if succesful.'''
         ...
     def setHeight (self, val : float)-> None :
-        '''                             '''
+        '''This is setHeight, a member of class AcDbUnderlayReference.'''
         ...
     def setIsAdjustedForBackground (self, val : bool)-> None :
-        '''                             '''
+        '''Sets a value indicating whether the underlay content is adjusted for the current background color. Not all underlay types observe this setting.Returns Acad::eOk if successful.'''
         ...
     def setIsClipped (self, val : bool)-> None :
-        '''                             '''
+        ''' Sets a Boolean indicating whether the clip boundary should be used. Returns Acad::eOk if succesful.'''
         ...
     def setIsMonochrome (self, val : bool)-> None :
-        '''                             '''
+        ''' Sets a value indicating whether the underlay content is shown in monochrome. Returns Acad::eOk if succesful.'''
         ...
     def setIsOn (self, val : bool)-> None :
-        '''                             '''
+        ''' Sets a value indicating whether the underlay content is shown. This variable governs the visibilty of the underlay content, not its frame or clipping boundary. Returns Acad::eOk if succesful.'''
         ...
     def setNormal (self, val : PyGe.Vector3d)-> None :
-        '''                             '''
+        ''' Sets the normal of the underlay. Returns Acad::eOk if successful.'''
         ...
     def setPosition (self, val : PyGe.Point3d)-> None :
-        '''                             '''
+        ''' Sets the position of the underlay in WCS (or block space coordinates if the reference is part of a block). Returns Acad::eOk if successful.'''
         ...
     def setRotation (self, val : float)-> None :
-        '''                             '''
+        ''' Sets the rotation value around the axis defined by the point returned by position() and the vector returned by normal(). Returns Acad::eOk if successful.'''
         ...
     def setScaleFactors (self, val : PyGe.Scale3d)-> None :
-        '''                             '''
+        ''' Sets the scale factors used to scale the underlay. Most underlays only allow uniform scaling. Returns Acad::eOk if successful.'''
         ...
     def setTransform (self, val : PyGe.Matrix3d)-> None :
-        '''                             '''
+        ''' Sets the transformation matrix of the underlay. Returns Acad::eOk if succesful.'''
         ...
     def setUnderlayLayer (self, val : int, layer : PyDb.UnderlayLayer)-> None :
-        '''                             '''
+        '''Sets the underlay layer information (layer name and layer on/off state).Returns Acad::eOk if successful'''
         ...
     def setWidth (self, val : float)-> None :
-        '''                             '''
+        '''This is setWidth, a member of class AcDbUnderlayReference.'''
         ...
     def transform (self)-> PyGe.Matrix3d :
-        '''                             '''
+        ''' Gets the transformation matrix from the underlay coordinate system to the world coordinate system (or block space coordinates if the underlay is part of a block). the transformation is defined by position(), normal(), and rotatation(). Returns the model to WCS transformation of the underlay.'''
         ...
     def underlayLayerCount (self)-> int :
-        '''                             '''
+        '''Returns 0 if underlay has no layer information.'''
         ...
     def width (self)-> float :
-        '''                             '''
+        '''This is width, a member of class AcDbUnderlayReference.'''
         ...
 
 class UnitsValue(object):
