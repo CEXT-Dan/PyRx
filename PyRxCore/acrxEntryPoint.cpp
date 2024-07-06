@@ -398,24 +398,6 @@ public:
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
-#if defined(_ARXTARGET) || defined(_BRXTARGET) 
-
-        try
-        {
-        }
-        catch (PyAcadHrError& er)
-        {
-            acutPrintf(_T("\nPyAcadHrError %ls"), utf8_to_wstr(er.format()).c_str());
-        }
-        catch (_com_error& x)
-        {
-            acutPrintf(_T("\ncom_error %ls"), x.ErrorMessage());
-        }
-        catch (...)
-        {
-            acutPrintf(_T("\nOops"));
-        }
-#endif
     }
 #endif
 
