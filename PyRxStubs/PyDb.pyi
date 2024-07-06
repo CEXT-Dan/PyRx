@@ -18737,7 +18737,7 @@ class SpatialFilter(DbObject):
         '''                             '''
         ...
     def clipVolumeIntersectsExtents (self, val : PyDb.Extents)-> bool :
-        '''                             '''
+        '''This function is used to determine whether an object with extents exts intersects this AcDbSpatialFilter object's clipping volume. Returns Adesk::kTrue if exts intersects this filter's clipping volume. Otherwise, returns Adesk::kFalse.'''
         ...
 
     @staticmethod
@@ -18750,37 +18750,37 @@ class SpatialFilter(DbObject):
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
     def getClipSpaceToWCSMatrix (self)-> PyGe.Matrix3d :
-        '''                             '''
+        '''This method sets mat to be the transformation matrix to transform the clip boundary points from their coordinate system (whatever it may be) to WCS. This matrix should be applied to 3D points whose X and Y values come from the 2D points obtained from getDefinition() and a Z value of 0.0. For example: AcGePoint2dArray pts;AcGeVector3d normal;double elevation, frontclip, backclip;Adesk::Boolean enabled;pFilter->getDefinition(pts, normal, elevation,frontclip, backclip, enabled);AcGeMatrix3d clipToWCS;pFilter->getClipSpaceToWCSMatrix(clipToWCS);AcGePoint3d pt(pts[0].x, pts[0].y, 0.0);pt.transformBy(clipToWCS);Returns a reference to the matrix argument passed in.'''
         ...
     def getDefinition (self)-> tuple :
-        '''                             '''
+        '''This function is used to get the definition of the AcDbSpatialFilter object.Returns Acad::eOk if successful.'''
         ...
     def getOriginalInverseBlockXform (self)-> PyGe.Matrix3d :
-        '''                             '''
+        '''This method sets mat to the inverse of the block transform for the associated AcDbBlockReference when the Filter was last set.Returns a reference to the matrix argument passed in.'''
         ...
     def getVolume (self)-> tuple[PyGe.Point3d,PyGe.Point3d,PyGe.Vector3d,PyGe.Vector3d] :
-        '''                             '''
+        '''Transforms the AcDbSpatialFilter object's clip boundary definition into the coordinate space of the associated block or xref, and sets output parameters fromPt, toPt, upDir, and viewField to their resulting transformed values.Returns Acad::eNullObjectPointer if the clip boundary is not defined, or an appropriate Acad::ErrorStatus if the block or xref cannot be opened for read. Otherwise, this function returns Acad::eOk.'''
         ...
     def hasPerspectiveCamera (self)-> bool :
-        '''                             '''
+        '''Returns Adesk::kTrue if a perspective camera is currently defined for this AcDbSpatialFilter object. Otherwise, this function returns Adesk::kFalse.Use the AcDbSpatialFilter::setPerspectiveCamera function to define a perspective camera.'''
         ...
     def indexClass (self)-> PyRx.RxClass :
-        '''                             '''
+        '''This function is used in the init() method of the AcDbCompositeFilteredBlockIterator. For example, it is used internally when filtering is in effect during the regeneration of the drawing for clipped xrefs to establish the index iterator definitions. Returns the class descriptor for the AcDbIndex for this filter'''
         ...
     def isInverted (self)-> bool :
-        '''                             '''
+        '''Returns true if the filter's inverted flag is set.'''
         ...
     def queryBounds (self, ref : PyDb.BlockReference=None)-> PyDb.Extents :
-        '''                             '''
+        '''This function is used to get the boundary area of this AcDbSpatialFilter object.This function has no return value.'''
         ...
     def setDefinition (self, pnt2d: list[PyGe.Point2d], normal: PyGe.Vector3d, elev: float, frontclip: float, backclip: float, enabled: bool)-> None :
-        '''                             '''
+        '''This function is used to set the definition of the AcDbSpatialFilter object. The points described in the pts argument must be expressed in the ECS of the block or xref definition.Returns Acad::eOk if successful.'''
         ...
     def setInverted (self, val : bool)-> None :
-        '''                             '''
+        '''This method is used to set or clear the filter's inverted flag.'''
         ...
     def setPerspectiveCamera (self, val : PyGe.Point3d)-> None :
-        '''                             '''
+        '''Sets the perspective camera position to the location specified by fromPt.'''
         ...
 
 class Spline(Curve):
