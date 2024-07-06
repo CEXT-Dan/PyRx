@@ -19219,7 +19219,7 @@ class SubDMesh(Entity):
         '''                             '''
         ...
     def cap (self, subentPaths: list[PyDb.FullSubentPath])-> None :
-        '''                             '''
+        '''Caps given edges.'''
         ...
 
     @staticmethod
@@ -19237,16 +19237,16 @@ class SubDMesh(Entity):
         '''                             '''
         ...
     def collapse (self, subentFaceId: PyDb.SubentId)-> None :
-        '''                             '''
+        '''Collapse gin mesh edge or face.'''
         ...
     def computeSurfaceArea (self)-> float :
-        '''                             '''
+        '''Returns the surface area of the mesh for the current level of subdivision.'''
         ...
     def computeVolume (self)-> float :
-        '''                             '''
+        '''Returns the volume of the mesh for the current level of subdivision.'''
         ...
     def convertToSolid (self, bConvertAsSmooth: bool, optimize: bool)-> PyDb.Solid3d :
-        '''                             '''
+        '''Creates an AcDb3dSolid entity from the mesh data using the bConvertAsSmooth flag to control whether the ASM solid is smoothed with NURBS faces or polygonal faces, if the mesh data encloses a volume without self-intersecting.'''
         ...
 
     @overload
@@ -19257,7 +19257,8 @@ class SubDMesh(Entity):
         '''Overloads:
     - bConvertAsSmooth: bool, id: PyDb.SubentId
     - bConvertAsSmooth: bool, optimize: bool
-    '''
+    
+	-Creates an AcDbSurface entity from the mesh data using the bConvertAsSmooth flag to control whether the ASM surface is smoothed with NURBS faces or polygonal faces.-'''
         ...
 
     @staticmethod
@@ -19273,7 +19274,8 @@ class SubDMesh(Entity):
         '''Overloads:
     - subentPaths: list[PyDb.FullSubentPath], length: float, dir: PyGe.Vector3d, taper: float
     - subentPaths: list[PyDb.FullSubentPath], alongPath: list[PyGe.Point3d], taper: float
-    '''
+    
+	-Connects and extrudes faces along given direction and taper angle-'''
         ...
 
     @overload
@@ -19284,10 +19286,11 @@ class SubDMesh(Entity):
         '''Overloads:
     - subentPaths: list[PyDb.FullSubentPath], length: float, dir: PyGe.Vector3d, taper: float
     - subentPaths: list[PyDb.FullSubentPath], alongPath: list[PyGe.Point3d], taper: float
-    '''
+    
+	-Extrudes faces in the given direction and taper angle.-'''
         ...
     def getAdjacentSubentPath (self, path: PyDb.FullSubentPath, stype: PyDb.SubentType)-> list[list[PyDb.FullSubentPath]] :
-        '''                             '''
+        '''Returns adjacent subentities for a specified mesh sub-entity.'''
         ...
 
     @overload
@@ -19298,76 +19301,77 @@ class SubDMesh(Entity):
         '''Overloads:
     - id: int|PyDb.SubentId
     - subentPaths: list[PyDb.FullSubentPath]
-    '''
+    
+	-Gets the crease value for a mesh subentity.-'''
         ...
     def getEdgeArray (self)-> list[int] :
-        '''                             '''
+        '''Returns Level 0 (base) mesh edges.'''
         ...
     def getFaceArray (self)-> list[int] :
-        '''                             '''
+        '''Returns Level 0 (base) mesh face list array.'''
         ...
     def getFacePlane (self, id: PyDb.SubentId)-> PyGe.Plane :
-        '''                             '''
+        '''Gets the face plane of the specified face.'''
         ...
     def getNormalArray (self)-> list[PyGe.Vector3d] :
-        '''                             '''
+        '''Returns Level 0 (base) vertex normal array.'''
         ...
     def getSubDividedFaceArray (self)-> list[int] :
-        '''                             '''
+        '''Returns smoothed mesh face list array.'''
         ...
     def getSubDividedNormalArray (self)-> list[PyGe.Vector3d] :
-        '''                             '''
+        '''Returns smoothed mesh vertex normal array.'''
         ...
     def getSubDividedVertexAt (self, id: int|PyDb.SubentId)-> PyGe.Point3d :
-        '''                             '''
+        '''Returns the vertex at the specified position of the smoothed mesh.'''
         ...
     def getSubDividedVertices (self)-> list[PyGe.Point3d] :
-        '''                             '''
+        '''Returns the smoothed mesh vertices.'''
         ...
     def getSubentColor (self, id: PyDb.SubentId)-> PyDb.Color :
-        '''                             '''
+        '''Returns the color for the specified subentity.'''
         ...
     def getSubentMaterial (self, id: PyDb.SubentId)-> PyDb.ObjectId :
-        '''                             '''
+        '''Returns the object id of the material assigned to the specified subentity.'''
         ...
     def getSubentPath (self, index: int, stype: PyDb.SubentType)-> list[list[PyDb.FullSubentPath]] :
-        '''                             '''
+        '''Returns the array of AcDbFullSubentPath representing the subentity base for the specified subentity type and index.'''
         ...
     def getVertexAt (self, id: int|PyDb.SubentId)-> PyGe.Point3d :
-        '''                             '''
+        '''Returns the vertex at the specified position of the base mesh.'''
         ...
     def getVertices (self)-> list[PyGe.Point3d] :
-        '''                             '''
+        '''Returns the level 0 (base) mesh vertices.'''
         ...
     def isWatertight (self)-> bool :
-        '''                             '''
+        '''Indicates whether or not a mesh is watertight. It is watertight if adjacent polygons share common vertices.'''
         ...
     def mergeFaces (self, subentPaths: list[PyDb.FullSubentPath])-> None :
-        '''                             '''
+        '''Merges all given faces.'''
         ...
     def numOfEdges (self)-> int :
-        '''                             '''
+        '''Returns the number for level 0 (base) mesh edges.'''
         ...
     def numOfFaces (self)-> int :
-        '''                             '''
+        '''Returns the number of level 0 (base) mesh faces.'''
         ...
     def numOfSubDividedFaces (self)-> int :
-        '''                             '''
+        '''Returns the number for current level (smoothed) mesh faces.'''
         ...
     def numOfSubDividedFacesAt (self, subentPaths: list[PyDb.FullSubentPath])-> int :
-        '''                             '''
+        '''Returns the number of subdivided faces for given base mesh faces'''
         ...
     def numOfSubDividedVertices (self)-> int :
-        '''                             '''
+        '''Returns the number for current level (smoothed) mesh vertices.'''
         ...
     def numOfVertices (self)-> int :
-        '''                             '''
+        '''Returns the number for Level 0 (base) mesh vertices.'''
         ...
     def setBox (self, xLen: float, yLen: float, zLen: float, divX: int, divY: int, divZ: int, subDLevel: int)-> None :
-        '''                             '''
+        '''Creates a box mesh primitive.'''
         ...
     def setCone (self, majorRadius: float, minorRadius: float, height: float, divAxis: int, divHeight: int, divCap: int, radiusRatio: float, subDLevel: int)-> None :
-        '''                             '''
+        '''Creates a cone mesh primitive.'''
         ...
 
     @overload
@@ -19378,52 +19382,53 @@ class SubDMesh(Entity):
         '''Overloads:
     - creaseVal: float
     - subentPaths: list[PyDb.FullSubentPath], creaseVal: float
-    '''
+    
+	-Makes all edges of the MESH object "sharp."-'''
         ...
     def setCylinder (self, majorRadius: float, minorRadius: float, height: float, divAxis: int, divHeight: int, divCap: int, subDLevel: int)-> None :
-        '''                             '''
+        '''Creates a cylinder mesh primitive.'''
         ...
     def setPyramid (self, radius: float, height: float, divLength: int, divHeight: int, divCap: int, nSides: int, radiusRatio: float, subDLevel: int)-> None :
-        '''                             '''
+        '''Creates a pyramid mesh primitive.'''
         ...
     def setSphere (self, radius: float, divAxis: int, divHeight: int, subDLevel: int)-> None :
-        '''                             '''
+        '''Creates a sphere mesh primitive.'''
         ...
     def setSubDMesh (self, vertexArray: list[PyGe.Point3d], faceArray: list[int], subDLevel: int)-> None :
-        '''                             '''
+        '''Creates a mesh for a given vertex array and face list array.'''
         ...
     def setSubentColor (self, id: PyDb.SubentId, clr: PyDb.Color)-> None :
-        '''                             '''
+        '''Sets the color of the specified subentity'''
         ...
     def setSubentMaterial (self, id: PyDb.SubentId, materialId: PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Sets the material for the specified subentity.'''
         ...
     def setTorus (self, majorRadius: float, divSection: int, divSweepPath: int, sectionRadiusRatio: float, sectionRotate: float, subDLevel: int)-> None :
-        '''                             '''
+        '''Creates a torus mesh primitive.'''
         ...
     def setVertexAt (self, id: int|PyDb.SubentId, pt: PyGe.Point3d)-> None :
-        '''                             '''
+        '''Sets the vertex at the given position for the base mesh.'''
         ...
     def setWedge (self, xLen: float, yLen: float, zLen: float, divLength: int, divWidth: int, divHeight: int, divSlope: int, divCap: int, subDLevel: int)-> None :
-        '''                             '''
+        '''Creates a wedge mesh primitive.'''
         ...
     def spin (self, subentFaceId: PyDb.SubentId)-> None :
-        '''                             '''
+        '''Spin edge of mesh face '''
         ...
     def splitFace (self, subentFaceId: PyDb.SubentId, subent0: PyDb.SubentId, point0: PyGe.Point3d, subent1: PyDb.SubentId, point1: PyGe.Point3d)-> None :
-        '''                             '''
+        '''Split a face in two by specifying two points on two different face edges.'''
         ...
     def subdDivideDown (self)-> None :
-        '''                             '''
+        '''Drops the smoothness level down one by decreasing the subDvision level.'''
         ...
     def subdDivideUp (self)-> None :
-        '''                             '''
+        '''Pushes the smoothness level up one by increasing the subDvision level.'''
         ...
     def subdLevel (self)-> int :
-        '''                             '''
+        '''Returns the current smoothness level.'''
         ...
     def subdRefine (self, subentPaths: list[PyDb.FullSubentPath]=None)-> None :
-        '''                             '''
+        '''Adds definition to the Smooth mesh by re-assigning any level of smoothness to the representation of certain faces, to become the new Level 0.'''
         ...
 
 class SubentId(object):
