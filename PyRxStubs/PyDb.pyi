@@ -11300,34 +11300,34 @@ class IdMapping(object):
         '''                             '''
         ...
     def assign (self, pair: PyDb.IdPair)-> None :
-        '''                             '''
+        '''This function adds idPair to the AcDbIdMapping object's map.It returns Acad::eOk if successful.'''
         ...
     def change (self, pair: PyDb.IdPair)-> bool :
-        '''                             '''
+        '''This function searches the AcDbIdMapping object's map for the key contained in pairToChange and, if found, replaces the entry with a copy of pairToChange.Returns true if the change is successful. Otherwise returns false.'''
         ...
     def compute (self, pair: PyDb.IdPair)-> bool :
-        '''                             '''
+        '''This function searches the AcDbIdMapping object's ID map for an AcDbIdPair that has a key that matches the key passed in within idPair. If the key is found, the remaining data in the "found" AcDbIdPair within the map will be copied into idPair and the function returns true. If the key is not found and the ID map is being used to clone within the same database, then the function sets the value of idPair equal to the key and returns false. If the key is not found and the ID map is either being used as a container, or for cloning between two databases, then the value of idPair is set to NULL and the function returns false.This function can only be used to find an entry based on the key for the AcDbIdPair, not on the value for the pair.'''
         ...
     def deepCloneContext (self)-> PyDb.DeepCloneType :
-        '''                             '''
+        '''Returns context of the deepclone operation the AcDbIdMapping object is involved in.The possible values for AcDb::DeepCloneType are:kDcCopykDcExplodekDcBlockkDcXrefBindkDcSymTableMergekDcSaveAskDcInsertkDcWblockkDcObjects'''
         ...
     def destDb (self)-> PyDb.Database :
-        '''                             '''
+        '''This function sets db to point to the database that is the destination for the deep clone operation for which the AcDbIdMapping object is being used.Returns Acad::eOk if successful. If the AcDbIdMapping object's destination database is NULL, then Acad::eNullObjectId is returned.'''
         ...
     def duplicateRecordCloning (self)-> PyDb.DuplicateRecordCloning :
-        '''                             '''
+        '''Returns the value for duplicate record cloning, which determines what happens if symbols or dictionary entries are cloned, and a duplicate is found to already exist in the destination database. See AcDb::DuplicateRecordCloning for possible return values.'''
         ...
     def idPairs (self)-> list[PyDb.IdPair] :
-        '''                             '''
+        '''Fills idPair in with the data from the AcDbIdPair object the iterator is currently looking at in the ID map.Returns true if successful. Otherwise returns false.'''
         ...
     def origDb (self)-> PyDb.Database :
-        '''                             '''
+        '''This function sets db to point to the database that is the destination for the deep clone operation for which the AcDbIdMapping object is being used.Returns Acad::eOk if successful. If the AcDbIdMapping object's destination database is NULL, then Acad::eNullObjectId is returned.'''
         ...
     def remove (self, key: PyDb.ObjectId)-> bool :
-        '''                             '''
+        '''This function searches the AcDbIdMapping ID map for an entry that has a key matching key. If a matching entry is found, it is deleted from the ID map.Returns true if the search is successful and an ID pair is deleted. Otherwise returns false.'''
         ...
     def setDestDb (self, dest: PyDb.Database)-> None :
-        '''                             '''
+        '''The destination database can only be set if it has not yet been set in the AcDbIdMapping object. Once set, it cannot be changed.If the destination database for AcDbIdMapping object is NULL then it will be set to the database pointed to by db and Acad::eOK will be returned. If the AcDbIdMapping object's destination database is not NULL and it is the same as that pointed to by db, then Acad::eOk will be returned. If the AcDbIdMapping object's destination database is not NULL and it is not the same as that pointed to by db, then no change will take place and Acad::eWrongDatabase will be returned.'''
         ...
 
 class IdPair(object):
@@ -11349,34 +11349,34 @@ class IdPair(object):
     '''
         ...
     def isCloned (self)-> bool :
-        '''                             '''
+        '''Returns true if the key object has been cloned. Otherwise returns false.'''
         ...
     def isOwnerXlated (self)-> bool :
-        '''                             '''
+        '''Returns true if the owner has been translated. Otherwise returns false.'''
         ...
     def isPrimary (self)-> bool :
-        '''                             '''
+        '''Returns true if the key object is part of the primary set of objects being cloned, or if it was "deep cloned" because it was owned by a cloned primary object. Otherwise returns false.'''
         ...
     def key (self)-> PyDb.ObjectId :
-        '''                             '''
+        '''Returns the key (which is the objectId of the original object).'''
         ...
     def setIsCloned (self, val : bool)-> None :
-        '''                             '''
+        '''Sets the isCloned status of the AcDbIdPair object. If isCloned == true, then the status is set to indicate that the object identified by the key objectId has already been cloned. If isCloned == false, then the status is set to indicate that the object has not been cloned yet..'''
         ...
     def setIsOwnerXlated (self, val : bool)-> None :
-        '''                             '''
+        '''Sets the isOwnerXlated status of the AcDbIdPair object. If isOwnerXlated == true, then the status is set to indicate that the owner of the object identified by the key objectId has already been translated. If isCloned == false, then the status is set to indicate that the object's owner has not been translated yet..'''
         ...
     def setIsPrimary (self, val : bool)-> None :
-        '''                             '''
+        '''Sets the isPrimary status of the AcDbIdPair object. If isPrimary == true, then the status is set to indicate that the object identified by the key objectId is a primary object. If isPrimary == false, then the status is set to indicate that the object is not a primary object..'''
         ...
     def setKey (self, val : PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Sets key to be the key (the original object) objectId for the AcDbIdPair object.'''
         ...
     def setValue (self, val : PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Sets value to be the value (the cloned object) objectId for the AcDbIdPair object.'''
         ...
     def value (self)-> PyDb.ObjectId :
-        '''                             '''
+        '''Returns the value (which is the objectId of the cloned object).'''
         ...
 
 class Image(Entity):
@@ -23031,7 +23031,7 @@ class Viewport(Entity):
     def contrast (self)-> float :
         '''Returns the contrast factor for the viewport.'''
         ...
-    def copied (self, obj: PyDb.Object, newobj: PyDb.Object)-> None :
+    def copied (self, obj: PyDb.Object, newObj: PyDb.Object)-> None :
         '''This is one of the persistent reactor notification functions that can be overridden in a custom class derived from AcDbObject. The default implementation for this function is a return, so unless it is overridden it does nothing.This particular function is called whenever the object sending notification has been copied (that is, its clone() member function has been called) and is now in the process of being closed. When this function is called, dbObj points to the object sending the notification and newObj points the newly made copy. Both objects are open in a read-only state.'''
         ...
     def customScale (self)-> float :
@@ -23466,7 +23466,7 @@ class Viewport(Entity):
     def standardScale (self)-> PyDb.StandardScaleType :
         '''This function returns the scale of a viewport by using a standard scale defined by the StandardScaleType enumeration. Possible values are:NameUsageNameUsagekCustomScaleScale is not a standard scalek1_11:1k1_128in_1ft1/128"= 1'k1_64in_1ft1/64"= 1'k1_32in_1ft1/32"= 1'k1_16in_1ft1/16"= 1'k3_32in_1ft3/32"= 1'k1_8in_1ft1/8" = 1'k3_16in_1ft3/16"= 1'k1_4in_1ft1/4" = 1'k3_8in_1ft3/8" = 1'k1_2in_1ft1/2" = 1'k3_4in_1ft3/4" = 1'k1in_1ft1"= 1'k3in_1ft3"= 1'k6in_1ft6"= 1'k1ft_1ft1'= 1'k1_21:2k1_41:4k1_81:8k1_101:10k1_161:16k1_201:20k1_301:30k1_401:40k1_501:50k1_1001:100k2_12:1k4_14:1k8_18:1k10_110:1k100_1100:1k1000_11000:1If you call standardScale() on a viewport whose scale doesn't match any of the standard scales, the kCustomScale is returned. Calling setCustomScale() with a scale of kCustomScale is an invalid operation.'''
         ...
-    def subObjModified (self, obj: PyDb.Object, subobj: PyDb.Object)-> None :
+    def subObjModified (self, obj: PyDb.Object, subObj: PyDb.Object)-> None :
         '''This function is invoked on reactors attached to the main object dbObj when the sub-object pointed to by subObj is opened for write and one of its methods is called which calls AcDbObject::assertWriteEnabled(). The notification takes place when the object's close() or cancel() method is called.'''
         ...
     def sunId (self)-> PyDb.ObjectId :
