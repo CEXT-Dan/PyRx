@@ -209,10 +209,10 @@ This class cannot be instantiated from Python'''
     def name (self)-> str :
         '''                             '''
         ...
-    def setDescription (self, val: str)-> PyBrxBim.ResultStatus :
+    def setDescription (self, val: str)-> None :
         '''                             '''
         ...
-    def setName (self, val: str)-> PyBrxBim.ResultStatus :
+    def setName (self, val: str)-> None :
         '''                             '''
         ...
     def setNull (self)-> None :
@@ -280,6 +280,61 @@ class BimPolicyOptions(object):
         ...
     def eNothing (self, *args, **kwargs)-> None :
         '''None'''
+        ...
+
+class BimSpatialLocation(BimObject):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+        ...
+    def assignToEntity (self, id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+    def assignedObjects (self, id: PyDb.ObjectId)-> list :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def assignedSpatialLocation (id: PyDb.ObjectId)-> PyBrxBim.BimSpatialLocation :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PyBrxBim.BimObject)-> PyBrxBim.BimSpatialLocation :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+    def hasBuilding (self)-> bool :
+        '''                             '''
+        ...
+    def hasStory (self)-> bool :
+        '''                             '''
+        ...
+    def isBuilding (self)-> bool :
+        '''                             '''
+        ...
+    def isStory (self)-> bool :
+        '''                             '''
+        ...
+    def longName (self)-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def removeSpatialLocationFrom (id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+    def setLongName (self, *args, **kwargs)-> None :
+        '''setLongName( (BimSpatialLocation)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setLongName(class PyBrxBimSpatialLocation {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
         ...
 
 class ResultStatus(object):
