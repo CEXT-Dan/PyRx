@@ -15,6 +15,7 @@ BOOST_PYTHON_MODULE(PyBrxBim)
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
 
     makePyBrxBimPoliciesWrapper();
+    makePyBrxBimObjectWrapper();
 
     enum_<BrxBimPolicies::EPolicyOptions>("BimPolicyOptions")
         .value("eNothing", BrxBimPolicies::EPolicyOptions::eNothing)
