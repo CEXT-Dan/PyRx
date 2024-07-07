@@ -10,6 +10,7 @@
 #include "PyAcPl.h"
 #include "PyAcSm.h"
 #include "PyBrxCv.h"
+#include "PyBrxBim.h"
 #include "PyRxModule.h"
 #include "PyRxModuleLoader.h"
 #include "PyRxINI.h"
@@ -291,6 +292,7 @@ bool PyRxApp::init()
         initPySmModule();
 #ifdef BRXAPP
         initPyBrxCvModule();
+        initPyBrxBimModule();
 #endif
         initWxApp();
         appendINISettings();
