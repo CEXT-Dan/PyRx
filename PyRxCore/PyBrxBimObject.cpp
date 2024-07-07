@@ -156,9 +156,19 @@ void makePyBrxBimSpatialLocationWrapper()
 {
     PyDocString DS("BimSpatialLocation");
     class_<PyBrxBimSpatialLocation, bases<PyBrxBimObject>>("BimSpatialLocation")
-       
-        .def("cast", &PyBrxBimObject::cast, DS.SARGS({ "otherObject: PyBrxBim.BimObject" })).staticmethod("cast")
-        .def("className", &PyBrxBimObject::className, DS.SARGS()).staticmethod("className")
+        //TODO check if other constructors are useful 
+        .def("longName", &PyBrxBimSpatialLocation::longName, DS.ARGS())
+        .def("setLongName", &PyBrxBimSpatialLocation::setLongName)
+        .def("isStory", &PyBrxBimSpatialLocation::isStory, DS.ARGS())
+        .def("isBuilding", &PyBrxBimSpatialLocation::isBuilding, DS.ARGS())
+        .def("hasStory", &PyBrxBimSpatialLocation::hasStory, DS.ARGS())
+        .def("hasBuilding", &PyBrxBimSpatialLocation::hasBuilding, DS.ARGS())
+        .def("assignedObjects", &PyBrxBimSpatialLocation::assignedObjects, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("assignToEntity", &PyBrxBimSpatialLocation::assignToEntity, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("assignedSpatialLocation", &PyBrxBimSpatialLocation::assignedSpatialLocation, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("assignedSpatialLocation")
+        .def("removeSpatialLocationFrom", &PyBrxBimSpatialLocation::removeSpatialLocationFrom, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("removeSpatialLocationFrom")
+        .def("cast", &PyBrxBimSpatialLocation::cast, DS.SARGS({ "otherObject: PyBrxBim.BimObject" })).staticmethod("cast")
+        .def("className", &PyBrxBimSpatialLocation::className, DS.SARGS()).staticmethod("className")
         ;
 }
 

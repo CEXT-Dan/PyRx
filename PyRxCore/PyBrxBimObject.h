@@ -62,7 +62,7 @@ void makePyBrxBimSpatialLocationWrapper();
 
 class PyBrxBimSpatialLocation : public PyBrxBimObject
 {
-
+    //TODO check if other constructors are useful 
 public:
     PyBrxBimSpatialLocation();
     PyBrxBimSpatialLocation(const BrxBimSpatialLocation* ptr);
@@ -72,12 +72,10 @@ public:
 
     std::string             longName() const;
     void                    setLongName(const std::string& szLongName) const;
-
     bool                    isStory()    const;
     bool                    isBuilding() const;
     bool                    hasStory()    const;
     bool                    hasBuilding() const;
-
     boost::python::list     assignedObjects(const PyDbDatabase& database) const;
     void                    assignToEntity(const PyDbObjectId& id) const;
 
