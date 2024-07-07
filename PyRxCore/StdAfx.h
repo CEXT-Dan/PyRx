@@ -223,18 +223,7 @@ constexpr const char* PyEdNamespace = "PyEd";
 constexpr const char* PyPlNamespace = "PyPl";
 constexpr const char* PySmNamespace = "PySm";
 constexpr const char* PyBrxCvNamespace = "PyBrxCv";
-
-constexpr const wchar_t* PyAppNamespaceW = L"PyRxApp";
-constexpr const wchar_t* PyApNamespaceW = L"PyAp";
-constexpr const wchar_t* PyRxNamespaceW = L"PyRx";
-constexpr const wchar_t* PyGeNamespaceW = L"PyGe";
-constexpr const wchar_t* PyGsNamespaceW = L"PyGs";
-constexpr const wchar_t* PyDbNamespaceW = L"PyDb";
-constexpr const wchar_t* PyGiNamespaceW = L"PyGi";
-constexpr const wchar_t* PyEdNamespaceW = L"PyEd";
-constexpr const wchar_t* PyPlNamespaceW = L"PyPl";
-constexpr const wchar_t* PySmNamespaceW = L"PySm";
-constexpr const wchar_t* PyBrxCvNamespaceW = L"PyBrxCv";
+constexpr const char* PyBrxBimNamespace = "PyBrxBim";
 
 constexpr const bool py_show_user_defined = true;
 constexpr const bool py_show_py_signatures = true;

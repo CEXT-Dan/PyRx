@@ -391,6 +391,12 @@
     <ClCompile Include="PyAcSm.cpp">
       <Filter>Source Files\PySm</Filter>
     </ClCompile>
+    <ClCompile Include="PyBrxBim.cpp">
+      <Filter>Source Files\PyBrxBim</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxBimObject.cpp">
+      <Filter>Source Files\PyBrxBim</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -786,6 +792,12 @@
     <ClInclude Include="PyAcSm.h">
       <Filter>Header Files\PySm</Filter>
     </ClInclude>
+    <ClInclude Include="PyBrxBim.h">
+      <Filter>Header Files\PyBrxBim</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxBimObject.h">
+      <Filter>Header Files\PyBrxBim</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -862,6 +874,12 @@
     </Filter>
     <Filter Include="Source Files\PySm">
       <UniqueIdentifier>{98e88479-9ae7-4dec-aa4c-96d980f34600}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PyBrxBim">
+      <UniqueIdentifier>{8640af06-5a77-4d6e-b9ef-40db5528076c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PyBrxBim">
+      <UniqueIdentifier>{d7a03251-95c9-4a77-ac40-dc1b7548a20c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
