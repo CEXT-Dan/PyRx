@@ -2,8 +2,6 @@
 #include "PyBrxBim.h"
 
 #ifdef BRXAPP
-
-#include "BimDefs.h"
 #include "PyBrxBimObject.h"
 
 
