@@ -3,6 +3,10 @@
 
 
 #ifdef BRXAPP
+#include "PyDbDatabase.h"
+#include "PyDbObjectId.h"
+
+
 using namespace boost::python;
 
 void makePyBrxBimPoliciesWrapper()
@@ -77,8 +81,8 @@ struct PyBrxBimObjectDeleter
     bool m_autoDelete = true;
 };
 
-PyBrxBimObject::PyBrxBimObject(const BrxBimObject* ptr)
-    :PyBrxBimObject(const_cast<BrxBimObject*>(ptr),false)
+PyBrxBimObject::PyBrxBimObject(const BrxBimObject* pObject)
+    :PyBrxBimObject(const_cast<BrxBimObject*>(pObject),false)
 {
 }
 
@@ -117,14 +121,14 @@ std::string PyBrxBimObject::description() const
     return wstr_to_utf8(impObj()->description());
 }
 
-BimApi::ResultStatus PyBrxBimObject::setName(const std::string& szNewName) const
+void PyBrxBimObject::setName(const std::string& szNewName) const
 {
-    return impObj()->setName(utf8_to_wstr(szNewName).c_str());
+    PyThrowBadBim(impObj()->setName(utf8_to_wstr(szNewName).c_str()));
 }
 
-BimApi::ResultStatus PyBrxBimObject::setDescription(const std::string& szInfo) const
+void PyBrxBimObject::setDescription(const std::string& szInfo) const
 {
-    return impObj()->setDescription(utf8_to_wstr(szInfo).c_str());
+    PyThrowBadBim(impObj()->setDescription(utf8_to_wstr(szInfo).c_str()));
 }
 
 PyBrxBimObject PyBrxBimObject::cast(const PyBrxBimObject& src)
@@ -143,6 +147,111 @@ BrxBimObject* PyBrxBimObject::impObj(const std::source_location& src /*= std::so
         throw PyNullObject(src);
         }
     return static_cast<BrxBimObject*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimSpatialLocation
+
+void makePyBrxBimSpatialLocationWrapper()
+{
+    PyDocString DS("BimSpatialLocation");
+    class_<PyBrxBimSpatialLocation, bases<PyBrxBimObject>>("BimSpatialLocation")
+       
+        .def("cast", &PyBrxBimObject::cast, DS.SARGS({ "otherObject: PyBrxBim.BimObject" })).staticmethod("cast")
+        .def("className", &PyBrxBimObject::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxBimSpatialLocation::PyBrxBimSpatialLocation()
+    : PyBrxBimSpatialLocation(new BrxBimSpatialLocation(), true)
+{
+}
+
+PyBrxBimSpatialLocation::PyBrxBimSpatialLocation(const BrxBimSpatialLocation* pObject)
+    : PyBrxBimObject(pObject)
+{
+}
+
+PyBrxBimSpatialLocation::PyBrxBimSpatialLocation(BrxBimSpatialLocation* pObject, bool autoDelete)
+  : PyBrxBimObject(pObject, autoDelete)
+{
+}
+
+PyBrxBimSpatialLocation::PyBrxBimSpatialLocation(const BrxBimSpatialLocation& r)
+    : PyBrxBimSpatialLocation(new BrxBimSpatialLocation(r), true)
+{
+}
+
+std::string PyBrxBimSpatialLocation::longName() const
+{
+    return wstr_to_utf8(impObj()->longName());
+}
+
+void PyBrxBimSpatialLocation::setLongName(const std::string& szLongName) const
+{
+    PyThrowBadBim(impObj()->setLongName(utf8_to_wstr(szLongName).c_str()));
+}
+
+bool PyBrxBimSpatialLocation::isStory() const
+{
+    return impObj()->isStory();
+}
+
+bool PyBrxBimSpatialLocation::isBuilding() const
+{
+    return impObj()->isBuilding();
+}
+
+bool PyBrxBimSpatialLocation::hasStory() const
+{
+    return impObj()->hasStory();
+}
+
+bool PyBrxBimSpatialLocation::hasBuilding() const
+{
+    return impObj()->hasBuilding();
+}
+
+boost::python::list PyBrxBimSpatialLocation::assignedObjects(const PyDbDatabase& database) const
+{
+    AcDbObjectIdArray ids; 
+    PyThrowBadBim(impObj()->assignedObjects(ids, database.impObj()));
+    return ObjectIdArrayToPyList(ids);
+}
+
+void PyBrxBimSpatialLocation::assignToEntity(const PyDbObjectId& id) const
+{
+    PyThrowBadBim(impObj()->assignToEntity(id.m_id));
+}
+
+PyBrxBimSpatialLocation PyBrxBimSpatialLocation::assignedSpatialLocation(const PyDbObjectId& id)
+{
+    BrxBimSpatialLocation spatialLocation;
+    PyThrowBadBim(BrxBimSpatialLocation::assignedSpatialLocation(spatialLocation, id.m_id));
+    return PyBrxBimSpatialLocation{ spatialLocation };
+}
+
+void PyBrxBimSpatialLocation::removeSpatialLocationFrom(const PyDbObjectId& id)
+{
+    PyThrowBadBim(BrxBimSpatialLocation::removeSpatialLocationFrom(id.m_id));
+}
+
+PyBrxBimSpatialLocation PyBrxBimSpatialLocation::cast(const PyBrxBimObject& src)
+{
+    return PyBrxBimObjectCast<PyBrxBimSpatialLocation>(src);
+}
+
+std::string PyBrxBimSpatialLocation::className()
+{
+    return "BrxBimSpatialLocation";
+}
+
+BrxBimSpatialLocation* PyBrxBimSpatialLocation::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxBimSpatialLocation*>(m_pyImp.get());
 }
 
 #endif//BRXAPP

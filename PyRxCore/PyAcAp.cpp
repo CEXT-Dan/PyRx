@@ -51,6 +51,9 @@ BOOST_PYTHON_MODULE(PyAp)
     register_exception_translator<PyNotimplementedByHost>(PyNotimplementedByHost::translator);
     register_exception_translator<PyAcadHrError>(PyAcadHrError::translator);
     register_exception_translator<PyAcadHrError>(PyAcadHrError::translator);
+#if defined(_BRXTARGET)
+    register_exception_translator<PyBrxBimError>(PyBrxBimError::translator);
+#endif
 
     PyDocString DS("CmdFlags");
     class_<CmdFlags>("CmdFlags")

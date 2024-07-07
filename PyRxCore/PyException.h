@@ -4,7 +4,115 @@
 
 #pragma pack (push, 8)
 
-static std::string appHostName()
+#if defined(_BRXTARGET)
+#include "BimDefs.h"
+
+inline constexpr const char* brxBimStatusText(const BimApi::ResultStatus stat) noexcept
+{
+    switch (stat)
+    {
+        default:
+            return "Unknown";
+        case BimApi::eOk:
+            return "eOk";
+        case BimApi::eNoDbResidentObject:
+            return "eNoDbResidentObject";
+        case BimApi::eDbNotAccessible:
+            return "eDbNotAccessible";
+        case BimApi::eDbObjectNotSupported:
+            return "eDbObjectNotSupported";
+        case BimApi::eDbNotOpenForWrite:
+            return "eDbNotOpenForWrite";
+        case BimApi::eModelSpaceNotAccessible:
+            return "eModelSpaceNotAccessible";
+        case BimApi::eProjectDbNotAccessible:
+            return "eProjectDbNotAccessible";
+        case BimApi::eAssociatedLibraryNotAccessible:
+            return "eAssociatedLibraryNotAccessible";
+        case BimApi::eNotApplicableForTheseParameters:
+            return "eNotApplicableForTheseParameters";
+        case BimApi::eInvalidSpatialLocation:
+            return "eInvalidSpatialLocation";
+        case BimApi::eInvalidMaterial:
+            return "eInvalidMaterial";
+        case BimApi::eInvalidMaterialComposition:
+            return "eInvalidMaterialComposition";
+        case BimApi::eObjectAlreadyExists:
+            return "eObjectAlreadyExists";
+        case BimApi::eObjectCouldNotBeDeleted:
+            return "eObjectCouldNotBeDeleted";
+        case BimApi::eXmlFileCouldNotBeParsed:
+            return "eXmlFileCouldNotBeParsed";
+        case BimApi::eInvalidXmlFormat:
+            return "eInvalidXmlFormat";
+        case BimApi::eInvalidName:
+            return "eInvalidName";
+        case BimApi::eNotLinearBuildingElement:
+            return "eNotLinearBuildingElement";
+        case BimApi::eInvalidValue:
+            return "eInvalidValue";
+        case BimApi::eNotAssignedToLibrary:
+            return "eNotAssignedToLibrary";
+        case BimApi::eNullObject:
+            return "eNullObject";
+        case BimApi::eNullObjectId:
+            return "eNullObjectId";
+        case BimApi::eNullDatabase:
+            return "eNullDatabase";
+        case BimApi::eNullDocument:
+            return "eNullDocument";
+        case BimApi::eNullString:
+            return "eNullString";
+        case BimApi::eObjectNotExisting:
+            return "eObjectNotExisting";
+        case BimApi::eObjectNotSupported:
+            return "eObjectNotSupported";
+        case BimApi::eNoProfileAssigned:
+            return "eNoProfileAssigned";
+        case BimApi::eNoData:
+            return "eNoData";
+        case BimApi::eUnknownData:
+            return "eUnknownData";
+        case BimApi::eWrongDataType:
+            return "eWrongDataType";
+        case BimApi::eUnassignedEntity:
+            return "eUnassignedEntity";
+        case BimApi::eBimNotImplementedYet:
+            return "eBimNotImplementedYet";
+        case BimApi::eBimNotAvailable:
+            return "eBimNotAvailable";
+        case BimApi::eInternalError:
+            return "eInternalError";
+        case BimApi::eUnknownError:
+            return "eUnknownError";
+        case BimApi::eInvalidIndex:
+            return "eInvalidIndex";
+        case BimApi::eInvalidInput:
+            return "eInvalidInput";
+        case BimApi::eNoNameSpace:
+            return "eNoNameSpace";
+        case BimApi::eNameSpaceAlreadyExists:
+            return "eNameSpaceAlreadyExists";
+        case BimApi::eNoPropertySet:
+            return "eNoPropertySet";
+        case BimApi::ePropertySetAlreadyExists:
+            return "ePropertySetAlreadyExists";
+        case BimApi::eNoProperty:
+            return "eNoProperty";
+        case BimApi::eNotImplemented:
+            return "eNotImplemented";
+        case BimApi::eInvalidArgument:
+            return "eInvalidArgument";
+        case BimApi::eNoAttributeSet:
+            return "eNoAttributeSet";
+        case BimApi::eAttributeSetAlreadyExists:
+            return "eAttributeSetAlreadyExists";
+    }
+    return "Unknown";
+}
+#endif
+
+consteval const char* appHostName()
 {
 #ifdef _ZRXTARGET 
     return "ZRX";
@@ -157,7 +265,6 @@ struct PyAcadHrError
     }
 };
 
-
 struct PyNotimplementedByHost
 {
     const std::source_location m_src;
@@ -180,6 +287,37 @@ struct PyNotimplementedByHost
         PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
     }
 };
+
+#if defined(_BRXTARGET)
+struct PyBrxBimError
+{
+    BimApi::ResultStatus m_rs;
+    std::source_location m_src;
+
+    explicit PyBrxBimError(const BimApi::ResultStatus rs, const std::source_location& src = std::source_location::current())
+        : m_rs(rs), m_src(src) {}
+
+    inline std::string format() const
+    {
+        constexpr std::string_view fmtstr("\nException!({}), function {}, Line {}, File {}: ");
+        const std::filesystem::path file = m_src.file_name();
+        const auto& fname = formatfname(m_src.function_name());
+        return std::format(fmtstr, brxBimStatusText(m_rs), (const char*)fname, m_src.line(), file.filename().string());
+    }
+
+    inline static void translator(PyBrxBimError const& x)
+    {
+        PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
+    }
+};
+
+inline void PyThrowBadBim(BimApi::ResultStatus hr, const std::source_location& src = std::source_location::current())
+{
+    if (FAILED(hr)) [[unlikely]]
+        throw PyAcadHrError(hr, src);
+}
+#endif
+
 
 inline void PyThrowBadHr(HRESULT hr, const std::source_location& src = std::source_location::current())
 {
