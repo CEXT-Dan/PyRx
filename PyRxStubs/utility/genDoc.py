@@ -16,8 +16,9 @@ import PySm  # = SheetSet
 #! move along nothing to see here
 #! its smells like code smell, like, victory!
 
-if  "BRX" in  PyAp.Application.hostAPI():
+if "BRX" in  PyAp.Application.hostAPI():
     import PyBrxCv
+    import PyBrxBim
       
 # debug
 def PyRxCmd_pydebug() -> None:
@@ -36,6 +37,8 @@ all_modules_names = ["PyRx", "PyGe", "PyGi", "PyGs", "PyDb", "PyAp", "PyEd", "Py
 if  "BRX" in  PyAp.Application.hostAPI():
     all_modules.append(("PyBrxCv", PyBrxCv))
     all_modules_names.append("PyBrxCv")
+    all_modules.append(("PyBrxBim", PyBrxBim))
+    all_modules_names.append("PyBrxBim")
 
 # TODO iterate all the above modules, and add imports ant type aliasing
 # to each
