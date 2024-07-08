@@ -23,6 +23,47 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
 
+class BimBuilding(BimSpatialLocation):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PyBrxBim.BimObject)-> PyBrxBim.BimBuilding :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class BimComposition(BimObject):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, name: str)-> None : ...
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Overloads:
+    - None: Any
+    - name: str
+    '''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PyBrxBim.BimObject)-> PyBrxBim.BimComposition :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class BimElementType(object):
     def eBimAnnotation (self, *args, **kwargs)-> None :
         '''None'''
@@ -484,24 +525,6 @@ class BimStory(BimSpatialLocation):
 
     @staticmethod
     def cast (otherObject: PyBrxBim.BimObject)-> PyBrxBim.BimStory :
-        '''                             '''
-        ...
-
-    @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-
-class BrxBimBuilding(BimSpatialLocation):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-        ...
-
-    @staticmethod
-    def cast (otherObject: PyBrxBim.BimObject)-> PyBrxBim.BrxBimBuilding :
         '''                             '''
         ...
 
