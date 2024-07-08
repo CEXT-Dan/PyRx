@@ -634,7 +634,7 @@ BrxBimMaterial::PhysicalAssets* PyBrxBimPhysicalAssets::impObj(const std::source
 }
 
 //---------------------------------------------------------------------------------------- -
-//PyPyBrxBimAssets
+//PyBrxBimAssets
 void makeBrxBimAssetsWrapper()
 {
     PyDocString DS("BimAssets");
@@ -789,6 +789,115 @@ BrxBimComposition* PyBrxBimComposition::impObj(const std::source_location& src /
         throw PyNullObject(src);
         }
     return static_cast<BrxBimComposition*>(m_pyImp.get());
+}
+
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimProfile
+void makePyBrxBimProfileWrapper()
+{
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n";
+
+    PyDocString DS("BimProfile");
+    class_<PyBrxBimProfile>("BimProfile")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>(DS.CTOR(ctor)))
+        .def("className", &PyBrxBimProfile::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxBimProfile::PyBrxBimProfile()
+    : PyBrxBimProfile(new BrxBimProfile(), true)
+{
+}
+
+PyBrxBimProfile::PyBrxBimProfile(const PyDbObjectId& id)
+    : PyBrxBimProfile(new BrxBimProfile(id.m_id), true)
+{
+}
+
+PyBrxBimProfile::PyBrxBimProfile(const BrxBimProfile& r)
+    : PyBrxBimProfile(new BrxBimProfile(r),true)
+{
+}
+
+PyBrxBimProfile::PyBrxBimProfile(const BrxBimProfile* ptr)
+    :PyBrxBimProfile(const_cast<BrxBimProfile*>(ptr), false)
+{
+}
+
+PyBrxBimProfile::PyBrxBimProfile(BrxBimProfile* pObject, bool autoDelete)
+    : m_pyImp(pObject, PyBrxBimObjectDeleter<BrxBimProfile>(autoDelete))
+{
+}
+
+std::string PyBrxBimProfile::className()
+{
+    return "BimProfile";
+}
+
+BrxBimProfile* PyBrxBimProfile::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxBimProfile*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimLinearGeometry
+void makeBrxBimLinearGeometryWrapper()
+{
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n";
+
+    PyDocString DS("BimLinearGeometry");
+    class_<PyBrxBimLinearGeometry>("BimLinearGeometry")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>(DS.CTOR(ctor)))
+        .def("className", &PyBrxBimLinearGeometry::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxBimLinearGeometry::PyBrxBimLinearGeometry()
+    : PyBrxBimLinearGeometry(new BrxBimLinearGeometry(), true)
+{
+}
+
+PyBrxBimLinearGeometry::PyBrxBimLinearGeometry(const PyDbObjectId& id)
+    : PyBrxBimLinearGeometry(new BrxBimLinearGeometry(id.m_id), true)
+{
+}
+
+PyBrxBimLinearGeometry::PyBrxBimLinearGeometry(const BrxBimLinearGeometry& r)
+    : PyBrxBimLinearGeometry(new BrxBimLinearGeometry(r), true)
+{
+}
+
+PyBrxBimLinearGeometry::PyBrxBimLinearGeometry(const BrxBimLinearGeometry* ptr)
+    :PyBrxBimLinearGeometry(const_cast<BrxBimLinearGeometry*>(ptr), false)
+{
+}
+
+PyBrxBimLinearGeometry::PyBrxBimLinearGeometry(BrxBimLinearGeometry* pObject, bool autoDelete)
+    : m_pyImp(pObject, PyBrxBimObjectDeleter<BrxBimLinearGeometry>(autoDelete))
+{
+}
+
+std::string PyBrxBimLinearGeometry::className()
+{
+    return "BimLinearGeometry";
+}
+
+BrxBimLinearGeometry* PyBrxBimLinearGeometry::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxBimLinearGeometry*>(m_pyImp.get());
 }
 
 #endif//BRXAPP

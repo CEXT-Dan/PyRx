@@ -283,6 +283,24 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
 
+class BimLinearGeometry(object):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Overloads:
+    - None: Any
+    - id: PyDb.ObjectId
+    '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class BimMaterial(BimObject):
 
     @overload
@@ -422,6 +440,24 @@ class BimPolicyOptions(object):
         ...
     def eNothing (self, *args, **kwargs)-> None :
         '''None'''
+        ...
+
+class BimProfile(object):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Overloads:
+    - None: Any
+    - id: PyDb.ObjectId
+    '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
         ...
 
 class BimRoom(BimObject):
