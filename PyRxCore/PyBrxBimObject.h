@@ -228,7 +228,7 @@ public:
 };
 
 //---------------------------------------------------------------------------------------- -
-//PyPyBrxBimAssets
+//PyBrxBimAssets
 void makeBrxBimAssetsWrapper();
 class PyBrxBimAssets
 {
@@ -282,5 +282,42 @@ public:
     BrxBimComposition* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimProfile
+void makePyBrxBimProfileWrapper();
+class PyBrxBimProfile
+{
+public:
+    PyBrxBimProfile();
+    PyBrxBimProfile(const PyDbObjectId& id);
+    PyBrxBimProfile(const BrxBimProfile& r);
+    PyBrxBimProfile(const BrxBimProfile* ptr);
+    PyBrxBimProfile(BrxBimProfile* pObject, bool autoDelete);
+    virtual ~PyBrxBimProfile() = default;
+    static std::string  className();
+public:
+    BrxBimProfile* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<BrxBimProfile> m_pyImp;
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimLinearGeometry
+void makeBrxBimLinearGeometryWrapper();
+class PyBrxBimLinearGeometry
+{
+public:
+    PyBrxBimLinearGeometry();
+    PyBrxBimLinearGeometry(const PyDbObjectId& id);
+    PyBrxBimLinearGeometry(const BrxBimLinearGeometry& r);
+    PyBrxBimLinearGeometry(const BrxBimLinearGeometry* ptr);
+    PyBrxBimLinearGeometry(BrxBimLinearGeometry* pObject, bool autoDelete);
+    virtual ~PyBrxBimLinearGeometry() = default;
+    static std::string  className();
+public:
+    BrxBimLinearGeometry* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<BrxBimLinearGeometry> m_pyImp;
+};
 
 #endif//BRXAPP
