@@ -262,4 +262,25 @@ public:
 public:
     BrxBimPly* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimComposition
+void makePyBrxBimCompositionWrapper();
+class PyBrxBimComposition : public PyBrxBimObject
+{
+public:
+    PyBrxBimComposition();
+    PyBrxBimComposition(const std::string& name);
+    PyBrxBimComposition(const BrxBimComposition& r);
+    PyBrxBimComposition(const BrxBimComposition* ptr);
+    PyBrxBimComposition(BrxBimComposition* pObject, bool autoDelete);
+    virtual ~PyBrxBimComposition() override = default;
+    static PyBrxBimComposition  cast(const PyBrxBimObject& src);
+    static std::string          className();
+
+public:
+    BrxBimComposition* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
 #endif//BRXAPP
