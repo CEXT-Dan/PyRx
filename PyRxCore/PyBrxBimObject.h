@@ -244,4 +244,22 @@ public:
     std::shared_ptr<BrxBimMaterial::BimAssets> m_pyImp;
 };
 
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimPly
+void makeBrxBimPlyWrapper();
+class PyBrxBimPly : public PyBrxBimObject
+{
+public:
+    PyBrxBimPly();
+    PyBrxBimPly(const PyBrxBimMaterial& material, EMaterialFunction function = eNone, double thickness = 1.0);
+    PyBrxBimPly(const BrxBimPly& r);
+    PyBrxBimPly(const BrxBimPly* ptr);
+    PyBrxBimPly(BrxBimPly* pObject, bool autoDelete);
+    virtual ~PyBrxBimPly() override = default;
+    static PyBrxBimPly       cast(const PyBrxBimObject& src);
+    static std::string       className();
+
+public:
+    BrxBimPly* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 #endif//BRXAPP

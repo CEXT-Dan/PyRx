@@ -12,6 +12,17 @@ import PyBrxBim
 from typing import overload
 from typing import Any
 
+class BimAssets(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class BimElementType(object):
     def eBimAnnotation (self, *args, **kwargs)-> None :
         '''None'''
@@ -320,6 +331,29 @@ class BimObjectType(object):
         '''None'''
         ...
 
+class BimPly(BimObject):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, material: PyBrxBim.BimMaterial, function: PyBrxBim.MaterialFunction=PyBrxBim.MaterialFunction.eNone, thickness:float=1.0)-> None : ...
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Overloads:
+    - None: Any
+    - material: PyBrxBim.BimMaterial, function: PyBrxBim.MaterialFunction=PyBrxBim.MaterialFunction.eNone, thickness:float=1.0 
+    '''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PyBrxBim.BimObject)-> PyBrxBim.BimPly :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class BimPolicies(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
@@ -449,7 +483,7 @@ class BimStory(BimSpatialLocation):
         ...
 
     @staticmethod
-    def cast (otherObject: PyBrxBim.BimObject)-> PyBrxBim.BrxBimBuilding :
+    def cast (otherObject: PyBrxBim.BimObject)-> PyBrxBim.BimStory :
         '''                             '''
         ...
 
@@ -467,7 +501,7 @@ class BrxBimBuilding(BimSpatialLocation):
         ...
 
     @staticmethod
-    def cast (otherObject: PyBrxBim.BimObject)-> object :
+    def cast (otherObject: PyBrxBim.BimObject)-> PyBrxBim.BrxBimBuilding :
         '''                             '''
         ...
 
