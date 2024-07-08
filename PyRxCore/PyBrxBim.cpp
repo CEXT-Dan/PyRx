@@ -22,6 +22,7 @@ BOOST_PYTHON_MODULE(PyBrxBim)
     makeBrxBimMaterialWrapper();
     makeBrxBimHatchPatternWrapper();
     makeBrxBimInformationalAssetsWrapper();
+    makeBrxBimAssetsWrapper();
 
     enum_<BrxBimMaterial::EHatchType>("BimHatchType")
         .value("eHatchNone", BrxBimMaterial::EHatchType::eHatchNone)
