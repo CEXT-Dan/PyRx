@@ -45,7 +45,7 @@ AcDbPointRef* PyDbPointRef::impObj(const std::source_location& src /*= std::sour
 //PyDbOsnapPointRef
 void makePyDbOsnapPointRefWrapper()
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
@@ -66,7 +66,7 @@ void makePyDbOsnapPointRefWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 PyDbOsnapPointRef::PyDbOsnapPointRef()
     : PyDbOsnapPointRef(new AcDbOsnapPointRef(), true)
 {

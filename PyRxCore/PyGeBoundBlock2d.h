@@ -8,7 +8,7 @@ void makePyGeBoundBlock2dWrapper();
 
 class PyGeBoundBlock2d : public PyGeEntity2d
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 public:
     PyGeBoundBlock2d();
     PyGeBoundBlock2d(const AcGePoint2d& point1, const AcGePoint2d& point2);

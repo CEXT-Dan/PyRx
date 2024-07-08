@@ -308,7 +308,7 @@ void PyDbUnderlayReference::setDefinitionId(const PyDbObjectId& id)
 
 void PyDbUnderlayReference::setWidth(double width)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setWidth(width));
@@ -317,7 +317,7 @@ void PyDbUnderlayReference::setWidth(double width)
 
 double PyDbUnderlayReference::width() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     double val = 0;
@@ -328,7 +328,7 @@ double PyDbUnderlayReference::width() const
 
 void PyDbUnderlayReference::setHeight(double width)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setHeight(width));
@@ -337,7 +337,7 @@ void PyDbUnderlayReference::setHeight(double width)
 
 double PyDbUnderlayReference::height() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     double val = 0;

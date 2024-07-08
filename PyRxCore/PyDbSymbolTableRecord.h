@@ -491,12 +491,13 @@ public:
 //---------------------------------------------------------------------------------------- -
 // PyDbDynBlockTableRecord
 
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+#if defined(_BRXTARGET) && (_BRXTARGET <= 250)
 class AcDbDynBlockTableRecord
 {
 public:
     AcDbDynBlockTableRecord(const AcDbObjectId& id)
     {
+        throw PyNotimplementedByHost();
     }
 };
 #endif

@@ -587,7 +587,7 @@ boost::python::tuple PyGeCurve3d::getSamplePoints1(int numSample) const
     PyAutoLockGIL lock;
     AcGeDoubleArray paramArray;
     AcGePoint3dArray pointArray;
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET) && _BRXTARGET <= 250
     impObj()->getSamplePoints(numSample, pointArray);
 #else
     impObj()->getSamplePoints(numSample, pointArray, paramArray);
@@ -1101,7 +1101,7 @@ void makePyGeEllipArc3dWrapper()
     PyDocString DS("EllipArc3d");
     class_<PyGeEllipArc3d, bases<PyGeCurve3d>>("EllipArc3d")
         .def(init<>())
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
         .def(init<const PyGeCircArc3d&>())
 #endif
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double>())
@@ -1153,7 +1153,7 @@ PyGeEllipArc3d::PyGeEllipArc3d(AcGeEntity3d* pEnt)
 {
 }
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 PyGeEllipArc3d::PyGeEllipArc3d(const AcGeEllipArc3d& ell)
     : PyGeCurve3d(new AcGeEllipArc3d(ell))
 {

@@ -9,7 +9,7 @@ using namespace boost::python;
 //NOTE curve1, curve2 are not overloads
 void makePyGeCurveCurveInt3dWrapper()
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
@@ -52,7 +52,7 @@ void makePyGeCurveCurveInt3dWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 PyGeCurveCurveInt3d::PyGeCurveCurveInt3d()
     : PyGeEntity3d(new AcGeCurveCurveInt3d())
 {

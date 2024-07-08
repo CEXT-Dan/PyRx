@@ -4,7 +4,9 @@
 #pragma pack (push, 8)
 
 class PyDbEntity;
-#if !defined(_BRXTARGET240)
+#if defined(_BRXTARGET) && (_BRXTARGET  <= 250)
+//
+#else
 //-----------------------------------------------------------------------------------------
 //PyDb3dProfile
 void makePyDb3dProfileWrapper();

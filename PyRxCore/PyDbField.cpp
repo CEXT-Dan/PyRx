@@ -60,7 +60,7 @@ void makePyDbFieldtWrapper()
         .value("kModified", AcDbField::State::kModified)
         .value("kEvaluated", AcDbField::State::kEvaluated)
         .value("kHasCache", AcDbField::State::kHasCache)
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
         .value("kHasFormattedString", AcDbField::State::kHasFormattedString)
 #endif
         .export_values()
@@ -107,7 +107,7 @@ void makePyDbFieldtWrapper()
         .value("kStripOptions", AcDbField::FieldCodeFlag::kStripOptions)
         .value("kPreserveFields", AcDbField::FieldCodeFlag::kPreserveFields)
         .value("kTextField", AcDbField::FieldCodeFlag::kTextField)
-#if !defined (_BRXTARGET240)
+#if !defined (_BRXTARGET250)
         .value("kPreserveOptions", AcDbField::FieldCodeFlag::kPreserveOptions)
         .value("kDetachChildren", AcDbField::FieldCodeFlag::kDetachChildren)
         .value("kChildObjectReference", AcDbField::FieldCodeFlag::kChildObjectReference)
@@ -154,7 +154,7 @@ PyDbField::PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
 
 void PyDbField::setInObject(PyDbObject& pObj, const std::string& pszPropName)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setInObject(pObj.impObj(), utf8_to_wstr(pszPropName).c_str()));
@@ -203,7 +203,7 @@ bool PyDbField::isTextField(void) const
 
 void PyDbField::convertToTextField(void)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->convertToTextField());

@@ -131,7 +131,7 @@ public:
     void                setToleranceSuppressLeadingZeros(bool val);
     bool                toleranceSuppressZeroInches() const;
     void                setToleranceSuppressZeroInches(bool val);
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
     AcDbDimension::CenterMarkType centerMarkType() const;
 #endif
     static std::string className();

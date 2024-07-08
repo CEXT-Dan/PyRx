@@ -127,7 +127,7 @@ public:
 void makePyGeEllipArc2Wrapper();
 class PyGeEllipArc2d : public PyGeCurve2d
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 
 public:
     PyGeEllipArc2d();
@@ -172,7 +172,7 @@ public:
 void makePyGeExternalCurve2dWrapper();
 class PyGeExternalCurve2d : public PyGeCurve2d
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 public:
     PyGeExternalCurve2d(AcGeEntity2d* pEnt);
     static PyGeExternalCurve2d cast(const PyGeEntity2d& src);
@@ -187,7 +187,7 @@ public:
 void makePyGeOffsetCurve2dWrapper();
 class PyGeOffsetCurve2d : public PyGeCurve2d
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 public:
     PyGeOffsetCurve2d(const PyGeCurve2d& baseCurve, double offsetDistance);
     PyGeOffsetCurve2d(AcGeEntity2d* pEnt);

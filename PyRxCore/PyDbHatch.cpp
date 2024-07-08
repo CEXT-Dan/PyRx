@@ -105,7 +105,7 @@ void makePyDbHatchWrapper()
         .value("kSelfIntersecting", AcDbHatch::HatchLoopType::kSelfIntersecting)
         .value("kTextIsland", AcDbHatch::HatchLoopType::kTextIsland)
         .value("kDuplicate", AcDbHatch::HatchLoopType::kDuplicate)
-#if !defined (_BRXTARGET240)
+#if !defined (_BRXTARGET250)
         .value("kIsAnnotative", AcDbHatch::HatchLoopType::kIsAnnotative)
         .value("kDoesNotSupportScale", AcDbHatch::HatchLoopType::kDoesNotSupportScale)
         .value("kForceAnnoAllVisible", AcDbHatch::HatchLoopType::kForceAnnoAllVisible)
@@ -399,7 +399,7 @@ void PyDbHatch::setGradientShift(float shiftValue)
 
 AcCmColor PyDbHatch::evaluateGradientColorAt(float value)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     AcCmColor clr;
@@ -503,7 +503,7 @@ void PyDbHatch::evaluateHatch2(bool bUnderestimateNumLines)
 
 void PyDbHatch::evaluateHatchAllScales1()
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->evaluateHatchAllScales());
@@ -512,7 +512,7 @@ void PyDbHatch::evaluateHatchAllScales1()
 
 void PyDbHatch::evaluateHatchAllScales2(bool bUnderestimateNumLines)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->evaluateHatchAllScales(bUnderestimateNumLines));
@@ -521,7 +521,7 @@ void PyDbHatch::evaluateHatchAllScales2(bool bUnderestimateNumLines)
 
 bool PyDbHatch::lineGenerationEnabled() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->lineGenerationEnabled();
@@ -530,7 +530,7 @@ bool PyDbHatch::lineGenerationEnabled() const
 
 bool PyDbHatch::setLineGenerationEnabled(bool bEnable)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->setLineGenerationEnabled(bEnable);

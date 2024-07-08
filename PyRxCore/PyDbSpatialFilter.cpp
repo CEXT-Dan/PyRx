@@ -86,7 +86,7 @@ AcDbExtents PyDbSpatialFilter::queryBounds2(const PyDbBlockReference& pRefBlkRef
 
 boost::python::tuple PyDbSpatialFilter::getVolume() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -133,7 +133,7 @@ AcGeMatrix3d PyDbSpatialFilter::getOriginalInverseBlockXform() const
 
 void PyDbSpatialFilter::setPerspectiveCamera(const AcGePoint3d& fromPt)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->setPerspectiveCamera(fromPt));
@@ -142,7 +142,7 @@ void PyDbSpatialFilter::setPerspectiveCamera(const AcGePoint3d& fromPt)
 
 Adesk::Boolean PyDbSpatialFilter::clipVolumeIntersectsExtents(const AcDbExtents& ext) const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->clipVolumeIntersectsExtents(ext);
@@ -151,7 +151,7 @@ Adesk::Boolean PyDbSpatialFilter::clipVolumeIntersectsExtents(const AcDbExtents&
 
 Adesk::Boolean PyDbSpatialFilter::hasPerspectiveCamera() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->hasPerspectiveCamera();

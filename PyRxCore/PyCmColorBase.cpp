@@ -89,7 +89,7 @@ void makePyCmTransparencyWrapper()
         .def("isByAlpha", &AcCmTransparency::isByAlpha, DS.ARGS())
         .def("isByBlock", &AcCmTransparency::isByBlock, DS.ARGS())
         .def("isByLayer", &AcCmTransparency::isByLayer, DS.ARGS())
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
         .def("isInvalid", &AcCmTransparency::isInvalid, DS.ARGS())
 #endif
         .def("isClear", &AcCmTransparency::isClear, DS.ARGS())
@@ -118,14 +118,14 @@ void makePyCmEntityColorWrapper()
     PyDocString DS("PyDb.EntityColor");
     class_<AcCmEntityColor>("EntityColor")
         .def(init<Adesk::UInt8, Adesk::UInt8, Adesk::UInt8>(DS.ARGS({ "r: int","g: int","b: int"   })))
-#if defined (_ZRXTARGET) && _ZRXTARGET <= 250 || defined (_GRXTARGET) && _GRXTARGET == 240  || defined (_BRXTARGET) &&_BRXTARGET == 240
+#if defined (_ZRXTARGET) && _ZRXTARGET <= 250 || defined (_GRXTARGET) && _GRXTARGET == 240  || defined (_BRXTARGET) && _BRXTARGET <= 250
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(AcCmEntityColor::ColorMethod)>("setColorMethod", &AcCmEntityColor::setColorMethod)
         .def<AcCmEntityColor::ColorMethod(AcCmEntityColor::*)()const>("colorMethod", &AcCmEntityColor::colorMethod)
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::UInt32)>("setColor", &AcCmEntityColor::setColor)
         .def<Adesk::UInt32(AcCmEntityColor::*)()const>("color", &AcCmEntityColor::color)
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::Int16)>("setColorIndex", &AcCmEntityColor::setColorIndex)
         .def<Adesk::Int16(AcCmEntityColor::*)()const>("colorIndex", &AcCmEntityColor::colorIndex)
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::Int32)>("setLayerIndex", &AcCmEntityColor::setLayerIndex)
         .def<Adesk::Int32(AcCmEntityColor::*)()const>("layerIndex", &AcCmEntityColor::layerIndex)
 #endif

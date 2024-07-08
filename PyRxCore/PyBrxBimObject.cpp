@@ -41,7 +41,7 @@ void makePyBrxBimPoliciesWrapper()
 
 void PyBrxBimPolicies::setPolicy(BrxBimPolicies::EPolicyOptions option, bool enable)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     BrxBimPolicies::setPolicy(option, enable);
@@ -50,7 +50,7 @@ void PyBrxBimPolicies::setPolicy(BrxBimPolicies::EPolicyOptions option, bool ena
 
 bool PyBrxBimPolicies::getPolicy(BrxBimPolicies::EPolicyOptions option)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return BrxBimPolicies::getPolicy(option);

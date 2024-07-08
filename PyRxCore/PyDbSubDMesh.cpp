@@ -132,7 +132,7 @@ void PyDbSubDMesh::setSubDMesh(const boost::python::list& vertexArray, const boo
 
 void PyDbSubDMesh::setSphere(double radius, int divAxis, int divHeight, int subDLevel)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->setSphere(radius, divAxis, divHeight, subDLevel));
@@ -141,7 +141,7 @@ void PyDbSubDMesh::setSphere(double radius, int divAxis, int divHeight, int subD
 
 void PyDbSubDMesh::setCylinder(double majorRadius, double minorRadius, double height, int divAxis, int divHeight, int divCap, int subDLevel)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->setCylinder(majorRadius, minorRadius, height, divAxis, divHeight, divCap, subDLevel));
@@ -150,7 +150,7 @@ void PyDbSubDMesh::setCylinder(double majorRadius, double minorRadius, double he
 
 void PyDbSubDMesh::setCone(double majorRadius, double minorRadius, double height, int divAxis, int divHeight, int divCap, double radiusRatio, int subDLevel)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->setCone(majorRadius, minorRadius, height, divAxis, divHeight, divCap, radiusRatio, subDLevel));
@@ -159,7 +159,7 @@ void PyDbSubDMesh::setCone(double majorRadius, double minorRadius, double height
 
 void PyDbSubDMesh::setTorus(double majorRadius, int divSection, int divSweepPath, double sectionRadiusRatio, double sectionRotate, int subDLevel)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->setTorus(majorRadius, divSection, divSweepPath, sectionRadiusRatio, sectionRotate, subDLevel));
@@ -168,7 +168,7 @@ void PyDbSubDMesh::setTorus(double majorRadius, int divSection, int divSweepPath
 
 void PyDbSubDMesh::setBox(double xLen, double yLen, double zLen, int divX, int divY, int divZ, int subDLevel)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->setBox(xLen, yLen, zLen, divX, divY, divZ, subDLevel));
@@ -177,7 +177,7 @@ void PyDbSubDMesh::setBox(double xLen, double yLen, double zLen, int divX, int d
 
 void PyDbSubDMesh::setWedge(double xLen, double yLen, double zLen, int divLength, int divWidth, int divHeight, int divSlope, int divCap, int subDLevel)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->setWedge(xLen, yLen, zLen, divLength, divWidth, divHeight, divSlope, divCap, subDLevel));
@@ -186,7 +186,7 @@ void PyDbSubDMesh::setWedge(double xLen, double yLen, double zLen, int divLength
 
 void PyDbSubDMesh::setPyramid(double radius, double height, int divLength, int divHeight, int divCap, int nSides, double radiusRatio, int subDLevel)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->setPyramid(radius, height, divLength, divHeight, divCap, nSides, radiusRatio, subDLevel));
@@ -210,7 +210,7 @@ void PyDbSubDMesh::subdRefine1()
 
 void PyDbSubDMesh::subdRefine2(const boost::python::object& subentPaths)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->subdRefine(PyListToPyDbFullSubentPathArray(subentPaths)));
@@ -226,7 +226,7 @@ Adesk::Int32 PyDbSubDMesh::subdLevel()
 
 void PyDbSubDMesh::splitFace(const PyDbSubentId& subentFaceId, const PyDbSubentId& subent0, const AcGePoint3d& point0, const PyDbSubentId& subent1, const AcGePoint3d& point1)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->splitFace(*subentFaceId.impObj(), *subent0.impObj(), point0, *subent1.impObj(), point1));
@@ -235,7 +235,7 @@ void PyDbSubDMesh::splitFace(const PyDbSubentId& subentFaceId, const PyDbSubentI
 
 void PyDbSubDMesh::extrudeFaces1(const boost::python::list& subentPaths, double length, const AcGeVector3d& dir, double taper)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->extrudeFaces(PyListToPyDbFullSubentPathArray(subentPaths), length, dir, taper));
@@ -244,7 +244,7 @@ void PyDbSubDMesh::extrudeFaces1(const boost::python::list& subentPaths, double 
 
 void PyDbSubDMesh::extrudeFaces2(const boost::python::list& subentPaths, const boost::python::list& alongPath, double taper)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->extrudeFaces(PyListToPyDbFullSubentPathArray(subentPaths), PyListToPoint3dArray(alongPath), taper));
@@ -253,7 +253,7 @@ void PyDbSubDMesh::extrudeFaces2(const boost::python::list& subentPaths, const b
 
 void PyDbSubDMesh::extrudeConnectedFaces1(const boost::python::list& subentPaths, double length, const AcGeVector3d& dir, double taper)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->extrudeConnectedFaces(PyListToPyDbFullSubentPathArray(subentPaths), length, dir, taper));
@@ -262,7 +262,7 @@ void PyDbSubDMesh::extrudeConnectedFaces1(const boost::python::list& subentPaths
 
 void PyDbSubDMesh::extrudeConnectedFaces2(const boost::python::list& subentPaths, const boost::python::list& alongPath, double taper)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->extrudeConnectedFaces(PyListToPyDbFullSubentPathArray(subentPaths), PyListToPoint3dArray(alongPath), taper));
@@ -271,7 +271,7 @@ void PyDbSubDMesh::extrudeConnectedFaces2(const boost::python::list& subentPaths
 
 void PyDbSubDMesh::mergeFaces(const boost::python::list& subentPaths)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->mergeFaces(PyListToPyDbFullSubentPathArray(subentPaths)));
@@ -280,7 +280,7 @@ void PyDbSubDMesh::mergeFaces(const boost::python::list& subentPaths)
 
 void PyDbSubDMesh::collapse(const PyDbSubentId& subent)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->collapse(*subent.impObj()));
@@ -289,7 +289,7 @@ void PyDbSubDMesh::collapse(const PyDbSubentId& subent)
 
 void PyDbSubDMesh::cap(const boost::python::list& edgePaths)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->cap(PyListToPyDbFullSubentPathArray(edgePaths)));
@@ -298,7 +298,7 @@ void PyDbSubDMesh::cap(const boost::python::list& edgePaths)
 
 void PyDbSubDMesh::spin(const PyDbSubentId& subent)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->spin(*subent.impObj()));
@@ -307,7 +307,7 @@ void PyDbSubDMesh::spin(const PyDbSubentId& subent)
 
 bool PyDbSubDMesh::isWatertight() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     bool result = false;
@@ -447,7 +447,7 @@ AcGePoint3d PyDbSubDMesh::getSubDividedVertexAt2(const PyDbSubentId& id) const
 
 void PyDbSubDMesh::setCrease1(double creaseVal)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->setCrease(creaseVal));
@@ -456,7 +456,7 @@ void PyDbSubDMesh::setCrease1(double creaseVal)
 
 void PyDbSubDMesh::setCrease2(const boost::python::list& subentPaths, double creaseVal)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->setCrease(PyListToPyDbFullSubentPathArray(subentPaths), creaseVal));
@@ -465,7 +465,7 @@ void PyDbSubDMesh::setCrease2(const boost::python::list& subentPaths, double cre
 
 boost::python::list PyDbSubDMesh::getCrease1(const boost::python::list& subentPaths) const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     AcArray<double> result;
@@ -476,7 +476,7 @@ boost::python::list PyDbSubDMesh::getCrease1(const boost::python::list& subentPa
 
 double PyDbSubDMesh::getCrease2(const PyDbSubentId& id) const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     double result;

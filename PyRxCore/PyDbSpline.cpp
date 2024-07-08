@@ -163,13 +163,13 @@ PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, bool periodic)
 }
 
 PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, bool periodic, AcGe::KnotParameterization knotParam, int degree, double fitTolerance)
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
     : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints), periodic, knotParam, degree, fitTolerance), true)
 #else
     : PyDbSpline(nullptr, true)
 #endif
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET) && _BRXTARGET <= 250
     throw PyNotimplementedByHost();
 #endif
 }
@@ -431,7 +431,7 @@ double PyDbSpline::weightAt(int index) const
 
 void PyDbSpline::setWeightAt(int index, double weight)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->setWeightAt(index, weight));
@@ -463,7 +463,7 @@ PyDbPolyline PyDbSpline::toPolyline()
 
 void PyDbSpline::insertControlPointAt1(double knotParam, const AcGePoint3d& ctrlPt)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->insertControlPointAt(knotParam, ctrlPt));
@@ -472,7 +472,7 @@ void PyDbSpline::insertControlPointAt1(double knotParam, const AcGePoint3d& ctrl
 
 void PyDbSpline::insertControlPointAt2(double knotParam, const AcGePoint3d& ctrlPt, double weight)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->insertControlPointAt(knotParam, ctrlPt, weight));
@@ -481,7 +481,7 @@ void PyDbSpline::insertControlPointAt2(double knotParam, const AcGePoint3d& ctrl
 
 void PyDbSpline::removeControlPointAt(int index)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->removeControlPointAt(index));
@@ -500,7 +500,7 @@ void PyDbSpline::setType(SplineType type)
 
 void PyDbSpline::rebuild(int degree, int numCtrlPts)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->rebuild(degree, numCtrlPts));

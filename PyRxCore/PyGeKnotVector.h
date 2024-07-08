@@ -6,7 +6,7 @@ void makePyGeKnotVectorWrapper();
 
 class PyGeKnotVector
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 public:
     PyGeKnotVector();
     PyGeKnotVector(int size, int growSize);

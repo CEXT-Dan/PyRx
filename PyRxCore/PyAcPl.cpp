@@ -10,7 +10,7 @@ using namespace boost::python;
 BOOST_PYTHON_MODULE(PyPl)
 {
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET) && _BRXTARGET <= 250
     // dead
 #else
     makePyPlObjectWrapper();

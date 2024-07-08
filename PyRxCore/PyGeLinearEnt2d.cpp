@@ -211,7 +211,7 @@ PyGeLine2d PyGeLine2d::kYAxis()
 
 void PyGeLine2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     impObj()->set(pnt, vec);
@@ -220,7 +220,7 @@ void PyGeLine2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 
 void PyGeLine2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     impObj()->set(pnt1, pnt2);
@@ -324,7 +324,7 @@ PyGeLineSeg2d::PyGeLineSeg2d(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 
 void PyGeLineSeg2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     impObj()->set(pnt, vec);
@@ -333,7 +333,7 @@ void PyGeLineSeg2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 
 void PyGeLineSeg2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     impObj()->set(pnt1, pnt2);
@@ -342,7 +342,7 @@ void PyGeLineSeg2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 
 void PyGeLineSeg2d::set3(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     double param1, param2;
@@ -355,7 +355,7 @@ void PyGeLineSeg2d::set3(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2)
 
 void PyGeLineSeg2d::set4(const PyGeCurve2d& curve, const AcGePoint2d& point)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     double param1;
@@ -488,7 +488,7 @@ PyGeRay2d::PyGeRay2d(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 
 void PyGeRay2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     impObj()->set(pnt, vec);
@@ -497,7 +497,7 @@ void PyGeRay2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 
 void PyGeRay2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     impObj()->set(pnt1, pnt2);

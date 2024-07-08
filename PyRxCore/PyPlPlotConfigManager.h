@@ -1,9 +1,10 @@
 #pragma once
 #pragma pack (push, 8)
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET) && _BRXTARGET <= 250
 // dead
 #else
 
+class PyPlPlotConfig;
 class PyPlPlotConfig;
 
 //-----------------------------------------------------------------------------------------

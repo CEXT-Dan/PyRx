@@ -12,7 +12,7 @@ class PyGePointOnSurface;
 void makePyGeCurveSurfIntWrapper();
 class PyGeCurveSurfInt : public PyGeEntity3d
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 public:
     PyGeCurveSurfInt();
     PyGeCurveSurfInt(const AcGeCurveSurfInt& src);
