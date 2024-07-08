@@ -20,7 +20,16 @@ BOOST_PYTHON_MODULE(PyBrxBim)
     makeBrxBimRoomWrapper();
     makeBrxBimSpaceWrapper();
     makeBrxBimMaterialWrapper();
+    makeBrxBimHatchPatternWrapper();
     makeBrxBimInformationalAssetsWrapper();
+
+    enum_<BrxBimMaterial::EHatchType>("BimHatchType")
+        .value("eHatchNone", BrxBimMaterial::EHatchType::eHatchNone)
+        .value("eHatchUserDefined", BrxBimMaterial::EHatchType::eHatchUserDefined)
+        .value("eHatchPredefined", BrxBimMaterial::EHatchType::eHatchPredefined)
+        .value("eHatchCustom", BrxBimMaterial::EHatchType::eHatchCustom)
+        .export_values()
+        ;
 
     enum_<BrxBimPolicies::EPolicyOptions>("BimPolicyOptions")
         .value("eNothing", BrxBimPolicies::EPolicyOptions::eNothing)

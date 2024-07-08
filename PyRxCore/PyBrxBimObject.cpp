@@ -32,7 +32,7 @@ struct PyBrxBimObjectDeleter
 void makePyBrxBimPoliciesWrapper()
 {
     PyDocString DS("BimPolicies");
-    class_<BrxBimPolicies>("BimPolicies")
+    class_<BrxBimPolicies>("BimPolicies", boost::python::no_init)
         .def("getPolicy", &PyBrxBimPolicies::getPolicy, DS.SARGS({ "option: PyBrxBim.BimPolicyOptions" })).staticmethod("getPolicy")
         .def("setPolicy", &PyBrxBimPolicies::setPolicy, DS.SARGS({ "option: PyBrxBim.BimPolicyOptions", "enable: bool" })).staticmethod("setPolicy")
         .def("className", &PyBrxBimPolicies::className, DS.SARGS()).staticmethod("className")
@@ -494,6 +494,67 @@ BrxBimMaterial* PyBrxBimMaterial::impObj(const std::source_location& src /*= std
         throw PyNullObject(src);
         }
     return static_cast<BrxBimMaterial*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimHatchPattern
+void makeBrxBimHatchPatternWrapper()
+{
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- scaleOrSpacing: float,angle: float=0.0,cross: bool=False\n"
+        "- hType: PyBrxBim.BimHatchType, name:str, scaleOrSpacing: float= 1.0, angle: float=0.0\n";
+
+    PyDocString DS("BimHatchPattern");
+    class_<PyBrxBimHatchPattern>("BimHatchPattern")
+        .def(init<>())
+        .def(init<double,double,bool>())
+        .def(init<BrxBimMaterial::EHatchType, const std::string &,double, double>(DS.CTOR(ctor)))
+        .def("className", &PyBrxBimHatchPattern::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxBimHatchPattern::PyBrxBimHatchPattern()
+    : PyBrxBimHatchPattern(new BrxBimMaterial::HatchPattern(), true)
+{
+}
+
+PyBrxBimHatchPattern::PyBrxBimHatchPattern(double scaleOrSpacing, double angle /*= 0.0*/, bool cross /*= false*/)
+    : PyBrxBimHatchPattern(new BrxBimMaterial::HatchPattern(scaleOrSpacing, angle, cross), true)
+{
+}
+
+PyBrxBimHatchPattern::PyBrxBimHatchPattern(BrxBimMaterial::EHatchType type, const std::string& name, double scaleOrSpacing /*= 1.0*/, double angle /*= 0.0*/)
+    : PyBrxBimHatchPattern(new BrxBimMaterial::HatchPattern(type,utf8_to_wstr(name).c_str(), scaleOrSpacing, angle), true)
+{
+}
+
+PyBrxBimHatchPattern::PyBrxBimHatchPattern(const BrxBimMaterial::HatchPattern& r)
+  : PyBrxBimHatchPattern(new BrxBimMaterial::HatchPattern(r),true)
+{
+}
+
+PyBrxBimHatchPattern::PyBrxBimHatchPattern(const BrxBimMaterial::HatchPattern* ptr)
+    :PyBrxBimHatchPattern(const_cast<BrxBimMaterial::HatchPattern*>(ptr), false)
+{
+}
+
+PyBrxBimHatchPattern::PyBrxBimHatchPattern(BrxBimMaterial::HatchPattern* pObject, bool autoDelete)
+    : m_pyImp(pObject, PyBrxBimObjectDeleter<BrxBimMaterial::HatchPattern>(autoDelete))
+{
+}
+
+std::string PyBrxBimHatchPattern::className()
+{
+    return "BimHatchPattern";
+}
+
+BrxBimMaterial::HatchPattern* PyBrxBimHatchPattern::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxBimMaterial::HatchPattern*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------------- -
