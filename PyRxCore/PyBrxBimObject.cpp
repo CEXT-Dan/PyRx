@@ -1,14 +1,34 @@
 #include "stdafx.h"
 #include "PyBrxBimObject.h"
 
-
 #ifdef BRXAPP
 #include "PyDbDatabase.h"
 #include "PyDbObjectId.h"
 
-
 using namespace boost::python;
 
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimObjectDeleter
+template<typename T>
+struct PyBrxBimObjectDeleter
+{
+    inline PyBrxBimObjectDeleter(bool autoDelete)
+        : m_autoDelete(autoDelete)
+    {
+    }
+
+    inline void operator()(T* p) const
+    {
+        if (!m_autoDelete)
+            return;
+        else
+            delete p;
+    }
+    bool m_autoDelete = true;
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimPolicies
 void makePyBrxBimPoliciesWrapper()
 {
     PyDocString DS("BimPolicies");
@@ -42,7 +62,6 @@ std::string PyBrxBimPolicies::className()
     return "BrxBimPolicies";
 }
 
-
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimObject
 void makePyBrxBimObjectWrapper()
@@ -61,26 +80,6 @@ void makePyBrxBimObjectWrapper()
         .def("className", &PyBrxBimObject::className, DS.SARGS()).staticmethod("className")
         ;
 }
-
-template<typename T>
-struct PyBrxBimObjectDeleter
-{
-    inline PyBrxBimObjectDeleter(bool autoDelete)
-        : m_autoDelete(autoDelete)
-    {
-    }
-
-    inline void operator()(T* p) const
-    {
-        if (p == nullptr)
-            return;
-        else if (!m_autoDelete)
-            return;
-        else
-            delete p;
-    }
-    bool m_autoDelete = true;
-};
 
 PyBrxBimObject::PyBrxBimObject(const BrxBimObject* pObject)
     :PyBrxBimObject(const_cast<BrxBimObject*>(pObject), false)
@@ -152,7 +151,6 @@ BrxBimObject* PyBrxBimObject::impObj(const std::source_location& src /*= std::so
 
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimSpatialLocation
-
 void makePyBrxBimSpatialLocationWrapper()
 {
     PyDocString DS("BimSpatialLocation");
@@ -438,7 +436,6 @@ std::string PyBrxBimSpace::className()
     return "BimSpace";
 }
 
-
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimMaterial
 void makeBrxBimMaterialWrapper()
@@ -474,13 +471,11 @@ PyBrxBimMaterial::PyBrxBimMaterial(const BrxBimMaterial& r)
 PyBrxBimMaterial::PyBrxBimMaterial(const BrxBimMaterial* ptr)
     : PyBrxBimObject(ptr)
 {
-
 }
 
 PyBrxBimMaterial::PyBrxBimMaterial(BrxBimMaterial* pObject, bool autoDelete)
     : PyBrxBimObject(pObject, autoDelete)
 {
-
 }
 
 PyBrxBimMaterial PyBrxBimMaterial::cast(const PyBrxBimObject& src)
