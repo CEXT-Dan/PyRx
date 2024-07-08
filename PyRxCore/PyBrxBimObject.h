@@ -9,7 +9,6 @@ class PyDbObjectId;
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimPolicies
 void makePyBrxBimPoliciesWrapper();
-
 class PyBrxBimPolicies
 {
 public:
@@ -21,7 +20,6 @@ public:
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimObject
 void makePyBrxBimObjectWrapper();
-
 class PyBrxBimObject
 {
 public:
@@ -55,11 +53,9 @@ inline T PyBrxBimObjectCast(const PyBrxBimObject& src)
     return dest;
 }
 
-
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimSpatialLocation
 void makePyBrxBimSpatialLocationWrapper();
-
 class PyBrxBimSpatialLocation : public PyBrxBimObject
 {
     //TODO check if other constructors are useful 
@@ -91,7 +87,6 @@ public:
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimStory
 void makeBrxBimStorynWrapper();
-
 class PyBrxBimStory : public PyBrxBimSpatialLocation
 {
 public:
@@ -111,7 +106,6 @@ public:
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimBuilding
 void makeBrxBimBuildingWrapper();
-
 class PyBrxBimBuilding : public PyBrxBimSpatialLocation
 {
 public:
@@ -131,7 +125,6 @@ public:
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimRoom
 void makeBrxBimRoomWrapper();
-
 class PyBrxBimRoom : public PyBrxBimObject
 {
 public:
@@ -153,17 +146,15 @@ public:
 //PyBrxBimSpace
 void makeBrxBimSpaceWrapper();
 
-class PyBrxBimSpace 
+class PyBrxBimSpace
 {
 public:
-   static std::string  className();
+    static std::string  className();
 };
-
 
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimMaterial
 void makeBrxBimMaterialWrapper();
-
 class PyBrxBimMaterial : public PyBrxBimObject
 {
 public:
@@ -173,7 +164,6 @@ public:
     PyBrxBimMaterial(const BrxBimMaterial* ptr);
     PyBrxBimMaterial(BrxBimMaterial* pObject, bool autoDelete);
     virtual ~PyBrxBimMaterial() override = default;
-
     static PyBrxBimMaterial  cast(const PyBrxBimObject& src);
     static std::string       className();
 
@@ -181,12 +171,9 @@ public:
     BrxBimMaterial* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
-
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimInformationalAssets
 void makeBrxBimInformationalAssetsWrapper();
-
 class PyBrxBimInformationalAssets
 {
 public:
@@ -194,14 +181,11 @@ public:
     PyBrxBimInformationalAssets(const BrxBimMaterial::InformationalAssets* ptr);
     PyBrxBimInformationalAssets(BrxBimMaterial::InformationalAssets* pObject, bool autoDelete);
     virtual ~PyBrxBimInformationalAssets() = default;
-
     static std::string  className();
-
 public:
     BrxBimMaterial::InformationalAssets* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
     std::shared_ptr<BrxBimMaterial::InformationalAssets> m_pyImp;
 };
-
 
 #endif//BRXAPP
