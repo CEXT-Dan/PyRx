@@ -172,6 +172,29 @@ public:
 };
 
 //---------------------------------------------------------------------------------------- -
+//PyBrxBimHatchPattern
+void makeBrxBimHatchPatternWrapper();
+class PyBrxBimHatchPattern
+{
+public:
+    PyBrxBimHatchPattern();
+    PyBrxBimHatchPattern(double scaleOrSpacing, double angle = 0.0, bool cross = false);
+    PyBrxBimHatchPattern(BrxBimMaterial::EHatchType type, const std::string& name, double scaleOrSpacing = 1.0, double angle = 0.0);
+
+    PyBrxBimHatchPattern(const BrxBimMaterial::HatchPattern& r);
+    PyBrxBimHatchPattern(const BrxBimMaterial::HatchPattern* ptr);
+    PyBrxBimHatchPattern(BrxBimMaterial::HatchPattern* pObject, bool autoDelete);
+    virtual ~PyBrxBimHatchPattern() = default;
+
+    static std::string  className();
+public:
+    BrxBimMaterial::HatchPattern* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<BrxBimMaterial::HatchPattern> m_pyImp;
+};
+
+
+//---------------------------------------------------------------------------------------- -
 //PyBrxBimInformationalAssets
 void makeBrxBimInformationalAssetsWrapper();
 class PyBrxBimInformationalAssets

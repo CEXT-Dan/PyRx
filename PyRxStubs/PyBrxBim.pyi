@@ -185,6 +185,41 @@ class BimElementType(object):
         '''None'''
         ...
 
+class BimHatchPattern(object):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, scaleOrSpacing: float,angle: float=0.0,cross: bool=False)-> None : ...
+    @overload
+    def __init__ (self, hType: PyBrxBim.BimHatchType, name:str, scaleOrSpacing: float= 1.0, angle: float=0.0)-> None : ...
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Overloads:
+    - None: Any
+    - scaleOrSpacing: float,angle: float=0.0,cross: bool=False
+    - hType: PyBrxBim.BimHatchType, name:str, scaleOrSpacing: float= 1.0, angle: float=0.0
+    '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class BimHatchType(object):
+    def eHatchCustom (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eHatchNone (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eHatchPredefined (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eHatchUserDefined (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class BimInformationalAssets(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
@@ -287,10 +322,8 @@ class BimObjectType(object):
 
 class BimPolicies(object):
     def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+        '''Raises an exception
+This class cannot be instantiated from Python'''
         ...
 
     @staticmethod
