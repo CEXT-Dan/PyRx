@@ -14,7 +14,7 @@ void makePyEdJigWrapper()
     class_<PyJig, boost::noncopyable>("Jig", boost::python::no_init)
         .def(init<const PyDbEntity&>(DS.ARGS({ "entity: PyDb.Entity" })))
         .def("drag", &PyJig::dragwr1)
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
         .def("drag", &PyJig::dragwr2, DS.ARGS({ "style: PyEd.DragStyle=None" }))
 #endif
         .def("sampler", &PyJig::sampler, DS.ARGS())
@@ -96,7 +96,7 @@ void makePyEdJigWrapper()
         .export_values()
         ;
 
-#if !defined (_BRXTARGET240)
+#if !defined (_BRXTARGET250)
     class_<AcEdDragStyle>("DragStyle")
         .def(init<>())
         .def(init<AcEdDragStyle::StyleType, AcEdDragStyle::StyleType>(DS.ARGS({ "styleTypeForOriginal: PyEd.DragStyleType","styleTypeForDragged: PyEd.DragStyleType" })))
@@ -106,7 +106,7 @@ void makePyEdJigWrapper()
         .def("setStyleTypeForDragged", &AcEdDragStyle::setStyleTypeForDragged, DS.ARGS({ "styleTypeForDragged: PyEd.DragStyleType" }))
         ;
 #endif
-#if !defined (_BRXTARGET240)
+#if !defined (_BRXTARGET250)
     enum_<AcEdDragStyle::StyleType>("DragStyleType")
         .value("kNone", AcEdDragStyle::StyleType::kNone)
         .value("kHide", AcEdDragStyle::StyleType::kHide)
@@ -130,7 +130,7 @@ AcEdJig::DragStatus PyJig::dragwr1()
     return this->drag();
 }
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 AcEdJig::DragStatus PyJig::dragwr2(const AcEdDragStyle& style)
 {
     return  this->drag(style);
@@ -194,7 +194,7 @@ void PyJig::setDispPromptWr(const std::string& val)
 
 boost::python::tuple PyJig::acquireStringWr()
 {
-#if defined(_ZRXTARGET) && (_ZRXTARGET <= 250) || defined(_GRXTARGET) && (_GRXTARGET == 240) || defined(_BRXTARGET) && (_BRXTARGET == 240) 
+#if defined(_ZRXTARGET) && (_ZRXTARGET <= 250) || defined(_GRXTARGET) && (_GRXTARGET == 240) || defined(_BRXTARGET) && (_BRXTARGET <= 250) 
     PyAutoLockGIL lock; 
     wchar_t value[2049];
     auto result = this->acquireString(value);
@@ -295,7 +295,7 @@ void makePyEdDrawJigWrapper()
     class_<PyDrawJig, boost::noncopyable>("DrawJig")
         .def(init<>(DS.ARGS()))
         .def("drag", &PyDrawJig::dragwr1)
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
         .def("drag", &PyDrawJig::dragwr2, DS.ARGS({ "style: PyEd.DragStyle=None" }))
 #endif
         .def("sampler", &PyDrawJig::sampler, DS.ARGS())
@@ -331,7 +331,7 @@ AcEdJig::DragStatus PyDrawJig::dragwr1()
     return this->drag();
 }
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 AcEdJig::DragStatus PyDrawJig::dragwr2(const AcEdDragStyle& style)
 {
     return this->drag(style);
@@ -390,7 +390,7 @@ void PyDrawJig::setDispPromptWr(const std::string& val)
 
 boost::python::tuple PyDrawJig::acquireStringWr()
 {
-#if defined(_ZRXTARGET) && (_ZRXTARGET <= 250) || defined(_GRXTARGET) && (_GRXTARGET == 240) || defined(_BRXTARGET) && (_BRXTARGET == 240) 
+#if defined(_ZRXTARGET) && (_ZRXTARGET <= 250) || defined(_GRXTARGET) && (_GRXTARGET == 240) || defined(_BRXTARGET) && (_BRXTARGET <= 250) 
     PyAutoLockGIL lock;
     wchar_t value[2049];
     auto result = this->acquireString(value);

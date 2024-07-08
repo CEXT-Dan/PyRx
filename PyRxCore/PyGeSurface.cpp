@@ -74,7 +74,7 @@ AcGePoint2d PyGeSurface::paramOfTol(const AcGePoint3d& pnt, const AcGeTol& tol) 
 
 Adesk::Boolean PyGeSurface::isOn1(const AcGePoint3d& pnt) const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isOn(pnt);
@@ -83,7 +83,7 @@ Adesk::Boolean PyGeSurface::isOn1(const AcGePoint3d& pnt) const
 
 Adesk::Boolean PyGeSurface::isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isOn(pnt, tol);
@@ -92,7 +92,7 @@ Adesk::Boolean PyGeSurface::isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) co
 
 Adesk::Boolean PyGeSurface::isOn3(const AcGePoint3d& pnt, AcGePoint2d& paramPoint) const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isOn(pnt, paramPoint);
@@ -101,7 +101,7 @@ Adesk::Boolean PyGeSurface::isOn3(const AcGePoint3d& pnt, AcGePoint2d& paramPoin
 
 Adesk::Boolean PyGeSurface::isOn4(const AcGePoint3d& pnt, AcGePoint2d& paramPoint, const AcGeTol& tol) const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isOn(pnt, paramPoint, tol);
@@ -233,7 +233,7 @@ AcGeSurface* PyGeSurface::impObj(const std::source_location& src /*= std::source
 //AcGeCone wrapper
 void makePyGeConeWrapper()
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
@@ -276,7 +276,7 @@ void makePyGeConeWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 PyGeCone::PyGeCone()
     : PyGeSurface(new AcGeCone())
 {
@@ -557,7 +557,7 @@ PyGeInterval PyGeCylinder::getHeight() const
 
 double PyGeCylinder::heightAt(double u) const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->heightAt(u);
@@ -581,7 +581,7 @@ Adesk::Boolean PyGeCylinder::isOuterNormal() const
 
 Adesk::Boolean PyGeCylinder::isClosed1() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isClosed();
@@ -590,7 +590,7 @@ Adesk::Boolean PyGeCylinder::isClosed1() const
 
 Adesk::Boolean PyGeCylinder::isClosed2(const AcGeTol& tol) const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isClosed(tol);
@@ -674,7 +674,7 @@ AcGeCylinder* PyGeCylinder::impObj(const std::source_location& src /*= std::sour
 //AcGeExternalBoundedSurface wrapper
 void makePyGeExternalBoundedSurfaceWrapper()
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
     PyDocString DS("ExternalBoundedSurface");
     class_<PyGeExternalBoundedSurface, bases<PyGeSurface>>("ExternalBoundedSurface")
         .def(init<>(DS.ARGS()))
@@ -685,7 +685,7 @@ void makePyGeExternalBoundedSurfaceWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 PyGeExternalBoundedSurface::PyGeExternalBoundedSurface()
     : PyGeSurface(new AcGeExternalBoundedSurface())
 {
@@ -738,7 +738,7 @@ AcGeExternalBoundedSurface* PyGeExternalBoundedSurface::impObj(const std::source
 //AcGeExternalSurface wrapper
 void makePyGeExternalSurfaceWrapper()
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
     PyDocString DS("ExternalSurface");
     class_<PyGeExternalSurface, bases<PyGeSurface>>("ExternalSurface")
         .def(init<>(DS.ARGS()))
@@ -749,7 +749,7 @@ void makePyGeExternalSurfaceWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 PyGeExternalSurface::PyGeExternalSurface()
     : PyGeSurface(new AcGeExternalSurface())
 {
@@ -802,7 +802,7 @@ AcGeExternalSurface* PyGeExternalSurface::impObj(const std::source_location& src
 //AcGeNurbSurface wrapper
 void makePyGeNurbSurfaceWrapper()
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
     PyDocString DS("NurbSurface");
     class_<PyGeNurbSurface, bases<PyGeSurface>>("NurbSurface")
         .def(init<>(DS.ARGS()))
@@ -813,7 +813,7 @@ void makePyGeNurbSurfaceWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 PyGeNurbSurface::PyGeNurbSurface()
     : PyGeSurface(new AcGeNurbSurface())
 {
@@ -866,7 +866,7 @@ AcGeNurbSurface* PyGeNurbSurface::impObj(const std::source_location& src /*= std
 //AcGeOffsetSurface wrapper
 void makePyGeOffsetSurfaceWrapper()
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
     PyDocString DS("OffsetSurface");
     class_<PyGeOffsetSurface, bases<PyGeSurface>>("OffsetSurface")
         .def(init<>(DS.ARGS()))
@@ -877,7 +877,7 @@ void makePyGeOffsetSurfaceWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 PyGeOffsetSurface::PyGeOffsetSurface()
     : PyGeSurface(new AcGeOffsetSurface())
 {
@@ -1079,7 +1079,7 @@ void PyGeSphere::setAnglesInV(double start, double end)
 
 void PyGeSphere::set1(double radius, const AcGePoint3d& center)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     impObj()->set(radius, center);
@@ -1089,7 +1089,7 @@ void PyGeSphere::set1(double radius, const AcGePoint3d& center)
 void PyGeSphere::set2(double radius, const AcGePoint3d& center, const AcGeVector3d& northAxis, const AcGeVector3d& refAxis,
     double startAngleU, double endAngleU, double startAngleV, double endAngleV)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     impObj()->set(radius, center, northAxis, refAxis, startAngleU, endAngleU, startAngleV, endAngleV);
@@ -1145,7 +1145,7 @@ AcGeSphere* PyGeSphere::impObj(const std::source_location& src /*= std::source_l
 //AcGeTorus wrapper
 void makePyGeTorusWrapper()
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
     PyDocString DS("Torus");
     class_<PyGeTorus, bases<PyGeSurface>>("Torus")
         .def(init<>(DS.ARGS()))
@@ -1156,7 +1156,7 @@ void makePyGeTorusWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 PyGeTorus::PyGeTorus()
     : PyGeSurface(new AcGeTorus())
 {

@@ -632,7 +632,7 @@ void makePyDbTableWrapper()
         .value("kDataRow", AcDb::RowType::kDataRow)
         .value("kTitleRow", AcDb::RowType::kTitleRow)
         .value("kHeaderRow", AcDb::RowType::kHeaderRow)
-#if !defined (_BRXTARGET240)
+#if !defined (_BRXTARGET250)
         .value("kAllRowTypes", AcDb::RowType::kAllRowTypes)
 #endif
         .export_values()
@@ -1127,7 +1127,7 @@ void PyDbTable::setDataType4(int row, int col, int nContent, AcValue::DataType n
 
 void PyDbTable::setFormat(int row, int col, const std::string& pszFormat)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setFormat(row, col, utf8_to_wstr(pszFormat).c_str()));
@@ -1589,7 +1589,7 @@ void PyDbTable::suppressRegenerateTable(bool bSuppress)
 
 void PyDbTable::setRecomputeTableBlock(bool newVal)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     impObj()->setRecomputeTableBlock(newVal);
@@ -1965,7 +1965,7 @@ std::string PyDbTable::getBlockAttributeValue1(int row, int col, const PyDbObjec
 
 std::string PyDbTable::getBlockAttributeValue2(int row, int col, int nContent, const PyDbObjectId& attdefId) const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     ACHAR* val = nullptr;
@@ -1983,7 +1983,7 @@ void PyDbTable::setBlockAttributeValue1(int row, int col, const PyDbObjectId& at
 
 void PyDbTable::setBlockAttributeValue2(int row, int col, int nContent, const PyDbObjectId& attdefId, const std::string& value)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setBlockAttributeValue(row, col, nContent, attdefId.m_id, utf8_to_wstr(value).c_str()));
@@ -2234,7 +2234,7 @@ void PyDbTable::setBreakSpacing(double fSpacing)
 
 AcCellRange PyDbTable::cellRange() const
 {
-#if defined(_GRXTARGET240) || defined(_ZRXTARGET240) || defined(_BRXTARGET240)
+#if defined(_GRXTARGET240) || defined(_ZRXTARGET240) || defined(_BRXTARGET250)
     auto range = AcCellRange{};
     range.mnTopRow = 0;
     range.mnLeftColumn = 0;

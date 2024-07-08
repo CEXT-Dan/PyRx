@@ -12,7 +12,7 @@ void makePyGeCurveCurveInt3dWrapper();
 
 class PyGeCurveCurveInt3d : public PyGeEntity3d
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 public:
     PyGeCurveCurveInt3d();
     PyGeCurveCurveInt3d(const AcGeCurveCurveInt3d& src);

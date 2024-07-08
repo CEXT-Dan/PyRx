@@ -100,6 +100,8 @@ public:
         return L"PyRx25.0.arx";
 #elif defined(_BRXTARGET) && _BRXTARGET == 240
         return L"PyRxV24.0.brx";
+#elif defined(_BRXTARGET) && _BRXTARGET == 250
+        return L"PyRxV25.0.brx";
 #elif defined(_GRXTARGET) && _GRXTARGET == 240
         return L"PyRxG24.0.grx";
 #elif defined(_ZRXTARGET) && _ZRXTARGET == 240

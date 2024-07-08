@@ -357,7 +357,7 @@ double PyDbMText::actualWidth() const
 
 int PyDbMText::correctSpelling()
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->correctSpelling();
@@ -373,7 +373,7 @@ boost::python::list PyDbMText::getBoundingPoints() const
 
 boost::python::list PyDbMText::getBoundingPointsByLine() const
 {
-#if defined (_ZRXTARGET) && _ZRXTARGET <= 250 || defined (_GRXTARGET) && _GRXTARGET == 240  || defined (_BRXTARGET) &&_BRXTARGET == 240
+#if defined (_ZRXTARGET) && _ZRXTARGET <= 250 || defined (_GRXTARGET) && _GRXTARGET == 240  || defined (_BRXTARGET) &&_BRXTARGET <= 250
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -388,7 +388,7 @@ boost::python::list PyDbMText::getBoundingPointsByLine() const
 
 bool PyDbMText::hitTest(const AcGePoint3d& ptHit) const
 {
-#if defined (_ZRXTARGET) && _ZRXTARGET <= 250 || defined (_GRXTARGET) && _GRXTARGET == 240  || defined (_BRXTARGET) &&_BRXTARGET == 240
+#if defined (_ZRXTARGET) && _ZRXTARGET <= 250 || defined (_GRXTARGET) && _GRXTARGET == 240  || defined (_BRXTARGET) && _BRXTARGET <= 250
     throw PyNotimplementedByHost();
 #else
     return impObj()->hitTest(ptHit);
@@ -567,7 +567,7 @@ void PyDbMText::setColumnHeight(int idx, double val)
 
 void PyDbMText::convertFieldToText()
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->convertFieldToText());
@@ -984,7 +984,7 @@ void PyDbText::setVerticalMode(AcDb::TextVertMode val)
 
 int PyDbText::correctSpelling()
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->correctSpelling();
@@ -998,7 +998,7 @@ void PyDbText::adjustAlignment(const PyDbDatabase& pDb)
 
 void PyDbText::convertFieldToText()
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->convertFieldToText());
@@ -1007,7 +1007,7 @@ void PyDbText::convertFieldToText()
 
 bool PyDbText::hitTest(const AcGePoint3d& ptHit) const
 {
-#if defined (_ZRXTARGET) && _ZRXTARGET <= 250 || defined (_GRXTARGET) && _GRXTARGET == 240  || defined (_BRXTARGET) &&_BRXTARGET == 240
+#if defined (_ZRXTARGET) && _ZRXTARGET <= 250 || defined (_GRXTARGET) && _GRXTARGET == 240  || defined (_BRXTARGET) &&_BRXTARGET <= 250
     throw PyNotimplementedByHost();
 #else
     return impObj()->hitTest(ptHit);
@@ -1457,7 +1457,7 @@ void PyDbAttribute::updateMTextAttribute()
 
 bool PyDbAttribute::isReallyLocked() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isReallyLocked();

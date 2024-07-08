@@ -62,7 +62,7 @@ int PyDbTransactionManager::numActiveTransactions()
 
 int PyDbTransactionManager::numOpenedObjects()
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->numOpenedObjects();
@@ -238,7 +238,7 @@ boost::python::list PyTransaction::getAllObjects()
 
 int PyTransaction::numOpenedObjects()
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->numOpenedObjects();

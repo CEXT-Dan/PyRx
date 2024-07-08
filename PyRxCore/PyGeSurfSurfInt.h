@@ -11,7 +11,7 @@ void makePyGeSurfSurfIntWrapper();
 
 class PyGeSurfSurfInt :public PyGeEntity3d
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 public:
     PyGeSurfSurfInt();
     PyGeSurfSurfInt(const PyGeSurface& srf1, const PyGeSurface& srf2);

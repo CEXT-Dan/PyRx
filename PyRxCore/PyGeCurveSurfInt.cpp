@@ -8,7 +8,7 @@ using namespace boost::python;
 
 void makePyGeCurveSurfIntWrapper()
 {
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
         "- curve: PyGe.Curve3d, surf: PyGe.Surface\n"
@@ -41,7 +41,7 @@ void makePyGeCurveSurfIntWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 PyGeCurveSurfInt::PyGeCurveSurfInt(AcGeEntity3d* pEnt)
     : PyGeEntity3d(pEnt)
 {

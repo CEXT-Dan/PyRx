@@ -29,11 +29,11 @@ void makePyDbSurfaceWrapper()
         .def("rayTest", &PyDbSurface::rayTest, DS.ARGS({ "rayBasePoint: PyGe.Point3d","rayDir: PyGe.Vector3d","rayRadius: float" }))
         .def("projectOnToSurface", &PyDbSurface::projectOnToSurface, DS.ARGS({ "object: PyDb.Entity","projectionDirection: PyGe.Vector3d" }))
         .def("createFrom", &PyDbSurface::createFrom, DS.SARGS({ "val: PyDb.Entity" })).staticmethod("createFrom")
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
         .def("createExtrudedSurface", &PyDbSurface::createExtrudedSurface,
             DS.SARGS({ "pSweep: PyDb.Profile3d","directionVec: PyGe.Vector3d","sweepOptions: PyDb.SweepOptions" }, 8933)).staticmethod("createExtrudedSurface")
 #endif
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
         .def("createRevolvedSurface", &PyDbSurface::createRevolvedSurface,
             DS.SARGS({ "pRev: PyDb.Profile3d","axisPnt: PyGe.Point3d","axisDir: PyGe.Vector3d","revAngle: float","startAngle: float","sweepOptions: PyDb.SweepOptions" }, 8941)).staticmethod("createRevolvedSurface")
 #endif
@@ -106,7 +106,7 @@ void PyDbSurface::setVIsolineDensity(Adesk::UInt16 numIsolines)
 
 AcDbSurface::WireframeType PyDbSurface::getWireframeType() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->getWireframeType();
@@ -115,7 +115,7 @@ AcDbSurface::WireframeType PyDbSurface::getWireframeType() const
 
 void PyDbSurface::setWireframeType(AcDbSurface::WireframeType type)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->setWireframeType(type));
@@ -131,7 +131,7 @@ double PyDbSurface::getPerimeter() const
 
 PyDbObjectId PyDbSurface::creationActionBodyId() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(impObj()->creationActionBodyId());
@@ -140,7 +140,7 @@ PyDbObjectId PyDbSurface::creationActionBodyId() const
 
 boost::python::list PyDbSurface::modificationActionBodyIds() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     AcDbObjectIdArray modificationActionBodyIds;
@@ -151,7 +151,7 @@ boost::python::list PyDbSurface::modificationActionBodyIds() const
 
 void PyDbSurface::extendEdges(boost::python::list& edges, double extDist, AcDbSurface::EdgeExtensionType extOption, bool bAssociativeEnabled)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     auto _edges = PyListToPyDbFullSubentPathArray(edges);
@@ -161,7 +161,7 @@ void PyDbSurface::extendEdges(boost::python::list& edges, double extDist, AcDbSu
 
 boost::python::tuple PyDbSurface::rayTest(const AcGePoint3d& rayBasePoint, const AcGeVector3d& rayDir, double rayRadius) const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -190,7 +190,7 @@ PyDbSurface PyDbSurface::createFrom(const PyDbEntity& pFromEntity)
     return PyDbSurface(pNewSurface, true);
 }
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 PyDbExtrudedSurface PyDbSurface::createExtrudedSurface(PyDb3dProfile& pSweep, const AcGeVector3d& directionVec, PyDbSweepOptions& sweepOptions)
 {
     AcDbExtrudedSurface* newExtrudedSurface = nullptr;
@@ -199,7 +199,7 @@ PyDbExtrudedSurface PyDbSurface::createExtrudedSurface(PyDb3dProfile& pSweep, co
 }
 #endif
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 PyDbRevolvedSurface PyDbSurface::createRevolvedSurface(PyDb3dProfile& pRev, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, double revAngle, double startAngle, PyDbRevolveOptions& options)
 {
     AcDbRevolvedSurface* newSurface = nullptr;

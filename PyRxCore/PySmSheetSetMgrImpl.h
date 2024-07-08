@@ -2,7 +2,7 @@
 
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
 
-#if defined(_BRXTARGET240)
+#if defined(_BRXTARGET250) || defined(_BRXTARGET250)
 #import "axbricscaddb1.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #import "axbricscadsm.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif

@@ -60,6 +60,7 @@
 #define SETBIT(flags, bit, value) ((value) ? (flags |= (bit)) : (flags &= ~(bit)))
 #define GETBIT(flags, bit) (((flags) & (bit)) ? true : false)
 
+//TODO: rename these to imply not supported 
 #if defined(_ZRXTARGET) && (_ZRXTARGET == 250)
 #define _ZRXTARGET250 250
 #endif
@@ -74,6 +75,10 @@
 
 #if defined(_BRXTARGET) && (_BRXTARGET <= 240)
 #define _BRXTARGET240 240
+#endif
+
+#if defined(_BRXTARGET) && (_BRXTARGET <= 250)
+#define _BRXTARGET250 250
 #endif
 
 #if defined(_ARXTARGET) && (_ARXTARGET <= 243)
@@ -182,8 +187,10 @@
 #pragma comment( lib , "axdb.lib" )
 #endif
 
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
 #pragma comment( lib , "BrxATIL24.lib" )
+#elif defined(_BRXTARGET) && (_BRXTARGET == 250)
+#pragma comment( lib , "BrxATIL25.lib" )
 #endif
 
 #if defined(_GRXTARGET)

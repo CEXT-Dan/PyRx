@@ -1,6 +1,6 @@
 #pragma once
 
-#if !defined(_BRXTARGET240)
+#if !defined(_BRXTARGET250)
 
 #include "PyDbObject.h"
 #include "PyDbEntity.h"
