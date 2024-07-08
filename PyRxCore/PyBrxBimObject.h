@@ -193,7 +193,6 @@ public:
     std::shared_ptr<BrxBimMaterial::HatchPattern> m_pyImp;
 };
 
-
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimInformationalAssets
 void makeBrxBimInformationalAssetsWrapper();
@@ -209,6 +208,40 @@ public:
     BrxBimMaterial::InformationalAssets* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
     std::shared_ptr<BrxBimMaterial::InformationalAssets> m_pyImp;
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimPhysicalAssets
+void makeBrxBimPhysicalAssetsWrapper();
+class PyBrxBimPhysicalAssets
+{
+public:
+    PyBrxBimPhysicalAssets(const BrxBimMaterial::PhysicalAssets& r);
+    PyBrxBimPhysicalAssets(const BrxBimMaterial::PhysicalAssets* ptr);
+    PyBrxBimPhysicalAssets(BrxBimMaterial::PhysicalAssets* pObject, bool autoDelete);
+    virtual ~PyBrxBimPhysicalAssets() = default;
+    static std::string  className();
+public:
+    BrxBimMaterial::PhysicalAssets* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<BrxBimMaterial::PhysicalAssets> m_pyImp;
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyPyBrxBimAssets
+void makeBrxBimAssetsWrapper();
+class PyBrxBimAssets
+{
+public:
+    PyBrxBimAssets(const BrxBimMaterial::BimAssets& r);
+    PyBrxBimAssets(const BrxBimMaterial::BimAssets* ptr);
+    PyBrxBimAssets(BrxBimMaterial::BimAssets* pObject, bool autoDelete);
+    virtual ~PyBrxBimAssets() = default;
+    static std::string  className();
+public:
+    BrxBimMaterial::BimAssets* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<BrxBimMaterial::BimAssets> m_pyImp;
 };
 
 #endif//BRXAPP

@@ -595,5 +595,80 @@ BrxBimMaterial::InformationalAssets* PyBrxBimInformationalAssets::impObj(const s
     return static_cast<BrxBimMaterial::InformationalAssets*>(m_pyImp.get());
 }
 
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimPhysicalAssets
+void makeBrxBimPhysicalAssetsWrapper()
+{
+    PyDocString DS("BimPhysicalAssets");
+    class_<PyBrxBimPhysicalAssets>("BimPhysicalAssets", boost::python::no_init)
+        .def("className", &PyBrxBimPhysicalAssets::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxBimPhysicalAssets::PyBrxBimPhysicalAssets(const BrxBimMaterial::PhysicalAssets& r)
+    : PyBrxBimPhysicalAssets(new BrxBimMaterial::PhysicalAssets(r), true)
+{
+}
+
+PyBrxBimPhysicalAssets::PyBrxBimPhysicalAssets(const BrxBimMaterial::PhysicalAssets* ptr)
+    :PyBrxBimPhysicalAssets(const_cast<BrxBimMaterial::PhysicalAssets*>(ptr), false)
+{
+}
+
+PyBrxBimPhysicalAssets::PyBrxBimPhysicalAssets(BrxBimMaterial::PhysicalAssets* pObject, bool autoDelete)
+    : m_pyImp(pObject, PyBrxBimObjectDeleter<BrxBimMaterial::PhysicalAssets>(autoDelete))
+{
+}
+
+std::string PyBrxBimPhysicalAssets::className()
+{
+    return "BimPhysicalAssets";
+}
+
+BrxBimMaterial::PhysicalAssets* PyBrxBimPhysicalAssets::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxBimMaterial::PhysicalAssets*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyPyBrxBimAssets
+void makeBrxBimAssetsWrapper()
+{
+    PyDocString DS("BimAssets");
+    class_<PyBrxBimAssets>("BimAssets", boost::python::no_init)
+        .def("className", &PyBrxBimAssets::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxBimAssets::PyBrxBimAssets(const BrxBimMaterial::BimAssets& r)
+    : PyBrxBimAssets(new BrxBimMaterial::BimAssets(r), true)
+{
+}
+
+PyBrxBimAssets::PyBrxBimAssets(const BrxBimMaterial::BimAssets* ptr)
+    :PyBrxBimAssets(const_cast<BrxBimMaterial::BimAssets*>(ptr), false)
+{
+}
+
+PyBrxBimAssets::PyBrxBimAssets(BrxBimMaterial::BimAssets* pObject, bool autoDelete)
+    : m_pyImp(pObject, PyBrxBimObjectDeleter<BrxBimMaterial::BimAssets>(autoDelete))
+{
+}
+
+std::string PyBrxBimAssets::className()
+{
+    return "BimAssets";
+}
+
+BrxBimMaterial::BimAssets* PyBrxBimAssets::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxBimMaterial::BimAssets*>(m_pyImp.get());
+}
 
 #endif//BRXAPP
