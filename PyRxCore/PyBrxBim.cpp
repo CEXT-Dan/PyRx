@@ -15,6 +15,12 @@ BOOST_PYTHON_MODULE(PyBrxBim)
     makePyBrxBimPoliciesWrapper();
     makePyBrxBimObjectWrapper();
     makePyBrxBimSpatialLocationWrapper();
+    makeBrxBimStorynWrapper();
+    makeBrxBimBuildingWrapper();
+    makeBrxBimRoomWrapper();
+    makeBrxBimSpaceWrapper();
+    makeBrxBimMaterialWrapper();
+    makeBrxBimInformationalAssetsWrapper();
 
     enum_<BrxBimPolicies::EPolicyOptions>("BimPolicyOptions")
         .value("eNothing", BrxBimPolicies::EPolicyOptions::eNothing)
