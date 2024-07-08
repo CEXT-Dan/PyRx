@@ -317,7 +317,7 @@ BrxBimStory* PyBrxBimStory::impObj(const std::source_location& src /*= std::sour
 void makeBrxBimBuildingWrapper()
 {
     PyDocString DS("PyBrxBimBuilding");
-    class_<PyBrxBimStory, bases<PyBrxBimSpatialLocation>>("BrxBimBuilding")
+    class_<PyBrxBimBuilding, bases<PyBrxBimSpatialLocation>>("BrxBimBuilding")
         .def("cast", &PyBrxBimBuilding::cast, DS.SARGS({ "otherObject: PyBrxBim.BimObject" })).staticmethod("cast")
         .def("className", &PyBrxBimBuilding::className, DS.SARGS()).staticmethod("className")
         ;
@@ -669,6 +669,66 @@ BrxBimMaterial::BimAssets* PyBrxBimAssets::impObj(const std::source_location& sr
         throw PyNullObject(src);
         }
     return static_cast<BrxBimMaterial::BimAssets*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimPly
+void makeBrxBimPlyWrapper()
+{
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- material: PyBrxBim.BimMaterial, function: PyBrxBim.MaterialFunction=PyBrxBim.MaterialFunction.eNone, thickness:float=1.0 \n";
+
+    PyDocString DS("BimPly");
+    class_<PyBrxBimPly, bases<PyBrxBimObject>>("BimPly")
+        .def(init<>())
+        .def(init<const std::string&>(DS.CTOR(ctor)))
+        .def("cast", &PyBrxBimPly::cast, DS.SARGS({ "otherObject: PyBrxBim.BimObject" })).staticmethod("cast")
+        .def("className", &PyBrxBimPly::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxBimPly::PyBrxBimPly()
+    : PyBrxBimPly(new BrxBimPly(), true)
+{
+}
+
+PyBrxBimPly::PyBrxBimPly(const PyBrxBimMaterial& material, EMaterialFunction function /*= eNone*/, double thickness /*= 1.0*/)
+    : PyBrxBimPly(new BrxBimPly(*material.impObj(), function, thickness), true)
+{
+}
+
+PyBrxBimPly::PyBrxBimPly(const BrxBimPly& r)
+    : PyBrxBimPly(new BrxBimPly(r), true)
+{
+}
+
+PyBrxBimPly::PyBrxBimPly(const BrxBimPly* ptr)
+    : PyBrxBimObject(ptr)
+{
+}
+
+PyBrxBimPly::PyBrxBimPly(BrxBimPly* pObject, bool autoDelete)
+    : PyBrxBimObject(pObject, autoDelete)
+{
+}
+
+PyBrxBimPly PyBrxBimPly::cast(const PyBrxBimObject& src)
+{
+    return PyBrxBimObjectCast<PyBrxBimPly>(src);
+}
+
+std::string PyBrxBimPly::className()
+{
+    return "BimPly";
+}
+
+BrxBimPly* PyBrxBimPly::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxBimPly*>(m_pyImp.get());
 }
 
 #endif//BRXAPP
