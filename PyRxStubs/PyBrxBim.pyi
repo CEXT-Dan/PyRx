@@ -41,6 +41,24 @@ class BimBuilding(BimSpatialLocation):
         '''                             '''
         ...
 
+class BimClassification(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class BimComposition(BimObject):
 
     @overload
@@ -324,6 +342,24 @@ class BimMaterial(BimObject):
         '''                             '''
         ...
 
+class BimNameSpaces(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class BimObject(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
@@ -460,6 +496,24 @@ class BimProfile(object):
         '''                             '''
         ...
 
+class BimPropertyInfo(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class BimRoom(BimObject):
 
     @overload
@@ -562,6 +616,42 @@ class BimStory(BimSpatialLocation):
     @staticmethod
     def cast (otherObject: PyBrxBim.BimObject)-> PyBrxBim.BimStory :
         '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class BrxBimAttributeSet(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class BrxBimDialogs(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
