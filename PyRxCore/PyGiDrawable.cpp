@@ -61,7 +61,7 @@ void makePyGiObjectWrapper()
         .value("kDrawableNotPlottable", AcGiDrawable::SetAttributesFlags::kDrawableNotPlottable)
         .value("kDrawableNotAllowLCS", AcGiDrawable::SetAttributesFlags::kDrawableNotAllowLCS)
         .value("kDrawableMergeControlOff", AcGiDrawable::SetAttributesFlags::kDrawableMergeControlOff)
-#if _ZRXTARGET > 240 || _GRXTARGET > 240  || _BRXTARGET > 240  || _ARXTARGET > 0
+#if defined(_ARXTARGET)
         .value("kThreadedWorldDrawViewportDraw", AcGiDrawable::SetAttributesFlags::kThreadedWorldDrawViewportDraw)
 #endif
         .export_values()

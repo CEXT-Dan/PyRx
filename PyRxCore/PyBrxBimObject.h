@@ -320,4 +320,93 @@ public:
     std::shared_ptr<BrxBimLinearGeometry> m_pyImp;
 };
 
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimClassification
+void makeBrxBimClassificationWrapper();
+class PyBrxBimClassification
+{
+public:
+    PyBrxBimClassification();
+    PyBrxBimClassification(const BimClassification* ptr);
+    PyBrxBimClassification(BimClassification* pObject, bool autoDelete);
+    virtual ~PyBrxBimClassification() = default;
+    static std::string  className();
+public:
+    BimClassification* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<BimClassification> m_pyImp;
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimNameSpaces
+void makeBrxBimNameSpacesWrapper();
+class PyBrxBimNameSpaces
+{
+public:
+    PyBrxBimNameSpaces();
+    PyBrxBimNameSpaces(const BimNameSpaces* ptr);
+    PyBrxBimNameSpaces(BimNameSpaces* pObject, bool autoDelete);
+    virtual ~PyBrxBimNameSpaces() = default;
+    static std::string  className();
+public:
+    BimNameSpaces* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<BimNameSpaces> m_pyImp;
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimPropertyInfo
+void makePyBrxBimPropertyInfoWrapper();
+class PyBrxBimPropertyInfo
+{
+public:
+    PyBrxBimPropertyInfo();
+    PyBrxBimPropertyInfo(const BimPropertyInfo* ptr);
+    PyBrxBimPropertyInfo(BimPropertyInfo* pObject, bool autoDelete);
+    virtual ~PyBrxBimPropertyInfo() = default;
+    static std::string  className();
+public:
+    BimPropertyInfo*    impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<BimPropertyInfo> m_pyImp;
+};
+
+
+//---------------------------------------------------------------------------------------- -
+//BrxBimAttributeSet
+void makePyBrxBimAttributeSetWrapper();
+class PyBrxBimAttributeSet
+{
+public:
+    PyBrxBimAttributeSet();
+    PyBrxBimAttributeSet(const BrxBimAttributeSet* ptr);
+    PyBrxBimAttributeSet(BrxBimAttributeSet* pObject, bool autoDelete);
+    virtual ~PyBrxBimAttributeSet() = default;
+    static std::string  className();
+public:
+    BrxBimAttributeSet* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<BrxBimAttributeSet> m_pyImp;
+};
+
+
+//---------------------------------------------------------------------------------------- -
+//BrxBimDialogs
+void makePyBrxBimDialogsWrapper();
+class PyBrxBimDialogs
+{
+public:
+    PyBrxBimDialogs();
+    PyBrxBimDialogs(const BrxBimDialogs* ptr);
+    PyBrxBimDialogs(BrxBimDialogs* pObject, bool autoDelete);
+    virtual ~PyBrxBimDialogs() = default;
+    static std::string  className();
+public:
+    BrxBimDialogs* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<BrxBimDialogs> m_pyImp;
+};
+
+
+
 #endif//BRXAPP
