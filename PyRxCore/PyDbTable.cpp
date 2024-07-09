@@ -63,44 +63,24 @@ void AcCellSetItem(AcCell& cell, int idx, int val)
 //  AcCellRange helpers
 static boost::shared_ptr<AcCellRange> AcCellRangeInit1()
 {
-#if _ARXTARGET
-    return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
-#endif
-
-#if _BRXTARGET == 240
-    return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
-#endif
-
-#if _GRXTARGET == 240
-    return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
-#endif
-
-#if _ZRXTARGET <= 250
+#if defined (_ZRXTARGET250)
     return boost::shared_ptr<AcCellRange>(new AcCellRange());
+#else
+    return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
 #endif
 }
 
 static boost::shared_ptr<AcCellRange> AcCellRangeInit2(int tr, int lc, int br, int rc)
 {
-#ifdef _ARXTARGET
-    return boost::shared_ptr<AcCellRange>(new AcCellRange{ tr , lc, br, rc });
-#endif
-
-#if _BRXTARGET == 240
-    return boost::shared_ptr<AcCellRange>(new AcCellRange{ tr , lc, br, rc });
-#endif
-
-#if _GRXTARGET == 240
-    return boost::shared_ptr<AcCellRange>(new AcCellRange{ tr , lc, br, rc });
-#endif
-
-#if _ZRXTARGET <= 250
+#if defined (_ZRXTARGET250)
     AcCellRange range;
     range.mnTopRow = tr;
     range.mnLeftColumn = lc;
     range.mnBottomRow = br;
     range.mnRightColumn = rc;
     return boost::shared_ptr<AcCellRange>(new AcCellRange(range));
+#else
+    return boost::shared_ptr<AcCellRange>(new AcCellRange{ tr , lc, br, rc });
 #endif
 }
 

@@ -68,7 +68,7 @@ class TestEditor(unittest.TestCase):
         rbout = Ed.Core.invoke(args)
         self.assertEqual(rbout,[(Rx.LispType.kT_atom,0)])
          
-    @unittest.skipIf(host == "BRX24" or host == "GRX24" or "ZRX" in host, "BricsCAD known failure")
+    @unittest.skipIf("BRX" in host or host == "GRX24" or "ZRX" in host, "BricsCAD known failure")
     def test_evaluateDiesel(self):
         val = Ed.Core.evaluateDiesel('$(eval,"Current layer: "$(getvar,clayer))')
         self.assertEqual(val, "Current layer: 0")

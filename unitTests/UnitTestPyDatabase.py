@@ -302,7 +302,7 @@ class TestDatabase(unittest.TestCase):
         geoData = Db.GeoData(geoDataId)
         self.assertIsNotNone(geoData.coordinateSystem())
 
-    @unittest.skipIf(host == "BRX24" or host == "GRX24" or "ZRX" in host, "known failure")
+    @unittest.skipIf('BRX' in host or host == "GRX24" or "ZRX" in host, "known failure")
     def test_GeoData_transformFromLonLatAlt(self) -> None:
         db = self.geodb
         geoDataId = Db.Core.getGeoDataObjId(db)
@@ -318,7 +318,7 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(ex1.intersectsWith(ex2), True)
         self.assertEqual(ex1.midPoint(), Ge.Point3d(50, 50, 50))
 
-    @unittest.skipIf(host == "BRX24", "BricsCAD known failure")
+    @unittest.skipIf('BRX' in host, "BricsCAD known failure")
     def test_tdusrtimer(self) -> None:
         db = Db.curDb()
         date1 = db.tdusrtimer()

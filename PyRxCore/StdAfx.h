@@ -61,7 +61,7 @@
 #define GETBIT(flags, bit) (((flags) & (bit)) ? true : false)
 
 //TODO: rename these to imply not supported 
-#if defined(_ZRXTARGET) && (_ZRXTARGET == 250)
+#if defined(_ZRXTARGET) && (_ZRXTARGET <= 250)
 #define _ZRXTARGET250 250
 #endif
 

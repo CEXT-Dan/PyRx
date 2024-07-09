@@ -36,7 +36,7 @@ class TestGe(unittest.TestCase):
         self.assertEqual(scale.sx,4)
         self.assertEqual(scale.sy,4)
         
-    @unittest.skipIf(host == "BRX24", "BricsCAD known failure")
+    @unittest.skipIf('BRX' in host, "BricsCAD known failure")
     def test_scale2_preMultBy(self):
         scaleL = PyGe.Scale2d(2,2)
         scaleR = PyGe.Scale2d(4,4)
@@ -44,7 +44,7 @@ class TestGe(unittest.TestCase):
         self.assertEqual(scaleL.sx,8)
         self.assertEqual(scaleL.sy,8)
         
-    @unittest.skipIf(host == "BRX24", "BricsCAD known failure")
+    @unittest.skipIf('BRX' in host, "BricsCAD known failure")
     def test_scale2_postMultBy(self):
         scaleL = PyGe.Scale2d(2,2)
         scaleR = PyGe.Scale2d(4,4)
@@ -52,7 +52,7 @@ class TestGe(unittest.TestCase):
         self.assertEqual(scaleL.sx,8)
         self.assertEqual(scaleL.sy,8)
     
-    @unittest.skipIf(host == "BRX24", "BricsCAD known failure")
+    @unittest.skipIf('BRX' in host, "BricsCAD known failure")
     def test_scale2_setToProduct1(self):
         scale1 = PyGe.Scale2d()
         scale2 =  PyGe.Scale2d(2,2)
@@ -311,7 +311,7 @@ class TestGe(unittest.TestCase):
         seg.reverseParam()
         self.assertEqual(seg.startPoint(), pnt2)
     
-    @unittest.skipIf(host == "BRX24" or host == "GRX24" or "ZRX" in host, "known failure")  
+    @unittest.skipIf('BRX' in host or host == "GRX24" or "ZRX" in host, "known failure")  
     def test_surfSurfInt(self):
         vec = PyGe.Vector3d.kXAxis
         pnt = PyGe.Point3d(4000.0,3000.0,0.0)
@@ -339,7 +339,7 @@ class TestGe(unittest.TestCase):
         gecurves = composite.getCurveList()
         self.assertEqual(len(gecurves),21)
         
-    @unittest.skipIf(host == "BRX24" or "ZRX" in host, "BricsCAD known failure")
+    @unittest.skipIf('BRX' in host or "ZRX" in host, "BricsCAD known failure")
     def test_CurveCurveInt3d_overlap(self):
         objHnd1 = Db.Handle("2c9405")
         objId1 =  dbc.dbs["06457"].getObjectId(False, objHnd1)

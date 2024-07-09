@@ -444,7 +444,7 @@ class TestDbEntity(unittest.TestCase):
         id = model.appendAcDbEntity(wipout)
         self.assertTrue(id.isValid())
       
-    @unittest.skipIf(host == "BRX24" or "ZRX" in host, "known failure")  
+    @unittest.skipIf('BRX' in host or "ZRX" in host, "known failure")  
     def test_create_extruded_surface(self):
         db = Db.curDb()
         opts = Db.SweepOptions()

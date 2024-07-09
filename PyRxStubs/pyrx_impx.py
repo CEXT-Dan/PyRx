@@ -22,6 +22,8 @@ if flag is not None:
         host = Ap.Application.hostAPI()
         if host == "BRX24":
             import BxApp24 as Ax
+        if host == "BRX25":
+            import BxApp25 as Ax
         elif host == "GRX24":
             import GxApp24 as Ax
         elif host == "ZRX24":

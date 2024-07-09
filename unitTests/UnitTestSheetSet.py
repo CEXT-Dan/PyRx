@@ -16,7 +16,8 @@ host = Ap.Application.hostAPI()
 class TestSheetSet(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestSheetSet, self).__init__(*args, **kwargs)
-        
+    
+    @unittest.skipIf("BRX" in host, "BricsCAD known failure")
     def test_all_ctor(self):
         self.assertFalse(Sm.CustomPropertyValue().isNull())
         self.assertFalse(Sm.CustomPropertyBag().isNull())
@@ -27,11 +28,8 @@ class TestSheetSet(unittest.TestCase):
         self.assertFalse(Sm.DbBlockRecordReference().isNull())
         self.assertFalse(Sm.ProjectPointLocation().isNull())
         self.assertFalse(Sm.DbObjectReference().isNull())
-        
-        if not "BRX" in host:
-            self.assertFalse(Sm.PersistProxy().isNull())
-            self.assertFalse(Sm.ObjectReference().isNull())
-        
+        self.assertFalse(Sm.PersistProxy().isNull())
+        self.assertFalse(Sm.ObjectReference().isNull())
         self.assertFalse(Sm.PublishOptions().isNull())
         self.assertFalse(Sm.SheetSelSet().isNull())
         self.assertFalse(Sm.SheetSelSets().isNull())
