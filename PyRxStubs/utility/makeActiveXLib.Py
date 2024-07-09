@@ -58,6 +58,18 @@ def makeComBcadDB24() -> None:
     sys.argv = ["makepy", "-v", "-o", outputFile, comTypeLibraryOrDLL]
     makepy.main ()
     
+def makeComBcadApplication25() -> None:
+    outputFile = r"M:\Dev\Projects\PyRxGit\PyRxStubs\BxApp25.py"
+    comTypeLibraryOrDLL = r"M:\Dev\ArxSdk\BRXSDKV25_1_01\inc-x64\axbricscadapp1.tlb"
+    sys.argv = ["makepy", "-v", "-o", outputFile, comTypeLibraryOrDLL]
+    makepy.main ()
+    
+def makeComBcadDB25() -> None:
+    outputFile = r"M:\Dev\Projects\PyRxGit\PyRxStubs\BxDb25.py"
+    comTypeLibraryOrDLL = r"M:\Dev\ArxSdk\BRXSDKV25_1_01\inc-x64\axbricscaddb1.tlb"
+    sys.argv = ["makepy", "-v", "-o", outputFile, comTypeLibraryOrDLL]
+    makepy.main ()
+    
 def makeComGcadApp24() -> None:
     outputFile = r"M:\Dev\Projects\PyRxGit\PyRxStubs\GxApp24.py"
     comTypeLibraryOrDLL = r"C:\Program Files\Gstarsoft\GstarCAD2024\gcax.tlb"
@@ -77,7 +89,5 @@ def makeComZcadApp25() -> None:
     makepy.main ()
     
 def PyRxCmd_makeComWrappers():
-    #makeComSmcomponents24()
-    #makeComSmcomponents25()
     print("done")
 
