@@ -1,11 +1,11 @@
 # -*- coding: mbcs -*-
 # Created by makepy.py version 0.5.01
-# By python version 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]
+# By python version 3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)]
 # From type library 'axbricscaddb1.tlb'
-# On Wed Dec  6 08:20:12 2023
-'BricsCAD Db 24.0 Type Library (x64)'
+# On Tue Jul  9 12:59:44 2024
+'BricsCAD Db 25.0 Type Library (x64)'
 makepy_version = '0.5.01'
-python_version = 0x30c00f0
+python_version = 0x30c04f0
 
 import win32com.client.CLSIDToClass, pythoncom, pywintypes
 import win32com.client.util
@@ -18,8 +18,8 @@ defaultNamedOptArg=pythoncom.Empty
 defaultNamedNotOptArg=pythoncom.Empty
 defaultUnnamedArg=pythoncom.Empty
 
-CLSID = IID('{0449B457-98C6-4359-BD4A-2C3C292D9C48}')
-MajorVersion = 24
+CLSID = IID('{3EC968B7-07DA-4997-824A-E234F4C94E6E}')
+MajorVersion = 25
 MinorVersion = 0
 LibraryFlags = 8
 LCID = 0x0
@@ -1022,7 +1022,7 @@ from win32com.client import DispatchBaseClass
 class IAcad3DFace(DispatchBaseClass):
     'TeighaX Interface of a 3D triangle or quadrilateral plane section'
     CLSID = IID('{7FBB52D0-2190-4A17-9A16-CB37821293B5}')
-    coclass_clsid = IID('{3B3E11A0-2824-4ADA-9EFE-41578212028F}')
+    coclass_clsid = IID('{6E77426A-B057-4D42-8EA6-4B55101C2F58}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -1234,7 +1234,7 @@ class IAcad3DFace(DispatchBaseClass):
 class IAcad3DPolyline(DispatchBaseClass):
     'TeighaX Interface of a 3D polyline of straight line segments entity'
     CLSID = IID('{E82F96B5-BA0E-4569-BD8A-596495947C12}')
-    coclass_clsid = IID('{90D9E3BD-E641-45B1-9C71-10F66E673E6E}')
+    coclass_clsid = IID('{C77D0BB5-592A-468E-B686-553528986158}')
 
     def AppendVertex(self, vertex=defaultNamedNotOptArg):
         'Appends a vertex to a 3D polyline.'
@@ -1442,7 +1442,7 @@ class IAcad3DPolyline(DispatchBaseClass):
 class IAcad3DSolid(DispatchBaseClass):
     'TeighaX Interface of a solid object with free-form surface support'
     CLSID = IID('{34C7D347-D220-40C8-A81F-4B76ED6E5751}')
-    coclass_clsid = IID('{365AF1BE-48C3-4099-951D-C1791294DE19}')
+    coclass_clsid = IID('{858CB0DD-6B75-4656-BC7C-20035D47F7B7}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -1462,13 +1462,10 @@ class IAcad3DSolid(DispatchBaseClass):
             , SolidObject)
 
     # Result is of type IAcad3DSolid
-    def CheckInterference(self, Object=defaultNamedNotOptArg, CreateInterferenceSolid=defaultNamedNotOptArg):
+    def CheckInterference(self, Object=defaultNamedNotOptArg, CreateInterferenceSolid=defaultNamedNotOptArg, SolidsInterfere=pythoncom.Missing):
         'Not implemented. Checks the interference between two 3D solids.'
-        ret = self._oleobj_.InvokeTypes(9, LCID, 1, (9, 0), ((9, 1), (11, 1)),Object
-            , CreateInterferenceSolid)
-        if ret is not None:
-            ret = Dispatch(ret, 'CheckInterference', '{34C7D347-D220-40C8-A81F-4B76ED6E5751}')
-        return ret
+        return self._ApplyTypes_(9, 1, (9, 0), ((9, 1), (11, 1), (16395, 2)), 'CheckInterference', '{34C7D347-D220-40C8-A81F-4B76ED6E5751}',Object
+            , CreateInterferenceSolid, SolidsInterfere)
 
     def Copy(self):
         'Copies a specified entity.'
@@ -1676,7 +1673,7 @@ class IAcad3DSolid(DispatchBaseClass):
 class IAcadAcCmColor(DispatchBaseClass):
     'An interface for a TeighaX true color object'
     CLSID = IID('{6F2B458D-6232-4085-AA60-BD5E8A967722}')
-    coclass_clsid = IID('{2A3294B7-AB1F-40C1-98E9-EA193E2847DB}')
+    coclass_clsid = IID('{E6E54E65-BF3D-46CC-8165-4B019D1CA00D}')
 
     def Delete(self):
         'Deletes a true color.'
@@ -1723,7 +1720,7 @@ class IAcadAcCmColor(DispatchBaseClass):
 class IAcadArc(DispatchBaseClass):
     'TeighaX Interface of a circular arc entity'
     CLSID = IID('{426D2F0F-4A34-44D9-82D4-37E1A55605D2}')
-    coclass_clsid = IID('{96810171-584F-4A58-95DF-F90746B866A0}')
+    coclass_clsid = IID('{0A3D2BD0-0C2D-44DC-9CA5-71A2158E179A}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -1929,7 +1926,7 @@ class IAcadArc(DispatchBaseClass):
 class IAcadAttribute(DispatchBaseClass):
     'TeighaX Interface of an object appearing as a text string that describes the characteristics of an attribute reference'
     CLSID = IID('{E6A50EDF-A944-4172-8B2B-737EC047AD0F}')
-    coclass_clsid = IID('{A6D6469F-6F70-4864-A8DC-5DB7397C658E}')
+    coclass_clsid = IID('{19E4F37C-9743-4DB1-BA63-668AABB57B52}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -2175,7 +2172,7 @@ class IAcadAttribute(DispatchBaseClass):
 class IAcadAttributeReference(DispatchBaseClass):
     'TeighaX Interface of an object containing text that links to a block'
     CLSID = IID('{090EF3DE-E74D-44C0-8B8B-89D0A79FBE52}')
-    coclass_clsid = IID('{50463551-644F-48E0-ADF0-70BDE39C2379}')
+    coclass_clsid = IID('{65FF897A-9E92-4BFC-9C0A-7CA26C55074F}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -2411,7 +2408,7 @@ class IAcadAttributeReference(DispatchBaseClass):
 class IAcadBlock(DispatchBaseClass):
     'TeighaX Interface of a block definition containing a name and a set of objects'
     CLSID = IID('{A1F2F50A-DEC5-4D37-B62D-393491DACB2E}')
-    coclass_clsid = IID('{5BE85927-9C3C-4E1F-BAE0-CCDA866949C5}')
+    coclass_clsid = IID('{472C402B-2266-4B74-9BFB-366FB2C0817C}')
 
     # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
@@ -3110,7 +3107,7 @@ class IAcadBlock(DispatchBaseClass):
 class IAcadBlockReference(DispatchBaseClass):
     'TeighaX Interface of an instance of a block definition inserted into a drawing'
     CLSID = IID('{A40DEA37-8356-415A-B3AC-E087819C6301}')
-    coclass_clsid = IID('{BEC51FF5-8BEE-4E41-9208-C23E7245B237}')
+    coclass_clsid = IID('{5D575775-7D04-46EB-A5DE-7FF0342C01E9}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -3344,7 +3341,7 @@ class IAcadBlockReference(DispatchBaseClass):
 class IAcadBlocks(DispatchBaseClass):
     'TeighaX Interface of the collection of all blocks in the drawing'
     CLSID = IID('{98F7CE82-8E41-4D58-A784-30B3F33F7853}')
-    coclass_clsid = IID('{59A0D5D3-CD4B-404E-888E-B280E8C7FE8A}')
+    coclass_clsid = IID('{62978BB1-B93A-43CB-808C-3FCC46CDBAB6}')
 
     # Result is of type IAcadBlock
     def Add(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg):
@@ -3436,7 +3433,7 @@ class IAcadBlocks(DispatchBaseClass):
 class IAcadCircle(DispatchBaseClass):
     'TeighaX Interface of a full circle entity'
     CLSID = IID('{E23D2B17-487F-4016-A5D4-6C27643F308F}')
-    coclass_clsid = IID('{B495AD49-5306-4B28-89F5-A69ED8798A4F}')
+    coclass_clsid = IID('{9B21007A-5B41-43D3-9545-2B21DC81557C}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -3635,7 +3632,7 @@ class IAcadCircle(DispatchBaseClass):
 class IAcadDatabase(DispatchBaseClass):
     'Provides an interface to the database resident objects in an TeighaX document'
     CLSID = IID('{236374B2-E248-484D-91D4-C13FA726645D}')
-    coclass_clsid = IID('{5EF88703-1D0E-410B-93B1-45956D27AD4E}')
+    coclass_clsid = IID('{AB9C0147-0553-49F4-886B-2A4A44423429}')
 
     def CopyObjects(self, Objects=defaultNamedNotOptArg, Owner=defaultNamedOptArg, IdPairs=defaultNamedOptArg):
         'Duplicates multiple objects.'
@@ -3727,7 +3724,7 @@ class IAcadDatabase(DispatchBaseClass):
 class IAcadDatabasePreferences(DispatchBaseClass):
     'TeighaX Interface of an object that specifies the settings for the current TeighaX drawing'
     CLSID = IID('{41A5D923-4AB8-48DD-B24D-FBAFE94BA683}')
-    coclass_clsid = IID('{CA59FF45-6C1E-4223-9530-35C60DE7480D}')
+    coclass_clsid = IID('{B45B39E3-3140-4559-AC47-90D8BC837319}')
 
     _prop_map_get_ = {
         "AllowLongSymbolNames": (9, 2, (11, 0), (), "AllowLongSymbolNames", None),
@@ -3783,7 +3780,7 @@ class IAcadDatabasePreferences(DispatchBaseClass):
 class IAcadDictionaries(DispatchBaseClass):
     'TeighaX Interface of the collection of all dictionaries in the drawing'
     CLSID = IID('{B6D57083-036D-48AB-8BF4-0902B5C88BFF}')
-    coclass_clsid = IID('{887A471D-8E5B-46DD-B1FC-9248511A45B1}')
+    coclass_clsid = IID('{D5285F70-D46A-4E0D-B81B-BB71E78CA539}')
 
     # Result is of type IAcadDictionary
     def Add(self, Name=defaultNamedNotOptArg):
@@ -3875,7 +3872,7 @@ class IAcadDictionaries(DispatchBaseClass):
 class IAcadDictionary(DispatchBaseClass):
     'TeighaX Interface of a container object for storing and retrieving objects'
     CLSID = IID('{542B5C1D-3280-4154-B3C6-B9D55E9A153B}')
-    coclass_clsid = IID('{BF982612-77C8-45E1-8F25-F10392D86C71}')
+    coclass_clsid = IID('{6C7F96FE-1E9A-46A4-83DB-9047F0724E3B}')
 
     # Result is of type IAcadObject
     def AddObject(self, Keyword=defaultNamedNotOptArg, ObjectName=defaultNamedNotOptArg):
@@ -4012,7 +4009,7 @@ class IAcadDictionary(DispatchBaseClass):
 class IAcadDim3PointAngular(DispatchBaseClass):
     'TeighaX Interface of a dimension measuring the angular distance between three points'
     CLSID = IID('{B0E595FE-21A5-4C67-A916-4689ABA37E62}')
-    coclass_clsid = IID('{2CD4FC7D-3E9F-42E6-9D76-F42B55AAEEC5}')
+    coclass_clsid = IID('{61A8F2F8-03E7-48F1-B1C9-6600850BE8EB}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -4331,7 +4328,7 @@ class IAcadDim3PointAngular(DispatchBaseClass):
 class IAcadDimAligned(DispatchBaseClass):
     'TeighaX Interface of a linear dimension, measuring the distance between two points, that is displayed parallel to the points being measured'
     CLSID = IID('{9E7FFD46-F51C-44CE-9C06-01EFE94B7E04}')
-    coclass_clsid = IID('{1158BDED-3762-405F-A58F-8789BCD31AE4}')
+    coclass_clsid = IID('{C329AC6E-5A36-4CB4-9650-A56F77E68FE0}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -4706,7 +4703,7 @@ class IAcadDimAligned(DispatchBaseClass):
 class IAcadDimAngular(DispatchBaseClass):
     'TeighaX Interface of a dimension measuring the angular distance between two lines or between the angle of a circular arc'
     CLSID = IID('{559F6310-4DB2-4B61-8B4C-96D89006711B}')
-    coclass_clsid = IID('{9681B428-389B-4E38-9718-26FBBC646BEE}')
+    coclass_clsid = IID('{EBB696A0-45A3-431D-B194-646B7A3B598F}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -5033,7 +5030,7 @@ class IAcadDimAngular(DispatchBaseClass):
 class IAcadDimArcLength(DispatchBaseClass):
     'TeighaX Interface of a dimension measuring the length of an arc'
     CLSID = IID('{2E0ED9F5-20D4-45D5-9241-93E3B1BF56D3}')
-    coclass_clsid = IID('{8A36FC37-0C0B-44FB-BA25-B6ED2090394B}')
+    coclass_clsid = IID('{22DB4D5C-C3A0-4C40-875A-E5AB7F41EC56}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -5423,7 +5420,7 @@ class IAcadDimArcLength(DispatchBaseClass):
 class IAcadDimDiametric(DispatchBaseClass):
     'TeighaX Interface of a dimension measuring the diameter of a circle or arc'
     CLSID = IID('{0FB4DC41-B309-41C8-B5E7-23B284C98450}')
-    coclass_clsid = IID('{34A10E3E-AB48-4CBB-88CF-815F87738E90}')
+    coclass_clsid = IID('{7FF84789-30C6-436B-A702-0D1AD90B96B1}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -5759,7 +5756,7 @@ class IAcadDimDiametric(DispatchBaseClass):
 class IAcadDimOrdinate(DispatchBaseClass):
     'TeighaX Interface of a dimension measuring the absolute X or Y position of a point from the origin'
     CLSID = IID('{5A31D60B-3F6D-45C2-8A55-9CC70626D20D}')
-    coclass_clsid = IID('{685766B4-4712-4A68-9F6C-67765BF17C2B}')
+    coclass_clsid = IID('{F29CD169-60A9-4434-91EA-2F07A8064F8D}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -6068,7 +6065,7 @@ class IAcadDimOrdinate(DispatchBaseClass):
 class IAcadDimRadial(DispatchBaseClass):
     'TeighaX Interface of a dimension measuring the radius of a circle or arc'
     CLSID = IID('{0F29A519-B989-4E81-B41F-3346F3BE65CE}')
-    coclass_clsid = IID('{83F62228-2B26-4C18-8579-A9FC76D6422B}')
+    coclass_clsid = IID('{6356EA4A-DFEE-4DB6-BA5F-0072CB0AB609}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -6398,7 +6395,7 @@ class IAcadDimRadial(DispatchBaseClass):
 class IAcadDimRadialLarge(DispatchBaseClass):
     'TeighaX Interface of a dimension measuring a large radius, also known as a jogged radius dimension'
     CLSID = IID('{F2B4D571-C206-4E19-B1C0-55C95BED669C}')
-    coclass_clsid = IID('{BBAE1F47-D006-4796-A760-90F869EBA3F4}')
+    coclass_clsid = IID('{B076E419-CDC7-4D99-89B0-4B725C92FFA2}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -6729,7 +6726,7 @@ class IAcadDimRadialLarge(DispatchBaseClass):
 class IAcadDimRotated(DispatchBaseClass):
     'TeighaX Interface of a dimension that measures the distance between two points and is displayed at a given rotation'
     CLSID = IID('{A7BDFAD9-F3EA-4B81-B03F-24FA2BFFA32B}')
-    coclass_clsid = IID('{1DB6148A-7A75-431A-9F6E-5EE1DF74AD0F}')
+    coclass_clsid = IID('{2A915C25-BCD1-4633-9965-04033A7E7ED6}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -7095,7 +7092,7 @@ class IAcadDimRotated(DispatchBaseClass):
 class IAcadDimStyle(DispatchBaseClass):
     'TeighaX Interface of a group of dimension settings that determines the appearance of a dimension'
     CLSID = IID('{F1E716A4-FBC3-4893-A8C4-5E59A537D7CE}')
-    coclass_clsid = IID('{FCF82E37-DD4C-4992-AF92-5FB8923AAC11}')
+    coclass_clsid = IID('{FCC02C04-7D49-45EE-BCA7-3F198B244F85}')
 
     def CopyFrom(self, StyleSource=defaultNamedNotOptArg):
         'Copies dimension style data to an existing dimension style.'
@@ -7156,7 +7153,7 @@ class IAcadDimStyle(DispatchBaseClass):
 class IAcadDimStyles(DispatchBaseClass):
     'TeighaX Interface of the collection of all dimension styles in the drawing'
     CLSID = IID('{DAB1760C-8402-4520-AD32-9396AEF1C677}')
-    coclass_clsid = IID('{9AB84FD1-1BEF-4A4B-BC47-C34ADA79F397}')
+    coclass_clsid = IID('{EB85FEC7-264C-46CF-8AA7-CF70A1404D7D}')
 
     # Result is of type IAcadDimStyle
     def Add(self, Name=defaultNamedNotOptArg):
@@ -7248,7 +7245,7 @@ class IAcadDimStyles(DispatchBaseClass):
 class IAcadDimension(DispatchBaseClass):
     'The common interface for TeighaX dimensions'
     CLSID = IID('{91BBC3D7-F48C-4703-8867-0F025F95DD56}')
-    coclass_clsid = IID('{5FB8DBE0-D358-433C-ACAC-BC068C7037BA}')
+    coclass_clsid = IID('{EDF89BCE-2FE3-4710-B4DD-87EC0FC4732F}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -7485,7 +7482,7 @@ class IAcadDimension(DispatchBaseClass):
 
 class IAcadDwfUnderlay(DispatchBaseClass):
     CLSID = IID('{A095BF5E-B1A5-413F-A6EA-6E057C63CA59}')
-    coclass_clsid = IID('{71B03226-0D81-4E25-869B-5DA9E3F6B7CE}')
+    coclass_clsid = IID('{F0FDEB9B-DC3C-4DE6-86AA-84A8F41399BF}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -7700,7 +7697,7 @@ class IAcadDwfUnderlay(DispatchBaseClass):
 class IAcadDynamicBlockReferenceProperty(DispatchBaseClass):
     'TeighaX Interface of an object containing the properties of a dynamic block'
     CLSID = IID('{671D7077-2C99-4D21-A5D3-A5001F1B8F12}')
-    coclass_clsid = IID('{0E35FAA5-88E5-4697-948A-D262A2680445}')
+    coclass_clsid = IID('{B10DACF6-88FB-4874-A7BF-D0FB9A20F9E5}')
 
     _prop_map_get_ = {
         "AllowedValues": (5, 2, (12, 0), (), "AllowedValues", None),
@@ -7732,7 +7729,7 @@ class IAcadDynamicBlockReferenceProperty(DispatchBaseClass):
 class IAcadEllipse(DispatchBaseClass):
     'TeighaX Interface of an elliptical arc or complete ellipse entity'
     CLSID = IID('{5B4B058E-B8AA-4C76-B652-76AF101C380F}')
-    coclass_clsid = IID('{3E7B0C05-2062-420C-8EB3-EA62DC886DB1}')
+    coclass_clsid = IID('{49886B43-9A12-40B7-9BAB-A825606BD5DE}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -7943,7 +7940,7 @@ class IAcadEllipse(DispatchBaseClass):
 class IAcadEntity(DispatchBaseClass):
     'The standard interface for a basic TeighaX entity'
     CLSID = IID('{FFE64704-CEBD-4C88-A867-E7C821AFE488}')
-    coclass_clsid = IID('{7B91A7F3-234E-4BD1-8914-76856A2AF7D9}')
+    coclass_clsid = IID('{31C59A67-D96E-403A-A952-E77DC60D613E}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -8113,7 +8110,7 @@ class IAcadEntity(DispatchBaseClass):
 class IAcadExternalReference(DispatchBaseClass):
     'TeighaX Interface of an instance of an external reference inserted into a drawing'
     CLSID = IID('{CD8AF174-69E8-4044-841A-7CDC34FE43BF}')
-    coclass_clsid = IID('{97A26D82-C2A9-4D4E-8036-8A841A26D262}')
+    coclass_clsid = IID('{84C6383F-8175-4D91-A334-475230F732EF}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -8348,7 +8345,7 @@ class IAcadExternalReference(DispatchBaseClass):
 class IAcadExtrudedSurface(DispatchBaseClass):
     'TeighaX Interface of a surface created by extruding an object or a planar face a specified distance and direction'
     CLSID = IID('{91D470C0-CAB6-49F8-B13B-83D53527933A}')
-    coclass_clsid = IID('{7D3E8B0E-13E1-4DED-AD26-D39649A19DA6}')
+    coclass_clsid = IID('{DDC04592-F2C4-49AC-832E-80A165301952}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -8528,7 +8525,7 @@ class IAcadExtrudedSurface(DispatchBaseClass):
 class IAcadFileDependencies(DispatchBaseClass):
     'TeighaX Interface for creating, updating, retrieving and removing items in the File Dependency List'
     CLSID = IID('{DA84BC48-A8C9-45CC-B042-07B8C95CD0E4}')
-    coclass_clsid = IID('{2155F8AB-E527-45F7-8A97-FD850E710340}')
+    coclass_clsid = IID('{B133B77C-B736-4B6E-BA4E-5884E73FDF85}')
 
     def CreateEntry(self, Feature=defaultNamedNotOptArg, FullFileName=defaultNamedNotOptArg, AffectsGraphics=defaultNamedNotOptArg, noIncrement=defaultNamedNotOptArg):
         'Creates an entry in the File Dependencis list.'
@@ -8595,7 +8592,7 @@ class IAcadFileDependencies(DispatchBaseClass):
 class IAcadFileDependency(DispatchBaseClass):
     'TeighaX Interface to provide information about entries in the File Dependency List of a drawing file'
     CLSID = IID('{AB7F29F6-3436-434F-8F92-9D3C1ED2D3DF}')
-    coclass_clsid = IID('{6F500011-5D1F-40A1-A1FD-109084F95E07}')
+    coclass_clsid = IID('{44DCF5B7-D725-4E56-A31F-6192BE8BEF29}')
 
     _prop_map_get_ = {
         "AffectsGraphics": (8, 2, (11, 0), (), "AffectsGraphics", None),
@@ -8624,7 +8621,7 @@ class IAcadFileDependency(DispatchBaseClass):
 class IAcadGroup(DispatchBaseClass):
     'TeighaX Interface of a named SelectionSet object'
     CLSID = IID('{5AF2F067-C79B-4C61-B0EF-950C44990DAA}')
-    coclass_clsid = IID('{3C200789-8338-447D-8373-AFEF38713BAA}')
+    coclass_clsid = IID('{75E56E90-EEED-4477-A387-A40724045324}')
 
     def AppendItems(self, Objects=defaultNamedNotOptArg):
         'Adds one or more objects to the group.'
@@ -8737,7 +8734,7 @@ class IAcadGroup(DispatchBaseClass):
 class IAcadGroups(DispatchBaseClass):
     'TeighaX Interface of the collection of all groups in the drawing'
     CLSID = IID('{973585F9-D300-4BA7-9D0F-6EE59533A0DC}')
-    coclass_clsid = IID('{2D7FB26E-9052-4F9F-BD2D-D18C50713ED6}')
+    coclass_clsid = IID('{9D8D414B-40DB-42DA-B24C-56F9079D89B3}')
 
     # Result is of type IAcadGroup
     def Add(self, Name=defaultNamedNotOptArg):
@@ -8829,7 +8826,7 @@ class IAcadGroups(DispatchBaseClass):
 class IAcadHatch(DispatchBaseClass):
     'TeighaX Interface of an area fill consisting of a pattern of lines'
     CLSID = IID('{173ED161-3D64-4EF5-85F4-6AACA83CD382}')
-    coclass_clsid = IID('{4B2665FC-67ED-44AF-8C4D-6A04816631F3}')
+    coclass_clsid = IID('{E56C99AB-8A6E-43BA-B4CF-58C5137450A5}')
 
     def AppendInnerLoop(self, ObjectArray=defaultNamedNotOptArg):
         'Adds an inner loop to a hatch.'
@@ -9078,17 +9075,17 @@ class IAcadHatch(DispatchBaseClass):
 class IAcadHatch2(DispatchBaseClass):
     'TeighaX Interface of an area fill consisting of a pattern of lines'
     CLSID = IID('{8CF4A451-A8A4-40C1-9ECC-26EF097042D6}')
-    coclass_clsid = IID('{4B2665FC-67ED-44AF-8C4D-6A04816631F3}')
+    coclass_clsid = IID('{E56C99AB-8A6E-43BA-B4CF-58C5137450A5}')
 
-    def AppendInnerLoop(self, ObjectArray=defaultNamedNotOptArg, bCheckLoop=defaultNamedNotOptArg):
+    def AppendInnerLoop(self, ObjectArray=defaultNamedNotOptArg):
         'Adds an inner loop to a hatch.'
-        return self._oleobj_.InvokeTypes(29, LCID, 1, (24, 0), ((12, 1), (11, 1)),ObjectArray
-            , bCheckLoop)
+        return self._oleobj_.InvokeTypes(15, LCID, 1, (24, 0), ((12, 1),),ObjectArray
+            )
 
-    def AppendOuterLoop(self, ObjectArray=defaultNamedNotOptArg, bCheckLoop=defaultNamedNotOptArg):
+    def AppendOuterLoop(self, ObjectArray=defaultNamedNotOptArg):
         'Adds the outer loop to a hatch.'
-        return self._oleobj_.InvokeTypes(28, LCID, 1, (24, 0), ((12, 1), (11, 1)),ObjectArray
-            , bCheckLoop)
+        return self._oleobj_.InvokeTypes(14, LCID, 1, (24, 0), ((12, 1),),ObjectArray
+            )
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -9149,10 +9146,10 @@ class IAcadHatch2(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
-    def InsertLoopAt(self, Index=defaultNamedNotOptArg, LoopType=defaultNamedNotOptArg, ObjectArray=defaultNamedNotOptArg, bCheckLoop=defaultNamedNotOptArg):
+    def InsertLoopAt(self, Index=defaultNamedNotOptArg, LoopType=defaultNamedNotOptArg, ObjectArray=defaultNamedNotOptArg):
         'Adds a loop at a specified index of a hatch.'
-        return self._oleobj_.InvokeTypes(30, LCID, 1, (24, 0), ((3, 1), (3, 1), (12, 1), (11, 1)),Index
-            , LoopType, ObjectArray, bCheckLoop)
+        return self._oleobj_.InvokeTypes(16, LCID, 1, (24, 0), ((3, 1), (3, 1), (12, 1)),Index
+            , LoopType, ObjectArray)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
         'Returns coordinates of intersections with the (input) IntersectObject.'
@@ -9328,7 +9325,7 @@ class IAcadHatch2(DispatchBaseClass):
 class IAcadHelix(DispatchBaseClass):
     'TeighaX Interface of Helix entity'
     CLSID = IID('{7480DD11-B890-41B3-BD1A-562D5190DDC2}')
-    coclass_clsid = IID('{AA0DEA33-0EB3-432B-B91B-88384639BBA3}')
+    coclass_clsid = IID('{90F31610-1240-4097-9477-63B5E34E7782}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -9524,7 +9521,7 @@ class IAcadHelix(DispatchBaseClass):
 class IAcadHyperlink(DispatchBaseClass):
     'TeighaX Interface of a URL and URL description'
     CLSID = IID('{CFC06944-7FD0-432E-A430-B77F2967EB4C}')
-    coclass_clsid = IID('{2591C8C9-336E-4DA2-875F-5BD437A4E6A5}')
+    coclass_clsid = IID('{F33C8BAC-2E89-41C7-AD83-927F5C1F5F5B}')
 
     def Delete(self):
         'Deletes a specified object.'
@@ -9552,7 +9549,7 @@ class IAcadHyperlink(DispatchBaseClass):
 class IAcadHyperlinks(DispatchBaseClass):
     'TeighaX Interface for the collection of all hyperlinks for a given entity'
     CLSID = IID('{BBC2B22B-AE20-47B7-98AC-A75114C62CF9}')
-    coclass_clsid = IID('{277E3E52-6C69-4AC1-9312-DD3A02519F33}')
+    coclass_clsid = IID('{7561504C-84AB-4D0A-A5F4-997FDA647550}')
 
     # Result is of type IAcadHyperlink
     def Add(self, Name=defaultNamedNotOptArg, Description=defaultNamedOptArg, NamedLocation=defaultNamedOptArg):
@@ -9640,7 +9637,7 @@ class IAcadIdPair(DispatchBaseClass):
 class IAcadLWPolyline(DispatchBaseClass):
     'TeighaX Interface of 2D line with adjustable width composed of line and arc segments entity'
     CLSID = IID('{037572DF-0207-4B27-BCDA-C163054A21DF}')
-    coclass_clsid = IID('{87897864-72C3-4D87-81DD-00614EC82213}')
+    coclass_clsid = IID('{0FC390E7-C3CF-4565-AEAA-E7228601529C}')
 
     def AddVertex(self, Index=defaultNamedNotOptArg, vertex=defaultNamedNotOptArg):
         'Creates and adds a new vertex to a lightweight polyline.'
@@ -9882,7 +9879,7 @@ class IAcadLWPolyline(DispatchBaseClass):
 class IAcadLayer(DispatchBaseClass):
     'TeighaX Interface of a logical grouping of data, similar to overlays.'
     CLSID = IID('{A5484251-D4DF-4F32-A23F-445882F48F1B}')
-    coclass_clsid = IID('{4EDD52C1-33F1-4B70-A800-2654F60D1D2B}')
+    coclass_clsid = IID('{EFEA7C54-3DC9-46BB-B0C3-ED7FA2DA8A61}')
 
     def Delete(self):
         'Deletes a specified object.'
@@ -9964,7 +9961,7 @@ class IAcadLayer(DispatchBaseClass):
 class IAcadLayers(DispatchBaseClass):
     'TeighaX Interface of the collection of all layers in the drawing'
     CLSID = IID('{EA5AF871-E4B9-4903-9509-DF622C0DC6E7}')
-    coclass_clsid = IID('{B9FEA495-416E-44BC-AB51-7150524E5AE0}')
+    coclass_clsid = IID('{58CA3ABC-798C-41E2-AB6D-66E4EDD3A14C}')
 
     # Result is of type IAcadLayer
     def Add(self, Name=defaultNamedNotOptArg):
@@ -10060,7 +10057,7 @@ class IAcadLayers(DispatchBaseClass):
 class IAcadLayout(DispatchBaseClass):
     'TeighaX Interface of the plot settings and visual properties of a model space or paper space block'
     CLSID = IID('{50D89DB1-E146-428F-92BD-87F4EB9A46B4}')
-    coclass_clsid = IID('{D3D20BA9-3EDD-4108-9E10-4EE99F917847}')
+    coclass_clsid = IID('{F716D4BC-FEB0-4380-8DBE-8EFF9864863A}')
 
     def CopyFrom(self, pPlotConfig=defaultNamedNotOptArg):
         'Copies settings from a plot configuration file.'
@@ -10224,7 +10221,7 @@ class IAcadLayout(DispatchBaseClass):
 class IAcadLayouts(DispatchBaseClass):
     'TeighaX Interface of the collection of all layouts in the drawing'
     CLSID = IID('{88CC8ED5-7AEF-459A-BE86-45C7AFD8EAE8}')
-    coclass_clsid = IID('{E386A799-DE90-42E8-9FC1-89DDB6CEFC41}')
+    coclass_clsid = IID('{AF7F6847-E9EE-4631-BC11-E294AB931AD7}')
 
     # Result is of type IAcadLayout
     def Add(self, Name=defaultNamedNotOptArg):
@@ -10316,7 +10313,7 @@ class IAcadLayouts(DispatchBaseClass):
 class IAcadLeader(DispatchBaseClass):
     'TeighaX Interface of an object composed of an arrowhead attached to splines or straight line segments'
     CLSID = IID('{A7072E19-38E6-4320-9045-B67E53179643}')
-    coclass_clsid = IID('{B02B4037-B189-4C98-BBF6-6DA42B1D673D}')
+    coclass_clsid = IID('{C4C1CE7C-8B73-4226-96B5-E4B90D900B6F}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -10540,7 +10537,7 @@ class IAcadLeader(DispatchBaseClass):
 class IAcadLine(DispatchBaseClass):
     'TeighaX Interface of a single line segment'
     CLSID = IID('{34257E2A-6A0C-4DEF-A740-65455AC05B1D}')
-    coclass_clsid = IID('{E0ED259B-1BDB-4411-95BF-495BA25926A9}')
+    coclass_clsid = IID('{2128CBE6-D842-4281-A916-7EFC0667A4F8}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -10738,7 +10735,7 @@ class IAcadLine(DispatchBaseClass):
 class IAcadLineType(DispatchBaseClass):
     'TeighaX Interface of the line characteristics consisting of combinations of dashes, dots, and spaces'
     CLSID = IID('{908A55EF-9ED0-4A36-BD47-AD0818AF9317}')
-    coclass_clsid = IID('{0781CAE4-6055-4D40-B954-42D5EC725018}')
+    coclass_clsid = IID('{834DE1EC-F089-445B-A6C1-E758BBF61A6F}')
 
     def Delete(self):
         'Deletes a specified object.'
@@ -10796,7 +10793,7 @@ class IAcadLineType(DispatchBaseClass):
 class IAcadLineTypes(DispatchBaseClass):
     'TeighaX Interface of the collection of all linetypes in the drawing'
     CLSID = IID('{669E518F-46F5-4E21-8447-7F8D1435AE94}')
-    coclass_clsid = IID('{D49DF09F-070E-429D-976D-39F53AE3EF0B}')
+    coclass_clsid = IID('{FADD0FB1-DB54-4779-B192-68AEADD73226}')
 
     # Result is of type IAcadLineType
     def Add(self, Name=defaultNamedNotOptArg):
@@ -10893,7 +10890,7 @@ class IAcadLineTypes(DispatchBaseClass):
 class IAcadLoftedSurface(DispatchBaseClass):
     'TeighaX Interface of a surface created by lofting through a set of two or more curves'
     CLSID = IID('{9A580AC7-FD1D-4D94-A668-B00745FDB153}')
-    coclass_clsid = IID('{50347C02-0E1F-407E-9962-A96E32FA97D7}')
+    coclass_clsid = IID('{B9B743FA-6A83-41D6-959C-796E74EA50BC}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -11082,7 +11079,7 @@ class IAcadLoftedSurface(DispatchBaseClass):
 class IAcadMInsertBlock(DispatchBaseClass):
     'TeighaX Interface of a rectangular array of block references'
     CLSID = IID('{A6653F5A-001E-4125-8BB0-597E96CDE498}')
-    coclass_clsid = IID('{A3E63831-0E7F-492F-9621-21B2627DF0D1}')
+    coclass_clsid = IID('{98B11CB5-9B66-424C-9413-95E4B27B528B}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -11324,7 +11321,7 @@ class IAcadMInsertBlock(DispatchBaseClass):
 class IAcadMLeader(DispatchBaseClass):
     'TeighaX Multi-Leader Interface'
     CLSID = IID('{A2F0013E-ACE4-41C5-9015-37587663DD30}')
-    coclass_clsid = IID('{CF0F8CEA-42D4-49E7-BDFA-764CFC2F412C}')
+    coclass_clsid = IID('{ED0260BC-DCBC-4D8F-8CC9-39E27E3A45E8}')
 
     def AddLeader(self):
         'Adds a new cluster of leader lines to a multileader.'
@@ -11643,7 +11640,7 @@ class IAcadMLeader(DispatchBaseClass):
 class IAcadMLeaderLeader(DispatchBaseClass):
     "AutoCAD Interface for Multi-Leader's Leader Line"
     CLSID = IID('{D0AC8EBF-1F76-43EF-9748-D7EE52AABE25}')
-    coclass_clsid = IID('{EEA688F8-1BA2-46DE-80F8-39C0EB3F592B}')
+    coclass_clsid = IID('{73072689-8CF0-47FE-B320-9DED49D343C9}')
 
     def OnModified(self):
         return self._oleobj_.InvokeTypes(1024, LCID, 1, (24, 0), (),)
@@ -11689,7 +11686,7 @@ class IAcadMLeaderLeader(DispatchBaseClass):
 class IAcadMLeaderStyle(DispatchBaseClass):
     'MLeaderStyle Interface'
     CLSID = IID('{9E7B3D0B-36F8-444E-89A7-324B3E877BDC}')
-    coclass_clsid = IID('{A708E24B-99D0-4D39-82C5-BD5BAAE97DFF}')
+    coclass_clsid = IID('{4499847D-1E01-4FC7-A9DD-F8DA5E48FD44}')
 
     def Delete(self):
         'Deletes a specified object.'
@@ -11825,7 +11822,7 @@ class IAcadMLeaderStyle(DispatchBaseClass):
 class IAcadMLine(DispatchBaseClass):
     'TeighaX Interface of multiple parallel lines'
     CLSID = IID('{C35F5577-83CE-43C7-B10E-AFEF9E345739}')
-    coclass_clsid = IID('{F4F5165B-D882-4A22-9821-8F8A5092D87A}')
+    coclass_clsid = IID('{3E7500AD-3849-4135-B49F-1FC73371EB31}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -12010,7 +12007,7 @@ class IAcadMLine(DispatchBaseClass):
 class IAcadMText(DispatchBaseClass):
     'TeighaX Interface of a paragraph of alphanumeric characters that fits within a nonprinting text boundary'
     CLSID = IID('{21E0293A-4AAE-4049-87D3-336F8F4D2D45}')
-    coclass_clsid = IID('{78D1C5E6-5650-4BFB-B601-93358EC97545}')
+    coclass_clsid = IID('{CF63888C-AF87-4FDA-B026-9B73F22999BB}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -12221,7 +12218,7 @@ class IAcadMText(DispatchBaseClass):
 class IAcadMaterial(DispatchBaseClass):
     'TeighaX Interface of the render material characteristics'
     CLSID = IID('{4D24EA66-A2B3-4129-8367-81D93B44BE07}')
-    coclass_clsid = IID('{D75D937B-6DD9-407E-AF88-6D29801CB204}')
+    coclass_clsid = IID('{268CBEFD-7A55-4890-B05C-C1E930FB7457}')
 
     def Delete(self):
         'Deletes a specified object.'
@@ -12279,7 +12276,7 @@ class IAcadMaterial(DispatchBaseClass):
 class IAcadMaterials(DispatchBaseClass):
     'TeighaX Interface for the collection of all materials in the drawing'
     CLSID = IID('{6B7DDA98-B483-40F8-905C-2DF10E936021}')
-    coclass_clsid = IID('{16F19695-0DD8-494B-9FF3-756EF0AB29B1}')
+    coclass_clsid = IID('{7A2524E5-3F4E-48AC-8F20-F076AC88A6A0}')
 
     # Result is of type IAcadMaterial
     def Add(self, Name=defaultNamedNotOptArg):
@@ -12371,7 +12368,7 @@ class IAcadMaterials(DispatchBaseClass):
 class IAcadModelSpace(DispatchBaseClass):
     'TeighaX Interface of a special Block object containing all model space entities'
     CLSID = IID('{ECE694AB-7306-4687-AD03-C7017AE8DED1}')
-    coclass_clsid = IID('{D28289A3-5CCD-42DB-83BA-79C472D1BC7E}')
+    coclass_clsid = IID('{B1060F62-A436-47EE-B686-DFC901908EE0}')
 
     # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
@@ -13072,7 +13069,7 @@ class IAcadModelSpace(DispatchBaseClass):
 class IAcadObject(DispatchBaseClass):
     'The standard interface for a basic TeighaX object'
     CLSID = IID('{153A7BFD-AB55-48D4-81C7-22252D635ECE}')
-    coclass_clsid = IID('{1ECF9DF9-7F91-48F5-963E-2740C5972B68}')
+    coclass_clsid = IID('{8ADB9DC6-185D-4AD6-9341-35F3039D5945}')
 
     def Delete(self):
         'Deletes a specified object.'
@@ -13324,7 +13321,7 @@ class IAcadOle(DispatchBaseClass):
 class IAcadPViewport(DispatchBaseClass):
     'TeighaX Interface of rectangular object created in paper space that display view'
     CLSID = IID('{894A0DA6-C91F-458C-AC86-7FEDBF35CD30}')
-    coclass_clsid = IID('{4AC35C83-26ED-4BCC-A25F-78D31643490A}')
+    coclass_clsid = IID('{086C713A-B7B5-43E7-B33C-C1B21B12F6D2}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -13594,7 +13591,7 @@ class IAcadPViewport(DispatchBaseClass):
 class IAcadPaperSpace(DispatchBaseClass):
     'TeighaX Interface of a special Block object containing all the entities in the active paper space layout'
     CLSID = IID('{39377F68-1F53-4433-90AE-05526FEA4FE5}')
-    coclass_clsid = IID('{A6413E76-C1F2-4883-A9DF-4F328C9375EC}')
+    coclass_clsid = IID('{A094C648-846F-4E09-8E60-53E83AC5146B}')
 
     # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
@@ -14303,7 +14300,7 @@ class IAcadPaperSpace(DispatchBaseClass):
 class IAcadPlaneSurface(DispatchBaseClass):
     'TeighaX Interface of a planar surface entity'
     CLSID = IID('{FFCCA3F9-8BB7-4693-B7F7-07EFDF4DE8A9}')
-    coclass_clsid = IID('{02C58A19-A75E-4E03-BFDA-05F83B0EE9EE}')
+    coclass_clsid = IID('{0E5B4738-F00F-4500-A320-F758C7A042EE}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -14478,7 +14475,7 @@ class IAcadPlaneSurface(DispatchBaseClass):
 class IAcadPlotConfiguration(DispatchBaseClass):
     'TeighaX Interface of a named collection of plot settings'
     CLSID = IID('{3648ECB5-D174-4212-8D3F-273DB12C4EAC}')
-    coclass_clsid = IID('{34F35DB3-EA8B-4EF7-8AEE-009362201B18}')
+    coclass_clsid = IID('{C665FF18-7A1A-428F-BBFE-C011781C3884}')
 
     def CopyFrom(self, pPlotConfig=defaultNamedNotOptArg):
         'Copies settings from a plot configuration file.'
@@ -14628,7 +14625,7 @@ class IAcadPlotConfiguration(DispatchBaseClass):
 class IAcadPlotConfigurations(DispatchBaseClass):
     'TeighaX Interface of a collection of named plot settings'
     CLSID = IID('{38436519-BF47-4848-B6B2-CB6944F167D3}')
-    coclass_clsid = IID('{A0E0F939-5A48-40A3-99D3-C57C25BE9E60}')
+    coclass_clsid = IID('{650C739E-F7D8-4A43-B260-03BFBA1FABF4}')
 
     # Result is of type IAcadPlotConfiguration
     def Add(self, Name=defaultNamedNotOptArg, ModelType=defaultNamedOptArg):
@@ -14720,7 +14717,7 @@ class IAcadPlotConfigurations(DispatchBaseClass):
 class IAcadPoint(DispatchBaseClass):
     'TeighaX Interface of a point marker appearing as a dot, square, circle, X, tick, or plus sign (+); or as a combination of these'
     CLSID = IID('{C0CA40EE-60A1-4E76-AAEF-801E2CCC97A1}')
-    coclass_clsid = IID('{D3EF1961-790F-4F88-98C6-49B664435505}')
+    coclass_clsid = IID('{2B86D496-9C35-45C1-A42A-FD7B05FE108C}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -14906,7 +14903,7 @@ class IAcadPoint(DispatchBaseClass):
 class IAcadPolyfaceMesh(DispatchBaseClass):
     'TeighaX Interface of a three-dimensional polyface mesh'
     CLSID = IID('{5BBFB818-58E4-466A-BCBF-27CF88E2FE08}')
-    coclass_clsid = IID('{52215AF1-CE88-43F7-BC8A-65E9AC73AB69}')
+    coclass_clsid = IID('{6435F8F6-F509-4DC5-88D9-E5062CE5282D}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -15101,7 +15098,7 @@ class IAcadPolyfaceMesh(DispatchBaseClass):
 class IAcadPolygonMesh(DispatchBaseClass):
     'TeighaX Interface of a free-form 3D mesh entity'
     CLSID = IID('{CA0C9AB2-0AC7-47C1-9877-FBCDCA68F403}')
-    coclass_clsid = IID('{84CA9670-95BB-48D2-886A-64FECD7DF55B}')
+    coclass_clsid = IID('{C44EFC64-B725-44A8-941F-4DE88120DE89}')
 
     def AppendVertex(self, vertex=defaultNamedNotOptArg):
         'Appends a new vertex to a polygon mesh.'
@@ -15314,7 +15311,7 @@ class IAcadPolygonMesh(DispatchBaseClass):
 class IAcadPolyline(DispatchBaseClass):
     'TeighaX Interface of a 2D line of adjustable width or a 3D line or mesh of nonadjustable width composed of line and arc segments'
     CLSID = IID('{8C60FDCD-785A-40EA-92FE-6DC1DAC29E7B}')
-    coclass_clsid = IID('{F1B5F011-5265-4E87-9CE9-225743FB78D4}')
+    coclass_clsid = IID('{FB21CC08-8A93-4DC5-A488-9696A510C7BA}')
 
     def AppendVertex(self, vertex=defaultNamedNotOptArg):
         'Appends a new vertex to a polyline.'
@@ -15558,7 +15555,7 @@ class IAcadPolyline(DispatchBaseClass):
 class IAcadRasterImage(DispatchBaseClass):
     'TeighaX Interface of a raster image consisting of a rectangular grid (or raster) of small squares or dots known as pixels'
     CLSID = IID('{1334DA0A-AFF4-4E2A-8540-5313AA8A47E4}')
-    coclass_clsid = IID('{5DAC02AE-C024-4E70-ACD2-CBDBB3AC3686}')
+    coclass_clsid = IID('{7C353EA8-B077-4C5E-8A33-1F6173A9C719}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -15771,7 +15768,7 @@ class IAcadRasterImage(DispatchBaseClass):
 class IAcadRay(DispatchBaseClass):
     'TeighaX Interface of a semi-infinite line entity'
     CLSID = IID('{C888FAF5-E377-4624-A8E2-898031AB58BB}')
-    coclass_clsid = IID('{B71AD3CB-A8BC-4EB7-9946-579E44B8393E}')
+    coclass_clsid = IID('{2D591D83-847D-486F-810C-8C0BC35710B8}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -15957,7 +15954,7 @@ class IAcadRay(DispatchBaseClass):
 class IAcadRegion(DispatchBaseClass):
     'TeighaX Interface of a bounded planar face consisting of lines, circles, arcs, elliptical arcs, and spline curves'
     CLSID = IID('{D9F13162-0CFA-4506-AAAD-D46724407877}')
-    coclass_clsid = IID('{37FDD4DC-7074-46A2-8140-7B8CB49D4C5A}')
+    coclass_clsid = IID('{AC7F3965-6927-457D-B4CD-0D47CFAEB4A4}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -16153,7 +16150,7 @@ class IAcadRegion(DispatchBaseClass):
 class IAcadRegisteredApplication(DispatchBaseClass):
     'TeighaX Interface of an external application that has been added to the drawing'
     CLSID = IID('{CEE7E95F-2FDC-4E74-B87C-9443B5EC029D}')
-    coclass_clsid = IID('{804668AC-29D1-4325-9C2F-9082076A8D32}')
+    coclass_clsid = IID('{BF52BE9D-6CCD-47A4-AF07-740ED5FE8905}')
 
     def Delete(self):
         'Deletes a specified object.'
@@ -16209,7 +16206,7 @@ class IAcadRegisteredApplication(DispatchBaseClass):
 class IAcadRegisteredApplications(DispatchBaseClass):
     'TeighaX Interface of the collection of all registered applications in the drawing'
     CLSID = IID('{AD2DE5AD-7787-4890-A818-BF9E0B1D4F43}')
-    coclass_clsid = IID('{505EC430-224F-4DF3-B7B8-0615AA6C2F36}')
+    coclass_clsid = IID('{E84E7E7B-0DCB-4229-A9DD-093AA1C2F8DE}')
 
     # Result is of type IAcadRegisteredApplication
     def Add(self, Name=defaultNamedNotOptArg):
@@ -16301,7 +16298,7 @@ class IAcadRegisteredApplications(DispatchBaseClass):
 class IAcadRevolvedSurface(DispatchBaseClass):
     'TeighaX Interface of a surface created by revolving one or more 2D objects about an axis'
     CLSID = IID('{2AA6DCC2-C242-49CB-A576-545E4F500722}')
-    coclass_clsid = IID('{ADF8BDAF-0231-422E-ACB9-6B769A5C8F96}')
+    coclass_clsid = IID('{1E67452B-02C5-4133-B8FE-37CB89DBFA53}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -16489,7 +16486,7 @@ class IAcadRevolvedSurface(DispatchBaseClass):
 class IAcadSection(DispatchBaseClass):
     'TeighaX Interface of a section plane entity created at the intersection of a plane and a solid'
     CLSID = IID('{3BF84F02-EA6E-4B36-87D7-F9070DDA9657}')
-    coclass_clsid = IID('{4ED7B981-124E-465A-89E3-919A01A16824}')
+    coclass_clsid = IID('{D9FAAF7E-3503-4F01-B06E-D1A3E9015A96}')
 
     def AddVertex(self, nIndex=defaultNamedNotOptArg, val=defaultNamedNotOptArg):
         'Adds a new vertex to a section line.'
@@ -16734,7 +16731,7 @@ class IAcadSection(DispatchBaseClass):
 class IAcadSectionManager(DispatchBaseClass):
     'TeighaX Interface for controls which property is constrained when editing other property values'
     CLSID = IID('{47495992-2633-4FA4-8B0F-213F0C2D20A5}')
-    coclass_clsid = IID('{6C36E808-470A-42DC-A317-95D4529339F9}')
+    coclass_clsid = IID('{1674176B-8F5E-44D8-8148-C2DD7607C5B0}')
 
     def Delete(self):
         'Deletes a specified object.'
@@ -16831,7 +16828,7 @@ class IAcadSectionManager(DispatchBaseClass):
 class IAcadSectionSettings(DispatchBaseClass):
     'TeighaX Interface of a container for section geometry settings'
     CLSID = IID('{BD245AB1-A6D8-4F1F-9D6E-ED76AB3615F9}')
-    coclass_clsid = IID('{FDCF150A-D241-4F4A-A3AC-2B6C7BEE6814}')
+    coclass_clsid = IID('{267EC151-1134-42F2-A3F8-5FF6369D679C}')
 
     def Delete(self):
         'Deletes a specified object.'
@@ -16896,7 +16893,7 @@ class IAcadSectionSettings(DispatchBaseClass):
 class IAcadSectionTypeSettings(DispatchBaseClass):
     'TeighaX Interface of the settings that apply to the various types of sections'
     CLSID = IID('{2F52131D-45D6-4302-993D-ADA413443FD7}')
-    coclass_clsid = IID('{D8A7A1C3-D35B-49B1-84FE-408F5DD74504}')
+    coclass_clsid = IID('{89B22DA5-F1F8-4C80-ACCF-8BDF547EB60B}')
 
     _prop_map_get_ = {
         # Method 'BackgroundLinesColor' returns object of type 'IAcadAcCmColor'
@@ -17016,7 +17013,7 @@ class IAcadSectionTypeSettings(DispatchBaseClass):
 class IAcadSectionTypeSettings2(DispatchBaseClass):
     'IAcadSectionTypeSettings2 Interface'
     CLSID = IID('{5EB52F66-908B-48C5-87D9-0180E81BF64F}')
-    coclass_clsid = IID('{D8A7A1C3-D35B-49B1-84FE-408F5DD74504}')
+    coclass_clsid = IID('{89B22DA5-F1F8-4C80-ACCF-8BDF547EB60B}')
 
     _prop_map_get_ = {
         # Method 'BackgroundLinesColor' returns object of type 'IAcadAcCmColor'
@@ -17138,7 +17135,7 @@ class IAcadSectionTypeSettings2(DispatchBaseClass):
 class IAcadShape(DispatchBaseClass):
     'TeighaX Interface of an object comprising lines, arcs, and circles defined in an SHX file'
     CLSID = IID('{24F52F8C-7BC3-41CC-93E7-ADC6A0F75A83}')
-    coclass_clsid = IID('{FD968BB1-F1E1-4250-9903-56DF5171CF3D}')
+    coclass_clsid = IID('{3E7AE1DC-06F2-4CAC-AFAC-C84ADDF23530}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -17333,7 +17330,7 @@ class IAcadShape(DispatchBaseClass):
 class IAcadSolid(DispatchBaseClass):
     'TeighaX Interface of a solid-filled polygon entity'
     CLSID = IID('{A2F8C6B2-C9D6-4A48-9B9D-8CA3E604166C}')
-    coclass_clsid = IID('{61375357-7DDF-41E8-A003-5D44D0ED4617}')
+    coclass_clsid = IID('{7AF5B7F2-6B00-4C67-AFE3-F6B2B3051F48}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -17531,7 +17528,7 @@ class IAcadSolid(DispatchBaseClass):
 class IAcadSortentsTable(DispatchBaseClass):
     'TeighaX Interface to contain and manipulate draw order information'
     CLSID = IID('{04C4F44E-99B7-490B-8823-F68ED45A487B}')
-    coclass_clsid = IID('{3710CC1D-B641-43B7-AA95-DD105F2E3304}')
+    coclass_clsid = IID('{2AF34B93-363B-400D-B402-0B3CF9EAC107}')
 
     # Result is of type IAcadBlock
     def Block(self):
@@ -17633,7 +17630,7 @@ class IAcadSortentsTable(DispatchBaseClass):
 class IAcadSpline(DispatchBaseClass):
     'TeighaX Interface of a quadratic or cubic NURBS (nonuniform rational B-spline) curve entity'
     CLSID = IID('{B05C2404-6A45-4A57-8075-F98464C350BE}')
-    coclass_clsid = IID('{5F8B0FFC-7274-4725-980A-5007C132C268}')
+    coclass_clsid = IID('{2F0C03B4-66E6-4D3B-918D-C4A437335293}')
 
     def AddFitPoint(self, Index=defaultNamedNotOptArg, fitPoint=defaultNamedNotOptArg):
         'Adds a fit point to a spline.'
@@ -17896,7 +17893,7 @@ class IAcadSpline(DispatchBaseClass):
 class IAcadSubEntSolidEdge(DispatchBaseClass):
     'Interface for a edge on an AcDb3dSolid'
     CLSID = IID('{EA82FD79-6DE0-445E-ABFB-541E52C91BB5}')
-    coclass_clsid = IID('{278C11AB-1CFD-4323-B9CC-8B7CA06D38C4}')
+    coclass_clsid = IID('{76681FA4-070A-407B-91AF-84418A2ED76F}')
 
     def OnModified(self):
         return self._oleobj_.InvokeTypes(1024, LCID, 1, (24, 0), (),)
@@ -17927,7 +17924,7 @@ class IAcadSubEntSolidEdge(DispatchBaseClass):
 class IAcadSubEntSolidFace(DispatchBaseClass):
     'Interface for a face on an AcDb3dSolid'
     CLSID = IID('{9D76FD22-F78B-40B5-94A3-B8C0AB17A1E2}')
-    coclass_clsid = IID('{48488B9F-D0D3-4835-8250-920A8C1FB3C9}')
+    coclass_clsid = IID('{F485F5D7-2DA4-49CD-91D2-B838AF974EB9}')
 
     def OnModified(self):
         return self._oleobj_.InvokeTypes(1024, LCID, 1, (24, 0), (),)
@@ -17960,7 +17957,7 @@ class IAcadSubEntSolidFace(DispatchBaseClass):
 class IAcadSubEntSolidVertex(DispatchBaseClass):
     'Interface for a vertex on an AcDb3dSolid'
     CLSID = IID('{45CF6C7D-7191-420A-9881-09042DD618ED}')
-    coclass_clsid = IID('{B82EA70D-951C-4A43-AFE8-A8DDD4E710F4}')
+    coclass_clsid = IID('{18FF635E-8088-4A9C-922E-7BFE0776B7E9}')
 
     def OnModified(self):
         return self._oleobj_.InvokeTypes(1024, LCID, 1, (24, 0), (),)
@@ -17991,7 +17988,7 @@ class IAcadSubEntSolidVertex(DispatchBaseClass):
 class IAcadSubEntity(DispatchBaseClass):
     'SubEntity Interface'
     CLSID = IID('{70991FC5-F814-45A8-BB15-BC703AB5BF63}')
-    coclass_clsid = IID('{E0A0C0B2-5007-454B-AB84-EE81C5E38A90}')
+    coclass_clsid = IID('{A7A6090B-FF70-4B6A-B779-67633557327C}')
 
     def OnModified(self):
         return self._oleobj_.InvokeTypes(1024, LCID, 1, (24, 0), (),)
@@ -18022,7 +18019,7 @@ class IAcadSubEntity(DispatchBaseClass):
 class IAcadSummaryInfo(DispatchBaseClass):
     'TeighaX Interface to provide an access to drawing properties such as the Title, Subject, Author, and Keywords properties'
     CLSID = IID('{95D1CD9E-63E7-4860-9BE2-8F684047E102}')
-    coclass_clsid = IID('{40BB6348-8E1C-415D-A9D2-90C573CDB364}')
+    coclass_clsid = IID('{441539A4-1E53-4971-BC20-CCD747618D2F}')
 
     def AddCustomInfo(self, key=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Adds new custom information with a key (name) and value to the summary information.'
@@ -18094,7 +18091,7 @@ class IAcadSummaryInfo(DispatchBaseClass):
 class IAcadSurface(DispatchBaseClass):
     'TeighaX Interface of Surface entity'
     CLSID = IID('{DB31BDE0-6DD6-4FDF-A289-214EEA6C0072}')
-    coclass_clsid = IID('{79CA2C51-081A-466B-B451-D39485782330}')
+    coclass_clsid = IID('{42A16B95-81BE-4CBA-9EE2-CBCFA55192EE}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -18269,7 +18266,7 @@ class IAcadSurface(DispatchBaseClass):
 class IAcadSweptSurface(DispatchBaseClass):
     'TeighaX Interface of a surface created by sweeping a 2D curve along a path'
     CLSID = IID('{A1E46554-B62E-4CEB-A9B8-8C9BC7E8252D}')
-    coclass_clsid = IID('{531C8060-0A55-478B-A517-F7B3369306E9}')
+    coclass_clsid = IID('{832A3471-3964-4D89-BBE0-C4FAB86E84C0}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -18453,7 +18450,7 @@ class IAcadSweptSurface(DispatchBaseClass):
 class IAcadTable(DispatchBaseClass):
     'TeighaX Interface of table object'
     CLSID = IID('{62AE6596-74E9-4FC1-9F31-CB9567E550F9}')
-    coclass_clsid = IID('{35BEAEB0-3061-4089-9E36-5FF6C8B9B34A}')
+    coclass_clsid = IID('{B69314BE-33A7-4696-9C20-D958A9DEC5AE}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -19639,7 +19636,7 @@ class IAcadTable(DispatchBaseClass):
 class IAcadTableStyle(DispatchBaseClass):
     'TeighaX Interface for adding, modifing and deleting table styles'
     CLSID = IID('{65AFF703-323D-4562-B235-CC43966A7922}')
-    coclass_clsid = IID('{50F5CD60-FD9D-4FEE-A36E-CE9C411213EE}')
+    coclass_clsid = IID('{F2BBF44D-ECFB-479E-A403-74AB5761A861}')
 
     def CreateCellStyle(self, bstrCellStyle=defaultNamedNotOptArg):
         return self._oleobj_.InvokeTypes(31, LCID, 1, (24, 0), ((8, 1),),bstrCellStyle
@@ -20019,7 +20016,7 @@ class IAcadTableStyle(DispatchBaseClass):
 class IAcadText(DispatchBaseClass):
     'TeighaX Interface of a single line of alphanumeric characters'
     CLSID = IID('{9CD7E38D-0003-410D-B6DF-DE36FD190850}')
-    coclass_clsid = IID('{82833E4D-7362-465C-B00B-70F453668575}')
+    coclass_clsid = IID('{EDD7269E-A8F3-455A-A9F7-DE6641940A87}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -20238,7 +20235,7 @@ class IAcadText(DispatchBaseClass):
 class IAcadTextStyle(DispatchBaseClass):
     'TeighaX Interface of a named, saved collection of settings that determines the appearance of text characters'
     CLSID = IID('{EE473D68-C42F-4A9D-8393-C3975C17BC4A}')
-    coclass_clsid = IID('{6201AE6E-3520-424A-903D-6F9F882C846E}')
+    coclass_clsid = IID('{5D6E989A-315C-4838-9E50-7C716BD1D007}')
 
     def Delete(self):
         'Deletes a specified object.'
@@ -20319,7 +20316,7 @@ class IAcadTextStyle(DispatchBaseClass):
 class IAcadTextStyles(DispatchBaseClass):
     'TeighaX Interface of the collection of all text styles in the drawing'
     CLSID = IID('{2D0D8EA6-992A-4CF8-966F-3DE39A3BF22F}')
-    coclass_clsid = IID('{F9FF244F-67A9-4A6F-94FF-F839614E1470}')
+    coclass_clsid = IID('{82AD9434-58C8-4316-91AE-BAD65EA09738}')
 
     # Result is of type IAcadTextStyle
     def Add(self, Name=defaultNamedNotOptArg):
@@ -20411,7 +20408,7 @@ class IAcadTextStyles(DispatchBaseClass):
 class IAcadTolerance(DispatchBaseClass):
     'TeighaX Interface of a geometric tolerance contained in a feature control frame'
     CLSID = IID('{C7ECDEAB-7E7A-40DE-90D4-7D009D03266D}')
-    coclass_clsid = IID('{57FF5291-176F-4957-9FA6-5C2324976AA8}')
+    coclass_clsid = IID('{54749117-580D-49EC-A71D-95F7D204C248}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -20611,7 +20608,7 @@ class IAcadTolerance(DispatchBaseClass):
 class IAcadTrace(DispatchBaseClass):
     'TeighaX Interface of a 2D solid line of specified width'
     CLSID = IID('{128CC5FA-D347-4DCF-B0EA-574BADC9461A}')
-    coclass_clsid = IID('{5F7B73C4-ED41-4B98-98C6-EBA460B2F8F7}')
+    coclass_clsid = IID('{D1CE6BEB-D8CE-4BC4-9330-2775B88727DC}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -20809,7 +20806,7 @@ class IAcadTrace(DispatchBaseClass):
 class IAcadUCS(DispatchBaseClass):
     'TeighaX Interface of a user-defined coordinate system that determines the orientation of the X, Y, and Z axes in 3D space'
     CLSID = IID('{F5F78A02-09C6-49EB-812A-04B5ACC46F71}')
-    coclass_clsid = IID('{647A8606-56EB-41CB-B6AE-6353DE9212F6}')
+    coclass_clsid = IID('{63C89724-642E-44AA-8A7B-87AD930D1D70}')
 
     def Delete(self):
         'Deletes a specified object.'
@@ -20887,7 +20884,7 @@ class IAcadUCS(DispatchBaseClass):
 class IAcadUCSs(DispatchBaseClass):
     'TeighaX Interface of the collection of all user coordinate systems (UCSs) in the drawing'
     CLSID = IID('{B07B7A4C-A7D7-4116-BD27-D46030FDFE1B}')
-    coclass_clsid = IID('{35730B52-1E06-4055-B96F-472E4BA49750}')
+    coclass_clsid = IID('{A16D8258-E4AF-4C2C-A5D1-93D44DB17C79}')
 
     # Result is of type IAcadUCS
     def Add(self, Origin=defaultNamedNotOptArg, XAxisPoint=defaultNamedNotOptArg, YAxisPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg):
@@ -20978,7 +20975,7 @@ class IAcadUCSs(DispatchBaseClass):
 
 class IAcadUnderlay(DispatchBaseClass):
     CLSID = IID('{D076BB70-1090-4438-9922-3FD91BA4BB4A}')
-    coclass_clsid = IID('{31348C0E-FAD9-455F-B469-77CAA3C15DA2}')
+    coclass_clsid = IID('{930FE8E1-97D9-4BAB-B37F-A1ABF0CA9C8E}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -21191,7 +21188,7 @@ class IAcadUnderlay(DispatchBaseClass):
 class IAcadView(DispatchBaseClass):
     'TeighaX Interface of a graphical representation of a 2D drawing or 3D model from a specific location (viewpoint) in space'
     CLSID = IID('{13AC5968-504B-4C8D-BED6-208B3A562D90}')
-    coclass_clsid = IID('{05C08097-1095-42F2-83B1-789661B77D37}')
+    coclass_clsid = IID('{E24D9D8E-31EF-4E89-9777-491BEB188AF6}')
 
     def Delete(self):
         'Deletes a specified object.'
@@ -21279,7 +21276,7 @@ class IAcadView(DispatchBaseClass):
 class IAcadViewport(DispatchBaseClass):
     "TeighaX Interface of a bounded area that displays some portion of a drawing's model space"
     CLSID = IID('{A9B1F951-1AA7-4C23-8D57-AA199803D381}')
-    coclass_clsid = IID('{4C1BF9A1-35AA-491B-8B22-2B2195D8229F}')
+    coclass_clsid = IID('{B02DAF22-C47C-4A21-B3C7-0D8E8523BE7B}')
 
     def Delete(self):
         'Deletes a specified object.'
@@ -21407,7 +21404,7 @@ class IAcadViewport(DispatchBaseClass):
 class IAcadViewports(DispatchBaseClass):
     'TeighaX Interface of the collection of all viewports in the drawing'
     CLSID = IID('{181E70E5-A50B-46DA-93EE-BCC068BFEBEC}')
-    coclass_clsid = IID('{9C67AAB4-9FF9-4CE0-9B87-8EF15358F7B3}')
+    coclass_clsid = IID('{8E7B0553-E430-457C-8C0A-7EFC18CEC602}')
 
     # Result is of type IAcadViewport
     def Add(self, Name=defaultNamedNotOptArg):
@@ -21504,7 +21501,7 @@ class IAcadViewports(DispatchBaseClass):
 class IAcadViews(DispatchBaseClass):
     'TeighaX Interface of the collection of all views in the drawing'
     CLSID = IID('{E1673534-4417-4D0A-95FB-6E02246096D6}')
-    coclass_clsid = IID('{AB479309-A94E-45F8-B968-09766E364886}')
+    coclass_clsid = IID('{B01090A5-7B8F-49D8-B03C-FBC165DDDCC8}')
 
     # Result is of type IAcadView
     def Add(self, Name=defaultNamedNotOptArg):
@@ -21596,7 +21593,7 @@ class IAcadViews(DispatchBaseClass):
 class IAcadWipeout(DispatchBaseClass):
     'Interface for an Wipeout Raster Image'
     CLSID = IID('{977345B6-A313-4F2E-A4EE-1C2BB3C2FE0E}')
-    coclass_clsid = IID('{AB17FEA5-1C04-4E2B-BF37-7FADA3403BEB}')
+    coclass_clsid = IID('{9B7B5594-7BE4-4E8D-996F-4EA58019A562}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -21809,7 +21806,7 @@ class IAcadWipeout(DispatchBaseClass):
 class IAcadXRecord(DispatchBaseClass):
     'TeighaX Interface of XRecord objects are used to store and manage arbitrary data'
     CLSID = IID('{30EDB9F1-6E3A-4428-9DA5-BFCDFEF07D75}')
-    coclass_clsid = IID('{2F5F8554-25D4-4D47-ABE3-4F92E81D4DFF}')
+    coclass_clsid = IID('{F2A66B6C-BF12-4A37-B07A-8DCF2CC3CA68}')
 
     def Delete(self):
         'Deletes a specified object.'
@@ -21877,7 +21874,7 @@ class IAcadXRecord(DispatchBaseClass):
 class IAcadXline(DispatchBaseClass):
     'TeighaX Interface of a construction line that is infinite in both directions'
     CLSID = IID('{703DF76F-5C64-414A-B271-4520E1244353}')
-    coclass_clsid = IID('{D0720E0B-260B-4E8E-B02E-BB1C6882AB2F}')
+    coclass_clsid = IID('{09427D58-59B3-44AB-806A-3B78EA0C9387}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -22068,7 +22065,7 @@ class IAcadXline(DispatchBaseClass):
 class IOdaBlock(DispatchBaseClass):
     'TeighaX Interface for an additional block functionality'
     CLSID = IID('{D288082B-EC5B-4B26-A983-3AAD6F980D6C}')
-    coclass_clsid = IID('{5BE85927-9C3C-4E1F-BAE0-CCDA866949C5}')
+    coclass_clsid = IID('{472C402B-2266-4B74-9BFB-366FB2C0817C}')
 
     # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
@@ -22781,7 +22778,7 @@ class IOdaBlock(DispatchBaseClass):
 class IOdaCamera(DispatchBaseClass):
     'Interface for a Camera entity'
     CLSID = IID('{416400A5-8C83-49A6-9ED3-EFF0322FCFA9}')
-    coclass_clsid = IID('{6CEF829F-33B8-4FF2-B641-8333F877B180}')
+    coclass_clsid = IID('{CC48BB25-9814-4DE7-A711-50D5CD8CD136}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -22985,7 +22982,7 @@ class IOdaCamera(DispatchBaseClass):
 class IOdaLight(DispatchBaseClass):
     'Interface for a Light entity'
     CLSID = IID('{7BB45F85-7771-4B5C-9D8E-EA0E79228461}')
-    coclass_clsid = IID('{2DB71EA6-47C0-457C-9E36-D5FDE0E72C05}')
+    coclass_clsid = IID('{5DED7CE2-3E9D-45F1-BEB5-2FB8BE8C9B0C}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -23249,7 +23246,7 @@ class IOdaLight(DispatchBaseClass):
 class IOdaLineType(DispatchBaseClass):
     'An additional TeighaX Interface to the line characteristics'
     CLSID = IID('{A3D0151B-A26A-4803-BF89-37C525D058EE}')
-    coclass_clsid = IID('{0781CAE4-6055-4D40-B954-42D5EC725018}')
+    coclass_clsid = IID('{834DE1EC-F089-445B-A6C1-E758BBF61A6F}')
 
     # The method DashLengthAt is actually a property, but must be used as a method to correctly pass the arguments
     def DashLengthAt(self, Index=defaultNamedNotOptArg):
@@ -23400,7 +23397,7 @@ class IOdaLineType(DispatchBaseClass):
 class IOdaMLineStyle(DispatchBaseClass):
     'TeighaX Interface to define a style for multiple parallel lines'
     CLSID = IID('{3A1DC1C0-D49D-4DC6-A944-A158227BFF03}')
-    coclass_clsid = IID('{9D7870FF-F579-42F2-B5C8-68C1F81520B1}')
+    coclass_clsid = IID('{0B689804-8334-4F39-8F01-9C9BA52C29F4}')
 
     def AddElement(self, Offset=defaultNamedNotOptArg, color=defaultNamedNotOptArg, pLinetype=defaultNamedNotOptArg):
         'Adds an element to this MLine Style'
@@ -23531,7 +23528,7 @@ class IOdaMLineStyle(DispatchBaseClass):
 class IOdaMLineStyles(DispatchBaseClass):
     'TeighaX Interface for the collection of all mline styles in the drawing'
     CLSID = IID('{EAB07C99-ABCA-4880-9B1C-4FD13FC3DE3A}')
-    coclass_clsid = IID('{E15628CD-21E1-449A-8A74-5673C390599A}')
+    coclass_clsid = IID('{6B38F06B-F297-4474-9EAB-AF2531321598}')
 
     # Result is of type IOdaMLineStyle
     def Add(self, Name=defaultNamedNotOptArg):
@@ -23623,7 +23620,7 @@ class IOdaMLineStyles(DispatchBaseClass):
 class IOdaOle(DispatchBaseClass):
     'TeighaX Interface for an additional Ole functionality'
     CLSID = IID('{39614E96-FFD9-42EA-99F0-FD7DC498D9B6}')
-    coclass_clsid = IID('{CC40EAA3-6269-4D03-A2FC-3756679F5179}')
+    coclass_clsid = IID('{99E626ED-9F21-4E0C-B066-74A370F31E07}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -23823,7 +23820,7 @@ class IOdaOle(DispatchBaseClass):
 class IOdaPolyfaceMesh(DispatchBaseClass):
     'Polyface mesh extended interface'
     CLSID = IID('{88F4A330-80BA-4593-975B-BB2ACDC4E465}')
-    coclass_clsid = IID('{52215AF1-CE88-43F7-BC8A-65E9AC73AB69}')
+    coclass_clsid = IID('{6435F8F6-F509-4DC5-88D9-E5062CE5282D}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -24022,7 +24019,7 @@ class IOdaPolyfaceMesh(DispatchBaseClass):
 class IOdaRasterImage(DispatchBaseClass):
     'TeighaX Interface for an additional Raster Image funtionality'
     CLSID = IID('{D2F02FB4-2990-4D58-80DC-9B756FC36FD0}')
-    coclass_clsid = IID('{3C32ECD7-9763-4A13-BCED-A7E0A7CBB3EC}')
+    coclass_clsid = IID('{8FD87807-2150-435F-AAE5-3D02F3685329}')
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Not implemented. Creates an array of selected objects in a polar pattern.'
@@ -24237,7 +24234,7 @@ class IOdaRasterImage(DispatchBaseClass):
 class IOdaSpline(DispatchBaseClass):
     'ODA extended spline interface, for roundtrip purposes'
     CLSID = IID('{4EE8DF6D-534E-4819-87AE-51FA448BCD6A}')
-    coclass_clsid = IID('{5F8B0FFC-7274-4725-980A-5007C132C268}')
+    coclass_clsid = IID('{2F0C03B4-66E6-4D3B-918D-C4A437335293}')
 
     def AddFitPoint(self, Index=defaultNamedNotOptArg, fitPoint=defaultNamedNotOptArg):
         'Adds a fit point to a spline.'
@@ -24502,10 +24499,10 @@ class IOdaSpline(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 from win32com.client import CoClassBaseClass
-# This CoClass is known by the name 'BricscadDb.Acad3DFace.24.0'
+# This CoClass is known by the name 'BricscadDb.Acad3DFace.25.0'
 class Acad3DFace(CoClassBaseClass): # A CoClass
     # A three-dimensional triangle or quadrilateral plane section.
-    CLSID = IID('{3B3E11A0-2824-4ADA-9EFE-41578212028F}')
+    CLSID = IID('{6E77426A-B057-4D42-8EA6-4B55101C2F58}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24513,10 +24510,10 @@ class Acad3DFace(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcad3DFace
 
-# This CoClass is known by the name 'BricscadDb.Acad3DPolyline.24.0'
+# This CoClass is known by the name 'BricscadDb.Acad3DPolyline.25.0'
 class Acad3DPolyline(CoClassBaseClass): # A CoClass
     # A polyline with three-dimensional characteristics.
-    CLSID = IID('{90D9E3BD-E641-45B1-9C71-10F66E673E6E}')
+    CLSID = IID('{C77D0BB5-592A-468E-B686-553528986158}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24524,10 +24521,10 @@ class Acad3DPolyline(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcad3DPolyline
 
-# This CoClass is known by the name 'BricscadDb.Acad3DSolid.24.0'
+# This CoClass is known by the name 'BricscadDb.Acad3DSolid.25.0'
 class Acad3DSolid(CoClassBaseClass): # A CoClass
     # Not implemented. A solid object consisting of faces and edges and appearing to have volume.
-    CLSID = IID('{365AF1BE-48C3-4099-951D-C1791294DE19}')
+    CLSID = IID('{858CB0DD-6B75-4656-BC7C-20035D47F7B7}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24535,10 +24532,10 @@ class Acad3DSolid(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcad3DSolid
 
-# This CoClass is known by the name 'BricscadDb.AcadAcCmColor.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadAcCmColor.25.0'
 class AcadAcCmColor(CoClassBaseClass): # A CoClass
     # True color.
-    CLSID = IID('{2A3294B7-AB1F-40C1-98E9-EA193E2847DB}')
+    CLSID = IID('{E6E54E65-BF3D-46CC-8165-4B019D1CA00D}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24546,10 +24543,10 @@ class AcadAcCmColor(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadAcCmColor
 
-# This CoClass is known by the name 'BricscadDb.AcadArc.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadArc.25.0'
 class AcadArc(CoClassBaseClass): # A CoClass
     # A segment of a circle or ellipse.
-    CLSID = IID('{96810171-584F-4A58-95DF-F90746B866A0}')
+    CLSID = IID('{0A3D2BD0-0C2D-44DC-9CA5-71A2158E179A}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24557,10 +24554,10 @@ class AcadArc(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadArc
 
-# This CoClass is known by the name 'BricscadDb.AcadAttribute.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadAttribute.25.0'
 class AcadAttribute(CoClassBaseClass): # A CoClass
     # Text that describes an attribute reference.
-    CLSID = IID('{A6D6469F-6F70-4864-A8DC-5DB7397C658E}')
+    CLSID = IID('{19E4F37C-9743-4DB1-BA63-668AABB57B52}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24568,10 +24565,10 @@ class AcadAttribute(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadAttribute
 
-# This CoClass is known by the name 'BricscadDb.AcadAttributeReference.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadAttributeReference.25.0'
 class AcadAttributeReference(CoClassBaseClass): # A CoClass
     # Text that links to a block.
-    CLSID = IID('{50463551-644F-48E0-ADF0-70BDE39C2379}')
+    CLSID = IID('{65FF897A-9E92-4BFC-9C0A-7CA26C55074F}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24579,10 +24576,10 @@ class AcadAttributeReference(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadAttributeReference
 
-# This CoClass is known by the name 'BricscadDb.AcadBlock.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadBlock.25.0'
 class AcadBlock(CoClassBaseClass): # A CoClass
     # AcadBlock dummy class
-    CLSID = IID('{5BE85927-9C3C-4E1F-BAE0-CCDA866949C5}')
+    CLSID = IID('{472C402B-2266-4B74-9BFB-366FB2C0817C}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24591,10 +24588,10 @@ class AcadBlock(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadBlock
 
-# This CoClass is known by the name 'BricscadDb.AcadBlockReference.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadBlockReference.25.0'
 class AcadBlockReference(CoClassBaseClass): # A CoClass
     # A single occurance of an inserted block.
-    CLSID = IID('{BEC51FF5-8BEE-4E41-9208-C23E7245B237}')
+    CLSID = IID('{5D575775-7D04-46EB-A5DE-7FF0342C01E9}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24602,10 +24599,10 @@ class AcadBlockReference(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadBlockReference
 
-# This CoClass is known by the name 'BricscadDb.AcadBlocks.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadBlocks.25.0'
 class AcadBlocks(CoClassBaseClass): # A CoClass
     # Collection of all blocks in a document.
-    CLSID = IID('{59A0D5D3-CD4B-404E-888E-B280E8C7FE8A}')
+    CLSID = IID('{62978BB1-B93A-43CB-808C-3FCC46CDBAB6}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24613,10 +24610,10 @@ class AcadBlocks(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadBlocks
 
-# This CoClass is known by the name 'BricscadDb.AcadCircle.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadCircle.25.0'
 class AcadCircle(CoClassBaseClass): # A CoClass
     # A complete circle.
-    CLSID = IID('{B495AD49-5306-4B28-89F5-A69ED8798A4F}')
+    CLSID = IID('{9B21007A-5B41-43D3-9545-2B21DC81557C}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24624,10 +24621,10 @@ class AcadCircle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadCircle
 
-# This CoClass is known by the name 'BricscadDb.AcadDatabase.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDatabase.25.0'
 class AcadDatabase(CoClassBaseClass): # A CoClass
     # Contents of a block inserted as an external reference.
-    CLSID = IID('{5EF88703-1D0E-410B-93B1-45956D27AD4E}')
+    CLSID = IID('{AB9C0147-0553-49F4-886B-2A4A44423429}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24635,10 +24632,10 @@ class AcadDatabase(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDatabase
 
-# This CoClass is known by the name 'BricscadDb.AcadDatabasePreferences.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDatabasePreferences.25.0'
 class AcadDatabasePreferences(CoClassBaseClass): # A CoClass
     # The settings of a document that are saved in a drawing (not the registry).
-    CLSID = IID('{CA59FF45-6C1E-4223-9530-35C60DE7480D}')
+    CLSID = IID('{B45B39E3-3140-4559-AC47-90D8BC837319}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24646,10 +24643,10 @@ class AcadDatabasePreferences(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDatabasePreferences
 
-# This CoClass is known by the name 'BricscadDb.AcadDgnUnderlay.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDgnUnderlay.25.0'
 class AcadDgnUnderlay(CoClassBaseClass): # A CoClass
     # DGN file represented as an underlay in a drawing.
-    CLSID = IID('{BA52E9FE-ED83-40C5-B0B1-5745C9E07B2B}')
+    CLSID = IID('{6DEF83A7-9F2C-46E1-8A4A-197366B4F528}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24657,10 +24654,10 @@ class AcadDgnUnderlay(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUnderlay
 
-# This CoClass is known by the name 'BricscadDb.AcadDictionaries.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDictionaries.25.0'
 class AcadDictionaries(CoClassBaseClass): # A CoClass
     # Collection of all dictionaries in a document.
-    CLSID = IID('{887A471D-8E5B-46DD-B1FC-9248511A45B1}')
+    CLSID = IID('{D5285F70-D46A-4E0D-B81B-BB71E78CA539}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24668,10 +24665,10 @@ class AcadDictionaries(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDictionaries
 
-# This CoClass is known by the name 'BricscadDb.AcadDictionary.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDictionary.25.0'
 class AcadDictionary(CoClassBaseClass): # A CoClass
     # A repository for storing and retrieving objects that have associated string keywords.
-    CLSID = IID('{BF982612-77C8-45E1-8F25-F10392D86C71}')
+    CLSID = IID('{6C7F96FE-1E9A-46A4-83DB-9047F0724E3B}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24679,10 +24676,10 @@ class AcadDictionary(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDictionary
 
-# This CoClass is known by the name 'BricscadDb.AcadDim3PointAngular.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDim3PointAngular.25.0'
 class AcadDim3PointAngular(CoClassBaseClass): # A CoClass
     # An angular dimension measured using three points.
-    CLSID = IID('{2CD4FC7D-3E9F-42E6-9D76-F42B55AAEEC5}')
+    CLSID = IID('{61A8F2F8-03E7-48F1-B1C9-6600850BE8EB}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24690,10 +24687,10 @@ class AcadDim3PointAngular(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDim3PointAngular
 
-# This CoClass is known by the name 'BricscadDb.AcadDimAligned.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDimAligned.25.0'
 class AcadDimAligned(CoClassBaseClass): # A CoClass
     # A linear dimension measuring the distance between two points.
-    CLSID = IID('{1158BDED-3762-405F-A58F-8789BCD31AE4}')
+    CLSID = IID('{C329AC6E-5A36-4CB4-9650-A56F77E68FE0}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24701,10 +24698,10 @@ class AcadDimAligned(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimAligned
 
-# This CoClass is known by the name 'BricscadDb.AcadDimAngular.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDimAngular.25.0'
 class AcadDimAngular(CoClassBaseClass): # A CoClass
     # An angular dimension measuring the angle of an arc or the angle between two lines.
-    CLSID = IID('{9681B428-389B-4E38-9718-26FBBC646BEE}')
+    CLSID = IID('{EBB696A0-45A3-431D-B194-646B7A3B598F}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24712,10 +24709,10 @@ class AcadDimAngular(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimAngular
 
-# This CoClass is known by the name 'BricscadDb.AcadDimArcLength.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDimArcLength.25.0'
 class AcadDimArcLength(CoClassBaseClass): # A CoClass
     # A dimension measuring the length of an arc.
-    CLSID = IID('{8A36FC37-0C0B-44FB-BA25-B6ED2090394B}')
+    CLSID = IID('{22DB4D5C-C3A0-4C40-875A-E5AB7F41EC56}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24723,10 +24720,10 @@ class AcadDimArcLength(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimArcLength
 
-# This CoClass is known by the name 'BricscadDb.AcadDimDiametric.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDimDiametric.25.0'
 class AcadDimDiametric(CoClassBaseClass): # A CoClass
     # A dimension measuring the diameter of a circle or arc.
-    CLSID = IID('{34A10E3E-AB48-4CBB-88CF-815F87738E90}')
+    CLSID = IID('{7FF84789-30C6-436B-A702-0D1AD90B96B1}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24734,10 +24731,10 @@ class AcadDimDiametric(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimDiametric
 
-# This CoClass is known by the name 'BricscadDb.AcadDimOrdinate.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDimOrdinate.25.0'
 class AcadDimOrdinate(CoClassBaseClass): # A CoClass
     # An ordinate dimension measuring the distance along the x- or y-axis from an origin to a selected point.
-    CLSID = IID('{685766B4-4712-4A68-9F6C-67765BF17C2B}')
+    CLSID = IID('{F29CD169-60A9-4434-91EA-2F07A8064F8D}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24745,10 +24742,10 @@ class AcadDimOrdinate(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimOrdinate
 
-# This CoClass is known by the name 'BricscadDb.AcadDimRadial.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDimRadial.25.0'
 class AcadDimRadial(CoClassBaseClass): # A CoClass
     # A dimension measuring the radius of a circle or arc.
-    CLSID = IID('{83F62228-2B26-4C18-8579-A9FC76D6422B}')
+    CLSID = IID('{6356EA4A-DFEE-4DB6-BA5F-0072CB0AB609}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24756,10 +24753,10 @@ class AcadDimRadial(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimRadial
 
-# This CoClass is known by the name 'BricscadDb.AcadDimRadialLarge.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDimRadialLarge.25.0'
 class AcadDimRadialLarge(CoClassBaseClass): # A CoClass
     # A jogged dimension measuring the radius of a large circle or arc.
-    CLSID = IID('{BBAE1F47-D006-4796-A760-90F869EBA3F4}')
+    CLSID = IID('{B076E419-CDC7-4D99-89B0-4B725C92FFA2}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24767,10 +24764,10 @@ class AcadDimRadialLarge(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimRadialLarge
 
-# This CoClass is known by the name 'BricscadDb.AcadDimRotated.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDimRotated.25.0'
 class AcadDimRotated(CoClassBaseClass): # A CoClass
     # A dimension measuring the distance between two points and displaying the results at a specified angle from the points.
-    CLSID = IID('{1DB6148A-7A75-431A-9F6E-5EE1DF74AD0F}')
+    CLSID = IID('{2A915C25-BCD1-4633-9965-04033A7E7ED6}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24778,10 +24775,10 @@ class AcadDimRotated(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimRotated
 
-# This CoClass is known by the name 'BricscadDb.AcadDimStyle.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDimStyle.25.0'
 class AcadDimStyle(CoClassBaseClass): # A CoClass
     # Settings that determine the appearance of a dimension.
-    CLSID = IID('{FCF82E37-DD4C-4992-AF92-5FB8923AAC11}')
+    CLSID = IID('{FCC02C04-7D49-45EE-BCA7-3F198B244F85}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24789,10 +24786,10 @@ class AcadDimStyle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimStyle
 
-# This CoClass is known by the name 'BricscadDb.AcadDimStyles.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDimStyles.25.0'
 class AcadDimStyles(CoClassBaseClass): # A CoClass
     # Collection of all dimension styles in a document.
-    CLSID = IID('{9AB84FD1-1BEF-4A4B-BC47-C34ADA79F397}')
+    CLSID = IID('{EB85FEC7-264C-46CF-8AA7-CF70A1404D7D}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24800,10 +24797,10 @@ class AcadDimStyles(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimStyles
 
-# This CoClass is known by the name 'BricscadDb.AcadDimension.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDimension.25.0'
 class AcadDimension(CoClassBaseClass): # A CoClass
     # A dimension measuring and displaying the distance between objects.
-    CLSID = IID('{5FB8DBE0-D358-433C-ACAC-BC068C7037BA}')
+    CLSID = IID('{EDF89BCE-2FE3-4710-B4DD-87EC0FC4732F}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24811,10 +24808,10 @@ class AcadDimension(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimension
 
-# This CoClass is known by the name 'BricscadDb.AcadDwfUnderlay.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDwfUnderlay.25.0'
 class AcadDwfUnderlay(CoClassBaseClass): # A CoClass
     # DWF file represented as an underlay in a drawing.
-    CLSID = IID('{71B03226-0D81-4E25-869B-5DA9E3F6B7CE}')
+    CLSID = IID('{F0FDEB9B-DC3C-4DE6-86AA-84A8F41399BF}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24823,10 +24820,10 @@ class AcadDwfUnderlay(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUnderlay
 
-# This CoClass is known by the name 'BricscadDb.AcadDynamicBlockReferenceProperty.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadDynamicBlockReferenceProperty.25.0'
 class AcadDynamicBlockReferenceProperty(CoClassBaseClass): # A CoClass
     # Container for properties of a block that is a dynamic block.
-    CLSID = IID('{0E35FAA5-88E5-4697-948A-D262A2680445}')
+    CLSID = IID('{B10DACF6-88FB-4874-A7BF-D0FB9A20F9E5}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24834,10 +24831,10 @@ class AcadDynamicBlockReferenceProperty(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDynamicBlockReferenceProperty
 
-# This CoClass is known by the name 'BricscadDb.AcadEllipse.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadEllipse.25.0'
 class AcadEllipse(CoClassBaseClass): # A CoClass
     # An elliptical arc or a complete ellipse.
-    CLSID = IID('{3E7B0C05-2062-420C-8EB3-EA62DC886DB1}')
+    CLSID = IID('{49886B43-9A12-40B7-9BAB-A825606BD5DE}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24845,10 +24842,10 @@ class AcadEllipse(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadEllipse
 
-# This CoClass is known by the name 'BricscadDb.AcadEntity.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadEntity.25.0'
 class AcadEntity(CoClassBaseClass): # A CoClass
     # Parent object of all objects that can be drawn in a drawing.
-    CLSID = IID('{7B91A7F3-234E-4BD1-8914-76856A2AF7D9}')
+    CLSID = IID('{31C59A67-D96E-403A-A952-E77DC60D613E}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24856,10 +24853,10 @@ class AcadEntity(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadEntity
 
-# This CoClass is known by the name 'BricscadDb.AcadExternalReference.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadExternalReference.25.0'
 class AcadExternalReference(CoClassBaseClass): # A CoClass
     # Drawing file that is attached to and inserted in the current drawing.
-    CLSID = IID('{97A26D82-C2A9-4D4E-8036-8A841A26D262}')
+    CLSID = IID('{84C6383F-8175-4D91-A334-475230F732EF}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24867,10 +24864,10 @@ class AcadExternalReference(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadExternalReference
 
-# This CoClass is known by the name 'BricscadDb.AcadExtrudedSurface.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadExtrudedSurface.25.0'
 class AcadExtrudedSurface(CoClassBaseClass): # A CoClass
     # A three-dimensional surface generated by extruding an object or face along a direction vector.
-    CLSID = IID('{7D3E8B0E-13E1-4DED-AD26-D39649A19DA6}')
+    CLSID = IID('{DDC04592-F2C4-49AC-832E-80A165301952}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24878,10 +24875,10 @@ class AcadExtrudedSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadExtrudedSurface
 
-# This CoClass is known by the name 'BricscadDb.AcadFileDependencies.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadFileDependencies.25.0'
 class AcadFileDependencies(CoClassBaseClass): # A CoClass
     # Collection of references to the files that the current drawing is dependent on.
-    CLSID = IID('{2155F8AB-E527-45F7-8A97-FD850E710340}')
+    CLSID = IID('{B133B77C-B736-4B6E-BA4E-5884E73FDF85}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24889,10 +24886,10 @@ class AcadFileDependencies(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadFileDependencies
 
-# This CoClass is known by the name 'BricscadDb.AcadFileDependency.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadFileDependency.25.0'
 class AcadFileDependency(CoClassBaseClass): # A CoClass
     # Details about a file listed in the AcadFileDependencies object.
-    CLSID = IID('{6F500011-5D1F-40A1-A1FD-109084F95E07}')
+    CLSID = IID('{44DCF5B7-D725-4E56-A31F-6192BE8BEF29}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24900,10 +24897,10 @@ class AcadFileDependency(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadFileDependency
 
-# This CoClass is known by the name 'BricscadDb.AcadGroup.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadGroup.25.0'
 class AcadGroup(CoClassBaseClass): # A CoClass
     # A named set of objects that can be operated on as a single unit.
-    CLSID = IID('{3C200789-8338-447D-8373-AFEF38713BAA}')
+    CLSID = IID('{75E56E90-EEED-4477-A387-A40724045324}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24911,10 +24908,10 @@ class AcadGroup(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadGroup
 
-# This CoClass is known by the name 'BricscadDb.AcadGroups.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadGroups.25.0'
 class AcadGroups(CoClassBaseClass): # A CoClass
     # Collection of all groups in a document.
-    CLSID = IID('{2D7FB26E-9052-4F9F-BD2D-D18C50713ED6}')
+    CLSID = IID('{9D8D414B-40DB-42DA-B24C-56F9079D89B3}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24922,10 +24919,10 @@ class AcadGroups(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadGroups
 
-# This CoClass is known by the name 'BricscadDb.AcadHatch.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadHatch.25.0'
 class AcadHatch(CoClassBaseClass): # A CoClass
     # A fill made up of a pattern of lines.
-    CLSID = IID('{4B2665FC-67ED-44AF-8C4D-6A04816631F3}')
+    CLSID = IID('{E56C99AB-8A6E-43BA-B4CF-58C5137450A5}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24934,10 +24931,10 @@ class AcadHatch(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadHatch2
 
-# This CoClass is known by the name 'BricscadDb.AcadHelix.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadHelix.25.0'
 class AcadHelix(CoClassBaseClass): # A CoClass
     # A spiral.
-    CLSID = IID('{AA0DEA33-0EB3-432B-B91B-88384639BBA3}')
+    CLSID = IID('{90F31610-1240-4097-9477-63B5E34E7782}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24945,10 +24942,10 @@ class AcadHelix(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadHelix
 
-# This CoClass is known by the name 'BricscadDb.AcadHyperlink.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadHyperlink.25.0'
 class AcadHyperlink(CoClassBaseClass): # A CoClass
     # A link to an external file or location.
-    CLSID = IID('{2591C8C9-336E-4DA2-875F-5BD437A4E6A5}')
+    CLSID = IID('{F33C8BAC-2E89-41C7-AD83-927F5C1F5F5B}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24956,10 +24953,10 @@ class AcadHyperlink(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadHyperlink
 
-# This CoClass is known by the name 'BricscadDb.AcadHyperlinks.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadHyperlinks.25.0'
 class AcadHyperlinks(CoClassBaseClass): # A CoClass
     # Collection of all hyperlinks in a document.
-    CLSID = IID('{277E3E52-6C69-4AC1-9312-DD3A02519F33}')
+    CLSID = IID('{7561504C-84AB-4D0A-A5F4-997FDA647550}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24967,10 +24964,10 @@ class AcadHyperlinks(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadHyperlinks
 
-# This CoClass is known by the name 'BricscadDb.AcadLWPolyline.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadLWPolyline.25.0'
 class AcadLWPolyline(CoClassBaseClass): # A CoClass
     # One or more line or arc segments that form a single object.
-    CLSID = IID('{87897864-72C3-4D87-81DD-00614EC82213}')
+    CLSID = IID('{0FC390E7-C3CF-4565-AEAA-E7228601529C}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24978,10 +24975,10 @@ class AcadLWPolyline(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLWPolyline
 
-# This CoClass is known by the name 'BricscadDb.AcadLayer.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadLayer.25.0'
 class AcadLayer(CoClassBaseClass): # A CoClass
     # A sheet designed as an overlay.
-    CLSID = IID('{4EDD52C1-33F1-4B70-A800-2654F60D1D2B}')
+    CLSID = IID('{EFEA7C54-3DC9-46BB-B0C3-ED7FA2DA8A61}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -24989,10 +24986,10 @@ class AcadLayer(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLayer
 
-# This CoClass is known by the name 'BricscadDb.AcadLayers.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadLayers.25.0'
 class AcadLayers(CoClassBaseClass): # A CoClass
     # Collection of all layers in a document.
-    CLSID = IID('{B9FEA495-416E-44BC-AB51-7150524E5AE0}')
+    CLSID = IID('{58CA3ABC-798C-41E2-AB6D-66E4EDD3A14C}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25000,10 +24997,10 @@ class AcadLayers(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLayers
 
-# This CoClass is known by the name 'BricscadDb.AcadLayout.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadLayout.25.0'
 class AcadLayout(CoClassBaseClass): # A CoClass
     # A set of paper-related settings and print settings.
-    CLSID = IID('{D3D20BA9-3EDD-4108-9E10-4EE99F917847}')
+    CLSID = IID('{F716D4BC-FEB0-4380-8DBE-8EFF9864863A}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25011,10 +25008,10 @@ class AcadLayout(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLayout
 
-# This CoClass is known by the name 'BricscadDb.AcadLayouts.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadLayouts.25.0'
 class AcadLayouts(CoClassBaseClass): # A CoClass
     # Collection of all layouts in a document.
-    CLSID = IID('{E386A799-DE90-42E8-9FC1-89DDB6CEFC41}')
+    CLSID = IID('{AF7F6847-E9EE-4631-BC11-E294AB931AD7}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25022,10 +25019,10 @@ class AcadLayouts(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLayouts
 
-# This CoClass is known by the name 'BricscadDb.AcadLeader.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadLeader.25.0'
 class AcadLeader(CoClassBaseClass): # A CoClass
     # A line leading from an entity to an annotation.
-    CLSID = IID('{B02B4037-B189-4C98-BBF6-6DA42B1D673D}')
+    CLSID = IID('{C4C1CE7C-8B73-4226-96B5-E4B90D900B6F}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25033,10 +25030,10 @@ class AcadLeader(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLeader
 
-# This CoClass is known by the name 'BricscadDb.AcadLine.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadLine.25.0'
 class AcadLine(CoClassBaseClass): # A CoClass
     # A single line segment.
-    CLSID = IID('{E0ED259B-1BDB-4411-95BF-495BA25926A9}')
+    CLSID = IID('{2128CBE6-D842-4281-A916-7EFC0667A4F8}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25044,10 +25041,10 @@ class AcadLine(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLine
 
-# This CoClass is known by the name 'BricscadDb.AcadLineType.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadLineType.25.0'
 class AcadLineType(CoClassBaseClass): # A CoClass
     # AcadLineType dummy class
-    CLSID = IID('{0781CAE4-6055-4D40-B954-42D5EC725018}')
+    CLSID = IID('{834DE1EC-F089-445B-A6C1-E758BBF61A6F}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25056,10 +25053,10 @@ class AcadLineType(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLineType
 
-# This CoClass is known by the name 'BricscadDb.AcadLineTypes.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadLineTypes.25.0'
 class AcadLineTypes(CoClassBaseClass): # A CoClass
     # Collection of all linetypes in a document.
-    CLSID = IID('{D49DF09F-070E-429D-976D-39F53AE3EF0B}')
+    CLSID = IID('{FADD0FB1-DB54-4779-B192-68AEADD73226}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25067,10 +25064,10 @@ class AcadLineTypes(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLineTypes
 
-# This CoClass is known by the name 'BricscadDb.AcadLoftedSurface.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadLoftedSurface.25.0'
 class AcadLoftedSurface(CoClassBaseClass): # A CoClass
     # A three-dimensional object created by lofting a two-dimensional object.
-    CLSID = IID('{50347C02-0E1F-407E-9962-A96E32FA97D7}')
+    CLSID = IID('{B9B743FA-6A83-41D6-959C-796E74EA50BC}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25078,10 +25075,10 @@ class AcadLoftedSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLoftedSurface
 
-# This CoClass is known by the name 'BricscadDb.AcadMInsertBlock.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadMInsertBlock.25.0'
 class AcadMInsertBlock(CoClassBaseClass): # A CoClass
     # Multiple copies of a block reference as a single object.
-    CLSID = IID('{A3E63831-0E7F-492F-9621-21B2627DF0D1}')
+    CLSID = IID('{98B11CB5-9B66-424C-9413-95E4B27B528B}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25089,10 +25086,10 @@ class AcadMInsertBlock(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMInsertBlock
 
-# This CoClass is known by the name 'BricscadDb.AcadMLeader.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadMLeader.25.0'
 class AcadMLeader(CoClassBaseClass): # A CoClass
     # Multiple lines leading from a single annotation to more than one object.
-    CLSID = IID('{CF0F8CEA-42D4-49E7-BDFA-764CFC2F412C}')
+    CLSID = IID('{ED0260BC-DCBC-4D8F-8CC9-39E27E3A45E8}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25100,10 +25097,10 @@ class AcadMLeader(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMLeader
 
-# This CoClass is known by the name 'BricscadDb.AcadMLeaderLeader.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadMLeaderLeader.25.0'
 class AcadMLeaderLeader(CoClassBaseClass): # A CoClass
     # Multi-Leader's Leader Line
-    CLSID = IID('{EEA688F8-1BA2-46DE-80F8-39C0EB3F592B}')
+    CLSID = IID('{73072689-8CF0-47FE-B320-9DED49D343C9}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25111,10 +25108,10 @@ class AcadMLeaderLeader(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMLeaderLeader
 
-# This CoClass is known by the name 'BricscadDb.AcadMLeaderStyle.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadMLeaderStyle.25.0'
 class AcadMLeaderStyle(CoClassBaseClass): # A CoClass
     # Set of characteristics that determine the appearance of a multileader entity.
-    CLSID = IID('{A708E24B-99D0-4D39-82C5-BD5BAAE97DFF}')
+    CLSID = IID('{4499847D-1E01-4FC7-A9DD-F8DA5E48FD44}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25122,10 +25119,10 @@ class AcadMLeaderStyle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMLeaderStyle
 
-# This CoClass is known by the name 'BricscadDb.AcadMLine.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadMLine.25.0'
 class AcadMLine(CoClassBaseClass): # A CoClass
     # Multiple lines drawn parallel together as a single line.
-    CLSID = IID('{F4F5165B-D882-4A22-9821-8F8A5092D87A}')
+    CLSID = IID('{3E7500AD-3849-4135-B49F-1FC73371EB31}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25133,10 +25130,10 @@ class AcadMLine(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMLine
 
-# This CoClass is known by the name 'BricscadDb.AcadMText.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadMText.25.0'
 class AcadMText(CoClassBaseClass): # A CoClass
     # Multiple lines of characters.
-    CLSID = IID('{78D1C5E6-5650-4BFB-B601-93358EC97545}')
+    CLSID = IID('{CF63888C-AF87-4FDA-B026-9B73F22999BB}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25144,10 +25141,10 @@ class AcadMText(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMText
 
-# This CoClass is known by the name 'BricscadDb.AcadMaterial.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadMaterial.25.0'
 class AcadMaterial(CoClassBaseClass): # A CoClass
     # Set of options that determine how objects reflect and transmit light.
-    CLSID = IID('{D75D937B-6DD9-407E-AF88-6D29801CB204}')
+    CLSID = IID('{268CBEFD-7A55-4890-B05C-C1E930FB7457}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25155,10 +25152,10 @@ class AcadMaterial(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMaterial
 
-# This CoClass is known by the name 'BricscadDb.AcadMaterials.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadMaterials.25.0'
 class AcadMaterials(CoClassBaseClass): # A CoClass
     # Collection of all materials in a document.
-    CLSID = IID('{16F19695-0DD8-494B-9FF3-756EF0AB29B1}')
+    CLSID = IID('{7A2524E5-3F4E-48AC-8F20-F076AC88A6A0}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25166,10 +25163,10 @@ class AcadMaterials(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMaterials
 
-# This CoClass is known by the name 'BricscadDb.AcadModelSpace.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadModelSpace.25.0'
 class AcadModelSpace(CoClassBaseClass): # A CoClass
     # Collection of all model space entities in a document.
-    CLSID = IID('{D28289A3-5CCD-42DB-83BA-79C472D1BC7E}')
+    CLSID = IID('{B1060F62-A436-47EE-B686-DFC901908EE0}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25177,10 +25174,10 @@ class AcadModelSpace(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadModelSpace
 
-# This CoClass is known by the name 'BricscadDb.AcadObject.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadObject.25.0'
 class AcadObject(CoClassBaseClass): # A CoClass
     # AcadObject Class
-    CLSID = IID('{1ECF9DF9-7F91-48F5-963E-2740C5972B68}')
+    CLSID = IID('{8ADB9DC6-185D-4AD6-9341-35F3039D5945}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25188,10 +25185,10 @@ class AcadObject(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadObject
 
-# This CoClass is known by the name 'BricscadDb.AcadPViewport.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadPViewport.25.0'
 class AcadPViewport(CoClassBaseClass): # A CoClass
     # A window that displays all or a portion of a drawing's paperspace.
-    CLSID = IID('{4AC35C83-26ED-4BCC-A25F-78D31643490A}')
+    CLSID = IID('{086C713A-B7B5-43E7-B33C-C1B21B12F6D2}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25199,10 +25196,10 @@ class AcadPViewport(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPViewport
 
-# This CoClass is known by the name 'BricscadDb.AcadPaperSpace.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadPaperSpace.25.0'
 class AcadPaperSpace(CoClassBaseClass): # A CoClass
     # Collection of all paper space entities in a document.
-    CLSID = IID('{A6413E76-C1F2-4883-A9DF-4F328C9375EC}')
+    CLSID = IID('{A094C648-846F-4E09-8E60-53E83AC5146B}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25210,10 +25207,10 @@ class AcadPaperSpace(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPaperSpace
 
-# This CoClass is known by the name 'BricscadDb.AcadPdfUnderlay.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadPdfUnderlay.25.0'
 class AcadPdfUnderlay(CoClassBaseClass): # A CoClass
     # PDF file represented as an underlay in a drawing.
-    CLSID = IID('{31348C0E-FAD9-455F-B469-77CAA3C15DA2}')
+    CLSID = IID('{930FE8E1-97D9-4BAB-B37F-A1ABF0CA9C8E}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25221,10 +25218,10 @@ class AcadPdfUnderlay(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUnderlay
 
-# This CoClass is known by the name 'BricscadDb.AcadPlaneSurface.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadPlaneSurface.25.0'
 class AcadPlaneSurface(CoClassBaseClass): # A CoClass
     # A planar surface.
-    CLSID = IID('{02C58A19-A75E-4E03-BFDA-05F83B0EE9EE}')
+    CLSID = IID('{0E5B4738-F00F-4500-A320-F758C7A042EE}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25232,10 +25229,10 @@ class AcadPlaneSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPlaneSurface
 
-# This CoClass is known by the name 'BricscadDb.AcadPlotConfiguration.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadPlotConfiguration.25.0'
 class AcadPlotConfiguration(CoClassBaseClass): # A CoClass
     # Set of print settings defined for a specific print device and media.
-    CLSID = IID('{34F35DB3-EA8B-4EF7-8AEE-009362201B18}')
+    CLSID = IID('{C665FF18-7A1A-428F-BBFE-C011781C3884}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25243,10 +25240,10 @@ class AcadPlotConfiguration(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPlotConfiguration
 
-# This CoClass is known by the name 'BricscadDb.AcadPlotConfigurations.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadPlotConfigurations.25.0'
 class AcadPlotConfigurations(CoClassBaseClass): # A CoClass
     # Collection of all plot configurations in a document.
-    CLSID = IID('{A0E0F939-5A48-40A3-99D3-C57C25BE9E60}')
+    CLSID = IID('{650C739E-F7D8-4A43-B260-03BFBA1FABF4}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25254,10 +25251,10 @@ class AcadPlotConfigurations(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPlotConfigurations
 
-# This CoClass is known by the name 'BricscadDb.AcadPoint.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadPoint.25.0'
 class AcadPoint(CoClassBaseClass): # A CoClass
     # A single x, y, z coordinate location.
-    CLSID = IID('{D3EF1961-790F-4F88-98C6-49B664435505}')
+    CLSID = IID('{2B86D496-9C35-45C1-A42A-FD7B05FE108C}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25265,10 +25262,10 @@ class AcadPoint(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPoint
 
-# This CoClass is known by the name 'BricscadDb.AcadPolyfaceMesh.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadPolyfaceMesh.25.0'
 class AcadPolyfaceMesh(CoClassBaseClass): # A CoClass
     # A three-dimensional mesh consisting of a set of vertices and faces.
-    CLSID = IID('{52215AF1-CE88-43F7-BC8A-65E9AC73AB69}')
+    CLSID = IID('{6435F8F6-F509-4DC5-88D9-E5062CE5282D}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25277,10 +25274,10 @@ class AcadPolyfaceMesh(CoClassBaseClass): # A CoClass
     ]
     default_interface = IOdaPolyfaceMesh
 
-# This CoClass is known by the name 'BricscadDb.AcadPolygonMesh.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadPolygonMesh.25.0'
 class AcadPolygonMesh(CoClassBaseClass): # A CoClass
     # A three-dimensional mesh consisting of vertices that form a 3D matrix of quadrangular figures.
-    CLSID = IID('{84CA9670-95BB-48D2-886A-64FECD7DF55B}')
+    CLSID = IID('{C44EFC64-B725-44A8-941F-4DE88120DE89}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25288,10 +25285,10 @@ class AcadPolygonMesh(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPolygonMesh
 
-# This CoClass is known by the name 'BricscadDb.AcadPolyline.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadPolyline.25.0'
 class AcadPolyline(CoClassBaseClass): # A CoClass
     # Older version of lightweight polyline. Use AcadLWPolyline instead.
-    CLSID = IID('{F1B5F011-5265-4E87-9CE9-225743FB78D4}')
+    CLSID = IID('{FB21CC08-8A93-4DC5-A488-9696A510C7BA}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25299,10 +25296,10 @@ class AcadPolyline(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPolyline
 
-# This CoClass is known by the name 'BricscadDb.AcadRasterImage.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadRasterImage.25.0'
 class AcadRasterImage(CoClassBaseClass): # A CoClass
     # AcadRasterImage Class
-    CLSID = IID('{5DAC02AE-C024-4E70-ACD2-CBDBB3AC3686}')
+    CLSID = IID('{7C353EA8-B077-4C5E-8A33-1F6173A9C719}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25310,10 +25307,10 @@ class AcadRasterImage(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRasterImage
 
-# This CoClass is known by the name 'BricscadDb.AcadRay.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadRay.25.0'
 class AcadRay(CoClassBaseClass): # A CoClass
     # A line starting at a base point and contining infinitely.
-    CLSID = IID('{B71AD3CB-A8BC-4EB7-9946-579E44B8393E}')
+    CLSID = IID('{2D591D83-847D-486F-810C-8C0BC35710B8}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25321,10 +25318,10 @@ class AcadRay(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRay
 
-# This CoClass is known by the name 'BricscadDb.AcadRegion.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadRegion.25.0'
 class AcadRegion(CoClassBaseClass): # A CoClass
     # A closed planar boundary of lines, circles, arcs, elliptical arcs, and splines.
-    CLSID = IID('{37FDD4DC-7074-46A2-8140-7B8CB49D4C5A}')
+    CLSID = IID('{AC7F3965-6927-457D-B4CD-0D47CFAEB4A4}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25332,10 +25329,10 @@ class AcadRegion(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRegion
 
-# This CoClass is known by the name 'BricscadDb.AcadRegisteredApplication.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadRegisteredApplication.25.0'
 class AcadRegisteredApplication(CoClassBaseClass): # A CoClass
     # Name of an external application that has been added to the document.
-    CLSID = IID('{804668AC-29D1-4325-9C2F-9082076A8D32}')
+    CLSID = IID('{BF52BE9D-6CCD-47A4-AF07-740ED5FE8905}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25343,10 +25340,10 @@ class AcadRegisteredApplication(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRegisteredApplication
 
-# This CoClass is known by the name 'BricscadDb.AcadRegisteredApplications.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadRegisteredApplications.25.0'
 class AcadRegisteredApplications(CoClassBaseClass): # A CoClass
     # Collection of all registered applications.
-    CLSID = IID('{505EC430-224F-4DF3-B7B8-0615AA6C2F36}')
+    CLSID = IID('{E84E7E7B-0DCB-4229-A9DD-093AA1C2F8DE}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25354,10 +25351,10 @@ class AcadRegisteredApplications(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRegisteredApplications
 
-# This CoClass is known by the name 'BricscadDb.AcadRevolvedSurface.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadRevolvedSurface.25.0'
 class AcadRevolvedSurface(CoClassBaseClass): # A CoClass
     # A three-dimensional surface generated by revolving one or more objects or faces about an axis.
-    CLSID = IID('{ADF8BDAF-0231-422E-ACB9-6B769A5C8F96}')
+    CLSID = IID('{1E67452B-02C5-4133-B8FE-37CB89DBFA53}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25365,10 +25362,10 @@ class AcadRevolvedSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRevolvedSurface
 
-# This CoClass is known by the name 'BricscadDb.AcadSection.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadSection.25.0'
 class AcadSection(CoClassBaseClass): # A CoClass
     # A cross-section of a solid or region.
-    CLSID = IID('{4ED7B981-124E-465A-89E3-919A01A16824}')
+    CLSID = IID('{D9FAAF7E-3503-4F01-B06E-D1A3E9015A96}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25376,10 +25373,10 @@ class AcadSection(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSection
 
-# This CoClass is known by the name 'BricscadDb.AcadSectionManager.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadSectionManager.25.0'
 class AcadSectionManager(CoClassBaseClass): # A CoClass
     # An object used to manage the sections in a drawing.
-    CLSID = IID('{6C36E808-470A-42DC-A317-95D4529339F9}')
+    CLSID = IID('{1674176B-8F5E-44D8-8148-C2DD7607C5B0}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25387,10 +25384,10 @@ class AcadSectionManager(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSectionManager
 
-# This CoClass is known by the name 'BricscadDb.AcadSectionSettings.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadSectionSettings.25.0'
 class AcadSectionSettings(CoClassBaseClass): # A CoClass
     # Set of geometry settings for sections.
-    CLSID = IID('{FDCF150A-D241-4F4A-A3AC-2B6C7BEE6814}')
+    CLSID = IID('{267EC151-1134-42F2-A3F8-5FF6369D679C}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25398,10 +25395,10 @@ class AcadSectionSettings(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSectionSettings
 
-# This CoClass is known by the name 'BricscadDb.AcadSectionTypeSettings.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadSectionTypeSettings.25.0'
 class AcadSectionTypeSettings(CoClassBaseClass): # A CoClass
     # Set of settings used for each type of section.
-    CLSID = IID('{D8A7A1C3-D35B-49B1-84FE-408F5DD74504}')
+    CLSID = IID('{89B22DA5-F1F8-4C80-ACCF-8BDF547EB60B}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25410,10 +25407,10 @@ class AcadSectionTypeSettings(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSectionTypeSettings2
 
-# This CoClass is known by the name 'BricscadDb.AcadShape.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadShape.25.0'
 class AcadShape(CoClassBaseClass): # A CoClass
     # Lines, arcs, and circles defined in an SHX file.
-    CLSID = IID('{FD968BB1-F1E1-4250-9903-56DF5171CF3D}')
+    CLSID = IID('{3E7AE1DC-06F2-4CAC-AFAC-C84ADDF23530}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25421,10 +25418,10 @@ class AcadShape(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadShape
 
-# This CoClass is known by the name 'BricscadDb.AcadSolid.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadSolid.25.0'
 class AcadSolid(CoClassBaseClass): # A CoClass
     # A two-dimensional solid polygon.
-    CLSID = IID('{61375357-7DDF-41E8-A003-5D44D0ED4617}')
+    CLSID = IID('{7AF5B7F2-6B00-4C67-AFE3-F6B2B3051F48}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25432,10 +25429,10 @@ class AcadSolid(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSolid
 
-# This CoClass is known by the name 'BricscadDb.AcadSortentsTable.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadSortentsTable.25.0'
 class AcadSortentsTable(CoClassBaseClass): # A CoClass
     # Container used to manage draw order.
-    CLSID = IID('{3710CC1D-B641-43B7-AA95-DD105F2E3304}')
+    CLSID = IID('{2AF34B93-363B-400D-B402-0B3CF9EAC107}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25443,10 +25440,10 @@ class AcadSortentsTable(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSortentsTable
 
-# This CoClass is known by the name 'BricscadDb.AcadSpline.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadSpline.25.0'
 class AcadSpline(CoClassBaseClass): # A CoClass
     # A free-form curve created along at least three points.
-    CLSID = IID('{5F8B0FFC-7274-4725-980A-5007C132C268}')
+    CLSID = IID('{2F0C03B4-66E6-4D3B-918D-C4A437335293}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25455,10 +25452,10 @@ class AcadSpline(CoClassBaseClass): # A CoClass
     ]
     default_interface = IOdaSpline
 
-# This CoClass is known by the name 'BricscadDb.AcadSubEntSolidEdge.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadSubEntSolidEdge.25.0'
 class AcadSubEntSolidEdge(CoClassBaseClass): # A CoClass
     # AcadSubEntSolidEdge Class
-    CLSID = IID('{278C11AB-1CFD-4323-B9CC-8B7CA06D38C4}')
+    CLSID = IID('{76681FA4-070A-407B-91AF-84418A2ED76F}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25466,10 +25463,10 @@ class AcadSubEntSolidEdge(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSubEntSolidEdge
 
-# This CoClass is known by the name 'BricscadDb.AcadSubEntSolidFace.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadSubEntSolidFace.25.0'
 class AcadSubEntSolidFace(CoClassBaseClass): # A CoClass
     # AcadSubEntSolidFace Class
-    CLSID = IID('{48488B9F-D0D3-4835-8250-920A8C1FB3C9}')
+    CLSID = IID('{F485F5D7-2DA4-49CD-91D2-B838AF974EB9}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25477,10 +25474,10 @@ class AcadSubEntSolidFace(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSubEntSolidFace
 
-# This CoClass is known by the name 'BricscadDb.AcadSubEntSolidVertex.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadSubEntSolidVertex.25.0'
 class AcadSubEntSolidVertex(CoClassBaseClass): # A CoClass
     # AcadSubEntSolidVertex Class
-    CLSID = IID('{B82EA70D-951C-4A43-AFE8-A8DDD4E710F4}')
+    CLSID = IID('{18FF635E-8088-4A9C-922E-7BFE0776B7E9}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25488,10 +25485,10 @@ class AcadSubEntSolidVertex(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSubEntSolidVertex
 
-# This CoClass is known by the name 'BricscadDb.AcadSubEntity.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadSubEntity.25.0'
 class AcadSubEntity(CoClassBaseClass): # A CoClass
     # AcadSubEntity Class
-    CLSID = IID('{E0A0C0B2-5007-454B-AB84-EE81C5E38A90}')
+    CLSID = IID('{A7A6090B-FF70-4B6A-B779-67633557327C}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25499,10 +25496,10 @@ class AcadSubEntity(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSubEntity
 
-# This CoClass is known by the name 'BricscadDb.AcadSummaryInfo.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadSummaryInfo.25.0'
 class AcadSummaryInfo(CoClassBaseClass): # A CoClass
     # Container used for summary information about a drawing.
-    CLSID = IID('{40BB6348-8E1C-415D-A9D2-90C573CDB364}')
+    CLSID = IID('{441539A4-1E53-4971-BC20-CCD747618D2F}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25510,10 +25507,10 @@ class AcadSummaryInfo(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSummaryInfo
 
-# This CoClass is known by the name 'BricscadDb.AcadSurface.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadSurface.25.0'
 class AcadSurface(CoClassBaseClass): # A CoClass
     # A three-dimensional surface.
-    CLSID = IID('{79CA2C51-081A-466B-B451-D39485782330}')
+    CLSID = IID('{42A16B95-81BE-4CBA-9EE2-CBCFA55192EE}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25521,10 +25518,10 @@ class AcadSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSurface
 
-# This CoClass is known by the name 'BricscadDb.AcadSweptSurface.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadSweptSurface.25.0'
 class AcadSweptSurface(CoClassBaseClass): # A CoClass
     # A three-dimensional object created by sweeping a two-dimensional profile along a path.
-    CLSID = IID('{531C8060-0A55-478B-A517-F7B3369306E9}')
+    CLSID = IID('{832A3471-3964-4D89-BBE0-C4FAB86E84C0}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25532,10 +25529,10 @@ class AcadSweptSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSweptSurface
 
-# This CoClass is known by the name 'BricscadDb.AcadTable.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadTable.25.0'
 class AcadTable(CoClassBaseClass): # A CoClass
     # A chart with rows and columns.
-    CLSID = IID('{35BEAEB0-3061-4089-9E36-5FF6C8B9B34A}')
+    CLSID = IID('{B69314BE-33A7-4696-9C20-D958A9DEC5AE}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25543,10 +25540,10 @@ class AcadTable(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTable
 
-# This CoClass is known by the name 'BricscadDb.AcadTableStyle.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadTableStyle.25.0'
 class AcadTableStyle(CoClassBaseClass): # A CoClass
     # Settings that determine the appearance of a table.
-    CLSID = IID('{50F5CD60-FD9D-4FEE-A36E-CE9C411213EE}')
+    CLSID = IID('{F2BBF44D-ECFB-479E-A403-74AB5761A861}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25554,10 +25551,10 @@ class AcadTableStyle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTableStyle
 
-# This CoClass is known by the name 'BricscadDb.AcadText.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadText.25.0'
 class AcadText(CoClassBaseClass): # A CoClass
     # A single line of characters.
-    CLSID = IID('{82833E4D-7362-465C-B00B-70F453668575}')
+    CLSID = IID('{EDD7269E-A8F3-455A-A9F7-DE6641940A87}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25565,10 +25562,10 @@ class AcadText(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadText
 
-# This CoClass is known by the name 'BricscadDb.AcadTextStyle.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadTextStyle.25.0'
 class AcadTextStyle(CoClassBaseClass): # A CoClass
     # AcadTextStyle Class
-    CLSID = IID('{6201AE6E-3520-424A-903D-6F9F882C846E}')
+    CLSID = IID('{5D6E989A-315C-4838-9E50-7C716BD1D007}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25576,10 +25573,10 @@ class AcadTextStyle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTextStyle
 
-# This CoClass is known by the name 'BricscadDb.AcadTextStyles.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadTextStyles.25.0'
 class AcadTextStyles(CoClassBaseClass): # A CoClass
     # AcadTextStyles Class
-    CLSID = IID('{F9FF244F-67A9-4A6F-94FF-F839614E1470}')
+    CLSID = IID('{82AD9434-58C8-4316-91AE-BAD65EA09738}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25587,10 +25584,10 @@ class AcadTextStyles(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTextStyles
 
-# This CoClass is known by the name 'BricscadDb.AcadTolerance.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadTolerance.25.0'
 class AcadTolerance(CoClassBaseClass): # A CoClass
     # AcadTolerance Class
-    CLSID = IID('{57FF5291-176F-4957-9FA6-5C2324976AA8}')
+    CLSID = IID('{54749117-580D-49EC-A71D-95F7D204C248}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25598,10 +25595,10 @@ class AcadTolerance(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTolerance
 
-# This CoClass is known by the name 'BricscadDb.AcadTrace.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadTrace.25.0'
 class AcadTrace(CoClassBaseClass): # A CoClass
     # AcadTrace Class
-    CLSID = IID('{5F7B73C4-ED41-4B98-98C6-EBA460B2F8F7}')
+    CLSID = IID('{D1CE6BEB-D8CE-4BC4-9330-2775B88727DC}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25609,10 +25606,10 @@ class AcadTrace(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTrace
 
-# This CoClass is known by the name 'BricscadDb.AcadUCS.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadUCS.25.0'
 class AcadUCS(CoClassBaseClass): # A CoClass
     # AcadUCS Class
-    CLSID = IID('{647A8606-56EB-41CB-B6AE-6353DE9212F6}')
+    CLSID = IID('{63C89724-642E-44AA-8A7B-87AD930D1D70}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25620,10 +25617,10 @@ class AcadUCS(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUCS
 
-# This CoClass is known by the name 'BricscadDb.AcadUCSs.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadUCSs.25.0'
 class AcadUCSs(CoClassBaseClass): # A CoClass
     # AcadUCSs Class
-    CLSID = IID('{35730B52-1E06-4055-B96F-472E4BA49750}')
+    CLSID = IID('{A16D8258-E4AF-4C2C-A5D1-93D44DB17C79}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25631,10 +25628,10 @@ class AcadUCSs(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUCSs
 
-# This CoClass is known by the name 'BricscadDb.AcadView.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadView.25.0'
 class AcadView(CoClassBaseClass): # A CoClass
     # AcadView Class
-    CLSID = IID('{05C08097-1095-42F2-83B1-789661B77D37}')
+    CLSID = IID('{E24D9D8E-31EF-4E89-9777-491BEB188AF6}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25642,10 +25639,10 @@ class AcadView(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadView
 
-# This CoClass is known by the name 'BricscadDb.AcadViewport.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadViewport.25.0'
 class AcadViewport(CoClassBaseClass): # A CoClass
     # AcadViewport Class
-    CLSID = IID('{4C1BF9A1-35AA-491B-8B22-2B2195D8229F}')
+    CLSID = IID('{B02DAF22-C47C-4A21-B3C7-0D8E8523BE7B}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25653,10 +25650,10 @@ class AcadViewport(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadViewport
 
-# This CoClass is known by the name 'BricscadDb.AcadViewports.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadViewports.25.0'
 class AcadViewports(CoClassBaseClass): # A CoClass
     # AcadViewports Class
-    CLSID = IID('{9C67AAB4-9FF9-4CE0-9B87-8EF15358F7B3}')
+    CLSID = IID('{8E7B0553-E430-457C-8C0A-7EFC18CEC602}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25664,10 +25661,10 @@ class AcadViewports(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadViewports
 
-# This CoClass is known by the name 'BricscadDb.AcadViews.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadViews.25.0'
 class AcadViews(CoClassBaseClass): # A CoClass
     # AcadViews Class
-    CLSID = IID('{AB479309-A94E-45F8-B968-09766E364886}')
+    CLSID = IID('{B01090A5-7B8F-49D8-B03C-FBC165DDDCC8}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25675,10 +25672,10 @@ class AcadViews(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadViews
 
-# This CoClass is known by the name 'BricscadDb.AcadWipeout.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadWipeout.25.0'
 class AcadWipeout(CoClassBaseClass): # A CoClass
     # AcadWipeout Class
-    CLSID = IID('{AB17FEA5-1C04-4E2B-BF37-7FADA3403BEB}')
+    CLSID = IID('{9B7B5594-7BE4-4E8D-996F-4EA58019A562}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25686,10 +25683,10 @@ class AcadWipeout(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadWipeout
 
-# This CoClass is known by the name 'BricscadDb.AcadXRecord.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadXRecord.25.0'
 class AcadXRecord(CoClassBaseClass): # A CoClass
     # AcadXRecord Class
-    CLSID = IID('{2F5F8554-25D4-4D47-ABE3-4F92E81D4DFF}')
+    CLSID = IID('{F2A66B6C-BF12-4A37-B07A-8DCF2CC3CA68}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25697,10 +25694,10 @@ class AcadXRecord(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadXRecord
 
-# This CoClass is known by the name 'BricscadDb.AcadXline.24.0'
+# This CoClass is known by the name 'BricscadDb.AcadXline.25.0'
 class AcadXline(CoClassBaseClass): # A CoClass
     # AcadXline Class
-    CLSID = IID('{D0720E0B-260B-4E8E-B02E-BB1C6882AB2F}')
+    CLSID = IID('{09427D58-59B3-44AB-806A-3B78EA0C9387}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25708,10 +25705,10 @@ class AcadXline(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadXline
 
-# This CoClass is known by the name 'BricscadDb.OdaBlock.24.0'
+# This CoClass is known by the name 'BricscadDb.OdaBlock.25.0'
 class OdaBlock(CoClassBaseClass): # A CoClass
     # OdaBlock Class
-    CLSID = IID('{D1D3025A-2179-4913-8262-F39523B04636}')
+    CLSID = IID('{146ABD50-C988-4F8D-8B4D-0DEFA39DA231}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25720,10 +25717,10 @@ class OdaBlock(CoClassBaseClass): # A CoClass
     ]
     default_interface = IOdaBlock
 
-# This CoClass is known by the name 'BricscadDb.OdaCamera.24.0'
+# This CoClass is known by the name 'BricscadDb.OdaCamera.25.0'
 class OdaCamera(CoClassBaseClass): # A CoClass
     # OdDbCamera wrapper
-    CLSID = IID('{6CEF829F-33B8-4FF2-B641-8333F877B180}')
+    CLSID = IID('{CC48BB25-9814-4DE7-A711-50D5CD8CD136}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25731,10 +25728,10 @@ class OdaCamera(CoClassBaseClass): # A CoClass
     ]
     default_interface = IOdaCamera
 
-# This CoClass is known by the name 'BricscadDb.OdaLight.24.0'
+# This CoClass is known by the name 'BricscadDb.OdaLight.25.0'
 class OdaLight(CoClassBaseClass): # A CoClass
     # OdDbLight wrapper
-    CLSID = IID('{2DB71EA6-47C0-457C-9E36-D5FDE0E72C05}')
+    CLSID = IID('{5DED7CE2-3E9D-45F1-BEB5-2FB8BE8C9B0C}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25742,10 +25739,10 @@ class OdaLight(CoClassBaseClass): # A CoClass
     ]
     default_interface = IOdaLight
 
-# This CoClass is known by the name 'BricscadDb.OdaLineType.24.0'
+# This CoClass is known by the name 'BricscadDb.OdaLineType.25.0'
 class OdaLineType(CoClassBaseClass): # A CoClass
     # Definition of the appearance of a line.
-    CLSID = IID('{90507134-664C-4253-AD47-8F3AD62F3B2F}')
+    CLSID = IID('{419680F3-367B-4536-8B90-06B0F8A0CBEE}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25753,10 +25750,10 @@ class OdaLineType(CoClassBaseClass): # A CoClass
     ]
     default_interface = IOdaLineType
 
-# This CoClass is known by the name 'BricscadDb.OdaMLineStyle.24.0'
+# This CoClass is known by the name 'BricscadDb.OdaMLineStyle.25.0'
 class OdaMLineStyle(CoClassBaseClass): # A CoClass
     # OdaMLineStyle Class
-    CLSID = IID('{9D7870FF-F579-42F2-B5C8-68C1F81520B1}')
+    CLSID = IID('{0B689804-8334-4F39-8F01-9C9BA52C29F4}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25764,10 +25761,10 @@ class OdaMLineStyle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IOdaMLineStyle
 
-# This CoClass is known by the name 'BricscadDb.OdaMLineStyles.24.0'
+# This CoClass is known by the name 'BricscadDb.OdaMLineStyles.25.0'
 class OdaMLineStyles(CoClassBaseClass): # A CoClass
     # OdaMLineStyles Class
-    CLSID = IID('{E15628CD-21E1-449A-8A74-5673C390599A}')
+    CLSID = IID('{6B38F06B-F297-4474-9EAB-AF2531321598}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25775,10 +25772,10 @@ class OdaMLineStyles(CoClassBaseClass): # A CoClass
     ]
     default_interface = IOdaMLineStyles
 
-# This CoClass is known by the name 'BricscadDb.OdaOle.24.0'
+# This CoClass is known by the name 'BricscadDb.OdaOle.25.0'
 class OdaOle(CoClassBaseClass): # A CoClass
     # OdaOle Class
-    CLSID = IID('{CC40EAA3-6269-4D03-A2FC-3756679F5179}')
+    CLSID = IID('{99E626ED-9F21-4E0C-B066-74A370F31E07}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25786,10 +25783,10 @@ class OdaOle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IOdaOle
 
-# This CoClass is known by the name 'BricscadDb.OdaRasterImage.24.0'
+# This CoClass is known by the name 'BricscadDb.OdaRasterImage.25.0'
 class OdaRasterImage(CoClassBaseClass): # A CoClass
     # OdaRasterImage Class
-    CLSID = IID('{3C32ECD7-9763-4A13-BCED-A7E0A7CBB3EC}')
+    CLSID = IID('{8FD87807-2150-435F-AAE5-3D02F3685329}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -25847,8 +25844,8 @@ IAcad3DSolid_vtables_ = [
     (( 'Volume' , 'Volume' , ), 7, (7, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 520 , (3, 0, None, None) , 0 , )),
     (( 'Boolean' , 'Operation' , 'SolidObject' , ), 8, (8, (), [ (3, 1, None, None) , 
              (9, 1, None, "IID('{34C7D347-D220-40C8-A81F-4B76ED6E5751}')") , ], 1 , 1 , 4 , 0 , 528 , (3, 0, None, None) , 0 , )),
-    (( 'CheckInterference' , 'Object' , 'CreateInterferenceSolid' , 'pIntSolid' , ), 9, (9, (), [ 
-             (9, 1, None, "IID('{34C7D347-D220-40C8-A81F-4B76ED6E5751}')") , (11, 1, None, None) , (16393, 10, None, "IID('{34C7D347-D220-40C8-A81F-4B76ED6E5751}')") , ], 1 , 1 , 4 , 0 , 536 , (3, 0, None, None) , 0 , )),
+    (( 'CheckInterference' , 'Object' , 'CreateInterferenceSolid' , 'SolidsInterfere' , 'pIntSolid' , 
+             ), 9, (9, (), [ (9, 1, None, "IID('{34C7D347-D220-40C8-A81F-4B76ED6E5751}')") , (11, 1, None, None) , (16395, 2, None, None) , (16393, 10, None, "IID('{34C7D347-D220-40C8-A81F-4B76ED6E5751}')") , ], 1 , 1 , 4 , 0 , 536 , (3, 0, None, None) , 0 , )),
     (( 'SectionSolid' , 'Point1' , 'Point2' , 'point3' , 'pRegion' , 
              ), 10, (10, (), [ (12, 1, None, None) , (12, 1, None, None) , (12, 1, None, None) , (16393, 10, None, "IID('{D9F13162-0CFA-4506-AAAD-D46724407877}')") , ], 1 , 1 , 4 , 0 , 544 , (3, 0, None, None) , 0 , )),
     (( 'SliceSolid' , 'Point1' , 'Point2' , 'point3' , 'Negative' , 
@@ -27621,12 +27618,6 @@ IAcadHatch2_vtables_dispatch_ = 1
 IAcadHatch2_vtables_ = [
     (( 'BackgroundColor' , 'pColor' , ), 27, (27, (), [ (16393, 10, None, "IID('{6F2B458D-6232-4085-AA60-BD5E8A967722}')") , ], 1 , 2 , 4 , 0 , 808 , (3, 0, None, None) , 0 , )),
     (( 'BackgroundColor' , 'pColor' , ), 27, (27, (), [ (9, 1, None, "IID('{6F2B458D-6232-4085-AA60-BD5E8A967722}')") , ], 1 , 4 , 4 , 0 , 816 , (3, 0, None, None) , 0 , )),
-    (( 'AppendOuterLoop' , 'ObjectArray' , 'bCheckLoop' , ), 28, (28, (), [ (12, 1, None, None) , 
-             (11, 1, None, None) , ], 1 , 1 , 4 , 0 , 824 , (3, 0, None, None) , 0 , )),
-    (( 'AppendInnerLoop' , 'ObjectArray' , 'bCheckLoop' , ), 29, (29, (), [ (12, 1, None, None) , 
-             (11, 1, None, None) , ], 1 , 1 , 4 , 0 , 832 , (3, 0, None, None) , 0 , )),
-    (( 'InsertLoopAt' , 'Index' , 'LoopType' , 'ObjectArray' , 'bCheckLoop' , 
-             ), 30, (30, (), [ (3, 1, None, None) , (3, 1, None, None) , (12, 1, None, None) , (11, 1, None, None) , ], 1 , 1 , 4 , 0 , 840 , (3, 0, None, None) , 0 , )),
 ]
 
 IAcadHelix_vtables_dispatch_ = 1
@@ -30003,7 +29994,7 @@ from win32com.client import DispatchBaseClass
 class IAcadApplication(DispatchBaseClass):
     'An instance of the BricsCAD application'
     CLSID = IID('{D48F17B7-773E-4238-A6C6-B2BBEBAA9A1E}')
-    coclass_clsid = IID('{0E86524E-1812-426A-9A63-2C2B51B0D0E4}')
+    coclass_clsid = IID('{DD9C2859-1A46-4AEF-A118-E513E6E867C1}')
 
     def DefineFunction(self, FunctionName=defaultNamedNotOptArg, FunctionPointer=defaultNamedNotOptArg):
         'Adds a macro to the command list, similar to (defun c:cmd) in lisp.'
@@ -30176,7 +30167,7 @@ class IAcadApplication(DispatchBaseClass):
 class IAcadDocument(DispatchBaseClass):
     'A BricsCAD drawing'
     CLSID = IID('{5896DFEB-2488-49F7-8A9D-CF0DEA5AC6FB}')
-    coclass_clsid = IID('{3975E80C-5EC5-4EE0-B432-E9EC7BBB9A5A}')
+    coclass_clsid = IID('{82857A82-CEE5-4F3D-9C19-6C60472D0FF7}')
 
     def AbortTransaction(self):
         'Aborts the current transaction with rollback of all changes done to the database since StartTransaction'
@@ -30450,7 +30441,7 @@ class IAcadDocument(DispatchBaseClass):
 class IAcadDocuments(DispatchBaseClass):
     'The collection of all BricsCAD drawings open in the current session'
     CLSID = IID('{CFFD1390-466A-49D9-9EE0-1884E930DFF9}')
-    coclass_clsid = IID('{5F5D38B7-C56C-4250-B088-2B06EEEC1EE9}')
+    coclass_clsid = IID('{67C700FE-1331-461B-A46E-80CBA198868C}')
 
     # Result is of type IAcadDocument
     def Add(self, TemplateName=defaultNamedOptArg):
@@ -30526,7 +30517,7 @@ class IAcadDocuments(DispatchBaseClass):
 class IAcadLayerStateManager(DispatchBaseClass):
     'IAcadLayerStateManager Interface'
     CLSID = IID('{65CDCC9F-F651-4DC4-A361-A8307F08AEE3}')
-    coclass_clsid = IID('{2F38A4F0-DDE8-488C-B53C-5E364C267B53}')
+    coclass_clsid = IID('{763AAF8B-9761-49A5-8948-5740102E72F5}')
 
     def Delete(self, bsName=defaultNamedNotOptArg):
         'Deletes the specified layers state.'
@@ -30590,7 +30581,7 @@ class IAcadLayerStateManager(DispatchBaseClass):
 class IAcadMenuBar(DispatchBaseClass):
     'This collection contains all the menus that are displayed in the Briccad menu bar'
     CLSID = IID('{A174CCC8-D19F-421F-8F4E-65C2E4F43167}')
-    coclass_clsid = IID('{DE927728-3684-4835-8255-54350D951307}')
+    coclass_clsid = IID('{6ED054C6-FE32-499C-A710-5B57C94B06A5}')
 
     # Result is of type IAcadPopupMenu
     def Item(self, Index=defaultNamedNotOptArg):
@@ -30640,7 +30631,7 @@ class IAcadMenuBar(DispatchBaseClass):
 class IAcadMenuGroup(DispatchBaseClass):
     'IAcadMenuGroup Interface'
     CLSID = IID('{DF14CB14-CDC6-463F-B71C-356149D1F935}')
-    coclass_clsid = IID('{A07E5142-51E0-441E-B442-1F46F53F3888}')
+    coclass_clsid = IID('{1B9391FB-EBD8-4710-B969-BE5945D0F3DB}')
 
     def Save(self, MenuFileType=defaultNamedNotOptArg):
         'Saves the menu group'
@@ -30682,7 +30673,7 @@ class IAcadMenuGroup(DispatchBaseClass):
 class IAcadMenuGroups(DispatchBaseClass):
     'A collection of MenuGroup objects'
     CLSID = IID('{798225D3-984D-471E-84F3-D1EC56FA05EA}')
-    coclass_clsid = IID('{FE3FC546-AF40-4A2E-9C5C-14B7B4B8A54D}')
+    coclass_clsid = IID('{FE7B423E-3162-4041-B439-3F9705B6364F}')
 
     # Result is of type IAcadMenuGroup
     def Item(self, Index=defaultNamedNotOptArg):
@@ -30741,7 +30732,7 @@ class IAcadMenuGroups(DispatchBaseClass):
 class IAcadPlot(DispatchBaseClass):
     'Plot interface object'
     CLSID = IID('{445545BB-394E-481A-AC4F-F073E53030E8}')
-    coclass_clsid = IID('{126D4FCB-3E3D-491B-9F0B-D6C9D362116A}')
+    coclass_clsid = IID('{3E583B29-F912-4B90-A32E-0C0599C07F2E}')
 
     def DisplayPlotPreview(self, PreviewMode=defaultNamedNotOptArg):
         'Displays the Plot Preview dialog box with the specified partial or full view preview.'
@@ -30791,7 +30782,7 @@ class IAcadPlot(DispatchBaseClass):
 class IAcadPopupMenu(DispatchBaseClass):
     'IAcadPopupMenu Interface'
     CLSID = IID('{E63FD651-4B1B-40BE-B7FA-CBAE74D97FE5}')
-    coclass_clsid = IID('{62AB6B80-D12D-40C8-8970-9915E69E05E0}')
+    coclass_clsid = IID('{A8013421-F99D-4078-95CA-10B377E78C8E}')
 
     # Result is of type IAcadPopupMenuItem
     def AddMenuItem(self, Index=defaultNamedNotOptArg, Label=defaultNamedNotOptArg, Macro=defaultNamedNotOptArg):
@@ -30882,7 +30873,7 @@ class IAcadPopupMenu(DispatchBaseClass):
 class IAcadPopupMenuItem(DispatchBaseClass):
     'A single popup menu item'
     CLSID = IID('{5B5C5A15-81D2-4360-937A-4F2FA18FB266}')
-    coclass_clsid = IID('{E24D7979-088A-435B-B939-D8E18AD4BE1D}')
+    coclass_clsid = IID('{0F8D7197-2460-4CFA-B32F-68E1E3267F50}')
 
     def Delete(self):
         'Deletes a specified menu item'
@@ -30926,7 +30917,7 @@ class IAcadPopupMenuItem(DispatchBaseClass):
 class IAcadPopupMenus(DispatchBaseClass):
     'A collection of PopupMenu objects'
     CLSID = IID('{3305CB53-F955-41F3-A47B-B7AA53B22D48}')
-    coclass_clsid = IID('{18B24243-321E-4980-9351-57C02F246EC9}')
+    coclass_clsid = IID('{9023410A-8F48-4426-80D3-00023CD1B89C}')
 
     # Result is of type IAcadPopupMenu
     def Add(self, MenuName=defaultNamedNotOptArg):
@@ -30995,7 +30986,7 @@ class IAcadPopupMenus(DispatchBaseClass):
 class IAcadPreferences(DispatchBaseClass):
     'This object specifies the current BricsCAD settings'
     CLSID = IID('{03CE46C1-93A9-4E5C-B7F5-7AC7E2D48948}')
-    coclass_clsid = IID('{A3EAF524-D893-4F6F-8D07-7F9416F7EBB9}')
+    coclass_clsid = IID('{B7FA10DB-3809-4C4C-9D35-1FA41A85BA9E}')
 
     _prop_map_get_ = {
         # Method 'Application' returns object of type 'IAcadApplication'
@@ -31032,7 +31023,7 @@ class IAcadPreferences(DispatchBaseClass):
 class IAcadPreferencesDisplay(DispatchBaseClass):
     'This object contains the options from the Display tab on the Options dialog'
     CLSID = IID('{0D71BC3C-9854-4076-BD32-D545259AB752}')
-    coclass_clsid = IID('{100E11DA-6700-452D-B6BE-0B65FDB2E17A}')
+    coclass_clsid = IID('{628F30CE-1073-4A97-B405-FD08712FAED9}')
 
     _prop_map_get_ = {
         # Method 'Application' returns object of type 'IAcadApplication'
@@ -31103,7 +31094,7 @@ class IAcadPreferencesDisplay(DispatchBaseClass):
 class IAcadPreferencesDrafting(DispatchBaseClass):
     'This object contains the options from the Drafting tab on the Options dialog'
     CLSID = IID('{35D9C296-C2E9-4DAB-93CA-4A62F71C9FC1}')
-    coclass_clsid = IID('{F6B948E8-500C-4305-A2EA-71FA28A35530}')
+    coclass_clsid = IID('{B6CC71D9-3C58-46B4-AD94-969830198EB2}')
 
     _prop_map_get_ = {
         "AlignmentPointAcquisition": (1610743829, 2, (3, 0), (), "AlignmentPointAcquisition", None),
@@ -31144,7 +31135,7 @@ class IAcadPreferencesDrafting(DispatchBaseClass):
 class IAcadPreferencesFiles(DispatchBaseClass):
     'This object contains the options from the Files tab on the Options dialog'
     CLSID = IID('{125FA500-9ABC-4F98-87AD-869AEFA4AD72}')
-    coclass_clsid = IID('{354D8744-81E2-4BB0-AC00-2C2471F3BEBE}')
+    coclass_clsid = IID('{CADAC62E-3879-4542-8FF6-D83464DC53A9}')
 
     def GetProjectFilePath(self, ProjectName=defaultNamedNotOptArg):
         'Gets the directory in which BricsCAD looks for external reference files'
@@ -31241,7 +31232,7 @@ class IAcadPreferencesFiles(DispatchBaseClass):
 class IAcadPreferencesOpenSave(DispatchBaseClass):
     'This object contains the options from the Open and Save tab on the Options dialog'
     CLSID = IID('{5E24ED87-DC43-4771-B7E6-7FE35C21CAB1}')
-    coclass_clsid = IID('{E21FACEF-E6A4-4DE1-8315-7F0F07EB877E}')
+    coclass_clsid = IID('{816CFC0F-4F31-4D08-AC8A-D713B1C12A1F}')
 
     _prop_map_get_ = {
         # Method 'Application' returns object of type 'IAcadApplication'
@@ -31289,7 +31280,7 @@ class IAcadPreferencesOpenSave(DispatchBaseClass):
 class IAcadPreferencesOutput(DispatchBaseClass):
     'This object contains the options from the Output tab on the Options dialog'
     CLSID = IID('{1560A14A-D97B-4B3B-BF95-D0F703723442}')
-    coclass_clsid = IID('{46B6BEE0-DA5A-4089-AC8A-70A254F31659}')
+    coclass_clsid = IID('{0C98484B-51B1-4E02-BE59-5FE0ABE433EF}')
 
     _prop_map_get_ = {
         # Method 'Application' returns object of type 'IAcadApplication'
@@ -31330,7 +31321,7 @@ class IAcadPreferencesOutput(DispatchBaseClass):
 class IAcadPreferencesPdfOutput(DispatchBaseClass):
     'This object contains the pdf output options'
     CLSID = IID('{21F2EB66-F27E-40AF-A3F5-7F2E7D6F6AA6}')
-    coclass_clsid = IID('{CB5F57D2-535C-4550-BDAC-FBFDB8778294}')
+    coclass_clsid = IID('{DE5C772C-DDD3-4169-9418-A6C56B1556D5}')
 
     _prop_map_get_ = {
         # Method 'Application' returns object of type 'IAcadApplication'
@@ -31375,7 +31366,7 @@ class IAcadPreferencesPdfOutput(DispatchBaseClass):
 class IAcadPreferencesProfiles(DispatchBaseClass):
     'This object contains the options from the Profiles tab on the Options dialog'
     CLSID = IID('{52F0656B-9D63-4C67-ADBF-E9C732ED271B}')
-    coclass_clsid = IID('{71AE8036-20F2-4439-BF71-F27400E3291D}')
+    coclass_clsid = IID('{25932CE8-A337-4904-804A-FB559279EA44}')
 
     def CopyProfile(self, oldProfileName=defaultNamedNotOptArg, newProfileName=defaultNamedNotOptArg):
         'Copies the specified profile'
@@ -31431,7 +31422,7 @@ class IAcadPreferencesProfiles(DispatchBaseClass):
 class IAcadPreferencesSelection(DispatchBaseClass):
     'This object contains the options from the Selection tab on the Options dialog'
     CLSID = IID('{CE512178-E98E-4225-800E-0A29DEE39BCD}')
-    coclass_clsid = IID('{469FB7EC-09CF-4D1D-BAC8-4553F5098ADD}')
+    coclass_clsid = IID('{40E3D992-16E3-4A28-B93D-C1875ABF7B24}')
 
     _prop_map_get_ = {
         # Method 'Application' returns object of type 'IAcadApplication'
@@ -31472,7 +31463,7 @@ class IAcadPreferencesSelection(DispatchBaseClass):
 class IAcadPreferencesSystem(DispatchBaseClass):
     'This object contains the options from the System tab on the Options dialog'
     CLSID = IID('{408546BA-FF59-4AA8-98C5-A1DBA4B730F8}')
-    coclass_clsid = IID('{8A48E79C-D378-4111-82D9-A25F84F5B6DC}')
+    coclass_clsid = IID('{9B8EA766-C365-4931-919C-4FF7F5A1338B}')
 
     _prop_map_get_ = {
         # Method 'Application' returns object of type 'IAcadApplication'
@@ -31507,7 +31498,7 @@ class IAcadPreferencesSystem(DispatchBaseClass):
 class IAcadPreferencesUser(DispatchBaseClass):
     'This object contains the options from the User tab on the Options dialog'
     CLSID = IID('{689AE380-B75C-430E-8A70-D116D8B4FA63}')
-    coclass_clsid = IID('{DD509194-682F-49FE-9984-C7F0EE819A45}')
+    coclass_clsid = IID('{5D75345C-3627-4641-A2E1-901024DC0A65}')
 
     _prop_map_get_ = {
         "ADCInsertUnitsDefaultSource": (1610743817, 2, (3, 0), (), "ADCInsertUnitsDefaultSource", None),
@@ -31550,7 +31541,7 @@ class IAcadPreferencesUser(DispatchBaseClass):
 class IAcadSecurityParams(DispatchBaseClass):
     'Security Parameters Interface'
     CLSID = IID('{A058E098-4DCF-4E3B-93BC-EF0FA19B718A}')
-    coclass_clsid = IID('{06F4FD5D-DBD9-4B44-B464-6683CC541EDD}')
+    coclass_clsid = IID('{CDB2CF03-54B5-429D-BC6C-549DBA5B1C2A}')
 
     _prop_map_get_ = {
         "Action": (1, 2, (3, 0), (), "Action", None),
@@ -31589,7 +31580,7 @@ class IAcadSecurityParams(DispatchBaseClass):
 class IAcadSelectionSet(DispatchBaseClass):
     'A group of one or more BricsCAD objects specified for processing as a single unit'
     CLSID = IID('{01374CB7-5D3B-4556-800C-9BFC71BBEC42}')
-    coclass_clsid = IID('{F3862E27-3753-44F7-BDB0-24468C8E8CF6}')
+    coclass_clsid = IID('{650E21D9-724F-436C-A11E-39D23EAB5E3C}')
 
     def AddItems(self, pSelSet=defaultNamedNotOptArg):
         'Adds one or more objects to the specified selection set'
@@ -31710,7 +31701,7 @@ class IAcadSelectionSet(DispatchBaseClass):
 class IAcadSelectionSets(DispatchBaseClass):
     'The collection of all selection sets in the drawing'
     CLSID = IID('{37E34D42-8CD8-4E25-83BF-80C791AFEADE}')
-    coclass_clsid = IID('{2F021E6D-67B2-4955-9135-A28F93BCEE6D}')
+    coclass_clsid = IID('{4DD28068-5246-4348-802D-925FB5B598D3}')
 
     # Result is of type IAcadSelectionSet
     def Add(self, Name=defaultNamedNotOptArg):
@@ -31767,7 +31758,7 @@ class IAcadSelectionSets(DispatchBaseClass):
 class IAcadState(DispatchBaseClass):
     'Application State Interface'
     CLSID = IID('{C2016470-443B-40D0-AD93-231ACFDCF594}')
-    coclass_clsid = IID('{5696C1B9-643B-4E6E-B711-DB897137424E}')
+    coclass_clsid = IID('{33F8C4BE-7C60-4E17-9DB6-B7DEF3AF47A1}')
 
     _prop_map_get_ = {
         # Method 'Application' returns object of type 'IAcadApplication'
@@ -31787,7 +31778,7 @@ class IAcadState(DispatchBaseClass):
 class IAcadToolbar(DispatchBaseClass):
     'IAcadToolbar Interface'
     CLSID = IID('{618F1FE3-4CF9-41D4-A070-387C8560D4EC}')
-    coclass_clsid = IID('{A8D0AE76-640B-44AA-BB5C-6986706CA9F6}')
+    coclass_clsid = IID('{E5E9F524-EBD3-4D2A-9545-8287983CBD7E}')
 
     # Result is of type IAcadToolbarItem
     def AddSeparator(self, Index=defaultNamedNotOptArg):
@@ -31886,7 +31877,7 @@ class IAcadToolbar(DispatchBaseClass):
 class IAcadToolbarItem(DispatchBaseClass):
     'A single toolbar button'
     CLSID = IID('{EBCED992-0BB7-4165-B4D6-44261F377565}')
-    coclass_clsid = IID('{C9F46D28-7AEE-48F1-B8B7-6F8E7EC40625}')
+    coclass_clsid = IID('{2A0CB6D5-2878-447E-9B7F-9A5B2F1B0C4E}')
 
     def AttachToolbarToFlyout(self, MenuGroupName=defaultNamedNotOptArg, ToolbarName=defaultNamedNotOptArg):
         'Attaches a toolbar to a toolbar button defined as a flyout'
@@ -31938,7 +31929,7 @@ class IAcadToolbarItem(DispatchBaseClass):
 class IAcadToolbars(DispatchBaseClass):
     'A collection of Toolbar objects'
     CLSID = IID('{F7DF12AA-4EF4-4EEE-8D00-68BB80D7F092}')
-    coclass_clsid = IID('{6625C943-4F9E-4FCD-B847-454FCDC56C19}')
+    coclass_clsid = IID('{57F40F52-4F7E-407E-AEED-1A36E4A37C75}')
 
     # Result is of type IAcadToolbar
     def Add(self, ToolbarName=defaultNamedNotOptArg):
@@ -31999,7 +31990,7 @@ class IAcadToolbars(DispatchBaseClass):
 class IAcadUtility(DispatchBaseClass):
     'A series of methods provided for utility purposes'
     CLSID = IID('{5046A00A-7C22-4D39-ADE0-FB1AE3709B4D}')
-    coclass_clsid = IID('{AB480185-F159-4B5D-BC9E-AEA9AB722DF1}')
+    coclass_clsid = IID('{0BF8B246-B9AB-4B4E-A516-A060E02D2AC3}')
 
     def AngleFromXAxis(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Gets the angle of a line from the X axis'
@@ -32226,7 +32217,7 @@ class IOdaAuditInfo(DispatchBaseClass):
 class IOdaBagFiler(DispatchBaseClass):
     'IOdaBagFiler Interface'
     CLSID = IID('{6EBA6B5A-1D9F-4B21-BC0B-35EFDBAB543D}')
-    coclass_clsid = IID('{DF962AF5-E3C8-4552-B65D-698F48DE2759}')
+    coclass_clsid = IID('{5A1FA04D-47EA-4B96-BD9D-168246BC8767}')
 
     def BufferToObject(self, pObj=defaultNamedNotOptArg, ResType=defaultNamedNotOptArg, ResValue=defaultNamedNotOptArg):
         'Writes result buffer to object.'
@@ -32253,7 +32244,7 @@ class IOdaBagFiler(DispatchBaseClass):
 class IOdaBmpOut(DispatchBaseClass):
     'IOdaBmpOut Interface'
     CLSID = IID('{11C4F7AA-D8CC-4762-8C7C-3064E65EEDBD}')
-    coclass_clsid = IID('{97B88F76-4023-412F-8C23-607C526E4E7D}')
+    coclass_clsid = IID('{2D892D06-B5A3-41A5-BFB9-A080C12406D8}')
 
     def WriteFile(self, database=defaultNamedNotOptArg, BitmapName=defaultNamedNotOptArg):
         'Writes Bmp file.'
@@ -32314,7 +32305,7 @@ class IOdaConsole(DispatchBaseClass):
 class IOdaDwf3dExport(DispatchBaseClass):
     'IOdaDwf3dExport Interface'
     CLSID = IID('{4E99C4A8-AFC0-45E9-B312-61D7DB4F2EE6}')
-    coclass_clsid = IID('{7CCF62DE-076C-4ED9-9ED2-3D4A5AC9E4DE}')
+    coclass_clsid = IID('{10EE17C2-9F9D-4CC0-8AC5-09A095A76D31}')
 
     def Export3dDwf(self, database=defaultNamedNotOptArg, FileName=defaultNamedNotOptArg):
         'Export to 3D Dwf file.'
@@ -32347,7 +32338,7 @@ class IOdaDwf3dExport(DispatchBaseClass):
 class IOdaDwfImporter(DispatchBaseClass):
     'IOdaDwfImport Interface'
     CLSID = IID('{C5631279-833D-4FE0-8965-B06E2FEC0E9C}')
-    coclass_clsid = IID('{46901A1D-C99C-45E0-B2F5-D99C07CD8BBB}')
+    coclass_clsid = IID('{3979545E-6370-4E31-9CB6-EBB8F23C5C6B}')
 
     def Import(self, database=defaultNamedNotOptArg, FileName=defaultNamedNotOptArg, Password='0', wPaper=297.0
             , hPaper=210.0):
@@ -32445,7 +32436,7 @@ class IOdaDwfPageData(DispatchBaseClass):
 class IOdaDwfTemplate(DispatchBaseClass):
     'IOdaDwfTemplate Interface'
     CLSID = IID('{8F2A46C2-4D8A-46D5-8BBE-B06A4027BE10}')
-    coclass_clsid = IID('{81186CAF-6BAC-4DD6-B470-3C7930A28DD5}')
+    coclass_clsid = IID('{0134A0B1-C7F1-4C13-B746-454F31423302}')
 
     def AddPage(self, LayoutName=defaultNamedNotOptArg):
         'method AddPage'
@@ -32564,7 +32555,7 @@ class IOdaHostApp(DispatchBaseClass):
 class IOdaHostApp2(DispatchBaseClass):
     'IOdaHostApp2 Interface'
     CLSID = IID('{CFE29DD1-2A1B-49F9-853E-11918A789C6D}')
-    coclass_clsid = IID('{D81CF9E5-4C85-435B-876B-C706E2D5F00E}')
+    coclass_clsid = IID('{2C5BF907-DB41-47B6-AFBB-D3DD1FE033EA}')
 
     def AuditDatabase(self, pDoc=defaultNamedNotOptArg, bFixErrors=defaultNamedNotOptArg):
         'method AuditDatabase - perform database audit'
@@ -32614,7 +32605,7 @@ class IOdaHostApp2(DispatchBaseClass):
 class IOdaSvgExporter(DispatchBaseClass):
     'IOdaSvgExporter Interface'
     CLSID = IID('{FDAF1115-5A20-4D16-A509-01012B71E4F7}')
-    coclass_clsid = IID('{C0F35882-6A8B-426C-8787-001E1073197A}')
+    coclass_clsid = IID('{B7E5C67D-D203-482A-A2B3-8AEBA3E70B13}')
 
     def Export(self, database=defaultNamedNotOptArg, FilePath=defaultNamedNotOptArg):
         'method Export'
@@ -32648,7 +32639,7 @@ class IOdaSvgExporter(DispatchBaseClass):
 class ITransmittalFile(DispatchBaseClass):
     'ITransmittalFile Interface'
     CLSID = IID('{0A107B59-34CE-4F40-9AF2-26060A3C2099}')
-    coclass_clsid = IID('{D944169D-A83B-4A9E-B543-5C66F52E3D35}')
+    coclass_clsid = IID('{BD980345-1450-4804-A465-94BB9B645059}')
 
     # Result is of type ITransmittalFile
     def getDependee(self, nIndex=defaultNamedNotOptArg):
@@ -32694,7 +32685,7 @@ class ITransmittalFile(DispatchBaseClass):
 class ITransmittalFilesGraph(DispatchBaseClass):
     'ITransmittalFilesGraph Interface'
     CLSID = IID('{DE88EA7C-176A-42C7-BF1A-CFCCDEAB3EDB}')
-    coclass_clsid = IID('{658E0EA9-97D8-4D44-AFF0-A0F01094750D}')
+    coclass_clsid = IID('{2F5B9DCB-93C6-46D4-BDAA-4F38ECCE6935}')
 
     def addEdge(self, pTransmitFileFrom=defaultNamedNotOptArg, pTransmitFileTo=defaultNamedNotOptArg):
         'Adds an edge between specified files in the graph.'
@@ -32753,7 +32744,7 @@ class ITransmittalFilesGraph(DispatchBaseClass):
 class ITransmittalInfo(DispatchBaseClass):
     'ITransmittalInfo Interface'
     CLSID = IID('{122D84E7-A507-414C-A517-C33B19AF6BA5}')
-    coclass_clsid = IID('{AD47B265-C3D5-437C-AA75-527C7A7793C6}')
+    coclass_clsid = IID('{D5515973-C2A2-46CE-BB83-66EE885E8CA3}')
 
     _prop_map_get_ = {
         "defaultOverwriteValue": (4, 2, (3, 0), (), "defaultOverwriteValue", None),
@@ -32796,7 +32787,7 @@ class ITransmittalInfo(DispatchBaseClass):
 class ITransmittalOperation(DispatchBaseClass):
     'ITransmittalOperation Interface'
     CLSID = IID('{7EFB484A-0280-4ED6-A73F-6DBE663DB79D}')
-    coclass_clsid = IID('{9A61E0FC-4311-457B-8C65-2AD3531DC5DD}')
+    coclass_clsid = IID('{7AF84696-2BA8-4F82-B136-F37844198AA7}')
 
     def addDrawingFile(self, fullpathname=defaultNamedNotOptArg, ppIAddedFile=pythoncom.Missing):
         'Adds a drawing file to transmittal package and resolves any dependencies based on transmittal options.'
@@ -32853,7 +32844,7 @@ class ITransmittalOperation(DispatchBaseClass):
 class _DAcadApplicationEvents:
     'Event interface for AcadApplication'
     CLSID = CLSID_Sink = IID('{93E291E9-BB72-429B-B4DE-DF76B88603EB}')
-    coclass_clsid = IID('{0E86524E-1812-426A-9A63-2C2B51B0D0E4}')
+    coclass_clsid = IID('{DD9C2859-1A46-4AEF-A118-E513E6E867C1}')
     _public_methods_ = [] # For COM Server support
     _dispid_to_func_ = {
                 1 : "OnSysVarChanged",
@@ -32957,7 +32948,7 @@ class _DAcadApplicationEvents:
 class _DAcadDocumentEvents:
     'Event interface for ThisDrawing'
     CLSID = CLSID_Sink = IID('{63A90E32-CB8B-4A3B-ADFF-EF94A35278B2}')
-    coclass_clsid = IID('{3975E80C-5EC5-4EE0-B432-E9EC7BBB9A5A}')
+    coclass_clsid = IID('{82857A82-CEE5-4F3D-9C19-6C60472D0FF7}')
     _public_methods_ = [] # For COM Server support
     _dispid_to_func_ = {
                 1 : "OnBeginSave",
@@ -33076,7 +33067,7 @@ class _DAcadDocumentEvents:
 class _IOdaHostAppEvents:
     '_IOdaHostAppEvents Interface'
     CLSID = CLSID_Sink = IID('{5FA75E80-D112-4186-AD8E-0992D7F13475}')
-    coclass_clsid = IID('{D81CF9E5-4C85-435B-876B-C706E2D5F00E}')
+    coclass_clsid = IID('{2C5BF907-DB41-47B6-AFBB-D3DD1FE033EA}')
     _public_methods_ = [] # For COM Server support
     _dispid_to_func_ = {
                32 : "OnStep",
@@ -33133,80 +33124,80 @@ class _IOdaHostAppEvents:
 
 
 from win32com.client import CoClassBaseClass
-# This CoClass is known by the name 'BricscadApp.AcPePick2PointsCtrl.24.0'
+# This CoClass is known by the name 'BricscadApp.AcPePick2PointsCtrl.25.0'
 class AcPePick2PointsCtrl(CoClassBaseClass): # A CoClass
     #  
-    CLSID = IID('{4735C83D-5F58-4963-8571-A4424C619D7F}')
+    CLSID = IID('{97F92B7F-7368-4BBD-8170-E39A53DA52B0}')
     coclass_sources = [
     ]
     coclass_interfaces = [
         IAcadApplication,
     ]
 
-# This CoClass is known by the name 'BricscadApp.AcPePropertyEditorColor.24.0'
+# This CoClass is known by the name 'BricscadApp.AcPePropertyEditorColor.25.0'
 class AcPePropertyEditorColor(CoClassBaseClass): # A CoClass
     #  
-    CLSID = IID('{61F2A9AB-8A44-4C20-953A-735508C1CA85}')
+    CLSID = IID('{5811249A-0F51-4919-B19C-CC2AC6884E9A}')
     coclass_sources = [
     ]
     coclass_interfaces = [
         IAcadApplication,
     ]
 
-# This CoClass is known by the name 'BricscadApp.AcPePropertyEditorEllipses.24.0'
+# This CoClass is known by the name 'BricscadApp.AcPePropertyEditorEllipses.25.0'
 class AcPePropertyEditorEllipses(CoClassBaseClass): # A CoClass
     #  
-    CLSID = IID('{7507B465-281A-465C-A724-A72D09327153}')
+    CLSID = IID('{47FFE80C-B2C9-431A-99B7-56D75CB99B20}')
     coclass_sources = [
     ]
     coclass_interfaces = [
         IAcadApplication,
     ]
 
-# This CoClass is known by the name 'BricscadApp.AcPePropertyEditorLType.24.0'
+# This CoClass is known by the name 'BricscadApp.AcPePropertyEditorLType.25.0'
 class AcPePropertyEditorLType(CoClassBaseClass): # A CoClass
     #  
-    CLSID = IID('{8C9F3B98-30E9-45CE-9F07-63955326E8D4}')
+    CLSID = IID('{C0338607-7837-4732-BEA4-32DCCFE5A25B}')
     coclass_sources = [
     ]
     coclass_interfaces = [
         IAcadApplication,
     ]
 
-# This CoClass is known by the name 'BricscadApp.AcPePropertyEditorLWeight.24.0'
+# This CoClass is known by the name 'BricscadApp.AcPePropertyEditorLWeight.25.0'
 class AcPePropertyEditorLWeight(CoClassBaseClass): # A CoClass
     #  
-    CLSID = IID('{4F19983F-AB24-4FB9-ADC0-0B6026080239}')
+    CLSID = IID('{25C36706-B631-4968-940A-4E69B70AEE06}')
     coclass_sources = [
     ]
     coclass_interfaces = [
         IAcadApplication,
     ]
 
-# This CoClass is known by the name 'BricscadApp.AcPePropertyEditorLayer.24.0'
+# This CoClass is known by the name 'BricscadApp.AcPePropertyEditorLayer.25.0'
 class AcPePropertyEditorLayer(CoClassBaseClass): # A CoClass
     #  
-    CLSID = IID('{96F57653-F913-4CAB-B511-2F14AF9138D3}')
+    CLSID = IID('{122F53C7-E94E-4AF6-BEF8-09342BA70DF5}')
     coclass_sources = [
     ]
     coclass_interfaces = [
         IAcadApplication,
     ]
 
-# This CoClass is known by the name 'BricscadApp.AcPePropertyEditorTextStyle.24.0'
+# This CoClass is known by the name 'BricscadApp.AcPePropertyEditorTextStyle.25.0'
 class AcPePropertyEditorTextStyle(CoClassBaseClass): # A CoClass
     #  
-    CLSID = IID('{4B61C84D-A730-4760-A409-4023DD1D8E57}')
+    CLSID = IID('{18290F19-398A-4F75-9193-98D7829227C1}')
     coclass_sources = [
     ]
     coclass_interfaces = [
         IAcadApplication,
     ]
 
-# This CoClass is known by the name 'BricscadApp.AcadApplication.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadApplication.25.0'
 class AcadApplication(CoClassBaseClass): # A CoClass
     # AcadApplication Class
-    CLSID = IID('{0E86524E-1812-426A-9A63-2C2B51B0D0E4}')
+    CLSID = IID('{DD9C2859-1A46-4AEF-A118-E513E6E867C1}')
     coclass_sources = [
         _DAcadApplicationEvents,
     ]
@@ -33216,10 +33207,10 @@ class AcadApplication(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadApplication
 
-# This CoClass is known by the name 'BricscadApp.AcadDocument.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadDocument.25.0'
 class AcadDocument(CoClassBaseClass): # A CoClass
-    # AcadDocument Class | Bricscad24
-    CLSID = IID('{3975E80C-5EC5-4EE0-B432-E9EC7BBB9A5A}')
+    # AcadDocument Class | Bricscad25
+    CLSID = IID('{82857A82-CEE5-4F3D-9C19-6C60472D0FF7}')
     coclass_sources = [
         _DAcadDocumentEvents,
     ]
@@ -33229,10 +33220,10 @@ class AcadDocument(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDocument
 
-# This CoClass is known by the name 'BricscadApp.AcadDocuments.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadDocuments.25.0'
 class AcadDocuments(CoClassBaseClass): # A CoClass
     # AcadDocuments Class
-    CLSID = IID('{5F5D38B7-C56C-4250-B088-2B06EEEC1EE9}')
+    CLSID = IID('{67C700FE-1331-461B-A46E-80CBA198868C}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33240,10 +33231,10 @@ class AcadDocuments(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDocuments
 
-# This CoClass is known by the name 'BricscadApp.AcadLayerStateManager.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadLayerStateManager.25.0'
 class AcadLayerStateManager(CoClassBaseClass): # A CoClass
     # AcadLayerStateManager Class
-    CLSID = IID('{2F38A4F0-DDE8-488C-B53C-5E364C267B53}')
+    CLSID = IID('{763AAF8B-9761-49A5-8948-5740102E72F5}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33251,10 +33242,10 @@ class AcadLayerStateManager(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLayerStateManager
 
-# This CoClass is known by the name 'BricscadApp.AcadMenuBar.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadMenuBar.25.0'
 class AcadMenuBar(CoClassBaseClass): # A CoClass
     # AcadMenuBar class
-    CLSID = IID('{DE927728-3684-4835-8255-54350D951307}')
+    CLSID = IID('{6ED054C6-FE32-499C-A710-5B57C94B06A5}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33262,10 +33253,10 @@ class AcadMenuBar(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMenuBar
 
-# This CoClass is known by the name 'BricscadApp.AcadMenuGroup.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadMenuGroup.25.0'
 class AcadMenuGroup(CoClassBaseClass): # A CoClass
     # AcadMenuGroup class
-    CLSID = IID('{A07E5142-51E0-441E-B442-1F46F53F3888}')
+    CLSID = IID('{1B9391FB-EBD8-4710-B969-BE5945D0F3DB}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33273,10 +33264,10 @@ class AcadMenuGroup(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMenuGroup
 
-# This CoClass is known by the name 'BricscadApp.AcadMenuGroups.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadMenuGroups.25.0'
 class AcadMenuGroups(CoClassBaseClass): # A CoClass
     # AcadMenuGroups class
-    CLSID = IID('{FE3FC546-AF40-4A2E-9C5C-14B7B4B8A54D}')
+    CLSID = IID('{FE7B423E-3162-4041-B439-3F9705B6364F}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33284,10 +33275,10 @@ class AcadMenuGroups(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMenuGroups
 
-# This CoClass is known by the name 'BricscadApp.AcadPlot.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadPlot.25.0'
 class AcadPlot(CoClassBaseClass): # A CoClass
     # AcadPlot Class
-    CLSID = IID('{126D4FCB-3E3D-491B-9F0B-D6C9D362116A}')
+    CLSID = IID('{3E583B29-F912-4B90-A32E-0C0599C07F2E}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33295,10 +33286,10 @@ class AcadPlot(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPlot
 
-# This CoClass is known by the name 'BricscadApp.AcadPopupMenu.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadPopupMenu.25.0'
 class AcadPopupMenu(CoClassBaseClass): # A CoClass
     # AcadPopupMenu class
-    CLSID = IID('{62AB6B80-D12D-40C8-8970-9915E69E05E0}')
+    CLSID = IID('{A8013421-F99D-4078-95CA-10B377E78C8E}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33306,10 +33297,10 @@ class AcadPopupMenu(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPopupMenu
 
-# This CoClass is known by the name 'BricscadApp.AcadPopupMenuItem.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadPopupMenuItem.25.0'
 class AcadPopupMenuItem(CoClassBaseClass): # A CoClass
     # AcadPopupMenuItem class
-    CLSID = IID('{E24D7979-088A-435B-B939-D8E18AD4BE1D}')
+    CLSID = IID('{0F8D7197-2460-4CFA-B32F-68E1E3267F50}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33317,10 +33308,10 @@ class AcadPopupMenuItem(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPopupMenuItem
 
-# This CoClass is known by the name 'BricscadApp.AcadPopupMenus.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadPopupMenus.25.0'
 class AcadPopupMenus(CoClassBaseClass): # A CoClass
     # AcadPopupMenus class
-    CLSID = IID('{18B24243-321E-4980-9351-57C02F246EC9}')
+    CLSID = IID('{9023410A-8F48-4426-80D3-00023CD1B89C}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33328,10 +33319,10 @@ class AcadPopupMenus(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPopupMenus
 
-# This CoClass is known by the name 'BricscadApp.AcadPreferences.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadPreferences.25.0'
 class AcadPreferences(CoClassBaseClass): # A CoClass
     # AcadPreferences Class
-    CLSID = IID('{A3EAF524-D893-4F6F-8D07-7F9416F7EBB9}')
+    CLSID = IID('{B7FA10DB-3809-4C4C-9D35-1FA41A85BA9E}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33339,10 +33330,10 @@ class AcadPreferences(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferences
 
-# This CoClass is known by the name 'BricscadApp.AcadPreferencesDisplay.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadPreferencesDisplay.25.0'
 class AcadPreferencesDisplay(CoClassBaseClass): # A CoClass
     # AcadPreferencesDisplay Class
-    CLSID = IID('{100E11DA-6700-452D-B6BE-0B65FDB2E17A}')
+    CLSID = IID('{628F30CE-1073-4A97-B405-FD08712FAED9}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33350,10 +33341,10 @@ class AcadPreferencesDisplay(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesDisplay
 
-# This CoClass is known by the name 'BricscadApp.AcadPreferencesDrafting.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadPreferencesDrafting.25.0'
 class AcadPreferencesDrafting(CoClassBaseClass): # A CoClass
     # AcadPreferencesDrafting Class
-    CLSID = IID('{F6B948E8-500C-4305-A2EA-71FA28A35530}')
+    CLSID = IID('{B6CC71D9-3C58-46B4-AD94-969830198EB2}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33361,10 +33352,10 @@ class AcadPreferencesDrafting(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesDrafting
 
-# This CoClass is known by the name 'BricscadApp.AcadPreferencesFiles.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadPreferencesFiles.25.0'
 class AcadPreferencesFiles(CoClassBaseClass): # A CoClass
     # AcadPreferencesFiles Class
-    CLSID = IID('{354D8744-81E2-4BB0-AC00-2C2471F3BEBE}')
+    CLSID = IID('{CADAC62E-3879-4542-8FF6-D83464DC53A9}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33372,10 +33363,10 @@ class AcadPreferencesFiles(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesFiles
 
-# This CoClass is known by the name 'BricscadApp.AcadPreferencesOpenSave.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadPreferencesOpenSave.25.0'
 class AcadPreferencesOpenSave(CoClassBaseClass): # A CoClass
     # AcadPreferencesOpenSave Class
-    CLSID = IID('{E21FACEF-E6A4-4DE1-8315-7F0F07EB877E}')
+    CLSID = IID('{816CFC0F-4F31-4D08-AC8A-D713B1C12A1F}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33383,10 +33374,10 @@ class AcadPreferencesOpenSave(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesOpenSave
 
-# This CoClass is known by the name 'BricscadApp.AcadPreferencesOutput.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadPreferencesOutput.25.0'
 class AcadPreferencesOutput(CoClassBaseClass): # A CoClass
     # AcadPreferencesOutput Class
-    CLSID = IID('{46B6BEE0-DA5A-4089-AC8A-70A254F31659}')
+    CLSID = IID('{0C98484B-51B1-4E02-BE59-5FE0ABE433EF}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33394,10 +33385,10 @@ class AcadPreferencesOutput(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesOutput
 
-# This CoClass is known by the name 'BricscadApp.AcadPreferencesPdfOutput.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadPreferencesPdfOutput.25.0'
 class AcadPreferencesPdfOutput(CoClassBaseClass): # A CoClass
     # AcadPreferencesPdfOutput Class
-    CLSID = IID('{CB5F57D2-535C-4550-BDAC-FBFDB8778294}')
+    CLSID = IID('{DE5C772C-DDD3-4169-9418-A6C56B1556D5}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33405,10 +33396,10 @@ class AcadPreferencesPdfOutput(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesPdfOutput
 
-# This CoClass is known by the name 'BricscadApp.AcadPreferencesProfiles.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadPreferencesProfiles.25.0'
 class AcadPreferencesProfiles(CoClassBaseClass): # A CoClass
     # AcadPreferencesProfiles Class
-    CLSID = IID('{71AE8036-20F2-4439-BF71-F27400E3291D}')
+    CLSID = IID('{25932CE8-A337-4904-804A-FB559279EA44}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33416,10 +33407,10 @@ class AcadPreferencesProfiles(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesProfiles
 
-# This CoClass is known by the name 'BricscadApp.AcadPreferencesSelection.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadPreferencesSelection.25.0'
 class AcadPreferencesSelection(CoClassBaseClass): # A CoClass
     # AcadPreferencesSelection Class
-    CLSID = IID('{469FB7EC-09CF-4D1D-BAC8-4553F5098ADD}')
+    CLSID = IID('{40E3D992-16E3-4A28-B93D-C1875ABF7B24}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33427,10 +33418,10 @@ class AcadPreferencesSelection(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesSelection
 
-# This CoClass is known by the name 'BricscadApp.AcadPreferencesSystem.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadPreferencesSystem.25.0'
 class AcadPreferencesSystem(CoClassBaseClass): # A CoClass
     # AcadPreferencesSystem Class
-    CLSID = IID('{8A48E79C-D378-4111-82D9-A25F84F5B6DC}')
+    CLSID = IID('{9B8EA766-C365-4931-919C-4FF7F5A1338B}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33438,10 +33429,10 @@ class AcadPreferencesSystem(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesSystem
 
-# This CoClass is known by the name 'BricscadApp.AcadPreferencesUser.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadPreferencesUser.25.0'
 class AcadPreferencesUser(CoClassBaseClass): # A CoClass
     # AcadPreferencesUser Class
-    CLSID = IID('{DD509194-682F-49FE-9984-C7F0EE819A45}')
+    CLSID = IID('{5D75345C-3627-4641-A2E1-901024DC0A65}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33449,10 +33440,10 @@ class AcadPreferencesUser(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesUser
 
-# This CoClass is known by the name 'BricscadApp.AcadSecurityParams.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadSecurityParams.25.0'
 class AcadSecurityParams(CoClassBaseClass): # A CoClass
     # AcadSecurityParams Class
-    CLSID = IID('{06F4FD5D-DBD9-4B44-B464-6683CC541EDD}')
+    CLSID = IID('{CDB2CF03-54B5-429D-BC6C-549DBA5B1C2A}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33460,10 +33451,10 @@ class AcadSecurityParams(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSecurityParams
 
-# This CoClass is known by the name 'BricscadApp.AcadSelectionSet.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadSelectionSet.25.0'
 class AcadSelectionSet(CoClassBaseClass): # A CoClass
     # AcadSelectionSet Class
-    CLSID = IID('{F3862E27-3753-44F7-BDB0-24468C8E8CF6}')
+    CLSID = IID('{650E21D9-724F-436C-A11E-39D23EAB5E3C}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33471,10 +33462,10 @@ class AcadSelectionSet(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSelectionSet
 
-# This CoClass is known by the name 'BricscadApp.AcadSelectionSets.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadSelectionSets.25.0'
 class AcadSelectionSets(CoClassBaseClass): # A CoClass
     # AcadSelectionSets Class
-    CLSID = IID('{2F021E6D-67B2-4955-9135-A28F93BCEE6D}')
+    CLSID = IID('{4DD28068-5246-4348-802D-925FB5B598D3}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33482,10 +33473,10 @@ class AcadSelectionSets(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSelectionSets
 
-# This CoClass is known by the name 'BricscadApp.AcadState.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadState.25.0'
 class AcadState(CoClassBaseClass): # A CoClass
     # AcadState Class
-    CLSID = IID('{5696C1B9-643B-4E6E-B711-DB897137424E}')
+    CLSID = IID('{33F8C4BE-7C60-4E17-9DB6-B7DEF3AF47A1}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33493,10 +33484,10 @@ class AcadState(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadState
 
-# This CoClass is known by the name 'BricscadApp.AcadToolbar.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadToolbar.25.0'
 class AcadToolbar(CoClassBaseClass): # A CoClass
     # An AutoCAD toolbar
-    CLSID = IID('{A8D0AE76-640B-44AA-BB5C-6986706CA9F6}')
+    CLSID = IID('{E5E9F524-EBD3-4D2A-9545-8287983CBD7E}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33504,10 +33495,10 @@ class AcadToolbar(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadToolbar
 
-# This CoClass is known by the name 'BricscadApp.AcadToolbarItem.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadToolbarItem.25.0'
 class AcadToolbarItem(CoClassBaseClass): # A CoClass
     # AcadToolbarItem class
-    CLSID = IID('{C9F46D28-7AEE-48F1-B8B7-6F8E7EC40625}')
+    CLSID = IID('{2A0CB6D5-2878-447E-9B7F-9A5B2F1B0C4E}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33515,10 +33506,10 @@ class AcadToolbarItem(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadToolbarItem
 
-# This CoClass is known by the name 'BricscadApp.AcadToolbars.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadToolbars.25.0'
 class AcadToolbars(CoClassBaseClass): # A CoClass
     # AcadToolbars class
-    CLSID = IID('{6625C943-4F9E-4FCD-B847-454FCDC56C19}')
+    CLSID = IID('{57F40F52-4F7E-407E-AEED-1A36E4A37C75}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33526,10 +33517,10 @@ class AcadToolbars(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadToolbars
 
-# This CoClass is known by the name 'BricscadApp.AcadUtility.24.0'
+# This CoClass is known by the name 'BricscadApp.AcadUtility.25.0'
 class AcadUtility(CoClassBaseClass): # A CoClass
     # AcadUtility Class
-    CLSID = IID('{AB480185-F159-4B5D-BC9E-AEA9AB722DF1}')
+    CLSID = IID('{0BF8B246-B9AB-4B4E-A516-A060E02D2AC3}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33537,10 +33528,10 @@ class AcadUtility(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUtility
 
-# This CoClass is known by the name 'BricscadApp.OdaBagFiler.24.0'
+# This CoClass is known by the name 'BricscadApp.OdaBagFiler.25.0'
 class OdaBagFiler(CoClassBaseClass): # A CoClass
     # OdaBagFiler Class
-    CLSID = IID('{DF962AF5-E3C8-4552-B65D-698F48DE2759}')
+    CLSID = IID('{5A1FA04D-47EA-4B96-BD9D-168246BC8767}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33548,10 +33539,10 @@ class OdaBagFiler(CoClassBaseClass): # A CoClass
     ]
     default_interface = IOdaBagFiler
 
-# This CoClass is known by the name 'BricscadApp.OdaBmpOut.24.0'
+# This CoClass is known by the name 'BricscadApp.OdaBmpOut.25.0'
 class OdaBmpOut(CoClassBaseClass): # A CoClass
     # OdaBmpOut Class
-    CLSID = IID('{97B88F76-4023-412F-8C23-607C526E4E7D}')
+    CLSID = IID('{2D892D06-B5A3-41A5-BFB9-A080C12406D8}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33559,10 +33550,10 @@ class OdaBmpOut(CoClassBaseClass): # A CoClass
     ]
     default_interface = IOdaBmpOut
 
-# This CoClass is known by the name 'BricscadApp.OdaDwf3dExport.24.0'
+# This CoClass is known by the name 'BricscadApp.OdaDwf3dExport.25.0'
 class OdaDwf3dExport(CoClassBaseClass): # A CoClass
     # OdaDwf3dExport Class
-    CLSID = IID('{7CCF62DE-076C-4ED9-9ED2-3D4A5AC9E4DE}')
+    CLSID = IID('{10EE17C2-9F9D-4CC0-8AC5-09A095A76D31}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33570,10 +33561,10 @@ class OdaDwf3dExport(CoClassBaseClass): # A CoClass
     ]
     default_interface = IOdaDwf3dExport
 
-# This CoClass is known by the name 'BricscadApp.OdaDwfImporter.24.0'
+# This CoClass is known by the name 'BricscadApp.OdaDwfImporter.25.0'
 class OdaDwfImporter(CoClassBaseClass): # A CoClass
     # OdaDwfImporter Class
-    CLSID = IID('{46901A1D-C99C-45E0-B2F5-D99C07CD8BBB}')
+    CLSID = IID('{3979545E-6370-4E31-9CB6-EBB8F23C5C6B}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33581,10 +33572,10 @@ class OdaDwfImporter(CoClassBaseClass): # A CoClass
     ]
     default_interface = IOdaDwfImporter
 
-# This CoClass is known by the name 'BricscadApp.OdaDwfTemplate.24.0'
+# This CoClass is known by the name 'BricscadApp.OdaDwfTemplate.25.0'
 class OdaDwfTemplate(CoClassBaseClass): # A CoClass
     # OdaDwfTemplate Class
-    CLSID = IID('{81186CAF-6BAC-4DD6-B470-3C7930A28DD5}')
+    CLSID = IID('{0134A0B1-C7F1-4C13-B746-454F31423302}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33592,10 +33583,10 @@ class OdaDwfTemplate(CoClassBaseClass): # A CoClass
     ]
     default_interface = IOdaDwfTemplate
 
-# This CoClass is known by the name 'BricscadApp.OdaHostApp.24.0'
+# This CoClass is known by the name 'BricscadApp.OdaHostApp.25.0'
 class OdaHostApp(CoClassBaseClass): # A CoClass
     # OdaHostApp Class
-    CLSID = IID('{D81CF9E5-4C85-435B-876B-C706E2D5F00E}')
+    CLSID = IID('{2C5BF907-DB41-47B6-AFBB-D3DD1FE033EA}')
     coclass_sources = [
         _IOdaHostAppEvents,
     ]
@@ -33605,10 +33596,10 @@ class OdaHostApp(CoClassBaseClass): # A CoClass
     ]
     default_interface = IOdaHostApp2
 
-# This CoClass is known by the name 'BricscadApp.OdaSvgExporter.24.0'
+# This CoClass is known by the name 'BricscadApp.OdaSvgExporter.25.0'
 class OdaSvgExporter(CoClassBaseClass): # A CoClass
     # SvgExporter Class
-    CLSID = IID('{C0F35882-6A8B-426C-8787-001E1073197A}')
+    CLSID = IID('{B7E5C67D-D203-482A-A2B3-8AEBA3E70B13}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33616,10 +33607,10 @@ class OdaSvgExporter(CoClassBaseClass): # A CoClass
     ]
     default_interface = IOdaSvgExporter
 
-# This CoClass is known by the name 'BricscadApp.TransmittalFile.24.0'
+# This CoClass is known by the name 'BricscadApp.TransmittalFile.25.0'
 class TransmittalFile(CoClassBaseClass): # A CoClass
     # TransmittalFile Class
-    CLSID = IID('{D944169D-A83B-4A9E-B543-5C66F52E3D35}')
+    CLSID = IID('{BD980345-1450-4804-A465-94BB9B645059}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33627,10 +33618,10 @@ class TransmittalFile(CoClassBaseClass): # A CoClass
     ]
     default_interface = ITransmittalFile
 
-# This CoClass is known by the name 'BricscadApp.TransmittalFilesGraph.24.0'
+# This CoClass is known by the name 'BricscadApp.TransmittalFilesGraph.25.0'
 class TransmittalFilesGraph(CoClassBaseClass): # A CoClass
     # TransmittalFilesGraph Class
-    CLSID = IID('{658E0EA9-97D8-4D44-AFF0-A0F01094750D}')
+    CLSID = IID('{2F5B9DCB-93C6-46D4-BDAA-4F38ECCE6935}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33638,10 +33629,10 @@ class TransmittalFilesGraph(CoClassBaseClass): # A CoClass
     ]
     default_interface = ITransmittalFilesGraph
 
-# This CoClass is known by the name 'BricscadApp.TransmittalInfo.24.0'
+# This CoClass is known by the name 'BricscadApp.TransmittalInfo.25.0'
 class TransmittalInfo(CoClassBaseClass): # A CoClass
     # TransmittalInfo Class
-    CLSID = IID('{AD47B265-C3D5-437C-AA75-527C7A7793C6}')
+    CLSID = IID('{D5515973-C2A2-46CE-BB83-66EE885E8CA3}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -33649,10 +33640,10 @@ class TransmittalInfo(CoClassBaseClass): # A CoClass
     ]
     default_interface = ITransmittalInfo
 
-# This CoClass is known by the name 'BricscadApp.TransmittalOperation.24.0'
+# This CoClass is known by the name 'BricscadApp.TransmittalOperation.25.0'
 class TransmittalOperation(CoClassBaseClass): # A CoClass
     # TransmittalOperation Class
-    CLSID = IID('{9A61E0FC-4311-457B-8C65-2AD3531DC5DD}')
+    CLSID = IID('{7AF84696-2BA8-4F82-B136-F37844198AA7}')
     coclass_sources = [
     ]
     coclass_interfaces = [
@@ -34761,6 +34752,9 @@ ITransmittalOperation_vtables_ = [
     (( 'getTransmittalGraphInterface' , 'ppIGraph' , ), 7, (7, (), [ (16393, 10, None, "IID('{DE88EA7C-176A-42C7-BF1A-CFCCDEAB3EDB}')") , ], 1 , 1 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
 ]
 
+RecordMap = {
+}
+
 CLSIDToClassMap = {
     '{153A7BFD-AB55-48D4-81C7-22252D635ECE}' : IAcadObject,
     '{236374B2-E248-484D-91D4-C13FA726645D}' : IAcadDatabase,
@@ -34884,124 +34878,124 @@ CLSIDToClassMap = {
     '{8CF4A451-A8A4-40C1-9ECC-26EF097042D6}' : IAcadHatch2,
     '{5EB52F66-908B-48C5-87D9-0180E81BF64F}' : IAcadSectionTypeSettings2,
     '{88F4A330-80BA-4593-975B-BB2ACDC4E465}' : IOdaPolyfaceMesh,
-    '{E0ED259B-1BDB-4411-95BF-495BA25926A9}' : AcadLine,
-    '{1ECF9DF9-7F91-48F5-963E-2740C5972B68}' : AcadObject,
-    '{7B91A7F3-234E-4BD1-8914-76856A2AF7D9}' : AcadEntity,
-    '{5FB8DBE0-D358-433C-ACAC-BC068C7037BA}' : AcadDimension,
-    '{1DB6148A-7A75-431A-9F6E-5EE1DF74AD0F}' : AcadDimRotated,
-    '{78D1C5E6-5650-4BFB-B601-93358EC97545}' : AcadMText,
-    '{5EF88703-1D0E-410B-93B1-45956D27AD4E}' : AcadDatabase,
-    '{4C1BF9A1-35AA-491B-8B22-2B2195D8229F}' : AcadViewport,
-    '{9C67AAB4-9FF9-4CE0-9B87-8EF15358F7B3}' : AcadViewports,
-    '{82833E4D-7362-465C-B00B-70F453668575}' : AcadText,
-    '{5F7B73C4-ED41-4B98-98C6-EBA460B2F8F7}' : AcadTrace,
-    '{F1B5F011-5265-4E87-9CE9-225743FB78D4}' : AcadPolyline,
-    '{D49DF09F-070E-429D-976D-39F53AE3EF0B}' : AcadLineTypes,
-    '{90507134-664C-4253-AD47-8F3AD62F3B2F}' : OdaLineType,
-    '{0781CAE4-6055-4D40-B954-42D5EC725018}' : AcadLineType,
-    '{59A0D5D3-CD4B-404E-888E-B280E8C7FE8A}' : AcadBlocks,
-    '{D1D3025A-2179-4913-8262-F39523B04636}' : OdaBlock,
-    '{5BE85927-9C3C-4E1F-BAE0-CCDA866949C5}' : AcadBlock,
-    '{3E7B0C05-2062-420C-8EB3-EA62DC886DB1}' : AcadEllipse,
-    '{B495AD49-5306-4B28-89F5-A69ED8798A4F}' : AcadCircle,
-    '{D3EF1961-790F-4F88-98C6-49B664435505}' : AcadPoint,
-    '{3B3E11A0-2824-4ADA-9EFE-41578212028F}' : Acad3DFace,
-    '{90D9E3BD-E641-45B1-9C71-10F66E673E6E}' : Acad3DPolyline,
-    '{365AF1BE-48C3-4099-951D-C1791294DE19}' : Acad3DSolid,
-    '{96810171-584F-4A58-95DF-F90746B866A0}' : AcadArc,
-    '{A6D6469F-6F70-4864-A8DC-5DB7397C658E}' : AcadAttribute,
-    '{B02B4037-B189-4C98-BBF6-6DA42B1D673D}' : AcadLeader,
-    '{CF0F8CEA-42D4-49E7-BDFA-764CFC2F412C}' : AcadMLeader,
-    '{A708E24B-99D0-4D39-82C5-BD5BAAE97DFF}' : AcadMLeaderStyle,
-    '{57FF5291-176F-4957-9FA6-5C2324976AA8}' : AcadTolerance,
-    '{BEC51FF5-8BEE-4E41-9208-C23E7245B237}' : AcadBlockReference,
-    '{2CD4FC7D-3E9F-42E6-9D76-F42B55AAEEC5}' : AcadDim3PointAngular,
-    '{1158BDED-3762-405F-A58F-8789BCD31AE4}' : AcadDimAligned,
-    '{FD968BB1-F1E1-4250-9903-56DF5171CF3D}' : AcadShape,
-    '{61375357-7DDF-41E8-A003-5D44D0ED4617}' : AcadSolid,
-    '{5F8B0FFC-7274-4725-980A-5007C132C268}' : AcadSpline,
-    '{9681B428-389B-4E38-9718-26FBBC646BEE}' : AcadDimAngular,
-    '{34A10E3E-AB48-4CBB-88CF-815F87738E90}' : AcadDimDiametric,
-    '{685766B4-4712-4A68-9F6C-67765BF17C2B}' : AcadDimOrdinate,
-    '{83F62228-2B26-4C18-8579-A9FC76D6422B}' : AcadDimRadial,
-    '{BBAE1F47-D006-4796-A760-90F869EBA3F4}' : AcadDimRadialLarge,
-    '{8A36FC37-0C0B-44FB-BA25-B6ED2090394B}' : AcadDimArcLength,
-    '{2F5F8554-25D4-4D47-ABE3-4F92E81D4DFF}' : AcadXRecord,
-    '{D0720E0B-260B-4E8E-B02E-BB1C6882AB2F}' : AcadXline,
-    '{B71AD3CB-A8BC-4EB7-9946-579E44B8393E}' : AcadRay,
-    '{FCF82E37-DD4C-4992-AF92-5FB8923AAC11}' : AcadDimStyle,
-    '{97A26D82-C2A9-4D4E-8036-8A841A26D262}' : AcadExternalReference,
-    '{A3E63831-0E7F-492F-9621-21B2627DF0D1}' : AcadMInsertBlock,
-    '{9AB84FD1-1BEF-4A4B-BC47-C34ADA79F397}' : AcadDimStyles,
-    '{647A8606-56EB-41CB-B6AE-6353DE9212F6}' : AcadUCS,
-    '{35730B52-1E06-4055-B96F-472E4BA49750}' : AcadUCSs,
-    '{05C08097-1095-42F2-83B1-789661B77D37}' : AcadView,
-    '{AB479309-A94E-45F8-B968-09766E364886}' : AcadViews,
-    '{3C200789-8338-447D-8373-AFEF38713BAA}' : AcadGroup,
-    '{2D7FB26E-9052-4F9F-BD2D-D18C50713ED6}' : AcadGroups,
-    '{887A471D-8E5B-46DD-B1FC-9248511A45B1}' : AcadDictionaries,
-    '{BF982612-77C8-45E1-8F25-F10392D86C71}' : AcadDictionary,
-    '{E386A799-DE90-42E8-9FC1-89DDB6CEFC41}' : AcadLayouts,
-    '{D3D20BA9-3EDD-4108-9E10-4EE99F917847}' : AcadLayout,
-    '{6201AE6E-3520-424A-903D-6F9F882C846E}' : AcadTextStyle,
-    '{F9FF244F-67A9-4A6F-94FF-F839614E1470}' : AcadTextStyles,
-    '{4B2665FC-67ED-44AF-8C4D-6A04816631F3}' : AcadHatch,
-    '{F4F5165B-D882-4A22-9821-8F8A5092D87A}' : AcadMLine,
-    '{84CA9670-95BB-48D2-886A-64FECD7DF55B}' : AcadPolygonMesh,
-    '{52215AF1-CE88-43F7-BC8A-65E9AC73AB69}' : AcadPolyfaceMesh,
-    '{34F35DB3-EA8B-4EF7-8AEE-009362201B18}' : AcadPlotConfiguration,
-    '{A0E0F939-5A48-40A3-99D3-C57C25BE9E60}' : AcadPlotConfigurations,
-    '{3C32ECD7-9763-4A13-BCED-A7E0A7CBB3EC}' : OdaRasterImage,
-    '{5DAC02AE-C024-4E70-ACD2-CBDBB3AC3686}' : AcadRasterImage,
-    '{37FDD4DC-7074-46A2-8140-7B8CB49D4C5A}' : AcadRegion,
-    '{804668AC-29D1-4325-9C2F-9082076A8D32}' : AcadRegisteredApplication,
-    '{505EC430-224F-4DF3-B7B8-0615AA6C2F36}' : AcadRegisteredApplications,
-    '{4AC35C83-26ED-4BCC-A25F-78D31643490A}' : AcadPViewport,
-    '{CA59FF45-6C1E-4223-9530-35C60DE7480D}' : AcadDatabasePreferences,
-    '{2591C8C9-336E-4DA2-875F-5BD437A4E6A5}' : AcadHyperlink,
-    '{277E3E52-6C69-4AC1-9312-DD3A02519F33}' : AcadHyperlinks,
-    '{4EDD52C1-33F1-4B70-A800-2654F60D1D2B}' : AcadLayer,
-    '{B9FEA495-416E-44BC-AB51-7150524E5AE0}' : AcadLayers,
-    '{87897864-72C3-4D87-81DD-00614EC82213}' : AcadLWPolyline,
-    '{A6413E76-C1F2-4883-A9DF-4F328C9375EC}' : AcadPaperSpace,
-    '{D28289A3-5CCD-42DB-83BA-79C472D1BC7E}' : AcadModelSpace,
-    '{50463551-644F-48E0-ADF0-70BDE39C2379}' : AcadAttributeReference,
-    '{2A3294B7-AB1F-40C1-98E9-EA193E2847DB}' : AcadAcCmColor,
-    '{40BB6348-8E1C-415D-A9D2-90C573CDB364}' : AcadSummaryInfo,
-    '{2155F8AB-E527-45F7-8A97-FD850E710340}' : AcadFileDependencies,
-    '{6F500011-5D1F-40A1-A1FD-109084F95E07}' : AcadFileDependency,
-    '{35BEAEB0-3061-4089-9E36-5FF6C8B9B34A}' : AcadTable,
-    '{CC40EAA3-6269-4D03-A2FC-3756679F5179}' : OdaOle,
-    '{50F5CD60-FD9D-4FEE-A36E-CE9C411213EE}' : AcadTableStyle,
-    '{3710CC1D-B641-43B7-AA95-DD105F2E3304}' : AcadSortentsTable,
-    '{E15628CD-21E1-449A-8A74-5673C390599A}' : OdaMLineStyles,
-    '{9D7870FF-F579-42F2-B5C8-68C1F81520B1}' : OdaMLineStyle,
-    '{0E35FAA5-88E5-4697-948A-D262A2680445}' : AcadDynamicBlockReferenceProperty,
-    '{4ED7B981-124E-465A-89E3-919A01A16824}' : AcadSection,
-    '{79CA2C51-081A-466B-B451-D39485782330}' : AcadSurface,
-    '{50347C02-0E1F-407E-9962-A96E32FA97D7}' : AcadLoftedSurface,
-    '{531C8060-0A55-478B-A517-F7B3369306E9}' : AcadSweptSurface,
-    '{ADF8BDAF-0231-422E-ACB9-6B769A5C8F96}' : AcadRevolvedSurface,
-    '{7D3E8B0E-13E1-4DED-AD26-D39649A19DA6}' : AcadExtrudedSurface,
-    '{02C58A19-A75E-4E03-BFDA-05F83B0EE9EE}' : AcadPlaneSurface,
-    '{AA0DEA33-0EB3-432B-B91B-88384639BBA3}' : AcadHelix,
-    '{FDCF150A-D241-4F4A-A3AC-2B6C7BEE6814}' : AcadSectionSettings,
-    '{D8A7A1C3-D35B-49B1-84FE-408F5DD74504}' : AcadSectionTypeSettings,
-    '{6C36E808-470A-42DC-A317-95D4529339F9}' : AcadSectionManager,
-    '{D75D937B-6DD9-407E-AF88-6D29801CB204}' : AcadMaterial,
-    '{16F19695-0DD8-494B-9FF3-756EF0AB29B1}' : AcadMaterials,
-    '{71B03226-0D81-4E25-869B-5DA9E3F6B7CE}' : AcadDwfUnderlay,
-    '{BA52E9FE-ED83-40C5-B0B1-5745C9E07B2B}' : AcadDgnUnderlay,
-    '{31348C0E-FAD9-455F-B469-77CAA3C15DA2}' : AcadPdfUnderlay,
-    '{EEA688F8-1BA2-46DE-80F8-39C0EB3F592B}' : AcadMLeaderLeader,
-    '{E0A0C0B2-5007-454B-AB84-EE81C5E38A90}' : AcadSubEntity,
-    '{48488B9F-D0D3-4835-8250-920A8C1FB3C9}' : AcadSubEntSolidFace,
-    '{278C11AB-1CFD-4323-B9CC-8B7CA06D38C4}' : AcadSubEntSolidEdge,
-    '{B82EA70D-951C-4A43-AFE8-A8DDD4E710F4}' : AcadSubEntSolidVertex,
-    '{AB17FEA5-1C04-4E2B-BF37-7FADA3403BEB}' : AcadWipeout,
-    '{2DB71EA6-47C0-457C-9E36-D5FDE0E72C05}' : OdaLight,
-    '{6CEF829F-33B8-4FF2-B641-8333F877B180}' : OdaCamera,
-    '{7EFB484A-0280-4ED6-A73F-6DBE663DB79D}' : ITransmittalOperation,
+    '{2128CBE6-D842-4281-A916-7EFC0667A4F8}' : AcadLine,
+    '{8ADB9DC6-185D-4AD6-9341-35F3039D5945}' : AcadObject,
+    '{31C59A67-D96E-403A-A952-E77DC60D613E}' : AcadEntity,
+    '{EDF89BCE-2FE3-4710-B4DD-87EC0FC4732F}' : AcadDimension,
+    '{2A915C25-BCD1-4633-9965-04033A7E7ED6}' : AcadDimRotated,
+    '{CF63888C-AF87-4FDA-B026-9B73F22999BB}' : AcadMText,
+    '{AB9C0147-0553-49F4-886B-2A4A44423429}' : AcadDatabase,
+    '{B02DAF22-C47C-4A21-B3C7-0D8E8523BE7B}' : AcadViewport,
+    '{8E7B0553-E430-457C-8C0A-7EFC18CEC602}' : AcadViewports,
+    '{EDD7269E-A8F3-455A-A9F7-DE6641940A87}' : AcadText,
+    '{D1CE6BEB-D8CE-4BC4-9330-2775B88727DC}' : AcadTrace,
+    '{FB21CC08-8A93-4DC5-A488-9696A510C7BA}' : AcadPolyline,
+    '{FADD0FB1-DB54-4779-B192-68AEADD73226}' : AcadLineTypes,
+    '{419680F3-367B-4536-8B90-06B0F8A0CBEE}' : OdaLineType,
+    '{834DE1EC-F089-445B-A6C1-E758BBF61A6F}' : AcadLineType,
+    '{62978BB1-B93A-43CB-808C-3FCC46CDBAB6}' : AcadBlocks,
+    '{146ABD50-C988-4F8D-8B4D-0DEFA39DA231}' : OdaBlock,
+    '{472C402B-2266-4B74-9BFB-366FB2C0817C}' : AcadBlock,
+    '{49886B43-9A12-40B7-9BAB-A825606BD5DE}' : AcadEllipse,
+    '{9B21007A-5B41-43D3-9545-2B21DC81557C}' : AcadCircle,
+    '{2B86D496-9C35-45C1-A42A-FD7B05FE108C}' : AcadPoint,
+    '{6E77426A-B057-4D42-8EA6-4B55101C2F58}' : Acad3DFace,
+    '{C77D0BB5-592A-468E-B686-553528986158}' : Acad3DPolyline,
+    '{858CB0DD-6B75-4656-BC7C-20035D47F7B7}' : Acad3DSolid,
+    '{0A3D2BD0-0C2D-44DC-9CA5-71A2158E179A}' : AcadArc,
+    '{19E4F37C-9743-4DB1-BA63-668AABB57B52}' : AcadAttribute,
+    '{C4C1CE7C-8B73-4226-96B5-E4B90D900B6F}' : AcadLeader,
+    '{ED0260BC-DCBC-4D8F-8CC9-39E27E3A45E8}' : AcadMLeader,
+    '{4499847D-1E01-4FC7-A9DD-F8DA5E48FD44}' : AcadMLeaderStyle,
+    '{54749117-580D-49EC-A71D-95F7D204C248}' : AcadTolerance,
+    '{5D575775-7D04-46EB-A5DE-7FF0342C01E9}' : AcadBlockReference,
+    '{61A8F2F8-03E7-48F1-B1C9-6600850BE8EB}' : AcadDim3PointAngular,
+    '{C329AC6E-5A36-4CB4-9650-A56F77E68FE0}' : AcadDimAligned,
+    '{3E7AE1DC-06F2-4CAC-AFAC-C84ADDF23530}' : AcadShape,
+    '{7AF5B7F2-6B00-4C67-AFE3-F6B2B3051F48}' : AcadSolid,
+    '{2F0C03B4-66E6-4D3B-918D-C4A437335293}' : AcadSpline,
+    '{EBB696A0-45A3-431D-B194-646B7A3B598F}' : AcadDimAngular,
+    '{7FF84789-30C6-436B-A702-0D1AD90B96B1}' : AcadDimDiametric,
+    '{F29CD169-60A9-4434-91EA-2F07A8064F8D}' : AcadDimOrdinate,
+    '{6356EA4A-DFEE-4DB6-BA5F-0072CB0AB609}' : AcadDimRadial,
+    '{B076E419-CDC7-4D99-89B0-4B725C92FFA2}' : AcadDimRadialLarge,
+    '{22DB4D5C-C3A0-4C40-875A-E5AB7F41EC56}' : AcadDimArcLength,
+    '{F2A66B6C-BF12-4A37-B07A-8DCF2CC3CA68}' : AcadXRecord,
+    '{09427D58-59B3-44AB-806A-3B78EA0C9387}' : AcadXline,
+    '{2D591D83-847D-486F-810C-8C0BC35710B8}' : AcadRay,
+    '{FCC02C04-7D49-45EE-BCA7-3F198B244F85}' : AcadDimStyle,
+    '{84C6383F-8175-4D91-A334-475230F732EF}' : AcadExternalReference,
+    '{98B11CB5-9B66-424C-9413-95E4B27B528B}' : AcadMInsertBlock,
+    '{EB85FEC7-264C-46CF-8AA7-CF70A1404D7D}' : AcadDimStyles,
+    '{63C89724-642E-44AA-8A7B-87AD930D1D70}' : AcadUCS,
+    '{A16D8258-E4AF-4C2C-A5D1-93D44DB17C79}' : AcadUCSs,
+    '{E24D9D8E-31EF-4E89-9777-491BEB188AF6}' : AcadView,
+    '{B01090A5-7B8F-49D8-B03C-FBC165DDDCC8}' : AcadViews,
+    '{75E56E90-EEED-4477-A387-A40724045324}' : AcadGroup,
+    '{9D8D414B-40DB-42DA-B24C-56F9079D89B3}' : AcadGroups,
+    '{D5285F70-D46A-4E0D-B81B-BB71E78CA539}' : AcadDictionaries,
+    '{6C7F96FE-1E9A-46A4-83DB-9047F0724E3B}' : AcadDictionary,
+    '{AF7F6847-E9EE-4631-BC11-E294AB931AD7}' : AcadLayouts,
+    '{F716D4BC-FEB0-4380-8DBE-8EFF9864863A}' : AcadLayout,
+    '{5D6E989A-315C-4838-9E50-7C716BD1D007}' : AcadTextStyle,
+    '{82AD9434-58C8-4316-91AE-BAD65EA09738}' : AcadTextStyles,
+    '{E56C99AB-8A6E-43BA-B4CF-58C5137450A5}' : AcadHatch,
+    '{3E7500AD-3849-4135-B49F-1FC73371EB31}' : AcadMLine,
+    '{C44EFC64-B725-44A8-941F-4DE88120DE89}' : AcadPolygonMesh,
+    '{6435F8F6-F509-4DC5-88D9-E5062CE5282D}' : AcadPolyfaceMesh,
+    '{C665FF18-7A1A-428F-BBFE-C011781C3884}' : AcadPlotConfiguration,
+    '{650C739E-F7D8-4A43-B260-03BFBA1FABF4}' : AcadPlotConfigurations,
+    '{8FD87807-2150-435F-AAE5-3D02F3685329}' : OdaRasterImage,
+    '{7C353EA8-B077-4C5E-8A33-1F6173A9C719}' : AcadRasterImage,
+    '{AC7F3965-6927-457D-B4CD-0D47CFAEB4A4}' : AcadRegion,
+    '{BF52BE9D-6CCD-47A4-AF07-740ED5FE8905}' : AcadRegisteredApplication,
+    '{E84E7E7B-0DCB-4229-A9DD-093AA1C2F8DE}' : AcadRegisteredApplications,
+    '{086C713A-B7B5-43E7-B33C-C1B21B12F6D2}' : AcadPViewport,
+    '{B45B39E3-3140-4559-AC47-90D8BC837319}' : AcadDatabasePreferences,
+    '{F33C8BAC-2E89-41C7-AD83-927F5C1F5F5B}' : AcadHyperlink,
+    '{7561504C-84AB-4D0A-A5F4-997FDA647550}' : AcadHyperlinks,
+    '{EFEA7C54-3DC9-46BB-B0C3-ED7FA2DA8A61}' : AcadLayer,
+    '{58CA3ABC-798C-41E2-AB6D-66E4EDD3A14C}' : AcadLayers,
+    '{0FC390E7-C3CF-4565-AEAA-E7228601529C}' : AcadLWPolyline,
+    '{A094C648-846F-4E09-8E60-53E83AC5146B}' : AcadPaperSpace,
+    '{B1060F62-A436-47EE-B686-DFC901908EE0}' : AcadModelSpace,
+    '{65FF897A-9E92-4BFC-9C0A-7CA26C55074F}' : AcadAttributeReference,
+    '{E6E54E65-BF3D-46CC-8165-4B019D1CA00D}' : AcadAcCmColor,
+    '{441539A4-1E53-4971-BC20-CCD747618D2F}' : AcadSummaryInfo,
+    '{B133B77C-B736-4B6E-BA4E-5884E73FDF85}' : AcadFileDependencies,
+    '{44DCF5B7-D725-4E56-A31F-6192BE8BEF29}' : AcadFileDependency,
+    '{B69314BE-33A7-4696-9C20-D958A9DEC5AE}' : AcadTable,
+    '{99E626ED-9F21-4E0C-B066-74A370F31E07}' : OdaOle,
+    '{F2BBF44D-ECFB-479E-A403-74AB5761A861}' : AcadTableStyle,
+    '{2AF34B93-363B-400D-B402-0B3CF9EAC107}' : AcadSortentsTable,
+    '{6B38F06B-F297-4474-9EAB-AF2531321598}' : OdaMLineStyles,
+    '{0B689804-8334-4F39-8F01-9C9BA52C29F4}' : OdaMLineStyle,
+    '{B10DACF6-88FB-4874-A7BF-D0FB9A20F9E5}' : AcadDynamicBlockReferenceProperty,
+    '{D9FAAF7E-3503-4F01-B06E-D1A3E9015A96}' : AcadSection,
+    '{42A16B95-81BE-4CBA-9EE2-CBCFA55192EE}' : AcadSurface,
+    '{B9B743FA-6A83-41D6-959C-796E74EA50BC}' : AcadLoftedSurface,
+    '{832A3471-3964-4D89-BBE0-C4FAB86E84C0}' : AcadSweptSurface,
+    '{1E67452B-02C5-4133-B8FE-37CB89DBFA53}' : AcadRevolvedSurface,
+    '{DDC04592-F2C4-49AC-832E-80A165301952}' : AcadExtrudedSurface,
+    '{0E5B4738-F00F-4500-A320-F758C7A042EE}' : AcadPlaneSurface,
+    '{90F31610-1240-4097-9477-63B5E34E7782}' : AcadHelix,
+    '{267EC151-1134-42F2-A3F8-5FF6369D679C}' : AcadSectionSettings,
+    '{89B22DA5-F1F8-4C80-ACCF-8BDF547EB60B}' : AcadSectionTypeSettings,
+    '{1674176B-8F5E-44D8-8148-C2DD7607C5B0}' : AcadSectionManager,
+    '{268CBEFD-7A55-4890-B05C-C1E930FB7457}' : AcadMaterial,
+    '{7A2524E5-3F4E-48AC-8F20-F076AC88A6A0}' : AcadMaterials,
+    '{F0FDEB9B-DC3C-4DE6-86AA-84A8F41399BF}' : AcadDwfUnderlay,
+    '{6DEF83A7-9F2C-46E1-8A4A-197366B4F528}' : AcadDgnUnderlay,
+    '{930FE8E1-97D9-4BAB-B37F-A1ABF0CA9C8E}' : AcadPdfUnderlay,
+    '{73072689-8CF0-47FE-B320-9DED49D343C9}' : AcadMLeaderLeader,
+    '{A7A6090B-FF70-4B6A-B779-67633557327C}' : AcadSubEntity,
+    '{F485F5D7-2DA4-49CD-91D2-B838AF974EB9}' : AcadSubEntSolidFace,
+    '{76681FA4-070A-407B-91AF-84418A2ED76F}' : AcadSubEntSolidEdge,
+    '{18FF635E-8088-4A9C-922E-7BFE0776B7E9}' : AcadSubEntSolidVertex,
+    '{9B7B5594-7BE4-4E8D-996F-4EA58019A562}' : AcadWipeout,
+    '{5DED7CE2-3E9D-45F1-BEB5-2FB8BE8C9B0C}' : OdaLight,
+    '{CC48BB25-9814-4DE7-A711-50D5CD8CD136}' : OdaCamera,
+	'{7EFB484A-0280-4ED6-A73F-6DBE663DB79D}' : ITransmittalOperation,
     '{0A107B59-34CE-4F40-9AF2-26060A3C2099}' : ITransmittalFile,
     '{122D84E7-A507-414C-A517-C33B19AF6BA5}' : ITransmittalInfo,
     '{DE88EA7C-176A-42C7-BF1A-CFCCDEAB3EDB}' : ITransmittalFilesGraph,
@@ -35043,61 +35037,61 @@ CLSIDToClassMap = {
     '{56B202FE-BE71-43B4-B504-1902EDE89644}' : IOdaAuditInfo,
     '{11C4F7AA-D8CC-4762-8C7C-3064E65EEDBD}' : IOdaBmpOut,
     '{4E99C4A8-AFC0-45E9-B312-61D7DB4F2EE6}' : IOdaDwf3dExport,
-    '{9A61E0FC-4311-457B-8C65-2AD3531DC5DD}' : TransmittalOperation,
-    '{658E0EA9-97D8-4D44-AFF0-A0F01094750D}' : TransmittalFilesGraph,
-    '{D944169D-A83B-4A9E-B543-5C66F52E3D35}' : TransmittalFile,
-    '{AD47B265-C3D5-437C-AA75-527C7A7793C6}' : TransmittalInfo,
-    '{FE3FC546-AF40-4A2E-9C5C-14B7B4B8A54D}' : AcadMenuGroups,
-    '{A07E5142-51E0-441E-B442-1F46F53F3888}' : AcadMenuGroup,
-    '{DE927728-3684-4835-8255-54350D951307}' : AcadMenuBar,
-    '{18B24243-321E-4980-9351-57C02F246EC9}' : AcadPopupMenus,
-    '{62AB6B80-D12D-40C8-8970-9915E69E05E0}' : AcadPopupMenu,
-    '{E24D7979-088A-435B-B939-D8E18AD4BE1D}' : AcadPopupMenuItem,
-    '{6625C943-4F9E-4FCD-B847-454FCDC56C19}' : AcadToolbars,
-    '{A8D0AE76-640B-44AA-BB5C-6986706CA9F6}' : AcadToolbar,
-    '{C9F46D28-7AEE-48F1-B8B7-6F8E7EC40625}' : AcadToolbarItem,
+    '{7AF84696-2BA8-4F82-B136-F37844198AA7}' : TransmittalOperation,
+    '{2F5B9DCB-93C6-46D4-BDAA-4F38ECCE6935}' : TransmittalFilesGraph,
+    '{BD980345-1450-4804-A465-94BB9B645059}' : TransmittalFile,
+    '{D5515973-C2A2-46CE-BB83-66EE885E8CA3}' : TransmittalInfo,
+    '{FE7B423E-3162-4041-B439-3F9705B6364F}' : AcadMenuGroups,
+    '{1B9391FB-EBD8-4710-B969-BE5945D0F3DB}' : AcadMenuGroup,
+    '{6ED054C6-FE32-499C-A710-5B57C94B06A5}' : AcadMenuBar,
+    '{9023410A-8F48-4426-80D3-00023CD1B89C}' : AcadPopupMenus,
+    '{A8013421-F99D-4078-95CA-10B377E78C8E}' : AcadPopupMenu,
+    '{0F8D7197-2460-4CFA-B32F-68E1E3267F50}' : AcadPopupMenuItem,
+    '{57F40F52-4F7E-407E-AEED-1A36E4A37C75}' : AcadToolbars,
+    '{E5E9F524-EBD3-4D2A-9545-8287983CBD7E}' : AcadToolbar,
+    '{2A0CB6D5-2878-447E-9B7F-9A5B2F1B0C4E}' : AcadToolbarItem,
     '{93E291E9-BB72-429B-B4DE-DF76B88603EB}' : _DAcadApplicationEvents,
     '{63A90E32-CB8B-4A3B-ADFF-EF94A35278B2}' : _DAcadDocumentEvents,
     '{E789E253-BEDC-44FF-B228-AD3A17D9AB3A}' : IOdaHostApp,
     '{9DFDB619-A15D-43CD-92D5-7987D452B9F1}' : IOdaConsole,
     '{CFE29DD1-2A1B-49F9-853E-11918A789C6D}' : IOdaHostApp2,
     '{6EBA6B5A-1D9F-4B21-BC0B-35EFDBAB543D}' : IOdaBagFiler,
-    '{61F2A9AB-8A44-4C20-953A-735508C1CA85}' : AcPePropertyEditorColor,
-    '{4B61C84D-A730-4760-A409-4023DD1D8E57}' : AcPePropertyEditorTextStyle,
-    '{8C9F3B98-30E9-45CE-9F07-63955326E8D4}' : AcPePropertyEditorLType,
-    '{96F57653-F913-4CAB-B511-2F14AF9138D3}' : AcPePropertyEditorLayer,
-    '{4F19983F-AB24-4FB9-ADC0-0B6026080239}' : AcPePropertyEditorLWeight,
-    '{7507B465-281A-465C-A724-A72D09327153}' : AcPePropertyEditorEllipses,
-    '{4735C83D-5F58-4963-8571-A4424C619D7F}' : AcPePick2PointsCtrl,
-    '{0E86524E-1812-426A-9A63-2C2B51B0D0E4}' : AcadApplication,
-    '{5F5D38B7-C56C-4250-B088-2B06EEEC1EE9}' : AcadDocuments,
-    '{3975E80C-5EC5-4EE0-B432-E9EC7BBB9A5A}' : AcadDocument,
+    '{5811249A-0F51-4919-B19C-CC2AC6884E9A}' : AcPePropertyEditorColor,
+    '{18290F19-398A-4F75-9193-98D7829227C1}' : AcPePropertyEditorTextStyle,
+    '{C0338607-7837-4732-BEA4-32DCCFE5A25B}' : AcPePropertyEditorLType,
+    '{122F53C7-E94E-4AF6-BEF8-09342BA70DF5}' : AcPePropertyEditorLayer,
+    '{25C36706-B631-4968-940A-4E69B70AEE06}' : AcPePropertyEditorLWeight,
+    '{47FFE80C-B2C9-431A-99B7-56D75CB99B20}' : AcPePropertyEditorEllipses,
+    '{97F92B7F-7368-4BBD-8170-E39A53DA52B0}' : AcPePick2PointsCtrl,
+    '{DD9C2859-1A46-4AEF-A118-E513E6E867C1}' : AcadApplication,
+    '{67C700FE-1331-461B-A46E-80CBA198868C}' : AcadDocuments,
+    '{82857A82-CEE5-4F3D-9C19-6C60472D0FF7}' : AcadDocument,
     '{5FA75E80-D112-4186-AD8E-0992D7F13475}' : _IOdaHostAppEvents,
-    '{D81CF9E5-4C85-435B-876B-C706E2D5F00E}' : OdaHostApp,
-    '{AB480185-F159-4B5D-BC9E-AEA9AB722DF1}' : AcadUtility,
-    '{A3EAF524-D893-4F6F-8D07-7F9416F7EBB9}' : AcadPreferences,
-    '{354D8744-81E2-4BB0-AC00-2C2471F3BEBE}' : AcadPreferencesFiles,
-    '{100E11DA-6700-452D-B6BE-0B65FDB2E17A}' : AcadPreferencesDisplay,
-    '{E21FACEF-E6A4-4DE1-8315-7F0F07EB877E}' : AcadPreferencesOpenSave,
-    '{46B6BEE0-DA5A-4089-AC8A-70A254F31659}' : AcadPreferencesOutput,
-    '{CB5F57D2-535C-4550-BDAC-FBFDB8778294}' : AcadPreferencesPdfOutput,
-    '{8A48E79C-D378-4111-82D9-A25F84F5B6DC}' : AcadPreferencesSystem,
-    '{DD509194-682F-49FE-9984-C7F0EE819A45}' : AcadPreferencesUser,
-    '{F6B948E8-500C-4305-A2EA-71FA28A35530}' : AcadPreferencesDrafting,
-    '{469FB7EC-09CF-4D1D-BAC8-4553F5098ADD}' : AcadPreferencesSelection,
-    '{71AE8036-20F2-4439-BF71-F27400E3291D}' : AcadPreferencesProfiles,
-    '{5696C1B9-643B-4E6E-B711-DB897137424E}' : AcadState,
-    '{F3862E27-3753-44F7-BDB0-24468C8E8CF6}' : AcadSelectionSet,
-    '{2F021E6D-67B2-4955-9135-A28F93BCEE6D}' : AcadSelectionSets,
-    '{126D4FCB-3E3D-491B-9F0B-D6C9D362116A}' : AcadPlot,
-    '{81186CAF-6BAC-4DD6-B470-3C7930A28DD5}' : OdaDwfTemplate,
-    '{7CCF62DE-076C-4ED9-9ED2-3D4A5AC9E4DE}' : OdaDwf3dExport,
-    '{46901A1D-C99C-45E0-B2F5-D99C07CD8BBB}' : OdaDwfImporter,
-    '{2F38A4F0-DDE8-488C-B53C-5E364C267B53}' : AcadLayerStateManager,
-    '{06F4FD5D-DBD9-4B44-B464-6683CC541EDD}' : AcadSecurityParams,
-    '{C0F35882-6A8B-426C-8787-001E1073197A}' : OdaSvgExporter,
-    '{97B88F76-4023-412F-8C23-607C526E4E7D}' : OdaBmpOut,
-    '{DF962AF5-E3C8-4552-B65D-698F48DE2759}' : OdaBagFiler,
+    '{2C5BF907-DB41-47B6-AFBB-D3DD1FE033EA}' : OdaHostApp,
+    '{0BF8B246-B9AB-4B4E-A516-A060E02D2AC3}' : AcadUtility,
+    '{B7FA10DB-3809-4C4C-9D35-1FA41A85BA9E}' : AcadPreferences,
+    '{CADAC62E-3879-4542-8FF6-D83464DC53A9}' : AcadPreferencesFiles,
+    '{628F30CE-1073-4A97-B405-FD08712FAED9}' : AcadPreferencesDisplay,
+    '{816CFC0F-4F31-4D08-AC8A-D713B1C12A1F}' : AcadPreferencesOpenSave,
+    '{0C98484B-51B1-4E02-BE59-5FE0ABE433EF}' : AcadPreferencesOutput,
+    '{DE5C772C-DDD3-4169-9418-A6C56B1556D5}' : AcadPreferencesPdfOutput,
+    '{9B8EA766-C365-4931-919C-4FF7F5A1338B}' : AcadPreferencesSystem,
+    '{5D75345C-3627-4641-A2E1-901024DC0A65}' : AcadPreferencesUser,
+    '{B6CC71D9-3C58-46B4-AD94-969830198EB2}' : AcadPreferencesDrafting,
+    '{40E3D992-16E3-4A28-B93D-C1875ABF7B24}' : AcadPreferencesSelection,
+    '{25932CE8-A337-4904-804A-FB559279EA44}' : AcadPreferencesProfiles,
+    '{33F8C4BE-7C60-4E17-9DB6-B7DEF3AF47A1}' : AcadState,
+    '{650E21D9-724F-436C-A11E-39D23EAB5E3C}' : AcadSelectionSet,
+    '{4DD28068-5246-4348-802D-925FB5B598D3}' : AcadSelectionSets,
+    '{3E583B29-F912-4B90-A32E-0C0599C07F2E}' : AcadPlot,
+    '{0134A0B1-C7F1-4C13-B746-454F31423302}' : OdaDwfTemplate,
+    '{10EE17C2-9F9D-4CC0-8AC5-09A095A76D31}' : OdaDwf3dExport,
+    '{3979545E-6370-4E31-9CB6-EBB8F23C5C6B}' : OdaDwfImporter,
+    '{763AAF8B-9761-49A5-8948-5740102E72F5}' : AcadLayerStateManager,
+    '{CDB2CF03-54B5-429D-BC6C-549DBA5B1C2A}' : AcadSecurityParams,
+    '{B7E5C67D-D203-482A-A2B3-8AEBA3E70B13}' : OdaSvgExporter,
+    '{2D892D06-B5A3-41A5-BFB9-A080C12406D8}' : OdaBmpOut,
+    '{5A1FA04D-47EA-4B96-BD9D-168246BC8767}' : OdaBagFiler,
 }
 CLSIDToPackageMap = {}
 win32com.client.CLSIDToClass.RegisterCLSIDsFromDict( CLSIDToClassMap )
@@ -35228,7 +35222,7 @@ VTablesToClassMap = {
     '{8CF4A451-A8A4-40C1-9ECC-26EF097042D6}' : 'IAcadHatch2',
     '{5EB52F66-908B-48C5-87D9-0180E81BF64F}' : 'IAcadSectionTypeSettings2',
     '{88F4A330-80BA-4593-975B-BB2ACDC4E465}' : 'IOdaPolyfaceMesh',
-     '{7EFB484A-0280-4ED6-A73F-6DBE663DB79D}' : 'ITransmittalOperation',
+	'{7EFB484A-0280-4ED6-A73F-6DBE663DB79D}' : 'ITransmittalOperation',
     '{0A107B59-34CE-4F40-9AF2-26060A3C2099}' : 'ITransmittalFile',
     '{122D84E7-A507-414C-A517-C33B19AF6BA5}' : 'ITransmittalInfo',
     '{DE88EA7C-176A-42C7-BF1A-CFCCDEAB3EDB}' : 'ITransmittalFilesGraph',
@@ -35403,7 +35397,7 @@ NamesToIIDMap = {
     'IAcadObjectEvents' : '{5195F20D-9F99-43C4-9A6A-198355A920ED}',
     'IOPMPropertyExpander' : '{E3CD32AF-3A8F-49D9-9DC5-527E91318993}',
     'IOPMPropertyExtension' : '{9850E632-7168-452B-A262-FC3DCB313851}',
-    'ITransmittalOperation' : '{7EFB484A-0280-4ED6-A73F-6DBE663DB79D}',
+	'ITransmittalOperation' : '{7EFB484A-0280-4ED6-A73F-6DBE663DB79D}',
     'ITransmittalFile' : '{0A107B59-34CE-4F40-9AF2-26060A3C2099}',
     'ITransmittalInfo' : '{122D84E7-A507-414C-A517-C33B19AF6BA5}',
     'ITransmittalFilesGraph' : '{DE88EA7C-176A-42C7-BF1A-CFCCDEAB3EDB}',
