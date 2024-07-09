@@ -1060,7 +1060,11 @@ BrxBimAttributeSet* PyBrxBimAttributeSet::impObj(const std::source_location& src
 //BrxBimDialogs
 void makePyBrxBimDialogsWrapper()
 {
-
+    PyDocString DS("BrxBimDialogs");
+    class_<PyBrxBimDialogs>("BrxBimDialogs")
+        .def(init<>())
+        .def("className", &PyBrxBimDialogs::className, DS.SARGS()).staticmethod("className")
+        ;
 }
 
 PyBrxBimDialogs::PyBrxBimDialogs()

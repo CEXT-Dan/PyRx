@@ -371,7 +371,6 @@ public:
     std::shared_ptr<BimPropertyInfo> m_pyImp;
 };
 
-
 //---------------------------------------------------------------------------------------- -
 //BrxBimAttributeSet
 void makePyBrxBimAttributeSetWrapper();
@@ -389,7 +388,6 @@ public:
     std::shared_ptr<BrxBimAttributeSet> m_pyImp;
 };
 
-
 //---------------------------------------------------------------------------------------- -
 //BrxBimDialogs
 void makePyBrxBimDialogsWrapper();
@@ -406,7 +404,5 @@ public:
 public:
     std::shared_ptr<BrxBimDialogs> m_pyImp;
 };
-
-
 
 #endif//BRXAPP
