@@ -508,8 +508,8 @@ void makeBrxBimHatchPatternWrapper()
     PyDocString DS("BimHatchPattern");
     class_<PyBrxBimHatchPattern>("BimHatchPattern")
         .def(init<>())
-        .def(init<double,double,bool>())
-        .def(init<BrxBimMaterial::EHatchType, const std::string &,double, double>(DS.CTOR(ctor)))
+        .def(init<double, double, bool>())
+        .def(init<BrxBimMaterial::EHatchType, const std::string&, double, double>(DS.CTOR(ctor)))
         .def("className", &PyBrxBimHatchPattern::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -525,12 +525,12 @@ PyBrxBimHatchPattern::PyBrxBimHatchPattern(double scaleOrSpacing, double angle /
 }
 
 PyBrxBimHatchPattern::PyBrxBimHatchPattern(BrxBimMaterial::EHatchType type, const std::string& name, double scaleOrSpacing /*= 1.0*/, double angle /*= 0.0*/)
-    : PyBrxBimHatchPattern(new BrxBimMaterial::HatchPattern(type,utf8_to_wstr(name).c_str(), scaleOrSpacing, angle), true)
+    : PyBrxBimHatchPattern(new BrxBimMaterial::HatchPattern(type, utf8_to_wstr(name).c_str(), scaleOrSpacing, angle), true)
 {
 }
 
 PyBrxBimHatchPattern::PyBrxBimHatchPattern(const BrxBimMaterial::HatchPattern& r)
-  : PyBrxBimHatchPattern(new BrxBimMaterial::HatchPattern(r),true)
+    : PyBrxBimHatchPattern(new BrxBimMaterial::HatchPattern(r), true)
 {
 }
 
@@ -759,7 +759,7 @@ PyBrxBimComposition::PyBrxBimComposition(const std::string& name)
 }
 
 PyBrxBimComposition::PyBrxBimComposition(const BrxBimComposition& r)
-    : PyBrxBimComposition(new BrxBimComposition(r),true)
+    : PyBrxBimComposition(new BrxBimComposition(r), true)
 {
 }
 
@@ -819,7 +819,7 @@ PyBrxBimProfile::PyBrxBimProfile(const PyDbObjectId& id)
 }
 
 PyBrxBimProfile::PyBrxBimProfile(const BrxBimProfile& r)
-    : PyBrxBimProfile(new BrxBimProfile(r),true)
+    : PyBrxBimProfile(new BrxBimProfile(r), true)
 {
 }
 
@@ -898,6 +898,197 @@ BrxBimLinearGeometry* PyBrxBimLinearGeometry::impObj(const std::source_location&
         throw PyNullObject(src);
         }
     return static_cast<BrxBimLinearGeometry*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimClassification
+void makeBrxBimClassificationWrapper()
+{
+    PyDocString DS("BimClassification");
+    class_<PyBrxBimClassification>("BimClassification")
+        .def(init<>())
+        .def("className", &PyBrxBimClassification::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxBimClassification::PyBrxBimClassification()
+    : PyBrxBimClassification(new BimClassification(), true)
+{
+}
+
+PyBrxBimClassification::PyBrxBimClassification(const BimClassification* ptr)
+    :PyBrxBimClassification(const_cast<BimClassification*>(ptr), false)
+{
+}
+
+PyBrxBimClassification::PyBrxBimClassification(BimClassification* pObject, bool autoDelete)
+    : m_pyImp(pObject, PyBrxBimObjectDeleter<BimClassification>(autoDelete))
+{
+}
+
+std::string PyBrxBimClassification::className()
+{
+    return "BimClassification";
+}
+
+BimClassification* PyBrxBimClassification::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BimClassification*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimNameSpaces
+void makeBrxBimNameSpacesWrapper()
+{
+    PyDocString DS("BimNameSpaces");
+    class_<PyBrxBimNameSpaces>("BimNameSpaces")
+        .def(init<>())
+        .def("className", &PyBrxBimNameSpaces::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxBimNameSpaces::PyBrxBimNameSpaces()
+    : PyBrxBimNameSpaces(new BimNameSpaces(), true)
+{
+}
+
+PyBrxBimNameSpaces::PyBrxBimNameSpaces(const BimNameSpaces* ptr)
+    :PyBrxBimNameSpaces(const_cast<BimNameSpaces*>(ptr), false)
+{
+}
+
+PyBrxBimNameSpaces::PyBrxBimNameSpaces(BimNameSpaces* pObject, bool autoDelete)
+    : m_pyImp(pObject, PyBrxBimObjectDeleter<BimNameSpaces>(autoDelete))
+{
+}
+
+std::string PyBrxBimNameSpaces::className()
+{
+    return "BimNameSpaces";
+}
+
+BimNameSpaces* PyBrxBimNameSpaces::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BimNameSpaces*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimPropertyInfo
+void makePyBrxBimPropertyInfoWrapper()
+{
+    PyDocString DS("BimPropertyInfo");
+    class_<PyBrxBimPropertyInfo>("BimPropertyInfo")
+        .def(init<>())
+        .def("className", &PyBrxBimPropertyInfo::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxBimPropertyInfo::PyBrxBimPropertyInfo()
+    : PyBrxBimPropertyInfo(new BimPropertyInfo(), true)
+{
+}
+
+PyBrxBimPropertyInfo::PyBrxBimPropertyInfo(const BimPropertyInfo* ptr)
+    :PyBrxBimPropertyInfo(const_cast<BimPropertyInfo*>(ptr), false)
+{
+}
+
+PyBrxBimPropertyInfo::PyBrxBimPropertyInfo(BimPropertyInfo* pObject, bool autoDelete)
+    : m_pyImp(pObject, PyBrxBimObjectDeleter<BimPropertyInfo>(autoDelete))
+{
+}
+
+std::string PyBrxBimPropertyInfo::className()
+{
+    return "BimPropertyInfo";
+}
+
+BimPropertyInfo* PyBrxBimPropertyInfo::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BimPropertyInfo*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+//BrxBimAttributeSet
+void makePyBrxBimAttributeSetWrapper()
+{
+    PyDocString DS("BrxBimAttributeSet");
+    class_<PyBrxBimAttributeSet>("BrxBimAttributeSet")
+        .def(init<>())
+        .def("className", &PyBrxBimAttributeSet::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxBimAttributeSet::PyBrxBimAttributeSet()
+    : PyBrxBimAttributeSet(new BrxBimAttributeSet(), true)
+{
+}
+
+PyBrxBimAttributeSet::PyBrxBimAttributeSet(const BrxBimAttributeSet* ptr)
+    :PyBrxBimAttributeSet(const_cast<BrxBimAttributeSet*>(ptr), false)
+{
+}
+
+PyBrxBimAttributeSet::PyBrxBimAttributeSet(BrxBimAttributeSet* pObject, bool autoDelete)
+    : m_pyImp(pObject, PyBrxBimObjectDeleter<BrxBimAttributeSet>(autoDelete))
+{
+}
+
+std::string PyBrxBimAttributeSet::className()
+{
+    return "BrxBimAttributeSet";
+}
+
+BrxBimAttributeSet* PyBrxBimAttributeSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxBimAttributeSet*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+//BrxBimDialogs
+void makePyBrxBimDialogsWrapper()
+{
+
+}
+
+PyBrxBimDialogs::PyBrxBimDialogs()
+    : PyBrxBimDialogs(new BrxBimDialogs(), true)
+{
+}
+
+PyBrxBimDialogs::PyBrxBimDialogs(const BrxBimDialogs* ptr)
+    :PyBrxBimDialogs(const_cast<BrxBimDialogs*>(ptr), false)
+{
+}
+
+PyBrxBimDialogs::PyBrxBimDialogs(BrxBimDialogs* pObject, bool autoDelete)
+    : m_pyImp(pObject, PyBrxBimObjectDeleter<BrxBimDialogs>(autoDelete))
+{
+}
+
+std::string PyBrxBimDialogs::className()
+{
+    return "BrxBimDialogs";
+}
+
+BrxBimDialogs* PyBrxBimDialogs::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BrxBimDialogs*>(m_pyImp.get());
 }
 
 #endif//BRXAPP
