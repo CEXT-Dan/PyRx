@@ -5,6 +5,12 @@
 #include "PyDbDatabase.h"
 #include "PyDbObjectId.h"
 
+#include "AnchorFeature.h"
+#include "Blockify.h"
+#include "IfcDefs.h"
+#include "IfcExportReactor.h"
+#include "IfcImportReactor.h"
+
 using namespace boost::python;
 
 //---------------------------------------------------------------------------------------- -

@@ -397,6 +397,12 @@
     <ClCompile Include="PyBrxBimObject.cpp">
       <Filter>Source Files\PyBrxBim</Filter>
     </ClCompile>
+    <ClCompile Include="PyBrxBimImportExport.cpp">
+      <Filter>Source Files\PyBrxBim</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxIFC.cpp">
+      <Filter>Source Files\PyBrxBim</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -796,6 +802,12 @@
       <Filter>Header Files\PyBrxBim</Filter>
     </ClInclude>
     <ClInclude Include="PyBrxBimObject.h">
+      <Filter>Header Files\PyBrxBim</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxBimImportExport.h">
+      <Filter>Header Files\PyBrxBim</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxIFC.h">
       <Filter>Header Files\PyBrxBim</Filter>
     </ClInclude>
   </ItemGroup>

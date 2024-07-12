@@ -140,6 +140,7 @@
     <ClCompile Include="GsCore.cpp" />
     <ClCompile Include="PlCore.cpp" />
     <ClCompile Include="PyBrxBim.cpp" />
+    <ClCompile Include="PyBrxBimImportExport.cpp" />
     <ClCompile Include="PyBrxBimObject.cpp" />
     <ClCompile Include="PyBrxCv.cpp" />
     <ClCompile Include="PyBrxCvDbAlignments.cpp" />
@@ -148,6 +149,7 @@
     <ClCompile Include="PyBrxCvDbTinSurface.cpp" />
     <ClCompile Include="PyBrxCvDbTinSurfaceDef.cpp" />
     <ClCompile Include="PyBrxCvObject.cpp" />
+    <ClCompile Include="PyBrxIFC.cpp" />
     <ClCompile Include="PyDb3dProfile.cpp" />
     <ClCompile Include="PyDbDatabaseReactor.cpp" />
     <ClCompile Include="PyDbDate.cpp" />
@@ -275,6 +277,7 @@
     <ClInclude Include="GsCore.h" />
     <ClInclude Include="PlCore.h" />
     <ClInclude Include="PyBrxBim.h" />
+    <ClInclude Include="PyBrxBimImportExport.h" />
     <ClInclude Include="PyBrxBimObject.h" />
     <ClInclude Include="PyBrxCv.h" />
     <ClInclude Include="PyBrxCvDbAlignments.h" />
@@ -283,6 +286,7 @@
     <ClInclude Include="PyBrxCvDbTinSurface.h" />
     <ClInclude Include="PyBrxCvDbTinSurfaceDef.h" />
     <ClInclude Include="PyBrxCvObject.h" />
+    <ClInclude Include="PyBrxIFC.h" />
     <ClInclude Include="PyDb3dProfile.h" />
     <ClInclude Include="PyDbDatabaseReactor.h" />
     <ClInclude Include="PyDbDate.h" />

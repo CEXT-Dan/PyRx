@@ -398,6 +398,37 @@ public:
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
+#ifdef ARXAPP
+        AcAxDocLock lock; //Added a doc lock
+        const CString cstrName{ L"WooHoo" }; //Get rid of the AllocSysString
+
+        AcDbDatabase* pDb = acdbHostApplicationServices()->workingDatabase();
+
+        Adesk::ULongPtr contextHandle = 0;
+        acdbDoSetupForLayouts(pDb, contextHandle);
+
+        AcApLayoutManager* pLayoutManager = dynamic_cast<AcApLayoutManager*>(acdbHostApplicationServices()->layoutManager());
+
+        AcDbObjectId layoutId;
+        AcDbObjectId btrId;
+
+        if (auto es = pLayoutManager->createLayout(cstrName, layoutId, btrId, pDb); es != eOk)
+            acutPrintf(_T("\nOops %ls"), acadErrorStatusText(es));
+
+        pLayoutManager->setDefaultPlotConfig(btrId);
+        pLayoutManager->updateLayoutTabs();
+
+        if (auto es = pLayoutManager->setCurrentLayout(cstrName, pDb); es != eOk)
+            acutPrintf(_T("\nOops %ls"), acadErrorStatusText(es));
+
+        AcDbObjectPointer<AcDbLayout> pLayout(layoutId, AcDb::kForWrite);
+        if (auto es = pLayout.openStatus(); es != Acad::eOk)
+            acutPrintf(_T("\nOops %ls"), acadErrorStatusText(es));
+
+        acdbClearSetupForLayouts(contextHandle);
+
+        acutPrintf(_T("\nYahoo! %ls"), acadErrorStatusText(Acad::eOk));
+#endif
     }
 #endif
 
