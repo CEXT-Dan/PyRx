@@ -105,44 +105,19 @@ PyCAdUiPaletteSet::PyCAdUiPaletteSet(const std::string& name)
 {
     CAcModuleResourceOverride resourceOverride;
     m_pyImp.reset(new PyCAdUiPaletteSetImpl(this));
-#if defined(_GRXTARGET) && (_GRXTARGET == 240)
-    return;
-#endif
-#if defined(_BRXTARGET) //SR176835
     m_name = utf8_to_wstr(name).c_str();
-    impObj()->SetName(m_name);
-#else
-    impObj()->SetName(utf8_to_wstr(name).c_str());
-#endif
-#ifdef NEVER  //TODO, test if this is the case!
-    GUID id;
-    HRESULT hr = CoCreateGuid(&id);
-    impObj()->SetToolID(&id);
-#endif
 }
 
 PyCAdUiPaletteSet::PyCAdUiPaletteSet(const std::string& name, const std::string& guid)
 {
     CAcModuleResourceOverride resourceOverride;
     m_pyImp.reset(new PyCAdUiPaletteSetImpl(this));
-#if defined(_GRXTARGET) && (_GRXTARGET == 240)
-    return;
-#endif
-#if defined(_BRXTARGET) //SR176835
     m_name = utf8_to_wstr(name).c_str();
-    impObj()->SetName(m_name);
-#else
-    impObj()->SetName(utf8_to_wstr(name).c_str());
-#endif
-    GUID id;
-    CString sguid = utf8_to_wstr(guid).c_str();
-    HRESULT hr = CLSIDFromString(sguid, (LPCLSID)&id);
-    if (hr != S_OK)
+    const CString sguid = utf8_to_wstr(guid).c_str();
+    if(HRESULT hr = CLSIDFromString(sguid, (LPCLSID)&m_guid); hr != S_OK)
     {
         acutPrintf(_T("BAD GUID"));
-        return;
     }
-    impObj()->SetToolID(&id);
 }
 
 int PyCAdUiPaletteSet::add(const std::string& name, boost::python::object& panel)
@@ -175,10 +150,9 @@ bool PyCAdUiPaletteSet::create()
         PSS_AUTO_ROLLUP | PSS_CLOSE_BUTTON
     );
     impObj()->EnableDocking((DWORD)m_docStyle);
-    createChildren();
-#if defined(_BRXTARGET) //SR176835
     impObj()->SetName(m_name);
-#endif
+    impObj()->SetToolID(&m_guid);
+    createChildren();
     m_created = true;
     return m_created;
 }
@@ -187,8 +161,8 @@ void PyCAdUiPaletteSet::setVisible(bool show)
 {
     if (impObj() != nullptr && create())
     {
-        CMDIFrameWnd* pAcadFrame = acedGetAcadFrame();
         impObj()->RestoreControlBar();
+        CMDIFrameWnd* pAcadFrame = acedGetAcadFrame();
         pAcadFrame->ShowControlBar(impObj(), show, FALSE);
     }
 }
@@ -351,15 +325,14 @@ bool PyCAdUiPaletteSet::setName(const std::string& name)
 
 bool PyCAdUiPaletteSet::setToolId(const std::string& guid)
 {
-    GUID id;
     CString sguid = utf8_to_wstr(guid).c_str();
-    HRESULT hr = CLSIDFromString(sguid, (LPCLSID)&id);
+    HRESULT hr = CLSIDFromString(sguid, (LPCLSID)&m_guid);
     if (hr != S_OK)
     {
         acutPrintf(_T("BAD GUID"));
         return false;
     }
-    impObj()->SetToolID(&id);
+    impObj()->SetToolID(&m_guid);
     return true;
 }
 
