@@ -52,6 +52,7 @@ public:
     void        enableDocking(PaletteDockStyle dwDockStyle);
     void        dock(PaletteDockStyle dwDockStyle);
     void        setSize(int x, int y);
+    void        setLocation(int x, int y);
 
     DWORD       getPaletteSetStyle();
     void        setPaletteSetStyle(DWORD dwStyle);

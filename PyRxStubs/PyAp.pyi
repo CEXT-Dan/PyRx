@@ -1219,6 +1219,9 @@ class PaletteSet(object):
     def setAutoRollup (self, val : bool)-> bool :
         '''Enables and disables auto rollup for the palette set.Setting the auto-rollup state also causes the palette set to react as necessary. For example, it will roll out if auto rollup is disabled and may roll up, depending on the cursor position, if auto rollup is enabled.'''
         ...
+    def setLocation (self, x : int, y : int)-> None :
+        '''                             '''
+        ...
     def setName (self, name : str)-> bool :
         '''Sets the name of the palette set.Returns true if the palette set name is successfully set to pszName; otherwise, returns false. '''
         ...
