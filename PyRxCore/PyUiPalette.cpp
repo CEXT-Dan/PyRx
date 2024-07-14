@@ -46,7 +46,7 @@ void makePyCAdUiPaletteSetWrapper()
         .def(init<const std::string&, const std::string&>(DS.ARGS({ "name : str", "guid : str=None" })))
         .def("add", &PyCAdUiPaletteSet::add, DS.ARGS({ "name : str" }))
         .def("setVisible", &PyCAdUiPaletteSet::setVisible, DS.ARGS({ "val : bool" }))
-        .def("enableDocking", &PyCAdUiPaletteSet::enableDocking, DS.ARGS({ "style : int" }))
+        .def("enableDocking", &PyCAdUiPaletteSet::enableDocking, DS.ARGS({ "style : PyAp.PaletteDocKStyle" }))
         .def("getPaletteSetStyle", &PyCAdUiPaletteSet::getPaletteSetStyle, DS.ARGS(18147))
         .def("setPaletteSetStyle", &PyCAdUiPaletteSet::setPaletteSetStyle, DS.ARGS({ "val : int" }, 18205))
         .def("autoRollupStyle", &PyCAdUiPaletteSet::autoRollupStyle, DS.ARGS(18123))
@@ -77,18 +77,25 @@ void makePyCAdUiPaletteSetWrapper()
         .def("getFullRect", &PyCAdUiPaletteSet::getFullRect, DS.ARGS(18136))
         .def("rolledUp", &PyCAdUiPaletteSet::rolledUp, DS.ARGS(18192))
         .def("titleBarLocation", &PyCAdUiPaletteSet::titleBarLocation, DS.ARGS(18215))
-        .def("setTitleBarLocation", &PyCAdUiPaletteSet::setTitleBarLocation, DS.ARGS({ "val : AdUiTitleBarLocation" }, 18209))
+        .def("setTitleBarLocation", &PyCAdUiPaletteSet::setTitleBarLocation, DS.ARGS({ "val : PyAp.PaletteTitleBarLocation" }, 18209))
         .def("updateTabs", &PyCAdUiPaletteSet::updateTabs, DS.ARGS(18217))
         .def("paletteBackgroundColor", &PyCAdUiPaletteSet::paletteBackgroundColor, DS.ARGS())
         .def("paletteTabTextColor", &PyCAdUiPaletteSet::paletteTabTextColor, DS.ARGS())
         ;
-    enum_<CAdUiPaletteSet::AdUiTitleBarLocation>("AdUiTitleBarLocation")
+    enum_<CAdUiPaletteSet::AdUiTitleBarLocation>("PaletteTitleBarLocation")
         .value("kLeft", CAdUiPaletteSet::AdUiTitleBarLocation::kLeft)
         .value("kRight", CAdUiPaletteSet::AdUiTitleBarLocation::kRight)
         .export_values()
         ;
+    enum_<PaletteDockStyle>("PaletteDockStyle")
+        .value("kLEFT", PaletteDockStyle::kLEFT)
+        .value("kRIGHT", PaletteDockStyle::kRIGHT)
+        .value("kTOP", PaletteDockStyle::kTOP)
+        .value("kBOTTOM", PaletteDockStyle::kBOTTOM)
+        .value("kANY", PaletteDockStyle::kANY)
+        .export_values()
+        ;
 }
-
 
 PyCAdUiPaletteSet::PyCAdUiPaletteSet(const std::string& name)
 {
@@ -163,7 +170,7 @@ bool PyCAdUiPaletteSet::create()
         acedGetAcadFrame(),
         PSS_AUTO_ROLLUP | PSS_CLOSE_BUTTON
     );
-    impObj()->EnableDocking(m_docStyle);
+    impObj()->EnableDocking((DWORD)m_docStyle);
     createChildren();
 #if defined(_BRXTARGET) //SR176835
     impObj()->SetName(m_name);
@@ -182,7 +189,7 @@ void PyCAdUiPaletteSet::setVisible(bool show)
     }
 }
 
-void PyCAdUiPaletteSet::enableDocking(int dwDockStyle)
+void PyCAdUiPaletteSet::enableDocking(PaletteDockStyle dwDockStyle)
 {
     m_docStyle = dwDockStyle;
 }

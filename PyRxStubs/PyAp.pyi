@@ -10,14 +10,6 @@ import PySm
 from typing import overload
 from typing import Any
 
-class AdUiTitleBarLocation(object):
-    def kLeft (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def kRight (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
 class Application(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''__init__( (object)arg1) -> None :
@@ -1134,6 +1126,23 @@ class LayoutManager(PyDb.LayoutManager):
         '''This function regenerates the layout tabs to update them to the current state of the AcDbLayout objects they represent.'''
         ...
 
+class PaletteDockStyle(object):
+    def kANY (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kBOTTOM (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kLEFT (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kRIGHT (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kTOP (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class PaletteSet(object):
     def __init__ (self, name : str, guid : str=None)-> None :
         '''                             '''
@@ -1149,6 +1158,9 @@ class PaletteSet(object):
         ...
     def editNameStyle (self)-> bool :
         '''Returns true if the palette has the PS_EDIT_NAME style set; otherwise, returns false.'''
+        ...
+    def enableDocking (self, style : PyAp.PaletteDocKStyle)-> None :
+        '''                             '''
         ...
     def getActivePaletteTabIndex (self)-> int :
         '''Returns the zero-based tab index of the currently active palette.'''
@@ -1213,7 +1225,7 @@ class PaletteSet(object):
     def setRolloverOpacity (self, val : int)-> bool :
         '''Sets the value of the rollover opacity.Returns true if successful.'''
         ...
-    def setTitleBarLocation (self, val : AdUiTitleBarLocation)-> None :
+    def setTitleBarLocation (self, val : PyAp.PaletteTitleBarLocation)-> None :
         '''Sets the title bar orientation (left or right) for the palette set. '''
         ...
     def setToolId (self, guid : str)-> bool :
@@ -1234,7 +1246,7 @@ class PaletteSet(object):
     def snapStyle (self)-> bool :
         '''Returns true if the palette set has the PSS_SNAP style set; otherwise, returns false.'''
         ...
-    def titleBarLocation (self)-> PyAp.AdUiTitleBarLocation :
+    def titleBarLocation (self)-> PyAp.PaletteTitleBarLocation :
         '''Returns the current location of the palette set title bar, either kRight or kLeft.'''
         ...
     def updateTabs (self)-> None :
@@ -1242,6 +1254,14 @@ class PaletteSet(object):
         ...
     def useSinglePaletteTabNameStyle (self)-> bool :
         '''Returns true if the palette set has the PSS_USE_SINGLE_PALETTE_TAB_NAME style set.'''
+        ...
+
+class PaletteTitleBarLocation(object):
+    def kLeft (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kRight (self, *args, **kwargs)-> None :
+        '''None'''
         ...
 
 class ResourceOverride(object):
