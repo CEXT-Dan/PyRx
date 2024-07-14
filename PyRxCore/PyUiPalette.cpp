@@ -46,6 +46,7 @@ void makePyCAdUiPaletteSetWrapper()
         .def(init<const std::string&, const std::string&>(DS.ARGS({ "name : str", "guid : str=None" })))
         .def("add", &PyCAdUiPaletteSet::add, DS.ARGS({ "name : str" }))
         .def("setVisible", &PyCAdUiPaletteSet::setVisible, DS.ARGS({ "val : bool" }))
+        .def("enableDocking", &PyCAdUiPaletteSet::enableDocking, DS.ARGS({ "style : int" }))
         .def("getPaletteSetStyle", &PyCAdUiPaletteSet::getPaletteSetStyle, DS.ARGS(18147))
         .def("setPaletteSetStyle", &PyCAdUiPaletteSet::setPaletteSetStyle, DS.ARGS({ "val : int" }, 18205))
         .def("autoRollupStyle", &PyCAdUiPaletteSet::autoRollupStyle, DS.ARGS(18123))
@@ -162,7 +163,7 @@ bool PyCAdUiPaletteSet::create()
         acedGetAcadFrame(),
         PSS_AUTO_ROLLUP | PSS_CLOSE_BUTTON
     );
-    impObj()->EnableDocking(CBRS_ALIGN_LEFT | CBRS_ALIGN_RIGHT);
+    impObj()->EnableDocking(m_docStyle);
     createChildren();
 #if defined(_BRXTARGET) //SR176835
     impObj()->SetName(m_name);
@@ -179,6 +180,11 @@ void PyCAdUiPaletteSet::setVisible(bool show)
         impObj()->RestoreControlBar();
         pAcadFrame->ShowControlBar(impObj(), show, FALSE);
     }
+}
+
+void PyCAdUiPaletteSet::enableDocking(int dwDockStyle)
+{
+    m_docStyle = dwDockStyle;
 }
 
 void PyCAdUiPaletteSet::createChildren()
@@ -376,7 +382,7 @@ PyObject* PyCAdUiPaletteSet::getFullRect()
     PyAutoLockGIL lock;
     CRect rect;
     impObj()->GetFullRect(rect);
-    wxRect *_wxRect = new wxRect(rect.left, rect.top, rect.right, rect.bottom);
+    wxRect* _wxRect = new wxRect(rect.left, rect.top, rect.right, rect.bottom);
     return wxPyConstructObject(_wxRect, wxT("wxRect"), true);
 }
 

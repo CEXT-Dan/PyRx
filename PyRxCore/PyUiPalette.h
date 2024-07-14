@@ -38,6 +38,7 @@ public: //INTERNAL
 public:
     int         add(const std::string& name, boost::python::object& panel);
     void        setVisible(bool show);
+    void        enableDocking(int dwDockStyle);
     DWORD       getPaletteSetStyle();
     void        setPaletteSetStyle(DWORD dwStyle);
     bool        autoRollupStyle();
@@ -81,6 +82,7 @@ private:
 #if defined(_BRXTARGET)
     CString m_name; //this is for _BRXTARGET SR176835
 #endif
+    int m_docStyle = CBRS_ALIGN_ANY;
     bool m_created = false;
 };
 
