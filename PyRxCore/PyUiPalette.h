@@ -81,7 +81,7 @@ public:
     void        rollUp();
     bool        removePalette(int nPaletteIndex);
     int         getPaletteCount();
-    PyObject* getFullRect();
+    PyObject*   getFullRect();
     bool        rolledUp();
     CAdUiPaletteSet::AdUiTitleBarLocation titleBarLocation();
     void        setTitleBarLocation(CAdUiPaletteSet::AdUiTitleBarLocation loc);
@@ -94,9 +94,8 @@ public: //INTERNAL
 private:
     std::shared_ptr<PyCAdUiPaletteSetImpl> m_pyImp;
     std::vector<PyCAdUiPalette> m_children;
-#if defined(_BRXTARGET)
-    CString m_name; //this is for _BRXTARGET SR176835
-#endif
+    CString m_name;
+    GUID m_guid;
     PaletteDockStyle m_docStyle = PaletteDockStyle::kAny;
     bool m_created = false;
 };
