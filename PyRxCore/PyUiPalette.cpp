@@ -46,7 +46,8 @@ void makePyCAdUiPaletteSetWrapper()
         .def(init<const std::string&, const std::string&>(DS.ARGS({ "name : str", "guid : str=None" })))
         .def("add", &PyCAdUiPaletteSet::add, DS.ARGS({ "name : str" }))
         .def("setVisible", &PyCAdUiPaletteSet::setVisible, DS.ARGS({ "val : bool" }))
-        .def("enableDocking", &PyCAdUiPaletteSet::enableDocking, DS.ARGS({ "style : PyAp.PaletteDocKStyle" }))
+        .def("enableDocking", &PyCAdUiPaletteSet::enableDocking, DS.ARGS({ "style : PyAp.PaletteDockStyle" }))
+        .def("dock", &PyCAdUiPaletteSet::dock, DS.ARGS({ "style : PyAp.PaletteDockStyle" }))
         .def("getPaletteSetStyle", &PyCAdUiPaletteSet::getPaletteSetStyle, DS.ARGS(18147))
         .def("setPaletteSetStyle", &PyCAdUiPaletteSet::setPaletteSetStyle, DS.ARGS({ "val : int" }, 18205))
         .def("autoRollupStyle", &PyCAdUiPaletteSet::autoRollupStyle, DS.ARGS(18123))
@@ -67,6 +68,7 @@ void makePyCAdUiPaletteSetWrapper()
         .def("setRolloverOpacity", &PyCAdUiPaletteSet::setRolloverOpacity, DS.ARGS({ "val : int" }, 18206))
         .def("getActivePaletteTabIndex", &PyCAdUiPaletteSet::getActivePaletteTabIndex, DS.ARGS(18132))
         .def("setActivePalette", &PyCAdUiPaletteSet::setActivePalette, DS.ARGS({ "val : int" }, 18197))
+        .def("setSize", &PyCAdUiPaletteSet::setSize, DS.ARGS({ "x : int","y : int" }))
         .def("setAutoRollup", &PyCAdUiPaletteSet::setAutoRollup, DS.ARGS({ "val : bool" }, 18199))
         .def("getAutoRollup", &PyCAdUiPaletteSet::getAutoRollup, DS.ARGS(18134))
         .def("rollOut", &PyCAdUiPaletteSet::rollOut1)
@@ -88,11 +90,12 @@ void makePyCAdUiPaletteSetWrapper()
         .export_values()
         ;
     enum_<PaletteDockStyle>("PaletteDockStyle")
-        .value("kLEFT", PaletteDockStyle::kLEFT)
-        .value("kRIGHT", PaletteDockStyle::kRIGHT)
-        .value("kTOP", PaletteDockStyle::kTOP)
-        .value("kBOTTOM", PaletteDockStyle::kBOTTOM)
-        .value("kANY", PaletteDockStyle::kANY)
+        .value("kNone", PaletteDockStyle::kNone)
+        .value("kLeft", PaletteDockStyle::kLeft)
+        .value("kRight", PaletteDockStyle::kRight)
+        .value("kTop", PaletteDockStyle::kTop)
+        .value("kBottom", PaletteDockStyle::kBottom)
+        .value("kAny", PaletteDockStyle::kAny)
         .export_values()
         ;
 }
@@ -192,6 +195,48 @@ void PyCAdUiPaletteSet::setVisible(bool show)
 void PyCAdUiPaletteSet::enableDocking(PaletteDockStyle dwDockStyle)
 {
     m_docStyle = dwDockStyle;
+}
+
+void PyCAdUiPaletteSet::dock(PaletteDockStyle dwDockStyle)
+{
+    if (dwDockStyle != PaletteDockStyle::kNone)
+    {
+        uint side = 0;
+        CRect crect;
+        impObj()->GetClientRect(crect);
+        switch (dwDockStyle)
+        {
+            case PaletteDockStyle::kLeft:
+                side = AFX_IDW_DOCKBAR_LEFT;
+                break;
+            case PaletteDockStyle::kRight:
+                side = AFX_IDW_DOCKBAR_RIGHT;
+                break;
+            case PaletteDockStyle::kTop:
+                side = AFX_IDW_DOCKBAR_TOP;
+                break;
+            case PaletteDockStyle::kBottom:
+                side = AFX_IDW_DOCKBAR_BOTTOM;
+                break;
+            case PaletteDockStyle::kAny:
+                side = AFX_IDW_DOCKBAR_LEFT;
+                break;
+        }
+        impObj()->DockControlBar(side, crect);
+    }
+    else
+    {
+        PyThrowBadEs(eNotImplementedYet);
+    }
+}
+
+void PyCAdUiPaletteSet::setSize(int x, int y)
+{
+    CRect crect;
+    impObj()->GetClientRect(crect);
+    crect.right= x;
+    crect.bottom = y;
+    impObj()->MoveWindow(crect);
 }
 
 void PyCAdUiPaletteSet::createChildren()

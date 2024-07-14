@@ -4,13 +4,14 @@
 class PyCAdUiPalette;
 class PyCAdUiPaletteSet;
 
-enum PaletteDockStyle
+enum class PaletteDockStyle : int
 {
-    kLEFT = CBRS_ALIGN_LEFT,
-    kRIGHT = CBRS_ALIGN_RIGHT,
-    kTOP = CBRS_ALIGN_TOP,
-    kBOTTOM = CBRS_ALIGN_BOTTOM,
-    kANY = CBRS_ALIGN_ANY,
+    kNone = 0,
+    kLeft = CBRS_ALIGN_LEFT,
+    kRight = CBRS_ALIGN_RIGHT,
+    kTop = CBRS_ALIGN_TOP,
+    kBottom = CBRS_ALIGN_BOTTOM,
+    kAny = CBRS_ALIGN_ANY,
 };
 
 //---------------------------------------------------------------------
@@ -47,7 +48,11 @@ public: //INTERNAL
 public:
     int         add(const std::string& name, boost::python::object& panel);
     void        setVisible(bool show);
+
     void        enableDocking(PaletteDockStyle dwDockStyle);
+    void        dock(PaletteDockStyle dwDockStyle);
+    void        setSize(int x, int y);
+
     DWORD       getPaletteSetStyle();
     void        setPaletteSetStyle(DWORD dwStyle);
     bool        autoRollupStyle();
@@ -91,7 +96,7 @@ private:
 #if defined(_BRXTARGET)
     CString m_name; //this is for _BRXTARGET SR176835
 #endif
-    PaletteDockStyle m_docStyle = PaletteDockStyle::kANY;
+    PaletteDockStyle m_docStyle = PaletteDockStyle::kAny;
     bool m_created = false;
 };
 

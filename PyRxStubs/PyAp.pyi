@@ -1127,19 +1127,22 @@ class LayoutManager(PyDb.LayoutManager):
         ...
 
 class PaletteDockStyle(object):
-    def kANY (self, *args, **kwargs)-> None :
+    def kAny (self, *args, **kwargs)-> None :
         '''None'''
         ...
-    def kBOTTOM (self, *args, **kwargs)-> None :
+    def kBottom (self, *args, **kwargs)-> None :
         '''None'''
         ...
-    def kLEFT (self, *args, **kwargs)-> None :
+    def kLeft (self, *args, **kwargs)-> None :
         '''None'''
         ...
-    def kRIGHT (self, *args, **kwargs)-> None :
+    def kNone (self, *args, **kwargs)-> None :
         '''None'''
         ...
-    def kTOP (self, *args, **kwargs)-> None :
+    def kRight (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kTop (self, *args, **kwargs)-> None :
         '''None'''
         ...
 
@@ -1156,10 +1159,13 @@ class PaletteSet(object):
     def closeButtonStyle (self)-> bool :
         '''Returns true if the palette set has the PSS_CLOSE_BUTTON style set; otherwise, returns false.'''
         ...
+    def dock (self, style : PyAp.PaletteDockStyle)-> None :
+        '''                             '''
+        ...
     def editNameStyle (self)-> bool :
         '''Returns true if the palette has the PS_EDIT_NAME style set; otherwise, returns false.'''
         ...
-    def enableDocking (self, style : PyAp.PaletteDocKStyle)-> None :
+    def enableDocking (self, style : PyAp.PaletteDockStyle)-> None :
         '''                             '''
         ...
     def getActivePaletteTabIndex (self)-> int :
@@ -1224,6 +1230,9 @@ class PaletteSet(object):
         ...
     def setRolloverOpacity (self, val : int)-> bool :
         '''Sets the value of the rollover opacity.Returns true if successful.'''
+        ...
+    def setSize (self, x : int, y : int)-> None :
+        '''                             '''
         ...
     def setTitleBarLocation (self, val : PyAp.PaletteTitleBarLocation)-> None :
         '''Sets the title bar orientation (left or right) for the palette set. '''

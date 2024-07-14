@@ -14,7 +14,7 @@ class PySysVarImpl
     boost::python::object m_oldobj;
     bool m_doit = true;
 public:
-    PySysVarImpl(const std::string& name, const boost::python::object& obj );
+    PySysVarImpl(const std::string& name, const boost::python::object& obj);
     ~PySysVarImpl(void);
     void detach(bool flag);
     void set(const std::string& name, const boost::python::object& obj);
