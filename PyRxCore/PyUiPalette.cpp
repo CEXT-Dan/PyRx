@@ -68,6 +68,7 @@ void makePyCAdUiPaletteSetWrapper()
         .def("setRolloverOpacity", &PyCAdUiPaletteSet::setRolloverOpacity, DS.ARGS({ "val : int" }, 18206))
         .def("getActivePaletteTabIndex", &PyCAdUiPaletteSet::getActivePaletteTabIndex, DS.ARGS(18132))
         .def("setActivePalette", &PyCAdUiPaletteSet::setActivePalette, DS.ARGS({ "val : int" }, 18197))
+        .def("setLocation", &PyCAdUiPaletteSet::setLocation, DS.ARGS({ "x : int","y : int" }))
         .def("setSize", &PyCAdUiPaletteSet::setSize, DS.ARGS({ "x : int","y : int" }))
         .def("setAutoRollup", &PyCAdUiPaletteSet::setAutoRollup, DS.ARGS({ "val : bool" }, 18199))
         .def("getAutoRollup", &PyCAdUiPaletteSet::getAutoRollup, DS.ARGS(18134))
@@ -237,6 +238,11 @@ void PyCAdUiPaletteSet::setSize(int x, int y)
     crect.right= x;
     crect.bottom = y;
     impObj()->MoveWindow(crect);
+}
+
+void PyCAdUiPaletteSet::setLocation(int x, int y)
+{
+    PyThrowBadEs(eNotImplementedYet);
 }
 
 void PyCAdUiPaletteSet::createChildren()
