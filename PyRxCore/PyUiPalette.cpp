@@ -48,6 +48,7 @@ void makePyCAdUiPaletteSetWrapper()
         .def("setVisible", &PyCAdUiPaletteSet::setVisible, DS.ARGS({ "val : bool" }))
         .def("enableDocking", &PyCAdUiPaletteSet::enableDocking, DS.ARGS({ "style : PyAp.PaletteDockStyle" }))
         .def("dock", &PyCAdUiPaletteSet::dock, DS.ARGS({ "style : PyAp.PaletteDockStyle" }))
+        .def("getDock", &PyCAdUiPaletteSet::getDock, DS.ARGS())
         .def("getPaletteSetStyle", &PyCAdUiPaletteSet::getPaletteSetStyle, DS.ARGS(18147))
         .def("setPaletteSetStyle", &PyCAdUiPaletteSet::setPaletteSetStyle, DS.ARGS({ "val : int" }, 18205))
         .def("autoRollupStyle", &PyCAdUiPaletteSet::autoRollupStyle, DS.ARGS(18123))
@@ -211,6 +212,46 @@ void PyCAdUiPaletteSet::dock(PaletteDockStyle dwDockStyle)
     {
         PyThrowBadEs(eNotImplementedYet);
     }
+}
+
+PaletteDockStyle PyCAdUiPaletteSet::getDock()
+{
+    if (impObj()->IsFloating())
+    {
+        return PaletteDockStyle::kNone;
+    }
+
+    CDockState state;
+    CMDIFrameWnd* pAcadFrame = acedGetAcadFrame();
+    pAcadFrame->GetDockState(state);
+
+    CControlBarInfo thisbar;
+    impObj()->GetBarInfo(&thisbar);
+
+    for (INT_PTR i = 0; i < state.m_arrBarInfo.GetSize(); i++)
+    {
+        const CControlBarInfo* pInfo = static_cast<CControlBarInfo*>(state.m_arrBarInfo[i]);
+        if (pInfo == nullptr)
+            continue;
+        for (INT_PTR j = 0; j < pInfo->m_arrBarID.GetSize(); j++)
+        {
+            if (pInfo->m_arrBarID[j] == thisbar.m_nBarID)
+            {
+                switch (pInfo->m_nBarID)
+                {
+                    case AFX_IDW_DOCKBAR_LEFT:
+                        return PaletteDockStyle::kLeft;
+                    case AFX_IDW_DOCKBAR_RIGHT:
+                        return PaletteDockStyle::kRight;
+                    case AFX_IDW_DOCKBAR_TOP:
+                        return PaletteDockStyle::kTop;
+                    case AFX_IDW_DOCKBAR_BOTTOM:
+                        return PaletteDockStyle::kBottom;
+                }
+            }
+        }
+    }
+    return PaletteDockStyle::kNone;
 }
 
 void PyCAdUiPaletteSet::setSize(int x, int y)

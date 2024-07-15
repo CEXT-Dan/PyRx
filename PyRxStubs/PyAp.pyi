@@ -1174,6 +1174,9 @@ class PaletteSet(object):
     def getAutoRollup (self)-> bool :
         '''Returns true if auto rollup is enabled. Returns false if it is disabled or if the the auto-rollup style is not set for the palette set.'''
         ...
+    def getDock (self)-> PyAp.PaletteDockStyle :
+        '''                             '''
+        ...
     def getFullRect (self)-> object :
         '''Gets the full window rectangle of the palette set. This function retrieves the rectangle of the unrolled palette set even if the palette set is currently rolled up.'''
         ...
@@ -1191,6 +1194,9 @@ class PaletteSet(object):
         ...
     def getRolloverOpacity (self)-> int :
         '''Returns the rollover opacity value.'''
+        ...
+    def getWxFrame (self)-> object :
+        '''                             '''
         ...
     def paletteBackgroundColor (self)-> int :
         '''                             '''
