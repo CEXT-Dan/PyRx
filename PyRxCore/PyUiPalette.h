@@ -95,7 +95,7 @@ private:
     std::shared_ptr<PyCAdUiPaletteSetImpl> m_pyImp;
     std::vector<PyCAdUiPalette> m_children;
     CString m_name;
-    GUID m_guid;
+    GUID m_guid = { GUID_NULL };
     PaletteDockStyle m_docStyle = PaletteDockStyle::kAny;
     bool m_created = false;
 };

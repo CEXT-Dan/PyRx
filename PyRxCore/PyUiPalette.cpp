@@ -114,7 +114,7 @@ PyCAdUiPaletteSet::PyCAdUiPaletteSet(const std::string& name, const std::string&
     m_pyImp.reset(new PyCAdUiPaletteSetImpl(this));
     m_name = utf8_to_wstr(name).c_str();
     const CString sguid = utf8_to_wstr(guid).c_str();
-    if(HRESULT hr = CLSIDFromString(sguid, (LPCLSID)&m_guid); hr != S_OK)
+    if (HRESULT hr = CLSIDFromString(sguid, (LPCLSID)&m_guid); hr != S_OK)
     {
         acutPrintf(_T("BAD GUID"));
     }
@@ -151,7 +151,8 @@ bool PyCAdUiPaletteSet::create()
     );
     impObj()->EnableDocking((DWORD)m_docStyle);
     impObj()->SetName(m_name);
-    impObj()->SetToolID(&m_guid);
+    if (m_guid != GUID_NULL)
+        impObj()->SetToolID(&m_guid);
     createChildren();
     m_created = true;
     return m_created;
@@ -209,7 +210,7 @@ void PyCAdUiPaletteSet::setSize(int x, int y)
 {
     CRect crect;
     impObj()->GetClientRect(crect);
-    crect.right= x;
+    crect.right = x;
     crect.bottom = y;
     impObj()->MoveWindow(crect);
 }
@@ -525,23 +526,26 @@ void PyCAdUiPaletteImpl::OnSize(UINT nType, int cx, int cy)
 
 wxWindow* PyCAdUiPaletteImpl::thiswindow(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_thiswin == nullptr) [[unlikely]]
+    if (m_thiswin == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return m_thiswin;
+        }
+    return m_thiswin;
 }
 
 wxWindow* PyCAdUiPaletteImpl::ownerwin(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_ownerwin == nullptr) [[unlikely]]
+    if (m_ownerwin == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return m_ownerwin;
+        }
+    return m_ownerwin;
 }
 
 wxPanel* PyCAdUiPaletteImpl::panel(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_panel == nullptr) [[unlikely]]
+    if (m_panel == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return m_panel;
+        }
+    return m_panel;
 }
 
 PyCAdUiPalette* PyCAdUiPaletteImpl::bckptr(const std::source_location& src /*= std::source_location::current()*/) const
