@@ -88,6 +88,7 @@ public:
     void        updateTabs();
     COLORREF    paletteBackgroundColor() const;
     COLORREF    paletteTabTextColor() const;
+    wxFrame*    getWxFrame();
 
 public: //INTERNAL
     PyCAdUiPaletteSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -97,6 +98,7 @@ private:
     CString m_name;
     GUID m_guid = { GUID_NULL };
     PaletteDockStyle m_docStyle = PaletteDockStyle::kAny;
+    wxFrame* m_thisFrame = nullptr;
     bool m_created = false;
 };
 
@@ -117,12 +119,14 @@ public:
     wxWindow* ownerwin(const std::source_location& src = std::source_location::current()) const;
     wxPanel* panel(const std::source_location& src = std::source_location::current()) const;
     PyCAdUiPalette* bckptr(const std::source_location& src = std::source_location::current()) const;
+    void setPyPaletteSet(PyCAdUiPaletteSet* paletteSet);
 private:
+    friend PyCAdUiPalette;
 
     wxPanel* m_panel = nullptr;
     wxWindow* m_thiswin = nullptr;
-    wxWindow* m_ownerwin = nullptr;
     PyCAdUiPalette* m_bckPtr = nullptr;
+    PyCAdUiPaletteSet* m_paletteSet = nullptr;
 };
 
 //---------------------------------------------------------------------
@@ -133,6 +137,7 @@ class PyCAdUiPalette
 public:
     PyCAdUiPalette(const std::string& name, wxPanel* panel);
     virtual ~PyCAdUiPalette() = default;
+    void setPyPaletteSet(PyCAdUiPaletteSet* paletteSet);
     PyCAdUiPaletteImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
     std::shared_ptr<PyCAdUiPaletteImpl> m_pyImp;
