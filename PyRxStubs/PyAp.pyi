@@ -1159,9 +1159,6 @@ class PaletteSet(object):
     def closeButtonStyle (self)-> bool :
         '''Returns true if the palette set has the PSS_CLOSE_BUTTON style set; otherwise, returns false.'''
         ...
-    def dock (self, style : PyAp.PaletteDockStyle)-> None :
-        '''                             '''
-        ...
     def editNameStyle (self)-> bool :
         '''Returns true if the palette has the PS_EDIT_NAME style set; otherwise, returns false.'''
         ...
@@ -1174,7 +1171,7 @@ class PaletteSet(object):
     def getAutoRollup (self)-> bool :
         '''Returns true if auto rollup is enabled. Returns false if it is disabled or if the the auto-rollup style is not set for the palette set.'''
         ...
-    def getDock (self)-> PyAp.PaletteDockStyle :
+    def getDockState (self)-> PyAp.PaletteDockStyle :
         '''                             '''
         ...
     def getFullRect (self)-> object :
@@ -1224,6 +1221,9 @@ class PaletteSet(object):
         ...
     def setAutoRollup (self, val : bool)-> bool :
         '''Enables and disables auto rollup for the palette set.Setting the auto-rollup state also causes the palette set to react as necessary. For example, it will roll out if auto rollup is disabled and may roll up, depending on the cursor position, if auto rollup is enabled.'''
+        ...
+    def setDockState (self, style : PyAp.PaletteDockStyle)-> None :
+        '''                             '''
         ...
     def setLocation (self, x : int, y : int)-> None :
         '''                             '''
